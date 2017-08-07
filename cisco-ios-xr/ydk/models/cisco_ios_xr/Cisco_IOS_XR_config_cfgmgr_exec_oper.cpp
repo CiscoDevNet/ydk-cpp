@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_config_cfgmgr_exec_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_config_cfgmgr_exec_oper {
 
 CfgHistGl::CfgHistGl()
@@ -35,7 +37,7 @@ bool CfgHistGl::has_operation() const
         if(record_type[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CfgHistGl::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::get_children() const
     return children;
 }
 
-void CfgHistGl::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CfgHistGl::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string CfgHistGl::get_bundle_name() const
 augment_capabilities_function CfgHistGl::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CfgHistGl::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool CfgHistGl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "record-type")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::RecordType()
@@ -149,8 +167,8 @@ bool CfgHistGl::RecordType::has_operation() const
         if(record[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(record_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(record_type.yfilter);
 }
 
 std::string CfgHistGl::RecordType::get_segment_path() const
@@ -176,7 +194,7 @@ const EntityPath CfgHistGl::RecordType::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (record_type.is_set || is_set(record_type.operation)) leaf_name_data.push_back(record_type.get_name_leafdata());
+    if (record_type.is_set || is_set(record_type.yfilter)) leaf_name_data.push_back(record_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -216,12 +234,29 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::get_childr
     return children;
 }
 
-void CfgHistGl::RecordType::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "record-type")
     {
         record_type = value;
+        record_type.value_namespace = name_space;
+        record_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "record-type")
+    {
+        record_type.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "record" || name == "record-type")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Record()
@@ -251,10 +286,10 @@ bool CfgHistGl::RecordType::Record::has_data() const
 
 bool CfgHistGl::RecordType::Record::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(record.operation)
-	|| is_set(record_type.operation)
-	|| is_set(timestamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(record.yfilter)
+	|| ydk::is_set(record_type.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
 	|| (info !=  nullptr && info->has_operation());
 }
 
@@ -281,9 +316,9 @@ const EntityPath CfgHistGl::RecordType::Record::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (record.is_set || is_set(record.operation)) leaf_name_data.push_back(record.get_name_leafdata());
-    if (record_type.is_set || is_set(record_type.operation)) leaf_name_data.push_back(record_type.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (record.is_set || is_set(record.yfilter)) leaf_name_data.push_back(record.get_name_leafdata());
+    if (record_type.is_set || is_set(record_type.yfilter)) leaf_name_data.push_back(record_type.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -316,20 +351,49 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::ge
     return children;
 }
 
-void CfgHistGl::RecordType::Record::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "record")
     {
         record = value;
+        record.value_namespace = name_space;
+        record.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "record-type")
     {
         record_type = value;
+        record_type.value_namespace = name_space;
+        record_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::Record::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "record")
+    {
+        record.yfilter = yfilter;
+    }
+    if(value_path == "record-type")
+    {
+        record_type.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "info" || name == "record" || name == "record-type" || name == "timestamp")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Info::Info()
@@ -381,9 +445,9 @@ bool CfgHistGl::RecordType::Record::Info::has_data() const
 
 bool CfgHistGl::RecordType::Record::Info::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(a.operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(a.yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (alarm_info !=  nullptr && alarm_info->has_operation())
 	|| (backup_info !=  nullptr && backup_info->has_operation())
 	|| (cfscheck_info !=  nullptr && cfscheck_info->has_operation())
@@ -416,8 +480,8 @@ const EntityPath CfgHistGl::RecordType::Record::Info::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (a.is_set || is_set(a.operation)) leaf_name_data.push_back(a.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (a.is_set || is_set(a.yfilter)) leaf_name_data.push_back(a.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -534,16 +598,39 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::In
     return children;
 }
 
-void CfgHistGl::RecordType::Record::Info::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::Info::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "a")
     {
         a = value;
+        a.value_namespace = name_space;
+        a.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::Record::Info::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "a")
+    {
+        a.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm-info" || name == "backup-info" || name == "cfscheck-info" || name == "commit-info" || name == "oir-info" || name == "shutdown-info" || name == "startup-info" || name == "a" || name == "type")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Info::AlarmInfo::AlarmInfo()
@@ -566,9 +653,9 @@ bool CfgHistGl::RecordType::Record::Info::AlarmInfo::has_data() const
 
 bool CfgHistGl::RecordType::Record::Info::AlarmInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(state.operation)
-	|| is_set(where.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(where.yfilter);
 }
 
 std::string CfgHistGl::RecordType::Record::Info::AlarmInfo::get_segment_path() const
@@ -594,8 +681,8 @@ const EntityPath CfgHistGl::RecordType::Record::Info::AlarmInfo::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (where.is_set || is_set(where.operation)) leaf_name_data.push_back(where.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (where.is_set || is_set(where.yfilter)) leaf_name_data.push_back(where.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -614,16 +701,39 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::In
     return children;
 }
 
-void CfgHistGl::RecordType::Record::Info::AlarmInfo::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::Info::AlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "where")
     {
         where = value;
+        where.value_namespace = name_space;
+        where.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::Record::Info::AlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "where")
+    {
+        where.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::AlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state" || name == "where")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Info::CfscheckInfo::CfscheckInfo()
@@ -646,9 +756,9 @@ bool CfgHistGl::RecordType::Record::Info::CfscheckInfo::has_data() const
 
 bool CfgHistGl::RecordType::Record::Info::CfscheckInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(line.operation)
-	|| is_set(user_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(line.yfilter)
+	|| ydk::is_set(user_id.yfilter);
 }
 
 std::string CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_segment_path() const
@@ -674,8 +784,8 @@ const EntityPath CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (line.is_set || is_set(line.operation)) leaf_name_data.push_back(line.get_name_leafdata());
-    if (user_id.is_set || is_set(user_id.operation)) leaf_name_data.push_back(user_id.get_name_leafdata());
+    if (line.is_set || is_set(line.yfilter)) leaf_name_data.push_back(line.get_name_leafdata());
+    if (user_id.is_set || is_set(user_id.yfilter)) leaf_name_data.push_back(user_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -694,16 +804,39 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::In
     return children;
 }
 
-void CfgHistGl::RecordType::Record::Info::CfscheckInfo::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::Info::CfscheckInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line")
     {
         line = value;
+        line.value_namespace = name_space;
+        line.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "user-id")
     {
         user_id = value;
+        user_id.value_namespace = name_space;
+        user_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::Record::Info::CfscheckInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "line")
+    {
+        line.yfilter = yfilter;
+    }
+    if(value_path == "user-id")
+    {
+        user_id.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::CfscheckInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "line" || name == "user-id")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Info::CommitInfo::CommitInfo()
@@ -734,13 +867,13 @@ bool CfgHistGl::RecordType::Record::Info::CommitInfo::has_data() const
 
 bool CfgHistGl::RecordType::Record::Info::CommitInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(client_name.operation)
-	|| is_set(comment.operation)
-	|| is_set(commit_id.operation)
-	|| is_set(label.operation)
-	|| is_set(line.operation)
-	|| is_set(user_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(client_name.yfilter)
+	|| ydk::is_set(comment.yfilter)
+	|| ydk::is_set(commit_id.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(line.yfilter)
+	|| ydk::is_set(user_id.yfilter);
 }
 
 std::string CfgHistGl::RecordType::Record::Info::CommitInfo::get_segment_path() const
@@ -766,12 +899,12 @@ const EntityPath CfgHistGl::RecordType::Record::Info::CommitInfo::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client_name.is_set || is_set(client_name.operation)) leaf_name_data.push_back(client_name.get_name_leafdata());
-    if (comment.is_set || is_set(comment.operation)) leaf_name_data.push_back(comment.get_name_leafdata());
-    if (commit_id.is_set || is_set(commit_id.operation)) leaf_name_data.push_back(commit_id.get_name_leafdata());
-    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (line.is_set || is_set(line.operation)) leaf_name_data.push_back(line.get_name_leafdata());
-    if (user_id.is_set || is_set(user_id.operation)) leaf_name_data.push_back(user_id.get_name_leafdata());
+    if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
+    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
+    if (commit_id.is_set || is_set(commit_id.yfilter)) leaf_name_data.push_back(commit_id.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (line.is_set || is_set(line.yfilter)) leaf_name_data.push_back(line.get_name_leafdata());
+    if (user_id.is_set || is_set(user_id.yfilter)) leaf_name_data.push_back(user_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -790,32 +923,79 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::In
     return children;
 }
 
-void CfgHistGl::RecordType::Record::Info::CommitInfo::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::Info::CommitInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-name")
     {
         client_name = value;
+        client_name.value_namespace = name_space;
+        client_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "comment")
     {
         comment = value;
+        comment.value_namespace = name_space;
+        comment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "commit-id")
     {
         commit_id = value;
+        commit_id.value_namespace = name_space;
+        commit_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
         label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line")
     {
         line = value;
+        line.value_namespace = name_space;
+        line.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "user-id")
     {
         user_id = value;
+        user_id.value_namespace = name_space;
+        user_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::Record::Info::CommitInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-name")
+    {
+        client_name.yfilter = yfilter;
+    }
+    if(value_path == "comment")
+    {
+        comment.yfilter = yfilter;
+    }
+    if(value_path == "commit-id")
+    {
+        commit_id.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "line")
+    {
+        line.yfilter = yfilter;
+    }
+    if(value_path == "user-id")
+    {
+        user_id.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::CommitInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-name" || name == "comment" || name == "commit-id" || name == "label" || name == "line" || name == "user-id")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Info::OirInfo::OirInfo()
@@ -840,10 +1020,10 @@ bool CfgHistGl::RecordType::Record::Info::OirInfo::has_data() const
 
 bool CfgHistGl::RecordType::Record::Info::OirInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(config_name.operation)
-	|| is_set(config_type.operation)
-	|| is_set(operation_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(config_name.yfilter)
+	|| ydk::is_set(config_type.yfilter)
+	|| ydk::is_set(operation_.yfilter);
 }
 
 std::string CfgHistGl::RecordType::Record::Info::OirInfo::get_segment_path() const
@@ -869,9 +1049,9 @@ const EntityPath CfgHistGl::RecordType::Record::Info::OirInfo::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (config_name.is_set || is_set(config_name.operation)) leaf_name_data.push_back(config_name.get_name_leafdata());
-    if (config_type.is_set || is_set(config_type.operation)) leaf_name_data.push_back(config_type.get_name_leafdata());
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (config_name.is_set || is_set(config_name.yfilter)) leaf_name_data.push_back(config_name.get_name_leafdata());
+    if (config_type.is_set || is_set(config_type.yfilter)) leaf_name_data.push_back(config_type.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -890,20 +1070,49 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::In
     return children;
 }
 
-void CfgHistGl::RecordType::Record::Info::OirInfo::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::Info::OirInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "config-name")
     {
         config_name = value;
+        config_name.value_namespace = name_space;
+        config_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "config-type")
     {
         config_type = value;
+        config_type.value_namespace = name_space;
+        config_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::Record::Info::OirInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "config-name")
+    {
+        config_name.yfilter = yfilter;
+    }
+    if(value_path == "config-type")
+    {
+        config_type.yfilter = yfilter;
+    }
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::OirInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config-name" || name == "config-type" || name == "operation")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Info::ShutdownInfo::ShutdownInfo()
@@ -924,8 +1133,8 @@ bool CfgHistGl::RecordType::Record::Info::ShutdownInfo::has_data() const
 
 bool CfgHistGl::RecordType::Record::Info::ShutdownInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(comment.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(comment.yfilter);
 }
 
 std::string CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_segment_path() const
@@ -951,7 +1160,7 @@ const EntityPath CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (comment.is_set || is_set(comment.operation)) leaf_name_data.push_back(comment.get_name_leafdata());
+    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -970,12 +1179,29 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::In
     return children;
 }
 
-void CfgHistGl::RecordType::Record::Info::ShutdownInfo::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::Info::ShutdownInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "comment")
     {
         comment = value;
+        comment.value_namespace = name_space;
+        comment.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::Record::Info::ShutdownInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "comment")
+    {
+        comment.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::ShutdownInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "comment")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Info::StartupInfo::StartupInfo()
@@ -998,9 +1224,9 @@ bool CfgHistGl::RecordType::Record::Info::StartupInfo::has_data() const
 
 bool CfgHistGl::RecordType::Record::Info::StartupInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(boot_path.operation)
-	|| is_set(how_booted.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(boot_path.yfilter)
+	|| ydk::is_set(how_booted.yfilter);
 }
 
 std::string CfgHistGl::RecordType::Record::Info::StartupInfo::get_segment_path() const
@@ -1026,8 +1252,8 @@ const EntityPath CfgHistGl::RecordType::Record::Info::StartupInfo::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (boot_path.is_set || is_set(boot_path.operation)) leaf_name_data.push_back(boot_path.get_name_leafdata());
-    if (how_booted.is_set || is_set(how_booted.operation)) leaf_name_data.push_back(how_booted.get_name_leafdata());
+    if (boot_path.is_set || is_set(boot_path.yfilter)) leaf_name_data.push_back(boot_path.get_name_leafdata());
+    if (how_booted.is_set || is_set(how_booted.yfilter)) leaf_name_data.push_back(how_booted.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1046,16 +1272,39 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::In
     return children;
 }
 
-void CfgHistGl::RecordType::Record::Info::StartupInfo::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::Info::StartupInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "boot-path")
     {
         boot_path = value;
+        boot_path.value_namespace = name_space;
+        boot_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "how-booted")
     {
         how_booted = value;
+        how_booted.value_namespace = name_space;
+        how_booted.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfgHistGl::RecordType::Record::Info::StartupInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "boot-path")
+    {
+        boot_path.yfilter = yfilter;
+    }
+    if(value_path == "how-booted")
+    {
+        how_booted.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::StartupInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "boot-path" || name == "how-booted")
+        return true;
+    return false;
 }
 
 CfgHistGl::RecordType::Record::Info::BackupInfo::BackupInfo()
@@ -1076,8 +1325,8 @@ bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_data() const
 
 bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(comment.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(comment.yfilter);
 }
 
 std::string CfgHistGl::RecordType::Record::Info::BackupInfo::get_segment_path() const
@@ -1103,7 +1352,7 @@ const EntityPath CfgHistGl::RecordType::Record::Info::BackupInfo::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (comment.is_set || is_set(comment.operation)) leaf_name_data.push_back(comment.get_name_leafdata());
+    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1122,24 +1371,41 @@ std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::In
     return children;
 }
 
-void CfgHistGl::RecordType::Record::Info::BackupInfo::set_value(const std::string & value_path, std::string value)
+void CfgHistGl::RecordType::Record::Info::BackupInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "comment")
     {
         comment = value;
+        comment.value_namespace = name_space;
+        comment.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_all {0, "cfghist-bag-record-all"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_alarm {1, "cfghist-bag-record-alarm"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_cfs_check {2, "cfghist-bag-record-cfs-check"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_commit {3, "cfghist-bag-record-commit"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_oir {4, "cfghist-bag-record-oir"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_shutdown {5, "cfghist-bag-record-shutdown"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_startup {6, "cfghist-bag-record-startup"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_backup {7, "cfghist-bag-record-backup"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_rebase {8, "cfghist-bag-record-rebase"};
-const Enum::YLeaf HistRecordEnum::cfghist_bag_record_last {9, "cfghist-bag-record-last"};
+void CfgHistGl::RecordType::Record::Info::BackupInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "comment")
+    {
+        comment.yfilter = yfilter;
+    }
+}
+
+bool CfgHistGl::RecordType::Record::Info::BackupInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "comment")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf HistRecord::cfghist_bag_record_all {0, "cfghist-bag-record-all"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_alarm {1, "cfghist-bag-record-alarm"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_cfs_check {2, "cfghist-bag-record-cfs-check"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_commit {3, "cfghist-bag-record-commit"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_oir {4, "cfghist-bag-record-oir"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_shutdown {5, "cfghist-bag-record-shutdown"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_startup {6, "cfghist-bag-record-startup"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_backup {7, "cfghist-bag-record-backup"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_rebase {8, "cfghist-bag-record-rebase"};
+const Enum::YLeaf HistRecord::cfghist_bag_record_last {9, "cfghist-bag-record-last"};
 
 
 }

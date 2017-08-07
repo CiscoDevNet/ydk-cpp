@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_vservice_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_vservice_cfg {
 
 Vservice::Vservice()
@@ -45,7 +47,7 @@ bool Vservice::has_data() const
 
 bool Vservice::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (metadata_dispositions !=  nullptr && metadata_dispositions->has_operation())
 	|| (metadata_templates !=  nullptr && metadata_templates->has_operation())
 	|| (service_function_forward_locator !=  nullptr && service_function_forward_locator->has_operation())
@@ -161,7 +163,11 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::get_children() const
     return children;
 }
 
-void Vservice::set_value(const std::string & value_path, std::string value)
+void Vservice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vservice::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -185,6 +191,18 @@ augment_capabilities_function Vservice::get_augment_capabilities_function() cons
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Vservice::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Vservice::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metadata-dispositions" || name == "metadata-templates" || name == "service-function-forward-locator" || name == "service-function-locator" || name == "service-function-path")
+        return true;
+    return false;
+}
+
 Vservice::ServiceFunctionLocator::ServiceFunctionLocator()
     :
     names(std::make_shared<Vservice::ServiceFunctionLocator::Names>())
@@ -205,7 +223,7 @@ bool Vservice::ServiceFunctionLocator::has_data() const
 
 bool Vservice::ServiceFunctionLocator::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (names !=  nullptr && names->has_operation());
 }
 
@@ -264,8 +282,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionLocator:
     return children;
 }
 
-void Vservice::ServiceFunctionLocator::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionLocator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionLocator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionLocator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "names")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionLocator::Names::Names()
@@ -294,7 +323,7 @@ bool Vservice::ServiceFunctionLocator::Names::has_operation() const
         if(name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vservice::ServiceFunctionLocator::Names::get_segment_path() const
@@ -359,8 +388,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionLocator:
     return children;
 }
 
-void Vservice::ServiceFunctionLocator::Names::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionLocator::Names::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionLocator::Names::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionLocator::Names::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionLocator::Names::Name::Name()
@@ -388,9 +428,9 @@ bool Vservice::ServiceFunctionLocator::Names::Name::has_data() const
 
 bool Vservice::ServiceFunctionLocator::Names::Name::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(function_name.operation)
-	|| is_set(locator_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(function_name.yfilter)
+	|| ydk::is_set(locator_id.yfilter)
 	|| (node !=  nullptr && node->has_operation());
 }
 
@@ -417,8 +457,8 @@ const EntityPath Vservice::ServiceFunctionLocator::Names::Name::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (function_name.is_set || is_set(function_name.operation)) leaf_name_data.push_back(function_name.get_name_leafdata());
-    if (locator_id.is_set || is_set(locator_id.operation)) leaf_name_data.push_back(locator_id.get_name_leafdata());
+    if (function_name.is_set || is_set(function_name.yfilter)) leaf_name_data.push_back(function_name.get_name_leafdata());
+    if (locator_id.is_set || is_set(locator_id.yfilter)) leaf_name_data.push_back(locator_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -451,16 +491,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionLocator:
     return children;
 }
 
-void Vservice::ServiceFunctionLocator::Names::Name::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionLocator::Names::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "function-name")
     {
         function_name = value;
+        function_name.value_namespace = name_space;
+        function_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "locator-id")
     {
         locator_id = value;
+        locator_id.value_namespace = name_space;
+        locator_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionLocator::Names::Name::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "function-name")
+    {
+        function_name.yfilter = yfilter;
+    }
+    if(value_path == "locator-id")
+    {
+        locator_id.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionLocator::Names::Name::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "function-name" || name == "locator-id")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionLocator::Names::Name::Node::Node()
@@ -487,11 +550,11 @@ bool Vservice::ServiceFunctionLocator::Names::Name::Node::has_data() const
 
 bool Vservice::ServiceFunctionLocator::Names::Name::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_destination_address.operation)
-	|| is_set(ipv4_source_address.operation)
-	|| is_set(transport.operation)
-	|| is_set(vni.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_destination_address.yfilter)
+	|| ydk::is_set(ipv4_source_address.yfilter)
+	|| ydk::is_set(transport.yfilter)
+	|| ydk::is_set(vni.yfilter);
 }
 
 std::string Vservice::ServiceFunctionLocator::Names::Name::Node::get_segment_path() const
@@ -517,10 +580,10 @@ const EntityPath Vservice::ServiceFunctionLocator::Names::Name::Node::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_destination_address.is_set || is_set(ipv4_destination_address.operation)) leaf_name_data.push_back(ipv4_destination_address.get_name_leafdata());
-    if (ipv4_source_address.is_set || is_set(ipv4_source_address.operation)) leaf_name_data.push_back(ipv4_source_address.get_name_leafdata());
-    if (transport.is_set || is_set(transport.operation)) leaf_name_data.push_back(transport.get_name_leafdata());
-    if (vni.is_set || is_set(vni.operation)) leaf_name_data.push_back(vni.get_name_leafdata());
+    if (ipv4_destination_address.is_set || is_set(ipv4_destination_address.yfilter)) leaf_name_data.push_back(ipv4_destination_address.get_name_leafdata());
+    if (ipv4_source_address.is_set || is_set(ipv4_source_address.yfilter)) leaf_name_data.push_back(ipv4_source_address.get_name_leafdata());
+    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (vni.is_set || is_set(vni.yfilter)) leaf_name_data.push_back(vni.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -539,24 +602,59 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionLocator:
     return children;
 }
 
-void Vservice::ServiceFunctionLocator::Names::Name::Node::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionLocator::Names::Name::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-destination-address")
     {
         ipv4_destination_address = value;
+        ipv4_destination_address.value_namespace = name_space;
+        ipv4_destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-source-address")
     {
         ipv4_source_address = value;
+        ipv4_source_address.value_namespace = name_space;
+        ipv4_source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport")
     {
         transport = value;
+        transport.value_namespace = name_space;
+        transport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vni")
     {
         vni = value;
+        vni.value_namespace = name_space;
+        vni.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionLocator::Names::Name::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-destination-address")
+    {
+        ipv4_destination_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-source-address")
+    {
+        ipv4_source_address.yfilter = yfilter;
+    }
+    if(value_path == "transport")
+    {
+        transport.yfilter = yfilter;
+    }
+    if(value_path == "vni")
+    {
+        vni.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionLocator::Names::Name::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-destination-address" || name == "ipv4-source-address" || name == "transport" || name == "vni")
+        return true;
+    return false;
 }
 
 Vservice::MetadataDispositions::MetadataDispositions()
@@ -585,7 +683,7 @@ bool Vservice::MetadataDispositions::has_operation() const
         if(metadata_disposition[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vservice::MetadataDispositions::get_segment_path() const
@@ -650,8 +748,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataDispositions::g
     return children;
 }
 
-void Vservice::MetadataDispositions::set_value(const std::string & value_path, std::string value)
+void Vservice::MetadataDispositions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::MetadataDispositions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::MetadataDispositions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metadata-disposition")
+        return true;
+    return false;
 }
 
 Vservice::MetadataDispositions::MetadataDisposition::MetadataDisposition()
@@ -684,9 +793,9 @@ bool Vservice::MetadataDispositions::MetadataDisposition::has_operation() const
         if(match_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(disposition_name.operation)
-	|| is_set(format.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disposition_name.yfilter)
+	|| ydk::is_set(format.yfilter);
 }
 
 std::string Vservice::MetadataDispositions::MetadataDisposition::get_segment_path() const
@@ -712,8 +821,8 @@ const EntityPath Vservice::MetadataDispositions::MetadataDisposition::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disposition_name.is_set || is_set(disposition_name.operation)) leaf_name_data.push_back(disposition_name.get_name_leafdata());
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (disposition_name.is_set || is_set(disposition_name.yfilter)) leaf_name_data.push_back(disposition_name.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -753,16 +862,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataDispositions::M
     return children;
 }
 
-void Vservice::MetadataDispositions::MetadataDisposition::set_value(const std::string & value_path, std::string value)
+void Vservice::MetadataDispositions::MetadataDisposition::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disposition-name")
     {
         disposition_name = value;
+        disposition_name.value_namespace = name_space;
+        disposition_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::MetadataDispositions::MetadataDisposition::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disposition-name")
+    {
+        disposition_name.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+}
+
+bool Vservice::MetadataDispositions::MetadataDisposition::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "match-entry" || name == "disposition-name" || name == "format")
+        return true;
+    return false;
 }
 
 Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::MatchEntry()
@@ -788,8 +920,8 @@ bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::has_data()
 
 bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(match_entry_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(match_entry_name.yfilter)
 	|| (node !=  nullptr && node->has_operation());
 }
 
@@ -816,7 +948,7 @@ const EntityPath Vservice::MetadataDispositions::MetadataDisposition::MatchEntry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (match_entry_name.is_set || is_set(match_entry_name.operation)) leaf_name_data.push_back(match_entry_name.get_name_leafdata());
+    if (match_entry_name.is_set || is_set(match_entry_name.yfilter)) leaf_name_data.push_back(match_entry_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -849,12 +981,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataDispositions::M
     return children;
 }
 
-void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::set_value(const std::string & value_path, std::string value)
+void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "match-entry-name")
     {
         match_entry_name = value;
+        match_entry_name.value_namespace = name_space;
+        match_entry_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "match-entry-name")
+    {
+        match_entry_name.yfilter = yfilter;
+    }
+}
+
+bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "match-entry-name")
+        return true;
+    return false;
 }
 
 Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::Node()
@@ -889,15 +1038,15 @@ bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::has_
 {
     for (auto const & leaf : tenant_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(action_type.operation)
-	|| is_set(match_type.operation)
-	|| is_set(nexthop_ipv4_address.operation)
-	|| is_set(tenant_id.operation)
-	|| is_set(vrf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(action_type.yfilter)
+	|| ydk::is_set(match_type.yfilter)
+	|| ydk::is_set(nexthop_ipv4_address.yfilter)
+	|| ydk::is_set(tenant_id.yfilter)
+	|| ydk::is_set(vrf.yfilter);
 }
 
 std::string Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::get_segment_path() const
@@ -923,10 +1072,10 @@ const EntityPath Vservice::MetadataDispositions::MetadataDisposition::MatchEntry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_type.is_set || is_set(action_type.operation)) leaf_name_data.push_back(action_type.get_name_leafdata());
-    if (match_type.is_set || is_set(match_type.operation)) leaf_name_data.push_back(match_type.get_name_leafdata());
-    if (nexthop_ipv4_address.is_set || is_set(nexthop_ipv4_address.operation)) leaf_name_data.push_back(nexthop_ipv4_address.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (action_type.is_set || is_set(action_type.yfilter)) leaf_name_data.push_back(action_type.get_name_leafdata());
+    if (match_type.is_set || is_set(match_type.yfilter)) leaf_name_data.push_back(match_type.get_name_leafdata());
+    if (nexthop_ipv4_address.is_set || is_set(nexthop_ipv4_address.yfilter)) leaf_name_data.push_back(nexthop_ipv4_address.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
     auto tenant_id_name_datas = tenant_id.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), tenant_id_name_datas.begin(), tenant_id_name_datas.end());
@@ -947,19 +1096,25 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataDispositions::M
     return children;
 }
 
-void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::set_value(const std::string & value_path, std::string value)
+void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-type")
     {
         action_type = value;
+        action_type.value_namespace = name_space;
+        action_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "match-type")
     {
         match_type = value;
+        match_type.value_namespace = name_space;
+        match_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nexthop-ipv4-address")
     {
         nexthop_ipv4_address = value;
+        nexthop_ipv4_address.value_namespace = name_space;
+        nexthop_ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tenant-id")
     {
@@ -968,7 +1123,40 @@ void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::set_
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-type")
+    {
+        action_type.yfilter = yfilter;
+    }
+    if(value_path == "match-type")
+    {
+        match_type.yfilter = yfilter;
+    }
+    if(value_path == "nexthop-ipv4-address")
+    {
+        nexthop_ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "tenant-id")
+    {
+        tenant_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool Vservice::MetadataDispositions::MetadataDisposition::MatchEntry::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action-type" || name == "match-type" || name == "nexthop-ipv4-address" || name == "tenant-id" || name == "vrf")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionForwardLocator::ServiceFunctionForwardLocator()
@@ -991,7 +1179,7 @@ bool Vservice::ServiceFunctionForwardLocator::has_data() const
 
 bool Vservice::ServiceFunctionForwardLocator::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (names !=  nullptr && names->has_operation());
 }
 
@@ -1050,8 +1238,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionForwardL
     return children;
 }
 
-void Vservice::ServiceFunctionForwardLocator::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionForwardLocator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionForwardLocator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionForwardLocator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "names")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionForwardLocator::Names::Names()
@@ -1080,7 +1279,7 @@ bool Vservice::ServiceFunctionForwardLocator::Names::has_operation() const
         if(name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vservice::ServiceFunctionForwardLocator::Names::get_segment_path() const
@@ -1145,8 +1344,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionForwardL
     return children;
 }
 
-void Vservice::ServiceFunctionForwardLocator::Names::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionForwardLocator::Names::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionForwardLocator::Names::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionForwardLocator::Names::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionForwardLocator::Names::Name::Name()
@@ -1174,9 +1384,9 @@ bool Vservice::ServiceFunctionForwardLocator::Names::Name::has_data() const
 
 bool Vservice::ServiceFunctionForwardLocator::Names::Name::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(function_name.operation)
-	|| is_set(locator_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(function_name.yfilter)
+	|| ydk::is_set(locator_id.yfilter)
 	|| (node !=  nullptr && node->has_operation());
 }
 
@@ -1203,8 +1413,8 @@ const EntityPath Vservice::ServiceFunctionForwardLocator::Names::Name::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (function_name.is_set || is_set(function_name.operation)) leaf_name_data.push_back(function_name.get_name_leafdata());
-    if (locator_id.is_set || is_set(locator_id.operation)) leaf_name_data.push_back(locator_id.get_name_leafdata());
+    if (function_name.is_set || is_set(function_name.yfilter)) leaf_name_data.push_back(function_name.get_name_leafdata());
+    if (locator_id.is_set || is_set(locator_id.yfilter)) leaf_name_data.push_back(locator_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1237,16 +1447,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionForwardL
     return children;
 }
 
-void Vservice::ServiceFunctionForwardLocator::Names::Name::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionForwardLocator::Names::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "function-name")
     {
         function_name = value;
+        function_name.value_namespace = name_space;
+        function_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "locator-id")
     {
         locator_id = value;
+        locator_id.value_namespace = name_space;
+        locator_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionForwardLocator::Names::Name::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "function-name")
+    {
+        function_name.yfilter = yfilter;
+    }
+    if(value_path == "locator-id")
+    {
+        locator_id.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionForwardLocator::Names::Name::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "function-name" || name == "locator-id")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionForwardLocator::Names::Name::Node::Node()
@@ -1273,11 +1506,11 @@ bool Vservice::ServiceFunctionForwardLocator::Names::Name::Node::has_data() cons
 
 bool Vservice::ServiceFunctionForwardLocator::Names::Name::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_destination_address.operation)
-	|| is_set(ipv4_source_address.operation)
-	|| is_set(transport.operation)
-	|| is_set(vni.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_destination_address.yfilter)
+	|| ydk::is_set(ipv4_source_address.yfilter)
+	|| ydk::is_set(transport.yfilter)
+	|| ydk::is_set(vni.yfilter);
 }
 
 std::string Vservice::ServiceFunctionForwardLocator::Names::Name::Node::get_segment_path() const
@@ -1303,10 +1536,10 @@ const EntityPath Vservice::ServiceFunctionForwardLocator::Names::Name::Node::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_destination_address.is_set || is_set(ipv4_destination_address.operation)) leaf_name_data.push_back(ipv4_destination_address.get_name_leafdata());
-    if (ipv4_source_address.is_set || is_set(ipv4_source_address.operation)) leaf_name_data.push_back(ipv4_source_address.get_name_leafdata());
-    if (transport.is_set || is_set(transport.operation)) leaf_name_data.push_back(transport.get_name_leafdata());
-    if (vni.is_set || is_set(vni.operation)) leaf_name_data.push_back(vni.get_name_leafdata());
+    if (ipv4_destination_address.is_set || is_set(ipv4_destination_address.yfilter)) leaf_name_data.push_back(ipv4_destination_address.get_name_leafdata());
+    if (ipv4_source_address.is_set || is_set(ipv4_source_address.yfilter)) leaf_name_data.push_back(ipv4_source_address.get_name_leafdata());
+    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (vni.is_set || is_set(vni.yfilter)) leaf_name_data.push_back(vni.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1325,24 +1558,59 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionForwardL
     return children;
 }
 
-void Vservice::ServiceFunctionForwardLocator::Names::Name::Node::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionForwardLocator::Names::Name::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-destination-address")
     {
         ipv4_destination_address = value;
+        ipv4_destination_address.value_namespace = name_space;
+        ipv4_destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-source-address")
     {
         ipv4_source_address = value;
+        ipv4_source_address.value_namespace = name_space;
+        ipv4_source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport")
     {
         transport = value;
+        transport.value_namespace = name_space;
+        transport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vni")
     {
         vni = value;
+        vni.value_namespace = name_space;
+        vni.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionForwardLocator::Names::Name::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-destination-address")
+    {
+        ipv4_destination_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-source-address")
+    {
+        ipv4_source_address.yfilter = yfilter;
+    }
+    if(value_path == "transport")
+    {
+        transport.yfilter = yfilter;
+    }
+    if(value_path == "vni")
+    {
+        vni.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionForwardLocator::Names::Name::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-destination-address" || name == "ipv4-source-address" || name == "transport" || name == "vni")
+        return true;
+    return false;
 }
 
 Vservice::MetadataTemplates::MetadataTemplates()
@@ -1371,7 +1639,7 @@ bool Vservice::MetadataTemplates::has_operation() const
         if(metadata_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vservice::MetadataTemplates::get_segment_path() const
@@ -1436,8 +1704,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataTemplates::get_
     return children;
 }
 
-void Vservice::MetadataTemplates::set_value(const std::string & value_path, std::string value)
+void Vservice::MetadataTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::MetadataTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::MetadataTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metadata-template")
+        return true;
+    return false;
 }
 
 Vservice::MetadataTemplates::MetadataTemplate::MetadataTemplate()
@@ -1464,11 +1743,11 @@ bool Vservice::MetadataTemplates::MetadataTemplate::has_data() const
 
 bool Vservice::MetadataTemplates::MetadataTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(metadata_name.operation)
-	|| is_set(type.operation)
-	|| is_set(format.operation)
-	|| is_set(tenant_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(metadata_name.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(format.yfilter)
+	|| ydk::is_set(tenant_id.yfilter);
 }
 
 std::string Vservice::MetadataTemplates::MetadataTemplate::get_segment_path() const
@@ -1494,10 +1773,10 @@ const EntityPath Vservice::MetadataTemplates::MetadataTemplate::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (metadata_name.is_set || is_set(metadata_name.operation)) leaf_name_data.push_back(metadata_name.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
-    if (tenant_id.is_set || is_set(tenant_id.operation)) leaf_name_data.push_back(tenant_id.get_name_leafdata());
+    if (metadata_name.is_set || is_set(metadata_name.yfilter)) leaf_name_data.push_back(metadata_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (tenant_id.is_set || is_set(tenant_id.yfilter)) leaf_name_data.push_back(tenant_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1516,24 +1795,59 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::MetadataTemplates::Meta
     return children;
 }
 
-void Vservice::MetadataTemplates::MetadataTemplate::set_value(const std::string & value_path, std::string value)
+void Vservice::MetadataTemplates::MetadataTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metadata-name")
     {
         metadata_name = value;
+        metadata_name.value_namespace = name_space;
+        metadata_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tenant-id")
     {
         tenant_id = value;
+        tenant_id.value_namespace = name_space;
+        tenant_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::MetadataTemplates::MetadataTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "metadata-name")
+    {
+        metadata_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+    if(value_path == "tenant-id")
+    {
+        tenant_id.yfilter = yfilter;
+    }
+}
+
+bool Vservice::MetadataTemplates::MetadataTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metadata-name" || name == "type" || name == "format" || name == "tenant-id")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::ServiceFunctionPath()
@@ -1556,7 +1870,7 @@ bool Vservice::ServiceFunctionPath::has_data() const
 
 bool Vservice::ServiceFunctionPath::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (paths !=  nullptr && paths->has_operation());
 }
 
@@ -1615,8 +1929,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::ge
     return children;
 }
 
-void Vservice::ServiceFunctionPath::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "paths")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Paths()
@@ -1645,7 +1970,7 @@ bool Vservice::ServiceFunctionPath::Paths::has_operation() const
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::get_segment_path() const
@@ -1710,8 +2035,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionPath::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionPath::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::Path()
@@ -1742,8 +2078,8 @@ bool Vservice::ServiceFunctionPath::Paths::Path::has_operation() const
         if(service_index[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::get_segment_path() const
@@ -1769,7 +2105,7 @@ const EntityPath Vservice::ServiceFunctionPath::Paths::Path::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1809,12 +2145,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-index" || name == "path-id")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::ServiceIndex()
@@ -1848,8 +2201,8 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::has_data() const
 
 bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (sf_names !=  nullptr && sf_names->has_operation())
 	|| (sff_names !=  nullptr && sff_names->has_operation())
 	|| (terminate !=  nullptr && terminate->has_operation());
@@ -1878,7 +2231,7 @@ const EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1939,12 +2292,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf-names" || name == "sff-names" || name == "terminate" || name == "index")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Terminate()
@@ -1967,7 +2337,7 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::has_da
 
 bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (node !=  nullptr && node->has_operation());
 }
 
@@ -2026,8 +2396,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::Node()
@@ -2054,11 +2435,11 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::
 
 bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(action.operation)
-	|| is_set(metatdata_disposition.operation)
-	|| is_set(nexthop_ipv4_address.operation)
-	|| is_set(vrf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(action.yfilter)
+	|| ydk::is_set(metatdata_disposition.yfilter)
+	|| ydk::is_set(nexthop_ipv4_address.yfilter)
+	|| ydk::is_set(vrf.yfilter);
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::get_segment_path() const
@@ -2084,10 +2465,10 @@ const EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Termi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action.is_set || is_set(action.operation)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (metatdata_disposition.is_set || is_set(metatdata_disposition.operation)) leaf_name_data.push_back(metatdata_disposition.get_name_leafdata());
-    if (nexthop_ipv4_address.is_set || is_set(nexthop_ipv4_address.operation)) leaf_name_data.push_back(nexthop_ipv4_address.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
+    if (metatdata_disposition.is_set || is_set(metatdata_disposition.yfilter)) leaf_name_data.push_back(metatdata_disposition.get_name_leafdata());
+    if (nexthop_ipv4_address.is_set || is_set(nexthop_ipv4_address.yfilter)) leaf_name_data.push_back(nexthop_ipv4_address.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2106,24 +2487,59 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action")
     {
         action = value;
+        action.value_namespace = name_space;
+        action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metatdata-disposition")
     {
         metatdata_disposition = value;
+        metatdata_disposition.value_namespace = name_space;
+        metatdata_disposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nexthop-ipv4-address")
     {
         nexthop_ipv4_address = value;
+        nexthop_ipv4_address.value_namespace = name_space;
+        nexthop_ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action")
+    {
+        action.yfilter = yfilter;
+    }
+    if(value_path == "metatdata-disposition")
+    {
+        metatdata_disposition.yfilter = yfilter;
+    }
+    if(value_path == "nexthop-ipv4-address")
+    {
+        nexthop_ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::Terminate::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action" || name == "metatdata-disposition" || name == "nexthop-ipv4-address" || name == "vrf")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffNames()
@@ -2152,7 +2568,7 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::has_ope
         if(sff_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::get_segment_path() const
@@ -2217,8 +2633,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sff-name")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::SffName()
@@ -2244,8 +2671,8 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName
 
 bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (node !=  nullptr && node->has_operation());
 }
 
@@ -2272,7 +2699,7 @@ const EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2305,12 +2732,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "name")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::Node()
@@ -2333,9 +2777,9 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName
 
 bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(reserved.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(reserved.yfilter);
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::get_segment_path() const
@@ -2361,8 +2805,8 @@ const EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (reserved.is_set || is_set(reserved.operation)) leaf_name_data.push_back(reserved.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (reserved.is_set || is_set(reserved.yfilter)) leaf_name_data.push_back(reserved.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2381,16 +2825,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reserved")
     {
         reserved = value;
+        reserved.value_namespace = name_space;
+        reserved.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "reserved")
+    {
+        reserved.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SffNames::SffName::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "reserved")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfNames()
@@ -2419,7 +2886,7 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::has_oper
         if(sf_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::get_segment_path() const
@@ -2484,8 +2951,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf-name")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::SfName()
@@ -2511,8 +2989,8 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::
 
 bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (node !=  nullptr && node->has_operation());
 }
 
@@ -2539,7 +3017,7 @@ const EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNam
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2572,12 +3050,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node" || name == "name")
+        return true;
+    return false;
 }
 
 Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::Node()
@@ -2600,9 +3095,9 @@ bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::
 
 bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(reserved.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(reserved.yfilter);
 }
 
 std::string Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::get_segment_path() const
@@ -2628,8 +3123,8 @@ const EntityPath Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNam
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (reserved.is_set || is_set(reserved.operation)) leaf_name_data.push_back(reserved.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (reserved.is_set || is_set(reserved.yfilter)) leaf_name_data.push_back(reserved.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2648,27 +3143,50 @@ std::map<std::string, std::shared_ptr<Entity>> Vservice::ServiceFunctionPath::Pa
     return children;
 }
 
-void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::set_value(const std::string & value_path, std::string value)
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reserved")
     {
         reserved = value;
+        reserved.value_namespace = name_space;
+        reserved.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SfcSfTransportEnum::vxlan_gpe {1, "vxlan-gpe"};
+void Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "reserved")
+    {
+        reserved.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf SfcMetadataDispositionMatchEnum::type1_dcalloc_tenant_id {1, "type1-dcalloc-tenant-id"};
+bool Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "reserved")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf SfcMetadataAllocEnum::type1 {1, "type1"};
+const Enum::YLeaf SfcMetadataDispositionAction::redirect_nexthop {1, "redirect-nexthop"};
 
-const Enum::YLeaf SfcMetadataType1AllocFormatEnum::dc_allocation {1, "dc-allocation"};
+const Enum::YLeaf SfcSfTransport::vxlan_gpe {1, "vxlan-gpe"};
 
-const Enum::YLeaf SfcMetadataDispositionActionEnum::redirect_nexthop {1, "redirect-nexthop"};
+const Enum::YLeaf SfcMetadataAlloc::type1 {1, "type1"};
+
+const Enum::YLeaf SfcMetadataDispositionMatch::type1_dcalloc_tenant_id {1, "type1-dcalloc-tenant-id"};
+
+const Enum::YLeaf SfcMetadataType1AllocFormat::dc_allocation {1, "dc-allocation"};
 
 
 }

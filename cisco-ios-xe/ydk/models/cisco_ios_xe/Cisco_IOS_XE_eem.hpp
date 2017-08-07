@@ -7,18 +7,18 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_eem {
 
-class OperatorTypeEnum : public Enum
+class OperatorType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf eq;
-        static const Enum::YLeaf ge;
-        static const Enum::YLeaf gt;
-        static const Enum::YLeaf le;
-        static const Enum::YLeaf lt;
-        static const Enum::YLeaf ne;
+        static const ydk::Enum::YLeaf eq;
+        static const ydk::Enum::YLeaf ge;
+        static const ydk::Enum::YLeaf gt;
+        static const ydk::Enum::YLeaf le;
+        static const ydk::Enum::YLeaf lt;
+        static const ydk::Enum::YLeaf ne;
 
 };
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_asr9k_lc_fca_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_lc_fca_oper {
 
 MpaInternal::MpaInternal()
@@ -29,7 +31,7 @@ bool MpaInternal::has_data() const
 
 bool MpaInternal::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::get_children() const
     return children;
 }
 
-void MpaInternal::set_value(const std::string & value_path, std::string value)
+void MpaInternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MpaInternal::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string MpaInternal::get_bundle_name() const
 augment_capabilities_function MpaInternal::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> MpaInternal::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool MpaInternal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 MpaInternal::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool MpaInternal::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MpaInternal::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::get_children(
     return children;
 }
 
-void MpaInternal::Nodes::set_value(const std::string & value_path, std::string value)
+void MpaInternal::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MpaInternal::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MpaInternal::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 MpaInternal::Nodes::Node::Node()
@@ -232,8 +261,8 @@ bool MpaInternal::Nodes::Node::has_operation() const
         if(bay[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(node.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter);
 }
 
 std::string MpaInternal::Nodes::Node::get_segment_path() const
@@ -259,7 +288,7 @@ const EntityPath MpaInternal::Nodes::Node::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node.is_set || is_set(node.operation)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -299,12 +328,29 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::get_chi
     return children;
 }
 
-void MpaInternal::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void MpaInternal::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node")
     {
         node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MpaInternal::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+}
+
+bool MpaInternal::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bay" || name == "node")
+        return true;
+    return false;
 }
 
 MpaInternal::Nodes::Node::Bay::Bay()
@@ -330,8 +376,8 @@ bool MpaInternal::Nodes::Node::Bay::has_data() const
 
 bool MpaInternal::Nodes::Node::Bay::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (ifsubsies !=  nullptr && ifsubsies->has_operation());
 }
 
@@ -358,7 +404,7 @@ const EntityPath MpaInternal::Nodes::Node::Bay::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -391,12 +437,29 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::ge
     return children;
 }
 
-void MpaInternal::Nodes::Node::Bay::set_value(const std::string & value_path, std::string value)
+void MpaInternal::Nodes::Node::Bay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MpaInternal::Nodes::Node::Bay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool MpaInternal::Nodes::Node::Bay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifsubsies" || name == "number")
+        return true;
+    return false;
 }
 
 MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsies()
@@ -425,7 +488,7 @@ bool MpaInternal::Nodes::Node::Bay::Ifsubsies::has_operation() const
         if(ifsubsy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MpaInternal::Nodes::Node::Bay::Ifsubsies::get_segment_path() const
@@ -490,8 +553,19 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::If
     return children;
 }
 
-void MpaInternal::Nodes::Node::Bay::Ifsubsies::set_value(const std::string & value_path, std::string value)
+void MpaInternal::Nodes::Node::Bay::Ifsubsies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MpaInternal::Nodes::Node::Bay::Ifsubsies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MpaInternal::Nodes::Node::Bay::Ifsubsies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifsubsy")
+        return true;
+    return false;
 }
 
 MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::Ifsubsy()
@@ -517,8 +591,8 @@ bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::has_data() const
 
 bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (mpa_internal_info !=  nullptr && mpa_internal_info->has_operation());
 }
 
@@ -545,7 +619,7 @@ const EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -578,12 +652,29 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::If
     return children;
 }
 
-void MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::set_value(const std::string & value_path, std::string value)
+void MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mpa-internal-info" || name == "number")
+        return true;
+    return false;
 }
 
 MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::MpaInternalInfo()
@@ -622,17 +713,17 @@ bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::has_dat
 
 bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bay.operation)
-	|| is_set(ep_idprom_data.operation)
-	|| is_set(ep_idprom_major.operation)
-	|| is_set(ep_idprom_minor.operation)
-	|| is_set(ep_presence.operation)
-	|| is_set(ep_state.operation)
-	|| is_set(ep_type.operation)
-	|| is_set(if_event.operation)
-	|| is_set(if_state.operation)
-	|| is_set(ifsubsys.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bay.yfilter)
+	|| ydk::is_set(ep_idprom_data.yfilter)
+	|| ydk::is_set(ep_idprom_major.yfilter)
+	|| ydk::is_set(ep_idprom_minor.yfilter)
+	|| ydk::is_set(ep_presence.yfilter)
+	|| ydk::is_set(ep_state.yfilter)
+	|| ydk::is_set(ep_type.yfilter)
+	|| ydk::is_set(if_event.yfilter)
+	|| ydk::is_set(if_state.yfilter)
+	|| ydk::is_set(ifsubsys.yfilter);
 }
 
 std::string MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::get_segment_path() const
@@ -658,16 +749,16 @@ const EntityPath MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bay.is_set || is_set(bay.operation)) leaf_name_data.push_back(bay.get_name_leafdata());
-    if (ep_idprom_data.is_set || is_set(ep_idprom_data.operation)) leaf_name_data.push_back(ep_idprom_data.get_name_leafdata());
-    if (ep_idprom_major.is_set || is_set(ep_idprom_major.operation)) leaf_name_data.push_back(ep_idprom_major.get_name_leafdata());
-    if (ep_idprom_minor.is_set || is_set(ep_idprom_minor.operation)) leaf_name_data.push_back(ep_idprom_minor.get_name_leafdata());
-    if (ep_presence.is_set || is_set(ep_presence.operation)) leaf_name_data.push_back(ep_presence.get_name_leafdata());
-    if (ep_state.is_set || is_set(ep_state.operation)) leaf_name_data.push_back(ep_state.get_name_leafdata());
-    if (ep_type.is_set || is_set(ep_type.operation)) leaf_name_data.push_back(ep_type.get_name_leafdata());
-    if (if_event.is_set || is_set(if_event.operation)) leaf_name_data.push_back(if_event.get_name_leafdata());
-    if (if_state.is_set || is_set(if_state.operation)) leaf_name_data.push_back(if_state.get_name_leafdata());
-    if (ifsubsys.is_set || is_set(ifsubsys.operation)) leaf_name_data.push_back(ifsubsys.get_name_leafdata());
+    if (bay.is_set || is_set(bay.yfilter)) leaf_name_data.push_back(bay.get_name_leafdata());
+    if (ep_idprom_data.is_set || is_set(ep_idprom_data.yfilter)) leaf_name_data.push_back(ep_idprom_data.get_name_leafdata());
+    if (ep_idprom_major.is_set || is_set(ep_idprom_major.yfilter)) leaf_name_data.push_back(ep_idprom_major.get_name_leafdata());
+    if (ep_idprom_minor.is_set || is_set(ep_idprom_minor.yfilter)) leaf_name_data.push_back(ep_idprom_minor.get_name_leafdata());
+    if (ep_presence.is_set || is_set(ep_presence.yfilter)) leaf_name_data.push_back(ep_presence.get_name_leafdata());
+    if (ep_state.is_set || is_set(ep_state.yfilter)) leaf_name_data.push_back(ep_state.get_name_leafdata());
+    if (ep_type.is_set || is_set(ep_type.yfilter)) leaf_name_data.push_back(ep_type.get_name_leafdata());
+    if (if_event.is_set || is_set(if_event.yfilter)) leaf_name_data.push_back(if_event.get_name_leafdata());
+    if (if_state.is_set || is_set(if_state.yfilter)) leaf_name_data.push_back(if_state.get_name_leafdata());
+    if (ifsubsys.is_set || is_set(ifsubsys.yfilter)) leaf_name_data.push_back(ifsubsys.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -686,48 +777,119 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::If
     return children;
 }
 
-void MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::set_value(const std::string & value_path, std::string value)
+void MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bay")
     {
         bay = value;
+        bay.value_namespace = name_space;
+        bay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ep-idprom-data")
     {
         ep_idprom_data = value;
+        ep_idprom_data.value_namespace = name_space;
+        ep_idprom_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ep-idprom-major")
     {
         ep_idprom_major = value;
+        ep_idprom_major.value_namespace = name_space;
+        ep_idprom_major.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ep-idprom-minor")
     {
         ep_idprom_minor = value;
+        ep_idprom_minor.value_namespace = name_space;
+        ep_idprom_minor.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ep-presence")
     {
         ep_presence = value;
+        ep_presence.value_namespace = name_space;
+        ep_presence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ep-state")
     {
         ep_state = value;
+        ep_state.value_namespace = name_space;
+        ep_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ep-type")
     {
         ep_type = value;
+        ep_type.value_namespace = name_space;
+        ep_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-event")
     {
         if_event = value;
+        if_event.value_namespace = name_space;
+        if_event.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-state")
     {
         if_state = value;
+        if_state.value_namespace = name_space;
+        if_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ifsubsys")
     {
         ifsubsys = value;
+        ifsubsys.value_namespace = name_space;
+        ifsubsys.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bay")
+    {
+        bay.yfilter = yfilter;
+    }
+    if(value_path == "ep-idprom-data")
+    {
+        ep_idprom_data.yfilter = yfilter;
+    }
+    if(value_path == "ep-idprom-major")
+    {
+        ep_idprom_major.yfilter = yfilter;
+    }
+    if(value_path == "ep-idprom-minor")
+    {
+        ep_idprom_minor.yfilter = yfilter;
+    }
+    if(value_path == "ep-presence")
+    {
+        ep_presence.yfilter = yfilter;
+    }
+    if(value_path == "ep-state")
+    {
+        ep_state.yfilter = yfilter;
+    }
+    if(value_path == "ep-type")
+    {
+        ep_type.yfilter = yfilter;
+    }
+    if(value_path == "if-event")
+    {
+        if_event.yfilter = yfilter;
+    }
+    if(value_path == "if-state")
+    {
+        if_state.yfilter = yfilter;
+    }
+    if(value_path == "ifsubsys")
+    {
+        ifsubsys.yfilter = yfilter;
+    }
+}
+
+bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bay" || name == "ep-idprom-data" || name == "ep-idprom-major" || name == "ep-idprom-minor" || name == "ep-presence" || name == "ep-state" || name == "ep-type" || name == "if-event" || name == "if-state" || name == "ifsubsys")
+        return true;
+    return false;
 }
 
 Mpa::Mpa()
@@ -750,7 +912,7 @@ bool Mpa::has_data() const
 
 bool Mpa::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -806,7 +968,11 @@ std::map<std::string, std::shared_ptr<Entity>> Mpa::get_children() const
     return children;
 }
 
-void Mpa::set_value(const std::string & value_path, std::string value)
+void Mpa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mpa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -828,6 +994,18 @@ std::string Mpa::get_bundle_name() const
 augment_capabilities_function Mpa::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Mpa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Mpa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Mpa::Nodes::Nodes()
@@ -856,7 +1034,7 @@ bool Mpa::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpa::Nodes::get_segment_path() const
@@ -921,8 +1099,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::get_children() const
     return children;
 }
 
-void Mpa::Nodes::set_value(const std::string & value_path, std::string value)
+void Mpa::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpa::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpa::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Mpa::Nodes::Node::Node()
@@ -953,8 +1142,8 @@ bool Mpa::Nodes::Node::has_operation() const
         if(bay[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(node.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter);
 }
 
 std::string Mpa::Nodes::Node::get_segment_path() const
@@ -980,7 +1169,7 @@ const EntityPath Mpa::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node.is_set || is_set(node.operation)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1020,12 +1209,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::get_children() 
     return children;
 }
 
-void Mpa::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Mpa::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node")
     {
         node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpa::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+}
+
+bool Mpa::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bay" || name == "node")
+        return true;
+    return false;
 }
 
 Mpa::Nodes::Node::Bay::Bay()
@@ -1051,8 +1257,8 @@ bool Mpa::Nodes::Node::Bay::has_data() const
 
 bool Mpa::Nodes::Node::Bay::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (mpa_detail_table !=  nullptr && mpa_detail_table->has_operation());
 }
 
@@ -1079,7 +1285,7 @@ const EntityPath Mpa::Nodes::Node::Bay::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1112,12 +1318,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::get_childr
     return children;
 }
 
-void Mpa::Nodes::Node::Bay::set_value(const std::string & value_path, std::string value)
+void Mpa::Nodes::Node::Bay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpa::Nodes::Node::Bay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Mpa::Nodes::Node::Bay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mpa-detail-table" || name == "number")
+        return true;
+    return false;
 }
 
 Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetailTable()
@@ -1140,7 +1363,7 @@ bool Mpa::Nodes::Node::Bay::MpaDetailTable::has_data() const
 
 bool Mpa::Nodes::Node::Bay::MpaDetailTable::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (mpa_detail !=  nullptr && mpa_detail->has_operation());
 }
 
@@ -1199,8 +1422,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::MpaDetailT
     return children;
 }
 
-void Mpa::Nodes::Node::Bay::MpaDetailTable::set_value(const std::string & value_path, std::string value)
+void Mpa::Nodes::Node::Bay::MpaDetailTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpa::Nodes::Node::Bay::MpaDetailTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpa::Nodes::Node::Bay::MpaDetailTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mpa-detail")
+        return true;
+    return false;
 }
 
 Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::MpaDetail()
@@ -1245,20 +1479,20 @@ bool Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::has_data() const
 
 bool Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bay_number.operation)
-	|| is_set(insertion_time.operation)
-	|| is_set(is_spa_admin_up.operation)
-	|| is_set(is_spa_in_reset.operation)
-	|| is_set(is_spa_inserted.operation)
-	|| is_set(is_spa_power_admin_up.operation)
-	|| is_set(is_spa_powered.operation)
-	|| is_set(last_failure_reason.operation)
-	|| is_set(last_ready_time.operation)
-	|| is_set(last_reset_reason.operation)
-	|| is_set(spa_oper_state.operation)
-	|| is_set(spa_type.operation)
-	|| is_set(up_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bay_number.yfilter)
+	|| ydk::is_set(insertion_time.yfilter)
+	|| ydk::is_set(is_spa_admin_up.yfilter)
+	|| ydk::is_set(is_spa_in_reset.yfilter)
+	|| ydk::is_set(is_spa_inserted.yfilter)
+	|| ydk::is_set(is_spa_power_admin_up.yfilter)
+	|| ydk::is_set(is_spa_powered.yfilter)
+	|| ydk::is_set(last_failure_reason.yfilter)
+	|| ydk::is_set(last_ready_time.yfilter)
+	|| ydk::is_set(last_reset_reason.yfilter)
+	|| ydk::is_set(spa_oper_state.yfilter)
+	|| ydk::is_set(spa_type.yfilter)
+	|| ydk::is_set(up_time.yfilter);
 }
 
 std::string Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_segment_path() const
@@ -1284,19 +1518,19 @@ const EntityPath Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bay_number.is_set || is_set(bay_number.operation)) leaf_name_data.push_back(bay_number.get_name_leafdata());
-    if (insertion_time.is_set || is_set(insertion_time.operation)) leaf_name_data.push_back(insertion_time.get_name_leafdata());
-    if (is_spa_admin_up.is_set || is_set(is_spa_admin_up.operation)) leaf_name_data.push_back(is_spa_admin_up.get_name_leafdata());
-    if (is_spa_in_reset.is_set || is_set(is_spa_in_reset.operation)) leaf_name_data.push_back(is_spa_in_reset.get_name_leafdata());
-    if (is_spa_inserted.is_set || is_set(is_spa_inserted.operation)) leaf_name_data.push_back(is_spa_inserted.get_name_leafdata());
-    if (is_spa_power_admin_up.is_set || is_set(is_spa_power_admin_up.operation)) leaf_name_data.push_back(is_spa_power_admin_up.get_name_leafdata());
-    if (is_spa_powered.is_set || is_set(is_spa_powered.operation)) leaf_name_data.push_back(is_spa_powered.get_name_leafdata());
-    if (last_failure_reason.is_set || is_set(last_failure_reason.operation)) leaf_name_data.push_back(last_failure_reason.get_name_leafdata());
-    if (last_ready_time.is_set || is_set(last_ready_time.operation)) leaf_name_data.push_back(last_ready_time.get_name_leafdata());
-    if (last_reset_reason.is_set || is_set(last_reset_reason.operation)) leaf_name_data.push_back(last_reset_reason.get_name_leafdata());
-    if (spa_oper_state.is_set || is_set(spa_oper_state.operation)) leaf_name_data.push_back(spa_oper_state.get_name_leafdata());
-    if (spa_type.is_set || is_set(spa_type.operation)) leaf_name_data.push_back(spa_type.get_name_leafdata());
-    if (up_time.is_set || is_set(up_time.operation)) leaf_name_data.push_back(up_time.get_name_leafdata());
+    if (bay_number.is_set || is_set(bay_number.yfilter)) leaf_name_data.push_back(bay_number.get_name_leafdata());
+    if (insertion_time.is_set || is_set(insertion_time.yfilter)) leaf_name_data.push_back(insertion_time.get_name_leafdata());
+    if (is_spa_admin_up.is_set || is_set(is_spa_admin_up.yfilter)) leaf_name_data.push_back(is_spa_admin_up.get_name_leafdata());
+    if (is_spa_in_reset.is_set || is_set(is_spa_in_reset.yfilter)) leaf_name_data.push_back(is_spa_in_reset.get_name_leafdata());
+    if (is_spa_inserted.is_set || is_set(is_spa_inserted.yfilter)) leaf_name_data.push_back(is_spa_inserted.get_name_leafdata());
+    if (is_spa_power_admin_up.is_set || is_set(is_spa_power_admin_up.yfilter)) leaf_name_data.push_back(is_spa_power_admin_up.get_name_leafdata());
+    if (is_spa_powered.is_set || is_set(is_spa_powered.yfilter)) leaf_name_data.push_back(is_spa_powered.get_name_leafdata());
+    if (last_failure_reason.is_set || is_set(last_failure_reason.yfilter)) leaf_name_data.push_back(last_failure_reason.get_name_leafdata());
+    if (last_ready_time.is_set || is_set(last_ready_time.yfilter)) leaf_name_data.push_back(last_ready_time.get_name_leafdata());
+    if (last_reset_reason.is_set || is_set(last_reset_reason.yfilter)) leaf_name_data.push_back(last_reset_reason.get_name_leafdata());
+    if (spa_oper_state.is_set || is_set(spa_oper_state.yfilter)) leaf_name_data.push_back(spa_oper_state.get_name_leafdata());
+    if (spa_type.is_set || is_set(spa_type.yfilter)) leaf_name_data.push_back(spa_type.get_name_leafdata());
+    if (up_time.is_set || is_set(up_time.yfilter)) leaf_name_data.push_back(up_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1315,81 +1549,170 @@ std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::MpaDetailT
     return children;
 }
 
-void Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::set_value(const std::string & value_path, std::string value)
+void Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bay-number")
     {
         bay_number = value;
+        bay_number.value_namespace = name_space;
+        bay_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "insertion-time")
     {
         insertion_time = value;
+        insertion_time.value_namespace = name_space;
+        insertion_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-spa-admin-up")
     {
         is_spa_admin_up = value;
+        is_spa_admin_up.value_namespace = name_space;
+        is_spa_admin_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-spa-in-reset")
     {
         is_spa_in_reset = value;
+        is_spa_in_reset.value_namespace = name_space;
+        is_spa_in_reset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-spa-inserted")
     {
         is_spa_inserted = value;
+        is_spa_inserted.value_namespace = name_space;
+        is_spa_inserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-spa-power-admin-up")
     {
         is_spa_power_admin_up = value;
+        is_spa_power_admin_up.value_namespace = name_space;
+        is_spa_power_admin_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-spa-powered")
     {
         is_spa_powered = value;
+        is_spa_powered.value_namespace = name_space;
+        is_spa_powered.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-failure-reason")
     {
         last_failure_reason = value;
+        last_failure_reason.value_namespace = name_space;
+        last_failure_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-ready-time")
     {
         last_ready_time = value;
+        last_ready_time.value_namespace = name_space;
+        last_ready_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-reset-reason")
     {
         last_reset_reason = value;
+        last_reset_reason.value_namespace = name_space;
+        last_reset_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spa-oper-state")
     {
         spa_oper_state = value;
+        spa_oper_state.value_namespace = name_space;
+        spa_oper_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spa-type")
     {
         spa_type = value;
+        spa_type.value_namespace = name_space;
+        spa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-time")
     {
         up_time = value;
+        up_time.value_namespace = name_space;
+        up_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SpaResetReasonEnum::spa_reset_reason_unknown {1, "spa-reset-reason-unknown"};
-const Enum::YLeaf SpaResetReasonEnum::spa_reset_reason_manual {2, "spa-reset-reason-manual"};
-const Enum::YLeaf SpaResetReasonEnum::spa_reset_reason_fpd_upgrade {3, "spa-reset-reason-fpd-upgrade"};
-const Enum::YLeaf SpaResetReasonEnum::spa_reset_reason_audit_fail {4, "spa-reset-reason-audit-fail"};
-const Enum::YLeaf SpaResetReasonEnum::spa_reset_reason_failure {5, "spa-reset-reason-failure"};
+void Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bay-number")
+    {
+        bay_number.yfilter = yfilter;
+    }
+    if(value_path == "insertion-time")
+    {
+        insertion_time.yfilter = yfilter;
+    }
+    if(value_path == "is-spa-admin-up")
+    {
+        is_spa_admin_up.yfilter = yfilter;
+    }
+    if(value_path == "is-spa-in-reset")
+    {
+        is_spa_in_reset.yfilter = yfilter;
+    }
+    if(value_path == "is-spa-inserted")
+    {
+        is_spa_inserted.yfilter = yfilter;
+    }
+    if(value_path == "is-spa-power-admin-up")
+    {
+        is_spa_power_admin_up.yfilter = yfilter;
+    }
+    if(value_path == "is-spa-powered")
+    {
+        is_spa_powered.yfilter = yfilter;
+    }
+    if(value_path == "last-failure-reason")
+    {
+        last_failure_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-ready-time")
+    {
+        last_ready_time.yfilter = yfilter;
+    }
+    if(value_path == "last-reset-reason")
+    {
+        last_reset_reason.yfilter = yfilter;
+    }
+    if(value_path == "spa-oper-state")
+    {
+        spa_oper_state.yfilter = yfilter;
+    }
+    if(value_path == "spa-type")
+    {
+        spa_type.yfilter = yfilter;
+    }
+    if(value_path == "up-time")
+    {
+        up_time.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf SpaFailureReasonEnum::spa_failure_reason_unknown {1, "spa-failure-reason-unknown"};
-const Enum::YLeaf SpaFailureReasonEnum::spa_failure_reason_spi_failure {2, "spa-failure-reason-spi-failure"};
-const Enum::YLeaf SpaFailureReasonEnum::spa_failure_reason_boot {3, "spa-failure-reason-boot"};
-const Enum::YLeaf SpaFailureReasonEnum::spa_failure_reason_hw_failed {4, "spa-failure-reason-hw-failed"};
-const Enum::YLeaf SpaFailureReasonEnum::spa_failure_reason_sw_failed {5, "spa-failure-reason-sw-failed"};
-const Enum::YLeaf SpaFailureReasonEnum::spa_failure_reason_sw_restart {6, "spa-failure-reason-sw-restart"};
-const Enum::YLeaf SpaFailureReasonEnum::spa_failure_reason_check_fpd {7, "spa-failure-reason-check-fpd"};
-const Enum::YLeaf SpaFailureReasonEnum::spa_failure_reason_read_type {8, "spa-failure-reason-read-type"};
+bool Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bay-number" || name == "insertion-time" || name == "is-spa-admin-up" || name == "is-spa-in-reset" || name == "is-spa-inserted" || name == "is-spa-power-admin-up" || name == "is-spa-powered" || name == "last-failure-reason" || name == "last-ready-time" || name == "last-reset-reason" || name == "spa-oper-state" || name == "spa-type" || name == "up-time")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf SpaOperStateEnum::spa_state_reset {1, "spa-state-reset"};
-const Enum::YLeaf SpaOperStateEnum::spa_state_failed {2, "spa-state-failed"};
-const Enum::YLeaf SpaOperStateEnum::spa_state_booting {3, "spa-state-booting"};
-const Enum::YLeaf SpaOperStateEnum::spa_state_ready {4, "spa-state-ready"};
+const Enum::YLeaf SpaOperState::spa_state_reset {1, "spa-state-reset"};
+const Enum::YLeaf SpaOperState::spa_state_failed {2, "spa-state-failed"};
+const Enum::YLeaf SpaOperState::spa_state_booting {3, "spa-state-booting"};
+const Enum::YLeaf SpaOperState::spa_state_ready {4, "spa-state-ready"};
+
+const Enum::YLeaf SpaResetReason::spa_reset_reason_unknown {1, "spa-reset-reason-unknown"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_manual {2, "spa-reset-reason-manual"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_fpd_upgrade {3, "spa-reset-reason-fpd-upgrade"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_audit_fail {4, "spa-reset-reason-audit-fail"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_failure {5, "spa-reset-reason-failure"};
+
+const Enum::YLeaf SpaFailureReason::spa_failure_reason_unknown {1, "spa-failure-reason-unknown"};
+const Enum::YLeaf SpaFailureReason::spa_failure_reason_spi_failure {2, "spa-failure-reason-spi-failure"};
+const Enum::YLeaf SpaFailureReason::spa_failure_reason_boot {3, "spa-failure-reason-boot"};
+const Enum::YLeaf SpaFailureReason::spa_failure_reason_hw_failed {4, "spa-failure-reason-hw-failed"};
+const Enum::YLeaf SpaFailureReason::spa_failure_reason_sw_failed {5, "spa-failure-reason-sw-failed"};
+const Enum::YLeaf SpaFailureReason::spa_failure_reason_sw_restart {6, "spa-failure-reason-sw-restart"};
+const Enum::YLeaf SpaFailureReason::spa_failure_reason_check_fpd {7, "spa-failure-reason-check-fpd"};
+const Enum::YLeaf SpaFailureReason::spa_failure_reason_read_type {8, "spa-failure-reason-read-type"};
 
 
 }

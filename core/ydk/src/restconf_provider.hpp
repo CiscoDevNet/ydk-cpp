@@ -38,16 +38,16 @@ public:
                                const std::string & username,
                                const std::string & password,
                                int port = 80,
-							   EncodingFormat encoding = EncodingFormat::JSON,
-							   const std::string & config_url_root = "/data",
-							   const std::string & state_url_root = "/data");
+                               EncodingFormat encoding = EncodingFormat::JSON,
+                               const std::string & config_url_root = "/data",
+                               const std::string & state_url_root = "/data");
 
         RestconfServiceProvider(std::unique_ptr<RestconfClient> client,
-        						std::shared_ptr<ydk::path::RootSchemaNode> root_schema,
-								const std::string & edit_method,
-								const std::string & config_url_root,
-								const std::string & state_url_root,
-								EncodingFormat encoding);
+                                std::shared_ptr<ydk::path::RootSchemaNode> root_schema,
+                                const std::string & edit_method,
+                                const std::string & config_url_root,
+                                const std::string & state_url_root,
+                                EncodingFormat encoding);
 
         ~RestconfServiceProvider();
 
@@ -56,7 +56,7 @@ public:
         EncodingFormat get_encoding() const;
 
 private:
-        std::shared_ptr<path::DataNode> handle_edit(path::Rpc& rpc, const std::string & operation) const;
+        std::shared_ptr<path::DataNode> handle_edit(path::Rpc& rpc, const std::string & yfilter) const;
         std::shared_ptr<path::DataNode> handle_read(path::Rpc& rpc) const;
         void initialize(path::Repository & repo);
 

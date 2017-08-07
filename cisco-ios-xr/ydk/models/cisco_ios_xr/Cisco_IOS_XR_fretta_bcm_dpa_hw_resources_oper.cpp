@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper {
 
 Dpa::Dpa()
@@ -29,7 +31,7 @@ bool Dpa::has_data() const
 
 bool Dpa::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (stats !=  nullptr && stats->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::get_children() const
     return children;
 }
 
-void Dpa::set_value(const std::string & value_path, std::string value)
+void Dpa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dpa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,6 +115,18 @@ augment_capabilities_function Dpa::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Dpa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Dpa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "stats")
+        return true;
+    return false;
+}
+
 Dpa::Stats::Stats()
     :
     nodes(std::make_shared<Dpa::Stats::Nodes>())
@@ -129,7 +147,7 @@ bool Dpa::Stats::has_data() const
 
 bool Dpa::Stats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -188,8 +206,19 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::get_children() const
     return children;
 }
 
-void Dpa::Stats::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Dpa::Stats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Dpa::Stats::Nodes::Nodes()
@@ -218,7 +247,7 @@ bool Dpa::Stats::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Dpa::Stats::Nodes::get_segment_path() const
@@ -283,35 +312,37 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::get_children()
     return children;
 }
 
-void Dpa::Stats::Nodes::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Dpa::Stats::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Dpa::Stats::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
     	,
-    clear_voq_data_for_npu_numbers(std::make_shared<Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers>())
+    asic_statistics(std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics>())
 	,hw_resources_datas(std::make_shared<Dpa::Stats::Nodes::Node::HwResourcesDatas>())
-	,npu_number_for_trap_data_clears(std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears>())
-	,npu_number_for_trap_datas(std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas>())
-	,npu_number_for_voq_datas(std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas>())
-	,voq_base_number_stats_clears(std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears>())
-	,voq_base_numbers(std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers>())
+	,npu_ids(std::make_shared<Dpa::Stats::Nodes::Node::NpuIds>())
+	,npu_numbers(std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers>())
 {
-    clear_voq_data_for_npu_numbers->parent = this;
+    asic_statistics->parent = this;
 
     hw_resources_datas->parent = this;
 
-    npu_number_for_trap_data_clears->parent = this;
+    npu_ids->parent = this;
 
-    npu_number_for_trap_datas->parent = this;
-
-    npu_number_for_voq_datas->parent = this;
-
-    voq_base_number_stats_clears->parent = this;
-
-    voq_base_numbers->parent = this;
+    npu_numbers->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -323,26 +354,20 @@ Dpa::Stats::Nodes::Node::~Node()
 bool Dpa::Stats::Nodes::Node::has_data() const
 {
     return node_name.is_set
-	|| (clear_voq_data_for_npu_numbers !=  nullptr && clear_voq_data_for_npu_numbers->has_data())
+	|| (asic_statistics !=  nullptr && asic_statistics->has_data())
 	|| (hw_resources_datas !=  nullptr && hw_resources_datas->has_data())
-	|| (npu_number_for_trap_data_clears !=  nullptr && npu_number_for_trap_data_clears->has_data())
-	|| (npu_number_for_trap_datas !=  nullptr && npu_number_for_trap_datas->has_data())
-	|| (npu_number_for_voq_datas !=  nullptr && npu_number_for_voq_datas->has_data())
-	|| (voq_base_number_stats_clears !=  nullptr && voq_base_number_stats_clears->has_data())
-	|| (voq_base_numbers !=  nullptr && voq_base_numbers->has_data());
+	|| (npu_ids !=  nullptr && npu_ids->has_data())
+	|| (npu_numbers !=  nullptr && npu_numbers->has_data());
 }
 
 bool Dpa::Stats::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
-	|| (clear_voq_data_for_npu_numbers !=  nullptr && clear_voq_data_for_npu_numbers->has_operation())
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| (asic_statistics !=  nullptr && asic_statistics->has_operation())
 	|| (hw_resources_datas !=  nullptr && hw_resources_datas->has_operation())
-	|| (npu_number_for_trap_data_clears !=  nullptr && npu_number_for_trap_data_clears->has_operation())
-	|| (npu_number_for_trap_datas !=  nullptr && npu_number_for_trap_datas->has_operation())
-	|| (npu_number_for_voq_datas !=  nullptr && npu_number_for_voq_datas->has_operation())
-	|| (voq_base_number_stats_clears !=  nullptr && voq_base_number_stats_clears->has_operation())
-	|| (voq_base_numbers !=  nullptr && voq_base_numbers->has_operation());
+	|| (npu_ids !=  nullptr && npu_ids->has_operation())
+	|| (npu_numbers !=  nullptr && npu_numbers->has_operation());
 }
 
 std::string Dpa::Stats::Nodes::Node::get_segment_path() const
@@ -368,7 +393,7 @@ const EntityPath Dpa::Stats::Nodes::Node::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -378,13 +403,13 @@ const EntityPath Dpa::Stats::Nodes::Node::get_entity_path(Entity* ancestor) cons
 
 std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "clear-voq-data-for-npu-numbers")
+    if(child_yang_name == "asic-statistics")
     {
-        if(clear_voq_data_for_npu_numbers == nullptr)
+        if(asic_statistics == nullptr)
         {
-            clear_voq_data_for_npu_numbers = std::make_shared<Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers>();
+            asic_statistics = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics>();
         }
-        return clear_voq_data_for_npu_numbers;
+        return asic_statistics;
     }
 
     if(child_yang_name == "hw-resources-datas")
@@ -396,49 +421,22 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::get_child_by_name(const std::st
         return hw_resources_datas;
     }
 
-    if(child_yang_name == "npu-number-for-trap-data-clears")
+    if(child_yang_name == "npu-ids")
     {
-        if(npu_number_for_trap_data_clears == nullptr)
+        if(npu_ids == nullptr)
         {
-            npu_number_for_trap_data_clears = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears>();
+            npu_ids = std::make_shared<Dpa::Stats::Nodes::Node::NpuIds>();
         }
-        return npu_number_for_trap_data_clears;
+        return npu_ids;
     }
 
-    if(child_yang_name == "npu-number-for-trap-datas")
+    if(child_yang_name == "npu-numbers")
     {
-        if(npu_number_for_trap_datas == nullptr)
+        if(npu_numbers == nullptr)
         {
-            npu_number_for_trap_datas = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas>();
+            npu_numbers = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers>();
         }
-        return npu_number_for_trap_datas;
-    }
-
-    if(child_yang_name == "npu-number-for-voq-datas")
-    {
-        if(npu_number_for_voq_datas == nullptr)
-        {
-            npu_number_for_voq_datas = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas>();
-        }
-        return npu_number_for_voq_datas;
-    }
-
-    if(child_yang_name == "voq-base-number-stats-clears")
-    {
-        if(voq_base_number_stats_clears == nullptr)
-        {
-            voq_base_number_stats_clears = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears>();
-        }
-        return voq_base_number_stats_clears;
-    }
-
-    if(child_yang_name == "voq-base-numbers")
-    {
-        if(voq_base_numbers == nullptr)
-        {
-            voq_base_numbers = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers>();
-        }
-        return voq_base_numbers;
+        return npu_numbers;
     }
 
     return nullptr;
@@ -447,9 +445,9 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(clear_voq_data_for_npu_numbers != nullptr)
+    if(asic_statistics != nullptr)
     {
-        children["clear-voq-data-for-npu-numbers"] = clear_voq_data_for_npu_numbers;
+        children["asic-statistics"] = asic_statistics;
     }
 
     if(hw_resources_datas != nullptr)
@@ -457,708 +455,42 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::get_chil
         children["hw-resources-datas"] = hw_resources_datas;
     }
 
-    if(npu_number_for_trap_data_clears != nullptr)
+    if(npu_ids != nullptr)
     {
-        children["npu-number-for-trap-data-clears"] = npu_number_for_trap_data_clears;
+        children["npu-ids"] = npu_ids;
     }
 
-    if(npu_number_for_trap_datas != nullptr)
+    if(npu_numbers != nullptr)
     {
-        children["npu-number-for-trap-datas"] = npu_number_for_trap_datas;
-    }
-
-    if(npu_number_for_voq_datas != nullptr)
-    {
-        children["npu-number-for-voq-datas"] = npu_number_for_voq_datas;
-    }
-
-    if(voq_base_number_stats_clears != nullptr)
-    {
-        children["voq-base-number-stats-clears"] = voq_base_number_stats_clears;
-    }
-
-    if(voq_base_numbers != nullptr)
-    {
-        children["voq-base-numbers"] = voq_base_numbers;
+        children["npu-numbers"] = npu_numbers;
     }
 
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClears()
+void Dpa::Stats::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "voq-base-number-stats-clears"; yang_parent_name = "node";
-}
-
-Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::~VoqBaseNumberStatsClears()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::has_data() const
-{
-    for (std::size_t index=0; index<voq_base_number_stats_clear.size(); index++)
+    if(value_path == "node-name")
     {
-        if(voq_base_number_stats_clear[index]->has_data())
-            return true;
+        node_name.yfilter = yfilter;
     }
+}
+
+bool Dpa::Stats::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-statistics" || name == "hw-resources-datas" || name == "npu-ids" || name == "npu-numbers" || name == "node-name")
+        return true;
     return false;
-}
-
-bool Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::has_operation() const
-{
-    for (std::size_t index=0; index<voq_base_number_stats_clear.size(); index++)
-    {
-        if(voq_base_number_stats_clear[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "voq-base-number-stats-clears";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VoqBaseNumberStatsClears' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "voq-base-number-stats-clear")
-    {
-        for(auto const & c : voq_base_number_stats_clear)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear>();
-        c->parent = this;
-        voq_base_number_stats_clear.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : voq_base_number_stats_clear)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseNumberStatsClear()
-    :
-    npu_number{YType::int32, "npu-number"}
-{
-    yang_name = "voq-base-number-stats-clear"; yang_parent_name = "voq-base-number-stats-clears";
-}
-
-Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::~VoqBaseNumberStatsClear()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::has_data() const
-{
-    for (std::size_t index=0; index<voq_base_stats_clear_data.size(); index++)
-    {
-        if(voq_base_stats_clear_data[index]->has_data())
-            return true;
-    }
-    return npu_number.is_set;
-}
-
-bool Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::has_operation() const
-{
-    for (std::size_t index=0; index<voq_base_stats_clear_data.size(); index++)
-    {
-        if(voq_base_stats_clear_data[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(npu_number.operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "voq-base-number-stats-clear" <<"[npu-number='" <<npu_number <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VoqBaseNumberStatsClear' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (npu_number.is_set || is_set(npu_number.operation)) leaf_name_data.push_back(npu_number.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "voq-base-stats-clear-data")
-    {
-        for(auto const & c : voq_base_stats_clear_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData>();
-        c->parent = this;
-        voq_base_stats_clear_data.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : voq_base_stats_clear_data)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "npu-number")
-    {
-        npu_number = value;
-    }
-}
-
-Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::VoqBaseStatsClearData()
-    :
-    base_number{YType::uint32, "base-number"},
-    clear_status{YType::uint8, "clear-status"}
-{
-    yang_name = "voq-base-stats-clear-data"; yang_parent_name = "voq-base-number-stats-clear";
-}
-
-Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::~VoqBaseStatsClearData()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::has_data() const
-{
-    return base_number.is_set
-	|| clear_status.is_set;
-}
-
-bool Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(base_number.operation)
-	|| is_set(clear_status.operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "voq-base-stats-clear-data" <<"[base-number='" <<base_number <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VoqBaseStatsClearData' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (base_number.is_set || is_set(base_number.operation)) leaf_name_data.push_back(base_number.get_name_leafdata());
-    if (clear_status.is_set || is_set(clear_status.operation)) leaf_name_data.push_back(clear_status.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::VoqBaseNumberStatsClears::VoqBaseNumberStatsClear::VoqBaseStatsClearData::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "base-number")
-    {
-        base_number = value;
-    }
-    if(value_path == "clear-status")
-    {
-        clear_status = value;
-    }
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapDatas()
-{
-    yang_name = "npu-number-for-trap-datas"; yang_parent_name = "node";
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::~NpuNumberForTrapDatas()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::has_data() const
-{
-    for (std::size_t index=0; index<npu_number_for_trap_data.size(); index++)
-    {
-        if(npu_number_for_trap_data[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::has_operation() const
-{
-    for (std::size_t index=0; index<npu_number_for_trap_data.size(); index++)
-    {
-        if(npu_number_for_trap_data[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "npu-number-for-trap-datas";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumberForTrapDatas' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "npu-number-for-trap-data")
-    {
-        for(auto const & c : npu_number_for_trap_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData>();
-        c->parent = this;
-        npu_number_for_trap_data.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : npu_number_for_trap_data)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::NpuNumberForTrapData()
-    :
-    npu_id{YType::int32, "npu-id"}
-{
-    yang_name = "npu-number-for-trap-data"; yang_parent_name = "npu-number-for-trap-datas";
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::~NpuNumberForTrapData()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::has_data() const
-{
-    for (std::size_t index=0; index<trap_specific_stats_data.size(); index++)
-    {
-        if(trap_specific_stats_data[index]->has_data())
-            return true;
-    }
-    return npu_id.is_set;
-}
-
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::has_operation() const
-{
-    for (std::size_t index=0; index<trap_specific_stats_data.size(); index++)
-    {
-        if(trap_specific_stats_data[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(npu_id.operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "npu-number-for-trap-data" <<"[npu-id='" <<npu_id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumberForTrapData' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trap-specific-stats-data")
-    {
-        for(auto const & c : trap_specific_stats_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData>();
-        c->parent = this;
-        trap_specific_stats_data.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trap_specific_stats_data)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "npu-id")
-    {
-        npu_id = value;
-    }
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::TrapSpecificStatsData()
-    :
-    trap_data{YType::uint32, "trap-data"},
-    encap_id{YType::uint32, "encap-id"},
-    fec_id{YType::uint32, "fec-id"},
-    gport{YType::uint32, "gport"},
-    id{YType::uint32, "id"},
-    mc_group{YType::uint32, "mc-group"},
-    npu_id{YType::uint64, "npu-id"},
-    offset{YType::uint64, "offset"},
-    packet_accepted{YType::uint64, "packet-accepted"},
-    packet_dropped{YType::uint64, "packet-dropped"},
-    policer_id{YType::uint32, "policer-id"},
-    priority{YType::uint32, "priority"},
-    stats_id{YType::uint32, "stats-id"},
-    trap_id{YType::uint32, "trap-id"},
-    trap_strength{YType::uint32, "trap-strength"},
-    trap_string{YType::str, "trap-string"}
-{
-    yang_name = "trap-specific-stats-data"; yang_parent_name = "npu-number-for-trap-data";
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::~TrapSpecificStatsData()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::has_data() const
-{
-    return trap_data.is_set
-	|| encap_id.is_set
-	|| fec_id.is_set
-	|| gport.is_set
-	|| id.is_set
-	|| mc_group.is_set
-	|| npu_id.is_set
-	|| offset.is_set
-	|| packet_accepted.is_set
-	|| packet_dropped.is_set
-	|| policer_id.is_set
-	|| priority.is_set
-	|| stats_id.is_set
-	|| trap_id.is_set
-	|| trap_strength.is_set
-	|| trap_string.is_set;
-}
-
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(trap_data.operation)
-	|| is_set(encap_id.operation)
-	|| is_set(fec_id.operation)
-	|| is_set(gport.operation)
-	|| is_set(id.operation)
-	|| is_set(mc_group.operation)
-	|| is_set(npu_id.operation)
-	|| is_set(offset.operation)
-	|| is_set(packet_accepted.operation)
-	|| is_set(packet_dropped.operation)
-	|| is_set(policer_id.operation)
-	|| is_set(priority.operation)
-	|| is_set(stats_id.operation)
-	|| is_set(trap_id.operation)
-	|| is_set(trap_strength.operation)
-	|| is_set(trap_string.operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trap-specific-stats-data" <<"[trap-data='" <<trap_data <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TrapSpecificStatsData' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (trap_data.is_set || is_set(trap_data.operation)) leaf_name_data.push_back(trap_data.get_name_leafdata());
-    if (encap_id.is_set || is_set(encap_id.operation)) leaf_name_data.push_back(encap_id.get_name_leafdata());
-    if (fec_id.is_set || is_set(fec_id.operation)) leaf_name_data.push_back(fec_id.get_name_leafdata());
-    if (gport.is_set || is_set(gport.operation)) leaf_name_data.push_back(gport.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (mc_group.is_set || is_set(mc_group.operation)) leaf_name_data.push_back(mc_group.get_name_leafdata());
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
-    if (offset.is_set || is_set(offset.operation)) leaf_name_data.push_back(offset.get_name_leafdata());
-    if (packet_accepted.is_set || is_set(packet_accepted.operation)) leaf_name_data.push_back(packet_accepted.get_name_leafdata());
-    if (packet_dropped.is_set || is_set(packet_dropped.operation)) leaf_name_data.push_back(packet_dropped.get_name_leafdata());
-    if (policer_id.is_set || is_set(policer_id.operation)) leaf_name_data.push_back(policer_id.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (stats_id.is_set || is_set(stats_id.operation)) leaf_name_data.push_back(stats_id.get_name_leafdata());
-    if (trap_id.is_set || is_set(trap_id.operation)) leaf_name_data.push_back(trap_id.get_name_leafdata());
-    if (trap_strength.is_set || is_set(trap_strength.operation)) leaf_name_data.push_back(trap_strength.get_name_leafdata());
-    if (trap_string.is_set || is_set(trap_string.operation)) leaf_name_data.push_back(trap_string.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::NpuNumberForTrapDatas::NpuNumberForTrapData::TrapSpecificStatsData::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "trap-data")
-    {
-        trap_data = value;
-    }
-    if(value_path == "encap-id")
-    {
-        encap_id = value;
-    }
-    if(value_path == "fec-id")
-    {
-        fec_id = value;
-    }
-    if(value_path == "gport")
-    {
-        gport = value;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-    }
-    if(value_path == "mc-group")
-    {
-        mc_group = value;
-    }
-    if(value_path == "npu-id")
-    {
-        npu_id = value;
-    }
-    if(value_path == "offset")
-    {
-        offset = value;
-    }
-    if(value_path == "packet-accepted")
-    {
-        packet_accepted = value;
-    }
-    if(value_path == "packet-dropped")
-    {
-        packet_dropped = value;
-    }
-    if(value_path == "policer-id")
-    {
-        policer_id = value;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-    }
-    if(value_path == "stats-id")
-    {
-        stats_id = value;
-    }
-    if(value_path == "trap-id")
-    {
-        trap_id = value;
-    }
-    if(value_path == "trap-strength")
-    {
-        trap_strength = value;
-    }
-    if(value_path == "trap-string")
-    {
-        trap_string = value;
-    }
 }
 
 Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesDatas()
@@ -1187,7 +519,7 @@ bool Dpa::Stats::Nodes::Node::HwResourcesDatas::has_operation() const
         if(hw_resources_data[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Dpa::Stats::Nodes::Node::HwResourcesDatas::get_segment_path() const
@@ -1252,8 +584,19 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::HwResour
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::HwResourcesDatas::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::HwResourcesDatas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Dpa::Stats::Nodes::Node::HwResourcesDatas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::HwResourcesDatas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hw-resources-data")
+        return true;
+    return false;
 }
 
 Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::HwResourcesData()
@@ -1290,11 +633,11 @@ bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::has_operation()
         if(npu_hwr[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(resource.operation)
-	|| is_set(name.operation)
-	|| is_set(num_npus.operation)
-	|| is_set(resource_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(resource.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(num_npus.yfilter)
+	|| ydk::is_set(resource_id.yfilter);
 }
 
 std::string Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::get_segment_path() const
@@ -1320,10 +663,10 @@ const EntityPath Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (resource.is_set || is_set(resource.operation)) leaf_name_data.push_back(resource.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (num_npus.is_set || is_set(num_npus.operation)) leaf_name_data.push_back(num_npus.get_name_leafdata());
-    if (resource_id.is_set || is_set(resource_id.operation)) leaf_name_data.push_back(resource_id.get_name_leafdata());
+    if (resource.is_set || is_set(resource.yfilter)) leaf_name_data.push_back(resource.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (num_npus.is_set || is_set(num_npus.yfilter)) leaf_name_data.push_back(num_npus.get_name_leafdata());
+    if (resource_id.is_set || is_set(resource_id.yfilter)) leaf_name_data.push_back(resource_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1363,24 +706,59 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::HwResour
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "resource")
     {
         resource = value;
+        resource.value_namespace = name_space;
+        resource.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-npus")
     {
         num_npus = value;
+        num_npus.value_namespace = name_space;
+        num_npus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resource-id")
     {
         resource_id = value;
+        resource_id.value_namespace = name_space;
+        resource_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "resource")
+    {
+        resource.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "num-npus")
+    {
+        num_npus.yfilter = yfilter;
+    }
+    if(value_path == "resource-id")
+    {
+        resource_id.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "npu-hwr" || name == "resource" || name == "name" || name == "num-npus" || name == "resource-id")
+        return true;
+    return false;
 }
 
 Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::NpuHwr()
@@ -1435,20 +813,20 @@ bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::has_ope
         if(lt_hwr[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(inuse_objects.operation)
-	|| is_set(max_allowed.operation)
-	|| is_set(max_entries.operation)
-	|| is_set(npu_id.operation)
-	|| is_set(num_lt.operation)
-	|| is_set(oor_change_count.operation)
-	|| is_set(oor_state.operation)
-	|| is_set(oor_state_change_time1.operation)
-	|| is_set(oor_state_change_time2.operation)
-	|| is_set(red_oor_threshold.operation)
-	|| is_set(red_oor_threshold_percent.operation)
-	|| is_set(yellow_oor_threshold.operation)
-	|| is_set(yellow_oor_threshold_percent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(inuse_objects.yfilter)
+	|| ydk::is_set(max_allowed.yfilter)
+	|| ydk::is_set(max_entries.yfilter)
+	|| ydk::is_set(npu_id.yfilter)
+	|| ydk::is_set(num_lt.yfilter)
+	|| ydk::is_set(oor_change_count.yfilter)
+	|| ydk::is_set(oor_state.yfilter)
+	|| ydk::is_set(oor_state_change_time1.yfilter)
+	|| ydk::is_set(oor_state_change_time2.yfilter)
+	|| ydk::is_set(red_oor_threshold.yfilter)
+	|| ydk::is_set(red_oor_threshold_percent.yfilter)
+	|| ydk::is_set(yellow_oor_threshold.yfilter)
+	|| ydk::is_set(yellow_oor_threshold_percent.yfilter);
 }
 
 std::string Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::get_segment_path() const
@@ -1474,19 +852,19 @@ const EntityPath Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::Npu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (inuse_objects.is_set || is_set(inuse_objects.operation)) leaf_name_data.push_back(inuse_objects.get_name_leafdata());
-    if (max_allowed.is_set || is_set(max_allowed.operation)) leaf_name_data.push_back(max_allowed.get_name_leafdata());
-    if (max_entries.is_set || is_set(max_entries.operation)) leaf_name_data.push_back(max_entries.get_name_leafdata());
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
-    if (num_lt.is_set || is_set(num_lt.operation)) leaf_name_data.push_back(num_lt.get_name_leafdata());
-    if (oor_change_count.is_set || is_set(oor_change_count.operation)) leaf_name_data.push_back(oor_change_count.get_name_leafdata());
-    if (oor_state.is_set || is_set(oor_state.operation)) leaf_name_data.push_back(oor_state.get_name_leafdata());
-    if (oor_state_change_time1.is_set || is_set(oor_state_change_time1.operation)) leaf_name_data.push_back(oor_state_change_time1.get_name_leafdata());
-    if (oor_state_change_time2.is_set || is_set(oor_state_change_time2.operation)) leaf_name_data.push_back(oor_state_change_time2.get_name_leafdata());
-    if (red_oor_threshold.is_set || is_set(red_oor_threshold.operation)) leaf_name_data.push_back(red_oor_threshold.get_name_leafdata());
-    if (red_oor_threshold_percent.is_set || is_set(red_oor_threshold_percent.operation)) leaf_name_data.push_back(red_oor_threshold_percent.get_name_leafdata());
-    if (yellow_oor_threshold.is_set || is_set(yellow_oor_threshold.operation)) leaf_name_data.push_back(yellow_oor_threshold.get_name_leafdata());
-    if (yellow_oor_threshold_percent.is_set || is_set(yellow_oor_threshold_percent.operation)) leaf_name_data.push_back(yellow_oor_threshold_percent.get_name_leafdata());
+    if (inuse_objects.is_set || is_set(inuse_objects.yfilter)) leaf_name_data.push_back(inuse_objects.get_name_leafdata());
+    if (max_allowed.is_set || is_set(max_allowed.yfilter)) leaf_name_data.push_back(max_allowed.get_name_leafdata());
+    if (max_entries.is_set || is_set(max_entries.yfilter)) leaf_name_data.push_back(max_entries.get_name_leafdata());
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (num_lt.is_set || is_set(num_lt.yfilter)) leaf_name_data.push_back(num_lt.get_name_leafdata());
+    if (oor_change_count.is_set || is_set(oor_change_count.yfilter)) leaf_name_data.push_back(oor_change_count.get_name_leafdata());
+    if (oor_state.is_set || is_set(oor_state.yfilter)) leaf_name_data.push_back(oor_state.get_name_leafdata());
+    if (oor_state_change_time1.is_set || is_set(oor_state_change_time1.yfilter)) leaf_name_data.push_back(oor_state_change_time1.get_name_leafdata());
+    if (oor_state_change_time2.is_set || is_set(oor_state_change_time2.yfilter)) leaf_name_data.push_back(oor_state_change_time2.get_name_leafdata());
+    if (red_oor_threshold.is_set || is_set(red_oor_threshold.yfilter)) leaf_name_data.push_back(red_oor_threshold.get_name_leafdata());
+    if (red_oor_threshold_percent.is_set || is_set(red_oor_threshold_percent.yfilter)) leaf_name_data.push_back(red_oor_threshold_percent.get_name_leafdata());
+    if (yellow_oor_threshold.is_set || is_set(yellow_oor_threshold.yfilter)) leaf_name_data.push_back(yellow_oor_threshold.get_name_leafdata());
+    if (yellow_oor_threshold_percent.is_set || is_set(yellow_oor_threshold_percent.yfilter)) leaf_name_data.push_back(yellow_oor_threshold_percent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1526,60 +904,149 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::HwResour
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "inuse-objects")
     {
         inuse_objects = value;
+        inuse_objects.value_namespace = name_space;
+        inuse_objects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-allowed")
     {
         max_allowed = value;
+        max_allowed.value_namespace = name_space;
+        max_allowed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-entries")
     {
         max_entries = value;
+        max_entries.value_namespace = name_space;
+        max_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "npu-id")
     {
         npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-lt")
     {
         num_lt = value;
+        num_lt.value_namespace = name_space;
+        num_lt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oor-change-count")
     {
         oor_change_count = value;
+        oor_change_count.value_namespace = name_space;
+        oor_change_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oor-state")
     {
         oor_state = value;
+        oor_state.value_namespace = name_space;
+        oor_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oor-state-change-time1")
     {
         oor_state_change_time1 = value;
+        oor_state_change_time1.value_namespace = name_space;
+        oor_state_change_time1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oor-state-change-time2")
     {
         oor_state_change_time2 = value;
+        oor_state_change_time2.value_namespace = name_space;
+        oor_state_change_time2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "red-oor-threshold")
     {
         red_oor_threshold = value;
+        red_oor_threshold.value_namespace = name_space;
+        red_oor_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "red-oor-threshold-percent")
     {
         red_oor_threshold_percent = value;
+        red_oor_threshold_percent.value_namespace = name_space;
+        red_oor_threshold_percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "yellow-oor-threshold")
     {
         yellow_oor_threshold = value;
+        yellow_oor_threshold.value_namespace = name_space;
+        yellow_oor_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "yellow-oor-threshold-percent")
     {
         yellow_oor_threshold_percent = value;
+        yellow_oor_threshold_percent.value_namespace = name_space;
+        yellow_oor_threshold_percent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "inuse-objects")
+    {
+        inuse_objects.yfilter = yfilter;
+    }
+    if(value_path == "max-allowed")
+    {
+        max_allowed.yfilter = yfilter;
+    }
+    if(value_path == "max-entries")
+    {
+        max_entries.yfilter = yfilter;
+    }
+    if(value_path == "npu-id")
+    {
+        npu_id.yfilter = yfilter;
+    }
+    if(value_path == "num-lt")
+    {
+        num_lt.yfilter = yfilter;
+    }
+    if(value_path == "oor-change-count")
+    {
+        oor_change_count.yfilter = yfilter;
+    }
+    if(value_path == "oor-state")
+    {
+        oor_state.yfilter = yfilter;
+    }
+    if(value_path == "oor-state-change-time1")
+    {
+        oor_state_change_time1.yfilter = yfilter;
+    }
+    if(value_path == "oor-state-change-time2")
+    {
+        oor_state_change_time2.yfilter = yfilter;
+    }
+    if(value_path == "red-oor-threshold")
+    {
+        red_oor_threshold.yfilter = yfilter;
+    }
+    if(value_path == "red-oor-threshold-percent")
+    {
+        red_oor_threshold_percent.yfilter = yfilter;
+    }
+    if(value_path == "yellow-oor-threshold")
+    {
+        yellow_oor_threshold.yfilter = yfilter;
+    }
+    if(value_path == "yellow-oor-threshold-percent")
+    {
+        yellow_oor_threshold_percent.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lt-hwr" || name == "inuse-objects" || name == "max-allowed" || name == "max-entries" || name == "npu-id" || name == "num-lt" || name == "oor-change-count" || name == "oor-state" || name == "oor-state-change-time1" || name == "oor-state-change-time2" || name == "red-oor-threshold" || name == "red-oor-threshold-percent" || name == "yellow-oor-threshold" || name == "yellow-oor-threshold-percent")
+        return true;
+    return false;
 }
 
 Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr::LtHwr()
@@ -1606,11 +1073,11 @@ bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr::
 
 bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hw_entries.operation)
-	|| is_set(lt_id.operation)
-	|| is_set(name.operation)
-	|| is_set(sw_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hw_entries.yfilter)
+	|| ydk::is_set(lt_id.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(sw_entries.yfilter);
 }
 
 std::string Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr::get_segment_path() const
@@ -1636,10 +1103,10 @@ const EntityPath Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::Npu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hw_entries.is_set || is_set(hw_entries.operation)) leaf_name_data.push_back(hw_entries.get_name_leafdata());
-    if (lt_id.is_set || is_set(lt_id.operation)) leaf_name_data.push_back(lt_id.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (sw_entries.is_set || is_set(sw_entries.operation)) leaf_name_data.push_back(sw_entries.get_name_leafdata());
+    if (hw_entries.is_set || is_set(hw_entries.yfilter)) leaf_name_data.push_back(hw_entries.get_name_leafdata());
+    if (lt_id.is_set || is_set(lt_id.yfilter)) leaf_name_data.push_back(lt_id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (sw_entries.is_set || is_set(sw_entries.yfilter)) leaf_name_data.push_back(sw_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1658,70 +1125,218 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::HwResour
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hw-entries")
     {
         hw_entries = value;
+        hw_entries.value_namespace = name_space;
+        hw_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lt-id")
     {
         lt_id = value;
+        lt_id.value_namespace = name_space;
+        lt_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sw-entries")
     {
         sw_entries = value;
+        sw_entries.value_namespace = name_space;
+        sw_entries.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumbers()
+void Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "voq-base-numbers"; yang_parent_name = "node";
-}
-
-Dpa::Stats::Nodes::Node::VoqBaseNumbers::~VoqBaseNumbers()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::has_data() const
-{
-    for (std::size_t index=0; index<voq_base_number.size(); index++)
+    if(value_path == "hw-entries")
     {
-        if(voq_base_number[index]->has_data())
+        hw_entries.yfilter = yfilter;
+    }
+    if(value_path == "lt-id")
+    {
+        lt_id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "sw-entries")
+    {
+        sw_entries.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::LtHwr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hw-entries" || name == "lt-id" || name == "name" || name == "sw-entries")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatistics()
+    :
+    asic_statistics_detail_for_npu_ids(std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds>())
+	,asic_statistics_for_npu_ids(std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds>())
+{
+    asic_statistics_detail_for_npu_ids->parent = this;
+
+    asic_statistics_for_npu_ids->parent = this;
+
+    yang_name = "asic-statistics"; yang_parent_name = "node";
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::~AsicStatistics()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::has_data() const
+{
+    return (asic_statistics_detail_for_npu_ids !=  nullptr && asic_statistics_detail_for_npu_ids->has_data())
+	|| (asic_statistics_for_npu_ids !=  nullptr && asic_statistics_for_npu_ids->has_data());
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| (asic_statistics_detail_for_npu_ids !=  nullptr && asic_statistics_detail_for_npu_ids->has_operation())
+	|| (asic_statistics_for_npu_ids !=  nullptr && asic_statistics_for_npu_ids->has_operation());
+}
+
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-statistics";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'AsicStatistics' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "asic-statistics-detail-for-npu-ids")
+    {
+        if(asic_statistics_detail_for_npu_ids == nullptr)
+        {
+            asic_statistics_detail_for_npu_ids = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds>();
+        }
+        return asic_statistics_detail_for_npu_ids;
+    }
+
+    if(child_yang_name == "asic-statistics-for-npu-ids")
+    {
+        if(asic_statistics_for_npu_ids == nullptr)
+        {
+            asic_statistics_for_npu_ids = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds>();
+        }
+        return asic_statistics_for_npu_ids;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(asic_statistics_detail_for_npu_ids != nullptr)
+    {
+        children["asic-statistics-detail-for-npu-ids"] = asic_statistics_detail_for_npu_ids;
+    }
+
+    if(asic_statistics_for_npu_ids != nullptr)
+    {
+        children["asic-statistics-for-npu-ids"] = asic_statistics_for_npu_ids;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-statistics-detail-for-npu-ids" || name == "asic-statistics-for-npu-ids")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuIds()
+{
+    yang_name = "asic-statistics-for-npu-ids"; yang_parent_name = "asic-statistics";
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::~AsicStatisticsForNpuIds()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::has_data() const
+{
+    for (std::size_t index=0; index<asic_statistics_for_npu_id.size(); index++)
+    {
+        if(asic_statistics_for_npu_id[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::has_operation() const
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::has_operation() const
 {
-    for (std::size_t index=0; index<voq_base_number.size(); index++)
+    for (std::size_t index=0; index<asic_statistics_for_npu_id.size(); index++)
     {
-        if(voq_base_number[index]->has_operation())
+        if(asic_statistics_for_npu_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "voq-base-numbers";
+    path_buffer << "asic-statistics-for-npu-ids";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VoqBaseNumbers' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'AsicStatisticsForNpuIds' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1737,11 +1352,11 @@ const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_entity_path(Entity
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "voq-base-number")
+    if(child_yang_name == "asic-statistics-for-npu-id")
     {
-        for(auto const & c : voq_base_number)
+        for(auto const & c : asic_statistics_for_npu_id)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1749,19 +1364,19 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_child_by_na
                 return c;
             }
         }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber>();
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId>();
         c->parent = this;
-        voq_base_number.push_back(c);
+        asic_statistics_for_npu_id.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumbers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : voq_base_number)
+    for (auto const & c : asic_statistics_for_npu_id)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1769,57 +1384,79 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseN
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::VoqBaseNumbers::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseNumber()
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-statistics-for-npu-id")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::AsicStatisticsForNpuId()
     :
-    npu_number{YType::int32, "npu-number"}
+    npu_id{YType::int32, "npu-id"},
+    asic_instance{YType::uint32, "asic-instance"},
+    chip_version{YType::uint16, "chip-version"},
+    rack_number{YType::uint32, "rack-number"},
+    slot_number{YType::uint32, "slot-number"},
+    valid{YType::boolean, "valid"}
+    	,
+    statistics(std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics>())
 {
-    yang_name = "voq-base-number"; yang_parent_name = "voq-base-numbers";
+    statistics->parent = this;
+
+    yang_name = "asic-statistics-for-npu-id"; yang_parent_name = "asic-statistics-for-npu-ids";
 }
 
-Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::~VoqBaseNumber()
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::~AsicStatisticsForNpuId()
 {
 }
 
-bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::has_data() const
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::has_data() const
 {
-    for (std::size_t index=0; index<voq_base_stats_data.size(); index++)
-    {
-        if(voq_base_stats_data[index]->has_data())
-            return true;
-    }
-    return npu_number.is_set;
+    return npu_id.is_set
+	|| asic_instance.is_set
+	|| chip_version.is_set
+	|| rack_number.is_set
+	|| slot_number.is_set
+	|| valid.is_set
+	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::has_operation() const
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::has_operation() const
 {
-    for (std::size_t index=0; index<voq_base_stats_data.size(); index++)
-    {
-        if(voq_base_stats_data[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(npu_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(npu_id.yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(chip_version.yfilter)
+	|| ydk::is_set(rack_number.yfilter)
+	|| ydk::is_set(slot_number.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "voq-base-number" <<"[npu-number='" <<npu_number <<"']";
+    path_buffer << "asic-statistics-for-npu-id" <<"[npu-id='" <<npu_id <<"']";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VoqBaseNumber' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'AsicStatisticsForNpuId' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1828,7 +1465,12 @@ const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (npu_number.is_set || is_set(npu_number.operation)) leaf_name_data.push_back(npu_number.get_name_leafdata());
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (chip_version.is_set || is_set(chip_version.yfilter)) leaf_name_data.push_back(chip_version.get_name_leafdata());
+    if (rack_number.is_set || is_set(rack_number.yfilter)) leaf_name_data.push_back(rack_number.get_name_leafdata());
+    if (slot_number.is_set || is_set(slot_number.yfilter)) leaf_name_data.push_back(slot_number.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1836,11 +1478,1099 @@ const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_ent
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "voq-base-stats-data")
+    if(child_yang_name == "statistics")
     {
-        for(auto const & c : voq_base_stats_data)
+        if(statistics == nullptr)
+        {
+            statistics = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics>();
+        }
+        return statistics;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
+    {
+        children["statistics"] = statistics;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "npu-id")
+    {
+        npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asic-instance")
+    {
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chip-version")
+    {
+        chip_version = value;
+        chip_version.value_namespace = name_space;
+        chip_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-number")
+    {
+        rack_number = value;
+        rack_number.value_namespace = name_space;
+        rack_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slot-number")
+    {
+        slot_number = value;
+        slot_number.value_namespace = name_space;
+        slot_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "npu-id")
+    {
+        npu_id.yfilter = yfilter;
+    }
+    if(value_path == "asic-instance")
+    {
+        asic_instance.yfilter = yfilter;
+    }
+    if(value_path == "chip-version")
+    {
+        chip_version.yfilter = yfilter;
+    }
+    if(value_path == "rack-number")
+    {
+        rack_number.yfilter = yfilter;
+    }
+    if(value_path == "slot-number")
+    {
+        slot_number.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics" || name == "npu-id" || name == "asic-instance" || name == "chip-version" || name == "rack-number" || name == "slot-number" || name == "valid")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::Statistics()
+    :
+    egq_deleted_pkt_cnt{YType::uint64, "egq-deleted-pkt-cnt"},
+    egq_ehp_mc_high_discard_cnt{YType::uint64, "egq-ehp-mc-high-discard-cnt"},
+    egq_ehp_mc_high_pkt_cnt{YType::uint64, "egq-ehp-mc-high-pkt-cnt"},
+    egq_ehp_mc_low_discard_cnt{YType::uint64, "egq-ehp-mc-low-discard-cnt"},
+    egq_ehp_mc_low_pkt_cnt{YType::uint64, "egq-ehp-mc-low-pkt-cnt"},
+    egq_ehp_uc_pkt_cnt{YType::uint64, "egq-ehp-uc-pkt-cnt"},
+    egq_erpp_lag_pruning_discard_cnt{YType::uint64, "egq-erpp-lag-pruning-discard-cnt"},
+    egq_erpp_pmf_discard_cnt{YType::uint64, "egq-erpp-pmf-discard-cnt"},
+    egq_erpp_vlan_mbr_discard_cnt{YType::uint64, "egq-erpp-vlan-mbr-discard-cnt"},
+    egq_fqp_pkt_cnt{YType::uint64, "egq-fqp-pkt-cnt"},
+    egq_pqp_discard_mc_pkt_cnt{YType::uint64, "egq-pqp-discard-mc-pkt-cnt"},
+    egq_pqp_discard_uc_pkt_cnt{YType::uint64, "egq-pqp-discard-uc-pkt-cnt"},
+    egq_pqp_mc_bytes_cnt{YType::uint64, "egq-pqp-mc-bytes-cnt"},
+    egq_pqp_mc_pkt_cnt{YType::uint64, "egq-pqp-mc-pkt-cnt"},
+    egq_pqp_uc_bytes_cnt{YType::uint64, "egq-pqp-uc-bytes-cnt"},
+    egq_pqp_uc_pkt_cnt{YType::uint64, "egq-pqp-uc-pkt-cnt"},
+    epni_epe_byte_cnt{YType::uint64, "epni-epe-byte-cnt"},
+    epni_epe_discard_cnt{YType::uint64, "epni-epe-discard-cnt"},
+    epni_epe_pkt_cnt{YType::uint64, "epni-epe-pkt-cnt"},
+    fda_cells_in_cnt_p1{YType::uint64, "fda-cells-in-cnt-p1"},
+    fda_cells_in_cnt_p2{YType::uint64, "fda-cells-in-cnt-p2"},
+    fda_cells_in_cnt_p3{YType::uint64, "fda-cells-in-cnt-p3"},
+    fda_cells_in_ipt_cnt{YType::uint64, "fda-cells-in-ipt-cnt"},
+    fda_cells_in_meshmc_cnt{YType::uint64, "fda-cells-in-meshmc-cnt"},
+    fda_cells_in_tdm_cnt{YType::uint64, "fda-cells-in-tdm-cnt"},
+    fda_cells_out_cnt_p1{YType::uint64, "fda-cells-out-cnt-p1"},
+    fda_cells_out_cnt_p2{YType::uint64, "fda-cells-out-cnt-p2"},
+    fda_cells_out_cnt_p3{YType::uint64, "fda-cells-out-cnt-p3"},
+    fda_cells_out_ipt_cnt{YType::uint64, "fda-cells-out-ipt-cnt"},
+    fda_cells_out_meshmc_cnt{YType::uint64, "fda-cells-out-meshmc-cnt"},
+    fda_cells_out_tdm_cnt{YType::uint64, "fda-cells-out-tdm-cnt"},
+    fda_egq_drop_cnt{YType::uint64, "fda-egq-drop-cnt"},
+    fda_egq_meshmc_drop_cnt{YType::uint64, "fda-egq-meshmc-drop-cnt"},
+    fdr_cell_in_cnt_total{YType::uint64, "fdr-cell-in-cnt-total"},
+    fdr_p1_cell_in_cnt{YType::uint64, "fdr-p1-cell-in-cnt"},
+    fdr_p2_cell_in_cnt{YType::uint64, "fdr-p2-cell-in-cnt"},
+    fdr_p3_cell_in_cnt{YType::uint64, "fdr-p3-cell-in-cnt"},
+    fdt_ipt_desc_cell_cnt{YType::uint64, "fdt-ipt-desc-cell-cnt"},
+    fdt_ire_desc_cell_cnt{YType::uint64, "fdt-ire-desc-cell-cnt"},
+    fdt_transmitted_data_cells_cnt{YType::uint64, "fdt-transmitted-data-cells-cnt"},
+    idr_mmu_if_cnt{YType::uint64, "idr-mmu-if-cnt"},
+    idr_ocb_if_cnt{YType::uint64, "idr-ocb-if-cnt"},
+    ipt_cfg_byte_cnt{YType::uint64, "ipt-cfg-byte-cnt"},
+    ipt_cfg_event_cnt{YType::uint64, "ipt-cfg-event-cnt"},
+    ipt_egq_pkt_cnt{YType::uint64, "ipt-egq-pkt-cnt"},
+    ipt_enq_pkt_cnt{YType::uint64, "ipt-enq-pkt-cnt"},
+    ipt_fdt_pkt_cnt{YType::uint64, "ipt-fdt-pkt-cnt"},
+    iqm_deleted_pkt_cnt{YType::uint64, "iqm-deleted-pkt-cnt"},
+    iqm_dequeue_pkt_cnt{YType::uint64, "iqm-dequeue-pkt-cnt"},
+    iqm_enq_discarded_pkt_cnt{YType::uint64, "iqm-enq-discarded-pkt-cnt"},
+    iqm_enqueue_pkt_cnt{YType::uint64, "iqm-enqueue-pkt-cnt"},
+    ire_cpu_pkt_cnt{YType::uint64, "ire-cpu-pkt-cnt"},
+    ire_fdt_if_cnt{YType::uint64, "ire-fdt-if-cnt"},
+    ire_nif_pkt_cnt{YType::uint64, "ire-nif-pkt-cnt"},
+    ire_oamp_pkt_cnt{YType::uint64, "ire-oamp-pkt-cnt"},
+    ire_olp_pkt_cnt{YType::uint64, "ire-olp-pkt-cnt"},
+    ire_rcy_pkt_cnt{YType::uint64, "ire-rcy-pkt-cnt"},
+    nbi_rx_total_byte_cnt{YType::uint64, "nbi-rx-total-byte-cnt"},
+    nbi_rx_total_pkt_cnt{YType::uint64, "nbi-rx-total-pkt-cnt"},
+    nbi_tx_total_byte_cnt{YType::uint64, "nbi-tx-total-byte-cnt"},
+    nbi_tx_total_pkt_cnt{YType::uint64, "nbi-tx-total-pkt-cnt"}
+{
+    yang_name = "statistics"; yang_parent_name = "asic-statistics-for-npu-id";
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::~Statistics()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::has_data() const
+{
+    return egq_deleted_pkt_cnt.is_set
+	|| egq_ehp_mc_high_discard_cnt.is_set
+	|| egq_ehp_mc_high_pkt_cnt.is_set
+	|| egq_ehp_mc_low_discard_cnt.is_set
+	|| egq_ehp_mc_low_pkt_cnt.is_set
+	|| egq_ehp_uc_pkt_cnt.is_set
+	|| egq_erpp_lag_pruning_discard_cnt.is_set
+	|| egq_erpp_pmf_discard_cnt.is_set
+	|| egq_erpp_vlan_mbr_discard_cnt.is_set
+	|| egq_fqp_pkt_cnt.is_set
+	|| egq_pqp_discard_mc_pkt_cnt.is_set
+	|| egq_pqp_discard_uc_pkt_cnt.is_set
+	|| egq_pqp_mc_bytes_cnt.is_set
+	|| egq_pqp_mc_pkt_cnt.is_set
+	|| egq_pqp_uc_bytes_cnt.is_set
+	|| egq_pqp_uc_pkt_cnt.is_set
+	|| epni_epe_byte_cnt.is_set
+	|| epni_epe_discard_cnt.is_set
+	|| epni_epe_pkt_cnt.is_set
+	|| fda_cells_in_cnt_p1.is_set
+	|| fda_cells_in_cnt_p2.is_set
+	|| fda_cells_in_cnt_p3.is_set
+	|| fda_cells_in_ipt_cnt.is_set
+	|| fda_cells_in_meshmc_cnt.is_set
+	|| fda_cells_in_tdm_cnt.is_set
+	|| fda_cells_out_cnt_p1.is_set
+	|| fda_cells_out_cnt_p2.is_set
+	|| fda_cells_out_cnt_p3.is_set
+	|| fda_cells_out_ipt_cnt.is_set
+	|| fda_cells_out_meshmc_cnt.is_set
+	|| fda_cells_out_tdm_cnt.is_set
+	|| fda_egq_drop_cnt.is_set
+	|| fda_egq_meshmc_drop_cnt.is_set
+	|| fdr_cell_in_cnt_total.is_set
+	|| fdr_p1_cell_in_cnt.is_set
+	|| fdr_p2_cell_in_cnt.is_set
+	|| fdr_p3_cell_in_cnt.is_set
+	|| fdt_ipt_desc_cell_cnt.is_set
+	|| fdt_ire_desc_cell_cnt.is_set
+	|| fdt_transmitted_data_cells_cnt.is_set
+	|| idr_mmu_if_cnt.is_set
+	|| idr_ocb_if_cnt.is_set
+	|| ipt_cfg_byte_cnt.is_set
+	|| ipt_cfg_event_cnt.is_set
+	|| ipt_egq_pkt_cnt.is_set
+	|| ipt_enq_pkt_cnt.is_set
+	|| ipt_fdt_pkt_cnt.is_set
+	|| iqm_deleted_pkt_cnt.is_set
+	|| iqm_dequeue_pkt_cnt.is_set
+	|| iqm_enq_discarded_pkt_cnt.is_set
+	|| iqm_enqueue_pkt_cnt.is_set
+	|| ire_cpu_pkt_cnt.is_set
+	|| ire_fdt_if_cnt.is_set
+	|| ire_nif_pkt_cnt.is_set
+	|| ire_oamp_pkt_cnt.is_set
+	|| ire_olp_pkt_cnt.is_set
+	|| ire_rcy_pkt_cnt.is_set
+	|| nbi_rx_total_byte_cnt.is_set
+	|| nbi_rx_total_pkt_cnt.is_set
+	|| nbi_tx_total_byte_cnt.is_set
+	|| nbi_tx_total_pkt_cnt.is_set;
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(egq_deleted_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_ehp_mc_high_discard_cnt.yfilter)
+	|| ydk::is_set(egq_ehp_mc_high_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_ehp_mc_low_discard_cnt.yfilter)
+	|| ydk::is_set(egq_ehp_mc_low_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_ehp_uc_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_erpp_lag_pruning_discard_cnt.yfilter)
+	|| ydk::is_set(egq_erpp_pmf_discard_cnt.yfilter)
+	|| ydk::is_set(egq_erpp_vlan_mbr_discard_cnt.yfilter)
+	|| ydk::is_set(egq_fqp_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_discard_mc_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_discard_uc_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mc_bytes_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_mc_pkt_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_uc_bytes_cnt.yfilter)
+	|| ydk::is_set(egq_pqp_uc_pkt_cnt.yfilter)
+	|| ydk::is_set(epni_epe_byte_cnt.yfilter)
+	|| ydk::is_set(epni_epe_discard_cnt.yfilter)
+	|| ydk::is_set(epni_epe_pkt_cnt.yfilter)
+	|| ydk::is_set(fda_cells_in_cnt_p1.yfilter)
+	|| ydk::is_set(fda_cells_in_cnt_p2.yfilter)
+	|| ydk::is_set(fda_cells_in_cnt_p3.yfilter)
+	|| ydk::is_set(fda_cells_in_ipt_cnt.yfilter)
+	|| ydk::is_set(fda_cells_in_meshmc_cnt.yfilter)
+	|| ydk::is_set(fda_cells_in_tdm_cnt.yfilter)
+	|| ydk::is_set(fda_cells_out_cnt_p1.yfilter)
+	|| ydk::is_set(fda_cells_out_cnt_p2.yfilter)
+	|| ydk::is_set(fda_cells_out_cnt_p3.yfilter)
+	|| ydk::is_set(fda_cells_out_ipt_cnt.yfilter)
+	|| ydk::is_set(fda_cells_out_meshmc_cnt.yfilter)
+	|| ydk::is_set(fda_cells_out_tdm_cnt.yfilter)
+	|| ydk::is_set(fda_egq_drop_cnt.yfilter)
+	|| ydk::is_set(fda_egq_meshmc_drop_cnt.yfilter)
+	|| ydk::is_set(fdr_cell_in_cnt_total.yfilter)
+	|| ydk::is_set(fdr_p1_cell_in_cnt.yfilter)
+	|| ydk::is_set(fdr_p2_cell_in_cnt.yfilter)
+	|| ydk::is_set(fdr_p3_cell_in_cnt.yfilter)
+	|| ydk::is_set(fdt_ipt_desc_cell_cnt.yfilter)
+	|| ydk::is_set(fdt_ire_desc_cell_cnt.yfilter)
+	|| ydk::is_set(fdt_transmitted_data_cells_cnt.yfilter)
+	|| ydk::is_set(idr_mmu_if_cnt.yfilter)
+	|| ydk::is_set(idr_ocb_if_cnt.yfilter)
+	|| ydk::is_set(ipt_cfg_byte_cnt.yfilter)
+	|| ydk::is_set(ipt_cfg_event_cnt.yfilter)
+	|| ydk::is_set(ipt_egq_pkt_cnt.yfilter)
+	|| ydk::is_set(ipt_enq_pkt_cnt.yfilter)
+	|| ydk::is_set(ipt_fdt_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_deleted_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_dequeue_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_enq_discarded_pkt_cnt.yfilter)
+	|| ydk::is_set(iqm_enqueue_pkt_cnt.yfilter)
+	|| ydk::is_set(ire_cpu_pkt_cnt.yfilter)
+	|| ydk::is_set(ire_fdt_if_cnt.yfilter)
+	|| ydk::is_set(ire_nif_pkt_cnt.yfilter)
+	|| ydk::is_set(ire_oamp_pkt_cnt.yfilter)
+	|| ydk::is_set(ire_olp_pkt_cnt.yfilter)
+	|| ydk::is_set(ire_rcy_pkt_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_total_byte_cnt.yfilter)
+	|| ydk::is_set(nbi_rx_total_pkt_cnt.yfilter)
+	|| ydk::is_set(nbi_tx_total_byte_cnt.yfilter)
+	|| ydk::is_set(nbi_tx_total_pkt_cnt.yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "statistics";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (egq_deleted_pkt_cnt.is_set || is_set(egq_deleted_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_deleted_pkt_cnt.get_name_leafdata());
+    if (egq_ehp_mc_high_discard_cnt.is_set || is_set(egq_ehp_mc_high_discard_cnt.yfilter)) leaf_name_data.push_back(egq_ehp_mc_high_discard_cnt.get_name_leafdata());
+    if (egq_ehp_mc_high_pkt_cnt.is_set || is_set(egq_ehp_mc_high_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_ehp_mc_high_pkt_cnt.get_name_leafdata());
+    if (egq_ehp_mc_low_discard_cnt.is_set || is_set(egq_ehp_mc_low_discard_cnt.yfilter)) leaf_name_data.push_back(egq_ehp_mc_low_discard_cnt.get_name_leafdata());
+    if (egq_ehp_mc_low_pkt_cnt.is_set || is_set(egq_ehp_mc_low_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_ehp_mc_low_pkt_cnt.get_name_leafdata());
+    if (egq_ehp_uc_pkt_cnt.is_set || is_set(egq_ehp_uc_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_ehp_uc_pkt_cnt.get_name_leafdata());
+    if (egq_erpp_lag_pruning_discard_cnt.is_set || is_set(egq_erpp_lag_pruning_discard_cnt.yfilter)) leaf_name_data.push_back(egq_erpp_lag_pruning_discard_cnt.get_name_leafdata());
+    if (egq_erpp_pmf_discard_cnt.is_set || is_set(egq_erpp_pmf_discard_cnt.yfilter)) leaf_name_data.push_back(egq_erpp_pmf_discard_cnt.get_name_leafdata());
+    if (egq_erpp_vlan_mbr_discard_cnt.is_set || is_set(egq_erpp_vlan_mbr_discard_cnt.yfilter)) leaf_name_data.push_back(egq_erpp_vlan_mbr_discard_cnt.get_name_leafdata());
+    if (egq_fqp_pkt_cnt.is_set || is_set(egq_fqp_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_fqp_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_discard_mc_pkt_cnt.is_set || is_set(egq_pqp_discard_mc_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_discard_mc_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_discard_uc_pkt_cnt.is_set || is_set(egq_pqp_discard_uc_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_discard_uc_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_mc_bytes_cnt.is_set || is_set(egq_pqp_mc_bytes_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mc_bytes_cnt.get_name_leafdata());
+    if (egq_pqp_mc_pkt_cnt.is_set || is_set(egq_pqp_mc_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_mc_pkt_cnt.get_name_leafdata());
+    if (egq_pqp_uc_bytes_cnt.is_set || is_set(egq_pqp_uc_bytes_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_uc_bytes_cnt.get_name_leafdata());
+    if (egq_pqp_uc_pkt_cnt.is_set || is_set(egq_pqp_uc_pkt_cnt.yfilter)) leaf_name_data.push_back(egq_pqp_uc_pkt_cnt.get_name_leafdata());
+    if (epni_epe_byte_cnt.is_set || is_set(epni_epe_byte_cnt.yfilter)) leaf_name_data.push_back(epni_epe_byte_cnt.get_name_leafdata());
+    if (epni_epe_discard_cnt.is_set || is_set(epni_epe_discard_cnt.yfilter)) leaf_name_data.push_back(epni_epe_discard_cnt.get_name_leafdata());
+    if (epni_epe_pkt_cnt.is_set || is_set(epni_epe_pkt_cnt.yfilter)) leaf_name_data.push_back(epni_epe_pkt_cnt.get_name_leafdata());
+    if (fda_cells_in_cnt_p1.is_set || is_set(fda_cells_in_cnt_p1.yfilter)) leaf_name_data.push_back(fda_cells_in_cnt_p1.get_name_leafdata());
+    if (fda_cells_in_cnt_p2.is_set || is_set(fda_cells_in_cnt_p2.yfilter)) leaf_name_data.push_back(fda_cells_in_cnt_p2.get_name_leafdata());
+    if (fda_cells_in_cnt_p3.is_set || is_set(fda_cells_in_cnt_p3.yfilter)) leaf_name_data.push_back(fda_cells_in_cnt_p3.get_name_leafdata());
+    if (fda_cells_in_ipt_cnt.is_set || is_set(fda_cells_in_ipt_cnt.yfilter)) leaf_name_data.push_back(fda_cells_in_ipt_cnt.get_name_leafdata());
+    if (fda_cells_in_meshmc_cnt.is_set || is_set(fda_cells_in_meshmc_cnt.yfilter)) leaf_name_data.push_back(fda_cells_in_meshmc_cnt.get_name_leafdata());
+    if (fda_cells_in_tdm_cnt.is_set || is_set(fda_cells_in_tdm_cnt.yfilter)) leaf_name_data.push_back(fda_cells_in_tdm_cnt.get_name_leafdata());
+    if (fda_cells_out_cnt_p1.is_set || is_set(fda_cells_out_cnt_p1.yfilter)) leaf_name_data.push_back(fda_cells_out_cnt_p1.get_name_leafdata());
+    if (fda_cells_out_cnt_p2.is_set || is_set(fda_cells_out_cnt_p2.yfilter)) leaf_name_data.push_back(fda_cells_out_cnt_p2.get_name_leafdata());
+    if (fda_cells_out_cnt_p3.is_set || is_set(fda_cells_out_cnt_p3.yfilter)) leaf_name_data.push_back(fda_cells_out_cnt_p3.get_name_leafdata());
+    if (fda_cells_out_ipt_cnt.is_set || is_set(fda_cells_out_ipt_cnt.yfilter)) leaf_name_data.push_back(fda_cells_out_ipt_cnt.get_name_leafdata());
+    if (fda_cells_out_meshmc_cnt.is_set || is_set(fda_cells_out_meshmc_cnt.yfilter)) leaf_name_data.push_back(fda_cells_out_meshmc_cnt.get_name_leafdata());
+    if (fda_cells_out_tdm_cnt.is_set || is_set(fda_cells_out_tdm_cnt.yfilter)) leaf_name_data.push_back(fda_cells_out_tdm_cnt.get_name_leafdata());
+    if (fda_egq_drop_cnt.is_set || is_set(fda_egq_drop_cnt.yfilter)) leaf_name_data.push_back(fda_egq_drop_cnt.get_name_leafdata());
+    if (fda_egq_meshmc_drop_cnt.is_set || is_set(fda_egq_meshmc_drop_cnt.yfilter)) leaf_name_data.push_back(fda_egq_meshmc_drop_cnt.get_name_leafdata());
+    if (fdr_cell_in_cnt_total.is_set || is_set(fdr_cell_in_cnt_total.yfilter)) leaf_name_data.push_back(fdr_cell_in_cnt_total.get_name_leafdata());
+    if (fdr_p1_cell_in_cnt.is_set || is_set(fdr_p1_cell_in_cnt.yfilter)) leaf_name_data.push_back(fdr_p1_cell_in_cnt.get_name_leafdata());
+    if (fdr_p2_cell_in_cnt.is_set || is_set(fdr_p2_cell_in_cnt.yfilter)) leaf_name_data.push_back(fdr_p2_cell_in_cnt.get_name_leafdata());
+    if (fdr_p3_cell_in_cnt.is_set || is_set(fdr_p3_cell_in_cnt.yfilter)) leaf_name_data.push_back(fdr_p3_cell_in_cnt.get_name_leafdata());
+    if (fdt_ipt_desc_cell_cnt.is_set || is_set(fdt_ipt_desc_cell_cnt.yfilter)) leaf_name_data.push_back(fdt_ipt_desc_cell_cnt.get_name_leafdata());
+    if (fdt_ire_desc_cell_cnt.is_set || is_set(fdt_ire_desc_cell_cnt.yfilter)) leaf_name_data.push_back(fdt_ire_desc_cell_cnt.get_name_leafdata());
+    if (fdt_transmitted_data_cells_cnt.is_set || is_set(fdt_transmitted_data_cells_cnt.yfilter)) leaf_name_data.push_back(fdt_transmitted_data_cells_cnt.get_name_leafdata());
+    if (idr_mmu_if_cnt.is_set || is_set(idr_mmu_if_cnt.yfilter)) leaf_name_data.push_back(idr_mmu_if_cnt.get_name_leafdata());
+    if (idr_ocb_if_cnt.is_set || is_set(idr_ocb_if_cnt.yfilter)) leaf_name_data.push_back(idr_ocb_if_cnt.get_name_leafdata());
+    if (ipt_cfg_byte_cnt.is_set || is_set(ipt_cfg_byte_cnt.yfilter)) leaf_name_data.push_back(ipt_cfg_byte_cnt.get_name_leafdata());
+    if (ipt_cfg_event_cnt.is_set || is_set(ipt_cfg_event_cnt.yfilter)) leaf_name_data.push_back(ipt_cfg_event_cnt.get_name_leafdata());
+    if (ipt_egq_pkt_cnt.is_set || is_set(ipt_egq_pkt_cnt.yfilter)) leaf_name_data.push_back(ipt_egq_pkt_cnt.get_name_leafdata());
+    if (ipt_enq_pkt_cnt.is_set || is_set(ipt_enq_pkt_cnt.yfilter)) leaf_name_data.push_back(ipt_enq_pkt_cnt.get_name_leafdata());
+    if (ipt_fdt_pkt_cnt.is_set || is_set(ipt_fdt_pkt_cnt.yfilter)) leaf_name_data.push_back(ipt_fdt_pkt_cnt.get_name_leafdata());
+    if (iqm_deleted_pkt_cnt.is_set || is_set(iqm_deleted_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_deleted_pkt_cnt.get_name_leafdata());
+    if (iqm_dequeue_pkt_cnt.is_set || is_set(iqm_dequeue_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_dequeue_pkt_cnt.get_name_leafdata());
+    if (iqm_enq_discarded_pkt_cnt.is_set || is_set(iqm_enq_discarded_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_enq_discarded_pkt_cnt.get_name_leafdata());
+    if (iqm_enqueue_pkt_cnt.is_set || is_set(iqm_enqueue_pkt_cnt.yfilter)) leaf_name_data.push_back(iqm_enqueue_pkt_cnt.get_name_leafdata());
+    if (ire_cpu_pkt_cnt.is_set || is_set(ire_cpu_pkt_cnt.yfilter)) leaf_name_data.push_back(ire_cpu_pkt_cnt.get_name_leafdata());
+    if (ire_fdt_if_cnt.is_set || is_set(ire_fdt_if_cnt.yfilter)) leaf_name_data.push_back(ire_fdt_if_cnt.get_name_leafdata());
+    if (ire_nif_pkt_cnt.is_set || is_set(ire_nif_pkt_cnt.yfilter)) leaf_name_data.push_back(ire_nif_pkt_cnt.get_name_leafdata());
+    if (ire_oamp_pkt_cnt.is_set || is_set(ire_oamp_pkt_cnt.yfilter)) leaf_name_data.push_back(ire_oamp_pkt_cnt.get_name_leafdata());
+    if (ire_olp_pkt_cnt.is_set || is_set(ire_olp_pkt_cnt.yfilter)) leaf_name_data.push_back(ire_olp_pkt_cnt.get_name_leafdata());
+    if (ire_rcy_pkt_cnt.is_set || is_set(ire_rcy_pkt_cnt.yfilter)) leaf_name_data.push_back(ire_rcy_pkt_cnt.get_name_leafdata());
+    if (nbi_rx_total_byte_cnt.is_set || is_set(nbi_rx_total_byte_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_total_byte_cnt.get_name_leafdata());
+    if (nbi_rx_total_pkt_cnt.is_set || is_set(nbi_rx_total_pkt_cnt.yfilter)) leaf_name_data.push_back(nbi_rx_total_pkt_cnt.get_name_leafdata());
+    if (nbi_tx_total_byte_cnt.is_set || is_set(nbi_tx_total_byte_cnt.yfilter)) leaf_name_data.push_back(nbi_tx_total_byte_cnt.get_name_leafdata());
+    if (nbi_tx_total_pkt_cnt.is_set || is_set(nbi_tx_total_pkt_cnt.yfilter)) leaf_name_data.push_back(nbi_tx_total_pkt_cnt.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "egq-deleted-pkt-cnt")
+    {
+        egq_deleted_pkt_cnt = value;
+        egq_deleted_pkt_cnt.value_namespace = name_space;
+        egq_deleted_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ehp-mc-high-discard-cnt")
+    {
+        egq_ehp_mc_high_discard_cnt = value;
+        egq_ehp_mc_high_discard_cnt.value_namespace = name_space;
+        egq_ehp_mc_high_discard_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ehp-mc-high-pkt-cnt")
+    {
+        egq_ehp_mc_high_pkt_cnt = value;
+        egq_ehp_mc_high_pkt_cnt.value_namespace = name_space;
+        egq_ehp_mc_high_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ehp-mc-low-discard-cnt")
+    {
+        egq_ehp_mc_low_discard_cnt = value;
+        egq_ehp_mc_low_discard_cnt.value_namespace = name_space;
+        egq_ehp_mc_low_discard_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ehp-mc-low-pkt-cnt")
+    {
+        egq_ehp_mc_low_pkt_cnt = value;
+        egq_ehp_mc_low_pkt_cnt.value_namespace = name_space;
+        egq_ehp_mc_low_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-ehp-uc-pkt-cnt")
+    {
+        egq_ehp_uc_pkt_cnt = value;
+        egq_ehp_uc_pkt_cnt.value_namespace = name_space;
+        egq_ehp_uc_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-erpp-lag-pruning-discard-cnt")
+    {
+        egq_erpp_lag_pruning_discard_cnt = value;
+        egq_erpp_lag_pruning_discard_cnt.value_namespace = name_space;
+        egq_erpp_lag_pruning_discard_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-erpp-pmf-discard-cnt")
+    {
+        egq_erpp_pmf_discard_cnt = value;
+        egq_erpp_pmf_discard_cnt.value_namespace = name_space;
+        egq_erpp_pmf_discard_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-erpp-vlan-mbr-discard-cnt")
+    {
+        egq_erpp_vlan_mbr_discard_cnt = value;
+        egq_erpp_vlan_mbr_discard_cnt.value_namespace = name_space;
+        egq_erpp_vlan_mbr_discard_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-fqp-pkt-cnt")
+    {
+        egq_fqp_pkt_cnt = value;
+        egq_fqp_pkt_cnt.value_namespace = name_space;
+        egq_fqp_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-discard-mc-pkt-cnt")
+    {
+        egq_pqp_discard_mc_pkt_cnt = value;
+        egq_pqp_discard_mc_pkt_cnt.value_namespace = name_space;
+        egq_pqp_discard_mc_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-discard-uc-pkt-cnt")
+    {
+        egq_pqp_discard_uc_pkt_cnt = value;
+        egq_pqp_discard_uc_pkt_cnt.value_namespace = name_space;
+        egq_pqp_discard_uc_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mc-bytes-cnt")
+    {
+        egq_pqp_mc_bytes_cnt = value;
+        egq_pqp_mc_bytes_cnt.value_namespace = name_space;
+        egq_pqp_mc_bytes_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-mc-pkt-cnt")
+    {
+        egq_pqp_mc_pkt_cnt = value;
+        egq_pqp_mc_pkt_cnt.value_namespace = name_space;
+        egq_pqp_mc_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-uc-bytes-cnt")
+    {
+        egq_pqp_uc_bytes_cnt = value;
+        egq_pqp_uc_bytes_cnt.value_namespace = name_space;
+        egq_pqp_uc_bytes_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egq-pqp-uc-pkt-cnt")
+    {
+        egq_pqp_uc_pkt_cnt = value;
+        egq_pqp_uc_pkt_cnt.value_namespace = name_space;
+        egq_pqp_uc_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-byte-cnt")
+    {
+        epni_epe_byte_cnt = value;
+        epni_epe_byte_cnt.value_namespace = name_space;
+        epni_epe_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-discard-cnt")
+    {
+        epni_epe_discard_cnt = value;
+        epni_epe_discard_cnt.value_namespace = name_space;
+        epni_epe_discard_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "epni-epe-pkt-cnt")
+    {
+        epni_epe_pkt_cnt = value;
+        epni_epe_pkt_cnt.value_namespace = name_space;
+        epni_epe_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-in-cnt-p1")
+    {
+        fda_cells_in_cnt_p1 = value;
+        fda_cells_in_cnt_p1.value_namespace = name_space;
+        fda_cells_in_cnt_p1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-in-cnt-p2")
+    {
+        fda_cells_in_cnt_p2 = value;
+        fda_cells_in_cnt_p2.value_namespace = name_space;
+        fda_cells_in_cnt_p2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-in-cnt-p3")
+    {
+        fda_cells_in_cnt_p3 = value;
+        fda_cells_in_cnt_p3.value_namespace = name_space;
+        fda_cells_in_cnt_p3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-in-ipt-cnt")
+    {
+        fda_cells_in_ipt_cnt = value;
+        fda_cells_in_ipt_cnt.value_namespace = name_space;
+        fda_cells_in_ipt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-in-meshmc-cnt")
+    {
+        fda_cells_in_meshmc_cnt = value;
+        fda_cells_in_meshmc_cnt.value_namespace = name_space;
+        fda_cells_in_meshmc_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-in-tdm-cnt")
+    {
+        fda_cells_in_tdm_cnt = value;
+        fda_cells_in_tdm_cnt.value_namespace = name_space;
+        fda_cells_in_tdm_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-out-cnt-p1")
+    {
+        fda_cells_out_cnt_p1 = value;
+        fda_cells_out_cnt_p1.value_namespace = name_space;
+        fda_cells_out_cnt_p1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-out-cnt-p2")
+    {
+        fda_cells_out_cnt_p2 = value;
+        fda_cells_out_cnt_p2.value_namespace = name_space;
+        fda_cells_out_cnt_p2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-out-cnt-p3")
+    {
+        fda_cells_out_cnt_p3 = value;
+        fda_cells_out_cnt_p3.value_namespace = name_space;
+        fda_cells_out_cnt_p3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-out-ipt-cnt")
+    {
+        fda_cells_out_ipt_cnt = value;
+        fda_cells_out_ipt_cnt.value_namespace = name_space;
+        fda_cells_out_ipt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-out-meshmc-cnt")
+    {
+        fda_cells_out_meshmc_cnt = value;
+        fda_cells_out_meshmc_cnt.value_namespace = name_space;
+        fda_cells_out_meshmc_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-cells-out-tdm-cnt")
+    {
+        fda_cells_out_tdm_cnt = value;
+        fda_cells_out_tdm_cnt.value_namespace = name_space;
+        fda_cells_out_tdm_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-egq-drop-cnt")
+    {
+        fda_egq_drop_cnt = value;
+        fda_egq_drop_cnt.value_namespace = name_space;
+        fda_egq_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fda-egq-meshmc-drop-cnt")
+    {
+        fda_egq_meshmc_drop_cnt = value;
+        fda_egq_meshmc_drop_cnt.value_namespace = name_space;
+        fda_egq_meshmc_drop_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-cell-in-cnt-total")
+    {
+        fdr_cell_in_cnt_total = value;
+        fdr_cell_in_cnt_total.value_namespace = name_space;
+        fdr_cell_in_cnt_total.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-p1-cell-in-cnt")
+    {
+        fdr_p1_cell_in_cnt = value;
+        fdr_p1_cell_in_cnt.value_namespace = name_space;
+        fdr_p1_cell_in_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-p2-cell-in-cnt")
+    {
+        fdr_p2_cell_in_cnt = value;
+        fdr_p2_cell_in_cnt.value_namespace = name_space;
+        fdr_p2_cell_in_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdr-p3-cell-in-cnt")
+    {
+        fdr_p3_cell_in_cnt = value;
+        fdr_p3_cell_in_cnt.value_namespace = name_space;
+        fdr_p3_cell_in_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-ipt-desc-cell-cnt")
+    {
+        fdt_ipt_desc_cell_cnt = value;
+        fdt_ipt_desc_cell_cnt.value_namespace = name_space;
+        fdt_ipt_desc_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-ire-desc-cell-cnt")
+    {
+        fdt_ire_desc_cell_cnt = value;
+        fdt_ire_desc_cell_cnt.value_namespace = name_space;
+        fdt_ire_desc_cell_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fdt-transmitted-data-cells-cnt")
+    {
+        fdt_transmitted_data_cells_cnt = value;
+        fdt_transmitted_data_cells_cnt.value_namespace = name_space;
+        fdt_transmitted_data_cells_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-mmu-if-cnt")
+    {
+        idr_mmu_if_cnt = value;
+        idr_mmu_if_cnt.value_namespace = name_space;
+        idr_mmu_if_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idr-ocb-if-cnt")
+    {
+        idr_ocb_if_cnt = value;
+        idr_ocb_if_cnt.value_namespace = name_space;
+        idr_ocb_if_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-cfg-byte-cnt")
+    {
+        ipt_cfg_byte_cnt = value;
+        ipt_cfg_byte_cnt.value_namespace = name_space;
+        ipt_cfg_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-cfg-event-cnt")
+    {
+        ipt_cfg_event_cnt = value;
+        ipt_cfg_event_cnt.value_namespace = name_space;
+        ipt_cfg_event_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-egq-pkt-cnt")
+    {
+        ipt_egq_pkt_cnt = value;
+        ipt_egq_pkt_cnt.value_namespace = name_space;
+        ipt_egq_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-enq-pkt-cnt")
+    {
+        ipt_enq_pkt_cnt = value;
+        ipt_enq_pkt_cnt.value_namespace = name_space;
+        ipt_enq_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipt-fdt-pkt-cnt")
+    {
+        ipt_fdt_pkt_cnt = value;
+        ipt_fdt_pkt_cnt.value_namespace = name_space;
+        ipt_fdt_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-deleted-pkt-cnt")
+    {
+        iqm_deleted_pkt_cnt = value;
+        iqm_deleted_pkt_cnt.value_namespace = name_space;
+        iqm_deleted_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-dequeue-pkt-cnt")
+    {
+        iqm_dequeue_pkt_cnt = value;
+        iqm_dequeue_pkt_cnt.value_namespace = name_space;
+        iqm_dequeue_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-enq-discarded-pkt-cnt")
+    {
+        iqm_enq_discarded_pkt_cnt = value;
+        iqm_enq_discarded_pkt_cnt.value_namespace = name_space;
+        iqm_enq_discarded_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "iqm-enqueue-pkt-cnt")
+    {
+        iqm_enqueue_pkt_cnt = value;
+        iqm_enqueue_pkt_cnt.value_namespace = name_space;
+        iqm_enqueue_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ire-cpu-pkt-cnt")
+    {
+        ire_cpu_pkt_cnt = value;
+        ire_cpu_pkt_cnt.value_namespace = name_space;
+        ire_cpu_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ire-fdt-if-cnt")
+    {
+        ire_fdt_if_cnt = value;
+        ire_fdt_if_cnt.value_namespace = name_space;
+        ire_fdt_if_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ire-nif-pkt-cnt")
+    {
+        ire_nif_pkt_cnt = value;
+        ire_nif_pkt_cnt.value_namespace = name_space;
+        ire_nif_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ire-oamp-pkt-cnt")
+    {
+        ire_oamp_pkt_cnt = value;
+        ire_oamp_pkt_cnt.value_namespace = name_space;
+        ire_oamp_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ire-olp-pkt-cnt")
+    {
+        ire_olp_pkt_cnt = value;
+        ire_olp_pkt_cnt.value_namespace = name_space;
+        ire_olp_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ire-rcy-pkt-cnt")
+    {
+        ire_rcy_pkt_cnt = value;
+        ire_rcy_pkt_cnt.value_namespace = name_space;
+        ire_rcy_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-total-byte-cnt")
+    {
+        nbi_rx_total_byte_cnt = value;
+        nbi_rx_total_byte_cnt.value_namespace = name_space;
+        nbi_rx_total_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-rx-total-pkt-cnt")
+    {
+        nbi_rx_total_pkt_cnt = value;
+        nbi_rx_total_pkt_cnt.value_namespace = name_space;
+        nbi_rx_total_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-tx-total-byte-cnt")
+    {
+        nbi_tx_total_byte_cnt = value;
+        nbi_tx_total_byte_cnt.value_namespace = name_space;
+        nbi_tx_total_byte_cnt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nbi-tx-total-pkt-cnt")
+    {
+        nbi_tx_total_pkt_cnt = value;
+        nbi_tx_total_pkt_cnt.value_namespace = name_space;
+        nbi_tx_total_pkt_cnt.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "egq-deleted-pkt-cnt")
+    {
+        egq_deleted_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ehp-mc-high-discard-cnt")
+    {
+        egq_ehp_mc_high_discard_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ehp-mc-high-pkt-cnt")
+    {
+        egq_ehp_mc_high_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ehp-mc-low-discard-cnt")
+    {
+        egq_ehp_mc_low_discard_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ehp-mc-low-pkt-cnt")
+    {
+        egq_ehp_mc_low_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-ehp-uc-pkt-cnt")
+    {
+        egq_ehp_uc_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-erpp-lag-pruning-discard-cnt")
+    {
+        egq_erpp_lag_pruning_discard_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-erpp-pmf-discard-cnt")
+    {
+        egq_erpp_pmf_discard_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-erpp-vlan-mbr-discard-cnt")
+    {
+        egq_erpp_vlan_mbr_discard_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-fqp-pkt-cnt")
+    {
+        egq_fqp_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-discard-mc-pkt-cnt")
+    {
+        egq_pqp_discard_mc_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-discard-uc-pkt-cnt")
+    {
+        egq_pqp_discard_uc_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mc-bytes-cnt")
+    {
+        egq_pqp_mc_bytes_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-mc-pkt-cnt")
+    {
+        egq_pqp_mc_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-uc-bytes-cnt")
+    {
+        egq_pqp_uc_bytes_cnt.yfilter = yfilter;
+    }
+    if(value_path == "egq-pqp-uc-pkt-cnt")
+    {
+        egq_pqp_uc_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-byte-cnt")
+    {
+        epni_epe_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-discard-cnt")
+    {
+        epni_epe_discard_cnt.yfilter = yfilter;
+    }
+    if(value_path == "epni-epe-pkt-cnt")
+    {
+        epni_epe_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-in-cnt-p1")
+    {
+        fda_cells_in_cnt_p1.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-in-cnt-p2")
+    {
+        fda_cells_in_cnt_p2.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-in-cnt-p3")
+    {
+        fda_cells_in_cnt_p3.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-in-ipt-cnt")
+    {
+        fda_cells_in_ipt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-in-meshmc-cnt")
+    {
+        fda_cells_in_meshmc_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-in-tdm-cnt")
+    {
+        fda_cells_in_tdm_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-out-cnt-p1")
+    {
+        fda_cells_out_cnt_p1.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-out-cnt-p2")
+    {
+        fda_cells_out_cnt_p2.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-out-cnt-p3")
+    {
+        fda_cells_out_cnt_p3.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-out-ipt-cnt")
+    {
+        fda_cells_out_ipt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-out-meshmc-cnt")
+    {
+        fda_cells_out_meshmc_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fda-cells-out-tdm-cnt")
+    {
+        fda_cells_out_tdm_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fda-egq-drop-cnt")
+    {
+        fda_egq_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fda-egq-meshmc-drop-cnt")
+    {
+        fda_egq_meshmc_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-cell-in-cnt-total")
+    {
+        fdr_cell_in_cnt_total.yfilter = yfilter;
+    }
+    if(value_path == "fdr-p1-cell-in-cnt")
+    {
+        fdr_p1_cell_in_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-p2-cell-in-cnt")
+    {
+        fdr_p2_cell_in_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdr-p3-cell-in-cnt")
+    {
+        fdr_p3_cell_in_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-ipt-desc-cell-cnt")
+    {
+        fdt_ipt_desc_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-ire-desc-cell-cnt")
+    {
+        fdt_ire_desc_cell_cnt.yfilter = yfilter;
+    }
+    if(value_path == "fdt-transmitted-data-cells-cnt")
+    {
+        fdt_transmitted_data_cells_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-mmu-if-cnt")
+    {
+        idr_mmu_if_cnt.yfilter = yfilter;
+    }
+    if(value_path == "idr-ocb-if-cnt")
+    {
+        idr_ocb_if_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-cfg-byte-cnt")
+    {
+        ipt_cfg_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-cfg-event-cnt")
+    {
+        ipt_cfg_event_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-egq-pkt-cnt")
+    {
+        ipt_egq_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-enq-pkt-cnt")
+    {
+        ipt_enq_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ipt-fdt-pkt-cnt")
+    {
+        ipt_fdt_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-deleted-pkt-cnt")
+    {
+        iqm_deleted_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-dequeue-pkt-cnt")
+    {
+        iqm_dequeue_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-enq-discarded-pkt-cnt")
+    {
+        iqm_enq_discarded_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "iqm-enqueue-pkt-cnt")
+    {
+        iqm_enqueue_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ire-cpu-pkt-cnt")
+    {
+        ire_cpu_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ire-fdt-if-cnt")
+    {
+        ire_fdt_if_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ire-nif-pkt-cnt")
+    {
+        ire_nif_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ire-oamp-pkt-cnt")
+    {
+        ire_oamp_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ire-olp-pkt-cnt")
+    {
+        ire_olp_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "ire-rcy-pkt-cnt")
+    {
+        ire_rcy_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-total-byte-cnt")
+    {
+        nbi_rx_total_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-rx-total-pkt-cnt")
+    {
+        nbi_rx_total_pkt_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-tx-total-byte-cnt")
+    {
+        nbi_tx_total_byte_cnt.yfilter = yfilter;
+    }
+    if(value_path == "nbi-tx-total-pkt-cnt")
+    {
+        nbi_tx_total_pkt_cnt.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsForNpuIds::AsicStatisticsForNpuId::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egq-deleted-pkt-cnt" || name == "egq-ehp-mc-high-discard-cnt" || name == "egq-ehp-mc-high-pkt-cnt" || name == "egq-ehp-mc-low-discard-cnt" || name == "egq-ehp-mc-low-pkt-cnt" || name == "egq-ehp-uc-pkt-cnt" || name == "egq-erpp-lag-pruning-discard-cnt" || name == "egq-erpp-pmf-discard-cnt" || name == "egq-erpp-vlan-mbr-discard-cnt" || name == "egq-fqp-pkt-cnt" || name == "egq-pqp-discard-mc-pkt-cnt" || name == "egq-pqp-discard-uc-pkt-cnt" || name == "egq-pqp-mc-bytes-cnt" || name == "egq-pqp-mc-pkt-cnt" || name == "egq-pqp-uc-bytes-cnt" || name == "egq-pqp-uc-pkt-cnt" || name == "epni-epe-byte-cnt" || name == "epni-epe-discard-cnt" || name == "epni-epe-pkt-cnt" || name == "fda-cells-in-cnt-p1" || name == "fda-cells-in-cnt-p2" || name == "fda-cells-in-cnt-p3" || name == "fda-cells-in-ipt-cnt" || name == "fda-cells-in-meshmc-cnt" || name == "fda-cells-in-tdm-cnt" || name == "fda-cells-out-cnt-p1" || name == "fda-cells-out-cnt-p2" || name == "fda-cells-out-cnt-p3" || name == "fda-cells-out-ipt-cnt" || name == "fda-cells-out-meshmc-cnt" || name == "fda-cells-out-tdm-cnt" || name == "fda-egq-drop-cnt" || name == "fda-egq-meshmc-drop-cnt" || name == "fdr-cell-in-cnt-total" || name == "fdr-p1-cell-in-cnt" || name == "fdr-p2-cell-in-cnt" || name == "fdr-p3-cell-in-cnt" || name == "fdt-ipt-desc-cell-cnt" || name == "fdt-ire-desc-cell-cnt" || name == "fdt-transmitted-data-cells-cnt" || name == "idr-mmu-if-cnt" || name == "idr-ocb-if-cnt" || name == "ipt-cfg-byte-cnt" || name == "ipt-cfg-event-cnt" || name == "ipt-egq-pkt-cnt" || name == "ipt-enq-pkt-cnt" || name == "ipt-fdt-pkt-cnt" || name == "iqm-deleted-pkt-cnt" || name == "iqm-dequeue-pkt-cnt" || name == "iqm-enq-discarded-pkt-cnt" || name == "iqm-enqueue-pkt-cnt" || name == "ire-cpu-pkt-cnt" || name == "ire-fdt-if-cnt" || name == "ire-nif-pkt-cnt" || name == "ire-oamp-pkt-cnt" || name == "ire-olp-pkt-cnt" || name == "ire-rcy-pkt-cnt" || name == "nbi-rx-total-byte-cnt" || name == "nbi-rx-total-pkt-cnt" || name == "nbi-tx-total-byte-cnt" || name == "nbi-tx-total-pkt-cnt")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuIds()
+{
+    yang_name = "asic-statistics-detail-for-npu-ids"; yang_parent_name = "asic-statistics";
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::~AsicStatisticsDetailForNpuIds()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::has_data() const
+{
+    for (std::size_t index=0; index<asic_statistics_detail_for_npu_id.size(); index++)
+    {
+        if(asic_statistics_detail_for_npu_id[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::has_operation() const
+{
+    for (std::size_t index=0; index<asic_statistics_detail_for_npu_id.size(); index++)
+    {
+        if(asic_statistics_detail_for_npu_id[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-statistics-detail-for-npu-ids";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'AsicStatisticsDetailForNpuIds' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "asic-statistics-detail-for-npu-id")
+    {
+        for(auto const & c : asic_statistics_detail_for_npu_id)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1848,19 +2578,19 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::
                 return c;
             }
         }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData>();
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId>();
         c->parent = this;
-        voq_base_stats_data.push_back(c);
+        asic_statistics_detail_for_npu_id.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : voq_base_stats_data)
+    for (auto const & c : asic_statistics_detail_for_npu_id)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1868,20 +2598,1030 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseN
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "npu-number")
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asic-statistics-detail-for-npu-id")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::AsicStatisticsDetailForNpuId()
+    :
+    npu_id{YType::int32, "npu-id"},
+    asic_instance{YType::uint32, "asic-instance"},
+    chip_version{YType::uint16, "chip-version"},
+    rack_number{YType::uint32, "rack-number"},
+    slot_number{YType::uint32, "slot-number"},
+    valid{YType::boolean, "valid"}
+    	,
+    statistics(std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics>())
+{
+    statistics->parent = this;
+
+    yang_name = "asic-statistics-detail-for-npu-id"; yang_parent_name = "asic-statistics-detail-for-npu-ids";
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::~AsicStatisticsDetailForNpuId()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::has_data() const
+{
+    return npu_id.is_set
+	|| asic_instance.is_set
+	|| chip_version.is_set
+	|| rack_number.is_set
+	|| slot_number.is_set
+	|| valid.is_set
+	|| (statistics !=  nullptr && statistics->has_data());
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(npu_id.yfilter)
+	|| ydk::is_set(asic_instance.yfilter)
+	|| ydk::is_set(chip_version.yfilter)
+	|| ydk::is_set(rack_number.yfilter)
+	|| ydk::is_set(slot_number.yfilter)
+	|| ydk::is_set(valid.yfilter)
+	|| (statistics !=  nullptr && statistics->has_operation());
+}
+
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "asic-statistics-detail-for-npu-id" <<"[npu-id='" <<npu_id <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
     {
-        npu_number = value;
+        throw(YCPPInvalidArgumentError{"ancestor for 'AsicStatisticsDetailForNpuId' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (asic_instance.is_set || is_set(asic_instance.yfilter)) leaf_name_data.push_back(asic_instance.get_name_leafdata());
+    if (chip_version.is_set || is_set(chip_version.yfilter)) leaf_name_data.push_back(chip_version.get_name_leafdata());
+    if (rack_number.is_set || is_set(rack_number.yfilter)) leaf_name_data.push_back(rack_number.get_name_leafdata());
+    if (slot_number.is_set || is_set(slot_number.yfilter)) leaf_name_data.push_back(slot_number.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "statistics")
+    {
+        if(statistics == nullptr)
+        {
+            statistics = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics>();
+        }
+        return statistics;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(statistics != nullptr)
+    {
+        children["statistics"] = statistics;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "npu-id")
+    {
+        npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "asic-instance")
+    {
+        asic_instance = value;
+        asic_instance.value_namespace = name_space;
+        asic_instance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chip-version")
+    {
+        chip_version = value;
+        chip_version.value_namespace = name_space;
+        chip_version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rack-number")
+    {
+        rack_number = value;
+        rack_number.value_namespace = name_space;
+        rack_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slot-number")
+    {
+        slot_number = value;
+        slot_number.value_namespace = name_space;
+        slot_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "valid")
+    {
+        valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqBaseStatsData()
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "npu-id")
+    {
+        npu_id.yfilter = yfilter;
+    }
+    if(value_path == "asic-instance")
+    {
+        asic_instance.yfilter = yfilter;
+    }
+    if(value_path == "chip-version")
+    {
+        chip_version.yfilter = yfilter;
+    }
+    if(value_path == "rack-number")
+    {
+        rack_number.yfilter = yfilter;
+    }
+    if(value_path == "slot-number")
+    {
+        slot_number.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics" || name == "npu-id" || name == "asic-instance" || name == "chip-version" || name == "rack-number" || name == "slot-number" || name == "valid")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::Statistics()
+    :
+    num_blocks{YType::uint8, "num-blocks"}
+{
+    yang_name = "statistics"; yang_parent_name = "asic-statistics-detail-for-npu-id";
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::~Statistics()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::has_data() const
+{
+    for (std::size_t index=0; index<block_info.size(); index++)
+    {
+        if(block_info[index]->has_data())
+            return true;
+    }
+    return num_blocks.is_set;
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::has_operation() const
+{
+    for (std::size_t index=0; index<block_info.size(); index++)
+    {
+        if(block_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(num_blocks.yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "statistics";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Statistics' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_blocks.is_set || is_set(num_blocks.yfilter)) leaf_name_data.push_back(num_blocks.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "block-info")
+    {
+        for(auto const & c : block_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo>();
+        c->parent = this;
+        block_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : block_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-blocks")
+    {
+        num_blocks = value;
+        num_blocks.value_namespace = name_space;
+        num_blocks.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-blocks")
+    {
+        num_blocks.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "block-info" || name == "num-blocks")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::BlockInfo()
+    :
+    block_name{YType::str, "block-name"},
+    num_fields{YType::uint8, "num-fields"}
+{
+    yang_name = "block-info"; yang_parent_name = "statistics";
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::~BlockInfo()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::has_data() const
+{
+    for (std::size_t index=0; index<field_info.size(); index++)
+    {
+        if(field_info[index]->has_data())
+            return true;
+    }
+    return block_name.is_set
+	|| num_fields.is_set;
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::has_operation() const
+{
+    for (std::size_t index=0; index<field_info.size(); index++)
+    {
+        if(field_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(block_name.yfilter)
+	|| ydk::is_set(num_fields.yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "block-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'BlockInfo' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (block_name.is_set || is_set(block_name.yfilter)) leaf_name_data.push_back(block_name.get_name_leafdata());
+    if (num_fields.is_set || is_set(num_fields.yfilter)) leaf_name_data.push_back(num_fields.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "field-info")
+    {
+        for(auto const & c : field_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo>();
+        c->parent = this;
+        field_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : field_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "block-name")
+    {
+        block_name = value;
+        block_name.value_namespace = name_space;
+        block_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-fields")
+    {
+        num_fields = value;
+        num_fields.value_namespace = name_space;
+        num_fields.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "block-name")
+    {
+        block_name.yfilter = yfilter;
+    }
+    if(value_path == "num-fields")
+    {
+        num_fields.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "field-info" || name == "block-name" || name == "num-fields")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::FieldInfo()
+    :
+    field_name{YType::str, "field-name"},
+    field_value{YType::uint64, "field-value"},
+    is_overflow{YType::boolean, "is-overflow"}
+{
+    yang_name = "field-info"; yang_parent_name = "block-info";
+}
+
+Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::~FieldInfo()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::has_data() const
+{
+    return field_name.is_set
+	|| field_value.is_set
+	|| is_overflow.is_set;
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(field_name.yfilter)
+	|| ydk::is_set(field_value.yfilter)
+	|| ydk::is_set(is_overflow.yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "field-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'FieldInfo' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (field_name.is_set || is_set(field_name.yfilter)) leaf_name_data.push_back(field_name.get_name_leafdata());
+    if (field_value.is_set || is_set(field_value.yfilter)) leaf_name_data.push_back(field_value.get_name_leafdata());
+    if (is_overflow.is_set || is_set(is_overflow.yfilter)) leaf_name_data.push_back(is_overflow.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "field-name")
+    {
+        field_name = value;
+        field_name.value_namespace = name_space;
+        field_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "field-value")
+    {
+        field_value = value;
+        field_value.value_namespace = name_space;
+        field_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-overflow")
+    {
+        is_overflow = value;
+        is_overflow.value_namespace = name_space;
+        is_overflow.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "field-name")
+    {
+        field_name.yfilter = yfilter;
+    }
+    if(value_path == "field-value")
+    {
+        field_value.yfilter = yfilter;
+    }
+    if(value_path == "is-overflow")
+    {
+        is_overflow.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuIds::AsicStatisticsDetailForNpuId::Statistics::BlockInfo::FieldInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "field-name" || name == "field-value" || name == "is-overflow")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumbers()
+{
+    yang_name = "npu-numbers"; yang_parent_name = "node";
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::~NpuNumbers()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::has_data() const
+{
+    for (std::size_t index=0; index<npu_number.size(); index++)
+    {
+        if(npu_number[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::has_operation() const
+{
+    for (std::size_t index=0; index<npu_number.size(); index++)
+    {
+        if(npu_number[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "npu-numbers";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumbers' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "npu-number")
+    {
+        for(auto const & c : npu_number)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber>();
+        c->parent = this;
+        npu_number.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : npu_number)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "npu-number")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::NpuNumber()
+    :
+    npu_id{YType::int32, "npu-id"}
+    	,
+    display(std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display>())
+{
+    display->parent = this;
+
+    yang_name = "npu-number"; yang_parent_name = "npu-numbers";
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::~NpuNumber()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::has_data() const
+{
+    return npu_id.is_set
+	|| (display !=  nullptr && display->has_data());
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(npu_id.yfilter)
+	|| (display !=  nullptr && display->has_operation());
+}
+
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "npu-number" <<"[npu-id='" <<npu_id <<"']";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumber' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "display")
+    {
+        if(display == nullptr)
+        {
+            display = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display>();
+        }
+        return display;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(display != nullptr)
+    {
+        children["display"] = display;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "npu-id")
+    {
+        npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "npu-id")
+    {
+        npu_id.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "display" || name == "npu-id")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::Display()
+    :
+    base_numbers(std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers>())
+	,interface_handles(std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles>())
+	,trap_ids(std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds>())
+{
+    base_numbers->parent = this;
+
+    interface_handles->parent = this;
+
+    trap_ids->parent = this;
+
+    yang_name = "display"; yang_parent_name = "npu-number";
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::~Display()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::has_data() const
+{
+    return (base_numbers !=  nullptr && base_numbers->has_data())
+	|| (interface_handles !=  nullptr && interface_handles->has_data())
+	|| (trap_ids !=  nullptr && trap_ids->has_data());
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::has_operation() const
+{
+    return is_set(yfilter)
+	|| (base_numbers !=  nullptr && base_numbers->has_operation())
+	|| (interface_handles !=  nullptr && interface_handles->has_operation())
+	|| (trap_ids !=  nullptr && trap_ids->has_operation());
+}
+
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "display";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Display' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "base-numbers")
+    {
+        if(base_numbers == nullptr)
+        {
+            base_numbers = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers>();
+        }
+        return base_numbers;
+    }
+
+    if(child_yang_name == "interface-handles")
+    {
+        if(interface_handles == nullptr)
+        {
+            interface_handles = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles>();
+        }
+        return interface_handles;
+    }
+
+    if(child_yang_name == "trap-ids")
+    {
+        if(trap_ids == nullptr)
+        {
+            trap_ids = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds>();
+        }
+        return trap_ids;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base_numbers != nullptr)
+    {
+        children["base-numbers"] = base_numbers;
+    }
+
+    if(interface_handles != nullptr)
+    {
+        children["interface-handles"] = interface_handles;
+    }
+
+    if(trap_ids != nullptr)
+    {
+        children["trap-ids"] = trap_ids;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base-numbers" || name == "interface-handles" || name == "trap-ids")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumbers()
+{
+    yang_name = "base-numbers"; yang_parent_name = "display";
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::~BaseNumbers()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::has_data() const
+{
+    for (std::size_t index=0; index<base_number.size(); index++)
+    {
+        if(base_number[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::has_operation() const
+{
+    for (std::size_t index=0; index<base_number.size(); index++)
+    {
+        if(base_number[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "base-numbers";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'BaseNumbers' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "base-number")
+    {
+        for(auto const & c : base_number)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber>();
+        c->parent = this;
+        base_number.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : base_number)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base-number")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::BaseNumber()
     :
     base_number{YType::uint32, "base-number"},
     connector_id{YType::uint32, "connector-id"},
-    ifhandle{YType::uint32, "ifhandle"},
-    is_inuse{YType::boolean, "is-inuse"},
+    if_handle{YType::uint32, "if-handle"},
+    in_use{YType::boolean, "in-use"},
     is_local_port{YType::boolean, "is-local-port"},
     npu_core{YType::uint8, "npu-core"},
     npu_num{YType::uint8, "npu-num"},
@@ -1890,17 +3630,17 @@ Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqBas
     pp_port{YType::uint32, "pp-port"},
     rack_num{YType::uint8, "rack-num"},
     slot_num{YType::uint8, "slot-num"},
-    sysport{YType::uint32, "sysport"},
+    sys_port{YType::uint32, "sys-port"},
     voq_base{YType::uint32, "voq-base"}
 {
-    yang_name = "voq-base-stats-data"; yang_parent_name = "voq-base-number";
+    yang_name = "base-number"; yang_parent_name = "base-numbers";
 }
 
-Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::~VoqBaseStatsData()
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::~BaseNumber()
 {
 }
 
-bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::has_data() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::has_data() const
 {
     for (std::size_t index=0; index<voq_stat.size(); index++)
     {
@@ -1909,8 +3649,8 @@ bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::h
     }
     return base_number.is_set
 	|| connector_id.is_set
-	|| ifhandle.is_set
-	|| is_inuse.is_set
+	|| if_handle.is_set
+	|| in_use.is_set
 	|| is_local_port.is_set
 	|| npu_core.is_set
 	|| npu_num.is_set
@@ -1919,49 +3659,49 @@ bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::h
 	|| pp_port.is_set
 	|| rack_num.is_set
 	|| slot_num.is_set
-	|| sysport.is_set
+	|| sys_port.is_set
 	|| voq_base.is_set;
 }
 
-bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::has_operation() const
 {
     for (std::size_t index=0; index<voq_stat.size(); index++)
     {
         if(voq_stat[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(base_number.operation)
-	|| is_set(connector_id.operation)
-	|| is_set(ifhandle.operation)
-	|| is_set(is_inuse.operation)
-	|| is_set(is_local_port.operation)
-	|| is_set(npu_core.operation)
-	|| is_set(npu_num.operation)
-	|| is_set(port_num.operation)
-	|| is_set(port_speed.operation)
-	|| is_set(pp_port.operation)
-	|| is_set(rack_num.operation)
-	|| is_set(slot_num.operation)
-	|| is_set(sysport.operation)
-	|| is_set(voq_base.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(base_number.yfilter)
+	|| ydk::is_set(connector_id.yfilter)
+	|| ydk::is_set(if_handle.yfilter)
+	|| ydk::is_set(in_use.yfilter)
+	|| ydk::is_set(is_local_port.yfilter)
+	|| ydk::is_set(npu_core.yfilter)
+	|| ydk::is_set(npu_num.yfilter)
+	|| ydk::is_set(port_num.yfilter)
+	|| ydk::is_set(port_speed.yfilter)
+	|| ydk::is_set(pp_port.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(slot_num.yfilter)
+	|| ydk::is_set(sys_port.yfilter)
+	|| ydk::is_set(voq_base.yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "voq-base-stats-data" <<"[base-number='" <<base_number <<"']";
+    path_buffer << "base-number" <<"[base-number='" <<base_number <<"']";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VoqBaseStatsData' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'BaseNumber' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1970,20 +3710,20 @@ const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBase
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (base_number.is_set || is_set(base_number.operation)) leaf_name_data.push_back(base_number.get_name_leafdata());
-    if (connector_id.is_set || is_set(connector_id.operation)) leaf_name_data.push_back(connector_id.get_name_leafdata());
-    if (ifhandle.is_set || is_set(ifhandle.operation)) leaf_name_data.push_back(ifhandle.get_name_leafdata());
-    if (is_inuse.is_set || is_set(is_inuse.operation)) leaf_name_data.push_back(is_inuse.get_name_leafdata());
-    if (is_local_port.is_set || is_set(is_local_port.operation)) leaf_name_data.push_back(is_local_port.get_name_leafdata());
-    if (npu_core.is_set || is_set(npu_core.operation)) leaf_name_data.push_back(npu_core.get_name_leafdata());
-    if (npu_num.is_set || is_set(npu_num.operation)) leaf_name_data.push_back(npu_num.get_name_leafdata());
-    if (port_num.is_set || is_set(port_num.operation)) leaf_name_data.push_back(port_num.get_name_leafdata());
-    if (port_speed.is_set || is_set(port_speed.operation)) leaf_name_data.push_back(port_speed.get_name_leafdata());
-    if (pp_port.is_set || is_set(pp_port.operation)) leaf_name_data.push_back(pp_port.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.operation)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.operation)) leaf_name_data.push_back(slot_num.get_name_leafdata());
-    if (sysport.is_set || is_set(sysport.operation)) leaf_name_data.push_back(sysport.get_name_leafdata());
-    if (voq_base.is_set || is_set(voq_base.operation)) leaf_name_data.push_back(voq_base.get_name_leafdata());
+    if (base_number.is_set || is_set(base_number.yfilter)) leaf_name_data.push_back(base_number.get_name_leafdata());
+    if (connector_id.is_set || is_set(connector_id.yfilter)) leaf_name_data.push_back(connector_id.get_name_leafdata());
+    if (if_handle.is_set || is_set(if_handle.yfilter)) leaf_name_data.push_back(if_handle.get_name_leafdata());
+    if (in_use.is_set || is_set(in_use.yfilter)) leaf_name_data.push_back(in_use.get_name_leafdata());
+    if (is_local_port.is_set || is_set(is_local_port.yfilter)) leaf_name_data.push_back(is_local_port.get_name_leafdata());
+    if (npu_core.is_set || is_set(npu_core.yfilter)) leaf_name_data.push_back(npu_core.get_name_leafdata());
+    if (npu_num.is_set || is_set(npu_num.yfilter)) leaf_name_data.push_back(npu_num.get_name_leafdata());
+    if (port_num.is_set || is_set(port_num.yfilter)) leaf_name_data.push_back(port_num.get_name_leafdata());
+    if (port_speed.is_set || is_set(port_speed.yfilter)) leaf_name_data.push_back(port_speed.get_name_leafdata());
+    if (pp_port.is_set || is_set(pp_port.yfilter)) leaf_name_data.push_back(pp_port.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
+    if (sys_port.is_set || is_set(sys_port.yfilter)) leaf_name_data.push_back(sys_port.get_name_leafdata());
+    if (voq_base.is_set || is_set(voq_base.yfilter)) leaf_name_data.push_back(voq_base.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1991,7 +3731,7 @@ const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBase
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "voq-stat")
     {
@@ -2003,7 +3743,7 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::
                 return c;
             }
         }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat>();
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat>();
         c->parent = this;
         voq_stat.push_back(c);
         return c;
@@ -2012,7 +3752,7 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_stat)
@@ -2023,98 +3763,193 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseN
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "base-number")
     {
         base_number = value;
+        base_number.value_namespace = name_space;
+        base_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "connector-id")
     {
         connector_id = value;
+        connector_id.value_namespace = name_space;
+        connector_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ifhandle")
+    if(value_path == "if-handle")
     {
-        ifhandle = value;
+        if_handle = value;
+        if_handle.value_namespace = name_space;
+        if_handle.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-inuse")
+    if(value_path == "in-use")
     {
-        is_inuse = value;
+        in_use = value;
+        in_use.value_namespace = name_space;
+        in_use.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-local-port")
     {
         is_local_port = value;
+        is_local_port.value_namespace = name_space;
+        is_local_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "npu-core")
     {
         npu_core = value;
+        npu_core.value_namespace = name_space;
+        npu_core.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "npu-num")
     {
         npu_num = value;
+        npu_num.value_namespace = name_space;
+        npu_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-num")
     {
         port_num = value;
+        port_num.value_namespace = name_space;
+        port_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-speed")
     {
         port_speed = value;
+        port_speed.value_namespace = name_space;
+        port_speed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pp-port")
     {
         pp_port = value;
+        pp_port.value_namespace = name_space;
+        pp_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rack-num")
     {
         rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slot-num")
     {
         slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sysport")
+    if(value_path == "sys-port")
     {
-        sysport = value;
+        sys_port = value;
+        sys_port.value_namespace = name_space;
+        sys_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "voq-base")
     {
         voq_base = value;
+        voq_base.value_namespace = name_space;
+        voq_base.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::VoqStat()
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "base-number")
+    {
+        base_number.yfilter = yfilter;
+    }
+    if(value_path == "connector-id")
+    {
+        connector_id.yfilter = yfilter;
+    }
+    if(value_path == "if-handle")
+    {
+        if_handle.yfilter = yfilter;
+    }
+    if(value_path == "in-use")
+    {
+        in_use.yfilter = yfilter;
+    }
+    if(value_path == "is-local-port")
+    {
+        is_local_port.yfilter = yfilter;
+    }
+    if(value_path == "npu-core")
+    {
+        npu_core.yfilter = yfilter;
+    }
+    if(value_path == "npu-num")
+    {
+        npu_num.yfilter = yfilter;
+    }
+    if(value_path == "port-num")
+    {
+        port_num.yfilter = yfilter;
+    }
+    if(value_path == "port-speed")
+    {
+        port_speed.yfilter = yfilter;
+    }
+    if(value_path == "pp-port")
+    {
+        pp_port.yfilter = yfilter;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num.yfilter = yfilter;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num.yfilter = yfilter;
+    }
+    if(value_path == "sys-port")
+    {
+        sys_port.yfilter = yfilter;
+    }
+    if(value_path == "voq-base")
+    {
+        voq_base.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "voq-stat" || name == "base-number" || name == "connector-id" || name == "if-handle" || name == "in-use" || name == "is-local-port" || name == "npu-core" || name == "npu-num" || name == "port-num" || name == "port-speed" || name == "pp-port" || name == "rack-num" || name == "slot-num" || name == "sys-port" || name == "voq-base")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::VoqStat()
     :
-    gport_dropped_bytes{YType::uint64, "gport-dropped-bytes"},
-    gport_dropped_pkts{YType::uint64, "gport-dropped-pkts"},
-    gport_received_bytes{YType::uint64, "gport-received-bytes"},
-    gport_received_pkts{YType::uint64, "gport-received-pkts"}
+    dropped_bytes{YType::uint64, "dropped-bytes"},
+    dropped_packets{YType::uint64, "dropped-packets"},
+    received_bytes{YType::uint64, "received-bytes"},
+    received_packets{YType::uint64, "received-packets"}
 {
-    yang_name = "voq-stat"; yang_parent_name = "voq-base-stats-data";
+    yang_name = "voq-stat"; yang_parent_name = "base-number";
 }
 
-Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::~VoqStat()
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::~VoqStat()
 {
 }
 
-bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::has_data() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::has_data() const
 {
-    return gport_dropped_bytes.is_set
-	|| gport_dropped_pkts.is_set
-	|| gport_received_bytes.is_set
-	|| gport_received_pkts.is_set;
+    return dropped_bytes.is_set
+	|| dropped_packets.is_set
+	|| received_bytes.is_set
+	|| received_packets.is_set;
 }
 
-bool Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(gport_dropped_bytes.operation)
-	|| is_set(gport_dropped_pkts.operation)
-	|| is_set(gport_received_bytes.operation)
-	|| is_set(gport_received_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dropped_bytes.yfilter)
+	|| ydk::is_set(dropped_packets.yfilter)
+	|| ydk::is_set(received_bytes.yfilter)
+	|| ydk::is_set(received_packets.yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "voq-stat";
@@ -2123,7 +3958,7 @@ std::string Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStats
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2137,10 +3972,10 @@ const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBase
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (gport_dropped_bytes.is_set || is_set(gport_dropped_bytes.operation)) leaf_name_data.push_back(gport_dropped_bytes.get_name_leafdata());
-    if (gport_dropped_pkts.is_set || is_set(gport_dropped_pkts.operation)) leaf_name_data.push_back(gport_dropped_pkts.get_name_leafdata());
-    if (gport_received_bytes.is_set || is_set(gport_received_bytes.operation)) leaf_name_data.push_back(gport_received_bytes.get_name_leafdata());
-    if (gport_received_pkts.is_set || is_set(gport_received_pkts.operation)) leaf_name_data.push_back(gport_received_pkts.get_name_leafdata());
+    if (dropped_bytes.is_set || is_set(dropped_bytes.yfilter)) leaf_name_data.push_back(dropped_bytes.get_name_leafdata());
+    if (dropped_packets.is_set || is_set(dropped_packets.yfilter)) leaf_name_data.push_back(dropped_packets.get_name_leafdata());
+    if (received_bytes.is_set || is_set(received_bytes.yfilter)) leaf_name_data.push_back(received_bytes.get_name_leafdata());
+    if (received_packets.is_set || is_set(received_packets.yfilter)) leaf_name_data.push_back(received_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2148,81 +3983,116 @@ const EntityPath Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBase
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::VoqBaseNumbers::VoqBaseNumber::VoqBaseStatsData::VoqStat::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "gport-dropped-bytes")
+    if(value_path == "dropped-bytes")
     {
-        gport_dropped_bytes = value;
+        dropped_bytes = value;
+        dropped_bytes.value_namespace = name_space;
+        dropped_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "gport-dropped-pkts")
+    if(value_path == "dropped-packets")
     {
-        gport_dropped_pkts = value;
+        dropped_packets = value;
+        dropped_packets.value_namespace = name_space;
+        dropped_packets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "gport-received-bytes")
+    if(value_path == "received-bytes")
     {
-        gport_received_bytes = value;
+        received_bytes = value;
+        received_bytes.value_namespace = name_space;
+        received_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "gport-received-pkts")
+    if(value_path == "received-packets")
     {
-        gport_received_pkts = value;
+        received_packets = value;
+        received_packets.value_namespace = name_space;
+        received_packets.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqDatas()
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "npu-number-for-voq-datas"; yang_parent_name = "node";
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::~NpuNumberForVoqDatas()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::has_data() const
-{
-    for (std::size_t index=0; index<npu_number_for_voq_data.size(); index++)
+    if(value_path == "dropped-bytes")
     {
-        if(npu_number_for_voq_data[index]->has_data())
+        dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "dropped-packets")
+    {
+        dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "received-bytes")
+    {
+        received_bytes.yfilter = yfilter;
+    }
+    if(value_path == "received-packets")
+    {
+        received_packets.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers::BaseNumber::VoqStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dropped-bytes" || name == "dropped-packets" || name == "received-bytes" || name == "received-packets")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapIds()
+{
+    yang_name = "trap-ids"; yang_parent_name = "display";
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::~TrapIds()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::has_data() const
+{
+    for (std::size_t index=0; index<trap_id.size(); index++)
+    {
+        if(trap_id[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::has_operation() const
 {
-    for (std::size_t index=0; index<npu_number_for_voq_data.size(); index++)
+    for (std::size_t index=0; index<trap_id.size(); index++)
     {
-        if(npu_number_for_voq_data[index]->has_operation())
+        if(trap_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "npu-number-for-voq-datas";
+    path_buffer << "trap-ids";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumberForVoqDatas' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'TrapIds' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2238,11 +4108,11 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_entity_path(
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "npu-number-for-voq-data")
+    if(child_yang_name == "trap-id")
     {
-        for(auto const & c : npu_number_for_voq_data)
+        for(auto const & c : trap_id)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2250,19 +4120,19 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_child
                 return c;
             }
         }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData>();
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId>();
         c->parent = this;
-        npu_number_for_voq_data.push_back(c);
+        trap_id.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : npu_number_for_voq_data)
+    for (auto const & c : trap_id)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2270,57 +4140,103 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbe
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::NpuNumberForVoqData()
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-id")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::TrapId()
     :
-    npu_id{YType::int32, "npu-id"}
+    trap_id{YType::uint32, "trap-id"},
+    encap_id{YType::uint32, "encap-id"},
+    fec_id{YType::uint32, "fec-id"},
+    gport{YType::uint32, "gport"},
+    id{YType::uint32, "id"},
+    mc_group{YType::uint32, "mc-group"},
+    npu_id{YType::uint64, "npu-id"},
+    offset{YType::uint64, "offset"},
+    packet_accepted{YType::uint64, "packet-accepted"},
+    packet_dropped{YType::uint64, "packet-dropped"},
+    policer_id{YType::uint32, "policer-id"},
+    priority{YType::uint32, "priority"},
+    stats_id{YType::uint32, "stats-id"},
+    trap_id_xr{YType::uint32, "trap-id-xr"},
+    trap_strength{YType::uint32, "trap-strength"},
+    trap_string{YType::str, "trap-string"}
 {
-    yang_name = "npu-number-for-voq-data"; yang_parent_name = "npu-number-for-voq-datas";
+    yang_name = "trap-id"; yang_parent_name = "trap-ids";
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::~NpuNumberForVoqData()
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::~TrapId()
 {
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::has_data() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::has_data() const
 {
-    for (std::size_t index=0; index<voq_specific_stats_data.size(); index++)
-    {
-        if(voq_specific_stats_data[index]->has_data())
-            return true;
-    }
-    return npu_id.is_set;
+    return trap_id.is_set
+	|| encap_id.is_set
+	|| fec_id.is_set
+	|| gport.is_set
+	|| id.is_set
+	|| mc_group.is_set
+	|| npu_id.is_set
+	|| offset.is_set
+	|| packet_accepted.is_set
+	|| packet_dropped.is_set
+	|| policer_id.is_set
+	|| priority.is_set
+	|| stats_id.is_set
+	|| trap_id_xr.is_set
+	|| trap_strength.is_set
+	|| trap_string.is_set;
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::has_operation() const
 {
-    for (std::size_t index=0; index<voq_specific_stats_data.size(); index++)
-    {
-        if(voq_specific_stats_data[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(npu_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(trap_id.yfilter)
+	|| ydk::is_set(encap_id.yfilter)
+	|| ydk::is_set(fec_id.yfilter)
+	|| ydk::is_set(gport.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(mc_group.yfilter)
+	|| ydk::is_set(npu_id.yfilter)
+	|| ydk::is_set(offset.yfilter)
+	|| ydk::is_set(packet_accepted.yfilter)
+	|| ydk::is_set(packet_dropped.yfilter)
+	|| ydk::is_set(policer_id.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(stats_id.yfilter)
+	|| ydk::is_set(trap_id_xr.yfilter)
+	|| ydk::is_set(trap_strength.yfilter)
+	|| ydk::is_set(trap_string.yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "npu-number-for-voq-data" <<"[npu-id='" <<npu_id <<"']";
+    path_buffer << "trap-id" <<"[trap-id='" <<trap_id <<"']";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumberForVoqData' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'TrapId' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2329,7 +4245,22 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (trap_id.is_set || is_set(trap_id.yfilter)) leaf_name_data.push_back(trap_id.get_name_leafdata());
+    if (encap_id.is_set || is_set(encap_id.yfilter)) leaf_name_data.push_back(encap_id.get_name_leafdata());
+    if (fec_id.is_set || is_set(fec_id.yfilter)) leaf_name_data.push_back(fec_id.get_name_leafdata());
+    if (gport.is_set || is_set(gport.yfilter)) leaf_name_data.push_back(gport.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (mc_group.is_set || is_set(mc_group.yfilter)) leaf_name_data.push_back(mc_group.get_name_leafdata());
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (offset.is_set || is_set(offset.yfilter)) leaf_name_data.push_back(offset.get_name_leafdata());
+    if (packet_accepted.is_set || is_set(packet_accepted.yfilter)) leaf_name_data.push_back(packet_accepted.get_name_leafdata());
+    if (packet_dropped.is_set || is_set(packet_dropped.yfilter)) leaf_name_data.push_back(packet_dropped.get_name_leafdata());
+    if (policer_id.is_set || is_set(policer_id.yfilter)) leaf_name_data.push_back(policer_id.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (stats_id.is_set || is_set(stats_id.yfilter)) leaf_name_data.push_back(stats_id.get_name_leafdata());
+    if (trap_id_xr.is_set || is_set(trap_id_xr.yfilter)) leaf_name_data.push_back(trap_id_xr.get_name_leafdata());
+    if (trap_strength.is_set || is_set(trap_strength.yfilter)) leaf_name_data.push_back(trap_strength.get_name_leafdata());
+    if (trap_string.is_set || is_set(trap_string.yfilter)) leaf_name_data.push_back(trap_string.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2337,52 +4268,304 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqD
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "voq-specific-stats-data")
-    {
-        for(auto const & c : voq_specific_stats_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData>();
-        c->parent = this;
-        voq_specific_stats_data.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : voq_specific_stats_data)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "trap-id")
+    {
+        trap_id = value;
+        trap_id.value_namespace = name_space;
+        trap_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encap-id")
+    {
+        encap_id = value;
+        encap_id.value_namespace = name_space;
+        encap_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fec-id")
+    {
+        fec_id = value;
+        fec_id.value_namespace = name_space;
+        fec_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "gport")
+    {
+        gport = value;
+        gport.value_namespace = name_space;
+        gport.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mc-group")
+    {
+        mc_group = value;
+        mc_group.value_namespace = name_space;
+        mc_group.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "npu-id")
     {
         npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "offset")
+    {
+        offset = value;
+        offset.value_namespace = name_space;
+        offset.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packet-accepted")
+    {
+        packet_accepted = value;
+        packet_accepted.value_namespace = name_space;
+        packet_accepted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packet-dropped")
+    {
+        packet_dropped = value;
+        packet_dropped.value_namespace = name_space;
+        packet_dropped.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policer-id")
+    {
+        policer_id = value;
+        policer_id.value_namespace = name_space;
+        policer_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stats-id")
+    {
+        stats_id = value;
+        stats_id.value_namespace = name_space;
+        stats_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trap-id-xr")
+    {
+        trap_id_xr = value;
+        trap_id_xr.value_namespace = name_space;
+        trap_id_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trap-strength")
+    {
+        trap_strength = value;
+        trap_strength.value_namespace = name_space;
+        trap_strength.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trap-string")
+    {
+        trap_string = value;
+        trap_string.value_namespace = name_space;
+        trap_string.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqSpecificStatsData()
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "trap-id")
+    {
+        trap_id.yfilter = yfilter;
+    }
+    if(value_path == "encap-id")
+    {
+        encap_id.yfilter = yfilter;
+    }
+    if(value_path == "fec-id")
+    {
+        fec_id.yfilter = yfilter;
+    }
+    if(value_path == "gport")
+    {
+        gport.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "mc-group")
+    {
+        mc_group.yfilter = yfilter;
+    }
+    if(value_path == "npu-id")
+    {
+        npu_id.yfilter = yfilter;
+    }
+    if(value_path == "offset")
+    {
+        offset.yfilter = yfilter;
+    }
+    if(value_path == "packet-accepted")
+    {
+        packet_accepted.yfilter = yfilter;
+    }
+    if(value_path == "packet-dropped")
+    {
+        packet_dropped.yfilter = yfilter;
+    }
+    if(value_path == "policer-id")
+    {
+        policer_id.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "stats-id")
+    {
+        stats_id.yfilter = yfilter;
+    }
+    if(value_path == "trap-id-xr")
+    {
+        trap_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "trap-strength")
+    {
+        trap_strength.yfilter = yfilter;
+    }
+    if(value_path == "trap-string")
+    {
+        trap_string.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::TrapIds::TrapId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-id" || name == "encap-id" || name == "fec-id" || name == "gport" || name == "id" || name == "mc-group" || name == "npu-id" || name == "offset" || name == "packet-accepted" || name == "packet-dropped" || name == "policer-id" || name == "priority" || name == "stats-id" || name == "trap-id-xr" || name == "trap-strength" || name == "trap-string")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandles()
+{
+    yang_name = "interface-handles"; yang_parent_name = "display";
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::~InterfaceHandles()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::has_data() const
+{
+    for (std::size_t index=0; index<interface_handle.size(); index++)
+    {
+        if(interface_handle[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::has_operation() const
+{
+    for (std::size_t index=0; index<interface_handle.size(); index++)
+    {
+        if(interface_handle[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-handles";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceHandles' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-handle")
+    {
+        for(auto const & c : interface_handle)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle>();
+        c->parent = this;
+        interface_handle.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : interface_handle)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-handle")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::InterfaceHandle()
     :
-    voq_data{YType::int32, "voq-data"},
+    interface_handle{YType::uint32, "interface-handle"},
     connector_id{YType::uint32, "connector-id"},
-    ifhandle{YType::uint32, "ifhandle"},
-    is_inuse{YType::boolean, "is-inuse"},
+    if_handle{YType::uint32, "if-handle"},
+    in_use{YType::boolean, "in-use"},
     is_local_port{YType::boolean, "is-local-port"},
     npu_core{YType::uint8, "npu-core"},
     npu_num{YType::uint8, "npu-num"},
@@ -2391,27 +4574,27 @@ Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificS
     pp_port{YType::uint32, "pp-port"},
     rack_num{YType::uint8, "rack-num"},
     slot_num{YType::uint8, "slot-num"},
-    sysport{YType::uint32, "sysport"},
+    sys_port{YType::uint32, "sys-port"},
     voq_base{YType::uint32, "voq-base"}
 {
-    yang_name = "voq-specific-stats-data"; yang_parent_name = "npu-number-for-voq-data";
+    yang_name = "interface-handle"; yang_parent_name = "interface-handles";
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::~VoqSpecificStatsData()
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::~InterfaceHandle()
 {
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::has_data() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::has_data() const
 {
     for (std::size_t index=0; index<voq_stat.size(); index++)
     {
         if(voq_stat[index]->has_data())
             return true;
     }
-    return voq_data.is_set
+    return interface_handle.is_set
 	|| connector_id.is_set
-	|| ifhandle.is_set
-	|| is_inuse.is_set
+	|| if_handle.is_set
+	|| in_use.is_set
 	|| is_local_port.is_set
 	|| npu_core.is_set
 	|| npu_num.is_set
@@ -2420,49 +4603,49 @@ bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpec
 	|| pp_port.is_set
 	|| rack_num.is_set
 	|| slot_num.is_set
-	|| sysport.is_set
+	|| sys_port.is_set
 	|| voq_base.is_set;
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::has_operation() const
 {
     for (std::size_t index=0; index<voq_stat.size(); index++)
     {
         if(voq_stat[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(voq_data.operation)
-	|| is_set(connector_id.operation)
-	|| is_set(ifhandle.operation)
-	|| is_set(is_inuse.operation)
-	|| is_set(is_local_port.operation)
-	|| is_set(npu_core.operation)
-	|| is_set(npu_num.operation)
-	|| is_set(port_num.operation)
-	|| is_set(port_speed.operation)
-	|| is_set(pp_port.operation)
-	|| is_set(rack_num.operation)
-	|| is_set(slot_num.operation)
-	|| is_set(sysport.operation)
-	|| is_set(voq_base.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(connector_id.yfilter)
+	|| ydk::is_set(if_handle.yfilter)
+	|| ydk::is_set(in_use.yfilter)
+	|| ydk::is_set(is_local_port.yfilter)
+	|| ydk::is_set(npu_core.yfilter)
+	|| ydk::is_set(npu_num.yfilter)
+	|| ydk::is_set(port_num.yfilter)
+	|| ydk::is_set(port_speed.yfilter)
+	|| ydk::is_set(pp_port.yfilter)
+	|| ydk::is_set(rack_num.yfilter)
+	|| ydk::is_set(slot_num.yfilter)
+	|| ydk::is_set(sys_port.yfilter)
+	|| ydk::is_set(voq_base.yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "voq-specific-stats-data" <<"[voq-data='" <<voq_data <<"']";
+    path_buffer << "interface-handle" <<"[interface-handle='" <<interface_handle <<"']";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VoqSpecificStatsData' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceHandle' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2471,20 +4654,20 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (voq_data.is_set || is_set(voq_data.operation)) leaf_name_data.push_back(voq_data.get_name_leafdata());
-    if (connector_id.is_set || is_set(connector_id.operation)) leaf_name_data.push_back(connector_id.get_name_leafdata());
-    if (ifhandle.is_set || is_set(ifhandle.operation)) leaf_name_data.push_back(ifhandle.get_name_leafdata());
-    if (is_inuse.is_set || is_set(is_inuse.operation)) leaf_name_data.push_back(is_inuse.get_name_leafdata());
-    if (is_local_port.is_set || is_set(is_local_port.operation)) leaf_name_data.push_back(is_local_port.get_name_leafdata());
-    if (npu_core.is_set || is_set(npu_core.operation)) leaf_name_data.push_back(npu_core.get_name_leafdata());
-    if (npu_num.is_set || is_set(npu_num.operation)) leaf_name_data.push_back(npu_num.get_name_leafdata());
-    if (port_num.is_set || is_set(port_num.operation)) leaf_name_data.push_back(port_num.get_name_leafdata());
-    if (port_speed.is_set || is_set(port_speed.operation)) leaf_name_data.push_back(port_speed.get_name_leafdata());
-    if (pp_port.is_set || is_set(pp_port.operation)) leaf_name_data.push_back(pp_port.get_name_leafdata());
-    if (rack_num.is_set || is_set(rack_num.operation)) leaf_name_data.push_back(rack_num.get_name_leafdata());
-    if (slot_num.is_set || is_set(slot_num.operation)) leaf_name_data.push_back(slot_num.get_name_leafdata());
-    if (sysport.is_set || is_set(sysport.operation)) leaf_name_data.push_back(sysport.get_name_leafdata());
-    if (voq_base.is_set || is_set(voq_base.operation)) leaf_name_data.push_back(voq_base.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (connector_id.is_set || is_set(connector_id.yfilter)) leaf_name_data.push_back(connector_id.get_name_leafdata());
+    if (if_handle.is_set || is_set(if_handle.yfilter)) leaf_name_data.push_back(if_handle.get_name_leafdata());
+    if (in_use.is_set || is_set(in_use.yfilter)) leaf_name_data.push_back(in_use.get_name_leafdata());
+    if (is_local_port.is_set || is_set(is_local_port.yfilter)) leaf_name_data.push_back(is_local_port.get_name_leafdata());
+    if (npu_core.is_set || is_set(npu_core.yfilter)) leaf_name_data.push_back(npu_core.get_name_leafdata());
+    if (npu_num.is_set || is_set(npu_num.yfilter)) leaf_name_data.push_back(npu_num.get_name_leafdata());
+    if (port_num.is_set || is_set(port_num.yfilter)) leaf_name_data.push_back(port_num.get_name_leafdata());
+    if (port_speed.is_set || is_set(port_speed.yfilter)) leaf_name_data.push_back(port_speed.get_name_leafdata());
+    if (pp_port.is_set || is_set(pp_port.yfilter)) leaf_name_data.push_back(pp_port.get_name_leafdata());
+    if (rack_num.is_set || is_set(rack_num.yfilter)) leaf_name_data.push_back(rack_num.get_name_leafdata());
+    if (slot_num.is_set || is_set(slot_num.yfilter)) leaf_name_data.push_back(slot_num.get_name_leafdata());
+    if (sys_port.is_set || is_set(sys_port.yfilter)) leaf_name_data.push_back(sys_port.get_name_leafdata());
+    if (voq_base.is_set || is_set(voq_base.yfilter)) leaf_name_data.push_back(voq_base.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2492,7 +4675,7 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqD
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "voq-stat")
     {
@@ -2504,7 +4687,7 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumber
                 return c;
             }
         }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat>();
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat>();
         c->parent = this;
         voq_stat.push_back(c);
         return c;
@@ -2513,7 +4696,7 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumber
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     for (auto const & c : voq_stat)
@@ -2524,98 +4707,193 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbe
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "voq-data")
+    if(value_path == "interface-handle")
     {
-        voq_data = value;
+        interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "connector-id")
     {
         connector_id = value;
+        connector_id.value_namespace = name_space;
+        connector_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ifhandle")
+    if(value_path == "if-handle")
     {
-        ifhandle = value;
+        if_handle = value;
+        if_handle.value_namespace = name_space;
+        if_handle.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-inuse")
+    if(value_path == "in-use")
     {
-        is_inuse = value;
+        in_use = value;
+        in_use.value_namespace = name_space;
+        in_use.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-local-port")
     {
         is_local_port = value;
+        is_local_port.value_namespace = name_space;
+        is_local_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "npu-core")
     {
         npu_core = value;
+        npu_core.value_namespace = name_space;
+        npu_core.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "npu-num")
     {
         npu_num = value;
+        npu_num.value_namespace = name_space;
+        npu_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-num")
     {
         port_num = value;
+        port_num.value_namespace = name_space;
+        port_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-speed")
     {
         port_speed = value;
+        port_speed.value_namespace = name_space;
+        port_speed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pp-port")
     {
         pp_port = value;
+        pp_port.value_namespace = name_space;
+        pp_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rack-num")
     {
         rack_num = value;
+        rack_num.value_namespace = name_space;
+        rack_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slot-num")
     {
         slot_num = value;
+        slot_num.value_namespace = name_space;
+        slot_num.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "sysport")
+    if(value_path == "sys-port")
     {
-        sysport = value;
+        sys_port = value;
+        sys_port.value_namespace = name_space;
+        sys_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "voq-base")
     {
         voq_base = value;
+        voq_base.value_namespace = name_space;
+        voq_base.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::VoqStat()
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "connector-id")
+    {
+        connector_id.yfilter = yfilter;
+    }
+    if(value_path == "if-handle")
+    {
+        if_handle.yfilter = yfilter;
+    }
+    if(value_path == "in-use")
+    {
+        in_use.yfilter = yfilter;
+    }
+    if(value_path == "is-local-port")
+    {
+        is_local_port.yfilter = yfilter;
+    }
+    if(value_path == "npu-core")
+    {
+        npu_core.yfilter = yfilter;
+    }
+    if(value_path == "npu-num")
+    {
+        npu_num.yfilter = yfilter;
+    }
+    if(value_path == "port-num")
+    {
+        port_num.yfilter = yfilter;
+    }
+    if(value_path == "port-speed")
+    {
+        port_speed.yfilter = yfilter;
+    }
+    if(value_path == "pp-port")
+    {
+        pp_port.yfilter = yfilter;
+    }
+    if(value_path == "rack-num")
+    {
+        rack_num.yfilter = yfilter;
+    }
+    if(value_path == "slot-num")
+    {
+        slot_num.yfilter = yfilter;
+    }
+    if(value_path == "sys-port")
+    {
+        sys_port.yfilter = yfilter;
+    }
+    if(value_path == "voq-base")
+    {
+        voq_base.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "voq-stat" || name == "interface-handle" || name == "connector-id" || name == "if-handle" || name == "in-use" || name == "is-local-port" || name == "npu-core" || name == "npu-num" || name == "port-num" || name == "port-speed" || name == "pp-port" || name == "rack-num" || name == "slot-num" || name == "sys-port" || name == "voq-base")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::VoqStat()
     :
-    gport_dropped_bytes{YType::uint64, "gport-dropped-bytes"},
-    gport_dropped_pkts{YType::uint64, "gport-dropped-pkts"},
-    gport_received_bytes{YType::uint64, "gport-received-bytes"},
-    gport_received_pkts{YType::uint64, "gport-received-pkts"}
+    dropped_bytes{YType::uint64, "dropped-bytes"},
+    dropped_packets{YType::uint64, "dropped-packets"},
+    received_bytes{YType::uint64, "received-bytes"},
+    received_packets{YType::uint64, "received-packets"}
 {
-    yang_name = "voq-stat"; yang_parent_name = "voq-specific-stats-data";
+    yang_name = "voq-stat"; yang_parent_name = "interface-handle";
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::~VoqStat()
+Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::~VoqStat()
 {
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::has_data() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::has_data() const
 {
-    return gport_dropped_bytes.is_set
-	|| gport_dropped_pkts.is_set
-	|| gport_received_bytes.is_set
-	|| gport_received_pkts.is_set;
+    return dropped_bytes.is_set
+	|| dropped_packets.is_set
+	|| received_bytes.is_set
+	|| received_packets.is_set;
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(gport_dropped_bytes.operation)
-	|| is_set(gport_dropped_pkts.operation)
-	|| is_set(gport_received_bytes.operation)
-	|| is_set(gport_received_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dropped_bytes.yfilter)
+	|| ydk::is_set(dropped_packets.yfilter)
+	|| ydk::is_set(received_bytes.yfilter)
+	|| ydk::is_set(received_packets.yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "voq-stat";
@@ -2624,7 +4902,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2638,10 +4916,10 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (gport_dropped_bytes.is_set || is_set(gport_dropped_bytes.operation)) leaf_name_data.push_back(gport_dropped_bytes.get_name_leafdata());
-    if (gport_dropped_pkts.is_set || is_set(gport_dropped_pkts.operation)) leaf_name_data.push_back(gport_dropped_pkts.get_name_leafdata());
-    if (gport_received_bytes.is_set || is_set(gport_received_bytes.operation)) leaf_name_data.push_back(gport_received_bytes.get_name_leafdata());
-    if (gport_received_pkts.is_set || is_set(gport_received_pkts.operation)) leaf_name_data.push_back(gport_received_pkts.get_name_leafdata());
+    if (dropped_bytes.is_set || is_set(dropped_bytes.yfilter)) leaf_name_data.push_back(dropped_bytes.get_name_leafdata());
+    if (dropped_packets.is_set || is_set(dropped_packets.yfilter)) leaf_name_data.push_back(dropped_packets.get_name_leafdata());
+    if (received_bytes.is_set || is_set(received_bytes.yfilter)) leaf_name_data.push_back(received_bytes.get_name_leafdata());
+    if (received_packets.is_set || is_set(received_packets.yfilter)) leaf_name_data.push_back(received_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2649,81 +4927,116 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqD
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::NpuNumberForVoqDatas::NpuNumberForVoqData::VoqSpecificStatsData::VoqStat::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "gport-dropped-bytes")
+    if(value_path == "dropped-bytes")
     {
-        gport_dropped_bytes = value;
+        dropped_bytes = value;
+        dropped_bytes.value_namespace = name_space;
+        dropped_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "gport-dropped-pkts")
+    if(value_path == "dropped-packets")
     {
-        gport_dropped_pkts = value;
+        dropped_packets = value;
+        dropped_packets.value_namespace = name_space;
+        dropped_packets.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "gport-received-bytes")
+    if(value_path == "received-bytes")
     {
-        gport_received_bytes = value;
+        received_bytes = value;
+        received_bytes.value_namespace = name_space;
+        received_bytes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "gport-received-pkts")
+    if(value_path == "received-packets")
     {
-        gport_received_pkts = value;
+        received_packets = value;
+        received_packets.value_namespace = name_space;
+        received_packets.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumbers()
+void Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "clear-voq-data-for-npu-numbers"; yang_parent_name = "node";
-}
-
-Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::~ClearVoqDataForNpuNumbers()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::has_data() const
-{
-    for (std::size_t index=0; index<clear_voq_data_for_npu_number.size(); index++)
+    if(value_path == "dropped-bytes")
     {
-        if(clear_voq_data_for_npu_number[index]->has_data())
+        dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "dropped-packets")
+    {
+        dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "received-bytes")
+    {
+        received_bytes.yfilter = yfilter;
+    }
+    if(value_path == "received-packets")
+    {
+        received_packets.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHandles::InterfaceHandle::VoqStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dropped-bytes" || name == "dropped-packets" || name == "received-bytes" || name == "received-packets")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuIds::NpuIds()
+{
+    yang_name = "npu-ids"; yang_parent_name = "node";
+}
+
+Dpa::Stats::Nodes::Node::NpuIds::~NpuIds()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuIds::has_data() const
+{
+    for (std::size_t index=0; index<npu_id.size(); index++)
+    {
+        if(npu_id[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuIds::has_operation() const
 {
-    for (std::size_t index=0; index<clear_voq_data_for_npu_number.size(); index++)
+    for (std::size_t index=0; index<npu_id.size(); index++)
     {
-        if(clear_voq_data_for_npu_number[index]->has_operation())
+        if(npu_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clear-voq-data-for-npu-numbers";
+    path_buffer << "npu-ids";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuIds::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ClearVoqDataForNpuNumbers' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'NpuIds' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2739,11 +5052,11 @@ const EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_entity_
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "clear-voq-data-for-npu-number")
+    if(child_yang_name == "npu-id")
     {
-        for(auto const & c : clear_voq_data_for_npu_number)
+        for(auto const & c : npu_id)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2751,19 +5064,19 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_
                 return c;
             }
         }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber>();
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuIds::NpuId>();
         c->parent = this;
-        clear_voq_data_for_npu_number.push_back(c);
+        npu_id.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : clear_voq_data_for_npu_number)
+    for (auto const & c : npu_id)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2771,335 +5084,77 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::ClearVoq
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::ClearVoqDataForNpuNumber()
-    :
-    npu_id{YType::int32, "npu-id"}
-{
-    yang_name = "clear-voq-data-for-npu-number"; yang_parent_name = "clear-voq-data-for-npu-numbers";
-}
-
-Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::~ClearVoqDataForNpuNumber()
+void Dpa::Stats::Nodes::Node::NpuIds::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::has_data() const
+bool Dpa::Stats::Nodes::Node::NpuIds::has_leaf_or_child_of_name(const std::string & name) const
 {
-    for (std::size_t index=0; index<voq_specific_stats_data_clear.size(); index++)
-    {
-        if(voq_specific_stats_data_clear[index]->has_data())
-            return true;
-    }
-    return npu_id.is_set;
-}
-
-bool Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::has_operation() const
-{
-    for (std::size_t index=0; index<voq_specific_stats_data_clear.size(); index++)
-    {
-        if(voq_specific_stats_data_clear[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(npu_id.operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "clear-voq-data-for-npu-number" <<"[npu-id='" <<npu_id <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ClearVoqDataForNpuNumber' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "voq-specific-stats-data-clear")
-    {
-        for(auto const & c : voq_specific_stats_data_clear)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear>();
-        c->parent = this;
-        voq_specific_stats_data_clear.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : voq_specific_stats_data_clear)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "npu-id")
-    {
-        npu_id = value;
-    }
-}
-
-Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::VoqSpecificStatsDataClear()
-    :
-    voq_data{YType::int32, "voq-data"},
-    clear_status{YType::uint8, "clear-status"}
-{
-    yang_name = "voq-specific-stats-data-clear"; yang_parent_name = "clear-voq-data-for-npu-number";
-}
-
-Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::~VoqSpecificStatsDataClear()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::has_data() const
-{
-    return voq_data.is_set
-	|| clear_status.is_set;
-}
-
-bool Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(voq_data.operation)
-	|| is_set(clear_status.operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "voq-specific-stats-data-clear" <<"[voq-data='" <<voq_data <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'VoqSpecificStatsDataClear' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (voq_data.is_set || is_set(voq_data.operation)) leaf_name_data.push_back(voq_data.get_name_leafdata());
-    if (clear_status.is_set || is_set(clear_status.operation)) leaf_name_data.push_back(clear_status.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::ClearVoqDataForNpuNumbers::ClearVoqDataForNpuNumber::VoqSpecificStatsDataClear::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "voq-data")
-    {
-        voq_data = value;
-    }
-    if(value_path == "clear-status")
-    {
-        clear_status = value;
-    }
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClears()
-{
-    yang_name = "npu-number-for-trap-data-clears"; yang_parent_name = "node";
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::~NpuNumberForTrapDataClears()
-{
-}
-
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::has_data() const
-{
-    for (std::size_t index=0; index<npu_number_for_trap_data_clear.size(); index++)
-    {
-        if(npu_number_for_trap_data_clear[index]->has_data())
-            return true;
-    }
+    if(name == "npu-id")
+        return true;
     return false;
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::has_operation() const
-{
-    for (std::size_t index=0; index<npu_number_for_trap_data_clear.size(); index++)
-    {
-        if(npu_number_for_trap_data_clear[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "npu-number-for-trap-data-clears";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumberForTrapDataClears' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "npu-number-for-trap-data-clear")
-    {
-        for(auto const & c : npu_number_for_trap_data_clear)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear>();
-        c->parent = this;
-        npu_number_for_trap_data_clear.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : npu_number_for_trap_data_clear)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::NpuNumberForTrapDataClear()
+Dpa::Stats::Nodes::Node::NpuIds::NpuId::NpuId()
     :
-    npu_id{YType::int32, "npu-id"}
+    npu_id{YType::int32, "npu-id"},
+    next_avail_cp_id{YType::uint32, "next-avail-cp-id"},
+    num_cntr_engines{YType::uint32, "num-cntr-engines"},
+    sys_cp_cnfg_prof{YType::uint32, "sys-cp-cnfg-prof"}
 {
-    yang_name = "npu-number-for-trap-data-clear"; yang_parent_name = "npu-number-for-trap-data-clears";
+    yang_name = "npu-id"; yang_parent_name = "npu-ids";
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::~NpuNumberForTrapDataClear()
+Dpa::Stats::Nodes::Node::NpuIds::NpuId::~NpuId()
 {
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::has_data() const
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::has_data() const
 {
-    for (std::size_t index=0; index<trap_specific_stats_data.size(); index++)
+    for (std::size_t index=0; index<cntr_engine.size(); index++)
     {
-        if(trap_specific_stats_data[index]->has_data())
+        if(cntr_engine[index]->has_data())
             return true;
     }
-    return npu_id.is_set;
+    return npu_id.is_set
+	|| next_avail_cp_id.is_set
+	|| num_cntr_engines.is_set
+	|| sys_cp_cnfg_prof.is_set;
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::has_operation() const
 {
-    for (std::size_t index=0; index<trap_specific_stats_data.size(); index++)
+    for (std::size_t index=0; index<cntr_engine.size(); index++)
     {
-        if(trap_specific_stats_data[index]->has_operation())
+        if(cntr_engine[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(npu_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(npu_id.yfilter)
+	|| ydk::is_set(next_avail_cp_id.yfilter)
+	|| ydk::is_set(num_cntr_engines.yfilter)
+	|| ydk::is_set(sys_cp_cnfg_prof.yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuIds::NpuId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "npu-number-for-trap-data-clear" <<"[npu-id='" <<npu_id <<"']";
+    path_buffer << "npu-id" <<"[npu-id='" <<npu_id <<"']";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuIds::NpuId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NpuNumberForTrapDataClear' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'NpuId' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3108,7 +5163,10 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (next_avail_cp_id.is_set || is_set(next_avail_cp_id.yfilter)) leaf_name_data.push_back(next_avail_cp_id.get_name_leafdata());
+    if (num_cntr_engines.is_set || is_set(num_cntr_engines.yfilter)) leaf_name_data.push_back(num_cntr_engines.get_name_leafdata());
+    if (sys_cp_cnfg_prof.is_set || is_set(sys_cp_cnfg_prof.yfilter)) leaf_name_data.push_back(sys_cp_cnfg_prof.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3116,11 +5174,11 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberF
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuIds::NpuId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "trap-specific-stats-data")
+    if(child_yang_name == "cntr-engine")
     {
-        for(auto const & c : trap_specific_stats_data)
+        for(auto const & c : cntr_engine)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3128,19 +5186,19 @@ std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::Npu
                 return c;
             }
         }
-        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData>();
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine>();
         c->parent = this;
-        trap_specific_stats_data.push_back(c);
+        cntr_engine.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuIds::NpuId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : trap_specific_stats_data)
+    for (auto const & c : cntr_engine)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3148,54 +5206,111 @@ std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumbe
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuIds::NpuId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "npu-id")
     {
         npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-avail-cp-id")
+    {
+        next_avail_cp_id = value;
+        next_avail_cp_id.value_namespace = name_space;
+        next_avail_cp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-cntr-engines")
+    {
+        num_cntr_engines = value;
+        num_cntr_engines.value_namespace = name_space;
+        num_cntr_engines.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sys-cp-cnfg-prof")
+    {
+        sys_cp_cnfg_prof = value;
+        sys_cp_cnfg_prof.value_namespace = name_space;
+        sys_cp_cnfg_prof.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::TrapSpecificStatsData()
+void Dpa::Stats::Nodes::Node::NpuIds::NpuId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "npu-id")
+    {
+        npu_id.yfilter = yfilter;
+    }
+    if(value_path == "next-avail-cp-id")
+    {
+        next_avail_cp_id.yfilter = yfilter;
+    }
+    if(value_path == "num-cntr-engines")
+    {
+        num_cntr_engines.yfilter = yfilter;
+    }
+    if(value_path == "sys-cp-cnfg-prof")
+    {
+        sys_cp_cnfg_prof.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cntr-engine" || name == "npu-id" || name == "next-avail-cp-id" || name == "num-cntr-engines" || name == "sys-cp-cnfg-prof")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::CntrEngine()
     :
-    trap_data{YType::uint32, "trap-data"},
-    clear_status{YType::uint8, "clear-status"}
+    core_id{YType::uint32, "core-id"},
+    state{YType::uint32, "state"}
 {
-    yang_name = "trap-specific-stats-data"; yang_parent_name = "npu-number-for-trap-data-clear";
+    yang_name = "cntr-engine"; yang_parent_name = "npu-id";
 }
 
-Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::~TrapSpecificStatsData()
+Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::~CntrEngine()
 {
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::has_data() const
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::has_data() const
 {
-    return trap_data.is_set
-	|| clear_status.is_set;
+    for (std::size_t index=0; index<apps_info.size(); index++)
+    {
+        if(apps_info[index]->has_data())
+            return true;
+    }
+    return core_id.is_set
+	|| state.is_set;
 }
 
-bool Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::has_operation() const
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(trap_data.operation)
-	|| is_set(clear_status.operation);
+    for (std::size_t index=0; index<apps_info.size(); index++)
+    {
+        if(apps_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(core_id.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
-std::string Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_segment_path() const
+std::string Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trap-specific-stats-data" <<"[trap-data='" <<trap_data <<"']";
+    path_buffer << "cntr-engine";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_entity_path(Entity* ancestor) const
+const EntityPath Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'TrapSpecificStatsData' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'CntrEngine' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3204,8 +5319,8 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (trap_data.is_set || is_set(trap_data.operation)) leaf_name_data.push_back(trap_data.get_name_leafdata());
-    if (clear_status.is_set || is_set(clear_status.operation)) leaf_name_data.push_back(clear_status.get_name_leafdata());
+    if (core_id.is_set || is_set(core_id.yfilter)) leaf_name_data.push_back(core_id.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3213,34 +5328,197 @@ const EntityPath Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberF
 
 }
 
-std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "apps-info")
+    {
+        for(auto const & c : apps_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo>();
+        c->parent = this;
+        apps_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : apps_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "core-id")
+    {
+        core_id = value;
+        core_id.value_namespace = name_space;
+        core_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "core-id")
+    {
+        core_id.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "apps-info" || name == "core-id" || name == "state")
+        return true;
+    return false;
+}
+
+Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::AppsInfo()
+    :
+    app_type{YType::uint32, "app-type"},
+    num_cntrs_for_app{YType::uint32, "num-cntrs-for-app"},
+    num_cntrs_used{YType::uint32, "num-cntrs-used"}
+{
+    yang_name = "apps-info"; yang_parent_name = "cntr-engine";
+}
+
+Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::~AppsInfo()
+{
+}
+
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::has_data() const
+{
+    return app_type.is_set
+	|| num_cntrs_for_app.is_set
+	|| num_cntrs_used.is_set;
+}
+
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(app_type.yfilter)
+	|| ydk::is_set(num_cntrs_for_app.yfilter)
+	|| ydk::is_set(num_cntrs_used.yfilter);
+}
+
+std::string Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "apps-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'AppsInfo' in Cisco_IOS_XR_fretta_bcm_dpa_hw_resources_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (app_type.is_set || is_set(app_type.yfilter)) leaf_name_data.push_back(app_type.get_name_leafdata());
+    if (num_cntrs_for_app.is_set || is_set(num_cntrs_for_app.yfilter)) leaf_name_data.push_back(num_cntrs_for_app.get_name_leafdata());
+    if (num_cntrs_used.is_set || is_set(num_cntrs_used.yfilter)) leaf_name_data.push_back(num_cntrs_used.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Dpa::Stats::Nodes::Node::NpuNumberForTrapDataClears::NpuNumberForTrapDataClear::TrapSpecificStatsData::set_value(const std::string & value_path, std::string value)
+void Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "trap-data")
+    if(value_path == "app-type")
     {
-        trap_data = value;
+        app_type = value;
+        app_type.value_namespace = name_space;
+        app_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "clear-status")
+    if(value_path == "num-cntrs-for-app")
     {
-        clear_status = value;
+        num_cntrs_for_app = value;
+        num_cntrs_for_app.value_namespace = name_space;
+        num_cntrs_for_app.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-cntrs-used")
+    {
+        num_cntrs_used = value;
+        num_cntrs_used.value_namespace = name_space;
+        num_cntrs_used.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf ResourceEnum::lem {0, "lem"};
-const Enum::YLeaf ResourceEnum::lpm {1, "lpm"};
-const Enum::YLeaf ResourceEnum::encap {2, "encap"};
-const Enum::YLeaf ResourceEnum::ext_tcam {3, "ext-tcam"};
-const Enum::YLeaf ResourceEnum::all {4, "all"};
+void Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "app-type")
+    {
+        app_type.yfilter = yfilter;
+    }
+    if(value_path == "num-cntrs-for-app")
+    {
+        num_cntrs_for_app.yfilter = yfilter;
+    }
+    if(value_path == "num-cntrs-used")
+    {
+        num_cntrs_used.yfilter = yfilter;
+    }
+}
+
+bool Dpa::Stats::Nodes::Node::NpuIds::NpuId::CntrEngine::AppsInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "app-type" || name == "num-cntrs-for-app" || name == "num-cntrs-used")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Resource::lem {0, "lem"};
+const Enum::YLeaf Resource::lpm {1, "lpm"};
+const Enum::YLeaf Resource::encap {2, "encap"};
+const Enum::YLeaf Resource::ext_tcam_ipv4 {3, "ext-tcam-ipv4"};
+const Enum::YLeaf Resource::ext_tcam_ipv6 {4, "ext-tcam-ipv6"};
+const Enum::YLeaf Resource::fec {5, "fec"};
+const Enum::YLeaf Resource::ecmpfec {6, "ecmpfec"};
 
 
 }

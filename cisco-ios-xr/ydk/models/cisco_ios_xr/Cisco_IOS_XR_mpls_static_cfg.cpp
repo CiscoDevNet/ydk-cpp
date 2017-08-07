@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_static_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_static_cfg {
 
 MplsStatic::MplsStatic()
@@ -40,8 +42,8 @@ bool MplsStatic::has_data() const
 
 bool MplsStatic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (default_vrf !=  nullptr && default_vrf->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
@@ -67,7 +69,7 @@ const EntityPath MplsStatic::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -128,11 +130,21 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::get_children() const
     return children;
 }
 
-void MplsStatic::set_value(const std::string & value_path, std::string value)
+void MplsStatic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsStatic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
     }
 }
 
@@ -154,6 +166,18 @@ std::string MplsStatic::get_bundle_name() const
 augment_capabilities_function MplsStatic::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> MplsStatic::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool MplsStatic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf" || name == "interfaces" || name == "vrfs" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrfs()
@@ -182,7 +206,7 @@ bool MplsStatic::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::get_segment_path() const
@@ -247,8 +271,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::get_children() 
     return children;
 }
 
-void MplsStatic::Vrfs::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Vrf()
@@ -280,9 +315,9 @@ bool MplsStatic::Vrfs::Vrf::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (afs !=  nullptr && afs->has_operation())
 	|| (label_switched_paths !=  nullptr && label_switched_paths->has_operation());
 }
@@ -310,8 +345,8 @@ const EntityPath MplsStatic::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -358,16 +393,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::get_childr
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs" || name == "label-switched-paths" || name == "vrf-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPaths()
@@ -396,7 +454,7 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::has_operation() const
         if(label_switched_path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::get_segment_path() const
@@ -461,8 +519,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-switched-path")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::LabelSwitchedPath()
@@ -498,9 +567,9 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::has_data() co
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsp_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsp_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (backup_paths !=  nullptr && backup_paths->has_operation())
 	|| (in_label !=  nullptr && in_label->has_operation())
 	|| (paths !=  nullptr && paths->has_operation());
@@ -529,8 +598,8 @@ const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsp_name.is_set || is_set(lsp_name.operation)) leaf_name_data.push_back(lsp_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (lsp_name.is_set || is_set(lsp_name.yfilter)) leaf_name_data.push_back(lsp_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -591,16 +660,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsp-name")
     {
         lsp_name = value;
+        lsp_name.value_namespace = name_space;
+        lsp_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsp-name")
+    {
+        lsp_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-paths" || name == "in-label" || name == "paths" || name == "lsp-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::BackupPaths()
@@ -629,7 +721,7 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_segment_path() const
@@ -694,8 +786,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::Path()
@@ -736,18 +839,18 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_id.operation)
-	|| is_set(afi.operation)
-	|| is_set(backup_id.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(label_type.operation)
-	|| is_set(metric.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_label.operation)
-	|| is_set(nh_mode.operation)
-	|| is_set(path_role.operation)
-	|| is_set(path_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(backup_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_label.yfilter)
+	|| ydk::is_set(nh_mode.yfilter)
+	|| ydk::is_set(path_role.yfilter)
+	|| ydk::is_set(path_type.yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_segment_path() const
@@ -773,17 +876,17 @@ const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::B
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (backup_id.is_set || is_set(backup_id.operation)) leaf_name_data.push_back(backup_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (label_type.is_set || is_set(label_type.operation)) leaf_name_data.push_back(label_type.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_label.is_set || is_set(next_hop_label.operation)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
-    if (nh_mode.is_set || is_set(nh_mode.operation)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
-    if (path_role.is_set || is_set(path_role.operation)) leaf_name_data.push_back(path_role.get_name_leafdata());
-    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (backup_id.is_set || is_set(backup_id.yfilter)) leaf_name_data.push_back(backup_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_label.is_set || is_set(next_hop_label.yfilter)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
+    if (nh_mode.is_set || is_set(nh_mode.yfilter)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
+    if (path_role.is_set || is_set(path_role.yfilter)) leaf_name_data.push_back(path_role.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.yfilter)) leaf_name_data.push_back(path_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -802,52 +905,129 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-id")
     {
         backup_id = value;
+        backup_id.value_namespace = name_space;
+        backup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-type")
     {
         label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-label")
     {
         next_hop_label = value;
+        next_hop_label.value_namespace = name_space;
+        next_hop_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nh-mode")
     {
         nh_mode = value;
+        nh_mode.value_namespace = name_space;
+        nh_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-role")
     {
         path_role = value;
+        path_role.value_namespace = name_space;
+        path_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-type")
     {
         path_type = value;
+        path_type.value_namespace = name_space;
+        path_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "backup-id")
+    {
+        backup_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-label")
+    {
+        next_hop_label.yfilter = yfilter;
+    }
+    if(value_path == "nh-mode")
+    {
+        nh_mode.yfilter = yfilter;
+    }
+    if(value_path == "path-role")
+    {
+        path_role.yfilter = yfilter;
+    }
+    if(value_path == "path-type")
+    {
+        path_type.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id" || name == "afi" || name == "backup-id" || name == "interface-name" || name == "label-type" || name == "metric" || name == "next-hop-address" || name == "next-hop-label" || name == "nh-mode" || name == "path-role" || name == "path-type")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::InLabel()
@@ -876,12 +1056,12 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has_
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_label_value.operation)
-	|| is_set(label_mode.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(tlh_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(in_label_value.yfilter)
+	|| ydk::is_set(label_mode.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(tlh_mode.yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_segment_path() const
@@ -907,11 +1087,11 @@ const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::I
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_label_value.is_set || is_set(in_label_value.operation)) leaf_name_data.push_back(in_label_value.get_name_leafdata());
-    if (label_mode.is_set || is_set(label_mode.operation)) leaf_name_data.push_back(label_mode.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (tlh_mode.is_set || is_set(tlh_mode.operation)) leaf_name_data.push_back(tlh_mode.get_name_leafdata());
+    if (in_label_value.is_set || is_set(in_label_value.yfilter)) leaf_name_data.push_back(in_label_value.get_name_leafdata());
+    if (label_mode.is_set || is_set(label_mode.yfilter)) leaf_name_data.push_back(label_mode.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (tlh_mode.is_set || is_set(tlh_mode.yfilter)) leaf_name_data.push_back(tlh_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -930,28 +1110,69 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-label-value")
     {
         in_label_value = value;
+        in_label_value.value_namespace = name_space;
+        in_label_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-mode")
     {
         label_mode = value;
+        label_mode.value_namespace = name_space;
+        label_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlh-mode")
     {
         tlh_mode = value;
+        tlh_mode.value_namespace = name_space;
+        tlh_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-label-value")
+    {
+        in_label_value.yfilter = yfilter;
+    }
+    if(value_path == "label-mode")
+    {
+        label_mode.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "tlh-mode")
+    {
+        tlh_mode.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-label-value" || name == "label-mode" || name == "prefix" || name == "prefix-length" || name == "tlh-mode")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Paths()
@@ -980,7 +1201,7 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_op
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_segment_path() const
@@ -1045,8 +1266,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::Path()
@@ -1087,18 +1319,18 @@ bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::
 
 bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_id.operation)
-	|| is_set(afi.operation)
-	|| is_set(backup_id.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(label_type.operation)
-	|| is_set(metric.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_label.operation)
-	|| is_set(nh_mode.operation)
-	|| is_set(path_role.operation)
-	|| is_set(path_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(backup_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_label.yfilter)
+	|| ydk::is_set(nh_mode.yfilter)
+	|| ydk::is_set(path_role.yfilter)
+	|| ydk::is_set(path_type.yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_segment_path() const
@@ -1124,17 +1356,17 @@ const EntityPath MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::P
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (backup_id.is_set || is_set(backup_id.operation)) leaf_name_data.push_back(backup_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (label_type.is_set || is_set(label_type.operation)) leaf_name_data.push_back(label_type.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_label.is_set || is_set(next_hop_label.operation)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
-    if (nh_mode.is_set || is_set(nh_mode.operation)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
-    if (path_role.is_set || is_set(path_role.operation)) leaf_name_data.push_back(path_role.get_name_leafdata());
-    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (backup_id.is_set || is_set(backup_id.yfilter)) leaf_name_data.push_back(backup_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_label.is_set || is_set(next_hop_label.yfilter)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
+    if (nh_mode.is_set || is_set(nh_mode.yfilter)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
+    if (path_role.is_set || is_set(path_role.yfilter)) leaf_name_data.push_back(path_role.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.yfilter)) leaf_name_data.push_back(path_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1153,52 +1385,129 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LabelSwitc
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-id")
     {
         backup_id = value;
+        backup_id.value_namespace = name_space;
+        backup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-type")
     {
         label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-label")
     {
         next_hop_label = value;
+        next_hop_label.value_namespace = name_space;
+        next_hop_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nh-mode")
     {
         nh_mode = value;
+        nh_mode.value_namespace = name_space;
+        nh_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-role")
     {
         path_role = value;
+        path_role.value_namespace = name_space;
+        path_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-type")
     {
         path_type = value;
+        path_type.value_namespace = name_space;
+        path_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "backup-id")
+    {
+        backup_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-label")
+    {
+        next_hop_label.yfilter = yfilter;
+    }
+    if(value_path == "nh-mode")
+    {
+        nh_mode.yfilter = yfilter;
+    }
+    if(value_path == "path-role")
+    {
+        path_role.yfilter = yfilter;
+    }
+    if(value_path == "path-type")
+    {
+        path_type.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id" || name == "afi" || name == "backup-id" || name == "interface-name" || name == "label-type" || name == "metric" || name == "next-hop-address" || name == "next-hop-label" || name == "nh-mode" || name == "path-role" || name == "path-type")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Afs()
@@ -1227,7 +1536,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::get_segment_path() const
@@ -1292,8 +1601,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::get_c
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::Af()
@@ -1325,9 +1645,9 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (local_labels !=  nullptr && local_labels->has_operation())
 	|| (top_label_hash !=  nullptr && top_label_hash->has_operation());
 }
@@ -1355,8 +1675,8 @@ const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1403,16 +1723,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::g
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-labels" || name == "top-label-hash" || name == "afi" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::TopLabelHash()
@@ -1435,7 +1778,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (local_labels !=  nullptr && local_labels->has_operation());
 }
 
@@ -1494,8 +1837,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::T
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-labels")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabels()
@@ -1524,7 +1878,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::has_operation() 
         if(local_label[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::get_segment_path() const
@@ -1589,8 +1943,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::T
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-label")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LocalLabel()
@@ -1620,8 +1985,8 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has_
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_label_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_label_id.yfilter)
 	|| (label_type !=  nullptr && label_type->has_operation())
 	|| (paths !=  nullptr && paths->has_operation());
 }
@@ -1649,7 +2014,7 @@ const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::Loca
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_label_id.is_set || is_set(local_label_id.operation)) leaf_name_data.push_back(local_label_id.get_name_leafdata());
+    if (local_label_id.is_set || is_set(local_label_id.yfilter)) leaf_name_data.push_back(local_label_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1696,12 +2061,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::T
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-label-id")
     {
         local_label_id = value;
+        local_label_id.value_namespace = name_space;
+        local_label_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-label-id")
+    {
+        local_label_id.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-type" || name == "paths" || name == "local-label-id")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::LabelType()
@@ -1726,10 +2108,10 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Labe
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(label_mode.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(label_mode.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_segment_path() const
@@ -1755,9 +2137,9 @@ const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::Loca
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label_mode.is_set || is_set(label_mode.operation)) leaf_name_data.push_back(label_mode.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (label_mode.is_set || is_set(label_mode.yfilter)) leaf_name_data.push_back(label_mode.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1776,20 +2158,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::T
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label-mode")
     {
         label_mode = value;
+        label_mode.value_namespace = name_space;
+        label_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label-mode")
+    {
+        label_mode.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-mode" || name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Paths()
@@ -1818,7 +2229,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Path
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_segment_path() const
@@ -1883,8 +2294,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::T
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::Path()
@@ -1925,18 +2347,18 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Path
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_id.operation)
-	|| is_set(afi.operation)
-	|| is_set(backup_id.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(label_type.operation)
-	|| is_set(metric.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_label.operation)
-	|| is_set(nh_mode.operation)
-	|| is_set(path_role.operation)
-	|| is_set(path_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(backup_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_label.yfilter)
+	|| ydk::is_set(nh_mode.yfilter)
+	|| ydk::is_set(path_role.yfilter)
+	|| ydk::is_set(path_type.yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_segment_path() const
@@ -1962,17 +2384,17 @@ const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::Loca
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (backup_id.is_set || is_set(backup_id.operation)) leaf_name_data.push_back(backup_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (label_type.is_set || is_set(label_type.operation)) leaf_name_data.push_back(label_type.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_label.is_set || is_set(next_hop_label.operation)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
-    if (nh_mode.is_set || is_set(nh_mode.operation)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
-    if (path_role.is_set || is_set(path_role.operation)) leaf_name_data.push_back(path_role.get_name_leafdata());
-    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (backup_id.is_set || is_set(backup_id.yfilter)) leaf_name_data.push_back(backup_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_label.is_set || is_set(next_hop_label.yfilter)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
+    if (nh_mode.is_set || is_set(nh_mode.yfilter)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
+    if (path_role.is_set || is_set(path_role.yfilter)) leaf_name_data.push_back(path_role.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.yfilter)) leaf_name_data.push_back(path_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1991,52 +2413,129 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::T
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-id")
     {
         backup_id = value;
+        backup_id.value_namespace = name_space;
+        backup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-type")
     {
         label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-label")
     {
         next_hop_label = value;
+        next_hop_label.value_namespace = name_space;
+        next_hop_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nh-mode")
     {
         nh_mode = value;
+        nh_mode.value_namespace = name_space;
+        nh_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-role")
     {
         path_role = value;
+        path_role.value_namespace = name_space;
+        path_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-type")
     {
         path_type = value;
+        path_type.value_namespace = name_space;
+        path_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "backup-id")
+    {
+        backup_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-label")
+    {
+        next_hop_label.yfilter = yfilter;
+    }
+    if(value_path == "nh-mode")
+    {
+        nh_mode.yfilter = yfilter;
+    }
+    if(value_path == "path-role")
+    {
+        path_role.yfilter = yfilter;
+    }
+    if(value_path == "path-type")
+    {
+        path_type.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id" || name == "afi" || name == "backup-id" || name == "interface-name" || name == "label-type" || name == "metric" || name == "next-hop-address" || name == "next-hop-label" || name == "nh-mode" || name == "path-role" || name == "path-type")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabels()
@@ -2065,7 +2564,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::has_operation() const
         if(local_label[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::get_segment_path() const
@@ -2130,8 +2629,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::L
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-label")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LocalLabel()
@@ -2161,8 +2671,8 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_label_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_label_id.yfilter)
 	|| (label_type !=  nullptr && label_type->has_operation())
 	|| (paths !=  nullptr && paths->has_operation());
 }
@@ -2190,7 +2700,7 @@ const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_label_id.is_set || is_set(local_label_id.operation)) leaf_name_data.push_back(local_label_id.get_name_leafdata());
+    if (local_label_id.is_set || is_set(local_label_id.yfilter)) leaf_name_data.push_back(local_label_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2237,12 +2747,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::L
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-label-id")
     {
         local_label_id = value;
+        local_label_id.value_namespace = name_space;
+        local_label_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-label-id")
+    {
+        local_label_id.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-type" || name == "paths" || name == "local-label-id")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::LabelType()
@@ -2267,10 +2794,10 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_dat
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(label_mode.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(label_mode.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_segment_path() const
@@ -2296,9 +2823,9 @@ const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelT
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label_mode.is_set || is_set(label_mode.operation)) leaf_name_data.push_back(label_mode.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (label_mode.is_set || is_set(label_mode.yfilter)) leaf_name_data.push_back(label_mode.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2317,20 +2844,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::L
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label-mode")
     {
         label_mode = value;
+        label_mode.value_namespace = name_space;
+        label_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label-mode")
+    {
+        label_mode.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-mode" || name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Paths()
@@ -2359,7 +2915,7 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_operati
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_segment_path() const
@@ -2424,8 +2980,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::L
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::Path()
@@ -2466,18 +3033,18 @@ bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_d
 
 bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_id.operation)
-	|| is_set(afi.operation)
-	|| is_set(backup_id.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(label_type.operation)
-	|| is_set(metric.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_label.operation)
-	|| is_set(nh_mode.operation)
-	|| is_set(path_role.operation)
-	|| is_set(path_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(backup_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_label.yfilter)
+	|| ydk::is_set(nh_mode.yfilter)
+	|| ydk::is_set(path_role.yfilter)
+	|| ydk::is_set(path_type.yfilter);
 }
 
 std::string MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_segment_path() const
@@ -2503,17 +3070,17 @@ const EntityPath MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (backup_id.is_set || is_set(backup_id.operation)) leaf_name_data.push_back(backup_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (label_type.is_set || is_set(label_type.operation)) leaf_name_data.push_back(label_type.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_label.is_set || is_set(next_hop_label.operation)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
-    if (nh_mode.is_set || is_set(nh_mode.operation)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
-    if (path_role.is_set || is_set(path_role.operation)) leaf_name_data.push_back(path_role.get_name_leafdata());
-    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (backup_id.is_set || is_set(backup_id.yfilter)) leaf_name_data.push_back(backup_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_label.is_set || is_set(next_hop_label.yfilter)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
+    if (nh_mode.is_set || is_set(nh_mode.yfilter)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
+    if (path_role.is_set || is_set(path_role.yfilter)) leaf_name_data.push_back(path_role.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.yfilter)) leaf_name_data.push_back(path_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2532,52 +3099,129 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Afs::Af::L
     return children;
 }
 
-void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-id")
     {
         backup_id = value;
+        backup_id.value_namespace = name_space;
+        backup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-type")
     {
         label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-label")
     {
         next_hop_label = value;
+        next_hop_label.value_namespace = name_space;
+        next_hop_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nh-mode")
     {
         nh_mode = value;
+        nh_mode.value_namespace = name_space;
+        nh_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-role")
     {
         path_role = value;
+        path_role.value_namespace = name_space;
+        path_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-type")
     {
         path_type = value;
+        path_type.value_namespace = name_space;
+        path_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "backup-id")
+    {
+        backup_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-label")
+    {
+        next_hop_label.yfilter = yfilter;
+    }
+    if(value_path == "nh-mode")
+    {
+        nh_mode.yfilter = yfilter;
+    }
+    if(value_path == "path-role")
+    {
+        path_role.yfilter = yfilter;
+    }
+    if(value_path == "path-type")
+    {
+        path_type.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id" || name == "afi" || name == "backup-id" || name == "interface-name" || name == "label-type" || name == "metric" || name == "next-hop-address" || name == "next-hop-label" || name == "nh-mode" || name == "path-role" || name == "path-type")
+        return true;
+    return false;
 }
 
 MplsStatic::Interfaces::Interfaces()
@@ -2606,7 +3250,7 @@ bool MplsStatic::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::Interfaces::get_segment_path() const
@@ -2671,8 +3315,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Interfaces::get_child
     return children;
 }
 
-void MplsStatic::Interfaces::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 MplsStatic::Interfaces::Interface::Interface()
@@ -2693,8 +3348,8 @@ bool MplsStatic::Interfaces::Interface::has_data() const
 
 bool MplsStatic::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string MplsStatic::Interfaces::Interface::get_segment_path() const
@@ -2720,7 +3375,7 @@ const EntityPath MplsStatic::Interfaces::Interface::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2739,12 +3394,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Interfaces::Interface
     return children;
 }
 
-void MplsStatic::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void MplsStatic::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::DefaultVrf()
@@ -2774,8 +3446,8 @@ bool MplsStatic::DefaultVrf::has_data() const
 
 bool MplsStatic::DefaultVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (afs !=  nullptr && afs->has_operation())
 	|| (label_switched_paths !=  nullptr && label_switched_paths->has_operation());
 }
@@ -2803,7 +3475,7 @@ const EntityPath MplsStatic::DefaultVrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2850,12 +3522,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::get_child
     return children;
 }
 
-void MplsStatic::DefaultVrf::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs" || name == "label-switched-paths" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPaths()
@@ -2884,7 +3573,7 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::has_operation() const
         if(label_switched_path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::get_segment_path() const
@@ -2949,8 +3638,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     return children;
 }
 
-void MplsStatic::DefaultVrf::LabelSwitchedPaths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::LabelSwitchedPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-switched-path")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::LabelSwitchedPath()
@@ -2986,9 +3686,9 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::has_data() c
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsp_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsp_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (backup_paths !=  nullptr && backup_paths->has_operation())
 	|| (in_label !=  nullptr && in_label->has_operation())
 	|| (paths !=  nullptr && paths->has_operation());
@@ -3017,8 +3717,8 @@ const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsp_name.is_set || is_set(lsp_name.operation)) leaf_name_data.push_back(lsp_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (lsp_name.is_set || is_set(lsp_name.yfilter)) leaf_name_data.push_back(lsp_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3079,16 +3779,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     return children;
 }
 
-void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsp-name")
     {
         lsp_name = value;
+        lsp_name.value_namespace = name_space;
+        lsp_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsp-name")
+    {
+        lsp_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-paths" || name == "in-label" || name == "paths" || name == "lsp-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::BackupPaths()
@@ -3117,7 +3840,7 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths:
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::get_segment_path() const
@@ -3182,8 +3905,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     return children;
 }
 
-void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::Path()
@@ -3224,18 +3958,18 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths:
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_id.operation)
-	|| is_set(afi.operation)
-	|| is_set(backup_id.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(label_type.operation)
-	|| is_set(metric.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_label.operation)
-	|| is_set(nh_mode.operation)
-	|| is_set(path_role.operation)
-	|| is_set(path_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(backup_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_label.yfilter)
+	|| ydk::is_set(nh_mode.yfilter)
+	|| ydk::is_set(path_role.yfilter)
+	|| ydk::is_set(path_type.yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::get_segment_path() const
@@ -3261,17 +3995,17 @@ const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (backup_id.is_set || is_set(backup_id.operation)) leaf_name_data.push_back(backup_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (label_type.is_set || is_set(label_type.operation)) leaf_name_data.push_back(label_type.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_label.is_set || is_set(next_hop_label.operation)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
-    if (nh_mode.is_set || is_set(nh_mode.operation)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
-    if (path_role.is_set || is_set(path_role.operation)) leaf_name_data.push_back(path_role.get_name_leafdata());
-    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (backup_id.is_set || is_set(backup_id.yfilter)) leaf_name_data.push_back(backup_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_label.is_set || is_set(next_hop_label.yfilter)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
+    if (nh_mode.is_set || is_set(nh_mode.yfilter)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
+    if (path_role.is_set || is_set(path_role.yfilter)) leaf_name_data.push_back(path_role.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.yfilter)) leaf_name_data.push_back(path_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3290,52 +4024,129 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     return children;
 }
 
-void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-id")
     {
         backup_id = value;
+        backup_id.value_namespace = name_space;
+        backup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-type")
     {
         label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-label")
     {
         next_hop_label = value;
+        next_hop_label.value_namespace = name_space;
+        next_hop_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nh-mode")
     {
         nh_mode = value;
+        nh_mode.value_namespace = name_space;
+        nh_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-role")
     {
         path_role = value;
+        path_role.value_namespace = name_space;
+        path_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-type")
     {
         path_type = value;
+        path_type.value_namespace = name_space;
+        path_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "backup-id")
+    {
+        backup_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-label")
+    {
+        next_hop_label.yfilter = yfilter;
+    }
+    if(value_path == "nh-mode")
+    {
+        nh_mode.yfilter = yfilter;
+    }
+    if(value_path == "path-role")
+    {
+        path_role.yfilter = yfilter;
+    }
+    if(value_path == "path-type")
+    {
+        path_type.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id" || name == "afi" || name == "backup-id" || name == "interface-name" || name == "label-type" || name == "metric" || name == "next-hop-address" || name == "next-hop-label" || name == "nh-mode" || name == "path-role" || name == "path-type")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::InLabel()
@@ -3364,12 +4175,12 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_label_value.operation)
-	|| is_set(label_mode.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(tlh_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(in_label_value.yfilter)
+	|| ydk::is_set(label_mode.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(tlh_mode.yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::get_segment_path() const
@@ -3395,11 +4206,11 @@ const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_label_value.is_set || is_set(in_label_value.operation)) leaf_name_data.push_back(in_label_value.get_name_leafdata());
-    if (label_mode.is_set || is_set(label_mode.operation)) leaf_name_data.push_back(label_mode.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (tlh_mode.is_set || is_set(tlh_mode.operation)) leaf_name_data.push_back(tlh_mode.get_name_leafdata());
+    if (in_label_value.is_set || is_set(in_label_value.yfilter)) leaf_name_data.push_back(in_label_value.get_name_leafdata());
+    if (label_mode.is_set || is_set(label_mode.yfilter)) leaf_name_data.push_back(label_mode.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (tlh_mode.is_set || is_set(tlh_mode.yfilter)) leaf_name_data.push_back(tlh_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3418,28 +4229,69 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     return children;
 }
 
-void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-label-value")
     {
         in_label_value = value;
+        in_label_value.value_namespace = name_space;
+        in_label_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-mode")
     {
         label_mode = value;
+        label_mode.value_namespace = name_space;
+        label_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlh-mode")
     {
         tlh_mode = value;
+        tlh_mode.value_namespace = name_space;
+        tlh_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-label-value")
+    {
+        in_label_value.yfilter = yfilter;
+    }
+    if(value_path == "label-mode")
+    {
+        label_mode.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "tlh-mode")
+    {
+        tlh_mode.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-label-value" || name == "label-mode" || name == "prefix" || name == "prefix-length" || name == "tlh-mode")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Paths()
@@ -3468,7 +4320,7 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_o
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::get_segment_path() const
@@ -3533,8 +4385,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     return children;
 }
 
-void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::Path()
@@ -3575,18 +4438,18 @@ bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path:
 
 bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_id.operation)
-	|| is_set(afi.operation)
-	|| is_set(backup_id.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(label_type.operation)
-	|| is_set(metric.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_label.operation)
-	|| is_set(nh_mode.operation)
-	|| is_set(path_role.operation)
-	|| is_set(path_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(backup_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_label.yfilter)
+	|| ydk::is_set(nh_mode.yfilter)
+	|| ydk::is_set(path_role.yfilter)
+	|| ydk::is_set(path_type.yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::get_segment_path() const
@@ -3612,17 +4475,17 @@ const EntityPath MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (backup_id.is_set || is_set(backup_id.operation)) leaf_name_data.push_back(backup_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (label_type.is_set || is_set(label_type.operation)) leaf_name_data.push_back(label_type.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_label.is_set || is_set(next_hop_label.operation)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
-    if (nh_mode.is_set || is_set(nh_mode.operation)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
-    if (path_role.is_set || is_set(path_role.operation)) leaf_name_data.push_back(path_role.get_name_leafdata());
-    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (backup_id.is_set || is_set(backup_id.yfilter)) leaf_name_data.push_back(backup_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_label.is_set || is_set(next_hop_label.yfilter)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
+    if (nh_mode.is_set || is_set(nh_mode.yfilter)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
+    if (path_role.is_set || is_set(path_role.yfilter)) leaf_name_data.push_back(path_role.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.yfilter)) leaf_name_data.push_back(path_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3641,52 +4504,129 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::LabelSwit
     return children;
 }
 
-void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-id")
     {
         backup_id = value;
+        backup_id.value_namespace = name_space;
+        backup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-type")
     {
         label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-label")
     {
         next_hop_label = value;
+        next_hop_label.value_namespace = name_space;
+        next_hop_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nh-mode")
     {
         nh_mode = value;
+        nh_mode.value_namespace = name_space;
+        nh_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-role")
     {
         path_role = value;
+        path_role.value_namespace = name_space;
+        path_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-type")
     {
         path_type = value;
+        path_type.value_namespace = name_space;
+        path_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "backup-id")
+    {
+        backup_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-label")
+    {
+        next_hop_label.yfilter = yfilter;
+    }
+    if(value_path == "nh-mode")
+    {
+        nh_mode.yfilter = yfilter;
+    }
+    if(value_path == "path-role")
+    {
+        path_role.yfilter = yfilter;
+    }
+    if(value_path == "path-type")
+    {
+        path_type.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id" || name == "afi" || name == "backup-id" || name == "interface-name" || name == "label-type" || name == "metric" || name == "next-hop-address" || name == "next-hop-label" || name == "nh-mode" || name == "path-role" || name == "path-type")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Afs()
@@ -3715,7 +4655,7 @@ bool MplsStatic::DefaultVrf::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::get_segment_path() const
@@ -3780,8 +4720,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::get_
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::Af()
@@ -3813,9 +4764,9 @@ bool MplsStatic::DefaultVrf::Afs::Af::has_data() const
 
 bool MplsStatic::DefaultVrf::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (local_labels !=  nullptr && local_labels->has_operation())
 	|| (top_label_hash !=  nullptr && top_label_hash->has_operation());
 }
@@ -3843,8 +4794,8 @@ const EntityPath MplsStatic::DefaultVrf::Afs::Af::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3891,16 +4842,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-labels" || name == "top-label-hash" || name == "afi" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::TopLabelHash()
@@ -3923,7 +4897,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::has_data() const
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (local_labels !=  nullptr && local_labels->has_operation());
 }
 
@@ -3982,8 +4956,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-labels")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabels()
@@ -4012,7 +4997,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::has_operation()
         if(local_label[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::get_segment_path() const
@@ -4077,8 +5062,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-label")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LocalLabel()
@@ -4108,8 +5104,8 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_label_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_label_id.yfilter)
 	|| (label_type !=  nullptr && label_type->has_operation())
 	|| (paths !=  nullptr && paths->has_operation());
 }
@@ -4137,7 +5133,7 @@ const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::Loc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_label_id.is_set || is_set(local_label_id.operation)) leaf_name_data.push_back(local_label_id.get_name_leafdata());
+    if (local_label_id.is_set || is_set(local_label_id.yfilter)) leaf_name_data.push_back(local_label_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4184,12 +5180,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-label-id")
     {
         local_label_id = value;
+        local_label_id.value_namespace = name_space;
+        local_label_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-label-id")
+    {
+        local_label_id.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-type" || name == "paths" || name == "local-label-id")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::LabelType()
@@ -4214,10 +5227,10 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Lab
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(label_mode.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(label_mode.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::get_segment_path() const
@@ -4243,9 +5256,9 @@ const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::Loc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label_mode.is_set || is_set(label_mode.operation)) leaf_name_data.push_back(label_mode.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (label_mode.is_set || is_set(label_mode.yfilter)) leaf_name_data.push_back(label_mode.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4264,20 +5277,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label-mode")
     {
         label_mode = value;
+        label_mode.value_namespace = name_space;
+        label_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label-mode")
+    {
+        label_mode.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-mode" || name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Paths()
@@ -4306,7 +5348,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Pat
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::get_segment_path() const
@@ -4371,8 +5413,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::Path()
@@ -4413,18 +5466,18 @@ bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Pat
 
 bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_id.operation)
-	|| is_set(afi.operation)
-	|| is_set(backup_id.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(label_type.operation)
-	|| is_set(metric.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_label.operation)
-	|| is_set(nh_mode.operation)
-	|| is_set(path_role.operation)
-	|| is_set(path_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(backup_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_label.yfilter)
+	|| ydk::is_set(nh_mode.yfilter)
+	|| ydk::is_set(path_role.yfilter)
+	|| ydk::is_set(path_type.yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::get_segment_path() const
@@ -4450,17 +5503,17 @@ const EntityPath MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::Loc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (backup_id.is_set || is_set(backup_id.operation)) leaf_name_data.push_back(backup_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (label_type.is_set || is_set(label_type.operation)) leaf_name_data.push_back(label_type.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_label.is_set || is_set(next_hop_label.operation)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
-    if (nh_mode.is_set || is_set(nh_mode.operation)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
-    if (path_role.is_set || is_set(path_role.operation)) leaf_name_data.push_back(path_role.get_name_leafdata());
-    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (backup_id.is_set || is_set(backup_id.yfilter)) leaf_name_data.push_back(backup_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_label.is_set || is_set(next_hop_label.yfilter)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
+    if (nh_mode.is_set || is_set(nh_mode.yfilter)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
+    if (path_role.is_set || is_set(path_role.yfilter)) leaf_name_data.push_back(path_role.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.yfilter)) leaf_name_data.push_back(path_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4479,52 +5532,129 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-id")
     {
         backup_id = value;
+        backup_id.value_namespace = name_space;
+        backup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-type")
     {
         label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-label")
     {
         next_hop_label = value;
+        next_hop_label.value_namespace = name_space;
+        next_hop_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nh-mode")
     {
         nh_mode = value;
+        nh_mode.value_namespace = name_space;
+        nh_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-role")
     {
         path_role = value;
+        path_role.value_namespace = name_space;
+        path_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-type")
     {
         path_type = value;
+        path_type.value_namespace = name_space;
+        path_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "backup-id")
+    {
+        backup_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-label")
+    {
+        next_hop_label.yfilter = yfilter;
+    }
+    if(value_path == "nh-mode")
+    {
+        nh_mode.yfilter = yfilter;
+    }
+    if(value_path == "path-role")
+    {
+        path_role.yfilter = yfilter;
+    }
+    if(value_path == "path-type")
+    {
+        path_type.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id" || name == "afi" || name == "backup-id" || name == "interface-name" || name == "label-type" || name == "metric" || name == "next-hop-address" || name == "next-hop-label" || name == "nh-mode" || name == "path-role" || name == "path-type")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabels()
@@ -4553,7 +5683,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::has_operation() const
         if(local_label[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::get_segment_path() const
@@ -4618,8 +5748,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-label")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LocalLabel()
@@ -4649,8 +5790,8 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::has_data() const
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_label_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_label_id.yfilter)
 	|| (label_type !=  nullptr && label_type->has_operation())
 	|| (paths !=  nullptr && paths->has_operation());
 }
@@ -4678,7 +5819,7 @@ const EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_label_id.is_set || is_set(local_label_id.operation)) leaf_name_data.push_back(local_label_id.get_name_leafdata());
+    if (local_label_id.is_set || is_set(local_label_id.yfilter)) leaf_name_data.push_back(local_label_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4725,12 +5866,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-label-id")
     {
         local_label_id = value;
+        local_label_id.value_namespace = name_space;
+        local_label_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-label-id")
+    {
+        local_label_id.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-type" || name == "paths" || name == "local-label-id")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::LabelType()
@@ -4755,10 +5913,10 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_da
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(label_mode.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(label_mode.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::get_segment_path() const
@@ -4784,9 +5942,9 @@ const EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Label
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label_mode.is_set || is_set(label_mode.operation)) leaf_name_data.push_back(label_mode.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (label_mode.is_set || is_set(label_mode.yfilter)) leaf_name_data.push_back(label_mode.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4805,20 +5963,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label-mode")
     {
         label_mode = value;
+        label_mode.value_namespace = name_space;
+        label_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label-mode")
+    {
+        label_mode.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-mode" || name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Paths()
@@ -4847,7 +6034,7 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_operat
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::get_segment_path() const
@@ -4912,8 +6099,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::Path()
@@ -4954,18 +6152,18 @@ bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_
 
 bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_id.operation)
-	|| is_set(afi.operation)
-	|| is_set(backup_id.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(label_type.operation)
-	|| is_set(metric.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_label.operation)
-	|| is_set(nh_mode.operation)
-	|| is_set(path_role.operation)
-	|| is_set(path_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(backup_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(label_type.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_label.yfilter)
+	|| ydk::is_set(nh_mode.yfilter)
+	|| ydk::is_set(path_role.yfilter)
+	|| ydk::is_set(path_type.yfilter);
 }
 
 std::string MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::get_segment_path() const
@@ -4991,17 +6189,17 @@ const EntityPath MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (backup_id.is_set || is_set(backup_id.operation)) leaf_name_data.push_back(backup_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (label_type.is_set || is_set(label_type.operation)) leaf_name_data.push_back(label_type.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_label.is_set || is_set(next_hop_label.operation)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
-    if (nh_mode.is_set || is_set(nh_mode.operation)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
-    if (path_role.is_set || is_set(path_role.operation)) leaf_name_data.push_back(path_role.get_name_leafdata());
-    if (path_type.is_set || is_set(path_type.operation)) leaf_name_data.push_back(path_type.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (backup_id.is_set || is_set(backup_id.yfilter)) leaf_name_data.push_back(backup_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (label_type.is_set || is_set(label_type.yfilter)) leaf_name_data.push_back(label_type.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_label.is_set || is_set(next_hop_label.yfilter)) leaf_name_data.push_back(next_hop_label.get_name_leafdata());
+    if (nh_mode.is_set || is_set(nh_mode.yfilter)) leaf_name_data.push_back(nh_mode.get_name_leafdata());
+    if (path_role.is_set || is_set(path_role.yfilter)) leaf_name_data.push_back(path_role.get_name_leafdata());
+    if (path_type.is_set || is_set(path_type.yfilter)) leaf_name_data.push_back(path_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5020,78 +6218,155 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::DefaultVrf::Afs::Af::
     return children;
 }
 
-void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::set_value(const std::string & value_path, std::string value)
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-id")
     {
         backup_id = value;
+        backup_id.value_namespace = name_space;
+        backup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-type")
     {
         label_type = value;
+        label_type.value_namespace = name_space;
+        label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-label")
     {
         next_hop_label = value;
+        next_hop_label.value_namespace = name_space;
+        next_hop_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nh-mode")
     {
         nh_mode = value;
+        nh_mode.value_namespace = name_space;
+        nh_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-role")
     {
         path_role = value;
+        path_role.value_namespace = name_space;
+        path_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-type")
     {
         path_type = value;
+        path_type.value_namespace = name_space;
+        path_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf MplsStaticNhModeEnum::configured {0, "configured"};
-const Enum::YLeaf MplsStaticNhModeEnum::resolve {1, "resolve"};
+void MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "backup-id")
+    {
+        backup_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "label-type")
+    {
+        label_type.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-label")
+    {
+        next_hop_label.yfilter = yfilter;
+    }
+    if(value_path == "nh-mode")
+    {
+        nh_mode.yfilter = yfilter;
+    }
+    if(value_path == "path-role")
+    {
+        path_role.yfilter = yfilter;
+    }
+    if(value_path == "path-type")
+    {
+        path_type.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf MplsStaticNhAddressFamilyEnum::ipv4 {1, "ipv4"};
-const Enum::YLeaf MplsStaticNhAddressFamilyEnum::ipv6 {2, "ipv6"};
+bool MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id" || name == "afi" || name == "backup-id" || name == "interface-name" || name == "label-type" || name == "metric" || name == "next-hop-address" || name == "next-hop-label" || name == "nh-mode" || name == "path-role" || name == "path-type")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf MplsStaticPathEnum::pop_and_lookup {1, "pop-and-lookup"};
-const Enum::YLeaf MplsStaticPathEnum::cross_connect {2, "cross-connect"};
+const Enum::YLeaf MplsStaticPath::pop_and_lookup {1, "pop-and-lookup"};
+const Enum::YLeaf MplsStaticPath::cross_connect {2, "cross-connect"};
 
-const Enum::YLeaf MplsStaticAddressFamilyEnum::ipv4_unicast {1, "ipv4-unicast"};
+const Enum::YLeaf MplsStaticLabelMode::per_vrf {1, "per-vrf"};
+const Enum::YLeaf MplsStaticLabelMode::per_prefix {2, "per-prefix"};
+const Enum::YLeaf MplsStaticLabelMode::lsp {3, "lsp"};
 
-const Enum::YLeaf MplsStaticOutLabelTypesEnum::none {0, "none"};
-const Enum::YLeaf MplsStaticOutLabelTypesEnum::out_label {1, "out-label"};
-const Enum::YLeaf MplsStaticOutLabelTypesEnum::pop {2, "pop"};
-const Enum::YLeaf MplsStaticOutLabelTypesEnum::exp_null {3, "exp-null"};
-const Enum::YLeaf MplsStaticOutLabelTypesEnum::ipv6_explicit_null {4, "ipv6-explicit-null"};
+const Enum::YLeaf MplsStaticOutLabelTypes::none {0, "none"};
+const Enum::YLeaf MplsStaticOutLabelTypes::out_label {1, "out-label"};
+const Enum::YLeaf MplsStaticOutLabelTypes::pop {2, "pop"};
+const Enum::YLeaf MplsStaticOutLabelTypes::exp_null {3, "exp-null"};
+const Enum::YLeaf MplsStaticOutLabelTypes::ipv6_explicit_null {4, "ipv6-explicit-null"};
 
-const Enum::YLeaf MplsStaticLabelModeEnum::per_vrf {1, "per-vrf"};
-const Enum::YLeaf MplsStaticLabelModeEnum::per_prefix {2, "per-prefix"};
-const Enum::YLeaf MplsStaticLabelModeEnum::lsp {3, "lsp"};
+const Enum::YLeaf MplsStaticPathRole::primary {0, "primary"};
+const Enum::YLeaf MplsStaticPathRole::backup {1, "backup"};
+const Enum::YLeaf MplsStaticPathRole::primary_backup {2, "primary-backup"};
 
-const Enum::YLeaf MplsStaticPathRoleEnum::primary {0, "primary"};
-const Enum::YLeaf MplsStaticPathRoleEnum::backup {1, "backup"};
-const Enum::YLeaf MplsStaticPathRoleEnum::primary_backup {2, "primary-backup"};
+const Enum::YLeaf MplsStaticAddressFamily::ipv4_unicast {1, "ipv4-unicast"};
+
+const Enum::YLeaf MplsStaticNhAddressFamily::ipv4 {1, "ipv4"};
+const Enum::YLeaf MplsStaticNhAddressFamily::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf MplsStaticNhMode::configured {0, "configured"};
+const Enum::YLeaf MplsStaticNhMode::resolve {1, "resolve"};
 
 
 }

@@ -7,87 +7,87 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace cisco_bridge_common {
 
-class MacLimitNotificationTypeIdentity : public virtual Identity
+class MacLimitNotificationType : public virtual ydk::Identity
 {
     public:
-        MacLimitNotificationTypeIdentity();
-        ~MacLimitNotificationTypeIdentity();
+        MacLimitNotificationType();
+        ~MacLimitNotificationType();
 
 
-}; // MacLimitNotificationTypeIdentity
+}; // MacLimitNotificationType
 
-class NotifSyslogIdentity : public cisco_bridge_common::MacLimitNotificationTypeIdentity, virtual Identity
+class NotifNone : public cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
-        NotifSyslogIdentity();
-        ~NotifSyslogIdentity();
+        NotifNone();
+        ~NotifNone();
 
 
-}; // NotifSyslogIdentity
+}; // NotifNone
 
-class NotifSnmpTrapIdentity : public cisco_bridge_common::MacLimitNotificationTypeIdentity, virtual Identity
+class NotifSnmpTrap : public cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
-        NotifSnmpTrapIdentity();
-        ~NotifSnmpTrapIdentity();
+        NotifSnmpTrap();
+        ~NotifSnmpTrap();
 
 
-}; // NotifSnmpTrapIdentity
+}; // NotifSnmpTrap
 
-class NotifNoneIdentity : public cisco_bridge_common::MacLimitNotificationTypeIdentity, virtual Identity
+class NotifSyslog : public cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
-        NotifNoneIdentity();
-        ~NotifNoneIdentity();
+        NotifSyslog();
+        ~NotifSyslog();
 
 
-}; // NotifNoneIdentity
+}; // NotifSyslog
 
-class NotifSyslogAndSnmpTrapIdentity : public cisco_bridge_common::MacLimitNotificationTypeIdentity, virtual Identity
+class NotifSyslogAndSnmpTrap : public cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
-        NotifSyslogAndSnmpTrapIdentity();
-        ~NotifSyslogAndSnmpTrapIdentity();
+        NotifSyslogAndSnmpTrap();
+        ~NotifSyslogAndSnmpTrap();
 
 
-}; // NotifSyslogAndSnmpTrapIdentity
+}; // NotifSyslogAndSnmpTrap
 
-class MacLimitActionEnum : public Enum
+class MacAgingType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf flood;
-        static const Enum::YLeaf drop;
-        static const Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf inactivity;
+        static const ydk::Enum::YLeaf absolute;
 
 };
 
-class EthTrafficClassEnum : public Enum
+class MacLimitAction : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf broadcast;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf unknown_unicast;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf flood;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf shutdown;
 
 };
 
-class MacAgingTypeEnum : public Enum
+class EthTrafficClass : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inactivity;
-        static const Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unknown_unicast;
 
 };
 
-class MacSecureActionEnum : public Enum
+class MacSecureAction : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf restrict;
-        static const Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf restrict;
+        static const ydk::Enum::YLeaf shutdown;
 
 };
 

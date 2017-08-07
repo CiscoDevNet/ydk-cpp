@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv6_ma_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ma_oper {
 
 Ipv6Network::Ipv6Network()
@@ -29,7 +31,7 @@ bool Ipv6Network::has_data() const
 
 bool Ipv6Network::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::get_children() const
     return children;
 }
 
-void Ipv6Network::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Network::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Ipv6Network::get_bundle_name() const
 augment_capabilities_function Ipv6Network::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Ipv6Network::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ipv6Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool Ipv6Network::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::get_children(
     return children;
 }
 
-void Ipv6Network::Nodes::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool Ipv6Network::Nodes::Node::has_data() const
 
 bool Ipv6Network::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (interface_data !=  nullptr && interface_data->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath Ipv6Network::Nodes::Node::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::get_chi
     return children;
 }
 
-void Ipv6Network::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-data" || name == "node-name")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::InterfaceData()
@@ -320,7 +366,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::has_data() const
 
 bool Ipv6Network::Nodes::Node::InterfaceData::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -394,8 +440,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "summary" || name == "vrfs")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrfs()
@@ -424,7 +481,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::get_segment_path() const
@@ -489,8 +546,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Vrf()
@@ -528,8 +596,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_data() const
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (briefs !=  nullptr && briefs->has_operation())
 	|| (details !=  nullptr && details->has_operation())
 	|| (global_briefs !=  nullptr && global_briefs->has_operation())
@@ -559,7 +627,7 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -634,12 +702,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "briefs" || name == "details" || name == "global-briefs" || name == "global-details" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Briefs()
@@ -668,7 +753,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_operation()
         if(brief[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_segment_path() const
@@ -733,14 +818,26 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Brief()
     :
     interface_name{YType::str, "interface-name"},
-    line_state{YType::enumeration, "line-state"}
+    line_state{YType::enumeration, "line-state"},
+    vrf_name{YType::str, "vrf-name"}
     	,
     link_local_address(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress>())
 {
@@ -762,6 +859,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_data
     }
     return interface_name.is_set
 	|| line_state.is_set
+	|| vrf_name.is_set
 	|| (link_local_address !=  nullptr && link_local_address->has_data());
 }
 
@@ -772,9 +870,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_oper
         if(address[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(line_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (link_local_address !=  nullptr && link_local_address->has_operation());
 }
 
@@ -801,8 +900,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Bri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -856,16 +956,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "link-local-address" || name == "interface-name" || name == "line-state" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::LinkLocalAddress()
@@ -894,12 +1027,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLoca
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_state.operation)
-	|| is_set(is_anycast.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_state.yfilter)
+	|| ydk::is_set(is_anycast.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::get_segment_path() const
@@ -925,11 +1058,11 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Bri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_state.is_set || is_set(address_state.operation)) leaf_name_data.push_back(address_state.get_name_leafdata());
-    if (is_anycast.is_set || is_set(is_anycast.operation)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_state.is_set || is_set(address_state.yfilter)) leaf_name_data.push_back(address_state.get_name_leafdata());
+    if (is_anycast.is_set || is_set(is_anycast.yfilter)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -948,28 +1081,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-state")
     {
         address_state = value;
+        address_state.value_namespace = name_space;
+        address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-anycast")
     {
         is_anycast = value;
+        is_anycast.value_namespace = name_space;
+        is_anycast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-state")
+    {
+        address_state.yfilter = yfilter;
+    }
+    if(value_path == "is-anycast")
+    {
+        is_anycast.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-state" || name == "is-anycast" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::Address()
@@ -998,12 +1172,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_state.operation)
-	|| is_set(is_anycast.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_state.yfilter)
+	|| ydk::is_set(is_anycast.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::get_segment_path() const
@@ -1029,11 +1203,11 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Bri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_state.is_set || is_set(address_state.operation)) leaf_name_data.push_back(address_state.get_name_leafdata());
-    if (is_anycast.is_set || is_set(is_anycast.operation)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_state.is_set || is_set(address_state.yfilter)) leaf_name_data.push_back(address_state.get_name_leafdata());
+    if (is_anycast.is_set || is_set(is_anycast.yfilter)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1052,28 +1226,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-state")
     {
         address_state = value;
+        address_state.value_namespace = name_space;
+        address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-anycast")
     {
         is_anycast = value;
+        is_anycast.value_namespace = name_space;
+        is_anycast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-state")
+    {
+        address_state.yfilter = yfilter;
+    }
+    if(value_path == "is-anycast")
+    {
+        is_anycast.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-state" || name == "is-anycast" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetails()
@@ -1102,7 +1317,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::has_oper
         if(global_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::get_segment_path() const
@@ -1167,8 +1382,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-detail")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::GlobalDetail()
@@ -1181,7 +1407,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail:
     mlacp_active{YType::boolean, "mlacp-active"},
     mtu{YType::uint32, "mtu"},
     operation_state{YType::enumeration, "operation-state"},
-    rg_id_exists{YType::boolean, "rg-id-exists"}
+    rg_id_exists{YType::boolean, "rg-id-exists"},
+    vrf_name{YType::str, "vrf-name"}
     	,
     access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList>())
 	,bgp_pa(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa>())
@@ -1247,6 +1474,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 	|| mtu.is_set
 	|| operation_state.is_set
 	|| rg_id_exists.is_set
+	|| vrf_name.is_set
 	|| (access_control_list !=  nullptr && access_control_list->has_data())
 	|| (bgp_pa !=  nullptr && bgp_pa->has_data())
 	|| (caps_utime !=  nullptr && caps_utime->has_data())
@@ -1276,16 +1504,17 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
         if(multicast_group[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(flow_tag_dst.operation)
-	|| is_set(flow_tag_src.operation)
-	|| is_set(is_icmp_unreach_enabled.operation)
-	|| is_set(line_state.operation)
-	|| is_set(mlacp_active.operation)
-	|| is_set(mtu.operation)
-	|| is_set(operation_state.operation)
-	|| is_set(rg_id_exists.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(flow_tag_dst.yfilter)
+	|| ydk::is_set(flow_tag_src.yfilter)
+	|| ydk::is_set(is_icmp_unreach_enabled.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(mlacp_active.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(operation_state.yfilter)
+	|| ydk::is_set(rg_id_exists.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (access_control_list !=  nullptr && access_control_list->has_operation())
 	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
 	|| (caps_utime !=  nullptr && caps_utime->has_operation())
@@ -1321,15 +1550,16 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (flow_tag_dst.is_set || is_set(flow_tag_dst.operation)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
-    if (flow_tag_src.is_set || is_set(flow_tag_src.operation)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
-    if (is_icmp_unreach_enabled.is_set || is_set(is_icmp_unreach_enabled.operation)) leaf_name_data.push_back(is_icmp_unreach_enabled.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
-    if (mlacp_active.is_set || is_set(mlacp_active.operation)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (operation_state.is_set || is_set(operation_state.operation)) leaf_name_data.push_back(operation_state.get_name_leafdata());
-    if (rg_id_exists.is_set || is_set(rg_id_exists.operation)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (flow_tag_dst.is_set || is_set(flow_tag_dst.yfilter)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
+    if (flow_tag_src.is_set || is_set(flow_tag_src.yfilter)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
+    if (is_icmp_unreach_enabled.is_set || is_set(is_icmp_unreach_enabled.yfilter)) leaf_name_data.push_back(is_icmp_unreach_enabled.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (mlacp_active.is_set || is_set(mlacp_active.yfilter)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (operation_state.is_set || is_set(operation_state.yfilter)) leaf_name_data.push_back(operation_state.get_name_leafdata());
+    if (rg_id_exists.is_set || is_set(rg_id_exists.yfilter)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1551,44 +1781,119 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-tag-dst")
     {
         flow_tag_dst = value;
+        flow_tag_dst.value_namespace = name_space;
+        flow_tag_dst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-tag-src")
     {
         flow_tag_src = value;
+        flow_tag_src.value_namespace = name_space;
+        flow_tag_src.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-icmp-unreach-enabled")
     {
         is_icmp_unreach_enabled = value;
+        is_icmp_unreach_enabled.value_namespace = name_space;
+        is_icmp_unreach_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-active")
     {
         mlacp_active = value;
+        mlacp_active.value_namespace = name_space;
+        mlacp_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation-state")
     {
         operation_state = value;
+        operation_state.value_namespace = name_space;
+        operation_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rg-id-exists")
     {
         rg_id_exists = value;
+        rg_id_exists.value_namespace = name_space;
+        rg_id_exists.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag-dst")
+    {
+        flow_tag_dst.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag-src")
+    {
+        flow_tag_src.yfilter = yfilter;
+    }
+    if(value_path == "is-icmp-unreach-enabled")
+    {
+        is_icmp_unreach_enabled.yfilter = yfilter;
+    }
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-active")
+    {
+        mlacp_active.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "operation-state")
+    {
+        operation_state.yfilter = yfilter;
+    }
+    if(value_path == "rg-id-exists")
+    {
+        rg_id_exists.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-control-list" || name == "address" || name == "bgp-pa" || name == "caps-utime" || name == "client-multicast-group" || name == "fwd-dis-utime" || name == "fwd-en-utime" || name == "idb-utime" || name == "link-local-address" || name == "multi-access-control-list" || name == "multicast-group" || name == "rpf" || name == "utime" || name == "interface-name" || name == "flow-tag-dst" || name == "flow-tag-src" || name == "is-icmp-unreach-enabled" || name == "line-state" || name == "mlacp-active" || name == "mtu" || name == "operation-state" || name == "rg-id-exists" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::LinkLocalAddress()
@@ -1617,12 +1922,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_state.operation)
-	|| is_set(is_anycast.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_state.yfilter)
+	|| ydk::is_set(is_anycast.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::get_segment_path() const
@@ -1648,11 +1953,11 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_state.is_set || is_set(address_state.operation)) leaf_name_data.push_back(address_state.get_name_leafdata());
-    if (is_anycast.is_set || is_set(is_anycast.operation)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_state.is_set || is_set(address_state.yfilter)) leaf_name_data.push_back(address_state.get_name_leafdata());
+    if (is_anycast.is_set || is_set(is_anycast.yfilter)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1671,28 +1976,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-state")
     {
         address_state = value;
+        address_state.value_namespace = name_space;
+        address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-anycast")
     {
         is_anycast = value;
+        is_anycast.value_namespace = name_space;
+        is_anycast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-state")
+    {
+        address_state.yfilter = yfilter;
+    }
+    if(value_path == "is-anycast")
+    {
+        is_anycast.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-state" || name == "is-anycast" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::AccessControlList()
@@ -1719,11 +2065,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_in_bound.operation)
-	|| is_set(common_out_bound.operation)
-	|| is_set(in_bound.operation)
-	|| is_set(out_bound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_in_bound.yfilter)
+	|| ydk::is_set(common_out_bound.yfilter)
+	|| ydk::is_set(in_bound.yfilter)
+	|| ydk::is_set(out_bound.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::get_segment_path() const
@@ -1749,10 +2095,10 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_in_bound.is_set || is_set(common_in_bound.operation)) leaf_name_data.push_back(common_in_bound.get_name_leafdata());
-    if (common_out_bound.is_set || is_set(common_out_bound.operation)) leaf_name_data.push_back(common_out_bound.get_name_leafdata());
-    if (in_bound.is_set || is_set(in_bound.operation)) leaf_name_data.push_back(in_bound.get_name_leafdata());
-    if (out_bound.is_set || is_set(out_bound.operation)) leaf_name_data.push_back(out_bound.get_name_leafdata());
+    if (common_in_bound.is_set || is_set(common_in_bound.yfilter)) leaf_name_data.push_back(common_in_bound.get_name_leafdata());
+    if (common_out_bound.is_set || is_set(common_out_bound.yfilter)) leaf_name_data.push_back(common_out_bound.get_name_leafdata());
+    if (in_bound.is_set || is_set(in_bound.yfilter)) leaf_name_data.push_back(in_bound.get_name_leafdata());
+    if (out_bound.is_set || is_set(out_bound.yfilter)) leaf_name_data.push_back(out_bound.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1771,24 +2117,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-in-bound")
     {
         common_in_bound = value;
+        common_in_bound.value_namespace = name_space;
+        common_in_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "common-out-bound")
     {
         common_out_bound = value;
+        common_out_bound.value_namespace = name_space;
+        common_out_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-bound")
     {
         in_bound = value;
+        in_bound.value_namespace = name_space;
+        in_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-bound")
     {
         out_bound = value;
+        out_bound.value_namespace = name_space;
+        out_bound.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-in-bound")
+    {
+        common_in_bound.yfilter = yfilter;
+    }
+    if(value_path == "common-out-bound")
+    {
+        common_out_bound.yfilter = yfilter;
+    }
+    if(value_path == "in-bound")
+    {
+        in_bound.yfilter = yfilter;
+    }
+    if(value_path == "out-bound")
+    {
+        out_bound.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-in-bound" || name == "common-out-bound" || name == "in-bound" || name == "out-bound")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::MultiAccessControlList()
@@ -1828,23 +2209,23 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 {
     for (auto const & leaf : common.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : inbound.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : outbound.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(common.operation)
-	|| is_set(inbound.operation)
-	|| is_set(outbound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common.yfilter)
+	|| ydk::is_set(inbound.yfilter)
+	|| ydk::is_set(outbound.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::get_segment_path() const
@@ -1894,7 +2275,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common")
     {
@@ -1908,6 +2289,29 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
     {
         outbound.append(value);
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common")
+    {
+        common.yfilter = yfilter;
+    }
+    if(value_path == "inbound")
+    {
+        inbound.yfilter = yfilter;
+    }
+    if(value_path == "outbound")
+    {
+        outbound.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common" || name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::Rpf()
@@ -1934,11 +2338,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_default_route.operation)
-	|| is_set(allow_self_ping.operation)
-	|| is_set(enable.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_default_route.yfilter)
+	|| ydk::is_set(allow_self_ping.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::get_segment_path() const
@@ -1964,10 +2368,10 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_default_route.is_set || is_set(allow_default_route.operation)) leaf_name_data.push_back(allow_default_route.get_name_leafdata());
-    if (allow_self_ping.is_set || is_set(allow_self_ping.operation)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (allow_default_route.is_set || is_set(allow_default_route.yfilter)) leaf_name_data.push_back(allow_default_route.get_name_leafdata());
+    if (allow_self_ping.is_set || is_set(allow_self_ping.yfilter)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1986,24 +2390,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-default-route")
     {
         allow_default_route = value;
+        allow_default_route.value_namespace = name_space;
+        allow_default_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "allow-self-ping")
     {
         allow_self_ping = value;
+        allow_self_ping.value_namespace = name_space;
+        allow_self_ping.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-default-route")
+    {
+        allow_default_route.yfilter = yfilter;
+    }
+    if(value_path == "allow-self-ping")
+    {
+        allow_self_ping.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Rpf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-default-route" || name == "allow-self-ping" || name == "enable" || name == "mode")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::BgpPa()
@@ -2030,7 +2469,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
@@ -2104,8 +2543,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::Input()
@@ -2130,10 +2580,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(enable.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::get_segment_path() const
@@ -2159,9 +2609,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2180,20 +2630,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "enable" || name == "source")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::Output()
@@ -2218,10 +2697,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(enable.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::get_segment_path() const
@@ -2247,9 +2726,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2268,20 +2747,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::BgpPa::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "enable" || name == "source")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::Utime()
@@ -2300,7 +2808,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::get_segment_path() const
@@ -2344,8 +2852,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Utime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::IdbUtime()
@@ -2364,7 +2881,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::get_segment_path() const
@@ -2408,8 +2925,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::IdbUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::CapsUtime()
@@ -2428,7 +2954,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::get_segment_path() const
@@ -2472,8 +2998,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::CapsUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::FwdEnUtime()
@@ -2492,7 +3027,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::get_segment_path() const
@@ -2536,8 +3071,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdEnUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::FwdDisUtime()
@@ -2556,7 +3100,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::get_segment_path() const
@@ -2600,8 +3144,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::FwdDisUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::MulticastGroup()
@@ -2622,8 +3175,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::get_segment_path() const
@@ -2649,7 +3202,7 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2668,12 +3221,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MulticastGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::Address()
@@ -2702,12 +3272,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_state.operation)
-	|| is_set(is_anycast.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_state.yfilter)
+	|| ydk::is_set(is_anycast.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::get_segment_path() const
@@ -2733,11 +3303,11 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_state.is_set || is_set(address_state.operation)) leaf_name_data.push_back(address_state.get_name_leafdata());
-    if (is_anycast.is_set || is_set(is_anycast.operation)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_state.is_set || is_set(address_state.yfilter)) leaf_name_data.push_back(address_state.get_name_leafdata());
+    if (is_anycast.is_set || is_set(is_anycast.yfilter)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2756,28 +3326,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-state")
     {
         address_state = value;
+        address_state.value_namespace = name_space;
+        address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-anycast")
     {
         is_anycast = value;
+        is_anycast.value_namespace = name_space;
+        is_anycast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-state")
+    {
+        address_state.yfilter = yfilter;
+    }
+    if(value_path == "is-anycast")
+    {
+        is_anycast.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-state" || name == "is-anycast" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::ClientMulticastGroup()
@@ -2798,8 +3409,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDe
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::get_segment_path() const
@@ -2825,7 +3436,7 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2844,12 +3455,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::ClientMulticastGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBriefs()
@@ -2878,7 +3506,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::has_opera
         if(global_brief[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::get_segment_path() const
@@ -2943,14 +3571,26 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-brief")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::GlobalBrief()
     :
     interface_name{YType::str, "interface-name"},
-    line_state{YType::enumeration, "line-state"}
+    line_state{YType::enumeration, "line-state"},
+    vrf_name{YType::str, "vrf-name"}
     	,
     link_local_address(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress>())
 {
@@ -2972,6 +3612,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBri
     }
     return interface_name.is_set
 	|| line_state.is_set
+	|| vrf_name.is_set
 	|| (link_local_address !=  nullptr && link_local_address->has_data());
 }
 
@@ -2982,9 +3623,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBri
         if(address[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(line_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (link_local_address !=  nullptr && link_local_address->has_operation());
 }
 
@@ -3011,8 +3653,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBrief
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3066,16 +3709,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "link-local-address" || name == "interface-name" || name == "line-state" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::LinkLocalAddress()
@@ -3104,12 +3780,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBri
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_state.operation)
-	|| is_set(is_anycast.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_state.yfilter)
+	|| ydk::is_set(is_anycast.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::get_segment_path() const
@@ -3135,11 +3811,11 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBrief
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_state.is_set || is_set(address_state.operation)) leaf_name_data.push_back(address_state.get_name_leafdata());
-    if (is_anycast.is_set || is_set(is_anycast.operation)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_state.is_set || is_set(address_state.yfilter)) leaf_name_data.push_back(address_state.get_name_leafdata());
+    if (is_anycast.is_set || is_set(is_anycast.yfilter)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3158,28 +3834,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-state")
     {
         address_state = value;
+        address_state.value_namespace = name_space;
+        address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-anycast")
     {
         is_anycast = value;
+        is_anycast.value_namespace = name_space;
+        is_anycast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-state")
+    {
+        address_state.yfilter = yfilter;
+    }
+    if(value_path == "is-anycast")
+    {
+        is_anycast.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-state" || name == "is-anycast" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::Address()
@@ -3208,12 +3925,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBri
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_state.operation)
-	|| is_set(is_anycast.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_state.yfilter)
+	|| ydk::is_set(is_anycast.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::get_segment_path() const
@@ -3239,11 +3956,11 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBrief
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_state.is_set || is_set(address_state.operation)) leaf_name_data.push_back(address_state.get_name_leafdata());
-    if (is_anycast.is_set || is_set(is_anycast.operation)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_state.is_set || is_set(address_state.yfilter)) leaf_name_data.push_back(address_state.get_name_leafdata());
+    if (is_anycast.is_set || is_set(is_anycast.yfilter)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3262,28 +3979,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-state")
     {
         address_state = value;
+        address_state.value_namespace = name_space;
+        address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-anycast")
     {
         is_anycast = value;
+        is_anycast.value_namespace = name_space;
+        is_anycast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-state")
+    {
+        address_state.yfilter = yfilter;
+    }
+    if(value_path == "is-anycast")
+    {
+        is_anycast.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-state" || name == "is-anycast" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Details()
@@ -3312,7 +4070,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_operation(
         if(detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_segment_path() const
@@ -3377,8 +4135,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
@@ -3391,7 +4160,8 @@ Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     mlacp_active{YType::boolean, "mlacp-active"},
     mtu{YType::uint32, "mtu"},
     operation_state{YType::enumeration, "operation-state"},
-    rg_id_exists{YType::boolean, "rg-id-exists"}
+    rg_id_exists{YType::boolean, "rg-id-exists"},
+    vrf_name{YType::str, "vrf-name"}
     	,
     access_control_list(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList>())
 	,bgp_pa(std::make_shared<Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>())
@@ -3457,6 +4227,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_da
 	|| mtu.is_set
 	|| operation_state.is_set
 	|| rg_id_exists.is_set
+	|| vrf_name.is_set
 	|| (access_control_list !=  nullptr && access_control_list->has_data())
 	|| (bgp_pa !=  nullptr && bgp_pa->has_data())
 	|| (caps_utime !=  nullptr && caps_utime->has_data())
@@ -3486,16 +4257,17 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_op
         if(multicast_group[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(flow_tag_dst.operation)
-	|| is_set(flow_tag_src.operation)
-	|| is_set(is_icmp_unreach_enabled.operation)
-	|| is_set(line_state.operation)
-	|| is_set(mlacp_active.operation)
-	|| is_set(mtu.operation)
-	|| is_set(operation_state.operation)
-	|| is_set(rg_id_exists.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(flow_tag_dst.yfilter)
+	|| ydk::is_set(flow_tag_src.yfilter)
+	|| ydk::is_set(is_icmp_unreach_enabled.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(mlacp_active.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(operation_state.yfilter)
+	|| ydk::is_set(rg_id_exists.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (access_control_list !=  nullptr && access_control_list->has_operation())
 	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
 	|| (caps_utime !=  nullptr && caps_utime->has_operation())
@@ -3531,15 +4303,16 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (flow_tag_dst.is_set || is_set(flow_tag_dst.operation)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
-    if (flow_tag_src.is_set || is_set(flow_tag_src.operation)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
-    if (is_icmp_unreach_enabled.is_set || is_set(is_icmp_unreach_enabled.operation)) leaf_name_data.push_back(is_icmp_unreach_enabled.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
-    if (mlacp_active.is_set || is_set(mlacp_active.operation)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (operation_state.is_set || is_set(operation_state.operation)) leaf_name_data.push_back(operation_state.get_name_leafdata());
-    if (rg_id_exists.is_set || is_set(rg_id_exists.operation)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (flow_tag_dst.is_set || is_set(flow_tag_dst.yfilter)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
+    if (flow_tag_src.is_set || is_set(flow_tag_src.yfilter)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
+    if (is_icmp_unreach_enabled.is_set || is_set(is_icmp_unreach_enabled.yfilter)) leaf_name_data.push_back(is_icmp_unreach_enabled.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (mlacp_active.is_set || is_set(mlacp_active.yfilter)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (operation_state.is_set || is_set(operation_state.yfilter)) leaf_name_data.push_back(operation_state.get_name_leafdata());
+    if (rg_id_exists.is_set || is_set(rg_id_exists.yfilter)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3761,44 +4534,119 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-tag-dst")
     {
         flow_tag_dst = value;
+        flow_tag_dst.value_namespace = name_space;
+        flow_tag_dst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-tag-src")
     {
         flow_tag_src = value;
+        flow_tag_src.value_namespace = name_space;
+        flow_tag_src.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-icmp-unreach-enabled")
     {
         is_icmp_unreach_enabled = value;
+        is_icmp_unreach_enabled.value_namespace = name_space;
+        is_icmp_unreach_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-active")
     {
         mlacp_active = value;
+        mlacp_active.value_namespace = name_space;
+        mlacp_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation-state")
     {
         operation_state = value;
+        operation_state.value_namespace = name_space;
+        operation_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rg-id-exists")
     {
         rg_id_exists = value;
+        rg_id_exists.value_namespace = name_space;
+        rg_id_exists.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag-dst")
+    {
+        flow_tag_dst.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag-src")
+    {
+        flow_tag_src.yfilter = yfilter;
+    }
+    if(value_path == "is-icmp-unreach-enabled")
+    {
+        is_icmp_unreach_enabled.yfilter = yfilter;
+    }
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-active")
+    {
+        mlacp_active.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "operation-state")
+    {
+        operation_state.yfilter = yfilter;
+    }
+    if(value_path == "rg-id-exists")
+    {
+        rg_id_exists.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-control-list" || name == "address" || name == "bgp-pa" || name == "caps-utime" || name == "client-multicast-group" || name == "fwd-dis-utime" || name == "fwd-en-utime" || name == "idb-utime" || name == "link-local-address" || name == "multi-access-control-list" || name == "multicast-group" || name == "rpf" || name == "utime" || name == "interface-name" || name == "flow-tag-dst" || name == "flow-tag-src" || name == "is-icmp-unreach-enabled" || name == "line-state" || name == "mlacp-active" || name == "mtu" || name == "operation-state" || name == "rg-id-exists" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::LinkLocalAddress()
@@ -3827,12 +4675,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLo
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_state.operation)
-	|| is_set(is_anycast.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_state.yfilter)
+	|| ydk::is_set(is_anycast.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::get_segment_path() const
@@ -3858,11 +4706,11 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_state.is_set || is_set(address_state.operation)) leaf_name_data.push_back(address_state.get_name_leafdata());
-    if (is_anycast.is_set || is_set(is_anycast.operation)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_state.is_set || is_set(address_state.yfilter)) leaf_name_data.push_back(address_state.get_name_leafdata());
+    if (is_anycast.is_set || is_set(is_anycast.yfilter)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3881,28 +4729,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-state")
     {
         address_state = value;
+        address_state.value_namespace = name_space;
+        address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-anycast")
     {
         is_anycast = value;
+        is_anycast.value_namespace = name_space;
+        is_anycast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-state")
+    {
+        address_state.yfilter = yfilter;
+    }
+    if(value_path == "is-anycast")
+    {
+        is_anycast.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-state" || name == "is-anycast" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::AccessControlList()
@@ -3929,11 +4818,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Access
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_in_bound.operation)
-	|| is_set(common_out_bound.operation)
-	|| is_set(in_bound.operation)
-	|| is_set(out_bound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_in_bound.yfilter)
+	|| ydk::is_set(common_out_bound.yfilter)
+	|| ydk::is_set(in_bound.yfilter)
+	|| ydk::is_set(out_bound.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::get_segment_path() const
@@ -3959,10 +4848,10 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_in_bound.is_set || is_set(common_in_bound.operation)) leaf_name_data.push_back(common_in_bound.get_name_leafdata());
-    if (common_out_bound.is_set || is_set(common_out_bound.operation)) leaf_name_data.push_back(common_out_bound.get_name_leafdata());
-    if (in_bound.is_set || is_set(in_bound.operation)) leaf_name_data.push_back(in_bound.get_name_leafdata());
-    if (out_bound.is_set || is_set(out_bound.operation)) leaf_name_data.push_back(out_bound.get_name_leafdata());
+    if (common_in_bound.is_set || is_set(common_in_bound.yfilter)) leaf_name_data.push_back(common_in_bound.get_name_leafdata());
+    if (common_out_bound.is_set || is_set(common_out_bound.yfilter)) leaf_name_data.push_back(common_out_bound.get_name_leafdata());
+    if (in_bound.is_set || is_set(in_bound.yfilter)) leaf_name_data.push_back(in_bound.get_name_leafdata());
+    if (out_bound.is_set || is_set(out_bound.yfilter)) leaf_name_data.push_back(out_bound.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3981,24 +4870,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-in-bound")
     {
         common_in_bound = value;
+        common_in_bound.value_namespace = name_space;
+        common_in_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "common-out-bound")
     {
         common_out_bound = value;
+        common_out_bound.value_namespace = name_space;
+        common_out_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-bound")
     {
         in_bound = value;
+        in_bound.value_namespace = name_space;
+        in_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-bound")
     {
         out_bound = value;
+        out_bound.value_namespace = name_space;
+        out_bound.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-in-bound")
+    {
+        common_in_bound.yfilter = yfilter;
+    }
+    if(value_path == "common-out-bound")
+    {
+        common_out_bound.yfilter = yfilter;
+    }
+    if(value_path == "in-bound")
+    {
+        in_bound.yfilter = yfilter;
+    }
+    if(value_path == "out-bound")
+    {
+        out_bound.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-in-bound" || name == "common-out-bound" || name == "in-bound" || name == "out-bound")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::MultiAccessControlList()
@@ -4038,23 +4962,23 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
 {
     for (auto const & leaf : common.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : inbound.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : outbound.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(common.operation)
-	|| is_set(inbound.operation)
-	|| is_set(outbound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common.yfilter)
+	|| ydk::is_set(inbound.yfilter)
+	|| ydk::is_set(outbound.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::get_segment_path() const
@@ -4104,7 +5028,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common")
     {
@@ -4118,6 +5042,29 @@ void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
     {
         outbound.append(value);
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common")
+    {
+        common.yfilter = yfilter;
+    }
+    if(value_path == "inbound")
+    {
+        inbound.yfilter = yfilter;
+    }
+    if(value_path == "outbound")
+    {
+        outbound.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common" || name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::Rpf()
@@ -4144,11 +5091,11 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::h
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_default_route.operation)
-	|| is_set(allow_self_ping.operation)
-	|| is_set(enable.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_default_route.yfilter)
+	|| ydk::is_set(allow_self_ping.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::get_segment_path() const
@@ -4174,10 +5121,10 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_default_route.is_set || is_set(allow_default_route.operation)) leaf_name_data.push_back(allow_default_route.get_name_leafdata());
-    if (allow_self_ping.is_set || is_set(allow_self_ping.operation)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (allow_default_route.is_set || is_set(allow_default_route.yfilter)) leaf_name_data.push_back(allow_default_route.get_name_leafdata());
+    if (allow_self_ping.is_set || is_set(allow_self_ping.yfilter)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4196,24 +5143,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-default-route")
     {
         allow_default_route = value;
+        allow_default_route.value_namespace = name_space;
+        allow_default_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "allow-self-ping")
     {
         allow_self_ping = value;
+        allow_self_ping.value_namespace = name_space;
+        allow_self_ping.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-default-route")
+    {
+        allow_default_route.yfilter = yfilter;
+    }
+    if(value_path == "allow-self-ping")
+    {
+        allow_self_ping.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-default-route" || name == "allow-self-ping" || name == "enable" || name == "mode")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::BgpPa()
@@ -4240,7 +5222,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
@@ -4314,8 +5296,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::Input()
@@ -4340,10 +5333,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(enable.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::get_segment_path() const
@@ -4369,9 +5362,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4390,20 +5383,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "enable" || name == "source")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::Output()
@@ -4428,10 +5450,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(enable.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::get_segment_path() const
@@ -4457,9 +5479,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4478,20 +5500,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "enable" || name == "source")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::Utime()
@@ -4510,7 +5561,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime:
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::get_segment_path() const
@@ -4554,8 +5605,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Utime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::IdbUtime()
@@ -4574,7 +5634,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUti
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_segment_path() const
@@ -4618,8 +5678,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::CapsUtime()
@@ -4638,7 +5707,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUt
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_segment_path() const
@@ -4682,8 +5751,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::FwdEnUtime()
@@ -4702,7 +5780,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnU
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_segment_path() const
@@ -4746,8 +5824,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::FwdDisUtime()
@@ -4766,7 +5853,7 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDis
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_segment_path() const
@@ -4810,8 +5897,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::MulticastGroup()
@@ -4832,8 +5928,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Multic
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::get_segment_path() const
@@ -4859,7 +5955,7 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4878,12 +5974,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::Address()
@@ -4912,12 +6025,12 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Addres
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_state.operation)
-	|| is_set(is_anycast.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_state.yfilter)
+	|| ydk::is_set(is_anycast.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::get_segment_path() const
@@ -4943,11 +6056,11 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_state.is_set || is_set(address_state.operation)) leaf_name_data.push_back(address_state.get_name_leafdata());
-    if (is_anycast.is_set || is_set(is_anycast.operation)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_state.is_set || is_set(address_state.yfilter)) leaf_name_data.push_back(address_state.get_name_leafdata());
+    if (is_anycast.is_set || is_set(is_anycast.yfilter)) leaf_name_data.push_back(is_anycast.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4966,28 +6079,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-state")
     {
         address_state = value;
+        address_state.value_namespace = name_space;
+        address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-anycast")
     {
         is_anycast = value;
+        is_anycast.value_namespace = name_space;
+        is_anycast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-state")
+    {
+        address_state.yfilter = yfilter;
+    }
+    if(value_path == "is-anycast")
+    {
+        is_anycast.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-state" || name == "is-anycast" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::ClientMulticastGroup()
@@ -5008,8 +6162,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Client
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::get_segment_path() const
@@ -5035,7 +6189,7 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5054,12 +6208,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::ClientMulticastGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::Summary()
@@ -5097,8 +6268,8 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Summary::has_data() const
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_up_down_basecaps_up.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(if_up_down_basecaps_up.yfilter)
 	|| (if_down_down !=  nullptr && if_down_down->has_operation())
 	|| (if_shutdown_down !=  nullptr && if_shutdown_down->has_operation())
 	|| (if_up_down !=  nullptr && if_up_down->has_operation())
@@ -5128,7 +6299,7 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_up_down_basecaps_up.is_set || is_set(if_up_down_basecaps_up.operation)) leaf_name_data.push_back(if_up_down_basecaps_up.get_name_leafdata());
+    if (if_up_down_basecaps_up.is_set || is_set(if_up_down_basecaps_up.yfilter)) leaf_name_data.push_back(if_up_down_basecaps_up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5203,12 +6374,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Summary::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-up-down-basecaps-up")
     {
         if_up_down_basecaps_up = value;
+        if_up_down_basecaps_up.value_namespace = name_space;
+        if_up_down_basecaps_up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-up-down-basecaps-up")
+    {
+        if_up_down_basecaps_up.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "if-down-down" || name == "if-shutdown-down" || name == "if-up-down" || name == "if-up-up" || name == "if-up-down-basecaps-up")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::IfUpUp()
@@ -5233,10 +6421,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::has_data() const
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_assigned.operation)
-	|| is_set(ip_unassigned.operation)
-	|| is_set(ip_unnumbered.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_assigned.yfilter)
+	|| ydk::is_set(ip_unassigned.yfilter)
+	|| ydk::is_set(ip_unnumbered.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_segment_path() const
@@ -5262,9 +6450,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_assigned.is_set || is_set(ip_assigned.operation)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
-    if (ip_unassigned.is_set || is_set(ip_unassigned.operation)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
-    if (ip_unnumbered.is_set || is_set(ip_unnumbered.operation)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
+    if (ip_assigned.is_set || is_set(ip_assigned.yfilter)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
+    if (ip_unassigned.is_set || is_set(ip_unassigned.yfilter)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
+    if (ip_unnumbered.is_set || is_set(ip_unnumbered.yfilter)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5283,20 +6471,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-assigned")
     {
         ip_assigned = value;
+        ip_assigned.value_namespace = name_space;
+        ip_assigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unassigned")
     {
         ip_unassigned = value;
+        ip_unassigned.value_namespace = name_space;
+        ip_unassigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unnumbered")
     {
         ip_unnumbered = value;
+        ip_unnumbered.value_namespace = name_space;
+        ip_unnumbered.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-assigned")
+    {
+        ip_assigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unassigned")
+    {
+        ip_unassigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unnumbered")
+    {
+        ip_unnumbered.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpUp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-assigned" || name == "ip-unassigned" || name == "ip-unnumbered")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::IfUpDown()
@@ -5321,10 +6538,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::has_data() cons
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_assigned.operation)
-	|| is_set(ip_unassigned.operation)
-	|| is_set(ip_unnumbered.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_assigned.yfilter)
+	|| ydk::is_set(ip_unassigned.yfilter)
+	|| ydk::is_set(ip_unnumbered.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_segment_path() const
@@ -5350,9 +6567,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_assigned.is_set || is_set(ip_assigned.operation)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
-    if (ip_unassigned.is_set || is_set(ip_unassigned.operation)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
-    if (ip_unnumbered.is_set || is_set(ip_unnumbered.operation)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
+    if (ip_assigned.is_set || is_set(ip_assigned.yfilter)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
+    if (ip_unassigned.is_set || is_set(ip_unassigned.yfilter)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
+    if (ip_unnumbered.is_set || is_set(ip_unnumbered.yfilter)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5371,20 +6588,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-assigned")
     {
         ip_assigned = value;
+        ip_assigned.value_namespace = name_space;
+        ip_assigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unassigned")
     {
         ip_unassigned = value;
+        ip_unassigned.value_namespace = name_space;
+        ip_unassigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unnumbered")
     {
         ip_unnumbered = value;
+        ip_unnumbered.value_namespace = name_space;
+        ip_unnumbered.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-assigned")
+    {
+        ip_assigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unassigned")
+    {
+        ip_unassigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unnumbered")
+    {
+        ip_unnumbered.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfUpDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-assigned" || name == "ip-unassigned" || name == "ip-unnumbered")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::IfDownDown()
@@ -5409,10 +6655,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::has_data() co
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_assigned.operation)
-	|| is_set(ip_unassigned.operation)
-	|| is_set(ip_unnumbered.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_assigned.yfilter)
+	|| ydk::is_set(ip_unassigned.yfilter)
+	|| ydk::is_set(ip_unnumbered.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_segment_path() const
@@ -5438,9 +6684,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_assigned.is_set || is_set(ip_assigned.operation)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
-    if (ip_unassigned.is_set || is_set(ip_unassigned.operation)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
-    if (ip_unnumbered.is_set || is_set(ip_unnumbered.operation)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
+    if (ip_assigned.is_set || is_set(ip_assigned.yfilter)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
+    if (ip_unassigned.is_set || is_set(ip_unassigned.yfilter)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
+    if (ip_unnumbered.is_set || is_set(ip_unnumbered.yfilter)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5459,20 +6705,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-assigned")
     {
         ip_assigned = value;
+        ip_assigned.value_namespace = name_space;
+        ip_assigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unassigned")
     {
         ip_unassigned = value;
+        ip_unassigned.value_namespace = name_space;
+        ip_unassigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unnumbered")
     {
         ip_unnumbered = value;
+        ip_unnumbered.value_namespace = name_space;
+        ip_unnumbered.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-assigned")
+    {
+        ip_assigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unassigned")
+    {
+        ip_unassigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unnumbered")
+    {
+        ip_unnumbered.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfDownDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-assigned" || name == "ip-unassigned" || name == "ip-unnumbered")
+        return true;
+    return false;
 }
 
 Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::IfShutdownDown()
@@ -5497,10 +6772,10 @@ bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_data(
 
 bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_assigned.operation)
-	|| is_set(ip_unassigned.operation)
-	|| is_set(ip_unnumbered.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_assigned.yfilter)
+	|| ydk::is_set(ip_unassigned.yfilter)
+	|| ydk::is_set(ip_unnumbered.yfilter);
 }
 
 std::string Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get_segment_path() const
@@ -5526,9 +6801,9 @@ const EntityPath Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDow
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_assigned.is_set || is_set(ip_assigned.operation)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
-    if (ip_unassigned.is_set || is_set(ip_unassigned.operation)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
-    if (ip_unnumbered.is_set || is_set(ip_unnumbered.operation)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
+    if (ip_assigned.is_set || is_set(ip_assigned.yfilter)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
+    if (ip_unassigned.is_set || is_set(ip_unassigned.yfilter)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
+    if (ip_unnumbered.is_set || is_set(ip_unnumbered.yfilter)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5547,35 +6822,64 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::set_value(const std::string & value_path, std::string value)
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-assigned")
     {
         ip_assigned = value;
+        ip_assigned.value_namespace = name_space;
+        ip_assigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unassigned")
     {
         ip_unassigned = value;
+        ip_unassigned.value_namespace = name_space;
+        ip_unassigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unnumbered")
     {
         ip_unnumbered = value;
+        ip_unnumbered.value_namespace = name_space;
+        ip_unnumbered.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf Ipv6MaOperStateEnum::oper_up {1, "oper-up"};
-const Enum::YLeaf Ipv6MaOperStateEnum::oper_down {2, "oper-down"};
+void Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-assigned")
+    {
+        ip_assigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unassigned")
+    {
+        ip_unassigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unnumbered")
+    {
+        ip_unnumbered.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf Ipv6MaIfLineStateEnum::down {1, "down"};
-const Enum::YLeaf Ipv6MaIfLineStateEnum::up {2, "up"};
-const Enum::YLeaf Ipv6MaIfLineStateEnum::unknown {3, "unknown"};
-const Enum::YLeaf Ipv6MaIfLineStateEnum::error {4, "error"};
+bool Ipv6Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-assigned" || name == "ip-unassigned" || name == "ip-unnumbered")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf Ipv6MaIfAddrStateEnum::active {1, "active"};
-const Enum::YLeaf Ipv6MaIfAddrStateEnum::deprecated {2, "deprecated"};
-const Enum::YLeaf Ipv6MaIfAddrStateEnum::duplicate {3, "duplicate"};
-const Enum::YLeaf Ipv6MaIfAddrStateEnum::inaccessible {4, "inaccessible"};
-const Enum::YLeaf Ipv6MaIfAddrStateEnum::tentative {5, "tentative"};
+const Enum::YLeaf Ipv6MaOperState::oper_up {1, "oper-up"};
+const Enum::YLeaf Ipv6MaOperState::oper_down {2, "oper-down"};
+
+const Enum::YLeaf Ipv6MaIfAddrState::active {1, "active"};
+const Enum::YLeaf Ipv6MaIfAddrState::deprecated {2, "deprecated"};
+const Enum::YLeaf Ipv6MaIfAddrState::duplicate {3, "duplicate"};
+const Enum::YLeaf Ipv6MaIfAddrState::inaccessible {4, "inaccessible"};
+const Enum::YLeaf Ipv6MaIfAddrState::tentative {5, "tentative"};
+
+const Enum::YLeaf Ipv6MaIfLineState::down {1, "down"};
+const Enum::YLeaf Ipv6MaIfLineState::up {2, "up"};
+const Enum::YLeaf Ipv6MaIfLineState::unknown {3, "unknown"};
+const Enum::YLeaf Ipv6MaIfLineState::error {4, "error"};
 
 
 }

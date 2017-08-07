@@ -7,7 +7,9 @@
 #include "Cisco_IOS_XR_ip_bfd_oper_1.hpp"
 #include "Cisco_IOS_XR_ip_bfd_oper_2.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_bfd_oper {
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ipv6MultiHopSessionDetail()
@@ -67,11 +69,11 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::has_operation()
         if(owner_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(destination_address.operation)
-	|| is_set(location.operation)
-	|| is_set(source_address.operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
 	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
 	|| (status_information !=  nullptr && status_information->has_operation());
@@ -100,10 +102,10 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -206,24 +208,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association-information" || name == "lsp-ping-info" || name == "mp-download-state" || name == "owner-information" || name == "status-information" || name == "destination-address" || name == "location" || name == "source-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusInformation()
@@ -307,21 +344,21 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(desired_minimum_echo_transmit_interval.operation)
-	|| is_set(internal_label.operation)
-	|| is_set(latency_average.operation)
-	|| is_set(latency_maximum.operation)
-	|| is_set(latency_minimum.operation)
-	|| is_set(latency_number.operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(node_id.operation)
-	|| is_set(remote_discriminator.operation)
-	|| is_set(remote_negotiated_interval.operation)
-	|| is_set(session_subtype.operation)
-	|| is_set(sessiontype.operation)
-	|| is_set(state.operation)
-	|| is_set(to_up_state_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(desired_minimum_echo_transmit_interval.yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(latency_average.yfilter)
+	|| ydk::is_set(latency_maximum.yfilter)
+	|| ydk::is_set(latency_minimum.yfilter)
+	|| ydk::is_set(latency_number.yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(remote_discriminator.yfilter)
+	|| ydk::is_set(remote_negotiated_interval.yfilter)
+	|| ydk::is_set(session_subtype.yfilter)
+	|| ydk::is_set(sessiontype.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(to_up_state_count.yfilter)
 	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
 	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
 	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
@@ -356,20 +393,20 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (desired_minimum_echo_transmit_interval.is_set || is_set(desired_minimum_echo_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_echo_transmit_interval.get_name_leafdata());
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (latency_average.is_set || is_set(latency_average.operation)) leaf_name_data.push_back(latency_average.get_name_leafdata());
-    if (latency_maximum.is_set || is_set(latency_maximum.operation)) leaf_name_data.push_back(latency_maximum.get_name_leafdata());
-    if (latency_minimum.is_set || is_set(latency_minimum.operation)) leaf_name_data.push_back(latency_minimum.get_name_leafdata());
-    if (latency_number.is_set || is_set(latency_number.operation)) leaf_name_data.push_back(latency_number.get_name_leafdata());
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (remote_discriminator.is_set || is_set(remote_discriminator.operation)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
-    if (remote_negotiated_interval.is_set || is_set(remote_negotiated_interval.operation)) leaf_name_data.push_back(remote_negotiated_interval.get_name_leafdata());
-    if (session_subtype.is_set || is_set(session_subtype.operation)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
-    if (sessiontype.is_set || is_set(sessiontype.operation)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (to_up_state_count.is_set || is_set(to_up_state_count.operation)) leaf_name_data.push_back(to_up_state_count.get_name_leafdata());
+    if (desired_minimum_echo_transmit_interval.is_set || is_set(desired_minimum_echo_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_echo_transmit_interval.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (latency_average.is_set || is_set(latency_average.yfilter)) leaf_name_data.push_back(latency_average.get_name_leafdata());
+    if (latency_maximum.is_set || is_set(latency_maximum.yfilter)) leaf_name_data.push_back(latency_maximum.get_name_leafdata());
+    if (latency_minimum.is_set || is_set(latency_minimum.yfilter)) leaf_name_data.push_back(latency_minimum.get_name_leafdata());
+    if (latency_number.is_set || is_set(latency_number.yfilter)) leaf_name_data.push_back(latency_number.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (remote_discriminator.is_set || is_set(remote_discriminator.yfilter)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
+    if (remote_negotiated_interval.is_set || is_set(remote_negotiated_interval.yfilter)) leaf_name_data.push_back(remote_negotiated_interval.get_name_leafdata());
+    if (session_subtype.is_set || is_set(session_subtype.yfilter)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
+    if (sessiontype.is_set || is_set(sessiontype.yfilter)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (to_up_state_count.is_set || is_set(to_up_state_count.yfilter)) leaf_name_data.push_back(to_up_state_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -514,64 +551,159 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "desired-minimum-echo-transmit-interval")
     {
         desired_minimum_echo_transmit_interval = value;
+        desired_minimum_echo_transmit_interval.value_namespace = name_space;
+        desired_minimum_echo_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-average")
     {
         latency_average = value;
+        latency_average.value_namespace = name_space;
+        latency_average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-maximum")
     {
         latency_maximum = value;
+        latency_maximum.value_namespace = name_space;
+        latency_maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-minimum")
     {
         latency_minimum = value;
+        latency_minimum.value_namespace = name_space;
+        latency_minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-number")
     {
         latency_number = value;
+        latency_number.value_namespace = name_space;
+        latency_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-discriminator")
     {
         remote_discriminator = value;
+        remote_discriminator.value_namespace = name_space;
+        remote_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-negotiated-interval")
     {
         remote_negotiated_interval = value;
+        remote_negotiated_interval.value_namespace = name_space;
+        remote_negotiated_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-subtype")
     {
         session_subtype = value;
+        session_subtype.value_namespace = name_space;
+        session_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessiontype")
     {
         sessiontype = value;
+        sessiontype.value_namespace = name_space;
+        sessiontype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "to-up-state-count")
     {
         to_up_state_count = value;
+        to_up_state_count.value_namespace = name_space;
+        to_up_state_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "desired-minimum-echo-transmit-interval")
+    {
+        desired_minimum_echo_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "latency-average")
+    {
+        latency_average.yfilter = yfilter;
+    }
+    if(value_path == "latency-maximum")
+    {
+        latency_maximum.yfilter = yfilter;
+    }
+    if(value_path == "latency-minimum")
+    {
+        latency_minimum.yfilter = yfilter;
+    }
+    if(value_path == "latency-number")
+    {
+        latency_number.yfilter = yfilter;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-discriminator")
+    {
+        remote_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "remote-negotiated-interval")
+    {
+        remote_negotiated_interval.yfilter = yfilter;
+    }
+    if(value_path == "session-subtype")
+    {
+        session_subtype.yfilter = yfilter;
+    }
+    if(value_path == "sessiontype")
+    {
+        sessiontype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "to-up-state-count")
+    {
+        to_up_state_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-receive-statistics" || name == "async-transmit-statistics" || name == "echo-received-statistics" || name == "echo-transmit-statistics" || name == "last-state-change" || name == "receive-packet" || name == "source-address" || name == "status-brief-information" || name == "transmit-packet" || name == "desired-minimum-echo-transmit-interval" || name == "internal-label" || name == "latency-average" || name == "latency-maximum" || name == "latency-minimum" || name == "latency-number" || name == "local-discriminator" || name == "node-id" || name == "remote-discriminator" || name == "remote-negotiated-interval" || name == "session-subtype" || name == "sessiontype" || name == "state" || name == "to-up-state-count")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress::SourceAddress()
@@ -598,11 +730,11 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress::get_segment_path() const
@@ -628,10 +760,10 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -650,24 +782,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange::LastStateChange()
@@ -694,11 +861,11 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(days.operation)
-	|| is_set(hours.operation)
-	|| is_set(minutes.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(days.yfilter)
+	|| ydk::is_set(hours.yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange::get_segment_path() const
@@ -724,10 +891,10 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (days.is_set || is_set(days.operation)) leaf_name_data.push_back(days.get_name_leafdata());
-    if (hours.is_set || is_set(hours.operation)) leaf_name_data.push_back(hours.get_name_leafdata());
-    if (minutes.is_set || is_set(minutes.operation)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
+    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -746,24 +913,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "days")
     {
         days = value;
+        days.value_namespace = name_space;
+        days.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hours")
     {
         hours = value;
+        hours.value_namespace = name_space;
+        hours.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minutes")
     {
         minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "days")
+    {
+        days.yfilter = yfilter;
+    }
+    if(value_path == "hours")
+    {
+        hours.yfilter = yfilter;
+    }
+    if(value_path == "minutes")
+    {
+        minutes.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "days" || name == "hours" || name == "minutes" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket::TransmitPacket()
@@ -774,7 +976,7 @@ Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::T
     desired_minimum_transmit_interval{YType::uint32, "desired-minimum-transmit-interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
     diagnostic{YType::enumeration, "diagnostic"},
-    final_{YType::int32, "final"},
+    final{YType::int32, "final"},
     ihear_you{YType::int32, "ihear-you"},
     length{YType::uint32, "length"},
     my_discriminator{YType::uint32, "my-discriminator"},
@@ -800,7 +1002,7 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 	|| desired_minimum_transmit_interval.is_set
 	|| detection_multiplier.is_set
 	|| diagnostic.is_set
-	|| final_.is_set
+	|| final.is_set
 	|| ihear_you.is_set
 	|| length.is_set
 	|| my_discriminator.is_set
@@ -814,23 +1016,23 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_present.operation)
-	|| is_set(control_plane_independent.operation)
-	|| is_set(demand.operation)
-	|| is_set(desired_minimum_transmit_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(diagnostic.operation)
-	|| is_set(final_.operation)
-	|| is_set(ihear_you.operation)
-	|| is_set(length.operation)
-	|| is_set(my_discriminator.operation)
-	|| is_set(poll.operation)
-	|| is_set(required_minimum_echo_receive_interval.operation)
-	|| is_set(required_minimum_receive_interval.operation)
-	|| is_set(state.operation)
-	|| is_set(version.operation)
-	|| is_set(your_discriminator.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_present.yfilter)
+	|| ydk::is_set(control_plane_independent.yfilter)
+	|| ydk::is_set(demand.yfilter)
+	|| ydk::is_set(desired_minimum_transmit_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(diagnostic.yfilter)
+	|| ydk::is_set(final.yfilter)
+	|| ydk::is_set(ihear_you.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(my_discriminator.yfilter)
+	|| ydk::is_set(poll.yfilter)
+	|| ydk::is_set(required_minimum_echo_receive_interval.yfilter)
+	|| ydk::is_set(required_minimum_receive_interval.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(your_discriminator.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket::get_segment_path() const
@@ -856,22 +1058,22 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_present.is_set || is_set(authentication_present.operation)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
-    if (control_plane_independent.is_set || is_set(control_plane_independent.operation)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
-    if (demand.is_set || is_set(demand.operation)) leaf_name_data.push_back(demand.get_name_leafdata());
-    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (diagnostic.is_set || is_set(diagnostic.operation)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
-    if (final_.is_set || is_set(final_.operation)) leaf_name_data.push_back(final_.get_name_leafdata());
-    if (ihear_you.is_set || is_set(ihear_you.operation)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (my_discriminator.is_set || is_set(my_discriminator.operation)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
-    if (poll.is_set || is_set(poll.operation)) leaf_name_data.push_back(poll.get_name_leafdata());
-    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.operation)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
-    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.operation)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (your_discriminator.is_set || is_set(your_discriminator.operation)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
+    if (authentication_present.is_set || is_set(authentication_present.yfilter)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
+    if (control_plane_independent.is_set || is_set(control_plane_independent.yfilter)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
+    if (demand.is_set || is_set(demand.yfilter)) leaf_name_data.push_back(demand.get_name_leafdata());
+    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (diagnostic.is_set || is_set(diagnostic.yfilter)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
+    if (final.is_set || is_set(final.yfilter)) leaf_name_data.push_back(final.get_name_leafdata());
+    if (ihear_you.is_set || is_set(ihear_you.yfilter)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (my_discriminator.is_set || is_set(my_discriminator.yfilter)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
+    if (poll.is_set || is_set(poll.yfilter)) leaf_name_data.push_back(poll.get_name_leafdata());
+    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
+    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (your_discriminator.is_set || is_set(your_discriminator.yfilter)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -890,72 +1092,179 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-present")
     {
         authentication_present = value;
+        authentication_present.value_namespace = name_space;
+        authentication_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-plane-independent")
     {
         control_plane_independent = value;
+        control_plane_independent.value_namespace = name_space;
+        control_plane_independent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "demand")
     {
         demand = value;
+        demand.value_namespace = name_space;
+        demand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-minimum-transmit-interval")
     {
         desired_minimum_transmit_interval = value;
+        desired_minimum_transmit_interval.value_namespace = name_space;
+        desired_minimum_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diagnostic")
     {
         diagnostic = value;
+        diagnostic.value_namespace = name_space;
+        diagnostic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "final")
     {
-        final_ = value;
+        final = value;
+        final.value_namespace = name_space;
+        final.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ihear-you")
     {
         ihear_you = value;
+        ihear_you.value_namespace = name_space;
+        ihear_you.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "my-discriminator")
     {
         my_discriminator = value;
+        my_discriminator.value_namespace = name_space;
+        my_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll")
     {
         poll = value;
+        poll.value_namespace = name_space;
+        poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-echo-receive-interval")
     {
         required_minimum_echo_receive_interval = value;
+        required_minimum_echo_receive_interval.value_namespace = name_space;
+        required_minimum_echo_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-receive-interval")
     {
         required_minimum_receive_interval = value;
+        required_minimum_receive_interval.value_namespace = name_space;
+        required_minimum_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "your-discriminator")
     {
         your_discriminator = value;
+        your_discriminator.value_namespace = name_space;
+        your_discriminator.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-present")
+    {
+        authentication_present.yfilter = yfilter;
+    }
+    if(value_path == "control-plane-independent")
+    {
+        control_plane_independent.yfilter = yfilter;
+    }
+    if(value_path == "demand")
+    {
+        demand.yfilter = yfilter;
+    }
+    if(value_path == "desired-minimum-transmit-interval")
+    {
+        desired_minimum_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "diagnostic")
+    {
+        diagnostic.yfilter = yfilter;
+    }
+    if(value_path == "final")
+    {
+        final.yfilter = yfilter;
+    }
+    if(value_path == "ihear-you")
+    {
+        ihear_you.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "my-discriminator")
+    {
+        my_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "poll")
+    {
+        poll.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-echo-receive-interval")
+    {
+        required_minimum_echo_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-receive-interval")
+    {
+        required_minimum_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "your-discriminator")
+    {
+        your_discriminator.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-present" || name == "control-plane-independent" || name == "demand" || name == "desired-minimum-transmit-interval" || name == "detection-multiplier" || name == "diagnostic" || name == "final" || name == "ihear-you" || name == "length" || name == "my-discriminator" || name == "poll" || name == "required-minimum-echo-receive-interval" || name == "required-minimum-receive-interval" || name == "state" || name == "version" || name == "your-discriminator")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket::ReceivePacket()
@@ -966,7 +1275,7 @@ Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::R
     desired_minimum_transmit_interval{YType::uint32, "desired-minimum-transmit-interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
     diagnostic{YType::enumeration, "diagnostic"},
-    final_{YType::int32, "final"},
+    final{YType::int32, "final"},
     ihear_you{YType::int32, "ihear-you"},
     length{YType::uint32, "length"},
     my_discriminator{YType::uint32, "my-discriminator"},
@@ -992,7 +1301,7 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 	|| desired_minimum_transmit_interval.is_set
 	|| detection_multiplier.is_set
 	|| diagnostic.is_set
-	|| final_.is_set
+	|| final.is_set
 	|| ihear_you.is_set
 	|| length.is_set
 	|| my_discriminator.is_set
@@ -1006,23 +1315,23 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_present.operation)
-	|| is_set(control_plane_independent.operation)
-	|| is_set(demand.operation)
-	|| is_set(desired_minimum_transmit_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(diagnostic.operation)
-	|| is_set(final_.operation)
-	|| is_set(ihear_you.operation)
-	|| is_set(length.operation)
-	|| is_set(my_discriminator.operation)
-	|| is_set(poll.operation)
-	|| is_set(required_minimum_echo_receive_interval.operation)
-	|| is_set(required_minimum_receive_interval.operation)
-	|| is_set(state.operation)
-	|| is_set(version.operation)
-	|| is_set(your_discriminator.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_present.yfilter)
+	|| ydk::is_set(control_plane_independent.yfilter)
+	|| ydk::is_set(demand.yfilter)
+	|| ydk::is_set(desired_minimum_transmit_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(diagnostic.yfilter)
+	|| ydk::is_set(final.yfilter)
+	|| ydk::is_set(ihear_you.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(my_discriminator.yfilter)
+	|| ydk::is_set(poll.yfilter)
+	|| ydk::is_set(required_minimum_echo_receive_interval.yfilter)
+	|| ydk::is_set(required_minimum_receive_interval.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(your_discriminator.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket::get_segment_path() const
@@ -1048,22 +1357,22 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_present.is_set || is_set(authentication_present.operation)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
-    if (control_plane_independent.is_set || is_set(control_plane_independent.operation)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
-    if (demand.is_set || is_set(demand.operation)) leaf_name_data.push_back(demand.get_name_leafdata());
-    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (diagnostic.is_set || is_set(diagnostic.operation)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
-    if (final_.is_set || is_set(final_.operation)) leaf_name_data.push_back(final_.get_name_leafdata());
-    if (ihear_you.is_set || is_set(ihear_you.operation)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (my_discriminator.is_set || is_set(my_discriminator.operation)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
-    if (poll.is_set || is_set(poll.operation)) leaf_name_data.push_back(poll.get_name_leafdata());
-    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.operation)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
-    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.operation)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (your_discriminator.is_set || is_set(your_discriminator.operation)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
+    if (authentication_present.is_set || is_set(authentication_present.yfilter)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
+    if (control_plane_independent.is_set || is_set(control_plane_independent.yfilter)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
+    if (demand.is_set || is_set(demand.yfilter)) leaf_name_data.push_back(demand.get_name_leafdata());
+    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (diagnostic.is_set || is_set(diagnostic.yfilter)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
+    if (final.is_set || is_set(final.yfilter)) leaf_name_data.push_back(final.get_name_leafdata());
+    if (ihear_you.is_set || is_set(ihear_you.yfilter)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (my_discriminator.is_set || is_set(my_discriminator.yfilter)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
+    if (poll.is_set || is_set(poll.yfilter)) leaf_name_data.push_back(poll.get_name_leafdata());
+    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
+    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (your_discriminator.is_set || is_set(your_discriminator.yfilter)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1082,72 +1391,179 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-present")
     {
         authentication_present = value;
+        authentication_present.value_namespace = name_space;
+        authentication_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-plane-independent")
     {
         control_plane_independent = value;
+        control_plane_independent.value_namespace = name_space;
+        control_plane_independent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "demand")
     {
         demand = value;
+        demand.value_namespace = name_space;
+        demand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-minimum-transmit-interval")
     {
         desired_minimum_transmit_interval = value;
+        desired_minimum_transmit_interval.value_namespace = name_space;
+        desired_minimum_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diagnostic")
     {
         diagnostic = value;
+        diagnostic.value_namespace = name_space;
+        diagnostic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "final")
     {
-        final_ = value;
+        final = value;
+        final.value_namespace = name_space;
+        final.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ihear-you")
     {
         ihear_you = value;
+        ihear_you.value_namespace = name_space;
+        ihear_you.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "my-discriminator")
     {
         my_discriminator = value;
+        my_discriminator.value_namespace = name_space;
+        my_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll")
     {
         poll = value;
+        poll.value_namespace = name_space;
+        poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-echo-receive-interval")
     {
         required_minimum_echo_receive_interval = value;
+        required_minimum_echo_receive_interval.value_namespace = name_space;
+        required_minimum_echo_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-receive-interval")
     {
         required_minimum_receive_interval = value;
+        required_minimum_receive_interval.value_namespace = name_space;
+        required_minimum_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "your-discriminator")
     {
         your_discriminator = value;
+        your_discriminator.value_namespace = name_space;
+        your_discriminator.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-present")
+    {
+        authentication_present.yfilter = yfilter;
+    }
+    if(value_path == "control-plane-independent")
+    {
+        control_plane_independent.yfilter = yfilter;
+    }
+    if(value_path == "demand")
+    {
+        demand.yfilter = yfilter;
+    }
+    if(value_path == "desired-minimum-transmit-interval")
+    {
+        desired_minimum_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "diagnostic")
+    {
+        diagnostic.yfilter = yfilter;
+    }
+    if(value_path == "final")
+    {
+        final.yfilter = yfilter;
+    }
+    if(value_path == "ihear-you")
+    {
+        ihear_you.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "my-discriminator")
+    {
+        my_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "poll")
+    {
+        poll.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-echo-receive-interval")
+    {
+        required_minimum_echo_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-receive-interval")
+    {
+        required_minimum_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "your-discriminator")
+    {
+        your_discriminator.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-present" || name == "control-plane-independent" || name == "demand" || name == "desired-minimum-transmit-interval" || name == "detection-multiplier" || name == "diagnostic" || name == "final" || name == "ihear-you" || name == "length" || name == "my-discriminator" || name == "poll" || name == "required-minimum-echo-receive-interval" || name == "required-minimum-receive-interval" || name == "state" || name == "version" || name == "your-discriminator")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::StatusBriefInformation()
@@ -1174,7 +1590,7 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
 	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
@@ -1248,8 +1664,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-interval-multiplier" || name == "echo-interval-multiplier")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::AsyncIntervalMultiplier()
@@ -1276,11 +1703,11 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_local_transmit_interval.operation)
-	|| is_set(negotiated_remote_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_local_transmit_interval.yfilter)
+	|| ydk::is_set(negotiated_remote_transmit_interval.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::get_segment_path() const
@@ -1306,10 +1733,10 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.operation)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
-    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.operation)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
+    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1328,24 +1755,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-local-transmit-interval")
     {
         negotiated_local_transmit_interval = value;
+        negotiated_local_transmit_interval.value_namespace = name_space;
+        negotiated_local_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-remote-transmit-interval")
     {
         negotiated_remote_transmit_interval = value;
+        negotiated_remote_transmit_interval.value_namespace = name_space;
+        negotiated_remote_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-local-transmit-interval")
+    {
+        negotiated_local_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-remote-transmit-interval")
+    {
+        negotiated_remote_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-local-transmit-interval" || name == "negotiated-remote-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::EchoIntervalMultiplier()
@@ -1370,10 +1832,10 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_transmit_interval.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::get_segment_path() const
@@ -1399,9 +1861,9 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.operation)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1420,20 +1882,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-transmit-interval")
     {
         negotiated_transmit_interval = value;
+        negotiated_transmit_interval.value_namespace = name_space;
+        negotiated_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-transmit-interval")
+    {
+        negotiated_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics::AsyncTransmitStatistics()
@@ -1462,12 +1953,12 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics::get_segment_path() const
@@ -1493,11 +1984,11 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1516,28 +2007,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics::AsyncReceiveStatistics()
@@ -1566,12 +2098,12 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics::get_segment_path() const
@@ -1597,11 +2129,11 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1620,28 +2152,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics::EchoTransmitStatistics()
@@ -1670,12 +2243,12 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics::get_segment_path() const
@@ -1701,11 +2274,11 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1724,28 +2297,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics::EchoReceivedStatistics()
@@ -1774,12 +2388,12 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformati
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics::get_segment_path() const
@@ -1805,11 +2419,11 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Sta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1828,28 +2442,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::MpDownloadState()
@@ -1875,8 +2530,8 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mp_download_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mp_download_state.yfilter)
 	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
@@ -1903,7 +2558,7 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mp_download_state.is_set || is_set(mp_download_state.operation)) leaf_name_data.push_back(mp_download_state.get_name_leafdata());
+    if (mp_download_state.is_set || is_set(mp_download_state.yfilter)) leaf_name_data.push_back(mp_download_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1936,12 +2591,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mp-download-state")
     {
         mp_download_state = value;
+        mp_download_state.value_namespace = name_space;
+        mp_download_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mp-download-state")
+    {
+        mp_download_state.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "change-time" || name == "mp-download-state")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime::ChangeTime()
@@ -1964,9 +2636,9 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime::get_segment_path() const
@@ -1992,8 +2664,8 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2012,16 +2684,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingInfo()
@@ -2071,16 +2766,16 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::ha
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsp_ping_rx_count.operation)
-	|| is_set(lsp_ping_rx_last_code.operation)
-	|| is_set(lsp_ping_rx_last_discr.operation)
-	|| is_set(lsp_ping_rx_last_output.operation)
-	|| is_set(lsp_ping_rx_last_subcode.operation)
-	|| is_set(lsp_ping_tx_count.operation)
-	|| is_set(lsp_ping_tx_error_count.operation)
-	|| is_set(lsp_ping_tx_last_error_rc.operation)
-	|| is_set(lsp_ping_tx_last_rc.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsp_ping_rx_count.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_code.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_discr.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_output.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_subcode.yfilter)
+	|| ydk::is_set(lsp_ping_tx_count.yfilter)
+	|| ydk::is_set(lsp_ping_tx_error_count.yfilter)
+	|| ydk::is_set(lsp_ping_tx_last_error_rc.yfilter)
+	|| ydk::is_set(lsp_ping_tx_last_rc.yfilter)
 	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
 	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
 	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
@@ -2109,15 +2804,15 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Lsp
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsp_ping_rx_count.is_set || is_set(lsp_ping_rx_count.operation)) leaf_name_data.push_back(lsp_ping_rx_count.get_name_leafdata());
-    if (lsp_ping_rx_last_code.is_set || is_set(lsp_ping_rx_last_code.operation)) leaf_name_data.push_back(lsp_ping_rx_last_code.get_name_leafdata());
-    if (lsp_ping_rx_last_discr.is_set || is_set(lsp_ping_rx_last_discr.operation)) leaf_name_data.push_back(lsp_ping_rx_last_discr.get_name_leafdata());
-    if (lsp_ping_rx_last_output.is_set || is_set(lsp_ping_rx_last_output.operation)) leaf_name_data.push_back(lsp_ping_rx_last_output.get_name_leafdata());
-    if (lsp_ping_rx_last_subcode.is_set || is_set(lsp_ping_rx_last_subcode.operation)) leaf_name_data.push_back(lsp_ping_rx_last_subcode.get_name_leafdata());
-    if (lsp_ping_tx_count.is_set || is_set(lsp_ping_tx_count.operation)) leaf_name_data.push_back(lsp_ping_tx_count.get_name_leafdata());
-    if (lsp_ping_tx_error_count.is_set || is_set(lsp_ping_tx_error_count.operation)) leaf_name_data.push_back(lsp_ping_tx_error_count.get_name_leafdata());
-    if (lsp_ping_tx_last_error_rc.is_set || is_set(lsp_ping_tx_last_error_rc.operation)) leaf_name_data.push_back(lsp_ping_tx_last_error_rc.get_name_leafdata());
-    if (lsp_ping_tx_last_rc.is_set || is_set(lsp_ping_tx_last_rc.operation)) leaf_name_data.push_back(lsp_ping_tx_last_rc.get_name_leafdata());
+    if (lsp_ping_rx_count.is_set || is_set(lsp_ping_rx_count.yfilter)) leaf_name_data.push_back(lsp_ping_rx_count.get_name_leafdata());
+    if (lsp_ping_rx_last_code.is_set || is_set(lsp_ping_rx_last_code.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_code.get_name_leafdata());
+    if (lsp_ping_rx_last_discr.is_set || is_set(lsp_ping_rx_last_discr.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_discr.get_name_leafdata());
+    if (lsp_ping_rx_last_output.is_set || is_set(lsp_ping_rx_last_output.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_output.get_name_leafdata());
+    if (lsp_ping_rx_last_subcode.is_set || is_set(lsp_ping_rx_last_subcode.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_subcode.get_name_leafdata());
+    if (lsp_ping_tx_count.is_set || is_set(lsp_ping_tx_count.yfilter)) leaf_name_data.push_back(lsp_ping_tx_count.get_name_leafdata());
+    if (lsp_ping_tx_error_count.is_set || is_set(lsp_ping_tx_error_count.yfilter)) leaf_name_data.push_back(lsp_ping_tx_error_count.get_name_leafdata());
+    if (lsp_ping_tx_last_error_rc.is_set || is_set(lsp_ping_tx_last_error_rc.yfilter)) leaf_name_data.push_back(lsp_ping_tx_last_error_rc.get_name_leafdata());
+    if (lsp_ping_tx_last_rc.is_set || is_set(lsp_ping_tx_last_rc.yfilter)) leaf_name_data.push_back(lsp_ping_tx_last_rc.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2178,44 +2873,109 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsp-ping-rx-count")
     {
         lsp_ping_rx_count = value;
+        lsp_ping_rx_count.value_namespace = name_space;
+        lsp_ping_rx_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-code")
     {
         lsp_ping_rx_last_code = value;
+        lsp_ping_rx_last_code.value_namespace = name_space;
+        lsp_ping_rx_last_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-discr")
     {
         lsp_ping_rx_last_discr = value;
+        lsp_ping_rx_last_discr.value_namespace = name_space;
+        lsp_ping_rx_last_discr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-output")
     {
         lsp_ping_rx_last_output = value;
+        lsp_ping_rx_last_output.value_namespace = name_space;
+        lsp_ping_rx_last_output.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-subcode")
     {
         lsp_ping_rx_last_subcode = value;
+        lsp_ping_rx_last_subcode.value_namespace = name_space;
+        lsp_ping_rx_last_subcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-count")
     {
         lsp_ping_tx_count = value;
+        lsp_ping_tx_count.value_namespace = name_space;
+        lsp_ping_tx_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-error-count")
     {
         lsp_ping_tx_error_count = value;
+        lsp_ping_tx_error_count.value_namespace = name_space;
+        lsp_ping_tx_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-last-error-rc")
     {
         lsp_ping_tx_last_error_rc = value;
+        lsp_ping_tx_last_error_rc.value_namespace = name_space;
+        lsp_ping_tx_last_error_rc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-last-rc")
     {
         lsp_ping_tx_last_rc = value;
+        lsp_ping_tx_last_rc.value_namespace = name_space;
+        lsp_ping_tx_last_rc.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsp-ping-rx-count")
+    {
+        lsp_ping_rx_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-code")
+    {
+        lsp_ping_rx_last_code.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-discr")
+    {
+        lsp_ping_rx_last_discr.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-output")
+    {
+        lsp_ping_rx_last_output.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-subcode")
+    {
+        lsp_ping_rx_last_subcode.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-count")
+    {
+        lsp_ping_tx_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-error-count")
+    {
+        lsp_ping_tx_error_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-last-error-rc")
+    {
+        lsp_ping_tx_last_error_rc.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-last-rc")
+    {
+        lsp_ping_tx_last_rc.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-ping-rx-last-time" || name == "lsp-ping-tx-last-error-time" || name == "lsp-ping-tx-last-time" || name == "lsp-ping-rx-count" || name == "lsp-ping-rx-last-code" || name == "lsp-ping-rx-last-discr" || name == "lsp-ping-rx-last-output" || name == "lsp-ping-rx-last-subcode" || name == "lsp-ping-tx-count" || name == "lsp-ping-tx-error-count" || name == "lsp-ping-tx-last-error-rc" || name == "lsp-ping-tx-last-rc")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime::LspPingTxLastTime()
@@ -2238,9 +2998,9 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::Ls
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime::get_segment_path() const
@@ -2266,8 +3026,8 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Lsp
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2286,16 +3046,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::LspPingTxLastErrorTime()
@@ -2318,9 +3101,9 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::Ls
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_segment_path() const
@@ -2346,8 +3129,8 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Lsp
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2366,16 +3149,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime::LspPingRxLastTime()
@@ -2398,9 +3204,9 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::Ls
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime::get_segment_path() const
@@ -2426,8 +3232,8 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Lsp
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2446,16 +3252,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation::OwnerInformation()
@@ -2484,12 +3313,12 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformatio
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjusted_detection_multiplier.operation)
-	|| is_set(adjusted_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(interval.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjusted_detection_multiplier.yfilter)
+	|| ydk::is_set(adjusted_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation::get_segment_path() const
@@ -2515,11 +3344,11 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Own
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.operation)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
-    if (adjusted_interval.is_set || is_set(adjusted_interval.operation)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.yfilter)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
+    if (adjusted_interval.is_set || is_set(adjusted_interval.yfilter)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2538,28 +3367,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjusted-detection-multiplier")
     {
         adjusted_detection_multiplier = value;
+        adjusted_detection_multiplier.value_namespace = name_space;
+        adjusted_detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjusted-interval")
     {
         adjusted_interval = value;
+        adjusted_interval.value_namespace = name_space;
+        adjusted_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjusted-detection-multiplier")
+    {
+        adjusted_detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "adjusted-interval")
+    {
+        adjusted_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjusted-detection-multiplier" || name == "adjusted-interval" || name == "detection-multiplier" || name == "interval" || name == "name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::AssociationInformation()
@@ -2597,9 +3467,9 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
         if(owner_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(sessiontype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(sessiontype.yfilter)
 	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
@@ -2626,8 +3496,8 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (sessiontype.is_set || is_set(sessiontype.operation)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (sessiontype.is_set || is_set(sessiontype.yfilter)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2681,16 +3551,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessiontype")
     {
         sessiontype = value;
+        sessiontype.value_namespace = name_space;
+        sessiontype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "sessiontype")
+    {
+        sessiontype.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "owner-information" || name == "session-key" || name == "local-discriminator" || name == "sessiontype")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::SessionKey()
@@ -2738,13 +3631,13 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(incoming_label.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(sbfd_enabled.operation)
-	|| is_set(sbfd_target_type.operation)
-	|| is_set(session_key_type.operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(incoming_label.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(sbfd_enabled.yfilter)
+	|| ydk::is_set(sbfd_target_type.yfilter)
+	|| ydk::is_set(session_key_type.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (bfdfec !=  nullptr && bfdfec->has_operation())
 	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
 	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
@@ -2774,12 +3667,12 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (incoming_label.is_set || is_set(incoming_label.operation)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (sbfd_enabled.is_set || is_set(sbfd_enabled.operation)) leaf_name_data.push_back(sbfd_enabled.get_name_leafdata());
-    if (sbfd_target_type.is_set || is_set(sbfd_target_type.operation)) leaf_name_data.push_back(sbfd_target_type.get_name_leafdata());
-    if (session_key_type.is_set || is_set(session_key_type.operation)) leaf_name_data.push_back(session_key_type.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (incoming_label.is_set || is_set(incoming_label.yfilter)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (sbfd_enabled.is_set || is_set(sbfd_enabled.yfilter)) leaf_name_data.push_back(sbfd_enabled.get_name_leafdata());
+    if (sbfd_target_type.is_set || is_set(sbfd_target_type.yfilter)) leaf_name_data.push_back(sbfd_target_type.get_name_leafdata());
+    if (session_key_type.is_set || is_set(session_key_type.yfilter)) leaf_name_data.push_back(session_key_type.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2854,32 +3747,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "incoming-label")
     {
         incoming_label = value;
+        incoming_label.value_namespace = name_space;
+        incoming_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbfd-enabled")
     {
         sbfd_enabled = value;
+        sbfd_enabled.value_namespace = name_space;
+        sbfd_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbfd-target-type")
     {
         sbfd_target_type = value;
+        sbfd_target_type.value_namespace = name_space;
+        sbfd_target_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-key-type")
     {
         session_key_type = value;
+        session_key_type.value_namespace = name_space;
+        session_key_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incoming-label")
+    {
+        incoming_label.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "sbfd-enabled")
+    {
+        sbfd_enabled.yfilter = yfilter;
+    }
+    if(value_path == "sbfd-target-type")
+    {
+        sbfd_target_type.yfilter = yfilter;
+    }
+    if(value_path == "session-key-type")
+    {
+        session_key_type.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfdfec" || name == "ip-destination-address" || name == "ip-source-address" || name == "target-address" || name == "incoming-label" || name == "interface-name" || name == "sbfd-enabled" || name == "sbfd-target-type" || name == "session-key-type" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::IpDestinationAddress()
@@ -2906,11 +3846,11 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::get_segment_path() const
@@ -2936,10 +3876,10 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2958,24 +3898,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::IpSourceAddress()
@@ -3002,11 +3977,11 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::get_segment_path() const
@@ -3032,10 +4007,10 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3054,24 +4029,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Bfdfec()
@@ -3101,8 +4111,8 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bfdfe_ctype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bfdfe_ctype.yfilter)
 	|| (dummy !=  nullptr && dummy->has_operation())
 	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
@@ -3130,7 +4140,7 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bfdfe_ctype.is_set || is_set(bfdfe_ctype.operation)) leaf_name_data.push_back(bfdfe_ctype.get_name_leafdata());
+    if (bfdfe_ctype.is_set || is_set(bfdfe_ctype.yfilter)) leaf_name_data.push_back(bfdfe_ctype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3177,12 +4187,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bfdfe-ctype")
     {
         bfdfe_ctype = value;
+        bfdfe_ctype.value_namespace = name_space;
+        bfdfe_ctype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bfdfe-ctype")
+    {
+        bfdfe_ctype.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dummy" || name == "te-s2l-fec" || name == "bfdfe-ctype")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::Dummy()
@@ -3203,8 +4230,8 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dummy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dummy.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::get_segment_path() const
@@ -3230,7 +4257,7 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3249,12 +4276,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dummy")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::TeS2LFec()
@@ -3293,17 +4337,17 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(s2l_fec_ctype.operation)
-	|| is_set(s2l_fec_dest.operation)
-	|| is_set(s2l_fec_extended_tunnel_id.operation)
-	|| is_set(s2l_fec_lsp_id.operation)
-	|| is_set(s2l_fec_p2mp_id.operation)
-	|| is_set(s2l_fec_source.operation)
-	|| is_set(s2l_fec_subgroup_id.operation)
-	|| is_set(s2l_fec_subgroup_originator.operation)
-	|| is_set(s2l_fec_tunnel_id.operation)
-	|| is_set(s2l_fec_vrf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(s2l_fec_ctype.yfilter)
+	|| ydk::is_set(s2l_fec_dest.yfilter)
+	|| ydk::is_set(s2l_fec_extended_tunnel_id.yfilter)
+	|| ydk::is_set(s2l_fec_lsp_id.yfilter)
+	|| ydk::is_set(s2l_fec_p2mp_id.yfilter)
+	|| ydk::is_set(s2l_fec_source.yfilter)
+	|| ydk::is_set(s2l_fec_subgroup_id.yfilter)
+	|| ydk::is_set(s2l_fec_subgroup_originator.yfilter)
+	|| ydk::is_set(s2l_fec_tunnel_id.yfilter)
+	|| ydk::is_set(s2l_fec_vrf.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::get_segment_path() const
@@ -3329,16 +4373,16 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (s2l_fec_ctype.is_set || is_set(s2l_fec_ctype.operation)) leaf_name_data.push_back(s2l_fec_ctype.get_name_leafdata());
-    if (s2l_fec_dest.is_set || is_set(s2l_fec_dest.operation)) leaf_name_data.push_back(s2l_fec_dest.get_name_leafdata());
-    if (s2l_fec_extended_tunnel_id.is_set || is_set(s2l_fec_extended_tunnel_id.operation)) leaf_name_data.push_back(s2l_fec_extended_tunnel_id.get_name_leafdata());
-    if (s2l_fec_lsp_id.is_set || is_set(s2l_fec_lsp_id.operation)) leaf_name_data.push_back(s2l_fec_lsp_id.get_name_leafdata());
-    if (s2l_fec_p2mp_id.is_set || is_set(s2l_fec_p2mp_id.operation)) leaf_name_data.push_back(s2l_fec_p2mp_id.get_name_leafdata());
-    if (s2l_fec_source.is_set || is_set(s2l_fec_source.operation)) leaf_name_data.push_back(s2l_fec_source.get_name_leafdata());
-    if (s2l_fec_subgroup_id.is_set || is_set(s2l_fec_subgroup_id.operation)) leaf_name_data.push_back(s2l_fec_subgroup_id.get_name_leafdata());
-    if (s2l_fec_subgroup_originator.is_set || is_set(s2l_fec_subgroup_originator.operation)) leaf_name_data.push_back(s2l_fec_subgroup_originator.get_name_leafdata());
-    if (s2l_fec_tunnel_id.is_set || is_set(s2l_fec_tunnel_id.operation)) leaf_name_data.push_back(s2l_fec_tunnel_id.get_name_leafdata());
-    if (s2l_fec_vrf.is_set || is_set(s2l_fec_vrf.operation)) leaf_name_data.push_back(s2l_fec_vrf.get_name_leafdata());
+    if (s2l_fec_ctype.is_set || is_set(s2l_fec_ctype.yfilter)) leaf_name_data.push_back(s2l_fec_ctype.get_name_leafdata());
+    if (s2l_fec_dest.is_set || is_set(s2l_fec_dest.yfilter)) leaf_name_data.push_back(s2l_fec_dest.get_name_leafdata());
+    if (s2l_fec_extended_tunnel_id.is_set || is_set(s2l_fec_extended_tunnel_id.yfilter)) leaf_name_data.push_back(s2l_fec_extended_tunnel_id.get_name_leafdata());
+    if (s2l_fec_lsp_id.is_set || is_set(s2l_fec_lsp_id.yfilter)) leaf_name_data.push_back(s2l_fec_lsp_id.get_name_leafdata());
+    if (s2l_fec_p2mp_id.is_set || is_set(s2l_fec_p2mp_id.yfilter)) leaf_name_data.push_back(s2l_fec_p2mp_id.get_name_leafdata());
+    if (s2l_fec_source.is_set || is_set(s2l_fec_source.yfilter)) leaf_name_data.push_back(s2l_fec_source.get_name_leafdata());
+    if (s2l_fec_subgroup_id.is_set || is_set(s2l_fec_subgroup_id.yfilter)) leaf_name_data.push_back(s2l_fec_subgroup_id.get_name_leafdata());
+    if (s2l_fec_subgroup_originator.is_set || is_set(s2l_fec_subgroup_originator.yfilter)) leaf_name_data.push_back(s2l_fec_subgroup_originator.get_name_leafdata());
+    if (s2l_fec_tunnel_id.is_set || is_set(s2l_fec_tunnel_id.yfilter)) leaf_name_data.push_back(s2l_fec_tunnel_id.get_name_leafdata());
+    if (s2l_fec_vrf.is_set || is_set(s2l_fec_vrf.yfilter)) leaf_name_data.push_back(s2l_fec_vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3357,48 +4401,119 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "s2l-fec-ctype")
     {
         s2l_fec_ctype = value;
+        s2l_fec_ctype.value_namespace = name_space;
+        s2l_fec_ctype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-dest")
     {
         s2l_fec_dest = value;
+        s2l_fec_dest.value_namespace = name_space;
+        s2l_fec_dest.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-extended-tunnel-id")
     {
         s2l_fec_extended_tunnel_id = value;
+        s2l_fec_extended_tunnel_id.value_namespace = name_space;
+        s2l_fec_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-lsp-id")
     {
         s2l_fec_lsp_id = value;
+        s2l_fec_lsp_id.value_namespace = name_space;
+        s2l_fec_lsp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-p2mp-id")
     {
         s2l_fec_p2mp_id = value;
+        s2l_fec_p2mp_id.value_namespace = name_space;
+        s2l_fec_p2mp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-source")
     {
         s2l_fec_source = value;
+        s2l_fec_source.value_namespace = name_space;
+        s2l_fec_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-subgroup-id")
     {
         s2l_fec_subgroup_id = value;
+        s2l_fec_subgroup_id.value_namespace = name_space;
+        s2l_fec_subgroup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-subgroup-originator")
     {
         s2l_fec_subgroup_originator = value;
+        s2l_fec_subgroup_originator.value_namespace = name_space;
+        s2l_fec_subgroup_originator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-tunnel-id")
     {
         s2l_fec_tunnel_id = value;
+        s2l_fec_tunnel_id.value_namespace = name_space;
+        s2l_fec_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-vrf")
     {
         s2l_fec_vrf = value;
+        s2l_fec_vrf.value_namespace = name_space;
+        s2l_fec_vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "s2l-fec-ctype")
+    {
+        s2l_fec_ctype.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-dest")
+    {
+        s2l_fec_dest.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-extended-tunnel-id")
+    {
+        s2l_fec_extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-lsp-id")
+    {
+        s2l_fec_lsp_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-p2mp-id")
+    {
+        s2l_fec_p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-source")
+    {
+        s2l_fec_source.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-subgroup-id")
+    {
+        s2l_fec_subgroup_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-subgroup-originator")
+    {
+        s2l_fec_subgroup_originator.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-tunnel-id")
+    {
+        s2l_fec_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-vrf")
+    {
+        s2l_fec_vrf.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "s2l-fec-ctype" || name == "s2l-fec-dest" || name == "s2l-fec-extended-tunnel-id" || name == "s2l-fec-lsp-id" || name == "s2l-fec-p2mp-id" || name == "s2l-fec-source" || name == "s2l-fec-subgroup-id" || name == "s2l-fec-subgroup-originator" || name == "s2l-fec-tunnel-id" || name == "s2l-fec-vrf")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::TargetAddress()
@@ -3425,11 +4540,11 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::get_segment_path() const
@@ -3455,10 +4570,10 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3477,24 +4592,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation::OwnerInformation()
@@ -3523,12 +4673,12 @@ bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInfo
 
 bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjusted_detection_multiplier.operation)
-	|| is_set(adjusted_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(interval.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjusted_detection_multiplier.yfilter)
+	|| ydk::is_set(adjusted_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation::get_segment_path() const
@@ -3554,11 +4704,11 @@ const EntityPath Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Ass
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.operation)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
-    if (adjusted_interval.is_set || is_set(adjusted_interval.operation)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.yfilter)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
+    if (adjusted_interval.is_set || is_set(adjusted_interval.yfilter)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3577,28 +4727,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionDetails::
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjusted-detection-multiplier")
     {
         adjusted_detection_multiplier = value;
+        adjusted_detection_multiplier.value_namespace = name_space;
+        adjusted_detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjusted-interval")
     {
         adjusted_interval = value;
+        adjusted_interval.value_namespace = name_space;
+        adjusted_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjusted-detection-multiplier")
+    {
+        adjusted_detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "adjusted-interval")
+    {
+        adjusted_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjusted-detection-multiplier" || name == "adjusted-interval" || name == "detection-multiplier" || name == "interval" || name == "name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPaths()
@@ -3627,7 +4818,7 @@ bool Bfd::Ipv6MultiHopMultiPaths::has_operation() const
         if(ipv6_multi_hop_multi_path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopMultiPaths::get_segment_path() const
@@ -3692,8 +4883,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopMultiPaths::get_
     return children;
 }
 
-void Bfd::Ipv6MultiHopMultiPaths::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopMultiPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv6MultiHopMultiPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv6MultiHopMultiPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-multi-hop-multi-path")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::Ipv6MultiHopMultiPath()
@@ -3732,17 +4934,17 @@ bool Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::has_data() const
 
 bool Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_address.operation)
-	|| is_set(incoming_label_xr.operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(location.operation)
-	|| is_set(node_id.operation)
-	|| is_set(session_interface_name.operation)
-	|| is_set(session_subtype.operation)
-	|| is_set(source_address.operation)
-	|| is_set(state.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(incoming_label_xr.yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(session_interface_name.yfilter)
+	|| ydk::is_set(session_subtype.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::get_segment_path() const
@@ -3768,16 +4970,16 @@ const EntityPath Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (incoming_label_xr.is_set || is_set(incoming_label_xr.operation)) leaf_name_data.push_back(incoming_label_xr.get_name_leafdata());
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (session_interface_name.is_set || is_set(session_interface_name.operation)) leaf_name_data.push_back(session_interface_name.get_name_leafdata());
-    if (session_subtype.is_set || is_set(session_subtype.operation)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (incoming_label_xr.is_set || is_set(incoming_label_xr.yfilter)) leaf_name_data.push_back(incoming_label_xr.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (session_interface_name.is_set || is_set(session_interface_name.yfilter)) leaf_name_data.push_back(session_interface_name.get_name_leafdata());
+    if (session_subtype.is_set || is_set(session_subtype.yfilter)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3796,48 +4998,119 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopMultiPaths::Ipv6
     return children;
 }
 
-void Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-label-xr")
     {
         incoming_label_xr = value;
+        incoming_label_xr.value_namespace = name_space;
+        incoming_label_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-interface-name")
     {
         session_interface_name = value;
+        session_interface_name.value_namespace = name_space;
+        session_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-subtype")
     {
         session_subtype = value;
+        session_subtype.value_namespace = name_space;
+        session_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "incoming-label-xr")
+    {
+        incoming_label_xr.yfilter = yfilter;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "session-interface-name")
+    {
+        session_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "session-subtype")
+    {
+        session_subtype.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "incoming-label-xr" || name == "local-discriminator" || name == "location" || name == "node-id" || name == "session-interface-name" || name == "session-subtype" || name == "source-address" || name == "state" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadCounters()
@@ -3860,7 +5133,7 @@ bool Bfd::Ipv4BfDoMplsteHeadCounters::has_data() const
 
 bool Bfd::Ipv4BfDoMplsteHeadCounters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipv4bf_do_mplste_head_packet_counters !=  nullptr && ipv4bf_do_mplste_head_packet_counters->has_operation());
 }
 
@@ -3919,8 +5192,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadCounters::
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadCounters::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfDoMplsteHeadCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv4BfDoMplsteHeadCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv4BfDoMplsteHeadCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4bf-do-mplste-head-packet-counters")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounters()
@@ -3949,7 +5233,7 @@ bool Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::has_oper
         if(ipv4bf_do_mplste_head_packet_counter[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::get_segment_path() const
@@ -4014,8 +5298,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadCounters::
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4bf-do-mplste-head-packet-counter")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter::Ipv4BfDoMplsteHeadPacketCounter()
@@ -4048,14 +5343,14 @@ bool Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDo
 
 bool Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(display_type.operation)
-	|| is_set(echo_receive_count.operation)
-	|| is_set(echo_transmit_count.operation)
-	|| is_set(hello_receive_count.operation)
-	|| is_set(hello_transmit_count.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(location.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(display_type.yfilter)
+	|| ydk::is_set(echo_receive_count.yfilter)
+	|| ydk::is_set(echo_transmit_count.yfilter)
+	|| ydk::is_set(hello_receive_count.yfilter)
+	|| ydk::is_set(hello_transmit_count.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(location.yfilter);
 }
 
 std::string Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter::get_segment_path() const
@@ -4081,13 +5376,13 @@ const EntityPath Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (display_type.is_set || is_set(display_type.operation)) leaf_name_data.push_back(display_type.get_name_leafdata());
-    if (echo_receive_count.is_set || is_set(echo_receive_count.operation)) leaf_name_data.push_back(echo_receive_count.get_name_leafdata());
-    if (echo_transmit_count.is_set || is_set(echo_transmit_count.operation)) leaf_name_data.push_back(echo_transmit_count.get_name_leafdata());
-    if (hello_receive_count.is_set || is_set(hello_receive_count.operation)) leaf_name_data.push_back(hello_receive_count.get_name_leafdata());
-    if (hello_transmit_count.is_set || is_set(hello_transmit_count.operation)) leaf_name_data.push_back(hello_transmit_count.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (display_type.is_set || is_set(display_type.yfilter)) leaf_name_data.push_back(display_type.get_name_leafdata());
+    if (echo_receive_count.is_set || is_set(echo_receive_count.yfilter)) leaf_name_data.push_back(echo_receive_count.get_name_leafdata());
+    if (echo_transmit_count.is_set || is_set(echo_transmit_count.yfilter)) leaf_name_data.push_back(echo_transmit_count.get_name_leafdata());
+    if (hello_receive_count.is_set || is_set(hello_receive_count.yfilter)) leaf_name_data.push_back(hello_receive_count.get_name_leafdata());
+    if (hello_transmit_count.is_set || is_set(hello_transmit_count.yfilter)) leaf_name_data.push_back(hello_transmit_count.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4106,36 +5401,89 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadCounters::
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "display-type")
     {
         display_type = value;
+        display_type.value_namespace = name_space;
+        display_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-receive-count")
     {
         echo_receive_count = value;
+        echo_receive_count.value_namespace = name_space;
+        echo_receive_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-transmit-count")
     {
         echo_transmit_count = value;
+        echo_transmit_count.value_namespace = name_space;
+        echo_transmit_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-receive-count")
     {
         hello_receive_count = value;
+        hello_receive_count.value_namespace = name_space;
+        hello_receive_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-transmit-count")
     {
         hello_transmit_count = value;
+        hello_transmit_count.value_namespace = name_space;
+        hello_transmit_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "display-type")
+    {
+        display_type.yfilter = yfilter;
+    }
+    if(value_path == "echo-receive-count")
+    {
+        echo_receive_count.yfilter = yfilter;
+    }
+    if(value_path == "echo-transmit-count")
+    {
+        echo_transmit_count.yfilter = yfilter;
+    }
+    if(value_path == "hello-receive-count")
+    {
+        hello_receive_count.yfilter = yfilter;
+    }
+    if(value_path == "hello-transmit-count")
+    {
+        hello_transmit_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "display-type" || name == "echo-receive-count" || name == "echo-transmit-count" || name == "hello-receive-count" || name == "hello-transmit-count" || name == "interface-name" || name == "location")
+        return true;
+    return false;
 }
 
 Bfd::SessionMibs::SessionMibs()
@@ -4164,7 +5512,7 @@ bool Bfd::SessionMibs::has_operation() const
         if(session_mib[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::SessionMibs::get_segment_path() const
@@ -4229,8 +5577,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionMibs::get_children() 
     return children;
 }
 
-void Bfd::SessionMibs::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionMibs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::SessionMibs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::SessionMibs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-mib")
+        return true;
+    return false;
 }
 
 Bfd::SessionMibs::SessionMib::SessionMib()
@@ -4296,28 +5655,28 @@ bool Bfd::SessionMibs::SessionMib::has_data() const
 
 bool Bfd::SessionMibs::SessionMib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(discriminator.operation)
-	|| is_set(desired_min_tx_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(int_handle.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(last_down_diag.operation)
-	|| is_set(last_down_time_nsec.operation)
-	|| is_set(last_down_time_sec.operation)
-	|| is_set(last_time_cached.operation)
-	|| is_set(last_up_time_nsec.operation)
-	|| is_set(last_up_time_sec.operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(pkt_in.operation)
-	|| is_set(pkt_out.operation)
-	|| is_set(remote_discriminator.operation)
-	|| is_set(required_min_rx_echo_interval.operation)
-	|| is_set(required_min_rx_interval.operation)
-	|| is_set(session_state.operation)
-	|| is_set(sessionversion.operation)
-	|| is_set(trap_bitmap.operation)
-	|| is_set(up_counter.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(discriminator.yfilter)
+	|| ydk::is_set(desired_min_tx_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(int_handle.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(last_down_diag.yfilter)
+	|| ydk::is_set(last_down_time_nsec.yfilter)
+	|| ydk::is_set(last_down_time_sec.yfilter)
+	|| ydk::is_set(last_time_cached.yfilter)
+	|| ydk::is_set(last_up_time_nsec.yfilter)
+	|| ydk::is_set(last_up_time_sec.yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(pkt_in.yfilter)
+	|| ydk::is_set(pkt_out.yfilter)
+	|| ydk::is_set(remote_discriminator.yfilter)
+	|| ydk::is_set(required_min_rx_echo_interval.yfilter)
+	|| ydk::is_set(required_min_rx_interval.yfilter)
+	|| ydk::is_set(session_state.yfilter)
+	|| ydk::is_set(sessionversion.yfilter)
+	|| ydk::is_set(trap_bitmap.yfilter)
+	|| ydk::is_set(up_counter.yfilter)
 	|| (dest_address !=  nullptr && dest_address->has_operation());
 }
 
@@ -4344,27 +5703,27 @@ const EntityPath Bfd::SessionMibs::SessionMib::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (discriminator.is_set || is_set(discriminator.operation)) leaf_name_data.push_back(discriminator.get_name_leafdata());
-    if (desired_min_tx_interval.is_set || is_set(desired_min_tx_interval.operation)) leaf_name_data.push_back(desired_min_tx_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (int_handle.is_set || is_set(int_handle.operation)) leaf_name_data.push_back(int_handle.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (last_down_diag.is_set || is_set(last_down_diag.operation)) leaf_name_data.push_back(last_down_diag.get_name_leafdata());
-    if (last_down_time_nsec.is_set || is_set(last_down_time_nsec.operation)) leaf_name_data.push_back(last_down_time_nsec.get_name_leafdata());
-    if (last_down_time_sec.is_set || is_set(last_down_time_sec.operation)) leaf_name_data.push_back(last_down_time_sec.get_name_leafdata());
-    if (last_time_cached.is_set || is_set(last_time_cached.operation)) leaf_name_data.push_back(last_time_cached.get_name_leafdata());
-    if (last_up_time_nsec.is_set || is_set(last_up_time_nsec.operation)) leaf_name_data.push_back(last_up_time_nsec.get_name_leafdata());
-    if (last_up_time_sec.is_set || is_set(last_up_time_sec.operation)) leaf_name_data.push_back(last_up_time_sec.get_name_leafdata());
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (pkt_in.is_set || is_set(pkt_in.operation)) leaf_name_data.push_back(pkt_in.get_name_leafdata());
-    if (pkt_out.is_set || is_set(pkt_out.operation)) leaf_name_data.push_back(pkt_out.get_name_leafdata());
-    if (remote_discriminator.is_set || is_set(remote_discriminator.operation)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
-    if (required_min_rx_echo_interval.is_set || is_set(required_min_rx_echo_interval.operation)) leaf_name_data.push_back(required_min_rx_echo_interval.get_name_leafdata());
-    if (required_min_rx_interval.is_set || is_set(required_min_rx_interval.operation)) leaf_name_data.push_back(required_min_rx_interval.get_name_leafdata());
-    if (session_state.is_set || is_set(session_state.operation)) leaf_name_data.push_back(session_state.get_name_leafdata());
-    if (sessionversion.is_set || is_set(sessionversion.operation)) leaf_name_data.push_back(sessionversion.get_name_leafdata());
-    if (trap_bitmap.is_set || is_set(trap_bitmap.operation)) leaf_name_data.push_back(trap_bitmap.get_name_leafdata());
-    if (up_counter.is_set || is_set(up_counter.operation)) leaf_name_data.push_back(up_counter.get_name_leafdata());
+    if (discriminator.is_set || is_set(discriminator.yfilter)) leaf_name_data.push_back(discriminator.get_name_leafdata());
+    if (desired_min_tx_interval.is_set || is_set(desired_min_tx_interval.yfilter)) leaf_name_data.push_back(desired_min_tx_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (int_handle.is_set || is_set(int_handle.yfilter)) leaf_name_data.push_back(int_handle.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (last_down_diag.is_set || is_set(last_down_diag.yfilter)) leaf_name_data.push_back(last_down_diag.get_name_leafdata());
+    if (last_down_time_nsec.is_set || is_set(last_down_time_nsec.yfilter)) leaf_name_data.push_back(last_down_time_nsec.get_name_leafdata());
+    if (last_down_time_sec.is_set || is_set(last_down_time_sec.yfilter)) leaf_name_data.push_back(last_down_time_sec.get_name_leafdata());
+    if (last_time_cached.is_set || is_set(last_time_cached.yfilter)) leaf_name_data.push_back(last_time_cached.get_name_leafdata());
+    if (last_up_time_nsec.is_set || is_set(last_up_time_nsec.yfilter)) leaf_name_data.push_back(last_up_time_nsec.get_name_leafdata());
+    if (last_up_time_sec.is_set || is_set(last_up_time_sec.yfilter)) leaf_name_data.push_back(last_up_time_sec.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (pkt_in.is_set || is_set(pkt_in.yfilter)) leaf_name_data.push_back(pkt_in.get_name_leafdata());
+    if (pkt_out.is_set || is_set(pkt_out.yfilter)) leaf_name_data.push_back(pkt_out.get_name_leafdata());
+    if (remote_discriminator.is_set || is_set(remote_discriminator.yfilter)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
+    if (required_min_rx_echo_interval.is_set || is_set(required_min_rx_echo_interval.yfilter)) leaf_name_data.push_back(required_min_rx_echo_interval.get_name_leafdata());
+    if (required_min_rx_interval.is_set || is_set(required_min_rx_interval.yfilter)) leaf_name_data.push_back(required_min_rx_interval.get_name_leafdata());
+    if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
+    if (sessionversion.is_set || is_set(sessionversion.yfilter)) leaf_name_data.push_back(sessionversion.get_name_leafdata());
+    if (trap_bitmap.is_set || is_set(trap_bitmap.yfilter)) leaf_name_data.push_back(trap_bitmap.get_name_leafdata());
+    if (up_counter.is_set || is_set(up_counter.yfilter)) leaf_name_data.push_back(up_counter.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4397,92 +5756,229 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionMibs::SessionMib::get
     return children;
 }
 
-void Bfd::SessionMibs::SessionMib::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionMibs::SessionMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "discriminator")
     {
         discriminator = value;
+        discriminator.value_namespace = name_space;
+        discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-min-tx-interval")
     {
         desired_min_tx_interval = value;
+        desired_min_tx_interval.value_namespace = name_space;
+        desired_min_tx_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "int-handle")
     {
         int_handle = value;
+        int_handle.value_namespace = name_space;
+        int_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-down-diag")
     {
         last_down_diag = value;
+        last_down_diag.value_namespace = name_space;
+        last_down_diag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-down-time-nsec")
     {
         last_down_time_nsec = value;
+        last_down_time_nsec.value_namespace = name_space;
+        last_down_time_nsec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-down-time-sec")
     {
         last_down_time_sec = value;
+        last_down_time_sec.value_namespace = name_space;
+        last_down_time_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-time-cached")
     {
         last_time_cached = value;
+        last_time_cached.value_namespace = name_space;
+        last_time_cached.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-up-time-nsec")
     {
         last_up_time_nsec = value;
+        last_up_time_nsec.value_namespace = name_space;
+        last_up_time_nsec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-up-time-sec")
     {
         last_up_time_sec = value;
+        last_up_time_sec.value_namespace = name_space;
+        last_up_time_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pkt-in")
     {
         pkt_in = value;
+        pkt_in.value_namespace = name_space;
+        pkt_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pkt-out")
     {
         pkt_out = value;
+        pkt_out.value_namespace = name_space;
+        pkt_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-discriminator")
     {
         remote_discriminator = value;
+        remote_discriminator.value_namespace = name_space;
+        remote_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-min-rx-echo-interval")
     {
         required_min_rx_echo_interval = value;
+        required_min_rx_echo_interval.value_namespace = name_space;
+        required_min_rx_echo_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-min-rx-interval")
     {
         required_min_rx_interval = value;
+        required_min_rx_interval.value_namespace = name_space;
+        required_min_rx_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-state")
     {
         session_state = value;
+        session_state.value_namespace = name_space;
+        session_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessionversion")
     {
         sessionversion = value;
+        sessionversion.value_namespace = name_space;
+        sessionversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-bitmap")
     {
         trap_bitmap = value;
+        trap_bitmap.value_namespace = name_space;
+        trap_bitmap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-counter")
     {
         up_counter = value;
+        up_counter.value_namespace = name_space;
+        up_counter.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionMibs::SessionMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discriminator")
+    {
+        discriminator.yfilter = yfilter;
+    }
+    if(value_path == "desired-min-tx-interval")
+    {
+        desired_min_tx_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "int-handle")
+    {
+        int_handle.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "last-down-diag")
+    {
+        last_down_diag.yfilter = yfilter;
+    }
+    if(value_path == "last-down-time-nsec")
+    {
+        last_down_time_nsec.yfilter = yfilter;
+    }
+    if(value_path == "last-down-time-sec")
+    {
+        last_down_time_sec.yfilter = yfilter;
+    }
+    if(value_path == "last-time-cached")
+    {
+        last_time_cached.yfilter = yfilter;
+    }
+    if(value_path == "last-up-time-nsec")
+    {
+        last_up_time_nsec.yfilter = yfilter;
+    }
+    if(value_path == "last-up-time-sec")
+    {
+        last_up_time_sec.yfilter = yfilter;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "pkt-in")
+    {
+        pkt_in.yfilter = yfilter;
+    }
+    if(value_path == "pkt-out")
+    {
+        pkt_out.yfilter = yfilter;
+    }
+    if(value_path == "remote-discriminator")
+    {
+        remote_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "required-min-rx-echo-interval")
+    {
+        required_min_rx_echo_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-min-rx-interval")
+    {
+        required_min_rx_interval.yfilter = yfilter;
+    }
+    if(value_path == "session-state")
+    {
+        session_state.yfilter = yfilter;
+    }
+    if(value_path == "sessionversion")
+    {
+        sessionversion.yfilter = yfilter;
+    }
+    if(value_path == "trap-bitmap")
+    {
+        trap_bitmap.yfilter = yfilter;
+    }
+    if(value_path == "up-counter")
+    {
+        up_counter.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionMibs::SessionMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dest-address" || name == "discriminator" || name == "desired-min-tx-interval" || name == "detection-multiplier" || name == "int-handle" || name == "interface-name" || name == "last-down-diag" || name == "last-down-time-nsec" || name == "last-down-time-sec" || name == "last-time-cached" || name == "last-up-time-nsec" || name == "last-up-time-sec" || name == "local-discriminator" || name == "pkt-in" || name == "pkt-out" || name == "remote-discriminator" || name == "required-min-rx-echo-interval" || name == "required-min-rx-interval" || name == "session-state" || name == "sessionversion" || name == "trap-bitmap" || name == "up-counter")
+        return true;
+    return false;
 }
 
 Bfd::SessionMibs::SessionMib::DestAddress::DestAddress()
@@ -4509,11 +6005,11 @@ bool Bfd::SessionMibs::SessionMib::DestAddress::has_data() const
 
 bool Bfd::SessionMibs::SessionMib::DestAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::SessionMibs::SessionMib::DestAddress::get_segment_path() const
@@ -4539,10 +6035,10 @@ const EntityPath Bfd::SessionMibs::SessionMib::DestAddress::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4561,24 +6057,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionMibs::SessionMib::Des
     return children;
 }
 
-void Bfd::SessionMibs::SessionMib::DestAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionMibs::SessionMib::DestAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionMibs::SessionMib::DestAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionMibs::SessionMib::DestAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSummary::Ipv6MultiHopSummary()
@@ -4601,7 +6132,7 @@ bool Bfd::Ipv6MultiHopSummary::has_data() const
 
 bool Bfd::Ipv6MultiHopSummary::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
@@ -4660,8 +6191,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSummary::get_chi
     return children;
 }
 
-void Bfd::Ipv6MultiHopSummary::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv6MultiHopSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv6MultiHopSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-state")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSummary::SessionState::SessionState()
@@ -4688,11 +6230,11 @@ bool Bfd::Ipv6MultiHopSummary::SessionState::has_data() const
 
 bool Bfd::Ipv6MultiHopSummary::SessionState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(unknown_count.operation)
-	|| is_set(up_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(unknown_count.yfilter)
+	|| ydk::is_set(up_count.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSummary::SessionState::get_segment_path() const
@@ -4718,10 +6260,10 @@ const EntityPath Bfd::Ipv6MultiHopSummary::SessionState::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down_count.is_set || is_set(down_count.operation)) leaf_name_data.push_back(down_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (unknown_count.is_set || is_set(unknown_count.operation)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
-    if (up_count.is_set || is_set(up_count.operation)) leaf_name_data.push_back(up_count.get_name_leafdata());
+    if (down_count.is_set || is_set(down_count.yfilter)) leaf_name_data.push_back(down_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (unknown_count.is_set || is_set(unknown_count.yfilter)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
+    if (up_count.is_set || is_set(up_count.yfilter)) leaf_name_data.push_back(up_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4740,24 +6282,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSummary::Session
     return children;
 }
 
-void Bfd::Ipv6MultiHopSummary::SessionState::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSummary::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down-count")
     {
         down_count = value;
+        down_count.value_namespace = name_space;
+        down_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-count")
     {
         unknown_count = value;
+        unknown_count.value_namespace = name_space;
+        unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-count")
     {
         up_count = value;
+        up_count.value_namespace = name_space;
+        up_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSummary::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down-count")
+    {
+        down_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "unknown-count")
+    {
+        unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "up-count")
+    {
+        up_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSummary::SessionState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down-count" || name == "total-count" || name == "unknown-count" || name == "up-count")
+        return true;
+    return false;
 }
 
 Bfd::LabelSummaryNodes::LabelSummaryNodes()
@@ -4786,7 +6363,7 @@ bool Bfd::LabelSummaryNodes::has_operation() const
         if(label_summary_node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::LabelSummaryNodes::get_segment_path() const
@@ -4851,8 +6428,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSummaryNodes::get_child
     return children;
 }
 
-void Bfd::LabelSummaryNodes::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSummaryNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::LabelSummaryNodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::LabelSummaryNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-summary-node")
+        return true;
+    return false;
 }
 
 Bfd::LabelSummaryNodes::LabelSummaryNode::LabelSummaryNode()
@@ -4878,8 +6466,8 @@ bool Bfd::LabelSummaryNodes::LabelSummaryNode::has_data() const
 
 bool Bfd::LabelSummaryNodes::LabelSummaryNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(location_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(location_name.yfilter)
 	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
@@ -4906,7 +6494,7 @@ const EntityPath Bfd::LabelSummaryNodes::LabelSummaryNode::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location_name.is_set || is_set(location_name.operation)) leaf_name_data.push_back(location_name.get_name_leafdata());
+    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4939,12 +6527,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSummaryNodes::LabelSumm
     return children;
 }
 
-void Bfd::LabelSummaryNodes::LabelSummaryNode::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSummaryNodes::LabelSummaryNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location-name")
     {
         location_name = value;
+        location_name.value_namespace = name_space;
+        location_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSummaryNodes::LabelSummaryNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location-name")
+    {
+        location_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSummaryNodes::LabelSummaryNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-state" || name == "location-name")
+        return true;
+    return false;
 }
 
 Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::SessionState()
@@ -4975,13 +6580,13 @@ bool Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::has_data() const
 
 bool Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down_count.operation)
-	|| is_set(retry_count.operation)
-	|| is_set(standby_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(unknown_count.operation)
-	|| is_set(up_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down_count.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(standby_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(unknown_count.yfilter)
+	|| ydk::is_set(up_count.yfilter);
 }
 
 std::string Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::get_segment_path() const
@@ -5007,12 +6612,12 @@ const EntityPath Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down_count.is_set || is_set(down_count.operation)) leaf_name_data.push_back(down_count.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.operation)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (standby_count.is_set || is_set(standby_count.operation)) leaf_name_data.push_back(standby_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (unknown_count.is_set || is_set(unknown_count.operation)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
-    if (up_count.is_set || is_set(up_count.operation)) leaf_name_data.push_back(up_count.get_name_leafdata());
+    if (down_count.is_set || is_set(down_count.yfilter)) leaf_name_data.push_back(down_count.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (standby_count.is_set || is_set(standby_count.yfilter)) leaf_name_data.push_back(standby_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (unknown_count.is_set || is_set(unknown_count.yfilter)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
+    if (up_count.is_set || is_set(up_count.yfilter)) leaf_name_data.push_back(up_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5031,32 +6636,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSummaryNodes::LabelSumm
     return children;
 }
 
-void Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down-count")
     {
         down_count = value;
+        down_count.value_namespace = name_space;
+        down_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-count")
     {
         retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-count")
     {
         standby_count = value;
+        standby_count.value_namespace = name_space;
+        standby_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-count")
     {
         unknown_count = value;
+        unknown_count.value_namespace = name_space;
+        unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-count")
     {
         up_count = value;
+        up_count.value_namespace = name_space;
+        up_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down-count")
+    {
+        down_count.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "standby-count")
+    {
+        standby_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "unknown-count")
+    {
+        unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "up-count")
+    {
+        up_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down-count" || name == "retry-count" || name == "standby-count" || name == "total-count" || name == "unknown-count" || name == "up-count")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBriefs()
@@ -5085,7 +6737,7 @@ bool Bfd::Ipv6MultiHopSessionBriefs::has_operation() const
         if(ipv6_multi_hop_session_brief[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionBriefs::get_segment_path() const
@@ -5150,8 +6802,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionBriefs::g
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionBriefs::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv6MultiHopSessionBriefs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv6MultiHopSessionBriefs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-multi-hop-session-brief")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::Ipv6MultiHopSessionBrief()
@@ -5193,16 +6856,16 @@ bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::has_data() const
 
 bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_address.operation)
-	|| is_set(location.operation)
-	|| is_set(node_id.operation)
-	|| is_set(session_flags.operation)
-	|| is_set(session_subtype.operation)
-	|| is_set(session_type.operation)
-	|| is_set(source_address.operation)
-	|| is_set(state.operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(session_flags.yfilter)
+	|| ydk::is_set(session_subtype.yfilter)
+	|| ydk::is_set(session_type.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
@@ -5229,15 +6892,15 @@ const EntityPath Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (session_flags.is_set || is_set(session_flags.operation)) leaf_name_data.push_back(session_flags.get_name_leafdata());
-    if (session_subtype.is_set || is_set(session_subtype.operation)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
-    if (session_type.is_set || is_set(session_type.operation)) leaf_name_data.push_back(session_type.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (session_flags.is_set || is_set(session_flags.yfilter)) leaf_name_data.push_back(session_flags.get_name_leafdata());
+    if (session_subtype.is_set || is_set(session_subtype.yfilter)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
+    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5270,44 +6933,109 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionBriefs::I
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-flags")
     {
         session_flags = value;
+        session_flags.value_namespace = name_space;
+        session_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-subtype")
     {
         session_subtype = value;
+        session_subtype.value_namespace = name_space;
+        session_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-type")
     {
         session_type = value;
+        session_type.value_namespace = name_space;
+        session_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "session-flags")
+    {
+        session_flags.yfilter = yfilter;
+    }
+    if(value_path == "session-subtype")
+    {
+        session_subtype.yfilter = yfilter;
+    }
+    if(value_path == "session-type")
+    {
+        session_type.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "status-brief-information" || name == "destination-address" || name == "location" || name == "node-id" || name == "session-flags" || name == "session-subtype" || name == "session-type" || name == "source-address" || name == "state" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::StatusBriefInformation()
@@ -5334,7 +7062,7 @@ bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInform
 
 bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
 	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
@@ -5408,8 +7136,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionBriefs::I
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-interval-multiplier" || name == "echo-interval-multiplier")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::AsyncIntervalMultiplier()
@@ -5436,11 +7175,11 @@ bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInform
 
 bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_local_transmit_interval.operation)
-	|| is_set(negotiated_remote_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_local_transmit_interval.yfilter)
+	|| ydk::is_set(negotiated_remote_transmit_interval.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::get_segment_path() const
@@ -5466,10 +7205,10 @@ const EntityPath Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::Statu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.operation)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
-    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.operation)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
+    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5488,24 +7227,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionBriefs::I
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-local-transmit-interval")
     {
         negotiated_local_transmit_interval = value;
+        negotiated_local_transmit_interval.value_namespace = name_space;
+        negotiated_local_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-remote-transmit-interval")
     {
         negotiated_remote_transmit_interval = value;
+        negotiated_remote_transmit_interval.value_namespace = name_space;
+        negotiated_remote_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-local-transmit-interval")
+    {
+        negotiated_local_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-remote-transmit-interval")
+    {
+        negotiated_remote_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-local-transmit-interval" || name == "negotiated-remote-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::EchoIntervalMultiplier()
@@ -5530,10 +7304,10 @@ bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInform
 
 bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_transmit_interval.yfilter);
 }
 
 std::string Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::get_segment_path() const
@@ -5559,9 +7333,9 @@ const EntityPath Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::Statu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.operation)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5580,20 +7354,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6MultiHopSessionBriefs::I
     return children;
 }
 
-void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-transmit-interval")
     {
         negotiated_transmit_interval = value;
+        negotiated_transmit_interval.value_namespace = name_space;
+        negotiated_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-transmit-interval")
+    {
+        negotiated_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::SessionBriefs::SessionBriefs()
@@ -5622,7 +7425,7 @@ bool Bfd::SessionBriefs::has_operation() const
         if(session_brief[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::SessionBriefs::get_segment_path() const
@@ -5687,8 +7490,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionBriefs::get_children(
     return children;
 }
 
-void Bfd::SessionBriefs::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionBriefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::SessionBriefs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::SessionBriefs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-brief")
+        return true;
+    return false;
 }
 
 Bfd::SessionBriefs::SessionBrief::SessionBrief()
@@ -5728,15 +7542,15 @@ bool Bfd::SessionBriefs::SessionBrief::has_data() const
 
 bool Bfd::SessionBriefs::SessionBrief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(location.operation)
-	|| is_set(node_id.operation)
-	|| is_set(session_flags.operation)
-	|| is_set(session_subtype.operation)
-	|| is_set(session_type.operation)
-	|| is_set(state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(session_flags.yfilter)
+	|| ydk::is_set(session_subtype.yfilter)
+	|| ydk::is_set(session_type.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| (status_brief_information !=  nullptr && status_brief_information->has_operation());
 }
 
@@ -5763,14 +7577,14 @@ const EntityPath Bfd::SessionBriefs::SessionBrief::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (session_flags.is_set || is_set(session_flags.operation)) leaf_name_data.push_back(session_flags.get_name_leafdata());
-    if (session_subtype.is_set || is_set(session_subtype.operation)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
-    if (session_type.is_set || is_set(session_type.operation)) leaf_name_data.push_back(session_type.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (session_flags.is_set || is_set(session_flags.yfilter)) leaf_name_data.push_back(session_flags.get_name_leafdata());
+    if (session_subtype.is_set || is_set(session_subtype.yfilter)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
+    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5803,40 +7617,99 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionBriefs::SessionBrief:
     return children;
 }
 
-void Bfd::SessionBriefs::SessionBrief::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionBriefs::SessionBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-flags")
     {
         session_flags = value;
+        session_flags.value_namespace = name_space;
+        session_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-subtype")
     {
         session_subtype = value;
+        session_subtype.value_namespace = name_space;
+        session_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-type")
     {
         session_type = value;
+        session_type.value_namespace = name_space;
+        session_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionBriefs::SessionBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "session-flags")
+    {
+        session_flags.yfilter = yfilter;
+    }
+    if(value_path == "session-subtype")
+    {
+        session_subtype.yfilter = yfilter;
+    }
+    if(value_path == "session-type")
+    {
+        session_type.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionBriefs::SessionBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "status-brief-information" || name == "destination-address" || name == "interface-name" || name == "location" || name == "node-id" || name == "session-flags" || name == "session-subtype" || name == "session-type" || name == "state")
+        return true;
+    return false;
 }
 
 Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::StatusBriefInformation()
@@ -5863,7 +7736,7 @@ bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::has_data() const
 
 bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
 	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
@@ -5937,8 +7810,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionBriefs::SessionBrief:
     return children;
 }
 
-void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-interval-multiplier" || name == "echo-interval-multiplier")
+        return true;
+    return false;
 }
 
 Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::AsyncIntervalMultiplier()
@@ -5965,11 +7849,11 @@ bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMult
 
 bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_local_transmit_interval.operation)
-	|| is_set(negotiated_remote_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_local_transmit_interval.yfilter)
+	|| ydk::is_set(negotiated_remote_transmit_interval.yfilter);
 }
 
 std::string Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::get_segment_path() const
@@ -5995,10 +7879,10 @@ const EntityPath Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::Async
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.operation)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
-    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.operation)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
+    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6017,24 +7901,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionBriefs::SessionBrief:
     return children;
 }
 
-void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-local-transmit-interval")
     {
         negotiated_local_transmit_interval = value;
+        negotiated_local_transmit_interval.value_namespace = name_space;
+        negotiated_local_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-remote-transmit-interval")
     {
         negotiated_remote_transmit_interval = value;
+        negotiated_remote_transmit_interval.value_namespace = name_space;
+        negotiated_remote_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-local-transmit-interval")
+    {
+        negotiated_local_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-remote-transmit-interval")
+    {
+        negotiated_remote_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-local-transmit-interval" || name == "negotiated-remote-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier::EchoIntervalMultiplier()
@@ -6059,10 +7978,10 @@ bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMulti
 
 bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_transmit_interval.yfilter);
 }
 
 std::string Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier::get_segment_path() const
@@ -6088,9 +8007,9 @@ const EntityPath Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.operation)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6109,20 +8028,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionBriefs::SessionBrief:
     return children;
 }
 
-void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-transmit-interval")
     {
         negotiated_transmit_interval = value;
+        negotiated_transmit_interval.value_namespace = name_space;
+        negotiated_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-transmit-interval")
+    {
+        negotiated_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummaries()
@@ -6151,7 +8099,7 @@ bool Bfd::Ipv6SingleHopNodeLocationSummaries::has_operation() const
         if(ipv6_single_hop_node_location_summary[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopNodeLocationSummaries::get_segment_path() const
@@ -6216,8 +8164,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopNodeLocationSum
     return children;
 }
 
-void Bfd::Ipv6SingleHopNodeLocationSummaries::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopNodeLocationSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv6SingleHopNodeLocationSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv6SingleHopNodeLocationSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-single-hop-node-location-summary")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::Ipv6SingleHopNodeLocationSummary()
@@ -6243,8 +8202,8 @@ bool Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::
 
 bool Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(location.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
@@ -6271,7 +8230,7 @@ const EntityPath Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6304,12 +8263,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopNodeLocationSum
     return children;
 }
 
-void Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-state" || name == "location")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState::SessionState()
@@ -6340,13 +8316,13 @@ bool Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::
 
 bool Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down_count.operation)
-	|| is_set(retry_count.operation)
-	|| is_set(standby_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(unknown_count.operation)
-	|| is_set(up_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down_count.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(standby_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(unknown_count.yfilter)
+	|| ydk::is_set(up_count.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState::get_segment_path() const
@@ -6372,12 +8348,12 @@ const EntityPath Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down_count.is_set || is_set(down_count.operation)) leaf_name_data.push_back(down_count.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.operation)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (standby_count.is_set || is_set(standby_count.operation)) leaf_name_data.push_back(standby_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (unknown_count.is_set || is_set(unknown_count.operation)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
-    if (up_count.is_set || is_set(up_count.operation)) leaf_name_data.push_back(up_count.get_name_leafdata());
+    if (down_count.is_set || is_set(down_count.yfilter)) leaf_name_data.push_back(down_count.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (standby_count.is_set || is_set(standby_count.yfilter)) leaf_name_data.push_back(standby_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (unknown_count.is_set || is_set(unknown_count.yfilter)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
+    if (up_count.is_set || is_set(up_count.yfilter)) leaf_name_data.push_back(up_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6396,32 +8372,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopNodeLocationSum
     return children;
 }
 
-void Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down-count")
     {
         down_count = value;
+        down_count.value_namespace = name_space;
+        down_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-count")
     {
         retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-count")
     {
         standby_count = value;
+        standby_count.value_namespace = name_space;
+        standby_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-count")
     {
         unknown_count = value;
+        unknown_count.value_namespace = name_space;
+        unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-count")
     {
         up_count = value;
+        up_count.value_namespace = name_space;
+        up_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down-count")
+    {
+        down_count.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "standby-count")
+    {
+        standby_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "unknown-count")
+    {
+        unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "up-count")
+    {
+        up_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down-count" || name == "retry-count" || name == "standby-count" || name == "total-count" || name == "unknown-count" || name == "up-count")
+        return true;
+    return false;
 }
 
 Bfd::Summary::Summary()
@@ -6444,7 +8467,7 @@ bool Bfd::Summary::has_data() const
 
 bool Bfd::Summary::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
@@ -6503,8 +8526,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Summary::get_children() cons
     return children;
 }
 
-void Bfd::Summary::set_value(const std::string & value_path, std::string value)
+void Bfd::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-state")
+        return true;
+    return false;
 }
 
 Bfd::Summary::SessionState::SessionState()
@@ -6531,11 +8565,11 @@ bool Bfd::Summary::SessionState::has_data() const
 
 bool Bfd::Summary::SessionState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(unknown_count.operation)
-	|| is_set(up_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(unknown_count.yfilter)
+	|| ydk::is_set(up_count.yfilter);
 }
 
 std::string Bfd::Summary::SessionState::get_segment_path() const
@@ -6561,10 +8595,10 @@ const EntityPath Bfd::Summary::SessionState::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down_count.is_set || is_set(down_count.operation)) leaf_name_data.push_back(down_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (unknown_count.is_set || is_set(unknown_count.operation)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
-    if (up_count.is_set || is_set(up_count.operation)) leaf_name_data.push_back(up_count.get_name_leafdata());
+    if (down_count.is_set || is_set(down_count.yfilter)) leaf_name_data.push_back(down_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (unknown_count.is_set || is_set(unknown_count.yfilter)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
+    if (up_count.is_set || is_set(up_count.yfilter)) leaf_name_data.push_back(up_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6583,24 +8617,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Summary::SessionState::get_c
     return children;
 }
 
-void Bfd::Summary::SessionState::set_value(const std::string & value_path, std::string value)
+void Bfd::Summary::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down-count")
     {
         down_count = value;
+        down_count.value_namespace = name_space;
+        down_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-count")
     {
         unknown_count = value;
+        unknown_count.value_namespace = name_space;
+        unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-count")
     {
         up_count = value;
+        up_count.value_namespace = name_space;
+        up_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Summary::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down-count")
+    {
+        down_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "unknown-count")
+    {
+        unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "up-count")
+    {
+        up_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Summary::SessionState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down-count" || name == "total-count" || name == "unknown-count" || name == "up-count")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummaries()
@@ -6629,7 +8698,7 @@ bool Bfd::Ipv4BfdMplsteTailNodeSummaries::has_operation() const
         if(ipv4bfd_mplste_tail_node_summary[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv4BfdMplsteTailNodeSummaries::get_segment_path() const
@@ -6694,8 +8763,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfdMplsteTailNodeSummari
     return children;
 }
 
-void Bfd::Ipv4BfdMplsteTailNodeSummaries::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfdMplsteTailNodeSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv4BfdMplsteTailNodeSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv4BfdMplsteTailNodeSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4bfd-mplste-tail-node-summary")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::Ipv4BfdMplsteTailNodeSummary()
@@ -6721,8 +8801,8 @@ bool Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::has_data
 
 bool Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(location_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(location_name.yfilter)
 	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
@@ -6749,7 +8829,7 @@ const EntityPath Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSumma
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location_name.is_set || is_set(location_name.operation)) leaf_name_data.push_back(location_name.get_name_leafdata());
+    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6782,12 +8862,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfdMplsteTailNodeSummari
     return children;
 }
 
-void Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location-name")
     {
         location_name = value;
+        location_name.value_namespace = name_space;
+        location_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location-name")
+    {
+        location_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-state" || name == "location-name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState::SessionState()
@@ -6818,13 +8915,13 @@ bool Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionS
 
 bool Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down_count.operation)
-	|| is_set(retry_count.operation)
-	|| is_set(standby_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(unknown_count.operation)
-	|| is_set(up_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down_count.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(standby_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(unknown_count.yfilter)
+	|| ydk::is_set(up_count.yfilter);
 }
 
 std::string Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState::get_segment_path() const
@@ -6850,12 +8947,12 @@ const EntityPath Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSumma
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down_count.is_set || is_set(down_count.operation)) leaf_name_data.push_back(down_count.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.operation)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (standby_count.is_set || is_set(standby_count.operation)) leaf_name_data.push_back(standby_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (unknown_count.is_set || is_set(unknown_count.operation)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
-    if (up_count.is_set || is_set(up_count.operation)) leaf_name_data.push_back(up_count.get_name_leafdata());
+    if (down_count.is_set || is_set(down_count.yfilter)) leaf_name_data.push_back(down_count.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (standby_count.is_set || is_set(standby_count.yfilter)) leaf_name_data.push_back(standby_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (unknown_count.is_set || is_set(unknown_count.yfilter)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
+    if (up_count.is_set || is_set(up_count.yfilter)) leaf_name_data.push_back(up_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6874,32 +8971,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfdMplsteTailNodeSummari
     return children;
 }
 
-void Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down-count")
     {
         down_count = value;
+        down_count.value_namespace = name_space;
+        down_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-count")
     {
         retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-count")
     {
         standby_count = value;
+        standby_count.value_namespace = name_space;
+        standby_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-count")
     {
         unknown_count = value;
+        unknown_count.value_namespace = name_space;
+        unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-count")
     {
         up_count = value;
+        up_count.value_namespace = name_space;
+        up_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down-count")
+    {
+        down_count.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "standby-count")
+    {
+        standby_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "unknown-count")
+    {
+        unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "up-count")
+    {
+        up_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down-count" || name == "retry-count" || name == "standby-count" || name == "total-count" || name == "unknown-count" || name == "up-count")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummaries()
@@ -6928,7 +9072,7 @@ bool Bfd::Ipv4SingleHopLocationSummaries::has_operation() const
         if(ipv4_single_hop_location_summary[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv4SingleHopLocationSummaries::get_segment_path() const
@@ -6993,8 +9137,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4SingleHopLocationSummari
     return children;
 }
 
-void Bfd::Ipv4SingleHopLocationSummaries::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4SingleHopLocationSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv4SingleHopLocationSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv4SingleHopLocationSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-single-hop-location-summary")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::Ipv4SingleHopLocationSummary()
@@ -7020,8 +9175,8 @@ bool Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::has_data
 
 bool Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(location_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(location_name.yfilter)
 	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
@@ -7048,7 +9203,7 @@ const EntityPath Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSumma
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location_name.is_set || is_set(location_name.operation)) leaf_name_data.push_back(location_name.get_name_leafdata());
+    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7081,12 +9236,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4SingleHopLocationSummari
     return children;
 }
 
-void Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location-name")
     {
         location_name = value;
+        location_name.value_namespace = name_space;
+        location_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location-name")
+    {
+        location_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-state" || name == "location-name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState::SessionState()
@@ -7117,13 +9289,13 @@ bool Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionS
 
 bool Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down_count.operation)
-	|| is_set(retry_count.operation)
-	|| is_set(standby_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(unknown_count.operation)
-	|| is_set(up_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down_count.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(standby_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(unknown_count.yfilter)
+	|| ydk::is_set(up_count.yfilter);
 }
 
 std::string Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState::get_segment_path() const
@@ -7149,12 +9321,12 @@ const EntityPath Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSumma
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down_count.is_set || is_set(down_count.operation)) leaf_name_data.push_back(down_count.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.operation)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (standby_count.is_set || is_set(standby_count.operation)) leaf_name_data.push_back(standby_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (unknown_count.is_set || is_set(unknown_count.operation)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
-    if (up_count.is_set || is_set(up_count.operation)) leaf_name_data.push_back(up_count.get_name_leafdata());
+    if (down_count.is_set || is_set(down_count.yfilter)) leaf_name_data.push_back(down_count.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (standby_count.is_set || is_set(standby_count.yfilter)) leaf_name_data.push_back(standby_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (unknown_count.is_set || is_set(unknown_count.yfilter)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
+    if (up_count.is_set || is_set(up_count.yfilter)) leaf_name_data.push_back(up_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7173,32 +9345,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4SingleHopLocationSummari
     return children;
 }
 
-void Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down-count")
     {
         down_count = value;
+        down_count.value_namespace = name_space;
+        down_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-count")
     {
         retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-count")
     {
         standby_count = value;
+        standby_count.value_namespace = name_space;
+        standby_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-count")
     {
         unknown_count = value;
+        unknown_count.value_namespace = name_space;
+        unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-count")
     {
         up_count = value;
+        up_count.value_namespace = name_space;
+        up_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down-count")
+    {
+        down_count.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "standby-count")
+    {
+        standby_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "unknown-count")
+    {
+        unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "up-count")
+    {
+        up_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down-count" || name == "retry-count" || name == "standby-count" || name == "total-count" || name == "unknown-count" || name == "up-count")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNodes()
@@ -7227,7 +9446,7 @@ bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::has_operation() const
         if(ipv4bfd_mplste_head_summary_node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv4BfdMplsteHeadSummaryNodes::get_segment_path() const
@@ -7292,8 +9511,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfdMplsteHeadSummaryNode
     return children;
 }
 
-void Bfd::Ipv4BfdMplsteHeadSummaryNodes::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfdMplsteHeadSummaryNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv4BfdMplsteHeadSummaryNodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4bfd-mplste-head-summary-node")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::Ipv4BfdMplsteHeadSummaryNode()
@@ -7319,8 +9549,8 @@ bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::has_data(
 
 bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(location_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(location_name.yfilter)
 	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
@@ -7347,7 +9577,7 @@ const EntityPath Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location_name.is_set || is_set(location_name.operation)) leaf_name_data.push_back(location_name.get_name_leafdata());
+    if (location_name.is_set || is_set(location_name.yfilter)) leaf_name_data.push_back(location_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7380,12 +9610,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfdMplsteHeadSummaryNode
     return children;
 }
 
-void Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location-name")
     {
         location_name = value;
+        location_name.value_namespace = name_space;
+        location_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location-name")
+    {
+        location_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-state" || name == "location-name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState::SessionState()
@@ -7416,13 +9663,13 @@ bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionSt
 
 bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down_count.operation)
-	|| is_set(retry_count.operation)
-	|| is_set(standby_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(unknown_count.operation)
-	|| is_set(up_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down_count.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(standby_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(unknown_count.yfilter)
+	|| ydk::is_set(up_count.yfilter);
 }
 
 std::string Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState::get_segment_path() const
@@ -7448,12 +9695,12 @@ const EntityPath Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down_count.is_set || is_set(down_count.operation)) leaf_name_data.push_back(down_count.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.operation)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (standby_count.is_set || is_set(standby_count.operation)) leaf_name_data.push_back(standby_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (unknown_count.is_set || is_set(unknown_count.operation)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
-    if (up_count.is_set || is_set(up_count.operation)) leaf_name_data.push_back(up_count.get_name_leafdata());
+    if (down_count.is_set || is_set(down_count.yfilter)) leaf_name_data.push_back(down_count.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (standby_count.is_set || is_set(standby_count.yfilter)) leaf_name_data.push_back(standby_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (unknown_count.is_set || is_set(unknown_count.yfilter)) leaf_name_data.push_back(unknown_count.get_name_leafdata());
+    if (up_count.is_set || is_set(up_count.yfilter)) leaf_name_data.push_back(up_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7472,32 +9719,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfdMplsteHeadSummaryNode
     return children;
 }
 
-void Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down-count")
     {
         down_count = value;
+        down_count.value_namespace = name_space;
+        down_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-count")
     {
         retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-count")
     {
         standby_count = value;
+        standby_count.value_namespace = name_space;
+        standby_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-count")
     {
         unknown_count = value;
+        unknown_count.value_namespace = name_space;
+        unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-count")
     {
         up_count = value;
+        up_count.value_namespace = name_space;
+        up_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down-count")
+    {
+        down_count.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "standby-count")
+    {
+        standby_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "unknown-count")
+    {
+        unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "up-count")
+    {
+        up_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down-count" || name == "retry-count" || name == "standby-count" || name == "total-count" || name == "unknown-count" || name == "up-count")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetails()
@@ -7526,7 +9820,7 @@ bool Bfd::LabelSessionDetails::has_operation() const
         if(label_session_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::get_segment_path() const
@@ -7591,8 +9885,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::get_chi
     return children;
 }
 
-void Bfd::LabelSessionDetails::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::LabelSessionDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::LabelSessionDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-session-detail")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::LabelSessionDetail()
@@ -7650,10 +9955,10 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::has_operation() const
         if(owner_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(incoming_label.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(location.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(incoming_label.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
 	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
 	|| (status_information !=  nullptr && status_information->has_operation());
@@ -7682,9 +9987,9 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (incoming_label.is_set || is_set(incoming_label.operation)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (incoming_label.is_set || is_set(incoming_label.yfilter)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7787,20 +10092,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "incoming-label")
     {
         incoming_label = value;
+        incoming_label.value_namespace = name_space;
+        incoming_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incoming-label")
+    {
+        incoming_label.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association-information" || name == "lsp-ping-info" || name == "mp-download-state" || name == "owner-information" || name == "status-information" || name == "incoming-label" || name == "interface-name" || name == "location")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusInformation()
@@ -7884,21 +10218,21 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::has_data()
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(desired_minimum_echo_transmit_interval.operation)
-	|| is_set(internal_label.operation)
-	|| is_set(latency_average.operation)
-	|| is_set(latency_maximum.operation)
-	|| is_set(latency_minimum.operation)
-	|| is_set(latency_number.operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(node_id.operation)
-	|| is_set(remote_discriminator.operation)
-	|| is_set(remote_negotiated_interval.operation)
-	|| is_set(session_subtype.operation)
-	|| is_set(sessiontype.operation)
-	|| is_set(state.operation)
-	|| is_set(to_up_state_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(desired_minimum_echo_transmit_interval.yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(latency_average.yfilter)
+	|| ydk::is_set(latency_maximum.yfilter)
+	|| ydk::is_set(latency_minimum.yfilter)
+	|| ydk::is_set(latency_number.yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(remote_discriminator.yfilter)
+	|| ydk::is_set(remote_negotiated_interval.yfilter)
+	|| ydk::is_set(session_subtype.yfilter)
+	|| ydk::is_set(sessiontype.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(to_up_state_count.yfilter)
 	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
 	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
 	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
@@ -7933,20 +10267,20 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (desired_minimum_echo_transmit_interval.is_set || is_set(desired_minimum_echo_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_echo_transmit_interval.get_name_leafdata());
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (latency_average.is_set || is_set(latency_average.operation)) leaf_name_data.push_back(latency_average.get_name_leafdata());
-    if (latency_maximum.is_set || is_set(latency_maximum.operation)) leaf_name_data.push_back(latency_maximum.get_name_leafdata());
-    if (latency_minimum.is_set || is_set(latency_minimum.operation)) leaf_name_data.push_back(latency_minimum.get_name_leafdata());
-    if (latency_number.is_set || is_set(latency_number.operation)) leaf_name_data.push_back(latency_number.get_name_leafdata());
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (remote_discriminator.is_set || is_set(remote_discriminator.operation)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
-    if (remote_negotiated_interval.is_set || is_set(remote_negotiated_interval.operation)) leaf_name_data.push_back(remote_negotiated_interval.get_name_leafdata());
-    if (session_subtype.is_set || is_set(session_subtype.operation)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
-    if (sessiontype.is_set || is_set(sessiontype.operation)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (to_up_state_count.is_set || is_set(to_up_state_count.operation)) leaf_name_data.push_back(to_up_state_count.get_name_leafdata());
+    if (desired_minimum_echo_transmit_interval.is_set || is_set(desired_minimum_echo_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_echo_transmit_interval.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (latency_average.is_set || is_set(latency_average.yfilter)) leaf_name_data.push_back(latency_average.get_name_leafdata());
+    if (latency_maximum.is_set || is_set(latency_maximum.yfilter)) leaf_name_data.push_back(latency_maximum.get_name_leafdata());
+    if (latency_minimum.is_set || is_set(latency_minimum.yfilter)) leaf_name_data.push_back(latency_minimum.get_name_leafdata());
+    if (latency_number.is_set || is_set(latency_number.yfilter)) leaf_name_data.push_back(latency_number.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (remote_discriminator.is_set || is_set(remote_discriminator.yfilter)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
+    if (remote_negotiated_interval.is_set || is_set(remote_negotiated_interval.yfilter)) leaf_name_data.push_back(remote_negotiated_interval.get_name_leafdata());
+    if (session_subtype.is_set || is_set(session_subtype.yfilter)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
+    if (sessiontype.is_set || is_set(sessiontype.yfilter)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (to_up_state_count.is_set || is_set(to_up_state_count.yfilter)) leaf_name_data.push_back(to_up_state_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8091,64 +10425,159 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "desired-minimum-echo-transmit-interval")
     {
         desired_minimum_echo_transmit_interval = value;
+        desired_minimum_echo_transmit_interval.value_namespace = name_space;
+        desired_minimum_echo_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-average")
     {
         latency_average = value;
+        latency_average.value_namespace = name_space;
+        latency_average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-maximum")
     {
         latency_maximum = value;
+        latency_maximum.value_namespace = name_space;
+        latency_maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-minimum")
     {
         latency_minimum = value;
+        latency_minimum.value_namespace = name_space;
+        latency_minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-number")
     {
         latency_number = value;
+        latency_number.value_namespace = name_space;
+        latency_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-discriminator")
     {
         remote_discriminator = value;
+        remote_discriminator.value_namespace = name_space;
+        remote_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-negotiated-interval")
     {
         remote_negotiated_interval = value;
+        remote_negotiated_interval.value_namespace = name_space;
+        remote_negotiated_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-subtype")
     {
         session_subtype = value;
+        session_subtype.value_namespace = name_space;
+        session_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessiontype")
     {
         sessiontype = value;
+        sessiontype.value_namespace = name_space;
+        sessiontype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "to-up-state-count")
     {
         to_up_state_count = value;
+        to_up_state_count.value_namespace = name_space;
+        to_up_state_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "desired-minimum-echo-transmit-interval")
+    {
+        desired_minimum_echo_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "latency-average")
+    {
+        latency_average.yfilter = yfilter;
+    }
+    if(value_path == "latency-maximum")
+    {
+        latency_maximum.yfilter = yfilter;
+    }
+    if(value_path == "latency-minimum")
+    {
+        latency_minimum.yfilter = yfilter;
+    }
+    if(value_path == "latency-number")
+    {
+        latency_number.yfilter = yfilter;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-discriminator")
+    {
+        remote_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "remote-negotiated-interval")
+    {
+        remote_negotiated_interval.yfilter = yfilter;
+    }
+    if(value_path == "session-subtype")
+    {
+        session_subtype.yfilter = yfilter;
+    }
+    if(value_path == "sessiontype")
+    {
+        sessiontype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "to-up-state-count")
+    {
+        to_up_state_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-receive-statistics" || name == "async-transmit-statistics" || name == "echo-received-statistics" || name == "echo-transmit-statistics" || name == "last-state-change" || name == "receive-packet" || name == "source-address" || name == "status-brief-information" || name == "transmit-packet" || name == "desired-minimum-echo-transmit-interval" || name == "internal-label" || name == "latency-average" || name == "latency-maximum" || name == "latency-minimum" || name == "latency-number" || name == "local-discriminator" || name == "node-id" || name == "remote-discriminator" || name == "remote-negotiated-interval" || name == "session-subtype" || name == "sessiontype" || name == "state" || name == "to-up-state-count")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress::SourceAddress()
@@ -8175,11 +10604,11 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddr
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress::get_segment_path() const
@@ -8205,10 +10634,10 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8227,24 +10656,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange::LastStateChange()
@@ -8271,11 +10735,11 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateC
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(days.operation)
-	|| is_set(hours.operation)
-	|| is_set(minutes.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(days.yfilter)
+	|| ydk::is_set(hours.yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange::get_segment_path() const
@@ -8301,10 +10765,10 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (days.is_set || is_set(days.operation)) leaf_name_data.push_back(days.get_name_leafdata());
-    if (hours.is_set || is_set(hours.operation)) leaf_name_data.push_back(hours.get_name_leafdata());
-    if (minutes.is_set || is_set(minutes.operation)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
+    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8323,24 +10787,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "days")
     {
         days = value;
+        days.value_namespace = name_space;
+        days.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hours")
     {
         hours = value;
+        hours.value_namespace = name_space;
+        hours.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minutes")
     {
         minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "days")
+    {
+        days.yfilter = yfilter;
+    }
+    if(value_path == "hours")
+    {
+        hours.yfilter = yfilter;
+    }
+    if(value_path == "minutes")
+    {
+        minutes.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "days" || name == "hours" || name == "minutes" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket::TransmitPacket()
@@ -8351,7 +10850,7 @@ Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket:
     desired_minimum_transmit_interval{YType::uint32, "desired-minimum-transmit-interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
     diagnostic{YType::enumeration, "diagnostic"},
-    final_{YType::int32, "final"},
+    final{YType::int32, "final"},
     ihear_you{YType::int32, "ihear-you"},
     length{YType::uint32, "length"},
     my_discriminator{YType::uint32, "my-discriminator"},
@@ -8377,7 +10876,7 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPa
 	|| desired_minimum_transmit_interval.is_set
 	|| detection_multiplier.is_set
 	|| diagnostic.is_set
-	|| final_.is_set
+	|| final.is_set
 	|| ihear_you.is_set
 	|| length.is_set
 	|| my_discriminator.is_set
@@ -8391,23 +10890,23 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPa
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_present.operation)
-	|| is_set(control_plane_independent.operation)
-	|| is_set(demand.operation)
-	|| is_set(desired_minimum_transmit_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(diagnostic.operation)
-	|| is_set(final_.operation)
-	|| is_set(ihear_you.operation)
-	|| is_set(length.operation)
-	|| is_set(my_discriminator.operation)
-	|| is_set(poll.operation)
-	|| is_set(required_minimum_echo_receive_interval.operation)
-	|| is_set(required_minimum_receive_interval.operation)
-	|| is_set(state.operation)
-	|| is_set(version.operation)
-	|| is_set(your_discriminator.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_present.yfilter)
+	|| ydk::is_set(control_plane_independent.yfilter)
+	|| ydk::is_set(demand.yfilter)
+	|| ydk::is_set(desired_minimum_transmit_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(diagnostic.yfilter)
+	|| ydk::is_set(final.yfilter)
+	|| ydk::is_set(ihear_you.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(my_discriminator.yfilter)
+	|| ydk::is_set(poll.yfilter)
+	|| ydk::is_set(required_minimum_echo_receive_interval.yfilter)
+	|| ydk::is_set(required_minimum_receive_interval.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(your_discriminator.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket::get_segment_path() const
@@ -8433,22 +10932,22 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_present.is_set || is_set(authentication_present.operation)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
-    if (control_plane_independent.is_set || is_set(control_plane_independent.operation)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
-    if (demand.is_set || is_set(demand.operation)) leaf_name_data.push_back(demand.get_name_leafdata());
-    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (diagnostic.is_set || is_set(diagnostic.operation)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
-    if (final_.is_set || is_set(final_.operation)) leaf_name_data.push_back(final_.get_name_leafdata());
-    if (ihear_you.is_set || is_set(ihear_you.operation)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (my_discriminator.is_set || is_set(my_discriminator.operation)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
-    if (poll.is_set || is_set(poll.operation)) leaf_name_data.push_back(poll.get_name_leafdata());
-    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.operation)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
-    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.operation)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (your_discriminator.is_set || is_set(your_discriminator.operation)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
+    if (authentication_present.is_set || is_set(authentication_present.yfilter)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
+    if (control_plane_independent.is_set || is_set(control_plane_independent.yfilter)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
+    if (demand.is_set || is_set(demand.yfilter)) leaf_name_data.push_back(demand.get_name_leafdata());
+    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (diagnostic.is_set || is_set(diagnostic.yfilter)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
+    if (final.is_set || is_set(final.yfilter)) leaf_name_data.push_back(final.get_name_leafdata());
+    if (ihear_you.is_set || is_set(ihear_you.yfilter)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (my_discriminator.is_set || is_set(my_discriminator.yfilter)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
+    if (poll.is_set || is_set(poll.yfilter)) leaf_name_data.push_back(poll.get_name_leafdata());
+    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
+    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (your_discriminator.is_set || is_set(your_discriminator.yfilter)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8467,72 +10966,179 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-present")
     {
         authentication_present = value;
+        authentication_present.value_namespace = name_space;
+        authentication_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-plane-independent")
     {
         control_plane_independent = value;
+        control_plane_independent.value_namespace = name_space;
+        control_plane_independent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "demand")
     {
         demand = value;
+        demand.value_namespace = name_space;
+        demand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-minimum-transmit-interval")
     {
         desired_minimum_transmit_interval = value;
+        desired_minimum_transmit_interval.value_namespace = name_space;
+        desired_minimum_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diagnostic")
     {
         diagnostic = value;
+        diagnostic.value_namespace = name_space;
+        diagnostic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "final")
     {
-        final_ = value;
+        final = value;
+        final.value_namespace = name_space;
+        final.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ihear-you")
     {
         ihear_you = value;
+        ihear_you.value_namespace = name_space;
+        ihear_you.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "my-discriminator")
     {
         my_discriminator = value;
+        my_discriminator.value_namespace = name_space;
+        my_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll")
     {
         poll = value;
+        poll.value_namespace = name_space;
+        poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-echo-receive-interval")
     {
         required_minimum_echo_receive_interval = value;
+        required_minimum_echo_receive_interval.value_namespace = name_space;
+        required_minimum_echo_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-receive-interval")
     {
         required_minimum_receive_interval = value;
+        required_minimum_receive_interval.value_namespace = name_space;
+        required_minimum_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "your-discriminator")
     {
         your_discriminator = value;
+        your_discriminator.value_namespace = name_space;
+        your_discriminator.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-present")
+    {
+        authentication_present.yfilter = yfilter;
+    }
+    if(value_path == "control-plane-independent")
+    {
+        control_plane_independent.yfilter = yfilter;
+    }
+    if(value_path == "demand")
+    {
+        demand.yfilter = yfilter;
+    }
+    if(value_path == "desired-minimum-transmit-interval")
+    {
+        desired_minimum_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "diagnostic")
+    {
+        diagnostic.yfilter = yfilter;
+    }
+    if(value_path == "final")
+    {
+        final.yfilter = yfilter;
+    }
+    if(value_path == "ihear-you")
+    {
+        ihear_you.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "my-discriminator")
+    {
+        my_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "poll")
+    {
+        poll.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-echo-receive-interval")
+    {
+        required_minimum_echo_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-receive-interval")
+    {
+        required_minimum_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "your-discriminator")
+    {
+        your_discriminator.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-present" || name == "control-plane-independent" || name == "demand" || name == "desired-minimum-transmit-interval" || name == "detection-multiplier" || name == "diagnostic" || name == "final" || name == "ihear-you" || name == "length" || name == "my-discriminator" || name == "poll" || name == "required-minimum-echo-receive-interval" || name == "required-minimum-receive-interval" || name == "state" || name == "version" || name == "your-discriminator")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket::ReceivePacket()
@@ -8543,7 +11149,7 @@ Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket::
     desired_minimum_transmit_interval{YType::uint32, "desired-minimum-transmit-interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
     diagnostic{YType::enumeration, "diagnostic"},
-    final_{YType::int32, "final"},
+    final{YType::int32, "final"},
     ihear_you{YType::int32, "ihear-you"},
     length{YType::uint32, "length"},
     my_discriminator{YType::uint32, "my-discriminator"},
@@ -8569,7 +11175,7 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePac
 	|| desired_minimum_transmit_interval.is_set
 	|| detection_multiplier.is_set
 	|| diagnostic.is_set
-	|| final_.is_set
+	|| final.is_set
 	|| ihear_you.is_set
 	|| length.is_set
 	|| my_discriminator.is_set
@@ -8583,23 +11189,23 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePac
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_present.operation)
-	|| is_set(control_plane_independent.operation)
-	|| is_set(demand.operation)
-	|| is_set(desired_minimum_transmit_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(diagnostic.operation)
-	|| is_set(final_.operation)
-	|| is_set(ihear_you.operation)
-	|| is_set(length.operation)
-	|| is_set(my_discriminator.operation)
-	|| is_set(poll.operation)
-	|| is_set(required_minimum_echo_receive_interval.operation)
-	|| is_set(required_minimum_receive_interval.operation)
-	|| is_set(state.operation)
-	|| is_set(version.operation)
-	|| is_set(your_discriminator.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_present.yfilter)
+	|| ydk::is_set(control_plane_independent.yfilter)
+	|| ydk::is_set(demand.yfilter)
+	|| ydk::is_set(desired_minimum_transmit_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(diagnostic.yfilter)
+	|| ydk::is_set(final.yfilter)
+	|| ydk::is_set(ihear_you.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(my_discriminator.yfilter)
+	|| ydk::is_set(poll.yfilter)
+	|| ydk::is_set(required_minimum_echo_receive_interval.yfilter)
+	|| ydk::is_set(required_minimum_receive_interval.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(your_discriminator.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket::get_segment_path() const
@@ -8625,22 +11231,22 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_present.is_set || is_set(authentication_present.operation)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
-    if (control_plane_independent.is_set || is_set(control_plane_independent.operation)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
-    if (demand.is_set || is_set(demand.operation)) leaf_name_data.push_back(demand.get_name_leafdata());
-    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (diagnostic.is_set || is_set(diagnostic.operation)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
-    if (final_.is_set || is_set(final_.operation)) leaf_name_data.push_back(final_.get_name_leafdata());
-    if (ihear_you.is_set || is_set(ihear_you.operation)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (my_discriminator.is_set || is_set(my_discriminator.operation)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
-    if (poll.is_set || is_set(poll.operation)) leaf_name_data.push_back(poll.get_name_leafdata());
-    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.operation)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
-    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.operation)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (your_discriminator.is_set || is_set(your_discriminator.operation)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
+    if (authentication_present.is_set || is_set(authentication_present.yfilter)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
+    if (control_plane_independent.is_set || is_set(control_plane_independent.yfilter)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
+    if (demand.is_set || is_set(demand.yfilter)) leaf_name_data.push_back(demand.get_name_leafdata());
+    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (diagnostic.is_set || is_set(diagnostic.yfilter)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
+    if (final.is_set || is_set(final.yfilter)) leaf_name_data.push_back(final.get_name_leafdata());
+    if (ihear_you.is_set || is_set(ihear_you.yfilter)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (my_discriminator.is_set || is_set(my_discriminator.yfilter)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
+    if (poll.is_set || is_set(poll.yfilter)) leaf_name_data.push_back(poll.get_name_leafdata());
+    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
+    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (your_discriminator.is_set || is_set(your_discriminator.yfilter)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8659,72 +11265,179 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-present")
     {
         authentication_present = value;
+        authentication_present.value_namespace = name_space;
+        authentication_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-plane-independent")
     {
         control_plane_independent = value;
+        control_plane_independent.value_namespace = name_space;
+        control_plane_independent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "demand")
     {
         demand = value;
+        demand.value_namespace = name_space;
+        demand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-minimum-transmit-interval")
     {
         desired_minimum_transmit_interval = value;
+        desired_minimum_transmit_interval.value_namespace = name_space;
+        desired_minimum_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diagnostic")
     {
         diagnostic = value;
+        diagnostic.value_namespace = name_space;
+        diagnostic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "final")
     {
-        final_ = value;
+        final = value;
+        final.value_namespace = name_space;
+        final.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ihear-you")
     {
         ihear_you = value;
+        ihear_you.value_namespace = name_space;
+        ihear_you.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "my-discriminator")
     {
         my_discriminator = value;
+        my_discriminator.value_namespace = name_space;
+        my_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll")
     {
         poll = value;
+        poll.value_namespace = name_space;
+        poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-echo-receive-interval")
     {
         required_minimum_echo_receive_interval = value;
+        required_minimum_echo_receive_interval.value_namespace = name_space;
+        required_minimum_echo_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-receive-interval")
     {
         required_minimum_receive_interval = value;
+        required_minimum_receive_interval.value_namespace = name_space;
+        required_minimum_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "your-discriminator")
     {
         your_discriminator = value;
+        your_discriminator.value_namespace = name_space;
+        your_discriminator.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-present")
+    {
+        authentication_present.yfilter = yfilter;
+    }
+    if(value_path == "control-plane-independent")
+    {
+        control_plane_independent.yfilter = yfilter;
+    }
+    if(value_path == "demand")
+    {
+        demand.yfilter = yfilter;
+    }
+    if(value_path == "desired-minimum-transmit-interval")
+    {
+        desired_minimum_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "diagnostic")
+    {
+        diagnostic.yfilter = yfilter;
+    }
+    if(value_path == "final")
+    {
+        final.yfilter = yfilter;
+    }
+    if(value_path == "ihear-you")
+    {
+        ihear_you.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "my-discriminator")
+    {
+        my_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "poll")
+    {
+        poll.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-echo-receive-interval")
+    {
+        required_minimum_echo_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-receive-interval")
+    {
+        required_minimum_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "your-discriminator")
+    {
+        your_discriminator.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-present" || name == "control-plane-independent" || name == "demand" || name == "desired-minimum-transmit-interval" || name == "detection-multiplier" || name == "diagnostic" || name == "final" || name == "ihear-you" || name == "length" || name == "my-discriminator" || name == "poll" || name == "required-minimum-echo-receive-interval" || name == "required-minimum-receive-interval" || name == "state" || name == "version" || name == "your-discriminator")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::StatusBriefInformation()
@@ -8751,7 +11464,7 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBrie
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
 	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
@@ -8825,8 +11538,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-interval-multiplier" || name == "echo-interval-multiplier")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::AsyncIntervalMultiplier()
@@ -8853,11 +11577,11 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBrie
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_local_transmit_interval.operation)
-	|| is_set(negotiated_remote_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_local_transmit_interval.yfilter)
+	|| ydk::is_set(negotiated_remote_transmit_interval.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::get_segment_path() const
@@ -8883,10 +11607,10 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.operation)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
-    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.operation)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
+    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8905,24 +11629,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-local-transmit-interval")
     {
         negotiated_local_transmit_interval = value;
+        negotiated_local_transmit_interval.value_namespace = name_space;
+        negotiated_local_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-remote-transmit-interval")
     {
         negotiated_remote_transmit_interval = value;
+        negotiated_remote_transmit_interval.value_namespace = name_space;
+        negotiated_remote_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-local-transmit-interval")
+    {
+        negotiated_local_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-remote-transmit-interval")
+    {
+        negotiated_remote_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-local-transmit-interval" || name == "negotiated-remote-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::EchoIntervalMultiplier()
@@ -8947,10 +11706,10 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBrie
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_transmit_interval.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::get_segment_path() const
@@ -8976,9 +11735,9 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.operation)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8997,20 +11756,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-transmit-interval")
     {
         negotiated_transmit_interval = value;
+        negotiated_transmit_interval.value_namespace = name_space;
+        negotiated_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-transmit-interval")
+    {
+        negotiated_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics::AsyncTransmitStatistics()
@@ -9039,12 +11827,12 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTrans
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics::get_segment_path() const
@@ -9070,11 +11858,11 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9093,28 +11881,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics::AsyncReceiveStatistics()
@@ -9143,12 +11972,12 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncRecei
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics::get_segment_path() const
@@ -9174,11 +12003,11 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9197,28 +12026,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics::EchoTransmitStatistics()
@@ -9247,12 +12117,12 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransm
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics::get_segment_path() const
@@ -9278,11 +12148,11 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9301,28 +12171,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics::EchoReceivedStatistics()
@@ -9351,12 +12262,12 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceiv
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics::get_segment_path() const
@@ -9382,11 +12293,11 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9405,28 +12316,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::MpDownloadState()
@@ -9452,8 +12404,8 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::has_data() c
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mp_download_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mp_download_state.yfilter)
 	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
@@ -9480,7 +12432,7 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mp_download_state.is_set || is_set(mp_download_state.operation)) leaf_name_data.push_back(mp_download_state.get_name_leafdata());
+    if (mp_download_state.is_set || is_set(mp_download_state.yfilter)) leaf_name_data.push_back(mp_download_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9513,12 +12465,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mp-download-state")
     {
         mp_download_state = value;
+        mp_download_state.value_namespace = name_space;
+        mp_download_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mp-download-state")
+    {
+        mp_download_state.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "change-time" || name == "mp-download-state")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime::ChangeTime()
@@ -9541,9 +12510,9 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime::
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime::get_segment_path() const
@@ -9569,8 +12538,8 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9589,16 +12558,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingInfo()
@@ -9648,16 +12640,16 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::has_data() const
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsp_ping_rx_count.operation)
-	|| is_set(lsp_ping_rx_last_code.operation)
-	|| is_set(lsp_ping_rx_last_discr.operation)
-	|| is_set(lsp_ping_rx_last_output.operation)
-	|| is_set(lsp_ping_rx_last_subcode.operation)
-	|| is_set(lsp_ping_tx_count.operation)
-	|| is_set(lsp_ping_tx_error_count.operation)
-	|| is_set(lsp_ping_tx_last_error_rc.operation)
-	|| is_set(lsp_ping_tx_last_rc.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsp_ping_rx_count.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_code.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_discr.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_output.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_subcode.yfilter)
+	|| ydk::is_set(lsp_ping_tx_count.yfilter)
+	|| ydk::is_set(lsp_ping_tx_error_count.yfilter)
+	|| ydk::is_set(lsp_ping_tx_last_error_rc.yfilter)
+	|| ydk::is_set(lsp_ping_tx_last_rc.yfilter)
 	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
 	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
 	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
@@ -9686,15 +12678,15 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsp_ping_rx_count.is_set || is_set(lsp_ping_rx_count.operation)) leaf_name_data.push_back(lsp_ping_rx_count.get_name_leafdata());
-    if (lsp_ping_rx_last_code.is_set || is_set(lsp_ping_rx_last_code.operation)) leaf_name_data.push_back(lsp_ping_rx_last_code.get_name_leafdata());
-    if (lsp_ping_rx_last_discr.is_set || is_set(lsp_ping_rx_last_discr.operation)) leaf_name_data.push_back(lsp_ping_rx_last_discr.get_name_leafdata());
-    if (lsp_ping_rx_last_output.is_set || is_set(lsp_ping_rx_last_output.operation)) leaf_name_data.push_back(lsp_ping_rx_last_output.get_name_leafdata());
-    if (lsp_ping_rx_last_subcode.is_set || is_set(lsp_ping_rx_last_subcode.operation)) leaf_name_data.push_back(lsp_ping_rx_last_subcode.get_name_leafdata());
-    if (lsp_ping_tx_count.is_set || is_set(lsp_ping_tx_count.operation)) leaf_name_data.push_back(lsp_ping_tx_count.get_name_leafdata());
-    if (lsp_ping_tx_error_count.is_set || is_set(lsp_ping_tx_error_count.operation)) leaf_name_data.push_back(lsp_ping_tx_error_count.get_name_leafdata());
-    if (lsp_ping_tx_last_error_rc.is_set || is_set(lsp_ping_tx_last_error_rc.operation)) leaf_name_data.push_back(lsp_ping_tx_last_error_rc.get_name_leafdata());
-    if (lsp_ping_tx_last_rc.is_set || is_set(lsp_ping_tx_last_rc.operation)) leaf_name_data.push_back(lsp_ping_tx_last_rc.get_name_leafdata());
+    if (lsp_ping_rx_count.is_set || is_set(lsp_ping_rx_count.yfilter)) leaf_name_data.push_back(lsp_ping_rx_count.get_name_leafdata());
+    if (lsp_ping_rx_last_code.is_set || is_set(lsp_ping_rx_last_code.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_code.get_name_leafdata());
+    if (lsp_ping_rx_last_discr.is_set || is_set(lsp_ping_rx_last_discr.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_discr.get_name_leafdata());
+    if (lsp_ping_rx_last_output.is_set || is_set(lsp_ping_rx_last_output.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_output.get_name_leafdata());
+    if (lsp_ping_rx_last_subcode.is_set || is_set(lsp_ping_rx_last_subcode.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_subcode.get_name_leafdata());
+    if (lsp_ping_tx_count.is_set || is_set(lsp_ping_tx_count.yfilter)) leaf_name_data.push_back(lsp_ping_tx_count.get_name_leafdata());
+    if (lsp_ping_tx_error_count.is_set || is_set(lsp_ping_tx_error_count.yfilter)) leaf_name_data.push_back(lsp_ping_tx_error_count.get_name_leafdata());
+    if (lsp_ping_tx_last_error_rc.is_set || is_set(lsp_ping_tx_last_error_rc.yfilter)) leaf_name_data.push_back(lsp_ping_tx_last_error_rc.get_name_leafdata());
+    if (lsp_ping_tx_last_rc.is_set || is_set(lsp_ping_tx_last_rc.yfilter)) leaf_name_data.push_back(lsp_ping_tx_last_rc.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9755,44 +12747,109 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsp-ping-rx-count")
     {
         lsp_ping_rx_count = value;
+        lsp_ping_rx_count.value_namespace = name_space;
+        lsp_ping_rx_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-code")
     {
         lsp_ping_rx_last_code = value;
+        lsp_ping_rx_last_code.value_namespace = name_space;
+        lsp_ping_rx_last_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-discr")
     {
         lsp_ping_rx_last_discr = value;
+        lsp_ping_rx_last_discr.value_namespace = name_space;
+        lsp_ping_rx_last_discr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-output")
     {
         lsp_ping_rx_last_output = value;
+        lsp_ping_rx_last_output.value_namespace = name_space;
+        lsp_ping_rx_last_output.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-subcode")
     {
         lsp_ping_rx_last_subcode = value;
+        lsp_ping_rx_last_subcode.value_namespace = name_space;
+        lsp_ping_rx_last_subcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-count")
     {
         lsp_ping_tx_count = value;
+        lsp_ping_tx_count.value_namespace = name_space;
+        lsp_ping_tx_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-error-count")
     {
         lsp_ping_tx_error_count = value;
+        lsp_ping_tx_error_count.value_namespace = name_space;
+        lsp_ping_tx_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-last-error-rc")
     {
         lsp_ping_tx_last_error_rc = value;
+        lsp_ping_tx_last_error_rc.value_namespace = name_space;
+        lsp_ping_tx_last_error_rc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-last-rc")
     {
         lsp_ping_tx_last_rc = value;
+        lsp_ping_tx_last_rc.value_namespace = name_space;
+        lsp_ping_tx_last_rc.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsp-ping-rx-count")
+    {
+        lsp_ping_rx_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-code")
+    {
+        lsp_ping_rx_last_code.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-discr")
+    {
+        lsp_ping_rx_last_discr.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-output")
+    {
+        lsp_ping_rx_last_output.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-subcode")
+    {
+        lsp_ping_rx_last_subcode.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-count")
+    {
+        lsp_ping_tx_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-error-count")
+    {
+        lsp_ping_tx_error_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-last-error-rc")
+    {
+        lsp_ping_tx_last_error_rc.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-last-rc")
+    {
+        lsp_ping_tx_last_rc.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-ping-rx-last-time" || name == "lsp-ping-tx-last-error-time" || name == "lsp-ping-tx-last-time" || name == "lsp-ping-rx-count" || name == "lsp-ping-rx-last-code" || name == "lsp-ping-rx-last-discr" || name == "lsp-ping-rx-last-output" || name == "lsp-ping-rx-last-subcode" || name == "lsp-ping-tx-count" || name == "lsp-ping-tx-error-count" || name == "lsp-ping-tx-last-error-rc" || name == "lsp-ping-tx-last-rc")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime::LspPingTxLastTime()
@@ -9815,9 +12872,9 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTim
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime::get_segment_path() const
@@ -9843,8 +12900,8 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9863,16 +12920,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime::LspPingTxLastErrorTime()
@@ -9895,9 +12975,9 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErr
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_segment_path() const
@@ -9923,8 +13003,8 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9943,16 +13023,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime::LspPingRxLastTime()
@@ -9975,9 +13078,9 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTim
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime::get_segment_path() const
@@ -10003,8 +13106,8 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10023,16 +13126,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::OwnerInformation()
@@ -10061,12 +13187,12 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::has_data() 
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjusted_detection_multiplier.operation)
-	|| is_set(adjusted_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(interval.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjusted_detection_multiplier.yfilter)
+	|| ydk::is_set(adjusted_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::get_segment_path() const
@@ -10092,11 +13218,11 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.operation)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
-    if (adjusted_interval.is_set || is_set(adjusted_interval.operation)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.yfilter)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
+    if (adjusted_interval.is_set || is_set(adjusted_interval.yfilter)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10115,28 +13241,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjusted-detection-multiplier")
     {
         adjusted_detection_multiplier = value;
+        adjusted_detection_multiplier.value_namespace = name_space;
+        adjusted_detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjusted-interval")
     {
         adjusted_interval = value;
+        adjusted_interval.value_namespace = name_space;
+        adjusted_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjusted-detection-multiplier")
+    {
+        adjusted_detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "adjusted-interval")
+    {
+        adjusted_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjusted-detection-multiplier" || name == "adjusted-interval" || name == "detection-multiplier" || name == "interval" || name == "name")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::AssociationInformation()
@@ -10174,9 +13341,9 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::has_o
         if(owner_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(sessiontype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(sessiontype.yfilter)
 	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
@@ -10203,8 +13370,8 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (sessiontype.is_set || is_set(sessiontype.operation)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (sessiontype.is_set || is_set(sessiontype.yfilter)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10258,16 +13425,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessiontype")
     {
         sessiontype = value;
+        sessiontype.value_namespace = name_space;
+        sessiontype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "sessiontype")
+    {
+        sessiontype.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "owner-information" || name == "session-key" || name == "local-discriminator" || name == "sessiontype")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::SessionKey()
@@ -10315,13 +13505,13 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(incoming_label.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(sbfd_enabled.operation)
-	|| is_set(sbfd_target_type.operation)
-	|| is_set(session_key_type.operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(incoming_label.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(sbfd_enabled.yfilter)
+	|| ydk::is_set(sbfd_target_type.yfilter)
+	|| ydk::is_set(session_key_type.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (bfdfec !=  nullptr && bfdfec->has_operation())
 	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
 	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
@@ -10351,12 +13541,12 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (incoming_label.is_set || is_set(incoming_label.operation)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (sbfd_enabled.is_set || is_set(sbfd_enabled.operation)) leaf_name_data.push_back(sbfd_enabled.get_name_leafdata());
-    if (sbfd_target_type.is_set || is_set(sbfd_target_type.operation)) leaf_name_data.push_back(sbfd_target_type.get_name_leafdata());
-    if (session_key_type.is_set || is_set(session_key_type.operation)) leaf_name_data.push_back(session_key_type.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (incoming_label.is_set || is_set(incoming_label.yfilter)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (sbfd_enabled.is_set || is_set(sbfd_enabled.yfilter)) leaf_name_data.push_back(sbfd_enabled.get_name_leafdata());
+    if (sbfd_target_type.is_set || is_set(sbfd_target_type.yfilter)) leaf_name_data.push_back(sbfd_target_type.get_name_leafdata());
+    if (session_key_type.is_set || is_set(session_key_type.yfilter)) leaf_name_data.push_back(session_key_type.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10431,32 +13621,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "incoming-label")
     {
         incoming_label = value;
+        incoming_label.value_namespace = name_space;
+        incoming_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbfd-enabled")
     {
         sbfd_enabled = value;
+        sbfd_enabled.value_namespace = name_space;
+        sbfd_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbfd-target-type")
     {
         sbfd_target_type = value;
+        sbfd_target_type.value_namespace = name_space;
+        sbfd_target_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-key-type")
     {
         session_key_type = value;
+        session_key_type.value_namespace = name_space;
+        session_key_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incoming-label")
+    {
+        incoming_label.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "sbfd-enabled")
+    {
+        sbfd_enabled.yfilter = yfilter;
+    }
+    if(value_path == "sbfd-target-type")
+    {
+        sbfd_target_type.yfilter = yfilter;
+    }
+    if(value_path == "session-key-type")
+    {
+        session_key_type.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfdfec" || name == "ip-destination-address" || name == "ip-source-address" || name == "target-address" || name == "incoming-label" || name == "interface-name" || name == "sbfd-enabled" || name == "sbfd-target-type" || name == "session-key-type" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::IpDestinationAddress()
@@ -10483,11 +13720,11 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::get_segment_path() const
@@ -10513,10 +13750,10 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10535,24 +13772,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::IpSourceAddress()
@@ -10579,11 +13851,11 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::get_segment_path() const
@@ -10609,10 +13881,10 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10631,24 +13903,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Bfdfec()
@@ -10678,8 +13985,8 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bfdfe_ctype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bfdfe_ctype.yfilter)
 	|| (dummy !=  nullptr && dummy->has_operation())
 	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
@@ -10707,7 +14014,7 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bfdfe_ctype.is_set || is_set(bfdfe_ctype.operation)) leaf_name_data.push_back(bfdfe_ctype.get_name_leafdata());
+    if (bfdfe_ctype.is_set || is_set(bfdfe_ctype.yfilter)) leaf_name_data.push_back(bfdfe_ctype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10754,12 +14061,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bfdfe-ctype")
     {
         bfdfe_ctype = value;
+        bfdfe_ctype.value_namespace = name_space;
+        bfdfe_ctype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bfdfe-ctype")
+    {
+        bfdfe_ctype.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dummy" || name == "te-s2l-fec" || name == "bfdfe-ctype")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::Dummy()
@@ -10780,8 +14104,8 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dummy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dummy.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::get_segment_path() const
@@ -10807,7 +14131,7 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10826,12 +14150,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dummy")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::TeS2LFec()
@@ -10870,17 +14211,17 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(s2l_fec_ctype.operation)
-	|| is_set(s2l_fec_dest.operation)
-	|| is_set(s2l_fec_extended_tunnel_id.operation)
-	|| is_set(s2l_fec_lsp_id.operation)
-	|| is_set(s2l_fec_p2mp_id.operation)
-	|| is_set(s2l_fec_source.operation)
-	|| is_set(s2l_fec_subgroup_id.operation)
-	|| is_set(s2l_fec_subgroup_originator.operation)
-	|| is_set(s2l_fec_tunnel_id.operation)
-	|| is_set(s2l_fec_vrf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(s2l_fec_ctype.yfilter)
+	|| ydk::is_set(s2l_fec_dest.yfilter)
+	|| ydk::is_set(s2l_fec_extended_tunnel_id.yfilter)
+	|| ydk::is_set(s2l_fec_lsp_id.yfilter)
+	|| ydk::is_set(s2l_fec_p2mp_id.yfilter)
+	|| ydk::is_set(s2l_fec_source.yfilter)
+	|| ydk::is_set(s2l_fec_subgroup_id.yfilter)
+	|| ydk::is_set(s2l_fec_subgroup_originator.yfilter)
+	|| ydk::is_set(s2l_fec_tunnel_id.yfilter)
+	|| ydk::is_set(s2l_fec_vrf.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::get_segment_path() const
@@ -10906,16 +14247,16 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (s2l_fec_ctype.is_set || is_set(s2l_fec_ctype.operation)) leaf_name_data.push_back(s2l_fec_ctype.get_name_leafdata());
-    if (s2l_fec_dest.is_set || is_set(s2l_fec_dest.operation)) leaf_name_data.push_back(s2l_fec_dest.get_name_leafdata());
-    if (s2l_fec_extended_tunnel_id.is_set || is_set(s2l_fec_extended_tunnel_id.operation)) leaf_name_data.push_back(s2l_fec_extended_tunnel_id.get_name_leafdata());
-    if (s2l_fec_lsp_id.is_set || is_set(s2l_fec_lsp_id.operation)) leaf_name_data.push_back(s2l_fec_lsp_id.get_name_leafdata());
-    if (s2l_fec_p2mp_id.is_set || is_set(s2l_fec_p2mp_id.operation)) leaf_name_data.push_back(s2l_fec_p2mp_id.get_name_leafdata());
-    if (s2l_fec_source.is_set || is_set(s2l_fec_source.operation)) leaf_name_data.push_back(s2l_fec_source.get_name_leafdata());
-    if (s2l_fec_subgroup_id.is_set || is_set(s2l_fec_subgroup_id.operation)) leaf_name_data.push_back(s2l_fec_subgroup_id.get_name_leafdata());
-    if (s2l_fec_subgroup_originator.is_set || is_set(s2l_fec_subgroup_originator.operation)) leaf_name_data.push_back(s2l_fec_subgroup_originator.get_name_leafdata());
-    if (s2l_fec_tunnel_id.is_set || is_set(s2l_fec_tunnel_id.operation)) leaf_name_data.push_back(s2l_fec_tunnel_id.get_name_leafdata());
-    if (s2l_fec_vrf.is_set || is_set(s2l_fec_vrf.operation)) leaf_name_data.push_back(s2l_fec_vrf.get_name_leafdata());
+    if (s2l_fec_ctype.is_set || is_set(s2l_fec_ctype.yfilter)) leaf_name_data.push_back(s2l_fec_ctype.get_name_leafdata());
+    if (s2l_fec_dest.is_set || is_set(s2l_fec_dest.yfilter)) leaf_name_data.push_back(s2l_fec_dest.get_name_leafdata());
+    if (s2l_fec_extended_tunnel_id.is_set || is_set(s2l_fec_extended_tunnel_id.yfilter)) leaf_name_data.push_back(s2l_fec_extended_tunnel_id.get_name_leafdata());
+    if (s2l_fec_lsp_id.is_set || is_set(s2l_fec_lsp_id.yfilter)) leaf_name_data.push_back(s2l_fec_lsp_id.get_name_leafdata());
+    if (s2l_fec_p2mp_id.is_set || is_set(s2l_fec_p2mp_id.yfilter)) leaf_name_data.push_back(s2l_fec_p2mp_id.get_name_leafdata());
+    if (s2l_fec_source.is_set || is_set(s2l_fec_source.yfilter)) leaf_name_data.push_back(s2l_fec_source.get_name_leafdata());
+    if (s2l_fec_subgroup_id.is_set || is_set(s2l_fec_subgroup_id.yfilter)) leaf_name_data.push_back(s2l_fec_subgroup_id.get_name_leafdata());
+    if (s2l_fec_subgroup_originator.is_set || is_set(s2l_fec_subgroup_originator.yfilter)) leaf_name_data.push_back(s2l_fec_subgroup_originator.get_name_leafdata());
+    if (s2l_fec_tunnel_id.is_set || is_set(s2l_fec_tunnel_id.yfilter)) leaf_name_data.push_back(s2l_fec_tunnel_id.get_name_leafdata());
+    if (s2l_fec_vrf.is_set || is_set(s2l_fec_vrf.yfilter)) leaf_name_data.push_back(s2l_fec_vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10934,48 +14275,119 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "s2l-fec-ctype")
     {
         s2l_fec_ctype = value;
+        s2l_fec_ctype.value_namespace = name_space;
+        s2l_fec_ctype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-dest")
     {
         s2l_fec_dest = value;
+        s2l_fec_dest.value_namespace = name_space;
+        s2l_fec_dest.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-extended-tunnel-id")
     {
         s2l_fec_extended_tunnel_id = value;
+        s2l_fec_extended_tunnel_id.value_namespace = name_space;
+        s2l_fec_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-lsp-id")
     {
         s2l_fec_lsp_id = value;
+        s2l_fec_lsp_id.value_namespace = name_space;
+        s2l_fec_lsp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-p2mp-id")
     {
         s2l_fec_p2mp_id = value;
+        s2l_fec_p2mp_id.value_namespace = name_space;
+        s2l_fec_p2mp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-source")
     {
         s2l_fec_source = value;
+        s2l_fec_source.value_namespace = name_space;
+        s2l_fec_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-subgroup-id")
     {
         s2l_fec_subgroup_id = value;
+        s2l_fec_subgroup_id.value_namespace = name_space;
+        s2l_fec_subgroup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-subgroup-originator")
     {
         s2l_fec_subgroup_originator = value;
+        s2l_fec_subgroup_originator.value_namespace = name_space;
+        s2l_fec_subgroup_originator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-tunnel-id")
     {
         s2l_fec_tunnel_id = value;
+        s2l_fec_tunnel_id.value_namespace = name_space;
+        s2l_fec_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-vrf")
     {
         s2l_fec_vrf = value;
+        s2l_fec_vrf.value_namespace = name_space;
+        s2l_fec_vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "s2l-fec-ctype")
+    {
+        s2l_fec_ctype.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-dest")
+    {
+        s2l_fec_dest.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-extended-tunnel-id")
+    {
+        s2l_fec_extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-lsp-id")
+    {
+        s2l_fec_lsp_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-p2mp-id")
+    {
+        s2l_fec_p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-source")
+    {
+        s2l_fec_source.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-subgroup-id")
+    {
+        s2l_fec_subgroup_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-subgroup-originator")
+    {
+        s2l_fec_subgroup_originator.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-tunnel-id")
+    {
+        s2l_fec_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-vrf")
+    {
+        s2l_fec_vrf.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "s2l-fec-ctype" || name == "s2l-fec-dest" || name == "s2l-fec-extended-tunnel-id" || name == "s2l-fec-lsp-id" || name == "s2l-fec-p2mp-id" || name == "s2l-fec-source" || name == "s2l-fec-subgroup-id" || name == "s2l-fec-subgroup-originator" || name == "s2l-fec-tunnel-id" || name == "s2l-fec-vrf")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress::TargetAddress()
@@ -11002,11 +14414,11 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sessi
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress::get_segment_path() const
@@ -11032,10 +14444,10 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11054,24 +14466,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation::OwnerInformation()
@@ -11100,12 +14547,12 @@ bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Owner
 
 bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjusted_detection_multiplier.operation)
-	|| is_set(adjusted_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(interval.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjusted_detection_multiplier.yfilter)
+	|| ydk::is_set(adjusted_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation::get_segment_path() const
@@ -11131,11 +14578,11 @@ const EntityPath Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.operation)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
-    if (adjusted_interval.is_set || is_set(adjusted_interval.operation)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.yfilter)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
+    if (adjusted_interval.is_set || is_set(adjusted_interval.yfilter)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11154,28 +14601,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::LabelSessionDetails::LabelSe
     return children;
 }
 
-void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjusted-detection-multiplier")
     {
         adjusted_detection_multiplier = value;
+        adjusted_detection_multiplier.value_namespace = name_space;
+        adjusted_detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjusted-interval")
     {
         adjusted_interval = value;
+        adjusted_interval.value_namespace = name_space;
+        adjusted_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjusted-detection-multiplier")
+    {
+        adjusted_detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "adjusted-interval")
+    {
+        adjusted_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjusted-detection-multiplier" || name == "adjusted-interval" || name == "detection-multiplier" || name == "interval" || name == "name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetails()
@@ -11204,7 +14692,7 @@ bool Bfd::Ipv6SingleHopSessionDetails::has_operation() const
         if(ipv6_single_hop_session_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::get_segment_path() const
@@ -11269,8 +14757,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-single-hop-session-detail")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::Ipv6SingleHopSessionDetail()
@@ -11328,10 +14827,10 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::has_operation
         if(owner_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(destination_address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(location.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
 	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
 	|| (status_information !=  nullptr && status_information->has_operation());
@@ -11360,9 +14859,9 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11465,20 +14964,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association-information" || name == "lsp-ping-info" || name == "mp-download-state" || name == "owner-information" || name == "status-information" || name == "destination-address" || name == "interface-name" || name == "location")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusInformation()
@@ -11562,21 +15090,21 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(desired_minimum_echo_transmit_interval.operation)
-	|| is_set(internal_label.operation)
-	|| is_set(latency_average.operation)
-	|| is_set(latency_maximum.operation)
-	|| is_set(latency_minimum.operation)
-	|| is_set(latency_number.operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(node_id.operation)
-	|| is_set(remote_discriminator.operation)
-	|| is_set(remote_negotiated_interval.operation)
-	|| is_set(session_subtype.operation)
-	|| is_set(sessiontype.operation)
-	|| is_set(state.operation)
-	|| is_set(to_up_state_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(desired_minimum_echo_transmit_interval.yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(latency_average.yfilter)
+	|| ydk::is_set(latency_maximum.yfilter)
+	|| ydk::is_set(latency_minimum.yfilter)
+	|| ydk::is_set(latency_number.yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(remote_discriminator.yfilter)
+	|| ydk::is_set(remote_negotiated_interval.yfilter)
+	|| ydk::is_set(session_subtype.yfilter)
+	|| ydk::is_set(sessiontype.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(to_up_state_count.yfilter)
 	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
 	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
 	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
@@ -11611,20 +15139,20 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (desired_minimum_echo_transmit_interval.is_set || is_set(desired_minimum_echo_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_echo_transmit_interval.get_name_leafdata());
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (latency_average.is_set || is_set(latency_average.operation)) leaf_name_data.push_back(latency_average.get_name_leafdata());
-    if (latency_maximum.is_set || is_set(latency_maximum.operation)) leaf_name_data.push_back(latency_maximum.get_name_leafdata());
-    if (latency_minimum.is_set || is_set(latency_minimum.operation)) leaf_name_data.push_back(latency_minimum.get_name_leafdata());
-    if (latency_number.is_set || is_set(latency_number.operation)) leaf_name_data.push_back(latency_number.get_name_leafdata());
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (remote_discriminator.is_set || is_set(remote_discriminator.operation)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
-    if (remote_negotiated_interval.is_set || is_set(remote_negotiated_interval.operation)) leaf_name_data.push_back(remote_negotiated_interval.get_name_leafdata());
-    if (session_subtype.is_set || is_set(session_subtype.operation)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
-    if (sessiontype.is_set || is_set(sessiontype.operation)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (to_up_state_count.is_set || is_set(to_up_state_count.operation)) leaf_name_data.push_back(to_up_state_count.get_name_leafdata());
+    if (desired_minimum_echo_transmit_interval.is_set || is_set(desired_minimum_echo_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_echo_transmit_interval.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (latency_average.is_set || is_set(latency_average.yfilter)) leaf_name_data.push_back(latency_average.get_name_leafdata());
+    if (latency_maximum.is_set || is_set(latency_maximum.yfilter)) leaf_name_data.push_back(latency_maximum.get_name_leafdata());
+    if (latency_minimum.is_set || is_set(latency_minimum.yfilter)) leaf_name_data.push_back(latency_minimum.get_name_leafdata());
+    if (latency_number.is_set || is_set(latency_number.yfilter)) leaf_name_data.push_back(latency_number.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (remote_discriminator.is_set || is_set(remote_discriminator.yfilter)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
+    if (remote_negotiated_interval.is_set || is_set(remote_negotiated_interval.yfilter)) leaf_name_data.push_back(remote_negotiated_interval.get_name_leafdata());
+    if (session_subtype.is_set || is_set(session_subtype.yfilter)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
+    if (sessiontype.is_set || is_set(sessiontype.yfilter)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (to_up_state_count.is_set || is_set(to_up_state_count.yfilter)) leaf_name_data.push_back(to_up_state_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11769,64 +15297,159 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "desired-minimum-echo-transmit-interval")
     {
         desired_minimum_echo_transmit_interval = value;
+        desired_minimum_echo_transmit_interval.value_namespace = name_space;
+        desired_minimum_echo_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-average")
     {
         latency_average = value;
+        latency_average.value_namespace = name_space;
+        latency_average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-maximum")
     {
         latency_maximum = value;
+        latency_maximum.value_namespace = name_space;
+        latency_maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-minimum")
     {
         latency_minimum = value;
+        latency_minimum.value_namespace = name_space;
+        latency_minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-number")
     {
         latency_number = value;
+        latency_number.value_namespace = name_space;
+        latency_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-discriminator")
     {
         remote_discriminator = value;
+        remote_discriminator.value_namespace = name_space;
+        remote_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-negotiated-interval")
     {
         remote_negotiated_interval = value;
+        remote_negotiated_interval.value_namespace = name_space;
+        remote_negotiated_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-subtype")
     {
         session_subtype = value;
+        session_subtype.value_namespace = name_space;
+        session_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessiontype")
     {
         sessiontype = value;
+        sessiontype.value_namespace = name_space;
+        sessiontype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "to-up-state-count")
     {
         to_up_state_count = value;
+        to_up_state_count.value_namespace = name_space;
+        to_up_state_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "desired-minimum-echo-transmit-interval")
+    {
+        desired_minimum_echo_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "latency-average")
+    {
+        latency_average.yfilter = yfilter;
+    }
+    if(value_path == "latency-maximum")
+    {
+        latency_maximum.yfilter = yfilter;
+    }
+    if(value_path == "latency-minimum")
+    {
+        latency_minimum.yfilter = yfilter;
+    }
+    if(value_path == "latency-number")
+    {
+        latency_number.yfilter = yfilter;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-discriminator")
+    {
+        remote_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "remote-negotiated-interval")
+    {
+        remote_negotiated_interval.yfilter = yfilter;
+    }
+    if(value_path == "session-subtype")
+    {
+        session_subtype.yfilter = yfilter;
+    }
+    if(value_path == "sessiontype")
+    {
+        sessiontype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "to-up-state-count")
+    {
+        to_up_state_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-receive-statistics" || name == "async-transmit-statistics" || name == "echo-received-statistics" || name == "echo-transmit-statistics" || name == "last-state-change" || name == "receive-packet" || name == "source-address" || name == "status-brief-information" || name == "transmit-packet" || name == "desired-minimum-echo-transmit-interval" || name == "internal-label" || name == "latency-average" || name == "latency-maximum" || name == "latency-minimum" || name == "latency-number" || name == "local-discriminator" || name == "node-id" || name == "remote-discriminator" || name == "remote-negotiated-interval" || name == "session-subtype" || name == "sessiontype" || name == "state" || name == "to-up-state-count")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress::SourceAddress()
@@ -11853,11 +15476,11 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress::get_segment_path() const
@@ -11883,10 +15506,10 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11905,24 +15528,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange::LastStateChange()
@@ -11949,11 +15607,11 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(days.operation)
-	|| is_set(hours.operation)
-	|| is_set(minutes.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(days.yfilter)
+	|| ydk::is_set(hours.yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange::get_segment_path() const
@@ -11979,10 +15637,10 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (days.is_set || is_set(days.operation)) leaf_name_data.push_back(days.get_name_leafdata());
-    if (hours.is_set || is_set(hours.operation)) leaf_name_data.push_back(hours.get_name_leafdata());
-    if (minutes.is_set || is_set(minutes.operation)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
+    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12001,24 +15659,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "days")
     {
         days = value;
+        days.value_namespace = name_space;
+        days.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hours")
     {
         hours = value;
+        hours.value_namespace = name_space;
+        hours.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minutes")
     {
         minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "days")
+    {
+        days.yfilter = yfilter;
+    }
+    if(value_path == "hours")
+    {
+        hours.yfilter = yfilter;
+    }
+    if(value_path == "minutes")
+    {
+        minutes.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "days" || name == "hours" || name == "minutes" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket::TransmitPacket()
@@ -12029,7 +15722,7 @@ Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation:
     desired_minimum_transmit_interval{YType::uint32, "desired-minimum-transmit-interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
     diagnostic{YType::enumeration, "diagnostic"},
-    final_{YType::int32, "final"},
+    final{YType::int32, "final"},
     ihear_you{YType::int32, "ihear-you"},
     length{YType::uint32, "length"},
     my_discriminator{YType::uint32, "my-discriminator"},
@@ -12055,7 +15748,7 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 	|| desired_minimum_transmit_interval.is_set
 	|| detection_multiplier.is_set
 	|| diagnostic.is_set
-	|| final_.is_set
+	|| final.is_set
 	|| ihear_you.is_set
 	|| length.is_set
 	|| my_discriminator.is_set
@@ -12069,23 +15762,23 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_present.operation)
-	|| is_set(control_plane_independent.operation)
-	|| is_set(demand.operation)
-	|| is_set(desired_minimum_transmit_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(diagnostic.operation)
-	|| is_set(final_.operation)
-	|| is_set(ihear_you.operation)
-	|| is_set(length.operation)
-	|| is_set(my_discriminator.operation)
-	|| is_set(poll.operation)
-	|| is_set(required_minimum_echo_receive_interval.operation)
-	|| is_set(required_minimum_receive_interval.operation)
-	|| is_set(state.operation)
-	|| is_set(version.operation)
-	|| is_set(your_discriminator.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_present.yfilter)
+	|| ydk::is_set(control_plane_independent.yfilter)
+	|| ydk::is_set(demand.yfilter)
+	|| ydk::is_set(desired_minimum_transmit_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(diagnostic.yfilter)
+	|| ydk::is_set(final.yfilter)
+	|| ydk::is_set(ihear_you.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(my_discriminator.yfilter)
+	|| ydk::is_set(poll.yfilter)
+	|| ydk::is_set(required_minimum_echo_receive_interval.yfilter)
+	|| ydk::is_set(required_minimum_receive_interval.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(your_discriminator.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket::get_segment_path() const
@@ -12111,22 +15804,22 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_present.is_set || is_set(authentication_present.operation)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
-    if (control_plane_independent.is_set || is_set(control_plane_independent.operation)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
-    if (demand.is_set || is_set(demand.operation)) leaf_name_data.push_back(demand.get_name_leafdata());
-    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (diagnostic.is_set || is_set(diagnostic.operation)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
-    if (final_.is_set || is_set(final_.operation)) leaf_name_data.push_back(final_.get_name_leafdata());
-    if (ihear_you.is_set || is_set(ihear_you.operation)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (my_discriminator.is_set || is_set(my_discriminator.operation)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
-    if (poll.is_set || is_set(poll.operation)) leaf_name_data.push_back(poll.get_name_leafdata());
-    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.operation)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
-    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.operation)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (your_discriminator.is_set || is_set(your_discriminator.operation)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
+    if (authentication_present.is_set || is_set(authentication_present.yfilter)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
+    if (control_plane_independent.is_set || is_set(control_plane_independent.yfilter)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
+    if (demand.is_set || is_set(demand.yfilter)) leaf_name_data.push_back(demand.get_name_leafdata());
+    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (diagnostic.is_set || is_set(diagnostic.yfilter)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
+    if (final.is_set || is_set(final.yfilter)) leaf_name_data.push_back(final.get_name_leafdata());
+    if (ihear_you.is_set || is_set(ihear_you.yfilter)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (my_discriminator.is_set || is_set(my_discriminator.yfilter)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
+    if (poll.is_set || is_set(poll.yfilter)) leaf_name_data.push_back(poll.get_name_leafdata());
+    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
+    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (your_discriminator.is_set || is_set(your_discriminator.yfilter)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12145,72 +15838,179 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-present")
     {
         authentication_present = value;
+        authentication_present.value_namespace = name_space;
+        authentication_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-plane-independent")
     {
         control_plane_independent = value;
+        control_plane_independent.value_namespace = name_space;
+        control_plane_independent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "demand")
     {
         demand = value;
+        demand.value_namespace = name_space;
+        demand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-minimum-transmit-interval")
     {
         desired_minimum_transmit_interval = value;
+        desired_minimum_transmit_interval.value_namespace = name_space;
+        desired_minimum_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diagnostic")
     {
         diagnostic = value;
+        diagnostic.value_namespace = name_space;
+        diagnostic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "final")
     {
-        final_ = value;
+        final = value;
+        final.value_namespace = name_space;
+        final.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ihear-you")
     {
         ihear_you = value;
+        ihear_you.value_namespace = name_space;
+        ihear_you.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "my-discriminator")
     {
         my_discriminator = value;
+        my_discriminator.value_namespace = name_space;
+        my_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll")
     {
         poll = value;
+        poll.value_namespace = name_space;
+        poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-echo-receive-interval")
     {
         required_minimum_echo_receive_interval = value;
+        required_minimum_echo_receive_interval.value_namespace = name_space;
+        required_minimum_echo_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-receive-interval")
     {
         required_minimum_receive_interval = value;
+        required_minimum_receive_interval.value_namespace = name_space;
+        required_minimum_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "your-discriminator")
     {
         your_discriminator = value;
+        your_discriminator.value_namespace = name_space;
+        your_discriminator.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-present")
+    {
+        authentication_present.yfilter = yfilter;
+    }
+    if(value_path == "control-plane-independent")
+    {
+        control_plane_independent.yfilter = yfilter;
+    }
+    if(value_path == "demand")
+    {
+        demand.yfilter = yfilter;
+    }
+    if(value_path == "desired-minimum-transmit-interval")
+    {
+        desired_minimum_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "diagnostic")
+    {
+        diagnostic.yfilter = yfilter;
+    }
+    if(value_path == "final")
+    {
+        final.yfilter = yfilter;
+    }
+    if(value_path == "ihear-you")
+    {
+        ihear_you.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "my-discriminator")
+    {
+        my_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "poll")
+    {
+        poll.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-echo-receive-interval")
+    {
+        required_minimum_echo_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-receive-interval")
+    {
+        required_minimum_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "your-discriminator")
+    {
+        your_discriminator.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-present" || name == "control-plane-independent" || name == "demand" || name == "desired-minimum-transmit-interval" || name == "detection-multiplier" || name == "diagnostic" || name == "final" || name == "ihear-you" || name == "length" || name == "my-discriminator" || name == "poll" || name == "required-minimum-echo-receive-interval" || name == "required-minimum-receive-interval" || name == "state" || name == "version" || name == "your-discriminator")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket::ReceivePacket()
@@ -12221,7 +16021,7 @@ Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation:
     desired_minimum_transmit_interval{YType::uint32, "desired-minimum-transmit-interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
     diagnostic{YType::enumeration, "diagnostic"},
-    final_{YType::int32, "final"},
+    final{YType::int32, "final"},
     ihear_you{YType::int32, "ihear-you"},
     length{YType::uint32, "length"},
     my_discriminator{YType::uint32, "my-discriminator"},
@@ -12247,7 +16047,7 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 	|| desired_minimum_transmit_interval.is_set
 	|| detection_multiplier.is_set
 	|| diagnostic.is_set
-	|| final_.is_set
+	|| final.is_set
 	|| ihear_you.is_set
 	|| length.is_set
 	|| my_discriminator.is_set
@@ -12261,23 +16061,23 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_present.operation)
-	|| is_set(control_plane_independent.operation)
-	|| is_set(demand.operation)
-	|| is_set(desired_minimum_transmit_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(diagnostic.operation)
-	|| is_set(final_.operation)
-	|| is_set(ihear_you.operation)
-	|| is_set(length.operation)
-	|| is_set(my_discriminator.operation)
-	|| is_set(poll.operation)
-	|| is_set(required_minimum_echo_receive_interval.operation)
-	|| is_set(required_minimum_receive_interval.operation)
-	|| is_set(state.operation)
-	|| is_set(version.operation)
-	|| is_set(your_discriminator.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_present.yfilter)
+	|| ydk::is_set(control_plane_independent.yfilter)
+	|| ydk::is_set(demand.yfilter)
+	|| ydk::is_set(desired_minimum_transmit_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(diagnostic.yfilter)
+	|| ydk::is_set(final.yfilter)
+	|| ydk::is_set(ihear_you.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(my_discriminator.yfilter)
+	|| ydk::is_set(poll.yfilter)
+	|| ydk::is_set(required_minimum_echo_receive_interval.yfilter)
+	|| ydk::is_set(required_minimum_receive_interval.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(your_discriminator.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket::get_segment_path() const
@@ -12303,22 +16103,22 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_present.is_set || is_set(authentication_present.operation)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
-    if (control_plane_independent.is_set || is_set(control_plane_independent.operation)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
-    if (demand.is_set || is_set(demand.operation)) leaf_name_data.push_back(demand.get_name_leafdata());
-    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (diagnostic.is_set || is_set(diagnostic.operation)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
-    if (final_.is_set || is_set(final_.operation)) leaf_name_data.push_back(final_.get_name_leafdata());
-    if (ihear_you.is_set || is_set(ihear_you.operation)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (my_discriminator.is_set || is_set(my_discriminator.operation)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
-    if (poll.is_set || is_set(poll.operation)) leaf_name_data.push_back(poll.get_name_leafdata());
-    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.operation)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
-    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.operation)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (your_discriminator.is_set || is_set(your_discriminator.operation)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
+    if (authentication_present.is_set || is_set(authentication_present.yfilter)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
+    if (control_plane_independent.is_set || is_set(control_plane_independent.yfilter)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
+    if (demand.is_set || is_set(demand.yfilter)) leaf_name_data.push_back(demand.get_name_leafdata());
+    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (diagnostic.is_set || is_set(diagnostic.yfilter)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
+    if (final.is_set || is_set(final.yfilter)) leaf_name_data.push_back(final.get_name_leafdata());
+    if (ihear_you.is_set || is_set(ihear_you.yfilter)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (my_discriminator.is_set || is_set(my_discriminator.yfilter)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
+    if (poll.is_set || is_set(poll.yfilter)) leaf_name_data.push_back(poll.get_name_leafdata());
+    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
+    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (your_discriminator.is_set || is_set(your_discriminator.yfilter)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12337,72 +16137,179 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-present")
     {
         authentication_present = value;
+        authentication_present.value_namespace = name_space;
+        authentication_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-plane-independent")
     {
         control_plane_independent = value;
+        control_plane_independent.value_namespace = name_space;
+        control_plane_independent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "demand")
     {
         demand = value;
+        demand.value_namespace = name_space;
+        demand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-minimum-transmit-interval")
     {
         desired_minimum_transmit_interval = value;
+        desired_minimum_transmit_interval.value_namespace = name_space;
+        desired_minimum_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diagnostic")
     {
         diagnostic = value;
+        diagnostic.value_namespace = name_space;
+        diagnostic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "final")
     {
-        final_ = value;
+        final = value;
+        final.value_namespace = name_space;
+        final.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ihear-you")
     {
         ihear_you = value;
+        ihear_you.value_namespace = name_space;
+        ihear_you.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "my-discriminator")
     {
         my_discriminator = value;
+        my_discriminator.value_namespace = name_space;
+        my_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll")
     {
         poll = value;
+        poll.value_namespace = name_space;
+        poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-echo-receive-interval")
     {
         required_minimum_echo_receive_interval = value;
+        required_minimum_echo_receive_interval.value_namespace = name_space;
+        required_minimum_echo_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-receive-interval")
     {
         required_minimum_receive_interval = value;
+        required_minimum_receive_interval.value_namespace = name_space;
+        required_minimum_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "your-discriminator")
     {
         your_discriminator = value;
+        your_discriminator.value_namespace = name_space;
+        your_discriminator.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-present")
+    {
+        authentication_present.yfilter = yfilter;
+    }
+    if(value_path == "control-plane-independent")
+    {
+        control_plane_independent.yfilter = yfilter;
+    }
+    if(value_path == "demand")
+    {
+        demand.yfilter = yfilter;
+    }
+    if(value_path == "desired-minimum-transmit-interval")
+    {
+        desired_minimum_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "diagnostic")
+    {
+        diagnostic.yfilter = yfilter;
+    }
+    if(value_path == "final")
+    {
+        final.yfilter = yfilter;
+    }
+    if(value_path == "ihear-you")
+    {
+        ihear_you.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "my-discriminator")
+    {
+        my_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "poll")
+    {
+        poll.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-echo-receive-interval")
+    {
+        required_minimum_echo_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-receive-interval")
+    {
+        required_minimum_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "your-discriminator")
+    {
+        your_discriminator.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-present" || name == "control-plane-independent" || name == "demand" || name == "desired-minimum-transmit-interval" || name == "detection-multiplier" || name == "diagnostic" || name == "final" || name == "ihear-you" || name == "length" || name == "my-discriminator" || name == "poll" || name == "required-minimum-echo-receive-interval" || name == "required-minimum-receive-interval" || name == "state" || name == "version" || name == "your-discriminator")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::StatusBriefInformation()
@@ -12429,7 +16336,7 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
 	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
@@ -12503,8 +16410,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-interval-multiplier" || name == "echo-interval-multiplier")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::AsyncIntervalMultiplier()
@@ -12531,11 +16449,11 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_local_transmit_interval.operation)
-	|| is_set(negotiated_remote_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_local_transmit_interval.yfilter)
+	|| ydk::is_set(negotiated_remote_transmit_interval.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::get_segment_path() const
@@ -12561,10 +16479,10 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.operation)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
-    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.operation)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
+    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12583,24 +16501,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-local-transmit-interval")
     {
         negotiated_local_transmit_interval = value;
+        negotiated_local_transmit_interval.value_namespace = name_space;
+        negotiated_local_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-remote-transmit-interval")
     {
         negotiated_remote_transmit_interval = value;
+        negotiated_remote_transmit_interval.value_namespace = name_space;
+        negotiated_remote_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-local-transmit-interval")
+    {
+        negotiated_local_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-remote-transmit-interval")
+    {
+        negotiated_remote_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-local-transmit-interval" || name == "negotiated-remote-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::EchoIntervalMultiplier()
@@ -12625,10 +16578,10 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_transmit_interval.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::get_segment_path() const
@@ -12654,9 +16607,9 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.operation)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12675,20 +16628,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-transmit-interval")
     {
         negotiated_transmit_interval = value;
+        negotiated_transmit_interval.value_namespace = name_space;
+        negotiated_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-transmit-interval")
+    {
+        negotiated_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics::AsyncTransmitStatistics()
@@ -12717,12 +16699,12 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics::get_segment_path() const
@@ -12748,11 +16730,11 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12771,28 +16753,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics::AsyncReceiveStatistics()
@@ -12821,12 +16844,12 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics::get_segment_path() const
@@ -12852,11 +16875,11 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12875,28 +16898,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics::EchoTransmitStatistics()
@@ -12925,12 +16989,12 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics::get_segment_path() const
@@ -12956,11 +17020,11 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12979,28 +17043,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics::EchoReceivedStatistics()
@@ -13029,12 +17134,12 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInforma
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics::get_segment_path() const
@@ -13060,11 +17165,11 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13083,28 +17188,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::MpDownloadState()
@@ -13130,8 +17276,8 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadSta
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mp_download_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mp_download_state.yfilter)
 	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
@@ -13158,7 +17304,7 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::M
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mp_download_state.is_set || is_set(mp_download_state.operation)) leaf_name_data.push_back(mp_download_state.get_name_leafdata());
+    if (mp_download_state.is_set || is_set(mp_download_state.yfilter)) leaf_name_data.push_back(mp_download_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13191,12 +17337,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mp-download-state")
     {
         mp_download_state = value;
+        mp_download_state.value_namespace = name_space;
+        mp_download_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mp-download-state")
+    {
+        mp_download_state.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "change-time" || name == "mp-download-state")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime::ChangeTime()
@@ -13219,9 +17382,9 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadSta
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime::get_segment_path() const
@@ -13247,8 +17410,8 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::M
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13267,16 +17430,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingInfo()
@@ -13326,16 +17512,16 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsp_ping_rx_count.operation)
-	|| is_set(lsp_ping_rx_last_code.operation)
-	|| is_set(lsp_ping_rx_last_discr.operation)
-	|| is_set(lsp_ping_rx_last_output.operation)
-	|| is_set(lsp_ping_rx_last_subcode.operation)
-	|| is_set(lsp_ping_tx_count.operation)
-	|| is_set(lsp_ping_tx_error_count.operation)
-	|| is_set(lsp_ping_tx_last_error_rc.operation)
-	|| is_set(lsp_ping_tx_last_rc.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsp_ping_rx_count.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_code.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_discr.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_output.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_subcode.yfilter)
+	|| ydk::is_set(lsp_ping_tx_count.yfilter)
+	|| ydk::is_set(lsp_ping_tx_error_count.yfilter)
+	|| ydk::is_set(lsp_ping_tx_last_error_rc.yfilter)
+	|| ydk::is_set(lsp_ping_tx_last_rc.yfilter)
 	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
 	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
 	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
@@ -13364,15 +17550,15 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::L
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsp_ping_rx_count.is_set || is_set(lsp_ping_rx_count.operation)) leaf_name_data.push_back(lsp_ping_rx_count.get_name_leafdata());
-    if (lsp_ping_rx_last_code.is_set || is_set(lsp_ping_rx_last_code.operation)) leaf_name_data.push_back(lsp_ping_rx_last_code.get_name_leafdata());
-    if (lsp_ping_rx_last_discr.is_set || is_set(lsp_ping_rx_last_discr.operation)) leaf_name_data.push_back(lsp_ping_rx_last_discr.get_name_leafdata());
-    if (lsp_ping_rx_last_output.is_set || is_set(lsp_ping_rx_last_output.operation)) leaf_name_data.push_back(lsp_ping_rx_last_output.get_name_leafdata());
-    if (lsp_ping_rx_last_subcode.is_set || is_set(lsp_ping_rx_last_subcode.operation)) leaf_name_data.push_back(lsp_ping_rx_last_subcode.get_name_leafdata());
-    if (lsp_ping_tx_count.is_set || is_set(lsp_ping_tx_count.operation)) leaf_name_data.push_back(lsp_ping_tx_count.get_name_leafdata());
-    if (lsp_ping_tx_error_count.is_set || is_set(lsp_ping_tx_error_count.operation)) leaf_name_data.push_back(lsp_ping_tx_error_count.get_name_leafdata());
-    if (lsp_ping_tx_last_error_rc.is_set || is_set(lsp_ping_tx_last_error_rc.operation)) leaf_name_data.push_back(lsp_ping_tx_last_error_rc.get_name_leafdata());
-    if (lsp_ping_tx_last_rc.is_set || is_set(lsp_ping_tx_last_rc.operation)) leaf_name_data.push_back(lsp_ping_tx_last_rc.get_name_leafdata());
+    if (lsp_ping_rx_count.is_set || is_set(lsp_ping_rx_count.yfilter)) leaf_name_data.push_back(lsp_ping_rx_count.get_name_leafdata());
+    if (lsp_ping_rx_last_code.is_set || is_set(lsp_ping_rx_last_code.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_code.get_name_leafdata());
+    if (lsp_ping_rx_last_discr.is_set || is_set(lsp_ping_rx_last_discr.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_discr.get_name_leafdata());
+    if (lsp_ping_rx_last_output.is_set || is_set(lsp_ping_rx_last_output.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_output.get_name_leafdata());
+    if (lsp_ping_rx_last_subcode.is_set || is_set(lsp_ping_rx_last_subcode.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_subcode.get_name_leafdata());
+    if (lsp_ping_tx_count.is_set || is_set(lsp_ping_tx_count.yfilter)) leaf_name_data.push_back(lsp_ping_tx_count.get_name_leafdata());
+    if (lsp_ping_tx_error_count.is_set || is_set(lsp_ping_tx_error_count.yfilter)) leaf_name_data.push_back(lsp_ping_tx_error_count.get_name_leafdata());
+    if (lsp_ping_tx_last_error_rc.is_set || is_set(lsp_ping_tx_last_error_rc.yfilter)) leaf_name_data.push_back(lsp_ping_tx_last_error_rc.get_name_leafdata());
+    if (lsp_ping_tx_last_rc.is_set || is_set(lsp_ping_tx_last_rc.yfilter)) leaf_name_data.push_back(lsp_ping_tx_last_rc.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13433,44 +17619,109 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsp-ping-rx-count")
     {
         lsp_ping_rx_count = value;
+        lsp_ping_rx_count.value_namespace = name_space;
+        lsp_ping_rx_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-code")
     {
         lsp_ping_rx_last_code = value;
+        lsp_ping_rx_last_code.value_namespace = name_space;
+        lsp_ping_rx_last_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-discr")
     {
         lsp_ping_rx_last_discr = value;
+        lsp_ping_rx_last_discr.value_namespace = name_space;
+        lsp_ping_rx_last_discr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-output")
     {
         lsp_ping_rx_last_output = value;
+        lsp_ping_rx_last_output.value_namespace = name_space;
+        lsp_ping_rx_last_output.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-subcode")
     {
         lsp_ping_rx_last_subcode = value;
+        lsp_ping_rx_last_subcode.value_namespace = name_space;
+        lsp_ping_rx_last_subcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-count")
     {
         lsp_ping_tx_count = value;
+        lsp_ping_tx_count.value_namespace = name_space;
+        lsp_ping_tx_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-error-count")
     {
         lsp_ping_tx_error_count = value;
+        lsp_ping_tx_error_count.value_namespace = name_space;
+        lsp_ping_tx_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-last-error-rc")
     {
         lsp_ping_tx_last_error_rc = value;
+        lsp_ping_tx_last_error_rc.value_namespace = name_space;
+        lsp_ping_tx_last_error_rc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-last-rc")
     {
         lsp_ping_tx_last_rc = value;
+        lsp_ping_tx_last_rc.value_namespace = name_space;
+        lsp_ping_tx_last_rc.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsp-ping-rx-count")
+    {
+        lsp_ping_rx_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-code")
+    {
+        lsp_ping_rx_last_code.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-discr")
+    {
+        lsp_ping_rx_last_discr.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-output")
+    {
+        lsp_ping_rx_last_output.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-subcode")
+    {
+        lsp_ping_rx_last_subcode.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-count")
+    {
+        lsp_ping_tx_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-error-count")
+    {
+        lsp_ping_tx_error_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-last-error-rc")
+    {
+        lsp_ping_tx_last_error_rc.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-last-rc")
+    {
+        lsp_ping_tx_last_rc.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-ping-rx-last-time" || name == "lsp-ping-tx-last-error-time" || name == "lsp-ping-tx-last-time" || name == "lsp-ping-rx-count" || name == "lsp-ping-rx-last-code" || name == "lsp-ping-rx-last-discr" || name == "lsp-ping-rx-last-output" || name == "lsp-ping-rx-last-subcode" || name == "lsp-ping-tx-count" || name == "lsp-ping-tx-error-count" || name == "lsp-ping-tx-last-error-rc" || name == "lsp-ping-tx-last-rc")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime::LspPingTxLastTime()
@@ -13493,9 +17744,9 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime::get_segment_path() const
@@ -13521,8 +17772,8 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::L
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13541,16 +17792,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::LspPingTxLastErrorTime()
@@ -13573,9 +17847,9 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_segment_path() const
@@ -13601,8 +17875,8 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::L
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13621,16 +17895,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime::LspPingRxLastTime()
@@ -13653,9 +17950,9 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime::get_segment_path() const
@@ -13681,8 +17978,8 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::L
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13701,16 +17998,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation::OwnerInformation()
@@ -13739,12 +18059,12 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformat
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjusted_detection_multiplier.operation)
-	|| is_set(adjusted_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(interval.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjusted_detection_multiplier.yfilter)
+	|| ydk::is_set(adjusted_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation::get_segment_path() const
@@ -13770,11 +18090,11 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.operation)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
-    if (adjusted_interval.is_set || is_set(adjusted_interval.operation)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.yfilter)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
+    if (adjusted_interval.is_set || is_set(adjusted_interval.yfilter)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13793,28 +18113,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjusted-detection-multiplier")
     {
         adjusted_detection_multiplier = value;
+        adjusted_detection_multiplier.value_namespace = name_space;
+        adjusted_detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjusted-interval")
     {
         adjusted_interval = value;
+        adjusted_interval.value_namespace = name_space;
+        adjusted_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjusted-detection-multiplier")
+    {
+        adjusted_detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "adjusted-interval")
+    {
+        adjusted_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjusted-detection-multiplier" || name == "adjusted-interval" || name == "detection-multiplier" || name == "interval" || name == "name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::AssociationInformation()
@@ -13852,9 +18213,9 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
         if(owner_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(sessiontype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(sessiontype.yfilter)
 	|| (session_key !=  nullptr && session_key->has_operation());
 }
 
@@ -13881,8 +18242,8 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (sessiontype.is_set || is_set(sessiontype.operation)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (sessiontype.is_set || is_set(sessiontype.yfilter)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13936,16 +18297,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessiontype")
     {
         sessiontype = value;
+        sessiontype.value_namespace = name_space;
+        sessiontype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "sessiontype")
+    {
+        sessiontype.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "owner-information" || name == "session-key" || name == "local-discriminator" || name == "sessiontype")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::SessionKey()
@@ -13993,13 +18377,13 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(incoming_label.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(sbfd_enabled.operation)
-	|| is_set(sbfd_target_type.operation)
-	|| is_set(session_key_type.operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(incoming_label.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(sbfd_enabled.yfilter)
+	|| ydk::is_set(sbfd_target_type.yfilter)
+	|| ydk::is_set(session_key_type.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (bfdfec !=  nullptr && bfdfec->has_operation())
 	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation())
 	|| (ip_source_address !=  nullptr && ip_source_address->has_operation())
@@ -14029,12 +18413,12 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (incoming_label.is_set || is_set(incoming_label.operation)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (sbfd_enabled.is_set || is_set(sbfd_enabled.operation)) leaf_name_data.push_back(sbfd_enabled.get_name_leafdata());
-    if (sbfd_target_type.is_set || is_set(sbfd_target_type.operation)) leaf_name_data.push_back(sbfd_target_type.get_name_leafdata());
-    if (session_key_type.is_set || is_set(session_key_type.operation)) leaf_name_data.push_back(session_key_type.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (incoming_label.is_set || is_set(incoming_label.yfilter)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (sbfd_enabled.is_set || is_set(sbfd_enabled.yfilter)) leaf_name_data.push_back(sbfd_enabled.get_name_leafdata());
+    if (sbfd_target_type.is_set || is_set(sbfd_target_type.yfilter)) leaf_name_data.push_back(sbfd_target_type.get_name_leafdata());
+    if (session_key_type.is_set || is_set(session_key_type.yfilter)) leaf_name_data.push_back(session_key_type.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14109,32 +18493,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "incoming-label")
     {
         incoming_label = value;
+        incoming_label.value_namespace = name_space;
+        incoming_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbfd-enabled")
     {
         sbfd_enabled = value;
+        sbfd_enabled.value_namespace = name_space;
+        sbfd_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbfd-target-type")
     {
         sbfd_target_type = value;
+        sbfd_target_type.value_namespace = name_space;
+        sbfd_target_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-key-type")
     {
         session_key_type = value;
+        session_key_type.value_namespace = name_space;
+        session_key_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incoming-label")
+    {
+        incoming_label.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "sbfd-enabled")
+    {
+        sbfd_enabled.yfilter = yfilter;
+    }
+    if(value_path == "sbfd-target-type")
+    {
+        sbfd_target_type.yfilter = yfilter;
+    }
+    if(value_path == "session-key-type")
+    {
+        session_key_type.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfdfec" || name == "ip-destination-address" || name == "ip-source-address" || name == "target-address" || name == "incoming-label" || name == "interface-name" || name == "sbfd-enabled" || name == "sbfd-target-type" || name == "session-key-type" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::IpDestinationAddress()
@@ -14161,11 +18592,11 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::get_segment_path() const
@@ -14191,10 +18622,10 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14213,24 +18644,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::IpSourceAddress()
@@ -14257,11 +18723,11 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::get_segment_path() const
@@ -14287,10 +18753,10 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14309,24 +18775,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Bfdfec()
@@ -14356,8 +18857,8 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bfdfe_ctype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bfdfe_ctype.yfilter)
 	|| (dummy !=  nullptr && dummy->has_operation())
 	|| (te_s2l_fec !=  nullptr && te_s2l_fec->has_operation());
 }
@@ -14385,7 +18886,7 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bfdfe_ctype.is_set || is_set(bfdfe_ctype.operation)) leaf_name_data.push_back(bfdfe_ctype.get_name_leafdata());
+    if (bfdfe_ctype.is_set || is_set(bfdfe_ctype.yfilter)) leaf_name_data.push_back(bfdfe_ctype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14432,12 +18933,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bfdfe-ctype")
     {
         bfdfe_ctype = value;
+        bfdfe_ctype.value_namespace = name_space;
+        bfdfe_ctype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bfdfe-ctype")
+    {
+        bfdfe_ctype.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dummy" || name == "te-s2l-fec" || name == "bfdfe-ctype")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::Dummy()
@@ -14458,8 +18976,8 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dummy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dummy.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::get_segment_path() const
@@ -14485,7 +19003,7 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14504,12 +19022,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dummy")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::TeS2LFec()
@@ -14548,17 +19083,17 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(s2l_fec_ctype.operation)
-	|| is_set(s2l_fec_dest.operation)
-	|| is_set(s2l_fec_extended_tunnel_id.operation)
-	|| is_set(s2l_fec_lsp_id.operation)
-	|| is_set(s2l_fec_p2mp_id.operation)
-	|| is_set(s2l_fec_source.operation)
-	|| is_set(s2l_fec_subgroup_id.operation)
-	|| is_set(s2l_fec_subgroup_originator.operation)
-	|| is_set(s2l_fec_tunnel_id.operation)
-	|| is_set(s2l_fec_vrf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(s2l_fec_ctype.yfilter)
+	|| ydk::is_set(s2l_fec_dest.yfilter)
+	|| ydk::is_set(s2l_fec_extended_tunnel_id.yfilter)
+	|| ydk::is_set(s2l_fec_lsp_id.yfilter)
+	|| ydk::is_set(s2l_fec_p2mp_id.yfilter)
+	|| ydk::is_set(s2l_fec_source.yfilter)
+	|| ydk::is_set(s2l_fec_subgroup_id.yfilter)
+	|| ydk::is_set(s2l_fec_subgroup_originator.yfilter)
+	|| ydk::is_set(s2l_fec_tunnel_id.yfilter)
+	|| ydk::is_set(s2l_fec_vrf.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::get_segment_path() const
@@ -14584,16 +19119,16 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (s2l_fec_ctype.is_set || is_set(s2l_fec_ctype.operation)) leaf_name_data.push_back(s2l_fec_ctype.get_name_leafdata());
-    if (s2l_fec_dest.is_set || is_set(s2l_fec_dest.operation)) leaf_name_data.push_back(s2l_fec_dest.get_name_leafdata());
-    if (s2l_fec_extended_tunnel_id.is_set || is_set(s2l_fec_extended_tunnel_id.operation)) leaf_name_data.push_back(s2l_fec_extended_tunnel_id.get_name_leafdata());
-    if (s2l_fec_lsp_id.is_set || is_set(s2l_fec_lsp_id.operation)) leaf_name_data.push_back(s2l_fec_lsp_id.get_name_leafdata());
-    if (s2l_fec_p2mp_id.is_set || is_set(s2l_fec_p2mp_id.operation)) leaf_name_data.push_back(s2l_fec_p2mp_id.get_name_leafdata());
-    if (s2l_fec_source.is_set || is_set(s2l_fec_source.operation)) leaf_name_data.push_back(s2l_fec_source.get_name_leafdata());
-    if (s2l_fec_subgroup_id.is_set || is_set(s2l_fec_subgroup_id.operation)) leaf_name_data.push_back(s2l_fec_subgroup_id.get_name_leafdata());
-    if (s2l_fec_subgroup_originator.is_set || is_set(s2l_fec_subgroup_originator.operation)) leaf_name_data.push_back(s2l_fec_subgroup_originator.get_name_leafdata());
-    if (s2l_fec_tunnel_id.is_set || is_set(s2l_fec_tunnel_id.operation)) leaf_name_data.push_back(s2l_fec_tunnel_id.get_name_leafdata());
-    if (s2l_fec_vrf.is_set || is_set(s2l_fec_vrf.operation)) leaf_name_data.push_back(s2l_fec_vrf.get_name_leafdata());
+    if (s2l_fec_ctype.is_set || is_set(s2l_fec_ctype.yfilter)) leaf_name_data.push_back(s2l_fec_ctype.get_name_leafdata());
+    if (s2l_fec_dest.is_set || is_set(s2l_fec_dest.yfilter)) leaf_name_data.push_back(s2l_fec_dest.get_name_leafdata());
+    if (s2l_fec_extended_tunnel_id.is_set || is_set(s2l_fec_extended_tunnel_id.yfilter)) leaf_name_data.push_back(s2l_fec_extended_tunnel_id.get_name_leafdata());
+    if (s2l_fec_lsp_id.is_set || is_set(s2l_fec_lsp_id.yfilter)) leaf_name_data.push_back(s2l_fec_lsp_id.get_name_leafdata());
+    if (s2l_fec_p2mp_id.is_set || is_set(s2l_fec_p2mp_id.yfilter)) leaf_name_data.push_back(s2l_fec_p2mp_id.get_name_leafdata());
+    if (s2l_fec_source.is_set || is_set(s2l_fec_source.yfilter)) leaf_name_data.push_back(s2l_fec_source.get_name_leafdata());
+    if (s2l_fec_subgroup_id.is_set || is_set(s2l_fec_subgroup_id.yfilter)) leaf_name_data.push_back(s2l_fec_subgroup_id.get_name_leafdata());
+    if (s2l_fec_subgroup_originator.is_set || is_set(s2l_fec_subgroup_originator.yfilter)) leaf_name_data.push_back(s2l_fec_subgroup_originator.get_name_leafdata());
+    if (s2l_fec_tunnel_id.is_set || is_set(s2l_fec_tunnel_id.yfilter)) leaf_name_data.push_back(s2l_fec_tunnel_id.get_name_leafdata());
+    if (s2l_fec_vrf.is_set || is_set(s2l_fec_vrf.yfilter)) leaf_name_data.push_back(s2l_fec_vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14612,48 +19147,119 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "s2l-fec-ctype")
     {
         s2l_fec_ctype = value;
+        s2l_fec_ctype.value_namespace = name_space;
+        s2l_fec_ctype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-dest")
     {
         s2l_fec_dest = value;
+        s2l_fec_dest.value_namespace = name_space;
+        s2l_fec_dest.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-extended-tunnel-id")
     {
         s2l_fec_extended_tunnel_id = value;
+        s2l_fec_extended_tunnel_id.value_namespace = name_space;
+        s2l_fec_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-lsp-id")
     {
         s2l_fec_lsp_id = value;
+        s2l_fec_lsp_id.value_namespace = name_space;
+        s2l_fec_lsp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-p2mp-id")
     {
         s2l_fec_p2mp_id = value;
+        s2l_fec_p2mp_id.value_namespace = name_space;
+        s2l_fec_p2mp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-source")
     {
         s2l_fec_source = value;
+        s2l_fec_source.value_namespace = name_space;
+        s2l_fec_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-subgroup-id")
     {
         s2l_fec_subgroup_id = value;
+        s2l_fec_subgroup_id.value_namespace = name_space;
+        s2l_fec_subgroup_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-subgroup-originator")
     {
         s2l_fec_subgroup_originator = value;
+        s2l_fec_subgroup_originator.value_namespace = name_space;
+        s2l_fec_subgroup_originator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-tunnel-id")
     {
         s2l_fec_tunnel_id = value;
+        s2l_fec_tunnel_id.value_namespace = name_space;
+        s2l_fec_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "s2l-fec-vrf")
     {
         s2l_fec_vrf = value;
+        s2l_fec_vrf.value_namespace = name_space;
+        s2l_fec_vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "s2l-fec-ctype")
+    {
+        s2l_fec_ctype.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-dest")
+    {
+        s2l_fec_dest.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-extended-tunnel-id")
+    {
+        s2l_fec_extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-lsp-id")
+    {
+        s2l_fec_lsp_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-p2mp-id")
+    {
+        s2l_fec_p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-source")
+    {
+        s2l_fec_source.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-subgroup-id")
+    {
+        s2l_fec_subgroup_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-subgroup-originator")
+    {
+        s2l_fec_subgroup_originator.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-tunnel-id")
+    {
+        s2l_fec_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "s2l-fec-vrf")
+    {
+        s2l_fec_vrf.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "s2l-fec-ctype" || name == "s2l-fec-dest" || name == "s2l-fec-extended-tunnel-id" || name == "s2l-fec-lsp-id" || name == "s2l-fec-p2mp-id" || name == "s2l-fec-source" || name == "s2l-fec-subgroup-id" || name == "s2l-fec-subgroup-originator" || name == "s2l-fec-tunnel-id" || name == "s2l-fec-vrf")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::TargetAddress()
@@ -14680,11 +19286,11 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::get_segment_path() const
@@ -14710,10 +19316,10 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14732,24 +19338,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation::OwnerInformation()
@@ -14778,12 +19419,12 @@ bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationIn
 
 bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjusted_detection_multiplier.operation)
-	|| is_set(adjusted_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(interval.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjusted_detection_multiplier.yfilter)
+	|| ydk::is_set(adjusted_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation::get_segment_path() const
@@ -14809,11 +19450,11 @@ const EntityPath Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.operation)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
-    if (adjusted_interval.is_set || is_set(adjusted_interval.operation)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.yfilter)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
+    if (adjusted_interval.is_set || is_set(adjusted_interval.yfilter)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14832,28 +19473,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionDetails:
     return children;
 }
 
-void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjusted-detection-multiplier")
     {
         adjusted_detection_multiplier = value;
+        adjusted_detection_multiplier.value_namespace = name_space;
+        adjusted_detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjusted-interval")
     {
         adjusted_interval = value;
+        adjusted_interval.value_namespace = name_space;
+        adjusted_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjusted-detection-multiplier")
+    {
+        adjusted_detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "adjusted-interval")
+    {
+        adjusted_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjusted-detection-multiplier" || name == "adjusted-interval" || name == "detection-multiplier" || name == "interval" || name == "name")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4MultiHopCounters::Ipv4MultiHopCounters()
@@ -14876,7 +19558,7 @@ bool Bfd::Ipv4MultiHopCounters::has_data() const
 
 bool Bfd::Ipv4MultiHopCounters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipv4_multi_hop_packet_counters !=  nullptr && ipv4_multi_hop_packet_counters->has_operation());
 }
 
@@ -14935,8 +19617,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4MultiHopCounters::get_ch
     return children;
 }
 
-void Bfd::Ipv4MultiHopCounters::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4MultiHopCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv4MultiHopCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv4MultiHopCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-multi-hop-packet-counters")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounters()
@@ -14965,7 +19658,7 @@ bool Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::has_operation() cons
         if(ipv4_multi_hop_packet_counter[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::get_segment_path() const
@@ -15030,8 +19723,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4MultiHopCounters::Ipv4Mu
     return children;
 }
 
-void Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-multi-hop-packet-counter")
+        return true;
+    return false;
 }
 
 Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter::Ipv4MultiHopPacketCounter()
@@ -15068,16 +19772,16 @@ bool Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCo
 
 bool Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_address.operation)
-	|| is_set(display_type.operation)
-	|| is_set(echo_receive_count.operation)
-	|| is_set(echo_transmit_count.operation)
-	|| is_set(hello_receive_count.operation)
-	|| is_set(hello_transmit_count.operation)
-	|| is_set(location.operation)
-	|| is_set(source_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(display_type.yfilter)
+	|| ydk::is_set(echo_receive_count.yfilter)
+	|| ydk::is_set(echo_transmit_count.yfilter)
+	|| ydk::is_set(hello_receive_count.yfilter)
+	|| ydk::is_set(hello_transmit_count.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter::get_segment_path() const
@@ -15103,15 +19807,15 @@ const EntityPath Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4Mult
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (display_type.is_set || is_set(display_type.operation)) leaf_name_data.push_back(display_type.get_name_leafdata());
-    if (echo_receive_count.is_set || is_set(echo_receive_count.operation)) leaf_name_data.push_back(echo_receive_count.get_name_leafdata());
-    if (echo_transmit_count.is_set || is_set(echo_transmit_count.operation)) leaf_name_data.push_back(echo_transmit_count.get_name_leafdata());
-    if (hello_receive_count.is_set || is_set(hello_receive_count.operation)) leaf_name_data.push_back(hello_receive_count.get_name_leafdata());
-    if (hello_transmit_count.is_set || is_set(hello_transmit_count.operation)) leaf_name_data.push_back(hello_transmit_count.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (display_type.is_set || is_set(display_type.yfilter)) leaf_name_data.push_back(display_type.get_name_leafdata());
+    if (echo_receive_count.is_set || is_set(echo_receive_count.yfilter)) leaf_name_data.push_back(echo_receive_count.get_name_leafdata());
+    if (echo_transmit_count.is_set || is_set(echo_transmit_count.yfilter)) leaf_name_data.push_back(echo_transmit_count.get_name_leafdata());
+    if (hello_receive_count.is_set || is_set(hello_receive_count.yfilter)) leaf_name_data.push_back(hello_receive_count.get_name_leafdata());
+    if (hello_transmit_count.is_set || is_set(hello_transmit_count.yfilter)) leaf_name_data.push_back(hello_transmit_count.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15130,44 +19834,109 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4MultiHopCounters::Ipv4Mu
     return children;
 }
 
-void Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter::set_value(const std::string & value_path, std::string value)
+void Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "display-type")
     {
         display_type = value;
+        display_type.value_namespace = name_space;
+        display_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-receive-count")
     {
         echo_receive_count = value;
+        echo_receive_count.value_namespace = name_space;
+        echo_receive_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-transmit-count")
     {
         echo_transmit_count = value;
+        echo_transmit_count.value_namespace = name_space;
+        echo_transmit_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-receive-count")
     {
         hello_receive_count = value;
+        hello_receive_count.value_namespace = name_space;
+        hello_receive_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-transmit-count")
     {
         hello_transmit_count = value;
+        hello_transmit_count.value_namespace = name_space;
+        hello_transmit_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "display-type")
+    {
+        display_type.yfilter = yfilter;
+    }
+    if(value_path == "echo-receive-count")
+    {
+        echo_receive_count.yfilter = yfilter;
+    }
+    if(value_path == "echo-transmit-count")
+    {
+        echo_transmit_count.yfilter = yfilter;
+    }
+    if(value_path == "hello-receive-count")
+    {
+        hello_receive_count.yfilter = yfilter;
+    }
+    if(value_path == "hello-transmit-count")
+    {
+        hello_transmit_count.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "display-type" || name == "echo-receive-count" || name == "echo-transmit-count" || name == "hello-receive-count" || name == "hello-transmit-count" || name == "location" || name == "source-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetails()
@@ -15196,7 +19965,7 @@ bool Bfd::SessionDetails::has_operation() const
         if(session_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::SessionDetails::get_segment_path() const
@@ -15261,8 +20030,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::get_children
     return children;
 }
 
-void Bfd::SessionDetails::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::SessionDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::SessionDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-detail")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::SessionDetail()
@@ -15320,10 +20100,10 @@ bool Bfd::SessionDetails::SessionDetail::has_operation() const
         if(owner_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(destination_address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(location.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| (lsp_ping_info !=  nullptr && lsp_ping_info->has_operation())
 	|| (mp_download_state !=  nullptr && mp_download_state->has_operation())
 	|| (status_information !=  nullptr && status_information->has_operation());
@@ -15352,9 +20132,9 @@ const EntityPath Bfd::SessionDetails::SessionDetail::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15457,20 +20237,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association-information" || name == "lsp-ping-info" || name == "mp-download-state" || name == "owner-information" || name == "status-information" || name == "destination-address" || name == "interface-name" || name == "location")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::StatusInformation()
@@ -15554,21 +20363,21 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::has_data() const
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(desired_minimum_echo_transmit_interval.operation)
-	|| is_set(internal_label.operation)
-	|| is_set(latency_average.operation)
-	|| is_set(latency_maximum.operation)
-	|| is_set(latency_minimum.operation)
-	|| is_set(latency_number.operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(node_id.operation)
-	|| is_set(remote_discriminator.operation)
-	|| is_set(remote_negotiated_interval.operation)
-	|| is_set(session_subtype.operation)
-	|| is_set(sessiontype.operation)
-	|| is_set(state.operation)
-	|| is_set(to_up_state_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(desired_minimum_echo_transmit_interval.yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(latency_average.yfilter)
+	|| ydk::is_set(latency_maximum.yfilter)
+	|| ydk::is_set(latency_minimum.yfilter)
+	|| ydk::is_set(latency_number.yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(remote_discriminator.yfilter)
+	|| ydk::is_set(remote_negotiated_interval.yfilter)
+	|| ydk::is_set(session_subtype.yfilter)
+	|| ydk::is_set(sessiontype.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(to_up_state_count.yfilter)
 	|| (async_receive_statistics !=  nullptr && async_receive_statistics->has_operation())
 	|| (async_transmit_statistics !=  nullptr && async_transmit_statistics->has_operation())
 	|| (echo_received_statistics !=  nullptr && echo_received_statistics->has_operation())
@@ -15603,20 +20412,20 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (desired_minimum_echo_transmit_interval.is_set || is_set(desired_minimum_echo_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_echo_transmit_interval.get_name_leafdata());
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (latency_average.is_set || is_set(latency_average.operation)) leaf_name_data.push_back(latency_average.get_name_leafdata());
-    if (latency_maximum.is_set || is_set(latency_maximum.operation)) leaf_name_data.push_back(latency_maximum.get_name_leafdata());
-    if (latency_minimum.is_set || is_set(latency_minimum.operation)) leaf_name_data.push_back(latency_minimum.get_name_leafdata());
-    if (latency_number.is_set || is_set(latency_number.operation)) leaf_name_data.push_back(latency_number.get_name_leafdata());
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (remote_discriminator.is_set || is_set(remote_discriminator.operation)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
-    if (remote_negotiated_interval.is_set || is_set(remote_negotiated_interval.operation)) leaf_name_data.push_back(remote_negotiated_interval.get_name_leafdata());
-    if (session_subtype.is_set || is_set(session_subtype.operation)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
-    if (sessiontype.is_set || is_set(sessiontype.operation)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (to_up_state_count.is_set || is_set(to_up_state_count.operation)) leaf_name_data.push_back(to_up_state_count.get_name_leafdata());
+    if (desired_minimum_echo_transmit_interval.is_set || is_set(desired_minimum_echo_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_echo_transmit_interval.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (latency_average.is_set || is_set(latency_average.yfilter)) leaf_name_data.push_back(latency_average.get_name_leafdata());
+    if (latency_maximum.is_set || is_set(latency_maximum.yfilter)) leaf_name_data.push_back(latency_maximum.get_name_leafdata());
+    if (latency_minimum.is_set || is_set(latency_minimum.yfilter)) leaf_name_data.push_back(latency_minimum.get_name_leafdata());
+    if (latency_number.is_set || is_set(latency_number.yfilter)) leaf_name_data.push_back(latency_number.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (remote_discriminator.is_set || is_set(remote_discriminator.yfilter)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
+    if (remote_negotiated_interval.is_set || is_set(remote_negotiated_interval.yfilter)) leaf_name_data.push_back(remote_negotiated_interval.get_name_leafdata());
+    if (session_subtype.is_set || is_set(session_subtype.yfilter)) leaf_name_data.push_back(session_subtype.get_name_leafdata());
+    if (sessiontype.is_set || is_set(sessiontype.yfilter)) leaf_name_data.push_back(sessiontype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (to_up_state_count.is_set || is_set(to_up_state_count.yfilter)) leaf_name_data.push_back(to_up_state_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15761,64 +20570,159 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "desired-minimum-echo-transmit-interval")
     {
         desired_minimum_echo_transmit_interval = value;
+        desired_minimum_echo_transmit_interval.value_namespace = name_space;
+        desired_minimum_echo_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-average")
     {
         latency_average = value;
+        latency_average.value_namespace = name_space;
+        latency_average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-maximum")
     {
         latency_maximum = value;
+        latency_maximum.value_namespace = name_space;
+        latency_maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-minimum")
     {
         latency_minimum = value;
+        latency_minimum.value_namespace = name_space;
+        latency_minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-number")
     {
         latency_number = value;
+        latency_number.value_namespace = name_space;
+        latency_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-discriminator")
     {
         remote_discriminator = value;
+        remote_discriminator.value_namespace = name_space;
+        remote_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-negotiated-interval")
     {
         remote_negotiated_interval = value;
+        remote_negotiated_interval.value_namespace = name_space;
+        remote_negotiated_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-subtype")
     {
         session_subtype = value;
+        session_subtype.value_namespace = name_space;
+        session_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessiontype")
     {
         sessiontype = value;
+        sessiontype.value_namespace = name_space;
+        sessiontype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "to-up-state-count")
     {
         to_up_state_count = value;
+        to_up_state_count.value_namespace = name_space;
+        to_up_state_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "desired-minimum-echo-transmit-interval")
+    {
+        desired_minimum_echo_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "latency-average")
+    {
+        latency_average.yfilter = yfilter;
+    }
+    if(value_path == "latency-maximum")
+    {
+        latency_maximum.yfilter = yfilter;
+    }
+    if(value_path == "latency-minimum")
+    {
+        latency_minimum.yfilter = yfilter;
+    }
+    if(value_path == "latency-number")
+    {
+        latency_number.yfilter = yfilter;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-discriminator")
+    {
+        remote_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "remote-negotiated-interval")
+    {
+        remote_negotiated_interval.yfilter = yfilter;
+    }
+    if(value_path == "session-subtype")
+    {
+        session_subtype.yfilter = yfilter;
+    }
+    if(value_path == "sessiontype")
+    {
+        sessiontype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "to-up-state-count")
+    {
+        to_up_state_count.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-receive-statistics" || name == "async-transmit-statistics" || name == "echo-received-statistics" || name == "echo-transmit-statistics" || name == "last-state-change" || name == "receive-packet" || name == "source-address" || name == "status-brief-information" || name == "transmit-packet" || name == "desired-minimum-echo-transmit-interval" || name == "internal-label" || name == "latency-average" || name == "latency-maximum" || name == "latency-minimum" || name == "latency-number" || name == "local-discriminator" || name == "node-id" || name == "remote-discriminator" || name == "remote-negotiated-interval" || name == "session-subtype" || name == "sessiontype" || name == "state" || name == "to-up-state-count")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress::SourceAddress()
@@ -15845,11 +20749,11 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress::has_d
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress::get_segment_path() const
@@ -15875,10 +20779,10 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15897,24 +20801,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange::LastStateChange()
@@ -15941,11 +20880,11 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange::has
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(days.operation)
-	|| is_set(hours.operation)
-	|| is_set(minutes.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(days.yfilter)
+	|| ydk::is_set(hours.yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange::get_segment_path() const
@@ -15971,10 +20910,10 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::LastStat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (days.is_set || is_set(days.operation)) leaf_name_data.push_back(days.get_name_leafdata());
-    if (hours.is_set || is_set(hours.operation)) leaf_name_data.push_back(hours.get_name_leafdata());
-    if (minutes.is_set || is_set(minutes.operation)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (days.is_set || is_set(days.yfilter)) leaf_name_data.push_back(days.get_name_leafdata());
+    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15993,24 +20932,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "days")
     {
         days = value;
+        days.value_namespace = name_space;
+        days.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hours")
     {
         hours = value;
+        hours.value_namespace = name_space;
+        hours.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minutes")
     {
         minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "days")
+    {
+        days.yfilter = yfilter;
+    }
+    if(value_path == "hours")
+    {
+        hours.yfilter = yfilter;
+    }
+    if(value_path == "minutes")
+    {
+        minutes.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "days" || name == "hours" || name == "minutes" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::TransmitPacket()
@@ -16021,7 +20995,7 @@ Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::TransmitP
     desired_minimum_transmit_interval{YType::uint32, "desired-minimum-transmit-interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
     diagnostic{YType::enumeration, "diagnostic"},
-    final_{YType::int32, "final"},
+    final{YType::int32, "final"},
     ihear_you{YType::int32, "ihear-you"},
     length{YType::uint32, "length"},
     my_discriminator{YType::uint32, "my-discriminator"},
@@ -16047,7 +21021,7 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::has_
 	|| desired_minimum_transmit_interval.is_set
 	|| detection_multiplier.is_set
 	|| diagnostic.is_set
-	|| final_.is_set
+	|| final.is_set
 	|| ihear_you.is_set
 	|| length.is_set
 	|| my_discriminator.is_set
@@ -16061,23 +21035,23 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::has_
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_present.operation)
-	|| is_set(control_plane_independent.operation)
-	|| is_set(demand.operation)
-	|| is_set(desired_minimum_transmit_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(diagnostic.operation)
-	|| is_set(final_.operation)
-	|| is_set(ihear_you.operation)
-	|| is_set(length.operation)
-	|| is_set(my_discriminator.operation)
-	|| is_set(poll.operation)
-	|| is_set(required_minimum_echo_receive_interval.operation)
-	|| is_set(required_minimum_receive_interval.operation)
-	|| is_set(state.operation)
-	|| is_set(version.operation)
-	|| is_set(your_discriminator.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_present.yfilter)
+	|| ydk::is_set(control_plane_independent.yfilter)
+	|| ydk::is_set(demand.yfilter)
+	|| ydk::is_set(desired_minimum_transmit_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(diagnostic.yfilter)
+	|| ydk::is_set(final.yfilter)
+	|| ydk::is_set(ihear_you.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(my_discriminator.yfilter)
+	|| ydk::is_set(poll.yfilter)
+	|| ydk::is_set(required_minimum_echo_receive_interval.yfilter)
+	|| ydk::is_set(required_minimum_receive_interval.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(your_discriminator.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::get_segment_path() const
@@ -16103,22 +21077,22 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::Transmit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_present.is_set || is_set(authentication_present.operation)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
-    if (control_plane_independent.is_set || is_set(control_plane_independent.operation)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
-    if (demand.is_set || is_set(demand.operation)) leaf_name_data.push_back(demand.get_name_leafdata());
-    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (diagnostic.is_set || is_set(diagnostic.operation)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
-    if (final_.is_set || is_set(final_.operation)) leaf_name_data.push_back(final_.get_name_leafdata());
-    if (ihear_you.is_set || is_set(ihear_you.operation)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (my_discriminator.is_set || is_set(my_discriminator.operation)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
-    if (poll.is_set || is_set(poll.operation)) leaf_name_data.push_back(poll.get_name_leafdata());
-    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.operation)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
-    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.operation)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (your_discriminator.is_set || is_set(your_discriminator.operation)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
+    if (authentication_present.is_set || is_set(authentication_present.yfilter)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
+    if (control_plane_independent.is_set || is_set(control_plane_independent.yfilter)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
+    if (demand.is_set || is_set(demand.yfilter)) leaf_name_data.push_back(demand.get_name_leafdata());
+    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (diagnostic.is_set || is_set(diagnostic.yfilter)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
+    if (final.is_set || is_set(final.yfilter)) leaf_name_data.push_back(final.get_name_leafdata());
+    if (ihear_you.is_set || is_set(ihear_you.yfilter)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (my_discriminator.is_set || is_set(my_discriminator.yfilter)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
+    if (poll.is_set || is_set(poll.yfilter)) leaf_name_data.push_back(poll.get_name_leafdata());
+    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
+    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (your_discriminator.is_set || is_set(your_discriminator.yfilter)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16137,72 +21111,179 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-present")
     {
         authentication_present = value;
+        authentication_present.value_namespace = name_space;
+        authentication_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-plane-independent")
     {
         control_plane_independent = value;
+        control_plane_independent.value_namespace = name_space;
+        control_plane_independent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "demand")
     {
         demand = value;
+        demand.value_namespace = name_space;
+        demand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-minimum-transmit-interval")
     {
         desired_minimum_transmit_interval = value;
+        desired_minimum_transmit_interval.value_namespace = name_space;
+        desired_minimum_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diagnostic")
     {
         diagnostic = value;
+        diagnostic.value_namespace = name_space;
+        diagnostic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "final")
     {
-        final_ = value;
+        final = value;
+        final.value_namespace = name_space;
+        final.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ihear-you")
     {
         ihear_you = value;
+        ihear_you.value_namespace = name_space;
+        ihear_you.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "my-discriminator")
     {
         my_discriminator = value;
+        my_discriminator.value_namespace = name_space;
+        my_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll")
     {
         poll = value;
+        poll.value_namespace = name_space;
+        poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-echo-receive-interval")
     {
         required_minimum_echo_receive_interval = value;
+        required_minimum_echo_receive_interval.value_namespace = name_space;
+        required_minimum_echo_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-receive-interval")
     {
         required_minimum_receive_interval = value;
+        required_minimum_receive_interval.value_namespace = name_space;
+        required_minimum_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "your-discriminator")
     {
         your_discriminator = value;
+        your_discriminator.value_namespace = name_space;
+        your_discriminator.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-present")
+    {
+        authentication_present.yfilter = yfilter;
+    }
+    if(value_path == "control-plane-independent")
+    {
+        control_plane_independent.yfilter = yfilter;
+    }
+    if(value_path == "demand")
+    {
+        demand.yfilter = yfilter;
+    }
+    if(value_path == "desired-minimum-transmit-interval")
+    {
+        desired_minimum_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "diagnostic")
+    {
+        diagnostic.yfilter = yfilter;
+    }
+    if(value_path == "final")
+    {
+        final.yfilter = yfilter;
+    }
+    if(value_path == "ihear-you")
+    {
+        ihear_you.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "my-discriminator")
+    {
+        my_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "poll")
+    {
+        poll.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-echo-receive-interval")
+    {
+        required_minimum_echo_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-receive-interval")
+    {
+        required_minimum_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "your-discriminator")
+    {
+        your_discriminator.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-present" || name == "control-plane-independent" || name == "demand" || name == "desired-minimum-transmit-interval" || name == "detection-multiplier" || name == "diagnostic" || name == "final" || name == "ihear-you" || name == "length" || name == "my-discriminator" || name == "poll" || name == "required-minimum-echo-receive-interval" || name == "required-minimum-receive-interval" || name == "state" || name == "version" || name == "your-discriminator")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::ReceivePacket()
@@ -16213,7 +21294,7 @@ Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::ReceivePac
     desired_minimum_transmit_interval{YType::uint32, "desired-minimum-transmit-interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
     diagnostic{YType::enumeration, "diagnostic"},
-    final_{YType::int32, "final"},
+    final{YType::int32, "final"},
     ihear_you{YType::int32, "ihear-you"},
     length{YType::uint32, "length"},
     my_discriminator{YType::uint32, "my-discriminator"},
@@ -16239,7 +21320,7 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::has_d
 	|| desired_minimum_transmit_interval.is_set
 	|| detection_multiplier.is_set
 	|| diagnostic.is_set
-	|| final_.is_set
+	|| final.is_set
 	|| ihear_you.is_set
 	|| length.is_set
 	|| my_discriminator.is_set
@@ -16253,23 +21334,23 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::has_d
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_present.operation)
-	|| is_set(control_plane_independent.operation)
-	|| is_set(demand.operation)
-	|| is_set(desired_minimum_transmit_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(diagnostic.operation)
-	|| is_set(final_.operation)
-	|| is_set(ihear_you.operation)
-	|| is_set(length.operation)
-	|| is_set(my_discriminator.operation)
-	|| is_set(poll.operation)
-	|| is_set(required_minimum_echo_receive_interval.operation)
-	|| is_set(required_minimum_receive_interval.operation)
-	|| is_set(state.operation)
-	|| is_set(version.operation)
-	|| is_set(your_discriminator.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_present.yfilter)
+	|| ydk::is_set(control_plane_independent.yfilter)
+	|| ydk::is_set(demand.yfilter)
+	|| ydk::is_set(desired_minimum_transmit_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(diagnostic.yfilter)
+	|| ydk::is_set(final.yfilter)
+	|| ydk::is_set(ihear_you.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(my_discriminator.yfilter)
+	|| ydk::is_set(poll.yfilter)
+	|| ydk::is_set(required_minimum_echo_receive_interval.yfilter)
+	|| ydk::is_set(required_minimum_receive_interval.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(your_discriminator.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::get_segment_path() const
@@ -16295,22 +21376,22 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::ReceiveP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_present.is_set || is_set(authentication_present.operation)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
-    if (control_plane_independent.is_set || is_set(control_plane_independent.operation)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
-    if (demand.is_set || is_set(demand.operation)) leaf_name_data.push_back(demand.get_name_leafdata());
-    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.operation)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (diagnostic.is_set || is_set(diagnostic.operation)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
-    if (final_.is_set || is_set(final_.operation)) leaf_name_data.push_back(final_.get_name_leafdata());
-    if (ihear_you.is_set || is_set(ihear_you.operation)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (my_discriminator.is_set || is_set(my_discriminator.operation)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
-    if (poll.is_set || is_set(poll.operation)) leaf_name_data.push_back(poll.get_name_leafdata());
-    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.operation)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
-    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.operation)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (your_discriminator.is_set || is_set(your_discriminator.operation)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
+    if (authentication_present.is_set || is_set(authentication_present.yfilter)) leaf_name_data.push_back(authentication_present.get_name_leafdata());
+    if (control_plane_independent.is_set || is_set(control_plane_independent.yfilter)) leaf_name_data.push_back(control_plane_independent.get_name_leafdata());
+    if (demand.is_set || is_set(demand.yfilter)) leaf_name_data.push_back(demand.get_name_leafdata());
+    if (desired_minimum_transmit_interval.is_set || is_set(desired_minimum_transmit_interval.yfilter)) leaf_name_data.push_back(desired_minimum_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (diagnostic.is_set || is_set(diagnostic.yfilter)) leaf_name_data.push_back(diagnostic.get_name_leafdata());
+    if (final.is_set || is_set(final.yfilter)) leaf_name_data.push_back(final.get_name_leafdata());
+    if (ihear_you.is_set || is_set(ihear_you.yfilter)) leaf_name_data.push_back(ihear_you.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (my_discriminator.is_set || is_set(my_discriminator.yfilter)) leaf_name_data.push_back(my_discriminator.get_name_leafdata());
+    if (poll.is_set || is_set(poll.yfilter)) leaf_name_data.push_back(poll.get_name_leafdata());
+    if (required_minimum_echo_receive_interval.is_set || is_set(required_minimum_echo_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_echo_receive_interval.get_name_leafdata());
+    if (required_minimum_receive_interval.is_set || is_set(required_minimum_receive_interval.yfilter)) leaf_name_data.push_back(required_minimum_receive_interval.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (your_discriminator.is_set || is_set(your_discriminator.yfilter)) leaf_name_data.push_back(your_discriminator.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16329,72 +21410,179 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-present")
     {
         authentication_present = value;
+        authentication_present.value_namespace = name_space;
+        authentication_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-plane-independent")
     {
         control_plane_independent = value;
+        control_plane_independent.value_namespace = name_space;
+        control_plane_independent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "demand")
     {
         demand = value;
+        demand.value_namespace = name_space;
+        demand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "desired-minimum-transmit-interval")
     {
         desired_minimum_transmit_interval = value;
+        desired_minimum_transmit_interval.value_namespace = name_space;
+        desired_minimum_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diagnostic")
     {
         diagnostic = value;
+        diagnostic.value_namespace = name_space;
+        diagnostic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "final")
     {
-        final_ = value;
+        final = value;
+        final.value_namespace = name_space;
+        final.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ihear-you")
     {
         ihear_you = value;
+        ihear_you.value_namespace = name_space;
+        ihear_you.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "my-discriminator")
     {
         my_discriminator = value;
+        my_discriminator.value_namespace = name_space;
+        my_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll")
     {
         poll = value;
+        poll.value_namespace = name_space;
+        poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-echo-receive-interval")
     {
         required_minimum_echo_receive_interval = value;
+        required_minimum_echo_receive_interval.value_namespace = name_space;
+        required_minimum_echo_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-minimum-receive-interval")
     {
         required_minimum_receive_interval = value;
+        required_minimum_receive_interval.value_namespace = name_space;
+        required_minimum_receive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "your-discriminator")
     {
         your_discriminator = value;
+        your_discriminator.value_namespace = name_space;
+        your_discriminator.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-present")
+    {
+        authentication_present.yfilter = yfilter;
+    }
+    if(value_path == "control-plane-independent")
+    {
+        control_plane_independent.yfilter = yfilter;
+    }
+    if(value_path == "demand")
+    {
+        demand.yfilter = yfilter;
+    }
+    if(value_path == "desired-minimum-transmit-interval")
+    {
+        desired_minimum_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "diagnostic")
+    {
+        diagnostic.yfilter = yfilter;
+    }
+    if(value_path == "final")
+    {
+        final.yfilter = yfilter;
+    }
+    if(value_path == "ihear-you")
+    {
+        ihear_you.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "my-discriminator")
+    {
+        my_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "poll")
+    {
+        poll.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-echo-receive-interval")
+    {
+        required_minimum_echo_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "required-minimum-receive-interval")
+    {
+        required_minimum_receive_interval.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "your-discriminator")
+    {
+        your_discriminator.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-present" || name == "control-plane-independent" || name == "demand" || name == "desired-minimum-transmit-interval" || name == "detection-multiplier" || name == "diagnostic" || name == "final" || name == "ihear-you" || name == "length" || name == "my-discriminator" || name == "poll" || name == "required-minimum-echo-receive-interval" || name == "required-minimum-receive-interval" || name == "state" || name == "version" || name == "your-discriminator")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::StatusBriefInformation()
@@ -16421,7 +21609,7 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformati
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_operation())
 	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_operation());
 }
@@ -16495,8 +21683,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "async-interval-multiplier" || name == "echo-interval-multiplier")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::AsyncIntervalMultiplier()
@@ -16523,11 +21722,11 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformati
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_local_transmit_interval.operation)
-	|| is_set(negotiated_remote_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_local_transmit_interval.yfilter)
+	|| ydk::is_set(negotiated_remote_transmit_interval.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::get_segment_path() const
@@ -16553,10 +21752,10 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.operation)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
-    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.operation)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_local_transmit_interval.is_set || is_set(negotiated_local_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_local_transmit_interval.get_name_leafdata());
+    if (negotiated_remote_transmit_interval.is_set || is_set(negotiated_remote_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_remote_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16575,24 +21774,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-local-transmit-interval")
     {
         negotiated_local_transmit_interval = value;
+        negotiated_local_transmit_interval.value_namespace = name_space;
+        negotiated_local_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-remote-transmit-interval")
     {
         negotiated_remote_transmit_interval = value;
+        negotiated_remote_transmit_interval.value_namespace = name_space;
+        negotiated_remote_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-local-transmit-interval")
+    {
+        negotiated_local_transmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-remote-transmit-interval")
+    {
+        negotiated_remote_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-local-transmit-interval" || name == "negotiated-remote-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::EchoIntervalMultiplier()
@@ -16617,10 +21851,10 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformati
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(detection_time.operation)
-	|| is_set(negotiated_transmit_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(detection_time.yfilter)
+	|| ydk::is_set(negotiated_transmit_interval.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::get_segment_path() const
@@ -16646,9 +21880,9 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (detection_time.is_set || is_set(detection_time.operation)) leaf_name_data.push_back(detection_time.get_name_leafdata());
-    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.operation)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (detection_time.is_set || is_set(detection_time.yfilter)) leaf_name_data.push_back(detection_time.get_name_leafdata());
+    if (negotiated_transmit_interval.is_set || is_set(negotiated_transmit_interval.yfilter)) leaf_name_data.push_back(negotiated_transmit_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16667,20 +21901,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-time")
     {
         detection_time = value;
+        detection_time.value_namespace = name_space;
+        detection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-transmit-interval")
     {
         negotiated_transmit_interval = value;
+        negotiated_transmit_interval.value_namespace = name_space;
+        negotiated_transmit_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "detection-time")
+    {
+        detection_time.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-transmit-interval")
+    {
+        negotiated_transmit_interval.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "detection-time" || name == "negotiated-transmit-interval")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics::AsyncTransmitStatistics()
@@ -16709,12 +21972,12 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatist
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics::get_segment_path() const
@@ -16740,11 +22003,11 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTra
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16763,28 +22026,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics::AsyncReceiveStatistics()
@@ -16813,12 +22117,12 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatisti
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics::get_segment_path() const
@@ -16844,11 +22148,11 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncRec
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16867,28 +22171,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics::EchoTransmitStatistics()
@@ -16917,12 +22262,12 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatisti
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics::get_segment_path() const
@@ -16948,11 +22293,11 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTran
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16971,28 +22316,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics::EchoReceivedStatistics()
@@ -17021,12 +22407,12 @@ bool Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatisti
 
 bool Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(last.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(last.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(number.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics::get_segment_path() const
@@ -17052,11 +22438,11 @@ const EntityPath Bfd::SessionDetails::SessionDetail::StatusInformation::EchoRece
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (last.is_set || is_set(last.operation)) leaf_name_data.push_back(last.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (last.is_set || is_set(last.yfilter)) leaf_name_data.push_back(last.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17075,28 +22461,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last")
     {
         last = value;
+        last.value_namespace = name_space;
+        last.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "last")
+    {
+        last.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "last" || name == "maximum" || name == "minimum" || name == "number")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::MpDownloadState::MpDownloadState()
@@ -17122,8 +22549,8 @@ bool Bfd::SessionDetails::SessionDetail::MpDownloadState::has_data() const
 
 bool Bfd::SessionDetails::SessionDetail::MpDownloadState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mp_download_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mp_download_state.yfilter)
 	|| (change_time !=  nullptr && change_time->has_operation());
 }
 
@@ -17150,7 +22577,7 @@ const EntityPath Bfd::SessionDetails::SessionDetail::MpDownloadState::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mp_download_state.is_set || is_set(mp_download_state.operation)) leaf_name_data.push_back(mp_download_state.get_name_leafdata());
+    if (mp_download_state.is_set || is_set(mp_download_state.yfilter)) leaf_name_data.push_back(mp_download_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17183,12 +22610,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::MpDownloadState::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::MpDownloadState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mp-download-state")
     {
         mp_download_state = value;
+        mp_download_state.value_namespace = name_space;
+        mp_download_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::MpDownloadState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mp-download-state")
+    {
+        mp_download_state.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::MpDownloadState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "change-time" || name == "mp-download-state")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime::ChangeTime()
@@ -17211,9 +22655,9 @@ bool Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime::has_data()
 
 bool Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime::get_segment_path() const
@@ -17239,8 +22683,8 @@ const EntityPath Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17259,16 +22703,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingInfo()
@@ -17318,16 +22785,16 @@ bool Bfd::SessionDetails::SessionDetail::LspPingInfo::has_data() const
 
 bool Bfd::SessionDetails::SessionDetail::LspPingInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsp_ping_rx_count.operation)
-	|| is_set(lsp_ping_rx_last_code.operation)
-	|| is_set(lsp_ping_rx_last_discr.operation)
-	|| is_set(lsp_ping_rx_last_output.operation)
-	|| is_set(lsp_ping_rx_last_subcode.operation)
-	|| is_set(lsp_ping_tx_count.operation)
-	|| is_set(lsp_ping_tx_error_count.operation)
-	|| is_set(lsp_ping_tx_last_error_rc.operation)
-	|| is_set(lsp_ping_tx_last_rc.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsp_ping_rx_count.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_code.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_discr.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_output.yfilter)
+	|| ydk::is_set(lsp_ping_rx_last_subcode.yfilter)
+	|| ydk::is_set(lsp_ping_tx_count.yfilter)
+	|| ydk::is_set(lsp_ping_tx_error_count.yfilter)
+	|| ydk::is_set(lsp_ping_tx_last_error_rc.yfilter)
+	|| ydk::is_set(lsp_ping_tx_last_rc.yfilter)
 	|| (lsp_ping_rx_last_time !=  nullptr && lsp_ping_rx_last_time->has_operation())
 	|| (lsp_ping_tx_last_error_time !=  nullptr && lsp_ping_tx_last_error_time->has_operation())
 	|| (lsp_ping_tx_last_time !=  nullptr && lsp_ping_tx_last_time->has_operation());
@@ -17356,15 +22823,15 @@ const EntityPath Bfd::SessionDetails::SessionDetail::LspPingInfo::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsp_ping_rx_count.is_set || is_set(lsp_ping_rx_count.operation)) leaf_name_data.push_back(lsp_ping_rx_count.get_name_leafdata());
-    if (lsp_ping_rx_last_code.is_set || is_set(lsp_ping_rx_last_code.operation)) leaf_name_data.push_back(lsp_ping_rx_last_code.get_name_leafdata());
-    if (lsp_ping_rx_last_discr.is_set || is_set(lsp_ping_rx_last_discr.operation)) leaf_name_data.push_back(lsp_ping_rx_last_discr.get_name_leafdata());
-    if (lsp_ping_rx_last_output.is_set || is_set(lsp_ping_rx_last_output.operation)) leaf_name_data.push_back(lsp_ping_rx_last_output.get_name_leafdata());
-    if (lsp_ping_rx_last_subcode.is_set || is_set(lsp_ping_rx_last_subcode.operation)) leaf_name_data.push_back(lsp_ping_rx_last_subcode.get_name_leafdata());
-    if (lsp_ping_tx_count.is_set || is_set(lsp_ping_tx_count.operation)) leaf_name_data.push_back(lsp_ping_tx_count.get_name_leafdata());
-    if (lsp_ping_tx_error_count.is_set || is_set(lsp_ping_tx_error_count.operation)) leaf_name_data.push_back(lsp_ping_tx_error_count.get_name_leafdata());
-    if (lsp_ping_tx_last_error_rc.is_set || is_set(lsp_ping_tx_last_error_rc.operation)) leaf_name_data.push_back(lsp_ping_tx_last_error_rc.get_name_leafdata());
-    if (lsp_ping_tx_last_rc.is_set || is_set(lsp_ping_tx_last_rc.operation)) leaf_name_data.push_back(lsp_ping_tx_last_rc.get_name_leafdata());
+    if (lsp_ping_rx_count.is_set || is_set(lsp_ping_rx_count.yfilter)) leaf_name_data.push_back(lsp_ping_rx_count.get_name_leafdata());
+    if (lsp_ping_rx_last_code.is_set || is_set(lsp_ping_rx_last_code.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_code.get_name_leafdata());
+    if (lsp_ping_rx_last_discr.is_set || is_set(lsp_ping_rx_last_discr.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_discr.get_name_leafdata());
+    if (lsp_ping_rx_last_output.is_set || is_set(lsp_ping_rx_last_output.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_output.get_name_leafdata());
+    if (lsp_ping_rx_last_subcode.is_set || is_set(lsp_ping_rx_last_subcode.yfilter)) leaf_name_data.push_back(lsp_ping_rx_last_subcode.get_name_leafdata());
+    if (lsp_ping_tx_count.is_set || is_set(lsp_ping_tx_count.yfilter)) leaf_name_data.push_back(lsp_ping_tx_count.get_name_leafdata());
+    if (lsp_ping_tx_error_count.is_set || is_set(lsp_ping_tx_error_count.yfilter)) leaf_name_data.push_back(lsp_ping_tx_error_count.get_name_leafdata());
+    if (lsp_ping_tx_last_error_rc.is_set || is_set(lsp_ping_tx_last_error_rc.yfilter)) leaf_name_data.push_back(lsp_ping_tx_last_error_rc.get_name_leafdata());
+    if (lsp_ping_tx_last_rc.is_set || is_set(lsp_ping_tx_last_rc.yfilter)) leaf_name_data.push_back(lsp_ping_tx_last_rc.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17425,44 +22892,109 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::LspPingInfo::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::LspPingInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsp-ping-rx-count")
     {
         lsp_ping_rx_count = value;
+        lsp_ping_rx_count.value_namespace = name_space;
+        lsp_ping_rx_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-code")
     {
         lsp_ping_rx_last_code = value;
+        lsp_ping_rx_last_code.value_namespace = name_space;
+        lsp_ping_rx_last_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-discr")
     {
         lsp_ping_rx_last_discr = value;
+        lsp_ping_rx_last_discr.value_namespace = name_space;
+        lsp_ping_rx_last_discr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-output")
     {
         lsp_ping_rx_last_output = value;
+        lsp_ping_rx_last_output.value_namespace = name_space;
+        lsp_ping_rx_last_output.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-rx-last-subcode")
     {
         lsp_ping_rx_last_subcode = value;
+        lsp_ping_rx_last_subcode.value_namespace = name_space;
+        lsp_ping_rx_last_subcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-count")
     {
         lsp_ping_tx_count = value;
+        lsp_ping_tx_count.value_namespace = name_space;
+        lsp_ping_tx_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-error-count")
     {
         lsp_ping_tx_error_count = value;
+        lsp_ping_tx_error_count.value_namespace = name_space;
+        lsp_ping_tx_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-last-error-rc")
     {
         lsp_ping_tx_last_error_rc = value;
+        lsp_ping_tx_last_error_rc.value_namespace = name_space;
+        lsp_ping_tx_last_error_rc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-ping-tx-last-rc")
     {
         lsp_ping_tx_last_rc = value;
+        lsp_ping_tx_last_rc.value_namespace = name_space;
+        lsp_ping_tx_last_rc.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::LspPingInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsp-ping-rx-count")
+    {
+        lsp_ping_rx_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-code")
+    {
+        lsp_ping_rx_last_code.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-discr")
+    {
+        lsp_ping_rx_last_discr.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-output")
+    {
+        lsp_ping_rx_last_output.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-rx-last-subcode")
+    {
+        lsp_ping_rx_last_subcode.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-count")
+    {
+        lsp_ping_tx_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-error-count")
+    {
+        lsp_ping_tx_error_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-last-error-rc")
+    {
+        lsp_ping_tx_last_error_rc.yfilter = yfilter;
+    }
+    if(value_path == "lsp-ping-tx-last-rc")
+    {
+        lsp_ping_tx_last_rc.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::LspPingInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-ping-rx-last-time" || name == "lsp-ping-tx-last-error-time" || name == "lsp-ping-tx-last-time" || name == "lsp-ping-rx-count" || name == "lsp-ping-rx-last-code" || name == "lsp-ping-rx-last-discr" || name == "lsp-ping-rx-last-output" || name == "lsp-ping-rx-last-subcode" || name == "lsp-ping-tx-count" || name == "lsp-ping-tx-error-count" || name == "lsp-ping-tx-last-error-rc" || name == "lsp-ping-tx-last-rc")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime::LspPingTxLastTime()
@@ -17485,9 +23017,9 @@ bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime::has_dat
 
 bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime::get_segment_path() const
@@ -17513,8 +23045,8 @@ const EntityPath Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastT
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17533,16 +23065,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime::LspPingTxLastErrorTime()
@@ -17565,9 +23120,9 @@ bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime::ha
 
 bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_segment_path() const
@@ -17593,8 +23148,8 @@ const EntityPath Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastE
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17613,16 +23168,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime::LspPingRxLastTime()
@@ -17645,9 +23223,9 @@ bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime::has_dat
 
 bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime::get_segment_path() const
@@ -17673,8 +23251,8 @@ const EntityPath Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastT
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17693,16 +23271,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Bfd::SessionDetails::SessionDetail::OwnerInformation::OwnerInformation()
@@ -17731,12 +23332,12 @@ bool Bfd::SessionDetails::SessionDetail::OwnerInformation::has_data() const
 
 bool Bfd::SessionDetails::SessionDetail::OwnerInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjusted_detection_multiplier.operation)
-	|| is_set(adjusted_interval.operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(interval.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjusted_detection_multiplier.yfilter)
+	|| ydk::is_set(adjusted_interval.yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Bfd::SessionDetails::SessionDetail::OwnerInformation::get_segment_path() const
@@ -17762,11 +23363,11 @@ const EntityPath Bfd::SessionDetails::SessionDetail::OwnerInformation::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.operation)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
-    if (adjusted_interval.is_set || is_set(adjusted_interval.operation)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adjusted_detection_multiplier.is_set || is_set(adjusted_detection_multiplier.yfilter)) leaf_name_data.push_back(adjusted_detection_multiplier.get_name_leafdata());
+    if (adjusted_interval.is_set || is_set(adjusted_interval.yfilter)) leaf_name_data.push_back(adjusted_interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17785,28 +23386,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::SessionDetails::SessionDetai
     return children;
 }
 
-void Bfd::SessionDetails::SessionDetail::OwnerInformation::set_value(const std::string & value_path, std::string value)
+void Bfd::SessionDetails::SessionDetail::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjusted-detection-multiplier")
     {
         adjusted_detection_multiplier = value;
+        adjusted_detection_multiplier.value_namespace = name_space;
+        adjusted_detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjusted-interval")
     {
         adjusted_interval = value;
+        adjusted_interval.value_namespace = name_space;
+        adjusted_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::SessionDetails::SessionDetail::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjusted-detection-multiplier")
+    {
+        adjusted_detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "adjusted-interval")
+    {
+        adjusted_interval.yfilter = yfilter;
+    }
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Bfd::SessionDetails::SessionDetail::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjusted-detection-multiplier" || name == "adjusted-interval" || name == "detection-multiplier" || name == "interval" || name == "name")
+        return true;
+    return false;
 }
 
 

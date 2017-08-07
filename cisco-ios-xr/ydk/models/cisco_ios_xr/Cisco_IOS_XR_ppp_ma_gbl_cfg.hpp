@@ -7,15 +7,15 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ppp_ma_gbl_cfg {
 
-class PppAuthenticationMethodGblEnum : public Enum
+class PppAuthenticationMethodGbl : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf pap;
-        static const Enum::YLeaf chap;
-        static const Enum::YLeaf ms_chap;
+        static const ydk::Enum::YLeaf pap;
+        static const ydk::Enum::YLeaf chap;
+        static const ydk::Enum::YLeaf ms_chap;
 
 };
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_asr9k_fsi_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_fsi_oper {
 
 FabricStats::FabricStats()
@@ -29,7 +31,7 @@ bool FabricStats::has_data() const
 
 bool FabricStats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::get_children() const
     return children;
 }
 
-void FabricStats::set_value(const std::string & value_path, std::string value)
+void FabricStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void FabricStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string FabricStats::get_bundle_name() const
 augment_capabilities_function FabricStats::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> FabricStats::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool FabricStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 FabricStats::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool FabricStats::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string FabricStats::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::get_children(
     return children;
 }
 
-void FabricStats::Nodes::set_value(const std::string & value_path, std::string value)
+void FabricStats::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void FabricStats::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool FabricStats::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 FabricStats::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool FabricStats::Nodes::Node::has_data() const
 
 bool FabricStats::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (statses !=  nullptr && statses->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath FabricStats::Nodes::Node::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::get_chi
     return children;
 }
 
-void FabricStats::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void FabricStats::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FabricStats::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool FabricStats::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statses" || name == "node-name")
+        return true;
+    return false;
 }
 
 FabricStats::Nodes::Node::Statses::Statses()
@@ -322,7 +368,7 @@ bool FabricStats::Nodes::Node::Statses::has_operation() const
         if(stats[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string FabricStats::Nodes::Node::Statses::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses
     return children;
 }
 
-void FabricStats::Nodes::Node::Statses::set_value(const std::string & value_path, std::string value)
+void FabricStats::Nodes::Node::Statses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void FabricStats::Nodes::Node::Statses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool FabricStats::Nodes::Node::Statses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "stats")
+        return true;
+    return false;
 }
 
 FabricStats::Nodes::Node::Statses::Stats::Stats()
@@ -421,9 +478,9 @@ bool FabricStats::Nodes::Node::Statses::Stats::has_operation() const
         if(stats_table[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(type.operation)
-	|| is_set(stat_table_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(stat_table_name.yfilter);
 }
 
 std::string FabricStats::Nodes::Node::Statses::Stats::get_segment_path() const
@@ -449,8 +506,8 @@ const EntityPath FabricStats::Nodes::Node::Statses::Stats::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (stat_table_name.is_set || is_set(stat_table_name.operation)) leaf_name_data.push_back(stat_table_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (stat_table_name.is_set || is_set(stat_table_name.yfilter)) leaf_name_data.push_back(stat_table_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -490,16 +547,39 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses
     return children;
 }
 
-void FabricStats::Nodes::Node::Statses::Stats::set_value(const std::string & value_path, std::string value)
+void FabricStats::Nodes::Node::Statses::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stat-table-name")
     {
         stat_table_name = value;
+        stat_table_name.value_namespace = name_space;
+        stat_table_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FabricStats::Nodes::Node::Statses::Stats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "stat-table-name")
+    {
+        stat_table_name.yfilter = yfilter;
+    }
+}
+
+bool FabricStats::Nodes::Node::Statses::Stats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "stats-table" || name == "type" || name == "stat-table-name")
+        return true;
+    return false;
 }
 
 FabricStats::Nodes::Node::Statses::Stats::StatsTable::StatsTable()
@@ -528,7 +608,7 @@ bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::has_operation() const
         if(fsi_stat[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string FabricStats::Nodes::Node::Statses::Stats::StatsTable::get_segment_path() const
@@ -593,8 +673,19 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses
     return children;
 }
 
-void FabricStats::Nodes::Node::Statses::Stats::StatsTable::set_value(const std::string & value_path, std::string value)
+void FabricStats::Nodes::Node::Statses::Stats::StatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void FabricStats::Nodes::Node::Statses::Stats::StatsTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsi-stat")
+        return true;
+    return false;
 }
 
 FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::FsiStat()
@@ -617,9 +708,9 @@ bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::has_data() c
 
 bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(counter_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(counter_name.yfilter);
 }
 
 std::string FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::get_segment_path() const
@@ -645,8 +736,8 @@ const EntityPath FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (counter_name.is_set || is_set(counter_name.operation)) leaf_name_data.push_back(counter_name.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (counter_name.is_set || is_set(counter_name.yfilter)) leaf_name_data.push_back(counter_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -665,16 +756,39 @@ std::map<std::string, std::shared_ptr<Entity>> FabricStats::Nodes::Node::Statses
     return children;
 }
 
-void FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::set_value(const std::string & value_path, std::string value)
+void FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "counter-name")
     {
         counter_name = value;
+        counter_name.value_namespace = name_space;
+        counter_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "counter-name")
+    {
+        counter_name.yfilter = yfilter;
+    }
+}
+
+bool FabricStats::Nodes::Node::Statses::Stats::StatsTable::FsiStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "counter-name")
+        return true;
+    return false;
 }
 
 

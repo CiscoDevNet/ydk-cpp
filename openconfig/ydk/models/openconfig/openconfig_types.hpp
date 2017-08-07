@@ -7,35 +7,35 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_types {
 
-class Address_FamilyIdentity : public virtual Identity
+class Address_Family : public virtual ydk::Identity
 {
     public:
-        Address_FamilyIdentity();
-        ~Address_FamilyIdentity();
+        Address_Family();
+        ~Address_Family();
 
 
-}; // Address_FamilyIdentity
+}; // Address_Family
 
-class Ipv6Identity : public openconfig_types::Address_FamilyIdentity, virtual Identity
+class Ipv4 : public openconfig_types::Address_Family, virtual ydk::Identity
 {
     public:
-        Ipv6Identity();
-        ~Ipv6Identity();
+        Ipv4();
+        ~Ipv4();
 
 
-}; // Ipv6Identity
+}; // Ipv4
 
-class Ipv4Identity : public openconfig_types::Address_FamilyIdentity, virtual Identity
+class Ipv6 : public openconfig_types::Address_Family, virtual ydk::Identity
 {
     public:
-        Ipv4Identity();
-        ~Ipv4Identity();
+        Ipv6();
+        ~Ipv6();
 
 
-}; // Ipv4Identity
+}; // Ipv6
 
 
 }

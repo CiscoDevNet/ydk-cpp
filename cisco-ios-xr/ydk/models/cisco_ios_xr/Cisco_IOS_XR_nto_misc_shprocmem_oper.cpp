@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_nto_misc_shprocmem_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_nto_misc_shprocmem_oper {
 
 ProcessesMemory::ProcessesMemory()
@@ -29,7 +31,7 @@ bool ProcessesMemory::has_data() const
 
 bool ProcessesMemory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::get_children() c
     return children;
 }
 
-void ProcessesMemory::set_value(const std::string & value_path, std::string value)
+void ProcessesMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ProcessesMemory::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string ProcessesMemory::get_bundle_name() const
 augment_capabilities_function ProcessesMemory::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ProcessesMemory::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ProcessesMemory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 ProcessesMemory::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool ProcessesMemory::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ProcessesMemory::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::get_child
     return children;
 }
 
-void ProcessesMemory::Nodes::set_value(const std::string & value_path, std::string value)
+void ProcessesMemory::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ProcessesMemory::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ProcessesMemory::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 ProcessesMemory::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool ProcessesMemory::Nodes::Node::has_data() const
 
 bool ProcessesMemory::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (job_ids !=  nullptr && job_ids->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath ProcessesMemory::Nodes::Node::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::get
     return children;
 }
 
-void ProcessesMemory::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void ProcessesMemory::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ProcessesMemory::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool ProcessesMemory::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "job-ids" || name == "node-name")
+        return true;
+    return false;
 }
 
 ProcessesMemory::Nodes::Node::JobIds::JobIds()
@@ -322,7 +368,7 @@ bool ProcessesMemory::Nodes::Node::JobIds::has_operation() const
         if(job_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ProcessesMemory::Nodes::Node::JobIds::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::Job
     return children;
 }
 
-void ProcessesMemory::Nodes::Node::JobIds::set_value(const std::string & value_path, std::string value)
+void ProcessesMemory::Nodes::Node::JobIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ProcessesMemory::Nodes::Node::JobIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ProcessesMemory::Nodes::Node::JobIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "job-id")
+        return true;
+    return false;
 }
 
 ProcessesMemory::Nodes::Node::JobIds::JobId::JobId()
@@ -421,14 +478,14 @@ bool ProcessesMemory::Nodes::Node::JobIds::JobId::has_data() const
 
 bool ProcessesMemory::Nodes::Node::JobIds::JobId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(job_id.operation)
-	|| is_set(data_seg_size.operation)
-	|| is_set(jid.operation)
-	|| is_set(malloc_size.operation)
-	|| is_set(name.operation)
-	|| is_set(stack_seg_size.operation)
-	|| is_set(text_seg_size.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(job_id.yfilter)
+	|| ydk::is_set(data_seg_size.yfilter)
+	|| ydk::is_set(jid.yfilter)
+	|| ydk::is_set(malloc_size.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(stack_seg_size.yfilter)
+	|| ydk::is_set(text_seg_size.yfilter);
 }
 
 std::string ProcessesMemory::Nodes::Node::JobIds::JobId::get_segment_path() const
@@ -454,13 +511,13 @@ const EntityPath ProcessesMemory::Nodes::Node::JobIds::JobId::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (job_id.is_set || is_set(job_id.operation)) leaf_name_data.push_back(job_id.get_name_leafdata());
-    if (data_seg_size.is_set || is_set(data_seg_size.operation)) leaf_name_data.push_back(data_seg_size.get_name_leafdata());
-    if (jid.is_set || is_set(jid.operation)) leaf_name_data.push_back(jid.get_name_leafdata());
-    if (malloc_size.is_set || is_set(malloc_size.operation)) leaf_name_data.push_back(malloc_size.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (stack_seg_size.is_set || is_set(stack_seg_size.operation)) leaf_name_data.push_back(stack_seg_size.get_name_leafdata());
-    if (text_seg_size.is_set || is_set(text_seg_size.operation)) leaf_name_data.push_back(text_seg_size.get_name_leafdata());
+    if (job_id.is_set || is_set(job_id.yfilter)) leaf_name_data.push_back(job_id.get_name_leafdata());
+    if (data_seg_size.is_set || is_set(data_seg_size.yfilter)) leaf_name_data.push_back(data_seg_size.get_name_leafdata());
+    if (jid.is_set || is_set(jid.yfilter)) leaf_name_data.push_back(jid.get_name_leafdata());
+    if (malloc_size.is_set || is_set(malloc_size.yfilter)) leaf_name_data.push_back(malloc_size.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (stack_seg_size.is_set || is_set(stack_seg_size.yfilter)) leaf_name_data.push_back(stack_seg_size.get_name_leafdata());
+    if (text_seg_size.is_set || is_set(text_seg_size.yfilter)) leaf_name_data.push_back(text_seg_size.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -479,36 +536,89 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::Job
     return children;
 }
 
-void ProcessesMemory::Nodes::Node::JobIds::JobId::set_value(const std::string & value_path, std::string value)
+void ProcessesMemory::Nodes::Node::JobIds::JobId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "job-id")
     {
         job_id = value;
+        job_id.value_namespace = name_space;
+        job_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-seg-size")
     {
         data_seg_size = value;
+        data_seg_size.value_namespace = name_space;
+        data_seg_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jid")
     {
         jid = value;
+        jid.value_namespace = name_space;
+        jid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malloc-size")
     {
         malloc_size = value;
+        malloc_size.value_namespace = name_space;
+        malloc_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stack-seg-size")
     {
         stack_seg_size = value;
+        stack_seg_size.value_namespace = name_space;
+        stack_seg_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "text-seg-size")
     {
         text_seg_size = value;
+        text_seg_size.value_namespace = name_space;
+        text_seg_size.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ProcessesMemory::Nodes::Node::JobIds::JobId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "job-id")
+    {
+        job_id.yfilter = yfilter;
+    }
+    if(value_path == "data-seg-size")
+    {
+        data_seg_size.yfilter = yfilter;
+    }
+    if(value_path == "jid")
+    {
+        jid.yfilter = yfilter;
+    }
+    if(value_path == "malloc-size")
+    {
+        malloc_size.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "stack-seg-size")
+    {
+        stack_seg_size.yfilter = yfilter;
+    }
+    if(value_path == "text-seg-size")
+    {
+        text_seg_size.yfilter = yfilter;
+    }
+}
+
+bool ProcessesMemory::Nodes::Node::JobIds::JobId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "job-id" || name == "data-seg-size" || name == "jid" || name == "malloc-size" || name == "name" || name == "stack-seg-size" || name == "text-seg-size")
+        return true;
+    return false;
 }
 
 

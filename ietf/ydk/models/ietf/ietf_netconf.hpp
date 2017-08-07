@@ -8,37 +8,40 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace ietf {
 namespace ietf_netconf {
 
-class GetConfigRpc : public Entity
+class GetConfig : public ydk::Entity
 {
     public:
-        GetConfigRpc();
-        ~GetConfigRpc();
+        GetConfig();
+        ~GetConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: GetConfigRpc::Input
-        class Output; //type: GetConfigRpc::Output
+        class Input; //type: GetConfig::Input
+        class Output; //type: GetConfig::Output
 
-        std::shared_ptr<ietf_netconf::GetConfigRpc::Input> input;
-        std::shared_ptr<ietf_netconf::GetConfigRpc::Output> output;
+        std::shared_ptr<ietf_netconf::GetConfig::Input> input;
+        std::shared_ptr<ietf_netconf::GetConfig::Output> output;
         
-}; // GetConfigRpc
+}; // GetConfig
 
 
-class GetConfigRpc::Input : public Entity
+class GetConfig::Input : public ydk::Entity
 {
     public:
         Input();
@@ -46,22 +49,24 @@ class GetConfigRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf filter; //type: string
-        YLeaf with_defaults; //type: WithDefaultsModeEnum
-        class Source; //type: GetConfigRpc::Input::Source
+        ydk::YLeaf filter; //type: string
+        ydk::YLeaf with_defaults; //type: WithDefaultsMode
+        class Source; //type: GetConfig::Input::Source
 
-        std::shared_ptr<ietf_netconf::GetConfigRpc::Input::Source> source;
+        std::shared_ptr<ietf_netconf::GetConfig::Input::Source> source;
         
-}; // GetConfigRpc::Input
+}; // GetConfig::Input
 
 
-class GetConfigRpc::Input::Source : public Entity
+class GetConfig::Input::Source : public ydk::Entity
 {
     public:
         Source();
@@ -69,20 +74,22 @@ class GetConfigRpc::Input::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate; //type: empty
-        YLeaf running; //type: empty
-        YLeaf startup; //type: empty
+        ydk::YLeaf candidate; //type: empty
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf startup; //type: empty
 
-}; // GetConfigRpc::Input::Source
+}; // GetConfig::Input::Source
 
 
-class GetConfigRpc::Output : public Entity
+class GetConfig::Output : public ydk::Entity
 {
     public:
         Output();
@@ -90,42 +97,47 @@ class GetConfigRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data; //type: string
+        ydk::YLeaf data; //type: string
 
-}; // GetConfigRpc::Output
+}; // GetConfig::Output
 
-class EditConfigRpc : public Entity
+class EditConfig : public ydk::Entity
 {
     public:
-        EditConfigRpc();
-        ~EditConfigRpc();
+        EditConfig();
+        ~EditConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: EditConfigRpc::Input
+        class Input; //type: EditConfig::Input
 
-        std::shared_ptr<ietf_netconf::EditConfigRpc::Input> input;
+        std::shared_ptr<ietf_netconf::EditConfig::Input> input;
         
-}; // EditConfigRpc
+}; // EditConfig
 
 
-class EditConfigRpc::Input : public Entity
+class EditConfig::Input : public ydk::Entity
 {
     public:
         Input();
@@ -133,28 +145,30 @@ class EditConfigRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf default_operation; //type: DefaultOperationEnum
-        YLeaf test_option; //type: TestOptionEnum
-        YLeaf error_option; //type: ErrorOptionEnum
-        YLeaf config; //type: string
-        YLeaf url; //type: string
-        class Target; //type: EditConfigRpc::Input::Target
+        ydk::YLeaf default_operation; //type: DefaultOperation
+        ydk::YLeaf test_option; //type: TestOption
+        ydk::YLeaf error_option; //type: ErrorOption
+        ydk::YLeaf config; //type: string
+        ydk::YLeaf url; //type: string
+        class Target; //type: EditConfig::Input::Target
 
-        std::shared_ptr<ietf_netconf::EditConfigRpc::Input::Target> target;
-                class DefaultOperationEnum;
-        class TestOptionEnum;
-        class ErrorOptionEnum;
+        std::shared_ptr<ietf_netconf::EditConfig::Input::Target> target;
+                class DefaultOperation;
+        class TestOption;
+        class ErrorOption;
 
-}; // EditConfigRpc::Input
+}; // EditConfig::Input
 
 
-class EditConfigRpc::Input::Target : public Entity
+class EditConfig::Input::Target : public ydk::Entity
 {
     public:
         Target();
@@ -162,43 +176,48 @@ class EditConfigRpc::Input::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate; //type: empty
-        YLeaf running; //type: empty
+        ydk::YLeaf candidate; //type: empty
+        ydk::YLeaf running; //type: empty
 
-}; // EditConfigRpc::Input::Target
+}; // EditConfig::Input::Target
 
-class CopyConfigRpc : public Entity
+class CopyConfig : public ydk::Entity
 {
     public:
-        CopyConfigRpc();
-        ~CopyConfigRpc();
+        CopyConfig();
+        ~CopyConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: CopyConfigRpc::Input
+        class Input; //type: CopyConfig::Input
 
-        std::shared_ptr<ietf_netconf::CopyConfigRpc::Input> input;
+        std::shared_ptr<ietf_netconf::CopyConfig::Input> input;
         
-}; // CopyConfigRpc
+}; // CopyConfig
 
 
-class CopyConfigRpc::Input : public Entity
+class CopyConfig::Input : public ydk::Entity
 {
     public:
         Input();
@@ -206,23 +225,25 @@ class CopyConfigRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf with_defaults; //type: WithDefaultsModeEnum
-        class Target; //type: CopyConfigRpc::Input::Target
-        class Source; //type: CopyConfigRpc::Input::Source
+        ydk::YLeaf with_defaults; //type: WithDefaultsMode
+        class Target; //type: CopyConfig::Input::Target
+        class Source; //type: CopyConfig::Input::Source
 
-        std::shared_ptr<ietf_netconf::CopyConfigRpc::Input::Source> source;
-        std::shared_ptr<ietf_netconf::CopyConfigRpc::Input::Target> target;
+        std::shared_ptr<ietf_netconf::CopyConfig::Input::Source> source;
+        std::shared_ptr<ietf_netconf::CopyConfig::Input::Target> target;
         
-}; // CopyConfigRpc::Input
+}; // CopyConfig::Input
 
 
-class CopyConfigRpc::Input::Target : public Entity
+class CopyConfig::Input::Target : public ydk::Entity
 {
     public:
         Target();
@@ -230,21 +251,23 @@ class CopyConfigRpc::Input::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate; //type: empty
-        YLeaf running; //type: empty
-        YLeaf startup; //type: empty
-        YLeaf url; //type: string
+        ydk::YLeaf candidate; //type: empty
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf startup; //type: empty
+        ydk::YLeaf url; //type: string
 
-}; // CopyConfigRpc::Input::Target
+}; // CopyConfig::Input::Target
 
 
-class CopyConfigRpc::Input::Source : public Entity
+class CopyConfig::Input::Source : public ydk::Entity
 {
     public:
         Source();
@@ -252,46 +275,51 @@ class CopyConfigRpc::Input::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate; //type: empty
-        YLeaf running; //type: empty
-        YLeaf startup; //type: empty
-        YLeaf url; //type: string
-        YLeaf config; //type: string
+        ydk::YLeaf candidate; //type: empty
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf startup; //type: empty
+        ydk::YLeaf url; //type: string
+        ydk::YLeaf config; //type: string
 
-}; // CopyConfigRpc::Input::Source
+}; // CopyConfig::Input::Source
 
-class DeleteConfigRpc : public Entity
+class DeleteConfig : public ydk::Entity
 {
     public:
-        DeleteConfigRpc();
-        ~DeleteConfigRpc();
+        DeleteConfig();
+        ~DeleteConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: DeleteConfigRpc::Input
+        class Input; //type: DeleteConfig::Input
 
-        std::shared_ptr<ietf_netconf::DeleteConfigRpc::Input> input;
+        std::shared_ptr<ietf_netconf::DeleteConfig::Input> input;
         
-}; // DeleteConfigRpc
+}; // DeleteConfig
 
 
-class DeleteConfigRpc::Input : public Entity
+class DeleteConfig::Input : public ydk::Entity
 {
     public:
         Input();
@@ -299,20 +327,22 @@ class DeleteConfigRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Target; //type: DeleteConfigRpc::Input::Target
+        class Target; //type: DeleteConfig::Input::Target
 
-        std::shared_ptr<ietf_netconf::DeleteConfigRpc::Input::Target> target;
+        std::shared_ptr<ietf_netconf::DeleteConfig::Input::Target> target;
         
-}; // DeleteConfigRpc::Input
+}; // DeleteConfig::Input
 
 
-class DeleteConfigRpc::Input::Target : public Entity
+class DeleteConfig::Input::Target : public ydk::Entity
 {
     public:
         Target();
@@ -320,43 +350,48 @@ class DeleteConfigRpc::Input::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf startup; //type: empty
-        YLeaf url; //type: string
+        ydk::YLeaf startup; //type: empty
+        ydk::YLeaf url; //type: string
 
-}; // DeleteConfigRpc::Input::Target
+}; // DeleteConfig::Input::Target
 
-class LockRpc : public Entity
+class Lock : public ydk::Entity
 {
     public:
-        LockRpc();
-        ~LockRpc();
+        Lock();
+        ~Lock();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: LockRpc::Input
+        class Input; //type: Lock::Input
 
-        std::shared_ptr<ietf_netconf::LockRpc::Input> input;
+        std::shared_ptr<ietf_netconf::Lock::Input> input;
         
-}; // LockRpc
+}; // Lock
 
 
-class LockRpc::Input : public Entity
+class Lock::Input : public ydk::Entity
 {
     public:
         Input();
@@ -364,20 +399,22 @@ class LockRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Target; //type: LockRpc::Input::Target
+        class Target; //type: Lock::Input::Target
 
-        std::shared_ptr<ietf_netconf::LockRpc::Input::Target> target;
+        std::shared_ptr<ietf_netconf::Lock::Input::Target> target;
         
-}; // LockRpc::Input
+}; // Lock::Input
 
 
-class LockRpc::Input::Target : public Entity
+class Lock::Input::Target : public ydk::Entity
 {
     public:
         Target();
@@ -385,44 +422,49 @@ class LockRpc::Input::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate; //type: empty
-        YLeaf running; //type: empty
-        YLeaf startup; //type: empty
+        ydk::YLeaf candidate; //type: empty
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf startup; //type: empty
 
-}; // LockRpc::Input::Target
+}; // Lock::Input::Target
 
-class UnlockRpc : public Entity
+class Unlock : public ydk::Entity
 {
     public:
-        UnlockRpc();
-        ~UnlockRpc();
+        Unlock();
+        ~Unlock();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: UnlockRpc::Input
+        class Input; //type: Unlock::Input
 
-        std::shared_ptr<ietf_netconf::UnlockRpc::Input> input;
+        std::shared_ptr<ietf_netconf::Unlock::Input> input;
         
-}; // UnlockRpc
+}; // Unlock
 
 
-class UnlockRpc::Input : public Entity
+class Unlock::Input : public ydk::Entity
 {
     public:
         Input();
@@ -430,20 +472,22 @@ class UnlockRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Target; //type: UnlockRpc::Input::Target
+        class Target; //type: Unlock::Input::Target
 
-        std::shared_ptr<ietf_netconf::UnlockRpc::Input::Target> target;
+        std::shared_ptr<ietf_netconf::Unlock::Input::Target> target;
         
-}; // UnlockRpc::Input
+}; // Unlock::Input
 
 
-class UnlockRpc::Input::Target : public Entity
+class Unlock::Input::Target : public ydk::Entity
 {
     public:
         Target();
@@ -451,46 +495,51 @@ class UnlockRpc::Input::Target : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate; //type: empty
-        YLeaf running; //type: empty
-        YLeaf startup; //type: empty
+        ydk::YLeaf candidate; //type: empty
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf startup; //type: empty
 
-}; // UnlockRpc::Input::Target
+}; // Unlock::Input::Target
 
-class GetRpc : public Entity
+class Get : public ydk::Entity
 {
     public:
-        GetRpc();
-        ~GetRpc();
+        Get();
+        ~Get();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: GetRpc::Input
-        class Output; //type: GetRpc::Output
+        class Input; //type: Get::Input
+        class Output; //type: Get::Output
 
-        std::shared_ptr<ietf_netconf::GetRpc::Input> input;
-        std::shared_ptr<ietf_netconf::GetRpc::Output> output;
+        std::shared_ptr<ietf_netconf::Get::Input> input;
+        std::shared_ptr<ietf_netconf::Get::Output> output;
         
-}; // GetRpc
+}; // Get
 
 
-class GetRpc::Input : public Entity
+class Get::Input : public ydk::Entity
 {
     public:
         Input();
@@ -498,19 +547,21 @@ class GetRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf filter; //type: string
-        YLeaf with_defaults; //type: WithDefaultsModeEnum
+        ydk::YLeaf filter; //type: string
+        ydk::YLeaf with_defaults; //type: WithDefaultsMode
 
-}; // GetRpc::Input
+}; // Get::Input
 
 
-class GetRpc::Output : public Entity
+class Get::Output : public ydk::Entity
 {
     public:
         Output();
@@ -518,63 +569,71 @@ class GetRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data; //type: string
+        ydk::YLeaf data; //type: string
 
-}; // GetRpc::Output
+}; // Get::Output
 
-class CloseSessionRpc : public Entity
+class CloseSession : public ydk::Entity
 {
     public:
-        CloseSessionRpc();
-        ~CloseSessionRpc();
+        CloseSession();
+        ~CloseSession();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
 
-}; // CloseSessionRpc
+}; // CloseSession
 
-class KillSessionRpc : public Entity
+class KillSession : public ydk::Entity
 {
     public:
-        KillSessionRpc();
-        ~KillSessionRpc();
+        KillSession();
+        ~KillSession();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: KillSessionRpc::Input
+        class Input; //type: KillSession::Input
 
-        std::shared_ptr<ietf_netconf::KillSessionRpc::Input> input;
+        std::shared_ptr<ietf_netconf::KillSession::Input> input;
         
-}; // KillSessionRpc
+}; // KillSession
 
 
-class KillSessionRpc::Input : public Entity
+class KillSession::Input : public ydk::Entity
 {
     public:
         Input();
@@ -582,42 +641,47 @@ class KillSessionRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_id; //type: uint32
+        ydk::YLeaf session_id; //type: uint32
 
-}; // KillSessionRpc::Input
+}; // KillSession::Input
 
-class CommitRpc : public Entity
+class Commit : public ydk::Entity
 {
     public:
-        CommitRpc();
-        ~CommitRpc();
+        Commit();
+        ~Commit();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: CommitRpc::Input
+        class Input; //type: Commit::Input
 
-        std::shared_ptr<ietf_netconf::CommitRpc::Input> input;
+        std::shared_ptr<ietf_netconf::Commit::Input> input;
         
-}; // CommitRpc
+}; // Commit
 
 
-class CommitRpc::Input : public Entity
+class Commit::Input : public ydk::Entity
 {
     public:
         Input();
@@ -625,66 +689,74 @@ class CommitRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf confirmed; //type: empty
-        YLeaf confirm_timeout; //type: uint32
-        YLeaf persist; //type: string
-        YLeaf persist_id; //type: string
+        ydk::YLeaf confirmed; //type: empty
+        ydk::YLeaf confirm_timeout; //type: uint32
+        ydk::YLeaf persist; //type: string
+        ydk::YLeaf persist_id; //type: string
 
-}; // CommitRpc::Input
+}; // Commit::Input
 
-class DiscardChangesRpc : public Entity
+class DiscardChanges : public ydk::Entity
 {
     public:
-        DiscardChangesRpc();
-        ~DiscardChangesRpc();
+        DiscardChanges();
+        ~DiscardChanges();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
 
-}; // DiscardChangesRpc
+}; // DiscardChanges
 
-class CancelCommitRpc : public Entity
+class CancelCommit : public ydk::Entity
 {
     public:
-        CancelCommitRpc();
-        ~CancelCommitRpc();
+        CancelCommit();
+        ~CancelCommit();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: CancelCommitRpc::Input
+        class Input; //type: CancelCommit::Input
 
-        std::shared_ptr<ietf_netconf::CancelCommitRpc::Input> input;
+        std::shared_ptr<ietf_netconf::CancelCommit::Input> input;
         
-}; // CancelCommitRpc
+}; // CancelCommit
 
 
-class CancelCommitRpc::Input : public Entity
+class CancelCommit::Input : public ydk::Entity
 {
     public:
         Input();
@@ -692,42 +764,47 @@ class CancelCommitRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf persist_id; //type: string
+        ydk::YLeaf persist_id; //type: string
 
-}; // CancelCommitRpc::Input
+}; // CancelCommit::Input
 
-class ValidateRpc : public Entity
+class Validate : public ydk::Entity
 {
     public:
-        ValidateRpc();
-        ~ValidateRpc();
+        Validate();
+        ~Validate();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ValidateRpc::Input
+        class Input; //type: Validate::Input
 
-        std::shared_ptr<ietf_netconf::ValidateRpc::Input> input;
+        std::shared_ptr<ietf_netconf::Validate::Input> input;
         
-}; // ValidateRpc
+}; // Validate
 
 
-class ValidateRpc::Input : public Entity
+class Validate::Input : public ydk::Entity
 {
     public:
         Input();
@@ -735,20 +812,22 @@ class ValidateRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Source; //type: ValidateRpc::Input::Source
+        class Source; //type: Validate::Input::Source
 
-        std::shared_ptr<ietf_netconf::ValidateRpc::Input::Source> source;
+        std::shared_ptr<ietf_netconf::Validate::Input::Source> source;
         
-}; // ValidateRpc::Input
+}; // Validate::Input
 
 
-class ValidateRpc::Input::Source : public Entity
+class Validate::Input::Source : public ydk::Entity
 {
     public:
         Source();
@@ -756,89 +835,91 @@ class ValidateRpc::Input::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate; //type: empty
-        YLeaf running; //type: empty
-        YLeaf startup; //type: empty
-        YLeaf url; //type: string
-        YLeaf config; //type: string
+        ydk::YLeaf candidate; //type: empty
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf startup; //type: empty
+        ydk::YLeaf url; //type: string
+        ydk::YLeaf config; //type: string
 
-}; // ValidateRpc::Input::Source
+}; // Validate::Input::Source
 
-class ErrorSeverityTypeEnum : public Enum
+class EditOperationType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf error;
-        static const Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf merge;
+        static const ydk::Enum::YLeaf replace;
+        static const ydk::Enum::YLeaf create;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf remove;
 
 };
 
-class ErrorTagTypeEnum : public Enum
+class ErrorTagType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf in_use;
-        static const Enum::YLeaf invalid_value;
-        static const Enum::YLeaf too_big;
-        static const Enum::YLeaf missing_attribute;
-        static const Enum::YLeaf bad_attribute;
-        static const Enum::YLeaf unknown_attribute;
-        static const Enum::YLeaf missing_element;
-        static const Enum::YLeaf bad_element;
-        static const Enum::YLeaf unknown_element;
-        static const Enum::YLeaf unknown_namespace;
-        static const Enum::YLeaf access_denied;
-        static const Enum::YLeaf lock_denied;
-        static const Enum::YLeaf resource_denied;
-        static const Enum::YLeaf rollback_failed;
-        static const Enum::YLeaf data_exists;
-        static const Enum::YLeaf data_missing;
-        static const Enum::YLeaf operation_not_supported;
-        static const Enum::YLeaf operation_failed;
-        static const Enum::YLeaf partial_operation;
-        static const Enum::YLeaf malformed_message;
+        static const ydk::Enum::YLeaf in_use;
+        static const ydk::Enum::YLeaf invalid_value;
+        static const ydk::Enum::YLeaf too_big;
+        static const ydk::Enum::YLeaf missing_attribute;
+        static const ydk::Enum::YLeaf bad_attribute;
+        static const ydk::Enum::YLeaf unknown_attribute;
+        static const ydk::Enum::YLeaf missing_element;
+        static const ydk::Enum::YLeaf bad_element;
+        static const ydk::Enum::YLeaf unknown_element;
+        static const ydk::Enum::YLeaf unknown_namespace;
+        static const ydk::Enum::YLeaf access_denied;
+        static const ydk::Enum::YLeaf lock_denied;
+        static const ydk::Enum::YLeaf resource_denied;
+        static const ydk::Enum::YLeaf rollback_failed;
+        static const ydk::Enum::YLeaf data_exists;
+        static const ydk::Enum::YLeaf data_missing;
+        static const ydk::Enum::YLeaf operation_not_supported;
+        static const ydk::Enum::YLeaf operation_failed;
+        static const ydk::Enum::YLeaf partial_operation;
+        static const ydk::Enum::YLeaf malformed_message;
 
 };
 
-class EditOperationTypeEnum : public Enum
+class ErrorSeverityType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf merge;
-        static const Enum::YLeaf replace;
-        static const Enum::YLeaf create;
-        static const Enum::YLeaf delete_;
-        static const Enum::YLeaf remove;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
 
 };
 
-class EditConfigRpc::Input::DefaultOperationEnum : public Enum
+class EditConfig::Input::DefaultOperation : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf merge;
-        static const Enum::YLeaf replace;
-        static const Enum::YLeaf none;
+        static const ydk::Enum::YLeaf merge;
+        static const ydk::Enum::YLeaf replace;
+        static const ydk::Enum::YLeaf none;
 
 };
 
-class EditConfigRpc::Input::TestOptionEnum : public Enum
+class EditConfig::Input::TestOption : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf test_then_set;
-        static const Enum::YLeaf set;
-        static const Enum::YLeaf test_only;
+        static const ydk::Enum::YLeaf test_then_set;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf test_only;
 
 };
 
-class EditConfigRpc::Input::ErrorOptionEnum : public Enum
+class EditConfig::Input::ErrorOption : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf stop_on_error;
-        static const Enum::YLeaf continue_on_error;
-        static const Enum::YLeaf rollback_on_error;
+        static const ydk::Enum::YLeaf stop_on_error;
+        static const ydk::Enum::YLeaf continue_on_error;
+        static const ydk::Enum::YLeaf rollback_on_error;
 
 };
 

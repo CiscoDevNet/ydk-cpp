@@ -7,14 +7,14 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_autorp_datatypes {
 
-class AutoRpProtocolModeEnum : public Enum
+class AutoRpProtocolMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf sparse;
-        static const Enum::YLeaf bidirectional;
+        static const ydk::Enum::YLeaf sparse;
+        static const ydk::Enum::YLeaf bidirectional;
 
 };
 

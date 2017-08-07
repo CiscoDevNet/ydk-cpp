@@ -7,35 +7,38 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_isis_act {
 
-class ClearIsisProcessRpc : public Entity
+class ClearIsisProcess : public ydk::Entity
 {
     public:
-        ClearIsisProcessRpc();
-        ~ClearIsisProcessRpc();
+        ClearIsisProcess();
+        ~ClearIsisProcess();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearIsisProcessRpc::Input
+        class Input; //type: ClearIsisProcess::Input
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisProcessRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisProcess::Input> input;
         
-}; // ClearIsisProcessRpc
+}; // ClearIsisProcess
 
 
-class ClearIsisProcessRpc::Input : public Entity
+class ClearIsisProcess::Input : public ydk::Entity
 {
     public:
         Input();
@@ -43,21 +46,23 @@ class ClearIsisProcessRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf process; //type: empty
-        class Instance; //type: ClearIsisProcessRpc::Input::Instance
+        ydk::YLeaf process; //type: empty
+        class Instance; //type: ClearIsisProcess::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisProcessRpc::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisProcess::Input::Instance> instance;
         
-}; // ClearIsisProcessRpc::Input
+}; // ClearIsisProcess::Input
 
 
-class ClearIsisProcessRpc::Input::Instance : public Entity
+class ClearIsisProcess::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -65,42 +70,47 @@ class ClearIsisProcessRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ClearIsisProcessRpc::Input::Instance
+}; // ClearIsisProcess::Input::Instance
 
-class ClearIsisRouteRpc : public Entity
+class ClearIsisRoute : public ydk::Entity
 {
     public:
-        ClearIsisRouteRpc();
-        ~ClearIsisRouteRpc();
+        ClearIsisRoute();
+        ~ClearIsisRoute();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearIsisRouteRpc::Input
+        class Input; //type: ClearIsisRoute::Input
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisRouteRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisRoute::Input> input;
         
-}; // ClearIsisRouteRpc
+}; // ClearIsisRoute
 
 
-class ClearIsisRouteRpc::Input : public Entity
+class ClearIsisRoute::Input : public ydk::Entity
 {
     public:
         Input();
@@ -108,21 +118,23 @@ class ClearIsisRouteRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route; //type: empty
-        class Instance; //type: ClearIsisRouteRpc::Input::Instance
+        ydk::YLeaf route; //type: empty
+        class Instance; //type: ClearIsisRoute::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisRouteRpc::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisRoute::Input::Instance> instance;
         
-}; // ClearIsisRouteRpc::Input
+}; // ClearIsisRoute::Input
 
 
-class ClearIsisRouteRpc::Input::Instance : public Entity
+class ClearIsisRoute::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -130,42 +142,47 @@ class ClearIsisRouteRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ClearIsisRouteRpc::Input::Instance
+}; // ClearIsisRoute::Input::Instance
 
-class ClearIsisStatRpc : public Entity
+class ClearIsisStat : public ydk::Entity
 {
     public:
-        ClearIsisStatRpc();
-        ~ClearIsisStatRpc();
+        ClearIsisStat();
+        ~ClearIsisStat();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearIsisStatRpc::Input
+        class Input; //type: ClearIsisStat::Input
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisStatRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisStat::Input> input;
         
-}; // ClearIsisStatRpc
+}; // ClearIsisStat
 
 
-class ClearIsisStatRpc::Input : public Entity
+class ClearIsisStat::Input : public ydk::Entity
 {
     public:
         Input();
@@ -173,22 +190,24 @@ class ClearIsisStatRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Instance; //type: ClearIsisStatRpc::Input::Instance
-        class Statistics; //type: ClearIsisStatRpc::Input::Statistics
+        class Instance; //type: ClearIsisStat::Input::Instance
+        class Statistics; //type: ClearIsisStat::Input::Statistics
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisStatRpc::Input::Instance> instance;
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisStatRpc::Input::Statistics> statistics;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisStat::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisStat::Input::Statistics> statistics;
         
-}; // ClearIsisStatRpc::Input
+}; // ClearIsisStat::Input
 
 
-class ClearIsisStatRpc::Input::Instance : public Entity
+class ClearIsisStat::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -196,18 +215,20 @@ class ClearIsisStatRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ClearIsisStatRpc::Input::Instance
+}; // ClearIsisStat::Input::Instance
 
 
-class ClearIsisStatRpc::Input::Statistics : public Entity
+class ClearIsisStat::Input::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -215,42 +236,47 @@ class ClearIsisStatRpc::Input::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
 
-}; // ClearIsisStatRpc::Input::Statistics
+}; // ClearIsisStat::Input::Statistics
 
-class ClearIsisDistRpc : public Entity
+class ClearIsisDist : public ydk::Entity
 {
     public:
-        ClearIsisDistRpc();
-        ~ClearIsisDistRpc();
+        ClearIsisDist();
+        ~ClearIsisDist();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearIsisDistRpc::Input
+        class Input; //type: ClearIsisDist::Input
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisDistRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisDist::Input> input;
         
-}; // ClearIsisDistRpc
+}; // ClearIsisDist
 
 
-class ClearIsisDistRpc::Input : public Entity
+class ClearIsisDist::Input : public ydk::Entity
 {
     public:
         Input();
@@ -258,21 +284,23 @@ class ClearIsisDistRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf distribution; //type: empty
-        class Instance; //type: ClearIsisDistRpc::Input::Instance
+        ydk::YLeaf distribution; //type: empty
+        class Instance; //type: ClearIsisDist::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisDistRpc::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisDist::Input::Instance> instance;
         
-}; // ClearIsisDistRpc::Input
+}; // ClearIsisDist::Input
 
 
-class ClearIsisDistRpc::Input::Instance : public Entity
+class ClearIsisDist::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -280,42 +308,47 @@ class ClearIsisDistRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ClearIsisDistRpc::Input::Instance
+}; // ClearIsisDist::Input::Instance
 
-class ClearIsisRpc : public Entity
+class ClearIsis : public ydk::Entity
 {
     public:
-        ClearIsisRpc();
-        ~ClearIsisRpc();
+        ClearIsis();
+        ~ClearIsis();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearIsisRpc::Input
+        class Input; //type: ClearIsis::Input
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsis::Input> input;
         
-}; // ClearIsisRpc
+}; // ClearIsis
 
 
-class ClearIsisRpc::Input : public Entity
+class ClearIsis::Input : public ydk::Entity
 {
     public:
         Input();
@@ -323,24 +356,26 @@ class ClearIsisRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt_type; //type: RtTypeEnum
-        YLeaf route; //type: empty
-        YLeaf topology; //type: string
-        class Instance; //type: ClearIsisRpc::Input::Instance
+        ydk::YLeaf rt_type; //type: RtType
+        ydk::YLeaf route; //type: empty
+        ydk::YLeaf topology; //type: string
+        class Instance; //type: ClearIsis::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsisRpc::Input::Instance> instance;
-                class RtTypeEnum;
+        std::shared_ptr<Cisco_IOS_XR_isis_act::ClearIsis::Input::Instance> instance;
+                class RtType;
 
-}; // ClearIsisRpc::Input
+}; // ClearIsis::Input
 
 
-class ClearIsisRpc::Input::Instance : public Entity
+class ClearIsis::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -348,28 +383,30 @@ class ClearIsisRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ClearIsisRpc::Input::Instance
+}; // ClearIsis::Input::Instance
 
-class ClearIsisRpc::Input::RtTypeEnum : public Enum
+class ClearIsis::Input::RtType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf AFI_ALL_MULTICAST;
-        static const Enum::YLeaf AFI_ALL_SAFI_ALL;
-        static const Enum::YLeaf AFI_ALL_UNICAST;
-        static const Enum::YLeaf IPv4_MULTICAST;
-        static const Enum::YLeaf IPv4_SAFI_ALL;
-        static const Enum::YLeaf IPv4_UNICAST;
-        static const Enum::YLeaf IPv6_MULTICAST;
-        static const Enum::YLeaf IPv6_SAFI_ALL;
-        static const Enum::YLeaf IPv6_UNICAST;
+        static const ydk::Enum::YLeaf AFI_ALL_MULTICAST;
+        static const ydk::Enum::YLeaf AFI_ALL_SAFI_ALL;
+        static const ydk::Enum::YLeaf AFI_ALL_UNICAST;
+        static const ydk::Enum::YLeaf IPv4_MULTICAST;
+        static const ydk::Enum::YLeaf IPv4_SAFI_ALL;
+        static const ydk::Enum::YLeaf IPv4_UNICAST;
+        static const ydk::Enum::YLeaf IPv6_MULTICAST;
+        static const ydk::Enum::YLeaf IPv6_SAFI_ALL;
+        static const ydk::Enum::YLeaf IPv6_UNICAST;
 
 };
 

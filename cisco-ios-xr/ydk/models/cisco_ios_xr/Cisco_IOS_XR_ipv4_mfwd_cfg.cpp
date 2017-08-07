@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_mfwd_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_mfwd_cfg {
 
 Mfwd::Mfwd()
@@ -31,7 +33,7 @@ bool Mfwd::has_data() const
 
 bool Mfwd::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_context !=  nullptr && default_context->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -102,7 +104,11 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::get_children() const
     return children;
 }
 
-void Mfwd::set_value(const std::string & value_path, std::string value)
+void Mfwd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mfwd::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -124,6 +130,18 @@ std::string Mfwd::get_bundle_name() const
 augment_capabilities_function Mfwd::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Mfwd::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Mfwd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-context" || name == "vrfs")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::DefaultContext()
@@ -150,7 +168,7 @@ bool Mfwd::DefaultContext::has_data() const
 
 bool Mfwd::DefaultContext::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -224,8 +242,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::get_childre
     return children;
 }
 
-void Mfwd::DefaultContext::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::DefaultContext::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::DefaultContext::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv6::Ipv6()
@@ -273,17 +302,17 @@ bool Mfwd::DefaultContext::Ipv6::has_data() const
 
 bool Mfwd::DefaultContext::Ipv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting.operation)
-	|| is_set(enable_on_all_interfaces.operation)
-	|| is_set(forwarding_latency.operation)
-	|| is_set(interface_inheritance_disable.operation)
-	|| is_set(log_traps.operation)
-	|| is_set(maximum_checking_disable.operation)
-	|| is_set(mofrr_lockout_timer_config.operation)
-	|| is_set(mofrr_loss_detection_timer_config.operation)
-	|| is_set(multicast_forwarding.operation)
-	|| is_set(rate_per_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accounting.yfilter)
+	|| ydk::is_set(enable_on_all_interfaces.yfilter)
+	|| ydk::is_set(forwarding_latency.yfilter)
+	|| ydk::is_set(interface_inheritance_disable.yfilter)
+	|| ydk::is_set(log_traps.yfilter)
+	|| ydk::is_set(maximum_checking_disable.yfilter)
+	|| ydk::is_set(mofrr_lockout_timer_config.yfilter)
+	|| ydk::is_set(mofrr_loss_detection_timer_config.yfilter)
+	|| ydk::is_set(multicast_forwarding.yfilter)
+	|| ydk::is_set(rate_per_route.yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (static_rpf_rules !=  nullptr && static_rpf_rules->has_operation());
 }
@@ -311,16 +340,16 @@ const EntityPath Mfwd::DefaultContext::Ipv6::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting.is_set || is_set(accounting.operation)) leaf_name_data.push_back(accounting.get_name_leafdata());
-    if (enable_on_all_interfaces.is_set || is_set(enable_on_all_interfaces.operation)) leaf_name_data.push_back(enable_on_all_interfaces.get_name_leafdata());
-    if (forwarding_latency.is_set || is_set(forwarding_latency.operation)) leaf_name_data.push_back(forwarding_latency.get_name_leafdata());
-    if (interface_inheritance_disable.is_set || is_set(interface_inheritance_disable.operation)) leaf_name_data.push_back(interface_inheritance_disable.get_name_leafdata());
-    if (log_traps.is_set || is_set(log_traps.operation)) leaf_name_data.push_back(log_traps.get_name_leafdata());
-    if (maximum_checking_disable.is_set || is_set(maximum_checking_disable.operation)) leaf_name_data.push_back(maximum_checking_disable.get_name_leafdata());
-    if (mofrr_lockout_timer_config.is_set || is_set(mofrr_lockout_timer_config.operation)) leaf_name_data.push_back(mofrr_lockout_timer_config.get_name_leafdata());
-    if (mofrr_loss_detection_timer_config.is_set || is_set(mofrr_loss_detection_timer_config.operation)) leaf_name_data.push_back(mofrr_loss_detection_timer_config.get_name_leafdata());
-    if (multicast_forwarding.is_set || is_set(multicast_forwarding.operation)) leaf_name_data.push_back(multicast_forwarding.get_name_leafdata());
-    if (rate_per_route.is_set || is_set(rate_per_route.operation)) leaf_name_data.push_back(rate_per_route.get_name_leafdata());
+    if (accounting.is_set || is_set(accounting.yfilter)) leaf_name_data.push_back(accounting.get_name_leafdata());
+    if (enable_on_all_interfaces.is_set || is_set(enable_on_all_interfaces.yfilter)) leaf_name_data.push_back(enable_on_all_interfaces.get_name_leafdata());
+    if (forwarding_latency.is_set || is_set(forwarding_latency.yfilter)) leaf_name_data.push_back(forwarding_latency.get_name_leafdata());
+    if (interface_inheritance_disable.is_set || is_set(interface_inheritance_disable.yfilter)) leaf_name_data.push_back(interface_inheritance_disable.get_name_leafdata());
+    if (log_traps.is_set || is_set(log_traps.yfilter)) leaf_name_data.push_back(log_traps.get_name_leafdata());
+    if (maximum_checking_disable.is_set || is_set(maximum_checking_disable.yfilter)) leaf_name_data.push_back(maximum_checking_disable.get_name_leafdata());
+    if (mofrr_lockout_timer_config.is_set || is_set(mofrr_lockout_timer_config.yfilter)) leaf_name_data.push_back(mofrr_lockout_timer_config.get_name_leafdata());
+    if (mofrr_loss_detection_timer_config.is_set || is_set(mofrr_loss_detection_timer_config.yfilter)) leaf_name_data.push_back(mofrr_loss_detection_timer_config.get_name_leafdata());
+    if (multicast_forwarding.is_set || is_set(multicast_forwarding.yfilter)) leaf_name_data.push_back(multicast_forwarding.get_name_leafdata());
+    if (rate_per_route.is_set || is_set(rate_per_route.yfilter)) leaf_name_data.push_back(rate_per_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -367,48 +396,119 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::get_c
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv6::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting")
     {
         accounting = value;
+        accounting.value_namespace = name_space;
+        accounting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-on-all-interfaces")
     {
         enable_on_all_interfaces = value;
+        enable_on_all_interfaces.value_namespace = name_space;
+        enable_on_all_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forwarding-latency")
     {
         forwarding_latency = value;
+        forwarding_latency.value_namespace = name_space;
+        forwarding_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-inheritance-disable")
     {
         interface_inheritance_disable = value;
+        interface_inheritance_disable.value_namespace = name_space;
+        interface_inheritance_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-traps")
     {
         log_traps = value;
+        log_traps.value_namespace = name_space;
+        log_traps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-checking-disable")
     {
         maximum_checking_disable = value;
+        maximum_checking_disable.value_namespace = name_space;
+        maximum_checking_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mofrr-lockout-timer-config")
     {
         mofrr_lockout_timer_config = value;
+        mofrr_lockout_timer_config.value_namespace = name_space;
+        mofrr_lockout_timer_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mofrr-loss-detection-timer-config")
     {
         mofrr_loss_detection_timer_config = value;
+        mofrr_loss_detection_timer_config.value_namespace = name_space;
+        mofrr_loss_detection_timer_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-forwarding")
     {
         multicast_forwarding = value;
+        multicast_forwarding.value_namespace = name_space;
+        multicast_forwarding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-per-route")
     {
         rate_per_route = value;
+        rate_per_route.value_namespace = name_space;
+        rate_per_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::DefaultContext::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting")
+    {
+        accounting.yfilter = yfilter;
+    }
+    if(value_path == "enable-on-all-interfaces")
+    {
+        enable_on_all_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-latency")
+    {
+        forwarding_latency.yfilter = yfilter;
+    }
+    if(value_path == "interface-inheritance-disable")
+    {
+        interface_inheritance_disable.yfilter = yfilter;
+    }
+    if(value_path == "log-traps")
+    {
+        log_traps.yfilter = yfilter;
+    }
+    if(value_path == "maximum-checking-disable")
+    {
+        maximum_checking_disable.yfilter = yfilter;
+    }
+    if(value_path == "mofrr-lockout-timer-config")
+    {
+        mofrr_lockout_timer_config.yfilter = yfilter;
+    }
+    if(value_path == "mofrr-loss-detection-timer-config")
+    {
+        mofrr_loss_detection_timer_config.yfilter = yfilter;
+    }
+    if(value_path == "multicast-forwarding")
+    {
+        multicast_forwarding.yfilter = yfilter;
+    }
+    if(value_path == "rate-per-route")
+    {
+        rate_per_route.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::DefaultContext::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "static-rpf-rules" || name == "accounting" || name == "enable-on-all-interfaces" || name == "forwarding-latency" || name == "interface-inheritance-disable" || name == "log-traps" || name == "maximum-checking-disable" || name == "mofrr-lockout-timer-config" || name == "mofrr-loss-detection-timer-config" || name == "multicast-forwarding" || name == "rate-per-route")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRules()
@@ -437,7 +537,7 @@ bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::has_operation() const
         if(static_rpf_rule[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::DefaultContext::Ipv6::StaticRpfRules::get_segment_path() const
@@ -502,8 +602,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::Stati
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv6::StaticRpfRules::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv6::StaticRpfRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::DefaultContext::Ipv6::StaticRpfRules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-rpf-rule")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::StaticRpfRule()
@@ -530,11 +641,11 @@ bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::has_data() const
 
 bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_mask.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_mask.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter);
 }
 
 std::string Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::get_segment_path() const
@@ -560,10 +671,10 @@ const EntityPath Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_mask.is_set || is_set(prefix_mask.operation)) leaf_name_data.push_back(prefix_mask.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_mask.is_set || is_set(prefix_mask.yfilter)) leaf_name_data.push_back(prefix_mask.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -582,24 +693,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::Stati
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-mask")
     {
         prefix_mask = value;
+        prefix_mask.value_namespace = name_space;
+        prefix_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-mask")
+    {
+        prefix_mask.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-mask" || name == "interface-name" || name == "neighbor-address")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv6::Interfaces::Interfaces()
@@ -628,7 +774,7 @@ bool Mfwd::DefaultContext::Ipv6::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::DefaultContext::Ipv6::Interfaces::get_segment_path() const
@@ -693,8 +839,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::Inter
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv6::Interfaces::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::DefaultContext::Ipv6::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::DefaultContext::Ipv6::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv6::Interfaces::Interface::Interface()
@@ -721,11 +878,11 @@ bool Mfwd::DefaultContext::Ipv6::Interfaces::Interface::has_data() const
 
 bool Mfwd::DefaultContext::Ipv6::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(boundary.operation)
-	|| is_set(enable_on_interface.operation)
-	|| is_set(ttl_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(boundary.yfilter)
+	|| ydk::is_set(enable_on_interface.yfilter)
+	|| ydk::is_set(ttl_threshold.yfilter);
 }
 
 std::string Mfwd::DefaultContext::Ipv6::Interfaces::Interface::get_segment_path() const
@@ -751,10 +908,10 @@ const EntityPath Mfwd::DefaultContext::Ipv6::Interfaces::Interface::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (boundary.is_set || is_set(boundary.operation)) leaf_name_data.push_back(boundary.get_name_leafdata());
-    if (enable_on_interface.is_set || is_set(enable_on_interface.operation)) leaf_name_data.push_back(enable_on_interface.get_name_leafdata());
-    if (ttl_threshold.is_set || is_set(ttl_threshold.operation)) leaf_name_data.push_back(ttl_threshold.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (boundary.is_set || is_set(boundary.yfilter)) leaf_name_data.push_back(boundary.get_name_leafdata());
+    if (enable_on_interface.is_set || is_set(enable_on_interface.yfilter)) leaf_name_data.push_back(enable_on_interface.get_name_leafdata());
+    if (ttl_threshold.is_set || is_set(ttl_threshold.yfilter)) leaf_name_data.push_back(ttl_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -773,24 +930,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::Inter
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "boundary")
     {
         boundary = value;
+        boundary.value_namespace = name_space;
+        boundary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-on-interface")
     {
         enable_on_interface = value;
+        enable_on_interface.value_namespace = name_space;
+        enable_on_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl-threshold")
     {
         ttl_threshold = value;
+        ttl_threshold.value_namespace = name_space;
+        ttl_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::DefaultContext::Ipv6::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "boundary")
+    {
+        boundary.yfilter = yfilter;
+    }
+    if(value_path == "enable-on-interface")
+    {
+        enable_on_interface.yfilter = yfilter;
+    }
+    if(value_path == "ttl-threshold")
+    {
+        ttl_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::DefaultContext::Ipv6::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "boundary" || name == "enable-on-interface" || name == "ttl-threshold")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv4::Ipv4()
@@ -840,18 +1032,18 @@ bool Mfwd::DefaultContext::Ipv4::has_data() const
 
 bool Mfwd::DefaultContext::Ipv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting.operation)
-	|| is_set(enable_on_all_interfaces.operation)
-	|| is_set(forwarding_latency.operation)
-	|| is_set(interface_inheritance_disable.operation)
-	|| is_set(log_traps.operation)
-	|| is_set(maximum_checking_disable.operation)
-	|| is_set(mofrr_lockout_timer_config.operation)
-	|| is_set(mofrr_loss_detection_timer_config.operation)
-	|| is_set(multicast_forwarding.operation)
-	|| is_set(out_of_memory_handling.operation)
-	|| is_set(rate_per_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accounting.yfilter)
+	|| ydk::is_set(enable_on_all_interfaces.yfilter)
+	|| ydk::is_set(forwarding_latency.yfilter)
+	|| ydk::is_set(interface_inheritance_disable.yfilter)
+	|| ydk::is_set(log_traps.yfilter)
+	|| ydk::is_set(maximum_checking_disable.yfilter)
+	|| ydk::is_set(mofrr_lockout_timer_config.yfilter)
+	|| ydk::is_set(mofrr_loss_detection_timer_config.yfilter)
+	|| ydk::is_set(multicast_forwarding.yfilter)
+	|| ydk::is_set(out_of_memory_handling.yfilter)
+	|| ydk::is_set(rate_per_route.yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (static_rpf_rules !=  nullptr && static_rpf_rules->has_operation());
 }
@@ -879,17 +1071,17 @@ const EntityPath Mfwd::DefaultContext::Ipv4::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting.is_set || is_set(accounting.operation)) leaf_name_data.push_back(accounting.get_name_leafdata());
-    if (enable_on_all_interfaces.is_set || is_set(enable_on_all_interfaces.operation)) leaf_name_data.push_back(enable_on_all_interfaces.get_name_leafdata());
-    if (forwarding_latency.is_set || is_set(forwarding_latency.operation)) leaf_name_data.push_back(forwarding_latency.get_name_leafdata());
-    if (interface_inheritance_disable.is_set || is_set(interface_inheritance_disable.operation)) leaf_name_data.push_back(interface_inheritance_disable.get_name_leafdata());
-    if (log_traps.is_set || is_set(log_traps.operation)) leaf_name_data.push_back(log_traps.get_name_leafdata());
-    if (maximum_checking_disable.is_set || is_set(maximum_checking_disable.operation)) leaf_name_data.push_back(maximum_checking_disable.get_name_leafdata());
-    if (mofrr_lockout_timer_config.is_set || is_set(mofrr_lockout_timer_config.operation)) leaf_name_data.push_back(mofrr_lockout_timer_config.get_name_leafdata());
-    if (mofrr_loss_detection_timer_config.is_set || is_set(mofrr_loss_detection_timer_config.operation)) leaf_name_data.push_back(mofrr_loss_detection_timer_config.get_name_leafdata());
-    if (multicast_forwarding.is_set || is_set(multicast_forwarding.operation)) leaf_name_data.push_back(multicast_forwarding.get_name_leafdata());
-    if (out_of_memory_handling.is_set || is_set(out_of_memory_handling.operation)) leaf_name_data.push_back(out_of_memory_handling.get_name_leafdata());
-    if (rate_per_route.is_set || is_set(rate_per_route.operation)) leaf_name_data.push_back(rate_per_route.get_name_leafdata());
+    if (accounting.is_set || is_set(accounting.yfilter)) leaf_name_data.push_back(accounting.get_name_leafdata());
+    if (enable_on_all_interfaces.is_set || is_set(enable_on_all_interfaces.yfilter)) leaf_name_data.push_back(enable_on_all_interfaces.get_name_leafdata());
+    if (forwarding_latency.is_set || is_set(forwarding_latency.yfilter)) leaf_name_data.push_back(forwarding_latency.get_name_leafdata());
+    if (interface_inheritance_disable.is_set || is_set(interface_inheritance_disable.yfilter)) leaf_name_data.push_back(interface_inheritance_disable.get_name_leafdata());
+    if (log_traps.is_set || is_set(log_traps.yfilter)) leaf_name_data.push_back(log_traps.get_name_leafdata());
+    if (maximum_checking_disable.is_set || is_set(maximum_checking_disable.yfilter)) leaf_name_data.push_back(maximum_checking_disable.get_name_leafdata());
+    if (mofrr_lockout_timer_config.is_set || is_set(mofrr_lockout_timer_config.yfilter)) leaf_name_data.push_back(mofrr_lockout_timer_config.get_name_leafdata());
+    if (mofrr_loss_detection_timer_config.is_set || is_set(mofrr_loss_detection_timer_config.yfilter)) leaf_name_data.push_back(mofrr_loss_detection_timer_config.get_name_leafdata());
+    if (multicast_forwarding.is_set || is_set(multicast_forwarding.yfilter)) leaf_name_data.push_back(multicast_forwarding.get_name_leafdata());
+    if (out_of_memory_handling.is_set || is_set(out_of_memory_handling.yfilter)) leaf_name_data.push_back(out_of_memory_handling.get_name_leafdata());
+    if (rate_per_route.is_set || is_set(rate_per_route.yfilter)) leaf_name_data.push_back(rate_per_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -936,52 +1128,129 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::get_c
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv4::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting")
     {
         accounting = value;
+        accounting.value_namespace = name_space;
+        accounting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-on-all-interfaces")
     {
         enable_on_all_interfaces = value;
+        enable_on_all_interfaces.value_namespace = name_space;
+        enable_on_all_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forwarding-latency")
     {
         forwarding_latency = value;
+        forwarding_latency.value_namespace = name_space;
+        forwarding_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-inheritance-disable")
     {
         interface_inheritance_disable = value;
+        interface_inheritance_disable.value_namespace = name_space;
+        interface_inheritance_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-traps")
     {
         log_traps = value;
+        log_traps.value_namespace = name_space;
+        log_traps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-checking-disable")
     {
         maximum_checking_disable = value;
+        maximum_checking_disable.value_namespace = name_space;
+        maximum_checking_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mofrr-lockout-timer-config")
     {
         mofrr_lockout_timer_config = value;
+        mofrr_lockout_timer_config.value_namespace = name_space;
+        mofrr_lockout_timer_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mofrr-loss-detection-timer-config")
     {
         mofrr_loss_detection_timer_config = value;
+        mofrr_loss_detection_timer_config.value_namespace = name_space;
+        mofrr_loss_detection_timer_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-forwarding")
     {
         multicast_forwarding = value;
+        multicast_forwarding.value_namespace = name_space;
+        multicast_forwarding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-memory-handling")
     {
         out_of_memory_handling = value;
+        out_of_memory_handling.value_namespace = name_space;
+        out_of_memory_handling.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-per-route")
     {
         rate_per_route = value;
+        rate_per_route.value_namespace = name_space;
+        rate_per_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::DefaultContext::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting")
+    {
+        accounting.yfilter = yfilter;
+    }
+    if(value_path == "enable-on-all-interfaces")
+    {
+        enable_on_all_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-latency")
+    {
+        forwarding_latency.yfilter = yfilter;
+    }
+    if(value_path == "interface-inheritance-disable")
+    {
+        interface_inheritance_disable.yfilter = yfilter;
+    }
+    if(value_path == "log-traps")
+    {
+        log_traps.yfilter = yfilter;
+    }
+    if(value_path == "maximum-checking-disable")
+    {
+        maximum_checking_disable.yfilter = yfilter;
+    }
+    if(value_path == "mofrr-lockout-timer-config")
+    {
+        mofrr_lockout_timer_config.yfilter = yfilter;
+    }
+    if(value_path == "mofrr-loss-detection-timer-config")
+    {
+        mofrr_loss_detection_timer_config.yfilter = yfilter;
+    }
+    if(value_path == "multicast-forwarding")
+    {
+        multicast_forwarding.yfilter = yfilter;
+    }
+    if(value_path == "out-of-memory-handling")
+    {
+        out_of_memory_handling.yfilter = yfilter;
+    }
+    if(value_path == "rate-per-route")
+    {
+        rate_per_route.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::DefaultContext::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "static-rpf-rules" || name == "accounting" || name == "enable-on-all-interfaces" || name == "forwarding-latency" || name == "interface-inheritance-disable" || name == "log-traps" || name == "maximum-checking-disable" || name == "mofrr-lockout-timer-config" || name == "mofrr-loss-detection-timer-config" || name == "multicast-forwarding" || name == "out-of-memory-handling" || name == "rate-per-route")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRules()
@@ -1010,7 +1279,7 @@ bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::has_operation() const
         if(static_rpf_rule[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::DefaultContext::Ipv4::StaticRpfRules::get_segment_path() const
@@ -1075,8 +1344,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::Stati
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv4::StaticRpfRules::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv4::StaticRpfRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::DefaultContext::Ipv4::StaticRpfRules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-rpf-rule")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::StaticRpfRule()
@@ -1103,11 +1383,11 @@ bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::has_data() const
 
 bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_mask.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_mask.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter);
 }
 
 std::string Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::get_segment_path() const
@@ -1133,10 +1413,10 @@ const EntityPath Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_mask.is_set || is_set(prefix_mask.operation)) leaf_name_data.push_back(prefix_mask.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_mask.is_set || is_set(prefix_mask.yfilter)) leaf_name_data.push_back(prefix_mask.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1155,24 +1435,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::Stati
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-mask")
     {
         prefix_mask = value;
+        prefix_mask.value_namespace = name_space;
+        prefix_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-mask")
+    {
+        prefix_mask.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-mask" || name == "interface-name" || name == "neighbor-address")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv4::Interfaces::Interfaces()
@@ -1201,7 +1516,7 @@ bool Mfwd::DefaultContext::Ipv4::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::DefaultContext::Ipv4::Interfaces::get_segment_path() const
@@ -1266,8 +1581,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::Inter
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv4::Interfaces::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv4::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::DefaultContext::Ipv4::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::DefaultContext::Ipv4::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mfwd::DefaultContext::Ipv4::Interfaces::Interface::Interface()
@@ -1294,11 +1620,11 @@ bool Mfwd::DefaultContext::Ipv4::Interfaces::Interface::has_data() const
 
 bool Mfwd::DefaultContext::Ipv4::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(boundary.operation)
-	|| is_set(enable_on_interface.operation)
-	|| is_set(ttl_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(boundary.yfilter)
+	|| ydk::is_set(enable_on_interface.yfilter)
+	|| ydk::is_set(ttl_threshold.yfilter);
 }
 
 std::string Mfwd::DefaultContext::Ipv4::Interfaces::Interface::get_segment_path() const
@@ -1324,10 +1650,10 @@ const EntityPath Mfwd::DefaultContext::Ipv4::Interfaces::Interface::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (boundary.is_set || is_set(boundary.operation)) leaf_name_data.push_back(boundary.get_name_leafdata());
-    if (enable_on_interface.is_set || is_set(enable_on_interface.operation)) leaf_name_data.push_back(enable_on_interface.get_name_leafdata());
-    if (ttl_threshold.is_set || is_set(ttl_threshold.operation)) leaf_name_data.push_back(ttl_threshold.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (boundary.is_set || is_set(boundary.yfilter)) leaf_name_data.push_back(boundary.get_name_leafdata());
+    if (enable_on_interface.is_set || is_set(enable_on_interface.yfilter)) leaf_name_data.push_back(enable_on_interface.get_name_leafdata());
+    if (ttl_threshold.is_set || is_set(ttl_threshold.yfilter)) leaf_name_data.push_back(ttl_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1346,24 +1672,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::Inter
     return children;
 }
 
-void Mfwd::DefaultContext::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Mfwd::DefaultContext::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "boundary")
     {
         boundary = value;
+        boundary.value_namespace = name_space;
+        boundary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-on-interface")
     {
         enable_on_interface = value;
+        enable_on_interface.value_namespace = name_space;
+        enable_on_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl-threshold")
     {
         ttl_threshold = value;
+        ttl_threshold.value_namespace = name_space;
+        ttl_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::DefaultContext::Ipv4::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "boundary")
+    {
+        boundary.yfilter = yfilter;
+    }
+    if(value_path == "enable-on-interface")
+    {
+        enable_on_interface.yfilter = yfilter;
+    }
+    if(value_path == "ttl-threshold")
+    {
+        ttl_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::DefaultContext::Ipv4::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "boundary" || name == "enable-on-interface" || name == "ttl-threshold")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrfs()
@@ -1392,7 +1753,7 @@ bool Mfwd::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::Vrfs::get_segment_path() const
@@ -1457,8 +1818,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::get_children() const
     return children;
 }
 
-void Mfwd::Vrfs::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Vrf()
@@ -1488,8 +1860,8 @@ bool Mfwd::Vrfs::Vrf::has_data() const
 
 bool Mfwd::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -1517,7 +1889,7 @@ const EntityPath Mfwd::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1564,12 +1936,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::get_children() c
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::Ipv6()
@@ -1607,12 +1996,12 @@ bool Mfwd::Vrfs::Vrf::Ipv6::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting.operation)
-	|| is_set(enable_on_all_interfaces.operation)
-	|| is_set(log_traps.operation)
-	|| is_set(multicast_forwarding.operation)
-	|| is_set(rate_per_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accounting.yfilter)
+	|| ydk::is_set(enable_on_all_interfaces.yfilter)
+	|| ydk::is_set(log_traps.yfilter)
+	|| ydk::is_set(multicast_forwarding.yfilter)
+	|| ydk::is_set(rate_per_route.yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (static_rpf_rules !=  nullptr && static_rpf_rules->has_operation());
 }
@@ -1640,11 +2029,11 @@ const EntityPath Mfwd::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting.is_set || is_set(accounting.operation)) leaf_name_data.push_back(accounting.get_name_leafdata());
-    if (enable_on_all_interfaces.is_set || is_set(enable_on_all_interfaces.operation)) leaf_name_data.push_back(enable_on_all_interfaces.get_name_leafdata());
-    if (log_traps.is_set || is_set(log_traps.operation)) leaf_name_data.push_back(log_traps.get_name_leafdata());
-    if (multicast_forwarding.is_set || is_set(multicast_forwarding.operation)) leaf_name_data.push_back(multicast_forwarding.get_name_leafdata());
-    if (rate_per_route.is_set || is_set(rate_per_route.operation)) leaf_name_data.push_back(rate_per_route.get_name_leafdata());
+    if (accounting.is_set || is_set(accounting.yfilter)) leaf_name_data.push_back(accounting.get_name_leafdata());
+    if (enable_on_all_interfaces.is_set || is_set(enable_on_all_interfaces.yfilter)) leaf_name_data.push_back(enable_on_all_interfaces.get_name_leafdata());
+    if (log_traps.is_set || is_set(log_traps.yfilter)) leaf_name_data.push_back(log_traps.get_name_leafdata());
+    if (multicast_forwarding.is_set || is_set(multicast_forwarding.yfilter)) leaf_name_data.push_back(multicast_forwarding.get_name_leafdata());
+    if (rate_per_route.is_set || is_set(rate_per_route.yfilter)) leaf_name_data.push_back(rate_per_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1691,28 +2080,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::get_childr
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting")
     {
         accounting = value;
+        accounting.value_namespace = name_space;
+        accounting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-on-all-interfaces")
     {
         enable_on_all_interfaces = value;
+        enable_on_all_interfaces.value_namespace = name_space;
+        enable_on_all_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-traps")
     {
         log_traps = value;
+        log_traps.value_namespace = name_space;
+        log_traps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-forwarding")
     {
         multicast_forwarding = value;
+        multicast_forwarding.value_namespace = name_space;
+        multicast_forwarding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-per-route")
     {
         rate_per_route = value;
+        rate_per_route.value_namespace = name_space;
+        rate_per_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::Vrfs::Vrf::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting")
+    {
+        accounting.yfilter = yfilter;
+    }
+    if(value_path == "enable-on-all-interfaces")
+    {
+        enable_on_all_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "log-traps")
+    {
+        log_traps.yfilter = yfilter;
+    }
+    if(value_path == "multicast-forwarding")
+    {
+        multicast_forwarding.yfilter = yfilter;
+    }
+    if(value_path == "rate-per-route")
+    {
+        rate_per_route.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "static-rpf-rules" || name == "accounting" || name == "enable-on-all-interfaces" || name == "log-traps" || name == "multicast-forwarding" || name == "rate-per-route")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRules()
@@ -1741,7 +2171,7 @@ bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::has_operation() const
         if(static_rpf_rule[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::get_segment_path() const
@@ -1806,8 +2236,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfR
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-rpf-rule")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::StaticRpfRule()
@@ -1834,11 +2275,11 @@ bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_mask.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_mask.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter);
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::get_segment_path() const
@@ -1864,10 +2305,10 @@ const EntityPath Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_mask.is_set || is_set(prefix_mask.operation)) leaf_name_data.push_back(prefix_mask.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_mask.is_set || is_set(prefix_mask.yfilter)) leaf_name_data.push_back(prefix_mask.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1886,24 +2327,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfR
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-mask")
     {
         prefix_mask = value;
+        prefix_mask.value_namespace = name_space;
+        prefix_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-mask")
+    {
+        prefix_mask.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-mask" || name == "interface-name" || name == "neighbor-address")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interfaces()
@@ -1932,7 +2408,7 @@ bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv6::Interfaces::get_segment_path() const
@@ -1997,8 +2473,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::Interfaces
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv6::Interfaces::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::Vrfs::Vrf::Ipv6::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::Interface()
@@ -2025,11 +2512,11 @@ bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(boundary.operation)
-	|| is_set(enable_on_interface.operation)
-	|| is_set(ttl_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(boundary.yfilter)
+	|| ydk::is_set(enable_on_interface.yfilter)
+	|| ydk::is_set(ttl_threshold.yfilter);
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_segment_path() const
@@ -2055,10 +2542,10 @@ const EntityPath Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (boundary.is_set || is_set(boundary.operation)) leaf_name_data.push_back(boundary.get_name_leafdata());
-    if (enable_on_interface.is_set || is_set(enable_on_interface.operation)) leaf_name_data.push_back(enable_on_interface.get_name_leafdata());
-    if (ttl_threshold.is_set || is_set(ttl_threshold.operation)) leaf_name_data.push_back(ttl_threshold.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (boundary.is_set || is_set(boundary.yfilter)) leaf_name_data.push_back(boundary.get_name_leafdata());
+    if (enable_on_interface.is_set || is_set(enable_on_interface.yfilter)) leaf_name_data.push_back(enable_on_interface.get_name_leafdata());
+    if (ttl_threshold.is_set || is_set(ttl_threshold.yfilter)) leaf_name_data.push_back(ttl_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2077,24 +2564,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::Interfaces
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "boundary")
     {
         boundary = value;
+        boundary.value_namespace = name_space;
+        boundary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-on-interface")
     {
         enable_on_interface = value;
+        enable_on_interface.value_namespace = name_space;
+        enable_on_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl-threshold")
     {
         ttl_threshold = value;
+        ttl_threshold.value_namespace = name_space;
+        ttl_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "boundary")
+    {
+        boundary.yfilter = yfilter;
+    }
+    if(value_path == "enable-on-interface")
+    {
+        enable_on_interface.yfilter = yfilter;
+    }
+    if(value_path == "ttl-threshold")
+    {
+        ttl_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "boundary" || name == "enable-on-interface" || name == "ttl-threshold")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::Ipv4()
@@ -2132,12 +2654,12 @@ bool Mfwd::Vrfs::Vrf::Ipv4::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting.operation)
-	|| is_set(enable_on_all_interfaces.operation)
-	|| is_set(log_traps.operation)
-	|| is_set(multicast_forwarding.operation)
-	|| is_set(rate_per_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accounting.yfilter)
+	|| ydk::is_set(enable_on_all_interfaces.yfilter)
+	|| ydk::is_set(log_traps.yfilter)
+	|| ydk::is_set(multicast_forwarding.yfilter)
+	|| ydk::is_set(rate_per_route.yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (static_rpf_rules !=  nullptr && static_rpf_rules->has_operation());
 }
@@ -2165,11 +2687,11 @@ const EntityPath Mfwd::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting.is_set || is_set(accounting.operation)) leaf_name_data.push_back(accounting.get_name_leafdata());
-    if (enable_on_all_interfaces.is_set || is_set(enable_on_all_interfaces.operation)) leaf_name_data.push_back(enable_on_all_interfaces.get_name_leafdata());
-    if (log_traps.is_set || is_set(log_traps.operation)) leaf_name_data.push_back(log_traps.get_name_leafdata());
-    if (multicast_forwarding.is_set || is_set(multicast_forwarding.operation)) leaf_name_data.push_back(multicast_forwarding.get_name_leafdata());
-    if (rate_per_route.is_set || is_set(rate_per_route.operation)) leaf_name_data.push_back(rate_per_route.get_name_leafdata());
+    if (accounting.is_set || is_set(accounting.yfilter)) leaf_name_data.push_back(accounting.get_name_leafdata());
+    if (enable_on_all_interfaces.is_set || is_set(enable_on_all_interfaces.yfilter)) leaf_name_data.push_back(enable_on_all_interfaces.get_name_leafdata());
+    if (log_traps.is_set || is_set(log_traps.yfilter)) leaf_name_data.push_back(log_traps.get_name_leafdata());
+    if (multicast_forwarding.is_set || is_set(multicast_forwarding.yfilter)) leaf_name_data.push_back(multicast_forwarding.get_name_leafdata());
+    if (rate_per_route.is_set || is_set(rate_per_route.yfilter)) leaf_name_data.push_back(rate_per_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2216,28 +2738,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::get_childr
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting")
     {
         accounting = value;
+        accounting.value_namespace = name_space;
+        accounting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-on-all-interfaces")
     {
         enable_on_all_interfaces = value;
+        enable_on_all_interfaces.value_namespace = name_space;
+        enable_on_all_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-traps")
     {
         log_traps = value;
+        log_traps.value_namespace = name_space;
+        log_traps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-forwarding")
     {
         multicast_forwarding = value;
+        multicast_forwarding.value_namespace = name_space;
+        multicast_forwarding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-per-route")
     {
         rate_per_route = value;
+        rate_per_route.value_namespace = name_space;
+        rate_per_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::Vrfs::Vrf::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting")
+    {
+        accounting.yfilter = yfilter;
+    }
+    if(value_path == "enable-on-all-interfaces")
+    {
+        enable_on_all_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "log-traps")
+    {
+        log_traps.yfilter = yfilter;
+    }
+    if(value_path == "multicast-forwarding")
+    {
+        multicast_forwarding.yfilter = yfilter;
+    }
+    if(value_path == "rate-per-route")
+    {
+        rate_per_route.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "static-rpf-rules" || name == "accounting" || name == "enable-on-all-interfaces" || name == "log-traps" || name == "multicast-forwarding" || name == "rate-per-route")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRules()
@@ -2266,7 +2829,7 @@ bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::has_operation() const
         if(static_rpf_rule[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::get_segment_path() const
@@ -2331,8 +2894,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfR
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-rpf-rule")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::StaticRpfRule()
@@ -2359,11 +2933,11 @@ bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_mask.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_mask.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter);
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::get_segment_path() const
@@ -2389,10 +2963,10 @@ const EntityPath Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_mask.is_set || is_set(prefix_mask.operation)) leaf_name_data.push_back(prefix_mask.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_mask.is_set || is_set(prefix_mask.yfilter)) leaf_name_data.push_back(prefix_mask.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2411,24 +2985,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfR
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-mask")
     {
         prefix_mask = value;
+        prefix_mask.value_namespace = name_space;
+        prefix_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-mask")
+    {
+        prefix_mask.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-mask" || name == "interface-name" || name == "neighbor-address")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interfaces()
@@ -2457,7 +3066,7 @@ bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv4::Interfaces::get_segment_path() const
@@ -2522,8 +3131,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::Interfaces
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv4::Interfaces::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv4::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mfwd::Vrfs::Vrf::Ipv4::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::Interface()
@@ -2550,11 +3170,11 @@ bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(boundary.operation)
-	|| is_set(enable_on_interface.operation)
-	|| is_set(ttl_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(boundary.yfilter)
+	|| ydk::is_set(enable_on_interface.yfilter)
+	|| ydk::is_set(ttl_threshold.yfilter);
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_segment_path() const
@@ -2580,10 +3200,10 @@ const EntityPath Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (boundary.is_set || is_set(boundary.operation)) leaf_name_data.push_back(boundary.get_name_leafdata());
-    if (enable_on_interface.is_set || is_set(enable_on_interface.operation)) leaf_name_data.push_back(enable_on_interface.get_name_leafdata());
-    if (ttl_threshold.is_set || is_set(ttl_threshold.operation)) leaf_name_data.push_back(ttl_threshold.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (boundary.is_set || is_set(boundary.yfilter)) leaf_name_data.push_back(boundary.get_name_leafdata());
+    if (enable_on_interface.is_set || is_set(enable_on_interface.yfilter)) leaf_name_data.push_back(enable_on_interface.get_name_leafdata());
+    if (ttl_threshold.is_set || is_set(ttl_threshold.yfilter)) leaf_name_data.push_back(ttl_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2602,28 +3222,63 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::Interfaces
     return children;
 }
 
-void Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "boundary")
     {
         boundary = value;
+        boundary.value_namespace = name_space;
+        boundary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-on-interface")
     {
         enable_on_interface = value;
+        enable_on_interface.value_namespace = name_space;
+        enable_on_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl-threshold")
     {
         ttl_threshold = value;
+        ttl_threshold.value_namespace = name_space;
+        ttl_threshold.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf AccountingModeEnum::enable {0, "enable"};
-const Enum::YLeaf AccountingModeEnum::forward_only_enable {1, "forward-only-enable"};
+void Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "boundary")
+    {
+        boundary.yfilter = yfilter;
+    }
+    if(value_path == "enable-on-interface")
+    {
+        enable_on_interface.yfilter = yfilter;
+    }
+    if(value_path == "ttl-threshold")
+    {
+        ttl_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "boundary" || name == "enable-on-interface" || name == "ttl-threshold")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf AccountingMode::enable {0, "enable"};
+const Enum::YLeaf AccountingMode::forward_only_enable {1, "forward-only-enable"};
 
 
 }

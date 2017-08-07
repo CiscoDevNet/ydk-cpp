@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ncs1k_mxp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ncs1k_mxp_cfg {
 
 HardwareModule::HardwareModule()
@@ -35,7 +37,7 @@ bool HardwareModule::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModule::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() co
     return children;
 }
 
-void HardwareModule::set_value(const std::string & value_path, std::string value)
+void HardwareModule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModule::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string HardwareModule::get_bundle_name() const
 augment_capabilities_function HardwareModule::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HardwareModule::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 HardwareModule::Node::Node()
@@ -149,8 +167,8 @@ bool HardwareModule::Node::has_operation() const
         if(slice[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(location.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(location.yfilter);
 }
 
 std::string HardwareModule::Node::get_segment_path() const
@@ -176,7 +194,7 @@ const EntityPath HardwareModule::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -216,12 +234,29 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::get_childre
     return children;
 }
 
-void HardwareModule::Node::set_value(const std::string & value_path, std::string value)
+void HardwareModule::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModule::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool HardwareModule::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slice" || name == "location")
+        return true;
+    return false;
 }
 
 HardwareModule::Node::Slice::Slice()
@@ -249,9 +284,9 @@ bool HardwareModule::Node::Slice::has_data() const
 
 bool HardwareModule::Node::Slice::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(slice_id.operation)
-	|| is_set(lldp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(slice_id.yfilter)
+	|| ydk::is_set(lldp.yfilter)
 	|| (values !=  nullptr && values->has_operation());
 }
 
@@ -278,8 +313,8 @@ const EntityPath HardwareModule::Node::Slice::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slice_id.is_set || is_set(slice_id.operation)) leaf_name_data.push_back(slice_id.get_name_leafdata());
-    if (lldp.is_set || is_set(lldp.operation)) leaf_name_data.push_back(lldp.get_name_leafdata());
+    if (slice_id.is_set || is_set(slice_id.yfilter)) leaf_name_data.push_back(slice_id.get_name_leafdata());
+    if (lldp.is_set || is_set(lldp.yfilter)) leaf_name_data.push_back(lldp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -312,16 +347,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slice::get_
     return children;
 }
 
-void HardwareModule::Node::Slice::set_value(const std::string & value_path, std::string value)
+void HardwareModule::Node::Slice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slice-id")
     {
         slice_id = value;
+        slice_id.value_namespace = name_space;
+        slice_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lldp")
     {
         lldp = value;
+        lldp.value_namespace = name_space;
+        lldp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModule::Node::Slice::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slice-id")
+    {
+        slice_id.yfilter = yfilter;
+    }
+    if(value_path == "lldp")
+    {
+        lldp.yfilter = yfilter;
+    }
+}
+
+bool HardwareModule::Node::Slice::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "values" || name == "slice-id" || name == "lldp")
+        return true;
+    return false;
 }
 
 HardwareModule::Node::Slice::Values::Values()
@@ -348,11 +406,11 @@ bool HardwareModule::Node::Slice::Values::has_data() const
 
 bool HardwareModule::Node::Slice::Values::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(client_rate.operation)
-	|| is_set(encrypted.operation)
-	|| is_set(fec.operation)
-	|| is_set(trunk_rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(client_rate.yfilter)
+	|| ydk::is_set(encrypted.yfilter)
+	|| ydk::is_set(fec.yfilter)
+	|| ydk::is_set(trunk_rate.yfilter);
 }
 
 std::string HardwareModule::Node::Slice::Values::get_segment_path() const
@@ -378,10 +436,10 @@ const EntityPath HardwareModule::Node::Slice::Values::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client_rate.is_set || is_set(client_rate.operation)) leaf_name_data.push_back(client_rate.get_name_leafdata());
-    if (encrypted.is_set || is_set(encrypted.operation)) leaf_name_data.push_back(encrypted.get_name_leafdata());
-    if (fec.is_set || is_set(fec.operation)) leaf_name_data.push_back(fec.get_name_leafdata());
-    if (trunk_rate.is_set || is_set(trunk_rate.operation)) leaf_name_data.push_back(trunk_rate.get_name_leafdata());
+    if (client_rate.is_set || is_set(client_rate.yfilter)) leaf_name_data.push_back(client_rate.get_name_leafdata());
+    if (encrypted.is_set || is_set(encrypted.yfilter)) leaf_name_data.push_back(encrypted.get_name_leafdata());
+    if (fec.is_set || is_set(fec.yfilter)) leaf_name_data.push_back(fec.get_name_leafdata());
+    if (trunk_rate.is_set || is_set(trunk_rate.yfilter)) leaf_name_data.push_back(trunk_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -400,36 +458,71 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Node::Slice::Valu
     return children;
 }
 
-void HardwareModule::Node::Slice::Values::set_value(const std::string & value_path, std::string value)
+void HardwareModule::Node::Slice::Values::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-rate")
     {
         client_rate = value;
+        client_rate.value_namespace = name_space;
+        client_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encrypted")
     {
         encrypted = value;
+        encrypted.value_namespace = name_space;
+        encrypted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fec")
     {
         fec = value;
+        fec.value_namespace = name_space;
+        fec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trunk-rate")
     {
         trunk_rate = value;
+        trunk_rate.value_namespace = name_space;
+        trunk_rate.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf ClientDataRateEnum::ten_gig {1, "ten-gig"};
-const Enum::YLeaf ClientDataRateEnum::forty_gig {2, "forty-gig"};
-const Enum::YLeaf ClientDataRateEnum::hundred_gig {3, "hundred-gig"};
+void HardwareModule::Node::Slice::Values::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-rate")
+    {
+        client_rate.yfilter = yfilter;
+    }
+    if(value_path == "encrypted")
+    {
+        encrypted.yfilter = yfilter;
+    }
+    if(value_path == "fec")
+    {
+        fec.yfilter = yfilter;
+    }
+    if(value_path == "trunk-rate")
+    {
+        trunk_rate.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf TrunkDataRateEnum::hundred_gig {2, "hundred-gig"};
-const Enum::YLeaf TrunkDataRateEnum::two_hundred_gig {3, "two-hundred-gig"};
-const Enum::YLeaf TrunkDataRateEnum::two_hundred_fifty_gig {4, "two-hundred-fifty-gig"};
+bool HardwareModule::Node::Slice::Values::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-rate" || name == "encrypted" || name == "fec" || name == "trunk-rate")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf FecEnum::sd7 {1, "sd7"};
-const Enum::YLeaf FecEnum::sd20 {2, "sd20"};
+const Enum::YLeaf TrunkDataRate::hundred_gig {2, "hundred-gig"};
+const Enum::YLeaf TrunkDataRate::two_hundred_gig {3, "two-hundred-gig"};
+const Enum::YLeaf TrunkDataRate::two_hundred_fifty_gig {4, "two-hundred-fifty-gig"};
+
+const Enum::YLeaf Fec::sd7 {1, "sd7"};
+const Enum::YLeaf Fec::sd20 {2, "sd20"};
+
+const Enum::YLeaf ClientDataRate::ten_gig {1, "ten-gig"};
+const Enum::YLeaf ClientDataRate::forty_gig {2, "forty-gig"};
+const Enum::YLeaf ClientDataRate::hundred_gig {3, "hundred-gig"};
 
 
 }

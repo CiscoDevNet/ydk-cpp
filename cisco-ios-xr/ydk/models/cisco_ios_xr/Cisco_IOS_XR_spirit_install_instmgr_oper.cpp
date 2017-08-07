@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_spirit_install_instmgr_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_spirit_install_instmgr_oper {
 
 SoftwareInstall::SoftwareInstall()
@@ -77,7 +79,7 @@ bool SoftwareInstall::has_data() const
 
 bool SoftwareInstall::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (all_operations_log !=  nullptr && all_operations_log->has_operation())
 	|| (committed !=  nullptr && committed->has_operation())
@@ -313,7 +315,11 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::get_children() c
     return children;
 }
 
-void SoftwareInstall::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SoftwareInstall::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -335,6 +341,18 @@ std::string SoftwareInstall::get_bundle_name() const
 augment_capabilities_function SoftwareInstall::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SoftwareInstall::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SoftwareInstall::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "all-operations-log" || name == "committed" || name == "files" || name == "inactive" || name == "issu" || name == "last-n-operation-logs" || name == "operation-logs" || name == "packages" || name == "prepare" || name == "repository" || name == "request" || name == "version")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Files::Files()
@@ -363,7 +381,7 @@ bool SoftwareInstall::Files::has_operation() const
         if(file[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SoftwareInstall::Files::get_segment_path() const
@@ -428,8 +446,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Files::get_child
     return children;
 }
 
-void SoftwareInstall::Files::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Files::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::Files::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::Files::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "file")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Files::File::File()
@@ -459,8 +488,8 @@ bool SoftwareInstall::Files::File::has_data() const
 
 bool SoftwareInstall::Files::File::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(file_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(file_name.yfilter)
 	|| (brief !=  nullptr && brief->has_operation())
 	|| (detail !=  nullptr && detail->has_operation());
 }
@@ -488,7 +517,7 @@ const EntityPath SoftwareInstall::Files::File::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (file_name.is_set || is_set(file_name.operation)) leaf_name_data.push_back(file_name.get_name_leafdata());
+    if (file_name.is_set || is_set(file_name.yfilter)) leaf_name_data.push_back(file_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -535,12 +564,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Files::File::get
     return children;
 }
 
-void SoftwareInstall::Files::File::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Files::File::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "file-name")
     {
         file_name = value;
+        file_name.value_namespace = name_space;
+        file_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Files::File::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "file-name")
+    {
+        file_name.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Files::File::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief" || name == "detail" || name == "file-name")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Files::File::Brief::Brief()
@@ -561,8 +607,8 @@ bool SoftwareInstall::Files::File::Brief::has_data() const
 
 bool SoftwareInstall::Files::File::Brief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Files::File::Brief::get_segment_path() const
@@ -588,7 +634,7 @@ const EntityPath SoftwareInstall::Files::File::Brief::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -607,12 +653,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Files::File::Bri
     return children;
 }
 
-void SoftwareInstall::Files::File::Brief::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Files::File::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Files::File::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Files::File::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Files::File::Detail::Detail()
@@ -633,8 +696,8 @@ bool SoftwareInstall::Files::File::Detail::has_data() const
 
 bool SoftwareInstall::Files::File::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Files::File::Detail::get_segment_path() const
@@ -660,7 +723,7 @@ const EntityPath SoftwareInstall::Files::File::Detail::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -679,12 +742,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Files::File::Det
     return children;
 }
 
-void SoftwareInstall::Files::File::Detail::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Files::File::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Files::File::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Files::File::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::LastNOperationLogs::LastNOperationLogs()
@@ -713,7 +793,7 @@ bool SoftwareInstall::LastNOperationLogs::has_operation() const
         if(last_n_operation_log[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SoftwareInstall::LastNOperationLogs::get_segment_path() const
@@ -778,8 +858,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::LastNOperationLo
     return children;
 }
 
-void SoftwareInstall::LastNOperationLogs::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::LastNOperationLogs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::LastNOperationLogs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::LastNOperationLogs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-n-operation-log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::LastNOperationLogs::LastNOperationLog::LastNOperationLog()
@@ -809,8 +900,8 @@ bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::has_data() const
 
 bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(last_n_logs.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(last_n_logs.yfilter)
 	|| (detail !=  nullptr && detail->has_operation())
 	|| (summary !=  nullptr && summary->has_operation());
 }
@@ -838,7 +929,7 @@ const EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (last_n_logs.is_set || is_set(last_n_logs.operation)) leaf_name_data.push_back(last_n_logs.get_name_leafdata());
+    if (last_n_logs.is_set || is_set(last_n_logs.yfilter)) leaf_name_data.push_back(last_n_logs.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -885,12 +976,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::LastNOperationLo
     return children;
 }
 
-void SoftwareInstall::LastNOperationLogs::LastNOperationLog::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::LastNOperationLogs::LastNOperationLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "last-n-logs")
     {
         last_n_logs = value;
+        last_n_logs.value_namespace = name_space;
+        last_n_logs.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::LastNOperationLogs::LastNOperationLog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "last-n-logs")
+    {
+        last_n_logs.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "summary" || name == "last-n-logs")
+        return true;
+    return false;
 }
 
 SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::Summary()
@@ -911,8 +1019,8 @@ bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::has_data()
 
 bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::get_segment_path() const
@@ -938,7 +1046,7 @@ const EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -957,12 +1065,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::LastNOperationLo
     return children;
 }
 
-void SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::Detail()
@@ -983,8 +1108,8 @@ bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::has_data() 
 
 bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::get_segment_path() const
@@ -1010,7 +1135,7 @@ const EntityPath SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1029,12 +1154,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::LastNOperationLo
     return children;
 }
 
-void SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::LastNOperationLogs::LastNOperationLog::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Prepare::Prepare()
@@ -1085,13 +1227,13 @@ bool SoftwareInstall::Prepare::has_operation() const
         if(rpm[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(activate_message.operation)
-	|| is_set(no_prepare_done.operation)
-	|| is_set(prepare_clean_message.operation)
-	|| is_set(prepared_boot_image.operation)
-	|| is_set(prepared_boot_partition.operation)
-	|| is_set(restart_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(activate_message.yfilter)
+	|| ydk::is_set(no_prepare_done.yfilter)
+	|| ydk::is_set(prepare_clean_message.yfilter)
+	|| ydk::is_set(prepared_boot_image.yfilter)
+	|| ydk::is_set(prepared_boot_partition.yfilter)
+	|| ydk::is_set(restart_type.yfilter);
 }
 
 std::string SoftwareInstall::Prepare::get_segment_path() const
@@ -1117,12 +1259,12 @@ const EntityPath SoftwareInstall::Prepare::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (activate_message.is_set || is_set(activate_message.operation)) leaf_name_data.push_back(activate_message.get_name_leafdata());
-    if (no_prepare_done.is_set || is_set(no_prepare_done.operation)) leaf_name_data.push_back(no_prepare_done.get_name_leafdata());
-    if (prepare_clean_message.is_set || is_set(prepare_clean_message.operation)) leaf_name_data.push_back(prepare_clean_message.get_name_leafdata());
-    if (prepared_boot_image.is_set || is_set(prepared_boot_image.operation)) leaf_name_data.push_back(prepared_boot_image.get_name_leafdata());
-    if (prepared_boot_partition.is_set || is_set(prepared_boot_partition.operation)) leaf_name_data.push_back(prepared_boot_partition.get_name_leafdata());
-    if (restart_type.is_set || is_set(restart_type.operation)) leaf_name_data.push_back(restart_type.get_name_leafdata());
+    if (activate_message.is_set || is_set(activate_message.yfilter)) leaf_name_data.push_back(activate_message.get_name_leafdata());
+    if (no_prepare_done.is_set || is_set(no_prepare_done.yfilter)) leaf_name_data.push_back(no_prepare_done.get_name_leafdata());
+    if (prepare_clean_message.is_set || is_set(prepare_clean_message.yfilter)) leaf_name_data.push_back(prepare_clean_message.get_name_leafdata());
+    if (prepared_boot_image.is_set || is_set(prepared_boot_image.yfilter)) leaf_name_data.push_back(prepared_boot_image.get_name_leafdata());
+    if (prepared_boot_partition.is_set || is_set(prepared_boot_partition.yfilter)) leaf_name_data.push_back(prepared_boot_partition.get_name_leafdata());
+    if (restart_type.is_set || is_set(restart_type.yfilter)) leaf_name_data.push_back(restart_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1183,32 +1325,79 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::get_chi
     return children;
 }
 
-void SoftwareInstall::Prepare::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Prepare::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "activate-message")
     {
         activate_message = value;
+        activate_message.value_namespace = name_space;
+        activate_message.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-prepare-done")
     {
         no_prepare_done = value;
+        no_prepare_done.value_namespace = name_space;
+        no_prepare_done.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prepare-clean-message")
     {
         prepare_clean_message = value;
+        prepare_clean_message.value_namespace = name_space;
+        prepare_clean_message.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prepared-boot-image")
     {
         prepared_boot_image = value;
+        prepared_boot_image.value_namespace = name_space;
+        prepared_boot_image.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prepared-boot-partition")
     {
         prepared_boot_partition = value;
+        prepared_boot_partition.value_namespace = name_space;
+        prepared_boot_partition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "restart-type")
     {
         restart_type = value;
+        restart_type.value_namespace = name_space;
+        restart_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Prepare::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "activate-message")
+    {
+        activate_message.yfilter = yfilter;
+    }
+    if(value_path == "no-prepare-done")
+    {
+        no_prepare_done.yfilter = yfilter;
+    }
+    if(value_path == "prepare-clean-message")
+    {
+        prepare_clean_message.yfilter = yfilter;
+    }
+    if(value_path == "prepared-boot-image")
+    {
+        prepared_boot_image.yfilter = yfilter;
+    }
+    if(value_path == "prepared-boot-partition")
+    {
+        prepared_boot_partition.yfilter = yfilter;
+    }
+    if(value_path == "restart-type")
+    {
+        restart_type.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Prepare::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "package" || name == "rpm" || name == "activate-message" || name == "no-prepare-done" || name == "prepare-clean-message" || name == "prepared-boot-image" || name == "prepared-boot-partition" || name == "restart-type")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Prepare::Rpm::Rpm()
@@ -1229,8 +1418,8 @@ bool SoftwareInstall::Prepare::Rpm::has_data() const
 
 bool SoftwareInstall::Prepare::Rpm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(package.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(package.yfilter);
 }
 
 std::string SoftwareInstall::Prepare::Rpm::get_segment_path() const
@@ -1256,7 +1445,7 @@ const EntityPath SoftwareInstall::Prepare::Rpm::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (package.is_set || is_set(package.operation)) leaf_name_data.push_back(package.get_name_leafdata());
+    if (package.is_set || is_set(package.yfilter)) leaf_name_data.push_back(package.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1275,12 +1464,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::Rpm::ge
     return children;
 }
 
-void SoftwareInstall::Prepare::Rpm::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Prepare::Rpm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "package")
     {
         package = value;
+        package.value_namespace = name_space;
+        package.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Prepare::Rpm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "package")
+    {
+        package.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Prepare::Rpm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "package")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Prepare::Package::Package()
@@ -1301,8 +1507,8 @@ bool SoftwareInstall::Prepare::Package::has_data() const
 
 bool SoftwareInstall::Prepare::Package::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(package.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(package.yfilter);
 }
 
 std::string SoftwareInstall::Prepare::Package::get_segment_path() const
@@ -1328,7 +1534,7 @@ const EntityPath SoftwareInstall::Prepare::Package::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (package.is_set || is_set(package.operation)) leaf_name_data.push_back(package.get_name_leafdata());
+    if (package.is_set || is_set(package.yfilter)) leaf_name_data.push_back(package.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1347,12 +1553,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Prepare::Package
     return children;
 }
 
-void SoftwareInstall::Prepare::Package::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Prepare::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "package")
     {
         package = value;
+        package.value_namespace = name_space;
+        package.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Prepare::Package::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "package")
+    {
+        package.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Prepare::Package::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "package")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Active::Active()
@@ -1381,7 +1604,7 @@ bool SoftwareInstall::Active::has_operation() const
         if(active_package_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SoftwareInstall::Active::get_segment_path() const
@@ -1446,8 +1669,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Active::get_chil
     return children;
 }
 
-void SoftwareInstall::Active::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-package-info")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Active::ActivePackageInfo::ActivePackageInfo()
@@ -1478,13 +1712,13 @@ bool SoftwareInstall::Active::ActivePackageInfo::has_data() const
 
 bool SoftwareInstall::Active::ActivePackageInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active_packages.operation)
-	|| is_set(boot_partition_name.operation)
-	|| is_set(error_message.operation)
-	|| is_set(location.operation)
-	|| is_set(node_type.operation)
-	|| is_set(number_of_active_packages.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active_packages.yfilter)
+	|| ydk::is_set(boot_partition_name.yfilter)
+	|| ydk::is_set(error_message.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(node_type.yfilter)
+	|| ydk::is_set(number_of_active_packages.yfilter);
 }
 
 std::string SoftwareInstall::Active::ActivePackageInfo::get_segment_path() const
@@ -1510,12 +1744,12 @@ const EntityPath SoftwareInstall::Active::ActivePackageInfo::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_packages.is_set || is_set(active_packages.operation)) leaf_name_data.push_back(active_packages.get_name_leafdata());
-    if (boot_partition_name.is_set || is_set(boot_partition_name.operation)) leaf_name_data.push_back(boot_partition_name.get_name_leafdata());
-    if (error_message.is_set || is_set(error_message.operation)) leaf_name_data.push_back(error_message.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (node_type.is_set || is_set(node_type.operation)) leaf_name_data.push_back(node_type.get_name_leafdata());
-    if (number_of_active_packages.is_set || is_set(number_of_active_packages.operation)) leaf_name_data.push_back(number_of_active_packages.get_name_leafdata());
+    if (active_packages.is_set || is_set(active_packages.yfilter)) leaf_name_data.push_back(active_packages.get_name_leafdata());
+    if (boot_partition_name.is_set || is_set(boot_partition_name.yfilter)) leaf_name_data.push_back(boot_partition_name.get_name_leafdata());
+    if (error_message.is_set || is_set(error_message.yfilter)) leaf_name_data.push_back(error_message.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
+    if (number_of_active_packages.is_set || is_set(number_of_active_packages.yfilter)) leaf_name_data.push_back(number_of_active_packages.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1534,32 +1768,79 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Active::ActivePa
     return children;
 }
 
-void SoftwareInstall::Active::ActivePackageInfo::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Active::ActivePackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-packages")
     {
         active_packages = value;
+        active_packages.value_namespace = name_space;
+        active_packages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "boot-partition-name")
     {
         boot_partition_name = value;
+        boot_partition_name.value_namespace = name_space;
+        boot_partition_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error-message")
     {
         error_message = value;
+        error_message.value_namespace = name_space;
+        error_message.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-type")
     {
         node_type = value;
+        node_type.value_namespace = name_space;
+        node_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-active-packages")
     {
         number_of_active_packages = value;
+        number_of_active_packages.value_namespace = name_space;
+        number_of_active_packages.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Active::ActivePackageInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-packages")
+    {
+        active_packages.yfilter = yfilter;
+    }
+    if(value_path == "boot-partition-name")
+    {
+        boot_partition_name.yfilter = yfilter;
+    }
+    if(value_path == "error-message")
+    {
+        error_message.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "node-type")
+    {
+        node_type.yfilter = yfilter;
+    }
+    if(value_path == "number-of-active-packages")
+    {
+        number_of_active_packages.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Active::ActivePackageInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-packages" || name == "boot-partition-name" || name == "error-message" || name == "location" || name == "node-type" || name == "number-of-active-packages")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Version::Version()
@@ -1580,8 +1861,8 @@ bool SoftwareInstall::Version::has_data() const
 
 bool SoftwareInstall::Version::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Version::get_segment_path() const
@@ -1607,7 +1888,7 @@ const EntityPath SoftwareInstall::Version::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1626,12 +1907,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Version::get_chi
     return children;
 }
 
-void SoftwareInstall::Version::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Version::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Version::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Version::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Inactive::Inactive()
@@ -1652,8 +1950,8 @@ bool SoftwareInstall::Inactive::has_data() const
 
 bool SoftwareInstall::Inactive::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Inactive::get_segment_path() const
@@ -1679,7 +1977,7 @@ const EntityPath SoftwareInstall::Inactive::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1698,12 +1996,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Inactive::get_ch
     return children;
 }
 
-void SoftwareInstall::Inactive::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Request::Request()
@@ -1724,8 +2039,8 @@ bool SoftwareInstall::Request::has_data() const
 
 bool SoftwareInstall::Request::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Request::get_segment_path() const
@@ -1751,7 +2066,7 @@ const EntityPath SoftwareInstall::Request::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1770,12 +2085,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Request::get_chi
     return children;
 }
 
-void SoftwareInstall::Request::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Request::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Request::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Issu::Issu()
@@ -1802,7 +2134,7 @@ bool SoftwareInstall::Issu::has_data() const
 
 bool SoftwareInstall::Issu::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inventory !=  nullptr && inventory->has_operation())
 	|| (stage !=  nullptr && stage->has_operation());
 }
@@ -1876,8 +2208,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::get_childr
     return children;
 }
 
-void SoftwareInstall::Issu::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Issu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::Issu::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::Issu::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inventory" || name == "stage")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Issu::Stage::Stage()
@@ -1908,13 +2251,13 @@ bool SoftwareInstall::Issu::Stage::has_data() const
 
 bool SoftwareInstall::Issu::Stage::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(issu_error.operation)
-	|| is_set(issu_node_cnt.operation)
-	|| is_set(issu_ready_node_cnt.operation)
-	|| is_set(issu_status.operation)
-	|| is_set(percentage.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(issu_error.yfilter)
+	|| ydk::is_set(issu_node_cnt.yfilter)
+	|| ydk::is_set(issu_ready_node_cnt.yfilter)
+	|| ydk::is_set(issu_status.yfilter)
+	|| ydk::is_set(percentage.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string SoftwareInstall::Issu::Stage::get_segment_path() const
@@ -1940,12 +2283,12 @@ const EntityPath SoftwareInstall::Issu::Stage::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (issu_error.is_set || is_set(issu_error.operation)) leaf_name_data.push_back(issu_error.get_name_leafdata());
-    if (issu_node_cnt.is_set || is_set(issu_node_cnt.operation)) leaf_name_data.push_back(issu_node_cnt.get_name_leafdata());
-    if (issu_ready_node_cnt.is_set || is_set(issu_ready_node_cnt.operation)) leaf_name_data.push_back(issu_ready_node_cnt.get_name_leafdata());
-    if (issu_status.is_set || is_set(issu_status.operation)) leaf_name_data.push_back(issu_status.get_name_leafdata());
-    if (percentage.is_set || is_set(percentage.operation)) leaf_name_data.push_back(percentage.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (issu_error.is_set || is_set(issu_error.yfilter)) leaf_name_data.push_back(issu_error.get_name_leafdata());
+    if (issu_node_cnt.is_set || is_set(issu_node_cnt.yfilter)) leaf_name_data.push_back(issu_node_cnt.get_name_leafdata());
+    if (issu_ready_node_cnt.is_set || is_set(issu_ready_node_cnt.yfilter)) leaf_name_data.push_back(issu_ready_node_cnt.get_name_leafdata());
+    if (issu_status.is_set || is_set(issu_status.yfilter)) leaf_name_data.push_back(issu_status.get_name_leafdata());
+    if (percentage.is_set || is_set(percentage.yfilter)) leaf_name_data.push_back(percentage.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1964,32 +2307,79 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Stage::get
     return children;
 }
 
-void SoftwareInstall::Issu::Stage::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Issu::Stage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "issu-error")
     {
         issu_error = value;
+        issu_error.value_namespace = name_space;
+        issu_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "issu-node-cnt")
     {
         issu_node_cnt = value;
+        issu_node_cnt.value_namespace = name_space;
+        issu_node_cnt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "issu-ready-node-cnt")
     {
         issu_ready_node_cnt = value;
+        issu_ready_node_cnt.value_namespace = name_space;
+        issu_ready_node_cnt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "issu-status")
     {
         issu_status = value;
+        issu_status.value_namespace = name_space;
+        issu_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percentage")
     {
         percentage = value;
+        percentage.value_namespace = name_space;
+        percentage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Issu::Stage::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "issu-error")
+    {
+        issu_error.yfilter = yfilter;
+    }
+    if(value_path == "issu-node-cnt")
+    {
+        issu_node_cnt.yfilter = yfilter;
+    }
+    if(value_path == "issu-ready-node-cnt")
+    {
+        issu_ready_node_cnt.yfilter = yfilter;
+    }
+    if(value_path == "issu-status")
+    {
+        issu_status.yfilter = yfilter;
+    }
+    if(value_path == "percentage")
+    {
+        percentage.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Issu::Stage::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "issu-error" || name == "issu-node-cnt" || name == "issu-ready-node-cnt" || name == "issu-status" || name == "percentage" || name == "state")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Issu::Inventory::Inventory()
@@ -2018,7 +2408,7 @@ bool SoftwareInstall::Issu::Inventory::has_operation() const
         if(invinfo[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SoftwareInstall::Issu::Inventory::get_segment_path() const
@@ -2083,8 +2473,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Inventory:
     return children;
 }
 
-void SoftwareInstall::Issu::Inventory::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Issu::Inventory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::Issu::Inventory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::Issu::Inventory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "invinfo")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Issu::Inventory::Invinfo::Invinfo()
@@ -2113,12 +2514,12 @@ bool SoftwareInstall::Issu::Inventory::Invinfo::has_data() const
 
 bool SoftwareInstall::Issu::Inventory::Invinfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(issu_node_role.operation)
-	|| is_set(node_id.operation)
-	|| is_set(node_role.operation)
-	|| is_set(node_state.operation)
-	|| is_set(node_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(issu_node_role.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(node_role.yfilter)
+	|| ydk::is_set(node_state.yfilter)
+	|| ydk::is_set(node_type.yfilter);
 }
 
 std::string SoftwareInstall::Issu::Inventory::Invinfo::get_segment_path() const
@@ -2144,11 +2545,11 @@ const EntityPath SoftwareInstall::Issu::Inventory::Invinfo::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (issu_node_role.is_set || is_set(issu_node_role.operation)) leaf_name_data.push_back(issu_node_role.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (node_role.is_set || is_set(node_role.operation)) leaf_name_data.push_back(node_role.get_name_leafdata());
-    if (node_state.is_set || is_set(node_state.operation)) leaf_name_data.push_back(node_state.get_name_leafdata());
-    if (node_type.is_set || is_set(node_type.operation)) leaf_name_data.push_back(node_type.get_name_leafdata());
+    if (issu_node_role.is_set || is_set(issu_node_role.yfilter)) leaf_name_data.push_back(issu_node_role.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (node_role.is_set || is_set(node_role.yfilter)) leaf_name_data.push_back(node_role.get_name_leafdata());
+    if (node_state.is_set || is_set(node_state.yfilter)) leaf_name_data.push_back(node_state.get_name_leafdata());
+    if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2167,28 +2568,69 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Issu::Inventory:
     return children;
 }
 
-void SoftwareInstall::Issu::Inventory::Invinfo::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Issu::Inventory::Invinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "issu-node-role")
     {
         issu_node_role = value;
+        issu_node_role.value_namespace = name_space;
+        issu_node_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-role")
     {
         node_role = value;
+        node_role.value_namespace = name_space;
+        node_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-state")
     {
         node_state = value;
+        node_state.value_namespace = name_space;
+        node_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-type")
     {
         node_type = value;
+        node_type.value_namespace = name_space;
+        node_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Issu::Inventory::Invinfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "issu-node-role")
+    {
+        issu_node_role.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "node-role")
+    {
+        node_role.yfilter = yfilter;
+    }
+    if(value_path == "node-state")
+    {
+        node_state.yfilter = yfilter;
+    }
+    if(value_path == "node-type")
+    {
+        node_type.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Issu::Inventory::Invinfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "issu-node-role" || name == "node-id" || name == "node-role" || name == "node-state" || name == "node-type")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Committed::Committed()
@@ -2217,7 +2659,7 @@ bool SoftwareInstall::Committed::has_operation() const
         if(committed_package_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SoftwareInstall::Committed::get_segment_path() const
@@ -2282,8 +2724,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Committed::get_c
     return children;
 }
 
-void SoftwareInstall::Committed::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Committed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::Committed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::Committed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "committed-package-info")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Committed::CommittedPackageInfo::CommittedPackageInfo()
@@ -2314,13 +2767,13 @@ bool SoftwareInstall::Committed::CommittedPackageInfo::has_data() const
 
 bool SoftwareInstall::Committed::CommittedPackageInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(boot_partition_name.operation)
-	|| is_set(committed_packages.operation)
-	|| is_set(error_message.operation)
-	|| is_set(location.operation)
-	|| is_set(node_type.operation)
-	|| is_set(number_of_committed_packages.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(boot_partition_name.yfilter)
+	|| ydk::is_set(committed_packages.yfilter)
+	|| ydk::is_set(error_message.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(node_type.yfilter)
+	|| ydk::is_set(number_of_committed_packages.yfilter);
 }
 
 std::string SoftwareInstall::Committed::CommittedPackageInfo::get_segment_path() const
@@ -2346,12 +2799,12 @@ const EntityPath SoftwareInstall::Committed::CommittedPackageInfo::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (boot_partition_name.is_set || is_set(boot_partition_name.operation)) leaf_name_data.push_back(boot_partition_name.get_name_leafdata());
-    if (committed_packages.is_set || is_set(committed_packages.operation)) leaf_name_data.push_back(committed_packages.get_name_leafdata());
-    if (error_message.is_set || is_set(error_message.operation)) leaf_name_data.push_back(error_message.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (node_type.is_set || is_set(node_type.operation)) leaf_name_data.push_back(node_type.get_name_leafdata());
-    if (number_of_committed_packages.is_set || is_set(number_of_committed_packages.operation)) leaf_name_data.push_back(number_of_committed_packages.get_name_leafdata());
+    if (boot_partition_name.is_set || is_set(boot_partition_name.yfilter)) leaf_name_data.push_back(boot_partition_name.get_name_leafdata());
+    if (committed_packages.is_set || is_set(committed_packages.yfilter)) leaf_name_data.push_back(committed_packages.get_name_leafdata());
+    if (error_message.is_set || is_set(error_message.yfilter)) leaf_name_data.push_back(error_message.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
+    if (number_of_committed_packages.is_set || is_set(number_of_committed_packages.yfilter)) leaf_name_data.push_back(number_of_committed_packages.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2370,32 +2823,79 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Committed::Commi
     return children;
 }
 
-void SoftwareInstall::Committed::CommittedPackageInfo::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Committed::CommittedPackageInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "boot-partition-name")
     {
         boot_partition_name = value;
+        boot_partition_name.value_namespace = name_space;
+        boot_partition_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "committed-packages")
     {
         committed_packages = value;
+        committed_packages.value_namespace = name_space;
+        committed_packages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error-message")
     {
         error_message = value;
+        error_message.value_namespace = name_space;
+        error_message.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-type")
     {
         node_type = value;
+        node_type.value_namespace = name_space;
+        node_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-committed-packages")
     {
         number_of_committed_packages = value;
+        number_of_committed_packages.value_namespace = name_space;
+        number_of_committed_packages.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Committed::CommittedPackageInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "boot-partition-name")
+    {
+        boot_partition_name.yfilter = yfilter;
+    }
+    if(value_path == "committed-packages")
+    {
+        committed_packages.yfilter = yfilter;
+    }
+    if(value_path == "error-message")
+    {
+        error_message.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "node-type")
+    {
+        node_type.yfilter = yfilter;
+    }
+    if(value_path == "number-of-committed-packages")
+    {
+        number_of_committed_packages.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Committed::CommittedPackageInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "boot-partition-name" || name == "committed-packages" || name == "error-message" || name == "location" || name == "node-type" || name == "number-of-committed-packages")
+        return true;
+    return false;
 }
 
 SoftwareInstall::AllOperationsLog::AllOperationsLog()
@@ -2422,7 +2922,7 @@ bool SoftwareInstall::AllOperationsLog::has_data() const
 
 bool SoftwareInstall::AllOperationsLog::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (detail !=  nullptr && detail->has_operation())
 	|| (summary !=  nullptr && summary->has_operation());
 }
@@ -2496,8 +2996,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog
     return children;
 }
 
-void SoftwareInstall::AllOperationsLog::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::AllOperationsLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::AllOperationsLog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::AllOperationsLog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "summary")
+        return true;
+    return false;
 }
 
 SoftwareInstall::AllOperationsLog::Summary::Summary()
@@ -2518,8 +3029,8 @@ bool SoftwareInstall::AllOperationsLog::Summary::has_data() const
 
 bool SoftwareInstall::AllOperationsLog::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::AllOperationsLog::Summary::get_segment_path() const
@@ -2545,7 +3056,7 @@ const EntityPath SoftwareInstall::AllOperationsLog::Summary::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2564,12 +3075,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog
     return children;
 }
 
-void SoftwareInstall::AllOperationsLog::Summary::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::AllOperationsLog::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::AllOperationsLog::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::AllOperationsLog::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::AllOperationsLog::Detail::Detail()
@@ -2590,8 +3118,8 @@ bool SoftwareInstall::AllOperationsLog::Detail::has_data() const
 
 bool SoftwareInstall::AllOperationsLog::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::AllOperationsLog::Detail::get_segment_path() const
@@ -2617,7 +3145,7 @@ const EntityPath SoftwareInstall::AllOperationsLog::Detail::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2636,12 +3164,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::AllOperationsLog
     return children;
 }
 
-void SoftwareInstall::AllOperationsLog::Detail::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::AllOperationsLog::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::AllOperationsLog::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::AllOperationsLog::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Packages::Packages()
@@ -2670,7 +3215,7 @@ bool SoftwareInstall::Packages::has_operation() const
         if(package[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SoftwareInstall::Packages::get_segment_path() const
@@ -2735,8 +3280,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::get_ch
     return children;
 }
 
-void SoftwareInstall::Packages::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Packages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::Packages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::Packages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "package")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Packages::Package::Package()
@@ -2770,8 +3326,8 @@ bool SoftwareInstall::Packages::Package::has_data() const
 
 bool SoftwareInstall::Packages::Package::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(package_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(package_name.yfilter)
 	|| (brief !=  nullptr && brief->has_operation())
 	|| (detail !=  nullptr && detail->has_operation())
 	|| (verbose !=  nullptr && verbose->has_operation());
@@ -2800,7 +3356,7 @@ const EntityPath SoftwareInstall::Packages::Package::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (package_name.is_set || is_set(package_name.operation)) leaf_name_data.push_back(package_name.get_name_leafdata());
+    if (package_name.is_set || is_set(package_name.yfilter)) leaf_name_data.push_back(package_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2861,12 +3417,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Packag
     return children;
 }
 
-void SoftwareInstall::Packages::Package::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Packages::Package::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "package-name")
     {
         package_name = value;
+        package_name.value_namespace = name_space;
+        package_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Packages::Package::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "package-name")
+    {
+        package_name.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Packages::Package::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief" || name == "detail" || name == "verbose" || name == "package-name")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Packages::Package::Verbose::Verbose()
@@ -2887,8 +3460,8 @@ bool SoftwareInstall::Packages::Package::Verbose::has_data() const
 
 bool SoftwareInstall::Packages::Package::Verbose::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Packages::Package::Verbose::get_segment_path() const
@@ -2914,7 +3487,7 @@ const EntityPath SoftwareInstall::Packages::Package::Verbose::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2933,12 +3506,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Packag
     return children;
 }
 
-void SoftwareInstall::Packages::Package::Verbose::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Packages::Package::Verbose::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Packages::Package::Verbose::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Packages::Package::Verbose::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Packages::Package::Brief::Brief()
@@ -2959,8 +3549,8 @@ bool SoftwareInstall::Packages::Package::Brief::has_data() const
 
 bool SoftwareInstall::Packages::Package::Brief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Packages::Package::Brief::get_segment_path() const
@@ -2986,7 +3576,7 @@ const EntityPath SoftwareInstall::Packages::Package::Brief::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3005,12 +3595,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Packag
     return children;
 }
 
-void SoftwareInstall::Packages::Package::Brief::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Packages::Package::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Packages::Package::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Packages::Package::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Packages::Package::Detail::Detail()
@@ -3031,8 +3638,8 @@ bool SoftwareInstall::Packages::Package::Detail::has_data() const
 
 bool SoftwareInstall::Packages::Package::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Packages::Package::Detail::get_segment_path() const
@@ -3058,7 +3665,7 @@ const EntityPath SoftwareInstall::Packages::Package::Detail::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3077,12 +3684,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Packages::Packag
     return children;
 }
 
-void SoftwareInstall::Packages::Package::Detail::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Packages::Package::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Packages::Package::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Packages::Package::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::OperationLogs::OperationLogs()
@@ -3111,7 +3735,7 @@ bool SoftwareInstall::OperationLogs::has_operation() const
         if(operation_log[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SoftwareInstall::OperationLogs::get_segment_path() const
@@ -3176,8 +3800,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::g
     return children;
 }
 
-void SoftwareInstall::OperationLogs::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::OperationLogs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::OperationLogs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::OperationLogs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation-log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::OperationLogs::OperationLog::OperationLog()
@@ -3207,8 +3842,8 @@ bool SoftwareInstall::OperationLogs::OperationLog::has_data() const
 
 bool SoftwareInstall::OperationLogs::OperationLog::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(log_id.yfilter)
 	|| (detail !=  nullptr && detail->has_operation())
 	|| (summary !=  nullptr && summary->has_operation());
 }
@@ -3236,7 +3871,7 @@ const EntityPath SoftwareInstall::OperationLogs::OperationLog::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log_id.is_set || is_set(log_id.operation)) leaf_name_data.push_back(log_id.get_name_leafdata());
+    if (log_id.is_set || is_set(log_id.yfilter)) leaf_name_data.push_back(log_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3283,12 +3918,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::O
     return children;
 }
 
-void SoftwareInstall::OperationLogs::OperationLog::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::OperationLogs::OperationLog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log-id")
     {
         log_id = value;
+        log_id.value_namespace = name_space;
+        log_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::OperationLogs::OperationLog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log-id")
+    {
+        log_id.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::OperationLogs::OperationLog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "summary" || name == "log-id")
+        return true;
+    return false;
 }
 
 SoftwareInstall::OperationLogs::OperationLog::Summary::Summary()
@@ -3309,8 +3961,8 @@ bool SoftwareInstall::OperationLogs::OperationLog::Summary::has_data() const
 
 bool SoftwareInstall::OperationLogs::OperationLog::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::OperationLogs::OperationLog::Summary::get_segment_path() const
@@ -3336,7 +3988,7 @@ const EntityPath SoftwareInstall::OperationLogs::OperationLog::Summary::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3355,12 +4007,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::O
     return children;
 }
 
-void SoftwareInstall::OperationLogs::OperationLog::Summary::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::OperationLogs::OperationLog::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::OperationLogs::OperationLog::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::OperationLogs::OperationLog::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::OperationLogs::OperationLog::Detail::Detail()
@@ -3381,8 +4050,8 @@ bool SoftwareInstall::OperationLogs::OperationLog::Detail::has_data() const
 
 bool SoftwareInstall::OperationLogs::OperationLog::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::OperationLogs::OperationLog::Detail::get_segment_path() const
@@ -3408,7 +4077,7 @@ const EntityPath SoftwareInstall::OperationLogs::OperationLog::Detail::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3427,12 +4096,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::OperationLogs::O
     return children;
 }
 
-void SoftwareInstall::OperationLogs::OperationLog::Detail::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::OperationLogs::OperationLog::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::OperationLogs::OperationLog::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::OperationLogs::OperationLog::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Repository::Repository()
@@ -3459,7 +4145,7 @@ bool SoftwareInstall::Repository::has_data() const
 
 bool SoftwareInstall::Repository::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (all !=  nullptr && all->has_operation())
 	|| (xr !=  nullptr && xr->has_operation());
 }
@@ -3533,8 +4219,19 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::get_
     return children;
 }
 
-void SoftwareInstall::Repository::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Repository::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SoftwareInstall::Repository::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SoftwareInstall::Repository::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all" || name == "xr")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Repository::Xr::Xr()
@@ -3555,8 +4252,8 @@ bool SoftwareInstall::Repository::Xr::has_data() const
 
 bool SoftwareInstall::Repository::Xr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Repository::Xr::get_segment_path() const
@@ -3582,7 +4279,7 @@ const EntityPath SoftwareInstall::Repository::Xr::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3601,12 +4298,29 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::Xr::
     return children;
 }
 
-void SoftwareInstall::Repository::Xr::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Repository::Xr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SoftwareInstall::Repository::Xr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool SoftwareInstall::Repository::Xr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
 }
 
 SoftwareInstall::Repository::All::All()
@@ -3627,8 +4341,8 @@ bool SoftwareInstall::Repository::All::has_data() const
 
 bool SoftwareInstall::Repository::All::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log.yfilter);
 }
 
 std::string SoftwareInstall::Repository::All::get_segment_path() const
@@ -3654,7 +4368,7 @@ const EntityPath SoftwareInstall::Repository::All::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3673,86 +4387,103 @@ std::map<std::string, std::shared_ptr<Entity>> SoftwareInstall::Repository::All:
     return children;
 }
 
-void SoftwareInstall::Repository::All::set_value(const std::string & value_path, std::string value)
+void SoftwareInstall::Repository::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf IsdErrorEtEnum::none {0, "none"};
-const Enum::YLeaf IsdErrorEtEnum::not_compatible {1, "not-compatible"};
-const Enum::YLeaf IsdErrorEtEnum::not_enough_resource {2, "not-enough-resource"};
-const Enum::YLeaf IsdErrorEtEnum::not_nsr_ready {3, "not-nsr-ready"};
-const Enum::YLeaf IsdErrorEtEnum::not_conn_sdrsm {4, "not-conn-sdrsm"};
-const Enum::YLeaf IsdErrorEtEnum::cmd_invalid {5, "cmd-invalid"};
-const Enum::YLeaf IsdErrorEtEnum::load_prep_fail {6, "load-prep-fail"};
-const Enum::YLeaf IsdErrorEtEnum::error_timeout {7, "error-timeout"};
-const Enum::YLeaf IsdErrorEtEnum::err_node_down {8, "err-node-down"};
-const Enum::YLeaf IsdErrorEtEnum::node_not_ready {9, "node-not-ready"};
-const Enum::YLeaf IsdErrorEtEnum::err_node_new {10, "err-node-new"};
-const Enum::YLeaf IsdErrorEtEnum::err_card_oir {11, "err-card-oir"};
-const Enum::YLeaf IsdErrorEtEnum::invalid_evt {12, "invalid-evt"};
-const Enum::YLeaf IsdErrorEtEnum::disconn_from_calv {13, "disconn-from-calv"};
-const Enum::YLeaf IsdErrorEtEnum::gsp_down {14, "gsp-down"};
-const Enum::YLeaf IsdErrorEtEnum::abort_by_ism {15, "abort-by-ism"};
-const Enum::YLeaf IsdErrorEtEnum::rpfo {16, "rpfo"};
-const Enum::YLeaf IsdErrorEtEnum::pkg_null {17, "pkg-null"};
-const Enum::YLeaf IsdErrorEtEnum::error_general {18, "error-general"};
-const Enum::YLeaf IsdErrorEtEnum::fsa_error {19, "fsa-error"};
-const Enum::YLeaf IsdErrorEtEnum::err_post_issu {20, "err-post-issu"};
-const Enum::YLeaf IsdErrorEtEnum::err_issu_dir_restart {21, "err-issu-dir-restart"};
+void SoftwareInstall::Repository::All::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf NodeRoleEtEnum::node_unknown {0, "node-unknown"};
-const Enum::YLeaf NodeRoleEtEnum::node_active {1, "node-active"};
-const Enum::YLeaf NodeRoleEtEnum::node_standby {2, "node-standby"};
-const Enum::YLeaf NodeRoleEtEnum::node_unusable {3, "node-unusable"};
+bool SoftwareInstall::Repository::All::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf IsdStateEtEnum::none {0, "none"};
-const Enum::YLeaf IsdStateEtEnum::idle {1, "idle"};
-const Enum::YLeaf IsdStateEtEnum::init {2, "init"};
-const Enum::YLeaf IsdStateEtEnum::init_done {3, "init-done"};
-const Enum::YLeaf IsdStateEtEnum::load_prep {4, "load-prep"};
-const Enum::YLeaf IsdStateEtEnum::load_exec {5, "load-exec"};
-const Enum::YLeaf IsdStateEtEnum::load_issu_go {6, "load-issu-go"};
-const Enum::YLeaf IsdStateEtEnum::load_done {7, "load-done"};
-const Enum::YLeaf IsdStateEtEnum::run_prep {8, "run-prep"};
-const Enum::YLeaf IsdStateEtEnum::big_bang {9, "big-bang"};
-const Enum::YLeaf IsdStateEtEnum::run_done {10, "run-done"};
-const Enum::YLeaf IsdStateEtEnum::cleanup {11, "cleanup"};
-const Enum::YLeaf IsdStateEtEnum::cleanup_done {12, "cleanup-done"};
-const Enum::YLeaf IsdStateEtEnum::abort {13, "abort"};
-const Enum::YLeaf IsdStateEtEnum::abort_done {14, "abort-done"};
-const Enum::YLeaf IsdStateEtEnum::abort_cleanup {15, "abort-cleanup"};
-const Enum::YLeaf IsdStateEtEnum::unknown_state {16, "unknown-state"};
+const Enum::YLeaf IsdIssuStatusEt::ok {0, "ok"};
+const Enum::YLeaf IsdIssuStatusEt::prep_done {1, "prep-done"};
+const Enum::YLeaf IsdIssuStatusEt::big_bang {2, "big-bang"};
+const Enum::YLeaf IsdIssuStatusEt::done {3, "done"};
+const Enum::YLeaf IsdIssuStatusEt::abort {4, "abort"};
+const Enum::YLeaf IsdIssuStatusEt::cmd_reject {5, "cmd-reject"};
+const Enum::YLeaf IsdIssuStatusEt::unknown {6, "unknown"};
+const Enum::YLeaf IsdIssuStatusEt::abort_cleanup {7, "abort-cleanup"};
+const Enum::YLeaf IsdIssuStatusEt::abort_cmd_reject {8, "abort-cmd-reject"};
 
-const Enum::YLeaf IsdIssuStatusEtEnum::ok {0, "ok"};
-const Enum::YLeaf IsdIssuStatusEtEnum::prep_done {1, "prep-done"};
-const Enum::YLeaf IsdIssuStatusEtEnum::big_bang {2, "big-bang"};
-const Enum::YLeaf IsdIssuStatusEtEnum::done {3, "done"};
-const Enum::YLeaf IsdIssuStatusEtEnum::abort {4, "abort"};
-const Enum::YLeaf IsdIssuStatusEtEnum::cmd_reject {5, "cmd-reject"};
-const Enum::YLeaf IsdIssuStatusEtEnum::unknown {6, "unknown"};
-const Enum::YLeaf IsdIssuStatusEtEnum::abort_cleanup {7, "abort-cleanup"};
-const Enum::YLeaf IsdIssuStatusEtEnum::abort_cmd_reject {8, "abort-cmd-reject"};
+const Enum::YLeaf NodeRoleEt::node_unknown {0, "node-unknown"};
+const Enum::YLeaf NodeRoleEt::node_active {1, "node-active"};
+const Enum::YLeaf NodeRoleEt::node_standby {2, "node-standby"};
+const Enum::YLeaf NodeRoleEt::node_unusable {3, "node-unusable"};
 
-const Enum::YLeaf IssudirNodeStatusEtEnum::not_issu_ready {0, "not-issu-ready"};
-const Enum::YLeaf IssudirNodeStatusEtEnum::issu_ready {1, "issu-ready"};
-const Enum::YLeaf IssudirNodeStatusEtEnum::isus_go {2, "isus-go"};
-const Enum::YLeaf IssudirNodeStatusEtEnum::node_fail {3, "node-fail"};
+const Enum::YLeaf IssuNodeRoleEt::unknown_role {0, "unknown-role"};
+const Enum::YLeaf IssuNodeRoleEt::primary_role {1, "primary-role"};
+const Enum::YLeaf IssuNodeRoleEt::secondary_role {2, "secondary-role"};
+const Enum::YLeaf IssuNodeRoleEt::tertiary_role {3, "tertiary-role"};
 
-const Enum::YLeaf IssuNodeRoleEtEnum::unknown_role {0, "unknown-role"};
-const Enum::YLeaf IssuNodeRoleEtEnum::primary_role {1, "primary-role"};
-const Enum::YLeaf IssuNodeRoleEtEnum::secondary_role {2, "secondary-role"};
-const Enum::YLeaf IssuNodeRoleEtEnum::tertiary_role {3, "tertiary-role"};
+const Enum::YLeaf CardTypeEt::card_rp {0, "card-rp"};
+const Enum::YLeaf CardTypeEt::card_drp {1, "card-drp"};
+const Enum::YLeaf CardTypeEt::card_lc {2, "card-lc"};
+const Enum::YLeaf CardTypeEt::card_sc {3, "card-sc"};
+const Enum::YLeaf CardTypeEt::card_sp {4, "card-sp"};
+const Enum::YLeaf CardTypeEt::card_other {5, "card-other"};
 
-const Enum::YLeaf CardTypeEtEnum::card_rp {0, "card-rp"};
-const Enum::YLeaf CardTypeEtEnum::card_drp {1, "card-drp"};
-const Enum::YLeaf CardTypeEtEnum::card_lc {2, "card-lc"};
-const Enum::YLeaf CardTypeEtEnum::card_sc {3, "card-sc"};
-const Enum::YLeaf CardTypeEtEnum::card_sp {4, "card-sp"};
-const Enum::YLeaf CardTypeEtEnum::card_other {5, "card-other"};
+const Enum::YLeaf IsdErrorEt::none {0, "none"};
+const Enum::YLeaf IsdErrorEt::not_compatible {1, "not-compatible"};
+const Enum::YLeaf IsdErrorEt::not_enough_resource {2, "not-enough-resource"};
+const Enum::YLeaf IsdErrorEt::not_nsr_ready {3, "not-nsr-ready"};
+const Enum::YLeaf IsdErrorEt::not_conn_sdrsm {4, "not-conn-sdrsm"};
+const Enum::YLeaf IsdErrorEt::cmd_invalid {5, "cmd-invalid"};
+const Enum::YLeaf IsdErrorEt::load_prep_fail {6, "load-prep-fail"};
+const Enum::YLeaf IsdErrorEt::error_timeout {7, "error-timeout"};
+const Enum::YLeaf IsdErrorEt::err_node_down {8, "err-node-down"};
+const Enum::YLeaf IsdErrorEt::node_not_ready {9, "node-not-ready"};
+const Enum::YLeaf IsdErrorEt::err_node_new {10, "err-node-new"};
+const Enum::YLeaf IsdErrorEt::err_card_oir {11, "err-card-oir"};
+const Enum::YLeaf IsdErrorEt::invalid_evt {12, "invalid-evt"};
+const Enum::YLeaf IsdErrorEt::disconn_from_calv {13, "disconn-from-calv"};
+const Enum::YLeaf IsdErrorEt::gsp_down {14, "gsp-down"};
+const Enum::YLeaf IsdErrorEt::abort_by_ism {15, "abort-by-ism"};
+const Enum::YLeaf IsdErrorEt::rpfo {16, "rpfo"};
+const Enum::YLeaf IsdErrorEt::pkg_null {17, "pkg-null"};
+const Enum::YLeaf IsdErrorEt::error_general {18, "error-general"};
+const Enum::YLeaf IsdErrorEt::fsa_error {19, "fsa-error"};
+const Enum::YLeaf IsdErrorEt::err_post_issu {20, "err-post-issu"};
+const Enum::YLeaf IsdErrorEt::err_issu_dir_restart {21, "err-issu-dir-restart"};
+
+const Enum::YLeaf IssudirNodeStatusEt::not_issu_ready {0, "not-issu-ready"};
+const Enum::YLeaf IssudirNodeStatusEt::issu_ready {1, "issu-ready"};
+const Enum::YLeaf IssudirNodeStatusEt::isus_go {2, "isus-go"};
+const Enum::YLeaf IssudirNodeStatusEt::node_fail {3, "node-fail"};
+
+const Enum::YLeaf IsdStateEt::none {0, "none"};
+const Enum::YLeaf IsdStateEt::idle {1, "idle"};
+const Enum::YLeaf IsdStateEt::init {2, "init"};
+const Enum::YLeaf IsdStateEt::init_done {3, "init-done"};
+const Enum::YLeaf IsdStateEt::load_prep {4, "load-prep"};
+const Enum::YLeaf IsdStateEt::load_exec {5, "load-exec"};
+const Enum::YLeaf IsdStateEt::load_issu_go {6, "load-issu-go"};
+const Enum::YLeaf IsdStateEt::load_done {7, "load-done"};
+const Enum::YLeaf IsdStateEt::run_prep {8, "run-prep"};
+const Enum::YLeaf IsdStateEt::big_bang {9, "big-bang"};
+const Enum::YLeaf IsdStateEt::run_done {10, "run-done"};
+const Enum::YLeaf IsdStateEt::cleanup {11, "cleanup"};
+const Enum::YLeaf IsdStateEt::cleanup_done {12, "cleanup-done"};
+const Enum::YLeaf IsdStateEt::abort {13, "abort"};
+const Enum::YLeaf IsdStateEt::abort_done {14, "abort-done"};
+const Enum::YLeaf IsdStateEt::abort_cleanup {15, "abort-cleanup"};
+const Enum::YLeaf IsdStateEt::unknown_state {16, "unknown-state"};
 
 
 }

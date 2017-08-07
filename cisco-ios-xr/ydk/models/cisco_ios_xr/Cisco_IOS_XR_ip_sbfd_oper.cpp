@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_sbfd_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_sbfd_oper {
 
 Sbfd::Sbfd()
@@ -29,7 +31,7 @@ bool Sbfd::has_data() const
 
 bool Sbfd::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (target_identifier !=  nullptr && target_identifier->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::get_children() const
     return children;
 }
 
-void Sbfd::set_value(const std::string & value_path, std::string value)
+void Sbfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sbfd::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Sbfd::get_bundle_name() const
 augment_capabilities_function Sbfd::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Sbfd::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Sbfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "target-identifier")
+        return true;
+    return false;
 }
 
 Sbfd::TargetIdentifier::TargetIdentifier()
@@ -133,7 +151,7 @@ bool Sbfd::TargetIdentifier::has_data() const
 
 bool Sbfd::TargetIdentifier::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (local_vrfs !=  nullptr && local_vrfs->has_operation())
 	|| (remote_vrfs !=  nullptr && remote_vrfs->has_operation());
 }
@@ -207,8 +225,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::get_child
     return children;
 }
 
-void Sbfd::TargetIdentifier::set_value(const std::string & value_path, std::string value)
+void Sbfd::TargetIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sbfd::TargetIdentifier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sbfd::TargetIdentifier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-vrfs" || name == "remote-vrfs")
+        return true;
+    return false;
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrfs()
@@ -237,7 +266,7 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::has_operation() const
         if(remote_vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sbfd::TargetIdentifier::RemoteVrfs::get_segment_path() const
@@ -302,8 +331,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrf
     return children;
 }
 
-void Sbfd::TargetIdentifier::RemoteVrfs::set_value(const std::string & value_path, std::string value)
+void Sbfd::TargetIdentifier::RemoteVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sbfd::TargetIdentifier::RemoteVrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sbfd::TargetIdentifier::RemoteVrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remote-vrf")
+        return true;
+    return false;
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteVrf()
@@ -334,8 +374,8 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::has_operation() const
         if(remote_discriminator[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_segment_path() const
@@ -361,7 +401,7 @@ const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -401,12 +441,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrf
     return children;
 }
 
-void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::set_value(const std::string & value_path, std::string value)
+void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remote-discriminator" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::RemoteDiscriminator()
@@ -446,15 +503,15 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::has_dat
 
 bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(discr.operation)
-	|| is_set(discr_src.operation)
-	|| is_set(remote_discriminator.operation)
-	|| is_set(status.operation)
-	|| is_set(tid_type.operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(vrf_name_xr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(discr.yfilter)
+	|| ydk::is_set(discr_src.yfilter)
+	|| ydk::is_set(remote_discriminator.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(tid_type.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(vrf_name_xr.yfilter)
 	|| (ip_address !=  nullptr && ip_address->has_operation());
 }
 
@@ -481,14 +538,14 @@ const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscrimina
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (discr.is_set || is_set(discr.operation)) leaf_name_data.push_back(discr.get_name_leafdata());
-    if (discr_src.is_set || is_set(discr_src.operation)) leaf_name_data.push_back(discr_src.get_name_leafdata());
-    if (remote_discriminator.is_set || is_set(remote_discriminator.operation)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (tid_type.is_set || is_set(tid_type.operation)) leaf_name_data.push_back(tid_type.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (vrf_name_xr.is_set || is_set(vrf_name_xr.operation)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (discr.is_set || is_set(discr.yfilter)) leaf_name_data.push_back(discr.get_name_leafdata());
+    if (discr_src.is_set || is_set(discr_src.yfilter)) leaf_name_data.push_back(discr_src.get_name_leafdata());
+    if (remote_discriminator.is_set || is_set(remote_discriminator.yfilter)) leaf_name_data.push_back(remote_discriminator.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (tid_type.is_set || is_set(tid_type.yfilter)) leaf_name_data.push_back(tid_type.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -521,40 +578,99 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrf
     return children;
 }
 
-void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::set_value(const std::string & value_path, std::string value)
+void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discr")
     {
         discr = value;
+        discr.value_namespace = name_space;
+        discr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discr-src")
     {
         discr_src = value;
+        discr_src.value_namespace = name_space;
+        discr_src.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-discriminator")
     {
         remote_discriminator = value;
+        remote_discriminator.value_namespace = name_space;
+        remote_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tid-type")
     {
         tid_type = value;
+        tid_type.value_namespace = name_space;
+        tid_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name-xr")
     {
         vrf_name_xr = value;
+        vrf_name_xr.value_namespace = name_space;
+        vrf_name_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "discr")
+    {
+        discr.yfilter = yfilter;
+    }
+    if(value_path == "discr-src")
+    {
+        discr_src.yfilter = yfilter;
+    }
+    if(value_path == "remote-discriminator")
+    {
+        remote_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "tid-type")
+    {
+        tid_type.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name-xr")
+    {
+        vrf_name_xr.yfilter = yfilter;
+    }
+}
+
+bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address" || name == "address" || name == "discr" || name == "discr-src" || name == "remote-discriminator" || name == "status" || name == "tid-type" || name == "vrf-name" || name == "vrf-name-xr")
+        return true;
+    return false;
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::IpAddress()
@@ -581,11 +697,11 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddre
 
 bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi.operation)
-	|| is_set(dummy.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(dummy.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::get_segment_path() const
@@ -611,10 +727,10 @@ const EntityPath Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscrimina
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi.is_set || is_set(afi.operation)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (dummy.is_set || is_set(dummy.operation)) leaf_name_data.push_back(dummy.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (dummy.is_set || is_set(dummy.yfilter)) leaf_name_data.push_back(dummy.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -633,24 +749,59 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrf
     return children;
 }
 
-void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::set_value(const std::string & value_path, std::string value)
+void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
         afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dummy")
     {
         dummy = value;
+        dummy.value_namespace = name_space;
+        dummy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "dummy")
+    {
+        dummy.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Sbfd::TargetIdentifier::LocalVrfs::LocalVrfs()
@@ -679,7 +830,7 @@ bool Sbfd::TargetIdentifier::LocalVrfs::has_operation() const
         if(local_vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sbfd::TargetIdentifier::LocalVrfs::get_segment_path() const
@@ -744,8 +895,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs
     return children;
 }
 
-void Sbfd::TargetIdentifier::LocalVrfs::set_value(const std::string & value_path, std::string value)
+void Sbfd::TargetIdentifier::LocalVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sbfd::TargetIdentifier::LocalVrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-vrf")
+        return true;
+    return false;
 }
 
 Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalVrf()
@@ -776,8 +938,8 @@ bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_operation() const
         if(local_discriminator[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_segment_path() const
@@ -803,7 +965,7 @@ const EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -843,12 +1005,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs
     return children;
 }
 
-void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::set_value(const std::string & value_path, std::string value)
+void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-discriminator" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::LocalDiscriminator()
@@ -881,14 +1060,14 @@ bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_data()
 
 bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(discr.operation)
-	|| is_set(discr_src.operation)
-	|| is_set(flags.operation)
-	|| is_set(local_discriminator.operation)
-	|| is_set(status.operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(vrf_name_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(discr.yfilter)
+	|| ydk::is_set(discr_src.yfilter)
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(local_discriminator.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(vrf_name_xr.yfilter);
 }
 
 std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get_segment_path() const
@@ -914,13 +1093,13 @@ const EntityPath Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (discr.is_set || is_set(discr.operation)) leaf_name_data.push_back(discr.get_name_leafdata());
-    if (discr_src.is_set || is_set(discr_src.operation)) leaf_name_data.push_back(discr_src.get_name_leafdata());
-    if (flags.is_set || is_set(flags.operation)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (local_discriminator.is_set || is_set(local_discriminator.operation)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (vrf_name_xr.is_set || is_set(vrf_name_xr.operation)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
+    if (discr.is_set || is_set(discr.yfilter)) leaf_name_data.push_back(discr.get_name_leafdata());
+    if (discr_src.is_set || is_set(discr_src.yfilter)) leaf_name_data.push_back(discr_src.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (local_discriminator.is_set || is_set(local_discriminator.yfilter)) leaf_name_data.push_back(local_discriminator.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -939,44 +1118,97 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs
     return children;
 }
 
-void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::set_value(const std::string & value_path, std::string value)
+void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "discr")
     {
         discr = value;
+        discr.value_namespace = name_space;
+        discr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discr-src")
     {
         discr_src = value;
+        discr_src.value_namespace = name_space;
+        discr_src.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flags")
     {
         flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-discriminator")
     {
         local_discriminator = value;
+        local_discriminator.value_namespace = name_space;
+        local_discriminator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name-xr")
     {
         vrf_name_xr = value;
+        vrf_name_xr.value_namespace = name_space;
+        vrf_name_xr.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SbfdAddressFamilyEnum::ipv4 {1, "ipv4"};
-const Enum::YLeaf SbfdAddressFamilyEnum::ipv6 {2, "ipv6"};
+void Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discr")
+    {
+        discr.yfilter = yfilter;
+    }
+    if(value_path == "discr-src")
+    {
+        discr_src.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+    if(value_path == "local-discriminator")
+    {
+        local_discriminator.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name-xr")
+    {
+        vrf_name_xr.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf BfdAfIdEnum::bfd_af_id_none {0, "bfd-af-id-none"};
-const Enum::YLeaf BfdAfIdEnum::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
-const Enum::YLeaf BfdAfIdEnum::bfd_af_id_ipv6 {10, "bfd-af-id-ipv6"};
+bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discr" || name == "discr-src" || name == "flags" || name == "local-discriminator" || name == "status" || name == "vrf-name" || name == "vrf-name-xr")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf BfdAfId::bfd_af_id_none {0, "bfd-af-id-none"};
+const Enum::YLeaf BfdAfId::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
+const Enum::YLeaf BfdAfId::bfd_af_id_ipv6 {10, "bfd-af-id-ipv6"};
+
+const Enum::YLeaf SbfdAddressFamily::ipv4 {1, "ipv4"};
+const Enum::YLeaf SbfdAddressFamily::ipv6 {2, "ipv6"};
 
 
 }

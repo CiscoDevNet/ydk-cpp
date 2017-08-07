@@ -7,7 +7,9 @@
 #include "Cisco_IOS_XR_pmengine_oper_2.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_3.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pmengine_oper {
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::SonetHour24Path()
@@ -49,14 +51,14 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -84,13 +86,13 @@ const EntityPath PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -137,36 +139,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::Path()
@@ -206,9 +261,9 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
-	|| is_set(path_width.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
+	|| ydk::is_set(path_width.yfilter)
 	|| (path_c_vs !=  nullptr && path_c_vs->has_operation())
 	|| (path_e_ss !=  nullptr && path_e_ss->has_operation())
 	|| (path_se_ss !=  nullptr && path_se_ss->has_operation())
@@ -238,8 +293,8 @@ const EntityPath PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
-    if (path_width.is_set || is_set(path_width.operation)) leaf_name_data.push_back(path_width.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_width.is_set || is_set(path_width.yfilter)) leaf_name_data.push_back(path_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -314,16 +369,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-width")
     {
         path_width = value;
+        path_width.value_namespace = name_space;
+        path_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+    if(value_path == "path-width")
+    {
+        path_width.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-c-vs" || name == "path-e-ss" || name == "path-se-ss" || name == "path-ua-ss" || name == "path-status" || name == "path-width")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::PathESs()
@@ -348,10 +426,10 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::get_segment_path() const
@@ -377,9 +455,9 @@ const EntityPath PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -398,20 +476,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::PathSeSs()
@@ -436,10 +543,10 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::get_segment_path() const
@@ -465,9 +572,9 @@ const EntityPath PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -486,20 +593,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::PathCVs()
@@ -524,10 +660,10 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::get_segment_path() const
@@ -553,9 +689,9 @@ const EntityPath PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -574,20 +710,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::PathUaSs()
@@ -612,10 +777,10 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::get_segment_path() const
@@ -641,9 +806,9 @@ const EntityPath PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -662,20 +827,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::FePath()
@@ -702,11 +896,11 @@ bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHou
 
 bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::get_segment_path() const
@@ -732,10 +926,10 @@ const EntityPath PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -754,24 +948,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sonet::Son
     return children;
 }
 
-void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sonet::SonetPorts::SonetPort::SonetCurrent::SonetHour24::SonetHour24Paths::SonetHour24Path::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::Optics()
@@ -794,7 +1023,7 @@ bool PerformanceManagement::Optics::has_data() const
 
 bool PerformanceManagement::Optics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (optics_ports !=  nullptr && optics_ports->has_operation());
 }
 
@@ -853,8 +1082,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::ge
     return children;
 }
 
-void PerformanceManagement::Optics::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-ports")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPorts()
@@ -883,7 +1123,7 @@ bool PerformanceManagement::Optics::OpticsPorts::has_operation() const
         if(optics_port[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::get_segment_path() const
@@ -948,8 +1188,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-port")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsPort()
@@ -975,8 +1226,8 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::has_data() const
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (optics_current !=  nullptr && optics_current->has_operation());
 }
 
@@ -1003,7 +1254,7 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1036,12 +1287,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-current" || name == "name")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsCurrent()
@@ -1072,7 +1340,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::has_
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (optics_hour24 !=  nullptr && optics_hour24->has_operation())
 	|| (optics_minute15 !=  nullptr && optics_minute15->has_operation())
 	|| (optics_second30 !=  nullptr && optics_second30->has_operation());
@@ -1161,8 +1429,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-hour24" || name == "optics-minute15" || name == "optics-second30")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24()
@@ -1189,7 +1468,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (optics_hour24_optics !=  nullptr && optics_hour24_optics->has_operation())
 	|| (optics_hour24fecs !=  nullptr && optics_hour24fecs->has_operation());
 }
@@ -1263,8 +1542,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-hour24-optics" || name == "optics-hour24fecs")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optics()
@@ -1293,7 +1583,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         if(optics_hour24_optic[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::get_segment_path() const
@@ -1358,8 +1648,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-hour24-optic")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::OpticsHour24Optic()
@@ -1453,16 +1754,16 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (cd !=  nullptr && cd->has_operation())
 	|| (center_wavelength !=  nullptr && center_wavelength->has_operation())
 	|| (dgd !=  nullptr && dgd->has_operation())
@@ -1502,15 +1803,15 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1725,44 +2026,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cd" || name == "center-wavelength" || name == "dgd" || name == "lbc" || name == "lbc-pc" || name == "low-sig-freq-off" || name == "opr" || name == "opt" || name == "osnr" || name == "pcr" || name == "pdl" || name == "pmd" || name == "pn" || name == "rx-sig-pow" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::Lbc()
@@ -1797,15 +2163,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::get_segment_path() const
@@ -1831,14 +2197,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1857,40 +2223,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::LbcPc()
@@ -1925,15 +2350,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::get_segment_path() const
@@ -1959,14 +2384,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1985,40 +2410,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::Opt()
@@ -2053,15 +2537,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::get_segment_path() const
@@ -2087,14 +2571,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2113,40 +2597,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::Opr()
@@ -2181,15 +2724,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::get_segment_path() const
@@ -2215,14 +2758,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2241,40 +2784,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::Cd()
@@ -2309,15 +2911,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::get_segment_path() const
@@ -2343,14 +2945,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2369,40 +2971,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::Dgd()
@@ -2437,15 +3098,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::get_segment_path() const
@@ -2471,14 +3132,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2497,40 +3158,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::Pmd()
@@ -2565,15 +3285,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::get_segment_path() const
@@ -2599,14 +3319,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2625,40 +3345,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::Osnr()
@@ -2693,15 +3472,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::get_segment_path() const
@@ -2727,14 +3506,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2753,40 +3532,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::CenterWavelength()
@@ -2821,15 +3659,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::get_segment_path() const
@@ -2855,14 +3693,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2881,40 +3719,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::Pdl()
@@ -2949,15 +3846,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::get_segment_path() const
@@ -2983,14 +3880,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3009,40 +3906,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::Pcr()
@@ -3077,15 +4033,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::get_segment_path() const
@@ -3111,14 +4067,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3137,40 +4093,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::Pn()
@@ -3205,15 +4220,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::get_segment_path() const
@@ -3239,14 +4254,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3265,40 +4280,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::RxSigPow()
@@ -3333,15 +4407,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::get_segment_path() const
@@ -3367,14 +4441,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3393,40 +4467,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::LowSigFreqOff()
@@ -3461,15 +4594,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::get_segment_path() const
@@ -3495,14 +4628,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3521,40 +4654,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Optics::OpticsHour24Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fecs()
@@ -3583,7 +4775,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         if(optics_hour24fec[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::get_segment_path() const
@@ -3648,8 +4840,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-hour24fec")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::OpticsHour24Fec()
@@ -3711,16 +4914,16 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (ec_bits !=  nullptr && ec_bits->has_operation())
 	|| (post_fec_ber !=  nullptr && post_fec_ber->has_operation())
 	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_operation())
@@ -3752,15 +4955,15 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3863,44 +5066,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ec-bits" || name == "post-fec-ber" || name == "pre-fec-ber" || name == "q" || name == "qmargin" || name == "uc-words" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::EcBits()
@@ -3927,11 +5195,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::get_segment_path() const
@@ -3957,10 +5225,10 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3979,24 +5247,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::UcWords()
@@ -4023,11 +5326,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::get_segment_path() const
@@ -4053,10 +5356,10 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4075,24 +5378,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::PreFecBer()
@@ -4127,15 +5465,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::get_segment_path() const
@@ -4161,14 +5499,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4187,40 +5525,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::PostFecBer()
@@ -4255,15 +5652,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::get_segment_path() const
@@ -4289,14 +5686,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4315,40 +5712,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::Q()
@@ -4383,15 +5839,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::get_segment_path() const
@@ -4417,14 +5873,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4443,40 +5899,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::Qmargin()
@@ -4511,15 +6026,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::get_segment_path() const
@@ -4545,14 +6060,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4571,40 +6086,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsHour24::OpticsHour24Fecs::OpticsHour24Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15()
@@ -4631,7 +6205,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (optics_minute15_optics !=  nullptr && optics_minute15_optics->has_operation())
 	|| (optics_minute15fecs !=  nullptr && optics_minute15fecs->has_operation());
 }
@@ -4705,8 +6279,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-minute15-optics" || name == "optics-minute15fecs")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optics()
@@ -4735,7 +6320,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         if(optics_minute15_optic[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::get_segment_path() const
@@ -4800,8 +6385,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-minute15-optic")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::OpticsMinute15Optic()
@@ -4895,16 +6491,16 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (cd !=  nullptr && cd->has_operation())
 	|| (center_wavelength !=  nullptr && center_wavelength->has_operation())
 	|| (dgd !=  nullptr && dgd->has_operation())
@@ -4944,15 +6540,15 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5167,44 +6763,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cd" || name == "center-wavelength" || name == "dgd" || name == "lbc" || name == "lbc-pc" || name == "low-sig-freq-off" || name == "opr" || name == "opt" || name == "osnr" || name == "pcr" || name == "pdl" || name == "pmd" || name == "pn" || name == "rx-sig-pow" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::Lbc()
@@ -5239,15 +6900,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::get_segment_path() const
@@ -5273,14 +6934,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5299,40 +6960,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::LbcPc()
@@ -5367,15 +7087,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::get_segment_path() const
@@ -5401,14 +7121,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5427,40 +7147,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::Opt()
@@ -5495,15 +7274,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::get_segment_path() const
@@ -5529,14 +7308,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5555,40 +7334,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::Opr()
@@ -5623,15 +7461,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::get_segment_path() const
@@ -5657,14 +7495,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5683,40 +7521,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::Cd()
@@ -5751,15 +7648,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::get_segment_path() const
@@ -5785,14 +7682,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5811,40 +7708,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::Dgd()
@@ -5879,15 +7835,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::get_segment_path() const
@@ -5913,14 +7869,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5939,40 +7895,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::Pmd()
@@ -6007,15 +8022,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::get_segment_path() const
@@ -6041,14 +8056,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6067,40 +8082,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::Osnr()
@@ -6135,15 +8209,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::get_segment_path() const
@@ -6169,14 +8243,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6195,40 +8269,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::CenterWavelength()
@@ -6263,15 +8396,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::get_segment_path() const
@@ -6297,14 +8430,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6323,40 +8456,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::Pdl()
@@ -6391,15 +8583,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::get_segment_path() const
@@ -6425,14 +8617,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6451,40 +8643,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::Pcr()
@@ -6519,15 +8770,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::get_segment_path() const
@@ -6553,14 +8804,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6579,40 +8830,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::Pn()
@@ -6647,15 +8957,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::get_segment_path() const
@@ -6681,14 +8991,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6707,40 +9017,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::RxSigPow()
@@ -6775,15 +9144,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::get_segment_path() const
@@ -6809,14 +9178,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6835,40 +9204,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::LowSigFreqOff()
@@ -6903,15 +9331,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::get_segment_path() const
@@ -6937,14 +9365,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6963,40 +9391,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Optics::OpticsMinute15Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fecs()
@@ -7025,7 +9512,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         if(optics_minute15fec[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::get_segment_path() const
@@ -7090,8 +9577,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-minute15fec")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::OpticsMinute15Fec()
@@ -7153,16 +9651,16 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (ec_bits !=  nullptr && ec_bits->has_operation())
 	|| (post_fec_ber !=  nullptr && post_fec_ber->has_operation())
 	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_operation())
@@ -7194,15 +9692,15 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7305,44 +9803,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ec-bits" || name == "post-fec-ber" || name == "pre-fec-ber" || name == "q" || name == "qmargin" || name == "uc-words" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::EcBits()
@@ -7369,11 +9932,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::get_segment_path() const
@@ -7399,10 +9962,10 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7421,24 +9984,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::UcWords()
@@ -7465,11 +10063,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::get_segment_path() const
@@ -7495,10 +10093,10 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7517,24 +10115,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::PreFecBer()
@@ -7569,15 +10202,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::get_segment_path() const
@@ -7603,14 +10236,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7629,40 +10262,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::PostFecBer()
@@ -7697,15 +10389,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::get_segment_path() const
@@ -7731,14 +10423,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7757,40 +10449,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::Q()
@@ -7825,15 +10576,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::get_segment_path() const
@@ -7859,14 +10610,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7885,40 +10636,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::Qmargin()
@@ -7953,15 +10763,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::get_segment_path() const
@@ -7987,14 +10797,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8013,40 +10823,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsMinute15::OpticsMinute15Fecs::OpticsMinute15Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30()
@@ -8073,7 +10942,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (optics_second30_optics !=  nullptr && optics_second30_optics->has_operation())
 	|| (optics_second30fecs !=  nullptr && optics_second30fecs->has_operation());
 }
@@ -8147,8 +11016,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-second30-optics" || name == "optics-second30fecs")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fecs()
@@ -8177,7 +11057,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         if(optics_second30fec[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::get_segment_path() const
@@ -8242,8 +11122,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-second30fec")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::OpticsSecond30Fec()
@@ -8305,16 +11196,16 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (ec_bits !=  nullptr && ec_bits->has_operation())
 	|| (post_fec_ber !=  nullptr && post_fec_ber->has_operation())
 	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_operation())
@@ -8346,15 +11237,15 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8457,44 +11348,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ec-bits" || name == "post-fec-ber" || name == "pre-fec-ber" || name == "q" || name == "qmargin" || name == "uc-words" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::EcBits()
@@ -8521,11 +11477,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::get_segment_path() const
@@ -8551,10 +11507,10 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8573,24 +11529,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::UcWords()
@@ -8617,11 +11608,11 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::get_segment_path() const
@@ -8647,10 +11638,10 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8669,24 +11660,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::PreFecBer()
@@ -8721,15 +11747,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::get_segment_path() const
@@ -8755,14 +11781,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8781,40 +11807,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::PostFecBer()
@@ -8849,15 +11934,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::get_segment_path() const
@@ -8883,14 +11968,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8909,40 +11994,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::Q()
@@ -8977,15 +12121,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::get_segment_path() const
@@ -9011,14 +12155,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9037,40 +12181,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::Qmargin()
@@ -9105,15 +12308,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::get_segment_path() const
@@ -9139,14 +12342,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9165,40 +12368,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Fecs::OpticsSecond30Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optics()
@@ -9227,7 +12489,7 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
         if(optics_second30_optic[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::get_segment_path() const
@@ -9292,8 +12554,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-second30-optic")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::OpticsSecond30Optic()
@@ -9387,16 +12660,16 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (cd !=  nullptr && cd->has_operation())
 	|| (center_wavelength !=  nullptr && center_wavelength->has_operation())
 	|| (dgd !=  nullptr && dgd->has_operation())
@@ -9436,15 +12709,15 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9659,44 +12932,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cd" || name == "center-wavelength" || name == "dgd" || name == "lbc" || name == "lbc-pc" || name == "low-sig-freq-off" || name == "opr" || name == "opt" || name == "osnr" || name == "pcr" || name == "pdl" || name == "pmd" || name == "pn" || name == "rx-sig-pow" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::Lbc()
@@ -9731,15 +13069,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::get_segment_path() const
@@ -9765,14 +13103,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9791,40 +13129,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::LbcPc()
@@ -9859,15 +13256,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::get_segment_path() const
@@ -9893,14 +13290,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9919,40 +13316,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::Opt()
@@ -9987,15 +13443,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::get_segment_path() const
@@ -10021,14 +13477,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10047,40 +13503,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::Opr()
@@ -10115,15 +13630,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::get_segment_path() const
@@ -10149,14 +13664,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10175,40 +13690,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::Cd()
@@ -10243,15 +13817,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::get_segment_path() const
@@ -10277,14 +13851,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10303,40 +13877,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::Dgd()
@@ -10371,15 +14004,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::get_segment_path() const
@@ -10405,14 +14038,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10431,40 +14064,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::Pmd()
@@ -10499,15 +14191,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::get_segment_path() const
@@ -10533,14 +14225,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10559,40 +14251,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::Osnr()
@@ -10627,15 +14378,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::get_segment_path() const
@@ -10661,14 +14412,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10687,40 +14438,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::CenterWavelength()
@@ -10755,15 +14565,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::get_segment_path() const
@@ -10789,14 +14599,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10815,40 +14625,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::Pdl()
@@ -10883,15 +14752,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::get_segment_path() const
@@ -10917,14 +14786,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10943,40 +14812,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::Pcr()
@@ -11011,15 +14939,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::get_segment_path() const
@@ -11045,14 +14973,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11071,40 +14999,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::Pn()
@@ -11139,15 +15126,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::get_segment_path() const
@@ -11173,14 +15160,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11199,40 +15186,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::RxSigPow()
@@ -11267,15 +15313,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::get_segment_path() const
@@ -11301,14 +15347,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11327,40 +15373,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::LowSigFreqOff()
@@ -11395,15 +15500,15 @@ bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::Opti
 
 bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::get_segment_path() const
@@ -11429,14 +15534,14 @@ const EntityPath PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11455,40 +15560,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Optics::Op
     return children;
 }
 
-void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Optics::OpticsPorts::OpticsPort::OpticsCurrent::OpticsSecond30::OpticsSecond30Optics::OpticsSecond30Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::Sts()
@@ -11511,7 +15675,7 @@ bool PerformanceManagement::Sts::has_data() const
 
 bool PerformanceManagement::Sts::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sts_ports !=  nullptr && sts_ports->has_operation());
 }
 
@@ -11570,8 +15734,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::get_c
     return children;
 }
 
-void PerformanceManagement::Sts::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Sts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Sts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-ports")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPorts()
@@ -11600,7 +15775,7 @@ bool PerformanceManagement::Sts::StsPorts::has_operation() const
         if(sts_port[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::get_segment_path() const
@@ -11665,8 +15840,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Sts::StsPorts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-port")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsPort()
@@ -11692,8 +15878,8 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::has_data() const
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (sts_current !=  nullptr && sts_current->has_operation());
 }
 
@@ -11720,7 +15906,7 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11753,12 +15939,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-current" || name == "name")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsCurrent()
@@ -11785,7 +15988,7 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::has_data() const
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sts_hour24 !=  nullptr && sts_hour24->has_operation())
 	|| (sts_minute15 !=  nullptr && sts_minute15->has_operation());
 }
@@ -11859,8 +16062,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24" || name == "sts-minute15")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15()
@@ -11883,7 +16097,7 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::has
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sts_minute15_paths !=  nullptr && sts_minute15_paths->has_operation());
 }
 
@@ -11942,8 +16156,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-minute15-paths")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Paths()
@@ -11972,7 +16197,7 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
         if(sts_minute15_path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::get_segment_path() const
@@ -12037,8 +16262,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-minute15-path")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::StsMinute15Path()
@@ -12080,14 +16316,14 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -12115,13 +16351,13 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12168,36 +16404,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::Path()
@@ -12237,9 +16526,9 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
-	|| is_set(path_width.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
+	|| ydk::is_set(path_width.yfilter)
 	|| (path_c_vs !=  nullptr && path_c_vs->has_operation())
 	|| (path_e_ss !=  nullptr && path_e_ss->has_operation())
 	|| (path_se_ss !=  nullptr && path_se_ss->has_operation())
@@ -12269,8 +16558,8 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
-    if (path_width.is_set || is_set(path_width.operation)) leaf_name_data.push_back(path_width.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_width.is_set || is_set(path_width.yfilter)) leaf_name_data.push_back(path_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12345,16 +16634,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-width")
     {
         path_width = value;
+        path_width.value_namespace = name_space;
+        path_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+    if(value_path == "path-width")
+    {
+        path_width.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-c-vs" || name == "path-e-ss" || name == "path-se-ss" || name == "path-ua-ss" || name == "path-status" || name == "path-width")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::PathESs()
@@ -12379,10 +16691,10 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::get_segment_path() const
@@ -12408,9 +16720,9 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12429,20 +16741,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::PathSeSs()
@@ -12467,10 +16808,10 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::get_segment_path() const
@@ -12496,9 +16837,9 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12517,20 +16858,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::PathCVs()
@@ -12555,10 +16925,10 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::get_segment_path() const
@@ -12584,9 +16954,9 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12605,20 +16975,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::PathUaSs()
@@ -12643,10 +17042,10 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::get_segment_path() const
@@ -12672,9 +17071,9 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12693,20 +17092,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::FePath()
@@ -12733,11 +17161,11 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::Sts
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::get_segment_path() const
@@ -12763,10 +17191,10 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12785,24 +17213,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsMinute15::StsMinute15Paths::StsMinute15Path::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24()
@@ -12825,7 +17288,7 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_d
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sts_hour24_paths !=  nullptr && sts_hour24_paths->has_operation());
 }
 
@@ -12884,8 +17347,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24-paths")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Paths()
@@ -12914,7 +17388,7 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
         if(sts_hour24_path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::get_segment_path() const
@@ -12979,8 +17453,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24-path")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::StsHour24Path()
@@ -13022,14 +17507,14 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -13057,13 +17542,13 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsH
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13110,36 +17595,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::Path()
@@ -13179,9 +17717,9 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
-	|| is_set(path_width.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
+	|| ydk::is_set(path_width.yfilter)
 	|| (path_c_vs !=  nullptr && path_c_vs->has_operation())
 	|| (path_e_ss !=  nullptr && path_e_ss->has_operation())
 	|| (path_se_ss !=  nullptr && path_se_ss->has_operation())
@@ -13211,8 +17749,8 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsH
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
-    if (path_width.is_set || is_set(path_width.operation)) leaf_name_data.push_back(path_width.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_width.is_set || is_set(path_width.yfilter)) leaf_name_data.push_back(path_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13287,16 +17825,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-width")
     {
         path_width = value;
+        path_width.value_namespace = name_space;
+        path_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+    if(value_path == "path-width")
+    {
+        path_width.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-c-vs" || name == "path-e-ss" || name == "path-se-ss" || name == "path-ua-ss" || name == "path-status" || name == "path-width")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::PathESs()
@@ -13321,10 +17882,10 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::get_segment_path() const
@@ -13350,9 +17911,9 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsH
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13371,20 +17932,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::PathSeSs()
@@ -13409,10 +17999,10 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::get_segment_path() const
@@ -13438,9 +18028,9 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsH
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13459,20 +18049,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::PathCVs()
@@ -13497,10 +18116,10 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::get_segment_path() const
@@ -13526,9 +18145,9 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsH
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13547,20 +18166,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::PathUaSs()
@@ -13585,10 +18233,10 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::get_segment_path() const
@@ -13614,9 +18262,9 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsH
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13635,20 +18283,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::FePath()
@@ -13675,11 +18352,11 @@ bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHo
 
 bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::get_segment_path() const
@@ -13705,10 +18382,10 @@ const EntityPath PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsH
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13727,24 +18404,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Sts::StsPo
     return children;
 }
 
-void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Sts::StsPorts::StsPort::StsCurrent::StsHour24::StsHour24Paths::StsHour24Path::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::Dwdm()
@@ -13767,7 +18479,7 @@ bool PerformanceManagement::Dwdm::has_data() const
 
 bool PerformanceManagement::Dwdm::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dwdm_ports !=  nullptr && dwdm_ports->has_operation());
 }
 
@@ -13826,8 +18538,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::get_
     return children;
 }
 
-void PerformanceManagement::Dwdm::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Dwdm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Dwdm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-ports")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPorts()
@@ -13856,7 +18579,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::has_operation() const
         if(dwdm_port[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::get_segment_path() const
@@ -13921,8 +18644,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-port")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmPort()
@@ -13948,8 +18682,8 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::has_data() const
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (dwdm_current !=  nullptr && dwdm_current->has_operation());
 }
 
@@ -13976,7 +18710,7 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14009,12 +18743,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-current" || name == "name")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmCurrent()
@@ -14041,7 +18792,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::has_data() c
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dwdm_hour24 !=  nullptr && dwdm_hour24->has_operation())
 	|| (dwdm_minute15 !=  nullptr && dwdm_minute15->has_operation());
 }
@@ -14115,8 +18866,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-hour24" || name == "dwdm-minute15")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15()
@@ -14147,7 +18909,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dwdm_minute15_optics !=  nullptr && dwdm_minute15_optics->has_operation())
 	|| (dwdm_minute15fecs !=  nullptr && dwdm_minute15fecs->has_operation())
 	|| (dwdm_minute15otns !=  nullptr && dwdm_minute15otns->has_operation());
@@ -14236,8 +18998,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-minute15-optics" || name == "dwdm-minute15fecs" || name == "dwdm-minute15otns")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fecs()
@@ -14266,7 +19039,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         if(dwdm_minute15fec[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::get_segment_path() const
@@ -14331,8 +19104,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-minute15fec")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::DwdmMinute15Fec()
@@ -14394,16 +19178,16 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (ec_bits !=  nullptr && ec_bits->has_operation())
 	|| (post_fec_ber !=  nullptr && post_fec_ber->has_operation())
 	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_operation())
@@ -14435,15 +19219,15 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14546,44 +19330,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ec-bits" || name == "post-fec-ber" || name == "pre-fec-ber" || name == "q" || name == "qmargin" || name == "uc-words" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::EcBits()
@@ -14610,11 +19459,11 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::get_segment_path() const
@@ -14640,10 +19489,10 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14662,24 +19511,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::UcWords()
@@ -14706,11 +19590,11 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::get_segment_path() const
@@ -14736,10 +19620,10 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14758,24 +19642,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::PreFecBer()
@@ -14810,15 +19729,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::get_segment_path() const
@@ -14844,14 +19763,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14870,40 +19789,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::PostFecBer()
@@ -14938,15 +19916,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::get_segment_path() const
@@ -14972,14 +19950,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14998,40 +19976,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::Q()
@@ -15066,15 +20103,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::get_segment_path() const
@@ -15100,14 +20137,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15126,40 +20163,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Q::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::Qmargin()
@@ -15194,15 +20290,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::get_segment_path() const
@@ -15228,14 +20324,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15254,40 +20350,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Fecs::DwdmMinute15Fec::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optics()
@@ -15316,7 +20471,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         if(dwdm_minute15_optic[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::get_segment_path() const
@@ -15381,8 +20536,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-minute15-optic")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::DwdmMinute15Optic()
@@ -15476,16 +20642,16 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (cd !=  nullptr && cd->has_operation())
 	|| (center_wavelength !=  nullptr && center_wavelength->has_operation())
 	|| (dgd !=  nullptr && dgd->has_operation())
@@ -15525,15 +20691,15 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15748,44 +20914,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cd" || name == "center-wavelength" || name == "dgd" || name == "lbc" || name == "lbc-pc" || name == "low-sig-freq-off" || name == "opr" || name == "opt" || name == "osnr" || name == "pcr" || name == "pdl" || name == "pmd" || name == "pn" || name == "rx-sig-pow" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::Lbc()
@@ -15820,15 +21051,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::get_segment_path() const
@@ -15854,14 +21085,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15880,40 +21111,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::LbcPc()
@@ -15948,15 +21238,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::get_segment_path() const
@@ -15982,14 +21272,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16008,40 +21298,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LbcPc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::Opt()
@@ -16076,15 +21425,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::get_segment_path() const
@@ -16110,14 +21459,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16136,40 +21485,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::Opr()
@@ -16204,15 +21612,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::get_segment_path() const
@@ -16238,14 +21646,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16264,40 +21672,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Opr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::Cd()
@@ -16332,15 +21799,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::get_segment_path() const
@@ -16366,14 +21833,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16392,40 +21859,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Cd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::Dgd()
@@ -16460,15 +21986,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::get_segment_path() const
@@ -16494,14 +22020,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16520,40 +22046,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Dgd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::Pmd()
@@ -16588,15 +22173,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::get_segment_path() const
@@ -16622,14 +22207,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16648,40 +22233,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pmd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::Osnr()
@@ -16716,15 +22360,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::get_segment_path() const
@@ -16750,14 +22394,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16776,40 +22420,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Osnr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::CenterWavelength()
@@ -16844,15 +22547,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::get_segment_path() const
@@ -16878,14 +22581,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16904,40 +22607,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::CenterWavelength::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::Pdl()
@@ -16972,15 +22734,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::get_segment_path() const
@@ -17006,14 +22768,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17032,40 +22794,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pdl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::Pcr()
@@ -17100,15 +22921,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::get_segment_path() const
@@ -17134,14 +22955,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17160,40 +22981,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pcr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::Pn()
@@ -17228,15 +23108,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::get_segment_path() const
@@ -17262,14 +23142,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17288,40 +23168,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::Pn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::RxSigPow()
@@ -17356,15 +23295,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::get_segment_path() const
@@ -17390,14 +23329,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17416,40 +23355,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::RxSigPow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::LowSigFreqOff()
@@ -17484,15 +23482,15 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::get_segment_path() const
@@ -17518,14 +23516,14 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17544,40 +23542,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Optics::DwdmMinute15Optic::LowSigFreqOff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otns()
@@ -17606,7 +23663,7 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
         if(dwdm_minute15otn[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::get_segment_path() const
@@ -17671,8 +23728,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-minute15otn")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::DwdmMinute15Otn()
@@ -17778,16 +23846,16 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (bbe_fe !=  nullptr && bbe_fe->has_operation())
 	|| (bbe_ne !=  nullptr && bbe_ne->has_operation())
 	|| (bber_fe !=  nullptr && bber_fe->has_operation())
@@ -17830,15 +23898,15 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18095,44 +24163,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bbe-fe" || name == "bbe-ne" || name == "bber-fe" || name == "bber-ne" || name == "es-fe" || name == "es-ne" || name == "esr-fe" || name == "esr-ne" || name == "fc-fe" || name == "fc-ne" || name == "lbc" || name == "ses-fe" || name == "ses-ne" || name == "sesr-fe" || name == "sesr-ne" || name == "uas-fe" || name == "uas-ne" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::Lbc()
@@ -18157,10 +24290,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::get_segment_path() const
@@ -18186,9 +24319,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18207,20 +24340,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::EsNe()
@@ -18245,10 +24407,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::get_segment_path() const
@@ -18274,9 +24436,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18295,20 +24457,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::EsrNe()
@@ -18333,10 +24524,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::get_segment_path() const
@@ -18362,9 +24553,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18383,20 +24574,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::SesNe()
@@ -18421,10 +24641,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::get_segment_path() const
@@ -18450,9 +24670,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18471,20 +24691,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::SesrNe()
@@ -18509,10 +24758,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::get_segment_path() const
@@ -18538,9 +24787,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18559,20 +24808,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::UasNe()
@@ -18597,10 +24875,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::get_segment_path() const
@@ -18626,9 +24904,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18647,20 +24925,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::BbeNe()
@@ -18685,10 +24992,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::get_segment_path() const
@@ -18714,9 +25021,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18735,20 +25042,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::BberNe()
@@ -18773,10 +25109,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::get_segment_path() const
@@ -18802,9 +25138,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18823,20 +25159,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::FcNe()
@@ -18861,10 +25226,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::get_segment_path() const
@@ -18890,9 +25255,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18911,20 +25276,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::EsFe()
@@ -18949,10 +25343,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::get_segment_path() const
@@ -18978,9 +25372,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18999,20 +25393,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::EsrFe()
@@ -19037,10 +25460,10 @@ bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15
 
 bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::get_segment_path() const
@@ -19066,9 +25489,9 @@ const EntityPath PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -19087,20 +25510,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Dwdm::Dwdm
     return children;
 }
 
-void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Dwdm::DwdmPorts::DwdmPort::DwdmCurrent::DwdmMinute15::DwdmMinute15Otns::DwdmMinute15Otn::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 

@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_pfilter_oper {
 
-class PfilterMa : public Entity
+class PfilterMa : public ydk::Entity
 {
     public:
         PfilterMa();
@@ -18,15 +18,18 @@ class PfilterMa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: PfilterMa::Nodes
 
@@ -35,7 +38,7 @@ class PfilterMa : public Entity
 }; // PfilterMa
 
 
-class PfilterMa::Nodes : public Entity
+class PfilterMa::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -43,11 +46,13 @@ class PfilterMa::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: PfilterMa::Nodes::Node
 
@@ -56,7 +61,7 @@ class PfilterMa::Nodes : public Entity
 }; // PfilterMa::Nodes
 
 
-class PfilterMa::Nodes::Node : public Entity
+class PfilterMa::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -64,13 +69,15 @@ class PfilterMa::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class Process; //type: PfilterMa::Nodes::Node::Process
 
         std::shared_ptr<Cisco_IOS_XR_ip_pfilter_oper::PfilterMa::Nodes::Node::Process> process;
@@ -78,7 +85,7 @@ class PfilterMa::Nodes::Node : public Entity
 }; // PfilterMa::Nodes::Node
 
 
-class PfilterMa::Nodes::Node::Process : public Entity
+class PfilterMa::Nodes::Node::Process : public ydk::Entity
 {
     public:
         Process();
@@ -86,11 +93,13 @@ class PfilterMa::Nodes::Node::Process : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6; //type: PfilterMa::Nodes::Node::Process::Ipv6
         class Ipv4; //type: PfilterMa::Nodes::Node::Process::Ipv4
@@ -101,7 +110,7 @@ class PfilterMa::Nodes::Node::Process : public Entity
 }; // PfilterMa::Nodes::Node::Process
 
 
-class PfilterMa::Nodes::Node::Process::Ipv6 : public Entity
+class PfilterMa::Nodes::Node::Process::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -109,11 +118,13 @@ class PfilterMa::Nodes::Node::Process::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AclInfoTable; //type: PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable
 
@@ -122,7 +133,7 @@ class PfilterMa::Nodes::Node::Process::Ipv6 : public Entity
 }; // PfilterMa::Nodes::Node::Process::Ipv6
 
 
-class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable : public Entity
+class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable : public ydk::Entity
 {
     public:
         AclInfoTable();
@@ -130,11 +141,13 @@ class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceInfos; //type: PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos
 
@@ -143,7 +156,7 @@ class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable : public Entity
 }; // PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable
 
 
-class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos : public Entity
+class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos : public ydk::Entity
 {
     public:
         InterfaceInfos();
@@ -151,11 +164,13 @@ class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceInfo; //type: PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo
 
@@ -164,7 +179,7 @@ class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos : publ
 }; // PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos
 
 
-class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo : public Entity
+class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo : public ydk::Entity
 {
     public:
         InterfaceInfo();
@@ -172,19 +187,21 @@ class PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::Inter
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf acl_info; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf acl_info; //type: string
 
 }; // PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo
 
 
-class PfilterMa::Nodes::Node::Process::Ipv4 : public Entity
+class PfilterMa::Nodes::Node::Process::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -192,11 +209,13 @@ class PfilterMa::Nodes::Node::Process::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AclInfoTable; //type: PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable
 
@@ -205,7 +224,7 @@ class PfilterMa::Nodes::Node::Process::Ipv4 : public Entity
 }; // PfilterMa::Nodes::Node::Process::Ipv4
 
 
-class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable : public Entity
+class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable : public ydk::Entity
 {
     public:
         AclInfoTable();
@@ -213,11 +232,13 @@ class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceInfos; //type: PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos
 
@@ -226,7 +247,7 @@ class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable : public Entity
 }; // PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable
 
 
-class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos : public Entity
+class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos : public ydk::Entity
 {
     public:
         InterfaceInfos();
@@ -234,11 +255,13 @@ class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceInfo; //type: PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo
 
@@ -247,7 +270,7 @@ class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos : publ
 }; // PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos
 
 
-class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo : public Entity
+class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo : public ydk::Entity
 {
     public:
         InterfaceInfo();
@@ -255,14 +278,16 @@ class PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::Inter
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf acl_info; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf acl_info; //type: string
 
 }; // PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_aaa_locald_admin_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_locald_admin_cfg {
 
 Aaa::Aaa()
@@ -29,7 +31,7 @@ bool Aaa::has_data() const
 
 bool Aaa::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (usernames !=  nullptr && usernames->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::get_children() const
     return children;
 }
 
-void Aaa::set_value(const std::string & value_path, std::string value)
+void Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Aaa::get_bundle_name() const
 augment_capabilities_function Aaa::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Aaa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Aaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "usernames")
+        return true;
+    return false;
 }
 
 Aaa::Usernames::Usernames()
@@ -135,7 +153,7 @@ bool Aaa::Usernames::has_operation() const
         if(username[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Aaa::Usernames::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::get_children() co
     return children;
 }
 
-void Aaa::Usernames::set_value(const std::string & value_path, std::string value)
+void Aaa::Usernames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Aaa::Usernames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Usernames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "username")
+        return true;
+    return false;
 }
 
 Aaa::Usernames::Username::Username()
@@ -229,9 +258,9 @@ bool Aaa::Usernames::Username::has_data() const
 
 bool Aaa::Usernames::Username::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(secret.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(secret.yfilter)
 	|| (usergroup_under_usernames !=  nullptr && usergroup_under_usernames->has_operation());
 }
 
@@ -258,8 +287,8 @@ const EntityPath Aaa::Usernames::Username::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (secret.is_set || is_set(secret.operation)) leaf_name_data.push_back(secret.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (secret.is_set || is_set(secret.yfilter)) leaf_name_data.push_back(secret.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -292,16 +321,39 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::get_chi
     return children;
 }
 
-void Aaa::Usernames::Username::set_value(const std::string & value_path, std::string value)
+void Aaa::Usernames::Username::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secret")
     {
         secret = value;
+        secret.value_namespace = name_space;
+        secret.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Aaa::Usernames::Username::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "secret")
+    {
+        secret.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Usernames::Username::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "usergroup-under-usernames" || name == "name" || name == "secret")
+        return true;
+    return false;
 }
 
 Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsernames()
@@ -330,7 +382,7 @@ bool Aaa::Usernames::Username::UsergroupUnderUsernames::has_operation() const
         if(usergroup_under_username[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Aaa::Usernames::Username::UsergroupUnderUsernames::get_segment_path() const
@@ -395,8 +447,19 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::Usergro
     return children;
 }
 
-void Aaa::Usernames::Username::UsergroupUnderUsernames::set_value(const std::string & value_path, std::string value)
+void Aaa::Usernames::Username::UsergroupUnderUsernames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Aaa::Usernames::Username::UsergroupUnderUsernames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Usernames::Username::UsergroupUnderUsernames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "usergroup-under-username")
+        return true;
+    return false;
 }
 
 Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::UsergroupUnderUsername()
@@ -417,8 +480,8 @@ bool Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::
 
 bool Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::get_segment_path() const
@@ -444,7 +507,7 @@ const EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -463,12 +526,29 @@ std::map<std::string, std::shared_ptr<Entity>> Aaa::Usernames::Username::Usergro
     return children;
 }
 
-void Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::set_value(const std::string & value_path, std::string value)
+void Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 

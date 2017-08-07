@@ -7,24 +7,24 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ma_oper {
 
-class RpfModeEnum : public Enum
+class RpfMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf strict;
-        static const Enum::YLeaf loose;
+        static const ydk::Enum::YLeaf strict;
+        static const ydk::Enum::YLeaf loose;
 
 };
 
-class Ipv4MaOperLineStateEnum : public Enum
+class Ipv4MaOperLineState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf shutdown;
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf up;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
 
 };
 

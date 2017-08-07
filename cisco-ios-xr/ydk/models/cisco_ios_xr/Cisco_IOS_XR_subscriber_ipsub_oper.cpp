@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_subscriber_ipsub_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_subscriber_ipsub_oper {
 
 IpSubscriber::IpSubscriber()
@@ -29,7 +31,7 @@ bool IpSubscriber::has_data() const
 
 bool IpSubscriber::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::get_children() cons
     return children;
 }
 
-void IpSubscriber::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IpSubscriber::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string IpSubscriber::get_bundle_name() const
 augment_capabilities_function IpSubscriber::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> IpSubscriber::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool IpSubscriber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool IpSubscriber::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpSubscriber::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::get_children
     return children;
 }
 
-void IpSubscriber::Nodes::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Node()
@@ -235,8 +264,8 @@ bool IpSubscriber::Nodes::Node::has_data() const
 
 bool IpSubscriber::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (access_interfaces !=  nullptr && access_interfaces->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (summary !=  nullptr && summary->has_operation());
@@ -265,7 +294,7 @@ const EntityPath IpSubscriber::Nodes::Node::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -326,12 +355,29 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::get_ch
     return children;
 }
 
-void IpSubscriber::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interfaces" || name == "interfaces" || name == "summary" || name == "node-name")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::Summary()
@@ -368,7 +414,7 @@ bool IpSubscriber::Nodes::Node::Summary::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (access_interface_summary !=  nullptr && access_interface_summary->has_operation())
 	|| (interface_counts !=  nullptr && interface_counts->has_operation());
 }
@@ -463,8 +509,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interface-summary" || name == "interface-counts" || name == "vrf")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::AccessInterfaceSummary()
@@ -494,8 +551,8 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_data() cons
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interfaces.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interfaces.yfilter)
 	|| (initiators !=  nullptr && initiators->has_operation())
 	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation());
 }
@@ -523,7 +580,7 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interfaces.is_set || is_set(interfaces.operation)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -570,12 +627,29 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interfaces")
     {
         interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interfaces")
+    {
+        interfaces.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "initiators" || name == "ipv6-initiators" || name == "interfaces")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Initiators()
@@ -602,7 +676,7 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
@@ -676,8 +750,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp" || name == "packet-trigger")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::Dhcp()
@@ -700,9 +785,9 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhc
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fsol_bytes.operation)
-	|| is_set(fsol_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fsol_bytes.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::get_segment_path() const
@@ -728,8 +813,8 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ini
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fsol_bytes.is_set || is_set(fsol_bytes.operation)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_packets.is_set || is_set(fsol_packets.operation)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -748,16 +833,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes = value;
+        fsol_bytes.value_namespace = name_space;
+        fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
+        fsol_packets.value_namespace = name_space;
+        fsol_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fsol-bytes")
+    {
+        fsol_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-packets")
+    {
+        fsol_packets.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsol-bytes" || name == "fsol-packets")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::PacketTrigger()
@@ -780,9 +888,9 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::Pac
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fsol_bytes.operation)
-	|| is_set(fsol_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fsol_bytes.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::get_segment_path() const
@@ -808,8 +916,8 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ini
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fsol_bytes.is_set || is_set(fsol_bytes.operation)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_packets.is_set || is_set(fsol_packets.operation)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -828,16 +936,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes = value;
+        fsol_bytes.value_namespace = name_space;
+        fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
+        fsol_packets.value_namespace = name_space;
+        fsol_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fsol-bytes")
+    {
+        fsol_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-packets")
+    {
+        fsol_packets.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsol-bytes" || name == "fsol-packets")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Ipv6Initiators()
@@ -864,7 +995,7 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators:
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
@@ -938,8 +1069,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp" || name == "packet-trigger")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::Dhcp()
@@ -962,9 +1104,9 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators:
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fsol_bytes.operation)
-	|| is_set(fsol_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fsol_bytes.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::get_segment_path() const
@@ -990,8 +1132,8 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fsol_bytes.is_set || is_set(fsol_bytes.operation)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_packets.is_set || is_set(fsol_packets.operation)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1010,16 +1152,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes = value;
+        fsol_bytes.value_namespace = name_space;
+        fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
+        fsol_packets.value_namespace = name_space;
+        fsol_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fsol-bytes")
+    {
+        fsol_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-packets")
+    {
+        fsol_packets.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsol-bytes" || name == "fsol-packets")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::PacketTrigger()
@@ -1042,9 +1207,9 @@ bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators:
 
 bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fsol_bytes.operation)
-	|| is_set(fsol_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fsol_bytes.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::get_segment_path() const
@@ -1070,8 +1235,8 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fsol_bytes.is_set || is_set(fsol_bytes.operation)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_packets.is_set || is_set(fsol_packets.operation)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1090,16 +1255,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes = value;
+        fsol_bytes.value_namespace = name_space;
+        fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
+        fsol_packets.value_namespace = name_space;
+        fsol_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fsol-bytes")
+    {
+        fsol_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-packets")
+    {
+        fsol_packets.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsol-bytes" || name == "fsol-packets")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::InterfaceCounts()
@@ -1126,7 +1314,7 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_data() const
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (initiators !=  nullptr && initiators->has_operation())
 	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation());
 }
@@ -1200,8 +1388,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "initiators" || name == "ipv6-initiators")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Initiators()
@@ -1228,7 +1427,7 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_data()
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
@@ -1302,8 +1501,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp" || name == "packet-trigger")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::Dhcp()
@@ -1352,22 +1562,22 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adding_adjacency.operation)
-	|| is_set(adjacency_added.operation)
-	|| is_set(control_policy_executed.operation)
-	|| is_set(control_policy_executing.operation)
-	|| is_set(disconnected.operation)
-	|| is_set(disconnecting.operation)
-	|| is_set(down.operation)
-	|| is_set(error.operation)
-	|| is_set(initialized.operation)
-	|| is_set(invalid.operation)
-	|| is_set(session_creation_started.operation)
-	|| is_set(session_features_applied.operation)
-	|| is_set(total_interfaces.operation)
-	|| is_set(up.operation)
-	|| is_set(vrf_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adding_adjacency.yfilter)
+	|| ydk::is_set(adjacency_added.yfilter)
+	|| ydk::is_set(control_policy_executed.yfilter)
+	|| ydk::is_set(control_policy_executing.yfilter)
+	|| ydk::is_set(disconnected.yfilter)
+	|| ydk::is_set(disconnecting.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(initialized.yfilter)
+	|| ydk::is_set(invalid.yfilter)
+	|| ydk::is_set(session_creation_started.yfilter)
+	|| ydk::is_set(session_features_applied.yfilter)
+	|| ydk::is_set(total_interfaces.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_configured.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::get_segment_path() const
@@ -1393,21 +1603,21 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adding_adjacency.is_set || is_set(adding_adjacency.operation)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
-    if (adjacency_added.is_set || is_set(adjacency_added.operation)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
-    if (control_policy_executed.is_set || is_set(control_policy_executed.operation)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
-    if (control_policy_executing.is_set || is_set(control_policy_executing.operation)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
-    if (disconnected.is_set || is_set(disconnected.operation)) leaf_name_data.push_back(disconnected.get_name_leafdata());
-    if (disconnecting.is_set || is_set(disconnecting.operation)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (initialized.is_set || is_set(initialized.operation)) leaf_name_data.push_back(initialized.get_name_leafdata());
-    if (invalid.is_set || is_set(invalid.operation)) leaf_name_data.push_back(invalid.get_name_leafdata());
-    if (session_creation_started.is_set || is_set(session_creation_started.operation)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
-    if (session_features_applied.is_set || is_set(session_features_applied.operation)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
-    if (total_interfaces.is_set || is_set(total_interfaces.operation)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_configured.is_set || is_set(vrf_configured.operation)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
+    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
+    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
+    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
+    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
+    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
+    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
+    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
+    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
+    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
+    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1426,68 +1636,169 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adding-adjacency")
     {
         adding_adjacency = value;
+        adding_adjacency.value_namespace = name_space;
+        adding_adjacency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjacency-added")
     {
         adjacency_added = value;
+        adjacency_added.value_namespace = name_space;
+        adjacency_added.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-policy-executed")
     {
         control_policy_executed = value;
+        control_policy_executed.value_namespace = name_space;
+        control_policy_executed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-policy-executing")
     {
         control_policy_executing = value;
+        control_policy_executing.value_namespace = name_space;
+        control_policy_executing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnected")
     {
         disconnected = value;
+        disconnected.value_namespace = name_space;
+        disconnected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnecting")
     {
         disconnecting = value;
+        disconnecting.value_namespace = name_space;
+        disconnecting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initialized")
     {
         initialized = value;
+        initialized.value_namespace = name_space;
+        initialized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid")
     {
         invalid = value;
+        invalid.value_namespace = name_space;
+        invalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-creation-started")
     {
         session_creation_started = value;
+        session_creation_started.value_namespace = name_space;
+        session_creation_started.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-features-applied")
     {
         session_features_applied = value;
+        session_features_applied.value_namespace = name_space;
+        session_features_applied.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-interfaces")
     {
         total_interfaces = value;
+        total_interfaces.value_namespace = name_space;
+        total_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-configured")
     {
         vrf_configured = value;
+        vrf_configured.value_namespace = name_space;
+        vrf_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing.yfilter = yfilter;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "initialized")
+    {
+        initialized.yfilter = yfilter;
+    }
+    if(value_path == "invalid")
+    {
+        invalid.yfilter = yfilter;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started.yfilter = yfilter;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied.yfilter = yfilter;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::PacketTrigger()
@@ -1536,22 +1847,22 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrig
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adding_adjacency.operation)
-	|| is_set(adjacency_added.operation)
-	|| is_set(control_policy_executed.operation)
-	|| is_set(control_policy_executing.operation)
-	|| is_set(disconnected.operation)
-	|| is_set(disconnecting.operation)
-	|| is_set(down.operation)
-	|| is_set(error.operation)
-	|| is_set(initialized.operation)
-	|| is_set(invalid.operation)
-	|| is_set(session_creation_started.operation)
-	|| is_set(session_features_applied.operation)
-	|| is_set(total_interfaces.operation)
-	|| is_set(up.operation)
-	|| is_set(vrf_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adding_adjacency.yfilter)
+	|| ydk::is_set(adjacency_added.yfilter)
+	|| ydk::is_set(control_policy_executed.yfilter)
+	|| ydk::is_set(control_policy_executing.yfilter)
+	|| ydk::is_set(disconnected.yfilter)
+	|| ydk::is_set(disconnecting.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(initialized.yfilter)
+	|| ydk::is_set(invalid.yfilter)
+	|| ydk::is_set(session_creation_started.yfilter)
+	|| ydk::is_set(session_features_applied.yfilter)
+	|| ydk::is_set(total_interfaces.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_configured.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::get_segment_path() const
@@ -1577,21 +1888,21 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adding_adjacency.is_set || is_set(adding_adjacency.operation)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
-    if (adjacency_added.is_set || is_set(adjacency_added.operation)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
-    if (control_policy_executed.is_set || is_set(control_policy_executed.operation)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
-    if (control_policy_executing.is_set || is_set(control_policy_executing.operation)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
-    if (disconnected.is_set || is_set(disconnected.operation)) leaf_name_data.push_back(disconnected.get_name_leafdata());
-    if (disconnecting.is_set || is_set(disconnecting.operation)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (initialized.is_set || is_set(initialized.operation)) leaf_name_data.push_back(initialized.get_name_leafdata());
-    if (invalid.is_set || is_set(invalid.operation)) leaf_name_data.push_back(invalid.get_name_leafdata());
-    if (session_creation_started.is_set || is_set(session_creation_started.operation)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
-    if (session_features_applied.is_set || is_set(session_features_applied.operation)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
-    if (total_interfaces.is_set || is_set(total_interfaces.operation)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_configured.is_set || is_set(vrf_configured.operation)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
+    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
+    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
+    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
+    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
+    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
+    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
+    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
+    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
+    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
+    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1610,68 +1921,169 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adding-adjacency")
     {
         adding_adjacency = value;
+        adding_adjacency.value_namespace = name_space;
+        adding_adjacency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjacency-added")
     {
         adjacency_added = value;
+        adjacency_added.value_namespace = name_space;
+        adjacency_added.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-policy-executed")
     {
         control_policy_executed = value;
+        control_policy_executed.value_namespace = name_space;
+        control_policy_executed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-policy-executing")
     {
         control_policy_executing = value;
+        control_policy_executing.value_namespace = name_space;
+        control_policy_executing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnected")
     {
         disconnected = value;
+        disconnected.value_namespace = name_space;
+        disconnected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnecting")
     {
         disconnecting = value;
+        disconnecting.value_namespace = name_space;
+        disconnecting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initialized")
     {
         initialized = value;
+        initialized.value_namespace = name_space;
+        initialized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid")
     {
         invalid = value;
+        invalid.value_namespace = name_space;
+        invalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-creation-started")
     {
         session_creation_started = value;
+        session_creation_started.value_namespace = name_space;
+        session_creation_started.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-features-applied")
     {
         session_features_applied = value;
+        session_features_applied.value_namespace = name_space;
+        session_features_applied.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-interfaces")
     {
         total_interfaces = value;
+        total_interfaces.value_namespace = name_space;
+        total_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-configured")
     {
         vrf_configured = value;
+        vrf_configured.value_namespace = name_space;
+        vrf_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing.yfilter = yfilter;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "initialized")
+    {
+        initialized.yfilter = yfilter;
+    }
+    if(value_path == "invalid")
+    {
+        invalid.yfilter = yfilter;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started.yfilter = yfilter;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied.yfilter = yfilter;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Ipv6Initiators()
@@ -1698,7 +2110,7 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_da
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
@@ -1772,8 +2184,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp" || name == "packet-trigger")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::Dhcp()
@@ -1822,22 +2245,22 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adding_adjacency.operation)
-	|| is_set(adjacency_added.operation)
-	|| is_set(control_policy_executed.operation)
-	|| is_set(control_policy_executing.operation)
-	|| is_set(disconnected.operation)
-	|| is_set(disconnecting.operation)
-	|| is_set(down.operation)
-	|| is_set(error.operation)
-	|| is_set(initialized.operation)
-	|| is_set(invalid.operation)
-	|| is_set(session_creation_started.operation)
-	|| is_set(session_features_applied.operation)
-	|| is_set(total_interfaces.operation)
-	|| is_set(up.operation)
-	|| is_set(vrf_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adding_adjacency.yfilter)
+	|| ydk::is_set(adjacency_added.yfilter)
+	|| ydk::is_set(control_policy_executed.yfilter)
+	|| ydk::is_set(control_policy_executing.yfilter)
+	|| ydk::is_set(disconnected.yfilter)
+	|| ydk::is_set(disconnecting.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(initialized.yfilter)
+	|| ydk::is_set(invalid.yfilter)
+	|| ydk::is_set(session_creation_started.yfilter)
+	|| ydk::is_set(session_features_applied.yfilter)
+	|| ydk::is_set(total_interfaces.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_configured.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::get_segment_path() const
@@ -1863,21 +2286,21 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initia
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adding_adjacency.is_set || is_set(adding_adjacency.operation)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
-    if (adjacency_added.is_set || is_set(adjacency_added.operation)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
-    if (control_policy_executed.is_set || is_set(control_policy_executed.operation)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
-    if (control_policy_executing.is_set || is_set(control_policy_executing.operation)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
-    if (disconnected.is_set || is_set(disconnected.operation)) leaf_name_data.push_back(disconnected.get_name_leafdata());
-    if (disconnecting.is_set || is_set(disconnecting.operation)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (initialized.is_set || is_set(initialized.operation)) leaf_name_data.push_back(initialized.get_name_leafdata());
-    if (invalid.is_set || is_set(invalid.operation)) leaf_name_data.push_back(invalid.get_name_leafdata());
-    if (session_creation_started.is_set || is_set(session_creation_started.operation)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
-    if (session_features_applied.is_set || is_set(session_features_applied.operation)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
-    if (total_interfaces.is_set || is_set(total_interfaces.operation)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_configured.is_set || is_set(vrf_configured.operation)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
+    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
+    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
+    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
+    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
+    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
+    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
+    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
+    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
+    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
+    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1896,68 +2319,169 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adding-adjacency")
     {
         adding_adjacency = value;
+        adding_adjacency.value_namespace = name_space;
+        adding_adjacency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjacency-added")
     {
         adjacency_added = value;
+        adjacency_added.value_namespace = name_space;
+        adjacency_added.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-policy-executed")
     {
         control_policy_executed = value;
+        control_policy_executed.value_namespace = name_space;
+        control_policy_executed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-policy-executing")
     {
         control_policy_executing = value;
+        control_policy_executing.value_namespace = name_space;
+        control_policy_executing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnected")
     {
         disconnected = value;
+        disconnected.value_namespace = name_space;
+        disconnected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnecting")
     {
         disconnecting = value;
+        disconnecting.value_namespace = name_space;
+        disconnecting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initialized")
     {
         initialized = value;
+        initialized.value_namespace = name_space;
+        initialized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid")
     {
         invalid = value;
+        invalid.value_namespace = name_space;
+        invalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-creation-started")
     {
         session_creation_started = value;
+        session_creation_started.value_namespace = name_space;
+        session_creation_started.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-features-applied")
     {
         session_features_applied = value;
+        session_features_applied.value_namespace = name_space;
+        session_features_applied.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-interfaces")
     {
         total_interfaces = value;
+        total_interfaces.value_namespace = name_space;
+        total_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-configured")
     {
         vrf_configured = value;
+        vrf_configured.value_namespace = name_space;
+        vrf_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing.yfilter = yfilter;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "initialized")
+    {
+        initialized.yfilter = yfilter;
+    }
+    if(value_path == "invalid")
+    {
+        invalid.yfilter = yfilter;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started.yfilter = yfilter;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied.yfilter = yfilter;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::PacketTrigger()
@@ -2006,22 +2530,22 @@ bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::Packet
 
 bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adding_adjacency.operation)
-	|| is_set(adjacency_added.operation)
-	|| is_set(control_policy_executed.operation)
-	|| is_set(control_policy_executing.operation)
-	|| is_set(disconnected.operation)
-	|| is_set(disconnecting.operation)
-	|| is_set(down.operation)
-	|| is_set(error.operation)
-	|| is_set(initialized.operation)
-	|| is_set(invalid.operation)
-	|| is_set(session_creation_started.operation)
-	|| is_set(session_features_applied.operation)
-	|| is_set(total_interfaces.operation)
-	|| is_set(up.operation)
-	|| is_set(vrf_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adding_adjacency.yfilter)
+	|| ydk::is_set(adjacency_added.yfilter)
+	|| ydk::is_set(control_policy_executed.yfilter)
+	|| ydk::is_set(control_policy_executing.yfilter)
+	|| ydk::is_set(disconnected.yfilter)
+	|| ydk::is_set(disconnecting.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(initialized.yfilter)
+	|| ydk::is_set(invalid.yfilter)
+	|| ydk::is_set(session_creation_started.yfilter)
+	|| ydk::is_set(session_features_applied.yfilter)
+	|| ydk::is_set(total_interfaces.yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(vrf_configured.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::get_segment_path() const
@@ -2047,21 +2571,21 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initia
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adding_adjacency.is_set || is_set(adding_adjacency.operation)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
-    if (adjacency_added.is_set || is_set(adjacency_added.operation)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
-    if (control_policy_executed.is_set || is_set(control_policy_executed.operation)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
-    if (control_policy_executing.is_set || is_set(control_policy_executing.operation)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
-    if (disconnected.is_set || is_set(disconnected.operation)) leaf_name_data.push_back(disconnected.get_name_leafdata());
-    if (disconnecting.is_set || is_set(disconnecting.operation)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (initialized.is_set || is_set(initialized.operation)) leaf_name_data.push_back(initialized.get_name_leafdata());
-    if (invalid.is_set || is_set(invalid.operation)) leaf_name_data.push_back(invalid.get_name_leafdata());
-    if (session_creation_started.is_set || is_set(session_creation_started.operation)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
-    if (session_features_applied.is_set || is_set(session_features_applied.operation)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
-    if (total_interfaces.is_set || is_set(total_interfaces.operation)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (vrf_configured.is_set || is_set(vrf_configured.operation)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
+    if (adding_adjacency.is_set || is_set(adding_adjacency.yfilter)) leaf_name_data.push_back(adding_adjacency.get_name_leafdata());
+    if (adjacency_added.is_set || is_set(adjacency_added.yfilter)) leaf_name_data.push_back(adjacency_added.get_name_leafdata());
+    if (control_policy_executed.is_set || is_set(control_policy_executed.yfilter)) leaf_name_data.push_back(control_policy_executed.get_name_leafdata());
+    if (control_policy_executing.is_set || is_set(control_policy_executing.yfilter)) leaf_name_data.push_back(control_policy_executing.get_name_leafdata());
+    if (disconnected.is_set || is_set(disconnected.yfilter)) leaf_name_data.push_back(disconnected.get_name_leafdata());
+    if (disconnecting.is_set || is_set(disconnecting.yfilter)) leaf_name_data.push_back(disconnecting.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (initialized.is_set || is_set(initialized.yfilter)) leaf_name_data.push_back(initialized.get_name_leafdata());
+    if (invalid.is_set || is_set(invalid.yfilter)) leaf_name_data.push_back(invalid.get_name_leafdata());
+    if (session_creation_started.is_set || is_set(session_creation_started.yfilter)) leaf_name_data.push_back(session_creation_started.get_name_leafdata());
+    if (session_features_applied.is_set || is_set(session_features_applied.yfilter)) leaf_name_data.push_back(session_features_applied.get_name_leafdata());
+    if (total_interfaces.is_set || is_set(total_interfaces.yfilter)) leaf_name_data.push_back(total_interfaces.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (vrf_configured.is_set || is_set(vrf_configured.yfilter)) leaf_name_data.push_back(vrf_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2080,68 +2604,169 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adding-adjacency")
     {
         adding_adjacency = value;
+        adding_adjacency.value_namespace = name_space;
+        adding_adjacency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjacency-added")
     {
         adjacency_added = value;
+        adjacency_added.value_namespace = name_space;
+        adjacency_added.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-policy-executed")
     {
         control_policy_executed = value;
+        control_policy_executed.value_namespace = name_space;
+        control_policy_executed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-policy-executing")
     {
         control_policy_executing = value;
+        control_policy_executing.value_namespace = name_space;
+        control_policy_executing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnected")
     {
         disconnected = value;
+        disconnected.value_namespace = name_space;
+        disconnected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnecting")
     {
         disconnecting = value;
+        disconnecting.value_namespace = name_space;
+        disconnecting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initialized")
     {
         initialized = value;
+        initialized.value_namespace = name_space;
+        initialized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid")
     {
         invalid = value;
+        invalid.value_namespace = name_space;
+        invalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-creation-started")
     {
         session_creation_started = value;
+        session_creation_started.value_namespace = name_space;
+        session_creation_started.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-features-applied")
     {
         session_features_applied = value;
+        session_features_applied.value_namespace = name_space;
+        session_features_applied.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-interfaces")
     {
         total_interfaces = value;
+        total_interfaces.value_namespace = name_space;
+        total_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-configured")
     {
         vrf_configured = value;
+        vrf_configured.value_namespace = name_space;
+        vrf_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adding-adjacency")
+    {
+        adding_adjacency.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-added")
+    {
+        adjacency_added.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executed")
+    {
+        control_policy_executed.yfilter = yfilter;
+    }
+    if(value_path == "control-policy-executing")
+    {
+        control_policy_executing.yfilter = yfilter;
+    }
+    if(value_path == "disconnected")
+    {
+        disconnected.yfilter = yfilter;
+    }
+    if(value_path == "disconnecting")
+    {
+        disconnecting.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "initialized")
+    {
+        initialized.yfilter = yfilter;
+    }
+    if(value_path == "invalid")
+    {
+        invalid.yfilter = yfilter;
+    }
+    if(value_path == "session-creation-started")
+    {
+        session_creation_started.yfilter = yfilter;
+    }
+    if(value_path == "session-features-applied")
+    {
+        session_features_applied.yfilter = yfilter;
+    }
+    if(value_path == "total-interfaces")
+    {
+        total_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "vrf-configured")
+    {
+        vrf_configured.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::InterfaceCounts::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adding-adjacency" || name == "adjacency-added" || name == "control-policy-executed" || name == "control-policy-executing" || name == "disconnected" || name == "disconnecting" || name == "down" || name == "error" || name == "initialized" || name == "invalid" || name == "session-creation-started" || name == "session-features-applied" || name == "total-interfaces" || name == "up" || name == "vrf-configured")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Summary::Vrf::Vrf()
@@ -2168,11 +2793,11 @@ bool IpSubscriber::Nodes::Node::Summary::Vrf::has_data() const
 
 bool IpSubscriber::Nodes::Node::Summary::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interfaces.operation)
-	|| is_set(ipv6_interfaces.operation)
-	|| is_set(ipv6vrf_name.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interfaces.yfilter)
+	|| ydk::is_set(ipv6_interfaces.yfilter)
+	|| ydk::is_set(ipv6vrf_name.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Summary::Vrf::get_segment_path() const
@@ -2198,10 +2823,10 @@ const EntityPath IpSubscriber::Nodes::Node::Summary::Vrf::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interfaces.is_set || is_set(interfaces.operation)) leaf_name_data.push_back(interfaces.get_name_leafdata());
-    if (ipv6_interfaces.is_set || is_set(ipv6_interfaces.operation)) leaf_name_data.push_back(ipv6_interfaces.get_name_leafdata());
-    if (ipv6vrf_name.is_set || is_set(ipv6vrf_name.operation)) leaf_name_data.push_back(ipv6vrf_name.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (ipv6_interfaces.is_set || is_set(ipv6_interfaces.yfilter)) leaf_name_data.push_back(ipv6_interfaces.get_name_leafdata());
+    if (ipv6vrf_name.is_set || is_set(ipv6vrf_name.yfilter)) leaf_name_data.push_back(ipv6vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2220,24 +2845,59 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Summar
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Summary::Vrf::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Summary::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interfaces")
     {
         interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-interfaces")
     {
         ipv6_interfaces = value;
+        ipv6_interfaces.value_namespace = name_space;
+        ipv6_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6vrf-name")
     {
         ipv6vrf_name = value;
+        ipv6vrf_name.value_namespace = name_space;
+        ipv6vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Summary::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interfaces")
+    {
+        interfaces.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-interfaces")
+    {
+        ipv6_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vrf-name")
+    {
+        ipv6vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Summary::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "ipv6-interfaces" || name == "ipv6vrf-name" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interfaces()
@@ -2266,7 +2926,7 @@ bool IpSubscriber::Nodes::Node::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Interfaces::get_segment_path() const
@@ -2331,8 +2991,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interf
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Interfaces::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interface::Interface()
@@ -2400,27 +3071,27 @@ bool IpSubscriber::Nodes::Node::Interfaces::Interface::has_data() const
 
 bool IpSubscriber::Nodes::Node::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(access_interface.operation)
-	|| is_set(age.operation)
-	|| is_set(current_change_age.operation)
-	|| is_set(initiator.operation)
-	|| is_set(interface_creation_time.operation)
-	|| is_set(ipv6_current_change_age.operation)
-	|| is_set(ipv6_initiator.operation)
-	|| is_set(ipv6_last_state_change_time.operation)
-	|| is_set(ipv6_old_state.operation)
-	|| is_set(ipv6_state.operation)
-	|| is_set(is_l2_connected.operation)
-	|| is_set(last_state_change_time.operation)
-	|| is_set(old_state.operation)
-	|| is_set(session_type.operation)
-	|| is_set(state.operation)
-	|| is_set(subscriber_ipv4_address.operation)
-	|| is_set(subscriber_ipv6_address.operation)
-	|| is_set(subscriber_label.operation)
-	|| is_set(subscriber_mac_addres.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(access_interface.yfilter)
+	|| ydk::is_set(age.yfilter)
+	|| ydk::is_set(current_change_age.yfilter)
+	|| ydk::is_set(initiator.yfilter)
+	|| ydk::is_set(interface_creation_time.yfilter)
+	|| ydk::is_set(ipv6_current_change_age.yfilter)
+	|| ydk::is_set(ipv6_initiator.yfilter)
+	|| ydk::is_set(ipv6_last_state_change_time.yfilter)
+	|| ydk::is_set(ipv6_old_state.yfilter)
+	|| ydk::is_set(ipv6_state.yfilter)
+	|| ydk::is_set(is_l2_connected.yfilter)
+	|| ydk::is_set(last_state_change_time.yfilter)
+	|| ydk::is_set(old_state.yfilter)
+	|| ydk::is_set(session_type.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(subscriber_ipv4_address.yfilter)
+	|| ydk::is_set(subscriber_ipv6_address.yfilter)
+	|| ydk::is_set(subscriber_label.yfilter)
+	|| ydk::is_set(subscriber_mac_addres.yfilter)
 	|| (ipv6vrf !=  nullptr && ipv6vrf->has_operation())
 	|| (vrf !=  nullptr && vrf->has_operation());
 }
@@ -2448,26 +3119,26 @@ const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (access_interface.is_set || is_set(access_interface.operation)) leaf_name_data.push_back(access_interface.get_name_leafdata());
-    if (age.is_set || is_set(age.operation)) leaf_name_data.push_back(age.get_name_leafdata());
-    if (current_change_age.is_set || is_set(current_change_age.operation)) leaf_name_data.push_back(current_change_age.get_name_leafdata());
-    if (initiator.is_set || is_set(initiator.operation)) leaf_name_data.push_back(initiator.get_name_leafdata());
-    if (interface_creation_time.is_set || is_set(interface_creation_time.operation)) leaf_name_data.push_back(interface_creation_time.get_name_leafdata());
-    if (ipv6_current_change_age.is_set || is_set(ipv6_current_change_age.operation)) leaf_name_data.push_back(ipv6_current_change_age.get_name_leafdata());
-    if (ipv6_initiator.is_set || is_set(ipv6_initiator.operation)) leaf_name_data.push_back(ipv6_initiator.get_name_leafdata());
-    if (ipv6_last_state_change_time.is_set || is_set(ipv6_last_state_change_time.operation)) leaf_name_data.push_back(ipv6_last_state_change_time.get_name_leafdata());
-    if (ipv6_old_state.is_set || is_set(ipv6_old_state.operation)) leaf_name_data.push_back(ipv6_old_state.get_name_leafdata());
-    if (ipv6_state.is_set || is_set(ipv6_state.operation)) leaf_name_data.push_back(ipv6_state.get_name_leafdata());
-    if (is_l2_connected.is_set || is_set(is_l2_connected.operation)) leaf_name_data.push_back(is_l2_connected.get_name_leafdata());
-    if (last_state_change_time.is_set || is_set(last_state_change_time.operation)) leaf_name_data.push_back(last_state_change_time.get_name_leafdata());
-    if (old_state.is_set || is_set(old_state.operation)) leaf_name_data.push_back(old_state.get_name_leafdata());
-    if (session_type.is_set || is_set(session_type.operation)) leaf_name_data.push_back(session_type.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (subscriber_ipv4_address.is_set || is_set(subscriber_ipv4_address.operation)) leaf_name_data.push_back(subscriber_ipv4_address.get_name_leafdata());
-    if (subscriber_ipv6_address.is_set || is_set(subscriber_ipv6_address.operation)) leaf_name_data.push_back(subscriber_ipv6_address.get_name_leafdata());
-    if (subscriber_label.is_set || is_set(subscriber_label.operation)) leaf_name_data.push_back(subscriber_label.get_name_leafdata());
-    if (subscriber_mac_addres.is_set || is_set(subscriber_mac_addres.operation)) leaf_name_data.push_back(subscriber_mac_addres.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (access_interface.is_set || is_set(access_interface.yfilter)) leaf_name_data.push_back(access_interface.get_name_leafdata());
+    if (age.is_set || is_set(age.yfilter)) leaf_name_data.push_back(age.get_name_leafdata());
+    if (current_change_age.is_set || is_set(current_change_age.yfilter)) leaf_name_data.push_back(current_change_age.get_name_leafdata());
+    if (initiator.is_set || is_set(initiator.yfilter)) leaf_name_data.push_back(initiator.get_name_leafdata());
+    if (interface_creation_time.is_set || is_set(interface_creation_time.yfilter)) leaf_name_data.push_back(interface_creation_time.get_name_leafdata());
+    if (ipv6_current_change_age.is_set || is_set(ipv6_current_change_age.yfilter)) leaf_name_data.push_back(ipv6_current_change_age.get_name_leafdata());
+    if (ipv6_initiator.is_set || is_set(ipv6_initiator.yfilter)) leaf_name_data.push_back(ipv6_initiator.get_name_leafdata());
+    if (ipv6_last_state_change_time.is_set || is_set(ipv6_last_state_change_time.yfilter)) leaf_name_data.push_back(ipv6_last_state_change_time.get_name_leafdata());
+    if (ipv6_old_state.is_set || is_set(ipv6_old_state.yfilter)) leaf_name_data.push_back(ipv6_old_state.get_name_leafdata());
+    if (ipv6_state.is_set || is_set(ipv6_state.yfilter)) leaf_name_data.push_back(ipv6_state.get_name_leafdata());
+    if (is_l2_connected.is_set || is_set(is_l2_connected.yfilter)) leaf_name_data.push_back(is_l2_connected.get_name_leafdata());
+    if (last_state_change_time.is_set || is_set(last_state_change_time.yfilter)) leaf_name_data.push_back(last_state_change_time.get_name_leafdata());
+    if (old_state.is_set || is_set(old_state.yfilter)) leaf_name_data.push_back(old_state.get_name_leafdata());
+    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (subscriber_ipv4_address.is_set || is_set(subscriber_ipv4_address.yfilter)) leaf_name_data.push_back(subscriber_ipv4_address.get_name_leafdata());
+    if (subscriber_ipv6_address.is_set || is_set(subscriber_ipv6_address.yfilter)) leaf_name_data.push_back(subscriber_ipv6_address.get_name_leafdata());
+    if (subscriber_label.is_set || is_set(subscriber_label.yfilter)) leaf_name_data.push_back(subscriber_label.get_name_leafdata());
+    if (subscriber_mac_addres.is_set || is_set(subscriber_mac_addres.yfilter)) leaf_name_data.push_back(subscriber_mac_addres.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2514,88 +3185,219 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interf
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-interface")
     {
         access_interface = value;
+        access_interface.value_namespace = name_space;
+        access_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "age")
     {
         age = value;
+        age.value_namespace = name_space;
+        age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "current-change-age")
     {
         current_change_age = value;
+        current_change_age.value_namespace = name_space;
+        current_change_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initiator")
     {
         initiator = value;
+        initiator.value_namespace = name_space;
+        initiator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-creation-time")
     {
         interface_creation_time = value;
+        interface_creation_time.value_namespace = name_space;
+        interface_creation_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-current-change-age")
     {
         ipv6_current_change_age = value;
+        ipv6_current_change_age.value_namespace = name_space;
+        ipv6_current_change_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-initiator")
     {
         ipv6_initiator = value;
+        ipv6_initiator.value_namespace = name_space;
+        ipv6_initiator.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-last-state-change-time")
     {
         ipv6_last_state_change_time = value;
+        ipv6_last_state_change_time.value_namespace = name_space;
+        ipv6_last_state_change_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-old-state")
     {
         ipv6_old_state = value;
+        ipv6_old_state.value_namespace = name_space;
+        ipv6_old_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-state")
     {
         ipv6_state = value;
+        ipv6_state.value_namespace = name_space;
+        ipv6_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-l2-connected")
     {
         is_l2_connected = value;
+        is_l2_connected.value_namespace = name_space;
+        is_l2_connected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-state-change-time")
     {
         last_state_change_time = value;
+        last_state_change_time.value_namespace = name_space;
+        last_state_change_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "old-state")
     {
         old_state = value;
+        old_state.value_namespace = name_space;
+        old_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-type")
     {
         session_type = value;
+        session_type.value_namespace = name_space;
+        session_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscriber-ipv4-address")
     {
         subscriber_ipv4_address = value;
+        subscriber_ipv4_address.value_namespace = name_space;
+        subscriber_ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscriber-ipv6-address")
     {
         subscriber_ipv6_address = value;
+        subscriber_ipv6_address.value_namespace = name_space;
+        subscriber_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscriber-label")
     {
         subscriber_label = value;
+        subscriber_label.value_namespace = name_space;
+        subscriber_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscriber-mac-addres")
     {
         subscriber_mac_addres = value;
+        subscriber_mac_addres.value_namespace = name_space;
+        subscriber_mac_addres.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "access-interface")
+    {
+        access_interface.yfilter = yfilter;
+    }
+    if(value_path == "age")
+    {
+        age.yfilter = yfilter;
+    }
+    if(value_path == "current-change-age")
+    {
+        current_change_age.yfilter = yfilter;
+    }
+    if(value_path == "initiator")
+    {
+        initiator.yfilter = yfilter;
+    }
+    if(value_path == "interface-creation-time")
+    {
+        interface_creation_time.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-current-change-age")
+    {
+        ipv6_current_change_age.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-initiator")
+    {
+        ipv6_initiator.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-last-state-change-time")
+    {
+        ipv6_last_state_change_time.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-old-state")
+    {
+        ipv6_old_state.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-state")
+    {
+        ipv6_state.yfilter = yfilter;
+    }
+    if(value_path == "is-l2-connected")
+    {
+        is_l2_connected.yfilter = yfilter;
+    }
+    if(value_path == "last-state-change-time")
+    {
+        last_state_change_time.yfilter = yfilter;
+    }
+    if(value_path == "old-state")
+    {
+        old_state.yfilter = yfilter;
+    }
+    if(value_path == "session-type")
+    {
+        session_type.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-ipv4-address")
+    {
+        subscriber_ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-ipv6-address")
+    {
+        subscriber_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-label")
+    {
+        subscriber_label.yfilter = yfilter;
+    }
+    if(value_path == "subscriber-mac-addres")
+    {
+        subscriber_mac_addres.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6vrf" || name == "vrf" || name == "interface-name" || name == "access-interface" || name == "age" || name == "current-change-age" || name == "initiator" || name == "interface-creation-time" || name == "ipv6-current-change-age" || name == "ipv6-initiator" || name == "ipv6-last-state-change-time" || name == "ipv6-old-state" || name == "ipv6-state" || name == "is-l2-connected" || name == "last-state-change-time" || name == "old-state" || name == "session-type" || name == "state" || name == "subscriber-ipv4-address" || name == "subscriber-ipv6-address" || name == "subscriber-label" || name == "subscriber-mac-addres")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::Vrf()
@@ -2618,9 +3420,9 @@ bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_data() const
 
 bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(table_name.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(table_name.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_segment_path() const
@@ -2646,8 +3448,8 @@ const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (table_name.is_set || is_set(table_name.operation)) leaf_name_data.push_back(table_name.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (table_name.is_set || is_set(table_name.yfilter)) leaf_name_data.push_back(table_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2666,16 +3468,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interf
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-name")
     {
         table_name = value;
+        table_name.value_namespace = name_space;
+        table_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "table-name")
+    {
+        table_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "table-name" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::Ipv6Vrf()
@@ -2698,9 +3523,9 @@ bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::has_data() const
 
 bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(table_name.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(table_name.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_segment_path() const
@@ -2726,8 +3551,8 @@ const EntityPath IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (table_name.is_set || is_set(table_name.operation)) leaf_name_data.push_back(table_name.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (table_name.is_set || is_set(table_name.yfilter)) leaf_name_data.push_back(table_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2746,16 +3571,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Interf
     return children;
 }
 
-void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-name")
     {
         table_name = value;
+        table_name.value_namespace = name_space;
+        table_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "table-name")
+    {
+        table_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "table-name" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterfaces()
@@ -2784,7 +3632,7 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::has_operation() const
         if(access_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::AccessInterfaces::get_segment_path() const
@@ -2849,8 +3697,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interface")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::AccessInterface()
@@ -2896,14 +3755,14 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_data() co
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(age.operation)
-	|| is_set(interface_creation_time.operation)
-	|| is_set(interface_type.operation)
-	|| is_set(ipv6_state.operation)
-	|| is_set(state.operation)
-	|| is_set(vlan_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(age.yfilter)
+	|| ydk::is_set(interface_creation_time.yfilter)
+	|| ydk::is_set(interface_type.yfilter)
+	|| ydk::is_set(ipv6_state.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(vlan_type.yfilter)
 	|| (initiators !=  nullptr && initiators->has_operation())
 	|| (ipv6_initiators !=  nullptr && ipv6_initiators->has_operation())
 	|| (session_limit !=  nullptr && session_limit->has_operation());
@@ -2932,13 +3791,13 @@ const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (age.is_set || is_set(age.operation)) leaf_name_data.push_back(age.get_name_leafdata());
-    if (interface_creation_time.is_set || is_set(interface_creation_time.operation)) leaf_name_data.push_back(interface_creation_time.get_name_leafdata());
-    if (interface_type.is_set || is_set(interface_type.operation)) leaf_name_data.push_back(interface_type.get_name_leafdata());
-    if (ipv6_state.is_set || is_set(ipv6_state.operation)) leaf_name_data.push_back(ipv6_state.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (vlan_type.is_set || is_set(vlan_type.operation)) leaf_name_data.push_back(vlan_type.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (age.is_set || is_set(age.yfilter)) leaf_name_data.push_back(age.get_name_leafdata());
+    if (interface_creation_time.is_set || is_set(interface_creation_time.yfilter)) leaf_name_data.push_back(interface_creation_time.get_name_leafdata());
+    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
+    if (ipv6_state.is_set || is_set(ipv6_state.yfilter)) leaf_name_data.push_back(ipv6_state.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (vlan_type.is_set || is_set(vlan_type.yfilter)) leaf_name_data.push_back(vlan_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2999,36 +3858,89 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "age")
     {
         age = value;
+        age.value_namespace = name_space;
+        age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-creation-time")
     {
         interface_creation_time = value;
+        interface_creation_time.value_namespace = name_space;
+        interface_creation_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-type")
     {
         interface_type = value;
+        interface_type.value_namespace = name_space;
+        interface_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-state")
     {
         ipv6_state = value;
+        ipv6_state.value_namespace = name_space;
+        ipv6_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-type")
     {
         vlan_type = value;
+        vlan_type.value_namespace = name_space;
+        vlan_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "age")
+    {
+        age.yfilter = yfilter;
+    }
+    if(value_path == "interface-creation-time")
+    {
+        interface_creation_time.yfilter = yfilter;
+    }
+    if(value_path == "interface-type")
+    {
+        interface_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-state")
+    {
+        ipv6_state.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "vlan-type")
+    {
+        vlan_type.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "initiators" || name == "ipv6-initiators" || name == "session-limit" || name == "interface-name" || name == "age" || name == "interface-creation-time" || name == "interface-type" || name == "ipv6-state" || name == "state" || name == "vlan-type")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Initiators()
@@ -3055,7 +3967,7 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::h
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
@@ -3129,8 +4041,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp" || name == "packet-trigger")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::Dhcp()
@@ -3169,17 +4092,17 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::D
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fsol_bytes.operation)
-	|| is_set(fsol_dropped_bytes.operation)
-	|| is_set(fsol_dropped_packets.operation)
-	|| is_set(fsol_dropped_packets_dup_addr.operation)
-	|| is_set(fsol_dropped_packets_flow.operation)
-	|| is_set(fsol_dropped_packets_session_limit.operation)
-	|| is_set(fsol_packets.operation)
-	|| is_set(is_configured.operation)
-	|| is_set(sessions.operation)
-	|| is_set(unique_ip_check.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fsol_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_packets.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter)
+	|| ydk::is_set(is_configured.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(unique_ip_check.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::get_segment_path() const
@@ -3205,16 +4128,16 @@ const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::I
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fsol_bytes.is_set || is_set(fsol_bytes.operation)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.operation)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
-    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.operation)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
-    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.operation)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
-    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.operation)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
-    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.operation)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
-    if (fsol_packets.is_set || is_set(fsol_packets.operation)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
-    if (is_configured.is_set || is_set(is_configured.operation)) leaf_name_data.push_back(is_configured.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.operation)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (unique_ip_check.is_set || is_set(unique_ip_check.operation)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
+    if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
+    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
+    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
+    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
+    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
+    if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3233,48 +4156,119 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes = value;
+        fsol_bytes.value_namespace = name_space;
+        fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-bytes")
     {
         fsol_dropped_bytes = value;
+        fsol_dropped_bytes.value_namespace = name_space;
+        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets")
     {
         fsol_dropped_packets = value;
+        fsol_dropped_packets.value_namespace = name_space;
+        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-dup-addr")
     {
         fsol_dropped_packets_dup_addr = value;
+        fsol_dropped_packets_dup_addr.value_namespace = name_space;
+        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-flow")
     {
         fsol_dropped_packets_flow = value;
+        fsol_dropped_packets_flow.value_namespace = name_space;
+        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-session-limit")
     {
         fsol_dropped_packets_session_limit = value;
+        fsol_dropped_packets_session_limit.value_namespace = name_space;
+        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
+        fsol_packets.value_namespace = name_space;
+        fsol_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-configured")
     {
         is_configured = value;
+        is_configured.value_namespace = name_space;
+        is_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessions")
     {
         sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unique-ip-check")
     {
         unique_ip_check = value;
+        unique_ip_check.value_namespace = name_space;
+        unique_ip_check.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fsol-bytes")
+    {
+        fsol_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit.yfilter = yfilter;
+    }
+    if(value_path == "fsol-packets")
+    {
+        fsol_packets.yfilter = yfilter;
+    }
+    if(value_path == "is-configured")
+    {
+        is_configured.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::PacketTrigger()
@@ -3313,17 +4307,17 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::P
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fsol_bytes.operation)
-	|| is_set(fsol_dropped_bytes.operation)
-	|| is_set(fsol_dropped_packets.operation)
-	|| is_set(fsol_dropped_packets_dup_addr.operation)
-	|| is_set(fsol_dropped_packets_flow.operation)
-	|| is_set(fsol_dropped_packets_session_limit.operation)
-	|| is_set(fsol_packets.operation)
-	|| is_set(is_configured.operation)
-	|| is_set(sessions.operation)
-	|| is_set(unique_ip_check.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fsol_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_packets.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter)
+	|| ydk::is_set(is_configured.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(unique_ip_check.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::get_segment_path() const
@@ -3349,16 +4343,16 @@ const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::I
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fsol_bytes.is_set || is_set(fsol_bytes.operation)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.operation)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
-    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.operation)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
-    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.operation)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
-    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.operation)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
-    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.operation)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
-    if (fsol_packets.is_set || is_set(fsol_packets.operation)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
-    if (is_configured.is_set || is_set(is_configured.operation)) leaf_name_data.push_back(is_configured.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.operation)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (unique_ip_check.is_set || is_set(unique_ip_check.operation)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
+    if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
+    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
+    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
+    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
+    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
+    if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3377,48 +4371,119 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes = value;
+        fsol_bytes.value_namespace = name_space;
+        fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-bytes")
     {
         fsol_dropped_bytes = value;
+        fsol_dropped_bytes.value_namespace = name_space;
+        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets")
     {
         fsol_dropped_packets = value;
+        fsol_dropped_packets.value_namespace = name_space;
+        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-dup-addr")
     {
         fsol_dropped_packets_dup_addr = value;
+        fsol_dropped_packets_dup_addr.value_namespace = name_space;
+        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-flow")
     {
         fsol_dropped_packets_flow = value;
+        fsol_dropped_packets_flow.value_namespace = name_space;
+        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-session-limit")
     {
         fsol_dropped_packets_session_limit = value;
+        fsol_dropped_packets_session_limit.value_namespace = name_space;
+        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
+        fsol_packets.value_namespace = name_space;
+        fsol_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-configured")
     {
         is_configured = value;
+        is_configured.value_namespace = name_space;
+        is_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessions")
     {
         sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unique-ip-check")
     {
         unique_ip_check = value;
+        unique_ip_check.value_namespace = name_space;
+        unique_ip_check.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fsol-bytes")
+    {
+        fsol_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit.yfilter = yfilter;
+    }
+    if(value_path == "fsol-packets")
+    {
+        fsol_packets.yfilter = yfilter;
+    }
+    if(value_path == "is-configured")
+    {
+        is_configured.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Ipv6Initiators()
@@ -3445,7 +4510,7 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiator
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (packet_trigger !=  nullptr && packet_trigger->has_operation());
 }
@@ -3519,8 +4584,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp" || name == "packet-trigger")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::Dhcp()
@@ -3559,17 +4635,17 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiator
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fsol_bytes.operation)
-	|| is_set(fsol_dropped_bytes.operation)
-	|| is_set(fsol_dropped_packets.operation)
-	|| is_set(fsol_dropped_packets_dup_addr.operation)
-	|| is_set(fsol_dropped_packets_flow.operation)
-	|| is_set(fsol_dropped_packets_session_limit.operation)
-	|| is_set(fsol_packets.operation)
-	|| is_set(is_configured.operation)
-	|| is_set(sessions.operation)
-	|| is_set(unique_ip_check.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fsol_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_packets.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter)
+	|| ydk::is_set(is_configured.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(unique_ip_check.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::get_segment_path() const
@@ -3595,16 +4671,16 @@ const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::I
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fsol_bytes.is_set || is_set(fsol_bytes.operation)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.operation)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
-    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.operation)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
-    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.operation)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
-    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.operation)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
-    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.operation)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
-    if (fsol_packets.is_set || is_set(fsol_packets.operation)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
-    if (is_configured.is_set || is_set(is_configured.operation)) leaf_name_data.push_back(is_configured.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.operation)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (unique_ip_check.is_set || is_set(unique_ip_check.operation)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
+    if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
+    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
+    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
+    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
+    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
+    if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3623,48 +4699,119 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes = value;
+        fsol_bytes.value_namespace = name_space;
+        fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-bytes")
     {
         fsol_dropped_bytes = value;
+        fsol_dropped_bytes.value_namespace = name_space;
+        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets")
     {
         fsol_dropped_packets = value;
+        fsol_dropped_packets.value_namespace = name_space;
+        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-dup-addr")
     {
         fsol_dropped_packets_dup_addr = value;
+        fsol_dropped_packets_dup_addr.value_namespace = name_space;
+        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-flow")
     {
         fsol_dropped_packets_flow = value;
+        fsol_dropped_packets_flow.value_namespace = name_space;
+        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-session-limit")
     {
         fsol_dropped_packets_session_limit = value;
+        fsol_dropped_packets_session_limit.value_namespace = name_space;
+        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
+        fsol_packets.value_namespace = name_space;
+        fsol_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-configured")
     {
         is_configured = value;
+        is_configured.value_namespace = name_space;
+        is_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessions")
     {
         sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unique-ip-check")
     {
         unique_ip_check = value;
+        unique_ip_check.value_namespace = name_space;
+        unique_ip_check.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fsol-bytes")
+    {
+        fsol_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit.yfilter = yfilter;
+    }
+    if(value_path == "fsol-packets")
+    {
+        fsol_packets.yfilter = yfilter;
+    }
+    if(value_path == "is-configured")
+    {
+        is_configured.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::PacketTrigger()
@@ -3703,17 +4850,17 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiator
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fsol_bytes.operation)
-	|| is_set(fsol_dropped_bytes.operation)
-	|| is_set(fsol_dropped_packets.operation)
-	|| is_set(fsol_dropped_packets_dup_addr.operation)
-	|| is_set(fsol_dropped_packets_flow.operation)
-	|| is_set(fsol_dropped_packets_session_limit.operation)
-	|| is_set(fsol_packets.operation)
-	|| is_set(is_configured.operation)
-	|| is_set(sessions.operation)
-	|| is_set(unique_ip_check.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fsol_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_bytes.yfilter)
+	|| ydk::is_set(fsol_dropped_packets.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_dup_addr.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_flow.yfilter)
+	|| ydk::is_set(fsol_dropped_packets_session_limit.yfilter)
+	|| ydk::is_set(fsol_packets.yfilter)
+	|| ydk::is_set(is_configured.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(unique_ip_check.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::get_segment_path() const
@@ -3739,16 +4886,16 @@ const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::I
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fsol_bytes.is_set || is_set(fsol_bytes.operation)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
-    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.operation)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
-    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.operation)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
-    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.operation)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
-    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.operation)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
-    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.operation)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
-    if (fsol_packets.is_set || is_set(fsol_packets.operation)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
-    if (is_configured.is_set || is_set(is_configured.operation)) leaf_name_data.push_back(is_configured.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.operation)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (unique_ip_check.is_set || is_set(unique_ip_check.operation)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
+    if (fsol_bytes.is_set || is_set(fsol_bytes.yfilter)) leaf_name_data.push_back(fsol_bytes.get_name_leafdata());
+    if (fsol_dropped_bytes.is_set || is_set(fsol_dropped_bytes.yfilter)) leaf_name_data.push_back(fsol_dropped_bytes.get_name_leafdata());
+    if (fsol_dropped_packets.is_set || is_set(fsol_dropped_packets.yfilter)) leaf_name_data.push_back(fsol_dropped_packets.get_name_leafdata());
+    if (fsol_dropped_packets_dup_addr.is_set || is_set(fsol_dropped_packets_dup_addr.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_dup_addr.get_name_leafdata());
+    if (fsol_dropped_packets_flow.is_set || is_set(fsol_dropped_packets_flow.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_flow.get_name_leafdata());
+    if (fsol_dropped_packets_session_limit.is_set || is_set(fsol_dropped_packets_session_limit.yfilter)) leaf_name_data.push_back(fsol_dropped_packets_session_limit.get_name_leafdata());
+    if (fsol_packets.is_set || is_set(fsol_packets.yfilter)) leaf_name_data.push_back(fsol_packets.get_name_leafdata());
+    if (is_configured.is_set || is_set(is_configured.yfilter)) leaf_name_data.push_back(is_configured.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (unique_ip_check.is_set || is_set(unique_ip_check.yfilter)) leaf_name_data.push_back(unique_ip_check.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3767,48 +4914,119 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fsol-bytes")
     {
         fsol_bytes = value;
+        fsol_bytes.value_namespace = name_space;
+        fsol_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-bytes")
     {
         fsol_dropped_bytes = value;
+        fsol_dropped_bytes.value_namespace = name_space;
+        fsol_dropped_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets")
     {
         fsol_dropped_packets = value;
+        fsol_dropped_packets.value_namespace = name_space;
+        fsol_dropped_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-dup-addr")
     {
         fsol_dropped_packets_dup_addr = value;
+        fsol_dropped_packets_dup_addr.value_namespace = name_space;
+        fsol_dropped_packets_dup_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-flow")
     {
         fsol_dropped_packets_flow = value;
+        fsol_dropped_packets_flow.value_namespace = name_space;
+        fsol_dropped_packets_flow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-dropped-packets-session-limit")
     {
         fsol_dropped_packets_session_limit = value;
+        fsol_dropped_packets_session_limit.value_namespace = name_space;
+        fsol_dropped_packets_session_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fsol-packets")
     {
         fsol_packets = value;
+        fsol_packets.value_namespace = name_space;
+        fsol_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-configured")
     {
         is_configured = value;
+        is_configured.value_namespace = name_space;
+        is_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessions")
     {
         sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unique-ip-check")
     {
         unique_ip_check = value;
+        unique_ip_check.value_namespace = name_space;
+        unique_ip_check.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fsol-bytes")
+    {
+        fsol_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-bytes")
+    {
+        fsol_dropped_bytes.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets")
+    {
+        fsol_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-dup-addr")
+    {
+        fsol_dropped_packets_dup_addr.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-flow")
+    {
+        fsol_dropped_packets_flow.yfilter = yfilter;
+    }
+    if(value_path == "fsol-dropped-packets-session-limit")
+    {
+        fsol_dropped_packets_session_limit.yfilter = yfilter;
+    }
+    if(value_path == "fsol-packets")
+    {
+        fsol_packets.yfilter = yfilter;
+    }
+    if(value_path == "is-configured")
+    {
+        is_configured.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "unique-ip-check")
+    {
+        unique_ip_check.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::Ipv6Initiators::PacketTrigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsol-bytes" || name == "fsol-dropped-bytes" || name == "fsol-dropped-packets" || name == "fsol-dropped-packets-dup-addr" || name == "fsol-dropped-packets-flow" || name == "fsol-dropped-packets-session-limit" || name == "fsol-packets" || name == "is-configured" || name == "sessions" || name == "unique-ip-check")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::SessionLimit()
@@ -3835,7 +5053,7 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit:
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (total !=  nullptr && total->has_operation())
 	|| (unclassified_source !=  nullptr && unclassified_source->has_operation());
 }
@@ -3909,8 +5127,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "total" || name == "unclassified-source")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::UnclassifiedSource()
@@ -3931,8 +5160,8 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit:
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(per_vlan.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(per_vlan.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::get_segment_path() const
@@ -3958,7 +5187,7 @@ const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (per_vlan.is_set || is_set(per_vlan.operation)) leaf_name_data.push_back(per_vlan.get_name_leafdata());
+    if (per_vlan.is_set || is_set(per_vlan.yfilter)) leaf_name_data.push_back(per_vlan.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3977,12 +5206,29 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "per-vlan")
     {
         per_vlan = value;
+        per_vlan.value_namespace = name_space;
+        per_vlan.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "per-vlan")
+    {
+        per_vlan.yfilter = yfilter;
+    }
+}
+
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::UnclassifiedSource::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "per-vlan")
+        return true;
+    return false;
 }
 
 IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::Total()
@@ -4003,8 +5249,8 @@ bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit:
 
 bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(per_vlan.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(per_vlan.yfilter);
 }
 
 std::string IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::get_segment_path() const
@@ -4030,7 +5276,7 @@ const EntityPath IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (per_vlan.is_set || is_set(per_vlan.operation)) leaf_name_data.push_back(per_vlan.get_name_leafdata());
+    if (per_vlan.is_set || is_set(per_vlan.yfilter)) leaf_name_data.push_back(per_vlan.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4049,41 +5295,58 @@ std::map<std::string, std::shared_ptr<Entity>> IpSubscriber::Nodes::Node::Access
     return children;
 }
 
-void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::set_value(const std::string & value_path, std::string value)
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "per-vlan")
     {
         per_vlan = value;
+        per_vlan.value_namespace = name_space;
+        per_vlan.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf IpsubMaIntfStateDataEnum::invalid {0, "invalid"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::initialized {1, "initialized"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::session_creation_started {2, "session-creation-started"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::control_policy_executing {3, "control-policy-executing"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::control_policy_executed {4, "control-policy-executed"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::session_features_applied {5, "session-features-applied"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::vrf_configured {6, "vrf-configured"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::adding_adjacency {7, "adding-adjacency"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::adjacency_added {8, "adjacency-added"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::up {9, "up"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::down {10, "down"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::address_family_down {11, "address-family-down"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::address_family_down_complete {12, "address-family-down-complete"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::disconnecting {13, "disconnecting"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::disconnected {14, "disconnected"};
-const Enum::YLeaf IpsubMaIntfStateDataEnum::error {15, "error"};
+void IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "per-vlan")
+    {
+        per_vlan.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf IpsubMaParentIntfVlanEnum::plain {0, "plain"};
-const Enum::YLeaf IpsubMaParentIntfVlanEnum::ambiguous {1, "ambiguous"};
+bool IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "per-vlan")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf IpsubMaParentIntfStateDataEnum::deleted {0, "deleted"};
-const Enum::YLeaf IpsubMaParentIntfStateDataEnum::down {1, "down"};
-const Enum::YLeaf IpsubMaParentIntfStateDataEnum::up {2, "up"};
+const Enum::YLeaf IpsubMaParentIntfVlan::plain {0, "plain"};
+const Enum::YLeaf IpsubMaParentIntfVlan::ambiguous {1, "ambiguous"};
 
-const Enum::YLeaf IpsubMaIntfInitiatorDataEnum::dhcp {0, "dhcp"};
-const Enum::YLeaf IpsubMaIntfInitiatorDataEnum::packet_trigger {1, "packet-trigger"};
-const Enum::YLeaf IpsubMaIntfInitiatorDataEnum::invalid_trigger {2, "invalid-trigger"};
+const Enum::YLeaf IpsubMaIntfInitiatorData::dhcp {0, "dhcp"};
+const Enum::YLeaf IpsubMaIntfInitiatorData::packet_trigger {1, "packet-trigger"};
+const Enum::YLeaf IpsubMaIntfInitiatorData::invalid_trigger {2, "invalid-trigger"};
+
+const Enum::YLeaf IpsubMaIntfStateData::invalid {0, "invalid"};
+const Enum::YLeaf IpsubMaIntfStateData::initialized {1, "initialized"};
+const Enum::YLeaf IpsubMaIntfStateData::session_creation_started {2, "session-creation-started"};
+const Enum::YLeaf IpsubMaIntfStateData::control_policy_executing {3, "control-policy-executing"};
+const Enum::YLeaf IpsubMaIntfStateData::control_policy_executed {4, "control-policy-executed"};
+const Enum::YLeaf IpsubMaIntfStateData::session_features_applied {5, "session-features-applied"};
+const Enum::YLeaf IpsubMaIntfStateData::vrf_configured {6, "vrf-configured"};
+const Enum::YLeaf IpsubMaIntfStateData::adding_adjacency {7, "adding-adjacency"};
+const Enum::YLeaf IpsubMaIntfStateData::adjacency_added {8, "adjacency-added"};
+const Enum::YLeaf IpsubMaIntfStateData::up {9, "up"};
+const Enum::YLeaf IpsubMaIntfStateData::down {10, "down"};
+const Enum::YLeaf IpsubMaIntfStateData::address_family_down {11, "address-family-down"};
+const Enum::YLeaf IpsubMaIntfStateData::address_family_down_complete {12, "address-family-down-complete"};
+const Enum::YLeaf IpsubMaIntfStateData::disconnecting {13, "disconnecting"};
+const Enum::YLeaf IpsubMaIntfStateData::disconnected {14, "disconnected"};
+const Enum::YLeaf IpsubMaIntfStateData::error {15, "error"};
+
+const Enum::YLeaf IpsubMaParentIntfStateData::deleted {0, "deleted"};
+const Enum::YLeaf IpsubMaParentIntfStateData::down {1, "down"};
+const Enum::YLeaf IpsubMaParentIntfStateData::up {2, "up"};
 
 
 }

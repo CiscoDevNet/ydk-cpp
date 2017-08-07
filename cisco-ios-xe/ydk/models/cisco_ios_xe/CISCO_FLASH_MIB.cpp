@@ -6,41 +6,43 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_FLASH_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_FLASH_MIB {
 
 CiscoFlashMib::CiscoFlashMib()
     :
-    ciscoflashcfg_(std::make_shared<CiscoFlashMib::Ciscoflashcfg>())
-	,ciscoflashchiptable_(std::make_shared<CiscoFlashMib::Ciscoflashchiptable>())
-	,ciscoflashcopytable_(std::make_shared<CiscoFlashMib::Ciscoflashcopytable>())
-	,ciscoflashdevice_(std::make_shared<CiscoFlashMib::Ciscoflashdevice>())
-	,ciscoflashdevicetable_(std::make_shared<CiscoFlashMib::Ciscoflashdevicetable>())
-	,ciscoflashfilebytypetable_(std::make_shared<CiscoFlashMib::Ciscoflashfilebytypetable>())
-	,ciscoflashfiletable_(std::make_shared<CiscoFlashMib::Ciscoflashfiletable>())
-	,ciscoflashmiscoptable_(std::make_shared<CiscoFlashMib::Ciscoflashmiscoptable>())
-	,ciscoflashpartitioningtable_(std::make_shared<CiscoFlashMib::Ciscoflashpartitioningtable>())
-	,ciscoflashpartitiontable_(std::make_shared<CiscoFlashMib::Ciscoflashpartitiontable>())
+    ciscoflashcfg(std::make_shared<CiscoFlashMib::Ciscoflashcfg>())
+	,ciscoflashchiptable(std::make_shared<CiscoFlashMib::Ciscoflashchiptable>())
+	,ciscoflashcopytable(std::make_shared<CiscoFlashMib::Ciscoflashcopytable>())
+	,ciscoflashdevice(std::make_shared<CiscoFlashMib::Ciscoflashdevice>())
+	,ciscoflashdevicetable(std::make_shared<CiscoFlashMib::Ciscoflashdevicetable>())
+	,ciscoflashfilebytypetable(std::make_shared<CiscoFlashMib::Ciscoflashfilebytypetable>())
+	,ciscoflashfiletable(std::make_shared<CiscoFlashMib::Ciscoflashfiletable>())
+	,ciscoflashmiscoptable(std::make_shared<CiscoFlashMib::Ciscoflashmiscoptable>())
+	,ciscoflashpartitioningtable(std::make_shared<CiscoFlashMib::Ciscoflashpartitioningtable>())
+	,ciscoflashpartitiontable(std::make_shared<CiscoFlashMib::Ciscoflashpartitiontable>())
 {
-    ciscoflashcfg_->parent = this;
+    ciscoflashcfg->parent = this;
 
-    ciscoflashchiptable_->parent = this;
+    ciscoflashchiptable->parent = this;
 
-    ciscoflashcopytable_->parent = this;
+    ciscoflashcopytable->parent = this;
 
-    ciscoflashdevice_->parent = this;
+    ciscoflashdevice->parent = this;
 
-    ciscoflashdevicetable_->parent = this;
+    ciscoflashdevicetable->parent = this;
 
-    ciscoflashfilebytypetable_->parent = this;
+    ciscoflashfilebytypetable->parent = this;
 
-    ciscoflashfiletable_->parent = this;
+    ciscoflashfiletable->parent = this;
 
-    ciscoflashmiscoptable_->parent = this;
+    ciscoflashmiscoptable->parent = this;
 
-    ciscoflashpartitioningtable_->parent = this;
+    ciscoflashpartitioningtable->parent = this;
 
-    ciscoflashpartitiontable_->parent = this;
+    ciscoflashpartitiontable->parent = this;
 
     yang_name = "CISCO-FLASH-MIB"; yang_parent_name = "CISCO-FLASH-MIB";
 }
@@ -51,31 +53,31 @@ CiscoFlashMib::~CiscoFlashMib()
 
 bool CiscoFlashMib::has_data() const
 {
-    return (ciscoflashcfg_ !=  nullptr && ciscoflashcfg_->has_data())
-	|| (ciscoflashchiptable_ !=  nullptr && ciscoflashchiptable_->has_data())
-	|| (ciscoflashcopytable_ !=  nullptr && ciscoflashcopytable_->has_data())
-	|| (ciscoflashdevice_ !=  nullptr && ciscoflashdevice_->has_data())
-	|| (ciscoflashdevicetable_ !=  nullptr && ciscoflashdevicetable_->has_data())
-	|| (ciscoflashfilebytypetable_ !=  nullptr && ciscoflashfilebytypetable_->has_data())
-	|| (ciscoflashfiletable_ !=  nullptr && ciscoflashfiletable_->has_data())
-	|| (ciscoflashmiscoptable_ !=  nullptr && ciscoflashmiscoptable_->has_data())
-	|| (ciscoflashpartitioningtable_ !=  nullptr && ciscoflashpartitioningtable_->has_data())
-	|| (ciscoflashpartitiontable_ !=  nullptr && ciscoflashpartitiontable_->has_data());
+    return (ciscoflashcfg !=  nullptr && ciscoflashcfg->has_data())
+	|| (ciscoflashchiptable !=  nullptr && ciscoflashchiptable->has_data())
+	|| (ciscoflashcopytable !=  nullptr && ciscoflashcopytable->has_data())
+	|| (ciscoflashdevice !=  nullptr && ciscoflashdevice->has_data())
+	|| (ciscoflashdevicetable !=  nullptr && ciscoflashdevicetable->has_data())
+	|| (ciscoflashfilebytypetable !=  nullptr && ciscoflashfilebytypetable->has_data())
+	|| (ciscoflashfiletable !=  nullptr && ciscoflashfiletable->has_data())
+	|| (ciscoflashmiscoptable !=  nullptr && ciscoflashmiscoptable->has_data())
+	|| (ciscoflashpartitioningtable !=  nullptr && ciscoflashpartitioningtable->has_data())
+	|| (ciscoflashpartitiontable !=  nullptr && ciscoflashpartitiontable->has_data());
 }
 
 bool CiscoFlashMib::has_operation() const
 {
-    return is_set(operation)
-	|| (ciscoflashcfg_ !=  nullptr && ciscoflashcfg_->has_operation())
-	|| (ciscoflashchiptable_ !=  nullptr && ciscoflashchiptable_->has_operation())
-	|| (ciscoflashcopytable_ !=  nullptr && ciscoflashcopytable_->has_operation())
-	|| (ciscoflashdevice_ !=  nullptr && ciscoflashdevice_->has_operation())
-	|| (ciscoflashdevicetable_ !=  nullptr && ciscoflashdevicetable_->has_operation())
-	|| (ciscoflashfilebytypetable_ !=  nullptr && ciscoflashfilebytypetable_->has_operation())
-	|| (ciscoflashfiletable_ !=  nullptr && ciscoflashfiletable_->has_operation())
-	|| (ciscoflashmiscoptable_ !=  nullptr && ciscoflashmiscoptable_->has_operation())
-	|| (ciscoflashpartitioningtable_ !=  nullptr && ciscoflashpartitioningtable_->has_operation())
-	|| (ciscoflashpartitiontable_ !=  nullptr && ciscoflashpartitiontable_->has_operation());
+    return is_set(yfilter)
+	|| (ciscoflashcfg !=  nullptr && ciscoflashcfg->has_operation())
+	|| (ciscoflashchiptable !=  nullptr && ciscoflashchiptable->has_operation())
+	|| (ciscoflashcopytable !=  nullptr && ciscoflashcopytable->has_operation())
+	|| (ciscoflashdevice !=  nullptr && ciscoflashdevice->has_operation())
+	|| (ciscoflashdevicetable !=  nullptr && ciscoflashdevicetable->has_operation())
+	|| (ciscoflashfilebytypetable !=  nullptr && ciscoflashfilebytypetable->has_operation())
+	|| (ciscoflashfiletable !=  nullptr && ciscoflashfiletable->has_operation())
+	|| (ciscoflashmiscoptable !=  nullptr && ciscoflashmiscoptable->has_operation())
+	|| (ciscoflashpartitioningtable !=  nullptr && ciscoflashpartitioningtable->has_operation())
+	|| (ciscoflashpartitiontable !=  nullptr && ciscoflashpartitiontable->has_operation());
 }
 
 std::string CiscoFlashMib::get_segment_path() const
@@ -109,92 +111,92 @@ std::shared_ptr<Entity> CiscoFlashMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "ciscoFlashCfg")
     {
-        if(ciscoflashcfg_ == nullptr)
+        if(ciscoflashcfg == nullptr)
         {
-            ciscoflashcfg_ = std::make_shared<CiscoFlashMib::Ciscoflashcfg>();
+            ciscoflashcfg = std::make_shared<CiscoFlashMib::Ciscoflashcfg>();
         }
-        return ciscoflashcfg_;
+        return ciscoflashcfg;
     }
 
     if(child_yang_name == "ciscoFlashChipTable")
     {
-        if(ciscoflashchiptable_ == nullptr)
+        if(ciscoflashchiptable == nullptr)
         {
-            ciscoflashchiptable_ = std::make_shared<CiscoFlashMib::Ciscoflashchiptable>();
+            ciscoflashchiptable = std::make_shared<CiscoFlashMib::Ciscoflashchiptable>();
         }
-        return ciscoflashchiptable_;
+        return ciscoflashchiptable;
     }
 
     if(child_yang_name == "ciscoFlashCopyTable")
     {
-        if(ciscoflashcopytable_ == nullptr)
+        if(ciscoflashcopytable == nullptr)
         {
-            ciscoflashcopytable_ = std::make_shared<CiscoFlashMib::Ciscoflashcopytable>();
+            ciscoflashcopytable = std::make_shared<CiscoFlashMib::Ciscoflashcopytable>();
         }
-        return ciscoflashcopytable_;
+        return ciscoflashcopytable;
     }
 
     if(child_yang_name == "ciscoFlashDevice")
     {
-        if(ciscoflashdevice_ == nullptr)
+        if(ciscoflashdevice == nullptr)
         {
-            ciscoflashdevice_ = std::make_shared<CiscoFlashMib::Ciscoflashdevice>();
+            ciscoflashdevice = std::make_shared<CiscoFlashMib::Ciscoflashdevice>();
         }
-        return ciscoflashdevice_;
+        return ciscoflashdevice;
     }
 
     if(child_yang_name == "ciscoFlashDeviceTable")
     {
-        if(ciscoflashdevicetable_ == nullptr)
+        if(ciscoflashdevicetable == nullptr)
         {
-            ciscoflashdevicetable_ = std::make_shared<CiscoFlashMib::Ciscoflashdevicetable>();
+            ciscoflashdevicetable = std::make_shared<CiscoFlashMib::Ciscoflashdevicetable>();
         }
-        return ciscoflashdevicetable_;
+        return ciscoflashdevicetable;
     }
 
     if(child_yang_name == "ciscoFlashFileByTypeTable")
     {
-        if(ciscoflashfilebytypetable_ == nullptr)
+        if(ciscoflashfilebytypetable == nullptr)
         {
-            ciscoflashfilebytypetable_ = std::make_shared<CiscoFlashMib::Ciscoflashfilebytypetable>();
+            ciscoflashfilebytypetable = std::make_shared<CiscoFlashMib::Ciscoflashfilebytypetable>();
         }
-        return ciscoflashfilebytypetable_;
+        return ciscoflashfilebytypetable;
     }
 
     if(child_yang_name == "ciscoFlashFileTable")
     {
-        if(ciscoflashfiletable_ == nullptr)
+        if(ciscoflashfiletable == nullptr)
         {
-            ciscoflashfiletable_ = std::make_shared<CiscoFlashMib::Ciscoflashfiletable>();
+            ciscoflashfiletable = std::make_shared<CiscoFlashMib::Ciscoflashfiletable>();
         }
-        return ciscoflashfiletable_;
+        return ciscoflashfiletable;
     }
 
     if(child_yang_name == "ciscoFlashMiscOpTable")
     {
-        if(ciscoflashmiscoptable_ == nullptr)
+        if(ciscoflashmiscoptable == nullptr)
         {
-            ciscoflashmiscoptable_ = std::make_shared<CiscoFlashMib::Ciscoflashmiscoptable>();
+            ciscoflashmiscoptable = std::make_shared<CiscoFlashMib::Ciscoflashmiscoptable>();
         }
-        return ciscoflashmiscoptable_;
+        return ciscoflashmiscoptable;
     }
 
     if(child_yang_name == "ciscoFlashPartitioningTable")
     {
-        if(ciscoflashpartitioningtable_ == nullptr)
+        if(ciscoflashpartitioningtable == nullptr)
         {
-            ciscoflashpartitioningtable_ = std::make_shared<CiscoFlashMib::Ciscoflashpartitioningtable>();
+            ciscoflashpartitioningtable = std::make_shared<CiscoFlashMib::Ciscoflashpartitioningtable>();
         }
-        return ciscoflashpartitioningtable_;
+        return ciscoflashpartitioningtable;
     }
 
     if(child_yang_name == "ciscoFlashPartitionTable")
     {
-        if(ciscoflashpartitiontable_ == nullptr)
+        if(ciscoflashpartitiontable == nullptr)
         {
-            ciscoflashpartitiontable_ = std::make_shared<CiscoFlashMib::Ciscoflashpartitiontable>();
+            ciscoflashpartitiontable = std::make_shared<CiscoFlashMib::Ciscoflashpartitiontable>();
         }
-        return ciscoflashpartitiontable_;
+        return ciscoflashpartitiontable;
     }
 
     return nullptr;
@@ -203,60 +205,64 @@ std::shared_ptr<Entity> CiscoFlashMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscoflashcfg_ != nullptr)
+    if(ciscoflashcfg != nullptr)
     {
-        children["ciscoFlashCfg"] = ciscoflashcfg_;
+        children["ciscoFlashCfg"] = ciscoflashcfg;
     }
 
-    if(ciscoflashchiptable_ != nullptr)
+    if(ciscoflashchiptable != nullptr)
     {
-        children["ciscoFlashChipTable"] = ciscoflashchiptable_;
+        children["ciscoFlashChipTable"] = ciscoflashchiptable;
     }
 
-    if(ciscoflashcopytable_ != nullptr)
+    if(ciscoflashcopytable != nullptr)
     {
-        children["ciscoFlashCopyTable"] = ciscoflashcopytable_;
+        children["ciscoFlashCopyTable"] = ciscoflashcopytable;
     }
 
-    if(ciscoflashdevice_ != nullptr)
+    if(ciscoflashdevice != nullptr)
     {
-        children["ciscoFlashDevice"] = ciscoflashdevice_;
+        children["ciscoFlashDevice"] = ciscoflashdevice;
     }
 
-    if(ciscoflashdevicetable_ != nullptr)
+    if(ciscoflashdevicetable != nullptr)
     {
-        children["ciscoFlashDeviceTable"] = ciscoflashdevicetable_;
+        children["ciscoFlashDeviceTable"] = ciscoflashdevicetable;
     }
 
-    if(ciscoflashfilebytypetable_ != nullptr)
+    if(ciscoflashfilebytypetable != nullptr)
     {
-        children["ciscoFlashFileByTypeTable"] = ciscoflashfilebytypetable_;
+        children["ciscoFlashFileByTypeTable"] = ciscoflashfilebytypetable;
     }
 
-    if(ciscoflashfiletable_ != nullptr)
+    if(ciscoflashfiletable != nullptr)
     {
-        children["ciscoFlashFileTable"] = ciscoflashfiletable_;
+        children["ciscoFlashFileTable"] = ciscoflashfiletable;
     }
 
-    if(ciscoflashmiscoptable_ != nullptr)
+    if(ciscoflashmiscoptable != nullptr)
     {
-        children["ciscoFlashMiscOpTable"] = ciscoflashmiscoptable_;
+        children["ciscoFlashMiscOpTable"] = ciscoflashmiscoptable;
     }
 
-    if(ciscoflashpartitioningtable_ != nullptr)
+    if(ciscoflashpartitioningtable != nullptr)
     {
-        children["ciscoFlashPartitioningTable"] = ciscoflashpartitioningtable_;
+        children["ciscoFlashPartitioningTable"] = ciscoflashpartitioningtable;
     }
 
-    if(ciscoflashpartitiontable_ != nullptr)
+    if(ciscoflashpartitiontable != nullptr)
     {
-        children["ciscoFlashPartitionTable"] = ciscoflashpartitiontable_;
+        children["ciscoFlashPartitionTable"] = ciscoflashpartitiontable;
     }
 
     return children;
 }
 
-void CiscoFlashMib::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoFlashMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -280,6 +286,18 @@ augment_capabilities_function CiscoFlashMib::get_augment_capabilities_function()
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoFlashMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoFlashMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashCfg" || name == "ciscoFlashChipTable" || name == "ciscoFlashCopyTable" || name == "ciscoFlashDevice" || name == "ciscoFlashDeviceTable" || name == "ciscoFlashFileByTypeTable" || name == "ciscoFlashFileTable" || name == "ciscoFlashMiscOpTable" || name == "ciscoFlashPartitioningTable" || name == "ciscoFlashPartitionTable")
+        return true;
+    return false;
+}
+
 CiscoFlashMib::Ciscoflashdevice::Ciscoflashdevice()
     :
     ciscoflashdevicessupported{YType::uint32, "ciscoFlashDevicesSupported"}
@@ -298,8 +316,8 @@ bool CiscoFlashMib::Ciscoflashdevice::has_data() const
 
 bool CiscoFlashMib::Ciscoflashdevice::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashdevicessupported.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashdevicessupported.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashdevice::get_segment_path() const
@@ -325,7 +343,7 @@ const EntityPath CiscoFlashMib::Ciscoflashdevice::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashdevicessupported.is_set || is_set(ciscoflashdevicessupported.operation)) leaf_name_data.push_back(ciscoflashdevicessupported.get_name_leafdata());
+    if (ciscoflashdevicessupported.is_set || is_set(ciscoflashdevicessupported.yfilter)) leaf_name_data.push_back(ciscoflashdevicessupported.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -344,12 +362,29 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashdevice::
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashdevice::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashdevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashDevicesSupported")
     {
         ciscoflashdevicessupported = value;
+        ciscoflashdevicessupported.value_namespace = name_space;
+        ciscoflashdevicessupported.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashdevice::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashDevicesSupported")
+    {
+        ciscoflashdevicessupported.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashdevice::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashDevicesSupported")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashcfg::Ciscoflashcfg()
@@ -374,10 +409,10 @@ bool CiscoFlashMib::Ciscoflashcfg::has_data() const
 
 bool CiscoFlashMib::Ciscoflashcfg::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashcfgdevinsnotifenable.operation)
-	|| is_set(ciscoflashcfgdevremnotifenable.operation)
-	|| is_set(ciscoflashpartitionlowspacenotifenable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashcfgdevinsnotifenable.yfilter)
+	|| ydk::is_set(ciscoflashcfgdevremnotifenable.yfilter)
+	|| ydk::is_set(ciscoflashpartitionlowspacenotifenable.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashcfg::get_segment_path() const
@@ -403,9 +438,9 @@ const EntityPath CiscoFlashMib::Ciscoflashcfg::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashcfgdevinsnotifenable.is_set || is_set(ciscoflashcfgdevinsnotifenable.operation)) leaf_name_data.push_back(ciscoflashcfgdevinsnotifenable.get_name_leafdata());
-    if (ciscoflashcfgdevremnotifenable.is_set || is_set(ciscoflashcfgdevremnotifenable.operation)) leaf_name_data.push_back(ciscoflashcfgdevremnotifenable.get_name_leafdata());
-    if (ciscoflashpartitionlowspacenotifenable.is_set || is_set(ciscoflashpartitionlowspacenotifenable.operation)) leaf_name_data.push_back(ciscoflashpartitionlowspacenotifenable.get_name_leafdata());
+    if (ciscoflashcfgdevinsnotifenable.is_set || is_set(ciscoflashcfgdevinsnotifenable.yfilter)) leaf_name_data.push_back(ciscoflashcfgdevinsnotifenable.get_name_leafdata());
+    if (ciscoflashcfgdevremnotifenable.is_set || is_set(ciscoflashcfgdevremnotifenable.yfilter)) leaf_name_data.push_back(ciscoflashcfgdevremnotifenable.get_name_leafdata());
+    if (ciscoflashpartitionlowspacenotifenable.is_set || is_set(ciscoflashpartitionlowspacenotifenable.yfilter)) leaf_name_data.push_back(ciscoflashpartitionlowspacenotifenable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -424,20 +459,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashcfg::get
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashcfg::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashcfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashCfgDevInsNotifEnable")
     {
         ciscoflashcfgdevinsnotifenable = value;
+        ciscoflashcfgdevinsnotifenable.value_namespace = name_space;
+        ciscoflashcfgdevinsnotifenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCfgDevRemNotifEnable")
     {
         ciscoflashcfgdevremnotifenable = value;
+        ciscoflashcfgdevremnotifenable.value_namespace = name_space;
+        ciscoflashcfgdevremnotifenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionLowSpaceNotifEnable")
     {
         ciscoflashpartitionlowspacenotifenable = value;
+        ciscoflashpartitionlowspacenotifenable.value_namespace = name_space;
+        ciscoflashpartitionlowspacenotifenable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashcfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashCfgDevInsNotifEnable")
+    {
+        ciscoflashcfgdevinsnotifenable.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCfgDevRemNotifEnable")
+    {
+        ciscoflashcfgdevremnotifenable.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionLowSpaceNotifEnable")
+    {
+        ciscoflashpartitionlowspacenotifenable.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashcfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashCfgDevInsNotifEnable" || name == "ciscoFlashCfgDevRemNotifEnable" || name == "ciscoFlashPartitionLowSpaceNotifEnable")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdevicetable()
@@ -451,9 +515,9 @@ CiscoFlashMib::Ciscoflashdevicetable::~Ciscoflashdevicetable()
 
 bool CiscoFlashMib::Ciscoflashdevicetable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoflashdeviceentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashdeviceentry.size(); index++)
     {
-        if(ciscoflashdeviceentry_[index]->has_data())
+        if(ciscoflashdeviceentry[index]->has_data())
             return true;
     }
     return false;
@@ -461,12 +525,12 @@ bool CiscoFlashMib::Ciscoflashdevicetable::has_data() const
 
 bool CiscoFlashMib::Ciscoflashdevicetable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoflashdeviceentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashdeviceentry.size(); index++)
     {
-        if(ciscoflashdeviceentry_[index]->has_operation())
+        if(ciscoflashdeviceentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashdevicetable::get_segment_path() const
@@ -503,7 +567,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashdevicetable::get_child_by_name(
 {
     if(child_yang_name == "ciscoFlashDeviceEntry")
     {
-        for(auto const & c : ciscoflashdeviceentry_)
+        for(auto const & c : ciscoflashdeviceentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -513,7 +577,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashdevicetable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry>();
         c->parent = this;
-        ciscoflashdeviceentry_.push_back(c);
+        ciscoflashdeviceentry.push_back(c);
         return c;
     }
 
@@ -523,7 +587,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashdevicetable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashdevicetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoflashdeviceentry_)
+    for (auto const & c : ciscoflashdeviceentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -531,8 +595,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashdeviceta
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashdevicetable::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashdevicetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFlashMib::Ciscoflashdevicetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFlashMib::Ciscoflashdevicetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashDeviceEntry")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::Ciscoflashdeviceentry()
@@ -585,24 +660,24 @@ bool CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::has_data() con
 
 bool CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashdeviceindex.operation)
-	|| is_set(ciscoflashdevicecard.operation)
-	|| is_set(ciscoflashdevicechipcount.operation)
-	|| is_set(ciscoflashdevicecontroller.operation)
-	|| is_set(ciscoflashdevicedescr.operation)
-	|| is_set(ciscoflashdeviceinittime.operation)
-	|| is_set(ciscoflashdevicemaxpartitions.operation)
-	|| is_set(ciscoflashdeviceminpartitionsize.operation)
-	|| is_set(ciscoflashdeviceminpartitionsizeextended.operation)
-	|| is_set(ciscoflashdevicename.operation)
-	|| is_set(ciscoflashdevicenameextended.operation)
-	|| is_set(ciscoflashdevicepartitions.operation)
-	|| is_set(ciscoflashdeviceprogrammingjumper.operation)
-	|| is_set(ciscoflashdeviceremovable.operation)
-	|| is_set(ciscoflashdevicesize.operation)
-	|| is_set(ciscoflashdevicesizeextended.operation)
-	|| is_set(ciscoflashphyentindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashdeviceindex.yfilter)
+	|| ydk::is_set(ciscoflashdevicecard.yfilter)
+	|| ydk::is_set(ciscoflashdevicechipcount.yfilter)
+	|| ydk::is_set(ciscoflashdevicecontroller.yfilter)
+	|| ydk::is_set(ciscoflashdevicedescr.yfilter)
+	|| ydk::is_set(ciscoflashdeviceinittime.yfilter)
+	|| ydk::is_set(ciscoflashdevicemaxpartitions.yfilter)
+	|| ydk::is_set(ciscoflashdeviceminpartitionsize.yfilter)
+	|| ydk::is_set(ciscoflashdeviceminpartitionsizeextended.yfilter)
+	|| ydk::is_set(ciscoflashdevicename.yfilter)
+	|| ydk::is_set(ciscoflashdevicenameextended.yfilter)
+	|| ydk::is_set(ciscoflashdevicepartitions.yfilter)
+	|| ydk::is_set(ciscoflashdeviceprogrammingjumper.yfilter)
+	|| ydk::is_set(ciscoflashdeviceremovable.yfilter)
+	|| ydk::is_set(ciscoflashdevicesize.yfilter)
+	|| ydk::is_set(ciscoflashdevicesizeextended.yfilter)
+	|| ydk::is_set(ciscoflashphyentindex.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::get_segment_path() const
@@ -628,23 +703,23 @@ const EntityPath CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.operation)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
-    if (ciscoflashdevicecard.is_set || is_set(ciscoflashdevicecard.operation)) leaf_name_data.push_back(ciscoflashdevicecard.get_name_leafdata());
-    if (ciscoflashdevicechipcount.is_set || is_set(ciscoflashdevicechipcount.operation)) leaf_name_data.push_back(ciscoflashdevicechipcount.get_name_leafdata());
-    if (ciscoflashdevicecontroller.is_set || is_set(ciscoflashdevicecontroller.operation)) leaf_name_data.push_back(ciscoflashdevicecontroller.get_name_leafdata());
-    if (ciscoflashdevicedescr.is_set || is_set(ciscoflashdevicedescr.operation)) leaf_name_data.push_back(ciscoflashdevicedescr.get_name_leafdata());
-    if (ciscoflashdeviceinittime.is_set || is_set(ciscoflashdeviceinittime.operation)) leaf_name_data.push_back(ciscoflashdeviceinittime.get_name_leafdata());
-    if (ciscoflashdevicemaxpartitions.is_set || is_set(ciscoflashdevicemaxpartitions.operation)) leaf_name_data.push_back(ciscoflashdevicemaxpartitions.get_name_leafdata());
-    if (ciscoflashdeviceminpartitionsize.is_set || is_set(ciscoflashdeviceminpartitionsize.operation)) leaf_name_data.push_back(ciscoflashdeviceminpartitionsize.get_name_leafdata());
-    if (ciscoflashdeviceminpartitionsizeextended.is_set || is_set(ciscoflashdeviceminpartitionsizeextended.operation)) leaf_name_data.push_back(ciscoflashdeviceminpartitionsizeextended.get_name_leafdata());
-    if (ciscoflashdevicename.is_set || is_set(ciscoflashdevicename.operation)) leaf_name_data.push_back(ciscoflashdevicename.get_name_leafdata());
-    if (ciscoflashdevicenameextended.is_set || is_set(ciscoflashdevicenameextended.operation)) leaf_name_data.push_back(ciscoflashdevicenameextended.get_name_leafdata());
-    if (ciscoflashdevicepartitions.is_set || is_set(ciscoflashdevicepartitions.operation)) leaf_name_data.push_back(ciscoflashdevicepartitions.get_name_leafdata());
-    if (ciscoflashdeviceprogrammingjumper.is_set || is_set(ciscoflashdeviceprogrammingjumper.operation)) leaf_name_data.push_back(ciscoflashdeviceprogrammingjumper.get_name_leafdata());
-    if (ciscoflashdeviceremovable.is_set || is_set(ciscoflashdeviceremovable.operation)) leaf_name_data.push_back(ciscoflashdeviceremovable.get_name_leafdata());
-    if (ciscoflashdevicesize.is_set || is_set(ciscoflashdevicesize.operation)) leaf_name_data.push_back(ciscoflashdevicesize.get_name_leafdata());
-    if (ciscoflashdevicesizeextended.is_set || is_set(ciscoflashdevicesizeextended.operation)) leaf_name_data.push_back(ciscoflashdevicesizeextended.get_name_leafdata());
-    if (ciscoflashphyentindex.is_set || is_set(ciscoflashphyentindex.operation)) leaf_name_data.push_back(ciscoflashphyentindex.get_name_leafdata());
+    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.yfilter)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
+    if (ciscoflashdevicecard.is_set || is_set(ciscoflashdevicecard.yfilter)) leaf_name_data.push_back(ciscoflashdevicecard.get_name_leafdata());
+    if (ciscoflashdevicechipcount.is_set || is_set(ciscoflashdevicechipcount.yfilter)) leaf_name_data.push_back(ciscoflashdevicechipcount.get_name_leafdata());
+    if (ciscoflashdevicecontroller.is_set || is_set(ciscoflashdevicecontroller.yfilter)) leaf_name_data.push_back(ciscoflashdevicecontroller.get_name_leafdata());
+    if (ciscoflashdevicedescr.is_set || is_set(ciscoflashdevicedescr.yfilter)) leaf_name_data.push_back(ciscoflashdevicedescr.get_name_leafdata());
+    if (ciscoflashdeviceinittime.is_set || is_set(ciscoflashdeviceinittime.yfilter)) leaf_name_data.push_back(ciscoflashdeviceinittime.get_name_leafdata());
+    if (ciscoflashdevicemaxpartitions.is_set || is_set(ciscoflashdevicemaxpartitions.yfilter)) leaf_name_data.push_back(ciscoflashdevicemaxpartitions.get_name_leafdata());
+    if (ciscoflashdeviceminpartitionsize.is_set || is_set(ciscoflashdeviceminpartitionsize.yfilter)) leaf_name_data.push_back(ciscoflashdeviceminpartitionsize.get_name_leafdata());
+    if (ciscoflashdeviceminpartitionsizeextended.is_set || is_set(ciscoflashdeviceminpartitionsizeextended.yfilter)) leaf_name_data.push_back(ciscoflashdeviceminpartitionsizeextended.get_name_leafdata());
+    if (ciscoflashdevicename.is_set || is_set(ciscoflashdevicename.yfilter)) leaf_name_data.push_back(ciscoflashdevicename.get_name_leafdata());
+    if (ciscoflashdevicenameextended.is_set || is_set(ciscoflashdevicenameextended.yfilter)) leaf_name_data.push_back(ciscoflashdevicenameextended.get_name_leafdata());
+    if (ciscoflashdevicepartitions.is_set || is_set(ciscoflashdevicepartitions.yfilter)) leaf_name_data.push_back(ciscoflashdevicepartitions.get_name_leafdata());
+    if (ciscoflashdeviceprogrammingjumper.is_set || is_set(ciscoflashdeviceprogrammingjumper.yfilter)) leaf_name_data.push_back(ciscoflashdeviceprogrammingjumper.get_name_leafdata());
+    if (ciscoflashdeviceremovable.is_set || is_set(ciscoflashdeviceremovable.yfilter)) leaf_name_data.push_back(ciscoflashdeviceremovable.get_name_leafdata());
+    if (ciscoflashdevicesize.is_set || is_set(ciscoflashdevicesize.yfilter)) leaf_name_data.push_back(ciscoflashdevicesize.get_name_leafdata());
+    if (ciscoflashdevicesizeextended.is_set || is_set(ciscoflashdevicesizeextended.yfilter)) leaf_name_data.push_back(ciscoflashdevicesizeextended.get_name_leafdata());
+    if (ciscoflashphyentindex.is_set || is_set(ciscoflashphyentindex.yfilter)) leaf_name_data.push_back(ciscoflashphyentindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -663,76 +738,189 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashdeviceta
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashDeviceIndex")
     {
         ciscoflashdeviceindex = value;
+        ciscoflashdeviceindex.value_namespace = name_space;
+        ciscoflashdeviceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceCard")
     {
         ciscoflashdevicecard = value;
+        ciscoflashdevicecard.value_namespace = name_space;
+        ciscoflashdevicecard.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceChipCount")
     {
         ciscoflashdevicechipcount = value;
+        ciscoflashdevicechipcount.value_namespace = name_space;
+        ciscoflashdevicechipcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceController")
     {
         ciscoflashdevicecontroller = value;
+        ciscoflashdevicecontroller.value_namespace = name_space;
+        ciscoflashdevicecontroller.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceDescr")
     {
         ciscoflashdevicedescr = value;
+        ciscoflashdevicedescr.value_namespace = name_space;
+        ciscoflashdevicedescr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceInitTime")
     {
         ciscoflashdeviceinittime = value;
+        ciscoflashdeviceinittime.value_namespace = name_space;
+        ciscoflashdeviceinittime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceMaxPartitions")
     {
         ciscoflashdevicemaxpartitions = value;
+        ciscoflashdevicemaxpartitions.value_namespace = name_space;
+        ciscoflashdevicemaxpartitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceMinPartitionSize")
     {
         ciscoflashdeviceminpartitionsize = value;
+        ciscoflashdeviceminpartitionsize.value_namespace = name_space;
+        ciscoflashdeviceminpartitionsize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceMinPartitionSizeExtended")
     {
         ciscoflashdeviceminpartitionsizeextended = value;
+        ciscoflashdeviceminpartitionsizeextended.value_namespace = name_space;
+        ciscoflashdeviceminpartitionsizeextended.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceName")
     {
         ciscoflashdevicename = value;
+        ciscoflashdevicename.value_namespace = name_space;
+        ciscoflashdevicename.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceNameExtended")
     {
         ciscoflashdevicenameextended = value;
+        ciscoflashdevicenameextended.value_namespace = name_space;
+        ciscoflashdevicenameextended.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDevicePartitions")
     {
         ciscoflashdevicepartitions = value;
+        ciscoflashdevicepartitions.value_namespace = name_space;
+        ciscoflashdevicepartitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceProgrammingJumper")
     {
         ciscoflashdeviceprogrammingjumper = value;
+        ciscoflashdeviceprogrammingjumper.value_namespace = name_space;
+        ciscoflashdeviceprogrammingjumper.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceRemovable")
     {
         ciscoflashdeviceremovable = value;
+        ciscoflashdeviceremovable.value_namespace = name_space;
+        ciscoflashdeviceremovable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceSize")
     {
         ciscoflashdevicesize = value;
+        ciscoflashdevicesize.value_namespace = name_space;
+        ciscoflashdevicesize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceSizeExtended")
     {
         ciscoflashdevicesizeextended = value;
+        ciscoflashdevicesizeextended.value_namespace = name_space;
+        ciscoflashdevicesizeextended.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPhyEntIndex")
     {
         ciscoflashphyentindex = value;
+        ciscoflashphyentindex.value_namespace = name_space;
+        ciscoflashphyentindex.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashDeviceIndex")
+    {
+        ciscoflashdeviceindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceCard")
+    {
+        ciscoflashdevicecard.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceChipCount")
+    {
+        ciscoflashdevicechipcount.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceController")
+    {
+        ciscoflashdevicecontroller.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceDescr")
+    {
+        ciscoflashdevicedescr.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceInitTime")
+    {
+        ciscoflashdeviceinittime.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceMaxPartitions")
+    {
+        ciscoflashdevicemaxpartitions.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceMinPartitionSize")
+    {
+        ciscoflashdeviceminpartitionsize.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceMinPartitionSizeExtended")
+    {
+        ciscoflashdeviceminpartitionsizeextended.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceName")
+    {
+        ciscoflashdevicename.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceNameExtended")
+    {
+        ciscoflashdevicenameextended.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDevicePartitions")
+    {
+        ciscoflashdevicepartitions.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceProgrammingJumper")
+    {
+        ciscoflashdeviceprogrammingjumper.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceRemovable")
+    {
+        ciscoflashdeviceremovable.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceSize")
+    {
+        ciscoflashdevicesize.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceSizeExtended")
+    {
+        ciscoflashdevicesizeextended.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPhyEntIndex")
+    {
+        ciscoflashphyentindex.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashDeviceIndex" || name == "ciscoFlashDeviceCard" || name == "ciscoFlashDeviceChipCount" || name == "ciscoFlashDeviceController" || name == "ciscoFlashDeviceDescr" || name == "ciscoFlashDeviceInitTime" || name == "ciscoFlashDeviceMaxPartitions" || name == "ciscoFlashDeviceMinPartitionSize" || name == "ciscoFlashDeviceMinPartitionSizeExtended" || name == "ciscoFlashDeviceName" || name == "ciscoFlashDeviceNameExtended" || name == "ciscoFlashDevicePartitions" || name == "ciscoFlashDeviceProgrammingJumper" || name == "ciscoFlashDeviceRemovable" || name == "ciscoFlashDeviceSize" || name == "ciscoFlashDeviceSizeExtended" || name == "ciscoFlashPhyEntIndex")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchiptable()
@@ -746,9 +934,9 @@ CiscoFlashMib::Ciscoflashchiptable::~Ciscoflashchiptable()
 
 bool CiscoFlashMib::Ciscoflashchiptable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoflashchipentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashchipentry.size(); index++)
     {
-        if(ciscoflashchipentry_[index]->has_data())
+        if(ciscoflashchipentry[index]->has_data())
             return true;
     }
     return false;
@@ -756,12 +944,12 @@ bool CiscoFlashMib::Ciscoflashchiptable::has_data() const
 
 bool CiscoFlashMib::Ciscoflashchiptable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoflashchipentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashchipentry.size(); index++)
     {
-        if(ciscoflashchipentry_[index]->has_operation())
+        if(ciscoflashchipentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashchiptable::get_segment_path() const
@@ -798,7 +986,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashchiptable::get_child_by_name(co
 {
     if(child_yang_name == "ciscoFlashChipEntry")
     {
-        for(auto const & c : ciscoflashchipentry_)
+        for(auto const & c : ciscoflashchipentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -808,7 +996,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashchiptable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry>();
         c->parent = this;
-        ciscoflashchipentry_.push_back(c);
+        ciscoflashchipentry.push_back(c);
         return c;
     }
 
@@ -818,7 +1006,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashchiptable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashchiptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoflashchipentry_)
+    for (auto const & c : ciscoflashchipentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -826,8 +1014,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashchiptabl
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashchiptable::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashchiptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFlashMib::Ciscoflashchiptable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFlashMib::Ciscoflashchiptable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashChipEntry")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::Ciscoflashchipentry()
@@ -862,15 +1061,15 @@ bool CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::has_data() const
 
 bool CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashdeviceindex.operation)
-	|| is_set(ciscoflashchipindex.operation)
-	|| is_set(ciscoflashchipcode.operation)
-	|| is_set(ciscoflashchipdescr.operation)
-	|| is_set(ciscoflashchiperaseretries.operation)
-	|| is_set(ciscoflashchipmaxeraseretries.operation)
-	|| is_set(ciscoflashchipmaxwriteretries.operation)
-	|| is_set(ciscoflashchipwriteretries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashdeviceindex.yfilter)
+	|| ydk::is_set(ciscoflashchipindex.yfilter)
+	|| ydk::is_set(ciscoflashchipcode.yfilter)
+	|| ydk::is_set(ciscoflashchipdescr.yfilter)
+	|| ydk::is_set(ciscoflashchiperaseretries.yfilter)
+	|| ydk::is_set(ciscoflashchipmaxeraseretries.yfilter)
+	|| ydk::is_set(ciscoflashchipmaxwriteretries.yfilter)
+	|| ydk::is_set(ciscoflashchipwriteretries.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::get_segment_path() const
@@ -896,14 +1095,14 @@ const EntityPath CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.operation)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
-    if (ciscoflashchipindex.is_set || is_set(ciscoflashchipindex.operation)) leaf_name_data.push_back(ciscoflashchipindex.get_name_leafdata());
-    if (ciscoflashchipcode.is_set || is_set(ciscoflashchipcode.operation)) leaf_name_data.push_back(ciscoflashchipcode.get_name_leafdata());
-    if (ciscoflashchipdescr.is_set || is_set(ciscoflashchipdescr.operation)) leaf_name_data.push_back(ciscoflashchipdescr.get_name_leafdata());
-    if (ciscoflashchiperaseretries.is_set || is_set(ciscoflashchiperaseretries.operation)) leaf_name_data.push_back(ciscoflashchiperaseretries.get_name_leafdata());
-    if (ciscoflashchipmaxeraseretries.is_set || is_set(ciscoflashchipmaxeraseretries.operation)) leaf_name_data.push_back(ciscoflashchipmaxeraseretries.get_name_leafdata());
-    if (ciscoflashchipmaxwriteretries.is_set || is_set(ciscoflashchipmaxwriteretries.operation)) leaf_name_data.push_back(ciscoflashchipmaxwriteretries.get_name_leafdata());
-    if (ciscoflashchipwriteretries.is_set || is_set(ciscoflashchipwriteretries.operation)) leaf_name_data.push_back(ciscoflashchipwriteretries.get_name_leafdata());
+    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.yfilter)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
+    if (ciscoflashchipindex.is_set || is_set(ciscoflashchipindex.yfilter)) leaf_name_data.push_back(ciscoflashchipindex.get_name_leafdata());
+    if (ciscoflashchipcode.is_set || is_set(ciscoflashchipcode.yfilter)) leaf_name_data.push_back(ciscoflashchipcode.get_name_leafdata());
+    if (ciscoflashchipdescr.is_set || is_set(ciscoflashchipdescr.yfilter)) leaf_name_data.push_back(ciscoflashchipdescr.get_name_leafdata());
+    if (ciscoflashchiperaseretries.is_set || is_set(ciscoflashchiperaseretries.yfilter)) leaf_name_data.push_back(ciscoflashchiperaseretries.get_name_leafdata());
+    if (ciscoflashchipmaxeraseretries.is_set || is_set(ciscoflashchipmaxeraseretries.yfilter)) leaf_name_data.push_back(ciscoflashchipmaxeraseretries.get_name_leafdata());
+    if (ciscoflashchipmaxwriteretries.is_set || is_set(ciscoflashchipmaxwriteretries.yfilter)) leaf_name_data.push_back(ciscoflashchipmaxwriteretries.get_name_leafdata());
+    if (ciscoflashchipwriteretries.is_set || is_set(ciscoflashchipwriteretries.yfilter)) leaf_name_data.push_back(ciscoflashchipwriteretries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -922,40 +1121,99 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashchiptabl
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashDeviceIndex")
     {
         ciscoflashdeviceindex = value;
+        ciscoflashdeviceindex.value_namespace = name_space;
+        ciscoflashdeviceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashChipIndex")
     {
         ciscoflashchipindex = value;
+        ciscoflashchipindex.value_namespace = name_space;
+        ciscoflashchipindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashChipCode")
     {
         ciscoflashchipcode = value;
+        ciscoflashchipcode.value_namespace = name_space;
+        ciscoflashchipcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashChipDescr")
     {
         ciscoflashchipdescr = value;
+        ciscoflashchipdescr.value_namespace = name_space;
+        ciscoflashchipdescr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashChipEraseRetries")
     {
         ciscoflashchiperaseretries = value;
+        ciscoflashchiperaseretries.value_namespace = name_space;
+        ciscoflashchiperaseretries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashChipMaxEraseRetries")
     {
         ciscoflashchipmaxeraseretries = value;
+        ciscoflashchipmaxeraseretries.value_namespace = name_space;
+        ciscoflashchipmaxeraseretries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashChipMaxWriteRetries")
     {
         ciscoflashchipmaxwriteretries = value;
+        ciscoflashchipmaxwriteretries.value_namespace = name_space;
+        ciscoflashchipmaxwriteretries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashChipWriteRetries")
     {
         ciscoflashchipwriteretries = value;
+        ciscoflashchipwriteretries.value_namespace = name_space;
+        ciscoflashchipwriteretries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashDeviceIndex")
+    {
+        ciscoflashdeviceindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashChipIndex")
+    {
+        ciscoflashchipindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashChipCode")
+    {
+        ciscoflashchipcode.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashChipDescr")
+    {
+        ciscoflashchipdescr.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashChipEraseRetries")
+    {
+        ciscoflashchiperaseretries.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashChipMaxEraseRetries")
+    {
+        ciscoflashchipmaxeraseretries.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashChipMaxWriteRetries")
+    {
+        ciscoflashchipmaxwriteretries.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashChipWriteRetries")
+    {
+        ciscoflashchipwriteretries.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashchiptable::Ciscoflashchipentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashDeviceIndex" || name == "ciscoFlashChipIndex" || name == "ciscoFlashChipCode" || name == "ciscoFlashChipDescr" || name == "ciscoFlashChipEraseRetries" || name == "ciscoFlashChipMaxEraseRetries" || name == "ciscoFlashChipMaxWriteRetries" || name == "ciscoFlashChipWriteRetries")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitiontable()
@@ -969,9 +1227,9 @@ CiscoFlashMib::Ciscoflashpartitiontable::~Ciscoflashpartitiontable()
 
 bool CiscoFlashMib::Ciscoflashpartitiontable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoflashpartitionentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashpartitionentry.size(); index++)
     {
-        if(ciscoflashpartitionentry_[index]->has_data())
+        if(ciscoflashpartitionentry[index]->has_data())
             return true;
     }
     return false;
@@ -979,12 +1237,12 @@ bool CiscoFlashMib::Ciscoflashpartitiontable::has_data() const
 
 bool CiscoFlashMib::Ciscoflashpartitiontable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoflashpartitionentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashpartitionentry.size(); index++)
     {
-        if(ciscoflashpartitionentry_[index]->has_operation())
+        if(ciscoflashpartitionentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashpartitiontable::get_segment_path() const
@@ -1021,7 +1279,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashpartitiontable::get_child_by_na
 {
     if(child_yang_name == "ciscoFlashPartitionEntry")
     {
-        for(auto const & c : ciscoflashpartitionentry_)
+        for(auto const & c : ciscoflashpartitionentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1031,7 +1289,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashpartitiontable::get_child_by_na
         }
         auto c = std::make_shared<CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry>();
         c->parent = this;
-        ciscoflashpartitionentry_.push_back(c);
+        ciscoflashpartitionentry.push_back(c);
         return c;
     }
 
@@ -1041,7 +1299,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashpartitiontable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashpartitiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoflashpartitionentry_)
+    for (auto const & c : ciscoflashpartitionentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1049,8 +1307,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashpartitio
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashpartitiontable::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashpartitiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFlashMib::Ciscoflashpartitiontable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFlashMib::Ciscoflashpartitiontable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashPartitionEntry")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionentry()
@@ -1101,23 +1370,23 @@ bool CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::has_data
 
 bool CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashdeviceindex.operation)
-	|| is_set(ciscoflashpartitionindex.operation)
-	|| is_set(ciscoflashpartitionchecksumalgorithm.operation)
-	|| is_set(ciscoflashpartitionendchip.operation)
-	|| is_set(ciscoflashpartitionfilecount.operation)
-	|| is_set(ciscoflashpartitionfilenamelength.operation)
-	|| is_set(ciscoflashpartitionfreespace.operation)
-	|| is_set(ciscoflashpartitionfreespaceextended.operation)
-	|| is_set(ciscoflashpartitionlowspacenotifthreshold.operation)
-	|| is_set(ciscoflashpartitionname.operation)
-	|| is_set(ciscoflashpartitionneederasure.operation)
-	|| is_set(ciscoflashpartitionsize.operation)
-	|| is_set(ciscoflashpartitionsizeextended.operation)
-	|| is_set(ciscoflashpartitionstartchip.operation)
-	|| is_set(ciscoflashpartitionstatus.operation)
-	|| is_set(ciscoflashpartitionupgrademethod.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashdeviceindex.yfilter)
+	|| ydk::is_set(ciscoflashpartitionindex.yfilter)
+	|| ydk::is_set(ciscoflashpartitionchecksumalgorithm.yfilter)
+	|| ydk::is_set(ciscoflashpartitionendchip.yfilter)
+	|| ydk::is_set(ciscoflashpartitionfilecount.yfilter)
+	|| ydk::is_set(ciscoflashpartitionfilenamelength.yfilter)
+	|| ydk::is_set(ciscoflashpartitionfreespace.yfilter)
+	|| ydk::is_set(ciscoflashpartitionfreespaceextended.yfilter)
+	|| ydk::is_set(ciscoflashpartitionlowspacenotifthreshold.yfilter)
+	|| ydk::is_set(ciscoflashpartitionname.yfilter)
+	|| ydk::is_set(ciscoflashpartitionneederasure.yfilter)
+	|| ydk::is_set(ciscoflashpartitionsize.yfilter)
+	|| ydk::is_set(ciscoflashpartitionsizeextended.yfilter)
+	|| ydk::is_set(ciscoflashpartitionstartchip.yfilter)
+	|| ydk::is_set(ciscoflashpartitionstatus.yfilter)
+	|| ydk::is_set(ciscoflashpartitionupgrademethod.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::get_segment_path() const
@@ -1143,22 +1412,22 @@ const EntityPath CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.operation)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
-    if (ciscoflashpartitionindex.is_set || is_set(ciscoflashpartitionindex.operation)) leaf_name_data.push_back(ciscoflashpartitionindex.get_name_leafdata());
-    if (ciscoflashpartitionchecksumalgorithm.is_set || is_set(ciscoflashpartitionchecksumalgorithm.operation)) leaf_name_data.push_back(ciscoflashpartitionchecksumalgorithm.get_name_leafdata());
-    if (ciscoflashpartitionendchip.is_set || is_set(ciscoflashpartitionendchip.operation)) leaf_name_data.push_back(ciscoflashpartitionendchip.get_name_leafdata());
-    if (ciscoflashpartitionfilecount.is_set || is_set(ciscoflashpartitionfilecount.operation)) leaf_name_data.push_back(ciscoflashpartitionfilecount.get_name_leafdata());
-    if (ciscoflashpartitionfilenamelength.is_set || is_set(ciscoflashpartitionfilenamelength.operation)) leaf_name_data.push_back(ciscoflashpartitionfilenamelength.get_name_leafdata());
-    if (ciscoflashpartitionfreespace.is_set || is_set(ciscoflashpartitionfreespace.operation)) leaf_name_data.push_back(ciscoflashpartitionfreespace.get_name_leafdata());
-    if (ciscoflashpartitionfreespaceextended.is_set || is_set(ciscoflashpartitionfreespaceextended.operation)) leaf_name_data.push_back(ciscoflashpartitionfreespaceextended.get_name_leafdata());
-    if (ciscoflashpartitionlowspacenotifthreshold.is_set || is_set(ciscoflashpartitionlowspacenotifthreshold.operation)) leaf_name_data.push_back(ciscoflashpartitionlowspacenotifthreshold.get_name_leafdata());
-    if (ciscoflashpartitionname.is_set || is_set(ciscoflashpartitionname.operation)) leaf_name_data.push_back(ciscoflashpartitionname.get_name_leafdata());
-    if (ciscoflashpartitionneederasure.is_set || is_set(ciscoflashpartitionneederasure.operation)) leaf_name_data.push_back(ciscoflashpartitionneederasure.get_name_leafdata());
-    if (ciscoflashpartitionsize.is_set || is_set(ciscoflashpartitionsize.operation)) leaf_name_data.push_back(ciscoflashpartitionsize.get_name_leafdata());
-    if (ciscoflashpartitionsizeextended.is_set || is_set(ciscoflashpartitionsizeextended.operation)) leaf_name_data.push_back(ciscoflashpartitionsizeextended.get_name_leafdata());
-    if (ciscoflashpartitionstartchip.is_set || is_set(ciscoflashpartitionstartchip.operation)) leaf_name_data.push_back(ciscoflashpartitionstartchip.get_name_leafdata());
-    if (ciscoflashpartitionstatus.is_set || is_set(ciscoflashpartitionstatus.operation)) leaf_name_data.push_back(ciscoflashpartitionstatus.get_name_leafdata());
-    if (ciscoflashpartitionupgrademethod.is_set || is_set(ciscoflashpartitionupgrademethod.operation)) leaf_name_data.push_back(ciscoflashpartitionupgrademethod.get_name_leafdata());
+    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.yfilter)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
+    if (ciscoflashpartitionindex.is_set || is_set(ciscoflashpartitionindex.yfilter)) leaf_name_data.push_back(ciscoflashpartitionindex.get_name_leafdata());
+    if (ciscoflashpartitionchecksumalgorithm.is_set || is_set(ciscoflashpartitionchecksumalgorithm.yfilter)) leaf_name_data.push_back(ciscoflashpartitionchecksumalgorithm.get_name_leafdata());
+    if (ciscoflashpartitionendchip.is_set || is_set(ciscoflashpartitionendchip.yfilter)) leaf_name_data.push_back(ciscoflashpartitionendchip.get_name_leafdata());
+    if (ciscoflashpartitionfilecount.is_set || is_set(ciscoflashpartitionfilecount.yfilter)) leaf_name_data.push_back(ciscoflashpartitionfilecount.get_name_leafdata());
+    if (ciscoflashpartitionfilenamelength.is_set || is_set(ciscoflashpartitionfilenamelength.yfilter)) leaf_name_data.push_back(ciscoflashpartitionfilenamelength.get_name_leafdata());
+    if (ciscoflashpartitionfreespace.is_set || is_set(ciscoflashpartitionfreespace.yfilter)) leaf_name_data.push_back(ciscoflashpartitionfreespace.get_name_leafdata());
+    if (ciscoflashpartitionfreespaceextended.is_set || is_set(ciscoflashpartitionfreespaceextended.yfilter)) leaf_name_data.push_back(ciscoflashpartitionfreespaceextended.get_name_leafdata());
+    if (ciscoflashpartitionlowspacenotifthreshold.is_set || is_set(ciscoflashpartitionlowspacenotifthreshold.yfilter)) leaf_name_data.push_back(ciscoflashpartitionlowspacenotifthreshold.get_name_leafdata());
+    if (ciscoflashpartitionname.is_set || is_set(ciscoflashpartitionname.yfilter)) leaf_name_data.push_back(ciscoflashpartitionname.get_name_leafdata());
+    if (ciscoflashpartitionneederasure.is_set || is_set(ciscoflashpartitionneederasure.yfilter)) leaf_name_data.push_back(ciscoflashpartitionneederasure.get_name_leafdata());
+    if (ciscoflashpartitionsize.is_set || is_set(ciscoflashpartitionsize.yfilter)) leaf_name_data.push_back(ciscoflashpartitionsize.get_name_leafdata());
+    if (ciscoflashpartitionsizeextended.is_set || is_set(ciscoflashpartitionsizeextended.yfilter)) leaf_name_data.push_back(ciscoflashpartitionsizeextended.get_name_leafdata());
+    if (ciscoflashpartitionstartchip.is_set || is_set(ciscoflashpartitionstartchip.yfilter)) leaf_name_data.push_back(ciscoflashpartitionstartchip.get_name_leafdata());
+    if (ciscoflashpartitionstatus.is_set || is_set(ciscoflashpartitionstatus.yfilter)) leaf_name_data.push_back(ciscoflashpartitionstatus.get_name_leafdata());
+    if (ciscoflashpartitionupgrademethod.is_set || is_set(ciscoflashpartitionupgrademethod.yfilter)) leaf_name_data.push_back(ciscoflashpartitionupgrademethod.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1177,72 +1446,179 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashpartitio
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashDeviceIndex")
     {
         ciscoflashdeviceindex = value;
+        ciscoflashdeviceindex.value_namespace = name_space;
+        ciscoflashdeviceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionIndex")
     {
         ciscoflashpartitionindex = value;
+        ciscoflashpartitionindex.value_namespace = name_space;
+        ciscoflashpartitionindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionChecksumAlgorithm")
     {
         ciscoflashpartitionchecksumalgorithm = value;
+        ciscoflashpartitionchecksumalgorithm.value_namespace = name_space;
+        ciscoflashpartitionchecksumalgorithm.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionEndChip")
     {
         ciscoflashpartitionendchip = value;
+        ciscoflashpartitionendchip.value_namespace = name_space;
+        ciscoflashpartitionendchip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionFileCount")
     {
         ciscoflashpartitionfilecount = value;
+        ciscoflashpartitionfilecount.value_namespace = name_space;
+        ciscoflashpartitionfilecount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionFileNameLength")
     {
         ciscoflashpartitionfilenamelength = value;
+        ciscoflashpartitionfilenamelength.value_namespace = name_space;
+        ciscoflashpartitionfilenamelength.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionFreeSpace")
     {
         ciscoflashpartitionfreespace = value;
+        ciscoflashpartitionfreespace.value_namespace = name_space;
+        ciscoflashpartitionfreespace.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionFreeSpaceExtended")
     {
         ciscoflashpartitionfreespaceextended = value;
+        ciscoflashpartitionfreespaceextended.value_namespace = name_space;
+        ciscoflashpartitionfreespaceextended.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionLowSpaceNotifThreshold")
     {
         ciscoflashpartitionlowspacenotifthreshold = value;
+        ciscoflashpartitionlowspacenotifthreshold.value_namespace = name_space;
+        ciscoflashpartitionlowspacenotifthreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionName")
     {
         ciscoflashpartitionname = value;
+        ciscoflashpartitionname.value_namespace = name_space;
+        ciscoflashpartitionname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionNeedErasure")
     {
         ciscoflashpartitionneederasure = value;
+        ciscoflashpartitionneederasure.value_namespace = name_space;
+        ciscoflashpartitionneederasure.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionSize")
     {
         ciscoflashpartitionsize = value;
+        ciscoflashpartitionsize.value_namespace = name_space;
+        ciscoflashpartitionsize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionSizeExtended")
     {
         ciscoflashpartitionsizeextended = value;
+        ciscoflashpartitionsizeextended.value_namespace = name_space;
+        ciscoflashpartitionsizeextended.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionStartChip")
     {
         ciscoflashpartitionstartchip = value;
+        ciscoflashpartitionstartchip.value_namespace = name_space;
+        ciscoflashpartitionstartchip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionStatus")
     {
         ciscoflashpartitionstatus = value;
+        ciscoflashpartitionstatus.value_namespace = name_space;
+        ciscoflashpartitionstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionUpgradeMethod")
     {
         ciscoflashpartitionupgrademethod = value;
+        ciscoflashpartitionupgrademethod.value_namespace = name_space;
+        ciscoflashpartitionupgrademethod.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashDeviceIndex")
+    {
+        ciscoflashdeviceindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionIndex")
+    {
+        ciscoflashpartitionindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionChecksumAlgorithm")
+    {
+        ciscoflashpartitionchecksumalgorithm.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionEndChip")
+    {
+        ciscoflashpartitionendchip.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionFileCount")
+    {
+        ciscoflashpartitionfilecount.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionFileNameLength")
+    {
+        ciscoflashpartitionfilenamelength.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionFreeSpace")
+    {
+        ciscoflashpartitionfreespace.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionFreeSpaceExtended")
+    {
+        ciscoflashpartitionfreespaceextended.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionLowSpaceNotifThreshold")
+    {
+        ciscoflashpartitionlowspacenotifthreshold.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionName")
+    {
+        ciscoflashpartitionname.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionNeedErasure")
+    {
+        ciscoflashpartitionneederasure.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionSize")
+    {
+        ciscoflashpartitionsize.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionSizeExtended")
+    {
+        ciscoflashpartitionsizeextended.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionStartChip")
+    {
+        ciscoflashpartitionstartchip.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionStatus")
+    {
+        ciscoflashpartitionstatus.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionUpgradeMethod")
+    {
+        ciscoflashpartitionupgrademethod.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashDeviceIndex" || name == "ciscoFlashPartitionIndex" || name == "ciscoFlashPartitionChecksumAlgorithm" || name == "ciscoFlashPartitionEndChip" || name == "ciscoFlashPartitionFileCount" || name == "ciscoFlashPartitionFileNameLength" || name == "ciscoFlashPartitionFreeSpace" || name == "ciscoFlashPartitionFreeSpaceExtended" || name == "ciscoFlashPartitionLowSpaceNotifThreshold" || name == "ciscoFlashPartitionName" || name == "ciscoFlashPartitionNeedErasure" || name == "ciscoFlashPartitionSize" || name == "ciscoFlashPartitionSizeExtended" || name == "ciscoFlashPartitionStartChip" || name == "ciscoFlashPartitionStatus" || name == "ciscoFlashPartitionUpgradeMethod")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfiletable()
@@ -1256,9 +1632,9 @@ CiscoFlashMib::Ciscoflashfiletable::~Ciscoflashfiletable()
 
 bool CiscoFlashMib::Ciscoflashfiletable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoflashfileentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashfileentry.size(); index++)
     {
-        if(ciscoflashfileentry_[index]->has_data())
+        if(ciscoflashfileentry[index]->has_data())
             return true;
     }
     return false;
@@ -1266,12 +1642,12 @@ bool CiscoFlashMib::Ciscoflashfiletable::has_data() const
 
 bool CiscoFlashMib::Ciscoflashfiletable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoflashfileentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashfileentry.size(); index++)
     {
-        if(ciscoflashfileentry_[index]->has_operation())
+        if(ciscoflashfileentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashfiletable::get_segment_path() const
@@ -1308,7 +1684,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashfiletable::get_child_by_name(co
 {
     if(child_yang_name == "ciscoFlashFileEntry")
     {
-        for(auto const & c : ciscoflashfileentry_)
+        for(auto const & c : ciscoflashfileentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1318,7 +1694,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashfiletable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry>();
         c->parent = this;
-        ciscoflashfileentry_.push_back(c);
+        ciscoflashfileentry.push_back(c);
         return c;
     }
 
@@ -1328,7 +1704,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashfiletable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashfiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoflashfileentry_)
+    for (auto const & c : ciscoflashfileentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1336,8 +1712,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashfiletabl
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashfiletable::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashfiletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFlashMib::Ciscoflashfiletable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFlashMib::Ciscoflashfiletable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashFileEntry")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::Ciscoflashfileentry()
@@ -1374,16 +1761,16 @@ bool CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::has_data() const
 
 bool CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashdeviceindex.operation)
-	|| is_set(ciscoflashpartitionindex.operation)
-	|| is_set(ciscoflashfileindex.operation)
-	|| is_set(ciscoflashfilechecksum.operation)
-	|| is_set(ciscoflashfiledate.operation)
-	|| is_set(ciscoflashfilename.operation)
-	|| is_set(ciscoflashfilesize.operation)
-	|| is_set(ciscoflashfilestatus.operation)
-	|| is_set(ciscoflashfiletype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashdeviceindex.yfilter)
+	|| ydk::is_set(ciscoflashpartitionindex.yfilter)
+	|| ydk::is_set(ciscoflashfileindex.yfilter)
+	|| ydk::is_set(ciscoflashfilechecksum.yfilter)
+	|| ydk::is_set(ciscoflashfiledate.yfilter)
+	|| ydk::is_set(ciscoflashfilename.yfilter)
+	|| ydk::is_set(ciscoflashfilesize.yfilter)
+	|| ydk::is_set(ciscoflashfilestatus.yfilter)
+	|| ydk::is_set(ciscoflashfiletype.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::get_segment_path() const
@@ -1409,15 +1796,15 @@ const EntityPath CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.operation)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
-    if (ciscoflashpartitionindex.is_set || is_set(ciscoflashpartitionindex.operation)) leaf_name_data.push_back(ciscoflashpartitionindex.get_name_leafdata());
-    if (ciscoflashfileindex.is_set || is_set(ciscoflashfileindex.operation)) leaf_name_data.push_back(ciscoflashfileindex.get_name_leafdata());
-    if (ciscoflashfilechecksum.is_set || is_set(ciscoflashfilechecksum.operation)) leaf_name_data.push_back(ciscoflashfilechecksum.get_name_leafdata());
-    if (ciscoflashfiledate.is_set || is_set(ciscoflashfiledate.operation)) leaf_name_data.push_back(ciscoflashfiledate.get_name_leafdata());
-    if (ciscoflashfilename.is_set || is_set(ciscoflashfilename.operation)) leaf_name_data.push_back(ciscoflashfilename.get_name_leafdata());
-    if (ciscoflashfilesize.is_set || is_set(ciscoflashfilesize.operation)) leaf_name_data.push_back(ciscoflashfilesize.get_name_leafdata());
-    if (ciscoflashfilestatus.is_set || is_set(ciscoflashfilestatus.operation)) leaf_name_data.push_back(ciscoflashfilestatus.get_name_leafdata());
-    if (ciscoflashfiletype.is_set || is_set(ciscoflashfiletype.operation)) leaf_name_data.push_back(ciscoflashfiletype.get_name_leafdata());
+    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.yfilter)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
+    if (ciscoflashpartitionindex.is_set || is_set(ciscoflashpartitionindex.yfilter)) leaf_name_data.push_back(ciscoflashpartitionindex.get_name_leafdata());
+    if (ciscoflashfileindex.is_set || is_set(ciscoflashfileindex.yfilter)) leaf_name_data.push_back(ciscoflashfileindex.get_name_leafdata());
+    if (ciscoflashfilechecksum.is_set || is_set(ciscoflashfilechecksum.yfilter)) leaf_name_data.push_back(ciscoflashfilechecksum.get_name_leafdata());
+    if (ciscoflashfiledate.is_set || is_set(ciscoflashfiledate.yfilter)) leaf_name_data.push_back(ciscoflashfiledate.get_name_leafdata());
+    if (ciscoflashfilename.is_set || is_set(ciscoflashfilename.yfilter)) leaf_name_data.push_back(ciscoflashfilename.get_name_leafdata());
+    if (ciscoflashfilesize.is_set || is_set(ciscoflashfilesize.yfilter)) leaf_name_data.push_back(ciscoflashfilesize.get_name_leafdata());
+    if (ciscoflashfilestatus.is_set || is_set(ciscoflashfilestatus.yfilter)) leaf_name_data.push_back(ciscoflashfilestatus.get_name_leafdata());
+    if (ciscoflashfiletype.is_set || is_set(ciscoflashfiletype.yfilter)) leaf_name_data.push_back(ciscoflashfiletype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1436,44 +1823,109 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashfiletabl
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashDeviceIndex")
     {
         ciscoflashdeviceindex = value;
+        ciscoflashdeviceindex.value_namespace = name_space;
+        ciscoflashdeviceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionIndex")
     {
         ciscoflashpartitionindex = value;
+        ciscoflashpartitionindex.value_namespace = name_space;
+        ciscoflashpartitionindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileIndex")
     {
         ciscoflashfileindex = value;
+        ciscoflashfileindex.value_namespace = name_space;
+        ciscoflashfileindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileChecksum")
     {
         ciscoflashfilechecksum = value;
+        ciscoflashfilechecksum.value_namespace = name_space;
+        ciscoflashfilechecksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileDate")
     {
         ciscoflashfiledate = value;
+        ciscoflashfiledate.value_namespace = name_space;
+        ciscoflashfiledate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileName")
     {
         ciscoflashfilename = value;
+        ciscoflashfilename.value_namespace = name_space;
+        ciscoflashfilename.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileSize")
     {
         ciscoflashfilesize = value;
+        ciscoflashfilesize.value_namespace = name_space;
+        ciscoflashfilesize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileStatus")
     {
         ciscoflashfilestatus = value;
+        ciscoflashfilestatus.value_namespace = name_space;
+        ciscoflashfilestatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileType")
     {
         ciscoflashfiletype = value;
+        ciscoflashfiletype.value_namespace = name_space;
+        ciscoflashfiletype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashDeviceIndex")
+    {
+        ciscoflashdeviceindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionIndex")
+    {
+        ciscoflashpartitionindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileIndex")
+    {
+        ciscoflashfileindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileChecksum")
+    {
+        ciscoflashfilechecksum.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileDate")
+    {
+        ciscoflashfiledate.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileName")
+    {
+        ciscoflashfilename.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileSize")
+    {
+        ciscoflashfilesize.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileStatus")
+    {
+        ciscoflashfilestatus.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileType")
+    {
+        ciscoflashfiletype.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashDeviceIndex" || name == "ciscoFlashPartitionIndex" || name == "ciscoFlashFileIndex" || name == "ciscoFlashFileChecksum" || name == "ciscoFlashFileDate" || name == "ciscoFlashFileName" || name == "ciscoFlashFileSize" || name == "ciscoFlashFileStatus" || name == "ciscoFlashFileType")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypetable()
@@ -1487,9 +1939,9 @@ CiscoFlashMib::Ciscoflashfilebytypetable::~Ciscoflashfilebytypetable()
 
 bool CiscoFlashMib::Ciscoflashfilebytypetable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoflashfilebytypeentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashfilebytypeentry.size(); index++)
     {
-        if(ciscoflashfilebytypeentry_[index]->has_data())
+        if(ciscoflashfilebytypeentry[index]->has_data())
             return true;
     }
     return false;
@@ -1497,12 +1949,12 @@ bool CiscoFlashMib::Ciscoflashfilebytypetable::has_data() const
 
 bool CiscoFlashMib::Ciscoflashfilebytypetable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoflashfilebytypeentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashfilebytypeentry.size(); index++)
     {
-        if(ciscoflashfilebytypeentry_[index]->has_operation())
+        if(ciscoflashfilebytypeentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashfilebytypetable::get_segment_path() const
@@ -1539,7 +1991,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashfilebytypetable::get_child_by_n
 {
     if(child_yang_name == "ciscoFlashFileByTypeEntry")
     {
-        for(auto const & c : ciscoflashfilebytypeentry_)
+        for(auto const & c : ciscoflashfilebytypeentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1549,7 +2001,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashfilebytypetable::get_child_by_n
         }
         auto c = std::make_shared<CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry>();
         c->parent = this;
-        ciscoflashfilebytypeentry_.push_back(c);
+        ciscoflashfilebytypeentry.push_back(c);
         return c;
     }
 
@@ -1559,7 +2011,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashfilebytypetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashfilebytypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoflashfilebytypeentry_)
+    for (auto const & c : ciscoflashfilebytypeentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1567,8 +2019,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashfilebyty
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashfilebytypetable::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashfilebytypetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFlashMib::Ciscoflashfilebytypetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFlashMib::Ciscoflashfilebytypetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashFileByTypeEntry")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::Ciscoflashfilebytypeentry()
@@ -1605,16 +2068,16 @@ bool CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::has_da
 
 bool CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashfiletype.operation)
-	|| is_set(ciscoflashdeviceindex.operation)
-	|| is_set(ciscoflashpartitionindex.operation)
-	|| is_set(ciscoflashfileindex.operation)
-	|| is_set(ciscoflashfilebytypechecksum.operation)
-	|| is_set(ciscoflashfilebytypedate.operation)
-	|| is_set(ciscoflashfilebytypename.operation)
-	|| is_set(ciscoflashfilebytypesize.operation)
-	|| is_set(ciscoflashfilebytypestatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashfiletype.yfilter)
+	|| ydk::is_set(ciscoflashdeviceindex.yfilter)
+	|| ydk::is_set(ciscoflashpartitionindex.yfilter)
+	|| ydk::is_set(ciscoflashfileindex.yfilter)
+	|| ydk::is_set(ciscoflashfilebytypechecksum.yfilter)
+	|| ydk::is_set(ciscoflashfilebytypedate.yfilter)
+	|| ydk::is_set(ciscoflashfilebytypename.yfilter)
+	|| ydk::is_set(ciscoflashfilebytypesize.yfilter)
+	|| ydk::is_set(ciscoflashfilebytypestatus.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::get_segment_path() const
@@ -1640,15 +2103,15 @@ const EntityPath CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypee
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashfiletype.is_set || is_set(ciscoflashfiletype.operation)) leaf_name_data.push_back(ciscoflashfiletype.get_name_leafdata());
-    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.operation)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
-    if (ciscoflashpartitionindex.is_set || is_set(ciscoflashpartitionindex.operation)) leaf_name_data.push_back(ciscoflashpartitionindex.get_name_leafdata());
-    if (ciscoflashfileindex.is_set || is_set(ciscoflashfileindex.operation)) leaf_name_data.push_back(ciscoflashfileindex.get_name_leafdata());
-    if (ciscoflashfilebytypechecksum.is_set || is_set(ciscoflashfilebytypechecksum.operation)) leaf_name_data.push_back(ciscoflashfilebytypechecksum.get_name_leafdata());
-    if (ciscoflashfilebytypedate.is_set || is_set(ciscoflashfilebytypedate.operation)) leaf_name_data.push_back(ciscoflashfilebytypedate.get_name_leafdata());
-    if (ciscoflashfilebytypename.is_set || is_set(ciscoflashfilebytypename.operation)) leaf_name_data.push_back(ciscoflashfilebytypename.get_name_leafdata());
-    if (ciscoflashfilebytypesize.is_set || is_set(ciscoflashfilebytypesize.operation)) leaf_name_data.push_back(ciscoflashfilebytypesize.get_name_leafdata());
-    if (ciscoflashfilebytypestatus.is_set || is_set(ciscoflashfilebytypestatus.operation)) leaf_name_data.push_back(ciscoflashfilebytypestatus.get_name_leafdata());
+    if (ciscoflashfiletype.is_set || is_set(ciscoflashfiletype.yfilter)) leaf_name_data.push_back(ciscoflashfiletype.get_name_leafdata());
+    if (ciscoflashdeviceindex.is_set || is_set(ciscoflashdeviceindex.yfilter)) leaf_name_data.push_back(ciscoflashdeviceindex.get_name_leafdata());
+    if (ciscoflashpartitionindex.is_set || is_set(ciscoflashpartitionindex.yfilter)) leaf_name_data.push_back(ciscoflashpartitionindex.get_name_leafdata());
+    if (ciscoflashfileindex.is_set || is_set(ciscoflashfileindex.yfilter)) leaf_name_data.push_back(ciscoflashfileindex.get_name_leafdata());
+    if (ciscoflashfilebytypechecksum.is_set || is_set(ciscoflashfilebytypechecksum.yfilter)) leaf_name_data.push_back(ciscoflashfilebytypechecksum.get_name_leafdata());
+    if (ciscoflashfilebytypedate.is_set || is_set(ciscoflashfilebytypedate.yfilter)) leaf_name_data.push_back(ciscoflashfilebytypedate.get_name_leafdata());
+    if (ciscoflashfilebytypename.is_set || is_set(ciscoflashfilebytypename.yfilter)) leaf_name_data.push_back(ciscoflashfilebytypename.get_name_leafdata());
+    if (ciscoflashfilebytypesize.is_set || is_set(ciscoflashfilebytypesize.yfilter)) leaf_name_data.push_back(ciscoflashfilebytypesize.get_name_leafdata());
+    if (ciscoflashfilebytypestatus.is_set || is_set(ciscoflashfilebytypestatus.yfilter)) leaf_name_data.push_back(ciscoflashfilebytypestatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1667,44 +2130,109 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashfilebyty
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashFileType")
     {
         ciscoflashfiletype = value;
+        ciscoflashfiletype.value_namespace = name_space;
+        ciscoflashfiletype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashDeviceIndex")
     {
         ciscoflashdeviceindex = value;
+        ciscoflashdeviceindex.value_namespace = name_space;
+        ciscoflashdeviceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitionIndex")
     {
         ciscoflashpartitionindex = value;
+        ciscoflashpartitionindex.value_namespace = name_space;
+        ciscoflashpartitionindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileIndex")
     {
         ciscoflashfileindex = value;
+        ciscoflashfileindex.value_namespace = name_space;
+        ciscoflashfileindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileByTypeChecksum")
     {
         ciscoflashfilebytypechecksum = value;
+        ciscoflashfilebytypechecksum.value_namespace = name_space;
+        ciscoflashfilebytypechecksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileByTypeDate")
     {
         ciscoflashfilebytypedate = value;
+        ciscoflashfilebytypedate.value_namespace = name_space;
+        ciscoflashfilebytypedate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileByTypeName")
     {
         ciscoflashfilebytypename = value;
+        ciscoflashfilebytypename.value_namespace = name_space;
+        ciscoflashfilebytypename.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileByTypeSize")
     {
         ciscoflashfilebytypesize = value;
+        ciscoflashfilebytypesize.value_namespace = name_space;
+        ciscoflashfilebytypesize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashFileByTypeStatus")
     {
         ciscoflashfilebytypestatus = value;
+        ciscoflashfilebytypestatus.value_namespace = name_space;
+        ciscoflashfilebytypestatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashFileType")
+    {
+        ciscoflashfiletype.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashDeviceIndex")
+    {
+        ciscoflashdeviceindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitionIndex")
+    {
+        ciscoflashpartitionindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileIndex")
+    {
+        ciscoflashfileindex.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileByTypeChecksum")
+    {
+        ciscoflashfilebytypechecksum.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileByTypeDate")
+    {
+        ciscoflashfilebytypedate.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileByTypeName")
+    {
+        ciscoflashfilebytypename.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileByTypeSize")
+    {
+        ciscoflashfilebytypesize.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashFileByTypeStatus")
+    {
+        ciscoflashfilebytypestatus.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashFileType" || name == "ciscoFlashDeviceIndex" || name == "ciscoFlashPartitionIndex" || name == "ciscoFlashFileIndex" || name == "ciscoFlashFileByTypeChecksum" || name == "ciscoFlashFileByTypeDate" || name == "ciscoFlashFileByTypeName" || name == "ciscoFlashFileByTypeSize" || name == "ciscoFlashFileByTypeStatus")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopytable()
@@ -1718,9 +2246,9 @@ CiscoFlashMib::Ciscoflashcopytable::~Ciscoflashcopytable()
 
 bool CiscoFlashMib::Ciscoflashcopytable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoflashcopyentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashcopyentry.size(); index++)
     {
-        if(ciscoflashcopyentry_[index]->has_data())
+        if(ciscoflashcopyentry[index]->has_data())
             return true;
     }
     return false;
@@ -1728,12 +2256,12 @@ bool CiscoFlashMib::Ciscoflashcopytable::has_data() const
 
 bool CiscoFlashMib::Ciscoflashcopytable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoflashcopyentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashcopyentry.size(); index++)
     {
-        if(ciscoflashcopyentry_[index]->has_operation())
+        if(ciscoflashcopyentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashcopytable::get_segment_path() const
@@ -1770,7 +2298,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashcopytable::get_child_by_name(co
 {
     if(child_yang_name == "ciscoFlashCopyEntry")
     {
-        for(auto const & c : ciscoflashcopyentry_)
+        for(auto const & c : ciscoflashcopyentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1780,7 +2308,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashcopytable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry>();
         c->parent = this;
-        ciscoflashcopyentry_.push_back(c);
+        ciscoflashcopyentry.push_back(c);
         return c;
     }
 
@@ -1790,7 +2318,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashcopytable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashcopytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoflashcopyentry_)
+    for (auto const & c : ciscoflashcopyentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1798,8 +2326,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashcopytabl
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashcopytable::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashcopytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFlashMib::Ciscoflashcopytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFlashMib::Ciscoflashcopytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashCopyEntry")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopyentry()
@@ -1848,22 +2387,22 @@ bool CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::has_data() const
 
 bool CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashcopyserialnumber.operation)
-	|| is_set(ciscoflashcopycommand.operation)
-	|| is_set(ciscoflashcopydestinationname.operation)
-	|| is_set(ciscoflashcopyentrystatus.operation)
-	|| is_set(ciscoflashcopynotifyoncompletion.operation)
-	|| is_set(ciscoflashcopyprotocol.operation)
-	|| is_set(ciscoflashcopyremotepassword.operation)
-	|| is_set(ciscoflashcopyremoteusername.operation)
-	|| is_set(ciscoflashcopyserveraddress.operation)
-	|| is_set(ciscoflashcopyserveraddrrev1.operation)
-	|| is_set(ciscoflashcopyserveraddrtype.operation)
-	|| is_set(ciscoflashcopysourcename.operation)
-	|| is_set(ciscoflashcopystatus.operation)
-	|| is_set(ciscoflashcopytime.operation)
-	|| is_set(ciscoflashcopyverify.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashcopyserialnumber.yfilter)
+	|| ydk::is_set(ciscoflashcopycommand.yfilter)
+	|| ydk::is_set(ciscoflashcopydestinationname.yfilter)
+	|| ydk::is_set(ciscoflashcopyentrystatus.yfilter)
+	|| ydk::is_set(ciscoflashcopynotifyoncompletion.yfilter)
+	|| ydk::is_set(ciscoflashcopyprotocol.yfilter)
+	|| ydk::is_set(ciscoflashcopyremotepassword.yfilter)
+	|| ydk::is_set(ciscoflashcopyremoteusername.yfilter)
+	|| ydk::is_set(ciscoflashcopyserveraddress.yfilter)
+	|| ydk::is_set(ciscoflashcopyserveraddrrev1.yfilter)
+	|| ydk::is_set(ciscoflashcopyserveraddrtype.yfilter)
+	|| ydk::is_set(ciscoflashcopysourcename.yfilter)
+	|| ydk::is_set(ciscoflashcopystatus.yfilter)
+	|| ydk::is_set(ciscoflashcopytime.yfilter)
+	|| ydk::is_set(ciscoflashcopyverify.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::get_segment_path() const
@@ -1889,21 +2428,21 @@ const EntityPath CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashcopyserialnumber.is_set || is_set(ciscoflashcopyserialnumber.operation)) leaf_name_data.push_back(ciscoflashcopyserialnumber.get_name_leafdata());
-    if (ciscoflashcopycommand.is_set || is_set(ciscoflashcopycommand.operation)) leaf_name_data.push_back(ciscoflashcopycommand.get_name_leafdata());
-    if (ciscoflashcopydestinationname.is_set || is_set(ciscoflashcopydestinationname.operation)) leaf_name_data.push_back(ciscoflashcopydestinationname.get_name_leafdata());
-    if (ciscoflashcopyentrystatus.is_set || is_set(ciscoflashcopyentrystatus.operation)) leaf_name_data.push_back(ciscoflashcopyentrystatus.get_name_leafdata());
-    if (ciscoflashcopynotifyoncompletion.is_set || is_set(ciscoflashcopynotifyoncompletion.operation)) leaf_name_data.push_back(ciscoflashcopynotifyoncompletion.get_name_leafdata());
-    if (ciscoflashcopyprotocol.is_set || is_set(ciscoflashcopyprotocol.operation)) leaf_name_data.push_back(ciscoflashcopyprotocol.get_name_leafdata());
-    if (ciscoflashcopyremotepassword.is_set || is_set(ciscoflashcopyremotepassword.operation)) leaf_name_data.push_back(ciscoflashcopyremotepassword.get_name_leafdata());
-    if (ciscoflashcopyremoteusername.is_set || is_set(ciscoflashcopyremoteusername.operation)) leaf_name_data.push_back(ciscoflashcopyremoteusername.get_name_leafdata());
-    if (ciscoflashcopyserveraddress.is_set || is_set(ciscoflashcopyserveraddress.operation)) leaf_name_data.push_back(ciscoflashcopyserveraddress.get_name_leafdata());
-    if (ciscoflashcopyserveraddrrev1.is_set || is_set(ciscoflashcopyserveraddrrev1.operation)) leaf_name_data.push_back(ciscoflashcopyserveraddrrev1.get_name_leafdata());
-    if (ciscoflashcopyserveraddrtype.is_set || is_set(ciscoflashcopyserveraddrtype.operation)) leaf_name_data.push_back(ciscoflashcopyserveraddrtype.get_name_leafdata());
-    if (ciscoflashcopysourcename.is_set || is_set(ciscoflashcopysourcename.operation)) leaf_name_data.push_back(ciscoflashcopysourcename.get_name_leafdata());
-    if (ciscoflashcopystatus.is_set || is_set(ciscoflashcopystatus.operation)) leaf_name_data.push_back(ciscoflashcopystatus.get_name_leafdata());
-    if (ciscoflashcopytime.is_set || is_set(ciscoflashcopytime.operation)) leaf_name_data.push_back(ciscoflashcopytime.get_name_leafdata());
-    if (ciscoflashcopyverify.is_set || is_set(ciscoflashcopyverify.operation)) leaf_name_data.push_back(ciscoflashcopyverify.get_name_leafdata());
+    if (ciscoflashcopyserialnumber.is_set || is_set(ciscoflashcopyserialnumber.yfilter)) leaf_name_data.push_back(ciscoflashcopyserialnumber.get_name_leafdata());
+    if (ciscoflashcopycommand.is_set || is_set(ciscoflashcopycommand.yfilter)) leaf_name_data.push_back(ciscoflashcopycommand.get_name_leafdata());
+    if (ciscoflashcopydestinationname.is_set || is_set(ciscoflashcopydestinationname.yfilter)) leaf_name_data.push_back(ciscoflashcopydestinationname.get_name_leafdata());
+    if (ciscoflashcopyentrystatus.is_set || is_set(ciscoflashcopyentrystatus.yfilter)) leaf_name_data.push_back(ciscoflashcopyentrystatus.get_name_leafdata());
+    if (ciscoflashcopynotifyoncompletion.is_set || is_set(ciscoflashcopynotifyoncompletion.yfilter)) leaf_name_data.push_back(ciscoflashcopynotifyoncompletion.get_name_leafdata());
+    if (ciscoflashcopyprotocol.is_set || is_set(ciscoflashcopyprotocol.yfilter)) leaf_name_data.push_back(ciscoflashcopyprotocol.get_name_leafdata());
+    if (ciscoflashcopyremotepassword.is_set || is_set(ciscoflashcopyremotepassword.yfilter)) leaf_name_data.push_back(ciscoflashcopyremotepassword.get_name_leafdata());
+    if (ciscoflashcopyremoteusername.is_set || is_set(ciscoflashcopyremoteusername.yfilter)) leaf_name_data.push_back(ciscoflashcopyremoteusername.get_name_leafdata());
+    if (ciscoflashcopyserveraddress.is_set || is_set(ciscoflashcopyserveraddress.yfilter)) leaf_name_data.push_back(ciscoflashcopyserveraddress.get_name_leafdata());
+    if (ciscoflashcopyserveraddrrev1.is_set || is_set(ciscoflashcopyserveraddrrev1.yfilter)) leaf_name_data.push_back(ciscoflashcopyserveraddrrev1.get_name_leafdata());
+    if (ciscoflashcopyserveraddrtype.is_set || is_set(ciscoflashcopyserveraddrtype.yfilter)) leaf_name_data.push_back(ciscoflashcopyserveraddrtype.get_name_leafdata());
+    if (ciscoflashcopysourcename.is_set || is_set(ciscoflashcopysourcename.yfilter)) leaf_name_data.push_back(ciscoflashcopysourcename.get_name_leafdata());
+    if (ciscoflashcopystatus.is_set || is_set(ciscoflashcopystatus.yfilter)) leaf_name_data.push_back(ciscoflashcopystatus.get_name_leafdata());
+    if (ciscoflashcopytime.is_set || is_set(ciscoflashcopytime.yfilter)) leaf_name_data.push_back(ciscoflashcopytime.get_name_leafdata());
+    if (ciscoflashcopyverify.is_set || is_set(ciscoflashcopyverify.yfilter)) leaf_name_data.push_back(ciscoflashcopyverify.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1922,68 +2461,169 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashcopytabl
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashCopySerialNumber")
     {
         ciscoflashcopyserialnumber = value;
+        ciscoflashcopyserialnumber.value_namespace = name_space;
+        ciscoflashcopyserialnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyCommand")
     {
         ciscoflashcopycommand = value;
+        ciscoflashcopycommand.value_namespace = name_space;
+        ciscoflashcopycommand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyDestinationName")
     {
         ciscoflashcopydestinationname = value;
+        ciscoflashcopydestinationname.value_namespace = name_space;
+        ciscoflashcopydestinationname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyEntryStatus")
     {
         ciscoflashcopyentrystatus = value;
+        ciscoflashcopyentrystatus.value_namespace = name_space;
+        ciscoflashcopyentrystatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyNotifyOnCompletion")
     {
         ciscoflashcopynotifyoncompletion = value;
+        ciscoflashcopynotifyoncompletion.value_namespace = name_space;
+        ciscoflashcopynotifyoncompletion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyProtocol")
     {
         ciscoflashcopyprotocol = value;
+        ciscoflashcopyprotocol.value_namespace = name_space;
+        ciscoflashcopyprotocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyRemotePassword")
     {
         ciscoflashcopyremotepassword = value;
+        ciscoflashcopyremotepassword.value_namespace = name_space;
+        ciscoflashcopyremotepassword.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyRemoteUserName")
     {
         ciscoflashcopyremoteusername = value;
+        ciscoflashcopyremoteusername.value_namespace = name_space;
+        ciscoflashcopyremoteusername.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyServerAddress")
     {
         ciscoflashcopyserveraddress = value;
+        ciscoflashcopyserveraddress.value_namespace = name_space;
+        ciscoflashcopyserveraddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyServerAddrRev1")
     {
         ciscoflashcopyserveraddrrev1 = value;
+        ciscoflashcopyserveraddrrev1.value_namespace = name_space;
+        ciscoflashcopyserveraddrrev1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyServerAddrType")
     {
         ciscoflashcopyserveraddrtype = value;
+        ciscoflashcopyserveraddrtype.value_namespace = name_space;
+        ciscoflashcopyserveraddrtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopySourceName")
     {
         ciscoflashcopysourcename = value;
+        ciscoflashcopysourcename.value_namespace = name_space;
+        ciscoflashcopysourcename.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyStatus")
     {
         ciscoflashcopystatus = value;
+        ciscoflashcopystatus.value_namespace = name_space;
+        ciscoflashcopystatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyTime")
     {
         ciscoflashcopytime = value;
+        ciscoflashcopytime.value_namespace = name_space;
+        ciscoflashcopytime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashCopyVerify")
     {
         ciscoflashcopyverify = value;
+        ciscoflashcopyverify.value_namespace = name_space;
+        ciscoflashcopyverify.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashCopySerialNumber")
+    {
+        ciscoflashcopyserialnumber.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyCommand")
+    {
+        ciscoflashcopycommand.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyDestinationName")
+    {
+        ciscoflashcopydestinationname.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyEntryStatus")
+    {
+        ciscoflashcopyentrystatus.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyNotifyOnCompletion")
+    {
+        ciscoflashcopynotifyoncompletion.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyProtocol")
+    {
+        ciscoflashcopyprotocol.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyRemotePassword")
+    {
+        ciscoflashcopyremotepassword.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyRemoteUserName")
+    {
+        ciscoflashcopyremoteusername.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyServerAddress")
+    {
+        ciscoflashcopyserveraddress.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyServerAddrRev1")
+    {
+        ciscoflashcopyserveraddrrev1.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyServerAddrType")
+    {
+        ciscoflashcopyserveraddrtype.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopySourceName")
+    {
+        ciscoflashcopysourcename.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyStatus")
+    {
+        ciscoflashcopystatus.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyTime")
+    {
+        ciscoflashcopytime.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashCopyVerify")
+    {
+        ciscoflashcopyverify.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashCopySerialNumber" || name == "ciscoFlashCopyCommand" || name == "ciscoFlashCopyDestinationName" || name == "ciscoFlashCopyEntryStatus" || name == "ciscoFlashCopyNotifyOnCompletion" || name == "ciscoFlashCopyProtocol" || name == "ciscoFlashCopyRemotePassword" || name == "ciscoFlashCopyRemoteUserName" || name == "ciscoFlashCopyServerAddress" || name == "ciscoFlashCopyServerAddrRev1" || name == "ciscoFlashCopyServerAddrType" || name == "ciscoFlashCopySourceName" || name == "ciscoFlashCopyStatus" || name == "ciscoFlashCopyTime" || name == "ciscoFlashCopyVerify")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningtable()
@@ -1997,9 +2637,9 @@ CiscoFlashMib::Ciscoflashpartitioningtable::~Ciscoflashpartitioningtable()
 
 bool CiscoFlashMib::Ciscoflashpartitioningtable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoflashpartitioningentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashpartitioningentry.size(); index++)
     {
-        if(ciscoflashpartitioningentry_[index]->has_data())
+        if(ciscoflashpartitioningentry[index]->has_data())
             return true;
     }
     return false;
@@ -2007,12 +2647,12 @@ bool CiscoFlashMib::Ciscoflashpartitioningtable::has_data() const
 
 bool CiscoFlashMib::Ciscoflashpartitioningtable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoflashpartitioningentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashpartitioningentry.size(); index++)
     {
-        if(ciscoflashpartitioningentry_[index]->has_operation())
+        if(ciscoflashpartitioningentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashpartitioningtable::get_segment_path() const
@@ -2049,7 +2689,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashpartitioningtable::get_child_by
 {
     if(child_yang_name == "ciscoFlashPartitioningEntry")
     {
-        for(auto const & c : ciscoflashpartitioningentry_)
+        for(auto const & c : ciscoflashpartitioningentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2059,7 +2699,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashpartitioningtable::get_child_by
         }
         auto c = std::make_shared<CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry>();
         c->parent = this;
-        ciscoflashpartitioningentry_.push_back(c);
+        ciscoflashpartitioningentry.push_back(c);
         return c;
     }
 
@@ -2069,7 +2709,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashpartitioningtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashpartitioningtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoflashpartitioningentry_)
+    for (auto const & c : ciscoflashpartitioningentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2077,8 +2717,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashpartitio
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashpartitioningtable::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashpartitioningtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFlashMib::Ciscoflashpartitioningtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFlashMib::Ciscoflashpartitioningtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashPartitioningEntry")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningentry()
@@ -2115,16 +2766,16 @@ bool CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::ha
 
 bool CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashpartitioningserialnumber.operation)
-	|| is_set(ciscoflashpartitioningcommand.operation)
-	|| is_set(ciscoflashpartitioningdestinationname.operation)
-	|| is_set(ciscoflashpartitioningentrystatus.operation)
-	|| is_set(ciscoflashpartitioningnotifyoncompletion.operation)
-	|| is_set(ciscoflashpartitioningpartitioncount.operation)
-	|| is_set(ciscoflashpartitioningpartitionsizes.operation)
-	|| is_set(ciscoflashpartitioningstatus.operation)
-	|| is_set(ciscoflashpartitioningtime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashpartitioningserialnumber.yfilter)
+	|| ydk::is_set(ciscoflashpartitioningcommand.yfilter)
+	|| ydk::is_set(ciscoflashpartitioningdestinationname.yfilter)
+	|| ydk::is_set(ciscoflashpartitioningentrystatus.yfilter)
+	|| ydk::is_set(ciscoflashpartitioningnotifyoncompletion.yfilter)
+	|| ydk::is_set(ciscoflashpartitioningpartitioncount.yfilter)
+	|| ydk::is_set(ciscoflashpartitioningpartitionsizes.yfilter)
+	|| ydk::is_set(ciscoflashpartitioningstatus.yfilter)
+	|| ydk::is_set(ciscoflashpartitioningtime.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::get_segment_path() const
@@ -2150,15 +2801,15 @@ const EntityPath CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartition
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashpartitioningserialnumber.is_set || is_set(ciscoflashpartitioningserialnumber.operation)) leaf_name_data.push_back(ciscoflashpartitioningserialnumber.get_name_leafdata());
-    if (ciscoflashpartitioningcommand.is_set || is_set(ciscoflashpartitioningcommand.operation)) leaf_name_data.push_back(ciscoflashpartitioningcommand.get_name_leafdata());
-    if (ciscoflashpartitioningdestinationname.is_set || is_set(ciscoflashpartitioningdestinationname.operation)) leaf_name_data.push_back(ciscoflashpartitioningdestinationname.get_name_leafdata());
-    if (ciscoflashpartitioningentrystatus.is_set || is_set(ciscoflashpartitioningentrystatus.operation)) leaf_name_data.push_back(ciscoflashpartitioningentrystatus.get_name_leafdata());
-    if (ciscoflashpartitioningnotifyoncompletion.is_set || is_set(ciscoflashpartitioningnotifyoncompletion.operation)) leaf_name_data.push_back(ciscoflashpartitioningnotifyoncompletion.get_name_leafdata());
-    if (ciscoflashpartitioningpartitioncount.is_set || is_set(ciscoflashpartitioningpartitioncount.operation)) leaf_name_data.push_back(ciscoflashpartitioningpartitioncount.get_name_leafdata());
-    if (ciscoflashpartitioningpartitionsizes.is_set || is_set(ciscoflashpartitioningpartitionsizes.operation)) leaf_name_data.push_back(ciscoflashpartitioningpartitionsizes.get_name_leafdata());
-    if (ciscoflashpartitioningstatus.is_set || is_set(ciscoflashpartitioningstatus.operation)) leaf_name_data.push_back(ciscoflashpartitioningstatus.get_name_leafdata());
-    if (ciscoflashpartitioningtime.is_set || is_set(ciscoflashpartitioningtime.operation)) leaf_name_data.push_back(ciscoflashpartitioningtime.get_name_leafdata());
+    if (ciscoflashpartitioningserialnumber.is_set || is_set(ciscoflashpartitioningserialnumber.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningserialnumber.get_name_leafdata());
+    if (ciscoflashpartitioningcommand.is_set || is_set(ciscoflashpartitioningcommand.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningcommand.get_name_leafdata());
+    if (ciscoflashpartitioningdestinationname.is_set || is_set(ciscoflashpartitioningdestinationname.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningdestinationname.get_name_leafdata());
+    if (ciscoflashpartitioningentrystatus.is_set || is_set(ciscoflashpartitioningentrystatus.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningentrystatus.get_name_leafdata());
+    if (ciscoflashpartitioningnotifyoncompletion.is_set || is_set(ciscoflashpartitioningnotifyoncompletion.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningnotifyoncompletion.get_name_leafdata());
+    if (ciscoflashpartitioningpartitioncount.is_set || is_set(ciscoflashpartitioningpartitioncount.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningpartitioncount.get_name_leafdata());
+    if (ciscoflashpartitioningpartitionsizes.is_set || is_set(ciscoflashpartitioningpartitionsizes.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningpartitionsizes.get_name_leafdata());
+    if (ciscoflashpartitioningstatus.is_set || is_set(ciscoflashpartitioningstatus.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningstatus.get_name_leafdata());
+    if (ciscoflashpartitioningtime.is_set || is_set(ciscoflashpartitioningtime.yfilter)) leaf_name_data.push_back(ciscoflashpartitioningtime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2177,44 +2828,109 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashpartitio
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashPartitioningSerialNumber")
     {
         ciscoflashpartitioningserialnumber = value;
+        ciscoflashpartitioningserialnumber.value_namespace = name_space;
+        ciscoflashpartitioningserialnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitioningCommand")
     {
         ciscoflashpartitioningcommand = value;
+        ciscoflashpartitioningcommand.value_namespace = name_space;
+        ciscoflashpartitioningcommand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitioningDestinationName")
     {
         ciscoflashpartitioningdestinationname = value;
+        ciscoflashpartitioningdestinationname.value_namespace = name_space;
+        ciscoflashpartitioningdestinationname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitioningEntryStatus")
     {
         ciscoflashpartitioningentrystatus = value;
+        ciscoflashpartitioningentrystatus.value_namespace = name_space;
+        ciscoflashpartitioningentrystatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitioningNotifyOnCompletion")
     {
         ciscoflashpartitioningnotifyoncompletion = value;
+        ciscoflashpartitioningnotifyoncompletion.value_namespace = name_space;
+        ciscoflashpartitioningnotifyoncompletion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitioningPartitionCount")
     {
         ciscoflashpartitioningpartitioncount = value;
+        ciscoflashpartitioningpartitioncount.value_namespace = name_space;
+        ciscoflashpartitioningpartitioncount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitioningPartitionSizes")
     {
         ciscoflashpartitioningpartitionsizes = value;
+        ciscoflashpartitioningpartitionsizes.value_namespace = name_space;
+        ciscoflashpartitioningpartitionsizes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitioningStatus")
     {
         ciscoflashpartitioningstatus = value;
+        ciscoflashpartitioningstatus.value_namespace = name_space;
+        ciscoflashpartitioningstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashPartitioningTime")
     {
         ciscoflashpartitioningtime = value;
+        ciscoflashpartitioningtime.value_namespace = name_space;
+        ciscoflashpartitioningtime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashPartitioningSerialNumber")
+    {
+        ciscoflashpartitioningserialnumber.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitioningCommand")
+    {
+        ciscoflashpartitioningcommand.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitioningDestinationName")
+    {
+        ciscoflashpartitioningdestinationname.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitioningEntryStatus")
+    {
+        ciscoflashpartitioningentrystatus.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitioningNotifyOnCompletion")
+    {
+        ciscoflashpartitioningnotifyoncompletion.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitioningPartitionCount")
+    {
+        ciscoflashpartitioningpartitioncount.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitioningPartitionSizes")
+    {
+        ciscoflashpartitioningpartitionsizes.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitioningStatus")
+    {
+        ciscoflashpartitioningstatus.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashPartitioningTime")
+    {
+        ciscoflashpartitioningtime.yfilter = yfilter;
+    }
+}
+
+bool CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashPartitioningSerialNumber" || name == "ciscoFlashPartitioningCommand" || name == "ciscoFlashPartitioningDestinationName" || name == "ciscoFlashPartitioningEntryStatus" || name == "ciscoFlashPartitioningNotifyOnCompletion" || name == "ciscoFlashPartitioningPartitionCount" || name == "ciscoFlashPartitioningPartitionSizes" || name == "ciscoFlashPartitioningStatus" || name == "ciscoFlashPartitioningTime")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscoptable()
@@ -2228,9 +2944,9 @@ CiscoFlashMib::Ciscoflashmiscoptable::~Ciscoflashmiscoptable()
 
 bool CiscoFlashMib::Ciscoflashmiscoptable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoflashmiscopentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashmiscopentry.size(); index++)
     {
-        if(ciscoflashmiscopentry_[index]->has_data())
+        if(ciscoflashmiscopentry[index]->has_data())
             return true;
     }
     return false;
@@ -2238,12 +2954,12 @@ bool CiscoFlashMib::Ciscoflashmiscoptable::has_data() const
 
 bool CiscoFlashMib::Ciscoflashmiscoptable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoflashmiscopentry_.size(); index++)
+    for (std::size_t index=0; index<ciscoflashmiscopentry.size(); index++)
     {
-        if(ciscoflashmiscopentry_[index]->has_operation())
+        if(ciscoflashmiscopentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashmiscoptable::get_segment_path() const
@@ -2280,7 +2996,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashmiscoptable::get_child_by_name(
 {
     if(child_yang_name == "ciscoFlashMiscOpEntry")
     {
-        for(auto const & c : ciscoflashmiscopentry_)
+        for(auto const & c : ciscoflashmiscopentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2290,7 +3006,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashmiscoptable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry>();
         c->parent = this;
-        ciscoflashmiscopentry_.push_back(c);
+        ciscoflashmiscopentry.push_back(c);
         return c;
     }
 
@@ -2300,7 +3016,7 @@ std::shared_ptr<Entity> CiscoFlashMib::Ciscoflashmiscoptable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashmiscoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ciscoflashmiscopentry_)
+    for (auto const & c : ciscoflashmiscopentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2308,8 +3024,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashmiscopta
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashmiscoptable::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashmiscoptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFlashMib::Ciscoflashmiscoptable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFlashMib::Ciscoflashmiscoptable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashMiscOpEntry")
+        return true;
+    return false;
 }
 
 CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopentry()
@@ -2342,14 +3069,14 @@ bool CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::has_data() con
 
 bool CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ciscoflashmiscopserialnumber.operation)
-	|| is_set(ciscoflashmiscopcommand.operation)
-	|| is_set(ciscoflashmiscopdestinationname.operation)
-	|| is_set(ciscoflashmiscopentrystatus.operation)
-	|| is_set(ciscoflashmiscopnotifyoncompletion.operation)
-	|| is_set(ciscoflashmiscopstatus.operation)
-	|| is_set(ciscoflashmiscoptime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ciscoflashmiscopserialnumber.yfilter)
+	|| ydk::is_set(ciscoflashmiscopcommand.yfilter)
+	|| ydk::is_set(ciscoflashmiscopdestinationname.yfilter)
+	|| ydk::is_set(ciscoflashmiscopentrystatus.yfilter)
+	|| ydk::is_set(ciscoflashmiscopnotifyoncompletion.yfilter)
+	|| ydk::is_set(ciscoflashmiscopstatus.yfilter)
+	|| ydk::is_set(ciscoflashmiscoptime.yfilter);
 }
 
 std::string CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::get_segment_path() const
@@ -2375,13 +3102,13 @@ const EntityPath CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ciscoflashmiscopserialnumber.is_set || is_set(ciscoflashmiscopserialnumber.operation)) leaf_name_data.push_back(ciscoflashmiscopserialnumber.get_name_leafdata());
-    if (ciscoflashmiscopcommand.is_set || is_set(ciscoflashmiscopcommand.operation)) leaf_name_data.push_back(ciscoflashmiscopcommand.get_name_leafdata());
-    if (ciscoflashmiscopdestinationname.is_set || is_set(ciscoflashmiscopdestinationname.operation)) leaf_name_data.push_back(ciscoflashmiscopdestinationname.get_name_leafdata());
-    if (ciscoflashmiscopentrystatus.is_set || is_set(ciscoflashmiscopentrystatus.operation)) leaf_name_data.push_back(ciscoflashmiscopentrystatus.get_name_leafdata());
-    if (ciscoflashmiscopnotifyoncompletion.is_set || is_set(ciscoflashmiscopnotifyoncompletion.operation)) leaf_name_data.push_back(ciscoflashmiscopnotifyoncompletion.get_name_leafdata());
-    if (ciscoflashmiscopstatus.is_set || is_set(ciscoflashmiscopstatus.operation)) leaf_name_data.push_back(ciscoflashmiscopstatus.get_name_leafdata());
-    if (ciscoflashmiscoptime.is_set || is_set(ciscoflashmiscoptime.operation)) leaf_name_data.push_back(ciscoflashmiscoptime.get_name_leafdata());
+    if (ciscoflashmiscopserialnumber.is_set || is_set(ciscoflashmiscopserialnumber.yfilter)) leaf_name_data.push_back(ciscoflashmiscopserialnumber.get_name_leafdata());
+    if (ciscoflashmiscopcommand.is_set || is_set(ciscoflashmiscopcommand.yfilter)) leaf_name_data.push_back(ciscoflashmiscopcommand.get_name_leafdata());
+    if (ciscoflashmiscopdestinationname.is_set || is_set(ciscoflashmiscopdestinationname.yfilter)) leaf_name_data.push_back(ciscoflashmiscopdestinationname.get_name_leafdata());
+    if (ciscoflashmiscopentrystatus.is_set || is_set(ciscoflashmiscopentrystatus.yfilter)) leaf_name_data.push_back(ciscoflashmiscopentrystatus.get_name_leafdata());
+    if (ciscoflashmiscopnotifyoncompletion.is_set || is_set(ciscoflashmiscopnotifyoncompletion.yfilter)) leaf_name_data.push_back(ciscoflashmiscopnotifyoncompletion.get_name_leafdata());
+    if (ciscoflashmiscopstatus.is_set || is_set(ciscoflashmiscopstatus.yfilter)) leaf_name_data.push_back(ciscoflashmiscopstatus.get_name_leafdata());
+    if (ciscoflashmiscoptime.is_set || is_set(ciscoflashmiscoptime.yfilter)) leaf_name_data.push_back(ciscoflashmiscoptime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2400,139 +3127,192 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFlashMib::Ciscoflashmiscopta
     return children;
 }
 
-void CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::set_value(const std::string & value_path, std::string value)
+void CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoFlashMiscOpSerialNumber")
     {
         ciscoflashmiscopserialnumber = value;
+        ciscoflashmiscopserialnumber.value_namespace = name_space;
+        ciscoflashmiscopserialnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashMiscOpCommand")
     {
         ciscoflashmiscopcommand = value;
+        ciscoflashmiscopcommand.value_namespace = name_space;
+        ciscoflashmiscopcommand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashMiscOpDestinationName")
     {
         ciscoflashmiscopdestinationname = value;
+        ciscoflashmiscopdestinationname.value_namespace = name_space;
+        ciscoflashmiscopdestinationname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashMiscOpEntryStatus")
     {
         ciscoflashmiscopentrystatus = value;
+        ciscoflashmiscopentrystatus.value_namespace = name_space;
+        ciscoflashmiscopentrystatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashMiscOpNotifyOnCompletion")
     {
         ciscoflashmiscopnotifyoncompletion = value;
+        ciscoflashmiscopnotifyoncompletion.value_namespace = name_space;
+        ciscoflashmiscopnotifyoncompletion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashMiscOpStatus")
     {
         ciscoflashmiscopstatus = value;
+        ciscoflashmiscopstatus.value_namespace = name_space;
+        ciscoflashmiscopstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ciscoFlashMiscOpTime")
     {
         ciscoflashmiscoptime = value;
+        ciscoflashmiscoptime.value_namespace = name_space;
+        ciscoflashmiscoptime.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf FlashfiletypeEnum::unknown {1, "unknown"};
-const Enum::YLeaf FlashfiletypeEnum::config {2, "config"};
-const Enum::YLeaf FlashfiletypeEnum::image {3, "image"};
-const Enum::YLeaf FlashfiletypeEnum::directory {4, "directory"};
-const Enum::YLeaf FlashfiletypeEnum::crashinfo {5, "crashinfo"};
+void CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ciscoFlashMiscOpSerialNumber")
+    {
+        ciscoflashmiscopserialnumber.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashMiscOpCommand")
+    {
+        ciscoflashmiscopcommand.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashMiscOpDestinationName")
+    {
+        ciscoflashmiscopdestinationname.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashMiscOpEntryStatus")
+    {
+        ciscoflashmiscopentrystatus.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashMiscOpNotifyOnCompletion")
+    {
+        ciscoflashmiscopnotifyoncompletion.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashMiscOpStatus")
+    {
+        ciscoflashmiscopstatus.yfilter = yfilter;
+    }
+    if(value_path == "ciscoFlashMiscOpTime")
+    {
+        ciscoflashmiscoptime.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::CiscoflashdeviceprogrammingjumperEnum::installed {1, "installed"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::CiscoflashdeviceprogrammingjumperEnum::notInstalled {2, "notInstalled"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::CiscoflashdeviceprogrammingjumperEnum::unknown {3, "unknown"};
+bool CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoFlashMiscOpSerialNumber" || name == "ciscoFlashMiscOpCommand" || name == "ciscoFlashMiscOpDestinationName" || name == "ciscoFlashMiscOpEntryStatus" || name == "ciscoFlashMiscOpNotifyOnCompletion" || name == "ciscoFlashMiscOpStatus" || name == "ciscoFlashMiscOpTime")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionchecksumalgorithmEnum::simpleChecksum {1, "simpleChecksum"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionchecksumalgorithmEnum::undefined {2, "undefined"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionchecksumalgorithmEnum::simpleCRC {3, "simpleCRC"};
+const Enum::YLeaf Flashfiletype::unknown {1, "unknown"};
+const Enum::YLeaf Flashfiletype::config {2, "config"};
+const Enum::YLeaf Flashfiletype::image {3, "image"};
+const Enum::YLeaf Flashfiletype::directory {4, "directory"};
+const Enum::YLeaf Flashfiletype::crashinfo {5, "crashinfo"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionstatusEnum::readOnly {1, "readOnly"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionstatusEnum::runFromFlash {2, "runFromFlash"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionstatusEnum::readWrite {3, "readWrite"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::Ciscoflashdeviceprogrammingjumper::installed {1, "installed"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::Ciscoflashdeviceprogrammingjumper::notInstalled {2, "notInstalled"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashdevicetable::Ciscoflashdeviceentry::Ciscoflashdeviceprogrammingjumper::unknown {3, "unknown"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionupgrademethodEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionupgrademethodEnum::rxbootFLH {2, "rxbootFLH"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::CiscoflashpartitionupgrademethodEnum::direct {3, "direct"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionchecksumalgorithm::simpleChecksum {1, "simpleChecksum"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionchecksumalgorithm::undefined {2, "undefined"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionchecksumalgorithm::simpleCRC {3, "simpleCRC"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::CiscoflashfilestatusEnum::deleted {1, "deleted"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::CiscoflashfilestatusEnum::invalidChecksum {2, "invalidChecksum"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::CiscoflashfilestatusEnum::valid {3, "valid"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionstatus::readOnly {1, "readOnly"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionstatus::runFromFlash {2, "runFromFlash"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionstatus::readWrite {3, "readWrite"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::CiscoflashfilebytypestatusEnum::deleted {1, "deleted"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::CiscoflashfilebytypestatusEnum::invalidChecksum {2, "invalidChecksum"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::CiscoflashfilebytypestatusEnum::valid {3, "valid"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionupgrademethod::unknown {1, "unknown"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionupgrademethod::rxbootFLH {2, "rxbootFLH"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitiontable::Ciscoflashpartitionentry::Ciscoflashpartitionupgrademethod::direct {3, "direct"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopycommandEnum::copyToFlashWithErase {1, "copyToFlashWithErase"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopycommandEnum::copyToFlashWithoutErase {2, "copyToFlashWithoutErase"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopycommandEnum::copyFromFlash {3, "copyFromFlash"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopycommandEnum::copyFromFlhLog {4, "copyFromFlhLog"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::Ciscoflashfilestatus::deleted {1, "deleted"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::Ciscoflashfilestatus::invalidChecksum {2, "invalidChecksum"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashfiletable::Ciscoflashfileentry::Ciscoflashfilestatus::valid {3, "valid"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopyprotocolEnum::tftp {1, "tftp"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopyprotocolEnum::rcp {2, "rcp"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopyprotocolEnum::lex {3, "lex"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopyprotocolEnum::ftp {4, "ftp"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopyprotocolEnum::scp {5, "scp"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopyprotocolEnum::sftp {6, "sftp"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::Ciscoflashfilebytypestatus::deleted {1, "deleted"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::Ciscoflashfilebytypestatus::invalidChecksum {2, "invalidChecksum"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::Ciscoflashfilebytypestatus::valid {3, "valid"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyOperationPending {0, "copyOperationPending"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyInProgress {1, "copyInProgress"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyOperationSuccess {2, "copyOperationSuccess"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyInvalidOperation {3, "copyInvalidOperation"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyInvalidProtocol {4, "copyInvalidProtocol"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyInvalidSourceName {5, "copyInvalidSourceName"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyInvalidDestName {6, "copyInvalidDestName"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyInvalidServerAddress {7, "copyInvalidServerAddress"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyDeviceBusy {8, "copyDeviceBusy"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyDeviceOpenError {9, "copyDeviceOpenError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyDeviceError {10, "copyDeviceError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyDeviceNotProgrammable {11, "copyDeviceNotProgrammable"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyDeviceFull {12, "copyDeviceFull"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyFileOpenError {13, "copyFileOpenError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyFileTransferError {14, "copyFileTransferError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyFileChecksumError {15, "copyFileChecksumError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyNoMemory {16, "copyNoMemory"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyUnknownFailure {17, "copyUnknownFailure"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyInvalidSignature {18, "copyInvalidSignature"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::CiscoflashcopystatusEnum::copyProhibited {19, "copyProhibited"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopycommand::copyToFlashWithErase {1, "copyToFlashWithErase"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopycommand::copyToFlashWithoutErase {2, "copyToFlashWithoutErase"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopycommand::copyFromFlash {3, "copyFromFlash"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopycommand::copyFromFlhLog {4, "copyFromFlhLog"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningcommandEnum::partition {1, "partition"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopyprotocol::tftp {1, "tftp"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopyprotocol::rcp {2, "rcp"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopyprotocol::lex {3, "lex"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopyprotocol::ftp {4, "ftp"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopyprotocol::scp {5, "scp"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopyprotocol::sftp {6, "sftp"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningInProgress {1, "partitioningInProgress"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningOperationSuccess {2, "partitioningOperationSuccess"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningInvalidOperation {3, "partitioningInvalidOperation"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningInvalidDestName {4, "partitioningInvalidDestName"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningInvalidPartitionCount {5, "partitioningInvalidPartitionCount"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningInvalidPartitionSizes {6, "partitioningInvalidPartitionSizes"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningDeviceBusy {7, "partitioningDeviceBusy"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningDeviceOpenError {8, "partitioningDeviceOpenError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningDeviceError {9, "partitioningDeviceError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningNoMemory {10, "partitioningNoMemory"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::CiscoflashpartitioningstatusEnum::partitioningUnknownFailure {11, "partitioningUnknownFailure"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyOperationPending {0, "copyOperationPending"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyInProgress {1, "copyInProgress"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyOperationSuccess {2, "copyOperationSuccess"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyInvalidOperation {3, "copyInvalidOperation"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyInvalidProtocol {4, "copyInvalidProtocol"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyInvalidSourceName {5, "copyInvalidSourceName"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyInvalidDestName {6, "copyInvalidDestName"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyInvalidServerAddress {7, "copyInvalidServerAddress"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyDeviceBusy {8, "copyDeviceBusy"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyDeviceOpenError {9, "copyDeviceOpenError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyDeviceError {10, "copyDeviceError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyDeviceNotProgrammable {11, "copyDeviceNotProgrammable"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyDeviceFull {12, "copyDeviceFull"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyFileOpenError {13, "copyFileOpenError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyFileTransferError {14, "copyFileTransferError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyFileChecksumError {15, "copyFileChecksumError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyNoMemory {16, "copyNoMemory"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyUnknownFailure {17, "copyUnknownFailure"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyInvalidSignature {18, "copyInvalidSignature"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashcopytable::Ciscoflashcopyentry::Ciscoflashcopystatus::copyProhibited {19, "copyProhibited"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopcommandEnum::erase {1, "erase"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopcommandEnum::verify {2, "verify"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopcommandEnum::delete_ {3, "delete"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopcommandEnum::undelete {4, "undelete"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopcommandEnum::squeeze {5, "squeeze"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopcommandEnum::format {6, "format"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningcommand::partition {1, "partition"};
 
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpInProgress {1, "miscOpInProgress"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpOperationSuccess {2, "miscOpOperationSuccess"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpInvalidOperation {3, "miscOpInvalidOperation"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpInvalidDestName {4, "miscOpInvalidDestName"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpDeviceBusy {5, "miscOpDeviceBusy"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpDeviceOpenError {6, "miscOpDeviceOpenError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpDeviceError {7, "miscOpDeviceError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpDeviceNotProgrammable {8, "miscOpDeviceNotProgrammable"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpFileOpenError {9, "miscOpFileOpenError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpFileDeleteFailure {10, "miscOpFileDeleteFailure"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpFileUndeleteFailure {11, "miscOpFileUndeleteFailure"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpFileChecksumError {12, "miscOpFileChecksumError"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpNoMemory {13, "miscOpNoMemory"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpUnknownFailure {14, "miscOpUnknownFailure"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpSqueezeFailure {18, "miscOpSqueezeFailure"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpNoSuchFile {19, "miscOpNoSuchFile"};
-const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::CiscoflashmiscopstatusEnum::miscOpFormatFailure {20, "miscOpFormatFailure"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningInProgress {1, "partitioningInProgress"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningOperationSuccess {2, "partitioningOperationSuccess"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningInvalidOperation {3, "partitioningInvalidOperation"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningInvalidDestName {4, "partitioningInvalidDestName"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningInvalidPartitionCount {5, "partitioningInvalidPartitionCount"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningInvalidPartitionSizes {6, "partitioningInvalidPartitionSizes"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningDeviceBusy {7, "partitioningDeviceBusy"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningDeviceOpenError {8, "partitioningDeviceOpenError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningDeviceError {9, "partitioningDeviceError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningNoMemory {10, "partitioningNoMemory"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::Ciscoflashpartitioningstatus::partitioningUnknownFailure {11, "partitioningUnknownFailure"};
+
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopcommand::erase {1, "erase"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopcommand::verify {2, "verify"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopcommand::delete_ {3, "delete"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopcommand::undelete {4, "undelete"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopcommand::squeeze {5, "squeeze"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopcommand::format {6, "format"};
+
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpInProgress {1, "miscOpInProgress"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpOperationSuccess {2, "miscOpOperationSuccess"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpInvalidOperation {3, "miscOpInvalidOperation"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpInvalidDestName {4, "miscOpInvalidDestName"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpDeviceBusy {5, "miscOpDeviceBusy"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpDeviceOpenError {6, "miscOpDeviceOpenError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpDeviceError {7, "miscOpDeviceError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpDeviceNotProgrammable {8, "miscOpDeviceNotProgrammable"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpFileOpenError {9, "miscOpFileOpenError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpFileDeleteFailure {10, "miscOpFileDeleteFailure"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpFileUndeleteFailure {11, "miscOpFileUndeleteFailure"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpFileChecksumError {12, "miscOpFileChecksumError"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpNoMemory {13, "miscOpNoMemory"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpUnknownFailure {14, "miscOpUnknownFailure"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpSqueezeFailure {18, "miscOpSqueezeFailure"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpNoSuchFile {19, "miscOpNoSuchFile"};
+const Enum::YLeaf CiscoFlashMib::Ciscoflashmiscoptable::Ciscoflashmiscopentry::Ciscoflashmiscopstatus::miscOpFormatFailure {20, "miscOpFormatFailure"};
 
 
 }

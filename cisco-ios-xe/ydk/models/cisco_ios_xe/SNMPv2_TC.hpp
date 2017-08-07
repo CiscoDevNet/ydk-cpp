@@ -7,37 +7,37 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace SNMPv2_TC {
 
-class TruthvalueEnum : public Enum
+class Truthvalue : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf true_;
-        static const Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
 
 };
 
-class StoragetypeEnum : public Enum
+class Storagetype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf volatile_;
-        static const Enum::YLeaf nonVolatile;
-        static const Enum::YLeaf permanent;
-        static const Enum::YLeaf readOnly;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf volatile_;
+        static const ydk::Enum::YLeaf nonVolatile;
+        static const ydk::Enum::YLeaf permanent;
+        static const ydk::Enum::YLeaf readOnly;
 
 };
 
-class RowstatusEnum : public Enum
+class Rowstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf active;
-        static const Enum::YLeaf notInService;
-        static const Enum::YLeaf notReady;
-        static const Enum::YLeaf createAndGo;
-        static const Enum::YLeaf createAndWait;
-        static const Enum::YLeaf destroy;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf notInService;
+        static const ydk::Enum::YLeaf notReady;
+        static const ydk::Enum::YLeaf createAndGo;
+        static const ydk::Enum::YLeaf createAndWait;
+        static const ydk::Enum::YLeaf destroy;
 
 };
 

@@ -6,32 +6,34 @@
 #include "generated_entity_lookup.hpp"
 #include "MPLS_VPN_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace MPLS_VPN_MIB {
 
 MplsVpnMib::MplsVpnMib()
     :
-    mplsvpninterfaceconftable_(std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable>())
-	,mplsvpnscalars_(std::make_shared<MplsVpnMib::Mplsvpnscalars>())
-	,mplsvpnvrfbgpnbraddrtable_(std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable>())
-	,mplsvpnvrfbgpnbrprefixtable_(std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable>())
-	,mplsvpnvrfroutetable_(std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable>())
-	,mplsvpnvrfroutetargettable_(std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable>())
-	,mplsvpnvrftable_(std::make_shared<MplsVpnMib::Mplsvpnvrftable>())
+    mplsvpninterfaceconftable(std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable>())
+	,mplsvpnscalars(std::make_shared<MplsVpnMib::Mplsvpnscalars>())
+	,mplsvpnvrfbgpnbraddrtable(std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable>())
+	,mplsvpnvrfbgpnbrprefixtable(std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable>())
+	,mplsvpnvrfroutetable(std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable>())
+	,mplsvpnvrfroutetargettable(std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable>())
+	,mplsvpnvrftable(std::make_shared<MplsVpnMib::Mplsvpnvrftable>())
 {
-    mplsvpninterfaceconftable_->parent = this;
+    mplsvpninterfaceconftable->parent = this;
 
-    mplsvpnscalars_->parent = this;
+    mplsvpnscalars->parent = this;
 
-    mplsvpnvrfbgpnbraddrtable_->parent = this;
+    mplsvpnvrfbgpnbraddrtable->parent = this;
 
-    mplsvpnvrfbgpnbrprefixtable_->parent = this;
+    mplsvpnvrfbgpnbrprefixtable->parent = this;
 
-    mplsvpnvrfroutetable_->parent = this;
+    mplsvpnvrfroutetable->parent = this;
 
-    mplsvpnvrfroutetargettable_->parent = this;
+    mplsvpnvrfroutetargettable->parent = this;
 
-    mplsvpnvrftable_->parent = this;
+    mplsvpnvrftable->parent = this;
 
     yang_name = "MPLS-VPN-MIB"; yang_parent_name = "MPLS-VPN-MIB";
 }
@@ -42,25 +44,25 @@ MplsVpnMib::~MplsVpnMib()
 
 bool MplsVpnMib::has_data() const
 {
-    return (mplsvpninterfaceconftable_ !=  nullptr && mplsvpninterfaceconftable_->has_data())
-	|| (mplsvpnscalars_ !=  nullptr && mplsvpnscalars_->has_data())
-	|| (mplsvpnvrfbgpnbraddrtable_ !=  nullptr && mplsvpnvrfbgpnbraddrtable_->has_data())
-	|| (mplsvpnvrfbgpnbrprefixtable_ !=  nullptr && mplsvpnvrfbgpnbrprefixtable_->has_data())
-	|| (mplsvpnvrfroutetable_ !=  nullptr && mplsvpnvrfroutetable_->has_data())
-	|| (mplsvpnvrfroutetargettable_ !=  nullptr && mplsvpnvrfroutetargettable_->has_data())
-	|| (mplsvpnvrftable_ !=  nullptr && mplsvpnvrftable_->has_data());
+    return (mplsvpninterfaceconftable !=  nullptr && mplsvpninterfaceconftable->has_data())
+	|| (mplsvpnscalars !=  nullptr && mplsvpnscalars->has_data())
+	|| (mplsvpnvrfbgpnbraddrtable !=  nullptr && mplsvpnvrfbgpnbraddrtable->has_data())
+	|| (mplsvpnvrfbgpnbrprefixtable !=  nullptr && mplsvpnvrfbgpnbrprefixtable->has_data())
+	|| (mplsvpnvrfroutetable !=  nullptr && mplsvpnvrfroutetable->has_data())
+	|| (mplsvpnvrfroutetargettable !=  nullptr && mplsvpnvrfroutetargettable->has_data())
+	|| (mplsvpnvrftable !=  nullptr && mplsvpnvrftable->has_data());
 }
 
 bool MplsVpnMib::has_operation() const
 {
-    return is_set(operation)
-	|| (mplsvpninterfaceconftable_ !=  nullptr && mplsvpninterfaceconftable_->has_operation())
-	|| (mplsvpnscalars_ !=  nullptr && mplsvpnscalars_->has_operation())
-	|| (mplsvpnvrfbgpnbraddrtable_ !=  nullptr && mplsvpnvrfbgpnbraddrtable_->has_operation())
-	|| (mplsvpnvrfbgpnbrprefixtable_ !=  nullptr && mplsvpnvrfbgpnbrprefixtable_->has_operation())
-	|| (mplsvpnvrfroutetable_ !=  nullptr && mplsvpnvrfroutetable_->has_operation())
-	|| (mplsvpnvrfroutetargettable_ !=  nullptr && mplsvpnvrfroutetargettable_->has_operation())
-	|| (mplsvpnvrftable_ !=  nullptr && mplsvpnvrftable_->has_operation());
+    return is_set(yfilter)
+	|| (mplsvpninterfaceconftable !=  nullptr && mplsvpninterfaceconftable->has_operation())
+	|| (mplsvpnscalars !=  nullptr && mplsvpnscalars->has_operation())
+	|| (mplsvpnvrfbgpnbraddrtable !=  nullptr && mplsvpnvrfbgpnbraddrtable->has_operation())
+	|| (mplsvpnvrfbgpnbrprefixtable !=  nullptr && mplsvpnvrfbgpnbrprefixtable->has_operation())
+	|| (mplsvpnvrfroutetable !=  nullptr && mplsvpnvrfroutetable->has_operation())
+	|| (mplsvpnvrfroutetargettable !=  nullptr && mplsvpnvrfroutetargettable->has_operation())
+	|| (mplsvpnvrftable !=  nullptr && mplsvpnvrftable->has_operation());
 }
 
 std::string MplsVpnMib::get_segment_path() const
@@ -94,65 +96,65 @@ std::shared_ptr<Entity> MplsVpnMib::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "mplsVpnInterfaceConfTable")
     {
-        if(mplsvpninterfaceconftable_ == nullptr)
+        if(mplsvpninterfaceconftable == nullptr)
         {
-            mplsvpninterfaceconftable_ = std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable>();
+            mplsvpninterfaceconftable = std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable>();
         }
-        return mplsvpninterfaceconftable_;
+        return mplsvpninterfaceconftable;
     }
 
     if(child_yang_name == "mplsVpnScalars")
     {
-        if(mplsvpnscalars_ == nullptr)
+        if(mplsvpnscalars == nullptr)
         {
-            mplsvpnscalars_ = std::make_shared<MplsVpnMib::Mplsvpnscalars>();
+            mplsvpnscalars = std::make_shared<MplsVpnMib::Mplsvpnscalars>();
         }
-        return mplsvpnscalars_;
+        return mplsvpnscalars;
     }
 
     if(child_yang_name == "mplsVpnVrfBgpNbrAddrTable")
     {
-        if(mplsvpnvrfbgpnbraddrtable_ == nullptr)
+        if(mplsvpnvrfbgpnbraddrtable == nullptr)
         {
-            mplsvpnvrfbgpnbraddrtable_ = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable>();
+            mplsvpnvrfbgpnbraddrtable = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable>();
         }
-        return mplsvpnvrfbgpnbraddrtable_;
+        return mplsvpnvrfbgpnbraddrtable;
     }
 
     if(child_yang_name == "mplsVpnVrfBgpNbrPrefixTable")
     {
-        if(mplsvpnvrfbgpnbrprefixtable_ == nullptr)
+        if(mplsvpnvrfbgpnbrprefixtable == nullptr)
         {
-            mplsvpnvrfbgpnbrprefixtable_ = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable>();
+            mplsvpnvrfbgpnbrprefixtable = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable>();
         }
-        return mplsvpnvrfbgpnbrprefixtable_;
+        return mplsvpnvrfbgpnbrprefixtable;
     }
 
     if(child_yang_name == "mplsVpnVrfRouteTable")
     {
-        if(mplsvpnvrfroutetable_ == nullptr)
+        if(mplsvpnvrfroutetable == nullptr)
         {
-            mplsvpnvrfroutetable_ = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable>();
+            mplsvpnvrfroutetable = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable>();
         }
-        return mplsvpnvrfroutetable_;
+        return mplsvpnvrfroutetable;
     }
 
     if(child_yang_name == "mplsVpnVrfRouteTargetTable")
     {
-        if(mplsvpnvrfroutetargettable_ == nullptr)
+        if(mplsvpnvrfroutetargettable == nullptr)
         {
-            mplsvpnvrfroutetargettable_ = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable>();
+            mplsvpnvrfroutetargettable = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable>();
         }
-        return mplsvpnvrfroutetargettable_;
+        return mplsvpnvrfroutetargettable;
     }
 
     if(child_yang_name == "mplsVpnVrfTable")
     {
-        if(mplsvpnvrftable_ == nullptr)
+        if(mplsvpnvrftable == nullptr)
         {
-            mplsvpnvrftable_ = std::make_shared<MplsVpnMib::Mplsvpnvrftable>();
+            mplsvpnvrftable = std::make_shared<MplsVpnMib::Mplsvpnvrftable>();
         }
-        return mplsvpnvrftable_;
+        return mplsvpnvrftable;
     }
 
     return nullptr;
@@ -161,45 +163,49 @@ std::shared_ptr<Entity> MplsVpnMib::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(mplsvpninterfaceconftable_ != nullptr)
+    if(mplsvpninterfaceconftable != nullptr)
     {
-        children["mplsVpnInterfaceConfTable"] = mplsvpninterfaceconftable_;
+        children["mplsVpnInterfaceConfTable"] = mplsvpninterfaceconftable;
     }
 
-    if(mplsvpnscalars_ != nullptr)
+    if(mplsvpnscalars != nullptr)
     {
-        children["mplsVpnScalars"] = mplsvpnscalars_;
+        children["mplsVpnScalars"] = mplsvpnscalars;
     }
 
-    if(mplsvpnvrfbgpnbraddrtable_ != nullptr)
+    if(mplsvpnvrfbgpnbraddrtable != nullptr)
     {
-        children["mplsVpnVrfBgpNbrAddrTable"] = mplsvpnvrfbgpnbraddrtable_;
+        children["mplsVpnVrfBgpNbrAddrTable"] = mplsvpnvrfbgpnbraddrtable;
     }
 
-    if(mplsvpnvrfbgpnbrprefixtable_ != nullptr)
+    if(mplsvpnvrfbgpnbrprefixtable != nullptr)
     {
-        children["mplsVpnVrfBgpNbrPrefixTable"] = mplsvpnvrfbgpnbrprefixtable_;
+        children["mplsVpnVrfBgpNbrPrefixTable"] = mplsvpnvrfbgpnbrprefixtable;
     }
 
-    if(mplsvpnvrfroutetable_ != nullptr)
+    if(mplsvpnvrfroutetable != nullptr)
     {
-        children["mplsVpnVrfRouteTable"] = mplsvpnvrfroutetable_;
+        children["mplsVpnVrfRouteTable"] = mplsvpnvrfroutetable;
     }
 
-    if(mplsvpnvrfroutetargettable_ != nullptr)
+    if(mplsvpnvrfroutetargettable != nullptr)
     {
-        children["mplsVpnVrfRouteTargetTable"] = mplsvpnvrfroutetargettable_;
+        children["mplsVpnVrfRouteTargetTable"] = mplsvpnvrfroutetargettable;
     }
 
-    if(mplsvpnvrftable_ != nullptr)
+    if(mplsvpnvrftable != nullptr)
     {
-        children["mplsVpnVrfTable"] = mplsvpnvrftable_;
+        children["mplsVpnVrfTable"] = mplsvpnvrftable;
     }
 
     return children;
 }
 
-void MplsVpnMib::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsVpnMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -221,6 +227,18 @@ std::string MplsVpnMib::get_bundle_name() const
 augment_capabilities_function MplsVpnMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> MplsVpnMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool MplsVpnMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnInterfaceConfTable" || name == "mplsVpnScalars" || name == "mplsVpnVrfBgpNbrAddrTable" || name == "mplsVpnVrfBgpNbrPrefixTable" || name == "mplsVpnVrfRouteTable" || name == "mplsVpnVrfRouteTargetTable" || name == "mplsVpnVrfTable")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnscalars::Mplsvpnscalars()
@@ -249,12 +267,12 @@ bool MplsVpnMib::Mplsvpnscalars::has_data() const
 
 bool MplsVpnMib::Mplsvpnscalars::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mplsvpnactivevrfs.operation)
-	|| is_set(mplsvpnconfiguredvrfs.operation)
-	|| is_set(mplsvpnconnectedinterfaces.operation)
-	|| is_set(mplsvpnnotificationenable.operation)
-	|| is_set(mplsvpnvrfconfmaxpossibleroutes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mplsvpnactivevrfs.yfilter)
+	|| ydk::is_set(mplsvpnconfiguredvrfs.yfilter)
+	|| ydk::is_set(mplsvpnconnectedinterfaces.yfilter)
+	|| ydk::is_set(mplsvpnnotificationenable.yfilter)
+	|| ydk::is_set(mplsvpnvrfconfmaxpossibleroutes.yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnscalars::get_segment_path() const
@@ -280,11 +298,11 @@ const EntityPath MplsVpnMib::Mplsvpnscalars::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mplsvpnactivevrfs.is_set || is_set(mplsvpnactivevrfs.operation)) leaf_name_data.push_back(mplsvpnactivevrfs.get_name_leafdata());
-    if (mplsvpnconfiguredvrfs.is_set || is_set(mplsvpnconfiguredvrfs.operation)) leaf_name_data.push_back(mplsvpnconfiguredvrfs.get_name_leafdata());
-    if (mplsvpnconnectedinterfaces.is_set || is_set(mplsvpnconnectedinterfaces.operation)) leaf_name_data.push_back(mplsvpnconnectedinterfaces.get_name_leafdata());
-    if (mplsvpnnotificationenable.is_set || is_set(mplsvpnnotificationenable.operation)) leaf_name_data.push_back(mplsvpnnotificationenable.get_name_leafdata());
-    if (mplsvpnvrfconfmaxpossibleroutes.is_set || is_set(mplsvpnvrfconfmaxpossibleroutes.operation)) leaf_name_data.push_back(mplsvpnvrfconfmaxpossibleroutes.get_name_leafdata());
+    if (mplsvpnactivevrfs.is_set || is_set(mplsvpnactivevrfs.yfilter)) leaf_name_data.push_back(mplsvpnactivevrfs.get_name_leafdata());
+    if (mplsvpnconfiguredvrfs.is_set || is_set(mplsvpnconfiguredvrfs.yfilter)) leaf_name_data.push_back(mplsvpnconfiguredvrfs.get_name_leafdata());
+    if (mplsvpnconnectedinterfaces.is_set || is_set(mplsvpnconnectedinterfaces.yfilter)) leaf_name_data.push_back(mplsvpnconnectedinterfaces.get_name_leafdata());
+    if (mplsvpnnotificationenable.is_set || is_set(mplsvpnnotificationenable.yfilter)) leaf_name_data.push_back(mplsvpnnotificationenable.get_name_leafdata());
+    if (mplsvpnvrfconfmaxpossibleroutes.is_set || is_set(mplsvpnvrfconfmaxpossibleroutes.yfilter)) leaf_name_data.push_back(mplsvpnvrfconfmaxpossibleroutes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -303,28 +321,69 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnscalars::get_c
     return children;
 }
 
-void MplsVpnMib::Mplsvpnscalars::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnscalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsVpnActiveVrfs")
     {
         mplsvpnactivevrfs = value;
+        mplsvpnactivevrfs.value_namespace = name_space;
+        mplsvpnactivevrfs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnConfiguredVrfs")
     {
         mplsvpnconfiguredvrfs = value;
+        mplsvpnconfiguredvrfs.value_namespace = name_space;
+        mplsvpnconfiguredvrfs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnConnectedInterfaces")
     {
         mplsvpnconnectedinterfaces = value;
+        mplsvpnconnectedinterfaces.value_namespace = name_space;
+        mplsvpnconnectedinterfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnNotificationEnable")
     {
         mplsvpnnotificationenable = value;
+        mplsvpnnotificationenable.value_namespace = name_space;
+        mplsvpnnotificationenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfConfMaxPossibleRoutes")
     {
         mplsvpnvrfconfmaxpossibleroutes = value;
+        mplsvpnvrfconfmaxpossibleroutes.value_namespace = name_space;
+        mplsvpnvrfconfmaxpossibleroutes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsVpnMib::Mplsvpnscalars::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsVpnActiveVrfs")
+    {
+        mplsvpnactivevrfs.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnConfiguredVrfs")
+    {
+        mplsvpnconfiguredvrfs.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnConnectedInterfaces")
+    {
+        mplsvpnconnectedinterfaces.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnNotificationEnable")
+    {
+        mplsvpnnotificationenable.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfConfMaxPossibleRoutes")
+    {
+        mplsvpnvrfconfmaxpossibleroutes.yfilter = yfilter;
+    }
+}
+
+bool MplsVpnMib::Mplsvpnscalars::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnActiveVrfs" || name == "mplsVpnConfiguredVrfs" || name == "mplsVpnConnectedInterfaces" || name == "mplsVpnNotificationEnable" || name == "mplsVpnVrfConfMaxPossibleRoutes")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconftable()
@@ -338,9 +397,9 @@ MplsVpnMib::Mplsvpninterfaceconftable::~Mplsvpninterfaceconftable()
 
 bool MplsVpnMib::Mplsvpninterfaceconftable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpninterfaceconfentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpninterfaceconfentry.size(); index++)
     {
-        if(mplsvpninterfaceconfentry_[index]->has_data())
+        if(mplsvpninterfaceconfentry[index]->has_data())
             return true;
     }
     return false;
@@ -348,12 +407,12 @@ bool MplsVpnMib::Mplsvpninterfaceconftable::has_data() const
 
 bool MplsVpnMib::Mplsvpninterfaceconftable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpninterfaceconfentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpninterfaceconfentry.size(); index++)
     {
-        if(mplsvpninterfaceconfentry_[index]->has_operation())
+        if(mplsvpninterfaceconfentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpninterfaceconftable::get_segment_path() const
@@ -390,7 +449,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpninterfaceconftable::get_child_by_name
 {
     if(child_yang_name == "mplsVpnInterfaceConfEntry")
     {
-        for(auto const & c : mplsvpninterfaceconfentry_)
+        for(auto const & c : mplsvpninterfaceconfentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -400,7 +459,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpninterfaceconftable::get_child_by_name
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry>();
         c->parent = this;
-        mplsvpninterfaceconfentry_.push_back(c);
+        mplsvpninterfaceconfentry.push_back(c);
         return c;
     }
 
@@ -410,7 +469,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpninterfaceconftable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpninterfaceconftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpninterfaceconfentry_)
+    for (auto const & c : mplsvpninterfaceconfentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -418,8 +477,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpninterfaceconft
     return children;
 }
 
-void MplsVpnMib::Mplsvpninterfaceconftable::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpninterfaceconftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsVpnMib::Mplsvpninterfaceconftable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsVpnMib::Mplsvpninterfaceconftable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnInterfaceConfEntry")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpninterfaceconfentry()
@@ -452,14 +522,14 @@ bool MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::has_data(
 
 bool MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mplsvpnvrfname.operation)
-	|| is_set(mplsvpninterfaceconfindex.operation)
-	|| is_set(mplsvpninterfaceconfrowstatus.operation)
-	|| is_set(mplsvpninterfaceconfstoragetype.operation)
-	|| is_set(mplsvpninterfacelabeledgetype.operation)
-	|| is_set(mplsvpninterfacevpnclassification.operation)
-	|| is_set(mplsvpninterfacevpnroutedistprotocol.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mplsvpnvrfname.yfilter)
+	|| ydk::is_set(mplsvpninterfaceconfindex.yfilter)
+	|| ydk::is_set(mplsvpninterfaceconfrowstatus.yfilter)
+	|| ydk::is_set(mplsvpninterfaceconfstoragetype.yfilter)
+	|| ydk::is_set(mplsvpninterfacelabeledgetype.yfilter)
+	|| ydk::is_set(mplsvpninterfacevpnclassification.yfilter)
+	|| ydk::is_set(mplsvpninterfacevpnroutedistprotocol.yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::get_segment_path() const
@@ -485,13 +555,13 @@ const EntityPath MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.operation)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
-    if (mplsvpninterfaceconfindex.is_set || is_set(mplsvpninterfaceconfindex.operation)) leaf_name_data.push_back(mplsvpninterfaceconfindex.get_name_leafdata());
-    if (mplsvpninterfaceconfrowstatus.is_set || is_set(mplsvpninterfaceconfrowstatus.operation)) leaf_name_data.push_back(mplsvpninterfaceconfrowstatus.get_name_leafdata());
-    if (mplsvpninterfaceconfstoragetype.is_set || is_set(mplsvpninterfaceconfstoragetype.operation)) leaf_name_data.push_back(mplsvpninterfaceconfstoragetype.get_name_leafdata());
-    if (mplsvpninterfacelabeledgetype.is_set || is_set(mplsvpninterfacelabeledgetype.operation)) leaf_name_data.push_back(mplsvpninterfacelabeledgetype.get_name_leafdata());
-    if (mplsvpninterfacevpnclassification.is_set || is_set(mplsvpninterfacevpnclassification.operation)) leaf_name_data.push_back(mplsvpninterfacevpnclassification.get_name_leafdata());
-    if (mplsvpninterfacevpnroutedistprotocol.is_set || is_set(mplsvpninterfacevpnroutedistprotocol.operation)) leaf_name_data.push_back(mplsvpninterfacevpnroutedistprotocol.get_name_leafdata());
+    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.yfilter)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
+    if (mplsvpninterfaceconfindex.is_set || is_set(mplsvpninterfaceconfindex.yfilter)) leaf_name_data.push_back(mplsvpninterfaceconfindex.get_name_leafdata());
+    if (mplsvpninterfaceconfrowstatus.is_set || is_set(mplsvpninterfaceconfrowstatus.yfilter)) leaf_name_data.push_back(mplsvpninterfaceconfrowstatus.get_name_leafdata());
+    if (mplsvpninterfaceconfstoragetype.is_set || is_set(mplsvpninterfaceconfstoragetype.yfilter)) leaf_name_data.push_back(mplsvpninterfaceconfstoragetype.get_name_leafdata());
+    if (mplsvpninterfacelabeledgetype.is_set || is_set(mplsvpninterfacelabeledgetype.yfilter)) leaf_name_data.push_back(mplsvpninterfacelabeledgetype.get_name_leafdata());
+    if (mplsvpninterfacevpnclassification.is_set || is_set(mplsvpninterfacevpnclassification.yfilter)) leaf_name_data.push_back(mplsvpninterfacevpnclassification.get_name_leafdata());
+    if (mplsvpninterfacevpnroutedistprotocol.is_set || is_set(mplsvpninterfacevpnroutedistprotocol.yfilter)) leaf_name_data.push_back(mplsvpninterfacevpnroutedistprotocol.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -510,36 +580,87 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpninterfaceconft
     return children;
 }
 
-void MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsVpnVrfName")
     {
         mplsvpnvrfname = value;
+        mplsvpnvrfname.value_namespace = name_space;
+        mplsvpnvrfname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnInterfaceConfIndex")
     {
         mplsvpninterfaceconfindex = value;
+        mplsvpninterfaceconfindex.value_namespace = name_space;
+        mplsvpninterfaceconfindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnInterfaceConfRowStatus")
     {
         mplsvpninterfaceconfrowstatus = value;
+        mplsvpninterfaceconfrowstatus.value_namespace = name_space;
+        mplsvpninterfaceconfrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnInterfaceConfStorageType")
     {
         mplsvpninterfaceconfstoragetype = value;
+        mplsvpninterfaceconfstoragetype.value_namespace = name_space;
+        mplsvpninterfaceconfstoragetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnInterfaceLabelEdgeType")
     {
         mplsvpninterfacelabeledgetype = value;
+        mplsvpninterfacelabeledgetype.value_namespace = name_space;
+        mplsvpninterfacelabeledgetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnInterfaceVpnClassification")
     {
         mplsvpninterfacevpnclassification = value;
+        mplsvpninterfacevpnclassification.value_namespace = name_space;
+        mplsvpninterfacevpnclassification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnInterfaceVpnRouteDistProtocol")
     {
         mplsvpninterfacevpnroutedistprotocol[value] = true;
     }
+}
+
+void MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsVpnVrfName")
+    {
+        mplsvpnvrfname.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnInterfaceConfIndex")
+    {
+        mplsvpninterfaceconfindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnInterfaceConfRowStatus")
+    {
+        mplsvpninterfaceconfrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnInterfaceConfStorageType")
+    {
+        mplsvpninterfaceconfstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnInterfaceLabelEdgeType")
+    {
+        mplsvpninterfacelabeledgetype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnInterfaceVpnClassification")
+    {
+        mplsvpninterfacevpnclassification.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnInterfaceVpnRouteDistProtocol")
+    {
+        mplsvpninterfacevpnroutedistprotocol.yfilter = yfilter;
+    }
+}
+
+bool MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfName" || name == "mplsVpnInterfaceConfIndex" || name == "mplsVpnInterfaceConfRowStatus" || name == "mplsVpnInterfaceConfStorageType" || name == "mplsVpnInterfaceLabelEdgeType" || name == "mplsVpnInterfaceVpnClassification" || name == "mplsVpnInterfaceVpnRouteDistProtocol")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrftable()
@@ -553,9 +674,9 @@ MplsVpnMib::Mplsvpnvrftable::~Mplsvpnvrftable()
 
 bool MplsVpnMib::Mplsvpnvrftable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfentry.size(); index++)
     {
-        if(mplsvpnvrfentry_[index]->has_data())
+        if(mplsvpnvrfentry[index]->has_data())
             return true;
     }
     return false;
@@ -563,12 +684,12 @@ bool MplsVpnMib::Mplsvpnvrftable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrftable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfentry.size(); index++)
     {
-        if(mplsvpnvrfentry_[index]->has_operation())
+        if(mplsvpnvrfentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrftable::get_segment_path() const
@@ -605,7 +726,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrftable::get_child_by_name(const std
 {
     if(child_yang_name == "mplsVpnVrfEntry")
     {
-        for(auto const & c : mplsvpnvrfentry_)
+        for(auto const & c : mplsvpnvrfentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -615,7 +736,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrftable::get_child_by_name(const std
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry>();
         c->parent = this;
-        mplsvpnvrfentry_.push_back(c);
+        mplsvpnvrfentry.push_back(c);
         return c;
     }
 
@@ -625,7 +746,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrftable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfentry_)
+    for (auto const & c : mplsvpnvrfentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -633,8 +754,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrftable::get_
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrftable::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsVpnMib::Mplsvpnvrftable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsVpnMib::Mplsvpnvrftable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfEntry")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::Mplsvpnvrfentry()
@@ -689,25 +821,25 @@ bool MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mplsvpnvrfname.operation)
-	|| is_set(mplsvpnvrfactiveinterfaces.operation)
-	|| is_set(mplsvpnvrfassociatedinterfaces.operation)
-	|| is_set(mplsvpnvrfconfhighroutethreshold.operation)
-	|| is_set(mplsvpnvrfconflastchanged.operation)
-	|| is_set(mplsvpnvrfconfmaxroutes.operation)
-	|| is_set(mplsvpnvrfconfmidroutethreshold.operation)
-	|| is_set(mplsvpnvrfconfrowstatus.operation)
-	|| is_set(mplsvpnvrfconfstoragetype.operation)
-	|| is_set(mplsvpnvrfcreationtime.operation)
-	|| is_set(mplsvpnvrfdescription.operation)
-	|| is_set(mplsvpnvrfoperstatus.operation)
-	|| is_set(mplsvpnvrfperfcurrnumroutes.operation)
-	|| is_set(mplsvpnvrfperfroutesadded.operation)
-	|| is_set(mplsvpnvrfperfroutesdeleted.operation)
-	|| is_set(mplsvpnvrfroutedistinguisher.operation)
-	|| is_set(mplsvpnvrfsecillegallabelrcvthresh.operation)
-	|| is_set(mplsvpnvrfsecillegallabelviolations.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mplsvpnvrfname.yfilter)
+	|| ydk::is_set(mplsvpnvrfactiveinterfaces.yfilter)
+	|| ydk::is_set(mplsvpnvrfassociatedinterfaces.yfilter)
+	|| ydk::is_set(mplsvpnvrfconfhighroutethreshold.yfilter)
+	|| ydk::is_set(mplsvpnvrfconflastchanged.yfilter)
+	|| ydk::is_set(mplsvpnvrfconfmaxroutes.yfilter)
+	|| ydk::is_set(mplsvpnvrfconfmidroutethreshold.yfilter)
+	|| ydk::is_set(mplsvpnvrfconfrowstatus.yfilter)
+	|| ydk::is_set(mplsvpnvrfconfstoragetype.yfilter)
+	|| ydk::is_set(mplsvpnvrfcreationtime.yfilter)
+	|| ydk::is_set(mplsvpnvrfdescription.yfilter)
+	|| ydk::is_set(mplsvpnvrfoperstatus.yfilter)
+	|| ydk::is_set(mplsvpnvrfperfcurrnumroutes.yfilter)
+	|| ydk::is_set(mplsvpnvrfperfroutesadded.yfilter)
+	|| ydk::is_set(mplsvpnvrfperfroutesdeleted.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutedistinguisher.yfilter)
+	|| ydk::is_set(mplsvpnvrfsecillegallabelrcvthresh.yfilter)
+	|| ydk::is_set(mplsvpnvrfsecillegallabelviolations.yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::get_segment_path() const
@@ -733,24 +865,24 @@ const EntityPath MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.operation)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
-    if (mplsvpnvrfactiveinterfaces.is_set || is_set(mplsvpnvrfactiveinterfaces.operation)) leaf_name_data.push_back(mplsvpnvrfactiveinterfaces.get_name_leafdata());
-    if (mplsvpnvrfassociatedinterfaces.is_set || is_set(mplsvpnvrfassociatedinterfaces.operation)) leaf_name_data.push_back(mplsvpnvrfassociatedinterfaces.get_name_leafdata());
-    if (mplsvpnvrfconfhighroutethreshold.is_set || is_set(mplsvpnvrfconfhighroutethreshold.operation)) leaf_name_data.push_back(mplsvpnvrfconfhighroutethreshold.get_name_leafdata());
-    if (mplsvpnvrfconflastchanged.is_set || is_set(mplsvpnvrfconflastchanged.operation)) leaf_name_data.push_back(mplsvpnvrfconflastchanged.get_name_leafdata());
-    if (mplsvpnvrfconfmaxroutes.is_set || is_set(mplsvpnvrfconfmaxroutes.operation)) leaf_name_data.push_back(mplsvpnvrfconfmaxroutes.get_name_leafdata());
-    if (mplsvpnvrfconfmidroutethreshold.is_set || is_set(mplsvpnvrfconfmidroutethreshold.operation)) leaf_name_data.push_back(mplsvpnvrfconfmidroutethreshold.get_name_leafdata());
-    if (mplsvpnvrfconfrowstatus.is_set || is_set(mplsvpnvrfconfrowstatus.operation)) leaf_name_data.push_back(mplsvpnvrfconfrowstatus.get_name_leafdata());
-    if (mplsvpnvrfconfstoragetype.is_set || is_set(mplsvpnvrfconfstoragetype.operation)) leaf_name_data.push_back(mplsvpnvrfconfstoragetype.get_name_leafdata());
-    if (mplsvpnvrfcreationtime.is_set || is_set(mplsvpnvrfcreationtime.operation)) leaf_name_data.push_back(mplsvpnvrfcreationtime.get_name_leafdata());
-    if (mplsvpnvrfdescription.is_set || is_set(mplsvpnvrfdescription.operation)) leaf_name_data.push_back(mplsvpnvrfdescription.get_name_leafdata());
-    if (mplsvpnvrfoperstatus.is_set || is_set(mplsvpnvrfoperstatus.operation)) leaf_name_data.push_back(mplsvpnvrfoperstatus.get_name_leafdata());
-    if (mplsvpnvrfperfcurrnumroutes.is_set || is_set(mplsvpnvrfperfcurrnumroutes.operation)) leaf_name_data.push_back(mplsvpnvrfperfcurrnumroutes.get_name_leafdata());
-    if (mplsvpnvrfperfroutesadded.is_set || is_set(mplsvpnvrfperfroutesadded.operation)) leaf_name_data.push_back(mplsvpnvrfperfroutesadded.get_name_leafdata());
-    if (mplsvpnvrfperfroutesdeleted.is_set || is_set(mplsvpnvrfperfroutesdeleted.operation)) leaf_name_data.push_back(mplsvpnvrfperfroutesdeleted.get_name_leafdata());
-    if (mplsvpnvrfroutedistinguisher.is_set || is_set(mplsvpnvrfroutedistinguisher.operation)) leaf_name_data.push_back(mplsvpnvrfroutedistinguisher.get_name_leafdata());
-    if (mplsvpnvrfsecillegallabelrcvthresh.is_set || is_set(mplsvpnvrfsecillegallabelrcvthresh.operation)) leaf_name_data.push_back(mplsvpnvrfsecillegallabelrcvthresh.get_name_leafdata());
-    if (mplsvpnvrfsecillegallabelviolations.is_set || is_set(mplsvpnvrfsecillegallabelviolations.operation)) leaf_name_data.push_back(mplsvpnvrfsecillegallabelviolations.get_name_leafdata());
+    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.yfilter)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
+    if (mplsvpnvrfactiveinterfaces.is_set || is_set(mplsvpnvrfactiveinterfaces.yfilter)) leaf_name_data.push_back(mplsvpnvrfactiveinterfaces.get_name_leafdata());
+    if (mplsvpnvrfassociatedinterfaces.is_set || is_set(mplsvpnvrfassociatedinterfaces.yfilter)) leaf_name_data.push_back(mplsvpnvrfassociatedinterfaces.get_name_leafdata());
+    if (mplsvpnvrfconfhighroutethreshold.is_set || is_set(mplsvpnvrfconfhighroutethreshold.yfilter)) leaf_name_data.push_back(mplsvpnvrfconfhighroutethreshold.get_name_leafdata());
+    if (mplsvpnvrfconflastchanged.is_set || is_set(mplsvpnvrfconflastchanged.yfilter)) leaf_name_data.push_back(mplsvpnvrfconflastchanged.get_name_leafdata());
+    if (mplsvpnvrfconfmaxroutes.is_set || is_set(mplsvpnvrfconfmaxroutes.yfilter)) leaf_name_data.push_back(mplsvpnvrfconfmaxroutes.get_name_leafdata());
+    if (mplsvpnvrfconfmidroutethreshold.is_set || is_set(mplsvpnvrfconfmidroutethreshold.yfilter)) leaf_name_data.push_back(mplsvpnvrfconfmidroutethreshold.get_name_leafdata());
+    if (mplsvpnvrfconfrowstatus.is_set || is_set(mplsvpnvrfconfrowstatus.yfilter)) leaf_name_data.push_back(mplsvpnvrfconfrowstatus.get_name_leafdata());
+    if (mplsvpnvrfconfstoragetype.is_set || is_set(mplsvpnvrfconfstoragetype.yfilter)) leaf_name_data.push_back(mplsvpnvrfconfstoragetype.get_name_leafdata());
+    if (mplsvpnvrfcreationtime.is_set || is_set(mplsvpnvrfcreationtime.yfilter)) leaf_name_data.push_back(mplsvpnvrfcreationtime.get_name_leafdata());
+    if (mplsvpnvrfdescription.is_set || is_set(mplsvpnvrfdescription.yfilter)) leaf_name_data.push_back(mplsvpnvrfdescription.get_name_leafdata());
+    if (mplsvpnvrfoperstatus.is_set || is_set(mplsvpnvrfoperstatus.yfilter)) leaf_name_data.push_back(mplsvpnvrfoperstatus.get_name_leafdata());
+    if (mplsvpnvrfperfcurrnumroutes.is_set || is_set(mplsvpnvrfperfcurrnumroutes.yfilter)) leaf_name_data.push_back(mplsvpnvrfperfcurrnumroutes.get_name_leafdata());
+    if (mplsvpnvrfperfroutesadded.is_set || is_set(mplsvpnvrfperfroutesadded.yfilter)) leaf_name_data.push_back(mplsvpnvrfperfroutesadded.get_name_leafdata());
+    if (mplsvpnvrfperfroutesdeleted.is_set || is_set(mplsvpnvrfperfroutesdeleted.yfilter)) leaf_name_data.push_back(mplsvpnvrfperfroutesdeleted.get_name_leafdata());
+    if (mplsvpnvrfroutedistinguisher.is_set || is_set(mplsvpnvrfroutedistinguisher.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutedistinguisher.get_name_leafdata());
+    if (mplsvpnvrfsecillegallabelrcvthresh.is_set || is_set(mplsvpnvrfsecillegallabelrcvthresh.yfilter)) leaf_name_data.push_back(mplsvpnvrfsecillegallabelrcvthresh.get_name_leafdata());
+    if (mplsvpnvrfsecillegallabelviolations.is_set || is_set(mplsvpnvrfsecillegallabelviolations.yfilter)) leaf_name_data.push_back(mplsvpnvrfsecillegallabelviolations.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -769,80 +901,199 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrftable::Mpls
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsVpnVrfName")
     {
         mplsvpnvrfname = value;
+        mplsvpnvrfname.value_namespace = name_space;
+        mplsvpnvrfname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfActiveInterfaces")
     {
         mplsvpnvrfactiveinterfaces = value;
+        mplsvpnvrfactiveinterfaces.value_namespace = name_space;
+        mplsvpnvrfactiveinterfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfAssociatedInterfaces")
     {
         mplsvpnvrfassociatedinterfaces = value;
+        mplsvpnvrfassociatedinterfaces.value_namespace = name_space;
+        mplsvpnvrfassociatedinterfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfConfHighRouteThreshold")
     {
         mplsvpnvrfconfhighroutethreshold = value;
+        mplsvpnvrfconfhighroutethreshold.value_namespace = name_space;
+        mplsvpnvrfconfhighroutethreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfConfLastChanged")
     {
         mplsvpnvrfconflastchanged = value;
+        mplsvpnvrfconflastchanged.value_namespace = name_space;
+        mplsvpnvrfconflastchanged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfConfMaxRoutes")
     {
         mplsvpnvrfconfmaxroutes = value;
+        mplsvpnvrfconfmaxroutes.value_namespace = name_space;
+        mplsvpnvrfconfmaxroutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfConfMidRouteThreshold")
     {
         mplsvpnvrfconfmidroutethreshold = value;
+        mplsvpnvrfconfmidroutethreshold.value_namespace = name_space;
+        mplsvpnvrfconfmidroutethreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfConfRowStatus")
     {
         mplsvpnvrfconfrowstatus = value;
+        mplsvpnvrfconfrowstatus.value_namespace = name_space;
+        mplsvpnvrfconfrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfConfStorageType")
     {
         mplsvpnvrfconfstoragetype = value;
+        mplsvpnvrfconfstoragetype.value_namespace = name_space;
+        mplsvpnvrfconfstoragetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfCreationTime")
     {
         mplsvpnvrfcreationtime = value;
+        mplsvpnvrfcreationtime.value_namespace = name_space;
+        mplsvpnvrfcreationtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfDescription")
     {
         mplsvpnvrfdescription = value;
+        mplsvpnvrfdescription.value_namespace = name_space;
+        mplsvpnvrfdescription.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfOperStatus")
     {
         mplsvpnvrfoperstatus = value;
+        mplsvpnvrfoperstatus.value_namespace = name_space;
+        mplsvpnvrfoperstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfPerfCurrNumRoutes")
     {
         mplsvpnvrfperfcurrnumroutes = value;
+        mplsvpnvrfperfcurrnumroutes.value_namespace = name_space;
+        mplsvpnvrfperfcurrnumroutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfPerfRoutesAdded")
     {
         mplsvpnvrfperfroutesadded = value;
+        mplsvpnvrfperfroutesadded.value_namespace = name_space;
+        mplsvpnvrfperfroutesadded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfPerfRoutesDeleted")
     {
         mplsvpnvrfperfroutesdeleted = value;
+        mplsvpnvrfperfroutesdeleted.value_namespace = name_space;
+        mplsvpnvrfperfroutesdeleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteDistinguisher")
     {
         mplsvpnvrfroutedistinguisher = value;
+        mplsvpnvrfroutedistinguisher.value_namespace = name_space;
+        mplsvpnvrfroutedistinguisher.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfSecIllegalLabelRcvThresh")
     {
         mplsvpnvrfsecillegallabelrcvthresh = value;
+        mplsvpnvrfsecillegallabelrcvthresh.value_namespace = name_space;
+        mplsvpnvrfsecillegallabelrcvthresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfSecIllegalLabelViolations")
     {
         mplsvpnvrfsecillegallabelviolations = value;
+        mplsvpnvrfsecillegallabelviolations.value_namespace = name_space;
+        mplsvpnvrfsecillegallabelviolations.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsVpnVrfName")
+    {
+        mplsvpnvrfname.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfActiveInterfaces")
+    {
+        mplsvpnvrfactiveinterfaces.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfAssociatedInterfaces")
+    {
+        mplsvpnvrfassociatedinterfaces.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfConfHighRouteThreshold")
+    {
+        mplsvpnvrfconfhighroutethreshold.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfConfLastChanged")
+    {
+        mplsvpnvrfconflastchanged.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfConfMaxRoutes")
+    {
+        mplsvpnvrfconfmaxroutes.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfConfMidRouteThreshold")
+    {
+        mplsvpnvrfconfmidroutethreshold.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfConfRowStatus")
+    {
+        mplsvpnvrfconfrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfConfStorageType")
+    {
+        mplsvpnvrfconfstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfCreationTime")
+    {
+        mplsvpnvrfcreationtime.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfDescription")
+    {
+        mplsvpnvrfdescription.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfOperStatus")
+    {
+        mplsvpnvrfoperstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfPerfCurrNumRoutes")
+    {
+        mplsvpnvrfperfcurrnumroutes.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfPerfRoutesAdded")
+    {
+        mplsvpnvrfperfroutesadded.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfPerfRoutesDeleted")
+    {
+        mplsvpnvrfperfroutesdeleted.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteDistinguisher")
+    {
+        mplsvpnvrfroutedistinguisher.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfSecIllegalLabelRcvThresh")
+    {
+        mplsvpnvrfsecillegallabelrcvthresh.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfSecIllegalLabelViolations")
+    {
+        mplsvpnvrfsecillegallabelviolations.yfilter = yfilter;
+    }
+}
+
+bool MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfName" || name == "mplsVpnVrfActiveInterfaces" || name == "mplsVpnVrfAssociatedInterfaces" || name == "mplsVpnVrfConfHighRouteThreshold" || name == "mplsVpnVrfConfLastChanged" || name == "mplsVpnVrfConfMaxRoutes" || name == "mplsVpnVrfConfMidRouteThreshold" || name == "mplsVpnVrfConfRowStatus" || name == "mplsVpnVrfConfStorageType" || name == "mplsVpnVrfCreationTime" || name == "mplsVpnVrfDescription" || name == "mplsVpnVrfOperStatus" || name == "mplsVpnVrfPerfCurrNumRoutes" || name == "mplsVpnVrfPerfRoutesAdded" || name == "mplsVpnVrfPerfRoutesDeleted" || name == "mplsVpnVrfRouteDistinguisher" || name == "mplsVpnVrfSecIllegalLabelRcvThresh" || name == "mplsVpnVrfSecIllegalLabelViolations")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargettable()
@@ -856,9 +1107,9 @@ MplsVpnMib::Mplsvpnvrfroutetargettable::~Mplsvpnvrfroutetargettable()
 
 bool MplsVpnMib::Mplsvpnvrfroutetargettable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfroutetargetentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfroutetargetentry.size(); index++)
     {
-        if(mplsvpnvrfroutetargetentry_[index]->has_data())
+        if(mplsvpnvrfroutetargetentry[index]->has_data())
             return true;
     }
     return false;
@@ -866,12 +1117,12 @@ bool MplsVpnMib::Mplsvpnvrfroutetargettable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfroutetargettable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfroutetargetentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfroutetargetentry.size(); index++)
     {
-        if(mplsvpnvrfroutetargetentry_[index]->has_operation())
+        if(mplsvpnvrfroutetargetentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrfroutetargettable::get_segment_path() const
@@ -908,7 +1159,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetargettable::get_child_by_nam
 {
     if(child_yang_name == "mplsVpnVrfRouteTargetEntry")
     {
-        for(auto const & c : mplsvpnvrfroutetargetentry_)
+        for(auto const & c : mplsvpnvrfroutetargetentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -918,7 +1169,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetargettable::get_child_by_nam
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry>();
         c->parent = this;
-        mplsvpnvrfroutetargetentry_.push_back(c);
+        mplsvpnvrfroutetargetentry.push_back(c);
         return c;
     }
 
@@ -928,7 +1179,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetargettable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfroutetargettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfroutetargetentry_)
+    for (auto const & c : mplsvpnvrfroutetargetentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -936,8 +1187,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfroutetarget
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrfroutetargettable::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrfroutetargettable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsVpnMib::Mplsvpnvrfroutetargettable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsVpnMib::Mplsvpnvrfroutetargettable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfRouteTargetEntry")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::Mplsvpnvrfroutetargetentry()
@@ -968,13 +1230,13 @@ bool MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::has_dat
 
 bool MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mplsvpnvrfname.operation)
-	|| is_set(mplsvpnvrfroutetargetindex.operation)
-	|| is_set(mplsvpnvrfroutetargettype.operation)
-	|| is_set(mplsvpnvrfroutetarget.operation)
-	|| is_set(mplsvpnvrfroutetargetdescr.operation)
-	|| is_set(mplsvpnvrfroutetargetrowstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mplsvpnvrfname.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutetargetindex.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutetargettype.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutetarget.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutetargetdescr.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutetargetrowstatus.yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::get_segment_path() const
@@ -1000,12 +1262,12 @@ const EntityPath MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargeten
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.operation)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
-    if (mplsvpnvrfroutetargetindex.is_set || is_set(mplsvpnvrfroutetargetindex.operation)) leaf_name_data.push_back(mplsvpnvrfroutetargetindex.get_name_leafdata());
-    if (mplsvpnvrfroutetargettype.is_set || is_set(mplsvpnvrfroutetargettype.operation)) leaf_name_data.push_back(mplsvpnvrfroutetargettype.get_name_leafdata());
-    if (mplsvpnvrfroutetarget.is_set || is_set(mplsvpnvrfroutetarget.operation)) leaf_name_data.push_back(mplsvpnvrfroutetarget.get_name_leafdata());
-    if (mplsvpnvrfroutetargetdescr.is_set || is_set(mplsvpnvrfroutetargetdescr.operation)) leaf_name_data.push_back(mplsvpnvrfroutetargetdescr.get_name_leafdata());
-    if (mplsvpnvrfroutetargetrowstatus.is_set || is_set(mplsvpnvrfroutetargetrowstatus.operation)) leaf_name_data.push_back(mplsvpnvrfroutetargetrowstatus.get_name_leafdata());
+    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.yfilter)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
+    if (mplsvpnvrfroutetargetindex.is_set || is_set(mplsvpnvrfroutetargetindex.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutetargetindex.get_name_leafdata());
+    if (mplsvpnvrfroutetargettype.is_set || is_set(mplsvpnvrfroutetargettype.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutetargettype.get_name_leafdata());
+    if (mplsvpnvrfroutetarget.is_set || is_set(mplsvpnvrfroutetarget.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutetarget.get_name_leafdata());
+    if (mplsvpnvrfroutetargetdescr.is_set || is_set(mplsvpnvrfroutetargetdescr.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutetargetdescr.get_name_leafdata());
+    if (mplsvpnvrfroutetargetrowstatus.is_set || is_set(mplsvpnvrfroutetargetrowstatus.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutetargetrowstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1024,32 +1286,79 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfroutetarget
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsVpnVrfName")
     {
         mplsvpnvrfname = value;
+        mplsvpnvrfname.value_namespace = name_space;
+        mplsvpnvrfname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteTargetIndex")
     {
         mplsvpnvrfroutetargetindex = value;
+        mplsvpnvrfroutetargetindex.value_namespace = name_space;
+        mplsvpnvrfroutetargetindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteTargetType")
     {
         mplsvpnvrfroutetargettype = value;
+        mplsvpnvrfroutetargettype.value_namespace = name_space;
+        mplsvpnvrfroutetargettype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteTarget")
     {
         mplsvpnvrfroutetarget = value;
+        mplsvpnvrfroutetarget.value_namespace = name_space;
+        mplsvpnvrfroutetarget.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteTargetDescr")
     {
         mplsvpnvrfroutetargetdescr = value;
+        mplsvpnvrfroutetargetdescr.value_namespace = name_space;
+        mplsvpnvrfroutetargetdescr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteTargetRowStatus")
     {
         mplsvpnvrfroutetargetrowstatus = value;
+        mplsvpnvrfroutetargetrowstatus.value_namespace = name_space;
+        mplsvpnvrfroutetargetrowstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsVpnVrfName")
+    {
+        mplsvpnvrfname.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteTargetIndex")
+    {
+        mplsvpnvrfroutetargetindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteTargetType")
+    {
+        mplsvpnvrfroutetargettype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteTarget")
+    {
+        mplsvpnvrfroutetarget.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteTargetDescr")
+    {
+        mplsvpnvrfroutetargetdescr.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteTargetRowStatus")
+    {
+        mplsvpnvrfroutetargetrowstatus.yfilter = yfilter;
+    }
+}
+
+bool MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfName" || name == "mplsVpnVrfRouteTargetIndex" || name == "mplsVpnVrfRouteTargetType" || name == "mplsVpnVrfRouteTarget" || name == "mplsVpnVrfRouteTargetDescr" || name == "mplsVpnVrfRouteTargetRowStatus")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrtable()
@@ -1063,9 +1372,9 @@ MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::~Mplsvpnvrfbgpnbraddrtable()
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfbgpnbraddrentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfbgpnbraddrentry.size(); index++)
     {
-        if(mplsvpnvrfbgpnbraddrentry_[index]->has_data())
+        if(mplsvpnvrfbgpnbraddrentry[index]->has_data())
             return true;
     }
     return false;
@@ -1073,12 +1382,12 @@ bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfbgpnbraddrentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfbgpnbraddrentry.size(); index++)
     {
-        if(mplsvpnvrfbgpnbraddrentry_[index]->has_operation())
+        if(mplsvpnvrfbgpnbraddrentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_segment_path() const
@@ -1115,7 +1424,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_child_by_name
 {
     if(child_yang_name == "mplsVpnVrfBgpNbrAddrEntry")
     {
-        for(auto const & c : mplsvpnvrfbgpnbraddrentry_)
+        for(auto const & c : mplsvpnvrfbgpnbraddrentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1125,7 +1434,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_child_by_name
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry>();
         c->parent = this;
-        mplsvpnvrfbgpnbraddrentry_.push_back(c);
+        mplsvpnvrfbgpnbraddrentry.push_back(c);
         return c;
     }
 
@@ -1135,7 +1444,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfbgpnbraddrentry_)
+    for (auto const & c : mplsvpnvrfbgpnbraddrentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1143,8 +1452,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfbgpnbraddrt
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfBgpNbrAddrEntry")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::Mplsvpnvrfbgpnbraddrentry()
@@ -1179,15 +1499,15 @@ bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::has_data(
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mplsvpnvrfname.operation)
-	|| is_set(mplsvpninterfaceconfindex.operation)
-	|| is_set(mplsvpnvrfbgpnbrindex.operation)
-	|| is_set(mplsvpnvrfbgpnbraddr.operation)
-	|| is_set(mplsvpnvrfbgpnbrrole.operation)
-	|| is_set(mplsvpnvrfbgpnbrrowstatus.operation)
-	|| is_set(mplsvpnvrfbgpnbrstoragetype.operation)
-	|| is_set(mplsvpnvrfbgpnbrtype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mplsvpnvrfname.yfilter)
+	|| ydk::is_set(mplsvpninterfaceconfindex.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgpnbrindex.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgpnbraddr.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgpnbrrole.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgpnbrrowstatus.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgpnbrstoragetype.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgpnbrtype.yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::get_segment_path() const
@@ -1213,14 +1533,14 @@ const EntityPath MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.operation)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
-    if (mplsvpninterfaceconfindex.is_set || is_set(mplsvpninterfaceconfindex.operation)) leaf_name_data.push_back(mplsvpninterfaceconfindex.get_name_leafdata());
-    if (mplsvpnvrfbgpnbrindex.is_set || is_set(mplsvpnvrfbgpnbrindex.operation)) leaf_name_data.push_back(mplsvpnvrfbgpnbrindex.get_name_leafdata());
-    if (mplsvpnvrfbgpnbraddr.is_set || is_set(mplsvpnvrfbgpnbraddr.operation)) leaf_name_data.push_back(mplsvpnvrfbgpnbraddr.get_name_leafdata());
-    if (mplsvpnvrfbgpnbrrole.is_set || is_set(mplsvpnvrfbgpnbrrole.operation)) leaf_name_data.push_back(mplsvpnvrfbgpnbrrole.get_name_leafdata());
-    if (mplsvpnvrfbgpnbrrowstatus.is_set || is_set(mplsvpnvrfbgpnbrrowstatus.operation)) leaf_name_data.push_back(mplsvpnvrfbgpnbrrowstatus.get_name_leafdata());
-    if (mplsvpnvrfbgpnbrstoragetype.is_set || is_set(mplsvpnvrfbgpnbrstoragetype.operation)) leaf_name_data.push_back(mplsvpnvrfbgpnbrstoragetype.get_name_leafdata());
-    if (mplsvpnvrfbgpnbrtype.is_set || is_set(mplsvpnvrfbgpnbrtype.operation)) leaf_name_data.push_back(mplsvpnvrfbgpnbrtype.get_name_leafdata());
+    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.yfilter)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
+    if (mplsvpninterfaceconfindex.is_set || is_set(mplsvpninterfaceconfindex.yfilter)) leaf_name_data.push_back(mplsvpninterfaceconfindex.get_name_leafdata());
+    if (mplsvpnvrfbgpnbrindex.is_set || is_set(mplsvpnvrfbgpnbrindex.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgpnbrindex.get_name_leafdata());
+    if (mplsvpnvrfbgpnbraddr.is_set || is_set(mplsvpnvrfbgpnbraddr.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgpnbraddr.get_name_leafdata());
+    if (mplsvpnvrfbgpnbrrole.is_set || is_set(mplsvpnvrfbgpnbrrole.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgpnbrrole.get_name_leafdata());
+    if (mplsvpnvrfbgpnbrrowstatus.is_set || is_set(mplsvpnvrfbgpnbrrowstatus.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgpnbrrowstatus.get_name_leafdata());
+    if (mplsvpnvrfbgpnbrstoragetype.is_set || is_set(mplsvpnvrfbgpnbrstoragetype.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgpnbrstoragetype.get_name_leafdata());
+    if (mplsvpnvrfbgpnbrtype.is_set || is_set(mplsvpnvrfbgpnbrtype.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgpnbrtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1239,40 +1559,99 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfbgpnbraddrt
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsVpnVrfName")
     {
         mplsvpnvrfname = value;
+        mplsvpnvrfname.value_namespace = name_space;
+        mplsvpnvrfname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnInterfaceConfIndex")
     {
         mplsvpninterfaceconfindex = value;
+        mplsvpninterfaceconfindex.value_namespace = name_space;
+        mplsvpninterfaceconfindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpNbrIndex")
     {
         mplsvpnvrfbgpnbrindex = value;
+        mplsvpnvrfbgpnbrindex.value_namespace = name_space;
+        mplsvpnvrfbgpnbrindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpNbrAddr")
     {
         mplsvpnvrfbgpnbraddr = value;
+        mplsvpnvrfbgpnbraddr.value_namespace = name_space;
+        mplsvpnvrfbgpnbraddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpNbrRole")
     {
         mplsvpnvrfbgpnbrrole = value;
+        mplsvpnvrfbgpnbrrole.value_namespace = name_space;
+        mplsvpnvrfbgpnbrrole.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpNbrRowStatus")
     {
         mplsvpnvrfbgpnbrrowstatus = value;
+        mplsvpnvrfbgpnbrrowstatus.value_namespace = name_space;
+        mplsvpnvrfbgpnbrrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpNbrStorageType")
     {
         mplsvpnvrfbgpnbrstoragetype = value;
+        mplsvpnvrfbgpnbrstoragetype.value_namespace = name_space;
+        mplsvpnvrfbgpnbrstoragetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpNbrType")
     {
         mplsvpnvrfbgpnbrtype = value;
+        mplsvpnvrfbgpnbrtype.value_namespace = name_space;
+        mplsvpnvrfbgpnbrtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsVpnVrfName")
+    {
+        mplsvpnvrfname.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnInterfaceConfIndex")
+    {
+        mplsvpninterfaceconfindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpNbrIndex")
+    {
+        mplsvpnvrfbgpnbrindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpNbrAddr")
+    {
+        mplsvpnvrfbgpnbraddr.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpNbrRole")
+    {
+        mplsvpnvrfbgpnbrrole.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpNbrRowStatus")
+    {
+        mplsvpnvrfbgpnbrrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpNbrStorageType")
+    {
+        mplsvpnvrfbgpnbrstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpNbrType")
+    {
+        mplsvpnvrfbgpnbrtype.yfilter = yfilter;
+    }
+}
+
+bool MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfName" || name == "mplsVpnInterfaceConfIndex" || name == "mplsVpnVrfBgpNbrIndex" || name == "mplsVpnVrfBgpNbrAddr" || name == "mplsVpnVrfBgpNbrRole" || name == "mplsVpnVrfBgpNbrRowStatus" || name == "mplsVpnVrfBgpNbrStorageType" || name == "mplsVpnVrfBgpNbrType")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixtable()
@@ -1286,9 +1665,9 @@ MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::~Mplsvpnvrfbgpnbrprefixtable()
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfbgpnbrprefixentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfbgpnbrprefixentry.size(); index++)
     {
-        if(mplsvpnvrfbgpnbrprefixentry_[index]->has_data())
+        if(mplsvpnvrfbgpnbrprefixentry[index]->has_data())
             return true;
     }
     return false;
@@ -1296,12 +1675,12 @@ bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfbgpnbrprefixentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfbgpnbrprefixentry.size(); index++)
     {
-        if(mplsvpnvrfbgpnbrprefixentry_[index]->has_operation())
+        if(mplsvpnvrfbgpnbrprefixentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_segment_path() const
@@ -1338,7 +1717,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_child_by_na
 {
     if(child_yang_name == "mplsVpnVrfBgpNbrPrefixEntry")
     {
-        for(auto const & c : mplsvpnvrfbgpnbrprefixentry_)
+        for(auto const & c : mplsvpnvrfbgpnbrprefixentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1348,7 +1727,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_child_by_na
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry>();
         c->parent = this;
-        mplsvpnvrfbgpnbrprefixentry_.push_back(c);
+        mplsvpnvrfbgpnbrprefixentry.push_back(c);
         return c;
     }
 
@@ -1358,7 +1737,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfbgpnbrprefixentry_)
+    for (auto const & c : mplsvpnvrfbgpnbrprefixentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1366,8 +1745,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfbgpnbrprefi
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfBgpNbrPrefixEntry")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgpnbrprefixentry()
@@ -1416,22 +1806,22 @@ bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::has_d
 
 bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mplsvpnvrfname.operation)
-	|| is_set(mplsvpnvrfbgppathattripaddrprefix.operation)
-	|| is_set(mplsvpnvrfbgppathattripaddrprefixlen.operation)
-	|| is_set(mplsvpnvrfbgppathattrpeer.operation)
-	|| is_set(mplsvpnvrfbgppathattraggregatoraddr.operation)
-	|| is_set(mplsvpnvrfbgppathattraggregatoras.operation)
-	|| is_set(mplsvpnvrfbgppathattraspathsegment.operation)
-	|| is_set(mplsvpnvrfbgppathattratomicaggregate.operation)
-	|| is_set(mplsvpnvrfbgppathattrbest.operation)
-	|| is_set(mplsvpnvrfbgppathattrcalclocalpref.operation)
-	|| is_set(mplsvpnvrfbgppathattrlocalpref.operation)
-	|| is_set(mplsvpnvrfbgppathattrmultiexitdisc.operation)
-	|| is_set(mplsvpnvrfbgppathattrnexthop.operation)
-	|| is_set(mplsvpnvrfbgppathattrorigin.operation)
-	|| is_set(mplsvpnvrfbgppathattrunknown.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mplsvpnvrfname.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattripaddrprefix.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattripaddrprefixlen.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattrpeer.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattraggregatoraddr.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattraggregatoras.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattraspathsegment.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattratomicaggregate.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattrbest.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattrcalclocalpref.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattrlocalpref.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattrmultiexitdisc.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattrnexthop.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattrorigin.yfilter)
+	|| ydk::is_set(mplsvpnvrfbgppathattrunknown.yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::get_segment_path() const
@@ -1457,21 +1847,21 @@ const EntityPath MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefix
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.operation)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
-    if (mplsvpnvrfbgppathattripaddrprefix.is_set || is_set(mplsvpnvrfbgppathattripaddrprefix.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattripaddrprefix.get_name_leafdata());
-    if (mplsvpnvrfbgppathattripaddrprefixlen.is_set || is_set(mplsvpnvrfbgppathattripaddrprefixlen.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattripaddrprefixlen.get_name_leafdata());
-    if (mplsvpnvrfbgppathattrpeer.is_set || is_set(mplsvpnvrfbgppathattrpeer.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattrpeer.get_name_leafdata());
-    if (mplsvpnvrfbgppathattraggregatoraddr.is_set || is_set(mplsvpnvrfbgppathattraggregatoraddr.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattraggregatoraddr.get_name_leafdata());
-    if (mplsvpnvrfbgppathattraggregatoras.is_set || is_set(mplsvpnvrfbgppathattraggregatoras.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattraggregatoras.get_name_leafdata());
-    if (mplsvpnvrfbgppathattraspathsegment.is_set || is_set(mplsvpnvrfbgppathattraspathsegment.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattraspathsegment.get_name_leafdata());
-    if (mplsvpnvrfbgppathattratomicaggregate.is_set || is_set(mplsvpnvrfbgppathattratomicaggregate.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattratomicaggregate.get_name_leafdata());
-    if (mplsvpnvrfbgppathattrbest.is_set || is_set(mplsvpnvrfbgppathattrbest.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattrbest.get_name_leafdata());
-    if (mplsvpnvrfbgppathattrcalclocalpref.is_set || is_set(mplsvpnvrfbgppathattrcalclocalpref.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattrcalclocalpref.get_name_leafdata());
-    if (mplsvpnvrfbgppathattrlocalpref.is_set || is_set(mplsvpnvrfbgppathattrlocalpref.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattrlocalpref.get_name_leafdata());
-    if (mplsvpnvrfbgppathattrmultiexitdisc.is_set || is_set(mplsvpnvrfbgppathattrmultiexitdisc.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattrmultiexitdisc.get_name_leafdata());
-    if (mplsvpnvrfbgppathattrnexthop.is_set || is_set(mplsvpnvrfbgppathattrnexthop.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattrnexthop.get_name_leafdata());
-    if (mplsvpnvrfbgppathattrorigin.is_set || is_set(mplsvpnvrfbgppathattrorigin.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattrorigin.get_name_leafdata());
-    if (mplsvpnvrfbgppathattrunknown.is_set || is_set(mplsvpnvrfbgppathattrunknown.operation)) leaf_name_data.push_back(mplsvpnvrfbgppathattrunknown.get_name_leafdata());
+    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.yfilter)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
+    if (mplsvpnvrfbgppathattripaddrprefix.is_set || is_set(mplsvpnvrfbgppathattripaddrprefix.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattripaddrprefix.get_name_leafdata());
+    if (mplsvpnvrfbgppathattripaddrprefixlen.is_set || is_set(mplsvpnvrfbgppathattripaddrprefixlen.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattripaddrprefixlen.get_name_leafdata());
+    if (mplsvpnvrfbgppathattrpeer.is_set || is_set(mplsvpnvrfbgppathattrpeer.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattrpeer.get_name_leafdata());
+    if (mplsvpnvrfbgppathattraggregatoraddr.is_set || is_set(mplsvpnvrfbgppathattraggregatoraddr.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattraggregatoraddr.get_name_leafdata());
+    if (mplsvpnvrfbgppathattraggregatoras.is_set || is_set(mplsvpnvrfbgppathattraggregatoras.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattraggregatoras.get_name_leafdata());
+    if (mplsvpnvrfbgppathattraspathsegment.is_set || is_set(mplsvpnvrfbgppathattraspathsegment.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattraspathsegment.get_name_leafdata());
+    if (mplsvpnvrfbgppathattratomicaggregate.is_set || is_set(mplsvpnvrfbgppathattratomicaggregate.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattratomicaggregate.get_name_leafdata());
+    if (mplsvpnvrfbgppathattrbest.is_set || is_set(mplsvpnvrfbgppathattrbest.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattrbest.get_name_leafdata());
+    if (mplsvpnvrfbgppathattrcalclocalpref.is_set || is_set(mplsvpnvrfbgppathattrcalclocalpref.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattrcalclocalpref.get_name_leafdata());
+    if (mplsvpnvrfbgppathattrlocalpref.is_set || is_set(mplsvpnvrfbgppathattrlocalpref.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattrlocalpref.get_name_leafdata());
+    if (mplsvpnvrfbgppathattrmultiexitdisc.is_set || is_set(mplsvpnvrfbgppathattrmultiexitdisc.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattrmultiexitdisc.get_name_leafdata());
+    if (mplsvpnvrfbgppathattrnexthop.is_set || is_set(mplsvpnvrfbgppathattrnexthop.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattrnexthop.get_name_leafdata());
+    if (mplsvpnvrfbgppathattrorigin.is_set || is_set(mplsvpnvrfbgppathattrorigin.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattrorigin.get_name_leafdata());
+    if (mplsvpnvrfbgppathattrunknown.is_set || is_set(mplsvpnvrfbgppathattrunknown.yfilter)) leaf_name_data.push_back(mplsvpnvrfbgppathattrunknown.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1490,68 +1880,169 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfbgpnbrprefi
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsVpnVrfName")
     {
         mplsvpnvrfname = value;
+        mplsvpnvrfname.value_namespace = name_space;
+        mplsvpnvrfname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrIpAddrPrefix")
     {
         mplsvpnvrfbgppathattripaddrprefix = value;
+        mplsvpnvrfbgppathattripaddrprefix.value_namespace = name_space;
+        mplsvpnvrfbgppathattripaddrprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrIpAddrPrefixLen")
     {
         mplsvpnvrfbgppathattripaddrprefixlen = value;
+        mplsvpnvrfbgppathattripaddrprefixlen.value_namespace = name_space;
+        mplsvpnvrfbgppathattripaddrprefixlen.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrPeer")
     {
         mplsvpnvrfbgppathattrpeer = value;
+        mplsvpnvrfbgppathattrpeer.value_namespace = name_space;
+        mplsvpnvrfbgppathattrpeer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrAggregatorAddr")
     {
         mplsvpnvrfbgppathattraggregatoraddr = value;
+        mplsvpnvrfbgppathattraggregatoraddr.value_namespace = name_space;
+        mplsvpnvrfbgppathattraggregatoraddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrAggregatorAS")
     {
         mplsvpnvrfbgppathattraggregatoras = value;
+        mplsvpnvrfbgppathattraggregatoras.value_namespace = name_space;
+        mplsvpnvrfbgppathattraggregatoras.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrASPathSegment")
     {
         mplsvpnvrfbgppathattraspathsegment = value;
+        mplsvpnvrfbgppathattraspathsegment.value_namespace = name_space;
+        mplsvpnvrfbgppathattraspathsegment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrAtomicAggregate")
     {
         mplsvpnvrfbgppathattratomicaggregate = value;
+        mplsvpnvrfbgppathattratomicaggregate.value_namespace = name_space;
+        mplsvpnvrfbgppathattratomicaggregate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrBest")
     {
         mplsvpnvrfbgppathattrbest = value;
+        mplsvpnvrfbgppathattrbest.value_namespace = name_space;
+        mplsvpnvrfbgppathattrbest.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrCalcLocalPref")
     {
         mplsvpnvrfbgppathattrcalclocalpref = value;
+        mplsvpnvrfbgppathattrcalclocalpref.value_namespace = name_space;
+        mplsvpnvrfbgppathattrcalclocalpref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrLocalPref")
     {
         mplsvpnvrfbgppathattrlocalpref = value;
+        mplsvpnvrfbgppathattrlocalpref.value_namespace = name_space;
+        mplsvpnvrfbgppathattrlocalpref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrMultiExitDisc")
     {
         mplsvpnvrfbgppathattrmultiexitdisc = value;
+        mplsvpnvrfbgppathattrmultiexitdisc.value_namespace = name_space;
+        mplsvpnvrfbgppathattrmultiexitdisc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrNextHop")
     {
         mplsvpnvrfbgppathattrnexthop = value;
+        mplsvpnvrfbgppathattrnexthop.value_namespace = name_space;
+        mplsvpnvrfbgppathattrnexthop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrOrigin")
     {
         mplsvpnvrfbgppathattrorigin = value;
+        mplsvpnvrfbgppathattrorigin.value_namespace = name_space;
+        mplsvpnvrfbgppathattrorigin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfBgpPathAttrUnknown")
     {
         mplsvpnvrfbgppathattrunknown = value;
+        mplsvpnvrfbgppathattrunknown.value_namespace = name_space;
+        mplsvpnvrfbgppathattrunknown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsVpnVrfName")
+    {
+        mplsvpnvrfname.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrIpAddrPrefix")
+    {
+        mplsvpnvrfbgppathattripaddrprefix.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrIpAddrPrefixLen")
+    {
+        mplsvpnvrfbgppathattripaddrprefixlen.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrPeer")
+    {
+        mplsvpnvrfbgppathattrpeer.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrAggregatorAddr")
+    {
+        mplsvpnvrfbgppathattraggregatoraddr.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrAggregatorAS")
+    {
+        mplsvpnvrfbgppathattraggregatoras.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrASPathSegment")
+    {
+        mplsvpnvrfbgppathattraspathsegment.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrAtomicAggregate")
+    {
+        mplsvpnvrfbgppathattratomicaggregate.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrBest")
+    {
+        mplsvpnvrfbgppathattrbest.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrCalcLocalPref")
+    {
+        mplsvpnvrfbgppathattrcalclocalpref.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrLocalPref")
+    {
+        mplsvpnvrfbgppathattrlocalpref.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrMultiExitDisc")
+    {
+        mplsvpnvrfbgppathattrmultiexitdisc.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrNextHop")
+    {
+        mplsvpnvrfbgppathattrnexthop.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrOrigin")
+    {
+        mplsvpnvrfbgppathattrorigin.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfBgpPathAttrUnknown")
+    {
+        mplsvpnvrfbgppathattrunknown.yfilter = yfilter;
+    }
+}
+
+bool MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfName" || name == "mplsVpnVrfBgpPathAttrIpAddrPrefix" || name == "mplsVpnVrfBgpPathAttrIpAddrPrefixLen" || name == "mplsVpnVrfBgpPathAttrPeer" || name == "mplsVpnVrfBgpPathAttrAggregatorAddr" || name == "mplsVpnVrfBgpPathAttrAggregatorAS" || name == "mplsVpnVrfBgpPathAttrASPathSegment" || name == "mplsVpnVrfBgpPathAttrAtomicAggregate" || name == "mplsVpnVrfBgpPathAttrBest" || name == "mplsVpnVrfBgpPathAttrCalcLocalPref" || name == "mplsVpnVrfBgpPathAttrLocalPref" || name == "mplsVpnVrfBgpPathAttrMultiExitDisc" || name == "mplsVpnVrfBgpPathAttrNextHop" || name == "mplsVpnVrfBgpPathAttrOrigin" || name == "mplsVpnVrfBgpPathAttrUnknown")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfroutetable()
@@ -1565,9 +2056,9 @@ MplsVpnMib::Mplsvpnvrfroutetable::~Mplsvpnvrfroutetable()
 
 bool MplsVpnMib::Mplsvpnvrfroutetable::has_data() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfrouteentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfrouteentry.size(); index++)
     {
-        if(mplsvpnvrfrouteentry_[index]->has_data())
+        if(mplsvpnvrfrouteentry[index]->has_data())
             return true;
     }
     return false;
@@ -1575,12 +2066,12 @@ bool MplsVpnMib::Mplsvpnvrfroutetable::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfroutetable::has_operation() const
 {
-    for (std::size_t index=0; index<mplsvpnvrfrouteentry_.size(); index++)
+    for (std::size_t index=0; index<mplsvpnvrfrouteentry.size(); index++)
     {
-        if(mplsvpnvrfrouteentry_[index]->has_operation())
+        if(mplsvpnvrfrouteentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrfroutetable::get_segment_path() const
@@ -1617,7 +2108,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetable::get_child_by_name(cons
 {
     if(child_yang_name == "mplsVpnVrfRouteEntry")
     {
-        for(auto const & c : mplsvpnvrfrouteentry_)
+        for(auto const & c : mplsvpnvrfrouteentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1627,7 +2118,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetable::get_child_by_name(cons
         }
         auto c = std::make_shared<MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry>();
         c->parent = this;
-        mplsvpnvrfrouteentry_.push_back(c);
+        mplsvpnvrfrouteentry.push_back(c);
         return c;
     }
 
@@ -1637,7 +2128,7 @@ std::shared_ptr<Entity> MplsVpnMib::Mplsvpnvrfroutetable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mplsvpnvrfrouteentry_)
+    for (auto const & c : mplsvpnvrfrouteentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1645,8 +2136,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfroutetable:
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrfroutetable::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrfroutetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsVpnMib::Mplsvpnvrfroutetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsVpnMib::Mplsvpnvrfroutetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfRouteEntry")
+        return true;
+    return false;
 }
 
 MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteentry()
@@ -1707,28 +2209,28 @@ bool MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::has_data() const
 
 bool MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mplsvpnvrfname.operation)
-	|| is_set(mplsvpnvrfroutedest.operation)
-	|| is_set(mplsvpnvrfroutemask.operation)
-	|| is_set(mplsvpnvrfroutetos.operation)
-	|| is_set(mplsvpnvrfroutenexthop.operation)
-	|| is_set(mplsvpnvrfrouteage.operation)
-	|| is_set(mplsvpnvrfroutedestaddrtype.operation)
-	|| is_set(mplsvpnvrfrouteifindex.operation)
-	|| is_set(mplsvpnvrfrouteinfo.operation)
-	|| is_set(mplsvpnvrfroutemaskaddrtype.operation)
-	|| is_set(mplsvpnvrfroutemetric1.operation)
-	|| is_set(mplsvpnvrfroutemetric2.operation)
-	|| is_set(mplsvpnvrfroutemetric3.operation)
-	|| is_set(mplsvpnvrfroutemetric4.operation)
-	|| is_set(mplsvpnvrfroutemetric5.operation)
-	|| is_set(mplsvpnvrfroutenexthopaddrtype.operation)
-	|| is_set(mplsvpnvrfroutenexthopas.operation)
-	|| is_set(mplsvpnvrfrouteproto.operation)
-	|| is_set(mplsvpnvrfrouterowstatus.operation)
-	|| is_set(mplsvpnvrfroutestoragetype.operation)
-	|| is_set(mplsvpnvrfroutetype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mplsvpnvrfname.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutedest.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutemask.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutetos.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutenexthop.yfilter)
+	|| ydk::is_set(mplsvpnvrfrouteage.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutedestaddrtype.yfilter)
+	|| ydk::is_set(mplsvpnvrfrouteifindex.yfilter)
+	|| ydk::is_set(mplsvpnvrfrouteinfo.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutemaskaddrtype.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutemetric1.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutemetric2.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutemetric3.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutemetric4.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutemetric5.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutenexthopaddrtype.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutenexthopas.yfilter)
+	|| ydk::is_set(mplsvpnvrfrouteproto.yfilter)
+	|| ydk::is_set(mplsvpnvrfrouterowstatus.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutestoragetype.yfilter)
+	|| ydk::is_set(mplsvpnvrfroutetype.yfilter);
 }
 
 std::string MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::get_segment_path() const
@@ -1754,27 +2256,27 @@ const EntityPath MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.operation)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
-    if (mplsvpnvrfroutedest.is_set || is_set(mplsvpnvrfroutedest.operation)) leaf_name_data.push_back(mplsvpnvrfroutedest.get_name_leafdata());
-    if (mplsvpnvrfroutemask.is_set || is_set(mplsvpnvrfroutemask.operation)) leaf_name_data.push_back(mplsvpnvrfroutemask.get_name_leafdata());
-    if (mplsvpnvrfroutetos.is_set || is_set(mplsvpnvrfroutetos.operation)) leaf_name_data.push_back(mplsvpnvrfroutetos.get_name_leafdata());
-    if (mplsvpnvrfroutenexthop.is_set || is_set(mplsvpnvrfroutenexthop.operation)) leaf_name_data.push_back(mplsvpnvrfroutenexthop.get_name_leafdata());
-    if (mplsvpnvrfrouteage.is_set || is_set(mplsvpnvrfrouteage.operation)) leaf_name_data.push_back(mplsvpnvrfrouteage.get_name_leafdata());
-    if (mplsvpnvrfroutedestaddrtype.is_set || is_set(mplsvpnvrfroutedestaddrtype.operation)) leaf_name_data.push_back(mplsvpnvrfroutedestaddrtype.get_name_leafdata());
-    if (mplsvpnvrfrouteifindex.is_set || is_set(mplsvpnvrfrouteifindex.operation)) leaf_name_data.push_back(mplsvpnvrfrouteifindex.get_name_leafdata());
-    if (mplsvpnvrfrouteinfo.is_set || is_set(mplsvpnvrfrouteinfo.operation)) leaf_name_data.push_back(mplsvpnvrfrouteinfo.get_name_leafdata());
-    if (mplsvpnvrfroutemaskaddrtype.is_set || is_set(mplsvpnvrfroutemaskaddrtype.operation)) leaf_name_data.push_back(mplsvpnvrfroutemaskaddrtype.get_name_leafdata());
-    if (mplsvpnvrfroutemetric1.is_set || is_set(mplsvpnvrfroutemetric1.operation)) leaf_name_data.push_back(mplsvpnvrfroutemetric1.get_name_leafdata());
-    if (mplsvpnvrfroutemetric2.is_set || is_set(mplsvpnvrfroutemetric2.operation)) leaf_name_data.push_back(mplsvpnvrfroutemetric2.get_name_leafdata());
-    if (mplsvpnvrfroutemetric3.is_set || is_set(mplsvpnvrfroutemetric3.operation)) leaf_name_data.push_back(mplsvpnvrfroutemetric3.get_name_leafdata());
-    if (mplsvpnvrfroutemetric4.is_set || is_set(mplsvpnvrfroutemetric4.operation)) leaf_name_data.push_back(mplsvpnvrfroutemetric4.get_name_leafdata());
-    if (mplsvpnvrfroutemetric5.is_set || is_set(mplsvpnvrfroutemetric5.operation)) leaf_name_data.push_back(mplsvpnvrfroutemetric5.get_name_leafdata());
-    if (mplsvpnvrfroutenexthopaddrtype.is_set || is_set(mplsvpnvrfroutenexthopaddrtype.operation)) leaf_name_data.push_back(mplsvpnvrfroutenexthopaddrtype.get_name_leafdata());
-    if (mplsvpnvrfroutenexthopas.is_set || is_set(mplsvpnvrfroutenexthopas.operation)) leaf_name_data.push_back(mplsvpnvrfroutenexthopas.get_name_leafdata());
-    if (mplsvpnvrfrouteproto.is_set || is_set(mplsvpnvrfrouteproto.operation)) leaf_name_data.push_back(mplsvpnvrfrouteproto.get_name_leafdata());
-    if (mplsvpnvrfrouterowstatus.is_set || is_set(mplsvpnvrfrouterowstatus.operation)) leaf_name_data.push_back(mplsvpnvrfrouterowstatus.get_name_leafdata());
-    if (mplsvpnvrfroutestoragetype.is_set || is_set(mplsvpnvrfroutestoragetype.operation)) leaf_name_data.push_back(mplsvpnvrfroutestoragetype.get_name_leafdata());
-    if (mplsvpnvrfroutetype.is_set || is_set(mplsvpnvrfroutetype.operation)) leaf_name_data.push_back(mplsvpnvrfroutetype.get_name_leafdata());
+    if (mplsvpnvrfname.is_set || is_set(mplsvpnvrfname.yfilter)) leaf_name_data.push_back(mplsvpnvrfname.get_name_leafdata());
+    if (mplsvpnvrfroutedest.is_set || is_set(mplsvpnvrfroutedest.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutedest.get_name_leafdata());
+    if (mplsvpnvrfroutemask.is_set || is_set(mplsvpnvrfroutemask.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutemask.get_name_leafdata());
+    if (mplsvpnvrfroutetos.is_set || is_set(mplsvpnvrfroutetos.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutetos.get_name_leafdata());
+    if (mplsvpnvrfroutenexthop.is_set || is_set(mplsvpnvrfroutenexthop.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutenexthop.get_name_leafdata());
+    if (mplsvpnvrfrouteage.is_set || is_set(mplsvpnvrfrouteage.yfilter)) leaf_name_data.push_back(mplsvpnvrfrouteage.get_name_leafdata());
+    if (mplsvpnvrfroutedestaddrtype.is_set || is_set(mplsvpnvrfroutedestaddrtype.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutedestaddrtype.get_name_leafdata());
+    if (mplsvpnvrfrouteifindex.is_set || is_set(mplsvpnvrfrouteifindex.yfilter)) leaf_name_data.push_back(mplsvpnvrfrouteifindex.get_name_leafdata());
+    if (mplsvpnvrfrouteinfo.is_set || is_set(mplsvpnvrfrouteinfo.yfilter)) leaf_name_data.push_back(mplsvpnvrfrouteinfo.get_name_leafdata());
+    if (mplsvpnvrfroutemaskaddrtype.is_set || is_set(mplsvpnvrfroutemaskaddrtype.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutemaskaddrtype.get_name_leafdata());
+    if (mplsvpnvrfroutemetric1.is_set || is_set(mplsvpnvrfroutemetric1.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutemetric1.get_name_leafdata());
+    if (mplsvpnvrfroutemetric2.is_set || is_set(mplsvpnvrfroutemetric2.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutemetric2.get_name_leafdata());
+    if (mplsvpnvrfroutemetric3.is_set || is_set(mplsvpnvrfroutemetric3.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutemetric3.get_name_leafdata());
+    if (mplsvpnvrfroutemetric4.is_set || is_set(mplsvpnvrfroutemetric4.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutemetric4.get_name_leafdata());
+    if (mplsvpnvrfroutemetric5.is_set || is_set(mplsvpnvrfroutemetric5.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutemetric5.get_name_leafdata());
+    if (mplsvpnvrfroutenexthopaddrtype.is_set || is_set(mplsvpnvrfroutenexthopaddrtype.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutenexthopaddrtype.get_name_leafdata());
+    if (mplsvpnvrfroutenexthopas.is_set || is_set(mplsvpnvrfroutenexthopas.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutenexthopas.get_name_leafdata());
+    if (mplsvpnvrfrouteproto.is_set || is_set(mplsvpnvrfrouteproto.yfilter)) leaf_name_data.push_back(mplsvpnvrfrouteproto.get_name_leafdata());
+    if (mplsvpnvrfrouterowstatus.is_set || is_set(mplsvpnvrfrouterowstatus.yfilter)) leaf_name_data.push_back(mplsvpnvrfrouterowstatus.get_name_leafdata());
+    if (mplsvpnvrfroutestoragetype.is_set || is_set(mplsvpnvrfroutestoragetype.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutestoragetype.get_name_leafdata());
+    if (mplsvpnvrfroutetype.is_set || is_set(mplsvpnvrfroutetype.yfilter)) leaf_name_data.push_back(mplsvpnvrfroutetype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1793,142 +2295,279 @@ std::map<std::string, std::shared_ptr<Entity>> MplsVpnMib::Mplsvpnvrfroutetable:
     return children;
 }
 
-void MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::set_value(const std::string & value_path, std::string value)
+void MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsVpnVrfName")
     {
         mplsvpnvrfname = value;
+        mplsvpnvrfname.value_namespace = name_space;
+        mplsvpnvrfname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteDest")
     {
         mplsvpnvrfroutedest = value;
+        mplsvpnvrfroutedest.value_namespace = name_space;
+        mplsvpnvrfroutedest.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteMask")
     {
         mplsvpnvrfroutemask = value;
+        mplsvpnvrfroutemask.value_namespace = name_space;
+        mplsvpnvrfroutemask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteTos")
     {
         mplsvpnvrfroutetos = value;
+        mplsvpnvrfroutetos.value_namespace = name_space;
+        mplsvpnvrfroutetos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteNextHop")
     {
         mplsvpnvrfroutenexthop = value;
+        mplsvpnvrfroutenexthop.value_namespace = name_space;
+        mplsvpnvrfroutenexthop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteAge")
     {
         mplsvpnvrfrouteage = value;
+        mplsvpnvrfrouteage.value_namespace = name_space;
+        mplsvpnvrfrouteage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteDestAddrType")
     {
         mplsvpnvrfroutedestaddrtype = value;
+        mplsvpnvrfroutedestaddrtype.value_namespace = name_space;
+        mplsvpnvrfroutedestaddrtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteIfIndex")
     {
         mplsvpnvrfrouteifindex = value;
+        mplsvpnvrfrouteifindex.value_namespace = name_space;
+        mplsvpnvrfrouteifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteInfo")
     {
         mplsvpnvrfrouteinfo = value;
+        mplsvpnvrfrouteinfo.value_namespace = name_space;
+        mplsvpnvrfrouteinfo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteMaskAddrType")
     {
         mplsvpnvrfroutemaskaddrtype = value;
+        mplsvpnvrfroutemaskaddrtype.value_namespace = name_space;
+        mplsvpnvrfroutemaskaddrtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteMetric1")
     {
         mplsvpnvrfroutemetric1 = value;
+        mplsvpnvrfroutemetric1.value_namespace = name_space;
+        mplsvpnvrfroutemetric1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteMetric2")
     {
         mplsvpnvrfroutemetric2 = value;
+        mplsvpnvrfroutemetric2.value_namespace = name_space;
+        mplsvpnvrfroutemetric2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteMetric3")
     {
         mplsvpnvrfroutemetric3 = value;
+        mplsvpnvrfroutemetric3.value_namespace = name_space;
+        mplsvpnvrfroutemetric3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteMetric4")
     {
         mplsvpnvrfroutemetric4 = value;
+        mplsvpnvrfroutemetric4.value_namespace = name_space;
+        mplsvpnvrfroutemetric4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteMetric5")
     {
         mplsvpnvrfroutemetric5 = value;
+        mplsvpnvrfroutemetric5.value_namespace = name_space;
+        mplsvpnvrfroutemetric5.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteNextHopAddrType")
     {
         mplsvpnvrfroutenexthopaddrtype = value;
+        mplsvpnvrfroutenexthopaddrtype.value_namespace = name_space;
+        mplsvpnvrfroutenexthopaddrtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteNextHopAS")
     {
         mplsvpnvrfroutenexthopas = value;
+        mplsvpnvrfroutenexthopas.value_namespace = name_space;
+        mplsvpnvrfroutenexthopas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteProto")
     {
         mplsvpnvrfrouteproto = value;
+        mplsvpnvrfrouteproto.value_namespace = name_space;
+        mplsvpnvrfrouteproto.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteRowStatus")
     {
         mplsvpnvrfrouterowstatus = value;
+        mplsvpnvrfrouterowstatus.value_namespace = name_space;
+        mplsvpnvrfrouterowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteStorageType")
     {
         mplsvpnvrfroutestoragetype = value;
+        mplsvpnvrfroutestoragetype.value_namespace = name_space;
+        mplsvpnvrfroutestoragetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mplsVpnVrfRouteType")
     {
         mplsvpnvrfroutetype = value;
+        mplsvpnvrfroutetype.value_namespace = name_space;
+        mplsvpnvrfroutetype.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::MplsvpninterfacelabeledgetypeEnum::providerEdge {1, "providerEdge"};
-const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::MplsvpninterfacelabeledgetypeEnum::customerEdge {2, "customerEdge"};
+void MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mplsVpnVrfName")
+    {
+        mplsvpnvrfname.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteDest")
+    {
+        mplsvpnvrfroutedest.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteMask")
+    {
+        mplsvpnvrfroutemask.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteTos")
+    {
+        mplsvpnvrfroutetos.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteNextHop")
+    {
+        mplsvpnvrfroutenexthop.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteAge")
+    {
+        mplsvpnvrfrouteage.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteDestAddrType")
+    {
+        mplsvpnvrfroutedestaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteIfIndex")
+    {
+        mplsvpnvrfrouteifindex.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteInfo")
+    {
+        mplsvpnvrfrouteinfo.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteMaskAddrType")
+    {
+        mplsvpnvrfroutemaskaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteMetric1")
+    {
+        mplsvpnvrfroutemetric1.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteMetric2")
+    {
+        mplsvpnvrfroutemetric2.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteMetric3")
+    {
+        mplsvpnvrfroutemetric3.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteMetric4")
+    {
+        mplsvpnvrfroutemetric4.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteMetric5")
+    {
+        mplsvpnvrfroutemetric5.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteNextHopAddrType")
+    {
+        mplsvpnvrfroutenexthopaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteNextHopAS")
+    {
+        mplsvpnvrfroutenexthopas.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteProto")
+    {
+        mplsvpnvrfrouteproto.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteRowStatus")
+    {
+        mplsvpnvrfrouterowstatus.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteStorageType")
+    {
+        mplsvpnvrfroutestoragetype.yfilter = yfilter;
+    }
+    if(value_path == "mplsVpnVrfRouteType")
+    {
+        mplsvpnvrfroutetype.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::MplsvpninterfacevpnclassificationEnum::carrierOfCarrier {1, "carrierOfCarrier"};
-const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::MplsvpninterfacevpnclassificationEnum::enterprise {2, "enterprise"};
-const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::MplsvpninterfacevpnclassificationEnum::interProvider {3, "interProvider"};
+bool MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mplsVpnVrfName" || name == "mplsVpnVrfRouteDest" || name == "mplsVpnVrfRouteMask" || name == "mplsVpnVrfRouteTos" || name == "mplsVpnVrfRouteNextHop" || name == "mplsVpnVrfRouteAge" || name == "mplsVpnVrfRouteDestAddrType" || name == "mplsVpnVrfRouteIfIndex" || name == "mplsVpnVrfRouteInfo" || name == "mplsVpnVrfRouteMaskAddrType" || name == "mplsVpnVrfRouteMetric1" || name == "mplsVpnVrfRouteMetric2" || name == "mplsVpnVrfRouteMetric3" || name == "mplsVpnVrfRouteMetric4" || name == "mplsVpnVrfRouteMetric5" || name == "mplsVpnVrfRouteNextHopAddrType" || name == "mplsVpnVrfRouteNextHopAS" || name == "mplsVpnVrfRouteProto" || name == "mplsVpnVrfRouteRowStatus" || name == "mplsVpnVrfRouteStorageType" || name == "mplsVpnVrfRouteType")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::MplsvpnvrfoperstatusEnum::up {1, "up"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::MplsvpnvrfoperstatusEnum::down {2, "down"};
+const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpninterfacelabeledgetype::providerEdge {1, "providerEdge"};
+const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpninterfacelabeledgetype::customerEdge {2, "customerEdge"};
 
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::MplsvpnvrfroutetargettypeEnum::import {1, "import"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::MplsvpnvrfroutetargettypeEnum::export_ {2, "export"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::MplsvpnvrfroutetargettypeEnum::both {3, "both"};
+const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpninterfacevpnclassification::carrierOfCarrier {1, "carrierOfCarrier"};
+const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpninterfacevpnclassification::enterprise {2, "enterprise"};
+const Enum::YLeaf MplsVpnMib::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::Mplsvpninterfacevpnclassification::interProvider {3, "interProvider"};
 
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::MplsvpnvrfbgpnbrroleEnum::ce {1, "ce"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::MplsvpnvrfbgpnbrroleEnum::pe {2, "pe"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::Mplsvpnvrfoperstatus::up {1, "up"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrftable::Mplsvpnvrfentry::Mplsvpnvrfoperstatus::down {2, "down"};
 
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::MplsvpnvrfbgppathattroriginEnum::igp {1, "igp"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::MplsvpnvrfbgppathattroriginEnum::egp {2, "egp"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::MplsvpnvrfbgppathattroriginEnum::incomplete {3, "incomplete"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::Mplsvpnvrfroutetargettype::import {1, "import"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::Mplsvpnvrfroutetargettype::export_ {2, "export"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::Mplsvpnvrfroutetargettype::both {3, "both"};
 
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::MplsvpnvrfbgppathattratomicaggregateEnum::lessSpecificRrouteNotSelected {1, "lessSpecificRrouteNotSelected"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::MplsvpnvrfbgppathattratomicaggregateEnum::lessSpecificRouteSelected {2, "lessSpecificRouteSelected"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::Mplsvpnvrfbgpnbrrole::ce {1, "ce"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::Mplsvpnvrfbgpnbrrole::pe {2, "pe"};
 
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::MplsvpnvrfbgppathattrbestEnum::false_ {1, "false"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::MplsvpnvrfbgppathattrbestEnum::true_ {2, "true"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattrorigin::igp {1, "igp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattrorigin::egp {2, "egp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattrorigin::incomplete {3, "incomplete"};
 
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfroutetypeEnum::other {1, "other"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfroutetypeEnum::reject {2, "reject"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfroutetypeEnum::local {3, "local"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfroutetypeEnum::remote {4, "remote"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattratomicaggregate::lessSpecificRrouteNotSelected {1, "lessSpecificRrouteNotSelected"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattratomicaggregate::lessSpecificRouteSelected {2, "lessSpecificRouteSelected"};
 
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::other {1, "other"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::local {2, "local"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::netmgmt {3, "netmgmt"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::icmp {4, "icmp"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::egp {5, "egp"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::ggp {6, "ggp"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::hello {7, "hello"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::rip {8, "rip"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::isIs {9, "isIs"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::esIs {10, "esIs"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::ciscoIgrp {11, "ciscoIgrp"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::bbnSpfIgp {12, "bbnSpfIgp"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::ospf {13, "ospf"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::bgp {14, "bgp"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::idpr {15, "idpr"};
-const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::MplsvpnvrfrouteprotoEnum::ciscoEigrp {16, "ciscoEigrp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattrbest::false_ {1, "false"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::Mplsvpnvrfbgppathattrbest::true_ {2, "true"};
+
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfroutetype::other {1, "other"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfroutetype::reject {2, "reject"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfroutetype::local {3, "local"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfroutetype::remote {4, "remote"};
+
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::other {1, "other"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::local {2, "local"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::netmgmt {3, "netmgmt"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::icmp {4, "icmp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::egp {5, "egp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::ggp {6, "ggp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::hello {7, "hello"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::rip {8, "rip"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::isIs {9, "isIs"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::esIs {10, "esIs"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::ciscoIgrp {11, "ciscoIgrp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::bbnSpfIgp {12, "bbnSpfIgp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::ospf {13, "ospf"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::bgp {14, "bgp"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::idpr {15, "idpr"};
+const Enum::YLeaf MplsVpnMib::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::Mplsvpnvrfrouteproto::ciscoEigrp {16, "ciscoEigrp"};
 
 
 }

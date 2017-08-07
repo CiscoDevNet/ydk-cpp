@@ -6,62 +6,64 @@
 #include "generated_entity_lookup.hpp"
 #include "EtherLike_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace EtherLike_MIB {
 
-Dot3ErroriniterrorIdentity::Dot3ErroriniterrorIdentity()
-     : Identity("EtherLike-MIB:dot3ErrorInitError")
+Dot3Errorloopbackerror::Dot3Errorloopbackerror()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3ErrorLoopbackError")
 {
 }
 
-Dot3ErroriniterrorIdentity::~Dot3ErroriniterrorIdentity()
+Dot3Errorloopbackerror::~Dot3Errorloopbackerror()
 {
 }
 
-Dot3TesttdrIdentity::Dot3TesttdrIdentity()
-     : Identity("EtherLike-MIB:dot3TestTdr")
+Dot3Erroriniterror::Dot3Erroriniterror()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3ErrorInitError")
 {
 }
 
-Dot3TesttdrIdentity::~Dot3TesttdrIdentity()
+Dot3Erroriniterror::~Dot3Erroriniterror()
 {
 }
 
-Dot3ErrorloopbackerrorIdentity::Dot3ErrorloopbackerrorIdentity()
-     : Identity("EtherLike-MIB:dot3ErrorLoopbackError")
+Dot3Testtdr::Dot3Testtdr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3TestTdr")
 {
 }
 
-Dot3ErrorloopbackerrorIdentity::~Dot3ErrorloopbackerrorIdentity()
+Dot3Testtdr::~Dot3Testtdr()
 {
 }
 
-Dot3TestloopbackIdentity::Dot3TestloopbackIdentity()
-     : Identity("EtherLike-MIB:dot3TestLoopBack")
+Dot3Testloopback::Dot3Testloopback()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3TestLoopBack")
 {
 }
 
-Dot3TestloopbackIdentity::~Dot3TestloopbackIdentity()
+Dot3Testloopback::~Dot3Testloopback()
 {
 }
 
 EtherlikeMib::EtherlikeMib()
     :
-    dot3colltable_(std::make_shared<EtherlikeMib::Dot3Colltable>())
-	,dot3controltable_(std::make_shared<EtherlikeMib::Dot3Controltable>())
-	,dot3hcstatstable_(std::make_shared<EtherlikeMib::Dot3Hcstatstable>())
-	,dot3pausetable_(std::make_shared<EtherlikeMib::Dot3Pausetable>())
-	,dot3statstable_(std::make_shared<EtherlikeMib::Dot3Statstable>())
+    dot3colltable(std::make_shared<EtherlikeMib::Dot3Colltable>())
+	,dot3controltable(std::make_shared<EtherlikeMib::Dot3Controltable>())
+	,dot3hcstatstable(std::make_shared<EtherlikeMib::Dot3Hcstatstable>())
+	,dot3pausetable(std::make_shared<EtherlikeMib::Dot3Pausetable>())
+	,dot3statstable(std::make_shared<EtherlikeMib::Dot3Statstable>())
 {
-    dot3colltable_->parent = this;
+    dot3colltable->parent = this;
 
-    dot3controltable_->parent = this;
+    dot3controltable->parent = this;
 
-    dot3hcstatstable_->parent = this;
+    dot3hcstatstable->parent = this;
 
-    dot3pausetable_->parent = this;
+    dot3pausetable->parent = this;
 
-    dot3statstable_->parent = this;
+    dot3statstable->parent = this;
 
     yang_name = "EtherLike-MIB"; yang_parent_name = "EtherLike-MIB";
 }
@@ -72,21 +74,21 @@ EtherlikeMib::~EtherlikeMib()
 
 bool EtherlikeMib::has_data() const
 {
-    return (dot3colltable_ !=  nullptr && dot3colltable_->has_data())
-	|| (dot3controltable_ !=  nullptr && dot3controltable_->has_data())
-	|| (dot3hcstatstable_ !=  nullptr && dot3hcstatstable_->has_data())
-	|| (dot3pausetable_ !=  nullptr && dot3pausetable_->has_data())
-	|| (dot3statstable_ !=  nullptr && dot3statstable_->has_data());
+    return (dot3colltable !=  nullptr && dot3colltable->has_data())
+	|| (dot3controltable !=  nullptr && dot3controltable->has_data())
+	|| (dot3hcstatstable !=  nullptr && dot3hcstatstable->has_data())
+	|| (dot3pausetable !=  nullptr && dot3pausetable->has_data())
+	|| (dot3statstable !=  nullptr && dot3statstable->has_data());
 }
 
 bool EtherlikeMib::has_operation() const
 {
-    return is_set(operation)
-	|| (dot3colltable_ !=  nullptr && dot3colltable_->has_operation())
-	|| (dot3controltable_ !=  nullptr && dot3controltable_->has_operation())
-	|| (dot3hcstatstable_ !=  nullptr && dot3hcstatstable_->has_operation())
-	|| (dot3pausetable_ !=  nullptr && dot3pausetable_->has_operation())
-	|| (dot3statstable_ !=  nullptr && dot3statstable_->has_operation());
+    return is_set(yfilter)
+	|| (dot3colltable !=  nullptr && dot3colltable->has_operation())
+	|| (dot3controltable !=  nullptr && dot3controltable->has_operation())
+	|| (dot3hcstatstable !=  nullptr && dot3hcstatstable->has_operation())
+	|| (dot3pausetable !=  nullptr && dot3pausetable->has_operation())
+	|| (dot3statstable !=  nullptr && dot3statstable->has_operation());
 }
 
 std::string EtherlikeMib::get_segment_path() const
@@ -120,47 +122,47 @@ std::shared_ptr<Entity> EtherlikeMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "dot3CollTable")
     {
-        if(dot3colltable_ == nullptr)
+        if(dot3colltable == nullptr)
         {
-            dot3colltable_ = std::make_shared<EtherlikeMib::Dot3Colltable>();
+            dot3colltable = std::make_shared<EtherlikeMib::Dot3Colltable>();
         }
-        return dot3colltable_;
+        return dot3colltable;
     }
 
     if(child_yang_name == "dot3ControlTable")
     {
-        if(dot3controltable_ == nullptr)
+        if(dot3controltable == nullptr)
         {
-            dot3controltable_ = std::make_shared<EtherlikeMib::Dot3Controltable>();
+            dot3controltable = std::make_shared<EtherlikeMib::Dot3Controltable>();
         }
-        return dot3controltable_;
+        return dot3controltable;
     }
 
     if(child_yang_name == "dot3HCStatsTable")
     {
-        if(dot3hcstatstable_ == nullptr)
+        if(dot3hcstatstable == nullptr)
         {
-            dot3hcstatstable_ = std::make_shared<EtherlikeMib::Dot3Hcstatstable>();
+            dot3hcstatstable = std::make_shared<EtherlikeMib::Dot3Hcstatstable>();
         }
-        return dot3hcstatstable_;
+        return dot3hcstatstable;
     }
 
     if(child_yang_name == "dot3PauseTable")
     {
-        if(dot3pausetable_ == nullptr)
+        if(dot3pausetable == nullptr)
         {
-            dot3pausetable_ = std::make_shared<EtherlikeMib::Dot3Pausetable>();
+            dot3pausetable = std::make_shared<EtherlikeMib::Dot3Pausetable>();
         }
-        return dot3pausetable_;
+        return dot3pausetable;
     }
 
     if(child_yang_name == "dot3StatsTable")
     {
-        if(dot3statstable_ == nullptr)
+        if(dot3statstable == nullptr)
         {
-            dot3statstable_ = std::make_shared<EtherlikeMib::Dot3Statstable>();
+            dot3statstable = std::make_shared<EtherlikeMib::Dot3Statstable>();
         }
-        return dot3statstable_;
+        return dot3statstable;
     }
 
     return nullptr;
@@ -169,35 +171,39 @@ std::shared_ptr<Entity> EtherlikeMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dot3colltable_ != nullptr)
+    if(dot3colltable != nullptr)
     {
-        children["dot3CollTable"] = dot3colltable_;
+        children["dot3CollTable"] = dot3colltable;
     }
 
-    if(dot3controltable_ != nullptr)
+    if(dot3controltable != nullptr)
     {
-        children["dot3ControlTable"] = dot3controltable_;
+        children["dot3ControlTable"] = dot3controltable;
     }
 
-    if(dot3hcstatstable_ != nullptr)
+    if(dot3hcstatstable != nullptr)
     {
-        children["dot3HCStatsTable"] = dot3hcstatstable_;
+        children["dot3HCStatsTable"] = dot3hcstatstable;
     }
 
-    if(dot3pausetable_ != nullptr)
+    if(dot3pausetable != nullptr)
     {
-        children["dot3PauseTable"] = dot3pausetable_;
+        children["dot3PauseTable"] = dot3pausetable;
     }
 
-    if(dot3statstable_ != nullptr)
+    if(dot3statstable != nullptr)
     {
-        children["dot3StatsTable"] = dot3statstable_;
+        children["dot3StatsTable"] = dot3statstable;
     }
 
     return children;
 }
 
-void EtherlikeMib::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EtherlikeMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -221,6 +227,18 @@ augment_capabilities_function EtherlikeMib::get_augment_capabilities_function() 
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> EtherlikeMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool EtherlikeMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3CollTable" || name == "dot3ControlTable" || name == "dot3HCStatsTable" || name == "dot3PauseTable" || name == "dot3StatsTable")
+        return true;
+    return false;
+}
+
 EtherlikeMib::Dot3Statstable::Dot3Statstable()
 {
     yang_name = "dot3StatsTable"; yang_parent_name = "EtherLike-MIB";
@@ -232,9 +250,9 @@ EtherlikeMib::Dot3Statstable::~Dot3Statstable()
 
 bool EtherlikeMib::Dot3Statstable::has_data() const
 {
-    for (std::size_t index=0; index<dot3statsentry_.size(); index++)
+    for (std::size_t index=0; index<dot3statsentry.size(); index++)
     {
-        if(dot3statsentry_[index]->has_data())
+        if(dot3statsentry[index]->has_data())
             return true;
     }
     return false;
@@ -242,12 +260,12 @@ bool EtherlikeMib::Dot3Statstable::has_data() const
 
 bool EtherlikeMib::Dot3Statstable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3statsentry_.size(); index++)
+    for (std::size_t index=0; index<dot3statsentry.size(); index++)
     {
-        if(dot3statsentry_[index]->has_operation())
+        if(dot3statsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherlikeMib::Dot3Statstable::get_segment_path() const
@@ -284,7 +302,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Statstable::get_child_by_name(const st
 {
     if(child_yang_name == "dot3StatsEntry")
     {
-        for(auto const & c : dot3statsentry_)
+        for(auto const & c : dot3statsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -294,7 +312,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Statstable::get_child_by_name(const st
         }
         auto c = std::make_shared<EtherlikeMib::Dot3Statstable::Dot3Statsentry>();
         c->parent = this;
-        dot3statsentry_.push_back(c);
+        dot3statsentry.push_back(c);
         return c;
     }
 
@@ -304,7 +322,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Statstable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Statstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot3statsentry_)
+    for (auto const & c : dot3statsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -312,8 +330,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Statstable::get
     return children;
 }
 
-void EtherlikeMib::Dot3Statstable::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Statstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherlikeMib::Dot3Statstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherlikeMib::Dot3Statstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3StatsEntry")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3Statsentry()
@@ -368,25 +397,25 @@ bool EtherlikeMib::Dot3Statstable::Dot3Statsentry::has_data() const
 
 bool EtherlikeMib::Dot3Statstable::Dot3Statsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot3statsindex.operation)
-	|| is_set(dot3statsalignmenterrors.operation)
-	|| is_set(dot3statscarriersenseerrors.operation)
-	|| is_set(dot3statsdeferredtransmissions.operation)
-	|| is_set(dot3statsduplexstatus.operation)
-	|| is_set(dot3statsetherchipset.operation)
-	|| is_set(dot3statsexcessivecollisions.operation)
-	|| is_set(dot3statsfcserrors.operation)
-	|| is_set(dot3statsframetoolongs.operation)
-	|| is_set(dot3statsinternalmacreceiveerrors.operation)
-	|| is_set(dot3statsinternalmactransmiterrors.operation)
-	|| is_set(dot3statslatecollisions.operation)
-	|| is_set(dot3statsmultiplecollisionframes.operation)
-	|| is_set(dot3statsratecontrolability.operation)
-	|| is_set(dot3statsratecontrolstatus.operation)
-	|| is_set(dot3statssinglecollisionframes.operation)
-	|| is_set(dot3statssqetesterrors.operation)
-	|| is_set(dot3statssymbolerrors.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dot3statsindex.yfilter)
+	|| ydk::is_set(dot3statsalignmenterrors.yfilter)
+	|| ydk::is_set(dot3statscarriersenseerrors.yfilter)
+	|| ydk::is_set(dot3statsdeferredtransmissions.yfilter)
+	|| ydk::is_set(dot3statsduplexstatus.yfilter)
+	|| ydk::is_set(dot3statsetherchipset.yfilter)
+	|| ydk::is_set(dot3statsexcessivecollisions.yfilter)
+	|| ydk::is_set(dot3statsfcserrors.yfilter)
+	|| ydk::is_set(dot3statsframetoolongs.yfilter)
+	|| ydk::is_set(dot3statsinternalmacreceiveerrors.yfilter)
+	|| ydk::is_set(dot3statsinternalmactransmiterrors.yfilter)
+	|| ydk::is_set(dot3statslatecollisions.yfilter)
+	|| ydk::is_set(dot3statsmultiplecollisionframes.yfilter)
+	|| ydk::is_set(dot3statsratecontrolability.yfilter)
+	|| ydk::is_set(dot3statsratecontrolstatus.yfilter)
+	|| ydk::is_set(dot3statssinglecollisionframes.yfilter)
+	|| ydk::is_set(dot3statssqetesterrors.yfilter)
+	|| ydk::is_set(dot3statssymbolerrors.yfilter);
 }
 
 std::string EtherlikeMib::Dot3Statstable::Dot3Statsentry::get_segment_path() const
@@ -412,24 +441,24 @@ const EntityPath EtherlikeMib::Dot3Statstable::Dot3Statsentry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot3statsindex.is_set || is_set(dot3statsindex.operation)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
-    if (dot3statsalignmenterrors.is_set || is_set(dot3statsalignmenterrors.operation)) leaf_name_data.push_back(dot3statsalignmenterrors.get_name_leafdata());
-    if (dot3statscarriersenseerrors.is_set || is_set(dot3statscarriersenseerrors.operation)) leaf_name_data.push_back(dot3statscarriersenseerrors.get_name_leafdata());
-    if (dot3statsdeferredtransmissions.is_set || is_set(dot3statsdeferredtransmissions.operation)) leaf_name_data.push_back(dot3statsdeferredtransmissions.get_name_leafdata());
-    if (dot3statsduplexstatus.is_set || is_set(dot3statsduplexstatus.operation)) leaf_name_data.push_back(dot3statsduplexstatus.get_name_leafdata());
-    if (dot3statsetherchipset.is_set || is_set(dot3statsetherchipset.operation)) leaf_name_data.push_back(dot3statsetherchipset.get_name_leafdata());
-    if (dot3statsexcessivecollisions.is_set || is_set(dot3statsexcessivecollisions.operation)) leaf_name_data.push_back(dot3statsexcessivecollisions.get_name_leafdata());
-    if (dot3statsfcserrors.is_set || is_set(dot3statsfcserrors.operation)) leaf_name_data.push_back(dot3statsfcserrors.get_name_leafdata());
-    if (dot3statsframetoolongs.is_set || is_set(dot3statsframetoolongs.operation)) leaf_name_data.push_back(dot3statsframetoolongs.get_name_leafdata());
-    if (dot3statsinternalmacreceiveerrors.is_set || is_set(dot3statsinternalmacreceiveerrors.operation)) leaf_name_data.push_back(dot3statsinternalmacreceiveerrors.get_name_leafdata());
-    if (dot3statsinternalmactransmiterrors.is_set || is_set(dot3statsinternalmactransmiterrors.operation)) leaf_name_data.push_back(dot3statsinternalmactransmiterrors.get_name_leafdata());
-    if (dot3statslatecollisions.is_set || is_set(dot3statslatecollisions.operation)) leaf_name_data.push_back(dot3statslatecollisions.get_name_leafdata());
-    if (dot3statsmultiplecollisionframes.is_set || is_set(dot3statsmultiplecollisionframes.operation)) leaf_name_data.push_back(dot3statsmultiplecollisionframes.get_name_leafdata());
-    if (dot3statsratecontrolability.is_set || is_set(dot3statsratecontrolability.operation)) leaf_name_data.push_back(dot3statsratecontrolability.get_name_leafdata());
-    if (dot3statsratecontrolstatus.is_set || is_set(dot3statsratecontrolstatus.operation)) leaf_name_data.push_back(dot3statsratecontrolstatus.get_name_leafdata());
-    if (dot3statssinglecollisionframes.is_set || is_set(dot3statssinglecollisionframes.operation)) leaf_name_data.push_back(dot3statssinglecollisionframes.get_name_leafdata());
-    if (dot3statssqetesterrors.is_set || is_set(dot3statssqetesterrors.operation)) leaf_name_data.push_back(dot3statssqetesterrors.get_name_leafdata());
-    if (dot3statssymbolerrors.is_set || is_set(dot3statssymbolerrors.operation)) leaf_name_data.push_back(dot3statssymbolerrors.get_name_leafdata());
+    if (dot3statsindex.is_set || is_set(dot3statsindex.yfilter)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
+    if (dot3statsalignmenterrors.is_set || is_set(dot3statsalignmenterrors.yfilter)) leaf_name_data.push_back(dot3statsalignmenterrors.get_name_leafdata());
+    if (dot3statscarriersenseerrors.is_set || is_set(dot3statscarriersenseerrors.yfilter)) leaf_name_data.push_back(dot3statscarriersenseerrors.get_name_leafdata());
+    if (dot3statsdeferredtransmissions.is_set || is_set(dot3statsdeferredtransmissions.yfilter)) leaf_name_data.push_back(dot3statsdeferredtransmissions.get_name_leafdata());
+    if (dot3statsduplexstatus.is_set || is_set(dot3statsduplexstatus.yfilter)) leaf_name_data.push_back(dot3statsduplexstatus.get_name_leafdata());
+    if (dot3statsetherchipset.is_set || is_set(dot3statsetherchipset.yfilter)) leaf_name_data.push_back(dot3statsetherchipset.get_name_leafdata());
+    if (dot3statsexcessivecollisions.is_set || is_set(dot3statsexcessivecollisions.yfilter)) leaf_name_data.push_back(dot3statsexcessivecollisions.get_name_leafdata());
+    if (dot3statsfcserrors.is_set || is_set(dot3statsfcserrors.yfilter)) leaf_name_data.push_back(dot3statsfcserrors.get_name_leafdata());
+    if (dot3statsframetoolongs.is_set || is_set(dot3statsframetoolongs.yfilter)) leaf_name_data.push_back(dot3statsframetoolongs.get_name_leafdata());
+    if (dot3statsinternalmacreceiveerrors.is_set || is_set(dot3statsinternalmacreceiveerrors.yfilter)) leaf_name_data.push_back(dot3statsinternalmacreceiveerrors.get_name_leafdata());
+    if (dot3statsinternalmactransmiterrors.is_set || is_set(dot3statsinternalmactransmiterrors.yfilter)) leaf_name_data.push_back(dot3statsinternalmactransmiterrors.get_name_leafdata());
+    if (dot3statslatecollisions.is_set || is_set(dot3statslatecollisions.yfilter)) leaf_name_data.push_back(dot3statslatecollisions.get_name_leafdata());
+    if (dot3statsmultiplecollisionframes.is_set || is_set(dot3statsmultiplecollisionframes.yfilter)) leaf_name_data.push_back(dot3statsmultiplecollisionframes.get_name_leafdata());
+    if (dot3statsratecontrolability.is_set || is_set(dot3statsratecontrolability.yfilter)) leaf_name_data.push_back(dot3statsratecontrolability.get_name_leafdata());
+    if (dot3statsratecontrolstatus.is_set || is_set(dot3statsratecontrolstatus.yfilter)) leaf_name_data.push_back(dot3statsratecontrolstatus.get_name_leafdata());
+    if (dot3statssinglecollisionframes.is_set || is_set(dot3statssinglecollisionframes.yfilter)) leaf_name_data.push_back(dot3statssinglecollisionframes.get_name_leafdata());
+    if (dot3statssqetesterrors.is_set || is_set(dot3statssqetesterrors.yfilter)) leaf_name_data.push_back(dot3statssqetesterrors.get_name_leafdata());
+    if (dot3statssymbolerrors.is_set || is_set(dot3statssymbolerrors.yfilter)) leaf_name_data.push_back(dot3statssymbolerrors.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -448,80 +477,199 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Statstable::Dot
     return children;
 }
 
-void EtherlikeMib::Dot3Statstable::Dot3Statsentry::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Statstable::Dot3Statsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
         dot3statsindex = value;
+        dot3statsindex.value_namespace = name_space;
+        dot3statsindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsAlignmentErrors")
     {
         dot3statsalignmenterrors = value;
+        dot3statsalignmenterrors.value_namespace = name_space;
+        dot3statsalignmenterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsCarrierSenseErrors")
     {
         dot3statscarriersenseerrors = value;
+        dot3statscarriersenseerrors.value_namespace = name_space;
+        dot3statscarriersenseerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsDeferredTransmissions")
     {
         dot3statsdeferredtransmissions = value;
+        dot3statsdeferredtransmissions.value_namespace = name_space;
+        dot3statsdeferredtransmissions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsDuplexStatus")
     {
         dot3statsduplexstatus = value;
+        dot3statsduplexstatus.value_namespace = name_space;
+        dot3statsduplexstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsEtherChipSet")
     {
         dot3statsetherchipset = value;
+        dot3statsetherchipset.value_namespace = name_space;
+        dot3statsetherchipset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsExcessiveCollisions")
     {
         dot3statsexcessivecollisions = value;
+        dot3statsexcessivecollisions.value_namespace = name_space;
+        dot3statsexcessivecollisions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsFCSErrors")
     {
         dot3statsfcserrors = value;
+        dot3statsfcserrors.value_namespace = name_space;
+        dot3statsfcserrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsFrameTooLongs")
     {
         dot3statsframetoolongs = value;
+        dot3statsframetoolongs.value_namespace = name_space;
+        dot3statsframetoolongs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsInternalMacReceiveErrors")
     {
         dot3statsinternalmacreceiveerrors = value;
+        dot3statsinternalmacreceiveerrors.value_namespace = name_space;
+        dot3statsinternalmacreceiveerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsInternalMacTransmitErrors")
     {
         dot3statsinternalmactransmiterrors = value;
+        dot3statsinternalmactransmiterrors.value_namespace = name_space;
+        dot3statsinternalmactransmiterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsLateCollisions")
     {
         dot3statslatecollisions = value;
+        dot3statslatecollisions.value_namespace = name_space;
+        dot3statslatecollisions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsMultipleCollisionFrames")
     {
         dot3statsmultiplecollisionframes = value;
+        dot3statsmultiplecollisionframes.value_namespace = name_space;
+        dot3statsmultiplecollisionframes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsRateControlAbility")
     {
         dot3statsratecontrolability = value;
+        dot3statsratecontrolability.value_namespace = name_space;
+        dot3statsratecontrolability.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsRateControlStatus")
     {
         dot3statsratecontrolstatus = value;
+        dot3statsratecontrolstatus.value_namespace = name_space;
+        dot3statsratecontrolstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsSingleCollisionFrames")
     {
         dot3statssinglecollisionframes = value;
+        dot3statssinglecollisionframes.value_namespace = name_space;
+        dot3statssinglecollisionframes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsSQETestErrors")
     {
         dot3statssqetesterrors = value;
+        dot3statssqetesterrors.value_namespace = name_space;
+        dot3statssqetesterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3StatsSymbolErrors")
     {
         dot3statssymbolerrors = value;
+        dot3statssymbolerrors.value_namespace = name_space;
+        dot3statssymbolerrors.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherlikeMib::Dot3Statstable::Dot3Statsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot3StatsIndex")
+    {
+        dot3statsindex.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsAlignmentErrors")
+    {
+        dot3statsalignmenterrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsCarrierSenseErrors")
+    {
+        dot3statscarriersenseerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsDeferredTransmissions")
+    {
+        dot3statsdeferredtransmissions.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsDuplexStatus")
+    {
+        dot3statsduplexstatus.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsEtherChipSet")
+    {
+        dot3statsetherchipset.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsExcessiveCollisions")
+    {
+        dot3statsexcessivecollisions.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsFCSErrors")
+    {
+        dot3statsfcserrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsFrameTooLongs")
+    {
+        dot3statsframetoolongs.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsInternalMacReceiveErrors")
+    {
+        dot3statsinternalmacreceiveerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsInternalMacTransmitErrors")
+    {
+        dot3statsinternalmactransmiterrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsLateCollisions")
+    {
+        dot3statslatecollisions.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsMultipleCollisionFrames")
+    {
+        dot3statsmultiplecollisionframes.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsRateControlAbility")
+    {
+        dot3statsratecontrolability.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsRateControlStatus")
+    {
+        dot3statsratecontrolstatus.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsSingleCollisionFrames")
+    {
+        dot3statssinglecollisionframes.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsSQETestErrors")
+    {
+        dot3statssqetesterrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3StatsSymbolErrors")
+    {
+        dot3statssymbolerrors.yfilter = yfilter;
+    }
+}
+
+bool EtherlikeMib::Dot3Statstable::Dot3Statsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3StatsIndex" || name == "dot3StatsAlignmentErrors" || name == "dot3StatsCarrierSenseErrors" || name == "dot3StatsDeferredTransmissions" || name == "dot3StatsDuplexStatus" || name == "dot3StatsEtherChipSet" || name == "dot3StatsExcessiveCollisions" || name == "dot3StatsFCSErrors" || name == "dot3StatsFrameTooLongs" || name == "dot3StatsInternalMacReceiveErrors" || name == "dot3StatsInternalMacTransmitErrors" || name == "dot3StatsLateCollisions" || name == "dot3StatsMultipleCollisionFrames" || name == "dot3StatsRateControlAbility" || name == "dot3StatsRateControlStatus" || name == "dot3StatsSingleCollisionFrames" || name == "dot3StatsSQETestErrors" || name == "dot3StatsSymbolErrors")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Colltable::Dot3Colltable()
@@ -535,9 +683,9 @@ EtherlikeMib::Dot3Colltable::~Dot3Colltable()
 
 bool EtherlikeMib::Dot3Colltable::has_data() const
 {
-    for (std::size_t index=0; index<dot3collentry_.size(); index++)
+    for (std::size_t index=0; index<dot3collentry.size(); index++)
     {
-        if(dot3collentry_[index]->has_data())
+        if(dot3collentry[index]->has_data())
             return true;
     }
     return false;
@@ -545,12 +693,12 @@ bool EtherlikeMib::Dot3Colltable::has_data() const
 
 bool EtherlikeMib::Dot3Colltable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3collentry_.size(); index++)
+    for (std::size_t index=0; index<dot3collentry.size(); index++)
     {
-        if(dot3collentry_[index]->has_operation())
+        if(dot3collentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherlikeMib::Dot3Colltable::get_segment_path() const
@@ -587,7 +735,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Colltable::get_child_by_name(const std
 {
     if(child_yang_name == "dot3CollEntry")
     {
-        for(auto const & c : dot3collentry_)
+        for(auto const & c : dot3collentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -597,7 +745,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Colltable::get_child_by_name(const std
         }
         auto c = std::make_shared<EtherlikeMib::Dot3Colltable::Dot3Collentry>();
         c->parent = this;
-        dot3collentry_.push_back(c);
+        dot3collentry.push_back(c);
         return c;
     }
 
@@ -607,7 +755,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Colltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Colltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot3collentry_)
+    for (auto const & c : dot3collentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -615,8 +763,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Colltable::get_
     return children;
 }
 
-void EtherlikeMib::Dot3Colltable::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Colltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherlikeMib::Dot3Colltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherlikeMib::Dot3Colltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3CollEntry")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Colltable::Dot3Collentry::Dot3Collentry()
@@ -641,10 +800,10 @@ bool EtherlikeMib::Dot3Colltable::Dot3Collentry::has_data() const
 
 bool EtherlikeMib::Dot3Colltable::Dot3Collentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(dot3collcount.operation)
-	|| is_set(dot3collfrequencies.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(dot3collcount.yfilter)
+	|| ydk::is_set(dot3collfrequencies.yfilter);
 }
 
 std::string EtherlikeMib::Dot3Colltable::Dot3Collentry::get_segment_path() const
@@ -670,9 +829,9 @@ const EntityPath EtherlikeMib::Dot3Colltable::Dot3Collentry::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (dot3collcount.is_set || is_set(dot3collcount.operation)) leaf_name_data.push_back(dot3collcount.get_name_leafdata());
-    if (dot3collfrequencies.is_set || is_set(dot3collfrequencies.operation)) leaf_name_data.push_back(dot3collfrequencies.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (dot3collcount.is_set || is_set(dot3collcount.yfilter)) leaf_name_data.push_back(dot3collcount.get_name_leafdata());
+    if (dot3collfrequencies.is_set || is_set(dot3collfrequencies.yfilter)) leaf_name_data.push_back(dot3collfrequencies.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -691,20 +850,49 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Colltable::Dot3
     return children;
 }
 
-void EtherlikeMib::Dot3Colltable::Dot3Collentry::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Colltable::Dot3Collentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3CollCount")
     {
         dot3collcount = value;
+        dot3collcount.value_namespace = name_space;
+        dot3collcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3CollFrequencies")
     {
         dot3collfrequencies = value;
+        dot3collfrequencies.value_namespace = name_space;
+        dot3collfrequencies.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherlikeMib::Dot3Colltable::Dot3Collentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "dot3CollCount")
+    {
+        dot3collcount.yfilter = yfilter;
+    }
+    if(value_path == "dot3CollFrequencies")
+    {
+        dot3collfrequencies.yfilter = yfilter;
+    }
+}
+
+bool EtherlikeMib::Dot3Colltable::Dot3Collentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "dot3CollCount" || name == "dot3CollFrequencies")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Controltable::Dot3Controltable()
@@ -718,9 +906,9 @@ EtherlikeMib::Dot3Controltable::~Dot3Controltable()
 
 bool EtherlikeMib::Dot3Controltable::has_data() const
 {
-    for (std::size_t index=0; index<dot3controlentry_.size(); index++)
+    for (std::size_t index=0; index<dot3controlentry.size(); index++)
     {
-        if(dot3controlentry_[index]->has_data())
+        if(dot3controlentry[index]->has_data())
             return true;
     }
     return false;
@@ -728,12 +916,12 @@ bool EtherlikeMib::Dot3Controltable::has_data() const
 
 bool EtherlikeMib::Dot3Controltable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3controlentry_.size(); index++)
+    for (std::size_t index=0; index<dot3controlentry.size(); index++)
     {
-        if(dot3controlentry_[index]->has_operation())
+        if(dot3controlentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherlikeMib::Dot3Controltable::get_segment_path() const
@@ -770,7 +958,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Controltable::get_child_by_name(const 
 {
     if(child_yang_name == "dot3ControlEntry")
     {
-        for(auto const & c : dot3controlentry_)
+        for(auto const & c : dot3controlentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -780,7 +968,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Controltable::get_child_by_name(const 
         }
         auto c = std::make_shared<EtherlikeMib::Dot3Controltable::Dot3Controlentry>();
         c->parent = this;
-        dot3controlentry_.push_back(c);
+        dot3controlentry.push_back(c);
         return c;
     }
 
@@ -790,7 +978,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Controltable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Controltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot3controlentry_)
+    for (auto const & c : dot3controlentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -798,8 +986,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Controltable::g
     return children;
 }
 
-void EtherlikeMib::Dot3Controltable::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Controltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherlikeMib::Dot3Controltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherlikeMib::Dot3Controltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3ControlEntry")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Controltable::Dot3Controlentry::Dot3Controlentry()
@@ -826,11 +1025,11 @@ bool EtherlikeMib::Dot3Controltable::Dot3Controlentry::has_data() const
 
 bool EtherlikeMib::Dot3Controltable::Dot3Controlentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot3statsindex.operation)
-	|| is_set(dot3controlfunctionssupported.operation)
-	|| is_set(dot3controlinunknownopcodes.operation)
-	|| is_set(dot3hccontrolinunknownopcodes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dot3statsindex.yfilter)
+	|| ydk::is_set(dot3controlfunctionssupported.yfilter)
+	|| ydk::is_set(dot3controlinunknownopcodes.yfilter)
+	|| ydk::is_set(dot3hccontrolinunknownopcodes.yfilter);
 }
 
 std::string EtherlikeMib::Dot3Controltable::Dot3Controlentry::get_segment_path() const
@@ -856,10 +1055,10 @@ const EntityPath EtherlikeMib::Dot3Controltable::Dot3Controlentry::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot3statsindex.is_set || is_set(dot3statsindex.operation)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
-    if (dot3controlfunctionssupported.is_set || is_set(dot3controlfunctionssupported.operation)) leaf_name_data.push_back(dot3controlfunctionssupported.get_name_leafdata());
-    if (dot3controlinunknownopcodes.is_set || is_set(dot3controlinunknownopcodes.operation)) leaf_name_data.push_back(dot3controlinunknownopcodes.get_name_leafdata());
-    if (dot3hccontrolinunknownopcodes.is_set || is_set(dot3hccontrolinunknownopcodes.operation)) leaf_name_data.push_back(dot3hccontrolinunknownopcodes.get_name_leafdata());
+    if (dot3statsindex.is_set || is_set(dot3statsindex.yfilter)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
+    if (dot3controlfunctionssupported.is_set || is_set(dot3controlfunctionssupported.yfilter)) leaf_name_data.push_back(dot3controlfunctionssupported.get_name_leafdata());
+    if (dot3controlinunknownopcodes.is_set || is_set(dot3controlinunknownopcodes.yfilter)) leaf_name_data.push_back(dot3controlinunknownopcodes.get_name_leafdata());
+    if (dot3hccontrolinunknownopcodes.is_set || is_set(dot3hccontrolinunknownopcodes.yfilter)) leaf_name_data.push_back(dot3hccontrolinunknownopcodes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -878,11 +1077,13 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Controltable::D
     return children;
 }
 
-void EtherlikeMib::Dot3Controltable::Dot3Controlentry::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Controltable::Dot3Controlentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
         dot3statsindex = value;
+        dot3statsindex.value_namespace = name_space;
+        dot3statsindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3ControlFunctionsSupported")
     {
@@ -891,11 +1092,42 @@ void EtherlikeMib::Dot3Controltable::Dot3Controlentry::set_value(const std::stri
     if(value_path == "dot3ControlInUnknownOpcodes")
     {
         dot3controlinunknownopcodes = value;
+        dot3controlinunknownopcodes.value_namespace = name_space;
+        dot3controlinunknownopcodes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCControlInUnknownOpcodes")
     {
         dot3hccontrolinunknownopcodes = value;
+        dot3hccontrolinunknownopcodes.value_namespace = name_space;
+        dot3hccontrolinunknownopcodes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherlikeMib::Dot3Controltable::Dot3Controlentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot3StatsIndex")
+    {
+        dot3statsindex.yfilter = yfilter;
+    }
+    if(value_path == "dot3ControlFunctionsSupported")
+    {
+        dot3controlfunctionssupported.yfilter = yfilter;
+    }
+    if(value_path == "dot3ControlInUnknownOpcodes")
+    {
+        dot3controlinunknownopcodes.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCControlInUnknownOpcodes")
+    {
+        dot3hccontrolinunknownopcodes.yfilter = yfilter;
+    }
+}
+
+bool EtherlikeMib::Dot3Controltable::Dot3Controlentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3StatsIndex" || name == "dot3ControlFunctionsSupported" || name == "dot3ControlInUnknownOpcodes" || name == "dot3HCControlInUnknownOpcodes")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Pausetable::Dot3Pausetable()
@@ -909,9 +1141,9 @@ EtherlikeMib::Dot3Pausetable::~Dot3Pausetable()
 
 bool EtherlikeMib::Dot3Pausetable::has_data() const
 {
-    for (std::size_t index=0; index<dot3pauseentry_.size(); index++)
+    for (std::size_t index=0; index<dot3pauseentry.size(); index++)
     {
-        if(dot3pauseentry_[index]->has_data())
+        if(dot3pauseentry[index]->has_data())
             return true;
     }
     return false;
@@ -919,12 +1151,12 @@ bool EtherlikeMib::Dot3Pausetable::has_data() const
 
 bool EtherlikeMib::Dot3Pausetable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3pauseentry_.size(); index++)
+    for (std::size_t index=0; index<dot3pauseentry.size(); index++)
     {
-        if(dot3pauseentry_[index]->has_operation())
+        if(dot3pauseentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherlikeMib::Dot3Pausetable::get_segment_path() const
@@ -961,7 +1193,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Pausetable::get_child_by_name(const st
 {
     if(child_yang_name == "dot3PauseEntry")
     {
-        for(auto const & c : dot3pauseentry_)
+        for(auto const & c : dot3pauseentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -971,7 +1203,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Pausetable::get_child_by_name(const st
         }
         auto c = std::make_shared<EtherlikeMib::Dot3Pausetable::Dot3Pauseentry>();
         c->parent = this;
-        dot3pauseentry_.push_back(c);
+        dot3pauseentry.push_back(c);
         return c;
     }
 
@@ -981,7 +1213,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Pausetable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Pausetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot3pauseentry_)
+    for (auto const & c : dot3pauseentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -989,8 +1221,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Pausetable::get
     return children;
 }
 
-void EtherlikeMib::Dot3Pausetable::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Pausetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherlikeMib::Dot3Pausetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherlikeMib::Dot3Pausetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3PauseEntry")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseentry()
@@ -1023,14 +1266,14 @@ bool EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::has_data() const
 
 bool EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot3statsindex.operation)
-	|| is_set(dot3hcinpauseframes.operation)
-	|| is_set(dot3hcoutpauseframes.operation)
-	|| is_set(dot3inpauseframes.operation)
-	|| is_set(dot3outpauseframes.operation)
-	|| is_set(dot3pauseadminmode.operation)
-	|| is_set(dot3pauseopermode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dot3statsindex.yfilter)
+	|| ydk::is_set(dot3hcinpauseframes.yfilter)
+	|| ydk::is_set(dot3hcoutpauseframes.yfilter)
+	|| ydk::is_set(dot3inpauseframes.yfilter)
+	|| ydk::is_set(dot3outpauseframes.yfilter)
+	|| ydk::is_set(dot3pauseadminmode.yfilter)
+	|| ydk::is_set(dot3pauseopermode.yfilter);
 }
 
 std::string EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::get_segment_path() const
@@ -1056,13 +1299,13 @@ const EntityPath EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot3statsindex.is_set || is_set(dot3statsindex.operation)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
-    if (dot3hcinpauseframes.is_set || is_set(dot3hcinpauseframes.operation)) leaf_name_data.push_back(dot3hcinpauseframes.get_name_leafdata());
-    if (dot3hcoutpauseframes.is_set || is_set(dot3hcoutpauseframes.operation)) leaf_name_data.push_back(dot3hcoutpauseframes.get_name_leafdata());
-    if (dot3inpauseframes.is_set || is_set(dot3inpauseframes.operation)) leaf_name_data.push_back(dot3inpauseframes.get_name_leafdata());
-    if (dot3outpauseframes.is_set || is_set(dot3outpauseframes.operation)) leaf_name_data.push_back(dot3outpauseframes.get_name_leafdata());
-    if (dot3pauseadminmode.is_set || is_set(dot3pauseadminmode.operation)) leaf_name_data.push_back(dot3pauseadminmode.get_name_leafdata());
-    if (dot3pauseopermode.is_set || is_set(dot3pauseopermode.operation)) leaf_name_data.push_back(dot3pauseopermode.get_name_leafdata());
+    if (dot3statsindex.is_set || is_set(dot3statsindex.yfilter)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
+    if (dot3hcinpauseframes.is_set || is_set(dot3hcinpauseframes.yfilter)) leaf_name_data.push_back(dot3hcinpauseframes.get_name_leafdata());
+    if (dot3hcoutpauseframes.is_set || is_set(dot3hcoutpauseframes.yfilter)) leaf_name_data.push_back(dot3hcoutpauseframes.get_name_leafdata());
+    if (dot3inpauseframes.is_set || is_set(dot3inpauseframes.yfilter)) leaf_name_data.push_back(dot3inpauseframes.get_name_leafdata());
+    if (dot3outpauseframes.is_set || is_set(dot3outpauseframes.yfilter)) leaf_name_data.push_back(dot3outpauseframes.get_name_leafdata());
+    if (dot3pauseadminmode.is_set || is_set(dot3pauseadminmode.yfilter)) leaf_name_data.push_back(dot3pauseadminmode.get_name_leafdata());
+    if (dot3pauseopermode.is_set || is_set(dot3pauseopermode.yfilter)) leaf_name_data.push_back(dot3pauseopermode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1081,36 +1324,89 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Pausetable::Dot
     return children;
 }
 
-void EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
         dot3statsindex = value;
+        dot3statsindex.value_namespace = name_space;
+        dot3statsindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCInPauseFrames")
     {
         dot3hcinpauseframes = value;
+        dot3hcinpauseframes.value_namespace = name_space;
+        dot3hcinpauseframes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCOutPauseFrames")
     {
         dot3hcoutpauseframes = value;
+        dot3hcoutpauseframes.value_namespace = name_space;
+        dot3hcoutpauseframes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3InPauseFrames")
     {
         dot3inpauseframes = value;
+        dot3inpauseframes.value_namespace = name_space;
+        dot3inpauseframes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3OutPauseFrames")
     {
         dot3outpauseframes = value;
+        dot3outpauseframes.value_namespace = name_space;
+        dot3outpauseframes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3PauseAdminMode")
     {
         dot3pauseadminmode = value;
+        dot3pauseadminmode.value_namespace = name_space;
+        dot3pauseadminmode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3PauseOperMode")
     {
         dot3pauseopermode = value;
+        dot3pauseopermode.value_namespace = name_space;
+        dot3pauseopermode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot3StatsIndex")
+    {
+        dot3statsindex.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCInPauseFrames")
+    {
+        dot3hcinpauseframes.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCOutPauseFrames")
+    {
+        dot3hcoutpauseframes.yfilter = yfilter;
+    }
+    if(value_path == "dot3InPauseFrames")
+    {
+        dot3inpauseframes.yfilter = yfilter;
+    }
+    if(value_path == "dot3OutPauseFrames")
+    {
+        dot3outpauseframes.yfilter = yfilter;
+    }
+    if(value_path == "dot3PauseAdminMode")
+    {
+        dot3pauseadminmode.yfilter = yfilter;
+    }
+    if(value_path == "dot3PauseOperMode")
+    {
+        dot3pauseopermode.yfilter = yfilter;
+    }
+}
+
+bool EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3StatsIndex" || name == "dot3HCInPauseFrames" || name == "dot3HCOutPauseFrames" || name == "dot3InPauseFrames" || name == "dot3OutPauseFrames" || name == "dot3PauseAdminMode" || name == "dot3PauseOperMode")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatstable()
@@ -1124,9 +1420,9 @@ EtherlikeMib::Dot3Hcstatstable::~Dot3Hcstatstable()
 
 bool EtherlikeMib::Dot3Hcstatstable::has_data() const
 {
-    for (std::size_t index=0; index<dot3hcstatsentry_.size(); index++)
+    for (std::size_t index=0; index<dot3hcstatsentry.size(); index++)
     {
-        if(dot3hcstatsentry_[index]->has_data())
+        if(dot3hcstatsentry[index]->has_data())
             return true;
     }
     return false;
@@ -1134,12 +1430,12 @@ bool EtherlikeMib::Dot3Hcstatstable::has_data() const
 
 bool EtherlikeMib::Dot3Hcstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3hcstatsentry_.size(); index++)
+    for (std::size_t index=0; index<dot3hcstatsentry.size(); index++)
     {
-        if(dot3hcstatsentry_[index]->has_operation())
+        if(dot3hcstatsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherlikeMib::Dot3Hcstatstable::get_segment_path() const
@@ -1176,7 +1472,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Hcstatstable::get_child_by_name(const 
 {
     if(child_yang_name == "dot3HCStatsEntry")
     {
-        for(auto const & c : dot3hcstatsentry_)
+        for(auto const & c : dot3hcstatsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1186,7 +1482,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Hcstatstable::get_child_by_name(const 
         }
         auto c = std::make_shared<EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry>();
         c->parent = this;
-        dot3hcstatsentry_.push_back(c);
+        dot3hcstatsentry.push_back(c);
         return c;
     }
 
@@ -1196,7 +1492,7 @@ std::shared_ptr<Entity> EtherlikeMib::Dot3Hcstatstable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Hcstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot3hcstatsentry_)
+    for (auto const & c : dot3hcstatsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1204,8 +1500,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Hcstatstable::g
     return children;
 }
 
-void EtherlikeMib::Dot3Hcstatstable::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Hcstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherlikeMib::Dot3Hcstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherlikeMib::Dot3Hcstatstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3HCStatsEntry")
+        return true;
+    return false;
 }
 
 EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::Dot3Hcstatsentry()
@@ -1238,14 +1545,14 @@ bool EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::has_data() const
 
 bool EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot3statsindex.operation)
-	|| is_set(dot3hcstatsalignmenterrors.operation)
-	|| is_set(dot3hcstatsfcserrors.operation)
-	|| is_set(dot3hcstatsframetoolongs.operation)
-	|| is_set(dot3hcstatsinternalmacreceiveerrors.operation)
-	|| is_set(dot3hcstatsinternalmactransmiterrors.operation)
-	|| is_set(dot3hcstatssymbolerrors.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dot3statsindex.yfilter)
+	|| ydk::is_set(dot3hcstatsalignmenterrors.yfilter)
+	|| ydk::is_set(dot3hcstatsfcserrors.yfilter)
+	|| ydk::is_set(dot3hcstatsframetoolongs.yfilter)
+	|| ydk::is_set(dot3hcstatsinternalmacreceiveerrors.yfilter)
+	|| ydk::is_set(dot3hcstatsinternalmactransmiterrors.yfilter)
+	|| ydk::is_set(dot3hcstatssymbolerrors.yfilter);
 }
 
 std::string EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::get_segment_path() const
@@ -1271,13 +1578,13 @@ const EntityPath EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot3statsindex.is_set || is_set(dot3statsindex.operation)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
-    if (dot3hcstatsalignmenterrors.is_set || is_set(dot3hcstatsalignmenterrors.operation)) leaf_name_data.push_back(dot3hcstatsalignmenterrors.get_name_leafdata());
-    if (dot3hcstatsfcserrors.is_set || is_set(dot3hcstatsfcserrors.operation)) leaf_name_data.push_back(dot3hcstatsfcserrors.get_name_leafdata());
-    if (dot3hcstatsframetoolongs.is_set || is_set(dot3hcstatsframetoolongs.operation)) leaf_name_data.push_back(dot3hcstatsframetoolongs.get_name_leafdata());
-    if (dot3hcstatsinternalmacreceiveerrors.is_set || is_set(dot3hcstatsinternalmacreceiveerrors.operation)) leaf_name_data.push_back(dot3hcstatsinternalmacreceiveerrors.get_name_leafdata());
-    if (dot3hcstatsinternalmactransmiterrors.is_set || is_set(dot3hcstatsinternalmactransmiterrors.operation)) leaf_name_data.push_back(dot3hcstatsinternalmactransmiterrors.get_name_leafdata());
-    if (dot3hcstatssymbolerrors.is_set || is_set(dot3hcstatssymbolerrors.operation)) leaf_name_data.push_back(dot3hcstatssymbolerrors.get_name_leafdata());
+    if (dot3statsindex.is_set || is_set(dot3statsindex.yfilter)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
+    if (dot3hcstatsalignmenterrors.is_set || is_set(dot3hcstatsalignmenterrors.yfilter)) leaf_name_data.push_back(dot3hcstatsalignmenterrors.get_name_leafdata());
+    if (dot3hcstatsfcserrors.is_set || is_set(dot3hcstatsfcserrors.yfilter)) leaf_name_data.push_back(dot3hcstatsfcserrors.get_name_leafdata());
+    if (dot3hcstatsframetoolongs.is_set || is_set(dot3hcstatsframetoolongs.yfilter)) leaf_name_data.push_back(dot3hcstatsframetoolongs.get_name_leafdata());
+    if (dot3hcstatsinternalmacreceiveerrors.is_set || is_set(dot3hcstatsinternalmacreceiveerrors.yfilter)) leaf_name_data.push_back(dot3hcstatsinternalmacreceiveerrors.get_name_leafdata());
+    if (dot3hcstatsinternalmactransmiterrors.is_set || is_set(dot3hcstatsinternalmactransmiterrors.yfilter)) leaf_name_data.push_back(dot3hcstatsinternalmactransmiterrors.get_name_leafdata());
+    if (dot3hcstatssymbolerrors.is_set || is_set(dot3hcstatssymbolerrors.yfilter)) leaf_name_data.push_back(dot3hcstatssymbolerrors.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1296,55 +1603,108 @@ std::map<std::string, std::shared_ptr<Entity>> EtherlikeMib::Dot3Hcstatstable::D
     return children;
 }
 
-void EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::set_value(const std::string & value_path, std::string value)
+void EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
         dot3statsindex = value;
+        dot3statsindex.value_namespace = name_space;
+        dot3statsindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCStatsAlignmentErrors")
     {
         dot3hcstatsalignmenterrors = value;
+        dot3hcstatsalignmenterrors.value_namespace = name_space;
+        dot3hcstatsalignmenterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCStatsFCSErrors")
     {
         dot3hcstatsfcserrors = value;
+        dot3hcstatsfcserrors.value_namespace = name_space;
+        dot3hcstatsfcserrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCStatsFrameTooLongs")
     {
         dot3hcstatsframetoolongs = value;
+        dot3hcstatsframetoolongs.value_namespace = name_space;
+        dot3hcstatsframetoolongs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCStatsInternalMacReceiveErrors")
     {
         dot3hcstatsinternalmacreceiveerrors = value;
+        dot3hcstatsinternalmacreceiveerrors.value_namespace = name_space;
+        dot3hcstatsinternalmacreceiveerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCStatsInternalMacTransmitErrors")
     {
         dot3hcstatsinternalmactransmiterrors = value;
+        dot3hcstatsinternalmactransmiterrors.value_namespace = name_space;
+        dot3hcstatsinternalmactransmiterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot3HCStatsSymbolErrors")
     {
         dot3hcstatssymbolerrors = value;
+        dot3hcstatssymbolerrors.value_namespace = name_space;
+        dot3hcstatssymbolerrors.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3StatsduplexstatusEnum::unknown {1, "unknown"};
-const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3StatsduplexstatusEnum::halfDuplex {2, "halfDuplex"};
-const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3StatsduplexstatusEnum::fullDuplex {3, "fullDuplex"};
+void EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot3StatsIndex")
+    {
+        dot3statsindex.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCStatsAlignmentErrors")
+    {
+        dot3hcstatsalignmenterrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCStatsFCSErrors")
+    {
+        dot3hcstatsfcserrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCStatsFrameTooLongs")
+    {
+        dot3hcstatsframetoolongs.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCStatsInternalMacReceiveErrors")
+    {
+        dot3hcstatsinternalmacreceiveerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCStatsInternalMacTransmitErrors")
+    {
+        dot3hcstatsinternalmactransmiterrors.yfilter = yfilter;
+    }
+    if(value_path == "dot3HCStatsSymbolErrors")
+    {
+        dot3hcstatssymbolerrors.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3StatsratecontrolstatusEnum::rateControlOff {1, "rateControlOff"};
-const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3StatsratecontrolstatusEnum::rateControlOn {2, "rateControlOn"};
-const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3StatsratecontrolstatusEnum::unknown {3, "unknown"};
+bool EtherlikeMib::Dot3Hcstatstable::Dot3Hcstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3StatsIndex" || name == "dot3HCStatsAlignmentErrors" || name == "dot3HCStatsFCSErrors" || name == "dot3HCStatsFrameTooLongs" || name == "dot3HCStatsInternalMacReceiveErrors" || name == "dot3HCStatsInternalMacTransmitErrors" || name == "dot3HCStatsSymbolErrors")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3PauseadminmodeEnum::disabled {1, "disabled"};
-const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3PauseadminmodeEnum::enabledXmit {2, "enabledXmit"};
-const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3PauseadminmodeEnum::enabledRcv {3, "enabledRcv"};
-const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3PauseadminmodeEnum::enabledXmitAndRcv {4, "enabledXmitAndRcv"};
+const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3Statsduplexstatus::unknown {1, "unknown"};
+const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3Statsduplexstatus::halfDuplex {2, "halfDuplex"};
+const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3Statsduplexstatus::fullDuplex {3, "fullDuplex"};
 
-const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3PauseopermodeEnum::disabled {1, "disabled"};
-const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3PauseopermodeEnum::enabledXmit {2, "enabledXmit"};
-const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3PauseopermodeEnum::enabledRcv {3, "enabledRcv"};
-const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3PauseopermodeEnum::enabledXmitAndRcv {4, "enabledXmitAndRcv"};
+const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3Statsratecontrolstatus::rateControlOff {1, "rateControlOff"};
+const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3Statsratecontrolstatus::rateControlOn {2, "rateControlOn"};
+const Enum::YLeaf EtherlikeMib::Dot3Statstable::Dot3Statsentry::Dot3Statsratecontrolstatus::unknown {3, "unknown"};
+
+const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode::disabled {1, "disabled"};
+const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode::enabledXmit {2, "enabledXmit"};
+const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode::enabledRcv {3, "enabledRcv"};
+const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode::enabledXmitAndRcv {4, "enabledXmitAndRcv"};
+
+const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode::disabled {1, "disabled"};
+const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode::enabledXmit {2, "enabledXmit"};
+const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode::enabledRcv {3, "enabledRcv"};
+const Enum::YLeaf EtherlikeMib::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode::enabledXmitAndRcv {4, "enabledXmitAndRcv"};
 
 
 }

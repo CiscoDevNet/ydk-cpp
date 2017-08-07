@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_rib_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_rib_cfg {
 
 Rib::Rib()
@@ -32,8 +34,8 @@ bool Rib::has_data() const
 
 bool Rib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_recursion_depth.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(max_recursion_depth.yfilter)
 	|| (af !=  nullptr && af->has_operation());
 }
 
@@ -57,7 +59,7 @@ const EntityPath Rib::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_recursion_depth.is_set || is_set(max_recursion_depth.operation)) leaf_name_data.push_back(max_recursion_depth.get_name_leafdata());
+    if (max_recursion_depth.is_set || is_set(max_recursion_depth.yfilter)) leaf_name_data.push_back(max_recursion_depth.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -90,11 +92,21 @@ std::map<std::string, std::shared_ptr<Entity>> Rib::get_children() const
     return children;
 }
 
-void Rib::set_value(const std::string & value_path, std::string value)
+void Rib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-recursion-depth")
     {
         max_recursion_depth = value;
+        max_recursion_depth.value_namespace = name_space;
+        max_recursion_depth.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-recursion-depth")
+    {
+        max_recursion_depth.yfilter = yfilter;
     }
 }
 
@@ -116,6 +128,18 @@ std::string Rib::get_bundle_name() const
 augment_capabilities_function Rib::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Rib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Rib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "max-recursion-depth")
+        return true;
+    return false;
 }
 
 Rib::Af::Af()
@@ -142,7 +166,7 @@ bool Rib::Af::has_data() const
 
 bool Rib::Af::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -216,8 +240,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rib::Af::get_children() const
     return children;
 }
 
-void Rib::Af::set_value(const std::string & value_path, std::string value)
+void Rib::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rib::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rib::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Rib::Af::Ipv4::Ipv4()
@@ -243,8 +278,8 @@ bool Rib::Af::Ipv4::has_data() const
 
 bool Rib::Af::Ipv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_dampening_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_dampening_disable.yfilter)
 	|| (redistribution_history !=  nullptr && redistribution_history->has_operation());
 }
 
@@ -271,7 +306,7 @@ const EntityPath Rib::Af::Ipv4::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_dampening_disable.is_set || is_set(next_hop_dampening_disable.operation)) leaf_name_data.push_back(next_hop_dampening_disable.get_name_leafdata());
+    if (next_hop_dampening_disable.is_set || is_set(next_hop_dampening_disable.yfilter)) leaf_name_data.push_back(next_hop_dampening_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -304,12 +339,29 @@ std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::get_children() con
     return children;
 }
 
-void Rib::Af::Ipv4::set_value(const std::string & value_path, std::string value)
+void Rib::Af::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-dampening-disable")
     {
         next_hop_dampening_disable = value;
+        next_hop_dampening_disable.value_namespace = name_space;
+        next_hop_dampening_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rib::Af::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-dampening-disable")
+    {
+        next_hop_dampening_disable.yfilter = yfilter;
+    }
+}
+
+bool Rib::Af::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "redistribution-history" || name == "next-hop-dampening-disable")
+        return true;
+    return false;
 }
 
 Rib::Af::Ipv4::RedistributionHistory::RedistributionHistory()
@@ -337,9 +389,9 @@ bool Rib::Af::Ipv4::RedistributionHistory::has_data() const
 
 bool Rib::Af::Ipv4::RedistributionHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bcdl_client.operation)
-	|| is_set(protocol_client.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bcdl_client.yfilter)
+	|| ydk::is_set(protocol_client.yfilter)
 	|| (keep !=  nullptr && keep->has_operation());
 }
 
@@ -366,8 +418,8 @@ const EntityPath Rib::Af::Ipv4::RedistributionHistory::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bcdl_client.is_set || is_set(bcdl_client.operation)) leaf_name_data.push_back(bcdl_client.get_name_leafdata());
-    if (protocol_client.is_set || is_set(protocol_client.operation)) leaf_name_data.push_back(protocol_client.get_name_leafdata());
+    if (bcdl_client.is_set || is_set(bcdl_client.yfilter)) leaf_name_data.push_back(bcdl_client.get_name_leafdata());
+    if (protocol_client.is_set || is_set(protocol_client.yfilter)) leaf_name_data.push_back(protocol_client.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -400,16 +452,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::RedistributionHist
     return children;
 }
 
-void Rib::Af::Ipv4::RedistributionHistory::set_value(const std::string & value_path, std::string value)
+void Rib::Af::Ipv4::RedistributionHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bcdl-client")
     {
         bcdl_client = value;
+        bcdl_client.value_namespace = name_space;
+        bcdl_client.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-client")
     {
         protocol_client = value;
+        protocol_client.value_namespace = name_space;
+        protocol_client.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rib::Af::Ipv4::RedistributionHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bcdl-client")
+    {
+        bcdl_client.yfilter = yfilter;
+    }
+    if(value_path == "protocol-client")
+    {
+        protocol_client.yfilter = yfilter;
+    }
+}
+
+bool Rib::Af::Ipv4::RedistributionHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keep" || name == "bcdl-client" || name == "protocol-client")
+        return true;
+    return false;
 }
 
 Rib::Af::Ipv4::RedistributionHistory::Keep::Keep()
@@ -430,8 +505,8 @@ bool Rib::Af::Ipv4::RedistributionHistory::Keep::has_data() const
 
 bool Rib::Af::Ipv4::RedistributionHistory::Keep::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bcdl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bcdl.yfilter);
 }
 
 std::string Rib::Af::Ipv4::RedistributionHistory::Keep::get_segment_path() const
@@ -457,7 +532,7 @@ const EntityPath Rib::Af::Ipv4::RedistributionHistory::Keep::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bcdl.is_set || is_set(bcdl.operation)) leaf_name_data.push_back(bcdl.get_name_leafdata());
+    if (bcdl.is_set || is_set(bcdl.yfilter)) leaf_name_data.push_back(bcdl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -476,12 +551,29 @@ std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::RedistributionHist
     return children;
 }
 
-void Rib::Af::Ipv4::RedistributionHistory::Keep::set_value(const std::string & value_path, std::string value)
+void Rib::Af::Ipv4::RedistributionHistory::Keep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bcdl")
     {
         bcdl = value;
+        bcdl.value_namespace = name_space;
+        bcdl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rib::Af::Ipv4::RedistributionHistory::Keep::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bcdl")
+    {
+        bcdl.yfilter = yfilter;
+    }
+}
+
+bool Rib::Af::Ipv4::RedistributionHistory::Keep::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bcdl")
+        return true;
+    return false;
 }
 
 Rib::Af::Ipv6::Ipv6()
@@ -507,8 +599,8 @@ bool Rib::Af::Ipv6::has_data() const
 
 bool Rib::Af::Ipv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_dampening_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_dampening_disable.yfilter)
 	|| (redistribution_history !=  nullptr && redistribution_history->has_operation());
 }
 
@@ -535,7 +627,7 @@ const EntityPath Rib::Af::Ipv6::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_dampening_disable.is_set || is_set(next_hop_dampening_disable.operation)) leaf_name_data.push_back(next_hop_dampening_disable.get_name_leafdata());
+    if (next_hop_dampening_disable.is_set || is_set(next_hop_dampening_disable.yfilter)) leaf_name_data.push_back(next_hop_dampening_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -568,12 +660,29 @@ std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::get_children() con
     return children;
 }
 
-void Rib::Af::Ipv6::set_value(const std::string & value_path, std::string value)
+void Rib::Af::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-dampening-disable")
     {
         next_hop_dampening_disable = value;
+        next_hop_dampening_disable.value_namespace = name_space;
+        next_hop_dampening_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rib::Af::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-dampening-disable")
+    {
+        next_hop_dampening_disable.yfilter = yfilter;
+    }
+}
+
+bool Rib::Af::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "redistribution-history" || name == "next-hop-dampening-disable")
+        return true;
+    return false;
 }
 
 Rib::Af::Ipv6::RedistributionHistory::RedistributionHistory()
@@ -601,9 +710,9 @@ bool Rib::Af::Ipv6::RedistributionHistory::has_data() const
 
 bool Rib::Af::Ipv6::RedistributionHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bcdl_client.operation)
-	|| is_set(protocol_client.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bcdl_client.yfilter)
+	|| ydk::is_set(protocol_client.yfilter)
 	|| (keep !=  nullptr && keep->has_operation());
 }
 
@@ -630,8 +739,8 @@ const EntityPath Rib::Af::Ipv6::RedistributionHistory::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bcdl_client.is_set || is_set(bcdl_client.operation)) leaf_name_data.push_back(bcdl_client.get_name_leafdata());
-    if (protocol_client.is_set || is_set(protocol_client.operation)) leaf_name_data.push_back(protocol_client.get_name_leafdata());
+    if (bcdl_client.is_set || is_set(bcdl_client.yfilter)) leaf_name_data.push_back(bcdl_client.get_name_leafdata());
+    if (protocol_client.is_set || is_set(protocol_client.yfilter)) leaf_name_data.push_back(protocol_client.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -664,16 +773,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::RedistributionHist
     return children;
 }
 
-void Rib::Af::Ipv6::RedistributionHistory::set_value(const std::string & value_path, std::string value)
+void Rib::Af::Ipv6::RedistributionHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bcdl-client")
     {
         bcdl_client = value;
+        bcdl_client.value_namespace = name_space;
+        bcdl_client.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-client")
     {
         protocol_client = value;
+        protocol_client.value_namespace = name_space;
+        protocol_client.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rib::Af::Ipv6::RedistributionHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bcdl-client")
+    {
+        bcdl_client.yfilter = yfilter;
+    }
+    if(value_path == "protocol-client")
+    {
+        protocol_client.yfilter = yfilter;
+    }
+}
+
+bool Rib::Af::Ipv6::RedistributionHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keep" || name == "bcdl-client" || name == "protocol-client")
+        return true;
+    return false;
 }
 
 Rib::Af::Ipv6::RedistributionHistory::Keep::Keep()
@@ -694,8 +826,8 @@ bool Rib::Af::Ipv6::RedistributionHistory::Keep::has_data() const
 
 bool Rib::Af::Ipv6::RedistributionHistory::Keep::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bcdl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bcdl.yfilter);
 }
 
 std::string Rib::Af::Ipv6::RedistributionHistory::Keep::get_segment_path() const
@@ -721,7 +853,7 @@ const EntityPath Rib::Af::Ipv6::RedistributionHistory::Keep::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bcdl.is_set || is_set(bcdl.operation)) leaf_name_data.push_back(bcdl.get_name_leafdata());
+    if (bcdl.is_set || is_set(bcdl.yfilter)) leaf_name_data.push_back(bcdl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -740,12 +872,29 @@ std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::RedistributionHist
     return children;
 }
 
-void Rib::Af::Ipv6::RedistributionHistory::Keep::set_value(const std::string & value_path, std::string value)
+void Rib::Af::Ipv6::RedistributionHistory::Keep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bcdl")
     {
         bcdl = value;
+        bcdl.value_namespace = name_space;
+        bcdl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rib::Af::Ipv6::RedistributionHistory::Keep::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bcdl")
+    {
+        bcdl.yfilter = yfilter;
+    }
+}
+
+bool Rib::Af::Ipv6::RedistributionHistory::Keep::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bcdl")
+        return true;
+    return false;
 }
 
 

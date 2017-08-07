@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_cfg {
 
-class Isis : public Entity
+class Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -19,15 +19,18 @@ class Isis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Instances; //type: Isis::Instances
 
@@ -36,7 +39,7 @@ class Isis : public Entity
 }; // Isis
 
 
-class Isis::Instances : public Entity
+class Isis::Instances : public ydk::Entity
 {
     public:
         Instances();
@@ -44,11 +47,13 @@ class Isis::Instances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Instance; //type: Isis::Instances::Instance
 
@@ -57,7 +62,7 @@ class Isis::Instances : public Entity
 }; // Isis::Instances
 
 
-class Isis::Instances::Instance : public Entity
+class Isis::Instances::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -65,22 +70,24 @@ class Isis::Instances::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_name; //type: string
-        YLeaf running; //type: empty
-        YLeaf log_adjacency_changes; //type: empty
-        YLeaf ignore_lsp_errors; //type: boolean
-        YLeaf is_type; //type: IsisConfigurableLevelsEnum
-        YLeaf tracing_mode; //type: IsisTracingModeEnum
-        YLeaf instance_id; //type: uint32
-        YLeaf dynamic_host_name; //type: boolean
-        YLeaf nsr; //type: empty
-        YLeaf log_pdu_drops; //type: empty
+        ydk::YLeaf instance_name; //type: string
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf log_adjacency_changes; //type: empty
+        ydk::YLeaf ignore_lsp_errors; //type: boolean
+        ydk::YLeaf is_type; //type: IsisConfigurableLevels
+        ydk::YLeaf tracing_mode; //type: IsisTracingMode
+        ydk::YLeaf instance_id; //type: uint32
+        ydk::YLeaf dynamic_host_name; //type: boolean
+        ydk::YLeaf nsr; //type: empty
+        ydk::YLeaf log_pdu_drops; //type: empty
         class Srgb; //type: Isis::Instances::Instance::Srgb
         class LspGenerationIntervals; //type: Isis::Instances::Instance::LspGenerationIntervals
         class LspArrivalTimes; //type: Isis::Instances::Instance::LspArrivalTimes
@@ -124,7 +131,7 @@ class Isis::Instances::Instance : public Entity
 }; // Isis::Instances::Instance
 
 
-class Isis::Instances::Instance::Srgb : public Entity
+class Isis::Instances::Instance::Srgb : public ydk::Entity
 {
     public:
         Srgb();
@@ -132,19 +139,21 @@ class Isis::Instances::Instance::Srgb : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower_bound; //type: uint32
-        YLeaf upper_bound; //type: uint32
+        ydk::YLeaf lower_bound; //type: uint32
+        ydk::YLeaf upper_bound; //type: uint32
 
 }; // Isis::Instances::Instance::Srgb
 
 
-class Isis::Instances::Instance::LspGenerationIntervals : public Entity
+class Isis::Instances::Instance::LspGenerationIntervals : public ydk::Entity
 {
     public:
         LspGenerationIntervals();
@@ -152,11 +161,13 @@ class Isis::Instances::Instance::LspGenerationIntervals : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspGenerationInterval; //type: Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval
 
@@ -165,7 +176,7 @@ class Isis::Instances::Instance::LspGenerationIntervals : public Entity
 }; // Isis::Instances::Instance::LspGenerationIntervals
 
 
-class Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval : public Entity
+class Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval : public ydk::Entity
 {
     public:
         LspGenerationInterval();
@@ -173,21 +184,23 @@ class Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf maximum_wait; //type: uint32
-        YLeaf initial_wait; //type: uint32
-        YLeaf secondary_wait; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf maximum_wait; //type: uint32
+        ydk::YLeaf initial_wait; //type: uint32
+        ydk::YLeaf secondary_wait; //type: uint32
 
 }; // Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval
 
 
-class Isis::Instances::Instance::LspArrivalTimes : public Entity
+class Isis::Instances::Instance::LspArrivalTimes : public ydk::Entity
 {
     public:
         LspArrivalTimes();
@@ -195,11 +208,13 @@ class Isis::Instances::Instance::LspArrivalTimes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspArrivalTime; //type: Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime
 
@@ -208,7 +223,7 @@ class Isis::Instances::Instance::LspArrivalTimes : public Entity
 }; // Isis::Instances::Instance::LspArrivalTimes
 
 
-class Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime : public Entity
+class Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime : public ydk::Entity
 {
     public:
         LspArrivalTime();
@@ -216,21 +231,23 @@ class Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf maximum_wait; //type: uint32
-        YLeaf initial_wait; //type: uint32
-        YLeaf secondary_wait; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf maximum_wait; //type: uint32
+        ydk::YLeaf initial_wait; //type: uint32
+        ydk::YLeaf secondary_wait; //type: uint32
 
 }; // Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime
 
 
-class Isis::Instances::Instance::TraceBufferSize : public Entity
+class Isis::Instances::Instance::TraceBufferSize : public ydk::Entity
 {
     public:
         TraceBufferSize();
@@ -238,21 +255,23 @@ class Isis::Instances::Instance::TraceBufferSize : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf detailed; //type: uint32
-        YLeaf standard; //type: uint32
-        YLeaf severe; //type: uint32
-        YLeaf hello; //type: uint32
+        ydk::YLeaf detailed; //type: uint32
+        ydk::YLeaf standard; //type: uint32
+        ydk::YLeaf severe; //type: uint32
+        ydk::YLeaf hello; //type: uint32
 
 }; // Isis::Instances::Instance::TraceBufferSize
 
 
-class Isis::Instances::Instance::MaxLinkMetrics : public Entity
+class Isis::Instances::Instance::MaxLinkMetrics : public ydk::Entity
 {
     public:
         MaxLinkMetrics();
@@ -260,11 +279,13 @@ class Isis::Instances::Instance::MaxLinkMetrics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MaxLinkMetric; //type: Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric
 
@@ -273,7 +294,7 @@ class Isis::Instances::Instance::MaxLinkMetrics : public Entity
 }; // Isis::Instances::Instance::MaxLinkMetrics
 
 
-class Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric : public Entity
+class Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric : public ydk::Entity
 {
     public:
         MaxLinkMetric();
@@ -281,18 +302,20 @@ class Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
 
 }; // Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric
 
 
-class Isis::Instances::Instance::AdjacencyStagger : public Entity
+class Isis::Instances::Instance::AdjacencyStagger : public ydk::Entity
 {
     public:
         AdjacencyStagger();
@@ -300,19 +323,21 @@ class Isis::Instances::Instance::AdjacencyStagger : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf initial_nbr; //type: uint32
-        YLeaf max_nbr; //type: uint32
+        ydk::YLeaf initial_nbr; //type: uint32
+        ydk::YLeaf max_nbr; //type: uint32
 
 }; // Isis::Instances::Instance::AdjacencyStagger
 
 
-class Isis::Instances::Instance::Afs : public Entity
+class Isis::Instances::Instance::Afs : public ydk::Entity
 {
     public:
         Afs();
@@ -320,11 +345,13 @@ class Isis::Instances::Instance::Afs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Af; //type: Isis::Instances::Instance::Afs::Af
 
@@ -333,7 +360,7 @@ class Isis::Instances::Instance::Afs : public Entity
 }; // Isis::Instances::Instance::Afs
 
 
-class Isis::Instances::Instance::Afs::Af : public Entity
+class Isis::Instances::Instance::Afs::Af : public ydk::Entity
 {
     public:
         Af();
@@ -341,14 +368,16 @@ class Isis::Instances::Instance::Afs::Af : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af_name; //type: IsisAddressFamilyEnum
-        YLeaf saf_name; //type: IsisSubAddressFamilyEnum
+        ydk::YLeaf af_name; //type: IsisAddressFamily
+        ydk::YLeaf saf_name; //type: IsisSubAddressFamily
         class AfData; //type: Isis::Instances::Instance::Afs::Af::AfData
         class TopologyName; //type: Isis::Instances::Instance::Afs::Af::TopologyName
 
@@ -358,7 +387,7 @@ class Isis::Instances::Instance::Afs::Af : public Entity
 }; // Isis::Instances::Instance::Afs::Af
 
 
-class Isis::Instances::Instance::Afs::Af::AfData : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData : public ydk::Entity
 {
     public:
         AfData();
@@ -366,23 +395,25 @@ class Isis::Instances::Instance::Afs::Af::AfData : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_paths; //type: uint32
-        YLeaf topology_id; //type: uint32
-        YLeaf single_topology; //type: empty
-        YLeaf adjacency_check; //type: IsisAdjCheckEnum
-        YLeaf advertise_link_attributes; //type: boolean
-        YLeaf apply_weight; //type: IsisApplyWeightEnum
-        YLeaf default_admin_distance; //type: uint32
-        YLeaf advertise_passive_only; //type: empty
-        YLeaf ignore_attached_bit; //type: boolean
-        YLeaf attached_bit; //type: IsisAttachedBitEnum
-        YLeaf route_source_first_hop; //type: boolean
+        ydk::YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf topology_id; //type: uint32
+        ydk::YLeaf single_topology; //type: empty
+        ydk::YLeaf adjacency_check; //type: IsisAdjCheck
+        ydk::YLeaf advertise_link_attributes; //type: boolean
+        ydk::YLeaf apply_weight; //type: IsisApplyWeight
+        ydk::YLeaf default_admin_distance; //type: uint32
+        ydk::YLeaf advertise_passive_only; //type: empty
+        ydk::YLeaf ignore_attached_bit; //type: boolean
+        ydk::YLeaf attached_bit; //type: IsisAttachedBit
+        ydk::YLeaf route_source_first_hop; //type: boolean
         class SegmentRouting; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting
         class MetricStyles; //type: Isis::Instances::Instance::Afs::Af::AfData::MetricStyles
         class FrrTable; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable
@@ -430,7 +461,7 @@ class Isis::Instances::Instance::Afs::Af::AfData : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting : public ydk::Entity
 {
     public:
         SegmentRouting();
@@ -438,13 +469,15 @@ class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mpls; //type: IsisLabelPreferenceEnum
+        ydk::YLeaf mpls; //type: IsisLabelPreference
         class PrefixSidMap; //type: Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap> prefix_sid_map;
@@ -452,7 +485,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap : public ydk::Entity
 {
     public:
         PrefixSidMap();
@@ -460,19 +493,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf advertise_local; //type: empty
-        YLeaf receive; //type: boolean
+        ydk::YLeaf advertise_local; //type: empty
+        ydk::YLeaf receive; //type: boolean
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::MetricStyles : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::MetricStyles : public ydk::Entity
 {
     public:
         MetricStyles();
@@ -480,11 +515,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::MetricStyles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MetricStyle; //type: Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle
 
@@ -493,7 +530,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::MetricStyles : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::MetricStyles
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle : public ydk::Entity
 {
     public:
         MetricStyle();
@@ -501,20 +538,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf style; //type: IsisMetricStyleEnum
-        YLeaf transition_state; //type: IsisMetricStyleTransitionEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf style; //type: IsisMetricStyle
+        ydk::YLeaf transition_state; //type: IsisMetricStyleTransition
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable : public ydk::Entity
 {
     public:
         FrrTable();
@@ -522,11 +561,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrLoadSharings; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings
         class PriorityLimits; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits
@@ -543,7 +584,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings : public ydk::Entity
 {
     public:
         FrrLoadSharings();
@@ -551,11 +592,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrLoadSharing; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing
 
@@ -564,7 +607,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings : pu
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing : public ydk::Entity
 {
     public:
         FrrLoadSharing();
@@ -572,19 +615,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::Frr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf load_sharing; //type: IsisfrrLoadSharingEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf load_sharing; //type: IsisfrrLoadSharing
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits : public ydk::Entity
 {
     public:
         PriorityLimits();
@@ -592,11 +637,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PriorityLimit; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit
 
@@ -605,7 +652,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits : pub
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit : public ydk::Entity
 {
     public:
         PriorityLimit();
@@ -613,20 +660,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf frr_type; //type: IsisfrrEnum
-        YLeaf priority; //type: IsisPrefixPriorityEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf frr_type; //type: Isisfrr
+        ydk::YLeaf priority; //type: IsisPrefixPriority
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes : public ydk::Entity
 {
     public:
         FrrRemoteLfaPrefixes();
@@ -634,11 +683,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrRemoteLfaPrefix; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix
 
@@ -647,7 +698,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix : public ydk::Entity
 {
     public:
         FrrRemoteLfaPrefix();
@@ -655,19 +706,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf prefix_list_name; //type: string
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf prefix_list_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers : public ydk::Entity
 {
     public:
         FrrTiebreakers();
@@ -675,11 +728,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrTiebreaker; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker
 
@@ -688,7 +743,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers : pub
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker : public ydk::Entity
 {
     public:
         FrrTiebreaker();
@@ -696,20 +751,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrT
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf tiebreaker; //type: IsisfrrTiebreakerEnum
-        YLeaf index_; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf tiebreaker; //type: IsisfrrTiebreaker
+        ydk::YLeaf index_; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies : public ydk::Entity
 {
     public:
         FrrUseCandOnlies();
@@ -717,11 +774,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrUseCandOnly; //type: Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly
 
@@ -730,7 +789,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies : p
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly : public ydk::Entity
 {
     public:
         FrrUseCandOnly();
@@ -738,19 +797,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::Fr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf frr_type; //type: IsisfrrEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf frr_type; //type: Isisfrr
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::RouterId : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::RouterId : public ydk::Entity
 {
     public:
         RouterId();
@@ -758,19 +819,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::RouterId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf interface_name; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::RouterId
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities : public ydk::Entity
 {
     public:
         SpfPrefixPriorities();
@@ -778,11 +841,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpfPrefixPriority; //type: Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority
 
@@ -791,7 +856,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities : public E
 }; // Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority : public ydk::Entity
 {
     public:
         SpfPrefixPriority();
@@ -799,21 +864,23 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefix
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf prefix_priority_type; //type: IsisPrefixPriorityEnum
-        YLeaf admin_tag; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf prefix_priority_type; //type: IsisPrefixPriority
+        ydk::YLeaf admin_tag; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes : public ydk::Entity
 {
     public:
         SummaryPrefixes();
@@ -821,11 +888,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SummaryPrefix; //type: Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix
 
@@ -834,7 +903,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes : public Entit
 }; // Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix : public ydk::Entity
 {
     public:
         SummaryPrefix();
@@ -842,20 +911,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_prefix; //type: string
-        YLeaf tag; //type: uint32
-        YLeaf level; //type: uint32
+        ydk::YLeaf address_prefix; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf level; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes::SummaryPrefix
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance : public ydk::Entity
 {
     public:
         MicroLoopAvoidance();
@@ -863,19 +934,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: IsisMicroLoopAvoidanceEnum
-        YLeaf rib_update_delay; //type: uint32
+        ydk::YLeaf enable; //type: IsisMicroLoopAvoidance
+        ydk::YLeaf rib_update_delay; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Ucmp : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Ucmp : public ydk::Entity
 {
     public:
         Ucmp();
@@ -883,13 +956,15 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ucmp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf delay_interval; //type: uint32
+        ydk::YLeaf delay_interval; //type: uint32
         class Enable; //type: Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable
         class ExcludeInterfaces; //type: Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces
 
@@ -899,7 +974,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ucmp : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::Ucmp
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable : public ydk::Entity
 {
     public:
         Enable();
@@ -907,19 +982,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf variance; //type: uint32
-        YLeaf prefix_list_name; //type: string
+        ydk::YLeaf variance; //type: uint32
+        ydk::YLeaf prefix_list_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Ucmp::Enable
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces : public ydk::Entity
 {
     public:
         ExcludeInterfaces();
@@ -927,11 +1004,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ExcludeInterface; //type: Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface
 
@@ -940,7 +1019,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces : publ
 }; // Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface : public ydk::Entity
 {
     public:
         ExcludeInterface();
@@ -948,18 +1027,20 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::Exclu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Ucmp::ExcludeInterfaces::ExcludeInterface
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes : public ydk::Entity
 {
     public:
         MaxRedistPrefixes();
@@ -967,11 +1048,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MaxRedistPrefix; //type: Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix
 
@@ -980,7 +1063,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes : public Ent
 }; // Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix : public ydk::Entity
 {
     public:
         MaxRedistPrefix();
@@ -988,19 +1071,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf prefix_limit; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf prefix_limit; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Propagations : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Propagations : public ydk::Entity
 {
     public:
         Propagations();
@@ -1008,11 +1093,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::Propagations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Propagation; //type: Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation
 
@@ -1021,7 +1108,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Propagations : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::Propagations
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation : public ydk::Entity
 {
     public:
         Propagation();
@@ -1029,20 +1116,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_level; //type: IsisInternalLevelEnum
-        YLeaf destination_level; //type: IsisInternalLevelEnum
-        YLeaf route_policy_name; //type: string
+        ydk::YLeaf source_level; //type: IsisInternalLevel
+        ydk::YLeaf destination_level; //type: IsisInternalLevel
+        ydk::YLeaf route_policy_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Redistributions : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Redistributions : public ydk::Entity
 {
     public:
         Redistributions();
@@ -1050,11 +1139,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Redistribution; //type: Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
 
@@ -1063,7 +1154,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions : public Entit
 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution : public ydk::Entity
 {
     public:
         Redistribution();
@@ -1071,13 +1162,15 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: IsisRedistProtoEnum
+        ydk::YLeaf protocol_name; //type: IsisRedistProto
         class ConnectedOrStaticOrRipOrSubscriberOrMobile; //type: Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile
         class OspfOrOspfv3OrIsisOrApplication; //type: Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication
         class Bgp; //type: Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp
@@ -1091,7 +1184,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributio
 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile : public ydk::Entity
 {
     public:
         ConnectedOrStaticOrRipOrSubscriberOrMobile();
@@ -1099,22 +1192,24 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf levels; //type: IsisConfigurableLevelsEnum
-        YLeaf route_policy_name; //type: string
-        YLeaf metric_type; //type: IsisMetricEnum
-        YLeaf ospf_route_type; //type: int32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf levels; //type: IsisConfigurableLevels
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf metric_type; //type: IsisMetric
+        ydk::YLeaf ospf_route_type; //type: int32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication : public ydk::Entity
 {
     public:
         OspfOrOspfv3OrIsisOrApplication();
@@ -1122,23 +1217,25 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf levels; //type: IsisConfigurableLevelsEnum
-        YLeaf route_policy_name; //type: string
-        YLeaf metric_type; //type: IsisMetricEnum
-        YLeaf ospf_route_type; //type: int32
+        ydk::YLeaf instance_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf levels; //type: IsisConfigurableLevels
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf metric_type; //type: IsisMetric
+        ydk::YLeaf ospf_route_type; //type: int32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -1146,24 +1243,26 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as_xx; //type: uint32
-        YLeaf as_yy; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf levels; //type: IsisConfigurableLevelsEnum
-        YLeaf route_policy_name; //type: string
-        YLeaf metric_type; //type: IsisMetricEnum
-        YLeaf ospf_route_type; //type: int32
+        ydk::YLeaf as_xx; //type: uint32
+        ydk::YLeaf as_yy; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf levels; //type: IsisConfigurableLevels
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf metric_type; //type: IsisMetric
+        ydk::YLeaf ospf_route_type; //type: int32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp : public ydk::Entity
 {
     public:
         Eigrp();
@@ -1171,23 +1270,25 @@ class Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistributio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as_zz; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf levels; //type: IsisConfigurableLevelsEnum
-        YLeaf route_policy_name; //type: string
-        YLeaf metric_type; //type: IsisMetricEnum
-        YLeaf ospf_route_type; //type: int32
+        ydk::YLeaf as_zz; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf levels; //type: IsisConfigurableLevels
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf metric_type; //type: IsisMetric
+        ydk::YLeaf ospf_route_type; //type: int32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals : public ydk::Entity
 {
     public:
         SpfPeriodicIntervals();
@@ -1195,11 +1296,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpfPeriodicInterval; //type: Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval
 
@@ -1208,7 +1311,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals : public 
 }; // Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval : public ydk::Entity
 {
     public:
         SpfPeriodicInterval();
@@ -1216,19 +1319,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPerio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf periodic_interval; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf periodic_interval; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals : public ydk::Entity
 {
     public:
         SpfIntervals();
@@ -1236,11 +1341,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpfInterval; //type: Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval
 
@@ -1249,7 +1356,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval : public ydk::Entity
 {
     public:
         SpfInterval();
@@ -1257,21 +1364,23 @@ class Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf maximum_wait; //type: uint32
-        YLeaf initial_wait; //type: uint32
-        YLeaf secondary_wait; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf maximum_wait; //type: uint32
+        ydk::YLeaf initial_wait; //type: uint32
+        ydk::YLeaf secondary_wait; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence : public ydk::Entity
 {
     public:
         MonitorConvergence();
@@ -1279,20 +1388,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
-        YLeaf track_ip_frr; //type: empty
-        YLeaf prefix_list; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf track_ip_frr; //type: empty
+        ydk::YLeaf prefix_list; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::MonitorConvergence
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation : public ydk::Entity
 {
     public:
         DefaultInformation();
@@ -1300,20 +1411,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf use_policy; //type: boolean
-        YLeaf policy_name; //type: string
-        YLeaf external; //type: empty
+        ydk::YLeaf use_policy; //type: boolean
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf external; //type: empty
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::DefaultInformation
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::AdminDistances : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::AdminDistances : public ydk::Entity
 {
     public:
         AdminDistances();
@@ -1321,11 +1434,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::AdminDistances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AdminDistance; //type: Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance
 
@@ -1334,7 +1449,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::AdminDistances : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::AdminDistances
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance : public ydk::Entity
 {
     public:
         AdminDistance();
@@ -1342,20 +1457,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_prefix; //type: string
-        YLeaf distance; //type: uint32
-        YLeaf prefix_list; //type: string
+        ydk::YLeaf address_prefix; //type: string
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf prefix_list; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::AdminDistances::AdminDistance
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Ispf : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Ispf : public ydk::Entity
 {
     public:
         Ispf();
@@ -1363,11 +1480,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ispf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class States; //type: Isis::Instances::Instance::Afs::Af::AfData::Ispf::States
 
@@ -1376,7 +1495,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ispf : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::Ispf
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Ispf::States : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Ispf::States : public ydk::Entity
 {
     public:
         States();
@@ -1384,11 +1503,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ispf::States : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class State; //type: Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State
 
@@ -1397,7 +1518,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ispf::States : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::Ispf::States
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State : public ydk::Entity
 {
     public:
         State();
@@ -1405,19 +1526,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf state; //type: IsisispfStateEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf state; //type: IsisispfState
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal : public ydk::Entity
 {
     public:
         MplsLdpGlobal();
@@ -1425,18 +1548,20 @@ class Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf auto_config; //type: boolean
+        ydk::YLeaf auto_config; //type: boolean
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::MplsLdpGlobal
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Mpls : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Mpls : public ydk::Entity
 {
     public:
         Mpls();
@@ -1444,15 +1569,17 @@ class Isis::Instances::Instance::Afs::Af::AfData::Mpls : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf igp_intact; //type: empty
-        YLeaf level; //type: IsisConfigurableLevelsEnum
-        YLeaf multicast_intact; //type: empty
+        ydk::YLeaf igp_intact; //type: empty
+        ydk::YLeaf level; //type: IsisConfigurableLevels
+        ydk::YLeaf multicast_intact; //type: empty
         class RouterId; //type: Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId> router_id;
@@ -1460,7 +1587,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Mpls : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::Mpls
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId : public ydk::Entity
 {
     public:
         RouterId();
@@ -1468,19 +1595,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf interface_name; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Metrics : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Metrics : public ydk::Entity
 {
     public:
         Metrics();
@@ -1488,11 +1617,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::Metrics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Metric; //type: Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric
 
@@ -1501,7 +1632,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Metrics : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::Metrics
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -1509,20 +1640,22 @@ class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf metric; //type: one of uint32, enumeration
-        class MetricEnum;
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf metric; //type: one of uint32, enumeration
+        class Metric_;
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Weights : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Weights : public ydk::Entity
 {
     public:
         Weights();
@@ -1530,11 +1663,13 @@ class Isis::Instances::Instance::Afs::Af::AfData::Weights : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Weight; //type: Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight
 
@@ -1543,7 +1678,7 @@ class Isis::Instances::Instance::Afs::Af::AfData::Weights : public Entity
 }; // Isis::Instances::Instance::Afs::Af::AfData::Weights
 
 
-class Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight : public Entity
+class Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight : public ydk::Entity
 {
     public:
         Weight();
@@ -1551,19 +1686,21 @@ class Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf weight; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf weight; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName : public ydk::Entity
 {
     public:
         TopologyName();
@@ -1571,24 +1708,26 @@ class Isis::Instances::Instance::Afs::Af::TopologyName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf topology_name; //type: string
-        YLeaf maximum_paths; //type: uint32
-        YLeaf topology_id; //type: uint32
-        YLeaf single_topology; //type: empty
-        YLeaf adjacency_check; //type: IsisAdjCheckEnum
-        YLeaf advertise_link_attributes; //type: boolean
-        YLeaf apply_weight; //type: IsisApplyWeightEnum
-        YLeaf default_admin_distance; //type: uint32
-        YLeaf advertise_passive_only; //type: empty
-        YLeaf ignore_attached_bit; //type: boolean
-        YLeaf attached_bit; //type: IsisAttachedBitEnum
-        YLeaf route_source_first_hop; //type: boolean
+        ydk::YLeaf topology_name; //type: string
+        ydk::YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf topology_id; //type: uint32
+        ydk::YLeaf single_topology; //type: empty
+        ydk::YLeaf adjacency_check; //type: IsisAdjCheck
+        ydk::YLeaf advertise_link_attributes; //type: boolean
+        ydk::YLeaf apply_weight; //type: IsisApplyWeight
+        ydk::YLeaf default_admin_distance; //type: uint32
+        ydk::YLeaf advertise_passive_only; //type: empty
+        ydk::YLeaf ignore_attached_bit; //type: boolean
+        ydk::YLeaf attached_bit; //type: IsisAttachedBit
+        ydk::YLeaf route_source_first_hop; //type: boolean
         class SegmentRouting; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting
         class MetricStyles; //type: Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles
         class FrrTable; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable
@@ -1636,7 +1775,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName : public Entity
 }; // Isis::Instances::Instance::Afs::Af::TopologyName
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting : public ydk::Entity
 {
     public:
         SegmentRouting();
@@ -1644,13 +1783,15 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mpls; //type: IsisLabelPreferenceEnum
+        ydk::YLeaf mpls; //type: IsisLabelPreference
         class PrefixSidMap; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap> prefix_sid_map;
@@ -1658,7 +1799,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting : public 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap : public ydk::Entity
 {
     public:
         PrefixSidMap();
@@ -1666,19 +1807,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf advertise_local; //type: empty
-        YLeaf receive; //type: boolean
+        ydk::YLeaf advertise_local; //type: empty
+        ydk::YLeaf receive; //type: boolean
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles : public ydk::Entity
 {
     public:
         MetricStyles();
@@ -1686,11 +1829,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MetricStyle; //type: Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle
 
@@ -1699,7 +1844,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles : public En
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle : public ydk::Entity
 {
     public:
         MetricStyle();
@@ -1707,20 +1852,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyl
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf style; //type: IsisMetricStyleEnum
-        YLeaf transition_state; //type: IsisMetricStyleTransitionEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf style; //type: IsisMetricStyle
+        ydk::YLeaf transition_state; //type: IsisMetricStyleTransition
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable : public ydk::Entity
 {
     public:
         FrrTable();
@@ -1728,11 +1875,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrLoadSharings; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings
         class PriorityLimits; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits
@@ -1749,7 +1898,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable : public Entity
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings : public ydk::Entity
 {
     public:
         FrrLoadSharings();
@@ -1757,11 +1906,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharing
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrLoadSharing; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing
 
@@ -1770,7 +1921,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharing
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing : public ydk::Entity
 {
     public:
         FrrLoadSharing();
@@ -1778,19 +1929,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharing
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf load_sharing; //type: IsisfrrLoadSharingEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf load_sharing; //type: IsisfrrLoadSharing
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits : public ydk::Entity
 {
     public:
         PriorityLimits();
@@ -1798,11 +1951,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PriorityLimit; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit
 
@@ -1811,7 +1966,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit : public ydk::Entity
 {
     public:
         PriorityLimit();
@@ -1819,20 +1974,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf frr_type; //type: IsisfrrEnum
-        YLeaf priority; //type: IsisPrefixPriorityEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf frr_type; //type: Isisfrr
+        ydk::YLeaf priority; //type: IsisPrefixPriority
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes : public ydk::Entity
 {
     public:
         FrrRemoteLfaPrefixes();
@@ -1840,11 +1997,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrRemoteLfaPrefix; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix
 
@@ -1853,7 +2012,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPr
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix : public ydk::Entity
 {
     public:
         FrrRemoteLfaPrefix();
@@ -1861,19 +2020,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf prefix_list_name; //type: string
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf prefix_list_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers : public ydk::Entity
 {
     public:
         FrrTiebreakers();
@@ -1881,11 +2042,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrTiebreaker; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker
 
@@ -1894,7 +2057,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker : public ydk::Entity
 {
     public:
         FrrTiebreaker();
@@ -1902,20 +2065,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf tiebreaker; //type: IsisfrrTiebreakerEnum
-        YLeaf index_; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf tiebreaker; //type: IsisfrrTiebreaker
+        ydk::YLeaf index_; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies : public ydk::Entity
 {
     public:
         FrrUseCandOnlies();
@@ -1923,11 +2088,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnli
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrUseCandOnly; //type: Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly
 
@@ -1936,7 +2103,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnli
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly : public ydk::Entity
 {
     public:
         FrrUseCandOnly();
@@ -1944,19 +2111,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnli
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf frr_type; //type: IsisfrrEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf frr_type; //type: Isisfrr
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::RouterId : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::RouterId : public ydk::Entity
 {
     public:
         RouterId();
@@ -1964,19 +2133,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::RouterId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf interface_name; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::RouterId
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities : public ydk::Entity
 {
     public:
         SpfPrefixPriorities();
@@ -1984,11 +2155,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpfPrefixPriority; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority
 
@@ -1997,7 +2170,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities : pu
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority : public ydk::Entity
 {
     public:
         SpfPrefixPriority();
@@ -2005,21 +2178,23 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::Spf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf prefix_priority_type; //type: IsisPrefixPriorityEnum
-        YLeaf admin_tag; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf prefix_priority_type; //type: IsisPrefixPriority
+        ydk::YLeaf admin_tag; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes : public ydk::Entity
 {
     public:
         SummaryPrefixes();
@@ -2027,11 +2202,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SummaryPrefix; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix
 
@@ -2040,7 +2217,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes : public
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix : public ydk::Entity
 {
     public:
         SummaryPrefix();
@@ -2048,20 +2225,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::Summary
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_prefix; //type: string
-        YLeaf tag; //type: uint32
-        YLeaf level; //type: uint32
+        ydk::YLeaf address_prefix; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf level; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes::SummaryPrefix
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance : public ydk::Entity
 {
     public:
         MicroLoopAvoidance();
@@ -2069,19 +2248,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: IsisMicroLoopAvoidanceEnum
-        YLeaf rib_update_delay; //type: uint32
+        ydk::YLeaf enable; //type: IsisMicroLoopAvoidance
+        ydk::YLeaf rib_update_delay; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp : public ydk::Entity
 {
     public:
         Ucmp();
@@ -2089,13 +2270,15 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf delay_interval; //type: uint32
+        ydk::YLeaf delay_interval; //type: uint32
         class Enable; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable
         class ExcludeInterfaces; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces
 
@@ -2105,7 +2288,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp : public Entity
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable : public ydk::Entity
 {
     public:
         Enable();
@@ -2113,19 +2296,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf variance; //type: uint32
-        YLeaf prefix_list_name; //type: string
+        ydk::YLeaf variance; //type: uint32
+        ydk::YLeaf prefix_list_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::Enable
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces : public ydk::Entity
 {
     public:
         ExcludeInterfaces();
@@ -2133,11 +2318,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ExcludeInterface; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface
 
@@ -2146,7 +2333,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface : public ydk::Entity
 {
     public:
         ExcludeInterface();
@@ -2154,18 +2341,20 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp::ExcludeInterfaces::ExcludeInterface
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes : public ydk::Entity
 {
     public:
         MaxRedistPrefixes();
@@ -2173,11 +2362,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MaxRedistPrefix; //type: Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix
 
@@ -2186,7 +2377,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes : publ
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix : public ydk::Entity
 {
     public:
         MaxRedistPrefix();
@@ -2194,19 +2385,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf prefix_limit; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf prefix_limit; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Propagations : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Propagations : public ydk::Entity
 {
     public:
         Propagations();
@@ -2214,11 +2407,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Propagations : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Propagation; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation
 
@@ -2227,7 +2422,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Propagations : public En
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Propagations
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation : public ydk::Entity
 {
     public:
         Propagation();
@@ -2235,20 +2430,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_level; //type: IsisInternalLevelEnum
-        YLeaf destination_level; //type: IsisInternalLevelEnum
-        YLeaf route_policy_name; //type: string
+        ydk::YLeaf source_level; //type: IsisInternalLevel
+        ydk::YLeaf destination_level; //type: IsisInternalLevel
+        ydk::YLeaf route_policy_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions : public ydk::Entity
 {
     public:
         Redistributions();
@@ -2256,11 +2453,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Redistribution; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution
 
@@ -2269,7 +2468,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions : public
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution : public ydk::Entity
 {
     public:
         Redistribution();
@@ -2277,13 +2476,15 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: IsisRedistProtoEnum
+        ydk::YLeaf protocol_name; //type: IsisRedistProto
         class ConnectedOrStaticOrRipOrSubscriberOrMobile; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile
         class OspfOrOspfv3OrIsisOrApplication; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication
         class Bgp; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp
@@ -2297,7 +2498,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistr
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile : public ydk::Entity
 {
     public:
         ConnectedOrStaticOrRipOrSubscriberOrMobile();
@@ -2305,22 +2506,24 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf levels; //type: IsisConfigurableLevelsEnum
-        YLeaf route_policy_name; //type: string
-        YLeaf metric_type; //type: IsisMetricEnum
-        YLeaf ospf_route_type; //type: int32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf levels; //type: IsisConfigurableLevels
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf metric_type; //type: IsisMetric
+        ydk::YLeaf ospf_route_type; //type: int32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication : public ydk::Entity
 {
     public:
         OspfOrOspfv3OrIsisOrApplication();
@@ -2328,23 +2531,25 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf levels; //type: IsisConfigurableLevelsEnum
-        YLeaf route_policy_name; //type: string
-        YLeaf metric_type; //type: IsisMetricEnum
-        YLeaf ospf_route_type; //type: int32
+        ydk::YLeaf instance_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf levels; //type: IsisConfigurableLevels
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf metric_type; //type: IsisMetric
+        ydk::YLeaf ospf_route_type; //type: int32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -2352,24 +2557,26 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as_xx; //type: uint32
-        YLeaf as_yy; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf levels; //type: IsisConfigurableLevelsEnum
-        YLeaf route_policy_name; //type: string
-        YLeaf metric_type; //type: IsisMetricEnum
-        YLeaf ospf_route_type; //type: int32
+        ydk::YLeaf as_xx; //type: uint32
+        ydk::YLeaf as_yy; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf levels; //type: IsisConfigurableLevels
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf metric_type; //type: IsisMetric
+        ydk::YLeaf ospf_route_type; //type: int32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp : public ydk::Entity
 {
     public:
         Eigrp();
@@ -2377,23 +2584,25 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as_zz; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf levels; //type: IsisConfigurableLevelsEnum
-        YLeaf route_policy_name; //type: string
-        YLeaf metric_type; //type: IsisMetricEnum
-        YLeaf ospf_route_type; //type: int32
+        ydk::YLeaf as_zz; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf levels; //type: IsisConfigurableLevels
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf metric_type; //type: IsisMetric
+        ydk::YLeaf ospf_route_type; //type: int32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals : public ydk::Entity
 {
     public:
         SpfPeriodicIntervals();
@@ -2401,11 +2610,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpfPeriodicInterval; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval
 
@@ -2414,7 +2625,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals : p
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval : public ydk::Entity
 {
     public:
         SpfPeriodicInterval();
@@ -2422,19 +2633,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::Sp
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf periodic_interval; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf periodic_interval; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals : public ydk::Entity
 {
     public:
         SpfIntervals();
@@ -2442,11 +2655,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpfInterval; //type: Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval
 
@@ -2455,7 +2670,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals : public En
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval : public ydk::Entity
 {
     public:
         SpfInterval();
@@ -2463,21 +2678,23 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterva
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf maximum_wait; //type: uint32
-        YLeaf initial_wait; //type: uint32
-        YLeaf secondary_wait; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf maximum_wait; //type: uint32
+        ydk::YLeaf initial_wait; //type: uint32
+        ydk::YLeaf secondary_wait; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence : public ydk::Entity
 {
     public:
         MonitorConvergence();
@@ -2485,20 +2702,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
-        YLeaf track_ip_frr; //type: empty
-        YLeaf prefix_list; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf track_ip_frr; //type: empty
+        ydk::YLeaf prefix_list; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::MonitorConvergence
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation : public ydk::Entity
 {
     public:
         DefaultInformation();
@@ -2506,20 +2725,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf use_policy; //type: boolean
-        YLeaf policy_name; //type: string
-        YLeaf external; //type: empty
+        ydk::YLeaf use_policy; //type: boolean
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf external; //type: empty
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::DefaultInformation
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances : public ydk::Entity
 {
     public:
         AdminDistances();
@@ -2527,11 +2748,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AdminDistance; //type: Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance
 
@@ -2540,7 +2763,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances : public 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance : public ydk::Entity
 {
     public:
         AdminDistance();
@@ -2548,20 +2771,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDis
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_prefix; //type: string
-        YLeaf distance; //type: uint32
-        YLeaf prefix_list; //type: string
+        ydk::YLeaf address_prefix; //type: string
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf prefix_list; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::AdminDistances::AdminDistance
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf : public ydk::Entity
 {
     public:
         Ispf();
@@ -2569,11 +2794,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class States; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States
 
@@ -2582,7 +2809,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf : public Entity
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Ispf
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States : public ydk::Entity
 {
     public:
         States();
@@ -2590,11 +2817,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class State; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State
 
@@ -2603,7 +2832,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States : public En
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State : public ydk::Entity
 {
     public:
         State();
@@ -2611,19 +2840,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf state; //type: IsisispfStateEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf state; //type: IsisispfState
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal : public ydk::Entity
 {
     public:
         MplsLdpGlobal();
@@ -2631,18 +2862,20 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf auto_config; //type: boolean
+        ydk::YLeaf auto_config; //type: boolean
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::MplsLdpGlobal
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Mpls : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Mpls : public ydk::Entity
 {
     public:
         Mpls();
@@ -2650,15 +2883,17 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Mpls : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf igp_intact; //type: empty
-        YLeaf level; //type: IsisConfigurableLevelsEnum
-        YLeaf multicast_intact; //type: empty
+        ydk::YLeaf igp_intact; //type: empty
+        ydk::YLeaf level; //type: IsisConfigurableLevels
+        ydk::YLeaf multicast_intact; //type: empty
         class RouterId; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId
 
         std::shared_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId> router_id;
@@ -2666,7 +2901,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Mpls : public Entity
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Mpls
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId : public ydk::Entity
 {
     public:
         RouterId();
@@ -2674,19 +2909,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf interface_name; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics : public ydk::Entity
 {
     public:
         Metrics();
@@ -2694,11 +2931,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Metric; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric
 
@@ -2707,7 +2946,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics : public Entity
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Metrics
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric : public ydk::Entity
 {
     public:
         Metric();
@@ -2715,20 +2954,22 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf metric; //type: one of uint32, enumeration
-        class MetricEnum;
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf metric; //type: one of uint32, enumeration
+        class Metric_;
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Weights : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Weights : public ydk::Entity
 {
     public:
         Weights();
@@ -2736,11 +2977,13 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Weights : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Weight; //type: Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight
 
@@ -2749,7 +2992,7 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Weights : public Entity
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Weights
 
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight : public Entity
+class Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight : public ydk::Entity
 {
     public:
         Weight();
@@ -2757,19 +3000,21 @@ class Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf weight; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf weight; //type: uint32
 
 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight
 
 
-class Isis::Instances::Instance::LspRefreshIntervals : public Entity
+class Isis::Instances::Instance::LspRefreshIntervals : public ydk::Entity
 {
     public:
         LspRefreshIntervals();
@@ -2777,11 +3022,13 @@ class Isis::Instances::Instance::LspRefreshIntervals : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspRefreshInterval; //type: Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval
 
@@ -2790,7 +3037,7 @@ class Isis::Instances::Instance::LspRefreshIntervals : public Entity
 }; // Isis::Instances::Instance::LspRefreshIntervals
 
 
-class Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval : public Entity
+class Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval : public ydk::Entity
 {
     public:
         LspRefreshInterval();
@@ -2798,19 +3045,21 @@ class Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf interval; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf interval; //type: uint32
 
 }; // Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval
 
 
-class Isis::Instances::Instance::Distribute : public Entity
+class Isis::Instances::Instance::Distribute : public ydk::Entity
 {
     public:
         Distribute();
@@ -2818,20 +3067,22 @@ class Isis::Instances::Instance::Distribute : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dist_inst_id; //type: uint32
-        YLeaf level; //type: IsisConfigurableLevelsEnum
-        YLeaf dist_throttle; //type: uint32
+        ydk::YLeaf dist_inst_id; //type: uint32
+        ydk::YLeaf level; //type: IsisConfigurableLevels
+        ydk::YLeaf dist_throttle; //type: uint32
 
 }; // Isis::Instances::Instance::Distribute
 
 
-class Isis::Instances::Instance::LspAcceptPasswords : public Entity
+class Isis::Instances::Instance::LspAcceptPasswords : public ydk::Entity
 {
     public:
         LspAcceptPasswords();
@@ -2839,11 +3090,13 @@ class Isis::Instances::Instance::LspAcceptPasswords : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspAcceptPassword; //type: Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword
 
@@ -2852,7 +3105,7 @@ class Isis::Instances::Instance::LspAcceptPasswords : public Entity
 }; // Isis::Instances::Instance::LspAcceptPasswords
 
 
-class Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword : public Entity
+class Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword : public ydk::Entity
 {
     public:
         LspAcceptPassword();
@@ -2860,19 +3113,21 @@ class Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf password; //type: string
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf password; //type: string
 
 }; // Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword
 
 
-class Isis::Instances::Instance::LspMtus : public Entity
+class Isis::Instances::Instance::LspMtus : public ydk::Entity
 {
     public:
         LspMtus();
@@ -2880,11 +3135,13 @@ class Isis::Instances::Instance::LspMtus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspMtu; //type: Isis::Instances::Instance::LspMtus::LspMtu
 
@@ -2893,7 +3150,7 @@ class Isis::Instances::Instance::LspMtus : public Entity
 }; // Isis::Instances::Instance::LspMtus
 
 
-class Isis::Instances::Instance::LspMtus::LspMtu : public Entity
+class Isis::Instances::Instance::LspMtus::LspMtu : public ydk::Entity
 {
     public:
         LspMtu();
@@ -2901,19 +3158,21 @@ class Isis::Instances::Instance::LspMtus::LspMtu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf mtu; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf mtu; //type: uint32
 
 }; // Isis::Instances::Instance::LspMtus::LspMtu
 
 
-class Isis::Instances::Instance::Nsf : public Entity
+class Isis::Instances::Instance::Nsf : public ydk::Entity
 {
     public:
         Nsf();
@@ -2921,21 +3180,23 @@ class Isis::Instances::Instance::Nsf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flavor; //type: IsisNsfFlavorEnum
-        YLeaf interface_timer; //type: uint32
-        YLeaf max_interface_timer_expiry; //type: uint32
-        YLeaf lifetime; //type: uint32
+        ydk::YLeaf flavor; //type: IsisNsfFlavor
+        ydk::YLeaf interface_timer; //type: uint32
+        ydk::YLeaf max_interface_timer_expiry; //type: uint32
+        ydk::YLeaf lifetime; //type: uint32
 
 }; // Isis::Instances::Instance::Nsf
 
 
-class Isis::Instances::Instance::LinkGroups : public Entity
+class Isis::Instances::Instance::LinkGroups : public ydk::Entity
 {
     public:
         LinkGroups();
@@ -2943,11 +3204,13 @@ class Isis::Instances::Instance::LinkGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LinkGroup; //type: Isis::Instances::Instance::LinkGroups::LinkGroup
 
@@ -2956,7 +3219,7 @@ class Isis::Instances::Instance::LinkGroups : public Entity
 }; // Isis::Instances::Instance::LinkGroups
 
 
-class Isis::Instances::Instance::LinkGroups::LinkGroup : public Entity
+class Isis::Instances::Instance::LinkGroups::LinkGroup : public ydk::Entity
 {
     public:
         LinkGroup();
@@ -2964,22 +3227,24 @@ class Isis::Instances::Instance::LinkGroups::LinkGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_group_name; //type: string
-        YLeaf enable; //type: empty
-        YLeaf metric_offset; //type: uint32
-        YLeaf revert_members; //type: uint32
-        YLeaf minimum_members; //type: uint32
+        ydk::YLeaf link_group_name; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf metric_offset; //type: uint32
+        ydk::YLeaf revert_members; //type: uint32
+        ydk::YLeaf minimum_members; //type: uint32
 
 }; // Isis::Instances::Instance::LinkGroups::LinkGroup
 
 
-class Isis::Instances::Instance::LspCheckIntervals : public Entity
+class Isis::Instances::Instance::LspCheckIntervals : public ydk::Entity
 {
     public:
         LspCheckIntervals();
@@ -2987,11 +3252,13 @@ class Isis::Instances::Instance::LspCheckIntervals : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspCheckInterval; //type: Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval
 
@@ -3000,7 +3267,7 @@ class Isis::Instances::Instance::LspCheckIntervals : public Entity
 }; // Isis::Instances::Instance::LspCheckIntervals
 
 
-class Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval : public Entity
+class Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval : public ydk::Entity
 {
     public:
         LspCheckInterval();
@@ -3008,19 +3275,21 @@ class Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf interval; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf interval; //type: uint32
 
 }; // Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval
 
 
-class Isis::Instances::Instance::LspPasswords : public Entity
+class Isis::Instances::Instance::LspPasswords : public ydk::Entity
 {
     public:
         LspPasswords();
@@ -3028,11 +3297,13 @@ class Isis::Instances::Instance::LspPasswords : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspPassword; //type: Isis::Instances::Instance::LspPasswords::LspPassword
 
@@ -3041,7 +3312,7 @@ class Isis::Instances::Instance::LspPasswords : public Entity
 }; // Isis::Instances::Instance::LspPasswords
 
 
-class Isis::Instances::Instance::LspPasswords::LspPassword : public Entity
+class Isis::Instances::Instance::LspPasswords::LspPassword : public ydk::Entity
 {
     public:
         LspPassword();
@@ -3049,22 +3320,24 @@ class Isis::Instances::Instance::LspPasswords::LspPassword : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf algorithm; //type: IsisAuthenticationAlgorithmEnum
-        YLeaf failure_mode; //type: IsisAuthenticationFailureModeEnum
-        YLeaf authentication_type; //type: IsisSnpAuthEnum
-        YLeaf password; //type: string
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf algorithm; //type: IsisAuthenticationAlgorithm
+        ydk::YLeaf failure_mode; //type: IsisAuthenticationFailureMode
+        ydk::YLeaf authentication_type; //type: IsisSnpAuth
+        ydk::YLeaf password; //type: string
 
 }; // Isis::Instances::Instance::LspPasswords::LspPassword
 
 
-class Isis::Instances::Instance::Nets : public Entity
+class Isis::Instances::Instance::Nets : public ydk::Entity
 {
     public:
         Nets();
@@ -3072,11 +3345,13 @@ class Isis::Instances::Instance::Nets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Net; //type: Isis::Instances::Instance::Nets::Net
 
@@ -3085,7 +3360,7 @@ class Isis::Instances::Instance::Nets : public Entity
 }; // Isis::Instances::Instance::Nets
 
 
-class Isis::Instances::Instance::Nets::Net : public Entity
+class Isis::Instances::Instance::Nets::Net : public ydk::Entity
 {
     public:
         Net();
@@ -3093,18 +3368,20 @@ class Isis::Instances::Instance::Nets::Net : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf net_name; //type: string
+        ydk::YLeaf net_name; //type: string
 
 }; // Isis::Instances::Instance::Nets::Net
 
 
-class Isis::Instances::Instance::LspLifetimes : public Entity
+class Isis::Instances::Instance::LspLifetimes : public ydk::Entity
 {
     public:
         LspLifetimes();
@@ -3112,11 +3389,13 @@ class Isis::Instances::Instance::LspLifetimes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspLifetime; //type: Isis::Instances::Instance::LspLifetimes::LspLifetime
 
@@ -3125,7 +3404,7 @@ class Isis::Instances::Instance::LspLifetimes : public Entity
 }; // Isis::Instances::Instance::LspLifetimes
 
 
-class Isis::Instances::Instance::LspLifetimes::LspLifetime : public Entity
+class Isis::Instances::Instance::LspLifetimes::LspLifetime : public ydk::Entity
 {
     public:
         LspLifetime();
@@ -3133,19 +3412,21 @@ class Isis::Instances::Instance::LspLifetimes::LspLifetime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf lifetime; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf lifetime; //type: uint32
 
 }; // Isis::Instances::Instance::LspLifetimes::LspLifetime
 
 
-class Isis::Instances::Instance::OverloadBits : public Entity
+class Isis::Instances::Instance::OverloadBits : public ydk::Entity
 {
     public:
         OverloadBits();
@@ -3153,11 +3434,13 @@ class Isis::Instances::Instance::OverloadBits : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class OverloadBit; //type: Isis::Instances::Instance::OverloadBits::OverloadBit
 
@@ -3166,7 +3449,7 @@ class Isis::Instances::Instance::OverloadBits : public Entity
 }; // Isis::Instances::Instance::OverloadBits
 
 
-class Isis::Instances::Instance::OverloadBits::OverloadBit : public Entity
+class Isis::Instances::Instance::OverloadBits::OverloadBit : public ydk::Entity
 {
     public:
         OverloadBit();
@@ -3174,22 +3457,24 @@ class Isis::Instances::Instance::OverloadBits::OverloadBit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf overload_bit_mode; //type: IsisOverloadBitModeEnum
-        YLeaf hippity_period; //type: uint32
-        YLeaf external_adv_type; //type: IsisAdvTypeExternalEnum
-        YLeaf inter_level_adv_type; //type: IsisAdvTypeInterLevelEnum
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf overload_bit_mode; //type: IsisOverloadBitMode
+        ydk::YLeaf hippity_period; //type: uint32
+        ydk::YLeaf external_adv_type; //type: IsisAdvTypeExternal
+        ydk::YLeaf inter_level_adv_type; //type: IsisAdvTypeInterLevel
 
 }; // Isis::Instances::Instance::OverloadBits::OverloadBit
 
 
-class Isis::Instances::Instance::Interfaces : public Entity
+class Isis::Instances::Instance::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -3197,11 +3482,13 @@ class Isis::Instances::Instance::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Isis::Instances::Instance::Interfaces::Interface
 
@@ -3210,7 +3497,7 @@ class Isis::Instances::Instance::Interfaces : public Entity
 }; // Isis::Instances::Instance::Interfaces
 
 
-class Isis::Instances::Instance::Interfaces::Interface : public Entity
+class Isis::Instances::Instance::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3218,19 +3505,21 @@ class Isis::Instances::Instance::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf running; //type: empty
-        YLeaf circuit_type; //type: IsisConfigurableLevelsEnum
-        YLeaf point_to_point; //type: empty
-        YLeaf state; //type: IsisInterfaceStateEnum
-        YLeaf mesh_group; //type: one of uint32, enumeration
-        YLeaf link_down_fast_detect; //type: empty
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf circuit_type; //type: IsisConfigurableLevels
+        ydk::YLeaf point_to_point; //type: empty
+        ydk::YLeaf state; //type: IsisInterfaceState
+        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
+        ydk::YLeaf link_down_fast_detect; //type: empty
         class LspRetransmitThrottleIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
         class LspRetransmitIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals
         class Bfd; //type: Isis::Instances::Instance::Interfaces::Interface::Bfd
@@ -3260,12 +3549,12 @@ class Isis::Instances::Instance::Interfaces::Interface : public Entity
         std::shared_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals> lsp_retransmit_throttle_intervals;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears> prefix_attribute_n_flag_clears;
         std::shared_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::Priorities> priorities;
-                class MeshGroupEnum;
+                class MeshGroup;
 
 }; // Isis::Instances::Instance::Interfaces::Interface
 
 
-class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals : public Entity
+class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals : public ydk::Entity
 {
     public:
         LspRetransmitThrottleIntervals();
@@ -3273,11 +3562,13 @@ class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleInt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspRetransmitThrottleInterval; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval
 
@@ -3286,7 +3577,7 @@ class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleInt
 }; // Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
 
 
-class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval : public Entity
+class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval : public ydk::Entity
 {
     public:
         LspRetransmitThrottleInterval();
@@ -3294,19 +3585,21 @@ class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleInt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf interval; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf interval; //type: uint32
 
 }; // Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval
 
 
-class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals : public Entity
+class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals : public ydk::Entity
 {
     public:
         LspRetransmitIntervals();
@@ -3314,11 +3607,13 @@ class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspRetransmitInterval; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval
 
@@ -3327,7 +3622,7 @@ class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals :
 }; // Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals
 
 
-class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval : public Entity
+class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval : public ydk::Entity
 {
     public:
         LspRetransmitInterval();
@@ -3335,19 +3630,21 @@ class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf level; //type: IsisInternalLevelEnum
-        YLeaf interval; //type: uint32
+        ydk::YLeaf level; //type: IsisInternalLevel
+        ydk::YLeaf interval; //type: uint32
 
 }; // Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval
 
 
-class Isis::Instances::Instance::Interfaces::Interface::Bfd : public Entity
+class Isis::Instances::Instance::Interfaces::Interface::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -3355,21 +3652,23 @@ class Isis::Instances::Instance::Interfaces::Interface::Bfd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable_ipv6; //type: boolean
-        YLeaf enable_ipv4; //type: boolean
-        YLeaf interval; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf enable_ipv6; //type: boolean
+        ydk::YLeaf enable_ipv4; //type: boolean
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Isis::Instances::Instance::Interfaces::Interface::Bfd
 
 
-class Isis::Instances::Instance::Interfaces::Interface::Priorities : public Entity
+class Isis::Instances::Instance::Interfaces::Interface::Priorities : public ydk::Entity
 {
     public:
         Priorities();
@@ -3377,11 +3676,13 @@ class Isis::Instances::Instance::Interfaces::Interface::Priorities : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Priority; //type: Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority
 
@@ -3389,450 +3690,450 @@ class Isis::Instances::Instance::Interfaces::Interface::Priorities : public Enti
         
 }; // Isis::Instances::Instance::Interfaces::Interface::Priorities
 
-class IsisSnpAuthEnum : public Enum
+class IsisInterfaceState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf send_only;
-        static const Enum::YLeaf full;
+        static const ydk::Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf suppressed;
+        static const ydk::Enum::YLeaf passive;
 
 };
 
-class IsisMibMaxAreaAddressMismatchBooleanEnum : public Enum
+class IsisAttachedBit : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf area;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
 
 };
 
-class IsisMibLspTooLargeToPropagateBooleanEnum : public Enum
+class IsisRemoteLfa : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf remote_lfa_none;
+        static const ydk::Enum::YLeaf remote_lfa_tunnel_ldp;
 
 };
 
-class IsisMibSequenceNumberSkipBooleanEnum : public Enum
+class IsisMibManualAddressDropsBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisInterfaceFrrTiebreakerEnum : public Enum
+class IsisfrrLoadSharing : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf node_protecting;
-        static const Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
-class IsisAuthenticationAlgorithmEnum : public Enum
+class IsisMibAuthenticationFailureBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf cleartext;
-        static const Enum::YLeaf hmac_md5;
-        static const Enum::YLeaf keychain;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisOverloadBitModeEnum : public Enum
+class IsisMibCorruptedLspDetectedBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf permanently_set;
-        static const Enum::YLeaf startup_period;
-        static const Enum::YLeaf wait_for_bgp;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMibRejectedAdjacencyBooleanEnum : public Enum
+class IsisMetric : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf external;
 
 };
 
-class IsisMibCorruptedLspDetectedBooleanEnum : public Enum
+class IsisMibLspErrorDetectedBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisAdjCheckEnum : public Enum
+class IsisAuthenticationFailureMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf send_only;
 
 };
 
-class IsisispfStateEnum : public Enum
+class IsisHelloPadding : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf never;
+        static const ydk::Enum::YLeaf sometimes;
 
 };
 
-class IsisfrrLoadSharingEnum : public Enum
+class IsisMetricStyle : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf old_metric_style;
+        static const ydk::Enum::YLeaf new_metric_style;
+        static const ydk::Enum::YLeaf both_metric_style;
 
 };
 
-class IsisMibAuthenticationFailureBooleanEnum : public Enum
+class IsisMetricStyleTransition : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 
-class IsisInterfaceStateEnum : public Enum
+class IsisRedistProto : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf shutdown;
-        static const Enum::YLeaf suppressed;
-        static const Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospfv3;
+        static const ydk::Enum::YLeaf rip;
+        static const ydk::Enum::YLeaf eigrp;
+        static const ydk::Enum::YLeaf subscriber;
+        static const ydk::Enum::YLeaf application;
+        static const ydk::Enum::YLeaf mobile;
 
 };
 
-class IsisTracingModeEnum : public Enum
+class IsisTracingMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf off;
-        static const Enum::YLeaf basic;
-        static const Enum::YLeaf enhanced;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf basic;
+        static const ydk::Enum::YLeaf enhanced;
 
 };
 
-class IsisMetricStyleEnum : public Enum
+class IsisMibAllBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf old_metric_style;
-        static const Enum::YLeaf new_metric_style;
-        static const Enum::YLeaf both_metric_style;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisNsfFlavorEnum : public Enum
+class IsisMibLspTooLargeToPropagateBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf cisco_proprietary_nsf;
-        static const Enum::YLeaf ietf_standard_nsf;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisInterfaceAfStateEnum : public Enum
+class IsisNsfFlavor : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf cisco_proprietary_nsf;
+        static const ydk::Enum::YLeaf ietf_standard_nsf;
 
 };
 
-class IsisApplyWeightEnum : public Enum
+class IsisMibVersionSkewBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ecmp_only;
-        static const Enum::YLeaf ucmp_only;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisPrefixPriorityEnum : public Enum
+class Isissid : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf critical_priority;
-        static const Enum::YLeaf high_priority;
-        static const Enum::YLeaf medium_priority;
+        static const ydk::Enum::YLeaf index_;
+        static const ydk::Enum::YLeaf absolute;
 
 };
 
-class IsisMibAuthenticationTypeFailureBooleanEnum : public Enum
+class IsisMibSequenceNumberSkipBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMicroLoopAvoidanceEnum : public Enum
+class IsisMibAreaMismatchBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_set;
-        static const Enum::YLeaf micro_loop_avoidance_all;
-        static const Enum::YLeaf micro_loop_avoidance_protected;
-        static const Enum::YLeaf micro_loop_avoidance_segement_routing;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisAdvTypeExternalEnum : public Enum
+class IsisphpFlag : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf external;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
-class IsisRemoteLfaEnum : public Enum
+class IsisMibOwnLspPurgeBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf remote_lfa_none;
-        static const Enum::YLeaf remote_lfa_tunnel_ldp;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMibAreaMismatchBooleanEnum : public Enum
+class IsisfrrTiebreaker : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf lc_disjoint;
+        static const ydk::Enum::YLeaf lowest_backup_metric;
+        static const ydk::Enum::YLeaf node_protecting;
+        static const ydk::Enum::YLeaf primary_path;
+        static const ydk::Enum::YLeaf secondary_path;
+        static const ydk::Enum::YLeaf srlg_disjoint;
 
 };
 
-class IsisMibAttemptToExceedMaxSequenceBooleanEnum : public Enum
+class IsisSnpAuth : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf send_only;
+        static const ydk::Enum::YLeaf full;
 
 };
 
-class IsisConfigurableLevelsEnum : public Enum
+class IsisOverloadBitMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf level1;
-        static const Enum::YLeaf level2;
-        static const Enum::YLeaf level1_and2;
+        static const ydk::Enum::YLeaf permanently_set;
+        static const ydk::Enum::YLeaf startup_period;
+        static const ydk::Enum::YLeaf wait_for_bgp;
 
 };
 
-class IsisfrrTiebreakerEnum : public Enum
+class IsisMibRejectedAdjacencyBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf downstream;
-        static const Enum::YLeaf lc_disjoint;
-        static const Enum::YLeaf lowest_backup_metric;
-        static const Enum::YLeaf node_protecting;
-        static const Enum::YLeaf primary_path;
-        static const Enum::YLeaf secondary_path;
-        static const Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMibManualAddressDropsBooleanEnum : public Enum
+class IsisMibDatabaseOverFlowBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMetricStyleTransitionEnum : public Enum
+class IsisMibAdjacencyChangeBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disabled;
-        static const Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisexplicitNullFlagEnum : public Enum
+class IsisAdvTypeExternal : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf external;
 
 };
 
-class IsisMetricEnum : public Enum
+class IsisMibIdLengthMismatchBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf internal;
-        static const Enum::YLeaf external;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisHelloPaddingEnum : public Enum
+class IsisAuthenticationAlgorithm : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf never;
-        static const Enum::YLeaf sometimes;
+        static const ydk::Enum::YLeaf cleartext;
+        static const ydk::Enum::YLeaf hmac_md5;
+        static const ydk::Enum::YLeaf keychain;
 
 };
 
-class IsisMibDatabaseOverFlowBooleanEnum : public Enum
+class IsisMicroLoopAvoidance : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf micro_loop_avoidance_all;
+        static const ydk::Enum::YLeaf micro_loop_avoidance_protected;
+        static const ydk::Enum::YLeaf micro_loop_avoidance_segement_routing;
 
 };
 
-class IsisAdvTypeInterLevelEnum : public Enum
+class IsisApplyWeight : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inter_level;
+        static const ydk::Enum::YLeaf ecmp_only;
+        static const ydk::Enum::YLeaf ucmp_only;
 
 };
 
-class IsisAuthenticationFailureModeEnum : public Enum
+class Isisfrr : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf drop;
-        static const Enum::YLeaf send_only;
+        static const ydk::Enum::YLeaf per_link;
+        static const ydk::Enum::YLeaf per_prefix;
 
 };
 
-class IsisMibProtocolsSupportedMismatchBooleanEnum : public Enum
+class IsisInterfaceFrrTiebreaker : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf node_protecting;
+        static const ydk::Enum::YLeaf srlg_disjoint;
 
 };
 
-class IsisRedistProtoEnum : public Enum
+class IsisAdjCheck : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf connected;
-        static const Enum::YLeaf static_;
-        static const Enum::YLeaf ospf;
-        static const Enum::YLeaf bgp;
-        static const Enum::YLeaf isis;
-        static const Enum::YLeaf ospfv3;
-        static const Enum::YLeaf rip;
-        static const Enum::YLeaf eigrp;
-        static const Enum::YLeaf subscriber;
-        static const Enum::YLeaf application;
-        static const Enum::YLeaf mobile;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class IsisphpFlagEnum : public Enum
+class IsisMibProtocolsSupportedMismatchBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enable;
-        static const Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMibIdLengthMismatchBooleanEnum : public Enum
+class NflagClear : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class IsisMibAllBooleanEnum : public Enum
+class IsisMibAttemptToExceedMaxSequenceBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMibOriginatedLspBufferSizeMismatchBooleanEnum : public Enum
+class IsisAdvTypeInterLevel : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf inter_level;
 
 };
 
-class IsissidEnum : public Enum
+class IsisInterfaceAfState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf index_;
-        static const Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
-class IsisfrrEnum : public Enum
+class IsisPrefixPriority : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf per_link;
-        static const Enum::YLeaf per_prefix;
+        static const ydk::Enum::YLeaf critical_priority;
+        static const ydk::Enum::YLeaf high_priority;
+        static const ydk::Enum::YLeaf medium_priority;
 
 };
 
-class IsisAttachedBitEnum : public Enum
+class IsisLabelPreference : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf area;
-        static const Enum::YLeaf on;
-        static const Enum::YLeaf off;
+        static const ydk::Enum::YLeaf ldp;
+        static const ydk::Enum::YLeaf segment_routing;
 
 };
 
-class NflagClearEnum : public Enum
+class IsisConfigurableLevels : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level1_and2;
 
 };
 
-class IsisLabelPreferenceEnum : public Enum
+class IsisMibAuthenticationTypeFailureBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ldp;
-        static const Enum::YLeaf segment_routing;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMibAdjacencyChangeBooleanEnum : public Enum
+class IsisispfState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 
-class IsisMibLspErrorDetectedBooleanEnum : public Enum
+class IsisexplicitNullFlag : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class IsisMibOwnLspPurgeBooleanEnum : public Enum
+class IsisMibOriginatedLspBufferSizeMismatchBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class IsisMibVersionSkewBooleanEnum : public Enum
+class IsisMibMaxAreaAddressMismatchBoolean : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::MetricEnum : public Enum
+class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric_ : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf maximum;
+        static const ydk::Enum::YLeaf maximum;
 
 };
 
-class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::MetricEnum : public Enum
+class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::Metric_ : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf maximum;
+        static const ydk::Enum::YLeaf maximum;
 
 };
 
-class Isis::Instances::Instance::Interfaces::Interface::MeshGroupEnum : public Enum
+class Isis::Instances::Instance::Interfaces::Interface::MeshGroup : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf blocked;
+        static const ydk::Enum::YLeaf blocked;
 
 };
 

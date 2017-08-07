@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_SONET_MIB {
 
-class CiscoSonetMib : public Entity
+class CiscoSonetMib : public ydk::Entity
 {
     public:
         CiscoSonetMib();
@@ -18,15 +18,18 @@ class CiscoSonetMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Csapsconfig; //type: CiscoSonetMib::Csapsconfig
         class Csnotifications; //type: CiscoSonetMib::Csnotifications
@@ -42,24 +45,24 @@ class CiscoSonetMib : public Entity
         class Csstatstable; //type: CiscoSonetMib::Csstatstable
         class Csau4Tug3Configtable; //type: CiscoSonetMib::Csau4Tug3Configtable
 
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfig> csapsconfig_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfigtable> csapsconfigtable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csau4Tug3Configtable> csau4tug3configtable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csconfigtable> csconfigtable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cslfarendtotaltable> cslfarendtotaltable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csltotaltable> csltotaltable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csnotifications> csnotifications_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cspfarendtotaltable> cspfarendtotaltable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptotaltable> csptotaltable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptracetable> csptracetable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstatstable> csstatstable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstotaltable> csstotaltable_;
-        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstracetable> csstracetable_;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfig> csapsconfig;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfigtable> csapsconfigtable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csau4Tug3Configtable> csau4tug3configtable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csconfigtable> csconfigtable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cslfarendtotaltable> cslfarendtotaltable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csltotaltable> csltotaltable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csnotifications> csnotifications;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cspfarendtotaltable> cspfarendtotaltable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptotaltable> csptotaltable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptracetable> csptracetable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstatstable> csstatstable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstotaltable> csstotaltable;
+        std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstracetable> csstracetable;
         
 }; // CiscoSonetMib
 
 
-class CiscoSonetMib::Csapsconfig : public Entity
+class CiscoSonetMib::Csapsconfig : public ydk::Entity
 {
     public:
         Csapsconfig();
@@ -67,19 +70,21 @@ class CiscoSonetMib::Csapsconfig : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf csapslinefailurecode; //type: CsapslinefailurecodeEnum
-        YLeaf csapslineswitchreason; //type: CsapslineswitchreasonEnum
+        ydk::YLeaf csapslinefailurecode; //type: Csapslinefailurecode
+        ydk::YLeaf csapslineswitchreason; //type: Csapslineswitchreason
 
 }; // CiscoSonetMib::Csapsconfig
 
 
-class CiscoSonetMib::Csnotifications : public Entity
+class CiscoSonetMib::Csnotifications : public ydk::Entity
 {
     public:
         Csnotifications();
@@ -87,18 +92,20 @@ class CiscoSonetMib::Csnotifications : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf csnotificationsenabled; //type: boolean
+        ydk::YLeaf csnotificationsenabled; //type: boolean
 
 }; // CiscoSonetMib::Csnotifications
 
 
-class CiscoSonetMib::Csconfigtable : public Entity
+class CiscoSonetMib::Csconfigtable : public ydk::Entity
 {
     public:
         Csconfigtable();
@@ -106,20 +113,22 @@ class CiscoSonetMib::Csconfigtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csconfigentry; //type: CiscoSonetMib::Csconfigtable::Csconfigentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csconfigtable::Csconfigentry> > csconfigentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csconfigtable::Csconfigentry> > csconfigentry;
         
 }; // CiscoSonetMib::Csconfigtable
 
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry : public Entity
+class CiscoSonetMib::Csconfigtable::Csconfigentry : public ydk::Entity
 {
     public:
         Csconfigentry();
@@ -127,41 +136,43 @@ class CiscoSonetMib::Csconfigtable::Csconfigentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf csconfigloopbacktype; //type: CsconfigloopbacktypeEnum
-        YLeaf csconfigxmtclocksource; //type: CsconfigxmtclocksourceEnum
-        YLeaf csconfigframescramble; //type: CsconfigframescrambleEnum
-        YLeaf csconfigtype; //type: CsconfigtypeEnum
-        YLeaf csconfigrdivtype; //type: CsconfigrdivtypeEnum
-        YLeaf csconfigrdiptype; //type: CsconfigrdiptypeEnum
-        YLeaf cstributarytype; //type: CstributarytypeEnum
-        YLeaf cstributarymappingtype; //type: CstributarymappingtypeEnum
-        YLeaf cstributaryframingtype; //type: CstributaryframingtypeEnum
-        YLeaf cssignallingtransportmode; //type: CssignallingtransportmodeEnum
-        YLeaf cstributarygroupingtype; //type: CstributarygroupingtypeEnum
-        class CsconfigloopbacktypeEnum;
-        class CsconfigxmtclocksourceEnum;
-        class CsconfigframescrambleEnum;
-        class CsconfigtypeEnum;
-        class CsconfigrdivtypeEnum;
-        class CsconfigrdiptypeEnum;
-        class CstributarytypeEnum;
-        class CstributarymappingtypeEnum;
-        class CstributaryframingtypeEnum;
-        class CssignallingtransportmodeEnum;
-        class CstributarygroupingtypeEnum;
+        ydk::YLeaf ifindex;
+        ydk::YLeaf csconfigloopbacktype; //type: Csconfigloopbacktype
+        ydk::YLeaf csconfigxmtclocksource; //type: Csconfigxmtclocksource
+        ydk::YLeaf csconfigframescramble; //type: Csconfigframescramble
+        ydk::YLeaf csconfigtype; //type: Csconfigtype
+        ydk::YLeaf csconfigrdivtype; //type: Csconfigrdivtype
+        ydk::YLeaf csconfigrdiptype; //type: Csconfigrdiptype
+        ydk::YLeaf cstributarytype; //type: Cstributarytype
+        ydk::YLeaf cstributarymappingtype; //type: Cstributarymappingtype
+        ydk::YLeaf cstributaryframingtype; //type: Cstributaryframingtype
+        ydk::YLeaf cssignallingtransportmode; //type: Cssignallingtransportmode
+        ydk::YLeaf cstributarygroupingtype; //type: Cstributarygroupingtype
+        class Csconfigloopbacktype;
+        class Csconfigxmtclocksource;
+        class Csconfigframescramble;
+        class Csconfigtype;
+        class Csconfigrdivtype;
+        class Csconfigrdiptype;
+        class Cstributarytype;
+        class Cstributarymappingtype;
+        class Cstributaryframingtype;
+        class Cssignallingtransportmode;
+        class Cstributarygroupingtype;
 
 }; // CiscoSonetMib::Csconfigtable::Csconfigentry
 
 
-class CiscoSonetMib::Csapsconfigtable : public Entity
+class CiscoSonetMib::Csapsconfigtable : public ydk::Entity
 {
     public:
         Csapsconfigtable();
@@ -169,20 +180,22 @@ class CiscoSonetMib::Csapsconfigtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csapsconfigentry; //type: CiscoSonetMib::Csapsconfigtable::Csapsconfigentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfigtable::Csapsconfigentry> > csapsconfigentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csapsconfigtable::Csapsconfigentry> > csapsconfigentry;
         
 }; // CiscoSonetMib::Csapsconfigtable
 
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry : public Entity
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry : public ydk::Entity
 {
     public:
         Csapsconfigentry();
@@ -190,42 +203,44 @@ class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf csapsworkingindex; //type: int32
-        YLeaf csapsprotectionindex; //type: int32
-        YLeaf csapsenable; //type: CsapsenableEnum
-        YLeaf csapsarchmode; //type: CsapsarchmodeEnum
-        YLeaf csapsactiveline; //type: CsapsactivelineEnum
-        YLeaf csapssigfaultber; //type: uint32
-        YLeaf csapssigdegradeber; //type: uint32
-        YLeaf csapswaittorestore; //type: uint32
-        YLeaf csapsdirection; //type: CsapsdirectionEnum
-        YLeaf csapsrevertive; //type: CsapsrevertiveEnum
-        YLeaf csapsdirectionoperational; //type: CsapsdirectionoperationalEnum
-        YLeaf csapsarchmodeoperational; //type: CsapsarchmodeoperationalEnum
-        YLeaf csapschannelprotocol; //type: CsapschannelprotocolEnum
-        YLeaf csapsfailurestatus; //type: Csapslinefailurestatus
-        YLeaf csapsswitchreason; //type: CsapslineswitchreasonEnum
-        YLeaf csapsprimarysection; //type: CsapsprimarysectionEnum
-        class CsapsenableEnum;
-        class CsapsarchmodeEnum;
-        class CsapsactivelineEnum;
-        class CsapsdirectionEnum;
-        class CsapsrevertiveEnum;
-        class CsapsdirectionoperationalEnum;
-        class CsapsarchmodeoperationalEnum;
-        class CsapschannelprotocolEnum;
-        class CsapsprimarysectionEnum;
+        ydk::YLeaf csapsworkingindex; //type: int32
+        ydk::YLeaf csapsprotectionindex; //type: int32
+        ydk::YLeaf csapsenable; //type: Csapsenable
+        ydk::YLeaf csapsarchmode; //type: Csapsarchmode
+        ydk::YLeaf csapsactiveline; //type: Csapsactiveline
+        ydk::YLeaf csapssigfaultber; //type: uint32
+        ydk::YLeaf csapssigdegradeber; //type: uint32
+        ydk::YLeaf csapswaittorestore; //type: uint32
+        ydk::YLeaf csapsdirection; //type: Csapsdirection
+        ydk::YLeaf csapsrevertive; //type: Csapsrevertive
+        ydk::YLeaf csapsdirectionoperational; //type: Csapsdirectionoperational
+        ydk::YLeaf csapsarchmodeoperational; //type: Csapsarchmodeoperational
+        ydk::YLeaf csapschannelprotocol; //type: Csapschannelprotocol
+        ydk::YLeaf csapsfailurestatus; //type: Csapslinefailurestatus
+        ydk::YLeaf csapsswitchreason; //type: Csapslineswitchreason
+        ydk::YLeaf csapsprimarysection; //type: Csapsprimarysection
+        class Csapsenable;
+        class Csapsarchmode;
+        class Csapsactiveline;
+        class Csapsdirection;
+        class Csapsrevertive;
+        class Csapsdirectionoperational;
+        class Csapsarchmodeoperational;
+        class Csapschannelprotocol;
+        class Csapsprimarysection;
 
 }; // CiscoSonetMib::Csapsconfigtable::Csapsconfigentry
 
 
-class CiscoSonetMib::Csstotaltable : public Entity
+class CiscoSonetMib::Csstotaltable : public ydk::Entity
 {
     public:
         Csstotaltable();
@@ -233,20 +248,22 @@ class CiscoSonetMib::Csstotaltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csstotalentry; //type: CiscoSonetMib::Csstotaltable::Csstotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstotaltable::Csstotalentry> > csstotalentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstotaltable::Csstotalentry> > csstotalentry;
         
 }; // CiscoSonetMib::Csstotaltable
 
 
-class CiscoSonetMib::Csstotaltable::Csstotalentry : public Entity
+class CiscoSonetMib::Csstotaltable::Csstotalentry : public ydk::Entity
 {
     public:
         Csstotalentry();
@@ -254,23 +271,25 @@ class CiscoSonetMib::Csstotaltable::Csstotalentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf csstotaless; //type: uint32
-        YLeaf csstotalsess; //type: uint32
-        YLeaf csstotalsefss; //type: uint32
-        YLeaf csstotalcvs; //type: uint32
+        ydk::YLeaf ifindex;
+        ydk::YLeaf csstotaless; //type: uint32
+        ydk::YLeaf csstotalsess; //type: uint32
+        ydk::YLeaf csstotalsefss; //type: uint32
+        ydk::YLeaf csstotalcvs; //type: uint32
 
 }; // CiscoSonetMib::Csstotaltable::Csstotalentry
 
 
-class CiscoSonetMib::Csstracetable : public Entity
+class CiscoSonetMib::Csstracetable : public ydk::Entity
 {
     public:
         Csstracetable();
@@ -278,20 +297,22 @@ class CiscoSonetMib::Csstracetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csstraceentry; //type: CiscoSonetMib::Csstracetable::Csstraceentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstracetable::Csstraceentry> > csstraceentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstracetable::Csstraceentry> > csstraceentry;
         
 }; // CiscoSonetMib::Csstracetable
 
 
-class CiscoSonetMib::Csstracetable::Csstraceentry : public Entity
+class CiscoSonetMib::Csstracetable::Csstraceentry : public ydk::Entity
 {
     public:
         Csstraceentry();
@@ -299,23 +320,25 @@ class CiscoSonetMib::Csstracetable::Csstraceentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf csstracetotransmit; //type: binary
-        YLeaf csstracetoexpect; //type: binary
-        YLeaf csstracefailure; //type: boolean
-        YLeaf csstracereceived; //type: binary
+        ydk::YLeaf ifindex;
+        ydk::YLeaf csstracetotransmit; //type: binary
+        ydk::YLeaf csstracetoexpect; //type: binary
+        ydk::YLeaf csstracefailure; //type: boolean
+        ydk::YLeaf csstracereceived; //type: binary
 
 }; // CiscoSonetMib::Csstracetable::Csstraceentry
 
 
-class CiscoSonetMib::Csltotaltable : public Entity
+class CiscoSonetMib::Csltotaltable : public ydk::Entity
 {
     public:
         Csltotaltable();
@@ -323,20 +346,22 @@ class CiscoSonetMib::Csltotaltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csltotalentry; //type: CiscoSonetMib::Csltotaltable::Csltotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csltotaltable::Csltotalentry> > csltotalentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csltotaltable::Csltotalentry> > csltotalentry;
         
 }; // CiscoSonetMib::Csltotaltable
 
 
-class CiscoSonetMib::Csltotaltable::Csltotalentry : public Entity
+class CiscoSonetMib::Csltotaltable::Csltotalentry : public ydk::Entity
 {
     public:
         Csltotalentry();
@@ -344,23 +369,25 @@ class CiscoSonetMib::Csltotaltable::Csltotalentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf csltotaless; //type: uint32
-        YLeaf csltotalsess; //type: uint32
-        YLeaf csltotalcvs; //type: uint32
-        YLeaf csltotaluass; //type: uint32
+        ydk::YLeaf ifindex;
+        ydk::YLeaf csltotaless; //type: uint32
+        ydk::YLeaf csltotalsess; //type: uint32
+        ydk::YLeaf csltotalcvs; //type: uint32
+        ydk::YLeaf csltotaluass; //type: uint32
 
 }; // CiscoSonetMib::Csltotaltable::Csltotalentry
 
 
-class CiscoSonetMib::Cslfarendtotaltable : public Entity
+class CiscoSonetMib::Cslfarendtotaltable : public ydk::Entity
 {
     public:
         Cslfarendtotaltable();
@@ -368,20 +395,22 @@ class CiscoSonetMib::Cslfarendtotaltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cslfarendtotalentry; //type: CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry> > cslfarendtotalentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry> > cslfarendtotalentry;
         
 }; // CiscoSonetMib::Cslfarendtotaltable
 
 
-class CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry : public Entity
+class CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry : public ydk::Entity
 {
     public:
         Cslfarendtotalentry();
@@ -389,23 +418,25 @@ class CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf cslfarendtotaless; //type: uint32
-        YLeaf cslfarendtotalsess; //type: uint32
-        YLeaf cslfarendtotalcvs; //type: uint32
-        YLeaf cslfarendtotaluass; //type: uint32
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cslfarendtotaless; //type: uint32
+        ydk::YLeaf cslfarendtotalsess; //type: uint32
+        ydk::YLeaf cslfarendtotalcvs; //type: uint32
+        ydk::YLeaf cslfarendtotaluass; //type: uint32
 
 }; // CiscoSonetMib::Cslfarendtotaltable::Cslfarendtotalentry
 
 
-class CiscoSonetMib::Csptotaltable : public Entity
+class CiscoSonetMib::Csptotaltable : public ydk::Entity
 {
     public:
         Csptotaltable();
@@ -413,20 +444,22 @@ class CiscoSonetMib::Csptotaltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csptotalentry; //type: CiscoSonetMib::Csptotaltable::Csptotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptotaltable::Csptotalentry> > csptotalentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptotaltable::Csptotalentry> > csptotalentry;
         
 }; // CiscoSonetMib::Csptotaltable
 
 
-class CiscoSonetMib::Csptotaltable::Csptotalentry : public Entity
+class CiscoSonetMib::Csptotaltable::Csptotalentry : public ydk::Entity
 {
     public:
         Csptotalentry();
@@ -434,23 +467,25 @@ class CiscoSonetMib::Csptotaltable::Csptotalentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf csptotaless; //type: uint32
-        YLeaf csptotalsess; //type: uint32
-        YLeaf csptotalcvs; //type: uint32
-        YLeaf csptotaluass; //type: uint32
+        ydk::YLeaf ifindex;
+        ydk::YLeaf csptotaless; //type: uint32
+        ydk::YLeaf csptotalsess; //type: uint32
+        ydk::YLeaf csptotalcvs; //type: uint32
+        ydk::YLeaf csptotaluass; //type: uint32
 
 }; // CiscoSonetMib::Csptotaltable::Csptotalentry
 
 
-class CiscoSonetMib::Cspfarendtotaltable : public Entity
+class CiscoSonetMib::Cspfarendtotaltable : public ydk::Entity
 {
     public:
         Cspfarendtotaltable();
@@ -458,20 +493,22 @@ class CiscoSonetMib::Cspfarendtotaltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cspfarendtotalentry; //type: CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry> > cspfarendtotalentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry> > cspfarendtotalentry;
         
 }; // CiscoSonetMib::Cspfarendtotaltable
 
 
-class CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry : public Entity
+class CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry : public ydk::Entity
 {
     public:
         Cspfarendtotalentry();
@@ -479,23 +516,25 @@ class CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf cspfarendtotaless; //type: uint32
-        YLeaf cspfarendtotalsess; //type: uint32
-        YLeaf cspfarendtotalcvs; //type: uint32
-        YLeaf cspfarendtotaluass; //type: uint32
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cspfarendtotaless; //type: uint32
+        ydk::YLeaf cspfarendtotalsess; //type: uint32
+        ydk::YLeaf cspfarendtotalcvs; //type: uint32
+        ydk::YLeaf cspfarendtotaluass; //type: uint32
 
 }; // CiscoSonetMib::Cspfarendtotaltable::Cspfarendtotalentry
 
 
-class CiscoSonetMib::Csptracetable : public Entity
+class CiscoSonetMib::Csptracetable : public ydk::Entity
 {
     public:
         Csptracetable();
@@ -503,20 +542,22 @@ class CiscoSonetMib::Csptracetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csptraceentry; //type: CiscoSonetMib::Csptracetable::Csptraceentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptracetable::Csptraceentry> > csptraceentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csptracetable::Csptraceentry> > csptraceentry;
         
 }; // CiscoSonetMib::Csptracetable
 
 
-class CiscoSonetMib::Csptracetable::Csptraceentry : public Entity
+class CiscoSonetMib::Csptracetable::Csptraceentry : public ydk::Entity
 {
     public:
         Csptraceentry();
@@ -524,23 +565,25 @@ class CiscoSonetMib::Csptracetable::Csptraceentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf csptracetotransmit; //type: binary
-        YLeaf csptracetoexpect; //type: binary
-        YLeaf csptracefailure; //type: boolean
-        YLeaf csptracereceived; //type: binary
+        ydk::YLeaf ifindex;
+        ydk::YLeaf csptracetotransmit; //type: binary
+        ydk::YLeaf csptracetoexpect; //type: binary
+        ydk::YLeaf csptracefailure; //type: boolean
+        ydk::YLeaf csptracereceived; //type: binary
 
 }; // CiscoSonetMib::Csptracetable::Csptraceentry
 
 
-class CiscoSonetMib::Csstatstable : public Entity
+class CiscoSonetMib::Csstatstable : public ydk::Entity
 {
     public:
         Csstatstable();
@@ -548,20 +591,22 @@ class CiscoSonetMib::Csstatstable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csstatsentry; //type: CiscoSonetMib::Csstatstable::Csstatsentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstatstable::Csstatsentry> > csstatsentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csstatstable::Csstatsentry> > csstatsentry;
         
 }; // CiscoSonetMib::Csstatstable
 
 
-class CiscoSonetMib::Csstatstable::Csstatsentry : public Entity
+class CiscoSonetMib::Csstatstable::Csstatsentry : public ydk::Entity
 {
     public:
         Csstatsentry();
@@ -569,25 +614,27 @@ class CiscoSonetMib::Csstatstable::Csstatsentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf cssloss; //type: uint32
-        YLeaf csslofs; //type: uint32
-        YLeaf cslaiss; //type: uint32
-        YLeaf cslrfis; //type: uint32
-        YLeaf cspaiss; //type: uint32
-        YLeaf csprfis; //type: uint32
+        ydk::YLeaf ifindex;
+        ydk::YLeaf cssloss; //type: uint32
+        ydk::YLeaf csslofs; //type: uint32
+        ydk::YLeaf cslaiss; //type: uint32
+        ydk::YLeaf cslrfis; //type: uint32
+        ydk::YLeaf cspaiss; //type: uint32
+        ydk::YLeaf csprfis; //type: uint32
 
 }; // CiscoSonetMib::Csstatstable::Csstatsentry
 
 
-class CiscoSonetMib::Csau4Tug3Configtable : public Entity
+class CiscoSonetMib::Csau4Tug3Configtable : public ydk::Entity
 {
     public:
         Csau4Tug3Configtable();
@@ -595,20 +642,22 @@ class CiscoSonetMib::Csau4Tug3Configtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Csau4Tug3Configentry; //type: CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry
 
-        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry> > csau4tug3configentry_;
+        std::vector<std::shared_ptr<CISCO_SONET_MIB::CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry> > csau4tug3configentry;
         
 }; // CiscoSonetMib::Csau4Tug3Configtable
 
 
-class CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry : public Entity
+class CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry : public ydk::Entity
 {
     public:
         Csau4Tug3Configentry();
@@ -616,233 +665,235 @@ class CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf csau4tug3; //type: int32
-        YLeaf csau4tug3payload; //type: Csau4Tug3PayloadEnum
-        class Csau4Tug3PayloadEnum;
+        ydk::YLeaf ifindex;
+        ydk::YLeaf csau4tug3; //type: int32
+        ydk::YLeaf csau4tug3payload; //type: Csau4Tug3Payload
+        class Csau4Tug3Payload;
 
 }; // CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry
 
-class CsapslineswitchreasonEnum : public Enum
+class Csapslineswitchreason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf csApsOther;
-        static const Enum::YLeaf csApsRevertive;
-        static const Enum::YLeaf csApsManual;
-        static const Enum::YLeaf csApsSignalDefectLow;
-        static const Enum::YLeaf csApsSignalDefectHigh;
-        static const Enum::YLeaf csApsSignalFailureLow;
-        static const Enum::YLeaf csApsSignalFailureHigh;
-        static const Enum::YLeaf csApsForceSwitch;
-        static const Enum::YLeaf csApsLockOut;
-        static const Enum::YLeaf csApsNoSwitch;
+        static const ydk::Enum::YLeaf csApsOther;
+        static const ydk::Enum::YLeaf csApsRevertive;
+        static const ydk::Enum::YLeaf csApsManual;
+        static const ydk::Enum::YLeaf csApsSignalDefectLow;
+        static const ydk::Enum::YLeaf csApsSignalDefectHigh;
+        static const ydk::Enum::YLeaf csApsSignalFailureLow;
+        static const ydk::Enum::YLeaf csApsSignalFailureHigh;
+        static const ydk::Enum::YLeaf csApsForceSwitch;
+        static const ydk::Enum::YLeaf csApsLockOut;
+        static const ydk::Enum::YLeaf csApsNoSwitch;
 
 };
 
-class CsapslinefailurecodeEnum : public Enum
+class Csapslinefailurecode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf csApsChannelMismatch;
-        static const Enum::YLeaf csApsProtectionByteFail;
-        static const Enum::YLeaf csApsFEProtectionFailure;
-        static const Enum::YLeaf csApsModeMismatch;
+        static const ydk::Enum::YLeaf csApsChannelMismatch;
+        static const ydk::Enum::YLeaf csApsProtectionByteFail;
+        static const ydk::Enum::YLeaf csApsFEProtectionFailure;
+        static const ydk::Enum::YLeaf csApsModeMismatch;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CsconfigloopbacktypeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Csconfigloopbacktype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf noLoopback;
-        static const Enum::YLeaf lineLocal;
-        static const Enum::YLeaf lineRemote;
+        static const ydk::Enum::YLeaf noLoopback;
+        static const ydk::Enum::YLeaf lineLocal;
+        static const ydk::Enum::YLeaf lineRemote;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CsconfigxmtclocksourceEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Csconfigxmtclocksource : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf loopTiming;
-        static const Enum::YLeaf localTiming;
+        static const ydk::Enum::YLeaf loopTiming;
+        static const ydk::Enum::YLeaf localTiming;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CsconfigframescrambleEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Csconfigframescramble : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disabled;
-        static const Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CsconfigtypeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Csconfigtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf sonetSts3c;
-        static const Enum::YLeaf sonetStm1;
-        static const Enum::YLeaf sonetSts12c;
-        static const Enum::YLeaf sonetStm4;
-        static const Enum::YLeaf sonetSts48c;
-        static const Enum::YLeaf sonetStm16;
-        static const Enum::YLeaf sonetSts192c;
-        static const Enum::YLeaf sonetStm64;
-        static const Enum::YLeaf sonetSts3;
+        static const ydk::Enum::YLeaf sonetSts3c;
+        static const ydk::Enum::YLeaf sonetStm1;
+        static const ydk::Enum::YLeaf sonetSts12c;
+        static const ydk::Enum::YLeaf sonetStm4;
+        static const ydk::Enum::YLeaf sonetSts48c;
+        static const ydk::Enum::YLeaf sonetStm16;
+        static const ydk::Enum::YLeaf sonetSts192c;
+        static const ydk::Enum::YLeaf sonetStm64;
+        static const ydk::Enum::YLeaf sonetSts3;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CsconfigrdivtypeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Csconfigrdivtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf onebit;
-        static const Enum::YLeaf threebit;
+        static const ydk::Enum::YLeaf onebit;
+        static const ydk::Enum::YLeaf threebit;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CsconfigrdiptypeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Csconfigrdiptype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf onebit;
-        static const Enum::YLeaf threebit;
+        static const ydk::Enum::YLeaf onebit;
+        static const ydk::Enum::YLeaf threebit;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CstributarytypeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Cstributarytype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf vt15vc11;
-        static const Enum::YLeaf vt2vc12;
+        static const ydk::Enum::YLeaf vt15vc11;
+        static const ydk::Enum::YLeaf vt2vc12;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CstributarymappingtypeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Cstributarymappingtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf asynchronous;
-        static const Enum::YLeaf byteSynchronous;
+        static const ydk::Enum::YLeaf asynchronous;
+        static const ydk::Enum::YLeaf byteSynchronous;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CstributaryframingtypeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Cstributaryframingtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notApplicable;
-        static const Enum::YLeaf dsx1D4;
-        static const Enum::YLeaf dsx1ESF;
+        static const ydk::Enum::YLeaf notApplicable;
+        static const ydk::Enum::YLeaf dsx1D4;
+        static const ydk::Enum::YLeaf dsx1ESF;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CssignallingtransportmodeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Cssignallingtransportmode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notApplicable;
-        static const Enum::YLeaf signallingTransferMode;
-        static const Enum::YLeaf clearMode;
+        static const ydk::Enum::YLeaf notApplicable;
+        static const ydk::Enum::YLeaf signallingTransferMode;
+        static const ydk::Enum::YLeaf clearMode;
 
 };
 
-class CiscoSonetMib::Csconfigtable::Csconfigentry::CstributarygroupingtypeEnum : public Enum
+class CiscoSonetMib::Csconfigtable::Csconfigentry::Cstributarygroupingtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notApplicable;
-        static const Enum::YLeaf au3Grouping;
-        static const Enum::YLeaf au4Grouping;
+        static const ydk::Enum::YLeaf notApplicable;
+        static const ydk::Enum::YLeaf au3Grouping;
+        static const ydk::Enum::YLeaf au4Grouping;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapsenableEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapsenable : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf csApsDisabled;
-        static const Enum::YLeaf csApsEnabled;
+        static const ydk::Enum::YLeaf csApsDisabled;
+        static const ydk::Enum::YLeaf csApsEnabled;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapsarchmodeEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapsarchmode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf onePlusOne;
-        static const Enum::YLeaf oneToOne;
-        static const Enum::YLeaf anexBOnePlusOne;
-        static const Enum::YLeaf ycableOnePlusOneNok1k2;
-        static const Enum::YLeaf straightOnePlusOneNok1k2;
+        static const ydk::Enum::YLeaf onePlusOne;
+        static const ydk::Enum::YLeaf oneToOne;
+        static const ydk::Enum::YLeaf anexBOnePlusOne;
+        static const ydk::Enum::YLeaf ycableOnePlusOneNok1k2;
+        static const ydk::Enum::YLeaf straightOnePlusOneNok1k2;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapsactivelineEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapsactiveline : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf csApsWorkingLine;
-        static const Enum::YLeaf csApsProtectionLine;
-        static const Enum::YLeaf csApsNone;
+        static const ydk::Enum::YLeaf csApsWorkingLine;
+        static const ydk::Enum::YLeaf csApsProtectionLine;
+        static const ydk::Enum::YLeaf csApsNone;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapsdirectionEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapsdirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf uniDirectional;
-        static const Enum::YLeaf biDirectional;
+        static const ydk::Enum::YLeaf uniDirectional;
+        static const ydk::Enum::YLeaf biDirectional;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapsrevertiveEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapsrevertive : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf nonrevertive;
-        static const Enum::YLeaf revertive;
+        static const ydk::Enum::YLeaf nonrevertive;
+        static const ydk::Enum::YLeaf revertive;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapsdirectionoperationalEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapsdirectionoperational : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf uniDirectional;
-        static const Enum::YLeaf biDirectional;
+        static const ydk::Enum::YLeaf uniDirectional;
+        static const ydk::Enum::YLeaf biDirectional;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapsarchmodeoperationalEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapsarchmodeoperational : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf onePlusOne;
-        static const Enum::YLeaf oneToOne;
-        static const Enum::YLeaf anexBOnePlusOne;
-        static const Enum::YLeaf ycableOnePlusOneNok1k2;
-        static const Enum::YLeaf straightOnePlusOneNok1k2;
+        static const ydk::Enum::YLeaf onePlusOne;
+        static const ydk::Enum::YLeaf oneToOne;
+        static const ydk::Enum::YLeaf anexBOnePlusOne;
+        static const ydk::Enum::YLeaf ycableOnePlusOneNok1k2;
+        static const ydk::Enum::YLeaf straightOnePlusOneNok1k2;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapschannelprotocolEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapschannelprotocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bellcore;
-        static const Enum::YLeaf itu;
+        static const ydk::Enum::YLeaf bellcore;
+        static const ydk::Enum::YLeaf itu;
 
 };
 
-class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::CsapsprimarysectionEnum : public Enum
+class CiscoSonetMib::Csapsconfigtable::Csapsconfigentry::Csapsprimarysection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf workingSection1;
-        static const Enum::YLeaf workingSection2;
-        static const Enum::YLeaf none;
+        static const ydk::Enum::YLeaf workingSection1;
+        static const ydk::Enum::YLeaf workingSection2;
+        static const ydk::Enum::YLeaf none;
 
 };
 
-class CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3PayloadEnum : public Enum
+class CiscoSonetMib::Csau4Tug3Configtable::Csau4Tug3Configentry::Csau4Tug3Payload : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf vc11;
-        static const Enum::YLeaf vc12;
-        static const Enum::YLeaf tu3ds3;
-        static const Enum::YLeaf tu3e3;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf vc11;
+        static const ydk::Enum::YLeaf vc12;
+        static const ydk::Enum::YLeaf tu3ds3;
+        static const ydk::Enum::YLeaf tu3e3;
 
 };
 

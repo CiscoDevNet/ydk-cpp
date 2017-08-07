@@ -6,20 +6,22 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_NTP_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_NTP_MIB {
 
 CiscoNtpMib::CiscoNtpMib()
     :
-    cntpfilterregistertable_(std::make_shared<CiscoNtpMib::Cntpfilterregistertable>())
-	,cntppeersvartable_(std::make_shared<CiscoNtpMib::Cntppeersvartable>())
-	,cntpsystem_(std::make_shared<CiscoNtpMib::Cntpsystem>())
+    cntpfilterregistertable(std::make_shared<CiscoNtpMib::Cntpfilterregistertable>())
+	,cntppeersvartable(std::make_shared<CiscoNtpMib::Cntppeersvartable>())
+	,cntpsystem(std::make_shared<CiscoNtpMib::Cntpsystem>())
 {
-    cntpfilterregistertable_->parent = this;
+    cntpfilterregistertable->parent = this;
 
-    cntppeersvartable_->parent = this;
+    cntppeersvartable->parent = this;
 
-    cntpsystem_->parent = this;
+    cntpsystem->parent = this;
 
     yang_name = "CISCO-NTP-MIB"; yang_parent_name = "CISCO-NTP-MIB";
 }
@@ -30,17 +32,17 @@ CiscoNtpMib::~CiscoNtpMib()
 
 bool CiscoNtpMib::has_data() const
 {
-    return (cntpfilterregistertable_ !=  nullptr && cntpfilterregistertable_->has_data())
-	|| (cntppeersvartable_ !=  nullptr && cntppeersvartable_->has_data())
-	|| (cntpsystem_ !=  nullptr && cntpsystem_->has_data());
+    return (cntpfilterregistertable !=  nullptr && cntpfilterregistertable->has_data())
+	|| (cntppeersvartable !=  nullptr && cntppeersvartable->has_data())
+	|| (cntpsystem !=  nullptr && cntpsystem->has_data());
 }
 
 bool CiscoNtpMib::has_operation() const
 {
-    return is_set(operation)
-	|| (cntpfilterregistertable_ !=  nullptr && cntpfilterregistertable_->has_operation())
-	|| (cntppeersvartable_ !=  nullptr && cntppeersvartable_->has_operation())
-	|| (cntpsystem_ !=  nullptr && cntpsystem_->has_operation());
+    return is_set(yfilter)
+	|| (cntpfilterregistertable !=  nullptr && cntpfilterregistertable->has_operation())
+	|| (cntppeersvartable !=  nullptr && cntppeersvartable->has_operation())
+	|| (cntpsystem !=  nullptr && cntpsystem->has_operation());
 }
 
 std::string CiscoNtpMib::get_segment_path() const
@@ -74,29 +76,29 @@ std::shared_ptr<Entity> CiscoNtpMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "cntpFilterRegisterTable")
     {
-        if(cntpfilterregistertable_ == nullptr)
+        if(cntpfilterregistertable == nullptr)
         {
-            cntpfilterregistertable_ = std::make_shared<CiscoNtpMib::Cntpfilterregistertable>();
+            cntpfilterregistertable = std::make_shared<CiscoNtpMib::Cntpfilterregistertable>();
         }
-        return cntpfilterregistertable_;
+        return cntpfilterregistertable;
     }
 
     if(child_yang_name == "cntpPeersVarTable")
     {
-        if(cntppeersvartable_ == nullptr)
+        if(cntppeersvartable == nullptr)
         {
-            cntppeersvartable_ = std::make_shared<CiscoNtpMib::Cntppeersvartable>();
+            cntppeersvartable = std::make_shared<CiscoNtpMib::Cntppeersvartable>();
         }
-        return cntppeersvartable_;
+        return cntppeersvartable;
     }
 
     if(child_yang_name == "cntpSystem")
     {
-        if(cntpsystem_ == nullptr)
+        if(cntpsystem == nullptr)
         {
-            cntpsystem_ = std::make_shared<CiscoNtpMib::Cntpsystem>();
+            cntpsystem = std::make_shared<CiscoNtpMib::Cntpsystem>();
         }
-        return cntpsystem_;
+        return cntpsystem;
     }
 
     return nullptr;
@@ -105,25 +107,29 @@ std::shared_ptr<Entity> CiscoNtpMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cntpfilterregistertable_ != nullptr)
+    if(cntpfilterregistertable != nullptr)
     {
-        children["cntpFilterRegisterTable"] = cntpfilterregistertable_;
+        children["cntpFilterRegisterTable"] = cntpfilterregistertable;
     }
 
-    if(cntppeersvartable_ != nullptr)
+    if(cntppeersvartable != nullptr)
     {
-        children["cntpPeersVarTable"] = cntppeersvartable_;
+        children["cntpPeersVarTable"] = cntppeersvartable;
     }
 
-    if(cntpsystem_ != nullptr)
+    if(cntpsystem != nullptr)
     {
-        children["cntpSystem"] = cntpsystem_;
+        children["cntpSystem"] = cntpsystem;
     }
 
     return children;
 }
 
-void CiscoNtpMib::set_value(const std::string & value_path, std::string value)
+void CiscoNtpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoNtpMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -145,6 +151,18 @@ std::string CiscoNtpMib::get_bundle_name() const
 augment_capabilities_function CiscoNtpMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CiscoNtpMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoNtpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cntpFilterRegisterTable" || name == "cntpPeersVarTable" || name == "cntpSystem")
+        return true;
+    return false;
 }
 
 CiscoNtpMib::Cntpsystem::Cntpsystem()
@@ -185,18 +203,18 @@ bool CiscoNtpMib::Cntpsystem::has_data() const
 
 bool CiscoNtpMib::Cntpsystem::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cntpsysclock.operation)
-	|| is_set(cntpsysleap.operation)
-	|| is_set(cntpsyspeer.operation)
-	|| is_set(cntpsyspoll.operation)
-	|| is_set(cntpsysprecision.operation)
-	|| is_set(cntpsysrefid.operation)
-	|| is_set(cntpsysreftime.operation)
-	|| is_set(cntpsysrootdelay.operation)
-	|| is_set(cntpsysrootdispersion.operation)
-	|| is_set(cntpsyssrvstatus.operation)
-	|| is_set(cntpsysstratum.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cntpsysclock.yfilter)
+	|| ydk::is_set(cntpsysleap.yfilter)
+	|| ydk::is_set(cntpsyspeer.yfilter)
+	|| ydk::is_set(cntpsyspoll.yfilter)
+	|| ydk::is_set(cntpsysprecision.yfilter)
+	|| ydk::is_set(cntpsysrefid.yfilter)
+	|| ydk::is_set(cntpsysreftime.yfilter)
+	|| ydk::is_set(cntpsysrootdelay.yfilter)
+	|| ydk::is_set(cntpsysrootdispersion.yfilter)
+	|| ydk::is_set(cntpsyssrvstatus.yfilter)
+	|| ydk::is_set(cntpsysstratum.yfilter);
 }
 
 std::string CiscoNtpMib::Cntpsystem::get_segment_path() const
@@ -222,17 +240,17 @@ const EntityPath CiscoNtpMib::Cntpsystem::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cntpsysclock.is_set || is_set(cntpsysclock.operation)) leaf_name_data.push_back(cntpsysclock.get_name_leafdata());
-    if (cntpsysleap.is_set || is_set(cntpsysleap.operation)) leaf_name_data.push_back(cntpsysleap.get_name_leafdata());
-    if (cntpsyspeer.is_set || is_set(cntpsyspeer.operation)) leaf_name_data.push_back(cntpsyspeer.get_name_leafdata());
-    if (cntpsyspoll.is_set || is_set(cntpsyspoll.operation)) leaf_name_data.push_back(cntpsyspoll.get_name_leafdata());
-    if (cntpsysprecision.is_set || is_set(cntpsysprecision.operation)) leaf_name_data.push_back(cntpsysprecision.get_name_leafdata());
-    if (cntpsysrefid.is_set || is_set(cntpsysrefid.operation)) leaf_name_data.push_back(cntpsysrefid.get_name_leafdata());
-    if (cntpsysreftime.is_set || is_set(cntpsysreftime.operation)) leaf_name_data.push_back(cntpsysreftime.get_name_leafdata());
-    if (cntpsysrootdelay.is_set || is_set(cntpsysrootdelay.operation)) leaf_name_data.push_back(cntpsysrootdelay.get_name_leafdata());
-    if (cntpsysrootdispersion.is_set || is_set(cntpsysrootdispersion.operation)) leaf_name_data.push_back(cntpsysrootdispersion.get_name_leafdata());
-    if (cntpsyssrvstatus.is_set || is_set(cntpsyssrvstatus.operation)) leaf_name_data.push_back(cntpsyssrvstatus.get_name_leafdata());
-    if (cntpsysstratum.is_set || is_set(cntpsysstratum.operation)) leaf_name_data.push_back(cntpsysstratum.get_name_leafdata());
+    if (cntpsysclock.is_set || is_set(cntpsysclock.yfilter)) leaf_name_data.push_back(cntpsysclock.get_name_leafdata());
+    if (cntpsysleap.is_set || is_set(cntpsysleap.yfilter)) leaf_name_data.push_back(cntpsysleap.get_name_leafdata());
+    if (cntpsyspeer.is_set || is_set(cntpsyspeer.yfilter)) leaf_name_data.push_back(cntpsyspeer.get_name_leafdata());
+    if (cntpsyspoll.is_set || is_set(cntpsyspoll.yfilter)) leaf_name_data.push_back(cntpsyspoll.get_name_leafdata());
+    if (cntpsysprecision.is_set || is_set(cntpsysprecision.yfilter)) leaf_name_data.push_back(cntpsysprecision.get_name_leafdata());
+    if (cntpsysrefid.is_set || is_set(cntpsysrefid.yfilter)) leaf_name_data.push_back(cntpsysrefid.get_name_leafdata());
+    if (cntpsysreftime.is_set || is_set(cntpsysreftime.yfilter)) leaf_name_data.push_back(cntpsysreftime.get_name_leafdata());
+    if (cntpsysrootdelay.is_set || is_set(cntpsysrootdelay.yfilter)) leaf_name_data.push_back(cntpsysrootdelay.get_name_leafdata());
+    if (cntpsysrootdispersion.is_set || is_set(cntpsysrootdispersion.yfilter)) leaf_name_data.push_back(cntpsysrootdispersion.get_name_leafdata());
+    if (cntpsyssrvstatus.is_set || is_set(cntpsyssrvstatus.yfilter)) leaf_name_data.push_back(cntpsyssrvstatus.get_name_leafdata());
+    if (cntpsysstratum.is_set || is_set(cntpsysstratum.yfilter)) leaf_name_data.push_back(cntpsysstratum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -251,52 +269,129 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntpsystem::get_chil
     return children;
 }
 
-void CiscoNtpMib::Cntpsystem::set_value(const std::string & value_path, std::string value)
+void CiscoNtpMib::Cntpsystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cntpSysClock")
     {
         cntpsysclock = value;
+        cntpsysclock.value_namespace = name_space;
+        cntpsysclock.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysLeap")
     {
         cntpsysleap = value;
+        cntpsysleap.value_namespace = name_space;
+        cntpsysleap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysPeer")
     {
         cntpsyspeer = value;
+        cntpsyspeer.value_namespace = name_space;
+        cntpsyspeer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysPoll")
     {
         cntpsyspoll = value;
+        cntpsyspoll.value_namespace = name_space;
+        cntpsyspoll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysPrecision")
     {
         cntpsysprecision = value;
+        cntpsysprecision.value_namespace = name_space;
+        cntpsysprecision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysRefId")
     {
         cntpsysrefid = value;
+        cntpsysrefid.value_namespace = name_space;
+        cntpsysrefid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysRefTime")
     {
         cntpsysreftime = value;
+        cntpsysreftime.value_namespace = name_space;
+        cntpsysreftime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysRootDelay")
     {
         cntpsysrootdelay = value;
+        cntpsysrootdelay.value_namespace = name_space;
+        cntpsysrootdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysRootDispersion")
     {
         cntpsysrootdispersion = value;
+        cntpsysrootdispersion.value_namespace = name_space;
+        cntpsysrootdispersion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysSrvStatus")
     {
         cntpsyssrvstatus = value;
+        cntpsyssrvstatus.value_namespace = name_space;
+        cntpsyssrvstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpSysStratum")
     {
         cntpsysstratum = value;
+        cntpsysstratum.value_namespace = name_space;
+        cntpsysstratum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoNtpMib::Cntpsystem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cntpSysClock")
+    {
+        cntpsysclock.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysLeap")
+    {
+        cntpsysleap.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysPeer")
+    {
+        cntpsyspeer.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysPoll")
+    {
+        cntpsyspoll.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysPrecision")
+    {
+        cntpsysprecision.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysRefId")
+    {
+        cntpsysrefid.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysRefTime")
+    {
+        cntpsysreftime.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysRootDelay")
+    {
+        cntpsysrootdelay.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysRootDispersion")
+    {
+        cntpsysrootdispersion.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysSrvStatus")
+    {
+        cntpsyssrvstatus.yfilter = yfilter;
+    }
+    if(value_path == "cntpSysStratum")
+    {
+        cntpsysstratum.yfilter = yfilter;
+    }
+}
+
+bool CiscoNtpMib::Cntpsystem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cntpSysClock" || name == "cntpSysLeap" || name == "cntpSysPeer" || name == "cntpSysPoll" || name == "cntpSysPrecision" || name == "cntpSysRefId" || name == "cntpSysRefTime" || name == "cntpSysRootDelay" || name == "cntpSysRootDispersion" || name == "cntpSysSrvStatus" || name == "cntpSysStratum")
+        return true;
+    return false;
 }
 
 CiscoNtpMib::Cntppeersvartable::Cntppeersvartable()
@@ -310,9 +405,9 @@ CiscoNtpMib::Cntppeersvartable::~Cntppeersvartable()
 
 bool CiscoNtpMib::Cntppeersvartable::has_data() const
 {
-    for (std::size_t index=0; index<cntppeersvarentry_.size(); index++)
+    for (std::size_t index=0; index<cntppeersvarentry.size(); index++)
     {
-        if(cntppeersvarentry_[index]->has_data())
+        if(cntppeersvarentry[index]->has_data())
             return true;
     }
     return false;
@@ -320,12 +415,12 @@ bool CiscoNtpMib::Cntppeersvartable::has_data() const
 
 bool CiscoNtpMib::Cntppeersvartable::has_operation() const
 {
-    for (std::size_t index=0; index<cntppeersvarentry_.size(); index++)
+    for (std::size_t index=0; index<cntppeersvarentry.size(); index++)
     {
-        if(cntppeersvarentry_[index]->has_operation())
+        if(cntppeersvarentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoNtpMib::Cntppeersvartable::get_segment_path() const
@@ -362,7 +457,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntppeersvartable::get_child_by_name(const 
 {
     if(child_yang_name == "cntpPeersVarEntry")
     {
-        for(auto const & c : cntppeersvarentry_)
+        for(auto const & c : cntppeersvarentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -372,7 +467,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntppeersvartable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry>();
         c->parent = this;
-        cntppeersvarentry_.push_back(c);
+        cntppeersvarentry.push_back(c);
         return c;
     }
 
@@ -382,7 +477,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntppeersvartable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntppeersvartable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cntppeersvarentry_)
+    for (auto const & c : cntppeersvarentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -390,8 +485,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntppeersvartable::g
     return children;
 }
 
-void CiscoNtpMib::Cntppeersvartable::set_value(const std::string & value_path, std::string value)
+void CiscoNtpMib::Cntppeersvartable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoNtpMib::Cntppeersvartable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoNtpMib::Cntppeersvartable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cntpPeersVarEntry")
+        return true;
+    return false;
 }
 
 CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersvarentry()
@@ -472,38 +578,38 @@ bool CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::has_data() const
 
 bool CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cntppeersassocid.operation)
-	|| is_set(cntppeersconfigured.operation)
-	|| is_set(cntppeersdelay.operation)
-	|| is_set(cntppeersdispersion.operation)
-	|| is_set(cntppeersentrystatus.operation)
-	|| is_set(cntppeersfiltervalidentries.operation)
-	|| is_set(cntppeershostaddress.operation)
-	|| is_set(cntppeershostpoll.operation)
-	|| is_set(cntppeershostport.operation)
-	|| is_set(cntppeersleap.operation)
-	|| is_set(cntppeersmode.operation)
-	|| is_set(cntppeersoffset.operation)
-	|| is_set(cntppeersorgtime.operation)
-	|| is_set(cntppeerspeeraddress.operation)
-	|| is_set(cntppeerspeername.operation)
-	|| is_set(cntppeerspeerpoll.operation)
-	|| is_set(cntppeerspeerport.operation)
-	|| is_set(cntppeerspeertype.operation)
-	|| is_set(cntppeersprecision.operation)
-	|| is_set(cntppeersprefpeer.operation)
-	|| is_set(cntppeersreach.operation)
-	|| is_set(cntppeersreceivetime.operation)
-	|| is_set(cntppeersrefid.operation)
-	|| is_set(cntppeersreftime.operation)
-	|| is_set(cntppeersrootdelay.operation)
-	|| is_set(cntppeersrootdispersion.operation)
-	|| is_set(cntppeersstratum.operation)
-	|| is_set(cntppeerstimer.operation)
-	|| is_set(cntppeerstransmittime.operation)
-	|| is_set(cntppeersupdatetime.operation)
-	|| is_set(cntppeersupdatetimerev1.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cntppeersassocid.yfilter)
+	|| ydk::is_set(cntppeersconfigured.yfilter)
+	|| ydk::is_set(cntppeersdelay.yfilter)
+	|| ydk::is_set(cntppeersdispersion.yfilter)
+	|| ydk::is_set(cntppeersentrystatus.yfilter)
+	|| ydk::is_set(cntppeersfiltervalidentries.yfilter)
+	|| ydk::is_set(cntppeershostaddress.yfilter)
+	|| ydk::is_set(cntppeershostpoll.yfilter)
+	|| ydk::is_set(cntppeershostport.yfilter)
+	|| ydk::is_set(cntppeersleap.yfilter)
+	|| ydk::is_set(cntppeersmode.yfilter)
+	|| ydk::is_set(cntppeersoffset.yfilter)
+	|| ydk::is_set(cntppeersorgtime.yfilter)
+	|| ydk::is_set(cntppeerspeeraddress.yfilter)
+	|| ydk::is_set(cntppeerspeername.yfilter)
+	|| ydk::is_set(cntppeerspeerpoll.yfilter)
+	|| ydk::is_set(cntppeerspeerport.yfilter)
+	|| ydk::is_set(cntppeerspeertype.yfilter)
+	|| ydk::is_set(cntppeersprecision.yfilter)
+	|| ydk::is_set(cntppeersprefpeer.yfilter)
+	|| ydk::is_set(cntppeersreach.yfilter)
+	|| ydk::is_set(cntppeersreceivetime.yfilter)
+	|| ydk::is_set(cntppeersrefid.yfilter)
+	|| ydk::is_set(cntppeersreftime.yfilter)
+	|| ydk::is_set(cntppeersrootdelay.yfilter)
+	|| ydk::is_set(cntppeersrootdispersion.yfilter)
+	|| ydk::is_set(cntppeersstratum.yfilter)
+	|| ydk::is_set(cntppeerstimer.yfilter)
+	|| ydk::is_set(cntppeerstransmittime.yfilter)
+	|| ydk::is_set(cntppeersupdatetime.yfilter)
+	|| ydk::is_set(cntppeersupdatetimerev1.yfilter);
 }
 
 std::string CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::get_segment_path() const
@@ -529,37 +635,37 @@ const EntityPath CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cntppeersassocid.is_set || is_set(cntppeersassocid.operation)) leaf_name_data.push_back(cntppeersassocid.get_name_leafdata());
-    if (cntppeersconfigured.is_set || is_set(cntppeersconfigured.operation)) leaf_name_data.push_back(cntppeersconfigured.get_name_leafdata());
-    if (cntppeersdelay.is_set || is_set(cntppeersdelay.operation)) leaf_name_data.push_back(cntppeersdelay.get_name_leafdata());
-    if (cntppeersdispersion.is_set || is_set(cntppeersdispersion.operation)) leaf_name_data.push_back(cntppeersdispersion.get_name_leafdata());
-    if (cntppeersentrystatus.is_set || is_set(cntppeersentrystatus.operation)) leaf_name_data.push_back(cntppeersentrystatus.get_name_leafdata());
-    if (cntppeersfiltervalidentries.is_set || is_set(cntppeersfiltervalidentries.operation)) leaf_name_data.push_back(cntppeersfiltervalidentries.get_name_leafdata());
-    if (cntppeershostaddress.is_set || is_set(cntppeershostaddress.operation)) leaf_name_data.push_back(cntppeershostaddress.get_name_leafdata());
-    if (cntppeershostpoll.is_set || is_set(cntppeershostpoll.operation)) leaf_name_data.push_back(cntppeershostpoll.get_name_leafdata());
-    if (cntppeershostport.is_set || is_set(cntppeershostport.operation)) leaf_name_data.push_back(cntppeershostport.get_name_leafdata());
-    if (cntppeersleap.is_set || is_set(cntppeersleap.operation)) leaf_name_data.push_back(cntppeersleap.get_name_leafdata());
-    if (cntppeersmode.is_set || is_set(cntppeersmode.operation)) leaf_name_data.push_back(cntppeersmode.get_name_leafdata());
-    if (cntppeersoffset.is_set || is_set(cntppeersoffset.operation)) leaf_name_data.push_back(cntppeersoffset.get_name_leafdata());
-    if (cntppeersorgtime.is_set || is_set(cntppeersorgtime.operation)) leaf_name_data.push_back(cntppeersorgtime.get_name_leafdata());
-    if (cntppeerspeeraddress.is_set || is_set(cntppeerspeeraddress.operation)) leaf_name_data.push_back(cntppeerspeeraddress.get_name_leafdata());
-    if (cntppeerspeername.is_set || is_set(cntppeerspeername.operation)) leaf_name_data.push_back(cntppeerspeername.get_name_leafdata());
-    if (cntppeerspeerpoll.is_set || is_set(cntppeerspeerpoll.operation)) leaf_name_data.push_back(cntppeerspeerpoll.get_name_leafdata());
-    if (cntppeerspeerport.is_set || is_set(cntppeerspeerport.operation)) leaf_name_data.push_back(cntppeerspeerport.get_name_leafdata());
-    if (cntppeerspeertype.is_set || is_set(cntppeerspeertype.operation)) leaf_name_data.push_back(cntppeerspeertype.get_name_leafdata());
-    if (cntppeersprecision.is_set || is_set(cntppeersprecision.operation)) leaf_name_data.push_back(cntppeersprecision.get_name_leafdata());
-    if (cntppeersprefpeer.is_set || is_set(cntppeersprefpeer.operation)) leaf_name_data.push_back(cntppeersprefpeer.get_name_leafdata());
-    if (cntppeersreach.is_set || is_set(cntppeersreach.operation)) leaf_name_data.push_back(cntppeersreach.get_name_leafdata());
-    if (cntppeersreceivetime.is_set || is_set(cntppeersreceivetime.operation)) leaf_name_data.push_back(cntppeersreceivetime.get_name_leafdata());
-    if (cntppeersrefid.is_set || is_set(cntppeersrefid.operation)) leaf_name_data.push_back(cntppeersrefid.get_name_leafdata());
-    if (cntppeersreftime.is_set || is_set(cntppeersreftime.operation)) leaf_name_data.push_back(cntppeersreftime.get_name_leafdata());
-    if (cntppeersrootdelay.is_set || is_set(cntppeersrootdelay.operation)) leaf_name_data.push_back(cntppeersrootdelay.get_name_leafdata());
-    if (cntppeersrootdispersion.is_set || is_set(cntppeersrootdispersion.operation)) leaf_name_data.push_back(cntppeersrootdispersion.get_name_leafdata());
-    if (cntppeersstratum.is_set || is_set(cntppeersstratum.operation)) leaf_name_data.push_back(cntppeersstratum.get_name_leafdata());
-    if (cntppeerstimer.is_set || is_set(cntppeerstimer.operation)) leaf_name_data.push_back(cntppeerstimer.get_name_leafdata());
-    if (cntppeerstransmittime.is_set || is_set(cntppeerstransmittime.operation)) leaf_name_data.push_back(cntppeerstransmittime.get_name_leafdata());
-    if (cntppeersupdatetime.is_set || is_set(cntppeersupdatetime.operation)) leaf_name_data.push_back(cntppeersupdatetime.get_name_leafdata());
-    if (cntppeersupdatetimerev1.is_set || is_set(cntppeersupdatetimerev1.operation)) leaf_name_data.push_back(cntppeersupdatetimerev1.get_name_leafdata());
+    if (cntppeersassocid.is_set || is_set(cntppeersassocid.yfilter)) leaf_name_data.push_back(cntppeersassocid.get_name_leafdata());
+    if (cntppeersconfigured.is_set || is_set(cntppeersconfigured.yfilter)) leaf_name_data.push_back(cntppeersconfigured.get_name_leafdata());
+    if (cntppeersdelay.is_set || is_set(cntppeersdelay.yfilter)) leaf_name_data.push_back(cntppeersdelay.get_name_leafdata());
+    if (cntppeersdispersion.is_set || is_set(cntppeersdispersion.yfilter)) leaf_name_data.push_back(cntppeersdispersion.get_name_leafdata());
+    if (cntppeersentrystatus.is_set || is_set(cntppeersentrystatus.yfilter)) leaf_name_data.push_back(cntppeersentrystatus.get_name_leafdata());
+    if (cntppeersfiltervalidentries.is_set || is_set(cntppeersfiltervalidentries.yfilter)) leaf_name_data.push_back(cntppeersfiltervalidentries.get_name_leafdata());
+    if (cntppeershostaddress.is_set || is_set(cntppeershostaddress.yfilter)) leaf_name_data.push_back(cntppeershostaddress.get_name_leafdata());
+    if (cntppeershostpoll.is_set || is_set(cntppeershostpoll.yfilter)) leaf_name_data.push_back(cntppeershostpoll.get_name_leafdata());
+    if (cntppeershostport.is_set || is_set(cntppeershostport.yfilter)) leaf_name_data.push_back(cntppeershostport.get_name_leafdata());
+    if (cntppeersleap.is_set || is_set(cntppeersleap.yfilter)) leaf_name_data.push_back(cntppeersleap.get_name_leafdata());
+    if (cntppeersmode.is_set || is_set(cntppeersmode.yfilter)) leaf_name_data.push_back(cntppeersmode.get_name_leafdata());
+    if (cntppeersoffset.is_set || is_set(cntppeersoffset.yfilter)) leaf_name_data.push_back(cntppeersoffset.get_name_leafdata());
+    if (cntppeersorgtime.is_set || is_set(cntppeersorgtime.yfilter)) leaf_name_data.push_back(cntppeersorgtime.get_name_leafdata());
+    if (cntppeerspeeraddress.is_set || is_set(cntppeerspeeraddress.yfilter)) leaf_name_data.push_back(cntppeerspeeraddress.get_name_leafdata());
+    if (cntppeerspeername.is_set || is_set(cntppeerspeername.yfilter)) leaf_name_data.push_back(cntppeerspeername.get_name_leafdata());
+    if (cntppeerspeerpoll.is_set || is_set(cntppeerspeerpoll.yfilter)) leaf_name_data.push_back(cntppeerspeerpoll.get_name_leafdata());
+    if (cntppeerspeerport.is_set || is_set(cntppeerspeerport.yfilter)) leaf_name_data.push_back(cntppeerspeerport.get_name_leafdata());
+    if (cntppeerspeertype.is_set || is_set(cntppeerspeertype.yfilter)) leaf_name_data.push_back(cntppeerspeertype.get_name_leafdata());
+    if (cntppeersprecision.is_set || is_set(cntppeersprecision.yfilter)) leaf_name_data.push_back(cntppeersprecision.get_name_leafdata());
+    if (cntppeersprefpeer.is_set || is_set(cntppeersprefpeer.yfilter)) leaf_name_data.push_back(cntppeersprefpeer.get_name_leafdata());
+    if (cntppeersreach.is_set || is_set(cntppeersreach.yfilter)) leaf_name_data.push_back(cntppeersreach.get_name_leafdata());
+    if (cntppeersreceivetime.is_set || is_set(cntppeersreceivetime.yfilter)) leaf_name_data.push_back(cntppeersreceivetime.get_name_leafdata());
+    if (cntppeersrefid.is_set || is_set(cntppeersrefid.yfilter)) leaf_name_data.push_back(cntppeersrefid.get_name_leafdata());
+    if (cntppeersreftime.is_set || is_set(cntppeersreftime.yfilter)) leaf_name_data.push_back(cntppeersreftime.get_name_leafdata());
+    if (cntppeersrootdelay.is_set || is_set(cntppeersrootdelay.yfilter)) leaf_name_data.push_back(cntppeersrootdelay.get_name_leafdata());
+    if (cntppeersrootdispersion.is_set || is_set(cntppeersrootdispersion.yfilter)) leaf_name_data.push_back(cntppeersrootdispersion.get_name_leafdata());
+    if (cntppeersstratum.is_set || is_set(cntppeersstratum.yfilter)) leaf_name_data.push_back(cntppeersstratum.get_name_leafdata());
+    if (cntppeerstimer.is_set || is_set(cntppeerstimer.yfilter)) leaf_name_data.push_back(cntppeerstimer.get_name_leafdata());
+    if (cntppeerstransmittime.is_set || is_set(cntppeerstransmittime.yfilter)) leaf_name_data.push_back(cntppeerstransmittime.get_name_leafdata());
+    if (cntppeersupdatetime.is_set || is_set(cntppeersupdatetime.yfilter)) leaf_name_data.push_back(cntppeersupdatetime.get_name_leafdata());
+    if (cntppeersupdatetimerev1.is_set || is_set(cntppeersupdatetimerev1.yfilter)) leaf_name_data.push_back(cntppeersupdatetimerev1.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -578,132 +684,329 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntppeersvartable::C
     return children;
 }
 
-void CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::set_value(const std::string & value_path, std::string value)
+void CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cntpPeersAssocId")
     {
         cntppeersassocid = value;
+        cntppeersassocid.value_namespace = name_space;
+        cntppeersassocid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersConfigured")
     {
         cntppeersconfigured = value;
+        cntppeersconfigured.value_namespace = name_space;
+        cntppeersconfigured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersDelay")
     {
         cntppeersdelay = value;
+        cntppeersdelay.value_namespace = name_space;
+        cntppeersdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersDispersion")
     {
         cntppeersdispersion = value;
+        cntppeersdispersion.value_namespace = name_space;
+        cntppeersdispersion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersEntryStatus")
     {
         cntppeersentrystatus = value;
+        cntppeersentrystatus.value_namespace = name_space;
+        cntppeersentrystatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersFilterValidEntries")
     {
         cntppeersfiltervalidentries = value;
+        cntppeersfiltervalidentries.value_namespace = name_space;
+        cntppeersfiltervalidentries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersHostAddress")
     {
         cntppeershostaddress = value;
+        cntppeershostaddress.value_namespace = name_space;
+        cntppeershostaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersHostPoll")
     {
         cntppeershostpoll = value;
+        cntppeershostpoll.value_namespace = name_space;
+        cntppeershostpoll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersHostPort")
     {
         cntppeershostport = value;
+        cntppeershostport.value_namespace = name_space;
+        cntppeershostport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersLeap")
     {
         cntppeersleap = value;
+        cntppeersleap.value_namespace = name_space;
+        cntppeersleap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersMode")
     {
         cntppeersmode = value;
+        cntppeersmode.value_namespace = name_space;
+        cntppeersmode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersOffset")
     {
         cntppeersoffset = value;
+        cntppeersoffset.value_namespace = name_space;
+        cntppeersoffset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersOrgTime")
     {
         cntppeersorgtime = value;
+        cntppeersorgtime.value_namespace = name_space;
+        cntppeersorgtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersPeerAddress")
     {
         cntppeerspeeraddress = value;
+        cntppeerspeeraddress.value_namespace = name_space;
+        cntppeerspeeraddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersPeerName")
     {
         cntppeerspeername = value;
+        cntppeerspeername.value_namespace = name_space;
+        cntppeerspeername.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersPeerPoll")
     {
         cntppeerspeerpoll = value;
+        cntppeerspeerpoll.value_namespace = name_space;
+        cntppeerspeerpoll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersPeerPort")
     {
         cntppeerspeerport = value;
+        cntppeerspeerport.value_namespace = name_space;
+        cntppeerspeerport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersPeerType")
     {
         cntppeerspeertype = value;
+        cntppeerspeertype.value_namespace = name_space;
+        cntppeerspeertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersPrecision")
     {
         cntppeersprecision = value;
+        cntppeersprecision.value_namespace = name_space;
+        cntppeersprecision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersPrefPeer")
     {
         cntppeersprefpeer = value;
+        cntppeersprefpeer.value_namespace = name_space;
+        cntppeersprefpeer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersReach")
     {
         cntppeersreach = value;
+        cntppeersreach.value_namespace = name_space;
+        cntppeersreach.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersReceiveTime")
     {
         cntppeersreceivetime = value;
+        cntppeersreceivetime.value_namespace = name_space;
+        cntppeersreceivetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersRefId")
     {
         cntppeersrefid = value;
+        cntppeersrefid.value_namespace = name_space;
+        cntppeersrefid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersRefTime")
     {
         cntppeersreftime = value;
+        cntppeersreftime.value_namespace = name_space;
+        cntppeersreftime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersRootDelay")
     {
         cntppeersrootdelay = value;
+        cntppeersrootdelay.value_namespace = name_space;
+        cntppeersrootdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersRootDispersion")
     {
         cntppeersrootdispersion = value;
+        cntppeersrootdispersion.value_namespace = name_space;
+        cntppeersrootdispersion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersStratum")
     {
         cntppeersstratum = value;
+        cntppeersstratum.value_namespace = name_space;
+        cntppeersstratum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersTimer")
     {
         cntppeerstimer = value;
+        cntppeerstimer.value_namespace = name_space;
+        cntppeerstimer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersTransmitTime")
     {
         cntppeerstransmittime = value;
+        cntppeerstransmittime.value_namespace = name_space;
+        cntppeerstransmittime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersUpdateTime")
     {
         cntppeersupdatetime = value;
+        cntppeersupdatetime.value_namespace = name_space;
+        cntppeersupdatetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpPeersUpdateTimeRev1")
     {
         cntppeersupdatetimerev1 = value;
+        cntppeersupdatetimerev1.value_namespace = name_space;
+        cntppeersupdatetimerev1.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cntpPeersAssocId")
+    {
+        cntppeersassocid.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersConfigured")
+    {
+        cntppeersconfigured.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersDelay")
+    {
+        cntppeersdelay.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersDispersion")
+    {
+        cntppeersdispersion.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersEntryStatus")
+    {
+        cntppeersentrystatus.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersFilterValidEntries")
+    {
+        cntppeersfiltervalidentries.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersHostAddress")
+    {
+        cntppeershostaddress.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersHostPoll")
+    {
+        cntppeershostpoll.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersHostPort")
+    {
+        cntppeershostport.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersLeap")
+    {
+        cntppeersleap.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersMode")
+    {
+        cntppeersmode.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersOffset")
+    {
+        cntppeersoffset.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersOrgTime")
+    {
+        cntppeersorgtime.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersPeerAddress")
+    {
+        cntppeerspeeraddress.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersPeerName")
+    {
+        cntppeerspeername.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersPeerPoll")
+    {
+        cntppeerspeerpoll.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersPeerPort")
+    {
+        cntppeerspeerport.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersPeerType")
+    {
+        cntppeerspeertype.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersPrecision")
+    {
+        cntppeersprecision.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersPrefPeer")
+    {
+        cntppeersprefpeer.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersReach")
+    {
+        cntppeersreach.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersReceiveTime")
+    {
+        cntppeersreceivetime.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersRefId")
+    {
+        cntppeersrefid.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersRefTime")
+    {
+        cntppeersreftime.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersRootDelay")
+    {
+        cntppeersrootdelay.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersRootDispersion")
+    {
+        cntppeersrootdispersion.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersStratum")
+    {
+        cntppeersstratum.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersTimer")
+    {
+        cntppeerstimer.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersTransmitTime")
+    {
+        cntppeerstransmittime.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersUpdateTime")
+    {
+        cntppeersupdatetime.yfilter = yfilter;
+    }
+    if(value_path == "cntpPeersUpdateTimeRev1")
+    {
+        cntppeersupdatetimerev1.yfilter = yfilter;
+    }
+}
+
+bool CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cntpPeersAssocId" || name == "cntpPeersConfigured" || name == "cntpPeersDelay" || name == "cntpPeersDispersion" || name == "cntpPeersEntryStatus" || name == "cntpPeersFilterValidEntries" || name == "cntpPeersHostAddress" || name == "cntpPeersHostPoll" || name == "cntpPeersHostPort" || name == "cntpPeersLeap" || name == "cntpPeersMode" || name == "cntpPeersOffset" || name == "cntpPeersOrgTime" || name == "cntpPeersPeerAddress" || name == "cntpPeersPeerName" || name == "cntpPeersPeerPoll" || name == "cntpPeersPeerPort" || name == "cntpPeersPeerType" || name == "cntpPeersPrecision" || name == "cntpPeersPrefPeer" || name == "cntpPeersReach" || name == "cntpPeersReceiveTime" || name == "cntpPeersRefId" || name == "cntpPeersRefTime" || name == "cntpPeersRootDelay" || name == "cntpPeersRootDispersion" || name == "cntpPeersStratum" || name == "cntpPeersTimer" || name == "cntpPeersTransmitTime" || name == "cntpPeersUpdateTime" || name == "cntpPeersUpdateTimeRev1")
+        return true;
+    return false;
 }
 
 CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregistertable()
@@ -717,9 +1020,9 @@ CiscoNtpMib::Cntpfilterregistertable::~Cntpfilterregistertable()
 
 bool CiscoNtpMib::Cntpfilterregistertable::has_data() const
 {
-    for (std::size_t index=0; index<cntpfilterregisterentry_.size(); index++)
+    for (std::size_t index=0; index<cntpfilterregisterentry.size(); index++)
     {
-        if(cntpfilterregisterentry_[index]->has_data())
+        if(cntpfilterregisterentry[index]->has_data())
             return true;
     }
     return false;
@@ -727,12 +1030,12 @@ bool CiscoNtpMib::Cntpfilterregistertable::has_data() const
 
 bool CiscoNtpMib::Cntpfilterregistertable::has_operation() const
 {
-    for (std::size_t index=0; index<cntpfilterregisterentry_.size(); index++)
+    for (std::size_t index=0; index<cntpfilterregisterentry.size(); index++)
     {
-        if(cntpfilterregisterentry_[index]->has_operation())
+        if(cntpfilterregisterentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoNtpMib::Cntpfilterregistertable::get_segment_path() const
@@ -769,7 +1072,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntpfilterregistertable::get_child_by_name(
 {
     if(child_yang_name == "cntpFilterRegisterEntry")
     {
-        for(auto const & c : cntpfilterregisterentry_)
+        for(auto const & c : cntpfilterregisterentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -779,7 +1082,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntpfilterregistertable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry>();
         c->parent = this;
-        cntpfilterregisterentry_.push_back(c);
+        cntpfilterregisterentry.push_back(c);
         return c;
     }
 
@@ -789,7 +1092,7 @@ std::shared_ptr<Entity> CiscoNtpMib::Cntpfilterregistertable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntpfilterregistertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cntpfilterregisterentry_)
+    for (auto const & c : cntpfilterregisterentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -797,8 +1100,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntpfilterregisterta
     return children;
 }
 
-void CiscoNtpMib::Cntpfilterregistertable::set_value(const std::string & value_path, std::string value)
+void CiscoNtpMib::Cntpfilterregistertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoNtpMib::Cntpfilterregistertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoNtpMib::Cntpfilterregistertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cntpFilterRegisterEntry")
+        return true;
+    return false;
 }
 
 CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::Cntpfilterregisterentry()
@@ -827,12 +1141,12 @@ bool CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::has_data() c
 
 bool CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cntppeersassocid.operation)
-	|| is_set(cntpfilterindex.operation)
-	|| is_set(cntpfilterpeersdelay.operation)
-	|| is_set(cntpfilterpeersdispersion.operation)
-	|| is_set(cntpfilterpeersoffset.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cntppeersassocid.yfilter)
+	|| ydk::is_set(cntpfilterindex.yfilter)
+	|| ydk::is_set(cntpfilterpeersdelay.yfilter)
+	|| ydk::is_set(cntpfilterpeersdispersion.yfilter)
+	|| ydk::is_set(cntpfilterpeersoffset.yfilter);
 }
 
 std::string CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::get_segment_path() const
@@ -858,11 +1172,11 @@ const EntityPath CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cntppeersassocid.is_set || is_set(cntppeersassocid.operation)) leaf_name_data.push_back(cntppeersassocid.get_name_leafdata());
-    if (cntpfilterindex.is_set || is_set(cntpfilterindex.operation)) leaf_name_data.push_back(cntpfilterindex.get_name_leafdata());
-    if (cntpfilterpeersdelay.is_set || is_set(cntpfilterpeersdelay.operation)) leaf_name_data.push_back(cntpfilterpeersdelay.get_name_leafdata());
-    if (cntpfilterpeersdispersion.is_set || is_set(cntpfilterpeersdispersion.operation)) leaf_name_data.push_back(cntpfilterpeersdispersion.get_name_leafdata());
-    if (cntpfilterpeersoffset.is_set || is_set(cntpfilterpeersoffset.operation)) leaf_name_data.push_back(cntpfilterpeersoffset.get_name_leafdata());
+    if (cntppeersassocid.is_set || is_set(cntppeersassocid.yfilter)) leaf_name_data.push_back(cntppeersassocid.get_name_leafdata());
+    if (cntpfilterindex.is_set || is_set(cntpfilterindex.yfilter)) leaf_name_data.push_back(cntpfilterindex.get_name_leafdata());
+    if (cntpfilterpeersdelay.is_set || is_set(cntpfilterpeersdelay.yfilter)) leaf_name_data.push_back(cntpfilterpeersdelay.get_name_leafdata());
+    if (cntpfilterpeersdispersion.is_set || is_set(cntpfilterpeersdispersion.yfilter)) leaf_name_data.push_back(cntpfilterpeersdispersion.get_name_leafdata());
+    if (cntpfilterpeersoffset.is_set || is_set(cntpfilterpeersoffset.yfilter)) leaf_name_data.push_back(cntpfilterpeersoffset.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -881,50 +1195,91 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoNtpMib::Cntpfilterregisterta
     return children;
 }
 
-void CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::set_value(const std::string & value_path, std::string value)
+void CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cntpPeersAssocId")
     {
         cntppeersassocid = value;
+        cntppeersassocid.value_namespace = name_space;
+        cntppeersassocid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpFilterIndex")
     {
         cntpfilterindex = value;
+        cntpfilterindex.value_namespace = name_space;
+        cntpfilterindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpFilterPeersDelay")
     {
         cntpfilterpeersdelay = value;
+        cntpfilterpeersdelay.value_namespace = name_space;
+        cntpfilterpeersdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpFilterPeersDispersion")
     {
         cntpfilterpeersdispersion = value;
+        cntpfilterpeersdispersion.value_namespace = name_space;
+        cntpfilterpeersdispersion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cntpFilterPeersOffset")
     {
         cntpfilterpeersoffset = value;
+        cntpfilterpeersoffset.value_namespace = name_space;
+        cntpfilterpeersoffset.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf NtpleapindicatorEnum::noWarning {0, "noWarning"};
-const Enum::YLeaf NtpleapindicatorEnum::addSecond {1, "addSecond"};
-const Enum::YLeaf NtpleapindicatorEnum::subtractSecond {2, "subtractSecond"};
-const Enum::YLeaf NtpleapindicatorEnum::alarm {3, "alarm"};
+void CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cntpPeersAssocId")
+    {
+        cntppeersassocid.yfilter = yfilter;
+    }
+    if(value_path == "cntpFilterIndex")
+    {
+        cntpfilterindex.yfilter = yfilter;
+    }
+    if(value_path == "cntpFilterPeersDelay")
+    {
+        cntpfilterpeersdelay.yfilter = yfilter;
+    }
+    if(value_path == "cntpFilterPeersDispersion")
+    {
+        cntpfilterpeersdispersion.yfilter = yfilter;
+    }
+    if(value_path == "cntpFilterPeersOffset")
+    {
+        cntpfilterpeersoffset.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CiscoNtpMib::Cntpsystem::CntpsyssrvstatusEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoNtpMib::Cntpsystem::CntpsyssrvstatusEnum::notRunning {2, "notRunning"};
-const Enum::YLeaf CiscoNtpMib::Cntpsystem::CntpsyssrvstatusEnum::notSynchronized {3, "notSynchronized"};
-const Enum::YLeaf CiscoNtpMib::Cntpsystem::CntpsyssrvstatusEnum::syncToLocal {4, "syncToLocal"};
-const Enum::YLeaf CiscoNtpMib::Cntpsystem::CntpsyssrvstatusEnum::syncToRefclock {5, "syncToRefclock"};
-const Enum::YLeaf CiscoNtpMib::Cntpsystem::CntpsyssrvstatusEnum::syncToRemoteServer {6, "syncToRemoteServer"};
+bool CiscoNtpMib::Cntpfilterregistertable::Cntpfilterregisterentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cntpPeersAssocId" || name == "cntpFilterIndex" || name == "cntpFilterPeersDelay" || name == "cntpFilterPeersDispersion" || name == "cntpFilterPeersOffset")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::CntppeersmodeEnum::unspecified {0, "unspecified"};
-const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::CntppeersmodeEnum::symmetricActive {1, "symmetricActive"};
-const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::CntppeersmodeEnum::symmetricPassive {2, "symmetricPassive"};
-const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::CntppeersmodeEnum::client {3, "client"};
-const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::CntppeersmodeEnum::server {4, "server"};
-const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::CntppeersmodeEnum::broadcast {5, "broadcast"};
-const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::CntppeersmodeEnum::reservedControl {6, "reservedControl"};
-const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::CntppeersmodeEnum::reservedPrivate {7, "reservedPrivate"};
+const Enum::YLeaf Ntpleapindicator::noWarning {0, "noWarning"};
+const Enum::YLeaf Ntpleapindicator::addSecond {1, "addSecond"};
+const Enum::YLeaf Ntpleapindicator::subtractSecond {2, "subtractSecond"};
+const Enum::YLeaf Ntpleapindicator::alarm {3, "alarm"};
+
+const Enum::YLeaf CiscoNtpMib::Cntpsystem::Cntpsyssrvstatus::unknown {1, "unknown"};
+const Enum::YLeaf CiscoNtpMib::Cntpsystem::Cntpsyssrvstatus::notRunning {2, "notRunning"};
+const Enum::YLeaf CiscoNtpMib::Cntpsystem::Cntpsyssrvstatus::notSynchronized {3, "notSynchronized"};
+const Enum::YLeaf CiscoNtpMib::Cntpsystem::Cntpsyssrvstatus::syncToLocal {4, "syncToLocal"};
+const Enum::YLeaf CiscoNtpMib::Cntpsystem::Cntpsyssrvstatus::syncToRefclock {5, "syncToRefclock"};
+const Enum::YLeaf CiscoNtpMib::Cntpsystem::Cntpsyssrvstatus::syncToRemoteServer {6, "syncToRemoteServer"};
+
+const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::unspecified {0, "unspecified"};
+const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::symmetricActive {1, "symmetricActive"};
+const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::symmetricPassive {2, "symmetricPassive"};
+const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::client {3, "client"};
+const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::server {4, "server"};
+const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::broadcast {5, "broadcast"};
+const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::reservedControl {6, "reservedControl"};
+const Enum::YLeaf CiscoNtpMib::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode::reservedPrivate {7, "reservedPrivate"};
 
 
 }

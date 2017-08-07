@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_tc_oper {
 
-class TrafficCollector : public Entity
+class TrafficCollector : public ydk::Entity
 {
     public:
         TrafficCollector();
@@ -18,15 +18,18 @@ class TrafficCollector : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class ExternalInterfaces; //type: TrafficCollector::ExternalInterfaces
         class Summary; //type: TrafficCollector::Summary
@@ -41,7 +44,7 @@ class TrafficCollector : public Entity
 }; // TrafficCollector
 
 
-class TrafficCollector::ExternalInterfaces : public Entity
+class TrafficCollector::ExternalInterfaces : public ydk::Entity
 {
     public:
         ExternalInterfaces();
@@ -49,11 +52,13 @@ class TrafficCollector::ExternalInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ExternalInterface; //type: TrafficCollector::ExternalInterfaces::ExternalInterface
 
@@ -62,7 +67,7 @@ class TrafficCollector::ExternalInterfaces : public Entity
 }; // TrafficCollector::ExternalInterfaces
 
 
-class TrafficCollector::ExternalInterfaces::ExternalInterface : public Entity
+class TrafficCollector::ExternalInterfaces::ExternalInterface : public ydk::Entity
 {
     public:
         ExternalInterface();
@@ -70,22 +75,24 @@ class TrafficCollector::ExternalInterfaces::ExternalInterface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_name_xr; //type: string
-        YLeaf interface_handle; //type: uint32
-        YLeaf vrfid; //type: uint32
-        YLeaf is_interface_enabled; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf interface_handle; //type: uint32
+        ydk::YLeaf vrfid; //type: uint32
+        ydk::YLeaf is_interface_enabled; //type: boolean
 
 }; // TrafficCollector::ExternalInterfaces::ExternalInterface
 
 
-class TrafficCollector::Summary : public Entity
+class TrafficCollector::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -93,17 +100,19 @@ class TrafficCollector::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf collection_interval; //type: uint8
-        YLeaf collection_timer_is_running; //type: boolean
-        YLeaf timeout_interval; //type: uint16
-        YLeaf timeout_timer_is_running; //type: boolean
-        YLeaf history_size; //type: uint8
+        ydk::YLeaf collection_interval; //type: uint8
+        ydk::YLeaf collection_timer_is_running; //type: boolean
+        ydk::YLeaf timeout_interval; //type: uint16
+        ydk::YLeaf timeout_timer_is_running; //type: boolean
+        ydk::YLeaf history_size; //type: uint8
         class DatabaseStatisticsExternalInterface; //type: TrafficCollector::Summary::DatabaseStatisticsExternalInterface
         class VrfStatistic; //type: TrafficCollector::Summary::VrfStatistic
         class CollectionMessageStatistic; //type: TrafficCollector::Summary::CollectionMessageStatistic
@@ -117,7 +126,7 @@ class TrafficCollector::Summary : public Entity
 }; // TrafficCollector::Summary
 
 
-class TrafficCollector::Summary::DatabaseStatisticsExternalInterface : public Entity
+class TrafficCollector::Summary::DatabaseStatisticsExternalInterface : public ydk::Entity
 {
     public:
         DatabaseStatisticsExternalInterface();
@@ -125,21 +134,23 @@ class TrafficCollector::Summary::DatabaseStatisticsExternalInterface : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number_of_entries; //type: uint32
-        YLeaf number_of_stale_entries; //type: uint32
-        YLeaf number_of_add_o_perations; //type: uint64
-        YLeaf number_of_delete_o_perations; //type: uint64
+        ydk::YLeaf number_of_entries; //type: uint32
+        ydk::YLeaf number_of_stale_entries; //type: uint32
+        ydk::YLeaf number_of_add_o_perations; //type: uint64
+        ydk::YLeaf number_of_delete_o_perations; //type: uint64
 
 }; // TrafficCollector::Summary::DatabaseStatisticsExternalInterface
 
 
-class TrafficCollector::Summary::VrfStatistic : public Entity
+class TrafficCollector::Summary::VrfStatistic : public ydk::Entity
 {
     public:
         VrfStatistic();
@@ -147,13 +158,15 @@ class TrafficCollector::Summary::VrfStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class DatabaseStatisticsIpv4; //type: TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4
         class DatabaseStatisticsTunnel; //type: TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel
 
@@ -163,7 +176,7 @@ class TrafficCollector::Summary::VrfStatistic : public Entity
 }; // TrafficCollector::Summary::VrfStatistic
 
 
-class TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4 : public Entity
+class TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4 : public ydk::Entity
 {
     public:
         DatabaseStatisticsIpv4();
@@ -171,21 +184,23 @@ class TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4 : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number_of_entries; //type: uint32
-        YLeaf number_of_stale_entries; //type: uint32
-        YLeaf number_of_add_o_perations; //type: uint64
-        YLeaf number_of_delete_o_perations; //type: uint64
+        ydk::YLeaf number_of_entries; //type: uint32
+        ydk::YLeaf number_of_stale_entries; //type: uint32
+        ydk::YLeaf number_of_add_o_perations; //type: uint64
+        ydk::YLeaf number_of_delete_o_perations; //type: uint64
 
 }; // TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4
 
 
-class TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel : public Entity
+class TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel : public ydk::Entity
 {
     public:
         DatabaseStatisticsTunnel();
@@ -193,21 +208,23 @@ class TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number_of_entries; //type: uint32
-        YLeaf number_of_stale_entries; //type: uint32
-        YLeaf number_of_add_o_perations; //type: uint64
-        YLeaf number_of_delete_o_perations; //type: uint64
+        ydk::YLeaf number_of_entries; //type: uint32
+        ydk::YLeaf number_of_stale_entries; //type: uint32
+        ydk::YLeaf number_of_add_o_perations; //type: uint64
+        ydk::YLeaf number_of_delete_o_perations; //type: uint64
 
 }; // TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel
 
 
-class TrafficCollector::Summary::CollectionMessageStatistic : public Entity
+class TrafficCollector::Summary::CollectionMessageStatistic : public ydk::Entity
 {
     public:
         CollectionMessageStatistic();
@@ -215,23 +232,25 @@ class TrafficCollector::Summary::CollectionMessageStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packet_sent; //type: uint64
-        YLeaf byte_sent; //type: uint64
-        YLeaf packet_received; //type: uint64
-        YLeaf byte_received; //type: uint64
-        YLeaf maximum_roundtrip_latency; //type: uint32
-        YLeaf maimum_latency_timestamp; //type: uint64
+        ydk::YLeaf packet_sent; //type: uint64
+        ydk::YLeaf byte_sent; //type: uint64
+        ydk::YLeaf packet_received; //type: uint64
+        ydk::YLeaf byte_received; //type: uint64
+        ydk::YLeaf maximum_roundtrip_latency; //type: uint32
+        ydk::YLeaf maimum_latency_timestamp; //type: uint64
 
 }; // TrafficCollector::Summary::CollectionMessageStatistic
 
 
-class TrafficCollector::Summary::CheckpointMessageStatistic : public Entity
+class TrafficCollector::Summary::CheckpointMessageStatistic : public ydk::Entity
 {
     public:
         CheckpointMessageStatistic();
@@ -239,23 +258,25 @@ class TrafficCollector::Summary::CheckpointMessageStatistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packet_sent; //type: uint64
-        YLeaf byte_sent; //type: uint64
-        YLeaf packet_received; //type: uint64
-        YLeaf byte_received; //type: uint64
-        YLeaf maximum_roundtrip_latency; //type: uint32
-        YLeaf maimum_latency_timestamp; //type: uint64
+        ydk::YLeaf packet_sent; //type: uint64
+        ydk::YLeaf byte_sent; //type: uint64
+        ydk::YLeaf packet_received; //type: uint64
+        ydk::YLeaf byte_received; //type: uint64
+        ydk::YLeaf maximum_roundtrip_latency; //type: uint32
+        ydk::YLeaf maimum_latency_timestamp; //type: uint64
 
 }; // TrafficCollector::Summary::CheckpointMessageStatistic
 
 
-class TrafficCollector::VrfTable : public Entity
+class TrafficCollector::VrfTable : public ydk::Entity
 {
     public:
         VrfTable();
@@ -263,11 +284,13 @@ class TrafficCollector::VrfTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DefaultVrf; //type: TrafficCollector::VrfTable::DefaultVrf
 
@@ -276,7 +299,7 @@ class TrafficCollector::VrfTable : public Entity
 }; // TrafficCollector::VrfTable
 
 
-class TrafficCollector::VrfTable::DefaultVrf : public Entity
+class TrafficCollector::VrfTable::DefaultVrf : public ydk::Entity
 {
     public:
         DefaultVrf();
@@ -284,11 +307,13 @@ class TrafficCollector::VrfTable::DefaultVrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Afs; //type: TrafficCollector::VrfTable::DefaultVrf::Afs
 
@@ -297,7 +322,7 @@ class TrafficCollector::VrfTable::DefaultVrf : public Entity
 }; // TrafficCollector::VrfTable::DefaultVrf
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs : public ydk::Entity
 {
     public:
         Afs();
@@ -305,11 +330,13 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Af; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af
 
@@ -318,7 +345,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs : public Entity
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af : public ydk::Entity
 {
     public:
         Af();
@@ -326,13 +353,15 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af_name; //type: TcOperAfNameEnum
+        ydk::YLeaf af_name; //type: TcOperAfName
         class Counters; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters> counters;
@@ -340,7 +369,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af : public Entity
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -348,11 +377,13 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Prefixes; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes
         class Tunnels; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels
@@ -363,7 +394,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters : public Entity
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes : public ydk::Entity
 {
     public:
         Prefixes();
@@ -371,11 +402,13 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Prefix; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
@@ -384,7 +417,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes : publ
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -392,18 +425,20 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipaddr; //type: string
-        YLeaf mask; //type: string
-        YLeaf label; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf label_xr; //type: uint32
-        YLeaf is_active; //type: boolean
+        ydk::YLeaf ipaddr; //type: string
+        ydk::YLeaf mask; //type: string
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf label_xr; //type: uint32
+        ydk::YLeaf is_active; //type: boolean
         class BaseCounterStatistics; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
         class TrafficMatrixCounterStatistics; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
@@ -413,7 +448,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics : public ydk::Entity
 {
     public:
         BaseCounterStatistics();
@@ -421,14 +456,16 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets_per_second_switched; //type: uint64
-        YLeaf transmit_bytes_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_packets_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory> > count_history;
@@ -436,7 +473,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory : public ydk::Entity
 {
     public:
         CountHistory();
@@ -444,22 +481,24 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_start_timestamp; //type: uint64
-        YLeaf event_end_timestamp; //type: uint64
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf is_valid; //type: boolean
+        ydk::YLeaf event_start_timestamp; //type: uint64
+        ydk::YLeaf event_end_timestamp; //type: uint64
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf is_valid; //type: boolean
 
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics : public ydk::Entity
 {
     public:
         TrafficMatrixCounterStatistics();
@@ -467,14 +506,16 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets_per_second_switched; //type: uint64
-        YLeaf transmit_bytes_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_packets_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory> > count_history;
@@ -482,7 +523,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory : public ydk::Entity
 {
     public:
         CountHistory();
@@ -490,22 +531,24 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_start_timestamp; //type: uint64
-        YLeaf event_end_timestamp; //type: uint64
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf is_valid; //type: boolean
+        ydk::YLeaf event_start_timestamp; //type: uint64
+        ydk::YLeaf event_end_timestamp; //type: uint64
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf is_valid; //type: boolean
 
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels : public ydk::Entity
 {
     public:
         Tunnels();
@@ -513,11 +556,13 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tunnel; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
@@ -526,7 +571,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels : publi
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -534,17 +579,19 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_name_xr; //type: string
-        YLeaf interface_handle; //type: uint32
-        YLeaf vrfid; //type: uint32
-        YLeaf is_active; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf interface_handle; //type: uint32
+        ydk::YLeaf vrfid; //type: uint32
+        ydk::YLeaf is_active; //type: boolean
         class BaseCounterStatistics; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics> base_counter_statistics;
@@ -552,7 +599,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics : public ydk::Entity
 {
     public:
         BaseCounterStatistics();
@@ -560,14 +607,16 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets_per_second_switched; //type: uint64
-        YLeaf transmit_bytes_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_packets_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory> > count_history;
@@ -575,7 +624,7 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
 
-class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory : public Entity
+class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory : public ydk::Entity
 {
     public:
         CountHistory();
@@ -583,22 +632,24 @@ class TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_start_timestamp; //type: uint64
-        YLeaf event_end_timestamp; //type: uint64
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf is_valid; //type: boolean
+        ydk::YLeaf event_start_timestamp; //type: uint64
+        ydk::YLeaf event_end_timestamp; //type: uint64
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf is_valid; //type: boolean
 
 }; // TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
 
-class TrafficCollector::Afs : public Entity
+class TrafficCollector::Afs : public ydk::Entity
 {
     public:
         Afs();
@@ -606,11 +657,13 @@ class TrafficCollector::Afs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Af; //type: TrafficCollector::Afs::Af
 
@@ -619,7 +672,7 @@ class TrafficCollector::Afs : public Entity
 }; // TrafficCollector::Afs
 
 
-class TrafficCollector::Afs::Af : public Entity
+class TrafficCollector::Afs::Af : public ydk::Entity
 {
     public:
         Af();
@@ -627,13 +680,15 @@ class TrafficCollector::Afs::Af : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af_name; //type: TcOperAfNameEnum
+        ydk::YLeaf af_name; //type: TcOperAfName
         class Counters; //type: TrafficCollector::Afs::Af::Counters
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters> counters;
@@ -641,7 +696,7 @@ class TrafficCollector::Afs::Af : public Entity
 }; // TrafficCollector::Afs::Af
 
 
-class TrafficCollector::Afs::Af::Counters : public Entity
+class TrafficCollector::Afs::Af::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -649,11 +704,13 @@ class TrafficCollector::Afs::Af::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Prefixes; //type: TrafficCollector::Afs::Af::Counters::Prefixes
         class Tunnels; //type: TrafficCollector::Afs::Af::Counters::Tunnels
@@ -664,7 +721,7 @@ class TrafficCollector::Afs::Af::Counters : public Entity
 }; // TrafficCollector::Afs::Af::Counters
 
 
-class TrafficCollector::Afs::Af::Counters::Prefixes : public Entity
+class TrafficCollector::Afs::Af::Counters::Prefixes : public ydk::Entity
 {
     public:
         Prefixes();
@@ -672,11 +729,13 @@ class TrafficCollector::Afs::Af::Counters::Prefixes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Prefix; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix
 
@@ -685,7 +744,7 @@ class TrafficCollector::Afs::Af::Counters::Prefixes : public Entity
 }; // TrafficCollector::Afs::Af::Counters::Prefixes
 
 
-class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix : public Entity
+class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -693,18 +752,20 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipaddr; //type: string
-        YLeaf mask; //type: string
-        YLeaf label; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf label_xr; //type: uint32
-        YLeaf is_active; //type: boolean
+        ydk::YLeaf ipaddr; //type: string
+        ydk::YLeaf mask; //type: string
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf label_xr; //type: uint32
+        ydk::YLeaf is_active; //type: boolean
         class BaseCounterStatistics; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
         class TrafficMatrixCounterStatistics; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
@@ -714,7 +775,7 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix : public Entity
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix
 
 
-class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics : public Entity
+class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics : public ydk::Entity
 {
     public:
         BaseCounterStatistics();
@@ -722,14 +783,16 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatisti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets_per_second_switched; //type: uint64
-        YLeaf transmit_bytes_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_packets_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory> > count_history;
@@ -737,7 +800,7 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatisti
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics
 
 
-class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory : public Entity
+class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory : public ydk::Entity
 {
     public:
         CountHistory();
@@ -745,22 +808,24 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatisti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_start_timestamp; //type: uint64
-        YLeaf event_end_timestamp; //type: uint64
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf is_valid; //type: boolean
+        ydk::YLeaf event_start_timestamp; //type: uint64
+        ydk::YLeaf event_end_timestamp; //type: uint64
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf is_valid; //type: boolean
 
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory
 
 
-class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics : public Entity
+class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics : public ydk::Entity
 {
     public:
         TrafficMatrixCounterStatistics();
@@ -768,14 +833,16 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounte
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets_per_second_switched; //type: uint64
-        YLeaf transmit_bytes_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_packets_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory> > count_history;
@@ -783,7 +850,7 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounte
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics
 
 
-class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory : public Entity
+class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory : public ydk::Entity
 {
     public:
         CountHistory();
@@ -791,22 +858,24 @@ class TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounte
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_start_timestamp; //type: uint64
-        YLeaf event_end_timestamp; //type: uint64
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf is_valid; //type: boolean
+        ydk::YLeaf event_start_timestamp; //type: uint64
+        ydk::YLeaf event_end_timestamp; //type: uint64
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf is_valid; //type: boolean
 
 }; // TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory
 
 
-class TrafficCollector::Afs::Af::Counters::Tunnels : public Entity
+class TrafficCollector::Afs::Af::Counters::Tunnels : public ydk::Entity
 {
     public:
         Tunnels();
@@ -814,11 +883,13 @@ class TrafficCollector::Afs::Af::Counters::Tunnels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tunnel; //type: TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel
 
@@ -827,7 +898,7 @@ class TrafficCollector::Afs::Af::Counters::Tunnels : public Entity
 }; // TrafficCollector::Afs::Af::Counters::Tunnels
 
 
-class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel : public Entity
+class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -835,17 +906,19 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_name_xr; //type: string
-        YLeaf interface_handle; //type: uint32
-        YLeaf vrfid; //type: uint32
-        YLeaf is_active; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf interface_handle; //type: uint32
+        ydk::YLeaf vrfid; //type: uint32
+        ydk::YLeaf is_active; //type: boolean
         class BaseCounterStatistics; //type: TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
         std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics> base_counter_statistics;
@@ -853,7 +926,7 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel : public Entity
 }; // TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel
 
 
-class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics : public Entity
+class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics : public ydk::Entity
 {
     public:
         BaseCounterStatistics();
@@ -861,14 +934,16 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets_per_second_switched; //type: uint64
-        YLeaf transmit_bytes_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_packets_per_second_switched; //type: uint64
+        ydk::YLeaf transmit_bytes_per_second_switched; //type: uint64
         class CountHistory; //type: TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_tc_oper::TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory> > count_history;
@@ -876,7 +951,7 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistic
 }; // TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
 
-class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory : public Entity
+class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory : public ydk::Entity
 {
     public:
         CountHistory();
@@ -884,25 +959,27 @@ class TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_start_timestamp; //type: uint64
-        YLeaf event_end_timestamp; //type: uint64
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf is_valid; //type: boolean
+        ydk::YLeaf event_start_timestamp; //type: uint64
+        ydk::YLeaf event_end_timestamp; //type: uint64
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf is_valid; //type: boolean
 
 }; // TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory
 
-class TcOperAfNameEnum : public Enum
+class TcOperAfName : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

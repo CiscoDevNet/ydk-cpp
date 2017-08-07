@@ -7,14 +7,14 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_manageability_object_tracking_datatypes {
 
-class ObjectTrackingBooleanSignEnum : public Enum
+class ObjectTrackingBooleanSign : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf without_not;
-        static const Enum::YLeaf with_not;
+        static const ydk::Enum::YLeaf without_not;
+        static const ydk::Enum::YLeaf with_not;
 
 };
 

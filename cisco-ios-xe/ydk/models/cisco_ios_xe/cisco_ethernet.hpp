@@ -7,71 +7,71 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace cisco_ethernet {
 
-class EthIfSpeedIdentity : public virtual Identity
+class EthIfSpeed : public virtual ydk::Identity
 {
     public:
-        EthIfSpeedIdentity();
-        ~EthIfSpeedIdentity();
+        EthIfSpeed();
+        ~EthIfSpeed();
 
 
-}; // EthIfSpeedIdentity
+}; // EthIfSpeed
 
-class EthIfSpeed1GbIdentity : public cisco_ethernet::EthIfSpeedIdentity, virtual Identity
+class EthIfSpeed40Gb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed1GbIdentity();
-        ~EthIfSpeed1GbIdentity();
+        EthIfSpeed40Gb();
+        ~EthIfSpeed40Gb();
 
 
-}; // EthIfSpeed1GbIdentity
+}; // EthIfSpeed40Gb
 
-class EthIfSpeed40GbIdentity : public cisco_ethernet::EthIfSpeedIdentity, virtual Identity
+class EthIfSpeed100Gb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed40GbIdentity();
-        ~EthIfSpeed40GbIdentity();
+        EthIfSpeed100Gb();
+        ~EthIfSpeed100Gb();
 
 
-}; // EthIfSpeed40GbIdentity
+}; // EthIfSpeed100Gb
 
-class EthIfSpeed10MbIdentity : public cisco_ethernet::EthIfSpeedIdentity, virtual Identity
+class EthIfSpeed100Mb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed10MbIdentity();
-        ~EthIfSpeed10MbIdentity();
+        EthIfSpeed100Mb();
+        ~EthIfSpeed100Mb();
 
 
-}; // EthIfSpeed10MbIdentity
+}; // EthIfSpeed100Mb
 
-class EthIfSpeed10GbIdentity : public cisco_ethernet::EthIfSpeedIdentity, virtual Identity
+class EthIfSpeed1Gb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed10GbIdentity();
-        ~EthIfSpeed10GbIdentity();
+        EthIfSpeed1Gb();
+        ~EthIfSpeed1Gb();
 
 
-}; // EthIfSpeed10GbIdentity
+}; // EthIfSpeed1Gb
 
-class EthIfSpeed100GbIdentity : public cisco_ethernet::EthIfSpeedIdentity, virtual Identity
+class EthIfSpeed10Gb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed100GbIdentity();
-        ~EthIfSpeed100GbIdentity();
+        EthIfSpeed10Gb();
+        ~EthIfSpeed10Gb();
 
 
-}; // EthIfSpeed100GbIdentity
+}; // EthIfSpeed10Gb
 
-class EthIfSpeed100MbIdentity : public cisco_ethernet::EthIfSpeedIdentity, virtual Identity
+class EthIfSpeed10Mb : public cisco_ethernet::EthIfSpeed, virtual ydk::Identity
 {
     public:
-        EthIfSpeed100MbIdentity();
-        ~EthIfSpeed100MbIdentity();
+        EthIfSpeed10Mb();
+        ~EthIfSpeed10Mb();
 
 
-}; // EthIfSpeed100MbIdentity
+}; // EthIfSpeed10Mb
 
 
 }

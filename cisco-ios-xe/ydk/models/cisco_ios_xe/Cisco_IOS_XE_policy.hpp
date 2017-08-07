@@ -7,59 +7,59 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_policy {
 
-class PrecedenceType2Enum : public Enum
+class PrecedenceType2 : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf rsvp;
+        static const ydk::Enum::YLeaf rsvp;
 
 };
 
-class ClassNameTypeEnum : public Enum
+class PolicyActionType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf class_default;
+        static const ydk::Enum::YLeaf bandwidth;
+        static const ydk::Enum::YLeaf compression;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf estimate;
+        static const ydk::Enum::YLeaf fair_queue;
+        static const ydk::Enum::YLeaf forward;
+        static const ydk::Enum::YLeaf netflow_sampler;
+        static const ydk::Enum::YLeaf police;
+        static const ydk::Enum::YLeaf priority;
+        static const ydk::Enum::YLeaf queue_limit;
+        static const ydk::Enum::YLeaf random_detect;
+        static const ydk::Enum::YLeaf service_policy;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf shape;
+        static const ydk::Enum::YLeaf trust;
+        static const ydk::Enum::YLeaf dbl;
+        static const ydk::Enum::YLeaf queue_buffers;
 
 };
 
-class PolicePpsBpsTypeEnum : public Enum
+class PolicePpsBpsType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf pps;
-        static const Enum::YLeaf bps;
+        static const ydk::Enum::YLeaf pps;
+        static const ydk::Enum::YLeaf bps;
 
 };
 
-class PolicePacketsBytesTypeEnum : public Enum
+class PolicePacketsBytesType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf packets;
-        static const Enum::YLeaf bytes;
+        static const ydk::Enum::YLeaf packets;
+        static const ydk::Enum::YLeaf bytes;
 
 };
 
-class PolicyActionTypeEnum : public Enum
+class ClassNameType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bandwidth;
-        static const Enum::YLeaf compression;
-        static const Enum::YLeaf drop;
-        static const Enum::YLeaf estimate;
-        static const Enum::YLeaf fair_queue;
-        static const Enum::YLeaf forward;
-        static const Enum::YLeaf netflow_sampler;
-        static const Enum::YLeaf police;
-        static const Enum::YLeaf priority;
-        static const Enum::YLeaf queue_limit;
-        static const Enum::YLeaf random_detect;
-        static const Enum::YLeaf service_policy;
-        static const Enum::YLeaf set;
-        static const Enum::YLeaf shape;
-        static const Enum::YLeaf trust;
-        static const Enum::YLeaf dbl;
-        static const Enum::YLeaf queue_buffers;
+        static const ydk::Enum::YLeaf class_default;
 
 };
 

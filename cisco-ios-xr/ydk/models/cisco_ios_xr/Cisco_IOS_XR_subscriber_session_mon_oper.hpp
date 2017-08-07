@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_subscriber_session_mon_oper {
 
-class SessionMon : public Entity
+class SessionMon : public ydk::Entity
 {
     public:
         SessionMon();
@@ -18,15 +18,18 @@ class SessionMon : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: SessionMon::Nodes
 
@@ -35,7 +38,7 @@ class SessionMon : public Entity
 }; // SessionMon
 
 
-class SessionMon::Nodes : public Entity
+class SessionMon::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -43,11 +46,13 @@ class SessionMon::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: SessionMon::Nodes::Node
 
@@ -56,7 +61,7 @@ class SessionMon::Nodes : public Entity
 }; // SessionMon::Nodes
 
 
-class SessionMon::Nodes::Node : public Entity
+class SessionMon::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -64,13 +69,15 @@ class SessionMon::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_id; //type: string
+        ydk::YLeaf node_id; //type: string
         class SessionMonStatistics; //type: SessionMon::Nodes::Node::SessionMonStatistics
         class InterfaceAllStatistics; //type: SessionMon::Nodes::Node::InterfaceAllStatistics
         class LicenseStatistics; //type: SessionMon::Nodes::Node::LicenseStatistics
@@ -82,7 +89,7 @@ class SessionMon::Nodes::Node : public Entity
 }; // SessionMon::Nodes::Node
 
 
-class SessionMon::Nodes::Node::SessionMonStatistics : public Entity
+class SessionMon::Nodes::Node::SessionMonStatistics : public ydk::Entity
 {
     public:
         SessionMonStatistics();
@@ -90,28 +97,32 @@ class SessionMon::Nodes::Node::SessionMonStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total; //type: uint32
-        YLeaf pppoe; //type: uint32
-        YLeaf pppoe_ds; //type: uint32
-        YLeaf dhcpv4; //type: uint32
-        YLeaf dhcpv6; //type: uint32
-        YLeaf dhcp_ds; //type: uint32
-        YLeaf ippkt; //type: uint32
-        YLeaf active_sessions; //type: uint32
-        YLeaf standby_sessions; //type: uint32
-        YLeaf peak_active_sessions; //type: uint32
-        YLeaf peak_standby_sessions; //type: uint32
+        ydk::YLeaf total; //type: uint32
+        ydk::YLeaf pppoe; //type: uint32
+        ydk::YLeaf pppoe_ds; //type: uint32
+        ydk::YLeaf dhcpv4; //type: uint32
+        ydk::YLeaf dhcpv6; //type: uint32
+        ydk::YLeaf dhcp_ds; //type: uint32
+        ydk::YLeaf ippkt; //type: uint32
+        ydk::YLeaf active_sessions; //type: uint32
+        ydk::YLeaf standby_sessions; //type: uint32
+        ydk::YLeaf peak_active_sessions; //type: uint32
+        ydk::YLeaf peak_standby_sessions; //type: uint32
+        ydk::YLeaf peak_start_time; //type: uint32
+        ydk::YLeaf timeout_value; //type: uint32
 
 }; // SessionMon::Nodes::Node::SessionMonStatistics
 
 
-class SessionMon::Nodes::Node::InterfaceAllStatistics : public Entity
+class SessionMon::Nodes::Node::InterfaceAllStatistics : public ydk::Entity
 {
     public:
         InterfaceAllStatistics();
@@ -119,11 +130,13 @@ class SessionMon::Nodes::Node::InterfaceAllStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceAllStatistic; //type: SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic
 
@@ -132,7 +145,7 @@ class SessionMon::Nodes::Node::InterfaceAllStatistics : public Entity
 }; // SessionMon::Nodes::Node::InterfaceAllStatistics
 
 
-class SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic : public Entity
+class SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic : public ydk::Entity
 {
     public:
         InterfaceAllStatistic();
@@ -140,29 +153,33 @@ class SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf total; //type: uint32
-        YLeaf pppoe; //type: uint32
-        YLeaf pppoe_ds; //type: uint32
-        YLeaf dhcpv4; //type: uint32
-        YLeaf dhcpv6; //type: uint32
-        YLeaf dhcp_ds; //type: uint32
-        YLeaf ippkt; //type: uint32
-        YLeaf active_sessions; //type: uint32
-        YLeaf standby_sessions; //type: uint32
-        YLeaf peak_active_sessions; //type: uint32
-        YLeaf peak_standby_sessions; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf total; //type: uint32
+        ydk::YLeaf pppoe; //type: uint32
+        ydk::YLeaf pppoe_ds; //type: uint32
+        ydk::YLeaf dhcpv4; //type: uint32
+        ydk::YLeaf dhcpv6; //type: uint32
+        ydk::YLeaf dhcp_ds; //type: uint32
+        ydk::YLeaf ippkt; //type: uint32
+        ydk::YLeaf active_sessions; //type: uint32
+        ydk::YLeaf standby_sessions; //type: uint32
+        ydk::YLeaf peak_active_sessions; //type: uint32
+        ydk::YLeaf peak_standby_sessions; //type: uint32
+        ydk::YLeaf peak_start_time; //type: uint32
+        ydk::YLeaf timeout_value; //type: uint32
 
 }; // SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic
 
 
-class SessionMon::Nodes::Node::LicenseStatistics : public Entity
+class SessionMon::Nodes::Node::LicenseStatistics : public ydk::Entity
 {
     public:
         LicenseStatistics();
@@ -170,23 +187,27 @@ class SessionMon::Nodes::Node::LicenseStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total; //type: uint32
-        YLeaf pppoe; //type: uint32
-        YLeaf pppoe_ds; //type: uint32
-        YLeaf dhcpv4; //type: uint32
-        YLeaf dhcpv6; //type: uint32
-        YLeaf dhcp_ds; //type: uint32
-        YLeaf ippkt; //type: uint32
-        YLeaf active_sessions; //type: uint32
-        YLeaf standby_sessions; //type: uint32
-        YLeaf peak_active_sessions; //type: uint32
-        YLeaf peak_standby_sessions; //type: uint32
+        ydk::YLeaf total; //type: uint32
+        ydk::YLeaf pppoe; //type: uint32
+        ydk::YLeaf pppoe_ds; //type: uint32
+        ydk::YLeaf dhcpv4; //type: uint32
+        ydk::YLeaf dhcpv6; //type: uint32
+        ydk::YLeaf dhcp_ds; //type: uint32
+        ydk::YLeaf ippkt; //type: uint32
+        ydk::YLeaf active_sessions; //type: uint32
+        ydk::YLeaf standby_sessions; //type: uint32
+        ydk::YLeaf peak_active_sessions; //type: uint32
+        ydk::YLeaf peak_standby_sessions; //type: uint32
+        ydk::YLeaf peak_start_time; //type: uint32
+        ydk::YLeaf timeout_value; //type: uint32
 
 }; // SessionMon::Nodes::Node::LicenseStatistics
 

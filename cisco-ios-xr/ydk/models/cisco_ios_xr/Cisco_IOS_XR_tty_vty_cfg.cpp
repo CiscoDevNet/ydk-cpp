@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_tty_vty_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_vty_cfg {
 
 Vty::Vty()
@@ -29,7 +31,7 @@ bool Vty::has_data() const
 
 bool Vty::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (vty_pools !=  nullptr && vty_pools->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Vty::get_children() const
     return children;
 }
 
-void Vty::set_value(const std::string & value_path, std::string value)
+void Vty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vty::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Vty::get_bundle_name() const
 augment_capabilities_function Vty::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Vty::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Vty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vty-pools")
+        return true;
+    return false;
 }
 
 Vty::VtyPools::VtyPools()
@@ -135,7 +153,7 @@ bool Vty::VtyPools::has_operation() const
         if(vty_pool[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vty::VtyPools::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vty::VtyPools::get_children() con
     return children;
 }
 
-void Vty::VtyPools::set_value(const std::string & value_path, std::string value)
+void Vty::VtyPools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vty::VtyPools::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vty::VtyPools::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vty-pool")
+        return true;
+    return false;
 }
 
 Vty::VtyPools::VtyPool::VtyPool()
@@ -230,12 +259,12 @@ bool Vty::VtyPools::VtyPool::has_data() const
 
 bool Vty::VtyPools::VtyPool::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pool_name.operation)
-	|| is_set(first_vty.operation)
-	|| is_set(last_vty.operation)
-	|| is_set(line_template.operation)
-	|| is_set(none.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pool_name.yfilter)
+	|| ydk::is_set(first_vty.yfilter)
+	|| ydk::is_set(last_vty.yfilter)
+	|| ydk::is_set(line_template.yfilter)
+	|| ydk::is_set(none.yfilter);
 }
 
 std::string Vty::VtyPools::VtyPool::get_segment_path() const
@@ -261,11 +290,11 @@ const EntityPath Vty::VtyPools::VtyPool::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pool_name.is_set || is_set(pool_name.operation)) leaf_name_data.push_back(pool_name.get_name_leafdata());
-    if (first_vty.is_set || is_set(first_vty.operation)) leaf_name_data.push_back(first_vty.get_name_leafdata());
-    if (last_vty.is_set || is_set(last_vty.operation)) leaf_name_data.push_back(last_vty.get_name_leafdata());
-    if (line_template.is_set || is_set(line_template.operation)) leaf_name_data.push_back(line_template.get_name_leafdata());
-    if (none.is_set || is_set(none.operation)) leaf_name_data.push_back(none.get_name_leafdata());
+    if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
+    if (first_vty.is_set || is_set(first_vty.yfilter)) leaf_name_data.push_back(first_vty.get_name_leafdata());
+    if (last_vty.is_set || is_set(last_vty.yfilter)) leaf_name_data.push_back(last_vty.get_name_leafdata());
+    if (line_template.is_set || is_set(line_template.yfilter)) leaf_name_data.push_back(line_template.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -284,28 +313,69 @@ std::map<std::string, std::shared_ptr<Entity>> Vty::VtyPools::VtyPool::get_child
     return children;
 }
 
-void Vty::VtyPools::VtyPool::set_value(const std::string & value_path, std::string value)
+void Vty::VtyPools::VtyPool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pool-name")
     {
         pool_name = value;
+        pool_name.value_namespace = name_space;
+        pool_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "first-vty")
     {
         first_vty = value;
+        first_vty.value_namespace = name_space;
+        first_vty.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-vty")
     {
         last_vty = value;
+        last_vty.value_namespace = name_space;
+        last_vty.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-template")
     {
         line_template = value;
+        line_template.value_namespace = name_space;
+        line_template.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "none")
     {
         none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vty::VtyPools::VtyPool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pool-name")
+    {
+        pool_name.yfilter = yfilter;
+    }
+    if(value_path == "first-vty")
+    {
+        first_vty.yfilter = yfilter;
+    }
+    if(value_path == "last-vty")
+    {
+        last_vty.yfilter = yfilter;
+    }
+    if(value_path == "line-template")
+    {
+        line_template.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Vty::VtyPools::VtyPool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-name" || name == "first-vty" || name == "last-vty" || name == "line-template" || name == "none")
+        return true;
+    return false;
 }
 
 

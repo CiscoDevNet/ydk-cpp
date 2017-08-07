@@ -11,11 +11,11 @@
 #include "Cisco_IOS_XR_invmgr_oper_4.hpp"
 #include "Cisco_IOS_XR_invmgr_oper_6.hpp"
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_invmgr_oper {
 
 
-class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag : public Entity
+class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag : public ydk::Entity
 {
     public:
         InvBasicBag();
@@ -23,43 +23,45 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag
 
 
-class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo : public Entity
+class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo : public ydk::Entity
 {
     public:
         InvEepromInfo();
@@ -67,17 +69,19 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf inv_card_type; //type: uint8
-        YLeaf opaque_data; //type: string
-        YLeaf opaque_data_size; //type: uint32
-        YLeaf has_eeprom; //type: uint32
-        YLeaf description; //type: string
+        ydk::YLeaf inv_card_type; //type: uint8
+        ydk::YLeaf opaque_data; //type: string
+        ydk::YLeaf opaque_data_size; //type: uint32
+        ydk::YLeaf has_eeprom; //type: uint32
+        ydk::YLeaf description; //type: string
         class Eeprom; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom> eeprom;
@@ -85,7 +89,7 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo : public 
 }; // Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo
 
 
-class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom : public Entity
+class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
 {
     public:
         Eeprom();
@@ -93,68 +97,70 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf idprom_format_rev; //type: string
-        YLeaf controller_family; //type: string
-        YLeaf controller_type; //type: string
-        YLeaf vid; //type: string
-        YLeaf hwid; //type: string
-        YLeaf pid; //type: string
-        YLeaf udi_description; //type: string
-        YLeaf udi_name; //type: string
-        YLeaf clei; //type: string
-        YLeaf eci; //type: string
-        YLeaf top_assem_part_num; //type: string
-        YLeaf top_assem_vid; //type: string
-        YLeaf pca_num; //type: string
-        YLeaf pcavid; //type: string
-        YLeaf chassis_sid; //type: string
-        YLeaf dev_num1; //type: string
-        YLeaf dev_num2; //type: string
-        YLeaf dev_num3; //type: string
-        YLeaf dev_num4; //type: string
-        YLeaf dev_num5; //type: string
-        YLeaf dev_num6; //type: string
-        YLeaf dev_num7; //type: string
-        YLeaf manu_test_data; //type: string
-        YLeaf asset_id; //type: string
-        YLeaf asset_alias; //type: string
-        YLeaf base_mac_address1; //type: string
-        YLeaf mac_add_blk_size1; //type: string
-        YLeaf base_mac_address2; //type: string
-        YLeaf mac_add_blk_size2; //type: string
-        YLeaf base_mac_address3; //type: string
-        YLeaf mac_add_blk_size3; //type: string
-        YLeaf base_mac_address4; //type: string
-        YLeaf mac_add_blk_size4; //type: string
-        YLeaf pcb_serial_num; //type: string
-        YLeaf power_supply_type; //type: string
-        YLeaf power_consumption; //type: string
-        YLeaf block_signature; //type: string
-        YLeaf block_version; //type: string
-        YLeaf block_length; //type: string
-        YLeaf block_checksum; //type: string
-        YLeaf eeprom_size; //type: string
-        YLeaf block_count; //type: string
-        YLeaf fru_major_type; //type: string
-        YLeaf fru_minor_type; //type: string
-        YLeaf oem_string; //type: string
-        YLeaf product_id; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf part_number; //type: string
-        YLeaf part_revision; //type: string
-        YLeaf mfg_deviation; //type: string
-        YLeaf hw_version; //type: string
-        YLeaf mfg_bits; //type: string
-        YLeaf engineer_use; //type: string
-        YLeaf snmpoid; //type: string
-        YLeaf rma_code; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf idprom_format_rev; //type: string
+        ydk::YLeaf controller_family; //type: string
+        ydk::YLeaf controller_type; //type: string
+        ydk::YLeaf vid; //type: string
+        ydk::YLeaf hwid; //type: string
+        ydk::YLeaf pid; //type: string
+        ydk::YLeaf udi_description; //type: string
+        ydk::YLeaf udi_name; //type: string
+        ydk::YLeaf clei; //type: string
+        ydk::YLeaf eci; //type: string
+        ydk::YLeaf top_assem_part_num; //type: string
+        ydk::YLeaf top_assem_vid; //type: string
+        ydk::YLeaf pca_num; //type: string
+        ydk::YLeaf pcavid; //type: string
+        ydk::YLeaf chassis_sid; //type: string
+        ydk::YLeaf dev_num1; //type: string
+        ydk::YLeaf dev_num2; //type: string
+        ydk::YLeaf dev_num3; //type: string
+        ydk::YLeaf dev_num4; //type: string
+        ydk::YLeaf dev_num5; //type: string
+        ydk::YLeaf dev_num6; //type: string
+        ydk::YLeaf dev_num7; //type: string
+        ydk::YLeaf manu_test_data; //type: string
+        ydk::YLeaf asset_id; //type: string
+        ydk::YLeaf asset_alias; //type: string
+        ydk::YLeaf base_mac_address1; //type: string
+        ydk::YLeaf mac_add_blk_size1; //type: string
+        ydk::YLeaf base_mac_address2; //type: string
+        ydk::YLeaf mac_add_blk_size2; //type: string
+        ydk::YLeaf base_mac_address3; //type: string
+        ydk::YLeaf mac_add_blk_size3; //type: string
+        ydk::YLeaf base_mac_address4; //type: string
+        ydk::YLeaf mac_add_blk_size4; //type: string
+        ydk::YLeaf pcb_serial_num; //type: string
+        ydk::YLeaf power_supply_type; //type: string
+        ydk::YLeaf power_consumption; //type: string
+        ydk::YLeaf block_signature; //type: string
+        ydk::YLeaf block_version; //type: string
+        ydk::YLeaf block_length; //type: string
+        ydk::YLeaf block_checksum; //type: string
+        ydk::YLeaf eeprom_size; //type: string
+        ydk::YLeaf block_count; //type: string
+        ydk::YLeaf fru_major_type; //type: string
+        ydk::YLeaf fru_minor_type; //type: string
+        ydk::YLeaf oem_string; //type: string
+        ydk::YLeaf product_id; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf part_number; //type: string
+        ydk::YLeaf part_revision; //type: string
+        ydk::YLeaf mfg_deviation; //type: string
+        ydk::YLeaf hw_version; //type: string
+        ydk::YLeaf mfg_bits; //type: string
+        ydk::YLeaf engineer_use; //type: string
+        ydk::YLeaf snmpoid; //type: string
+        ydk::YLeaf rma_code; //type: string
         class Rma; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma> rma;
@@ -162,7 +168,7 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom :
 }; // Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom
 
 
-class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma : public Entity
+class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
 {
     public:
         Rma();
@@ -170,20 +176,22 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf test_history; //type: string
-        YLeaf rma_number; //type: string
-        YLeaf rma_history; //type: string
+        ydk::YLeaf test_history; //type: string
+        ydk::YLeaf rma_number; //type: string
+        ydk::YLeaf rma_history; //type: string
 
 }; // Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma
 
 
-class Inventory::Racks::Rack::Attributes : public Entity
+class Inventory::Racks::Rack::Attributes : public ydk::Entity
 {
     public:
         Attributes();
@@ -191,16 +199,18 @@ class Inventory::Racks::Rack::Attributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf module_done; //type: int32
-        YLeaf vm_node_id; //type: uint32
-        YLeaf vm_done; //type: int32
-        YLeaf node_id; //type: uint32
+        ydk::YLeaf module_done; //type: int32
+        ydk::YLeaf vm_node_id; //type: uint32
+        ydk::YLeaf vm_done; //type: int32
+        ydk::YLeaf node_id; //type: uint32
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Attributes::PwgInfo
         class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfoXml
@@ -222,7 +232,7 @@ class Inventory::Racks::Rack::Attributes : public Entity
 }; // Inventory::Racks::Rack::Attributes
 
 
-class Inventory::Racks::Rack::Attributes::EnvSensorInfo : public Entity
+class Inventory::Racks::Rack::Attributes::EnvSensorInfo : public ydk::Entity
 {
     public:
         EnvSensorInfo();
@@ -230,29 +240,31 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf field_validity_bitmap; //type: uint32
-        YLeaf device_description; //type: string
-        YLeaf units; //type: string
-        YLeaf device_id; //type: uint32
-        YLeaf value_; //type: uint32
-        YLeaf alarm_type; //type: uint32
-        YLeaf data_type; //type: uint32
-        YLeaf scale; //type: uint32
-        YLeaf precision; //type: uint32
-        YLeaf status; //type: uint32
-        YLeaf age_time_stamp; //type: uint32
-        YLeaf update_rate; //type: uint32
+        ydk::YLeaf field_validity_bitmap; //type: uint32
+        ydk::YLeaf device_description; //type: string
+        ydk::YLeaf units; //type: string
+        ydk::YLeaf device_id; //type: uint32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf alarm_type; //type: uint32
+        ydk::YLeaf data_type; //type: uint32
+        ydk::YLeaf scale; //type: uint32
+        ydk::YLeaf precision; //type: uint32
+        ydk::YLeaf status; //type: uint32
+        ydk::YLeaf age_time_stamp; //type: uint32
+        ydk::YLeaf update_rate; //type: uint32
 
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfo
 
 
-class Inventory::Racks::Rack::Attributes::PwgInfo : public Entity
+class Inventory::Racks::Rack::Attributes::PwgInfo : public ydk::Entity
 {
     public:
         PwgInfo();
@@ -260,21 +272,23 @@ class Inventory::Racks::Rack::Attributes::PwgInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf power_group_redundancy_mode; //type: int32
-        YLeaf power_group_power_units; //type: string
-        YLeaf power_group_available_current; //type: int32
-        YLeaf power_group_drawn_current; //type: int32
+        ydk::YLeaf power_group_redundancy_mode; //type: int32
+        ydk::YLeaf power_group_power_units; //type: string
+        ydk::YLeaf power_group_available_current; //type: int32
+        ydk::YLeaf power_group_drawn_current; //type: int32
 
 }; // Inventory::Racks::Rack::Attributes::PwgInfo
 
 
-class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml : public Entity
+class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml : public ydk::Entity
 {
     public:
         EnvSensorInfoXml();
@@ -282,18 +296,20 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf units; //type: UnitEnum
-        YLeaf value_; //type: string
-        YLeaf data_type; //type: SensorDataEnum
-        YLeaf status; //type: SensorStatusEnum
-        YLeaf update_rate; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf units; //type: Unit
+        ydk::YLeaf value_; //type: string
+        ydk::YLeaf data_type; //type: SensorData
+        ydk::YLeaf status; //type: SensorStatus
+        ydk::YLeaf update_rate; //type: uint32
         class Threshold; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold> threshold;
@@ -301,7 +317,7 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml : public Entity
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfoXml
 
 
-class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold : public Entity
+class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -309,11 +325,13 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThresholdArray; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
@@ -322,7 +340,7 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold : public E
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold
 
 
-class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public Entity
+class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
 {
     public:
         ThresholdArray();
@@ -330,21 +348,23 @@ class Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::Threshold
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_severity; //type: ThresholdSeverityEnum
-        YLeaf threshold_relation; //type: ThresholdRelationEnum
-        YLeaf threshold_value; //type: int32
-        YLeaf threshold_name; //type: string
+        ydk::YLeaf threshold_severity; //type: ThresholdSeverity
+        ydk::YLeaf threshold_relation; //type: ThresholdRelation
+        ydk::YLeaf threshold_value; //type: int32
+        ydk::YLeaf threshold_name; //type: string
 
 }; // Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
 
-class Inventory::Racks::Rack::Attributes::InvAssetBag : public Entity
+class Inventory::Racks::Rack::Attributes::InvAssetBag : public ydk::Entity
 {
     public:
         InvAssetBag();
@@ -352,24 +372,26 @@ class Inventory::Racks::Rack::Attributes::InvAssetBag : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf part_number; //type: string
-        YLeaf manufacturer_assembly_number; //type: string
-        YLeaf manufacturer_assembly_revision; //type: string
-        YLeaf manufacturer_firmware_identifier; //type: string
-        YLeaf manufacturer_software_identifier; //type: string
-        YLeaf manufacturer_common_language_equipment_identifier; //type: string
-        YLeaf original_equipment_manufacturer_string; //type: string
+        ydk::YLeaf part_number; //type: string
+        ydk::YLeaf manufacturer_assembly_number; //type: string
+        ydk::YLeaf manufacturer_assembly_revision; //type: string
+        ydk::YLeaf manufacturer_firmware_identifier; //type: string
+        ydk::YLeaf manufacturer_software_identifier; //type: string
+        ydk::YLeaf manufacturer_common_language_equipment_identifier; //type: string
+        ydk::YLeaf original_equipment_manufacturer_string; //type: string
 
 }; // Inventory::Racks::Rack::Attributes::InvAssetBag
 
 
-class Inventory::Racks::Rack::Attributes::Threshold : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -377,11 +399,13 @@ class Inventory::Racks::Rack::Attributes::Threshold : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MajorLo; //type: Inventory::Racks::Rack::Attributes::Threshold::MajorLo
         class CriticalHi; //type: Inventory::Racks::Rack::Attributes::Threshold::CriticalHi
@@ -400,7 +424,7 @@ class Inventory::Racks::Rack::Attributes::Threshold : public Entity
 }; // Inventory::Racks::Rack::Attributes::Threshold
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::MajorLo : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::MajorLo : public ydk::Entity
 {
     public:
         MajorLo();
@@ -408,11 +432,13 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorLo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag
 
@@ -421,7 +447,7 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorLo : public Entity
 }; // Inventory::Racks::Rack::Attributes::Threshold::MajorLo
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -429,22 +455,24 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_severity; //type: uint32
-        YLeaf threshold_relation; //type: uint32
-        YLeaf threshold_value; //type: uint32
-        YLeaf threshold_evaluation; //type: boolean
-        YLeaf threshold_notification_enabled; //type: boolean
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi : public ydk::Entity
 {
     public:
         CriticalHi();
@@ -452,11 +480,13 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag
 
@@ -465,7 +495,7 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi : public Entity
 }; // Inventory::Racks::Rack::Attributes::Threshold::CriticalHi
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -473,22 +503,24 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_severity; //type: uint32
-        YLeaf threshold_relation; //type: uint32
-        YLeaf threshold_value; //type: uint32
-        YLeaf threshold_evaluation; //type: boolean
-        YLeaf threshold_notification_enabled; //type: boolean
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::MinorHi : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::MinorHi : public ydk::Entity
 {
     public:
         MinorHi();
@@ -496,11 +528,13 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorHi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag
 
@@ -509,7 +543,7 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorHi : public Entity
 }; // Inventory::Racks::Rack::Attributes::Threshold::MinorHi
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -517,22 +551,24 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_severity; //type: uint32
-        YLeaf threshold_relation; //type: uint32
-        YLeaf threshold_value; //type: uint32
-        YLeaf threshold_evaluation; //type: boolean
-        YLeaf threshold_notification_enabled; //type: boolean
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::MajorHi : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::MajorHi : public ydk::Entity
 {
     public:
         MajorHi();
@@ -540,11 +576,13 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorHi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag
 
@@ -553,7 +591,7 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorHi : public Entity
 }; // Inventory::Racks::Rack::Attributes::Threshold::MajorHi
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -561,22 +599,24 @@ class Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_severity; //type: uint32
-        YLeaf threshold_relation; //type: uint32
-        YLeaf threshold_value; //type: uint32
-        YLeaf threshold_evaluation; //type: boolean
-        YLeaf threshold_notification_enabled; //type: boolean
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo : public ydk::Entity
 {
     public:
         CriticalLo();
@@ -584,11 +624,13 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag
 
@@ -597,7 +639,7 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo : public Entity
 }; // Inventory::Racks::Rack::Attributes::Threshold::CriticalLo
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -605,22 +647,24 @@ class Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_severity; //type: uint32
-        YLeaf threshold_relation; //type: uint32
-        YLeaf threshold_value; //type: uint32
-        YLeaf threshold_evaluation; //type: boolean
-        YLeaf threshold_notification_enabled; //type: boolean
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::MinorLo : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::MinorLo : public ydk::Entity
 {
     public:
         MinorLo();
@@ -628,11 +672,13 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorLo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThreshBag; //type: Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag
 
@@ -641,7 +687,7 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorLo : public Entity
 }; // Inventory::Racks::Rack::Attributes::Threshold::MinorLo
 
 
-class Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag : public Entity
+class Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
 {
     public:
         ThreshBag();
@@ -649,22 +695,24 @@ class Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_severity; //type: uint32
-        YLeaf threshold_relation; //type: uint32
-        YLeaf threshold_value; //type: uint32
-        YLeaf threshold_evaluation; //type: boolean
-        YLeaf threshold_notification_enabled; //type: boolean
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
 
 }; // Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag
 
 
-class Inventory::Racks::Rack::Attributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Attributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -672,19 +720,21 @@ class Inventory::Racks::Rack::Attributes::FruInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime
 
@@ -694,7 +744,7 @@ class Inventory::Racks::Rack::Attributes::FruInfo : public Entity
 }; // Inventory::Racks::Rack::Attributes::FruInfo
 
 
-class Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -702,19 +752,21 @@ class Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -722,19 +774,21 @@ class Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Attributes::InvBasicBag : public Entity
+class Inventory::Racks::Rack::Attributes::InvBasicBag : public ydk::Entity
 {
     public:
         InvBasicBag();
@@ -742,43 +796,45 @@ class Inventory::Racks::Rack::Attributes::InvBasicBag : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Attributes::InvBasicBag
 
 
-class Inventory::Racks::Rack::Attributes::InvEepromInfo : public Entity
+class Inventory::Racks::Rack::Attributes::InvEepromInfo : public ydk::Entity
 {
     public:
         InvEepromInfo();
@@ -786,17 +842,19 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf inv_card_type; //type: uint8
-        YLeaf opaque_data; //type: string
-        YLeaf opaque_data_size; //type: uint32
-        YLeaf has_eeprom; //type: uint32
-        YLeaf description; //type: string
+        ydk::YLeaf inv_card_type; //type: uint8
+        ydk::YLeaf opaque_data; //type: string
+        ydk::YLeaf opaque_data_size; //type: uint32
+        ydk::YLeaf has_eeprom; //type: uint32
+        ydk::YLeaf description; //type: string
         class Eeprom; //type: Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom> eeprom;
@@ -804,7 +862,7 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo : public Entity
 }; // Inventory::Racks::Rack::Attributes::InvEepromInfo
 
 
-class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom : public Entity
+class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
 {
     public:
         Eeprom();
@@ -812,68 +870,70 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf idprom_format_rev; //type: string
-        YLeaf controller_family; //type: string
-        YLeaf controller_type; //type: string
-        YLeaf vid; //type: string
-        YLeaf hwid; //type: string
-        YLeaf pid; //type: string
-        YLeaf udi_description; //type: string
-        YLeaf udi_name; //type: string
-        YLeaf clei; //type: string
-        YLeaf eci; //type: string
-        YLeaf top_assem_part_num; //type: string
-        YLeaf top_assem_vid; //type: string
-        YLeaf pca_num; //type: string
-        YLeaf pcavid; //type: string
-        YLeaf chassis_sid; //type: string
-        YLeaf dev_num1; //type: string
-        YLeaf dev_num2; //type: string
-        YLeaf dev_num3; //type: string
-        YLeaf dev_num4; //type: string
-        YLeaf dev_num5; //type: string
-        YLeaf dev_num6; //type: string
-        YLeaf dev_num7; //type: string
-        YLeaf manu_test_data; //type: string
-        YLeaf asset_id; //type: string
-        YLeaf asset_alias; //type: string
-        YLeaf base_mac_address1; //type: string
-        YLeaf mac_add_blk_size1; //type: string
-        YLeaf base_mac_address2; //type: string
-        YLeaf mac_add_blk_size2; //type: string
-        YLeaf base_mac_address3; //type: string
-        YLeaf mac_add_blk_size3; //type: string
-        YLeaf base_mac_address4; //type: string
-        YLeaf mac_add_blk_size4; //type: string
-        YLeaf pcb_serial_num; //type: string
-        YLeaf power_supply_type; //type: string
-        YLeaf power_consumption; //type: string
-        YLeaf block_signature; //type: string
-        YLeaf block_version; //type: string
-        YLeaf block_length; //type: string
-        YLeaf block_checksum; //type: string
-        YLeaf eeprom_size; //type: string
-        YLeaf block_count; //type: string
-        YLeaf fru_major_type; //type: string
-        YLeaf fru_minor_type; //type: string
-        YLeaf oem_string; //type: string
-        YLeaf product_id; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf part_number; //type: string
-        YLeaf part_revision; //type: string
-        YLeaf mfg_deviation; //type: string
-        YLeaf hw_version; //type: string
-        YLeaf mfg_bits; //type: string
-        YLeaf engineer_use; //type: string
-        YLeaf snmpoid; //type: string
-        YLeaf rma_code; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf idprom_format_rev; //type: string
+        ydk::YLeaf controller_family; //type: string
+        ydk::YLeaf controller_type; //type: string
+        ydk::YLeaf vid; //type: string
+        ydk::YLeaf hwid; //type: string
+        ydk::YLeaf pid; //type: string
+        ydk::YLeaf udi_description; //type: string
+        ydk::YLeaf udi_name; //type: string
+        ydk::YLeaf clei; //type: string
+        ydk::YLeaf eci; //type: string
+        ydk::YLeaf top_assem_part_num; //type: string
+        ydk::YLeaf top_assem_vid; //type: string
+        ydk::YLeaf pca_num; //type: string
+        ydk::YLeaf pcavid; //type: string
+        ydk::YLeaf chassis_sid; //type: string
+        ydk::YLeaf dev_num1; //type: string
+        ydk::YLeaf dev_num2; //type: string
+        ydk::YLeaf dev_num3; //type: string
+        ydk::YLeaf dev_num4; //type: string
+        ydk::YLeaf dev_num5; //type: string
+        ydk::YLeaf dev_num6; //type: string
+        ydk::YLeaf dev_num7; //type: string
+        ydk::YLeaf manu_test_data; //type: string
+        ydk::YLeaf asset_id; //type: string
+        ydk::YLeaf asset_alias; //type: string
+        ydk::YLeaf base_mac_address1; //type: string
+        ydk::YLeaf mac_add_blk_size1; //type: string
+        ydk::YLeaf base_mac_address2; //type: string
+        ydk::YLeaf mac_add_blk_size2; //type: string
+        ydk::YLeaf base_mac_address3; //type: string
+        ydk::YLeaf mac_add_blk_size3; //type: string
+        ydk::YLeaf base_mac_address4; //type: string
+        ydk::YLeaf mac_add_blk_size4; //type: string
+        ydk::YLeaf pcb_serial_num; //type: string
+        ydk::YLeaf power_supply_type; //type: string
+        ydk::YLeaf power_consumption; //type: string
+        ydk::YLeaf block_signature; //type: string
+        ydk::YLeaf block_version; //type: string
+        ydk::YLeaf block_length; //type: string
+        ydk::YLeaf block_checksum; //type: string
+        ydk::YLeaf eeprom_size; //type: string
+        ydk::YLeaf block_count; //type: string
+        ydk::YLeaf fru_major_type; //type: string
+        ydk::YLeaf fru_minor_type; //type: string
+        ydk::YLeaf oem_string; //type: string
+        ydk::YLeaf product_id; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf part_number; //type: string
+        ydk::YLeaf part_revision; //type: string
+        ydk::YLeaf mfg_deviation; //type: string
+        ydk::YLeaf hw_version; //type: string
+        ydk::YLeaf mfg_bits; //type: string
+        ydk::YLeaf engineer_use; //type: string
+        ydk::YLeaf snmpoid; //type: string
+        ydk::YLeaf rma_code; //type: string
         class Rma; //type: Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma
 
         std::shared_ptr<Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma> rma;
@@ -881,7 +941,7 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom : public Entity
 }; // Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom
 
 
-class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma : public Entity
+class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
 {
     public:
         Rma();
@@ -889,15 +949,17 @@ class Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf test_history; //type: string
-        YLeaf rma_number; //type: string
-        YLeaf rma_history; //type: string
+        ydk::YLeaf test_history; //type: string
+        ydk::YLeaf rma_number; //type: string
+        ydk::YLeaf rma_history; //type: string
 
 }; // Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma
 

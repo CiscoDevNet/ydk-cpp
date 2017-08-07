@@ -39,8 +39,8 @@ ValidationService::validate(const path::ServiceProvider& sp, Entity& entity,
     path::RootSchemaNode& root_schema = sp.get_root_schema();
     const path::DataNode& datanode = get_data_node_from_entity(entity, root_schema);
     const path::DataNode* dn = &datanode;
-    while(dn!= nullptr && dn->parent()!=nullptr)
-        dn = dn->parent();
+    while(dn!= nullptr && dn->get_parent()!=nullptr)
+        dn = dn->get_parent();
 
     path::ValidationService path_validation_service{};
     path_validation_service.validate(*dn, option);

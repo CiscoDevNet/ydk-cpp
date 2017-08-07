@@ -6,14 +6,16 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_IETF_MPLS_ID_STD_03_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_IETF_MPLS_ID_STD_03_MIB {
 
 CiscoIetfMplsIdStd03Mib::CiscoIetfMplsIdStd03Mib()
     :
-    cmplsidobjects_(std::make_shared<CiscoIetfMplsIdStd03Mib::Cmplsidobjects>())
+    cmplsidobjects(std::make_shared<CiscoIetfMplsIdStd03Mib::Cmplsidobjects>())
 {
-    cmplsidobjects_->parent = this;
+    cmplsidobjects->parent = this;
 
     yang_name = "CISCO-IETF-MPLS-ID-STD-03-MIB"; yang_parent_name = "CISCO-IETF-MPLS-ID-STD-03-MIB";
 }
@@ -24,13 +26,13 @@ CiscoIetfMplsIdStd03Mib::~CiscoIetfMplsIdStd03Mib()
 
 bool CiscoIetfMplsIdStd03Mib::has_data() const
 {
-    return (cmplsidobjects_ !=  nullptr && cmplsidobjects_->has_data());
+    return (cmplsidobjects !=  nullptr && cmplsidobjects->has_data());
 }
 
 bool CiscoIetfMplsIdStd03Mib::has_operation() const
 {
-    return is_set(operation)
-	|| (cmplsidobjects_ !=  nullptr && cmplsidobjects_->has_operation());
+    return is_set(yfilter)
+	|| (cmplsidobjects !=  nullptr && cmplsidobjects->has_operation());
 }
 
 std::string CiscoIetfMplsIdStd03Mib::get_segment_path() const
@@ -64,11 +66,11 @@ std::shared_ptr<Entity> CiscoIetfMplsIdStd03Mib::get_child_by_name(const std::st
 {
     if(child_yang_name == "cmplsIdObjects")
     {
-        if(cmplsidobjects_ == nullptr)
+        if(cmplsidobjects == nullptr)
         {
-            cmplsidobjects_ = std::make_shared<CiscoIetfMplsIdStd03Mib::Cmplsidobjects>();
+            cmplsidobjects = std::make_shared<CiscoIetfMplsIdStd03Mib::Cmplsidobjects>();
         }
-        return cmplsidobjects_;
+        return cmplsidobjects;
     }
 
     return nullptr;
@@ -77,15 +79,19 @@ std::shared_ptr<Entity> CiscoIetfMplsIdStd03Mib::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CiscoIetfMplsIdStd03Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cmplsidobjects_ != nullptr)
+    if(cmplsidobjects != nullptr)
     {
-        children["cmplsIdObjects"] = cmplsidobjects_;
+        children["cmplsIdObjects"] = cmplsidobjects;
     }
 
     return children;
 }
 
-void CiscoIetfMplsIdStd03Mib::set_value(const std::string & value_path, std::string value)
+void CiscoIetfMplsIdStd03Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoIetfMplsIdStd03Mib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string CiscoIetfMplsIdStd03Mib::get_bundle_name() const
 augment_capabilities_function CiscoIetfMplsIdStd03Mib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CiscoIetfMplsIdStd03Mib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoIetfMplsIdStd03Mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmplsIdObjects")
+        return true;
+    return false;
 }
 
 CiscoIetfMplsIdStd03Mib::Cmplsidobjects::Cmplsidobjects()
@@ -131,10 +149,10 @@ bool CiscoIetfMplsIdStd03Mib::Cmplsidobjects::has_data() const
 
 bool CiscoIetfMplsIdStd03Mib::Cmplsidobjects::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmplsglobalid.operation)
-	|| is_set(cmplsicc.operation)
-	|| is_set(cmplsnodeid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmplsglobalid.yfilter)
+	|| ydk::is_set(cmplsicc.yfilter)
+	|| ydk::is_set(cmplsnodeid.yfilter);
 }
 
 std::string CiscoIetfMplsIdStd03Mib::Cmplsidobjects::get_segment_path() const
@@ -160,9 +178,9 @@ const EntityPath CiscoIetfMplsIdStd03Mib::Cmplsidobjects::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmplsglobalid.is_set || is_set(cmplsglobalid.operation)) leaf_name_data.push_back(cmplsglobalid.get_name_leafdata());
-    if (cmplsicc.is_set || is_set(cmplsicc.operation)) leaf_name_data.push_back(cmplsicc.get_name_leafdata());
-    if (cmplsnodeid.is_set || is_set(cmplsnodeid.operation)) leaf_name_data.push_back(cmplsnodeid.get_name_leafdata());
+    if (cmplsglobalid.is_set || is_set(cmplsglobalid.yfilter)) leaf_name_data.push_back(cmplsglobalid.get_name_leafdata());
+    if (cmplsicc.is_set || is_set(cmplsicc.yfilter)) leaf_name_data.push_back(cmplsicc.get_name_leafdata());
+    if (cmplsnodeid.is_set || is_set(cmplsnodeid.yfilter)) leaf_name_data.push_back(cmplsnodeid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -181,20 +199,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIetfMplsIdStd03Mib::Cmplsido
     return children;
 }
 
-void CiscoIetfMplsIdStd03Mib::Cmplsidobjects::set_value(const std::string & value_path, std::string value)
+void CiscoIetfMplsIdStd03Mib::Cmplsidobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmplsGlobalId")
     {
         cmplsglobalid = value;
+        cmplsglobalid.value_namespace = name_space;
+        cmplsglobalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmplsIcc")
     {
         cmplsicc = value;
+        cmplsicc.value_namespace = name_space;
+        cmplsicc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmplsNodeId")
     {
         cmplsnodeid = value;
+        cmplsnodeid.value_namespace = name_space;
+        cmplsnodeid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoIetfMplsIdStd03Mib::Cmplsidobjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmplsGlobalId")
+    {
+        cmplsglobalid.yfilter = yfilter;
+    }
+    if(value_path == "cmplsIcc")
+    {
+        cmplsicc.yfilter = yfilter;
+    }
+    if(value_path == "cmplsNodeId")
+    {
+        cmplsnodeid.yfilter = yfilter;
+    }
+}
+
+bool CiscoIetfMplsIdStd03Mib::Cmplsidobjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmplsGlobalId" || name == "cmplsIcc" || name == "cmplsNodeId")
+        return true;
+    return false;
 }
 
 

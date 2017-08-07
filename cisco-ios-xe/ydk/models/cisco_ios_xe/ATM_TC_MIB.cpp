@@ -6,181 +6,183 @@
 #include "generated_entity_lookup.hpp"
 #include "ATM_TC_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace ATM_TC_MIB {
 
-AtmclptransparentnoscrIdentity::AtmclptransparentnoscrIdentity()
-     : Identity("ATM-TC-MIB:atmClpTransparentNoScr")
+Atmclpnotaggingscrcdvt::Atmclpnotaggingscrcdvt()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpNoTaggingScrCdvt")
 {
 }
 
-AtmclptransparentnoscrIdentity::~AtmclptransparentnoscrIdentity()
+Atmclpnotaggingscrcdvt::~Atmclpnotaggingscrcdvt()
 {
 }
 
-AtmnoclpscrIdentity::AtmnoclpscrIdentity()
-     : Identity("ATM-TC-MIB:atmNoClpScr")
+Atmclptransparentnoscr::Atmclptransparentnoscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpTransparentNoScr")
 {
 }
 
-AtmnoclpscrIdentity::~AtmnoclpscrIdentity()
+Atmclptransparentnoscr::~Atmclptransparentnoscr()
 {
 }
 
-AtmclptransparentscrIdentity::AtmclptransparentscrIdentity()
-     : Identity("ATM-TC-MIB:atmClpTransparentScr")
+Atmclpnotaggingmcr::Atmclpnotaggingmcr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpNoTaggingMcr")
 {
 }
 
-AtmclptransparentscrIdentity::~AtmclptransparentscrIdentity()
+Atmclpnotaggingmcr::~Atmclpnotaggingmcr()
 {
 }
 
-AtmnoclpnoscrIdentity::AtmnoclpnoscrIdentity()
-     : Identity("ATM-TC-MIB:atmNoClpNoScr")
+Atmclptaggingnoscr::Atmclptaggingnoscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpTaggingNoScr")
 {
 }
 
-AtmnoclpnoscrIdentity::~AtmnoclpnoscrIdentity()
+Atmclptaggingnoscr::~Atmclptaggingnoscr()
 {
 }
 
-AtmclpnotaggingscrIdentity::AtmclpnotaggingscrIdentity()
-     : Identity("ATM-TC-MIB:atmClpNoTaggingScr")
+Atmnoclpnoscrcdvt::Atmnoclpnoscrcdvt()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmNoClpNoScrCdvt")
 {
 }
 
-AtmclpnotaggingscrIdentity::~AtmclpnotaggingscrIdentity()
+Atmnoclpnoscrcdvt::~Atmnoclpnoscrcdvt()
 {
 }
 
-AtmnoclptaggingnoscrIdentity::AtmnoclptaggingnoscrIdentity()
-     : Identity("ATM-TC-MIB:atmNoClpTaggingNoScr")
+Atmclpnotaggingscr::Atmclpnotaggingscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpNoTaggingScr")
 {
 }
 
-AtmnoclptaggingnoscrIdentity::~AtmnoclptaggingnoscrIdentity()
+Atmclpnotaggingscr::~Atmclpnotaggingscr()
 {
 }
 
-AtmclpnotaggingmcrIdentity::AtmclpnotaggingmcrIdentity()
-     : Identity("ATM-TC-MIB:atmClpNoTaggingMcr")
+Atmclptaggingscrcdvt::Atmclptaggingscrcdvt()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpTaggingScrCdvt")
 {
 }
 
-AtmclpnotaggingmcrIdentity::~AtmclpnotaggingmcrIdentity()
+Atmclptaggingscrcdvt::~Atmclptaggingscrcdvt()
 {
 }
 
-AtmclpnotaggingscrcdvtIdentity::AtmclpnotaggingscrcdvtIdentity()
-     : Identity("ATM-TC-MIB:atmClpNoTaggingScrCdvt")
+Atmnoclpnoscr::Atmnoclpnoscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmNoClpNoScr")
 {
 }
 
-AtmclpnotaggingscrcdvtIdentity::~AtmclpnotaggingscrcdvtIdentity()
+Atmnoclpnoscr::~Atmnoclpnoscr()
 {
 }
 
-AtmnotrafficdescriptorIdentity::AtmnotrafficdescriptorIdentity()
-     : Identity("ATM-TC-MIB:atmNoTrafficDescriptor")
+Atmnotrafficdescriptor::Atmnotrafficdescriptor()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmNoTrafficDescriptor")
 {
 }
 
-AtmnotrafficdescriptorIdentity::~AtmnotrafficdescriptorIdentity()
+Atmnotrafficdescriptor::~Atmnotrafficdescriptor()
 {
 }
 
-AtmclptaggingnoscrIdentity::AtmclptaggingnoscrIdentity()
-     : Identity("ATM-TC-MIB:atmClpTaggingNoScr")
+Atmclpnotaggingnoscr::Atmclpnotaggingnoscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpNoTaggingNoScr")
 {
 }
 
-AtmclptaggingnoscrIdentity::~AtmclptaggingnoscrIdentity()
+Atmclpnotaggingnoscr::~Atmclpnotaggingnoscr()
 {
 }
 
-AtmnoclpscrcdvtIdentity::AtmnoclpscrcdvtIdentity()
-     : Identity("ATM-TC-MIB:atmNoClpScrCdvt")
+Atmclptaggingscr::Atmclptaggingscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpTaggingScr")
 {
 }
 
-AtmnoclpscrcdvtIdentity::~AtmnoclpscrcdvtIdentity()
+Atmclptaggingscr::~Atmclptaggingscr()
 {
 }
 
-AtmnoclpnoscrcdvtIdentity::AtmnoclpnoscrcdvtIdentity()
-     : Identity("ATM-TC-MIB:atmNoClpNoScrCdvt")
+Atmnoclptaggingnoscr::Atmnoclptaggingnoscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmNoClpTaggingNoScr")
 {
 }
 
-AtmnoclpnoscrcdvtIdentity::~AtmnoclpnoscrcdvtIdentity()
+Atmnoclptaggingnoscr::~Atmnoclptaggingnoscr()
 {
 }
 
-AtmclptaggingscrIdentity::AtmclptaggingscrIdentity()
-     : Identity("ATM-TC-MIB:atmClpTaggingScr")
+Atmnoclpscrcdvt::Atmnoclpscrcdvt()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmNoClpScrCdvt")
 {
 }
 
-AtmclptaggingscrIdentity::~AtmclptaggingscrIdentity()
+Atmnoclpscrcdvt::~Atmnoclpscrcdvt()
 {
 }
 
-AtmclpnotaggingnoscrIdentity::AtmclpnotaggingnoscrIdentity()
-     : Identity("ATM-TC-MIB:atmClpNoTaggingNoScr")
+Atmclptransparentscr::Atmclptransparentscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmClpTransparentScr")
 {
 }
 
-AtmclpnotaggingnoscrIdentity::~AtmclpnotaggingnoscrIdentity()
+Atmclptransparentscr::~Atmclptransparentscr()
 {
 }
 
-AtmclptaggingscrcdvtIdentity::AtmclptaggingscrcdvtIdentity()
-     : Identity("ATM-TC-MIB:atmClpTaggingScrCdvt")
+Atmnoclpscr::Atmnoclpscr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:ATM-TC-MIB", "ATM-TC-MIB", "ATM-TC-MIB:atmNoClpScr")
 {
 }
 
-AtmclptaggingscrcdvtIdentity::~AtmclptaggingscrcdvtIdentity()
+Atmnoclpscr::~Atmnoclpscr()
 {
 }
 
-const Enum::YLeaf AtmvorxadminstatusEnum::up {1, "up"};
-const Enum::YLeaf AtmvorxadminstatusEnum::down {2, "down"};
+const Enum::YLeaf Atmvorxoperstatus::up {1, "up"};
+const Enum::YLeaf Atmvorxoperstatus::down {2, "down"};
+const Enum::YLeaf Atmvorxoperstatus::unknown {3, "unknown"};
 
-const Enum::YLeaf AtmservicecategoryEnum::other {1, "other"};
-const Enum::YLeaf AtmservicecategoryEnum::cbr {2, "cbr"};
-const Enum::YLeaf AtmservicecategoryEnum::rtVbr {3, "rtVbr"};
-const Enum::YLeaf AtmservicecategoryEnum::nrtVbr {4, "nrtVbr"};
-const Enum::YLeaf AtmservicecategoryEnum::abr {5, "abr"};
-const Enum::YLeaf AtmservicecategoryEnum::ubr {6, "ubr"};
+const Enum::YLeaf Atmservicecategory::other {1, "other"};
+const Enum::YLeaf Atmservicecategory::cbr {2, "cbr"};
+const Enum::YLeaf Atmservicecategory::rtVbr {3, "rtVbr"};
+const Enum::YLeaf Atmservicecategory::nrtVbr {4, "nrtVbr"};
+const Enum::YLeaf Atmservicecategory::abr {5, "abr"};
+const Enum::YLeaf Atmservicecategory::ubr {6, "ubr"};
 
-const Enum::YLeaf AtminterfacetypeEnum::other {1, "other"};
-const Enum::YLeaf AtminterfacetypeEnum::autoConfig {2, "autoConfig"};
-const Enum::YLeaf AtminterfacetypeEnum::ituDss2 {3, "ituDss2"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfUni3Dot0 {4, "atmfUni3Dot0"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfUni3Dot1 {5, "atmfUni3Dot1"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfUni4Dot0 {6, "atmfUni4Dot0"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfIispUni3Dot0 {7, "atmfIispUni3Dot0"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfIispUni3Dot1 {8, "atmfIispUni3Dot1"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfIispUni4Dot0 {9, "atmfIispUni4Dot0"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfPnni1Dot0 {10, "atmfPnni1Dot0"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfBici2Dot0 {11, "atmfBici2Dot0"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfUniPvcOnly {12, "atmfUniPvcOnly"};
-const Enum::YLeaf AtminterfacetypeEnum::atmfNniPvcOnly {13, "atmfNniPvcOnly"};
+const Enum::YLeaf Atmvorxadminstatus::up {1, "up"};
+const Enum::YLeaf Atmvorxadminstatus::down {2, "down"};
 
-const Enum::YLeaf AtmconnkindEnum::pvc {1, "pvc"};
-const Enum::YLeaf AtmconnkindEnum::svcIncoming {2, "svcIncoming"};
-const Enum::YLeaf AtmconnkindEnum::svcOutgoing {3, "svcOutgoing"};
-const Enum::YLeaf AtmconnkindEnum::spvcInitiator {4, "spvcInitiator"};
-const Enum::YLeaf AtmconnkindEnum::spvcTarget {5, "spvcTarget"};
+const Enum::YLeaf Atminterfacetype::other {1, "other"};
+const Enum::YLeaf Atminterfacetype::autoConfig {2, "autoConfig"};
+const Enum::YLeaf Atminterfacetype::ituDss2 {3, "ituDss2"};
+const Enum::YLeaf Atminterfacetype::atmfUni3Dot0 {4, "atmfUni3Dot0"};
+const Enum::YLeaf Atminterfacetype::atmfUni3Dot1 {5, "atmfUni3Dot1"};
+const Enum::YLeaf Atminterfacetype::atmfUni4Dot0 {6, "atmfUni4Dot0"};
+const Enum::YLeaf Atminterfacetype::atmfIispUni3Dot0 {7, "atmfIispUni3Dot0"};
+const Enum::YLeaf Atminterfacetype::atmfIispUni3Dot1 {8, "atmfIispUni3Dot1"};
+const Enum::YLeaf Atminterfacetype::atmfIispUni4Dot0 {9, "atmfIispUni4Dot0"};
+const Enum::YLeaf Atminterfacetype::atmfPnni1Dot0 {10, "atmfPnni1Dot0"};
+const Enum::YLeaf Atminterfacetype::atmfBici2Dot0 {11, "atmfBici2Dot0"};
+const Enum::YLeaf Atminterfacetype::atmfUniPvcOnly {12, "atmfUniPvcOnly"};
+const Enum::YLeaf Atminterfacetype::atmfNniPvcOnly {13, "atmfNniPvcOnly"};
 
-const Enum::YLeaf AtmvorxoperstatusEnum::up {1, "up"};
-const Enum::YLeaf AtmvorxoperstatusEnum::down {2, "down"};
-const Enum::YLeaf AtmvorxoperstatusEnum::unknown {3, "unknown"};
+const Enum::YLeaf Atmconnkind::pvc {1, "pvc"};
+const Enum::YLeaf Atmconnkind::svcIncoming {2, "svcIncoming"};
+const Enum::YLeaf Atmconnkind::svcOutgoing {3, "svcOutgoing"};
+const Enum::YLeaf Atmconnkind::spvcInitiator {4, "spvcInitiator"};
+const Enum::YLeaf Atmconnkind::spvcTarget {5, "spvcTarget"};
 
-const Enum::YLeaf AtmconncasttypeEnum::p2p {1, "p2p"};
-const Enum::YLeaf AtmconncasttypeEnum::p2mpRoot {2, "p2mpRoot"};
-const Enum::YLeaf AtmconncasttypeEnum::p2mpLeaf {3, "p2mpLeaf"};
+const Enum::YLeaf Atmconncasttype::p2p {1, "p2p"};
+const Enum::YLeaf Atmconncasttype::p2mpRoot {2, "p2mpRoot"};
+const Enum::YLeaf Atmconncasttype::p2mpLeaf {3, "p2mpLeaf"};
 
 
 }

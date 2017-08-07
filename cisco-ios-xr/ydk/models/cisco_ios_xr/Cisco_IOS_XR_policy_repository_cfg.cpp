@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_policy_repository_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_policy_repository_cfg {
 
 RoutingPolicy::RoutingPolicy()
@@ -40,8 +42,8 @@ bool RoutingPolicy::has_data() const
 
 bool RoutingPolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(editor.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(editor.yfilter)
 	|| (limits !=  nullptr && limits->has_operation())
 	|| (route_policies !=  nullptr && route_policies->has_operation())
 	|| (sets !=  nullptr && sets->has_operation());
@@ -67,7 +69,7 @@ const EntityPath RoutingPolicy::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (editor.is_set || is_set(editor.operation)) leaf_name_data.push_back(editor.get_name_leafdata());
+    if (editor.is_set || is_set(editor.yfilter)) leaf_name_data.push_back(editor.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -128,11 +130,21 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::get_children() con
     return children;
 }
 
-void RoutingPolicy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "editor")
     {
         editor = value;
+        editor.value_namespace = name_space;
+        editor.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RoutingPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "editor")
+    {
+        editor.yfilter = yfilter;
     }
 }
 
@@ -154,6 +166,18 @@ std::string RoutingPolicy::get_bundle_name() const
 augment_capabilities_function RoutingPolicy::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> RoutingPolicy::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limits" || name == "route-policies" || name == "sets" || name == "editor")
+        return true;
+    return false;
 }
 
 RoutingPolicy::RoutePolicies::RoutePolicies()
@@ -182,7 +206,7 @@ bool RoutingPolicy::RoutePolicies::has_operation() const
         if(route_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::RoutePolicies::get_segment_path() const
@@ -247,8 +271,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::RoutePolicies::get
     return children;
 }
 
-void RoutingPolicy::RoutePolicies::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::RoutePolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::RoutePolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::RoutePolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy")
+        return true;
+    return false;
 }
 
 RoutingPolicy::RoutePolicies::RoutePolicy::RoutePolicy()
@@ -271,9 +306,9 @@ bool RoutingPolicy::RoutePolicies::RoutePolicy::has_data() const
 
 bool RoutingPolicy::RoutePolicies::RoutePolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(rpl_route_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(rpl_route_policy.yfilter);
 }
 
 std::string RoutingPolicy::RoutePolicies::RoutePolicy::get_segment_path() const
@@ -299,8 +334,8 @@ const EntityPath RoutingPolicy::RoutePolicies::RoutePolicy::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (rpl_route_policy.is_set || is_set(rpl_route_policy.operation)) leaf_name_data.push_back(rpl_route_policy.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (rpl_route_policy.is_set || is_set(rpl_route_policy.yfilter)) leaf_name_data.push_back(rpl_route_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -319,16 +354,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::RoutePolicies::Rou
     return children;
 }
 
-void RoutingPolicy::RoutePolicies::RoutePolicy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::RoutePolicies::RoutePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-route-policy")
     {
         rpl_route_policy = value;
+        rpl_route_policy.value_namespace = name_space;
+        rpl_route_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::RoutePolicies::RoutePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-route-policy")
+    {
+        rpl_route_policy.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::RoutePolicies::RoutePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "rpl-route-policy")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Sets()
@@ -447,7 +505,7 @@ bool RoutingPolicy::Sets::has_data() const
 
 bool RoutingPolicy::Sets::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (append_esi_sets !=  nullptr && append_esi_sets->has_operation())
 	|| (append_etag_sets !=  nullptr && append_etag_sets->has_operation())
 	|| (append_mac_sets !=  nullptr && append_mac_sets->has_operation())
@@ -866,8 +924,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::get_children
     return children;
 }
 
-void RoutingPolicy::Sets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "append-esi-sets" || name == "append-etag-sets" || name == "append-mac-sets" || name == "as-path-sets" || name == "community-sets" || name == "esi-sets" || name == "etag-sets" || name == "extended-community-bandwidth-sets" || name == "extended-community-cost-sets" || name == "extended-community-opaque-sets" || name == "extended-community-rt-sets" || name == "extended-community-seg-nh-sets" || name == "extended-community-soo-sets" || name == "mac-sets" || name == "ospf-area-sets" || name == "policy-global-set-table" || name == "prefix-sets" || name == "prepend-esi-sets" || name == "prepend-etag-sets" || name == "prepend-mac-sets" || name == "rd-sets" || name == "remove-esi-sets" || name == "remove-etag-sets" || name == "remove-mac-sets" || name == "tag-sets")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PrependEtagSets::PrependEtagSets()
@@ -896,7 +965,7 @@ bool RoutingPolicy::Sets::PrependEtagSets::has_operation() const
         if(prepend_etag_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::PrependEtagSets::get_segment_path() const
@@ -961,8 +1030,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependEtagS
     return children;
 }
 
-void RoutingPolicy::Sets::PrependEtagSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PrependEtagSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::PrependEtagSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::PrependEtagSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prepend-etag-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::PrependEtagSet()
@@ -985,9 +1065,9 @@ bool RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::has_data() const
 
 bool RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(etag_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(etag_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_segment_path() const
@@ -1013,8 +1093,8 @@ const EntityPath RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (etag_set_as_text.is_set || is_set(etag_set_as_text.operation)) leaf_name_data.push_back(etag_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (etag_set_as_text.is_set || is_set(etag_set_as_text.yfilter)) leaf_name_data.push_back(etag_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1033,16 +1113,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependEtagS
     return children;
 }
 
-void RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "etag-set-as-text")
     {
         etag_set_as_text = value;
+        etag_set_as_text.value_namespace = name_space;
+        etag_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "etag-set-as-text")
+    {
+        etag_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::PrependEtagSets::PrependEtagSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "etag-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PrefixSets::PrefixSets()
@@ -1071,7 +1174,7 @@ bool RoutingPolicy::Sets::PrefixSets::has_operation() const
         if(prefix_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::PrefixSets::get_segment_path() const
@@ -1136,8 +1239,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrefixSets::
     return children;
 }
 
-void RoutingPolicy::Sets::PrefixSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PrefixSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::PrefixSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::PrefixSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PrefixSets::PrefixSet::PrefixSet()
@@ -1160,9 +1274,9 @@ bool RoutingPolicy::Sets::PrefixSets::PrefixSet::has_data() const
 
 bool RoutingPolicy::Sets::PrefixSets::PrefixSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_prefix_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_prefix_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::PrefixSets::PrefixSet::get_segment_path() const
@@ -1188,8 +1302,8 @@ const EntityPath RoutingPolicy::Sets::PrefixSets::PrefixSet::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_prefix_set.is_set || is_set(rpl_prefix_set.operation)) leaf_name_data.push_back(rpl_prefix_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_prefix_set.is_set || is_set(rpl_prefix_set.yfilter)) leaf_name_data.push_back(rpl_prefix_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1208,16 +1322,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrefixSets::
     return children;
 }
 
-void RoutingPolicy::Sets::PrefixSets::PrefixSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PrefixSets::PrefixSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-prefix-set")
     {
         rpl_prefix_set = value;
+        rpl_prefix_set.value_namespace = name_space;
+        rpl_prefix_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::PrefixSets::PrefixSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-prefix-set")
+    {
+        rpl_prefix_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::PrefixSets::PrefixSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-prefix-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AppendEtagSets::AppendEtagSets()
@@ -1246,7 +1383,7 @@ bool RoutingPolicy::Sets::AppendEtagSets::has_operation() const
         if(append_etag_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::AppendEtagSets::get_segment_path() const
@@ -1311,8 +1448,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendEtagSe
     return children;
 }
 
-void RoutingPolicy::Sets::AppendEtagSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AppendEtagSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::AppendEtagSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::AppendEtagSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "append-etag-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::AppendEtagSet()
@@ -1335,9 +1483,9 @@ bool RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::has_data() const
 
 bool RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(etag_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(etag_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_segment_path() const
@@ -1363,8 +1511,8 @@ const EntityPath RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (etag_set_as_text.is_set || is_set(etag_set_as_text.operation)) leaf_name_data.push_back(etag_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (etag_set_as_text.is_set || is_set(etag_set_as_text.yfilter)) leaf_name_data.push_back(etag_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1383,16 +1531,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendEtagSe
     return children;
 }
 
-void RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "etag-set-as-text")
     {
         etag_set_as_text = value;
+        etag_set_as_text.value_namespace = name_space;
+        etag_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "etag-set-as-text")
+    {
+        etag_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AppendEtagSets::AppendEtagSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "etag-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSets()
@@ -1421,7 +1592,7 @@ bool RoutingPolicy::Sets::RemoveEtagSets::has_operation() const
         if(remove_etag_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::RemoveEtagSets::get_segment_path() const
@@ -1486,8 +1657,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveEtagSe
     return children;
 }
 
-void RoutingPolicy::Sets::RemoveEtagSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::RemoveEtagSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::RemoveEtagSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::RemoveEtagSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remove-etag-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::RemoveEtagSet()
@@ -1510,9 +1692,9 @@ bool RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::has_data() const
 
 bool RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(etag_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(etag_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_segment_path() const
@@ -1538,8 +1720,8 @@ const EntityPath RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (etag_set_as_text.is_set || is_set(etag_set_as_text.operation)) leaf_name_data.push_back(etag_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (etag_set_as_text.is_set || is_set(etag_set_as_text.yfilter)) leaf_name_data.push_back(etag_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1558,16 +1740,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveEtagSe
     return children;
 }
 
-void RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "etag-set-as-text")
     {
         etag_set_as_text = value;
+        etag_set_as_text.value_namespace = name_space;
+        etag_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "etag-set-as-text")
+    {
+        etag_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::RemoveEtagSets::RemoveEtagSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "etag-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::MacSets::MacSets()
@@ -1596,7 +1801,7 @@ bool RoutingPolicy::Sets::MacSets::has_operation() const
         if(mac_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::MacSets::get_segment_path() const
@@ -1661,8 +1866,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::MacSets::get
     return children;
 }
 
-void RoutingPolicy::Sets::MacSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::MacSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::MacSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::MacSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::MacSets::MacSet::MacSet()
@@ -1685,9 +1901,9 @@ bool RoutingPolicy::Sets::MacSets::MacSet::has_data() const
 
 bool RoutingPolicy::Sets::MacSets::MacSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(mac_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(mac_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::MacSets::MacSet::get_segment_path() const
@@ -1713,8 +1929,8 @@ const EntityPath RoutingPolicy::Sets::MacSets::MacSet::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (mac_set_as_text.is_set || is_set(mac_set_as_text.operation)) leaf_name_data.push_back(mac_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (mac_set_as_text.is_set || is_set(mac_set_as_text.yfilter)) leaf_name_data.push_back(mac_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1733,16 +1949,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::MacSets::Mac
     return children;
 }
 
-void RoutingPolicy::Sets::MacSets::MacSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::MacSets::MacSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-set-as-text")
     {
         mac_set_as_text = value;
+        mac_set_as_text.value_namespace = name_space;
+        mac_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::MacSets::MacSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-set-as-text")
+    {
+        mac_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::MacSets::MacSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "mac-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSets()
@@ -1771,7 +2010,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::has_operation() const
         if(extended_community_opaque_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::get_segment_path() const
@@ -1836,8 +2075,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-community-opaque-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::ExtendedCommunityOpaqueSet()
@@ -1860,9 +2110,9 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSe
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_extended_community_opaque_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_extended_community_opaque_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::get_segment_path() const
@@ -1888,8 +2138,8 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_extended_community_opaque_set.is_set || is_set(rpl_extended_community_opaque_set.operation)) leaf_name_data.push_back(rpl_extended_community_opaque_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_extended_community_opaque_set.is_set || is_set(rpl_extended_community_opaque_set.yfilter)) leaf_name_data.push_back(rpl_extended_community_opaque_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1908,16 +2158,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-extended-community-opaque-set")
     {
         rpl_extended_community_opaque_set = value;
+        rpl_extended_community_opaque_set.value_namespace = name_space;
+        rpl_extended_community_opaque_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-extended-community-opaque-set")
+    {
+        rpl_extended_community_opaque_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaqueSets::ExtendedCommunityOpaqueSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-extended-community-opaque-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PrependMacSets::PrependMacSets()
@@ -1946,7 +2219,7 @@ bool RoutingPolicy::Sets::PrependMacSets::has_operation() const
         if(prepend_mac_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::PrependMacSets::get_segment_path() const
@@ -2011,8 +2284,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependMacSe
     return children;
 }
 
-void RoutingPolicy::Sets::PrependMacSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PrependMacSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::PrependMacSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::PrependMacSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prepend-mac-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PrependMacSets::PrependMacSet::PrependMacSet()
@@ -2035,9 +2319,9 @@ bool RoutingPolicy::Sets::PrependMacSets::PrependMacSet::has_data() const
 
 bool RoutingPolicy::Sets::PrependMacSets::PrependMacSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(mac_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(mac_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_segment_path() const
@@ -2063,8 +2347,8 @@ const EntityPath RoutingPolicy::Sets::PrependMacSets::PrependMacSet::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (mac_set_as_text.is_set || is_set(mac_set_as_text.operation)) leaf_name_data.push_back(mac_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (mac_set_as_text.is_set || is_set(mac_set_as_text.yfilter)) leaf_name_data.push_back(mac_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2083,16 +2367,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependMacSe
     return children;
 }
 
-void RoutingPolicy::Sets::PrependMacSets::PrependMacSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PrependMacSets::PrependMacSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-set-as-text")
     {
         mac_set_as_text = value;
+        mac_set_as_text.value_namespace = name_space;
+        mac_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::PrependMacSets::PrependMacSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-set-as-text")
+    {
+        mac_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::PrependMacSets::PrependMacSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "mac-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfAreaSets::OspfAreaSets()
@@ -2121,7 +2428,7 @@ bool RoutingPolicy::Sets::OspfAreaSets::has_operation() const
         if(ospf_area_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfAreaSets::get_segment_path() const
@@ -2186,8 +2493,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfAreaSets
     return children;
 }
 
-void RoutingPolicy::Sets::OspfAreaSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfAreaSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::OspfAreaSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::OspfAreaSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf-area-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::OspfAreaSet()
@@ -2210,9 +2528,9 @@ bool RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::has_data() const
 
 bool RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rplospf_area_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rplospf_area_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_segment_path() const
@@ -2238,8 +2556,8 @@ const EntityPath RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rplospf_area_set.is_set || is_set(rplospf_area_set.operation)) leaf_name_data.push_back(rplospf_area_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rplospf_area_set.is_set || is_set(rplospf_area_set.yfilter)) leaf_name_data.push_back(rplospf_area_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2258,16 +2576,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfAreaSets
     return children;
 }
 
-void RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rplospf-area-set")
     {
         rplospf_area_set = value;
+        rplospf_area_set.value_namespace = name_space;
+        rplospf_area_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rplospf-area-set")
+    {
+        rplospf_area_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::OspfAreaSets::OspfAreaSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rplospf-area-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AppendMacSets::AppendMacSets()
@@ -2296,7 +2637,7 @@ bool RoutingPolicy::Sets::AppendMacSets::has_operation() const
         if(append_mac_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::AppendMacSets::get_segment_path() const
@@ -2361,8 +2702,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendMacSet
     return children;
 }
 
-void RoutingPolicy::Sets::AppendMacSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AppendMacSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::AppendMacSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::AppendMacSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "append-mac-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AppendMacSets::AppendMacSet::AppendMacSet()
@@ -2385,9 +2737,9 @@ bool RoutingPolicy::Sets::AppendMacSets::AppendMacSet::has_data() const
 
 bool RoutingPolicy::Sets::AppendMacSets::AppendMacSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(mac_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(mac_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_segment_path() const
@@ -2413,8 +2765,8 @@ const EntityPath RoutingPolicy::Sets::AppendMacSets::AppendMacSet::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (mac_set_as_text.is_set || is_set(mac_set_as_text.operation)) leaf_name_data.push_back(mac_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (mac_set_as_text.is_set || is_set(mac_set_as_text.yfilter)) leaf_name_data.push_back(mac_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2433,16 +2785,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendMacSet
     return children;
 }
 
-void RoutingPolicy::Sets::AppendMacSets::AppendMacSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AppendMacSets::AppendMacSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-set-as-text")
     {
         mac_set_as_text = value;
+        mac_set_as_text.value_namespace = name_space;
+        mac_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::AppendMacSets::AppendMacSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-set-as-text")
+    {
+        mac_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AppendMacSets::AppendMacSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "mac-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSets()
@@ -2471,7 +2846,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityCostSets::has_operation() const
         if(extended_community_cost_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityCostSets::get_segment_path() const
@@ -2536,8 +2911,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityCostSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityCostSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityCostSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityCostSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-community-cost-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::ExtendedCommunityCostSet()
@@ -2560,9 +2946,9 @@ bool RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::h
 
 bool RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_extended_community_cost_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_extended_community_cost_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::get_segment_path() const
@@ -2588,8 +2974,8 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommuni
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_extended_community_cost_set.is_set || is_set(rpl_extended_community_cost_set.operation)) leaf_name_data.push_back(rpl_extended_community_cost_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_extended_community_cost_set.is_set || is_set(rpl_extended_community_cost_set.yfilter)) leaf_name_data.push_back(rpl_extended_community_cost_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2608,16 +2994,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-extended-community-cost-set")
     {
         rpl_extended_community_cost_set = value;
+        rpl_extended_community_cost_set.value_namespace = name_space;
+        rpl_extended_community_cost_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-extended-community-cost-set")
+    {
+        rpl_extended_community_cost_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityCostSets::ExtendedCommunityCostSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-extended-community-cost-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::RemoveMacSets::RemoveMacSets()
@@ -2646,7 +3055,7 @@ bool RoutingPolicy::Sets::RemoveMacSets::has_operation() const
         if(remove_mac_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::RemoveMacSets::get_segment_path() const
@@ -2711,8 +3120,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveMacSet
     return children;
 }
 
-void RoutingPolicy::Sets::RemoveMacSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::RemoveMacSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::RemoveMacSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::RemoveMacSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remove-mac-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::RemoveMacSet()
@@ -2735,9 +3155,9 @@ bool RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::has_data() const
 
 bool RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(mac_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(mac_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_segment_path() const
@@ -2763,8 +3183,8 @@ const EntityPath RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (mac_set_as_text.is_set || is_set(mac_set_as_text.operation)) leaf_name_data.push_back(mac_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (mac_set_as_text.is_set || is_set(mac_set_as_text.yfilter)) leaf_name_data.push_back(mac_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2783,16 +3203,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveMacSet
     return children;
 }
 
-void RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-set-as-text")
     {
         mac_set_as_text = value;
+        mac_set_as_text.value_namespace = name_space;
+        mac_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-set-as-text")
+    {
+        mac_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::RemoveMacSets::RemoveMacSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "mac-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSets()
@@ -2821,7 +3264,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySooSets::has_operation() const
         if(extended_community_soo_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySooSets::get_segment_path() const
@@ -2886,8 +3329,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySooSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySooSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySooSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySooSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-community-soo-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::ExtendedCommunitySooSet()
@@ -2910,9 +3364,9 @@ bool RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::has
 
 bool RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_extended_community_soo_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_extended_community_soo_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::get_segment_path() const
@@ -2938,8 +3392,8 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_extended_community_soo_set.is_set || is_set(rpl_extended_community_soo_set.operation)) leaf_name_data.push_back(rpl_extended_community_soo_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_extended_community_soo_set.is_set || is_set(rpl_extended_community_soo_set.yfilter)) leaf_name_data.push_back(rpl_extended_community_soo_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2958,16 +3412,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-extended-community-soo-set")
     {
         rpl_extended_community_soo_set = value;
+        rpl_extended_community_soo_set.value_namespace = name_space;
+        rpl_extended_community_soo_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-extended-community-soo-set")
+    {
+        rpl_extended_community_soo_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySooSets::ExtendedCommunitySooSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-extended-community-soo-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::EsiSets::EsiSets()
@@ -2996,7 +3473,7 @@ bool RoutingPolicy::Sets::EsiSets::has_operation() const
         if(esi_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::EsiSets::get_segment_path() const
@@ -3061,8 +3538,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::EsiSets::get
     return children;
 }
 
-void RoutingPolicy::Sets::EsiSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::EsiSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::EsiSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::EsiSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "esi-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::EsiSets::EsiSet::EsiSet()
@@ -3085,9 +3573,9 @@ bool RoutingPolicy::Sets::EsiSets::EsiSet::has_data() const
 
 bool RoutingPolicy::Sets::EsiSets::EsiSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(esi_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(esi_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::EsiSets::EsiSet::get_segment_path() const
@@ -3113,8 +3601,8 @@ const EntityPath RoutingPolicy::Sets::EsiSets::EsiSet::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (esi_set_as_text.is_set || is_set(esi_set_as_text.operation)) leaf_name_data.push_back(esi_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (esi_set_as_text.is_set || is_set(esi_set_as_text.yfilter)) leaf_name_data.push_back(esi_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3133,16 +3621,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::EsiSets::Esi
     return children;
 }
 
-void RoutingPolicy::Sets::EsiSets::EsiSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::EsiSets::EsiSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "esi-set-as-text")
     {
         esi_set_as_text = value;
+        esi_set_as_text.value_namespace = name_space;
+        esi_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::EsiSets::EsiSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "esi-set-as-text")
+    {
+        esi_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::EsiSets::EsiSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "esi-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PrependEsiSets::PrependEsiSets()
@@ -3171,7 +3682,7 @@ bool RoutingPolicy::Sets::PrependEsiSets::has_operation() const
         if(prepend_esi_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::PrependEsiSets::get_segment_path() const
@@ -3236,8 +3747,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependEsiSe
     return children;
 }
 
-void RoutingPolicy::Sets::PrependEsiSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PrependEsiSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::PrependEsiSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::PrependEsiSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prepend-esi-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::PrependEsiSet()
@@ -3260,9 +3782,9 @@ bool RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::has_data() const
 
 bool RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(esi_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(esi_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_segment_path() const
@@ -3288,8 +3810,8 @@ const EntityPath RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (esi_set_as_text.is_set || is_set(esi_set_as_text.operation)) leaf_name_data.push_back(esi_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (esi_set_as_text.is_set || is_set(esi_set_as_text.yfilter)) leaf_name_data.push_back(esi_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3308,16 +3830,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PrependEsiSe
     return children;
 }
 
-void RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "esi-set-as-text")
     {
         esi_set_as_text = value;
+        esi_set_as_text.value_namespace = name_space;
+        esi_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "esi-set-as-text")
+    {
+        esi_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::PrependEsiSets::PrependEsiSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "esi-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AppendEsiSets::AppendEsiSets()
@@ -3346,7 +3891,7 @@ bool RoutingPolicy::Sets::AppendEsiSets::has_operation() const
         if(append_esi_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::AppendEsiSets::get_segment_path() const
@@ -3411,8 +3956,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendEsiSet
     return children;
 }
 
-void RoutingPolicy::Sets::AppendEsiSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AppendEsiSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::AppendEsiSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::AppendEsiSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "append-esi-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::AppendEsiSet()
@@ -3435,9 +3991,9 @@ bool RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::has_data() const
 
 bool RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(esi_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(esi_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_segment_path() const
@@ -3463,8 +4019,8 @@ const EntityPath RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (esi_set_as_text.is_set || is_set(esi_set_as_text.operation)) leaf_name_data.push_back(esi_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (esi_set_as_text.is_set || is_set(esi_set_as_text.yfilter)) leaf_name_data.push_back(esi_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3483,16 +4039,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AppendEsiSet
     return children;
 }
 
-void RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "esi-set-as-text")
     {
         esi_set_as_text = value;
+        esi_set_as_text.value_namespace = name_space;
+        esi_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "esi-set-as-text")
+    {
+        esi_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AppendEsiSets::AppendEsiSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "esi-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSets()
@@ -3521,7 +4100,7 @@ bool RoutingPolicy::Sets::RemoveEsiSets::has_operation() const
         if(remove_esi_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::RemoveEsiSets::get_segment_path() const
@@ -3586,8 +4165,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveEsiSet
     return children;
 }
 
-void RoutingPolicy::Sets::RemoveEsiSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::RemoveEsiSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::RemoveEsiSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::RemoveEsiSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remove-esi-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::RemoveEsiSet()
@@ -3610,9 +4200,9 @@ bool RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::has_data() const
 
 bool RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(esi_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(esi_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_segment_path() const
@@ -3638,8 +4228,8 @@ const EntityPath RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (esi_set_as_text.is_set || is_set(esi_set_as_text.operation)) leaf_name_data.push_back(esi_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (esi_set_as_text.is_set || is_set(esi_set_as_text.yfilter)) leaf_name_data.push_back(esi_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3658,16 +4248,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RemoveEsiSet
     return children;
 }
 
-void RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "esi-set-as-text")
     {
         esi_set_as_text = value;
+        esi_set_as_text.value_namespace = name_space;
+        esi_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "esi-set-as-text")
+    {
+        esi_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::RemoveEsiSets::RemoveEsiSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "esi-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSets()
@@ -3696,7 +4309,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNhSets::has_operation() const
         if(extended_community_seg_nh_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNhSets::get_segment_path() const
@@ -3761,8 +4374,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNhSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNhSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNhSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNhSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-community-seg-nh-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::ExtendedCommunitySegNhSet()
@@ -3785,9 +4409,9 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet:
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_extended_community_seg_nh_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_extended_community_seg_nh_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::get_segment_path() const
@@ -3813,8 +4437,8 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommun
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_extended_community_seg_nh_set.is_set || is_set(rpl_extended_community_seg_nh_set.operation)) leaf_name_data.push_back(rpl_extended_community_seg_nh_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_extended_community_seg_nh_set.is_set || is_set(rpl_extended_community_seg_nh_set.yfilter)) leaf_name_data.push_back(rpl_extended_community_seg_nh_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3833,16 +4457,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-extended-community-seg-nh-set")
     {
         rpl_extended_community_seg_nh_set = value;
+        rpl_extended_community_seg_nh_set.value_namespace = name_space;
+        rpl_extended_community_seg_nh_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-extended-community-seg-nh-set")
+    {
+        rpl_extended_community_seg_nh_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNhSets::ExtendedCommunitySegNhSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-extended-community-seg-nh-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::RdSets::RdSets()
@@ -3871,7 +4518,7 @@ bool RoutingPolicy::Sets::RdSets::has_operation() const
         if(rd_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::RdSets::get_segment_path() const
@@ -3936,8 +4583,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RdSets::get_
     return children;
 }
 
-void RoutingPolicy::Sets::RdSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::RdSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::RdSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::RdSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rd-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::RdSets::RdSet::RdSet()
@@ -3960,9 +4618,9 @@ bool RoutingPolicy::Sets::RdSets::RdSet::has_data() const
 
 bool RoutingPolicy::Sets::RdSets::RdSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rplrd_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rplrd_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::RdSets::RdSet::get_segment_path() const
@@ -3988,8 +4646,8 @@ const EntityPath RoutingPolicy::Sets::RdSets::RdSet::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rplrd_set.is_set || is_set(rplrd_set.operation)) leaf_name_data.push_back(rplrd_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rplrd_set.is_set || is_set(rplrd_set.yfilter)) leaf_name_data.push_back(rplrd_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4008,16 +4666,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::RdSets::RdSe
     return children;
 }
 
-void RoutingPolicy::Sets::RdSets::RdSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::RdSets::RdSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rplrd-set")
     {
         rplrd_set = value;
+        rplrd_set.value_namespace = name_space;
+        rplrd_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::RdSets::RdSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rplrd-set")
+    {
+        rplrd_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::RdSets::RdSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rplrd-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::PolicyGlobalSetTable::PolicyGlobalSetTable()
@@ -4038,8 +4719,8 @@ bool RoutingPolicy::Sets::PolicyGlobalSetTable::has_data() const
 
 bool RoutingPolicy::Sets::PolicyGlobalSetTable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(policy_global_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(policy_global_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::PolicyGlobalSetTable::get_segment_path() const
@@ -4065,7 +4746,7 @@ const EntityPath RoutingPolicy::Sets::PolicyGlobalSetTable::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (policy_global_set.is_set || is_set(policy_global_set.operation)) leaf_name_data.push_back(policy_global_set.get_name_leafdata());
+    if (policy_global_set.is_set || is_set(policy_global_set.yfilter)) leaf_name_data.push_back(policy_global_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4084,12 +4765,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::PolicyGlobal
     return children;
 }
 
-void RoutingPolicy::Sets::PolicyGlobalSetTable::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::PolicyGlobalSetTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "policy-global-set")
     {
         policy_global_set = value;
+        policy_global_set.value_namespace = name_space;
+        policy_global_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::PolicyGlobalSetTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-global-set")
+    {
+        policy_global_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::PolicyGlobalSetTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-global-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSets()
@@ -4118,7 +4816,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::has_operation() const
         if(extended_community_bandwidth_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::get_segment_path() const
@@ -4183,8 +4881,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-community-bandwidth-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::ExtendedCommunityBandwidthSet()
@@ -4207,9 +4916,9 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandw
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_extended_community_bandwidth_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_extended_community_bandwidth_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::get_segment_path() const
@@ -4235,8 +4944,8 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_extended_community_bandwidth_set.is_set || is_set(rpl_extended_community_bandwidth_set.operation)) leaf_name_data.push_back(rpl_extended_community_bandwidth_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_extended_community_bandwidth_set.is_set || is_set(rpl_extended_community_bandwidth_set.yfilter)) leaf_name_data.push_back(rpl_extended_community_bandwidth_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4255,16 +4964,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-extended-community-bandwidth-set")
     {
         rpl_extended_community_bandwidth_set = value;
+        rpl_extended_community_bandwidth_set.value_namespace = name_space;
+        rpl_extended_community_bandwidth_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-extended-community-bandwidth-set")
+    {
+        rpl_extended_community_bandwidth_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidthSets::ExtendedCommunityBandwidthSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-extended-community-bandwidth-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::CommunitySets::CommunitySets()
@@ -4293,7 +5025,7 @@ bool RoutingPolicy::Sets::CommunitySets::has_operation() const
         if(community_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::CommunitySets::get_segment_path() const
@@ -4358,8 +5090,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::CommunitySet
     return children;
 }
 
-void RoutingPolicy::Sets::CommunitySets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::CommunitySets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::CommunitySets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::CommunitySets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "community-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::CommunitySets::CommunitySet::CommunitySet()
@@ -4382,9 +5125,9 @@ bool RoutingPolicy::Sets::CommunitySets::CommunitySet::has_data() const
 
 bool RoutingPolicy::Sets::CommunitySets::CommunitySet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_community_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_community_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::CommunitySets::CommunitySet::get_segment_path() const
@@ -4410,8 +5153,8 @@ const EntityPath RoutingPolicy::Sets::CommunitySets::CommunitySet::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_community_set.is_set || is_set(rpl_community_set.operation)) leaf_name_data.push_back(rpl_community_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_community_set.is_set || is_set(rpl_community_set.yfilter)) leaf_name_data.push_back(rpl_community_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4430,16 +5173,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::CommunitySet
     return children;
 }
 
-void RoutingPolicy::Sets::CommunitySets::CommunitySet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::CommunitySets::CommunitySet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-community-set")
     {
         rpl_community_set = value;
+        rpl_community_set.value_namespace = name_space;
+        rpl_community_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::CommunitySets::CommunitySet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-community-set")
+    {
+        rpl_community_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::CommunitySets::CommunitySet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-community-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPathSets::AsPathSets()
@@ -4468,7 +5234,7 @@ bool RoutingPolicy::Sets::AsPathSets::has_operation() const
         if(as_path_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPathSets::get_segment_path() const
@@ -4533,8 +5299,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPathSets::
     return children;
 }
 
-void RoutingPolicy::Sets::AsPathSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPathSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::AsPathSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::AsPathSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-path-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPathSets::AsPathSet::AsPathSet()
@@ -4557,9 +5334,9 @@ bool RoutingPolicy::Sets::AsPathSets::AsPathSet::has_data() const
 
 bool RoutingPolicy::Sets::AsPathSets::AsPathSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rplas_path_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rplas_path_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPathSets::AsPathSet::get_segment_path() const
@@ -4585,8 +5362,8 @@ const EntityPath RoutingPolicy::Sets::AsPathSets::AsPathSet::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rplas_path_set.is_set || is_set(rplas_path_set.operation)) leaf_name_data.push_back(rplas_path_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rplas_path_set.is_set || is_set(rplas_path_set.yfilter)) leaf_name_data.push_back(rplas_path_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4605,16 +5382,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPathSets::
     return children;
 }
 
-void RoutingPolicy::Sets::AsPathSets::AsPathSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPathSets::AsPathSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rplas-path-set")
     {
         rplas_path_set = value;
+        rplas_path_set.value_namespace = name_space;
+        rplas_path_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::AsPathSets::AsPathSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rplas-path-set")
+    {
+        rplas_path_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AsPathSets::AsPathSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rplas-path-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::TagSets::TagSets()
@@ -4643,7 +5443,7 @@ bool RoutingPolicy::Sets::TagSets::has_operation() const
         if(tag_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::TagSets::get_segment_path() const
@@ -4708,8 +5508,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::TagSets::get
     return children;
 }
 
-void RoutingPolicy::Sets::TagSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::TagSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::TagSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::TagSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::TagSets::TagSet::TagSet()
@@ -4732,9 +5543,9 @@ bool RoutingPolicy::Sets::TagSets::TagSet::has_data() const
 
 bool RoutingPolicy::Sets::TagSets::TagSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_tag_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_tag_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::TagSets::TagSet::get_segment_path() const
@@ -4760,8 +5571,8 @@ const EntityPath RoutingPolicy::Sets::TagSets::TagSet::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_tag_set.is_set || is_set(rpl_tag_set.operation)) leaf_name_data.push_back(rpl_tag_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_tag_set.is_set || is_set(rpl_tag_set.yfilter)) leaf_name_data.push_back(rpl_tag_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4780,16 +5591,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::TagSets::Tag
     return children;
 }
 
-void RoutingPolicy::Sets::TagSets::TagSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::TagSets::TagSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-tag-set")
     {
         rpl_tag_set = value;
+        rpl_tag_set.value_namespace = name_space;
+        rpl_tag_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::TagSets::TagSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-tag-set")
+    {
+        rpl_tag_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::TagSets::TagSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-tag-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::EtagSets::EtagSets()
@@ -4818,7 +5652,7 @@ bool RoutingPolicy::Sets::EtagSets::has_operation() const
         if(etag_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::EtagSets::get_segment_path() const
@@ -4883,8 +5717,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::EtagSets::ge
     return children;
 }
 
-void RoutingPolicy::Sets::EtagSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::EtagSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::EtagSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::EtagSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "etag-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::EtagSets::EtagSet::EtagSet()
@@ -4907,9 +5752,9 @@ bool RoutingPolicy::Sets::EtagSets::EtagSet::has_data() const
 
 bool RoutingPolicy::Sets::EtagSets::EtagSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(etag_set_as_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(etag_set_as_text.yfilter);
 }
 
 std::string RoutingPolicy::Sets::EtagSets::EtagSet::get_segment_path() const
@@ -4935,8 +5780,8 @@ const EntityPath RoutingPolicy::Sets::EtagSets::EtagSet::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (etag_set_as_text.is_set || is_set(etag_set_as_text.operation)) leaf_name_data.push_back(etag_set_as_text.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (etag_set_as_text.is_set || is_set(etag_set_as_text.yfilter)) leaf_name_data.push_back(etag_set_as_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4955,16 +5800,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::EtagSets::Et
     return children;
 }
 
-void RoutingPolicy::Sets::EtagSets::EtagSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::EtagSets::EtagSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "etag-set-as-text")
     {
         etag_set_as_text = value;
+        etag_set_as_text.value_namespace = name_space;
+        etag_set_as_text.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::EtagSets::EtagSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "etag-set-as-text")
+    {
+        etag_set_as_text.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::EtagSets::EtagSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "etag-set-as-text")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSets()
@@ -4993,7 +5861,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityRtSets::has_operation() const
         if(extended_community_rt_set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRtSets::get_segment_path() const
@@ -5058,8 +5926,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRtSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRtSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRtSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRtSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extended-community-rt-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::ExtendedCommunityRtSet()
@@ -5082,9 +5961,9 @@ bool RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::has_d
 
 bool RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
-	|| is_set(rpl_extended_community_rt_set.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
+	|| ydk::is_set(rpl_extended_community_rt_set.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::get_segment_path() const
@@ -5110,8 +5989,8 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
-    if (rpl_extended_community_rt_set.is_set || is_set(rpl_extended_community_rt_set.operation)) leaf_name_data.push_back(rpl_extended_community_rt_set.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (rpl_extended_community_rt_set.is_set || is_set(rpl_extended_community_rt_set.yfilter)) leaf_name_data.push_back(rpl_extended_community_rt_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5130,16 +6009,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl-extended-community-rt-set")
     {
         rpl_extended_community_rt_set = value;
+        rpl_extended_community_rt_set.value_namespace = name_space;
+        rpl_extended_community_rt_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+    if(value_path == "rpl-extended-community-rt-set")
+    {
+        rpl_extended_community_rt_set.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRtSets::ExtendedCommunityRtSet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-name" || name == "rpl-extended-community-rt-set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Limits::Limits()
@@ -5162,9 +6064,9 @@ bool RoutingPolicy::Limits::has_data() const
 
 bool RoutingPolicy::Limits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_lines_of_policy.operation)
-	|| is_set(maximum_number_of_policies.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_lines_of_policy.yfilter)
+	|| ydk::is_set(maximum_number_of_policies.yfilter);
 }
 
 std::string RoutingPolicy::Limits::get_segment_path() const
@@ -5190,8 +6092,8 @@ const EntityPath RoutingPolicy::Limits::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_lines_of_policy.is_set || is_set(maximum_lines_of_policy.operation)) leaf_name_data.push_back(maximum_lines_of_policy.get_name_leafdata());
-    if (maximum_number_of_policies.is_set || is_set(maximum_number_of_policies.operation)) leaf_name_data.push_back(maximum_number_of_policies.get_name_leafdata());
+    if (maximum_lines_of_policy.is_set || is_set(maximum_lines_of_policy.yfilter)) leaf_name_data.push_back(maximum_lines_of_policy.get_name_leafdata());
+    if (maximum_number_of_policies.is_set || is_set(maximum_number_of_policies.yfilter)) leaf_name_data.push_back(maximum_number_of_policies.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5210,16 +6112,39 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Limits::get_childr
     return children;
 }
 
-void RoutingPolicy::Limits::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Limits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-lines-of-policy")
     {
         maximum_lines_of_policy = value;
+        maximum_lines_of_policy.value_namespace = name_space;
+        maximum_lines_of_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-number-of-policies")
     {
         maximum_number_of_policies = value;
+        maximum_number_of_policies.value_namespace = name_space;
+        maximum_number_of_policies.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Limits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-lines-of-policy")
+    {
+        maximum_lines_of_policy.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-of-policies")
+    {
+        maximum_number_of_policies.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Limits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-lines-of-policy" || name == "maximum-number-of-policies")
+        return true;
+    return false;
 }
 
 

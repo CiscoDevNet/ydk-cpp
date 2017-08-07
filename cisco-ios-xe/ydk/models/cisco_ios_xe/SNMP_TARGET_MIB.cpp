@@ -6,20 +6,22 @@
 #include "generated_entity_lookup.hpp"
 #include "SNMP_TARGET_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace SNMP_TARGET_MIB {
 
 SnmpTargetMib::SnmpTargetMib()
     :
-    snmptargetaddrtable_(std::make_shared<SnmpTargetMib::Snmptargetaddrtable>())
-	,snmptargetobjects_(std::make_shared<SnmpTargetMib::Snmptargetobjects>())
-	,snmptargetparamstable_(std::make_shared<SnmpTargetMib::Snmptargetparamstable>())
+    snmptargetaddrtable(std::make_shared<SnmpTargetMib::Snmptargetaddrtable>())
+	,snmptargetobjects(std::make_shared<SnmpTargetMib::Snmptargetobjects>())
+	,snmptargetparamstable(std::make_shared<SnmpTargetMib::Snmptargetparamstable>())
 {
-    snmptargetaddrtable_->parent = this;
+    snmptargetaddrtable->parent = this;
 
-    snmptargetobjects_->parent = this;
+    snmptargetobjects->parent = this;
 
-    snmptargetparamstable_->parent = this;
+    snmptargetparamstable->parent = this;
 
     yang_name = "SNMP-TARGET-MIB"; yang_parent_name = "SNMP-TARGET-MIB";
 }
@@ -30,17 +32,17 @@ SnmpTargetMib::~SnmpTargetMib()
 
 bool SnmpTargetMib::has_data() const
 {
-    return (snmptargetaddrtable_ !=  nullptr && snmptargetaddrtable_->has_data())
-	|| (snmptargetobjects_ !=  nullptr && snmptargetobjects_->has_data())
-	|| (snmptargetparamstable_ !=  nullptr && snmptargetparamstable_->has_data());
+    return (snmptargetaddrtable !=  nullptr && snmptargetaddrtable->has_data())
+	|| (snmptargetobjects !=  nullptr && snmptargetobjects->has_data())
+	|| (snmptargetparamstable !=  nullptr && snmptargetparamstable->has_data());
 }
 
 bool SnmpTargetMib::has_operation() const
 {
-    return is_set(operation)
-	|| (snmptargetaddrtable_ !=  nullptr && snmptargetaddrtable_->has_operation())
-	|| (snmptargetobjects_ !=  nullptr && snmptargetobjects_->has_operation())
-	|| (snmptargetparamstable_ !=  nullptr && snmptargetparamstable_->has_operation());
+    return is_set(yfilter)
+	|| (snmptargetaddrtable !=  nullptr && snmptargetaddrtable->has_operation())
+	|| (snmptargetobjects !=  nullptr && snmptargetobjects->has_operation())
+	|| (snmptargetparamstable !=  nullptr && snmptargetparamstable->has_operation());
 }
 
 std::string SnmpTargetMib::get_segment_path() const
@@ -74,29 +76,29 @@ std::shared_ptr<Entity> SnmpTargetMib::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "snmpTargetAddrTable")
     {
-        if(snmptargetaddrtable_ == nullptr)
+        if(snmptargetaddrtable == nullptr)
         {
-            snmptargetaddrtable_ = std::make_shared<SnmpTargetMib::Snmptargetaddrtable>();
+            snmptargetaddrtable = std::make_shared<SnmpTargetMib::Snmptargetaddrtable>();
         }
-        return snmptargetaddrtable_;
+        return snmptargetaddrtable;
     }
 
     if(child_yang_name == "snmpTargetObjects")
     {
-        if(snmptargetobjects_ == nullptr)
+        if(snmptargetobjects == nullptr)
         {
-            snmptargetobjects_ = std::make_shared<SnmpTargetMib::Snmptargetobjects>();
+            snmptargetobjects = std::make_shared<SnmpTargetMib::Snmptargetobjects>();
         }
-        return snmptargetobjects_;
+        return snmptargetobjects;
     }
 
     if(child_yang_name == "snmpTargetParamsTable")
     {
-        if(snmptargetparamstable_ == nullptr)
+        if(snmptargetparamstable == nullptr)
         {
-            snmptargetparamstable_ = std::make_shared<SnmpTargetMib::Snmptargetparamstable>();
+            snmptargetparamstable = std::make_shared<SnmpTargetMib::Snmptargetparamstable>();
         }
-        return snmptargetparamstable_;
+        return snmptargetparamstable;
     }
 
     return nullptr;
@@ -105,25 +107,29 @@ std::shared_ptr<Entity> SnmpTargetMib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(snmptargetaddrtable_ != nullptr)
+    if(snmptargetaddrtable != nullptr)
     {
-        children["snmpTargetAddrTable"] = snmptargetaddrtable_;
+        children["snmpTargetAddrTable"] = snmptargetaddrtable;
     }
 
-    if(snmptargetobjects_ != nullptr)
+    if(snmptargetobjects != nullptr)
     {
-        children["snmpTargetObjects"] = snmptargetobjects_;
+        children["snmpTargetObjects"] = snmptargetobjects;
     }
 
-    if(snmptargetparamstable_ != nullptr)
+    if(snmptargetparamstable != nullptr)
     {
-        children["snmpTargetParamsTable"] = snmptargetparamstable_;
+        children["snmpTargetParamsTable"] = snmptargetparamstable;
     }
 
     return children;
 }
 
-void SnmpTargetMib::set_value(const std::string & value_path, std::string value)
+void SnmpTargetMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SnmpTargetMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -145,6 +151,18 @@ std::string SnmpTargetMib::get_bundle_name() const
 augment_capabilities_function SnmpTargetMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SnmpTargetMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool SnmpTargetMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmpTargetAddrTable" || name == "snmpTargetObjects" || name == "snmpTargetParamsTable")
+        return true;
+    return false;
 }
 
 SnmpTargetMib::Snmptargetobjects::Snmptargetobjects()
@@ -169,10 +187,10 @@ bool SnmpTargetMib::Snmptargetobjects::has_data() const
 
 bool SnmpTargetMib::Snmptargetobjects::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(snmptargetspinlock.operation)
-	|| is_set(snmpunavailablecontexts.operation)
-	|| is_set(snmpunknowncontexts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(snmptargetspinlock.yfilter)
+	|| ydk::is_set(snmpunavailablecontexts.yfilter)
+	|| ydk::is_set(snmpunknowncontexts.yfilter);
 }
 
 std::string SnmpTargetMib::Snmptargetobjects::get_segment_path() const
@@ -198,9 +216,9 @@ const EntityPath SnmpTargetMib::Snmptargetobjects::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (snmptargetspinlock.is_set || is_set(snmptargetspinlock.operation)) leaf_name_data.push_back(snmptargetspinlock.get_name_leafdata());
-    if (snmpunavailablecontexts.is_set || is_set(snmpunavailablecontexts.operation)) leaf_name_data.push_back(snmpunavailablecontexts.get_name_leafdata());
-    if (snmpunknowncontexts.is_set || is_set(snmpunknowncontexts.operation)) leaf_name_data.push_back(snmpunknowncontexts.get_name_leafdata());
+    if (snmptargetspinlock.is_set || is_set(snmptargetspinlock.yfilter)) leaf_name_data.push_back(snmptargetspinlock.get_name_leafdata());
+    if (snmpunavailablecontexts.is_set || is_set(snmpunavailablecontexts.yfilter)) leaf_name_data.push_back(snmpunavailablecontexts.get_name_leafdata());
+    if (snmpunknowncontexts.is_set || is_set(snmpunknowncontexts.yfilter)) leaf_name_data.push_back(snmpunknowncontexts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -219,20 +237,49 @@ std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetobjects:
     return children;
 }
 
-void SnmpTargetMib::Snmptargetobjects::set_value(const std::string & value_path, std::string value)
+void SnmpTargetMib::Snmptargetobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpTargetSpinLock")
     {
         snmptargetspinlock = value;
+        snmptargetspinlock.value_namespace = name_space;
+        snmptargetspinlock.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpUnavailableContexts")
     {
         snmpunavailablecontexts = value;
+        snmpunavailablecontexts.value_namespace = name_space;
+        snmpunavailablecontexts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpUnknownContexts")
     {
         snmpunknowncontexts = value;
+        snmpunknowncontexts.value_namespace = name_space;
+        snmpunknowncontexts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SnmpTargetMib::Snmptargetobjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "snmpTargetSpinLock")
+    {
+        snmptargetspinlock.yfilter = yfilter;
+    }
+    if(value_path == "snmpUnavailableContexts")
+    {
+        snmpunavailablecontexts.yfilter = yfilter;
+    }
+    if(value_path == "snmpUnknownContexts")
+    {
+        snmpunknowncontexts.yfilter = yfilter;
+    }
+}
+
+bool SnmpTargetMib::Snmptargetobjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmpTargetSpinLock" || name == "snmpUnavailableContexts" || name == "snmpUnknownContexts")
+        return true;
+    return false;
 }
 
 SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrtable()
@@ -246,9 +293,9 @@ SnmpTargetMib::Snmptargetaddrtable::~Snmptargetaddrtable()
 
 bool SnmpTargetMib::Snmptargetaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<snmptargetaddrentry_.size(); index++)
+    for (std::size_t index=0; index<snmptargetaddrentry.size(); index++)
     {
-        if(snmptargetaddrentry_[index]->has_data())
+        if(snmptargetaddrentry[index]->has_data())
             return true;
     }
     return false;
@@ -256,12 +303,12 @@ bool SnmpTargetMib::Snmptargetaddrtable::has_data() const
 
 bool SnmpTargetMib::Snmptargetaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<snmptargetaddrentry_.size(); index++)
+    for (std::size_t index=0; index<snmptargetaddrentry.size(); index++)
     {
-        if(snmptargetaddrentry_[index]->has_operation())
+        if(snmptargetaddrentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SnmpTargetMib::Snmptargetaddrtable::get_segment_path() const
@@ -298,7 +345,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetaddrtable::get_child_by_name(co
 {
     if(child_yang_name == "snmpTargetAddrEntry")
     {
-        for(auto const & c : snmptargetaddrentry_)
+        for(auto const & c : snmptargetaddrentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -308,7 +355,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetaddrtable::get_child_by_name(co
         }
         auto c = std::make_shared<SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry>();
         c->parent = this;
-        snmptargetaddrentry_.push_back(c);
+        snmptargetaddrentry.push_back(c);
         return c;
     }
 
@@ -318,7 +365,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetaddrtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : snmptargetaddrentry_)
+    for (auto const & c : snmptargetaddrentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -326,8 +373,19 @@ std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetaddrtabl
     return children;
 }
 
-void SnmpTargetMib::Snmptargetaddrtable::set_value(const std::string & value_path, std::string value)
+void SnmpTargetMib::Snmptargetaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SnmpTargetMib::Snmptargetaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SnmpTargetMib::Snmptargetaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmpTargetAddrEntry")
+        return true;
+    return false;
 }
 
 SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::Snmptargetaddrentry()
@@ -364,16 +422,16 @@ bool SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::has_data() const
 
 bool SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(snmptargetaddrname.operation)
-	|| is_set(snmptargetaddrparams.operation)
-	|| is_set(snmptargetaddrretrycount.operation)
-	|| is_set(snmptargetaddrrowstatus.operation)
-	|| is_set(snmptargetaddrstoragetype.operation)
-	|| is_set(snmptargetaddrtaddress.operation)
-	|| is_set(snmptargetaddrtaglist.operation)
-	|| is_set(snmptargetaddrtdomain.operation)
-	|| is_set(snmptargetaddrtimeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(snmptargetaddrname.yfilter)
+	|| ydk::is_set(snmptargetaddrparams.yfilter)
+	|| ydk::is_set(snmptargetaddrretrycount.yfilter)
+	|| ydk::is_set(snmptargetaddrrowstatus.yfilter)
+	|| ydk::is_set(snmptargetaddrstoragetype.yfilter)
+	|| ydk::is_set(snmptargetaddrtaddress.yfilter)
+	|| ydk::is_set(snmptargetaddrtaglist.yfilter)
+	|| ydk::is_set(snmptargetaddrtdomain.yfilter)
+	|| ydk::is_set(snmptargetaddrtimeout.yfilter);
 }
 
 std::string SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::get_segment_path() const
@@ -399,15 +457,15 @@ const EntityPath SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (snmptargetaddrname.is_set || is_set(snmptargetaddrname.operation)) leaf_name_data.push_back(snmptargetaddrname.get_name_leafdata());
-    if (snmptargetaddrparams.is_set || is_set(snmptargetaddrparams.operation)) leaf_name_data.push_back(snmptargetaddrparams.get_name_leafdata());
-    if (snmptargetaddrretrycount.is_set || is_set(snmptargetaddrretrycount.operation)) leaf_name_data.push_back(snmptargetaddrretrycount.get_name_leafdata());
-    if (snmptargetaddrrowstatus.is_set || is_set(snmptargetaddrrowstatus.operation)) leaf_name_data.push_back(snmptargetaddrrowstatus.get_name_leafdata());
-    if (snmptargetaddrstoragetype.is_set || is_set(snmptargetaddrstoragetype.operation)) leaf_name_data.push_back(snmptargetaddrstoragetype.get_name_leafdata());
-    if (snmptargetaddrtaddress.is_set || is_set(snmptargetaddrtaddress.operation)) leaf_name_data.push_back(snmptargetaddrtaddress.get_name_leafdata());
-    if (snmptargetaddrtaglist.is_set || is_set(snmptargetaddrtaglist.operation)) leaf_name_data.push_back(snmptargetaddrtaglist.get_name_leafdata());
-    if (snmptargetaddrtdomain.is_set || is_set(snmptargetaddrtdomain.operation)) leaf_name_data.push_back(snmptargetaddrtdomain.get_name_leafdata());
-    if (snmptargetaddrtimeout.is_set || is_set(snmptargetaddrtimeout.operation)) leaf_name_data.push_back(snmptargetaddrtimeout.get_name_leafdata());
+    if (snmptargetaddrname.is_set || is_set(snmptargetaddrname.yfilter)) leaf_name_data.push_back(snmptargetaddrname.get_name_leafdata());
+    if (snmptargetaddrparams.is_set || is_set(snmptargetaddrparams.yfilter)) leaf_name_data.push_back(snmptargetaddrparams.get_name_leafdata());
+    if (snmptargetaddrretrycount.is_set || is_set(snmptargetaddrretrycount.yfilter)) leaf_name_data.push_back(snmptargetaddrretrycount.get_name_leafdata());
+    if (snmptargetaddrrowstatus.is_set || is_set(snmptargetaddrrowstatus.yfilter)) leaf_name_data.push_back(snmptargetaddrrowstatus.get_name_leafdata());
+    if (snmptargetaddrstoragetype.is_set || is_set(snmptargetaddrstoragetype.yfilter)) leaf_name_data.push_back(snmptargetaddrstoragetype.get_name_leafdata());
+    if (snmptargetaddrtaddress.is_set || is_set(snmptargetaddrtaddress.yfilter)) leaf_name_data.push_back(snmptargetaddrtaddress.get_name_leafdata());
+    if (snmptargetaddrtaglist.is_set || is_set(snmptargetaddrtaglist.yfilter)) leaf_name_data.push_back(snmptargetaddrtaglist.get_name_leafdata());
+    if (snmptargetaddrtdomain.is_set || is_set(snmptargetaddrtdomain.yfilter)) leaf_name_data.push_back(snmptargetaddrtdomain.get_name_leafdata());
+    if (snmptargetaddrtimeout.is_set || is_set(snmptargetaddrtimeout.yfilter)) leaf_name_data.push_back(snmptargetaddrtimeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -426,44 +484,109 @@ std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetaddrtabl
     return children;
 }
 
-void SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::set_value(const std::string & value_path, std::string value)
+void SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpTargetAddrName")
     {
         snmptargetaddrname = value;
+        snmptargetaddrname.value_namespace = name_space;
+        snmptargetaddrname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetAddrParams")
     {
         snmptargetaddrparams = value;
+        snmptargetaddrparams.value_namespace = name_space;
+        snmptargetaddrparams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetAddrRetryCount")
     {
         snmptargetaddrretrycount = value;
+        snmptargetaddrretrycount.value_namespace = name_space;
+        snmptargetaddrretrycount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetAddrRowStatus")
     {
         snmptargetaddrrowstatus = value;
+        snmptargetaddrrowstatus.value_namespace = name_space;
+        snmptargetaddrrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetAddrStorageType")
     {
         snmptargetaddrstoragetype = value;
+        snmptargetaddrstoragetype.value_namespace = name_space;
+        snmptargetaddrstoragetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetAddrTAddress")
     {
         snmptargetaddrtaddress = value;
+        snmptargetaddrtaddress.value_namespace = name_space;
+        snmptargetaddrtaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetAddrTagList")
     {
         snmptargetaddrtaglist = value;
+        snmptargetaddrtaglist.value_namespace = name_space;
+        snmptargetaddrtaglist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetAddrTDomain")
     {
         snmptargetaddrtdomain = value;
+        snmptargetaddrtdomain.value_namespace = name_space;
+        snmptargetaddrtdomain.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetAddrTimeout")
     {
         snmptargetaddrtimeout = value;
+        snmptargetaddrtimeout.value_namespace = name_space;
+        snmptargetaddrtimeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "snmpTargetAddrName")
+    {
+        snmptargetaddrname.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetAddrParams")
+    {
+        snmptargetaddrparams.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetAddrRetryCount")
+    {
+        snmptargetaddrretrycount.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetAddrRowStatus")
+    {
+        snmptargetaddrrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetAddrStorageType")
+    {
+        snmptargetaddrstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetAddrTAddress")
+    {
+        snmptargetaddrtaddress.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetAddrTagList")
+    {
+        snmptargetaddrtaglist.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetAddrTDomain")
+    {
+        snmptargetaddrtdomain.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetAddrTimeout")
+    {
+        snmptargetaddrtimeout.yfilter = yfilter;
+    }
+}
+
+bool SnmpTargetMib::Snmptargetaddrtable::Snmptargetaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmpTargetAddrName" || name == "snmpTargetAddrParams" || name == "snmpTargetAddrRetryCount" || name == "snmpTargetAddrRowStatus" || name == "snmpTargetAddrStorageType" || name == "snmpTargetAddrTAddress" || name == "snmpTargetAddrTagList" || name == "snmpTargetAddrTDomain" || name == "snmpTargetAddrTimeout")
+        return true;
+    return false;
 }
 
 SnmpTargetMib::Snmptargetparamstable::Snmptargetparamstable()
@@ -477,9 +600,9 @@ SnmpTargetMib::Snmptargetparamstable::~Snmptargetparamstable()
 
 bool SnmpTargetMib::Snmptargetparamstable::has_data() const
 {
-    for (std::size_t index=0; index<snmptargetparamsentry_.size(); index++)
+    for (std::size_t index=0; index<snmptargetparamsentry.size(); index++)
     {
-        if(snmptargetparamsentry_[index]->has_data())
+        if(snmptargetparamsentry[index]->has_data())
             return true;
     }
     return false;
@@ -487,12 +610,12 @@ bool SnmpTargetMib::Snmptargetparamstable::has_data() const
 
 bool SnmpTargetMib::Snmptargetparamstable::has_operation() const
 {
-    for (std::size_t index=0; index<snmptargetparamsentry_.size(); index++)
+    for (std::size_t index=0; index<snmptargetparamsentry.size(); index++)
     {
-        if(snmptargetparamsentry_[index]->has_operation())
+        if(snmptargetparamsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SnmpTargetMib::Snmptargetparamstable::get_segment_path() const
@@ -529,7 +652,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetparamstable::get_child_by_name(
 {
     if(child_yang_name == "snmpTargetParamsEntry")
     {
-        for(auto const & c : snmptargetparamsentry_)
+        for(auto const & c : snmptargetparamsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -539,7 +662,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetparamstable::get_child_by_name(
         }
         auto c = std::make_shared<SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry>();
         c->parent = this;
-        snmptargetparamsentry_.push_back(c);
+        snmptargetparamsentry.push_back(c);
         return c;
     }
 
@@ -549,7 +672,7 @@ std::shared_ptr<Entity> SnmpTargetMib::Snmptargetparamstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetparamstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : snmptargetparamsentry_)
+    for (auto const & c : snmptargetparamsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -557,8 +680,19 @@ std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetparamsta
     return children;
 }
 
-void SnmpTargetMib::Snmptargetparamstable::set_value(const std::string & value_path, std::string value)
+void SnmpTargetMib::Snmptargetparamstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SnmpTargetMib::Snmptargetparamstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SnmpTargetMib::Snmptargetparamstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmpTargetParamsEntry")
+        return true;
+    return false;
 }
 
 SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::Snmptargetparamsentry()
@@ -591,14 +725,14 @@ bool SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::has_data() con
 
 bool SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(snmptargetparamsname.operation)
-	|| is_set(snmptargetparamsmpmodel.operation)
-	|| is_set(snmptargetparamsrowstatus.operation)
-	|| is_set(snmptargetparamssecuritylevel.operation)
-	|| is_set(snmptargetparamssecuritymodel.operation)
-	|| is_set(snmptargetparamssecurityname.operation)
-	|| is_set(snmptargetparamsstoragetype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(snmptargetparamsname.yfilter)
+	|| ydk::is_set(snmptargetparamsmpmodel.yfilter)
+	|| ydk::is_set(snmptargetparamsrowstatus.yfilter)
+	|| ydk::is_set(snmptargetparamssecuritylevel.yfilter)
+	|| ydk::is_set(snmptargetparamssecuritymodel.yfilter)
+	|| ydk::is_set(snmptargetparamssecurityname.yfilter)
+	|| ydk::is_set(snmptargetparamsstoragetype.yfilter);
 }
 
 std::string SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::get_segment_path() const
@@ -624,13 +758,13 @@ const EntityPath SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (snmptargetparamsname.is_set || is_set(snmptargetparamsname.operation)) leaf_name_data.push_back(snmptargetparamsname.get_name_leafdata());
-    if (snmptargetparamsmpmodel.is_set || is_set(snmptargetparamsmpmodel.operation)) leaf_name_data.push_back(snmptargetparamsmpmodel.get_name_leafdata());
-    if (snmptargetparamsrowstatus.is_set || is_set(snmptargetparamsrowstatus.operation)) leaf_name_data.push_back(snmptargetparamsrowstatus.get_name_leafdata());
-    if (snmptargetparamssecuritylevel.is_set || is_set(snmptargetparamssecuritylevel.operation)) leaf_name_data.push_back(snmptargetparamssecuritylevel.get_name_leafdata());
-    if (snmptargetparamssecuritymodel.is_set || is_set(snmptargetparamssecuritymodel.operation)) leaf_name_data.push_back(snmptargetparamssecuritymodel.get_name_leafdata());
-    if (snmptargetparamssecurityname.is_set || is_set(snmptargetparamssecurityname.operation)) leaf_name_data.push_back(snmptargetparamssecurityname.get_name_leafdata());
-    if (snmptargetparamsstoragetype.is_set || is_set(snmptargetparamsstoragetype.operation)) leaf_name_data.push_back(snmptargetparamsstoragetype.get_name_leafdata());
+    if (snmptargetparamsname.is_set || is_set(snmptargetparamsname.yfilter)) leaf_name_data.push_back(snmptargetparamsname.get_name_leafdata());
+    if (snmptargetparamsmpmodel.is_set || is_set(snmptargetparamsmpmodel.yfilter)) leaf_name_data.push_back(snmptargetparamsmpmodel.get_name_leafdata());
+    if (snmptargetparamsrowstatus.is_set || is_set(snmptargetparamsrowstatus.yfilter)) leaf_name_data.push_back(snmptargetparamsrowstatus.get_name_leafdata());
+    if (snmptargetparamssecuritylevel.is_set || is_set(snmptargetparamssecuritylevel.yfilter)) leaf_name_data.push_back(snmptargetparamssecuritylevel.get_name_leafdata());
+    if (snmptargetparamssecuritymodel.is_set || is_set(snmptargetparamssecuritymodel.yfilter)) leaf_name_data.push_back(snmptargetparamssecuritymodel.get_name_leafdata());
+    if (snmptargetparamssecurityname.is_set || is_set(snmptargetparamssecurityname.yfilter)) leaf_name_data.push_back(snmptargetparamssecurityname.get_name_leafdata());
+    if (snmptargetparamsstoragetype.is_set || is_set(snmptargetparamsstoragetype.yfilter)) leaf_name_data.push_back(snmptargetparamsstoragetype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -649,36 +783,89 @@ std::map<std::string, std::shared_ptr<Entity>> SnmpTargetMib::Snmptargetparamsta
     return children;
 }
 
-void SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::set_value(const std::string & value_path, std::string value)
+void SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpTargetParamsName")
     {
         snmptargetparamsname = value;
+        snmptargetparamsname.value_namespace = name_space;
+        snmptargetparamsname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetParamsMPModel")
     {
         snmptargetparamsmpmodel = value;
+        snmptargetparamsmpmodel.value_namespace = name_space;
+        snmptargetparamsmpmodel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetParamsRowStatus")
     {
         snmptargetparamsrowstatus = value;
+        snmptargetparamsrowstatus.value_namespace = name_space;
+        snmptargetparamsrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetParamsSecurityLevel")
     {
         snmptargetparamssecuritylevel = value;
+        snmptargetparamssecuritylevel.value_namespace = name_space;
+        snmptargetparamssecuritylevel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetParamsSecurityModel")
     {
         snmptargetparamssecuritymodel = value;
+        snmptargetparamssecuritymodel.value_namespace = name_space;
+        snmptargetparamssecuritymodel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetParamsSecurityName")
     {
         snmptargetparamssecurityname = value;
+        snmptargetparamssecurityname.value_namespace = name_space;
+        snmptargetparamssecurityname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpTargetParamsStorageType")
     {
         snmptargetparamsstoragetype = value;
+        snmptargetparamsstoragetype.value_namespace = name_space;
+        snmptargetparamsstoragetype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "snmpTargetParamsName")
+    {
+        snmptargetparamsname.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetParamsMPModel")
+    {
+        snmptargetparamsmpmodel.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetParamsRowStatus")
+    {
+        snmptargetparamsrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetParamsSecurityLevel")
+    {
+        snmptargetparamssecuritylevel.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetParamsSecurityModel")
+    {
+        snmptargetparamssecuritymodel.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetParamsSecurityName")
+    {
+        snmptargetparamssecurityname.yfilter = yfilter;
+    }
+    if(value_path == "snmpTargetParamsStorageType")
+    {
+        snmptargetparamsstoragetype.yfilter = yfilter;
+    }
+}
+
+bool SnmpTargetMib::Snmptargetparamstable::Snmptargetparamsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmpTargetParamsName" || name == "snmpTargetParamsMPModel" || name == "snmpTargetParamsRowStatus" || name == "snmpTargetParamsSecurityLevel" || name == "snmpTargetParamsSecurityModel" || name == "snmpTargetParamsSecurityName" || name == "snmpTargetParamsStorageType")
+        return true;
+    return false;
 }
 
 

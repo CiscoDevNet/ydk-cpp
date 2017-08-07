@@ -11,10 +11,10 @@ set(BUILDS_DIR ${CMAKE_SOURCE_DIR}/builds)
 
 find_package(unittest REQUIRED NAMES UnitTest++)
 IF(unittest_FOUND)
-	message("found unittest dir: " ${unittest_DIR})
+    message("found unittest dir: " ${unittest_DIR})
 ELSE(NOT unittest_FOUND)
-	message("unittest-cpp NOT FOUND")
-	message("  install package from https://github.com/unittest-cpp/unittest-cpp")
+    message("unittest-cpp NOT FOUND")
+    message("  install package from https://github.com/unittest-cpp/unittest-cpp")
 ENDIF()
 
 # May be a solution if unittest-cpp was installed with brew (instead of github clone) and cannot be found
@@ -31,29 +31,29 @@ find_library(pthread_location pthread)
 find_library(dl_location dl)
 
 include_directories(
-	# May be a solution if unittest-cpp was installed with brew (instead of github clone) and cannot be found
-	# /usr/local/include/UnitTest++
-	${ROOT}
-	${TESTS_DIR}
-	${YDK_DIR}
+    # May be a solution if unittest-cpp was installed with brew (instead of github clone) and cannot be found
+    # /usr/local/include/UnitTest++
+    ${ROOT}
+    ${TESTS_DIR}
+    ${YDK_DIR}
 )
 
 add_executable (test_netconf_client ${TESTS_DIR}/test_netconf_client.cpp)
 
 target_link_libraries(test_netconf_client
-	# May be a solution if unittest-cpp was installed with brew (instead of github clone) and cannot be found
-	# ${unittest_location}
-	UnitTest++
-	${ydk_client_location}
-	${netconf_location}
-	${python_location}
-	${ssh_location}
-	${xml2_location}
-	${curl_location}
-	${ssh_threads_location}
-	${xslt_location}
-	${pthread_location}
-	${dl_location}
+    # May be a solution if unittest-cpp was installed with brew (instead of github clone) and cannot be found
+    # ${unittest_location}
+    UnitTest++
+    ${ydk_client_location}
+    ${netconf_location}
+    ${python_location}
+    ${ssh_location}
+    ${xml2_location}
+    ${curl_location}
+    ${ssh_threads_location}
+    ${xslt_location}
+    ${pthread_location}
+    ${dl_location}
 )
 
 target_compile_features(test_netconf_client PRIVATE cxx_range_for)

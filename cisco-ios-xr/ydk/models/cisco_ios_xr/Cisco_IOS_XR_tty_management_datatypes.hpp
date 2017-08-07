@@ -7,50 +7,50 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_management_datatypes {
 
-class TtySessionTimeoutDirectionEnum : public Enum
+class TtyTransportProtocolSelect : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf in;
-        static const Enum::YLeaf in_out;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf some;
 
 };
 
-class TtyPagerEnum : public Enum
+class TtyTransportProtocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf more;
-        static const Enum::YLeaf less;
-        static const Enum::YLeaf none;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf telnet;
+        static const ydk::Enum::YLeaf ssh;
 
 };
 
-class TtyEscapeCharEnum : public Enum
+class TtySessionTimeoutDirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf break_;
-        static const Enum::YLeaf default_;
-        static const Enum::YLeaf none;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf in_out;
 
 };
 
-class TtyTransportProtocolEnum : public Enum
+class TtyEscapeChar : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf telnet;
-        static const Enum::YLeaf ssh;
+        static const ydk::Enum::YLeaf break_;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf none;
 
 };
 
-class TtyTransportProtocolSelectEnum : public Enum
+class TtyPager : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf all;
-        static const Enum::YLeaf some;
+        static const ydk::Enum::YLeaf more;
+        static const ydk::Enum::YLeaf less;
+        static const ydk::Enum::YLeaf none;
 
 };
 

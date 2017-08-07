@@ -6,12 +6,14 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ppp_ma_lcp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ppp_ma_lcp_cfg {
 
-const Enum::YLeaf PppAuthenticationMethodEnum::pap {1, "pap"};
-const Enum::YLeaf PppAuthenticationMethodEnum::chap {2, "chap"};
-const Enum::YLeaf PppAuthenticationMethodEnum::ms_chap {3, "ms-chap"};
+const Enum::YLeaf PppAuthenticationMethod::pap {1, "pap"};
+const Enum::YLeaf PppAuthenticationMethod::chap {2, "chap"};
+const Enum::YLeaf PppAuthenticationMethod::ms_chap {3, "ms-chap"};
 
 
 }

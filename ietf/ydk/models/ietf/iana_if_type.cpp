@@ -6,2463 +6,2465 @@
 #include "generated_entity_lookup.hpp"
 #include "iana_if_type.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace iana_if_type {
 
-IanaInterfaceTypeIdentity::IanaInterfaceTypeIdentity()
-     : Identity("iana-if-type:iana-interface-type")
+IanaInterfaceType::IanaInterfaceType()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iana-interface-type")
 {
 }
 
-IanaInterfaceTypeIdentity::~IanaInterfaceTypeIdentity()
+IanaInterfaceType::~IanaInterfaceType()
 {
 }
 
-VoicefxoIdentity::VoicefxoIdentity()
-     : Identity("iana-if-type:voiceFXO")
+Pos::Pos()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:pos")
 {
 }
 
-VoicefxoIdentity::~VoicefxoIdentity()
+Pos::~Pos()
 {
 }
 
-AtmvciendptIdentity::AtmvciendptIdentity()
-     : Identity("iana-if-type:atmVciEndPt")
+Hiperlan2::Hiperlan2()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hiperlan2")
 {
 }
 
-AtmvciendptIdentity::~AtmvciendptIdentity()
+Hiperlan2::~Hiperlan2()
 {
 }
 
-Propbwap2MpIdentity::Propbwap2MpIdentity()
-     : Identity("iana-if-type:propBWAp2Mp")
+G703At2Mb::G703At2Mb()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:g703at2mb")
 {
 }
 
-Propbwap2MpIdentity::~Propbwap2MpIdentity()
+G703At2Mb::~G703At2Mb()
 {
 }
 
-PropdocswirelessdownstreamIdentity::PropdocswirelessdownstreamIdentity()
-     : Identity("iana-if-type:propDocsWirelessDownstream")
+Rfc877X25::Rfc877X25()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:rfc877x25")
 {
 }
 
-PropdocswirelessdownstreamIdentity::~PropdocswirelessdownstreamIdentity()
+Rfc877X25::~Rfc877X25()
 {
 }
 
-V11Identity::V11Identity()
-     : Identity("iana-if-type:v11")
+Dvbasiin::Dvbasiin()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dvbAsiIn")
 {
 }
 
-V11Identity::~V11Identity()
+Dvbasiin::~Dvbasiin()
 {
 }
 
-SoftwareloopbackIdentity::SoftwareloopbackIdentity()
-     : Identity("iana-if-type:softwareLoopback")
+Gfp::Gfp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:gfp")
 {
 }
 
-SoftwareloopbackIdentity::~SoftwareloopbackIdentity()
+Gfp::~Gfp()
 {
 }
 
-HdlcIdentity::HdlcIdentity()
-     : Identity("iana-if-type:hdlc")
+Sonetoverheadchannel::Sonetoverheadchannel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sonetOverheadChannel")
 {
 }
 
-HdlcIdentity::~HdlcIdentity()
+Sonetoverheadchannel::~Sonetoverheadchannel()
 {
 }
 
-VoicefgdosIdentity::VoicefgdosIdentity()
-     : Identity("iana-if-type:voiceFGDOS")
+Pppmultilinkbundle::Pppmultilinkbundle()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:pppMultilinkBundle")
 {
 }
 
-VoicefgdosIdentity::~VoicefgdosIdentity()
+Pppmultilinkbundle::~Pppmultilinkbundle()
 {
 }
 
-FastetherfxIdentity::FastetherfxIdentity()
-     : Identity("iana-if-type:fastEtherFX")
+Lmp::Lmp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:lmp")
 {
 }
 
-FastetherfxIdentity::~FastetherfxIdentity()
+Lmp::~Lmp()
 {
 }
 
-DvbtdmIdentity::DvbtdmIdentity()
-     : Identity("iana-if-type:dvbTdm")
+Eplrs::Eplrs()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:eplrs")
 {
 }
 
-DvbtdmIdentity::~DvbtdmIdentity()
+Eplrs::~Eplrs()
 {
 }
 
-NfasIdentity::NfasIdentity()
-     : Identity("iana-if-type:nfas")
+Lapd::Lapd()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:lapd")
 {
 }
 
-NfasIdentity::~NfasIdentity()
+Lapd::~Lapd()
 {
 }
 
-IfpwtypeIdentity::IfpwtypeIdentity()
-     : Identity("iana-if-type:ifPwType")
+Ds0Bundle::Ds0Bundle()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ds0Bundle")
 {
 }
 
-IfpwtypeIdentity::~IfpwtypeIdentity()
+Ds0Bundle::~Ds0Bundle()
 {
 }
 
-L2VlanIdentity::L2VlanIdentity()
-     : Identity("iana-if-type:l2vlan")
+Docscablemcmtsdownstream::Docscablemcmtsdownstream()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:docsCableMCmtsDownstream")
 {
 }
 
-L2VlanIdentity::~L2VlanIdentity()
+Docscablemcmtsdownstream::~Docscablemcmtsdownstream()
 {
 }
 
-Adsl2PlusIdentity::Adsl2PlusIdentity()
-     : Identity("iana-if-type:adsl2plus")
+Ifvfitype::Ifvfitype()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ifVfiType")
 {
 }
 
-Adsl2PlusIdentity::~Adsl2PlusIdentity()
+Ifvfitype::~Ifvfitype()
 {
 }
 
-Ieee802154Identity::Ieee802154Identity()
-     : Identity("iana-if-type:ieee802154")
+Propmultiplexor::Propmultiplexor()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propMultiplexor")
 {
 }
 
-Ieee802154Identity::~Ieee802154Identity()
+Propmultiplexor::~Propmultiplexor()
 {
 }
 
-VoicefxsIdentity::VoicefxsIdentity()
-     : Identity("iana-if-type:voiceFXS")
+IfGsn::IfGsn()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:if-gsn")
 {
 }
 
-VoicefxsIdentity::~VoicefxsIdentity()
+IfGsn::~IfGsn()
 {
 }
 
-DvbrcsmaclayerIdentity::DvbrcsmaclayerIdentity()
-     : Identity("iana-if-type:dvbRcsMacLayer")
+Macseccontrolledif::Macseccontrolledif()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:macSecControlledIF")
 {
 }
 
-DvbrcsmaclayerIdentity::~DvbrcsmaclayerIdentity()
+Macseccontrolledif::~Macseccontrolledif()
 {
 }
 
-IdslIdentity::IdslIdentity()
-     : Identity("iana-if-type:idsl")
+Gr303Idt::Gr303Idt()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:gr303IDT")
 {
 }
 
-IdslIdentity::~IdslIdentity()
+Gr303Idt::~Gr303Idt()
 {
 }
 
-InfinibandIdentity::InfinibandIdentity()
-     : Identity("iana-if-type:infiniband")
+Vdsl::Vdsl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:vdsl")
 {
 }
 
-InfinibandIdentity::~InfinibandIdentity()
+Vdsl::~Vdsl()
 {
 }
 
-Ddnx25Identity::Ddnx25Identity()
-     : Identity("iana-if-type:ddnX25")
+Wwanpp2::Wwanpp2()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:wwanPP2")
 {
 }
 
-Ddnx25Identity::~Ddnx25Identity()
+Wwanpp2::~Wwanpp2()
 {
 }
 
-Wwanpp2Identity::Wwanpp2Identity()
-     : Identity("iana-if-type:wwanPP2")
+A12Mppswitch::A12Mppswitch()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:a12MppSwitch")
 {
 }
 
-Wwanpp2Identity::~Wwanpp2Identity()
+A12Mppswitch::~A12Mppswitch()
 {
 }
 
-DocscableupstreamIdentity::DocscableupstreamIdentity()
-     : Identity("iana-if-type:docsCableUpstream")
+Interleave::Interleave()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:interleave")
 {
 }
 
-DocscableupstreamIdentity::~DocscableupstreamIdentity()
+Interleave::~Interleave()
 {
 }
 
-Ethernet3MbitIdentity::Ethernet3MbitIdentity()
-     : Identity("iana-if-type:ethernet3Mbit")
+Ds1Fdl::Ds1Fdl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ds1FDL")
 {
 }
 
-Ethernet3MbitIdentity::~Ethernet3MbitIdentity()
+Ds1Fdl::~Ds1Fdl()
 {
 }
 
-DigitalpowerlineIdentity::DigitalpowerlineIdentity()
-     : Identity("iana-if-type:digitalPowerline")
+Frf16Mfrbundle::Frf16Mfrbundle()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:frf16MfrBundle")
 {
 }
 
-DigitalpowerlineIdentity::~DigitalpowerlineIdentity()
+Frf16Mfrbundle::~Frf16Mfrbundle()
 {
 }
 
-H323ProxyIdentity::H323ProxyIdentity()
-     : Identity("iana-if-type:h323Proxy")
+Tr008::Tr008()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:tr008")
 {
 }
 
-H323ProxyIdentity::~H323ProxyIdentity()
+Tr008::~Tr008()
 {
 }
 
-GtpIdentity::GtpIdentity()
-     : Identity("iana-if-type:gtp")
+Mpegtransport::Mpegtransport()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:mpegTransport")
 {
 }
 
-GtpIdentity::~GtpIdentity()
+Mpegtransport::~Mpegtransport()
 {
 }
 
-IpoveratmIdentity::IpoveratmIdentity()
-     : Identity("iana-if-type:ipOverAtm")
+Econet::Econet()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:econet")
 {
 }
 
-IpoveratmIdentity::~IpoveratmIdentity()
+Econet::~Econet()
 {
 }
 
-AlueponIdentity::AlueponIdentity()
-     : Identity("iana-if-type:aluEpon")
+Ciscoislvlan::Ciscoislvlan()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ciscoISLvlan")
 {
 }
 
-AlueponIdentity::~AlueponIdentity()
+Ciscoislvlan::~Ciscoislvlan()
 {
 }
 
-ImtIdentity::ImtIdentity()
-     : Identity("iana-if-type:imt")
+L2Vlan::L2Vlan()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:l2vlan")
 {
 }
 
-ImtIdentity::~ImtIdentity()
+L2Vlan::~L2Vlan()
 {
 }
 
-IpswitchIdentity::IpswitchIdentity()
-     : Identity("iana-if-type:ipSwitch")
+Dvbrcsmaclayer::Dvbrcsmaclayer()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dvbRcsMacLayer")
 {
 }
 
-IpswitchIdentity::~IpswitchIdentity()
+Dvbrcsmaclayer::~Dvbrcsmaclayer()
 {
 }
 
-MsdslIdentity::MsdslIdentity()
-     : Identity("iana-if-type:msdsl")
+Pdnetherloop1::Pdnetherloop1()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:pdnEtherLoop1")
 {
 }
 
-MsdslIdentity::~MsdslIdentity()
+Pdnetherloop1::~Pdnetherloop1()
 {
 }
 
-DvbrccmaclayerIdentity::DvbrccmaclayerIdentity()
-     : Identity("iana-if-type:dvbRccMacLayer")
+Atmlogical::Atmlogical()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmLogical")
 {
 }
 
-DvbrccmaclayerIdentity::~DvbrccmaclayerIdentity()
+Atmlogical::~Atmlogical()
 {
 }
 
-SmdsdxiIdentity::SmdsdxiIdentity()
-     : Identity("iana-if-type:smdsDxi")
+Aal5::Aal5()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aal5")
 {
 }
 
-SmdsdxiIdentity::~SmdsdxiIdentity()
+Aal5::~Aal5()
 {
 }
 
-VoiceoveratmIdentity::VoiceoveratmIdentity()
-     : Identity("iana-if-type:voiceOverAtm")
+Basicisdn::Basicisdn()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:basicISDN")
 {
 }
 
-VoiceoveratmIdentity::~VoiceoveratmIdentity()
+Basicisdn::~Basicisdn()
 {
 }
 
-ArapIdentity::ArapIdentity()
-     : Identity("iana-if-type:arap")
+Dvbrcstdma::Dvbrcstdma()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dvbRcsTdma")
 {
 }
 
-ArapIdentity::~ArapIdentity()
+Dvbrcstdma::~Dvbrcstdma()
 {
 }
 
-FastetherIdentity::FastetherIdentity()
-     : Identity("iana-if-type:fastEther")
+Rsrb::Rsrb()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:rsrb")
 {
 }
 
-FastetherIdentity::~FastetherIdentity()
+Rsrb::~Rsrb()
 {
 }
 
-MpcIdentity::MpcIdentity()
-     : Identity("iana-if-type:mpc")
+Atmbond::Atmbond()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmbond")
 {
 }
 
-MpcIdentity::~MpcIdentity()
+Atmbond::~Atmbond()
 {
 }
 
-LinegroupIdentity::LinegroupIdentity()
-     : Identity("iana-if-type:linegroup")
+X86Laps::X86Laps()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:x86Laps")
 {
 }
 
-LinegroupIdentity::~LinegroupIdentity()
+X86Laps::~X86Laps()
 {
 }
 
-HippiIdentity::HippiIdentity()
-     : Identity("iana-if-type:hippi")
+Framerelayinterconnect::Framerelayinterconnect()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:frameRelayInterconnect")
 {
 }
 
-HippiIdentity::~HippiIdentity()
+Framerelayinterconnect::~Framerelayinterconnect()
 {
 }
 
-RprIdentity::RprIdentity()
-     : Identity("iana-if-type:rpr")
+Slip::Slip()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:slip")
 {
 }
 
-RprIdentity::~RprIdentity()
+Slip::~Slip()
 {
 }
 
-Ds1FdlIdentity::Ds1FdlIdentity()
-     : Identity("iana-if-type:ds1FDL")
+Vmwarevirtualnic::Vmwarevirtualnic()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:vmwareVirtualNic")
 {
 }
 
-Ds1FdlIdentity::~Ds1FdlIdentity()
+Vmwarevirtualnic::~Vmwarevirtualnic()
 {
 }
 
-SonetvtIdentity::SonetvtIdentity()
-     : Identity("iana-if-type:sonetVT")
+Atmvirtual::Atmvirtual()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmVirtual")
 {
 }
 
-SonetvtIdentity::~SonetvtIdentity()
+Atmvirtual::~Atmvirtual()
 {
 }
 
-VoiceencapIdentity::VoiceencapIdentity()
-     : Identity("iana-if-type:voiceEncap")
+Fciplink::Fciplink()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:fcipLink")
 {
 }
 
-VoiceencapIdentity::~VoiceencapIdentity()
+Fciplink::~Fciplink()
 {
 }
 
-Ss7SiglinkIdentity::Ss7SiglinkIdentity()
-     : Identity("iana-if-type:ss7SigLink")
+Isup::Isup()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:isup")
 {
 }
 
-Ss7SiglinkIdentity::~Ss7SiglinkIdentity()
+Isup::~Isup()
 {
 }
 
-ArcnetIdentity::ArcnetIdentity()
-     : Identity("iana-if-type:arcnet")
+Virtualtg::Virtualtg()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:virtualTg")
 {
 }
 
-ArcnetIdentity::~ArcnetIdentity()
+Virtualtg::~Virtualtg()
 {
 }
 
-ActelismetaloopIdentity::ActelismetaloopIdentity()
-     : Identity("iana-if-type:actelisMetaLOOP")
+Miox25::Miox25()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:miox25")
 {
 }
 
-ActelismetaloopIdentity::~ActelismetaloopIdentity()
+Miox25::~Miox25()
 {
 }
 
-QllcIdentity::QllcIdentity()
-     : Identity("iana-if-type:qllc")
+Adsl2Plus::Adsl2Plus()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:adsl2plus")
 {
 }
 
-QllcIdentity::~QllcIdentity()
+Adsl2Plus::~Adsl2Plus()
 {
 }
 
-Rfc877X25Identity::Rfc877X25Identity()
-     : Identity("iana-if-type:rfc877x25")
+Iso88024Tokenbus::Iso88024Tokenbus()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iso88024TokenBus")
 {
 }
 
-Rfc877X25Identity::~Rfc877X25Identity()
+Iso88024Tokenbus::~Iso88024Tokenbus()
 {
 }
 
-MpegtransportIdentity::MpegtransportIdentity()
-     : Identity("iana-if-type:mpegTransport")
+Rfc1483::Rfc1483()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:rfc1483")
 {
 }
 
-MpegtransportIdentity::~MpegtransportIdentity()
+Rfc1483::~Rfc1483()
 {
 }
 
-X25MlpIdentity::X25MlpIdentity()
-     : Identity("iana-if-type:x25mlp")
+Framerelayservice::Framerelayservice()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:frameRelayService")
 {
 }
 
-X25MlpIdentity::~X25MlpIdentity()
+Framerelayservice::~Framerelayservice()
 {
 }
 
-VirtualtgIdentity::VirtualtgIdentity()
-     : Identity("iana-if-type:virtualTg")
+Propcnls::Propcnls()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propCnls")
 {
 }
 
-VirtualtgIdentity::~VirtualtgIdentity()
+Propcnls::~Propcnls()
 {
 }
 
-HostpadIdentity::HostpadIdentity()
-     : Identity("iana-if-type:hostPad")
+Dvbasiout::Dvbasiout()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dvbAsiOut")
 {
 }
 
-HostpadIdentity::~HostpadIdentity()
+Dvbasiout::~Dvbasiout()
 {
 }
 
-StarlanIdentity::StarlanIdentity()
-     : Identity("iana-if-type:starLan")
+Adsl::Adsl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:adsl")
 {
 }
 
-StarlanIdentity::~StarlanIdentity()
+Adsl::~Adsl()
 {
 }
 
-Iso88025DtrIdentity::Iso88025DtrIdentity()
-     : Identity("iana-if-type:iso88025Dtr")
+Mvl::Mvl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:mvl")
 {
 }
 
-Iso88025DtrIdentity::~Iso88025DtrIdentity()
+Mvl::~Mvl()
 {
 }
 
-Ibm370ParchanIdentity::Ibm370ParchanIdentity()
-     : Identity("iana-if-type:ibm370parChan")
+Iso88022Llc::Iso88022Llc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iso88022llc")
 {
 }
 
-Ibm370ParchanIdentity::~Ibm370ParchanIdentity()
+Iso88022Llc::~Iso88022Llc()
 {
 }
 
-Adsl2Identity::Adsl2Identity()
-     : Identity("iana-if-type:adsl2")
+Propdocswirelessmaclayer::Propdocswirelessmaclayer()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propDocsWirelessMaclayer")
 {
 }
 
-Adsl2Identity::~Adsl2Identity()
+Propdocswirelessmaclayer::~Propdocswirelessmaclayer()
 {
 }
 
-OtnotuIdentity::OtnotuIdentity()
-     : Identity("iana-if-type:otnOtu")
+Other::Other()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:other")
 {
 }
 
-OtnotuIdentity::~OtnotuIdentity()
+Other::~Other()
 {
 }
 
-Propwirelessp2PIdentity::Propwirelessp2PIdentity()
-     : Identity("iana-if-type:propWirelessP2P")
+Ss7Siglink::Ss7Siglink()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ss7SigLink")
 {
 }
 
-Propwirelessp2PIdentity::~Propwirelessp2PIdentity()
+Ss7Siglink::~Ss7Siglink()
 {
 }
 
-InterleaveIdentity::InterleaveIdentity()
-     : Identity("iana-if-type:interleave")
+Atmsubinterface::Atmsubinterface()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmSubInterface")
 {
 }
 
-InterleaveIdentity::~InterleaveIdentity()
+Atmsubinterface::~Atmsubinterface()
 {
 }
 
-IsupIdentity::IsupIdentity()
-     : Identity("iana-if-type:isup")
+G9983::G9983()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:g9983")
 {
 }
 
-IsupIdentity::~IsupIdentity()
+G9983::~G9983()
 {
 }
 
-Regular1822Identity::Regular1822Identity()
-     : Identity("iana-if-type:regular1822")
+Ppp::Ppp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ppp")
 {
 }
 
-Regular1822Identity::~Regular1822Identity()
+Ppp::~Ppp()
 {
 }
 
-Gr303RdtIdentity::Gr303RdtIdentity()
-     : Identity("iana-if-type:gr303RDT")
+Sonetpath::Sonetpath()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sonetPath")
 {
 }
 
-Gr303RdtIdentity::~Gr303RdtIdentity()
+Sonetpath::~Sonetpath()
 {
 }
 
-PropdocswirelessmaclayerIdentity::PropdocswirelessmaclayerIdentity()
-     : Identity("iana-if-type:propDocsWirelessMaclayer")
+Myrinet::Myrinet()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:myrinet")
 {
 }
 
-PropdocswirelessmaclayerIdentity::~PropdocswirelessmaclayerIdentity()
+Myrinet::~Myrinet()
 {
 }
 
-AsyncIdentity::AsyncIdentity()
-     : Identity("iana-if-type:async")
+Pip::Pip()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:pip")
 {
 }
 
-AsyncIdentity::~AsyncIdentity()
+Pip::~Pip()
 {
 }
 
-RadiomacIdentity::RadiomacIdentity()
-     : Identity("iana-if-type:radioMAC")
+Framerelaympi::Framerelaympi()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:frameRelayMPI")
 {
 }
 
-RadiomacIdentity::~RadiomacIdentity()
+Framerelaympi::~Framerelaympi()
 {
 }
 
-OpticalchannelgroupIdentity::OpticalchannelgroupIdentity()
-     : Identity("iana-if-type:opticalChannelGroup")
+Atmvciendpt::Atmvciendpt()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmVciEndPt")
 {
 }
 
-OpticalchannelgroupIdentity::~OpticalchannelgroupIdentity()
+Atmvciendpt::~Atmvciendpt()
 {
 }
 
-SixtofourIdentity::SixtofourIdentity()
-     : Identity("iana-if-type:sixToFour")
+Hostpad::Hostpad()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hostPad")
 {
 }
 
-SixtofourIdentity::~SixtofourIdentity()
+Hostpad::~Hostpad()
 {
 }
 
-PropdocswirelessupstreamIdentity::PropdocswirelessupstreamIdentity()
-     : Identity("iana-if-type:propDocsWirelessUpstream")
+Qllc::Qllc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:qllc")
 {
 }
 
-PropdocswirelessupstreamIdentity::~PropdocswirelessupstreamIdentity()
+Qllc::~Qllc()
 {
 }
 
-Q2931Identity::Q2931Identity()
-     : Identity("iana-if-type:q2931")
+Ipforward::Ipforward()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ipForward")
 {
 }
 
-Q2931Identity::~Q2931Identity()
+Ipforward::~Ipforward()
 {
 }
 
-FddiIdentity::FddiIdentity()
-     : Identity("iana-if-type:fddi")
+Qam::Qam()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:qam")
 {
 }
 
-FddiIdentity::~FddiIdentity()
+Qam::~Qam()
 {
 }
 
-PropcnlsIdentity::PropcnlsIdentity()
-     : Identity("iana-if-type:propCnls")
+Escon::Escon()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:escon")
 {
 }
 
-PropcnlsIdentity::~PropcnlsIdentity()
+Escon::~Escon()
 {
 }
 
-Aal2Identity::Aal2Identity()
-     : Identity("iana-if-type:aal2")
+Voiceoverframerelay::Voiceoverframerelay()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceOverFrameRelay")
 {
 }
 
-Aal2Identity::~Aal2Identity()
+Voiceoverframerelay::~Voiceoverframerelay()
 {
 }
 
-DvbasioutIdentity::DvbasioutIdentity()
-     : Identity("iana-if-type:dvbAsiOut")
+Propatm::Propatm()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propAtm")
 {
 }
 
-DvbasioutIdentity::~DvbasioutIdentity()
+Propatm::~Propatm()
 {
 }
 
-AluelpIdentity::AluelpIdentity()
-     : Identity("iana-if-type:aluELP")
+Ds3::Ds3()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ds3")
 {
 }
 
-AluelpIdentity::~AluelpIdentity()
+Ds3::~Ds3()
 {
 }
 
-CiscoislvlanIdentity::CiscoislvlanIdentity()
-     : Identity("iana-if-type:ciscoISLvlan")
+Vmwarenicteam::Vmwarenicteam()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:vmwareNicTeam")
 {
 }
 
-CiscoislvlanIdentity::~CiscoislvlanIdentity()
+Vmwarenicteam::~Vmwarenicteam()
 {
 }
 
-DocscableupstreamrfportIdentity::DocscableupstreamrfportIdentity()
-     : Identity("iana-if-type:docsCableUpstreamRfPort")
+Hdh1822::Hdh1822()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hdh1822")
 {
 }
 
-DocscableupstreamrfportIdentity::~DocscableupstreamrfportIdentity()
+Hdh1822::~Hdh1822()
 {
 }
 
-Aal5Identity::Aal5Identity()
-     : Identity("iana-if-type:aal5")
+G9981::G9981()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:g9981")
 {
 }
 
-Aal5Identity::~Aal5Identity()
+G9981::~G9981()
 {
 }
 
-FrdlciendptIdentity::FrdlciendptIdentity()
-     : Identity("iana-if-type:frDlciEndPt")
+Ultra::Ultra()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ultra")
 {
 }
 
-FrdlciendptIdentity::~FrdlciendptIdentity()
+Ultra::~Ultra()
 {
 }
 
-HippiinterfaceIdentity::HippiinterfaceIdentity()
-     : Identity("iana-if-type:hippiInterface")
+Sdsl::Sdsl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sdsl")
 {
 }
 
-HippiinterfaceIdentity::~HippiinterfaceIdentity()
+Sdsl::~Sdsl()
 {
 }
 
-L3IpvlanIdentity::L3IpvlanIdentity()
-     : Identity("iana-if-type:l3ipvlan")
+H323Proxy::H323Proxy()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:h323Proxy")
 {
 }
 
-L3IpvlanIdentity::~L3IpvlanIdentity()
+H323Proxy::~H323Proxy()
 {
 }
 
-Miox25Identity::Miox25Identity()
-     : Identity("iana-if-type:miox25")
+Stacktostack::Stacktostack()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:stackToStack")
 {
 }
 
-Miox25Identity::~Miox25Identity()
+Stacktostack::~Stacktostack()
 {
 }
 
-HssiIdentity::HssiIdentity()
-     : Identity("iana-if-type:hssi")
+Voicefxs::Voicefxs()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceFXS")
 {
 }
 
-HssiIdentity::~HssiIdentity()
+Voicefxs::~Voicefxs()
 {
 }
 
-AtmvirtualIdentity::AtmvirtualIdentity()
-     : Identity("iana-if-type:atmVirtual")
+Mpls::Mpls()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:mpls")
 {
 }
 
-AtmvirtualIdentity::~AtmvirtualIdentity()
+Mpls::~Mpls()
 {
 }
 
-AlugpononuIdentity::AlugpononuIdentity()
-     : Identity("iana-if-type:aluGponOnu")
+Smdsdxi::Smdsdxi()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:smdsDxi")
 {
 }
 
-AlugpononuIdentity::~AlugpononuIdentity()
+Smdsdxi::~Smdsdxi()
 {
 }
 
-Rfc1483Identity::Rfc1483Identity()
-     : Identity("iana-if-type:rfc1483")
+Voiceebs::Voiceebs()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceEBS")
 {
 }
 
-Rfc1483Identity::~Rfc1483Identity()
+Voiceebs::~Voiceebs()
 {
 }
 
-CnrIdentity::CnrIdentity()
-     : Identity("iana-if-type:cnr")
+Wwanpp::Wwanpp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:wwanPP")
 {
 }
 
-CnrIdentity::~CnrIdentity()
+Wwanpp::~Wwanpp()
 {
 }
 
-SipsigIdentity::SipsigIdentity()
-     : Identity("iana-if-type:sipSig")
+Cabledownstreamrfport::Cabledownstreamrfport()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:cableDownstreamRfPort")
 {
 }
 
-SipsigIdentity::~SipsigIdentity()
+Cabledownstreamrfport::~Cabledownstreamrfport()
 {
 }
 
-MyrinetIdentity::MyrinetIdentity()
-     : Identity("iana-if-type:myrinet")
+Voiceencap::Voiceencap()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceEncap")
 {
 }
 
-MyrinetIdentity::~MyrinetIdentity()
+Voiceencap::~Voiceencap()
 {
 }
 
-DlswIdentity::DlswIdentity()
-     : Identity("iana-if-type:dlsw")
+Gtp::Gtp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:gtp")
 {
 }
 
-DlswIdentity::~DlswIdentity()
+Gtp::~Gtp()
 {
 }
 
-GigabitethernetIdentity::GigabitethernetIdentity()
-     : Identity("iana-if-type:gigabitEthernet")
+Tdlc::Tdlc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:tdlc")
 {
 }
 
-GigabitethernetIdentity::~GigabitethernetIdentity()
+Tdlc::~Tdlc()
 {
 }
 
-X25PleIdentity::X25PleIdentity()
-     : Identity("iana-if-type:x25ple")
+Regular1822::Regular1822()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:regular1822")
 {
 }
 
-X25PleIdentity::~X25PleIdentity()
+Regular1822::~Regular1822()
 {
 }
 
-LmpIdentity::LmpIdentity()
-     : Identity("iana-if-type:lmp")
+Dlsw::Dlsw()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dlsw")
 {
 }
 
-LmpIdentity::~LmpIdentity()
+Dlsw::~Dlsw()
 {
 }
 
-OpticaltransportIdentity::OpticaltransportIdentity()
-     : Identity("iana-if-type:opticalTransport")
+Ipswitch::Ipswitch()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ipSwitch")
 {
 }
 
-OpticaltransportIdentity::~OpticaltransportIdentity()
+Ipswitch::~Ipswitch()
 {
 }
 
-SdlcIdentity::SdlcIdentity()
-     : Identity("iana-if-type:sdlc")
+Smdsicip::Smdsicip()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:smdsIcip")
 {
 }
 
-SdlcIdentity::~SdlcIdentity()
+Smdsicip::~Smdsicip()
 {
 }
 
-VoiceemIdentity::VoiceemIdentity()
-     : Identity("iana-if-type:voiceEM")
+Alueponphysicaluni::Alueponphysicaluni()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aluEponPhysicalUni")
 {
 }
 
-VoiceemIdentity::~VoiceemIdentity()
+Alueponphysicaluni::~Alueponphysicaluni()
 {
 }
 
-X86LapsIdentity::X86LapsIdentity()
-     : Identity("iana-if-type:x86Laps")
+Docscabledownstream::Docscabledownstream()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:docsCableDownstream")
 {
 }
 
-X86LapsIdentity::~X86LapsIdentity()
+Docscabledownstream::~Docscabledownstream()
 {
 }
 
-G9982Identity::G9982Identity()
-     : Identity("iana-if-type:g9982")
+Coffee::Coffee()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:coffee")
 {
 }
 
-G9982Identity::~G9982Identity()
+Coffee::~Coffee()
 {
 }
 
-Iso88022LlcIdentity::Iso88022LlcIdentity()
-     : Identity("iana-if-type:iso88022llc")
+Pon622::Pon622()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:pon622")
 {
 }
 
-Iso88022LlcIdentity::~Iso88022LlcIdentity()
+Pon622::~Pon622()
 {
 }
 
-DvbasiinIdentity::DvbasiinIdentity()
-     : Identity("iana-if-type:dvbAsiIn")
+Sonetvt::Sonetvt()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sonetVT")
 {
 }
 
-DvbasiinIdentity::~DvbasiinIdentity()
+Sonetvt::~Sonetvt()
 {
 }
 
-BgppolicyaccountingIdentity::BgppolicyaccountingIdentity()
-     : Identity("iana-if-type:bgppolicyaccounting")
+Lapb::Lapb()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:lapb")
 {
 }
 
-BgppolicyaccountingIdentity::~BgppolicyaccountingIdentity()
+Lapb::~Lapb()
 {
 }
 
-AluepononuIdentity::AluepononuIdentity()
-     : Identity("iana-if-type:aluEponOnu")
+Q2931::Q2931()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:q2931")
 {
 }
 
-AluepononuIdentity::~AluepononuIdentity()
+Q2931::~Q2931()
 {
 }
 
-MfsiglinkIdentity::MfsiglinkIdentity()
-     : Identity("iana-if-type:mfSigLink")
+Fastether::Fastether()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:fastEther")
 {
 }
 
-MfsiglinkIdentity::~MfsiglinkIdentity()
+Fastether::~Fastether()
 {
 }
 
-DcnIdentity::DcnIdentity()
-     : Identity("iana-if-type:dcn")
+Proppointtopointserial::Proppointtopointserial()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propPointToPointSerial")
 {
 }
 
-DcnIdentity::~DcnIdentity()
+Proppointtopointserial::~Proppointtopointserial()
 {
 }
 
-AtmdxiIdentity::AtmdxiIdentity()
-     : Identity("iana-if-type:atmDxi")
+Lapf::Lapf()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:lapf")
 {
 }
 
-AtmdxiIdentity::~AtmdxiIdentity()
+Lapf::~Lapf()
 {
 }
 
-VoiceoverframerelayIdentity::VoiceoverframerelayIdentity()
-     : Identity("iana-if-type:voiceOverFrameRelay")
+Dvbrccupstream::Dvbrccupstream()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dvbRccUpstream")
 {
 }
 
-VoiceoverframerelayIdentity::~VoiceoverframerelayIdentity()
+Dvbrccupstream::~Dvbrccupstream()
 {
 }
 
-GfpIdentity::GfpIdentity()
-     : Identity("iana-if-type:gfp")
+Atmfuni::Atmfuni()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmFuni")
 {
 }
 
-GfpIdentity::~GfpIdentity()
+Atmfuni::~Atmfuni()
 {
 }
 
-SonetoverheadchannelIdentity::SonetoverheadchannelIdentity()
-     : Identity("iana-if-type:sonetOverheadChannel")
+Frforward::Frforward()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:frForward")
 {
 }
 
-SonetoverheadchannelIdentity::~SonetoverheadchannelIdentity()
+Frforward::~Frforward()
 {
 }
 
-VmwarevirtualnicIdentity::VmwarevirtualnicIdentity()
-     : Identity("iana-if-type:vmwareVirtualNic")
+Primaryisdn::Primaryisdn()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:primaryISDN")
 {
 }
 
-VmwarevirtualnicIdentity::~VmwarevirtualnicIdentity()
+Primaryisdn::~Primaryisdn()
 {
 }
 
-FciplinkIdentity::FciplinkIdentity()
-     : Identity("iana-if-type:fcipLink")
+Ipoverclaw::Ipoverclaw()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ipOverClaw")
 {
 }
 
-FciplinkIdentity::~FciplinkIdentity()
+Ipoverclaw::~Ipoverclaw()
 {
 }
 
-IpoverclawIdentity::IpoverclawIdentity()
-     : Identity("iana-if-type:ipOverClaw")
+Atmradio::Atmradio()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmRadio")
 {
 }
 
-IpoverclawIdentity::~IpoverclawIdentity()
+Atmradio::~Atmradio()
 {
 }
 
-CoffeeIdentity::CoffeeIdentity()
-     : Identity("iana-if-type:coffee")
+Ieee1394::Ieee1394()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ieee1394")
 {
 }
 
-CoffeeIdentity::~CoffeeIdentity()
+Ieee1394::~Ieee1394()
 {
 }
 
-RadslIdentity::RadslIdentity()
-     : Identity("iana-if-type:radsl")
+Ces::Ces()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ces")
 {
 }
 
-RadslIdentity::~RadslIdentity()
+Ces::~Ces()
 {
 }
 
-Vdsl2Identity::Vdsl2Identity()
-     : Identity("iana-if-type:vdsl2")
+Opticaltransport::Opticaltransport()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:opticalTransport")
 {
 }
 
-Vdsl2Identity::~Vdsl2Identity()
+Opticaltransport::~Opticaltransport()
 {
 }
 
-Rs232Identity::Rs232Identity()
-     : Identity("iana-if-type:rs232")
+X25Mlp::X25Mlp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:x25mlp")
 {
 }
 
-Rs232Identity::~Rs232Identity()
+X25Mlp::~X25Mlp()
 {
 }
 
-E1Identity::E1Identity()
-     : Identity("iana-if-type:e1")
+Mfsiglink::Mfsiglink()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:mfSigLink")
 {
 }
 
-E1Identity::~E1Identity()
+Mfsiglink::~Mfsiglink()
 {
 }
 
-ReachdslIdentity::ReachdslIdentity()
-     : Identity("iana-if-type:reachDSL")
+Hippiinterface::Hippiinterface()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hippiInterface")
 {
 }
 
-ReachdslIdentity::~ReachdslIdentity()
+Hippiinterface::~Hippiinterface()
 {
 }
 
-VoiceovercableIdentity::VoiceovercableIdentity()
-     : Identity("iana-if-type:voiceOverCable")
+Aal2::Aal2()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aal2")
 {
 }
 
-VoiceovercableIdentity::~VoiceovercableIdentity()
+Aal2::~Aal2()
 {
 }
 
-Tr008Identity::Tr008Identity()
-     : Identity("iana-if-type:tr008")
+V11::V11()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:v11")
 {
 }
 
-Tr008Identity::~Tr008Identity()
+V11::~V11()
 {
 }
 
-VoiceoveripIdentity::VoiceoveripIdentity()
-     : Identity("iana-if-type:voiceOverIp")
+Atmdxi::Atmdxi()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmDxi")
 {
 }
 
-VoiceoveripIdentity::~VoiceoveripIdentity()
+Atmdxi::~Atmdxi()
 {
 }
 
-AtmIdentity::AtmIdentity()
-     : Identity("iana-if-type:atm")
+Aflane8025::Aflane8025()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aflane8025")
 {
 }
 
-AtmIdentity::~AtmIdentity()
+Aflane8025::~Aflane8025()
 {
 }
 
-Ds3Identity::Ds3Identity()
-     : Identity("iana-if-type:ds3")
+Voiceoverip::Voiceoverip()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceOverIp")
 {
 }
 
-Ds3Identity::~Ds3Identity()
+Voiceoverip::~Voiceoverip()
 {
 }
 
-Ds0Identity::Ds0Identity()
-     : Identity("iana-if-type:ds0")
+Alugponphysicaluni::Alugponphysicaluni()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aluGponPhysicalUni")
 {
 }
 
-Ds0Identity::~Ds0Identity()
+Alugponphysicaluni::~Alugponphysicaluni()
 {
 }
 
-Ds1Identity::Ds1Identity()
-     : Identity("iana-if-type:ds1")
+Atmima::Atmima()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atmIma")
 {
 }
 
-Ds1Identity::~Ds1Identity()
+Atmima::~Atmima()
 {
 }
 
-SrpIdentity::SrpIdentity()
-     : Identity("iana-if-type:srp")
+Capwapdot11Profile::Capwapdot11Profile()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:capwapDot11Profile")
 {
 }
 
-SrpIdentity::~SrpIdentity()
+Capwapdot11Profile::~Capwapdot11Profile()
 {
 }
 
-DocscabledownstreamIdentity::DocscabledownstreamIdentity()
-     : Identity("iana-if-type:docsCableDownstream")
+Aluelp::Aluelp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aluELP")
 {
 }
 
-DocscabledownstreamIdentity::~DocscabledownstreamIdentity()
+Aluelp::~Aluelp()
 {
 }
 
-DvbrcstdmaIdentity::DvbrcstdmaIdentity()
-     : Identity("iana-if-type:dvbRcsTdma")
+Aflane8023::Aflane8023()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aflane8023")
 {
 }
 
-DvbrcstdmaIdentity::~DvbrcstdmaIdentity()
+Aflane8023::~Aflane8023()
 {
 }
 
-G9983Identity::G9983Identity()
-     : Identity("iana-if-type:g9983")
+Ipovercdlc::Ipovercdlc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ipOverCdlc")
 {
 }
 
-G9983Identity::~G9983Identity()
+Ipovercdlc::~Ipovercdlc()
 {
 }
 
-PlcIdentity::PlcIdentity()
-     : Identity("iana-if-type:plc")
+Iso88025Dtr::Iso88025Dtr()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iso88025Dtr")
 {
 }
 
-PlcIdentity::~PlcIdentity()
+Iso88025Dtr::~Iso88025Dtr()
 {
 }
 
-FramerelaympiIdentity::FramerelaympiIdentity()
-     : Identity("iana-if-type:frameRelayMPI")
+Siptg::Siptg()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sipTg")
 {
 }
 
-FramerelaympiIdentity::~FramerelaympiIdentity()
+Siptg::~Siptg()
 {
 }
 
-MvlIdentity::MvlIdentity()
-     : Identity("iana-if-type:mvl")
+Hippi::Hippi()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hippi")
 {
 }
 
-MvlIdentity::~MvlIdentity()
+Hippi::~Hippi()
 {
 }
 
-PropmultiplexorIdentity::PropmultiplexorIdentity()
-     : Identity("iana-if-type:propMultiplexor")
+Sonet::Sonet()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sonet")
 {
 }
 
-PropmultiplexorIdentity::~PropmultiplexorIdentity()
+Sonet::~Sonet()
 {
 }
 
-VoicedidIdentity::VoicedidIdentity()
-     : Identity("iana-if-type:voiceDID")
+Modem::Modem()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:modem")
 {
 }
 
-VoicedidIdentity::~VoicedidIdentity()
+Modem::~Modem()
 {
 }
 
-CompositelinkIdentity::CompositelinkIdentity()
-     : Identity("iana-if-type:compositeLink")
+Plc::Plc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:plc")
 {
 }
 
-CompositelinkIdentity::~CompositelinkIdentity()
+Plc::~Plc()
 {
 }
 
-Proteon10MbitIdentity::Proteon10MbitIdentity()
-     : Identity("iana-if-type:proteon10Mbit")
+Ieee80216Wman::Ieee80216Wman()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ieee80216WMAN")
 {
 }
 
-Proteon10MbitIdentity::~Proteon10MbitIdentity()
+Ieee80216Wman::~Ieee80216Wman()
 {
 }
 
-AtmbondIdentity::AtmbondIdentity()
-     : Identity("iana-if-type:atmbond")
+Async::Async()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:async")
 {
 }
 
-AtmbondIdentity::~AtmbondIdentity()
+Async::~Async()
 {
 }
 
-Frf16MfrbundleIdentity::Frf16MfrbundleIdentity()
-     : Identity("iana-if-type:frf16MfrBundle")
+Opticalchannelgroup::Opticalchannelgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:opticalChannelGroup")
 {
 }
 
-Frf16MfrbundleIdentity::~Frf16MfrbundleIdentity()
+Opticalchannelgroup::~Opticalchannelgroup()
 {
 }
 
-CctemulIdentity::CctemulIdentity()
-     : Identity("iana-if-type:cctEmul")
+Ethernetcsmacd::Ethernetcsmacd()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ethernetCsmacd")
 {
 }
 
-CctemulIdentity::~CctemulIdentity()
+Ethernetcsmacd::~Ethernetcsmacd()
 {
 }
 
-MplstunnelIdentity::MplstunnelIdentity()
-     : Identity("iana-if-type:mplsTunnel")
+Msdsl::Msdsl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:msdsl")
 {
 }
 
-MplstunnelIdentity::~MplstunnelIdentity()
+Msdsl::~Msdsl()
 {
 }
 
-GponIdentity::GponIdentity()
-     : Identity("iana-if-type:gpon")
+X25Ple::X25Ple()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:x25ple")
 {
 }
 
-GponIdentity::~GponIdentity()
+X25Ple::~X25Ple()
 {
 }
 
-VdslIdentity::VdslIdentity()
-     : Identity("iana-if-type:vdsl")
+Docscableupstreamchannel::Docscableupstreamchannel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:docsCableUpstreamChannel")
 {
 }
 
-VdslIdentity::~VdslIdentity()
+Docscableupstreamchannel::~Docscableupstreamchannel()
 {
 }
 
-PosIdentity::PosIdentity()
-     : Identity("iana-if-type:pos")
+Docscableupstream::Docscableupstream()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:docsCableUpstream")
 {
 }
 
-PosIdentity::~PosIdentity()
+Docscableupstream::~Docscableupstream()
 {
 }
 
-Ieee8023AdlagIdentity::Ieee8023AdlagIdentity()
-     : Identity("iana-if-type:ieee8023adLag")
+Framerelay::Framerelay()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:frameRelay")
 {
 }
 
-Ieee8023AdlagIdentity::~Ieee8023AdlagIdentity()
+Framerelay::~Framerelay()
 {
 }
 
-DocscablemaclayerIdentity::DocscablemaclayerIdentity()
-     : Identity("iana-if-type:docsCableMaclayer")
+Gr303Rdt::Gr303Rdt()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:gr303RDT")
 {
 }
 
-DocscablemaclayerIdentity::~DocscablemaclayerIdentity()
+Gr303Rdt::~Gr303Rdt()
 {
 }
 
-DocscablemcmtsdownstreamIdentity::DocscablemcmtsdownstreamIdentity()
-     : Identity("iana-if-type:docsCableMCmtsDownstream")
+Infiniband::Infiniband()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:infiniband")
 {
 }
 
-DocscablemcmtsdownstreamIdentity::~DocscablemcmtsdownstreamIdentity()
+Infiniband::~Infiniband()
 {
 }
 
-PppIdentity::PppIdentity()
-     : Identity("iana-if-type:ppp")
+Cctemul::Cctemul()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:cctEmul")
 {
 }
 
-PppIdentity::~PppIdentity()
+Cctemul::~Cctemul()
 {
 }
 
-FramerelayIdentity::FramerelayIdentity()
-     : Identity("iana-if-type:frameRelay")
+Pdnetherloop2::Pdnetherloop2()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:pdnEtherLoop2")
 {
 }
 
-FramerelayIdentity::~FramerelayIdentity()
+Pdnetherloop2::~Pdnetherloop2()
 {
 }
 
-EplrsIdentity::EplrsIdentity()
-     : Identity("iana-if-type:eplrs")
+Dcn::Dcn()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dcn")
 {
 }
 
-EplrsIdentity::~EplrsIdentity()
+Dcn::~Dcn()
 {
 }
 
-VmwarenicteamIdentity::VmwarenicteamIdentity()
-     : Identity("iana-if-type:vmwareNicTeam")
+Docscablemaclayer::Docscablemaclayer()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:docsCableMaclayer")
 {
 }
 
-VmwarenicteamIdentity::~VmwarenicteamIdentity()
+Docscablemaclayer::~Docscablemaclayer()
 {
 }
 
-CabledownstreamrfportIdentity::CabledownstreamrfportIdentity()
-     : Identity("iana-if-type:cableDownstreamRfPort")
+Arcnetplus::Arcnetplus()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:arcnetPlus")
 {
 }
 
-CabledownstreamrfportIdentity::~CabledownstreamrfportIdentity()
+Arcnetplus::~Arcnetplus()
 {
 }
 
-MacsecuncontrolledifIdentity::MacsecuncontrolledifIdentity()
-     : Identity("iana-if-type:macSecUncontrolledIF")
+Voiceem::Voiceem()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceEM")
 {
 }
 
-MacsecuncontrolledifIdentity::~MacsecuncontrolledifIdentity()
+Voiceem::~Voiceem()
 {
 }
 
-Iso88023CsmacdIdentity::Iso88023CsmacdIdentity()
-     : Identity("iana-if-type:iso88023Csmacd")
+Fast::Fast()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:fast")
 {
 }
 
-Iso88023CsmacdIdentity::~Iso88023CsmacdIdentity()
+Fast::~Fast()
 {
 }
 
-UsbIdentity::UsbIdentity()
-     : Identity("iana-if-type:usb")
+Compositelink::Compositelink()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:compositeLink")
 {
 }
 
-UsbIdentity::~UsbIdentity()
+Compositelink::~Compositelink()
 {
 }
 
-AtmfuniIdentity::AtmfuniIdentity()
-     : Identity("iana-if-type:atmFuni")
+Rpr::Rpr()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:rpr")
 {
 }
 
-AtmfuniIdentity::~AtmfuniIdentity()
+Rpr::~Rpr()
 {
 }
 
-TelinkIdentity::TelinkIdentity()
-     : Identity("iana-if-type:teLink")
+Atm::Atm()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:atm")
 {
 }
 
-TelinkIdentity::~TelinkIdentity()
+Atm::~Atm()
 {
 }
 
-Pon622Identity::Pon622Identity()
-     : Identity("iana-if-type:pon622")
+Transphdlc::Transphdlc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:transpHdlc")
 {
 }
 
-Pon622Identity::~Pon622Identity()
+Transphdlc::~Transphdlc()
 {
 }
 
-EconetIdentity::EconetIdentity()
-     : Identity("iana-if-type:econet")
+Voiceoveratm::Voiceoveratm()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceOverAtm")
 {
 }
 
-EconetIdentity::~EconetIdentity()
+Voiceoveratm::~Voiceoveratm()
 {
 }
 
-TdlcIdentity::TdlcIdentity()
-     : Identity("iana-if-type:tdlc")
+G9982::G9982()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:g9982")
 {
 }
 
-TdlcIdentity::~TdlcIdentity()
+G9982::~G9982()
 {
 }
 
-Ds0BundleIdentity::Ds0BundleIdentity()
-     : Identity("iana-if-type:ds0Bundle")
+Ieee80211::Ieee80211()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ieee80211")
 {
 }
 
-Ds0BundleIdentity::~Ds0BundleIdentity()
+Ieee80211::~Ieee80211()
 {
 }
 
-FastIdentity::FastIdentity()
-     : Identity("iana-if-type:fast")
+Capwapwtpvirtualradio::Capwapwtpvirtualradio()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:capwapWtpVirtualRadio")
 {
 }
 
-FastIdentity::~FastIdentity()
+Capwapwtpvirtualradio::~Capwapwtpvirtualradio()
 {
 }
 
-Ieee1394Identity::Ieee1394Identity()
-     : Identity("iana-if-type:ieee1394")
+Otnodu::Otnodu()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:otnOdu")
 {
 }
 
-Ieee1394Identity::~Ieee1394Identity()
+Otnodu::~Otnodu()
 {
 }
 
-CblvectastarIdentity::CblvectastarIdentity()
-     : Identity("iana-if-type:cblVectaStar")
+Sixtofour::Sixtofour()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sixToFour")
 {
 }
 
-CblvectastarIdentity::~CblvectastarIdentity()
+Sixtofour::~Sixtofour()
 {
 }
 
-RsrbIdentity::RsrbIdentity()
-     : Identity("iana-if-type:rsrb")
+Docscableupstreamrfport::Docscableupstreamrfport()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:docsCableUpstreamRfPort")
 {
 }
 
-RsrbIdentity::~RsrbIdentity()
+Docscableupstreamrfport::~Docscableupstreamrfport()
 {
 }
 
-FramerelayinterconnectIdentity::FramerelayinterconnectIdentity()
-     : Identity("iana-if-type:frameRelayInterconnect")
+Mplstunnel::Mplstunnel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:mplsTunnel")
 {
 }
 
-FramerelayinterconnectIdentity::~FramerelayinterconnectIdentity()
+Mplstunnel::~Mplstunnel()
 {
 }
 
-IsdnsIdentity::IsdnsIdentity()
-     : Identity("iana-if-type:isdns")
+Bridge::Bridge()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:bridge")
 {
 }
 
-IsdnsIdentity::~IsdnsIdentity()
+Bridge::~Bridge()
 {
 }
 
-PppmultilinkbundleIdentity::PppmultilinkbundleIdentity()
-     : Identity("iana-if-type:pppMultilinkBundle")
+Ds0::Ds0()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ds0")
 {
 }
 
-PppmultilinkbundleIdentity::~PppmultilinkbundleIdentity()
+Ds0::~Ds0()
 {
 }
 
-Aflane8025Identity::Aflane8025Identity()
-     : Identity("iana-if-type:aflane8025")
+Proteon80Mbit::Proteon80Mbit()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:proteon80Mbit")
 {
 }
 
-Aflane8025Identity::~Aflane8025Identity()
+Proteon80Mbit::~Proteon80Mbit()
 {
 }
 
-LapbIdentity::LapbIdentity()
-     : Identity("iana-if-type:lapb")
+Fibrechannel::Fibrechannel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:fibreChannel")
 {
 }
 
-LapbIdentity::~LapbIdentity()
+Fibrechannel::~Fibrechannel()
 {
 }
 
-Aflane8023Identity::Aflane8023Identity()
-     : Identity("iana-if-type:aflane8023")
+V35::V35()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:v35")
 {
 }
 
-Aflane8023Identity::~Aflane8023Identity()
+V35::~V35()
 {
 }
 
-LapdIdentity::LapdIdentity()
-     : Identity("iana-if-type:lapd")
+Propvirtual::Propvirtual()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propVirtual")
 {
 }
 
-LapdIdentity::~LapdIdentity()
+Propvirtual::~Propvirtual()
 {
 }
 
-IsdnuIdentity::IsdnuIdentity()
-     : Identity("iana-if-type:isdnu")
+Shdsl::Shdsl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:shdsl")
 {
 }
 
-IsdnuIdentity::~IsdnuIdentity()
+Shdsl::~Shdsl()
 {
 }
 
-LapfIdentity::LapfIdentity()
-     : Identity("iana-if-type:lapf")
+E1::E1()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:e1")
 {
 }
 
-LapfIdentity::~LapfIdentity()
+E1::~E1()
 {
 }
 
-CapwapwtpvirtualradioIdentity::CapwapwtpvirtualradioIdentity()
-     : Identity("iana-if-type:capwapWtpVirtualRadio")
+Bsc::Bsc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:bsc")
 {
 }
 
-CapwapwtpvirtualradioIdentity::~CapwapwtpvirtualradioIdentity()
+Bsc::~Bsc()
 {
 }
 
-IfvfitypeIdentity::IfvfitypeIdentity()
-     : Identity("iana-if-type:ifVfiType")
+Isdnu::Isdnu()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:isdnu")
 {
 }
 
-IfvfitypeIdentity::~IfvfitypeIdentity()
+Isdnu::~Isdnu()
 {
 }
 
-X25HuntgroupIdentity::X25HuntgroupIdentity()
-     : Identity("iana-if-type:x25huntGroup")
+Cnr::Cnr()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:cnr")
 {
 }
 
-X25HuntgroupIdentity::~X25HuntgroupIdentity()
+Cnr::~Cnr()
 {
 }
 
-ParaIdentity::ParaIdentity()
-     : Identity("iana-if-type:para")
+Srp::Srp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:srp")
 {
 }
 
-ParaIdentity::~ParaIdentity()
+Srp::~Srp()
 {
 }
 
-MacseccontrolledifIdentity::MacseccontrolledifIdentity()
-     : Identity("iana-if-type:macSecControlledIF")
+Digitalwrapperoverheadchannel::Digitalwrapperoverheadchannel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:digitalWrapperOverheadChannel")
 {
 }
 
-MacseccontrolledifIdentity::~MacseccontrolledifIdentity()
+Digitalwrapperoverheadchannel::~Digitalwrapperoverheadchannel()
 {
 }
 
-Iso88024TokenbusIdentity::Iso88024TokenbusIdentity()
-     : Identity("iana-if-type:iso88024TokenBus")
+Starlan::Starlan()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:starLan")
 {
 }
 
-Iso88024TokenbusIdentity::~Iso88024TokenbusIdentity()
+Starlan::~Starlan()
 {
 }
 
-LocaltalkIdentity::LocaltalkIdentity()
-     : Identity("iana-if-type:localTalk")
+Iso88023Csmacd::Iso88023Csmacd()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iso88023Csmacd")
 {
 }
 
-LocaltalkIdentity::~LocaltalkIdentity()
+Iso88023Csmacd::~Iso88023Csmacd()
 {
 }
 
-HyperchannelIdentity::HyperchannelIdentity()
-     : Identity("iana-if-type:hyperchannel")
+Virtualipaddress::Virtualipaddress()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:virtualIpAddress")
 {
 }
 
-HyperchannelIdentity::~HyperchannelIdentity()
+Virtualipaddress::~Virtualipaddress()
 {
 }
 
-MediamailoveripIdentity::MediamailoveripIdentity()
-     : Identity("iana-if-type:mediaMailOverIp")
+Nsip::Nsip()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:nsip")
 {
 }
 
-MediamailoveripIdentity::~MediamailoveripIdentity()
+Nsip::~Nsip()
 {
 }
 
-IfGsnIdentity::IfGsnIdentity()
-     : Identity("iana-if-type:if-gsn")
+Ethernet3Mbit::Ethernet3Mbit()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ethernet3Mbit")
 {
 }
 
-IfGsnIdentity::~IfGsnIdentity()
+Ethernet3Mbit::~Ethernet3Mbit()
 {
 }
 
-Capwapdot11ProfileIdentity::Capwapdot11ProfileIdentity()
-     : Identity("iana-if-type:capwapDot11Profile")
+Ifpwtype::Ifpwtype()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ifPwType")
 {
 }
 
-Capwapdot11ProfileIdentity::~Capwapdot11ProfileIdentity()
+Ifpwtype::~Ifpwtype()
 {
 }
 
-L3IpxvlanIdentity::L3IpxvlanIdentity()
-     : Identity("iana-if-type:l3ipxvlan")
+Localtalk::Localtalk()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:localTalk")
 {
 }
 
-L3IpxvlanIdentity::~L3IpxvlanIdentity()
+Localtalk::~Localtalk()
 {
 }
 
-AtmsubinterfaceIdentity::AtmsubinterfaceIdentity()
-     : Identity("iana-if-type:atmSubInterface")
+Otnotu::Otnotu()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:otnOtu")
 {
 }
 
-AtmsubinterfaceIdentity::~AtmsubinterfaceIdentity()
+Otnotu::~Otnotu()
 {
 }
 
-PrimaryisdnIdentity::PrimaryisdnIdentity()
-     : Identity("iana-if-type:primaryISDN")
+Iso88025Fiber::Iso88025Fiber()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iso88025Fiber")
 {
 }
 
-PrimaryisdnIdentity::~PrimaryisdnIdentity()
+Iso88025Fiber::~Iso88025Fiber()
 {
 }
 
-Proteon80MbitIdentity::Proteon80MbitIdentity()
-     : Identity("iana-if-type:proteon80Mbit")
+Voicefxo::Voicefxo()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceFXO")
 {
 }
 
-Proteon80MbitIdentity::~Proteon80MbitIdentity()
+Voicefxo::~Voicefxo()
 {
 }
 
-Iso88026ManIdentity::Iso88026ManIdentity()
-     : Identity("iana-if-type:iso88026Man")
+Reachdsl::Reachdsl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:reachDSL")
 {
 }
 
-Iso88026ManIdentity::~Iso88026ManIdentity()
+Reachdsl::~Reachdsl()
 {
 }
 
-DigitalwrapperoverheadchannelIdentity::DigitalwrapperoverheadchannelIdentity()
-     : Identity("iana-if-type:digitalWrapperOverheadChannel")
+Capwapdot11Bss::Capwapdot11Bss()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:capwapDot11Bss")
 {
 }
 
-DigitalwrapperoverheadchannelIdentity::~DigitalwrapperoverheadchannelIdentity()
+Capwapdot11Bss::~Capwapdot11Bss()
 {
 }
 
-DocscableupstreamchannelIdentity::DocscableupstreamchannelIdentity()
-     : Identity("iana-if-type:docsCableUpstreamChannel")
+Propwirelessp2P::Propwirelessp2P()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propWirelessP2P")
 {
 }
 
-DocscableupstreamchannelIdentity::~DocscableupstreamchannelIdentity()
+Propwirelessp2P::~Propwirelessp2P()
 {
 }
 
-OpticalchannelIdentity::OpticalchannelIdentity()
-     : Identity("iana-if-type:opticalChannel")
+Iso88025Crfpint::Iso88025Crfpint()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iso88025CRFPInt")
 {
 }
 
-OpticalchannelIdentity::~OpticalchannelIdentity()
+Iso88025Crfpint::~Iso88025Crfpint()
 {
 }
 
-EthernetcsmacdIdentity::EthernetcsmacdIdentity()
-     : Identity("iana-if-type:ethernetCsmacd")
+Ddnx25::Ddnx25()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ddnX25")
 {
 }
 
-EthernetcsmacdIdentity::~EthernetcsmacdIdentity()
+Ddnx25::~Ddnx25()
 {
 }
 
-BitsIdentity::BitsIdentity()
-     : Identity("iana-if-type:bits")
+Ieee80212::Ieee80212()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ieee80212")
 {
 }
 
-BitsIdentity::~BitsIdentity()
+Ieee80212::~Ieee80212()
 {
 }
 
-TunnelIdentity::TunnelIdentity()
-     : Identity("iana-if-type:tunnel")
+Dvbrccmaclayer::Dvbrccmaclayer()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dvbRccMacLayer")
 {
 }
 
-TunnelIdentity::~TunnelIdentity()
+Dvbrccmaclayer::~Dvbrccmaclayer()
 {
 }
 
-Hdsl2Identity::Hdsl2Identity()
-     : Identity("iana-if-type:hdsl2")
+Linegroup::Linegroup()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:linegroup")
 {
 }
 
-Hdsl2Identity::~Hdsl2Identity()
+Linegroup::~Linegroup()
 {
 }
 
-FramerelayserviceIdentity::FramerelayserviceIdentity()
-     : Identity("iana-if-type:frameRelayService")
+Aluepononu::Aluepononu()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aluEponOnu")
 {
 }
 
-FramerelayserviceIdentity::~FramerelayserviceIdentity()
+Aluepononu::~Aluepononu()
 {
 }
 
-MplsIdentity::MplsIdentity()
-     : Identity("iana-if-type:mpls")
+Sip::Sip()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sip")
 {
 }
 
-MplsIdentity::~MplsIdentity()
+Sip::~Sip()
 {
 }
 
-Ieee80211Identity::Ieee80211Identity()
-     : Identity("iana-if-type:ieee80211")
+Voicedid::Voicedid()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceDID")
 {
 }
 
-Ieee80211Identity::~Ieee80211Identity()
+Voicedid::~Voicedid()
 {
 }
 
-Ieee80212Identity::Ieee80212Identity()
-     : Identity("iana-if-type:ieee80212")
+Alugpononu::Alugpononu()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aluGponOnu")
 {
 }
 
-Ieee80212Identity::~Ieee80212Identity()
+Alugpononu::~Alugpononu()
 {
 }
 
-Mocaversion1Identity::Mocaversion1Identity()
-     : Identity("iana-if-type:mocaVersion1")
+Cblvectastar::Cblvectastar()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:cblVectaStar")
 {
 }
 
-Mocaversion1Identity::~Mocaversion1Identity()
+Cblvectastar::~Cblvectastar()
 {
 }
 
-SonetIdentity::SonetIdentity()
-     : Identity("iana-if-type:sonet")
+Ipoveratm::Ipoveratm()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ipOverAtm")
 {
 }
 
-SonetIdentity::~SonetIdentity()
+Ipoveratm::~Ipoveratm()
 {
 }
 
-EsconIdentity::EsconIdentity()
-     : Identity("iana-if-type:escon")
+Aviciopticalether::Aviciopticalether()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aviciOpticalEther")
 {
 }
 
-EsconIdentity::~EsconIdentity()
+Aviciopticalether::~Aviciopticalether()
 {
 }
 
-AlueponlogicallinkIdentity::AlueponlogicallinkIdentity()
-     : Identity("iana-if-type:aluEponLogicalLink")
+L3Ipvlan::L3Ipvlan()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:l3ipvlan")
 {
 }
 
-AlueponlogicallinkIdentity::~AlueponlogicallinkIdentity()
+L3Ipvlan::~L3Ipvlan()
 {
 }
 
-G703At2MbIdentity::G703At2MbIdentity()
-     : Identity("iana-if-type:g703at2mb")
+Termpad::Termpad()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:termPad")
 {
 }
 
-G703At2MbIdentity::~G703At2MbIdentity()
+Termpad::~Termpad()
 {
 }
 
-UltraIdentity::UltraIdentity()
-     : Identity("iana-if-type:ultra")
+X213::X213()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:x213")
 {
 }
 
-UltraIdentity::~UltraIdentity()
+X213::~X213()
 {
 }
 
-DvbrccdownstreamIdentity::DvbrccdownstreamIdentity()
-     : Identity("iana-if-type:dvbRccDownstream")
+Adsl2::Adsl2()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:adsl2")
 {
 }
 
-DvbrccdownstreamIdentity::~DvbrccdownstreamIdentity()
+Adsl2::~Adsl2()
 {
 }
 
-SiptgIdentity::SiptgIdentity()
-     : Identity("iana-if-type:sipTg")
+Tunnel::Tunnel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:tunnel")
 {
 }
 
-SiptgIdentity::~SiptgIdentity()
+Tunnel::~Tunnel()
 {
 }
 
-SmdsicipIdentity::SmdsicipIdentity()
-     : Identity("iana-if-type:smdsIcip")
+Arap::Arap()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:arap")
 {
 }
 
-SmdsicipIdentity::~SmdsicipIdentity()
+Arap::~Arap()
 {
 }
 
-BridgeIdentity::BridgeIdentity()
-     : Identity("iana-if-type:bridge")
+Ds1::Ds1()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ds1")
 {
 }
 
-BridgeIdentity::~BridgeIdentity()
+Ds1::~Ds1()
 {
 }
 
-AtmlogicalIdentity::AtmlogicalIdentity()
-     : Identity("iana-if-type:atmLogical")
+Proteon10Mbit::Proteon10Mbit()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:proteon10Mbit")
 {
 }
 
-AtmlogicalIdentity::~AtmlogicalIdentity()
+Proteon10Mbit::~Proteon10Mbit()
 {
 }
 
-ProppointtopointserialIdentity::ProppointtopointserialIdentity()
-     : Identity("iana-if-type:propPointToPointSerial")
+Alueponlogicallink::Alueponlogicallink()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aluEponLogicalLink")
 {
 }
 
-ProppointtopointserialIdentity::~ProppointtopointserialIdentity()
+Alueponlogicallink::~Alueponlogicallink()
 {
 }
 
-V35Identity::V35Identity()
-     : Identity("iana-if-type:v35")
+Voicefgdos::Voicefgdos()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceFGDOS")
 {
 }
 
-V35Identity::~V35Identity()
+Voicefgdos::~Voicefgdos()
 {
 }
 
-V36Identity::V36Identity()
-     : Identity("iana-if-type:v36")
+V36::V36()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:v36")
 {
 }
 
-V36Identity::~V36Identity()
+V36::~V36()
 {
 }
 
-V37Identity::V37Identity()
-     : Identity("iana-if-type:v37")
+Ieee8023Adlag::Ieee8023Adlag()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ieee8023adLag")
 {
 }
 
-V37Identity::~V37Identity()
+Ieee8023Adlag::~Ieee8023Adlag()
 {
 }
 
-IpIdentity::IpIdentity()
-     : Identity("iana-if-type:ip")
+Gigabitethernet::Gigabitethernet()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:gigabitEthernet")
 {
 }
 
-IpIdentity::~IpIdentity()
+Gigabitethernet::~Gigabitethernet()
 {
 }
 
-Gr303IdtIdentity::Gr303IdtIdentity()
-     : Identity("iana-if-type:gr303IDT")
+Mediamailoverip::Mediamailoverip()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:mediaMailOverIp")
 {
 }
 
-Gr303IdtIdentity::~Gr303IdtIdentity()
+Mediamailoverip::~Mediamailoverip()
 {
 }
 
-BasicisdnIdentity::BasicisdnIdentity()
-     : Identity("iana-if-type:basicISDN")
+Voicefgdeana::Voicefgdeana()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceFGDEANA")
 {
 }
 
-BasicisdnIdentity::~BasicisdnIdentity()
+Voicefgdeana::~Voicefgdeana()
 {
 }
 
-G703At64KIdentity::G703At64KIdentity()
-     : Identity("iana-if-type:g703at64k")
+Nfas::Nfas()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:nfas")
 {
 }
 
-G703At64KIdentity::~G703At64KIdentity()
+Nfas::~Nfas()
 {
 }
 
-ArcnetplusIdentity::ArcnetplusIdentity()
-     : Identity("iana-if-type:arcnetPlus")
+X25Huntgroup::X25Huntgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:x25huntGroup")
 {
 }
 
-ArcnetplusIdentity::~ArcnetplusIdentity()
+X25Huntgroup::~X25Huntgroup()
 {
 }
 
-PipIdentity::PipIdentity()
-     : Identity("iana-if-type:pip")
+Idsl::Idsl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:idsl")
 {
 }
 
-PipIdentity::~PipIdentity()
+Idsl::~Idsl()
 {
 }
 
-DtmIdentity::DtmIdentity()
-     : Identity("iana-if-type:dtm")
+Homepna::Homepna()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:homepna")
 {
 }
 
-DtmIdentity::~DtmIdentity()
+Homepna::~Homepna()
 {
 }
 
-SlipIdentity::SlipIdentity()
-     : Identity("iana-if-type:slip")
+Sipsig::Sipsig()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sipSig")
 {
 }
 
-SlipIdentity::~SlipIdentity()
+Sipsig::~Sipsig()
 {
 }
 
-Hiperlan2Identity::Hiperlan2Identity()
-     : Identity("iana-if-type:hiperlan2")
+Pon155::Pon155()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:pon155")
 {
 }
 
-Hiperlan2Identity::~Hiperlan2Identity()
+Pon155::~Pon155()
 {
 }
 
-AdslIdentity::AdslIdentity()
-     : Identity("iana-if-type:adsl")
+Para::Para()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:para")
 {
 }
 
-AdslIdentity::~AdslIdentity()
+Para::~Para()
 {
 }
 
-Ieee80216WmanIdentity::Ieee80216WmanIdentity()
-     : Identity("iana-if-type:ieee80216WMAN")
+Hdlc::Hdlc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hdlc")
 {
 }
 
-Ieee80216WmanIdentity::~Ieee80216WmanIdentity()
+Hdlc::~Hdlc()
 {
 }
 
-AtmimaIdentity::AtmimaIdentity()
-     : Identity("iana-if-type:atmIma")
+Propbwap2Mp::Propbwap2Mp()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propBWAp2Mp")
 {
 }
 
-AtmimaIdentity::~AtmimaIdentity()
+Propbwap2Mp::~Propbwap2Mp()
 {
 }
 
-IsdnIdentity::IsdnIdentity()
-     : Identity("iana-if-type:isdn")
+Fastetherfx::Fastetherfx()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:fastEtherFX")
 {
 }
 
-IsdnIdentity::~IsdnIdentity()
+Fastetherfx::~Fastetherfx()
 {
 }
 
-Capwapdot11BssIdentity::Capwapdot11BssIdentity()
-     : Identity("iana-if-type:capwapDot11Bss")
+Actelismetaloop::Actelismetaloop()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:actelisMetaLOOP")
 {
 }
 
-Capwapdot11BssIdentity::~Capwapdot11BssIdentity()
+Actelismetaloop::~Actelismetaloop()
 {
 }
 
-SipIdentity::SipIdentity()
-     : Identity("iana-if-type:sip")
+Dvbrccdownstream::Dvbrccdownstream()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dvbRccDownstream")
 {
 }
 
-SipIdentity::~SipIdentity()
+Dvbrccdownstream::~Dvbrccdownstream()
 {
 }
 
-Pdnetherloop2Identity::Pdnetherloop2Identity()
-     : Identity("iana-if-type:pdnEtherLoop2")
+Bits::Bits()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:bits")
 {
 }
 
-Pdnetherloop2Identity::~Pdnetherloop2Identity()
+Bits::~Bits()
 {
 }
 
-VoiceebsIdentity::VoiceebsIdentity()
-     : Identity("iana-if-type:voiceEBS")
+Voiceovercable::Voiceovercable()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceOverCable")
 {
 }
 
-VoiceebsIdentity::~VoiceebsIdentity()
+Voiceovercable::~Voiceovercable()
 {
 }
 
-IpforwardIdentity::IpforwardIdentity()
-     : Identity("iana-if-type:ipForward")
+Channel::Channel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:channel")
 {
 }
 
-IpforwardIdentity::~IpforwardIdentity()
+Channel::~Channel()
 {
 }
 
-Iso88025CrfpintIdentity::Iso88025CrfpintIdentity()
-     : Identity("iana-if-type:iso88025CRFPInt")
+V37::V37()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:v37")
 {
 }
 
-Iso88025CrfpintIdentity::~Iso88025CrfpintIdentity()
+V37::~V37()
 {
 }
 
-PropvirtualIdentity::PropvirtualIdentity()
-     : Identity("iana-if-type:propVirtual")
+Dvbtdm::Dvbtdm()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dvbTdm")
 {
 }
 
-PropvirtualIdentity::~PropvirtualIdentity()
+Dvbtdm::~Dvbtdm()
 {
 }
 
-WwanppIdentity::WwanppIdentity()
-     : Identity("iana-if-type:wwanPP")
+Bgppolicyaccounting::Bgppolicyaccounting()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:bgppolicyaccounting")
 {
 }
 
-WwanppIdentity::~WwanppIdentity()
+Bgppolicyaccounting::~Bgppolicyaccounting()
 {
 }
 
-OtherIdentity::OtherIdentity()
-     : Identity("iana-if-type:other")
+Mpc::Mpc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:mpc")
 {
 }
 
-OtherIdentity::~OtherIdentity()
+Mpc::~Mpc()
 {
 }
 
-Pon155Identity::Pon155Identity()
-     : Identity("iana-if-type:pon155")
+Dtm::Dtm()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:dtm")
 {
 }
 
-Pon155Identity::~Pon155Identity()
+Dtm::~Dtm()
 {
 }
 
-QamIdentity::QamIdentity()
-     : Identity("iana-if-type:qam")
+Eon::Eon()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:eon")
 {
 }
 
-QamIdentity::~QamIdentity()
+Eon::~Eon()
 {
 }
 
-OtnoduIdentity::OtnoduIdentity()
-     : Identity("iana-if-type:otnOdu")
+Radiomac::Radiomac()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:radioMAC")
 {
 }
 
-OtnoduIdentity::~OtnoduIdentity()
+Radiomac::~Radiomac()
 {
 }
 
-Iso88025FiberIdentity::Iso88025FiberIdentity()
-     : Identity("iana-if-type:iso88025Fiber")
+Ilan::Ilan()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ilan")
 {
 }
 
-Iso88025FiberIdentity::~Iso88025FiberIdentity()
+Ilan::~Ilan()
 {
 }
 
-ChannelIdentity::ChannelIdentity()
-     : Identity("iana-if-type:channel")
+Frdlciendpt::Frdlciendpt()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:frDlciEndPt")
 {
 }
 
-ChannelIdentity::~ChannelIdentity()
+Frdlciendpt::~Frdlciendpt()
 {
 }
 
-VoiceemfgdIdentity::VoiceemfgdIdentity()
-     : Identity("iana-if-type:voiceEMFGD")
+G703At64K::G703At64K()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:g703at64k")
 {
 }
 
-VoiceemfgdIdentity::~VoiceemfgdIdentity()
+G703At64K::~G703At64K()
 {
 }
 
-AlugponphysicaluniIdentity::AlugponphysicaluniIdentity()
-     : Identity("iana-if-type:aluGponPhysicalUni")
+Propdocswirelessdownstream::Propdocswirelessdownstream()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propDocsWirelessDownstream")
 {
 }
 
-AlugponphysicaluniIdentity::~AlugponphysicaluniIdentity()
+Propdocswirelessdownstream::~Propdocswirelessdownstream()
 {
 }
 
-A12MppswitchIdentity::A12MppswitchIdentity()
-     : Identity("iana-if-type:a12MppSwitch")
+Ieee802154::Ieee802154()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ieee802154")
 {
 }
 
-A12MppswitchIdentity::~A12MppswitchIdentity()
+Ieee802154::~Ieee802154()
 {
 }
 
-IlanIdentity::IlanIdentity()
-     : Identity("iana-if-type:ilan")
+Hssi::Hssi()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hssi")
 {
 }
 
-IlanIdentity::~IlanIdentity()
+Hssi::~Hssi()
 {
 }
 
-Pdnetherloop1Identity::Pdnetherloop1Identity()
-     : Identity("iana-if-type:pdnEtherLoop1")
+Aluepon::Aluepon()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:aluEpon")
 {
 }
 
-Pdnetherloop1Identity::~Pdnetherloop1Identity()
+Aluepon::~Aluepon()
 {
 }
 
-X213Identity::X213Identity()
-     : Identity("iana-if-type:x213")
+Sdlc::Sdlc()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:sdlc")
 {
 }
 
-X213Identity::~X213Identity()
+Sdlc::~Sdlc()
 {
 }
 
-SonetpathIdentity::SonetpathIdentity()
-     : Identity("iana-if-type:sonetPath")
+Isdn::Isdn()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:isdn")
 {
 }
 
-SonetpathIdentity::~SonetpathIdentity()
+Isdn::~Isdn()
 {
 }
 
-VoicefgdeanaIdentity::VoicefgdeanaIdentity()
-     : Identity("iana-if-type:voiceFGDEANA")
+Digitalpowerline::Digitalpowerline()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:digitalPowerline")
 {
 }
 
-VoicefgdeanaIdentity::~VoicefgdeanaIdentity()
+Digitalpowerline::~Digitalpowerline()
 {
 }
 
-Iso88025TokenringIdentity::Iso88025TokenringIdentity()
-     : Identity("iana-if-type:iso88025TokenRing")
+Vdsl2::Vdsl2()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:vdsl2")
 {
 }
 
-Iso88025TokenringIdentity::~Iso88025TokenringIdentity()
+Vdsl2::~Vdsl2()
 {
 }
 
-PropatmIdentity::PropatmIdentity()
-     : Identity("iana-if-type:propAtm")
+Arcnet::Arcnet()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:arcnet")
 {
 }
 
-PropatmIdentity::~PropatmIdentity()
+Arcnet::~Arcnet()
 {
 }
 
-AlueponphysicaluniIdentity::AlueponphysicaluniIdentity()
-     : Identity("iana-if-type:aluEponPhysicalUni")
+Rs232::Rs232()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:rs232")
 {
 }
 
-AlueponphysicaluniIdentity::~AlueponphysicaluniIdentity()
+Rs232::~Rs232()
 {
 }
 
-StacktostackIdentity::StacktostackIdentity()
-     : Identity("iana-if-type:stackToStack")
+Usb::Usb()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:usb")
 {
 }
 
-StacktostackIdentity::~StacktostackIdentity()
+Usb::~Usb()
 {
 }
 
-FrforwardIdentity::FrforwardIdentity()
-     : Identity("iana-if-type:frForward")
+Macsecuncontrolledif::Macsecuncontrolledif()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:macSecUncontrolledIF")
 {
 }
 
-FrforwardIdentity::~FrforwardIdentity()
+Macsecuncontrolledif::~Macsecuncontrolledif()
 {
 }
 
-HomepnaIdentity::HomepnaIdentity()
-     : Identity("iana-if-type:homepna")
+Iso88025Tokenring::Iso88025Tokenring()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iso88025TokenRing")
 {
 }
 
-HomepnaIdentity::~HomepnaIdentity()
+Iso88025Tokenring::~Iso88025Tokenring()
 {
 }
 
-SdslIdentity::SdslIdentity()
-     : Identity("iana-if-type:sdsl")
+Opticalchannel::Opticalchannel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:opticalChannel")
 {
 }
 
-SdslIdentity::~SdslIdentity()
+Opticalchannel::~Opticalchannel()
 {
 }
 
-VirtualipaddressIdentity::VirtualipaddressIdentity()
-     : Identity("iana-if-type:virtualIpAddress")
+Fddi::Fddi()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:fddi")
 {
 }
 
-VirtualipaddressIdentity::~VirtualipaddressIdentity()
+Fddi::~Fddi()
 {
 }
 
-BscIdentity::BscIdentity()
-     : Identity("iana-if-type:bsc")
+Gpon::Gpon()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:gpon")
 {
 }
 
-BscIdentity::~BscIdentity()
+Gpon::~Gpon()
 {
 }
 
-AtmradioIdentity::AtmradioIdentity()
-     : Identity("iana-if-type:atmRadio")
+Softwareloopback::Softwareloopback()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:softwareLoopback")
 {
 }
 
-AtmradioIdentity::~AtmradioIdentity()
+Softwareloopback::~Softwareloopback()
 {
 }
 
-AviciopticaletherIdentity::AviciopticaletherIdentity()
-     : Identity("iana-if-type:aviciOpticalEther")
+Imt::Imt()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:imt")
 {
 }
 
-AviciopticaletherIdentity::~AviciopticaletherIdentity()
+Imt::~Imt()
 {
 }
 
-G9981Identity::G9981Identity()
-     : Identity("iana-if-type:g9981")
+Ibm370Parchan::Ibm370Parchan()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ibm370parChan")
 {
 }
 
-G9981Identity::~G9981Identity()
+Ibm370Parchan::~Ibm370Parchan()
 {
 }
 
-FibrechannelIdentity::FibrechannelIdentity()
-     : Identity("iana-if-type:fibreChannel")
+L3Ipxvlan::L3Ipxvlan()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:l3ipxvlan")
 {
 }
 
-FibrechannelIdentity::~FibrechannelIdentity()
+L3Ipxvlan::~L3Ipxvlan()
 {
 }
 
-ShdslIdentity::ShdslIdentity()
-     : Identity("iana-if-type:shdsl")
+Iso88026Man::Iso88026Man()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:iso88026Man")
 {
 }
 
-ShdslIdentity::~ShdslIdentity()
+Iso88026Man::~Iso88026Man()
 {
 }
 
-EonIdentity::EonIdentity()
-     : Identity("iana-if-type:eon")
+Ip::Ip()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:ip")
 {
 }
 
-EonIdentity::~EonIdentity()
+Ip::~Ip()
 {
 }
 
-H323GatekeeperIdentity::H323GatekeeperIdentity()
-     : Identity("iana-if-type:h323Gatekeeper")
+Propdocswirelessupstream::Propdocswirelessupstream()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:propDocsWirelessUpstream")
 {
 }
 
-H323GatekeeperIdentity::~H323GatekeeperIdentity()
+Propdocswirelessupstream::~Propdocswirelessupstream()
 {
 }
 
-Hdh1822Identity::Hdh1822Identity()
-     : Identity("iana-if-type:hdh1822")
+Telink::Telink()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:teLink")
 {
 }
 
-Hdh1822Identity::~Hdh1822Identity()
+Telink::~Telink()
 {
 }
 
-DvbrccupstreamIdentity::DvbrccupstreamIdentity()
-     : Identity("iana-if-type:dvbRccUpstream")
+Radsl::Radsl()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:radsl")
 {
 }
 
-DvbrccupstreamIdentity::~DvbrccupstreamIdentity()
+Radsl::~Radsl()
 {
 }
 
-NsipIdentity::NsipIdentity()
-     : Identity("iana-if-type:nsip")
+Isdns::Isdns()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:isdns")
 {
 }
 
-NsipIdentity::~NsipIdentity()
+Isdns::~Isdns()
 {
 }
 
-TransphdlcIdentity::TransphdlcIdentity()
-     : Identity("iana-if-type:transpHdlc")
+Hyperchannel::Hyperchannel()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hyperchannel")
 {
 }
 
-TransphdlcIdentity::~TransphdlcIdentity()
+Hyperchannel::~Hyperchannel()
 {
 }
 
-TermpadIdentity::TermpadIdentity()
-     : Identity("iana-if-type:termPad")
+Hdsl2::Hdsl2()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:hdsl2")
 {
 }
 
-TermpadIdentity::~TermpadIdentity()
+Hdsl2::~Hdsl2()
 {
 }
 
-IpovercdlcIdentity::IpovercdlcIdentity()
-     : Identity("iana-if-type:ipOverCdlc")
+Mocaversion1::Mocaversion1()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:mocaVersion1")
 {
 }
 
-IpovercdlcIdentity::~IpovercdlcIdentity()
+Mocaversion1::~Mocaversion1()
 {
 }
 
-CesIdentity::CesIdentity()
-     : Identity("iana-if-type:ces")
+H323Gatekeeper::H323Gatekeeper()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:h323Gatekeeper")
 {
 }
 
-CesIdentity::~CesIdentity()
+H323Gatekeeper::~H323Gatekeeper()
 {
 }
 
-ModemIdentity::ModemIdentity()
-     : Identity("iana-if-type:modem")
+Voiceemfgd::Voiceemfgd()
+     : Identity("urn:ietf:params:xml:ns:yang:iana-if-type", "iana-if-type", "iana-if-type:voiceEMFGD")
 {
 }
 
-ModemIdentity::~ModemIdentity()
+Voiceemfgd::~Voiceemfgd()
 {
 }
 

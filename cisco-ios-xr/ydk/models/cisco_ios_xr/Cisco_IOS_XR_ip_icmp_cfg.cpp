@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_icmp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_icmp_cfg {
 
 Icmp::Icmp()
@@ -35,7 +37,7 @@ bool Icmp::has_operation() const
         if(ip_protocol[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Icmp::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> Icmp::get_children() const
     return children;
 }
 
-void Icmp::set_value(const std::string & value_path, std::string value)
+void Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Icmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string Icmp::get_bundle_name() const
 augment_capabilities_function Icmp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Icmp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Icmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-protocol")
+        return true;
+    return false;
 }
 
 Icmp::IpProtocol::IpProtocol()
@@ -148,8 +166,8 @@ bool Icmp::IpProtocol::has_data() const
 
 bool Icmp::IpProtocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(protocol_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_type.yfilter)
 	|| (rate_limit !=  nullptr && rate_limit->has_operation())
 	|| (source !=  nullptr && source->has_operation());
 }
@@ -177,7 +195,7 @@ const EntityPath Icmp::IpProtocol::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (protocol_type.is_set || is_set(protocol_type.operation)) leaf_name_data.push_back(protocol_type.get_name_leafdata());
+    if (protocol_type.is_set || is_set(protocol_type.yfilter)) leaf_name_data.push_back(protocol_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -224,12 +242,29 @@ std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::get_children() 
     return children;
 }
 
-void Icmp::IpProtocol::set_value(const std::string & value_path, std::string value)
+void Icmp::IpProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol-type")
     {
         protocol_type = value;
+        protocol_type.value_namespace = name_space;
+        protocol_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Icmp::IpProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocol-type")
+    {
+        protocol_type.yfilter = yfilter;
+    }
+}
+
+bool Icmp::IpProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rate-limit" || name == "source" || name == "protocol-type")
+        return true;
+    return false;
 }
 
 Icmp::IpProtocol::RateLimit::RateLimit()
@@ -252,7 +287,7 @@ bool Icmp::IpProtocol::RateLimit::has_data() const
 
 bool Icmp::IpProtocol::RateLimit::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (unreachable !=  nullptr && unreachable->has_operation());
 }
 
@@ -311,8 +346,19 @@ std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::RateLimit::get_
     return children;
 }
 
-void Icmp::IpProtocol::RateLimit::set_value(const std::string & value_path, std::string value)
+void Icmp::IpProtocol::RateLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Icmp::IpProtocol::RateLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Icmp::IpProtocol::RateLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unreachable")
+        return true;
+    return false;
 }
 
 Icmp::IpProtocol::RateLimit::Unreachable::Unreachable()
@@ -335,9 +381,9 @@ bool Icmp::IpProtocol::RateLimit::Unreachable::has_data() const
 
 bool Icmp::IpProtocol::RateLimit::Unreachable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fragmentation.operation)
-	|| is_set(rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fragmentation.yfilter)
+	|| ydk::is_set(rate.yfilter);
 }
 
 std::string Icmp::IpProtocol::RateLimit::Unreachable::get_segment_path() const
@@ -363,8 +409,8 @@ const EntityPath Icmp::IpProtocol::RateLimit::Unreachable::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fragmentation.is_set || is_set(fragmentation.operation)) leaf_name_data.push_back(fragmentation.get_name_leafdata());
-    if (rate.is_set || is_set(rate.operation)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (fragmentation.is_set || is_set(fragmentation.yfilter)) leaf_name_data.push_back(fragmentation.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -383,16 +429,39 @@ std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::RateLimit::Unre
     return children;
 }
 
-void Icmp::IpProtocol::RateLimit::Unreachable::set_value(const std::string & value_path, std::string value)
+void Icmp::IpProtocol::RateLimit::Unreachable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fragmentation")
     {
         fragmentation = value;
+        fragmentation.value_namespace = name_space;
+        fragmentation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate")
     {
         rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Icmp::IpProtocol::RateLimit::Unreachable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fragmentation")
+    {
+        fragmentation.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool Icmp::IpProtocol::RateLimit::Unreachable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fragmentation" || name == "rate")
+        return true;
+    return false;
 }
 
 Icmp::IpProtocol::Source::Source()
@@ -413,8 +482,8 @@ bool Icmp::IpProtocol::Source::has_data() const
 
 bool Icmp::IpProtocol::Source::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_address_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_address_policy.yfilter);
 }
 
 std::string Icmp::IpProtocol::Source::get_segment_path() const
@@ -440,7 +509,7 @@ const EntityPath Icmp::IpProtocol::Source::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address_policy.is_set || is_set(source_address_policy.operation)) leaf_name_data.push_back(source_address_policy.get_name_leafdata());
+    if (source_address_policy.is_set || is_set(source_address_policy.yfilter)) leaf_name_data.push_back(source_address_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -459,16 +528,33 @@ std::map<std::string, std::shared_ptr<Entity>> Icmp::IpProtocol::Source::get_chi
     return children;
 }
 
-void Icmp::IpProtocol::Source::set_value(const std::string & value_path, std::string value)
+void Icmp::IpProtocol::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address-policy")
     {
         source_address_policy = value;
+        source_address_policy.value_namespace = name_space;
+        source_address_policy.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SourcePolicyEnum::vrf {1, "vrf"};
-const Enum::YLeaf SourcePolicyEnum::rfc {2, "rfc"};
+void Icmp::IpProtocol::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address-policy")
+    {
+        source_address_policy.yfilter = yfilter;
+    }
+}
+
+bool Icmp::IpProtocol::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address-policy")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf SourcePolicy::vrf {1, "vrf"};
+const Enum::YLeaf SourcePolicy::rfc {2, "rfc"};
 
 
 }

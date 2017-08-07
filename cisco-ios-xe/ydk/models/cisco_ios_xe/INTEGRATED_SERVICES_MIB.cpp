@@ -6,20 +6,22 @@
 #include "generated_entity_lookup.hpp"
 #include "INTEGRATED_SERVICES_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace INTEGRATED_SERVICES_MIB {
 
 IntegratedServicesMib::IntegratedServicesMib()
     :
-    intsrvflowtable_(std::make_shared<IntegratedServicesMib::Intsrvflowtable>())
-	,intsrvgenobjects_(std::make_shared<IntegratedServicesMib::Intsrvgenobjects>())
-	,intsrvifattribtable_(std::make_shared<IntegratedServicesMib::Intsrvifattribtable>())
+    intsrvflowtable(std::make_shared<IntegratedServicesMib::Intsrvflowtable>())
+	,intsrvgenobjects(std::make_shared<IntegratedServicesMib::Intsrvgenobjects>())
+	,intsrvifattribtable(std::make_shared<IntegratedServicesMib::Intsrvifattribtable>())
 {
-    intsrvflowtable_->parent = this;
+    intsrvflowtable->parent = this;
 
-    intsrvgenobjects_->parent = this;
+    intsrvgenobjects->parent = this;
 
-    intsrvifattribtable_->parent = this;
+    intsrvifattribtable->parent = this;
 
     yang_name = "INTEGRATED-SERVICES-MIB"; yang_parent_name = "INTEGRATED-SERVICES-MIB";
 }
@@ -30,17 +32,17 @@ IntegratedServicesMib::~IntegratedServicesMib()
 
 bool IntegratedServicesMib::has_data() const
 {
-    return (intsrvflowtable_ !=  nullptr && intsrvflowtable_->has_data())
-	|| (intsrvgenobjects_ !=  nullptr && intsrvgenobjects_->has_data())
-	|| (intsrvifattribtable_ !=  nullptr && intsrvifattribtable_->has_data());
+    return (intsrvflowtable !=  nullptr && intsrvflowtable->has_data())
+	|| (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_data())
+	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_data());
 }
 
 bool IntegratedServicesMib::has_operation() const
 {
-    return is_set(operation)
-	|| (intsrvflowtable_ !=  nullptr && intsrvflowtable_->has_operation())
-	|| (intsrvgenobjects_ !=  nullptr && intsrvgenobjects_->has_operation())
-	|| (intsrvifattribtable_ !=  nullptr && intsrvifattribtable_->has_operation());
+    return is_set(yfilter)
+	|| (intsrvflowtable !=  nullptr && intsrvflowtable->has_operation())
+	|| (intsrvgenobjects !=  nullptr && intsrvgenobjects->has_operation())
+	|| (intsrvifattribtable !=  nullptr && intsrvifattribtable->has_operation());
 }
 
 std::string IntegratedServicesMib::get_segment_path() const
@@ -74,29 +76,29 @@ std::shared_ptr<Entity> IntegratedServicesMib::get_child_by_name(const std::stri
 {
     if(child_yang_name == "intSrvFlowTable")
     {
-        if(intsrvflowtable_ == nullptr)
+        if(intsrvflowtable == nullptr)
         {
-            intsrvflowtable_ = std::make_shared<IntegratedServicesMib::Intsrvflowtable>();
+            intsrvflowtable = std::make_shared<IntegratedServicesMib::Intsrvflowtable>();
         }
-        return intsrvflowtable_;
+        return intsrvflowtable;
     }
 
     if(child_yang_name == "intSrvGenObjects")
     {
-        if(intsrvgenobjects_ == nullptr)
+        if(intsrvgenobjects == nullptr)
         {
-            intsrvgenobjects_ = std::make_shared<IntegratedServicesMib::Intsrvgenobjects>();
+            intsrvgenobjects = std::make_shared<IntegratedServicesMib::Intsrvgenobjects>();
         }
-        return intsrvgenobjects_;
+        return intsrvgenobjects;
     }
 
     if(child_yang_name == "intSrvIfAttribTable")
     {
-        if(intsrvifattribtable_ == nullptr)
+        if(intsrvifattribtable == nullptr)
         {
-            intsrvifattribtable_ = std::make_shared<IntegratedServicesMib::Intsrvifattribtable>();
+            intsrvifattribtable = std::make_shared<IntegratedServicesMib::Intsrvifattribtable>();
         }
-        return intsrvifattribtable_;
+        return intsrvifattribtable;
     }
 
     return nullptr;
@@ -105,25 +107,29 @@ std::shared_ptr<Entity> IntegratedServicesMib::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(intsrvflowtable_ != nullptr)
+    if(intsrvflowtable != nullptr)
     {
-        children["intSrvFlowTable"] = intsrvflowtable_;
+        children["intSrvFlowTable"] = intsrvflowtable;
     }
 
-    if(intsrvgenobjects_ != nullptr)
+    if(intsrvgenobjects != nullptr)
     {
-        children["intSrvGenObjects"] = intsrvgenobjects_;
+        children["intSrvGenObjects"] = intsrvgenobjects;
     }
 
-    if(intsrvifattribtable_ != nullptr)
+    if(intsrvifattribtable != nullptr)
     {
-        children["intSrvIfAttribTable"] = intsrvifattribtable_;
+        children["intSrvIfAttribTable"] = intsrvifattribtable;
     }
 
     return children;
 }
 
-void IntegratedServicesMib::set_value(const std::string & value_path, std::string value)
+void IntegratedServicesMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IntegratedServicesMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -147,6 +153,18 @@ augment_capabilities_function IntegratedServicesMib::get_augment_capabilities_fu
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> IntegratedServicesMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool IntegratedServicesMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intSrvFlowTable" || name == "intSrvGenObjects" || name == "intSrvIfAttribTable")
+        return true;
+    return false;
+}
+
 IntegratedServicesMib::Intsrvgenobjects::Intsrvgenobjects()
     :
     intsrvflownewindex{YType::int32, "intSrvFlowNewIndex"}
@@ -165,8 +183,8 @@ bool IntegratedServicesMib::Intsrvgenobjects::has_data() const
 
 bool IntegratedServicesMib::Intsrvgenobjects::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(intsrvflownewindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(intsrvflownewindex.yfilter);
 }
 
 std::string IntegratedServicesMib::Intsrvgenobjects::get_segment_path() const
@@ -192,7 +210,7 @@ const EntityPath IntegratedServicesMib::Intsrvgenobjects::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (intsrvflownewindex.is_set || is_set(intsrvflownewindex.operation)) leaf_name_data.push_back(intsrvflownewindex.get_name_leafdata());
+    if (intsrvflownewindex.is_set || is_set(intsrvflownewindex.yfilter)) leaf_name_data.push_back(intsrvflownewindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -211,12 +229,29 @@ std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvgeno
     return children;
 }
 
-void IntegratedServicesMib::Intsrvgenobjects::set_value(const std::string & value_path, std::string value)
+void IntegratedServicesMib::Intsrvgenobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "intSrvFlowNewIndex")
     {
         intsrvflownewindex = value;
+        intsrvflownewindex.value_namespace = name_space;
+        intsrvflownewindex.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IntegratedServicesMib::Intsrvgenobjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "intSrvFlowNewIndex")
+    {
+        intsrvflownewindex.yfilter = yfilter;
+    }
+}
+
+bool IntegratedServicesMib::Intsrvgenobjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intSrvFlowNewIndex")
+        return true;
+    return false;
 }
 
 IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribtable()
@@ -230,9 +265,9 @@ IntegratedServicesMib::Intsrvifattribtable::~Intsrvifattribtable()
 
 bool IntegratedServicesMib::Intsrvifattribtable::has_data() const
 {
-    for (std::size_t index=0; index<intsrvifattribentry_.size(); index++)
+    for (std::size_t index=0; index<intsrvifattribentry.size(); index++)
     {
-        if(intsrvifattribentry_[index]->has_data())
+        if(intsrvifattribentry[index]->has_data())
             return true;
     }
     return false;
@@ -240,12 +275,12 @@ bool IntegratedServicesMib::Intsrvifattribtable::has_data() const
 
 bool IntegratedServicesMib::Intsrvifattribtable::has_operation() const
 {
-    for (std::size_t index=0; index<intsrvifattribentry_.size(); index++)
+    for (std::size_t index=0; index<intsrvifattribentry.size(); index++)
     {
-        if(intsrvifattribentry_[index]->has_operation())
+        if(intsrvifattribentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IntegratedServicesMib::Intsrvifattribtable::get_segment_path() const
@@ -282,7 +317,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvifattribtable::get_child_by
 {
     if(child_yang_name == "intSrvIfAttribEntry")
     {
-        for(auto const & c : intsrvifattribentry_)
+        for(auto const & c : intsrvifattribentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -292,7 +327,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvifattribtable::get_child_by
         }
         auto c = std::make_shared<IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry>();
         c->parent = this;
-        intsrvifattribentry_.push_back(c);
+        intsrvifattribentry.push_back(c);
         return c;
     }
 
@@ -302,7 +337,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvifattribtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvifattribtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : intsrvifattribentry_)
+    for (auto const & c : intsrvifattribentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -310,8 +345,19 @@ std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvifat
     return children;
 }
 
-void IntegratedServicesMib::Intsrvifattribtable::set_value(const std::string & value_path, std::string value)
+void IntegratedServicesMib::Intsrvifattribtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IntegratedServicesMib::Intsrvifattribtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IntegratedServicesMib::Intsrvifattribtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intSrvIfAttribEntry")
+        return true;
+    return false;
 }
 
 IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry::Intsrvifattribentry()
@@ -344,14 +390,14 @@ bool IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry::has_data()
 
 bool IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(intsrvifattriballocatedbits.operation)
-	|| is_set(intsrvifattriballocatedbuffer.operation)
-	|| is_set(intsrvifattribflows.operation)
-	|| is_set(intsrvifattribmaxallocatedbits.operation)
-	|| is_set(intsrvifattribpropagationdelay.operation)
-	|| is_set(intsrvifattribstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(intsrvifattriballocatedbits.yfilter)
+	|| ydk::is_set(intsrvifattriballocatedbuffer.yfilter)
+	|| ydk::is_set(intsrvifattribflows.yfilter)
+	|| ydk::is_set(intsrvifattribmaxallocatedbits.yfilter)
+	|| ydk::is_set(intsrvifattribpropagationdelay.yfilter)
+	|| ydk::is_set(intsrvifattribstatus.yfilter);
 }
 
 std::string IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry::get_segment_path() const
@@ -377,13 +423,13 @@ const EntityPath IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (intsrvifattriballocatedbits.is_set || is_set(intsrvifattriballocatedbits.operation)) leaf_name_data.push_back(intsrvifattriballocatedbits.get_name_leafdata());
-    if (intsrvifattriballocatedbuffer.is_set || is_set(intsrvifattriballocatedbuffer.operation)) leaf_name_data.push_back(intsrvifattriballocatedbuffer.get_name_leafdata());
-    if (intsrvifattribflows.is_set || is_set(intsrvifattribflows.operation)) leaf_name_data.push_back(intsrvifattribflows.get_name_leafdata());
-    if (intsrvifattribmaxallocatedbits.is_set || is_set(intsrvifattribmaxallocatedbits.operation)) leaf_name_data.push_back(intsrvifattribmaxallocatedbits.get_name_leafdata());
-    if (intsrvifattribpropagationdelay.is_set || is_set(intsrvifattribpropagationdelay.operation)) leaf_name_data.push_back(intsrvifattribpropagationdelay.get_name_leafdata());
-    if (intsrvifattribstatus.is_set || is_set(intsrvifattribstatus.operation)) leaf_name_data.push_back(intsrvifattribstatus.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (intsrvifattriballocatedbits.is_set || is_set(intsrvifattriballocatedbits.yfilter)) leaf_name_data.push_back(intsrvifattriballocatedbits.get_name_leafdata());
+    if (intsrvifattriballocatedbuffer.is_set || is_set(intsrvifattriballocatedbuffer.yfilter)) leaf_name_data.push_back(intsrvifattriballocatedbuffer.get_name_leafdata());
+    if (intsrvifattribflows.is_set || is_set(intsrvifattribflows.yfilter)) leaf_name_data.push_back(intsrvifattribflows.get_name_leafdata());
+    if (intsrvifattribmaxallocatedbits.is_set || is_set(intsrvifattribmaxallocatedbits.yfilter)) leaf_name_data.push_back(intsrvifattribmaxallocatedbits.get_name_leafdata());
+    if (intsrvifattribpropagationdelay.is_set || is_set(intsrvifattribpropagationdelay.yfilter)) leaf_name_data.push_back(intsrvifattribpropagationdelay.get_name_leafdata());
+    if (intsrvifattribstatus.is_set || is_set(intsrvifattribstatus.yfilter)) leaf_name_data.push_back(intsrvifattribstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -402,36 +448,89 @@ std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvifat
     return children;
 }
 
-void IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry::set_value(const std::string & value_path, std::string value)
+void IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvIfAttribAllocatedBits")
     {
         intsrvifattriballocatedbits = value;
+        intsrvifattriballocatedbits.value_namespace = name_space;
+        intsrvifattriballocatedbits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvIfAttribAllocatedBuffer")
     {
         intsrvifattriballocatedbuffer = value;
+        intsrvifattriballocatedbuffer.value_namespace = name_space;
+        intsrvifattriballocatedbuffer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvIfAttribFlows")
     {
         intsrvifattribflows = value;
+        intsrvifattribflows.value_namespace = name_space;
+        intsrvifattribflows.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvIfAttribMaxAllocatedBits")
     {
         intsrvifattribmaxallocatedbits = value;
+        intsrvifattribmaxallocatedbits.value_namespace = name_space;
+        intsrvifattribmaxallocatedbits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvIfAttribPropagationDelay")
     {
         intsrvifattribpropagationdelay = value;
+        intsrvifattribpropagationdelay.value_namespace = name_space;
+        intsrvifattribpropagationdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvIfAttribStatus")
     {
         intsrvifattribstatus = value;
+        intsrvifattribstatus.value_namespace = name_space;
+        intsrvifattribstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "intSrvIfAttribAllocatedBits")
+    {
+        intsrvifattriballocatedbits.yfilter = yfilter;
+    }
+    if(value_path == "intSrvIfAttribAllocatedBuffer")
+    {
+        intsrvifattriballocatedbuffer.yfilter = yfilter;
+    }
+    if(value_path == "intSrvIfAttribFlows")
+    {
+        intsrvifattribflows.yfilter = yfilter;
+    }
+    if(value_path == "intSrvIfAttribMaxAllocatedBits")
+    {
+        intsrvifattribmaxallocatedbits.yfilter = yfilter;
+    }
+    if(value_path == "intSrvIfAttribPropagationDelay")
+    {
+        intsrvifattribpropagationdelay.yfilter = yfilter;
+    }
+    if(value_path == "intSrvIfAttribStatus")
+    {
+        intsrvifattribstatus.yfilter = yfilter;
+    }
+}
+
+bool IntegratedServicesMib::Intsrvifattribtable::Intsrvifattribentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "intSrvIfAttribAllocatedBits" || name == "intSrvIfAttribAllocatedBuffer" || name == "intSrvIfAttribFlows" || name == "intSrvIfAttribMaxAllocatedBits" || name == "intSrvIfAttribPropagationDelay" || name == "intSrvIfAttribStatus")
+        return true;
+    return false;
 }
 
 IntegratedServicesMib::Intsrvflowtable::Intsrvflowtable()
@@ -445,9 +544,9 @@ IntegratedServicesMib::Intsrvflowtable::~Intsrvflowtable()
 
 bool IntegratedServicesMib::Intsrvflowtable::has_data() const
 {
-    for (std::size_t index=0; index<intsrvflowentry_.size(); index++)
+    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
     {
-        if(intsrvflowentry_[index]->has_data())
+        if(intsrvflowentry[index]->has_data())
             return true;
     }
     return false;
@@ -455,12 +554,12 @@ bool IntegratedServicesMib::Intsrvflowtable::has_data() const
 
 bool IntegratedServicesMib::Intsrvflowtable::has_operation() const
 {
-    for (std::size_t index=0; index<intsrvflowentry_.size(); index++)
+    for (std::size_t index=0; index<intsrvflowentry.size(); index++)
     {
-        if(intsrvflowentry_[index]->has_operation())
+        if(intsrvflowentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IntegratedServicesMib::Intsrvflowtable::get_segment_path() const
@@ -497,7 +596,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvflowtable::get_child_by_nam
 {
     if(child_yang_name == "intSrvFlowEntry")
     {
-        for(auto const & c : intsrvflowentry_)
+        for(auto const & c : intsrvflowentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -507,7 +606,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvflowtable::get_child_by_nam
         }
         auto c = std::make_shared<IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry>();
         c->parent = this;
-        intsrvflowentry_.push_back(c);
+        intsrvflowentry.push_back(c);
         return c;
     }
 
@@ -517,7 +616,7 @@ std::shared_ptr<Entity> IntegratedServicesMib::Intsrvflowtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvflowtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : intsrvflowentry_)
+    for (auto const & c : intsrvflowentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -525,8 +624,19 @@ std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvflow
     return children;
 }
 
-void IntegratedServicesMib::Intsrvflowtable::set_value(const std::string & value_path, std::string value)
+void IntegratedServicesMib::Intsrvflowtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IntegratedServicesMib::Intsrvflowtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IntegratedServicesMib::Intsrvflowtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intSrvFlowEntry")
+        return true;
+    return false;
 }
 
 IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::Intsrvflowentry()
@@ -595,32 +705,32 @@ bool IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::has_data() const
 
 bool IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(intsrvflownumber.operation)
-	|| is_set(intsrvflowbesteffort.operation)
-	|| is_set(intsrvflowburst.operation)
-	|| is_set(intsrvflowdestaddr.operation)
-	|| is_set(intsrvflowdestaddrlength.operation)
-	|| is_set(intsrvflowdestport.operation)
-	|| is_set(intsrvflowdiscard.operation)
-	|| is_set(intsrvflowflowid.operation)
-	|| is_set(intsrvflowifaddr.operation)
-	|| is_set(intsrvflowinterface.operation)
-	|| is_set(intsrvflowmaxtu.operation)
-	|| is_set(intsrvflowmintu.operation)
-	|| is_set(intsrvfloworder.operation)
-	|| is_set(intsrvflowowner.operation)
-	|| is_set(intsrvflowpoliced.operation)
-	|| is_set(intsrvflowport.operation)
-	|| is_set(intsrvflowprotocol.operation)
-	|| is_set(intsrvflowqueue.operation)
-	|| is_set(intsrvflowrate.operation)
-	|| is_set(intsrvflowsenderaddr.operation)
-	|| is_set(intsrvflowsenderaddrlength.operation)
-	|| is_set(intsrvflowservice.operation)
-	|| is_set(intsrvflowstatus.operation)
-	|| is_set(intsrvflowtype.operation)
-	|| is_set(intsrvflowweight.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(intsrvflownumber.yfilter)
+	|| ydk::is_set(intsrvflowbesteffort.yfilter)
+	|| ydk::is_set(intsrvflowburst.yfilter)
+	|| ydk::is_set(intsrvflowdestaddr.yfilter)
+	|| ydk::is_set(intsrvflowdestaddrlength.yfilter)
+	|| ydk::is_set(intsrvflowdestport.yfilter)
+	|| ydk::is_set(intsrvflowdiscard.yfilter)
+	|| ydk::is_set(intsrvflowflowid.yfilter)
+	|| ydk::is_set(intsrvflowifaddr.yfilter)
+	|| ydk::is_set(intsrvflowinterface.yfilter)
+	|| ydk::is_set(intsrvflowmaxtu.yfilter)
+	|| ydk::is_set(intsrvflowmintu.yfilter)
+	|| ydk::is_set(intsrvfloworder.yfilter)
+	|| ydk::is_set(intsrvflowowner.yfilter)
+	|| ydk::is_set(intsrvflowpoliced.yfilter)
+	|| ydk::is_set(intsrvflowport.yfilter)
+	|| ydk::is_set(intsrvflowprotocol.yfilter)
+	|| ydk::is_set(intsrvflowqueue.yfilter)
+	|| ydk::is_set(intsrvflowrate.yfilter)
+	|| ydk::is_set(intsrvflowsenderaddr.yfilter)
+	|| ydk::is_set(intsrvflowsenderaddrlength.yfilter)
+	|| ydk::is_set(intsrvflowservice.yfilter)
+	|| ydk::is_set(intsrvflowstatus.yfilter)
+	|| ydk::is_set(intsrvflowtype.yfilter)
+	|| ydk::is_set(intsrvflowweight.yfilter);
 }
 
 std::string IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::get_segment_path() const
@@ -646,31 +756,31 @@ const EntityPath IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (intsrvflownumber.is_set || is_set(intsrvflownumber.operation)) leaf_name_data.push_back(intsrvflownumber.get_name_leafdata());
-    if (intsrvflowbesteffort.is_set || is_set(intsrvflowbesteffort.operation)) leaf_name_data.push_back(intsrvflowbesteffort.get_name_leafdata());
-    if (intsrvflowburst.is_set || is_set(intsrvflowburst.operation)) leaf_name_data.push_back(intsrvflowburst.get_name_leafdata());
-    if (intsrvflowdestaddr.is_set || is_set(intsrvflowdestaddr.operation)) leaf_name_data.push_back(intsrvflowdestaddr.get_name_leafdata());
-    if (intsrvflowdestaddrlength.is_set || is_set(intsrvflowdestaddrlength.operation)) leaf_name_data.push_back(intsrvflowdestaddrlength.get_name_leafdata());
-    if (intsrvflowdestport.is_set || is_set(intsrvflowdestport.operation)) leaf_name_data.push_back(intsrvflowdestport.get_name_leafdata());
-    if (intsrvflowdiscard.is_set || is_set(intsrvflowdiscard.operation)) leaf_name_data.push_back(intsrvflowdiscard.get_name_leafdata());
-    if (intsrvflowflowid.is_set || is_set(intsrvflowflowid.operation)) leaf_name_data.push_back(intsrvflowflowid.get_name_leafdata());
-    if (intsrvflowifaddr.is_set || is_set(intsrvflowifaddr.operation)) leaf_name_data.push_back(intsrvflowifaddr.get_name_leafdata());
-    if (intsrvflowinterface.is_set || is_set(intsrvflowinterface.operation)) leaf_name_data.push_back(intsrvflowinterface.get_name_leafdata());
-    if (intsrvflowmaxtu.is_set || is_set(intsrvflowmaxtu.operation)) leaf_name_data.push_back(intsrvflowmaxtu.get_name_leafdata());
-    if (intsrvflowmintu.is_set || is_set(intsrvflowmintu.operation)) leaf_name_data.push_back(intsrvflowmintu.get_name_leafdata());
-    if (intsrvfloworder.is_set || is_set(intsrvfloworder.operation)) leaf_name_data.push_back(intsrvfloworder.get_name_leafdata());
-    if (intsrvflowowner.is_set || is_set(intsrvflowowner.operation)) leaf_name_data.push_back(intsrvflowowner.get_name_leafdata());
-    if (intsrvflowpoliced.is_set || is_set(intsrvflowpoliced.operation)) leaf_name_data.push_back(intsrvflowpoliced.get_name_leafdata());
-    if (intsrvflowport.is_set || is_set(intsrvflowport.operation)) leaf_name_data.push_back(intsrvflowport.get_name_leafdata());
-    if (intsrvflowprotocol.is_set || is_set(intsrvflowprotocol.operation)) leaf_name_data.push_back(intsrvflowprotocol.get_name_leafdata());
-    if (intsrvflowqueue.is_set || is_set(intsrvflowqueue.operation)) leaf_name_data.push_back(intsrvflowqueue.get_name_leafdata());
-    if (intsrvflowrate.is_set || is_set(intsrvflowrate.operation)) leaf_name_data.push_back(intsrvflowrate.get_name_leafdata());
-    if (intsrvflowsenderaddr.is_set || is_set(intsrvflowsenderaddr.operation)) leaf_name_data.push_back(intsrvflowsenderaddr.get_name_leafdata());
-    if (intsrvflowsenderaddrlength.is_set || is_set(intsrvflowsenderaddrlength.operation)) leaf_name_data.push_back(intsrvflowsenderaddrlength.get_name_leafdata());
-    if (intsrvflowservice.is_set || is_set(intsrvflowservice.operation)) leaf_name_data.push_back(intsrvflowservice.get_name_leafdata());
-    if (intsrvflowstatus.is_set || is_set(intsrvflowstatus.operation)) leaf_name_data.push_back(intsrvflowstatus.get_name_leafdata());
-    if (intsrvflowtype.is_set || is_set(intsrvflowtype.operation)) leaf_name_data.push_back(intsrvflowtype.get_name_leafdata());
-    if (intsrvflowweight.is_set || is_set(intsrvflowweight.operation)) leaf_name_data.push_back(intsrvflowweight.get_name_leafdata());
+    if (intsrvflownumber.is_set || is_set(intsrvflownumber.yfilter)) leaf_name_data.push_back(intsrvflownumber.get_name_leafdata());
+    if (intsrvflowbesteffort.is_set || is_set(intsrvflowbesteffort.yfilter)) leaf_name_data.push_back(intsrvflowbesteffort.get_name_leafdata());
+    if (intsrvflowburst.is_set || is_set(intsrvflowburst.yfilter)) leaf_name_data.push_back(intsrvflowburst.get_name_leafdata());
+    if (intsrvflowdestaddr.is_set || is_set(intsrvflowdestaddr.yfilter)) leaf_name_data.push_back(intsrvflowdestaddr.get_name_leafdata());
+    if (intsrvflowdestaddrlength.is_set || is_set(intsrvflowdestaddrlength.yfilter)) leaf_name_data.push_back(intsrvflowdestaddrlength.get_name_leafdata());
+    if (intsrvflowdestport.is_set || is_set(intsrvflowdestport.yfilter)) leaf_name_data.push_back(intsrvflowdestport.get_name_leafdata());
+    if (intsrvflowdiscard.is_set || is_set(intsrvflowdiscard.yfilter)) leaf_name_data.push_back(intsrvflowdiscard.get_name_leafdata());
+    if (intsrvflowflowid.is_set || is_set(intsrvflowflowid.yfilter)) leaf_name_data.push_back(intsrvflowflowid.get_name_leafdata());
+    if (intsrvflowifaddr.is_set || is_set(intsrvflowifaddr.yfilter)) leaf_name_data.push_back(intsrvflowifaddr.get_name_leafdata());
+    if (intsrvflowinterface.is_set || is_set(intsrvflowinterface.yfilter)) leaf_name_data.push_back(intsrvflowinterface.get_name_leafdata());
+    if (intsrvflowmaxtu.is_set || is_set(intsrvflowmaxtu.yfilter)) leaf_name_data.push_back(intsrvflowmaxtu.get_name_leafdata());
+    if (intsrvflowmintu.is_set || is_set(intsrvflowmintu.yfilter)) leaf_name_data.push_back(intsrvflowmintu.get_name_leafdata());
+    if (intsrvfloworder.is_set || is_set(intsrvfloworder.yfilter)) leaf_name_data.push_back(intsrvfloworder.get_name_leafdata());
+    if (intsrvflowowner.is_set || is_set(intsrvflowowner.yfilter)) leaf_name_data.push_back(intsrvflowowner.get_name_leafdata());
+    if (intsrvflowpoliced.is_set || is_set(intsrvflowpoliced.yfilter)) leaf_name_data.push_back(intsrvflowpoliced.get_name_leafdata());
+    if (intsrvflowport.is_set || is_set(intsrvflowport.yfilter)) leaf_name_data.push_back(intsrvflowport.get_name_leafdata());
+    if (intsrvflowprotocol.is_set || is_set(intsrvflowprotocol.yfilter)) leaf_name_data.push_back(intsrvflowprotocol.get_name_leafdata());
+    if (intsrvflowqueue.is_set || is_set(intsrvflowqueue.yfilter)) leaf_name_data.push_back(intsrvflowqueue.get_name_leafdata());
+    if (intsrvflowrate.is_set || is_set(intsrvflowrate.yfilter)) leaf_name_data.push_back(intsrvflowrate.get_name_leafdata());
+    if (intsrvflowsenderaddr.is_set || is_set(intsrvflowsenderaddr.yfilter)) leaf_name_data.push_back(intsrvflowsenderaddr.get_name_leafdata());
+    if (intsrvflowsenderaddrlength.is_set || is_set(intsrvflowsenderaddrlength.yfilter)) leaf_name_data.push_back(intsrvflowsenderaddrlength.get_name_leafdata());
+    if (intsrvflowservice.is_set || is_set(intsrvflowservice.yfilter)) leaf_name_data.push_back(intsrvflowservice.get_name_leafdata());
+    if (intsrvflowstatus.is_set || is_set(intsrvflowstatus.yfilter)) leaf_name_data.push_back(intsrvflowstatus.get_name_leafdata());
+    if (intsrvflowtype.is_set || is_set(intsrvflowtype.yfilter)) leaf_name_data.push_back(intsrvflowtype.get_name_leafdata());
+    if (intsrvflowweight.is_set || is_set(intsrvflowweight.yfilter)) leaf_name_data.push_back(intsrvflowweight.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -689,117 +799,278 @@ std::map<std::string, std::shared_ptr<Entity>> IntegratedServicesMib::Intsrvflow
     return children;
 }
 
-void IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::set_value(const std::string & value_path, std::string value)
+void IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "intSrvFlowNumber")
     {
         intsrvflownumber = value;
+        intsrvflownumber.value_namespace = name_space;
+        intsrvflownumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowBestEffort")
     {
         intsrvflowbesteffort = value;
+        intsrvflowbesteffort.value_namespace = name_space;
+        intsrvflowbesteffort.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowBurst")
     {
         intsrvflowburst = value;
+        intsrvflowburst.value_namespace = name_space;
+        intsrvflowburst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowDestAddr")
     {
         intsrvflowdestaddr = value;
+        intsrvflowdestaddr.value_namespace = name_space;
+        intsrvflowdestaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowDestAddrLength")
     {
         intsrvflowdestaddrlength = value;
+        intsrvflowdestaddrlength.value_namespace = name_space;
+        intsrvflowdestaddrlength.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowDestPort")
     {
         intsrvflowdestport = value;
+        intsrvflowdestport.value_namespace = name_space;
+        intsrvflowdestport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowDiscard")
     {
         intsrvflowdiscard = value;
+        intsrvflowdiscard.value_namespace = name_space;
+        intsrvflowdiscard.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowFlowId")
     {
         intsrvflowflowid = value;
+        intsrvflowflowid.value_namespace = name_space;
+        intsrvflowflowid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowIfAddr")
     {
         intsrvflowifaddr = value;
+        intsrvflowifaddr.value_namespace = name_space;
+        intsrvflowifaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowInterface")
     {
         intsrvflowinterface = value;
+        intsrvflowinterface.value_namespace = name_space;
+        intsrvflowinterface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowMaxTU")
     {
         intsrvflowmaxtu = value;
+        intsrvflowmaxtu.value_namespace = name_space;
+        intsrvflowmaxtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowMinTU")
     {
         intsrvflowmintu = value;
+        intsrvflowmintu.value_namespace = name_space;
+        intsrvflowmintu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowOrder")
     {
         intsrvfloworder = value;
+        intsrvfloworder.value_namespace = name_space;
+        intsrvfloworder.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowOwner")
     {
         intsrvflowowner = value;
+        intsrvflowowner.value_namespace = name_space;
+        intsrvflowowner.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowPoliced")
     {
         intsrvflowpoliced = value;
+        intsrvflowpoliced.value_namespace = name_space;
+        intsrvflowpoliced.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowPort")
     {
         intsrvflowport = value;
+        intsrvflowport.value_namespace = name_space;
+        intsrvflowport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowProtocol")
     {
         intsrvflowprotocol = value;
+        intsrvflowprotocol.value_namespace = name_space;
+        intsrvflowprotocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowQueue")
     {
         intsrvflowqueue = value;
+        intsrvflowqueue.value_namespace = name_space;
+        intsrvflowqueue.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowRate")
     {
         intsrvflowrate = value;
+        intsrvflowrate.value_namespace = name_space;
+        intsrvflowrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowSenderAddr")
     {
         intsrvflowsenderaddr = value;
+        intsrvflowsenderaddr.value_namespace = name_space;
+        intsrvflowsenderaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowSenderAddrLength")
     {
         intsrvflowsenderaddrlength = value;
+        intsrvflowsenderaddrlength.value_namespace = name_space;
+        intsrvflowsenderaddrlength.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowService")
     {
         intsrvflowservice = value;
+        intsrvflowservice.value_namespace = name_space;
+        intsrvflowservice.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowStatus")
     {
         intsrvflowstatus = value;
+        intsrvflowstatus.value_namespace = name_space;
+        intsrvflowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowType")
     {
         intsrvflowtype = value;
+        intsrvflowtype.value_namespace = name_space;
+        intsrvflowtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intSrvFlowWeight")
     {
         intsrvflowweight = value;
+        intsrvflowweight.value_namespace = name_space;
+        intsrvflowweight.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf QosserviceEnum::bestEffort {1, "bestEffort"};
-const Enum::YLeaf QosserviceEnum::guaranteedDelay {2, "guaranteedDelay"};
-const Enum::YLeaf QosserviceEnum::controlledLoad {5, "controlledLoad"};
+void IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "intSrvFlowNumber")
+    {
+        intsrvflownumber.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowBestEffort")
+    {
+        intsrvflowbesteffort.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowBurst")
+    {
+        intsrvflowburst.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowDestAddr")
+    {
+        intsrvflowdestaddr.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowDestAddrLength")
+    {
+        intsrvflowdestaddrlength.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowDestPort")
+    {
+        intsrvflowdestport.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowDiscard")
+    {
+        intsrvflowdiscard.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowFlowId")
+    {
+        intsrvflowflowid.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowIfAddr")
+    {
+        intsrvflowifaddr.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowInterface")
+    {
+        intsrvflowinterface.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowMaxTU")
+    {
+        intsrvflowmaxtu.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowMinTU")
+    {
+        intsrvflowmintu.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowOrder")
+    {
+        intsrvfloworder.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowOwner")
+    {
+        intsrvflowowner.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowPoliced")
+    {
+        intsrvflowpoliced.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowPort")
+    {
+        intsrvflowport.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowProtocol")
+    {
+        intsrvflowprotocol.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowQueue")
+    {
+        intsrvflowqueue.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowRate")
+    {
+        intsrvflowrate.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowSenderAddr")
+    {
+        intsrvflowsenderaddr.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowSenderAddrLength")
+    {
+        intsrvflowsenderaddrlength.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowService")
+    {
+        intsrvflowservice.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowStatus")
+    {
+        intsrvflowstatus.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowType")
+    {
+        intsrvflowtype.yfilter = yfilter;
+    }
+    if(value_path == "intSrvFlowWeight")
+    {
+        intsrvflowweight.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::IntsrvflowownerEnum::other {1, "other"};
-const Enum::YLeaf IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::IntsrvflowownerEnum::rsvp {2, "rsvp"};
-const Enum::YLeaf IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::IntsrvflowownerEnum::management {3, "management"};
+bool IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intSrvFlowNumber" || name == "intSrvFlowBestEffort" || name == "intSrvFlowBurst" || name == "intSrvFlowDestAddr" || name == "intSrvFlowDestAddrLength" || name == "intSrvFlowDestPort" || name == "intSrvFlowDiscard" || name == "intSrvFlowFlowId" || name == "intSrvFlowIfAddr" || name == "intSrvFlowInterface" || name == "intSrvFlowMaxTU" || name == "intSrvFlowMinTU" || name == "intSrvFlowOrder" || name == "intSrvFlowOwner" || name == "intSrvFlowPoliced" || name == "intSrvFlowPort" || name == "intSrvFlowProtocol" || name == "intSrvFlowQueue" || name == "intSrvFlowRate" || name == "intSrvFlowSenderAddr" || name == "intSrvFlowSenderAddrLength" || name == "intSrvFlowService" || name == "intSrvFlowStatus" || name == "intSrvFlowType" || name == "intSrvFlowWeight")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Qosservice::bestEffort {1, "bestEffort"};
+const Enum::YLeaf Qosservice::guaranteedDelay {2, "guaranteedDelay"};
+const Enum::YLeaf Qosservice::controlledLoad {5, "controlledLoad"};
+
+const Enum::YLeaf IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner::other {1, "other"};
+const Enum::YLeaf IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner::rsvp {2, "rsvp"};
+const Enum::YLeaf IntegratedServicesMib::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner::management {3, "management"};
 
 
 }

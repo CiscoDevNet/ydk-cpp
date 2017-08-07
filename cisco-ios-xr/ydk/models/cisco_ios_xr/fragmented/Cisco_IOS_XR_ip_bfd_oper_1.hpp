@@ -9,11 +9,11 @@
 
 #include "Cisco_IOS_XR_ip_bfd_oper_0.hpp"
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_bfd_oper {
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail : public ydk::Entity
 {
     public:
         Ipv6MultiHopSessionDetail();
@@ -21,16 +21,18 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf location; //type: string
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class StatusInformation; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation
         class MpDownloadState; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState
         class LspPingInfo; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo
@@ -46,7 +48,7 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail : public Entity
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation : public ydk::Entity
 {
     public:
         StatusInformation();
@@ -54,26 +56,28 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sessiontype; //type: BfdSessionEnum
-        YLeaf session_subtype; //type: string
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf local_discriminator; //type: uint32
-        YLeaf remote_discriminator; //type: uint32
-        YLeaf to_up_state_count; //type: uint32
-        YLeaf desired_minimum_echo_transmit_interval; //type: uint32
-        YLeaf remote_negotiated_interval; //type: uint32
-        YLeaf latency_number; //type: uint32
-        YLeaf latency_minimum; //type: uint32
-        YLeaf latency_maximum; //type: uint32
-        YLeaf latency_average; //type: uint32
-        YLeaf node_id; //type: string
-        YLeaf internal_label; //type: uint32
+        ydk::YLeaf sessiontype; //type: BfdSession
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf remote_discriminator; //type: uint32
+        ydk::YLeaf to_up_state_count; //type: uint32
+        ydk::YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+        ydk::YLeaf remote_negotiated_interval; //type: uint32
+        ydk::YLeaf latency_number; //type: uint32
+        ydk::YLeaf latency_minimum; //type: uint32
+        ydk::YLeaf latency_maximum; //type: uint32
+        ydk::YLeaf latency_average; //type: uint32
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf internal_label; //type: uint32
         class SourceAddress; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress
         class LastStateChange; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange
         class TransmitPacket; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket
@@ -97,7 +101,7 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress : public ydk::Entity
 {
     public:
         SourceAddress();
@@ -105,21 +109,23 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::SourceAddress
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange : public ydk::Entity
 {
     public:
         LastStateChange();
@@ -127,21 +133,23 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf days; //type: uint32
-        YLeaf hours; //type: uint8
-        YLeaf minutes; //type: uint8
-        YLeaf seconds; //type: uint8
+        ydk::YLeaf days; //type: uint32
+        ydk::YLeaf hours; //type: uint8
+        ydk::YLeaf minutes; //type: uint8
+        ydk::YLeaf seconds; //type: uint8
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::LastStateChange
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket : public ydk::Entity
 {
     public:
         TransmitPacket();
@@ -149,33 +157,35 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint8
-        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
-        YLeaf ihear_you; //type: int32
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf demand; //type: int32
-        YLeaf poll; //type: int32
-        YLeaf final_; //type: int32
-        YLeaf control_plane_independent; //type: int32
-        YLeaf authentication_present; //type: int32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf length; //type: uint32
-        YLeaf my_discriminator; //type: uint32
-        YLeaf your_discriminator; //type: uint32
-        YLeaf desired_minimum_transmit_interval; //type: uint32
-        YLeaf required_minimum_receive_interval; //type: uint32
-        YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
+        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf demand; //type: int32
+        ydk::YLeaf poll; //type: int32
+        ydk::YLeaf final; //type: int32
+        ydk::YLeaf control_plane_independent; //type: int32
+        ydk::YLeaf authentication_present; //type: int32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf my_discriminator; //type: uint32
+        ydk::YLeaf your_discriminator; //type: uint32
+        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
+        ydk::YLeaf required_minimum_receive_interval; //type: uint32
+        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::TransmitPacket
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket : public ydk::Entity
 {
     public:
         ReceivePacket();
@@ -183,33 +193,35 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint8
-        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
-        YLeaf ihear_you; //type: int32
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf demand; //type: int32
-        YLeaf poll; //type: int32
-        YLeaf final_; //type: int32
-        YLeaf control_plane_independent; //type: int32
-        YLeaf authentication_present; //type: int32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf length; //type: uint32
-        YLeaf my_discriminator; //type: uint32
-        YLeaf your_discriminator; //type: uint32
-        YLeaf desired_minimum_transmit_interval; //type: uint32
-        YLeaf required_minimum_receive_interval; //type: uint32
-        YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
+        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf demand; //type: int32
+        ydk::YLeaf poll; //type: int32
+        ydk::YLeaf final; //type: int32
+        ydk::YLeaf control_plane_independent; //type: int32
+        ydk::YLeaf authentication_present; //type: int32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf my_discriminator; //type: uint32
+        ydk::YLeaf your_discriminator; //type: uint32
+        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
+        ydk::YLeaf required_minimum_receive_interval; //type: uint32
+        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::ReceivePacket
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation : public ydk::Entity
 {
     public:
         StatusBriefInformation();
@@ -217,11 +229,13 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AsyncIntervalMultiplier; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
         class EchoIntervalMultiplier; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
@@ -232,7 +246,7 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
 {
     public:
         AsyncIntervalMultiplier();
@@ -240,21 +254,23 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_remote_transmit_interval; //type: uint32
-        YLeaf negotiated_local_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_remote_transmit_interval; //type: uint32
+        ydk::YLeaf negotiated_local_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
 {
     public:
         EchoIntervalMultiplier();
@@ -262,20 +278,22 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics : public ydk::Entity
 {
     public:
         AsyncTransmitStatistics();
@@ -283,22 +301,24 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncTransmitStatistics
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics : public ydk::Entity
 {
     public:
         AsyncReceiveStatistics();
@@ -306,22 +326,24 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::AsyncReceiveStatistics
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics : public ydk::Entity
 {
     public:
         EchoTransmitStatistics();
@@ -329,22 +351,24 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoTransmitStatistics
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics : public ydk::Entity
 {
     public:
         EchoReceivedStatistics();
@@ -352,22 +376,24 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::StatusInformation::EchoReceivedStatistics
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState : public ydk::Entity
 {
     public:
         MpDownloadState();
@@ -375,13 +401,15 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
+        ydk::YLeaf mp_download_state; //type: BfdMpDownloadState
         class ChangeTime; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime> change_time;
@@ -389,7 +417,7 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadStat
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime : public ydk::Entity
 {
     public:
         ChangeTime();
@@ -397,19 +425,21 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::MpDownloadState::ChangeTime
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo : public ydk::Entity
 {
     public:
         LspPingInfo();
@@ -417,21 +447,23 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsp_ping_tx_count; //type: uint32
-        YLeaf lsp_ping_tx_error_count; //type: uint32
-        YLeaf lsp_ping_tx_last_rc; //type: string
-        YLeaf lsp_ping_tx_last_error_rc; //type: string
-        YLeaf lsp_ping_rx_last_discr; //type: uint32
-        YLeaf lsp_ping_rx_count; //type: uint32
-        YLeaf lsp_ping_rx_last_code; //type: uint8
-        YLeaf lsp_ping_rx_last_subcode; //type: uint8
-        YLeaf lsp_ping_rx_last_output; //type: string
+        ydk::YLeaf lsp_ping_tx_count; //type: uint32
+        ydk::YLeaf lsp_ping_tx_error_count; //type: uint32
+        ydk::YLeaf lsp_ping_tx_last_rc; //type: string
+        ydk::YLeaf lsp_ping_tx_last_error_rc; //type: string
+        ydk::YLeaf lsp_ping_rx_last_discr; //type: uint32
+        ydk::YLeaf lsp_ping_rx_count; //type: uint32
+        ydk::YLeaf lsp_ping_rx_last_code; //type: uint8
+        ydk::YLeaf lsp_ping_rx_last_subcode; //type: uint8
+        ydk::YLeaf lsp_ping_rx_last_output; //type: string
         class LspPingTxLastTime; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime
         class LspPingTxLastErrorTime; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime
         class LspPingRxLastTime; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime
@@ -443,7 +475,7 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo : 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime : public ydk::Entity
 {
     public:
         LspPingTxLastTime();
@@ -451,19 +483,21 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastTime
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public ydk::Entity
 {
     public:
         LspPingTxLastErrorTime();
@@ -471,19 +505,21 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime : public ydk::Entity
 {
     public:
         LspPingRxLastTime();
@@ -491,19 +527,21 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::L
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingRxLastTime
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -511,22 +549,24 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformati
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf adjusted_interval; //type: uint32
-        YLeaf adjusted_detection_multiplier; //type: uint32
-        YLeaf name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInformation
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation : public ydk::Entity
 {
     public:
         AssociationInformation();
@@ -534,14 +574,16 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sessiontype; //type: BfdSessionEnum
-        YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf sessiontype; //type: BfdSession
+        ydk::YLeaf local_discriminator; //type: uint32
         class SessionKey; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey
         class OwnerInformation; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation
 
@@ -551,7 +593,7 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey : public ydk::Entity
 {
     public:
         SessionKey();
@@ -559,18 +601,20 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_key_type; //type: uint32
-        YLeaf interface_name; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf incoming_label; //type: uint32
-        YLeaf sbfd_enabled; //type: int32
-        YLeaf sbfd_target_type; //type: uint32
+        ydk::YLeaf session_key_type; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf incoming_label; //type: uint32
+        ydk::YLeaf sbfd_enabled; //type: int32
+        ydk::YLeaf sbfd_target_type; //type: uint32
         class IpDestinationAddress; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
         class IpSourceAddress; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
         class Bfdfec; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -584,7 +628,7 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress : public ydk::Entity
 {
     public:
         IpDestinationAddress();
@@ -592,21 +636,23 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress : public ydk::Entity
 {
     public:
         IpSourceAddress();
@@ -614,21 +660,23 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec : public ydk::Entity
 {
     public:
         Bfdfec();
@@ -636,13 +684,15 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bfdfe_ctype; //type: BfdApiFecEnum
+        ydk::YLeaf bfdfe_ctype; //type: BfdApiFec
         class Dummy; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy
         class TeS2LFec; //type: Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
 
@@ -652,7 +702,7 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy : public ydk::Entity
 {
     public:
         Dummy();
@@ -660,18 +710,20 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dummy; //type: string
+        ydk::YLeaf dummy; //type: string
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec : public ydk::Entity
 {
     public:
         TeS2LFec();
@@ -679,27 +731,29 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf s2l_fec_subgroup_id; //type: uint16
-        YLeaf s2l_fec_lsp_id; //type: uint16
-        YLeaf s2l_fec_tunnel_id; //type: uint16
-        YLeaf s2l_fec_extended_tunnel_id; //type: string
-        YLeaf s2l_fec_source; //type: string
-        YLeaf s2l_fec_dest; //type: string
-        YLeaf s2l_fec_p2mp_id; //type: uint32
-        YLeaf s2l_fec_subgroup_originator; //type: string
-        YLeaf s2l_fec_ctype; //type: MplsLibCEnum
-        YLeaf s2l_fec_vrf; //type: string
+        ydk::YLeaf s2l_fec_subgroup_id; //type: uint16
+        ydk::YLeaf s2l_fec_lsp_id; //type: uint16
+        ydk::YLeaf s2l_fec_tunnel_id; //type: uint16
+        ydk::YLeaf s2l_fec_extended_tunnel_id; //type: string
+        ydk::YLeaf s2l_fec_source; //type: string
+        ydk::YLeaf s2l_fec_dest; //type: string
+        ydk::YLeaf s2l_fec_p2mp_id; //type: uint32
+        ydk::YLeaf s2l_fec_subgroup_originator; //type: string
+        ydk::YLeaf s2l_fec_ctype; //type: MplsLibC
+        ydk::YLeaf s2l_fec_vrf; //type: string
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress : public ydk::Entity
 {
     public:
         TargetAddress();
@@ -707,21 +761,23 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::SessionKey::TargetAddress
 
 
-class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation : public Entity
+class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -729,22 +785,24 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf adjusted_interval; //type: uint32
-        YLeaf adjusted_detection_multiplier; //type: uint32
-        YLeaf name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::AssociationInformation::OwnerInformation
 
 
-class Bfd::Ipv6MultiHopMultiPaths : public Entity
+class Bfd::Ipv6MultiHopMultiPaths : public ydk::Entity
 {
     public:
         Ipv6MultiHopMultiPaths();
@@ -752,11 +810,13 @@ class Bfd::Ipv6MultiHopMultiPaths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6MultiHopMultiPath; //type: Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath
 
@@ -765,7 +825,7 @@ class Bfd::Ipv6MultiHopMultiPaths : public Entity
 }; // Bfd::Ipv6MultiHopMultiPaths
 
 
-class Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath : public Entity
+class Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath : public ydk::Entity
 {
     public:
         Ipv6MultiHopMultiPath();
@@ -773,27 +833,29 @@ class Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf location; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf session_subtype; //type: string
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf local_discriminator; //type: uint32
-        YLeaf node_id; //type: string
-        YLeaf incoming_label_xr; //type: uint32
-        YLeaf session_interface_name; //type: string
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf incoming_label_xr; //type: uint32
+        ydk::YLeaf session_interface_name; //type: string
 
 }; // Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath
 
 
-class Bfd::Ipv4BfDoMplsteHeadCounters : public Entity
+class Bfd::Ipv4BfDoMplsteHeadCounters : public ydk::Entity
 {
     public:
         Ipv4BfDoMplsteHeadCounters();
@@ -801,11 +863,13 @@ class Bfd::Ipv4BfDoMplsteHeadCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4BfDoMplsteHeadPacketCounters; //type: Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters
 
@@ -814,7 +878,7 @@ class Bfd::Ipv4BfDoMplsteHeadCounters : public Entity
 }; // Bfd::Ipv4BfDoMplsteHeadCounters
 
 
-class Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters : public Entity
+class Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters : public ydk::Entity
 {
     public:
         Ipv4BfDoMplsteHeadPacketCounters();
@@ -822,11 +886,13 @@ class Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4BfDoMplsteHeadPacketCounter; //type: Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter
 
@@ -835,7 +901,7 @@ class Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters : public
 }; // Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters
 
 
-class Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter : public Entity
+class Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter : public ydk::Entity
 {
     public:
         Ipv4BfDoMplsteHeadPacketCounter();
@@ -843,24 +909,26 @@ class Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfD
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf location; //type: string
-        YLeaf hello_transmit_count; //type: uint32
-        YLeaf hello_receive_count; //type: uint32
-        YLeaf echo_transmit_count; //type: uint32
-        YLeaf echo_receive_count; //type: uint32
-        YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf hello_transmit_count; //type: uint32
+        ydk::YLeaf hello_receive_count; //type: uint32
+        ydk::YLeaf echo_transmit_count; //type: uint32
+        ydk::YLeaf echo_receive_count; //type: uint32
+        ydk::YLeaf display_type; //type: BfdMgmtPktDisplay
 
 }; // Bfd::Ipv4BfDoMplsteHeadCounters::Ipv4BfDoMplsteHeadPacketCounters::Ipv4BfDoMplsteHeadPacketCounter
 
 
-class Bfd::SessionMibs : public Entity
+class Bfd::SessionMibs : public ydk::Entity
 {
     public:
         SessionMibs();
@@ -868,11 +936,13 @@ class Bfd::SessionMibs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SessionMib; //type: Bfd::SessionMibs::SessionMib
 
@@ -881,7 +951,7 @@ class Bfd::SessionMibs : public Entity
 }; // Bfd::SessionMibs
 
 
-class Bfd::SessionMibs::SessionMib : public Entity
+class Bfd::SessionMibs::SessionMib : public ydk::Entity
 {
     public:
         SessionMib();
@@ -889,33 +959,35 @@ class Bfd::SessionMibs::SessionMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf discriminator; //type: int32
-        YLeaf local_discriminator; //type: uint32
-        YLeaf remote_discriminator; //type: uint32
-        YLeaf sessionversion; //type: uint32
-        YLeaf session_state; //type: uint32
-        YLeaf trap_bitmap; //type: uint32
-        YLeaf pkt_in; //type: uint64
-        YLeaf pkt_out; //type: uint64
-        YLeaf last_up_time_sec; //type: uint64
-        YLeaf last_up_time_nsec; //type: uint32
-        YLeaf last_down_time_sec; //type: uint64
-        YLeaf last_down_time_nsec; //type: uint32
-        YLeaf last_down_diag; //type: BfdMgmtSessionDiagEnum
-        YLeaf up_counter; //type: uint32
-        YLeaf last_time_cached; //type: uint64
-        YLeaf interface_name; //type: string
-        YLeaf int_handle; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf desired_min_tx_interval; //type: uint32
-        YLeaf required_min_rx_interval; //type: uint32
-        YLeaf required_min_rx_echo_interval; //type: uint32
+        ydk::YLeaf discriminator; //type: int32
+        ydk::YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf remote_discriminator; //type: uint32
+        ydk::YLeaf sessionversion; //type: uint32
+        ydk::YLeaf session_state; //type: uint32
+        ydk::YLeaf trap_bitmap; //type: uint32
+        ydk::YLeaf pkt_in; //type: uint64
+        ydk::YLeaf pkt_out; //type: uint64
+        ydk::YLeaf last_up_time_sec; //type: uint64
+        ydk::YLeaf last_up_time_nsec; //type: uint32
+        ydk::YLeaf last_down_time_sec; //type: uint64
+        ydk::YLeaf last_down_time_nsec; //type: uint32
+        ydk::YLeaf last_down_diag; //type: BfdMgmtSessionDiag
+        ydk::YLeaf up_counter; //type: uint32
+        ydk::YLeaf last_time_cached; //type: uint64
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf int_handle; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf desired_min_tx_interval; //type: uint32
+        ydk::YLeaf required_min_rx_interval; //type: uint32
+        ydk::YLeaf required_min_rx_echo_interval; //type: uint32
         class DestAddress; //type: Bfd::SessionMibs::SessionMib::DestAddress
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionMibs::SessionMib::DestAddress> dest_address;
@@ -923,7 +995,7 @@ class Bfd::SessionMibs::SessionMib : public Entity
 }; // Bfd::SessionMibs::SessionMib
 
 
-class Bfd::SessionMibs::SessionMib::DestAddress : public Entity
+class Bfd::SessionMibs::SessionMib::DestAddress : public ydk::Entity
 {
     public:
         DestAddress();
@@ -931,21 +1003,23 @@ class Bfd::SessionMibs::SessionMib::DestAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::SessionMibs::SessionMib::DestAddress
 
 
-class Bfd::Ipv6MultiHopSummary : public Entity
+class Bfd::Ipv6MultiHopSummary : public ydk::Entity
 {
     public:
         Ipv6MultiHopSummary();
@@ -953,11 +1027,13 @@ class Bfd::Ipv6MultiHopSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SessionState; //type: Bfd::Ipv6MultiHopSummary::SessionState
 
@@ -966,7 +1042,7 @@ class Bfd::Ipv6MultiHopSummary : public Entity
 }; // Bfd::Ipv6MultiHopSummary
 
 
-class Bfd::Ipv6MultiHopSummary::SessionState : public Entity
+class Bfd::Ipv6MultiHopSummary::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -974,21 +1050,23 @@ class Bfd::Ipv6MultiHopSummary::SessionState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total_count; //type: uint32
-        YLeaf down_count; //type: uint32
-        YLeaf up_count; //type: uint32
-        YLeaf unknown_count; //type: uint32
+        ydk::YLeaf total_count; //type: uint32
+        ydk::YLeaf down_count; //type: uint32
+        ydk::YLeaf up_count; //type: uint32
+        ydk::YLeaf unknown_count; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSummary::SessionState
 
 
-class Bfd::LabelSummaryNodes : public Entity
+class Bfd::LabelSummaryNodes : public ydk::Entity
 {
     public:
         LabelSummaryNodes();
@@ -996,11 +1074,13 @@ class Bfd::LabelSummaryNodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LabelSummaryNode; //type: Bfd::LabelSummaryNodes::LabelSummaryNode
 
@@ -1009,7 +1089,7 @@ class Bfd::LabelSummaryNodes : public Entity
 }; // Bfd::LabelSummaryNodes
 
 
-class Bfd::LabelSummaryNodes::LabelSummaryNode : public Entity
+class Bfd::LabelSummaryNodes::LabelSummaryNode : public ydk::Entity
 {
     public:
         LabelSummaryNode();
@@ -1017,13 +1097,15 @@ class Bfd::LabelSummaryNodes::LabelSummaryNode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location_name; //type: string
+        ydk::YLeaf location_name; //type: string
         class SessionState; //type: Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState> session_state;
@@ -1031,7 +1113,7 @@ class Bfd::LabelSummaryNodes::LabelSummaryNode : public Entity
 }; // Bfd::LabelSummaryNodes::LabelSummaryNode
 
 
-class Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState : public Entity
+class Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -1039,23 +1121,25 @@ class Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total_count; //type: uint32
-        YLeaf up_count; //type: uint32
-        YLeaf down_count; //type: uint32
-        YLeaf unknown_count; //type: uint32
-        YLeaf retry_count; //type: uint32
-        YLeaf standby_count; //type: uint32
+        ydk::YLeaf total_count; //type: uint32
+        ydk::YLeaf up_count; //type: uint32
+        ydk::YLeaf down_count; //type: uint32
+        ydk::YLeaf unknown_count; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
+        ydk::YLeaf standby_count; //type: uint32
 
 }; // Bfd::LabelSummaryNodes::LabelSummaryNode::SessionState
 
 
-class Bfd::Ipv6MultiHopSessionBriefs : public Entity
+class Bfd::Ipv6MultiHopSessionBriefs : public ydk::Entity
 {
     public:
         Ipv6MultiHopSessionBriefs();
@@ -1063,11 +1147,13 @@ class Bfd::Ipv6MultiHopSessionBriefs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6MultiHopSessionBrief; //type: Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief
 
@@ -1076,7 +1162,7 @@ class Bfd::Ipv6MultiHopSessionBriefs : public Entity
 }; // Bfd::Ipv6MultiHopSessionBriefs
 
 
-class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief : public Entity
+class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief : public ydk::Entity
 {
     public:
         Ipv6MultiHopSessionBrief();
@@ -1084,21 +1170,23 @@ class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf location; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf node_id; //type: string
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf session_type; //type: BfdSessionEnum
-        YLeaf session_subtype; //type: string
-        YLeaf session_flags; //type: uint32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf session_type; //type: BfdSession
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf session_flags; //type: uint32
         class StatusBriefInformation; //type: Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation> status_brief_information;
@@ -1106,7 +1194,7 @@ class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief : public Entity
 }; // Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief
 
 
-class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation : public Entity
+class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation : public ydk::Entity
 {
     public:
         StatusBriefInformation();
@@ -1114,11 +1202,13 @@ class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInfor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AsyncIntervalMultiplier; //type: Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier
         class EchoIntervalMultiplier; //type: Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier
@@ -1129,7 +1219,7 @@ class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInfor
 }; // Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation
 
 
-class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier : public Entity
+class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
 {
     public:
         AsyncIntervalMultiplier();
@@ -1137,21 +1227,23 @@ class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInfor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_remote_transmit_interval; //type: uint32
-        YLeaf negotiated_local_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_remote_transmit_interval; //type: uint32
+        ydk::YLeaf negotiated_local_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier
 
 
-class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier : public Entity
+class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
 {
     public:
         EchoIntervalMultiplier();
@@ -1159,20 +1251,22 @@ class Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInfor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier
 
 
-class Bfd::SessionBriefs : public Entity
+class Bfd::SessionBriefs : public ydk::Entity
 {
     public:
         SessionBriefs();
@@ -1180,11 +1274,13 @@ class Bfd::SessionBriefs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SessionBrief; //type: Bfd::SessionBriefs::SessionBrief
 
@@ -1193,7 +1289,7 @@ class Bfd::SessionBriefs : public Entity
 }; // Bfd::SessionBriefs
 
 
-class Bfd::SessionBriefs::SessionBrief : public Entity
+class Bfd::SessionBriefs::SessionBrief : public ydk::Entity
 {
     public:
         SessionBrief();
@@ -1201,20 +1297,22 @@ class Bfd::SessionBriefs::SessionBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf location; //type: string
-        YLeaf node_id; //type: string
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf session_type; //type: BfdSessionEnum
-        YLeaf session_subtype; //type: string
-        YLeaf session_flags; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf session_type; //type: BfdSession
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf session_flags; //type: uint32
         class StatusBriefInformation; //type: Bfd::SessionBriefs::SessionBrief::StatusBriefInformation
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionBriefs::SessionBrief::StatusBriefInformation> status_brief_information;
@@ -1222,7 +1320,7 @@ class Bfd::SessionBriefs::SessionBrief : public Entity
 }; // Bfd::SessionBriefs::SessionBrief
 
 
-class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation : public Entity
+class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation : public ydk::Entity
 {
     public:
         StatusBriefInformation();
@@ -1230,11 +1328,13 @@ class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AsyncIntervalMultiplier; //type: Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier
         class EchoIntervalMultiplier; //type: Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier
@@ -1245,7 +1345,7 @@ class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation : public Entity
 }; // Bfd::SessionBriefs::SessionBrief::StatusBriefInformation
 
 
-class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier : public Entity
+class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
 {
     public:
         AsyncIntervalMultiplier();
@@ -1253,21 +1353,23 @@ class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_remote_transmit_interval; //type: uint32
-        YLeaf negotiated_local_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_remote_transmit_interval; //type: uint32
+        ydk::YLeaf negotiated_local_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::AsyncIntervalMultiplier
 
 
-class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier : public Entity
+class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
 {
     public:
         EchoIntervalMultiplier();
@@ -1275,20 +1377,22 @@ class Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMult
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::SessionBriefs::SessionBrief::StatusBriefInformation::EchoIntervalMultiplier
 
 
-class Bfd::Ipv6SingleHopNodeLocationSummaries : public Entity
+class Bfd::Ipv6SingleHopNodeLocationSummaries : public ydk::Entity
 {
     public:
         Ipv6SingleHopNodeLocationSummaries();
@@ -1296,11 +1400,13 @@ class Bfd::Ipv6SingleHopNodeLocationSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6SingleHopNodeLocationSummary; //type: Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary
 
@@ -1309,7 +1415,7 @@ class Bfd::Ipv6SingleHopNodeLocationSummaries : public Entity
 }; // Bfd::Ipv6SingleHopNodeLocationSummaries
 
 
-class Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary : public Entity
+class Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary : public ydk::Entity
 {
     public:
         Ipv6SingleHopNodeLocationSummary();
@@ -1317,13 +1423,15 @@ class Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location; //type: string
+        ydk::YLeaf location; //type: string
         class SessionState; //type: Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState> session_state;
@@ -1331,7 +1439,7 @@ class Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary 
 }; // Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary
 
 
-class Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState : public Entity
+class Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -1339,23 +1447,25 @@ class Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total_count; //type: uint32
-        YLeaf up_count; //type: uint32
-        YLeaf down_count; //type: uint32
-        YLeaf unknown_count; //type: uint32
-        YLeaf retry_count; //type: uint32
-        YLeaf standby_count; //type: uint32
+        ydk::YLeaf total_count; //type: uint32
+        ydk::YLeaf up_count; //type: uint32
+        ydk::YLeaf down_count; //type: uint32
+        ydk::YLeaf unknown_count; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
+        ydk::YLeaf standby_count; //type: uint32
 
 }; // Bfd::Ipv6SingleHopNodeLocationSummaries::Ipv6SingleHopNodeLocationSummary::SessionState
 
 
-class Bfd::Summary : public Entity
+class Bfd::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -1363,11 +1473,13 @@ class Bfd::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SessionState; //type: Bfd::Summary::SessionState
 
@@ -1376,7 +1488,7 @@ class Bfd::Summary : public Entity
 }; // Bfd::Summary
 
 
-class Bfd::Summary::SessionState : public Entity
+class Bfd::Summary::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -1384,21 +1496,23 @@ class Bfd::Summary::SessionState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total_count; //type: uint32
-        YLeaf down_count; //type: uint32
-        YLeaf up_count; //type: uint32
-        YLeaf unknown_count; //type: uint32
+        ydk::YLeaf total_count; //type: uint32
+        ydk::YLeaf down_count; //type: uint32
+        ydk::YLeaf up_count; //type: uint32
+        ydk::YLeaf unknown_count; //type: uint32
 
 }; // Bfd::Summary::SessionState
 
 
-class Bfd::Ipv4BfdMplsteTailNodeSummaries : public Entity
+class Bfd::Ipv4BfdMplsteTailNodeSummaries : public ydk::Entity
 {
     public:
         Ipv4BfdMplsteTailNodeSummaries();
@@ -1406,11 +1520,13 @@ class Bfd::Ipv4BfdMplsteTailNodeSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4BfdMplsteTailNodeSummary; //type: Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary
 
@@ -1419,7 +1535,7 @@ class Bfd::Ipv4BfdMplsteTailNodeSummaries : public Entity
 }; // Bfd::Ipv4BfdMplsteTailNodeSummaries
 
 
-class Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary : public Entity
+class Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary : public ydk::Entity
 {
     public:
         Ipv4BfdMplsteTailNodeSummary();
@@ -1427,13 +1543,15 @@ class Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location_name; //type: string
+        ydk::YLeaf location_name; //type: string
         class SessionState; //type: Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState> session_state;
@@ -1441,7 +1559,7 @@ class Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary : public
 }; // Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary
 
 
-class Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState : public Entity
+class Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -1449,23 +1567,25 @@ class Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::Session
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total_count; //type: uint32
-        YLeaf up_count; //type: uint32
-        YLeaf down_count; //type: uint32
-        YLeaf unknown_count; //type: uint32
-        YLeaf retry_count; //type: uint32
-        YLeaf standby_count; //type: uint32
+        ydk::YLeaf total_count; //type: uint32
+        ydk::YLeaf up_count; //type: uint32
+        ydk::YLeaf down_count; //type: uint32
+        ydk::YLeaf unknown_count; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
+        ydk::YLeaf standby_count; //type: uint32
 
 }; // Bfd::Ipv4BfdMplsteTailNodeSummaries::Ipv4BfdMplsteTailNodeSummary::SessionState
 
 
-class Bfd::Ipv4SingleHopLocationSummaries : public Entity
+class Bfd::Ipv4SingleHopLocationSummaries : public ydk::Entity
 {
     public:
         Ipv4SingleHopLocationSummaries();
@@ -1473,11 +1593,13 @@ class Bfd::Ipv4SingleHopLocationSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4SingleHopLocationSummary; //type: Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary
 
@@ -1486,7 +1608,7 @@ class Bfd::Ipv4SingleHopLocationSummaries : public Entity
 }; // Bfd::Ipv4SingleHopLocationSummaries
 
 
-class Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary : public Entity
+class Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary : public ydk::Entity
 {
     public:
         Ipv4SingleHopLocationSummary();
@@ -1494,13 +1616,15 @@ class Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location_name; //type: string
+        ydk::YLeaf location_name; //type: string
         class SessionState; //type: Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState> session_state;
@@ -1508,7 +1632,7 @@ class Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary : public
 }; // Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary
 
 
-class Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState : public Entity
+class Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -1516,23 +1640,25 @@ class Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::Session
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total_count; //type: uint32
-        YLeaf up_count; //type: uint32
-        YLeaf down_count; //type: uint32
-        YLeaf unknown_count; //type: uint32
-        YLeaf retry_count; //type: uint32
-        YLeaf standby_count; //type: uint32
+        ydk::YLeaf total_count; //type: uint32
+        ydk::YLeaf up_count; //type: uint32
+        ydk::YLeaf down_count; //type: uint32
+        ydk::YLeaf unknown_count; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
+        ydk::YLeaf standby_count; //type: uint32
 
 }; // Bfd::Ipv4SingleHopLocationSummaries::Ipv4SingleHopLocationSummary::SessionState
 
 
-class Bfd::Ipv4BfdMplsteHeadSummaryNodes : public Entity
+class Bfd::Ipv4BfdMplsteHeadSummaryNodes : public ydk::Entity
 {
     public:
         Ipv4BfdMplsteHeadSummaryNodes();
@@ -1540,11 +1666,13 @@ class Bfd::Ipv4BfdMplsteHeadSummaryNodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4BfdMplsteHeadSummaryNode; //type: Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode
 
@@ -1553,7 +1681,7 @@ class Bfd::Ipv4BfdMplsteHeadSummaryNodes : public Entity
 }; // Bfd::Ipv4BfdMplsteHeadSummaryNodes
 
 
-class Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode : public Entity
+class Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode : public ydk::Entity
 {
     public:
         Ipv4BfdMplsteHeadSummaryNode();
@@ -1561,13 +1689,15 @@ class Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location_name; //type: string
+        ydk::YLeaf location_name; //type: string
         class SessionState; //type: Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState> session_state;
@@ -1575,7 +1705,7 @@ class Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode : public 
 }; // Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode
 
 
-class Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState : public Entity
+class Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState : public ydk::Entity
 {
     public:
         SessionState();
@@ -1583,23 +1713,25 @@ class Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionS
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total_count; //type: uint32
-        YLeaf up_count; //type: uint32
-        YLeaf down_count; //type: uint32
-        YLeaf unknown_count; //type: uint32
-        YLeaf retry_count; //type: uint32
-        YLeaf standby_count; //type: uint32
+        ydk::YLeaf total_count; //type: uint32
+        ydk::YLeaf up_count; //type: uint32
+        ydk::YLeaf down_count; //type: uint32
+        ydk::YLeaf unknown_count; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
+        ydk::YLeaf standby_count; //type: uint32
 
 }; // Bfd::Ipv4BfdMplsteHeadSummaryNodes::Ipv4BfdMplsteHeadSummaryNode::SessionState
 
 
-class Bfd::LabelSessionDetails : public Entity
+class Bfd::LabelSessionDetails : public ydk::Entity
 {
     public:
         LabelSessionDetails();
@@ -1607,11 +1739,13 @@ class Bfd::LabelSessionDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LabelSessionDetail; //type: Bfd::LabelSessionDetails::LabelSessionDetail
 
@@ -1620,7 +1754,7 @@ class Bfd::LabelSessionDetails : public Entity
 }; // Bfd::LabelSessionDetails
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail : public ydk::Entity
 {
     public:
         LabelSessionDetail();
@@ -1628,15 +1762,17 @@ class Bfd::LabelSessionDetails::LabelSessionDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf incoming_label; //type: int32
-        YLeaf location; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf incoming_label; //type: int32
+        ydk::YLeaf location; //type: string
         class StatusInformation; //type: Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
         class MpDownloadState; //type: Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState
         class LspPingInfo; //type: Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo
@@ -1652,7 +1788,7 @@ class Bfd::LabelSessionDetails::LabelSessionDetail : public Entity
 }; // Bfd::LabelSessionDetails::LabelSessionDetail
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation : public ydk::Entity
 {
     public:
         StatusInformation();
@@ -1660,26 +1796,28 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sessiontype; //type: BfdSessionEnum
-        YLeaf session_subtype; //type: string
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf local_discriminator; //type: uint32
-        YLeaf remote_discriminator; //type: uint32
-        YLeaf to_up_state_count; //type: uint32
-        YLeaf desired_minimum_echo_transmit_interval; //type: uint32
-        YLeaf remote_negotiated_interval; //type: uint32
-        YLeaf latency_number; //type: uint32
-        YLeaf latency_minimum; //type: uint32
-        YLeaf latency_maximum; //type: uint32
-        YLeaf latency_average; //type: uint32
-        YLeaf node_id; //type: string
-        YLeaf internal_label; //type: uint32
+        ydk::YLeaf sessiontype; //type: BfdSession
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf remote_discriminator; //type: uint32
+        ydk::YLeaf to_up_state_count; //type: uint32
+        ydk::YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+        ydk::YLeaf remote_negotiated_interval; //type: uint32
+        ydk::YLeaf latency_number; //type: uint32
+        ydk::YLeaf latency_minimum; //type: uint32
+        ydk::YLeaf latency_maximum; //type: uint32
+        ydk::YLeaf latency_average; //type: uint32
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf internal_label; //type: uint32
         class SourceAddress; //type: Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress
         class LastStateChange; //type: Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange
         class TransmitPacket; //type: Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket
@@ -1703,7 +1841,7 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation : public E
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress : public ydk::Entity
 {
     public:
         SourceAddress();
@@ -1711,21 +1849,23 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAdd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::SourceAddress
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange : public ydk::Entity
 {
     public:
         LastStateChange();
@@ -1733,21 +1873,23 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastState
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf days; //type: uint32
-        YLeaf hours; //type: uint8
-        YLeaf minutes; //type: uint8
-        YLeaf seconds; //type: uint8
+        ydk::YLeaf days; //type: uint32
+        ydk::YLeaf hours; //type: uint8
+        ydk::YLeaf minutes; //type: uint8
+        ydk::YLeaf seconds; //type: uint8
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::LastStateChange
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket : public ydk::Entity
 {
     public:
         TransmitPacket();
@@ -1755,33 +1897,35 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitP
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint8
-        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
-        YLeaf ihear_you; //type: int32
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf demand; //type: int32
-        YLeaf poll; //type: int32
-        YLeaf final_; //type: int32
-        YLeaf control_plane_independent; //type: int32
-        YLeaf authentication_present; //type: int32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf length; //type: uint32
-        YLeaf my_discriminator; //type: uint32
-        YLeaf your_discriminator; //type: uint32
-        YLeaf desired_minimum_transmit_interval; //type: uint32
-        YLeaf required_minimum_receive_interval; //type: uint32
-        YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
+        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf demand; //type: int32
+        ydk::YLeaf poll; //type: int32
+        ydk::YLeaf final; //type: int32
+        ydk::YLeaf control_plane_independent; //type: int32
+        ydk::YLeaf authentication_present; //type: int32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf my_discriminator; //type: uint32
+        ydk::YLeaf your_discriminator; //type: uint32
+        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
+        ydk::YLeaf required_minimum_receive_interval; //type: uint32
+        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::TransmitPacket
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket : public ydk::Entity
 {
     public:
         ReceivePacket();
@@ -1789,33 +1933,35 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint8
-        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
-        YLeaf ihear_you; //type: int32
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf demand; //type: int32
-        YLeaf poll; //type: int32
-        YLeaf final_; //type: int32
-        YLeaf control_plane_independent; //type: int32
-        YLeaf authentication_present; //type: int32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf length; //type: uint32
-        YLeaf my_discriminator; //type: uint32
-        YLeaf your_discriminator; //type: uint32
-        YLeaf desired_minimum_transmit_interval; //type: uint32
-        YLeaf required_minimum_receive_interval; //type: uint32
-        YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
+        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf demand; //type: int32
+        ydk::YLeaf poll; //type: int32
+        ydk::YLeaf final; //type: int32
+        ydk::YLeaf control_plane_independent; //type: int32
+        ydk::YLeaf authentication_present; //type: int32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf my_discriminator; //type: uint32
+        ydk::YLeaf your_discriminator; //type: uint32
+        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
+        ydk::YLeaf required_minimum_receive_interval; //type: uint32
+        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::ReceivePacket
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation : public ydk::Entity
 {
     public:
         StatusBriefInformation();
@@ -1823,11 +1969,13 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBri
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AsyncIntervalMultiplier; //type: Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
         class EchoIntervalMultiplier; //type: Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
@@ -1838,7 +1986,7 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBri
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
 {
     public:
         AsyncIntervalMultiplier();
@@ -1846,21 +1994,23 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBri
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_remote_transmit_interval; //type: uint32
-        YLeaf negotiated_local_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_remote_transmit_interval; //type: uint32
+        ydk::YLeaf negotiated_local_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
 {
     public:
         EchoIntervalMultiplier();
@@ -1868,20 +2018,22 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBri
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics : public ydk::Entity
 {
     public:
         AsyncTransmitStatistics();
@@ -1889,22 +2041,24 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTran
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncTransmitStatistics
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics : public ydk::Entity
 {
     public:
         AsyncReceiveStatistics();
@@ -1912,22 +2066,24 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncRece
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::AsyncReceiveStatistics
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics : public ydk::Entity
 {
     public:
         EchoTransmitStatistics();
@@ -1935,22 +2091,24 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTrans
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoTransmitStatistics
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics : public ydk::Entity
 {
     public:
         EchoReceivedStatistics();
@@ -1958,22 +2116,24 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoRecei
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::StatusInformation::EchoReceivedStatistics
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState : public ydk::Entity
 {
     public:
         MpDownloadState();
@@ -1981,13 +2141,15 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
+        ydk::YLeaf mp_download_state; //type: BfdMpDownloadState
         class ChangeTime; //type: Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime> change_time;
@@ -1995,7 +2157,7 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState : public Ent
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime : public ydk::Entity
 {
     public:
         ChangeTime();
@@ -2003,19 +2165,21 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::MpDownloadState::ChangeTime
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo : public ydk::Entity
 {
     public:
         LspPingInfo();
@@ -2023,21 +2187,23 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsp_ping_tx_count; //type: uint32
-        YLeaf lsp_ping_tx_error_count; //type: uint32
-        YLeaf lsp_ping_tx_last_rc; //type: string
-        YLeaf lsp_ping_tx_last_error_rc; //type: string
-        YLeaf lsp_ping_rx_last_discr; //type: uint32
-        YLeaf lsp_ping_rx_count; //type: uint32
-        YLeaf lsp_ping_rx_last_code; //type: uint8
-        YLeaf lsp_ping_rx_last_subcode; //type: uint8
-        YLeaf lsp_ping_rx_last_output; //type: string
+        ydk::YLeaf lsp_ping_tx_count; //type: uint32
+        ydk::YLeaf lsp_ping_tx_error_count; //type: uint32
+        ydk::YLeaf lsp_ping_tx_last_rc; //type: string
+        ydk::YLeaf lsp_ping_tx_last_error_rc; //type: string
+        ydk::YLeaf lsp_ping_rx_last_discr; //type: uint32
+        ydk::YLeaf lsp_ping_rx_count; //type: uint32
+        ydk::YLeaf lsp_ping_rx_last_code; //type: uint8
+        ydk::YLeaf lsp_ping_rx_last_subcode; //type: uint8
+        ydk::YLeaf lsp_ping_rx_last_output; //type: string
         class LspPingTxLastTime; //type: Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime
         class LspPingTxLastErrorTime; //type: Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime
         class LspPingRxLastTime; //type: Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime
@@ -2049,7 +2215,7 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo : public Entity
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime : public ydk::Entity
 {
     public:
         LspPingTxLastTime();
@@ -2057,19 +2223,21 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastTime
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public ydk::Entity
 {
     public:
         LspPingTxLastErrorTime();
@@ -2077,19 +2245,21 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastEr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingTxLastErrorTime
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime : public ydk::Entity
 {
     public:
         LspPingRxLastTime();
@@ -2097,19 +2267,21 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::LspPingInfo::LspPingRxLastTime
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -2117,22 +2289,24 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf adjusted_interval; //type: uint32
-        YLeaf adjusted_detection_multiplier; //type: uint32
-        YLeaf name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation : public ydk::Entity
 {
     public:
         AssociationInformation();
@@ -2140,14 +2314,16 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sessiontype; //type: BfdSessionEnum
-        YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf sessiontype; //type: BfdSession
+        ydk::YLeaf local_discriminator; //type: uint32
         class SessionKey; //type: Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey
         class OwnerInformation; //type: Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation
 
@@ -2157,7 +2333,7 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation : pub
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey : public ydk::Entity
 {
     public:
         SessionKey();
@@ -2165,18 +2341,20 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_key_type; //type: uint32
-        YLeaf interface_name; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf incoming_label; //type: uint32
-        YLeaf sbfd_enabled; //type: int32
-        YLeaf sbfd_target_type; //type: uint32
+        ydk::YLeaf session_key_type; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf incoming_label; //type: uint32
+        ydk::YLeaf sbfd_enabled; //type: int32
+        ydk::YLeaf sbfd_target_type; //type: uint32
         class IpDestinationAddress; //type: Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
         class IpSourceAddress; //type: Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
         class Bfdfec; //type: Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -2190,7 +2368,7 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress : public ydk::Entity
 {
     public:
         IpDestinationAddress();
@@ -2198,21 +2376,23 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress : public ydk::Entity
 {
     public:
         IpSourceAddress();
@@ -2220,21 +2400,23 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec : public ydk::Entity
 {
     public:
         Bfdfec();
@@ -2242,13 +2424,15 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bfdfe_ctype; //type: BfdApiFecEnum
+        ydk::YLeaf bfdfe_ctype; //type: BfdApiFec
         class Dummy; //type: Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy
         class TeS2LFec; //type: Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
 
@@ -2258,7 +2442,7 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy : public ydk::Entity
 {
     public:
         Dummy();
@@ -2266,18 +2450,20 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dummy; //type: string
+        ydk::YLeaf dummy; //type: string
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec : public ydk::Entity
 {
     public:
         TeS2LFec();
@@ -2285,27 +2471,29 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf s2l_fec_subgroup_id; //type: uint16
-        YLeaf s2l_fec_lsp_id; //type: uint16
-        YLeaf s2l_fec_tunnel_id; //type: uint16
-        YLeaf s2l_fec_extended_tunnel_id; //type: string
-        YLeaf s2l_fec_source; //type: string
-        YLeaf s2l_fec_dest; //type: string
-        YLeaf s2l_fec_p2mp_id; //type: uint32
-        YLeaf s2l_fec_subgroup_originator; //type: string
-        YLeaf s2l_fec_ctype; //type: MplsLibCEnum
-        YLeaf s2l_fec_vrf; //type: string
+        ydk::YLeaf s2l_fec_subgroup_id; //type: uint16
+        ydk::YLeaf s2l_fec_lsp_id; //type: uint16
+        ydk::YLeaf s2l_fec_tunnel_id; //type: uint16
+        ydk::YLeaf s2l_fec_extended_tunnel_id; //type: string
+        ydk::YLeaf s2l_fec_source; //type: string
+        ydk::YLeaf s2l_fec_dest; //type: string
+        ydk::YLeaf s2l_fec_p2mp_id; //type: uint32
+        ydk::YLeaf s2l_fec_subgroup_originator; //type: string
+        ydk::YLeaf s2l_fec_ctype; //type: MplsLibC
+        ydk::YLeaf s2l_fec_vrf; //type: string
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress : public ydk::Entity
 {
     public:
         TargetAddress();
@@ -2313,21 +2501,23 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Sess
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::SessionKey::TargetAddress
 
 
-class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation : public Entity
+class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -2335,22 +2525,24 @@ class Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::Owne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf adjusted_interval; //type: uint32
-        YLeaf adjusted_detection_multiplier; //type: uint32
-        YLeaf name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
 
 }; // Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation::OwnerInformation
 
 
-class Bfd::Ipv6SingleHopSessionDetails : public Entity
+class Bfd::Ipv6SingleHopSessionDetails : public ydk::Entity
 {
     public:
         Ipv6SingleHopSessionDetails();
@@ -2358,11 +2550,13 @@ class Bfd::Ipv6SingleHopSessionDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6SingleHopSessionDetail; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail
 
@@ -2371,7 +2565,7 @@ class Bfd::Ipv6SingleHopSessionDetails : public Entity
 }; // Bfd::Ipv6SingleHopSessionDetails
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail : public ydk::Entity
 {
     public:
         Ipv6SingleHopSessionDetail();
@@ -2379,15 +2573,17 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf location; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
         class StatusInformation; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation
         class MpDownloadState; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState
         class LspPingInfo; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo
@@ -2403,7 +2599,7 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail : public Enti
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation : public ydk::Entity
 {
     public:
         StatusInformation();
@@ -2411,26 +2607,28 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sessiontype; //type: BfdSessionEnum
-        YLeaf session_subtype; //type: string
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf local_discriminator; //type: uint32
-        YLeaf remote_discriminator; //type: uint32
-        YLeaf to_up_state_count; //type: uint32
-        YLeaf desired_minimum_echo_transmit_interval; //type: uint32
-        YLeaf remote_negotiated_interval; //type: uint32
-        YLeaf latency_number; //type: uint32
-        YLeaf latency_minimum; //type: uint32
-        YLeaf latency_maximum; //type: uint32
-        YLeaf latency_average; //type: uint32
-        YLeaf node_id; //type: string
-        YLeaf internal_label; //type: uint32
+        ydk::YLeaf sessiontype; //type: BfdSession
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf remote_discriminator; //type: uint32
+        ydk::YLeaf to_up_state_count; //type: uint32
+        ydk::YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+        ydk::YLeaf remote_negotiated_interval; //type: uint32
+        ydk::YLeaf latency_number; //type: uint32
+        ydk::YLeaf latency_minimum; //type: uint32
+        ydk::YLeaf latency_maximum; //type: uint32
+        ydk::YLeaf latency_average; //type: uint32
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf internal_label; //type: uint32
         class SourceAddress; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress
         class LastStateChange; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange
         class TransmitPacket; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket
@@ -2454,7 +2652,7 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress : public ydk::Entity
 {
     public:
         SourceAddress();
@@ -2462,21 +2660,23 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::SourceAddress
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange : public ydk::Entity
 {
     public:
         LastStateChange();
@@ -2484,21 +2684,23 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf days; //type: uint32
-        YLeaf hours; //type: uint8
-        YLeaf minutes; //type: uint8
-        YLeaf seconds; //type: uint8
+        ydk::YLeaf days; //type: uint32
+        ydk::YLeaf hours; //type: uint8
+        ydk::YLeaf minutes; //type: uint8
+        ydk::YLeaf seconds; //type: uint8
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::LastStateChange
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket : public ydk::Entity
 {
     public:
         TransmitPacket();
@@ -2506,33 +2708,35 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint8
-        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
-        YLeaf ihear_you; //type: int32
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf demand; //type: int32
-        YLeaf poll; //type: int32
-        YLeaf final_; //type: int32
-        YLeaf control_plane_independent; //type: int32
-        YLeaf authentication_present; //type: int32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf length; //type: uint32
-        YLeaf my_discriminator; //type: uint32
-        YLeaf your_discriminator; //type: uint32
-        YLeaf desired_minimum_transmit_interval; //type: uint32
-        YLeaf required_minimum_receive_interval; //type: uint32
-        YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
+        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf demand; //type: int32
+        ydk::YLeaf poll; //type: int32
+        ydk::YLeaf final; //type: int32
+        ydk::YLeaf control_plane_independent; //type: int32
+        ydk::YLeaf authentication_present; //type: int32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf my_discriminator; //type: uint32
+        ydk::YLeaf your_discriminator; //type: uint32
+        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
+        ydk::YLeaf required_minimum_receive_interval; //type: uint32
+        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::TransmitPacket
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket : public ydk::Entity
 {
     public:
         ReceivePacket();
@@ -2540,33 +2744,35 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint8
-        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
-        YLeaf ihear_you; //type: int32
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf demand; //type: int32
-        YLeaf poll; //type: int32
-        YLeaf final_; //type: int32
-        YLeaf control_plane_independent; //type: int32
-        YLeaf authentication_present; //type: int32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf length; //type: uint32
-        YLeaf my_discriminator; //type: uint32
-        YLeaf your_discriminator; //type: uint32
-        YLeaf desired_minimum_transmit_interval; //type: uint32
-        YLeaf required_minimum_receive_interval; //type: uint32
-        YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
+        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf demand; //type: int32
+        ydk::YLeaf poll; //type: int32
+        ydk::YLeaf final; //type: int32
+        ydk::YLeaf control_plane_independent; //type: int32
+        ydk::YLeaf authentication_present; //type: int32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf my_discriminator; //type: uint32
+        ydk::YLeaf your_discriminator; //type: uint32
+        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
+        ydk::YLeaf required_minimum_receive_interval; //type: uint32
+        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::ReceivePacket
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation : public ydk::Entity
 {
     public:
         StatusBriefInformation();
@@ -2574,11 +2780,13 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AsyncIntervalMultiplier; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
         class EchoIntervalMultiplier; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
@@ -2589,7 +2797,7 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
 {
     public:
         AsyncIntervalMultiplier();
@@ -2597,21 +2805,23 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_remote_transmit_interval; //type: uint32
-        YLeaf negotiated_local_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_remote_transmit_interval; //type: uint32
+        ydk::YLeaf negotiated_local_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
 {
     public:
         EchoIntervalMultiplier();
@@ -2619,20 +2829,22 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics : public ydk::Entity
 {
     public:
         AsyncTransmitStatistics();
@@ -2640,22 +2852,24 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncTransmitStatistics
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics : public ydk::Entity
 {
     public:
         AsyncReceiveStatistics();
@@ -2663,22 +2877,24 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::AsyncReceiveStatistics
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics : public ydk::Entity
 {
     public:
         EchoTransmitStatistics();
@@ -2686,22 +2902,24 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoTransmitStatistics
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics : public ydk::Entity
 {
     public:
         EchoReceivedStatistics();
@@ -2709,22 +2927,24 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInform
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::StatusInformation::EchoReceivedStatistics
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState : public ydk::Entity
 {
     public:
         MpDownloadState();
@@ -2732,13 +2952,15 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
+        ydk::YLeaf mp_download_state; //type: BfdMpDownloadState
         class ChangeTime; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime> change_time;
@@ -2746,7 +2968,7 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadSt
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime : public ydk::Entity
 {
     public:
         ChangeTime();
@@ -2754,19 +2976,21 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::MpDownloadState::ChangeTime
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo : public ydk::Entity
 {
     public:
         LspPingInfo();
@@ -2774,21 +2998,23 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsp_ping_tx_count; //type: uint32
-        YLeaf lsp_ping_tx_error_count; //type: uint32
-        YLeaf lsp_ping_tx_last_rc; //type: string
-        YLeaf lsp_ping_tx_last_error_rc; //type: string
-        YLeaf lsp_ping_rx_last_discr; //type: uint32
-        YLeaf lsp_ping_rx_count; //type: uint32
-        YLeaf lsp_ping_rx_last_code; //type: uint8
-        YLeaf lsp_ping_rx_last_subcode; //type: uint8
-        YLeaf lsp_ping_rx_last_output; //type: string
+        ydk::YLeaf lsp_ping_tx_count; //type: uint32
+        ydk::YLeaf lsp_ping_tx_error_count; //type: uint32
+        ydk::YLeaf lsp_ping_tx_last_rc; //type: string
+        ydk::YLeaf lsp_ping_tx_last_error_rc; //type: string
+        ydk::YLeaf lsp_ping_rx_last_discr; //type: uint32
+        ydk::YLeaf lsp_ping_rx_count; //type: uint32
+        ydk::YLeaf lsp_ping_rx_last_code; //type: uint8
+        ydk::YLeaf lsp_ping_rx_last_subcode; //type: uint8
+        ydk::YLeaf lsp_ping_rx_last_output; //type: string
         class LspPingTxLastTime; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime
         class LspPingTxLastErrorTime; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime
         class LspPingRxLastTime; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime
@@ -2800,7 +3026,7 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime : public ydk::Entity
 {
     public:
         LspPingTxLastTime();
@@ -2808,19 +3034,21 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastTime
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime : public ydk::Entity
 {
     public:
         LspPingTxLastErrorTime();
@@ -2828,19 +3056,21 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime : public ydk::Entity
 {
     public:
         LspPingRxLastTime();
@@ -2848,19 +3078,21 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::LspPingInfo::LspPingRxLastTime
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -2868,22 +3100,24 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInforma
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf adjusted_interval; //type: uint32
-        YLeaf adjusted_detection_multiplier; //type: uint32
-        YLeaf name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerInformation
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation : public ydk::Entity
 {
     public:
         AssociationInformation();
@@ -2891,14 +3125,16 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sessiontype; //type: BfdSessionEnum
-        YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf sessiontype; //type: BfdSession
+        ydk::YLeaf local_discriminator; //type: uint32
         class SessionKey; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey
         class OwnerInformation; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation
 
@@ -2908,7 +3144,7 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey : public ydk::Entity
 {
     public:
         SessionKey();
@@ -2916,18 +3152,20 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_key_type; //type: uint32
-        YLeaf interface_name; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf incoming_label; //type: uint32
-        YLeaf sbfd_enabled; //type: int32
-        YLeaf sbfd_target_type; //type: uint32
+        ydk::YLeaf session_key_type; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf incoming_label; //type: uint32
+        ydk::YLeaf sbfd_enabled; //type: int32
+        ydk::YLeaf sbfd_target_type; //type: uint32
         class IpDestinationAddress; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
         class IpSourceAddress; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
         class Bfdfec; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec
@@ -2941,7 +3179,7 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress : public ydk::Entity
 {
     public:
         IpDestinationAddress();
@@ -2949,21 +3187,23 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpDestinationAddress
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress : public ydk::Entity
 {
     public:
         IpSourceAddress();
@@ -2971,21 +3211,23 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::IpSourceAddress
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec : public ydk::Entity
 {
     public:
         Bfdfec();
@@ -2993,13 +3235,15 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bfdfe_ctype; //type: BfdApiFecEnum
+        ydk::YLeaf bfdfe_ctype; //type: BfdApiFec
         class Dummy; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy
         class TeS2LFec; //type: Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
 
@@ -3009,7 +3253,7 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy : public ydk::Entity
 {
     public:
         Dummy();
@@ -3017,18 +3261,20 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dummy; //type: string
+        ydk::YLeaf dummy; //type: string
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::Dummy
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec : public ydk::Entity
 {
     public:
         TeS2LFec();
@@ -3036,27 +3282,29 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf s2l_fec_subgroup_id; //type: uint16
-        YLeaf s2l_fec_lsp_id; //type: uint16
-        YLeaf s2l_fec_tunnel_id; //type: uint16
-        YLeaf s2l_fec_extended_tunnel_id; //type: string
-        YLeaf s2l_fec_source; //type: string
-        YLeaf s2l_fec_dest; //type: string
-        YLeaf s2l_fec_p2mp_id; //type: uint32
-        YLeaf s2l_fec_subgroup_originator; //type: string
-        YLeaf s2l_fec_ctype; //type: MplsLibCEnum
-        YLeaf s2l_fec_vrf; //type: string
+        ydk::YLeaf s2l_fec_subgroup_id; //type: uint16
+        ydk::YLeaf s2l_fec_lsp_id; //type: uint16
+        ydk::YLeaf s2l_fec_tunnel_id; //type: uint16
+        ydk::YLeaf s2l_fec_extended_tunnel_id; //type: string
+        ydk::YLeaf s2l_fec_source; //type: string
+        ydk::YLeaf s2l_fec_dest; //type: string
+        ydk::YLeaf s2l_fec_p2mp_id; //type: uint32
+        ydk::YLeaf s2l_fec_subgroup_originator; //type: string
+        ydk::YLeaf s2l_fec_ctype; //type: MplsLibC
+        ydk::YLeaf s2l_fec_vrf; //type: string
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::Bfdfec::TeS2LFec
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress : public ydk::Entity
 {
     public:
         TargetAddress();
@@ -3064,21 +3312,23 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::SessionKey::TargetAddress
 
 
-class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation : public Entity
+class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -3086,22 +3336,24 @@ class Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf adjusted_interval; //type: uint32
-        YLeaf adjusted_detection_multiplier; //type: uint32
-        YLeaf name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
 
 }; // Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::AssociationInformation::OwnerInformation
 
 
-class Bfd::Ipv4MultiHopCounters : public Entity
+class Bfd::Ipv4MultiHopCounters : public ydk::Entity
 {
     public:
         Ipv4MultiHopCounters();
@@ -3109,11 +3361,13 @@ class Bfd::Ipv4MultiHopCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4MultiHopPacketCounters; //type: Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters
 
@@ -3122,7 +3376,7 @@ class Bfd::Ipv4MultiHopCounters : public Entity
 }; // Bfd::Ipv4MultiHopCounters
 
 
-class Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters : public Entity
+class Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters : public ydk::Entity
 {
     public:
         Ipv4MultiHopPacketCounters();
@@ -3130,11 +3384,13 @@ class Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4MultiHopPacketCounter; //type: Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter
 
@@ -3143,7 +3399,7 @@ class Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters : public Entity
 }; // Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters
 
 
-class Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter : public Entity
+class Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter : public ydk::Entity
 {
     public:
         Ipv4MultiHopPacketCounter();
@@ -3151,26 +3407,28 @@ class Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketC
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf location; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf hello_transmit_count; //type: uint32
-        YLeaf hello_receive_count; //type: uint32
-        YLeaf echo_transmit_count; //type: uint32
-        YLeaf echo_receive_count; //type: uint32
-        YLeaf display_type; //type: BfdMgmtPktDisplayEnum
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf hello_transmit_count; //type: uint32
+        ydk::YLeaf hello_receive_count; //type: uint32
+        ydk::YLeaf echo_transmit_count; //type: uint32
+        ydk::YLeaf echo_receive_count; //type: uint32
+        ydk::YLeaf display_type; //type: BfdMgmtPktDisplay
 
 }; // Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopPacketCounter
 
 
-class Bfd::SessionDetails : public Entity
+class Bfd::SessionDetails : public ydk::Entity
 {
     public:
         SessionDetails();
@@ -3178,11 +3436,13 @@ class Bfd::SessionDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SessionDetail; //type: Bfd::SessionDetails::SessionDetail
 
@@ -3191,7 +3451,7 @@ class Bfd::SessionDetails : public Entity
 }; // Bfd::SessionDetails
 
 
-class Bfd::SessionDetails::SessionDetail : public Entity
+class Bfd::SessionDetails::SessionDetail : public ydk::Entity
 {
     public:
         SessionDetail();
@@ -3199,15 +3459,17 @@ class Bfd::SessionDetails::SessionDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf location; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf location; //type: string
         class StatusInformation; //type: Bfd::SessionDetails::SessionDetail::StatusInformation
         class MpDownloadState; //type: Bfd::SessionDetails::SessionDetail::MpDownloadState
         class LspPingInfo; //type: Bfd::SessionDetails::SessionDetail::LspPingInfo
@@ -3223,7 +3485,7 @@ class Bfd::SessionDetails::SessionDetail : public Entity
 }; // Bfd::SessionDetails::SessionDetail
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation : public ydk::Entity
 {
     public:
         StatusInformation();
@@ -3231,26 +3493,28 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sessiontype; //type: BfdSessionEnum
-        YLeaf session_subtype; //type: string
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf local_discriminator; //type: uint32
-        YLeaf remote_discriminator; //type: uint32
-        YLeaf to_up_state_count; //type: uint32
-        YLeaf desired_minimum_echo_transmit_interval; //type: uint32
-        YLeaf remote_negotiated_interval; //type: uint32
-        YLeaf latency_number; //type: uint32
-        YLeaf latency_minimum; //type: uint32
-        YLeaf latency_maximum; //type: uint32
-        YLeaf latency_average; //type: uint32
-        YLeaf node_id; //type: string
-        YLeaf internal_label; //type: uint32
+        ydk::YLeaf sessiontype; //type: BfdSession
+        ydk::YLeaf session_subtype; //type: string
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf local_discriminator; //type: uint32
+        ydk::YLeaf remote_discriminator; //type: uint32
+        ydk::YLeaf to_up_state_count; //type: uint32
+        ydk::YLeaf desired_minimum_echo_transmit_interval; //type: uint32
+        ydk::YLeaf remote_negotiated_interval; //type: uint32
+        ydk::YLeaf latency_number; //type: uint32
+        ydk::YLeaf latency_minimum; //type: uint32
+        ydk::YLeaf latency_maximum; //type: uint32
+        ydk::YLeaf latency_average; //type: uint32
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf internal_label; //type: uint32
         class SourceAddress; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress
         class LastStateChange; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange
         class TransmitPacket; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket
@@ -3274,7 +3538,7 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation : public Entity
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress : public ydk::Entity
 {
     public:
         SourceAddress();
@@ -3282,21 +3546,23 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi; //type: BfdAfIdEnum
-        YLeaf dummy; //type: uint8
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf afi; //type: BfdAfId
+        ydk::YLeaf dummy; //type: uint8
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::SourceAddress
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange : public ydk::Entity
 {
     public:
         LastStateChange();
@@ -3304,21 +3570,23 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf days; //type: uint32
-        YLeaf hours; //type: uint8
-        YLeaf minutes; //type: uint8
-        YLeaf seconds; //type: uint8
+        ydk::YLeaf days; //type: uint32
+        ydk::YLeaf hours; //type: uint8
+        ydk::YLeaf minutes; //type: uint8
+        ydk::YLeaf seconds; //type: uint8
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::LastStateChange
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket : public ydk::Entity
 {
     public:
         TransmitPacket();
@@ -3326,33 +3594,35 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint8
-        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
-        YLeaf ihear_you; //type: int32
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf demand; //type: int32
-        YLeaf poll; //type: int32
-        YLeaf final_; //type: int32
-        YLeaf control_plane_independent; //type: int32
-        YLeaf authentication_present; //type: int32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf length; //type: uint32
-        YLeaf my_discriminator; //type: uint32
-        YLeaf your_discriminator; //type: uint32
-        YLeaf desired_minimum_transmit_interval; //type: uint32
-        YLeaf required_minimum_receive_interval; //type: uint32
-        YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
+        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf demand; //type: int32
+        ydk::YLeaf poll; //type: int32
+        ydk::YLeaf final; //type: int32
+        ydk::YLeaf control_plane_independent; //type: int32
+        ydk::YLeaf authentication_present; //type: int32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf my_discriminator; //type: uint32
+        ydk::YLeaf your_discriminator; //type: uint32
+        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
+        ydk::YLeaf required_minimum_receive_interval; //type: uint32
+        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::TransmitPacket
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket : public ydk::Entity
 {
     public:
         ReceivePacket();
@@ -3360,33 +3630,35 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint8
-        YLeaf diagnostic; //type: BfdMgmtSessionDiagEnum
-        YLeaf ihear_you; //type: int32
-        YLeaf state; //type: BfdMgmtSessionStateEnum
-        YLeaf demand; //type: int32
-        YLeaf poll; //type: int32
-        YLeaf final_; //type: int32
-        YLeaf control_plane_independent; //type: int32
-        YLeaf authentication_present; //type: int32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf length; //type: uint32
-        YLeaf my_discriminator; //type: uint32
-        YLeaf your_discriminator; //type: uint32
-        YLeaf desired_minimum_transmit_interval; //type: uint32
-        YLeaf required_minimum_receive_interval; //type: uint32
-        YLeaf required_minimum_echo_receive_interval; //type: uint32
+        ydk::YLeaf version; //type: uint8
+        ydk::YLeaf diagnostic; //type: BfdMgmtSessionDiag
+        ydk::YLeaf ihear_you; //type: int32
+        ydk::YLeaf state; //type: BfdMgmtSessionState
+        ydk::YLeaf demand; //type: int32
+        ydk::YLeaf poll; //type: int32
+        ydk::YLeaf final; //type: int32
+        ydk::YLeaf control_plane_independent; //type: int32
+        ydk::YLeaf authentication_present; //type: int32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf my_discriminator; //type: uint32
+        ydk::YLeaf your_discriminator; //type: uint32
+        ydk::YLeaf desired_minimum_transmit_interval; //type: uint32
+        ydk::YLeaf required_minimum_receive_interval; //type: uint32
+        ydk::YLeaf required_minimum_echo_receive_interval; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::ReceivePacket
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation : public ydk::Entity
 {
     public:
         StatusBriefInformation();
@@ -3394,11 +3666,13 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AsyncIntervalMultiplier; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
         class EchoIntervalMultiplier; //type: Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
@@ -3409,7 +3683,7 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformat
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier : public ydk::Entity
 {
     public:
         AsyncIntervalMultiplier();
@@ -3417,21 +3691,23 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_remote_transmit_interval; //type: uint32
-        YLeaf negotiated_local_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_remote_transmit_interval; //type: uint32
+        ydk::YLeaf negotiated_local_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::AsyncIntervalMultiplier
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier : public ydk::Entity
 {
     public:
         EchoIntervalMultiplier();
@@ -3439,20 +3715,22 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf negotiated_transmit_interval; //type: uint32
-        YLeaf detection_time; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf negotiated_transmit_interval; //type: uint32
+        ydk::YLeaf detection_time; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::StatusBriefInformation::EchoIntervalMultiplier
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics : public ydk::Entity
 {
     public:
         AsyncTransmitStatistics();
@@ -3460,22 +3738,24 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatis
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncTransmitStatistics
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics : public ydk::Entity
 {
     public:
         AsyncReceiveStatistics();
@@ -3483,22 +3763,24 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatist
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::AsyncReceiveStatistics
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics : public ydk::Entity
 {
     public:
         EchoTransmitStatistics();
@@ -3506,22 +3788,24 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatist
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::EchoTransmitStatistics
 
 
-class Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics : public Entity
+class Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics : public ydk::Entity
 {
     public:
         EchoReceivedStatistics();
@@ -3529,22 +3813,24 @@ class Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatist
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint32
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
-        YLeaf average; //type: uint32
-        YLeaf last; //type: uint32
+        ydk::YLeaf number; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf average; //type: uint32
+        ydk::YLeaf last; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::StatusInformation::EchoReceivedStatistics
 
 
-class Bfd::SessionDetails::SessionDetail::MpDownloadState : public Entity
+class Bfd::SessionDetails::SessionDetail::MpDownloadState : public ydk::Entity
 {
     public:
         MpDownloadState();
@@ -3552,13 +3838,15 @@ class Bfd::SessionDetails::SessionDetail::MpDownloadState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mp_download_state; //type: BfdMpDownloadStateEnum
+        ydk::YLeaf mp_download_state; //type: BfdMpDownloadState
         class ChangeTime; //type: Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime
 
         std::shared_ptr<Cisco_IOS_XR_ip_bfd_oper::Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime> change_time;
@@ -3566,7 +3854,7 @@ class Bfd::SessionDetails::SessionDetail::MpDownloadState : public Entity
 }; // Bfd::SessionDetails::SessionDetail::MpDownloadState
 
 
-class Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime : public Entity
+class Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime : public ydk::Entity
 {
     public:
         ChangeTime();
@@ -3574,19 +3862,21 @@ class Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::MpDownloadState::ChangeTime
 
 
-class Bfd::SessionDetails::SessionDetail::LspPingInfo : public Entity
+class Bfd::SessionDetails::SessionDetail::LspPingInfo : public ydk::Entity
 {
     public:
         LspPingInfo();
@@ -3594,21 +3884,23 @@ class Bfd::SessionDetails::SessionDetail::LspPingInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsp_ping_tx_count; //type: uint32
-        YLeaf lsp_ping_tx_error_count; //type: uint32
-        YLeaf lsp_ping_tx_last_rc; //type: string
-        YLeaf lsp_ping_tx_last_error_rc; //type: string
-        YLeaf lsp_ping_rx_last_discr; //type: uint32
-        YLeaf lsp_ping_rx_count; //type: uint32
-        YLeaf lsp_ping_rx_last_code; //type: uint8
-        YLeaf lsp_ping_rx_last_subcode; //type: uint8
-        YLeaf lsp_ping_rx_last_output; //type: string
+        ydk::YLeaf lsp_ping_tx_count; //type: uint32
+        ydk::YLeaf lsp_ping_tx_error_count; //type: uint32
+        ydk::YLeaf lsp_ping_tx_last_rc; //type: string
+        ydk::YLeaf lsp_ping_tx_last_error_rc; //type: string
+        ydk::YLeaf lsp_ping_rx_last_discr; //type: uint32
+        ydk::YLeaf lsp_ping_rx_count; //type: uint32
+        ydk::YLeaf lsp_ping_rx_last_code; //type: uint8
+        ydk::YLeaf lsp_ping_rx_last_subcode; //type: uint8
+        ydk::YLeaf lsp_ping_rx_last_output; //type: string
         class LspPingTxLastTime; //type: Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime
         class LspPingTxLastErrorTime; //type: Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime
         class LspPingRxLastTime; //type: Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime
@@ -3620,7 +3912,7 @@ class Bfd::SessionDetails::SessionDetail::LspPingInfo : public Entity
 }; // Bfd::SessionDetails::SessionDetail::LspPingInfo
 
 
-class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime : public Entity
+class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime : public ydk::Entity
 {
     public:
         LspPingTxLastTime();
@@ -3628,19 +3920,21 @@ class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastTime
 
 
-class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime : public Entity
+class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime : public ydk::Entity
 {
     public:
         LspPingTxLastErrorTime();
@@ -3648,19 +3942,21 @@ class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingTxLastErrorTime
 
 
-class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime : public Entity
+class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime : public ydk::Entity
 {
     public:
         LspPingRxLastTime();
@@ -3668,19 +3964,21 @@ class Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint64
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint64
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // Bfd::SessionDetails::SessionDetail::LspPingInfo::LspPingRxLastTime
 
 
-class Bfd::SessionDetails::SessionDetail::OwnerInformation : public Entity
+class Bfd::SessionDetails::SessionDetail::OwnerInformation : public ydk::Entity
 {
     public:
         OwnerInformation();
@@ -3688,17 +3986,19 @@ class Bfd::SessionDetails::SessionDetail::OwnerInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf adjusted_interval; //type: uint32
-        YLeaf adjusted_detection_multiplier; //type: uint32
-        YLeaf name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf adjusted_interval; //type: uint32
+        ydk::YLeaf adjusted_detection_multiplier; //type: uint32
+        ydk::YLeaf name; //type: string
 
 }; // Bfd::SessionDetails::SessionDetail::OwnerInformation
 

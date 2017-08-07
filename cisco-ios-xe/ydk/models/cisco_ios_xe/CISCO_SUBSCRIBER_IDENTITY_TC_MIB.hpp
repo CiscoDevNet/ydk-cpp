@@ -7,60 +7,60 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_SUBSCRIBER_IDENTITY_TC_MIB {
 
-class SubscribermediatypeEnum : public Enum
+class Subscribermediatype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf async;
-        static const Enum::YLeaf atm;
-        static const Enum::YLeaf ethernet;
-        static const Enum::YLeaf ip;
-        static const Enum::YLeaf isdn;
-        static const Enum::YLeaf mpls;
-        static const Enum::YLeaf sync;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf async;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf isdn;
+        static const ydk::Enum::YLeaf mpls;
+        static const ydk::Enum::YLeaf sync;
 
 };
 
-class SubscriberprotocoltypeEnum : public Enum
+class Subscriberprotocoltype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf atom;
-        static const Enum::YLeaf ip;
-        static const Enum::YLeaf psdn;
-        static const Enum::YLeaf ppp;
-        static const Enum::YLeaf vpdn;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf atom;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf psdn;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf vpdn;
 
 };
 
-class SubsessionidentityEnum : public Enum
+class Subsessionidentity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf ifIndex;
-        static const Enum::YLeaf subscriberLabel;
-        static const Enum::YLeaf macAddress;
-        static const Enum::YLeaf nativeVrf;
-        static const Enum::YLeaf nativeIpAddress;
-        static const Enum::YLeaf domainVrf;
-        static const Enum::YLeaf domainIpAddress;
-        static const Enum::YLeaf pbhk;
-        static const Enum::YLeaf remoteId;
-        static const Enum::YLeaf circuitId;
-        static const Enum::YLeaf nasPort;
-        static const Enum::YLeaf domain;
-        static const Enum::YLeaf username;
-        static const Enum::YLeaf acctSessionId;
-        static const Enum::YLeaf dnis;
-        static const Enum::YLeaf media;
-        static const Enum::YLeaf mlpNegotiated;
-        static const Enum::YLeaf protocol;
-        static const Enum::YLeaf serviceName;
-        static const Enum::YLeaf dhcpClass;
-        static const Enum::YLeaf tunnelName;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf ifIndex;
+        static const ydk::Enum::YLeaf subscriberLabel;
+        static const ydk::Enum::YLeaf macAddress;
+        static const ydk::Enum::YLeaf nativeVrf;
+        static const ydk::Enum::YLeaf nativeIpAddress;
+        static const ydk::Enum::YLeaf domainVrf;
+        static const ydk::Enum::YLeaf domainIpAddress;
+        static const ydk::Enum::YLeaf pbhk;
+        static const ydk::Enum::YLeaf remoteId;
+        static const ydk::Enum::YLeaf circuitId;
+        static const ydk::Enum::YLeaf nasPort;
+        static const ydk::Enum::YLeaf domain;
+        static const ydk::Enum::YLeaf username;
+        static const ydk::Enum::YLeaf acctSessionId;
+        static const ydk::Enum::YLeaf dnis;
+        static const ydk::Enum::YLeaf media;
+        static const ydk::Enum::YLeaf mlpNegotiated;
+        static const ydk::Enum::YLeaf protocol;
+        static const ydk::Enum::YLeaf serviceName;
+        static const ydk::Enum::YLeaf dhcpClass;
+        static const ydk::Enum::YLeaf tunnelName;
 
 };
 

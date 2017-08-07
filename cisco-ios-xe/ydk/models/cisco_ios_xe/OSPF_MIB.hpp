@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace OSPF_MIB {
 
-class OspfMib : public Entity
+class OspfMib : public ydk::Entity
 {
     public:
         OspfMib();
@@ -19,15 +19,18 @@ class OspfMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Ospfgeneralgroup; //type: OspfMib::Ospfgeneralgroup
         class Ospfareatable; //type: OspfMib::Ospfareatable
@@ -47,28 +50,28 @@ class OspfMib : public Entity
         class Ospfaslsdbtable; //type: OspfMib::Ospfaslsdbtable
         class Ospfarealsacounttable; //type: OspfMib::Ospfarealsacounttable
 
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfareaaggregatetable> ospfareaaggregatetable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfarealsacounttable> ospfarealsacounttable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfarearangetable> ospfarearangetable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfareatable> ospfareatable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfaslsdbtable> ospfaslsdbtable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfextlsdbtable> ospfextlsdbtable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfgeneralgroup> ospfgeneralgroup_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfhosttable> ospfhosttable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfifmetrictable> ospfifmetrictable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfiftable> ospfiftable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospflocallsdbtable> ospflocallsdbtable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospflsdbtable> ospflsdbtable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfnbrtable> ospfnbrtable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfstubareatable> ospfstubareatable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtiftable> ospfvirtiftable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtlocallsdbtable> ospfvirtlocallsdbtable_;
-        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtnbrtable> ospfvirtnbrtable_;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfareaaggregatetable> ospfareaaggregatetable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfarealsacounttable> ospfarealsacounttable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfarearangetable> ospfarearangetable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfareatable> ospfareatable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfaslsdbtable> ospfaslsdbtable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfextlsdbtable> ospfextlsdbtable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfgeneralgroup> ospfgeneralgroup;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfhosttable> ospfhosttable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfifmetrictable> ospfifmetrictable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfiftable> ospfiftable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospflocallsdbtable> ospflocallsdbtable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospflsdbtable> ospflsdbtable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfnbrtable> ospfnbrtable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfstubareatable> ospfstubareatable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtiftable> ospfvirtiftable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtlocallsdbtable> ospfvirtlocallsdbtable;
+        std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtnbrtable> ospfvirtnbrtable;
         
 }; // OspfMib
 
 
-class OspfMib::Ospfgeneralgroup : public Entity
+class OspfMib::Ospfgeneralgroup : public ydk::Entity
 {
     public:
         Ospfgeneralgroup();
@@ -76,50 +79,52 @@ class OspfMib::Ospfgeneralgroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfrouterid; //type: string
-        YLeaf ospfadminstat; //type: StatusEnum
-        YLeaf ospfversionnumber; //type: OspfversionnumberEnum
-        YLeaf ospfareabdrrtrstatus; //type: boolean
-        YLeaf ospfasbdrrtrstatus; //type: boolean
-        YLeaf ospfexternlsacount; //type: uint32
-        YLeaf ospfexternlsacksumsum; //type: int32
-        YLeaf ospftossupport; //type: boolean
-        YLeaf ospforiginatenewlsas; //type: uint32
-        YLeaf ospfrxnewlsas; //type: uint32
-        YLeaf ospfextlsdblimit; //type: int32
-        YLeaf ospfmulticastextensions; //type: int32
-        YLeaf ospfexitoverflowinterval; //type: int32
-        YLeaf ospfdemandextensions; //type: boolean
-        YLeaf ospfrfc1583compatibility; //type: boolean
-        YLeaf ospfopaquelsasupport; //type: boolean
-        YLeaf ospfreferencebandwidth; //type: uint32
-        YLeaf ospfrestartsupport; //type: OspfrestartsupportEnum
-        YLeaf ospfrestartinterval; //type: int32
-        YLeaf ospfrestartstrictlsachecking; //type: boolean
-        YLeaf ospfrestartstatus; //type: OspfrestartstatusEnum
-        YLeaf ospfrestartage; //type: uint32
-        YLeaf ospfrestartexitreason; //type: OspfrestartexitreasonEnum
-        YLeaf ospfaslsacount; //type: uint32
-        YLeaf ospfaslsacksumsum; //type: uint32
-        YLeaf ospfstubroutersupport; //type: boolean
-        YLeaf ospfstubrouteradvertisement; //type: OspfstubrouteradvertisementEnum
-        YLeaf ospfdiscontinuitytime; //type: uint32
-        class OspfversionnumberEnum;
-        class OspfrestartsupportEnum;
-        class OspfrestartstatusEnum;
-        class OspfrestartexitreasonEnum;
-        class OspfstubrouteradvertisementEnum;
+        ydk::YLeaf ospfrouterid; //type: string
+        ydk::YLeaf ospfadminstat; //type: Status
+        ydk::YLeaf ospfversionnumber; //type: Ospfversionnumber
+        ydk::YLeaf ospfareabdrrtrstatus; //type: boolean
+        ydk::YLeaf ospfasbdrrtrstatus; //type: boolean
+        ydk::YLeaf ospfexternlsacount; //type: uint32
+        ydk::YLeaf ospfexternlsacksumsum; //type: int32
+        ydk::YLeaf ospftossupport; //type: boolean
+        ydk::YLeaf ospforiginatenewlsas; //type: uint32
+        ydk::YLeaf ospfrxnewlsas; //type: uint32
+        ydk::YLeaf ospfextlsdblimit; //type: int32
+        ydk::YLeaf ospfmulticastextensions; //type: int32
+        ydk::YLeaf ospfexitoverflowinterval; //type: int32
+        ydk::YLeaf ospfdemandextensions; //type: boolean
+        ydk::YLeaf ospfrfc1583compatibility; //type: boolean
+        ydk::YLeaf ospfopaquelsasupport; //type: boolean
+        ydk::YLeaf ospfreferencebandwidth; //type: uint32
+        ydk::YLeaf ospfrestartsupport; //type: Ospfrestartsupport
+        ydk::YLeaf ospfrestartinterval; //type: int32
+        ydk::YLeaf ospfrestartstrictlsachecking; //type: boolean
+        ydk::YLeaf ospfrestartstatus; //type: Ospfrestartstatus
+        ydk::YLeaf ospfrestartage; //type: uint32
+        ydk::YLeaf ospfrestartexitreason; //type: Ospfrestartexitreason
+        ydk::YLeaf ospfaslsacount; //type: uint32
+        ydk::YLeaf ospfaslsacksumsum; //type: uint32
+        ydk::YLeaf ospfstubroutersupport; //type: boolean
+        ydk::YLeaf ospfstubrouteradvertisement; //type: Ospfstubrouteradvertisement
+        ydk::YLeaf ospfdiscontinuitytime; //type: uint32
+        class Ospfversionnumber;
+        class Ospfrestartsupport;
+        class Ospfrestartstatus;
+        class Ospfrestartexitreason;
+        class Ospfstubrouteradvertisement;
 
 }; // OspfMib::Ospfgeneralgroup
 
 
-class OspfMib::Ospfareatable : public Entity
+class OspfMib::Ospfareatable : public ydk::Entity
 {
     public:
         Ospfareatable();
@@ -127,20 +132,22 @@ class OspfMib::Ospfareatable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfareaentry; //type: OspfMib::Ospfareatable::Ospfareaentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfareatable::Ospfareaentry> > ospfareaentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfareatable::Ospfareaentry> > ospfareaentry;
         
 }; // OspfMib::Ospfareatable
 
 
-class OspfMib::Ospfareatable::Ospfareaentry : public Entity
+class OspfMib::Ospfareatable::Ospfareaentry : public ydk::Entity
 {
     public:
         Ospfareaentry();
@@ -148,42 +155,44 @@ class OspfMib::Ospfareatable::Ospfareaentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfareaid; //type: string
-        YLeaf ospfauthtype; //type: OspfauthenticationtypeEnum
-        YLeaf ospfimportasextern; //type: OspfimportasexternEnum
-        YLeaf ospfspfruns; //type: uint32
-        YLeaf ospfareabdrrtrcount; //type: uint32
-        YLeaf ospfasbdrrtrcount; //type: uint32
-        YLeaf ospfarealsacount; //type: uint32
-        YLeaf ospfarealsacksumsum; //type: int32
-        YLeaf ospfareasummary; //type: OspfareasummaryEnum
-        YLeaf ospfareastatus; //type: RowstatusEnum
-        YLeaf ospfareanssatranslatorrole; //type: OspfareanssatranslatorroleEnum
-        YLeaf ospfareanssatranslatorstate; //type: OspfareanssatranslatorstateEnum
-        YLeaf ospfareanssatranslatorstabilityinterval; //type: int32
-        YLeaf ospfareanssatranslatorevents; //type: uint32
-        YLeaf cospfopaquearealsacount; //type: uint32
-        YLeaf cospfopaquearealsacksumsum; //type: uint32
-        YLeaf cospfareanssatranslatorrole; //type: CospfareanssatranslatorroleEnum
-        YLeaf cospfareanssatranslatorstate; //type: CospfareanssatranslatorstateEnum
-        YLeaf cospfareanssatranslatorevents; //type: uint32
-        class OspfimportasexternEnum;
-        class OspfareasummaryEnum;
-        class OspfareanssatranslatorroleEnum;
-        class OspfareanssatranslatorstateEnum;
-        class CospfareanssatranslatorroleEnum;
-        class CospfareanssatranslatorstateEnum;
+        ydk::YLeaf ospfareaid; //type: string
+        ydk::YLeaf ospfauthtype; //type: Ospfauthenticationtype
+        ydk::YLeaf ospfimportasextern; //type: Ospfimportasextern
+        ydk::YLeaf ospfspfruns; //type: uint32
+        ydk::YLeaf ospfareabdrrtrcount; //type: uint32
+        ydk::YLeaf ospfasbdrrtrcount; //type: uint32
+        ydk::YLeaf ospfarealsacount; //type: uint32
+        ydk::YLeaf ospfarealsacksumsum; //type: int32
+        ydk::YLeaf ospfareasummary; //type: Ospfareasummary
+        ydk::YLeaf ospfareastatus; //type: Rowstatus
+        ydk::YLeaf ospfareanssatranslatorrole; //type: Ospfareanssatranslatorrole
+        ydk::YLeaf ospfareanssatranslatorstate; //type: Ospfareanssatranslatorstate
+        ydk::YLeaf ospfareanssatranslatorstabilityinterval; //type: int32
+        ydk::YLeaf ospfareanssatranslatorevents; //type: uint32
+        ydk::YLeaf cospfopaquearealsacount; //type: uint32
+        ydk::YLeaf cospfopaquearealsacksumsum; //type: uint32
+        ydk::YLeaf cospfareanssatranslatorrole; //type: Cospfareanssatranslatorrole
+        ydk::YLeaf cospfareanssatranslatorstate; //type: Cospfareanssatranslatorstate
+        ydk::YLeaf cospfareanssatranslatorevents; //type: uint32
+        class Ospfimportasextern;
+        class Ospfareasummary;
+        class Ospfareanssatranslatorrole;
+        class Ospfareanssatranslatorstate;
+        class Cospfareanssatranslatorrole;
+        class Cospfareanssatranslatorstate;
 
 }; // OspfMib::Ospfareatable::Ospfareaentry
 
 
-class OspfMib::Ospfstubareatable : public Entity
+class OspfMib::Ospfstubareatable : public ydk::Entity
 {
     public:
         Ospfstubareatable();
@@ -191,20 +200,22 @@ class OspfMib::Ospfstubareatable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfstubareaentry; //type: OspfMib::Ospfstubareatable::Ospfstubareaentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfstubareatable::Ospfstubareaentry> > ospfstubareaentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfstubareatable::Ospfstubareaentry> > ospfstubareaentry;
         
 }; // OspfMib::Ospfstubareatable
 
 
-class OspfMib::Ospfstubareatable::Ospfstubareaentry : public Entity
+class OspfMib::Ospfstubareatable::Ospfstubareaentry : public ydk::Entity
 {
     public:
         Ospfstubareaentry();
@@ -212,23 +223,25 @@ class OspfMib::Ospfstubareatable::Ospfstubareaentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfstubareaid; //type: string
-        YLeaf ospfstubtos; //type: int32
-        YLeaf ospfstubmetric; //type: int32
-        YLeaf ospfstubstatus; //type: RowstatusEnum
-        YLeaf ospfstubmetrictype; //type: OspfstubmetrictypeEnum
-        class OspfstubmetrictypeEnum;
+        ydk::YLeaf ospfstubareaid; //type: string
+        ydk::YLeaf ospfstubtos; //type: int32
+        ydk::YLeaf ospfstubmetric; //type: int32
+        ydk::YLeaf ospfstubstatus; //type: Rowstatus
+        ydk::YLeaf ospfstubmetrictype; //type: Ospfstubmetrictype
+        class Ospfstubmetrictype;
 
 }; // OspfMib::Ospfstubareatable::Ospfstubareaentry
 
 
-class OspfMib::Ospflsdbtable : public Entity
+class OspfMib::Ospflsdbtable : public ydk::Entity
 {
     public:
         Ospflsdbtable();
@@ -236,20 +249,22 @@ class OspfMib::Ospflsdbtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospflsdbentry; //type: OspfMib::Ospflsdbtable::Ospflsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospflsdbtable::Ospflsdbentry> > ospflsdbentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospflsdbtable::Ospflsdbentry> > ospflsdbentry;
         
 }; // OspfMib::Ospflsdbtable
 
 
-class OspfMib::Ospflsdbtable::Ospflsdbentry : public Entity
+class OspfMib::Ospflsdbtable::Ospflsdbentry : public ydk::Entity
 {
     public:
         Ospflsdbentry();
@@ -257,26 +272,28 @@ class OspfMib::Ospflsdbtable::Ospflsdbentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospflsdbareaid; //type: string
-        YLeaf ospflsdbtype; //type: OspflsdbtypeEnum
-        YLeaf ospflsdblsid; //type: string
-        YLeaf ospflsdbrouterid; //type: string
-        YLeaf ospflsdbsequence; //type: int32
-        YLeaf ospflsdbage; //type: int32
-        YLeaf ospflsdbchecksum; //type: int32
-        YLeaf ospflsdbadvertisement; //type: binary
-        class OspflsdbtypeEnum;
+        ydk::YLeaf ospflsdbareaid; //type: string
+        ydk::YLeaf ospflsdbtype; //type: Ospflsdbtype
+        ydk::YLeaf ospflsdblsid; //type: string
+        ydk::YLeaf ospflsdbrouterid; //type: string
+        ydk::YLeaf ospflsdbsequence; //type: int32
+        ydk::YLeaf ospflsdbage; //type: int32
+        ydk::YLeaf ospflsdbchecksum; //type: int32
+        ydk::YLeaf ospflsdbadvertisement; //type: binary
+        class Ospflsdbtype;
 
 }; // OspfMib::Ospflsdbtable::Ospflsdbentry
 
 
-class OspfMib::Ospfarearangetable : public Entity
+class OspfMib::Ospfarearangetable : public ydk::Entity
 {
     public:
         Ospfarearangetable();
@@ -284,20 +301,22 @@ class OspfMib::Ospfarearangetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfarearangeentry; //type: OspfMib::Ospfarearangetable::Ospfarearangeentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfarearangetable::Ospfarearangeentry> > ospfarearangeentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfarearangetable::Ospfarearangeentry> > ospfarearangeentry;
         
 }; // OspfMib::Ospfarearangetable
 
 
-class OspfMib::Ospfarearangetable::Ospfarearangeentry : public Entity
+class OspfMib::Ospfarearangetable::Ospfarearangeentry : public ydk::Entity
 {
     public:
         Ospfarearangeentry();
@@ -305,23 +324,25 @@ class OspfMib::Ospfarearangetable::Ospfarearangeentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfarearangeareaid; //type: string
-        YLeaf ospfarearangenet; //type: string
-        YLeaf ospfarearangemask; //type: string
-        YLeaf ospfarearangestatus; //type: RowstatusEnum
-        YLeaf ospfarearangeeffect; //type: OspfarearangeeffectEnum
-        class OspfarearangeeffectEnum;
+        ydk::YLeaf ospfarearangeareaid; //type: string
+        ydk::YLeaf ospfarearangenet; //type: string
+        ydk::YLeaf ospfarearangemask; //type: string
+        ydk::YLeaf ospfarearangestatus; //type: Rowstatus
+        ydk::YLeaf ospfarearangeeffect; //type: Ospfarearangeeffect
+        class Ospfarearangeeffect;
 
 }; // OspfMib::Ospfarearangetable::Ospfarearangeentry
 
 
-class OspfMib::Ospfhosttable : public Entity
+class OspfMib::Ospfhosttable : public ydk::Entity
 {
     public:
         Ospfhosttable();
@@ -329,20 +350,22 @@ class OspfMib::Ospfhosttable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfhostentry; //type: OspfMib::Ospfhosttable::Ospfhostentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfhosttable::Ospfhostentry> > ospfhostentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfhosttable::Ospfhostentry> > ospfhostentry;
         
 }; // OspfMib::Ospfhosttable
 
 
-class OspfMib::Ospfhosttable::Ospfhostentry : public Entity
+class OspfMib::Ospfhosttable::Ospfhostentry : public ydk::Entity
 {
     public:
         Ospfhostentry();
@@ -350,23 +373,25 @@ class OspfMib::Ospfhosttable::Ospfhostentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfhostipaddress; //type: string
-        YLeaf ospfhosttos; //type: int32
-        YLeaf ospfhostmetric; //type: int32
-        YLeaf ospfhoststatus; //type: RowstatusEnum
-        YLeaf ospfhostareaid; //type: string
-        YLeaf ospfhostcfgareaid; //type: string
+        ydk::YLeaf ospfhostipaddress; //type: string
+        ydk::YLeaf ospfhosttos; //type: int32
+        ydk::YLeaf ospfhostmetric; //type: int32
+        ydk::YLeaf ospfhoststatus; //type: Rowstatus
+        ydk::YLeaf ospfhostareaid; //type: string
+        ydk::YLeaf ospfhostcfgareaid; //type: string
 
 }; // OspfMib::Ospfhosttable::Ospfhostentry
 
 
-class OspfMib::Ospfiftable : public Entity
+class OspfMib::Ospfiftable : public ydk::Entity
 {
     public:
         Ospfiftable();
@@ -374,20 +399,22 @@ class OspfMib::Ospfiftable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfifentry; //type: OspfMib::Ospfiftable::Ospfifentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfiftable::Ospfifentry> > ospfifentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfiftable::Ospfifentry> > ospfifentry;
         
 }; // OspfMib::Ospfiftable
 
 
-class OspfMib::Ospfiftable::Ospfifentry : public Entity
+class OspfMib::Ospfiftable::Ospfifentry : public ydk::Entity
 {
     public:
         Ospfifentry();
@@ -395,46 +422,48 @@ class OspfMib::Ospfiftable::Ospfifentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfifipaddress; //type: string
-        YLeaf ospfaddresslessif; //type: int32
-        YLeaf ospfifareaid; //type: string
-        YLeaf ospfiftype; //type: OspfiftypeEnum
-        YLeaf ospfifadminstat; //type: StatusEnum
-        YLeaf ospfifrtrpriority; //type: int32
-        YLeaf ospfiftransitdelay; //type: int32
-        YLeaf ospfifretransinterval; //type: int32
-        YLeaf ospfifhellointerval; //type: int32
-        YLeaf ospfifrtrdeadinterval; //type: int32
-        YLeaf ospfifpollinterval; //type: int32
-        YLeaf ospfifstate; //type: OspfifstateEnum
-        YLeaf ospfifdesignatedrouter; //type: string
-        YLeaf ospfifbackupdesignatedrouter; //type: string
-        YLeaf ospfifevents; //type: uint32
-        YLeaf ospfifauthkey; //type: binary
-        YLeaf ospfifstatus; //type: RowstatusEnum
-        YLeaf ospfifmulticastforwarding; //type: OspfifmulticastforwardingEnum
-        YLeaf ospfifdemand; //type: boolean
-        YLeaf ospfifauthtype; //type: OspfauthenticationtypeEnum
-        YLeaf ospfiflsacount; //type: uint32
-        YLeaf ospfiflsacksumsum; //type: uint32
-        YLeaf ospfifdesignatedrouterid; //type: string
-        YLeaf ospfifbackupdesignatedrouterid; //type: string
-        YLeaf cospfiflsacount; //type: uint32
-        YLeaf cospfiflsacksumsum; //type: uint32
-        class OspfiftypeEnum;
-        class OspfifstateEnum;
-        class OspfifmulticastforwardingEnum;
+        ydk::YLeaf ospfifipaddress; //type: string
+        ydk::YLeaf ospfaddresslessif; //type: int32
+        ydk::YLeaf ospfifareaid; //type: string
+        ydk::YLeaf ospfiftype; //type: Ospfiftype
+        ydk::YLeaf ospfifadminstat; //type: Status
+        ydk::YLeaf ospfifrtrpriority; //type: int32
+        ydk::YLeaf ospfiftransitdelay; //type: int32
+        ydk::YLeaf ospfifretransinterval; //type: int32
+        ydk::YLeaf ospfifhellointerval; //type: int32
+        ydk::YLeaf ospfifrtrdeadinterval; //type: int32
+        ydk::YLeaf ospfifpollinterval; //type: int32
+        ydk::YLeaf ospfifstate; //type: Ospfifstate
+        ydk::YLeaf ospfifdesignatedrouter; //type: string
+        ydk::YLeaf ospfifbackupdesignatedrouter; //type: string
+        ydk::YLeaf ospfifevents; //type: uint32
+        ydk::YLeaf ospfifauthkey; //type: binary
+        ydk::YLeaf ospfifstatus; //type: Rowstatus
+        ydk::YLeaf ospfifmulticastforwarding; //type: Ospfifmulticastforwarding
+        ydk::YLeaf ospfifdemand; //type: boolean
+        ydk::YLeaf ospfifauthtype; //type: Ospfauthenticationtype
+        ydk::YLeaf ospfiflsacount; //type: uint32
+        ydk::YLeaf ospfiflsacksumsum; //type: uint32
+        ydk::YLeaf ospfifdesignatedrouterid; //type: string
+        ydk::YLeaf ospfifbackupdesignatedrouterid; //type: string
+        ydk::YLeaf cospfiflsacount; //type: uint32
+        ydk::YLeaf cospfiflsacksumsum; //type: uint32
+        class Ospfiftype;
+        class Ospfifstate;
+        class Ospfifmulticastforwarding;
 
 }; // OspfMib::Ospfiftable::Ospfifentry
 
 
-class OspfMib::Ospfifmetrictable : public Entity
+class OspfMib::Ospfifmetrictable : public ydk::Entity
 {
     public:
         Ospfifmetrictable();
@@ -442,20 +471,22 @@ class OspfMib::Ospfifmetrictable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfifmetricentry; //type: OspfMib::Ospfifmetrictable::Ospfifmetricentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfifmetrictable::Ospfifmetricentry> > ospfifmetricentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfifmetrictable::Ospfifmetricentry> > ospfifmetricentry;
         
 }; // OspfMib::Ospfifmetrictable
 
 
-class OspfMib::Ospfifmetrictable::Ospfifmetricentry : public Entity
+class OspfMib::Ospfifmetrictable::Ospfifmetricentry : public ydk::Entity
 {
     public:
         Ospfifmetricentry();
@@ -463,22 +494,24 @@ class OspfMib::Ospfifmetrictable::Ospfifmetricentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfifmetricipaddress; //type: string
-        YLeaf ospfifmetricaddresslessif; //type: int32
-        YLeaf ospfifmetrictos; //type: int32
-        YLeaf ospfifmetricvalue; //type: int32
-        YLeaf ospfifmetricstatus; //type: RowstatusEnum
+        ydk::YLeaf ospfifmetricipaddress; //type: string
+        ydk::YLeaf ospfifmetricaddresslessif; //type: int32
+        ydk::YLeaf ospfifmetrictos; //type: int32
+        ydk::YLeaf ospfifmetricvalue; //type: int32
+        ydk::YLeaf ospfifmetricstatus; //type: Rowstatus
 
 }; // OspfMib::Ospfifmetrictable::Ospfifmetricentry
 
 
-class OspfMib::Ospfvirtiftable : public Entity
+class OspfMib::Ospfvirtiftable : public ydk::Entity
 {
     public:
         Ospfvirtiftable();
@@ -486,20 +519,22 @@ class OspfMib::Ospfvirtiftable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfvirtifentry; //type: OspfMib::Ospfvirtiftable::Ospfvirtifentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtiftable::Ospfvirtifentry> > ospfvirtifentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtiftable::Ospfvirtifentry> > ospfvirtifentry;
         
 }; // OspfMib::Ospfvirtiftable
 
 
-class OspfMib::Ospfvirtiftable::Ospfvirtifentry : public Entity
+class OspfMib::Ospfvirtiftable::Ospfvirtifentry : public ydk::Entity
 {
     public:
         Ospfvirtifentry();
@@ -507,33 +542,35 @@ class OspfMib::Ospfvirtiftable::Ospfvirtifentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfvirtifareaid; //type: string
-        YLeaf ospfvirtifneighbor; //type: string
-        YLeaf ospfvirtiftransitdelay; //type: int32
-        YLeaf ospfvirtifretransinterval; //type: int32
-        YLeaf ospfvirtifhellointerval; //type: int32
-        YLeaf ospfvirtifrtrdeadinterval; //type: int32
-        YLeaf ospfvirtifstate; //type: OspfvirtifstateEnum
-        YLeaf ospfvirtifevents; //type: uint32
-        YLeaf ospfvirtifauthkey; //type: binary
-        YLeaf ospfvirtifstatus; //type: RowstatusEnum
-        YLeaf ospfvirtifauthtype; //type: OspfauthenticationtypeEnum
-        YLeaf ospfvirtiflsacount; //type: uint32
-        YLeaf ospfvirtiflsacksumsum; //type: uint32
-        YLeaf cospfvirtiflsacount; //type: uint32
-        YLeaf cospfvirtiflsacksumsum; //type: uint32
-        class OspfvirtifstateEnum;
+        ydk::YLeaf ospfvirtifareaid; //type: string
+        ydk::YLeaf ospfvirtifneighbor; //type: string
+        ydk::YLeaf ospfvirtiftransitdelay; //type: int32
+        ydk::YLeaf ospfvirtifretransinterval; //type: int32
+        ydk::YLeaf ospfvirtifhellointerval; //type: int32
+        ydk::YLeaf ospfvirtifrtrdeadinterval; //type: int32
+        ydk::YLeaf ospfvirtifstate; //type: Ospfvirtifstate
+        ydk::YLeaf ospfvirtifevents; //type: uint32
+        ydk::YLeaf ospfvirtifauthkey; //type: binary
+        ydk::YLeaf ospfvirtifstatus; //type: Rowstatus
+        ydk::YLeaf ospfvirtifauthtype; //type: Ospfauthenticationtype
+        ydk::YLeaf ospfvirtiflsacount; //type: uint32
+        ydk::YLeaf ospfvirtiflsacksumsum; //type: uint32
+        ydk::YLeaf cospfvirtiflsacount; //type: uint32
+        ydk::YLeaf cospfvirtiflsacksumsum; //type: uint32
+        class Ospfvirtifstate;
 
 }; // OspfMib::Ospfvirtiftable::Ospfvirtifentry
 
 
-class OspfMib::Ospfnbrtable : public Entity
+class OspfMib::Ospfnbrtable : public ydk::Entity
 {
     public:
         Ospfnbrtable();
@@ -541,20 +578,22 @@ class OspfMib::Ospfnbrtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfnbrentry; //type: OspfMib::Ospfnbrtable::Ospfnbrentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfnbrtable::Ospfnbrentry> > ospfnbrentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfnbrtable::Ospfnbrentry> > ospfnbrentry;
         
 }; // OspfMib::Ospfnbrtable
 
 
-class OspfMib::Ospfnbrtable::Ospfnbrentry : public Entity
+class OspfMib::Ospfnbrtable::Ospfnbrentry : public ydk::Entity
 {
     public:
         Ospfnbrentry();
@@ -562,35 +601,37 @@ class OspfMib::Ospfnbrtable::Ospfnbrentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfnbripaddr; //type: string
-        YLeaf ospfnbraddresslessindex; //type: int32
-        YLeaf ospfnbrrtrid; //type: string
-        YLeaf ospfnbroptions; //type: int32
-        YLeaf ospfnbrpriority; //type: int32
-        YLeaf ospfnbrstate; //type: OspfnbrstateEnum
-        YLeaf ospfnbrevents; //type: uint32
-        YLeaf ospfnbrlsretransqlen; //type: uint32
-        YLeaf ospfnbmanbrstatus; //type: RowstatusEnum
-        YLeaf ospfnbmanbrpermanence; //type: OspfnbmanbrpermanenceEnum
-        YLeaf ospfnbrhellosuppressed; //type: boolean
-        YLeaf ospfnbrrestarthelperstatus; //type: OspfnbrrestarthelperstatusEnum
-        YLeaf ospfnbrrestarthelperage; //type: uint32
-        YLeaf ospfnbrrestarthelperexitreason; //type: OspfnbrrestarthelperexitreasonEnum
-        class OspfnbrstateEnum;
-        class OspfnbmanbrpermanenceEnum;
-        class OspfnbrrestarthelperstatusEnum;
-        class OspfnbrrestarthelperexitreasonEnum;
+        ydk::YLeaf ospfnbripaddr; //type: string
+        ydk::YLeaf ospfnbraddresslessindex; //type: int32
+        ydk::YLeaf ospfnbrrtrid; //type: string
+        ydk::YLeaf ospfnbroptions; //type: int32
+        ydk::YLeaf ospfnbrpriority; //type: int32
+        ydk::YLeaf ospfnbrstate; //type: Ospfnbrstate
+        ydk::YLeaf ospfnbrevents; //type: uint32
+        ydk::YLeaf ospfnbrlsretransqlen; //type: uint32
+        ydk::YLeaf ospfnbmanbrstatus; //type: Rowstatus
+        ydk::YLeaf ospfnbmanbrpermanence; //type: Ospfnbmanbrpermanence
+        ydk::YLeaf ospfnbrhellosuppressed; //type: boolean
+        ydk::YLeaf ospfnbrrestarthelperstatus; //type: Ospfnbrrestarthelperstatus
+        ydk::YLeaf ospfnbrrestarthelperage; //type: uint32
+        ydk::YLeaf ospfnbrrestarthelperexitreason; //type: Ospfnbrrestarthelperexitreason
+        class Ospfnbrstate;
+        class Ospfnbmanbrpermanence;
+        class Ospfnbrrestarthelperstatus;
+        class Ospfnbrrestarthelperexitreason;
 
 }; // OspfMib::Ospfnbrtable::Ospfnbrentry
 
 
-class OspfMib::Ospfvirtnbrtable : public Entity
+class OspfMib::Ospfvirtnbrtable : public ydk::Entity
 {
     public:
         Ospfvirtnbrtable();
@@ -598,20 +639,22 @@ class OspfMib::Ospfvirtnbrtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfvirtnbrentry; //type: OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry> > ospfvirtnbrentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry> > ospfvirtnbrentry;
         
 }; // OspfMib::Ospfvirtnbrtable
 
 
-class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry : public Entity
+class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry : public ydk::Entity
 {
     public:
         Ospfvirtnbrentry();
@@ -619,31 +662,33 @@ class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfvirtnbrarea; //type: string
-        YLeaf ospfvirtnbrrtrid; //type: string
-        YLeaf ospfvirtnbripaddr; //type: string
-        YLeaf ospfvirtnbroptions; //type: int32
-        YLeaf ospfvirtnbrstate; //type: OspfvirtnbrstateEnum
-        YLeaf ospfvirtnbrevents; //type: uint32
-        YLeaf ospfvirtnbrlsretransqlen; //type: uint32
-        YLeaf ospfvirtnbrhellosuppressed; //type: boolean
-        YLeaf ospfvirtnbrrestarthelperstatus; //type: OspfvirtnbrrestarthelperstatusEnum
-        YLeaf ospfvirtnbrrestarthelperage; //type: uint32
-        YLeaf ospfvirtnbrrestarthelperexitreason; //type: OspfvirtnbrrestarthelperexitreasonEnum
-        class OspfvirtnbrstateEnum;
-        class OspfvirtnbrrestarthelperstatusEnum;
-        class OspfvirtnbrrestarthelperexitreasonEnum;
+        ydk::YLeaf ospfvirtnbrarea; //type: string
+        ydk::YLeaf ospfvirtnbrrtrid; //type: string
+        ydk::YLeaf ospfvirtnbripaddr; //type: string
+        ydk::YLeaf ospfvirtnbroptions; //type: int32
+        ydk::YLeaf ospfvirtnbrstate; //type: Ospfvirtnbrstate
+        ydk::YLeaf ospfvirtnbrevents; //type: uint32
+        ydk::YLeaf ospfvirtnbrlsretransqlen; //type: uint32
+        ydk::YLeaf ospfvirtnbrhellosuppressed; //type: boolean
+        ydk::YLeaf ospfvirtnbrrestarthelperstatus; //type: Ospfvirtnbrrestarthelperstatus
+        ydk::YLeaf ospfvirtnbrrestarthelperage; //type: uint32
+        ydk::YLeaf ospfvirtnbrrestarthelperexitreason; //type: Ospfvirtnbrrestarthelperexitreason
+        class Ospfvirtnbrstate;
+        class Ospfvirtnbrrestarthelperstatus;
+        class Ospfvirtnbrrestarthelperexitreason;
 
 }; // OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry
 
 
-class OspfMib::Ospfextlsdbtable : public Entity
+class OspfMib::Ospfextlsdbtable : public ydk::Entity
 {
     public:
         Ospfextlsdbtable();
@@ -651,20 +696,22 @@ class OspfMib::Ospfextlsdbtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfextlsdbentry; //type: OspfMib::Ospfextlsdbtable::Ospfextlsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfextlsdbtable::Ospfextlsdbentry> > ospfextlsdbentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfextlsdbtable::Ospfextlsdbentry> > ospfextlsdbentry;
         
 }; // OspfMib::Ospfextlsdbtable
 
 
-class OspfMib::Ospfextlsdbtable::Ospfextlsdbentry : public Entity
+class OspfMib::Ospfextlsdbtable::Ospfextlsdbentry : public ydk::Entity
 {
     public:
         Ospfextlsdbentry();
@@ -672,25 +719,27 @@ class OspfMib::Ospfextlsdbtable::Ospfextlsdbentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfextlsdbtype; //type: OspfextlsdbtypeEnum
-        YLeaf ospfextlsdblsid; //type: string
-        YLeaf ospfextlsdbrouterid; //type: string
-        YLeaf ospfextlsdbsequence; //type: int32
-        YLeaf ospfextlsdbage; //type: int32
-        YLeaf ospfextlsdbchecksum; //type: int32
-        YLeaf ospfextlsdbadvertisement; //type: binary
-        class OspfextlsdbtypeEnum;
+        ydk::YLeaf ospfextlsdbtype; //type: Ospfextlsdbtype
+        ydk::YLeaf ospfextlsdblsid; //type: string
+        ydk::YLeaf ospfextlsdbrouterid; //type: string
+        ydk::YLeaf ospfextlsdbsequence; //type: int32
+        ydk::YLeaf ospfextlsdbage; //type: int32
+        ydk::YLeaf ospfextlsdbchecksum; //type: int32
+        ydk::YLeaf ospfextlsdbadvertisement; //type: binary
+        class Ospfextlsdbtype;
 
 }; // OspfMib::Ospfextlsdbtable::Ospfextlsdbentry
 
 
-class OspfMib::Ospfareaaggregatetable : public Entity
+class OspfMib::Ospfareaaggregatetable : public ydk::Entity
 {
     public:
         Ospfareaaggregatetable();
@@ -698,20 +747,22 @@ class OspfMib::Ospfareaaggregatetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfareaaggregateentry; //type: OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry> > ospfareaaggregateentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry> > ospfareaaggregateentry;
         
 }; // OspfMib::Ospfareaaggregatetable
 
 
-class OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry : public Entity
+class OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry : public ydk::Entity
 {
     public:
         Ospfareaaggregateentry();
@@ -719,26 +770,28 @@ class OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfareaaggregateareaid; //type: string
-        YLeaf ospfareaaggregatelsdbtype; //type: OspfareaaggregatelsdbtypeEnum
-        YLeaf ospfareaaggregatenet; //type: string
-        YLeaf ospfareaaggregatemask; //type: string
-        YLeaf ospfareaaggregatestatus; //type: RowstatusEnum
-        YLeaf ospfareaaggregateeffect; //type: OspfareaaggregateeffectEnum
-        YLeaf ospfareaaggregateextroutetag; //type: uint32
-        class OspfareaaggregatelsdbtypeEnum;
-        class OspfareaaggregateeffectEnum;
+        ydk::YLeaf ospfareaaggregateareaid; //type: string
+        ydk::YLeaf ospfareaaggregatelsdbtype; //type: Ospfareaaggregatelsdbtype
+        ydk::YLeaf ospfareaaggregatenet; //type: string
+        ydk::YLeaf ospfareaaggregatemask; //type: string
+        ydk::YLeaf ospfareaaggregatestatus; //type: Rowstatus
+        ydk::YLeaf ospfareaaggregateeffect; //type: Ospfareaaggregateeffect
+        ydk::YLeaf ospfareaaggregateextroutetag; //type: uint32
+        class Ospfareaaggregatelsdbtype;
+        class Ospfareaaggregateeffect;
 
 }; // OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry
 
 
-class OspfMib::Ospflocallsdbtable : public Entity
+class OspfMib::Ospflocallsdbtable : public ydk::Entity
 {
     public:
         Ospflocallsdbtable();
@@ -746,20 +799,22 @@ class OspfMib::Ospflocallsdbtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospflocallsdbentry; //type: OspfMib::Ospflocallsdbtable::Ospflocallsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospflocallsdbtable::Ospflocallsdbentry> > ospflocallsdbentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospflocallsdbtable::Ospflocallsdbentry> > ospflocallsdbentry;
         
 }; // OspfMib::Ospflocallsdbtable
 
 
-class OspfMib::Ospflocallsdbtable::Ospflocallsdbentry : public Entity
+class OspfMib::Ospflocallsdbtable::Ospflocallsdbentry : public ydk::Entity
 {
     public:
         Ospflocallsdbentry();
@@ -767,27 +822,29 @@ class OspfMib::Ospflocallsdbtable::Ospflocallsdbentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospflocallsdbipaddress; //type: string
-        YLeaf ospflocallsdbaddresslessif; //type: int32
-        YLeaf ospflocallsdbtype; //type: OspflocallsdbtypeEnum
-        YLeaf ospflocallsdblsid; //type: string
-        YLeaf ospflocallsdbrouterid; //type: string
-        YLeaf ospflocallsdbsequence; //type: int32
-        YLeaf ospflocallsdbage; //type: int32
-        YLeaf ospflocallsdbchecksum; //type: int32
-        YLeaf ospflocallsdbadvertisement; //type: binary
-        class OspflocallsdbtypeEnum;
+        ydk::YLeaf ospflocallsdbipaddress; //type: string
+        ydk::YLeaf ospflocallsdbaddresslessif; //type: int32
+        ydk::YLeaf ospflocallsdbtype; //type: Ospflocallsdbtype
+        ydk::YLeaf ospflocallsdblsid; //type: string
+        ydk::YLeaf ospflocallsdbrouterid; //type: string
+        ydk::YLeaf ospflocallsdbsequence; //type: int32
+        ydk::YLeaf ospflocallsdbage; //type: int32
+        ydk::YLeaf ospflocallsdbchecksum; //type: int32
+        ydk::YLeaf ospflocallsdbadvertisement; //type: binary
+        class Ospflocallsdbtype;
 
 }; // OspfMib::Ospflocallsdbtable::Ospflocallsdbentry
 
 
-class OspfMib::Ospfvirtlocallsdbtable : public Entity
+class OspfMib::Ospfvirtlocallsdbtable : public ydk::Entity
 {
     public:
         Ospfvirtlocallsdbtable();
@@ -795,20 +852,22 @@ class OspfMib::Ospfvirtlocallsdbtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfvirtlocallsdbentry; //type: OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry> > ospfvirtlocallsdbentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry> > ospfvirtlocallsdbentry;
         
 }; // OspfMib::Ospfvirtlocallsdbtable
 
 
-class OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry : public Entity
+class OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry : public ydk::Entity
 {
     public:
         Ospfvirtlocallsdbentry();
@@ -816,27 +875,29 @@ class OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfvirtlocallsdbtransitarea; //type: string
-        YLeaf ospfvirtlocallsdbneighbor; //type: string
-        YLeaf ospfvirtlocallsdbtype; //type: OspfvirtlocallsdbtypeEnum
-        YLeaf ospfvirtlocallsdblsid; //type: string
-        YLeaf ospfvirtlocallsdbrouterid; //type: string
-        YLeaf ospfvirtlocallsdbsequence; //type: int32
-        YLeaf ospfvirtlocallsdbage; //type: int32
-        YLeaf ospfvirtlocallsdbchecksum; //type: int32
-        YLeaf ospfvirtlocallsdbadvertisement; //type: binary
-        class OspfvirtlocallsdbtypeEnum;
+        ydk::YLeaf ospfvirtlocallsdbtransitarea; //type: string
+        ydk::YLeaf ospfvirtlocallsdbneighbor; //type: string
+        ydk::YLeaf ospfvirtlocallsdbtype; //type: Ospfvirtlocallsdbtype
+        ydk::YLeaf ospfvirtlocallsdblsid; //type: string
+        ydk::YLeaf ospfvirtlocallsdbrouterid; //type: string
+        ydk::YLeaf ospfvirtlocallsdbsequence; //type: int32
+        ydk::YLeaf ospfvirtlocallsdbage; //type: int32
+        ydk::YLeaf ospfvirtlocallsdbchecksum; //type: int32
+        ydk::YLeaf ospfvirtlocallsdbadvertisement; //type: binary
+        class Ospfvirtlocallsdbtype;
 
 }; // OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry
 
 
-class OspfMib::Ospfaslsdbtable : public Entity
+class OspfMib::Ospfaslsdbtable : public ydk::Entity
 {
     public:
         Ospfaslsdbtable();
@@ -844,20 +905,22 @@ class OspfMib::Ospfaslsdbtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfaslsdbentry; //type: OspfMib::Ospfaslsdbtable::Ospfaslsdbentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfaslsdbtable::Ospfaslsdbentry> > ospfaslsdbentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfaslsdbtable::Ospfaslsdbentry> > ospfaslsdbentry;
         
 }; // OspfMib::Ospfaslsdbtable
 
 
-class OspfMib::Ospfaslsdbtable::Ospfaslsdbentry : public Entity
+class OspfMib::Ospfaslsdbtable::Ospfaslsdbentry : public ydk::Entity
 {
     public:
         Ospfaslsdbentry();
@@ -865,25 +928,27 @@ class OspfMib::Ospfaslsdbtable::Ospfaslsdbentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfaslsdbtype; //type: OspfaslsdbtypeEnum
-        YLeaf ospfaslsdblsid; //type: string
-        YLeaf ospfaslsdbrouterid; //type: string
-        YLeaf ospfaslsdbsequence; //type: int32
-        YLeaf ospfaslsdbage; //type: int32
-        YLeaf ospfaslsdbchecksum; //type: int32
-        YLeaf ospfaslsdbadvertisement; //type: binary
-        class OspfaslsdbtypeEnum;
+        ydk::YLeaf ospfaslsdbtype; //type: Ospfaslsdbtype
+        ydk::YLeaf ospfaslsdblsid; //type: string
+        ydk::YLeaf ospfaslsdbrouterid; //type: string
+        ydk::YLeaf ospfaslsdbsequence; //type: int32
+        ydk::YLeaf ospfaslsdbage; //type: int32
+        ydk::YLeaf ospfaslsdbchecksum; //type: int32
+        ydk::YLeaf ospfaslsdbadvertisement; //type: binary
+        class Ospfaslsdbtype;
 
 }; // OspfMib::Ospfaslsdbtable::Ospfaslsdbentry
 
 
-class OspfMib::Ospfarealsacounttable : public Entity
+class OspfMib::Ospfarealsacounttable : public ydk::Entity
 {
     public:
         Ospfarealsacounttable();
@@ -891,20 +956,22 @@ class OspfMib::Ospfarealsacounttable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ospfarealsacountentry; //type: OspfMib::Ospfarealsacounttable::Ospfarealsacountentry
 
-        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfarealsacounttable::Ospfarealsacountentry> > ospfarealsacountentry_;
+        std::vector<std::shared_ptr<OSPF_MIB::OspfMib::Ospfarealsacounttable::Ospfarealsacountentry> > ospfarealsacountentry;
         
 }; // OspfMib::Ospfarealsacounttable
 
 
-class OspfMib::Ospfarealsacounttable::Ospfarealsacountentry : public Entity
+class OspfMib::Ospfarealsacounttable::Ospfarealsacountentry : public ydk::Entity
 {
     public:
         Ospfarealsacountentry();
@@ -912,331 +979,333 @@ class OspfMib::Ospfarealsacounttable::Ospfarealsacountentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ospfarealsacountareaid; //type: string
-        YLeaf ospfarealsacountlsatype; //type: OspfarealsacountlsatypeEnum
-        YLeaf ospfarealsacountnumber; //type: uint32
-        class OspfarealsacountlsatypeEnum;
+        ydk::YLeaf ospfarealsacountareaid; //type: string
+        ydk::YLeaf ospfarealsacountlsatype; //type: Ospfarealsacountlsatype
+        ydk::YLeaf ospfarealsacountnumber; //type: uint32
+        class Ospfarealsacountlsatype;
 
 }; // OspfMib::Ospfarealsacounttable::Ospfarealsacountentry
 
-class StatusEnum : public Enum
+class Status : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enabled;
-        static const Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class OspfauthenticationtypeEnum : public Enum
+class Ospfauthenticationtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf simplePassword;
-        static const Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf simplePassword;
+        static const ydk::Enum::YLeaf md5;
 
 };
 
-class OspfMib::Ospfgeneralgroup::OspfversionnumberEnum : public Enum
+class OspfMib::Ospfgeneralgroup::Ospfversionnumber : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf version2;
+        static const ydk::Enum::YLeaf version2;
 
 };
 
-class OspfMib::Ospfgeneralgroup::OspfrestartsupportEnum : public Enum
+class OspfMib::Ospfgeneralgroup::Ospfrestartsupport : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf plannedOnly;
-        static const Enum::YLeaf plannedAndUnplanned;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf plannedOnly;
+        static const ydk::Enum::YLeaf plannedAndUnplanned;
 
 };
 
-class OspfMib::Ospfgeneralgroup::OspfrestartstatusEnum : public Enum
+class OspfMib::Ospfgeneralgroup::Ospfrestartstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notRestarting;
-        static const Enum::YLeaf plannedRestart;
-        static const Enum::YLeaf unplannedRestart;
+        static const ydk::Enum::YLeaf notRestarting;
+        static const ydk::Enum::YLeaf plannedRestart;
+        static const ydk::Enum::YLeaf unplannedRestart;
 
 };
 
-class OspfMib::Ospfgeneralgroup::OspfrestartexitreasonEnum : public Enum
+class OspfMib::Ospfgeneralgroup::Ospfrestartexitreason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf inProgress;
-        static const Enum::YLeaf completed;
-        static const Enum::YLeaf timedOut;
-        static const Enum::YLeaf topologyChanged;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf inProgress;
+        static const ydk::Enum::YLeaf completed;
+        static const ydk::Enum::YLeaf timedOut;
+        static const ydk::Enum::YLeaf topologyChanged;
 
 };
 
-class OspfMib::Ospfgeneralgroup::OspfstubrouteradvertisementEnum : public Enum
+class OspfMib::Ospfgeneralgroup::Ospfstubrouteradvertisement : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf doNotAdvertise;
-        static const Enum::YLeaf advertise;
+        static const ydk::Enum::YLeaf doNotAdvertise;
+        static const ydk::Enum::YLeaf advertise;
 
 };
 
-class OspfMib::Ospfareatable::Ospfareaentry::OspfimportasexternEnum : public Enum
+class OspfMib::Ospfareatable::Ospfareaentry::Ospfimportasextern : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf importExternal;
-        static const Enum::YLeaf importNoExternal;
-        static const Enum::YLeaf importNssa;
+        static const ydk::Enum::YLeaf importExternal;
+        static const ydk::Enum::YLeaf importNoExternal;
+        static const ydk::Enum::YLeaf importNssa;
 
 };
 
-class OspfMib::Ospfareatable::Ospfareaentry::OspfareasummaryEnum : public Enum
+class OspfMib::Ospfareatable::Ospfareaentry::Ospfareasummary : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf noAreaSummary;
-        static const Enum::YLeaf sendAreaSummary;
+        static const ydk::Enum::YLeaf noAreaSummary;
+        static const ydk::Enum::YLeaf sendAreaSummary;
 
 };
 
-class OspfMib::Ospfareatable::Ospfareaentry::OspfareanssatranslatorroleEnum : public Enum
+class OspfMib::Ospfareatable::Ospfareaentry::Ospfareanssatranslatorrole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf always;
-        static const Enum::YLeaf candidate;
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf candidate;
 
 };
 
-class OspfMib::Ospfareatable::Ospfareaentry::OspfareanssatranslatorstateEnum : public Enum
+class OspfMib::Ospfareatable::Ospfareaentry::Ospfareanssatranslatorstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enabled;
-        static const Enum::YLeaf elected;
-        static const Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf elected;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class OspfMib::Ospfareatable::Ospfareaentry::CospfareanssatranslatorroleEnum : public Enum
+class OspfMib::Ospfareatable::Ospfareaentry::Cospfareanssatranslatorrole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf always;
-        static const Enum::YLeaf candidate;
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf candidate;
 
 };
 
-class OspfMib::Ospfareatable::Ospfareaentry::CospfareanssatranslatorstateEnum : public Enum
+class OspfMib::Ospfareatable::Ospfareaentry::Cospfareanssatranslatorstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enabled;
-        static const Enum::YLeaf elected;
-        static const Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf elected;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class OspfMib::Ospfstubareatable::Ospfstubareaentry::OspfstubmetrictypeEnum : public Enum
+class OspfMib::Ospfstubareatable::Ospfstubareaentry::Ospfstubmetrictype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ospfMetric;
-        static const Enum::YLeaf comparableCost;
-        static const Enum::YLeaf nonComparable;
+        static const ydk::Enum::YLeaf ospfMetric;
+        static const ydk::Enum::YLeaf comparableCost;
+        static const ydk::Enum::YLeaf nonComparable;
 
 };
 
-class OspfMib::Ospflsdbtable::Ospflsdbentry::OspflsdbtypeEnum : public Enum
+class OspfMib::Ospflsdbtable::Ospflsdbentry::Ospflsdbtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf routerLink;
-        static const Enum::YLeaf networkLink;
-        static const Enum::YLeaf summaryLink;
-        static const Enum::YLeaf asSummaryLink;
-        static const Enum::YLeaf asExternalLink;
-        static const Enum::YLeaf multicastLink;
-        static const Enum::YLeaf nssaExternalLink;
-        static const Enum::YLeaf areaOpaqueLink;
+        static const ydk::Enum::YLeaf routerLink;
+        static const ydk::Enum::YLeaf networkLink;
+        static const ydk::Enum::YLeaf summaryLink;
+        static const ydk::Enum::YLeaf asSummaryLink;
+        static const ydk::Enum::YLeaf asExternalLink;
+        static const ydk::Enum::YLeaf multicastLink;
+        static const ydk::Enum::YLeaf nssaExternalLink;
+        static const ydk::Enum::YLeaf areaOpaqueLink;
 
 };
 
-class OspfMib::Ospfarearangetable::Ospfarearangeentry::OspfarearangeeffectEnum : public Enum
+class OspfMib::Ospfarearangetable::Ospfarearangeentry::Ospfarearangeeffect : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf advertiseMatching;
-        static const Enum::YLeaf doNotAdvertiseMatching;
+        static const ydk::Enum::YLeaf advertiseMatching;
+        static const ydk::Enum::YLeaf doNotAdvertiseMatching;
 
 };
 
-class OspfMib::Ospfiftable::Ospfifentry::OspfiftypeEnum : public Enum
+class OspfMib::Ospfiftable::Ospfifentry::Ospfiftype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf broadcast;
-        static const Enum::YLeaf nbma;
-        static const Enum::YLeaf pointToPoint;
-        static const Enum::YLeaf pointToMultipoint;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf nbma;
+        static const ydk::Enum::YLeaf pointToPoint;
+        static const ydk::Enum::YLeaf pointToMultipoint;
 
 };
 
-class OspfMib::Ospfiftable::Ospfifentry::OspfifstateEnum : public Enum
+class OspfMib::Ospfiftable::Ospfifentry::Ospfifstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf loopback;
-        static const Enum::YLeaf waiting;
-        static const Enum::YLeaf pointToPoint;
-        static const Enum::YLeaf designatedRouter;
-        static const Enum::YLeaf backupDesignatedRouter;
-        static const Enum::YLeaf otherDesignatedRouter;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf loopback;
+        static const ydk::Enum::YLeaf waiting;
+        static const ydk::Enum::YLeaf pointToPoint;
+        static const ydk::Enum::YLeaf designatedRouter;
+        static const ydk::Enum::YLeaf backupDesignatedRouter;
+        static const ydk::Enum::YLeaf otherDesignatedRouter;
 
 };
 
-class OspfMib::Ospfiftable::Ospfifentry::OspfifmulticastforwardingEnum : public Enum
+class OspfMib::Ospfiftable::Ospfifentry::Ospfifmulticastforwarding : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf blocked;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf blocked;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
 
 };
 
-class OspfMib::Ospfvirtiftable::Ospfvirtifentry::OspfvirtifstateEnum : public Enum
+class OspfMib::Ospfvirtiftable::Ospfvirtifentry::Ospfvirtifstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf pointToPoint;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf pointToPoint;
 
 };
 
-class OspfMib::Ospfnbrtable::Ospfnbrentry::OspfnbrstateEnum : public Enum
+class OspfMib::Ospfnbrtable::Ospfnbrentry::Ospfnbrstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf attempt;
-        static const Enum::YLeaf init;
-        static const Enum::YLeaf twoWay;
-        static const Enum::YLeaf exchangeStart;
-        static const Enum::YLeaf exchange;
-        static const Enum::YLeaf loading;
-        static const Enum::YLeaf full;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf attempt;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf twoWay;
+        static const ydk::Enum::YLeaf exchangeStart;
+        static const ydk::Enum::YLeaf exchange;
+        static const ydk::Enum::YLeaf loading;
+        static const ydk::Enum::YLeaf full;
 
 };
 
-class OspfMib::Ospfnbrtable::Ospfnbrentry::OspfnbmanbrpermanenceEnum : public Enum
+class OspfMib::Ospfnbrtable::Ospfnbrentry::Ospfnbmanbrpermanence : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf dynamic;
-        static const Enum::YLeaf permanent;
+        static const ydk::Enum::YLeaf dynamic;
+        static const ydk::Enum::YLeaf permanent;
 
 };
 
-class OspfMib::Ospfnbrtable::Ospfnbrentry::OspfnbrrestarthelperstatusEnum : public Enum
+class OspfMib::Ospfnbrtable::Ospfnbrentry::Ospfnbrrestarthelperstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notHelping;
-        static const Enum::YLeaf helping;
+        static const ydk::Enum::YLeaf notHelping;
+        static const ydk::Enum::YLeaf helping;
 
 };
 
-class OspfMib::Ospfnbrtable::Ospfnbrentry::OspfnbrrestarthelperexitreasonEnum : public Enum
+class OspfMib::Ospfnbrtable::Ospfnbrentry::Ospfnbrrestarthelperexitreason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf inProgress;
-        static const Enum::YLeaf completed;
-        static const Enum::YLeaf timedOut;
-        static const Enum::YLeaf topologyChanged;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf inProgress;
+        static const ydk::Enum::YLeaf completed;
+        static const ydk::Enum::YLeaf timedOut;
+        static const ydk::Enum::YLeaf topologyChanged;
 
 };
 
-class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry::OspfvirtnbrstateEnum : public Enum
+class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf attempt;
-        static const Enum::YLeaf init;
-        static const Enum::YLeaf twoWay;
-        static const Enum::YLeaf exchangeStart;
-        static const Enum::YLeaf exchange;
-        static const Enum::YLeaf loading;
-        static const Enum::YLeaf full;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf attempt;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf twoWay;
+        static const ydk::Enum::YLeaf exchangeStart;
+        static const ydk::Enum::YLeaf exchange;
+        static const ydk::Enum::YLeaf loading;
+        static const ydk::Enum::YLeaf full;
 
 };
 
-class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry::OspfvirtnbrrestarthelperstatusEnum : public Enum
+class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrrestarthelperstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notHelping;
-        static const Enum::YLeaf helping;
+        static const ydk::Enum::YLeaf notHelping;
+        static const ydk::Enum::YLeaf helping;
 
 };
 
-class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry::OspfvirtnbrrestarthelperexitreasonEnum : public Enum
+class OspfMib::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrrestarthelperexitreason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf inProgress;
-        static const Enum::YLeaf completed;
-        static const Enum::YLeaf timedOut;
-        static const Enum::YLeaf topologyChanged;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf inProgress;
+        static const ydk::Enum::YLeaf completed;
+        static const ydk::Enum::YLeaf timedOut;
+        static const ydk::Enum::YLeaf topologyChanged;
 
 };
 
-class OspfMib::Ospfextlsdbtable::Ospfextlsdbentry::OspfextlsdbtypeEnum : public Enum
+class OspfMib::Ospfextlsdbtable::Ospfextlsdbentry::Ospfextlsdbtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf asExternalLink;
+        static const ydk::Enum::YLeaf asExternalLink;
 
 };
 
-class OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry::OspfareaaggregatelsdbtypeEnum : public Enum
+class OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry::Ospfareaaggregatelsdbtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf summaryLink;
-        static const Enum::YLeaf nssaExternalLink;
+        static const ydk::Enum::YLeaf summaryLink;
+        static const ydk::Enum::YLeaf nssaExternalLink;
 
 };
 
-class OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry::OspfareaaggregateeffectEnum : public Enum
+class OspfMib::Ospfareaaggregatetable::Ospfareaaggregateentry::Ospfareaaggregateeffect : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf advertiseMatching;
-        static const Enum::YLeaf doNotAdvertiseMatching;
+        static const ydk::Enum::YLeaf advertiseMatching;
+        static const ydk::Enum::YLeaf doNotAdvertiseMatching;
 
 };
 
-class OspfMib::Ospflocallsdbtable::Ospflocallsdbentry::OspflocallsdbtypeEnum : public Enum
+class OspfMib::Ospflocallsdbtable::Ospflocallsdbentry::Ospflocallsdbtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf localOpaqueLink;
+        static const ydk::Enum::YLeaf localOpaqueLink;
 
 };
 
-class OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry::OspfvirtlocallsdbtypeEnum : public Enum
+class OspfMib::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry::Ospfvirtlocallsdbtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf localOpaqueLink;
+        static const ydk::Enum::YLeaf localOpaqueLink;
 
 };
 
-class OspfMib::Ospfaslsdbtable::Ospfaslsdbentry::OspfaslsdbtypeEnum : public Enum
+class OspfMib::Ospfaslsdbtable::Ospfaslsdbentry::Ospfaslsdbtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf asExternalLink;
-        static const Enum::YLeaf asOpaqueLink;
+        static const ydk::Enum::YLeaf asExternalLink;
+        static const ydk::Enum::YLeaf asOpaqueLink;
 
 };
 
-class OspfMib::Ospfarealsacounttable::Ospfarealsacountentry::OspfarealsacountlsatypeEnum : public Enum
+class OspfMib::Ospfarealsacounttable::Ospfarealsacountentry::Ospfarealsacountlsatype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf routerLink;
-        static const Enum::YLeaf networkLink;
-        static const Enum::YLeaf summaryLink;
-        static const Enum::YLeaf asSummaryLink;
-        static const Enum::YLeaf multicastLink;
-        static const Enum::YLeaf nssaExternalLink;
-        static const Enum::YLeaf areaOpaqueLink;
+        static const ydk::Enum::YLeaf routerLink;
+        static const ydk::Enum::YLeaf networkLink;
+        static const ydk::Enum::YLeaf summaryLink;
+        static const ydk::Enum::YLeaf asSummaryLink;
+        static const ydk::Enum::YLeaf multicastLink;
+        static const ydk::Enum::YLeaf nssaExternalLink;
+        static const ydk::Enum::YLeaf areaOpaqueLink;
 
 };
 

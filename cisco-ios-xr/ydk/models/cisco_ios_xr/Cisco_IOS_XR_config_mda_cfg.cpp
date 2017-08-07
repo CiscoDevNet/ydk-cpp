@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_config_mda_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_config_mda_cfg {
 
 ActiveNodes::ActiveNodes()
@@ -35,7 +37,7 @@ bool ActiveNodes::has_operation() const
         if(active_node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ActiveNodes::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::get_children() const
     return children;
 }
 
-void ActiveNodes::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ActiveNodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string ActiveNodes::get_bundle_name() const
 augment_capabilities_function ActiveNodes::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ActiveNodes::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ActiveNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-node")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::ActiveNode()
@@ -160,8 +178,8 @@ bool ActiveNodes::ActiveNode::has_data() const
 
 bool ActiveNodes::ActiveNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_watchd_cfg_watchdog_node_threshold->has_operation())
 	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold->has_operation())
 	|| (lpts_local !=  nullptr && lpts_local->has_operation())
@@ -192,7 +210,7 @@ const EntityPath ActiveNodes::ActiveNode::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -281,12 +299,29 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::get_chil
     return children;
 }
 
-void ActiveNodes::ActiveNode::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold" || name == "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold" || name == "lpts-local" || name == "ltrace" || name == "ssrp-group" || name == "node-name")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::Ltrace::Ltrace()
@@ -309,7 +344,7 @@ bool ActiveNodes::ActiveNode::Ltrace::has_data() const
 
 bool ActiveNodes::ActiveNode::Ltrace::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (allocation_params !=  nullptr && allocation_params->has_operation());
 }
 
@@ -368,8 +403,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::Ltrace::
     return children;
 }
 
-void ActiveNodes::ActiveNode::Ltrace::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::Ltrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::Ltrace::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::Ltrace::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocation-params")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::Ltrace::AllocationParams::AllocationParams()
@@ -392,9 +438,9 @@ bool ActiveNodes::ActiveNode::Ltrace::AllocationParams::has_data() const
 
 bool ActiveNodes::ActiveNode::Ltrace::AllocationParams::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mode.operation)
-	|| is_set(scale_factor.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(scale_factor.yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_segment_path() const
@@ -420,8 +466,8 @@ const EntityPath ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (scale_factor.is_set || is_set(scale_factor.operation)) leaf_name_data.push_back(scale_factor.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (scale_factor.is_set || is_set(scale_factor.yfilter)) leaf_name_data.push_back(scale_factor.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -440,16 +486,39 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::Ltrace::
     return children;
 }
 
-void ActiveNodes::ActiveNode::Ltrace::AllocationParams::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::Ltrace::AllocationParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "scale-factor")
     {
         scale_factor = value;
+        scale_factor.value_namespace = name_space;
+        scale_factor.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::Ltrace::AllocationParams::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "scale-factor")
+    {
+        scale_factor.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::Ltrace::AllocationParams::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mode" || name == "scale-factor")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::LptsLocal()
@@ -474,7 +543,7 @@ bool ActiveNodes::ActiveNode::LptsLocal::has_data() const
 
 bool ActiveNodes::ActiveNode::LptsLocal::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipolicer_local !=  nullptr && ipolicer_local->has_operation())
 	|| (ipolicer_local_tables !=  nullptr && ipolicer_local_tables->has_operation());
 }
@@ -548,8 +617,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipolicer-local" || name == "ipolicer-local-tables")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTables()
@@ -578,7 +658,7 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::has_operation() co
         if(ipolicer_local_table[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_segment_path() const
@@ -643,8 +723,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipolicer-local-table")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::IpolicerLocalTable()
@@ -670,8 +761,8 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable
 
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(id1.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(id1.yfilter)
 	|| (nps !=  nullptr && nps->has_operation());
 }
 
@@ -698,7 +789,7 @@ const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::Ipolic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id1.is_set || is_set(id1.operation)) leaf_name_data.push_back(id1.get_name_leafdata());
+    if (id1.is_set || is_set(id1.yfilter)) leaf_name_data.push_back(id1.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -731,12 +822,29 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id1")
     {
         id1 = value;
+        id1.value_namespace = name_space;
+        id1.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id1")
+    {
+        id1.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nps" || name == "id1")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Nps()
@@ -765,7 +873,7 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable
         if(np[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_segment_path() const
@@ -830,8 +938,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::Np()
@@ -854,9 +973,9 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable
 
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(id1.operation)
-	|| is_set(rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(id1.yfilter)
+	|| ydk::is_set(rate.yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_segment_path() const
@@ -882,8 +1001,8 @@ const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::Ipolic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id1.is_set || is_set(id1.operation)) leaf_name_data.push_back(id1.get_name_leafdata());
-    if (rate.is_set || is_set(rate.operation)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (id1.is_set || is_set(id1.yfilter)) leaf_name_data.push_back(id1.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -902,16 +1021,39 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id1")
     {
         id1 = value;
+        id1.value_namespace = name_space;
+        id1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate")
     {
         rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id1")
+    {
+        id1.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id1" || name == "rate")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::IpolicerLocal()
@@ -937,8 +1079,8 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::has_data() const
 
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (flows !=  nullptr && flows->has_operation());
 }
 
@@ -965,7 +1107,7 @@ const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -998,12 +1140,29 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flows" || name == "enable")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flows()
@@ -1032,7 +1191,7 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::has_operation() c
         if(flow[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_segment_path() const
@@ -1097,8 +1256,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Flow()
@@ -1126,9 +1296,9 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::has_data() 
 
 bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(flow_type.operation)
-	|| is_set(rate.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(flow_type.yfilter)
+	|| ydk::is_set(rate.yfilter)
 	|| (precedences !=  nullptr && precedences->has_operation());
 }
 
@@ -1155,8 +1325,8 @@ const EntityPath ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flow_type.is_set || is_set(flow_type.operation)) leaf_name_data.push_back(flow_type.get_name_leafdata());
-    if (rate.is_set || is_set(rate.operation)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1189,16 +1359,39 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-type")
     {
         flow_type = value;
+        flow_type.value_namespace = name_space;
+        flow_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate")
     {
         rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-type")
+    {
+        flow_type.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "precedences" || name == "flow-type" || name == "rate")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::Precedences()
@@ -1226,11 +1419,11 @@ bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences
 {
     for (auto const & leaf : precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(precedence.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(precedence.yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_segment_path() const
@@ -1276,12 +1469,27 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLoca
     return children;
 }
 
-void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "precedence")
     {
         precedence.append(value);
     }
+}
+
+void ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "precedence")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::SsrpGroup::SsrpGroup()
@@ -1304,7 +1512,7 @@ bool ActiveNodes::ActiveNode::SsrpGroup::has_data() const
 
 bool ActiveNodes::ActiveNode::SsrpGroup::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (groups !=  nullptr && groups->has_operation());
 }
 
@@ -1363,8 +1571,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGrou
     return children;
 }
 
-void ActiveNodes::ActiveNode::SsrpGroup::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::SsrpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::SsrpGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::SsrpGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groups")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::SsrpGroup::Groups::Groups()
@@ -1393,7 +1612,7 @@ bool ActiveNodes::ActiveNode::SsrpGroup::Groups::has_operation() const
         if(group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::SsrpGroup::Groups::get_segment_path() const
@@ -1458,8 +1677,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGrou
     return children;
 }
 
-void ActiveNodes::ActiveNode::SsrpGroup::Groups::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::SsrpGroup::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::SsrpGroup::Groups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::SsrpGroup::Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::Group()
@@ -1482,9 +1712,9 @@ bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_data() const
 
 bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_id.operation)
-	|| is_set(profile.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_id.yfilter)
+	|| ydk::is_set(profile.yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_segment_path() const
@@ -1510,8 +1740,8 @@ const EntityPath ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
-    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1530,16 +1760,39 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGrou
     return children;
 }
 
-void ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-id")
     {
         group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile")
     {
         profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-id" || name == "profile")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::CiscoIosXrWatchdCfg_WatchdogNodeThreshold()
@@ -1562,7 +1815,7 @@ bool ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::has_dat
 
 bool ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
@@ -1621,8 +1874,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIos
     return children;
 }
 
-void ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory-threshold")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
@@ -1647,10 +1911,10 @@ bool ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryT
 
 bool ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(critical.operation)
-	|| is_set(minor.operation)
-	|| is_set(severe.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(critical.yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
@@ -1676,9 +1940,9 @@ const EntityPath ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThresh
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
-    if (minor.is_set || is_set(minor.operation)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.operation)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1697,20 +1961,49 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIos
     return children;
 }
 
-void ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "critical")
     {
         critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minor")
     {
         minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severe")
     {
         severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "critical" || name == "minor" || name == "severe")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::CiscoIosXrWdCfg_WatchdogNodeThreshold()
@@ -1733,7 +2026,7 @@ bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_data() 
 
 bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
@@ -1792,8 +2085,19 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIos
     return children;
 }
 
-void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory-threshold")
+        return true;
+    return false;
 }
 
 ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
@@ -1818,10 +2122,10 @@ bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThres
 
 bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(critical.operation)
-	|| is_set(minor.operation)
-	|| is_set(severe.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(critical.yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter);
 }
 
 std::string ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
@@ -1847,9 +2151,9 @@ const EntityPath ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
-    if (minor.is_set || is_set(minor.operation)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.operation)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1868,20 +2172,49 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIos
     return children;
 }
 
-void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "critical")
     {
         critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minor")
     {
         minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severe")
     {
         severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "critical" || name == "minor" || name == "severe")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNodes()
@@ -1910,7 +2243,7 @@ bool PreconfiguredNodes::has_operation() const
         if(preconfigured_node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PreconfiguredNodes::get_segment_path() const
@@ -1972,7 +2305,11 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::get_children(
     return children;
 }
 
-void PreconfiguredNodes::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PreconfiguredNodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -1994,6 +2331,18 @@ std::string PreconfiguredNodes::get_bundle_name() const
 augment_capabilities_function PreconfiguredNodes::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> PreconfiguredNodes::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PreconfiguredNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "preconfigured-node")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::PreconfiguredNode()
@@ -2031,8 +2380,8 @@ bool PreconfiguredNodes::PreconfiguredNode::has_data() const
 
 bool PreconfiguredNodes::PreconfiguredNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (cisco_ios_xr_watchd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_watchd_cfg_watchdog_node_threshold->has_operation())
 	|| (cisco_ios_xr_wd_cfg_watchdog_node_threshold !=  nullptr && cisco_ios_xr_wd_cfg_watchdog_node_threshold->has_operation())
 	|| (lpts_local !=  nullptr && lpts_local->has_operation())
@@ -2062,7 +2411,7 @@ const EntityPath PreconfiguredNodes::PreconfiguredNode::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2137,12 +2486,29 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "Cisco-IOS-XR-watchd-cfg_watchdog-node-threshold" || name == "Cisco-IOS-XR-wd-cfg_watchdog-node-threshold" || name == "lpts-local" || name == "ltrace" || name == "node-name")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::Ltrace::Ltrace()
@@ -2165,7 +2531,7 @@ bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_data() const
 
 bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (allocation_params !=  nullptr && allocation_params->has_operation());
 }
 
@@ -2224,8 +2590,19 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::Ltrace::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::Ltrace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PreconfiguredNodes::PreconfiguredNode::Ltrace::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::Ltrace::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocation-params")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::AllocationParams()
@@ -2248,9 +2625,9 @@ bool PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::has_data()
 
 bool PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mode.operation)
-	|| is_set(scale_factor.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(scale_factor.yfilter);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_segment_path() const
@@ -2276,8 +2653,8 @@ const EntityPath PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (scale_factor.is_set || is_set(scale_factor.operation)) leaf_name_data.push_back(scale_factor.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (scale_factor.is_set || is_set(scale_factor.yfilter)) leaf_name_data.push_back(scale_factor.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2296,16 +2673,39 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "scale-factor")
     {
         scale_factor = value;
+        scale_factor.value_namespace = name_space;
+        scale_factor.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "scale-factor")
+    {
+        scale_factor.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mode" || name == "scale-factor")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::LptsLocal()
@@ -2330,7 +2730,7 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::has_data() const
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipolicer_local !=  nullptr && ipolicer_local->has_operation())
 	|| (ipolicer_local_tables !=  nullptr && ipolicer_local_tables->has_operation());
 }
@@ -2404,8 +2804,19 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipolicer-local" || name == "ipolicer-local-tables")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTables()
@@ -2434,7 +2845,7 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::has_
         if(ipolicer_local_table[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_segment_path() const
@@ -2499,8 +2910,19 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipolicer-local-table")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::IpolicerLocalTable()
@@ -2526,8 +2948,8 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::Ipol
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(id1.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(id1.yfilter)
 	|| (nps !=  nullptr && nps->has_operation());
 }
 
@@ -2554,7 +2976,7 @@ const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id1.is_set || is_set(id1.operation)) leaf_name_data.push_back(id1.get_name_leafdata());
+    if (id1.is_set || is_set(id1.yfilter)) leaf_name_data.push_back(id1.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2587,12 +3009,29 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id1")
     {
         id1 = value;
+        id1.value_namespace = name_space;
+        id1.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id1")
+    {
+        id1.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nps" || name == "id1")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Nps()
@@ -2621,7 +3060,7 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::Ipol
         if(np[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_segment_path() const
@@ -2686,8 +3125,19 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::Np()
@@ -2710,9 +3160,9 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::Ipol
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(id1.operation)
-	|| is_set(rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(id1.yfilter)
+	|| ydk::is_set(rate.yfilter);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_segment_path() const
@@ -2738,8 +3188,8 @@ const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id1.is_set || is_set(id1.operation)) leaf_name_data.push_back(id1.get_name_leafdata());
-    if (rate.is_set || is_set(rate.operation)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (id1.is_set || is_set(id1.yfilter)) leaf_name_data.push_back(id1.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2758,16 +3208,39 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id1")
     {
         id1 = value;
+        id1.value_namespace = name_space;
+        id1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate")
     {
         rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id1")
+    {
+        id1.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id1" || name == "rate")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::IpolicerLocal()
@@ -2793,8 +3266,8 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::has_data()
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (flows !=  nullptr && flows->has_operation());
 }
 
@@ -2821,7 +3294,7 @@ const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2854,12 +3327,29 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flows" || name == "enable")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flows()
@@ -2888,7 +3378,7 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::has
         if(flow[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_segment_path() const
@@ -2953,8 +3443,19 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Flow()
@@ -2982,9 +3483,9 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flo
 
 bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(flow_type.operation)
-	|| is_set(rate.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(flow_type.yfilter)
+	|| ydk::is_set(rate.yfilter)
 	|| (precedences !=  nullptr && precedences->has_operation());
 }
 
@@ -3011,8 +3512,8 @@ const EntityPath PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flow_type.is_set || is_set(flow_type.operation)) leaf_name_data.push_back(flow_type.get_name_leafdata());
-    if (rate.is_set || is_set(rate.operation)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3045,16 +3546,39 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-type")
     {
         flow_type = value;
+        flow_type.value_namespace = name_space;
+        flow_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate")
     {
         rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-type")
+    {
+        flow_type.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "precedences" || name == "flow-type" || name == "rate")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::Precedences()
@@ -3082,11 +3606,11 @@ bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flo
 {
     for (auto const & leaf : precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(precedence.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(precedence.yfilter);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_segment_path() const
@@ -3132,12 +3656,27 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "precedence")
     {
         precedence.append(value);
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "precedence")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::CiscoIosXrWatchdCfg_WatchdogNodeThreshold()
@@ -3160,7 +3699,7 @@ bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThre
 
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
@@ -3219,8 +3758,19 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory-threshold")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
@@ -3245,10 +3795,10 @@ bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThre
 
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(critical.operation)
-	|| is_set(minor.operation)
-	|| is_set(severe.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(critical.yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
@@ -3274,9 +3824,9 @@ const EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_Watc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
-    if (minor.is_set || is_set(minor.operation)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.operation)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3295,20 +3845,49 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "critical")
     {
         critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minor")
     {
         minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severe")
     {
         severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWatchdCfg_WatchdogNodeThreshold::MemoryThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "critical" || name == "minor" || name == "severe")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::CiscoIosXrWdCfg_WatchdogNodeThreshold()
@@ -3331,7 +3910,7 @@ bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshol
 
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
 }
 
@@ -3390,8 +3969,19 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory-threshold")
+        return true;
+    return false;
 }
 
 PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
@@ -3416,10 +4006,10 @@ bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshol
 
 bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(critical.operation)
-	|| is_set(minor.operation)
-	|| is_set(severe.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(critical.yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter);
 }
 
 std::string PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
@@ -3445,9 +4035,9 @@ const EntityPath PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_Watchdog
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
-    if (minor.is_set || is_set(minor.operation)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.operation)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3466,20 +4056,49 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, std::string value)
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "critical")
     {
         critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minor")
     {
         minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severe")
     {
         severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::CiscoIosXrWdCfg_WatchdogNodeThreshold::MemoryThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "critical" || name == "minor" || name == "severe")
+        return true;
+    return false;
 }
 
 

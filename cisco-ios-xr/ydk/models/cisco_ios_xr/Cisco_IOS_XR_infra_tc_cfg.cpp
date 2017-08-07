@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_tc_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_tc_cfg {
 
 TrafficCollector::TrafficCollector()
@@ -36,8 +38,8 @@ bool TrafficCollector::has_data() const
 
 bool TrafficCollector::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable_traffic_collector.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable_traffic_collector.yfilter)
 	|| (external_interfaces !=  nullptr && external_interfaces->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
@@ -62,7 +64,7 @@ const EntityPath TrafficCollector::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable_traffic_collector.is_set || is_set(enable_traffic_collector.operation)) leaf_name_data.push_back(enable_traffic_collector.get_name_leafdata());
+    if (enable_traffic_collector.is_set || is_set(enable_traffic_collector.yfilter)) leaf_name_data.push_back(enable_traffic_collector.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -109,11 +111,21 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::get_children() 
     return children;
 }
 
-void TrafficCollector::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable-traffic-collector")
     {
         enable_traffic_collector = value;
+        enable_traffic_collector.value_namespace = name_space;
+        enable_traffic_collector.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TrafficCollector::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable-traffic-collector")
+    {
+        enable_traffic_collector.yfilter = yfilter;
     }
 }
 
@@ -135,6 +147,18 @@ std::string TrafficCollector::get_bundle_name() const
 augment_capabilities_function TrafficCollector::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> TrafficCollector::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool TrafficCollector::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "external-interfaces" || name == "statistics" || name == "enable-traffic-collector")
+        return true;
+    return false;
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterfaces()
@@ -163,7 +187,7 @@ bool TrafficCollector::ExternalInterfaces::has_operation() const
         if(external_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TrafficCollector::ExternalInterfaces::get_segment_path() const
@@ -228,8 +252,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfa
     return children;
 }
 
-void TrafficCollector::ExternalInterfaces::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::ExternalInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::ExternalInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::ExternalInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "external-interface")
+        return true;
+    return false;
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterface::ExternalInterface()
@@ -252,9 +287,9 @@ bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_data() const
 
 bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_segment_path() const
@@ -280,8 +315,8 @@ const EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -300,16 +335,39 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfa
     return children;
 }
 
-void TrafficCollector::ExternalInterfaces::ExternalInterface::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::ExternalInterfaces::ExternalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::ExternalInterfaces::ExternalInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "enable")
+        return true;
+    return false;
 }
 
 TrafficCollector::Statistics::Statistics()
@@ -336,11 +394,11 @@ bool TrafficCollector::Statistics::has_data() const
 
 bool TrafficCollector::Statistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(collection_interval.operation)
-	|| is_set(enable_traffic_collector_statistics.operation)
-	|| is_set(history_size.operation)
-	|| is_set(history_timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(collection_interval.yfilter)
+	|| ydk::is_set(enable_traffic_collector_statistics.yfilter)
+	|| ydk::is_set(history_size.yfilter)
+	|| ydk::is_set(history_timeout.yfilter);
 }
 
 std::string TrafficCollector::Statistics::get_segment_path() const
@@ -366,10 +424,10 @@ const EntityPath TrafficCollector::Statistics::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (collection_interval.is_set || is_set(collection_interval.operation)) leaf_name_data.push_back(collection_interval.get_name_leafdata());
-    if (enable_traffic_collector_statistics.is_set || is_set(enable_traffic_collector_statistics.operation)) leaf_name_data.push_back(enable_traffic_collector_statistics.get_name_leafdata());
-    if (history_size.is_set || is_set(history_size.operation)) leaf_name_data.push_back(history_size.get_name_leafdata());
-    if (history_timeout.is_set || is_set(history_timeout.operation)) leaf_name_data.push_back(history_timeout.get_name_leafdata());
+    if (collection_interval.is_set || is_set(collection_interval.yfilter)) leaf_name_data.push_back(collection_interval.get_name_leafdata());
+    if (enable_traffic_collector_statistics.is_set || is_set(enable_traffic_collector_statistics.yfilter)) leaf_name_data.push_back(enable_traffic_collector_statistics.get_name_leafdata());
+    if (history_size.is_set || is_set(history_size.yfilter)) leaf_name_data.push_back(history_size.get_name_leafdata());
+    if (history_timeout.is_set || is_set(history_timeout.yfilter)) leaf_name_data.push_back(history_timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -388,42 +446,77 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Statistics::get
     return children;
 }
 
-void TrafficCollector::Statistics::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "collection-interval")
     {
         collection_interval = value;
+        collection_interval.value_namespace = name_space;
+        collection_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-traffic-collector-statistics")
     {
         enable_traffic_collector_statistics = value;
+        enable_traffic_collector_statistics.value_namespace = name_space;
+        enable_traffic_collector_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-size")
     {
         history_size = value;
+        history_size.value_namespace = name_space;
+        history_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-timeout")
     {
         history_timeout = value;
+        history_timeout.value_namespace = name_space;
+        history_timeout.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf HistoryTimeoutEnum::max {720, "max"};
+void TrafficCollector::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "collection-interval")
+    {
+        collection_interval.yfilter = yfilter;
+    }
+    if(value_path == "enable-traffic-collector-statistics")
+    {
+        enable_traffic_collector_statistics.yfilter = yfilter;
+    }
+    if(value_path == "history-size")
+    {
+        history_size.yfilter = yfilter;
+    }
+    if(value_path == "history-timeout")
+    {
+        history_timeout.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf HistorySizeEnum::max {10, "max"};
+bool TrafficCollector::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collection-interval" || name == "enable-traffic-collector-statistics" || name == "history-size" || name == "history-timeout")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CollectIonIntervalEnum::Y_1_minute {1, "1-minute"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_2_minutes {2, "2-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_3_minutes {3, "3-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_4_minutes {4, "4-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_5_minutes {5, "5-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_6_minutes {6, "6-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_10_minutes {10, "10-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_12_minutes {12, "12-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_15_minutes {15, "15-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_20_minutes {20, "20-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_30_minutes {30, "30-minutes"};
-const Enum::YLeaf CollectIonIntervalEnum::Y_60_minutes {60, "60-minutes"};
+const Enum::YLeaf HistoryTimeout::max {720, "max"};
+
+const Enum::YLeaf HistorySize::max {10, "max"};
+
+const Enum::YLeaf CollectIonInterval::Y_1_minute {1, "1-minute"};
+const Enum::YLeaf CollectIonInterval::Y_2_minutes {2, "2-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_3_minutes {3, "3-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_4_minutes {4, "4-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_5_minutes {5, "5-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_6_minutes {6, "6-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_10_minutes {10, "10-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_12_minutes {12, "12-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_15_minutes {15, "15-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_20_minutes {20, "20-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_30_minutes {30, "30-minutes"};
+const Enum::YLeaf CollectIonInterval::Y_60_minutes {60, "60-minutes"};
 
 
 }

@@ -6,26 +6,28 @@
 #include "generated_entity_lookup.hpp"
 #include "DIAL_CONTROL_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace DIAL_CONTROL_MIB {
 
 DialControlMib::DialControlMib()
     :
-    callactivetable_(std::make_shared<DialControlMib::Callactivetable>())
-	,callhistory_(std::make_shared<DialControlMib::Callhistory>())
-	,callhistorytable_(std::make_shared<DialControlMib::Callhistorytable>())
-	,dialctlconfiguration_(std::make_shared<DialControlMib::Dialctlconfiguration>())
-	,dialctlpeercfgtable_(std::make_shared<DialControlMib::Dialctlpeercfgtable>())
+    callactivetable(std::make_shared<DialControlMib::Callactivetable>())
+	,callhistory(std::make_shared<DialControlMib::Callhistory>())
+	,callhistorytable(std::make_shared<DialControlMib::Callhistorytable>())
+	,dialctlconfiguration(std::make_shared<DialControlMib::Dialctlconfiguration>())
+	,dialctlpeercfgtable(std::make_shared<DialControlMib::Dialctlpeercfgtable>())
 {
-    callactivetable_->parent = this;
+    callactivetable->parent = this;
 
-    callhistory_->parent = this;
+    callhistory->parent = this;
 
-    callhistorytable_->parent = this;
+    callhistorytable->parent = this;
 
-    dialctlconfiguration_->parent = this;
+    dialctlconfiguration->parent = this;
 
-    dialctlpeercfgtable_->parent = this;
+    dialctlpeercfgtable->parent = this;
 
     yang_name = "DIAL-CONTROL-MIB"; yang_parent_name = "DIAL-CONTROL-MIB";
 }
@@ -36,21 +38,21 @@ DialControlMib::~DialControlMib()
 
 bool DialControlMib::has_data() const
 {
-    return (callactivetable_ !=  nullptr && callactivetable_->has_data())
-	|| (callhistory_ !=  nullptr && callhistory_->has_data())
-	|| (callhistorytable_ !=  nullptr && callhistorytable_->has_data())
-	|| (dialctlconfiguration_ !=  nullptr && dialctlconfiguration_->has_data())
-	|| (dialctlpeercfgtable_ !=  nullptr && dialctlpeercfgtable_->has_data());
+    return (callactivetable !=  nullptr && callactivetable->has_data())
+	|| (callhistory !=  nullptr && callhistory->has_data())
+	|| (callhistorytable !=  nullptr && callhistorytable->has_data())
+	|| (dialctlconfiguration !=  nullptr && dialctlconfiguration->has_data())
+	|| (dialctlpeercfgtable !=  nullptr && dialctlpeercfgtable->has_data());
 }
 
 bool DialControlMib::has_operation() const
 {
-    return is_set(operation)
-	|| (callactivetable_ !=  nullptr && callactivetable_->has_operation())
-	|| (callhistory_ !=  nullptr && callhistory_->has_operation())
-	|| (callhistorytable_ !=  nullptr && callhistorytable_->has_operation())
-	|| (dialctlconfiguration_ !=  nullptr && dialctlconfiguration_->has_operation())
-	|| (dialctlpeercfgtable_ !=  nullptr && dialctlpeercfgtable_->has_operation());
+    return is_set(yfilter)
+	|| (callactivetable !=  nullptr && callactivetable->has_operation())
+	|| (callhistory !=  nullptr && callhistory->has_operation())
+	|| (callhistorytable !=  nullptr && callhistorytable->has_operation())
+	|| (dialctlconfiguration !=  nullptr && dialctlconfiguration->has_operation())
+	|| (dialctlpeercfgtable !=  nullptr && dialctlpeercfgtable->has_operation());
 }
 
 std::string DialControlMib::get_segment_path() const
@@ -84,47 +86,47 @@ std::shared_ptr<Entity> DialControlMib::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "callActiveTable")
     {
-        if(callactivetable_ == nullptr)
+        if(callactivetable == nullptr)
         {
-            callactivetable_ = std::make_shared<DialControlMib::Callactivetable>();
+            callactivetable = std::make_shared<DialControlMib::Callactivetable>();
         }
-        return callactivetable_;
+        return callactivetable;
     }
 
     if(child_yang_name == "callHistory")
     {
-        if(callhistory_ == nullptr)
+        if(callhistory == nullptr)
         {
-            callhistory_ = std::make_shared<DialControlMib::Callhistory>();
+            callhistory = std::make_shared<DialControlMib::Callhistory>();
         }
-        return callhistory_;
+        return callhistory;
     }
 
     if(child_yang_name == "callHistoryTable")
     {
-        if(callhistorytable_ == nullptr)
+        if(callhistorytable == nullptr)
         {
-            callhistorytable_ = std::make_shared<DialControlMib::Callhistorytable>();
+            callhistorytable = std::make_shared<DialControlMib::Callhistorytable>();
         }
-        return callhistorytable_;
+        return callhistorytable;
     }
 
     if(child_yang_name == "dialCtlConfiguration")
     {
-        if(dialctlconfiguration_ == nullptr)
+        if(dialctlconfiguration == nullptr)
         {
-            dialctlconfiguration_ = std::make_shared<DialControlMib::Dialctlconfiguration>();
+            dialctlconfiguration = std::make_shared<DialControlMib::Dialctlconfiguration>();
         }
-        return dialctlconfiguration_;
+        return dialctlconfiguration;
     }
 
     if(child_yang_name == "dialCtlPeerCfgTable")
     {
-        if(dialctlpeercfgtable_ == nullptr)
+        if(dialctlpeercfgtable == nullptr)
         {
-            dialctlpeercfgtable_ = std::make_shared<DialControlMib::Dialctlpeercfgtable>();
+            dialctlpeercfgtable = std::make_shared<DialControlMib::Dialctlpeercfgtable>();
         }
-        return dialctlpeercfgtable_;
+        return dialctlpeercfgtable;
     }
 
     return nullptr;
@@ -133,35 +135,39 @@ std::shared_ptr<Entity> DialControlMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> DialControlMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(callactivetable_ != nullptr)
+    if(callactivetable != nullptr)
     {
-        children["callActiveTable"] = callactivetable_;
+        children["callActiveTable"] = callactivetable;
     }
 
-    if(callhistory_ != nullptr)
+    if(callhistory != nullptr)
     {
-        children["callHistory"] = callhistory_;
+        children["callHistory"] = callhistory;
     }
 
-    if(callhistorytable_ != nullptr)
+    if(callhistorytable != nullptr)
     {
-        children["callHistoryTable"] = callhistorytable_;
+        children["callHistoryTable"] = callhistorytable;
     }
 
-    if(dialctlconfiguration_ != nullptr)
+    if(dialctlconfiguration != nullptr)
     {
-        children["dialCtlConfiguration"] = dialctlconfiguration_;
+        children["dialCtlConfiguration"] = dialctlconfiguration;
     }
 
-    if(dialctlpeercfgtable_ != nullptr)
+    if(dialctlpeercfgtable != nullptr)
     {
-        children["dialCtlPeerCfgTable"] = dialctlpeercfgtable_;
+        children["dialCtlPeerCfgTable"] = dialctlpeercfgtable;
     }
 
     return children;
 }
 
-void DialControlMib::set_value(const std::string & value_path, std::string value)
+void DialControlMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void DialControlMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -185,6 +191,18 @@ augment_capabilities_function DialControlMib::get_augment_capabilities_function(
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> DialControlMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool DialControlMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "callActiveTable" || name == "callHistory" || name == "callHistoryTable" || name == "dialCtlConfiguration" || name == "dialCtlPeerCfgTable")
+        return true;
+    return false;
+}
+
 DialControlMib::Dialctlconfiguration::Dialctlconfiguration()
     :
     dialctlacceptmode{YType::enumeration, "dialCtlAcceptMode"},
@@ -205,9 +223,9 @@ bool DialControlMib::Dialctlconfiguration::has_data() const
 
 bool DialControlMib::Dialctlconfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dialctlacceptmode.operation)
-	|| is_set(dialctltrapenable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dialctlacceptmode.yfilter)
+	|| ydk::is_set(dialctltrapenable.yfilter);
 }
 
 std::string DialControlMib::Dialctlconfiguration::get_segment_path() const
@@ -233,8 +251,8 @@ const EntityPath DialControlMib::Dialctlconfiguration::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dialctlacceptmode.is_set || is_set(dialctlacceptmode.operation)) leaf_name_data.push_back(dialctlacceptmode.get_name_leafdata());
-    if (dialctltrapenable.is_set || is_set(dialctltrapenable.operation)) leaf_name_data.push_back(dialctltrapenable.get_name_leafdata());
+    if (dialctlacceptmode.is_set || is_set(dialctlacceptmode.yfilter)) leaf_name_data.push_back(dialctlacceptmode.get_name_leafdata());
+    if (dialctltrapenable.is_set || is_set(dialctltrapenable.yfilter)) leaf_name_data.push_back(dialctltrapenable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -253,16 +271,39 @@ std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Dialctlconfigurat
     return children;
 }
 
-void DialControlMib::Dialctlconfiguration::set_value(const std::string & value_path, std::string value)
+void DialControlMib::Dialctlconfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dialCtlAcceptMode")
     {
         dialctlacceptmode = value;
+        dialctlacceptmode.value_namespace = name_space;
+        dialctlacceptmode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlTrapEnable")
     {
         dialctltrapenable = value;
+        dialctltrapenable.value_namespace = name_space;
+        dialctltrapenable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DialControlMib::Dialctlconfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dialCtlAcceptMode")
+    {
+        dialctlacceptmode.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlTrapEnable")
+    {
+        dialctltrapenable.yfilter = yfilter;
+    }
+}
+
+bool DialControlMib::Dialctlconfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dialCtlAcceptMode" || name == "dialCtlTrapEnable")
+        return true;
+    return false;
 }
 
 DialControlMib::Callhistory::Callhistory()
@@ -285,9 +326,9 @@ bool DialControlMib::Callhistory::has_data() const
 
 bool DialControlMib::Callhistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(callhistoryretaintimer.operation)
-	|| is_set(callhistorytablemaxlength.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(callhistoryretaintimer.yfilter)
+	|| ydk::is_set(callhistorytablemaxlength.yfilter);
 }
 
 std::string DialControlMib::Callhistory::get_segment_path() const
@@ -313,8 +354,8 @@ const EntityPath DialControlMib::Callhistory::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (callhistoryretaintimer.is_set || is_set(callhistoryretaintimer.operation)) leaf_name_data.push_back(callhistoryretaintimer.get_name_leafdata());
-    if (callhistorytablemaxlength.is_set || is_set(callhistorytablemaxlength.operation)) leaf_name_data.push_back(callhistorytablemaxlength.get_name_leafdata());
+    if (callhistoryretaintimer.is_set || is_set(callhistoryretaintimer.yfilter)) leaf_name_data.push_back(callhistoryretaintimer.get_name_leafdata());
+    if (callhistorytablemaxlength.is_set || is_set(callhistorytablemaxlength.yfilter)) leaf_name_data.push_back(callhistorytablemaxlength.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -333,16 +374,39 @@ std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Callhistory::get_
     return children;
 }
 
-void DialControlMib::Callhistory::set_value(const std::string & value_path, std::string value)
+void DialControlMib::Callhistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callHistoryRetainTimer")
     {
         callhistoryretaintimer = value;
+        callhistoryretaintimer.value_namespace = name_space;
+        callhistoryretaintimer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryTableMaxLength")
     {
         callhistorytablemaxlength = value;
+        callhistorytablemaxlength.value_namespace = name_space;
+        callhistorytablemaxlength.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DialControlMib::Callhistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "callHistoryRetainTimer")
+    {
+        callhistoryretaintimer.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryTableMaxLength")
+    {
+        callhistorytablemaxlength.yfilter = yfilter;
+    }
+}
+
+bool DialControlMib::Callhistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "callHistoryRetainTimer" || name == "callHistoryTableMaxLength")
+        return true;
+    return false;
 }
 
 DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgtable()
@@ -356,9 +420,9 @@ DialControlMib::Dialctlpeercfgtable::~Dialctlpeercfgtable()
 
 bool DialControlMib::Dialctlpeercfgtable::has_data() const
 {
-    for (std::size_t index=0; index<dialctlpeercfgentry_.size(); index++)
+    for (std::size_t index=0; index<dialctlpeercfgentry.size(); index++)
     {
-        if(dialctlpeercfgentry_[index]->has_data())
+        if(dialctlpeercfgentry[index]->has_data())
             return true;
     }
     return false;
@@ -366,12 +430,12 @@ bool DialControlMib::Dialctlpeercfgtable::has_data() const
 
 bool DialControlMib::Dialctlpeercfgtable::has_operation() const
 {
-    for (std::size_t index=0; index<dialctlpeercfgentry_.size(); index++)
+    for (std::size_t index=0; index<dialctlpeercfgentry.size(); index++)
     {
-        if(dialctlpeercfgentry_[index]->has_operation())
+        if(dialctlpeercfgentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DialControlMib::Dialctlpeercfgtable::get_segment_path() const
@@ -408,7 +472,7 @@ std::shared_ptr<Entity> DialControlMib::Dialctlpeercfgtable::get_child_by_name(c
 {
     if(child_yang_name == "dialCtlPeerCfgEntry")
     {
-        for(auto const & c : dialctlpeercfgentry_)
+        for(auto const & c : dialctlpeercfgentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -418,7 +482,7 @@ std::shared_ptr<Entity> DialControlMib::Dialctlpeercfgtable::get_child_by_name(c
         }
         auto c = std::make_shared<DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry>();
         c->parent = this;
-        dialctlpeercfgentry_.push_back(c);
+        dialctlpeercfgentry.push_back(c);
         return c;
     }
 
@@ -428,7 +492,7 @@ std::shared_ptr<Entity> DialControlMib::Dialctlpeercfgtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Dialctlpeercfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dialctlpeercfgentry_)
+    for (auto const & c : dialctlpeercfgentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -436,8 +500,19 @@ std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Dialctlpeercfgtab
     return children;
 }
 
-void DialControlMib::Dialctlpeercfgtable::set_value(const std::string & value_path, std::string value)
+void DialControlMib::Dialctlpeercfgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DialControlMib::Dialctlpeercfgtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DialControlMib::Dialctlpeercfgtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dialCtlPeerCfgEntry")
+        return true;
+    return false;
 }
 
 DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgentry()
@@ -514,36 +589,36 @@ bool DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::has_data() const
 
 bool DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dialctlpeercfgid.operation)
-	|| is_set(ifindex.operation)
-	|| is_set(dialctlpeercfgansweraddress.operation)
-	|| is_set(dialctlpeercfgcallretries.operation)
-	|| is_set(dialctlpeercfgcarrierdelay.operation)
-	|| is_set(dialctlpeercfgclosedusergroup.operation)
-	|| is_set(dialctlpeercfgfailuredelay.operation)
-	|| is_set(dialctlpeercfgiftype.operation)
-	|| is_set(dialctlpeercfginactivitytimer.operation)
-	|| is_set(dialctlpeercfginfotype.operation)
-	|| is_set(dialctlpeercfglowerif.operation)
-	|| is_set(dialctlpeercfgmaxduration.operation)
-	|| is_set(dialctlpeercfgminduration.operation)
-	|| is_set(dialctlpeercfgoriginateaddress.operation)
-	|| is_set(dialctlpeercfgpermission.operation)
-	|| is_set(dialctlpeercfgretrydelay.operation)
-	|| is_set(dialctlpeercfgspeed.operation)
-	|| is_set(dialctlpeercfgstatus.operation)
-	|| is_set(dialctlpeercfgsubaddress.operation)
-	|| is_set(dialctlpeercfgtrapenable.operation)
-	|| is_set(dialctlpeerstatsacceptcalls.operation)
-	|| is_set(dialctlpeerstatschargedunits.operation)
-	|| is_set(dialctlpeerstatsconnecttime.operation)
-	|| is_set(dialctlpeerstatsfailcalls.operation)
-	|| is_set(dialctlpeerstatslastdisconnectcause.operation)
-	|| is_set(dialctlpeerstatslastdisconnecttext.operation)
-	|| is_set(dialctlpeerstatslastsetuptime.operation)
-	|| is_set(dialctlpeerstatsrefusecalls.operation)
-	|| is_set(dialctlpeerstatssuccesscalls.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dialctlpeercfgid.yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(dialctlpeercfgansweraddress.yfilter)
+	|| ydk::is_set(dialctlpeercfgcallretries.yfilter)
+	|| ydk::is_set(dialctlpeercfgcarrierdelay.yfilter)
+	|| ydk::is_set(dialctlpeercfgclosedusergroup.yfilter)
+	|| ydk::is_set(dialctlpeercfgfailuredelay.yfilter)
+	|| ydk::is_set(dialctlpeercfgiftype.yfilter)
+	|| ydk::is_set(dialctlpeercfginactivitytimer.yfilter)
+	|| ydk::is_set(dialctlpeercfginfotype.yfilter)
+	|| ydk::is_set(dialctlpeercfglowerif.yfilter)
+	|| ydk::is_set(dialctlpeercfgmaxduration.yfilter)
+	|| ydk::is_set(dialctlpeercfgminduration.yfilter)
+	|| ydk::is_set(dialctlpeercfgoriginateaddress.yfilter)
+	|| ydk::is_set(dialctlpeercfgpermission.yfilter)
+	|| ydk::is_set(dialctlpeercfgretrydelay.yfilter)
+	|| ydk::is_set(dialctlpeercfgspeed.yfilter)
+	|| ydk::is_set(dialctlpeercfgstatus.yfilter)
+	|| ydk::is_set(dialctlpeercfgsubaddress.yfilter)
+	|| ydk::is_set(dialctlpeercfgtrapenable.yfilter)
+	|| ydk::is_set(dialctlpeerstatsacceptcalls.yfilter)
+	|| ydk::is_set(dialctlpeerstatschargedunits.yfilter)
+	|| ydk::is_set(dialctlpeerstatsconnecttime.yfilter)
+	|| ydk::is_set(dialctlpeerstatsfailcalls.yfilter)
+	|| ydk::is_set(dialctlpeerstatslastdisconnectcause.yfilter)
+	|| ydk::is_set(dialctlpeerstatslastdisconnecttext.yfilter)
+	|| ydk::is_set(dialctlpeerstatslastsetuptime.yfilter)
+	|| ydk::is_set(dialctlpeerstatsrefusecalls.yfilter)
+	|| ydk::is_set(dialctlpeerstatssuccesscalls.yfilter);
 }
 
 std::string DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::get_segment_path() const
@@ -569,35 +644,35 @@ const EntityPath DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dialctlpeercfgid.is_set || is_set(dialctlpeercfgid.operation)) leaf_name_data.push_back(dialctlpeercfgid.get_name_leafdata());
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (dialctlpeercfgansweraddress.is_set || is_set(dialctlpeercfgansweraddress.operation)) leaf_name_data.push_back(dialctlpeercfgansweraddress.get_name_leafdata());
-    if (dialctlpeercfgcallretries.is_set || is_set(dialctlpeercfgcallretries.operation)) leaf_name_data.push_back(dialctlpeercfgcallretries.get_name_leafdata());
-    if (dialctlpeercfgcarrierdelay.is_set || is_set(dialctlpeercfgcarrierdelay.operation)) leaf_name_data.push_back(dialctlpeercfgcarrierdelay.get_name_leafdata());
-    if (dialctlpeercfgclosedusergroup.is_set || is_set(dialctlpeercfgclosedusergroup.operation)) leaf_name_data.push_back(dialctlpeercfgclosedusergroup.get_name_leafdata());
-    if (dialctlpeercfgfailuredelay.is_set || is_set(dialctlpeercfgfailuredelay.operation)) leaf_name_data.push_back(dialctlpeercfgfailuredelay.get_name_leafdata());
-    if (dialctlpeercfgiftype.is_set || is_set(dialctlpeercfgiftype.operation)) leaf_name_data.push_back(dialctlpeercfgiftype.get_name_leafdata());
-    if (dialctlpeercfginactivitytimer.is_set || is_set(dialctlpeercfginactivitytimer.operation)) leaf_name_data.push_back(dialctlpeercfginactivitytimer.get_name_leafdata());
-    if (dialctlpeercfginfotype.is_set || is_set(dialctlpeercfginfotype.operation)) leaf_name_data.push_back(dialctlpeercfginfotype.get_name_leafdata());
-    if (dialctlpeercfglowerif.is_set || is_set(dialctlpeercfglowerif.operation)) leaf_name_data.push_back(dialctlpeercfglowerif.get_name_leafdata());
-    if (dialctlpeercfgmaxduration.is_set || is_set(dialctlpeercfgmaxduration.operation)) leaf_name_data.push_back(dialctlpeercfgmaxduration.get_name_leafdata());
-    if (dialctlpeercfgminduration.is_set || is_set(dialctlpeercfgminduration.operation)) leaf_name_data.push_back(dialctlpeercfgminduration.get_name_leafdata());
-    if (dialctlpeercfgoriginateaddress.is_set || is_set(dialctlpeercfgoriginateaddress.operation)) leaf_name_data.push_back(dialctlpeercfgoriginateaddress.get_name_leafdata());
-    if (dialctlpeercfgpermission.is_set || is_set(dialctlpeercfgpermission.operation)) leaf_name_data.push_back(dialctlpeercfgpermission.get_name_leafdata());
-    if (dialctlpeercfgretrydelay.is_set || is_set(dialctlpeercfgretrydelay.operation)) leaf_name_data.push_back(dialctlpeercfgretrydelay.get_name_leafdata());
-    if (dialctlpeercfgspeed.is_set || is_set(dialctlpeercfgspeed.operation)) leaf_name_data.push_back(dialctlpeercfgspeed.get_name_leafdata());
-    if (dialctlpeercfgstatus.is_set || is_set(dialctlpeercfgstatus.operation)) leaf_name_data.push_back(dialctlpeercfgstatus.get_name_leafdata());
-    if (dialctlpeercfgsubaddress.is_set || is_set(dialctlpeercfgsubaddress.operation)) leaf_name_data.push_back(dialctlpeercfgsubaddress.get_name_leafdata());
-    if (dialctlpeercfgtrapenable.is_set || is_set(dialctlpeercfgtrapenable.operation)) leaf_name_data.push_back(dialctlpeercfgtrapenable.get_name_leafdata());
-    if (dialctlpeerstatsacceptcalls.is_set || is_set(dialctlpeerstatsacceptcalls.operation)) leaf_name_data.push_back(dialctlpeerstatsacceptcalls.get_name_leafdata());
-    if (dialctlpeerstatschargedunits.is_set || is_set(dialctlpeerstatschargedunits.operation)) leaf_name_data.push_back(dialctlpeerstatschargedunits.get_name_leafdata());
-    if (dialctlpeerstatsconnecttime.is_set || is_set(dialctlpeerstatsconnecttime.operation)) leaf_name_data.push_back(dialctlpeerstatsconnecttime.get_name_leafdata());
-    if (dialctlpeerstatsfailcalls.is_set || is_set(dialctlpeerstatsfailcalls.operation)) leaf_name_data.push_back(dialctlpeerstatsfailcalls.get_name_leafdata());
-    if (dialctlpeerstatslastdisconnectcause.is_set || is_set(dialctlpeerstatslastdisconnectcause.operation)) leaf_name_data.push_back(dialctlpeerstatslastdisconnectcause.get_name_leafdata());
-    if (dialctlpeerstatslastdisconnecttext.is_set || is_set(dialctlpeerstatslastdisconnecttext.operation)) leaf_name_data.push_back(dialctlpeerstatslastdisconnecttext.get_name_leafdata());
-    if (dialctlpeerstatslastsetuptime.is_set || is_set(dialctlpeerstatslastsetuptime.operation)) leaf_name_data.push_back(dialctlpeerstatslastsetuptime.get_name_leafdata());
-    if (dialctlpeerstatsrefusecalls.is_set || is_set(dialctlpeerstatsrefusecalls.operation)) leaf_name_data.push_back(dialctlpeerstatsrefusecalls.get_name_leafdata());
-    if (dialctlpeerstatssuccesscalls.is_set || is_set(dialctlpeerstatssuccesscalls.operation)) leaf_name_data.push_back(dialctlpeerstatssuccesscalls.get_name_leafdata());
+    if (dialctlpeercfgid.is_set || is_set(dialctlpeercfgid.yfilter)) leaf_name_data.push_back(dialctlpeercfgid.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (dialctlpeercfgansweraddress.is_set || is_set(dialctlpeercfgansweraddress.yfilter)) leaf_name_data.push_back(dialctlpeercfgansweraddress.get_name_leafdata());
+    if (dialctlpeercfgcallretries.is_set || is_set(dialctlpeercfgcallretries.yfilter)) leaf_name_data.push_back(dialctlpeercfgcallretries.get_name_leafdata());
+    if (dialctlpeercfgcarrierdelay.is_set || is_set(dialctlpeercfgcarrierdelay.yfilter)) leaf_name_data.push_back(dialctlpeercfgcarrierdelay.get_name_leafdata());
+    if (dialctlpeercfgclosedusergroup.is_set || is_set(dialctlpeercfgclosedusergroup.yfilter)) leaf_name_data.push_back(dialctlpeercfgclosedusergroup.get_name_leafdata());
+    if (dialctlpeercfgfailuredelay.is_set || is_set(dialctlpeercfgfailuredelay.yfilter)) leaf_name_data.push_back(dialctlpeercfgfailuredelay.get_name_leafdata());
+    if (dialctlpeercfgiftype.is_set || is_set(dialctlpeercfgiftype.yfilter)) leaf_name_data.push_back(dialctlpeercfgiftype.get_name_leafdata());
+    if (dialctlpeercfginactivitytimer.is_set || is_set(dialctlpeercfginactivitytimer.yfilter)) leaf_name_data.push_back(dialctlpeercfginactivitytimer.get_name_leafdata());
+    if (dialctlpeercfginfotype.is_set || is_set(dialctlpeercfginfotype.yfilter)) leaf_name_data.push_back(dialctlpeercfginfotype.get_name_leafdata());
+    if (dialctlpeercfglowerif.is_set || is_set(dialctlpeercfglowerif.yfilter)) leaf_name_data.push_back(dialctlpeercfglowerif.get_name_leafdata());
+    if (dialctlpeercfgmaxduration.is_set || is_set(dialctlpeercfgmaxduration.yfilter)) leaf_name_data.push_back(dialctlpeercfgmaxduration.get_name_leafdata());
+    if (dialctlpeercfgminduration.is_set || is_set(dialctlpeercfgminduration.yfilter)) leaf_name_data.push_back(dialctlpeercfgminduration.get_name_leafdata());
+    if (dialctlpeercfgoriginateaddress.is_set || is_set(dialctlpeercfgoriginateaddress.yfilter)) leaf_name_data.push_back(dialctlpeercfgoriginateaddress.get_name_leafdata());
+    if (dialctlpeercfgpermission.is_set || is_set(dialctlpeercfgpermission.yfilter)) leaf_name_data.push_back(dialctlpeercfgpermission.get_name_leafdata());
+    if (dialctlpeercfgretrydelay.is_set || is_set(dialctlpeercfgretrydelay.yfilter)) leaf_name_data.push_back(dialctlpeercfgretrydelay.get_name_leafdata());
+    if (dialctlpeercfgspeed.is_set || is_set(dialctlpeercfgspeed.yfilter)) leaf_name_data.push_back(dialctlpeercfgspeed.get_name_leafdata());
+    if (dialctlpeercfgstatus.is_set || is_set(dialctlpeercfgstatus.yfilter)) leaf_name_data.push_back(dialctlpeercfgstatus.get_name_leafdata());
+    if (dialctlpeercfgsubaddress.is_set || is_set(dialctlpeercfgsubaddress.yfilter)) leaf_name_data.push_back(dialctlpeercfgsubaddress.get_name_leafdata());
+    if (dialctlpeercfgtrapenable.is_set || is_set(dialctlpeercfgtrapenable.yfilter)) leaf_name_data.push_back(dialctlpeercfgtrapenable.get_name_leafdata());
+    if (dialctlpeerstatsacceptcalls.is_set || is_set(dialctlpeerstatsacceptcalls.yfilter)) leaf_name_data.push_back(dialctlpeerstatsacceptcalls.get_name_leafdata());
+    if (dialctlpeerstatschargedunits.is_set || is_set(dialctlpeerstatschargedunits.yfilter)) leaf_name_data.push_back(dialctlpeerstatschargedunits.get_name_leafdata());
+    if (dialctlpeerstatsconnecttime.is_set || is_set(dialctlpeerstatsconnecttime.yfilter)) leaf_name_data.push_back(dialctlpeerstatsconnecttime.get_name_leafdata());
+    if (dialctlpeerstatsfailcalls.is_set || is_set(dialctlpeerstatsfailcalls.yfilter)) leaf_name_data.push_back(dialctlpeerstatsfailcalls.get_name_leafdata());
+    if (dialctlpeerstatslastdisconnectcause.is_set || is_set(dialctlpeerstatslastdisconnectcause.yfilter)) leaf_name_data.push_back(dialctlpeerstatslastdisconnectcause.get_name_leafdata());
+    if (dialctlpeerstatslastdisconnecttext.is_set || is_set(dialctlpeerstatslastdisconnecttext.yfilter)) leaf_name_data.push_back(dialctlpeerstatslastdisconnecttext.get_name_leafdata());
+    if (dialctlpeerstatslastsetuptime.is_set || is_set(dialctlpeerstatslastsetuptime.yfilter)) leaf_name_data.push_back(dialctlpeerstatslastsetuptime.get_name_leafdata());
+    if (dialctlpeerstatsrefusecalls.is_set || is_set(dialctlpeerstatsrefusecalls.yfilter)) leaf_name_data.push_back(dialctlpeerstatsrefusecalls.get_name_leafdata());
+    if (dialctlpeerstatssuccesscalls.is_set || is_set(dialctlpeerstatssuccesscalls.yfilter)) leaf_name_data.push_back(dialctlpeerstatssuccesscalls.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -616,124 +691,309 @@ std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Dialctlpeercfgtab
     return children;
 }
 
-void DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::set_value(const std::string & value_path, std::string value)
+void DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dialCtlPeerCfgId")
     {
         dialctlpeercfgid = value;
+        dialctlpeercfgid.value_namespace = name_space;
+        dialctlpeercfgid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgAnswerAddress")
     {
         dialctlpeercfgansweraddress = value;
+        dialctlpeercfgansweraddress.value_namespace = name_space;
+        dialctlpeercfgansweraddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgCallRetries")
     {
         dialctlpeercfgcallretries = value;
+        dialctlpeercfgcallretries.value_namespace = name_space;
+        dialctlpeercfgcallretries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgCarrierDelay")
     {
         dialctlpeercfgcarrierdelay = value;
+        dialctlpeercfgcarrierdelay.value_namespace = name_space;
+        dialctlpeercfgcarrierdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgClosedUserGroup")
     {
         dialctlpeercfgclosedusergroup = value;
+        dialctlpeercfgclosedusergroup.value_namespace = name_space;
+        dialctlpeercfgclosedusergroup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgFailureDelay")
     {
         dialctlpeercfgfailuredelay = value;
+        dialctlpeercfgfailuredelay.value_namespace = name_space;
+        dialctlpeercfgfailuredelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgIfType")
     {
         dialctlpeercfgiftype = value;
+        dialctlpeercfgiftype.value_namespace = name_space;
+        dialctlpeercfgiftype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgInactivityTimer")
     {
         dialctlpeercfginactivitytimer = value;
+        dialctlpeercfginactivitytimer.value_namespace = name_space;
+        dialctlpeercfginactivitytimer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgInfoType")
     {
         dialctlpeercfginfotype = value;
+        dialctlpeercfginfotype.value_namespace = name_space;
+        dialctlpeercfginfotype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgLowerIf")
     {
         dialctlpeercfglowerif = value;
+        dialctlpeercfglowerif.value_namespace = name_space;
+        dialctlpeercfglowerif.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgMaxDuration")
     {
         dialctlpeercfgmaxduration = value;
+        dialctlpeercfgmaxduration.value_namespace = name_space;
+        dialctlpeercfgmaxduration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgMinDuration")
     {
         dialctlpeercfgminduration = value;
+        dialctlpeercfgminduration.value_namespace = name_space;
+        dialctlpeercfgminduration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgOriginateAddress")
     {
         dialctlpeercfgoriginateaddress = value;
+        dialctlpeercfgoriginateaddress.value_namespace = name_space;
+        dialctlpeercfgoriginateaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgPermission")
     {
         dialctlpeercfgpermission = value;
+        dialctlpeercfgpermission.value_namespace = name_space;
+        dialctlpeercfgpermission.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgRetryDelay")
     {
         dialctlpeercfgretrydelay = value;
+        dialctlpeercfgretrydelay.value_namespace = name_space;
+        dialctlpeercfgretrydelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgSpeed")
     {
         dialctlpeercfgspeed = value;
+        dialctlpeercfgspeed.value_namespace = name_space;
+        dialctlpeercfgspeed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgStatus")
     {
         dialctlpeercfgstatus = value;
+        dialctlpeercfgstatus.value_namespace = name_space;
+        dialctlpeercfgstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgSubAddress")
     {
         dialctlpeercfgsubaddress = value;
+        dialctlpeercfgsubaddress.value_namespace = name_space;
+        dialctlpeercfgsubaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerCfgTrapEnable")
     {
         dialctlpeercfgtrapenable = value;
+        dialctlpeercfgtrapenable.value_namespace = name_space;
+        dialctlpeercfgtrapenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsAcceptCalls")
     {
         dialctlpeerstatsacceptcalls = value;
+        dialctlpeerstatsacceptcalls.value_namespace = name_space;
+        dialctlpeerstatsacceptcalls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsChargedUnits")
     {
         dialctlpeerstatschargedunits = value;
+        dialctlpeerstatschargedunits.value_namespace = name_space;
+        dialctlpeerstatschargedunits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsConnectTime")
     {
         dialctlpeerstatsconnecttime = value;
+        dialctlpeerstatsconnecttime.value_namespace = name_space;
+        dialctlpeerstatsconnecttime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsFailCalls")
     {
         dialctlpeerstatsfailcalls = value;
+        dialctlpeerstatsfailcalls.value_namespace = name_space;
+        dialctlpeerstatsfailcalls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsLastDisconnectCause")
     {
         dialctlpeerstatslastdisconnectcause = value;
+        dialctlpeerstatslastdisconnectcause.value_namespace = name_space;
+        dialctlpeerstatslastdisconnectcause.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsLastDisconnectText")
     {
         dialctlpeerstatslastdisconnecttext = value;
+        dialctlpeerstatslastdisconnecttext.value_namespace = name_space;
+        dialctlpeerstatslastdisconnecttext.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsLastSetupTime")
     {
         dialctlpeerstatslastsetuptime = value;
+        dialctlpeerstatslastsetuptime.value_namespace = name_space;
+        dialctlpeerstatslastsetuptime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsRefuseCalls")
     {
         dialctlpeerstatsrefusecalls = value;
+        dialctlpeerstatsrefusecalls.value_namespace = name_space;
+        dialctlpeerstatsrefusecalls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dialCtlPeerStatsSuccessCalls")
     {
         dialctlpeerstatssuccesscalls = value;
+        dialctlpeerstatssuccesscalls.value_namespace = name_space;
+        dialctlpeerstatssuccesscalls.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dialCtlPeerCfgId")
+    {
+        dialctlpeercfgid.yfilter = yfilter;
+    }
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgAnswerAddress")
+    {
+        dialctlpeercfgansweraddress.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgCallRetries")
+    {
+        dialctlpeercfgcallretries.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgCarrierDelay")
+    {
+        dialctlpeercfgcarrierdelay.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgClosedUserGroup")
+    {
+        dialctlpeercfgclosedusergroup.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgFailureDelay")
+    {
+        dialctlpeercfgfailuredelay.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgIfType")
+    {
+        dialctlpeercfgiftype.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgInactivityTimer")
+    {
+        dialctlpeercfginactivitytimer.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgInfoType")
+    {
+        dialctlpeercfginfotype.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgLowerIf")
+    {
+        dialctlpeercfglowerif.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgMaxDuration")
+    {
+        dialctlpeercfgmaxduration.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgMinDuration")
+    {
+        dialctlpeercfgminduration.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgOriginateAddress")
+    {
+        dialctlpeercfgoriginateaddress.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgPermission")
+    {
+        dialctlpeercfgpermission.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgRetryDelay")
+    {
+        dialctlpeercfgretrydelay.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgSpeed")
+    {
+        dialctlpeercfgspeed.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgStatus")
+    {
+        dialctlpeercfgstatus.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgSubAddress")
+    {
+        dialctlpeercfgsubaddress.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerCfgTrapEnable")
+    {
+        dialctlpeercfgtrapenable.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsAcceptCalls")
+    {
+        dialctlpeerstatsacceptcalls.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsChargedUnits")
+    {
+        dialctlpeerstatschargedunits.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsConnectTime")
+    {
+        dialctlpeerstatsconnecttime.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsFailCalls")
+    {
+        dialctlpeerstatsfailcalls.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsLastDisconnectCause")
+    {
+        dialctlpeerstatslastdisconnectcause.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsLastDisconnectText")
+    {
+        dialctlpeerstatslastdisconnecttext.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsLastSetupTime")
+    {
+        dialctlpeerstatslastsetuptime.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsRefuseCalls")
+    {
+        dialctlpeerstatsrefusecalls.yfilter = yfilter;
+    }
+    if(value_path == "dialCtlPeerStatsSuccessCalls")
+    {
+        dialctlpeerstatssuccesscalls.yfilter = yfilter;
+    }
+}
+
+bool DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dialCtlPeerCfgId" || name == "ifIndex" || name == "dialCtlPeerCfgAnswerAddress" || name == "dialCtlPeerCfgCallRetries" || name == "dialCtlPeerCfgCarrierDelay" || name == "dialCtlPeerCfgClosedUserGroup" || name == "dialCtlPeerCfgFailureDelay" || name == "dialCtlPeerCfgIfType" || name == "dialCtlPeerCfgInactivityTimer" || name == "dialCtlPeerCfgInfoType" || name == "dialCtlPeerCfgLowerIf" || name == "dialCtlPeerCfgMaxDuration" || name == "dialCtlPeerCfgMinDuration" || name == "dialCtlPeerCfgOriginateAddress" || name == "dialCtlPeerCfgPermission" || name == "dialCtlPeerCfgRetryDelay" || name == "dialCtlPeerCfgSpeed" || name == "dialCtlPeerCfgStatus" || name == "dialCtlPeerCfgSubAddress" || name == "dialCtlPeerCfgTrapEnable" || name == "dialCtlPeerStatsAcceptCalls" || name == "dialCtlPeerStatsChargedUnits" || name == "dialCtlPeerStatsConnectTime" || name == "dialCtlPeerStatsFailCalls" || name == "dialCtlPeerStatsLastDisconnectCause" || name == "dialCtlPeerStatsLastDisconnectText" || name == "dialCtlPeerStatsLastSetupTime" || name == "dialCtlPeerStatsRefuseCalls" || name == "dialCtlPeerStatsSuccessCalls")
+        return true;
+    return false;
 }
 
 DialControlMib::Callactivetable::Callactivetable()
@@ -747,9 +1007,9 @@ DialControlMib::Callactivetable::~Callactivetable()
 
 bool DialControlMib::Callactivetable::has_data() const
 {
-    for (std::size_t index=0; index<callactiveentry_.size(); index++)
+    for (std::size_t index=0; index<callactiveentry.size(); index++)
     {
-        if(callactiveentry_[index]->has_data())
+        if(callactiveentry[index]->has_data())
             return true;
     }
     return false;
@@ -757,12 +1017,12 @@ bool DialControlMib::Callactivetable::has_data() const
 
 bool DialControlMib::Callactivetable::has_operation() const
 {
-    for (std::size_t index=0; index<callactiveentry_.size(); index++)
+    for (std::size_t index=0; index<callactiveentry.size(); index++)
     {
-        if(callactiveentry_[index]->has_operation())
+        if(callactiveentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DialControlMib::Callactivetable::get_segment_path() const
@@ -799,7 +1059,7 @@ std::shared_ptr<Entity> DialControlMib::Callactivetable::get_child_by_name(const
 {
     if(child_yang_name == "callActiveEntry")
     {
-        for(auto const & c : callactiveentry_)
+        for(auto const & c : callactiveentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -809,7 +1069,7 @@ std::shared_ptr<Entity> DialControlMib::Callactivetable::get_child_by_name(const
         }
         auto c = std::make_shared<DialControlMib::Callactivetable::Callactiveentry>();
         c->parent = this;
-        callactiveentry_.push_back(c);
+        callactiveentry.push_back(c);
         return c;
     }
 
@@ -819,7 +1079,7 @@ std::shared_ptr<Entity> DialControlMib::Callactivetable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Callactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : callactiveentry_)
+    for (auto const & c : callactiveentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -827,8 +1087,19 @@ std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Callactivetable::
     return children;
 }
 
-void DialControlMib::Callactivetable::set_value(const std::string & value_path, std::string value)
+void DialControlMib::Callactivetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DialControlMib::Callactivetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DialControlMib::Callactivetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "callActiveEntry")
+        return true;
+    return false;
 }
 
 DialControlMib::Callactivetable::Callactiveentry::Callactiveentry()
@@ -879,23 +1150,23 @@ bool DialControlMib::Callactivetable::Callactiveentry::has_data() const
 
 bool DialControlMib::Callactivetable::Callactiveentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(callactivesetuptime.operation)
-	|| is_set(callactiveindex.operation)
-	|| is_set(callactivecallorigin.operation)
-	|| is_set(callactivecallstate.operation)
-	|| is_set(callactivechargedunits.operation)
-	|| is_set(callactiveconnecttime.operation)
-	|| is_set(callactiveinfotype.operation)
-	|| is_set(callactivelogicalifindex.operation)
-	|| is_set(callactivepeeraddress.operation)
-	|| is_set(callactivepeerid.operation)
-	|| is_set(callactivepeerifindex.operation)
-	|| is_set(callactivepeersubaddress.operation)
-	|| is_set(callactivereceivebytes.operation)
-	|| is_set(callactivereceivepackets.operation)
-	|| is_set(callactivetransmitbytes.operation)
-	|| is_set(callactivetransmitpackets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(callactivesetuptime.yfilter)
+	|| ydk::is_set(callactiveindex.yfilter)
+	|| ydk::is_set(callactivecallorigin.yfilter)
+	|| ydk::is_set(callactivecallstate.yfilter)
+	|| ydk::is_set(callactivechargedunits.yfilter)
+	|| ydk::is_set(callactiveconnecttime.yfilter)
+	|| ydk::is_set(callactiveinfotype.yfilter)
+	|| ydk::is_set(callactivelogicalifindex.yfilter)
+	|| ydk::is_set(callactivepeeraddress.yfilter)
+	|| ydk::is_set(callactivepeerid.yfilter)
+	|| ydk::is_set(callactivepeerifindex.yfilter)
+	|| ydk::is_set(callactivepeersubaddress.yfilter)
+	|| ydk::is_set(callactivereceivebytes.yfilter)
+	|| ydk::is_set(callactivereceivepackets.yfilter)
+	|| ydk::is_set(callactivetransmitbytes.yfilter)
+	|| ydk::is_set(callactivetransmitpackets.yfilter);
 }
 
 std::string DialControlMib::Callactivetable::Callactiveentry::get_segment_path() const
@@ -921,22 +1192,22 @@ const EntityPath DialControlMib::Callactivetable::Callactiveentry::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (callactivesetuptime.is_set || is_set(callactivesetuptime.operation)) leaf_name_data.push_back(callactivesetuptime.get_name_leafdata());
-    if (callactiveindex.is_set || is_set(callactiveindex.operation)) leaf_name_data.push_back(callactiveindex.get_name_leafdata());
-    if (callactivecallorigin.is_set || is_set(callactivecallorigin.operation)) leaf_name_data.push_back(callactivecallorigin.get_name_leafdata());
-    if (callactivecallstate.is_set || is_set(callactivecallstate.operation)) leaf_name_data.push_back(callactivecallstate.get_name_leafdata());
-    if (callactivechargedunits.is_set || is_set(callactivechargedunits.operation)) leaf_name_data.push_back(callactivechargedunits.get_name_leafdata());
-    if (callactiveconnecttime.is_set || is_set(callactiveconnecttime.operation)) leaf_name_data.push_back(callactiveconnecttime.get_name_leafdata());
-    if (callactiveinfotype.is_set || is_set(callactiveinfotype.operation)) leaf_name_data.push_back(callactiveinfotype.get_name_leafdata());
-    if (callactivelogicalifindex.is_set || is_set(callactivelogicalifindex.operation)) leaf_name_data.push_back(callactivelogicalifindex.get_name_leafdata());
-    if (callactivepeeraddress.is_set || is_set(callactivepeeraddress.operation)) leaf_name_data.push_back(callactivepeeraddress.get_name_leafdata());
-    if (callactivepeerid.is_set || is_set(callactivepeerid.operation)) leaf_name_data.push_back(callactivepeerid.get_name_leafdata());
-    if (callactivepeerifindex.is_set || is_set(callactivepeerifindex.operation)) leaf_name_data.push_back(callactivepeerifindex.get_name_leafdata());
-    if (callactivepeersubaddress.is_set || is_set(callactivepeersubaddress.operation)) leaf_name_data.push_back(callactivepeersubaddress.get_name_leafdata());
-    if (callactivereceivebytes.is_set || is_set(callactivereceivebytes.operation)) leaf_name_data.push_back(callactivereceivebytes.get_name_leafdata());
-    if (callactivereceivepackets.is_set || is_set(callactivereceivepackets.operation)) leaf_name_data.push_back(callactivereceivepackets.get_name_leafdata());
-    if (callactivetransmitbytes.is_set || is_set(callactivetransmitbytes.operation)) leaf_name_data.push_back(callactivetransmitbytes.get_name_leafdata());
-    if (callactivetransmitpackets.is_set || is_set(callactivetransmitpackets.operation)) leaf_name_data.push_back(callactivetransmitpackets.get_name_leafdata());
+    if (callactivesetuptime.is_set || is_set(callactivesetuptime.yfilter)) leaf_name_data.push_back(callactivesetuptime.get_name_leafdata());
+    if (callactiveindex.is_set || is_set(callactiveindex.yfilter)) leaf_name_data.push_back(callactiveindex.get_name_leafdata());
+    if (callactivecallorigin.is_set || is_set(callactivecallorigin.yfilter)) leaf_name_data.push_back(callactivecallorigin.get_name_leafdata());
+    if (callactivecallstate.is_set || is_set(callactivecallstate.yfilter)) leaf_name_data.push_back(callactivecallstate.get_name_leafdata());
+    if (callactivechargedunits.is_set || is_set(callactivechargedunits.yfilter)) leaf_name_data.push_back(callactivechargedunits.get_name_leafdata());
+    if (callactiveconnecttime.is_set || is_set(callactiveconnecttime.yfilter)) leaf_name_data.push_back(callactiveconnecttime.get_name_leafdata());
+    if (callactiveinfotype.is_set || is_set(callactiveinfotype.yfilter)) leaf_name_data.push_back(callactiveinfotype.get_name_leafdata());
+    if (callactivelogicalifindex.is_set || is_set(callactivelogicalifindex.yfilter)) leaf_name_data.push_back(callactivelogicalifindex.get_name_leafdata());
+    if (callactivepeeraddress.is_set || is_set(callactivepeeraddress.yfilter)) leaf_name_data.push_back(callactivepeeraddress.get_name_leafdata());
+    if (callactivepeerid.is_set || is_set(callactivepeerid.yfilter)) leaf_name_data.push_back(callactivepeerid.get_name_leafdata());
+    if (callactivepeerifindex.is_set || is_set(callactivepeerifindex.yfilter)) leaf_name_data.push_back(callactivepeerifindex.get_name_leafdata());
+    if (callactivepeersubaddress.is_set || is_set(callactivepeersubaddress.yfilter)) leaf_name_data.push_back(callactivepeersubaddress.get_name_leafdata());
+    if (callactivereceivebytes.is_set || is_set(callactivereceivebytes.yfilter)) leaf_name_data.push_back(callactivereceivebytes.get_name_leafdata());
+    if (callactivereceivepackets.is_set || is_set(callactivereceivepackets.yfilter)) leaf_name_data.push_back(callactivereceivepackets.get_name_leafdata());
+    if (callactivetransmitbytes.is_set || is_set(callactivetransmitbytes.yfilter)) leaf_name_data.push_back(callactivetransmitbytes.get_name_leafdata());
+    if (callactivetransmitpackets.is_set || is_set(callactivetransmitpackets.yfilter)) leaf_name_data.push_back(callactivetransmitpackets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -955,72 +1226,179 @@ std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Callactivetable::
     return children;
 }
 
-void DialControlMib::Callactivetable::Callactiveentry::set_value(const std::string & value_path, std::string value)
+void DialControlMib::Callactivetable::Callactiveentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callActiveSetupTime")
     {
         callactivesetuptime = value;
+        callactivesetuptime.value_namespace = name_space;
+        callactivesetuptime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveIndex")
     {
         callactiveindex = value;
+        callactiveindex.value_namespace = name_space;
+        callactiveindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveCallOrigin")
     {
         callactivecallorigin = value;
+        callactivecallorigin.value_namespace = name_space;
+        callactivecallorigin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveCallState")
     {
         callactivecallstate = value;
+        callactivecallstate.value_namespace = name_space;
+        callactivecallstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveChargedUnits")
     {
         callactivechargedunits = value;
+        callactivechargedunits.value_namespace = name_space;
+        callactivechargedunits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveConnectTime")
     {
         callactiveconnecttime = value;
+        callactiveconnecttime.value_namespace = name_space;
+        callactiveconnecttime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveInfoType")
     {
         callactiveinfotype = value;
+        callactiveinfotype.value_namespace = name_space;
+        callactiveinfotype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveLogicalIfIndex")
     {
         callactivelogicalifindex = value;
+        callactivelogicalifindex.value_namespace = name_space;
+        callactivelogicalifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActivePeerAddress")
     {
         callactivepeeraddress = value;
+        callactivepeeraddress.value_namespace = name_space;
+        callactivepeeraddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActivePeerId")
     {
         callactivepeerid = value;
+        callactivepeerid.value_namespace = name_space;
+        callactivepeerid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActivePeerIfIndex")
     {
         callactivepeerifindex = value;
+        callactivepeerifindex.value_namespace = name_space;
+        callactivepeerifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActivePeerSubAddress")
     {
         callactivepeersubaddress = value;
+        callactivepeersubaddress.value_namespace = name_space;
+        callactivepeersubaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveReceiveBytes")
     {
         callactivereceivebytes = value;
+        callactivereceivebytes.value_namespace = name_space;
+        callactivereceivebytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveReceivePackets")
     {
         callactivereceivepackets = value;
+        callactivereceivepackets.value_namespace = name_space;
+        callactivereceivepackets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveTransmitBytes")
     {
         callactivetransmitbytes = value;
+        callactivetransmitbytes.value_namespace = name_space;
+        callactivetransmitbytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveTransmitPackets")
     {
         callactivetransmitpackets = value;
+        callactivetransmitpackets.value_namespace = name_space;
+        callactivetransmitpackets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DialControlMib::Callactivetable::Callactiveentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "callActiveSetupTime")
+    {
+        callactivesetuptime.yfilter = yfilter;
+    }
+    if(value_path == "callActiveIndex")
+    {
+        callactiveindex.yfilter = yfilter;
+    }
+    if(value_path == "callActiveCallOrigin")
+    {
+        callactivecallorigin.yfilter = yfilter;
+    }
+    if(value_path == "callActiveCallState")
+    {
+        callactivecallstate.yfilter = yfilter;
+    }
+    if(value_path == "callActiveChargedUnits")
+    {
+        callactivechargedunits.yfilter = yfilter;
+    }
+    if(value_path == "callActiveConnectTime")
+    {
+        callactiveconnecttime.yfilter = yfilter;
+    }
+    if(value_path == "callActiveInfoType")
+    {
+        callactiveinfotype.yfilter = yfilter;
+    }
+    if(value_path == "callActiveLogicalIfIndex")
+    {
+        callactivelogicalifindex.yfilter = yfilter;
+    }
+    if(value_path == "callActivePeerAddress")
+    {
+        callactivepeeraddress.yfilter = yfilter;
+    }
+    if(value_path == "callActivePeerId")
+    {
+        callactivepeerid.yfilter = yfilter;
+    }
+    if(value_path == "callActivePeerIfIndex")
+    {
+        callactivepeerifindex.yfilter = yfilter;
+    }
+    if(value_path == "callActivePeerSubAddress")
+    {
+        callactivepeersubaddress.yfilter = yfilter;
+    }
+    if(value_path == "callActiveReceiveBytes")
+    {
+        callactivereceivebytes.yfilter = yfilter;
+    }
+    if(value_path == "callActiveReceivePackets")
+    {
+        callactivereceivepackets.yfilter = yfilter;
+    }
+    if(value_path == "callActiveTransmitBytes")
+    {
+        callactivetransmitbytes.yfilter = yfilter;
+    }
+    if(value_path == "callActiveTransmitPackets")
+    {
+        callactivetransmitpackets.yfilter = yfilter;
+    }
+}
+
+bool DialControlMib::Callactivetable::Callactiveentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "callActiveSetupTime" || name == "callActiveIndex" || name == "callActiveCallOrigin" || name == "callActiveCallState" || name == "callActiveChargedUnits" || name == "callActiveConnectTime" || name == "callActiveInfoType" || name == "callActiveLogicalIfIndex" || name == "callActivePeerAddress" || name == "callActivePeerId" || name == "callActivePeerIfIndex" || name == "callActivePeerSubAddress" || name == "callActiveReceiveBytes" || name == "callActiveReceivePackets" || name == "callActiveTransmitBytes" || name == "callActiveTransmitPackets")
+        return true;
+    return false;
 }
 
 DialControlMib::Callhistorytable::Callhistorytable()
@@ -1034,9 +1412,9 @@ DialControlMib::Callhistorytable::~Callhistorytable()
 
 bool DialControlMib::Callhistorytable::has_data() const
 {
-    for (std::size_t index=0; index<callhistoryentry_.size(); index++)
+    for (std::size_t index=0; index<callhistoryentry.size(); index++)
     {
-        if(callhistoryentry_[index]->has_data())
+        if(callhistoryentry[index]->has_data())
             return true;
     }
     return false;
@@ -1044,12 +1422,12 @@ bool DialControlMib::Callhistorytable::has_data() const
 
 bool DialControlMib::Callhistorytable::has_operation() const
 {
-    for (std::size_t index=0; index<callhistoryentry_.size(); index++)
+    for (std::size_t index=0; index<callhistoryentry.size(); index++)
     {
-        if(callhistoryentry_[index]->has_operation())
+        if(callhistoryentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DialControlMib::Callhistorytable::get_segment_path() const
@@ -1086,7 +1464,7 @@ std::shared_ptr<Entity> DialControlMib::Callhistorytable::get_child_by_name(cons
 {
     if(child_yang_name == "callHistoryEntry")
     {
-        for(auto const & c : callhistoryentry_)
+        for(auto const & c : callhistoryentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1096,7 +1474,7 @@ std::shared_ptr<Entity> DialControlMib::Callhistorytable::get_child_by_name(cons
         }
         auto c = std::make_shared<DialControlMib::Callhistorytable::Callhistoryentry>();
         c->parent = this;
-        callhistoryentry_.push_back(c);
+        callhistoryentry.push_back(c);
         return c;
     }
 
@@ -1106,7 +1484,7 @@ std::shared_ptr<Entity> DialControlMib::Callhistorytable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Callhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : callhistoryentry_)
+    for (auto const & c : callhistoryentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1114,8 +1492,19 @@ std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Callhistorytable:
     return children;
 }
 
-void DialControlMib::Callhistorytable::set_value(const std::string & value_path, std::string value)
+void DialControlMib::Callhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DialControlMib::Callhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DialControlMib::Callhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "callHistoryEntry")
+        return true;
+    return false;
 }
 
 DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryentry()
@@ -1170,25 +1559,25 @@ bool DialControlMib::Callhistorytable::Callhistoryentry::has_data() const
 
 bool DialControlMib::Callhistorytable::Callhistoryentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(callactivesetuptime.operation)
-	|| is_set(callactiveindex.operation)
-	|| is_set(callhistorycallorigin.operation)
-	|| is_set(callhistorychargedunits.operation)
-	|| is_set(callhistoryconnecttime.operation)
-	|| is_set(callhistorydisconnectcause.operation)
-	|| is_set(callhistorydisconnecttext.operation)
-	|| is_set(callhistorydisconnecttime.operation)
-	|| is_set(callhistoryinfotype.operation)
-	|| is_set(callhistorylogicalifindex.operation)
-	|| is_set(callhistorypeeraddress.operation)
-	|| is_set(callhistorypeerid.operation)
-	|| is_set(callhistorypeerifindex.operation)
-	|| is_set(callhistorypeersubaddress.operation)
-	|| is_set(callhistoryreceivebytes.operation)
-	|| is_set(callhistoryreceivepackets.operation)
-	|| is_set(callhistorytransmitbytes.operation)
-	|| is_set(callhistorytransmitpackets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(callactivesetuptime.yfilter)
+	|| ydk::is_set(callactiveindex.yfilter)
+	|| ydk::is_set(callhistorycallorigin.yfilter)
+	|| ydk::is_set(callhistorychargedunits.yfilter)
+	|| ydk::is_set(callhistoryconnecttime.yfilter)
+	|| ydk::is_set(callhistorydisconnectcause.yfilter)
+	|| ydk::is_set(callhistorydisconnecttext.yfilter)
+	|| ydk::is_set(callhistorydisconnecttime.yfilter)
+	|| ydk::is_set(callhistoryinfotype.yfilter)
+	|| ydk::is_set(callhistorylogicalifindex.yfilter)
+	|| ydk::is_set(callhistorypeeraddress.yfilter)
+	|| ydk::is_set(callhistorypeerid.yfilter)
+	|| ydk::is_set(callhistorypeerifindex.yfilter)
+	|| ydk::is_set(callhistorypeersubaddress.yfilter)
+	|| ydk::is_set(callhistoryreceivebytes.yfilter)
+	|| ydk::is_set(callhistoryreceivepackets.yfilter)
+	|| ydk::is_set(callhistorytransmitbytes.yfilter)
+	|| ydk::is_set(callhistorytransmitpackets.yfilter);
 }
 
 std::string DialControlMib::Callhistorytable::Callhistoryentry::get_segment_path() const
@@ -1214,24 +1603,24 @@ const EntityPath DialControlMib::Callhistorytable::Callhistoryentry::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (callactivesetuptime.is_set || is_set(callactivesetuptime.operation)) leaf_name_data.push_back(callactivesetuptime.get_name_leafdata());
-    if (callactiveindex.is_set || is_set(callactiveindex.operation)) leaf_name_data.push_back(callactiveindex.get_name_leafdata());
-    if (callhistorycallorigin.is_set || is_set(callhistorycallorigin.operation)) leaf_name_data.push_back(callhistorycallorigin.get_name_leafdata());
-    if (callhistorychargedunits.is_set || is_set(callhistorychargedunits.operation)) leaf_name_data.push_back(callhistorychargedunits.get_name_leafdata());
-    if (callhistoryconnecttime.is_set || is_set(callhistoryconnecttime.operation)) leaf_name_data.push_back(callhistoryconnecttime.get_name_leafdata());
-    if (callhistorydisconnectcause.is_set || is_set(callhistorydisconnectcause.operation)) leaf_name_data.push_back(callhistorydisconnectcause.get_name_leafdata());
-    if (callhistorydisconnecttext.is_set || is_set(callhistorydisconnecttext.operation)) leaf_name_data.push_back(callhistorydisconnecttext.get_name_leafdata());
-    if (callhistorydisconnecttime.is_set || is_set(callhistorydisconnecttime.operation)) leaf_name_data.push_back(callhistorydisconnecttime.get_name_leafdata());
-    if (callhistoryinfotype.is_set || is_set(callhistoryinfotype.operation)) leaf_name_data.push_back(callhistoryinfotype.get_name_leafdata());
-    if (callhistorylogicalifindex.is_set || is_set(callhistorylogicalifindex.operation)) leaf_name_data.push_back(callhistorylogicalifindex.get_name_leafdata());
-    if (callhistorypeeraddress.is_set || is_set(callhistorypeeraddress.operation)) leaf_name_data.push_back(callhistorypeeraddress.get_name_leafdata());
-    if (callhistorypeerid.is_set || is_set(callhistorypeerid.operation)) leaf_name_data.push_back(callhistorypeerid.get_name_leafdata());
-    if (callhistorypeerifindex.is_set || is_set(callhistorypeerifindex.operation)) leaf_name_data.push_back(callhistorypeerifindex.get_name_leafdata());
-    if (callhistorypeersubaddress.is_set || is_set(callhistorypeersubaddress.operation)) leaf_name_data.push_back(callhistorypeersubaddress.get_name_leafdata());
-    if (callhistoryreceivebytes.is_set || is_set(callhistoryreceivebytes.operation)) leaf_name_data.push_back(callhistoryreceivebytes.get_name_leafdata());
-    if (callhistoryreceivepackets.is_set || is_set(callhistoryreceivepackets.operation)) leaf_name_data.push_back(callhistoryreceivepackets.get_name_leafdata());
-    if (callhistorytransmitbytes.is_set || is_set(callhistorytransmitbytes.operation)) leaf_name_data.push_back(callhistorytransmitbytes.get_name_leafdata());
-    if (callhistorytransmitpackets.is_set || is_set(callhistorytransmitpackets.operation)) leaf_name_data.push_back(callhistorytransmitpackets.get_name_leafdata());
+    if (callactivesetuptime.is_set || is_set(callactivesetuptime.yfilter)) leaf_name_data.push_back(callactivesetuptime.get_name_leafdata());
+    if (callactiveindex.is_set || is_set(callactiveindex.yfilter)) leaf_name_data.push_back(callactiveindex.get_name_leafdata());
+    if (callhistorycallorigin.is_set || is_set(callhistorycallorigin.yfilter)) leaf_name_data.push_back(callhistorycallorigin.get_name_leafdata());
+    if (callhistorychargedunits.is_set || is_set(callhistorychargedunits.yfilter)) leaf_name_data.push_back(callhistorychargedunits.get_name_leafdata());
+    if (callhistoryconnecttime.is_set || is_set(callhistoryconnecttime.yfilter)) leaf_name_data.push_back(callhistoryconnecttime.get_name_leafdata());
+    if (callhistorydisconnectcause.is_set || is_set(callhistorydisconnectcause.yfilter)) leaf_name_data.push_back(callhistorydisconnectcause.get_name_leafdata());
+    if (callhistorydisconnecttext.is_set || is_set(callhistorydisconnecttext.yfilter)) leaf_name_data.push_back(callhistorydisconnecttext.get_name_leafdata());
+    if (callhistorydisconnecttime.is_set || is_set(callhistorydisconnecttime.yfilter)) leaf_name_data.push_back(callhistorydisconnecttime.get_name_leafdata());
+    if (callhistoryinfotype.is_set || is_set(callhistoryinfotype.yfilter)) leaf_name_data.push_back(callhistoryinfotype.get_name_leafdata());
+    if (callhistorylogicalifindex.is_set || is_set(callhistorylogicalifindex.yfilter)) leaf_name_data.push_back(callhistorylogicalifindex.get_name_leafdata());
+    if (callhistorypeeraddress.is_set || is_set(callhistorypeeraddress.yfilter)) leaf_name_data.push_back(callhistorypeeraddress.get_name_leafdata());
+    if (callhistorypeerid.is_set || is_set(callhistorypeerid.yfilter)) leaf_name_data.push_back(callhistorypeerid.get_name_leafdata());
+    if (callhistorypeerifindex.is_set || is_set(callhistorypeerifindex.yfilter)) leaf_name_data.push_back(callhistorypeerifindex.get_name_leafdata());
+    if (callhistorypeersubaddress.is_set || is_set(callhistorypeersubaddress.yfilter)) leaf_name_data.push_back(callhistorypeersubaddress.get_name_leafdata());
+    if (callhistoryreceivebytes.is_set || is_set(callhistoryreceivebytes.yfilter)) leaf_name_data.push_back(callhistoryreceivebytes.get_name_leafdata());
+    if (callhistoryreceivepackets.is_set || is_set(callhistoryreceivepackets.yfilter)) leaf_name_data.push_back(callhistoryreceivepackets.get_name_leafdata());
+    if (callhistorytransmitbytes.is_set || is_set(callhistorytransmitbytes.yfilter)) leaf_name_data.push_back(callhistorytransmitbytes.get_name_leafdata());
+    if (callhistorytransmitpackets.is_set || is_set(callhistorytransmitpackets.yfilter)) leaf_name_data.push_back(callhistorytransmitpackets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1250,143 +1639,262 @@ std::map<std::string, std::shared_ptr<Entity>> DialControlMib::Callhistorytable:
     return children;
 }
 
-void DialControlMib::Callhistorytable::Callhistoryentry::set_value(const std::string & value_path, std::string value)
+void DialControlMib::Callhistorytable::Callhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callActiveSetupTime")
     {
         callactivesetuptime = value;
+        callactivesetuptime.value_namespace = name_space;
+        callactivesetuptime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callActiveIndex")
     {
         callactiveindex = value;
+        callactiveindex.value_namespace = name_space;
+        callactiveindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryCallOrigin")
     {
         callhistorycallorigin = value;
+        callhistorycallorigin.value_namespace = name_space;
+        callhistorycallorigin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryChargedUnits")
     {
         callhistorychargedunits = value;
+        callhistorychargedunits.value_namespace = name_space;
+        callhistorychargedunits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryConnectTime")
     {
         callhistoryconnecttime = value;
+        callhistoryconnecttime.value_namespace = name_space;
+        callhistoryconnecttime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryDisconnectCause")
     {
         callhistorydisconnectcause = value;
+        callhistorydisconnectcause.value_namespace = name_space;
+        callhistorydisconnectcause.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryDisconnectText")
     {
         callhistorydisconnecttext = value;
+        callhistorydisconnecttext.value_namespace = name_space;
+        callhistorydisconnecttext.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryDisconnectTime")
     {
         callhistorydisconnecttime = value;
+        callhistorydisconnecttime.value_namespace = name_space;
+        callhistorydisconnecttime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryInfoType")
     {
         callhistoryinfotype = value;
+        callhistoryinfotype.value_namespace = name_space;
+        callhistoryinfotype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryLogicalIfIndex")
     {
         callhistorylogicalifindex = value;
+        callhistorylogicalifindex.value_namespace = name_space;
+        callhistorylogicalifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryPeerAddress")
     {
         callhistorypeeraddress = value;
+        callhistorypeeraddress.value_namespace = name_space;
+        callhistorypeeraddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryPeerId")
     {
         callhistorypeerid = value;
+        callhistorypeerid.value_namespace = name_space;
+        callhistorypeerid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryPeerIfIndex")
     {
         callhistorypeerifindex = value;
+        callhistorypeerifindex.value_namespace = name_space;
+        callhistorypeerifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryPeerSubAddress")
     {
         callhistorypeersubaddress = value;
+        callhistorypeersubaddress.value_namespace = name_space;
+        callhistorypeersubaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryReceiveBytes")
     {
         callhistoryreceivebytes = value;
+        callhistoryreceivebytes.value_namespace = name_space;
+        callhistoryreceivebytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryReceivePackets")
     {
         callhistoryreceivepackets = value;
+        callhistoryreceivepackets.value_namespace = name_space;
+        callhistoryreceivepackets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryTransmitBytes")
     {
         callhistorytransmitbytes = value;
+        callhistorytransmitbytes.value_namespace = name_space;
+        callhistorytransmitbytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "callHistoryTransmitPackets")
     {
         callhistorytransmitpackets = value;
+        callhistorytransmitpackets.value_namespace = name_space;
+        callhistorytransmitpackets.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf DialControlMib::Dialctlconfiguration::DialctlacceptmodeEnum::acceptNone {1, "acceptNone"};
-const Enum::YLeaf DialControlMib::Dialctlconfiguration::DialctlacceptmodeEnum::acceptAll {2, "acceptAll"};
-const Enum::YLeaf DialControlMib::Dialctlconfiguration::DialctlacceptmodeEnum::acceptKnown {3, "acceptKnown"};
+void DialControlMib::Callhistorytable::Callhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "callActiveSetupTime")
+    {
+        callactivesetuptime.yfilter = yfilter;
+    }
+    if(value_path == "callActiveIndex")
+    {
+        callactiveindex.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryCallOrigin")
+    {
+        callhistorycallorigin.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryChargedUnits")
+    {
+        callhistorychargedunits.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryConnectTime")
+    {
+        callhistoryconnecttime.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryDisconnectCause")
+    {
+        callhistorydisconnectcause.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryDisconnectText")
+    {
+        callhistorydisconnecttext.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryDisconnectTime")
+    {
+        callhistorydisconnecttime.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryInfoType")
+    {
+        callhistoryinfotype.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryLogicalIfIndex")
+    {
+        callhistorylogicalifindex.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryPeerAddress")
+    {
+        callhistorypeeraddress.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryPeerId")
+    {
+        callhistorypeerid.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryPeerIfIndex")
+    {
+        callhistorypeerifindex.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryPeerSubAddress")
+    {
+        callhistorypeersubaddress.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryReceiveBytes")
+    {
+        callhistoryreceivebytes.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryReceivePackets")
+    {
+        callhistoryreceivepackets.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryTransmitBytes")
+    {
+        callhistorytransmitbytes.yfilter = yfilter;
+    }
+    if(value_path == "callHistoryTransmitPackets")
+    {
+        callhistorytransmitpackets.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf DialControlMib::Dialctlconfiguration::DialctltrapenableEnum::enabled {1, "enabled"};
-const Enum::YLeaf DialControlMib::Dialctlconfiguration::DialctltrapenableEnum::disabled {2, "disabled"};
+bool DialControlMib::Callhistorytable::Callhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "callActiveSetupTime" || name == "callActiveIndex" || name == "callHistoryCallOrigin" || name == "callHistoryChargedUnits" || name == "callHistoryConnectTime" || name == "callHistoryDisconnectCause" || name == "callHistoryDisconnectText" || name == "callHistoryDisconnectTime" || name == "callHistoryInfoType" || name == "callHistoryLogicalIfIndex" || name == "callHistoryPeerAddress" || name == "callHistoryPeerId" || name == "callHistoryPeerIfIndex" || name == "callHistoryPeerSubAddress" || name == "callHistoryReceiveBytes" || name == "callHistoryReceivePackets" || name == "callHistoryTransmitBytes" || name == "callHistoryTransmitPackets")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::other {1, "other"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::speech {2, "speech"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::unrestrictedDigital {3, "unrestrictedDigital"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::unrestrictedDigital56 {4, "unrestrictedDigital56"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::restrictedDigital {5, "restrictedDigital"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::audio31 {6, "audio31"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::audio7 {7, "audio7"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::video {8, "video"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::packetSwitched {9, "packetSwitched"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfginfotypeEnum::fax {10, "fax"};
+const Enum::YLeaf DialControlMib::Dialctlconfiguration::Dialctlacceptmode::acceptNone {1, "acceptNone"};
+const Enum::YLeaf DialControlMib::Dialctlconfiguration::Dialctlacceptmode::acceptAll {2, "acceptAll"};
+const Enum::YLeaf DialControlMib::Dialctlconfiguration::Dialctlacceptmode::acceptKnown {3, "acceptKnown"};
 
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfgpermissionEnum::originate {1, "originate"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfgpermissionEnum::answer {2, "answer"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfgpermissionEnum::both {3, "both"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfgpermissionEnum::callback {4, "callback"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfgpermissionEnum::none {5, "none"};
+const Enum::YLeaf DialControlMib::Dialctlconfiguration::Dialctltrapenable::enabled {1, "enabled"};
+const Enum::YLeaf DialControlMib::Dialctlconfiguration::Dialctltrapenable::disabled {2, "disabled"};
 
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfgtrapenableEnum::enabled {1, "enabled"};
-const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::DialctlpeercfgtrapenableEnum::disabled {2, "disabled"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::other {1, "other"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::speech {2, "speech"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::unrestrictedDigital {3, "unrestrictedDigital"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::unrestrictedDigital56 {4, "unrestrictedDigital56"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::restrictedDigital {5, "restrictedDigital"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::audio31 {6, "audio31"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::audio7 {7, "audio7"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::video {8, "video"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::packetSwitched {9, "packetSwitched"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfginfotype::fax {10, "fax"};
 
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactivecallstateEnum::unknown {1, "unknown"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactivecallstateEnum::connecting {2, "connecting"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactivecallstateEnum::connected {3, "connected"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactivecallstateEnum::active {4, "active"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::originate {1, "originate"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::answer {2, "answer"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::both {3, "both"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::callback {4, "callback"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgpermission::none {5, "none"};
 
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactivecalloriginEnum::originate {1, "originate"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactivecalloriginEnum::answer {2, "answer"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactivecalloriginEnum::callback {3, "callback"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgtrapenable::enabled {1, "enabled"};
+const Enum::YLeaf DialControlMib::Dialctlpeercfgtable::Dialctlpeercfgentry::Dialctlpeercfgtrapenable::disabled {2, "disabled"};
 
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::other {1, "other"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::speech {2, "speech"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::unrestrictedDigital {3, "unrestrictedDigital"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::unrestrictedDigital56 {4, "unrestrictedDigital56"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::restrictedDigital {5, "restrictedDigital"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::audio31 {6, "audio31"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::audio7 {7, "audio7"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::video {8, "video"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::packetSwitched {9, "packetSwitched"};
-const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::CallactiveinfotypeEnum::fax {10, "fax"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactivecallstate::unknown {1, "unknown"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactivecallstate::connecting {2, "connecting"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactivecallstate::connected {3, "connected"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactivecallstate::active {4, "active"};
 
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistorycalloriginEnum::originate {1, "originate"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistorycalloriginEnum::answer {2, "answer"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistorycalloriginEnum::callback {3, "callback"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactivecallorigin::originate {1, "originate"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactivecallorigin::answer {2, "answer"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactivecallorigin::callback {3, "callback"};
 
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::other {1, "other"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::speech {2, "speech"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::unrestrictedDigital {3, "unrestrictedDigital"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::unrestrictedDigital56 {4, "unrestrictedDigital56"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::restrictedDigital {5, "restrictedDigital"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::audio31 {6, "audio31"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::audio7 {7, "audio7"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::video {8, "video"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::packetSwitched {9, "packetSwitched"};
-const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::CallhistoryinfotypeEnum::fax {10, "fax"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::other {1, "other"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::speech {2, "speech"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::unrestrictedDigital {3, "unrestrictedDigital"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::unrestrictedDigital56 {4, "unrestrictedDigital56"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::restrictedDigital {5, "restrictedDigital"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::audio31 {6, "audio31"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::audio7 {7, "audio7"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::video {8, "video"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::packetSwitched {9, "packetSwitched"};
+const Enum::YLeaf DialControlMib::Callactivetable::Callactiveentry::Callactiveinfotype::fax {10, "fax"};
+
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistorycallorigin::originate {1, "originate"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistorycallorigin::answer {2, "answer"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistorycallorigin::callback {3, "callback"};
+
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::other {1, "other"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::speech {2, "speech"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::unrestrictedDigital {3, "unrestrictedDigital"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::unrestrictedDigital56 {4, "unrestrictedDigital56"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::restrictedDigital {5, "restrictedDigital"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::audio31 {6, "audio31"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::audio7 {7, "audio7"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::video {8, "video"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::packetSwitched {9, "packetSwitched"};
+const Enum::YLeaf DialControlMib::Callhistorytable::Callhistoryentry::Callhistoryinfotype::fax {10, "fax"};
 
 
 }

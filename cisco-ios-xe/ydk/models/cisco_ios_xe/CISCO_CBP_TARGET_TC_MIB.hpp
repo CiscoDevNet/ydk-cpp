@@ -7,37 +7,37 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_CBP_TARGET_TC_MIB {
 
-class CcbpttargetdirectionEnum : public Enum
+class Ccbpttargetdirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf undirected;
-        static const Enum::YLeaf input;
-        static const Enum::YLeaf output;
-        static const Enum::YLeaf inOut;
+        static const ydk::Enum::YLeaf undirected;
+        static const ydk::Enum::YLeaf input;
+        static const ydk::Enum::YLeaf output;
+        static const ydk::Enum::YLeaf inOut;
 
 };
 
-class CcbptpolicysourcetypeEnum : public Enum
+class Ccbpttargettype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ciscoCbQos;
-        static const Enum::YLeaf ciscoCbpBase;
+        static const ydk::Enum::YLeaf genIf;
+        static const ydk::Enum::YLeaf atmPvc;
+        static const ydk::Enum::YLeaf frDlci;
+        static const ydk::Enum::YLeaf entity_;
+        static const ydk::Enum::YLeaf fwZone;
+        static const ydk::Enum::YLeaf fwZonePair;
+        static const ydk::Enum::YLeaf aaaSession;
 
 };
 
-class CcbpttargettypeEnum : public Enum
+class Ccbptpolicysourcetype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf genIf;
-        static const Enum::YLeaf atmPvc;
-        static const Enum::YLeaf frDlci;
-        static const Enum::YLeaf entity_;
-        static const Enum::YLeaf fwZone;
-        static const Enum::YLeaf fwZonePair;
-        static const Enum::YLeaf aaaSession;
+        static const ydk::Enum::YLeaf ciscoCbQos;
+        static const ydk::Enum::YLeaf ciscoCbpBase;
 
 };
 

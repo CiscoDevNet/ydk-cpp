@@ -7,134 +7,134 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace cisco_odm {
 
-class ParsernameIdentity : public virtual Identity
+class Parsername : public virtual ydk::Identity
 {
     public:
-        ParsernameIdentity();
-        ~ParsernameIdentity();
+        Parsername();
+        ~Parsername();
 
 
-}; // ParsernameIdentity
+}; // Parsername
 
-class FlowmonitorIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Mplsstaticbinding : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        FlowmonitorIdentity();
-        ~FlowmonitorIdentity();
+        Mplsstaticbinding();
+        ~Mplsstaticbinding();
 
 
-}; // FlowmonitorIdentity
+}; // Mplsstaticbinding
 
-class VirtualserviceIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Mplsforwardingtable : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        VirtualserviceIdentity();
-        ~VirtualserviceIdentity();
+        Mplsforwardingtable();
+        ~Mplsforwardingtable();
 
 
-}; // VirtualserviceIdentity
+}; // Mplsforwardingtable
 
-class DiffservIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Bridgedomain : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        DiffservIdentity();
-        ~DiffservIdentity();
+        Bridgedomain();
+        ~Bridgedomain();
 
 
-}; // DiffservIdentity
+}; // Bridgedomain
 
-class BridgedomainIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Platformsoftware : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        BridgedomainIdentity();
-        ~BridgedomainIdentity();
+        Platformsoftware();
+        ~Platformsoftware();
 
 
-}; // BridgedomainIdentity
+}; // Platformsoftware
 
-class MplsstaticbindingIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Virtualservice : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        MplsstaticbindingIdentity();
-        ~MplsstaticbindingIdentity();
+        Virtualservice();
+        ~Virtualservice();
 
 
-}; // MplsstaticbindingIdentity
+}; // Virtualservice
 
-class EthernetcfmstatsIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Ospf : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        EthernetcfmstatsIdentity();
-        ~EthernetcfmstatsIdentity();
+        Ospf();
+        ~Ospf();
 
 
-}; // EthernetcfmstatsIdentity
+}; // Ospf
 
-class MplsforwardingtableIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Bfdneighbors : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        MplsforwardingtableIdentity();
-        ~MplsforwardingtableIdentity();
+        Bfdneighbors();
+        ~Bfdneighbors();
 
 
-}; // MplsforwardingtableIdentity
+}; // Bfdneighbors
 
-class BgpIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Flowmonitor : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        BgpIdentity();
-        ~BgpIdentity();
+        Flowmonitor();
+        ~Flowmonitor();
 
 
-}; // BgpIdentity
+}; // Flowmonitor
 
-class IprouteIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Ethernetcfmstats : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        IprouteIdentity();
-        ~IprouteIdentity();
+        Ethernetcfmstats();
+        ~Ethernetcfmstats();
 
 
-}; // IprouteIdentity
+}; // Ethernetcfmstats
 
-class PlatformsoftwareIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Bgp : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        PlatformsoftwareIdentity();
-        ~PlatformsoftwareIdentity();
+        Bgp();
+        ~Bgp();
 
 
-}; // PlatformsoftwareIdentity
+}; // Bgp
 
-class MplsldpneighborsIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Mplsldpneighbors : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        MplsldpneighborsIdentity();
-        ~MplsldpneighborsIdentity();
+        Mplsldpneighbors();
+        ~Mplsldpneighbors();
 
 
-}; // MplsldpneighborsIdentity
+}; // Mplsldpneighbors
 
-class BfdneighborsIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Diffserv : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        BfdneighborsIdentity();
-        ~BfdneighborsIdentity();
+        Diffserv();
+        ~Diffserv();
 
 
-}; // BfdneighborsIdentity
+}; // Diffserv
 
-class OspfIdentity : public cisco_odm::ParsernameIdentity, virtual Identity
+class Iproute : public cisco_odm::Parsername, virtual ydk::Identity
 {
     public:
-        OspfIdentity();
-        ~OspfIdentity();
+        Iproute();
+        ~Iproute();
 
 
-}; // OspfIdentity
+}; // Iproute
 
 
 }

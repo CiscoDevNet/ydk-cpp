@@ -9,2465 +9,2465 @@
 
 #include "ietf_interfaces.hpp"
 
-namespace ydk {
+namespace ietf {
 namespace iana_if_type {
 
-class IanaInterfaceTypeIdentity : public ietf_interfaces::InterfaceTypeIdentity, virtual Identity
+class IanaInterfaceType : public ietf_interfaces::InterfaceType, virtual ydk::Identity
 {
     public:
-        IanaInterfaceTypeIdentity();
-        ~IanaInterfaceTypeIdentity();
+        IanaInterfaceType();
+        ~IanaInterfaceType();
 
 
-}; // IanaInterfaceTypeIdentity
+}; // IanaInterfaceType
 
-class VoicefxoIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Pos : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoicefxoIdentity();
-        ~VoicefxoIdentity();
+        Pos();
+        ~Pos();
 
 
-}; // VoicefxoIdentity
+}; // Pos
 
-class AtmvciendptIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hiperlan2 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmvciendptIdentity();
-        ~AtmvciendptIdentity();
+        Hiperlan2();
+        ~Hiperlan2();
 
 
-}; // AtmvciendptIdentity
+}; // Hiperlan2
 
-class Propbwap2MpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class G703At2Mb : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Propbwap2MpIdentity();
-        ~Propbwap2MpIdentity();
+        G703At2Mb();
+        ~G703At2Mb();
 
 
-}; // Propbwap2MpIdentity
+}; // G703At2Mb
 
-class PropdocswirelessdownstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Rfc877X25 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PropdocswirelessdownstreamIdentity();
-        ~PropdocswirelessdownstreamIdentity();
+        Rfc877X25();
+        ~Rfc877X25();
 
 
-}; // PropdocswirelessdownstreamIdentity
+}; // Rfc877X25
 
-class V11Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dvbasiin : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        V11Identity();
-        ~V11Identity();
+        Dvbasiin();
+        ~Dvbasiin();
 
 
-}; // V11Identity
+}; // Dvbasiin
 
-class SoftwareloopbackIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Gfp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SoftwareloopbackIdentity();
-        ~SoftwareloopbackIdentity();
+        Gfp();
+        ~Gfp();
 
 
-}; // SoftwareloopbackIdentity
+}; // Gfp
 
-class HdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sonetoverheadchannel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        HdlcIdentity();
-        ~HdlcIdentity();
+        Sonetoverheadchannel();
+        ~Sonetoverheadchannel();
 
 
-}; // HdlcIdentity
+}; // Sonetoverheadchannel
 
-class VoicefgdosIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Pppmultilinkbundle : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoicefgdosIdentity();
-        ~VoicefgdosIdentity();
+        Pppmultilinkbundle();
+        ~Pppmultilinkbundle();
 
 
-}; // VoicefgdosIdentity
+}; // Pppmultilinkbundle
 
-class FastetherfxIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Lmp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FastetherfxIdentity();
-        ~FastetherfxIdentity();
+        Lmp();
+        ~Lmp();
 
 
-}; // FastetherfxIdentity
+}; // Lmp
 
-class DvbtdmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Eplrs : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DvbtdmIdentity();
-        ~DvbtdmIdentity();
+        Eplrs();
+        ~Eplrs();
 
 
-}; // DvbtdmIdentity
+}; // Eplrs
 
-class NfasIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Lapd : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        NfasIdentity();
-        ~NfasIdentity();
+        Lapd();
+        ~Lapd();
 
 
-}; // NfasIdentity
+}; // Lapd
 
-class IfpwtypeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ds0Bundle : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IfpwtypeIdentity();
-        ~IfpwtypeIdentity();
+        Ds0Bundle();
+        ~Ds0Bundle();
 
 
-}; // IfpwtypeIdentity
+}; // Ds0Bundle
 
-class L2VlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Docscablemcmtsdownstream : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        L2VlanIdentity();
-        ~L2VlanIdentity();
+        Docscablemcmtsdownstream();
+        ~Docscablemcmtsdownstream();
 
 
-}; // L2VlanIdentity
+}; // Docscablemcmtsdownstream
 
-class Adsl2PlusIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ifvfitype : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Adsl2PlusIdentity();
-        ~Adsl2PlusIdentity();
+        Ifvfitype();
+        ~Ifvfitype();
 
 
-}; // Adsl2PlusIdentity
+}; // Ifvfitype
 
-class Ieee802154Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propmultiplexor : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ieee802154Identity();
-        ~Ieee802154Identity();
+        Propmultiplexor();
+        ~Propmultiplexor();
 
 
-}; // Ieee802154Identity
+}; // Propmultiplexor
 
-class VoicefxsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class IfGsn : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoicefxsIdentity();
-        ~VoicefxsIdentity();
+        IfGsn();
+        ~IfGsn();
 
 
-}; // VoicefxsIdentity
+}; // IfGsn
 
-class DvbrcsmaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Macseccontrolledif : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DvbrcsmaclayerIdentity();
-        ~DvbrcsmaclayerIdentity();
+        Macseccontrolledif();
+        ~Macseccontrolledif();
 
 
-}; // DvbrcsmaclayerIdentity
+}; // Macseccontrolledif
 
-class IdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Gr303Idt : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IdslIdentity();
-        ~IdslIdentity();
+        Gr303Idt();
+        ~Gr303Idt();
 
 
-}; // IdslIdentity
+}; // Gr303Idt
 
-class InfinibandIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Vdsl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        InfinibandIdentity();
-        ~InfinibandIdentity();
+        Vdsl();
+        ~Vdsl();
 
 
-}; // InfinibandIdentity
+}; // Vdsl
 
-class Ddnx25Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Wwanpp2 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ddnx25Identity();
-        ~Ddnx25Identity();
+        Wwanpp2();
+        ~Wwanpp2();
 
 
-}; // Ddnx25Identity
+}; // Wwanpp2
 
-class Wwanpp2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class A12Mppswitch : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Wwanpp2Identity();
-        ~Wwanpp2Identity();
+        A12Mppswitch();
+        ~A12Mppswitch();
 
 
-}; // Wwanpp2Identity
+}; // A12Mppswitch
 
-class DocscableupstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Interleave : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DocscableupstreamIdentity();
-        ~DocscableupstreamIdentity();
+        Interleave();
+        ~Interleave();
 
 
-}; // DocscableupstreamIdentity
+}; // Interleave
 
-class Ethernet3MbitIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ds1Fdl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ethernet3MbitIdentity();
-        ~Ethernet3MbitIdentity();
+        Ds1Fdl();
+        ~Ds1Fdl();
 
 
-}; // Ethernet3MbitIdentity
+}; // Ds1Fdl
 
-class DigitalpowerlineIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Frf16Mfrbundle : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DigitalpowerlineIdentity();
-        ~DigitalpowerlineIdentity();
+        Frf16Mfrbundle();
+        ~Frf16Mfrbundle();
 
 
-}; // DigitalpowerlineIdentity
+}; // Frf16Mfrbundle
 
-class H323ProxyIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Tr008 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        H323ProxyIdentity();
-        ~H323ProxyIdentity();
+        Tr008();
+        ~Tr008();
 
 
-}; // H323ProxyIdentity
+}; // Tr008
 
-class GtpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Mpegtransport : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        GtpIdentity();
-        ~GtpIdentity();
+        Mpegtransport();
+        ~Mpegtransport();
 
 
-}; // GtpIdentity
+}; // Mpegtransport
 
-class IpoveratmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Econet : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IpoveratmIdentity();
-        ~IpoveratmIdentity();
+        Econet();
+        ~Econet();
 
 
-}; // IpoveratmIdentity
+}; // Econet
 
-class AlueponIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ciscoislvlan : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AlueponIdentity();
-        ~AlueponIdentity();
+        Ciscoislvlan();
+        ~Ciscoislvlan();
 
 
-}; // AlueponIdentity
+}; // Ciscoislvlan
 
-class ImtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class L2Vlan : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ImtIdentity();
-        ~ImtIdentity();
+        L2Vlan();
+        ~L2Vlan();
 
 
-}; // ImtIdentity
+}; // L2Vlan
 
-class IpswitchIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dvbrcsmaclayer : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IpswitchIdentity();
-        ~IpswitchIdentity();
+        Dvbrcsmaclayer();
+        ~Dvbrcsmaclayer();
 
 
-}; // IpswitchIdentity
+}; // Dvbrcsmaclayer
 
-class MsdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Pdnetherloop1 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MsdslIdentity();
-        ~MsdslIdentity();
+        Pdnetherloop1();
+        ~Pdnetherloop1();
 
 
-}; // MsdslIdentity
+}; // Pdnetherloop1
 
-class DvbrccmaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmlogical : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DvbrccmaclayerIdentity();
-        ~DvbrccmaclayerIdentity();
+        Atmlogical();
+        ~Atmlogical();
 
 
-}; // DvbrccmaclayerIdentity
+}; // Atmlogical
 
-class SmdsdxiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Aal5 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SmdsdxiIdentity();
-        ~SmdsdxiIdentity();
+        Aal5();
+        ~Aal5();
 
 
-}; // SmdsdxiIdentity
+}; // Aal5
 
-class VoiceoveratmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Basicisdn : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoiceoveratmIdentity();
-        ~VoiceoveratmIdentity();
+        Basicisdn();
+        ~Basicisdn();
 
 
-}; // VoiceoveratmIdentity
+}; // Basicisdn
 
-class ArapIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dvbrcstdma : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ArapIdentity();
-        ~ArapIdentity();
+        Dvbrcstdma();
+        ~Dvbrcstdma();
 
 
-}; // ArapIdentity
+}; // Dvbrcstdma
 
-class FastetherIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Rsrb : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FastetherIdentity();
-        ~FastetherIdentity();
+        Rsrb();
+        ~Rsrb();
 
 
-}; // FastetherIdentity
+}; // Rsrb
 
-class MpcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmbond : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MpcIdentity();
-        ~MpcIdentity();
+        Atmbond();
+        ~Atmbond();
 
 
-}; // MpcIdentity
+}; // Atmbond
 
-class LinegroupIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class X86Laps : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        LinegroupIdentity();
-        ~LinegroupIdentity();
+        X86Laps();
+        ~X86Laps();
 
 
-}; // LinegroupIdentity
+}; // X86Laps
 
-class HippiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Framerelayinterconnect : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        HippiIdentity();
-        ~HippiIdentity();
+        Framerelayinterconnect();
+        ~Framerelayinterconnect();
 
 
-}; // HippiIdentity
+}; // Framerelayinterconnect
 
-class RprIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Slip : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        RprIdentity();
-        ~RprIdentity();
+        Slip();
+        ~Slip();
 
 
-}; // RprIdentity
+}; // Slip
 
-class Ds1FdlIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Vmwarevirtualnic : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ds1FdlIdentity();
-        ~Ds1FdlIdentity();
+        Vmwarevirtualnic();
+        ~Vmwarevirtualnic();
 
 
-}; // Ds1FdlIdentity
+}; // Vmwarevirtualnic
 
-class SonetvtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmvirtual : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SonetvtIdentity();
-        ~SonetvtIdentity();
+        Atmvirtual();
+        ~Atmvirtual();
 
 
-}; // SonetvtIdentity
+}; // Atmvirtual
 
-class VoiceencapIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Fciplink : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoiceencapIdentity();
-        ~VoiceencapIdentity();
+        Fciplink();
+        ~Fciplink();
 
 
-}; // VoiceencapIdentity
+}; // Fciplink
 
-class Ss7SiglinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Isup : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ss7SiglinkIdentity();
-        ~Ss7SiglinkIdentity();
+        Isup();
+        ~Isup();
 
 
-}; // Ss7SiglinkIdentity
+}; // Isup
 
-class ArcnetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Virtualtg : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ArcnetIdentity();
-        ~ArcnetIdentity();
+        Virtualtg();
+        ~Virtualtg();
 
 
-}; // ArcnetIdentity
+}; // Virtualtg
 
-class ActelismetaloopIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Miox25 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ActelismetaloopIdentity();
-        ~ActelismetaloopIdentity();
+        Miox25();
+        ~Miox25();
 
 
-}; // ActelismetaloopIdentity
+}; // Miox25
 
-class QllcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Adsl2Plus : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        QllcIdentity();
-        ~QllcIdentity();
+        Adsl2Plus();
+        ~Adsl2Plus();
 
 
-}; // QllcIdentity
+}; // Adsl2Plus
 
-class Rfc877X25Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Iso88024Tokenbus : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Rfc877X25Identity();
-        ~Rfc877X25Identity();
+        Iso88024Tokenbus();
+        ~Iso88024Tokenbus();
 
 
-}; // Rfc877X25Identity
+}; // Iso88024Tokenbus
 
-class MpegtransportIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Rfc1483 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MpegtransportIdentity();
-        ~MpegtransportIdentity();
+        Rfc1483();
+        ~Rfc1483();
 
 
-}; // MpegtransportIdentity
+}; // Rfc1483
 
-class X25MlpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Framerelayservice : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        X25MlpIdentity();
-        ~X25MlpIdentity();
+        Framerelayservice();
+        ~Framerelayservice();
 
 
-}; // X25MlpIdentity
+}; // Framerelayservice
 
-class VirtualtgIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propcnls : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VirtualtgIdentity();
-        ~VirtualtgIdentity();
+        Propcnls();
+        ~Propcnls();
 
 
-}; // VirtualtgIdentity
+}; // Propcnls
 
-class HostpadIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dvbasiout : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        HostpadIdentity();
-        ~HostpadIdentity();
+        Dvbasiout();
+        ~Dvbasiout();
 
 
-}; // HostpadIdentity
+}; // Dvbasiout
 
-class StarlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Adsl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        StarlanIdentity();
-        ~StarlanIdentity();
+        Adsl();
+        ~Adsl();
 
 
-}; // StarlanIdentity
+}; // Adsl
 
-class Iso88025DtrIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Mvl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Iso88025DtrIdentity();
-        ~Iso88025DtrIdentity();
+        Mvl();
+        ~Mvl();
 
 
-}; // Iso88025DtrIdentity
+}; // Mvl
 
-class Ibm370ParchanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Iso88022Llc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ibm370ParchanIdentity();
-        ~Ibm370ParchanIdentity();
+        Iso88022Llc();
+        ~Iso88022Llc();
 
 
-}; // Ibm370ParchanIdentity
+}; // Iso88022Llc
 
-class Adsl2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propdocswirelessmaclayer : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Adsl2Identity();
-        ~Adsl2Identity();
+        Propdocswirelessmaclayer();
+        ~Propdocswirelessmaclayer();
 
 
-}; // Adsl2Identity
+}; // Propdocswirelessmaclayer
 
-class OtnotuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Other : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        OtnotuIdentity();
-        ~OtnotuIdentity();
+        Other();
+        ~Other();
 
 
-}; // OtnotuIdentity
+}; // Other
 
-class Propwirelessp2PIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ss7Siglink : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Propwirelessp2PIdentity();
-        ~Propwirelessp2PIdentity();
+        Ss7Siglink();
+        ~Ss7Siglink();
 
 
-}; // Propwirelessp2PIdentity
+}; // Ss7Siglink
 
-class InterleaveIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmsubinterface : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        InterleaveIdentity();
-        ~InterleaveIdentity();
+        Atmsubinterface();
+        ~Atmsubinterface();
 
 
-}; // InterleaveIdentity
+}; // Atmsubinterface
 
-class IsupIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class G9983 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IsupIdentity();
-        ~IsupIdentity();
+        G9983();
+        ~G9983();
 
 
-}; // IsupIdentity
+}; // G9983
 
-class Regular1822Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ppp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Regular1822Identity();
-        ~Regular1822Identity();
+        Ppp();
+        ~Ppp();
 
 
-}; // Regular1822Identity
+}; // Ppp
 
-class Gr303RdtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sonetpath : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Gr303RdtIdentity();
-        ~Gr303RdtIdentity();
+        Sonetpath();
+        ~Sonetpath();
 
 
-}; // Gr303RdtIdentity
+}; // Sonetpath
 
-class PropdocswirelessmaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Myrinet : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PropdocswirelessmaclayerIdentity();
-        ~PropdocswirelessmaclayerIdentity();
+        Myrinet();
+        ~Myrinet();
 
 
-}; // PropdocswirelessmaclayerIdentity
+}; // Myrinet
 
-class AsyncIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Pip : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AsyncIdentity();
-        ~AsyncIdentity();
+        Pip();
+        ~Pip();
 
 
-}; // AsyncIdentity
+}; // Pip
 
-class RadiomacIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Framerelaympi : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        RadiomacIdentity();
-        ~RadiomacIdentity();
+        Framerelaympi();
+        ~Framerelaympi();
 
 
-}; // RadiomacIdentity
+}; // Framerelaympi
 
-class OpticalchannelgroupIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmvciendpt : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        OpticalchannelgroupIdentity();
-        ~OpticalchannelgroupIdentity();
+        Atmvciendpt();
+        ~Atmvciendpt();
 
 
-}; // OpticalchannelgroupIdentity
+}; // Atmvciendpt
 
-class SixtofourIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hostpad : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SixtofourIdentity();
-        ~SixtofourIdentity();
+        Hostpad();
+        ~Hostpad();
 
 
-}; // SixtofourIdentity
+}; // Hostpad
 
-class PropdocswirelessupstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Qllc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PropdocswirelessupstreamIdentity();
-        ~PropdocswirelessupstreamIdentity();
+        Qllc();
+        ~Qllc();
 
 
-}; // PropdocswirelessupstreamIdentity
+}; // Qllc
 
-class Q2931Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ipforward : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Q2931Identity();
-        ~Q2931Identity();
+        Ipforward();
+        ~Ipforward();
 
 
-}; // Q2931Identity
+}; // Ipforward
 
-class FddiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Qam : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FddiIdentity();
-        ~FddiIdentity();
+        Qam();
+        ~Qam();
 
 
-}; // FddiIdentity
+}; // Qam
 
-class PropcnlsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Escon : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PropcnlsIdentity();
-        ~PropcnlsIdentity();
+        Escon();
+        ~Escon();
 
 
-}; // PropcnlsIdentity
+}; // Escon
 
-class Aal2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voiceoverframerelay : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Aal2Identity();
-        ~Aal2Identity();
+        Voiceoverframerelay();
+        ~Voiceoverframerelay();
 
 
-}; // Aal2Identity
+}; // Voiceoverframerelay
 
-class DvbasioutIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propatm : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DvbasioutIdentity();
-        ~DvbasioutIdentity();
+        Propatm();
+        ~Propatm();
 
 
-}; // DvbasioutIdentity
+}; // Propatm
 
-class AluelpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ds3 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AluelpIdentity();
-        ~AluelpIdentity();
+        Ds3();
+        ~Ds3();
 
 
-}; // AluelpIdentity
+}; // Ds3
 
-class CiscoislvlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Vmwarenicteam : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CiscoislvlanIdentity();
-        ~CiscoislvlanIdentity();
+        Vmwarenicteam();
+        ~Vmwarenicteam();
 
 
-}; // CiscoislvlanIdentity
+}; // Vmwarenicteam
 
-class DocscableupstreamrfportIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hdh1822 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DocscableupstreamrfportIdentity();
-        ~DocscableupstreamrfportIdentity();
+        Hdh1822();
+        ~Hdh1822();
 
 
-}; // DocscableupstreamrfportIdentity
+}; // Hdh1822
 
-class Aal5Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class G9981 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Aal5Identity();
-        ~Aal5Identity();
+        G9981();
+        ~G9981();
 
 
-}; // Aal5Identity
+}; // G9981
 
-class FrdlciendptIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ultra : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FrdlciendptIdentity();
-        ~FrdlciendptIdentity();
+        Ultra();
+        ~Ultra();
 
 
-}; // FrdlciendptIdentity
+}; // Ultra
 
-class HippiinterfaceIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sdsl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        HippiinterfaceIdentity();
-        ~HippiinterfaceIdentity();
+        Sdsl();
+        ~Sdsl();
 
 
-}; // HippiinterfaceIdentity
+}; // Sdsl
 
-class L3IpvlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class H323Proxy : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        L3IpvlanIdentity();
-        ~L3IpvlanIdentity();
+        H323Proxy();
+        ~H323Proxy();
 
 
-}; // L3IpvlanIdentity
+}; // H323Proxy
 
-class Miox25Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Stacktostack : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Miox25Identity();
-        ~Miox25Identity();
+        Stacktostack();
+        ~Stacktostack();
 
 
-}; // Miox25Identity
+}; // Stacktostack
 
-class HssiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voicefxs : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        HssiIdentity();
-        ~HssiIdentity();
+        Voicefxs();
+        ~Voicefxs();
 
 
-}; // HssiIdentity
+}; // Voicefxs
 
-class AtmvirtualIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Mpls : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmvirtualIdentity();
-        ~AtmvirtualIdentity();
+        Mpls();
+        ~Mpls();
 
 
-}; // AtmvirtualIdentity
+}; // Mpls
 
-class AlugpononuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Smdsdxi : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AlugpononuIdentity();
-        ~AlugpononuIdentity();
+        Smdsdxi();
+        ~Smdsdxi();
 
 
-}; // AlugpononuIdentity
+}; // Smdsdxi
 
-class Rfc1483Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voiceebs : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Rfc1483Identity();
-        ~Rfc1483Identity();
+        Voiceebs();
+        ~Voiceebs();
 
 
-}; // Rfc1483Identity
+}; // Voiceebs
 
-class CnrIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Wwanpp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CnrIdentity();
-        ~CnrIdentity();
+        Wwanpp();
+        ~Wwanpp();
 
 
-}; // CnrIdentity
+}; // Wwanpp
 
-class SipsigIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Cabledownstreamrfport : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SipsigIdentity();
-        ~SipsigIdentity();
+        Cabledownstreamrfport();
+        ~Cabledownstreamrfport();
 
 
-}; // SipsigIdentity
+}; // Cabledownstreamrfport
 
-class MyrinetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voiceencap : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MyrinetIdentity();
-        ~MyrinetIdentity();
+        Voiceencap();
+        ~Voiceencap();
 
 
-}; // MyrinetIdentity
+}; // Voiceencap
 
-class DlswIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Gtp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DlswIdentity();
-        ~DlswIdentity();
+        Gtp();
+        ~Gtp();
 
 
-}; // DlswIdentity
+}; // Gtp
 
-class GigabitethernetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Tdlc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        GigabitethernetIdentity();
-        ~GigabitethernetIdentity();
+        Tdlc();
+        ~Tdlc();
 
 
-}; // GigabitethernetIdentity
+}; // Tdlc
 
-class X25PleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Regular1822 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        X25PleIdentity();
-        ~X25PleIdentity();
+        Regular1822();
+        ~Regular1822();
 
 
-}; // X25PleIdentity
+}; // Regular1822
 
-class LmpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dlsw : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        LmpIdentity();
-        ~LmpIdentity();
+        Dlsw();
+        ~Dlsw();
 
 
-}; // LmpIdentity
+}; // Dlsw
 
-class OpticaltransportIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ipswitch : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        OpticaltransportIdentity();
-        ~OpticaltransportIdentity();
+        Ipswitch();
+        ~Ipswitch();
 
 
-}; // OpticaltransportIdentity
+}; // Ipswitch
 
-class SdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Smdsicip : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SdlcIdentity();
-        ~SdlcIdentity();
+        Smdsicip();
+        ~Smdsicip();
 
 
-}; // SdlcIdentity
+}; // Smdsicip
 
-class VoiceemIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Alueponphysicaluni : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoiceemIdentity();
-        ~VoiceemIdentity();
+        Alueponphysicaluni();
+        ~Alueponphysicaluni();
 
 
-}; // VoiceemIdentity
+}; // Alueponphysicaluni
 
-class X86LapsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Docscabledownstream : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        X86LapsIdentity();
-        ~X86LapsIdentity();
+        Docscabledownstream();
+        ~Docscabledownstream();
 
 
-}; // X86LapsIdentity
+}; // Docscabledownstream
 
-class G9982Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Coffee : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        G9982Identity();
-        ~G9982Identity();
+        Coffee();
+        ~Coffee();
 
 
-}; // G9982Identity
+}; // Coffee
 
-class Iso88022LlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Pon622 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Iso88022LlcIdentity();
-        ~Iso88022LlcIdentity();
+        Pon622();
+        ~Pon622();
 
 
-}; // Iso88022LlcIdentity
+}; // Pon622
 
-class DvbasiinIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sonetvt : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DvbasiinIdentity();
-        ~DvbasiinIdentity();
+        Sonetvt();
+        ~Sonetvt();
 
 
-}; // DvbasiinIdentity
+}; // Sonetvt
 
-class BgppolicyaccountingIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Lapb : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        BgppolicyaccountingIdentity();
-        ~BgppolicyaccountingIdentity();
+        Lapb();
+        ~Lapb();
 
 
-}; // BgppolicyaccountingIdentity
+}; // Lapb
 
-class AluepononuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Q2931 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AluepononuIdentity();
-        ~AluepononuIdentity();
+        Q2931();
+        ~Q2931();
 
 
-}; // AluepononuIdentity
+}; // Q2931
 
-class MfsiglinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Fastether : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MfsiglinkIdentity();
-        ~MfsiglinkIdentity();
+        Fastether();
+        ~Fastether();
 
 
-}; // MfsiglinkIdentity
+}; // Fastether
 
-class DcnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Proppointtopointserial : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DcnIdentity();
-        ~DcnIdentity();
+        Proppointtopointserial();
+        ~Proppointtopointserial();
 
 
-}; // DcnIdentity
+}; // Proppointtopointserial
 
-class AtmdxiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Lapf : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmdxiIdentity();
-        ~AtmdxiIdentity();
+        Lapf();
+        ~Lapf();
 
 
-}; // AtmdxiIdentity
+}; // Lapf
 
-class VoiceoverframerelayIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dvbrccupstream : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoiceoverframerelayIdentity();
-        ~VoiceoverframerelayIdentity();
+        Dvbrccupstream();
+        ~Dvbrccupstream();
 
 
-}; // VoiceoverframerelayIdentity
+}; // Dvbrccupstream
 
-class GfpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmfuni : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        GfpIdentity();
-        ~GfpIdentity();
+        Atmfuni();
+        ~Atmfuni();
 
 
-}; // GfpIdentity
+}; // Atmfuni
 
-class SonetoverheadchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Frforward : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SonetoverheadchannelIdentity();
-        ~SonetoverheadchannelIdentity();
+        Frforward();
+        ~Frforward();
 
 
-}; // SonetoverheadchannelIdentity
+}; // Frforward
 
-class VmwarevirtualnicIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Primaryisdn : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VmwarevirtualnicIdentity();
-        ~VmwarevirtualnicIdentity();
+        Primaryisdn();
+        ~Primaryisdn();
 
 
-}; // VmwarevirtualnicIdentity
+}; // Primaryisdn
 
-class FciplinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ipoverclaw : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FciplinkIdentity();
-        ~FciplinkIdentity();
+        Ipoverclaw();
+        ~Ipoverclaw();
 
 
-}; // FciplinkIdentity
+}; // Ipoverclaw
 
-class IpoverclawIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmradio : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IpoverclawIdentity();
-        ~IpoverclawIdentity();
+        Atmradio();
+        ~Atmradio();
 
 
-}; // IpoverclawIdentity
+}; // Atmradio
 
-class CoffeeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ieee1394 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CoffeeIdentity();
-        ~CoffeeIdentity();
+        Ieee1394();
+        ~Ieee1394();
 
 
-}; // CoffeeIdentity
+}; // Ieee1394
 
-class RadslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ces : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        RadslIdentity();
-        ~RadslIdentity();
+        Ces();
+        ~Ces();
 
 
-}; // RadslIdentity
+}; // Ces
 
-class Vdsl2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Opticaltransport : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Vdsl2Identity();
-        ~Vdsl2Identity();
+        Opticaltransport();
+        ~Opticaltransport();
 
 
-}; // Vdsl2Identity
+}; // Opticaltransport
 
-class Rs232Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class X25Mlp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Rs232Identity();
-        ~Rs232Identity();
+        X25Mlp();
+        ~X25Mlp();
 
 
-}; // Rs232Identity
+}; // X25Mlp
 
-class E1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Mfsiglink : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        E1Identity();
-        ~E1Identity();
+        Mfsiglink();
+        ~Mfsiglink();
 
 
-}; // E1Identity
+}; // Mfsiglink
 
-class ReachdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hippiinterface : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ReachdslIdentity();
-        ~ReachdslIdentity();
+        Hippiinterface();
+        ~Hippiinterface();
 
 
-}; // ReachdslIdentity
+}; // Hippiinterface
 
-class VoiceovercableIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Aal2 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoiceovercableIdentity();
-        ~VoiceovercableIdentity();
+        Aal2();
+        ~Aal2();
 
 
-}; // VoiceovercableIdentity
+}; // Aal2
 
-class Tr008Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class V11 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Tr008Identity();
-        ~Tr008Identity();
+        V11();
+        ~V11();
 
 
-}; // Tr008Identity
+}; // V11
 
-class VoiceoveripIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmdxi : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoiceoveripIdentity();
-        ~VoiceoveripIdentity();
+        Atmdxi();
+        ~Atmdxi();
 
 
-}; // VoiceoveripIdentity
+}; // Atmdxi
 
-class AtmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Aflane8025 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmIdentity();
-        ~AtmIdentity();
+        Aflane8025();
+        ~Aflane8025();
 
 
-}; // AtmIdentity
+}; // Aflane8025
 
-class Ds3Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voiceoverip : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ds3Identity();
-        ~Ds3Identity();
+        Voiceoverip();
+        ~Voiceoverip();
 
 
-}; // Ds3Identity
+}; // Voiceoverip
 
-class Ds0Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Alugponphysicaluni : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ds0Identity();
-        ~Ds0Identity();
+        Alugponphysicaluni();
+        ~Alugponphysicaluni();
 
 
-}; // Ds0Identity
+}; // Alugponphysicaluni
 
-class Ds1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atmima : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ds1Identity();
-        ~Ds1Identity();
+        Atmima();
+        ~Atmima();
 
 
-}; // Ds1Identity
+}; // Atmima
 
-class SrpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Capwapdot11Profile : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SrpIdentity();
-        ~SrpIdentity();
+        Capwapdot11Profile();
+        ~Capwapdot11Profile();
 
 
-}; // SrpIdentity
+}; // Capwapdot11Profile
 
-class DocscabledownstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Aluelp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DocscabledownstreamIdentity();
-        ~DocscabledownstreamIdentity();
+        Aluelp();
+        ~Aluelp();
 
 
-}; // DocscabledownstreamIdentity
+}; // Aluelp
 
-class DvbrcstdmaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Aflane8023 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DvbrcstdmaIdentity();
-        ~DvbrcstdmaIdentity();
+        Aflane8023();
+        ~Aflane8023();
 
 
-}; // DvbrcstdmaIdentity
+}; // Aflane8023
 
-class G9983Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ipovercdlc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        G9983Identity();
-        ~G9983Identity();
+        Ipovercdlc();
+        ~Ipovercdlc();
 
 
-}; // G9983Identity
+}; // Ipovercdlc
 
-class PlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Iso88025Dtr : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PlcIdentity();
-        ~PlcIdentity();
+        Iso88025Dtr();
+        ~Iso88025Dtr();
 
 
-}; // PlcIdentity
+}; // Iso88025Dtr
 
-class FramerelaympiIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Siptg : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FramerelaympiIdentity();
-        ~FramerelaympiIdentity();
+        Siptg();
+        ~Siptg();
 
 
-}; // FramerelaympiIdentity
+}; // Siptg
 
-class MvlIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hippi : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MvlIdentity();
-        ~MvlIdentity();
+        Hippi();
+        ~Hippi();
 
 
-}; // MvlIdentity
+}; // Hippi
 
-class PropmultiplexorIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sonet : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PropmultiplexorIdentity();
-        ~PropmultiplexorIdentity();
+        Sonet();
+        ~Sonet();
 
 
-}; // PropmultiplexorIdentity
+}; // Sonet
 
-class VoicedidIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Modem : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoicedidIdentity();
-        ~VoicedidIdentity();
+        Modem();
+        ~Modem();
 
 
-}; // VoicedidIdentity
+}; // Modem
 
-class CompositelinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Plc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CompositelinkIdentity();
-        ~CompositelinkIdentity();
+        Plc();
+        ~Plc();
 
 
-}; // CompositelinkIdentity
+}; // Plc
 
-class Proteon10MbitIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ieee80216Wman : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Proteon10MbitIdentity();
-        ~Proteon10MbitIdentity();
+        Ieee80216Wman();
+        ~Ieee80216Wman();
 
 
-}; // Proteon10MbitIdentity
+}; // Ieee80216Wman
 
-class AtmbondIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Async : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmbondIdentity();
-        ~AtmbondIdentity();
+        Async();
+        ~Async();
 
 
-}; // AtmbondIdentity
+}; // Async
 
-class Frf16MfrbundleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Opticalchannelgroup : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Frf16MfrbundleIdentity();
-        ~Frf16MfrbundleIdentity();
+        Opticalchannelgroup();
+        ~Opticalchannelgroup();
 
 
-}; // Frf16MfrbundleIdentity
+}; // Opticalchannelgroup
 
-class CctemulIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ethernetcsmacd : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CctemulIdentity();
-        ~CctemulIdentity();
+        Ethernetcsmacd();
+        ~Ethernetcsmacd();
 
 
-}; // CctemulIdentity
+}; // Ethernetcsmacd
 
-class MplstunnelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Msdsl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MplstunnelIdentity();
-        ~MplstunnelIdentity();
+        Msdsl();
+        ~Msdsl();
 
 
-}; // MplstunnelIdentity
+}; // Msdsl
 
-class GponIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class X25Ple : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        GponIdentity();
-        ~GponIdentity();
+        X25Ple();
+        ~X25Ple();
 
 
-}; // GponIdentity
+}; // X25Ple
 
-class VdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Docscableupstreamchannel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VdslIdentity();
-        ~VdslIdentity();
+        Docscableupstreamchannel();
+        ~Docscableupstreamchannel();
 
 
-}; // VdslIdentity
+}; // Docscableupstreamchannel
 
-class PosIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Docscableupstream : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PosIdentity();
-        ~PosIdentity();
+        Docscableupstream();
+        ~Docscableupstream();
 
 
-}; // PosIdentity
+}; // Docscableupstream
 
-class Ieee8023AdlagIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Framerelay : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ieee8023AdlagIdentity();
-        ~Ieee8023AdlagIdentity();
+        Framerelay();
+        ~Framerelay();
 
 
-}; // Ieee8023AdlagIdentity
+}; // Framerelay
 
-class DocscablemaclayerIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Gr303Rdt : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DocscablemaclayerIdentity();
-        ~DocscablemaclayerIdentity();
+        Gr303Rdt();
+        ~Gr303Rdt();
 
 
-}; // DocscablemaclayerIdentity
+}; // Gr303Rdt
 
-class DocscablemcmtsdownstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Infiniband : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DocscablemcmtsdownstreamIdentity();
-        ~DocscablemcmtsdownstreamIdentity();
+        Infiniband();
+        ~Infiniband();
 
 
-}; // DocscablemcmtsdownstreamIdentity
+}; // Infiniband
 
-class PppIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Cctemul : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PppIdentity();
-        ~PppIdentity();
+        Cctemul();
+        ~Cctemul();
 
 
-}; // PppIdentity
+}; // Cctemul
 
-class FramerelayIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Pdnetherloop2 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FramerelayIdentity();
-        ~FramerelayIdentity();
+        Pdnetherloop2();
+        ~Pdnetherloop2();
 
 
-}; // FramerelayIdentity
+}; // Pdnetherloop2
 
-class EplrsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dcn : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        EplrsIdentity();
-        ~EplrsIdentity();
+        Dcn();
+        ~Dcn();
 
 
-}; // EplrsIdentity
+}; // Dcn
 
-class VmwarenicteamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Docscablemaclayer : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VmwarenicteamIdentity();
-        ~VmwarenicteamIdentity();
+        Docscablemaclayer();
+        ~Docscablemaclayer();
 
 
-}; // VmwarenicteamIdentity
+}; // Docscablemaclayer
 
-class CabledownstreamrfportIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Arcnetplus : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CabledownstreamrfportIdentity();
-        ~CabledownstreamrfportIdentity();
+        Arcnetplus();
+        ~Arcnetplus();
 
 
-}; // CabledownstreamrfportIdentity
+}; // Arcnetplus
 
-class MacsecuncontrolledifIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voiceem : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MacsecuncontrolledifIdentity();
-        ~MacsecuncontrolledifIdentity();
+        Voiceem();
+        ~Voiceem();
 
 
-}; // MacsecuncontrolledifIdentity
+}; // Voiceem
 
-class Iso88023CsmacdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Fast : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Iso88023CsmacdIdentity();
-        ~Iso88023CsmacdIdentity();
+        Fast();
+        ~Fast();
 
 
-}; // Iso88023CsmacdIdentity
+}; // Fast
 
-class UsbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Compositelink : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        UsbIdentity();
-        ~UsbIdentity();
+        Compositelink();
+        ~Compositelink();
 
 
-}; // UsbIdentity
+}; // Compositelink
 
-class AtmfuniIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Rpr : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmfuniIdentity();
-        ~AtmfuniIdentity();
+        Rpr();
+        ~Rpr();
 
 
-}; // AtmfuniIdentity
+}; // Rpr
 
-class TelinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Atm : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        TelinkIdentity();
-        ~TelinkIdentity();
+        Atm();
+        ~Atm();
 
 
-}; // TelinkIdentity
+}; // Atm
 
-class Pon622Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Transphdlc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Pon622Identity();
-        ~Pon622Identity();
+        Transphdlc();
+        ~Transphdlc();
 
 
-}; // Pon622Identity
+}; // Transphdlc
 
-class EconetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voiceoveratm : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        EconetIdentity();
-        ~EconetIdentity();
+        Voiceoveratm();
+        ~Voiceoveratm();
 
 
-}; // EconetIdentity
+}; // Voiceoveratm
 
-class TdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class G9982 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        TdlcIdentity();
-        ~TdlcIdentity();
+        G9982();
+        ~G9982();
 
 
-}; // TdlcIdentity
+}; // G9982
 
-class Ds0BundleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ieee80211 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ds0BundleIdentity();
-        ~Ds0BundleIdentity();
+        Ieee80211();
+        ~Ieee80211();
 
 
-}; // Ds0BundleIdentity
+}; // Ieee80211
 
-class FastIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Capwapwtpvirtualradio : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FastIdentity();
-        ~FastIdentity();
+        Capwapwtpvirtualradio();
+        ~Capwapwtpvirtualradio();
 
 
-}; // FastIdentity
+}; // Capwapwtpvirtualradio
 
-class Ieee1394Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Otnodu : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ieee1394Identity();
-        ~Ieee1394Identity();
+        Otnodu();
+        ~Otnodu();
 
 
-}; // Ieee1394Identity
+}; // Otnodu
 
-class CblvectastarIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sixtofour : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CblvectastarIdentity();
-        ~CblvectastarIdentity();
+        Sixtofour();
+        ~Sixtofour();
 
 
-}; // CblvectastarIdentity
+}; // Sixtofour
 
-class RsrbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Docscableupstreamrfport : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        RsrbIdentity();
-        ~RsrbIdentity();
+        Docscableupstreamrfport();
+        ~Docscableupstreamrfport();
 
 
-}; // RsrbIdentity
+}; // Docscableupstreamrfport
 
-class FramerelayinterconnectIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Mplstunnel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FramerelayinterconnectIdentity();
-        ~FramerelayinterconnectIdentity();
+        Mplstunnel();
+        ~Mplstunnel();
 
 
-}; // FramerelayinterconnectIdentity
+}; // Mplstunnel
 
-class IsdnsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Bridge : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IsdnsIdentity();
-        ~IsdnsIdentity();
+        Bridge();
+        ~Bridge();
 
 
-}; // IsdnsIdentity
+}; // Bridge
 
-class PppmultilinkbundleIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ds0 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PppmultilinkbundleIdentity();
-        ~PppmultilinkbundleIdentity();
+        Ds0();
+        ~Ds0();
 
 
-}; // PppmultilinkbundleIdentity
+}; // Ds0
 
-class Aflane8025Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Proteon80Mbit : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Aflane8025Identity();
-        ~Aflane8025Identity();
+        Proteon80Mbit();
+        ~Proteon80Mbit();
 
 
-}; // Aflane8025Identity
+}; // Proteon80Mbit
 
-class LapbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Fibrechannel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        LapbIdentity();
-        ~LapbIdentity();
+        Fibrechannel();
+        ~Fibrechannel();
 
 
-}; // LapbIdentity
+}; // Fibrechannel
 
-class Aflane8023Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class V35 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Aflane8023Identity();
-        ~Aflane8023Identity();
+        V35();
+        ~V35();
 
 
-}; // Aflane8023Identity
+}; // V35
 
-class LapdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propvirtual : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        LapdIdentity();
-        ~LapdIdentity();
+        Propvirtual();
+        ~Propvirtual();
 
 
-}; // LapdIdentity
+}; // Propvirtual
 
-class IsdnuIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Shdsl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IsdnuIdentity();
-        ~IsdnuIdentity();
+        Shdsl();
+        ~Shdsl();
 
 
-}; // IsdnuIdentity
+}; // Shdsl
 
-class LapfIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class E1 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        LapfIdentity();
-        ~LapfIdentity();
+        E1();
+        ~E1();
 
 
-}; // LapfIdentity
+}; // E1
 
-class CapwapwtpvirtualradioIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Bsc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CapwapwtpvirtualradioIdentity();
-        ~CapwapwtpvirtualradioIdentity();
+        Bsc();
+        ~Bsc();
 
 
-}; // CapwapwtpvirtualradioIdentity
+}; // Bsc
 
-class IfvfitypeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Isdnu : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IfvfitypeIdentity();
-        ~IfvfitypeIdentity();
+        Isdnu();
+        ~Isdnu();
 
 
-}; // IfvfitypeIdentity
+}; // Isdnu
 
-class X25HuntgroupIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Cnr : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        X25HuntgroupIdentity();
-        ~X25HuntgroupIdentity();
+        Cnr();
+        ~Cnr();
 
 
-}; // X25HuntgroupIdentity
+}; // Cnr
 
-class ParaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Srp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ParaIdentity();
-        ~ParaIdentity();
+        Srp();
+        ~Srp();
 
 
-}; // ParaIdentity
+}; // Srp
 
-class MacseccontrolledifIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Digitalwrapperoverheadchannel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MacseccontrolledifIdentity();
-        ~MacseccontrolledifIdentity();
+        Digitalwrapperoverheadchannel();
+        ~Digitalwrapperoverheadchannel();
 
 
-}; // MacseccontrolledifIdentity
+}; // Digitalwrapperoverheadchannel
 
-class Iso88024TokenbusIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Starlan : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Iso88024TokenbusIdentity();
-        ~Iso88024TokenbusIdentity();
+        Starlan();
+        ~Starlan();
 
 
-}; // Iso88024TokenbusIdentity
+}; // Starlan
 
-class LocaltalkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Iso88023Csmacd : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        LocaltalkIdentity();
-        ~LocaltalkIdentity();
+        Iso88023Csmacd();
+        ~Iso88023Csmacd();
 
 
-}; // LocaltalkIdentity
+}; // Iso88023Csmacd
 
-class HyperchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Virtualipaddress : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        HyperchannelIdentity();
-        ~HyperchannelIdentity();
+        Virtualipaddress();
+        ~Virtualipaddress();
 
 
-}; // HyperchannelIdentity
+}; // Virtualipaddress
 
-class MediamailoveripIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Nsip : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MediamailoveripIdentity();
-        ~MediamailoveripIdentity();
+        Nsip();
+        ~Nsip();
 
 
-}; // MediamailoveripIdentity
+}; // Nsip
 
-class IfGsnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ethernet3Mbit : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IfGsnIdentity();
-        ~IfGsnIdentity();
+        Ethernet3Mbit();
+        ~Ethernet3Mbit();
 
 
-}; // IfGsnIdentity
+}; // Ethernet3Mbit
 
-class Capwapdot11ProfileIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ifpwtype : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Capwapdot11ProfileIdentity();
-        ~Capwapdot11ProfileIdentity();
+        Ifpwtype();
+        ~Ifpwtype();
 
 
-}; // Capwapdot11ProfileIdentity
+}; // Ifpwtype
 
-class L3IpxvlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Localtalk : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        L3IpxvlanIdentity();
-        ~L3IpxvlanIdentity();
+        Localtalk();
+        ~Localtalk();
 
 
-}; // L3IpxvlanIdentity
+}; // Localtalk
 
-class AtmsubinterfaceIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Otnotu : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmsubinterfaceIdentity();
-        ~AtmsubinterfaceIdentity();
+        Otnotu();
+        ~Otnotu();
 
 
-}; // AtmsubinterfaceIdentity
+}; // Otnotu
 
-class PrimaryisdnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Iso88025Fiber : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PrimaryisdnIdentity();
-        ~PrimaryisdnIdentity();
+        Iso88025Fiber();
+        ~Iso88025Fiber();
 
 
-}; // PrimaryisdnIdentity
+}; // Iso88025Fiber
 
-class Proteon80MbitIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voicefxo : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Proteon80MbitIdentity();
-        ~Proteon80MbitIdentity();
+        Voicefxo();
+        ~Voicefxo();
 
 
-}; // Proteon80MbitIdentity
+}; // Voicefxo
 
-class Iso88026ManIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Reachdsl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Iso88026ManIdentity();
-        ~Iso88026ManIdentity();
+        Reachdsl();
+        ~Reachdsl();
 
 
-}; // Iso88026ManIdentity
+}; // Reachdsl
 
-class DigitalwrapperoverheadchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Capwapdot11Bss : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DigitalwrapperoverheadchannelIdentity();
-        ~DigitalwrapperoverheadchannelIdentity();
+        Capwapdot11Bss();
+        ~Capwapdot11Bss();
 
 
-}; // DigitalwrapperoverheadchannelIdentity
+}; // Capwapdot11Bss
 
-class DocscableupstreamchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propwirelessp2P : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DocscableupstreamchannelIdentity();
-        ~DocscableupstreamchannelIdentity();
+        Propwirelessp2P();
+        ~Propwirelessp2P();
 
 
-}; // DocscableupstreamchannelIdentity
+}; // Propwirelessp2P
 
-class OpticalchannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Iso88025Crfpint : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        OpticalchannelIdentity();
-        ~OpticalchannelIdentity();
+        Iso88025Crfpint();
+        ~Iso88025Crfpint();
 
 
-}; // OpticalchannelIdentity
+}; // Iso88025Crfpint
 
-class EthernetcsmacdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ddnx25 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        EthernetcsmacdIdentity();
-        ~EthernetcsmacdIdentity();
+        Ddnx25();
+        ~Ddnx25();
 
 
-}; // EthernetcsmacdIdentity
+}; // Ddnx25
 
-class BitsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ieee80212 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        BitsIdentity();
-        ~BitsIdentity();
+        Ieee80212();
+        ~Ieee80212();
 
 
-}; // BitsIdentity
+}; // Ieee80212
 
-class TunnelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dvbrccmaclayer : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        TunnelIdentity();
-        ~TunnelIdentity();
+        Dvbrccmaclayer();
+        ~Dvbrccmaclayer();
 
 
-}; // TunnelIdentity
+}; // Dvbrccmaclayer
 
-class Hdsl2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Linegroup : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Hdsl2Identity();
-        ~Hdsl2Identity();
+        Linegroup();
+        ~Linegroup();
 
 
-}; // Hdsl2Identity
+}; // Linegroup
 
-class FramerelayserviceIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Aluepononu : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FramerelayserviceIdentity();
-        ~FramerelayserviceIdentity();
+        Aluepononu();
+        ~Aluepononu();
 
 
-}; // FramerelayserviceIdentity
+}; // Aluepononu
 
-class MplsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sip : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        MplsIdentity();
-        ~MplsIdentity();
+        Sip();
+        ~Sip();
 
 
-}; // MplsIdentity
+}; // Sip
 
-class Ieee80211Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voicedid : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ieee80211Identity();
-        ~Ieee80211Identity();
+        Voicedid();
+        ~Voicedid();
 
 
-}; // Ieee80211Identity
+}; // Voicedid
 
-class Ieee80212Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Alugpononu : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ieee80212Identity();
-        ~Ieee80212Identity();
+        Alugpononu();
+        ~Alugpononu();
 
 
-}; // Ieee80212Identity
+}; // Alugpononu
 
-class Mocaversion1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Cblvectastar : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Mocaversion1Identity();
-        ~Mocaversion1Identity();
+        Cblvectastar();
+        ~Cblvectastar();
 
 
-}; // Mocaversion1Identity
+}; // Cblvectastar
 
-class SonetIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ipoveratm : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SonetIdentity();
-        ~SonetIdentity();
+        Ipoveratm();
+        ~Ipoveratm();
 
 
-}; // SonetIdentity
+}; // Ipoveratm
 
-class EsconIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Aviciopticalether : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        EsconIdentity();
-        ~EsconIdentity();
+        Aviciopticalether();
+        ~Aviciopticalether();
 
 
-}; // EsconIdentity
+}; // Aviciopticalether
 
-class AlueponlogicallinkIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class L3Ipvlan : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AlueponlogicallinkIdentity();
-        ~AlueponlogicallinkIdentity();
+        L3Ipvlan();
+        ~L3Ipvlan();
 
 
-}; // AlueponlogicallinkIdentity
+}; // L3Ipvlan
 
-class G703At2MbIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Termpad : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        G703At2MbIdentity();
-        ~G703At2MbIdentity();
+        Termpad();
+        ~Termpad();
 
 
-}; // G703At2MbIdentity
+}; // Termpad
 
-class UltraIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class X213 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        UltraIdentity();
-        ~UltraIdentity();
+        X213();
+        ~X213();
 
 
-}; // UltraIdentity
+}; // X213
 
-class DvbrccdownstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Adsl2 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DvbrccdownstreamIdentity();
-        ~DvbrccdownstreamIdentity();
+        Adsl2();
+        ~Adsl2();
 
 
-}; // DvbrccdownstreamIdentity
+}; // Adsl2
 
-class SiptgIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Tunnel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SiptgIdentity();
-        ~SiptgIdentity();
+        Tunnel();
+        ~Tunnel();
 
 
-}; // SiptgIdentity
+}; // Tunnel
 
-class SmdsicipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Arap : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SmdsicipIdentity();
-        ~SmdsicipIdentity();
+        Arap();
+        ~Arap();
 
 
-}; // SmdsicipIdentity
+}; // Arap
 
-class BridgeIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ds1 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        BridgeIdentity();
-        ~BridgeIdentity();
+        Ds1();
+        ~Ds1();
 
 
-}; // BridgeIdentity
+}; // Ds1
 
-class AtmlogicalIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Proteon10Mbit : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmlogicalIdentity();
-        ~AtmlogicalIdentity();
+        Proteon10Mbit();
+        ~Proteon10Mbit();
 
 
-}; // AtmlogicalIdentity
+}; // Proteon10Mbit
 
-class ProppointtopointserialIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Alueponlogicallink : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ProppointtopointserialIdentity();
-        ~ProppointtopointserialIdentity();
+        Alueponlogicallink();
+        ~Alueponlogicallink();
 
 
-}; // ProppointtopointserialIdentity
+}; // Alueponlogicallink
 
-class V35Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voicefgdos : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        V35Identity();
-        ~V35Identity();
+        Voicefgdos();
+        ~Voicefgdos();
 
 
-}; // V35Identity
+}; // Voicefgdos
 
-class V36Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class V36 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        V36Identity();
-        ~V36Identity();
+        V36();
+        ~V36();
 
 
-}; // V36Identity
+}; // V36
 
-class V37Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ieee8023Adlag : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        V37Identity();
-        ~V37Identity();
+        Ieee8023Adlag();
+        ~Ieee8023Adlag();
 
 
-}; // V37Identity
+}; // Ieee8023Adlag
 
-class IpIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Gigabitethernet : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IpIdentity();
-        ~IpIdentity();
+        Gigabitethernet();
+        ~Gigabitethernet();
 
 
-}; // IpIdentity
+}; // Gigabitethernet
 
-class Gr303IdtIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Mediamailoverip : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Gr303IdtIdentity();
-        ~Gr303IdtIdentity();
+        Mediamailoverip();
+        ~Mediamailoverip();
 
 
-}; // Gr303IdtIdentity
+}; // Mediamailoverip
 
-class BasicisdnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voicefgdeana : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        BasicisdnIdentity();
-        ~BasicisdnIdentity();
+        Voicefgdeana();
+        ~Voicefgdeana();
 
 
-}; // BasicisdnIdentity
+}; // Voicefgdeana
 
-class G703At64KIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Nfas : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        G703At64KIdentity();
-        ~G703At64KIdentity();
+        Nfas();
+        ~Nfas();
 
 
-}; // G703At64KIdentity
+}; // Nfas
 
-class ArcnetplusIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class X25Huntgroup : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ArcnetplusIdentity();
-        ~ArcnetplusIdentity();
+        X25Huntgroup();
+        ~X25Huntgroup();
 
 
-}; // ArcnetplusIdentity
+}; // X25Huntgroup
 
-class PipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Idsl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PipIdentity();
-        ~PipIdentity();
+        Idsl();
+        ~Idsl();
 
 
-}; // PipIdentity
+}; // Idsl
 
-class DtmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Homepna : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DtmIdentity();
-        ~DtmIdentity();
+        Homepna();
+        ~Homepna();
 
 
-}; // DtmIdentity
+}; // Homepna
 
-class SlipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sipsig : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SlipIdentity();
-        ~SlipIdentity();
+        Sipsig();
+        ~Sipsig();
 
 
-}; // SlipIdentity
+}; // Sipsig
 
-class Hiperlan2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Pon155 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Hiperlan2Identity();
-        ~Hiperlan2Identity();
+        Pon155();
+        ~Pon155();
 
 
-}; // Hiperlan2Identity
+}; // Pon155
 
-class AdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Para : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AdslIdentity();
-        ~AdslIdentity();
+        Para();
+        ~Para();
 
 
-}; // AdslIdentity
+}; // Para
 
-class Ieee80216WmanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hdlc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Ieee80216WmanIdentity();
-        ~Ieee80216WmanIdentity();
+        Hdlc();
+        ~Hdlc();
 
 
-}; // Ieee80216WmanIdentity
+}; // Hdlc
 
-class AtmimaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propbwap2Mp : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmimaIdentity();
-        ~AtmimaIdentity();
+        Propbwap2Mp();
+        ~Propbwap2Mp();
 
 
-}; // AtmimaIdentity
+}; // Propbwap2Mp
 
-class IsdnIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Fastetherfx : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IsdnIdentity();
-        ~IsdnIdentity();
+        Fastetherfx();
+        ~Fastetherfx();
 
 
-}; // IsdnIdentity
+}; // Fastetherfx
 
-class Capwapdot11BssIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Actelismetaloop : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Capwapdot11BssIdentity();
-        ~Capwapdot11BssIdentity();
+        Actelismetaloop();
+        ~Actelismetaloop();
 
 
-}; // Capwapdot11BssIdentity
+}; // Actelismetaloop
 
-class SipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dvbrccdownstream : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SipIdentity();
-        ~SipIdentity();
+        Dvbrccdownstream();
+        ~Dvbrccdownstream();
 
 
-}; // SipIdentity
+}; // Dvbrccdownstream
 
-class Pdnetherloop2Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Bits : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Pdnetherloop2Identity();
-        ~Pdnetherloop2Identity();
+        Bits();
+        ~Bits();
 
 
-}; // Pdnetherloop2Identity
+}; // Bits
 
-class VoiceebsIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voiceovercable : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoiceebsIdentity();
-        ~VoiceebsIdentity();
+        Voiceovercable();
+        ~Voiceovercable();
 
 
-}; // VoiceebsIdentity
+}; // Voiceovercable
 
-class IpforwardIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Channel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IpforwardIdentity();
-        ~IpforwardIdentity();
+        Channel();
+        ~Channel();
 
 
-}; // IpforwardIdentity
+}; // Channel
 
-class Iso88025CrfpintIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class V37 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Iso88025CrfpintIdentity();
-        ~Iso88025CrfpintIdentity();
+        V37();
+        ~V37();
 
 
-}; // Iso88025CrfpintIdentity
+}; // V37
 
-class PropvirtualIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dvbtdm : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PropvirtualIdentity();
-        ~PropvirtualIdentity();
+        Dvbtdm();
+        ~Dvbtdm();
 
 
-}; // PropvirtualIdentity
+}; // Dvbtdm
 
-class WwanppIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Bgppolicyaccounting : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        WwanppIdentity();
-        ~WwanppIdentity();
+        Bgppolicyaccounting();
+        ~Bgppolicyaccounting();
 
 
-}; // WwanppIdentity
+}; // Bgppolicyaccounting
 
-class OtherIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Mpc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        OtherIdentity();
-        ~OtherIdentity();
+        Mpc();
+        ~Mpc();
 
 
-}; // OtherIdentity
+}; // Mpc
 
-class Pon155Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Dtm : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Pon155Identity();
-        ~Pon155Identity();
+        Dtm();
+        ~Dtm();
 
 
-}; // Pon155Identity
+}; // Dtm
 
-class QamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Eon : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        QamIdentity();
-        ~QamIdentity();
+        Eon();
+        ~Eon();
 
 
-}; // QamIdentity
+}; // Eon
 
-class OtnoduIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Radiomac : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        OtnoduIdentity();
-        ~OtnoduIdentity();
+        Radiomac();
+        ~Radiomac();
 
 
-}; // OtnoduIdentity
+}; // Radiomac
 
-class Iso88025FiberIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ilan : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Iso88025FiberIdentity();
-        ~Iso88025FiberIdentity();
+        Ilan();
+        ~Ilan();
 
 
-}; // Iso88025FiberIdentity
+}; // Ilan
 
-class ChannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Frdlciendpt : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ChannelIdentity();
-        ~ChannelIdentity();
+        Frdlciendpt();
+        ~Frdlciendpt();
 
 
-}; // ChannelIdentity
+}; // Frdlciendpt
 
-class VoiceemfgdIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class G703At64K : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoiceemfgdIdentity();
-        ~VoiceemfgdIdentity();
+        G703At64K();
+        ~G703At64K();
 
 
-}; // VoiceemfgdIdentity
+}; // G703At64K
 
-class AlugponphysicaluniIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propdocswirelessdownstream : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AlugponphysicaluniIdentity();
-        ~AlugponphysicaluniIdentity();
+        Propdocswirelessdownstream();
+        ~Propdocswirelessdownstream();
 
 
-}; // AlugponphysicaluniIdentity
+}; // Propdocswirelessdownstream
 
-class A12MppswitchIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ieee802154 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        A12MppswitchIdentity();
-        ~A12MppswitchIdentity();
+        Ieee802154();
+        ~Ieee802154();
 
 
-}; // A12MppswitchIdentity
+}; // Ieee802154
 
-class IlanIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hssi : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IlanIdentity();
-        ~IlanIdentity();
+        Hssi();
+        ~Hssi();
 
 
-}; // IlanIdentity
+}; // Hssi
 
-class Pdnetherloop1Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Aluepon : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Pdnetherloop1Identity();
-        ~Pdnetherloop1Identity();
+        Aluepon();
+        ~Aluepon();
 
 
-}; // Pdnetherloop1Identity
+}; // Aluepon
 
-class X213Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Sdlc : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        X213Identity();
-        ~X213Identity();
+        Sdlc();
+        ~Sdlc();
 
 
-}; // X213Identity
+}; // Sdlc
 
-class SonetpathIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Isdn : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SonetpathIdentity();
-        ~SonetpathIdentity();
+        Isdn();
+        ~Isdn();
 
 
-}; // SonetpathIdentity
+}; // Isdn
 
-class VoicefgdeanaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Digitalpowerline : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VoicefgdeanaIdentity();
-        ~VoicefgdeanaIdentity();
+        Digitalpowerline();
+        ~Digitalpowerline();
 
 
-}; // VoicefgdeanaIdentity
+}; // Digitalpowerline
 
-class Iso88025TokenringIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Vdsl2 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Iso88025TokenringIdentity();
-        ~Iso88025TokenringIdentity();
+        Vdsl2();
+        ~Vdsl2();
 
 
-}; // Iso88025TokenringIdentity
+}; // Vdsl2
 
-class PropatmIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Arcnet : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        PropatmIdentity();
-        ~PropatmIdentity();
+        Arcnet();
+        ~Arcnet();
 
 
-}; // PropatmIdentity
+}; // Arcnet
 
-class AlueponphysicaluniIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Rs232 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AlueponphysicaluniIdentity();
-        ~AlueponphysicaluniIdentity();
+        Rs232();
+        ~Rs232();
 
 
-}; // AlueponphysicaluniIdentity
+}; // Rs232
 
-class StacktostackIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Usb : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        StacktostackIdentity();
-        ~StacktostackIdentity();
+        Usb();
+        ~Usb();
 
 
-}; // StacktostackIdentity
+}; // Usb
 
-class FrforwardIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Macsecuncontrolledif : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FrforwardIdentity();
-        ~FrforwardIdentity();
+        Macsecuncontrolledif();
+        ~Macsecuncontrolledif();
 
 
-}; // FrforwardIdentity
+}; // Macsecuncontrolledif
 
-class HomepnaIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Iso88025Tokenring : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        HomepnaIdentity();
-        ~HomepnaIdentity();
+        Iso88025Tokenring();
+        ~Iso88025Tokenring();
 
 
-}; // HomepnaIdentity
+}; // Iso88025Tokenring
 
-class SdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Opticalchannel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        SdslIdentity();
-        ~SdslIdentity();
+        Opticalchannel();
+        ~Opticalchannel();
 
 
-}; // SdslIdentity
+}; // Opticalchannel
 
-class VirtualipaddressIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Fddi : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        VirtualipaddressIdentity();
-        ~VirtualipaddressIdentity();
+        Fddi();
+        ~Fddi();
 
 
-}; // VirtualipaddressIdentity
+}; // Fddi
 
-class BscIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Gpon : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        BscIdentity();
-        ~BscIdentity();
+        Gpon();
+        ~Gpon();
 
 
-}; // BscIdentity
+}; // Gpon
 
-class AtmradioIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Softwareloopback : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AtmradioIdentity();
-        ~AtmradioIdentity();
+        Softwareloopback();
+        ~Softwareloopback();
 
 
-}; // AtmradioIdentity
+}; // Softwareloopback
 
-class AviciopticaletherIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Imt : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        AviciopticaletherIdentity();
-        ~AviciopticaletherIdentity();
+        Imt();
+        ~Imt();
 
 
-}; // AviciopticaletherIdentity
+}; // Imt
 
-class G9981Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ibm370Parchan : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        G9981Identity();
-        ~G9981Identity();
+        Ibm370Parchan();
+        ~Ibm370Parchan();
 
 
-}; // G9981Identity
+}; // Ibm370Parchan
 
-class FibrechannelIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class L3Ipxvlan : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        FibrechannelIdentity();
-        ~FibrechannelIdentity();
+        L3Ipxvlan();
+        ~L3Ipxvlan();
 
 
-}; // FibrechannelIdentity
+}; // L3Ipxvlan
 
-class ShdslIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Iso88026Man : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ShdslIdentity();
-        ~ShdslIdentity();
+        Iso88026Man();
+        ~Iso88026Man();
 
 
-}; // ShdslIdentity
+}; // Iso88026Man
 
-class EonIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Ip : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        EonIdentity();
-        ~EonIdentity();
+        Ip();
+        ~Ip();
 
 
-}; // EonIdentity
+}; // Ip
 
-class H323GatekeeperIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Propdocswirelessupstream : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        H323GatekeeperIdentity();
-        ~H323GatekeeperIdentity();
+        Propdocswirelessupstream();
+        ~Propdocswirelessupstream();
 
 
-}; // H323GatekeeperIdentity
+}; // Propdocswirelessupstream
 
-class Hdh1822Identity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Telink : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        Hdh1822Identity();
-        ~Hdh1822Identity();
+        Telink();
+        ~Telink();
 
 
-}; // Hdh1822Identity
+}; // Telink
 
-class DvbrccupstreamIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Radsl : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        DvbrccupstreamIdentity();
-        ~DvbrccupstreamIdentity();
+        Radsl();
+        ~Radsl();
 
 
-}; // DvbrccupstreamIdentity
+}; // Radsl
 
-class NsipIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Isdns : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        NsipIdentity();
-        ~NsipIdentity();
+        Isdns();
+        ~Isdns();
 
 
-}; // NsipIdentity
+}; // Isdns
 
-class TransphdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hyperchannel : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        TransphdlcIdentity();
-        ~TransphdlcIdentity();
+        Hyperchannel();
+        ~Hyperchannel();
 
 
-}; // TransphdlcIdentity
+}; // Hyperchannel
 
-class TermpadIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Hdsl2 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        TermpadIdentity();
-        ~TermpadIdentity();
+        Hdsl2();
+        ~Hdsl2();
 
 
-}; // TermpadIdentity
+}; // Hdsl2
 
-class IpovercdlcIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Mocaversion1 : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        IpovercdlcIdentity();
-        ~IpovercdlcIdentity();
+        Mocaversion1();
+        ~Mocaversion1();
 
 
-}; // IpovercdlcIdentity
+}; // Mocaversion1
 
-class CesIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class H323Gatekeeper : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        CesIdentity();
-        ~CesIdentity();
+        H323Gatekeeper();
+        ~H323Gatekeeper();
 
 
-}; // CesIdentity
+}; // H323Gatekeeper
 
-class ModemIdentity : public iana_if_type::IanaInterfaceTypeIdentity, virtual Identity
+class Voiceemfgd : public iana_if_type::IanaInterfaceType, virtual ydk::Identity
 {
     public:
-        ModemIdentity();
-        ~ModemIdentity();
+        Voiceemfgd();
+        ~Voiceemfgd();
 
 
-}; // ModemIdentity
+}; // Voiceemfgd
 
 
 }

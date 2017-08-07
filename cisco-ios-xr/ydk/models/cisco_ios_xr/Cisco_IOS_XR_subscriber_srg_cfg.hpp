@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_subscriber_srg_cfg {
 
-class SubscriberRedundancy : public Entity
+class SubscriberRedundancy : public ydk::Entity
 {
     public:
         SubscriberRedundancy();
@@ -18,23 +18,26 @@ class SubscriberRedundancy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf enable; //type: empty
-        YLeaf virtual_mac_prefix; //type: string
-        YLeaf preferred_role; //type: SubscriberRedundancyGroupRoleEnum
-        YLeaf source_interface; //type: string
-        YLeaf slave_mode; //type: SubscriberRedundancyGroupSlaveModeEnum
-        YLeaf hold_timer; //type: uint32
-        YLeaf redundancy_disable; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf virtual_mac_prefix; //type: string
+        ydk::YLeaf preferred_role; //type: SubscriberRedundancyGroupRole
+        ydk::YLeaf source_interface; //type: string
+        ydk::YLeaf slave_mode; //type: SubscriberRedundancyGroupSlaveMode
+        ydk::YLeaf hold_timer; //type: uint32
+        ydk::YLeaf redundancy_disable; //type: empty
         class Groups; //type: SubscriberRedundancy::Groups
         class RevertiveTimer; //type: SubscriberRedundancy::RevertiveTimer
 
@@ -44,7 +47,7 @@ class SubscriberRedundancy : public Entity
 }; // SubscriberRedundancy
 
 
-class SubscriberRedundancy::Groups : public Entity
+class SubscriberRedundancy::Groups : public ydk::Entity
 {
     public:
         Groups();
@@ -52,11 +55,13 @@ class SubscriberRedundancy::Groups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Group; //type: SubscriberRedundancy::Groups::Group
 
@@ -65,7 +70,7 @@ class SubscriberRedundancy::Groups : public Entity
 }; // SubscriberRedundancy::Groups
 
 
-class SubscriberRedundancy::Groups::Group : public Entity
+class SubscriberRedundancy::Groups::Group : public ydk::Entity
 {
     public:
         Group();
@@ -73,24 +78,26 @@ class SubscriberRedundancy::Groups::Group : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf group_id; //type: uint32
-        YLeaf disable_tracking_object; //type: empty
-        YLeaf core_tracking_object; //type: string
-        YLeaf enable; //type: empty
-        YLeaf preferred_role; //type: SubscriberRedundancyGroupRoleEnum
-        YLeaf description; //type: string
-        YLeaf l2tp_source_ip_address; //type: string
-        YLeaf slave_mode; //type: SubscriberRedundancyGroupSlaveModeEnum
-        YLeaf hold_timer; //type: uint32
-        YLeaf access_tracking_object; //type: string
-        YLeaf enable_fast_switchover; //type: empty
-        YLeaf redundancy_disable; //type: empty
+        ydk::YLeaf group_id; //type: uint32
+        ydk::YLeaf disable_tracking_object; //type: empty
+        ydk::YLeaf core_tracking_object; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf preferred_role; //type: SubscriberRedundancyGroupRole
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf l2tp_source_ip_address; //type: string
+        ydk::YLeaf slave_mode; //type: SubscriberRedundancyGroupSlaveMode
+        ydk::YLeaf hold_timer; //type: uint32
+        ydk::YLeaf access_tracking_object; //type: string
+        ydk::YLeaf enable_fast_switchover; //type: empty
+        ydk::YLeaf redundancy_disable; //type: empty
         class InterfaceList; //type: SubscriberRedundancy::Groups::Group::InterfaceList
         class Peer; //type: SubscriberRedundancy::Groups::Group::Peer
         class RevertiveTimer; //type: SubscriberRedundancy::Groups::Group::RevertiveTimer
@@ -106,7 +113,7 @@ class SubscriberRedundancy::Groups::Group : public Entity
 }; // SubscriberRedundancy::Groups::Group
 
 
-class SubscriberRedundancy::Groups::Group::InterfaceList : public Entity
+class SubscriberRedundancy::Groups::Group::InterfaceList : public ydk::Entity
 {
     public:
         InterfaceList();
@@ -114,13 +121,15 @@ class SubscriberRedundancy::Groups::Group::InterfaceList : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
+        ydk::YLeaf enable; //type: empty
         class Interfaces; //type: SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces
         class InterfaceRanges; //type: SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges
 
@@ -130,7 +139,7 @@ class SubscriberRedundancy::Groups::Group::InterfaceList : public Entity
 }; // SubscriberRedundancy::Groups::Group::InterfaceList
 
 
-class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces : public Entity
+class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -138,11 +147,13 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
 
@@ -151,7 +162,7 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces : public En
 }; // SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces
 
 
-class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface : public Entity
+class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -159,19 +170,21 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_id; //type: uint32
 
 }; // SubscriberRedundancy::Groups::Group::InterfaceList::Interfaces::Interface
 
 
-class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges : public Entity
+class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges : public ydk::Entity
 {
     public:
         InterfaceRanges();
@@ -179,11 +192,13 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceRange; //type: SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange
 
@@ -192,7 +207,7 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges : publ
 }; // SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges
 
 
-class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange : public Entity
+class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange : public ydk::Entity
 {
     public:
         InterfaceRange();
@@ -200,22 +215,24 @@ class SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Inter
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf sub_interface_range_start; //type: uint32
-        YLeaf sub_interface_range_end; //type: uint32
-        YLeaf interface_id_range_start; //type: uint32
-        YLeaf interface_id_range_end; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf sub_interface_range_start; //type: uint32
+        ydk::YLeaf sub_interface_range_end; //type: uint32
+        ydk::YLeaf interface_id_range_start; //type: uint32
+        ydk::YLeaf interface_id_range_end; //type: uint32
 
 }; // SubscriberRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange
 
 
-class SubscriberRedundancy::Groups::Group::Peer : public Entity
+class SubscriberRedundancy::Groups::Group::Peer : public ydk::Entity
 {
     public:
         Peer();
@@ -223,13 +240,15 @@ class SubscriberRedundancy::Groups::Group::Peer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_add_disable; //type: empty
+        ydk::YLeaf route_add_disable; //type: empty
         class Ipaddress; //type: SubscriberRedundancy::Groups::Group::Peer::Ipaddress
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::Peer::Ipaddress> ipaddress;
@@ -237,7 +256,7 @@ class SubscriberRedundancy::Groups::Group::Peer : public Entity
 }; // SubscriberRedundancy::Groups::Group::Peer
 
 
-class SubscriberRedundancy::Groups::Group::Peer::Ipaddress : public Entity
+class SubscriberRedundancy::Groups::Group::Peer::Ipaddress : public ydk::Entity
 {
     public:
         Ipaddress();
@@ -245,19 +264,21 @@ class SubscriberRedundancy::Groups::Group::Peer::Ipaddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_family; //type: SrgAddrFamilyEnum
-        YLeaf prefix_string; //type: string
+        ydk::YLeaf address_family; //type: SrgAddrFamily
+        ydk::YLeaf prefix_string; //type: string
 
 }; // SubscriberRedundancy::Groups::Group::Peer::Ipaddress
 
 
-class SubscriberRedundancy::Groups::Group::RevertiveTimer : public Entity
+class SubscriberRedundancy::Groups::Group::RevertiveTimer : public ydk::Entity
 {
     public:
         RevertiveTimer();
@@ -265,19 +286,21 @@ class SubscriberRedundancy::Groups::Group::RevertiveTimer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf max_value; //type: uint32
-        YLeaf value_; //type: uint32
+        ydk::YLeaf max_value; //type: uint32
+        ydk::YLeaf value_; //type: uint32
 
 }; // SubscriberRedundancy::Groups::Group::RevertiveTimer
 
 
-class SubscriberRedundancy::Groups::Group::VirtualMac : public Entity
+class SubscriberRedundancy::Groups::Group::VirtualMac : public ydk::Entity
 {
     public:
         VirtualMac();
@@ -285,19 +308,21 @@ class SubscriberRedundancy::Groups::Group::VirtualMac : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf disable; //type: empty
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf disable; //type: empty
 
 }; // SubscriberRedundancy::Groups::Group::VirtualMac
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute : public Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute : public ydk::Entity
 {
     public:
         StateControlRoute();
@@ -305,22 +330,47 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv4Route; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Route
+        class Ipv4Routes; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes
         class Ipv6Route; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Route> ipv4_route;
+        std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes> ipv4_routes;
         std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route> ipv6_route;
         
 }; // SubscriberRedundancy::Groups::Group::StateControlRoute
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Route : public Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes : public ydk::Entity
+{
+    public:
+        Ipv4Routes();
+        ~Ipv4Routes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv4Route; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route> > ipv4_route;
+        
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes
+
+
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route : public ydk::Entity
 {
     public:
         Ipv4Route();
@@ -328,21 +378,69 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Route : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: int32
-        YLeaf prefix_length; //type: int32
-        YLeaf address_family; //type: SrgAddrFamilyEnum
-        YLeaf prefix_string; //type: string
+        ydk::YLeaf prefix_string; //type: string
+        ydk::YLeaf prefix_length; //type: int32
+        class Ipv4RouteData; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData
+        class Vrfname; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname
 
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Route
+        std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData> ipv4_route_data;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname> > vrfname;
+        
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route : public Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData : public ydk::Entity
+{
+    public:
+        Ipv4RouteData();
+        ~Ipv4RouteData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tagvalue; //type: int32
+
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Ipv4RouteData
+
+
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname : public ydk::Entity
+{
+    public:
+        Vrfname();
+        ~Vrfname();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrfname; //type: string
+        ydk::YLeaf tagvalue; //type: int32
+
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv4Routes::Ipv4Route::Vrfname
+
+
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route : public ydk::Entity
 {
     public:
         Ipv6Route();
@@ -350,22 +448,47 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ipv6NaRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoute
-        class Ipv6PdRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoute
+        class Ipv6NaRoutes; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes
+        class Ipv6PdRoutes; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes
 
-        std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoute> ipv6na_route;
-        std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoute> ipv6pd_route;
+        std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes> ipv6na_routes;
+        std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes> ipv6pd_routes;
         
 }; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoute : public Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes : public ydk::Entity
+{
+    public:
+        Ipv6NaRoutes();
+        ~Ipv6NaRoutes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv6NaRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute> > ipv6na_route;
+        
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes
+
+
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute : public ydk::Entity
 {
     public:
         Ipv6NaRoute();
@@ -373,21 +496,46 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaR
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: int32
-        YLeaf prefix_length; //type: int32
-        YLeaf address_family; //type: SrgAddrFamilyEnum
-        YLeaf prefix_string; //type: string
+        ydk::YLeaf vrfname; //type: string
+        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_string; //type: string
+        ydk::YLeaf tagvalue; //type: int32
 
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoute
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6NaRoutes::Ipv6NaRoute
 
 
-class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoute : public Entity
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes : public ydk::Entity
+{
+    public:
+        Ipv6PdRoutes();
+        ~Ipv6PdRoutes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Ipv6PdRoute; //type: SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_srg_cfg::SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute> > ipv6pd_route;
+        
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes
+
+
+class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute : public ydk::Entity
 {
     public:
         Ipv6PdRoute();
@@ -395,21 +543,23 @@ class SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdR
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: int32
-        YLeaf prefix_length; //type: int32
-        YLeaf address_family; //type: SrgAddrFamilyEnum
-        YLeaf prefix_string; //type: string
+        ydk::YLeaf vrfname; //type: string
+        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_string; //type: string
+        ydk::YLeaf tagvalue; //type: int32
 
-}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoute
+}; // SubscriberRedundancy::Groups::Group::StateControlRoute::Ipv6Route::Ipv6PdRoutes::Ipv6PdRoute
 
 
-class SubscriberRedundancy::RevertiveTimer : public Entity
+class SubscriberRedundancy::RevertiveTimer : public ydk::Entity
 {
     public:
         RevertiveTimer();
@@ -417,38 +567,40 @@ class SubscriberRedundancy::RevertiveTimer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf max_value; //type: uint32
-        YLeaf value_; //type: uint32
+        ydk::YLeaf max_value; //type: uint32
+        ydk::YLeaf value_; //type: uint32
 
 }; // SubscriberRedundancy::RevertiveTimer
 
-class SubscriberRedundancyGroupSlaveModeEnum : public Enum
+class SubscriberRedundancyGroupSlaveMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf warm;
-        static const Enum::YLeaf hot;
+        static const ydk::Enum::YLeaf warm;
+        static const ydk::Enum::YLeaf hot;
 
 };
 
-class SrgAddrFamilyEnum : public Enum
+class SrgAddrFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class SubscriberRedundancyGroupRoleEnum : public Enum
+class SubscriberRedundancyGroupRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf master;
-        static const Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 

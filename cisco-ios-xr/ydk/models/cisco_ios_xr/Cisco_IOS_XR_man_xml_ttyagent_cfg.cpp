@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_man_xml_ttyagent_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_man_xml_ttyagent_cfg {
 
 XrXml::XrXml()
@@ -29,7 +31,7 @@ bool XrXml::has_data() const
 
 bool XrXml::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (agent !=  nullptr && agent->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::get_children() const
     return children;
 }
 
-void XrXml::set_value(const std::string & value_path, std::string value)
+void XrXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void XrXml::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string XrXml::get_bundle_name() const
 augment_capabilities_function XrXml::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> XrXml::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool XrXml::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "agent")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Agent()
@@ -137,7 +155,7 @@ bool XrXml::Agent::has_data() const
 
 bool XrXml::Agent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_ !=  nullptr && default_->has_operation())
 	|| (ssl !=  nullptr && ssl->has_operation())
 	|| (tty !=  nullptr && tty->has_operation());
@@ -226,8 +244,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::get_children() cons
     return children;
 }
 
-void XrXml::Agent::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default" || name == "ssl" || name == "tty")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Default_::Default_()
@@ -269,12 +298,12 @@ bool XrXml::Agent::Default_::has_data() const
 
 bool XrXml::Agent::Default_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(ipv4_disable.operation)
-	|| is_set(ipv6_enable.operation)
-	|| is_set(iteration_size.operation)
-	|| is_set(streaming_size.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(ipv4_disable.yfilter)
+	|| ydk::is_set(ipv6_enable.yfilter)
+	|| ydk::is_set(iteration_size.yfilter)
+	|| ydk::is_set(streaming_size.yfilter)
 	|| (session !=  nullptr && session->has_operation())
 	|| (throttle !=  nullptr && throttle->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
@@ -303,11 +332,11 @@ const EntityPath XrXml::Agent::Default_::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (ipv4_disable.is_set || is_set(ipv4_disable.operation)) leaf_name_data.push_back(ipv4_disable.get_name_leafdata());
-    if (ipv6_enable.is_set || is_set(ipv6_enable.operation)) leaf_name_data.push_back(ipv6_enable.get_name_leafdata());
-    if (iteration_size.is_set || is_set(iteration_size.operation)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
-    if (streaming_size.is_set || is_set(streaming_size.operation)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (ipv4_disable.is_set || is_set(ipv4_disable.yfilter)) leaf_name_data.push_back(ipv4_disable.get_name_leafdata());
+    if (ipv6_enable.is_set || is_set(ipv6_enable.yfilter)) leaf_name_data.push_back(ipv6_enable.get_name_leafdata());
+    if (iteration_size.is_set || is_set(iteration_size.yfilter)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
+    if (streaming_size.is_set || is_set(streaming_size.yfilter)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -368,28 +397,69 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::get_child
     return children;
 }
 
-void XrXml::Agent::Default_::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-disable")
     {
         ipv4_disable = value;
+        ipv4_disable.value_namespace = name_space;
+        ipv4_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-enable")
     {
         ipv6_enable = value;
+        ipv6_enable.value_namespace = name_space;
+        ipv6_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iteration-size")
     {
         iteration_size = value;
+        iteration_size.value_namespace = name_space;
+        iteration_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "streaming-size")
     {
         streaming_size = value;
+        streaming_size.value_namespace = name_space;
+        streaming_size.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-disable")
+    {
+        ipv4_disable.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-enable")
+    {
+        ipv6_enable.yfilter = yfilter;
+    }
+    if(value_path == "iteration-size")
+    {
+        iteration_size.yfilter = yfilter;
+    }
+    if(value_path == "streaming-size")
+    {
+        streaming_size.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Default_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session" || name == "throttle" || name == "vrfs" || name == "enable" || name == "ipv4-disable" || name == "ipv6-enable" || name == "iteration-size" || name == "streaming-size")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Default_::Session::Session()
@@ -410,8 +480,8 @@ bool XrXml::Agent::Default_::Session::has_data() const
 
 bool XrXml::Agent::Default_::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string XrXml::Agent::Default_::Session::get_segment_path() const
@@ -437,7 +507,7 @@ const EntityPath XrXml::Agent::Default_::Session::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -456,12 +526,29 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Session::
     return children;
 }
 
-void XrXml::Agent::Default_::Session::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Default_::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Default_::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Default_::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Default_::Throttle::Throttle()
@@ -484,9 +571,9 @@ bool XrXml::Agent::Default_::Throttle::has_data() const
 
 bool XrXml::Agent::Default_::Throttle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(memory.operation)
-	|| is_set(process_rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(memory.yfilter)
+	|| ydk::is_set(process_rate.yfilter);
 }
 
 std::string XrXml::Agent::Default_::Throttle::get_segment_path() const
@@ -512,8 +599,8 @@ const EntityPath XrXml::Agent::Default_::Throttle::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (memory.is_set || is_set(memory.operation)) leaf_name_data.push_back(memory.get_name_leafdata());
-    if (process_rate.is_set || is_set(process_rate.operation)) leaf_name_data.push_back(process_rate.get_name_leafdata());
+    if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
+    if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -532,16 +619,39 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Throttle:
     return children;
 }
 
-void XrXml::Agent::Default_::Throttle::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Default_::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "memory")
     {
         memory = value;
+        memory.value_namespace = name_space;
+        memory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-rate")
     {
         process_rate = value;
+        process_rate.value_namespace = name_space;
+        process_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Default_::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "memory")
+    {
+        memory.yfilter = yfilter;
+    }
+    if(value_path == "process-rate")
+    {
+        process_rate.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Default_::Throttle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory" || name == "process-rate")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Default_::Vrfs::Vrfs()
@@ -570,7 +680,7 @@ bool XrXml::Agent::Default_::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string XrXml::Agent::Default_::Vrfs::get_segment_path() const
@@ -635,8 +745,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Vrfs::get
     return children;
 }
 
-void XrXml::Agent::Default_::Vrfs::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Default_::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::Default_::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Default_::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Default_::Vrfs::Vrf::Vrf()
@@ -665,12 +786,12 @@ bool XrXml::Agent::Default_::Vrfs::Vrf::has_data() const
 
 bool XrXml::Agent::Default_::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(access_list.operation)
-	|| is_set(ipv4_access_list.operation)
-	|| is_set(ipv6_access_list.operation)
-	|| is_set(shutdown.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(access_list.yfilter)
+	|| ydk::is_set(ipv4_access_list.yfilter)
+	|| ydk::is_set(ipv6_access_list.yfilter)
+	|| ydk::is_set(shutdown.yfilter);
 }
 
 std::string XrXml::Agent::Default_::Vrfs::Vrf::get_segment_path() const
@@ -696,11 +817,11 @@ const EntityPath XrXml::Agent::Default_::Vrfs::Vrf::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (access_list.is_set || is_set(access_list.operation)) leaf_name_data.push_back(access_list.get_name_leafdata());
-    if (ipv4_access_list.is_set || is_set(ipv4_access_list.operation)) leaf_name_data.push_back(ipv4_access_list.get_name_leafdata());
-    if (ipv6_access_list.is_set || is_set(ipv6_access_list.operation)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
-    if (shutdown.is_set || is_set(shutdown.operation)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (access_list.is_set || is_set(access_list.yfilter)) leaf_name_data.push_back(access_list.get_name_leafdata());
+    if (ipv4_access_list.is_set || is_set(ipv4_access_list.yfilter)) leaf_name_data.push_back(ipv4_access_list.get_name_leafdata());
+    if (ipv6_access_list.is_set || is_set(ipv6_access_list.yfilter)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -719,28 +840,69 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Vrfs::Vrf
     return children;
 }
 
-void XrXml::Agent::Default_::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Default_::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list")
     {
         access_list = value;
+        access_list.value_namespace = name_space;
+        access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-access-list")
     {
         ipv4_access_list = value;
+        ipv4_access_list.value_namespace = name_space;
+        ipv4_access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-access-list")
     {
         ipv6_access_list = value;
+        ipv6_access_list.value_namespace = name_space;
+        ipv6_access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "shutdown")
     {
         shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Default_::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "access-list")
+    {
+        access_list.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-access-list")
+    {
+        ipv4_access_list.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-access-list")
+    {
+        ipv6_access_list.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Default_::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "access-list" || name == "ipv4-access-list" || name == "ipv6-access-list" || name == "shutdown")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Tty::Tty()
@@ -774,10 +936,10 @@ bool XrXml::Agent::Tty::has_data() const
 
 bool XrXml::Agent::Tty::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(iteration_size.operation)
-	|| is_set(streaming_size.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(iteration_size.yfilter)
+	|| ydk::is_set(streaming_size.yfilter)
 	|| (session !=  nullptr && session->has_operation())
 	|| (throttle !=  nullptr && throttle->has_operation());
 }
@@ -805,9 +967,9 @@ const EntityPath XrXml::Agent::Tty::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (iteration_size.is_set || is_set(iteration_size.operation)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
-    if (streaming_size.is_set || is_set(streaming_size.operation)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (iteration_size.is_set || is_set(iteration_size.yfilter)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
+    if (streaming_size.is_set || is_set(streaming_size.yfilter)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -854,20 +1016,49 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children()
     return children;
 }
 
-void XrXml::Agent::Tty::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iteration-size")
     {
         iteration_size = value;
+        iteration_size.value_namespace = name_space;
+        iteration_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "streaming-size")
     {
         streaming_size = value;
+        streaming_size.value_namespace = name_space;
+        streaming_size.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "iteration-size")
+    {
+        iteration_size.yfilter = yfilter;
+    }
+    if(value_path == "streaming-size")
+    {
+        streaming_size.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session" || name == "throttle" || name == "enable" || name == "iteration-size" || name == "streaming-size")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Tty::Session::Session()
@@ -888,8 +1079,8 @@ bool XrXml::Agent::Tty::Session::has_data() const
 
 bool XrXml::Agent::Tty::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string XrXml::Agent::Tty::Session::get_segment_path() const
@@ -915,7 +1106,7 @@ const EntityPath XrXml::Agent::Tty::Session::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -934,12 +1125,29 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Session::get_c
     return children;
 }
 
-void XrXml::Agent::Tty::Session::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Tty::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Tty::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Tty::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Tty::Throttle::Throttle()
@@ -962,9 +1170,9 @@ bool XrXml::Agent::Tty::Throttle::has_data() const
 
 bool XrXml::Agent::Tty::Throttle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(memory.operation)
-	|| is_set(process_rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(memory.yfilter)
+	|| ydk::is_set(process_rate.yfilter);
 }
 
 std::string XrXml::Agent::Tty::Throttle::get_segment_path() const
@@ -990,8 +1198,8 @@ const EntityPath XrXml::Agent::Tty::Throttle::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (memory.is_set || is_set(memory.operation)) leaf_name_data.push_back(memory.get_name_leafdata());
-    if (process_rate.is_set || is_set(process_rate.operation)) leaf_name_data.push_back(process_rate.get_name_leafdata());
+    if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
+    if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1010,16 +1218,39 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Throttle::get_
     return children;
 }
 
-void XrXml::Agent::Tty::Throttle::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Tty::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "memory")
     {
         memory = value;
+        memory.value_namespace = name_space;
+        memory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-rate")
     {
         process_rate = value;
+        process_rate.value_namespace = name_space;
+        process_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Tty::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "memory")
+    {
+        memory.yfilter = yfilter;
+    }
+    if(value_path == "process-rate")
+    {
+        process_rate.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Tty::Throttle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory" || name == "process-rate")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Ssl::Ssl()
@@ -1057,10 +1288,10 @@ bool XrXml::Agent::Ssl::has_data() const
 
 bool XrXml::Agent::Ssl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(iteration_size.operation)
-	|| is_set(streaming_size.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(iteration_size.yfilter)
+	|| ydk::is_set(streaming_size.yfilter)
 	|| (session !=  nullptr && session->has_operation())
 	|| (throttle !=  nullptr && throttle->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
@@ -1089,9 +1320,9 @@ const EntityPath XrXml::Agent::Ssl::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (iteration_size.is_set || is_set(iteration_size.operation)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
-    if (streaming_size.is_set || is_set(streaming_size.operation)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (iteration_size.is_set || is_set(iteration_size.yfilter)) leaf_name_data.push_back(iteration_size.get_name_leafdata());
+    if (streaming_size.is_set || is_set(streaming_size.yfilter)) leaf_name_data.push_back(streaming_size.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1152,20 +1383,49 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::get_children()
     return children;
 }
 
-void XrXml::Agent::Ssl::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iteration-size")
     {
         iteration_size = value;
+        iteration_size.value_namespace = name_space;
+        iteration_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "streaming-size")
     {
         streaming_size = value;
+        streaming_size.value_namespace = name_space;
+        streaming_size.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Ssl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "iteration-size")
+    {
+        iteration_size.yfilter = yfilter;
+    }
+    if(value_path == "streaming-size")
+    {
+        streaming_size.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Ssl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session" || name == "throttle" || name == "vrfs" || name == "enable" || name == "iteration-size" || name == "streaming-size")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Ssl::Session::Session()
@@ -1186,8 +1446,8 @@ bool XrXml::Agent::Ssl::Session::has_data() const
 
 bool XrXml::Agent::Ssl::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string XrXml::Agent::Ssl::Session::get_segment_path() const
@@ -1213,7 +1473,7 @@ const EntityPath XrXml::Agent::Ssl::Session::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1232,12 +1492,29 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Session::get_c
     return children;
 }
 
-void XrXml::Agent::Ssl::Session::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Ssl::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Ssl::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Ssl::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Ssl::Throttle::Throttle()
@@ -1260,9 +1537,9 @@ bool XrXml::Agent::Ssl::Throttle::has_data() const
 
 bool XrXml::Agent::Ssl::Throttle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(memory.operation)
-	|| is_set(process_rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(memory.yfilter)
+	|| ydk::is_set(process_rate.yfilter);
 }
 
 std::string XrXml::Agent::Ssl::Throttle::get_segment_path() const
@@ -1288,8 +1565,8 @@ const EntityPath XrXml::Agent::Ssl::Throttle::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (memory.is_set || is_set(memory.operation)) leaf_name_data.push_back(memory.get_name_leafdata());
-    if (process_rate.is_set || is_set(process_rate.operation)) leaf_name_data.push_back(process_rate.get_name_leafdata());
+    if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
+    if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1308,16 +1585,39 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Throttle::get_
     return children;
 }
 
-void XrXml::Agent::Ssl::Throttle::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Ssl::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "memory")
     {
         memory = value;
+        memory.value_namespace = name_space;
+        memory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-rate")
     {
         process_rate = value;
+        process_rate.value_namespace = name_space;
+        process_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Ssl::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "memory")
+    {
+        memory.yfilter = yfilter;
+    }
+    if(value_path == "process-rate")
+    {
+        process_rate.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Ssl::Throttle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory" || name == "process-rate")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Ssl::Vrfs::Vrfs()
@@ -1346,7 +1646,7 @@ bool XrXml::Agent::Ssl::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string XrXml::Agent::Ssl::Vrfs::get_segment_path() const
@@ -1411,8 +1711,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::get_chil
     return children;
 }
 
-void XrXml::Agent::Ssl::Vrfs::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Ssl::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::Ssl::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Ssl::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Ssl::Vrfs::Vrf::Vrf()
@@ -1441,12 +1752,12 @@ bool XrXml::Agent::Ssl::Vrfs::Vrf::has_data() const
 
 bool XrXml::Agent::Ssl::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(access_list.operation)
-	|| is_set(ipv4_access_list.operation)
-	|| is_set(ipv6_access_list.operation)
-	|| is_set(shutdown.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(access_list.yfilter)
+	|| ydk::is_set(ipv4_access_list.yfilter)
+	|| ydk::is_set(ipv6_access_list.yfilter)
+	|| ydk::is_set(shutdown.yfilter);
 }
 
 std::string XrXml::Agent::Ssl::Vrfs::Vrf::get_segment_path() const
@@ -1472,11 +1783,11 @@ const EntityPath XrXml::Agent::Ssl::Vrfs::Vrf::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (access_list.is_set || is_set(access_list.operation)) leaf_name_data.push_back(access_list.get_name_leafdata());
-    if (ipv4_access_list.is_set || is_set(ipv4_access_list.operation)) leaf_name_data.push_back(ipv4_access_list.get_name_leafdata());
-    if (ipv6_access_list.is_set || is_set(ipv6_access_list.operation)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
-    if (shutdown.is_set || is_set(shutdown.operation)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (access_list.is_set || is_set(access_list.yfilter)) leaf_name_data.push_back(access_list.get_name_leafdata());
+    if (ipv4_access_list.is_set || is_set(ipv4_access_list.yfilter)) leaf_name_data.push_back(ipv4_access_list.get_name_leafdata());
+    if (ipv6_access_list.is_set || is_set(ipv6_access_list.yfilter)) leaf_name_data.push_back(ipv6_access_list.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1495,28 +1806,69 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::Vrf::get
     return children;
 }
 
-void XrXml::Agent::Ssl::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Ssl::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list")
     {
         access_list = value;
+        access_list.value_namespace = name_space;
+        access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-access-list")
     {
         ipv4_access_list = value;
+        ipv4_access_list.value_namespace = name_space;
+        ipv4_access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-access-list")
     {
         ipv6_access_list = value;
+        ipv6_access_list.value_namespace = name_space;
+        ipv6_access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "shutdown")
     {
         shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Ssl::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "access-list")
+    {
+        access_list.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-access-list")
+    {
+        ipv4_access_list.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-access-list")
+    {
+        ipv6_access_list.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Ssl::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "access-list" || name == "ipv4-access-list" || name == "ipv6-access-list" || name == "shutdown")
+        return true;
+    return false;
 }
 
 Netconf::Netconf()
@@ -1539,7 +1891,7 @@ bool Netconf::has_data() const
 
 bool Netconf::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (agent !=  nullptr && agent->has_operation());
 }
 
@@ -1595,7 +1947,11 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::get_children() const
     return children;
 }
 
-void Netconf::set_value(const std::string & value_path, std::string value)
+void Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Netconf::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -1619,6 +1975,18 @@ augment_capabilities_function Netconf::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Netconf::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Netconf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "agent")
+        return true;
+    return false;
+}
+
 Netconf::Agent::Agent()
     :
     tty(std::make_shared<Netconf::Agent::Tty>())
@@ -1639,7 +2007,7 @@ bool Netconf::Agent::has_data() const
 
 bool Netconf::Agent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tty !=  nullptr && tty->has_operation());
 }
 
@@ -1698,8 +2066,19 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::get_children() co
     return children;
 }
 
-void Netconf::Agent::set_value(const std::string & value_path, std::string value)
+void Netconf::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Netconf::Agent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Netconf::Agent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tty")
+        return true;
+    return false;
 }
 
 Netconf::Agent::Tty::Tty()
@@ -1729,8 +2108,8 @@ bool Netconf::Agent::Tty::has_data() const
 
 bool Netconf::Agent::Tty::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (session !=  nullptr && session->has_operation())
 	|| (throttle !=  nullptr && throttle->has_operation());
 }
@@ -1758,7 +2137,7 @@ const EntityPath Netconf::Agent::Tty::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1805,12 +2184,29 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::get_children
     return children;
 }
 
-void Netconf::Agent::Tty::set_value(const std::string & value_path, std::string value)
+void Netconf::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Netconf::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Netconf::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session" || name == "throttle" || name == "enable")
+        return true;
+    return false;
 }
 
 Netconf::Agent::Tty::Throttle::Throttle()
@@ -1835,10 +2231,10 @@ bool Netconf::Agent::Tty::Throttle::has_data() const
 
 bool Netconf::Agent::Tty::Throttle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(memory.operation)
-	|| is_set(offload_memory.operation)
-	|| is_set(process_rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(memory.yfilter)
+	|| ydk::is_set(offload_memory.yfilter)
+	|| ydk::is_set(process_rate.yfilter);
 }
 
 std::string Netconf::Agent::Tty::Throttle::get_segment_path() const
@@ -1864,9 +2260,9 @@ const EntityPath Netconf::Agent::Tty::Throttle::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (memory.is_set || is_set(memory.operation)) leaf_name_data.push_back(memory.get_name_leafdata());
-    if (offload_memory.is_set || is_set(offload_memory.operation)) leaf_name_data.push_back(offload_memory.get_name_leafdata());
-    if (process_rate.is_set || is_set(process_rate.operation)) leaf_name_data.push_back(process_rate.get_name_leafdata());
+    if (memory.is_set || is_set(memory.yfilter)) leaf_name_data.push_back(memory.get_name_leafdata());
+    if (offload_memory.is_set || is_set(offload_memory.yfilter)) leaf_name_data.push_back(offload_memory.get_name_leafdata());
+    if (process_rate.is_set || is_set(process_rate.yfilter)) leaf_name_data.push_back(process_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1885,20 +2281,49 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Throttle::ge
     return children;
 }
 
-void Netconf::Agent::Tty::Throttle::set_value(const std::string & value_path, std::string value)
+void Netconf::Agent::Tty::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "memory")
     {
         memory = value;
+        memory.value_namespace = name_space;
+        memory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "offload-memory")
     {
         offload_memory = value;
+        offload_memory.value_namespace = name_space;
+        offload_memory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-rate")
     {
         process_rate = value;
+        process_rate.value_namespace = name_space;
+        process_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Netconf::Agent::Tty::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "memory")
+    {
+        memory.yfilter = yfilter;
+    }
+    if(value_path == "offload-memory")
+    {
+        offload_memory.yfilter = yfilter;
+    }
+    if(value_path == "process-rate")
+    {
+        process_rate.yfilter = yfilter;
+    }
+}
+
+bool Netconf::Agent::Tty::Throttle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory" || name == "offload-memory" || name == "process-rate")
+        return true;
+    return false;
 }
 
 Netconf::Agent::Tty::Session::Session()
@@ -1919,8 +2344,8 @@ bool Netconf::Agent::Tty::Session::has_data() const
 
 bool Netconf::Agent::Tty::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string Netconf::Agent::Tty::Session::get_segment_path() const
@@ -1946,7 +2371,7 @@ const EntityPath Netconf::Agent::Tty::Session::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1965,12 +2390,29 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Session::get
     return children;
 }
 
-void Netconf::Agent::Tty::Session::set_value(const std::string & value_path, std::string value)
+void Netconf::Agent::Tty::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Netconf::Agent::Tty::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Netconf::Agent::Tty::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout")
+        return true;
+    return false;
 }
 
 

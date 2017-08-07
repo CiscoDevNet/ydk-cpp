@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sdr_invmgr_oper {
 
-class SdrInventory : public Entity
+class SdrInventory : public ydk::Entity
 {
     public:
         SdrInventory();
@@ -18,15 +18,18 @@ class SdrInventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Racks; //type: SdrInventory::Racks
 
@@ -35,7 +38,7 @@ class SdrInventory : public Entity
 }; // SdrInventory
 
 
-class SdrInventory::Racks : public Entity
+class SdrInventory::Racks : public ydk::Entity
 {
     public:
         Racks();
@@ -43,11 +46,13 @@ class SdrInventory::Racks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rack; //type: SdrInventory::Racks::Rack
 
@@ -56,7 +61,7 @@ class SdrInventory::Racks : public Entity
 }; // SdrInventory::Racks
 
 
-class SdrInventory::Racks::Rack : public Entity
+class SdrInventory::Racks::Rack : public ydk::Entity
 {
     public:
         Rack();
@@ -64,13 +69,15 @@ class SdrInventory::Racks::Rack : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
+        ydk::YLeaf name; //type: string
         class Slot; //type: SdrInventory::Racks::Rack::Slot
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack::Slot> > slot;
@@ -78,7 +85,7 @@ class SdrInventory::Racks::Rack : public Entity
 }; // SdrInventory::Racks::Rack
 
 
-class SdrInventory::Racks::Rack::Slot : public Entity
+class SdrInventory::Racks::Rack::Slot : public ydk::Entity
 {
     public:
         Slot();
@@ -86,13 +93,15 @@ class SdrInventory::Racks::Rack::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
+        ydk::YLeaf name; //type: string
         class Card; //type: SdrInventory::Racks::Rack::Slot::Card
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack::Slot::Card> > card;
@@ -100,7 +109,7 @@ class SdrInventory::Racks::Rack::Slot : public Entity
 }; // SdrInventory::Racks::Rack::Slot
 
 
-class SdrInventory::Racks::Rack::Slot::Card : public Entity
+class SdrInventory::Racks::Rack::Slot::Card : public ydk::Entity
 {
     public:
         Card();
@@ -108,13 +117,15 @@ class SdrInventory::Racks::Rack::Slot::Card : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
+        ydk::YLeaf name; //type: string
         class Attributes; //type: SdrInventory::Racks::Rack::Slot::Card::Attributes
 
         std::shared_ptr<Cisco_IOS_XR_sdr_invmgr_oper::SdrInventory::Racks::Rack::Slot::Card::Attributes> attributes;
@@ -122,7 +133,7 @@ class SdrInventory::Racks::Rack::Slot::Card : public Entity
 }; // SdrInventory::Racks::Rack::Slot::Card
 
 
-class SdrInventory::Racks::Rack::Slot::Card::Attributes : public Entity
+class SdrInventory::Racks::Rack::Slot::Card::Attributes : public ydk::Entity
 {
     public:
         Attributes();
@@ -130,26 +141,28 @@ class SdrInventory::Racks::Rack::Slot::Card::Attributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf config_state_string; //type: string
-        YLeaf power; //type: int32
-        YLeaf config_state; //type: int32
-        YLeaf card_state; //type: int32
-        YLeaf vm_state; //type: int32
-        YLeaf card_admin_state; //type: int32
-        YLeaf card_type; //type: int32
-        YLeaf card_type_string; //type: string
-        YLeaf node_name_string; //type: string
-        YLeaf pi_slot_number; //type: int32
-        YLeaf shutdown; //type: int32
-        YLeaf ctype; //type: int32
-        YLeaf card_state_string; //type: string
-        YLeaf monitor; //type: int32
+        ydk::YLeaf config_state_string; //type: string
+        ydk::YLeaf power; //type: int32
+        ydk::YLeaf config_state; //type: int32
+        ydk::YLeaf card_state; //type: int32
+        ydk::YLeaf vm_state; //type: int32
+        ydk::YLeaf card_admin_state; //type: int32
+        ydk::YLeaf card_type; //type: int32
+        ydk::YLeaf card_type_string; //type: string
+        ydk::YLeaf node_name_string; //type: string
+        ydk::YLeaf pi_slot_number; //type: int32
+        ydk::YLeaf shutdown; //type: int32
+        ydk::YLeaf ctype; //type: int32
+        ydk::YLeaf card_state_string; //type: string
+        ydk::YLeaf monitor; //type: int32
 
 }; // SdrInventory::Racks::Rack::Slot::Card::Attributes
 

@@ -6,17 +6,19 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_ETHERLIKE_EXT_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_ETHERLIKE_EXT_MIB {
 
 CiscoEtherlikeExtMib::CiscoEtherlikeExtMib()
     :
-    ceedot3pauseexttable_(std::make_shared<CiscoEtherlikeExtMib::Ceedot3Pauseexttable>())
-	,ceesubinterfacetable_(std::make_shared<CiscoEtherlikeExtMib::Ceesubinterfacetable>())
+    ceedot3pauseexttable(std::make_shared<CiscoEtherlikeExtMib::Ceedot3Pauseexttable>())
+	,ceesubinterfacetable(std::make_shared<CiscoEtherlikeExtMib::Ceesubinterfacetable>())
 {
-    ceedot3pauseexttable_->parent = this;
+    ceedot3pauseexttable->parent = this;
 
-    ceesubinterfacetable_->parent = this;
+    ceesubinterfacetable->parent = this;
 
     yang_name = "CISCO-ETHERLIKE-EXT-MIB"; yang_parent_name = "CISCO-ETHERLIKE-EXT-MIB";
 }
@@ -27,15 +29,15 @@ CiscoEtherlikeExtMib::~CiscoEtherlikeExtMib()
 
 bool CiscoEtherlikeExtMib::has_data() const
 {
-    return (ceedot3pauseexttable_ !=  nullptr && ceedot3pauseexttable_->has_data())
-	|| (ceesubinterfacetable_ !=  nullptr && ceesubinterfacetable_->has_data());
+    return (ceedot3pauseexttable !=  nullptr && ceedot3pauseexttable->has_data())
+	|| (ceesubinterfacetable !=  nullptr && ceesubinterfacetable->has_data());
 }
 
 bool CiscoEtherlikeExtMib::has_operation() const
 {
-    return is_set(operation)
-	|| (ceedot3pauseexttable_ !=  nullptr && ceedot3pauseexttable_->has_operation())
-	|| (ceesubinterfacetable_ !=  nullptr && ceesubinterfacetable_->has_operation());
+    return is_set(yfilter)
+	|| (ceedot3pauseexttable !=  nullptr && ceedot3pauseexttable->has_operation())
+	|| (ceesubinterfacetable !=  nullptr && ceesubinterfacetable->has_operation());
 }
 
 std::string CiscoEtherlikeExtMib::get_segment_path() const
@@ -69,20 +71,20 @@ std::shared_ptr<Entity> CiscoEtherlikeExtMib::get_child_by_name(const std::strin
 {
     if(child_yang_name == "ceeDot3PauseExtTable")
     {
-        if(ceedot3pauseexttable_ == nullptr)
+        if(ceedot3pauseexttable == nullptr)
         {
-            ceedot3pauseexttable_ = std::make_shared<CiscoEtherlikeExtMib::Ceedot3Pauseexttable>();
+            ceedot3pauseexttable = std::make_shared<CiscoEtherlikeExtMib::Ceedot3Pauseexttable>();
         }
-        return ceedot3pauseexttable_;
+        return ceedot3pauseexttable;
     }
 
     if(child_yang_name == "ceeSubInterfaceTable")
     {
-        if(ceesubinterfacetable_ == nullptr)
+        if(ceesubinterfacetable == nullptr)
         {
-            ceesubinterfacetable_ = std::make_shared<CiscoEtherlikeExtMib::Ceesubinterfacetable>();
+            ceesubinterfacetable = std::make_shared<CiscoEtherlikeExtMib::Ceesubinterfacetable>();
         }
-        return ceesubinterfacetable_;
+        return ceesubinterfacetable;
     }
 
     return nullptr;
@@ -91,20 +93,24 @@ std::shared_ptr<Entity> CiscoEtherlikeExtMib::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CiscoEtherlikeExtMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ceedot3pauseexttable_ != nullptr)
+    if(ceedot3pauseexttable != nullptr)
     {
-        children["ceeDot3PauseExtTable"] = ceedot3pauseexttable_;
+        children["ceeDot3PauseExtTable"] = ceedot3pauseexttable;
     }
 
-    if(ceesubinterfacetable_ != nullptr)
+    if(ceesubinterfacetable != nullptr)
     {
-        children["ceeSubInterfaceTable"] = ceesubinterfacetable_;
+        children["ceeSubInterfaceTable"] = ceesubinterfacetable;
     }
 
     return children;
 }
 
-void CiscoEtherlikeExtMib::set_value(const std::string & value_path, std::string value)
+void CiscoEtherlikeExtMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoEtherlikeExtMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -128,6 +134,18 @@ augment_capabilities_function CiscoEtherlikeExtMib::get_augment_capabilities_fun
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoEtherlikeExtMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoEtherlikeExtMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceeDot3PauseExtTable" || name == "ceeSubInterfaceTable")
+        return true;
+    return false;
+}
+
 CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseexttable()
 {
     yang_name = "ceeDot3PauseExtTable"; yang_parent_name = "CISCO-ETHERLIKE-EXT-MIB";
@@ -139,9 +157,9 @@ CiscoEtherlikeExtMib::Ceedot3Pauseexttable::~Ceedot3Pauseexttable()
 
 bool CiscoEtherlikeExtMib::Ceedot3Pauseexttable::has_data() const
 {
-    for (std::size_t index=0; index<ceedot3pauseextentry_.size(); index++)
+    for (std::size_t index=0; index<ceedot3pauseextentry.size(); index++)
     {
-        if(ceedot3pauseextentry_[index]->has_data())
+        if(ceedot3pauseextentry[index]->has_data())
             return true;
     }
     return false;
@@ -149,12 +167,12 @@ bool CiscoEtherlikeExtMib::Ceedot3Pauseexttable::has_data() const
 
 bool CiscoEtherlikeExtMib::Ceedot3Pauseexttable::has_operation() const
 {
-    for (std::size_t index=0; index<ceedot3pauseextentry_.size(); index++)
+    for (std::size_t index=0; index<ceedot3pauseextentry.size(); index++)
     {
-        if(ceedot3pauseextentry_[index]->has_operation())
+        if(ceedot3pauseextentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEtherlikeExtMib::Ceedot3Pauseexttable::get_segment_path() const
@@ -191,7 +209,7 @@ std::shared_ptr<Entity> CiscoEtherlikeExtMib::Ceedot3Pauseexttable::get_child_by
 {
     if(child_yang_name == "ceeDot3PauseExtEntry")
     {
-        for(auto const & c : ceedot3pauseextentry_)
+        for(auto const & c : ceedot3pauseextentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -201,7 +219,7 @@ std::shared_ptr<Entity> CiscoEtherlikeExtMib::Ceedot3Pauseexttable::get_child_by
         }
         auto c = std::make_shared<CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry>();
         c->parent = this;
-        ceedot3pauseextentry_.push_back(c);
+        ceedot3pauseextentry.push_back(c);
         return c;
     }
 
@@ -211,7 +229,7 @@ std::shared_ptr<Entity> CiscoEtherlikeExtMib::Ceedot3Pauseexttable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoEtherlikeExtMib::Ceedot3Pauseexttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceedot3pauseextentry_)
+    for (auto const & c : ceedot3pauseextentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEtherlikeExtMib::Ceedot3Paus
     return children;
 }
 
-void CiscoEtherlikeExtMib::Ceedot3Pauseexttable::set_value(const std::string & value_path, std::string value)
+void CiscoEtherlikeExtMib::Ceedot3Pauseexttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEtherlikeExtMib::Ceedot3Pauseexttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEtherlikeExtMib::Ceedot3Pauseexttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceeDot3PauseExtEntry")
+        return true;
+    return false;
 }
 
 CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::Ceedot3Pauseextentry()
@@ -245,10 +274,10 @@ bool CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::has_data(
 
 bool CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot3statsindex.operation)
-	|| is_set(ceedot3pauseextadminmode.operation)
-	|| is_set(ceedot3pauseextopermode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dot3statsindex.yfilter)
+	|| ydk::is_set(ceedot3pauseextadminmode.yfilter)
+	|| ydk::is_set(ceedot3pauseextopermode.yfilter);
 }
 
 std::string CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::get_segment_path() const
@@ -274,9 +303,9 @@ const EntityPath CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot3statsindex.is_set || is_set(dot3statsindex.operation)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
-    if (ceedot3pauseextadminmode.is_set || is_set(ceedot3pauseextadminmode.operation)) leaf_name_data.push_back(ceedot3pauseextadminmode.get_name_leafdata());
-    if (ceedot3pauseextopermode.is_set || is_set(ceedot3pauseextopermode.operation)) leaf_name_data.push_back(ceedot3pauseextopermode.get_name_leafdata());
+    if (dot3statsindex.is_set || is_set(dot3statsindex.yfilter)) leaf_name_data.push_back(dot3statsindex.get_name_leafdata());
+    if (ceedot3pauseextadminmode.is_set || is_set(ceedot3pauseextadminmode.yfilter)) leaf_name_data.push_back(ceedot3pauseextadminmode.get_name_leafdata());
+    if (ceedot3pauseextopermode.is_set || is_set(ceedot3pauseextopermode.yfilter)) leaf_name_data.push_back(ceedot3pauseextopermode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -295,11 +324,13 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEtherlikeExtMib::Ceedot3Paus
     return children;
 }
 
-void CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::set_value(const std::string & value_path, std::string value)
+void CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
         dot3statsindex = value;
+        dot3statsindex.value_namespace = name_space;
+        dot3statsindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceeDot3PauseExtAdminMode")
     {
@@ -309,6 +340,29 @@ void CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::set_value
     {
         ceedot3pauseextopermode[value] = true;
     }
+}
+
+void CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot3StatsIndex")
+    {
+        dot3statsindex.yfilter = yfilter;
+    }
+    if(value_path == "ceeDot3PauseExtAdminMode")
+    {
+        ceedot3pauseextadminmode.yfilter = yfilter;
+    }
+    if(value_path == "ceeDot3PauseExtOperMode")
+    {
+        ceedot3pauseextopermode.yfilter = yfilter;
+    }
+}
+
+bool CiscoEtherlikeExtMib::Ceedot3Pauseexttable::Ceedot3Pauseextentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot3StatsIndex" || name == "ceeDot3PauseExtAdminMode" || name == "ceeDot3PauseExtOperMode")
+        return true;
+    return false;
 }
 
 CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfacetable()
@@ -322,9 +376,9 @@ CiscoEtherlikeExtMib::Ceesubinterfacetable::~Ceesubinterfacetable()
 
 bool CiscoEtherlikeExtMib::Ceesubinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<ceesubinterfaceentry_.size(); index++)
+    for (std::size_t index=0; index<ceesubinterfaceentry.size(); index++)
     {
-        if(ceesubinterfaceentry_[index]->has_data())
+        if(ceesubinterfaceentry[index]->has_data())
             return true;
     }
     return false;
@@ -332,12 +386,12 @@ bool CiscoEtherlikeExtMib::Ceesubinterfacetable::has_data() const
 
 bool CiscoEtherlikeExtMib::Ceesubinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<ceesubinterfaceentry_.size(); index++)
+    for (std::size_t index=0; index<ceesubinterfaceentry.size(); index++)
     {
-        if(ceesubinterfaceentry_[index]->has_operation())
+        if(ceesubinterfaceentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEtherlikeExtMib::Ceesubinterfacetable::get_segment_path() const
@@ -374,7 +428,7 @@ std::shared_ptr<Entity> CiscoEtherlikeExtMib::Ceesubinterfacetable::get_child_by
 {
     if(child_yang_name == "ceeSubInterfaceEntry")
     {
-        for(auto const & c : ceesubinterfaceentry_)
+        for(auto const & c : ceesubinterfaceentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -384,7 +438,7 @@ std::shared_ptr<Entity> CiscoEtherlikeExtMib::Ceesubinterfacetable::get_child_by
         }
         auto c = std::make_shared<CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry>();
         c->parent = this;
-        ceesubinterfaceentry_.push_back(c);
+        ceesubinterfaceentry.push_back(c);
         return c;
     }
 
@@ -394,7 +448,7 @@ std::shared_ptr<Entity> CiscoEtherlikeExtMib::Ceesubinterfacetable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoEtherlikeExtMib::Ceesubinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceesubinterfaceentry_)
+    for (auto const & c : ceesubinterfaceentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -402,8 +456,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEtherlikeExtMib::Ceesubinter
     return children;
 }
 
-void CiscoEtherlikeExtMib::Ceesubinterfacetable::set_value(const std::string & value_path, std::string value)
+void CiscoEtherlikeExtMib::Ceesubinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEtherlikeExtMib::Ceesubinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEtherlikeExtMib::Ceesubinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceeSubInterfaceEntry")
+        return true;
+    return false;
 }
 
 CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry::Ceesubinterfaceentry()
@@ -426,9 +491,9 @@ bool CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry::has_data(
 
 bool CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(ceesubinterfacecount.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(ceesubinterfacecount.yfilter);
 }
 
 std::string CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry::get_segment_path() const
@@ -454,8 +519,8 @@ const EntityPath CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (ceesubinterfacecount.is_set || is_set(ceesubinterfacecount.operation)) leaf_name_data.push_back(ceesubinterfacecount.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (ceesubinterfacecount.is_set || is_set(ceesubinterfacecount.yfilter)) leaf_name_data.push_back(ceesubinterfacecount.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -474,16 +539,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEtherlikeExtMib::Ceesubinter
     return children;
 }
 
-void CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry::set_value(const std::string & value_path, std::string value)
+void CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceeSubInterfaceCount")
     {
         ceesubinterfacecount = value;
+        ceesubinterfacecount.value_namespace = name_space;
+        ceesubinterfacecount.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "ceeSubInterfaceCount")
+    {
+        ceesubinterfacecount.yfilter = yfilter;
+    }
+}
+
+bool CiscoEtherlikeExtMib::Ceesubinterfacetable::Ceesubinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "ceeSubInterfaceCount")
+        return true;
+    return false;
 }
 
 

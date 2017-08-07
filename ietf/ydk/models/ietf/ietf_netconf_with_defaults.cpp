@@ -6,13 +6,15 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_netconf_with_defaults.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_netconf_with_defaults {
 
-const Enum::YLeaf WithDefaultsModeEnum::report_all {0, "report-all"};
-const Enum::YLeaf WithDefaultsModeEnum::report_all_tagged {1, "report-all-tagged"};
-const Enum::YLeaf WithDefaultsModeEnum::trim {2, "trim"};
-const Enum::YLeaf WithDefaultsModeEnum::explicit_ {3, "explicit"};
+const Enum::YLeaf WithDefaultsMode::report_all {0, "report-all"};
+const Enum::YLeaf WithDefaultsMode::report_all_tagged {1, "report-all-tagged"};
+const Enum::YLeaf WithDefaultsMode::trim {2, "trim"};
+const Enum::YLeaf WithDefaultsMode::explicit_ {3, "explicit"};
 
 
 }

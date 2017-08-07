@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_l2_eth_infra_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2_eth_infra_cfg {
 
 EthernetFeatures::EthernetFeatures()
@@ -37,7 +39,7 @@ bool EthernetFeatures::has_data() const
 
 bool EthernetFeatures::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (cfm !=  nullptr && cfm->has_operation())
 	|| (egress_filtering !=  nullptr && egress_filtering->has_operation())
 	|| (ether_link_oam !=  nullptr && ether_link_oam->has_operation());
@@ -123,7 +125,11 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::get_children() 
     return children;
 }
 
-void EthernetFeatures::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EthernetFeatures::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -147,6 +153,18 @@ augment_capabilities_function EthernetFeatures::get_augment_capabilities_functio
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> EthernetFeatures::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EthernetFeatures::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cfm" || name == "egress-filtering" || name == "ether-link-oam")
+        return true;
+    return false;
+}
+
 EthernetFeatures::EgressFiltering::EgressFiltering()
     :
     egress_filtering_default_on{YType::empty, "egress-filtering-default-on"}
@@ -165,8 +183,8 @@ bool EthernetFeatures::EgressFiltering::has_data() const
 
 bool EthernetFeatures::EgressFiltering::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(egress_filtering_default_on.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(egress_filtering_default_on.yfilter);
 }
 
 std::string EthernetFeatures::EgressFiltering::get_segment_path() const
@@ -192,7 +210,7 @@ const EntityPath EthernetFeatures::EgressFiltering::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (egress_filtering_default_on.is_set || is_set(egress_filtering_default_on.operation)) leaf_name_data.push_back(egress_filtering_default_on.get_name_leafdata());
+    if (egress_filtering_default_on.is_set || is_set(egress_filtering_default_on.yfilter)) leaf_name_data.push_back(egress_filtering_default_on.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -211,12 +229,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EgressFiltering
     return children;
 }
 
-void EthernetFeatures::EgressFiltering::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EgressFiltering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "egress-filtering-default-on")
     {
         egress_filtering_default_on = value;
+        egress_filtering_default_on.value_namespace = name_space;
+        egress_filtering_default_on.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EgressFiltering::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "egress-filtering-default-on")
+    {
+        egress_filtering_default_on.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EgressFiltering::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress-filtering-default-on")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Cfm()
@@ -246,8 +281,8 @@ bool EthernetFeatures::Cfm::has_data() const
 
 bool EthernetFeatures::Cfm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nv_satellite_sla_processing_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(nv_satellite_sla_processing_disable.yfilter)
 	|| (domains !=  nullptr && domains->has_operation())
 	|| (traceroute_cache !=  nullptr && traceroute_cache->has_operation());
 }
@@ -275,7 +310,7 @@ const EntityPath EthernetFeatures::Cfm::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nv_satellite_sla_processing_disable.is_set || is_set(nv_satellite_sla_processing_disable.operation)) leaf_name_data.push_back(nv_satellite_sla_processing_disable.get_name_leafdata());
+    if (nv_satellite_sla_processing_disable.is_set || is_set(nv_satellite_sla_processing_disable.yfilter)) leaf_name_data.push_back(nv_satellite_sla_processing_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -322,12 +357,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::get_childr
     return children;
 }
 
-void EthernetFeatures::Cfm::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nv-satellite-sla-processing-disable")
     {
         nv_satellite_sla_processing_disable = value;
+        nv_satellite_sla_processing_disable.value_namespace = name_space;
+        nv_satellite_sla_processing_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nv-satellite-sla-processing-disable")
+    {
+        nv_satellite_sla_processing_disable.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "domains" || name == "traceroute-cache" || name == "nv-satellite-sla-processing-disable")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::TracerouteCache::TracerouteCache()
@@ -350,9 +402,9 @@ bool EthernetFeatures::Cfm::TracerouteCache::has_data() const
 
 bool EthernetFeatures::Cfm::TracerouteCache::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cache_size.operation)
-	|| is_set(hold_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cache_size.yfilter)
+	|| ydk::is_set(hold_time.yfilter);
 }
 
 std::string EthernetFeatures::Cfm::TracerouteCache::get_segment_path() const
@@ -378,8 +430,8 @@ const EntityPath EthernetFeatures::Cfm::TracerouteCache::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cache_size.is_set || is_set(cache_size.operation)) leaf_name_data.push_back(cache_size.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (cache_size.is_set || is_set(cache_size.yfilter)) leaf_name_data.push_back(cache_size.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -398,16 +450,39 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Traceroute
     return children;
 }
 
-void EthernetFeatures::Cfm::TracerouteCache::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::TracerouteCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-size")
     {
         cache_size = value;
+        cache_size.value_namespace = name_space;
+        cache_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::TracerouteCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-size")
+    {
+        cache_size.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::TracerouteCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-size" || name == "hold-time")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domains()
@@ -436,7 +511,7 @@ bool EthernetFeatures::Cfm::Domains::has_operation() const
         if(domain[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::get_segment_path() const
@@ -501,8 +576,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::g
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetFeatures::Cfm::Domains::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetFeatures::Cfm::Domains::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "domain")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Domain()
@@ -532,8 +618,8 @@ bool EthernetFeatures::Cfm::Domains::Domain::has_data() const
 
 bool EthernetFeatures::Cfm::Domains::Domain::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(domain.yfilter)
 	|| (domain_properties !=  nullptr && domain_properties->has_operation())
 	|| (services !=  nullptr && services->has_operation());
 }
@@ -561,7 +647,7 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain.is_set || is_set(domain.operation)) leaf_name_data.push_back(domain.get_name_leafdata());
+    if (domain.is_set || is_set(domain.yfilter)) leaf_name_data.push_back(domain.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -608,12 +694,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "domain")
     {
         domain = value;
+        domain.value_namespace = name_space;
+        domain.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "domain")
+    {
+        domain.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "domain-properties" || name == "services" || name == "domain")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Services()
@@ -642,7 +745,7 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::has_operation() const
         if(service[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::get_segment_path() const
@@ -707,8 +810,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::Service()
@@ -764,17 +878,17 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::has_data() const
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(service.operation)
-	|| is_set(continuity_check_archive_hold_time.operation)
-	|| is_set(continuity_check_auto_traceroute.operation)
-	|| is_set(log_ais.operation)
-	|| is_set(log_continuity_check_errors.operation)
-	|| is_set(log_continuity_check_state_changes.operation)
-	|| is_set(log_cross_check_errors.operation)
-	|| is_set(log_efd.operation)
-	|| is_set(maximum_meps.operation)
-	|| is_set(tags.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(service.yfilter)
+	|| ydk::is_set(continuity_check_archive_hold_time.yfilter)
+	|| ydk::is_set(continuity_check_auto_traceroute.yfilter)
+	|| ydk::is_set(log_ais.yfilter)
+	|| ydk::is_set(log_continuity_check_errors.yfilter)
+	|| ydk::is_set(log_continuity_check_state_changes.yfilter)
+	|| ydk::is_set(log_cross_check_errors.yfilter)
+	|| ydk::is_set(log_efd.yfilter)
+	|| ydk::is_set(maximum_meps.yfilter)
+	|| ydk::is_set(tags.yfilter)
 	|| (ais !=  nullptr && ais->has_operation())
 	|| (continuity_check_interval !=  nullptr && continuity_check_interval->has_operation())
 	|| (cross_check !=  nullptr && cross_check->has_operation())
@@ -806,16 +920,16 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
-    if (continuity_check_archive_hold_time.is_set || is_set(continuity_check_archive_hold_time.operation)) leaf_name_data.push_back(continuity_check_archive_hold_time.get_name_leafdata());
-    if (continuity_check_auto_traceroute.is_set || is_set(continuity_check_auto_traceroute.operation)) leaf_name_data.push_back(continuity_check_auto_traceroute.get_name_leafdata());
-    if (log_ais.is_set || is_set(log_ais.operation)) leaf_name_data.push_back(log_ais.get_name_leafdata());
-    if (log_continuity_check_errors.is_set || is_set(log_continuity_check_errors.operation)) leaf_name_data.push_back(log_continuity_check_errors.get_name_leafdata());
-    if (log_continuity_check_state_changes.is_set || is_set(log_continuity_check_state_changes.operation)) leaf_name_data.push_back(log_continuity_check_state_changes.get_name_leafdata());
-    if (log_cross_check_errors.is_set || is_set(log_cross_check_errors.operation)) leaf_name_data.push_back(log_cross_check_errors.get_name_leafdata());
-    if (log_efd.is_set || is_set(log_efd.operation)) leaf_name_data.push_back(log_efd.get_name_leafdata());
-    if (maximum_meps.is_set || is_set(maximum_meps.operation)) leaf_name_data.push_back(maximum_meps.get_name_leafdata());
-    if (tags.is_set || is_set(tags.operation)) leaf_name_data.push_back(tags.get_name_leafdata());
+    if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (continuity_check_archive_hold_time.is_set || is_set(continuity_check_archive_hold_time.yfilter)) leaf_name_data.push_back(continuity_check_archive_hold_time.get_name_leafdata());
+    if (continuity_check_auto_traceroute.is_set || is_set(continuity_check_auto_traceroute.yfilter)) leaf_name_data.push_back(continuity_check_auto_traceroute.get_name_leafdata());
+    if (log_ais.is_set || is_set(log_ais.yfilter)) leaf_name_data.push_back(log_ais.get_name_leafdata());
+    if (log_continuity_check_errors.is_set || is_set(log_continuity_check_errors.yfilter)) leaf_name_data.push_back(log_continuity_check_errors.get_name_leafdata());
+    if (log_continuity_check_state_changes.is_set || is_set(log_continuity_check_state_changes.yfilter)) leaf_name_data.push_back(log_continuity_check_state_changes.get_name_leafdata());
+    if (log_cross_check_errors.is_set || is_set(log_cross_check_errors.yfilter)) leaf_name_data.push_back(log_cross_check_errors.get_name_leafdata());
+    if (log_efd.is_set || is_set(log_efd.yfilter)) leaf_name_data.push_back(log_efd.get_name_leafdata());
+    if (maximum_meps.is_set || is_set(maximum_meps.yfilter)) leaf_name_data.push_back(maximum_meps.get_name_leafdata());
+    if (tags.is_set || is_set(tags.yfilter)) leaf_name_data.push_back(tags.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -918,48 +1032,119 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "service")
     {
         service = value;
+        service.value_namespace = name_space;
+        service.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "continuity-check-archive-hold-time")
     {
         continuity_check_archive_hold_time = value;
+        continuity_check_archive_hold_time.value_namespace = name_space;
+        continuity_check_archive_hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "continuity-check-auto-traceroute")
     {
         continuity_check_auto_traceroute = value;
+        continuity_check_auto_traceroute.value_namespace = name_space;
+        continuity_check_auto_traceroute.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-ais")
     {
         log_ais = value;
+        log_ais.value_namespace = name_space;
+        log_ais.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-continuity-check-errors")
     {
         log_continuity_check_errors = value;
+        log_continuity_check_errors.value_namespace = name_space;
+        log_continuity_check_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-continuity-check-state-changes")
     {
         log_continuity_check_state_changes = value;
+        log_continuity_check_state_changes.value_namespace = name_space;
+        log_continuity_check_state_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-cross-check-errors")
     {
         log_cross_check_errors = value;
+        log_cross_check_errors.value_namespace = name_space;
+        log_cross_check_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-efd")
     {
         log_efd = value;
+        log_efd.value_namespace = name_space;
+        log_efd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-meps")
     {
         maximum_meps = value;
+        maximum_meps.value_namespace = name_space;
+        maximum_meps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tags")
     {
         tags = value;
+        tags.value_namespace = name_space;
+        tags.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service")
+    {
+        service.yfilter = yfilter;
+    }
+    if(value_path == "continuity-check-archive-hold-time")
+    {
+        continuity_check_archive_hold_time.yfilter = yfilter;
+    }
+    if(value_path == "continuity-check-auto-traceroute")
+    {
+        continuity_check_auto_traceroute.yfilter = yfilter;
+    }
+    if(value_path == "log-ais")
+    {
+        log_ais.yfilter = yfilter;
+    }
+    if(value_path == "log-continuity-check-errors")
+    {
+        log_continuity_check_errors.yfilter = yfilter;
+    }
+    if(value_path == "log-continuity-check-state-changes")
+    {
+        log_continuity_check_state_changes.yfilter = yfilter;
+    }
+    if(value_path == "log-cross-check-errors")
+    {
+        log_cross_check_errors.yfilter = yfilter;
+    }
+    if(value_path == "log-efd")
+    {
+        log_efd.yfilter = yfilter;
+    }
+    if(value_path == "maximum-meps")
+    {
+        maximum_meps.yfilter = yfilter;
+    }
+    if(value_path == "tags")
+    {
+        tags.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ais" || name == "continuity-check-interval" || name == "cross-check" || name == "efd2" || name == "mip-auto-creation" || name == "service-properties" || name == "service" || name == "continuity-check-archive-hold-time" || name == "continuity-check-auto-traceroute" || name == "log-ais" || name == "log-continuity-check-errors" || name == "log-continuity-check-state-changes" || name == "log-cross-check-errors" || name == "log-efd" || name == "maximum-meps" || name == "tags")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::Efd2()
@@ -982,9 +1167,9 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::has_data()
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(protection_switching_enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(protection_switching_enable.yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_segment_path() const
@@ -1010,8 +1195,8 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (protection_switching_enable.is_set || is_set(protection_switching_enable.operation)) leaf_name_data.push_back(protection_switching_enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (protection_switching_enable.is_set || is_set(protection_switching_enable.yfilter)) leaf_name_data.push_back(protection_switching_enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1030,16 +1215,39 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protection-switching-enable")
     {
         protection_switching_enable = value;
+        protection_switching_enable.value_namespace = name_space;
+        protection_switching_enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "protection-switching-enable")
+    {
+        protection_switching_enable.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "protection-switching-enable")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::ContinuityCheckInterval()
@@ -1062,9 +1270,9 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckI
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ccm_interval.operation)
-	|| is_set(loss_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ccm_interval.yfilter)
+	|| ydk::is_set(loss_threshold.yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::get_segment_path() const
@@ -1090,8 +1298,8 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Cont
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ccm_interval.is_set || is_set(ccm_interval.operation)) leaf_name_data.push_back(ccm_interval.get_name_leafdata());
-    if (loss_threshold.is_set || is_set(loss_threshold.operation)) leaf_name_data.push_back(loss_threshold.get_name_leafdata());
+    if (ccm_interval.is_set || is_set(ccm_interval.yfilter)) leaf_name_data.push_back(ccm_interval.get_name_leafdata());
+    if (loss_threshold.is_set || is_set(loss_threshold.yfilter)) leaf_name_data.push_back(loss_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1110,16 +1318,39 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccm-interval")
     {
         ccm_interval = value;
+        ccm_interval.value_namespace = name_space;
+        ccm_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loss-threshold")
     {
         loss_threshold = value;
+        loss_threshold.value_namespace = name_space;
+        loss_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ccm-interval")
+    {
+        ccm_interval.yfilter = yfilter;
+    }
+    if(value_path == "loss-threshold")
+    {
+        loss_threshold.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccm-interval" || name == "loss-threshold")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::MipAutoCreation()
@@ -1142,9 +1373,9 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation:
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ccm_learning_enable.operation)
-	|| is_set(mip_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ccm_learning_enable.yfilter)
+	|| ydk::is_set(mip_policy.yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::get_segment_path() const
@@ -1170,8 +1401,8 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipA
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ccm_learning_enable.is_set || is_set(ccm_learning_enable.operation)) leaf_name_data.push_back(ccm_learning_enable.get_name_leafdata());
-    if (mip_policy.is_set || is_set(mip_policy.operation)) leaf_name_data.push_back(mip_policy.get_name_leafdata());
+    if (ccm_learning_enable.is_set || is_set(ccm_learning_enable.yfilter)) leaf_name_data.push_back(ccm_learning_enable.get_name_leafdata());
+    if (mip_policy.is_set || is_set(mip_policy.yfilter)) leaf_name_data.push_back(mip_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1190,16 +1421,39 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccm-learning-enable")
     {
         ccm_learning_enable = value;
+        ccm_learning_enable.value_namespace = name_space;
+        ccm_learning_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mip-policy")
     {
         mip_policy = value;
+        mip_policy.value_namespace = name_space;
+        mip_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ccm-learning-enable")
+    {
+        ccm_learning_enable.yfilter = yfilter;
+    }
+    if(value_path == "mip-policy")
+    {
+        mip_policy.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ccm-learning-enable" || name == "mip-policy")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Ais()
@@ -1220,7 +1474,7 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::has_data() 
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (transmission !=  nullptr && transmission->has_operation());
 }
 
@@ -1279,8 +1533,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transmission")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::Transmission()
@@ -1303,9 +1568,9 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmissio
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ais_interval.operation)
-	|| is_set(cos.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ais_interval.yfilter)
+	|| ydk::is_set(cos.yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::get_segment_path() const
@@ -1331,8 +1596,8 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ais_interval.is_set || is_set(ais_interval.operation)) leaf_name_data.push_back(ais_interval.get_name_leafdata());
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (ais_interval.is_set || is_set(ais_interval.yfilter)) leaf_name_data.push_back(ais_interval.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1351,16 +1616,39 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ais-interval")
     {
         ais_interval = value;
+        ais_interval.value_namespace = name_space;
+        ais_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ais-interval")
+    {
+        ais_interval.yfilter = yfilter;
+    }
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ais-interval" || name == "cos")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheck()
@@ -1386,8 +1674,8 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::has_
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(auto_.yfilter)
 	|| (cross_check_meps !=  nullptr && cross_check_meps->has_operation());
 }
 
@@ -1414,7 +1702,7 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Cros
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_.is_set || is_set(auto_.operation)) leaf_name_data.push_back(auto_.get_name_leafdata());
+    if (auto_.is_set || is_set(auto_.yfilter)) leaf_name_data.push_back(auto_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1447,12 +1735,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto")
     {
         auto_ = value;
+        auto_.value_namespace = name_space;
+        auto_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto")
+    {
+        auto_.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cross-check-meps" || name == "auto")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMeps()
@@ -1481,7 +1786,7 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cros
         if(cross_check_mep[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::get_segment_path() const
@@ -1546,8 +1851,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cross-check-mep")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::CrossCheckMep()
@@ -1572,10 +1888,10 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cros
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mep_id.operation)
-	|| is_set(enable_mac_address.operation)
-	|| is_set(mac_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mep_id.yfilter)
+	|| ydk::is_set(enable_mac_address.yfilter)
+	|| ydk::is_set(mac_address.yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_segment_path() const
@@ -1601,9 +1917,9 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Cros
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
-    if (enable_mac_address.is_set || is_set(enable_mac_address.operation)) leaf_name_data.push_back(enable_mac_address.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.yfilter)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (enable_mac_address.is_set || is_set(enable_mac_address.yfilter)) leaf_name_data.push_back(enable_mac_address.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1622,20 +1938,49 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mep-id")
     {
         mep_id = value;
+        mep_id.value_namespace = name_space;
+        mep_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-mac-address")
     {
         enable_mac_address = value;
+        enable_mac_address.value_namespace = name_space;
+        enable_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mep-id")
+    {
+        mep_id.yfilter = yfilter;
+    }
+    if(value_path == "enable-mac-address")
+    {
+        enable_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mep-id" || name == "enable-mac-address" || name == "mac-address")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::ServiceProperties()
@@ -1678,19 +2023,19 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServicePropertie
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ce_id.operation)
-	|| is_set(group_name.operation)
-	|| is_set(remote_ce_id.operation)
-	|| is_set(service_type.operation)
-	|| is_set(short_ma_name_format.operation)
-	|| is_set(short_ma_name_icc.operation)
-	|| is_set(short_ma_name_number.operation)
-	|| is_set(short_ma_name_oui.operation)
-	|| is_set(short_ma_name_string.operation)
-	|| is_set(short_ma_name_umc.operation)
-	|| is_set(short_ma_name_vpn_index.operation)
-	|| is_set(switching_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ce_id.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(remote_ce_id.yfilter)
+	|| ydk::is_set(service_type.yfilter)
+	|| ydk::is_set(short_ma_name_format.yfilter)
+	|| ydk::is_set(short_ma_name_icc.yfilter)
+	|| ydk::is_set(short_ma_name_number.yfilter)
+	|| ydk::is_set(short_ma_name_oui.yfilter)
+	|| ydk::is_set(short_ma_name_string.yfilter)
+	|| ydk::is_set(short_ma_name_umc.yfilter)
+	|| ydk::is_set(short_ma_name_vpn_index.yfilter)
+	|| ydk::is_set(switching_name.yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::get_segment_path() const
@@ -1716,18 +2061,18 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Serv
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ce_id.is_set || is_set(ce_id.operation)) leaf_name_data.push_back(ce_id.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (remote_ce_id.is_set || is_set(remote_ce_id.operation)) leaf_name_data.push_back(remote_ce_id.get_name_leafdata());
-    if (service_type.is_set || is_set(service_type.operation)) leaf_name_data.push_back(service_type.get_name_leafdata());
-    if (short_ma_name_format.is_set || is_set(short_ma_name_format.operation)) leaf_name_data.push_back(short_ma_name_format.get_name_leafdata());
-    if (short_ma_name_icc.is_set || is_set(short_ma_name_icc.operation)) leaf_name_data.push_back(short_ma_name_icc.get_name_leafdata());
-    if (short_ma_name_number.is_set || is_set(short_ma_name_number.operation)) leaf_name_data.push_back(short_ma_name_number.get_name_leafdata());
-    if (short_ma_name_oui.is_set || is_set(short_ma_name_oui.operation)) leaf_name_data.push_back(short_ma_name_oui.get_name_leafdata());
-    if (short_ma_name_string.is_set || is_set(short_ma_name_string.operation)) leaf_name_data.push_back(short_ma_name_string.get_name_leafdata());
-    if (short_ma_name_umc.is_set || is_set(short_ma_name_umc.operation)) leaf_name_data.push_back(short_ma_name_umc.get_name_leafdata());
-    if (short_ma_name_vpn_index.is_set || is_set(short_ma_name_vpn_index.operation)) leaf_name_data.push_back(short_ma_name_vpn_index.get_name_leafdata());
-    if (switching_name.is_set || is_set(switching_name.operation)) leaf_name_data.push_back(switching_name.get_name_leafdata());
+    if (ce_id.is_set || is_set(ce_id.yfilter)) leaf_name_data.push_back(ce_id.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (remote_ce_id.is_set || is_set(remote_ce_id.yfilter)) leaf_name_data.push_back(remote_ce_id.get_name_leafdata());
+    if (service_type.is_set || is_set(service_type.yfilter)) leaf_name_data.push_back(service_type.get_name_leafdata());
+    if (short_ma_name_format.is_set || is_set(short_ma_name_format.yfilter)) leaf_name_data.push_back(short_ma_name_format.get_name_leafdata());
+    if (short_ma_name_icc.is_set || is_set(short_ma_name_icc.yfilter)) leaf_name_data.push_back(short_ma_name_icc.get_name_leafdata());
+    if (short_ma_name_number.is_set || is_set(short_ma_name_number.yfilter)) leaf_name_data.push_back(short_ma_name_number.get_name_leafdata());
+    if (short_ma_name_oui.is_set || is_set(short_ma_name_oui.yfilter)) leaf_name_data.push_back(short_ma_name_oui.get_name_leafdata());
+    if (short_ma_name_string.is_set || is_set(short_ma_name_string.yfilter)) leaf_name_data.push_back(short_ma_name_string.get_name_leafdata());
+    if (short_ma_name_umc.is_set || is_set(short_ma_name_umc.yfilter)) leaf_name_data.push_back(short_ma_name_umc.get_name_leafdata());
+    if (short_ma_name_vpn_index.is_set || is_set(short_ma_name_vpn_index.yfilter)) leaf_name_data.push_back(short_ma_name_vpn_index.get_name_leafdata());
+    if (switching_name.is_set || is_set(switching_name.yfilter)) leaf_name_data.push_back(switching_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1746,56 +2091,139 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ce-id")
     {
         ce_id = value;
+        ce_id.value_namespace = name_space;
+        ce_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-ce-id")
     {
         remote_ce_id = value;
+        remote_ce_id.value_namespace = name_space;
+        remote_ce_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-type")
     {
         service_type = value;
+        service_type.value_namespace = name_space;
+        service_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "short-ma-name-format")
     {
         short_ma_name_format = value;
+        short_ma_name_format.value_namespace = name_space;
+        short_ma_name_format.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "short-ma-name-icc")
     {
         short_ma_name_icc = value;
+        short_ma_name_icc.value_namespace = name_space;
+        short_ma_name_icc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "short-ma-name-number")
     {
         short_ma_name_number = value;
+        short_ma_name_number.value_namespace = name_space;
+        short_ma_name_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "short-ma-name-oui")
     {
         short_ma_name_oui = value;
+        short_ma_name_oui.value_namespace = name_space;
+        short_ma_name_oui.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "short-ma-name-string")
     {
         short_ma_name_string = value;
+        short_ma_name_string.value_namespace = name_space;
+        short_ma_name_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "short-ma-name-umc")
     {
         short_ma_name_umc = value;
+        short_ma_name_umc.value_namespace = name_space;
+        short_ma_name_umc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "short-ma-name-vpn-index")
     {
         short_ma_name_vpn_index = value;
+        short_ma_name_vpn_index.value_namespace = name_space;
+        short_ma_name_vpn_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switching-name")
     {
         switching_name = value;
+        switching_name.value_namespace = name_space;
+        switching_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ce-id")
+    {
+        ce_id.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "remote-ce-id")
+    {
+        remote_ce_id.yfilter = yfilter;
+    }
+    if(value_path == "service-type")
+    {
+        service_type.yfilter = yfilter;
+    }
+    if(value_path == "short-ma-name-format")
+    {
+        short_ma_name_format.yfilter = yfilter;
+    }
+    if(value_path == "short-ma-name-icc")
+    {
+        short_ma_name_icc.yfilter = yfilter;
+    }
+    if(value_path == "short-ma-name-number")
+    {
+        short_ma_name_number.yfilter = yfilter;
+    }
+    if(value_path == "short-ma-name-oui")
+    {
+        short_ma_name_oui.yfilter = yfilter;
+    }
+    if(value_path == "short-ma-name-string")
+    {
+        short_ma_name_string.yfilter = yfilter;
+    }
+    if(value_path == "short-ma-name-umc")
+    {
+        short_ma_name_umc.yfilter = yfilter;
+    }
+    if(value_path == "short-ma-name-vpn-index")
+    {
+        short_ma_name_vpn_index.yfilter = yfilter;
+    }
+    if(value_path == "switching-name")
+    {
+        switching_name.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ce-id" || name == "group-name" || name == "remote-ce-id" || name == "service-type" || name == "short-ma-name-format" || name == "short-ma-name-icc" || name == "short-ma-name-number" || name == "short-ma-name-oui" || name == "short-ma-name-string" || name == "short-ma-name-umc" || name == "short-ma-name-vpn-index" || name == "switching-name")
+        return true;
+    return false;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::DomainProperties::DomainProperties()
@@ -1824,12 +2252,12 @@ bool EthernetFeatures::Cfm::Domains::Domain::DomainProperties::has_data() const
 
 bool EthernetFeatures::Cfm::Domains::Domain::DomainProperties::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(level.operation)
-	|| is_set(mdid_format.operation)
-	|| is_set(mdid_mac_address.operation)
-	|| is_set(mdid_number.operation)
-	|| is_set(mdid_string.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(mdid_format.yfilter)
+	|| ydk::is_set(mdid_mac_address.yfilter)
+	|| ydk::is_set(mdid_number.yfilter)
+	|| ydk::is_set(mdid_string.yfilter);
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_segment_path() const
@@ -1855,11 +2283,11 @@ const EntityPath EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (mdid_format.is_set || is_set(mdid_format.operation)) leaf_name_data.push_back(mdid_format.get_name_leafdata());
-    if (mdid_mac_address.is_set || is_set(mdid_mac_address.operation)) leaf_name_data.push_back(mdid_mac_address.get_name_leafdata());
-    if (mdid_number.is_set || is_set(mdid_number.operation)) leaf_name_data.push_back(mdid_number.get_name_leafdata());
-    if (mdid_string.is_set || is_set(mdid_string.operation)) leaf_name_data.push_back(mdid_string.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (mdid_format.is_set || is_set(mdid_format.yfilter)) leaf_name_data.push_back(mdid_format.get_name_leafdata());
+    if (mdid_mac_address.is_set || is_set(mdid_mac_address.yfilter)) leaf_name_data.push_back(mdid_mac_address.get_name_leafdata());
+    if (mdid_number.is_set || is_set(mdid_number.yfilter)) leaf_name_data.push_back(mdid_number.get_name_leafdata());
+    if (mdid_string.is_set || is_set(mdid_string.yfilter)) leaf_name_data.push_back(mdid_string.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1878,28 +2306,69 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     return children;
 }
 
-void EthernetFeatures::Cfm::Domains::Domain::DomainProperties::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::Cfm::Domains::Domain::DomainProperties::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
         level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mdid-format")
     {
         mdid_format = value;
+        mdid_format.value_namespace = name_space;
+        mdid_format.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mdid-mac-address")
     {
         mdid_mac_address = value;
+        mdid_mac_address.value_namespace = name_space;
+        mdid_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mdid-number")
     {
         mdid_number = value;
+        mdid_number.value_namespace = name_space;
+        mdid_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mdid-string")
     {
         mdid_string = value;
+        mdid_string.value_namespace = name_space;
+        mdid_string.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::Cfm::Domains::Domain::DomainProperties::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "mdid-format")
+    {
+        mdid_format.yfilter = yfilter;
+    }
+    if(value_path == "mdid-mac-address")
+    {
+        mdid_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mdid-number")
+    {
+        mdid_number.yfilter = yfilter;
+    }
+    if(value_path == "mdid-string")
+    {
+        mdid_string.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::Cfm::Domains::Domain::DomainProperties::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "mdid-format" || name == "mdid-mac-address" || name == "mdid-number" || name == "mdid-string")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::EtherLinkOam()
@@ -1922,7 +2391,7 @@ bool EthernetFeatures::EtherLinkOam::has_data() const
 
 bool EthernetFeatures::EtherLinkOam::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (profiles !=  nullptr && profiles->has_operation());
 }
 
@@ -1981,8 +2450,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::g
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetFeatures::EtherLinkOam::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetFeatures::EtherLinkOam::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profiles")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profiles()
@@ -2011,7 +2491,7 @@ bool EthernetFeatures::EtherLinkOam::Profiles::has_operation() const
         if(profile[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::get_segment_path() const
@@ -2076,8 +2556,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::Profile()
@@ -2123,14 +2614,14 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::has_data() const
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(mib_retrieval.operation)
-	|| is_set(mode.operation)
-	|| is_set(remote_loopback.operation)
-	|| is_set(timeout.operation)
-	|| is_set(udlf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(mib_retrieval.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(remote_loopback.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(udlf.yfilter)
 	|| (action !=  nullptr && action->has_operation())
 	|| (link_monitoring !=  nullptr && link_monitoring->has_operation())
 	|| (require_remote !=  nullptr && require_remote->has_operation());
@@ -2159,13 +2650,13 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (mib_retrieval.is_set || is_set(mib_retrieval.operation)) leaf_name_data.push_back(mib_retrieval.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (remote_loopback.is_set || is_set(remote_loopback.operation)) leaf_name_data.push_back(remote_loopback.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (udlf.is_set || is_set(udlf.operation)) leaf_name_data.push_back(udlf.get_name_leafdata());
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (mib_retrieval.is_set || is_set(mib_retrieval.yfilter)) leaf_name_data.push_back(mib_retrieval.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (remote_loopback.is_set || is_set(remote_loopback.yfilter)) leaf_name_data.push_back(remote_loopback.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (udlf.is_set || is_set(udlf.yfilter)) leaf_name_data.push_back(udlf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2226,36 +2717,89 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile")
     {
         profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mib-retrieval")
     {
         mib_retrieval = value;
+        mib_retrieval.value_namespace = name_space;
+        mib_retrieval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback")
     {
         remote_loopback = value;
+        remote_loopback.value_namespace = name_space;
+        remote_loopback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udlf")
     {
         udlf = value;
+        udlf.value_namespace = name_space;
+        udlf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "mib-retrieval")
+    {
+        mib_retrieval.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback")
+    {
+        remote_loopback.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "udlf")
+    {
+        udlf.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action" || name == "link-monitoring" || name == "require-remote" || name == "profile" || name == "hello-interval" || name == "mib-retrieval" || name == "mode" || name == "remote-loopback" || name == "timeout" || name == "udlf")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::Action()
@@ -2294,17 +2838,17 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::has_data() const
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(capabilities_conflict.operation)
-	|| is_set(critical_event.operation)
-	|| is_set(discovery_timeout.operation)
-	|| is_set(dying_gasp.operation)
-	|| is_set(high_threshold.operation)
-	|| is_set(link_fault.operation)
-	|| is_set(remote_loopback.operation)
-	|| is_set(session_down.operation)
-	|| is_set(session_up.operation)
-	|| is_set(wiring_conflict.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(capabilities_conflict.yfilter)
+	|| ydk::is_set(critical_event.yfilter)
+	|| ydk::is_set(discovery_timeout.yfilter)
+	|| ydk::is_set(dying_gasp.yfilter)
+	|| ydk::is_set(high_threshold.yfilter)
+	|| ydk::is_set(link_fault.yfilter)
+	|| ydk::is_set(remote_loopback.yfilter)
+	|| ydk::is_set(session_down.yfilter)
+	|| ydk::is_set(session_up.yfilter)
+	|| ydk::is_set(wiring_conflict.yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_segment_path() const
@@ -2330,16 +2874,16 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (capabilities_conflict.is_set || is_set(capabilities_conflict.operation)) leaf_name_data.push_back(capabilities_conflict.get_name_leafdata());
-    if (critical_event.is_set || is_set(critical_event.operation)) leaf_name_data.push_back(critical_event.get_name_leafdata());
-    if (discovery_timeout.is_set || is_set(discovery_timeout.operation)) leaf_name_data.push_back(discovery_timeout.get_name_leafdata());
-    if (dying_gasp.is_set || is_set(dying_gasp.operation)) leaf_name_data.push_back(dying_gasp.get_name_leafdata());
-    if (high_threshold.is_set || is_set(high_threshold.operation)) leaf_name_data.push_back(high_threshold.get_name_leafdata());
-    if (link_fault.is_set || is_set(link_fault.operation)) leaf_name_data.push_back(link_fault.get_name_leafdata());
-    if (remote_loopback.is_set || is_set(remote_loopback.operation)) leaf_name_data.push_back(remote_loopback.get_name_leafdata());
-    if (session_down.is_set || is_set(session_down.operation)) leaf_name_data.push_back(session_down.get_name_leafdata());
-    if (session_up.is_set || is_set(session_up.operation)) leaf_name_data.push_back(session_up.get_name_leafdata());
-    if (wiring_conflict.is_set || is_set(wiring_conflict.operation)) leaf_name_data.push_back(wiring_conflict.get_name_leafdata());
+    if (capabilities_conflict.is_set || is_set(capabilities_conflict.yfilter)) leaf_name_data.push_back(capabilities_conflict.get_name_leafdata());
+    if (critical_event.is_set || is_set(critical_event.yfilter)) leaf_name_data.push_back(critical_event.get_name_leafdata());
+    if (discovery_timeout.is_set || is_set(discovery_timeout.yfilter)) leaf_name_data.push_back(discovery_timeout.get_name_leafdata());
+    if (dying_gasp.is_set || is_set(dying_gasp.yfilter)) leaf_name_data.push_back(dying_gasp.get_name_leafdata());
+    if (high_threshold.is_set || is_set(high_threshold.yfilter)) leaf_name_data.push_back(high_threshold.get_name_leafdata());
+    if (link_fault.is_set || is_set(link_fault.yfilter)) leaf_name_data.push_back(link_fault.get_name_leafdata());
+    if (remote_loopback.is_set || is_set(remote_loopback.yfilter)) leaf_name_data.push_back(remote_loopback.get_name_leafdata());
+    if (session_down.is_set || is_set(session_down.yfilter)) leaf_name_data.push_back(session_down.get_name_leafdata());
+    if (session_up.is_set || is_set(session_up.yfilter)) leaf_name_data.push_back(session_up.get_name_leafdata());
+    if (wiring_conflict.is_set || is_set(wiring_conflict.yfilter)) leaf_name_data.push_back(wiring_conflict.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2358,48 +2902,119 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "capabilities-conflict")
     {
         capabilities_conflict = value;
+        capabilities_conflict.value_namespace = name_space;
+        capabilities_conflict.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "critical-event")
     {
         critical_event = value;
+        critical_event.value_namespace = name_space;
+        critical_event.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discovery-timeout")
     {
         discovery_timeout = value;
+        discovery_timeout.value_namespace = name_space;
+        discovery_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dying-gasp")
     {
         dying_gasp = value;
+        dying_gasp.value_namespace = name_space;
+        dying_gasp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "high-threshold")
     {
         high_threshold = value;
+        high_threshold.value_namespace = name_space;
+        high_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-fault")
     {
         link_fault = value;
+        link_fault.value_namespace = name_space;
+        link_fault.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback")
     {
         remote_loopback = value;
+        remote_loopback.value_namespace = name_space;
+        remote_loopback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-down")
     {
         session_down = value;
+        session_down.value_namespace = name_space;
+        session_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-up")
     {
         session_up = value;
+        session_up.value_namespace = name_space;
+        session_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wiring-conflict")
     {
         wiring_conflict = value;
+        wiring_conflict.value_namespace = name_space;
+        wiring_conflict.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capabilities-conflict")
+    {
+        capabilities_conflict.yfilter = yfilter;
+    }
+    if(value_path == "critical-event")
+    {
+        critical_event.yfilter = yfilter;
+    }
+    if(value_path == "discovery-timeout")
+    {
+        discovery_timeout.yfilter = yfilter;
+    }
+    if(value_path == "dying-gasp")
+    {
+        dying_gasp.yfilter = yfilter;
+    }
+    if(value_path == "high-threshold")
+    {
+        high_threshold.yfilter = yfilter;
+    }
+    if(value_path == "link-fault")
+    {
+        link_fault.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback")
+    {
+        remote_loopback.yfilter = yfilter;
+    }
+    if(value_path == "session-down")
+    {
+        session_down.yfilter = yfilter;
+    }
+    if(value_path == "session-up")
+    {
+        session_up.yfilter = yfilter;
+    }
+    if(value_path == "wiring-conflict")
+    {
+        wiring_conflict.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capabilities-conflict" || name == "critical-event" || name == "discovery-timeout" || name == "dying-gasp" || name == "high-threshold" || name == "link-fault" || name == "remote-loopback" || name == "session-down" || name == "session-up" || name == "wiring-conflict")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::RequireRemote()
@@ -2426,11 +3041,11 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::has_data(
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(link_monitoring.operation)
-	|| is_set(mib_retrieval.operation)
-	|| is_set(mode.operation)
-	|| is_set(remote_loopback.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(link_monitoring.yfilter)
+	|| ydk::is_set(mib_retrieval.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(remote_loopback.yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get_segment_path() const
@@ -2456,10 +3071,10 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemot
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_monitoring.is_set || is_set(link_monitoring.operation)) leaf_name_data.push_back(link_monitoring.get_name_leafdata());
-    if (mib_retrieval.is_set || is_set(mib_retrieval.operation)) leaf_name_data.push_back(mib_retrieval.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (remote_loopback.is_set || is_set(remote_loopback.operation)) leaf_name_data.push_back(remote_loopback.get_name_leafdata());
+    if (link_monitoring.is_set || is_set(link_monitoring.yfilter)) leaf_name_data.push_back(link_monitoring.get_name_leafdata());
+    if (mib_retrieval.is_set || is_set(mib_retrieval.yfilter)) leaf_name_data.push_back(mib_retrieval.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (remote_loopback.is_set || is_set(remote_loopback.yfilter)) leaf_name_data.push_back(remote_loopback.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2478,24 +3093,59 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-monitoring")
     {
         link_monitoring = value;
+        link_monitoring.value_namespace = name_space;
+        link_monitoring.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mib-retrieval")
     {
         mib_retrieval = value;
+        mib_retrieval.value_namespace = name_space;
+        mib_retrieval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback")
     {
         remote_loopback = value;
+        remote_loopback.value_namespace = name_space;
+        remote_loopback.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-monitoring")
+    {
+        link_monitoring.yfilter = yfilter;
+    }
+    if(value_path == "mib-retrieval")
+    {
+        mib_retrieval.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback")
+    {
+        remote_loopback.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-monitoring" || name == "mib-retrieval" || name == "mode" || name == "remote-loopback")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::LinkMonitoring()
@@ -2533,8 +3183,8 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::has_data
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitoring.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(monitoring.yfilter)
 	|| (frame !=  nullptr && frame->has_operation())
 	|| (frame_period !=  nullptr && frame_period->has_operation())
 	|| (frame_seconds !=  nullptr && frame_seconds->has_operation())
@@ -2564,7 +3214,7 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitoring.is_set || is_set(monitoring.operation)) leaf_name_data.push_back(monitoring.get_name_leafdata());
+    if (monitoring.is_set || is_set(monitoring.yfilter)) leaf_name_data.push_back(monitoring.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2639,12 +3289,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitoring")
     {
         monitoring = value;
+        monitoring.value_namespace = name_space;
+        monitoring.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitoring")
+    {
+        monitoring.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frame" || name == "frame-period" || name == "frame-seconds" || name == "symbol-period" || name == "monitoring")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::SymbolPeriod()
@@ -2669,7 +3336,7 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPe
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation())
 	|| (window !=  nullptr && window->has_operation());
 }
@@ -2743,8 +3410,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::Window()
@@ -2769,10 +3447,10 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPe
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(multiplier.operation)
-	|| is_set(units.operation)
-	|| is_set(window.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(multiplier.yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(window.yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::get_segment_path() const
@@ -2798,9 +3476,9 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (multiplier.is_set || is_set(multiplier.operation)) leaf_name_data.push_back(multiplier.get_name_leafdata());
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (window.is_set || is_set(window.operation)) leaf_name_data.push_back(window.get_name_leafdata());
+    if (multiplier.is_set || is_set(multiplier.yfilter)) leaf_name_data.push_back(multiplier.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2819,20 +3497,49 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "multiplier")
     {
         multiplier = value;
+        multiplier.value_namespace = name_space;
+        multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "window")
     {
         window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multiplier")
+    {
+        multiplier.yfilter = yfilter;
+    }
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multiplier" || name == "units" || name == "window")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::Threshold()
@@ -2861,12 +3568,12 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPe
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(multiplier_high.operation)
-	|| is_set(multiplier_low.operation)
-	|| is_set(threshold_high.operation)
-	|| is_set(threshold_low.operation)
-	|| is_set(units.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(multiplier_high.yfilter)
+	|| ydk::is_set(multiplier_low.yfilter)
+	|| ydk::is_set(threshold_high.yfilter)
+	|| ydk::is_set(threshold_low.yfilter)
+	|| ydk::is_set(units.yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::get_segment_path() const
@@ -2892,11 +3599,11 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (multiplier_high.is_set || is_set(multiplier_high.operation)) leaf_name_data.push_back(multiplier_high.get_name_leafdata());
-    if (multiplier_low.is_set || is_set(multiplier_low.operation)) leaf_name_data.push_back(multiplier_low.get_name_leafdata());
-    if (threshold_high.is_set || is_set(threshold_high.operation)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
-    if (threshold_low.is_set || is_set(threshold_low.operation)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (multiplier_high.is_set || is_set(multiplier_high.yfilter)) leaf_name_data.push_back(multiplier_high.get_name_leafdata());
+    if (multiplier_low.is_set || is_set(multiplier_low.yfilter)) leaf_name_data.push_back(multiplier_low.get_name_leafdata());
+    if (threshold_high.is_set || is_set(threshold_high.yfilter)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
+    if (threshold_low.is_set || is_set(threshold_low.yfilter)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2915,28 +3622,69 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "multiplier-high")
     {
         multiplier_high = value;
+        multiplier_high.value_namespace = name_space;
+        multiplier_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multiplier-low")
     {
         multiplier_low = value;
+        multiplier_low.value_namespace = name_space;
+        multiplier_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-high")
     {
         threshold_high = value;
+        threshold_high.value_namespace = name_space;
+        threshold_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-low")
     {
         threshold_low = value;
+        threshold_low.value_namespace = name_space;
+        threshold_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multiplier-high")
+    {
+        multiplier_high.yfilter = yfilter;
+    }
+    if(value_path == "multiplier-low")
+    {
+        multiplier_low.yfilter = yfilter;
+    }
+    if(value_path == "threshold-high")
+    {
+        threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "threshold-low")
+    {
+        threshold_low.yfilter = yfilter;
+    }
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multiplier-high" || name == "multiplier-low" || name == "threshold-high" || name == "threshold-low" || name == "units")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::FramePeriod()
@@ -2961,7 +3709,7 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePer
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation())
 	|| (window !=  nullptr && window->has_operation());
 }
@@ -3035,8 +3783,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::Window()
@@ -3061,10 +3820,10 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePer
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(multiplier.operation)
-	|| is_set(units.operation)
-	|| is_set(window.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(multiplier.yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(window.yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::get_segment_path() const
@@ -3090,9 +3849,9 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (multiplier.is_set || is_set(multiplier.operation)) leaf_name_data.push_back(multiplier.get_name_leafdata());
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (window.is_set || is_set(window.operation)) leaf_name_data.push_back(window.get_name_leafdata());
+    if (multiplier.is_set || is_set(multiplier.yfilter)) leaf_name_data.push_back(multiplier.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3111,20 +3870,49 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "multiplier")
     {
         multiplier = value;
+        multiplier.value_namespace = name_space;
+        multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "window")
     {
         window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multiplier")
+    {
+        multiplier.yfilter = yfilter;
+    }
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multiplier" || name == "units" || name == "window")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::Threshold()
@@ -3153,12 +3941,12 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePer
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(multiplier_high.operation)
-	|| is_set(multiplier_low.operation)
-	|| is_set(threshold_high.operation)
-	|| is_set(threshold_low.operation)
-	|| is_set(units.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(multiplier_high.yfilter)
+	|| ydk::is_set(multiplier_low.yfilter)
+	|| ydk::is_set(threshold_high.yfilter)
+	|| ydk::is_set(threshold_low.yfilter)
+	|| ydk::is_set(units.yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::get_segment_path() const
@@ -3184,11 +3972,11 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (multiplier_high.is_set || is_set(multiplier_high.operation)) leaf_name_data.push_back(multiplier_high.get_name_leafdata());
-    if (multiplier_low.is_set || is_set(multiplier_low.operation)) leaf_name_data.push_back(multiplier_low.get_name_leafdata());
-    if (threshold_high.is_set || is_set(threshold_high.operation)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
-    if (threshold_low.is_set || is_set(threshold_low.operation)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (multiplier_high.is_set || is_set(multiplier_high.yfilter)) leaf_name_data.push_back(multiplier_high.get_name_leafdata());
+    if (multiplier_low.is_set || is_set(multiplier_low.yfilter)) leaf_name_data.push_back(multiplier_low.get_name_leafdata());
+    if (threshold_high.is_set || is_set(threshold_high.yfilter)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
+    if (threshold_low.is_set || is_set(threshold_low.yfilter)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3207,28 +3995,69 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "multiplier-high")
     {
         multiplier_high = value;
+        multiplier_high.value_namespace = name_space;
+        multiplier_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multiplier-low")
     {
         multiplier_low = value;
+        multiplier_low.value_namespace = name_space;
+        multiplier_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-high")
     {
         threshold_high = value;
+        threshold_high.value_namespace = name_space;
+        threshold_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-low")
     {
         threshold_low = value;
+        threshold_low.value_namespace = name_space;
+        threshold_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multiplier-high")
+    {
+        multiplier_high.yfilter = yfilter;
+    }
+    if(value_path == "multiplier-low")
+    {
+        multiplier_low.yfilter = yfilter;
+    }
+    if(value_path == "threshold-high")
+    {
+        threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "threshold-low")
+    {
+        threshold_low.yfilter = yfilter;
+    }
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multiplier-high" || name == "multiplier-low" || name == "threshold-high" || name == "threshold-low" || name == "units")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::FrameSeconds()
@@ -3254,8 +4083,8 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSec
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(window.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
@@ -3282,7 +4111,7 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (window.is_set || is_set(window.operation)) leaf_name_data.push_back(window.get_name_leafdata());
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3315,12 +4144,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "window")
     {
         window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::Threshold()
@@ -3343,9 +4189,9 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSec
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(threshold_high.operation)
-	|| is_set(threshold_low.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(threshold_high.yfilter)
+	|| ydk::is_set(threshold_low.yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::get_segment_path() const
@@ -3371,8 +4217,8 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (threshold_high.is_set || is_set(threshold_high.operation)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
-    if (threshold_low.is_set || is_set(threshold_low.operation)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
+    if (threshold_high.is_set || is_set(threshold_high.yfilter)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
+    if (threshold_low.is_set || is_set(threshold_low.yfilter)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3391,16 +4237,39 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-high")
     {
         threshold_high = value;
+        threshold_high.value_namespace = name_space;
+        threshold_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-low")
     {
         threshold_low = value;
+        threshold_low.value_namespace = name_space;
+        threshold_low.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold-high")
+    {
+        threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "threshold-low")
+    {
+        threshold_low.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-high" || name == "threshold-low")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Frame()
@@ -3426,8 +4295,8 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::h
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(window.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
@@ -3454,7 +4323,7 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (window.is_set || is_set(window.operation)) leaf_name_data.push_back(window.get_name_leafdata());
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3487,12 +4356,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "window")
     {
         window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::Threshold()
@@ -3519,11 +4405,11 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::T
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(multiplier_high.operation)
-	|| is_set(multiplier_low.operation)
-	|| is_set(threshold_high.operation)
-	|| is_set(threshold_low.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(multiplier_high.yfilter)
+	|| ydk::is_set(multiplier_low.yfilter)
+	|| ydk::is_set(threshold_high.yfilter)
+	|| ydk::is_set(threshold_low.yfilter);
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::get_segment_path() const
@@ -3549,10 +4435,10 @@ const EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitori
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (multiplier_high.is_set || is_set(multiplier_high.operation)) leaf_name_data.push_back(multiplier_high.get_name_leafdata());
-    if (multiplier_low.is_set || is_set(multiplier_low.operation)) leaf_name_data.push_back(multiplier_low.get_name_leafdata());
-    if (threshold_high.is_set || is_set(threshold_high.operation)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
-    if (threshold_low.is_set || is_set(threshold_low.operation)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
+    if (multiplier_high.is_set || is_set(multiplier_high.yfilter)) leaf_name_data.push_back(multiplier_high.get_name_leafdata());
+    if (multiplier_low.is_set || is_set(multiplier_low.yfilter)) leaf_name_data.push_back(multiplier_low.get_name_leafdata());
+    if (threshold_high.is_set || is_set(threshold_high.yfilter)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
+    if (threshold_low.is_set || is_set(threshold_low.yfilter)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3571,43 +4457,78 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     return children;
 }
 
-void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::set_value(const std::string & value_path, std::string value)
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "multiplier-high")
     {
         multiplier_high = value;
+        multiplier_high.value_namespace = name_space;
+        multiplier_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multiplier-low")
     {
         multiplier_low = value;
+        multiplier_low.value_namespace = name_space;
+        multiplier_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-high")
     {
         threshold_high = value;
+        threshold_high.value_namespace = name_space;
+        threshold_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-low")
     {
         threshold_low = value;
+        threshold_low.value_namespace = name_space;
+        threshold_low.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf EgressFilteringEnum::egress_filtering_type_strict {1, "egress-filtering-type-strict"};
-const Enum::YLeaf EgressFilteringEnum::egress_filtering_type_disable {2, "egress-filtering-type-disable"};
-const Enum::YLeaf EgressFilteringEnum::egress_filtering_type_default {3, "egress-filtering-type-default"};
+void EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multiplier-high")
+    {
+        multiplier_high.yfilter = yfilter;
+    }
+    if(value_path == "multiplier-low")
+    {
+        multiplier_low.yfilter = yfilter;
+    }
+    if(value_path == "threshold-high")
+    {
+        threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "threshold-low")
+    {
+        threshold_low.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf L2ProtocolNameEnum::cdp {0, "cdp"};
-const Enum::YLeaf L2ProtocolNameEnum::stp {1, "stp"};
-const Enum::YLeaf L2ProtocolNameEnum::vtp {2, "vtp"};
-const Enum::YLeaf L2ProtocolNameEnum::pvst {3, "pvst"};
-const Enum::YLeaf L2ProtocolNameEnum::cpsv {4, "cpsv"};
+bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multiplier-high" || name == "multiplier-low" || name == "threshold-high" || name == "threshold-low")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf FilteringEnum::filtering_type_dot1q {0, "filtering-type-dot1q"};
-const Enum::YLeaf FilteringEnum::filtering_type_dot1ad {1, "filtering-type-dot1ad"};
+const Enum::YLeaf L2ProtocolMode::forward {0, "forward"};
+const Enum::YLeaf L2ProtocolMode::drop {1, "drop"};
+const Enum::YLeaf L2ProtocolMode::tunnel {2, "tunnel"};
+const Enum::YLeaf L2ProtocolMode::reverse_tunnel {3, "reverse-tunnel"};
 
-const Enum::YLeaf L2ProtocolModeEnum::forward {0, "forward"};
-const Enum::YLeaf L2ProtocolModeEnum::drop {1, "drop"};
-const Enum::YLeaf L2ProtocolModeEnum::tunnel {2, "tunnel"};
-const Enum::YLeaf L2ProtocolModeEnum::reverse_tunnel {3, "reverse-tunnel"};
+const Enum::YLeaf EgressFiltering::egress_filtering_type_strict {1, "egress-filtering-type-strict"};
+const Enum::YLeaf EgressFiltering::egress_filtering_type_disable {2, "egress-filtering-type-disable"};
+const Enum::YLeaf EgressFiltering::egress_filtering_type_default {3, "egress-filtering-type-default"};
+
+const Enum::YLeaf L2ProtocolName::cdp {0, "cdp"};
+const Enum::YLeaf L2ProtocolName::stp {1, "stp"};
+const Enum::YLeaf L2ProtocolName::vtp {2, "vtp"};
+const Enum::YLeaf L2ProtocolName::pvst {3, "pvst"};
+const Enum::YLeaf L2ProtocolName::cpsv {4, "cpsv"};
+
+const Enum::YLeaf Filtering::filtering_type_dot1q {0, "filtering-type-dot1q"};
+const Enum::YLeaf Filtering::filtering_type_dot1ad {1, "filtering-type-dot1ad"};
 
 
 }

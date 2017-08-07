@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_Ethernet_SPAN_cfg {
 
-class SpanMonitorSession : public Entity
+class SpanMonitorSession : public ydk::Entity
 {
     public:
         SpanMonitorSession();
@@ -19,15 +19,18 @@ class SpanMonitorSession : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Sessions; //type: SpanMonitorSession::Sessions
 
@@ -36,7 +39,7 @@ class SpanMonitorSession : public Entity
 }; // SpanMonitorSession
 
 
-class SpanMonitorSession::Sessions : public Entity
+class SpanMonitorSession::Sessions : public ydk::Entity
 {
     public:
         Sessions();
@@ -44,11 +47,13 @@ class SpanMonitorSession::Sessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Session; //type: SpanMonitorSession::Sessions::Session
 
@@ -57,7 +62,7 @@ class SpanMonitorSession::Sessions : public Entity
 }; // SpanMonitorSession::Sessions
 
 
-class SpanMonitorSession::Sessions::Session : public Entity
+class SpanMonitorSession::Sessions::Session : public ydk::Entity
 {
     public:
         Session();
@@ -65,14 +70,16 @@ class SpanMonitorSession::Sessions::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session; //type: string
-        YLeaf class_; //type: SpanSessionClassEnum
+        ydk::YLeaf session; //type: string
+        ydk::YLeaf class_; //type: SpanSessionClass
         class Destination; //type: SpanMonitorSession::Sessions::Session::Destination
 
         std::shared_ptr<Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions::Session::Destination> destination;
@@ -80,7 +87,7 @@ class SpanMonitorSession::Sessions::Session : public Entity
 }; // SpanMonitorSession::Sessions::Session
 
 
-class SpanMonitorSession::Sessions::Session::Destination : public Entity
+class SpanMonitorSession::Sessions::Session::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -88,46 +95,48 @@ class SpanMonitorSession::Sessions::Session::Destination : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_type; //type: SpanDestinationEnum
-        YLeaf destination_interface_name; //type: string
-        YLeaf destination_ipv4_address; //type: string
-        YLeaf destination_ipv6_address; //type: string
+        ydk::YLeaf destination_type; //type: SpanDestination
+        ydk::YLeaf destination_interface_name; //type: string
+        ydk::YLeaf destination_ipv4_address; //type: string
+        ydk::YLeaf destination_ipv6_address; //type: string
 
 }; // SpanMonitorSession::Sessions::Session::Destination
 
-class SpanTrafficDirectionEnum : public Enum
+class SpanDestination : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf rx_only;
-        static const Enum::YLeaf tx_only;
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf pseudowire;
+        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf ipv6_address;
 
 };
 
-class SpanMirrorIntervalEnum : public Enum
+class SpanTrafficDirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_512;
-        static const Enum::YLeaf Y_1k;
-        static const Enum::YLeaf Y_2k;
-        static const Enum::YLeaf Y_4k;
-        static const Enum::YLeaf Y_8k;
-        static const Enum::YLeaf Y_16k;
+        static const ydk::Enum::YLeaf rx_only;
+        static const ydk::Enum::YLeaf tx_only;
 
 };
 
-class SpanDestinationEnum : public Enum
+class SpanMirrorInterval : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf interface;
-        static const Enum::YLeaf pseudowire;
-        static const Enum::YLeaf ipv4_address;
-        static const Enum::YLeaf ipv6_address;
+        static const ydk::Enum::YLeaf Y_512;
+        static const ydk::Enum::YLeaf Y_1k;
+        static const ydk::Enum::YLeaf Y_2k;
+        static const ydk::Enum::YLeaf Y_4k;
+        static const ydk::Enum::YLeaf Y_8k;
+        static const ydk::Enum::YLeaf Y_16k;
 
 };
 

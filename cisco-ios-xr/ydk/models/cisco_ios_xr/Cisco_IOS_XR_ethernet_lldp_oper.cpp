@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ethernet_lldp_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ethernet_lldp_oper {
 
 Lldp::Lldp()
@@ -33,7 +35,7 @@ bool Lldp::has_data() const
 
 bool Lldp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global_lldp !=  nullptr && global_lldp->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::get_children() const
     return children;
 }
 
-void Lldp::set_value(const std::string & value_path, std::string value)
+void Lldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lldp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -128,6 +134,18 @@ augment_capabilities_function Lldp::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Lldp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Lldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-lldp" || name == "nodes")
+        return true;
+    return false;
+}
+
 Lldp::GlobalLldp::GlobalLldp()
     :
     lldp_info(std::make_shared<Lldp::GlobalLldp::LldpInfo>())
@@ -148,7 +166,7 @@ bool Lldp::GlobalLldp::has_data() const
 
 bool Lldp::GlobalLldp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (lldp_info !=  nullptr && lldp_info->has_operation());
 }
 
@@ -207,8 +225,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::GlobalLldp::get_children() 
     return children;
 }
 
-void Lldp::GlobalLldp::set_value(const std::string & value_path, std::string value)
+void Lldp::GlobalLldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::GlobalLldp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::GlobalLldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-info")
+        return true;
+    return false;
 }
 
 Lldp::GlobalLldp::LldpInfo::LldpInfo()
@@ -233,10 +262,10 @@ bool Lldp::GlobalLldp::LldpInfo::has_data() const
 
 bool Lldp::GlobalLldp::LldpInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hold_time.operation)
-	|| is_set(re_init.operation)
-	|| is_set(timer.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(re_init.yfilter)
+	|| ydk::is_set(timer.yfilter);
 }
 
 std::string Lldp::GlobalLldp::LldpInfo::get_segment_path() const
@@ -262,9 +291,9 @@ const EntityPath Lldp::GlobalLldp::LldpInfo::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (re_init.is_set || is_set(re_init.operation)) leaf_name_data.push_back(re_init.get_name_leafdata());
-    if (timer.is_set || is_set(timer.operation)) leaf_name_data.push_back(timer.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (re_init.is_set || is_set(re_init.yfilter)) leaf_name_data.push_back(re_init.get_name_leafdata());
+    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -283,20 +312,49 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::GlobalLldp::LldpInfo::get_c
     return children;
 }
 
-void Lldp::GlobalLldp::LldpInfo::set_value(const std::string & value_path, std::string value)
+void Lldp::GlobalLldp::LldpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "re-init")
     {
         re_init = value;
+        re_init.value_namespace = name_space;
+        re_init.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timer")
     {
         timer = value;
+        timer.value_namespace = name_space;
+        timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::GlobalLldp::LldpInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "re-init")
+    {
+        re_init.yfilter = yfilter;
+    }
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
+    }
+}
+
+bool Lldp::GlobalLldp::LldpInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hold-time" || name == "re-init" || name == "timer")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Nodes()
@@ -325,7 +383,7 @@ bool Lldp::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::get_segment_path() const
@@ -390,8 +448,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::get_children() const
     return children;
 }
 
-void Lldp::Nodes::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Node()
@@ -425,8 +494,8 @@ bool Lldp::Nodes::Node::has_data() const
 
 bool Lldp::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (neighbors !=  nullptr && neighbors->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation());
@@ -455,7 +524,7 @@ const EntityPath Lldp::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -516,12 +585,29 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::get_children()
     return children;
 }
 
-void Lldp::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "neighbors" || name == "statistics" || name == "node-name")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Neighbors()
@@ -552,7 +638,7 @@ bool Lldp::Nodes::Node::Neighbors::has_data() const
 
 bool Lldp::Nodes::Node::Neighbors::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (details !=  nullptr && details->has_operation())
 	|| (devices !=  nullptr && devices->has_operation())
 	|| (summaries !=  nullptr && summaries->has_operation());
@@ -641,8 +727,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::get
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "details" || name == "devices" || name == "summaries")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Devices()
@@ -671,7 +768,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::has_operation() const
         if(device[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::get_segment_path() const
@@ -736,8 +833,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "device")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::Device()
@@ -770,9 +878,9 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::has_operation() const
         if(lldp_neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(device_id.operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::get_segment_path() const
@@ -798,8 +906,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -839,16 +947,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-neighbor" || name == "device-id" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::LldpNeighbor()
@@ -894,16 +1025,16 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::has_data() con
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chassis_id.operation)
-	|| is_set(device_id.operation)
-	|| is_set(enabled_capabilities.operation)
-	|| is_set(header_version.operation)
-	|| is_set(hold_time.operation)
-	|| is_set(platform.operation)
-	|| is_set(port_id_detail.operation)
-	|| is_set(receiving_interface_name.operation)
-	|| is_set(receiving_parent_interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(chassis_id.yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(enabled_capabilities.yfilter)
+	|| ydk::is_set(header_version.yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(platform.yfilter)
+	|| ydk::is_set(port_id_detail.yfilter)
+	|| ydk::is_set(receiving_interface_name.yfilter)
+	|| ydk::is_set(receiving_parent_interface_name.yfilter)
 	|| (detail !=  nullptr && detail->has_operation())
 	|| (mib !=  nullptr && mib->has_operation());
 }
@@ -931,15 +1062,15 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chassis_id.is_set || is_set(chassis_id.operation)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (enabled_capabilities.is_set || is_set(enabled_capabilities.operation)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
-    if (header_version.is_set || is_set(header_version.operation)) leaf_name_data.push_back(header_version.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (platform.is_set || is_set(platform.operation)) leaf_name_data.push_back(platform.get_name_leafdata());
-    if (port_id_detail.is_set || is_set(port_id_detail.operation)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
-    if (receiving_interface_name.is_set || is_set(receiving_interface_name.operation)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
-    if (receiving_parent_interface_name.is_set || is_set(receiving_parent_interface_name.operation)) leaf_name_data.push_back(receiving_parent_interface_name.get_name_leafdata());
+    if (chassis_id.is_set || is_set(chassis_id.yfilter)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (enabled_capabilities.is_set || is_set(enabled_capabilities.yfilter)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
+    if (header_version.is_set || is_set(header_version.yfilter)) leaf_name_data.push_back(header_version.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (platform.is_set || is_set(platform.yfilter)) leaf_name_data.push_back(platform.get_name_leafdata());
+    if (port_id_detail.is_set || is_set(port_id_detail.yfilter)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
+    if (receiving_interface_name.is_set || is_set(receiving_interface_name.yfilter)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
+    if (receiving_parent_interface_name.is_set || is_set(receiving_parent_interface_name.yfilter)) leaf_name_data.push_back(receiving_parent_interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -986,44 +1117,109 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id")
     {
         chassis_id = value;
+        chassis_id.value_namespace = name_space;
+        chassis_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled-capabilities")
     {
         enabled_capabilities = value;
+        enabled_capabilities.value_namespace = name_space;
+        enabled_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-version")
     {
         header_version = value;
+        header_version.value_namespace = name_space;
+        header_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform")
     {
         platform = value;
+        platform.value_namespace = name_space;
+        platform.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-detail")
     {
         port_id_detail = value;
+        port_id_detail.value_namespace = name_space;
+        port_id_detail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receiving-interface-name")
     {
         receiving_interface_name = value;
+        receiving_interface_name.value_namespace = name_space;
+        receiving_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receiving-parent-interface-name")
     {
         receiving_parent_interface_name = value;
+        receiving_parent_interface_name.value_namespace = name_space;
+        receiving_parent_interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chassis-id")
+    {
+        chassis_id.yfilter = yfilter;
+    }
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "enabled-capabilities")
+    {
+        enabled_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "header-version")
+    {
+        header_version.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "platform")
+    {
+        platform.yfilter = yfilter;
+    }
+    if(value_path == "port-id-detail")
+    {
+        port_id_detail.yfilter = yfilter;
+    }
+    if(value_path == "receiving-interface-name")
+    {
+        receiving_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "receiving-parent-interface-name")
+    {
+        receiving_parent_interface_name.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "mib" || name == "chassis-id" || name == "device-id" || name == "enabled-capabilities" || name == "header-version" || name == "hold-time" || name == "platform" || name == "port-id-detail" || name == "receiving-interface-name" || name == "receiving-parent-interface-name")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::Detail()
@@ -1067,17 +1263,17 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::has_da
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_negotiation.operation)
-	|| is_set(enabled_capabilities.operation)
-	|| is_set(media_attachment_unit_type.operation)
-	|| is_set(physical_media_capabilities.operation)
-	|| is_set(port_description.operation)
-	|| is_set(port_vlan_id.operation)
-	|| is_set(system_capabilities.operation)
-	|| is_set(system_description.operation)
-	|| is_set(system_name.operation)
-	|| is_set(time_remaining.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(auto_negotiation.yfilter)
+	|| ydk::is_set(enabled_capabilities.yfilter)
+	|| ydk::is_set(media_attachment_unit_type.yfilter)
+	|| ydk::is_set(physical_media_capabilities.yfilter)
+	|| ydk::is_set(port_description.yfilter)
+	|| ydk::is_set(port_vlan_id.yfilter)
+	|| ydk::is_set(system_capabilities.yfilter)
+	|| ydk::is_set(system_description.yfilter)
+	|| ydk::is_set(system_name.yfilter)
+	|| ydk::is_set(time_remaining.yfilter)
 	|| (network_addresses !=  nullptr && network_addresses->has_operation());
 }
 
@@ -1104,16 +1300,16 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_negotiation.is_set || is_set(auto_negotiation.operation)) leaf_name_data.push_back(auto_negotiation.get_name_leafdata());
-    if (enabled_capabilities.is_set || is_set(enabled_capabilities.operation)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
-    if (media_attachment_unit_type.is_set || is_set(media_attachment_unit_type.operation)) leaf_name_data.push_back(media_attachment_unit_type.get_name_leafdata());
-    if (physical_media_capabilities.is_set || is_set(physical_media_capabilities.operation)) leaf_name_data.push_back(physical_media_capabilities.get_name_leafdata());
-    if (port_description.is_set || is_set(port_description.operation)) leaf_name_data.push_back(port_description.get_name_leafdata());
-    if (port_vlan_id.is_set || is_set(port_vlan_id.operation)) leaf_name_data.push_back(port_vlan_id.get_name_leafdata());
-    if (system_capabilities.is_set || is_set(system_capabilities.operation)) leaf_name_data.push_back(system_capabilities.get_name_leafdata());
-    if (system_description.is_set || is_set(system_description.operation)) leaf_name_data.push_back(system_description.get_name_leafdata());
-    if (system_name.is_set || is_set(system_name.operation)) leaf_name_data.push_back(system_name.get_name_leafdata());
-    if (time_remaining.is_set || is_set(time_remaining.operation)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (auto_negotiation.is_set || is_set(auto_negotiation.yfilter)) leaf_name_data.push_back(auto_negotiation.get_name_leafdata());
+    if (enabled_capabilities.is_set || is_set(enabled_capabilities.yfilter)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
+    if (media_attachment_unit_type.is_set || is_set(media_attachment_unit_type.yfilter)) leaf_name_data.push_back(media_attachment_unit_type.get_name_leafdata());
+    if (physical_media_capabilities.is_set || is_set(physical_media_capabilities.yfilter)) leaf_name_data.push_back(physical_media_capabilities.get_name_leafdata());
+    if (port_description.is_set || is_set(port_description.yfilter)) leaf_name_data.push_back(port_description.get_name_leafdata());
+    if (port_vlan_id.is_set || is_set(port_vlan_id.yfilter)) leaf_name_data.push_back(port_vlan_id.get_name_leafdata());
+    if (system_capabilities.is_set || is_set(system_capabilities.yfilter)) leaf_name_data.push_back(system_capabilities.get_name_leafdata());
+    if (system_description.is_set || is_set(system_description.yfilter)) leaf_name_data.push_back(system_description.get_name_leafdata());
+    if (system_name.is_set || is_set(system_name.yfilter)) leaf_name_data.push_back(system_name.get_name_leafdata());
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1146,48 +1342,119 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-negotiation")
     {
         auto_negotiation = value;
+        auto_negotiation.value_namespace = name_space;
+        auto_negotiation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled-capabilities")
     {
         enabled_capabilities = value;
+        enabled_capabilities.value_namespace = name_space;
+        enabled_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "media-attachment-unit-type")
     {
         media_attachment_unit_type = value;
+        media_attachment_unit_type.value_namespace = name_space;
+        media_attachment_unit_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "physical-media-capabilities")
     {
         physical_media_capabilities = value;
+        physical_media_capabilities.value_namespace = name_space;
+        physical_media_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-description")
     {
         port_description = value;
+        port_description.value_namespace = name_space;
+        port_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-vlan-id")
     {
         port_vlan_id = value;
+        port_vlan_id.value_namespace = name_space;
+        port_vlan_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-capabilities")
     {
         system_capabilities = value;
+        system_capabilities.value_namespace = name_space;
+        system_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-description")
     {
         system_description = value;
+        system_description.value_namespace = name_space;
+        system_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-name")
     {
         system_name = value;
+        system_name.value_namespace = name_space;
+        system_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-remaining")
     {
         time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-negotiation")
+    {
+        auto_negotiation.yfilter = yfilter;
+    }
+    if(value_path == "enabled-capabilities")
+    {
+        enabled_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "media-attachment-unit-type")
+    {
+        media_attachment_unit_type.yfilter = yfilter;
+    }
+    if(value_path == "physical-media-capabilities")
+    {
+        physical_media_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "port-description")
+    {
+        port_description.yfilter = yfilter;
+    }
+    if(value_path == "port-vlan-id")
+    {
+        port_vlan_id.yfilter = yfilter;
+    }
+    if(value_path == "system-capabilities")
+    {
+        system_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "system-description")
+    {
+        system_description.yfilter = yfilter;
+    }
+    if(value_path == "system-name")
+    {
+        system_name.yfilter = yfilter;
+    }
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-addresses" || name == "auto-negotiation" || name == "enabled-capabilities" || name == "media-attachment-unit-type" || name == "physical-media-capabilities" || name == "port-description" || name == "port-vlan-id" || name == "system-capabilities" || name == "system-description" || name == "system-name" || name == "time-remaining")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::NetworkAddresses()
@@ -1216,7 +1483,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::Networ
         if(lldp_addr_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::get_segment_path() const
@@ -1281,8 +1548,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-addr-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::LldpAddrEntry()
@@ -1310,9 +1588,9 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::Networ
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_num.operation)
-	|| is_set(ma_subtype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(if_num.yfilter)
+	|| ydk::is_set(ma_subtype.yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -1339,8 +1617,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_num.is_set || is_set(if_num.operation)) leaf_name_data.push_back(if_num.get_name_leafdata());
-    if (ma_subtype.is_set || is_set(ma_subtype.operation)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
+    if (if_num.is_set || is_set(if_num.yfilter)) leaf_name_data.push_back(if_num.get_name_leafdata());
+    if (ma_subtype.is_set || is_set(ma_subtype.yfilter)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1373,16 +1651,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-num")
     {
         if_num = value;
+        if_num.value_namespace = name_space;
+        if_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ma-subtype")
     {
         ma_subtype = value;
+        ma_subtype.value_namespace = name_space;
+        ma_subtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-num")
+    {
+        if_num.yfilter = yfilter;
+    }
+    if(value_path == "ma-subtype")
+    {
+        ma_subtype.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "if-num" || name == "ma-subtype")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::Address()
@@ -1407,10 +1708,10 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::Networ
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_type.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_type.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::get_segment_path() const
@@ -1436,9 +1737,9 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1457,20 +1758,49 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-type" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::Mib()
@@ -1514,15 +1844,15 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::has_data(
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chassis_id_len.operation)
-	|| is_set(chassis_id_sub_type.operation)
-	|| is_set(combined_capabilities.operation)
-	|| is_set(port_id_len.operation)
-	|| is_set(port_id_sub_type.operation)
-	|| is_set(rem_index.operation)
-	|| is_set(rem_local_port_num.operation)
-	|| is_set(rem_time_mark.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(chassis_id_len.yfilter)
+	|| ydk::is_set(chassis_id_sub_type.yfilter)
+	|| ydk::is_set(combined_capabilities.yfilter)
+	|| ydk::is_set(port_id_len.yfilter)
+	|| ydk::is_set(port_id_sub_type.yfilter)
+	|| ydk::is_set(rem_index.yfilter)
+	|| ydk::is_set(rem_local_port_num.yfilter)
+	|| ydk::is_set(rem_time_mark.yfilter)
 	|| (org_def_tlv_list !=  nullptr && org_def_tlv_list->has_operation())
 	|| (unknown_tlv_list !=  nullptr && unknown_tlv_list->has_operation());
 }
@@ -1550,14 +1880,14 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chassis_id_len.is_set || is_set(chassis_id_len.operation)) leaf_name_data.push_back(chassis_id_len.get_name_leafdata());
-    if (chassis_id_sub_type.is_set || is_set(chassis_id_sub_type.operation)) leaf_name_data.push_back(chassis_id_sub_type.get_name_leafdata());
-    if (combined_capabilities.is_set || is_set(combined_capabilities.operation)) leaf_name_data.push_back(combined_capabilities.get_name_leafdata());
-    if (port_id_len.is_set || is_set(port_id_len.operation)) leaf_name_data.push_back(port_id_len.get_name_leafdata());
-    if (port_id_sub_type.is_set || is_set(port_id_sub_type.operation)) leaf_name_data.push_back(port_id_sub_type.get_name_leafdata());
-    if (rem_index.is_set || is_set(rem_index.operation)) leaf_name_data.push_back(rem_index.get_name_leafdata());
-    if (rem_local_port_num.is_set || is_set(rem_local_port_num.operation)) leaf_name_data.push_back(rem_local_port_num.get_name_leafdata());
-    if (rem_time_mark.is_set || is_set(rem_time_mark.operation)) leaf_name_data.push_back(rem_time_mark.get_name_leafdata());
+    if (chassis_id_len.is_set || is_set(chassis_id_len.yfilter)) leaf_name_data.push_back(chassis_id_len.get_name_leafdata());
+    if (chassis_id_sub_type.is_set || is_set(chassis_id_sub_type.yfilter)) leaf_name_data.push_back(chassis_id_sub_type.get_name_leafdata());
+    if (combined_capabilities.is_set || is_set(combined_capabilities.yfilter)) leaf_name_data.push_back(combined_capabilities.get_name_leafdata());
+    if (port_id_len.is_set || is_set(port_id_len.yfilter)) leaf_name_data.push_back(port_id_len.get_name_leafdata());
+    if (port_id_sub_type.is_set || is_set(port_id_sub_type.yfilter)) leaf_name_data.push_back(port_id_sub_type.get_name_leafdata());
+    if (rem_index.is_set || is_set(rem_index.yfilter)) leaf_name_data.push_back(rem_index.get_name_leafdata());
+    if (rem_local_port_num.is_set || is_set(rem_local_port_num.yfilter)) leaf_name_data.push_back(rem_local_port_num.get_name_leafdata());
+    if (rem_time_mark.is_set || is_set(rem_time_mark.yfilter)) leaf_name_data.push_back(rem_time_mark.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1604,40 +1934,99 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id-len")
     {
         chassis_id_len = value;
+        chassis_id_len.value_namespace = name_space;
+        chassis_id_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chassis-id-sub-type")
     {
         chassis_id_sub_type = value;
+        chassis_id_sub_type.value_namespace = name_space;
+        chassis_id_sub_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "combined-capabilities")
     {
         combined_capabilities = value;
+        combined_capabilities.value_namespace = name_space;
+        combined_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-len")
     {
         port_id_len = value;
+        port_id_len.value_namespace = name_space;
+        port_id_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-sub-type")
     {
         port_id_sub_type = value;
+        port_id_sub_type.value_namespace = name_space;
+        port_id_sub_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-index")
     {
         rem_index = value;
+        rem_index.value_namespace = name_space;
+        rem_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-local-port-num")
     {
         rem_local_port_num = value;
+        rem_local_port_num.value_namespace = name_space;
+        rem_local_port_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-time-mark")
     {
         rem_time_mark = value;
+        rem_time_mark.value_namespace = name_space;
+        rem_time_mark.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chassis-id-len")
+    {
+        chassis_id_len.yfilter = yfilter;
+    }
+    if(value_path == "chassis-id-sub-type")
+    {
+        chassis_id_sub_type.yfilter = yfilter;
+    }
+    if(value_path == "combined-capabilities")
+    {
+        combined_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "port-id-len")
+    {
+        port_id_len.yfilter = yfilter;
+    }
+    if(value_path == "port-id-sub-type")
+    {
+        port_id_sub_type.yfilter = yfilter;
+    }
+    if(value_path == "rem-index")
+    {
+        rem_index.yfilter = yfilter;
+    }
+    if(value_path == "rem-local-port-num")
+    {
+        rem_local_port_num.yfilter = yfilter;
+    }
+    if(value_path == "rem-time-mark")
+    {
+        rem_time_mark.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "org-def-tlv-list" || name == "unknown-tlv-list" || name == "chassis-id-len" || name == "chassis-id-sub-type" || name == "combined-capabilities" || name == "port-id-len" || name == "port-id-sub-type" || name == "rem-index" || name == "rem-local-port-num" || name == "rem-time-mark")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::UnknownTlvList()
@@ -1666,7 +2055,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTl
         if(lldp_unknown_tlv_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::get_segment_path() const
@@ -1731,8 +2120,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-unknown-tlv-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::LldpUnknownTlvEntry()
@@ -1755,9 +2155,9 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTl
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tlv_type.operation)
-	|| is_set(tlv_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tlv_type.yfilter)
+	|| ydk::is_set(tlv_value.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::get_segment_path() const
@@ -1783,8 +2183,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tlv_type.is_set || is_set(tlv_type.operation)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
-    if (tlv_value.is_set || is_set(tlv_value.operation)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
+    if (tlv_type.is_set || is_set(tlv_type.yfilter)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
+    if (tlv_value.is_set || is_set(tlv_value.yfilter)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1803,16 +2203,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-type")
     {
         tlv_type = value;
+        tlv_type.value_namespace = name_space;
+        tlv_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-value")
     {
         tlv_value = value;
+        tlv_value.value_namespace = name_space;
+        tlv_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tlv-type")
+    {
+        tlv_type.yfilter = yfilter;
+    }
+    if(value_path == "tlv-value")
+    {
+        tlv_value.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tlv-type" || name == "tlv-value")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::OrgDefTlvList()
@@ -1841,7 +2264,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlv
         if(lldp_org_def_tlv_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::get_segment_path() const
@@ -1906,8 +2329,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-org-def-tlv-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::LldpOrgDefTlvEntry()
@@ -1934,11 +2368,11 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlv
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oui.operation)
-	|| is_set(tlv_info_indes.operation)
-	|| is_set(tlv_subtype.operation)
-	|| is_set(tlv_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(oui.yfilter)
+	|| ydk::is_set(tlv_info_indes.yfilter)
+	|| ydk::is_set(tlv_subtype.yfilter)
+	|| ydk::is_set(tlv_value.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::get_segment_path() const
@@ -1964,10 +2398,10 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oui.is_set || is_set(oui.operation)) leaf_name_data.push_back(oui.get_name_leafdata());
-    if (tlv_info_indes.is_set || is_set(tlv_info_indes.operation)) leaf_name_data.push_back(tlv_info_indes.get_name_leafdata());
-    if (tlv_subtype.is_set || is_set(tlv_subtype.operation)) leaf_name_data.push_back(tlv_subtype.get_name_leafdata());
-    if (tlv_value.is_set || is_set(tlv_value.operation)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
+    if (oui.is_set || is_set(oui.yfilter)) leaf_name_data.push_back(oui.get_name_leafdata());
+    if (tlv_info_indes.is_set || is_set(tlv_info_indes.yfilter)) leaf_name_data.push_back(tlv_info_indes.get_name_leafdata());
+    if (tlv_subtype.is_set || is_set(tlv_subtype.yfilter)) leaf_name_data.push_back(tlv_subtype.get_name_leafdata());
+    if (tlv_value.is_set || is_set(tlv_value.yfilter)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1986,24 +2420,59 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oui")
     {
         oui = value;
+        oui.value_namespace = name_space;
+        oui.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-info-indes")
     {
         tlv_info_indes = value;
+        tlv_info_indes.value_namespace = name_space;
+        tlv_info_indes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-subtype")
     {
         tlv_subtype = value;
+        tlv_subtype.value_namespace = name_space;
+        tlv_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-value")
     {
         tlv_value = value;
+        tlv_value.value_namespace = name_space;
+        tlv_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oui")
+    {
+        oui.yfilter = yfilter;
+    }
+    if(value_path == "tlv-info-indes")
+    {
+        tlv_info_indes.yfilter = yfilter;
+    }
+    if(value_path == "tlv-subtype")
+    {
+        tlv_subtype.yfilter = yfilter;
+    }
+    if(value_path == "tlv-value")
+    {
+        tlv_value.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oui" || name == "tlv-info-indes" || name == "tlv-subtype" || name == "tlv-value")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Details()
@@ -2032,7 +2501,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::has_operation() const
         if(detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::get_segment_path() const
@@ -2097,8 +2566,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::Detail()
@@ -2131,9 +2611,9 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::has_operation() const
         if(lldp_neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(device_id.operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::get_segment_path() const
@@ -2159,8 +2639,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2200,16 +2680,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-neighbor" || name == "device-id" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::LldpNeighbor()
@@ -2255,16 +2758,16 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::has_data() con
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chassis_id.operation)
-	|| is_set(device_id.operation)
-	|| is_set(enabled_capabilities.operation)
-	|| is_set(header_version.operation)
-	|| is_set(hold_time.operation)
-	|| is_set(platform.operation)
-	|| is_set(port_id_detail.operation)
-	|| is_set(receiving_interface_name.operation)
-	|| is_set(receiving_parent_interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(chassis_id.yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(enabled_capabilities.yfilter)
+	|| ydk::is_set(header_version.yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(platform.yfilter)
+	|| ydk::is_set(port_id_detail.yfilter)
+	|| ydk::is_set(receiving_interface_name.yfilter)
+	|| ydk::is_set(receiving_parent_interface_name.yfilter)
 	|| (detail !=  nullptr && detail->has_operation())
 	|| (mib !=  nullptr && mib->has_operation());
 }
@@ -2292,15 +2795,15 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chassis_id.is_set || is_set(chassis_id.operation)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (enabled_capabilities.is_set || is_set(enabled_capabilities.operation)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
-    if (header_version.is_set || is_set(header_version.operation)) leaf_name_data.push_back(header_version.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (platform.is_set || is_set(platform.operation)) leaf_name_data.push_back(platform.get_name_leafdata());
-    if (port_id_detail.is_set || is_set(port_id_detail.operation)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
-    if (receiving_interface_name.is_set || is_set(receiving_interface_name.operation)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
-    if (receiving_parent_interface_name.is_set || is_set(receiving_parent_interface_name.operation)) leaf_name_data.push_back(receiving_parent_interface_name.get_name_leafdata());
+    if (chassis_id.is_set || is_set(chassis_id.yfilter)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (enabled_capabilities.is_set || is_set(enabled_capabilities.yfilter)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
+    if (header_version.is_set || is_set(header_version.yfilter)) leaf_name_data.push_back(header_version.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (platform.is_set || is_set(platform.yfilter)) leaf_name_data.push_back(platform.get_name_leafdata());
+    if (port_id_detail.is_set || is_set(port_id_detail.yfilter)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
+    if (receiving_interface_name.is_set || is_set(receiving_interface_name.yfilter)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
+    if (receiving_parent_interface_name.is_set || is_set(receiving_parent_interface_name.yfilter)) leaf_name_data.push_back(receiving_parent_interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2347,44 +2850,109 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id")
     {
         chassis_id = value;
+        chassis_id.value_namespace = name_space;
+        chassis_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled-capabilities")
     {
         enabled_capabilities = value;
+        enabled_capabilities.value_namespace = name_space;
+        enabled_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-version")
     {
         header_version = value;
+        header_version.value_namespace = name_space;
+        header_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform")
     {
         platform = value;
+        platform.value_namespace = name_space;
+        platform.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-detail")
     {
         port_id_detail = value;
+        port_id_detail.value_namespace = name_space;
+        port_id_detail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receiving-interface-name")
     {
         receiving_interface_name = value;
+        receiving_interface_name.value_namespace = name_space;
+        receiving_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receiving-parent-interface-name")
     {
         receiving_parent_interface_name = value;
+        receiving_parent_interface_name.value_namespace = name_space;
+        receiving_parent_interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chassis-id")
+    {
+        chassis_id.yfilter = yfilter;
+    }
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "enabled-capabilities")
+    {
+        enabled_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "header-version")
+    {
+        header_version.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "platform")
+    {
+        platform.yfilter = yfilter;
+    }
+    if(value_path == "port-id-detail")
+    {
+        port_id_detail.yfilter = yfilter;
+    }
+    if(value_path == "receiving-interface-name")
+    {
+        receiving_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "receiving-parent-interface-name")
+    {
+        receiving_parent_interface_name.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "mib" || name == "chassis-id" || name == "device-id" || name == "enabled-capabilities" || name == "header-version" || name == "hold-time" || name == "platform" || name == "port-id-detail" || name == "receiving-interface-name" || name == "receiving-parent-interface-name")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::Detail_()
@@ -2428,17 +2996,17 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::has_d
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_negotiation.operation)
-	|| is_set(enabled_capabilities.operation)
-	|| is_set(media_attachment_unit_type.operation)
-	|| is_set(physical_media_capabilities.operation)
-	|| is_set(port_description.operation)
-	|| is_set(port_vlan_id.operation)
-	|| is_set(system_capabilities.operation)
-	|| is_set(system_description.operation)
-	|| is_set(system_name.operation)
-	|| is_set(time_remaining.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(auto_negotiation.yfilter)
+	|| ydk::is_set(enabled_capabilities.yfilter)
+	|| ydk::is_set(media_attachment_unit_type.yfilter)
+	|| ydk::is_set(physical_media_capabilities.yfilter)
+	|| ydk::is_set(port_description.yfilter)
+	|| ydk::is_set(port_vlan_id.yfilter)
+	|| ydk::is_set(system_capabilities.yfilter)
+	|| ydk::is_set(system_description.yfilter)
+	|| ydk::is_set(system_name.yfilter)
+	|| ydk::is_set(time_remaining.yfilter)
 	|| (network_addresses !=  nullptr && network_addresses->has_operation());
 }
 
@@ -2465,16 +3033,16 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_negotiation.is_set || is_set(auto_negotiation.operation)) leaf_name_data.push_back(auto_negotiation.get_name_leafdata());
-    if (enabled_capabilities.is_set || is_set(enabled_capabilities.operation)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
-    if (media_attachment_unit_type.is_set || is_set(media_attachment_unit_type.operation)) leaf_name_data.push_back(media_attachment_unit_type.get_name_leafdata());
-    if (physical_media_capabilities.is_set || is_set(physical_media_capabilities.operation)) leaf_name_data.push_back(physical_media_capabilities.get_name_leafdata());
-    if (port_description.is_set || is_set(port_description.operation)) leaf_name_data.push_back(port_description.get_name_leafdata());
-    if (port_vlan_id.is_set || is_set(port_vlan_id.operation)) leaf_name_data.push_back(port_vlan_id.get_name_leafdata());
-    if (system_capabilities.is_set || is_set(system_capabilities.operation)) leaf_name_data.push_back(system_capabilities.get_name_leafdata());
-    if (system_description.is_set || is_set(system_description.operation)) leaf_name_data.push_back(system_description.get_name_leafdata());
-    if (system_name.is_set || is_set(system_name.operation)) leaf_name_data.push_back(system_name.get_name_leafdata());
-    if (time_remaining.is_set || is_set(time_remaining.operation)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (auto_negotiation.is_set || is_set(auto_negotiation.yfilter)) leaf_name_data.push_back(auto_negotiation.get_name_leafdata());
+    if (enabled_capabilities.is_set || is_set(enabled_capabilities.yfilter)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
+    if (media_attachment_unit_type.is_set || is_set(media_attachment_unit_type.yfilter)) leaf_name_data.push_back(media_attachment_unit_type.get_name_leafdata());
+    if (physical_media_capabilities.is_set || is_set(physical_media_capabilities.yfilter)) leaf_name_data.push_back(physical_media_capabilities.get_name_leafdata());
+    if (port_description.is_set || is_set(port_description.yfilter)) leaf_name_data.push_back(port_description.get_name_leafdata());
+    if (port_vlan_id.is_set || is_set(port_vlan_id.yfilter)) leaf_name_data.push_back(port_vlan_id.get_name_leafdata());
+    if (system_capabilities.is_set || is_set(system_capabilities.yfilter)) leaf_name_data.push_back(system_capabilities.get_name_leafdata());
+    if (system_description.is_set || is_set(system_description.yfilter)) leaf_name_data.push_back(system_description.get_name_leafdata());
+    if (system_name.is_set || is_set(system_name.yfilter)) leaf_name_data.push_back(system_name.get_name_leafdata());
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2507,48 +3075,119 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-negotiation")
     {
         auto_negotiation = value;
+        auto_negotiation.value_namespace = name_space;
+        auto_negotiation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled-capabilities")
     {
         enabled_capabilities = value;
+        enabled_capabilities.value_namespace = name_space;
+        enabled_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "media-attachment-unit-type")
     {
         media_attachment_unit_type = value;
+        media_attachment_unit_type.value_namespace = name_space;
+        media_attachment_unit_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "physical-media-capabilities")
     {
         physical_media_capabilities = value;
+        physical_media_capabilities.value_namespace = name_space;
+        physical_media_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-description")
     {
         port_description = value;
+        port_description.value_namespace = name_space;
+        port_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-vlan-id")
     {
         port_vlan_id = value;
+        port_vlan_id.value_namespace = name_space;
+        port_vlan_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-capabilities")
     {
         system_capabilities = value;
+        system_capabilities.value_namespace = name_space;
+        system_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-description")
     {
         system_description = value;
+        system_description.value_namespace = name_space;
+        system_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-name")
     {
         system_name = value;
+        system_name.value_namespace = name_space;
+        system_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-remaining")
     {
         time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-negotiation")
+    {
+        auto_negotiation.yfilter = yfilter;
+    }
+    if(value_path == "enabled-capabilities")
+    {
+        enabled_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "media-attachment-unit-type")
+    {
+        media_attachment_unit_type.yfilter = yfilter;
+    }
+    if(value_path == "physical-media-capabilities")
+    {
+        physical_media_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "port-description")
+    {
+        port_description.yfilter = yfilter;
+    }
+    if(value_path == "port-vlan-id")
+    {
+        port_vlan_id.yfilter = yfilter;
+    }
+    if(value_path == "system-capabilities")
+    {
+        system_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "system-description")
+    {
+        system_description.yfilter = yfilter;
+    }
+    if(value_path == "system-name")
+    {
+        system_name.yfilter = yfilter;
+    }
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-addresses" || name == "auto-negotiation" || name == "enabled-capabilities" || name == "media-attachment-unit-type" || name == "physical-media-capabilities" || name == "port-description" || name == "port-vlan-id" || name == "system-capabilities" || name == "system-description" || name == "system-name" || name == "time-remaining")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::NetworkAddresses()
@@ -2577,7 +3216,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::Netwo
         if(lldp_addr_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::get_segment_path() const
@@ -2642,8 +3281,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-addr-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::LldpAddrEntry()
@@ -2671,9 +3321,9 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::Netwo
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_num.operation)
-	|| is_set(ma_subtype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(if_num.yfilter)
+	|| ydk::is_set(ma_subtype.yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -2700,8 +3350,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_num.is_set || is_set(if_num.operation)) leaf_name_data.push_back(if_num.get_name_leafdata());
-    if (ma_subtype.is_set || is_set(ma_subtype.operation)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
+    if (if_num.is_set || is_set(if_num.yfilter)) leaf_name_data.push_back(if_num.get_name_leafdata());
+    if (ma_subtype.is_set || is_set(ma_subtype.yfilter)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2734,16 +3384,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-num")
     {
         if_num = value;
+        if_num.value_namespace = name_space;
+        if_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ma-subtype")
     {
         ma_subtype = value;
+        ma_subtype.value_namespace = name_space;
+        ma_subtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-num")
+    {
+        if_num.yfilter = yfilter;
+    }
+    if(value_path == "ma-subtype")
+    {
+        ma_subtype.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "if-num" || name == "ma-subtype")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::Address()
@@ -2768,10 +3441,10 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::Netwo
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_type.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_type.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::get_segment_path() const
@@ -2797,9 +3470,9 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2818,20 +3491,49 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-type" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::Mib()
@@ -2875,15 +3577,15 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::has_data(
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chassis_id_len.operation)
-	|| is_set(chassis_id_sub_type.operation)
-	|| is_set(combined_capabilities.operation)
-	|| is_set(port_id_len.operation)
-	|| is_set(port_id_sub_type.operation)
-	|| is_set(rem_index.operation)
-	|| is_set(rem_local_port_num.operation)
-	|| is_set(rem_time_mark.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(chassis_id_len.yfilter)
+	|| ydk::is_set(chassis_id_sub_type.yfilter)
+	|| ydk::is_set(combined_capabilities.yfilter)
+	|| ydk::is_set(port_id_len.yfilter)
+	|| ydk::is_set(port_id_sub_type.yfilter)
+	|| ydk::is_set(rem_index.yfilter)
+	|| ydk::is_set(rem_local_port_num.yfilter)
+	|| ydk::is_set(rem_time_mark.yfilter)
 	|| (org_def_tlv_list !=  nullptr && org_def_tlv_list->has_operation())
 	|| (unknown_tlv_list !=  nullptr && unknown_tlv_list->has_operation());
 }
@@ -2911,14 +3613,14 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chassis_id_len.is_set || is_set(chassis_id_len.operation)) leaf_name_data.push_back(chassis_id_len.get_name_leafdata());
-    if (chassis_id_sub_type.is_set || is_set(chassis_id_sub_type.operation)) leaf_name_data.push_back(chassis_id_sub_type.get_name_leafdata());
-    if (combined_capabilities.is_set || is_set(combined_capabilities.operation)) leaf_name_data.push_back(combined_capabilities.get_name_leafdata());
-    if (port_id_len.is_set || is_set(port_id_len.operation)) leaf_name_data.push_back(port_id_len.get_name_leafdata());
-    if (port_id_sub_type.is_set || is_set(port_id_sub_type.operation)) leaf_name_data.push_back(port_id_sub_type.get_name_leafdata());
-    if (rem_index.is_set || is_set(rem_index.operation)) leaf_name_data.push_back(rem_index.get_name_leafdata());
-    if (rem_local_port_num.is_set || is_set(rem_local_port_num.operation)) leaf_name_data.push_back(rem_local_port_num.get_name_leafdata());
-    if (rem_time_mark.is_set || is_set(rem_time_mark.operation)) leaf_name_data.push_back(rem_time_mark.get_name_leafdata());
+    if (chassis_id_len.is_set || is_set(chassis_id_len.yfilter)) leaf_name_data.push_back(chassis_id_len.get_name_leafdata());
+    if (chassis_id_sub_type.is_set || is_set(chassis_id_sub_type.yfilter)) leaf_name_data.push_back(chassis_id_sub_type.get_name_leafdata());
+    if (combined_capabilities.is_set || is_set(combined_capabilities.yfilter)) leaf_name_data.push_back(combined_capabilities.get_name_leafdata());
+    if (port_id_len.is_set || is_set(port_id_len.yfilter)) leaf_name_data.push_back(port_id_len.get_name_leafdata());
+    if (port_id_sub_type.is_set || is_set(port_id_sub_type.yfilter)) leaf_name_data.push_back(port_id_sub_type.get_name_leafdata());
+    if (rem_index.is_set || is_set(rem_index.yfilter)) leaf_name_data.push_back(rem_index.get_name_leafdata());
+    if (rem_local_port_num.is_set || is_set(rem_local_port_num.yfilter)) leaf_name_data.push_back(rem_local_port_num.get_name_leafdata());
+    if (rem_time_mark.is_set || is_set(rem_time_mark.yfilter)) leaf_name_data.push_back(rem_time_mark.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2965,40 +3667,99 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id-len")
     {
         chassis_id_len = value;
+        chassis_id_len.value_namespace = name_space;
+        chassis_id_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chassis-id-sub-type")
     {
         chassis_id_sub_type = value;
+        chassis_id_sub_type.value_namespace = name_space;
+        chassis_id_sub_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "combined-capabilities")
     {
         combined_capabilities = value;
+        combined_capabilities.value_namespace = name_space;
+        combined_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-len")
     {
         port_id_len = value;
+        port_id_len.value_namespace = name_space;
+        port_id_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-sub-type")
     {
         port_id_sub_type = value;
+        port_id_sub_type.value_namespace = name_space;
+        port_id_sub_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-index")
     {
         rem_index = value;
+        rem_index.value_namespace = name_space;
+        rem_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-local-port-num")
     {
         rem_local_port_num = value;
+        rem_local_port_num.value_namespace = name_space;
+        rem_local_port_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-time-mark")
     {
         rem_time_mark = value;
+        rem_time_mark.value_namespace = name_space;
+        rem_time_mark.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chassis-id-len")
+    {
+        chassis_id_len.yfilter = yfilter;
+    }
+    if(value_path == "chassis-id-sub-type")
+    {
+        chassis_id_sub_type.yfilter = yfilter;
+    }
+    if(value_path == "combined-capabilities")
+    {
+        combined_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "port-id-len")
+    {
+        port_id_len.yfilter = yfilter;
+    }
+    if(value_path == "port-id-sub-type")
+    {
+        port_id_sub_type.yfilter = yfilter;
+    }
+    if(value_path == "rem-index")
+    {
+        rem_index.yfilter = yfilter;
+    }
+    if(value_path == "rem-local-port-num")
+    {
+        rem_local_port_num.yfilter = yfilter;
+    }
+    if(value_path == "rem-time-mark")
+    {
+        rem_time_mark.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "org-def-tlv-list" || name == "unknown-tlv-list" || name == "chassis-id-len" || name == "chassis-id-sub-type" || name == "combined-capabilities" || name == "port-id-len" || name == "port-id-sub-type" || name == "rem-index" || name == "rem-local-port-num" || name == "rem-time-mark")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::UnknownTlvList()
@@ -3027,7 +3788,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTl
         if(lldp_unknown_tlv_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::get_segment_path() const
@@ -3092,8 +3853,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-unknown-tlv-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::LldpUnknownTlvEntry()
@@ -3116,9 +3888,9 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTl
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tlv_type.operation)
-	|| is_set(tlv_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tlv_type.yfilter)
+	|| ydk::is_set(tlv_value.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::get_segment_path() const
@@ -3144,8 +3916,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tlv_type.is_set || is_set(tlv_type.operation)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
-    if (tlv_value.is_set || is_set(tlv_value.operation)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
+    if (tlv_type.is_set || is_set(tlv_type.yfilter)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
+    if (tlv_value.is_set || is_set(tlv_value.yfilter)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3164,16 +3936,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-type")
     {
         tlv_type = value;
+        tlv_type.value_namespace = name_space;
+        tlv_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-value")
     {
         tlv_value = value;
+        tlv_value.value_namespace = name_space;
+        tlv_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tlv-type")
+    {
+        tlv_type.yfilter = yfilter;
+    }
+    if(value_path == "tlv-value")
+    {
+        tlv_value.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tlv-type" || name == "tlv-value")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::OrgDefTlvList()
@@ -3202,7 +3997,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlv
         if(lldp_org_def_tlv_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::get_segment_path() const
@@ -3267,8 +4062,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-org-def-tlv-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::LldpOrgDefTlvEntry()
@@ -3295,11 +4101,11 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlv
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oui.operation)
-	|| is_set(tlv_info_indes.operation)
-	|| is_set(tlv_subtype.operation)
-	|| is_set(tlv_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(oui.yfilter)
+	|| ydk::is_set(tlv_info_indes.yfilter)
+	|| ydk::is_set(tlv_subtype.yfilter)
+	|| ydk::is_set(tlv_value.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::get_segment_path() const
@@ -3325,10 +4131,10 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oui.is_set || is_set(oui.operation)) leaf_name_data.push_back(oui.get_name_leafdata());
-    if (tlv_info_indes.is_set || is_set(tlv_info_indes.operation)) leaf_name_data.push_back(tlv_info_indes.get_name_leafdata());
-    if (tlv_subtype.is_set || is_set(tlv_subtype.operation)) leaf_name_data.push_back(tlv_subtype.get_name_leafdata());
-    if (tlv_value.is_set || is_set(tlv_value.operation)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
+    if (oui.is_set || is_set(oui.yfilter)) leaf_name_data.push_back(oui.get_name_leafdata());
+    if (tlv_info_indes.is_set || is_set(tlv_info_indes.yfilter)) leaf_name_data.push_back(tlv_info_indes.get_name_leafdata());
+    if (tlv_subtype.is_set || is_set(tlv_subtype.yfilter)) leaf_name_data.push_back(tlv_subtype.get_name_leafdata());
+    if (tlv_value.is_set || is_set(tlv_value.yfilter)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3347,24 +4153,59 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oui")
     {
         oui = value;
+        oui.value_namespace = name_space;
+        oui.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-info-indes")
     {
         tlv_info_indes = value;
+        tlv_info_indes.value_namespace = name_space;
+        tlv_info_indes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-subtype")
     {
         tlv_subtype = value;
+        tlv_subtype.value_namespace = name_space;
+        tlv_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-value")
     {
         tlv_value = value;
+        tlv_value.value_namespace = name_space;
+        tlv_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oui")
+    {
+        oui.yfilter = yfilter;
+    }
+    if(value_path == "tlv-info-indes")
+    {
+        tlv_info_indes.yfilter = yfilter;
+    }
+    if(value_path == "tlv-subtype")
+    {
+        tlv_subtype.yfilter = yfilter;
+    }
+    if(value_path == "tlv-value")
+    {
+        tlv_value.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oui" || name == "tlv-info-indes" || name == "tlv-subtype" || name == "tlv-value")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summaries()
@@ -3393,7 +4234,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::has_operation() const
         if(summary[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::get_segment_path() const
@@ -3458,8 +4299,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "summary")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::Summary()
@@ -3492,9 +4344,9 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::has_operation() const
         if(lldp_neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(device_id.operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::get_segment_path() const
@@ -3520,8 +4372,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3561,16 +4413,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-neighbor" || name == "device-id" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::LldpNeighbor()
@@ -3616,16 +4491,16 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::has_data() 
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chassis_id.operation)
-	|| is_set(device_id.operation)
-	|| is_set(enabled_capabilities.operation)
-	|| is_set(header_version.operation)
-	|| is_set(hold_time.operation)
-	|| is_set(platform.operation)
-	|| is_set(port_id_detail.operation)
-	|| is_set(receiving_interface_name.operation)
-	|| is_set(receiving_parent_interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(chassis_id.yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(enabled_capabilities.yfilter)
+	|| ydk::is_set(header_version.yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(platform.yfilter)
+	|| ydk::is_set(port_id_detail.yfilter)
+	|| ydk::is_set(receiving_interface_name.yfilter)
+	|| ydk::is_set(receiving_parent_interface_name.yfilter)
 	|| (detail !=  nullptr && detail->has_operation())
 	|| (mib !=  nullptr && mib->has_operation());
 }
@@ -3653,15 +4528,15 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chassis_id.is_set || is_set(chassis_id.operation)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (enabled_capabilities.is_set || is_set(enabled_capabilities.operation)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
-    if (header_version.is_set || is_set(header_version.operation)) leaf_name_data.push_back(header_version.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (platform.is_set || is_set(platform.operation)) leaf_name_data.push_back(platform.get_name_leafdata());
-    if (port_id_detail.is_set || is_set(port_id_detail.operation)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
-    if (receiving_interface_name.is_set || is_set(receiving_interface_name.operation)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
-    if (receiving_parent_interface_name.is_set || is_set(receiving_parent_interface_name.operation)) leaf_name_data.push_back(receiving_parent_interface_name.get_name_leafdata());
+    if (chassis_id.is_set || is_set(chassis_id.yfilter)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (enabled_capabilities.is_set || is_set(enabled_capabilities.yfilter)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
+    if (header_version.is_set || is_set(header_version.yfilter)) leaf_name_data.push_back(header_version.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (platform.is_set || is_set(platform.yfilter)) leaf_name_data.push_back(platform.get_name_leafdata());
+    if (port_id_detail.is_set || is_set(port_id_detail.yfilter)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
+    if (receiving_interface_name.is_set || is_set(receiving_interface_name.yfilter)) leaf_name_data.push_back(receiving_interface_name.get_name_leafdata());
+    if (receiving_parent_interface_name.is_set || is_set(receiving_parent_interface_name.yfilter)) leaf_name_data.push_back(receiving_parent_interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3708,44 +4583,109 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id")
     {
         chassis_id = value;
+        chassis_id.value_namespace = name_space;
+        chassis_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled-capabilities")
     {
         enabled_capabilities = value;
+        enabled_capabilities.value_namespace = name_space;
+        enabled_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-version")
     {
         header_version = value;
+        header_version.value_namespace = name_space;
+        header_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform")
     {
         platform = value;
+        platform.value_namespace = name_space;
+        platform.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-detail")
     {
         port_id_detail = value;
+        port_id_detail.value_namespace = name_space;
+        port_id_detail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receiving-interface-name")
     {
         receiving_interface_name = value;
+        receiving_interface_name.value_namespace = name_space;
+        receiving_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receiving-parent-interface-name")
     {
         receiving_parent_interface_name = value;
+        receiving_parent_interface_name.value_namespace = name_space;
+        receiving_parent_interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chassis-id")
+    {
+        chassis_id.yfilter = yfilter;
+    }
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "enabled-capabilities")
+    {
+        enabled_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "header-version")
+    {
+        header_version.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "platform")
+    {
+        platform.yfilter = yfilter;
+    }
+    if(value_path == "port-id-detail")
+    {
+        port_id_detail.yfilter = yfilter;
+    }
+    if(value_path == "receiving-interface-name")
+    {
+        receiving_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "receiving-parent-interface-name")
+    {
+        receiving_parent_interface_name.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "mib" || name == "chassis-id" || name == "device-id" || name == "enabled-capabilities" || name == "header-version" || name == "hold-time" || name == "platform" || name == "port-id-detail" || name == "receiving-interface-name" || name == "receiving-parent-interface-name")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::Detail()
@@ -3789,17 +4729,17 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::has
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_negotiation.operation)
-	|| is_set(enabled_capabilities.operation)
-	|| is_set(media_attachment_unit_type.operation)
-	|| is_set(physical_media_capabilities.operation)
-	|| is_set(port_description.operation)
-	|| is_set(port_vlan_id.operation)
-	|| is_set(system_capabilities.operation)
-	|| is_set(system_description.operation)
-	|| is_set(system_name.operation)
-	|| is_set(time_remaining.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(auto_negotiation.yfilter)
+	|| ydk::is_set(enabled_capabilities.yfilter)
+	|| ydk::is_set(media_attachment_unit_type.yfilter)
+	|| ydk::is_set(physical_media_capabilities.yfilter)
+	|| ydk::is_set(port_description.yfilter)
+	|| ydk::is_set(port_vlan_id.yfilter)
+	|| ydk::is_set(system_capabilities.yfilter)
+	|| ydk::is_set(system_description.yfilter)
+	|| ydk::is_set(system_name.yfilter)
+	|| ydk::is_set(time_remaining.yfilter)
 	|| (network_addresses !=  nullptr && network_addresses->has_operation());
 }
 
@@ -3826,16 +4766,16 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_negotiation.is_set || is_set(auto_negotiation.operation)) leaf_name_data.push_back(auto_negotiation.get_name_leafdata());
-    if (enabled_capabilities.is_set || is_set(enabled_capabilities.operation)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
-    if (media_attachment_unit_type.is_set || is_set(media_attachment_unit_type.operation)) leaf_name_data.push_back(media_attachment_unit_type.get_name_leafdata());
-    if (physical_media_capabilities.is_set || is_set(physical_media_capabilities.operation)) leaf_name_data.push_back(physical_media_capabilities.get_name_leafdata());
-    if (port_description.is_set || is_set(port_description.operation)) leaf_name_data.push_back(port_description.get_name_leafdata());
-    if (port_vlan_id.is_set || is_set(port_vlan_id.operation)) leaf_name_data.push_back(port_vlan_id.get_name_leafdata());
-    if (system_capabilities.is_set || is_set(system_capabilities.operation)) leaf_name_data.push_back(system_capabilities.get_name_leafdata());
-    if (system_description.is_set || is_set(system_description.operation)) leaf_name_data.push_back(system_description.get_name_leafdata());
-    if (system_name.is_set || is_set(system_name.operation)) leaf_name_data.push_back(system_name.get_name_leafdata());
-    if (time_remaining.is_set || is_set(time_remaining.operation)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (auto_negotiation.is_set || is_set(auto_negotiation.yfilter)) leaf_name_data.push_back(auto_negotiation.get_name_leafdata());
+    if (enabled_capabilities.is_set || is_set(enabled_capabilities.yfilter)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
+    if (media_attachment_unit_type.is_set || is_set(media_attachment_unit_type.yfilter)) leaf_name_data.push_back(media_attachment_unit_type.get_name_leafdata());
+    if (physical_media_capabilities.is_set || is_set(physical_media_capabilities.yfilter)) leaf_name_data.push_back(physical_media_capabilities.get_name_leafdata());
+    if (port_description.is_set || is_set(port_description.yfilter)) leaf_name_data.push_back(port_description.get_name_leafdata());
+    if (port_vlan_id.is_set || is_set(port_vlan_id.yfilter)) leaf_name_data.push_back(port_vlan_id.get_name_leafdata());
+    if (system_capabilities.is_set || is_set(system_capabilities.yfilter)) leaf_name_data.push_back(system_capabilities.get_name_leafdata());
+    if (system_description.is_set || is_set(system_description.yfilter)) leaf_name_data.push_back(system_description.get_name_leafdata());
+    if (system_name.is_set || is_set(system_name.yfilter)) leaf_name_data.push_back(system_name.get_name_leafdata());
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3868,48 +4808,119 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-negotiation")
     {
         auto_negotiation = value;
+        auto_negotiation.value_namespace = name_space;
+        auto_negotiation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled-capabilities")
     {
         enabled_capabilities = value;
+        enabled_capabilities.value_namespace = name_space;
+        enabled_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "media-attachment-unit-type")
     {
         media_attachment_unit_type = value;
+        media_attachment_unit_type.value_namespace = name_space;
+        media_attachment_unit_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "physical-media-capabilities")
     {
         physical_media_capabilities = value;
+        physical_media_capabilities.value_namespace = name_space;
+        physical_media_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-description")
     {
         port_description = value;
+        port_description.value_namespace = name_space;
+        port_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-vlan-id")
     {
         port_vlan_id = value;
+        port_vlan_id.value_namespace = name_space;
+        port_vlan_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-capabilities")
     {
         system_capabilities = value;
+        system_capabilities.value_namespace = name_space;
+        system_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-description")
     {
         system_description = value;
+        system_description.value_namespace = name_space;
+        system_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-name")
     {
         system_name = value;
+        system_name.value_namespace = name_space;
+        system_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-remaining")
     {
         time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-negotiation")
+    {
+        auto_negotiation.yfilter = yfilter;
+    }
+    if(value_path == "enabled-capabilities")
+    {
+        enabled_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "media-attachment-unit-type")
+    {
+        media_attachment_unit_type.yfilter = yfilter;
+    }
+    if(value_path == "physical-media-capabilities")
+    {
+        physical_media_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "port-description")
+    {
+        port_description.yfilter = yfilter;
+    }
+    if(value_path == "port-vlan-id")
+    {
+        port_vlan_id.yfilter = yfilter;
+    }
+    if(value_path == "system-capabilities")
+    {
+        system_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "system-description")
+    {
+        system_description.yfilter = yfilter;
+    }
+    if(value_path == "system-name")
+    {
+        system_name.yfilter = yfilter;
+    }
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-addresses" || name == "auto-negotiation" || name == "enabled-capabilities" || name == "media-attachment-unit-type" || name == "physical-media-capabilities" || name == "port-description" || name == "port-vlan-id" || name == "system-capabilities" || name == "system-description" || name == "system-name" || name == "time-remaining")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::NetworkAddresses()
@@ -3938,7 +4949,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::Net
         if(lldp_addr_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::get_segment_path() const
@@ -4003,8 +5014,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-addr-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::LldpAddrEntry()
@@ -4032,9 +5054,9 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::Net
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_num.operation)
-	|| is_set(ma_subtype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(if_num.yfilter)
+	|| ydk::is_set(ma_subtype.yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -4061,8 +5083,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_num.is_set || is_set(if_num.operation)) leaf_name_data.push_back(if_num.get_name_leafdata());
-    if (ma_subtype.is_set || is_set(ma_subtype.operation)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
+    if (if_num.is_set || is_set(if_num.yfilter)) leaf_name_data.push_back(if_num.get_name_leafdata());
+    if (ma_subtype.is_set || is_set(ma_subtype.yfilter)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4095,16 +5117,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-num")
     {
         if_num = value;
+        if_num.value_namespace = name_space;
+        if_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ma-subtype")
     {
         ma_subtype = value;
+        ma_subtype.value_namespace = name_space;
+        ma_subtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-num")
+    {
+        if_num.yfilter = yfilter;
+    }
+    if(value_path == "ma-subtype")
+    {
+        ma_subtype.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "if-num" || name == "ma-subtype")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::Address()
@@ -4129,10 +5174,10 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::Net
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_type.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_type.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::get_segment_path() const
@@ -4158,9 +5203,9 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4179,20 +5224,49 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-type" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Mib()
@@ -4236,15 +5310,15 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::has_da
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chassis_id_len.operation)
-	|| is_set(chassis_id_sub_type.operation)
-	|| is_set(combined_capabilities.operation)
-	|| is_set(port_id_len.operation)
-	|| is_set(port_id_sub_type.operation)
-	|| is_set(rem_index.operation)
-	|| is_set(rem_local_port_num.operation)
-	|| is_set(rem_time_mark.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(chassis_id_len.yfilter)
+	|| ydk::is_set(chassis_id_sub_type.yfilter)
+	|| ydk::is_set(combined_capabilities.yfilter)
+	|| ydk::is_set(port_id_len.yfilter)
+	|| ydk::is_set(port_id_sub_type.yfilter)
+	|| ydk::is_set(rem_index.yfilter)
+	|| ydk::is_set(rem_local_port_num.yfilter)
+	|| ydk::is_set(rem_time_mark.yfilter)
 	|| (org_def_tlv_list !=  nullptr && org_def_tlv_list->has_operation())
 	|| (unknown_tlv_list !=  nullptr && unknown_tlv_list->has_operation());
 }
@@ -4272,14 +5346,14 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chassis_id_len.is_set || is_set(chassis_id_len.operation)) leaf_name_data.push_back(chassis_id_len.get_name_leafdata());
-    if (chassis_id_sub_type.is_set || is_set(chassis_id_sub_type.operation)) leaf_name_data.push_back(chassis_id_sub_type.get_name_leafdata());
-    if (combined_capabilities.is_set || is_set(combined_capabilities.operation)) leaf_name_data.push_back(combined_capabilities.get_name_leafdata());
-    if (port_id_len.is_set || is_set(port_id_len.operation)) leaf_name_data.push_back(port_id_len.get_name_leafdata());
-    if (port_id_sub_type.is_set || is_set(port_id_sub_type.operation)) leaf_name_data.push_back(port_id_sub_type.get_name_leafdata());
-    if (rem_index.is_set || is_set(rem_index.operation)) leaf_name_data.push_back(rem_index.get_name_leafdata());
-    if (rem_local_port_num.is_set || is_set(rem_local_port_num.operation)) leaf_name_data.push_back(rem_local_port_num.get_name_leafdata());
-    if (rem_time_mark.is_set || is_set(rem_time_mark.operation)) leaf_name_data.push_back(rem_time_mark.get_name_leafdata());
+    if (chassis_id_len.is_set || is_set(chassis_id_len.yfilter)) leaf_name_data.push_back(chassis_id_len.get_name_leafdata());
+    if (chassis_id_sub_type.is_set || is_set(chassis_id_sub_type.yfilter)) leaf_name_data.push_back(chassis_id_sub_type.get_name_leafdata());
+    if (combined_capabilities.is_set || is_set(combined_capabilities.yfilter)) leaf_name_data.push_back(combined_capabilities.get_name_leafdata());
+    if (port_id_len.is_set || is_set(port_id_len.yfilter)) leaf_name_data.push_back(port_id_len.get_name_leafdata());
+    if (port_id_sub_type.is_set || is_set(port_id_sub_type.yfilter)) leaf_name_data.push_back(port_id_sub_type.get_name_leafdata());
+    if (rem_index.is_set || is_set(rem_index.yfilter)) leaf_name_data.push_back(rem_index.get_name_leafdata());
+    if (rem_local_port_num.is_set || is_set(rem_local_port_num.yfilter)) leaf_name_data.push_back(rem_local_port_num.get_name_leafdata());
+    if (rem_time_mark.is_set || is_set(rem_time_mark.yfilter)) leaf_name_data.push_back(rem_time_mark.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4326,40 +5400,99 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id-len")
     {
         chassis_id_len = value;
+        chassis_id_len.value_namespace = name_space;
+        chassis_id_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chassis-id-sub-type")
     {
         chassis_id_sub_type = value;
+        chassis_id_sub_type.value_namespace = name_space;
+        chassis_id_sub_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "combined-capabilities")
     {
         combined_capabilities = value;
+        combined_capabilities.value_namespace = name_space;
+        combined_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-len")
     {
         port_id_len = value;
+        port_id_len.value_namespace = name_space;
+        port_id_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-sub-type")
     {
         port_id_sub_type = value;
+        port_id_sub_type.value_namespace = name_space;
+        port_id_sub_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-index")
     {
         rem_index = value;
+        rem_index.value_namespace = name_space;
+        rem_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-local-port-num")
     {
         rem_local_port_num = value;
+        rem_local_port_num.value_namespace = name_space;
+        rem_local_port_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-time-mark")
     {
         rem_time_mark = value;
+        rem_time_mark.value_namespace = name_space;
+        rem_time_mark.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chassis-id-len")
+    {
+        chassis_id_len.yfilter = yfilter;
+    }
+    if(value_path == "chassis-id-sub-type")
+    {
+        chassis_id_sub_type.yfilter = yfilter;
+    }
+    if(value_path == "combined-capabilities")
+    {
+        combined_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "port-id-len")
+    {
+        port_id_len.yfilter = yfilter;
+    }
+    if(value_path == "port-id-sub-type")
+    {
+        port_id_sub_type.yfilter = yfilter;
+    }
+    if(value_path == "rem-index")
+    {
+        rem_index.yfilter = yfilter;
+    }
+    if(value_path == "rem-local-port-num")
+    {
+        rem_local_port_num.yfilter = yfilter;
+    }
+    if(value_path == "rem-time-mark")
+    {
+        rem_time_mark.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "org-def-tlv-list" || name == "unknown-tlv-list" || name == "chassis-id-len" || name == "chassis-id-sub-type" || name == "combined-capabilities" || name == "port-id-len" || name == "port-id-sub-type" || name == "rem-index" || name == "rem-local-port-num" || name == "rem-time-mark")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::UnknownTlvList()
@@ -4388,7 +5521,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Unknow
         if(lldp_unknown_tlv_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::get_segment_path() const
@@ -4453,8 +5586,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-unknown-tlv-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::LldpUnknownTlvEntry()
@@ -4477,9 +5621,9 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Unknow
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tlv_type.operation)
-	|| is_set(tlv_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tlv_type.yfilter)
+	|| ydk::is_set(tlv_value.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::get_segment_path() const
@@ -4505,8 +5649,8 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tlv_type.is_set || is_set(tlv_type.operation)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
-    if (tlv_value.is_set || is_set(tlv_value.operation)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
+    if (tlv_type.is_set || is_set(tlv_type.yfilter)) leaf_name_data.push_back(tlv_type.get_name_leafdata());
+    if (tlv_value.is_set || is_set(tlv_value.yfilter)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4525,16 +5669,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-type")
     {
         tlv_type = value;
+        tlv_type.value_namespace = name_space;
+        tlv_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-value")
     {
         tlv_value = value;
+        tlv_value.value_namespace = name_space;
+        tlv_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tlv-type")
+    {
+        tlv_type.yfilter = yfilter;
+    }
+    if(value_path == "tlv-value")
+    {
+        tlv_value.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tlv-type" || name == "tlv-value")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::OrgDefTlvList()
@@ -4563,7 +5730,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDef
         if(lldp_org_def_tlv_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::get_segment_path() const
@@ -4628,8 +5795,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-org-def-tlv-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::LldpOrgDefTlvEntry()
@@ -4656,11 +5834,11 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDef
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oui.operation)
-	|| is_set(tlv_info_indes.operation)
-	|| is_set(tlv_subtype.operation)
-	|| is_set(tlv_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(oui.yfilter)
+	|| ydk::is_set(tlv_info_indes.yfilter)
+	|| ydk::is_set(tlv_subtype.yfilter)
+	|| ydk::is_set(tlv_value.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::get_segment_path() const
@@ -4686,10 +5864,10 @@ const EntityPath Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oui.is_set || is_set(oui.operation)) leaf_name_data.push_back(oui.get_name_leafdata());
-    if (tlv_info_indes.is_set || is_set(tlv_info_indes.operation)) leaf_name_data.push_back(tlv_info_indes.get_name_leafdata());
-    if (tlv_subtype.is_set || is_set(tlv_subtype.operation)) leaf_name_data.push_back(tlv_subtype.get_name_leafdata());
-    if (tlv_value.is_set || is_set(tlv_value.operation)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
+    if (oui.is_set || is_set(oui.yfilter)) leaf_name_data.push_back(oui.get_name_leafdata());
+    if (tlv_info_indes.is_set || is_set(tlv_info_indes.yfilter)) leaf_name_data.push_back(tlv_info_indes.get_name_leafdata());
+    if (tlv_subtype.is_set || is_set(tlv_subtype.yfilter)) leaf_name_data.push_back(tlv_subtype.get_name_leafdata());
+    if (tlv_value.is_set || is_set(tlv_value.yfilter)) leaf_name_data.push_back(tlv_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4708,24 +5886,59 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     return children;
 }
 
-void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oui")
     {
         oui = value;
+        oui.value_namespace = name_space;
+        oui.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-info-indes")
     {
         tlv_info_indes = value;
+        tlv_info_indes.value_namespace = name_space;
+        tlv_info_indes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-subtype")
     {
         tlv_subtype = value;
+        tlv_subtype.value_namespace = name_space;
+        tlv_subtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-value")
     {
         tlv_value = value;
+        tlv_value.value_namespace = name_space;
+        tlv_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oui")
+    {
+        oui.yfilter = yfilter;
+    }
+    if(value_path == "tlv-info-indes")
+    {
+        tlv_info_indes.yfilter = yfilter;
+    }
+    if(value_path == "tlv-subtype")
+    {
+        tlv_subtype.yfilter = yfilter;
+    }
+    if(value_path == "tlv-value")
+    {
+        tlv_value.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oui" || name == "tlv-info-indes" || name == "tlv-subtype" || name == "tlv-value")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Interfaces::Interfaces()
@@ -4754,7 +5967,7 @@ bool Lldp::Nodes::Node::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Interfaces::get_segment_path() const
@@ -4819,8 +6032,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::ge
     return children;
 }
 
-void Lldp::Nodes::Node::Interfaces::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::Interface()
@@ -4864,17 +6088,17 @@ bool Lldp::Nodes::Node::Interfaces::Interface::has_data() const
 
 bool Lldp::Nodes::Node::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(if_index.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(port_description.operation)
-	|| is_set(port_id.operation)
-	|| is_set(port_id_sub_type.operation)
-	|| is_set(rx_enabled.operation)
-	|| is_set(rx_state.operation)
-	|| is_set(tx_enabled.operation)
-	|| is_set(tx_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(if_index.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(port_description.yfilter)
+	|| ydk::is_set(port_id.yfilter)
+	|| ydk::is_set(port_id_sub_type.yfilter)
+	|| ydk::is_set(rx_enabled.yfilter)
+	|| ydk::is_set(rx_state.yfilter)
+	|| ydk::is_set(tx_enabled.yfilter)
+	|| ydk::is_set(tx_state.yfilter)
 	|| (local_network_addresses !=  nullptr && local_network_addresses->has_operation());
 }
 
@@ -4901,16 +6125,16 @@ const EntityPath Lldp::Nodes::Node::Interfaces::Interface::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (if_index.is_set || is_set(if_index.operation)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (port_description.is_set || is_set(port_description.operation)) leaf_name_data.push_back(port_description.get_name_leafdata());
-    if (port_id.is_set || is_set(port_id.operation)) leaf_name_data.push_back(port_id.get_name_leafdata());
-    if (port_id_sub_type.is_set || is_set(port_id_sub_type.operation)) leaf_name_data.push_back(port_id_sub_type.get_name_leafdata());
-    if (rx_enabled.is_set || is_set(rx_enabled.operation)) leaf_name_data.push_back(rx_enabled.get_name_leafdata());
-    if (rx_state.is_set || is_set(rx_state.operation)) leaf_name_data.push_back(rx_state.get_name_leafdata());
-    if (tx_enabled.is_set || is_set(tx_enabled.operation)) leaf_name_data.push_back(tx_enabled.get_name_leafdata());
-    if (tx_state.is_set || is_set(tx_state.operation)) leaf_name_data.push_back(tx_state.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (port_description.is_set || is_set(port_description.yfilter)) leaf_name_data.push_back(port_description.get_name_leafdata());
+    if (port_id.is_set || is_set(port_id.yfilter)) leaf_name_data.push_back(port_id.get_name_leafdata());
+    if (port_id_sub_type.is_set || is_set(port_id_sub_type.yfilter)) leaf_name_data.push_back(port_id_sub_type.get_name_leafdata());
+    if (rx_enabled.is_set || is_set(rx_enabled.yfilter)) leaf_name_data.push_back(rx_enabled.get_name_leafdata());
+    if (rx_state.is_set || is_set(rx_state.yfilter)) leaf_name_data.push_back(rx_state.get_name_leafdata());
+    if (tx_enabled.is_set || is_set(tx_enabled.yfilter)) leaf_name_data.push_back(tx_enabled.get_name_leafdata());
+    if (tx_state.is_set || is_set(tx_state.yfilter)) leaf_name_data.push_back(tx_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4943,48 +6167,119 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Lldp::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-index")
     {
         if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-description")
     {
         port_description = value;
+        port_description.value_namespace = name_space;
+        port_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id")
     {
         port_id = value;
+        port_id.value_namespace = name_space;
+        port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-sub-type")
     {
         port_id_sub_type = value;
+        port_id_sub_type.value_namespace = name_space;
+        port_id_sub_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-enabled")
     {
         rx_enabled = value;
+        rx_enabled.value_namespace = name_space;
+        rx_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-state")
     {
         rx_state = value;
+        rx_state.value_namespace = name_space;
+        rx_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-enabled")
     {
         tx_enabled = value;
+        tx_enabled.value_namespace = name_space;
+        tx_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-state")
     {
         tx_state = value;
+        tx_state.value_namespace = name_space;
+        tx_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "port-description")
+    {
+        port_description.yfilter = yfilter;
+    }
+    if(value_path == "port-id")
+    {
+        port_id.yfilter = yfilter;
+    }
+    if(value_path == "port-id-sub-type")
+    {
+        port_id_sub_type.yfilter = yfilter;
+    }
+    if(value_path == "rx-enabled")
+    {
+        rx_enabled.yfilter = yfilter;
+    }
+    if(value_path == "rx-state")
+    {
+        rx_state.yfilter = yfilter;
+    }
+    if(value_path == "tx-enabled")
+    {
+        tx_enabled.yfilter = yfilter;
+    }
+    if(value_path == "tx-state")
+    {
+        tx_state.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-network-addresses" || name == "interface-name" || name == "if-index" || name == "interface-name-xr" || name == "port-description" || name == "port-id" || name == "port-id-sub-type" || name == "rx-enabled" || name == "rx-state" || name == "tx-enabled" || name == "tx-state")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LocalNetworkAddresses()
@@ -5013,7 +6308,7 @@ bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::has_operat
         if(lldp_addr_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::get_segment_path() const
@@ -5078,8 +6373,19 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-addr-entry")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::LldpAddrEntry()
@@ -5107,9 +6413,9 @@ bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEn
 
 bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_num.operation)
-	|| is_set(ma_subtype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(if_num.yfilter)
+	|| ydk::is_set(ma_subtype.yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -5136,8 +6442,8 @@ const EntityPath Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_num.is_set || is_set(if_num.operation)) leaf_name_data.push_back(if_num.get_name_leafdata());
-    if (ma_subtype.is_set || is_set(ma_subtype.operation)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
+    if (if_num.is_set || is_set(if_num.yfilter)) leaf_name_data.push_back(if_num.get_name_leafdata());
+    if (ma_subtype.is_set || is_set(ma_subtype.yfilter)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5170,16 +6476,39 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-num")
     {
         if_num = value;
+        if_num.value_namespace = name_space;
+        if_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ma-subtype")
     {
         ma_subtype = value;
+        ma_subtype.value_namespace = name_space;
+        ma_subtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-num")
+    {
+        if_num.yfilter = yfilter;
+    }
+    if(value_path == "ma-subtype")
+    {
+        ma_subtype.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "if-num" || name == "ma-subtype")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::Address()
@@ -5204,10 +6533,10 @@ bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEn
 
 bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_type.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_type.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::get_segment_path() const
@@ -5233,9 +6562,9 @@ const EntityPath Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5254,20 +6583,49 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-type" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Lldp::Nodes::Node::Statistics::Statistics()
@@ -5308,18 +6666,18 @@ bool Lldp::Nodes::Node::Statistics::has_data() const
 
 bool Lldp::Nodes::Node::Statistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aged_out_entries.operation)
-	|| is_set(bad_packets.operation)
-	|| is_set(discarded_packets.operation)
-	|| is_set(discarded_tl_vs.operation)
-	|| is_set(encapsulation_errors.operation)
-	|| is_set(out_of_memory_errors.operation)
-	|| is_set(queue_overflow_errors.operation)
-	|| is_set(received_packets.operation)
-	|| is_set(table_overflow_errors.operation)
-	|| is_set(transmitted_packets.operation)
-	|| is_set(unrecognized_tl_vs.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aged_out_entries.yfilter)
+	|| ydk::is_set(bad_packets.yfilter)
+	|| ydk::is_set(discarded_packets.yfilter)
+	|| ydk::is_set(discarded_tl_vs.yfilter)
+	|| ydk::is_set(encapsulation_errors.yfilter)
+	|| ydk::is_set(out_of_memory_errors.yfilter)
+	|| ydk::is_set(queue_overflow_errors.yfilter)
+	|| ydk::is_set(received_packets.yfilter)
+	|| ydk::is_set(table_overflow_errors.yfilter)
+	|| ydk::is_set(transmitted_packets.yfilter)
+	|| ydk::is_set(unrecognized_tl_vs.yfilter);
 }
 
 std::string Lldp::Nodes::Node::Statistics::get_segment_path() const
@@ -5345,17 +6703,17 @@ const EntityPath Lldp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aged_out_entries.is_set || is_set(aged_out_entries.operation)) leaf_name_data.push_back(aged_out_entries.get_name_leafdata());
-    if (bad_packets.is_set || is_set(bad_packets.operation)) leaf_name_data.push_back(bad_packets.get_name_leafdata());
-    if (discarded_packets.is_set || is_set(discarded_packets.operation)) leaf_name_data.push_back(discarded_packets.get_name_leafdata());
-    if (discarded_tl_vs.is_set || is_set(discarded_tl_vs.operation)) leaf_name_data.push_back(discarded_tl_vs.get_name_leafdata());
-    if (encapsulation_errors.is_set || is_set(encapsulation_errors.operation)) leaf_name_data.push_back(encapsulation_errors.get_name_leafdata());
-    if (out_of_memory_errors.is_set || is_set(out_of_memory_errors.operation)) leaf_name_data.push_back(out_of_memory_errors.get_name_leafdata());
-    if (queue_overflow_errors.is_set || is_set(queue_overflow_errors.operation)) leaf_name_data.push_back(queue_overflow_errors.get_name_leafdata());
-    if (received_packets.is_set || is_set(received_packets.operation)) leaf_name_data.push_back(received_packets.get_name_leafdata());
-    if (table_overflow_errors.is_set || is_set(table_overflow_errors.operation)) leaf_name_data.push_back(table_overflow_errors.get_name_leafdata());
-    if (transmitted_packets.is_set || is_set(transmitted_packets.operation)) leaf_name_data.push_back(transmitted_packets.get_name_leafdata());
-    if (unrecognized_tl_vs.is_set || is_set(unrecognized_tl_vs.operation)) leaf_name_data.push_back(unrecognized_tl_vs.get_name_leafdata());
+    if (aged_out_entries.is_set || is_set(aged_out_entries.yfilter)) leaf_name_data.push_back(aged_out_entries.get_name_leafdata());
+    if (bad_packets.is_set || is_set(bad_packets.yfilter)) leaf_name_data.push_back(bad_packets.get_name_leafdata());
+    if (discarded_packets.is_set || is_set(discarded_packets.yfilter)) leaf_name_data.push_back(discarded_packets.get_name_leafdata());
+    if (discarded_tl_vs.is_set || is_set(discarded_tl_vs.yfilter)) leaf_name_data.push_back(discarded_tl_vs.get_name_leafdata());
+    if (encapsulation_errors.is_set || is_set(encapsulation_errors.yfilter)) leaf_name_data.push_back(encapsulation_errors.get_name_leafdata());
+    if (out_of_memory_errors.is_set || is_set(out_of_memory_errors.yfilter)) leaf_name_data.push_back(out_of_memory_errors.get_name_leafdata());
+    if (queue_overflow_errors.is_set || is_set(queue_overflow_errors.yfilter)) leaf_name_data.push_back(queue_overflow_errors.get_name_leafdata());
+    if (received_packets.is_set || is_set(received_packets.yfilter)) leaf_name_data.push_back(received_packets.get_name_leafdata());
+    if (table_overflow_errors.is_set || is_set(table_overflow_errors.yfilter)) leaf_name_data.push_back(table_overflow_errors.get_name_leafdata());
+    if (transmitted_packets.is_set || is_set(transmitted_packets.yfilter)) leaf_name_data.push_back(transmitted_packets.get_name_leafdata());
+    if (unrecognized_tl_vs.is_set || is_set(unrecognized_tl_vs.yfilter)) leaf_name_data.push_back(unrecognized_tl_vs.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5374,56 +6732,133 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Statistics::ge
     return children;
 }
 
-void Lldp::Nodes::Node::Statistics::set_value(const std::string & value_path, std::string value)
+void Lldp::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aged-out-entries")
     {
         aged_out_entries = value;
+        aged_out_entries.value_namespace = name_space;
+        aged_out_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-packets")
     {
         bad_packets = value;
+        bad_packets.value_namespace = name_space;
+        bad_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discarded-packets")
     {
         discarded_packets = value;
+        discarded_packets.value_namespace = name_space;
+        discarded_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discarded-tl-vs")
     {
         discarded_tl_vs = value;
+        discarded_tl_vs.value_namespace = name_space;
+        discarded_tl_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation-errors")
     {
         encapsulation_errors = value;
+        encapsulation_errors.value_namespace = name_space;
+        encapsulation_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-memory-errors")
     {
         out_of_memory_errors = value;
+        out_of_memory_errors.value_namespace = name_space;
+        out_of_memory_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "queue-overflow-errors")
     {
         queue_overflow_errors = value;
+        queue_overflow_errors.value_namespace = name_space;
+        queue_overflow_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-packets")
     {
         received_packets = value;
+        received_packets.value_namespace = name_space;
+        received_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "table-overflow-errors")
     {
         table_overflow_errors = value;
+        table_overflow_errors.value_namespace = name_space;
+        table_overflow_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmitted-packets")
     {
         transmitted_packets = value;
+        transmitted_packets.value_namespace = name_space;
+        transmitted_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unrecognized-tl-vs")
     {
         unrecognized_tl_vs = value;
+        unrecognized_tl_vs.value_namespace = name_space;
+        unrecognized_tl_vs.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf LldpL3AddrProtocolEnum::ipv4 {0, "ipv4"};
-const Enum::YLeaf LldpL3AddrProtocolEnum::ipv6 {1, "ipv6"};
+void Lldp::Nodes::Node::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aged-out-entries")
+    {
+        aged_out_entries.yfilter = yfilter;
+    }
+    if(value_path == "bad-packets")
+    {
+        bad_packets.yfilter = yfilter;
+    }
+    if(value_path == "discarded-packets")
+    {
+        discarded_packets.yfilter = yfilter;
+    }
+    if(value_path == "discarded-tl-vs")
+    {
+        discarded_tl_vs.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation-errors")
+    {
+        encapsulation_errors.yfilter = yfilter;
+    }
+    if(value_path == "out-of-memory-errors")
+    {
+        out_of_memory_errors.yfilter = yfilter;
+    }
+    if(value_path == "queue-overflow-errors")
+    {
+        queue_overflow_errors.yfilter = yfilter;
+    }
+    if(value_path == "received-packets")
+    {
+        received_packets.yfilter = yfilter;
+    }
+    if(value_path == "table-overflow-errors")
+    {
+        table_overflow_errors.yfilter = yfilter;
+    }
+    if(value_path == "transmitted-packets")
+    {
+        transmitted_packets.yfilter = yfilter;
+    }
+    if(value_path == "unrecognized-tl-vs")
+    {
+        unrecognized_tl_vs.yfilter = yfilter;
+    }
+}
+
+bool Lldp::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aged-out-entries" || name == "bad-packets" || name == "discarded-packets" || name == "discarded-tl-vs" || name == "encapsulation-errors" || name == "out-of-memory-errors" || name == "queue-overflow-errors" || name == "received-packets" || name == "table-overflow-errors" || name == "transmitted-packets" || name == "unrecognized-tl-vs")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf LldpL3AddrProtocol::ipv4 {0, "ipv4"};
+const Enum::YLeaf LldpL3AddrProtocol::ipv6 {1, "ipv6"};
 
 
 }

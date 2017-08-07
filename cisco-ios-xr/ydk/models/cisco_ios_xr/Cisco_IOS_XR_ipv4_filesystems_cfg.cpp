@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_filesystems_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_filesystems_cfg {
 
 Rcp::Rcp()
@@ -29,7 +31,7 @@ bool Rcp::has_data() const
 
 bool Rcp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (rcp_client !=  nullptr && rcp_client->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Rcp::get_children() const
     return children;
 }
 
-void Rcp::set_value(const std::string & value_path, std::string value)
+void Rcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,9 +115,22 @@ augment_capabilities_function Rcp::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Rcp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Rcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rcp-client")
+        return true;
+    return false;
+}
+
 Rcp::RcpClient::RcpClient()
     :
-    source_interface{YType::str, "source-interface"}
+    source_interface{YType::str, "source-interface"},
+    username{YType::str, "username"}
 {
     yang_name = "rcp-client"; yang_parent_name = "rcp";
 }
@@ -122,13 +141,15 @@ Rcp::RcpClient::~RcpClient()
 
 bool Rcp::RcpClient::has_data() const
 {
-    return source_interface.is_set;
+    return source_interface.is_set
+	|| username.is_set;
 }
 
 bool Rcp::RcpClient::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| ydk::is_set(username.yfilter);
 }
 
 std::string Rcp::RcpClient::get_segment_path() const
@@ -154,7 +175,8 @@ const EntityPath Rcp::RcpClient::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -173,12 +195,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rcp::RcpClient::get_children() co
     return children;
 }
 
-void Rcp::RcpClient::set_value(const std::string & value_path, std::string value)
+void Rcp::RcpClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Rcp::RcpClient::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool Rcp::RcpClient::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-interface" || name == "username")
+        return true;
+    return false;
 }
 
 Ftp::Ftp()
@@ -201,7 +250,7 @@ bool Ftp::has_data() const
 
 bool Ftp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ftp_client !=  nullptr && ftp_client->has_operation());
 }
 
@@ -257,7 +306,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ftp::get_children() const
     return children;
 }
 
-void Ftp::set_value(const std::string & value_path, std::string value)
+void Ftp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ftp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -281,12 +334,25 @@ augment_capabilities_function Ftp::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Ftp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ftp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ftp-client")
+        return true;
+    return false;
+}
+
 Ftp::FtpClient::FtpClient()
     :
     anonymous_password{YType::str, "anonymous-password"},
     passive{YType::empty, "passive"},
     password{YType::str, "password"},
-    source_interface{YType::str, "source-interface"}
+    source_interface{YType::str, "source-interface"},
+    username{YType::str, "username"}
 {
     yang_name = "ftp-client"; yang_parent_name = "ftp";
 }
@@ -300,16 +366,18 @@ bool Ftp::FtpClient::has_data() const
     return anonymous_password.is_set
 	|| passive.is_set
 	|| password.is_set
-	|| source_interface.is_set;
+	|| source_interface.is_set
+	|| username.is_set;
 }
 
 bool Ftp::FtpClient::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(anonymous_password.operation)
-	|| is_set(passive.operation)
-	|| is_set(password.operation)
-	|| is_set(source_interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(anonymous_password.yfilter)
+	|| ydk::is_set(passive.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| ydk::is_set(username.yfilter);
 }
 
 std::string Ftp::FtpClient::get_segment_path() const
@@ -335,10 +403,11 @@ const EntityPath Ftp::FtpClient::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (anonymous_password.is_set || is_set(anonymous_password.operation)) leaf_name_data.push_back(anonymous_password.get_name_leafdata());
-    if (passive.is_set || is_set(passive.operation)) leaf_name_data.push_back(passive.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (anonymous_password.is_set || is_set(anonymous_password.yfilter)) leaf_name_data.push_back(anonymous_password.get_name_leafdata());
+    if (passive.is_set || is_set(passive.yfilter)) leaf_name_data.push_back(passive.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -357,24 +426,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ftp::FtpClient::get_children() co
     return children;
 }
 
-void Ftp::FtpClient::set_value(const std::string & value_path, std::string value)
+void Ftp::FtpClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "anonymous-password")
     {
         anonymous_password = value;
+        anonymous_password.value_namespace = name_space;
+        anonymous_password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passive")
     {
         passive = value;
+        passive.value_namespace = name_space;
+        passive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "username")
+    {
+        username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ftp::FtpClient::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "anonymous-password")
+    {
+        anonymous_password.yfilter = yfilter;
+    }
+    if(value_path == "passive")
+    {
+        passive.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool Ftp::FtpClient::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "anonymous-password" || name == "passive" || name == "password" || name == "source-interface" || name == "username")
+        return true;
+    return false;
 }
 
 Tftp::Tftp()
@@ -397,7 +511,7 @@ bool Tftp::has_data() const
 
 bool Tftp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tftp_client !=  nullptr && tftp_client->has_operation());
 }
 
@@ -453,7 +567,11 @@ std::map<std::string, std::shared_ptr<Entity>> Tftp::get_children() const
     return children;
 }
 
-void Tftp::set_value(const std::string & value_path, std::string value)
+void Tftp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Tftp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -477,6 +595,18 @@ augment_capabilities_function Tftp::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Tftp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Tftp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tftp-client")
+        return true;
+    return false;
+}
+
 Tftp::TftpClient::TftpClient()
     :
     source_interface{YType::str, "source-interface"}
@@ -495,8 +625,8 @@ bool Tftp::TftpClient::has_data() const
 
 bool Tftp::TftpClient::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_interface.yfilter);
 }
 
 std::string Tftp::TftpClient::get_segment_path() const
@@ -522,7 +652,7 @@ const EntityPath Tftp::TftpClient::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -541,12 +671,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::get_children() 
     return children;
 }
 
-void Tftp::TftpClient::set_value(const std::string & value_path, std::string value)
+void Tftp::TftpClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tftp::TftpClient::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+}
+
+bool Tftp::TftpClient::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-interface")
+        return true;
+    return false;
 }
 
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_group_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_group_cfg {
 
 Groups::Groups()
@@ -35,7 +37,7 @@ bool Groups::has_operation() const
         if(group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Groups::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> Groups::get_children() const
     return children;
 }
 
-void Groups::set_value(const std::string & value_path, std::string value)
+void Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Groups::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -121,6 +127,18 @@ augment_capabilities_function Groups::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Groups::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
+}
+
 Groups::Group::Group()
     :
     group_name{YType::str, "group-name"}
@@ -139,8 +157,8 @@ bool Groups::Group::has_data() const
 
 bool Groups::Group::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter);
 }
 
 std::string Groups::Group::get_segment_path() const
@@ -166,7 +184,7 @@ const EntityPath Groups::Group::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -185,12 +203,29 @@ std::map<std::string, std::shared_ptr<Entity>> Groups::Group::get_children() con
     return children;
 }
 
-void Groups::Group::set_value(const std::string & value_path, std::string value)
+void Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+}
+
+bool Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-name")
+        return true;
+    return false;
 }
 
 ApplyGroups::ApplyGroups()
@@ -211,8 +246,8 @@ bool ApplyGroups::has_data() const
 
 bool ApplyGroups::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(apply_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(apply_group.yfilter);
 }
 
 std::string ApplyGroups::get_segment_path() const
@@ -235,7 +270,7 @@ const EntityPath ApplyGroups::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (apply_group.is_set || is_set(apply_group.operation)) leaf_name_data.push_back(apply_group.get_name_leafdata());
+    if (apply_group.is_set || is_set(apply_group.yfilter)) leaf_name_data.push_back(apply_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -254,11 +289,21 @@ std::map<std::string, std::shared_ptr<Entity>> ApplyGroups::get_children() const
     return children;
 }
 
-void ApplyGroups::set_value(const std::string & value_path, std::string value)
+void ApplyGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "apply-group")
     {
         apply_group = value;
+        apply_group.value_namespace = name_space;
+        apply_group.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ApplyGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "apply-group")
+    {
+        apply_group.yfilter = yfilter;
     }
 }
 
@@ -280,6 +325,18 @@ std::string ApplyGroups::get_bundle_name() const
 augment_capabilities_function ApplyGroups::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ApplyGroups::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ApplyGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "apply-group")
+        return true;
+    return false;
 }
 
 

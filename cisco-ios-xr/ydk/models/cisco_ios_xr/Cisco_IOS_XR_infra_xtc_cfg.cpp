@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_xtc_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_xtc_cfg {
 
 Pce::Pce()
@@ -68,10 +70,10 @@ bool Pce::has_data() const
 
 bool Pce::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(password.operation)
-	|| is_set(server_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(server_address.yfilter)
 	|| (backoff !=  nullptr && backoff->has_operation())
 	|| (disjoint_path !=  nullptr && disjoint_path->has_operation())
 	|| (explicit_paths !=  nullptr && explicit_paths->has_operation())
@@ -103,9 +105,9 @@ const EntityPath Pce::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (server_address.is_set || is_set(server_address.operation)) leaf_name_data.push_back(server_address.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -250,19 +252,41 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::get_children() const
     return children;
 }
 
-void Pce::set_value(const std::string & value_path, std::string value)
+void Pce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "server-address")
     {
         server_address = value;
+        server_address.value_namespace = name_space;
+        server_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "server-address")
+    {
+        server_address.yfilter = yfilter;
     }
 }
 
@@ -284,6 +308,18 @@ std::string Pce::get_bundle_name() const
 augment_capabilities_function Pce::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Pce::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Pce::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backoff" || name == "disjoint-path" || name == "explicit-paths" || name == "logging" || name == "netconf" || name == "pcc-addresses" || name == "segment-routing" || name == "state-syncs" || name == "timers" || name == "enable" || name == "password" || name == "server-address")
+        return true;
+    return false;
 }
 
 Pce::PccAddresses::PccAddresses()
@@ -312,7 +348,7 @@ bool Pce::PccAddresses::has_operation() const
         if(pcc_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::PccAddresses::get_segment_path() const
@@ -377,8 +413,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::get_children()
     return children;
 }
 
-void Pce::PccAddresses::set_value(const std::string & value_path, std::string value)
+void Pce::PccAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::PccAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::PccAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pcc-address")
+        return true;
+    return false;
 }
 
 Pce::PccAddresses::PccAddress::PccAddress()
@@ -406,9 +453,9 @@ bool Pce::PccAddresses::PccAddress::has_data() const
 
 bool Pce::PccAddresses::PccAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (lsp_names !=  nullptr && lsp_names->has_operation());
 }
 
@@ -435,8 +482,8 @@ const EntityPath Pce::PccAddresses::PccAddress::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -469,16 +516,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::ge
     return children;
 }
 
-void Pce::PccAddresses::PccAddress::set_value(const std::string & value_path, std::string value)
+void Pce::PccAddresses::PccAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PccAddresses::PccAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::PccAddresses::PccAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-names" || name == "address" || name == "enable")
+        return true;
+    return false;
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspNames()
@@ -507,7 +577,7 @@ bool Pce::PccAddresses::PccAddress::LspNames::has_operation() const
         if(lsp_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::PccAddresses::PccAddress::LspNames::get_segment_path() const
@@ -572,8 +642,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::Ls
     return children;
 }
 
-void Pce::PccAddresses::PccAddress::LspNames::set_value(const std::string & value_path, std::string value)
+void Pce::PccAddresses::PccAddress::LspNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::PccAddresses::PccAddress::LspNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::PccAddresses::PccAddress::LspNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-name")
+        return true;
+    return false;
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspName::LspName()
@@ -605,11 +686,11 @@ bool Pce::PccAddresses::PccAddress::LspNames::LspName::has_data() const
 
 bool Pce::PccAddresses::PccAddress::LspNames::LspName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(enable.operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(undelegate.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(undelegate.yfilter)
 	|| (rsvp_te !=  nullptr && rsvp_te->has_operation());
 }
 
@@ -636,10 +717,10 @@ const EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (undelegate.is_set || is_set(undelegate.operation)) leaf_name_data.push_back(undelegate.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (undelegate.is_set || is_set(undelegate.yfilter)) leaf_name_data.push_back(undelegate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -672,24 +753,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::Ls
     return children;
 }
 
-void Pce::PccAddresses::PccAddress::LspNames::LspName::set_value(const std::string & value_path, std::string value)
+void Pce::PccAddresses::PccAddress::LspNames::LspName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "undelegate")
     {
         undelegate = value;
+        undelegate.value_namespace = name_space;
+        undelegate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PccAddresses::PccAddress::LspNames::LspName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "undelegate")
+    {
+        undelegate.yfilter = yfilter;
+    }
+}
+
+bool Pce::PccAddresses::PccAddress::LspNames::LspName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rsvp-te" || name == "name" || name == "enable" || name == "explicit-path-name" || name == "undelegate")
+        return true;
+    return false;
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::RsvpTe()
@@ -721,10 +837,10 @@ bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::has_data() const
 
 bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(enable.operation)
-	|| is_set(fast_protect.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(fast_protect.yfilter)
 	|| (affinity !=  nullptr && affinity->has_operation())
 	|| (priority !=  nullptr && priority->has_operation());
 }
@@ -752,9 +868,9 @@ const EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (fast_protect.is_set || is_set(fast_protect.operation)) leaf_name_data.push_back(fast_protect.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (fast_protect.is_set || is_set(fast_protect.yfilter)) leaf_name_data.push_back(fast_protect.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -801,20 +917,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::Ls
     return children;
 }
 
-void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::set_value(const std::string & value_path, std::string value)
+void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-protect")
     {
         fast_protect = value;
+        fast_protect.value_namespace = name_space;
+        fast_protect.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "fast-protect")
+    {
+        fast_protect.yfilter = yfilter;
+    }
+}
+
+bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity" || name == "priority" || name == "bandwidth" || name == "enable" || name == "fast-protect")
+        return true;
+    return false;
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::Affinity()
@@ -839,10 +984,10 @@ bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::has_dat
 
 bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(exclude_any.operation)
-	|| is_set(include_all.operation)
-	|| is_set(include_any.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(exclude_any.yfilter)
+	|| ydk::is_set(include_all.yfilter)
+	|| ydk::is_set(include_any.yfilter);
 }
 
 std::string Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::get_segment_path() const
@@ -868,9 +1013,9 @@ const EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (exclude_any.is_set || is_set(exclude_any.operation)) leaf_name_data.push_back(exclude_any.get_name_leafdata());
-    if (include_all.is_set || is_set(include_all.operation)) leaf_name_data.push_back(include_all.get_name_leafdata());
-    if (include_any.is_set || is_set(include_any.operation)) leaf_name_data.push_back(include_any.get_name_leafdata());
+    if (exclude_any.is_set || is_set(exclude_any.yfilter)) leaf_name_data.push_back(exclude_any.get_name_leafdata());
+    if (include_all.is_set || is_set(include_all.yfilter)) leaf_name_data.push_back(include_all.get_name_leafdata());
+    if (include_any.is_set || is_set(include_any.yfilter)) leaf_name_data.push_back(include_any.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -889,20 +1034,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::Ls
     return children;
 }
 
-void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::set_value(const std::string & value_path, std::string value)
+void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exclude-any")
     {
         exclude_any = value;
+        exclude_any.value_namespace = name_space;
+        exclude_any.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "include-all")
     {
         include_all = value;
+        include_all.value_namespace = name_space;
+        include_all.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "include-any")
     {
         include_any = value;
+        include_any.value_namespace = name_space;
+        include_any.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exclude-any")
+    {
+        exclude_any.yfilter = yfilter;
+    }
+    if(value_path == "include-all")
+    {
+        include_all.yfilter = yfilter;
+    }
+    if(value_path == "include-any")
+    {
+        include_any.yfilter = yfilter;
+    }
+}
+
+bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exclude-any" || name == "include-all" || name == "include-any")
+        return true;
+    return false;
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::Priority()
@@ -925,9 +1099,9 @@ bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::has_dat
 
 bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hold_priority.operation)
-	|| is_set(setup_priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(setup_priority.yfilter);
 }
 
 std::string Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::get_segment_path() const
@@ -953,8 +1127,8 @@ const EntityPath Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Prior
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -973,16 +1147,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::Ls
     return children;
 }
 
-void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::set_value(const std::string & value_path, std::string value)
+void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hold-priority")
     {
         hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-priority")
     {
         setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+}
+
+bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hold-priority" || name == "setup-priority")
+        return true;
+    return false;
 }
 
 Pce::Logging::Logging()
@@ -1005,9 +1202,9 @@ bool Pce::Logging::has_data() const
 
 bool Pce::Logging::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fallback.operation)
-	|| is_set(no_path.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fallback.yfilter)
+	|| ydk::is_set(no_path.yfilter);
 }
 
 std::string Pce::Logging::get_segment_path() const
@@ -1033,8 +1230,8 @@ const EntityPath Pce::Logging::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fallback.is_set || is_set(fallback.operation)) leaf_name_data.push_back(fallback.get_name_leafdata());
-    if (no_path.is_set || is_set(no_path.operation)) leaf_name_data.push_back(no_path.get_name_leafdata());
+    if (fallback.is_set || is_set(fallback.yfilter)) leaf_name_data.push_back(fallback.get_name_leafdata());
+    if (no_path.is_set || is_set(no_path.yfilter)) leaf_name_data.push_back(no_path.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1053,16 +1250,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::Logging::get_children() cons
     return children;
 }
 
-void Pce::Logging::set_value(const std::string & value_path, std::string value)
+void Pce::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fallback")
     {
         fallback = value;
+        fallback.value_namespace = name_space;
+        fallback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-path")
     {
         no_path = value;
+        no_path.value_namespace = name_space;
+        no_path.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fallback")
+    {
+        fallback.yfilter = yfilter;
+    }
+    if(value_path == "no-path")
+    {
+        no_path.yfilter = yfilter;
+    }
+}
+
+bool Pce::Logging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fallback" || name == "no-path")
+        return true;
+    return false;
 }
 
 Pce::Backoff::Backoff()
@@ -1087,10 +1307,10 @@ bool Pce::Backoff::has_data() const
 
 bool Pce::Backoff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(difference.operation)
-	|| is_set(ratio.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(difference.yfilter)
+	|| ydk::is_set(ratio.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string Pce::Backoff::get_segment_path() const
@@ -1116,9 +1336,9 @@ const EntityPath Pce::Backoff::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (difference.is_set || is_set(difference.operation)) leaf_name_data.push_back(difference.get_name_leafdata());
-    if (ratio.is_set || is_set(ratio.operation)) leaf_name_data.push_back(ratio.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (difference.is_set || is_set(difference.yfilter)) leaf_name_data.push_back(difference.get_name_leafdata());
+    if (ratio.is_set || is_set(ratio.yfilter)) leaf_name_data.push_back(ratio.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1137,20 +1357,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::Backoff::get_children() cons
     return children;
 }
 
-void Pce::Backoff::set_value(const std::string & value_path, std::string value)
+void Pce::Backoff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "difference")
     {
         difference = value;
+        difference.value_namespace = name_space;
+        difference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ratio")
     {
         ratio = value;
+        ratio.value_namespace = name_space;
+        ratio.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::Backoff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "difference")
+    {
+        difference.yfilter = yfilter;
+    }
+    if(value_path == "ratio")
+    {
+        ratio.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Pce::Backoff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "difference" || name == "ratio" || name == "threshold")
+        return true;
+    return false;
 }
 
 Pce::StateSyncs::StateSyncs()
@@ -1179,7 +1428,7 @@ bool Pce::StateSyncs::has_operation() const
         if(state_sync[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::StateSyncs::get_segment_path() const
@@ -1244,8 +1493,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::StateSyncs::get_children() c
     return children;
 }
 
-void Pce::StateSyncs::set_value(const std::string & value_path, std::string value)
+void Pce::StateSyncs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::StateSyncs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::StateSyncs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state-sync")
+        return true;
+    return false;
 }
 
 Pce::StateSyncs::StateSync::StateSync()
@@ -1266,8 +1526,8 @@ bool Pce::StateSyncs::StateSync::has_data() const
 
 bool Pce::StateSyncs::StateSync::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string Pce::StateSyncs::StateSync::get_segment_path() const
@@ -1293,7 +1553,7 @@ const EntityPath Pce::StateSyncs::StateSync::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1312,12 +1572,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::StateSyncs::StateSync::get_c
     return children;
 }
 
-void Pce::StateSyncs::StateSync::set_value(const std::string & value_path, std::string value)
+void Pce::StateSyncs::StateSync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::StateSyncs::StateSync::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool Pce::StateSyncs::StateSync::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 Pce::SegmentRouting::SegmentRouting()
@@ -1340,9 +1617,9 @@ bool Pce::SegmentRouting::has_data() const
 
 bool Pce::SegmentRouting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(strict_sid_only.operation)
-	|| is_set(te_latency.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(strict_sid_only.yfilter)
+	|| ydk::is_set(te_latency.yfilter);
 }
 
 std::string Pce::SegmentRouting::get_segment_path() const
@@ -1368,8 +1645,8 @@ const EntityPath Pce::SegmentRouting::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (strict_sid_only.is_set || is_set(strict_sid_only.operation)) leaf_name_data.push_back(strict_sid_only.get_name_leafdata());
-    if (te_latency.is_set || is_set(te_latency.operation)) leaf_name_data.push_back(te_latency.get_name_leafdata());
+    if (strict_sid_only.is_set || is_set(strict_sid_only.yfilter)) leaf_name_data.push_back(strict_sid_only.get_name_leafdata());
+    if (te_latency.is_set || is_set(te_latency.yfilter)) leaf_name_data.push_back(te_latency.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1388,16 +1665,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::SegmentRouting::get_children
     return children;
 }
 
-void Pce::SegmentRouting::set_value(const std::string & value_path, std::string value)
+void Pce::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "strict-sid-only")
     {
         strict_sid_only = value;
+        strict_sid_only.value_namespace = name_space;
+        strict_sid_only.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "te-latency")
     {
         te_latency = value;
+        te_latency.value_namespace = name_space;
+        te_latency.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "strict-sid-only")
+    {
+        strict_sid_only.yfilter = yfilter;
+    }
+    if(value_path == "te-latency")
+    {
+        te_latency.yfilter = yfilter;
+    }
+}
+
+bool Pce::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "strict-sid-only" || name == "te-latency")
+        return true;
+    return false;
 }
 
 Pce::Timers::Timers()
@@ -1422,10 +1722,10 @@ bool Pce::Timers::has_data() const
 
 bool Pce::Timers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(keepalive.operation)
-	|| is_set(minimum_peer_keepalive.operation)
-	|| is_set(reoptimization_timer.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(keepalive.yfilter)
+	|| ydk::is_set(minimum_peer_keepalive.yfilter)
+	|| ydk::is_set(reoptimization_timer.yfilter);
 }
 
 std::string Pce::Timers::get_segment_path() const
@@ -1451,9 +1751,9 @@ const EntityPath Pce::Timers::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (keepalive.is_set || is_set(keepalive.operation)) leaf_name_data.push_back(keepalive.get_name_leafdata());
-    if (minimum_peer_keepalive.is_set || is_set(minimum_peer_keepalive.operation)) leaf_name_data.push_back(minimum_peer_keepalive.get_name_leafdata());
-    if (reoptimization_timer.is_set || is_set(reoptimization_timer.operation)) leaf_name_data.push_back(reoptimization_timer.get_name_leafdata());
+    if (keepalive.is_set || is_set(keepalive.yfilter)) leaf_name_data.push_back(keepalive.get_name_leafdata());
+    if (minimum_peer_keepalive.is_set || is_set(minimum_peer_keepalive.yfilter)) leaf_name_data.push_back(minimum_peer_keepalive.get_name_leafdata());
+    if (reoptimization_timer.is_set || is_set(reoptimization_timer.yfilter)) leaf_name_data.push_back(reoptimization_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1472,20 +1772,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::Timers::get_children() const
     return children;
 }
 
-void Pce::Timers::set_value(const std::string & value_path, std::string value)
+void Pce::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "keepalive")
     {
         keepalive = value;
+        keepalive.value_namespace = name_space;
+        keepalive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-peer-keepalive")
     {
         minimum_peer_keepalive = value;
+        minimum_peer_keepalive.value_namespace = name_space;
+        minimum_peer_keepalive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reoptimization-timer")
     {
         reoptimization_timer = value;
+        reoptimization_timer.value_namespace = name_space;
+        reoptimization_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::Timers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "keepalive")
+    {
+        keepalive.yfilter = yfilter;
+    }
+    if(value_path == "minimum-peer-keepalive")
+    {
+        minimum_peer_keepalive.yfilter = yfilter;
+    }
+    if(value_path == "reoptimization-timer")
+    {
+        reoptimization_timer.yfilter = yfilter;
+    }
+}
+
+bool Pce::Timers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keepalive" || name == "minimum-peer-keepalive" || name == "reoptimization-timer")
+        return true;
+    return false;
 }
 
 Pce::Netconf::Netconf()
@@ -1508,7 +1837,7 @@ bool Pce::Netconf::has_data() const
 
 bool Pce::Netconf::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (netconf_ssh !=  nullptr && netconf_ssh->has_operation());
 }
 
@@ -1567,8 +1896,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::Netconf::get_children() cons
     return children;
 }
 
-void Pce::Netconf::set_value(const std::string & value_path, std::string value)
+void Pce::Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::Netconf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::Netconf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "netconf-ssh")
+        return true;
+    return false;
 }
 
 Pce::Netconf::NetconfSsh::NetconfSsh()
@@ -1591,9 +1931,9 @@ bool Pce::Netconf::NetconfSsh::has_data() const
 
 bool Pce::Netconf::NetconfSsh::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(netconf_ssh_password.operation)
-	|| is_set(netconf_ssh_user.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(netconf_ssh_password.yfilter)
+	|| ydk::is_set(netconf_ssh_user.yfilter);
 }
 
 std::string Pce::Netconf::NetconfSsh::get_segment_path() const
@@ -1619,8 +1959,8 @@ const EntityPath Pce::Netconf::NetconfSsh::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (netconf_ssh_password.is_set || is_set(netconf_ssh_password.operation)) leaf_name_data.push_back(netconf_ssh_password.get_name_leafdata());
-    if (netconf_ssh_user.is_set || is_set(netconf_ssh_user.operation)) leaf_name_data.push_back(netconf_ssh_user.get_name_leafdata());
+    if (netconf_ssh_password.is_set || is_set(netconf_ssh_password.yfilter)) leaf_name_data.push_back(netconf_ssh_password.get_name_leafdata());
+    if (netconf_ssh_user.is_set || is_set(netconf_ssh_user.yfilter)) leaf_name_data.push_back(netconf_ssh_user.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1639,16 +1979,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::Netconf::NetconfSsh::get_chi
     return children;
 }
 
-void Pce::Netconf::NetconfSsh::set_value(const std::string & value_path, std::string value)
+void Pce::Netconf::NetconfSsh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "netconf-ssh-password")
     {
         netconf_ssh_password = value;
+        netconf_ssh_password.value_namespace = name_space;
+        netconf_ssh_password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netconf-ssh-user")
     {
         netconf_ssh_user = value;
+        netconf_ssh_user.value_namespace = name_space;
+        netconf_ssh_user.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::Netconf::NetconfSsh::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "netconf-ssh-password")
+    {
+        netconf_ssh_password.yfilter = yfilter;
+    }
+    if(value_path == "netconf-ssh-user")
+    {
+        netconf_ssh_user.yfilter = yfilter;
+    }
+}
+
+bool Pce::Netconf::NetconfSsh::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "netconf-ssh-password" || name == "netconf-ssh-user")
+        return true;
+    return false;
 }
 
 Pce::DisjointPath::DisjointPath()
@@ -1671,7 +2034,7 @@ bool Pce::DisjointPath::has_data() const
 
 bool Pce::DisjointPath::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (groups !=  nullptr && groups->has_operation());
 }
 
@@ -1730,8 +2093,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::get_children()
     return children;
 }
 
-void Pce::DisjointPath::set_value(const std::string & value_path, std::string value)
+void Pce::DisjointPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::DisjointPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::DisjointPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groups")
+        return true;
+    return false;
 }
 
 Pce::DisjointPath::Groups::Groups()
@@ -1760,7 +2134,7 @@ bool Pce::DisjointPath::Groups::has_operation() const
         if(group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::DisjointPath::Groups::get_segment_path() const
@@ -1825,8 +2199,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::get_ch
     return children;
 }
 
-void Pce::DisjointPath::Groups::set_value(const std::string & value_path, std::string value)
+void Pce::DisjointPath::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::DisjointPath::Groups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::DisjointPath::Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
 }
 
 Pce::DisjointPath::Groups::Group::Group()
@@ -1853,11 +2238,11 @@ bool Pce::DisjointPath::Groups::Group::has_data() const
 
 bool Pce::DisjointPath::Groups::Group::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_id.operation)
-	|| is_set(dp_type.operation)
-	|| is_set(sub_id.operation)
-	|| is_set(strict.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_id.yfilter)
+	|| ydk::is_set(dp_type.yfilter)
+	|| ydk::is_set(sub_id.yfilter)
+	|| ydk::is_set(strict.yfilter);
 }
 
 std::string Pce::DisjointPath::Groups::Group::get_segment_path() const
@@ -1883,10 +2268,10 @@ const EntityPath Pce::DisjointPath::Groups::Group::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
-    if (dp_type.is_set || is_set(dp_type.operation)) leaf_name_data.push_back(dp_type.get_name_leafdata());
-    if (sub_id.is_set || is_set(sub_id.operation)) leaf_name_data.push_back(sub_id.get_name_leafdata());
-    if (strict.is_set || is_set(strict.operation)) leaf_name_data.push_back(strict.get_name_leafdata());
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (dp_type.is_set || is_set(dp_type.yfilter)) leaf_name_data.push_back(dp_type.get_name_leafdata());
+    if (sub_id.is_set || is_set(sub_id.yfilter)) leaf_name_data.push_back(sub_id.get_name_leafdata());
+    if (strict.is_set || is_set(strict.yfilter)) leaf_name_data.push_back(strict.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1905,24 +2290,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::Group:
     return children;
 }
 
-void Pce::DisjointPath::Groups::Group::set_value(const std::string & value_path, std::string value)
+void Pce::DisjointPath::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-id")
     {
         group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dp-type")
     {
         dp_type = value;
+        dp_type.value_namespace = name_space;
+        dp_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-id")
     {
         sub_id = value;
+        sub_id.value_namespace = name_space;
+        sub_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "strict")
     {
         strict = value;
+        strict.value_namespace = name_space;
+        strict.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::DisjointPath::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+    if(value_path == "dp-type")
+    {
+        dp_type.yfilter = yfilter;
+    }
+    if(value_path == "sub-id")
+    {
+        sub_id.yfilter = yfilter;
+    }
+    if(value_path == "strict")
+    {
+        strict.yfilter = yfilter;
+    }
+}
+
+bool Pce::DisjointPath::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-id" || name == "dp-type" || name == "sub-id" || name == "strict")
+        return true;
+    return false;
 }
 
 Pce::ExplicitPaths::ExplicitPaths()
@@ -1951,7 +2371,7 @@ bool Pce::ExplicitPaths::has_operation() const
         if(explicit_path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::ExplicitPaths::get_segment_path() const
@@ -2016,8 +2436,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::get_children(
     return children;
 }
 
-void Pce::ExplicitPaths::set_value(const std::string & value_path, std::string value)
+void Pce::ExplicitPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::ExplicitPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::ExplicitPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-path")
+        return true;
+    return false;
 }
 
 Pce::ExplicitPaths::ExplicitPath::ExplicitPath()
@@ -2045,9 +2476,9 @@ bool Pce::ExplicitPaths::ExplicitPath::has_data() const
 
 bool Pce::ExplicitPaths::ExplicitPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (path_hops !=  nullptr && path_hops->has_operation());
 }
 
@@ -2074,8 +2505,8 @@ const EntityPath Pce::ExplicitPaths::ExplicitPath::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2108,16 +2539,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::ExplicitPath:
     return children;
 }
 
-void Pce::ExplicitPaths::ExplicitPath::set_value(const std::string & value_path, std::string value)
+void Pce::ExplicitPaths::ExplicitPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::ExplicitPaths::ExplicitPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pce::ExplicitPaths::ExplicitPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-hops" || name == "name" || name == "enable")
+        return true;
+    return false;
 }
 
 Pce::ExplicitPaths::ExplicitPath::PathHops::PathHops()
@@ -2146,7 +2600,7 @@ bool Pce::ExplicitPaths::ExplicitPath::PathHops::has_operation() const
         if(path_hop[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::ExplicitPaths::ExplicitPath::PathHops::get_segment_path() const
@@ -2211,8 +2665,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::ExplicitPath:
     return children;
 }
 
-void Pce::ExplicitPaths::ExplicitPath::PathHops::set_value(const std::string & value_path, std::string value)
+void Pce::ExplicitPaths::ExplicitPath::PathHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::ExplicitPaths::ExplicitPath::PathHops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::ExplicitPaths::ExplicitPath::PathHops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-hop")
+        return true;
+    return false;
 }
 
 Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::PathHop()
@@ -2241,12 +2706,12 @@ bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_data() const
 
 bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
-	|| is_set(address.operation)
-	|| is_set(hop_type.operation)
-	|| is_set(mpls_label.operation)
-	|| is_set(remote_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(hop_type.yfilter)
+	|| ydk::is_set(mpls_label.yfilter)
+	|| ydk::is_set(remote_address.yfilter);
 }
 
 std::string Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_segment_path() const
@@ -2272,11 +2737,11 @@ const EntityPath Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (hop_type.is_set || is_set(hop_type.operation)) leaf_name_data.push_back(hop_type.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2295,38 +2760,79 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::ExplicitPath:
     return children;
 }
 
-void Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::set_value(const std::string & value_path, std::string value)
+void Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hop-type")
     {
         hop_type = value;
+        hop_type.value_namespace = name_space;
+        hop_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf PceExplicitPathHopEnum::address {1, "address"};
-const Enum::YLeaf PceExplicitPathHopEnum::sid_node {2, "sid-node"};
-const Enum::YLeaf PceExplicitPathHopEnum::sid_adjancency {3, "sid-adjancency"};
-const Enum::YLeaf PceExplicitPathHopEnum::binding_sid {4, "binding-sid"};
+void Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf PceDisjointPathEnum::link {1, "link"};
-const Enum::YLeaf PceDisjointPathEnum::node {2, "node"};
-const Enum::YLeaf PceDisjointPathEnum::srlg {3, "srlg"};
+bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index" || name == "address" || name == "hop-type" || name == "mpls-label" || name == "remote-address")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf PceExplicitPathHop::address {1, "address"};
+const Enum::YLeaf PceExplicitPathHop::sid_node {2, "sid-node"};
+const Enum::YLeaf PceExplicitPathHop::sid_adjancency {3, "sid-adjancency"};
+const Enum::YLeaf PceExplicitPathHop::binding_sid {4, "binding-sid"};
+
+const Enum::YLeaf PceDisjointPath::link {1, "link"};
+const Enum::YLeaf PceDisjointPath::node {2, "node"};
+const Enum::YLeaf PceDisjointPath::srlg {3, "srlg"};
 
 
 }

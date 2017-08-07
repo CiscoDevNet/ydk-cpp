@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_new_dhcpv6d_oper {
 
-class Dhcpv6 : public Entity
+class Dhcpv6 : public ydk::Entity
 {
     public:
         Dhcpv6();
@@ -18,15 +18,18 @@ class Dhcpv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class IssuStatus; //type: Dhcpv6::IssuStatus
         class Nodes; //type: Dhcpv6::Nodes
@@ -37,7 +40,7 @@ class Dhcpv6 : public Entity
 }; // Dhcpv6
 
 
-class Dhcpv6::IssuStatus : public Entity
+class Dhcpv6::IssuStatus : public ydk::Entity
 {
     public:
         IssuStatus();
@@ -45,27 +48,29 @@ class Dhcpv6::IssuStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf process_start_time; //type: uint64
-        YLeaf issu_sync_complete_time; //type: uint64
-        YLeaf issu_sync_start_time; //type: uint64
-        YLeaf issu_ready_time; //type: uint64
-        YLeaf big_bang_time; //type: uint64
-        YLeaf primary_role_time; //type: uint64
-        YLeaf issu_ready_issu_mgr_connection; //type: boolean
-        YLeaf role; //type: Dhcpv6IssuRoleEnum
-        YLeaf phase; //type: DhcpIssuPhaseEnum
-        YLeaf version; //type: Dhcpv6IssuVersionEnum
+        ydk::YLeaf process_start_time; //type: uint64
+        ydk::YLeaf issu_sync_complete_time; //type: uint64
+        ydk::YLeaf issu_sync_start_time; //type: uint64
+        ydk::YLeaf issu_ready_time; //type: uint64
+        ydk::YLeaf big_bang_time; //type: uint64
+        ydk::YLeaf primary_role_time; //type: uint64
+        ydk::YLeaf issu_ready_issu_mgr_connection; //type: boolean
+        ydk::YLeaf role; //type: Dhcpv6IssuRole
+        ydk::YLeaf phase; //type: DhcpIssuPhase
+        ydk::YLeaf version; //type: Dhcpv6IssuVersion
 
 }; // Dhcpv6::IssuStatus
 
 
-class Dhcpv6::Nodes : public Entity
+class Dhcpv6::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -73,11 +78,13 @@ class Dhcpv6::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: Dhcpv6::Nodes::Node
 
@@ -86,7 +93,7 @@ class Dhcpv6::Nodes : public Entity
 }; // Dhcpv6::Nodes
 
 
-class Dhcpv6::Nodes::Node : public Entity
+class Dhcpv6::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -94,13 +101,15 @@ class Dhcpv6::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class Proxy; //type: Dhcpv6::Nodes::Node::Proxy
         class Base; //type: Dhcpv6::Nodes::Node::Base
         class Server; //type: Dhcpv6::Nodes::Node::Server
@@ -114,7 +123,7 @@ class Dhcpv6::Nodes::Node : public Entity
 }; // Dhcpv6::Nodes::Node
 
 
-class Dhcpv6::Nodes::Node::Proxy : public Entity
+class Dhcpv6::Nodes::Node::Proxy : public ydk::Entity
 {
     public:
         Proxy();
@@ -122,11 +131,13 @@ class Dhcpv6::Nodes::Node::Proxy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrfs; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs
         class Profiles; //type: Dhcpv6::Nodes::Node::Proxy::Profiles
@@ -143,7 +154,7 @@ class Dhcpv6::Nodes::Node::Proxy : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -151,11 +162,13 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf
 
@@ -164,7 +177,7 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -172,13 +185,15 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Statistics; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics> statistics;
@@ -186,7 +201,7 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -194,11 +209,13 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Solicit; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit
         class Advertise; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise
@@ -239,7 +256,7 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit : public ydk::Entity
 {
     public:
         Solicit();
@@ -247,20 +264,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise : public ydk::Entity
 {
     public:
         Advertise();
@@ -268,20 +287,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request : public ydk::Entity
 {
     public:
         Request();
@@ -289,20 +310,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply : public ydk::Entity
 {
     public:
         Reply();
@@ -310,20 +333,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Confirm : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Confirm : public ydk::Entity
 {
     public:
         Confirm();
@@ -331,20 +356,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Confirm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Confirm
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline : public ydk::Entity
 {
     public:
         Decline();
@@ -352,20 +379,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Renew : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Renew : public ydk::Entity
 {
     public:
         Renew();
@@ -373,20 +402,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Renew : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Renew
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Rebind : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Rebind : public ydk::Entity
 {
     public:
         Rebind();
@@ -394,20 +425,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Rebind : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Rebind
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release : public ydk::Entity
 {
     public:
         Release();
@@ -415,20 +448,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reconfig : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reconfig : public ydk::Entity
 {
     public:
         Reconfig();
@@ -436,20 +471,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reconfig : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reconfig
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform : public ydk::Entity
 {
     public:
         Inform();
@@ -457,20 +494,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayForward : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayForward : public ydk::Entity
 {
     public:
         RelayForward();
@@ -478,20 +517,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayForward : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayForward
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayReply : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayReply : public ydk::Entity
 {
     public:
         RelayReply();
@@ -499,20 +540,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayReply : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayReply
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery : public ydk::Entity
 {
     public:
         LeaseQuery();
@@ -520,20 +563,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryReply : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryReply : public ydk::Entity
 {
     public:
         LeaseQueryReply();
@@ -541,20 +586,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryReply : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryReply
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryDone : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryDone : public ydk::Entity
 {
     public:
         LeaseQueryDone();
@@ -562,20 +609,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryDone : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryDone
 
 
-class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryData : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryData : public ydk::Entity
 {
     public:
         LeaseQueryData();
@@ -583,20 +632,22 @@ class Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryData : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryData
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles : public ydk::Entity
 {
     public:
         Profiles();
@@ -604,11 +655,13 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Profile; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile
 
@@ -617,7 +670,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile : public ydk::Entity
 {
     public:
         Profile();
@@ -625,13 +678,15 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_name; //type: string
+        ydk::YLeaf profile_name; //type: string
         class ThrottleInfos; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos
         class Info; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info
 
@@ -641,7 +696,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos : public ydk::Entity
 {
     public:
         ThrottleInfos();
@@ -649,11 +704,13 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThrottleInfo; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
@@ -662,7 +719,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos : public Enti
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo : public ydk::Entity
 {
     public:
         ThrottleInfo();
@@ -670,22 +727,24 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mac_address; //type: string
-        YLeaf binding_chaddr; //type: string
-        YLeaf ifname; //type: string
-        YLeaf state; //type: uint32
-        YLeaf time_left; //type: uint32
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf binding_chaddr; //type: string
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf state; //type: uint32
+        ydk::YLeaf time_left; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info : public ydk::Entity
 {
     public:
         Info();
@@ -693,18 +752,20 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_name; //type: string
-        YLeaf remote_id; //type: string
-        YLeaf profile_link_address; //type: string
-        YLeafList profile_helper_address; //type: list of  string
-        YLeafList vrf_name; //type: list of  string
-        YLeafList interface_name; //type: list of  string
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf remote_id; //type: string
+        ydk::YLeaf profile_link_address; //type: string
+        ydk::YLeafList profile_helper_address; //type: list of  string
+        ydk::YLeafList vrf_name; //type: list of  string
+        ydk::YLeafList interface_name; //type: list of  string
         class InterfaceIdReferences; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
         class VrfReferences; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences
         class InterfaceReferences; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences
@@ -716,7 +777,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences : public ydk::Entity
 {
     public:
         InterfaceIdReferences();
@@ -724,11 +785,13 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6Dhcpv6DProxyIidReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference
 
@@ -737,7 +800,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference : public ydk::Entity
 {
     public:
         Ipv6Dhcpv6DProxyIidReference();
@@ -745,19 +808,21 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf proxy_iid_interface_name; //type: string
-        YLeaf proxy_interface_id; //type: string
+        ydk::YLeaf proxy_iid_interface_name; //type: string
+        ydk::YLeaf proxy_interface_id; //type: string
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences : public ydk::Entity
 {
     public:
         VrfReferences();
@@ -765,11 +830,13 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6Dhcpv6DProxyVrfReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference
 
@@ -778,7 +845,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences : publi
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference : public ydk::Entity
 {
     public:
         Ipv6Dhcpv6DProxyVrfReference();
@@ -786,18 +853,20 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dh
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf proxy_reference_vrf_name; //type: string
+        ydk::YLeaf proxy_reference_vrf_name; //type: string
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences : public ydk::Entity
 {
     public:
         InterfaceReferences();
@@ -805,11 +874,13 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6Dhcpv6DProxyInterfaceReference; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference
 
@@ -818,7 +889,7 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences :
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences
 
 
-class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference : public ydk::Entity
 {
     public:
         Ipv6Dhcpv6DProxyInterfaceReference();
@@ -826,18 +897,20 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf proxy_reference_interface_name; //type: string
+        ydk::YLeaf proxy_reference_interface_name; //type: string
 
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference
 
 
-class Dhcpv6::Nodes::Node::Proxy::Interfaces : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -845,11 +918,13 @@ class Dhcpv6::Nodes::Node::Proxy::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface
 
@@ -858,7 +933,7 @@ class Dhcpv6::Nodes::Node::Proxy::Interfaces : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Interfaces
 
 
-class Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -866,29 +941,31 @@ class Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf proxy_vrf_name; //type: string
-        YLeaf proxy_interface_mode; //type: BagDhcpv6DSubModeEnum
-        YLeaf is_proxy_interface_ambiguous; //type: uint32
-        YLeaf proxy_interface_profile_name; //type: string
-        YLeaf proxy_interface_lease_limit_type; //type: LeaseLimitEnum
-        YLeaf proxy_interface_lease_limits; //type: uint32
-        YLeaf srg_role; //type: BagDhcpv6DIntfSrgRoleEnum
-        YLeaf serg_role; //type: BagDhcpv6DIntfSergRoleEnum
-        YLeaf mac_throttle; //type: boolean
-        YLeaf srg_vrf_name; //type: string
-        YLeaf srgp2p; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf proxy_vrf_name; //type: string
+        ydk::YLeaf proxy_interface_mode; //type: BagDhcpv6DSubMode
+        ydk::YLeaf is_proxy_interface_ambiguous; //type: uint32
+        ydk::YLeaf proxy_interface_profile_name; //type: string
+        ydk::YLeaf proxy_interface_lease_limit_type; //type: LeaseLimit
+        ydk::YLeaf proxy_interface_lease_limits; //type: uint32
+        ydk::YLeaf srg_role; //type: BagDhcpv6DIntfSrgRole
+        ydk::YLeaf serg_role; //type: BagDhcpv6DIntfSergRole
+        ydk::YLeaf mac_throttle; //type: boolean
+        ydk::YLeaf srg_vrf_name; //type: string
+        ydk::YLeaf srgp2p; //type: boolean
 
 }; // Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface
 
 
-class Dhcpv6::Nodes::Node::Proxy::Statistics : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -896,11 +973,13 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6Dhcpv6DProxyStat; //type: Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat
 
@@ -909,7 +988,7 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Statistics
 
 
-class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat : public ydk::Entity
 {
     public:
         Ipv6Dhcpv6DProxyStat();
@@ -917,13 +996,15 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Statistics_; //type: Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_> statistics;
@@ -931,7 +1012,7 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat : public Enti
 }; // Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat
 
 
-class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_ : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_ : public ydk::Entity
 {
     public:
         Statistics_();
@@ -939,20 +1020,22 @@ class Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_ 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -960,11 +1043,13 @@ class Dhcpv6::Nodes::Node::Proxy::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Clients; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients
         class Summary; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Summary
@@ -975,7 +1060,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Binding
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients : public ydk::Entity
 {
     public:
         Clients();
@@ -983,11 +1068,13 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Client; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client
 
@@ -996,7 +1083,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client : public ydk::Entity
 {
     public:
         Client();
@@ -1004,41 +1091,43 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf client_id; //type: string
-        YLeaf duid; //type: string
-        YLeaf client_flag; //type: uint32
-        YLeaf subscriber_label; //type: uint32
-        YLeaf vrf_name; //type: string
-        YLeaf mac_address; //type: string
-        YLeaf ia_id_p_ds; //type: uint32
-        YLeaf interface_name; //type: string
-        YLeaf access_vrf_name; //type: string
-        YLeaf proxy_binding_tags; //type: uint8
-        YLeaf proxy_binding_outer_tag; //type: uint32
-        YLeaf proxy_binding_inner_tag; //type: uint32
-        YLeaf class_name; //type: string
-        YLeaf pool_name; //type: string
-        YLeaf rx_remote_id; //type: string
-        YLeaf tx_remote_id; //type: string
-        YLeaf rx_interface_id; //type: string
-        YLeaf tx_interface_id; //type: string
-        YLeaf server_ipv6_address; //type: string
-        YLeaf profile_name; //type: string
-        YLeaf framed_ipv6_prefix; //type: string
-        YLeaf framed_prefix_length; //type: uint8
-        YLeaf is_nak_next_renew; //type: boolean
-        YLeaf srg_state; //type: uint32
-        YLeaf srg_intf_role; //type: uint32
-        YLeaf srgp2p; //type: boolean
-        YLeaf srg_vrf_name; //type: string
-        YLeaf serg_state; //type: uint32
-        YLeaf serg_intf_role; //type: uint32
+        ydk::YLeaf client_id; //type: string
+        ydk::YLeaf duid; //type: string
+        ydk::YLeaf client_flag; //type: uint32
+        ydk::YLeaf subscriber_label; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf ia_id_p_ds; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf access_vrf_name; //type: string
+        ydk::YLeaf proxy_binding_tags; //type: uint8
+        ydk::YLeaf proxy_binding_outer_tag; //type: uint32
+        ydk::YLeaf proxy_binding_inner_tag; //type: uint32
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf pool_name; //type: string
+        ydk::YLeaf rx_remote_id; //type: string
+        ydk::YLeaf tx_remote_id; //type: string
+        ydk::YLeaf rx_interface_id; //type: string
+        ydk::YLeaf tx_interface_id; //type: string
+        ydk::YLeaf server_ipv6_address; //type: string
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf framed_ipv6_prefix; //type: string
+        ydk::YLeaf framed_prefix_length; //type: uint8
+        ydk::YLeaf is_nak_next_renew; //type: boolean
+        ydk::YLeaf srg_state; //type: uint32
+        ydk::YLeaf srg_intf_role; //type: uint32
+        ydk::YLeaf srgp2p; //type: boolean
+        ydk::YLeaf srg_vrf_name; //type: string
+        ydk::YLeaf serg_state; //type: uint32
+        ydk::YLeaf serg_intf_role; //type: uint32
         class IaIdPd; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd> ia_id_pd;
@@ -1046,7 +1135,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd : public ydk::Entity
 {
     public:
         IaIdPd();
@@ -1054,11 +1143,13 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BagDhcpv6DIaIdPdInfo; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
 
@@ -1067,7 +1158,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd : public Enti
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo : public ydk::Entity
 {
     public:
         BagDhcpv6DIaIdPdInfo();
@@ -1075,17 +1166,19 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ia_type; //type: BagDhcpv6DIaIdEnum
-        YLeaf ia_id; //type: uint32
-        YLeaf flags; //type: uint32
-        YLeaf total_address; //type: uint16
-        YLeaf state; //type: BagDhcpv6DFsmStateEnum
+        ydk::YLeaf ia_type; //type: BagDhcpv6DIaId
+        ydk::YLeaf ia_id; //type: uint32
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf total_address; //type: uint16
+        ydk::YLeaf state; //type: BagDhcpv6DFsmState
         class Addresses; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses> addresses;
@@ -1093,7 +1186,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses : public ydk::Entity
 {
     public:
         Addresses();
@@ -1101,11 +1194,13 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BagDhcpv6DAddrAttrb; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
 
@@ -1114,7 +1209,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb : public ydk::Entity
 {
     public:
         BagDhcpv6DAddrAttrb();
@@ -1122,21 +1217,23 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf lease_time; //type: uint32
-        YLeaf remaining_lease_time; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf lease_time; //type: uint32
+        ydk::YLeaf remaining_lease_time; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Summary : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -1144,13 +1241,15 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf clients; //type: uint32
+        ydk::YLeaf clients; //type: uint32
         class Iana; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana
         class Iapd; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd
 
@@ -1160,7 +1259,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary : public Entity
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Summary
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana : public ydk::Entity
 {
     public:
         Iana();
@@ -1168,24 +1267,26 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf initializing_clients; //type: uint32
-        YLeaf dpm_waiting_clients; //type: uint32
-        YLeaf daps_waiting_clients; //type: uint32
-        YLeaf msg_waiting_clients; //type: uint32
-        YLeaf iedge_waiting_clients; //type: uint32
-        YLeaf rib_waiting_clients; //type: uint32
-        YLeaf bound_clients; //type: uint32
+        ydk::YLeaf initializing_clients; //type: uint32
+        ydk::YLeaf dpm_waiting_clients; //type: uint32
+        ydk::YLeaf daps_waiting_clients; //type: uint32
+        ydk::YLeaf msg_waiting_clients; //type: uint32
+        ydk::YLeaf iedge_waiting_clients; //type: uint32
+        ydk::YLeaf rib_waiting_clients; //type: uint32
+        ydk::YLeaf bound_clients; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana
 
 
-class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd : public Entity
+class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd : public ydk::Entity
 {
     public:
         Iapd();
@@ -1193,24 +1294,26 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf initializing_clients; //type: uint32
-        YLeaf dpm_waiting_clients; //type: uint32
-        YLeaf daps_waiting_clients; //type: uint32
-        YLeaf msg_waiting_clients; //type: uint32
-        YLeaf iedge_waiting_clients; //type: uint32
-        YLeaf rib_waiting_clients; //type: uint32
-        YLeaf bound_clients; //type: uint32
+        ydk::YLeaf initializing_clients; //type: uint32
+        ydk::YLeaf dpm_waiting_clients; //type: uint32
+        ydk::YLeaf daps_waiting_clients; //type: uint32
+        ydk::YLeaf msg_waiting_clients; //type: uint32
+        ydk::YLeaf iedge_waiting_clients; //type: uint32
+        ydk::YLeaf rib_waiting_clients; //type: uint32
+        ydk::YLeaf bound_clients; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd
 
 
-class Dhcpv6::Nodes::Node::Base : public Entity
+class Dhcpv6::Nodes::Node::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1218,11 +1321,13 @@ class Dhcpv6::Nodes::Node::Base : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Database; //type: Dhcpv6::Nodes::Node::Base::Database
         class AddrBindings; //type: Dhcpv6::Nodes::Node::Base::AddrBindings
@@ -1233,7 +1338,7 @@ class Dhcpv6::Nodes::Node::Base : public Entity
 }; // Dhcpv6::Nodes::Node::Base
 
 
-class Dhcpv6::Nodes::Node::Base::Database : public Entity
+class Dhcpv6::Nodes::Node::Base::Database : public ydk::Entity
 {
     public:
         Database();
@@ -1241,33 +1346,35 @@ class Dhcpv6::Nodes::Node::Base::Database : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf configured; //type: boolean
-        YLeaf version; //type: uint32
-        YLeaf full_file_write_interval; //type: uint32
-        YLeaf last_full_write_file_name; //type: string
-        YLeaf last_full_write_time; //type: uint32
-        YLeaf full_file_write_count; //type: uint32
-        YLeaf failed_full_file_write_count; //type: uint32
-        YLeaf full_file_record_count; //type: uint32
-        YLeaf last_full_file_write_error_timestamp; //type: uint32
-        YLeaf incremental_file_write_interval; //type: uint32
-        YLeaf last_incremental_write_file_name; //type: string
-        YLeaf last_incremental_write_time; //type: uint32
-        YLeaf incremental_file_write_count; //type: uint32
-        YLeaf failed_incremental_file_write_count; //type: uint32
-        YLeaf incremental_file_record_count; //type: uint32
-        YLeaf last_incremental_file_write_error_timestamp; //type: uint32
+        ydk::YLeaf configured; //type: boolean
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf full_file_write_interval; //type: uint32
+        ydk::YLeaf last_full_write_file_name; //type: string
+        ydk::YLeaf last_full_write_time; //type: uint32
+        ydk::YLeaf full_file_write_count; //type: uint32
+        ydk::YLeaf failed_full_file_write_count; //type: uint32
+        ydk::YLeaf full_file_record_count; //type: uint32
+        ydk::YLeaf last_full_file_write_error_timestamp; //type: uint32
+        ydk::YLeaf incremental_file_write_interval; //type: uint32
+        ydk::YLeaf last_incremental_write_file_name; //type: string
+        ydk::YLeaf last_incremental_write_time; //type: uint32
+        ydk::YLeaf incremental_file_write_count; //type: uint32
+        ydk::YLeaf failed_incremental_file_write_count; //type: uint32
+        ydk::YLeaf incremental_file_record_count; //type: uint32
+        ydk::YLeaf last_incremental_file_write_error_timestamp; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Base::Database
 
 
-class Dhcpv6::Nodes::Node::Base::AddrBindings : public Entity
+class Dhcpv6::Nodes::Node::Base::AddrBindings : public ydk::Entity
 {
     public:
         AddrBindings();
@@ -1275,11 +1382,13 @@ class Dhcpv6::Nodes::Node::Base::AddrBindings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AddrBinding; //type: Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding
 
@@ -1288,7 +1397,7 @@ class Dhcpv6::Nodes::Node::Base::AddrBindings : public Entity
 }; // Dhcpv6::Nodes::Node::Base::AddrBindings
 
 
-class Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding : public Entity
+class Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding : public ydk::Entity
 {
     public:
         AddrBinding();
@@ -1296,42 +1405,44 @@ class Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf addr_string; //type: string
-        YLeaf mac_address; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf server_vrf_name; //type: string
-        YLeaf ipv6_address; //type: string
-        YLeaf server_ipv6_address; //type: string
-        YLeaf reply_server_ipv6_address; //type: string
-        YLeaf lease_time; //type: uint32
-        YLeaf remaining_lease_time; //type: uint32
-        YLeaf state; //type: BagDhcpv6DFsmStateEnum
-        YLeaf interface_name; //type: string
-        YLeaf access_vrf_name; //type: string
-        YLeaf base_binding_tags; //type: uint8
-        YLeaf base_binding_outer_tag; //type: uint32
-        YLeaf base_binding_inner_tag; //type: uint32
-        YLeaf profile_name; //type: string
-        YLeaf is_nak_next_renew; //type: boolean
-        YLeaf subscriber_label; //type: uint32
-        YLeaf old_subscriber_label; //type: uint32
-        YLeaf rx_client_duid; //type: string
-        YLeaf tx_client_uid; //type: string
-        YLeaf rx_remote_id; //type: string
-        YLeaf tx_remote_id; //type: string
-        YLeaf rx_interface_id; //type: string
-        YLeaf tx_interface_id; //type: string
+        ydk::YLeaf addr_string; //type: string
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf server_vrf_name; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf server_ipv6_address; //type: string
+        ydk::YLeaf reply_server_ipv6_address; //type: string
+        ydk::YLeaf lease_time; //type: uint32
+        ydk::YLeaf remaining_lease_time; //type: uint32
+        ydk::YLeaf state; //type: BagDhcpv6DFsmState
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf access_vrf_name; //type: string
+        ydk::YLeaf base_binding_tags; //type: uint8
+        ydk::YLeaf base_binding_outer_tag; //type: uint32
+        ydk::YLeaf base_binding_inner_tag; //type: uint32
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf is_nak_next_renew; //type: boolean
+        ydk::YLeaf subscriber_label; //type: uint32
+        ydk::YLeaf old_subscriber_label; //type: uint32
+        ydk::YLeaf rx_client_duid; //type: string
+        ydk::YLeaf tx_client_uid; //type: string
+        ydk::YLeaf rx_remote_id; //type: string
+        ydk::YLeaf tx_remote_id; //type: string
+        ydk::YLeaf rx_interface_id; //type: string
+        ydk::YLeaf tx_interface_id; //type: string
 
 }; // Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding
 
 
-class Dhcpv6::Nodes::Node::Server : public Entity
+class Dhcpv6::Nodes::Node::Server : public ydk::Entity
 {
     public:
         Server();
@@ -1339,11 +1450,13 @@ class Dhcpv6::Nodes::Node::Server : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: Dhcpv6::Nodes::Node::Server::Binding
         class Vrfs; //type: Dhcpv6::Nodes::Node::Server::Vrfs
@@ -1362,7 +1475,7 @@ class Dhcpv6::Nodes::Node::Server : public Entity
 }; // Dhcpv6::Nodes::Node::Server
 
 
-class Dhcpv6::Nodes::Node::Server::Binding : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -1370,11 +1483,13 @@ class Dhcpv6::Nodes::Node::Server::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Summary; //type: Dhcpv6::Nodes::Node::Server::Binding::Summary
         class Clients; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients
@@ -1385,7 +1500,7 @@ class Dhcpv6::Nodes::Node::Server::Binding : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Binding
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Summary : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -1393,13 +1508,15 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf clients; //type: uint32
+        ydk::YLeaf clients; //type: uint32
         class Iana; //type: Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana
         class Iapd; //type: Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd
 
@@ -1409,7 +1526,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Binding::Summary
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana : public ydk::Entity
 {
     public:
         Iana();
@@ -1417,24 +1534,26 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf initializing_clients; //type: uint32
-        YLeaf dpm_waiting_clients; //type: uint32
-        YLeaf daps_waiting_clients; //type: uint32
-        YLeaf request_waiting_clients; //type: uint32
-        YLeaf iedge_waiting_clients; //type: uint32
-        YLeaf rib_waiting_clients; //type: uint32
-        YLeaf bound_clients; //type: uint32
+        ydk::YLeaf initializing_clients; //type: uint32
+        ydk::YLeaf dpm_waiting_clients; //type: uint32
+        ydk::YLeaf daps_waiting_clients; //type: uint32
+        ydk::YLeaf request_waiting_clients; //type: uint32
+        ydk::YLeaf iedge_waiting_clients; //type: uint32
+        ydk::YLeaf rib_waiting_clients; //type: uint32
+        ydk::YLeaf bound_clients; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd : public ydk::Entity
 {
     public:
         Iapd();
@@ -1442,24 +1561,26 @@ class Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf initializing_clients; //type: uint32
-        YLeaf dpm_waiting_clients; //type: uint32
-        YLeaf daps_waiting_clients; //type: uint32
-        YLeaf request_waiting_clients; //type: uint32
-        YLeaf iedge_waiting_clients; //type: uint32
-        YLeaf rib_waiting_clients; //type: uint32
-        YLeaf bound_clients; //type: uint32
+        ydk::YLeaf initializing_clients; //type: uint32
+        ydk::YLeaf dpm_waiting_clients; //type: uint32
+        ydk::YLeaf daps_waiting_clients; //type: uint32
+        ydk::YLeaf request_waiting_clients; //type: uint32
+        ydk::YLeaf iedge_waiting_clients; //type: uint32
+        ydk::YLeaf rib_waiting_clients; //type: uint32
+        ydk::YLeaf bound_clients; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients : public ydk::Entity
 {
     public:
         Clients();
@@ -1467,11 +1588,13 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Client; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client
 
@@ -1480,7 +1603,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client : public ydk::Entity
 {
     public:
         Client();
@@ -1488,43 +1611,45 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf client_id; //type: string
-        YLeaf duid; //type: string
-        YLeaf client_id_xr; //type: uint32
-        YLeaf client_flag; //type: uint32
-        YLeaf subscriber_label; //type: uint32
-        YLeaf vrf_name; //type: string
-        YLeaf mac_address; //type: string
-        YLeaf ia_id_p_ds; //type: uint32
-        YLeaf link_local_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf access_vrf_name; //type: string
-        YLeaf server_binding_tags; //type: uint8
-        YLeaf server_binding_outer_tag; //type: uint32
-        YLeaf server_binding_inner_tag; //type: uint32
-        YLeaf pool_name; //type: string
-        YLeaf profile_name; //type: string
-        YLeaf framed_ipv6_prefix; //type: string
-        YLeaf framed_prefix_length; //type: uint8
-        YLeaf class_name; //type: string
-        YLeaf rx_remote_id; //type: string
-        YLeaf rx_interface_id; //type: string
-        YLeaf prefix_pool_name; //type: string
-        YLeaf address_pool_name; //type: string
-        YLeaf dns_server_count; //type: uint32
-        YLeaf is_nak_next_renew; //type: boolean
-        YLeaf srg_state; //type: uint32
-        YLeaf srg_intf_role; //type: uint32
-        YLeaf srgp2p; //type: boolean
-        YLeaf srg_vrf_name; //type: string
-        YLeaf sesrg_state; //type: uint32
-        YLeaf serg_intf_role; //type: uint32
+        ydk::YLeaf client_id; //type: string
+        ydk::YLeaf duid; //type: string
+        ydk::YLeaf client_id_xr; //type: uint32
+        ydk::YLeaf client_flag; //type: uint32
+        ydk::YLeaf subscriber_label; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf ia_id_p_ds; //type: uint32
+        ydk::YLeaf link_local_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf access_vrf_name; //type: string
+        ydk::YLeaf server_binding_tags; //type: uint8
+        ydk::YLeaf server_binding_outer_tag; //type: uint32
+        ydk::YLeaf server_binding_inner_tag; //type: uint32
+        ydk::YLeaf pool_name; //type: string
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf framed_ipv6_prefix; //type: string
+        ydk::YLeaf framed_prefix_length; //type: uint8
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf rx_remote_id; //type: string
+        ydk::YLeaf rx_interface_id; //type: string
+        ydk::YLeaf prefix_pool_name; //type: string
+        ydk::YLeaf address_pool_name; //type: string
+        ydk::YLeaf dns_server_count; //type: uint32
+        ydk::YLeaf is_nak_next_renew; //type: boolean
+        ydk::YLeaf srg_state; //type: uint32
+        ydk::YLeaf srg_intf_role; //type: uint32
+        ydk::YLeaf srgp2p; //type: boolean
+        ydk::YLeaf srg_vrf_name; //type: string
+        ydk::YLeaf sesrg_state; //type: uint32
+        ydk::YLeaf serg_intf_role; //type: uint32
         class IaIdPd; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd> ia_id_pd;
@@ -1532,7 +1657,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd : public ydk::Entity
 {
     public:
         IaIdPd();
@@ -1540,11 +1665,13 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BagDhcpv6DIaIdPdInfo; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
 
@@ -1553,7 +1680,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd : public Ent
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo : public ydk::Entity
 {
     public:
         BagDhcpv6DIaIdPdInfo();
@@ -1561,17 +1688,19 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ia_type; //type: BagDhcpv6DIaIdEnum
-        YLeaf ia_id; //type: uint32
-        YLeaf flags; //type: uint32
-        YLeaf total_address; //type: uint16
-        YLeaf state; //type: BagDhcpv6DFsmStateEnum
+        ydk::YLeaf ia_type; //type: BagDhcpv6DIaId
+        ydk::YLeaf ia_id; //type: uint32
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf total_address; //type: uint16
+        ydk::YLeaf state; //type: BagDhcpv6DFsmState
         class Addresses; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses> addresses;
@@ -1579,7 +1708,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses : public ydk::Entity
 {
     public:
         Addresses();
@@ -1587,11 +1716,13 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BagDhcpv6DAddrAttrb; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
 
@@ -1600,7 +1731,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses
 
 
-class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb : public Entity
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb : public ydk::Entity
 {
     public:
         BagDhcpv6DAddrAttrb();
@@ -1608,21 +1739,23 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf lease_time; //type: uint32
-        YLeaf remaining_lease_time; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf lease_time; //type: uint32
+        ydk::YLeaf remaining_lease_time; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -1630,11 +1763,13 @@ class Dhcpv6::Nodes::Node::Server::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf
 
@@ -1643,7 +1778,7 @@ class Dhcpv6::Nodes::Node::Server::Vrfs : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Vrfs
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -1651,13 +1786,15 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Statistics; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics> statistics;
@@ -1665,7 +1802,7 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -1673,11 +1810,13 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Solicit; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit
         class Advertise; //type: Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise
@@ -1718,7 +1857,7 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit : public ydk::Entity
 {
     public:
         Solicit();
@@ -1726,20 +1865,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise : public ydk::Entity
 {
     public:
         Advertise();
@@ -1747,20 +1888,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request : public ydk::Entity
 {
     public:
         Request();
@@ -1768,20 +1911,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reply : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reply : public ydk::Entity
 {
     public:
         Reply();
@@ -1789,20 +1934,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reply : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reply
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Confirm : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Confirm : public ydk::Entity
 {
     public:
         Confirm();
@@ -1810,20 +1957,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Confirm : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Confirm
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline : public ydk::Entity
 {
     public:
         Decline();
@@ -1831,20 +1980,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Renew : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Renew : public ydk::Entity
 {
     public:
         Renew();
@@ -1852,20 +2003,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Renew : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Renew
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rebind : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rebind : public ydk::Entity
 {
     public:
         Rebind();
@@ -1873,20 +2026,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rebind : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rebind
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release : public ydk::Entity
 {
     public:
         Release();
@@ -1894,20 +2049,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reconfig : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reconfig : public ydk::Entity
 {
     public:
         Reconfig();
@@ -1915,20 +2072,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reconfig : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reconfig
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform : public ydk::Entity
 {
     public:
         Inform();
@@ -1936,20 +2095,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayForward : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayForward : public ydk::Entity
 {
     public:
         RelayForward();
@@ -1957,20 +2118,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayForward : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayForward
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayReply : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayReply : public ydk::Entity
 {
     public:
         RelayReply();
@@ -1978,20 +2141,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayReply : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayReply
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery : public ydk::Entity
 {
     public:
         LeaseQuery();
@@ -1999,20 +2164,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryReply : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryReply : public ydk::Entity
 {
     public:
         LeaseQueryReply();
@@ -2020,20 +2187,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryReply : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryReply
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryDone : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryDone : public ydk::Entity
 {
     public:
         LeaseQueryDone();
@@ -2041,20 +2210,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryDone : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryDone
 
 
-class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryData : public Entity
+class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryData : public ydk::Entity
 {
     public:
         LeaseQueryData();
@@ -2062,20 +2233,22 @@ class Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryData : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryData
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles : public Entity
+class Dhcpv6::Nodes::Node::Server::Profiles : public ydk::Entity
 {
     public:
         Profiles();
@@ -2083,11 +2256,13 @@ class Dhcpv6::Nodes::Node::Server::Profiles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Profile; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile
 
@@ -2096,7 +2271,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Profiles
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles::Profile : public Entity
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile : public ydk::Entity
 {
     public:
         Profile();
@@ -2104,13 +2279,15 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_name; //type: string
+        ydk::YLeaf profile_name; //type: string
         class Info; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info
         class ThrottleInfos; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos
 
@@ -2120,7 +2297,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info : public Entity
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info : public ydk::Entity
 {
     public:
         Info();
@@ -2128,20 +2305,22 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_name; //type: string
-        YLeaf domain_name; //type: string
-        YLeaf profile_dns; //type: uint8
-        YLeaf aftr_name; //type: string
-        YLeaf framed_addr_pool_name; //type: string
-        YLeaf delegated_prefix_pool_name; //type: string
-        YLeaf rapid_commit; //type: boolean
-        YLeafList profile_dns_address; //type: list of  string
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf domain_name; //type: string
+        ydk::YLeaf profile_dns; //type: uint8
+        ydk::YLeaf aftr_name; //type: string
+        ydk::YLeaf framed_addr_pool_name; //type: string
+        ydk::YLeaf delegated_prefix_pool_name; //type: string
+        ydk::YLeaf rapid_commit; //type: boolean
+        ydk::YLeafList profile_dns_address; //type: list of  string
         class Lease; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease
         class InterfaceReferences; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences
 
@@ -2151,7 +2330,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease : public Entity
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease : public ydk::Entity
 {
     public:
         Lease();
@@ -2159,19 +2338,21 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf time; //type: string
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf time; //type: string
 
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences : public Entity
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences : public ydk::Entity
 {
     public:
         InterfaceReferences();
@@ -2179,11 +2360,13 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6Dhcpv6DServerInterfaceReference; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference
 
@@ -2192,7 +2375,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences 
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference : public Entity
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference : public ydk::Entity
 {
     public:
         Ipv6Dhcpv6DServerInterfaceReference();
@@ -2200,18 +2383,20 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf server_reference_interface_name; //type: string
+        ydk::YLeaf server_reference_interface_name; //type: string
 
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos : public Entity
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos : public ydk::Entity
 {
     public:
         ThrottleInfos();
@@ -2219,11 +2404,13 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ThrottleInfo; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
@@ -2232,7 +2419,7 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos : public Ent
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos
 
 
-class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo : public Entity
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo : public ydk::Entity
 {
     public:
         ThrottleInfo();
@@ -2240,22 +2427,24 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mac_address; //type: string
-        YLeaf binding_chaddr; //type: string
-        YLeaf ifname; //type: string
-        YLeaf state; //type: uint32
-        YLeaf time_left; //type: uint32
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf binding_chaddr; //type: string
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf state; //type: uint32
+        ydk::YLeaf time_left; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo
 
 
-class Dhcpv6::Nodes::Node::Server::Interfaces : public Entity
+class Dhcpv6::Nodes::Node::Server::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -2263,11 +2452,13 @@ class Dhcpv6::Nodes::Node::Server::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Dhcpv6::Nodes::Node::Server::Interfaces::Interface
 
@@ -2276,7 +2467,7 @@ class Dhcpv6::Nodes::Node::Server::Interfaces : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Interfaces
 
 
-class Dhcpv6::Nodes::Node::Server::Interfaces::Interface : public Entity
+class Dhcpv6::Nodes::Node::Server::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2284,29 +2475,31 @@ class Dhcpv6::Nodes::Node::Server::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf server_vrf_name; //type: string
-        YLeaf server_interface_mode; //type: BagDhcpv6DSubModeEnum
-        YLeaf is_server_interface_ambiguous; //type: uint32
-        YLeaf server_interface_profile_name; //type: string
-        YLeaf server_interface_lease_limit_type; //type: LeaseLimitEnum
-        YLeaf server_interface_lease_limits; //type: uint32
-        YLeaf srg_role; //type: BagDhcpv6DIntfSrgRoleEnum
-        YLeaf serg_role; //type: BagDhcpv6DIntfSergRoleEnum
-        YLeaf mac_throttle; //type: boolean
-        YLeaf srg_vrf_name; //type: string
-        YLeaf srgp2p; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf server_vrf_name; //type: string
+        ydk::YLeaf server_interface_mode; //type: BagDhcpv6DSubMode
+        ydk::YLeaf is_server_interface_ambiguous; //type: uint32
+        ydk::YLeaf server_interface_profile_name; //type: string
+        ydk::YLeaf server_interface_lease_limit_type; //type: LeaseLimit
+        ydk::YLeaf server_interface_lease_limits; //type: uint32
+        ydk::YLeaf srg_role; //type: BagDhcpv6DIntfSrgRole
+        ydk::YLeaf serg_role; //type: BagDhcpv6DIntfSergRole
+        ydk::YLeaf mac_throttle; //type: boolean
+        ydk::YLeaf srg_vrf_name; //type: string
+        ydk::YLeaf srgp2p; //type: boolean
 
 }; // Dhcpv6::Nodes::Node::Server::Interfaces::Interface
 
 
-class Dhcpv6::Nodes::Node::Server::Statistics : public Entity
+class Dhcpv6::Nodes::Node::Server::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -2314,11 +2507,13 @@ class Dhcpv6::Nodes::Node::Server::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6Dhcpv6DServerStat; //type: Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat
 
@@ -2327,7 +2522,7 @@ class Dhcpv6::Nodes::Node::Server::Statistics : public Entity
 }; // Dhcpv6::Nodes::Node::Server::Statistics
 
 
-class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat : public Entity
+class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat : public ydk::Entity
 {
     public:
         Ipv6Dhcpv6DServerStat();
@@ -2335,13 +2530,15 @@ class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Statistics_; //type: Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_> statistics;
@@ -2349,7 +2546,7 @@ class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat : public En
 }; // Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat
 
 
-class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_ : public Entity
+class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_ : public ydk::Entity
 {
     public:
         Statistics_();
@@ -2357,20 +2554,22 @@ class Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_
 
 
-class Dhcpv6::Nodes::Node::Server::BindingOptions : public Entity
+class Dhcpv6::Nodes::Node::Server::BindingOptions : public ydk::Entity
 {
     public:
         BindingOptions();
@@ -2378,11 +2577,13 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MacBindOptions; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions
         class DuidBindOptions; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions
@@ -2393,7 +2594,7 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions : public Entity
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions
 
 
-class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions : public Entity
+class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions : public ydk::Entity
 {
     public:
         MacBindOptions();
@@ -2401,11 +2602,13 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MacBindOption; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption
 
@@ -2414,7 +2617,7 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions : public Entit
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions
 
 
-class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption : public Entity
+class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption : public ydk::Entity
 {
     public:
         MacBindOption();
@@ -2422,23 +2625,25 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mac_address; //type: string
-        YLeaf mac_address_xr; //type: string
-        YLeaf duid_xr; //type: string
-        YLeaf dns_count; //type: uint8
-        YLeaf opt17; //type: string
-        YLeafList dns_address; //type: list of  string
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf mac_address_xr; //type: string
+        ydk::YLeaf duid_xr; //type: string
+        ydk::YLeaf dns_count; //type: uint8
+        ydk::YLeaf opt17; //type: string
+        ydk::YLeafList dns_address; //type: list of  string
 
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption
 
 
-class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions : public Entity
+class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions : public ydk::Entity
 {
     public:
         DuidBindOptions();
@@ -2446,11 +2651,13 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DuidBindOption; //type: Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption
 
@@ -2459,7 +2666,7 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions : public Enti
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions
 
 
-class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption : public Entity
+class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption : public ydk::Entity
 {
     public:
         DuidBindOption();
@@ -2467,23 +2674,25 @@ class Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOpti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf duid; //type: string
-        YLeaf mac_address_xr; //type: string
-        YLeaf duid_xr; //type: string
-        YLeaf dns_count; //type: uint8
-        YLeaf opt17; //type: string
-        YLeafList dns_address; //type: list of  string
+        ydk::YLeaf duid; //type: string
+        ydk::YLeaf mac_address_xr; //type: string
+        ydk::YLeaf duid_xr; //type: string
+        ydk::YLeaf dns_count; //type: uint8
+        ydk::YLeaf opt17; //type: string
+        ydk::YLeafList dns_address; //type: list of  string
 
 }; // Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption
 
 
-class Dhcpv6::Nodes::Node::Relay : public Entity
+class Dhcpv6::Nodes::Node::Relay : public ydk::Entity
 {
     public:
         Relay();
@@ -2491,11 +2700,13 @@ class Dhcpv6::Nodes::Node::Relay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Statistics; //type: Dhcpv6::Nodes::Node::Relay::Statistics
         class Binding; //type: Dhcpv6::Nodes::Node::Relay::Binding
@@ -2508,7 +2719,7 @@ class Dhcpv6::Nodes::Node::Relay : public Entity
 }; // Dhcpv6::Nodes::Node::Relay
 
 
-class Dhcpv6::Nodes::Node::Relay::Statistics : public Entity
+class Dhcpv6::Nodes::Node::Relay::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -2516,11 +2727,13 @@ class Dhcpv6::Nodes::Node::Relay::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6Dhcpv6DRelayStat; //type: Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat
 
@@ -2529,7 +2742,7 @@ class Dhcpv6::Nodes::Node::Relay::Statistics : public Entity
 }; // Dhcpv6::Nodes::Node::Relay::Statistics
 
 
-class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat : public Entity
+class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat : public ydk::Entity
 {
     public:
         Ipv6Dhcpv6DRelayStat();
@@ -2537,13 +2750,15 @@ class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Statistics_; //type: Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_> statistics;
@@ -2551,7 +2766,7 @@ class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat : public Enti
 }; // Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat
 
 
-class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_ : public Entity
+class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_ : public ydk::Entity
 {
     public:
         Statistics_();
@@ -2559,20 +2774,22 @@ class Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_ 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_
 
 
-class Dhcpv6::Nodes::Node::Relay::Binding : public Entity
+class Dhcpv6::Nodes::Node::Relay::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -2580,11 +2797,13 @@ class Dhcpv6::Nodes::Node::Relay::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Summary; //type: Dhcpv6::Nodes::Node::Relay::Binding::Summary
         class Clients; //type: Dhcpv6::Nodes::Node::Relay::Binding::Clients
@@ -2595,7 +2814,7 @@ class Dhcpv6::Nodes::Node::Relay::Binding : public Entity
 }; // Dhcpv6::Nodes::Node::Relay::Binding
 
 
-class Dhcpv6::Nodes::Node::Relay::Binding::Summary : public Entity
+class Dhcpv6::Nodes::Node::Relay::Binding::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -2603,18 +2822,20 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf clients; //type: uint32
+        ydk::YLeaf clients; //type: uint32
 
 }; // Dhcpv6::Nodes::Node::Relay::Binding::Summary
 
 
-class Dhcpv6::Nodes::Node::Relay::Binding::Clients : public Entity
+class Dhcpv6::Nodes::Node::Relay::Binding::Clients : public ydk::Entity
 {
     public:
         Clients();
@@ -2622,11 +2843,13 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Client; //type: Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client
 
@@ -2635,7 +2858,7 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Clients : public Entity
 }; // Dhcpv6::Nodes::Node::Relay::Binding::Clients
 
 
-class Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client : public Entity
+class Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client : public ydk::Entity
 {
     public:
         Client();
@@ -2643,29 +2866,31 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf client_id; //type: string
-        YLeaf duid; //type: string
-        YLeaf client_id_xr; //type: uint32
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf lifetime; //type: uint32
-        YLeaf rem_life_time; //type: uint32
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_addr; //type: string
-        YLeaf ia_id; //type: uint32
-        YLeaf relay_profile_name; //type: string
+        ydk::YLeaf client_id; //type: string
+        ydk::YLeaf duid; //type: string
+        ydk::YLeaf client_id_xr; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf lifetime; //type: uint32
+        ydk::YLeaf rem_life_time; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_addr; //type: string
+        ydk::YLeaf ia_id; //type: uint32
+        ydk::YLeaf relay_profile_name; //type: string
 
 }; // Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -2673,11 +2898,13 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf
 
@@ -2686,7 +2913,7 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs : public Entity
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -2694,13 +2921,15 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Statistics; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics> statistics;
@@ -2708,7 +2937,7 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf : public Entity
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -2716,11 +2945,13 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Solicit; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit
         class Advertise; //type: Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise
@@ -2761,7 +2992,7 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics : public Entity
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit : public ydk::Entity
 {
     public:
         Solicit();
@@ -2769,20 +3000,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise : public ydk::Entity
 {
     public:
         Advertise();
@@ -2790,20 +3023,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Request : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Request : public ydk::Entity
 {
     public:
         Request();
@@ -2811,20 +3046,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Request : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Request
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply : public ydk::Entity
 {
     public:
         Reply();
@@ -2832,20 +3069,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Confirm : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Confirm : public ydk::Entity
 {
     public:
         Confirm();
@@ -2853,20 +3092,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Confirm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Confirm
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Decline : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Decline : public ydk::Entity
 {
     public:
         Decline();
@@ -2874,20 +3115,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Decline : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Decline
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Renew : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Renew : public ydk::Entity
 {
     public:
         Renew();
@@ -2895,20 +3138,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Renew : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Renew
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Rebind : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Rebind : public ydk::Entity
 {
     public:
         Rebind();
@@ -2916,20 +3161,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Rebind : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Rebind
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Release : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Release : public ydk::Entity
 {
     public:
         Release();
@@ -2937,20 +3184,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Release : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Release
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reconfig : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reconfig : public ydk::Entity
 {
     public:
         Reconfig();
@@ -2958,20 +3207,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reconfig : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reconfig
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Inform : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Inform : public ydk::Entity
 {
     public:
         Inform();
@@ -2979,20 +3230,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Inform : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Inform
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayForward : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayForward : public ydk::Entity
 {
     public:
         RelayForward();
@@ -3000,20 +3253,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayForward : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayForward
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayReply : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayReply : public ydk::Entity
 {
     public:
         RelayReply();
@@ -3021,20 +3276,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayReply : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayReply
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQuery : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQuery : public ydk::Entity
 {
     public:
         LeaseQuery();
@@ -3042,20 +3299,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQuery : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQuery
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryReply : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryReply : public ydk::Entity
 {
     public:
         LeaseQueryReply();
@@ -3063,20 +3322,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryReply : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryReply
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryDone : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryDone : public ydk::Entity
 {
     public:
         LeaseQueryDone();
@@ -3084,20 +3345,22 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryDone : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryDone
 
 
-class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData : public Entity
+class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData : public ydk::Entity
 {
     public:
         LeaseQueryData();
@@ -3105,108 +3368,110 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf received_packets; //type: uint64
-        YLeaf transmitted_packets; //type: uint64
-        YLeaf dropped_packets; //type: uint64
+        ydk::YLeaf received_packets; //type: uint64
+        ydk::YLeaf transmitted_packets; //type: uint64
+        ydk::YLeaf dropped_packets; //type: uint64
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData
 
-class LeaseLimitEnum : public Enum
+class Dhcpv6IssuRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf interface;
-        static const Enum::YLeaf circuit_id;
-        static const Enum::YLeaf remote_id;
+        static const ydk::Enum::YLeaf role_primary;
+        static const ydk::Enum::YLeaf role_secondary;
 
 };
 
-class BagDhcpv6DSubModeEnum : public Enum
+class BagDhcpv6DIaId : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf base;
-        static const Enum::YLeaf server;
-        static const Enum::YLeaf proxy;
+        static const ydk::Enum::YLeaf iana;
+        static const ydk::Enum::YLeaf iapd;
+        static const ydk::Enum::YLeaf iata;
 
 };
 
-class BagDhcpv6DFsmStateEnum : public Enum
+class Dhcpv6IssuVersion : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf server_initializing;
-        static const Enum::YLeaf server_waiting_dpm;
-        static const Enum::YLeaf server_waiting_daps;
-        static const Enum::YLeaf server_waiting_client;
-        static const Enum::YLeaf server_waiting_subscriber;
-        static const Enum::YLeaf server_waiting_rib;
-        static const Enum::YLeaf server_bound_client;
-        static const Enum::YLeaf proxy_initializing;
-        static const Enum::YLeaf proxy_waiting_dpm;
-        static const Enum::YLeaf proxy_waiting_daps;
-        static const Enum::YLeaf proxy_waiting_client_server;
-        static const Enum::YLeaf proxy_waiting_subscriber;
-        static const Enum::YLeaf proxy_waiting_rib;
-        static const Enum::YLeaf proxy_bound_client;
+        static const ydk::Enum::YLeaf version1;
+        static const ydk::Enum::YLeaf version2;
 
 };
 
-class BagDhcpv6DIntfSrgRoleEnum : public Enum
+class BagDhcpv6DIntfSrgRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf master;
-        static const Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 
-class Dhcpv6IssuVersionEnum : public Enum
+class BagDhcpv6DSubMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf version1;
-        static const Enum::YLeaf version2;
+        static const ydk::Enum::YLeaf base;
+        static const ydk::Enum::YLeaf server;
+        static const ydk::Enum::YLeaf proxy;
 
 };
 
-class BagDhcpv6DIaIdEnum : public Enum
+class LeaseLimit : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf iana;
-        static const Enum::YLeaf iapd;
-        static const Enum::YLeaf iata;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf circuit_id;
+        static const ydk::Enum::YLeaf remote_id;
 
 };
 
-class Dhcpv6IssuRoleEnum : public Enum
+class BagDhcpv6DIntfSergRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf role_primary;
-        static const Enum::YLeaf role_secondary;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 
-class BagDhcpv6DIntfSergRoleEnum : public Enum
+class DhcpIssuPhase : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf master;
-        static const Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf phase_not_started;
+        static const ydk::Enum::YLeaf phase_load;
+        static const ydk::Enum::YLeaf phase_run;
+        static const ydk::Enum::YLeaf phase_completed;
+        static const ydk::Enum::YLeaf phase_aborted;
 
 };
 
-class DhcpIssuPhaseEnum : public Enum
+class BagDhcpv6DFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf phase_not_started;
-        static const Enum::YLeaf phase_load;
-        static const Enum::YLeaf phase_run;
-        static const Enum::YLeaf phase_completed;
-        static const Enum::YLeaf phase_aborted;
+        static const ydk::Enum::YLeaf server_initializing;
+        static const ydk::Enum::YLeaf server_waiting_dpm;
+        static const ydk::Enum::YLeaf server_waiting_daps;
+        static const ydk::Enum::YLeaf server_waiting_client;
+        static const ydk::Enum::YLeaf server_waiting_subscriber;
+        static const ydk::Enum::YLeaf server_waiting_rib;
+        static const ydk::Enum::YLeaf server_bound_client;
+        static const ydk::Enum::YLeaf proxy_initializing;
+        static const ydk::Enum::YLeaf proxy_waiting_dpm;
+        static const ydk::Enum::YLeaf proxy_waiting_daps;
+        static const ydk::Enum::YLeaf proxy_waiting_client_server;
+        static const ydk::Enum::YLeaf proxy_waiting_subscriber;
+        static const ydk::Enum::YLeaf proxy_waiting_rib;
+        static const ydk::Enum::YLeaf proxy_bound_client;
 
 };
 

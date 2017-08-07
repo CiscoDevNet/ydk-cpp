@@ -7,16 +7,16 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace ietf {
 namespace ietf_netconf_with_defaults {
 
-class WithDefaultsModeEnum : public Enum
+class WithDefaultsMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf report_all;
-        static const Enum::YLeaf report_all_tagged;
-        static const Enum::YLeaf trim;
-        static const Enum::YLeaf explicit_;
+        static const ydk::Enum::YLeaf report_all;
+        static const ydk::Enum::YLeaf report_all_tagged;
+        static const ydk::Enum::YLeaf trim;
+        static const ydk::Enum::YLeaf explicit_;
 
 };
 

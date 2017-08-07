@@ -7,14 +7,14 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_rip {
 
-class OffsetListInOutTypeEnum : public Enum
+class OffsetListInOutType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf in;
-        static const Enum::YLeaf out;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
 
 };
 

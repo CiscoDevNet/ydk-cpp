@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_xtc_cfg {
 
-class Pce : public Entity
+class Pce : public ydk::Entity
 {
     public:
         Pce();
@@ -18,19 +18,22 @@ class Pce : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf server_address; //type: string
-        YLeaf password; //type: string
-        YLeaf enable; //type: empty
+        ydk::YLeaf server_address; //type: string
+        ydk::YLeaf password; //type: string
+        ydk::YLeaf enable; //type: empty
         class PccAddresses; //type: Pce::PccAddresses
         class Logging; //type: Pce::Logging
         class Backoff; //type: Pce::Backoff
@@ -54,7 +57,7 @@ class Pce : public Entity
 }; // Pce
 
 
-class Pce::PccAddresses : public Entity
+class Pce::PccAddresses : public ydk::Entity
 {
     public:
         PccAddresses();
@@ -62,11 +65,13 @@ class Pce::PccAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PccAddress; //type: Pce::PccAddresses::PccAddress
 
@@ -75,7 +80,7 @@ class Pce::PccAddresses : public Entity
 }; // Pce::PccAddresses
 
 
-class Pce::PccAddresses::PccAddress : public Entity
+class Pce::PccAddresses::PccAddress : public ydk::Entity
 {
     public:
         PccAddress();
@@ -83,14 +88,16 @@ class Pce::PccAddresses::PccAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf enable; //type: empty
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf enable; //type: empty
         class LspNames; //type: Pce::PccAddresses::PccAddress::LspNames
 
         std::shared_ptr<Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses::PccAddress::LspNames> lsp_names;
@@ -98,7 +105,7 @@ class Pce::PccAddresses::PccAddress : public Entity
 }; // Pce::PccAddresses::PccAddress
 
 
-class Pce::PccAddresses::PccAddress::LspNames : public Entity
+class Pce::PccAddresses::PccAddress::LspNames : public ydk::Entity
 {
     public:
         LspNames();
@@ -106,11 +113,13 @@ class Pce::PccAddresses::PccAddress::LspNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LspName; //type: Pce::PccAddresses::PccAddress::LspNames::LspName
 
@@ -119,7 +128,7 @@ class Pce::PccAddresses::PccAddress::LspNames : public Entity
 }; // Pce::PccAddresses::PccAddress::LspNames
 
 
-class Pce::PccAddresses::PccAddress::LspNames::LspName : public Entity
+class Pce::PccAddresses::PccAddress::LspNames::LspName : public ydk::Entity
 {
     public:
         LspName();
@@ -127,16 +136,18 @@ class Pce::PccAddresses::PccAddress::LspNames::LspName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf undelegate; //type: empty
-        YLeaf explicit_path_name; //type: string
-        YLeaf enable; //type: empty
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf undelegate; //type: empty
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf enable; //type: empty
         class RsvpTe; //type: Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe
 
         std::shared_ptr<Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe> rsvp_te;
@@ -144,7 +155,7 @@ class Pce::PccAddresses::PccAddress::LspNames::LspName : public Entity
 }; // Pce::PccAddresses::PccAddress::LspNames::LspName
 
 
-class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe : public Entity
+class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe : public ydk::Entity
 {
     public:
         RsvpTe();
@@ -152,15 +163,17 @@ class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf fast_protect; //type: empty
-        YLeaf bandwidth; //type: int32
-        YLeaf enable; //type: empty
+        ydk::YLeaf fast_protect; //type: empty
+        ydk::YLeaf bandwidth; //type: int32
+        ydk::YLeaf enable; //type: empty
         class Affinity; //type: Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity
         class Priority; //type: Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority
 
@@ -170,7 +183,7 @@ class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe : public Entity
 }; // Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe
 
 
-class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity : public Entity
+class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity : public ydk::Entity
 {
     public:
         Affinity();
@@ -178,20 +191,22 @@ class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf include_any; //type: string
-        YLeaf include_all; //type: string
-        YLeaf exclude_any; //type: string
+        ydk::YLeaf include_any; //type: string
+        ydk::YLeaf include_all; //type: string
+        ydk::YLeaf exclude_any; //type: string
 
 }; // Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity
 
 
-class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority : public Entity
+class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority : public ydk::Entity
 {
     public:
         Priority();
@@ -199,19 +214,21 @@ class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf setup_priority; //type: uint32
-        YLeaf hold_priority; //type: uint32
+        ydk::YLeaf setup_priority; //type: uint32
+        ydk::YLeaf hold_priority; //type: uint32
 
 }; // Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority
 
 
-class Pce::Logging : public Entity
+class Pce::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -219,19 +236,21 @@ class Pce::Logging : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf no_path; //type: empty
-        YLeaf fallback; //type: empty
+        ydk::YLeaf no_path; //type: empty
+        ydk::YLeaf fallback; //type: empty
 
 }; // Pce::Logging
 
 
-class Pce::Backoff : public Entity
+class Pce::Backoff : public ydk::Entity
 {
     public:
         Backoff();
@@ -239,20 +258,22 @@ class Pce::Backoff : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ratio; //type: uint32
-        YLeaf threshold; //type: uint32
-        YLeaf difference; //type: uint32
+        ydk::YLeaf ratio; //type: uint32
+        ydk::YLeaf threshold; //type: uint32
+        ydk::YLeaf difference; //type: uint32
 
 }; // Pce::Backoff
 
 
-class Pce::StateSyncs : public Entity
+class Pce::StateSyncs : public ydk::Entity
 {
     public:
         StateSyncs();
@@ -260,11 +281,13 @@ class Pce::StateSyncs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class StateSync; //type: Pce::StateSyncs::StateSync
 
@@ -273,7 +296,7 @@ class Pce::StateSyncs : public Entity
 }; // Pce::StateSyncs
 
 
-class Pce::StateSyncs::StateSync : public Entity
+class Pce::StateSyncs::StateSync : public ydk::Entity
 {
     public:
         StateSync();
@@ -281,18 +304,20 @@ class Pce::StateSyncs::StateSync : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // Pce::StateSyncs::StateSync
 
 
-class Pce::SegmentRouting : public Entity
+class Pce::SegmentRouting : public ydk::Entity
 {
     public:
         SegmentRouting();
@@ -300,19 +325,21 @@ class Pce::SegmentRouting : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf te_latency; //type: empty
-        YLeaf strict_sid_only; //type: empty
+        ydk::YLeaf te_latency; //type: empty
+        ydk::YLeaf strict_sid_only; //type: empty
 
 }; // Pce::SegmentRouting
 
 
-class Pce::Timers : public Entity
+class Pce::Timers : public ydk::Entity
 {
     public:
         Timers();
@@ -320,20 +347,22 @@ class Pce::Timers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reoptimization_timer; //type: uint32
-        YLeaf keepalive; //type: uint32
-        YLeaf minimum_peer_keepalive; //type: uint32
+        ydk::YLeaf reoptimization_timer; //type: uint32
+        ydk::YLeaf keepalive; //type: uint32
+        ydk::YLeaf minimum_peer_keepalive; //type: uint32
 
 }; // Pce::Timers
 
 
-class Pce::Netconf : public Entity
+class Pce::Netconf : public ydk::Entity
 {
     public:
         Netconf();
@@ -341,11 +370,13 @@ class Pce::Netconf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class NetconfSsh; //type: Pce::Netconf::NetconfSsh
 
@@ -354,7 +385,7 @@ class Pce::Netconf : public Entity
 }; // Pce::Netconf
 
 
-class Pce::Netconf::NetconfSsh : public Entity
+class Pce::Netconf::NetconfSsh : public ydk::Entity
 {
     public:
         NetconfSsh();
@@ -362,19 +393,21 @@ class Pce::Netconf::NetconfSsh : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf netconf_ssh_password; //type: string
-        YLeaf netconf_ssh_user; //type: string
+        ydk::YLeaf netconf_ssh_password; //type: string
+        ydk::YLeaf netconf_ssh_user; //type: string
 
 }; // Pce::Netconf::NetconfSsh
 
 
-class Pce::DisjointPath : public Entity
+class Pce::DisjointPath : public ydk::Entity
 {
     public:
         DisjointPath();
@@ -382,11 +415,13 @@ class Pce::DisjointPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Groups; //type: Pce::DisjointPath::Groups
 
@@ -395,7 +430,7 @@ class Pce::DisjointPath : public Entity
 }; // Pce::DisjointPath
 
 
-class Pce::DisjointPath::Groups : public Entity
+class Pce::DisjointPath::Groups : public ydk::Entity
 {
     public:
         Groups();
@@ -403,11 +438,13 @@ class Pce::DisjointPath::Groups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Group; //type: Pce::DisjointPath::Groups::Group
 
@@ -416,7 +453,7 @@ class Pce::DisjointPath::Groups : public Entity
 }; // Pce::DisjointPath::Groups
 
 
-class Pce::DisjointPath::Groups::Group : public Entity
+class Pce::DisjointPath::Groups::Group : public ydk::Entity
 {
     public:
         Group();
@@ -424,21 +461,23 @@ class Pce::DisjointPath::Groups::Group : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf group_id; //type: uint32
-        YLeaf dp_type; //type: PceDisjointPathEnum
-        YLeaf sub_id; //type: uint32
-        YLeaf strict; //type: empty
+        ydk::YLeaf group_id; //type: uint32
+        ydk::YLeaf dp_type; //type: PceDisjointPath
+        ydk::YLeaf sub_id; //type: uint32
+        ydk::YLeaf strict; //type: empty
 
 }; // Pce::DisjointPath::Groups::Group
 
 
-class Pce::ExplicitPaths : public Entity
+class Pce::ExplicitPaths : public ydk::Entity
 {
     public:
         ExplicitPaths();
@@ -446,11 +485,13 @@ class Pce::ExplicitPaths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ExplicitPath; //type: Pce::ExplicitPaths::ExplicitPath
 
@@ -459,7 +500,7 @@ class Pce::ExplicitPaths : public Entity
 }; // Pce::ExplicitPaths
 
 
-class Pce::ExplicitPaths::ExplicitPath : public Entity
+class Pce::ExplicitPaths::ExplicitPath : public ydk::Entity
 {
     public:
         ExplicitPath();
@@ -467,14 +508,16 @@ class Pce::ExplicitPaths::ExplicitPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf enable; //type: empty
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf enable; //type: empty
         class PathHops; //type: Pce::ExplicitPaths::ExplicitPath::PathHops
 
         std::shared_ptr<Cisco_IOS_XR_infra_xtc_cfg::Pce::ExplicitPaths::ExplicitPath::PathHops> path_hops;
@@ -482,7 +525,7 @@ class Pce::ExplicitPaths::ExplicitPath : public Entity
 }; // Pce::ExplicitPaths::ExplicitPath
 
 
-class Pce::ExplicitPaths::ExplicitPath::PathHops : public Entity
+class Pce::ExplicitPaths::ExplicitPath::PathHops : public ydk::Entity
 {
     public:
         PathHops();
@@ -490,11 +533,13 @@ class Pce::ExplicitPaths::ExplicitPath::PathHops : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PathHop; //type: Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop
 
@@ -503,7 +548,7 @@ class Pce::ExplicitPaths::ExplicitPath::PathHops : public Entity
 }; // Pce::ExplicitPaths::ExplicitPath::PathHops
 
 
-class Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop : public Entity
+class Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop : public ydk::Entity
 {
     public:
         PathHop();
@@ -511,36 +556,38 @@ class Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf index_; //type: uint32
-        YLeaf hop_type; //type: PceExplicitPathHopEnum
-        YLeaf address; //type: string
-        YLeaf remote_address; //type: string
-        YLeaf mpls_label; //type: uint32
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf hop_type; //type: PceExplicitPathHop
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf mpls_label; //type: uint32
 
 }; // Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop
 
-class PceExplicitPathHopEnum : public Enum
+class PceExplicitPathHop : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf address;
-        static const Enum::YLeaf sid_node;
-        static const Enum::YLeaf sid_adjancency;
-        static const Enum::YLeaf binding_sid;
+        static const ydk::Enum::YLeaf address;
+        static const ydk::Enum::YLeaf sid_node;
+        static const ydk::Enum::YLeaf sid_adjancency;
+        static const ydk::Enum::YLeaf binding_sid;
 
 };
 
-class PceDisjointPathEnum : public Enum
+class PceDisjointPath : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf link;
-        static const Enum::YLeaf node;
-        static const Enum::YLeaf srlg;
+        static const ydk::Enum::YLeaf link;
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf srlg;
 
 };
 

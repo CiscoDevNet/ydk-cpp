@@ -29,6 +29,8 @@ all:  ydktest-filterread.fxs ydktest-sanity-augm.fxs ydktest-sanity-types.fxs yd
 	ydktest-types.fxs openconfig-bgp-types.fxs openconfig-bgp-policy.fxs openconfig-extensions.fxs openconfig-policy-types.fxs\
 	ietf-interfaces.fxs openconfig-types.fxs openconfig-routing-policy.fxs openconfig-interfaces.fxs openconfig-bgp.fxs\
 	oc-pattern.fxs main.fxs main-aug1.fxs iana-if-type.fxs\
+	ietf-aug-base-1.fxs ietf-aug-base-2.fxs\
+	ydktest-aug-ietf-1.fxs ydktest-aug-ietf-2.fxs ydktest-aug-ietf-4.fxs ydktest-aug-ietf-5.fxs\
 		$(CDB_DIR) ssh-keydir
 	@echo "Build complete"
 
@@ -108,6 +110,27 @@ main.yang:
 
 main-aug1.yang:
 	cp ../../models/main-aug1@2015-11-17.yang main-aug1.yang
+
+ietf-aug-base-1.yang:
+	cp ../../../../../../yang/ydktest-augmentation/ietf-aug-base-1\@2016-07-01.yang ietf-aug-base-1.yang
+
+ietf-aug-base-2.yang:
+	cp ../../../../../../yang/ydktest-augmentation/ietf-aug-base-2\@2016-07-01.yang ietf-aug-base-2.yang
+
+oc-pattern.yang:
+	cp ../../models/oc-pattern\@2015-11-17.yang oc-pattern.yang
+
+ydktest-aug-ietf-1.yang:
+	cp ../../../../../../yang/ydktest-augmentation/ydktest-aug-ietf-1\@2016-06-17.yang ydktest-aug-ietf-1.yang
+
+ydktest-aug-ietf-2.yang:
+	cp ../../../../../../yang/ydktest-augmentation/ydktest-aug-ietf-2\@2016-06-22.yang ydktest-aug-ietf-2.yang
+
+ydktest-aug-ietf-4.yang:
+	cp ../../../../../../yang/ydktest-augmentation/ydktest-aug-ietf-4\@2016-06-27.yang ydktest-aug-ietf-4.yang
+
+ydktest-aug-ietf-5.yang:
+	cp ../../../../../../yang/ydktest-augmentation/ydktest-aug-ietf-5\@2017-07-26.yang ydktest-aug-ietf-5.yang
 
 
 ######################################################################

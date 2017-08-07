@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_serg_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_serg_cfg {
 
 SessionRedundancy::SessionRedundancy()
@@ -44,12 +46,12 @@ bool SessionRedundancy::has_data() const
 
 bool SessionRedundancy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(hold_timer.operation)
-	|| is_set(preferred_role.operation)
-	|| is_set(redundancy_disable.operation)
-	|| is_set(source_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(hold_timer.yfilter)
+	|| ydk::is_set(preferred_role.yfilter)
+	|| ydk::is_set(redundancy_disable.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
 	|| (groups !=  nullptr && groups->has_operation())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_operation());
 }
@@ -74,11 +76,11 @@ const EntityPath SessionRedundancy::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (hold_timer.is_set || is_set(hold_timer.operation)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
-    if (preferred_role.is_set || is_set(preferred_role.operation)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
-    if (redundancy_disable.is_set || is_set(redundancy_disable.operation)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
+    if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
+    if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -125,27 +127,61 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::get_children()
     return children;
 }
 
-void SessionRedundancy::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-timer")
     {
         hold_timer = value;
+        hold_timer.value_namespace = name_space;
+        hold_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preferred-role")
     {
         preferred_role = value;
+        preferred_role.value_namespace = name_space;
+        preferred_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redundancy-disable")
     {
         redundancy_disable = value;
+        redundancy_disable.value_namespace = name_space;
+        redundancy_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SessionRedundancy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "hold-timer")
+    {
+        hold_timer.yfilter = yfilter;
+    }
+    if(value_path == "preferred-role")
+    {
+        preferred_role.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-disable")
+    {
+        redundancy_disable.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
     }
 }
 
@@ -167,6 +203,18 @@ std::string SessionRedundancy::get_bundle_name() const
 augment_capabilities_function SessionRedundancy::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SessionRedundancy::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SessionRedundancy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groups" || name == "revertive-timer" || name == "enable" || name == "hold-timer" || name == "preferred-role" || name == "redundancy-disable" || name == "source-interface")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Groups()
@@ -195,7 +243,7 @@ bool SessionRedundancy::Groups::has_operation() const
         if(group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SessionRedundancy::Groups::get_segment_path() const
@@ -260,8 +308,19 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::get_ch
     return children;
 }
 
-void SessionRedundancy::Groups::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SessionRedundancy::Groups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SessionRedundancy::Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::Group()
@@ -311,16 +370,16 @@ bool SessionRedundancy::Groups::Group::has_data() const
 
 bool SessionRedundancy::Groups::Group::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_id.operation)
-	|| is_set(access_tracking_object.operation)
-	|| is_set(core_tracking_object.operation)
-	|| is_set(description.operation)
-	|| is_set(disable_tracking_object.operation)
-	|| is_set(enable.operation)
-	|| is_set(hold_timer.operation)
-	|| is_set(preferred_role.operation)
-	|| is_set(redundancy_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(group_id.yfilter)
+	|| ydk::is_set(access_tracking_object.yfilter)
+	|| ydk::is_set(core_tracking_object.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(disable_tracking_object.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(hold_timer.yfilter)
+	|| ydk::is_set(preferred_role.yfilter)
+	|| ydk::is_set(redundancy_disable.yfilter)
 	|| (interface_list !=  nullptr && interface_list->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_operation());
@@ -349,15 +408,15 @@ const EntityPath SessionRedundancy::Groups::Group::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
-    if (access_tracking_object.is_set || is_set(access_tracking_object.operation)) leaf_name_data.push_back(access_tracking_object.get_name_leafdata());
-    if (core_tracking_object.is_set || is_set(core_tracking_object.operation)) leaf_name_data.push_back(core_tracking_object.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (disable_tracking_object.is_set || is_set(disable_tracking_object.operation)) leaf_name_data.push_back(disable_tracking_object.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (hold_timer.is_set || is_set(hold_timer.operation)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
-    if (preferred_role.is_set || is_set(preferred_role.operation)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
-    if (redundancy_disable.is_set || is_set(redundancy_disable.operation)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (access_tracking_object.is_set || is_set(access_tracking_object.yfilter)) leaf_name_data.push_back(access_tracking_object.get_name_leafdata());
+    if (core_tracking_object.is_set || is_set(core_tracking_object.yfilter)) leaf_name_data.push_back(core_tracking_object.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (disable_tracking_object.is_set || is_set(disable_tracking_object.yfilter)) leaf_name_data.push_back(disable_tracking_object.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
+    if (preferred_role.is_set || is_set(preferred_role.yfilter)) leaf_name_data.push_back(preferred_role.get_name_leafdata());
+    if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -418,44 +477,109 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-id")
     {
         group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-tracking-object")
     {
         access_tracking_object = value;
+        access_tracking_object.value_namespace = name_space;
+        access_tracking_object.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "core-tracking-object")
     {
         core_tracking_object = value;
+        core_tracking_object.value_namespace = name_space;
+        core_tracking_object.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-tracking-object")
     {
         disable_tracking_object = value;
+        disable_tracking_object.value_namespace = name_space;
+        disable_tracking_object.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-timer")
     {
         hold_timer = value;
+        hold_timer.value_namespace = name_space;
+        hold_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preferred-role")
     {
         preferred_role = value;
+        preferred_role.value_namespace = name_space;
+        preferred_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redundancy-disable")
     {
         redundancy_disable = value;
+        redundancy_disable.value_namespace = name_space;
+        redundancy_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SessionRedundancy::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+    if(value_path == "access-tracking-object")
+    {
+        access_tracking_object.yfilter = yfilter;
+    }
+    if(value_path == "core-tracking-object")
+    {
+        core_tracking_object.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "disable-tracking-object")
+    {
+        disable_tracking_object.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "hold-timer")
+    {
+        hold_timer.yfilter = yfilter;
+    }
+    if(value_path == "preferred-role")
+    {
+        preferred_role.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-disable")
+    {
+        redundancy_disable.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "peer" || name == "revertive-timer" || name == "group-id" || name == "access-tracking-object" || name == "core-tracking-object" || name == "description" || name == "disable-tracking-object" || name == "enable" || name == "hold-timer" || name == "preferred-role" || name == "redundancy-disable")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::Peer::Peer()
@@ -478,7 +602,7 @@ bool SessionRedundancy::Groups::Group::Peer::has_data() const
 
 bool SessionRedundancy::Groups::Group::Peer::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipaddress !=  nullptr && ipaddress->has_operation());
 }
 
@@ -537,8 +661,19 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::Peer::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SessionRedundancy::Groups::Group::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SessionRedundancy::Groups::Group::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipaddress")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::Peer::Ipaddress::Ipaddress()
@@ -561,9 +696,9 @@ bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_data() const
 
 bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(prefix_string.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(prefix_string.yfilter);
 }
 
 std::string SessionRedundancy::Groups::Group::Peer::Ipaddress::get_segment_path() const
@@ -589,8 +724,8 @@ const EntityPath SessionRedundancy::Groups::Group::Peer::Ipaddress::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (prefix_string.is_set || is_set(prefix_string.operation)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (prefix_string.is_set || is_set(prefix_string.yfilter)) leaf_name_data.push_back(prefix_string.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -609,16 +744,39 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::Peer::Ipaddress::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::Peer::Ipaddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-string")
     {
         prefix_string = value;
+        prefix_string.value_namespace = name_space;
+        prefix_string.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SessionRedundancy::Groups::Group::Peer::Ipaddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "prefix-string")
+    {
+        prefix_string.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::Peer::Ipaddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "prefix-string")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::RevertiveTimer::RevertiveTimer()
@@ -641,9 +799,9 @@ bool SessionRedundancy::Groups::Group::RevertiveTimer::has_data() const
 
 bool SessionRedundancy::Groups::Group::RevertiveTimer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_value.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_value.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string SessionRedundancy::Groups::Group::RevertiveTimer::get_segment_path() const
@@ -669,8 +827,8 @@ const EntityPath SessionRedundancy::Groups::Group::RevertiveTimer::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_value.is_set || is_set(max_value.operation)) leaf_name_data.push_back(max_value.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (max_value.is_set || is_set(max_value.yfilter)) leaf_name_data.push_back(max_value.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -689,16 +847,39 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::RevertiveTimer::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::RevertiveTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-value")
     {
         max_value = value;
+        max_value.value_namespace = name_space;
+        max_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SessionRedundancy::Groups::Group::RevertiveTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-value")
+    {
+        max_value.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::RevertiveTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-value" || name == "value")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceList()
@@ -728,8 +909,8 @@ bool SessionRedundancy::Groups::Group::InterfaceList::has_data() const
 
 bool SessionRedundancy::Groups::Group::InterfaceList::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (interface_ranges !=  nullptr && interface_ranges->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
@@ -757,7 +938,7 @@ const EntityPath SessionRedundancy::Groups::Group::InterfaceList::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -804,12 +985,29 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::InterfaceList::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SessionRedundancy::Groups::Group::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-ranges" || name == "interfaces" || name == "enable")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRanges()
@@ -838,7 +1036,7 @@ bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_opera
         if(interface_range[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::get_segment_path() const
@@ -903,8 +1101,19 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-range")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::InterfaceRange()
@@ -933,12 +1142,12 @@ bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::Interface
 
 bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(sub_interface_range_start.operation)
-	|| is_set(sub_interface_range_end.operation)
-	|| is_set(interface_id_range_end.operation)
-	|| is_set(interface_id_range_start.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(sub_interface_range_start.yfilter)
+	|| ydk::is_set(sub_interface_range_end.yfilter)
+	|| ydk::is_set(interface_id_range_end.yfilter)
+	|| ydk::is_set(interface_id_range_start.yfilter);
 }
 
 std::string SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::get_segment_path() const
@@ -964,11 +1173,11 @@ const EntityPath SessionRedundancy::Groups::Group::InterfaceList::InterfaceRange
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (sub_interface_range_start.is_set || is_set(sub_interface_range_start.operation)) leaf_name_data.push_back(sub_interface_range_start.get_name_leafdata());
-    if (sub_interface_range_end.is_set || is_set(sub_interface_range_end.operation)) leaf_name_data.push_back(sub_interface_range_end.get_name_leafdata());
-    if (interface_id_range_end.is_set || is_set(interface_id_range_end.operation)) leaf_name_data.push_back(interface_id_range_end.get_name_leafdata());
-    if (interface_id_range_start.is_set || is_set(interface_id_range_start.operation)) leaf_name_data.push_back(interface_id_range_start.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (sub_interface_range_start.is_set || is_set(sub_interface_range_start.yfilter)) leaf_name_data.push_back(sub_interface_range_start.get_name_leafdata());
+    if (sub_interface_range_end.is_set || is_set(sub_interface_range_end.yfilter)) leaf_name_data.push_back(sub_interface_range_end.get_name_leafdata());
+    if (interface_id_range_end.is_set || is_set(interface_id_range_end.yfilter)) leaf_name_data.push_back(interface_id_range_end.get_name_leafdata());
+    if (interface_id_range_start.is_set || is_set(interface_id_range_start.yfilter)) leaf_name_data.push_back(interface_id_range_start.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -987,28 +1196,69 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-range-start")
     {
         sub_interface_range_start = value;
+        sub_interface_range_start.value_namespace = name_space;
+        sub_interface_range_start.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-range-end")
     {
         sub_interface_range_end = value;
+        sub_interface_range_end.value_namespace = name_space;
+        sub_interface_range_end.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-id-range-end")
     {
         interface_id_range_end = value;
+        interface_id_range_end.value_namespace = name_space;
+        interface_id_range_end.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-id-range-start")
     {
         interface_id_range_start = value;
+        interface_id_range_start.value_namespace = name_space;
+        interface_id_range_start.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "sub-interface-range-start")
+    {
+        sub_interface_range_start.yfilter = yfilter;
+    }
+    if(value_path == "sub-interface-range-end")
+    {
+        sub_interface_range_end.yfilter = yfilter;
+    }
+    if(value_path == "interface-id-range-end")
+    {
+        interface_id_range_end.yfilter = yfilter;
+    }
+    if(value_path == "interface-id-range-start")
+    {
+        interface_id_range_start.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::InterfaceList::InterfaceRanges::InterfaceRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "sub-interface-range-start" || name == "sub-interface-range-end" || name == "interface-id-range-end" || name == "interface-id-range-start")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interfaces()
@@ -1037,7 +1287,7 @@ bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::has_operation(
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SessionRedundancy::Groups::Group::InterfaceList::Interfaces::get_segment_path() const
@@ -1102,8 +1352,19 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::Interface()
@@ -1126,9 +1387,9 @@ bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has
 
 bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_id.yfilter);
 }
 
 std::string SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_segment_path() const
@@ -1154,8 +1415,8 @@ const EntityPath SessionRedundancy::Groups::Group::InterfaceList::Interfaces::In
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_id.is_set || is_set(interface_id.operation)) leaf_name_data.push_back(interface_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_id.is_set || is_set(interface_id.yfilter)) leaf_name_data.push_back(interface_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1174,16 +1435,39 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::Groups::Group:
     return children;
 }
 
-void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-id")
     {
         interface_id = value;
+        interface_id.value_namespace = name_space;
+        interface_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-id")
+    {
+        interface_id.yfilter = yfilter;
+    }
+}
+
+bool SessionRedundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface-id")
+        return true;
+    return false;
 }
 
 SessionRedundancy::RevertiveTimer::RevertiveTimer()
@@ -1206,9 +1490,9 @@ bool SessionRedundancy::RevertiveTimer::has_data() const
 
 bool SessionRedundancy::RevertiveTimer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_value.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_value.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string SessionRedundancy::RevertiveTimer::get_segment_path() const
@@ -1234,8 +1518,8 @@ const EntityPath SessionRedundancy::RevertiveTimer::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_value.is_set || is_set(max_value.operation)) leaf_name_data.push_back(max_value.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (max_value.is_set || is_set(max_value.yfilter)) leaf_name_data.push_back(max_value.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1254,23 +1538,46 @@ std::map<std::string, std::shared_ptr<Entity>> SessionRedundancy::RevertiveTimer
     return children;
 }
 
-void SessionRedundancy::RevertiveTimer::set_value(const std::string & value_path, std::string value)
+void SessionRedundancy::RevertiveTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-value")
     {
         max_value = value;
+        max_value.value_namespace = name_space;
+        max_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SergAddrFamilyEnum::ipv4 {2, "ipv4"};
-const Enum::YLeaf SergAddrFamilyEnum::ipv6 {10, "ipv6"};
+void SessionRedundancy::RevertiveTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-value")
+    {
+        max_value.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf SessionRedundancyGroupRoleEnum::master {1, "master"};
-const Enum::YLeaf SessionRedundancyGroupRoleEnum::slave {2, "slave"};
+bool SessionRedundancy::RevertiveTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-value" || name == "value")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf SergAddrFamily::ipv4 {2, "ipv4"};
+const Enum::YLeaf SergAddrFamily::ipv6 {10, "ipv6"};
+
+const Enum::YLeaf SessionRedundancyGroupRole::master {1, "master"};
+const Enum::YLeaf SessionRedundancyGroupRole::slave {2, "slave"};
 
 
 }

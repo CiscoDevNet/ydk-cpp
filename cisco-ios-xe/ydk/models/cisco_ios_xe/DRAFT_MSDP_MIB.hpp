@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace DRAFT_MSDP_MIB {
 
-class DraftMsdpMib : public Entity
+class DraftMsdpMib : public ydk::Entity
 {
     public:
         DraftMsdpMib();
@@ -19,30 +19,33 @@ class DraftMsdpMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Msdp; //type: DraftMsdpMib::Msdp
         class Msdprequeststable; //type: DraftMsdpMib::Msdprequeststable
         class Msdppeertable; //type: DraftMsdpMib::Msdppeertable
         class Msdpsacachetable; //type: DraftMsdpMib::Msdpsacachetable
 
-        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdp> msdp_;
-        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdppeertable> msdppeertable_;
-        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdprequeststable> msdprequeststable_;
-        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdpsacachetable> msdpsacachetable_;
+        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdp> msdp;
+        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdppeertable> msdppeertable;
+        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdprequeststable> msdprequeststable;
+        std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdpsacachetable> msdpsacachetable;
         
 }; // DraftMsdpMib
 
 
-class DraftMsdpMib::Msdp : public Entity
+class DraftMsdpMib::Msdp : public ydk::Entity
 {
     public:
         Msdp();
@@ -50,21 +53,23 @@ class DraftMsdpMib::Msdp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf msdpenabled; //type: boolean
-        YLeaf msdpcachelifetime; //type: uint32
-        YLeaf msdpnumsacacheentries; //type: uint32
-        YLeaf msdpsaholddownperiod; //type: int32
+        ydk::YLeaf msdpenabled; //type: boolean
+        ydk::YLeaf msdpcachelifetime; //type: uint32
+        ydk::YLeaf msdpnumsacacheentries; //type: uint32
+        ydk::YLeaf msdpsaholddownperiod; //type: int32
 
 }; // DraftMsdpMib::Msdp
 
 
-class DraftMsdpMib::Msdprequeststable : public Entity
+class DraftMsdpMib::Msdprequeststable : public ydk::Entity
 {
     public:
         Msdprequeststable();
@@ -72,20 +77,22 @@ class DraftMsdpMib::Msdprequeststable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Msdprequestsentry; //type: DraftMsdpMib::Msdprequeststable::Msdprequestsentry
 
-        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdprequeststable::Msdprequestsentry> > msdprequestsentry_;
+        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdprequeststable::Msdprequestsentry> > msdprequestsentry;
         
 }; // DraftMsdpMib::Msdprequeststable
 
 
-class DraftMsdpMib::Msdprequeststable::Msdprequestsentry : public Entity
+class DraftMsdpMib::Msdprequeststable::Msdprequestsentry : public ydk::Entity
 {
     public:
         Msdprequestsentry();
@@ -93,21 +100,23 @@ class DraftMsdpMib::Msdprequeststable::Msdprequestsentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf msdprequestsgroupaddress; //type: string
-        YLeaf msdprequestsgroupmask; //type: string
-        YLeaf msdprequestspeer; //type: string
-        YLeaf msdprequestsstatus; //type: RowstatusEnum
+        ydk::YLeaf msdprequestsgroupaddress; //type: string
+        ydk::YLeaf msdprequestsgroupmask; //type: string
+        ydk::YLeaf msdprequestspeer; //type: string
+        ydk::YLeaf msdprequestsstatus; //type: Rowstatus
 
 }; // DraftMsdpMib::Msdprequeststable::Msdprequestsentry
 
 
-class DraftMsdpMib::Msdppeertable : public Entity
+class DraftMsdpMib::Msdppeertable : public ydk::Entity
 {
     public:
         Msdppeertable();
@@ -115,20 +124,22 @@ class DraftMsdpMib::Msdppeertable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Msdppeerentry; //type: DraftMsdpMib::Msdppeertable::Msdppeerentry
 
-        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdppeertable::Msdppeerentry> > msdppeerentry_;
+        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdppeertable::Msdppeerentry> > msdppeerentry;
         
 }; // DraftMsdpMib::Msdppeertable
 
 
-class DraftMsdpMib::Msdppeertable::Msdppeerentry : public Entity
+class DraftMsdpMib::Msdppeertable::Msdppeerentry : public ydk::Entity
 {
     public:
         Msdppeerentry();
@@ -136,52 +147,54 @@ class DraftMsdpMib::Msdppeertable::Msdppeerentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf msdppeerremoteaddress; //type: string
-        YLeaf msdppeerstate; //type: MsdppeerstateEnum
-        YLeaf msdppeerrpffailures; //type: uint32
-        YLeaf msdppeerinsas; //type: uint32
-        YLeaf msdppeeroutsas; //type: uint32
-        YLeaf msdppeerinsarequests; //type: uint32
-        YLeaf msdppeeroutsarequests; //type: uint32
-        YLeaf msdppeerinsaresponses; //type: uint32
-        YLeaf msdppeeroutsaresponses; //type: uint32
-        YLeaf msdppeerincontrolmessages; //type: uint32
-        YLeaf msdppeeroutcontrolmessages; //type: uint32
-        YLeaf msdppeerindatapackets; //type: uint32
-        YLeaf msdppeeroutdatapackets; //type: uint32
-        YLeaf msdppeerfsmestablishedtransitions; //type: uint32
-        YLeaf msdppeerfsmestablishedtime; //type: uint32
-        YLeaf msdppeerinmessageelapsedtime; //type: uint32
-        YLeaf msdppeerlocaladdress; //type: string
-        YLeaf msdppeersaadvperiod; //type: int32
-        YLeaf msdppeerconnectretryinterval; //type: int32
-        YLeaf msdppeerholdtimeconfigured; //type: int32
-        YLeaf msdppeerkeepaliveconfigured; //type: int32
-        YLeaf msdppeerdatattl; //type: int32
-        YLeaf msdppeerprocessrequestsfrom; //type: boolean
-        YLeaf msdppeerstatus; //type: RowstatusEnum
-        YLeaf msdppeerremoteport; //type: int32
-        YLeaf msdppeerlocalport; //type: int32
-        YLeaf msdppeerencapsulationstate; //type: MsdppeerencapsulationstateEnum
-        YLeaf msdppeerencapsulationtype; //type: MsdppeerencapsulationtypeEnum
-        YLeaf msdppeerconnectionattempts; //type: uint32
-        YLeaf msdppeerinnotifications; //type: uint32
-        YLeaf msdppeeroutnotifications; //type: uint32
-        YLeaf msdppeerlasterror; //type: binary
-        class MsdppeerstateEnum;
-        class MsdppeerencapsulationstateEnum;
-        class MsdppeerencapsulationtypeEnum;
+        ydk::YLeaf msdppeerremoteaddress; //type: string
+        ydk::YLeaf msdppeerstate; //type: Msdppeerstate
+        ydk::YLeaf msdppeerrpffailures; //type: uint32
+        ydk::YLeaf msdppeerinsas; //type: uint32
+        ydk::YLeaf msdppeeroutsas; //type: uint32
+        ydk::YLeaf msdppeerinsarequests; //type: uint32
+        ydk::YLeaf msdppeeroutsarequests; //type: uint32
+        ydk::YLeaf msdppeerinsaresponses; //type: uint32
+        ydk::YLeaf msdppeeroutsaresponses; //type: uint32
+        ydk::YLeaf msdppeerincontrolmessages; //type: uint32
+        ydk::YLeaf msdppeeroutcontrolmessages; //type: uint32
+        ydk::YLeaf msdppeerindatapackets; //type: uint32
+        ydk::YLeaf msdppeeroutdatapackets; //type: uint32
+        ydk::YLeaf msdppeerfsmestablishedtransitions; //type: uint32
+        ydk::YLeaf msdppeerfsmestablishedtime; //type: uint32
+        ydk::YLeaf msdppeerinmessageelapsedtime; //type: uint32
+        ydk::YLeaf msdppeerlocaladdress; //type: string
+        ydk::YLeaf msdppeersaadvperiod; //type: int32
+        ydk::YLeaf msdppeerconnectretryinterval; //type: int32
+        ydk::YLeaf msdppeerholdtimeconfigured; //type: int32
+        ydk::YLeaf msdppeerkeepaliveconfigured; //type: int32
+        ydk::YLeaf msdppeerdatattl; //type: int32
+        ydk::YLeaf msdppeerprocessrequestsfrom; //type: boolean
+        ydk::YLeaf msdppeerstatus; //type: Rowstatus
+        ydk::YLeaf msdppeerremoteport; //type: int32
+        ydk::YLeaf msdppeerlocalport; //type: int32
+        ydk::YLeaf msdppeerencapsulationstate; //type: Msdppeerencapsulationstate
+        ydk::YLeaf msdppeerencapsulationtype; //type: Msdppeerencapsulationtype
+        ydk::YLeaf msdppeerconnectionattempts; //type: uint32
+        ydk::YLeaf msdppeerinnotifications; //type: uint32
+        ydk::YLeaf msdppeeroutnotifications; //type: uint32
+        ydk::YLeaf msdppeerlasterror; //type: binary
+        class Msdppeerstate;
+        class Msdppeerencapsulationstate;
+        class Msdppeerencapsulationtype;
 
 }; // DraftMsdpMib::Msdppeertable::Msdppeerentry
 
 
-class DraftMsdpMib::Msdpsacachetable : public Entity
+class DraftMsdpMib::Msdpsacachetable : public ydk::Entity
 {
     public:
         Msdpsacachetable();
@@ -189,20 +202,22 @@ class DraftMsdpMib::Msdpsacachetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Msdpsacacheentry; //type: DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry
 
-        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry> > msdpsacacheentry_;
+        std::vector<std::shared_ptr<DRAFT_MSDP_MIB::DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry> > msdpsacacheentry;
         
 }; // DraftMsdpMib::Msdpsacachetable
 
 
-class DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry : public Entity
+class DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry : public ydk::Entity
 {
     public:
         Msdpsacacheentry();
@@ -210,54 +225,56 @@ class DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf msdpsacachegroupaddr; //type: string
-        YLeaf msdpsacachesourceaddr; //type: string
-        YLeaf msdpsacacheoriginrp; //type: string
-        YLeaf msdpsacachepeerlearnedfrom; //type: string
-        YLeaf msdpsacacherpfpeer; //type: string
-        YLeaf msdpsacacheinsas; //type: uint32
-        YLeaf msdpsacacheindatapackets; //type: uint32
-        YLeaf msdpsacacheuptime; //type: uint32
-        YLeaf msdpsacacheexpirytime; //type: uint32
-        YLeaf msdpsacachestatus; //type: RowstatusEnum
+        ydk::YLeaf msdpsacachegroupaddr; //type: string
+        ydk::YLeaf msdpsacachesourceaddr; //type: string
+        ydk::YLeaf msdpsacacheoriginrp; //type: string
+        ydk::YLeaf msdpsacachepeerlearnedfrom; //type: string
+        ydk::YLeaf msdpsacacherpfpeer; //type: string
+        ydk::YLeaf msdpsacacheinsas; //type: uint32
+        ydk::YLeaf msdpsacacheindatapackets; //type: uint32
+        ydk::YLeaf msdpsacacheuptime; //type: uint32
+        ydk::YLeaf msdpsacacheexpirytime; //type: uint32
+        ydk::YLeaf msdpsacachestatus; //type: Rowstatus
 
 }; // DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry
 
-class DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerstateEnum : public Enum
+class DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inactive;
-        static const Enum::YLeaf listen;
-        static const Enum::YLeaf connecting;
-        static const Enum::YLeaf established;
-        static const Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf inactive;
+        static const ydk::Enum::YLeaf listen;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf established;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationstateEnum : public Enum
+class DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf default_;
-        static const Enum::YLeaf received;
-        static const Enum::YLeaf advertising;
-        static const Enum::YLeaf sent;
-        static const Enum::YLeaf agreed;
-        static const Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf received;
+        static const ydk::Enum::YLeaf advertising;
+        static const ydk::Enum::YLeaf sent;
+        static const ydk::Enum::YLeaf agreed;
+        static const ydk::Enum::YLeaf failed;
 
 };
 
-class DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationtypeEnum : public Enum
+class DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf tcp;
-        static const Enum::YLeaf udp;
-        static const Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf tcp;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf gre;
 
 };
 

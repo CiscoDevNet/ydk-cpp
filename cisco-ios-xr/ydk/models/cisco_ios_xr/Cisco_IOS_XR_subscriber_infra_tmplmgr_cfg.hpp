@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg {
 
-class DynamicTemplate : public Entity
+class DynamicTemplate : public ydk::Entity
 {
     public:
         DynamicTemplate();
@@ -19,15 +19,18 @@ class DynamicTemplate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Ppps; //type: DynamicTemplate::Ppps
         class IpSubscribers; //type: DynamicTemplate::IpSubscribers
@@ -40,7 +43,7 @@ class DynamicTemplate : public Entity
 }; // DynamicTemplate
 
 
-class DynamicTemplate::Ppps : public Entity
+class DynamicTemplate::Ppps : public ydk::Entity
 {
     public:
         Ppps();
@@ -48,11 +51,13 @@ class DynamicTemplate::Ppps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ppp; //type: DynamicTemplate::Ppps::Ppp
 
@@ -61,7 +66,7 @@ class DynamicTemplate::Ppps : public Entity
 }; // DynamicTemplate::Ppps
 
 
-class DynamicTemplate::Ppps::Ppp : public Entity
+class DynamicTemplate::Ppps::Ppp : public ydk::Entity
 {
     public:
         Ppp();
@@ -69,14 +74,16 @@ class DynamicTemplate::Ppps::Ppp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf template_name; //type: string
-        YLeaf vrf; //type: string
+        ydk::YLeaf template_name; //type: string
+        ydk::YLeaf vrf; //type: string
         class SpanMonitorSessions; //type: DynamicTemplate::Ppps::Ppp::SpanMonitorSessions
         class Ipv4PacketFilter; //type: DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter
         class Ipv6PacketFilter; //type: DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter
@@ -108,7 +115,7 @@ class DynamicTemplate::Ppps::Ppp : public Entity
 }; // DynamicTemplate::Ppps::Ppp
 
 
-class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions : public Entity
+class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions : public ydk::Entity
 {
     public:
         SpanMonitorSessions();
@@ -116,11 +123,13 @@ class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpanMonitorSession; //type: DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession
 
@@ -129,7 +138,7 @@ class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions : public Entity
 }; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions
 
 
-class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession : public Entity
+class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession : public ydk::Entity
 {
     public:
         SpanMonitorSession();
@@ -137,16 +146,18 @@ class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_class; //type: SpanSessionClassEnum
-        YLeaf mirror_first; //type: uint32
-        YLeaf mirror_interval; //type: SpanMirrorIntervalEnum
-        YLeaf acl; //type: empty
+        ydk::YLeaf session_class; //type: SpanSessionClass
+        ydk::YLeaf mirror_first; //type: uint32
+        ydk::YLeaf mirror_interval; //type: SpanMirrorInterval
+        ydk::YLeaf acl; //type: empty
         class Attachment; //type: DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
@@ -154,7 +165,7 @@ class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession : publ
 }; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession
 
 
-class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment : public Entity
+class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment : public ydk::Entity
 {
     public:
         Attachment();
@@ -162,20 +173,22 @@ class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attac
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_name; //type: string
-        YLeaf direction; //type: SpanTrafficDirectionEnum
-        YLeaf port_level_enable; //type: empty
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf direction; //type: SpanTrafficDirection
+        ydk::YLeaf port_level_enable; //type: empty
 
 }; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter : public ydk::Entity
 {
     public:
         Ipv4PacketFilter();
@@ -183,11 +196,13 @@ class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Outbound; //type: DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound
         class Inbound; //type: DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound
@@ -198,7 +213,7 @@ class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound : public ydk::Entity
 {
     public:
         Outbound();
@@ -206,21 +221,23 @@ class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_count; //type: empty
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_count; //type: empty
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound : public ydk::Entity
 {
     public:
         Inbound();
@@ -228,21 +245,23 @@ class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_count; //type: empty
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_count; //type: empty
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter : public ydk::Entity
 {
     public:
         Ipv6PacketFilter();
@@ -250,11 +269,13 @@ class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inbound; //type: DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound
         class Outbound; //type: DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound
@@ -265,7 +286,7 @@ class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound : public ydk::Entity
 {
     public:
         Inbound();
@@ -273,20 +294,22 @@ class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound : public ydk::Entity
 {
     public:
         Outbound();
@@ -294,20 +317,22 @@ class DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound
 
 
-class DynamicTemplate::Ppps::Ppp::Igmp : public Entity
+class DynamicTemplate::Ppps::Ppp::Igmp : public ydk::Entity
 {
     public:
         Igmp();
@@ -315,11 +340,13 @@ class DynamicTemplate::Ppps::Ppp::Igmp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DefaultVrf; //type: DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf
 
@@ -328,7 +355,7 @@ class DynamicTemplate::Ppps::Ppp::Igmp : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Igmp
 
 
-class DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf : public Entity
+class DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf : public ydk::Entity
 {
     public:
         DefaultVrf();
@@ -336,18 +363,20 @@ class DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf max_groups; //type: uint32
-        YLeaf access_group; //type: string
-        YLeaf version; //type: uint32
-        YLeaf query_interval; //type: uint32
-        YLeaf query_max_response_time; //type: uint32
-        YLeaf multicast_mode; //type: DynTmplMulticastModeEnum
+        ydk::YLeaf max_groups; //type: uint32
+        ydk::YLeaf access_group; //type: string
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf query_interval; //type: uint32
+        ydk::YLeaf query_max_response_time; //type: uint32
+        ydk::YLeaf multicast_mode; //type: DynTmplMulticastMode
         class ExplicitTracking; //type: DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking> explicit_tracking; // presence node
@@ -355,7 +384,7 @@ class DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf
 
 
-class DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking : public Entity
+class DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking : public ydk::Entity
 {
     public:
         ExplicitTracking();
@@ -363,19 +392,21 @@ class DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf access_list_name; //type: string
 
 }; // DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv4Network : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv4Network : public ydk::Entity
 {
     public:
         Ipv4Network();
@@ -383,21 +414,23 @@ class DynamicTemplate::Ppps::Ppp::Ipv4Network : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf unnumbered; //type: string
-        YLeaf mtu; //type: uint32
-        YLeaf unreachables; //type: boolean
-        YLeaf rpf; //type: boolean
+        ydk::YLeaf unnumbered; //type: string
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf unreachables; //type: boolean
+        ydk::YLeaf rpf; //type: boolean
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv4Network
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6Network : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6Network : public ydk::Entity
 {
     public:
         Ipv6Network();
@@ -405,15 +438,17 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Network : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mtu; //type: uint32
-        YLeaf unreachables; //type: empty
-        YLeaf verify; //type: Ipv6ReachableViaEnum
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf rpf; //type: boolean
+        ydk::YLeaf unreachables; //type: empty
         class Addresses; //type: DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses> addresses;
@@ -421,7 +456,7 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Network : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Ipv6Network
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses : public ydk::Entity
 {
     public:
         Addresses();
@@ -429,11 +464,13 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AutoConfiguration; //type: DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration
 
@@ -442,7 +479,7 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration : public ydk::Entity
 {
     public:
         AutoConfiguration();
@@ -450,18 +487,20 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
+        ydk::YLeaf enable; //type: empty
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor : public ydk::Entity
 {
     public:
         Ipv6Neighbor();
@@ -469,26 +508,28 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf framed_prefix_pool; //type: string
-        YLeaf managed_config; //type: empty
-        YLeaf other_config; //type: empty
-        YLeaf start_ra_on_ipv6_enable; //type: empty
-        YLeaf nud_enable; //type: empty
-        YLeaf ra_lifetime; //type: uint32
-        YLeaf router_preference; //type: Ipv6NdRouterPrefTemplateEnum
-        YLeaf ra_suppress; //type: empty
-        YLeaf ra_unicast; //type: empty
-        YLeaf ra_unspecify_hoplimit; //type: empty
-        YLeaf ra_suppress_mtu; //type: empty
-        YLeaf suppress_cache_learning; //type: empty
-        YLeaf reachable_time; //type: uint32
-        YLeaf ns_interval; //type: uint32
+        ydk::YLeaf framed_prefix_pool; //type: string
+        ydk::YLeaf managed_config; //type: empty
+        ydk::YLeaf other_config; //type: empty
+        ydk::YLeaf start_ra_on_ipv6_enable; //type: empty
+        ydk::YLeaf nud_enable; //type: empty
+        ydk::YLeaf ra_lifetime; //type: uint32
+        ydk::YLeaf router_preference; //type: Ipv6NdRouterPrefTemplate
+        ydk::YLeaf ra_suppress; //type: empty
+        ydk::YLeaf ra_unicast; //type: empty
+        ydk::YLeaf ra_unspecify_hoplimit; //type: empty
+        ydk::YLeaf ra_suppress_mtu; //type: empty
+        ydk::YLeaf suppress_cache_learning; //type: empty
+        ydk::YLeaf reachable_time; //type: uint32
+        ydk::YLeaf ns_interval; //type: uint32
         class RaInterval; //type: DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval
         class FramedPrefix; //type: DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix
         class DuplicateAddressDetection; //type: DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection
@@ -502,7 +543,7 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Ipv6Neighbor
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval : public ydk::Entity
 {
     public:
         RaInterval();
@@ -510,19 +551,21 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum; //type: uint32
-        YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix : public ydk::Entity
 {
     public:
         FramedPrefix();
@@ -530,19 +573,21 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection : public ydk::Entity
 {
     public:
         DuplicateAddressDetection();
@@ -550,18 +595,20 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf attempts; //type: uint32
+        ydk::YLeaf attempts; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection
 
 
-class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial : public Entity
+class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial : public ydk::Entity
 {
     public:
         RaInitial();
@@ -569,19 +616,21 @@ class DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf count; //type: uint32
-        YLeaf interval; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf interval; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial
 
 
-class DynamicTemplate::Ppps::Ppp::Dhcpv6 : public Entity
+class DynamicTemplate::Ppps::Ppp::Dhcpv6 : public ydk::Entity
 {
     public:
         Dhcpv6();
@@ -589,18 +638,20 @@ class DynamicTemplate::Ppps::Ppp::Dhcpv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dns_ipv6address; //type: string
-        YLeaf mode_class; //type: string
-        YLeaf address_pool; //type: string
-        YLeaf delegated_prefix_pool; //type: string
-        YLeaf class_; //type: string
-        YLeaf stateful_address; //type: string
+        ydk::YLeaf dns_ipv6address; //type: string
+        ydk::YLeaf mode_class; //type: string
+        ydk::YLeaf address_pool; //type: string
+        ydk::YLeaf delegated_prefix_pool; //type: string
+        ydk::YLeaf class_; //type: string
+        ydk::YLeaf stateful_address; //type: string
         class DelegatedPrefix; //type: DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix> delegated_prefix; // presence node
@@ -608,7 +659,7 @@ class DynamicTemplate::Ppps::Ppp::Dhcpv6 : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Dhcpv6
 
 
-class DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix : public Entity
+class DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix : public ydk::Entity
 {
     public:
         DelegatedPrefix();
@@ -616,19 +667,21 @@ class DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix
 
 
-class DynamicTemplate::Ppps::Ppp::Pbr : public Entity
+class DynamicTemplate::Ppps::Ppp::Pbr : public ydk::Entity
 {
     public:
         Pbr();
@@ -636,13 +689,15 @@ class DynamicTemplate::Ppps::Ppp::Pbr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf service_policy_in; //type: string
+        ydk::YLeaf service_policy_in; //type: string
         class ServicePolicy; //type: DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy> service_policy;
@@ -650,7 +705,7 @@ class DynamicTemplate::Ppps::Ppp::Pbr : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Pbr
 
 
-class DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy : public Entity
+class DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy : public ydk::Entity
 {
     public:
         ServicePolicy();
@@ -658,18 +713,20 @@ class DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf input; //type: string
+        ydk::YLeaf input; //type: string
 
 }; // DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate : public ydk::Entity
 {
     public:
         PppTemplate();
@@ -677,11 +734,13 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Fsm; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm
         class Lcp; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp
@@ -696,7 +755,7 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate : public Entity
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm : public ydk::Entity
 {
     public:
         Fsm();
@@ -704,21 +763,23 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf max_consecutive_conf_naks; //type: uint32
-        YLeaf max_unacknowledged_conf_requests; //type: uint32
-        YLeaf retry_timeout; //type: uint32
-        YLeaf protocol_reject_timeout; //type: uint32
+        ydk::YLeaf max_consecutive_conf_naks; //type: uint32
+        ydk::YLeaf max_unacknowledged_conf_requests; //type: uint32
+        ydk::YLeaf retry_timeout; //type: uint32
+        ydk::YLeaf protocol_reject_timeout; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp : public ydk::Entity
 {
     public:
         Lcp();
@@ -726,16 +787,18 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf renegotiation; //type: empty
-        YLeaf service_type; //type: uint32
-        YLeaf send_term_request_on_shut_down; //type: empty
-        YLeaf mru_ignore; //type: empty
+        ydk::YLeaf renegotiation; //type: empty
+        ydk::YLeaf service_type; //type: uint32
+        ydk::YLeaf send_term_request_on_shut_down; //type: empty
+        ydk::YLeaf mru_ignore; //type: empty
         class AbsoluteTimeout; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout
         class Delay; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay
         class Authentication; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication
@@ -749,7 +812,7 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp : public Entity
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout : public ydk::Entity
 {
     public:
         AbsoluteTimeout();
@@ -757,19 +820,21 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf minutes; //type: uint32
-        YLeaf seconds; //type: uint32
+        ydk::YLeaf minutes; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay : public ydk::Entity
 {
     public:
         Delay();
@@ -777,19 +842,21 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf milliseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf milliseconds; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -797,17 +864,19 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf chap_host_name; //type: string
-        YLeaf pap; //type: int32
-        YLeaf mschap_host_name; //type: string
-        YLeaf max_authentication_failures; //type: uint32
-        YLeaf timeout; //type: uint32
+        ydk::YLeaf chap_host_name; //type: string
+        ydk::YLeaf pap; //type: int32
+        ydk::YLeaf mschap_host_name; //type: string
+        ydk::YLeaf max_authentication_failures; //type: uint32
+        ydk::YLeaf timeout; //type: uint32
         class Methods; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods> methods;
@@ -815,7 +884,7 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication : public Enti
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods : public ydk::Entity
 {
     public:
         Methods();
@@ -823,18 +892,20 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList method; //type: list of  PppAuthenticationMethodGblEnum
+        ydk::YLeafList method; //type: list of  PppAuthenticationMethodGbl
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive : public ydk::Entity
 {
     public:
         Keepalive();
@@ -842,20 +913,22 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf keepalive_disable; //type: boolean
-        YLeaf interval; //type: uint32
-        YLeaf retry_count; //type: uint32
+        ydk::YLeaf keepalive_disable; //type: boolean
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp : public ydk::Entity
 {
     public:
         Ipv6Cp();
@@ -863,21 +936,23 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf passive; //type: empty
-        YLeaf renegotiation; //type: empty
-        YLeaf peer_interface_id; //type: string
-        YLeaf protocol_reject; //type: empty
+        ydk::YLeaf passive; //type: empty
+        ydk::YLeaf renegotiation; //type: empty
+        ydk::YLeaf peer_interface_id; //type: string
+        ydk::YLeaf protocol_reject; //type: empty
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp : public ydk::Entity
 {
     public:
         Ipcp();
@@ -885,16 +960,18 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf renegotiation; //type: empty
-        YLeaf passive; //type: empty
-        YLeaf protocol_reject; //type: empty
-        YLeaf peer_netmask; //type: string
+        ydk::YLeaf renegotiation; //type: empty
+        ydk::YLeaf passive; //type: empty
+        ydk::YLeaf protocol_reject; //type: empty
+        ydk::YLeaf peer_netmask; //type: string
         class Wins; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins
         class Dns; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns
         class PeerAddress; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress
@@ -906,7 +983,7 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp : public Entity
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins : public ydk::Entity
 {
     public:
         Wins();
@@ -914,11 +991,13 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class WinsAddresses; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses
 
@@ -927,7 +1006,7 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins : public Entity
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses : public ydk::Entity
 {
     public:
         WinsAddresses();
@@ -935,19 +1014,21 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf primary; //type: string
-        YLeaf secondary; //type: string
+        ydk::YLeaf primary; //type: string
+        ydk::YLeaf secondary; //type: string
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns : public ydk::Entity
 {
     public:
         Dns();
@@ -955,11 +1036,13 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DnsAddresses; //type: DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses
 
@@ -968,7 +1051,7 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns : public Entity
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses : public ydk::Entity
 {
     public:
         DnsAddresses();
@@ -976,19 +1059,21 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf primary; //type: string
-        YLeaf secondary; //type: string
+        ydk::YLeaf primary; //type: string
+        ydk::YLeaf secondary; //type: string
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses
 
 
-class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress : public Entity
+class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress : public ydk::Entity
 {
     public:
         PeerAddress();
@@ -996,19 +1081,21 @@ class DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf default_; //type: string
-        YLeaf pool; //type: string
+        ydk::YLeaf default_; //type: string
+        ydk::YLeaf pool; //type: string
 
 }; // DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress
 
 
-class DynamicTemplate::Ppps::Ppp::Qos : public Entity
+class DynamicTemplate::Ppps::Ppp::Qos : public ydk::Entity
 {
     public:
         Qos();
@@ -1016,11 +1103,13 @@ class DynamicTemplate::Ppps::Ppp::Qos : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ServicePolicy; //type: DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy
         class Account; //type: DynamicTemplate::Ppps::Ppp::Qos::Account
@@ -1033,7 +1122,7 @@ class DynamicTemplate::Ppps::Ppp::Qos : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Qos
 
 
-class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy : public Entity
+class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy : public ydk::Entity
 {
     public:
         ServicePolicy();
@@ -1041,11 +1130,13 @@ class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Input; //type: DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input
         class Output; //type: DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output
@@ -1056,7 +1147,7 @@ class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy
 
 
-class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input : public Entity
+class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1064,22 +1155,24 @@ class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf spi_name; //type: string
-        YLeaf merge; //type: boolean
-        YLeaf merge_id; //type: uint32
-        YLeaf account_stats; //type: boolean
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
 
 }; // DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input
 
 
-class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output : public Entity
+class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output : public ydk::Entity
 {
     public:
         Output();
@@ -1087,22 +1180,24 @@ class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf spi_name; //type: string
-        YLeaf merge; //type: boolean
-        YLeaf merge_id; //type: uint32
-        YLeaf account_stats; //type: boolean
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
 
 }; // DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output
 
 
-class DynamicTemplate::Ppps::Ppp::Qos::Account : public Entity
+class DynamicTemplate::Ppps::Ppp::Qos::Account : public ydk::Entity
 {
     public:
         Account();
@@ -1110,21 +1205,23 @@ class DynamicTemplate::Ppps::Ppp::Qos::Account : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf aal; //type: Qosl2DataLinkEnum
-        YLeaf encapsulation; //type: Qosl2EncapEnum
-        YLeaf atm_cell_tax; //type: empty
-        YLeaf user_defined; //type: int32
+        ydk::YLeaf aal; //type: Qosl2DataLink
+        ydk::YLeaf encapsulation; //type: Qosl2Encap
+        ydk::YLeaf atm_cell_tax; //type: empty
+        ydk::YLeaf user_defined; //type: int32
 
 }; // DynamicTemplate::Ppps::Ppp::Qos::Account
 
 
-class DynamicTemplate::Ppps::Ppp::Qos::Output : public Entity
+class DynamicTemplate::Ppps::Ppp::Qos::Output : public ydk::Entity
 {
     public:
         Output();
@@ -1132,18 +1229,20 @@ class DynamicTemplate::Ppps::Ppp::Qos::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf minimum_bandwidth; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::Qos::Output
 
 
-class DynamicTemplate::Ppps::Ppp::Accounting : public Entity
+class DynamicTemplate::Ppps::Ppp::Accounting : public ydk::Entity
 {
     public:
         Accounting();
@@ -1151,13 +1250,15 @@ class DynamicTemplate::Ppps::Ppp::Accounting : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prepaid_feature; //type: string
+        ydk::YLeaf prepaid_feature; //type: string
         class IdleTimeout; //type: DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout
         class Session; //type: DynamicTemplate::Ppps::Ppp::Accounting::Session
         class ServiceAccounting; //type: DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting
@@ -1169,7 +1270,7 @@ class DynamicTemplate::Ppps::Ppp::Accounting : public Entity
 }; // DynamicTemplate::Ppps::Ppp::Accounting
 
 
-class DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout : public Entity
+class DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout : public ydk::Entity
 {
     public:
         IdleTimeout();
@@ -1177,20 +1278,22 @@ class DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf timeout_value; //type: int32
-        YLeaf threshold; //type: int32
-        YLeaf direction; //type: string
+        ydk::YLeaf timeout_value; //type: int32
+        ydk::YLeaf threshold; //type: int32
+        ydk::YLeaf direction; //type: string
 
 }; // DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout
 
 
-class DynamicTemplate::Ppps::Ppp::Accounting::Session : public Entity
+class DynamicTemplate::Ppps::Ppp::Accounting::Session : public ydk::Entity
 {
     public:
         Session();
@@ -1198,21 +1301,23 @@ class DynamicTemplate::Ppps::Ppp::Accounting::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf method_list_name; //type: string
-        YLeaf periodic_interval; //type: int32
-        YLeaf dual_stack_delay; //type: int32
-        YLeaf hold_acct_start; //type: int32
+        ydk::YLeaf method_list_name; //type: string
+        ydk::YLeaf periodic_interval; //type: int32
+        ydk::YLeaf dual_stack_delay; //type: int32
+        ydk::YLeaf hold_acct_start; //type: int32
 
 }; // DynamicTemplate::Ppps::Ppp::Accounting::Session
 
 
-class DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting : public Entity
+class DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting : public ydk::Entity
 {
     public:
         ServiceAccounting();
@@ -1220,19 +1325,21 @@ class DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf method_list_name; //type: string
-        YLeaf accounting_interim_interval; //type: int32
+        ydk::YLeaf method_list_name; //type: string
+        ydk::YLeaf accounting_interim_interval; //type: int32
 
 }; // DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting
 
 
-class DynamicTemplate::Ppps::Ppp::PppoeTemplate : public Entity
+class DynamicTemplate::Ppps::Ppp::PppoeTemplate : public ydk::Entity
 {
     public:
         PppoeTemplate();
@@ -1240,18 +1347,20 @@ class DynamicTemplate::Ppps::Ppp::PppoeTemplate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf port_limit; //type: uint16
+        ydk::YLeaf port_limit; //type: uint16
 
 }; // DynamicTemplate::Ppps::Ppp::PppoeTemplate
 
 
-class DynamicTemplate::IpSubscribers : public Entity
+class DynamicTemplate::IpSubscribers : public ydk::Entity
 {
     public:
         IpSubscribers();
@@ -1259,11 +1368,13 @@ class DynamicTemplate::IpSubscribers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IpSubscriber; //type: DynamicTemplate::IpSubscribers::IpSubscriber
 
@@ -1272,7 +1383,7 @@ class DynamicTemplate::IpSubscribers : public Entity
 }; // DynamicTemplate::IpSubscribers
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber : public ydk::Entity
 {
     public:
         IpSubscriber();
@@ -1280,14 +1391,16 @@ class DynamicTemplate::IpSubscribers::IpSubscriber : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf template_name; //type: string
-        YLeaf vrf; //type: string
+        ydk::YLeaf template_name; //type: string
+        ydk::YLeaf vrf; //type: string
         class SpanMonitorSessions; //type: DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions
         class Ipv4PacketFilter; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter
         class Ipv6PacketFilter; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter
@@ -1317,7 +1430,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber : public Entity
 }; // DynamicTemplate::IpSubscribers::IpSubscriber
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions : public ydk::Entity
 {
     public:
         SpanMonitorSessions();
@@ -1325,11 +1438,13 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpanMonitorSession; //type: DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession
 
@@ -1338,7 +1453,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions : public
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession : public ydk::Entity
 {
     public:
         SpanMonitorSession();
@@ -1346,16 +1461,18 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMon
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_class; //type: SpanSessionClassEnum
-        YLeaf mirror_first; //type: uint32
-        YLeaf mirror_interval; //type: SpanMirrorIntervalEnum
-        YLeaf acl; //type: empty
+        ydk::YLeaf session_class; //type: SpanSessionClass
+        ydk::YLeaf mirror_first; //type: uint32
+        ydk::YLeaf mirror_interval; //type: SpanMirrorInterval
+        ydk::YLeaf acl; //type: empty
         class Attachment; //type: DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
@@ -1363,7 +1480,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMon
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment : public ydk::Entity
 {
     public:
         Attachment();
@@ -1371,20 +1488,22 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMon
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_name; //type: string
-        YLeaf direction; //type: SpanTrafficDirectionEnum
-        YLeaf port_level_enable; //type: empty
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf direction; //type: SpanTrafficDirection
+        ydk::YLeaf port_level_enable; //type: empty
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter : public ydk::Entity
 {
     public:
         Ipv4PacketFilter();
@@ -1392,11 +1511,13 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Outbound; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound
         class Inbound; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound
@@ -1407,7 +1528,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter : public En
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound : public ydk::Entity
 {
     public:
         Outbound();
@@ -1415,21 +1536,23 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_count; //type: empty
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_count; //type: empty
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound : public ydk::Entity
 {
     public:
         Inbound();
@@ -1437,21 +1560,23 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_count; //type: empty
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_count; //type: empty
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter : public ydk::Entity
 {
     public:
         Ipv6PacketFilter();
@@ -1459,11 +1584,13 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inbound; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound
         class Outbound; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound
@@ -1474,7 +1601,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter : public En
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound : public ydk::Entity
 {
     public:
         Inbound();
@@ -1482,20 +1609,22 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound : public ydk::Entity
 {
     public:
         Outbound();
@@ -1503,20 +1632,22 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd : public ydk::Entity
 {
     public:
         Dhcpd();
@@ -1524,21 +1655,23 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf class_; //type: string
-        YLeaf default_gateway; //type: string
-        YLeaf session_limit; //type: int32
-        YLeaf dhcpv4_option; //type: string
+        ydk::YLeaf class_; //type: string
+        ydk::YLeaf default_gateway; //type: string
+        ydk::YLeaf session_limit; //type: int32
+        ydk::YLeaf dhcpv4_option; //type: string
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp : public ydk::Entity
 {
     public:
         Igmp();
@@ -1546,11 +1679,13 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DefaultVrf; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf
 
@@ -1559,7 +1694,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp : public Entity
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Igmp
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf : public ydk::Entity
 {
     public:
         DefaultVrf();
@@ -1567,18 +1702,20 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf max_groups; //type: uint32
-        YLeaf access_group; //type: string
-        YLeaf version; //type: uint32
-        YLeaf query_interval; //type: uint32
-        YLeaf query_max_response_time; //type: uint32
-        YLeaf multicast_mode; //type: DynTmplMulticastModeEnum
+        ydk::YLeaf max_groups; //type: uint32
+        ydk::YLeaf access_group; //type: string
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf query_interval; //type: uint32
+        ydk::YLeaf query_max_response_time; //type: uint32
+        ydk::YLeaf multicast_mode; //type: DynTmplMulticastMode
         class ExplicitTracking; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking> explicit_tracking; // presence node
@@ -1586,7 +1723,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf : public En
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking : public ydk::Entity
 {
     public:
         ExplicitTracking();
@@ -1594,19 +1731,21 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf access_list_name; //type: string
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network : public ydk::Entity
 {
     public:
         Ipv4Network();
@@ -1614,21 +1753,23 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf unnumbered; //type: string
-        YLeaf mtu; //type: uint32
-        YLeaf unreachables; //type: boolean
-        YLeaf rpf; //type: boolean
+        ydk::YLeaf unnumbered; //type: string
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf unreachables; //type: boolean
+        ydk::YLeaf rpf; //type: boolean
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network : public ydk::Entity
 {
     public:
         Ipv6Network();
@@ -1636,15 +1777,17 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mtu; //type: uint32
-        YLeaf unreachables; //type: empty
-        YLeaf verify; //type: Ipv6ReachableViaEnum
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf rpf; //type: boolean
+        ydk::YLeaf unreachables; //type: empty
         class Addresses; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses> addresses;
@@ -1652,7 +1795,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network : public Entity
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses : public ydk::Entity
 {
     public:
         Addresses();
@@ -1660,11 +1803,13 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AutoConfiguration; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration
 
@@ -1673,7 +1818,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses : pub
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration : public ydk::Entity
 {
     public:
         AutoConfiguration();
@@ -1681,18 +1826,20 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::Auto
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
+        ydk::YLeaf enable; //type: empty
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor : public ydk::Entity
 {
     public:
         Ipv6Neighbor();
@@ -1700,26 +1847,28 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf framed_prefix_pool; //type: string
-        YLeaf managed_config; //type: empty
-        YLeaf other_config; //type: empty
-        YLeaf start_ra_on_ipv6_enable; //type: empty
-        YLeaf nud_enable; //type: empty
-        YLeaf ra_lifetime; //type: uint32
-        YLeaf router_preference; //type: Ipv6NdRouterPrefTemplateEnum
-        YLeaf ra_suppress; //type: empty
-        YLeaf ra_unicast; //type: empty
-        YLeaf ra_unspecify_hoplimit; //type: empty
-        YLeaf ra_suppress_mtu; //type: empty
-        YLeaf suppress_cache_learning; //type: empty
-        YLeaf reachable_time; //type: uint32
-        YLeaf ns_interval; //type: uint32
+        ydk::YLeaf framed_prefix_pool; //type: string
+        ydk::YLeaf managed_config; //type: empty
+        ydk::YLeaf other_config; //type: empty
+        ydk::YLeaf start_ra_on_ipv6_enable; //type: empty
+        ydk::YLeaf nud_enable; //type: empty
+        ydk::YLeaf ra_lifetime; //type: uint32
+        ydk::YLeaf router_preference; //type: Ipv6NdRouterPrefTemplate
+        ydk::YLeaf ra_suppress; //type: empty
+        ydk::YLeaf ra_unicast; //type: empty
+        ydk::YLeaf ra_unspecify_hoplimit; //type: empty
+        ydk::YLeaf ra_suppress_mtu; //type: empty
+        ydk::YLeaf suppress_cache_learning; //type: empty
+        ydk::YLeaf reachable_time; //type: uint32
+        ydk::YLeaf ns_interval; //type: uint32
         class RaInterval; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval
         class FramedPrefix; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix
         class DuplicateAddressDetection; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection
@@ -1733,7 +1882,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor : public Entity
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval : public ydk::Entity
 {
     public:
         RaInterval();
@@ -1741,19 +1890,21 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum; //type: uint32
-        YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix : public ydk::Entity
 {
     public:
         FramedPrefix();
@@ -1761,19 +1912,21 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection : public ydk::Entity
 {
     public:
         DuplicateAddressDetection();
@@ -1781,18 +1934,20 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddre
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf attempts; //type: uint32
+        ydk::YLeaf attempts; //type: uint32
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial : public ydk::Entity
 {
     public:
         RaInitial();
@@ -1800,19 +1955,21 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf count; //type: uint32
-        YLeaf interval; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf interval; //type: uint32
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6 : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6 : public ydk::Entity
 {
     public:
         Dhcpv6();
@@ -1820,18 +1977,20 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dns_ipv6address; //type: string
-        YLeaf mode_class; //type: string
-        YLeaf address_pool; //type: string
-        YLeaf delegated_prefix_pool; //type: string
-        YLeaf class_; //type: string
-        YLeaf stateful_address; //type: string
+        ydk::YLeaf dns_ipv6address; //type: string
+        ydk::YLeaf mode_class; //type: string
+        ydk::YLeaf address_pool; //type: string
+        ydk::YLeaf delegated_prefix_pool; //type: string
+        ydk::YLeaf class_; //type: string
+        ydk::YLeaf stateful_address; //type: string
         class DelegatedPrefix; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix> delegated_prefix; // presence node
@@ -1839,7 +1998,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6 : public Entity
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix : public ydk::Entity
 {
     public:
         DelegatedPrefix();
@@ -1847,19 +2006,21 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Pbr : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Pbr : public ydk::Entity
 {
     public:
         Pbr();
@@ -1867,13 +2028,15 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Pbr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf service_policy_in; //type: string
+        ydk::YLeaf service_policy_in; //type: string
         class ServicePolicy; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy> service_policy;
@@ -1881,7 +2044,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Pbr : public Entity
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Pbr
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy : public ydk::Entity
 {
     public:
         ServicePolicy();
@@ -1889,18 +2052,20 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf input; //type: string
+        ydk::YLeaf input; //type: string
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Qos : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos : public ydk::Entity
 {
     public:
         Qos();
@@ -1908,11 +2073,13 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Qos : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ServicePolicy; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy
         class Account; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account
@@ -1925,7 +2092,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Qos : public Entity
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy : public ydk::Entity
 {
     public:
         ServicePolicy();
@@ -1933,11 +2100,13 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Input; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input
         class Output; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output
@@ -1948,7 +2117,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy : public 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1956,22 +2125,24 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf spi_name; //type: string
-        YLeaf merge; //type: boolean
-        YLeaf merge_id; //type: uint32
-        YLeaf account_stats; //type: boolean
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output : public ydk::Entity
 {
     public:
         Output();
@@ -1979,22 +2150,24 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf spi_name; //type: string
-        YLeaf merge; //type: boolean
-        YLeaf merge_id; //type: uint32
-        YLeaf account_stats; //type: boolean
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account : public ydk::Entity
 {
     public:
         Account();
@@ -2002,21 +2175,23 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf aal; //type: Qosl2DataLinkEnum
-        YLeaf encapsulation; //type: Qosl2EncapEnum
-        YLeaf atm_cell_tax; //type: empty
-        YLeaf user_defined; //type: int32
+        ydk::YLeaf aal; //type: Qosl2DataLink
+        ydk::YLeaf encapsulation; //type: Qosl2Encap
+        ydk::YLeaf atm_cell_tax; //type: empty
+        ydk::YLeaf user_defined; //type: int32
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output : public ydk::Entity
 {
     public:
         Output();
@@ -2024,18 +2199,20 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf minimum_bandwidth; //type: uint32
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting : public ydk::Entity
 {
     public:
         Accounting();
@@ -2043,13 +2220,15 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prepaid_feature; //type: string
+        ydk::YLeaf prepaid_feature; //type: string
         class ServiceAccounting; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting
         class Session; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session
         class IdleTimeout; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout
@@ -2061,7 +2240,7 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting : public Entity
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Accounting
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting : public ydk::Entity
 {
     public:
         ServiceAccounting();
@@ -2069,19 +2248,21 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccountin
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf method_list_name; //type: string
-        YLeaf accounting_interim_interval; //type: int32
+        ydk::YLeaf method_list_name; //type: string
+        ydk::YLeaf accounting_interim_interval; //type: int32
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session : public ydk::Entity
 {
     public:
         Session();
@@ -2089,21 +2270,23 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf method_list_name; //type: string
-        YLeaf periodic_interval; //type: int32
-        YLeaf dual_stack_delay; //type: int32
-        YLeaf hold_acct_start; //type: int32
+        ydk::YLeaf method_list_name; //type: string
+        ydk::YLeaf periodic_interval; //type: int32
+        ydk::YLeaf dual_stack_delay; //type: int32
+        ydk::YLeaf hold_acct_start; //type: int32
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session
 
 
-class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout : public Entity
+class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout : public ydk::Entity
 {
     public:
         IdleTimeout();
@@ -2111,20 +2294,22 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf timeout_value; //type: int32
-        YLeaf threshold; //type: int32
-        YLeaf direction; //type: string
+        ydk::YLeaf timeout_value; //type: int32
+        ydk::YLeaf threshold; //type: int32
+        ydk::YLeaf direction; //type: string
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout
 
 
-class DynamicTemplate::SubscriberServices : public Entity
+class DynamicTemplate::SubscriberServices : public ydk::Entity
 {
     public:
         SubscriberServices();
@@ -2132,11 +2317,13 @@ class DynamicTemplate::SubscriberServices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SubscriberService; //type: DynamicTemplate::SubscriberServices::SubscriberService
 
@@ -2145,7 +2332,7 @@ class DynamicTemplate::SubscriberServices : public Entity
 }; // DynamicTemplate::SubscriberServices
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService : public ydk::Entity
 {
     public:
         SubscriberService();
@@ -2153,14 +2340,16 @@ class DynamicTemplate::SubscriberServices::SubscriberService : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf template_name; //type: string
-        YLeaf vrf; //type: string
+        ydk::YLeaf template_name; //type: string
+        ydk::YLeaf vrf; //type: string
         class SpanMonitorSessions; //type: DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
         class Ipv4PacketFilter; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter
         class Ipv6PacketFilter; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter
@@ -2184,7 +2373,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService : public Entity
 }; // DynamicTemplate::SubscriberServices::SubscriberService
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions : public ydk::Entity
 {
     public:
         SpanMonitorSessions();
@@ -2192,11 +2381,13 @@ class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSession
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpanMonitorSession; //type: DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession
 
@@ -2205,7 +2396,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSession
 }; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession : public ydk::Entity
 {
     public:
         SpanMonitorSession();
@@ -2213,16 +2404,18 @@ class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSession
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_class; //type: SpanSessionClassEnum
-        YLeaf mirror_first; //type: uint32
-        YLeaf mirror_interval; //type: SpanMirrorIntervalEnum
-        YLeaf acl; //type: empty
+        ydk::YLeaf session_class; //type: SpanSessionClass
+        ydk::YLeaf mirror_first; //type: uint32
+        ydk::YLeaf mirror_interval; //type: SpanMirrorInterval
+        ydk::YLeaf acl; //type: empty
         class Attachment; //type: DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
@@ -2230,7 +2423,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSession
 }; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment : public ydk::Entity
 {
     public:
         Attachment();
@@ -2238,20 +2431,22 @@ class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSession
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_name; //type: string
-        YLeaf direction; //type: SpanTrafficDirectionEnum
-        YLeaf port_level_enable; //type: empty
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf direction; //type: SpanTrafficDirection
+        ydk::YLeaf port_level_enable; //type: empty
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter : public ydk::Entity
 {
     public:
         Ipv4PacketFilter();
@@ -2259,11 +2454,13 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Outbound; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound
         class Inbound; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound
@@ -2274,7 +2471,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter :
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound : public ydk::Entity
 {
     public:
         Outbound();
@@ -2282,21 +2479,23 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_count; //type: empty
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_count; //type: empty
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound : public ydk::Entity
 {
     public:
         Inbound();
@@ -2304,21 +2503,23 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_count; //type: empty
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_count; //type: empty
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter : public ydk::Entity
 {
     public:
         Ipv6PacketFilter();
@@ -2326,11 +2527,13 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inbound; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound
         class Outbound; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound
@@ -2341,7 +2544,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter :
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound : public ydk::Entity
 {
     public:
         Inbound();
@@ -2349,20 +2552,22 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound : public ydk::Entity
 {
     public:
         Outbound();
@@ -2370,20 +2575,22 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf common_acl_name; //type: string
-        YLeaf name; //type: string
-        YLeaf interface_statistics; //type: empty
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_statistics; //type: empty
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network : public ydk::Entity
 {
     public:
         Ipv4Network();
@@ -2391,21 +2598,23 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf unnumbered; //type: string
-        YLeaf mtu; //type: uint32
-        YLeaf unreachables; //type: boolean
-        YLeaf rpf; //type: boolean
+        ydk::YLeaf unnumbered; //type: string
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf unreachables; //type: boolean
+        ydk::YLeaf rpf; //type: boolean
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network : public ydk::Entity
 {
     public:
         Ipv6Network();
@@ -2413,15 +2622,17 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mtu; //type: uint32
-        YLeaf unreachables; //type: empty
-        YLeaf verify; //type: Ipv6ReachableViaEnum
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf rpf; //type: boolean
+        ydk::YLeaf unreachables; //type: empty
         class Addresses; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses> addresses;
@@ -2429,7 +2640,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network : publ
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses : public ydk::Entity
 {
     public:
         Addresses();
@@ -2437,11 +2648,13 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addre
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AutoConfiguration; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration
 
@@ -2450,7 +2663,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addre
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration : public ydk::Entity
 {
     public:
         AutoConfiguration();
@@ -2458,18 +2671,20 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addre
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
+        ydk::YLeaf enable; //type: empty
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor : public ydk::Entity
 {
     public:
         Ipv6Neighbor();
@@ -2477,26 +2692,28 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf framed_prefix_pool; //type: string
-        YLeaf managed_config; //type: empty
-        YLeaf other_config; //type: empty
-        YLeaf start_ra_on_ipv6_enable; //type: empty
-        YLeaf nud_enable; //type: empty
-        YLeaf ra_lifetime; //type: uint32
-        YLeaf router_preference; //type: Ipv6NdRouterPrefTemplateEnum
-        YLeaf ra_suppress; //type: empty
-        YLeaf ra_unicast; //type: empty
-        YLeaf ra_unspecify_hoplimit; //type: empty
-        YLeaf ra_suppress_mtu; //type: empty
-        YLeaf suppress_cache_learning; //type: empty
-        YLeaf reachable_time; //type: uint32
-        YLeaf ns_interval; //type: uint32
+        ydk::YLeaf framed_prefix_pool; //type: string
+        ydk::YLeaf managed_config; //type: empty
+        ydk::YLeaf other_config; //type: empty
+        ydk::YLeaf start_ra_on_ipv6_enable; //type: empty
+        ydk::YLeaf nud_enable; //type: empty
+        ydk::YLeaf ra_lifetime; //type: uint32
+        ydk::YLeaf router_preference; //type: Ipv6NdRouterPrefTemplate
+        ydk::YLeaf ra_suppress; //type: empty
+        ydk::YLeaf ra_unicast; //type: empty
+        ydk::YLeaf ra_unspecify_hoplimit; //type: empty
+        ydk::YLeaf ra_suppress_mtu; //type: empty
+        ydk::YLeaf suppress_cache_learning; //type: empty
+        ydk::YLeaf reachable_time; //type: uint32
+        ydk::YLeaf ns_interval; //type: uint32
         class RaInterval; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval
         class FramedPrefix; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix
         class DuplicateAddressDetection; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection
@@ -2510,7 +2727,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor : pub
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval : public ydk::Entity
 {
     public:
         RaInterval();
@@ -2518,19 +2735,21 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum; //type: uint32
-        YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix : public ydk::Entity
 {
     public:
         FramedPrefix();
@@ -2538,19 +2757,21 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::Fram
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection : public ydk::Entity
 {
     public:
         DuplicateAddressDetection();
@@ -2558,18 +2779,20 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::Dupl
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf attempts; //type: uint32
+        ydk::YLeaf attempts; //type: uint32
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial : public ydk::Entity
 {
     public:
         RaInitial();
@@ -2577,19 +2800,21 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf count; //type: uint32
-        YLeaf interval; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf interval; //type: uint32
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Pbr : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Pbr : public ydk::Entity
 {
     public:
         Pbr();
@@ -2597,13 +2822,15 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Pbr : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf service_policy_in; //type: string
+        ydk::YLeaf service_policy_in; //type: string
         class ServicePolicy; //type: DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy
 
         std::shared_ptr<Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy> service_policy;
@@ -2611,7 +2838,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Pbr : public Entit
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Pbr
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy : public ydk::Entity
 {
     public:
         ServicePolicy();
@@ -2619,18 +2846,20 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf input; //type: string
+        ydk::YLeaf input; //type: string
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Qos : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos : public ydk::Entity
 {
     public:
         Qos();
@@ -2638,11 +2867,13 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Qos : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ServicePolicy; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy
         class Account; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account
@@ -2655,7 +2886,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Qos : public Entit
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Qos
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy : public ydk::Entity
 {
     public:
         ServicePolicy();
@@ -2663,11 +2894,13 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Input; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input
         class Output; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output
@@ -2678,7 +2911,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2686,22 +2919,24 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf spi_name; //type: string
-        YLeaf merge; //type: boolean
-        YLeaf merge_id; //type: uint32
-        YLeaf account_stats; //type: boolean
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output : public ydk::Entity
 {
     public:
         Output();
@@ -2709,22 +2944,24 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf spi_name; //type: string
-        YLeaf merge; //type: boolean
-        YLeaf merge_id; //type: uint32
-        YLeaf account_stats; //type: boolean
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account : public ydk::Entity
 {
     public:
         Account();
@@ -2732,21 +2969,23 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf aal; //type: Qosl2DataLinkEnum
-        YLeaf encapsulation; //type: Qosl2EncapEnum
-        YLeaf atm_cell_tax; //type: empty
-        YLeaf user_defined; //type: int32
+        ydk::YLeaf aal; //type: Qosl2DataLink
+        ydk::YLeaf encapsulation; //type: Qosl2Encap
+        ydk::YLeaf atm_cell_tax; //type: empty
+        ydk::YLeaf user_defined; //type: int32
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output : public ydk::Entity
 {
     public:
         Output();
@@ -2754,18 +2993,20 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf minimum_bandwidth; //type: uint32
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Accounting : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Accounting : public ydk::Entity
 {
     public:
         Accounting();
@@ -2773,13 +3014,15 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Accounting : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prepaid_feature; //type: string
+        ydk::YLeaf prepaid_feature; //type: string
         class ServiceAccounting; //type: DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting
         class Session; //type: DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session
         class IdleTimeout; //type: DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout
@@ -2791,7 +3034,7 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Accounting : publi
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Accounting
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting : public ydk::Entity
 {
     public:
         ServiceAccounting();
@@ -2799,19 +3042,21 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Servic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf method_list_name; //type: string
-        YLeaf accounting_interim_interval; //type: int32
+        ydk::YLeaf method_list_name; //type: string
+        ydk::YLeaf accounting_interim_interval; //type: int32
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session : public ydk::Entity
 {
     public:
         Session();
@@ -2819,21 +3064,23 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Sessio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf method_list_name; //type: string
-        YLeaf periodic_interval; //type: int32
-        YLeaf dual_stack_delay; //type: int32
-        YLeaf hold_acct_start; //type: int32
+        ydk::YLeaf method_list_name; //type: string
+        ydk::YLeaf periodic_interval; //type: int32
+        ydk::YLeaf dual_stack_delay; //type: int32
+        ydk::YLeaf hold_acct_start; //type: int32
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session
 
 
-class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout : public Entity
+class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout : public ydk::Entity
 {
     public:
         IdleTimeout();
@@ -2841,15 +3088,17 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf timeout_value; //type: int32
-        YLeaf threshold; //type: int32
-        YLeaf direction; //type: string
+        ydk::YLeaf timeout_value; //type: int32
+        ydk::YLeaf threshold; //type: int32
+        ydk::YLeaf direction; //type: string
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout
 

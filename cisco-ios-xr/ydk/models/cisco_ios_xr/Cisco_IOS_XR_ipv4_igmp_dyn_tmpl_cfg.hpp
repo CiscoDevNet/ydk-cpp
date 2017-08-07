@@ -7,14 +7,14 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_igmp_dyn_tmpl_cfg {
 
-class DynTmplMulticastModeEnum : public Enum
+class DynTmplMulticastMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf qos_correlation;
-        static const Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf qos_correlation;
+        static const ydk::Enum::YLeaf passive;
 
 };
 

@@ -73,18 +73,18 @@ string RestconfClient::get_capabilities(const string & url, const std::string & 
     return output;
 }
 
-string RestconfClient::execute(const string & operation, const string & url, const string & payload) const
+string RestconfClient::execute(const string & yfilter, const string & url, const string & payload) const
 {
     long response_code;
     string response;
 
-    curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, operation.c_str());
+    curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, yfilter.c_str());
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, payload.c_str());
 
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
     curl_easy_setopt(curl, CURLOPT_URL, (base_url + url).c_str());
 
-    YLOG_DEBUG( "Sending request: {}. Payload: {}. URL: {}", operation, payload, (base_url + url));
+    YLOG_DEBUG( "Sending request: {}. Payload: {}. URL: {}", yfilter, payload, (base_url + url));
 
     CURLcode res = curl_easy_perform(curl);
     if(res != CURLE_OK)

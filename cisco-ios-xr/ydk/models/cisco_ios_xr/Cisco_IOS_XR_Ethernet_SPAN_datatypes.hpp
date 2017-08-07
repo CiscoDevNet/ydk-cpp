@@ -7,22 +7,22 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_Ethernet_SPAN_datatypes {
 
-class SpanSessionClassOldEnum : public Enum
+class SpanSessionClass : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class SpanSessionClassEnum : public Enum
+class SpanSessionClassOld : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ethernet;
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf true_;
 
 };
 

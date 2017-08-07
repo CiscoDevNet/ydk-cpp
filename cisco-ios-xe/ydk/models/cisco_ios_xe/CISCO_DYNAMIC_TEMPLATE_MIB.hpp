@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_DYNAMIC_TEMPLATE_MIB {
 
-class CiscoDynamicTemplateMib : public Entity
+class CiscoDynamicTemplateMib : public ydk::Entity
 {
     public:
         CiscoDynamicTemplateMib();
@@ -19,15 +19,18 @@ class CiscoDynamicTemplateMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Cdttemplatetable; //type: CiscoDynamicTemplateMib::Cdttemplatetable
         class Cdttemplatetargettable; //type: CiscoDynamicTemplateMib::Cdttemplatetargettable
@@ -40,21 +43,21 @@ class CiscoDynamicTemplateMib : public Entity
         class Cdtethernettemplatetable; //type: CiscoDynamicTemplateMib::Cdtethernettemplatetable
         class Cdtsrvtemplatetable; //type: CiscoDynamicTemplateMib::Cdtsrvtemplatetable
 
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtethernettemplatetable> cdtethernettemplatetable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtiftemplatetable> cdtiftemplatetable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable> cdtppppeeripaddrpooltable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppptemplatetable> cdtppptemplatetable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtsrvtemplatetable> cdtsrvtemplatetable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateassociationtable> cdttemplateassociationtable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatecommontable> cdttemplatecommontable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable> cdttemplatetable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable> cdttemplatetargettable_;
-        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateusagetable> cdttemplateusagetable_;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtethernettemplatetable> cdtethernettemplatetable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtiftemplatetable> cdtiftemplatetable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable> cdtppppeeripaddrpooltable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppptemplatetable> cdtppptemplatetable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtsrvtemplatetable> cdtsrvtemplatetable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateassociationtable> cdttemplateassociationtable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatecommontable> cdttemplatecommontable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable> cdttemplatetable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable> cdttemplatetargettable;
+        std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateusagetable> cdttemplateusagetable;
         
 }; // CiscoDynamicTemplateMib
 
 
-class CiscoDynamicTemplateMib::Cdttemplatetable : public Entity
+class CiscoDynamicTemplateMib::Cdttemplatetable : public ydk::Entity
 {
     public:
         Cdttemplatetable();
@@ -62,20 +65,22 @@ class CiscoDynamicTemplateMib::Cdttemplatetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdttemplateentry; //type: CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry> > cdttemplateentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry> > cdttemplateentry;
         
 }; // CiscoDynamicTemplateMib::Cdttemplatetable
 
 
-class CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry : public Entity
+class CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry : public ydk::Entity
 {
     public:
         Cdttemplateentry();
@@ -83,24 +88,26 @@ class CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cdttemplatename; //type: binary
-        YLeaf cdttemplatestatus; //type: RowstatusEnum
-        YLeaf cdttemplatestorage; //type: StoragetypeEnum
-        YLeaf cdttemplatetype; //type: DynamictemplatetypeEnum
-        YLeaf cdttemplatesrc; //type: CdttemplatesrcEnum
-        YLeaf cdttemplateusagecount; //type: uint32
-        class CdttemplatesrcEnum;
+        ydk::YLeaf cdttemplatename; //type: binary
+        ydk::YLeaf cdttemplatestatus; //type: Rowstatus
+        ydk::YLeaf cdttemplatestorage; //type: Storagetype
+        ydk::YLeaf cdttemplatetype; //type: Dynamictemplatetype
+        ydk::YLeaf cdttemplatesrc; //type: Cdttemplatesrc
+        ydk::YLeaf cdttemplateusagecount; //type: uint32
+        class Cdttemplatesrc;
 
 }; // CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry
 
 
-class CiscoDynamicTemplateMib::Cdttemplatetargettable : public Entity
+class CiscoDynamicTemplateMib::Cdttemplatetargettable : public ydk::Entity
 {
     public:
         Cdttemplatetargettable();
@@ -108,20 +115,22 @@ class CiscoDynamicTemplateMib::Cdttemplatetargettable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdttemplatetargetentry; //type: CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry> > cdttemplatetargetentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry> > cdttemplatetargetentry;
         
 }; // CiscoDynamicTemplateMib::Cdttemplatetargettable
 
 
-class CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry : public Entity
+class CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry : public ydk::Entity
 {
     public:
         Cdttemplatetargetentry();
@@ -129,21 +138,23 @@ class CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cdttemplatetargettype; //type: DynamictemplatetargettypeEnum
-        YLeaf cdttemplatetargetid; //type: binary
-        YLeaf cdttemplatetargetstatus; //type: RowstatusEnum
-        YLeaf cdttemplatetargetstorage; //type: StoragetypeEnum
+        ydk::YLeaf cdttemplatetargettype; //type: Dynamictemplatetargettype
+        ydk::YLeaf cdttemplatetargetid; //type: binary
+        ydk::YLeaf cdttemplatetargetstatus; //type: Rowstatus
+        ydk::YLeaf cdttemplatetargetstorage; //type: Storagetype
 
 }; // CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry
 
 
-class CiscoDynamicTemplateMib::Cdttemplateassociationtable : public Entity
+class CiscoDynamicTemplateMib::Cdttemplateassociationtable : public ydk::Entity
 {
     public:
         Cdttemplateassociationtable();
@@ -151,20 +162,22 @@ class CiscoDynamicTemplateMib::Cdttemplateassociationtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdttemplateassociationentry; //type: CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry> > cdttemplateassociationentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry> > cdttemplateassociationentry;
         
 }; // CiscoDynamicTemplateMib::Cdttemplateassociationtable
 
 
-class CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry : public Entity
+class CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry : public ydk::Entity
 {
     public:
         Cdttemplateassociationentry();
@@ -172,22 +185,24 @@ class CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociati
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cdttemplatetargettype; //type: DynamictemplatetargettypeEnum
+        ydk::YLeaf cdttemplatetargettype; //type: Dynamictemplatetargettype
         //type: binary (refers to CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetargettable::Cdttemplatetargetentry::cdttemplatetargetid)
-        YLeaf cdttemplatetargetid;
-        YLeaf cdttemplateassociationname; //type: binary
-        YLeaf cdttemplateassociationprecedence; //type: uint32
+        ydk::YLeaf cdttemplatetargetid;
+        ydk::YLeaf cdttemplateassociationname; //type: binary
+        ydk::YLeaf cdttemplateassociationprecedence; //type: uint32
 
 }; // CiscoDynamicTemplateMib::Cdttemplateassociationtable::Cdttemplateassociationentry
 
 
-class CiscoDynamicTemplateMib::Cdttemplateusagetable : public Entity
+class CiscoDynamicTemplateMib::Cdttemplateusagetable : public ydk::Entity
 {
     public:
         Cdttemplateusagetable();
@@ -195,20 +210,22 @@ class CiscoDynamicTemplateMib::Cdttemplateusagetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdttemplateusageentry; //type: CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry> > cdttemplateusageentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry> > cdttemplateusageentry;
         
 }; // CiscoDynamicTemplateMib::Cdttemplateusagetable
 
 
-class CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry : public Entity
+class CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry : public ydk::Entity
 {
     public:
         Cdttemplateusageentry();
@@ -216,21 +233,23 @@ class CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: binary (refers to CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
-        YLeaf cdttemplatename;
-        YLeaf cdttemplateusagetargettype; //type: DynamictemplatetargettypeEnum
-        YLeaf cdttemplateusagetargetid; //type: binary
+        ydk::YLeaf cdttemplatename;
+        ydk::YLeaf cdttemplateusagetargettype; //type: Dynamictemplatetargettype
+        ydk::YLeaf cdttemplateusagetargetid; //type: binary
 
 }; // CiscoDynamicTemplateMib::Cdttemplateusagetable::Cdttemplateusageentry
 
 
-class CiscoDynamicTemplateMib::Cdttemplatecommontable : public Entity
+class CiscoDynamicTemplateMib::Cdttemplatecommontable : public ydk::Entity
 {
     public:
         Cdttemplatecommontable();
@@ -238,20 +257,22 @@ class CiscoDynamicTemplateMib::Cdttemplatecommontable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdttemplatecommonentry; //type: CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry> > cdttemplatecommonentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry> > cdttemplatecommonentry;
         
 }; // CiscoDynamicTemplateMib::Cdttemplatecommontable
 
 
-class CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry : public Entity
+class CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry : public ydk::Entity
 {
     public:
         Cdttemplatecommonentry();
@@ -259,34 +280,36 @@ class CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: binary (refers to CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
-        YLeaf cdttemplatename;
-        YLeaf cdtcommonvalid; //type: Cdtcommonvalid
-        YLeaf cdtcommondescr; //type: string
-        YLeaf cdtcommonkeepaliveint; //type: uint32
-        YLeaf cdtcommonkeepaliveretries; //type: uint32
-        YLeaf cdtcommonvrf; //type: binary
-        YLeaf cdtcommonaddrpool; //type: string
-        YLeaf cdtcommonipv4accessgroup; //type: string
-        YLeaf cdtcommonipv4unreachables; //type: boolean
-        YLeaf cdtcommonipv6accessgroup; //type: string
-        YLeaf cdtcommonipv6unreachables; //type: boolean
-        YLeaf cdtcommonsrvsubcontrol; //type: string
-        YLeaf cdtcommonsrvredirect; //type: string
-        YLeaf cdtcommonsrvacct; //type: string
-        YLeaf cdtcommonsrvqos; //type: string
-        YLeaf cdtcommonsrvnetflow; //type: string
+        ydk::YLeaf cdttemplatename;
+        ydk::YLeaf cdtcommonvalid; //type: Cdtcommonvalid
+        ydk::YLeaf cdtcommondescr; //type: string
+        ydk::YLeaf cdtcommonkeepaliveint; //type: uint32
+        ydk::YLeaf cdtcommonkeepaliveretries; //type: uint32
+        ydk::YLeaf cdtcommonvrf; //type: binary
+        ydk::YLeaf cdtcommonaddrpool; //type: string
+        ydk::YLeaf cdtcommonipv4accessgroup; //type: string
+        ydk::YLeaf cdtcommonipv4unreachables; //type: boolean
+        ydk::YLeaf cdtcommonipv6accessgroup; //type: string
+        ydk::YLeaf cdtcommonipv6unreachables; //type: boolean
+        ydk::YLeaf cdtcommonsrvsubcontrol; //type: string
+        ydk::YLeaf cdtcommonsrvredirect; //type: string
+        ydk::YLeaf cdtcommonsrvacct; //type: string
+        ydk::YLeaf cdtcommonsrvqos; //type: string
+        ydk::YLeaf cdtcommonsrvnetflow; //type: string
 
 }; // CiscoDynamicTemplateMib::Cdttemplatecommontable::Cdttemplatecommonentry
 
 
-class CiscoDynamicTemplateMib::Cdtiftemplatetable : public Entity
+class CiscoDynamicTemplateMib::Cdtiftemplatetable : public ydk::Entity
 {
     public:
         Cdtiftemplatetable();
@@ -294,20 +317,22 @@ class CiscoDynamicTemplateMib::Cdtiftemplatetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdtiftemplateentry; //type: CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry> > cdtiftemplateentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry> > cdtiftemplateentry;
         
 }; // CiscoDynamicTemplateMib::Cdtiftemplatetable
 
 
-class CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry : public Entity
+class CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry : public ydk::Entity
 {
     public:
         Cdtiftemplateentry();
@@ -315,51 +340,53 @@ class CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: binary (refers to CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
-        YLeaf cdttemplatename;
-        YLeaf cdtifvalid; //type: Cdtifvalid
-        YLeaf cdtifmtu; //type: uint32
-        YLeaf cdtifcdpenable; //type: boolean
-        YLeaf cdtifflowmonitor; //type: string
-        YLeaf cdtifipv4unnumbered; //type: int32
-        YLeaf cdtifipv4subenable; //type: boolean
-        YLeaf cdtifipv4mtu; //type: uint32
-        YLeaf cdtifipv4tcpmssadjust; //type: uint32
-        YLeaf cdtifipv4verifyunirpf; //type: UnicastrpftypeEnum
-        YLeaf cdtifipv4verifyunirpfacl; //type: string
-        YLeaf cdtifipv4verifyunirpfopts; //type: Unicastrpfoptions
-        YLeaf cdtifipv6enable; //type: boolean
-        YLeaf cdtifipv6subenable; //type: boolean
-        YLeaf cdtifipv6tcpmssadjust; //type: uint32
-        YLeaf cdtifipv6verifyunirpf; //type: UnicastrpftypeEnum
-        YLeaf cdtifipv6verifyunirpfacl; //type: string
-        YLeaf cdtifipv6verifyunirpfopts; //type: Unicastrpfoptions
-        YLeaf cdtifipv6ndprefix; //type: string
-        YLeaf cdtifipv6ndprefixlength; //type: uint32
-        YLeaf cdtifipv6ndvalidlife; //type: uint32
-        YLeaf cdtifipv6ndpreferredlife; //type: uint32
-        YLeaf cdtifipv6ndopts; //type: Cdtifipv6Ndopts
-        YLeaf cdtifipv6nddadattempts; //type: uint32
-        YLeaf cdtifipv6ndnsinterval; //type: uint32
-        YLeaf cdtifipv6ndreachabletime; //type: uint32
-        YLeaf cdtifipv6ndraintervalunits; //type: Cdtifipv6NdraintervalunitsEnum
-        YLeaf cdtifipv6ndraintervalmax; //type: uint32
-        YLeaf cdtifipv6ndraintervalmin; //type: uint32
-        YLeaf cdtifipv6ndralife; //type: uint32
-        YLeaf cdtifipv6ndrouterpreference; //type: Cdtifipv6NdrouterpreferenceEnum
-        class Cdtifipv6NdraintervalunitsEnum;
-        class Cdtifipv6NdrouterpreferenceEnum;
+        ydk::YLeaf cdttemplatename;
+        ydk::YLeaf cdtifvalid; //type: Cdtifvalid
+        ydk::YLeaf cdtifmtu; //type: uint32
+        ydk::YLeaf cdtifcdpenable; //type: boolean
+        ydk::YLeaf cdtifflowmonitor; //type: string
+        ydk::YLeaf cdtifipv4unnumbered; //type: int32
+        ydk::YLeaf cdtifipv4subenable; //type: boolean
+        ydk::YLeaf cdtifipv4mtu; //type: uint32
+        ydk::YLeaf cdtifipv4tcpmssadjust; //type: uint32
+        ydk::YLeaf cdtifipv4verifyunirpf; //type: Unicastrpftype
+        ydk::YLeaf cdtifipv4verifyunirpfacl; //type: string
+        ydk::YLeaf cdtifipv4verifyunirpfopts; //type: Unicastrpfoptions
+        ydk::YLeaf cdtifipv6enable; //type: boolean
+        ydk::YLeaf cdtifipv6subenable; //type: boolean
+        ydk::YLeaf cdtifipv6tcpmssadjust; //type: uint32
+        ydk::YLeaf cdtifipv6verifyunirpf; //type: Unicastrpftype
+        ydk::YLeaf cdtifipv6verifyunirpfacl; //type: string
+        ydk::YLeaf cdtifipv6verifyunirpfopts; //type: Unicastrpfoptions
+        ydk::YLeaf cdtifipv6ndprefix; //type: string
+        ydk::YLeaf cdtifipv6ndprefixlength; //type: uint32
+        ydk::YLeaf cdtifipv6ndvalidlife; //type: uint32
+        ydk::YLeaf cdtifipv6ndpreferredlife; //type: uint32
+        ydk::YLeaf cdtifipv6ndopts; //type: Cdtifipv6Ndopts
+        ydk::YLeaf cdtifipv6nddadattempts; //type: uint32
+        ydk::YLeaf cdtifipv6ndnsinterval; //type: uint32
+        ydk::YLeaf cdtifipv6ndreachabletime; //type: uint32
+        ydk::YLeaf cdtifipv6ndraintervalunits; //type: Cdtifipv6Ndraintervalunits
+        ydk::YLeaf cdtifipv6ndraintervalmax; //type: uint32
+        ydk::YLeaf cdtifipv6ndraintervalmin; //type: uint32
+        ydk::YLeaf cdtifipv6ndralife; //type: uint32
+        ydk::YLeaf cdtifipv6ndrouterpreference; //type: Cdtifipv6Ndrouterpreference
+        class Cdtifipv6Ndraintervalunits;
+        class Cdtifipv6Ndrouterpreference;
 
 }; // CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry
 
 
-class CiscoDynamicTemplateMib::Cdtppptemplatetable : public Entity
+class CiscoDynamicTemplateMib::Cdtppptemplatetable : public ydk::Entity
 {
     public:
         Cdtppptemplatetable();
@@ -367,20 +394,22 @@ class CiscoDynamicTemplateMib::Cdtppptemplatetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdtppptemplateentry; //type: CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry> > cdtppptemplateentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry> > cdtppptemplateentry;
         
 }; // CiscoDynamicTemplateMib::Cdtppptemplatetable
 
 
-class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry : public Entity
+class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry : public ydk::Entity
 {
     public:
         Cdtppptemplateentry();
@@ -388,63 +417,65 @@ class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: binary (refers to CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
-        YLeaf cdttemplatename;
-        YLeaf cdtpppvalid; //type: Cdtpppvalid
-        YLeaf cdtpppaccounting; //type: boolean
-        YLeaf cdtpppauthentication; //type: Cdtpppauthentication
-        YLeaf cdtpppauthenticationmethods; //type: string
-        YLeaf cdtpppauthorization; //type: boolean
-        YLeaf cdtppploopbackignore; //type: boolean
-        YLeaf cdtpppmaxbadauth; //type: uint32
-        YLeaf cdtpppmaxconfigure; //type: uint32
-        YLeaf cdtpppmaxfailure; //type: uint32
-        YLeaf cdtpppmaxterminate; //type: uint32
-        YLeaf cdtppptimeoutauthentication; //type: uint32
-        YLeaf cdtppptimeoutretry; //type: uint32
-        YLeaf cdtpppchapopts; //type: Cdtpppchapopts
-        YLeaf cdtpppchaphostname; //type: string
-        YLeaf cdtpppchappassword; //type: string
-        YLeaf cdtpppmschapv1opts; //type: Cdtpppmschapv1Opts
-        YLeaf cdtpppmschapv1hostname; //type: string
-        YLeaf cdtpppmschapv1password; //type: string
-        YLeaf cdtpppmschapv2opts; //type: Cdtpppmschapv2Opts
-        YLeaf cdtpppmschapv2hostname; //type: string
-        YLeaf cdtpppmschapv2password; //type: string
-        YLeaf cdtppppapopts; //type: Cdtppppapopts
-        YLeaf cdtppppapusername; //type: string
-        YLeaf cdtppppappassword; //type: string
-        YLeaf cdtpppeapopts; //type: Cdtpppeapopts
-        YLeaf cdtpppeapidentity; //type: string
-        YLeaf cdtpppeappassword; //type: string
-        YLeaf cdtpppipcpaddroption; //type: CdtpppipcpaddroptionEnum
-        YLeaf cdtpppipcpdnsoption; //type: CdtpppipcpdnsoptionEnum
-        YLeaf cdtpppipcpdnsprimary; //type: string
-        YLeaf cdtpppipcpdnssecondary; //type: string
-        YLeaf cdtpppipcpwinsoption; //type: CdtpppipcpwinsoptionEnum
-        YLeaf cdtpppipcpwinsprimary; //type: string
-        YLeaf cdtpppipcpwinssecondary; //type: string
-        YLeaf cdtpppipcpmaskoption; //type: CdtpppipcpmaskoptionEnum
-        YLeaf cdtpppipcpmask; //type: string
-        YLeaf cdtppppeerdefipaddropts; //type: Cdtppppeerdefipaddropts
-        YLeaf cdtppppeerdefipaddrsrc; //type: CdtppppeerdefipaddrsrcEnum
-        YLeaf cdtppppeerdefipaddr; //type: string
-        class CdtpppipcpaddroptionEnum;
-        class CdtpppipcpdnsoptionEnum;
-        class CdtpppipcpwinsoptionEnum;
-        class CdtpppipcpmaskoptionEnum;
-        class CdtppppeerdefipaddrsrcEnum;
+        ydk::YLeaf cdttemplatename;
+        ydk::YLeaf cdtpppvalid; //type: Cdtpppvalid
+        ydk::YLeaf cdtpppaccounting; //type: boolean
+        ydk::YLeaf cdtpppauthentication; //type: Cdtpppauthentication
+        ydk::YLeaf cdtpppauthenticationmethods; //type: string
+        ydk::YLeaf cdtpppauthorization; //type: boolean
+        ydk::YLeaf cdtppploopbackignore; //type: boolean
+        ydk::YLeaf cdtpppmaxbadauth; //type: uint32
+        ydk::YLeaf cdtpppmaxconfigure; //type: uint32
+        ydk::YLeaf cdtpppmaxfailure; //type: uint32
+        ydk::YLeaf cdtpppmaxterminate; //type: uint32
+        ydk::YLeaf cdtppptimeoutauthentication; //type: uint32
+        ydk::YLeaf cdtppptimeoutretry; //type: uint32
+        ydk::YLeaf cdtpppchapopts; //type: Cdtpppchapopts
+        ydk::YLeaf cdtpppchaphostname; //type: string
+        ydk::YLeaf cdtpppchappassword; //type: string
+        ydk::YLeaf cdtpppmschapv1opts; //type: Cdtpppmschapv1Opts
+        ydk::YLeaf cdtpppmschapv1hostname; //type: string
+        ydk::YLeaf cdtpppmschapv1password; //type: string
+        ydk::YLeaf cdtpppmschapv2opts; //type: Cdtpppmschapv2Opts
+        ydk::YLeaf cdtpppmschapv2hostname; //type: string
+        ydk::YLeaf cdtpppmschapv2password; //type: string
+        ydk::YLeaf cdtppppapopts; //type: Cdtppppapopts
+        ydk::YLeaf cdtppppapusername; //type: string
+        ydk::YLeaf cdtppppappassword; //type: string
+        ydk::YLeaf cdtpppeapopts; //type: Cdtpppeapopts
+        ydk::YLeaf cdtpppeapidentity; //type: string
+        ydk::YLeaf cdtpppeappassword; //type: string
+        ydk::YLeaf cdtpppipcpaddroption; //type: Cdtpppipcpaddroption
+        ydk::YLeaf cdtpppipcpdnsoption; //type: Cdtpppipcpdnsoption
+        ydk::YLeaf cdtpppipcpdnsprimary; //type: string
+        ydk::YLeaf cdtpppipcpdnssecondary; //type: string
+        ydk::YLeaf cdtpppipcpwinsoption; //type: Cdtpppipcpwinsoption
+        ydk::YLeaf cdtpppipcpwinsprimary; //type: string
+        ydk::YLeaf cdtpppipcpwinssecondary; //type: string
+        ydk::YLeaf cdtpppipcpmaskoption; //type: Cdtpppipcpmaskoption
+        ydk::YLeaf cdtpppipcpmask; //type: string
+        ydk::YLeaf cdtppppeerdefipaddropts; //type: Cdtppppeerdefipaddropts
+        ydk::YLeaf cdtppppeerdefipaddrsrc; //type: Cdtppppeerdefipaddrsrc
+        ydk::YLeaf cdtppppeerdefipaddr; //type: string
+        class Cdtpppipcpaddroption;
+        class Cdtpppipcpdnsoption;
+        class Cdtpppipcpwinsoption;
+        class Cdtpppipcpmaskoption;
+        class Cdtppppeerdefipaddrsrc;
 
 }; // CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry
 
 
-class CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable : public Entity
+class CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable : public ydk::Entity
 {
     public:
         Cdtppppeeripaddrpooltable();
@@ -452,20 +483,22 @@ class CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdtppppeeripaddrpoolentry; //type: CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry> > cdtppppeeripaddrpoolentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry> > cdtppppeeripaddrpoolentry;
         
 }; // CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable
 
 
-class CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry : public Entity
+class CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry : public ydk::Entity
 {
     public:
         Cdtppppeeripaddrpoolentry();
@@ -473,23 +506,25 @@ class CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: binary (refers to CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
-        YLeaf cdttemplatename;
-        YLeaf cdtppppeeripaddrpoolpriority; //type: uint32
-        YLeaf cdtppppeeripaddrpoolstatus; //type: RowstatusEnum
-        YLeaf cdtppppeeripaddrpoolstorage; //type: StoragetypeEnum
-        YLeaf cdtppppeeripaddrpoolname; //type: string
+        ydk::YLeaf cdttemplatename;
+        ydk::YLeaf cdtppppeeripaddrpoolpriority; //type: uint32
+        ydk::YLeaf cdtppppeeripaddrpoolstatus; //type: Rowstatus
+        ydk::YLeaf cdtppppeeripaddrpoolstorage; //type: Storagetype
+        ydk::YLeaf cdtppppeeripaddrpoolname; //type: string
 
 }; // CiscoDynamicTemplateMib::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry
 
 
-class CiscoDynamicTemplateMib::Cdtethernettemplatetable : public Entity
+class CiscoDynamicTemplateMib::Cdtethernettemplatetable : public ydk::Entity
 {
     public:
         Cdtethernettemplatetable();
@@ -497,20 +532,22 @@ class CiscoDynamicTemplateMib::Cdtethernettemplatetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdtethernettemplateentry; //type: CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry> > cdtethernettemplateentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry> > cdtethernettemplateentry;
         
 }; // CiscoDynamicTemplateMib::Cdtethernettemplatetable
 
 
-class CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry : public Entity
+class CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry : public ydk::Entity
 {
     public:
         Cdtethernettemplateentry();
@@ -518,24 +555,26 @@ class CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: binary (refers to CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
-        YLeaf cdttemplatename;
-        YLeaf cdtethernetvalid; //type: Cdtethernetvalid
-        YLeaf cdtethernetbridgedomain; //type: string
-        YLeaf cdtethernetpppoeenable; //type: boolean
-        YLeaf cdtethernetipv4pointtopoint; //type: boolean
-        YLeaf cdtethernetmacaddr; //type: string
+        ydk::YLeaf cdttemplatename;
+        ydk::YLeaf cdtethernetvalid; //type: Cdtethernetvalid
+        ydk::YLeaf cdtethernetbridgedomain; //type: string
+        ydk::YLeaf cdtethernetpppoeenable; //type: boolean
+        ydk::YLeaf cdtethernetipv4pointtopoint; //type: boolean
+        ydk::YLeaf cdtethernetmacaddr; //type: string
 
 }; // CiscoDynamicTemplateMib::Cdtethernettemplatetable::Cdtethernettemplateentry
 
 
-class CiscoDynamicTemplateMib::Cdtsrvtemplatetable : public Entity
+class CiscoDynamicTemplateMib::Cdtsrvtemplatetable : public ydk::Entity
 {
     public:
         Cdtsrvtemplatetable();
@@ -543,20 +582,22 @@ class CiscoDynamicTemplateMib::Cdtsrvtemplatetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cdtsrvtemplateentry; //type: CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry
 
-        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry> > cdtsrvtemplateentry_;
+        std::vector<std::shared_ptr<CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry> > cdtsrvtemplateentry;
         
 }; // CiscoDynamicTemplateMib::Cdtsrvtemplatetable
 
 
-class CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry : public Entity
+class CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry : public ydk::Entity
 {
     public:
         Cdtsrvtemplateentry();
@@ -564,116 +605,118 @@ class CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: binary (refers to CISCO_DYNAMIC_TEMPLATE_MIB::CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::cdttemplatename)
-        YLeaf cdttemplatename;
-        YLeaf cdtsrvvalid; //type: Cdtsrvvalid
-        YLeaf cdtsrvnetworksrv; //type: CdtsrvnetworksrvEnum
-        YLeaf cdtsrvvpdngroup; //type: string
-        YLeaf cdtsrvsgsrvgroup; //type: string
-        YLeaf cdtsrvsgsrvtype; //type: CdtsrvsgsrvtypeEnum
-        YLeaf cdtsrvmulticast; //type: boolean
-        class CdtsrvnetworksrvEnum;
-        class CdtsrvsgsrvtypeEnum;
+        ydk::YLeaf cdttemplatename;
+        ydk::YLeaf cdtsrvvalid; //type: Cdtsrvvalid
+        ydk::YLeaf cdtsrvnetworksrv; //type: Cdtsrvnetworksrv
+        ydk::YLeaf cdtsrvvpdngroup; //type: string
+        ydk::YLeaf cdtsrvsgsrvgroup; //type: string
+        ydk::YLeaf cdtsrvsgsrvtype; //type: Cdtsrvsgsrvtype
+        ydk::YLeaf cdtsrvmulticast; //type: boolean
+        class Cdtsrvnetworksrv;
+        class Cdtsrvsgsrvtype;
 
 }; // CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry
 
-class CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::CdttemplatesrcEnum : public Enum
+class CiscoDynamicTemplateMib::Cdttemplatetable::Cdttemplateentry::Cdttemplatesrc : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf derived;
-        static const Enum::YLeaf local;
-        static const Enum::YLeaf aaaUserProfile;
-        static const Enum::YLeaf aaaServiceProfile;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf derived;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf aaaUserProfile;
+        static const ydk::Enum::YLeaf aaaServiceProfile;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6NdraintervalunitsEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndraintervalunits : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf seconds;
-        static const Enum::YLeaf milliseconds;
+        static const ydk::Enum::YLeaf seconds;
+        static const ydk::Enum::YLeaf milliseconds;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6NdrouterpreferenceEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtiftemplatetable::Cdtiftemplateentry::Cdtifipv6Ndrouterpreference : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf high;
-        static const Enum::YLeaf medium;
-        static const Enum::YLeaf low;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::CdtpppipcpaddroptionEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpaddroption : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf accept;
-        static const Enum::YLeaf required;
-        static const Enum::YLeaf unique;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf accept;
+        static const ydk::Enum::YLeaf required;
+        static const ydk::Enum::YLeaf unique;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::CdtpppipcpdnsoptionEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpdnsoption : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf accept;
-        static const Enum::YLeaf request;
-        static const Enum::YLeaf reject;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf accept;
+        static const ydk::Enum::YLeaf request;
+        static const ydk::Enum::YLeaf reject;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::CdtpppipcpwinsoptionEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpwinsoption : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf accept;
-        static const Enum::YLeaf request;
-        static const Enum::YLeaf reject;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf accept;
+        static const ydk::Enum::YLeaf request;
+        static const ydk::Enum::YLeaf reject;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::CdtpppipcpmaskoptionEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtpppipcpmaskoption : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf request;
-        static const Enum::YLeaf reject;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf request;
+        static const ydk::Enum::YLeaf reject;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::CdtppppeerdefipaddrsrcEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtppptemplatetable::Cdtppptemplateentry::Cdtppppeerdefipaddrsrc : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf static_;
-        static const Enum::YLeaf pool;
-        static const Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf pool;
+        static const ydk::Enum::YLeaf dhcp;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::CdtsrvnetworksrvEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvnetworksrv : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf local;
-        static const Enum::YLeaf vpdn;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf vpdn;
 
 };
 
-class CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::CdtsrvsgsrvtypeEnum : public Enum
+class CiscoDynamicTemplateMib::Cdtsrvtemplatetable::Cdtsrvtemplateentry::Cdtsrvsgsrvtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf primary;
-        static const Enum::YLeaf secondary;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf secondary;
 
 };
 

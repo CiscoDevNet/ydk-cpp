@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_snmp_agent_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_snmp_agent_oper {
 
 Snmp::Snmp()
@@ -61,7 +63,7 @@ bool Snmp::has_data() const
 
 bool Snmp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (correlator !=  nullptr && correlator->has_operation())
 	|| (entity_mib !=  nullptr && entity_mib->has_operation())
 	|| (if_indexes !=  nullptr && if_indexes->has_operation())
@@ -237,7 +239,11 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::get_children() const
     return children;
 }
 
-void Snmp::set_value(const std::string & value_path, std::string value)
+void Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Snmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -259,6 +265,18 @@ std::string Snmp::get_bundle_name() const
 augment_capabilities_function Snmp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Snmp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Snmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "correlator" || name == "entity-mib" || name == "if-indexes" || name == "information" || name == "interface-indexes" || name == "interface-mib" || name == "interfaces" || name == "sensor-mib" || name == "trap-servers")
+        return true;
+    return false;
 }
 
 Snmp::TrapServers::TrapServers()
@@ -287,7 +305,7 @@ bool Snmp::TrapServers::has_operation() const
         if(trap_server[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::TrapServers::get_segment_path() const
@@ -352,8 +370,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapServers::get_children()
     return children;
 }
 
-void Snmp::TrapServers::set_value(const std::string & value_path, std::string value)
+void Snmp::TrapServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::TrapServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::TrapServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-server")
+        return true;
+    return false;
 }
 
 Snmp::TrapServers::TrapServer::TrapServer()
@@ -384,13 +413,13 @@ bool Snmp::TrapServers::TrapServer::has_data() const
 
 bool Snmp::TrapServers::TrapServer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_q_length_of_trap_q.operation)
-	|| is_set(number_of_pkts_dropped.operation)
-	|| is_set(number_of_pkts_in_trap_q.operation)
-	|| is_set(number_of_pkts_sent.operation)
-	|| is_set(port.operation)
-	|| is_set(trap_host.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_q_length_of_trap_q.yfilter)
+	|| ydk::is_set(number_of_pkts_dropped.yfilter)
+	|| ydk::is_set(number_of_pkts_in_trap_q.yfilter)
+	|| ydk::is_set(number_of_pkts_sent.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(trap_host.yfilter);
 }
 
 std::string Snmp::TrapServers::TrapServer::get_segment_path() const
@@ -416,12 +445,12 @@ const EntityPath Snmp::TrapServers::TrapServer::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_q_length_of_trap_q.is_set || is_set(max_q_length_of_trap_q.operation)) leaf_name_data.push_back(max_q_length_of_trap_q.get_name_leafdata());
-    if (number_of_pkts_dropped.is_set || is_set(number_of_pkts_dropped.operation)) leaf_name_data.push_back(number_of_pkts_dropped.get_name_leafdata());
-    if (number_of_pkts_in_trap_q.is_set || is_set(number_of_pkts_in_trap_q.operation)) leaf_name_data.push_back(number_of_pkts_in_trap_q.get_name_leafdata());
-    if (number_of_pkts_sent.is_set || is_set(number_of_pkts_sent.operation)) leaf_name_data.push_back(number_of_pkts_sent.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (trap_host.is_set || is_set(trap_host.operation)) leaf_name_data.push_back(trap_host.get_name_leafdata());
+    if (max_q_length_of_trap_q.is_set || is_set(max_q_length_of_trap_q.yfilter)) leaf_name_data.push_back(max_q_length_of_trap_q.get_name_leafdata());
+    if (number_of_pkts_dropped.is_set || is_set(number_of_pkts_dropped.yfilter)) leaf_name_data.push_back(number_of_pkts_dropped.get_name_leafdata());
+    if (number_of_pkts_in_trap_q.is_set || is_set(number_of_pkts_in_trap_q.yfilter)) leaf_name_data.push_back(number_of_pkts_in_trap_q.get_name_leafdata());
+    if (number_of_pkts_sent.is_set || is_set(number_of_pkts_sent.yfilter)) leaf_name_data.push_back(number_of_pkts_sent.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (trap_host.is_set || is_set(trap_host.yfilter)) leaf_name_data.push_back(trap_host.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -440,32 +469,79 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapServers::TrapServer::ge
     return children;
 }
 
-void Snmp::TrapServers::TrapServer::set_value(const std::string & value_path, std::string value)
+void Snmp::TrapServers::TrapServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-q-length-of-trap-q")
     {
         max_q_length_of_trap_q = value;
+        max_q_length_of_trap_q.value_namespace = name_space;
+        max_q_length_of_trap_q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-pkts-dropped")
     {
         number_of_pkts_dropped = value;
+        number_of_pkts_dropped.value_namespace = name_space;
+        number_of_pkts_dropped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-pkts-in-trap-q")
     {
         number_of_pkts_in_trap_q = value;
+        number_of_pkts_in_trap_q.value_namespace = name_space;
+        number_of_pkts_in_trap_q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-pkts-sent")
     {
         number_of_pkts_sent = value;
+        number_of_pkts_sent.value_namespace = name_space;
+        number_of_pkts_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port")
     {
         port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-host")
     {
         trap_host = value;
+        trap_host.value_namespace = name_space;
+        trap_host.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::TrapServers::TrapServer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-q-length-of-trap-q")
+    {
+        max_q_length_of_trap_q.yfilter = yfilter;
+    }
+    if(value_path == "number-of-pkts-dropped")
+    {
+        number_of_pkts_dropped.yfilter = yfilter;
+    }
+    if(value_path == "number-of-pkts-in-trap-q")
+    {
+        number_of_pkts_in_trap_q.yfilter = yfilter;
+    }
+    if(value_path == "number-of-pkts-sent")
+    {
+        number_of_pkts_sent.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "trap-host")
+    {
+        trap_host.yfilter = yfilter;
+    }
+}
+
+bool Snmp::TrapServers::TrapServer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-q-length-of-trap-q" || name == "number-of-pkts-dropped" || name == "number-of-pkts-in-trap-q" || name == "number-of-pkts-sent" || name == "port" || name == "trap-host")
+        return true;
+    return false;
 }
 
 Snmp::Information::Information()
@@ -584,7 +660,7 @@ bool Snmp::Information::has_data() const
 
 bool Snmp::Information::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bulk_stats_transfers !=  nullptr && bulk_stats_transfers->has_operation())
 	|| (context_mapping !=  nullptr && context_mapping->has_operation())
 	|| (drop_nms_addresses !=  nullptr && drop_nms_addresses->has_operation())
@@ -1003,8 +1079,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::get_children()
     return children;
 }
 
-void Snmp::Information::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bulk-stats-transfers" || name == "context-mapping" || name == "drop-nms-addresses" || name == "duplicate-drop" || name == "engine-id" || name == "hosts" || name == "incoming-queue" || name == "infom-details" || name == "mibs" || name == "nm-spackets" || name == "nms-addresses" || name == "poll-oids" || name == "request-type-detail" || name == "rx-queue" || name == "serial-numbers" || name == "statistics" || name == "system-descr" || name == "system-name" || name == "system-oid" || name == "system-up-time" || name == "tables" || name == "trap-infos" || name == "trap-oids" || name == "trap-queue" || name == "views")
+        return true;
+    return false;
 }
 
 Snmp::Information::Hosts::Hosts()
@@ -1033,7 +1120,7 @@ bool Snmp::Information::Hosts::has_operation() const
         if(host[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::Hosts::get_segment_path() const
@@ -1098,8 +1185,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Hosts::get_chi
     return children;
 }
 
-void Snmp::Information::Hosts::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Hosts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::Hosts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::Hosts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host")
+        return true;
+    return false;
 }
 
 Snmp::Information::Hosts::Host::Host()
@@ -1130,8 +1228,8 @@ bool Snmp::Information::Hosts::Host::has_operation() const
         if(host_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Snmp::Information::Hosts::Host::get_segment_path() const
@@ -1157,7 +1255,7 @@ const EntityPath Snmp::Information::Hosts::Host::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1197,12 +1295,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Hosts::Host::g
     return children;
 }
 
-void Snmp::Information::Hosts::Host::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Hosts::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Hosts::Host::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Hosts::Host::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host-information" || name == "name")
+        return true;
+    return false;
 }
 
 Snmp::Information::Hosts::Host::HostInformation::HostInformation()
@@ -1235,14 +1350,14 @@ bool Snmp::Information::Hosts::Host::HostInformation::has_data() const
 
 bool Snmp::Information::Hosts::Host::HostInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(user.operation)
-	|| is_set(snmp_target_address_port.operation)
-	|| is_set(snmp_target_address_t_host.operation)
-	|| is_set(snmp_target_addresstype.operation)
-	|| is_set(snmp_target_params_security_level.operation)
-	|| is_set(snmp_target_params_security_model.operation)
-	|| is_set(snmp_target_params_security_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(user.yfilter)
+	|| ydk::is_set(snmp_target_address_port.yfilter)
+	|| ydk::is_set(snmp_target_address_t_host.yfilter)
+	|| ydk::is_set(snmp_target_addresstype.yfilter)
+	|| ydk::is_set(snmp_target_params_security_level.yfilter)
+	|| ydk::is_set(snmp_target_params_security_model.yfilter)
+	|| ydk::is_set(snmp_target_params_security_name.yfilter);
 }
 
 std::string Snmp::Information::Hosts::Host::HostInformation::get_segment_path() const
@@ -1268,13 +1383,13 @@ const EntityPath Snmp::Information::Hosts::Host::HostInformation::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (user.is_set || is_set(user.operation)) leaf_name_data.push_back(user.get_name_leafdata());
-    if (snmp_target_address_port.is_set || is_set(snmp_target_address_port.operation)) leaf_name_data.push_back(snmp_target_address_port.get_name_leafdata());
-    if (snmp_target_address_t_host.is_set || is_set(snmp_target_address_t_host.operation)) leaf_name_data.push_back(snmp_target_address_t_host.get_name_leafdata());
-    if (snmp_target_addresstype.is_set || is_set(snmp_target_addresstype.operation)) leaf_name_data.push_back(snmp_target_addresstype.get_name_leafdata());
-    if (snmp_target_params_security_level.is_set || is_set(snmp_target_params_security_level.operation)) leaf_name_data.push_back(snmp_target_params_security_level.get_name_leafdata());
-    if (snmp_target_params_security_model.is_set || is_set(snmp_target_params_security_model.operation)) leaf_name_data.push_back(snmp_target_params_security_model.get_name_leafdata());
-    if (snmp_target_params_security_name.is_set || is_set(snmp_target_params_security_name.operation)) leaf_name_data.push_back(snmp_target_params_security_name.get_name_leafdata());
+    if (user.is_set || is_set(user.yfilter)) leaf_name_data.push_back(user.get_name_leafdata());
+    if (snmp_target_address_port.is_set || is_set(snmp_target_address_port.yfilter)) leaf_name_data.push_back(snmp_target_address_port.get_name_leafdata());
+    if (snmp_target_address_t_host.is_set || is_set(snmp_target_address_t_host.yfilter)) leaf_name_data.push_back(snmp_target_address_t_host.get_name_leafdata());
+    if (snmp_target_addresstype.is_set || is_set(snmp_target_addresstype.yfilter)) leaf_name_data.push_back(snmp_target_addresstype.get_name_leafdata());
+    if (snmp_target_params_security_level.is_set || is_set(snmp_target_params_security_level.yfilter)) leaf_name_data.push_back(snmp_target_params_security_level.get_name_leafdata());
+    if (snmp_target_params_security_model.is_set || is_set(snmp_target_params_security_model.yfilter)) leaf_name_data.push_back(snmp_target_params_security_model.get_name_leafdata());
+    if (snmp_target_params_security_name.is_set || is_set(snmp_target_params_security_name.yfilter)) leaf_name_data.push_back(snmp_target_params_security_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1293,36 +1408,89 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Hosts::Host::H
     return children;
 }
 
-void Snmp::Information::Hosts::Host::HostInformation::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Hosts::Host::HostInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "user")
     {
         user = value;
+        user.value_namespace = name_space;
+        user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-target-address-port")
     {
         snmp_target_address_port = value;
+        snmp_target_address_port.value_namespace = name_space;
+        snmp_target_address_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-target-address-t-host")
     {
         snmp_target_address_t_host = value;
+        snmp_target_address_t_host.value_namespace = name_space;
+        snmp_target_address_t_host.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-target-addresstype")
     {
         snmp_target_addresstype = value;
+        snmp_target_addresstype.value_namespace = name_space;
+        snmp_target_addresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-target-params-security-level")
     {
         snmp_target_params_security_level = value;
+        snmp_target_params_security_level.value_namespace = name_space;
+        snmp_target_params_security_level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-target-params-security-model")
     {
         snmp_target_params_security_model = value;
+        snmp_target_params_security_model.value_namespace = name_space;
+        snmp_target_params_security_model.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-target-params-security-name")
     {
         snmp_target_params_security_name = value;
+        snmp_target_params_security_name.value_namespace = name_space;
+        snmp_target_params_security_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Hosts::Host::HostInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "user")
+    {
+        user.yfilter = yfilter;
+    }
+    if(value_path == "snmp-target-address-port")
+    {
+        snmp_target_address_port.yfilter = yfilter;
+    }
+    if(value_path == "snmp-target-address-t-host")
+    {
+        snmp_target_address_t_host.yfilter = yfilter;
+    }
+    if(value_path == "snmp-target-addresstype")
+    {
+        snmp_target_addresstype.yfilter = yfilter;
+    }
+    if(value_path == "snmp-target-params-security-level")
+    {
+        snmp_target_params_security_level.yfilter = yfilter;
+    }
+    if(value_path == "snmp-target-params-security-model")
+    {
+        snmp_target_params_security_model.yfilter = yfilter;
+    }
+    if(value_path == "snmp-target-params-security-name")
+    {
+        snmp_target_params_security_name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Hosts::Host::HostInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user" || name == "snmp-target-address-port" || name == "snmp-target-address-t-host" || name == "snmp-target-addresstype" || name == "snmp-target-params-security-level" || name == "snmp-target-params-security-model" || name == "snmp-target-params-security-name")
+        return true;
+    return false;
 }
 
 Snmp::Information::SystemUpTime::SystemUpTime()
@@ -1343,8 +1511,8 @@ bool Snmp::Information::SystemUpTime::has_data() const
 
 bool Snmp::Information::SystemUpTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_up_time_edm.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(system_up_time_edm.yfilter);
 }
 
 std::string Snmp::Information::SystemUpTime::get_segment_path() const
@@ -1370,7 +1538,7 @@ const EntityPath Snmp::Information::SystemUpTime::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_up_time_edm.is_set || is_set(system_up_time_edm.operation)) leaf_name_data.push_back(system_up_time_edm.get_name_leafdata());
+    if (system_up_time_edm.is_set || is_set(system_up_time_edm.yfilter)) leaf_name_data.push_back(system_up_time_edm.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1389,12 +1557,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SystemUpTime::
     return children;
 }
 
-void Snmp::Information::SystemUpTime::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::SystemUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-up-time-edm")
     {
         system_up_time_edm = value;
+        system_up_time_edm.value_namespace = name_space;
+        system_up_time_edm.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::SystemUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-up-time-edm")
+    {
+        system_up_time_edm.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::SystemUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-up-time-edm")
+        return true;
+    return false;
 }
 
 Snmp::Information::NmsAddresses::NmsAddresses()
@@ -1423,7 +1608,7 @@ bool Snmp::Information::NmsAddresses::has_operation() const
         if(nms_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::NmsAddresses::get_segment_path() const
@@ -1488,8 +1673,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmsAddresses::
     return children;
 }
 
-void Snmp::Information::NmsAddresses::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::NmsAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::NmsAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::NmsAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nms-address")
+        return true;
+    return false;
 }
 
 Snmp::Information::NmsAddresses::NmsAddress::NmsAddress()
@@ -1522,14 +1718,14 @@ bool Snmp::Information::NmsAddresses::NmsAddress::has_data() const
 
 bool Snmp::Information::NmsAddresses::NmsAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nms_addr.operation)
-	|| is_set(get_request_count.operation)
-	|| is_set(getbulk_request_count.operation)
-	|| is_set(getnext_request_count.operation)
-	|| is_set(nms_address.operation)
-	|| is_set(set_request_count.operation)
-	|| is_set(test_request_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nms_addr.yfilter)
+	|| ydk::is_set(get_request_count.yfilter)
+	|| ydk::is_set(getbulk_request_count.yfilter)
+	|| ydk::is_set(getnext_request_count.yfilter)
+	|| ydk::is_set(nms_address.yfilter)
+	|| ydk::is_set(set_request_count.yfilter)
+	|| ydk::is_set(test_request_count.yfilter);
 }
 
 std::string Snmp::Information::NmsAddresses::NmsAddress::get_segment_path() const
@@ -1555,13 +1751,13 @@ const EntityPath Snmp::Information::NmsAddresses::NmsAddress::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nms_addr.is_set || is_set(nms_addr.operation)) leaf_name_data.push_back(nms_addr.get_name_leafdata());
-    if (get_request_count.is_set || is_set(get_request_count.operation)) leaf_name_data.push_back(get_request_count.get_name_leafdata());
-    if (getbulk_request_count.is_set || is_set(getbulk_request_count.operation)) leaf_name_data.push_back(getbulk_request_count.get_name_leafdata());
-    if (getnext_request_count.is_set || is_set(getnext_request_count.operation)) leaf_name_data.push_back(getnext_request_count.get_name_leafdata());
-    if (nms_address.is_set || is_set(nms_address.operation)) leaf_name_data.push_back(nms_address.get_name_leafdata());
-    if (set_request_count.is_set || is_set(set_request_count.operation)) leaf_name_data.push_back(set_request_count.get_name_leafdata());
-    if (test_request_count.is_set || is_set(test_request_count.operation)) leaf_name_data.push_back(test_request_count.get_name_leafdata());
+    if (nms_addr.is_set || is_set(nms_addr.yfilter)) leaf_name_data.push_back(nms_addr.get_name_leafdata());
+    if (get_request_count.is_set || is_set(get_request_count.yfilter)) leaf_name_data.push_back(get_request_count.get_name_leafdata());
+    if (getbulk_request_count.is_set || is_set(getbulk_request_count.yfilter)) leaf_name_data.push_back(getbulk_request_count.get_name_leafdata());
+    if (getnext_request_count.is_set || is_set(getnext_request_count.yfilter)) leaf_name_data.push_back(getnext_request_count.get_name_leafdata());
+    if (nms_address.is_set || is_set(nms_address.yfilter)) leaf_name_data.push_back(nms_address.get_name_leafdata());
+    if (set_request_count.is_set || is_set(set_request_count.yfilter)) leaf_name_data.push_back(set_request_count.get_name_leafdata());
+    if (test_request_count.is_set || is_set(test_request_count.yfilter)) leaf_name_data.push_back(test_request_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1580,36 +1776,89 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmsAddresses::
     return children;
 }
 
-void Snmp::Information::NmsAddresses::NmsAddress::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::NmsAddresses::NmsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nms-addr")
     {
         nms_addr = value;
+        nms_addr.value_namespace = name_space;
+        nms_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-request-count")
     {
         get_request_count = value;
+        get_request_count.value_namespace = name_space;
+        get_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "getbulk-request-count")
     {
         getbulk_request_count = value;
+        getbulk_request_count.value_namespace = name_space;
+        getbulk_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "getnext-request-count")
     {
         getnext_request_count = value;
+        getnext_request_count.value_namespace = name_space;
+        getnext_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nms-address")
     {
         nms_address = value;
+        nms_address.value_namespace = name_space;
+        nms_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-request-count")
     {
         set_request_count = value;
+        set_request_count.value_namespace = name_space;
+        set_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-request-count")
     {
         test_request_count = value;
+        test_request_count.value_namespace = name_space;
+        test_request_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::NmsAddresses::NmsAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nms-addr")
+    {
+        nms_addr.yfilter = yfilter;
+    }
+    if(value_path == "get-request-count")
+    {
+        get_request_count.yfilter = yfilter;
+    }
+    if(value_path == "getbulk-request-count")
+    {
+        getbulk_request_count.yfilter = yfilter;
+    }
+    if(value_path == "getnext-request-count")
+    {
+        getnext_request_count.yfilter = yfilter;
+    }
+    if(value_path == "nms-address")
+    {
+        nms_address.yfilter = yfilter;
+    }
+    if(value_path == "set-request-count")
+    {
+        set_request_count.yfilter = yfilter;
+    }
+    if(value_path == "test-request-count")
+    {
+        test_request_count.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::NmsAddresses::NmsAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nms-addr" || name == "get-request-count" || name == "getbulk-request-count" || name == "getnext-request-count" || name == "nms-address" || name == "set-request-count" || name == "test-request-count")
+        return true;
+    return false;
 }
 
 Snmp::Information::EngineId::EngineId()
@@ -1630,8 +1879,8 @@ bool Snmp::Information::EngineId::has_data() const
 
 bool Snmp::Information::EngineId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(engine_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(engine_id.yfilter);
 }
 
 std::string Snmp::Information::EngineId::get_segment_path() const
@@ -1657,7 +1906,7 @@ const EntityPath Snmp::Information::EngineId::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (engine_id.is_set || is_set(engine_id.operation)) leaf_name_data.push_back(engine_id.get_name_leafdata());
+    if (engine_id.is_set || is_set(engine_id.yfilter)) leaf_name_data.push_back(engine_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1676,12 +1925,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::EngineId::get_
     return children;
 }
 
-void Snmp::Information::EngineId::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::EngineId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "engine-id")
     {
         engine_id = value;
+        engine_id.value_namespace = name_space;
+        engine_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::EngineId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "engine-id")
+    {
+        engine_id.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::EngineId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "engine-id")
+        return true;
+    return false;
 }
 
 Snmp::Information::RxQueue::RxQueue()
@@ -1718,16 +1984,16 @@ bool Snmp::Information::RxQueue::has_data() const
 
 bool Snmp::Information::RxQueue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_avg.operation)
-	|| is_set(in_max.operation)
-	|| is_set(in_min.operation)
-	|| is_set(incoming_q.operation)
-	|| is_set(pend_avg.operation)
-	|| is_set(pend_max.operation)
-	|| is_set(pend_min.operation)
-	|| is_set(pending_q.operation)
-	|| is_set(qlen.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(in_avg.yfilter)
+	|| ydk::is_set(in_max.yfilter)
+	|| ydk::is_set(in_min.yfilter)
+	|| ydk::is_set(incoming_q.yfilter)
+	|| ydk::is_set(pend_avg.yfilter)
+	|| ydk::is_set(pend_max.yfilter)
+	|| ydk::is_set(pend_min.yfilter)
+	|| ydk::is_set(pending_q.yfilter)
+	|| ydk::is_set(qlen.yfilter);
 }
 
 std::string Snmp::Information::RxQueue::get_segment_path() const
@@ -1753,15 +2019,15 @@ const EntityPath Snmp::Information::RxQueue::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_avg.is_set || is_set(in_avg.operation)) leaf_name_data.push_back(in_avg.get_name_leafdata());
-    if (in_max.is_set || is_set(in_max.operation)) leaf_name_data.push_back(in_max.get_name_leafdata());
-    if (in_min.is_set || is_set(in_min.operation)) leaf_name_data.push_back(in_min.get_name_leafdata());
-    if (incoming_q.is_set || is_set(incoming_q.operation)) leaf_name_data.push_back(incoming_q.get_name_leafdata());
-    if (pend_avg.is_set || is_set(pend_avg.operation)) leaf_name_data.push_back(pend_avg.get_name_leafdata());
-    if (pend_max.is_set || is_set(pend_max.operation)) leaf_name_data.push_back(pend_max.get_name_leafdata());
-    if (pend_min.is_set || is_set(pend_min.operation)) leaf_name_data.push_back(pend_min.get_name_leafdata());
-    if (pending_q.is_set || is_set(pending_q.operation)) leaf_name_data.push_back(pending_q.get_name_leafdata());
-    if (qlen.is_set || is_set(qlen.operation)) leaf_name_data.push_back(qlen.get_name_leafdata());
+    if (in_avg.is_set || is_set(in_avg.yfilter)) leaf_name_data.push_back(in_avg.get_name_leafdata());
+    if (in_max.is_set || is_set(in_max.yfilter)) leaf_name_data.push_back(in_max.get_name_leafdata());
+    if (in_min.is_set || is_set(in_min.yfilter)) leaf_name_data.push_back(in_min.get_name_leafdata());
+    if (incoming_q.is_set || is_set(incoming_q.yfilter)) leaf_name_data.push_back(incoming_q.get_name_leafdata());
+    if (pend_avg.is_set || is_set(pend_avg.yfilter)) leaf_name_data.push_back(pend_avg.get_name_leafdata());
+    if (pend_max.is_set || is_set(pend_max.yfilter)) leaf_name_data.push_back(pend_max.get_name_leafdata());
+    if (pend_min.is_set || is_set(pend_min.yfilter)) leaf_name_data.push_back(pend_min.get_name_leafdata());
+    if (pending_q.is_set || is_set(pending_q.yfilter)) leaf_name_data.push_back(pending_q.get_name_leafdata());
+    if (qlen.is_set || is_set(qlen.yfilter)) leaf_name_data.push_back(qlen.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1780,44 +2046,109 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RxQueue::get_c
     return children;
 }
 
-void Snmp::Information::RxQueue::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::RxQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-avg")
     {
         in_avg = value;
+        in_avg.value_namespace = name_space;
+        in_avg.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-max")
     {
         in_max = value;
+        in_max.value_namespace = name_space;
+        in_max.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-min")
     {
         in_min = value;
+        in_min.value_namespace = name_space;
+        in_min.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-q")
     {
         incoming_q = value;
+        incoming_q.value_namespace = name_space;
+        incoming_q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pend-avg")
     {
         pend_avg = value;
+        pend_avg.value_namespace = name_space;
+        pend_avg.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pend-max")
     {
         pend_max = value;
+        pend_max.value_namespace = name_space;
+        pend_max.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pend-min")
     {
         pend_min = value;
+        pend_min.value_namespace = name_space;
+        pend_min.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pending-q")
     {
         pending_q = value;
+        pending_q.value_namespace = name_space;
+        pending_q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qlen")
     {
         qlen = value;
+        qlen.value_namespace = name_space;
+        qlen.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::RxQueue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-avg")
+    {
+        in_avg.yfilter = yfilter;
+    }
+    if(value_path == "in-max")
+    {
+        in_max.yfilter = yfilter;
+    }
+    if(value_path == "in-min")
+    {
+        in_min.yfilter = yfilter;
+    }
+    if(value_path == "incoming-q")
+    {
+        incoming_q.yfilter = yfilter;
+    }
+    if(value_path == "pend-avg")
+    {
+        pend_avg.yfilter = yfilter;
+    }
+    if(value_path == "pend-max")
+    {
+        pend_max.yfilter = yfilter;
+    }
+    if(value_path == "pend-min")
+    {
+        pend_min.yfilter = yfilter;
+    }
+    if(value_path == "pending-q")
+    {
+        pending_q.yfilter = yfilter;
+    }
+    if(value_path == "qlen")
+    {
+        qlen.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::RxQueue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-avg" || name == "in-max" || name == "in-min" || name == "incoming-q" || name == "pend-avg" || name == "pend-max" || name == "pend-min" || name == "pending-q" || name == "qlen")
+        return true;
+    return false;
 }
 
 Snmp::Information::SystemName::SystemName()
@@ -1838,8 +2169,8 @@ bool Snmp::Information::SystemName::has_data() const
 
 bool Snmp::Information::SystemName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(system_name.yfilter);
 }
 
 std::string Snmp::Information::SystemName::get_segment_path() const
@@ -1865,7 +2196,7 @@ const EntityPath Snmp::Information::SystemName::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_name.is_set || is_set(system_name.operation)) leaf_name_data.push_back(system_name.get_name_leafdata());
+    if (system_name.is_set || is_set(system_name.yfilter)) leaf_name_data.push_back(system_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1884,12 +2215,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SystemName::ge
     return children;
 }
 
-void Snmp::Information::SystemName::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::SystemName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-name")
     {
         system_name = value;
+        system_name.value_namespace = name_space;
+        system_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::SystemName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-name")
+    {
+        system_name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::SystemName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-name")
+        return true;
+    return false;
 }
 
 Snmp::Information::RequestTypeDetail::RequestTypeDetail()
@@ -1912,7 +2260,7 @@ bool Snmp::Information::RequestTypeDetail::has_data() const
 
 bool Snmp::Information::RequestTypeDetail::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nms_addresses !=  nullptr && nms_addresses->has_operation());
 }
 
@@ -1971,8 +2319,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RequestTypeDet
     return children;
 }
 
-void Snmp::Information::RequestTypeDetail::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::RequestTypeDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::RequestTypeDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::RequestTypeDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nms-addresses")
+        return true;
+    return false;
 }
 
 Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddresses()
@@ -2001,7 +2360,7 @@ bool Snmp::Information::RequestTypeDetail::NmsAddresses::has_operation() const
         if(nms_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::RequestTypeDetail::NmsAddresses::get_segment_path() const
@@ -2066,8 +2425,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RequestTypeDet
     return children;
 }
 
-void Snmp::Information::RequestTypeDetail::NmsAddresses::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::RequestTypeDetail::NmsAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::RequestTypeDetail::NmsAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::RequestTypeDetail::NmsAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nms-address")
+        return true;
+    return false;
 }
 
 Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::NmsAddress()
@@ -2100,14 +2470,14 @@ bool Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::has_data() 
 
 bool Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nms_addr.operation)
-	|| is_set(agent_request_count.operation)
-	|| is_set(entity_request_count.operation)
-	|| is_set(infra_request_count.operation)
-	|| is_set(interface_request_count.operation)
-	|| is_set(route_request_count.operation)
-	|| is_set(total_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nms_addr.yfilter)
+	|| ydk::is_set(agent_request_count.yfilter)
+	|| ydk::is_set(entity_request_count.yfilter)
+	|| ydk::is_set(infra_request_count.yfilter)
+	|| ydk::is_set(interface_request_count.yfilter)
+	|| ydk::is_set(route_request_count.yfilter)
+	|| ydk::is_set(total_count.yfilter);
 }
 
 std::string Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::get_segment_path() const
@@ -2133,13 +2503,13 @@ const EntityPath Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nms_addr.is_set || is_set(nms_addr.operation)) leaf_name_data.push_back(nms_addr.get_name_leafdata());
-    if (agent_request_count.is_set || is_set(agent_request_count.operation)) leaf_name_data.push_back(agent_request_count.get_name_leafdata());
-    if (entity_request_count.is_set || is_set(entity_request_count.operation)) leaf_name_data.push_back(entity_request_count.get_name_leafdata());
-    if (infra_request_count.is_set || is_set(infra_request_count.operation)) leaf_name_data.push_back(infra_request_count.get_name_leafdata());
-    if (interface_request_count.is_set || is_set(interface_request_count.operation)) leaf_name_data.push_back(interface_request_count.get_name_leafdata());
-    if (route_request_count.is_set || is_set(route_request_count.operation)) leaf_name_data.push_back(route_request_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (nms_addr.is_set || is_set(nms_addr.yfilter)) leaf_name_data.push_back(nms_addr.get_name_leafdata());
+    if (agent_request_count.is_set || is_set(agent_request_count.yfilter)) leaf_name_data.push_back(agent_request_count.get_name_leafdata());
+    if (entity_request_count.is_set || is_set(entity_request_count.yfilter)) leaf_name_data.push_back(entity_request_count.get_name_leafdata());
+    if (infra_request_count.is_set || is_set(infra_request_count.yfilter)) leaf_name_data.push_back(infra_request_count.get_name_leafdata());
+    if (interface_request_count.is_set || is_set(interface_request_count.yfilter)) leaf_name_data.push_back(interface_request_count.get_name_leafdata());
+    if (route_request_count.is_set || is_set(route_request_count.yfilter)) leaf_name_data.push_back(route_request_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2158,36 +2528,89 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::RequestTypeDet
     return children;
 }
 
-void Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nms-addr")
     {
         nms_addr = value;
+        nms_addr.value_namespace = name_space;
+        nms_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "agent-request-count")
     {
         agent_request_count = value;
+        agent_request_count.value_namespace = name_space;
+        agent_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entity-request-count")
     {
         entity_request_count = value;
+        entity_request_count.value_namespace = name_space;
+        entity_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "infra-request-count")
     {
         infra_request_count = value;
+        infra_request_count.value_namespace = name_space;
+        infra_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-request-count")
     {
         interface_request_count = value;
+        interface_request_count.value_namespace = name_space;
+        interface_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-request-count")
     {
         route_request_count = value;
+        route_request_count.value_namespace = name_space;
+        route_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nms-addr")
+    {
+        nms_addr.yfilter = yfilter;
+    }
+    if(value_path == "agent-request-count")
+    {
+        agent_request_count.yfilter = yfilter;
+    }
+    if(value_path == "entity-request-count")
+    {
+        entity_request_count.yfilter = yfilter;
+    }
+    if(value_path == "infra-request-count")
+    {
+        infra_request_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-request-count")
+    {
+        interface_request_count.yfilter = yfilter;
+    }
+    if(value_path == "route-request-count")
+    {
+        route_request_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::RequestTypeDetail::NmsAddresses::NmsAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nms-addr" || name == "agent-request-count" || name == "entity-request-count" || name == "infra-request-count" || name == "interface-request-count" || name == "route-request-count" || name == "total-count")
+        return true;
+    return false;
 }
 
 Snmp::Information::DuplicateDrop::DuplicateDrop()
@@ -2228,18 +2651,18 @@ bool Snmp::Information::DuplicateDrop::has_data() const
 
 bool Snmp::Information::DuplicateDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(duplicate_drop_configured_timeout.operation)
-	|| is_set(duplicate_drop_disable_count.operation)
-	|| is_set(duplicate_drop_enable_count.operation)
-	|| is_set(duplicate_dropped_requests.operation)
-	|| is_set(duplicate_request_latest_enable_time.operation)
-	|| is_set(duplicate_request_status.operation)
-	|| is_set(first_enable_time.operation)
-	|| is_set(last_status_change_time.operation)
-	|| is_set(latest_duplicate_dropped_requests.operation)
-	|| is_set(latest_retry_processed_requests.operation)
-	|| is_set(retry_processed_requests.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(duplicate_drop_configured_timeout.yfilter)
+	|| ydk::is_set(duplicate_drop_disable_count.yfilter)
+	|| ydk::is_set(duplicate_drop_enable_count.yfilter)
+	|| ydk::is_set(duplicate_dropped_requests.yfilter)
+	|| ydk::is_set(duplicate_request_latest_enable_time.yfilter)
+	|| ydk::is_set(duplicate_request_status.yfilter)
+	|| ydk::is_set(first_enable_time.yfilter)
+	|| ydk::is_set(last_status_change_time.yfilter)
+	|| ydk::is_set(latest_duplicate_dropped_requests.yfilter)
+	|| ydk::is_set(latest_retry_processed_requests.yfilter)
+	|| ydk::is_set(retry_processed_requests.yfilter);
 }
 
 std::string Snmp::Information::DuplicateDrop::get_segment_path() const
@@ -2265,17 +2688,17 @@ const EntityPath Snmp::Information::DuplicateDrop::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (duplicate_drop_configured_timeout.is_set || is_set(duplicate_drop_configured_timeout.operation)) leaf_name_data.push_back(duplicate_drop_configured_timeout.get_name_leafdata());
-    if (duplicate_drop_disable_count.is_set || is_set(duplicate_drop_disable_count.operation)) leaf_name_data.push_back(duplicate_drop_disable_count.get_name_leafdata());
-    if (duplicate_drop_enable_count.is_set || is_set(duplicate_drop_enable_count.operation)) leaf_name_data.push_back(duplicate_drop_enable_count.get_name_leafdata());
-    if (duplicate_dropped_requests.is_set || is_set(duplicate_dropped_requests.operation)) leaf_name_data.push_back(duplicate_dropped_requests.get_name_leafdata());
-    if (duplicate_request_latest_enable_time.is_set || is_set(duplicate_request_latest_enable_time.operation)) leaf_name_data.push_back(duplicate_request_latest_enable_time.get_name_leafdata());
-    if (duplicate_request_status.is_set || is_set(duplicate_request_status.operation)) leaf_name_data.push_back(duplicate_request_status.get_name_leafdata());
-    if (first_enable_time.is_set || is_set(first_enable_time.operation)) leaf_name_data.push_back(first_enable_time.get_name_leafdata());
-    if (last_status_change_time.is_set || is_set(last_status_change_time.operation)) leaf_name_data.push_back(last_status_change_time.get_name_leafdata());
-    if (latest_duplicate_dropped_requests.is_set || is_set(latest_duplicate_dropped_requests.operation)) leaf_name_data.push_back(latest_duplicate_dropped_requests.get_name_leafdata());
-    if (latest_retry_processed_requests.is_set || is_set(latest_retry_processed_requests.operation)) leaf_name_data.push_back(latest_retry_processed_requests.get_name_leafdata());
-    if (retry_processed_requests.is_set || is_set(retry_processed_requests.operation)) leaf_name_data.push_back(retry_processed_requests.get_name_leafdata());
+    if (duplicate_drop_configured_timeout.is_set || is_set(duplicate_drop_configured_timeout.yfilter)) leaf_name_data.push_back(duplicate_drop_configured_timeout.get_name_leafdata());
+    if (duplicate_drop_disable_count.is_set || is_set(duplicate_drop_disable_count.yfilter)) leaf_name_data.push_back(duplicate_drop_disable_count.get_name_leafdata());
+    if (duplicate_drop_enable_count.is_set || is_set(duplicate_drop_enable_count.yfilter)) leaf_name_data.push_back(duplicate_drop_enable_count.get_name_leafdata());
+    if (duplicate_dropped_requests.is_set || is_set(duplicate_dropped_requests.yfilter)) leaf_name_data.push_back(duplicate_dropped_requests.get_name_leafdata());
+    if (duplicate_request_latest_enable_time.is_set || is_set(duplicate_request_latest_enable_time.yfilter)) leaf_name_data.push_back(duplicate_request_latest_enable_time.get_name_leafdata());
+    if (duplicate_request_status.is_set || is_set(duplicate_request_status.yfilter)) leaf_name_data.push_back(duplicate_request_status.get_name_leafdata());
+    if (first_enable_time.is_set || is_set(first_enable_time.yfilter)) leaf_name_data.push_back(first_enable_time.get_name_leafdata());
+    if (last_status_change_time.is_set || is_set(last_status_change_time.yfilter)) leaf_name_data.push_back(last_status_change_time.get_name_leafdata());
+    if (latest_duplicate_dropped_requests.is_set || is_set(latest_duplicate_dropped_requests.yfilter)) leaf_name_data.push_back(latest_duplicate_dropped_requests.get_name_leafdata());
+    if (latest_retry_processed_requests.is_set || is_set(latest_retry_processed_requests.yfilter)) leaf_name_data.push_back(latest_retry_processed_requests.get_name_leafdata());
+    if (retry_processed_requests.is_set || is_set(retry_processed_requests.yfilter)) leaf_name_data.push_back(retry_processed_requests.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2294,52 +2717,129 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::DuplicateDrop:
     return children;
 }
 
-void Snmp::Information::DuplicateDrop::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::DuplicateDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "duplicate-drop-configured-timeout")
     {
         duplicate_drop_configured_timeout = value;
+        duplicate_drop_configured_timeout.value_namespace = name_space;
+        duplicate_drop_configured_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicate-drop-disable-count")
     {
         duplicate_drop_disable_count = value;
+        duplicate_drop_disable_count.value_namespace = name_space;
+        duplicate_drop_disable_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicate-drop-enable-count")
     {
         duplicate_drop_enable_count = value;
+        duplicate_drop_enable_count.value_namespace = name_space;
+        duplicate_drop_enable_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicate-dropped-requests")
     {
         duplicate_dropped_requests = value;
+        duplicate_dropped_requests.value_namespace = name_space;
+        duplicate_dropped_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicate-request-latest-enable-time")
     {
         duplicate_request_latest_enable_time = value;
+        duplicate_request_latest_enable_time.value_namespace = name_space;
+        duplicate_request_latest_enable_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicate-request-status")
     {
         duplicate_request_status = value;
+        duplicate_request_status.value_namespace = name_space;
+        duplicate_request_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "first-enable-time")
     {
         first_enable_time = value;
+        first_enable_time.value_namespace = name_space;
+        first_enable_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-status-change-time")
     {
         last_status_change_time = value;
+        last_status_change_time.value_namespace = name_space;
+        last_status_change_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latest-duplicate-dropped-requests")
     {
         latest_duplicate_dropped_requests = value;
+        latest_duplicate_dropped_requests.value_namespace = name_space;
+        latest_duplicate_dropped_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latest-retry-processed-requests")
     {
         latest_retry_processed_requests = value;
+        latest_retry_processed_requests.value_namespace = name_space;
+        latest_retry_processed_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-processed-requests")
     {
         retry_processed_requests = value;
+        retry_processed_requests.value_namespace = name_space;
+        retry_processed_requests.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::DuplicateDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "duplicate-drop-configured-timeout")
+    {
+        duplicate_drop_configured_timeout.yfilter = yfilter;
+    }
+    if(value_path == "duplicate-drop-disable-count")
+    {
+        duplicate_drop_disable_count.yfilter = yfilter;
+    }
+    if(value_path == "duplicate-drop-enable-count")
+    {
+        duplicate_drop_enable_count.yfilter = yfilter;
+    }
+    if(value_path == "duplicate-dropped-requests")
+    {
+        duplicate_dropped_requests.yfilter = yfilter;
+    }
+    if(value_path == "duplicate-request-latest-enable-time")
+    {
+        duplicate_request_latest_enable_time.yfilter = yfilter;
+    }
+    if(value_path == "duplicate-request-status")
+    {
+        duplicate_request_status.yfilter = yfilter;
+    }
+    if(value_path == "first-enable-time")
+    {
+        first_enable_time.yfilter = yfilter;
+    }
+    if(value_path == "last-status-change-time")
+    {
+        last_status_change_time.yfilter = yfilter;
+    }
+    if(value_path == "latest-duplicate-dropped-requests")
+    {
+        latest_duplicate_dropped_requests.yfilter = yfilter;
+    }
+    if(value_path == "latest-retry-processed-requests")
+    {
+        latest_retry_processed_requests.yfilter = yfilter;
+    }
+    if(value_path == "retry-processed-requests")
+    {
+        retry_processed_requests.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::DuplicateDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "duplicate-drop-configured-timeout" || name == "duplicate-drop-disable-count" || name == "duplicate-drop-enable-count" || name == "duplicate-dropped-requests" || name == "duplicate-request-latest-enable-time" || name == "duplicate-request-status" || name == "first-enable-time" || name == "last-status-change-time" || name == "latest-duplicate-dropped-requests" || name == "latest-retry-processed-requests" || name == "retry-processed-requests")
+        return true;
+    return false;
 }
 
 Snmp::Information::BulkStatsTransfers::BulkStatsTransfers()
@@ -2368,7 +2868,7 @@ bool Snmp::Information::BulkStatsTransfers::has_operation() const
         if(bulk_stats_transfer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::BulkStatsTransfers::get_segment_path() const
@@ -2433,8 +2933,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::BulkStatsTrans
     return children;
 }
 
-void Snmp::Information::BulkStatsTransfers::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::BulkStatsTransfers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::BulkStatsTransfers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::BulkStatsTransfers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bulk-stats-transfer")
+        return true;
+    return false;
 }
 
 Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::BulkStatsTransfer()
@@ -2467,14 +2978,14 @@ bool Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::has_data() const
 
 bool Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(transfer_name.operation)
-	|| is_set(retained_file.operation)
-	|| is_set(retry_left.operation)
-	|| is_set(time_left.operation)
-	|| is_set(transfer_name_xr.operation)
-	|| is_set(url_primary.operation)
-	|| is_set(url_secondary.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transfer_name.yfilter)
+	|| ydk::is_set(retained_file.yfilter)
+	|| ydk::is_set(retry_left.yfilter)
+	|| ydk::is_set(time_left.yfilter)
+	|| ydk::is_set(transfer_name_xr.yfilter)
+	|| ydk::is_set(url_primary.yfilter)
+	|| ydk::is_set(url_secondary.yfilter);
 }
 
 std::string Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::get_segment_path() const
@@ -2500,13 +3011,13 @@ const EntityPath Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transfer_name.is_set || is_set(transfer_name.operation)) leaf_name_data.push_back(transfer_name.get_name_leafdata());
-    if (retained_file.is_set || is_set(retained_file.operation)) leaf_name_data.push_back(retained_file.get_name_leafdata());
-    if (retry_left.is_set || is_set(retry_left.operation)) leaf_name_data.push_back(retry_left.get_name_leafdata());
-    if (time_left.is_set || is_set(time_left.operation)) leaf_name_data.push_back(time_left.get_name_leafdata());
-    if (transfer_name_xr.is_set || is_set(transfer_name_xr.operation)) leaf_name_data.push_back(transfer_name_xr.get_name_leafdata());
-    if (url_primary.is_set || is_set(url_primary.operation)) leaf_name_data.push_back(url_primary.get_name_leafdata());
-    if (url_secondary.is_set || is_set(url_secondary.operation)) leaf_name_data.push_back(url_secondary.get_name_leafdata());
+    if (transfer_name.is_set || is_set(transfer_name.yfilter)) leaf_name_data.push_back(transfer_name.get_name_leafdata());
+    if (retained_file.is_set || is_set(retained_file.yfilter)) leaf_name_data.push_back(retained_file.get_name_leafdata());
+    if (retry_left.is_set || is_set(retry_left.yfilter)) leaf_name_data.push_back(retry_left.get_name_leafdata());
+    if (time_left.is_set || is_set(time_left.yfilter)) leaf_name_data.push_back(time_left.get_name_leafdata());
+    if (transfer_name_xr.is_set || is_set(transfer_name_xr.yfilter)) leaf_name_data.push_back(transfer_name_xr.get_name_leafdata());
+    if (url_primary.is_set || is_set(url_primary.yfilter)) leaf_name_data.push_back(url_primary.get_name_leafdata());
+    if (url_secondary.is_set || is_set(url_secondary.yfilter)) leaf_name_data.push_back(url_secondary.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2525,36 +3036,89 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::BulkStatsTrans
     return children;
 }
 
-void Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transfer-name")
     {
         transfer_name = value;
+        transfer_name.value_namespace = name_space;
+        transfer_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retained-file")
     {
         retained_file = value;
+        retained_file.value_namespace = name_space;
+        retained_file.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-left")
     {
         retry_left = value;
+        retry_left.value_namespace = name_space;
+        retry_left.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-left")
     {
         time_left = value;
+        time_left.value_namespace = name_space;
+        time_left.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transfer-name-xr")
     {
         transfer_name_xr = value;
+        transfer_name_xr.value_namespace = name_space;
+        transfer_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "url-primary")
     {
         url_primary = value;
+        url_primary.value_namespace = name_space;
+        url_primary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "url-secondary")
     {
         url_secondary = value;
+        url_secondary.value_namespace = name_space;
+        url_secondary.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transfer-name")
+    {
+        transfer_name.yfilter = yfilter;
+    }
+    if(value_path == "retained-file")
+    {
+        retained_file.yfilter = yfilter;
+    }
+    if(value_path == "retry-left")
+    {
+        retry_left.yfilter = yfilter;
+    }
+    if(value_path == "time-left")
+    {
+        time_left.yfilter = yfilter;
+    }
+    if(value_path == "transfer-name-xr")
+    {
+        transfer_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "url-primary")
+    {
+        url_primary.yfilter = yfilter;
+    }
+    if(value_path == "url-secondary")
+    {
+        url_secondary.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::BulkStatsTransfers::BulkStatsTransfer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transfer-name" || name == "retained-file" || name == "retry-left" || name == "time-left" || name == "transfer-name-xr" || name == "url-primary" || name == "url-secondary")
+        return true;
+    return false;
 }
 
 Snmp::Information::TrapInfos::TrapInfos()
@@ -2583,7 +3147,7 @@ bool Snmp::Information::TrapInfos::has_operation() const
         if(trap_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::TrapInfos::get_segment_path() const
@@ -2648,8 +3212,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapInfos::get
     return children;
 }
 
-void Snmp::Information::TrapInfos::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::TrapInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::TrapInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::TrapInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-info")
+        return true;
+    return false;
 }
 
 Snmp::Information::TrapInfos::TrapInfo::TrapInfo()
@@ -2688,12 +3263,12 @@ bool Snmp::Information::TrapInfos::TrapInfo::has_operation() const
         if(trap_oi_dinfo[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(host.operation)
-	|| is_set(port.operation)
-	|| is_set(port_xr.operation)
-	|| is_set(trap_host.operation)
-	|| is_set(trap_oid_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(host.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(port_xr.yfilter)
+	|| ydk::is_set(trap_host.yfilter)
+	|| ydk::is_set(trap_oid_count.yfilter);
 }
 
 std::string Snmp::Information::TrapInfos::TrapInfo::get_segment_path() const
@@ -2719,11 +3294,11 @@ const EntityPath Snmp::Information::TrapInfos::TrapInfo::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (host.is_set || is_set(host.operation)) leaf_name_data.push_back(host.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (port_xr.is_set || is_set(port_xr.operation)) leaf_name_data.push_back(port_xr.get_name_leafdata());
-    if (trap_host.is_set || is_set(trap_host.operation)) leaf_name_data.push_back(trap_host.get_name_leafdata());
-    if (trap_oid_count.is_set || is_set(trap_oid_count.operation)) leaf_name_data.push_back(trap_oid_count.get_name_leafdata());
+    if (host.is_set || is_set(host.yfilter)) leaf_name_data.push_back(host.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (port_xr.is_set || is_set(port_xr.yfilter)) leaf_name_data.push_back(port_xr.get_name_leafdata());
+    if (trap_host.is_set || is_set(trap_host.yfilter)) leaf_name_data.push_back(trap_host.get_name_leafdata());
+    if (trap_oid_count.is_set || is_set(trap_oid_count.yfilter)) leaf_name_data.push_back(trap_oid_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2763,28 +3338,69 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapInfos::Tra
     return children;
 }
 
-void Snmp::Information::TrapInfos::TrapInfo::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::TrapInfos::TrapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "host")
     {
         host = value;
+        host.value_namespace = name_space;
+        host.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port")
     {
         port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-xr")
     {
         port_xr = value;
+        port_xr.value_namespace = name_space;
+        port_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-host")
     {
         trap_host = value;
+        trap_host.value_namespace = name_space;
+        trap_host.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-oid-count")
     {
         trap_oid_count = value;
+        trap_oid_count.value_namespace = name_space;
+        trap_oid_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::TrapInfos::TrapInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "host")
+    {
+        host.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "port-xr")
+    {
+        port_xr.yfilter = yfilter;
+    }
+    if(value_path == "trap-host")
+    {
+        trap_host.yfilter = yfilter;
+    }
+    if(value_path == "trap-oid-count")
+    {
+        trap_oid_count.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::TrapInfos::TrapInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-oi-dinfo" || name == "host" || name == "port" || name == "port-xr" || name == "trap-host" || name == "trap-oid-count")
+        return true;
+    return false;
 }
 
 Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::TrapOiDinfo()
@@ -2815,13 +3431,13 @@ bool Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::has_data() const
 
 bool Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(drop_count.operation)
-	|| is_set(lasrdrop_time.operation)
-	|| is_set(lastsent_time.operation)
-	|| is_set(retry_count.operation)
-	|| is_set(trap_oid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(drop_count.yfilter)
+	|| ydk::is_set(lasrdrop_time.yfilter)
+	|| ydk::is_set(lastsent_time.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(trap_oid.yfilter);
 }
 
 std::string Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::get_segment_path() const
@@ -2847,12 +3463,12 @@ const EntityPath Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (drop_count.is_set || is_set(drop_count.operation)) leaf_name_data.push_back(drop_count.get_name_leafdata());
-    if (lasrdrop_time.is_set || is_set(lasrdrop_time.operation)) leaf_name_data.push_back(lasrdrop_time.get_name_leafdata());
-    if (lastsent_time.is_set || is_set(lastsent_time.operation)) leaf_name_data.push_back(lastsent_time.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.operation)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (trap_oid.is_set || is_set(trap_oid.operation)) leaf_name_data.push_back(trap_oid.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (drop_count.is_set || is_set(drop_count.yfilter)) leaf_name_data.push_back(drop_count.get_name_leafdata());
+    if (lasrdrop_time.is_set || is_set(lasrdrop_time.yfilter)) leaf_name_data.push_back(lasrdrop_time.get_name_leafdata());
+    if (lastsent_time.is_set || is_set(lastsent_time.yfilter)) leaf_name_data.push_back(lastsent_time.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (trap_oid.is_set || is_set(trap_oid.yfilter)) leaf_name_data.push_back(trap_oid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2871,32 +3487,79 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapInfos::Tra
     return children;
 }
 
-void Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drop-count")
     {
         drop_count = value;
+        drop_count.value_namespace = name_space;
+        drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lasrdrop-time")
     {
         lasrdrop_time = value;
+        lasrdrop_time.value_namespace = name_space;
+        lasrdrop_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lastsent-time")
     {
         lastsent_time = value;
+        lastsent_time.value_namespace = name_space;
+        lastsent_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-count")
     {
         retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-oid")
     {
         trap_oid = value;
+        trap_oid.value_namespace = name_space;
+        trap_oid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "drop-count")
+    {
+        drop_count.yfilter = yfilter;
+    }
+    if(value_path == "lasrdrop-time")
+    {
+        lasrdrop_time.yfilter = yfilter;
+    }
+    if(value_path == "lastsent-time")
+    {
+        lastsent_time.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "trap-oid")
+    {
+        trap_oid.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "drop-count" || name == "lasrdrop-time" || name == "lastsent-time" || name == "retry-count" || name == "trap-oid")
+        return true;
+    return false;
 }
 
 Snmp::Information::PollOids::PollOids()
@@ -2925,7 +3588,7 @@ bool Snmp::Information::PollOids::has_operation() const
         if(poll_oid[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::PollOids::get_segment_path() const
@@ -2990,8 +3653,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::PollOids::get_
     return children;
 }
 
-void Snmp::Information::PollOids::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::PollOids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::PollOids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::PollOids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "poll-oid")
+        return true;
+    return false;
 }
 
 Snmp::Information::PollOids::PollOid::PollOid()
@@ -3028,19 +3702,19 @@ bool Snmp::Information::PollOids::PollOid::has_operation() const
 {
     for (auto const & leaf : nms.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : request_count.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object_id.operation)
-	|| is_set(nms.operation)
-	|| is_set(nms_count.operation)
-	|| is_set(request_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object_id.yfilter)
+	|| ydk::is_set(nms.yfilter)
+	|| ydk::is_set(nms_count.yfilter)
+	|| ydk::is_set(request_count.yfilter);
 }
 
 std::string Snmp::Information::PollOids::PollOid::get_segment_path() const
@@ -3066,8 +3740,8 @@ const EntityPath Snmp::Information::PollOids::PollOid::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object_id.is_set || is_set(object_id.operation)) leaf_name_data.push_back(object_id.get_name_leafdata());
-    if (nms_count.is_set || is_set(nms_count.operation)) leaf_name_data.push_back(nms_count.get_name_leafdata());
+    if (object_id.is_set || is_set(object_id.yfilter)) leaf_name_data.push_back(object_id.get_name_leafdata());
+    if (nms_count.is_set || is_set(nms_count.yfilter)) leaf_name_data.push_back(nms_count.get_name_leafdata());
 
     auto nms_name_datas = nms.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), nms_name_datas.begin(), nms_name_datas.end());
@@ -3090,11 +3764,13 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::PollOids::Poll
     return children;
 }
 
-void Snmp::Information::PollOids::PollOid::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::PollOids::PollOid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-id")
     {
         object_id = value;
+        object_id.value_namespace = name_space;
+        object_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nms")
     {
@@ -3103,11 +3779,40 @@ void Snmp::Information::PollOids::PollOid::set_value(const std::string & value_p
     if(value_path == "nms-count")
     {
         nms_count = value;
+        nms_count.value_namespace = name_space;
+        nms_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-count")
     {
         request_count.append(value);
     }
+}
+
+void Snmp::Information::PollOids::PollOid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-id")
+    {
+        object_id.yfilter = yfilter;
+    }
+    if(value_path == "nms")
+    {
+        nms.yfilter = yfilter;
+    }
+    if(value_path == "nms-count")
+    {
+        nms_count.yfilter = yfilter;
+    }
+    if(value_path == "request-count")
+    {
+        request_count.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::PollOids::PollOid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-id" || name == "nms" || name == "nms-count" || name == "request-count")
+        return true;
+    return false;
 }
 
 Snmp::Information::InfomDetails::InfomDetails()
@@ -3136,7 +3841,7 @@ bool Snmp::Information::InfomDetails::has_operation() const
         if(infom_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::InfomDetails::get_segment_path() const
@@ -3201,8 +3906,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::InfomDetails::
     return children;
 }
 
-void Snmp::Information::InfomDetails::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::InfomDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::InfomDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::InfomDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "infom-detail")
+        return true;
+    return false;
 }
 
 Snmp::Information::InfomDetails::InfomDetail::InfomDetail()
@@ -3241,12 +3957,12 @@ bool Snmp::Information::InfomDetails::InfomDetail::has_operation() const
         if(trap_oi_dinfo[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(host.operation)
-	|| is_set(port.operation)
-	|| is_set(port_xr.operation)
-	|| is_set(trap_host.operation)
-	|| is_set(trap_oid_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(host.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(port_xr.yfilter)
+	|| ydk::is_set(trap_host.yfilter)
+	|| ydk::is_set(trap_oid_count.yfilter);
 }
 
 std::string Snmp::Information::InfomDetails::InfomDetail::get_segment_path() const
@@ -3272,11 +3988,11 @@ const EntityPath Snmp::Information::InfomDetails::InfomDetail::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (host.is_set || is_set(host.operation)) leaf_name_data.push_back(host.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (port_xr.is_set || is_set(port_xr.operation)) leaf_name_data.push_back(port_xr.get_name_leafdata());
-    if (trap_host.is_set || is_set(trap_host.operation)) leaf_name_data.push_back(trap_host.get_name_leafdata());
-    if (trap_oid_count.is_set || is_set(trap_oid_count.operation)) leaf_name_data.push_back(trap_oid_count.get_name_leafdata());
+    if (host.is_set || is_set(host.yfilter)) leaf_name_data.push_back(host.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (port_xr.is_set || is_set(port_xr.yfilter)) leaf_name_data.push_back(port_xr.get_name_leafdata());
+    if (trap_host.is_set || is_set(trap_host.yfilter)) leaf_name_data.push_back(trap_host.get_name_leafdata());
+    if (trap_oid_count.is_set || is_set(trap_oid_count.yfilter)) leaf_name_data.push_back(trap_oid_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3316,28 +4032,69 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::InfomDetails::
     return children;
 }
 
-void Snmp::Information::InfomDetails::InfomDetail::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::InfomDetails::InfomDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "host")
     {
         host = value;
+        host.value_namespace = name_space;
+        host.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port")
     {
         port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-xr")
     {
         port_xr = value;
+        port_xr.value_namespace = name_space;
+        port_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-host")
     {
         trap_host = value;
+        trap_host.value_namespace = name_space;
+        trap_host.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-oid-count")
     {
         trap_oid_count = value;
+        trap_oid_count.value_namespace = name_space;
+        trap_oid_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::InfomDetails::InfomDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "host")
+    {
+        host.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "port-xr")
+    {
+        port_xr.yfilter = yfilter;
+    }
+    if(value_path == "trap-host")
+    {
+        trap_host.yfilter = yfilter;
+    }
+    if(value_path == "trap-oid-count")
+    {
+        trap_oid_count.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::InfomDetails::InfomDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-oi-dinfo" || name == "host" || name == "port" || name == "port-xr" || name == "trap-host" || name == "trap-oid-count")
+        return true;
+    return false;
 }
 
 Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::TrapOiDinfo()
@@ -3368,13 +4125,13 @@ bool Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::has_data() const
 
 bool Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(drop_count.operation)
-	|| is_set(lasrdrop_time.operation)
-	|| is_set(lastsent_time.operation)
-	|| is_set(retry_count.operation)
-	|| is_set(trap_oid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(drop_count.yfilter)
+	|| ydk::is_set(lasrdrop_time.yfilter)
+	|| ydk::is_set(lastsent_time.yfilter)
+	|| ydk::is_set(retry_count.yfilter)
+	|| ydk::is_set(trap_oid.yfilter);
 }
 
 std::string Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::get_segment_path() const
@@ -3400,12 +4157,12 @@ const EntityPath Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (drop_count.is_set || is_set(drop_count.operation)) leaf_name_data.push_back(drop_count.get_name_leafdata());
-    if (lasrdrop_time.is_set || is_set(lasrdrop_time.operation)) leaf_name_data.push_back(lasrdrop_time.get_name_leafdata());
-    if (lastsent_time.is_set || is_set(lastsent_time.operation)) leaf_name_data.push_back(lastsent_time.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.operation)) leaf_name_data.push_back(retry_count.get_name_leafdata());
-    if (trap_oid.is_set || is_set(trap_oid.operation)) leaf_name_data.push_back(trap_oid.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (drop_count.is_set || is_set(drop_count.yfilter)) leaf_name_data.push_back(drop_count.get_name_leafdata());
+    if (lasrdrop_time.is_set || is_set(lasrdrop_time.yfilter)) leaf_name_data.push_back(lasrdrop_time.get_name_leafdata());
+    if (lastsent_time.is_set || is_set(lastsent_time.yfilter)) leaf_name_data.push_back(lastsent_time.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (trap_oid.is_set || is_set(trap_oid.yfilter)) leaf_name_data.push_back(trap_oid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3424,32 +4181,79 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::InfomDetails::
     return children;
 }
 
-void Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drop-count")
     {
         drop_count = value;
+        drop_count.value_namespace = name_space;
+        drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lasrdrop-time")
     {
         lasrdrop_time = value;
+        lasrdrop_time.value_namespace = name_space;
+        lasrdrop_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lastsent-time")
     {
         lastsent_time = value;
+        lastsent_time.value_namespace = name_space;
+        lastsent_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-count")
     {
         retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-oid")
     {
         trap_oid = value;
+        trap_oid.value_namespace = name_space;
+        trap_oid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "drop-count")
+    {
+        drop_count.yfilter = yfilter;
+    }
+    if(value_path == "lasrdrop-time")
+    {
+        lasrdrop_time.yfilter = yfilter;
+    }
+    if(value_path == "lastsent-time")
+    {
+        lastsent_time.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+    if(value_path == "trap-oid")
+    {
+        trap_oid.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "drop-count" || name == "lasrdrop-time" || name == "lastsent-time" || name == "retry-count" || name == "trap-oid")
+        return true;
+    return false;
 }
 
 Snmp::Information::Statistics::Statistics()
@@ -3528,37 +4332,37 @@ bool Snmp::Information::Statistics::has_data() const
 
 bool Snmp::Information::Statistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asn_parse_errors_received.operation)
-	|| is_set(bad_community_names_received.operation)
-	|| is_set(bad_community_uses_received.operation)
-	|| is_set(bad_values_received.operation)
-	|| is_set(bad_values_sent.operation)
-	|| is_set(bad_versions_received.operation)
-	|| is_set(general_errors_sent.operation)
-	|| is_set(get_next_request_sent.operation)
-	|| is_set(get_next_requests_received.operation)
-	|| is_set(get_requests_received.operation)
-	|| is_set(get_requests_sent.operation)
-	|| is_set(get_responses_received.operation)
-	|| is_set(get_responses_sent.operation)
-	|| is_set(max_packet_size.operation)
-	|| is_set(no_such_names_received.operation)
-	|| is_set(no_such_names_sent.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(proxy_drop_count.operation)
-	|| is_set(read_only_received.operation)
-	|| is_set(set_requests_received.operation)
-	|| is_set(set_requests_sent.operation)
-	|| is_set(silent_drop_count.operation)
-	|| is_set(too_big_packet_received.operation)
-	|| is_set(too_big_packets_sent.operation)
-	|| is_set(total_general_errors.operation)
-	|| is_set(total_packets_sent.operation)
-	|| is_set(total_requested_variables.operation)
-	|| is_set(total_set_variables_received.operation)
-	|| is_set(traps_received.operation)
-	|| is_set(traps_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(asn_parse_errors_received.yfilter)
+	|| ydk::is_set(bad_community_names_received.yfilter)
+	|| ydk::is_set(bad_community_uses_received.yfilter)
+	|| ydk::is_set(bad_values_received.yfilter)
+	|| ydk::is_set(bad_values_sent.yfilter)
+	|| ydk::is_set(bad_versions_received.yfilter)
+	|| ydk::is_set(general_errors_sent.yfilter)
+	|| ydk::is_set(get_next_request_sent.yfilter)
+	|| ydk::is_set(get_next_requests_received.yfilter)
+	|| ydk::is_set(get_requests_received.yfilter)
+	|| ydk::is_set(get_requests_sent.yfilter)
+	|| ydk::is_set(get_responses_received.yfilter)
+	|| ydk::is_set(get_responses_sent.yfilter)
+	|| ydk::is_set(max_packet_size.yfilter)
+	|| ydk::is_set(no_such_names_received.yfilter)
+	|| ydk::is_set(no_such_names_sent.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(proxy_drop_count.yfilter)
+	|| ydk::is_set(read_only_received.yfilter)
+	|| ydk::is_set(set_requests_received.yfilter)
+	|| ydk::is_set(set_requests_sent.yfilter)
+	|| ydk::is_set(silent_drop_count.yfilter)
+	|| ydk::is_set(too_big_packet_received.yfilter)
+	|| ydk::is_set(too_big_packets_sent.yfilter)
+	|| ydk::is_set(total_general_errors.yfilter)
+	|| ydk::is_set(total_packets_sent.yfilter)
+	|| ydk::is_set(total_requested_variables.yfilter)
+	|| ydk::is_set(total_set_variables_received.yfilter)
+	|| ydk::is_set(traps_received.yfilter)
+	|| ydk::is_set(traps_sent.yfilter);
 }
 
 std::string Snmp::Information::Statistics::get_segment_path() const
@@ -3584,36 +4388,36 @@ const EntityPath Snmp::Information::Statistics::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asn_parse_errors_received.is_set || is_set(asn_parse_errors_received.operation)) leaf_name_data.push_back(asn_parse_errors_received.get_name_leafdata());
-    if (bad_community_names_received.is_set || is_set(bad_community_names_received.operation)) leaf_name_data.push_back(bad_community_names_received.get_name_leafdata());
-    if (bad_community_uses_received.is_set || is_set(bad_community_uses_received.operation)) leaf_name_data.push_back(bad_community_uses_received.get_name_leafdata());
-    if (bad_values_received.is_set || is_set(bad_values_received.operation)) leaf_name_data.push_back(bad_values_received.get_name_leafdata());
-    if (bad_values_sent.is_set || is_set(bad_values_sent.operation)) leaf_name_data.push_back(bad_values_sent.get_name_leafdata());
-    if (bad_versions_received.is_set || is_set(bad_versions_received.operation)) leaf_name_data.push_back(bad_versions_received.get_name_leafdata());
-    if (general_errors_sent.is_set || is_set(general_errors_sent.operation)) leaf_name_data.push_back(general_errors_sent.get_name_leafdata());
-    if (get_next_request_sent.is_set || is_set(get_next_request_sent.operation)) leaf_name_data.push_back(get_next_request_sent.get_name_leafdata());
-    if (get_next_requests_received.is_set || is_set(get_next_requests_received.operation)) leaf_name_data.push_back(get_next_requests_received.get_name_leafdata());
-    if (get_requests_received.is_set || is_set(get_requests_received.operation)) leaf_name_data.push_back(get_requests_received.get_name_leafdata());
-    if (get_requests_sent.is_set || is_set(get_requests_sent.operation)) leaf_name_data.push_back(get_requests_sent.get_name_leafdata());
-    if (get_responses_received.is_set || is_set(get_responses_received.operation)) leaf_name_data.push_back(get_responses_received.get_name_leafdata());
-    if (get_responses_sent.is_set || is_set(get_responses_sent.operation)) leaf_name_data.push_back(get_responses_sent.get_name_leafdata());
-    if (max_packet_size.is_set || is_set(max_packet_size.operation)) leaf_name_data.push_back(max_packet_size.get_name_leafdata());
-    if (no_such_names_received.is_set || is_set(no_such_names_received.operation)) leaf_name_data.push_back(no_such_names_received.get_name_leafdata());
-    if (no_such_names_sent.is_set || is_set(no_such_names_sent.operation)) leaf_name_data.push_back(no_such_names_sent.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (proxy_drop_count.is_set || is_set(proxy_drop_count.operation)) leaf_name_data.push_back(proxy_drop_count.get_name_leafdata());
-    if (read_only_received.is_set || is_set(read_only_received.operation)) leaf_name_data.push_back(read_only_received.get_name_leafdata());
-    if (set_requests_received.is_set || is_set(set_requests_received.operation)) leaf_name_data.push_back(set_requests_received.get_name_leafdata());
-    if (set_requests_sent.is_set || is_set(set_requests_sent.operation)) leaf_name_data.push_back(set_requests_sent.get_name_leafdata());
-    if (silent_drop_count.is_set || is_set(silent_drop_count.operation)) leaf_name_data.push_back(silent_drop_count.get_name_leafdata());
-    if (too_big_packet_received.is_set || is_set(too_big_packet_received.operation)) leaf_name_data.push_back(too_big_packet_received.get_name_leafdata());
-    if (too_big_packets_sent.is_set || is_set(too_big_packets_sent.operation)) leaf_name_data.push_back(too_big_packets_sent.get_name_leafdata());
-    if (total_general_errors.is_set || is_set(total_general_errors.operation)) leaf_name_data.push_back(total_general_errors.get_name_leafdata());
-    if (total_packets_sent.is_set || is_set(total_packets_sent.operation)) leaf_name_data.push_back(total_packets_sent.get_name_leafdata());
-    if (total_requested_variables.is_set || is_set(total_requested_variables.operation)) leaf_name_data.push_back(total_requested_variables.get_name_leafdata());
-    if (total_set_variables_received.is_set || is_set(total_set_variables_received.operation)) leaf_name_data.push_back(total_set_variables_received.get_name_leafdata());
-    if (traps_received.is_set || is_set(traps_received.operation)) leaf_name_data.push_back(traps_received.get_name_leafdata());
-    if (traps_sent.is_set || is_set(traps_sent.operation)) leaf_name_data.push_back(traps_sent.get_name_leafdata());
+    if (asn_parse_errors_received.is_set || is_set(asn_parse_errors_received.yfilter)) leaf_name_data.push_back(asn_parse_errors_received.get_name_leafdata());
+    if (bad_community_names_received.is_set || is_set(bad_community_names_received.yfilter)) leaf_name_data.push_back(bad_community_names_received.get_name_leafdata());
+    if (bad_community_uses_received.is_set || is_set(bad_community_uses_received.yfilter)) leaf_name_data.push_back(bad_community_uses_received.get_name_leafdata());
+    if (bad_values_received.is_set || is_set(bad_values_received.yfilter)) leaf_name_data.push_back(bad_values_received.get_name_leafdata());
+    if (bad_values_sent.is_set || is_set(bad_values_sent.yfilter)) leaf_name_data.push_back(bad_values_sent.get_name_leafdata());
+    if (bad_versions_received.is_set || is_set(bad_versions_received.yfilter)) leaf_name_data.push_back(bad_versions_received.get_name_leafdata());
+    if (general_errors_sent.is_set || is_set(general_errors_sent.yfilter)) leaf_name_data.push_back(general_errors_sent.get_name_leafdata());
+    if (get_next_request_sent.is_set || is_set(get_next_request_sent.yfilter)) leaf_name_data.push_back(get_next_request_sent.get_name_leafdata());
+    if (get_next_requests_received.is_set || is_set(get_next_requests_received.yfilter)) leaf_name_data.push_back(get_next_requests_received.get_name_leafdata());
+    if (get_requests_received.is_set || is_set(get_requests_received.yfilter)) leaf_name_data.push_back(get_requests_received.get_name_leafdata());
+    if (get_requests_sent.is_set || is_set(get_requests_sent.yfilter)) leaf_name_data.push_back(get_requests_sent.get_name_leafdata());
+    if (get_responses_received.is_set || is_set(get_responses_received.yfilter)) leaf_name_data.push_back(get_responses_received.get_name_leafdata());
+    if (get_responses_sent.is_set || is_set(get_responses_sent.yfilter)) leaf_name_data.push_back(get_responses_sent.get_name_leafdata());
+    if (max_packet_size.is_set || is_set(max_packet_size.yfilter)) leaf_name_data.push_back(max_packet_size.get_name_leafdata());
+    if (no_such_names_received.is_set || is_set(no_such_names_received.yfilter)) leaf_name_data.push_back(no_such_names_received.get_name_leafdata());
+    if (no_such_names_sent.is_set || is_set(no_such_names_sent.yfilter)) leaf_name_data.push_back(no_such_names_sent.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (proxy_drop_count.is_set || is_set(proxy_drop_count.yfilter)) leaf_name_data.push_back(proxy_drop_count.get_name_leafdata());
+    if (read_only_received.is_set || is_set(read_only_received.yfilter)) leaf_name_data.push_back(read_only_received.get_name_leafdata());
+    if (set_requests_received.is_set || is_set(set_requests_received.yfilter)) leaf_name_data.push_back(set_requests_received.get_name_leafdata());
+    if (set_requests_sent.is_set || is_set(set_requests_sent.yfilter)) leaf_name_data.push_back(set_requests_sent.get_name_leafdata());
+    if (silent_drop_count.is_set || is_set(silent_drop_count.yfilter)) leaf_name_data.push_back(silent_drop_count.get_name_leafdata());
+    if (too_big_packet_received.is_set || is_set(too_big_packet_received.yfilter)) leaf_name_data.push_back(too_big_packet_received.get_name_leafdata());
+    if (too_big_packets_sent.is_set || is_set(too_big_packets_sent.yfilter)) leaf_name_data.push_back(too_big_packets_sent.get_name_leafdata());
+    if (total_general_errors.is_set || is_set(total_general_errors.yfilter)) leaf_name_data.push_back(total_general_errors.get_name_leafdata());
+    if (total_packets_sent.is_set || is_set(total_packets_sent.yfilter)) leaf_name_data.push_back(total_packets_sent.get_name_leafdata());
+    if (total_requested_variables.is_set || is_set(total_requested_variables.yfilter)) leaf_name_data.push_back(total_requested_variables.get_name_leafdata());
+    if (total_set_variables_received.is_set || is_set(total_set_variables_received.yfilter)) leaf_name_data.push_back(total_set_variables_received.get_name_leafdata());
+    if (traps_received.is_set || is_set(traps_received.yfilter)) leaf_name_data.push_back(traps_received.get_name_leafdata());
+    if (traps_sent.is_set || is_set(traps_sent.yfilter)) leaf_name_data.push_back(traps_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3632,128 +4436,319 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Statistics::ge
     return children;
 }
 
-void Snmp::Information::Statistics::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asn-parse-errors-received")
     {
         asn_parse_errors_received = value;
+        asn_parse_errors_received.value_namespace = name_space;
+        asn_parse_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-community-names-received")
     {
         bad_community_names_received = value;
+        bad_community_names_received.value_namespace = name_space;
+        bad_community_names_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-community-uses-received")
     {
         bad_community_uses_received = value;
+        bad_community_uses_received.value_namespace = name_space;
+        bad_community_uses_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-values-received")
     {
         bad_values_received = value;
+        bad_values_received.value_namespace = name_space;
+        bad_values_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-values-sent")
     {
         bad_values_sent = value;
+        bad_values_sent.value_namespace = name_space;
+        bad_values_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-versions-received")
     {
         bad_versions_received = value;
+        bad_versions_received.value_namespace = name_space;
+        bad_versions_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "general-errors-sent")
     {
         general_errors_sent = value;
+        general_errors_sent.value_namespace = name_space;
+        general_errors_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-next-request-sent")
     {
         get_next_request_sent = value;
+        get_next_request_sent.value_namespace = name_space;
+        get_next_request_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-next-requests-received")
     {
         get_next_requests_received = value;
+        get_next_requests_received.value_namespace = name_space;
+        get_next_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-requests-received")
     {
         get_requests_received = value;
+        get_requests_received.value_namespace = name_space;
+        get_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-requests-sent")
     {
         get_requests_sent = value;
+        get_requests_sent.value_namespace = name_space;
+        get_requests_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-responses-received")
     {
         get_responses_received = value;
+        get_responses_received.value_namespace = name_space;
+        get_responses_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-responses-sent")
     {
         get_responses_sent = value;
+        get_responses_sent.value_namespace = name_space;
+        get_responses_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-packet-size")
     {
         max_packet_size = value;
+        max_packet_size.value_namespace = name_space;
+        max_packet_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-such-names-received")
     {
         no_such_names_received = value;
+        no_such_names_received.value_namespace = name_space;
+        no_such_names_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-such-names-sent")
     {
         no_such_names_sent = value;
+        no_such_names_sent.value_namespace = name_space;
+        no_such_names_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proxy-drop-count")
     {
         proxy_drop_count = value;
+        proxy_drop_count.value_namespace = name_space;
+        proxy_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "read-only-received")
     {
         read_only_received = value;
+        read_only_received.value_namespace = name_space;
+        read_only_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-requests-received")
     {
         set_requests_received = value;
+        set_requests_received.value_namespace = name_space;
+        set_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-requests-sent")
     {
         set_requests_sent = value;
+        set_requests_sent.value_namespace = name_space;
+        set_requests_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "silent-drop-count")
     {
         silent_drop_count = value;
+        silent_drop_count.value_namespace = name_space;
+        silent_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "too-big-packet-received")
     {
         too_big_packet_received = value;
+        too_big_packet_received.value_namespace = name_space;
+        too_big_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "too-big-packets-sent")
     {
         too_big_packets_sent = value;
+        too_big_packets_sent.value_namespace = name_space;
+        too_big_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-general-errors")
     {
         total_general_errors = value;
+        total_general_errors.value_namespace = name_space;
+        total_general_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-packets-sent")
     {
         total_packets_sent = value;
+        total_packets_sent.value_namespace = name_space;
+        total_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-requested-variables")
     {
         total_requested_variables = value;
+        total_requested_variables.value_namespace = name_space;
+        total_requested_variables.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-set-variables-received")
     {
         total_set_variables_received = value;
+        total_set_variables_received.value_namespace = name_space;
+        total_set_variables_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traps-received")
     {
         traps_received = value;
+        traps_received.value_namespace = name_space;
+        traps_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traps-sent")
     {
         traps_sent = value;
+        traps_sent.value_namespace = name_space;
+        traps_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asn-parse-errors-received")
+    {
+        asn_parse_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "bad-community-names-received")
+    {
+        bad_community_names_received.yfilter = yfilter;
+    }
+    if(value_path == "bad-community-uses-received")
+    {
+        bad_community_uses_received.yfilter = yfilter;
+    }
+    if(value_path == "bad-values-received")
+    {
+        bad_values_received.yfilter = yfilter;
+    }
+    if(value_path == "bad-values-sent")
+    {
+        bad_values_sent.yfilter = yfilter;
+    }
+    if(value_path == "bad-versions-received")
+    {
+        bad_versions_received.yfilter = yfilter;
+    }
+    if(value_path == "general-errors-sent")
+    {
+        general_errors_sent.yfilter = yfilter;
+    }
+    if(value_path == "get-next-request-sent")
+    {
+        get_next_request_sent.yfilter = yfilter;
+    }
+    if(value_path == "get-next-requests-received")
+    {
+        get_next_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "get-requests-received")
+    {
+        get_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "get-requests-sent")
+    {
+        get_requests_sent.yfilter = yfilter;
+    }
+    if(value_path == "get-responses-received")
+    {
+        get_responses_received.yfilter = yfilter;
+    }
+    if(value_path == "get-responses-sent")
+    {
+        get_responses_sent.yfilter = yfilter;
+    }
+    if(value_path == "max-packet-size")
+    {
+        max_packet_size.yfilter = yfilter;
+    }
+    if(value_path == "no-such-names-received")
+    {
+        no_such_names_received.yfilter = yfilter;
+    }
+    if(value_path == "no-such-names-sent")
+    {
+        no_such_names_sent.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "proxy-drop-count")
+    {
+        proxy_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "read-only-received")
+    {
+        read_only_received.yfilter = yfilter;
+    }
+    if(value_path == "set-requests-received")
+    {
+        set_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "set-requests-sent")
+    {
+        set_requests_sent.yfilter = yfilter;
+    }
+    if(value_path == "silent-drop-count")
+    {
+        silent_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "too-big-packet-received")
+    {
+        too_big_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "too-big-packets-sent")
+    {
+        too_big_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "total-general-errors")
+    {
+        total_general_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-packets-sent")
+    {
+        total_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "total-requested-variables")
+    {
+        total_requested_variables.yfilter = yfilter;
+    }
+    if(value_path == "total-set-variables-received")
+    {
+        total_set_variables_received.yfilter = yfilter;
+    }
+    if(value_path == "traps-received")
+    {
+        traps_received.yfilter = yfilter;
+    }
+    if(value_path == "traps-sent")
+    {
+        traps_sent.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asn-parse-errors-received" || name == "bad-community-names-received" || name == "bad-community-uses-received" || name == "bad-values-received" || name == "bad-values-sent" || name == "bad-versions-received" || name == "general-errors-sent" || name == "get-next-request-sent" || name == "get-next-requests-received" || name == "get-requests-received" || name == "get-requests-sent" || name == "get-responses-received" || name == "get-responses-sent" || name == "max-packet-size" || name == "no-such-names-received" || name == "no-such-names-sent" || name == "packets-received" || name == "proxy-drop-count" || name == "read-only-received" || name == "set-requests-received" || name == "set-requests-sent" || name == "silent-drop-count" || name == "too-big-packet-received" || name == "too-big-packets-sent" || name == "total-general-errors" || name == "total-packets-sent" || name == "total-requested-variables" || name == "total-set-variables-received" || name == "traps-received" || name == "traps-sent")
+        return true;
+    return false;
 }
 
 Snmp::Information::IncomingQueue::IncomingQueue()
@@ -3784,8 +4779,8 @@ bool Snmp::Information::IncomingQueue::has_operation() const
         if(inq_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(queue_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(queue_count.yfilter);
 }
 
 std::string Snmp::Information::IncomingQueue::get_segment_path() const
@@ -3811,7 +4806,7 @@ const EntityPath Snmp::Information::IncomingQueue::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (queue_count.is_set || is_set(queue_count.operation)) leaf_name_data.push_back(queue_count.get_name_leafdata());
+    if (queue_count.is_set || is_set(queue_count.yfilter)) leaf_name_data.push_back(queue_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3851,12 +4846,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::IncomingQueue:
     return children;
 }
 
-void Snmp::Information::IncomingQueue::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::IncomingQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "queue-count")
     {
         queue_count = value;
+        queue_count.value_namespace = name_space;
+        queue_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::IncomingQueue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "queue-count")
+    {
+        queue_count.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::IncomingQueue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inq-entry" || name == "queue-count")
+        return true;
+    return false;
 }
 
 Snmp::Information::IncomingQueue::InqEntry::InqEntry()
@@ -3885,12 +4897,12 @@ bool Snmp::Information::IncomingQueue::InqEntry::has_data() const
 
 bool Snmp::Information::IncomingQueue::InqEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_of_queue.operation)
-	|| is_set(last_access_time.operation)
-	|| is_set(priority.operation)
-	|| is_set(processed_request_count.operation)
-	|| is_set(request_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_of_queue.yfilter)
+	|| ydk::is_set(last_access_time.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(processed_request_count.yfilter)
+	|| ydk::is_set(request_count.yfilter);
 }
 
 std::string Snmp::Information::IncomingQueue::InqEntry::get_segment_path() const
@@ -3916,11 +4928,11 @@ const EntityPath Snmp::Information::IncomingQueue::InqEntry::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_of_queue.is_set || is_set(address_of_queue.operation)) leaf_name_data.push_back(address_of_queue.get_name_leafdata());
-    if (last_access_time.is_set || is_set(last_access_time.operation)) leaf_name_data.push_back(last_access_time.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (processed_request_count.is_set || is_set(processed_request_count.operation)) leaf_name_data.push_back(processed_request_count.get_name_leafdata());
-    if (request_count.is_set || is_set(request_count.operation)) leaf_name_data.push_back(request_count.get_name_leafdata());
+    if (address_of_queue.is_set || is_set(address_of_queue.yfilter)) leaf_name_data.push_back(address_of_queue.get_name_leafdata());
+    if (last_access_time.is_set || is_set(last_access_time.yfilter)) leaf_name_data.push_back(last_access_time.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (processed_request_count.is_set || is_set(processed_request_count.yfilter)) leaf_name_data.push_back(processed_request_count.get_name_leafdata());
+    if (request_count.is_set || is_set(request_count.yfilter)) leaf_name_data.push_back(request_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3939,28 +4951,69 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::IncomingQueue:
     return children;
 }
 
-void Snmp::Information::IncomingQueue::InqEntry::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::IncomingQueue::InqEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-of-queue")
     {
         address_of_queue = value;
+        address_of_queue.value_namespace = name_space;
+        address_of_queue.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-access-time")
     {
         last_access_time = value;
+        last_access_time.value_namespace = name_space;
+        last_access_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-request-count")
     {
         processed_request_count = value;
+        processed_request_count.value_namespace = name_space;
+        processed_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-count")
     {
         request_count = value;
+        request_count.value_namespace = name_space;
+        request_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::IncomingQueue::InqEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-of-queue")
+    {
+        address_of_queue.yfilter = yfilter;
+    }
+    if(value_path == "last-access-time")
+    {
+        last_access_time.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "processed-request-count")
+    {
+        processed_request_count.yfilter = yfilter;
+    }
+    if(value_path == "request-count")
+    {
+        request_count.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::IncomingQueue::InqEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-of-queue" || name == "last-access-time" || name == "priority" || name == "processed-request-count" || name == "request-count")
+        return true;
+    return false;
 }
 
 Snmp::Information::ContextMapping::ContextMapping()
@@ -3989,7 +5042,7 @@ bool Snmp::Information::ContextMapping::has_operation() const
         if(contex_mapping[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::ContextMapping::get_segment_path() const
@@ -4054,8 +5107,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::ContextMapping
     return children;
 }
 
-void Snmp::Information::ContextMapping::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::ContextMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::ContextMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::ContextMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "contex-mapping")
+        return true;
+    return false;
 }
 
 Snmp::Information::ContextMapping::ContexMapping::ContexMapping()
@@ -4084,12 +5148,12 @@ bool Snmp::Information::ContextMapping::ContexMapping::has_data() const
 
 bool Snmp::Information::ContextMapping::ContexMapping::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(context.operation)
-	|| is_set(feature.operation)
-	|| is_set(feature_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(topology.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(feature.yfilter)
+	|| ydk::is_set(feature_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(topology.yfilter);
 }
 
 std::string Snmp::Information::ContextMapping::ContexMapping::get_segment_path() const
@@ -4115,11 +5179,11 @@ const EntityPath Snmp::Information::ContextMapping::ContexMapping::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (context.is_set || is_set(context.operation)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (feature.is_set || is_set(feature.operation)) leaf_name_data.push_back(feature.get_name_leafdata());
-    if (feature_name.is_set || is_set(feature_name.operation)) leaf_name_data.push_back(feature_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (topology.is_set || is_set(topology.operation)) leaf_name_data.push_back(topology.get_name_leafdata());
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (feature.is_set || is_set(feature.yfilter)) leaf_name_data.push_back(feature.get_name_leafdata());
+    if (feature_name.is_set || is_set(feature_name.yfilter)) leaf_name_data.push_back(feature_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (topology.is_set || is_set(topology.yfilter)) leaf_name_data.push_back(topology.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4138,28 +5202,69 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::ContextMapping
     return children;
 }
 
-void Snmp::Information::ContextMapping::ContexMapping::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::ContextMapping::ContexMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "context")
     {
         context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "feature")
     {
         feature = value;
+        feature.value_namespace = name_space;
+        feature.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "feature-name")
     {
         feature_name = value;
+        feature_name.value_namespace = name_space;
+        feature_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "topology")
     {
         topology = value;
+        topology.value_namespace = name_space;
+        topology.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::ContextMapping::ContexMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "context")
+    {
+        context.yfilter = yfilter;
+    }
+    if(value_path == "feature")
+    {
+        feature.yfilter = yfilter;
+    }
+    if(value_path == "feature-name")
+    {
+        feature_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "topology")
+    {
+        topology.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::ContextMapping::ContexMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "context" || name == "feature" || name == "feature-name" || name == "instance" || name == "topology")
+        return true;
+    return false;
 }
 
 Snmp::Information::TrapOids::TrapOids()
@@ -4188,7 +5293,7 @@ bool Snmp::Information::TrapOids::has_operation() const
         if(trap_oid[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::TrapOids::get_segment_path() const
@@ -4253,8 +5358,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapOids::get_
     return children;
 }
 
-void Snmp::Information::TrapOids::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::TrapOids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::TrapOids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::TrapOids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-oid")
+        return true;
+    return false;
 }
 
 Snmp::Information::TrapOids::TrapOid::TrapOid()
@@ -4279,10 +5395,10 @@ bool Snmp::Information::TrapOids::TrapOid::has_data() const
 
 bool Snmp::Information::TrapOids::TrapOid::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(trap_oid.operation)
-	|| is_set(trap_oid_count.operation)
-	|| is_set(trap_oid_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(trap_oid.yfilter)
+	|| ydk::is_set(trap_oid_count.yfilter)
+	|| ydk::is_set(trap_oid_xr.yfilter);
 }
 
 std::string Snmp::Information::TrapOids::TrapOid::get_segment_path() const
@@ -4308,9 +5424,9 @@ const EntityPath Snmp::Information::TrapOids::TrapOid::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (trap_oid.is_set || is_set(trap_oid.operation)) leaf_name_data.push_back(trap_oid.get_name_leafdata());
-    if (trap_oid_count.is_set || is_set(trap_oid_count.operation)) leaf_name_data.push_back(trap_oid_count.get_name_leafdata());
-    if (trap_oid_xr.is_set || is_set(trap_oid_xr.operation)) leaf_name_data.push_back(trap_oid_xr.get_name_leafdata());
+    if (trap_oid.is_set || is_set(trap_oid.yfilter)) leaf_name_data.push_back(trap_oid.get_name_leafdata());
+    if (trap_oid_count.is_set || is_set(trap_oid_count.yfilter)) leaf_name_data.push_back(trap_oid_count.get_name_leafdata());
+    if (trap_oid_xr.is_set || is_set(trap_oid_xr.yfilter)) leaf_name_data.push_back(trap_oid_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4329,20 +5445,49 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapOids::Trap
     return children;
 }
 
-void Snmp::Information::TrapOids::TrapOid::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::TrapOids::TrapOid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "trap-oid")
     {
         trap_oid = value;
+        trap_oid.value_namespace = name_space;
+        trap_oid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-oid-count")
     {
         trap_oid_count = value;
+        trap_oid_count.value_namespace = name_space;
+        trap_oid_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-oid-xr")
     {
         trap_oid_xr = value;
+        trap_oid_xr.value_namespace = name_space;
+        trap_oid_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::TrapOids::TrapOid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "trap-oid")
+    {
+        trap_oid.yfilter = yfilter;
+    }
+    if(value_path == "trap-oid-count")
+    {
+        trap_oid_count.yfilter = yfilter;
+    }
+    if(value_path == "trap-oid-xr")
+    {
+        trap_oid_xr.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::TrapOids::TrapOid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-oid" || name == "trap-oid-count" || name == "trap-oid-xr")
+        return true;
+    return false;
 }
 
 Snmp::Information::NmSpackets::NmSpackets()
@@ -4371,7 +5516,7 @@ bool Snmp::Information::NmSpackets::has_operation() const
         if(nm_spacket[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::NmSpackets::get_segment_path() const
@@ -4436,8 +5581,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmSpackets::ge
     return children;
 }
 
-void Snmp::Information::NmSpackets::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::NmSpackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::NmSpackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::NmSpackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nm-spacket")
+        return true;
+    return false;
 }
 
 Snmp::Information::NmSpackets::NmSpacket::NmSpacket()
@@ -4466,12 +5622,12 @@ bool Snmp::Information::NmSpackets::NmSpacket::has_data() const
 
 bool Snmp::Information::NmSpackets::NmSpacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(packetcount.operation)
-	|| is_set(number_of_nmsq_pkts_dropped.operation)
-	|| is_set(number_of_pkts_dropped.operation)
-	|| is_set(overload_end_time.operation)
-	|| is_set(overload_start_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(packetcount.yfilter)
+	|| ydk::is_set(number_of_nmsq_pkts_dropped.yfilter)
+	|| ydk::is_set(number_of_pkts_dropped.yfilter)
+	|| ydk::is_set(overload_end_time.yfilter)
+	|| ydk::is_set(overload_start_time.yfilter);
 }
 
 std::string Snmp::Information::NmSpackets::NmSpacket::get_segment_path() const
@@ -4497,11 +5653,11 @@ const EntityPath Snmp::Information::NmSpackets::NmSpacket::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (packetcount.is_set || is_set(packetcount.operation)) leaf_name_data.push_back(packetcount.get_name_leafdata());
-    if (number_of_nmsq_pkts_dropped.is_set || is_set(number_of_nmsq_pkts_dropped.operation)) leaf_name_data.push_back(number_of_nmsq_pkts_dropped.get_name_leafdata());
-    if (number_of_pkts_dropped.is_set || is_set(number_of_pkts_dropped.operation)) leaf_name_data.push_back(number_of_pkts_dropped.get_name_leafdata());
-    if (overload_end_time.is_set || is_set(overload_end_time.operation)) leaf_name_data.push_back(overload_end_time.get_name_leafdata());
-    if (overload_start_time.is_set || is_set(overload_start_time.operation)) leaf_name_data.push_back(overload_start_time.get_name_leafdata());
+    if (packetcount.is_set || is_set(packetcount.yfilter)) leaf_name_data.push_back(packetcount.get_name_leafdata());
+    if (number_of_nmsq_pkts_dropped.is_set || is_set(number_of_nmsq_pkts_dropped.yfilter)) leaf_name_data.push_back(number_of_nmsq_pkts_dropped.get_name_leafdata());
+    if (number_of_pkts_dropped.is_set || is_set(number_of_pkts_dropped.yfilter)) leaf_name_data.push_back(number_of_pkts_dropped.get_name_leafdata());
+    if (overload_end_time.is_set || is_set(overload_end_time.yfilter)) leaf_name_data.push_back(overload_end_time.get_name_leafdata());
+    if (overload_start_time.is_set || is_set(overload_start_time.yfilter)) leaf_name_data.push_back(overload_start_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4520,28 +5676,69 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::NmSpackets::Nm
     return children;
 }
 
-void Snmp::Information::NmSpackets::NmSpacket::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::NmSpackets::NmSpacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packetcount")
     {
         packetcount = value;
+        packetcount.value_namespace = name_space;
+        packetcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-nmsq-pkts-dropped")
     {
         number_of_nmsq_pkts_dropped = value;
+        number_of_nmsq_pkts_dropped.value_namespace = name_space;
+        number_of_nmsq_pkts_dropped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-pkts-dropped")
     {
         number_of_pkts_dropped = value;
+        number_of_pkts_dropped.value_namespace = name_space;
+        number_of_pkts_dropped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overload-end-time")
     {
         overload_end_time = value;
+        overload_end_time.value_namespace = name_space;
+        overload_end_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overload-start-time")
     {
         overload_start_time = value;
+        overload_start_time.value_namespace = name_space;
+        overload_start_time.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::NmSpackets::NmSpacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packetcount")
+    {
+        packetcount.yfilter = yfilter;
+    }
+    if(value_path == "number-of-nmsq-pkts-dropped")
+    {
+        number_of_nmsq_pkts_dropped.yfilter = yfilter;
+    }
+    if(value_path == "number-of-pkts-dropped")
+    {
+        number_of_pkts_dropped.yfilter = yfilter;
+    }
+    if(value_path == "overload-end-time")
+    {
+        overload_end_time.yfilter = yfilter;
+    }
+    if(value_path == "overload-start-time")
+    {
+        overload_start_time.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::NmSpackets::NmSpacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packetcount" || name == "number-of-nmsq-pkts-dropped" || name == "number-of-pkts-dropped" || name == "overload-end-time" || name == "overload-start-time")
+        return true;
+    return false;
 }
 
 Snmp::Information::Mibs::Mibs()
@@ -4570,7 +5767,7 @@ bool Snmp::Information::Mibs::has_operation() const
         if(mib[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::Mibs::get_segment_path() const
@@ -4635,8 +5832,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::get_chil
     return children;
 }
 
-void Snmp::Information::Mibs::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Mibs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::Mibs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::Mibs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib")
+        return true;
+    return false;
 }
 
 Snmp::Information::Mibs::Mib::Mib()
@@ -4666,8 +5874,8 @@ bool Snmp::Information::Mibs::Mib::has_data() const
 
 bool Snmp::Information::Mibs::Mib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (mib_information !=  nullptr && mib_information->has_operation())
 	|| (oids !=  nullptr && oids->has_operation());
 }
@@ -4695,7 +5903,7 @@ const EntityPath Snmp::Information::Mibs::Mib::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4742,12 +5950,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::get
     return children;
 }
 
-void Snmp::Information::Mibs::Mib::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Mibs::Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Mibs::Mib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Mibs::Mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mib-information" || name == "oids" || name == "name")
+        return true;
+    return false;
 }
 
 Snmp::Information::Mibs::Mib::Oids::Oids()
@@ -4776,7 +6001,7 @@ bool Snmp::Information::Mibs::Mib::Oids::has_operation() const
         if(oid[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::Mibs::Mib::Oids::get_segment_path() const
@@ -4841,8 +6066,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::Oid
     return children;
 }
 
-void Snmp::Information::Mibs::Mib::Oids::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Mibs::Mib::Oids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::Mibs::Mib::Oids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::Mibs::Mib::Oids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oid")
+        return true;
+    return false;
 }
 
 Snmp::Information::Mibs::Mib::Oids::Oid::Oid()
@@ -4865,9 +6101,9 @@ bool Snmp::Information::Mibs::Mib::Oids::Oid::has_data() const
 
 bool Snmp::Information::Mibs::Mib::Oids::Oid::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oid.operation)
-	|| is_set(oid_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(oid.yfilter)
+	|| ydk::is_set(oid_name.yfilter);
 }
 
 std::string Snmp::Information::Mibs::Mib::Oids::Oid::get_segment_path() const
@@ -4893,8 +6129,8 @@ const EntityPath Snmp::Information::Mibs::Mib::Oids::Oid::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oid.is_set || is_set(oid.operation)) leaf_name_data.push_back(oid.get_name_leafdata());
-    if (oid_name.is_set || is_set(oid_name.operation)) leaf_name_data.push_back(oid_name.get_name_leafdata());
+    if (oid.is_set || is_set(oid.yfilter)) leaf_name_data.push_back(oid.get_name_leafdata());
+    if (oid_name.is_set || is_set(oid_name.yfilter)) leaf_name_data.push_back(oid_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4913,16 +6149,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::Oid
     return children;
 }
 
-void Snmp::Information::Mibs::Mib::Oids::Oid::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Mibs::Mib::Oids::Oid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
         oid = value;
+        oid.value_namespace = name_space;
+        oid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oid-name")
     {
         oid_name = value;
+        oid_name.value_namespace = name_space;
+        oid_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Mibs::Mib::Oids::Oid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oid")
+    {
+        oid.yfilter = yfilter;
+    }
+    if(value_path == "oid-name")
+    {
+        oid_name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Mibs::Mib::Oids::Oid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oid" || name == "oid-name")
+        return true;
+    return false;
 }
 
 Snmp::Information::Mibs::Mib::MibInformation::MibInformation()
@@ -4957,15 +6216,15 @@ bool Snmp::Information::Mibs::Mib::MibInformation::has_data() const
 
 bool Snmp::Information::Mibs::Mib::MibInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dll_capabilities.operation)
-	|| is_set(dll_name.operation)
-	|| is_set(is_mib_loaded.operation)
-	|| is_set(load_time.operation)
-	|| is_set(mib_config_filename.operation)
-	|| is_set(mib_name.operation)
-	|| is_set(timeout.operation)
-	|| is_set(trap_strings.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dll_capabilities.yfilter)
+	|| ydk::is_set(dll_name.yfilter)
+	|| ydk::is_set(is_mib_loaded.yfilter)
+	|| ydk::is_set(load_time.yfilter)
+	|| ydk::is_set(mib_config_filename.yfilter)
+	|| ydk::is_set(mib_name.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(trap_strings.yfilter);
 }
 
 std::string Snmp::Information::Mibs::Mib::MibInformation::get_segment_path() const
@@ -4991,14 +6250,14 @@ const EntityPath Snmp::Information::Mibs::Mib::MibInformation::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dll_capabilities.is_set || is_set(dll_capabilities.operation)) leaf_name_data.push_back(dll_capabilities.get_name_leafdata());
-    if (dll_name.is_set || is_set(dll_name.operation)) leaf_name_data.push_back(dll_name.get_name_leafdata());
-    if (is_mib_loaded.is_set || is_set(is_mib_loaded.operation)) leaf_name_data.push_back(is_mib_loaded.get_name_leafdata());
-    if (load_time.is_set || is_set(load_time.operation)) leaf_name_data.push_back(load_time.get_name_leafdata());
-    if (mib_config_filename.is_set || is_set(mib_config_filename.operation)) leaf_name_data.push_back(mib_config_filename.get_name_leafdata());
-    if (mib_name.is_set || is_set(mib_name.operation)) leaf_name_data.push_back(mib_name.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
-    if (trap_strings.is_set || is_set(trap_strings.operation)) leaf_name_data.push_back(trap_strings.get_name_leafdata());
+    if (dll_capabilities.is_set || is_set(dll_capabilities.yfilter)) leaf_name_data.push_back(dll_capabilities.get_name_leafdata());
+    if (dll_name.is_set || is_set(dll_name.yfilter)) leaf_name_data.push_back(dll_name.get_name_leafdata());
+    if (is_mib_loaded.is_set || is_set(is_mib_loaded.yfilter)) leaf_name_data.push_back(is_mib_loaded.get_name_leafdata());
+    if (load_time.is_set || is_set(load_time.yfilter)) leaf_name_data.push_back(load_time.get_name_leafdata());
+    if (mib_config_filename.is_set || is_set(mib_config_filename.yfilter)) leaf_name_data.push_back(mib_config_filename.get_name_leafdata());
+    if (mib_name.is_set || is_set(mib_name.yfilter)) leaf_name_data.push_back(mib_name.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (trap_strings.is_set || is_set(trap_strings.yfilter)) leaf_name_data.push_back(trap_strings.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5017,40 +6276,99 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Mibs::Mib::Mib
     return children;
 }
 
-void Snmp::Information::Mibs::Mib::MibInformation::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Mibs::Mib::MibInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dll-capabilities")
     {
         dll_capabilities = value;
+        dll_capabilities.value_namespace = name_space;
+        dll_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dll-name")
     {
         dll_name = value;
+        dll_name.value_namespace = name_space;
+        dll_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-mib-loaded")
     {
         is_mib_loaded = value;
+        is_mib_loaded.value_namespace = name_space;
+        is_mib_loaded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-time")
     {
         load_time = value;
+        load_time.value_namespace = name_space;
+        load_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mib-config-filename")
     {
         mib_config_filename = value;
+        mib_config_filename.value_namespace = name_space;
+        mib_config_filename.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mib-name")
     {
         mib_name = value;
+        mib_name.value_namespace = name_space;
+        mib_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-strings")
     {
         trap_strings = value;
+        trap_strings.value_namespace = name_space;
+        trap_strings.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Mibs::Mib::MibInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dll-capabilities")
+    {
+        dll_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "dll-name")
+    {
+        dll_name.yfilter = yfilter;
+    }
+    if(value_path == "is-mib-loaded")
+    {
+        is_mib_loaded.yfilter = yfilter;
+    }
+    if(value_path == "load-time")
+    {
+        load_time.yfilter = yfilter;
+    }
+    if(value_path == "mib-config-filename")
+    {
+        mib_config_filename.yfilter = yfilter;
+    }
+    if(value_path == "mib-name")
+    {
+        mib_name.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "trap-strings")
+    {
+        trap_strings.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Mibs::Mib::MibInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dll-capabilities" || name == "dll-name" || name == "is-mib-loaded" || name == "load-time" || name == "mib-config-filename" || name == "mib-name" || name == "timeout" || name == "trap-strings")
+        return true;
+    return false;
 }
 
 Snmp::Information::SerialNumbers::SerialNumbers()
@@ -5079,7 +6397,7 @@ bool Snmp::Information::SerialNumbers::has_operation() const
         if(serial_number[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::SerialNumbers::get_segment_path() const
@@ -5144,8 +6462,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SerialNumbers:
     return children;
 }
 
-void Snmp::Information::SerialNumbers::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::SerialNumbers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::SerialNumbers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::SerialNumbers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "serial-number")
+        return true;
+    return false;
 }
 
 Snmp::Information::SerialNumbers::SerialNumber::SerialNumber()
@@ -5190,20 +6519,20 @@ bool Snmp::Information::SerialNumbers::SerialNumber::has_data() const
 
 bool Snmp::Information::SerialNumbers::SerialNumber::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(error_status.operation)
-	|| is_set(input_q.operation)
-	|| is_set(nms.operation)
-	|| is_set(number.operation)
-	|| is_set(output_q.operation)
-	|| is_set(pdu_type.operation)
-	|| is_set(pending_q.operation)
-	|| is_set(port.operation)
-	|| is_set(port_xr.operation)
-	|| is_set(req_id.operation)
-	|| is_set(request_id.operation)
-	|| is_set(response_out.operation)
-	|| is_set(serial_num.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(error_status.yfilter)
+	|| ydk::is_set(input_q.yfilter)
+	|| ydk::is_set(nms.yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(output_q.yfilter)
+	|| ydk::is_set(pdu_type.yfilter)
+	|| ydk::is_set(pending_q.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(port_xr.yfilter)
+	|| ydk::is_set(req_id.yfilter)
+	|| ydk::is_set(request_id.yfilter)
+	|| ydk::is_set(response_out.yfilter)
+	|| ydk::is_set(serial_num.yfilter);
 }
 
 std::string Snmp::Information::SerialNumbers::SerialNumber::get_segment_path() const
@@ -5229,19 +6558,19 @@ const EntityPath Snmp::Information::SerialNumbers::SerialNumber::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error_status.is_set || is_set(error_status.operation)) leaf_name_data.push_back(error_status.get_name_leafdata());
-    if (input_q.is_set || is_set(input_q.operation)) leaf_name_data.push_back(input_q.get_name_leafdata());
-    if (nms.is_set || is_set(nms.operation)) leaf_name_data.push_back(nms.get_name_leafdata());
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (output_q.is_set || is_set(output_q.operation)) leaf_name_data.push_back(output_q.get_name_leafdata());
-    if (pdu_type.is_set || is_set(pdu_type.operation)) leaf_name_data.push_back(pdu_type.get_name_leafdata());
-    if (pending_q.is_set || is_set(pending_q.operation)) leaf_name_data.push_back(pending_q.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (port_xr.is_set || is_set(port_xr.operation)) leaf_name_data.push_back(port_xr.get_name_leafdata());
-    if (req_id.is_set || is_set(req_id.operation)) leaf_name_data.push_back(req_id.get_name_leafdata());
-    if (request_id.is_set || is_set(request_id.operation)) leaf_name_data.push_back(request_id.get_name_leafdata());
-    if (response_out.is_set || is_set(response_out.operation)) leaf_name_data.push_back(response_out.get_name_leafdata());
-    if (serial_num.is_set || is_set(serial_num.operation)) leaf_name_data.push_back(serial_num.get_name_leafdata());
+    if (error_status.is_set || is_set(error_status.yfilter)) leaf_name_data.push_back(error_status.get_name_leafdata());
+    if (input_q.is_set || is_set(input_q.yfilter)) leaf_name_data.push_back(input_q.get_name_leafdata());
+    if (nms.is_set || is_set(nms.yfilter)) leaf_name_data.push_back(nms.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (output_q.is_set || is_set(output_q.yfilter)) leaf_name_data.push_back(output_q.get_name_leafdata());
+    if (pdu_type.is_set || is_set(pdu_type.yfilter)) leaf_name_data.push_back(pdu_type.get_name_leafdata());
+    if (pending_q.is_set || is_set(pending_q.yfilter)) leaf_name_data.push_back(pending_q.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (port_xr.is_set || is_set(port_xr.yfilter)) leaf_name_data.push_back(port_xr.get_name_leafdata());
+    if (req_id.is_set || is_set(req_id.yfilter)) leaf_name_data.push_back(req_id.get_name_leafdata());
+    if (request_id.is_set || is_set(request_id.yfilter)) leaf_name_data.push_back(request_id.get_name_leafdata());
+    if (response_out.is_set || is_set(response_out.yfilter)) leaf_name_data.push_back(response_out.get_name_leafdata());
+    if (serial_num.is_set || is_set(serial_num.yfilter)) leaf_name_data.push_back(serial_num.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5260,60 +6589,149 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SerialNumbers:
     return children;
 }
 
-void Snmp::Information::SerialNumbers::SerialNumber::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::SerialNumbers::SerialNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error-status")
     {
         error_status = value;
+        error_status.value_namespace = name_space;
+        error_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-q")
     {
         input_q = value;
+        input_q.value_namespace = name_space;
+        input_q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nms")
     {
         nms = value;
+        nms.value_namespace = name_space;
+        nms.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-q")
     {
         output_q = value;
+        output_q.value_namespace = name_space;
+        output_q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pdu-type")
     {
         pdu_type = value;
+        pdu_type.value_namespace = name_space;
+        pdu_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pending-q")
     {
         pending_q = value;
+        pending_q.value_namespace = name_space;
+        pending_q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port")
     {
         port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-xr")
     {
         port_xr = value;
+        port_xr.value_namespace = name_space;
+        port_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "req-id")
     {
         req_id = value;
+        req_id.value_namespace = name_space;
+        req_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-id")
     {
         request_id = value;
+        request_id.value_namespace = name_space;
+        request_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "response-out")
     {
         response_out = value;
+        response_out.value_namespace = name_space;
+        response_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-num")
     {
         serial_num = value;
+        serial_num.value_namespace = name_space;
+        serial_num.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::SerialNumbers::SerialNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-status")
+    {
+        error_status.yfilter = yfilter;
+    }
+    if(value_path == "input-q")
+    {
+        input_q.yfilter = yfilter;
+    }
+    if(value_path == "nms")
+    {
+        nms.yfilter = yfilter;
+    }
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "output-q")
+    {
+        output_q.yfilter = yfilter;
+    }
+    if(value_path == "pdu-type")
+    {
+        pdu_type.yfilter = yfilter;
+    }
+    if(value_path == "pending-q")
+    {
+        pending_q.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "port-xr")
+    {
+        port_xr.yfilter = yfilter;
+    }
+    if(value_path == "req-id")
+    {
+        req_id.yfilter = yfilter;
+    }
+    if(value_path == "request-id")
+    {
+        request_id.yfilter = yfilter;
+    }
+    if(value_path == "response-out")
+    {
+        response_out.yfilter = yfilter;
+    }
+    if(value_path == "serial-num")
+    {
+        serial_num.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::SerialNumbers::SerialNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-status" || name == "input-q" || name == "nms" || name == "number" || name == "output-q" || name == "pdu-type" || name == "pending-q" || name == "port" || name == "port-xr" || name == "req-id" || name == "request-id" || name == "response-out" || name == "serial-num")
+        return true;
+    return false;
 }
 
 Snmp::Information::DropNmsAddresses::DropNmsAddresses()
@@ -5342,7 +6760,7 @@ bool Snmp::Information::DropNmsAddresses::has_operation() const
         if(drop_nms_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::DropNmsAddresses::get_segment_path() const
@@ -5407,8 +6825,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::DropNmsAddress
     return children;
 }
 
-void Snmp::Information::DropNmsAddresses::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::DropNmsAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::DropNmsAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::DropNmsAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop-nms-address")
+        return true;
+    return false;
 }
 
 Snmp::Information::DropNmsAddresses::DropNmsAddress::DropNmsAddress()
@@ -5449,18 +6878,18 @@ bool Snmp::Information::DropNmsAddresses::DropNmsAddress::has_data() const
 
 bool Snmp::Information::DropNmsAddresses::DropNmsAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nms_addr.operation)
-	|| is_set(aipc_count.operation)
-	|| is_set(duplicate_count.operation)
-	|| is_set(encode_count.operation)
-	|| is_set(incoming_q_count.operation)
-	|| is_set(internal_count.operation)
-	|| is_set(nms_address.operation)
-	|| is_set(overload_count.operation)
-	|| is_set(stack_count.operation)
-	|| is_set(threshold_incoming_q_count.operation)
-	|| is_set(timeout_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nms_addr.yfilter)
+	|| ydk::is_set(aipc_count.yfilter)
+	|| ydk::is_set(duplicate_count.yfilter)
+	|| ydk::is_set(encode_count.yfilter)
+	|| ydk::is_set(incoming_q_count.yfilter)
+	|| ydk::is_set(internal_count.yfilter)
+	|| ydk::is_set(nms_address.yfilter)
+	|| ydk::is_set(overload_count.yfilter)
+	|| ydk::is_set(stack_count.yfilter)
+	|| ydk::is_set(threshold_incoming_q_count.yfilter)
+	|| ydk::is_set(timeout_count.yfilter);
 }
 
 std::string Snmp::Information::DropNmsAddresses::DropNmsAddress::get_segment_path() const
@@ -5486,17 +6915,17 @@ const EntityPath Snmp::Information::DropNmsAddresses::DropNmsAddress::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nms_addr.is_set || is_set(nms_addr.operation)) leaf_name_data.push_back(nms_addr.get_name_leafdata());
-    if (aipc_count.is_set || is_set(aipc_count.operation)) leaf_name_data.push_back(aipc_count.get_name_leafdata());
-    if (duplicate_count.is_set || is_set(duplicate_count.operation)) leaf_name_data.push_back(duplicate_count.get_name_leafdata());
-    if (encode_count.is_set || is_set(encode_count.operation)) leaf_name_data.push_back(encode_count.get_name_leafdata());
-    if (incoming_q_count.is_set || is_set(incoming_q_count.operation)) leaf_name_data.push_back(incoming_q_count.get_name_leafdata());
-    if (internal_count.is_set || is_set(internal_count.operation)) leaf_name_data.push_back(internal_count.get_name_leafdata());
-    if (nms_address.is_set || is_set(nms_address.operation)) leaf_name_data.push_back(nms_address.get_name_leafdata());
-    if (overload_count.is_set || is_set(overload_count.operation)) leaf_name_data.push_back(overload_count.get_name_leafdata());
-    if (stack_count.is_set || is_set(stack_count.operation)) leaf_name_data.push_back(stack_count.get_name_leafdata());
-    if (threshold_incoming_q_count.is_set || is_set(threshold_incoming_q_count.operation)) leaf_name_data.push_back(threshold_incoming_q_count.get_name_leafdata());
-    if (timeout_count.is_set || is_set(timeout_count.operation)) leaf_name_data.push_back(timeout_count.get_name_leafdata());
+    if (nms_addr.is_set || is_set(nms_addr.yfilter)) leaf_name_data.push_back(nms_addr.get_name_leafdata());
+    if (aipc_count.is_set || is_set(aipc_count.yfilter)) leaf_name_data.push_back(aipc_count.get_name_leafdata());
+    if (duplicate_count.is_set || is_set(duplicate_count.yfilter)) leaf_name_data.push_back(duplicate_count.get_name_leafdata());
+    if (encode_count.is_set || is_set(encode_count.yfilter)) leaf_name_data.push_back(encode_count.get_name_leafdata());
+    if (incoming_q_count.is_set || is_set(incoming_q_count.yfilter)) leaf_name_data.push_back(incoming_q_count.get_name_leafdata());
+    if (internal_count.is_set || is_set(internal_count.yfilter)) leaf_name_data.push_back(internal_count.get_name_leafdata());
+    if (nms_address.is_set || is_set(nms_address.yfilter)) leaf_name_data.push_back(nms_address.get_name_leafdata());
+    if (overload_count.is_set || is_set(overload_count.yfilter)) leaf_name_data.push_back(overload_count.get_name_leafdata());
+    if (stack_count.is_set || is_set(stack_count.yfilter)) leaf_name_data.push_back(stack_count.get_name_leafdata());
+    if (threshold_incoming_q_count.is_set || is_set(threshold_incoming_q_count.yfilter)) leaf_name_data.push_back(threshold_incoming_q_count.get_name_leafdata());
+    if (timeout_count.is_set || is_set(timeout_count.yfilter)) leaf_name_data.push_back(timeout_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5515,52 +6944,129 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::DropNmsAddress
     return children;
 }
 
-void Snmp::Information::DropNmsAddresses::DropNmsAddress::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::DropNmsAddresses::DropNmsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nms-addr")
     {
         nms_addr = value;
+        nms_addr.value_namespace = name_space;
+        nms_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aipc-count")
     {
         aipc_count = value;
+        aipc_count.value_namespace = name_space;
+        aipc_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicate-count")
     {
         duplicate_count = value;
+        duplicate_count.value_namespace = name_space;
+        duplicate_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encode-count")
     {
         encode_count = value;
+        encode_count.value_namespace = name_space;
+        encode_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-q-count")
     {
         incoming_q_count = value;
+        incoming_q_count.value_namespace = name_space;
+        incoming_q_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal-count")
     {
         internal_count = value;
+        internal_count.value_namespace = name_space;
+        internal_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nms-address")
     {
         nms_address = value;
+        nms_address.value_namespace = name_space;
+        nms_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overload-count")
     {
         overload_count = value;
+        overload_count.value_namespace = name_space;
+        overload_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stack-count")
     {
         stack_count = value;
+        stack_count.value_namespace = name_space;
+        stack_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-incoming-q-count")
     {
         threshold_incoming_q_count = value;
+        threshold_incoming_q_count.value_namespace = name_space;
+        threshold_incoming_q_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-count")
     {
         timeout_count = value;
+        timeout_count.value_namespace = name_space;
+        timeout_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::DropNmsAddresses::DropNmsAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nms-addr")
+    {
+        nms_addr.yfilter = yfilter;
+    }
+    if(value_path == "aipc-count")
+    {
+        aipc_count.yfilter = yfilter;
+    }
+    if(value_path == "duplicate-count")
+    {
+        duplicate_count.yfilter = yfilter;
+    }
+    if(value_path == "encode-count")
+    {
+        encode_count.yfilter = yfilter;
+    }
+    if(value_path == "incoming-q-count")
+    {
+        incoming_q_count.yfilter = yfilter;
+    }
+    if(value_path == "internal-count")
+    {
+        internal_count.yfilter = yfilter;
+    }
+    if(value_path == "nms-address")
+    {
+        nms_address.yfilter = yfilter;
+    }
+    if(value_path == "overload-count")
+    {
+        overload_count.yfilter = yfilter;
+    }
+    if(value_path == "stack-count")
+    {
+        stack_count.yfilter = yfilter;
+    }
+    if(value_path == "threshold-incoming-q-count")
+    {
+        threshold_incoming_q_count.yfilter = yfilter;
+    }
+    if(value_path == "timeout-count")
+    {
+        timeout_count.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::DropNmsAddresses::DropNmsAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nms-addr" || name == "aipc-count" || name == "duplicate-count" || name == "encode-count" || name == "incoming-q-count" || name == "internal-count" || name == "nms-address" || name == "overload-count" || name == "stack-count" || name == "threshold-incoming-q-count" || name == "timeout-count")
+        return true;
+    return false;
 }
 
 Snmp::Information::Views::Views()
@@ -5589,7 +7095,7 @@ bool Snmp::Information::Views::has_operation() const
         if(view[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::Views::get_segment_path() const
@@ -5654,8 +7160,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Views::get_chi
     return children;
 }
 
-void Snmp::Information::Views::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Views::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::Views::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::Views::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "view")
+        return true;
+    return false;
 }
 
 Snmp::Information::Views::View::View()
@@ -5686,8 +7203,8 @@ bool Snmp::Information::Views::View::has_operation() const
         if(view_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Snmp::Information::Views::View::get_segment_path() const
@@ -5713,7 +7230,7 @@ const EntityPath Snmp::Information::Views::View::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5753,12 +7270,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Views::View::g
     return children;
 }
 
-void Snmp::Information::Views::View::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Views::View::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Views::View::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Views::View::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "view-information" || name == "name")
+        return true;
+    return false;
 }
 
 Snmp::Information::Views::View::ViewInformation::ViewInformation()
@@ -5785,11 +7319,11 @@ bool Snmp::Information::Views::View::ViewInformation::has_data() const
 
 bool Snmp::Information::Views::View::ViewInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(object_id.operation)
-	|| is_set(snmp_view_family_status.operation)
-	|| is_set(snmp_view_family_storage_type.operation)
-	|| is_set(snmp_view_family_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object_id.yfilter)
+	|| ydk::is_set(snmp_view_family_status.yfilter)
+	|| ydk::is_set(snmp_view_family_storage_type.yfilter)
+	|| ydk::is_set(snmp_view_family_type.yfilter);
 }
 
 std::string Snmp::Information::Views::View::ViewInformation::get_segment_path() const
@@ -5815,10 +7349,10 @@ const EntityPath Snmp::Information::Views::View::ViewInformation::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object_id.is_set || is_set(object_id.operation)) leaf_name_data.push_back(object_id.get_name_leafdata());
-    if (snmp_view_family_status.is_set || is_set(snmp_view_family_status.operation)) leaf_name_data.push_back(snmp_view_family_status.get_name_leafdata());
-    if (snmp_view_family_storage_type.is_set || is_set(snmp_view_family_storage_type.operation)) leaf_name_data.push_back(snmp_view_family_storage_type.get_name_leafdata());
-    if (snmp_view_family_type.is_set || is_set(snmp_view_family_type.operation)) leaf_name_data.push_back(snmp_view_family_type.get_name_leafdata());
+    if (object_id.is_set || is_set(object_id.yfilter)) leaf_name_data.push_back(object_id.get_name_leafdata());
+    if (snmp_view_family_status.is_set || is_set(snmp_view_family_status.yfilter)) leaf_name_data.push_back(snmp_view_family_status.get_name_leafdata());
+    if (snmp_view_family_storage_type.is_set || is_set(snmp_view_family_storage_type.yfilter)) leaf_name_data.push_back(snmp_view_family_storage_type.get_name_leafdata());
+    if (snmp_view_family_type.is_set || is_set(snmp_view_family_type.yfilter)) leaf_name_data.push_back(snmp_view_family_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5837,24 +7371,59 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Views::View::V
     return children;
 }
 
-void Snmp::Information::Views::View::ViewInformation::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Views::View::ViewInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-id")
     {
         object_id = value;
+        object_id.value_namespace = name_space;
+        object_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-view-family-status")
     {
         snmp_view_family_status = value;
+        snmp_view_family_status.value_namespace = name_space;
+        snmp_view_family_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-view-family-storage-type")
     {
         snmp_view_family_storage_type = value;
+        snmp_view_family_storage_type.value_namespace = name_space;
+        snmp_view_family_storage_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-view-family-type")
     {
         snmp_view_family_type = value;
+        snmp_view_family_type.value_namespace = name_space;
+        snmp_view_family_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Views::View::ViewInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-id")
+    {
+        object_id.yfilter = yfilter;
+    }
+    if(value_path == "snmp-view-family-status")
+    {
+        snmp_view_family_status.yfilter = yfilter;
+    }
+    if(value_path == "snmp-view-family-storage-type")
+    {
+        snmp_view_family_storage_type.yfilter = yfilter;
+    }
+    if(value_path == "snmp-view-family-type")
+    {
+        snmp_view_family_type.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Views::View::ViewInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-id" || name == "snmp-view-family-status" || name == "snmp-view-family-storage-type" || name == "snmp-view-family-type")
+        return true;
+    return false;
 }
 
 Snmp::Information::SystemDescr::SystemDescr()
@@ -5875,8 +7444,8 @@ bool Snmp::Information::SystemDescr::has_data() const
 
 bool Snmp::Information::SystemDescr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(sys_descr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(sys_descr.yfilter);
 }
 
 std::string Snmp::Information::SystemDescr::get_segment_path() const
@@ -5902,7 +7471,7 @@ const EntityPath Snmp::Information::SystemDescr::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sys_descr.is_set || is_set(sys_descr.operation)) leaf_name_data.push_back(sys_descr.get_name_leafdata());
+    if (sys_descr.is_set || is_set(sys_descr.yfilter)) leaf_name_data.push_back(sys_descr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5921,12 +7490,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SystemDescr::g
     return children;
 }
 
-void Snmp::Information::SystemDescr::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::SystemDescr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sys-descr")
     {
         sys_descr = value;
+        sys_descr.value_namespace = name_space;
+        sys_descr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::SystemDescr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sys-descr")
+    {
+        sys_descr.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::SystemDescr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sys-descr")
+        return true;
+    return false;
 }
 
 Snmp::Information::Tables::Tables()
@@ -5953,7 +7539,7 @@ bool Snmp::Information::Tables::has_data() const
 
 bool Snmp::Information::Tables::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (groups !=  nullptr && groups->has_operation())
 	|| (user_engine_ids !=  nullptr && user_engine_ids->has_operation());
 }
@@ -6027,8 +7613,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::get_ch
     return children;
 }
 
-void Snmp::Information::Tables::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Tables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::Tables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::Tables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groups" || name == "user-engine-ids")
+        return true;
+    return false;
 }
 
 Snmp::Information::Tables::Groups::Groups()
@@ -6057,7 +7654,7 @@ bool Snmp::Information::Tables::Groups::has_operation() const
         if(group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::Tables::Groups::get_segment_path() const
@@ -6122,8 +7719,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups
     return children;
 }
 
-void Snmp::Information::Tables::Groups::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Tables::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::Tables::Groups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::Tables::Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
 }
 
 Snmp::Information::Tables::Groups::Group::Group()
@@ -6149,8 +7757,8 @@ bool Snmp::Information::Tables::Groups::Group::has_data() const
 
 bool Snmp::Information::Tables::Groups::Group::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (group_informations !=  nullptr && group_informations->has_operation());
 }
 
@@ -6177,7 +7785,7 @@ const EntityPath Snmp::Information::Tables::Groups::Group::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6210,12 +7818,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups
     return children;
 }
 
-void Snmp::Information::Tables::Groups::Group::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Tables::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Tables::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Tables::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-informations" || name == "name")
+        return true;
+    return false;
 }
 
 Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformations()
@@ -6244,7 +7869,7 @@ bool Snmp::Information::Tables::Groups::Group::GroupInformations::has_operation(
         if(group_information[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::Tables::Groups::Group::GroupInformations::get_segment_path() const
@@ -6309,8 +7934,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups
     return children;
 }
 
-void Snmp::Information::Tables::Groups::Group::GroupInformations::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Tables::Groups::Group::GroupInformations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::Tables::Groups::Group::GroupInformations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::Tables::Groups::Group::GroupInformations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-information")
+        return true;
+    return false;
 }
 
 Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::GroupInformation()
@@ -6341,13 +7977,13 @@ bool Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformati
 
 bool Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(level.operation)
-	|| is_set(modelnumber.operation)
-	|| is_set(vacm_access_notify_view_name.operation)
-	|| is_set(vacm_access_read_view_name.operation)
-	|| is_set(vacm_access_status.operation)
-	|| is_set(vacm_access_write_view_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(modelnumber.yfilter)
+	|| ydk::is_set(vacm_access_notify_view_name.yfilter)
+	|| ydk::is_set(vacm_access_read_view_name.yfilter)
+	|| ydk::is_set(vacm_access_status.yfilter)
+	|| ydk::is_set(vacm_access_write_view_name.yfilter);
 }
 
 std::string Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::get_segment_path() const
@@ -6373,12 +8009,12 @@ const EntityPath Snmp::Information::Tables::Groups::Group::GroupInformations::Gr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (modelnumber.is_set || is_set(modelnumber.operation)) leaf_name_data.push_back(modelnumber.get_name_leafdata());
-    if (vacm_access_notify_view_name.is_set || is_set(vacm_access_notify_view_name.operation)) leaf_name_data.push_back(vacm_access_notify_view_name.get_name_leafdata());
-    if (vacm_access_read_view_name.is_set || is_set(vacm_access_read_view_name.operation)) leaf_name_data.push_back(vacm_access_read_view_name.get_name_leafdata());
-    if (vacm_access_status.is_set || is_set(vacm_access_status.operation)) leaf_name_data.push_back(vacm_access_status.get_name_leafdata());
-    if (vacm_access_write_view_name.is_set || is_set(vacm_access_write_view_name.operation)) leaf_name_data.push_back(vacm_access_write_view_name.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (modelnumber.is_set || is_set(modelnumber.yfilter)) leaf_name_data.push_back(modelnumber.get_name_leafdata());
+    if (vacm_access_notify_view_name.is_set || is_set(vacm_access_notify_view_name.yfilter)) leaf_name_data.push_back(vacm_access_notify_view_name.get_name_leafdata());
+    if (vacm_access_read_view_name.is_set || is_set(vacm_access_read_view_name.yfilter)) leaf_name_data.push_back(vacm_access_read_view_name.get_name_leafdata());
+    if (vacm_access_status.is_set || is_set(vacm_access_status.yfilter)) leaf_name_data.push_back(vacm_access_status.get_name_leafdata());
+    if (vacm_access_write_view_name.is_set || is_set(vacm_access_write_view_name.yfilter)) leaf_name_data.push_back(vacm_access_write_view_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6397,32 +8033,79 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::Groups
     return children;
 }
 
-void Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
         level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "modelnumber")
     {
         modelnumber = value;
+        modelnumber.value_namespace = name_space;
+        modelnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vacm-access-notify-view-name")
     {
         vacm_access_notify_view_name = value;
+        vacm_access_notify_view_name.value_namespace = name_space;
+        vacm_access_notify_view_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vacm-access-read-view-name")
     {
         vacm_access_read_view_name = value;
+        vacm_access_read_view_name.value_namespace = name_space;
+        vacm_access_read_view_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vacm-access-status")
     {
         vacm_access_status = value;
+        vacm_access_status.value_namespace = name_space;
+        vacm_access_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vacm-access-write-view-name")
     {
         vacm_access_write_view_name = value;
+        vacm_access_write_view_name.value_namespace = name_space;
+        vacm_access_write_view_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "modelnumber")
+    {
+        modelnumber.yfilter = yfilter;
+    }
+    if(value_path == "vacm-access-notify-view-name")
+    {
+        vacm_access_notify_view_name.yfilter = yfilter;
+    }
+    if(value_path == "vacm-access-read-view-name")
+    {
+        vacm_access_read_view_name.yfilter = yfilter;
+    }
+    if(value_path == "vacm-access-status")
+    {
+        vacm_access_status.yfilter = yfilter;
+    }
+    if(value_path == "vacm-access-write-view-name")
+    {
+        vacm_access_write_view_name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Tables::Groups::Group::GroupInformations::GroupInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "modelnumber" || name == "vacm-access-notify-view-name" || name == "vacm-access-read-view-name" || name == "vacm-access-status" || name == "vacm-access-write-view-name")
+        return true;
+    return false;
 }
 
 Snmp::Information::Tables::UserEngineIds::UserEngineIds()
@@ -6451,7 +8134,7 @@ bool Snmp::Information::Tables::UserEngineIds::has_operation() const
         if(user_engine_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Information::Tables::UserEngineIds::get_segment_path() const
@@ -6516,8 +8199,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::UserEn
     return children;
 }
 
-void Snmp::Information::Tables::UserEngineIds::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Tables::UserEngineIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Information::Tables::UserEngineIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Information::Tables::UserEngineIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user-engine-id")
+        return true;
+    return false;
 }
 
 Snmp::Information::Tables::UserEngineIds::UserEngineId::UserEngineId()
@@ -6548,8 +8242,8 @@ bool Snmp::Information::Tables::UserEngineIds::UserEngineId::has_operation() con
         if(user_name[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(engine_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(engine_id.yfilter);
 }
 
 std::string Snmp::Information::Tables::UserEngineIds::UserEngineId::get_segment_path() const
@@ -6575,7 +8269,7 @@ const EntityPath Snmp::Information::Tables::UserEngineIds::UserEngineId::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (engine_id.is_set || is_set(engine_id.operation)) leaf_name_data.push_back(engine_id.get_name_leafdata());
+    if (engine_id.is_set || is_set(engine_id.yfilter)) leaf_name_data.push_back(engine_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6615,12 +8309,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::UserEn
     return children;
 }
 
-void Snmp::Information::Tables::UserEngineIds::UserEngineId::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Tables::UserEngineIds::UserEngineId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "engine-id")
     {
         engine_id = value;
+        engine_id.value_namespace = name_space;
+        engine_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Tables::UserEngineIds::UserEngineId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "engine-id")
+    {
+        engine_id.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Tables::UserEngineIds::UserEngineId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user-name" || name == "engine-id")
+        return true;
+    return false;
 }
 
 Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::UserName()
@@ -6645,10 +8356,10 @@ bool Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::has_data(
 
 bool Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(user_name.operation)
-	|| is_set(usm_user_status.operation)
-	|| is_set(usm_user_storage_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(user_name.yfilter)
+	|| ydk::is_set(usm_user_status.yfilter)
+	|| ydk::is_set(usm_user_storage_type.yfilter);
 }
 
 std::string Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::get_segment_path() const
@@ -6674,9 +8385,9 @@ const EntityPath Snmp::Information::Tables::UserEngineIds::UserEngineId::UserNam
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (user_name.is_set || is_set(user_name.operation)) leaf_name_data.push_back(user_name.get_name_leafdata());
-    if (usm_user_status.is_set || is_set(usm_user_status.operation)) leaf_name_data.push_back(usm_user_status.get_name_leafdata());
-    if (usm_user_storage_type.is_set || is_set(usm_user_storage_type.operation)) leaf_name_data.push_back(usm_user_storage_type.get_name_leafdata());
+    if (user_name.is_set || is_set(user_name.yfilter)) leaf_name_data.push_back(user_name.get_name_leafdata());
+    if (usm_user_status.is_set || is_set(usm_user_status.yfilter)) leaf_name_data.push_back(usm_user_status.get_name_leafdata());
+    if (usm_user_storage_type.is_set || is_set(usm_user_storage_type.yfilter)) leaf_name_data.push_back(usm_user_storage_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6695,20 +8406,49 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::Tables::UserEn
     return children;
 }
 
-void Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "user-name")
     {
         user_name = value;
+        user_name.value_namespace = name_space;
+        user_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "usm-user-status")
     {
         usm_user_status = value;
+        usm_user_status.value_namespace = name_space;
+        usm_user_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "usm-user-storage-type")
     {
         usm_user_storage_type = value;
+        usm_user_storage_type.value_namespace = name_space;
+        usm_user_storage_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "user-name")
+    {
+        user_name.yfilter = yfilter;
+    }
+    if(value_path == "usm-user-status")
+    {
+        usm_user_status.yfilter = yfilter;
+    }
+    if(value_path == "usm-user-storage-type")
+    {
+        usm_user_storage_type.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::Tables::UserEngineIds::UserEngineId::UserName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user-name" || name == "usm-user-status" || name == "usm-user-storage-type")
+        return true;
+    return false;
 }
 
 Snmp::Information::SystemOid::SystemOid()
@@ -6729,8 +8469,8 @@ bool Snmp::Information::SystemOid::has_data() const
 
 bool Snmp::Information::SystemOid::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(sys_obj_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(sys_obj_id.yfilter);
 }
 
 std::string Snmp::Information::SystemOid::get_segment_path() const
@@ -6756,7 +8496,7 @@ const EntityPath Snmp::Information::SystemOid::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sys_obj_id.is_set || is_set(sys_obj_id.operation)) leaf_name_data.push_back(sys_obj_id.get_name_leafdata());
+    if (sys_obj_id.is_set || is_set(sys_obj_id.yfilter)) leaf_name_data.push_back(sys_obj_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6775,12 +8515,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::SystemOid::get
     return children;
 }
 
-void Snmp::Information::SystemOid::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::SystemOid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sys-obj-id")
     {
         sys_obj_id = value;
+        sys_obj_id.value_namespace = name_space;
+        sys_obj_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::SystemOid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sys-obj-id")
+    {
+        sys_obj_id.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::SystemOid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sys-obj-id")
+        return true;
+    return false;
 }
 
 Snmp::Information::TrapQueue::TrapQueue()
@@ -6807,11 +8564,11 @@ bool Snmp::Information::TrapQueue::has_data() const
 
 bool Snmp::Information::TrapQueue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(trap_avg.operation)
-	|| is_set(trap_max.operation)
-	|| is_set(trap_min.operation)
-	|| is_set(trap_q.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(trap_avg.yfilter)
+	|| ydk::is_set(trap_max.yfilter)
+	|| ydk::is_set(trap_min.yfilter)
+	|| ydk::is_set(trap_q.yfilter);
 }
 
 std::string Snmp::Information::TrapQueue::get_segment_path() const
@@ -6837,10 +8594,10 @@ const EntityPath Snmp::Information::TrapQueue::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (trap_avg.is_set || is_set(trap_avg.operation)) leaf_name_data.push_back(trap_avg.get_name_leafdata());
-    if (trap_max.is_set || is_set(trap_max.operation)) leaf_name_data.push_back(trap_max.get_name_leafdata());
-    if (trap_min.is_set || is_set(trap_min.operation)) leaf_name_data.push_back(trap_min.get_name_leafdata());
-    if (trap_q.is_set || is_set(trap_q.operation)) leaf_name_data.push_back(trap_q.get_name_leafdata());
+    if (trap_avg.is_set || is_set(trap_avg.yfilter)) leaf_name_data.push_back(trap_avg.get_name_leafdata());
+    if (trap_max.is_set || is_set(trap_max.yfilter)) leaf_name_data.push_back(trap_max.get_name_leafdata());
+    if (trap_min.is_set || is_set(trap_min.yfilter)) leaf_name_data.push_back(trap_min.get_name_leafdata());
+    if (trap_q.is_set || is_set(trap_q.yfilter)) leaf_name_data.push_back(trap_q.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6859,24 +8616,59 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Information::TrapQueue::get
     return children;
 }
 
-void Snmp::Information::TrapQueue::set_value(const std::string & value_path, std::string value)
+void Snmp::Information::TrapQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "trap-avg")
     {
         trap_avg = value;
+        trap_avg.value_namespace = name_space;
+        trap_avg.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-max")
     {
         trap_max = value;
+        trap_max.value_namespace = name_space;
+        trap_max.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-min")
     {
         trap_min = value;
+        trap_min.value_namespace = name_space;
+        trap_min.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap-q")
     {
         trap_q = value;
+        trap_q.value_namespace = name_space;
+        trap_q.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Information::TrapQueue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "trap-avg")
+    {
+        trap_avg.yfilter = yfilter;
+    }
+    if(value_path == "trap-max")
+    {
+        trap_max.yfilter = yfilter;
+    }
+    if(value_path == "trap-min")
+    {
+        trap_min.yfilter = yfilter;
+    }
+    if(value_path == "trap-q")
+    {
+        trap_q.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Information::TrapQueue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-avg" || name == "trap-max" || name == "trap-min" || name == "trap-q")
+        return true;
+    return false;
 }
 
 Snmp::Interfaces::Interfaces()
@@ -6905,7 +8697,7 @@ bool Snmp::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Interfaces::get_segment_path() const
@@ -6970,8 +8762,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Interfaces::get_children() 
     return children;
 }
 
-void Snmp::Interfaces::set_value(const std::string & value_path, std::string value)
+void Snmp::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Snmp::Interfaces::Interface::Interface()
@@ -6994,9 +8797,9 @@ bool Snmp::Interfaces::Interface::has_data() const
 
 bool Snmp::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(interface_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(interface_index.yfilter);
 }
 
 std::string Snmp::Interfaces::Interface::get_segment_path() const
@@ -7022,8 +8825,8 @@ const EntityPath Snmp::Interfaces::Interface::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (interface_index.is_set || is_set(interface_index.operation)) leaf_name_data.push_back(interface_index.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (interface_index.is_set || is_set(interface_index.yfilter)) leaf_name_data.push_back(interface_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7042,16 +8845,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Interfaces::Interface::get_
     return children;
 }
 
-void Snmp::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Snmp::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-index")
     {
         interface_index = value;
+        interface_index.value_namespace = name_space;
+        interface_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "interface-index")
+    {
+        interface_index.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "interface-index")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::Correlator()
@@ -7086,7 +8912,7 @@ bool Snmp::Correlator::has_data() const
 
 bool Snmp::Correlator::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (buffer_status !=  nullptr && buffer_status->has_operation())
 	|| (rule_details !=  nullptr && rule_details->has_operation())
 	|| (rule_set_details !=  nullptr && rule_set_details->has_operation())
@@ -7190,8 +9016,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::get_children() 
     return children;
 }
 
-void Snmp::Correlator::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Correlator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Correlator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "buffer-status" || name == "rule-details" || name == "rule-set-details" || name == "traps")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleDetails::RuleDetails()
@@ -7220,7 +9057,7 @@ bool Snmp::Correlator::RuleDetails::has_operation() const
         if(rule_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Correlator::RuleDetails::get_segment_path() const
@@ -7285,8 +9122,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::ge
     return children;
 }
 
-void Snmp::Correlator::RuleDetails::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Correlator::RuleDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Correlator::RuleDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-detail")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::RuleDetail()
@@ -7338,9 +9186,9 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::has_operation() const
         if(non_rootcaus[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(rule_name.operation)
-	|| is_set(timeout.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rule_name.yfilter)
+	|| ydk::is_set(timeout.yfilter)
 	|| (root_cause !=  nullptr && root_cause->has_operation())
 	|| (rule_summary !=  nullptr && rule_summary->has_operation());
 }
@@ -7368,8 +9216,8 @@ const EntityPath Snmp::Correlator::RuleDetails::RuleDetail::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rule_name.is_set || is_set(rule_name.operation)) leaf_name_data.push_back(rule_name.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7458,16 +9306,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     return children;
 }
 
-void Snmp::Correlator::RuleDetails::RuleDetail::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleDetails::RuleDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rule-name")
     {
         rule_name = value;
+        rule_name.value_namespace = name_space;
+        rule_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleDetails::RuleDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule-name")
+    {
+        rule_name.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleDetails::RuleDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "apply-host" || name == "non-rootcaus" || name == "root-cause" || name == "rule-summary" || name == "rule-name" || name == "timeout")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::RuleSummary()
@@ -7492,10 +9363,10 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::has_data() const
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(buffered_traps_count.operation)
-	|| is_set(rule_name.operation)
-	|| is_set(rule_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(buffered_traps_count.yfilter)
+	|| ydk::is_set(rule_name.yfilter)
+	|| ydk::is_set(rule_state.yfilter);
 }
 
 std::string Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::get_segment_path() const
@@ -7521,9 +9392,9 @@ const EntityPath Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (buffered_traps_count.is_set || is_set(buffered_traps_count.operation)) leaf_name_data.push_back(buffered_traps_count.get_name_leafdata());
-    if (rule_name.is_set || is_set(rule_name.operation)) leaf_name_data.push_back(rule_name.get_name_leafdata());
-    if (rule_state.is_set || is_set(rule_state.operation)) leaf_name_data.push_back(rule_state.get_name_leafdata());
+    if (buffered_traps_count.is_set || is_set(buffered_traps_count.yfilter)) leaf_name_data.push_back(buffered_traps_count.get_name_leafdata());
+    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
+    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7542,20 +9413,49 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     return children;
 }
 
-void Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "buffered-traps-count")
     {
         buffered_traps_count = value;
+        buffered_traps_count.value_namespace = name_space;
+        buffered_traps_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rule-name")
     {
         rule_name = value;
+        rule_name.value_namespace = name_space;
+        rule_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rule-state")
     {
         rule_state = value;
+        rule_state.value_namespace = name_space;
+        rule_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "buffered-traps-count")
+    {
+        buffered_traps_count.yfilter = yfilter;
+    }
+    if(value_path == "rule-name")
+    {
+        rule_name.yfilter = yfilter;
+    }
+    if(value_path == "rule-state")
+    {
+        rule_state.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleDetails::RuleDetail::RuleSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "buffered-traps-count" || name == "rule-name" || name == "rule-state")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::RootCause::RootCause()
@@ -7586,8 +9486,8 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::has_operation() const
         if(var_bind[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(oid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(oid.yfilter);
 }
 
 std::string Snmp::Correlator::RuleDetails::RuleDetail::RootCause::get_segment_path() const
@@ -7613,7 +9513,7 @@ const EntityPath Snmp::Correlator::RuleDetails::RuleDetail::RootCause::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oid.is_set || is_set(oid.operation)) leaf_name_data.push_back(oid.get_name_leafdata());
+    if (oid.is_set || is_set(oid.yfilter)) leaf_name_data.push_back(oid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7653,12 +9553,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     return children;
 }
 
-void Snmp::Correlator::RuleDetails::RuleDetail::RootCause::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleDetails::RuleDetail::RootCause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
         oid = value;
+        oid.value_namespace = name_space;
+        oid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleDetails::RuleDetail::RootCause::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oid")
+    {
+        oid.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "var-bind" || name == "oid")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::VarBind()
@@ -7683,10 +9600,10 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::has_data() c
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(match_type.operation)
-	|| is_set(oid.operation)
-	|| is_set(reg_exp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(match_type.yfilter)
+	|| ydk::is_set(oid.yfilter)
+	|| ydk::is_set(reg_exp.yfilter);
 }
 
 std::string Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::get_segment_path() const
@@ -7712,9 +9629,9 @@ const EntityPath Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (match_type.is_set || is_set(match_type.operation)) leaf_name_data.push_back(match_type.get_name_leafdata());
-    if (oid.is_set || is_set(oid.operation)) leaf_name_data.push_back(oid.get_name_leafdata());
-    if (reg_exp.is_set || is_set(reg_exp.operation)) leaf_name_data.push_back(reg_exp.get_name_leafdata());
+    if (match_type.is_set || is_set(match_type.yfilter)) leaf_name_data.push_back(match_type.get_name_leafdata());
+    if (oid.is_set || is_set(oid.yfilter)) leaf_name_data.push_back(oid.get_name_leafdata());
+    if (reg_exp.is_set || is_set(reg_exp.yfilter)) leaf_name_data.push_back(reg_exp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7733,20 +9650,49 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     return children;
 }
 
-void Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "match-type")
     {
         match_type = value;
+        match_type.value_namespace = name_space;
+        match_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oid")
     {
         oid = value;
+        oid.value_namespace = name_space;
+        oid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp")
     {
         reg_exp = value;
+        reg_exp.value_namespace = name_space;
+        reg_exp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "match-type")
+    {
+        match_type.yfilter = yfilter;
+    }
+    if(value_path == "oid")
+    {
+        oid.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp")
+    {
+        reg_exp.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "match-type" || name == "oid" || name == "reg-exp")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::NonRootcaus()
@@ -7777,8 +9723,8 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::has_operation() con
         if(var_bind[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(oid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(oid.yfilter);
 }
 
 std::string Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::get_segment_path() const
@@ -7804,7 +9750,7 @@ const EntityPath Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oid.is_set || is_set(oid.operation)) leaf_name_data.push_back(oid.get_name_leafdata());
+    if (oid.is_set || is_set(oid.yfilter)) leaf_name_data.push_back(oid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7844,12 +9790,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     return children;
 }
 
-void Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
         oid = value;
+        oid.value_namespace = name_space;
+        oid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oid")
+    {
+        oid.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "var-bind" || name == "oid")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::VarBind()
@@ -7874,10 +9837,10 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::has_data()
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(match_type.operation)
-	|| is_set(oid.operation)
-	|| is_set(reg_exp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(match_type.yfilter)
+	|| ydk::is_set(oid.yfilter)
+	|| ydk::is_set(reg_exp.yfilter);
 }
 
 std::string Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::get_segment_path() const
@@ -7903,9 +9866,9 @@ const EntityPath Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (match_type.is_set || is_set(match_type.operation)) leaf_name_data.push_back(match_type.get_name_leafdata());
-    if (oid.is_set || is_set(oid.operation)) leaf_name_data.push_back(oid.get_name_leafdata());
-    if (reg_exp.is_set || is_set(reg_exp.operation)) leaf_name_data.push_back(reg_exp.get_name_leafdata());
+    if (match_type.is_set || is_set(match_type.yfilter)) leaf_name_data.push_back(match_type.get_name_leafdata());
+    if (oid.is_set || is_set(oid.yfilter)) leaf_name_data.push_back(oid.get_name_leafdata());
+    if (reg_exp.is_set || is_set(reg_exp.yfilter)) leaf_name_data.push_back(reg_exp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7924,20 +9887,49 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     return children;
 }
 
-void Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "match-type")
     {
         match_type = value;
+        match_type.value_namespace = name_space;
+        match_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oid")
     {
         oid = value;
+        oid.value_namespace = name_space;
+        oid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp")
     {
         reg_exp = value;
+        reg_exp.value_namespace = name_space;
+        reg_exp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "match-type")
+    {
+        match_type.yfilter = yfilter;
+    }
+    if(value_path == "oid")
+    {
+        oid.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp")
+    {
+        reg_exp.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "match-type" || name == "oid" || name == "reg-exp")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::ApplyHost()
@@ -7960,9 +9952,9 @@ bool Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::has_data() const
 
 bool Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation)
-	|| is_set(port.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(port.yfilter);
 }
 
 std::string Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::get_segment_path() const
@@ -7988,8 +9980,8 @@ const EntityPath Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8008,16 +10000,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleDetails::Ru
     return children;
 }
 
-void Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port")
     {
         port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address" || name == "port")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::BufferStatus::BufferStatus()
@@ -8040,9 +10055,9 @@ bool Snmp::Correlator::BufferStatus::has_data() const
 
 bool Snmp::Correlator::BufferStatus::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(configured_size.operation)
-	|| is_set(current_size.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(configured_size.yfilter)
+	|| ydk::is_set(current_size.yfilter);
 }
 
 std::string Snmp::Correlator::BufferStatus::get_segment_path() const
@@ -8068,8 +10083,8 @@ const EntityPath Snmp::Correlator::BufferStatus::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (configured_size.is_set || is_set(configured_size.operation)) leaf_name_data.push_back(configured_size.get_name_leafdata());
-    if (current_size.is_set || is_set(current_size.operation)) leaf_name_data.push_back(current_size.get_name_leafdata());
+    if (configured_size.is_set || is_set(configured_size.yfilter)) leaf_name_data.push_back(configured_size.get_name_leafdata());
+    if (current_size.is_set || is_set(current_size.yfilter)) leaf_name_data.push_back(current_size.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8088,16 +10103,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::BufferStatus::g
     return children;
 }
 
-void Snmp::Correlator::BufferStatus::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::BufferStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "configured-size")
     {
         configured_size = value;
+        configured_size.value_namespace = name_space;
+        configured_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "current-size")
     {
         current_size = value;
+        current_size.value_namespace = name_space;
+        current_size.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::BufferStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "configured-size")
+    {
+        configured_size.yfilter = yfilter;
+    }
+    if(value_path == "current-size")
+    {
+        current_size.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::BufferStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-size" || name == "current-size")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleSetDetails::RuleSetDetails()
@@ -8126,7 +10164,7 @@ bool Snmp::Correlator::RuleSetDetails::has_operation() const
         if(rule_set_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Correlator::RuleSetDetails::get_segment_path() const
@@ -8191,8 +10229,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleSetDetails:
     return children;
 }
 
-void Snmp::Correlator::RuleSetDetails::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleSetDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Correlator::RuleSetDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Correlator::RuleSetDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rule-set-detail")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleSetDetails::RuleSetDetail::RuleSetDetail()
@@ -8225,9 +10274,9 @@ bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::has_operation() const
         if(rules[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(rule_set_name.operation)
-	|| is_set(rule_set_name_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rule_set_name.yfilter)
+	|| ydk::is_set(rule_set_name_xr.yfilter);
 }
 
 std::string Snmp::Correlator::RuleSetDetails::RuleSetDetail::get_segment_path() const
@@ -8253,8 +10302,8 @@ const EntityPath Snmp::Correlator::RuleSetDetails::RuleSetDetail::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rule_set_name.is_set || is_set(rule_set_name.operation)) leaf_name_data.push_back(rule_set_name.get_name_leafdata());
-    if (rule_set_name_xr.is_set || is_set(rule_set_name_xr.operation)) leaf_name_data.push_back(rule_set_name_xr.get_name_leafdata());
+    if (rule_set_name.is_set || is_set(rule_set_name.yfilter)) leaf_name_data.push_back(rule_set_name.get_name_leafdata());
+    if (rule_set_name_xr.is_set || is_set(rule_set_name_xr.yfilter)) leaf_name_data.push_back(rule_set_name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8294,16 +10343,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleSetDetails:
     return children;
 }
 
-void Snmp::Correlator::RuleSetDetails::RuleSetDetail::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleSetDetails::RuleSetDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rule-set-name")
     {
         rule_set_name = value;
+        rule_set_name.value_namespace = name_space;
+        rule_set_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rule-set-name-xr")
     {
         rule_set_name_xr = value;
+        rule_set_name_xr.value_namespace = name_space;
+        rule_set_name_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleSetDetails::RuleSetDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rule-set-name")
+    {
+        rule_set_name.yfilter = yfilter;
+    }
+    if(value_path == "rule-set-name-xr")
+    {
+        rule_set_name_xr.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rules" || name == "rule-set-name" || name == "rule-set-name-xr")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::Rules()
@@ -8328,10 +10400,10 @@ bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::has_data() const
 
 bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(buffered_traps_count.operation)
-	|| is_set(rule_name.operation)
-	|| is_set(rule_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(buffered_traps_count.yfilter)
+	|| ydk::is_set(rule_name.yfilter)
+	|| ydk::is_set(rule_state.yfilter);
 }
 
 std::string Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::get_segment_path() const
@@ -8357,9 +10429,9 @@ const EntityPath Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (buffered_traps_count.is_set || is_set(buffered_traps_count.operation)) leaf_name_data.push_back(buffered_traps_count.get_name_leafdata());
-    if (rule_name.is_set || is_set(rule_name.operation)) leaf_name_data.push_back(rule_name.get_name_leafdata());
-    if (rule_state.is_set || is_set(rule_state.operation)) leaf_name_data.push_back(rule_state.get_name_leafdata());
+    if (buffered_traps_count.is_set || is_set(buffered_traps_count.yfilter)) leaf_name_data.push_back(buffered_traps_count.get_name_leafdata());
+    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
+    if (rule_state.is_set || is_set(rule_state.yfilter)) leaf_name_data.push_back(rule_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8378,20 +10450,49 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::RuleSetDetails:
     return children;
 }
 
-void Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "buffered-traps-count")
     {
         buffered_traps_count = value;
+        buffered_traps_count.value_namespace = name_space;
+        buffered_traps_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rule-name")
     {
         rule_name = value;
+        rule_name.value_namespace = name_space;
+        rule_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rule-state")
     {
         rule_state = value;
+        rule_state.value_namespace = name_space;
+        rule_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "buffered-traps-count")
+    {
+        buffered_traps_count.yfilter = yfilter;
+    }
+    if(value_path == "rule-name")
+    {
+        rule_name.yfilter = yfilter;
+    }
+    if(value_path == "rule-state")
+    {
+        rule_state.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "buffered-traps-count" || name == "rule-name" || name == "rule-state")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::Traps::Traps()
@@ -8420,7 +10521,7 @@ bool Snmp::Correlator::Traps::has_operation() const
         if(trap[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::Correlator::Traps::get_segment_path() const
@@ -8485,8 +10586,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::get_chil
     return children;
 }
 
-void Snmp::Correlator::Traps::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::Traps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::Correlator::Traps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::Correlator::Traps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::Traps::Trap::Trap()
@@ -8518,11 +10630,11 @@ bool Snmp::Correlator::Traps::Trap::has_data() const
 
 bool Snmp::Correlator::Traps::Trap::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entry_id.operation)
-	|| is_set(correlation_id.operation)
-	|| is_set(is_root_cause.operation)
-	|| is_set(rule_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(entry_id.yfilter)
+	|| ydk::is_set(correlation_id.yfilter)
+	|| ydk::is_set(is_root_cause.yfilter)
+	|| ydk::is_set(rule_name.yfilter)
 	|| (trap_info !=  nullptr && trap_info->has_operation());
 }
 
@@ -8549,10 +10661,10 @@ const EntityPath Snmp::Correlator::Traps::Trap::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entry_id.is_set || is_set(entry_id.operation)) leaf_name_data.push_back(entry_id.get_name_leafdata());
-    if (correlation_id.is_set || is_set(correlation_id.operation)) leaf_name_data.push_back(correlation_id.get_name_leafdata());
-    if (is_root_cause.is_set || is_set(is_root_cause.operation)) leaf_name_data.push_back(is_root_cause.get_name_leafdata());
-    if (rule_name.is_set || is_set(rule_name.operation)) leaf_name_data.push_back(rule_name.get_name_leafdata());
+    if (entry_id.is_set || is_set(entry_id.yfilter)) leaf_name_data.push_back(entry_id.get_name_leafdata());
+    if (correlation_id.is_set || is_set(correlation_id.yfilter)) leaf_name_data.push_back(correlation_id.get_name_leafdata());
+    if (is_root_cause.is_set || is_set(is_root_cause.yfilter)) leaf_name_data.push_back(is_root_cause.get_name_leafdata());
+    if (rule_name.is_set || is_set(rule_name.yfilter)) leaf_name_data.push_back(rule_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8585,24 +10697,59 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::Trap::ge
     return children;
 }
 
-void Snmp::Correlator::Traps::Trap::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::Traps::Trap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry-id")
     {
         entry_id = value;
+        entry_id.value_namespace = name_space;
+        entry_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "correlation-id")
     {
         correlation_id = value;
+        correlation_id.value_namespace = name_space;
+        correlation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-root-cause")
     {
         is_root_cause = value;
+        is_root_cause.value_namespace = name_space;
+        is_root_cause.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rule-name")
     {
         rule_name = value;
+        rule_name.value_namespace = name_space;
+        rule_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::Traps::Trap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry-id")
+    {
+        entry_id.yfilter = yfilter;
+    }
+    if(value_path == "correlation-id")
+    {
+        correlation_id.yfilter = yfilter;
+    }
+    if(value_path == "is-root-cause")
+    {
+        is_root_cause.yfilter = yfilter;
+    }
+    if(value_path == "rule-name")
+    {
+        rule_name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::Traps::Trap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trap-info" || name == "entry-id" || name == "correlation-id" || name == "is-root-cause" || name == "rule-name")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::Traps::Trap::TrapInfo::TrapInfo()
@@ -8637,10 +10784,10 @@ bool Snmp::Correlator::Traps::Trap::TrapInfo::has_operation() const
         if(var_bind[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(oid.operation)
-	|| is_set(relative_timestamp.operation)
-	|| is_set(timestamp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(oid.yfilter)
+	|| ydk::is_set(relative_timestamp.yfilter)
+	|| ydk::is_set(timestamp.yfilter);
 }
 
 std::string Snmp::Correlator::Traps::Trap::TrapInfo::get_segment_path() const
@@ -8666,9 +10813,9 @@ const EntityPath Snmp::Correlator::Traps::Trap::TrapInfo::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oid.is_set || is_set(oid.operation)) leaf_name_data.push_back(oid.get_name_leafdata());
-    if (relative_timestamp.is_set || is_set(relative_timestamp.operation)) leaf_name_data.push_back(relative_timestamp.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (oid.is_set || is_set(oid.yfilter)) leaf_name_data.push_back(oid.get_name_leafdata());
+    if (relative_timestamp.is_set || is_set(relative_timestamp.yfilter)) leaf_name_data.push_back(relative_timestamp.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8708,20 +10855,49 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::Trap::Tr
     return children;
 }
 
-void Snmp::Correlator::Traps::Trap::TrapInfo::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::Traps::Trap::TrapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
         oid = value;
+        oid.value_namespace = name_space;
+        oid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "relative-timestamp")
     {
         relative_timestamp = value;
+        relative_timestamp.value_namespace = name_space;
+        relative_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::Traps::Trap::TrapInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oid")
+    {
+        oid.yfilter = yfilter;
+    }
+    if(value_path == "relative-timestamp")
+    {
+        relative_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::Traps::Trap::TrapInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "var-bind" || name == "oid" || name == "relative-timestamp" || name == "timestamp")
+        return true;
+    return false;
 }
 
 Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::VarBind()
@@ -8744,9 +10920,9 @@ bool Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::has_data() const
 
 bool Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oid.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(oid.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::get_segment_path() const
@@ -8772,8 +10948,8 @@ const EntityPath Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oid.is_set || is_set(oid.operation)) leaf_name_data.push_back(oid.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (oid.is_set || is_set(oid.yfilter)) leaf_name_data.push_back(oid.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8792,16 +10968,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::Correlator::Traps::Trap::Tr
     return children;
 }
 
-void Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::set_value(const std::string & value_path, std::string value)
+void Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oid")
     {
         oid = value;
+        oid.value_namespace = name_space;
+        oid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oid")
+    {
+        oid.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oid" || name == "value")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceIndexes::InterfaceIndexes()
@@ -8830,7 +11029,7 @@ bool Snmp::InterfaceIndexes::has_operation() const
         if(interface_index[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::InterfaceIndexes::get_segment_path() const
@@ -8895,8 +11094,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceIndexes::get_child
     return children;
 }
 
-void Snmp::InterfaceIndexes::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::InterfaceIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::InterfaceIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-index")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceIndexes::InterfaceIndex::InterfaceIndex()
@@ -8919,9 +11129,9 @@ bool Snmp::InterfaceIndexes::InterfaceIndex::has_data() const
 
 bool Snmp::InterfaceIndexes::InterfaceIndex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_index.operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_index.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Snmp::InterfaceIndexes::InterfaceIndex::get_segment_path() const
@@ -8947,8 +11157,8 @@ const EntityPath Snmp::InterfaceIndexes::InterfaceIndex::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_index.is_set || is_set(interface_index.operation)) leaf_name_data.push_back(interface_index.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_index.is_set || is_set(interface_index.yfilter)) leaf_name_data.push_back(interface_index.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8967,16 +11177,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceIndexes::Interface
     return children;
 }
 
-void Snmp::InterfaceIndexes::InterfaceIndex::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceIndexes::InterfaceIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-index")
     {
         interface_index = value;
+        interface_index.value_namespace = name_space;
+        interface_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::InterfaceIndexes::InterfaceIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-index")
+    {
+        interface_index.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::InterfaceIndexes::InterfaceIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-index" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Snmp::IfIndexes::IfIndexes()
@@ -9005,7 +11238,7 @@ bool Snmp::IfIndexes::has_operation() const
         if(if_index[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::IfIndexes::get_segment_path() const
@@ -9070,8 +11303,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::IfIndexes::get_children() c
     return children;
 }
 
-void Snmp::IfIndexes::set_value(const std::string & value_path, std::string value)
+void Snmp::IfIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::IfIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::IfIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "if-index")
+        return true;
+    return false;
 }
 
 Snmp::IfIndexes::IfIndex::IfIndex()
@@ -9094,9 +11338,9 @@ bool Snmp::IfIndexes::IfIndex::has_data() const
 
 bool Snmp::IfIndexes::IfIndex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_index.operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_index.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Snmp::IfIndexes::IfIndex::get_segment_path() const
@@ -9122,8 +11366,8 @@ const EntityPath Snmp::IfIndexes::IfIndex::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_index.is_set || is_set(interface_index.operation)) leaf_name_data.push_back(interface_index.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_index.is_set || is_set(interface_index.yfilter)) leaf_name_data.push_back(interface_index.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9142,16 +11386,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::IfIndexes::IfIndex::get_chi
     return children;
 }
 
-void Snmp::IfIndexes::IfIndex::set_value(const std::string & value_path, std::string value)
+void Snmp::IfIndexes::IfIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-index")
     {
         interface_index = value;
+        interface_index.value_namespace = name_space;
+        interface_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::IfIndexes::IfIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-index")
+    {
+        interface_index.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Snmp::IfIndexes::IfIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-index" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Snmp::EntityMib::EntityMib()
@@ -9174,7 +11441,7 @@ bool Snmp::EntityMib::has_data() const
 
 bool Snmp::EntityMib::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (entity_physical_indexes !=  nullptr && entity_physical_indexes->has_operation());
 }
 
@@ -9233,8 +11500,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::EntityMib::get_children() c
     return children;
 }
 
-void Snmp::EntityMib::set_value(const std::string & value_path, std::string value)
+void Snmp::EntityMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::EntityMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::EntityMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entity-physical-indexes")
+        return true;
+    return false;
 }
 
 Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndexes()
@@ -9263,7 +11541,7 @@ bool Snmp::EntityMib::EntityPhysicalIndexes::has_operation() const
         if(entity_physical_index[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::EntityMib::EntityPhysicalIndexes::get_segment_path() const
@@ -9328,8 +11606,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::EntityMib::EntityPhysicalIn
     return children;
 }
 
-void Snmp::EntityMib::EntityPhysicalIndexes::set_value(const std::string & value_path, std::string value)
+void Snmp::EntityMib::EntityPhysicalIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::EntityMib::EntityPhysicalIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::EntityMib::EntityPhysicalIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entity-physical-index")
+        return true;
+    return false;
 }
 
 Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::EntityPhysicalIndex()
@@ -9370,18 +11659,18 @@ bool Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::has_data() con
 
 bool Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entity_phynum.operation)
-	|| is_set(ent_physical_descr.operation)
-	|| is_set(ent_physical_firmware_rev.operation)
-	|| is_set(ent_physical_hardware_rev.operation)
-	|| is_set(ent_physical_mfg_name.operation)
-	|| is_set(ent_physical_modelname.operation)
-	|| is_set(ent_physical_name.operation)
-	|| is_set(ent_physical_serial_num.operation)
-	|| is_set(ent_physical_software_rev.operation)
-	|| is_set(location.operation)
-	|| is_set(physical_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entity_phynum.yfilter)
+	|| ydk::is_set(ent_physical_descr.yfilter)
+	|| ydk::is_set(ent_physical_firmware_rev.yfilter)
+	|| ydk::is_set(ent_physical_hardware_rev.yfilter)
+	|| ydk::is_set(ent_physical_mfg_name.yfilter)
+	|| ydk::is_set(ent_physical_modelname.yfilter)
+	|| ydk::is_set(ent_physical_name.yfilter)
+	|| ydk::is_set(ent_physical_serial_num.yfilter)
+	|| ydk::is_set(ent_physical_software_rev.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(physical_index.yfilter);
 }
 
 std::string Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::get_segment_path() const
@@ -9407,17 +11696,17 @@ const EntityPath Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entity_phynum.is_set || is_set(entity_phynum.operation)) leaf_name_data.push_back(entity_phynum.get_name_leafdata());
-    if (ent_physical_descr.is_set || is_set(ent_physical_descr.operation)) leaf_name_data.push_back(ent_physical_descr.get_name_leafdata());
-    if (ent_physical_firmware_rev.is_set || is_set(ent_physical_firmware_rev.operation)) leaf_name_data.push_back(ent_physical_firmware_rev.get_name_leafdata());
-    if (ent_physical_hardware_rev.is_set || is_set(ent_physical_hardware_rev.operation)) leaf_name_data.push_back(ent_physical_hardware_rev.get_name_leafdata());
-    if (ent_physical_mfg_name.is_set || is_set(ent_physical_mfg_name.operation)) leaf_name_data.push_back(ent_physical_mfg_name.get_name_leafdata());
-    if (ent_physical_modelname.is_set || is_set(ent_physical_modelname.operation)) leaf_name_data.push_back(ent_physical_modelname.get_name_leafdata());
-    if (ent_physical_name.is_set || is_set(ent_physical_name.operation)) leaf_name_data.push_back(ent_physical_name.get_name_leafdata());
-    if (ent_physical_serial_num.is_set || is_set(ent_physical_serial_num.operation)) leaf_name_data.push_back(ent_physical_serial_num.get_name_leafdata());
-    if (ent_physical_software_rev.is_set || is_set(ent_physical_software_rev.operation)) leaf_name_data.push_back(ent_physical_software_rev.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (physical_index.is_set || is_set(physical_index.operation)) leaf_name_data.push_back(physical_index.get_name_leafdata());
+    if (entity_phynum.is_set || is_set(entity_phynum.yfilter)) leaf_name_data.push_back(entity_phynum.get_name_leafdata());
+    if (ent_physical_descr.is_set || is_set(ent_physical_descr.yfilter)) leaf_name_data.push_back(ent_physical_descr.get_name_leafdata());
+    if (ent_physical_firmware_rev.is_set || is_set(ent_physical_firmware_rev.yfilter)) leaf_name_data.push_back(ent_physical_firmware_rev.get_name_leafdata());
+    if (ent_physical_hardware_rev.is_set || is_set(ent_physical_hardware_rev.yfilter)) leaf_name_data.push_back(ent_physical_hardware_rev.get_name_leafdata());
+    if (ent_physical_mfg_name.is_set || is_set(ent_physical_mfg_name.yfilter)) leaf_name_data.push_back(ent_physical_mfg_name.get_name_leafdata());
+    if (ent_physical_modelname.is_set || is_set(ent_physical_modelname.yfilter)) leaf_name_data.push_back(ent_physical_modelname.get_name_leafdata());
+    if (ent_physical_name.is_set || is_set(ent_physical_name.yfilter)) leaf_name_data.push_back(ent_physical_name.get_name_leafdata());
+    if (ent_physical_serial_num.is_set || is_set(ent_physical_serial_num.yfilter)) leaf_name_data.push_back(ent_physical_serial_num.get_name_leafdata());
+    if (ent_physical_software_rev.is_set || is_set(ent_physical_software_rev.yfilter)) leaf_name_data.push_back(ent_physical_software_rev.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (physical_index.is_set || is_set(physical_index.yfilter)) leaf_name_data.push_back(physical_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9436,52 +11725,129 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::EntityMib::EntityPhysicalIn
     return children;
 }
 
-void Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::set_value(const std::string & value_path, std::string value)
+void Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entity-phynum")
     {
         entity_phynum = value;
+        entity_phynum.value_namespace = name_space;
+        entity_phynum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ent-physical-descr")
     {
         ent_physical_descr = value;
+        ent_physical_descr.value_namespace = name_space;
+        ent_physical_descr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ent-physical-firmware-rev")
     {
         ent_physical_firmware_rev = value;
+        ent_physical_firmware_rev.value_namespace = name_space;
+        ent_physical_firmware_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ent-physical-hardware-rev")
     {
         ent_physical_hardware_rev = value;
+        ent_physical_hardware_rev.value_namespace = name_space;
+        ent_physical_hardware_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ent-physical-mfg-name")
     {
         ent_physical_mfg_name = value;
+        ent_physical_mfg_name.value_namespace = name_space;
+        ent_physical_mfg_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ent-physical-modelname")
     {
         ent_physical_modelname = value;
+        ent_physical_modelname.value_namespace = name_space;
+        ent_physical_modelname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ent-physical-name")
     {
         ent_physical_name = value;
+        ent_physical_name.value_namespace = name_space;
+        ent_physical_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ent-physical-serial-num")
     {
         ent_physical_serial_num = value;
+        ent_physical_serial_num.value_namespace = name_space;
+        ent_physical_serial_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ent-physical-software-rev")
     {
         ent_physical_software_rev = value;
+        ent_physical_software_rev.value_namespace = name_space;
+        ent_physical_software_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "physical-index")
     {
         physical_index = value;
+        physical_index.value_namespace = name_space;
+        physical_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entity-phynum")
+    {
+        entity_phynum.yfilter = yfilter;
+    }
+    if(value_path == "ent-physical-descr")
+    {
+        ent_physical_descr.yfilter = yfilter;
+    }
+    if(value_path == "ent-physical-firmware-rev")
+    {
+        ent_physical_firmware_rev.yfilter = yfilter;
+    }
+    if(value_path == "ent-physical-hardware-rev")
+    {
+        ent_physical_hardware_rev.yfilter = yfilter;
+    }
+    if(value_path == "ent-physical-mfg-name")
+    {
+        ent_physical_mfg_name.yfilter = yfilter;
+    }
+    if(value_path == "ent-physical-modelname")
+    {
+        ent_physical_modelname.yfilter = yfilter;
+    }
+    if(value_path == "ent-physical-name")
+    {
+        ent_physical_name.yfilter = yfilter;
+    }
+    if(value_path == "ent-physical-serial-num")
+    {
+        ent_physical_serial_num.yfilter = yfilter;
+    }
+    if(value_path == "ent-physical-software-rev")
+    {
+        ent_physical_software_rev.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "physical-index")
+    {
+        physical_index.yfilter = yfilter;
+    }
+}
+
+bool Snmp::EntityMib::EntityPhysicalIndexes::EntityPhysicalIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entity-phynum" || name == "ent-physical-descr" || name == "ent-physical-firmware-rev" || name == "ent-physical-hardware-rev" || name == "ent-physical-mfg-name" || name == "ent-physical-modelname" || name == "ent-physical-name" || name == "ent-physical-serial-num" || name == "ent-physical-software-rev" || name == "location" || name == "physical-index")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::InterfaceMib()
@@ -9520,7 +11886,7 @@ bool Snmp::InterfaceMib::has_data() const
 
 bool Snmp::InterfaceMib::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interface_aliases !=  nullptr && interface_aliases->has_operation())
 	|| (interface_connectors !=  nullptr && interface_connectors->has_operation())
 	|| (interface_stack_statuses !=  nullptr && interface_stack_statuses->has_operation())
@@ -9639,8 +12005,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::get_children(
     return children;
 }
 
-void Snmp::InterfaceMib::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::InterfaceMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::InterfaceMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-aliases" || name == "interface-connectors" || name == "interface-stack-statuses" || name == "interfaces" || name == "notification-interfaces")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::Interfaces::Interfaces()
@@ -9669,7 +12046,7 @@ bool Snmp::InterfaceMib::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::InterfaceMib::Interfaces::get_segment_path() const
@@ -9734,8 +12111,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::Interfaces::g
     return children;
 }
 
-void Snmp::InterfaceMib::Interfaces::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::InterfaceMib::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::InterfaceMib::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::Interfaces::Interface::Interface()
@@ -9758,9 +12146,9 @@ bool Snmp::InterfaceMib::Interfaces::Interface::has_data() const
 
 bool Snmp::InterfaceMib::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(if_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(if_index.yfilter);
 }
 
 std::string Snmp::InterfaceMib::Interfaces::Interface::get_segment_path() const
@@ -9786,8 +12174,8 @@ const EntityPath Snmp::InterfaceMib::Interfaces::Interface::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (if_index.is_set || is_set(if_index.operation)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9806,16 +12194,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::Interfaces::I
     return children;
 }
 
-void Snmp::InterfaceMib::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-index")
     {
         if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::InterfaceMib::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
+}
+
+bool Snmp::InterfaceMib::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "if-index")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnectors()
@@ -9844,7 +12255,7 @@ bool Snmp::InterfaceMib::InterfaceConnectors::has_operation() const
         if(interface_connector[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::InterfaceMib::InterfaceConnectors::get_segment_path() const
@@ -9909,8 +12320,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceConn
     return children;
 }
 
-void Snmp::InterfaceMib::InterfaceConnectors::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::InterfaceConnectors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::InterfaceMib::InterfaceConnectors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::InterfaceMib::InterfaceConnectors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-connector")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::InterfaceConnector()
@@ -9933,9 +12355,9 @@ bool Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::has_data() con
 
 bool Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(if_connector_present.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(if_connector_present.yfilter);
 }
 
 std::string Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::get_segment_path() const
@@ -9961,8 +12383,8 @@ const EntityPath Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (if_connector_present.is_set || is_set(if_connector_present.operation)) leaf_name_data.push_back(if_connector_present.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (if_connector_present.is_set || is_set(if_connector_present.yfilter)) leaf_name_data.push_back(if_connector_present.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9981,16 +12403,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceConn
     return children;
 }
 
-void Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-connector-present")
     {
         if_connector_present = value;
+        if_connector_present.value_namespace = name_space;
+        if_connector_present.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "if-connector-present")
+    {
+        if_connector_present.yfilter = yfilter;
+    }
+}
+
+bool Snmp::InterfaceMib::InterfaceConnectors::InterfaceConnector::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "if-connector-present")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::InterfaceAliases::InterfaceAliases()
@@ -10019,7 +12464,7 @@ bool Snmp::InterfaceMib::InterfaceAliases::has_operation() const
         if(interface_alias[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::InterfaceMib::InterfaceAliases::get_segment_path() const
@@ -10084,8 +12529,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceAlia
     return children;
 }
 
-void Snmp::InterfaceMib::InterfaceAliases::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::InterfaceAliases::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::InterfaceMib::InterfaceAliases::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::InterfaceMib::InterfaceAliases::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-alias")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::InterfaceAlias()
@@ -10108,9 +12564,9 @@ bool Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::has_data() const
 
 bool Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(if_alias.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(if_alias.yfilter);
 }
 
 std::string Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::get_segment_path() const
@@ -10136,8 +12592,8 @@ const EntityPath Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (if_alias.is_set || is_set(if_alias.operation)) leaf_name_data.push_back(if_alias.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (if_alias.is_set || is_set(if_alias.yfilter)) leaf_name_data.push_back(if_alias.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10156,16 +12612,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceAlia
     return children;
 }
 
-void Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-alias")
     {
         if_alias = value;
+        if_alias.value_namespace = name_space;
+        if_alias.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "if-alias")
+    {
+        if_alias.yfilter = yfilter;
+    }
+}
+
+bool Snmp::InterfaceMib::InterfaceAliases::InterfaceAlias::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "if-alias")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::NotificationInterfaces::NotificationInterfaces()
@@ -10194,7 +12673,7 @@ bool Snmp::InterfaceMib::NotificationInterfaces::has_operation() const
         if(notification_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::InterfaceMib::NotificationInterfaces::get_segment_path() const
@@ -10259,8 +12738,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::NotificationI
     return children;
 }
 
-void Snmp::InterfaceMib::NotificationInterfaces::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::NotificationInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::InterfaceMib::NotificationInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::InterfaceMib::NotificationInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "notification-interface")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::NotificationInterface()
@@ -10283,9 +12773,9 @@ bool Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::has_data
 
 bool Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(link_up_down_notif_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(link_up_down_notif_status.yfilter);
 }
 
 std::string Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::get_segment_path() const
@@ -10311,8 +12801,8 @@ const EntityPath Snmp::InterfaceMib::NotificationInterfaces::NotificationInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (link_up_down_notif_status.is_set || is_set(link_up_down_notif_status.operation)) leaf_name_data.push_back(link_up_down_notif_status.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (link_up_down_notif_status.is_set || is_set(link_up_down_notif_status.yfilter)) leaf_name_data.push_back(link_up_down_notif_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10331,16 +12821,39 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::NotificationI
     return children;
 }
 
-void Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-up-down-notif-status")
     {
         link_up_down_notif_status = value;
+        link_up_down_notif_status.value_namespace = name_space;
+        link_up_down_notif_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "link-up-down-notif-status")
+    {
+        link_up_down_notif_status.yfilter = yfilter;
+    }
+}
+
+bool Snmp::InterfaceMib::NotificationInterfaces::NotificationInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "link-up-down-notif-status")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatuses()
@@ -10369,7 +12882,7 @@ bool Snmp::InterfaceMib::InterfaceStackStatuses::has_operation() const
         if(interface_stack_status[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::InterfaceMib::InterfaceStackStatuses::get_segment_path() const
@@ -10434,8 +12947,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceStac
     return children;
 }
 
-void Snmp::InterfaceMib::InterfaceStackStatuses::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::InterfaceStackStatuses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::InterfaceMib::InterfaceStackStatuses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::InterfaceMib::InterfaceStackStatuses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-stack-status")
+        return true;
+    return false;
 }
 
 Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::InterfaceStackStatus()
@@ -10462,11 +12986,11 @@ bool Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::has_data(
 
 bool Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_stack_status.operation)
-	|| is_set(if_stack_higher_layer.operation)
-	|| is_set(if_stack_lower_layer.operation)
-	|| is_set(if_stack_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_stack_status.yfilter)
+	|| ydk::is_set(if_stack_higher_layer.yfilter)
+	|| ydk::is_set(if_stack_lower_layer.yfilter)
+	|| ydk::is_set(if_stack_status.yfilter);
 }
 
 std::string Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::get_segment_path() const
@@ -10492,10 +13016,10 @@ const EntityPath Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_stack_status.is_set || is_set(interface_stack_status.operation)) leaf_name_data.push_back(interface_stack_status.get_name_leafdata());
-    if (if_stack_higher_layer.is_set || is_set(if_stack_higher_layer.operation)) leaf_name_data.push_back(if_stack_higher_layer.get_name_leafdata());
-    if (if_stack_lower_layer.is_set || is_set(if_stack_lower_layer.operation)) leaf_name_data.push_back(if_stack_lower_layer.get_name_leafdata());
-    if (if_stack_status.is_set || is_set(if_stack_status.operation)) leaf_name_data.push_back(if_stack_status.get_name_leafdata());
+    if (interface_stack_status.is_set || is_set(interface_stack_status.yfilter)) leaf_name_data.push_back(interface_stack_status.get_name_leafdata());
+    if (if_stack_higher_layer.is_set || is_set(if_stack_higher_layer.yfilter)) leaf_name_data.push_back(if_stack_higher_layer.get_name_leafdata());
+    if (if_stack_lower_layer.is_set || is_set(if_stack_lower_layer.yfilter)) leaf_name_data.push_back(if_stack_lower_layer.get_name_leafdata());
+    if (if_stack_status.is_set || is_set(if_stack_status.yfilter)) leaf_name_data.push_back(if_stack_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10514,24 +13038,59 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::InterfaceMib::InterfaceStac
     return children;
 }
 
-void Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::set_value(const std::string & value_path, std::string value)
+void Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-stack-status")
     {
         interface_stack_status = value;
+        interface_stack_status.value_namespace = name_space;
+        interface_stack_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-stack-higher-layer")
     {
         if_stack_higher_layer = value;
+        if_stack_higher_layer.value_namespace = name_space;
+        if_stack_higher_layer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-stack-lower-layer")
     {
         if_stack_lower_layer = value;
+        if_stack_lower_layer.value_namespace = name_space;
+        if_stack_lower_layer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-stack-status")
     {
         if_stack_status = value;
+        if_stack_status.value_namespace = name_space;
+        if_stack_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-stack-status")
+    {
+        interface_stack_status.yfilter = yfilter;
+    }
+    if(value_path == "if-stack-higher-layer")
+    {
+        if_stack_higher_layer.yfilter = yfilter;
+    }
+    if(value_path == "if-stack-lower-layer")
+    {
+        if_stack_lower_layer.yfilter = yfilter;
+    }
+    if(value_path == "if-stack-status")
+    {
+        if_stack_status.yfilter = yfilter;
+    }
+}
+
+bool Snmp::InterfaceMib::InterfaceStackStatuses::InterfaceStackStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-stack-status" || name == "if-stack-higher-layer" || name == "if-stack-lower-layer" || name == "if-stack-status")
+        return true;
+    return false;
 }
 
 Snmp::SensorMib::SensorMib()
@@ -10558,7 +13117,7 @@ bool Snmp::SensorMib::has_data() const
 
 bool Snmp::SensorMib::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ent_phy_indexes !=  nullptr && ent_phy_indexes->has_operation())
 	|| (physical_indexes !=  nullptr && physical_indexes->has_operation());
 }
@@ -10632,8 +13191,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::get_children() c
     return children;
 }
 
-void Snmp::SensorMib::set_value(const std::string & value_path, std::string value)
+void Snmp::SensorMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::SensorMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::SensorMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ent-phy-indexes" || name == "physical-indexes")
+        return true;
+    return false;
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndexes()
@@ -10662,7 +13232,7 @@ bool Snmp::SensorMib::PhysicalIndexes::has_operation() const
         if(physical_index[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::SensorMib::PhysicalIndexes::get_segment_path() const
@@ -10727,8 +13297,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes:
     return children;
 }
 
-void Snmp::SensorMib::PhysicalIndexes::set_value(const std::string & value_path, std::string value)
+void Snmp::SensorMib::PhysicalIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::SensorMib::PhysicalIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::SensorMib::PhysicalIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "physical-index")
+        return true;
+    return false;
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::PhysicalIndex()
@@ -10754,8 +13335,8 @@ bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::has_data() const
 
 bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (threshold_indexes !=  nullptr && threshold_indexes->has_operation());
 }
 
@@ -10782,7 +13363,7 @@ const EntityPath Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10815,12 +13396,29 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes:
     return children;
 }
 
-void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::set_value(const std::string & value_path, std::string value)
+void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-indexes" || name == "index")
+        return true;
+    return false;
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndexes()
@@ -10849,7 +13447,7 @@ bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::has_oper
         if(threshold_index[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::get_segment_path() const
@@ -10914,8 +13512,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes:
     return children;
 }
 
-void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::set_value(const std::string & value_path, std::string value)
+void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-index")
+        return true;
+    return false;
 }
 
 Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::ThresholdIndex()
@@ -10948,14 +13557,14 @@ bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::Threshol
 
 bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(phy_index.operation)
-	|| is_set(thre_index.operation)
-	|| is_set(threshold_evaluation.operation)
-	|| is_set(threshold_notification_enabled.operation)
-	|| is_set(threshold_relation.operation)
-	|| is_set(threshold_severity.operation)
-	|| is_set(threshold_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(phy_index.yfilter)
+	|| ydk::is_set(thre_index.yfilter)
+	|| ydk::is_set(threshold_evaluation.yfilter)
+	|| ydk::is_set(threshold_notification_enabled.yfilter)
+	|| ydk::is_set(threshold_relation.yfilter)
+	|| ydk::is_set(threshold_severity.yfilter)
+	|| ydk::is_set(threshold_value.yfilter);
 }
 
 std::string Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::get_segment_path() const
@@ -10981,13 +13590,13 @@ const EntityPath Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndex
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (phy_index.is_set || is_set(phy_index.operation)) leaf_name_data.push_back(phy_index.get_name_leafdata());
-    if (thre_index.is_set || is_set(thre_index.operation)) leaf_name_data.push_back(thre_index.get_name_leafdata());
-    if (threshold_evaluation.is_set || is_set(threshold_evaluation.operation)) leaf_name_data.push_back(threshold_evaluation.get_name_leafdata());
-    if (threshold_notification_enabled.is_set || is_set(threshold_notification_enabled.operation)) leaf_name_data.push_back(threshold_notification_enabled.get_name_leafdata());
-    if (threshold_relation.is_set || is_set(threshold_relation.operation)) leaf_name_data.push_back(threshold_relation.get_name_leafdata());
-    if (threshold_severity.is_set || is_set(threshold_severity.operation)) leaf_name_data.push_back(threshold_severity.get_name_leafdata());
-    if (threshold_value.is_set || is_set(threshold_value.operation)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
+    if (phy_index.is_set || is_set(phy_index.yfilter)) leaf_name_data.push_back(phy_index.get_name_leafdata());
+    if (thre_index.is_set || is_set(thre_index.yfilter)) leaf_name_data.push_back(thre_index.get_name_leafdata());
+    if (threshold_evaluation.is_set || is_set(threshold_evaluation.yfilter)) leaf_name_data.push_back(threshold_evaluation.get_name_leafdata());
+    if (threshold_notification_enabled.is_set || is_set(threshold_notification_enabled.yfilter)) leaf_name_data.push_back(threshold_notification_enabled.get_name_leafdata());
+    if (threshold_relation.is_set || is_set(threshold_relation.yfilter)) leaf_name_data.push_back(threshold_relation.get_name_leafdata());
+    if (threshold_severity.is_set || is_set(threshold_severity.yfilter)) leaf_name_data.push_back(threshold_severity.get_name_leafdata());
+    if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11006,36 +13615,89 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::PhysicalIndexes:
     return children;
 }
 
-void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::set_value(const std::string & value_path, std::string value)
+void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "phy-index")
     {
         phy_index = value;
+        phy_index.value_namespace = name_space;
+        phy_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "thre-index")
     {
         thre_index = value;
+        thre_index.value_namespace = name_space;
+        thre_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-evaluation")
     {
         threshold_evaluation = value;
+        threshold_evaluation.value_namespace = name_space;
+        threshold_evaluation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-notification-enabled")
     {
         threshold_notification_enabled = value;
+        threshold_notification_enabled.value_namespace = name_space;
+        threshold_notification_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-relation")
     {
         threshold_relation = value;
+        threshold_relation.value_namespace = name_space;
+        threshold_relation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-severity")
     {
         threshold_severity = value;
+        threshold_severity.value_namespace = name_space;
+        threshold_severity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-value")
     {
         threshold_value = value;
+        threshold_value.value_namespace = name_space;
+        threshold_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "phy-index")
+    {
+        phy_index.yfilter = yfilter;
+    }
+    if(value_path == "thre-index")
+    {
+        thre_index.yfilter = yfilter;
+    }
+    if(value_path == "threshold-evaluation")
+    {
+        threshold_evaluation.yfilter = yfilter;
+    }
+    if(value_path == "threshold-notification-enabled")
+    {
+        threshold_notification_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold-relation")
+    {
+        threshold_relation.yfilter = yfilter;
+    }
+    if(value_path == "threshold-severity")
+    {
+        threshold_severity.yfilter = yfilter;
+    }
+    if(value_path == "threshold-value")
+    {
+        threshold_value.yfilter = yfilter;
+    }
+}
+
+bool Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::ThresholdIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "phy-index" || name == "thre-index" || name == "threshold-evaluation" || name == "threshold-notification-enabled" || name == "threshold-relation" || name == "threshold-severity" || name == "threshold-value")
+        return true;
+    return false;
 }
 
 Snmp::SensorMib::EntPhyIndexes::EntPhyIndexes()
@@ -11064,7 +13726,7 @@ bool Snmp::SensorMib::EntPhyIndexes::has_operation() const
         if(ent_phy_index[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Snmp::SensorMib::EntPhyIndexes::get_segment_path() const
@@ -11129,8 +13791,19 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::EntPhyIndexes::g
     return children;
 }
 
-void Snmp::SensorMib::EntPhyIndexes::set_value(const std::string & value_path, std::string value)
+void Snmp::SensorMib::EntPhyIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Snmp::SensorMib::EntPhyIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Snmp::SensorMib::EntPhyIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ent-phy-index")
+        return true;
+    return false;
 }
 
 Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::EntPhyIndex()
@@ -11177,21 +13850,21 @@ bool Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::has_data() const
 
 bool Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
-	|| is_set(age_time_stamp.operation)
-	|| is_set(alarm_type.operation)
-	|| is_set(data_type.operation)
-	|| is_set(device_description.operation)
-	|| is_set(device_id.operation)
-	|| is_set(field_validity_bitmap.operation)
-	|| is_set(measured_entity.operation)
-	|| is_set(precision.operation)
-	|| is_set(scale.operation)
-	|| is_set(status.operation)
-	|| is_set(units.operation)
-	|| is_set(update_rate.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(age_time_stamp.yfilter)
+	|| ydk::is_set(alarm_type.yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(device_description.yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(field_validity_bitmap.yfilter)
+	|| ydk::is_set(measured_entity.yfilter)
+	|| ydk::is_set(precision.yfilter)
+	|| ydk::is_set(scale.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(update_rate.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::get_segment_path() const
@@ -11217,20 +13890,20 @@ const EntityPath Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (age_time_stamp.is_set || is_set(age_time_stamp.operation)) leaf_name_data.push_back(age_time_stamp.get_name_leafdata());
-    if (alarm_type.is_set || is_set(alarm_type.operation)) leaf_name_data.push_back(alarm_type.get_name_leafdata());
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (device_description.is_set || is_set(device_description.operation)) leaf_name_data.push_back(device_description.get_name_leafdata());
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (field_validity_bitmap.is_set || is_set(field_validity_bitmap.operation)) leaf_name_data.push_back(field_validity_bitmap.get_name_leafdata());
-    if (measured_entity.is_set || is_set(measured_entity.operation)) leaf_name_data.push_back(measured_entity.get_name_leafdata());
-    if (precision.is_set || is_set(precision.operation)) leaf_name_data.push_back(precision.get_name_leafdata());
-    if (scale.is_set || is_set(scale.operation)) leaf_name_data.push_back(scale.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (update_rate.is_set || is_set(update_rate.operation)) leaf_name_data.push_back(update_rate.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (age_time_stamp.is_set || is_set(age_time_stamp.yfilter)) leaf_name_data.push_back(age_time_stamp.get_name_leafdata());
+    if (alarm_type.is_set || is_set(alarm_type.yfilter)) leaf_name_data.push_back(alarm_type.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (field_validity_bitmap.is_set || is_set(field_validity_bitmap.yfilter)) leaf_name_data.push_back(field_validity_bitmap.get_name_leafdata());
+    if (measured_entity.is_set || is_set(measured_entity.yfilter)) leaf_name_data.push_back(measured_entity.get_name_leafdata());
+    if (precision.is_set || is_set(precision.yfilter)) leaf_name_data.push_back(precision.get_name_leafdata());
+    if (scale.is_set || is_set(scale.yfilter)) leaf_name_data.push_back(scale.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (update_rate.is_set || is_set(update_rate.yfilter)) leaf_name_data.push_back(update_rate.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11249,75 +13922,170 @@ std::map<std::string, std::shared_ptr<Entity>> Snmp::SensorMib::EntPhyIndexes::E
     return children;
 }
 
-void Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::set_value(const std::string & value_path, std::string value)
+void Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "age-time-stamp")
     {
         age_time_stamp = value;
+        age_time_stamp.value_namespace = name_space;
+        age_time_stamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "alarm-type")
     {
         alarm_type = value;
+        alarm_type.value_namespace = name_space;
+        alarm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "device-description")
     {
         device_description = value;
+        device_description.value_namespace = name_space;
+        device_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "field-validity-bitmap")
     {
         field_validity_bitmap = value;
+        field_validity_bitmap.value_namespace = name_space;
+        field_validity_bitmap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "measured-entity")
     {
         measured_entity = value;
+        measured_entity.value_namespace = name_space;
+        measured_entity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precision")
     {
         precision = value;
+        precision.value_namespace = name_space;
+        precision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "scale")
     {
         scale = value;
+        scale.value_namespace = name_space;
+        scale.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "update-rate")
     {
         update_rate = value;
+        update_rate.value_namespace = name_space;
+        update_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SnmpCorrVbindMatchEnum::index_ {0, "index"};
-const Enum::YLeaf SnmpCorrVbindMatchEnum::value_ {1, "value"};
+void Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "age-time-stamp")
+    {
+        age_time_stamp.yfilter = yfilter;
+    }
+    if(value_path == "alarm-type")
+    {
+        alarm_type.yfilter = yfilter;
+    }
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "device-description")
+    {
+        device_description.yfilter = yfilter;
+    }
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "field-validity-bitmap")
+    {
+        field_validity_bitmap.yfilter = yfilter;
+    }
+    if(value_path == "measured-entity")
+    {
+        measured_entity.yfilter = yfilter;
+    }
+    if(value_path == "precision")
+    {
+        precision.yfilter = yfilter;
+    }
+    if(value_path == "scale")
+    {
+        scale.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "update-rate")
+    {
+        update_rate.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf SnmpCorrRuleStateEnum::rule_unapplied {0, "rule-unapplied"};
-const Enum::YLeaf SnmpCorrRuleStateEnum::rule_applied {1, "rule-applied"};
-const Enum::YLeaf SnmpCorrRuleStateEnum::rule_applied_all {2, "rule-applied-all"};
+bool Snmp::SensorMib::EntPhyIndexes::EntPhyIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index" || name == "age-time-stamp" || name == "alarm-type" || name == "data-type" || name == "device-description" || name == "device-id" || name == "field-validity-bitmap" || name == "measured-entity" || name == "precision" || name == "scale" || name == "status" || name == "units" || name == "update-rate" || name == "value")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf DupReqDropStatusEnum::disabled {0, "disabled"};
-const Enum::YLeaf DupReqDropStatusEnum::enabled {1, "enabled"};
+const Enum::YLeaf SnmpCorrVbindMatch::index_ {0, "index"};
+const Enum::YLeaf SnmpCorrVbindMatch::value_ {1, "value"};
+
+const Enum::YLeaf DupReqDropStatus::disabled {0, "disabled"};
+const Enum::YLeaf DupReqDropStatus::enabled {1, "enabled"};
+
+const Enum::YLeaf SnmpCorrRuleState::rule_unapplied {0, "rule-unapplied"};
+const Enum::YLeaf SnmpCorrRuleState::rule_applied {1, "rule-applied"};
+const Enum::YLeaf SnmpCorrRuleState::rule_applied_all {2, "rule-applied-all"};
 
 
 }

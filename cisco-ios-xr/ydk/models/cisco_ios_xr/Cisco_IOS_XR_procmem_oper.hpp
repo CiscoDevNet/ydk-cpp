@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_procmem_oper {
 
-class ProcessesMemory : public Entity
+class ProcessesMemory : public ydk::Entity
 {
     public:
         ProcessesMemory();
@@ -18,15 +18,18 @@ class ProcessesMemory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: ProcessesMemory::Nodes
 
@@ -35,7 +38,7 @@ class ProcessesMemory : public Entity
 }; // ProcessesMemory
 
 
-class ProcessesMemory::Nodes : public Entity
+class ProcessesMemory::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -43,11 +46,13 @@ class ProcessesMemory::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: ProcessesMemory::Nodes::Node
 
@@ -56,7 +61,7 @@ class ProcessesMemory::Nodes : public Entity
 }; // ProcessesMemory::Nodes
 
 
-class ProcessesMemory::Nodes::Node : public Entity
+class ProcessesMemory::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -64,13 +69,15 @@ class ProcessesMemory::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class ProcessIds; //type: ProcessesMemory::Nodes::Node::ProcessIds
 
         std::shared_ptr<Cisco_IOS_XR_procmem_oper::ProcessesMemory::Nodes::Node::ProcessIds> process_ids;
@@ -78,7 +85,7 @@ class ProcessesMemory::Nodes::Node : public Entity
 }; // ProcessesMemory::Nodes::Node
 
 
-class ProcessesMemory::Nodes::Node::ProcessIds : public Entity
+class ProcessesMemory::Nodes::Node::ProcessIds : public ydk::Entity
 {
     public:
         ProcessIds();
@@ -86,11 +93,13 @@ class ProcessesMemory::Nodes::Node::ProcessIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProcessId; //type: ProcessesMemory::Nodes::Node::ProcessIds::ProcessId
 
@@ -99,7 +108,7 @@ class ProcessesMemory::Nodes::Node::ProcessIds : public Entity
 }; // ProcessesMemory::Nodes::Node::ProcessIds
 
 
-class ProcessesMemory::Nodes::Node::ProcessIds::ProcessId : public Entity
+class ProcessesMemory::Nodes::Node::ProcessIds::ProcessId : public ydk::Entity
 {
     public:
         ProcessId();
@@ -107,23 +116,25 @@ class ProcessesMemory::Nodes::Node::ProcessIds::ProcessId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf process_id; //type: int32
-        YLeaf name; //type: string
-        YLeaf jid; //type: uint32
-        YLeaf pid; //type: uint32
-        YLeaf text_seg_size; //type: uint32
-        YLeaf data_seg_size; //type: uint32
-        YLeaf stack_seg_size; //type: uint32
-        YLeaf malloc_size; //type: uint32
-        YLeaf dyn_limit; //type: uint32
-        YLeaf shared_mem; //type: uint32
-        YLeaf physical_mem; //type: uint32
+        ydk::YLeaf process_id; //type: int32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf jid; //type: uint32
+        ydk::YLeaf pid; //type: uint32
+        ydk::YLeaf text_seg_size; //type: uint32
+        ydk::YLeaf data_seg_size; //type: uint32
+        ydk::YLeaf stack_seg_size; //type: uint32
+        ydk::YLeaf malloc_size; //type: uint32
+        ydk::YLeaf dyn_limit; //type: uint32
+        ydk::YLeaf shared_mem; //type: uint32
+        ydk::YLeaf physical_mem; //type: uint32
 
 }; // ProcessesMemory::Nodes::Node::ProcessIds::ProcessId
 

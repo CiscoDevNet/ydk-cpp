@@ -7,26 +7,26 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace ATM_FORUM_TC_MIB {
 
-class TruthvalueEnum : public Enum
+class Atmservicecategory : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf true_;
-        static const Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf rtVbr;
+        static const ydk::Enum::YLeaf nrtVbr;
+        static const ydk::Enum::YLeaf abr;
+        static const ydk::Enum::YLeaf ubr;
 
 };
 
-class AtmservicecategoryEnum : public Enum
+class Truthvalue : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf cbr;
-        static const Enum::YLeaf rtVbr;
-        static const Enum::YLeaf nrtVbr;
-        static const Enum::YLeaf abr;
-        static const Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
 
 };
 

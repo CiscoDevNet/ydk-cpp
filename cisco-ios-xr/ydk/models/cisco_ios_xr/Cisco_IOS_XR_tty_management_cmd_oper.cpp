@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_tty_management_cmd_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_management_cmd_oper {
 
 ShowUsers::ShowUsers()
@@ -29,7 +31,7 @@ bool ShowUsers::has_data() const
 
 bool ShowUsers::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> ShowUsers::get_children() const
     return children;
 }
 
-void ShowUsers::set_value(const std::string & value_path, std::string value)
+void ShowUsers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ShowUsers::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string ShowUsers::get_bundle_name() const
 augment_capabilities_function ShowUsers::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ShowUsers::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ShowUsers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions")
+        return true;
+    return false;
 }
 
 ShowUsers::Sessions::Sessions()
@@ -135,7 +153,7 @@ bool ShowUsers::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ShowUsers::Sessions::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> ShowUsers::Sessions::get_children
     return children;
 }
 
-void ShowUsers::Sessions::set_value(const std::string & value_path, std::string value)
+void ShowUsers::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ShowUsers::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ShowUsers::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 ShowUsers::Sessions::Session::Session()
@@ -234,14 +263,14 @@ bool ShowUsers::Sessions::Session::has_data() const
 
 bool ShowUsers::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(conns.operation)
-	|| is_set(idle_string.operation)
-	|| is_set(line.operation)
-	|| is_set(location.operation)
-	|| is_set(service.operation)
-	|| is_set(user.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(conns.yfilter)
+	|| ydk::is_set(idle_string.yfilter)
+	|| ydk::is_set(line.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(service.yfilter)
+	|| ydk::is_set(user.yfilter);
 }
 
 std::string ShowUsers::Sessions::Session::get_segment_path() const
@@ -267,13 +296,13 @@ const EntityPath ShowUsers::Sessions::Session::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (conns.is_set || is_set(conns.operation)) leaf_name_data.push_back(conns.get_name_leafdata());
-    if (idle_string.is_set || is_set(idle_string.operation)) leaf_name_data.push_back(idle_string.get_name_leafdata());
-    if (line.is_set || is_set(line.operation)) leaf_name_data.push_back(line.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
-    if (user.is_set || is_set(user.operation)) leaf_name_data.push_back(user.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (conns.is_set || is_set(conns.yfilter)) leaf_name_data.push_back(conns.get_name_leafdata());
+    if (idle_string.is_set || is_set(idle_string.yfilter)) leaf_name_data.push_back(idle_string.get_name_leafdata());
+    if (line.is_set || is_set(line.yfilter)) leaf_name_data.push_back(line.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (user.is_set || is_set(user.yfilter)) leaf_name_data.push_back(user.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -292,36 +321,89 @@ std::map<std::string, std::shared_ptr<Entity>> ShowUsers::Sessions::Session::get
     return children;
 }
 
-void ShowUsers::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void ShowUsers::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conns")
     {
         conns = value;
+        conns.value_namespace = name_space;
+        conns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idle-string")
     {
         idle_string = value;
+        idle_string.value_namespace = name_space;
+        idle_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line")
     {
         line = value;
+        line.value_namespace = name_space;
+        line.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service")
     {
         service = value;
+        service.value_namespace = name_space;
+        service.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "user")
     {
         user = value;
+        user.value_namespace = name_space;
+        user.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ShowUsers::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "conns")
+    {
+        conns.yfilter = yfilter;
+    }
+    if(value_path == "idle-string")
+    {
+        idle_string.yfilter = yfilter;
+    }
+    if(value_path == "line")
+    {
+        line.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "service")
+    {
+        service.yfilter = yfilter;
+    }
+    if(value_path == "user")
+    {
+        user.yfilter = yfilter;
+    }
+}
+
+bool ShowUsers::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "conns" || name == "idle-string" || name == "line" || name == "location" || name == "service" || name == "user")
+        return true;
+    return false;
 }
 
 

@@ -7,57 +7,57 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_IPSLA_TC_MIB {
 
-class IpslacodectypeEnum : public Enum
+class Ipslaopertype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notApplicable;
-        static const Enum::YLeaf g711ulaw;
-        static const Enum::YLeaf g711alaw;
-        static const Enum::YLeaf g729a;
+        static const ydk::Enum::YLeaf icmpEcho;
+        static const ydk::Enum::YLeaf udpEcho;
+        static const ydk::Enum::YLeaf tcpConnect;
+        static const ydk::Enum::YLeaf udpJitter;
+        static const ydk::Enum::YLeaf icmpJitter;
 
 };
 
-class IpslaopertypeEnum : public Enum
+class Ipslareactvar : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icmpEcho;
-        static const Enum::YLeaf udpEcho;
-        static const Enum::YLeaf tcpConnect;
-        static const Enum::YLeaf udpJitter;
-        static const Enum::YLeaf icmpJitter;
+        static const ydk::Enum::YLeaf rtt;
+        static const ydk::Enum::YLeaf jitterSDAvg;
+        static const ydk::Enum::YLeaf jitterDSAvg;
+        static const ydk::Enum::YLeaf packetLossSD;
+        static const ydk::Enum::YLeaf packetLossDS;
+        static const ydk::Enum::YLeaf mos;
+        static const ydk::Enum::YLeaf timeout;
+        static const ydk::Enum::YLeaf connectionLoss;
+        static const ydk::Enum::YLeaf verifyError;
+        static const ydk::Enum::YLeaf jitterAvg;
+        static const ydk::Enum::YLeaf icpif;
+        static const ydk::Enum::YLeaf packetMIA;
+        static const ydk::Enum::YLeaf packetLateArrival;
+        static const ydk::Enum::YLeaf packetOutOfSequence;
+        static const ydk::Enum::YLeaf maxOfPositiveSD;
+        static const ydk::Enum::YLeaf maxOfNegativeSD;
+        static const ydk::Enum::YLeaf maxOfPositiveDS;
+        static const ydk::Enum::YLeaf maxOfNegativeDS;
+        static const ydk::Enum::YLeaf successivePacketLoss;
+        static const ydk::Enum::YLeaf maxOfLatencyDS;
+        static const ydk::Enum::YLeaf maxOfLatencySD;
+        static const ydk::Enum::YLeaf latencyDSAvg;
+        static const ydk::Enum::YLeaf latencySDAvg;
+        static const ydk::Enum::YLeaf packetLoss;
 
 };
 
-class IpslareactvarEnum : public Enum
+class Ipslacodectype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf rtt;
-        static const Enum::YLeaf jitterSDAvg;
-        static const Enum::YLeaf jitterDSAvg;
-        static const Enum::YLeaf packetLossSD;
-        static const Enum::YLeaf packetLossDS;
-        static const Enum::YLeaf mos;
-        static const Enum::YLeaf timeout;
-        static const Enum::YLeaf connectionLoss;
-        static const Enum::YLeaf verifyError;
-        static const Enum::YLeaf jitterAvg;
-        static const Enum::YLeaf icpif;
-        static const Enum::YLeaf packetMIA;
-        static const Enum::YLeaf packetLateArrival;
-        static const Enum::YLeaf packetOutOfSequence;
-        static const Enum::YLeaf maxOfPositiveSD;
-        static const Enum::YLeaf maxOfNegativeSD;
-        static const Enum::YLeaf maxOfPositiveDS;
-        static const Enum::YLeaf maxOfNegativeDS;
-        static const Enum::YLeaf successivePacketLoss;
-        static const Enum::YLeaf maxOfLatencyDS;
-        static const Enum::YLeaf maxOfLatencySD;
-        static const Enum::YLeaf latencyDSAvg;
-        static const Enum::YLeaf latencySDAvg;
-        static const Enum::YLeaf packetLoss;
+        static const ydk::Enum::YLeaf notApplicable;
+        static const ydk::Enum::YLeaf g711ulaw;
+        static const ydk::Enum::YLeaf g711alaw;
+        static const ydk::Enum::YLeaf g729a;
 
 };
 

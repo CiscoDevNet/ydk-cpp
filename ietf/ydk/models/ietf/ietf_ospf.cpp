@@ -6,165 +6,167 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_ospf.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_ospf {
 
-IfLinkTypeIdentity::IfLinkTypeIdentity()
-     : Identity("ietf-ospf:if-link-type")
+Ospf::Ospf()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:ospf")
 {
 }
 
-IfLinkTypeIdentity::~IfLinkTypeIdentity()
+Ospf::~Ospf()
 {
 }
 
-AreaTypeIdentity::AreaTypeIdentity()
-     : Identity("ietf-ospf:area-type")
+OperationMode::OperationMode()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:operation-mode")
 {
 }
 
-AreaTypeIdentity::~AreaTypeIdentity()
+OperationMode::~OperationMode()
 {
 }
 
-Ospfv3Identity::Ospfv3Identity()
-     : Identity("ietf-ospf:ospfv3")
+IfLinkType::IfLinkType()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:if-link-type")
 {
 }
 
-Ospfv3Identity::~Ospfv3Identity()
+IfLinkType::~IfLinkType()
 {
 }
 
-Ospfv2Identity::Ospfv2Identity()
-     : Identity("ietf-ospf:ospfv2")
+AreaType::AreaType()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:area-type")
 {
 }
 
-Ospfv2Identity::~Ospfv2Identity()
+AreaType::~AreaType()
 {
 }
 
-OperationModeIdentity::OperationModeIdentity()
-     : Identity("ietf-ospf:operation-mode")
+Ospfv2::Ospfv2()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:ospfv2")
 {
 }
 
-OperationModeIdentity::~OperationModeIdentity()
+Ospfv2::~Ospfv2()
 {
 }
 
-OspfIdentity::OspfIdentity()
-     : Identity("ietf-ospf:ospf")
+Ospfv3::Ospfv3()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:ospfv3")
 {
 }
 
-OspfIdentity::~OspfIdentity()
+Ospfv3::~Ospfv3()
 {
 }
 
-NormalIdentity::NormalIdentity()
-     : Identity("ietf-ospf:normal")
+Stub::Stub()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:stub")
 {
 }
 
-NormalIdentity::~NormalIdentity()
+Stub::~Stub()
 {
 }
 
-NssaIdentity::NssaIdentity()
-     : Identity("ietf-ospf:nssa")
+IfLinkTypeNormal::IfLinkTypeNormal()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:if-link-type-normal")
 {
 }
 
-NssaIdentity::~NssaIdentity()
+IfLinkTypeNormal::~IfLinkTypeNormal()
 {
 }
 
-ShipsInTheNightIdentity::ShipsInTheNightIdentity()
-     : Identity("ietf-ospf:ships-in-the-night")
+Nssa::Nssa()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:nssa")
 {
 }
 
-ShipsInTheNightIdentity::~ShipsInTheNightIdentity()
+Nssa::~Nssa()
 {
 }
 
-StubIdentity::StubIdentity()
-     : Identity("ietf-ospf:stub")
+IfLinkTypeVirtualLink::IfLinkTypeVirtualLink()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:if-link-type-virtual-link")
 {
 }
 
-StubIdentity::~StubIdentity()
+IfLinkTypeVirtualLink::~IfLinkTypeVirtualLink()
 {
 }
 
-IfLinkTypeVirtualLinkIdentity::IfLinkTypeVirtualLinkIdentity()
-     : Identity("ietf-ospf:if-link-type-virtual-link")
+Normal::Normal()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:normal")
 {
 }
 
-IfLinkTypeVirtualLinkIdentity::~IfLinkTypeVirtualLinkIdentity()
+Normal::~Normal()
 {
 }
 
-IfLinkTypeNormalIdentity::IfLinkTypeNormalIdentity()
-     : Identity("ietf-ospf:if-link-type-normal")
+ShipsInTheNight::ShipsInTheNight()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:ships-in-the-night")
 {
 }
 
-IfLinkTypeNormalIdentity::~IfLinkTypeNormalIdentity()
+ShipsInTheNight::~ShipsInTheNight()
 {
 }
 
-IfLinkTypeShamLinkIdentity::IfLinkTypeShamLinkIdentity()
-     : Identity("ietf-ospf:if-link-type-sham-link")
+IfLinkTypeShamLink::IfLinkTypeShamLink()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ospf", "ietf-ospf", "ietf-ospf:if-link-type-sham-link")
 {
 }
 
-IfLinkTypeShamLinkIdentity::~IfLinkTypeShamLinkIdentity()
+IfLinkTypeShamLink::~IfLinkTypeShamLink()
 {
 }
 
-const Enum::YLeaf NbrStateTypeEnum::Down {1, "Down"};
-const Enum::YLeaf NbrStateTypeEnum::Attempt {2, "Attempt"};
-const Enum::YLeaf NbrStateTypeEnum::Init {3, "Init"};
-const Enum::YLeaf NbrStateTypeEnum::Y_2_Way {4, "2-Way"};
-const Enum::YLeaf NbrStateTypeEnum::ExStart {5, "ExStart"};
-const Enum::YLeaf NbrStateTypeEnum::Exchange {6, "Exchange"};
-const Enum::YLeaf NbrStateTypeEnum::Loading {7, "Loading"};
-const Enum::YLeaf NbrStateTypeEnum::Full {8, "Full"};
+const Enum::YLeaf NssaTranslatorStateType::Enabled {1, "Enabled"};
+const Enum::YLeaf NssaTranslatorStateType::Elected {2, "Elected"};
+const Enum::YLeaf NssaTranslatorStateType::Disabled {3, "Disabled"};
 
-const Enum::YLeaf IfStateTypeEnum::Down {1, "Down"};
-const Enum::YLeaf IfStateTypeEnum::Loopback {2, "Loopback"};
-const Enum::YLeaf IfStateTypeEnum::Waiting {3, "Waiting"};
-const Enum::YLeaf IfStateTypeEnum::Point_to_Point {4, "Point-to-Point"};
-const Enum::YLeaf IfStateTypeEnum::DR {5, "DR"};
-const Enum::YLeaf IfStateTypeEnum::BDR {6, "BDR"};
-const Enum::YLeaf IfStateTypeEnum::DR_Other {7, "DR-Other"};
+const Enum::YLeaf RestartStatusType::Not_Restarting {1, "Not-Restarting"};
+const Enum::YLeaf RestartStatusType::Planned_Restart {2, "Planned-Restart"};
+const Enum::YLeaf RestartStatusType::Unplanned_Restart {3, "Unplanned-Restart"};
 
-const Enum::YLeaf PacketTypeEnum::Hello {1, "Hello"};
-const Enum::YLeaf PacketTypeEnum::Database_Descripton {2, "Database-Descripton"};
-const Enum::YLeaf PacketTypeEnum::Link_State_Request {3, "Link-State-Request"};
-const Enum::YLeaf PacketTypeEnum::Link_State_Update {4, "Link-State-Update"};
-const Enum::YLeaf PacketTypeEnum::Link_State_Ack {5, "Link-State-Ack"};
+const Enum::YLeaf IfStateType::Down {1, "Down"};
+const Enum::YLeaf IfStateType::Loopback {2, "Loopback"};
+const Enum::YLeaf IfStateType::Waiting {3, "Waiting"};
+const Enum::YLeaf IfStateType::Point_to_Point {4, "Point-to-Point"};
+const Enum::YLeaf IfStateType::DR {5, "DR"};
+const Enum::YLeaf IfStateType::BDR {6, "BDR"};
+const Enum::YLeaf IfStateType::DR_Other {7, "DR-Other"};
 
-const Enum::YLeaf RestartExitReasonTypeEnum::None {1, "None"};
-const Enum::YLeaf RestartExitReasonTypeEnum::InProgress {2, "InProgress"};
-const Enum::YLeaf RestartExitReasonTypeEnum::Completed {3, "Completed"};
-const Enum::YLeaf RestartExitReasonTypeEnum::TimedOut {4, "TimedOut"};
-const Enum::YLeaf RestartExitReasonTypeEnum::TopologyChanged {5, "TopologyChanged"};
+const Enum::YLeaf NbrStateType::Down {1, "Down"};
+const Enum::YLeaf NbrStateType::Attempt {2, "Attempt"};
+const Enum::YLeaf NbrStateType::Init {3, "Init"};
+const Enum::YLeaf NbrStateType::Y_2_Way {4, "2-Way"};
+const Enum::YLeaf NbrStateType::ExStart {5, "ExStart"};
+const Enum::YLeaf NbrStateType::Exchange {6, "Exchange"};
+const Enum::YLeaf NbrStateType::Loading {7, "Loading"};
+const Enum::YLeaf NbrStateType::Full {8, "Full"};
 
-const Enum::YLeaf NssaTranslatorStateTypeEnum::Enabled {1, "Enabled"};
-const Enum::YLeaf NssaTranslatorStateTypeEnum::Elected {2, "Elected"};
-const Enum::YLeaf NssaTranslatorStateTypeEnum::Disabled {3, "Disabled"};
+const Enum::YLeaf RestartExitReasonType::None {1, "None"};
+const Enum::YLeaf RestartExitReasonType::InProgress {2, "InProgress"};
+const Enum::YLeaf RestartExitReasonType::Completed {3, "Completed"};
+const Enum::YLeaf RestartExitReasonType::TimedOut {4, "TimedOut"};
+const Enum::YLeaf RestartExitReasonType::TopologyChanged {5, "TopologyChanged"};
 
-const Enum::YLeaf RestartHelperStatusTypeEnum::Not_Helping {1, "Not-Helping"};
-const Enum::YLeaf RestartHelperStatusTypeEnum::Helping {2, "Helping"};
+const Enum::YLeaf PacketType::Hello {1, "Hello"};
+const Enum::YLeaf PacketType::Database_Descripton {2, "Database-Descripton"};
+const Enum::YLeaf PacketType::Link_State_Request {3, "Link-State-Request"};
+const Enum::YLeaf PacketType::Link_State_Update {4, "Link-State-Update"};
+const Enum::YLeaf PacketType::Link_State_Ack {5, "Link-State-Ack"};
 
-const Enum::YLeaf RestartStatusTypeEnum::Not_Restarting {1, "Not-Restarting"};
-const Enum::YLeaf RestartStatusTypeEnum::Planned_Restart {2, "Planned-Restart"};
-const Enum::YLeaf RestartStatusTypeEnum::Unplanned_Restart {3, "Unplanned-Restart"};
+const Enum::YLeaf RestartHelperStatusType::Not_Helping {1, "Not-Helping"};
+const Enum::YLeaf RestartHelperStatusType::Helping {2, "Helping"};
 
 
 }

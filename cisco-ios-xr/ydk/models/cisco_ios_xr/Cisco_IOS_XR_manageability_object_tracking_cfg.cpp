@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_manageability_object_tracking_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_manageability_object_tracking_cfg {
 
 ObjectTrackings::ObjectTrackings()
@@ -35,7 +37,7 @@ bool ObjectTrackings::has_operation() const
         if(object_tracking[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ObjectTrackings::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::get_children() c
     return children;
 }
 
-void ObjectTrackings::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ObjectTrackings::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string ObjectTrackings::get_bundle_name() const
 augment_capabilities_function ObjectTrackings::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ObjectTrackings::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ObjectTrackings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-tracking")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::ObjectTracking()
@@ -170,15 +188,15 @@ bool ObjectTrackings::ObjectTracking::has_data() const
 
 bool ObjectTrackings::ObjectTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(track_name.operation)
-	|| is_set(delay_down.operation)
-	|| is_set(delay_up.operation)
-	|| is_set(enable.operation)
-	|| is_set(type_boolean_list_and_enable.operation)
-	|| is_set(type_boolean_list_or_enable.operation)
-	|| is_set(type_interface_enable.operation)
-	|| is_set(type_route_enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(track_name.yfilter)
+	|| ydk::is_set(delay_down.yfilter)
+	|| ydk::is_set(delay_up.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(type_boolean_list_and_enable.yfilter)
+	|| ydk::is_set(type_boolean_list_or_enable.yfilter)
+	|| ydk::is_set(type_interface_enable.yfilter)
+	|| ydk::is_set(type_route_enable.yfilter)
 	|| (type_boolean_list !=  nullptr && type_boolean_list->has_operation())
 	|| (type_interface !=  nullptr && type_interface->has_operation())
 	|| (type_list !=  nullptr && type_list->has_operation())
@@ -208,14 +226,14 @@ const EntityPath ObjectTrackings::ObjectTracking::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (track_name.is_set || is_set(track_name.operation)) leaf_name_data.push_back(track_name.get_name_leafdata());
-    if (delay_down.is_set || is_set(delay_down.operation)) leaf_name_data.push_back(delay_down.get_name_leafdata());
-    if (delay_up.is_set || is_set(delay_up.operation)) leaf_name_data.push_back(delay_up.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (type_boolean_list_and_enable.is_set || is_set(type_boolean_list_and_enable.operation)) leaf_name_data.push_back(type_boolean_list_and_enable.get_name_leafdata());
-    if (type_boolean_list_or_enable.is_set || is_set(type_boolean_list_or_enable.operation)) leaf_name_data.push_back(type_boolean_list_or_enable.get_name_leafdata());
-    if (type_interface_enable.is_set || is_set(type_interface_enable.operation)) leaf_name_data.push_back(type_interface_enable.get_name_leafdata());
-    if (type_route_enable.is_set || is_set(type_route_enable.operation)) leaf_name_data.push_back(type_route_enable.get_name_leafdata());
+    if (track_name.is_set || is_set(track_name.yfilter)) leaf_name_data.push_back(track_name.get_name_leafdata());
+    if (delay_down.is_set || is_set(delay_down.yfilter)) leaf_name_data.push_back(delay_down.get_name_leafdata());
+    if (delay_up.is_set || is_set(delay_up.yfilter)) leaf_name_data.push_back(delay_up.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (type_boolean_list_and_enable.is_set || is_set(type_boolean_list_and_enable.yfilter)) leaf_name_data.push_back(type_boolean_list_and_enable.get_name_leafdata());
+    if (type_boolean_list_or_enable.is_set || is_set(type_boolean_list_or_enable.yfilter)) leaf_name_data.push_back(type_boolean_list_or_enable.get_name_leafdata());
+    if (type_interface_enable.is_set || is_set(type_interface_enable.yfilter)) leaf_name_data.push_back(type_interface_enable.get_name_leafdata());
+    if (type_route_enable.is_set || is_set(type_route_enable.yfilter)) leaf_name_data.push_back(type_route_enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -290,40 +308,99 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "track-name")
     {
         track_name = value;
+        track_name.value_namespace = name_space;
+        track_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay-down")
     {
         delay_down = value;
+        delay_down.value_namespace = name_space;
+        delay_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay-up")
     {
         delay_up = value;
+        delay_up.value_namespace = name_space;
+        delay_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type-boolean-list-and-enable")
     {
         type_boolean_list_and_enable = value;
+        type_boolean_list_and_enable.value_namespace = name_space;
+        type_boolean_list_and_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type-boolean-list-or-enable")
     {
         type_boolean_list_or_enable = value;
+        type_boolean_list_or_enable.value_namespace = name_space;
+        type_boolean_list_or_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type-interface-enable")
     {
         type_interface_enable = value;
+        type_interface_enable.value_namespace = name_space;
+        type_interface_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type-route-enable")
     {
         type_route_enable = value;
+        type_route_enable.value_namespace = name_space;
+        type_route_enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "track-name")
+    {
+        track_name.yfilter = yfilter;
+    }
+    if(value_path == "delay-down")
+    {
+        delay_down.yfilter = yfilter;
+    }
+    if(value_path == "delay-up")
+    {
+        delay_up.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "type-boolean-list-and-enable")
+    {
+        type_boolean_list_and_enable.yfilter = yfilter;
+    }
+    if(value_path == "type-boolean-list-or-enable")
+    {
+        type_boolean_list_or_enable.yfilter = yfilter;
+    }
+    if(value_path == "type-interface-enable")
+    {
+        type_interface_enable.yfilter = yfilter;
+    }
+    if(value_path == "type-route-enable")
+    {
+        type_route_enable.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type-boolean-list" || name == "type-interface" || name == "type-list" || name == "type-route" || name == "track-name" || name == "delay-down" || name == "delay-up" || name == "enable" || name == "type-boolean-list-and-enable" || name == "type-boolean-list-or-enable" || name == "type-interface-enable" || name == "type-route-enable")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeInterface::TypeInterface()
@@ -344,8 +421,8 @@ bool ObjectTrackings::ObjectTracking::TypeInterface::has_data() const
 
 bool ObjectTrackings::ObjectTracking::TypeInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeInterface::get_segment_path() const
@@ -371,7 +448,7 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeInterface::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -390,12 +467,29 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeInterface::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::TypeList()
@@ -430,7 +524,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::has_data() const
 
 bool ObjectTrackings::ObjectTracking::TypeList::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (threshold_percentage !=  nullptr && threshold_percentage->has_operation())
 	|| (threshold_percentage_object !=  nullptr && threshold_percentage_object->has_operation())
 	|| (threshold_weight !=  nullptr && threshold_weight->has_operation())
@@ -534,8 +628,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-percentage" || name == "threshold-percentage-object" || name == "threshold-weight" || name == "threshold-weight-object")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdWeight()
@@ -558,7 +663,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::has_data() cons
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (threshold_limits !=  nullptr && threshold_limits->has_operation());
 }
 
@@ -617,8 +722,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-limits")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdLimits()
@@ -641,7 +757,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (threshold_up_values !=  nullptr && threshold_up_values->has_operation());
 }
 
@@ -700,8 +816,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-up-values")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValues()
@@ -730,7 +857,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
         if(threshold_up_value[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_segment_path() const
@@ -795,8 +922,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-up-value")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::ThresholdUpValue()
@@ -819,9 +957,9 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(up.operation)
-	|| is_set(threshold_down.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(threshold_down.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_segment_path() const
@@ -847,8 +985,8 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Thr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (threshold_down.is_set || is_set(threshold_down.operation)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -867,16 +1005,39 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-down")
     {
         threshold_down = value;
+        threshold_down.value_namespace = name_space;
+        threshold_down.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "up" || name == "threshold-down")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::ThresholdPercentageObject()
@@ -905,7 +1066,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::has_o
         if(object[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::get_segment_path() const
@@ -970,8 +1131,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::Object()
@@ -994,9 +1166,9 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Objec
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(object.operation)
-	|| is_set(object_weight.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter)
+	|| ydk::is_set(object_weight.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::get_segment_path() const
@@ -1022,8 +1194,8 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageO
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object.is_set || is_set(object.operation)) leaf_name_data.push_back(object.get_name_leafdata());
-    if (object_weight.is_set || is_set(object_weight.operation)) leaf_name_data.push_back(object_weight.get_name_leafdata());
+    if (object.is_set || is_set(object.yfilter)) leaf_name_data.push_back(object.get_name_leafdata());
+    if (object_weight.is_set || is_set(object_weight.yfilter)) leaf_name_data.push_back(object_weight.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1042,16 +1214,39 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object = value;
+        object.value_namespace = name_space;
+        object.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-weight")
     {
         object_weight = value;
+        object_weight.value_namespace = name_space;
+        object_weight.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+    if(value_path == "object-weight")
+    {
+        object_weight.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject::Object::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object" || name == "object-weight")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdPercentage()
@@ -1074,7 +1269,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::has_data() 
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (threshold_limits !=  nullptr && threshold_limits->has_operation());
 }
 
@@ -1133,8 +1328,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-limits")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdLimits()
@@ -1157,7 +1363,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (threshold_up_values !=  nullptr && threshold_up_values->has_operation());
 }
 
@@ -1216,8 +1422,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-up-values")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValues()
@@ -1246,7 +1463,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
         if(threshold_up_value[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_segment_path() const
@@ -1311,8 +1528,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-up-value")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::ThresholdUpValue()
@@ -1335,9 +1563,9 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(up.operation)
-	|| is_set(threshold_down.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(threshold_down.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_segment_path() const
@@ -1363,8 +1591,8 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (threshold_down.is_set || is_set(threshold_down.operation)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1383,16 +1611,39 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-down")
     {
         threshold_down = value;
+        threshold_down.value_namespace = name_space;
+        threshold_down.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+    if(value_path == "threshold-down")
+    {
+        threshold_down.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "up" || name == "threshold-down")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::ThresholdWeightObject()
@@ -1421,7 +1672,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::has_opera
         if(object[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get_segment_path() const
@@ -1486,8 +1737,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::Object()
@@ -1510,9 +1772,9 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::h
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(object.operation)
-	|| is_set(object_weight.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter)
+	|| ydk::is_set(object_weight.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::get_segment_path() const
@@ -1538,8 +1800,8 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObjec
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object.is_set || is_set(object.operation)) leaf_name_data.push_back(object.get_name_leafdata());
-    if (object_weight.is_set || is_set(object_weight.operation)) leaf_name_data.push_back(object_weight.get_name_leafdata());
+    if (object.is_set || is_set(object.yfilter)) leaf_name_data.push_back(object.get_name_leafdata());
+    if (object_weight.is_set || is_set(object_weight.yfilter)) leaf_name_data.push_back(object_weight.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1558,16 +1820,39 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object = value;
+        object.value_namespace = name_space;
+        object.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-weight")
     {
         object_weight = value;
+        object_weight.value_namespace = name_space;
+        object_weight.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+    if(value_path == "object-weight")
+    {
+        object_weight.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Object::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object" || name == "object-weight")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeRoute::TypeRoute()
@@ -1591,8 +1876,8 @@ bool ObjectTrackings::ObjectTracking::TypeRoute::has_data() const
 
 bool ObjectTrackings::ObjectTracking::TypeRoute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf.yfilter)
 	|| (ip_address !=  nullptr && ip_address->has_operation());
 }
 
@@ -1619,7 +1904,7 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeRoute::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1652,12 +1937,29 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeRoute::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeRoute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeRoute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address" || name == "vrf")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::IpAddress()
@@ -1680,9 +1982,9 @@ bool ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::has_data() const
 
 bool ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(mask.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(mask.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_segment_path() const
@@ -1708,8 +2010,8 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (mask.is_set || is_set(mask.operation)) leaf_name_data.push_back(mask.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1728,16 +2030,39 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask")
     {
         mask = value;
+        mask.value_namespace = name_space;
+        mask.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "mask")
+    {
+        mask.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "mask")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::TypeBooleanList()
@@ -1764,7 +2089,7 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::has_data() const
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (and_objects !=  nullptr && and_objects->has_operation())
 	|| (or_objects !=  nullptr && or_objects->has_operation());
 }
@@ -1838,8 +2163,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeBooleanList::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeBooleanList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeBooleanList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBooleanList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "and-objects" || name == "or-objects")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObjects()
@@ -1868,7 +2204,7 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::has_operation(
         if(or_object[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_segment_path() const
@@ -1933,8 +2269,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "or-object")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::OrObject()
@@ -1957,9 +2304,9 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::has_
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(object.operation)
-	|| is_set(object_sign.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter)
+	|| ydk::is_set(object_sign.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::get_segment_path() const
@@ -1985,8 +2332,8 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::Or
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object.is_set || is_set(object.operation)) leaf_name_data.push_back(object.get_name_leafdata());
-    if (object_sign.is_set || is_set(object_sign.operation)) leaf_name_data.push_back(object_sign.get_name_leafdata());
+    if (object.is_set || is_set(object.yfilter)) leaf_name_data.push_back(object.get_name_leafdata());
+    if (object_sign.is_set || is_set(object_sign.yfilter)) leaf_name_data.push_back(object_sign.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2005,16 +2352,39 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object = value;
+        object.value_namespace = name_space;
+        object.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-sign")
     {
         object_sign = value;
+        object_sign.value_namespace = name_space;
+        object_sign.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+    if(value_path == "object-sign")
+    {
+        object_sign.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object" || name == "object-sign")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObjects()
@@ -2043,7 +2413,7 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::has_operation
         if(and_object[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_segment_path() const
@@ -2108,8 +2478,19 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "and-object")
+        return true;
+    return false;
 }
 
 ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::AndObject()
@@ -2132,9 +2513,9 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::ha
 
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(object_name.operation)
-	|| is_set(object_sign.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(object_sign.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::get_segment_path() const
@@ -2160,8 +2541,8 @@ const EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (object_sign.is_set || is_set(object_sign.operation)) leaf_name_data.push_back(object_sign.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (object_sign.is_set || is_set(object_sign.yfilter)) leaf_name_data.push_back(object_sign.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2180,16 +2561,39 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectTrackings::ObjectTracking::
     return children;
 }
 
-void ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::set_value(const std::string & value_path, std::string value)
+void ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-sign")
     {
         object_sign = value;
+        object_sign.value_namespace = name_space;
+        object_sign.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "object-sign")
+    {
+        object_sign.yfilter = yfilter;
+    }
+}
+
+bool ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-name" || name == "object-sign")
+        return true;
+    return false;
 }
 
 

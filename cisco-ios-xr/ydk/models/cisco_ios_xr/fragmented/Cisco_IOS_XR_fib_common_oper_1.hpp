@@ -9,11 +9,763 @@
 
 #include "Cisco_IOS_XR_fib_common_oper_0.hpp"
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_fib_common_oper {
 
 
-class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation : public Entity
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats : public ydk::Entity
+{
+    public:
+        FpdPlatfUpdStats();
+        ~FpdPlatfUpdStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fpus_num_success; //type: uint64
+        ydk::YLeaf fpus_num_failure; //type: uint64
+        ydk::YLeaf fpus_upd_total_time; //type: uint64
+        class FpusObjStat; //type: Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat> > fpus_obj_stat;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat : public ydk::Entity
+{
+    public:
+        FpusObjStat();
+        ~FpusObjStat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fos_tot_updates; //type: uint64
+        ydk::YLeaf fos_tot_upd_time; //type: uint64
+        class FosObjActStat; //type: Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat> > fos_obj_act_stat;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat : public ydk::Entity
+{
+    public:
+        FosObjActStat();
+        ~FosObjActStat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf foas_tot_updates; //type: uint64
+        ydk::YLeaf foas_tot_upd_time; //type: uint64
+        ydk::YLeaf foas_tot_updates_zero; //type: uint64
+        ydk::YLeaf foas_num_success; //type: uint64
+        ydk::YLeaf foas_num_failure; //type: uint64
+        ydk::YLeaf foas_max_time; //type: uint64
+        ydk::YLeaf foas_max_tstamp; //type: uint64
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatfUpdStats::FpusObjStat::FosObjActStat
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming : public ydk::Entity
+{
+    public:
+        FpdGtrieTiming();
+        ~FpdGtrieTiming();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fgt_num_success; //type: uint64
+        ydk::YLeaf fgt_num_failure; //type: uint64
+        ydk::YLeaf fgt_upd_total_time; //type: uint64
+        class FgtGtrieFnTiming; //type: Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming> > fgt_gtrie_fn_timing;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming : public ydk::Entity
+{
+    public:
+        FgtGtrieFnTiming();
+        ~FgtGtrieFnTiming();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fgft_fn; //type: string
+        ydk::YLeaf fgft_tot_updates; //type: uint64
+        ydk::YLeaf fgft_tot_updates_zero; //type: uint64
+        ydk::YLeaf fgft_tot_upd_time; //type: uint64
+        ydk::YLeaf fgft_max_time; //type: uint64
+        ydk::YLeaf fgft_max_tstamp; //type: uint64
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrieTiming::FgtGtrieFnTiming
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGbltblSrcEntry : public ydk::Entity
+{
+    public:
+        FpdGbltblSrcEntry();
+        ~FpdGbltblSrcEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint64
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGbltblSrcEntry
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdVrftblSrcEntry : public ydk::Entity
+{
+    public:
+        FpdVrftblSrcEntry();
+        ~FpdVrftblSrcEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint64
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdVrftblSrcEntry
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdNumRetry : public ydk::Entity
+{
+    public:
+        FpdNumRetry();
+        ~FpdNumRetry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint64
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdNumRetry
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr : public ydk::Entity
+{
+    public:
+        MiIdbPurgeCntr();
+        ~MiIdbPurgeCntr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FppCntr; //type: Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::FppCntr
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::FppCntr> > fpp_cntr;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::FppCntr : public ydk::Entity
+{
+    public:
+        FppCntr();
+        ~FppCntr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::FppCntr
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel : public ydk::Entity
+{
+    public:
+        MiDel();
+        ~MiDel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tableid; //type: uint32
+        ydk::YLeaf prfx; //type: string
+        ydk::YLeaf prfx_len; //type: uint16
+        ydk::YLeaf prfx_proto; //type: uint16
+        ydk::YLeaf msec_time; //type: uint64
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat : public ydk::Entity
+{
+    public:
+        MiFrrStat();
+        ~MiFrrStat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mi_num_intf_frr; //type: uint32
+        ydk::YLeaf mi_num_parent_intf_frr; //type: uint32
+        ydk::YLeaf mi_num_pfi_intf_down; //type: uint32
+        ydk::YLeaf mi_num_bfd_down; //type: uint32
+        ydk::YLeaf mi_num_prot_frr_objects; //type: uint32
+        ydk::YLeaf mi_num_bkup_frr_objects; //type: uint32
+        ydk::YLeaf mi_num_tunid_allocs; //type: uint32
+        ydk::YLeaf mi_num_tunid_alloc_failures; //type: uint32
+        ydk::YLeaf mi_num_tunid_frees; //type: uint32
+        ydk::YLeaf mi_num_tunid_free_failures; //type: uint32
+        ydk::YLeaf mi_num_frr_reset_queue_adds; //type: uint32
+        ydk::YLeaf mi_num_frr_reset_queue_remove; //type: uint32
+        ydk::YLeaf mi_num_frr_reset; //type: uint32
+        ydk::YLeaf mi_num_frr_proto_events; //type: uint32
+        ydk::YLeaf mi_num_frr_logs; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel : public ydk::Entity
+{
+    public:
+        LocalLabel();
+        ~LocalLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Conflicts; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts
+
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts> conflicts;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts : public ydk::Entity
+{
+    public:
+        Conflicts();
+        ~Conflicts();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Conflict; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict> > conflict;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict : public ydk::Entity
+{
+    public:
+        Conflict();
+        ~Conflict();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf source; //type: FibRouteSource
+        ydk::YLeaf ll_ctype; //type: FibllcEntry
+        ydk::YLeaf pfx_tbl_id; //type: int32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_len; //type: int32
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf source_xr; //type: uint32
+        ydk::YLeaf update_ts; //type: uint64
+        ydk::YLeaf retry_ts; //type: uint64
+        ydk::YLeaf num_retries; //type: uint32
+        class Ext; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext
+
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext> ext;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext : public ydk::Entity
+{
+    public:
+        Ext();
+        ~Ext();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: FibMplsLlcEntryBag
+        class Pfx; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx
+        class Lsm; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm
+
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm> lsm;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx> pfx;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx : public ydk::Entity
+{
+    public:
+        Pfx();
+        ~Pfx();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pfx; //type: string
+        ydk::YLeaf tbl_id; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm : public ydk::Entity
+{
+    public:
+        Lsm();
+        ~Lsm();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nh; //type: string
+        ydk::YLeaf mcast_id; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm
+
+class MplsForwarding : public ydk::Entity
+{
+    public:
+        MplsForwarding();
+        ~MplsForwarding();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Nodes; //type: MplsForwarding::Nodes
+
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes> nodes;
+        
+}; // MplsForwarding
+
+
+class MplsForwarding::Nodes : public ydk::Entity
+{
+    public:
+        Nodes();
+        ~Nodes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Node; //type: MplsForwarding::Nodes::Node
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node> > node;
+        
+}; // MplsForwarding::Nodes
+
+
+class MplsForwarding::Nodes::Node : public ydk::Entity
+{
+    public:
+        Node();
+        ~Node();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf node_name; //type: string
+        class ForwardingSummary; //type: MplsForwarding::Nodes::Node::ForwardingSummary
+        class FrrLogs; //type: MplsForwarding::Nodes::Node::FrrLogs
+        class LabelFib; //type: MplsForwarding::Nodes::Node::LabelFib
+        class Tunnel; //type: MplsForwarding::Nodes::Node::Tunnel
+        class FrrDatabase; //type: MplsForwarding::Nodes::Node::FrrDatabase
+
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::ForwardingSummary> forwarding_summary;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::FrrDatabase> frr_database;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::FrrLogs> frr_logs;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib> label_fib;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::Tunnel> tunnel;
+        
+}; // MplsForwarding::Nodes::Node
+
+
+class MplsForwarding::Nodes::Node::ForwardingSummary : public ydk::Entity
+{
+    public:
+        ForwardingSummary();
+        ~ForwardingSummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv4_imposition_entries; //type: uint32
+        ydk::YLeaf reserved_label_entries; //type: uint32
+        ydk::YLeaf label_switched_entries; //type: uint32
+        ydk::YLeaf deleted_stale_entries; //type: uint32
+        ydk::YLeaf te_head_entries; //type: uint32
+        ydk::YLeaf te_frr_head_entries; //type: uint32
+        ydk::YLeaf te_frr_interface_entries; //type: uint32
+        ydk::YLeaf te_frr_next_hop_entries; //type: uint32
+        ydk::YLeaf te_mid_points_entries; //type: uint32
+        ydk::YLeaf te_frr_mid_points_entries; //type: uint32
+        ydk::YLeaf te_internal_entries; //type: uint32
+        ydk::YLeaf te_frr_internal_entries; //type: uint32
+        ydk::YLeaf total_forwarding_updates; //type: uint32
+        ydk::YLeaf total_forwarding_update_messages; //type: uint32
+        ydk::YLeaf total_p2mp_forwarding_updates; //type: uint32
+        ydk::YLeaf total_p2mp_forwarding_added_or_modify_messages; //type: uint32
+        ydk::YLeaf total_p2mp_forwarding_delete_messages; //type: uint32
+        ydk::YLeaf total_p2mp_forwarding_drop_messages; //type: uint32
+        ydk::YLeaf total_p2mp_iir_forwarding_drop_messages; //type: uint32
+        ydk::YLeaf lowest_label; //type: uint32
+        ydk::YLeaf highest_label; //type: uint32
+        ydk::YLeaf ignore_protect; //type: uint32
+        ydk::YLeaf mte_head_entries; //type: uint32
+        ydk::YLeaf mte_ll_entries; //type: uint32
+        ydk::YLeaf mte_midpoint_entries; //type: uint32
+        ydk::YLeaf global_dropped_packets; //type: uint64
+        ydk::YLeaf global_fragmented_packets; //type: uint64
+        ydk::YLeaf global_failed_lookups; //type: uint64
+        ydk::YLeaf lrpf_entries; //type: uint32
+
+}; // MplsForwarding::Nodes::Node::ForwardingSummary
+
+
+class MplsForwarding::Nodes::Node::FrrLogs : public ydk::Entity
+{
+    public:
+        FrrLogs();
+        ~FrrLogs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FrrLog; //type: MplsForwarding::Nodes::Node::FrrLogs::FrrLog
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::FrrLogs::FrrLog> > frr_log;
+        
+}; // MplsForwarding::Nodes::Node::FrrLogs
+
+
+class MplsForwarding::Nodes::Node::FrrLogs::FrrLog : public ydk::Entity
+{
+    public:
+        FrrLog();
+        ~FrrLog();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf event_id; //type: int32
+        ydk::YLeaf protected_frr_interface_name; //type: string
+        ydk::YLeaf next_hop; //type: uint32
+        ydk::YLeaf number_of_rewrites_affected; //type: uint32
+        ydk::YLeaf switching_time_nsecs; //type: uint32
+        ydk::YLeaf main_processing; //type: uint32
+        ydk::YLeaf fast_bundle_member_down_interface; //type: uint32
+        ydk::YLeaf frr_event_node_id; //type: string
+        class StartTime; //type: MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime
+
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime> start_time;
+        
+}; // MplsForwarding::Nodes::Node::FrrLogs::FrrLog
+
+
+class MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime : public ydk::Entity
+{
+    public:
+        StartTime();
+        ~StartTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: int32
+        ydk::YLeaf nanoseconds; //type: int32
+
+}; // MplsForwarding::Nodes::Node::FrrLogs::FrrLog::StartTime
+
+
+class MplsForwarding::Nodes::Node::LabelFib : public ydk::Entity
+{
+    public:
+        LabelFib();
+        ~LabelFib();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ForwardingDetails; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails
+        class Informations; //type: MplsForwarding::Nodes::Node::LabelFib::Informations
+        class LabelSecurity; //type: MplsForwarding::Nodes::Node::LabelFib::LabelSecurity
+
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails> forwarding_details;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::Informations> informations;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::LabelSecurity> label_security;
+        
+}; // MplsForwarding::Nodes::Node::LabelFib
+
+
+class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails : public ydk::Entity
+{
+    public:
+        ForwardingDetails();
+        ~ForwardingDetails();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ForwardingDetail; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail> > forwarding_detail;
+        
+}; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails
+
+
+class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail : public ydk::Entity
+{
+    public:
+        ForwardingDetail();
+        ~ForwardingDetail();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf label_value; //type: uint32
+        ydk::YLeaf eos; //type: Mplseos
+        ydk::YLeaf leaf_local_label; //type: uint32
+        ydk::YLeaf eos_bit; //type: uint32
+        ydk::YLeaf hardware_information; //type: string
+        ydk::YLeaf leaf_referance_count; //type: uint32
+        ydk::YLeaf leaf_flags; //type: uint32
+        ydk::YLeaf path_list_referance_count; //type: uint32
+        ydk::YLeaf path_list_flags; //type: uint32
+        ydk::YLeaf ldi_referance_count; //type: uint32
+        ydk::YLeaf ldi_flags; //type: uint32
+        ydk::YLeaf ldi_type; //type: uint32
+        ydk::YLeaf ldi_pointer; //type: uint32
+        ydk::YLeaf lw_ldi_type; //type: uint32
+        ydk::YLeaf lw_ldi_pointer; //type: uint32
+        ydk::YLeaf lw_ldi_refernace_count; //type: uint32
+        ydk::YLeaf lw_shared_ldi_pointer; //type: uint32
+        ydk::YLeaf lspa_flags; //type: uint32
+        ydk::YLeaf afi_table_id; //type: uint32
+        ydk::YLeaf multicast_label; //type: boolean
+        ydk::YLeaf leaf_time_in_milli_seconds; //type: uint64
+        class LdiInformation; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation
+        class MulticastInformation; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation
+        class LabelInformation; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation> > label_information;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation> ldi_information;
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation> multicast_information;
+        
+}; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
+
+
+class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation : public ydk::Entity
 {
     public:
         LdiInformation();
@@ -21,18 +773,20 @@ class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ldi_hardware_information; //type: string
+        ydk::YLeaf ldi_hardware_information; //type: string
 
 }; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LdiInformation
 
 
-class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation : public ydk::Entity
 {
     public:
         MulticastInformation();
@@ -40,31 +794,33 @@ class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf multicast_mol_base_flags; //type: uint32
-        YLeaf multicast_mol_flags; //type: uint16
-        YLeaf multicast_mol_referance_count; //type: uint16
-        YLeaf multicast_tunnel_interface_handler; //type: string
-        YLeaf multicast_tunnel_id; //type: uint32
-        YLeaf multicast_tunnel_next_hop_information; //type: uint32
-        YLeaf multicast_tunnel_lspvif; //type: uint32
-        YLeaf multicast_mpls_output_paths; //type: uint16
-        YLeaf multicast_mpls_protocol_output_paths; //type: uint16
-        YLeaf multicast_mpls_local_output_paths; //type: uint16
-        YLeaf multicast_rpf_id; //type: uint32
-        YLeaf multicast_encap_id; //type: uint32
-        YLeaf multicast_platform_data_length; //type: uint8
-        YLeaf multicast_platform_data; //type: string
+        ydk::YLeaf multicast_mol_base_flags; //type: uint32
+        ydk::YLeaf multicast_mol_flags; //type: uint16
+        ydk::YLeaf multicast_mol_referance_count; //type: uint16
+        ydk::YLeaf multicast_tunnel_interface_handler; //type: string
+        ydk::YLeaf multicast_tunnel_id; //type: uint32
+        ydk::YLeaf multicast_tunnel_next_hop_information; //type: uint32
+        ydk::YLeaf multicast_tunnel_lspvif; //type: uint32
+        ydk::YLeaf multicast_mpls_output_paths; //type: uint16
+        ydk::YLeaf multicast_mpls_protocol_output_paths; //type: uint16
+        ydk::YLeaf multicast_mpls_local_output_paths; //type: uint16
+        ydk::YLeaf multicast_rpf_id; //type: uint32
+        ydk::YLeaf multicast_encap_id; //type: uint32
+        ydk::YLeaf multicast_platform_data_length; //type: uint8
+        ydk::YLeaf multicast_platform_data; //type: string
 
 }; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::MulticastInformation
 
 
-class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation : public ydk::Entity
 {
     public:
         LabelInformation();
@@ -72,39 +828,43 @@ class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label_information_type; //type: uint32
-        YLeaf local_label; //type: uint32
-        YLeaf outgoing_label; //type: uint32
-        YLeaf mpls_adjacency_flags; //type: uint32
-        YLeaf tunnel_id_present; //type: boolean
-        YLeaf outgoing_interface; //type: string
-        YLeaf outgoing_physical_interface; //type: string
-        YLeaf tunnel_interface; //type: string
-        YLeaf label_information_path_index; //type: uint32
-        YLeaf label_information_next_hop_type; //type: NextHopEnum
-        YLeaf label_information_next_hop_protocol; //type: ProtoEnum
-        YLeaf tx_bytes; //type: uint64
-        YLeaf tx_packets; //type: uint64
-        YLeaf outgoing_interface_string; //type: string
-        YLeaf outgoing_label_string; //type: string
-        YLeaf prefix_or_id; //type: string
-        YLeaf label_information_next_hop_string; //type: string
-        YLeaf label_information_route_version; //type: uint64
-        YLeaf label_information_time_in_milli_seconds; //type: uint64
+        ydk::YLeaf label_information_type; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf mpls_adjacency_flags; //type: uint32
+        ydk::YLeaf tunnel_id_present; //type: boolean
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_physical_interface; //type: string
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf label_information_path_index; //type: uint32
+        ydk::YLeaf label_information_next_hop_type; //type: NextHop
+        ydk::YLeaf label_information_next_hop_protocol; //type: Proto
+        ydk::YLeaf tx_bytes; //type: uint64
+        ydk::YLeaf tx_packets; //type: uint64
+        ydk::YLeaf outgoing_interface_string; //type: string
+        ydk::YLeaf outgoing_label_string; //type: string
+        ydk::YLeaf prefix_or_id; //type: string
+        ydk::YLeaf label_information_next_hop_string; //type: string
+        ydk::YLeaf label_information_route_version; //type: uint64
+        ydk::YLeaf label_information_time_in_milli_seconds; //type: uint64
         class LabelInformationDetail; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail
+        class ExactRouteHashInfo; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::ExactRouteHashInfo
 
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::ExactRouteHashInfo> exact_route_hash_info;
         std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail> label_information_detail;
         
 }; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation
 
 
-class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail : public ydk::Entity
 {
     public:
         LabelInformationDetail();
@@ -112,27 +872,74 @@ class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf l3_mtu; //type: uint32
-        YLeaf total_encapsulation_size; //type: uint32
-        YLeaf mac_size; //type: uint32
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf status; //type: int32
-        YLeaf next_hop_interface; //type: string
-        YLeaf next_hop_protocol; //type: ProtoEnum
-        YLeaf next_hop_string; //type: string
-        YLeafList label_stack; //type: list of  uint32
+        ydk::YLeaf l3_mtu; //type: uint32
+        ydk::YLeaf total_encapsulation_size; //type: uint32
+        ydk::YLeaf mac_size; //type: uint32
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf status; //type: int32
+        ydk::YLeaf next_hop_interface; //type: string
+        ydk::YLeaf next_hop_protocol; //type: Proto
+        ydk::YLeaf next_hop_string; //type: string
+        class LabelStack; //type: MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::LabelStack
 
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::LabelStack> > label_stack;
+        
 }; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail
 
 
-class MplsForwarding::Nodes::Node::LabelFib::Informations : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::LabelStack : public ydk::Entity
+{
+    public:
+        LabelStack();
+        ~LabelStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::LabelStack
+
+
+class MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::ExactRouteHashInfo : public ydk::Entity
+{
+    public:
+        ExactRouteHashInfo();
+        ~ExactRouteHashInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hash_index_is_valid; //type: boolean
+        ydk::YLeaf hash_index; //type: uint8
+
+}; // MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::ExactRouteHashInfo
+
+
+class MplsForwarding::Nodes::Node::LabelFib::Informations : public ydk::Entity
 {
     public:
         Informations();
@@ -140,11 +947,13 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Information; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information
 
@@ -153,7 +962,7 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations : public Entity
 }; // MplsForwarding::Nodes::Node::LabelFib::Informations
 
 
-class MplsForwarding::Nodes::Node::LabelFib::Informations::Information : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::Informations::Information : public ydk::Entity
 {
     public:
         Information();
@@ -161,33 +970,35 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations::Information : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label_value; //type: uint32
-        YLeaf eos; //type: MplseosEnum
-        YLeaf leaf_local_label; //type: uint32
-        YLeaf eos_bit; //type: uint32
-        YLeaf hardware_information; //type: string
-        YLeaf leaf_referance_count; //type: uint32
-        YLeaf leaf_flags; //type: uint32
-        YLeaf path_list_referance_count; //type: uint32
-        YLeaf path_list_flags; //type: uint32
-        YLeaf ldi_referance_count; //type: uint32
-        YLeaf ldi_flags; //type: uint32
-        YLeaf ldi_type; //type: uint32
-        YLeaf ldi_pointer; //type: uint32
-        YLeaf lw_ldi_type; //type: uint32
-        YLeaf lw_ldi_pointer; //type: uint32
-        YLeaf lw_ldi_refernace_count; //type: uint32
-        YLeaf lw_shared_ldi_pointer; //type: uint32
-        YLeaf lspa_flags; //type: uint32
-        YLeaf afi_table_id; //type: uint32
-        YLeaf multicast_label; //type: boolean
-        YLeaf leaf_time_in_milli_seconds; //type: uint64
+        ydk::YLeaf label_value; //type: uint32
+        ydk::YLeaf eos; //type: Mplseos
+        ydk::YLeaf leaf_local_label; //type: uint32
+        ydk::YLeaf eos_bit; //type: uint32
+        ydk::YLeaf hardware_information; //type: string
+        ydk::YLeaf leaf_referance_count; //type: uint32
+        ydk::YLeaf leaf_flags; //type: uint32
+        ydk::YLeaf path_list_referance_count; //type: uint32
+        ydk::YLeaf path_list_flags; //type: uint32
+        ydk::YLeaf ldi_referance_count; //type: uint32
+        ydk::YLeaf ldi_flags; //type: uint32
+        ydk::YLeaf ldi_type; //type: uint32
+        ydk::YLeaf ldi_pointer; //type: uint32
+        ydk::YLeaf lw_ldi_type; //type: uint32
+        ydk::YLeaf lw_ldi_pointer; //type: uint32
+        ydk::YLeaf lw_ldi_refernace_count; //type: uint32
+        ydk::YLeaf lw_shared_ldi_pointer; //type: uint32
+        ydk::YLeaf lspa_flags; //type: uint32
+        ydk::YLeaf afi_table_id; //type: uint32
+        ydk::YLeaf multicast_label; //type: boolean
+        ydk::YLeaf leaf_time_in_milli_seconds; //type: uint64
         class LdiInformation; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation
         class MulticastInformation; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation
         class LabelInformation; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation
@@ -199,7 +1010,7 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations::Information : public 
 }; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information
 
 
-class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation : public ydk::Entity
 {
     public:
         LdiInformation();
@@ -207,18 +1018,20 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInfor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ldi_hardware_information; //type: string
+        ydk::YLeaf ldi_hardware_information; //type: string
 
 }; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LdiInformation
 
 
-class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation : public ydk::Entity
 {
     public:
         MulticastInformation();
@@ -226,31 +1039,33 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Multicas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf multicast_mol_base_flags; //type: uint32
-        YLeaf multicast_mol_flags; //type: uint16
-        YLeaf multicast_mol_referance_count; //type: uint16
-        YLeaf multicast_tunnel_interface_handler; //type: string
-        YLeaf multicast_tunnel_id; //type: uint32
-        YLeaf multicast_tunnel_next_hop_information; //type: uint32
-        YLeaf multicast_tunnel_lspvif; //type: uint32
-        YLeaf multicast_mpls_output_paths; //type: uint16
-        YLeaf multicast_mpls_protocol_output_paths; //type: uint16
-        YLeaf multicast_mpls_local_output_paths; //type: uint16
-        YLeaf multicast_rpf_id; //type: uint32
-        YLeaf multicast_encap_id; //type: uint32
-        YLeaf multicast_platform_data_length; //type: uint8
-        YLeaf multicast_platform_data; //type: string
+        ydk::YLeaf multicast_mol_base_flags; //type: uint32
+        ydk::YLeaf multicast_mol_flags; //type: uint16
+        ydk::YLeaf multicast_mol_referance_count; //type: uint16
+        ydk::YLeaf multicast_tunnel_interface_handler; //type: string
+        ydk::YLeaf multicast_tunnel_id; //type: uint32
+        ydk::YLeaf multicast_tunnel_next_hop_information; //type: uint32
+        ydk::YLeaf multicast_tunnel_lspvif; //type: uint32
+        ydk::YLeaf multicast_mpls_output_paths; //type: uint16
+        ydk::YLeaf multicast_mpls_protocol_output_paths; //type: uint16
+        ydk::YLeaf multicast_mpls_local_output_paths; //type: uint16
+        ydk::YLeaf multicast_rpf_id; //type: uint32
+        ydk::YLeaf multicast_encap_id; //type: uint32
+        ydk::YLeaf multicast_platform_data_length; //type: uint8
+        ydk::YLeaf multicast_platform_data; //type: string
 
 }; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information::MulticastInformation
 
 
-class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation : public ydk::Entity
 {
     public:
         LabelInformation();
@@ -258,39 +1073,43 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label_information_type; //type: uint32
-        YLeaf local_label; //type: uint32
-        YLeaf outgoing_label; //type: uint32
-        YLeaf mpls_adjacency_flags; //type: uint32
-        YLeaf tunnel_id_present; //type: boolean
-        YLeaf outgoing_interface; //type: string
-        YLeaf outgoing_physical_interface; //type: string
-        YLeaf tunnel_interface; //type: string
-        YLeaf label_information_path_index; //type: uint32
-        YLeaf label_information_next_hop_type; //type: NextHopEnum
-        YLeaf label_information_next_hop_protocol; //type: ProtoEnum
-        YLeaf tx_bytes; //type: uint64
-        YLeaf tx_packets; //type: uint64
-        YLeaf outgoing_interface_string; //type: string
-        YLeaf outgoing_label_string; //type: string
-        YLeaf prefix_or_id; //type: string
-        YLeaf label_information_next_hop_string; //type: string
-        YLeaf label_information_route_version; //type: uint64
-        YLeaf label_information_time_in_milli_seconds; //type: uint64
+        ydk::YLeaf label_information_type; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf mpls_adjacency_flags; //type: uint32
+        ydk::YLeaf tunnel_id_present; //type: boolean
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_physical_interface; //type: string
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf label_information_path_index; //type: uint32
+        ydk::YLeaf label_information_next_hop_type; //type: NextHop
+        ydk::YLeaf label_information_next_hop_protocol; //type: Proto
+        ydk::YLeaf tx_bytes; //type: uint64
+        ydk::YLeaf tx_packets; //type: uint64
+        ydk::YLeaf outgoing_interface_string; //type: string
+        ydk::YLeaf outgoing_label_string; //type: string
+        ydk::YLeaf prefix_or_id; //type: string
+        ydk::YLeaf label_information_next_hop_string; //type: string
+        ydk::YLeaf label_information_route_version; //type: uint64
+        ydk::YLeaf label_information_time_in_milli_seconds; //type: uint64
         class LabelInformationDetail; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail
+        class ExactRouteHashInfo; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::ExactRouteHashInfo
 
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::ExactRouteHashInfo> exact_route_hash_info;
         std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail> label_information_detail;
         
 }; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation
 
 
-class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail : public ydk::Entity
 {
     public:
         LabelInformationDetail();
@@ -298,27 +1117,74 @@ class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf l3_mtu; //type: uint32
-        YLeaf total_encapsulation_size; //type: uint32
-        YLeaf mac_size; //type: uint32
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf status; //type: int32
-        YLeaf next_hop_interface; //type: string
-        YLeaf next_hop_protocol; //type: ProtoEnum
-        YLeaf next_hop_string; //type: string
-        YLeafList label_stack; //type: list of  uint32
+        ydk::YLeaf l3_mtu; //type: uint32
+        ydk::YLeaf total_encapsulation_size; //type: uint32
+        ydk::YLeaf mac_size; //type: uint32
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf status; //type: int32
+        ydk::YLeaf next_hop_interface; //type: string
+        ydk::YLeaf next_hop_protocol; //type: Proto
+        ydk::YLeaf next_hop_string; //type: string
+        class LabelStack; //type: MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::LabelStack
 
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::LabelStack> > label_stack;
+        
 }; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail
 
 
-class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::LabelStack : public ydk::Entity
+{
+    public:
+        LabelStack();
+        ~LabelStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::LabelStack
+
+
+class MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::ExactRouteHashInfo : public ydk::Entity
+{
+    public:
+        ExactRouteHashInfo();
+        ~ExactRouteHashInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hash_index_is_valid; //type: boolean
+        ydk::YLeaf hash_index; //type: uint8
+
+}; // MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::ExactRouteHashInfo
+
+
+class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity : public ydk::Entity
 {
     public:
         LabelSecurity();
@@ -326,11 +1192,13 @@ class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interfaces; //type: MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces
         class Summary; //type: MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary
@@ -341,7 +1209,7 @@ class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity : public Entity
 }; // MplsForwarding::Nodes::Node::LabelFib::LabelSecurity
 
 
-class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -349,11 +1217,13 @@ class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface
 
@@ -362,7 +1232,7 @@ class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces : public 
 }; // MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces
 
 
-class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -370,25 +1240,27 @@ class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interfac
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf rpf_enabled; //type: boolean
-        YLeaf rpf_supported; //type: boolean
-        YLeaf mld_enabled; //type: boolean
-        YLeaf mld_supported; //type: boolean
-        YLeaf rpf_drops; //type: uint64
-        YLeaf multi_label_drops; //type: uint64
-        YLeaf rpfifh; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf rpf_enabled; //type: boolean
+        ydk::YLeaf rpf_supported; //type: boolean
+        ydk::YLeaf mld_enabled; //type: boolean
+        ydk::YLeaf mld_supported; //type: boolean
+        ydk::YLeaf rpf_drops; //type: uint64
+        ydk::YLeaf multi_label_drops; //type: uint64
+        ydk::YLeaf rpfifh; //type: string
 
 }; // MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Interface
 
 
-class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary : public Entity
+class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -396,19 +1268,21 @@ class MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rpf_drops; //type: uint64
-        YLeaf multi_label_drops; //type: uint64
+        ydk::YLeaf rpf_drops; //type: uint64
+        ydk::YLeaf multi_label_drops; //type: uint64
 
 }; // MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary
 
 
-class MplsForwarding::Nodes::Node::Tunnel : public Entity
+class MplsForwarding::Nodes::Node::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -416,11 +1290,13 @@ class MplsForwarding::Nodes::Node::Tunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ForwardingTunnels; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels
 
@@ -429,7 +1305,7 @@ class MplsForwarding::Nodes::Node::Tunnel : public Entity
 }; // MplsForwarding::Nodes::Node::Tunnel
 
 
-class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels : public ydk::Entity
 {
     public:
         ForwardingTunnels();
@@ -437,11 +1313,13 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ForwardingTunnel; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel
 
@@ -450,7 +1328,7 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels : public Entity
 }; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels
 
 
-class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel : public ydk::Entity
 {
     public:
         ForwardingTunnel();
@@ -458,13 +1336,15 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
         class TunnelInfo; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo
         class Fwdg; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg
 
@@ -474,7 +1354,7 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel :
 }; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel
 
 
-class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo : public ydk::Entity
 {
     public:
         TunnelInfo();
@@ -482,30 +1362,27 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnel_interface_name; //type: string
-        YLeaf tunnel_local_label; //type: uint32
-        YLeaf tunnel_fwd_class; //type: uint8
-        YLeaf tunnel_load_metric; //type: uint8
-        YLeaf tunnel_is_srte; //type: boolean
-        YLeaf tunnel_resolution_incomplete; //type: boolean
-        YLeaf tunnel_resolution_inconsistent; //type: boolean
-        YLeaf tunnel_is_programmed_to_drop; //type: boolean
-        YLeaf tli_type; //type: uint32
-        YLeaf tli_pointer; //type: uint32
-        YLeaf tli_reference_count; //type: uint32
-        YLeaf tli_flags; //type: uint32
-        YLeaf tli_flags_extended; //type: uint32
+        ydk::YLeaf tunnel_interface_name; //type: string
+        ydk::YLeaf tunnel_local_label; //type: uint32
+        ydk::YLeaf tunnel_fwd_class; //type: uint8
+        ydk::YLeaf tunnel_load_metric; //type: uint8
+        ydk::YLeaf tunnel_is_srte; //type: boolean
+        ydk::YLeaf tunnel_resolution_incomplete; //type: boolean
+        ydk::YLeaf tunnel_resolution_inconsistent; //type: boolean
+        ydk::YLeaf tunnel_is_programmed_to_drop; //type: boolean
 
 }; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::TunnelInfo
 
 
-class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg : public ydk::Entity
 {
     public:
         Fwdg();
@@ -513,31 +1390,33 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf leaf_local_label; //type: uint32
-        YLeaf eos_bit; //type: uint32
-        YLeaf hardware_information; //type: string
-        YLeaf leaf_referance_count; //type: uint32
-        YLeaf leaf_flags; //type: uint32
-        YLeaf path_list_referance_count; //type: uint32
-        YLeaf path_list_flags; //type: uint32
-        YLeaf ldi_referance_count; //type: uint32
-        YLeaf ldi_flags; //type: uint32
-        YLeaf ldi_type; //type: uint32
-        YLeaf ldi_pointer; //type: uint32
-        YLeaf lw_ldi_type; //type: uint32
-        YLeaf lw_ldi_pointer; //type: uint32
-        YLeaf lw_ldi_refernace_count; //type: uint32
-        YLeaf lw_shared_ldi_pointer; //type: uint32
-        YLeaf lspa_flags; //type: uint32
-        YLeaf afi_table_id; //type: uint32
-        YLeaf multicast_label; //type: boolean
-        YLeaf leaf_time_in_milli_seconds; //type: uint64
+        ydk::YLeaf leaf_local_label; //type: uint32
+        ydk::YLeaf eos_bit; //type: uint32
+        ydk::YLeaf hardware_information; //type: string
+        ydk::YLeaf leaf_referance_count; //type: uint32
+        ydk::YLeaf leaf_flags; //type: uint32
+        ydk::YLeaf path_list_referance_count; //type: uint32
+        ydk::YLeaf path_list_flags; //type: uint32
+        ydk::YLeaf ldi_referance_count; //type: uint32
+        ydk::YLeaf ldi_flags; //type: uint32
+        ydk::YLeaf ldi_type; //type: uint32
+        ydk::YLeaf ldi_pointer; //type: uint32
+        ydk::YLeaf lw_ldi_type; //type: uint32
+        ydk::YLeaf lw_ldi_pointer; //type: uint32
+        ydk::YLeaf lw_ldi_refernace_count; //type: uint32
+        ydk::YLeaf lw_shared_ldi_pointer; //type: uint32
+        ydk::YLeaf lspa_flags; //type: uint32
+        ydk::YLeaf afi_table_id; //type: uint32
+        ydk::YLeaf multicast_label; //type: boolean
+        ydk::YLeaf leaf_time_in_milli_seconds; //type: uint64
         class LdiInformation; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation
         class MulticastInformation; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation
         class LabelInformation; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation
@@ -549,7 +1428,7 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
 }; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg
 
 
-class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation : public ydk::Entity
 {
     public:
         LdiInformation();
@@ -557,18 +1436,20 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ldi_hardware_information; //type: string
+        ydk::YLeaf ldi_hardware_information; //type: string
 
 }; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LdiInformation
 
 
-class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation : public ydk::Entity
 {
     public:
         MulticastInformation();
@@ -576,31 +1457,33 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf multicast_mol_base_flags; //type: uint32
-        YLeaf multicast_mol_flags; //type: uint16
-        YLeaf multicast_mol_referance_count; //type: uint16
-        YLeaf multicast_tunnel_interface_handler; //type: string
-        YLeaf multicast_tunnel_id; //type: uint32
-        YLeaf multicast_tunnel_next_hop_information; //type: uint32
-        YLeaf multicast_tunnel_lspvif; //type: uint32
-        YLeaf multicast_mpls_output_paths; //type: uint16
-        YLeaf multicast_mpls_protocol_output_paths; //type: uint16
-        YLeaf multicast_mpls_local_output_paths; //type: uint16
-        YLeaf multicast_rpf_id; //type: uint32
-        YLeaf multicast_encap_id; //type: uint32
-        YLeaf multicast_platform_data_length; //type: uint8
-        YLeaf multicast_platform_data; //type: string
+        ydk::YLeaf multicast_mol_base_flags; //type: uint32
+        ydk::YLeaf multicast_mol_flags; //type: uint16
+        ydk::YLeaf multicast_mol_referance_count; //type: uint16
+        ydk::YLeaf multicast_tunnel_interface_handler; //type: string
+        ydk::YLeaf multicast_tunnel_id; //type: uint32
+        ydk::YLeaf multicast_tunnel_next_hop_information; //type: uint32
+        ydk::YLeaf multicast_tunnel_lspvif; //type: uint32
+        ydk::YLeaf multicast_mpls_output_paths; //type: uint16
+        ydk::YLeaf multicast_mpls_protocol_output_paths; //type: uint16
+        ydk::YLeaf multicast_mpls_local_output_paths; //type: uint16
+        ydk::YLeaf multicast_rpf_id; //type: uint32
+        ydk::YLeaf multicast_encap_id; //type: uint32
+        ydk::YLeaf multicast_platform_data_length; //type: uint8
+        ydk::YLeaf multicast_platform_data; //type: string
 
 }; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::MulticastInformation
 
 
-class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation : public ydk::Entity
 {
     public:
         LabelInformation();
@@ -608,39 +1491,43 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label_information_type; //type: uint32
-        YLeaf local_label; //type: uint32
-        YLeaf outgoing_label; //type: uint32
-        YLeaf mpls_adjacency_flags; //type: uint32
-        YLeaf tunnel_id_present; //type: boolean
-        YLeaf outgoing_interface; //type: string
-        YLeaf outgoing_physical_interface; //type: string
-        YLeaf tunnel_interface; //type: string
-        YLeaf label_information_path_index; //type: uint32
-        YLeaf label_information_next_hop_type; //type: NextHopEnum
-        YLeaf label_information_next_hop_protocol; //type: ProtoEnum
-        YLeaf tx_bytes; //type: uint64
-        YLeaf tx_packets; //type: uint64
-        YLeaf outgoing_interface_string; //type: string
-        YLeaf outgoing_label_string; //type: string
-        YLeaf prefix_or_id; //type: string
-        YLeaf label_information_next_hop_string; //type: string
-        YLeaf label_information_route_version; //type: uint64
-        YLeaf label_information_time_in_milli_seconds; //type: uint64
+        ydk::YLeaf label_information_type; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf mpls_adjacency_flags; //type: uint32
+        ydk::YLeaf tunnel_id_present; //type: boolean
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_physical_interface; //type: string
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf label_information_path_index; //type: uint32
+        ydk::YLeaf label_information_next_hop_type; //type: NextHop
+        ydk::YLeaf label_information_next_hop_protocol; //type: Proto
+        ydk::YLeaf tx_bytes; //type: uint64
+        ydk::YLeaf tx_packets; //type: uint64
+        ydk::YLeaf outgoing_interface_string; //type: string
+        ydk::YLeaf outgoing_label_string; //type: string
+        ydk::YLeaf prefix_or_id; //type: string
+        ydk::YLeaf label_information_next_hop_string; //type: string
+        ydk::YLeaf label_information_route_version; //type: uint64
+        ydk::YLeaf label_information_time_in_milli_seconds; //type: uint64
         class LabelInformationDetail; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail
+        class ExactRouteHashInfo; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::ExactRouteHashInfo
 
+        std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::ExactRouteHashInfo> exact_route_hash_info;
         std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail> label_information_detail;
         
 }; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation
 
 
-class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail : public ydk::Entity
 {
     public:
         LabelInformationDetail();
@@ -648,27 +1535,74 @@ class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf l3_mtu; //type: uint32
-        YLeaf total_encapsulation_size; //type: uint32
-        YLeaf mac_size; //type: uint32
-        YLeaf transmit_number_of_packets_switched; //type: uint64
-        YLeaf transmit_number_of_bytes_switched; //type: uint64
-        YLeaf status; //type: int32
-        YLeaf next_hop_interface; //type: string
-        YLeaf next_hop_protocol; //type: ProtoEnum
-        YLeaf next_hop_string; //type: string
-        YLeafList label_stack; //type: list of  uint32
+        ydk::YLeaf l3_mtu; //type: uint32
+        ydk::YLeaf total_encapsulation_size; //type: uint32
+        ydk::YLeaf mac_size; //type: uint32
+        ydk::YLeaf transmit_number_of_packets_switched; //type: uint64
+        ydk::YLeaf transmit_number_of_bytes_switched; //type: uint64
+        ydk::YLeaf status; //type: int32
+        ydk::YLeaf next_hop_interface; //type: string
+        ydk::YLeaf next_hop_protocol; //type: Proto
+        ydk::YLeaf next_hop_string; //type: string
+        class LabelStack; //type: MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::LabelStack
 
+        std::vector<std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::LabelStack> > label_stack;
+        
 }; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase : public Entity
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::LabelStack : public ydk::Entity
+{
+    public:
+        LabelStack();
+        ~LabelStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::LabelInformationDetail::LabelStack
+
+
+class MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::ExactRouteHashInfo : public ydk::Entity
+{
+    public:
+        ExactRouteHashInfo();
+        ~ExactRouteHashInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf hash_index_is_valid; //type: boolean
+        ydk::YLeaf hash_index; //type: uint8
+
+}; // MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::ExactRouteHashInfo
+
+
+class MplsForwarding::Nodes::Node::FrrDatabase : public ydk::Entity
 {
     public:
         FrrDatabase();
@@ -676,11 +1610,13 @@ class MplsForwarding::Nodes::Node::FrrDatabase : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrdbSummary; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary
         class FrrdbProtectedInterfaceTableSummaries; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries
@@ -701,7 +1637,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase : public Entity
 }; // MplsForwarding::Nodes::Node::FrrDatabase
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary : public ydk::Entity
 {
     public:
         FrrdbSummary();
@@ -709,21 +1645,23 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf other; //type: uint32
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf other; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbSummary
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries : public ydk::Entity
 {
     public:
         FrrdbProtectedInterfaceTableSummaries();
@@ -731,11 +1669,13 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSumm
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrdbProtectedInterfaceTableSummary; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary
 
@@ -744,7 +1684,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSumm
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary : public ydk::Entity
 {
     public:
         FrrdbProtectedInterfaceTableSummary();
@@ -752,22 +1692,24 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSumm
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf other; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf other; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummaries::FrrdbProtectedInterfaceTableSummary
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary : public ydk::Entity
 {
     public:
         FrrdbTunnelMidpointSummary();
@@ -775,21 +1717,23 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf other; //type: uint32
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf other; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints : public ydk::Entity
 {
     public:
         FrrdbTunnelMidpoints();
@@ -797,11 +1741,13 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrdbTunnelMidpoint; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint
 
@@ -810,7 +1756,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints : public En
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint : public ydk::Entity
 {
     public:
         FrrdbTunnelMidpoint();
@@ -818,15 +1764,17 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf local_label; //type: uint32
-        YLeaf outgoing_lable_string; //type: string
-        YLeaf frr_lable_string; //type: string
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf outgoing_lable_string; //type: string
+        ydk::YLeaf frr_lable_string; //type: string
         class FrrDb; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb
 
         std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb> frr_db;
@@ -834,7 +1782,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb : public ydk::Entity
 {
     public:
         FrrDb();
@@ -842,23 +1790,25 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnel_interface_name; //type: string
-        YLeaf input_label; //type: uint32
-        YLeaf outgoing_interface; //type: string
-        YLeaf outgoing_label; //type: uint32
-        YLeaf frr_interface_name; //type: string
-        YLeaf frr_label; //type: uint32
-        YLeaf entry_frr_state; //type: MgmtFibMplsFrrStateEnum
-        YLeaf frr_next_hop_ipv4_address; //type: string
-        YLeaf is_mldp_lsp; //type: boolean
-        YLeaf is_multicast_tunnel; //type: boolean
-        YLeaf multicast_tunnel_legs; //type: uint32
+        ydk::YLeaf tunnel_interface_name; //type: string
+        ydk::YLeaf input_label; //type: uint32
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf frr_interface_name; //type: string
+        ydk::YLeaf frr_label; //type: uint32
+        ydk::YLeaf entry_frr_state; //type: MgmtFibMplsFrrState
+        ydk::YLeaf frr_next_hop_ipv4_address; //type: string
+        ydk::YLeaf is_mldp_lsp; //type: boolean
+        ydk::YLeaf is_multicast_tunnel; //type: boolean
+        ydk::YLeaf multicast_tunnel_legs; //type: uint32
         class FrrEntryId; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId
         class MulticastLeg; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg
 
@@ -868,7 +1818,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId : public ydk::Entity
 {
     public:
         FrrEntryId();
@@ -876,13 +1826,15 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf role; //type: MgmtFibMplsLspRoleEnum
+        ydk::YLeaf role; //type: MgmtFibMplsLspRole
         class Head; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head
         class Midpoint; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint
 
@@ -892,7 +1844,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head : public ydk::Entity
 {
     public:
         Head();
@@ -900,19 +1852,21 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf destination_prefix_length; //type: uint32
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf destination_prefix_length; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Head
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint : public ydk::Entity
 {
     public:
         Midpoint();
@@ -920,20 +1874,22 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf lspid; //type: uint32
-        YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf lspid; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::FrrEntryId::Midpoint
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg : public ydk::Entity
 {
     public:
         MulticastLeg();
@@ -941,21 +1897,23 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnel_interface_name; //type: string
-        YLeaf input_label; //type: uint32
-        YLeaf outgoing_interface; //type: string
-        YLeaf outgoing_label; //type: uint32
-        YLeaf frr_interface_name; //type: string
-        YLeaf frr_label; //type: uint32
-        YLeaf entry_frr_state; //type: MgmtFibMplsFrrStateEnum
-        YLeaf frr_next_hop_ipv4_address; //type: string
-        YLeaf is_mldp_lsp; //type: boolean
+        ydk::YLeaf tunnel_interface_name; //type: string
+        ydk::YLeaf input_label; //type: uint32
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf frr_interface_name; //type: string
+        ydk::YLeaf frr_label; //type: uint32
+        ydk::YLeaf entry_frr_state; //type: MgmtFibMplsFrrState
+        ydk::YLeaf frr_next_hop_ipv4_address; //type: string
+        ydk::YLeaf is_mldp_lsp; //type: boolean
         class FrrEntryId; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId
 
         std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId> frr_entry_id;
@@ -963,7 +1921,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId : public ydk::Entity
 {
     public:
         FrrEntryId();
@@ -971,13 +1929,15 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf role; //type: MgmtFibMplsLspRoleEnum
+        ydk::YLeaf role; //type: MgmtFibMplsLspRole
         class Head; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head
         class Midpoint; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint
 
@@ -987,7 +1947,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head : public ydk::Entity
 {
     public:
         Head();
@@ -995,19 +1955,21 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf destination_prefix_length; //type: uint32
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf destination_prefix_length; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Head
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint : public ydk::Entity
 {
     public:
         Midpoint();
@@ -1015,20 +1977,22 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunne
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf lspid; //type: uint32
-        YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf lspid; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrDb::MulticastLeg::FrrEntryId::Midpoint
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads : public ydk::Entity
 {
     public:
         FrrdbTunnelHeads();
@@ -1036,11 +2000,13 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrdbTunnelHead; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead
 
@@ -1049,7 +2015,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads : public Entity
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead : public ydk::Entity
 {
     public:
         FrrdbTunnelHead();
@@ -1057,15 +2023,17 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf outgoing_lable_string; //type: string
-        YLeaf frr_lable_string; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf outgoing_lable_string; //type: string
+        ydk::YLeaf frr_lable_string; //type: string
         class FrrDb; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb
 
         std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb> frr_db;
@@ -1073,7 +2041,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb : public ydk::Entity
 {
     public:
         FrrDb();
@@ -1081,23 +2049,25 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnel_interface_name; //type: string
-        YLeaf input_label; //type: uint32
-        YLeaf outgoing_interface; //type: string
-        YLeaf outgoing_label; //type: uint32
-        YLeaf frr_interface_name; //type: string
-        YLeaf frr_label; //type: uint32
-        YLeaf entry_frr_state; //type: MgmtFibMplsFrrStateEnum
-        YLeaf frr_next_hop_ipv4_address; //type: string
-        YLeaf is_mldp_lsp; //type: boolean
-        YLeaf is_multicast_tunnel; //type: boolean
-        YLeaf multicast_tunnel_legs; //type: uint32
+        ydk::YLeaf tunnel_interface_name; //type: string
+        ydk::YLeaf input_label; //type: uint32
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf frr_interface_name; //type: string
+        ydk::YLeaf frr_label; //type: uint32
+        ydk::YLeaf entry_frr_state; //type: MgmtFibMplsFrrState
+        ydk::YLeaf frr_next_hop_ipv4_address; //type: string
+        ydk::YLeaf is_mldp_lsp; //type: boolean
+        ydk::YLeaf is_multicast_tunnel; //type: boolean
+        ydk::YLeaf multicast_tunnel_legs; //type: uint32
         class FrrEntryId; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId
         class MulticastLeg; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg
 
@@ -1107,7 +2077,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId : public ydk::Entity
 {
     public:
         FrrEntryId();
@@ -1115,13 +2085,15 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf role; //type: MgmtFibMplsLspRoleEnum
+        ydk::YLeaf role; //type: MgmtFibMplsLspRole
         class Head; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head
         class Midpoint; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint
 
@@ -1131,7 +2103,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head : public ydk::Entity
 {
     public:
         Head();
@@ -1139,19 +2111,21 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf destination_prefix_length; //type: uint32
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf destination_prefix_length; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Head
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint : public ydk::Entity
 {
     public:
         Midpoint();
@@ -1159,20 +2133,22 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf lspid; //type: uint32
-        YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf lspid; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::FrrEntryId::Midpoint
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg : public ydk::Entity
 {
     public:
         MulticastLeg();
@@ -1180,21 +2156,23 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnel_interface_name; //type: string
-        YLeaf input_label; //type: uint32
-        YLeaf outgoing_interface; //type: string
-        YLeaf outgoing_label; //type: uint32
-        YLeaf frr_interface_name; //type: string
-        YLeaf frr_label; //type: uint32
-        YLeaf entry_frr_state; //type: MgmtFibMplsFrrStateEnum
-        YLeaf frr_next_hop_ipv4_address; //type: string
-        YLeaf is_mldp_lsp; //type: boolean
+        ydk::YLeaf tunnel_interface_name; //type: string
+        ydk::YLeaf input_label; //type: uint32
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf frr_interface_name; //type: string
+        ydk::YLeaf frr_label; //type: uint32
+        ydk::YLeaf entry_frr_state; //type: MgmtFibMplsFrrState
+        ydk::YLeaf frr_next_hop_ipv4_address; //type: string
+        ydk::YLeaf is_mldp_lsp; //type: boolean
         class FrrEntryId; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId
 
         std::shared_ptr<Cisco_IOS_XR_fib_common_oper::MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId> frr_entry_id;
@@ -1202,7 +2180,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId : public ydk::Entity
 {
     public:
         FrrEntryId();
@@ -1210,13 +2188,15 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf role; //type: MgmtFibMplsLspRoleEnum
+        ydk::YLeaf role; //type: MgmtFibMplsLspRole
         class Head; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head
         class Midpoint; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint
 
@@ -1226,7 +2206,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head : public ydk::Entity
 {
     public:
         Head();
@@ -1234,19 +2214,21 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf destination_prefix_length; //type: uint32
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf destination_prefix_length; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Head
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint : public ydk::Entity
 {
     public:
         Midpoint();
@@ -1254,20 +2236,22 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf lspid; //type: uint32
-        YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf lspid; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrDb::MulticastLeg::FrrEntryId::Midpoint
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary : public ydk::Entity
 {
     public:
         FrrdbTunnelHeadSummary();
@@ -1275,21 +2259,23 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf other; //type: uint32
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf other; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries : public ydk::Entity
 {
     public:
         FrrdbBackupInterfaceSummaries();
@@ -1297,11 +2283,13 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FrrdbBackupInterfaceSummary; //type: MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary
 
@@ -1310,7 +2298,7 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries : 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries
 
 
-class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary : public Entity
+class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary : public ydk::Entity
 {
     public:
         FrrdbBackupInterfaceSummary();
@@ -1318,17 +2306,19 @@ class MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf other; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf other; //type: uint32
 
 }; // MplsForwarding::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::FrrdbBackupInterfaceSummary
 

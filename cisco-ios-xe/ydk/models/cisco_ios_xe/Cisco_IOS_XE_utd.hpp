@@ -7,20 +7,20 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_utd {
 
-class SyslogLevelTypeEnum : public Enum
+class SyslogLevelType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf alert;
-        static const Enum::YLeaf crit;
-        static const Enum::YLeaf debug;
-        static const Enum::YLeaf emerg;
-        static const Enum::YLeaf err;
-        static const Enum::YLeaf info;
-        static const Enum::YLeaf notice;
-        static const Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf alert;
+        static const ydk::Enum::YLeaf crit;
+        static const ydk::Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf emerg;
+        static const ydk::Enum::YLeaf err;
+        static const ydk::Enum::YLeaf info;
+        static const ydk::Enum::YLeaf notice;
+        static const ydk::Enum::YLeaf warning;
 
 };
 

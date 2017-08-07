@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_io_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_io_oper {
 
 Ipv4Network::Ipv4Network()
@@ -33,7 +35,7 @@ bool Ipv4Network::has_data() const
 
 bool Ipv4Network::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::get_children() const
     return children;
 }
 
-void Ipv4Network::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string Ipv4Network::get_bundle_name() const
 augment_capabilities_function Ipv4Network::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Ipv4Network::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "nodes")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Nodes()
@@ -154,7 +172,7 @@ bool Ipv4Network::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::get_segment_path() const
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::get_children(
     return children;
 }
 
-void Ipv4Network::Nodes::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::Node()
@@ -250,8 +279,8 @@ bool Ipv4Network::Nodes::Node::has_data() const
 
 bool Ipv4Network::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (interface_data !=  nullptr && interface_data->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
@@ -279,7 +308,7 @@ const EntityPath Ipv4Network::Nodes::Node::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -326,12 +355,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::get_chi
     return children;
 }
 
-void Ipv4Network::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-data" || name == "statistics" || name == "node-name")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::InterfaceData()
@@ -358,7 +404,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::has_data() const
 
 bool Ipv4Network::Nodes::Node::InterfaceData::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -432,8 +478,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "summary" || name == "vrfs")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrfs()
@@ -462,7 +519,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_segment_path() const
@@ -527,8 +584,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Vrf()
@@ -558,8 +626,8 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_data() const
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (briefs !=  nullptr && briefs->has_operation())
 	|| (details !=  nullptr && details->has_operation());
 }
@@ -587,7 +655,7 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -634,12 +702,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "briefs" || name == "details" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Briefs()
@@ -668,7 +753,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_operation()
         if(brief[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::get_segment_path() const
@@ -733,8 +818,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Brief()
@@ -761,11 +857,11 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_data
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(line_state.operation)
-	|| is_set(primary_address.operation)
-	|| is_set(vrf_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(primary_address.yfilter)
+	|| ydk::is_set(vrf_id.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_segment_path() const
@@ -791,10 +887,10 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Bri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
-    if (primary_address.is_set || is_set(primary_address.operation)) leaf_name_data.push_back(primary_address.get_name_leafdata());
-    if (vrf_id.is_set || is_set(vrf_id.operation)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (primary_address.is_set || is_set(primary_address.yfilter)) leaf_name_data.push_back(primary_address.get_name_leafdata());
+    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -813,24 +909,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address")
     {
         primary_address = value;
+        primary_address.value_namespace = name_space;
+        primary_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-id")
     {
         vrf_id = value;
+        vrf_id.value_namespace = name_space;
+        vrf_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "line-state" || name == "primary-address" || name == "vrf-id")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Details()
@@ -859,7 +990,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_operation(
         if(detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::get_segment_path() const
@@ -924,8 +1055,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
@@ -1039,24 +1181,24 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_op
         if(secondary_address[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(direct_broadcast.operation)
-	|| is_set(flow_tag_dst.operation)
-	|| is_set(flow_tag_src.operation)
-	|| is_set(line_state.operation)
-	|| is_set(mask_reply.operation)
-	|| is_set(mlacp_active.operation)
-	|| is_set(mtu.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(primary_address.operation)
-	|| is_set(proxy_arp_disabled.operation)
-	|| is_set(redirect.operation)
-	|| is_set(rg_id_exists.operation)
-	|| is_set(route_tag.operation)
-	|| is_set(unnumbered_interface_name.operation)
-	|| is_set(unreachable.operation)
-	|| is_set(vrf_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(direct_broadcast.yfilter)
+	|| ydk::is_set(flow_tag_dst.yfilter)
+	|| ydk::is_set(flow_tag_src.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(mask_reply.yfilter)
+	|| ydk::is_set(mlacp_active.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(primary_address.yfilter)
+	|| ydk::is_set(proxy_arp_disabled.yfilter)
+	|| ydk::is_set(redirect.yfilter)
+	|| ydk::is_set(rg_id_exists.yfilter)
+	|| ydk::is_set(route_tag.yfilter)
+	|| ydk::is_set(unnumbered_interface_name.yfilter)
+	|| ydk::is_set(unreachable.yfilter)
+	|| ydk::is_set(vrf_id.yfilter)
 	|| (acl !=  nullptr && acl->has_operation())
 	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
 	|| (caps_utime !=  nullptr && caps_utime->has_operation())
@@ -1092,23 +1234,23 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (direct_broadcast.is_set || is_set(direct_broadcast.operation)) leaf_name_data.push_back(direct_broadcast.get_name_leafdata());
-    if (flow_tag_dst.is_set || is_set(flow_tag_dst.operation)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
-    if (flow_tag_src.is_set || is_set(flow_tag_src.operation)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
-    if (mask_reply.is_set || is_set(mask_reply.operation)) leaf_name_data.push_back(mask_reply.get_name_leafdata());
-    if (mlacp_active.is_set || is_set(mlacp_active.operation)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (primary_address.is_set || is_set(primary_address.operation)) leaf_name_data.push_back(primary_address.get_name_leafdata());
-    if (proxy_arp_disabled.is_set || is_set(proxy_arp_disabled.operation)) leaf_name_data.push_back(proxy_arp_disabled.get_name_leafdata());
-    if (redirect.is_set || is_set(redirect.operation)) leaf_name_data.push_back(redirect.get_name_leafdata());
-    if (rg_id_exists.is_set || is_set(rg_id_exists.operation)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
-    if (unnumbered_interface_name.is_set || is_set(unnumbered_interface_name.operation)) leaf_name_data.push_back(unnumbered_interface_name.get_name_leafdata());
-    if (unreachable.is_set || is_set(unreachable.operation)) leaf_name_data.push_back(unreachable.get_name_leafdata());
-    if (vrf_id.is_set || is_set(vrf_id.operation)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (direct_broadcast.is_set || is_set(direct_broadcast.yfilter)) leaf_name_data.push_back(direct_broadcast.get_name_leafdata());
+    if (flow_tag_dst.is_set || is_set(flow_tag_dst.yfilter)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
+    if (flow_tag_src.is_set || is_set(flow_tag_src.yfilter)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (mask_reply.is_set || is_set(mask_reply.yfilter)) leaf_name_data.push_back(mask_reply.get_name_leafdata());
+    if (mlacp_active.is_set || is_set(mlacp_active.yfilter)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (primary_address.is_set || is_set(primary_address.yfilter)) leaf_name_data.push_back(primary_address.get_name_leafdata());
+    if (proxy_arp_disabled.is_set || is_set(proxy_arp_disabled.yfilter)) leaf_name_data.push_back(proxy_arp_disabled.get_name_leafdata());
+    if (redirect.is_set || is_set(redirect.yfilter)) leaf_name_data.push_back(redirect.get_name_leafdata());
+    if (rg_id_exists.is_set || is_set(rg_id_exists.yfilter)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (unnumbered_interface_name.is_set || is_set(unnumbered_interface_name.yfilter)) leaf_name_data.push_back(unnumbered_interface_name.get_name_leafdata());
+    if (unreachable.is_set || is_set(unreachable.yfilter)) leaf_name_data.push_back(unreachable.get_name_leafdata());
+    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1309,76 +1451,189 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direct-broadcast")
     {
         direct_broadcast = value;
+        direct_broadcast.value_namespace = name_space;
+        direct_broadcast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-tag-dst")
     {
         flow_tag_dst = value;
+        flow_tag_dst.value_namespace = name_space;
+        flow_tag_dst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-tag-src")
     {
         flow_tag_src = value;
+        flow_tag_src.value_namespace = name_space;
+        flow_tag_src.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask-reply")
     {
         mask_reply = value;
+        mask_reply.value_namespace = name_space;
+        mask_reply.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-active")
     {
         mlacp_active = value;
+        mlacp_active.value_namespace = name_space;
+        mlacp_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address")
     {
         primary_address = value;
+        primary_address.value_namespace = name_space;
+        primary_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proxy-arp-disabled")
     {
         proxy_arp_disabled = value;
+        proxy_arp_disabled.value_namespace = name_space;
+        proxy_arp_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redirect")
     {
         redirect = value;
+        redirect.value_namespace = name_space;
+        redirect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rg-id-exists")
     {
         rg_id_exists = value;
+        rg_id_exists.value_namespace = name_space;
+        rg_id_exists.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unnumbered-interface-name")
     {
         unnumbered_interface_name = value;
+        unnumbered_interface_name.value_namespace = name_space;
+        unnumbered_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unreachable")
     {
         unreachable = value;
+        unreachable.value_namespace = name_space;
+        unreachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-id")
     {
         vrf_id = value;
+        vrf_id.value_namespace = name_space;
+        vrf_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "direct-broadcast")
+    {
+        direct_broadcast.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag-dst")
+    {
+        flow_tag_dst.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag-src")
+    {
+        flow_tag_src.yfilter = yfilter;
+    }
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "mask-reply")
+    {
+        mask_reply.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-active")
+    {
+        mlacp_active.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address.yfilter = yfilter;
+    }
+    if(value_path == "proxy-arp-disabled")
+    {
+        proxy_arp_disabled.yfilter = yfilter;
+    }
+    if(value_path == "redirect")
+    {
+        redirect.yfilter = yfilter;
+    }
+    if(value_path == "rg-id-exists")
+    {
+        rg_id_exists.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+    if(value_path == "unnumbered-interface-name")
+    {
+        unnumbered_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "unreachable")
+    {
+        unreachable.yfilter = yfilter;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl" || name == "bgp-pa" || name == "caps-utime" || name == "fwd-dis-utime" || name == "fwd-en-utime" || name == "helper-address" || name == "idb-utime" || name == "multi-acl" || name == "multicast-group" || name == "pub-utime" || name == "rpf" || name == "secondary-address" || name == "interface-name" || name == "direct-broadcast" || name == "flow-tag-dst" || name == "flow-tag-src" || name == "line-state" || name == "mask-reply" || name == "mlacp-active" || name == "mtu" || name == "prefix-length" || name == "primary-address" || name == "proxy-arp-disabled" || name == "redirect" || name == "rg-id-exists" || name == "route-tag" || name == "unnumbered-interface-name" || name == "unreachable" || name == "vrf-id")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::Acl()
@@ -1405,11 +1660,11 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::h
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_in_bound.operation)
-	|| is_set(common_out_bound.operation)
-	|| is_set(inbound.operation)
-	|| is_set(outbound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_in_bound.yfilter)
+	|| ydk::is_set(common_out_bound.yfilter)
+	|| ydk::is_set(inbound.yfilter)
+	|| ydk::is_set(outbound.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::get_segment_path() const
@@ -1435,10 +1690,10 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_in_bound.is_set || is_set(common_in_bound.operation)) leaf_name_data.push_back(common_in_bound.get_name_leafdata());
-    if (common_out_bound.is_set || is_set(common_out_bound.operation)) leaf_name_data.push_back(common_out_bound.get_name_leafdata());
-    if (inbound.is_set || is_set(inbound.operation)) leaf_name_data.push_back(inbound.get_name_leafdata());
-    if (outbound.is_set || is_set(outbound.operation)) leaf_name_data.push_back(outbound.get_name_leafdata());
+    if (common_in_bound.is_set || is_set(common_in_bound.yfilter)) leaf_name_data.push_back(common_in_bound.get_name_leafdata());
+    if (common_out_bound.is_set || is_set(common_out_bound.yfilter)) leaf_name_data.push_back(common_out_bound.get_name_leafdata());
+    if (inbound.is_set || is_set(inbound.yfilter)) leaf_name_data.push_back(inbound.get_name_leafdata());
+    if (outbound.is_set || is_set(outbound.yfilter)) leaf_name_data.push_back(outbound.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1457,24 +1712,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-in-bound")
     {
         common_in_bound = value;
+        common_in_bound.value_namespace = name_space;
+        common_in_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "common-out-bound")
     {
         common_out_bound = value;
+        common_out_bound.value_namespace = name_space;
+        common_out_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inbound")
     {
         inbound = value;
+        inbound.value_namespace = name_space;
+        inbound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outbound")
     {
         outbound = value;
+        outbound.value_namespace = name_space;
+        outbound.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-in-bound")
+    {
+        common_in_bound.yfilter = yfilter;
+    }
+    if(value_path == "common-out-bound")
+    {
+        common_out_bound.yfilter = yfilter;
+    }
+    if(value_path == "inbound")
+    {
+        inbound.yfilter = yfilter;
+    }
+    if(value_path == "outbound")
+    {
+        outbound.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-in-bound" || name == "common-out-bound" || name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::MultiAcl()
@@ -1514,23 +1804,23 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
 {
     for (auto const & leaf : common.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : inbound.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : outbound.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(common.operation)
-	|| is_set(inbound.operation)
-	|| is_set(outbound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common.yfilter)
+	|| ydk::is_set(inbound.yfilter)
+	|| ydk::is_set(outbound.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::get_segment_path() const
@@ -1580,7 +1870,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common")
     {
@@ -1594,6 +1884,29 @@ void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
     {
         outbound.append(value);
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common")
+    {
+        common.yfilter = yfilter;
+    }
+    if(value_path == "inbound")
+    {
+        inbound.yfilter = yfilter;
+    }
+    if(value_path == "outbound")
+    {
+        outbound.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common" || name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::HelperAddress()
@@ -1621,11 +1934,11 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Helper
 {
     for (auto const & leaf : address_array.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(address_array.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_array.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::get_segment_path() const
@@ -1671,12 +1984,27 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-array")
     {
         address_array.append(value);
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-array")
+    {
+        address_array.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-array")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::Rpf()
@@ -1703,11 +2031,11 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::h
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_default_route.operation)
-	|| is_set(allow_self_ping.operation)
-	|| is_set(enable.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_default_route.yfilter)
+	|| ydk::is_set(allow_self_ping.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::get_segment_path() const
@@ -1733,10 +2061,10 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_default_route.is_set || is_set(allow_default_route.operation)) leaf_name_data.push_back(allow_default_route.get_name_leafdata());
-    if (allow_self_ping.is_set || is_set(allow_self_ping.operation)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (allow_default_route.is_set || is_set(allow_default_route.yfilter)) leaf_name_data.push_back(allow_default_route.get_name_leafdata());
+    if (allow_self_ping.is_set || is_set(allow_self_ping.yfilter)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1755,24 +2083,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-default-route")
     {
         allow_default_route = value;
+        allow_default_route.value_namespace = name_space;
+        allow_default_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "allow-self-ping")
     {
         allow_self_ping = value;
+        allow_self_ping.value_namespace = name_space;
+        allow_self_ping.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-default-route")
+    {
+        allow_default_route.yfilter = yfilter;
+    }
+    if(value_path == "allow-self-ping")
+    {
+        allow_self_ping.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-default-route" || name == "allow-self-ping" || name == "enable" || name == "mode")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::BgpPa()
@@ -1799,7 +2162,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
@@ -1873,8 +2236,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::Input()
@@ -1899,10 +2273,10 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(enable.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::get_segment_path() const
@@ -1928,9 +2302,9 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1949,20 +2323,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "enable" || name == "source")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::Output()
@@ -1987,10 +2390,10 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(enable.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::get_segment_path() const
@@ -2016,9 +2419,9 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2037,20 +2440,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "enable" || name == "source")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::PubUtime()
@@ -2069,7 +2501,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUti
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::get_segment_path() const
@@ -2113,8 +2545,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::IdbUtime()
@@ -2133,7 +2574,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUti
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::get_segment_path() const
@@ -2177,8 +2618,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::CapsUtime()
@@ -2197,7 +2647,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUt
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::get_segment_path() const
@@ -2241,8 +2691,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::FwdEnUtime()
@@ -2261,7 +2720,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnU
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::get_segment_path() const
@@ -2305,8 +2764,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::FwdDisUtime()
@@ -2325,7 +2793,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDis
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::get_segment_path() const
@@ -2369,8 +2837,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::MulticastGroup()
@@ -2391,8 +2868,8 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Multic
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::get_segment_path() const
@@ -2418,7 +2895,7 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2437,12 +2914,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::SecondaryAddress()
@@ -2467,10 +2961,10 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Second
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::get_segment_path() const
@@ -2496,9 +2990,9 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::De
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2517,20 +3011,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::Summary()
@@ -2568,8 +3091,8 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Summary::has_data() const
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_up_down_basecaps_up.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(if_up_down_basecaps_up.yfilter)
 	|| (if_down_down !=  nullptr && if_down_down->has_operation())
 	|| (if_shutdown_down !=  nullptr && if_shutdown_down->has_operation())
 	|| (if_up_down !=  nullptr && if_up_down->has_operation())
@@ -2599,7 +3122,7 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_up_down_basecaps_up.is_set || is_set(if_up_down_basecaps_up.operation)) leaf_name_data.push_back(if_up_down_basecaps_up.get_name_leafdata());
+    if (if_up_down_basecaps_up.is_set || is_set(if_up_down_basecaps_up.yfilter)) leaf_name_data.push_back(if_up_down_basecaps_up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2674,12 +3197,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Summary::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-up-down-basecaps-up")
     {
         if_up_down_basecaps_up = value;
+        if_up_down_basecaps_up.value_namespace = name_space;
+        if_up_down_basecaps_up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-up-down-basecaps-up")
+    {
+        if_up_down_basecaps_up.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "if-down-down" || name == "if-shutdown-down" || name == "if-up-down" || name == "if-up-up" || name == "if-up-down-basecaps-up")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::IfUpUp()
@@ -2704,10 +3244,10 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::has_data() const
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_assigned.operation)
-	|| is_set(ip_unassigned.operation)
-	|| is_set(ip_unnumbered.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_assigned.yfilter)
+	|| ydk::is_set(ip_unassigned.yfilter)
+	|| ydk::is_set(ip_unnumbered.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_segment_path() const
@@ -2733,9 +3273,9 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_assigned.is_set || is_set(ip_assigned.operation)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
-    if (ip_unassigned.is_set || is_set(ip_unassigned.operation)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
-    if (ip_unnumbered.is_set || is_set(ip_unnumbered.operation)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
+    if (ip_assigned.is_set || is_set(ip_assigned.yfilter)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
+    if (ip_unassigned.is_set || is_set(ip_unassigned.yfilter)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
+    if (ip_unnumbered.is_set || is_set(ip_unnumbered.yfilter)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2754,20 +3294,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-assigned")
     {
         ip_assigned = value;
+        ip_assigned.value_namespace = name_space;
+        ip_assigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unassigned")
     {
         ip_unassigned = value;
+        ip_unassigned.value_namespace = name_space;
+        ip_unassigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unnumbered")
     {
         ip_unnumbered = value;
+        ip_unnumbered.value_namespace = name_space;
+        ip_unnumbered.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-assigned")
+    {
+        ip_assigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unassigned")
+    {
+        ip_unassigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unnumbered")
+    {
+        ip_unnumbered.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-assigned" || name == "ip-unassigned" || name == "ip-unnumbered")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::IfUpDown()
@@ -2792,10 +3361,10 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::has_data() cons
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_assigned.operation)
-	|| is_set(ip_unassigned.operation)
-	|| is_set(ip_unnumbered.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_assigned.yfilter)
+	|| ydk::is_set(ip_unassigned.yfilter)
+	|| ydk::is_set(ip_unnumbered.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get_segment_path() const
@@ -2821,9 +3390,9 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_assigned.is_set || is_set(ip_assigned.operation)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
-    if (ip_unassigned.is_set || is_set(ip_unassigned.operation)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
-    if (ip_unnumbered.is_set || is_set(ip_unnumbered.operation)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
+    if (ip_assigned.is_set || is_set(ip_assigned.yfilter)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
+    if (ip_unassigned.is_set || is_set(ip_unassigned.yfilter)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
+    if (ip_unnumbered.is_set || is_set(ip_unnumbered.yfilter)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2842,20 +3411,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-assigned")
     {
         ip_assigned = value;
+        ip_assigned.value_namespace = name_space;
+        ip_assigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unassigned")
     {
         ip_unassigned = value;
+        ip_unassigned.value_namespace = name_space;
+        ip_unassigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unnumbered")
     {
         ip_unnumbered = value;
+        ip_unnumbered.value_namespace = name_space;
+        ip_unnumbered.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-assigned")
+    {
+        ip_assigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unassigned")
+    {
+        ip_unassigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unnumbered")
+    {
+        ip_unnumbered.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-assigned" || name == "ip-unassigned" || name == "ip-unnumbered")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::IfDownDown()
@@ -2880,10 +3478,10 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::has_data() co
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_assigned.operation)
-	|| is_set(ip_unassigned.operation)
-	|| is_set(ip_unnumbered.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_assigned.yfilter)
+	|| ydk::is_set(ip_unassigned.yfilter)
+	|| ydk::is_set(ip_unnumbered.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::get_segment_path() const
@@ -2909,9 +3507,9 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_assigned.is_set || is_set(ip_assigned.operation)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
-    if (ip_unassigned.is_set || is_set(ip_unassigned.operation)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
-    if (ip_unnumbered.is_set || is_set(ip_unnumbered.operation)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
+    if (ip_assigned.is_set || is_set(ip_assigned.yfilter)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
+    if (ip_unassigned.is_set || is_set(ip_unassigned.yfilter)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
+    if (ip_unnumbered.is_set || is_set(ip_unnumbered.yfilter)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2930,20 +3528,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-assigned")
     {
         ip_assigned = value;
+        ip_assigned.value_namespace = name_space;
+        ip_assigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unassigned")
     {
         ip_unassigned = value;
+        ip_unassigned.value_namespace = name_space;
+        ip_unassigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unnumbered")
     {
         ip_unnumbered = value;
+        ip_unnumbered.value_namespace = name_space;
+        ip_unnumbered.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-assigned")
+    {
+        ip_assigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unassigned")
+    {
+        ip_unassigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unnumbered")
+    {
+        ip_unnumbered.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-assigned" || name == "ip-unassigned" || name == "ip-unnumbered")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::IfShutdownDown()
@@ -2968,10 +3595,10 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_data(
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_assigned.operation)
-	|| is_set(ip_unassigned.operation)
-	|| is_set(ip_unnumbered.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_assigned.yfilter)
+	|| ydk::is_set(ip_unassigned.yfilter)
+	|| ydk::is_set(ip_unnumbered.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::get_segment_path() const
@@ -2997,9 +3624,9 @@ const EntityPath Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDow
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_assigned.is_set || is_set(ip_assigned.operation)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
-    if (ip_unassigned.is_set || is_set(ip_unassigned.operation)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
-    if (ip_unnumbered.is_set || is_set(ip_unnumbered.operation)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
+    if (ip_assigned.is_set || is_set(ip_assigned.yfilter)) leaf_name_data.push_back(ip_assigned.get_name_leafdata());
+    if (ip_unassigned.is_set || is_set(ip_unassigned.yfilter)) leaf_name_data.push_back(ip_unassigned.get_name_leafdata());
+    if (ip_unnumbered.is_set || is_set(ip_unnumbered.yfilter)) leaf_name_data.push_back(ip_unnumbered.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3018,20 +3645,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     return children;
 }
 
-void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-assigned")
     {
         ip_assigned = value;
+        ip_assigned.value_namespace = name_space;
+        ip_assigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unassigned")
     {
         ip_unassigned = value;
+        ip_unassigned.value_namespace = name_space;
+        ip_unassigned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-unnumbered")
     {
         ip_unnumbered = value;
+        ip_unnumbered.value_namespace = name_space;
+        ip_unnumbered.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-assigned")
+    {
+        ip_assigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unassigned")
+    {
+        ip_unassigned.yfilter = yfilter;
+    }
+    if(value_path == "ip-unnumbered")
+    {
+        ip_unnumbered.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-assigned" || name == "ip-unassigned" || name == "ip-unnumbered")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::Statistics::Statistics()
@@ -3054,7 +3710,7 @@ bool Ipv4Network::Nodes::Node::Statistics::has_data() const
 
 bool Ipv4Network::Nodes::Node::Statistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (traffic !=  nullptr && traffic->has_operation());
 }
 
@@ -3113,8 +3769,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Statist
     return children;
 }
 
-void Ipv4Network::Nodes::Node::Statistics::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "traffic")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::Statistics::Traffic::Traffic()
@@ -3141,7 +3808,7 @@ bool Ipv4Network::Nodes::Node::Statistics::Traffic::has_data() const
 
 bool Ipv4Network::Nodes::Node::Statistics::Traffic::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (icmp_stats !=  nullptr && icmp_stats->has_operation())
 	|| (ipv4_stats !=  nullptr && ipv4_stats->has_operation());
 }
@@ -3215,8 +3882,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Statist
     return children;
 }
 
-void Ipv4Network::Nodes::Node::Statistics::Traffic::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::Statistics::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Nodes::Node::Statistics::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Nodes::Node::Statistics::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "icmp-stats" || name == "ipv4-stats")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::Ipv4Stats()
@@ -3325,52 +4003,52 @@ bool Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::has_data() const
 
 bool Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_header.operation)
-	|| is_set(bad_hop_count.operation)
-	|| is_set(bad_option.operation)
-	|| is_set(bad_security_option.operation)
-	|| is_set(bad_source_address.operation)
-	|| is_set(basic_security_option.operation)
-	|| is_set(broadcast_in.operation)
-	|| is_set(broadcast_out.operation)
-	|| is_set(cipso_option.operation)
-	|| is_set(encapsulation_failed.operation)
-	|| is_set(end_option.operation)
-	|| is_set(extended_security_option.operation)
-	|| is_set(format_errors.operation)
-	|| is_set(fragment_count.operation)
-	|| is_set(input_packets.operation)
-	|| is_set(lisp_decap_error.operation)
-	|| is_set(lisp_encap_error.operation)
-	|| is_set(lisp_v4_decap.operation)
-	|| is_set(lisp_v4_encap.operation)
-	|| is_set(lisp_v6_decap.operation)
-	|| is_set(lisp_v6_encap.operation)
-	|| is_set(loose_source_route_option.operation)
-	|| is_set(multicast_in.operation)
-	|| is_set(multicast_out.operation)
-	|| is_set(no_gateway.operation)
-	|| is_set(no_protocol.operation)
-	|| is_set(no_router.operation)
-	|| is_set(noop_option.operation)
-	|| is_set(options_present.operation)
-	|| is_set(packet_too_big.operation)
-	|| is_set(packets_forwarded.operation)
-	|| is_set(packets_fragmented.operation)
-	|| is_set(packets_output.operation)
-	|| is_set(reassemble_failed.operation)
-	|| is_set(reassemble_input.operation)
-	|| is_set(reassemble_max_drop.operation)
-	|| is_set(reassemble_timeout.operation)
-	|| is_set(reassembled.operation)
-	|| is_set(received_packets.operation)
-	|| is_set(record_route_option.operation)
-	|| is_set(router_alert_option.operation)
-	|| is_set(sid_option.operation)
-	|| is_set(strict_source_route_option.operation)
-	|| is_set(timestamp_option.operation)
-	|| is_set(unknown_option.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_header.yfilter)
+	|| ydk::is_set(bad_hop_count.yfilter)
+	|| ydk::is_set(bad_option.yfilter)
+	|| ydk::is_set(bad_security_option.yfilter)
+	|| ydk::is_set(bad_source_address.yfilter)
+	|| ydk::is_set(basic_security_option.yfilter)
+	|| ydk::is_set(broadcast_in.yfilter)
+	|| ydk::is_set(broadcast_out.yfilter)
+	|| ydk::is_set(cipso_option.yfilter)
+	|| ydk::is_set(encapsulation_failed.yfilter)
+	|| ydk::is_set(end_option.yfilter)
+	|| ydk::is_set(extended_security_option.yfilter)
+	|| ydk::is_set(format_errors.yfilter)
+	|| ydk::is_set(fragment_count.yfilter)
+	|| ydk::is_set(input_packets.yfilter)
+	|| ydk::is_set(lisp_decap_error.yfilter)
+	|| ydk::is_set(lisp_encap_error.yfilter)
+	|| ydk::is_set(lisp_v4_decap.yfilter)
+	|| ydk::is_set(lisp_v4_encap.yfilter)
+	|| ydk::is_set(lisp_v6_decap.yfilter)
+	|| ydk::is_set(lisp_v6_encap.yfilter)
+	|| ydk::is_set(loose_source_route_option.yfilter)
+	|| ydk::is_set(multicast_in.yfilter)
+	|| ydk::is_set(multicast_out.yfilter)
+	|| ydk::is_set(no_gateway.yfilter)
+	|| ydk::is_set(no_protocol.yfilter)
+	|| ydk::is_set(no_router.yfilter)
+	|| ydk::is_set(noop_option.yfilter)
+	|| ydk::is_set(options_present.yfilter)
+	|| ydk::is_set(packet_too_big.yfilter)
+	|| ydk::is_set(packets_forwarded.yfilter)
+	|| ydk::is_set(packets_fragmented.yfilter)
+	|| ydk::is_set(packets_output.yfilter)
+	|| ydk::is_set(reassemble_failed.yfilter)
+	|| ydk::is_set(reassemble_input.yfilter)
+	|| ydk::is_set(reassemble_max_drop.yfilter)
+	|| ydk::is_set(reassemble_timeout.yfilter)
+	|| ydk::is_set(reassembled.yfilter)
+	|| ydk::is_set(received_packets.yfilter)
+	|| ydk::is_set(record_route_option.yfilter)
+	|| ydk::is_set(router_alert_option.yfilter)
+	|| ydk::is_set(sid_option.yfilter)
+	|| ydk::is_set(strict_source_route_option.yfilter)
+	|| ydk::is_set(timestamp_option.yfilter)
+	|| ydk::is_set(unknown_option.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_segment_path() const
@@ -3396,51 +4074,51 @@ const EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_header.is_set || is_set(bad_header.operation)) leaf_name_data.push_back(bad_header.get_name_leafdata());
-    if (bad_hop_count.is_set || is_set(bad_hop_count.operation)) leaf_name_data.push_back(bad_hop_count.get_name_leafdata());
-    if (bad_option.is_set || is_set(bad_option.operation)) leaf_name_data.push_back(bad_option.get_name_leafdata());
-    if (bad_security_option.is_set || is_set(bad_security_option.operation)) leaf_name_data.push_back(bad_security_option.get_name_leafdata());
-    if (bad_source_address.is_set || is_set(bad_source_address.operation)) leaf_name_data.push_back(bad_source_address.get_name_leafdata());
-    if (basic_security_option.is_set || is_set(basic_security_option.operation)) leaf_name_data.push_back(basic_security_option.get_name_leafdata());
-    if (broadcast_in.is_set || is_set(broadcast_in.operation)) leaf_name_data.push_back(broadcast_in.get_name_leafdata());
-    if (broadcast_out.is_set || is_set(broadcast_out.operation)) leaf_name_data.push_back(broadcast_out.get_name_leafdata());
-    if (cipso_option.is_set || is_set(cipso_option.operation)) leaf_name_data.push_back(cipso_option.get_name_leafdata());
-    if (encapsulation_failed.is_set || is_set(encapsulation_failed.operation)) leaf_name_data.push_back(encapsulation_failed.get_name_leafdata());
-    if (end_option.is_set || is_set(end_option.operation)) leaf_name_data.push_back(end_option.get_name_leafdata());
-    if (extended_security_option.is_set || is_set(extended_security_option.operation)) leaf_name_data.push_back(extended_security_option.get_name_leafdata());
-    if (format_errors.is_set || is_set(format_errors.operation)) leaf_name_data.push_back(format_errors.get_name_leafdata());
-    if (fragment_count.is_set || is_set(fragment_count.operation)) leaf_name_data.push_back(fragment_count.get_name_leafdata());
-    if (input_packets.is_set || is_set(input_packets.operation)) leaf_name_data.push_back(input_packets.get_name_leafdata());
-    if (lisp_decap_error.is_set || is_set(lisp_decap_error.operation)) leaf_name_data.push_back(lisp_decap_error.get_name_leafdata());
-    if (lisp_encap_error.is_set || is_set(lisp_encap_error.operation)) leaf_name_data.push_back(lisp_encap_error.get_name_leafdata());
-    if (lisp_v4_decap.is_set || is_set(lisp_v4_decap.operation)) leaf_name_data.push_back(lisp_v4_decap.get_name_leafdata());
-    if (lisp_v4_encap.is_set || is_set(lisp_v4_encap.operation)) leaf_name_data.push_back(lisp_v4_encap.get_name_leafdata());
-    if (lisp_v6_decap.is_set || is_set(lisp_v6_decap.operation)) leaf_name_data.push_back(lisp_v6_decap.get_name_leafdata());
-    if (lisp_v6_encap.is_set || is_set(lisp_v6_encap.operation)) leaf_name_data.push_back(lisp_v6_encap.get_name_leafdata());
-    if (loose_source_route_option.is_set || is_set(loose_source_route_option.operation)) leaf_name_data.push_back(loose_source_route_option.get_name_leafdata());
-    if (multicast_in.is_set || is_set(multicast_in.operation)) leaf_name_data.push_back(multicast_in.get_name_leafdata());
-    if (multicast_out.is_set || is_set(multicast_out.operation)) leaf_name_data.push_back(multicast_out.get_name_leafdata());
-    if (no_gateway.is_set || is_set(no_gateway.operation)) leaf_name_data.push_back(no_gateway.get_name_leafdata());
-    if (no_protocol.is_set || is_set(no_protocol.operation)) leaf_name_data.push_back(no_protocol.get_name_leafdata());
-    if (no_router.is_set || is_set(no_router.operation)) leaf_name_data.push_back(no_router.get_name_leafdata());
-    if (noop_option.is_set || is_set(noop_option.operation)) leaf_name_data.push_back(noop_option.get_name_leafdata());
-    if (options_present.is_set || is_set(options_present.operation)) leaf_name_data.push_back(options_present.get_name_leafdata());
-    if (packet_too_big.is_set || is_set(packet_too_big.operation)) leaf_name_data.push_back(packet_too_big.get_name_leafdata());
-    if (packets_forwarded.is_set || is_set(packets_forwarded.operation)) leaf_name_data.push_back(packets_forwarded.get_name_leafdata());
-    if (packets_fragmented.is_set || is_set(packets_fragmented.operation)) leaf_name_data.push_back(packets_fragmented.get_name_leafdata());
-    if (packets_output.is_set || is_set(packets_output.operation)) leaf_name_data.push_back(packets_output.get_name_leafdata());
-    if (reassemble_failed.is_set || is_set(reassemble_failed.operation)) leaf_name_data.push_back(reassemble_failed.get_name_leafdata());
-    if (reassemble_input.is_set || is_set(reassemble_input.operation)) leaf_name_data.push_back(reassemble_input.get_name_leafdata());
-    if (reassemble_max_drop.is_set || is_set(reassemble_max_drop.operation)) leaf_name_data.push_back(reassemble_max_drop.get_name_leafdata());
-    if (reassemble_timeout.is_set || is_set(reassemble_timeout.operation)) leaf_name_data.push_back(reassemble_timeout.get_name_leafdata());
-    if (reassembled.is_set || is_set(reassembled.operation)) leaf_name_data.push_back(reassembled.get_name_leafdata());
-    if (received_packets.is_set || is_set(received_packets.operation)) leaf_name_data.push_back(received_packets.get_name_leafdata());
-    if (record_route_option.is_set || is_set(record_route_option.operation)) leaf_name_data.push_back(record_route_option.get_name_leafdata());
-    if (router_alert_option.is_set || is_set(router_alert_option.operation)) leaf_name_data.push_back(router_alert_option.get_name_leafdata());
-    if (sid_option.is_set || is_set(sid_option.operation)) leaf_name_data.push_back(sid_option.get_name_leafdata());
-    if (strict_source_route_option.is_set || is_set(strict_source_route_option.operation)) leaf_name_data.push_back(strict_source_route_option.get_name_leafdata());
-    if (timestamp_option.is_set || is_set(timestamp_option.operation)) leaf_name_data.push_back(timestamp_option.get_name_leafdata());
-    if (unknown_option.is_set || is_set(unknown_option.operation)) leaf_name_data.push_back(unknown_option.get_name_leafdata());
+    if (bad_header.is_set || is_set(bad_header.yfilter)) leaf_name_data.push_back(bad_header.get_name_leafdata());
+    if (bad_hop_count.is_set || is_set(bad_hop_count.yfilter)) leaf_name_data.push_back(bad_hop_count.get_name_leafdata());
+    if (bad_option.is_set || is_set(bad_option.yfilter)) leaf_name_data.push_back(bad_option.get_name_leafdata());
+    if (bad_security_option.is_set || is_set(bad_security_option.yfilter)) leaf_name_data.push_back(bad_security_option.get_name_leafdata());
+    if (bad_source_address.is_set || is_set(bad_source_address.yfilter)) leaf_name_data.push_back(bad_source_address.get_name_leafdata());
+    if (basic_security_option.is_set || is_set(basic_security_option.yfilter)) leaf_name_data.push_back(basic_security_option.get_name_leafdata());
+    if (broadcast_in.is_set || is_set(broadcast_in.yfilter)) leaf_name_data.push_back(broadcast_in.get_name_leafdata());
+    if (broadcast_out.is_set || is_set(broadcast_out.yfilter)) leaf_name_data.push_back(broadcast_out.get_name_leafdata());
+    if (cipso_option.is_set || is_set(cipso_option.yfilter)) leaf_name_data.push_back(cipso_option.get_name_leafdata());
+    if (encapsulation_failed.is_set || is_set(encapsulation_failed.yfilter)) leaf_name_data.push_back(encapsulation_failed.get_name_leafdata());
+    if (end_option.is_set || is_set(end_option.yfilter)) leaf_name_data.push_back(end_option.get_name_leafdata());
+    if (extended_security_option.is_set || is_set(extended_security_option.yfilter)) leaf_name_data.push_back(extended_security_option.get_name_leafdata());
+    if (format_errors.is_set || is_set(format_errors.yfilter)) leaf_name_data.push_back(format_errors.get_name_leafdata());
+    if (fragment_count.is_set || is_set(fragment_count.yfilter)) leaf_name_data.push_back(fragment_count.get_name_leafdata());
+    if (input_packets.is_set || is_set(input_packets.yfilter)) leaf_name_data.push_back(input_packets.get_name_leafdata());
+    if (lisp_decap_error.is_set || is_set(lisp_decap_error.yfilter)) leaf_name_data.push_back(lisp_decap_error.get_name_leafdata());
+    if (lisp_encap_error.is_set || is_set(lisp_encap_error.yfilter)) leaf_name_data.push_back(lisp_encap_error.get_name_leafdata());
+    if (lisp_v4_decap.is_set || is_set(lisp_v4_decap.yfilter)) leaf_name_data.push_back(lisp_v4_decap.get_name_leafdata());
+    if (lisp_v4_encap.is_set || is_set(lisp_v4_encap.yfilter)) leaf_name_data.push_back(lisp_v4_encap.get_name_leafdata());
+    if (lisp_v6_decap.is_set || is_set(lisp_v6_decap.yfilter)) leaf_name_data.push_back(lisp_v6_decap.get_name_leafdata());
+    if (lisp_v6_encap.is_set || is_set(lisp_v6_encap.yfilter)) leaf_name_data.push_back(lisp_v6_encap.get_name_leafdata());
+    if (loose_source_route_option.is_set || is_set(loose_source_route_option.yfilter)) leaf_name_data.push_back(loose_source_route_option.get_name_leafdata());
+    if (multicast_in.is_set || is_set(multicast_in.yfilter)) leaf_name_data.push_back(multicast_in.get_name_leafdata());
+    if (multicast_out.is_set || is_set(multicast_out.yfilter)) leaf_name_data.push_back(multicast_out.get_name_leafdata());
+    if (no_gateway.is_set || is_set(no_gateway.yfilter)) leaf_name_data.push_back(no_gateway.get_name_leafdata());
+    if (no_protocol.is_set || is_set(no_protocol.yfilter)) leaf_name_data.push_back(no_protocol.get_name_leafdata());
+    if (no_router.is_set || is_set(no_router.yfilter)) leaf_name_data.push_back(no_router.get_name_leafdata());
+    if (noop_option.is_set || is_set(noop_option.yfilter)) leaf_name_data.push_back(noop_option.get_name_leafdata());
+    if (options_present.is_set || is_set(options_present.yfilter)) leaf_name_data.push_back(options_present.get_name_leafdata());
+    if (packet_too_big.is_set || is_set(packet_too_big.yfilter)) leaf_name_data.push_back(packet_too_big.get_name_leafdata());
+    if (packets_forwarded.is_set || is_set(packets_forwarded.yfilter)) leaf_name_data.push_back(packets_forwarded.get_name_leafdata());
+    if (packets_fragmented.is_set || is_set(packets_fragmented.yfilter)) leaf_name_data.push_back(packets_fragmented.get_name_leafdata());
+    if (packets_output.is_set || is_set(packets_output.yfilter)) leaf_name_data.push_back(packets_output.get_name_leafdata());
+    if (reassemble_failed.is_set || is_set(reassemble_failed.yfilter)) leaf_name_data.push_back(reassemble_failed.get_name_leafdata());
+    if (reassemble_input.is_set || is_set(reassemble_input.yfilter)) leaf_name_data.push_back(reassemble_input.get_name_leafdata());
+    if (reassemble_max_drop.is_set || is_set(reassemble_max_drop.yfilter)) leaf_name_data.push_back(reassemble_max_drop.get_name_leafdata());
+    if (reassemble_timeout.is_set || is_set(reassemble_timeout.yfilter)) leaf_name_data.push_back(reassemble_timeout.get_name_leafdata());
+    if (reassembled.is_set || is_set(reassembled.yfilter)) leaf_name_data.push_back(reassembled.get_name_leafdata());
+    if (received_packets.is_set || is_set(received_packets.yfilter)) leaf_name_data.push_back(received_packets.get_name_leafdata());
+    if (record_route_option.is_set || is_set(record_route_option.yfilter)) leaf_name_data.push_back(record_route_option.get_name_leafdata());
+    if (router_alert_option.is_set || is_set(router_alert_option.yfilter)) leaf_name_data.push_back(router_alert_option.get_name_leafdata());
+    if (sid_option.is_set || is_set(sid_option.yfilter)) leaf_name_data.push_back(sid_option.get_name_leafdata());
+    if (strict_source_route_option.is_set || is_set(strict_source_route_option.yfilter)) leaf_name_data.push_back(strict_source_route_option.get_name_leafdata());
+    if (timestamp_option.is_set || is_set(timestamp_option.yfilter)) leaf_name_data.push_back(timestamp_option.get_name_leafdata());
+    if (unknown_option.is_set || is_set(unknown_option.yfilter)) leaf_name_data.push_back(unknown_option.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3459,188 +4137,469 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Statist
     return children;
 }
 
-void Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-header")
     {
         bad_header = value;
+        bad_header.value_namespace = name_space;
+        bad_header.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-hop-count")
     {
         bad_hop_count = value;
+        bad_hop_count.value_namespace = name_space;
+        bad_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-option")
     {
         bad_option = value;
+        bad_option.value_namespace = name_space;
+        bad_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-security-option")
     {
         bad_security_option = value;
+        bad_security_option.value_namespace = name_space;
+        bad_security_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-source-address")
     {
         bad_source_address = value;
+        bad_source_address.value_namespace = name_space;
+        bad_source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "basic-security-option")
     {
         basic_security_option = value;
+        basic_security_option.value_namespace = name_space;
+        basic_security_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-in")
     {
         broadcast_in = value;
+        broadcast_in.value_namespace = name_space;
+        broadcast_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-out")
     {
         broadcast_out = value;
+        broadcast_out.value_namespace = name_space;
+        broadcast_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cipso-option")
     {
         cipso_option = value;
+        cipso_option.value_namespace = name_space;
+        cipso_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation-failed")
     {
         encapsulation_failed = value;
+        encapsulation_failed.value_namespace = name_space;
+        encapsulation_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-option")
     {
         end_option = value;
+        end_option.value_namespace = name_space;
+        end_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "extended-security-option")
     {
         extended_security_option = value;
+        extended_security_option.value_namespace = name_space;
+        extended_security_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format-errors")
     {
         format_errors = value;
+        format_errors.value_namespace = name_space;
+        format_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fragment-count")
     {
         fragment_count = value;
+        fragment_count.value_namespace = name_space;
+        fragment_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packets")
     {
         input_packets = value;
+        input_packets.value_namespace = name_space;
+        input_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lisp-decap-error")
     {
         lisp_decap_error = value;
+        lisp_decap_error.value_namespace = name_space;
+        lisp_decap_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lisp-encap-error")
     {
         lisp_encap_error = value;
+        lisp_encap_error.value_namespace = name_space;
+        lisp_encap_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lisp-v4-decap")
     {
         lisp_v4_decap = value;
+        lisp_v4_decap.value_namespace = name_space;
+        lisp_v4_decap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lisp-v4-encap")
     {
         lisp_v4_encap = value;
+        lisp_v4_encap.value_namespace = name_space;
+        lisp_v4_encap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lisp-v6-decap")
     {
         lisp_v6_decap = value;
+        lisp_v6_decap.value_namespace = name_space;
+        lisp_v6_decap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lisp-v6-encap")
     {
         lisp_v6_encap = value;
+        lisp_v6_encap.value_namespace = name_space;
+        lisp_v6_encap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loose-source-route-option")
     {
         loose_source_route_option = value;
+        loose_source_route_option.value_namespace = name_space;
+        loose_source_route_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-in")
     {
         multicast_in = value;
+        multicast_in.value_namespace = name_space;
+        multicast_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-out")
     {
         multicast_out = value;
+        multicast_out.value_namespace = name_space;
+        multicast_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-gateway")
     {
         no_gateway = value;
+        no_gateway.value_namespace = name_space;
+        no_gateway.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-protocol")
     {
         no_protocol = value;
+        no_protocol.value_namespace = name_space;
+        no_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-router")
     {
         no_router = value;
+        no_router.value_namespace = name_space;
+        no_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "noop-option")
     {
         noop_option = value;
+        noop_option.value_namespace = name_space;
+        noop_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "options-present")
     {
         options_present = value;
+        options_present.value_namespace = name_space;
+        options_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-too-big")
     {
         packet_too_big = value;
+        packet_too_big.value_namespace = name_space;
+        packet_too_big.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-forwarded")
     {
         packets_forwarded = value;
+        packets_forwarded.value_namespace = name_space;
+        packets_forwarded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-fragmented")
     {
         packets_fragmented = value;
+        packets_fragmented.value_namespace = name_space;
+        packets_fragmented.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-output")
     {
         packets_output = value;
+        packets_output.value_namespace = name_space;
+        packets_output.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reassemble-failed")
     {
         reassemble_failed = value;
+        reassemble_failed.value_namespace = name_space;
+        reassemble_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reassemble-input")
     {
         reassemble_input = value;
+        reassemble_input.value_namespace = name_space;
+        reassemble_input.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reassemble-max-drop")
     {
         reassemble_max_drop = value;
+        reassemble_max_drop.value_namespace = name_space;
+        reassemble_max_drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reassemble-timeout")
     {
         reassemble_timeout = value;
+        reassemble_timeout.value_namespace = name_space;
+        reassemble_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reassembled")
     {
         reassembled = value;
+        reassembled.value_namespace = name_space;
+        reassembled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-packets")
     {
         received_packets = value;
+        received_packets.value_namespace = name_space;
+        received_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "record-route-option")
     {
         record_route_option = value;
+        record_route_option.value_namespace = name_space;
+        record_route_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-alert-option")
     {
         router_alert_option = value;
+        router_alert_option.value_namespace = name_space;
+        router_alert_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-option")
     {
         sid_option = value;
+        sid_option.value_namespace = name_space;
+        sid_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "strict-source-route-option")
     {
         strict_source_route_option = value;
+        strict_source_route_option.value_namespace = name_space;
+        strict_source_route_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-option")
     {
         timestamp_option = value;
+        timestamp_option.value_namespace = name_space;
+        timestamp_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-option")
     {
         unknown_option = value;
+        unknown_option.value_namespace = name_space;
+        unknown_option.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-header")
+    {
+        bad_header.yfilter = yfilter;
+    }
+    if(value_path == "bad-hop-count")
+    {
+        bad_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "bad-option")
+    {
+        bad_option.yfilter = yfilter;
+    }
+    if(value_path == "bad-security-option")
+    {
+        bad_security_option.yfilter = yfilter;
+    }
+    if(value_path == "bad-source-address")
+    {
+        bad_source_address.yfilter = yfilter;
+    }
+    if(value_path == "basic-security-option")
+    {
+        basic_security_option.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-in")
+    {
+        broadcast_in.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-out")
+    {
+        broadcast_out.yfilter = yfilter;
+    }
+    if(value_path == "cipso-option")
+    {
+        cipso_option.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation-failed")
+    {
+        encapsulation_failed.yfilter = yfilter;
+    }
+    if(value_path == "end-option")
+    {
+        end_option.yfilter = yfilter;
+    }
+    if(value_path == "extended-security-option")
+    {
+        extended_security_option.yfilter = yfilter;
+    }
+    if(value_path == "format-errors")
+    {
+        format_errors.yfilter = yfilter;
+    }
+    if(value_path == "fragment-count")
+    {
+        fragment_count.yfilter = yfilter;
+    }
+    if(value_path == "input-packets")
+    {
+        input_packets.yfilter = yfilter;
+    }
+    if(value_path == "lisp-decap-error")
+    {
+        lisp_decap_error.yfilter = yfilter;
+    }
+    if(value_path == "lisp-encap-error")
+    {
+        lisp_encap_error.yfilter = yfilter;
+    }
+    if(value_path == "lisp-v4-decap")
+    {
+        lisp_v4_decap.yfilter = yfilter;
+    }
+    if(value_path == "lisp-v4-encap")
+    {
+        lisp_v4_encap.yfilter = yfilter;
+    }
+    if(value_path == "lisp-v6-decap")
+    {
+        lisp_v6_decap.yfilter = yfilter;
+    }
+    if(value_path == "lisp-v6-encap")
+    {
+        lisp_v6_encap.yfilter = yfilter;
+    }
+    if(value_path == "loose-source-route-option")
+    {
+        loose_source_route_option.yfilter = yfilter;
+    }
+    if(value_path == "multicast-in")
+    {
+        multicast_in.yfilter = yfilter;
+    }
+    if(value_path == "multicast-out")
+    {
+        multicast_out.yfilter = yfilter;
+    }
+    if(value_path == "no-gateway")
+    {
+        no_gateway.yfilter = yfilter;
+    }
+    if(value_path == "no-protocol")
+    {
+        no_protocol.yfilter = yfilter;
+    }
+    if(value_path == "no-router")
+    {
+        no_router.yfilter = yfilter;
+    }
+    if(value_path == "noop-option")
+    {
+        noop_option.yfilter = yfilter;
+    }
+    if(value_path == "options-present")
+    {
+        options_present.yfilter = yfilter;
+    }
+    if(value_path == "packet-too-big")
+    {
+        packet_too_big.yfilter = yfilter;
+    }
+    if(value_path == "packets-forwarded")
+    {
+        packets_forwarded.yfilter = yfilter;
+    }
+    if(value_path == "packets-fragmented")
+    {
+        packets_fragmented.yfilter = yfilter;
+    }
+    if(value_path == "packets-output")
+    {
+        packets_output.yfilter = yfilter;
+    }
+    if(value_path == "reassemble-failed")
+    {
+        reassemble_failed.yfilter = yfilter;
+    }
+    if(value_path == "reassemble-input")
+    {
+        reassemble_input.yfilter = yfilter;
+    }
+    if(value_path == "reassemble-max-drop")
+    {
+        reassemble_max_drop.yfilter = yfilter;
+    }
+    if(value_path == "reassemble-timeout")
+    {
+        reassemble_timeout.yfilter = yfilter;
+    }
+    if(value_path == "reassembled")
+    {
+        reassembled.yfilter = yfilter;
+    }
+    if(value_path == "received-packets")
+    {
+        received_packets.yfilter = yfilter;
+    }
+    if(value_path == "record-route-option")
+    {
+        record_route_option.yfilter = yfilter;
+    }
+    if(value_path == "router-alert-option")
+    {
+        router_alert_option.yfilter = yfilter;
+    }
+    if(value_path == "sid-option")
+    {
+        sid_option.yfilter = yfilter;
+    }
+    if(value_path == "strict-source-route-option")
+    {
+        strict_source_route_option.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-option")
+    {
+        timestamp_option.yfilter = yfilter;
+    }
+    if(value_path == "unknown-option")
+    {
+        unknown_option.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-header" || name == "bad-hop-count" || name == "bad-option" || name == "bad-security-option" || name == "bad-source-address" || name == "basic-security-option" || name == "broadcast-in" || name == "broadcast-out" || name == "cipso-option" || name == "encapsulation-failed" || name == "end-option" || name == "extended-security-option" || name == "format-errors" || name == "fragment-count" || name == "input-packets" || name == "lisp-decap-error" || name == "lisp-encap-error" || name == "lisp-v4-decap" || name == "lisp-v4-encap" || name == "lisp-v6-decap" || name == "lisp-v6-encap" || name == "loose-source-route-option" || name == "multicast-in" || name == "multicast-out" || name == "no-gateway" || name == "no-protocol" || name == "no-router" || name == "noop-option" || name == "options-present" || name == "packet-too-big" || name == "packets-forwarded" || name == "packets-fragmented" || name == "packets-output" || name == "reassemble-failed" || name == "reassemble-input" || name == "reassemble-max-drop" || name == "reassemble-timeout" || name == "reassembled" || name == "received-packets" || name == "record-route-option" || name == "router-alert-option" || name == "sid-option" || name == "strict-source-route-option" || name == "timestamp-option" || name == "unknown-option")
+        return true;
+    return false;
 }
 
 Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::IcmpStats()
@@ -3733,44 +4692,44 @@ bool Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::has_data() const
 
 bool Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_unreachable_received.operation)
-	|| is_set(admin_unreachable_sent.operation)
-	|| is_set(checksum_error.operation)
-	|| is_set(echo_reply_received.operation)
-	|| is_set(echo_reply_sent.operation)
-	|| is_set(echo_request_received.operation)
-	|| is_set(echo_request_sent.operation)
-	|| is_set(fragment_unreachable_received.operation)
-	|| is_set(fragment_unreachable_sent.operation)
-	|| is_set(hopcount_received.operation)
-	|| is_set(hopcount_sent.operation)
-	|| is_set(host_unreachable_received.operation)
-	|| is_set(host_unreachable_sent.operation)
-	|| is_set(mask_reply_received.operation)
-	|| is_set(mask_reply_sent.operation)
-	|| is_set(mask_request_received.operation)
-	|| is_set(mask_request_sent.operation)
-	|| is_set(network_unreachable_received.operation)
-	|| is_set(network_unreachable_sent.operation)
-	|| is_set(output.operation)
-	|| is_set(param_error_received.operation)
-	|| is_set(param_error_send.operation)
-	|| is_set(port_unreachable_received.operation)
-	|| is_set(port_unreachable_sent.operation)
-	|| is_set(protocol_unreachable_received.operation)
-	|| is_set(protocol_unreachable_sent.operation)
-	|| is_set(reassebly_received.operation)
-	|| is_set(reassembly_sent.operation)
-	|| is_set(received.operation)
-	|| is_set(redirect_received.operation)
-	|| is_set(redirect_send.operation)
-	|| is_set(router_advert_received.operation)
-	|| is_set(router_solicit_received.operation)
-	|| is_set(source_quench_received.operation)
-	|| is_set(timestamp_received.operation)
-	|| is_set(timestamp_reply_received.operation)
-	|| is_set(unknown.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_unreachable_received.yfilter)
+	|| ydk::is_set(admin_unreachable_sent.yfilter)
+	|| ydk::is_set(checksum_error.yfilter)
+	|| ydk::is_set(echo_reply_received.yfilter)
+	|| ydk::is_set(echo_reply_sent.yfilter)
+	|| ydk::is_set(echo_request_received.yfilter)
+	|| ydk::is_set(echo_request_sent.yfilter)
+	|| ydk::is_set(fragment_unreachable_received.yfilter)
+	|| ydk::is_set(fragment_unreachable_sent.yfilter)
+	|| ydk::is_set(hopcount_received.yfilter)
+	|| ydk::is_set(hopcount_sent.yfilter)
+	|| ydk::is_set(host_unreachable_received.yfilter)
+	|| ydk::is_set(host_unreachable_sent.yfilter)
+	|| ydk::is_set(mask_reply_received.yfilter)
+	|| ydk::is_set(mask_reply_sent.yfilter)
+	|| ydk::is_set(mask_request_received.yfilter)
+	|| ydk::is_set(mask_request_sent.yfilter)
+	|| ydk::is_set(network_unreachable_received.yfilter)
+	|| ydk::is_set(network_unreachable_sent.yfilter)
+	|| ydk::is_set(output.yfilter)
+	|| ydk::is_set(param_error_received.yfilter)
+	|| ydk::is_set(param_error_send.yfilter)
+	|| ydk::is_set(port_unreachable_received.yfilter)
+	|| ydk::is_set(port_unreachable_sent.yfilter)
+	|| ydk::is_set(protocol_unreachable_received.yfilter)
+	|| ydk::is_set(protocol_unreachable_sent.yfilter)
+	|| ydk::is_set(reassebly_received.yfilter)
+	|| ydk::is_set(reassembly_sent.yfilter)
+	|| ydk::is_set(received.yfilter)
+	|| ydk::is_set(redirect_received.yfilter)
+	|| ydk::is_set(redirect_send.yfilter)
+	|| ydk::is_set(router_advert_received.yfilter)
+	|| ydk::is_set(router_solicit_received.yfilter)
+	|| ydk::is_set(source_quench_received.yfilter)
+	|| ydk::is_set(timestamp_received.yfilter)
+	|| ydk::is_set(timestamp_reply_received.yfilter)
+	|| ydk::is_set(unknown.yfilter);
 }
 
 std::string Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_segment_path() const
@@ -3796,43 +4755,43 @@ const EntityPath Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_unreachable_received.is_set || is_set(admin_unreachable_received.operation)) leaf_name_data.push_back(admin_unreachable_received.get_name_leafdata());
-    if (admin_unreachable_sent.is_set || is_set(admin_unreachable_sent.operation)) leaf_name_data.push_back(admin_unreachable_sent.get_name_leafdata());
-    if (checksum_error.is_set || is_set(checksum_error.operation)) leaf_name_data.push_back(checksum_error.get_name_leafdata());
-    if (echo_reply_received.is_set || is_set(echo_reply_received.operation)) leaf_name_data.push_back(echo_reply_received.get_name_leafdata());
-    if (echo_reply_sent.is_set || is_set(echo_reply_sent.operation)) leaf_name_data.push_back(echo_reply_sent.get_name_leafdata());
-    if (echo_request_received.is_set || is_set(echo_request_received.operation)) leaf_name_data.push_back(echo_request_received.get_name_leafdata());
-    if (echo_request_sent.is_set || is_set(echo_request_sent.operation)) leaf_name_data.push_back(echo_request_sent.get_name_leafdata());
-    if (fragment_unreachable_received.is_set || is_set(fragment_unreachable_received.operation)) leaf_name_data.push_back(fragment_unreachable_received.get_name_leafdata());
-    if (fragment_unreachable_sent.is_set || is_set(fragment_unreachable_sent.operation)) leaf_name_data.push_back(fragment_unreachable_sent.get_name_leafdata());
-    if (hopcount_received.is_set || is_set(hopcount_received.operation)) leaf_name_data.push_back(hopcount_received.get_name_leafdata());
-    if (hopcount_sent.is_set || is_set(hopcount_sent.operation)) leaf_name_data.push_back(hopcount_sent.get_name_leafdata());
-    if (host_unreachable_received.is_set || is_set(host_unreachable_received.operation)) leaf_name_data.push_back(host_unreachable_received.get_name_leafdata());
-    if (host_unreachable_sent.is_set || is_set(host_unreachable_sent.operation)) leaf_name_data.push_back(host_unreachable_sent.get_name_leafdata());
-    if (mask_reply_received.is_set || is_set(mask_reply_received.operation)) leaf_name_data.push_back(mask_reply_received.get_name_leafdata());
-    if (mask_reply_sent.is_set || is_set(mask_reply_sent.operation)) leaf_name_data.push_back(mask_reply_sent.get_name_leafdata());
-    if (mask_request_received.is_set || is_set(mask_request_received.operation)) leaf_name_data.push_back(mask_request_received.get_name_leafdata());
-    if (mask_request_sent.is_set || is_set(mask_request_sent.operation)) leaf_name_data.push_back(mask_request_sent.get_name_leafdata());
-    if (network_unreachable_received.is_set || is_set(network_unreachable_received.operation)) leaf_name_data.push_back(network_unreachable_received.get_name_leafdata());
-    if (network_unreachable_sent.is_set || is_set(network_unreachable_sent.operation)) leaf_name_data.push_back(network_unreachable_sent.get_name_leafdata());
-    if (output.is_set || is_set(output.operation)) leaf_name_data.push_back(output.get_name_leafdata());
-    if (param_error_received.is_set || is_set(param_error_received.operation)) leaf_name_data.push_back(param_error_received.get_name_leafdata());
-    if (param_error_send.is_set || is_set(param_error_send.operation)) leaf_name_data.push_back(param_error_send.get_name_leafdata());
-    if (port_unreachable_received.is_set || is_set(port_unreachable_received.operation)) leaf_name_data.push_back(port_unreachable_received.get_name_leafdata());
-    if (port_unreachable_sent.is_set || is_set(port_unreachable_sent.operation)) leaf_name_data.push_back(port_unreachable_sent.get_name_leafdata());
-    if (protocol_unreachable_received.is_set || is_set(protocol_unreachable_received.operation)) leaf_name_data.push_back(protocol_unreachable_received.get_name_leafdata());
-    if (protocol_unreachable_sent.is_set || is_set(protocol_unreachable_sent.operation)) leaf_name_data.push_back(protocol_unreachable_sent.get_name_leafdata());
-    if (reassebly_received.is_set || is_set(reassebly_received.operation)) leaf_name_data.push_back(reassebly_received.get_name_leafdata());
-    if (reassembly_sent.is_set || is_set(reassembly_sent.operation)) leaf_name_data.push_back(reassembly_sent.get_name_leafdata());
-    if (received.is_set || is_set(received.operation)) leaf_name_data.push_back(received.get_name_leafdata());
-    if (redirect_received.is_set || is_set(redirect_received.operation)) leaf_name_data.push_back(redirect_received.get_name_leafdata());
-    if (redirect_send.is_set || is_set(redirect_send.operation)) leaf_name_data.push_back(redirect_send.get_name_leafdata());
-    if (router_advert_received.is_set || is_set(router_advert_received.operation)) leaf_name_data.push_back(router_advert_received.get_name_leafdata());
-    if (router_solicit_received.is_set || is_set(router_solicit_received.operation)) leaf_name_data.push_back(router_solicit_received.get_name_leafdata());
-    if (source_quench_received.is_set || is_set(source_quench_received.operation)) leaf_name_data.push_back(source_quench_received.get_name_leafdata());
-    if (timestamp_received.is_set || is_set(timestamp_received.operation)) leaf_name_data.push_back(timestamp_received.get_name_leafdata());
-    if (timestamp_reply_received.is_set || is_set(timestamp_reply_received.operation)) leaf_name_data.push_back(timestamp_reply_received.get_name_leafdata());
-    if (unknown.is_set || is_set(unknown.operation)) leaf_name_data.push_back(unknown.get_name_leafdata());
+    if (admin_unreachable_received.is_set || is_set(admin_unreachable_received.yfilter)) leaf_name_data.push_back(admin_unreachable_received.get_name_leafdata());
+    if (admin_unreachable_sent.is_set || is_set(admin_unreachable_sent.yfilter)) leaf_name_data.push_back(admin_unreachable_sent.get_name_leafdata());
+    if (checksum_error.is_set || is_set(checksum_error.yfilter)) leaf_name_data.push_back(checksum_error.get_name_leafdata());
+    if (echo_reply_received.is_set || is_set(echo_reply_received.yfilter)) leaf_name_data.push_back(echo_reply_received.get_name_leafdata());
+    if (echo_reply_sent.is_set || is_set(echo_reply_sent.yfilter)) leaf_name_data.push_back(echo_reply_sent.get_name_leafdata());
+    if (echo_request_received.is_set || is_set(echo_request_received.yfilter)) leaf_name_data.push_back(echo_request_received.get_name_leafdata());
+    if (echo_request_sent.is_set || is_set(echo_request_sent.yfilter)) leaf_name_data.push_back(echo_request_sent.get_name_leafdata());
+    if (fragment_unreachable_received.is_set || is_set(fragment_unreachable_received.yfilter)) leaf_name_data.push_back(fragment_unreachable_received.get_name_leafdata());
+    if (fragment_unreachable_sent.is_set || is_set(fragment_unreachable_sent.yfilter)) leaf_name_data.push_back(fragment_unreachable_sent.get_name_leafdata());
+    if (hopcount_received.is_set || is_set(hopcount_received.yfilter)) leaf_name_data.push_back(hopcount_received.get_name_leafdata());
+    if (hopcount_sent.is_set || is_set(hopcount_sent.yfilter)) leaf_name_data.push_back(hopcount_sent.get_name_leafdata());
+    if (host_unreachable_received.is_set || is_set(host_unreachable_received.yfilter)) leaf_name_data.push_back(host_unreachable_received.get_name_leafdata());
+    if (host_unreachable_sent.is_set || is_set(host_unreachable_sent.yfilter)) leaf_name_data.push_back(host_unreachable_sent.get_name_leafdata());
+    if (mask_reply_received.is_set || is_set(mask_reply_received.yfilter)) leaf_name_data.push_back(mask_reply_received.get_name_leafdata());
+    if (mask_reply_sent.is_set || is_set(mask_reply_sent.yfilter)) leaf_name_data.push_back(mask_reply_sent.get_name_leafdata());
+    if (mask_request_received.is_set || is_set(mask_request_received.yfilter)) leaf_name_data.push_back(mask_request_received.get_name_leafdata());
+    if (mask_request_sent.is_set || is_set(mask_request_sent.yfilter)) leaf_name_data.push_back(mask_request_sent.get_name_leafdata());
+    if (network_unreachable_received.is_set || is_set(network_unreachable_received.yfilter)) leaf_name_data.push_back(network_unreachable_received.get_name_leafdata());
+    if (network_unreachable_sent.is_set || is_set(network_unreachable_sent.yfilter)) leaf_name_data.push_back(network_unreachable_sent.get_name_leafdata());
+    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
+    if (param_error_received.is_set || is_set(param_error_received.yfilter)) leaf_name_data.push_back(param_error_received.get_name_leafdata());
+    if (param_error_send.is_set || is_set(param_error_send.yfilter)) leaf_name_data.push_back(param_error_send.get_name_leafdata());
+    if (port_unreachable_received.is_set || is_set(port_unreachable_received.yfilter)) leaf_name_data.push_back(port_unreachable_received.get_name_leafdata());
+    if (port_unreachable_sent.is_set || is_set(port_unreachable_sent.yfilter)) leaf_name_data.push_back(port_unreachable_sent.get_name_leafdata());
+    if (protocol_unreachable_received.is_set || is_set(protocol_unreachable_received.yfilter)) leaf_name_data.push_back(protocol_unreachable_received.get_name_leafdata());
+    if (protocol_unreachable_sent.is_set || is_set(protocol_unreachable_sent.yfilter)) leaf_name_data.push_back(protocol_unreachable_sent.get_name_leafdata());
+    if (reassebly_received.is_set || is_set(reassebly_received.yfilter)) leaf_name_data.push_back(reassebly_received.get_name_leafdata());
+    if (reassembly_sent.is_set || is_set(reassembly_sent.yfilter)) leaf_name_data.push_back(reassembly_sent.get_name_leafdata());
+    if (received.is_set || is_set(received.yfilter)) leaf_name_data.push_back(received.get_name_leafdata());
+    if (redirect_received.is_set || is_set(redirect_received.yfilter)) leaf_name_data.push_back(redirect_received.get_name_leafdata());
+    if (redirect_send.is_set || is_set(redirect_send.yfilter)) leaf_name_data.push_back(redirect_send.get_name_leafdata());
+    if (router_advert_received.is_set || is_set(router_advert_received.yfilter)) leaf_name_data.push_back(router_advert_received.get_name_leafdata());
+    if (router_solicit_received.is_set || is_set(router_solicit_received.yfilter)) leaf_name_data.push_back(router_solicit_received.get_name_leafdata());
+    if (source_quench_received.is_set || is_set(source_quench_received.yfilter)) leaf_name_data.push_back(source_quench_received.get_name_leafdata());
+    if (timestamp_received.is_set || is_set(timestamp_received.yfilter)) leaf_name_data.push_back(timestamp_received.get_name_leafdata());
+    if (timestamp_reply_received.is_set || is_set(timestamp_reply_received.yfilter)) leaf_name_data.push_back(timestamp_reply_received.get_name_leafdata());
+    if (unknown.is_set || is_set(unknown.yfilter)) leaf_name_data.push_back(unknown.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3851,156 +4810,389 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Statist
     return children;
 }
 
-void Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-unreachable-received")
     {
         admin_unreachable_received = value;
+        admin_unreachable_received.value_namespace = name_space;
+        admin_unreachable_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admin-unreachable-sent")
     {
         admin_unreachable_sent = value;
+        admin_unreachable_sent.value_namespace = name_space;
+        admin_unreachable_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum-error")
     {
         checksum_error = value;
+        checksum_error.value_namespace = name_space;
+        checksum_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-reply-received")
     {
         echo_reply_received = value;
+        echo_reply_received.value_namespace = name_space;
+        echo_reply_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-reply-sent")
     {
         echo_reply_sent = value;
+        echo_reply_sent.value_namespace = name_space;
+        echo_reply_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-request-received")
     {
         echo_request_received = value;
+        echo_request_received.value_namespace = name_space;
+        echo_request_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-request-sent")
     {
         echo_request_sent = value;
+        echo_request_sent.value_namespace = name_space;
+        echo_request_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fragment-unreachable-received")
     {
         fragment_unreachable_received = value;
+        fragment_unreachable_received.value_namespace = name_space;
+        fragment_unreachable_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fragment-unreachable-sent")
     {
         fragment_unreachable_sent = value;
+        fragment_unreachable_sent.value_namespace = name_space;
+        fragment_unreachable_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hopcount-received")
     {
         hopcount_received = value;
+        hopcount_received.value_namespace = name_space;
+        hopcount_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hopcount-sent")
     {
         hopcount_sent = value;
+        hopcount_sent.value_namespace = name_space;
+        hopcount_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-unreachable-received")
     {
         host_unreachable_received = value;
+        host_unreachable_received.value_namespace = name_space;
+        host_unreachable_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-unreachable-sent")
     {
         host_unreachable_sent = value;
+        host_unreachable_sent.value_namespace = name_space;
+        host_unreachable_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask-reply-received")
     {
         mask_reply_received = value;
+        mask_reply_received.value_namespace = name_space;
+        mask_reply_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask-reply-sent")
     {
         mask_reply_sent = value;
+        mask_reply_sent.value_namespace = name_space;
+        mask_reply_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask-request-received")
     {
         mask_request_received = value;
+        mask_request_received.value_namespace = name_space;
+        mask_request_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask-request-sent")
     {
         mask_request_sent = value;
+        mask_request_sent.value_namespace = name_space;
+        mask_request_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "network-unreachable-received")
     {
         network_unreachable_received = value;
+        network_unreachable_received.value_namespace = name_space;
+        network_unreachable_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "network-unreachable-sent")
     {
         network_unreachable_sent = value;
+        network_unreachable_sent.value_namespace = name_space;
+        network_unreachable_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output")
     {
         output = value;
+        output.value_namespace = name_space;
+        output.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "param-error-received")
     {
         param_error_received = value;
+        param_error_received.value_namespace = name_space;
+        param_error_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "param-error-send")
     {
         param_error_send = value;
+        param_error_send.value_namespace = name_space;
+        param_error_send.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-unreachable-received")
     {
         port_unreachable_received = value;
+        port_unreachable_received.value_namespace = name_space;
+        port_unreachable_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-unreachable-sent")
     {
         port_unreachable_sent = value;
+        port_unreachable_sent.value_namespace = name_space;
+        port_unreachable_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-unreachable-received")
     {
         protocol_unreachable_received = value;
+        protocol_unreachable_received.value_namespace = name_space;
+        protocol_unreachable_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-unreachable-sent")
     {
         protocol_unreachable_sent = value;
+        protocol_unreachable_sent.value_namespace = name_space;
+        protocol_unreachable_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reassebly-received")
     {
         reassebly_received = value;
+        reassebly_received.value_namespace = name_space;
+        reassebly_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reassembly-sent")
     {
         reassembly_sent = value;
+        reassembly_sent.value_namespace = name_space;
+        reassembly_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received")
     {
         received = value;
+        received.value_namespace = name_space;
+        received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redirect-received")
     {
         redirect_received = value;
+        redirect_received.value_namespace = name_space;
+        redirect_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redirect-send")
     {
         redirect_send = value;
+        redirect_send.value_namespace = name_space;
+        redirect_send.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-advert-received")
     {
         router_advert_received = value;
+        router_advert_received.value_namespace = name_space;
+        router_advert_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-solicit-received")
     {
         router_solicit_received = value;
+        router_solicit_received.value_namespace = name_space;
+        router_solicit_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-quench-received")
     {
         source_quench_received = value;
+        source_quench_received.value_namespace = name_space;
+        source_quench_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-received")
     {
         timestamp_received = value;
+        timestamp_received.value_namespace = name_space;
+        timestamp_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-reply-received")
     {
         timestamp_reply_received = value;
+        timestamp_reply_received.value_namespace = name_space;
+        timestamp_reply_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown")
     {
         unknown = value;
+        unknown.value_namespace = name_space;
+        unknown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-unreachable-received")
+    {
+        admin_unreachable_received.yfilter = yfilter;
+    }
+    if(value_path == "admin-unreachable-sent")
+    {
+        admin_unreachable_sent.yfilter = yfilter;
+    }
+    if(value_path == "checksum-error")
+    {
+        checksum_error.yfilter = yfilter;
+    }
+    if(value_path == "echo-reply-received")
+    {
+        echo_reply_received.yfilter = yfilter;
+    }
+    if(value_path == "echo-reply-sent")
+    {
+        echo_reply_sent.yfilter = yfilter;
+    }
+    if(value_path == "echo-request-received")
+    {
+        echo_request_received.yfilter = yfilter;
+    }
+    if(value_path == "echo-request-sent")
+    {
+        echo_request_sent.yfilter = yfilter;
+    }
+    if(value_path == "fragment-unreachable-received")
+    {
+        fragment_unreachable_received.yfilter = yfilter;
+    }
+    if(value_path == "fragment-unreachable-sent")
+    {
+        fragment_unreachable_sent.yfilter = yfilter;
+    }
+    if(value_path == "hopcount-received")
+    {
+        hopcount_received.yfilter = yfilter;
+    }
+    if(value_path == "hopcount-sent")
+    {
+        hopcount_sent.yfilter = yfilter;
+    }
+    if(value_path == "host-unreachable-received")
+    {
+        host_unreachable_received.yfilter = yfilter;
+    }
+    if(value_path == "host-unreachable-sent")
+    {
+        host_unreachable_sent.yfilter = yfilter;
+    }
+    if(value_path == "mask-reply-received")
+    {
+        mask_reply_received.yfilter = yfilter;
+    }
+    if(value_path == "mask-reply-sent")
+    {
+        mask_reply_sent.yfilter = yfilter;
+    }
+    if(value_path == "mask-request-received")
+    {
+        mask_request_received.yfilter = yfilter;
+    }
+    if(value_path == "mask-request-sent")
+    {
+        mask_request_sent.yfilter = yfilter;
+    }
+    if(value_path == "network-unreachable-received")
+    {
+        network_unreachable_received.yfilter = yfilter;
+    }
+    if(value_path == "network-unreachable-sent")
+    {
+        network_unreachable_sent.yfilter = yfilter;
+    }
+    if(value_path == "output")
+    {
+        output.yfilter = yfilter;
+    }
+    if(value_path == "param-error-received")
+    {
+        param_error_received.yfilter = yfilter;
+    }
+    if(value_path == "param-error-send")
+    {
+        param_error_send.yfilter = yfilter;
+    }
+    if(value_path == "port-unreachable-received")
+    {
+        port_unreachable_received.yfilter = yfilter;
+    }
+    if(value_path == "port-unreachable-sent")
+    {
+        port_unreachable_sent.yfilter = yfilter;
+    }
+    if(value_path == "protocol-unreachable-received")
+    {
+        protocol_unreachable_received.yfilter = yfilter;
+    }
+    if(value_path == "protocol-unreachable-sent")
+    {
+        protocol_unreachable_sent.yfilter = yfilter;
+    }
+    if(value_path == "reassebly-received")
+    {
+        reassebly_received.yfilter = yfilter;
+    }
+    if(value_path == "reassembly-sent")
+    {
+        reassembly_sent.yfilter = yfilter;
+    }
+    if(value_path == "received")
+    {
+        received.yfilter = yfilter;
+    }
+    if(value_path == "redirect-received")
+    {
+        redirect_received.yfilter = yfilter;
+    }
+    if(value_path == "redirect-send")
+    {
+        redirect_send.yfilter = yfilter;
+    }
+    if(value_path == "router-advert-received")
+    {
+        router_advert_received.yfilter = yfilter;
+    }
+    if(value_path == "router-solicit-received")
+    {
+        router_solicit_received.yfilter = yfilter;
+    }
+    if(value_path == "source-quench-received")
+    {
+        source_quench_received.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-received")
+    {
+        timestamp_received.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-reply-received")
+    {
+        timestamp_reply_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown")
+    {
+        unknown.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-unreachable-received" || name == "admin-unreachable-sent" || name == "checksum-error" || name == "echo-reply-received" || name == "echo-reply-sent" || name == "echo-request-received" || name == "echo-request-sent" || name == "fragment-unreachable-received" || name == "fragment-unreachable-sent" || name == "hopcount-received" || name == "hopcount-sent" || name == "host-unreachable-received" || name == "host-unreachable-sent" || name == "mask-reply-received" || name == "mask-reply-sent" || name == "mask-request-received" || name == "mask-request-sent" || name == "network-unreachable-received" || name == "network-unreachable-sent" || name == "output" || name == "param-error-received" || name == "param-error-send" || name == "port-unreachable-received" || name == "port-unreachable-sent" || name == "protocol-unreachable-received" || name == "protocol-unreachable-sent" || name == "reassebly-received" || name == "reassembly-sent" || name == "received" || name == "redirect-received" || name == "redirect-send" || name == "router-advert-received" || name == "router-solicit-received" || name == "source-quench-received" || name == "timestamp-received" || name == "timestamp-reply-received" || name == "unknown")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interfaces()
@@ -4029,7 +5221,7 @@ bool Ipv4Network::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::get_segment_path() const
@@ -4094,8 +5286,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::get_chil
     return children;
 }
 
-void Ipv4Network::Interfaces::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Interface()
@@ -4121,8 +5324,8 @@ bool Ipv4Network::Interfaces::Interface::has_data() const
 
 bool Ipv4Network::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
@@ -4149,7 +5352,7 @@ const EntityPath Ipv4Network::Interfaces::Interface::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4182,12 +5385,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrfs" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrfs()
@@ -4216,7 +5436,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::get_segment_path() const
@@ -4281,8 +5501,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Vrf()
@@ -4312,8 +5543,8 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::has_data() const
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (brief !=  nullptr && brief->has_operation())
 	|| (detail !=  nullptr && detail->has_operation());
 }
@@ -4341,7 +5572,7 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4388,12 +5619,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief" || name == "detail" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Detail()
@@ -4505,23 +5753,23 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_operation() cons
         if(secondary_address[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(direct_broadcast.operation)
-	|| is_set(flow_tag_dst.operation)
-	|| is_set(flow_tag_src.operation)
-	|| is_set(line_state.operation)
-	|| is_set(mask_reply.operation)
-	|| is_set(mlacp_active.operation)
-	|| is_set(mtu.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(primary_address.operation)
-	|| is_set(proxy_arp_disabled.operation)
-	|| is_set(redirect.operation)
-	|| is_set(rg_id_exists.operation)
-	|| is_set(route_tag.operation)
-	|| is_set(unnumbered_interface_name.operation)
-	|| is_set(unreachable.operation)
-	|| is_set(vrf_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(direct_broadcast.yfilter)
+	|| ydk::is_set(flow_tag_dst.yfilter)
+	|| ydk::is_set(flow_tag_src.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(mask_reply.yfilter)
+	|| ydk::is_set(mlacp_active.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(primary_address.yfilter)
+	|| ydk::is_set(proxy_arp_disabled.yfilter)
+	|| ydk::is_set(redirect.yfilter)
+	|| ydk::is_set(rg_id_exists.yfilter)
+	|| ydk::is_set(route_tag.yfilter)
+	|| ydk::is_set(unnumbered_interface_name.yfilter)
+	|| ydk::is_set(unreachable.yfilter)
+	|| ydk::is_set(vrf_id.yfilter)
 	|| (acl !=  nullptr && acl->has_operation())
 	|| (bgp_pa !=  nullptr && bgp_pa->has_operation())
 	|| (caps_utime !=  nullptr && caps_utime->has_operation())
@@ -4557,22 +5805,22 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direct_broadcast.is_set || is_set(direct_broadcast.operation)) leaf_name_data.push_back(direct_broadcast.get_name_leafdata());
-    if (flow_tag_dst.is_set || is_set(flow_tag_dst.operation)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
-    if (flow_tag_src.is_set || is_set(flow_tag_src.operation)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
-    if (mask_reply.is_set || is_set(mask_reply.operation)) leaf_name_data.push_back(mask_reply.get_name_leafdata());
-    if (mlacp_active.is_set || is_set(mlacp_active.operation)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (primary_address.is_set || is_set(primary_address.operation)) leaf_name_data.push_back(primary_address.get_name_leafdata());
-    if (proxy_arp_disabled.is_set || is_set(proxy_arp_disabled.operation)) leaf_name_data.push_back(proxy_arp_disabled.get_name_leafdata());
-    if (redirect.is_set || is_set(redirect.operation)) leaf_name_data.push_back(redirect.get_name_leafdata());
-    if (rg_id_exists.is_set || is_set(rg_id_exists.operation)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
-    if (unnumbered_interface_name.is_set || is_set(unnumbered_interface_name.operation)) leaf_name_data.push_back(unnumbered_interface_name.get_name_leafdata());
-    if (unreachable.is_set || is_set(unreachable.operation)) leaf_name_data.push_back(unreachable.get_name_leafdata());
-    if (vrf_id.is_set || is_set(vrf_id.operation)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
+    if (direct_broadcast.is_set || is_set(direct_broadcast.yfilter)) leaf_name_data.push_back(direct_broadcast.get_name_leafdata());
+    if (flow_tag_dst.is_set || is_set(flow_tag_dst.yfilter)) leaf_name_data.push_back(flow_tag_dst.get_name_leafdata());
+    if (flow_tag_src.is_set || is_set(flow_tag_src.yfilter)) leaf_name_data.push_back(flow_tag_src.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (mask_reply.is_set || is_set(mask_reply.yfilter)) leaf_name_data.push_back(mask_reply.get_name_leafdata());
+    if (mlacp_active.is_set || is_set(mlacp_active.yfilter)) leaf_name_data.push_back(mlacp_active.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (primary_address.is_set || is_set(primary_address.yfilter)) leaf_name_data.push_back(primary_address.get_name_leafdata());
+    if (proxy_arp_disabled.is_set || is_set(proxy_arp_disabled.yfilter)) leaf_name_data.push_back(proxy_arp_disabled.get_name_leafdata());
+    if (redirect.is_set || is_set(redirect.yfilter)) leaf_name_data.push_back(redirect.get_name_leafdata());
+    if (rg_id_exists.is_set || is_set(rg_id_exists.yfilter)) leaf_name_data.push_back(rg_id_exists.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (unnumbered_interface_name.is_set || is_set(unnumbered_interface_name.yfilter)) leaf_name_data.push_back(unnumbered_interface_name.get_name_leafdata());
+    if (unreachable.is_set || is_set(unreachable.yfilter)) leaf_name_data.push_back(unreachable.get_name_leafdata());
+    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4773,72 +6021,179 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direct-broadcast")
     {
         direct_broadcast = value;
+        direct_broadcast.value_namespace = name_space;
+        direct_broadcast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-tag-dst")
     {
         flow_tag_dst = value;
+        flow_tag_dst.value_namespace = name_space;
+        flow_tag_dst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-tag-src")
     {
         flow_tag_src = value;
+        flow_tag_src.value_namespace = name_space;
+        flow_tag_src.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask-reply")
     {
         mask_reply = value;
+        mask_reply.value_namespace = name_space;
+        mask_reply.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-active")
     {
         mlacp_active = value;
+        mlacp_active.value_namespace = name_space;
+        mlacp_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address")
     {
         primary_address = value;
+        primary_address.value_namespace = name_space;
+        primary_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proxy-arp-disabled")
     {
         proxy_arp_disabled = value;
+        proxy_arp_disabled.value_namespace = name_space;
+        proxy_arp_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redirect")
     {
         redirect = value;
+        redirect.value_namespace = name_space;
+        redirect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rg-id-exists")
     {
         rg_id_exists = value;
+        rg_id_exists.value_namespace = name_space;
+        rg_id_exists.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unnumbered-interface-name")
     {
         unnumbered_interface_name = value;
+        unnumbered_interface_name.value_namespace = name_space;
+        unnumbered_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unreachable")
     {
         unreachable = value;
+        unreachable.value_namespace = name_space;
+        unreachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-id")
     {
         vrf_id = value;
+        vrf_id.value_namespace = name_space;
+        vrf_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direct-broadcast")
+    {
+        direct_broadcast.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag-dst")
+    {
+        flow_tag_dst.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag-src")
+    {
+        flow_tag_src.yfilter = yfilter;
+    }
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "mask-reply")
+    {
+        mask_reply.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-active")
+    {
+        mlacp_active.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address.yfilter = yfilter;
+    }
+    if(value_path == "proxy-arp-disabled")
+    {
+        proxy_arp_disabled.yfilter = yfilter;
+    }
+    if(value_path == "redirect")
+    {
+        redirect.yfilter = yfilter;
+    }
+    if(value_path == "rg-id-exists")
+    {
+        rg_id_exists.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+    if(value_path == "unnumbered-interface-name")
+    {
+        unnumbered_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "unreachable")
+    {
+        unreachable.yfilter = yfilter;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl" || name == "bgp-pa" || name == "caps-utime" || name == "fwd-dis-utime" || name == "fwd-en-utime" || name == "helper-address" || name == "idb-utime" || name == "multi-acl" || name == "multicast-group" || name == "pub-utime" || name == "rpf" || name == "secondary-address" || name == "direct-broadcast" || name == "flow-tag-dst" || name == "flow-tag-src" || name == "line-state" || name == "mask-reply" || name == "mlacp-active" || name == "mtu" || name == "prefix-length" || name == "primary-address" || name == "proxy-arp-disabled" || name == "redirect" || name == "rg-id-exists" || name == "route-tag" || name == "unnumbered-interface-name" || name == "unreachable" || name == "vrf-id")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::Acl()
@@ -4865,11 +6220,11 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::has_data() cons
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_in_bound.operation)
-	|| is_set(common_out_bound.operation)
-	|| is_set(inbound.operation)
-	|| is_set(outbound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_in_bound.yfilter)
+	|| ydk::is_set(common_out_bound.yfilter)
+	|| ydk::is_set(inbound.yfilter)
+	|| ydk::is_set(outbound.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get_segment_path() const
@@ -4895,10 +6250,10 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_in_bound.is_set || is_set(common_in_bound.operation)) leaf_name_data.push_back(common_in_bound.get_name_leafdata());
-    if (common_out_bound.is_set || is_set(common_out_bound.operation)) leaf_name_data.push_back(common_out_bound.get_name_leafdata());
-    if (inbound.is_set || is_set(inbound.operation)) leaf_name_data.push_back(inbound.get_name_leafdata());
-    if (outbound.is_set || is_set(outbound.operation)) leaf_name_data.push_back(outbound.get_name_leafdata());
+    if (common_in_bound.is_set || is_set(common_in_bound.yfilter)) leaf_name_data.push_back(common_in_bound.get_name_leafdata());
+    if (common_out_bound.is_set || is_set(common_out_bound.yfilter)) leaf_name_data.push_back(common_out_bound.get_name_leafdata());
+    if (inbound.is_set || is_set(inbound.yfilter)) leaf_name_data.push_back(inbound.get_name_leafdata());
+    if (outbound.is_set || is_set(outbound.yfilter)) leaf_name_data.push_back(outbound.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4917,24 +6272,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-in-bound")
     {
         common_in_bound = value;
+        common_in_bound.value_namespace = name_space;
+        common_in_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "common-out-bound")
     {
         common_out_bound = value;
+        common_out_bound.value_namespace = name_space;
+        common_out_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inbound")
     {
         inbound = value;
+        inbound.value_namespace = name_space;
+        inbound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outbound")
     {
         outbound = value;
+        outbound.value_namespace = name_space;
+        outbound.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-in-bound")
+    {
+        common_in_bound.yfilter = yfilter;
+    }
+    if(value_path == "common-out-bound")
+    {
+        common_out_bound.yfilter = yfilter;
+    }
+    if(value_path == "inbound")
+    {
+        inbound.yfilter = yfilter;
+    }
+    if(value_path == "outbound")
+    {
+        outbound.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-in-bound" || name == "common-out-bound" || name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::MultiAcl()
@@ -4974,23 +6364,23 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_operat
 {
     for (auto const & leaf : common.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : inbound.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : outbound.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(common.operation)
-	|| is_set(inbound.operation)
-	|| is_set(outbound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common.yfilter)
+	|| ydk::is_set(inbound.yfilter)
+	|| ydk::is_set(outbound.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::get_segment_path() const
@@ -5040,7 +6430,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common")
     {
@@ -5054,6 +6444,29 @@ void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::set_value(
     {
         outbound.append(value);
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common")
+    {
+        common.yfilter = yfilter;
+    }
+    if(value_path == "inbound")
+    {
+        inbound.yfilter = yfilter;
+    }
+    if(value_path == "outbound")
+    {
+        outbound.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common" || name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::HelperAddress()
@@ -5081,11 +6494,11 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_o
 {
     for (auto const & leaf : address_array.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(address_array.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_array.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::get_segment_path() const
@@ -5131,12 +6544,27 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-array")
     {
         address_array.append(value);
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-array")
+    {
+        address_array.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-array")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::Rpf()
@@ -5163,11 +6591,11 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::has_data() cons
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_default_route.operation)
-	|| is_set(allow_self_ping.operation)
-	|| is_set(enable.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_default_route.yfilter)
+	|| ydk::is_set(allow_self_ping.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get_segment_path() const
@@ -5193,10 +6621,10 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_default_route.is_set || is_set(allow_default_route.operation)) leaf_name_data.push_back(allow_default_route.get_name_leafdata());
-    if (allow_self_ping.is_set || is_set(allow_self_ping.operation)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (allow_default_route.is_set || is_set(allow_default_route.yfilter)) leaf_name_data.push_back(allow_default_route.get_name_leafdata());
+    if (allow_self_ping.is_set || is_set(allow_self_ping.yfilter)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5215,24 +6643,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-default-route")
     {
         allow_default_route = value;
+        allow_default_route.value_namespace = name_space;
+        allow_default_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "allow-self-ping")
     {
         allow_self_ping = value;
+        allow_self_ping.value_namespace = name_space;
+        allow_self_ping.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-default-route")
+    {
+        allow_default_route.yfilter = yfilter;
+    }
+    if(value_path == "allow-self-ping")
+    {
+        allow_self_ping.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-default-route" || name == "allow-self-ping" || name == "enable" || name == "mode")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::BgpPa()
@@ -5259,7 +6722,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::has_data() co
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
@@ -5333,8 +6796,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::Input()
@@ -5359,10 +6833,10 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::has_da
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(enable.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::get_segment_path() const
@@ -5388,9 +6862,9 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::I
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5409,20 +6883,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "enable" || name == "source")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::Output()
@@ -5447,10 +6950,10 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::has_d
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(enable.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::get_segment_path() const
@@ -5476,9 +6979,9 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5497,20 +7000,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "enable" || name == "source")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::PubUtime()
@@ -5529,7 +7061,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::has_data()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::get_segment_path() const
@@ -5573,8 +7105,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::IdbUtime()
@@ -5593,7 +7134,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::has_data()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::get_segment_path() const
@@ -5637,8 +7178,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::CapsUtime()
@@ -5657,7 +7207,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::has_data(
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::get_segment_path() const
@@ -5701,8 +7251,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::FwdEnUtime()
@@ -5721,7 +7280,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::has_data
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::get_segment_path() const
@@ -5765,8 +7324,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::FwdDisUtime()
@@ -5785,7 +7353,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::has_dat
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::get_segment_path() const
@@ -5829,8 +7397,17 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::MulticastGroup()
@@ -5851,8 +7428,8 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::has_
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::get_segment_path() const
@@ -5878,7 +7455,7 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Multicas
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5897,12 +7474,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::SecondaryAddress()
@@ -5927,10 +7521,10 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::ha
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_tag.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::get_segment_path() const
@@ -5956,9 +7550,9 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Secondar
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_tag.is_set || is_set(route_tag.operation)) leaf_name_data.push_back(route_tag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_tag.is_set || is_set(route_tag.yfilter)) leaf_name_data.push_back(route_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5977,20 +7571,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-tag")
     {
         route_tag = value;
+        route_tag.value_namespace = name_space;
+        route_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-tag")
+    {
+        route_tag.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length" || name == "route-tag")
+        return true;
+    return false;
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::Brief()
@@ -6015,10 +7638,10 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::has_data() const
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(line_state.operation)
-	|| is_set(primary_address.operation)
-	|| is_set(vrf_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(primary_address.yfilter)
+	|| ydk::is_set(vrf_id.yfilter);
 }
 
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_segment_path() const
@@ -6044,9 +7667,9 @@ const EntityPath Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
-    if (primary_address.is_set || is_set(primary_address.operation)) leaf_name_data.push_back(primary_address.get_name_leafdata());
-    if (vrf_id.is_set || is_set(vrf_id.operation)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (primary_address.is_set || is_set(primary_address.yfilter)) leaf_name_data.push_back(primary_address.get_name_leafdata());
+    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6065,29 +7688,58 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     return children;
 }
 
-void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::set_value(const std::string & value_path, std::string value)
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address")
     {
         primary_address = value;
+        primary_address.value_namespace = name_space;
+        primary_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-id")
     {
         vrf_id = value;
+        vrf_id.value_namespace = name_space;
+        vrf_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf RpfModeEnum::strict {0, "strict"};
-const Enum::YLeaf RpfModeEnum::loose {1, "loose"};
+void Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf Ipv4MaOperLineStateEnum::unknown {0, "unknown"};
-const Enum::YLeaf Ipv4MaOperLineStateEnum::shutdown {1, "shutdown"};
-const Enum::YLeaf Ipv4MaOperLineStateEnum::down {2, "down"};
-const Enum::YLeaf Ipv4MaOperLineStateEnum::up {3, "up"};
+bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "line-state" || name == "primary-address" || name == "vrf-id")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf RpfMode::strict {0, "strict"};
+const Enum::YLeaf RpfMode::loose {1, "loose"};
+
+const Enum::YLeaf Ipv4MaOperLineState::unknown {0, "unknown"};
+const Enum::YLeaf Ipv4MaOperLineState::shutdown {1, "shutdown"};
+const Enum::YLeaf Ipv4MaOperLineState::down {2, "down"};
+const Enum::YLeaf Ipv4MaOperLineState::up {3, "up"};
 
 
 }

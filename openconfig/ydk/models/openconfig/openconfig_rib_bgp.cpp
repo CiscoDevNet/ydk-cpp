@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "openconfig_rib_bgp.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace openconfig {
 namespace openconfig_rib_bgp {
 
 BgpRib::BgpRib()
@@ -29,7 +31,7 @@ bool BgpRib::has_data() const
 
 bool BgpRib::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (afi_safis !=  nullptr && afi_safis->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::get_children() const
     return children;
 }
 
-void BgpRib::set_value(const std::string & value_path, std::string value)
+void BgpRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BgpRib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string BgpRib::get_bundle_name() const
 augment_capabilities_function BgpRib::get_augment_capabilities_function() const
 {
     return openconfig_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> BgpRib::get_namespace_identity_lookup() const
+{
+    return openconfig_namespace_identity_lookup;
+}
+
+bool BgpRib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-safis")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafis()
@@ -135,7 +153,7 @@ bool BgpRib::AfiSafis::has_operation() const
         if(afi_safi[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::get_children() 
     return children;
 }
 
-void BgpRib::AfiSafis::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-safi")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::AfiSafi()
@@ -231,8 +260,8 @@ bool BgpRib::AfiSafis::AfiSafi::has_data() const
 
 bool BgpRib::AfiSafis::AfiSafi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(afi_safi_name.yfilter)
 	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_operation())
 	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_operation());
 }
@@ -260,7 +289,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (afi_safi_name.is_set || is_set(afi_safi_name.yfilter)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -307,12 +336,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::get_ch
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi-safi-name")
     {
         afi_safi_name = value;
+        afi_safi_name.value_namespace = name_space;
+        afi_safi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-unicast" || name == "ipv6-unicast" || name == "afi-safi-name")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Ipv4Unicast()
@@ -339,7 +385,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::has_data() const
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (loc_rib !=  nullptr && loc_rib->has_operation())
 	|| (neighbors !=  nullptr && neighbors->has_operation());
 }
@@ -413,8 +459,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "loc-rib" || name == "neighbors")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::LocRib()
@@ -440,8 +497,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::has_data() const
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -468,7 +525,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -501,12 +558,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Routes()
@@ -535,7 +609,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::has_operation() con
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::get_segment_path() const
@@ -600,8 +674,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Route()
@@ -641,13 +726,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::has_data() c
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -675,12 +760,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -727,32 +812,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Attributes()
@@ -798,18 +930,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -836,13 +968,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -877,19 +1009,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -898,19 +1036,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -935,10 +1124,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -964,9 +1153,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -985,20 +1174,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::ExtAttributes()
@@ -1047,20 +1265,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttribute
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::get_segment_path() const
@@ -1086,9 +1304,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -1132,11 +1350,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -1149,11 +1369,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttribute
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -1178,10 +1433,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttribute
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -1207,9 +1462,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1228,20 +1483,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbors()
@@ -1270,7 +1554,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::has_operation() const
         if(neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::get_segment_path() const
@@ -1335,8 +1619,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Neighbor()
@@ -1374,8 +1669,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::has_data() con
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(neighbor_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
 	|| (adj_rib_in_post !=  nullptr && adj_rib_in_post->has_operation())
 	|| (adj_rib_in_pre !=  nullptr && adj_rib_in_pre->has_operation())
 	|| (adj_rib_out_post !=  nullptr && adj_rib_out_post->has_operation())
@@ -1405,7 +1700,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1480,12 +1775,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adj-rib-in-post" || name == "adj-rib-in-pre" || name == "adj-rib-out-post" || name == "adj-rib-out-pre" || name == "neighbor-address")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::AdjRibInPre()
@@ -1511,8 +1823,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::h
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -1539,7 +1851,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1572,12 +1884,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Routes()
@@ -1606,7 +1935,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::R
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_segment_path() const
@@ -1671,8 +2000,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Route()
@@ -1712,13 +2052,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::R
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -1746,12 +2086,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1798,32 +2138,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Attributes()
@@ -1869,18 +2256,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::R
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -1907,13 +2294,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -1948,19 +2335,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -1969,19 +2362,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::R
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -2006,10 +2450,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::R
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -2035,9 +2479,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2056,20 +2500,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::ExtAttributes()
@@ -2118,20 +2591,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::R
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_segment_path() const
@@ -2157,9 +2630,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -2203,11 +2676,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -2220,11 +2695,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::R
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -2249,10 +2759,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::R
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -2278,9 +2788,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2299,20 +2809,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::AdjRibInPost()
@@ -2338,8 +2877,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -2366,7 +2905,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2399,12 +2938,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Routes()
@@ -2433,7 +2989,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_segment_path() const
@@ -2498,8 +3054,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Route()
@@ -2539,13 +3106,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -2573,12 +3140,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2625,32 +3192,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Attributes()
@@ -2696,18 +3310,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -2734,13 +3348,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -2775,19 +3389,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -2796,19 +3416,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -2833,10 +3504,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -2862,9 +3533,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2883,20 +3554,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::ExtAttributes()
@@ -2945,20 +3645,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_segment_path() const
@@ -2984,9 +3684,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -3030,11 +3730,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -3047,11 +3749,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -3076,10 +3813,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -3105,9 +3842,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3126,20 +3863,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::AdjRibOutPre()
@@ -3165,8 +3931,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -3193,7 +3959,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3226,12 +3992,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Routes()
@@ -3260,7 +4043,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_segment_path() const
@@ -3325,8 +4108,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Route()
@@ -3366,13 +4160,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -3400,12 +4194,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3452,32 +4246,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Attributes()
@@ -3523,18 +4364,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -3561,13 +4402,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -3602,19 +4443,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -3623,19 +4470,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -3660,10 +4558,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -3689,9 +4587,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3710,20 +4608,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::ExtAttributes()
@@ -3772,20 +4699,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_segment_path() const
@@ -3811,9 +4738,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -3857,11 +4784,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -3874,11 +4803,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -3903,10 +4867,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -3932,9 +4896,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3953,20 +4917,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::AdjRibOutPost()
@@ -3992,8 +4985,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -4020,7 +5013,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4053,12 +5046,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Routes()
@@ -4087,7 +5097,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_segment_path() const
@@ -4152,8 +5162,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Route()
@@ -4193,13 +5214,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -4227,12 +5248,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4279,32 +5300,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Attributes()
@@ -4350,18 +5418,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -4388,13 +5456,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -4429,19 +5497,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -4450,19 +5524,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -4487,10 +5612,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -4516,9 +5641,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4537,20 +5662,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::ExtAttributes()
@@ -4599,20 +5753,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_segment_path() const
@@ -4638,9 +5792,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -4684,11 +5838,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -4701,11 +5857,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -4730,10 +5921,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost:
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -4759,9 +5950,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4780,20 +5971,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv4Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Ipv6Unicast()
@@ -4820,7 +6040,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::has_data() const
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (loc_rib !=  nullptr && loc_rib->has_operation())
 	|| (neighbors !=  nullptr && neighbors->has_operation());
 }
@@ -4894,8 +6114,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "loc-rib" || name == "neighbors")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::LocRib()
@@ -4921,8 +6152,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::has_data() const
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -4949,7 +6180,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4982,12 +6213,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Routes()
@@ -5016,7 +6264,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::has_operation() con
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::get_segment_path() const
@@ -5081,8 +6329,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Route()
@@ -5122,13 +6381,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::has_data() c
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -5156,12 +6415,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5208,32 +6467,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Attributes()
@@ -5279,18 +6585,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -5317,13 +6623,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -5358,19 +6664,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -5379,19 +6691,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -5416,10 +6779,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -5445,9 +6808,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5466,20 +6829,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::ExtAttributes()
@@ -5528,20 +6920,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttribute
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::get_segment_path() const
@@ -5567,9 +6959,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -5613,11 +7005,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -5630,11 +7024,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttribute
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -5659,10 +7088,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttribute
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -5688,9 +7117,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5709,20 +7138,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbors()
@@ -5751,7 +7209,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::has_operation() const
         if(neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::get_segment_path() const
@@ -5816,8 +7274,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Neighbor()
@@ -5855,8 +7324,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::has_data() con
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(neighbor_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
 	|| (adj_rib_in_post !=  nullptr && adj_rib_in_post->has_operation())
 	|| (adj_rib_in_pre !=  nullptr && adj_rib_in_pre->has_operation())
 	|| (adj_rib_out_post !=  nullptr && adj_rib_out_post->has_operation())
@@ -5886,7 +7355,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5961,12 +7430,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adj-rib-in-post" || name == "adj-rib-in-pre" || name == "adj-rib-out-post" || name == "adj-rib-out-pre" || name == "neighbor-address")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::AdjRibInPre()
@@ -5992,8 +7478,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::h
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -6020,7 +7506,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6053,12 +7539,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Routes()
@@ -6087,7 +7590,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::R
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::get_segment_path() const
@@ -6152,8 +7655,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Route()
@@ -6193,13 +7707,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::R
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -6227,12 +7741,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6279,32 +7793,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Attributes()
@@ -6350,18 +7911,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::R
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -6388,13 +7949,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -6429,19 +7990,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -6450,19 +8017,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::R
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -6487,10 +8105,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::R
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -6516,9 +8134,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6537,20 +8155,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::ExtAttributes()
@@ -6599,20 +8246,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::R
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::get_segment_path() const
@@ -6638,9 +8285,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -6684,11 +8331,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -6701,11 +8350,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::R
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -6730,10 +8414,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::R
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -6759,9 +8443,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6780,20 +8464,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPre::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::AdjRibInPost()
@@ -6819,8 +8532,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -6847,7 +8560,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6880,12 +8593,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Routes()
@@ -6914,7 +8644,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::get_segment_path() const
@@ -6979,8 +8709,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Route()
@@ -7020,13 +8761,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -7054,12 +8795,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7106,32 +8847,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Attributes()
@@ -7177,18 +8965,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -7215,13 +9003,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -7256,19 +9044,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -7277,19 +9071,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -7314,10 +9159,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -7343,9 +9188,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7364,20 +9209,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::ExtAttributes()
@@ -7426,20 +9300,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::get_segment_path() const
@@ -7465,9 +9339,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -7511,11 +9385,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -7528,11 +9404,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -7557,10 +9468,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -7586,9 +9497,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7607,20 +9518,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibInPost::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::AdjRibOutPre()
@@ -7646,8 +9586,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -7674,7 +9614,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7707,12 +9647,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Routes()
@@ -7741,7 +9698,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::get_segment_path() const
@@ -7806,8 +9763,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Route()
@@ -7847,13 +9815,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -7881,12 +9849,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7933,32 +9901,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Attributes()
@@ -8004,18 +10019,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -8042,13 +10057,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -8083,19 +10098,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -8104,19 +10125,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -8141,10 +10213,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -8170,9 +10242,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8191,20 +10263,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::ExtAttributes()
@@ -8253,20 +10354,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::get_segment_path() const
@@ -8292,9 +10393,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -8338,11 +10439,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -8355,11 +10458,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -8384,10 +10522,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -8413,9 +10551,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8434,20 +10572,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPre::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::AdjRibOutPost()
@@ -8473,8 +10640,8 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(num_routes.yfilter)
 	|| (routes !=  nullptr && routes->has_operation());
 }
 
@@ -8501,7 +10668,7 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_routes.is_set || is_set(num_routes.operation)) leaf_name_data.push_back(num_routes.get_name_leafdata());
+    if (num_routes.is_set || is_set(num_routes.yfilter)) leaf_name_data.push_back(num_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8534,12 +10701,29 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-routes")
     {
         num_routes = value;
+        num_routes.value_namespace = name_space;
+        num_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-routes")
+    {
+        num_routes.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "routes" || name == "num-routes")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Routes()
@@ -8568,7 +10752,7 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::get_segment_path() const
@@ -8633,8 +10817,19 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Route()
@@ -8674,13 +10869,13 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_path.operation)
-	|| is_set(invalid_reason.operation)
-	|| is_set(last_modified_date.operation)
-	|| is_set(last_update_received.operation)
-	|| is_set(prefix.operation)
-	|| is_set(valid_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(best_path.yfilter)
+	|| ydk::is_set(invalid_reason.yfilter)
+	|| ydk::is_set(last_modified_date.yfilter)
+	|| ydk::is_set(last_update_received.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(valid_route.yfilter)
 	|| (attributes !=  nullptr && attributes->has_operation())
 	|| (ext_attributes !=  nullptr && ext_attributes->has_operation());
 }
@@ -8708,12 +10903,12 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_path.is_set || is_set(best_path.operation)) leaf_name_data.push_back(best_path.get_name_leafdata());
-    if (invalid_reason.is_set || is_set(invalid_reason.operation)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
-    if (last_modified_date.is_set || is_set(last_modified_date.operation)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
-    if (last_update_received.is_set || is_set(last_update_received.operation)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (valid_route.is_set || is_set(valid_route.operation)) leaf_name_data.push_back(valid_route.get_name_leafdata());
+    if (best_path.is_set || is_set(best_path.yfilter)) leaf_name_data.push_back(best_path.get_name_leafdata());
+    if (invalid_reason.is_set || is_set(invalid_reason.yfilter)) leaf_name_data.push_back(invalid_reason.get_name_leafdata());
+    if (last_modified_date.is_set || is_set(last_modified_date.yfilter)) leaf_name_data.push_back(last_modified_date.get_name_leafdata());
+    if (last_update_received.is_set || is_set(last_update_received.yfilter)) leaf_name_data.push_back(last_update_received.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (valid_route.is_set || is_set(valid_route.yfilter)) leaf_name_data.push_back(valid_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8760,32 +10955,79 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-path")
     {
         best_path = value;
+        best_path.value_namespace = name_space;
+        best_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-reason")
     {
         invalid_reason = value;
+        invalid_reason.value_namespace = name_space;
+        invalid_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-modified-date")
     {
         last_modified_date = value;
+        last_modified_date.value_namespace = name_space;
+        last_modified_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-received")
     {
         last_update_received = value;
+        last_update_received.value_namespace = name_space;
+        last_update_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-route")
     {
         valid_route = value;
+        valid_route.value_namespace = name_space;
+        valid_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-path")
+    {
+        best_path.yfilter = yfilter;
+    }
+    if(value_path == "invalid-reason")
+    {
+        invalid_reason.yfilter = yfilter;
+    }
+    if(value_path == "last-modified-date")
+    {
+        last_modified_date.yfilter = yfilter;
+    }
+    if(value_path == "last-update-received")
+    {
+        last_update_received.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "valid-route")
+    {
+        valid_route.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "ext-attributes" || name == "best-path" || name == "invalid-reason" || name == "last-modified-date" || name == "last-update-received" || name == "prefix" || name == "valid-route")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Attributes()
@@ -8831,18 +11073,18 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
 {
     for (auto const & leaf : community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(as4_path.operation)
-	|| is_set(as_path.operation)
-	|| is_set(atomic_aggr.operation)
-	|| is_set(community.operation)
-	|| is_set(local_pref.operation)
-	|| is_set(med.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(origin.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(as4_path.yfilter)
+	|| ydk::is_set(as_path.yfilter)
+	|| ydk::is_set(atomic_aggr.yfilter)
+	|| ydk::is_set(community.yfilter)
+	|| ydk::is_set(local_pref.yfilter)
+	|| ydk::is_set(med.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(origin.yfilter)
 	|| (aggregator !=  nullptr && aggregator->has_operation());
 }
 
@@ -8869,13 +11111,13 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as4_path.is_set || is_set(as4_path.operation)) leaf_name_data.push_back(as4_path.get_name_leafdata());
-    if (as_path.is_set || is_set(as_path.operation)) leaf_name_data.push_back(as_path.get_name_leafdata());
-    if (atomic_aggr.is_set || is_set(atomic_aggr.operation)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
-    if (local_pref.is_set || is_set(local_pref.operation)) leaf_name_data.push_back(local_pref.get_name_leafdata());
-    if (med.is_set || is_set(med.operation)) leaf_name_data.push_back(med.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (origin.is_set || is_set(origin.operation)) leaf_name_data.push_back(origin.get_name_leafdata());
+    if (as4_path.is_set || is_set(as4_path.yfilter)) leaf_name_data.push_back(as4_path.get_name_leafdata());
+    if (as_path.is_set || is_set(as_path.yfilter)) leaf_name_data.push_back(as_path.get_name_leafdata());
+    if (atomic_aggr.is_set || is_set(atomic_aggr.yfilter)) leaf_name_data.push_back(atomic_aggr.get_name_leafdata());
+    if (local_pref.is_set || is_set(local_pref.yfilter)) leaf_name_data.push_back(local_pref.get_name_leafdata());
+    if (med.is_set || is_set(med.yfilter)) leaf_name_data.push_back(med.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (origin.is_set || is_set(origin.yfilter)) leaf_name_data.push_back(origin.get_name_leafdata());
 
     auto community_name_datas = community.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), community_name_datas.begin(), community_name_datas.end());
@@ -8910,19 +11152,25 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as4-path")
     {
         as4_path = value;
+        as4_path.value_namespace = name_space;
+        as4_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-path")
     {
         as_path = value;
+        as_path.value_namespace = name_space;
+        as_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atomic-aggr")
     {
         atomic_aggr = value;
+        atomic_aggr.value_namespace = name_space;
+        atomic_aggr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "community")
     {
@@ -8931,19 +11179,70 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
     if(value_path == "local-pref")
     {
         local_pref = value;
+        local_pref.value_namespace = name_space;
+        local_pref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "med")
     {
         med = value;
+        med.value_namespace = name_space;
+        med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "origin")
     {
         origin = value;
+        origin.value_namespace = name_space;
+        origin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as4-path")
+    {
+        as4_path.yfilter = yfilter;
+    }
+    if(value_path == "as-path")
+    {
+        as_path.yfilter = yfilter;
+    }
+    if(value_path == "atomic-aggr")
+    {
+        atomic_aggr.yfilter = yfilter;
+    }
+    if(value_path == "community")
+    {
+        community.yfilter = yfilter;
+    }
+    if(value_path == "local-pref")
+    {
+        local_pref.yfilter = yfilter;
+    }
+    if(value_path == "med")
+    {
+        med.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "origin")
+    {
+        origin.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregator" || name == "as4-path" || name == "as-path" || name == "atomic-aggr" || name == "community" || name == "local-pref" || name == "med" || name == "next-hop" || name == "origin")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::Aggregator()
@@ -8968,10 +11267,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(as.operation)
-	|| is_set(as4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as4.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::get_segment_path() const
@@ -8997,9 +11296,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as4.is_set || is_set(as4.operation)) leaf_name_data.push_back(as4.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as4.is_set || is_set(as4.yfilter)) leaf_name_data.push_back(as4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9018,20 +11317,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as4")
     {
         as4 = value;
+        as4.value_namespace = name_space;
+        as4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as4")
+    {
+        as4.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::Attributes::Aggregator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "as" || name == "as4")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::ExtAttributes()
@@ -9080,20 +11408,20 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
     }
     for (auto const & leaf : cluster_list.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ext_community.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(aigp.operation)
-	|| is_set(cluster_list.operation)
-	|| is_set(ext_community.operation)
-	|| is_set(originator_id.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aigp.yfilter)
+	|| ydk::is_set(cluster_list.yfilter)
+	|| ydk::is_set(ext_community.yfilter)
+	|| ydk::is_set(originator_id.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::get_segment_path() const
@@ -9119,9 +11447,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aigp.is_set || is_set(aigp.operation)) leaf_name_data.push_back(aigp.get_name_leafdata());
-    if (originator_id.is_set || is_set(originator_id.operation)) leaf_name_data.push_back(originator_id.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (aigp.is_set || is_set(aigp.yfilter)) leaf_name_data.push_back(aigp.get_name_leafdata());
+    if (originator_id.is_set || is_set(originator_id.yfilter)) leaf_name_data.push_back(originator_id.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
     auto cluster_list_name_datas = cluster_list.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cluster_list_name_datas.begin(), cluster_list_name_datas.end());
@@ -9165,11 +11493,13 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aigp")
     {
         aigp = value;
+        aigp.value_namespace = name_space;
+        aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cluster-list")
     {
@@ -9182,11 +11512,46 @@ void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
     if(value_path == "originator-id")
     {
         originator_id = value;
+        originator_id.value_namespace = name_space;
+        originator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aigp")
+    {
+        aigp.yfilter = yfilter;
+    }
+    if(value_path == "cluster-list")
+    {
+        cluster_list.yfilter = yfilter;
+    }
+    if(value_path == "ext-community")
+    {
+        ext_community.yfilter = yfilter;
+    }
+    if(value_path == "originator-id")
+    {
+        originator_id.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unknown-attribute" || name == "aigp" || name == "cluster-list" || name == "ext-community" || name == "originator-id" || name == "path-id")
+        return true;
+    return false;
 }
 
 BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::UnknownAttribute()
@@ -9211,10 +11576,10 @@ bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost:
 
 bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attr_type.operation)
-	|| is_set(attr_len.operation)
-	|| is_set(attr_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attr_type.yfilter)
+	|| ydk::is_set(attr_len.yfilter)
+	|| ydk::is_set(attr_value.yfilter);
 }
 
 std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::get_segment_path() const
@@ -9240,9 +11605,9 @@ const EntityPath BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attr_type.is_set || is_set(attr_type.operation)) leaf_name_data.push_back(attr_type.get_name_leafdata());
-    if (attr_len.is_set || is_set(attr_len.operation)) leaf_name_data.push_back(attr_len.get_name_leafdata());
-    if (attr_value.is_set || is_set(attr_value.operation)) leaf_name_data.push_back(attr_value.get_name_leafdata());
+    if (attr_type.is_set || is_set(attr_type.yfilter)) leaf_name_data.push_back(attr_type.get_name_leafdata());
+    if (attr_len.is_set || is_set(attr_len.yfilter)) leaf_name_data.push_back(attr_len.get_name_leafdata());
+    if (attr_value.is_set || is_set(attr_value.yfilter)) leaf_name_data.push_back(attr_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9261,20 +11626,49 @@ std::map<std::string, std::shared_ptr<Entity>> BgpRib::AfiSafis::AfiSafi::Ipv6Un
     return children;
 }
 
-void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, std::string value)
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attr-type")
     {
         attr_type = value;
+        attr_type.value_namespace = name_space;
+        attr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-len")
     {
         attr_len = value;
+        attr_len.value_namespace = name_space;
+        attr_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attr-value")
     {
         attr_value = value;
+        attr_value.value_namespace = name_space;
+        attr_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attr-type")
+    {
+        attr_type.yfilter = yfilter;
+    }
+    if(value_path == "attr-len")
+    {
+        attr_len.yfilter = yfilter;
+    }
+    if(value_path == "attr-value")
+    {
+        attr_value.yfilter = yfilter;
+    }
+}
+
+bool BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibOutPost::Routes::Route::ExtAttributes::UnknownAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attr-type" || name == "attr-len" || name == "attr-value")
+        return true;
+    return false;
 }
 
 

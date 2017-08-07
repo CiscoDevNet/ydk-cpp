@@ -5,13 +5,15 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_5.hpp"
-#include "Cisco_IOS_XR_pmengine_oper_8.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_7.hpp"
+#include "Cisco_IOS_XR_pmengine_oper_8.hpp"
+#include "Cisco_IOS_XR_pmengine_oper_6.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_9.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_10.hpp"
-#include "Cisco_IOS_XR_pmengine_oper_6.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pmengine_oper {
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Out8021QFrames::Out8021QFrames()
@@ -38,11 +40,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Out8021QFrames::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Out8021QFrames::get_segment_path() const
@@ -68,10 +70,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -90,24 +92,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Out8021QFrames::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Out8021QFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Out8021QFrames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Out8021QFrames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPauseFrames::OutPauseFrames()
@@ -134,11 +171,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPauseFrames::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPauseFrames::get_segment_path() const
@@ -164,10 +201,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -186,24 +223,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPauseFrames::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPauseFrames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPauseFrames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPauseFrames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts1519MaxOctets::OutPkts1519MaxOctets()
@@ -230,11 +302,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts1519MaxOctets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts1519MaxOctets::get_segment_path() const
@@ -260,10 +332,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -282,24 +354,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts1519MaxOctets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts1519MaxOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts1519MaxOctets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts1519MaxOctets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodPkts::OutGoodPkts()
@@ -326,11 +433,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodPkts::get_segment_path() const
@@ -356,10 +463,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -378,24 +485,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodPkts::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutGoodPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropUnderrun::OutDropUnderrun()
@@ -422,11 +564,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropUnderrun::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropUnderrun::get_segment_path() const
@@ -452,10 +594,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -474,24 +616,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropUnderrun::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropUnderrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropUnderrun::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropUnderrun::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropAbort::OutDropAbort()
@@ -518,11 +695,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropAbort::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropAbort::get_segment_path() const
@@ -548,10 +725,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -570,24 +747,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropAbort::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropAbort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropAbort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropAbort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropOther::OutDropOther()
@@ -614,11 +826,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropOther::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropOther::get_segment_path() const
@@ -644,10 +856,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -666,24 +878,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropOther::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropOther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropOther::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutDropOther::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutErrorOther::OutErrorOther()
@@ -710,11 +957,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutErrorOther::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutErrorOther::get_segment_path() const
@@ -740,10 +987,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -762,24 +1009,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutErrorOther::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutErrorOther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutErrorOther::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutErrorOther::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorGiant::InErrorGiant()
@@ -806,11 +1088,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorGiant::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorGiant::get_segment_path() const
@@ -836,10 +1118,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -858,24 +1140,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorGiant::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorGiant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorGiant::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorGiant::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorRunt::InErrorRunt()
@@ -902,11 +1219,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorRunt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorRunt::get_segment_path() const
@@ -932,10 +1249,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -954,24 +1271,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorRunt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorRunt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorRunt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorJabbers::InErrorJabbers()
@@ -998,11 +1350,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorJabbers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorJabbers::get_segment_path() const
@@ -1028,10 +1380,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1050,24 +1402,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorJabbers::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorJabbers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorJabbers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorJabbers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorFragments::InErrorFragments()
@@ -1094,11 +1481,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorFragments::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorFragments::get_segment_path() const
@@ -1124,10 +1511,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1146,24 +1533,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorFragments::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorFragments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorFragments::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorFragments::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorOther::InErrorOther()
@@ -1190,11 +1612,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorOther::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorOther::get_segment_path() const
@@ -1220,10 +1642,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1242,24 +1664,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorOther::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorOther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorOther::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InErrorOther::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkt64Octet::InPkt64Octet()
@@ -1286,11 +1743,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkt64Octet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkt64Octet::get_segment_path() const
@@ -1316,10 +1773,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1338,24 +1795,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkt64Octet::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkt64Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkt64Octet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkt64Octet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts65To127Octets::InPkts65To127Octets()
@@ -1382,11 +1874,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts65To127Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts65To127Octets::get_segment_path() const
@@ -1412,10 +1904,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1434,24 +1926,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts65To127Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts65To127Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts65To127Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts65To127Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts128To255Octets::InPkts128To255Octets()
@@ -1478,11 +2005,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts128To255Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts128To255Octets::get_segment_path() const
@@ -1508,10 +2035,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1530,24 +2057,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts128To255Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts128To255Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts128To255Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts128To255Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts256To511Octets::InPkts256To511Octets()
@@ -1574,11 +2136,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts256To511Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts256To511Octets::get_segment_path() const
@@ -1604,10 +2166,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1626,24 +2188,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts256To511Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts256To511Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts256To511Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts256To511Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts512To1023Octets::InPkts512To1023Octets()
@@ -1670,11 +2267,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts512To1023Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts512To1023Octets::get_segment_path() const
@@ -1700,10 +2297,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1722,24 +2319,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts512To1023Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts512To1023Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts512To1023Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts512To1023Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1024To1518Octets::InPkts1024To1518Octets()
@@ -1766,11 +2398,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1024To1518Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1024To1518Octets::get_segment_path() const
@@ -1796,10 +2428,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1818,24 +2450,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1024To1518Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1024To1518Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1024To1518Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::InPkts1024To1518Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Outpkt64Octet::Outpkt64Octet()
@@ -1862,11 +2529,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Outpkt64Octet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Outpkt64Octet::get_segment_path() const
@@ -1892,10 +2559,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1914,24 +2581,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Outpkt64Octet::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Outpkt64Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Outpkt64Octet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::Outpkt64Octet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts65127Octets::OutPkts65127Octets()
@@ -1958,11 +2660,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts65127Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts65127Octets::get_segment_path() const
@@ -1988,10 +2690,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2010,24 +2712,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts65127Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts65127Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts65127Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts65127Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts128255Octets::OutPkts128255Octets()
@@ -2054,11 +2791,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts128255Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts128255Octets::get_segment_path() const
@@ -2084,10 +2821,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2106,24 +2843,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts128255Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts128255Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts128255Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts128255Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts256511Octets::OutPkts256511Octets()
@@ -2150,11 +2922,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts256511Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts256511Octets::get_segment_path() const
@@ -2180,10 +2952,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2202,24 +2974,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts256511Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts256511Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts256511Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts256511Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts5121023Octets::OutPkts5121023Octets()
@@ -2246,11 +3053,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts5121023Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts5121023Octets::get_segment_path() const
@@ -2276,10 +3083,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2298,24 +3105,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts5121023Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts5121023Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts5121023Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts5121023Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts10241518Octets::OutPkts10241518Octets()
@@ -2342,11 +3184,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts10241518Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts10241518Octets::get_segment_path() const
@@ -2372,10 +3214,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2394,24 +3236,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts10241518Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts10241518Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts10241518Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::OutPkts10241518Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxUtil::RxUtil()
@@ -2438,11 +3315,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxUtil::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxUtil::get_segment_path() const
@@ -2468,10 +3345,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2490,24 +3367,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxUtil::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxUtil::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::RxUtil::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil::TxUtil()
@@ -2534,11 +3446,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil::get_segment_path() const
@@ -2564,10 +3476,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2586,24 +3498,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUtil::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUndersizedPkt::TxUndersizedPkt()
@@ -2630,11 +3577,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUndersizedPkt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUndersizedPkt::get_segment_path() const
@@ -2660,10 +3607,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2682,24 +3629,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUndersizedPkt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUndersizedPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUndersizedPkt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxUndersizedPkt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxOversizedPkt::TxOversizedPkt()
@@ -2726,11 +3708,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxOversizedPkt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxOversizedPkt::get_segment_path() const
@@ -2756,10 +3738,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2778,24 +3760,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxOversizedPkt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxOversizedPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxOversizedPkt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxOversizedPkt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxFragments::TxFragments()
@@ -2822,11 +3839,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxFragments::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxFragments::get_segment_path() const
@@ -2852,10 +3869,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2874,24 +3891,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxFragments::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxFragments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxFragments::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxFragments::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxJabber::TxJabber()
@@ -2918,11 +3970,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxJabber::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxJabber::get_segment_path() const
@@ -2948,10 +4000,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2970,24 +4022,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxJabber::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxJabber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxJabber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxJabber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxBadFcs::TxBadFcs()
@@ -3014,11 +4101,11 @@ bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurre
 
 bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxBadFcs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxBadFcs::get_segment_path() const
@@ -3044,10 +4131,10 @@ const EntityPath PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3066,24 +4153,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Ethernet::
     return children;
 }
 
-void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxBadFcs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxBadFcs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxBadFcs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagement::Ethernet::EthernetPorts::EthernetPort::EthernetCurrent::Minute15::Minute15Ethers::Minute15Ether::TxBadFcs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::PerformanceManagementHistory()
@@ -3106,7 +4228,7 @@ bool PerformanceManagementHistory::has_data() const
 
 bool PerformanceManagementHistory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global !=  nullptr && global->has_operation());
 }
 
@@ -3162,7 +4284,11 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::get
     return children;
 }
 
-void PerformanceManagementHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerformanceManagementHistory::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -3186,6 +4312,18 @@ augment_capabilities_function PerformanceManagementHistory::get_augment_capabili
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> PerformanceManagementHistory::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PerformanceManagementHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global")
+        return true;
+    return false;
+}
+
 PerformanceManagementHistory::Global::Global()
     :
     periodic(std::make_shared<PerformanceManagementHistory::Global::Periodic>())
@@ -3206,7 +4344,7 @@ bool PerformanceManagementHistory::Global::has_data() const
 
 bool PerformanceManagementHistory::Global::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (periodic !=  nullptr && periodic->has_operation());
 }
 
@@ -3265,8 +4403,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "periodic")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::Periodic()
@@ -3325,7 +4474,7 @@ bool PerformanceManagementHistory::Global::Periodic::has_data() const
 
 bool PerformanceManagementHistory::Global::Periodic::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dwdm_history !=  nullptr && dwdm_history->has_operation())
 	|| (ethernet_history !=  nullptr && ethernet_history->has_operation())
 	|| (ho_vc_history !=  nullptr && ho_vc_history->has_operation())
@@ -3519,8 +4668,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-history" || name == "ethernet-history" || name == "ho-vc-history" || name == "oc-history" || name == "odu-history" || name == "optics-history" || name == "otu-history" || name == "sonet-history" || name == "stm-history" || name == "sts-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetHistory()
@@ -3543,7 +4703,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::has_data() co
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sonet_port_histories !=  nullptr && sonet_port_histories->has_operation());
 }
 
@@ -3602,8 +4762,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-port-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistories()
@@ -3632,7 +4803,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_port_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::get_segment_path() const
@@ -3697,8 +4868,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-port-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetPortHistory()
@@ -3728,8 +4910,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (sonet_hour24_history !=  nullptr && sonet_hour24_history->has_operation())
 	|| (sonet_minute15_history !=  nullptr && sonet_minute15_history->has_operation());
 }
@@ -3757,7 +4939,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3804,12 +4986,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-hour24-history" || name == "sonet-minute15-history" || name == "name")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15History()
@@ -3836,7 +5035,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sonet_minute15_path_histories !=  nullptr && sonet_minute15_path_histories->has_operation())
 	|| (sonet_minute15ocn_histories !=  nullptr && sonet_minute15ocn_histories->has_operation());
 }
@@ -3910,8 +5109,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-minute15-path-histories" || name == "sonet-minute15ocn-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistories()
@@ -3940,7 +5150,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_minute15ocn_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::get_segment_path() const
@@ -4005,8 +5215,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-minute15ocn-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnHistory()
@@ -4032,8 +5253,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (sonet_minute15ocn_time_line_instances !=  nullptr && sonet_minute15ocn_time_line_instances->has_operation());
 }
 
@@ -4060,7 +5281,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4093,12 +5314,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-minute15ocn-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstances()
@@ -4127,7 +5365,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_minute15ocn_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::get_segment_path() const
@@ -4192,8 +5430,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-minute15ocn-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::SonetMinute15OcnTimeLineInstance()
@@ -4239,14 +5488,14 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_line !=  nullptr && fe_line->has_operation())
 	|| (line !=  nullptr && line->has_operation())
 	|| (section !=  nullptr && section->has_operation());
@@ -4275,13 +5524,13 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4342,36 +5591,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-line" || name == "line" || name == "section" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::Section()
@@ -4409,8 +5711,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(section_status.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(section_status.yfilter)
 	|| (section_c_vs !=  nullptr && section_c_vs->has_operation())
 	|| (section_e_ss !=  nullptr && section_e_ss->has_operation())
 	|| (section_se_ss !=  nullptr && section_se_ss->has_operation())
@@ -4440,7 +5742,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (section_status.is_set || is_set(section_status.operation)) leaf_name_data.push_back(section_status.get_name_leafdata());
+    if (section_status.is_set || is_set(section_status.yfilter)) leaf_name_data.push_back(section_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4515,12 +5817,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "section-status")
     {
         section_status = value;
+        section_status.value_namespace = name_space;
+        section_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "section-status")
+    {
+        section_status.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "section-c-vs" || name == "section-e-ss" || name == "section-se-ss" || name == "section-sef-ss" || name == "section-status")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionESs::SectionESs()
@@ -4545,10 +5864,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionESs::get_segment_path() const
@@ -4574,9 +5893,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4595,20 +5914,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSeSs::SectionSeSs()
@@ -4633,10 +5981,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSeSs::get_segment_path() const
@@ -4662,9 +6010,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4683,20 +6031,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSefSs::SectionSefSs()
@@ -4721,10 +6098,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSefSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSefSs::get_segment_path() const
@@ -4750,9 +6127,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4771,20 +6148,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSefSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionCVs::SectionCVs()
@@ -4809,10 +6215,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionCVs::get_segment_path() const
@@ -4838,9 +6244,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4859,20 +6265,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::Line()
@@ -4914,8 +6349,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(line_status.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(line_status.yfilter)
 	|| (line_c_vs !=  nullptr && line_c_vs->has_operation())
 	|| (line_e_ss !=  nullptr && line_e_ss->has_operation())
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_operation())
@@ -4946,7 +6381,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (line_status.is_set || is_set(line_status.operation)) leaf_name_data.push_back(line_status.get_name_leafdata());
+    if (line_status.is_set || is_set(line_status.yfilter)) leaf_name_data.push_back(line_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5035,12 +6470,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line-status")
     {
         line_status = value;
+        line_status.value_namespace = name_space;
+        line_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "line-status")
+    {
+        line_status.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "line-c-vs" || name == "line-e-ss" || name == "line-fc-ls" || name == "line-se-ss" || name == "line-ua-ss" || name == "line-status")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineESs::LineESs()
@@ -5065,10 +6517,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineESs::get_segment_path() const
@@ -5094,9 +6546,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5115,20 +6567,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineSeSs::LineSeSs()
@@ -5153,10 +6634,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineSeSs::get_segment_path() const
@@ -5182,9 +6663,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5203,20 +6684,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineCVs::LineCVs()
@@ -5241,10 +6751,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineCVs::get_segment_path() const
@@ -5270,9 +6780,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5291,20 +6801,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineUaSs::LineUaSs()
@@ -5329,10 +6868,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineUaSs::get_segment_path() const
@@ -5358,9 +6897,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5379,20 +6918,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineFcLs::LineFcLs()
@@ -5417,10 +6985,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineFcLs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineFcLs::get_segment_path() const
@@ -5446,9 +7014,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5467,20 +7035,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineFcLs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FeLine()
@@ -5519,7 +7116,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (far_end_line_c_vs !=  nullptr && far_end_line_c_vs->has_operation())
 	|| (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_operation())
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_operation())
@@ -5638,8 +7235,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-line-c-vs" || name == "far-end-line-e-ss" || name == "far-end-line-fc-ls" || name == "far-end-line-se-ss" || name == "far-end-line-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::FarEndLineESs()
@@ -5664,10 +7272,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::get_segment_path() const
@@ -5693,9 +7301,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5714,20 +7322,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::FarEndLineSeSs()
@@ -5752,10 +7389,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_segment_path() const
@@ -5781,9 +7418,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5802,20 +7439,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::FarEndLineCVs()
@@ -5840,10 +7506,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::get_segment_path() const
@@ -5869,9 +7535,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5890,20 +7556,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::FarEndLineUaSs()
@@ -5928,10 +7623,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_segment_path() const
@@ -5957,9 +7652,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5978,20 +7673,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::FarEndLineFcLs()
@@ -6016,10 +7740,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_segment_path() const
@@ -6045,9 +7769,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6066,20 +7790,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15OcnHistories::SonetMinute15OcnHistory::SonetMinute15OcnTimeLineInstances::SonetMinute15OcnTimeLineInstance::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistories()
@@ -6108,7 +7861,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_minute15_path_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::get_segment_path() const
@@ -6173,8 +7926,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-minute15-path-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathHistory()
@@ -6200,8 +7964,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (sonet_minute15_path_time_line_instances !=  nullptr && sonet_minute15_path_time_line_instances->has_operation());
 }
 
@@ -6228,7 +7992,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6261,12 +8025,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-minute15-path-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstances()
@@ -6295,7 +8076,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_minute15_path_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::get_segment_path() const
@@ -6360,8 +8141,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-minute15-path-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::SonetMinute15PathTimeLineInstance()
@@ -6403,14 +8195,14 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -6438,13 +8230,13 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6491,36 +8283,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::Path()
@@ -6560,9 +8405,9 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
-	|| is_set(path_width.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
+	|| ydk::is_set(path_width.yfilter)
 	|| (path_c_vs !=  nullptr && path_c_vs->has_operation())
 	|| (path_e_ss !=  nullptr && path_e_ss->has_operation())
 	|| (path_se_ss !=  nullptr && path_se_ss->has_operation())
@@ -6592,8 +8437,8 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
-    if (path_width.is_set || is_set(path_width.operation)) leaf_name_data.push_back(path_width.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_width.is_set || is_set(path_width.yfilter)) leaf_name_data.push_back(path_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6668,16 +8513,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-width")
     {
         path_width = value;
+        path_width.value_namespace = name_space;
+        path_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+    if(value_path == "path-width")
+    {
+        path_width.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-c-vs" || name == "path-e-ss" || name == "path-se-ss" || name == "path-ua-ss" || name == "path-status" || name == "path-width")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathESs::PathESs()
@@ -6702,10 +8570,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathESs::get_segment_path() const
@@ -6731,9 +8599,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6752,20 +8620,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathSeSs::PathSeSs()
@@ -6790,10 +8687,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathSeSs::get_segment_path() const
@@ -6819,9 +8716,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6840,20 +8737,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathCVs::PathCVs()
@@ -6878,10 +8804,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathCVs::get_segment_path() const
@@ -6907,9 +8833,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6928,20 +8854,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathUaSs::PathUaSs()
@@ -6966,10 +8921,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathUaSs::get_segment_path() const
@@ -6995,9 +8950,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7016,20 +8971,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::FePath::FePath()
@@ -7056,11 +9040,11 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::FePath::get_segment_path() const
@@ -7086,10 +9070,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7108,24 +9092,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetMinute15History::SonetMinute15PathHistories::SonetMinute15PathHistory::SonetMinute15PathTimeLineInstances::SonetMinute15PathTimeLineInstance::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24History()
@@ -7152,7 +9171,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sonet_hour24_path_histories !=  nullptr && sonet_hour24_path_histories->has_operation())
 	|| (sonet_hour24ocn_histories !=  nullptr && sonet_hour24ocn_histories->has_operation());
 }
@@ -7226,8 +9245,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-hour24-path-histories" || name == "sonet-hour24ocn-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistories()
@@ -7256,7 +9286,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_hour24_path_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::get_segment_path() const
@@ -7321,8 +9351,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-hour24-path-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathHistory()
@@ -7348,8 +9389,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (sonet_hour24_path_time_line_instances !=  nullptr && sonet_hour24_path_time_line_instances->has_operation());
 }
 
@@ -7376,7 +9417,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7409,12 +9450,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-hour24-path-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstances()
@@ -7443,7 +9501,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_hour24_path_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::get_segment_path() const
@@ -7508,8 +9566,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-hour24-path-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::SonetHour24PathTimeLineInstance()
@@ -7551,14 +9620,14 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -7586,13 +9655,13 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7639,36 +9708,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::Path()
@@ -7708,9 +9830,9 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
-	|| is_set(path_width.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
+	|| ydk::is_set(path_width.yfilter)
 	|| (path_c_vs !=  nullptr && path_c_vs->has_operation())
 	|| (path_e_ss !=  nullptr && path_e_ss->has_operation())
 	|| (path_se_ss !=  nullptr && path_se_ss->has_operation())
@@ -7740,8 +9862,8 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
-    if (path_width.is_set || is_set(path_width.operation)) leaf_name_data.push_back(path_width.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_width.is_set || is_set(path_width.yfilter)) leaf_name_data.push_back(path_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7816,16 +9938,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-width")
     {
         path_width = value;
+        path_width.value_namespace = name_space;
+        path_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+    if(value_path == "path-width")
+    {
+        path_width.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-c-vs" || name == "path-e-ss" || name == "path-se-ss" || name == "path-ua-ss" || name == "path-status" || name == "path-width")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathESs::PathESs()
@@ -7850,10 +9995,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathESs::get_segment_path() const
@@ -7879,9 +10024,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7900,20 +10045,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathSeSs::PathSeSs()
@@ -7938,10 +10112,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathSeSs::get_segment_path() const
@@ -7967,9 +10141,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7988,20 +10162,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathCVs::PathCVs()
@@ -8026,10 +10229,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathCVs::get_segment_path() const
@@ -8055,9 +10258,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8076,20 +10279,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathUaSs::PathUaSs()
@@ -8114,10 +10346,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathUaSs::get_segment_path() const
@@ -8143,9 +10375,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8164,20 +10396,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::FePath::FePath()
@@ -8204,11 +10465,11 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::FePath::get_segment_path() const
@@ -8234,10 +10495,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8256,24 +10517,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24PathHistories::SonetHour24PathHistory::SonetHour24PathTimeLineInstances::SonetHour24PathTimeLineInstance::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistories()
@@ -8302,7 +10598,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_hour24ocn_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::get_segment_path() const
@@ -8367,8 +10663,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-hour24ocn-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnHistory()
@@ -8394,8 +10701,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (sonet_hour24ocn_time_line_instances !=  nullptr && sonet_hour24ocn_time_line_instances->has_operation());
 }
 
@@ -8422,7 +10729,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8455,12 +10762,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-hour24ocn-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstances()
@@ -8489,7 +10813,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
         if(sonet_hour24ocn_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::get_segment_path() const
@@ -8554,8 +10878,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonet-hour24ocn-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::SonetHour24OcnTimeLineInstance()
@@ -8601,14 +10936,14 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_line !=  nullptr && fe_line->has_operation())
 	|| (line !=  nullptr && line->has_operation())
 	|| (section !=  nullptr && section->has_operation());
@@ -8637,13 +10972,13 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8704,36 +11039,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-line" || name == "line" || name == "section" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::Section()
@@ -8771,8 +11159,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(section_status.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(section_status.yfilter)
 	|| (section_c_vs !=  nullptr && section_c_vs->has_operation())
 	|| (section_e_ss !=  nullptr && section_e_ss->has_operation())
 	|| (section_se_ss !=  nullptr && section_se_ss->has_operation())
@@ -8802,7 +11190,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (section_status.is_set || is_set(section_status.operation)) leaf_name_data.push_back(section_status.get_name_leafdata());
+    if (section_status.is_set || is_set(section_status.yfilter)) leaf_name_data.push_back(section_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8877,12 +11265,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "section-status")
     {
         section_status = value;
+        section_status.value_namespace = name_space;
+        section_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "section-status")
+    {
+        section_status.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "section-c-vs" || name == "section-e-ss" || name == "section-se-ss" || name == "section-sef-ss" || name == "section-status")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionESs::SectionESs()
@@ -8907,10 +11312,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionESs::get_segment_path() const
@@ -8936,9 +11341,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8957,20 +11362,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSeSs::SectionSeSs()
@@ -8995,10 +11429,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSeSs::get_segment_path() const
@@ -9024,9 +11458,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9045,20 +11479,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSefSs::SectionSefSs()
@@ -9083,10 +11546,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSefSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSefSs::get_segment_path() const
@@ -9112,9 +11575,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9133,20 +11596,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSefSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSefSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSefSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionSefSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionCVs::SectionCVs()
@@ -9171,10 +11663,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionCVs::get_segment_path() const
@@ -9200,9 +11692,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9221,20 +11713,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Section::SectionCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::Line()
@@ -9276,8 +11797,8 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(line_status.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(line_status.yfilter)
 	|| (line_c_vs !=  nullptr && line_c_vs->has_operation())
 	|| (line_e_ss !=  nullptr && line_e_ss->has_operation())
 	|| (line_fc_ls !=  nullptr && line_fc_ls->has_operation())
@@ -9308,7 +11829,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (line_status.is_set || is_set(line_status.operation)) leaf_name_data.push_back(line_status.get_name_leafdata());
+    if (line_status.is_set || is_set(line_status.yfilter)) leaf_name_data.push_back(line_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9397,12 +11918,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line-status")
     {
         line_status = value;
+        line_status.value_namespace = name_space;
+        line_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "line-status")
+    {
+        line_status.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "line-c-vs" || name == "line-e-ss" || name == "line-fc-ls" || name == "line-se-ss" || name == "line-ua-ss" || name == "line-status")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineESs::LineESs()
@@ -9427,10 +11965,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineESs::get_segment_path() const
@@ -9456,9 +11994,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9477,20 +12015,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineSeSs::LineSeSs()
@@ -9515,10 +12082,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineSeSs::get_segment_path() const
@@ -9544,9 +12111,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9565,20 +12132,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineCVs::LineCVs()
@@ -9603,10 +12199,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineCVs::get_segment_path() const
@@ -9632,9 +12228,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9653,20 +12249,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineUaSs::LineUaSs()
@@ -9691,10 +12316,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineUaSs::get_segment_path() const
@@ -9720,9 +12345,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9741,20 +12366,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineFcLs::LineFcLs()
@@ -9779,10 +12433,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineFcLs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineFcLs::get_segment_path() const
@@ -9808,9 +12462,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9829,20 +12483,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineFcLs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::Line::LineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FeLine()
@@ -9881,7 +12564,7 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (far_end_line_c_vs !=  nullptr && far_end_line_c_vs->has_operation())
 	|| (far_end_line_e_ss !=  nullptr && far_end_line_e_ss->has_operation())
 	|| (far_end_line_fc_ls !=  nullptr && far_end_line_fc_ls->has_operation())
@@ -10000,8 +12683,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-line-c-vs" || name == "far-end-line-e-ss" || name == "far-end-line-fc-ls" || name == "far-end-line-se-ss" || name == "far-end-line-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineESs::FarEndLineESs()
@@ -10026,10 +12720,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineESs::get_segment_path() const
@@ -10055,9 +12749,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10076,20 +12770,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::FarEndLineSeSs()
@@ -10114,10 +12837,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::get_segment_path() const
@@ -10143,9 +12866,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10164,20 +12887,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::FarEndLineCVs()
@@ -10202,10 +12954,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::get_segment_path() const
@@ -10231,9 +12983,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10252,20 +13004,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::FarEndLineUaSs()
@@ -10290,10 +13071,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::get_segment_path() const
@@ -10319,9 +13100,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10340,20 +13121,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::FarEndLineFcLs()
@@ -10378,10 +13188,10 @@ bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHist
 
 bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::get_segment_path() const
@@ -10407,9 +13217,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::SonetHistory::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10428,20 +13238,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::SonetHistory::SonetPortHistories::SonetPortHistory::SonetHour24History::SonetHour24OcnHistories::SonetHour24OcnHistory::SonetHour24OcnTimeLineInstances::SonetHour24OcnTimeLineInstance::FeLine::FarEndLineFcLs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsHistory()
@@ -10464,7 +13303,7 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::has_data() cons
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sts_port_histories !=  nullptr && sts_port_histories->has_operation());
 }
 
@@ -10523,8 +13362,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-port-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistories()
@@ -10553,7 +13403,7 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
         if(sts_port_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::get_segment_path() const
@@ -10618,8 +13468,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-port-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsPortHistory()
@@ -10649,8 +13510,8 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (sts_hour24_history !=  nullptr && sts_hour24_history->has_operation())
 	|| (sts_minute15_history !=  nullptr && sts_minute15_history->has_operation());
 }
@@ -10678,7 +13539,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10725,12 +13586,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24-history" || name == "sts-minute15-history" || name == "name")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15History()
@@ -10753,7 +13631,7 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sts_minute15_path_histories !=  nullptr && sts_minute15_path_histories->has_operation());
 }
 
@@ -10812,8 +13690,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-minute15-path-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistories()
@@ -10842,7 +13731,7 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
         if(sts_minute15_path_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::get_segment_path() const
@@ -10907,8 +13796,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-minute15-path-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathHistory()
@@ -10934,8 +13834,8 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (sts_minute15_path_time_line_instances !=  nullptr && sts_minute15_path_time_line_instances->has_operation());
 }
 
@@ -10962,7 +13862,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10995,12 +13895,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-minute15-path-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstances()
@@ -11029,7 +13946,7 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
         if(sts_minute15_path_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::get_segment_path() const
@@ -11094,8 +14011,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-minute15-path-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::StsMinute15PathTimeLineInstance()
@@ -11137,14 +14065,14 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -11172,13 +14100,13 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11225,36 +14153,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::Path()
@@ -11294,9 +14275,9 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
-	|| is_set(path_width.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
+	|| ydk::is_set(path_width.yfilter)
 	|| (path_c_vs !=  nullptr && path_c_vs->has_operation())
 	|| (path_e_ss !=  nullptr && path_e_ss->has_operation())
 	|| (path_se_ss !=  nullptr && path_se_ss->has_operation())
@@ -11326,8 +14307,8 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
-    if (path_width.is_set || is_set(path_width.operation)) leaf_name_data.push_back(path_width.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_width.is_set || is_set(path_width.yfilter)) leaf_name_data.push_back(path_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11402,16 +14383,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-width")
     {
         path_width = value;
+        path_width.value_namespace = name_space;
+        path_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+    if(value_path == "path-width")
+    {
+        path_width.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-c-vs" || name == "path-e-ss" || name == "path-se-ss" || name == "path-ua-ss" || name == "path-status" || name == "path-width")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathESs::PathESs()
@@ -11436,10 +14440,10 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathESs::get_segment_path() const
@@ -11465,9 +14469,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11486,20 +14490,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathSeSs::PathSeSs()
@@ -11524,10 +14557,10 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathSeSs::get_segment_path() const
@@ -11553,9 +14586,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11574,20 +14607,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathCVs::PathCVs()
@@ -11612,10 +14674,10 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathCVs::get_segment_path() const
@@ -11641,9 +14703,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11662,20 +14724,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathUaSs::PathUaSs()
@@ -11700,10 +14791,10 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathUaSs::get_segment_path() const
@@ -11729,9 +14820,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11750,20 +14841,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::FePath::FePath()
@@ -11790,11 +14910,11 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::FePath::get_segment_path() const
@@ -11820,10 +14940,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11842,24 +14962,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsMinute15History::StsMinute15PathHistories::StsMinute15PathHistory::StsMinute15PathTimeLineInstances::StsMinute15PathTimeLineInstance::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24History()
@@ -11882,7 +15037,7 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sts_hour24_path_histories !=  nullptr && sts_hour24_path_histories->has_operation());
 }
 
@@ -11941,8 +15096,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24-path-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistories()
@@ -11971,7 +15137,7 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
         if(sts_hour24_path_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::get_segment_path() const
@@ -12036,8 +15202,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24-path-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathHistory()
@@ -12063,8 +15240,8 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (sts_hour24_path_time_line_instances !=  nullptr && sts_hour24_path_time_line_instances->has_operation());
 }
 
@@ -12091,7 +15268,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12124,12 +15301,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24-path-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstances()
@@ -12158,7 +15352,7 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
         if(sts_hour24_path_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::get_segment_path() const
@@ -12223,8 +15417,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sts-hour24-path-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::StsHour24PathTimeLineInstance()
@@ -12266,14 +15471,14 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -12301,13 +15506,13 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12354,36 +15559,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::Path()
@@ -12423,9 +15681,9 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
-	|| is_set(path_width.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
+	|| ydk::is_set(path_width.yfilter)
 	|| (path_c_vs !=  nullptr && path_c_vs->has_operation())
 	|| (path_e_ss !=  nullptr && path_e_ss->has_operation())
 	|| (path_se_ss !=  nullptr && path_se_ss->has_operation())
@@ -12455,8 +15713,8 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
-    if (path_width.is_set || is_set(path_width.operation)) leaf_name_data.push_back(path_width.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_width.is_set || is_set(path_width.yfilter)) leaf_name_data.push_back(path_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12531,16 +15789,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-width")
     {
         path_width = value;
+        path_width.value_namespace = name_space;
+        path_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+    if(value_path == "path-width")
+    {
+        path_width.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-c-vs" || name == "path-e-ss" || name == "path-se-ss" || name == "path-ua-ss" || name == "path-status" || name == "path-width")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathESs::PathESs()
@@ -12565,10 +15846,10 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathESs::get_segment_path() const
@@ -12594,9 +15875,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12615,20 +15896,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathSeSs::PathSeSs()
@@ -12653,10 +15963,10 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathSeSs::get_segment_path() const
@@ -12682,9 +15992,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12703,20 +16013,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathCVs::PathCVs()
@@ -12741,10 +16080,10 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathCVs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathCVs::get_segment_path() const
@@ -12770,9 +16109,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12791,20 +16130,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathCVs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathCVs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathCVs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathCVs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathUaSs::PathUaSs()
@@ -12829,10 +16197,10 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathUaSs::get_segment_path() const
@@ -12858,9 +16226,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12879,20 +16247,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::FePath::FePath()
@@ -12919,11 +16316,11 @@ bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::FePath::get_segment_path() const
@@ -12949,10 +16346,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::StsHistory::Sts
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12971,24 +16368,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::StsHistory::StsPortHistories::StsPortHistory::StsHour24History::StsHour24PathHistories::StsHour24PathHistory::StsHour24PathTimeLineInstances::StsHour24PathTimeLineInstance::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetHistory()
@@ -13011,7 +16443,7 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::has_data()
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ethernet_port_histories !=  nullptr && ethernet_port_histories->has_operation());
 }
 
@@ -13070,8 +16502,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-port-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistories()
@@ -13100,7 +16543,7 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
         if(ethernet_port_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::get_segment_path() const
@@ -13165,8 +16608,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-port-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetPortHistory()
@@ -13200,8 +16654,8 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (ethernet_hour24_history !=  nullptr && ethernet_hour24_history->has_operation())
 	|| (ethernet_minute15_history !=  nullptr && ethernet_minute15_history->has_operation())
 	|| (ethernet_second30_history !=  nullptr && ethernet_second30_history->has_operation());
@@ -13230,7 +16684,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13291,12 +16745,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-hour24-history" || name == "ethernet-minute15-history" || name == "ethernet-second30-history" || name == "name")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::EthernetSecond30History()
@@ -13319,7 +16790,7 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (second30_ether_histories !=  nullptr && second30_ether_histories->has_operation());
 }
 
@@ -13378,8 +16849,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistories()
@@ -13408,7 +16890,7 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
         if(second30_ether_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::get_segment_path() const
@@ -13473,8 +16955,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherHistory()
@@ -13500,8 +16993,8 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(slot_number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(slot_number.yfilter)
 	|| (second30_ether_time_line_instances !=  nullptr && second30_ether_time_line_instances->has_operation());
 }
 
@@ -13528,7 +17021,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slot_number.is_set || is_set(slot_number.operation)) leaf_name_data.push_back(slot_number.get_name_leafdata());
+    if (slot_number.is_set || is_set(slot_number.yfilter)) leaf_name_data.push_back(slot_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13561,12 +17054,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slot-number")
     {
         slot_number = value;
+        slot_number.value_namespace = name_space;
+        slot_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slot-number")
+    {
+        slot_number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether-time-line-instances" || name == "slot-number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstances()
@@ -13595,7 +17105,7 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
         if(second30_ether_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::get_segment_path() const
@@ -13660,8 +17170,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Second30EtherTimeLineInstance()
@@ -13999,16 +17520,16 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (ether10241518_octet !=  nullptr && ether10241518_octet->has_operation())
 	|| (ether128255_octet !=  nullptr && ether128255_octet->has_operation())
 	|| (ether256511_octet !=  nullptr && ether256511_octet->has_operation())
@@ -14109,15 +17630,15 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15186,44 +18707,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ether10241518-octet" || name == "ether128255-octet" || name == "ether256511-octet" || name == "ether5121023-octet" || name == "ether64-octets" || name == "ether65127-octet" || name == "ether-stat-broadcast-pkt" || name == "ether-stat-multicast-pkt" || name == "ether-stat-undersized-pkt" || name == "fcs-errors-stat" || name == "if-in-errors" || name == "if-in-octets" || name == "in8021q-frames" || name == "in-bcast-pkt" || name == "in-drop-abort" || name == "in-drop-invalid-dmac" || name == "in-drop-invalid-encap" || name == "in-drop-invalid-vlan" || name == "in-drop-other" || name == "in-drop-overrun" || name == "in-error-collisions" || name == "in-error-fragments" || name == "in-error-giant" || name == "in-error-jabbers" || name == "in-error-other" || name == "in-error-runt" || name == "in-error-symbol" || name == "in-good-bytes" || name == "in-good-pkts" || name == "in-mcast-pkt" || name == "in-mib-giant" || name == "in-mib-jabber" || name == "in-mibcrc" || name == "in-pause-frame" || name == "in-pkt64-octet" || name == "in-pkts1024-to1518-octets" || name == "in-pkts128-to255-octets" || name == "in-pkts1519-max-octets" || name == "in-pkts256-to511-octets" || name == "in-pkts512-to1023-octets" || name == "in-pkts65-to127-octets" || name == "in-ucast-pkt" || name == "jabber-stat" || name == "long-frames-stat" || name == "octet-stat" || name == "out8021q-frames" || name == "out-bcast-pkt" || name == "out-drop-abort" || name == "out-drop-other" || name == "out-drop-underrun" || name == "out-error-other" || name == "out-good-bytes" || name == "out-good-pkts" || name == "out-mcast-pkt" || name == "out-octets" || name == "out-pause-frames" || name == "out-pkts10241518-octets" || name == "out-pkts128255-octets" || name == "out-pkts1519-max-octets" || name == "out-pkts256511-octets" || name == "out-pkts5121023-octets" || name == "out-pkts65127-octets" || name == "out-ucast-pkt" || name == "outpkt64octet" || name == "oversize-pkt-stat" || name == "rx-pkt" || name == "rx-util" || name == "stat-pkt" || name == "tx-bad-fcs" || name == "tx-fragments" || name == "tx-jabber" || name == "tx-oversized-pkt" || name == "tx-pkt" || name == "tx-undersized-pkt" || name == "tx-util" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::RxPkt::RxPkt()
@@ -15250,11 +18836,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::RxPkt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::RxPkt::get_segment_path() const
@@ -15280,10 +18866,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15302,24 +18888,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::RxPkt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::RxPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::RxPkt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::RxPkt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::StatPkt::StatPkt()
@@ -15346,11 +18967,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::StatPkt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::StatPkt::get_segment_path() const
@@ -15376,10 +18997,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15398,24 +19019,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::StatPkt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::StatPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::StatPkt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::StatPkt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OctetStat::OctetStat()
@@ -15442,11 +19098,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OctetStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OctetStat::get_segment_path() const
@@ -15472,10 +19128,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15494,24 +19150,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OctetStat::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OctetStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OctetStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OctetStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OversizePktStat::OversizePktStat()
@@ -15538,11 +19229,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OversizePktStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OversizePktStat::get_segment_path() const
@@ -15568,10 +19259,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15590,24 +19281,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OversizePktStat::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OversizePktStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OversizePktStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::OversizePktStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::FcsErrorsStat::FcsErrorsStat()
@@ -15634,11 +19360,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::FcsErrorsStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::FcsErrorsStat::get_segment_path() const
@@ -15664,10 +19390,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15686,24 +19412,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::FcsErrorsStat::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::FcsErrorsStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::FcsErrorsStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::FcsErrorsStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::LongFramesStat::LongFramesStat()
@@ -15730,11 +19491,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::LongFramesStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::LongFramesStat::get_segment_path() const
@@ -15760,10 +19521,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15782,24 +19543,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::LongFramesStat::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::LongFramesStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::LongFramesStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::LongFramesStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::JabberStat::JabberStat()
@@ -15826,11 +19622,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::JabberStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::JabberStat::get_segment_path() const
@@ -15856,10 +19652,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15878,24 +19674,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::JabberStat::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::JabberStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::JabberStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::JabberStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether64Octets::Ether64Octets()
@@ -15922,11 +19753,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether64Octets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether64Octets::get_segment_path() const
@@ -15952,10 +19783,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15974,24 +19805,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether64Octets::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether64Octets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether64Octets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether64Octets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether65127Octet::Ether65127Octet()
@@ -16018,11 +19884,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether65127Octet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether65127Octet::get_segment_path() const
@@ -16048,10 +19914,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16070,24 +19936,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether65127Octet::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether65127Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether65127Octet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether65127Octet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether128255Octet::Ether128255Octet()
@@ -16114,11 +20015,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether128255Octet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether128255Octet::get_segment_path() const
@@ -16144,10 +20045,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16166,24 +20067,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether128255Octet::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether128255Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether128255Octet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether128255Octet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether256511Octet::Ether256511Octet()
@@ -16210,11 +20146,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether256511Octet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether256511Octet::get_segment_path() const
@@ -16240,10 +20176,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16262,24 +20198,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether256511Octet::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether256511Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether256511Octet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether256511Octet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether5121023Octet::Ether5121023Octet()
@@ -16306,11 +20277,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether5121023Octet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether5121023Octet::get_segment_path() const
@@ -16336,10 +20307,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16358,24 +20329,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether5121023Octet::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether5121023Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether5121023Octet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether5121023Octet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether10241518Octet::Ether10241518Octet()
@@ -16402,11 +20408,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether10241518Octet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether10241518Octet::get_segment_path() const
@@ -16432,10 +20438,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16454,24 +20460,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether10241518Octet::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether10241518Octet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether10241518Octet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::Ether10241518Octet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InUcastPkt::InUcastPkt()
@@ -16498,11 +20539,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InUcastPkt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InUcastPkt::get_segment_path() const
@@ -16528,10 +20569,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16550,24 +20591,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InUcastPkt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InUcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InUcastPkt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InUcastPkt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMcastPkt::InMcastPkt()
@@ -16594,11 +20670,11 @@ bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPo
 
 bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMcastPkt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMcastPkt::get_segment_path() const
@@ -16624,10 +20700,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::EthernetHistory
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16646,24 +20722,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMcastPkt::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMcastPkt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMcastPkt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::EthernetHistory::EthernetPortHistories::EthernetPortHistory::EthernetSecond30History::Second30EtherHistories::Second30EtherHistory::Second30EtherTimeLineInstances::Second30EtherTimeLineInstance::InMcastPkt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 

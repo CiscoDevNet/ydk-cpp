@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_daps_cfg {
 
-class AddressPoolService : public Entity
+class AddressPoolService : public ydk::Entity
 {
     public:
         AddressPoolService();
@@ -18,15 +18,18 @@ class AddressPoolService : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Vrfs; //type: AddressPoolService::Vrfs
 
@@ -35,7 +38,7 @@ class AddressPoolService : public Entity
 }; // AddressPoolService
 
 
-class AddressPoolService::Vrfs : public Entity
+class AddressPoolService::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -43,11 +46,13 @@ class AddressPoolService::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: AddressPoolService::Vrfs::Vrf
 
@@ -56,7 +61,7 @@ class AddressPoolService::Vrfs : public Entity
 }; // AddressPoolService::Vrfs
 
 
-class AddressPoolService::Vrfs::Vrf : public Entity
+class AddressPoolService::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -64,13 +69,15 @@ class AddressPoolService::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Ipv6; //type: AddressPoolService::Vrfs::Vrf::Ipv6
         class Ipv4; //type: AddressPoolService::Vrfs::Vrf::Ipv4
 
@@ -80,7 +87,7 @@ class AddressPoolService::Vrfs::Vrf : public Entity
 }; // AddressPoolService::Vrfs::Vrf
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6 : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -88,11 +95,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Pools; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools
 
@@ -101,7 +110,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6 : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv6
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools : public ydk::Entity
 {
     public:
         Pools();
@@ -109,11 +118,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Pool; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool
 
@@ -122,7 +133,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -130,14 +141,16 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv6_pool_name; //type: string
-        YLeaf prefix_length; //type: uint32
+        ydk::YLeaf ipv6_pool_name; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
         class AddressRanges; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges
         class Excludes; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes
         class UtilizationMark; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark
@@ -153,7 +166,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges : public ydk::Entity
 {
     public:
         AddressRanges();
@@ -161,11 +174,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AddressRange; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange
 
@@ -174,7 +189,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges : public E
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange : public ydk::Entity
 {
     public:
         AddressRange();
@@ -182,20 +197,22 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf start_address; //type: string
-        YLeaf blocked; //type: int32
-        YLeaf end_address; //type: string
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf blocked; //type: int32
+        ydk::YLeaf end_address; //type: string
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes : public ydk::Entity
 {
     public:
         Excludes();
@@ -203,11 +220,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Exclude; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude
 
@@ -216,7 +235,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude : public ydk::Entity
 {
     public:
         Exclude();
@@ -224,19 +243,21 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf start_address; //type: string
-        YLeaf end_address; //type: string
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf end_address; //type: string
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark : public ydk::Entity
 {
     public:
         UtilizationMark();
@@ -244,19 +265,21 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_mark; //type: uint32
-        YLeaf low_mark; //type: uint32
+        ydk::YLeaf high_mark; //type: uint32
+        ydk::YLeaf low_mark; //type: uint32
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::UtilizationMark
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges : public ydk::Entity
 {
     public:
         PrefixRanges();
@@ -264,11 +287,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PrefixRange; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange
 
@@ -277,7 +302,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges : public En
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange : public ydk::Entity
 {
     public:
         PrefixRange();
@@ -285,20 +310,22 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRang
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf start_prefix; //type: string
-        YLeaf blocked; //type: int32
-        YLeaf end_prefix; //type: string
+        ydk::YLeaf start_prefix; //type: string
+        ydk::YLeaf blocked; //type: int32
+        ydk::YLeaf end_prefix; //type: string
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks : public ydk::Entity
 {
     public:
         Networks();
@@ -306,11 +333,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Network; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network
 
@@ -319,7 +348,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network : public ydk::Entity
 {
     public:
         Network();
@@ -327,20 +356,22 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf blocked; //type: int32
-        YLeaf prefix_length; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf blocked; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4 : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -348,11 +379,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Pools; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools
 
@@ -361,7 +394,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4 : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv4
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools : public ydk::Entity
 {
     public:
         Pools();
@@ -369,11 +402,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Pool; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool
 
@@ -382,7 +417,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -390,13 +425,15 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pool_name; //type: string
+        ydk::YLeaf pool_name; //type: string
         class AddressRanges; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges
         class Excludes; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes
         class UtilizationMark; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark
@@ -410,7 +447,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges : public ydk::Entity
 {
     public:
         AddressRanges();
@@ -418,11 +455,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AddressRange; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange
 
@@ -431,7 +470,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges : public E
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange : public ydk::Entity
 {
     public:
         AddressRange();
@@ -439,20 +478,22 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf start_address; //type: string
-        YLeaf end_address; //type: string
-        YLeaf blocked; //type: int32
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf end_address; //type: string
+        ydk::YLeaf blocked; //type: int32
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes : public ydk::Entity
 {
     public:
         Excludes();
@@ -460,11 +501,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Exclude; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude
 
@@ -473,7 +516,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude : public ydk::Entity
 {
     public:
         Exclude();
@@ -481,19 +524,21 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf start_address; //type: string
-        YLeaf end_address; //type: string
+        ydk::YLeaf start_address; //type: string
+        ydk::YLeaf end_address; //type: string
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark : public ydk::Entity
 {
     public:
         UtilizationMark();
@@ -501,19 +546,21 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high; //type: uint32
-        YLeaf low; //type: uint32
+        ydk::YLeaf high; //type: uint32
+        ydk::YLeaf low; //type: uint32
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::UtilizationMark
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks : public ydk::Entity
 {
     public:
         Networks();
@@ -521,11 +568,13 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Network; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network
 
@@ -534,7 +583,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks : public Entity
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks
 
 
-class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network : public Entity
+class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network : public ydk::Entity
 {
     public:
         Network();
@@ -542,16 +591,18 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_prefix; //type: string
-        YLeaf blocked; //type: int32
-        YLeaf prefix_length; //type: int32
-        YLeaf default_router; //type: string
+        ydk::YLeaf ipv4_prefix; //type: string
+        ydk::YLeaf blocked; //type: int32
+        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf default_router; //type: string
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network
 

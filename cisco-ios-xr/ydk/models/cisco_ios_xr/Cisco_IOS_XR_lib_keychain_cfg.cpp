@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_lib_keychain_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lib_keychain_cfg {
 
 Keychains::Keychains()
@@ -35,7 +37,7 @@ bool Keychains::has_operation() const
         if(keychain[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Keychains::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::get_children() const
     return children;
 }
 
-void Keychains::set_value(const std::string & value_path, std::string value)
+void Keychains::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Keychains::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string Keychains::get_bundle_name() const
 augment_capabilities_function Keychains::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Keychains::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Keychains::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keychain")
+        return true;
+    return false;
 }
 
 Keychains::Keychain::Keychain()
@@ -148,8 +166,8 @@ bool Keychains::Keychain::has_data() const
 
 bool Keychains::Keychain::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chain_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(chain_name.yfilter)
 	|| (accept_tolerance !=  nullptr && accept_tolerance->has_operation())
 	|| (keies !=  nullptr && keies->has_operation());
 }
@@ -177,7 +195,7 @@ const EntityPath Keychains::Keychain::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chain_name.is_set || is_set(chain_name.operation)) leaf_name_data.push_back(chain_name.get_name_leafdata());
+    if (chain_name.is_set || is_set(chain_name.yfilter)) leaf_name_data.push_back(chain_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -224,12 +242,29 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::get_children
     return children;
 }
 
-void Keychains::Keychain::set_value(const std::string & value_path, std::string value)
+void Keychains::Keychain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chain-name")
     {
         chain_name = value;
+        chain_name.value_namespace = name_space;
+        chain_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Keychains::Keychain::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chain-name")
+    {
+        chain_name.yfilter = yfilter;
+    }
+}
+
+bool Keychains::Keychain::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accept-tolerance" || name == "keies" || name == "chain-name")
+        return true;
+    return false;
 }
 
 Keychains::Keychain::AcceptTolerance::AcceptTolerance()
@@ -252,9 +287,9 @@ bool Keychains::Keychain::AcceptTolerance::has_data() const
 
 bool Keychains::Keychain::AcceptTolerance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(infinite.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(infinite.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string Keychains::Keychain::AcceptTolerance::get_segment_path() const
@@ -280,8 +315,8 @@ const EntityPath Keychains::Keychain::AcceptTolerance::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (infinite.is_set || is_set(infinite.operation)) leaf_name_data.push_back(infinite.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (infinite.is_set || is_set(infinite.yfilter)) leaf_name_data.push_back(infinite.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -300,16 +335,39 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::AcceptTolera
     return children;
 }
 
-void Keychains::Keychain::AcceptTolerance::set_value(const std::string & value_path, std::string value)
+void Keychains::Keychain::AcceptTolerance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "infinite")
     {
         infinite = value;
+        infinite.value_namespace = name_space;
+        infinite.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Keychains::Keychain::AcceptTolerance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "infinite")
+    {
+        infinite.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Keychains::Keychain::AcceptTolerance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "infinite" || name == "value")
+        return true;
+    return false;
 }
 
 Keychains::Keychain::Keies::Keies()
@@ -338,7 +396,7 @@ bool Keychains::Keychain::Keies::has_operation() const
         if(key[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Keychains::Keychain::Keies::get_segment_path() const
@@ -403,8 +461,19 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::get_c
     return children;
 }
 
-void Keychains::Keychain::Keies::set_value(const std::string & value_path, std::string value)
+void Keychains::Keychain::Keies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Keychains::Keychain::Keies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Keychains::Keychain::Keies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key")
+        return true;
+    return false;
 }
 
 Keychains::Keychain::Keies::Key::Key()
@@ -438,10 +507,10 @@ bool Keychains::Keychain::Keies::Key::has_data() const
 
 bool Keychains::Keychain::Keies::Key::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(key_id.operation)
-	|| is_set(cryptographic_algorithm.operation)
-	|| is_set(key_string.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(key_id.yfilter)
+	|| ydk::is_set(cryptographic_algorithm.yfilter)
+	|| ydk::is_set(key_string.yfilter)
 	|| (accept_lifetime !=  nullptr && accept_lifetime->has_operation())
 	|| (send_lifetime !=  nullptr && send_lifetime->has_operation());
 }
@@ -469,9 +538,9 @@ const EntityPath Keychains::Keychain::Keies::Key::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (key_id.is_set || is_set(key_id.operation)) leaf_name_data.push_back(key_id.get_name_leafdata());
-    if (cryptographic_algorithm.is_set || is_set(cryptographic_algorithm.operation)) leaf_name_data.push_back(cryptographic_algorithm.get_name_leafdata());
-    if (key_string.is_set || is_set(key_string.operation)) leaf_name_data.push_back(key_string.get_name_leafdata());
+    if (key_id.is_set || is_set(key_id.yfilter)) leaf_name_data.push_back(key_id.get_name_leafdata());
+    if (cryptographic_algorithm.is_set || is_set(cryptographic_algorithm.yfilter)) leaf_name_data.push_back(cryptographic_algorithm.get_name_leafdata());
+    if (key_string.is_set || is_set(key_string.yfilter)) leaf_name_data.push_back(key_string.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -518,20 +587,49 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::
     return children;
 }
 
-void Keychains::Keychain::Keies::Key::set_value(const std::string & value_path, std::string value)
+void Keychains::Keychain::Keies::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-id")
     {
         key_id = value;
+        key_id.value_namespace = name_space;
+        key_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cryptographic-algorithm")
     {
         cryptographic_algorithm = value;
+        cryptographic_algorithm.value_namespace = name_space;
+        cryptographic_algorithm.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "key-string")
     {
         key_string = value;
+        key_string.value_namespace = name_space;
+        key_string.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Keychains::Keychain::Keies::Key::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-id")
+    {
+        key_id.yfilter = yfilter;
+    }
+    if(value_path == "cryptographic-algorithm")
+    {
+        cryptographic_algorithm.yfilter = yfilter;
+    }
+    if(value_path == "key-string")
+    {
+        key_string.yfilter = yfilter;
+    }
+}
+
+bool Keychains::Keychain::Keies::Key::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accept-lifetime" || name == "send-lifetime" || name == "key-id" || name == "cryptographic-algorithm" || name == "key-string")
+        return true;
+    return false;
 }
 
 Keychains::Keychain::Keies::Key::AcceptLifetime::AcceptLifetime()
@@ -578,21 +676,21 @@ bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_data() const
 
 bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_date.operation)
-	|| is_set(end_hour.operation)
-	|| is_set(end_minutes.operation)
-	|| is_set(end_month.operation)
-	|| is_set(end_seconds.operation)
-	|| is_set(end_year.operation)
-	|| is_set(infinite_flag.operation)
-	|| is_set(life_time.operation)
-	|| is_set(start_date.operation)
-	|| is_set(start_hour.operation)
-	|| is_set(start_minutes.operation)
-	|| is_set(start_month.operation)
-	|| is_set(start_seconds.operation)
-	|| is_set(start_year.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_date.yfilter)
+	|| ydk::is_set(end_hour.yfilter)
+	|| ydk::is_set(end_minutes.yfilter)
+	|| ydk::is_set(end_month.yfilter)
+	|| ydk::is_set(end_seconds.yfilter)
+	|| ydk::is_set(end_year.yfilter)
+	|| ydk::is_set(infinite_flag.yfilter)
+	|| ydk::is_set(life_time.yfilter)
+	|| ydk::is_set(start_date.yfilter)
+	|| ydk::is_set(start_hour.yfilter)
+	|| ydk::is_set(start_minutes.yfilter)
+	|| ydk::is_set(start_month.yfilter)
+	|| ydk::is_set(start_seconds.yfilter)
+	|| ydk::is_set(start_year.yfilter);
 }
 
 std::string Keychains::Keychain::Keies::Key::AcceptLifetime::get_segment_path() const
@@ -618,20 +716,20 @@ const EntityPath Keychains::Keychain::Keies::Key::AcceptLifetime::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_date.is_set || is_set(end_date.operation)) leaf_name_data.push_back(end_date.get_name_leafdata());
-    if (end_hour.is_set || is_set(end_hour.operation)) leaf_name_data.push_back(end_hour.get_name_leafdata());
-    if (end_minutes.is_set || is_set(end_minutes.operation)) leaf_name_data.push_back(end_minutes.get_name_leafdata());
-    if (end_month.is_set || is_set(end_month.operation)) leaf_name_data.push_back(end_month.get_name_leafdata());
-    if (end_seconds.is_set || is_set(end_seconds.operation)) leaf_name_data.push_back(end_seconds.get_name_leafdata());
-    if (end_year.is_set || is_set(end_year.operation)) leaf_name_data.push_back(end_year.get_name_leafdata());
-    if (infinite_flag.is_set || is_set(infinite_flag.operation)) leaf_name_data.push_back(infinite_flag.get_name_leafdata());
-    if (life_time.is_set || is_set(life_time.operation)) leaf_name_data.push_back(life_time.get_name_leafdata());
-    if (start_date.is_set || is_set(start_date.operation)) leaf_name_data.push_back(start_date.get_name_leafdata());
-    if (start_hour.is_set || is_set(start_hour.operation)) leaf_name_data.push_back(start_hour.get_name_leafdata());
-    if (start_minutes.is_set || is_set(start_minutes.operation)) leaf_name_data.push_back(start_minutes.get_name_leafdata());
-    if (start_month.is_set || is_set(start_month.operation)) leaf_name_data.push_back(start_month.get_name_leafdata());
-    if (start_seconds.is_set || is_set(start_seconds.operation)) leaf_name_data.push_back(start_seconds.get_name_leafdata());
-    if (start_year.is_set || is_set(start_year.operation)) leaf_name_data.push_back(start_year.get_name_leafdata());
+    if (end_date.is_set || is_set(end_date.yfilter)) leaf_name_data.push_back(end_date.get_name_leafdata());
+    if (end_hour.is_set || is_set(end_hour.yfilter)) leaf_name_data.push_back(end_hour.get_name_leafdata());
+    if (end_minutes.is_set || is_set(end_minutes.yfilter)) leaf_name_data.push_back(end_minutes.get_name_leafdata());
+    if (end_month.is_set || is_set(end_month.yfilter)) leaf_name_data.push_back(end_month.get_name_leafdata());
+    if (end_seconds.is_set || is_set(end_seconds.yfilter)) leaf_name_data.push_back(end_seconds.get_name_leafdata());
+    if (end_year.is_set || is_set(end_year.yfilter)) leaf_name_data.push_back(end_year.get_name_leafdata());
+    if (infinite_flag.is_set || is_set(infinite_flag.yfilter)) leaf_name_data.push_back(infinite_flag.get_name_leafdata());
+    if (life_time.is_set || is_set(life_time.yfilter)) leaf_name_data.push_back(life_time.get_name_leafdata());
+    if (start_date.is_set || is_set(start_date.yfilter)) leaf_name_data.push_back(start_date.get_name_leafdata());
+    if (start_hour.is_set || is_set(start_hour.yfilter)) leaf_name_data.push_back(start_hour.get_name_leafdata());
+    if (start_minutes.is_set || is_set(start_minutes.yfilter)) leaf_name_data.push_back(start_minutes.get_name_leafdata());
+    if (start_month.is_set || is_set(start_month.yfilter)) leaf_name_data.push_back(start_month.get_name_leafdata());
+    if (start_seconds.is_set || is_set(start_seconds.yfilter)) leaf_name_data.push_back(start_seconds.get_name_leafdata());
+    if (start_year.is_set || is_set(start_year.yfilter)) leaf_name_data.push_back(start_year.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -650,64 +748,159 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::
     return children;
 }
 
-void Keychains::Keychain::Keies::Key::AcceptLifetime::set_value(const std::string & value_path, std::string value)
+void Keychains::Keychain::Keies::Key::AcceptLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-date")
     {
         end_date = value;
+        end_date.value_namespace = name_space;
+        end_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-hour")
     {
         end_hour = value;
+        end_hour.value_namespace = name_space;
+        end_hour.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-minutes")
     {
         end_minutes = value;
+        end_minutes.value_namespace = name_space;
+        end_minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-month")
     {
         end_month = value;
+        end_month.value_namespace = name_space;
+        end_month.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-seconds")
     {
         end_seconds = value;
+        end_seconds.value_namespace = name_space;
+        end_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-year")
     {
         end_year = value;
+        end_year.value_namespace = name_space;
+        end_year.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "infinite-flag")
     {
         infinite_flag = value;
+        infinite_flag.value_namespace = name_space;
+        infinite_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "life-time")
     {
         life_time = value;
+        life_time.value_namespace = name_space;
+        life_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-date")
     {
         start_date = value;
+        start_date.value_namespace = name_space;
+        start_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-hour")
     {
         start_hour = value;
+        start_hour.value_namespace = name_space;
+        start_hour.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-minutes")
     {
         start_minutes = value;
+        start_minutes.value_namespace = name_space;
+        start_minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-month")
     {
         start_month = value;
+        start_month.value_namespace = name_space;
+        start_month.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-seconds")
     {
         start_seconds = value;
+        start_seconds.value_namespace = name_space;
+        start_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-year")
     {
         start_year = value;
+        start_year.value_namespace = name_space;
+        start_year.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Keychains::Keychain::Keies::Key::AcceptLifetime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-date")
+    {
+        end_date.yfilter = yfilter;
+    }
+    if(value_path == "end-hour")
+    {
+        end_hour.yfilter = yfilter;
+    }
+    if(value_path == "end-minutes")
+    {
+        end_minutes.yfilter = yfilter;
+    }
+    if(value_path == "end-month")
+    {
+        end_month.yfilter = yfilter;
+    }
+    if(value_path == "end-seconds")
+    {
+        end_seconds.yfilter = yfilter;
+    }
+    if(value_path == "end-year")
+    {
+        end_year.yfilter = yfilter;
+    }
+    if(value_path == "infinite-flag")
+    {
+        infinite_flag.yfilter = yfilter;
+    }
+    if(value_path == "life-time")
+    {
+        life_time.yfilter = yfilter;
+    }
+    if(value_path == "start-date")
+    {
+        start_date.yfilter = yfilter;
+    }
+    if(value_path == "start-hour")
+    {
+        start_hour.yfilter = yfilter;
+    }
+    if(value_path == "start-minutes")
+    {
+        start_minutes.yfilter = yfilter;
+    }
+    if(value_path == "start-month")
+    {
+        start_month.yfilter = yfilter;
+    }
+    if(value_path == "start-seconds")
+    {
+        start_seconds.yfilter = yfilter;
+    }
+    if(value_path == "start-year")
+    {
+        start_year.yfilter = yfilter;
+    }
+}
+
+bool Keychains::Keychain::Keies::Key::AcceptLifetime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-date" || name == "end-hour" || name == "end-minutes" || name == "end-month" || name == "end-seconds" || name == "end-year" || name == "infinite-flag" || name == "life-time" || name == "start-date" || name == "start-hour" || name == "start-minutes" || name == "start-month" || name == "start-seconds" || name == "start-year")
+        return true;
+    return false;
 }
 
 Keychains::Keychain::Keies::Key::SendLifetime::SendLifetime()
@@ -754,21 +947,21 @@ bool Keychains::Keychain::Keies::Key::SendLifetime::has_data() const
 
 bool Keychains::Keychain::Keies::Key::SendLifetime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_date.operation)
-	|| is_set(end_hour.operation)
-	|| is_set(end_minutes.operation)
-	|| is_set(end_month.operation)
-	|| is_set(end_seconds.operation)
-	|| is_set(end_year.operation)
-	|| is_set(infinite_flag.operation)
-	|| is_set(life_time.operation)
-	|| is_set(start_date.operation)
-	|| is_set(start_hour.operation)
-	|| is_set(start_minutes.operation)
-	|| is_set(start_month.operation)
-	|| is_set(start_seconds.operation)
-	|| is_set(start_year.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_date.yfilter)
+	|| ydk::is_set(end_hour.yfilter)
+	|| ydk::is_set(end_minutes.yfilter)
+	|| ydk::is_set(end_month.yfilter)
+	|| ydk::is_set(end_seconds.yfilter)
+	|| ydk::is_set(end_year.yfilter)
+	|| ydk::is_set(infinite_flag.yfilter)
+	|| ydk::is_set(life_time.yfilter)
+	|| ydk::is_set(start_date.yfilter)
+	|| ydk::is_set(start_hour.yfilter)
+	|| ydk::is_set(start_minutes.yfilter)
+	|| ydk::is_set(start_month.yfilter)
+	|| ydk::is_set(start_seconds.yfilter)
+	|| ydk::is_set(start_year.yfilter);
 }
 
 std::string Keychains::Keychain::Keies::Key::SendLifetime::get_segment_path() const
@@ -794,20 +987,20 @@ const EntityPath Keychains::Keychain::Keies::Key::SendLifetime::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_date.is_set || is_set(end_date.operation)) leaf_name_data.push_back(end_date.get_name_leafdata());
-    if (end_hour.is_set || is_set(end_hour.operation)) leaf_name_data.push_back(end_hour.get_name_leafdata());
-    if (end_minutes.is_set || is_set(end_minutes.operation)) leaf_name_data.push_back(end_minutes.get_name_leafdata());
-    if (end_month.is_set || is_set(end_month.operation)) leaf_name_data.push_back(end_month.get_name_leafdata());
-    if (end_seconds.is_set || is_set(end_seconds.operation)) leaf_name_data.push_back(end_seconds.get_name_leafdata());
-    if (end_year.is_set || is_set(end_year.operation)) leaf_name_data.push_back(end_year.get_name_leafdata());
-    if (infinite_flag.is_set || is_set(infinite_flag.operation)) leaf_name_data.push_back(infinite_flag.get_name_leafdata());
-    if (life_time.is_set || is_set(life_time.operation)) leaf_name_data.push_back(life_time.get_name_leafdata());
-    if (start_date.is_set || is_set(start_date.operation)) leaf_name_data.push_back(start_date.get_name_leafdata());
-    if (start_hour.is_set || is_set(start_hour.operation)) leaf_name_data.push_back(start_hour.get_name_leafdata());
-    if (start_minutes.is_set || is_set(start_minutes.operation)) leaf_name_data.push_back(start_minutes.get_name_leafdata());
-    if (start_month.is_set || is_set(start_month.operation)) leaf_name_data.push_back(start_month.get_name_leafdata());
-    if (start_seconds.is_set || is_set(start_seconds.operation)) leaf_name_data.push_back(start_seconds.get_name_leafdata());
-    if (start_year.is_set || is_set(start_year.operation)) leaf_name_data.push_back(start_year.get_name_leafdata());
+    if (end_date.is_set || is_set(end_date.yfilter)) leaf_name_data.push_back(end_date.get_name_leafdata());
+    if (end_hour.is_set || is_set(end_hour.yfilter)) leaf_name_data.push_back(end_hour.get_name_leafdata());
+    if (end_minutes.is_set || is_set(end_minutes.yfilter)) leaf_name_data.push_back(end_minutes.get_name_leafdata());
+    if (end_month.is_set || is_set(end_month.yfilter)) leaf_name_data.push_back(end_month.get_name_leafdata());
+    if (end_seconds.is_set || is_set(end_seconds.yfilter)) leaf_name_data.push_back(end_seconds.get_name_leafdata());
+    if (end_year.is_set || is_set(end_year.yfilter)) leaf_name_data.push_back(end_year.get_name_leafdata());
+    if (infinite_flag.is_set || is_set(infinite_flag.yfilter)) leaf_name_data.push_back(infinite_flag.get_name_leafdata());
+    if (life_time.is_set || is_set(life_time.yfilter)) leaf_name_data.push_back(life_time.get_name_leafdata());
+    if (start_date.is_set || is_set(start_date.yfilter)) leaf_name_data.push_back(start_date.get_name_leafdata());
+    if (start_hour.is_set || is_set(start_hour.yfilter)) leaf_name_data.push_back(start_hour.get_name_leafdata());
+    if (start_minutes.is_set || is_set(start_minutes.yfilter)) leaf_name_data.push_back(start_minutes.get_name_leafdata());
+    if (start_month.is_set || is_set(start_month.yfilter)) leaf_name_data.push_back(start_month.get_name_leafdata());
+    if (start_seconds.is_set || is_set(start_seconds.yfilter)) leaf_name_data.push_back(start_seconds.get_name_leafdata());
+    if (start_year.is_set || is_set(start_year.yfilter)) leaf_name_data.push_back(start_year.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -826,84 +1019,179 @@ std::map<std::string, std::shared_ptr<Entity>> Keychains::Keychain::Keies::Key::
     return children;
 }
 
-void Keychains::Keychain::Keies::Key::SendLifetime::set_value(const std::string & value_path, std::string value)
+void Keychains::Keychain::Keies::Key::SendLifetime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-date")
     {
         end_date = value;
+        end_date.value_namespace = name_space;
+        end_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-hour")
     {
         end_hour = value;
+        end_hour.value_namespace = name_space;
+        end_hour.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-minutes")
     {
         end_minutes = value;
+        end_minutes.value_namespace = name_space;
+        end_minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-month")
     {
         end_month = value;
+        end_month.value_namespace = name_space;
+        end_month.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-seconds")
     {
         end_seconds = value;
+        end_seconds.value_namespace = name_space;
+        end_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "end-year")
     {
         end_year = value;
+        end_year.value_namespace = name_space;
+        end_year.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "infinite-flag")
     {
         infinite_flag = value;
+        infinite_flag.value_namespace = name_space;
+        infinite_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "life-time")
     {
         life_time = value;
+        life_time.value_namespace = name_space;
+        life_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-date")
     {
         start_date = value;
+        start_date.value_namespace = name_space;
+        start_date.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-hour")
     {
         start_hour = value;
+        start_hour.value_namespace = name_space;
+        start_hour.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-minutes")
     {
         start_minutes = value;
+        start_minutes.value_namespace = name_space;
+        start_minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-month")
     {
         start_month = value;
+        start_month.value_namespace = name_space;
+        start_month.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-seconds")
     {
         start_seconds = value;
+        start_seconds.value_namespace = name_space;
+        start_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-year")
     {
         start_year = value;
+        start_year.value_namespace = name_space;
+        start_year.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf KeyChainMonthEnum::jan {0, "jan"};
-const Enum::YLeaf KeyChainMonthEnum::feb {1, "feb"};
-const Enum::YLeaf KeyChainMonthEnum::mar {2, "mar"};
-const Enum::YLeaf KeyChainMonthEnum::apr {3, "apr"};
-const Enum::YLeaf KeyChainMonthEnum::may {4, "may"};
-const Enum::YLeaf KeyChainMonthEnum::jun {5, "jun"};
-const Enum::YLeaf KeyChainMonthEnum::jul {6, "jul"};
-const Enum::YLeaf KeyChainMonthEnum::aug {7, "aug"};
-const Enum::YLeaf KeyChainMonthEnum::sep {8, "sep"};
-const Enum::YLeaf KeyChainMonthEnum::oct {9, "oct"};
-const Enum::YLeaf KeyChainMonthEnum::nov {10, "nov"};
-const Enum::YLeaf KeyChainMonthEnum::dec {11, "dec"};
+void Keychains::Keychain::Keies::Key::SendLifetime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-date")
+    {
+        end_date.yfilter = yfilter;
+    }
+    if(value_path == "end-hour")
+    {
+        end_hour.yfilter = yfilter;
+    }
+    if(value_path == "end-minutes")
+    {
+        end_minutes.yfilter = yfilter;
+    }
+    if(value_path == "end-month")
+    {
+        end_month.yfilter = yfilter;
+    }
+    if(value_path == "end-seconds")
+    {
+        end_seconds.yfilter = yfilter;
+    }
+    if(value_path == "end-year")
+    {
+        end_year.yfilter = yfilter;
+    }
+    if(value_path == "infinite-flag")
+    {
+        infinite_flag.yfilter = yfilter;
+    }
+    if(value_path == "life-time")
+    {
+        life_time.yfilter = yfilter;
+    }
+    if(value_path == "start-date")
+    {
+        start_date.yfilter = yfilter;
+    }
+    if(value_path == "start-hour")
+    {
+        start_hour.yfilter = yfilter;
+    }
+    if(value_path == "start-minutes")
+    {
+        start_minutes.yfilter = yfilter;
+    }
+    if(value_path == "start-month")
+    {
+        start_month.yfilter = yfilter;
+    }
+    if(value_path == "start-seconds")
+    {
+        start_seconds.yfilter = yfilter;
+    }
+    if(value_path == "start-year")
+    {
+        start_year.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CryptoAlgEnum::alg_hmac_sha1_12 {2, "alg-hmac-sha1-12"};
-const Enum::YLeaf CryptoAlgEnum::alg_md5_16 {3, "alg-md5-16"};
-const Enum::YLeaf CryptoAlgEnum::alg_sha1_20 {4, "alg-sha1-20"};
-const Enum::YLeaf CryptoAlgEnum::alg_hmac_md5_16 {5, "alg-hmac-md5-16"};
-const Enum::YLeaf CryptoAlgEnum::alg_hmac_sha1_20 {6, "alg-hmac-sha1-20"};
+bool Keychains::Keychain::Keies::Key::SendLifetime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-date" || name == "end-hour" || name == "end-minutes" || name == "end-month" || name == "end-seconds" || name == "end-year" || name == "infinite-flag" || name == "life-time" || name == "start-date" || name == "start-hour" || name == "start-minutes" || name == "start-month" || name == "start-seconds" || name == "start-year")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf CryptoAlg::alg_hmac_sha1_12 {2, "alg-hmac-sha1-12"};
+const Enum::YLeaf CryptoAlg::alg_md5_16 {3, "alg-md5-16"};
+const Enum::YLeaf CryptoAlg::alg_sha1_20 {4, "alg-sha1-20"};
+const Enum::YLeaf CryptoAlg::alg_hmac_md5_16 {5, "alg-hmac-md5-16"};
+const Enum::YLeaf CryptoAlg::alg_hmac_sha1_20 {6, "alg-hmac-sha1-20"};
+
+const Enum::YLeaf KeyChainMonth::jan {0, "jan"};
+const Enum::YLeaf KeyChainMonth::feb {1, "feb"};
+const Enum::YLeaf KeyChainMonth::mar {2, "mar"};
+const Enum::YLeaf KeyChainMonth::apr {3, "apr"};
+const Enum::YLeaf KeyChainMonth::may {4, "may"};
+const Enum::YLeaf KeyChainMonth::jun {5, "jun"};
+const Enum::YLeaf KeyChainMonth::jul {6, "jul"};
+const Enum::YLeaf KeyChainMonth::aug {7, "aug"};
+const Enum::YLeaf KeyChainMonth::sep {8, "sep"};
+const Enum::YLeaf KeyChainMonth::oct {9, "oct"};
+const Enum::YLeaf KeyChainMonth::nov {10, "nov"};
+const Enum::YLeaf KeyChainMonth::dec {11, "dec"};
 
 
 }

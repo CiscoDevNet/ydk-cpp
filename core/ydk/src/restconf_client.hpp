@@ -27,24 +27,24 @@ namespace ydk
 {
 class RestconfClient
 {
-	public:
-		RestconfClient(const std::string & address, const std::string & username, const std::string & password,
-					int port, const std::string & encoding);
-		~RestconfClient();
+    public:
+        RestconfClient(const std::string & address, const std::string & username, const std::string & password,
+                    int port, const std::string & encoding);
+        ~RestconfClient();
 
-        std::string execute(const std::string & operation, const std::string & url, const std::string & payload) const;
-    	std::string get_capabilities(const std::string & url, const std::string & encoding) const;
+        std::string execute(const std::string & yfilter, const std::string & url, const std::string & payload) const;
+        std::string get_capabilities(const std::string & url, const std::string & encoding) const;
 
-	private:
-    	void initialize(const std::string & address, const std::string & username,
-    			const std::string & password, int port);
-    	void initialize_curl(const std::string & username, const std::string & password);
+    private:
+        void initialize(const std::string & address, const std::string & username,
+                const std::string & password, int port);
+        void initialize_curl(const std::string & username, const std::string & password);
 
-	private:
-		CURL *curl;
-		curl_slist *header_options_list;
-		std::string base_url;
-		std::string encoding;
+    private:
+        CURL *curl;
+        curl_slist *header_options_list;
+        std::string base_url;
+        std::string encoding;
 };
 }
 

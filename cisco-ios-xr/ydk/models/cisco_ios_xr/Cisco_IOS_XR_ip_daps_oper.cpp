@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_daps_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_daps_oper {
 
 AddressPoolService::AddressPoolService()
@@ -29,7 +31,7 @@ bool AddressPoolService::has_data() const
 
 bool AddressPoolService::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::get_children(
     return children;
 }
 
-void AddressPoolService::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AddressPoolService::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string AddressPoolService::get_bundle_name() const
 augment_capabilities_function AddressPoolService::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> AddressPoolService::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool AddressPoolService::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool AddressPoolService::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AddressPoolService::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::get_ch
     return children;
 }
 
-void AddressPoolService::Nodes::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Node()
@@ -235,8 +264,8 @@ bool AddressPoolService::Nodes::Node::has_data() const
 
 bool AddressPoolService::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (pools !=  nullptr && pools->has_operation())
 	|| (total_utilization !=  nullptr && total_utilization->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
@@ -265,7 +294,7 @@ const EntityPath AddressPoolService::Nodes::Node::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -326,12 +355,29 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pools" || name == "total-utilization" || name == "vrfs" || name == "node-name")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pools()
@@ -360,7 +406,7 @@ bool AddressPoolService::Nodes::Node::Pools::has_operation() const
         if(pool[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::get_segment_path() const
@@ -425,8 +471,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::Pool()
@@ -460,8 +517,8 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::has_data() const
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pool_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(pool_name.yfilter)
 	|| (address_ranges !=  nullptr && address_ranges->has_operation())
 	|| (allocated_addresses !=  nullptr && allocated_addresses->has_operation())
 	|| (configuration !=  nullptr && configuration->has_operation());
@@ -490,7 +547,7 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pool_name.is_set || is_set(pool_name.operation)) leaf_name_data.push_back(pool_name.get_name_leafdata());
+    if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -551,12 +608,29 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pool-name")
     {
         pool_name = value;
+        pool_name.value_namespace = name_space;
+        pool_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pool-name")
+    {
+        pool_name.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-ranges" || name == "allocated-addresses" || name == "configuration" || name == "pool-name")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRanges()
@@ -585,7 +659,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::has_operation(
         if(address_range[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_segment_path() const
@@ -650,8 +724,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-range")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::AddressRange()
@@ -701,16 +786,16 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(start_address.operation)
-	|| is_set(allocated_addresses.operation)
-	|| is_set(excluded_addresses.operation)
-	|| is_set(free_addresses.operation)
-	|| is_set(network_blocked_status.operation)
-	|| is_set(network_blocked_status_trp.operation)
-	|| is_set(pool_name.operation)
-	|| is_set(pool_scope.operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(start_address.yfilter)
+	|| ydk::is_set(allocated_addresses.yfilter)
+	|| ydk::is_set(excluded_addresses.yfilter)
+	|| ydk::is_set(free_addresses.yfilter)
+	|| ydk::is_set(network_blocked_status.yfilter)
+	|| ydk::is_set(network_blocked_status_trp.yfilter)
+	|| ydk::is_set(pool_name.yfilter)
+	|| ydk::is_set(pool_scope.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (default_router !=  nullptr && default_router->has_operation())
 	|| (end_address !=  nullptr && end_address->has_operation())
 	|| (start_address_xr !=  nullptr && start_address_xr->has_operation());
@@ -739,15 +824,15 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (start_address.is_set || is_set(start_address.operation)) leaf_name_data.push_back(start_address.get_name_leafdata());
-    if (allocated_addresses.is_set || is_set(allocated_addresses.operation)) leaf_name_data.push_back(allocated_addresses.get_name_leafdata());
-    if (excluded_addresses.is_set || is_set(excluded_addresses.operation)) leaf_name_data.push_back(excluded_addresses.get_name_leafdata());
-    if (free_addresses.is_set || is_set(free_addresses.operation)) leaf_name_data.push_back(free_addresses.get_name_leafdata());
-    if (network_blocked_status.is_set || is_set(network_blocked_status.operation)) leaf_name_data.push_back(network_blocked_status.get_name_leafdata());
-    if (network_blocked_status_trp.is_set || is_set(network_blocked_status_trp.operation)) leaf_name_data.push_back(network_blocked_status_trp.get_name_leafdata());
-    if (pool_name.is_set || is_set(pool_name.operation)) leaf_name_data.push_back(pool_name.get_name_leafdata());
-    if (pool_scope.is_set || is_set(pool_scope.operation)) leaf_name_data.push_back(pool_scope.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
+    if (allocated_addresses.is_set || is_set(allocated_addresses.yfilter)) leaf_name_data.push_back(allocated_addresses.get_name_leafdata());
+    if (excluded_addresses.is_set || is_set(excluded_addresses.yfilter)) leaf_name_data.push_back(excluded_addresses.get_name_leafdata());
+    if (free_addresses.is_set || is_set(free_addresses.yfilter)) leaf_name_data.push_back(free_addresses.get_name_leafdata());
+    if (network_blocked_status.is_set || is_set(network_blocked_status.yfilter)) leaf_name_data.push_back(network_blocked_status.get_name_leafdata());
+    if (network_blocked_status_trp.is_set || is_set(network_blocked_status_trp.yfilter)) leaf_name_data.push_back(network_blocked_status_trp.get_name_leafdata());
+    if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
+    if (pool_scope.is_set || is_set(pool_scope.yfilter)) leaf_name_data.push_back(pool_scope.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -808,44 +893,109 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "start-address")
     {
         start_address = value;
+        start_address.value_namespace = name_space;
+        start_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "allocated-addresses")
     {
         allocated_addresses = value;
+        allocated_addresses.value_namespace = name_space;
+        allocated_addresses.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excluded-addresses")
     {
         excluded_addresses = value;
+        excluded_addresses.value_namespace = name_space;
+        excluded_addresses.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free-addresses")
     {
         free_addresses = value;
+        free_addresses.value_namespace = name_space;
+        free_addresses.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "network-blocked-status")
     {
         network_blocked_status = value;
+        network_blocked_status.value_namespace = name_space;
+        network_blocked_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "network-blocked-status-trp")
     {
         network_blocked_status_trp = value;
+        network_blocked_status_trp.value_namespace = name_space;
+        network_blocked_status_trp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-name")
     {
         pool_name = value;
+        pool_name.value_namespace = name_space;
+        pool_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-scope")
     {
         pool_scope = value;
+        pool_scope.value_namespace = name_space;
+        pool_scope.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "start-address")
+    {
+        start_address.yfilter = yfilter;
+    }
+    if(value_path == "allocated-addresses")
+    {
+        allocated_addresses.yfilter = yfilter;
+    }
+    if(value_path == "excluded-addresses")
+    {
+        excluded_addresses.yfilter = yfilter;
+    }
+    if(value_path == "free-addresses")
+    {
+        free_addresses.yfilter = yfilter;
+    }
+    if(value_path == "network-blocked-status")
+    {
+        network_blocked_status.yfilter = yfilter;
+    }
+    if(value_path == "network-blocked-status-trp")
+    {
+        network_blocked_status_trp.yfilter = yfilter;
+    }
+    if(value_path == "pool-name")
+    {
+        pool_name.yfilter = yfilter;
+    }
+    if(value_path == "pool-scope")
+    {
+        pool_scope.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-router" || name == "end-address" || name == "start-address-xr" || name == "start-address" || name == "allocated-addresses" || name == "excluded-addresses" || name == "free-addresses" || name == "network-blocked-status" || name == "network-blocked-status-trp" || name == "pool-name" || name == "pool-scope" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::StartAddressXr()
@@ -868,7 +1018,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -927,8 +1077,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::Address()
@@ -953,10 +1114,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_segment_path() const
@@ -982,9 +1143,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1003,20 +1164,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::EndAddress()
@@ -1039,7 +1229,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -1098,8 +1288,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::Address()
@@ -1124,10 +1325,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_segment_path() const
@@ -1153,9 +1354,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1174,20 +1375,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::DefaultRouter()
@@ -1210,7 +1440,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -1269,8 +1499,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::Address()
@@ -1295,10 +1536,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_segment_path() const
@@ -1324,9 +1565,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::Ad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1345,20 +1586,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AllocatedAddresses()
@@ -1401,7 +1671,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::has_opera
         if(in_use_address[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (pool_allocations !=  nullptr && pool_allocations->has_operation());
 }
 
@@ -1502,8 +1772,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-range" || name == "in-use-address" || name == "pool-allocations")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::PoolAllocations()
@@ -1543,13 +1824,13 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAlloc
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excluded.operation)
-	|| is_set(free.operation)
-	|| is_set(total.operation)
-	|| is_set(used.operation)
-	|| is_set(utilization.operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(excluded.yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(used.yfilter)
+	|| ydk::is_set(utilization.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (high_threshold !=  nullptr && high_threshold->has_operation())
 	|| (low_threshold !=  nullptr && low_threshold->has_operation());
 }
@@ -1577,12 +1858,12 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excluded.is_set || is_set(excluded.operation)) leaf_name_data.push_back(excluded.get_name_leafdata());
-    if (free.is_set || is_set(free.operation)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
-    if (used.is_set || is_set(used.operation)) leaf_name_data.push_back(used.get_name_leafdata());
-    if (utilization.is_set || is_set(utilization.operation)) leaf_name_data.push_back(utilization.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
+    if (utilization.is_set || is_set(utilization.yfilter)) leaf_name_data.push_back(utilization.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1629,32 +1910,79 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excluded")
     {
         excluded = value;
+        excluded.value_namespace = name_space;
+        excluded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free")
     {
         free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used")
     {
         used = value;
+        used.value_namespace = name_space;
+        used.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "utilization")
     {
         utilization = value;
+        utilization.value_namespace = name_space;
+        utilization.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excluded")
+    {
+        excluded.yfilter = yfilter;
+    }
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+    if(value_path == "used")
+    {
+        used.yfilter = yfilter;
+    }
+    if(value_path == "utilization")
+    {
+        utilization.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high-threshold" || name == "low-threshold" || name == "excluded" || name == "free" || name == "total" || name == "used" || name == "utilization" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::HighThreshold()
@@ -1679,10 +2007,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAlloc
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(threshold.operation)
-	|| is_set(time_last_crossed.operation)
-	|| is_set(triggers.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(time_last_crossed.yfilter)
+	|| ydk::is_set(triggers.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_segment_path() const
@@ -1708,9 +2036,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (time_last_crossed.is_set || is_set(time_last_crossed.operation)) leaf_name_data.push_back(time_last_crossed.get_name_leafdata());
-    if (triggers.is_set || is_set(triggers.operation)) leaf_name_data.push_back(triggers.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (time_last_crossed.is_set || is_set(time_last_crossed.yfilter)) leaf_name_data.push_back(time_last_crossed.get_name_leafdata());
+    if (triggers.is_set || is_set(triggers.yfilter)) leaf_name_data.push_back(triggers.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1729,20 +2057,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-last-crossed")
     {
         time_last_crossed = value;
+        time_last_crossed.value_namespace = name_space;
+        time_last_crossed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "triggers")
     {
         triggers = value;
+        triggers.value_namespace = name_space;
+        triggers.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "time-last-crossed")
+    {
+        time_last_crossed.yfilter = yfilter;
+    }
+    if(value_path == "triggers")
+    {
+        triggers.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "time-last-crossed" || name == "triggers")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::LowThreshold()
@@ -1767,10 +2124,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAlloc
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(threshold.operation)
-	|| is_set(time_last_crossed.operation)
-	|| is_set(triggers.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(time_last_crossed.yfilter)
+	|| ydk::is_set(triggers.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_segment_path() const
@@ -1796,9 +2153,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (time_last_crossed.is_set || is_set(time_last_crossed.operation)) leaf_name_data.push_back(time_last_crossed.get_name_leafdata());
-    if (triggers.is_set || is_set(triggers.operation)) leaf_name_data.push_back(triggers.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (time_last_crossed.is_set || is_set(time_last_crossed.yfilter)) leaf_name_data.push_back(time_last_crossed.get_name_leafdata());
+    if (triggers.is_set || is_set(triggers.yfilter)) leaf_name_data.push_back(triggers.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1817,20 +2174,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-last-crossed")
     {
         time_last_crossed = value;
+        time_last_crossed.value_namespace = name_space;
+        time_last_crossed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "triggers")
     {
         triggers = value;
+        triggers.value_namespace = name_space;
+        triggers.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "time-last-crossed")
+    {
+        time_last_crossed.yfilter = yfilter;
+    }
+    if(value_path == "triggers")
+    {
+        triggers.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "time-last-crossed" || name == "triggers")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::AddressRange()
@@ -1864,10 +2250,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRa
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excluded.operation)
-	|| is_set(free.operation)
-	|| is_set(used.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(excluded.yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(used.yfilter)
 	|| (end_address !=  nullptr && end_address->has_operation())
 	|| (start_address !=  nullptr && start_address->has_operation());
 }
@@ -1895,9 +2281,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excluded.is_set || is_set(excluded.operation)) leaf_name_data.push_back(excluded.get_name_leafdata());
-    if (free.is_set || is_set(free.operation)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (used.is_set || is_set(used.operation)) leaf_name_data.push_back(used.get_name_leafdata());
+    if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1944,20 +2330,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excluded")
     {
         excluded = value;
+        excluded.value_namespace = name_space;
+        excluded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free")
     {
         free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used")
     {
         used = value;
+        used.value_namespace = name_space;
+        used.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excluded")
+    {
+        excluded.yfilter = yfilter;
+    }
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "used")
+    {
+        used.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-address" || name == "start-address" || name == "excluded" || name == "free" || name == "used")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::StartAddress()
@@ -1980,7 +2395,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRa
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -2039,8 +2454,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::Address()
@@ -2065,10 +2491,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRa
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_segment_path() const
@@ -2094,9 +2520,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2115,20 +2541,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::EndAddress()
@@ -2151,7 +2606,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRa
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -2210,8 +2665,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::Address()
@@ -2236,10 +2702,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRa
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_segment_path() const
@@ -2265,9 +2731,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2286,20 +2752,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::InUseAddress()
@@ -2325,8 +2820,8 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddr
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(client_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(client_type.yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -2353,7 +2848,7 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client_type.is_set || is_set(client_type.operation)) leaf_name_data.push_back(client_type.get_name_leafdata());
+    if (client_type.is_set || is_set(client_type.yfilter)) leaf_name_data.push_back(client_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2386,12 +2881,29 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-type")
     {
         client_type = value;
+        client_type.value_namespace = name_space;
+        client_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-type")
+    {
+        client_type.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "client-type")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address()
@@ -2414,7 +2926,7 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddr
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -2473,8 +2985,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::Address_()
@@ -2499,10 +3022,10 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddr
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_segment_path() const
@@ -2528,9 +3051,9 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2549,20 +3072,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Pools::Pool::Configuration::Configuration()
@@ -2601,17 +3153,17 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::has_data() con
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(current_utilization.operation)
-	|| is_set(high_utilization_mark.operation)
-	|| is_set(low_utilization_mark.operation)
-	|| is_set(pool_id.operation)
-	|| is_set(pool_name.operation)
-	|| is_set(pool_prefix_length.operation)
-	|| is_set(pool_scope.operation)
-	|| is_set(utilization_high_count.operation)
-	|| is_set(utilization_low_count.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(current_utilization.yfilter)
+	|| ydk::is_set(high_utilization_mark.yfilter)
+	|| ydk::is_set(low_utilization_mark.yfilter)
+	|| ydk::is_set(pool_id.yfilter)
+	|| ydk::is_set(pool_name.yfilter)
+	|| ydk::is_set(pool_prefix_length.yfilter)
+	|| ydk::is_set(pool_scope.yfilter)
+	|| ydk::is_set(utilization_high_count.yfilter)
+	|| ydk::is_set(utilization_low_count.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_segment_path() const
@@ -2637,16 +3189,16 @@ const EntityPath AddressPoolService::Nodes::Node::Pools::Pool::Configuration::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (current_utilization.is_set || is_set(current_utilization.operation)) leaf_name_data.push_back(current_utilization.get_name_leafdata());
-    if (high_utilization_mark.is_set || is_set(high_utilization_mark.operation)) leaf_name_data.push_back(high_utilization_mark.get_name_leafdata());
-    if (low_utilization_mark.is_set || is_set(low_utilization_mark.operation)) leaf_name_data.push_back(low_utilization_mark.get_name_leafdata());
-    if (pool_id.is_set || is_set(pool_id.operation)) leaf_name_data.push_back(pool_id.get_name_leafdata());
-    if (pool_name.is_set || is_set(pool_name.operation)) leaf_name_data.push_back(pool_name.get_name_leafdata());
-    if (pool_prefix_length.is_set || is_set(pool_prefix_length.operation)) leaf_name_data.push_back(pool_prefix_length.get_name_leafdata());
-    if (pool_scope.is_set || is_set(pool_scope.operation)) leaf_name_data.push_back(pool_scope.get_name_leafdata());
-    if (utilization_high_count.is_set || is_set(utilization_high_count.operation)) leaf_name_data.push_back(utilization_high_count.get_name_leafdata());
-    if (utilization_low_count.is_set || is_set(utilization_low_count.operation)) leaf_name_data.push_back(utilization_low_count.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (current_utilization.is_set || is_set(current_utilization.yfilter)) leaf_name_data.push_back(current_utilization.get_name_leafdata());
+    if (high_utilization_mark.is_set || is_set(high_utilization_mark.yfilter)) leaf_name_data.push_back(high_utilization_mark.get_name_leafdata());
+    if (low_utilization_mark.is_set || is_set(low_utilization_mark.yfilter)) leaf_name_data.push_back(low_utilization_mark.get_name_leafdata());
+    if (pool_id.is_set || is_set(pool_id.yfilter)) leaf_name_data.push_back(pool_id.get_name_leafdata());
+    if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
+    if (pool_prefix_length.is_set || is_set(pool_prefix_length.yfilter)) leaf_name_data.push_back(pool_prefix_length.get_name_leafdata());
+    if (pool_scope.is_set || is_set(pool_scope.yfilter)) leaf_name_data.push_back(pool_scope.get_name_leafdata());
+    if (utilization_high_count.is_set || is_set(utilization_high_count.yfilter)) leaf_name_data.push_back(utilization_high_count.get_name_leafdata());
+    if (utilization_low_count.is_set || is_set(utilization_low_count.yfilter)) leaf_name_data.push_back(utilization_low_count.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2665,48 +3217,119 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Pools::Pool::Configuration::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Pools::Pool::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "current-utilization")
     {
         current_utilization = value;
+        current_utilization.value_namespace = name_space;
+        current_utilization.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "high-utilization-mark")
     {
         high_utilization_mark = value;
+        high_utilization_mark.value_namespace = name_space;
+        high_utilization_mark.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "low-utilization-mark")
     {
         low_utilization_mark = value;
+        low_utilization_mark.value_namespace = name_space;
+        low_utilization_mark.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-id")
     {
         pool_id = value;
+        pool_id.value_namespace = name_space;
+        pool_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-name")
     {
         pool_name = value;
+        pool_name.value_namespace = name_space;
+        pool_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-prefix-length")
     {
         pool_prefix_length = value;
+        pool_prefix_length.value_namespace = name_space;
+        pool_prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-scope")
     {
         pool_scope = value;
+        pool_scope.value_namespace = name_space;
+        pool_scope.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "utilization-high-count")
     {
         utilization_high_count = value;
+        utilization_high_count.value_namespace = name_space;
+        utilization_high_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "utilization-low-count")
     {
         utilization_low_count = value;
+        utilization_low_count.value_namespace = name_space;
+        utilization_low_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Pools::Pool::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "current-utilization")
+    {
+        current_utilization.yfilter = yfilter;
+    }
+    if(value_path == "high-utilization-mark")
+    {
+        high_utilization_mark.yfilter = yfilter;
+    }
+    if(value_path == "low-utilization-mark")
+    {
+        low_utilization_mark.yfilter = yfilter;
+    }
+    if(value_path == "pool-id")
+    {
+        pool_id.yfilter = yfilter;
+    }
+    if(value_path == "pool-name")
+    {
+        pool_name.yfilter = yfilter;
+    }
+    if(value_path == "pool-prefix-length")
+    {
+        pool_prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "pool-scope")
+    {
+        pool_scope.yfilter = yfilter;
+    }
+    if(value_path == "utilization-high-count")
+    {
+        utilization_high_count.yfilter = yfilter;
+    }
+    if(value_path == "utilization-low-count")
+    {
+        utilization_low_count.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Pools::Pool::Configuration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "current-utilization" || name == "high-utilization-mark" || name == "low-utilization-mark" || name == "pool-id" || name == "pool-name" || name == "pool-prefix-length" || name == "pool-scope" || name == "utilization-high-count" || name == "utilization-low-count" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::TotalUtilization::TotalUtilization()
@@ -2731,10 +3354,10 @@ bool AddressPoolService::Nodes::Node::TotalUtilization::has_data() const
 
 bool AddressPoolService::Nodes::Node::TotalUtilization::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(current_total_utilization.operation)
-	|| is_set(total_utilization_high_mark.operation)
-	|| is_set(total_utilization_low_mark.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(current_total_utilization.yfilter)
+	|| ydk::is_set(total_utilization_high_mark.yfilter)
+	|| ydk::is_set(total_utilization_low_mark.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::TotalUtilization::get_segment_path() const
@@ -2760,9 +3383,9 @@ const EntityPath AddressPoolService::Nodes::Node::TotalUtilization::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (current_total_utilization.is_set || is_set(current_total_utilization.operation)) leaf_name_data.push_back(current_total_utilization.get_name_leafdata());
-    if (total_utilization_high_mark.is_set || is_set(total_utilization_high_mark.operation)) leaf_name_data.push_back(total_utilization_high_mark.get_name_leafdata());
-    if (total_utilization_low_mark.is_set || is_set(total_utilization_low_mark.operation)) leaf_name_data.push_back(total_utilization_low_mark.get_name_leafdata());
+    if (current_total_utilization.is_set || is_set(current_total_utilization.yfilter)) leaf_name_data.push_back(current_total_utilization.get_name_leafdata());
+    if (total_utilization_high_mark.is_set || is_set(total_utilization_high_mark.yfilter)) leaf_name_data.push_back(total_utilization_high_mark.get_name_leafdata());
+    if (total_utilization_low_mark.is_set || is_set(total_utilization_low_mark.yfilter)) leaf_name_data.push_back(total_utilization_low_mark.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2781,20 +3404,49 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::TotalUtilization::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::TotalUtilization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "current-total-utilization")
     {
         current_total_utilization = value;
+        current_total_utilization.value_namespace = name_space;
+        current_total_utilization.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-utilization-high-mark")
     {
         total_utilization_high_mark = value;
+        total_utilization_high_mark.value_namespace = name_space;
+        total_utilization_high_mark.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-utilization-low-mark")
     {
         total_utilization_low_mark = value;
+        total_utilization_low_mark.value_namespace = name_space;
+        total_utilization_low_mark.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::TotalUtilization::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "current-total-utilization")
+    {
+        current_total_utilization.yfilter = yfilter;
+    }
+    if(value_path == "total-utilization-high-mark")
+    {
+        total_utilization_high_mark.yfilter = yfilter;
+    }
+    if(value_path == "total-utilization-low-mark")
+    {
+        total_utilization_low_mark.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::TotalUtilization::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "current-total-utilization" || name == "total-utilization-high-mark" || name == "total-utilization-low-mark")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrfs()
@@ -2823,7 +3475,7 @@ bool AddressPoolService::Nodes::Node::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Vrfs::get_segment_path() const
@@ -2888,8 +3540,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Vrfs::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Vrf()
@@ -2919,8 +3582,8 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::has_data() const
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -2948,7 +3611,7 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2995,12 +3658,29 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Ipv4()
@@ -3033,7 +3713,7 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::has_operation() const
         if(pools[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (allocation_summary !=  nullptr && allocation_summary->has_operation());
 }
 
@@ -3113,8 +3793,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocation-summary" || name == "pools")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::AllocationSummary()
@@ -3147,14 +3838,14 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::has_da
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excluded.operation)
-	|| is_set(free.operation)
-	|| is_set(high_utilization_threshold.operation)
-	|| is_set(low_utilization_threshold.operation)
-	|| is_set(total.operation)
-	|| is_set(used.operation)
-	|| is_set(utilization.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(excluded.yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(high_utilization_threshold.yfilter)
+	|| ydk::is_set(low_utilization_threshold.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(used.yfilter)
+	|| ydk::is_set(utilization.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_segment_path() const
@@ -3180,13 +3871,13 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSum
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excluded.is_set || is_set(excluded.operation)) leaf_name_data.push_back(excluded.get_name_leafdata());
-    if (free.is_set || is_set(free.operation)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (high_utilization_threshold.is_set || is_set(high_utilization_threshold.operation)) leaf_name_data.push_back(high_utilization_threshold.get_name_leafdata());
-    if (low_utilization_threshold.is_set || is_set(low_utilization_threshold.operation)) leaf_name_data.push_back(low_utilization_threshold.get_name_leafdata());
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
-    if (used.is_set || is_set(used.operation)) leaf_name_data.push_back(used.get_name_leafdata());
-    if (utilization.is_set || is_set(utilization.operation)) leaf_name_data.push_back(utilization.get_name_leafdata());
+    if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (high_utilization_threshold.is_set || is_set(high_utilization_threshold.yfilter)) leaf_name_data.push_back(high_utilization_threshold.get_name_leafdata());
+    if (low_utilization_threshold.is_set || is_set(low_utilization_threshold.yfilter)) leaf_name_data.push_back(low_utilization_threshold.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
+    if (utilization.is_set || is_set(utilization.yfilter)) leaf_name_data.push_back(utilization.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3205,36 +3896,89 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excluded")
     {
         excluded = value;
+        excluded.value_namespace = name_space;
+        excluded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free")
     {
         free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "high-utilization-threshold")
     {
         high_utilization_threshold = value;
+        high_utilization_threshold.value_namespace = name_space;
+        high_utilization_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "low-utilization-threshold")
     {
         low_utilization_threshold = value;
+        low_utilization_threshold.value_namespace = name_space;
+        low_utilization_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used")
     {
         used = value;
+        used.value_namespace = name_space;
+        used.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "utilization")
     {
         utilization = value;
+        utilization.value_namespace = name_space;
+        utilization.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excluded")
+    {
+        excluded.yfilter = yfilter;
+    }
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "high-utilization-threshold")
+    {
+        high_utilization_threshold.yfilter = yfilter;
+    }
+    if(value_path == "low-utilization-threshold")
+    {
+        low_utilization_threshold.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+    if(value_path == "used")
+    {
+        used.yfilter = yfilter;
+    }
+    if(value_path == "utilization")
+    {
+        utilization.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "excluded" || name == "free" || name == "high-utilization-threshold" || name == "low-utilization-threshold" || name == "total" || name == "used" || name == "utilization")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::Pools()
@@ -3265,13 +4009,13 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::has_data() const
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excluded.operation)
-	|| is_set(free.operation)
-	|| is_set(pool_name.operation)
-	|| is_set(total.operation)
-	|| is_set(used.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(excluded.yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(pool_name.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(used.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_segment_path() const
@@ -3297,12 +4041,12 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excluded.is_set || is_set(excluded.operation)) leaf_name_data.push_back(excluded.get_name_leafdata());
-    if (free.is_set || is_set(free.operation)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (pool_name.is_set || is_set(pool_name.operation)) leaf_name_data.push_back(pool_name.get_name_leafdata());
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
-    if (used.is_set || is_set(used.operation)) leaf_name_data.push_back(used.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3321,32 +4065,79 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excluded")
     {
         excluded = value;
+        excluded.value_namespace = name_space;
+        excluded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free")
     {
         free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-name")
     {
         pool_name = value;
+        pool_name.value_namespace = name_space;
+        pool_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used")
     {
         used = value;
+        used.value_namespace = name_space;
+        used.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excluded")
+    {
+        excluded.yfilter = yfilter;
+    }
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "pool-name")
+    {
+        pool_name.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+    if(value_path == "used")
+    {
+        used.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "excluded" || name == "free" || name == "pool-name" || name == "total" || name == "used" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Ipv6()
@@ -3379,7 +4170,7 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::has_operation() const
         if(pools[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (allocation_summary !=  nullptr && allocation_summary->has_operation());
 }
 
@@ -3459,8 +4250,19 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocation-summary" || name == "pools")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::AllocationSummary()
@@ -3493,14 +4295,14 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::has_da
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excluded.operation)
-	|| is_set(free.operation)
-	|| is_set(high_utilization_threshold.operation)
-	|| is_set(low_utilization_threshold.operation)
-	|| is_set(total.operation)
-	|| is_set(used.operation)
-	|| is_set(utilization.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(excluded.yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(high_utilization_threshold.yfilter)
+	|| ydk::is_set(low_utilization_threshold.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(used.yfilter)
+	|| ydk::is_set(utilization.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_segment_path() const
@@ -3526,13 +4328,13 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSum
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excluded.is_set || is_set(excluded.operation)) leaf_name_data.push_back(excluded.get_name_leafdata());
-    if (free.is_set || is_set(free.operation)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (high_utilization_threshold.is_set || is_set(high_utilization_threshold.operation)) leaf_name_data.push_back(high_utilization_threshold.get_name_leafdata());
-    if (low_utilization_threshold.is_set || is_set(low_utilization_threshold.operation)) leaf_name_data.push_back(low_utilization_threshold.get_name_leafdata());
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
-    if (used.is_set || is_set(used.operation)) leaf_name_data.push_back(used.get_name_leafdata());
-    if (utilization.is_set || is_set(utilization.operation)) leaf_name_data.push_back(utilization.get_name_leafdata());
+    if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (high_utilization_threshold.is_set || is_set(high_utilization_threshold.yfilter)) leaf_name_data.push_back(high_utilization_threshold.get_name_leafdata());
+    if (low_utilization_threshold.is_set || is_set(low_utilization_threshold.yfilter)) leaf_name_data.push_back(low_utilization_threshold.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
+    if (utilization.is_set || is_set(utilization.yfilter)) leaf_name_data.push_back(utilization.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3551,36 +4353,89 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excluded")
     {
         excluded = value;
+        excluded.value_namespace = name_space;
+        excluded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free")
     {
         free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "high-utilization-threshold")
     {
         high_utilization_threshold = value;
+        high_utilization_threshold.value_namespace = name_space;
+        high_utilization_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "low-utilization-threshold")
     {
         low_utilization_threshold = value;
+        low_utilization_threshold.value_namespace = name_space;
+        low_utilization_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used")
     {
         used = value;
+        used.value_namespace = name_space;
+        used.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "utilization")
     {
         utilization = value;
+        utilization.value_namespace = name_space;
+        utilization.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excluded")
+    {
+        excluded.yfilter = yfilter;
+    }
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "high-utilization-threshold")
+    {
+        high_utilization_threshold.yfilter = yfilter;
+    }
+    if(value_path == "low-utilization-threshold")
+    {
+        low_utilization_threshold.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+    if(value_path == "used")
+    {
+        used.yfilter = yfilter;
+    }
+    if(value_path == "utilization")
+    {
+        utilization.yfilter = yfilter;
+    }
+}
+
+bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "excluded" || name == "free" || name == "high-utilization-threshold" || name == "low-utilization-threshold" || name == "total" || name == "used" || name == "utilization")
+        return true;
+    return false;
 }
 
 AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::Pools()
@@ -3611,13 +4466,13 @@ bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::has_data() const
 
 bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excluded.operation)
-	|| is_set(free.operation)
-	|| is_set(pool_name.operation)
-	|| is_set(total.operation)
-	|| is_set(used.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(excluded.yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(pool_name.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(used.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_segment_path() const
@@ -3643,12 +4498,12 @@ const EntityPath AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excluded.is_set || is_set(excluded.operation)) leaf_name_data.push_back(excluded.get_name_leafdata());
-    if (free.is_set || is_set(free.operation)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (pool_name.is_set || is_set(pool_name.operation)) leaf_name_data.push_back(pool_name.get_name_leafdata());
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
-    if (used.is_set || is_set(used.operation)) leaf_name_data.push_back(used.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (excluded.is_set || is_set(excluded.yfilter)) leaf_name_data.push_back(excluded.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3667,42 +4522,89 @@ std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::
     return children;
 }
 
-void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::set_value(const std::string & value_path, std::string value)
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excluded")
     {
         excluded = value;
+        excluded.value_namespace = name_space;
+        excluded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free")
     {
         free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-name")
     {
         pool_name = value;
+        pool_name.value_namespace = name_space;
+        pool_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used")
     {
         used = value;
+        used.value_namespace = name_space;
+        used.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf DapsClientEnum::none {0, "none"};
-const Enum::YLeaf DapsClientEnum::ppp {1, "ppp"};
-const Enum::YLeaf DapsClientEnum::dhcp {2, "dhcp"};
-const Enum::YLeaf DapsClientEnum::dhcpv6 {4, "dhcpv6"};
-const Enum::YLeaf DapsClientEnum::ipv6nd {5, "ipv6nd"};
+void AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excluded")
+    {
+        excluded.yfilter = yfilter;
+    }
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "pool-name")
+    {
+        pool_name.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+    if(value_path == "used")
+    {
+        used.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf IpAddrEnum::ipv4 {2, "ipv4"};
-const Enum::YLeaf IpAddrEnum::ipv6 {10, "ipv6"};
+bool AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "excluded" || name == "free" || name == "pool-name" || name == "total" || name == "used" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf IpAddr::ipv4 {2, "ipv4"};
+const Enum::YLeaf IpAddr::ipv6 {10, "ipv6"};
+
+const Enum::YLeaf DapsClient::none {0, "none"};
+const Enum::YLeaf DapsClient::ppp {1, "ppp"};
+const Enum::YLeaf DapsClient::dhcp {2, "dhcp"};
+const Enum::YLeaf DapsClient::dhcpv6 {4, "dhcpv6"};
+const Enum::YLeaf DapsClient::ipv6nd {5, "ipv6nd"};
 
 
 }

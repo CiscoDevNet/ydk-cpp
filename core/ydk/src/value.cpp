@@ -63,7 +63,7 @@ std::string to_str(YType t)
 
 YLeaf::YLeaf(YType type, std::string name):
         is_set(false),
-        operation(EditOperation::not_set),
+        yfilter(YFilter::not_set),
         name(name),
         value(""),
         type(type)
@@ -72,7 +72,7 @@ YLeaf::YLeaf(YType type, std::string name):
 
 YLeaf::YLeaf(const YLeaf& val):
     is_set{val.is_set},
-    operation(EditOperation::not_set),
+    yfilter(YFilter::not_set),
     name{val.name},
     value{val.value},
     type{val.type},
@@ -84,7 +84,7 @@ YLeaf::YLeaf(const YLeaf& val):
 
 YLeaf::YLeaf(YLeaf&& val):
     is_set{val.is_set},
-    operation(EditOperation::not_set),
+    yfilter(YFilter::not_set),
     name{std::move(val.name)},
     value{std::move(val.value)},
     type{val.type},
@@ -99,72 +99,72 @@ YLeaf::~YLeaf()
 
 const std::string  YLeaf::get() const
 {
-	if(type == YType::bits)
-	{
-		return get_bits_string();
-	}
-	return value;
+    if(type == YType::bits)
+    {
+        return get_bits_string();
+    }
+    return value;
 }
 
 std::pair<std::string, LeafData> YLeaf::get_name_leafdata() const
 {
-    return {name, {get(), operation, is_set}};
+    return {name, {get(), yfilter, is_set, value_namespace, value_namespace_prefix }};
 }
 
 void YLeaf::operator = (uint8 val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (uint32 val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (uint64 val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (long val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (int8 val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (int32 val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (Enum::YLeaf val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val.name;
-	store_value(value_buffer.str());
+    value_buffer << val.name;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (Bits val)
@@ -180,16 +180,16 @@ void YLeaf::operator = (int64 val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (double val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (Empty val)
@@ -197,31 +197,33 @@ void YLeaf::operator = (Empty val)
     bool purposely_unused_if_condition_to_avoid_compiler_warning = val.set;
     if(purposely_unused_if_condition_to_avoid_compiler_warning){}
 
-	store_value(""); // store empty string
+    store_value(""); // store empty string
 }
 
 void YLeaf::operator = (Identity val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val.to_string();
-	store_value(value_buffer.str());
+    value_buffer << val.to_string();
+    store_value(value_buffer.str());
+    value_namespace = val.name_space;
+    value_namespace_prefix = val.namespace_prefix;
 }
 
 void YLeaf::operator = (std::string val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val;
-	store_value(value_buffer.str());
+    value_buffer << val;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::operator = (Decimal64 val)
 {
     std::ostringstream value_buffer;
 
-	value_buffer << val.value;
-	store_value(value_buffer.str());
+    value_buffer << val.value;
+    store_value(value_buffer.str());
 }
 
 void YLeaf::set(uint8 val)
@@ -296,15 +298,15 @@ void YLeaf::set(Decimal64 val)
 
 void YLeaf::store_value(std::string && val)
 {
-	is_set=true;
-	if(type == YType::boolean)
-	{
-		value = get_bool_string(val);
-	}
-	else
-	{
-		value = val;
-	}
+    is_set=true;
+    if(type == YType::boolean)
+    {
+        value = get_bool_string(val);
+    }
+    else
+    {
+        value = val;
+    }
 }
 
 YLeaf::operator std::string() const
@@ -341,7 +343,7 @@ std::string YLeaf::get_bits_string() const
 
     value = value.substr(0, value.size()-1);
 
-	return (value);
+    return (value);
 }
 
 std::ostream& operator<< (std::ostream& stream, const YLeaf& value)

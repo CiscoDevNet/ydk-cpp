@@ -7,26 +7,26 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_DYNAMIC_TEMPLATE_TC_MIB {
 
-class DynamictemplatetargettypeEnum : public Enum
+class Dynamictemplatetype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf derived;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf ipSubscriber;
+        static const ydk::Enum::YLeaf service;
 
 };
 
-class DynamictemplatetypeEnum : public Enum
+class Dynamictemplatetargettype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf derived;
-        static const Enum::YLeaf ppp;
-        static const Enum::YLeaf ethernet;
-        static const Enum::YLeaf ipSubscriber;
-        static const Enum::YLeaf service;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf interface;
 
 };
 

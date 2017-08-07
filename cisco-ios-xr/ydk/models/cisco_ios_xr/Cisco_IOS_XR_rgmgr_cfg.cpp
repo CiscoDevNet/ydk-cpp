@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_rgmgr_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_rgmgr_cfg {
 
 RedundancyGroupManager::RedundancyGroupManager()
@@ -36,8 +38,8 @@ bool RedundancyGroupManager::has_data() const
 
 bool RedundancyGroupManager::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (aps !=  nullptr && aps->has_operation())
 	|| (iccp !=  nullptr && iccp->has_operation());
 }
@@ -62,7 +64,7 @@ const EntityPath RedundancyGroupManager::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -109,11 +111,21 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::get_child
     return children;
 }
 
-void RedundancyGroupManager::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void RedundancyGroupManager::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
     }
 }
 
@@ -135,6 +147,18 @@ std::string RedundancyGroupManager::get_bundle_name() const
 augment_capabilities_function RedundancyGroupManager::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> RedundancyGroupManager::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RedundancyGroupManager::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aps" || name == "iccp" || name == "enable")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Aps::Aps()
@@ -161,7 +185,7 @@ bool RedundancyGroupManager::Aps::has_data() const
 
 bool RedundancyGroupManager::Aps::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_redundancy_group !=  nullptr && default_redundancy_group->has_operation())
 	|| (groups !=  nullptr && groups->has_operation());
 }
@@ -235,8 +259,19 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::get_
     return children;
 }
 
-void RedundancyGroupManager::Aps::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Aps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RedundancyGroupManager::Aps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RedundancyGroupManager::Aps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-redundancy-group" || name == "groups")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Aps::DefaultRedundancyGroup::DefaultRedundancyGroup()
@@ -259,9 +294,9 @@ bool RedundancyGroupManager::Aps::DefaultRedundancyGroup::has_data() const
 
 bool RedundancyGroupManager::Aps::DefaultRedundancyGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(backup_interface_name.operation)
-	|| is_set(next_hop_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(backup_interface_name.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter);
 }
 
 std::string RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_segment_path() const
@@ -287,8 +322,8 @@ const EntityPath RedundancyGroupManager::Aps::DefaultRedundancyGroup::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (backup_interface_name.is_set || is_set(backup_interface_name.operation)) leaf_name_data.push_back(backup_interface_name.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (backup_interface_name.is_set || is_set(backup_interface_name.yfilter)) leaf_name_data.push_back(backup_interface_name.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -307,16 +342,39 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Defa
     return children;
 }
 
-void RedundancyGroupManager::Aps::DefaultRedundancyGroup::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Aps::DefaultRedundancyGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backup-interface-name")
     {
         backup_interface_name = value;
+        backup_interface_name.value_namespace = name_space;
+        backup_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RedundancyGroupManager::Aps::DefaultRedundancyGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backup-interface-name")
+    {
+        backup_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Aps::DefaultRedundancyGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-interface-name" || name == "next-hop-address")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Aps::Groups::Groups()
@@ -345,7 +403,7 @@ bool RedundancyGroupManager::Aps::Groups::has_operation() const
         if(group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RedundancyGroupManager::Aps::Groups::get_segment_path() const
@@ -410,8 +468,19 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Grou
     return children;
 }
 
-void RedundancyGroupManager::Aps::Groups::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Aps::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RedundancyGroupManager::Aps::Groups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RedundancyGroupManager::Aps::Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Aps::Groups::Group::Group()
@@ -437,8 +506,8 @@ bool RedundancyGroupManager::Aps::Groups::Group::has_data() const
 
 bool RedundancyGroupManager::Aps::Groups::Group::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(group_id.yfilter)
 	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
@@ -465,7 +534,7 @@ const EntityPath RedundancyGroupManager::Aps::Groups::Group::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -498,12 +567,29 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Grou
     return children;
 }
 
-void RedundancyGroupManager::Aps::Groups::Group::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Aps::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-id")
     {
         group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RedundancyGroupManager::Aps::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Aps::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "controllers" || name == "group-id")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Aps::Groups::Group::Controllers::Controllers()
@@ -532,7 +618,7 @@ bool RedundancyGroupManager::Aps::Groups::Group::Controllers::has_operation() co
         if(controller[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RedundancyGroupManager::Aps::Groups::Group::Controllers::get_segment_path() const
@@ -597,8 +683,19 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Grou
     return children;
 }
 
-void RedundancyGroupManager::Aps::Groups::Group::Controllers::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Aps::Groups::Group::Controllers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RedundancyGroupManager::Aps::Groups::Group::Controllers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RedundancyGroupManager::Aps::Groups::Group::Controllers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "controller")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::Controller()
@@ -623,10 +720,10 @@ bool RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::has_da
 
 bool RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(controller_name.operation)
-	|| is_set(backup_interface_name.operation)
-	|| is_set(next_hop_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(controller_name.yfilter)
+	|| ydk::is_set(backup_interface_name.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter);
 }
 
 std::string RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::get_segment_path() const
@@ -652,9 +749,9 @@ const EntityPath RedundancyGroupManager::Aps::Groups::Group::Controllers::Contro
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (controller_name.is_set || is_set(controller_name.operation)) leaf_name_data.push_back(controller_name.get_name_leafdata());
-    if (backup_interface_name.is_set || is_set(backup_interface_name.operation)) leaf_name_data.push_back(backup_interface_name.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (controller_name.is_set || is_set(controller_name.yfilter)) leaf_name_data.push_back(controller_name.get_name_leafdata());
+    if (backup_interface_name.is_set || is_set(backup_interface_name.yfilter)) leaf_name_data.push_back(backup_interface_name.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -673,20 +770,49 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Aps::Grou
     return children;
 }
 
-void RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "controller-name")
     {
         controller_name = value;
+        controller_name.value_namespace = name_space;
+        controller_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-interface-name")
     {
         backup_interface_name = value;
+        backup_interface_name.value_namespace = name_space;
+        backup_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "controller-name")
+    {
+        controller_name.yfilter = yfilter;
+    }
+    if(value_path == "backup-interface-name")
+    {
+        backup_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Aps::Groups::Group::Controllers::Controller::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "controller-name" || name == "backup-interface-name" || name == "next-hop-address")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::Iccp()
@@ -709,7 +835,7 @@ bool RedundancyGroupManager::Iccp::has_data() const
 
 bool RedundancyGroupManager::Iccp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (iccp_groups !=  nullptr && iccp_groups->has_operation());
 }
 
@@ -768,8 +894,19 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::get
     return children;
 }
 
-void RedundancyGroupManager::Iccp::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RedundancyGroupManager::Iccp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RedundancyGroupManager::Iccp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "iccp-groups")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroups()
@@ -798,7 +935,7 @@ bool RedundancyGroupManager::Iccp::IccpGroups::has_operation() const
         if(iccp_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::get_segment_path() const
@@ -863,8 +1000,19 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     return children;
 }
 
-void RedundancyGroupManager::Iccp::IccpGroups::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::IccpGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "iccp-group")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::IccpGroup()
@@ -906,10 +1054,10 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_data() const
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_number.operation)
-	|| is_set(isolation_recovery_delay.operation)
-	|| is_set(mode.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(group_number.yfilter)
+	|| ydk::is_set(isolation_recovery_delay.yfilter)
+	|| ydk::is_set(mode.yfilter)
 	|| (backbones !=  nullptr && backbones->has_operation())
 	|| (members !=  nullptr && members->has_operation())
 	|| (mlacp !=  nullptr && mlacp->has_operation())
@@ -939,9 +1087,9 @@ const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_number.is_set || is_set(group_number.operation)) leaf_name_data.push_back(group_number.get_name_leafdata());
-    if (isolation_recovery_delay.is_set || is_set(isolation_recovery_delay.operation)) leaf_name_data.push_back(isolation_recovery_delay.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
+    if (isolation_recovery_delay.is_set || is_set(isolation_recovery_delay.yfilter)) leaf_name_data.push_back(isolation_recovery_delay.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1016,20 +1164,49 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     return children;
 }
 
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-number")
     {
         group_number = value;
+        group_number.value_namespace = name_space;
+        group_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "isolation-recovery-delay")
     {
         isolation_recovery_delay = value;
+        isolation_recovery_delay.value_namespace = name_space;
+        isolation_recovery_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-number")
+    {
+        group_number.yfilter = yfilter;
+    }
+    if(value_path == "isolation-recovery-delay")
+    {
+        isolation_recovery_delay.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backbones" || name == "members" || name == "mlacp" || name == "nv-satellite" || name == "group-number" || name == "isolation-recovery-delay" || name == "mode")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbones()
@@ -1058,7 +1235,7 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::has_operati
         if(backbone[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::get_segment_path() const
@@ -1123,8 +1300,19 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     return children;
 }
 
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backbone")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::Backbone()
@@ -1145,8 +1333,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::h
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(backbone_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(backbone_name.yfilter);
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::get_segment_path() const
@@ -1172,7 +1360,7 @@ const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (backbone_name.is_set || is_set(backbone_name.operation)) leaf_name_data.push_back(backbone_name.get_name_leafdata());
+    if (backbone_name.is_set || is_set(backbone_name.yfilter)) leaf_name_data.push_back(backbone_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1191,12 +1379,29 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     return children;
 }
 
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backbone-name")
     {
         backbone_name = value;
+        backbone_name.value_namespace = name_space;
+        backbone_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backbone-name")
+    {
+        backbone_name.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones::Backbone::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backbone-name")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Members()
@@ -1225,7 +1430,7 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::has_operation
         if(member[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::get_segment_path() const
@@ -1290,8 +1495,19 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     return children;
 }
 
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::Member()
@@ -1312,8 +1528,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::has_d
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(neighbor_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_address.yfilter);
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::get_segment_path() const
@@ -1339,7 +1555,7 @@ const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::M
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1358,12 +1574,29 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     return children;
 }
 
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members::Member::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-address")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::Mlacp()
@@ -1390,11 +1623,11 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::has_data() cons
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(connect_timeout.operation)
-	|| is_set(node.operation)
-	|| is_set(system_mac.operation)
-	|| is_set(system_priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(connect_timeout.yfilter)
+	|| ydk::is_set(node.yfilter)
+	|| ydk::is_set(system_mac.yfilter)
+	|| ydk::is_set(system_priority.yfilter);
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get_segment_path() const
@@ -1420,10 +1653,10 @@ const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (connect_timeout.is_set || is_set(connect_timeout.operation)) leaf_name_data.push_back(connect_timeout.get_name_leafdata());
-    if (node.is_set || is_set(node.operation)) leaf_name_data.push_back(node.get_name_leafdata());
-    if (system_mac.is_set || is_set(system_mac.operation)) leaf_name_data.push_back(system_mac.get_name_leafdata());
-    if (system_priority.is_set || is_set(system_priority.operation)) leaf_name_data.push_back(system_priority.get_name_leafdata());
+    if (connect_timeout.is_set || is_set(connect_timeout.yfilter)) leaf_name_data.push_back(connect_timeout.get_name_leafdata());
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
+    if (system_priority.is_set || is_set(system_priority.yfilter)) leaf_name_data.push_back(system_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1442,24 +1675,59 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     return children;
 }
 
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "connect-timeout")
     {
         connect_timeout = value;
+        connect_timeout.value_namespace = name_space;
+        connect_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node")
     {
         node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-mac")
     {
         system_mac = value;
+        system_mac.value_namespace = name_space;
+        system_mac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-priority")
     {
         system_priority = value;
+        system_priority.value_namespace = name_space;
+        system_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "connect-timeout")
+    {
+        connect_timeout.yfilter = yfilter;
+    }
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+    if(value_path == "system-mac")
+    {
+        system_mac.yfilter = yfilter;
+    }
+    if(value_path == "system-priority")
+    {
+        system_priority.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Mlacp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connect-timeout" || name == "node" || name == "system-mac" || name == "system-priority")
+        return true;
+    return false;
 }
 
 RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::NvSatellite()
@@ -1480,8 +1748,8 @@ bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_data(
 
 bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_mac.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(system_mac.yfilter);
 }
 
 std::string RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::get_segment_path() const
@@ -1507,7 +1775,7 @@ const EntityPath RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_mac.is_set || is_set(system_mac.operation)) leaf_name_data.push_back(system_mac.get_name_leafdata());
+    if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1526,15 +1794,32 @@ std::map<std::string, std::shared_ptr<Entity>> RedundancyGroupManager::Iccp::Icc
     return children;
 }
 
-void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_value(const std::string & value_path, std::string value)
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-mac")
     {
         system_mac = value;
+        system_mac.value_namespace = name_space;
+        system_mac.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf IccpModeEnum::singleton {1, "singleton"};
+void RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-mac")
+    {
+        system_mac.yfilter = yfilter;
+    }
+}
+
+bool RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf IccpMode::singleton {1, "singleton"};
 
 
 }

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv6_io_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_io_cfg {
 
 Ipv6Configuration::Ipv6Configuration()
@@ -40,11 +42,11 @@ bool Ipv6Configuration::has_data() const
 
 bool Ipv6Configuration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_hop_limit.operation)
-	|| is_set(ipv6_pmtu_enable.operation)
-	|| is_set(ipv6_pmtu_time_out.operation)
-	|| is_set(ipv6_source_route.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_hop_limit.yfilter)
+	|| ydk::is_set(ipv6_pmtu_enable.yfilter)
+	|| ydk::is_set(ipv6_pmtu_time_out.yfilter)
+	|| ydk::is_set(ipv6_source_route.yfilter)
 	|| (ipv6_assembler !=  nullptr && ipv6_assembler->has_operation())
 	|| (ipv6icmp !=  nullptr && ipv6icmp->has_operation());
 }
@@ -69,10 +71,10 @@ const EntityPath Ipv6Configuration::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_hop_limit.is_set || is_set(ipv6_hop_limit.operation)) leaf_name_data.push_back(ipv6_hop_limit.get_name_leafdata());
-    if (ipv6_pmtu_enable.is_set || is_set(ipv6_pmtu_enable.operation)) leaf_name_data.push_back(ipv6_pmtu_enable.get_name_leafdata());
-    if (ipv6_pmtu_time_out.is_set || is_set(ipv6_pmtu_time_out.operation)) leaf_name_data.push_back(ipv6_pmtu_time_out.get_name_leafdata());
-    if (ipv6_source_route.is_set || is_set(ipv6_source_route.operation)) leaf_name_data.push_back(ipv6_source_route.get_name_leafdata());
+    if (ipv6_hop_limit.is_set || is_set(ipv6_hop_limit.yfilter)) leaf_name_data.push_back(ipv6_hop_limit.get_name_leafdata());
+    if (ipv6_pmtu_enable.is_set || is_set(ipv6_pmtu_enable.yfilter)) leaf_name_data.push_back(ipv6_pmtu_enable.get_name_leafdata());
+    if (ipv6_pmtu_time_out.is_set || is_set(ipv6_pmtu_time_out.yfilter)) leaf_name_data.push_back(ipv6_pmtu_time_out.get_name_leafdata());
+    if (ipv6_source_route.is_set || is_set(ipv6_source_route.yfilter)) leaf_name_data.push_back(ipv6_source_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -119,23 +121,51 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::get_children()
     return children;
 }
 
-void Ipv6Configuration::set_value(const std::string & value_path, std::string value)
+void Ipv6Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-hop-limit")
     {
         ipv6_hop_limit = value;
+        ipv6_hop_limit.value_namespace = name_space;
+        ipv6_hop_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-pmtu-enable")
     {
         ipv6_pmtu_enable = value;
+        ipv6_pmtu_enable.value_namespace = name_space;
+        ipv6_pmtu_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-pmtu-time-out")
     {
         ipv6_pmtu_time_out = value;
+        ipv6_pmtu_time_out.value_namespace = name_space;
+        ipv6_pmtu_time_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-source-route")
     {
         ipv6_source_route = value;
+        ipv6_source_route.value_namespace = name_space;
+        ipv6_source_route.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Configuration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-hop-limit")
+    {
+        ipv6_hop_limit.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-pmtu-enable")
+    {
+        ipv6_pmtu_enable.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-pmtu-time-out")
+    {
+        ipv6_pmtu_time_out.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-source-route")
+    {
+        ipv6_source_route.yfilter = yfilter;
     }
 }
 
@@ -159,6 +189,18 @@ augment_capabilities_function Ipv6Configuration::get_augment_capabilities_functi
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Ipv6Configuration::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ipv6Configuration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-assembler" || name == "ipv6icmp" || name == "ipv6-hop-limit" || name == "ipv6-pmtu-enable" || name == "ipv6-pmtu-time-out" || name == "ipv6-source-route")
+        return true;
+    return false;
+}
+
 Ipv6Configuration::Ipv6Assembler::Ipv6Assembler()
     :
     max_packets{YType::uint32, "max-packets"},
@@ -179,9 +221,9 @@ bool Ipv6Configuration::Ipv6Assembler::has_data() const
 
 bool Ipv6Configuration::Ipv6Assembler::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_packets.operation)
-	|| is_set(timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_packets.yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string Ipv6Configuration::Ipv6Assembler::get_segment_path() const
@@ -207,8 +249,8 @@ const EntityPath Ipv6Configuration::Ipv6Assembler::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_packets.is_set || is_set(max_packets.operation)) leaf_name_data.push_back(max_packets.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (max_packets.is_set || is_set(max_packets.yfilter)) leaf_name_data.push_back(max_packets.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -227,16 +269,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::Ipv6Assembler:
     return children;
 }
 
-void Ipv6Configuration::Ipv6Assembler::set_value(const std::string & value_path, std::string value)
+void Ipv6Configuration::Ipv6Assembler::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-packets")
     {
         max_packets = value;
+        max_packets.value_namespace = name_space;
+        max_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Configuration::Ipv6Assembler::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-packets")
+    {
+        max_packets.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Configuration::Ipv6Assembler::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-packets" || name == "timeout")
+        return true;
+    return false;
 }
 
 Ipv6Configuration::Ipv6Icmp::Ipv6Icmp()
@@ -259,9 +324,9 @@ bool Ipv6Configuration::Ipv6Icmp::has_data() const
 
 bool Ipv6Configuration::Ipv6Icmp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bucket_size.operation)
-	|| is_set(error_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bucket_size.yfilter)
+	|| ydk::is_set(error_interval.yfilter);
 }
 
 std::string Ipv6Configuration::Ipv6Icmp::get_segment_path() const
@@ -287,8 +352,8 @@ const EntityPath Ipv6Configuration::Ipv6Icmp::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bucket_size.is_set || is_set(bucket_size.operation)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
-    if (error_interval.is_set || is_set(error_interval.operation)) leaf_name_data.push_back(error_interval.get_name_leafdata());
+    if (bucket_size.is_set || is_set(bucket_size.yfilter)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
+    if (error_interval.is_set || is_set(error_interval.yfilter)) leaf_name_data.push_back(error_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -307,16 +372,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::Ipv6Icmp::get_
     return children;
 }
 
-void Ipv6Configuration::Ipv6Icmp::set_value(const std::string & value_path, std::string value)
+void Ipv6Configuration::Ipv6Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bucket-size")
     {
         bucket_size = value;
+        bucket_size.value_namespace = name_space;
+        bucket_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error-interval")
     {
         error_interval = value;
+        error_interval.value_namespace = name_space;
+        error_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Configuration::Ipv6Icmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bucket-size")
+    {
+        bucket_size.yfilter = yfilter;
+    }
+    if(value_path == "error-interval")
+    {
+        error_interval.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Configuration::Ipv6Icmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bucket-size" || name == "error-interval")
+        return true;
+    return false;
 }
 
 

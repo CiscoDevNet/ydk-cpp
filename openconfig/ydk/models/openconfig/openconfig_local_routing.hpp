@@ -7,19 +7,19 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_local_routing {
 
-class Local_Defined_Next_HopIdentity : public virtual Identity
+class Local_Defined_Next_Hop : public virtual ydk::Identity
 {
     public:
-        Local_Defined_Next_HopIdentity();
-        ~Local_Defined_Next_HopIdentity();
+        Local_Defined_Next_Hop();
+        ~Local_Defined_Next_Hop();
 
 
-}; // Local_Defined_Next_HopIdentity
+}; // Local_Defined_Next_Hop
 
-class LocalRoutes : public Entity
+class LocalRoutes : public ydk::Entity
 {
     public:
         LocalRoutes();
@@ -27,15 +27,18 @@ class LocalRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Config; //type: LocalRoutes::Config
         class State; //type: LocalRoutes::State
@@ -50,7 +53,7 @@ class LocalRoutes : public Entity
 }; // LocalRoutes
 
 
-class LocalRoutes::Config : public Entity
+class LocalRoutes::Config : public ydk::Entity
 {
     public:
         Config();
@@ -58,17 +61,19 @@ class LocalRoutes::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // LocalRoutes::Config
 
 
-class LocalRoutes::State : public Entity
+class LocalRoutes::State : public ydk::Entity
 {
     public:
         State();
@@ -76,17 +81,19 @@ class LocalRoutes::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // LocalRoutes::State
 
 
-class LocalRoutes::StaticRoutes : public Entity
+class LocalRoutes::StaticRoutes : public ydk::Entity
 {
     public:
         StaticRoutes();
@@ -94,11 +101,13 @@ class LocalRoutes::StaticRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Static_; //type: LocalRoutes::StaticRoutes::Static_
 
@@ -107,7 +116,7 @@ class LocalRoutes::StaticRoutes : public Entity
 }; // LocalRoutes::StaticRoutes
 
 
-class LocalRoutes::StaticRoutes::Static_ : public Entity
+class LocalRoutes::StaticRoutes::Static_ : public ydk::Entity
 {
     public:
         Static_();
@@ -115,14 +124,16 @@ class LocalRoutes::StaticRoutes::Static_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: union (refers to openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::Config::prefix)
-        YLeaf prefix;
+        ydk::YLeaf prefix;
         class Config; //type: LocalRoutes::StaticRoutes::Static_::Config
         class State; //type: LocalRoutes::StaticRoutes::Static_::State
         class NextHops; //type: LocalRoutes::StaticRoutes::Static_::NextHops
@@ -134,7 +145,7 @@ class LocalRoutes::StaticRoutes::Static_ : public Entity
 }; // LocalRoutes::StaticRoutes::Static_
 
 
-class LocalRoutes::StaticRoutes::Static_::Config : public Entity
+class LocalRoutes::StaticRoutes::Static_::Config : public ydk::Entity
 {
     public:
         Config();
@@ -142,19 +153,21 @@ class LocalRoutes::StaticRoutes::Static_::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf set_tag; //type: one of uint32, string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf set_tag; //type: one of uint32, string
 
 }; // LocalRoutes::StaticRoutes::Static_::Config
 
 
-class LocalRoutes::StaticRoutes::Static_::State : public Entity
+class LocalRoutes::StaticRoutes::Static_::State : public ydk::Entity
 {
     public:
         State();
@@ -162,19 +175,21 @@ class LocalRoutes::StaticRoutes::Static_::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf set_tag; //type: one of uint32, string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf set_tag; //type: one of uint32, string
 
 }; // LocalRoutes::StaticRoutes::Static_::State
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops : public Entity
+class LocalRoutes::StaticRoutes::Static_::NextHops : public ydk::Entity
 {
     public:
         NextHops();
@@ -182,11 +197,13 @@ class LocalRoutes::StaticRoutes::Static_::NextHops : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class NextHop; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop
 
@@ -195,7 +212,7 @@ class LocalRoutes::StaticRoutes::Static_::NextHops : public Entity
 }; // LocalRoutes::StaticRoutes::Static_::NextHops
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop : public Entity
+class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -203,14 +220,16 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to openconfig_local_routing::LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config::index_)
-        YLeaf index_;
+        ydk::YLeaf index_;
         class Config; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config
         class State; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State
         class InterfaceRef; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef
@@ -222,7 +241,7 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop : public Entity
 }; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config : public Entity
+class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config : public ydk::Entity
 {
     public:
         Config();
@@ -230,21 +249,23 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf index_; //type: string
-        YLeaf next_hop; //type: one of union, identityref
-        YLeaf metric; //type: uint32
-        YLeaf recurse; //type: boolean
+        ydk::YLeaf index_; //type: string
+        ydk::YLeaf next_hop; //type: one of union, identityref
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf recurse; //type: boolean
 
 }; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::Config
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State : public Entity
+class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State : public ydk::Entity
 {
     public:
         State();
@@ -252,21 +273,23 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf index_; //type: string
-        YLeaf next_hop; //type: one of union, identityref
-        YLeaf metric; //type: uint32
-        YLeaf recurse; //type: boolean
+        ydk::YLeaf index_; //type: string
+        ydk::YLeaf next_hop; //type: one of union, identityref
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf recurse; //type: boolean
 
 }; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::State
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef : public Entity
+class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef : public ydk::Entity
 {
     public:
         InterfaceRef();
@@ -274,11 +297,13 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config
         class State; //type: LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State
@@ -289,7 +314,7 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef : publ
 }; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config : public Entity
+class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config : public ydk::Entity
 {
     public:
         Config();
@@ -297,21 +322,23 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Confi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-        YLeaf interface;
+        ydk::YLeaf interface;
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-        YLeaf subinterface;
+        ydk::YLeaf subinterface;
 
 }; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::Config
 
 
-class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State : public Entity
+class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State : public ydk::Entity
 {
     public:
         State();
@@ -319,21 +346,23 @@ class LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-        YLeaf interface;
+        ydk::YLeaf interface;
         //type: leafref (refers to openconfig_interfaces::Interfaces::Interface::Subinterfaces::Subinterface::index_)
-        YLeaf subinterface;
+        ydk::YLeaf subinterface;
 
 }; // LocalRoutes::StaticRoutes::Static_::NextHops::NextHop::InterfaceRef::State
 
 
-class LocalRoutes::LocalAggregates : public Entity
+class LocalRoutes::LocalAggregates : public ydk::Entity
 {
     public:
         LocalAggregates();
@@ -341,11 +370,13 @@ class LocalRoutes::LocalAggregates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Aggregate; //type: LocalRoutes::LocalAggregates::Aggregate
 
@@ -354,7 +385,7 @@ class LocalRoutes::LocalAggregates : public Entity
 }; // LocalRoutes::LocalAggregates
 
 
-class LocalRoutes::LocalAggregates::Aggregate : public Entity
+class LocalRoutes::LocalAggregates::Aggregate : public ydk::Entity
 {
     public:
         Aggregate();
@@ -362,14 +393,16 @@ class LocalRoutes::LocalAggregates::Aggregate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: union (refers to openconfig_local_routing::LocalRoutes::LocalAggregates::Aggregate::Config::prefix)
-        YLeaf prefix;
+        ydk::YLeaf prefix;
         class Config; //type: LocalRoutes::LocalAggregates::Aggregate::Config
         class State; //type: LocalRoutes::LocalAggregates::Aggregate::State
 
@@ -379,7 +412,7 @@ class LocalRoutes::LocalAggregates::Aggregate : public Entity
 }; // LocalRoutes::LocalAggregates::Aggregate
 
 
-class LocalRoutes::LocalAggregates::Aggregate::Config : public Entity
+class LocalRoutes::LocalAggregates::Aggregate::Config : public ydk::Entity
 {
     public:
         Config();
@@ -387,20 +420,22 @@ class LocalRoutes::LocalAggregates::Aggregate::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf discard; //type: boolean
-        YLeaf set_tag; //type: one of uint32, string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf discard; //type: boolean
+        ydk::YLeaf set_tag; //type: one of uint32, string
 
 }; // LocalRoutes::LocalAggregates::Aggregate::Config
 
 
-class LocalRoutes::LocalAggregates::Aggregate::State : public Entity
+class LocalRoutes::LocalAggregates::Aggregate::State : public ydk::Entity
 {
     public:
         State();
@@ -408,35 +443,37 @@ class LocalRoutes::LocalAggregates::Aggregate::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf discard; //type: boolean
-        YLeaf set_tag; //type: one of uint32, string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf discard; //type: boolean
+        ydk::YLeaf set_tag; //type: one of uint32, string
 
 }; // LocalRoutes::LocalAggregates::Aggregate::State
 
-class DropIdentity : public openconfig_local_routing::Local_Defined_Next_HopIdentity, virtual Identity
+class Local_Link : public openconfig_local_routing::Local_Defined_Next_Hop, virtual ydk::Identity
 {
     public:
-        DropIdentity();
-        ~DropIdentity();
+        Local_Link();
+        ~Local_Link();
 
 
-}; // DropIdentity
+}; // Local_Link
 
-class Local_LinkIdentity : public openconfig_local_routing::Local_Defined_Next_HopIdentity, virtual Identity
+class Drop : public openconfig_local_routing::Local_Defined_Next_Hop, virtual ydk::Identity
 {
     public:
-        Local_LinkIdentity();
-        ~Local_LinkIdentity();
+        Drop();
+        ~Drop();
 
 
-}; // Local_LinkIdentity
+}; // Drop
 
 
 }

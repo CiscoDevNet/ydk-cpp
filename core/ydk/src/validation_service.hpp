@@ -47,7 +47,7 @@ class ValidationService {
     ///
     /// @brief Options for validation.
     ///
-    /// All validation is performed in the context of some operation.
+    /// All validation is performed in the context of some yfilter.
     /// These options capture the context of use.
     ///
     enum class Option {

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv6_ospfv3_oper_4.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ospfv3_oper {
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaSummaryInfo()
@@ -58,19 +60,19 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_sham_link.operation)
-	|| is_set(is_virtual_link.operation)
-	|| is_set(links.operation)
-	|| is_set(lsa_router_id.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(reference_lsa_id.operation)
-	|| is_set(reference_type.operation)
-	|| is_set(router_la_bits.operation)
-	|| is_set(sham_link_id.operation)
-	|| is_set(virtual_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_sham_link.yfilter)
+	|| ydk::is_set(is_virtual_link.yfilter)
+	|| ydk::is_set(links.yfilter)
+	|| ydk::is_set(lsa_router_id.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(reference_lsa_id.yfilter)
+	|| ydk::is_set(reference_type.yfilter)
+	|| ydk::is_set(router_la_bits.yfilter)
+	|| ydk::is_set(sham_link_id.yfilter)
+	|| ydk::is_set(virtual_link_id.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -98,18 +100,18 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_sham_link.is_set || is_set(is_sham_link.operation)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
-    if (is_virtual_link.is_set || is_set(is_virtual_link.operation)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
-    if (links.is_set || is_set(links.operation)) leaf_name_data.push_back(links.get_name_leafdata());
-    if (lsa_router_id.is_set || is_set(lsa_router_id.operation)) leaf_name_data.push_back(lsa_router_id.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (reference_lsa_id.is_set || is_set(reference_lsa_id.operation)) leaf_name_data.push_back(reference_lsa_id.get_name_leafdata());
-    if (reference_type.is_set || is_set(reference_type.operation)) leaf_name_data.push_back(reference_type.get_name_leafdata());
-    if (router_la_bits.is_set || is_set(router_la_bits.operation)) leaf_name_data.push_back(router_la_bits.get_name_leafdata());
-    if (sham_link_id.is_set || is_set(sham_link_id.operation)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
-    if (virtual_link_id.is_set || is_set(virtual_link_id.operation)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_sham_link.is_set || is_set(is_sham_link.yfilter)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
+    if (is_virtual_link.is_set || is_set(is_virtual_link.yfilter)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
+    if (links.is_set || is_set(links.yfilter)) leaf_name_data.push_back(links.get_name_leafdata());
+    if (lsa_router_id.is_set || is_set(lsa_router_id.yfilter)) leaf_name_data.push_back(lsa_router_id.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (reference_lsa_id.is_set || is_set(reference_lsa_id.yfilter)) leaf_name_data.push_back(reference_lsa_id.get_name_leafdata());
+    if (reference_type.is_set || is_set(reference_type.yfilter)) leaf_name_data.push_back(reference_type.get_name_leafdata());
+    if (router_la_bits.is_set || is_set(router_la_bits.yfilter)) leaf_name_data.push_back(router_la_bits.get_name_leafdata());
+    if (sham_link_id.is_set || is_set(sham_link_id.yfilter)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
+    if (virtual_link_id.is_set || is_set(virtual_link_id.yfilter)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -156,56 +158,139 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sham-link")
     {
         is_sham_link = value;
+        is_sham_link.value_namespace = name_space;
+        is_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-virtual-link")
     {
         is_virtual_link = value;
+        is_virtual_link.value_namespace = name_space;
+        is_virtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "links")
     {
         links = value;
+        links.value_namespace = name_space;
+        links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-router-id")
     {
         lsa_router_id = value;
+        lsa_router_id.value_namespace = name_space;
+        lsa_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reference-lsa-id")
     {
         reference_lsa_id = value;
+        reference_lsa_id.value_namespace = name_space;
+        reference_lsa_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reference-type")
     {
         reference_type = value;
+        reference_type.value_namespace = name_space;
+        reference_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-la-bits")
     {
         router_la_bits = value;
+        router_la_bits.value_namespace = name_space;
+        router_la_bits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sham-link-id")
     {
         sham_link_id = value;
+        sham_link_id.value_namespace = name_space;
+        sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-link-id")
     {
         virtual_link_id = value;
+        virtual_link_id.value_namespace = name_space;
+        virtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "links")
+    {
+        links.yfilter = yfilter;
+    }
+    if(value_path == "lsa-router-id")
+    {
+        lsa_router_id.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "reference-lsa-id")
+    {
+        reference_lsa_id.yfilter = yfilter;
+    }
+    if(value_path == "reference-type")
+    {
+        reference_type.yfilter = yfilter;
+    }
+    if(value_path == "router-la-bits")
+    {
+        router_la_bits.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "interface-name" || name == "is-sham-link" || name == "is-virtual-link" || name == "links" || name == "lsa-router-id" || name == "prefix" || name == "prefix-length" || name == "reference-lsa-id" || name == "reference-type" || name == "router-la-bits" || name == "sham-link-id" || name == "virtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::LsaHeader()
@@ -242,16 +327,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::get_segment_path() const
@@ -277,15 +362,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -304,44 +389,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::LsaDetail()
@@ -398,26 +548,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::get_segment_path() const
@@ -443,25 +593,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -480,84 +630,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RouterLsaType()
@@ -601,8 +876,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
         if(link[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(router_la_bits.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(router_la_bits.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation())
 	|| (rpf_path !=  nullptr && rpf_path->has_operation());
@@ -631,7 +906,7 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_la_bits.is_set || is_set(router_la_bits.operation)) leaf_name_data.push_back(router_la_bits.get_name_leafdata());
+    if (router_la_bits.is_set || is_set(router_la_bits.yfilter)) leaf_name_data.push_back(router_la_bits.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -713,12 +988,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "router-la-bits")
     {
         router_la_bits = value;
+        router_la_bits.value_namespace = name_space;
+        router_la_bits.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "router-la-bits")
+    {
+        router_la_bits.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link" || name == "lsa-detail" || name == "lsa-header" || name == "rpf-path" || name == "router-la-bits")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::LsaHeader()
@@ -755,16 +1047,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::get_segment_path() const
@@ -790,15 +1082,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -817,44 +1109,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::LsaDetail()
@@ -911,26 +1268,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::get_segment_path() const
@@ -956,25 +1313,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -993,84 +1350,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::RpfPath()
@@ -1093,9 +1575,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(rpf_multicast_next_hop.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(rpf_multicast_next_hop.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::get_segment_path() const
@@ -1121,8 +1603,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (rpf_multicast_next_hop.is_set || is_set(rpf_multicast_next_hop.operation)) leaf_name_data.push_back(rpf_multicast_next_hop.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (rpf_multicast_next_hop.is_set || is_set(rpf_multicast_next_hop.yfilter)) leaf_name_data.push_back(rpf_multicast_next_hop.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1141,16 +1623,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf-multicast-next-hop")
     {
         rpf_multicast_next_hop = value;
+        rpf_multicast_next_hop.value_namespace = name_space;
+        rpf_multicast_next_hop.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "rpf-multicast-next-hop")
+    {
+        rpf_multicast_next_hop.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "rpf-multicast-next-hop")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::Link()
@@ -1179,12 +1684,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(link_interface_id.operation)
-	|| is_set(link_metric.operation)
-	|| is_set(link_neighbor_interface_id.operation)
-	|| is_set(link_neighbor_router_id.operation)
-	|| is_set(link_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(link_interface_id.yfilter)
+	|| ydk::is_set(link_metric.yfilter)
+	|| ydk::is_set(link_neighbor_interface_id.yfilter)
+	|| ydk::is_set(link_neighbor_router_id.yfilter)
+	|| ydk::is_set(link_type.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::get_segment_path() const
@@ -1210,11 +1715,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_interface_id.is_set || is_set(link_interface_id.operation)) leaf_name_data.push_back(link_interface_id.get_name_leafdata());
-    if (link_metric.is_set || is_set(link_metric.operation)) leaf_name_data.push_back(link_metric.get_name_leafdata());
-    if (link_neighbor_interface_id.is_set || is_set(link_neighbor_interface_id.operation)) leaf_name_data.push_back(link_neighbor_interface_id.get_name_leafdata());
-    if (link_neighbor_router_id.is_set || is_set(link_neighbor_router_id.operation)) leaf_name_data.push_back(link_neighbor_router_id.get_name_leafdata());
-    if (link_type.is_set || is_set(link_type.operation)) leaf_name_data.push_back(link_type.get_name_leafdata());
+    if (link_interface_id.is_set || is_set(link_interface_id.yfilter)) leaf_name_data.push_back(link_interface_id.get_name_leafdata());
+    if (link_metric.is_set || is_set(link_metric.yfilter)) leaf_name_data.push_back(link_metric.get_name_leafdata());
+    if (link_neighbor_interface_id.is_set || is_set(link_neighbor_interface_id.yfilter)) leaf_name_data.push_back(link_neighbor_interface_id.get_name_leafdata());
+    if (link_neighbor_router_id.is_set || is_set(link_neighbor_router_id.yfilter)) leaf_name_data.push_back(link_neighbor_router_id.get_name_leafdata());
+    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1233,28 +1738,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-interface-id")
     {
         link_interface_id = value;
+        link_interface_id.value_namespace = name_space;
+        link_interface_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-metric")
     {
         link_metric = value;
+        link_metric.value_namespace = name_space;
+        link_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-neighbor-interface-id")
     {
         link_neighbor_interface_id = value;
+        link_neighbor_interface_id.value_namespace = name_space;
+        link_neighbor_interface_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-neighbor-router-id")
     {
         link_neighbor_router_id = value;
+        link_neighbor_router_id.value_namespace = name_space;
+        link_neighbor_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-type")
     {
         link_type = value;
+        link_type.value_namespace = name_space;
+        link_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-interface-id")
+    {
+        link_interface_id.yfilter = yfilter;
+    }
+    if(value_path == "link-metric")
+    {
+        link_metric.yfilter = yfilter;
+    }
+    if(value_path == "link-neighbor-interface-id")
+    {
+        link_neighbor_interface_id.yfilter = yfilter;
+    }
+    if(value_path == "link-neighbor-router-id")
+    {
+        link_neighbor_router_id.yfilter = yfilter;
+    }
+    if(value_path == "link-type")
+    {
+        link_type.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-interface-id" || name == "link-metric" || name == "link-neighbor-interface-id" || name == "link-neighbor-router-id" || name == "link-type")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::NetworkLsaType()
@@ -1290,11 +1836,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 {
     for (auto const & leaf : neighbor_router.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(neighbor_router.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_router.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -1370,12 +1916,27 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "neighbor-router")
     {
         neighbor_router.append(value);
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-router")
+    {
+        neighbor_router.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "neighbor-router")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::LsaHeader()
@@ -1412,16 +1973,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::get_segment_path() const
@@ -1447,15 +2008,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1474,44 +2035,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::LsaDetail()
@@ -1568,26 +2194,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::get_segment_path() const
@@ -1613,25 +2239,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1650,84 +2276,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::InterAreaPrefixLsaType()
@@ -1761,10 +2512,10 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(priority.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(priority.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -1792,9 +2543,9 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1841,20 +2592,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "prefix" || name == "prefix-length" || name == "priority")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::LsaHeader()
@@ -1891,16 +2671,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::get_segment_path() const
@@ -1926,15 +2706,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1953,44 +2733,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::LsaDetail()
@@ -2047,26 +2892,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::get_segment_path() const
@@ -2092,25 +2937,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2129,84 +2974,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::InterAreaRouterLsaType()
@@ -2236,8 +3206,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsa_router_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsa_router_id.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -2265,7 +3235,7 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsa_router_id.is_set || is_set(lsa_router_id.operation)) leaf_name_data.push_back(lsa_router_id.get_name_leafdata());
+    if (lsa_router_id.is_set || is_set(lsa_router_id.yfilter)) leaf_name_data.push_back(lsa_router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2312,12 +3282,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsa-router-id")
     {
         lsa_router_id = value;
+        lsa_router_id.value_namespace = name_space;
+        lsa_router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsa-router-id")
+    {
+        lsa_router_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "lsa-router-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::LsaHeader()
@@ -2354,16 +3341,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::get_segment_path() const
@@ -2389,15 +3376,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2416,44 +3403,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::LsaDetail()
@@ -2510,26 +3562,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::get_segment_path() const
@@ -2555,25 +3607,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2592,84 +3644,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::ExternalLsaType()
@@ -2713,15 +3890,15 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(external_tag.operation)
-	|| is_set(forwarding_address.operation)
-	|| is_set(is_forwarding_address_set.operation)
-	|| is_set(metric_type.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(priority.operation)
-	|| is_set(tos_cost.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(external_tag.yfilter)
+	|| ydk::is_set(forwarding_address.yfilter)
+	|| ydk::is_set(is_forwarding_address_set.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(tos_cost.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -2749,14 +3926,14 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (external_tag.is_set || is_set(external_tag.operation)) leaf_name_data.push_back(external_tag.get_name_leafdata());
-    if (forwarding_address.is_set || is_set(forwarding_address.operation)) leaf_name_data.push_back(forwarding_address.get_name_leafdata());
-    if (is_forwarding_address_set.is_set || is_set(is_forwarding_address_set.operation)) leaf_name_data.push_back(is_forwarding_address_set.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (tos_cost.is_set || is_set(tos_cost.operation)) leaf_name_data.push_back(tos_cost.get_name_leafdata());
+    if (external_tag.is_set || is_set(external_tag.yfilter)) leaf_name_data.push_back(external_tag.get_name_leafdata());
+    if (forwarding_address.is_set || is_set(forwarding_address.yfilter)) leaf_name_data.push_back(forwarding_address.get_name_leafdata());
+    if (is_forwarding_address_set.is_set || is_set(is_forwarding_address_set.yfilter)) leaf_name_data.push_back(is_forwarding_address_set.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (tos_cost.is_set || is_set(tos_cost.yfilter)) leaf_name_data.push_back(tos_cost.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2803,40 +3980,99 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "external-tag")
     {
         external_tag = value;
+        external_tag.value_namespace = name_space;
+        external_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forwarding-address")
     {
         forwarding_address = value;
+        forwarding_address.value_namespace = name_space;
+        forwarding_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-forwarding-address-set")
     {
         is_forwarding_address_set = value;
+        is_forwarding_address_set.value_namespace = name_space;
+        is_forwarding_address_set.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric-type")
     {
         metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos-cost")
     {
         tos_cost = value;
+        tos_cost.value_namespace = name_space;
+        tos_cost.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "external-tag")
+    {
+        external_tag.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-address")
+    {
+        forwarding_address.yfilter = yfilter;
+    }
+    if(value_path == "is-forwarding-address-set")
+    {
+        is_forwarding_address_set.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "tos-cost")
+    {
+        tos_cost.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "external-tag" || name == "forwarding-address" || name == "is-forwarding-address-set" || name == "metric-type" || name == "prefix" || name == "prefix-length" || name == "priority" || name == "tos-cost")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::LsaHeader()
@@ -2873,16 +4109,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::get_segment_path() const
@@ -2908,15 +4144,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2935,44 +4171,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::LsaDetail()
@@ -3029,26 +4330,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::get_segment_path() const
@@ -3074,25 +4375,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3111,84 +4412,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::NssalsaType()
@@ -3232,15 +4658,15 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(external_tag.operation)
-	|| is_set(forwarding_address.operation)
-	|| is_set(is_forwarding_address_set.operation)
-	|| is_set(metric_type.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(priority.operation)
-	|| is_set(tos_cost.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(external_tag.yfilter)
+	|| ydk::is_set(forwarding_address.yfilter)
+	|| ydk::is_set(is_forwarding_address_set.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(tos_cost.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -3268,14 +4694,14 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (external_tag.is_set || is_set(external_tag.operation)) leaf_name_data.push_back(external_tag.get_name_leafdata());
-    if (forwarding_address.is_set || is_set(forwarding_address.operation)) leaf_name_data.push_back(forwarding_address.get_name_leafdata());
-    if (is_forwarding_address_set.is_set || is_set(is_forwarding_address_set.operation)) leaf_name_data.push_back(is_forwarding_address_set.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (tos_cost.is_set || is_set(tos_cost.operation)) leaf_name_data.push_back(tos_cost.get_name_leafdata());
+    if (external_tag.is_set || is_set(external_tag.yfilter)) leaf_name_data.push_back(external_tag.get_name_leafdata());
+    if (forwarding_address.is_set || is_set(forwarding_address.yfilter)) leaf_name_data.push_back(forwarding_address.get_name_leafdata());
+    if (is_forwarding_address_set.is_set || is_set(is_forwarding_address_set.yfilter)) leaf_name_data.push_back(is_forwarding_address_set.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (tos_cost.is_set || is_set(tos_cost.yfilter)) leaf_name_data.push_back(tos_cost.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3322,40 +4748,99 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "external-tag")
     {
         external_tag = value;
+        external_tag.value_namespace = name_space;
+        external_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forwarding-address")
     {
         forwarding_address = value;
+        forwarding_address.value_namespace = name_space;
+        forwarding_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-forwarding-address-set")
     {
         is_forwarding_address_set = value;
+        is_forwarding_address_set.value_namespace = name_space;
+        is_forwarding_address_set.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric-type")
     {
         metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos-cost")
     {
         tos_cost = value;
+        tos_cost.value_namespace = name_space;
+        tos_cost.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "external-tag")
+    {
+        external_tag.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-address")
+    {
+        forwarding_address.yfilter = yfilter;
+    }
+    if(value_path == "is-forwarding-address-set")
+    {
+        is_forwarding_address_set.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "tos-cost")
+    {
+        tos_cost.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "external-tag" || name == "forwarding-address" || name == "is-forwarding-address-set" || name == "metric-type" || name == "prefix" || name == "prefix-length" || name == "priority" || name == "tos-cost")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::LsaHeader()
@@ -3392,16 +4877,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::get_segment_path() const
@@ -3427,15 +4912,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3454,44 +4939,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::LsaDetail()
@@ -3548,26 +5098,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::get_segment_path() const
@@ -3593,25 +5143,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3630,84 +5180,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LinkLsaType()
@@ -3759,14 +5434,14 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
         if(prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_sham_link.operation)
-	|| is_set(is_virtual_link.operation)
-	|| is_set(lsa_link_local.operation)
-	|| is_set(router_priority.operation)
-	|| is_set(sham_link_id.operation)
-	|| is_set(virtual_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_sham_link.yfilter)
+	|| ydk::is_set(is_virtual_link.yfilter)
+	|| ydk::is_set(lsa_link_local.yfilter)
+	|| ydk::is_set(router_priority.yfilter)
+	|| ydk::is_set(sham_link_id.yfilter)
+	|| ydk::is_set(virtual_link_id.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -3794,13 +5469,13 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_sham_link.is_set || is_set(is_sham_link.operation)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
-    if (is_virtual_link.is_set || is_set(is_virtual_link.operation)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
-    if (lsa_link_local.is_set || is_set(lsa_link_local.operation)) leaf_name_data.push_back(lsa_link_local.get_name_leafdata());
-    if (router_priority.is_set || is_set(router_priority.operation)) leaf_name_data.push_back(router_priority.get_name_leafdata());
-    if (sham_link_id.is_set || is_set(sham_link_id.operation)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
-    if (virtual_link_id.is_set || is_set(virtual_link_id.operation)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_sham_link.is_set || is_set(is_sham_link.yfilter)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
+    if (is_virtual_link.is_set || is_set(is_virtual_link.yfilter)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
+    if (lsa_link_local.is_set || is_set(lsa_link_local.yfilter)) leaf_name_data.push_back(lsa_link_local.get_name_leafdata());
+    if (router_priority.is_set || is_set(router_priority.yfilter)) leaf_name_data.push_back(router_priority.get_name_leafdata());
+    if (sham_link_id.is_set || is_set(sham_link_id.yfilter)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
+    if (virtual_link_id.is_set || is_set(virtual_link_id.yfilter)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3868,36 +5543,89 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sham-link")
     {
         is_sham_link = value;
+        is_sham_link.value_namespace = name_space;
+        is_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-virtual-link")
     {
         is_virtual_link = value;
+        is_virtual_link.value_namespace = name_space;
+        is_virtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-link-local")
     {
         lsa_link_local = value;
+        lsa_link_local.value_namespace = name_space;
+        lsa_link_local.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-priority")
     {
         router_priority = value;
+        router_priority.value_namespace = name_space;
+        router_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sham-link-id")
     {
         sham_link_id = value;
+        sham_link_id.value_namespace = name_space;
+        sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-link-id")
     {
         virtual_link_id = value;
+        virtual_link_id.value_namespace = name_space;
+        virtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "lsa-link-local")
+    {
+        lsa_link_local.yfilter = yfilter;
+    }
+    if(value_path == "router-priority")
+    {
+        router_priority.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "prefix" || name == "interface-name" || name == "is-sham-link" || name == "is-virtual-link" || name == "lsa-link-local" || name == "router-priority" || name == "sham-link-id" || name == "virtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::LsaHeader()
@@ -3934,16 +5662,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::get_segment_path() const
@@ -3969,15 +5697,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3996,44 +5724,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::LsaDetail()
@@ -4090,26 +5883,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::get_segment_path() const
@@ -4135,25 +5928,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4172,84 +5965,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::Prefix()
@@ -4278,12 +6196,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ospfv3_prefix_length.operation)
-	|| is_set(ospfv3_prefix_metric.operation)
-	|| is_set(ospfv3_prefix_options.operation)
-	|| is_set(prefix.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ospfv3_prefix_length.yfilter)
+	|| ydk::is_set(ospfv3_prefix_metric.yfilter)
+	|| ydk::is_set(ospfv3_prefix_options.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::get_segment_path() const
@@ -4309,11 +6227,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ospfv3_prefix_length.is_set || is_set(ospfv3_prefix_length.operation)) leaf_name_data.push_back(ospfv3_prefix_length.get_name_leafdata());
-    if (ospfv3_prefix_metric.is_set || is_set(ospfv3_prefix_metric.operation)) leaf_name_data.push_back(ospfv3_prefix_metric.get_name_leafdata());
-    if (ospfv3_prefix_options.is_set || is_set(ospfv3_prefix_options.operation)) leaf_name_data.push_back(ospfv3_prefix_options.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (ospfv3_prefix_length.is_set || is_set(ospfv3_prefix_length.yfilter)) leaf_name_data.push_back(ospfv3_prefix_length.get_name_leafdata());
+    if (ospfv3_prefix_metric.is_set || is_set(ospfv3_prefix_metric.yfilter)) leaf_name_data.push_back(ospfv3_prefix_metric.get_name_leafdata());
+    if (ospfv3_prefix_options.is_set || is_set(ospfv3_prefix_options.yfilter)) leaf_name_data.push_back(ospfv3_prefix_options.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4332,28 +6250,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ospfv3-prefix-length")
     {
         ospfv3_prefix_length = value;
+        ospfv3_prefix_length.value_namespace = name_space;
+        ospfv3_prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospfv3-prefix-metric")
     {
         ospfv3_prefix_metric = value;
+        ospfv3_prefix_metric.value_namespace = name_space;
+        ospfv3_prefix_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospfv3-prefix-options")
     {
         ospfv3_prefix_options = value;
+        ospfv3_prefix_options.value_namespace = name_space;
+        ospfv3_prefix_options.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ospfv3-prefix-length")
+    {
+        ospfv3_prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "ospfv3-prefix-metric")
+    {
+        ospfv3_prefix_metric.yfilter = yfilter;
+    }
+    if(value_path == "ospfv3-prefix-options")
+    {
+        ospfv3_prefix_options.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfv3-prefix-length" || name == "ospfv3-prefix-metric" || name == "ospfv3-prefix-options" || name == "prefix" || name == "priority")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::IntraAreaPrefixLsaType()
@@ -4397,10 +6356,10 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
         if(prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(reference_advertised_router.operation)
-	|| is_set(reference_lsa_id.operation)
-	|| is_set(reference_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(reference_advertised_router.yfilter)
+	|| ydk::is_set(reference_lsa_id.yfilter)
+	|| ydk::is_set(reference_type.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -4428,9 +6387,9 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reference_advertised_router.is_set || is_set(reference_advertised_router.operation)) leaf_name_data.push_back(reference_advertised_router.get_name_leafdata());
-    if (reference_lsa_id.is_set || is_set(reference_lsa_id.operation)) leaf_name_data.push_back(reference_lsa_id.get_name_leafdata());
-    if (reference_type.is_set || is_set(reference_type.operation)) leaf_name_data.push_back(reference_type.get_name_leafdata());
+    if (reference_advertised_router.is_set || is_set(reference_advertised_router.yfilter)) leaf_name_data.push_back(reference_advertised_router.get_name_leafdata());
+    if (reference_lsa_id.is_set || is_set(reference_lsa_id.yfilter)) leaf_name_data.push_back(reference_lsa_id.get_name_leafdata());
+    if (reference_type.is_set || is_set(reference_type.yfilter)) leaf_name_data.push_back(reference_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4498,20 +6457,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reference-advertised-router")
     {
         reference_advertised_router = value;
+        reference_advertised_router.value_namespace = name_space;
+        reference_advertised_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reference-lsa-id")
     {
         reference_lsa_id = value;
+        reference_lsa_id.value_namespace = name_space;
+        reference_lsa_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reference-type")
     {
         reference_type = value;
+        reference_type.value_namespace = name_space;
+        reference_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reference-advertised-router")
+    {
+        reference_advertised_router.yfilter = yfilter;
+    }
+    if(value_path == "reference-lsa-id")
+    {
+        reference_lsa_id.yfilter = yfilter;
+    }
+    if(value_path == "reference-type")
+    {
+        reference_type.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "prefix" || name == "reference-advertised-router" || name == "reference-lsa-id" || name == "reference-type")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::LsaHeader()
@@ -4548,16 +6536,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::get_segment_path() const
@@ -4583,15 +6571,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4610,44 +6598,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::LsaDetail()
@@ -4704,26 +6757,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::get_segment_path() const
@@ -4749,25 +6802,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4786,84 +6839,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::Prefix()
@@ -4892,12 +7070,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ospfv3_prefix_length.operation)
-	|| is_set(ospfv3_prefix_metric.operation)
-	|| is_set(ospfv3_prefix_options.operation)
-	|| is_set(prefix.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ospfv3_prefix_length.yfilter)
+	|| ydk::is_set(ospfv3_prefix_metric.yfilter)
+	|| ydk::is_set(ospfv3_prefix_options.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::get_segment_path() const
@@ -4923,11 +7101,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ospfv3_prefix_length.is_set || is_set(ospfv3_prefix_length.operation)) leaf_name_data.push_back(ospfv3_prefix_length.get_name_leafdata());
-    if (ospfv3_prefix_metric.is_set || is_set(ospfv3_prefix_metric.operation)) leaf_name_data.push_back(ospfv3_prefix_metric.get_name_leafdata());
-    if (ospfv3_prefix_options.is_set || is_set(ospfv3_prefix_options.operation)) leaf_name_data.push_back(ospfv3_prefix_options.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (ospfv3_prefix_length.is_set || is_set(ospfv3_prefix_length.yfilter)) leaf_name_data.push_back(ospfv3_prefix_length.get_name_leafdata());
+    if (ospfv3_prefix_metric.is_set || is_set(ospfv3_prefix_metric.yfilter)) leaf_name_data.push_back(ospfv3_prefix_metric.get_name_leafdata());
+    if (ospfv3_prefix_options.is_set || is_set(ospfv3_prefix_options.yfilter)) leaf_name_data.push_back(ospfv3_prefix_options.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4946,28 +7124,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ospfv3-prefix-length")
     {
         ospfv3_prefix_length = value;
+        ospfv3_prefix_length.value_namespace = name_space;
+        ospfv3_prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospfv3-prefix-metric")
     {
         ospfv3_prefix_metric = value;
+        ospfv3_prefix_metric.value_namespace = name_space;
+        ospfv3_prefix_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospfv3-prefix-options")
     {
         ospfv3_prefix_options = value;
+        ospfv3_prefix_options.value_namespace = name_space;
+        ospfv3_prefix_options.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ospfv3-prefix-length")
+    {
+        ospfv3_prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "ospfv3-prefix-metric")
+    {
+        ospfv3_prefix_metric.yfilter = yfilter;
+    }
+    if(value_path == "ospfv3-prefix-options")
+    {
+        ospfv3_prefix_options.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfv3-prefix-length" || name == "ospfv3-prefix-metric" || name == "ospfv3-prefix-options" || name == "prefix" || name == "priority")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::GraceLsa()
@@ -4999,9 +7218,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(grace_period.operation)
-	|| is_set(grace_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(grace_period.yfilter)
+	|| ydk::is_set(grace_reason.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -5029,8 +7248,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (grace_period.is_set || is_set(grace_period.operation)) leaf_name_data.push_back(grace_period.get_name_leafdata());
-    if (grace_reason.is_set || is_set(grace_reason.operation)) leaf_name_data.push_back(grace_reason.get_name_leafdata());
+    if (grace_period.is_set || is_set(grace_period.yfilter)) leaf_name_data.push_back(grace_period.get_name_leafdata());
+    if (grace_reason.is_set || is_set(grace_reason.yfilter)) leaf_name_data.push_back(grace_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5077,16 +7296,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "grace-period")
     {
         grace_period = value;
+        grace_period.value_namespace = name_space;
+        grace_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "grace-reason")
     {
         grace_reason = value;
+        grace_reason.value_namespace = name_space;
+        grace_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "grace-period")
+    {
+        grace_period.yfilter = yfilter;
+    }
+    if(value_path == "grace-reason")
+    {
+        grace_reason.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "grace-period" || name == "grace-reason")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::LsaHeader()
@@ -5123,16 +7365,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::get_segment_path() const
@@ -5158,15 +7400,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5185,44 +7427,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::LsaDetail()
@@ -5279,26 +7586,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::get_segment_path() const
@@ -5324,25 +7631,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5361,84 +7668,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::UnknownLinkLsaType()
@@ -5476,12 +7908,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_sham_link.operation)
-	|| is_set(is_virtual_link.operation)
-	|| is_set(sham_link_id.operation)
-	|| is_set(virtual_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_sham_link.yfilter)
+	|| ydk::is_set(is_virtual_link.yfilter)
+	|| ydk::is_set(sham_link_id.yfilter)
+	|| ydk::is_set(virtual_link_id.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -5509,11 +7941,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_sham_link.is_set || is_set(is_sham_link.operation)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
-    if (is_virtual_link.is_set || is_set(is_virtual_link.operation)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
-    if (sham_link_id.is_set || is_set(sham_link_id.operation)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
-    if (virtual_link_id.is_set || is_set(virtual_link_id.operation)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_sham_link.is_set || is_set(is_sham_link.yfilter)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
+    if (is_virtual_link.is_set || is_set(is_virtual_link.yfilter)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
+    if (sham_link_id.is_set || is_set(sham_link_id.yfilter)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
+    if (virtual_link_id.is_set || is_set(virtual_link_id.yfilter)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5560,28 +7992,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sham-link")
     {
         is_sham_link = value;
+        is_sham_link.value_namespace = name_space;
+        is_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-virtual-link")
     {
         is_virtual_link = value;
+        is_virtual_link.value_namespace = name_space;
+        is_virtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sham-link-id")
     {
         sham_link_id = value;
+        sham_link_id.value_namespace = name_space;
+        sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-link-id")
     {
         virtual_link_id = value;
+        virtual_link_id.value_namespace = name_space;
+        virtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "interface-name" || name == "is-sham-link" || name == "is-virtual-link" || name == "sham-link-id" || name == "virtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::LsaHeader()
@@ -5618,16 +8091,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::get_segment_path() const
@@ -5653,15 +8126,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5680,44 +8153,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::LsaDetail()
@@ -5774,26 +8312,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::get_segment_path() const
@@ -5819,25 +8357,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5856,84 +8394,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::UnknownAreaLsaType()
@@ -5971,12 +8634,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_sham_link.operation)
-	|| is_set(is_virtual_link.operation)
-	|| is_set(sham_link_id.operation)
-	|| is_set(virtual_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_sham_link.yfilter)
+	|| ydk::is_set(is_virtual_link.yfilter)
+	|| ydk::is_set(sham_link_id.yfilter)
+	|| ydk::is_set(virtual_link_id.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -6004,11 +8667,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_sham_link.is_set || is_set(is_sham_link.operation)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
-    if (is_virtual_link.is_set || is_set(is_virtual_link.operation)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
-    if (sham_link_id.is_set || is_set(sham_link_id.operation)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
-    if (virtual_link_id.is_set || is_set(virtual_link_id.operation)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_sham_link.is_set || is_set(is_sham_link.yfilter)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
+    if (is_virtual_link.is_set || is_set(is_virtual_link.yfilter)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
+    if (sham_link_id.is_set || is_set(sham_link_id.yfilter)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
+    if (virtual_link_id.is_set || is_set(virtual_link_id.yfilter)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6055,28 +8718,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sham-link")
     {
         is_sham_link = value;
+        is_sham_link.value_namespace = name_space;
+        is_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-virtual-link")
     {
         is_virtual_link = value;
+        is_virtual_link.value_namespace = name_space;
+        is_virtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sham-link-id")
     {
         sham_link_id = value;
+        sham_link_id.value_namespace = name_space;
+        sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-link-id")
     {
         virtual_link_id = value;
+        virtual_link_id.value_namespace = name_space;
+        virtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "interface-name" || name == "is-sham-link" || name == "is-virtual-link" || name == "sham-link-id" || name == "virtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::LsaHeader()
@@ -6113,16 +8817,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::get_segment_path() const
@@ -6148,15 +8852,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6175,44 +8879,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::LsaDetail()
@@ -6269,26 +9038,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::get_segment_path() const
@@ -6314,25 +9083,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6351,84 +9120,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::UnknownAslsaType()
@@ -6466,12 +9360,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_sham_link.operation)
-	|| is_set(is_virtual_link.operation)
-	|| is_set(sham_link_id.operation)
-	|| is_set(virtual_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_sham_link.yfilter)
+	|| ydk::is_set(is_virtual_link.yfilter)
+	|| ydk::is_set(sham_link_id.yfilter)
+	|| ydk::is_set(virtual_link_id.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -6499,11 +9393,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_sham_link.is_set || is_set(is_sham_link.operation)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
-    if (is_virtual_link.is_set || is_set(is_virtual_link.operation)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
-    if (sham_link_id.is_set || is_set(sham_link_id.operation)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
-    if (virtual_link_id.is_set || is_set(virtual_link_id.operation)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_sham_link.is_set || is_set(is_sham_link.yfilter)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
+    if (is_virtual_link.is_set || is_set(is_virtual_link.yfilter)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
+    if (sham_link_id.is_set || is_set(sham_link_id.yfilter)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
+    if (virtual_link_id.is_set || is_set(virtual_link_id.yfilter)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6550,28 +9444,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sham-link")
     {
         is_sham_link = value;
+        is_sham_link.value_namespace = name_space;
+        is_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-virtual-link")
     {
         is_virtual_link = value;
+        is_virtual_link.value_namespace = name_space;
+        is_virtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sham-link-id")
     {
         sham_link_id = value;
+        sham_link_id.value_namespace = name_space;
+        sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-link-id")
     {
         virtual_link_id = value;
+        virtual_link_id.value_namespace = name_space;
+        virtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "interface-name" || name == "is-sham-link" || name == "is-virtual-link" || name == "sham-link-id" || name == "virtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::LsaHeader()
@@ -6608,16 +9543,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::get_segment_path() const
@@ -6643,15 +9578,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6670,44 +9605,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::LsaDetail()
@@ -6764,26 +9764,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::get_segment_path() const
@@ -6809,25 +9809,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6846,84 +9846,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::UnknownLsaType()
@@ -6961,12 +10086,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_sham_link.operation)
-	|| is_set(is_virtual_link.operation)
-	|| is_set(sham_link_id.operation)
-	|| is_set(virtual_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_sham_link.yfilter)
+	|| ydk::is_set(is_virtual_link.yfilter)
+	|| ydk::is_set(sham_link_id.yfilter)
+	|| ydk::is_set(virtual_link_id.yfilter)
 	|| (lsa_detail !=  nullptr && lsa_detail->has_operation())
 	|| (lsa_header !=  nullptr && lsa_header->has_operation());
 }
@@ -6994,11 +10119,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_sham_link.is_set || is_set(is_sham_link.operation)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
-    if (is_virtual_link.is_set || is_set(is_virtual_link.operation)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
-    if (sham_link_id.is_set || is_set(sham_link_id.operation)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
-    if (virtual_link_id.is_set || is_set(virtual_link_id.operation)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_sham_link.is_set || is_set(is_sham_link.yfilter)) leaf_name_data.push_back(is_sham_link.get_name_leafdata());
+    if (is_virtual_link.is_set || is_set(is_virtual_link.yfilter)) leaf_name_data.push_back(is_virtual_link.get_name_leafdata());
+    if (sham_link_id.is_set || is_set(sham_link_id.yfilter)) leaf_name_data.push_back(sham_link_id.get_name_leafdata());
+    if (virtual_link_id.is_set || is_set(virtual_link_id.yfilter)) leaf_name_data.push_back(virtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7045,28 +10170,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sham-link")
     {
         is_sham_link = value;
+        is_sham_link.value_namespace = name_space;
+        is_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-virtual-link")
     {
         is_virtual_link = value;
+        is_virtual_link.value_namespace = name_space;
+        is_virtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sham-link-id")
     {
         sham_link_id = value;
+        sham_link_id.value_namespace = name_space;
+        sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-link-id")
     {
         virtual_link_id = value;
+        virtual_link_id.value_namespace = name_space;
+        virtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-sham-link")
+    {
+        is_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-virtual-link")
+    {
+        is_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "sham-link-id")
+    {
+        sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "virtual-link-id")
+    {
+        virtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-detail" || name == "lsa-header" || name == "interface-name" || name == "is-sham-link" || name == "is-virtual-link" || name == "sham-link-id" || name == "virtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::LsaHeader()
@@ -7103,16 +10269,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertising_router.operation)
-	|| is_set(checksum.operation)
-	|| is_set(is_do_not_age_lsa.operation)
-	|| is_set(is_graceful_restart_active.operation)
-	|| is_set(ls_id.operation)
-	|| is_set(lsa_age.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_type.operation)
-	|| is_set(sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertising_router.yfilter)
+	|| ydk::is_set(checksum.yfilter)
+	|| ydk::is_set(is_do_not_age_lsa.yfilter)
+	|| ydk::is_set(is_graceful_restart_active.yfilter)
+	|| ydk::is_set(ls_id.yfilter)
+	|| ydk::is_set(lsa_age.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter)
+	|| ydk::is_set(sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::get_segment_path() const
@@ -7138,15 +10304,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertising_router.is_set || is_set(advertising_router.operation)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
-    if (checksum.is_set || is_set(checksum.operation)) leaf_name_data.push_back(checksum.get_name_leafdata());
-    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.operation)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
-    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.operation)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
-    if (ls_id.is_set || is_set(ls_id.operation)) leaf_name_data.push_back(ls_id.get_name_leafdata());
-    if (lsa_age.is_set || is_set(lsa_age.operation)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
-    if (sequence_number.is_set || is_set(sequence_number.operation)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
+    if (advertising_router.is_set || is_set(advertising_router.yfilter)) leaf_name_data.push_back(advertising_router.get_name_leafdata());
+    if (checksum.is_set || is_set(checksum.yfilter)) leaf_name_data.push_back(checksum.get_name_leafdata());
+    if (is_do_not_age_lsa.is_set || is_set(is_do_not_age_lsa.yfilter)) leaf_name_data.push_back(is_do_not_age_lsa.get_name_leafdata());
+    if (is_graceful_restart_active.is_set || is_set(is_graceful_restart_active.yfilter)) leaf_name_data.push_back(is_graceful_restart_active.get_name_leafdata());
+    if (ls_id.is_set || is_set(ls_id.yfilter)) leaf_name_data.push_back(ls_id.get_name_leafdata());
+    if (lsa_age.is_set || is_set(lsa_age.yfilter)) leaf_name_data.push_back(lsa_age.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7165,44 +10331,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertising-router")
     {
         advertising_router = value;
+        advertising_router.value_namespace = name_space;
+        advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum")
     {
         checksum = value;
+        checksum.value_namespace = name_space;
+        checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-do-not-age-lsa")
     {
         is_do_not_age_lsa = value;
+        is_do_not_age_lsa.value_namespace = name_space;
+        is_do_not_age_lsa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart-active")
     {
         is_graceful_restart_active = value;
+        is_graceful_restart_active.value_namespace = name_space;
+        is_graceful_restart_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-id")
     {
         ls_id = value;
+        ls_id.value_namespace = name_space;
+        ls_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-age")
     {
         lsa_age = value;
+        lsa_age.value_namespace = name_space;
+        lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number")
     {
         sequence_number = value;
+        sequence_number.value_namespace = name_space;
+        sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertising-router")
+    {
+        advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "checksum")
+    {
+        checksum.yfilter = yfilter;
+    }
+    if(value_path == "is-do-not-age-lsa")
+    {
+        is_do_not_age_lsa.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart-active")
+    {
+        is_graceful_restart_active.yfilter = yfilter;
+    }
+    if(value_path == "ls-id")
+    {
+        ls_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-age")
+    {
+        lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number")
+    {
+        sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertising-router" || name == "checksum" || name == "is-do-not-age-lsa" || name == "is-graceful-restart-active" || name == "ls-id" || name == "lsa-age" || name == "lsa-area-id" || name == "lsa-type" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::LsaDetail()
@@ -7259,26 +10490,26 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInte
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_time.operation)
-	|| is_set(is_acknowledged.operation)
-	|| is_set(is_advertising_router_reachable.operation)
-	|| is_set(is_deleted.operation)
-	|| is_set(is_flood_pending.operation)
-	|| is_set(is_maximum_aged.operation)
-	|| is_set(is_neighbor_exchange.operation)
-	|| is_set(is_no_delete.operation)
-	|| is_set(is_nsr_ack_pending.operation)
-	|| is_set(is_partial_spf.operation)
-	|| is_set(is_routing_bit.operation)
-	|| is_set(is_routing_table.operation)
-	|| is_set(lsa_flood_required_post_fail_over.operation)
-	|| is_set(lsa_length.operation)
-	|| is_set(lsa_sync_state.operation)
-	|| is_set(minute_table_index.operation)
-	|| is_set(nsr_flood_required.operation)
-	|| is_set(rate_limit.operation)
-	|| is_set(second_table_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_time.yfilter)
+	|| ydk::is_set(is_acknowledged.yfilter)
+	|| ydk::is_set(is_advertising_router_reachable.yfilter)
+	|| ydk::is_set(is_deleted.yfilter)
+	|| ydk::is_set(is_flood_pending.yfilter)
+	|| ydk::is_set(is_maximum_aged.yfilter)
+	|| ydk::is_set(is_neighbor_exchange.yfilter)
+	|| ydk::is_set(is_no_delete.yfilter)
+	|| ydk::is_set(is_nsr_ack_pending.yfilter)
+	|| ydk::is_set(is_partial_spf.yfilter)
+	|| ydk::is_set(is_routing_bit.yfilter)
+	|| ydk::is_set(is_routing_table.yfilter)
+	|| ydk::is_set(lsa_flood_required_post_fail_over.yfilter)
+	|| ydk::is_set(lsa_length.yfilter)
+	|| ydk::is_set(lsa_sync_state.yfilter)
+	|| ydk::is_set(minute_table_index.yfilter)
+	|| ydk::is_set(nsr_flood_required.yfilter)
+	|| ydk::is_set(rate_limit.yfilter)
+	|| ydk::is_set(second_table_index.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::get_segment_path() const
@@ -7304,25 +10535,25 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_time.is_set || is_set(free_time.operation)) leaf_name_data.push_back(free_time.get_name_leafdata());
-    if (is_acknowledged.is_set || is_set(is_acknowledged.operation)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
-    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.operation)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
-    if (is_deleted.is_set || is_set(is_deleted.operation)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
-    if (is_flood_pending.is_set || is_set(is_flood_pending.operation)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
-    if (is_maximum_aged.is_set || is_set(is_maximum_aged.operation)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
-    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.operation)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
-    if (is_no_delete.is_set || is_set(is_no_delete.operation)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
-    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.operation)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
-    if (is_partial_spf.is_set || is_set(is_partial_spf.operation)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
-    if (is_routing_bit.is_set || is_set(is_routing_bit.operation)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
-    if (is_routing_table.is_set || is_set(is_routing_table.operation)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
-    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.operation)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
-    if (lsa_length.is_set || is_set(lsa_length.operation)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
-    if (lsa_sync_state.is_set || is_set(lsa_sync_state.operation)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
-    if (minute_table_index.is_set || is_set(minute_table_index.operation)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
-    if (nsr_flood_required.is_set || is_set(nsr_flood_required.operation)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
-    if (rate_limit.is_set || is_set(rate_limit.operation)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
-    if (second_table_index.is_set || is_set(second_table_index.operation)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
+    if (free_time.is_set || is_set(free_time.yfilter)) leaf_name_data.push_back(free_time.get_name_leafdata());
+    if (is_acknowledged.is_set || is_set(is_acknowledged.yfilter)) leaf_name_data.push_back(is_acknowledged.get_name_leafdata());
+    if (is_advertising_router_reachable.is_set || is_set(is_advertising_router_reachable.yfilter)) leaf_name_data.push_back(is_advertising_router_reachable.get_name_leafdata());
+    if (is_deleted.is_set || is_set(is_deleted.yfilter)) leaf_name_data.push_back(is_deleted.get_name_leafdata());
+    if (is_flood_pending.is_set || is_set(is_flood_pending.yfilter)) leaf_name_data.push_back(is_flood_pending.get_name_leafdata());
+    if (is_maximum_aged.is_set || is_set(is_maximum_aged.yfilter)) leaf_name_data.push_back(is_maximum_aged.get_name_leafdata());
+    if (is_neighbor_exchange.is_set || is_set(is_neighbor_exchange.yfilter)) leaf_name_data.push_back(is_neighbor_exchange.get_name_leafdata());
+    if (is_no_delete.is_set || is_set(is_no_delete.yfilter)) leaf_name_data.push_back(is_no_delete.get_name_leafdata());
+    if (is_nsr_ack_pending.is_set || is_set(is_nsr_ack_pending.yfilter)) leaf_name_data.push_back(is_nsr_ack_pending.get_name_leafdata());
+    if (is_partial_spf.is_set || is_set(is_partial_spf.yfilter)) leaf_name_data.push_back(is_partial_spf.get_name_leafdata());
+    if (is_routing_bit.is_set || is_set(is_routing_bit.yfilter)) leaf_name_data.push_back(is_routing_bit.get_name_leafdata());
+    if (is_routing_table.is_set || is_set(is_routing_table.yfilter)) leaf_name_data.push_back(is_routing_table.get_name_leafdata());
+    if (lsa_flood_required_post_fail_over.is_set || is_set(lsa_flood_required_post_fail_over.yfilter)) leaf_name_data.push_back(lsa_flood_required_post_fail_over.get_name_leafdata());
+    if (lsa_length.is_set || is_set(lsa_length.yfilter)) leaf_name_data.push_back(lsa_length.get_name_leafdata());
+    if (lsa_sync_state.is_set || is_set(lsa_sync_state.yfilter)) leaf_name_data.push_back(lsa_sync_state.get_name_leafdata());
+    if (minute_table_index.is_set || is_set(minute_table_index.yfilter)) leaf_name_data.push_back(minute_table_index.get_name_leafdata());
+    if (nsr_flood_required.is_set || is_set(nsr_flood_required.yfilter)) leaf_name_data.push_back(nsr_flood_required.get_name_leafdata());
+    if (rate_limit.is_set || is_set(rate_limit.yfilter)) leaf_name_data.push_back(rate_limit.get_name_leafdata());
+    if (second_table_index.is_set || is_set(second_table_index.yfilter)) leaf_name_data.push_back(second_table_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7341,84 +10572,209 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-time")
     {
         free_time = value;
+        free_time.value_namespace = name_space;
+        free_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-acknowledged")
     {
         is_acknowledged = value;
+        is_acknowledged.value_namespace = name_space;
+        is_acknowledged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertising-router-reachable")
     {
         is_advertising_router_reachable = value;
+        is_advertising_router_reachable.value_namespace = name_space;
+        is_advertising_router_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-deleted")
     {
         is_deleted = value;
+        is_deleted.value_namespace = name_space;
+        is_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flood-pending")
     {
         is_flood_pending = value;
+        is_flood_pending.value_namespace = name_space;
+        is_flood_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-aged")
     {
         is_maximum_aged = value;
+        is_maximum_aged.value_namespace = name_space;
+        is_maximum_aged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-exchange")
     {
         is_neighbor_exchange = value;
+        is_neighbor_exchange.value_namespace = name_space;
+        is_neighbor_exchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-no-delete")
     {
         is_no_delete = value;
+        is_no_delete.value_namespace = name_space;
+        is_no_delete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-ack-pending")
     {
         is_nsr_ack_pending = value;
+        is_nsr_ack_pending.value_namespace = name_space;
+        is_nsr_ack_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partial-spf")
     {
         is_partial_spf = value;
+        is_partial_spf.value_namespace = name_space;
+        is_partial_spf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-bit")
     {
         is_routing_bit = value;
+        is_routing_bit.value_namespace = name_space;
+        is_routing_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-routing-table")
     {
         is_routing_table = value;
+        is_routing_table.value_namespace = name_space;
+        is_routing_table.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-required-post-fail-over")
     {
         lsa_flood_required_post_fail_over = value;
+        lsa_flood_required_post_fail_over.value_namespace = name_space;
+        lsa_flood_required_post_fail_over.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-length")
     {
         lsa_length = value;
+        lsa_length.value_namespace = name_space;
+        lsa_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-sync-state")
     {
         lsa_sync_state = value;
+        lsa_sync_state.value_namespace = name_space;
+        lsa_sync_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute-table-index")
     {
         minute_table_index = value;
+        minute_table_index.value_namespace = name_space;
+        minute_table_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-flood-required")
     {
         nsr_flood_required = value;
+        nsr_flood_required.value_namespace = name_space;
+        nsr_flood_required.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limit")
     {
         rate_limit = value;
+        rate_limit.value_namespace = name_space;
+        rate_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-table-index")
     {
         second_table_index = value;
+        second_table_index.value_namespace = name_space;
+        second_table_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-time")
+    {
+        free_time.yfilter = yfilter;
+    }
+    if(value_path == "is-acknowledged")
+    {
+        is_acknowledged.yfilter = yfilter;
+    }
+    if(value_path == "is-advertising-router-reachable")
+    {
+        is_advertising_router_reachable.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted")
+    {
+        is_deleted.yfilter = yfilter;
+    }
+    if(value_path == "is-flood-pending")
+    {
+        is_flood_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-aged")
+    {
+        is_maximum_aged.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-exchange")
+    {
+        is_neighbor_exchange.yfilter = yfilter;
+    }
+    if(value_path == "is-no-delete")
+    {
+        is_no_delete.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-ack-pending")
+    {
+        is_nsr_ack_pending.yfilter = yfilter;
+    }
+    if(value_path == "is-partial-spf")
+    {
+        is_partial_spf.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-bit")
+    {
+        is_routing_bit.yfilter = yfilter;
+    }
+    if(value_path == "is-routing-table")
+    {
+        is_routing_table.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-required-post-fail-over")
+    {
+        lsa_flood_required_post_fail_over.yfilter = yfilter;
+    }
+    if(value_path == "lsa-length")
+    {
+        lsa_length.yfilter = yfilter;
+    }
+    if(value_path == "lsa-sync-state")
+    {
+        lsa_sync_state.yfilter = yfilter;
+    }
+    if(value_path == "minute-table-index")
+    {
+        minute_table_index.yfilter = yfilter;
+    }
+    if(value_path == "nsr-flood-required")
+    {
+        nsr_flood_required.yfilter = yfilter;
+    }
+    if(value_path == "rate-limit")
+    {
+        rate_limit.yfilter = yfilter;
+    }
+    if(value_path == "second-table-index")
+    {
+        second_table_index.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-time" || name == "is-acknowledged" || name == "is-advertising-router-reachable" || name == "is-deleted" || name == "is-flood-pending" || name == "is-maximum-aged" || name == "is-neighbor-exchange" || name == "is-no-delete" || name == "is-nsr-ack-pending" || name == "is-partial-spf" || name == "is-routing-bit" || name == "is-routing-table" || name == "lsa-flood-required-post-fail-over" || name == "lsa-length" || name == "lsa-sync-state" || name == "minute-table-index" || name == "nsr-flood-required" || name == "rate-limit" || name == "second-table-index")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummaryTable()
@@ -7441,7 +10797,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (database_summary !=  nullptr && database_summary->has_operation());
 }
 
@@ -7500,8 +10856,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "database-summary")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseSummary()
@@ -7539,9 +10906,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
         if(area_database[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(database_router_id.operation)
-	|| is_set(is_opaque_database_capable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(database_router_id.yfilter)
+	|| ydk::is_set(is_opaque_database_capable.yfilter)
 	|| (database_counters !=  nullptr && database_counters->has_operation());
 }
 
@@ -7568,8 +10935,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (database_router_id.is_set || is_set(database_router_id.operation)) leaf_name_data.push_back(database_router_id.get_name_leafdata());
-    if (is_opaque_database_capable.is_set || is_set(is_opaque_database_capable.operation)) leaf_name_data.push_back(is_opaque_database_capable.get_name_leafdata());
+    if (database_router_id.is_set || is_set(database_router_id.yfilter)) leaf_name_data.push_back(database_router_id.get_name_leafdata());
+    if (is_opaque_database_capable.is_set || is_set(is_opaque_database_capable.yfilter)) leaf_name_data.push_back(is_opaque_database_capable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7623,16 +10990,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "database-router-id")
     {
         database_router_id = value;
+        database_router_id.value_namespace = name_space;
+        database_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-opaque-database-capable")
     {
         is_opaque_database_capable = value;
+        is_opaque_database_capable.value_namespace = name_space;
+        is_opaque_database_capable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "database-router-id")
+    {
+        database_router_id.yfilter = yfilter;
+    }
+    if(value_path == "is-opaque-database-capable")
+    {
+        is_opaque_database_capable.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-database" || name == "database-counters" || name == "database-router-id" || name == "is-opaque-database-capable")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::DatabaseCounters()
@@ -7678,29 +11068,29 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
 {
     for (auto const & leaf : deleted_lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lsa_checksum.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : max_age_lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(deleted_lsa.operation)
-	|| is_set(lsa.operation)
-	|| is_set(lsa_checksum.operation)
-	|| is_set(max_age_lsa.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(deleted_lsa.yfilter)
+	|| ydk::is_set(lsa.yfilter)
+	|| ydk::is_set(lsa_checksum.yfilter)
+	|| ydk::is_set(max_age_lsa.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_segment_path() const
@@ -7752,7 +11142,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "deleted-lsa")
     {
@@ -7770,6 +11160,33 @@ void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
     {
         max_age_lsa.append(value);
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "deleted-lsa")
+    {
+        deleted_lsa.yfilter = yfilter;
+    }
+    if(value_path == "lsa")
+    {
+        lsa.yfilter = yfilter;
+    }
+    if(value_path == "lsa-checksum")
+    {
+        lsa_checksum.yfilter = yfilter;
+    }
+    if(value_path == "max-age-lsa")
+    {
+        max_age_lsa.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "deleted-lsa" || name == "lsa" || name == "lsa-checksum" || name == "max-age-lsa")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabase()
@@ -7795,8 +11212,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
 
 bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsa_area_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
 	|| (area_database_summary !=  nullptr && area_database_summary->has_operation());
 }
 
@@ -7823,7 +11240,7 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7856,12 +11273,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-database-summary" || name == "lsa-area-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::AreaDatabaseSummary()
@@ -7907,29 +11341,29 @@ bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
 {
     for (auto const & leaf : deleted_lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lsa_checksum.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : max_age_lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(deleted_lsa.operation)
-	|| is_set(lsa.operation)
-	|| is_set(lsa_checksum.operation)
-	|| is_set(max_age_lsa.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(deleted_lsa.yfilter)
+	|| ydk::is_set(lsa.yfilter)
+	|| ydk::is_set(lsa_checksum.yfilter)
+	|| ydk::is_set(max_age_lsa.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_segment_path() const
@@ -7981,7 +11415,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "deleted-lsa")
     {
@@ -7999,6 +11433,33 @@ void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::
     {
         max_age_lsa.append(value);
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "deleted-lsa")
+    {
+        deleted_lsa.yfilter = yfilter;
+    }
+    if(value_path == "lsa")
+    {
+        lsa.yfilter = yfilter;
+    }
+    if(value_path == "lsa-checksum")
+    {
+        lsa_checksum.yfilter = yfilter;
+    }
+    if(value_path == "max-age-lsa")
+    {
+        max_age_lsa.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "deleted-lsa" || name == "lsa" || name == "lsa-checksum" || name == "max-age-lsa")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoutes()
@@ -8027,7 +11488,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::has_operation() con
         if(internal_route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::get_segment_path() const
@@ -8092,8 +11553,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "internal-route")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::InternalRoute()
@@ -8143,10 +11615,10 @@ bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::has_
         if(route_source[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(route_area_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(route_area_id.yfilter)
 	|| (route_topology !=  nullptr && route_topology->has_operation());
 }
 
@@ -8173,9 +11645,9 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::Interna
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (route_area_id.is_set || is_set(route_area_id.operation)) leaf_name_data.push_back(route_area_id.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (route_area_id.is_set || is_set(route_area_id.yfilter)) leaf_name_data.push_back(route_area_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8250,20 +11722,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-area-id")
     {
         route_area_id = value;
+        route_area_id.value_namespace = name_space;
+        route_area_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "route-area-id")
+    {
+        route_area_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-path" || name == "route-source" || name == "route-topology" || name == "prefix" || name == "prefix-length" || name == "route-area-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteTopology::RouteTopology()
@@ -8290,11 +11791,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::Rout
 
 bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteTopology::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_cost.operation)
-	|| is_set(route_distance.operation)
-	|| is_set(route_id.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_cost.yfilter)
+	|| ydk::is_set(route_distance.yfilter)
+	|| ydk::is_set(route_id.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteTopology::get_segment_path() const
@@ -8320,10 +11821,10 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::Interna
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_cost.is_set || is_set(route_cost.operation)) leaf_name_data.push_back(route_cost.get_name_leafdata());
-    if (route_distance.is_set || is_set(route_distance.operation)) leaf_name_data.push_back(route_distance.get_name_leafdata());
-    if (route_id.is_set || is_set(route_id.operation)) leaf_name_data.push_back(route_id.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (route_cost.is_set || is_set(route_cost.yfilter)) leaf_name_data.push_back(route_cost.get_name_leafdata());
+    if (route_distance.is_set || is_set(route_distance.yfilter)) leaf_name_data.push_back(route_distance.get_name_leafdata());
+    if (route_id.is_set || is_set(route_id.yfilter)) leaf_name_data.push_back(route_id.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8342,24 +11843,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteTopology::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteTopology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-cost")
     {
         route_cost = value;
+        route_cost.value_namespace = name_space;
+        route_cost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-distance")
     {
         route_distance = value;
+        route_distance.value_namespace = name_space;
+        route_distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-id")
     {
         route_id = value;
+        route_id.value_namespace = name_space;
+        route_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteTopology::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-cost")
+    {
+        route_cost.yfilter = yfilter;
+    }
+    if(value_path == "route-distance")
+    {
+        route_distance.yfilter = yfilter;
+    }
+    if(value_path == "route-id")
+    {
+        route_id.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteTopology::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-cost" || name == "route-distance" || name == "route-id" || name == "route-type")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource::RouteSource()
@@ -8384,10 +11920,10 @@ bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::Rout
 
 bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_source_adversting_router.operation)
-	|| is_set(route_source_id.operation)
-	|| is_set(route_source_lsa_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_source_adversting_router.yfilter)
+	|| ydk::is_set(route_source_id.yfilter)
+	|| ydk::is_set(route_source_lsa_type.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource::get_segment_path() const
@@ -8413,9 +11949,9 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::Interna
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_source_adversting_router.is_set || is_set(route_source_adversting_router.operation)) leaf_name_data.push_back(route_source_adversting_router.get_name_leafdata());
-    if (route_source_id.is_set || is_set(route_source_id.operation)) leaf_name_data.push_back(route_source_id.get_name_leafdata());
-    if (route_source_lsa_type.is_set || is_set(route_source_lsa_type.operation)) leaf_name_data.push_back(route_source_lsa_type.get_name_leafdata());
+    if (route_source_adversting_router.is_set || is_set(route_source_adversting_router.yfilter)) leaf_name_data.push_back(route_source_adversting_router.get_name_leafdata());
+    if (route_source_id.is_set || is_set(route_source_id.yfilter)) leaf_name_data.push_back(route_source_id.get_name_leafdata());
+    if (route_source_lsa_type.is_set || is_set(route_source_lsa_type.yfilter)) leaf_name_data.push_back(route_source_lsa_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8434,20 +11970,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-source-adversting-router")
     {
         route_source_adversting_router = value;
+        route_source_adversting_router.value_namespace = name_space;
+        route_source_adversting_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-source-id")
     {
         route_source_id = value;
+        route_source_id.value_namespace = name_space;
+        route_source_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-source-lsa-type")
     {
         route_source_lsa_type = value;
+        route_source_lsa_type.value_namespace = name_space;
+        route_source_lsa_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-source-adversting-router")
+    {
+        route_source_adversting_router.yfilter = yfilter;
+    }
+    if(value_path == "route-source-id")
+    {
+        route_source_id.yfilter = yfilter;
+    }
+    if(value_path == "route-source-lsa-type")
+    {
+        route_source_lsa_type.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RouteSource::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-source-adversting-router" || name == "route-source-id" || name == "route-source-lsa-type")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RoutePath()
@@ -8477,10 +12042,10 @@ bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::Rout
 
 bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(route_path_id.operation)
-	|| is_set(route_path_next_hop.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(route_path_id.yfilter)
+	|| ydk::is_set(route_path_next_hop.yfilter)
 	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
 }
 
@@ -8507,9 +12072,9 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::Interna
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (route_path_id.is_set || is_set(route_path_id.operation)) leaf_name_data.push_back(route_path_id.get_name_leafdata());
-    if (route_path_next_hop.is_set || is_set(route_path_next_hop.operation)) leaf_name_data.push_back(route_path_next_hop.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (route_path_id.is_set || is_set(route_path_id.yfilter)) leaf_name_data.push_back(route_path_id.get_name_leafdata());
+    if (route_path_next_hop.is_set || is_set(route_path_next_hop.yfilter)) leaf_name_data.push_back(route_path_next_hop.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8542,20 +12107,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-path-id")
     {
         route_path_id = value;
+        route_path_id.value_namespace = name_space;
+        route_path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-path-next-hop")
     {
         route_path_next_hop = value;
+        route_path_next_hop.value_namespace = name_space;
+        route_path_next_hop.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "route-path-id")
+    {
+        route_path_id.yfilter = yfilter;
+    }
+    if(value_path == "route-path-next-hop")
+    {
+        route_path_next_hop.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-backup-path" || name == "interface-name" || name == "route-path-id" || name == "route-path-next-hop")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath::RouteBackupPath()
@@ -8592,16 +12186,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::Rout
 
 bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(backup_metric.operation)
-	|| is_set(backup_route_interface_name.operation)
-	|| is_set(backup_route_next_hop_address.operation)
-	|| is_set(backup_route_source.operation)
-	|| is_set(downstream.operation)
-	|| is_set(line_card_disjoint.operation)
-	|| is_set(node_protect.operation)
-	|| is_set(primary_path.operation)
-	|| is_set(srlg_disjoint.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(backup_metric.yfilter)
+	|| ydk::is_set(backup_route_interface_name.yfilter)
+	|| ydk::is_set(backup_route_next_hop_address.yfilter)
+	|| ydk::is_set(backup_route_source.yfilter)
+	|| ydk::is_set(downstream.yfilter)
+	|| ydk::is_set(line_card_disjoint.yfilter)
+	|| ydk::is_set(node_protect.yfilter)
+	|| ydk::is_set(primary_path.yfilter)
+	|| ydk::is_set(srlg_disjoint.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath::get_segment_path() const
@@ -8627,15 +12221,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::Interna
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (backup_metric.is_set || is_set(backup_metric.operation)) leaf_name_data.push_back(backup_metric.get_name_leafdata());
-    if (backup_route_interface_name.is_set || is_set(backup_route_interface_name.operation)) leaf_name_data.push_back(backup_route_interface_name.get_name_leafdata());
-    if (backup_route_next_hop_address.is_set || is_set(backup_route_next_hop_address.operation)) leaf_name_data.push_back(backup_route_next_hop_address.get_name_leafdata());
-    if (backup_route_source.is_set || is_set(backup_route_source.operation)) leaf_name_data.push_back(backup_route_source.get_name_leafdata());
-    if (downstream.is_set || is_set(downstream.operation)) leaf_name_data.push_back(downstream.get_name_leafdata());
-    if (line_card_disjoint.is_set || is_set(line_card_disjoint.operation)) leaf_name_data.push_back(line_card_disjoint.get_name_leafdata());
-    if (node_protect.is_set || is_set(node_protect.operation)) leaf_name_data.push_back(node_protect.get_name_leafdata());
-    if (primary_path.is_set || is_set(primary_path.operation)) leaf_name_data.push_back(primary_path.get_name_leafdata());
-    if (srlg_disjoint.is_set || is_set(srlg_disjoint.operation)) leaf_name_data.push_back(srlg_disjoint.get_name_leafdata());
+    if (backup_metric.is_set || is_set(backup_metric.yfilter)) leaf_name_data.push_back(backup_metric.get_name_leafdata());
+    if (backup_route_interface_name.is_set || is_set(backup_route_interface_name.yfilter)) leaf_name_data.push_back(backup_route_interface_name.get_name_leafdata());
+    if (backup_route_next_hop_address.is_set || is_set(backup_route_next_hop_address.yfilter)) leaf_name_data.push_back(backup_route_next_hop_address.get_name_leafdata());
+    if (backup_route_source.is_set || is_set(backup_route_source.yfilter)) leaf_name_data.push_back(backup_route_source.get_name_leafdata());
+    if (downstream.is_set || is_set(downstream.yfilter)) leaf_name_data.push_back(downstream.get_name_leafdata());
+    if (line_card_disjoint.is_set || is_set(line_card_disjoint.yfilter)) leaf_name_data.push_back(line_card_disjoint.get_name_leafdata());
+    if (node_protect.is_set || is_set(node_protect.yfilter)) leaf_name_data.push_back(node_protect.get_name_leafdata());
+    if (primary_path.is_set || is_set(primary_path.yfilter)) leaf_name_data.push_back(primary_path.get_name_leafdata());
+    if (srlg_disjoint.is_set || is_set(srlg_disjoint.yfilter)) leaf_name_data.push_back(srlg_disjoint.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8654,44 +12248,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backup-metric")
     {
         backup_metric = value;
+        backup_metric.value_namespace = name_space;
+        backup_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-route-interface-name")
     {
         backup_route_interface_name = value;
+        backup_route_interface_name.value_namespace = name_space;
+        backup_route_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-route-next-hop-address")
     {
         backup_route_next_hop_address = value;
+        backup_route_next_hop_address.value_namespace = name_space;
+        backup_route_next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-route-source")
     {
         backup_route_source = value;
+        backup_route_source.value_namespace = name_space;
+        backup_route_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "downstream")
     {
         downstream = value;
+        downstream.value_namespace = name_space;
+        downstream.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-card-disjoint")
     {
         line_card_disjoint = value;
+        line_card_disjoint.value_namespace = name_space;
+        line_card_disjoint.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-protect")
     {
         node_protect = value;
+        node_protect.value_namespace = name_space;
+        node_protect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-path")
     {
         primary_path = value;
+        primary_path.value_namespace = name_space;
+        primary_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-disjoint")
     {
         srlg_disjoint = value;
+        srlg_disjoint.value_namespace = name_space;
+        srlg_disjoint.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backup-metric")
+    {
+        backup_metric.yfilter = yfilter;
+    }
+    if(value_path == "backup-route-interface-name")
+    {
+        backup_route_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "backup-route-next-hop-address")
+    {
+        backup_route_next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "backup-route-source")
+    {
+        backup_route_source.yfilter = yfilter;
+    }
+    if(value_path == "downstream")
+    {
+        downstream.yfilter = yfilter;
+    }
+    if(value_path == "line-card-disjoint")
+    {
+        line_card_disjoint.yfilter = yfilter;
+    }
+    if(value_path == "node-protect")
+    {
+        node_protect.yfilter = yfilter;
+    }
+    if(value_path == "primary-path")
+    {
+        primary_path.yfilter = yfilter;
+    }
+    if(value_path == "srlg-disjoint")
+    {
+        srlg_disjoint.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-metric" || name == "backup-route-interface-name" || name == "backup-route-next-hop-address" || name == "backup-route-source" || name == "downstream" || name == "line-card-disjoint" || name == "node-protect" || name == "primary-path" || name == "srlg-disjoint")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolAreas()
@@ -8720,7 +12379,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::has_operation() cons
         if(protocol_area[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::get_segment_path() const
@@ -8785,8 +12444,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-area")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolArea()
@@ -8821,10 +12491,10 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::has_op
         if(protocol_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(area_id.operation)
-	|| is_set(distribute_list_in.operation)
-	|| is_set(protocol_area_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(distribute_list_in.yfilter)
+	|| ydk::is_set(protocol_area_id.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::get_segment_path() const
@@ -8850,9 +12520,9 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::Protocol
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (distribute_list_in.is_set || is_set(distribute_list_in.operation)) leaf_name_data.push_back(distribute_list_in.get_name_leafdata());
-    if (protocol_area_id.is_set || is_set(protocol_area_id.operation)) leaf_name_data.push_back(protocol_area_id.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (distribute_list_in.is_set || is_set(distribute_list_in.yfilter)) leaf_name_data.push_back(distribute_list_in.get_name_leafdata());
+    if (protocol_area_id.is_set || is_set(protocol_area_id.yfilter)) leaf_name_data.push_back(protocol_area_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8892,20 +12562,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "distribute-list-in")
     {
         distribute_list_in = value;
+        distribute_list_in.value_namespace = name_space;
+        distribute_list_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-area-id")
     {
         protocol_area_id = value;
+        protocol_area_id.value_namespace = name_space;
+        protocol_area_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "distribute-list-in")
+    {
+        distribute_list_in.yfilter = yfilter;
+    }
+    if(value_path == "protocol-area-id")
+    {
+        protocol_area_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-interface" || name == "area-id" || name == "distribute-list-in" || name == "protocol-area-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface::ProtocolInterface()
@@ -8928,9 +12627,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::Protoc
 
 bool Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(distribute_list_in.operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(distribute_list_in.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface::get_segment_path() const
@@ -8956,8 +12655,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::Protocol
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (distribute_list_in.is_set || is_set(distribute_list_in.operation)) leaf_name_data.push_back(distribute_list_in.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (distribute_list_in.is_set || is_set(distribute_list_in.yfilter)) leaf_name_data.push_back(distribute_list_in.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8976,16 +12675,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "distribute-list-in")
     {
         distribute_list_in = value;
+        distribute_list_in.value_namespace = name_space;
+        distribute_list_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "distribute-list-in")
+    {
+        distribute_list_in.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::ProtocolAreas::ProtocolArea::ProtocolInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "distribute-list-in" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoutes()
@@ -9014,7 +12736,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::has_operation() co
         if(connected_route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::get_segment_path() const
@@ -9079,8 +12801,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connected-route")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::ConnectedRoute()
@@ -9118,9 +12851,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::ha
         if(route_path[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
 	|| (route_topology !=  nullptr && route_topology->has_operation());
 }
 
@@ -9147,8 +12880,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::Connec
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9202,16 +12935,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-path" || name == "route-topology" || name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RouteTopology::RouteTopology()
@@ -9238,11 +12994,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::Ro
 
 bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RouteTopology::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_cost.operation)
-	|| is_set(route_distance.operation)
-	|| is_set(route_id.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_cost.yfilter)
+	|| ydk::is_set(route_distance.yfilter)
+	|| ydk::is_set(route_id.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RouteTopology::get_segment_path() const
@@ -9268,10 +13024,10 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::Connec
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_cost.is_set || is_set(route_cost.operation)) leaf_name_data.push_back(route_cost.get_name_leafdata());
-    if (route_distance.is_set || is_set(route_distance.operation)) leaf_name_data.push_back(route_distance.get_name_leafdata());
-    if (route_id.is_set || is_set(route_id.operation)) leaf_name_data.push_back(route_id.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (route_cost.is_set || is_set(route_cost.yfilter)) leaf_name_data.push_back(route_cost.get_name_leafdata());
+    if (route_distance.is_set || is_set(route_distance.yfilter)) leaf_name_data.push_back(route_distance.get_name_leafdata());
+    if (route_id.is_set || is_set(route_id.yfilter)) leaf_name_data.push_back(route_id.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9290,24 +13046,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RouteTopology::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RouteTopology::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-cost")
     {
         route_cost = value;
+        route_cost.value_namespace = name_space;
+        route_cost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-distance")
     {
         route_distance = value;
+        route_distance.value_namespace = name_space;
+        route_distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-id")
     {
         route_id = value;
+        route_id.value_namespace = name_space;
+        route_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RouteTopology::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-cost")
+    {
+        route_cost.yfilter = yfilter;
+    }
+    if(value_path == "route-distance")
+    {
+        route_distance.yfilter = yfilter;
+    }
+    if(value_path == "route-id")
+    {
+        route_id.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RouteTopology::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-cost" || name == "route-distance" || name == "route-id" || name == "route-type")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RoutePath()
@@ -9337,10 +13128,10 @@ bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::Ro
 
 bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(route_path_id.operation)
-	|| is_set(route_path_next_hop.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(route_path_id.yfilter)
+	|| ydk::is_set(route_path_next_hop.yfilter)
 	|| (route_backup_path !=  nullptr && route_backup_path->has_operation());
 }
 
@@ -9367,9 +13158,9 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::Connec
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (route_path_id.is_set || is_set(route_path_id.operation)) leaf_name_data.push_back(route_path_id.get_name_leafdata());
-    if (route_path_next_hop.is_set || is_set(route_path_next_hop.operation)) leaf_name_data.push_back(route_path_next_hop.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (route_path_id.is_set || is_set(route_path_id.yfilter)) leaf_name_data.push_back(route_path_id.get_name_leafdata());
+    if (route_path_next_hop.is_set || is_set(route_path_next_hop.yfilter)) leaf_name_data.push_back(route_path_next_hop.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9402,20 +13193,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-path-id")
     {
         route_path_id = value;
+        route_path_id.value_namespace = name_space;
+        route_path_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-path-next-hop")
     {
         route_path_next_hop = value;
+        route_path_next_hop.value_namespace = name_space;
+        route_path_next_hop.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "route-path-id")
+    {
+        route_path_id.yfilter = yfilter;
+    }
+    if(value_path == "route-path-next-hop")
+    {
+        route_path_next_hop.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-backup-path" || name == "interface-name" || name == "route-path-id" || name == "route-path-next-hop")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath::RouteBackupPath()
@@ -9452,16 +13272,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::Ro
 
 bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(backup_metric.operation)
-	|| is_set(backup_route_interface_name.operation)
-	|| is_set(backup_route_next_hop_address.operation)
-	|| is_set(backup_route_source.operation)
-	|| is_set(downstream.operation)
-	|| is_set(line_card_disjoint.operation)
-	|| is_set(node_protect.operation)
-	|| is_set(primary_path.operation)
-	|| is_set(srlg_disjoint.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(backup_metric.yfilter)
+	|| ydk::is_set(backup_route_interface_name.yfilter)
+	|| ydk::is_set(backup_route_next_hop_address.yfilter)
+	|| ydk::is_set(backup_route_source.yfilter)
+	|| ydk::is_set(downstream.yfilter)
+	|| ydk::is_set(line_card_disjoint.yfilter)
+	|| ydk::is_set(node_protect.yfilter)
+	|| ydk::is_set(primary_path.yfilter)
+	|| ydk::is_set(srlg_disjoint.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath::get_segment_path() const
@@ -9487,15 +13307,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::Connec
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (backup_metric.is_set || is_set(backup_metric.operation)) leaf_name_data.push_back(backup_metric.get_name_leafdata());
-    if (backup_route_interface_name.is_set || is_set(backup_route_interface_name.operation)) leaf_name_data.push_back(backup_route_interface_name.get_name_leafdata());
-    if (backup_route_next_hop_address.is_set || is_set(backup_route_next_hop_address.operation)) leaf_name_data.push_back(backup_route_next_hop_address.get_name_leafdata());
-    if (backup_route_source.is_set || is_set(backup_route_source.operation)) leaf_name_data.push_back(backup_route_source.get_name_leafdata());
-    if (downstream.is_set || is_set(downstream.operation)) leaf_name_data.push_back(downstream.get_name_leafdata());
-    if (line_card_disjoint.is_set || is_set(line_card_disjoint.operation)) leaf_name_data.push_back(line_card_disjoint.get_name_leafdata());
-    if (node_protect.is_set || is_set(node_protect.operation)) leaf_name_data.push_back(node_protect.get_name_leafdata());
-    if (primary_path.is_set || is_set(primary_path.operation)) leaf_name_data.push_back(primary_path.get_name_leafdata());
-    if (srlg_disjoint.is_set || is_set(srlg_disjoint.operation)) leaf_name_data.push_back(srlg_disjoint.get_name_leafdata());
+    if (backup_metric.is_set || is_set(backup_metric.yfilter)) leaf_name_data.push_back(backup_metric.get_name_leafdata());
+    if (backup_route_interface_name.is_set || is_set(backup_route_interface_name.yfilter)) leaf_name_data.push_back(backup_route_interface_name.get_name_leafdata());
+    if (backup_route_next_hop_address.is_set || is_set(backup_route_next_hop_address.yfilter)) leaf_name_data.push_back(backup_route_next_hop_address.get_name_leafdata());
+    if (backup_route_source.is_set || is_set(backup_route_source.yfilter)) leaf_name_data.push_back(backup_route_source.get_name_leafdata());
+    if (downstream.is_set || is_set(downstream.yfilter)) leaf_name_data.push_back(downstream.get_name_leafdata());
+    if (line_card_disjoint.is_set || is_set(line_card_disjoint.yfilter)) leaf_name_data.push_back(line_card_disjoint.get_name_leafdata());
+    if (node_protect.is_set || is_set(node_protect.yfilter)) leaf_name_data.push_back(node_protect.get_name_leafdata());
+    if (primary_path.is_set || is_set(primary_path.yfilter)) leaf_name_data.push_back(primary_path.get_name_leafdata());
+    if (srlg_disjoint.is_set || is_set(srlg_disjoint.yfilter)) leaf_name_data.push_back(srlg_disjoint.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9514,44 +13334,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backup-metric")
     {
         backup_metric = value;
+        backup_metric.value_namespace = name_space;
+        backup_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-route-interface-name")
     {
         backup_route_interface_name = value;
+        backup_route_interface_name.value_namespace = name_space;
+        backup_route_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-route-next-hop-address")
     {
         backup_route_next_hop_address = value;
+        backup_route_next_hop_address.value_namespace = name_space;
+        backup_route_next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-route-source")
     {
         backup_route_source = value;
+        backup_route_source.value_namespace = name_space;
+        backup_route_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "downstream")
     {
         downstream = value;
+        downstream.value_namespace = name_space;
+        downstream.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-card-disjoint")
     {
         line_card_disjoint = value;
+        line_card_disjoint.value_namespace = name_space;
+        line_card_disjoint.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-protect")
     {
         node_protect = value;
+        node_protect.value_namespace = name_space;
+        node_protect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-path")
     {
         primary_path = value;
+        primary_path.value_namespace = name_space;
+        primary_path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-disjoint")
     {
         srlg_disjoint = value;
+        srlg_disjoint.value_namespace = name_space;
+        srlg_disjoint.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backup-metric")
+    {
+        backup_metric.yfilter = yfilter;
+    }
+    if(value_path == "backup-route-interface-name")
+    {
+        backup_route_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "backup-route-next-hop-address")
+    {
+        backup_route_next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "backup-route-source")
+    {
+        backup_route_source.yfilter = yfilter;
+    }
+    if(value_path == "downstream")
+    {
+        downstream.yfilter = yfilter;
+    }
+    if(value_path == "line-card-disjoint")
+    {
+        line_card_disjoint.yfilter = yfilter;
+    }
+    if(value_path == "node-protect")
+    {
+        node_protect.yfilter = yfilter;
+    }
+    if(value_path == "primary-path")
+    {
+        primary_path.yfilter = yfilter;
+    }
+    if(value_path == "srlg-disjoint")
+    {
+        srlg_disjoint.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-metric" || name == "backup-route-interface-name" || name == "backup-route-next-hop-address" || name == "backup-route-source" || name == "downstream" || name == "line-card-disjoint" || name == "node-protect" || name == "primary-path" || name == "srlg-disjoint")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfStatistics()
@@ -9590,7 +13475,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::has_data() const
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (prefix_priority_stats !=  nullptr && prefix_priority_stats->has_operation())
 	|| (protocol_stats !=  nullptr && protocol_stats->has_operation())
 	|| (rawio_stats !=  nullptr && rawio_stats->has_operation())
@@ -9709,8 +13594,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-priority-stats" || name == "protocol-stats" || name == "rawio-stats" || name == "spf-stats" || name == "vrf-rib-batch-stats")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStats()
@@ -9739,7 +13635,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::has_o
         if(protocol_stat[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::get_segment_path() const
@@ -9804,8 +13700,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-stat")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat::ProtocolStat()
@@ -9872,31 +13779,31 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::Proto
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(checksum_err.operation)
-	|| is_set(dbdes_in_ls_as.operation)
-	|| is_set(dbdes_in_packets.operation)
-	|| is_set(dbdes_out_ls_as.operation)
-	|| is_set(dbdes_out_packets.operation)
-	|| is_set(dropped_in_gs.operation)
-	|| is_set(hello_in_packets.operation)
-	|| is_set(hello_out_packets.operation)
-	|| is_set(ls_ack_in_ls_as.operation)
-	|| is_set(ls_ack_in_packets.operation)
-	|| is_set(ls_ack_out_ls_as.operation)
-	|| is_set(ls_ack_out_packets.operation)
-	|| is_set(ls_req_in_ls_as.operation)
-	|| is_set(ls_req_in_packets.operation)
-	|| is_set(ls_req_out_ls_as.operation)
-	|| is_set(ls_req_out_packets.operation)
-	|| is_set(ls_upd_in_ignored.operation)
-	|| is_set(ls_upd_in_ls_as.operation)
-	|| is_set(ls_upd_in_packets.operation)
-	|| is_set(ls_upd_out_ls_as.operation)
-	|| is_set(ls_upd_out_packets.operation)
-	|| is_set(total_in_packets.operation)
-	|| is_set(total_out_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(checksum_err.yfilter)
+	|| ydk::is_set(dbdes_in_ls_as.yfilter)
+	|| ydk::is_set(dbdes_in_packets.yfilter)
+	|| ydk::is_set(dbdes_out_ls_as.yfilter)
+	|| ydk::is_set(dbdes_out_packets.yfilter)
+	|| ydk::is_set(dropped_in_gs.yfilter)
+	|| ydk::is_set(hello_in_packets.yfilter)
+	|| ydk::is_set(hello_out_packets.yfilter)
+	|| ydk::is_set(ls_ack_in_ls_as.yfilter)
+	|| ydk::is_set(ls_ack_in_packets.yfilter)
+	|| ydk::is_set(ls_ack_out_ls_as.yfilter)
+	|| ydk::is_set(ls_ack_out_packets.yfilter)
+	|| ydk::is_set(ls_req_in_ls_as.yfilter)
+	|| ydk::is_set(ls_req_in_packets.yfilter)
+	|| ydk::is_set(ls_req_out_ls_as.yfilter)
+	|| ydk::is_set(ls_req_out_packets.yfilter)
+	|| ydk::is_set(ls_upd_in_ignored.yfilter)
+	|| ydk::is_set(ls_upd_in_ls_as.yfilter)
+	|| ydk::is_set(ls_upd_in_packets.yfilter)
+	|| ydk::is_set(ls_upd_out_ls_as.yfilter)
+	|| ydk::is_set(ls_upd_out_packets.yfilter)
+	|| ydk::is_set(total_in_packets.yfilter)
+	|| ydk::is_set(total_out_packets.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat::get_segment_path() const
@@ -9922,30 +13829,30 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::Protocol
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (checksum_err.is_set || is_set(checksum_err.operation)) leaf_name_data.push_back(checksum_err.get_name_leafdata());
-    if (dbdes_in_ls_as.is_set || is_set(dbdes_in_ls_as.operation)) leaf_name_data.push_back(dbdes_in_ls_as.get_name_leafdata());
-    if (dbdes_in_packets.is_set || is_set(dbdes_in_packets.operation)) leaf_name_data.push_back(dbdes_in_packets.get_name_leafdata());
-    if (dbdes_out_ls_as.is_set || is_set(dbdes_out_ls_as.operation)) leaf_name_data.push_back(dbdes_out_ls_as.get_name_leafdata());
-    if (dbdes_out_packets.is_set || is_set(dbdes_out_packets.operation)) leaf_name_data.push_back(dbdes_out_packets.get_name_leafdata());
-    if (dropped_in_gs.is_set || is_set(dropped_in_gs.operation)) leaf_name_data.push_back(dropped_in_gs.get_name_leafdata());
-    if (hello_in_packets.is_set || is_set(hello_in_packets.operation)) leaf_name_data.push_back(hello_in_packets.get_name_leafdata());
-    if (hello_out_packets.is_set || is_set(hello_out_packets.operation)) leaf_name_data.push_back(hello_out_packets.get_name_leafdata());
-    if (ls_ack_in_ls_as.is_set || is_set(ls_ack_in_ls_as.operation)) leaf_name_data.push_back(ls_ack_in_ls_as.get_name_leafdata());
-    if (ls_ack_in_packets.is_set || is_set(ls_ack_in_packets.operation)) leaf_name_data.push_back(ls_ack_in_packets.get_name_leafdata());
-    if (ls_ack_out_ls_as.is_set || is_set(ls_ack_out_ls_as.operation)) leaf_name_data.push_back(ls_ack_out_ls_as.get_name_leafdata());
-    if (ls_ack_out_packets.is_set || is_set(ls_ack_out_packets.operation)) leaf_name_data.push_back(ls_ack_out_packets.get_name_leafdata());
-    if (ls_req_in_ls_as.is_set || is_set(ls_req_in_ls_as.operation)) leaf_name_data.push_back(ls_req_in_ls_as.get_name_leafdata());
-    if (ls_req_in_packets.is_set || is_set(ls_req_in_packets.operation)) leaf_name_data.push_back(ls_req_in_packets.get_name_leafdata());
-    if (ls_req_out_ls_as.is_set || is_set(ls_req_out_ls_as.operation)) leaf_name_data.push_back(ls_req_out_ls_as.get_name_leafdata());
-    if (ls_req_out_packets.is_set || is_set(ls_req_out_packets.operation)) leaf_name_data.push_back(ls_req_out_packets.get_name_leafdata());
-    if (ls_upd_in_ignored.is_set || is_set(ls_upd_in_ignored.operation)) leaf_name_data.push_back(ls_upd_in_ignored.get_name_leafdata());
-    if (ls_upd_in_ls_as.is_set || is_set(ls_upd_in_ls_as.operation)) leaf_name_data.push_back(ls_upd_in_ls_as.get_name_leafdata());
-    if (ls_upd_in_packets.is_set || is_set(ls_upd_in_packets.operation)) leaf_name_data.push_back(ls_upd_in_packets.get_name_leafdata());
-    if (ls_upd_out_ls_as.is_set || is_set(ls_upd_out_ls_as.operation)) leaf_name_data.push_back(ls_upd_out_ls_as.get_name_leafdata());
-    if (ls_upd_out_packets.is_set || is_set(ls_upd_out_packets.operation)) leaf_name_data.push_back(ls_upd_out_packets.get_name_leafdata());
-    if (total_in_packets.is_set || is_set(total_in_packets.operation)) leaf_name_data.push_back(total_in_packets.get_name_leafdata());
-    if (total_out_packets.is_set || is_set(total_out_packets.operation)) leaf_name_data.push_back(total_out_packets.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (checksum_err.is_set || is_set(checksum_err.yfilter)) leaf_name_data.push_back(checksum_err.get_name_leafdata());
+    if (dbdes_in_ls_as.is_set || is_set(dbdes_in_ls_as.yfilter)) leaf_name_data.push_back(dbdes_in_ls_as.get_name_leafdata());
+    if (dbdes_in_packets.is_set || is_set(dbdes_in_packets.yfilter)) leaf_name_data.push_back(dbdes_in_packets.get_name_leafdata());
+    if (dbdes_out_ls_as.is_set || is_set(dbdes_out_ls_as.yfilter)) leaf_name_data.push_back(dbdes_out_ls_as.get_name_leafdata());
+    if (dbdes_out_packets.is_set || is_set(dbdes_out_packets.yfilter)) leaf_name_data.push_back(dbdes_out_packets.get_name_leafdata());
+    if (dropped_in_gs.is_set || is_set(dropped_in_gs.yfilter)) leaf_name_data.push_back(dropped_in_gs.get_name_leafdata());
+    if (hello_in_packets.is_set || is_set(hello_in_packets.yfilter)) leaf_name_data.push_back(hello_in_packets.get_name_leafdata());
+    if (hello_out_packets.is_set || is_set(hello_out_packets.yfilter)) leaf_name_data.push_back(hello_out_packets.get_name_leafdata());
+    if (ls_ack_in_ls_as.is_set || is_set(ls_ack_in_ls_as.yfilter)) leaf_name_data.push_back(ls_ack_in_ls_as.get_name_leafdata());
+    if (ls_ack_in_packets.is_set || is_set(ls_ack_in_packets.yfilter)) leaf_name_data.push_back(ls_ack_in_packets.get_name_leafdata());
+    if (ls_ack_out_ls_as.is_set || is_set(ls_ack_out_ls_as.yfilter)) leaf_name_data.push_back(ls_ack_out_ls_as.get_name_leafdata());
+    if (ls_ack_out_packets.is_set || is_set(ls_ack_out_packets.yfilter)) leaf_name_data.push_back(ls_ack_out_packets.get_name_leafdata());
+    if (ls_req_in_ls_as.is_set || is_set(ls_req_in_ls_as.yfilter)) leaf_name_data.push_back(ls_req_in_ls_as.get_name_leafdata());
+    if (ls_req_in_packets.is_set || is_set(ls_req_in_packets.yfilter)) leaf_name_data.push_back(ls_req_in_packets.get_name_leafdata());
+    if (ls_req_out_ls_as.is_set || is_set(ls_req_out_ls_as.yfilter)) leaf_name_data.push_back(ls_req_out_ls_as.get_name_leafdata());
+    if (ls_req_out_packets.is_set || is_set(ls_req_out_packets.yfilter)) leaf_name_data.push_back(ls_req_out_packets.get_name_leafdata());
+    if (ls_upd_in_ignored.is_set || is_set(ls_upd_in_ignored.yfilter)) leaf_name_data.push_back(ls_upd_in_ignored.get_name_leafdata());
+    if (ls_upd_in_ls_as.is_set || is_set(ls_upd_in_ls_as.yfilter)) leaf_name_data.push_back(ls_upd_in_ls_as.get_name_leafdata());
+    if (ls_upd_in_packets.is_set || is_set(ls_upd_in_packets.yfilter)) leaf_name_data.push_back(ls_upd_in_packets.get_name_leafdata());
+    if (ls_upd_out_ls_as.is_set || is_set(ls_upd_out_ls_as.yfilter)) leaf_name_data.push_back(ls_upd_out_ls_as.get_name_leafdata());
+    if (ls_upd_out_packets.is_set || is_set(ls_upd_out_packets.yfilter)) leaf_name_data.push_back(ls_upd_out_packets.get_name_leafdata());
+    if (total_in_packets.is_set || is_set(total_in_packets.yfilter)) leaf_name_data.push_back(total_in_packets.get_name_leafdata());
+    if (total_out_packets.is_set || is_set(total_out_packets.yfilter)) leaf_name_data.push_back(total_out_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9964,104 +13871,259 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "checksum-err")
     {
         checksum_err = value;
+        checksum_err.value_namespace = name_space;
+        checksum_err.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dbdes-in-ls-as")
     {
         dbdes_in_ls_as = value;
+        dbdes_in_ls_as.value_namespace = name_space;
+        dbdes_in_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dbdes-in-packets")
     {
         dbdes_in_packets = value;
+        dbdes_in_packets.value_namespace = name_space;
+        dbdes_in_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dbdes-out-ls-as")
     {
         dbdes_out_ls_as = value;
+        dbdes_out_ls_as.value_namespace = name_space;
+        dbdes_out_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dbdes-out-packets")
     {
         dbdes_out_packets = value;
+        dbdes_out_packets.value_namespace = name_space;
+        dbdes_out_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dropped-in-gs")
     {
         dropped_in_gs = value;
+        dropped_in_gs.value_namespace = name_space;
+        dropped_in_gs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-in-packets")
     {
         hello_in_packets = value;
+        hello_in_packets.value_namespace = name_space;
+        hello_in_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-out-packets")
     {
         hello_out_packets = value;
+        hello_out_packets.value_namespace = name_space;
+        hello_out_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-ack-in-ls-as")
     {
         ls_ack_in_ls_as = value;
+        ls_ack_in_ls_as.value_namespace = name_space;
+        ls_ack_in_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-ack-in-packets")
     {
         ls_ack_in_packets = value;
+        ls_ack_in_packets.value_namespace = name_space;
+        ls_ack_in_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-ack-out-ls-as")
     {
         ls_ack_out_ls_as = value;
+        ls_ack_out_ls_as.value_namespace = name_space;
+        ls_ack_out_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-ack-out-packets")
     {
         ls_ack_out_packets = value;
+        ls_ack_out_packets.value_namespace = name_space;
+        ls_ack_out_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-req-in-ls-as")
     {
         ls_req_in_ls_as = value;
+        ls_req_in_ls_as.value_namespace = name_space;
+        ls_req_in_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-req-in-packets")
     {
         ls_req_in_packets = value;
+        ls_req_in_packets.value_namespace = name_space;
+        ls_req_in_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-req-out-ls-as")
     {
         ls_req_out_ls_as = value;
+        ls_req_out_ls_as.value_namespace = name_space;
+        ls_req_out_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-req-out-packets")
     {
         ls_req_out_packets = value;
+        ls_req_out_packets.value_namespace = name_space;
+        ls_req_out_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-upd-in-ignored")
     {
         ls_upd_in_ignored = value;
+        ls_upd_in_ignored.value_namespace = name_space;
+        ls_upd_in_ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-upd-in-ls-as")
     {
         ls_upd_in_ls_as = value;
+        ls_upd_in_ls_as.value_namespace = name_space;
+        ls_upd_in_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-upd-in-packets")
     {
         ls_upd_in_packets = value;
+        ls_upd_in_packets.value_namespace = name_space;
+        ls_upd_in_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-upd-out-ls-as")
     {
         ls_upd_out_ls_as = value;
+        ls_upd_out_ls_as.value_namespace = name_space;
+        ls_upd_out_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ls-upd-out-packets")
     {
         ls_upd_out_packets = value;
+        ls_upd_out_packets.value_namespace = name_space;
+        ls_upd_out_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-in-packets")
     {
         total_in_packets = value;
+        total_in_packets.value_namespace = name_space;
+        total_in_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-out-packets")
     {
         total_out_packets = value;
+        total_out_packets.value_namespace = name_space;
+        total_out_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "checksum-err")
+    {
+        checksum_err.yfilter = yfilter;
+    }
+    if(value_path == "dbdes-in-ls-as")
+    {
+        dbdes_in_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "dbdes-in-packets")
+    {
+        dbdes_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "dbdes-out-ls-as")
+    {
+        dbdes_out_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "dbdes-out-packets")
+    {
+        dbdes_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "dropped-in-gs")
+    {
+        dropped_in_gs.yfilter = yfilter;
+    }
+    if(value_path == "hello-in-packets")
+    {
+        hello_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-out-packets")
+    {
+        hello_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "ls-ack-in-ls-as")
+    {
+        ls_ack_in_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "ls-ack-in-packets")
+    {
+        ls_ack_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "ls-ack-out-ls-as")
+    {
+        ls_ack_out_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "ls-ack-out-packets")
+    {
+        ls_ack_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "ls-req-in-ls-as")
+    {
+        ls_req_in_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "ls-req-in-packets")
+    {
+        ls_req_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "ls-req-out-ls-as")
+    {
+        ls_req_out_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "ls-req-out-packets")
+    {
+        ls_req_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "ls-upd-in-ignored")
+    {
+        ls_upd_in_ignored.yfilter = yfilter;
+    }
+    if(value_path == "ls-upd-in-ls-as")
+    {
+        ls_upd_in_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "ls-upd-in-packets")
+    {
+        ls_upd_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "ls-upd-out-ls-as")
+    {
+        ls_upd_out_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "ls-upd-out-packets")
+    {
+        ls_upd_out_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-in-packets")
+    {
+        total_in_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-out-packets")
+    {
+        total_out_packets.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::ProtocolStats::ProtocolStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "checksum-err" || name == "dbdes-in-ls-as" || name == "dbdes-in-packets" || name == "dbdes-out-ls-as" || name == "dbdes-out-packets" || name == "dropped-in-gs" || name == "hello-in-packets" || name == "hello-out-packets" || name == "ls-ack-in-ls-as" || name == "ls-ack-in-packets" || name == "ls-ack-out-ls-as" || name == "ls-ack-out-packets" || name == "ls-req-in-ls-as" || name == "ls-req-in-packets" || name == "ls-req-out-ls-as" || name == "ls-req-out-packets" || name == "ls-upd-in-ignored" || name == "ls-upd-in-ls-as" || name == "ls-upd-in-packets" || name == "ls-upd-out-ls-as" || name == "ls-upd-out-packets" || name == "total-in-packets" || name == "total-out-packets")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfStats()
@@ -10094,7 +14156,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::has_operat
         if(spf_runtime[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (spf_header !=  nullptr && spf_header->has_operation());
 }
 
@@ -10174,8 +14236,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spf-header" || name == "spf-runtime")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::SpfHeader()
@@ -10208,9 +14281,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader:
         if(area_summary[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(header_router_id.operation)
-	|| is_set(header_sp_fs.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(header_router_id.yfilter)
+	|| ydk::is_set(header_sp_fs.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::get_segment_path() const
@@ -10236,8 +14309,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (header_router_id.is_set || is_set(header_router_id.operation)) leaf_name_data.push_back(header_router_id.get_name_leafdata());
-    if (header_sp_fs.is_set || is_set(header_sp_fs.operation)) leaf_name_data.push_back(header_sp_fs.get_name_leafdata());
+    if (header_router_id.is_set || is_set(header_router_id.yfilter)) leaf_name_data.push_back(header_router_id.get_name_leafdata());
+    if (header_sp_fs.is_set || is_set(header_sp_fs.yfilter)) leaf_name_data.push_back(header_sp_fs.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10277,16 +14350,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "header-router-id")
     {
         header_router_id = value;
+        header_router_id.value_namespace = name_space;
+        header_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-sp-fs")
     {
         header_sp_fs = value;
+        header_sp_fs.value_namespace = name_space;
+        header_sp_fs.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "header-router-id")
+    {
+        header_router_id.yfilter = yfilter;
+    }
+    if(value_path == "header-sp-fs")
+    {
+        header_sp_fs.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-summary" || name == "header-router-id" || name == "header-sp-fs")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary::AreaSummary()
@@ -10309,9 +14405,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader:
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area_id.operation)
-	|| is_set(sp_fs.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(sp_fs.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary::get_segment_path() const
@@ -10337,8 +14433,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (sp_fs.is_set || is_set(sp_fs.operation)) leaf_name_data.push_back(sp_fs.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (sp_fs.is_set || is_set(sp_fs.yfilter)) leaf_name_data.push_back(sp_fs.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10357,16 +14453,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sp-fs")
     {
         sp_fs = value;
+        sp_fs.value_namespace = name_space;
+        sp_fs.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "sp-fs")
+    {
+        sp_fs.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-id" || name == "sp-fs")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::SpfRuntime()
@@ -10420,12 +14539,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime
         if(lsa[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(lsa_changes.operation)
-	|| is_set(reason_flags.operation)
-	|| is_set(rib_add_routes.operation)
-	|| is_set(rib_delete_routes.operation)
-	|| is_set(start_time.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsa_changes.yfilter)
+	|| ydk::is_set(reason_flags.yfilter)
+	|| ydk::is_set(rib_add_routes.yfilter)
+	|| ydk::is_set(rib_delete_routes.yfilter)
+	|| ydk::is_set(start_time.yfilter)
 	|| (global_time !=  nullptr && global_time->has_operation());
 }
 
@@ -10452,11 +14571,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsa_changes.is_set || is_set(lsa_changes.operation)) leaf_name_data.push_back(lsa_changes.get_name_leafdata());
-    if (reason_flags.is_set || is_set(reason_flags.operation)) leaf_name_data.push_back(reason_flags.get_name_leafdata());
-    if (rib_add_routes.is_set || is_set(rib_add_routes.operation)) leaf_name_data.push_back(rib_add_routes.get_name_leafdata());
-    if (rib_delete_routes.is_set || is_set(rib_delete_routes.operation)) leaf_name_data.push_back(rib_delete_routes.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (lsa_changes.is_set || is_set(lsa_changes.yfilter)) leaf_name_data.push_back(lsa_changes.get_name_leafdata());
+    if (reason_flags.is_set || is_set(reason_flags.yfilter)) leaf_name_data.push_back(reason_flags.get_name_leafdata());
+    if (rib_add_routes.is_set || is_set(rib_add_routes.yfilter)) leaf_name_data.push_back(rib_add_routes.get_name_leafdata());
+    if (rib_delete_routes.is_set || is_set(rib_delete_routes.yfilter)) leaf_name_data.push_back(rib_delete_routes.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10531,28 +14650,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsa-changes")
     {
         lsa_changes = value;
+        lsa_changes.value_namespace = name_space;
+        lsa_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reason-flags")
     {
         reason_flags = value;
+        reason_flags.value_namespace = name_space;
+        reason_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rib-add-routes")
     {
         rib_add_routes = value;
+        rib_add_routes.value_namespace = name_space;
+        rib_add_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rib-delete-routes")
     {
         rib_delete_routes = value;
+        rib_delete_routes.value_namespace = name_space;
+        rib_delete_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsa-changes")
+    {
+        lsa_changes.yfilter = yfilter;
+    }
+    if(value_path == "reason-flags")
+    {
+        reason_flags.yfilter = yfilter;
+    }
+    if(value_path == "rib-add-routes")
+    {
+        rib_add_routes.yfilter = yfilter;
+    }
+    if(value_path == "rib-delete-routes")
+    {
+        rib_delete_routes.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-stat" || name == "global-time" || name == "lsa" || name == "lsa-changes" || name == "reason-flags" || name == "rib-add-routes" || name == "rib-delete-routes" || name == "start-time")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::GlobalTime()
@@ -10589,16 +14749,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dijkstra.operation)
-	|| is_set(external_prefix.operation)
-	|| is_set(external_prefix_del.operation)
-	|| is_set(inter_prefix.operation)
-	|| is_set(inter_prefix_del.operation)
-	|| is_set(intra_prefix.operation)
-	|| is_set(intra_prefix_del.operation)
-	|| is_set(rib_add.operation)
-	|| is_set(rib_del.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dijkstra.yfilter)
+	|| ydk::is_set(external_prefix.yfilter)
+	|| ydk::is_set(external_prefix_del.yfilter)
+	|| ydk::is_set(inter_prefix.yfilter)
+	|| ydk::is_set(inter_prefix_del.yfilter)
+	|| ydk::is_set(intra_prefix.yfilter)
+	|| ydk::is_set(intra_prefix_del.yfilter)
+	|| ydk::is_set(rib_add.yfilter)
+	|| ydk::is_set(rib_del.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::get_segment_path() const
@@ -10624,15 +14784,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dijkstra.is_set || is_set(dijkstra.operation)) leaf_name_data.push_back(dijkstra.get_name_leafdata());
-    if (external_prefix.is_set || is_set(external_prefix.operation)) leaf_name_data.push_back(external_prefix.get_name_leafdata());
-    if (external_prefix_del.is_set || is_set(external_prefix_del.operation)) leaf_name_data.push_back(external_prefix_del.get_name_leafdata());
-    if (inter_prefix.is_set || is_set(inter_prefix.operation)) leaf_name_data.push_back(inter_prefix.get_name_leafdata());
-    if (inter_prefix_del.is_set || is_set(inter_prefix_del.operation)) leaf_name_data.push_back(inter_prefix_del.get_name_leafdata());
-    if (intra_prefix.is_set || is_set(intra_prefix.operation)) leaf_name_data.push_back(intra_prefix.get_name_leafdata());
-    if (intra_prefix_del.is_set || is_set(intra_prefix_del.operation)) leaf_name_data.push_back(intra_prefix_del.get_name_leafdata());
-    if (rib_add.is_set || is_set(rib_add.operation)) leaf_name_data.push_back(rib_add.get_name_leafdata());
-    if (rib_del.is_set || is_set(rib_del.operation)) leaf_name_data.push_back(rib_del.get_name_leafdata());
+    if (dijkstra.is_set || is_set(dijkstra.yfilter)) leaf_name_data.push_back(dijkstra.get_name_leafdata());
+    if (external_prefix.is_set || is_set(external_prefix.yfilter)) leaf_name_data.push_back(external_prefix.get_name_leafdata());
+    if (external_prefix_del.is_set || is_set(external_prefix_del.yfilter)) leaf_name_data.push_back(external_prefix_del.get_name_leafdata());
+    if (inter_prefix.is_set || is_set(inter_prefix.yfilter)) leaf_name_data.push_back(inter_prefix.get_name_leafdata());
+    if (inter_prefix_del.is_set || is_set(inter_prefix_del.yfilter)) leaf_name_data.push_back(inter_prefix_del.get_name_leafdata());
+    if (intra_prefix.is_set || is_set(intra_prefix.yfilter)) leaf_name_data.push_back(intra_prefix.get_name_leafdata());
+    if (intra_prefix_del.is_set || is_set(intra_prefix_del.yfilter)) leaf_name_data.push_back(intra_prefix_del.get_name_leafdata());
+    if (rib_add.is_set || is_set(rib_add.yfilter)) leaf_name_data.push_back(rib_add.get_name_leafdata());
+    if (rib_del.is_set || is_set(rib_del.yfilter)) leaf_name_data.push_back(rib_del.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10651,44 +14811,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dijkstra")
     {
         dijkstra = value;
+        dijkstra.value_namespace = name_space;
+        dijkstra.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-prefix")
     {
         external_prefix = value;
+        external_prefix.value_namespace = name_space;
+        external_prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-prefix-del")
     {
         external_prefix_del = value;
+        external_prefix_del.value_namespace = name_space;
+        external_prefix_del.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-prefix")
     {
         inter_prefix = value;
+        inter_prefix.value_namespace = name_space;
+        inter_prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-prefix-del")
     {
         inter_prefix_del = value;
+        inter_prefix_del.value_namespace = name_space;
+        inter_prefix_del.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intra-prefix")
     {
         intra_prefix = value;
+        intra_prefix.value_namespace = name_space;
+        intra_prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intra-prefix-del")
     {
         intra_prefix_del = value;
+        intra_prefix_del.value_namespace = name_space;
+        intra_prefix_del.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rib-add")
     {
         rib_add = value;
+        rib_add.value_namespace = name_space;
+        rib_add.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rib-del")
     {
         rib_del = value;
+        rib_del.value_namespace = name_space;
+        rib_del.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dijkstra")
+    {
+        dijkstra.yfilter = yfilter;
+    }
+    if(value_path == "external-prefix")
+    {
+        external_prefix.yfilter = yfilter;
+    }
+    if(value_path == "external-prefix-del")
+    {
+        external_prefix_del.yfilter = yfilter;
+    }
+    if(value_path == "inter-prefix")
+    {
+        inter_prefix.yfilter = yfilter;
+    }
+    if(value_path == "inter-prefix-del")
+    {
+        inter_prefix_del.yfilter = yfilter;
+    }
+    if(value_path == "intra-prefix")
+    {
+        intra_prefix.yfilter = yfilter;
+    }
+    if(value_path == "intra-prefix-del")
+    {
+        intra_prefix_del.yfilter = yfilter;
+    }
+    if(value_path == "rib-add")
+    {
+        rib_add.yfilter = yfilter;
+    }
+    if(value_path == "rib-del")
+    {
+        rib_del.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dijkstra" || name == "external-prefix" || name == "external-prefix-del" || name == "inter-prefix" || name == "inter-prefix-del" || name == "intra-prefix" || name == "intra-prefix-del" || name == "rib-add" || name == "rib-del")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::Lsa()
@@ -10717,12 +14942,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsa_advertising_router.operation)
-	|| is_set(lsa_area_id.operation)
-	|| is_set(lsa_flush.operation)
-	|| is_set(lsa_id.operation)
-	|| is_set(lsa_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lsa_advertising_router.yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
+	|| ydk::is_set(lsa_flush.yfilter)
+	|| ydk::is_set(lsa_id.yfilter)
+	|| ydk::is_set(lsa_type.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::get_segment_path() const
@@ -10748,11 +14973,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsa_advertising_router.is_set || is_set(lsa_advertising_router.operation)) leaf_name_data.push_back(lsa_advertising_router.get_name_leafdata());
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
-    if (lsa_flush.is_set || is_set(lsa_flush.operation)) leaf_name_data.push_back(lsa_flush.get_name_leafdata());
-    if (lsa_id.is_set || is_set(lsa_id.operation)) leaf_name_data.push_back(lsa_id.get_name_leafdata());
-    if (lsa_type.is_set || is_set(lsa_type.operation)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
+    if (lsa_advertising_router.is_set || is_set(lsa_advertising_router.yfilter)) leaf_name_data.push_back(lsa_advertising_router.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_flush.is_set || is_set(lsa_flush.yfilter)) leaf_name_data.push_back(lsa_flush.get_name_leafdata());
+    if (lsa_id.is_set || is_set(lsa_id.yfilter)) leaf_name_data.push_back(lsa_id.get_name_leafdata());
+    if (lsa_type.is_set || is_set(lsa_type.yfilter)) leaf_name_data.push_back(lsa_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10771,28 +14996,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsa-advertising-router")
     {
         lsa_advertising_router = value;
+        lsa_advertising_router.value_namespace = name_space;
+        lsa_advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flush")
     {
         lsa_flush = value;
+        lsa_flush.value_namespace = name_space;
+        lsa_flush.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-id")
     {
         lsa_id = value;
+        lsa_id.value_namespace = name_space;
+        lsa_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-type")
     {
         lsa_type = value;
+        lsa_type.value_namespace = name_space;
+        lsa_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsa-advertising-router")
+    {
+        lsa_advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flush")
+    {
+        lsa_flush.yfilter = yfilter;
+    }
+    if(value_path == "lsa-id")
+    {
+        lsa_id.yfilter = yfilter;
+    }
+    if(value_path == "lsa-type")
+    {
+        lsa_type.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::Lsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsa-advertising-router" || name == "lsa-area-id" || name == "lsa-flush" || name == "lsa-id" || name == "lsa-type")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::AreaStat()
@@ -10826,12 +15092,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime
 {
     for (auto const & leaf : spf_stat_lsa_type_count.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(spf_stat_area_id.operation)
-	|| is_set(spf_stat_lsa_type_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(spf_stat_area_id.yfilter)
+	|| ydk::is_set(spf_stat_lsa_type_count.yfilter)
 	|| (spf_stat_time !=  nullptr && spf_stat_time->has_operation());
 }
 
@@ -10858,7 +15124,7 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (spf_stat_area_id.is_set || is_set(spf_stat_area_id.operation)) leaf_name_data.push_back(spf_stat_area_id.get_name_leafdata());
+    if (spf_stat_area_id.is_set || is_set(spf_stat_area_id.yfilter)) leaf_name_data.push_back(spf_stat_area_id.get_name_leafdata());
 
     auto spf_stat_lsa_type_count_name_datas = spf_stat_lsa_type_count.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), spf_stat_lsa_type_count_name_datas.begin(), spf_stat_lsa_type_count_name_datas.end());
@@ -10893,16 +15159,37 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "spf-stat-area-id")
     {
         spf_stat_area_id = value;
+        spf_stat_area_id.value_namespace = name_space;
+        spf_stat_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-stat-lsa-type-count")
     {
         spf_stat_lsa_type_count.append(value);
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "spf-stat-area-id")
+    {
+        spf_stat_area_id.yfilter = yfilter;
+    }
+    if(value_path == "spf-stat-lsa-type-count")
+    {
+        spf_stat_lsa_type_count.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spf-stat-time" || name == "spf-stat-area-id" || name == "spf-stat-lsa-type-count")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::SpfStatTime()
@@ -10939,16 +15226,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dijkstra.operation)
-	|| is_set(external_prefix.operation)
-	|| is_set(external_prefix_del.operation)
-	|| is_set(inter_prefix.operation)
-	|| is_set(inter_prefix_del.operation)
-	|| is_set(intra_prefix.operation)
-	|| is_set(intra_prefix_del.operation)
-	|| is_set(rib_add.operation)
-	|| is_set(rib_del.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dijkstra.yfilter)
+	|| ydk::is_set(external_prefix.yfilter)
+	|| ydk::is_set(external_prefix_del.yfilter)
+	|| ydk::is_set(inter_prefix.yfilter)
+	|| ydk::is_set(inter_prefix_del.yfilter)
+	|| ydk::is_set(intra_prefix.yfilter)
+	|| ydk::is_set(intra_prefix_del.yfilter)
+	|| ydk::is_set(rib_add.yfilter)
+	|| ydk::is_set(rib_del.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::get_segment_path() const
@@ -10974,15 +15261,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dijkstra.is_set || is_set(dijkstra.operation)) leaf_name_data.push_back(dijkstra.get_name_leafdata());
-    if (external_prefix.is_set || is_set(external_prefix.operation)) leaf_name_data.push_back(external_prefix.get_name_leafdata());
-    if (external_prefix_del.is_set || is_set(external_prefix_del.operation)) leaf_name_data.push_back(external_prefix_del.get_name_leafdata());
-    if (inter_prefix.is_set || is_set(inter_prefix.operation)) leaf_name_data.push_back(inter_prefix.get_name_leafdata());
-    if (inter_prefix_del.is_set || is_set(inter_prefix_del.operation)) leaf_name_data.push_back(inter_prefix_del.get_name_leafdata());
-    if (intra_prefix.is_set || is_set(intra_prefix.operation)) leaf_name_data.push_back(intra_prefix.get_name_leafdata());
-    if (intra_prefix_del.is_set || is_set(intra_prefix_del.operation)) leaf_name_data.push_back(intra_prefix_del.get_name_leafdata());
-    if (rib_add.is_set || is_set(rib_add.operation)) leaf_name_data.push_back(rib_add.get_name_leafdata());
-    if (rib_del.is_set || is_set(rib_del.operation)) leaf_name_data.push_back(rib_del.get_name_leafdata());
+    if (dijkstra.is_set || is_set(dijkstra.yfilter)) leaf_name_data.push_back(dijkstra.get_name_leafdata());
+    if (external_prefix.is_set || is_set(external_prefix.yfilter)) leaf_name_data.push_back(external_prefix.get_name_leafdata());
+    if (external_prefix_del.is_set || is_set(external_prefix_del.yfilter)) leaf_name_data.push_back(external_prefix_del.get_name_leafdata());
+    if (inter_prefix.is_set || is_set(inter_prefix.yfilter)) leaf_name_data.push_back(inter_prefix.get_name_leafdata());
+    if (inter_prefix_del.is_set || is_set(inter_prefix_del.yfilter)) leaf_name_data.push_back(inter_prefix_del.get_name_leafdata());
+    if (intra_prefix.is_set || is_set(intra_prefix.yfilter)) leaf_name_data.push_back(intra_prefix.get_name_leafdata());
+    if (intra_prefix_del.is_set || is_set(intra_prefix_del.yfilter)) leaf_name_data.push_back(intra_prefix_del.get_name_leafdata());
+    if (rib_add.is_set || is_set(rib_add.yfilter)) leaf_name_data.push_back(rib_add.get_name_leafdata());
+    if (rib_del.is_set || is_set(rib_del.yfilter)) leaf_name_data.push_back(rib_del.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11001,44 +15288,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dijkstra")
     {
         dijkstra = value;
+        dijkstra.value_namespace = name_space;
+        dijkstra.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-prefix")
     {
         external_prefix = value;
+        external_prefix.value_namespace = name_space;
+        external_prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-prefix-del")
     {
         external_prefix_del = value;
+        external_prefix_del.value_namespace = name_space;
+        external_prefix_del.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-prefix")
     {
         inter_prefix = value;
+        inter_prefix.value_namespace = name_space;
+        inter_prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-prefix-del")
     {
         inter_prefix_del = value;
+        inter_prefix_del.value_namespace = name_space;
+        inter_prefix_del.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intra-prefix")
     {
         intra_prefix = value;
+        intra_prefix.value_namespace = name_space;
+        intra_prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intra-prefix-del")
     {
         intra_prefix_del = value;
+        intra_prefix_del.value_namespace = name_space;
+        intra_prefix_del.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rib-add")
     {
         rib_add = value;
+        rib_add.value_namespace = name_space;
+        rib_add.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rib-del")
     {
         rib_del = value;
+        rib_del.value_namespace = name_space;
+        rib_del.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dijkstra")
+    {
+        dijkstra.yfilter = yfilter;
+    }
+    if(value_path == "external-prefix")
+    {
+        external_prefix.yfilter = yfilter;
+    }
+    if(value_path == "external-prefix-del")
+    {
+        external_prefix_del.yfilter = yfilter;
+    }
+    if(value_path == "inter-prefix")
+    {
+        inter_prefix.yfilter = yfilter;
+    }
+    if(value_path == "inter-prefix-del")
+    {
+        inter_prefix_del.yfilter = yfilter;
+    }
+    if(value_path == "intra-prefix")
+    {
+        intra_prefix.yfilter = yfilter;
+    }
+    if(value_path == "intra-prefix-del")
+    {
+        intra_prefix_del.yfilter = yfilter;
+    }
+    if(value_path == "rib-add")
+    {
+        rib_add.yfilter = yfilter;
+    }
+    if(value_path == "rib-del")
+    {
+        rib_del.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dijkstra" || name == "external-prefix" || name == "external-prefix-del" || name == "inter-prefix" || name == "inter-prefix-del" || name == "intra-prefix" || name == "intra-prefix-del" || name == "rib-add" || name == "rib-del")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::RawioStats()
@@ -11097,27 +15449,27 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::has_data
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_bytes.operation)
-	|| is_set(in_error_drops.operation)
-	|| is_set(in_handle_drops.operation)
-	|| is_set(in_ipsec_drops.operation)
-	|| is_set(in_long_packets.operation)
-	|| is_set(in_malloc_drops.operation)
-	|| is_set(in_packets.operation)
-	|| is_set(in_queue_drops.operation)
-	|| is_set(in_short_drops.operation)
-	|| is_set(out_bytes.operation)
-	|| is_set(out_error_drops.operation)
-	|| is_set(out_ipsec_drops.operation)
-	|| is_set(out_nofd_drops.operation)
-	|| is_set(out_nopak_drops.operation)
-	|| is_set(out_packets.operation)
-	|| is_set(out_pakapi_errors.operation)
-	|| is_set(raw_conn_close.operation)
-	|| is_set(raw_conn_error.operation)
-	|| is_set(raw_conn_open.operation)
-	|| is_set(raw_conn_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(in_bytes.yfilter)
+	|| ydk::is_set(in_error_drops.yfilter)
+	|| ydk::is_set(in_handle_drops.yfilter)
+	|| ydk::is_set(in_ipsec_drops.yfilter)
+	|| ydk::is_set(in_long_packets.yfilter)
+	|| ydk::is_set(in_malloc_drops.yfilter)
+	|| ydk::is_set(in_packets.yfilter)
+	|| ydk::is_set(in_queue_drops.yfilter)
+	|| ydk::is_set(in_short_drops.yfilter)
+	|| ydk::is_set(out_bytes.yfilter)
+	|| ydk::is_set(out_error_drops.yfilter)
+	|| ydk::is_set(out_ipsec_drops.yfilter)
+	|| ydk::is_set(out_nofd_drops.yfilter)
+	|| ydk::is_set(out_nopak_drops.yfilter)
+	|| ydk::is_set(out_packets.yfilter)
+	|| ydk::is_set(out_pakapi_errors.yfilter)
+	|| ydk::is_set(raw_conn_close.yfilter)
+	|| ydk::is_set(raw_conn_error.yfilter)
+	|| ydk::is_set(raw_conn_open.yfilter)
+	|| ydk::is_set(raw_conn_state.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::get_segment_path() const
@@ -11143,26 +15495,26 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_bytes.is_set || is_set(in_bytes.operation)) leaf_name_data.push_back(in_bytes.get_name_leafdata());
-    if (in_error_drops.is_set || is_set(in_error_drops.operation)) leaf_name_data.push_back(in_error_drops.get_name_leafdata());
-    if (in_handle_drops.is_set || is_set(in_handle_drops.operation)) leaf_name_data.push_back(in_handle_drops.get_name_leafdata());
-    if (in_ipsec_drops.is_set || is_set(in_ipsec_drops.operation)) leaf_name_data.push_back(in_ipsec_drops.get_name_leafdata());
-    if (in_long_packets.is_set || is_set(in_long_packets.operation)) leaf_name_data.push_back(in_long_packets.get_name_leafdata());
-    if (in_malloc_drops.is_set || is_set(in_malloc_drops.operation)) leaf_name_data.push_back(in_malloc_drops.get_name_leafdata());
-    if (in_packets.is_set || is_set(in_packets.operation)) leaf_name_data.push_back(in_packets.get_name_leafdata());
-    if (in_queue_drops.is_set || is_set(in_queue_drops.operation)) leaf_name_data.push_back(in_queue_drops.get_name_leafdata());
-    if (in_short_drops.is_set || is_set(in_short_drops.operation)) leaf_name_data.push_back(in_short_drops.get_name_leafdata());
-    if (out_bytes.is_set || is_set(out_bytes.operation)) leaf_name_data.push_back(out_bytes.get_name_leafdata());
-    if (out_error_drops.is_set || is_set(out_error_drops.operation)) leaf_name_data.push_back(out_error_drops.get_name_leafdata());
-    if (out_ipsec_drops.is_set || is_set(out_ipsec_drops.operation)) leaf_name_data.push_back(out_ipsec_drops.get_name_leafdata());
-    if (out_nofd_drops.is_set || is_set(out_nofd_drops.operation)) leaf_name_data.push_back(out_nofd_drops.get_name_leafdata());
-    if (out_nopak_drops.is_set || is_set(out_nopak_drops.operation)) leaf_name_data.push_back(out_nopak_drops.get_name_leafdata());
-    if (out_packets.is_set || is_set(out_packets.operation)) leaf_name_data.push_back(out_packets.get_name_leafdata());
-    if (out_pakapi_errors.is_set || is_set(out_pakapi_errors.operation)) leaf_name_data.push_back(out_pakapi_errors.get_name_leafdata());
-    if (raw_conn_close.is_set || is_set(raw_conn_close.operation)) leaf_name_data.push_back(raw_conn_close.get_name_leafdata());
-    if (raw_conn_error.is_set || is_set(raw_conn_error.operation)) leaf_name_data.push_back(raw_conn_error.get_name_leafdata());
-    if (raw_conn_open.is_set || is_set(raw_conn_open.operation)) leaf_name_data.push_back(raw_conn_open.get_name_leafdata());
-    if (raw_conn_state.is_set || is_set(raw_conn_state.operation)) leaf_name_data.push_back(raw_conn_state.get_name_leafdata());
+    if (in_bytes.is_set || is_set(in_bytes.yfilter)) leaf_name_data.push_back(in_bytes.get_name_leafdata());
+    if (in_error_drops.is_set || is_set(in_error_drops.yfilter)) leaf_name_data.push_back(in_error_drops.get_name_leafdata());
+    if (in_handle_drops.is_set || is_set(in_handle_drops.yfilter)) leaf_name_data.push_back(in_handle_drops.get_name_leafdata());
+    if (in_ipsec_drops.is_set || is_set(in_ipsec_drops.yfilter)) leaf_name_data.push_back(in_ipsec_drops.get_name_leafdata());
+    if (in_long_packets.is_set || is_set(in_long_packets.yfilter)) leaf_name_data.push_back(in_long_packets.get_name_leafdata());
+    if (in_malloc_drops.is_set || is_set(in_malloc_drops.yfilter)) leaf_name_data.push_back(in_malloc_drops.get_name_leafdata());
+    if (in_packets.is_set || is_set(in_packets.yfilter)) leaf_name_data.push_back(in_packets.get_name_leafdata());
+    if (in_queue_drops.is_set || is_set(in_queue_drops.yfilter)) leaf_name_data.push_back(in_queue_drops.get_name_leafdata());
+    if (in_short_drops.is_set || is_set(in_short_drops.yfilter)) leaf_name_data.push_back(in_short_drops.get_name_leafdata());
+    if (out_bytes.is_set || is_set(out_bytes.yfilter)) leaf_name_data.push_back(out_bytes.get_name_leafdata());
+    if (out_error_drops.is_set || is_set(out_error_drops.yfilter)) leaf_name_data.push_back(out_error_drops.get_name_leafdata());
+    if (out_ipsec_drops.is_set || is_set(out_ipsec_drops.yfilter)) leaf_name_data.push_back(out_ipsec_drops.get_name_leafdata());
+    if (out_nofd_drops.is_set || is_set(out_nofd_drops.yfilter)) leaf_name_data.push_back(out_nofd_drops.get_name_leafdata());
+    if (out_nopak_drops.is_set || is_set(out_nopak_drops.yfilter)) leaf_name_data.push_back(out_nopak_drops.get_name_leafdata());
+    if (out_packets.is_set || is_set(out_packets.yfilter)) leaf_name_data.push_back(out_packets.get_name_leafdata());
+    if (out_pakapi_errors.is_set || is_set(out_pakapi_errors.yfilter)) leaf_name_data.push_back(out_pakapi_errors.get_name_leafdata());
+    if (raw_conn_close.is_set || is_set(raw_conn_close.yfilter)) leaf_name_data.push_back(raw_conn_close.get_name_leafdata());
+    if (raw_conn_error.is_set || is_set(raw_conn_error.yfilter)) leaf_name_data.push_back(raw_conn_error.get_name_leafdata());
+    if (raw_conn_open.is_set || is_set(raw_conn_open.yfilter)) leaf_name_data.push_back(raw_conn_open.get_name_leafdata());
+    if (raw_conn_state.is_set || is_set(raw_conn_state.yfilter)) leaf_name_data.push_back(raw_conn_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11181,88 +15533,219 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-bytes")
     {
         in_bytes = value;
+        in_bytes.value_namespace = name_space;
+        in_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-error-drops")
     {
         in_error_drops = value;
+        in_error_drops.value_namespace = name_space;
+        in_error_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-handle-drops")
     {
         in_handle_drops = value;
+        in_handle_drops.value_namespace = name_space;
+        in_handle_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-ipsec-drops")
     {
         in_ipsec_drops = value;
+        in_ipsec_drops.value_namespace = name_space;
+        in_ipsec_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-long-packets")
     {
         in_long_packets = value;
+        in_long_packets.value_namespace = name_space;
+        in_long_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-malloc-drops")
     {
         in_malloc_drops = value;
+        in_malloc_drops.value_namespace = name_space;
+        in_malloc_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-packets")
     {
         in_packets = value;
+        in_packets.value_namespace = name_space;
+        in_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-queue-drops")
     {
         in_queue_drops = value;
+        in_queue_drops.value_namespace = name_space;
+        in_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-short-drops")
     {
         in_short_drops = value;
+        in_short_drops.value_namespace = name_space;
+        in_short_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-bytes")
     {
         out_bytes = value;
+        out_bytes.value_namespace = name_space;
+        out_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-error-drops")
     {
         out_error_drops = value;
+        out_error_drops.value_namespace = name_space;
+        out_error_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-ipsec-drops")
     {
         out_ipsec_drops = value;
+        out_ipsec_drops.value_namespace = name_space;
+        out_ipsec_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-nofd-drops")
     {
         out_nofd_drops = value;
+        out_nofd_drops.value_namespace = name_space;
+        out_nofd_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-nopak-drops")
     {
         out_nopak_drops = value;
+        out_nopak_drops.value_namespace = name_space;
+        out_nopak_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-packets")
     {
         out_packets = value;
+        out_packets.value_namespace = name_space;
+        out_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-pakapi-errors")
     {
         out_pakapi_errors = value;
+        out_pakapi_errors.value_namespace = name_space;
+        out_pakapi_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "raw-conn-close")
     {
         raw_conn_close = value;
+        raw_conn_close.value_namespace = name_space;
+        raw_conn_close.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "raw-conn-error")
     {
         raw_conn_error = value;
+        raw_conn_error.value_namespace = name_space;
+        raw_conn_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "raw-conn-open")
     {
         raw_conn_open = value;
+        raw_conn_open.value_namespace = name_space;
+        raw_conn_open.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "raw-conn-state")
     {
         raw_conn_state = value;
+        raw_conn_state.value_namespace = name_space;
+        raw_conn_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-bytes")
+    {
+        in_bytes.yfilter = yfilter;
+    }
+    if(value_path == "in-error-drops")
+    {
+        in_error_drops.yfilter = yfilter;
+    }
+    if(value_path == "in-handle-drops")
+    {
+        in_handle_drops.yfilter = yfilter;
+    }
+    if(value_path == "in-ipsec-drops")
+    {
+        in_ipsec_drops.yfilter = yfilter;
+    }
+    if(value_path == "in-long-packets")
+    {
+        in_long_packets.yfilter = yfilter;
+    }
+    if(value_path == "in-malloc-drops")
+    {
+        in_malloc_drops.yfilter = yfilter;
+    }
+    if(value_path == "in-packets")
+    {
+        in_packets.yfilter = yfilter;
+    }
+    if(value_path == "in-queue-drops")
+    {
+        in_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "in-short-drops")
+    {
+        in_short_drops.yfilter = yfilter;
+    }
+    if(value_path == "out-bytes")
+    {
+        out_bytes.yfilter = yfilter;
+    }
+    if(value_path == "out-error-drops")
+    {
+        out_error_drops.yfilter = yfilter;
+    }
+    if(value_path == "out-ipsec-drops")
+    {
+        out_ipsec_drops.yfilter = yfilter;
+    }
+    if(value_path == "out-nofd-drops")
+    {
+        out_nofd_drops.yfilter = yfilter;
+    }
+    if(value_path == "out-nopak-drops")
+    {
+        out_nopak_drops.yfilter = yfilter;
+    }
+    if(value_path == "out-packets")
+    {
+        out_packets.yfilter = yfilter;
+    }
+    if(value_path == "out-pakapi-errors")
+    {
+        out_pakapi_errors.yfilter = yfilter;
+    }
+    if(value_path == "raw-conn-close")
+    {
+        raw_conn_close.yfilter = yfilter;
+    }
+    if(value_path == "raw-conn-error")
+    {
+        raw_conn_error.yfilter = yfilter;
+    }
+    if(value_path == "raw-conn-open")
+    {
+        raw_conn_open.yfilter = yfilter;
+    }
+    if(value_path == "raw-conn-state")
+    {
+        raw_conn_state.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::RawioStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-bytes" || name == "in-error-drops" || name == "in-handle-drops" || name == "in-ipsec-drops" || name == "in-long-packets" || name == "in-malloc-drops" || name == "in-packets" || name == "in-queue-drops" || name == "in-short-drops" || name == "out-bytes" || name == "out-error-drops" || name == "out-ipsec-drops" || name == "out-nofd-drops" || name == "out-nopak-drops" || name == "out-packets" || name == "out-pakapi-errors" || name == "raw-conn-close" || name == "raw-conn-error" || name == "raw-conn-open" || name == "raw-conn-state")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats::PrefixPriorityStats()
@@ -11289,11 +15772,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats:
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(critical.operation)
-	|| is_set(high.operation)
-	|| is_set(low.operation)
-	|| is_set(medium.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(critical.yfilter)
+	|| ydk::is_set(high.yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| ydk::is_set(medium.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats::get_segment_path() const
@@ -11319,10 +15802,10 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (critical.is_set || is_set(critical.operation)) leaf_name_data.push_back(critical.get_name_leafdata());
-    if (high.is_set || is_set(high.operation)) leaf_name_data.push_back(high.get_name_leafdata());
-    if (low.is_set || is_set(low.operation)) leaf_name_data.push_back(low.get_name_leafdata());
-    if (medium.is_set || is_set(medium.operation)) leaf_name_data.push_back(medium.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+    if (high.is_set || is_set(high.yfilter)) leaf_name_data.push_back(high.get_name_leafdata());
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+    if (medium.is_set || is_set(medium.yfilter)) leaf_name_data.push_back(medium.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11341,24 +15824,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "critical")
     {
         critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "high")
     {
         high = value;
+        high.value_namespace = name_space;
+        high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "low")
     {
         low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "medium")
     {
         medium = value;
+        medium.value_namespace = name_space;
+        medium.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+    if(value_path == "high")
+    {
+        high.yfilter = yfilter;
+    }
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+    if(value_path == "medium")
+    {
+        medium.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::PrefixPriorityStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "critical" || name == "high" || name == "low" || name == "medium")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::VrfRibBatchStats()
@@ -11397,17 +15915,17 @@ bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::ha
 
 bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(batches_sent.operation)
-	|| is_set(max_routes.operation)
-	|| is_set(paths_add.operation)
-	|| is_set(paths_add_errs.operation)
-	|| is_set(paths_del.operation)
-	|| is_set(paths_del_errs.operation)
-	|| is_set(paths_pending.operation)
-	|| is_set(paths_sent.operation)
-	|| is_set(routes_pending.operation)
-	|| is_set(routes_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(batches_sent.yfilter)
+	|| ydk::is_set(max_routes.yfilter)
+	|| ydk::is_set(paths_add.yfilter)
+	|| ydk::is_set(paths_add_errs.yfilter)
+	|| ydk::is_set(paths_del.yfilter)
+	|| ydk::is_set(paths_del_errs.yfilter)
+	|| ydk::is_set(paths_pending.yfilter)
+	|| ydk::is_set(paths_sent.yfilter)
+	|| ydk::is_set(routes_pending.yfilter)
+	|| ydk::is_set(routes_sent.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::get_segment_path() const
@@ -11433,16 +15951,16 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (batches_sent.is_set || is_set(batches_sent.operation)) leaf_name_data.push_back(batches_sent.get_name_leafdata());
-    if (max_routes.is_set || is_set(max_routes.operation)) leaf_name_data.push_back(max_routes.get_name_leafdata());
-    if (paths_add.is_set || is_set(paths_add.operation)) leaf_name_data.push_back(paths_add.get_name_leafdata());
-    if (paths_add_errs.is_set || is_set(paths_add_errs.operation)) leaf_name_data.push_back(paths_add_errs.get_name_leafdata());
-    if (paths_del.is_set || is_set(paths_del.operation)) leaf_name_data.push_back(paths_del.get_name_leafdata());
-    if (paths_del_errs.is_set || is_set(paths_del_errs.operation)) leaf_name_data.push_back(paths_del_errs.get_name_leafdata());
-    if (paths_pending.is_set || is_set(paths_pending.operation)) leaf_name_data.push_back(paths_pending.get_name_leafdata());
-    if (paths_sent.is_set || is_set(paths_sent.operation)) leaf_name_data.push_back(paths_sent.get_name_leafdata());
-    if (routes_pending.is_set || is_set(routes_pending.operation)) leaf_name_data.push_back(routes_pending.get_name_leafdata());
-    if (routes_sent.is_set || is_set(routes_sent.operation)) leaf_name_data.push_back(routes_sent.get_name_leafdata());
+    if (batches_sent.is_set || is_set(batches_sent.yfilter)) leaf_name_data.push_back(batches_sent.get_name_leafdata());
+    if (max_routes.is_set || is_set(max_routes.yfilter)) leaf_name_data.push_back(max_routes.get_name_leafdata());
+    if (paths_add.is_set || is_set(paths_add.yfilter)) leaf_name_data.push_back(paths_add.get_name_leafdata());
+    if (paths_add_errs.is_set || is_set(paths_add_errs.yfilter)) leaf_name_data.push_back(paths_add_errs.get_name_leafdata());
+    if (paths_del.is_set || is_set(paths_del.yfilter)) leaf_name_data.push_back(paths_del.get_name_leafdata());
+    if (paths_del_errs.is_set || is_set(paths_del_errs.yfilter)) leaf_name_data.push_back(paths_del_errs.get_name_leafdata());
+    if (paths_pending.is_set || is_set(paths_pending.yfilter)) leaf_name_data.push_back(paths_pending.get_name_leafdata());
+    if (paths_sent.is_set || is_set(paths_sent.yfilter)) leaf_name_data.push_back(paths_sent.get_name_leafdata());
+    if (routes_pending.is_set || is_set(routes_pending.yfilter)) leaf_name_data.push_back(routes_pending.get_name_leafdata());
+    if (routes_sent.is_set || is_set(routes_sent.yfilter)) leaf_name_data.push_back(routes_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11461,48 +15979,119 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "batches-sent")
     {
         batches_sent = value;
+        batches_sent.value_namespace = name_space;
+        batches_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-routes")
     {
         max_routes = value;
+        max_routes.value_namespace = name_space;
+        max_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "paths-add")
     {
         paths_add = value;
+        paths_add.value_namespace = name_space;
+        paths_add.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "paths-add-errs")
     {
         paths_add_errs = value;
+        paths_add_errs.value_namespace = name_space;
+        paths_add_errs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "paths-del")
     {
         paths_del = value;
+        paths_del.value_namespace = name_space;
+        paths_del.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "paths-del-errs")
     {
         paths_del_errs = value;
+        paths_del_errs.value_namespace = name_space;
+        paths_del_errs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "paths-pending")
     {
         paths_pending = value;
+        paths_pending.value_namespace = name_space;
+        paths_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "paths-sent")
     {
         paths_sent = value;
+        paths_sent.value_namespace = name_space;
+        paths_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "routes-pending")
     {
         routes_pending = value;
+        routes_pending.value_namespace = name_space;
+        routes_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "routes-sent")
     {
         routes_sent = value;
+        routes_sent.value_namespace = name_space;
+        routes_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "batches-sent")
+    {
+        batches_sent.yfilter = yfilter;
+    }
+    if(value_path == "max-routes")
+    {
+        max_routes.yfilter = yfilter;
+    }
+    if(value_path == "paths-add")
+    {
+        paths_add.yfilter = yfilter;
+    }
+    if(value_path == "paths-add-errs")
+    {
+        paths_add_errs.yfilter = yfilter;
+    }
+    if(value_path == "paths-del")
+    {
+        paths_del.yfilter = yfilter;
+    }
+    if(value_path == "paths-del-errs")
+    {
+        paths_del_errs.yfilter = yfilter;
+    }
+    if(value_path == "paths-pending")
+    {
+        paths_pending.yfilter = yfilter;
+    }
+    if(value_path == "paths-sent")
+    {
+        paths_sent.yfilter = yfilter;
+    }
+    if(value_path == "routes-pending")
+    {
+        routes_pending.yfilter = yfilter;
+    }
+    if(value_path == "routes-sent")
+    {
+        routes_sent.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::VrfStatistics::VrfRibBatchStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "batches-sent" || name == "max-routes" || name == "paths-add" || name == "paths-add-errs" || name == "paths-del" || name == "paths-del-errs" || name == "paths-pending" || name == "paths-sent" || name == "routes-pending" || name == "routes-sent")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Summary()
@@ -11533,7 +16122,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::has_data() const
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
 	|| (protocol !=  nullptr && protocol->has_operation())
 	|| (route !=  nullptr && route->has_operation());
@@ -11622,8 +16211,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfv3" || name == "protocol" || name == "route")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::Protocol()
@@ -11654,13 +16254,13 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::has_data() const
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(administrative_distance.operation)
-	|| is_set(administrative_distance_external.operation)
-	|| is_set(administrative_distance_inter_area.operation)
-	|| is_set(distribute_list_in.operation)
-	|| is_set(is_graceful_restart.operation)
-	|| is_set(protocol_router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(administrative_distance.yfilter)
+	|| ydk::is_set(administrative_distance_external.yfilter)
+	|| ydk::is_set(administrative_distance_inter_area.yfilter)
+	|| ydk::is_set(distribute_list_in.yfilter)
+	|| ydk::is_set(is_graceful_restart.yfilter)
+	|| ydk::is_set(protocol_router_id.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::get_segment_path() const
@@ -11686,12 +16286,12 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (administrative_distance.is_set || is_set(administrative_distance.operation)) leaf_name_data.push_back(administrative_distance.get_name_leafdata());
-    if (administrative_distance_external.is_set || is_set(administrative_distance_external.operation)) leaf_name_data.push_back(administrative_distance_external.get_name_leafdata());
-    if (administrative_distance_inter_area.is_set || is_set(administrative_distance_inter_area.operation)) leaf_name_data.push_back(administrative_distance_inter_area.get_name_leafdata());
-    if (distribute_list_in.is_set || is_set(distribute_list_in.operation)) leaf_name_data.push_back(distribute_list_in.get_name_leafdata());
-    if (is_graceful_restart.is_set || is_set(is_graceful_restart.operation)) leaf_name_data.push_back(is_graceful_restart.get_name_leafdata());
-    if (protocol_router_id.is_set || is_set(protocol_router_id.operation)) leaf_name_data.push_back(protocol_router_id.get_name_leafdata());
+    if (administrative_distance.is_set || is_set(administrative_distance.yfilter)) leaf_name_data.push_back(administrative_distance.get_name_leafdata());
+    if (administrative_distance_external.is_set || is_set(administrative_distance_external.yfilter)) leaf_name_data.push_back(administrative_distance_external.get_name_leafdata());
+    if (administrative_distance_inter_area.is_set || is_set(administrative_distance_inter_area.yfilter)) leaf_name_data.push_back(administrative_distance_inter_area.get_name_leafdata());
+    if (distribute_list_in.is_set || is_set(distribute_list_in.yfilter)) leaf_name_data.push_back(distribute_list_in.get_name_leafdata());
+    if (is_graceful_restart.is_set || is_set(is_graceful_restart.yfilter)) leaf_name_data.push_back(is_graceful_restart.get_name_leafdata());
+    if (protocol_router_id.is_set || is_set(protocol_router_id.yfilter)) leaf_name_data.push_back(protocol_router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11710,32 +16310,79 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "administrative-distance")
     {
         administrative_distance = value;
+        administrative_distance.value_namespace = name_space;
+        administrative_distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "administrative-distance-external")
     {
         administrative_distance_external = value;
+        administrative_distance_external.value_namespace = name_space;
+        administrative_distance_external.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "administrative-distance-inter-area")
     {
         administrative_distance_inter_area = value;
+        administrative_distance_inter_area.value_namespace = name_space;
+        administrative_distance_inter_area.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "distribute-list-in")
     {
         distribute_list_in = value;
+        distribute_list_in.value_namespace = name_space;
+        distribute_list_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-graceful-restart")
     {
         is_graceful_restart = value;
+        is_graceful_restart.value_namespace = name_space;
+        is_graceful_restart.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-router-id")
     {
         protocol_router_id = value;
+        protocol_router_id.value_namespace = name_space;
+        protocol_router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "administrative-distance")
+    {
+        administrative_distance.yfilter = yfilter;
+    }
+    if(value_path == "administrative-distance-external")
+    {
+        administrative_distance_external.yfilter = yfilter;
+    }
+    if(value_path == "administrative-distance-inter-area")
+    {
+        administrative_distance_inter_area.yfilter = yfilter;
+    }
+    if(value_path == "distribute-list-in")
+    {
+        distribute_list_in.yfilter = yfilter;
+    }
+    if(value_path == "is-graceful-restart")
+    {
+        is_graceful_restart.yfilter = yfilter;
+    }
+    if(value_path == "protocol-router-id")
+    {
+        protocol_router_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "administrative-distance" || name == "administrative-distance-external" || name == "administrative-distance-inter-area" || name == "distribute-list-in" || name == "is-graceful-restart" || name == "protocol-router-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::Ospfv3_()
@@ -11877,56 +16524,56 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::has_operation() c
         if(stub_router[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(areas.operation)
-	|| is_set(as_dc_bitless_ls_as.operation)
-	|| is_set(as_do_not_age_ls_as.operation)
-	|| is_set(as_ls_as.operation)
-	|| is_set(as_lsa_flood_list_length.operation)
-	|| is_set(context_name.operation)
-	|| is_set(default_metric.operation)
-	|| is_set(default_metric_type.operation)
-	|| is_set(default_policy_name.operation)
-	|| is_set(default_tag.operation)
-	|| is_set(grace_resync_time.operation)
-	|| is_set(graceful_shutdown_state.operation)
-	|| is_set(is_area_border_router.operation)
-	|| is_set(is_as_border_router.operation)
-	|| is_set(is_auto_cost.operation)
-	|| is_set(is_default_always.operation)
-	|| is_set(is_default_originated.operation)
-	|| is_set(is_default_policy.operation)
-	|| is_set(is_grace_restart_enabled.operation)
-	|| is_set(is_nsr_enabled.operation)
-	|| is_set(is_nsr_switchover_on_restart.operation)
-	|| is_set(is_opaque_capable.operation)
-	|| is_set(is_role_standby.operation)
-	|| is_set(is_router_id_stalled.operation)
-	|| is_set(last_nsf_time.operation)
-	|| is_set(lsa_flood_pacing_interval.operation)
-	|| is_set(lsa_group_interval.operation)
-	|| is_set(lsa_hold_time.operation)
-	|| is_set(lsa_maximum_time.operation)
-	|| is_set(lsa_retransmission_pacing_interval.operation)
-	|| is_set(lsa_start_time.operation)
-	|| is_set(maximum_interfaces.operation)
-	|| is_set(maximum_paths.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_lsa_interval.operation)
-	|| is_set(normal_areas.operation)
-	|| is_set(nssa_areas.operation)
-	|| is_set(opaque_lsa_checksum.operation)
-	|| is_set(opaque_lsas.operation)
-	|| is_set(redistribution_limit.operation)
-	|| is_set(redistribution_threshold.operation)
-	|| is_set(reference_bandwidth.operation)
-	|| is_set(role.operation)
-	|| is_set(router_id.operation)
-	|| is_set(snmp_trap_enabled.operation)
-	|| is_set(spf_hold_time.operation)
-	|| is_set(spf_maximum_time.operation)
-	|| is_set(spf_start_time.operation)
-	|| is_set(stub_areas.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(areas.yfilter)
+	|| ydk::is_set(as_dc_bitless_ls_as.yfilter)
+	|| ydk::is_set(as_do_not_age_ls_as.yfilter)
+	|| ydk::is_set(as_ls_as.yfilter)
+	|| ydk::is_set(as_lsa_flood_list_length.yfilter)
+	|| ydk::is_set(context_name.yfilter)
+	|| ydk::is_set(default_metric.yfilter)
+	|| ydk::is_set(default_metric_type.yfilter)
+	|| ydk::is_set(default_policy_name.yfilter)
+	|| ydk::is_set(default_tag.yfilter)
+	|| ydk::is_set(grace_resync_time.yfilter)
+	|| ydk::is_set(graceful_shutdown_state.yfilter)
+	|| ydk::is_set(is_area_border_router.yfilter)
+	|| ydk::is_set(is_as_border_router.yfilter)
+	|| ydk::is_set(is_auto_cost.yfilter)
+	|| ydk::is_set(is_default_always.yfilter)
+	|| ydk::is_set(is_default_originated.yfilter)
+	|| ydk::is_set(is_default_policy.yfilter)
+	|| ydk::is_set(is_grace_restart_enabled.yfilter)
+	|| ydk::is_set(is_nsr_enabled.yfilter)
+	|| ydk::is_set(is_nsr_switchover_on_restart.yfilter)
+	|| ydk::is_set(is_opaque_capable.yfilter)
+	|| ydk::is_set(is_role_standby.yfilter)
+	|| ydk::is_set(is_router_id_stalled.yfilter)
+	|| ydk::is_set(last_nsf_time.yfilter)
+	|| ydk::is_set(lsa_flood_pacing_interval.yfilter)
+	|| ydk::is_set(lsa_group_interval.yfilter)
+	|| ydk::is_set(lsa_hold_time.yfilter)
+	|| ydk::is_set(lsa_maximum_time.yfilter)
+	|| ydk::is_set(lsa_retransmission_pacing_interval.yfilter)
+	|| ydk::is_set(lsa_start_time.yfilter)
+	|| ydk::is_set(maximum_interfaces.yfilter)
+	|| ydk::is_set(maximum_paths.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_lsa_interval.yfilter)
+	|| ydk::is_set(normal_areas.yfilter)
+	|| ydk::is_set(nssa_areas.yfilter)
+	|| ydk::is_set(opaque_lsa_checksum.yfilter)
+	|| ydk::is_set(opaque_lsas.yfilter)
+	|| ydk::is_set(redistribution_limit.yfilter)
+	|| ydk::is_set(redistribution_threshold.yfilter)
+	|| ydk::is_set(reference_bandwidth.yfilter)
+	|| ydk::is_set(role.yfilter)
+	|| ydk::is_set(router_id.yfilter)
+	|| ydk::is_set(snmp_trap_enabled.yfilter)
+	|| ydk::is_set(spf_hold_time.yfilter)
+	|| ydk::is_set(spf_maximum_time.yfilter)
+	|| ydk::is_set(spf_start_time.yfilter)
+	|| ydk::is_set(stub_areas.yfilter)
 	|| (domain_id !=  nullptr && domain_id->has_operation());
 }
 
@@ -11953,55 +16600,55 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (areas.is_set || is_set(areas.operation)) leaf_name_data.push_back(areas.get_name_leafdata());
-    if (as_dc_bitless_ls_as.is_set || is_set(as_dc_bitless_ls_as.operation)) leaf_name_data.push_back(as_dc_bitless_ls_as.get_name_leafdata());
-    if (as_do_not_age_ls_as.is_set || is_set(as_do_not_age_ls_as.operation)) leaf_name_data.push_back(as_do_not_age_ls_as.get_name_leafdata());
-    if (as_ls_as.is_set || is_set(as_ls_as.operation)) leaf_name_data.push_back(as_ls_as.get_name_leafdata());
-    if (as_lsa_flood_list_length.is_set || is_set(as_lsa_flood_list_length.operation)) leaf_name_data.push_back(as_lsa_flood_list_length.get_name_leafdata());
-    if (context_name.is_set || is_set(context_name.operation)) leaf_name_data.push_back(context_name.get_name_leafdata());
-    if (default_metric.is_set || is_set(default_metric.operation)) leaf_name_data.push_back(default_metric.get_name_leafdata());
-    if (default_metric_type.is_set || is_set(default_metric_type.operation)) leaf_name_data.push_back(default_metric_type.get_name_leafdata());
-    if (default_policy_name.is_set || is_set(default_policy_name.operation)) leaf_name_data.push_back(default_policy_name.get_name_leafdata());
-    if (default_tag.is_set || is_set(default_tag.operation)) leaf_name_data.push_back(default_tag.get_name_leafdata());
-    if (grace_resync_time.is_set || is_set(grace_resync_time.operation)) leaf_name_data.push_back(grace_resync_time.get_name_leafdata());
-    if (graceful_shutdown_state.is_set || is_set(graceful_shutdown_state.operation)) leaf_name_data.push_back(graceful_shutdown_state.get_name_leafdata());
-    if (is_area_border_router.is_set || is_set(is_area_border_router.operation)) leaf_name_data.push_back(is_area_border_router.get_name_leafdata());
-    if (is_as_border_router.is_set || is_set(is_as_border_router.operation)) leaf_name_data.push_back(is_as_border_router.get_name_leafdata());
-    if (is_auto_cost.is_set || is_set(is_auto_cost.operation)) leaf_name_data.push_back(is_auto_cost.get_name_leafdata());
-    if (is_default_always.is_set || is_set(is_default_always.operation)) leaf_name_data.push_back(is_default_always.get_name_leafdata());
-    if (is_default_originated.is_set || is_set(is_default_originated.operation)) leaf_name_data.push_back(is_default_originated.get_name_leafdata());
-    if (is_default_policy.is_set || is_set(is_default_policy.operation)) leaf_name_data.push_back(is_default_policy.get_name_leafdata());
-    if (is_grace_restart_enabled.is_set || is_set(is_grace_restart_enabled.operation)) leaf_name_data.push_back(is_grace_restart_enabled.get_name_leafdata());
-    if (is_nsr_enabled.is_set || is_set(is_nsr_enabled.operation)) leaf_name_data.push_back(is_nsr_enabled.get_name_leafdata());
-    if (is_nsr_switchover_on_restart.is_set || is_set(is_nsr_switchover_on_restart.operation)) leaf_name_data.push_back(is_nsr_switchover_on_restart.get_name_leafdata());
-    if (is_opaque_capable.is_set || is_set(is_opaque_capable.operation)) leaf_name_data.push_back(is_opaque_capable.get_name_leafdata());
-    if (is_role_standby.is_set || is_set(is_role_standby.operation)) leaf_name_data.push_back(is_role_standby.get_name_leafdata());
-    if (is_router_id_stalled.is_set || is_set(is_router_id_stalled.operation)) leaf_name_data.push_back(is_router_id_stalled.get_name_leafdata());
-    if (last_nsf_time.is_set || is_set(last_nsf_time.operation)) leaf_name_data.push_back(last_nsf_time.get_name_leafdata());
-    if (lsa_flood_pacing_interval.is_set || is_set(lsa_flood_pacing_interval.operation)) leaf_name_data.push_back(lsa_flood_pacing_interval.get_name_leafdata());
-    if (lsa_group_interval.is_set || is_set(lsa_group_interval.operation)) leaf_name_data.push_back(lsa_group_interval.get_name_leafdata());
-    if (lsa_hold_time.is_set || is_set(lsa_hold_time.operation)) leaf_name_data.push_back(lsa_hold_time.get_name_leafdata());
-    if (lsa_maximum_time.is_set || is_set(lsa_maximum_time.operation)) leaf_name_data.push_back(lsa_maximum_time.get_name_leafdata());
-    if (lsa_retransmission_pacing_interval.is_set || is_set(lsa_retransmission_pacing_interval.operation)) leaf_name_data.push_back(lsa_retransmission_pacing_interval.get_name_leafdata());
-    if (lsa_start_time.is_set || is_set(lsa_start_time.operation)) leaf_name_data.push_back(lsa_start_time.get_name_leafdata());
-    if (maximum_interfaces.is_set || is_set(maximum_interfaces.operation)) leaf_name_data.push_back(maximum_interfaces.get_name_leafdata());
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_lsa_interval.is_set || is_set(minimum_lsa_interval.operation)) leaf_name_data.push_back(minimum_lsa_interval.get_name_leafdata());
-    if (normal_areas.is_set || is_set(normal_areas.operation)) leaf_name_data.push_back(normal_areas.get_name_leafdata());
-    if (nssa_areas.is_set || is_set(nssa_areas.operation)) leaf_name_data.push_back(nssa_areas.get_name_leafdata());
-    if (opaque_lsa_checksum.is_set || is_set(opaque_lsa_checksum.operation)) leaf_name_data.push_back(opaque_lsa_checksum.get_name_leafdata());
-    if (opaque_lsas.is_set || is_set(opaque_lsas.operation)) leaf_name_data.push_back(opaque_lsas.get_name_leafdata());
-    if (redistribution_limit.is_set || is_set(redistribution_limit.operation)) leaf_name_data.push_back(redistribution_limit.get_name_leafdata());
-    if (redistribution_threshold.is_set || is_set(redistribution_threshold.operation)) leaf_name_data.push_back(redistribution_threshold.get_name_leafdata());
-    if (reference_bandwidth.is_set || is_set(reference_bandwidth.operation)) leaf_name_data.push_back(reference_bandwidth.get_name_leafdata());
-    if (role.is_set || is_set(role.operation)) leaf_name_data.push_back(role.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
-    if (snmp_trap_enabled.is_set || is_set(snmp_trap_enabled.operation)) leaf_name_data.push_back(snmp_trap_enabled.get_name_leafdata());
-    if (spf_hold_time.is_set || is_set(spf_hold_time.operation)) leaf_name_data.push_back(spf_hold_time.get_name_leafdata());
-    if (spf_maximum_time.is_set || is_set(spf_maximum_time.operation)) leaf_name_data.push_back(spf_maximum_time.get_name_leafdata());
-    if (spf_start_time.is_set || is_set(spf_start_time.operation)) leaf_name_data.push_back(spf_start_time.get_name_leafdata());
-    if (stub_areas.is_set || is_set(stub_areas.operation)) leaf_name_data.push_back(stub_areas.get_name_leafdata());
+    if (areas.is_set || is_set(areas.yfilter)) leaf_name_data.push_back(areas.get_name_leafdata());
+    if (as_dc_bitless_ls_as.is_set || is_set(as_dc_bitless_ls_as.yfilter)) leaf_name_data.push_back(as_dc_bitless_ls_as.get_name_leafdata());
+    if (as_do_not_age_ls_as.is_set || is_set(as_do_not_age_ls_as.yfilter)) leaf_name_data.push_back(as_do_not_age_ls_as.get_name_leafdata());
+    if (as_ls_as.is_set || is_set(as_ls_as.yfilter)) leaf_name_data.push_back(as_ls_as.get_name_leafdata());
+    if (as_lsa_flood_list_length.is_set || is_set(as_lsa_flood_list_length.yfilter)) leaf_name_data.push_back(as_lsa_flood_list_length.get_name_leafdata());
+    if (context_name.is_set || is_set(context_name.yfilter)) leaf_name_data.push_back(context_name.get_name_leafdata());
+    if (default_metric.is_set || is_set(default_metric.yfilter)) leaf_name_data.push_back(default_metric.get_name_leafdata());
+    if (default_metric_type.is_set || is_set(default_metric_type.yfilter)) leaf_name_data.push_back(default_metric_type.get_name_leafdata());
+    if (default_policy_name.is_set || is_set(default_policy_name.yfilter)) leaf_name_data.push_back(default_policy_name.get_name_leafdata());
+    if (default_tag.is_set || is_set(default_tag.yfilter)) leaf_name_data.push_back(default_tag.get_name_leafdata());
+    if (grace_resync_time.is_set || is_set(grace_resync_time.yfilter)) leaf_name_data.push_back(grace_resync_time.get_name_leafdata());
+    if (graceful_shutdown_state.is_set || is_set(graceful_shutdown_state.yfilter)) leaf_name_data.push_back(graceful_shutdown_state.get_name_leafdata());
+    if (is_area_border_router.is_set || is_set(is_area_border_router.yfilter)) leaf_name_data.push_back(is_area_border_router.get_name_leafdata());
+    if (is_as_border_router.is_set || is_set(is_as_border_router.yfilter)) leaf_name_data.push_back(is_as_border_router.get_name_leafdata());
+    if (is_auto_cost.is_set || is_set(is_auto_cost.yfilter)) leaf_name_data.push_back(is_auto_cost.get_name_leafdata());
+    if (is_default_always.is_set || is_set(is_default_always.yfilter)) leaf_name_data.push_back(is_default_always.get_name_leafdata());
+    if (is_default_originated.is_set || is_set(is_default_originated.yfilter)) leaf_name_data.push_back(is_default_originated.get_name_leafdata());
+    if (is_default_policy.is_set || is_set(is_default_policy.yfilter)) leaf_name_data.push_back(is_default_policy.get_name_leafdata());
+    if (is_grace_restart_enabled.is_set || is_set(is_grace_restart_enabled.yfilter)) leaf_name_data.push_back(is_grace_restart_enabled.get_name_leafdata());
+    if (is_nsr_enabled.is_set || is_set(is_nsr_enabled.yfilter)) leaf_name_data.push_back(is_nsr_enabled.get_name_leafdata());
+    if (is_nsr_switchover_on_restart.is_set || is_set(is_nsr_switchover_on_restart.yfilter)) leaf_name_data.push_back(is_nsr_switchover_on_restart.get_name_leafdata());
+    if (is_opaque_capable.is_set || is_set(is_opaque_capable.yfilter)) leaf_name_data.push_back(is_opaque_capable.get_name_leafdata());
+    if (is_role_standby.is_set || is_set(is_role_standby.yfilter)) leaf_name_data.push_back(is_role_standby.get_name_leafdata());
+    if (is_router_id_stalled.is_set || is_set(is_router_id_stalled.yfilter)) leaf_name_data.push_back(is_router_id_stalled.get_name_leafdata());
+    if (last_nsf_time.is_set || is_set(last_nsf_time.yfilter)) leaf_name_data.push_back(last_nsf_time.get_name_leafdata());
+    if (lsa_flood_pacing_interval.is_set || is_set(lsa_flood_pacing_interval.yfilter)) leaf_name_data.push_back(lsa_flood_pacing_interval.get_name_leafdata());
+    if (lsa_group_interval.is_set || is_set(lsa_group_interval.yfilter)) leaf_name_data.push_back(lsa_group_interval.get_name_leafdata());
+    if (lsa_hold_time.is_set || is_set(lsa_hold_time.yfilter)) leaf_name_data.push_back(lsa_hold_time.get_name_leafdata());
+    if (lsa_maximum_time.is_set || is_set(lsa_maximum_time.yfilter)) leaf_name_data.push_back(lsa_maximum_time.get_name_leafdata());
+    if (lsa_retransmission_pacing_interval.is_set || is_set(lsa_retransmission_pacing_interval.yfilter)) leaf_name_data.push_back(lsa_retransmission_pacing_interval.get_name_leafdata());
+    if (lsa_start_time.is_set || is_set(lsa_start_time.yfilter)) leaf_name_data.push_back(lsa_start_time.get_name_leafdata());
+    if (maximum_interfaces.is_set || is_set(maximum_interfaces.yfilter)) leaf_name_data.push_back(maximum_interfaces.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_lsa_interval.is_set || is_set(minimum_lsa_interval.yfilter)) leaf_name_data.push_back(minimum_lsa_interval.get_name_leafdata());
+    if (normal_areas.is_set || is_set(normal_areas.yfilter)) leaf_name_data.push_back(normal_areas.get_name_leafdata());
+    if (nssa_areas.is_set || is_set(nssa_areas.yfilter)) leaf_name_data.push_back(nssa_areas.get_name_leafdata());
+    if (opaque_lsa_checksum.is_set || is_set(opaque_lsa_checksum.yfilter)) leaf_name_data.push_back(opaque_lsa_checksum.get_name_leafdata());
+    if (opaque_lsas.is_set || is_set(opaque_lsas.yfilter)) leaf_name_data.push_back(opaque_lsas.get_name_leafdata());
+    if (redistribution_limit.is_set || is_set(redistribution_limit.yfilter)) leaf_name_data.push_back(redistribution_limit.get_name_leafdata());
+    if (redistribution_threshold.is_set || is_set(redistribution_threshold.yfilter)) leaf_name_data.push_back(redistribution_threshold.get_name_leafdata());
+    if (reference_bandwidth.is_set || is_set(reference_bandwidth.yfilter)) leaf_name_data.push_back(reference_bandwidth.get_name_leafdata());
+    if (role.is_set || is_set(role.yfilter)) leaf_name_data.push_back(role.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (snmp_trap_enabled.is_set || is_set(snmp_trap_enabled.yfilter)) leaf_name_data.push_back(snmp_trap_enabled.get_name_leafdata());
+    if (spf_hold_time.is_set || is_set(spf_hold_time.yfilter)) leaf_name_data.push_back(spf_hold_time.get_name_leafdata());
+    if (spf_maximum_time.is_set || is_set(spf_maximum_time.yfilter)) leaf_name_data.push_back(spf_maximum_time.get_name_leafdata());
+    if (spf_start_time.is_set || is_set(spf_start_time.yfilter)) leaf_name_data.push_back(spf_start_time.get_name_leafdata());
+    if (stub_areas.is_set || is_set(stub_areas.yfilter)) leaf_name_data.push_back(stub_areas.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12076,204 +16723,509 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "areas")
     {
         areas = value;
+        areas.value_namespace = name_space;
+        areas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-dc-bitless-ls-as")
     {
         as_dc_bitless_ls_as = value;
+        as_dc_bitless_ls_as.value_namespace = name_space;
+        as_dc_bitless_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-do-not-age-ls-as")
     {
         as_do_not_age_ls_as = value;
+        as_do_not_age_ls_as.value_namespace = name_space;
+        as_do_not_age_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-ls-as")
     {
         as_ls_as = value;
+        as_ls_as.value_namespace = name_space;
+        as_ls_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-lsa-flood-list-length")
     {
         as_lsa_flood_list_length = value;
+        as_lsa_flood_list_length.value_namespace = name_space;
+        as_lsa_flood_list_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "context-name")
     {
         context_name = value;
+        context_name.value_namespace = name_space;
+        context_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-metric")
     {
         default_metric = value;
+        default_metric.value_namespace = name_space;
+        default_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-metric-type")
     {
         default_metric_type = value;
+        default_metric_type.value_namespace = name_space;
+        default_metric_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-policy-name")
     {
         default_policy_name = value;
+        default_policy_name.value_namespace = name_space;
+        default_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-tag")
     {
         default_tag = value;
+        default_tag.value_namespace = name_space;
+        default_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "grace-resync-time")
     {
         grace_resync_time = value;
+        grace_resync_time.value_namespace = name_space;
+        grace_resync_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "graceful-shutdown-state")
     {
         graceful_shutdown_state = value;
+        graceful_shutdown_state.value_namespace = name_space;
+        graceful_shutdown_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-area-border-router")
     {
         is_area_border_router = value;
+        is_area_border_router.value_namespace = name_space;
+        is_area_border_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-as-border-router")
     {
         is_as_border_router = value;
+        is_as_border_router.value_namespace = name_space;
+        is_as_border_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-auto-cost")
     {
         is_auto_cost = value;
+        is_auto_cost.value_namespace = name_space;
+        is_auto_cost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-default-always")
     {
         is_default_always = value;
+        is_default_always.value_namespace = name_space;
+        is_default_always.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-default-originated")
     {
         is_default_originated = value;
+        is_default_originated.value_namespace = name_space;
+        is_default_originated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-default-policy")
     {
         is_default_policy = value;
+        is_default_policy.value_namespace = name_space;
+        is_default_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-grace-restart-enabled")
     {
         is_grace_restart_enabled = value;
+        is_grace_restart_enabled.value_namespace = name_space;
+        is_grace_restart_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-enabled")
     {
         is_nsr_enabled = value;
+        is_nsr_enabled.value_namespace = name_space;
+        is_nsr_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nsr-switchover-on-restart")
     {
         is_nsr_switchover_on_restart = value;
+        is_nsr_switchover_on_restart.value_namespace = name_space;
+        is_nsr_switchover_on_restart.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-opaque-capable")
     {
         is_opaque_capable = value;
+        is_opaque_capable.value_namespace = name_space;
+        is_opaque_capable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-role-standby")
     {
         is_role_standby = value;
+        is_role_standby.value_namespace = name_space;
+        is_role_standby.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-router-id-stalled")
     {
         is_router_id_stalled = value;
+        is_router_id_stalled.value_namespace = name_space;
+        is_router_id_stalled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-nsf-time")
     {
         last_nsf_time = value;
+        last_nsf_time.value_namespace = name_space;
+        last_nsf_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-flood-pacing-interval")
     {
         lsa_flood_pacing_interval = value;
+        lsa_flood_pacing_interval.value_namespace = name_space;
+        lsa_flood_pacing_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-group-interval")
     {
         lsa_group_interval = value;
+        lsa_group_interval.value_namespace = name_space;
+        lsa_group_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-hold-time")
     {
         lsa_hold_time = value;
+        lsa_hold_time.value_namespace = name_space;
+        lsa_hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-maximum-time")
     {
         lsa_maximum_time = value;
+        lsa_maximum_time.value_namespace = name_space;
+        lsa_maximum_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-retransmission-pacing-interval")
     {
         lsa_retransmission_pacing_interval = value;
+        lsa_retransmission_pacing_interval.value_namespace = name_space;
+        lsa_retransmission_pacing_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-start-time")
     {
         lsa_start_time = value;
+        lsa_start_time.value_namespace = name_space;
+        lsa_start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-interfaces")
     {
         maximum_interfaces = value;
+        maximum_interfaces.value_namespace = name_space;
+        maximum_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-lsa-interval")
     {
         minimum_lsa_interval = value;
+        minimum_lsa_interval.value_namespace = name_space;
+        minimum_lsa_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "normal-areas")
     {
         normal_areas = value;
+        normal_areas.value_namespace = name_space;
+        normal_areas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nssa-areas")
     {
         nssa_areas = value;
+        nssa_areas.value_namespace = name_space;
+        nssa_areas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "opaque-lsa-checksum")
     {
         opaque_lsa_checksum = value;
+        opaque_lsa_checksum.value_namespace = name_space;
+        opaque_lsa_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "opaque-lsas")
     {
         opaque_lsas = value;
+        opaque_lsas.value_namespace = name_space;
+        opaque_lsas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redistribution-limit")
     {
         redistribution_limit = value;
+        redistribution_limit.value_namespace = name_space;
+        redistribution_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redistribution-threshold")
     {
         redistribution_threshold = value;
+        redistribution_threshold.value_namespace = name_space;
+        redistribution_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reference-bandwidth")
     {
         reference_bandwidth = value;
+        reference_bandwidth.value_namespace = name_space;
+        reference_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "role")
     {
         role = value;
+        role.value_namespace = name_space;
+        role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-trap-enabled")
     {
         snmp_trap_enabled = value;
+        snmp_trap_enabled.value_namespace = name_space;
+        snmp_trap_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-hold-time")
     {
         spf_hold_time = value;
+        spf_hold_time.value_namespace = name_space;
+        spf_hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-maximum-time")
     {
         spf_maximum_time = value;
+        spf_maximum_time.value_namespace = name_space;
+        spf_maximum_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-start-time")
     {
         spf_start_time = value;
+        spf_start_time.value_namespace = name_space;
+        spf_start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stub-areas")
     {
         stub_areas = value;
+        stub_areas.value_namespace = name_space;
+        stub_areas.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "areas")
+    {
+        areas.yfilter = yfilter;
+    }
+    if(value_path == "as-dc-bitless-ls-as")
+    {
+        as_dc_bitless_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "as-do-not-age-ls-as")
+    {
+        as_do_not_age_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "as-ls-as")
+    {
+        as_ls_as.yfilter = yfilter;
+    }
+    if(value_path == "as-lsa-flood-list-length")
+    {
+        as_lsa_flood_list_length.yfilter = yfilter;
+    }
+    if(value_path == "context-name")
+    {
+        context_name.yfilter = yfilter;
+    }
+    if(value_path == "default-metric")
+    {
+        default_metric.yfilter = yfilter;
+    }
+    if(value_path == "default-metric-type")
+    {
+        default_metric_type.yfilter = yfilter;
+    }
+    if(value_path == "default-policy-name")
+    {
+        default_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "default-tag")
+    {
+        default_tag.yfilter = yfilter;
+    }
+    if(value_path == "grace-resync-time")
+    {
+        grace_resync_time.yfilter = yfilter;
+    }
+    if(value_path == "graceful-shutdown-state")
+    {
+        graceful_shutdown_state.yfilter = yfilter;
+    }
+    if(value_path == "is-area-border-router")
+    {
+        is_area_border_router.yfilter = yfilter;
+    }
+    if(value_path == "is-as-border-router")
+    {
+        is_as_border_router.yfilter = yfilter;
+    }
+    if(value_path == "is-auto-cost")
+    {
+        is_auto_cost.yfilter = yfilter;
+    }
+    if(value_path == "is-default-always")
+    {
+        is_default_always.yfilter = yfilter;
+    }
+    if(value_path == "is-default-originated")
+    {
+        is_default_originated.yfilter = yfilter;
+    }
+    if(value_path == "is-default-policy")
+    {
+        is_default_policy.yfilter = yfilter;
+    }
+    if(value_path == "is-grace-restart-enabled")
+    {
+        is_grace_restart_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-enabled")
+    {
+        is_nsr_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-nsr-switchover-on-restart")
+    {
+        is_nsr_switchover_on_restart.yfilter = yfilter;
+    }
+    if(value_path == "is-opaque-capable")
+    {
+        is_opaque_capable.yfilter = yfilter;
+    }
+    if(value_path == "is-role-standby")
+    {
+        is_role_standby.yfilter = yfilter;
+    }
+    if(value_path == "is-router-id-stalled")
+    {
+        is_router_id_stalled.yfilter = yfilter;
+    }
+    if(value_path == "last-nsf-time")
+    {
+        last_nsf_time.yfilter = yfilter;
+    }
+    if(value_path == "lsa-flood-pacing-interval")
+    {
+        lsa_flood_pacing_interval.yfilter = yfilter;
+    }
+    if(value_path == "lsa-group-interval")
+    {
+        lsa_group_interval.yfilter = yfilter;
+    }
+    if(value_path == "lsa-hold-time")
+    {
+        lsa_hold_time.yfilter = yfilter;
+    }
+    if(value_path == "lsa-maximum-time")
+    {
+        lsa_maximum_time.yfilter = yfilter;
+    }
+    if(value_path == "lsa-retransmission-pacing-interval")
+    {
+        lsa_retransmission_pacing_interval.yfilter = yfilter;
+    }
+    if(value_path == "lsa-start-time")
+    {
+        lsa_start_time.yfilter = yfilter;
+    }
+    if(value_path == "maximum-interfaces")
+    {
+        maximum_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-lsa-interval")
+    {
+        minimum_lsa_interval.yfilter = yfilter;
+    }
+    if(value_path == "normal-areas")
+    {
+        normal_areas.yfilter = yfilter;
+    }
+    if(value_path == "nssa-areas")
+    {
+        nssa_areas.yfilter = yfilter;
+    }
+    if(value_path == "opaque-lsa-checksum")
+    {
+        opaque_lsa_checksum.yfilter = yfilter;
+    }
+    if(value_path == "opaque-lsas")
+    {
+        opaque_lsas.yfilter = yfilter;
+    }
+    if(value_path == "redistribution-limit")
+    {
+        redistribution_limit.yfilter = yfilter;
+    }
+    if(value_path == "redistribution-threshold")
+    {
+        redistribution_threshold.yfilter = yfilter;
+    }
+    if(value_path == "reference-bandwidth")
+    {
+        reference_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "role")
+    {
+        role.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+    if(value_path == "snmp-trap-enabled")
+    {
+        snmp_trap_enabled.yfilter = yfilter;
+    }
+    if(value_path == "spf-hold-time")
+    {
+        spf_hold_time.yfilter = yfilter;
+    }
+    if(value_path == "spf-maximum-time")
+    {
+        spf_maximum_time.yfilter = yfilter;
+    }
+    if(value_path == "spf-start-time")
+    {
+        spf_start_time.yfilter = yfilter;
+    }
+    if(value_path == "stub-areas")
+    {
+        stub_areas.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "domain-id" || name == "ipfrr-tiebreakers" || name == "stub-router" || name == "areas" || name == "as-dc-bitless-ls-as" || name == "as-do-not-age-ls-as" || name == "as-ls-as" || name == "as-lsa-flood-list-length" || name == "context-name" || name == "default-metric" || name == "default-metric-type" || name == "default-policy-name" || name == "default-tag" || name == "grace-resync-time" || name == "graceful-shutdown-state" || name == "is-area-border-router" || name == "is-as-border-router" || name == "is-auto-cost" || name == "is-default-always" || name == "is-default-originated" || name == "is-default-policy" || name == "is-grace-restart-enabled" || name == "is-nsr-enabled" || name == "is-nsr-switchover-on-restart" || name == "is-opaque-capable" || name == "is-role-standby" || name == "is-router-id-stalled" || name == "last-nsf-time" || name == "lsa-flood-pacing-interval" || name == "lsa-group-interval" || name == "lsa-hold-time" || name == "lsa-maximum-time" || name == "lsa-retransmission-pacing-interval" || name == "lsa-start-time" || name == "maximum-interfaces" || name == "maximum-paths" || name == "metric" || name == "minimum-lsa-interval" || name == "normal-areas" || name == "nssa-areas" || name == "opaque-lsa-checksum" || name == "opaque-lsas" || name == "redistribution-limit" || name == "redistribution-threshold" || name == "reference-bandwidth" || name == "role" || name == "router-id" || name == "snmp-trap-enabled" || name == "spf-hold-time" || name == "spf-maximum-time" || name == "spf-start-time" || name == "stub-areas")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::DomainId()
@@ -12306,7 +17258,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::has_ope
         if(secondary_domain_id[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (primary_domain_id !=  nullptr && primary_domain_id->has_operation());
 }
 
@@ -12386,8 +17338,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "primary-domain-id" || name == "secondary-domain-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::PrimaryDomainId()
@@ -12410,9 +17373,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::Primary
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain_id_type.operation)
-	|| is_set(domain_id_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(domain_id_type.yfilter)
+	|| ydk::is_set(domain_id_value.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::get_segment_path() const
@@ -12438,8 +17401,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::Domai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_id_type.is_set || is_set(domain_id_type.operation)) leaf_name_data.push_back(domain_id_type.get_name_leafdata());
-    if (domain_id_value.is_set || is_set(domain_id_value.operation)) leaf_name_data.push_back(domain_id_value.get_name_leafdata());
+    if (domain_id_type.is_set || is_set(domain_id_type.yfilter)) leaf_name_data.push_back(domain_id_type.get_name_leafdata());
+    if (domain_id_value.is_set || is_set(domain_id_value.yfilter)) leaf_name_data.push_back(domain_id_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12458,16 +17421,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "domain-id-type")
     {
         domain_id_type = value;
+        domain_id_type.value_namespace = name_space;
+        domain_id_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-id-value")
     {
         domain_id_value = value;
+        domain_id_value.value_namespace = name_space;
+        domain_id_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "domain-id-type")
+    {
+        domain_id_type.yfilter = yfilter;
+    }
+    if(value_path == "domain-id-value")
+    {
+        domain_id_value.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::PrimaryDomainId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "domain-id-type" || name == "domain-id-value")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::SecondaryDomainId()
@@ -12490,9 +17476,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::Seconda
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain_id_type.operation)
-	|| is_set(domain_id_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(domain_id_type.yfilter)
+	|| ydk::is_set(domain_id_value.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::get_segment_path() const
@@ -12518,8 +17504,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::Domai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_id_type.is_set || is_set(domain_id_type.operation)) leaf_name_data.push_back(domain_id_type.get_name_leafdata());
-    if (domain_id_value.is_set || is_set(domain_id_value.operation)) leaf_name_data.push_back(domain_id_value.get_name_leafdata());
+    if (domain_id_type.is_set || is_set(domain_id_type.yfilter)) leaf_name_data.push_back(domain_id_type.get_name_leafdata());
+    if (domain_id_value.is_set || is_set(domain_id_value.yfilter)) leaf_name_data.push_back(domain_id_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12538,16 +17524,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "domain-id-type")
     {
         domain_id_type = value;
+        domain_id_type.value_namespace = name_space;
+        domain_id_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-id-value")
     {
         domain_id_value = value;
+        domain_id_value.value_namespace = name_space;
+        domain_id_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "domain-id-type")
+    {
+        domain_id_type.yfilter = yfilter;
+    }
+    if(value_path == "domain-id-value")
+    {
+        domain_id_value.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::DomainId::SecondaryDomainId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "domain-id-type" || name == "domain-id-value")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StubRouter()
@@ -12607,16 +17616,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::has_o
         if(trigger[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(abr_off_reason.operation)
-	|| is_set(active.operation)
-	|| is_set(external_lsa_metric.operation)
-	|| is_set(include_stub_links.operation)
-	|| is_set(mode.operation)
-	|| is_set(remaining_time.operation)
-	|| is_set(set_reason.operation)
-	|| is_set(summary_lsa_metric.operation)
-	|| is_set(unset_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(abr_off_reason.yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(external_lsa_metric.yfilter)
+	|| ydk::is_set(include_stub_links.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(remaining_time.yfilter)
+	|| ydk::is_set(set_reason.yfilter)
+	|| ydk::is_set(summary_lsa_metric.yfilter)
+	|| ydk::is_set(unset_reason.yfilter)
 	|| (abr_resume_time !=  nullptr && abr_resume_time->has_operation())
 	|| (start_time !=  nullptr && start_time->has_operation())
 	|| (unset_time !=  nullptr && unset_time->has_operation());
@@ -12645,15 +17654,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (abr_off_reason.is_set || is_set(abr_off_reason.operation)) leaf_name_data.push_back(abr_off_reason.get_name_leafdata());
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (external_lsa_metric.is_set || is_set(external_lsa_metric.operation)) leaf_name_data.push_back(external_lsa_metric.get_name_leafdata());
-    if (include_stub_links.is_set || is_set(include_stub_links.operation)) leaf_name_data.push_back(include_stub_links.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (remaining_time.is_set || is_set(remaining_time.operation)) leaf_name_data.push_back(remaining_time.get_name_leafdata());
-    if (set_reason.is_set || is_set(set_reason.operation)) leaf_name_data.push_back(set_reason.get_name_leafdata());
-    if (summary_lsa_metric.is_set || is_set(summary_lsa_metric.operation)) leaf_name_data.push_back(summary_lsa_metric.get_name_leafdata());
-    if (unset_reason.is_set || is_set(unset_reason.operation)) leaf_name_data.push_back(unset_reason.get_name_leafdata());
+    if (abr_off_reason.is_set || is_set(abr_off_reason.yfilter)) leaf_name_data.push_back(abr_off_reason.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (external_lsa_metric.is_set || is_set(external_lsa_metric.yfilter)) leaf_name_data.push_back(external_lsa_metric.get_name_leafdata());
+    if (include_stub_links.is_set || is_set(include_stub_links.yfilter)) leaf_name_data.push_back(include_stub_links.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (remaining_time.is_set || is_set(remaining_time.yfilter)) leaf_name_data.push_back(remaining_time.get_name_leafdata());
+    if (set_reason.is_set || is_set(set_reason.yfilter)) leaf_name_data.push_back(set_reason.get_name_leafdata());
+    if (summary_lsa_metric.is_set || is_set(summary_lsa_metric.yfilter)) leaf_name_data.push_back(summary_lsa_metric.get_name_leafdata());
+    if (unset_reason.is_set || is_set(unset_reason.yfilter)) leaf_name_data.push_back(unset_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12735,44 +17744,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "abr-off-reason")
     {
         abr_off_reason = value;
+        abr_off_reason.value_namespace = name_space;
+        abr_off_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-lsa-metric")
     {
         external_lsa_metric = value;
+        external_lsa_metric.value_namespace = name_space;
+        external_lsa_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "include-stub-links")
     {
         include_stub_links = value;
+        include_stub_links.value_namespace = name_space;
+        include_stub_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remaining-time")
     {
         remaining_time = value;
+        remaining_time.value_namespace = name_space;
+        remaining_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-reason")
     {
         set_reason = value;
+        set_reason.value_namespace = name_space;
+        set_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "summary-lsa-metric")
     {
         summary_lsa_metric = value;
+        summary_lsa_metric.value_namespace = name_space;
+        summary_lsa_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unset-reason")
     {
         unset_reason = value;
+        unset_reason.value_namespace = name_space;
+        unset_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "abr-off-reason")
+    {
+        abr_off_reason.yfilter = yfilter;
+    }
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "external-lsa-metric")
+    {
+        external_lsa_metric.yfilter = yfilter;
+    }
+    if(value_path == "include-stub-links")
+    {
+        include_stub_links.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "remaining-time")
+    {
+        remaining_time.yfilter = yfilter;
+    }
+    if(value_path == "set-reason")
+    {
+        set_reason.yfilter = yfilter;
+    }
+    if(value_path == "summary-lsa-metric")
+    {
+        summary_lsa_metric.yfilter = yfilter;
+    }
+    if(value_path == "unset-reason")
+    {
+        unset_reason.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "abr-resume-time" || name == "start-time" || name == "trigger" || name == "unset-time" || name == "abr-off-reason" || name == "active" || name == "external-lsa-metric" || name == "include-stub-links" || name == "mode" || name == "remaining-time" || name == "set-reason" || name == "summary-lsa-metric" || name == "unset-reason")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::UnsetTime::UnsetTime()
@@ -12795,9 +17869,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Unset
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::UnsetTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanosecond.operation)
-	|| is_set(second.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanosecond.yfilter)
+	|| ydk::is_set(second.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::UnsetTime::get_segment_path() const
@@ -12823,8 +17897,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanosecond.is_set || is_set(nanosecond.operation)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-    if (second.is_set || is_set(second.operation)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12843,16 +17917,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::UnsetTime::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::UnsetTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanosecond")
     {
         nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second")
     {
         second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::UnsetTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::UnsetTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanosecond" || name == "second")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StartTime::StartTime()
@@ -12875,9 +17972,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Start
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StartTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanosecond.operation)
-	|| is_set(second.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanosecond.yfilter)
+	|| ydk::is_set(second.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StartTime::get_segment_path() const
@@ -12903,8 +18000,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanosecond.is_set || is_set(nanosecond.operation)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-    if (second.is_set || is_set(second.operation)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12923,16 +18020,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StartTime::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StartTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanosecond")
     {
         nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second")
     {
         second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StartTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::StartTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanosecond" || name == "second")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::AbrResumeTime()
@@ -12955,9 +18075,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrRe
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanosecond.operation)
-	|| is_set(second.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanosecond.yfilter)
+	|| ydk::is_set(second.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::get_segment_path() const
@@ -12983,8 +18103,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanosecond.is_set || is_set(nanosecond.operation)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-    if (second.is_set || is_set(second.operation)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13003,16 +18123,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanosecond")
     {
         nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second")
     {
         second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::AbrResumeTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanosecond" || name == "second")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::Trigger()
@@ -13048,11 +18191,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigg
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time.operation)
-	|| is_set(trigger.operation)
-	|| is_set(unset_reason.operation)
-	|| is_set(wait_for_bgp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(time.yfilter)
+	|| ydk::is_set(trigger.yfilter)
+	|| ydk::is_set(unset_reason.yfilter)
+	|| ydk::is_set(wait_for_bgp.yfilter)
 	|| (start_time !=  nullptr && start_time->has_operation())
 	|| (unset_time !=  nullptr && unset_time->has_operation());
 }
@@ -13080,10 +18223,10 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time.is_set || is_set(time.operation)) leaf_name_data.push_back(time.get_name_leafdata());
-    if (trigger.is_set || is_set(trigger.operation)) leaf_name_data.push_back(trigger.get_name_leafdata());
-    if (unset_reason.is_set || is_set(unset_reason.operation)) leaf_name_data.push_back(unset_reason.get_name_leafdata());
-    if (wait_for_bgp.is_set || is_set(wait_for_bgp.operation)) leaf_name_data.push_back(wait_for_bgp.get_name_leafdata());
+    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
+    if (trigger.is_set || is_set(trigger.yfilter)) leaf_name_data.push_back(trigger.get_name_leafdata());
+    if (unset_reason.is_set || is_set(unset_reason.yfilter)) leaf_name_data.push_back(unset_reason.get_name_leafdata());
+    if (wait_for_bgp.is_set || is_set(wait_for_bgp.yfilter)) leaf_name_data.push_back(wait_for_bgp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13130,24 +18273,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time")
     {
         time = value;
+        time.value_namespace = name_space;
+        time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trigger")
     {
         trigger = value;
+        trigger.value_namespace = name_space;
+        trigger.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unset-reason")
     {
         unset_reason = value;
+        unset_reason.value_namespace = name_space;
+        unset_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wait-for-bgp")
     {
         wait_for_bgp = value;
+        wait_for_bgp.value_namespace = name_space;
+        wait_for_bgp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time")
+    {
+        time.yfilter = yfilter;
+    }
+    if(value_path == "trigger")
+    {
+        trigger.yfilter = yfilter;
+    }
+    if(value_path == "unset-reason")
+    {
+        unset_reason.yfilter = yfilter;
+    }
+    if(value_path == "wait-for-bgp")
+    {
+        wait_for_bgp.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "start-time" || name == "unset-time" || name == "time" || name == "trigger" || name == "unset-reason" || name == "wait-for-bgp")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::UnsetTime()
@@ -13170,9 +18348,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigg
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanosecond.operation)
-	|| is_set(second.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanosecond.yfilter)
+	|| ydk::is_set(second.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::get_segment_path() const
@@ -13198,8 +18376,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanosecond.is_set || is_set(nanosecond.operation)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-    if (second.is_set || is_set(second.operation)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13218,16 +18396,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanosecond")
     {
         nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second")
     {
         second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::UnsetTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanosecond" || name == "second")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::StartTime()
@@ -13250,9 +18451,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigg
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanosecond.operation)
-	|| is_set(second.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanosecond.yfilter)
+	|| ydk::is_set(second.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::get_segment_path() const
@@ -13278,8 +18479,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanosecond.is_set || is_set(nanosecond.operation)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-    if (second.is_set || is_set(second.operation)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13298,16 +18499,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanosecond")
     {
         nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second")
     {
         second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::StubRouter::Trigger::StartTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanosecond" || name == "second")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers::IpfrrTiebreakers()
@@ -13330,9 +18554,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers:
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tiebreaker_index.operation)
-	|| is_set(tiebreaker_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tiebreaker_index.yfilter)
+	|| ydk::is_set(tiebreaker_type.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers::get_segment_path() const
@@ -13358,8 +18582,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::Ipfrr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tiebreaker_index.is_set || is_set(tiebreaker_index.operation)) leaf_name_data.push_back(tiebreaker_index.get_name_leafdata());
-    if (tiebreaker_type.is_set || is_set(tiebreaker_type.operation)) leaf_name_data.push_back(tiebreaker_type.get_name_leafdata());
+    if (tiebreaker_index.is_set || is_set(tiebreaker_index.yfilter)) leaf_name_data.push_back(tiebreaker_index.get_name_leafdata());
+    if (tiebreaker_type.is_set || is_set(tiebreaker_type.yfilter)) leaf_name_data.push_back(tiebreaker_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13378,16 +18602,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tiebreaker-index")
     {
         tiebreaker_index = value;
+        tiebreaker_index.value_namespace = name_space;
+        tiebreaker_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tiebreaker-type")
     {
         tiebreaker_type = value;
+        tiebreaker_type.value_namespace = name_space;
+        tiebreaker_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tiebreaker-index")
+    {
+        tiebreaker_index.yfilter = yfilter;
+    }
+    if(value_path == "tiebreaker-type")
+    {
+        tiebreaker_type.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Ospfv3_::IpfrrTiebreakers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tiebreaker-index" || name == "tiebreaker-type")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::Summary::Route::Route()
@@ -13428,18 +18675,18 @@ bool Ospfv3::Processes::Process::DefaultVrf::Summary::Route::has_data() const
 
 bool Ospfv3::Processes::Process::DefaultVrf::Summary::Route::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(extern_one_route.operation)
-	|| is_set(extern_two_route.operation)
-	|| is_set(inter_area_route.operation)
-	|| is_set(intra_area_route.operation)
-	|| is_set(nssa_one_route.operation)
-	|| is_set(nssa_two_route.operation)
-	|| is_set(redistribution_route.operation)
-	|| is_set(route_connected.operation)
-	|| is_set(route_id.operation)
-	|| is_set(total_received_route.operation)
-	|| is_set(total_sent_route.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(extern_one_route.yfilter)
+	|| ydk::is_set(extern_two_route.yfilter)
+	|| ydk::is_set(inter_area_route.yfilter)
+	|| ydk::is_set(intra_area_route.yfilter)
+	|| ydk::is_set(nssa_one_route.yfilter)
+	|| ydk::is_set(nssa_two_route.yfilter)
+	|| ydk::is_set(redistribution_route.yfilter)
+	|| ydk::is_set(route_connected.yfilter)
+	|| ydk::is_set(route_id.yfilter)
+	|| ydk::is_set(total_received_route.yfilter)
+	|| ydk::is_set(total_sent_route.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::Summary::Route::get_segment_path() const
@@ -13465,17 +18712,17 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::Summary::Route::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (extern_one_route.is_set || is_set(extern_one_route.operation)) leaf_name_data.push_back(extern_one_route.get_name_leafdata());
-    if (extern_two_route.is_set || is_set(extern_two_route.operation)) leaf_name_data.push_back(extern_two_route.get_name_leafdata());
-    if (inter_area_route.is_set || is_set(inter_area_route.operation)) leaf_name_data.push_back(inter_area_route.get_name_leafdata());
-    if (intra_area_route.is_set || is_set(intra_area_route.operation)) leaf_name_data.push_back(intra_area_route.get_name_leafdata());
-    if (nssa_one_route.is_set || is_set(nssa_one_route.operation)) leaf_name_data.push_back(nssa_one_route.get_name_leafdata());
-    if (nssa_two_route.is_set || is_set(nssa_two_route.operation)) leaf_name_data.push_back(nssa_two_route.get_name_leafdata());
-    if (redistribution_route.is_set || is_set(redistribution_route.operation)) leaf_name_data.push_back(redistribution_route.get_name_leafdata());
-    if (route_connected.is_set || is_set(route_connected.operation)) leaf_name_data.push_back(route_connected.get_name_leafdata());
-    if (route_id.is_set || is_set(route_id.operation)) leaf_name_data.push_back(route_id.get_name_leafdata());
-    if (total_received_route.is_set || is_set(total_received_route.operation)) leaf_name_data.push_back(total_received_route.get_name_leafdata());
-    if (total_sent_route.is_set || is_set(total_sent_route.operation)) leaf_name_data.push_back(total_sent_route.get_name_leafdata());
+    if (extern_one_route.is_set || is_set(extern_one_route.yfilter)) leaf_name_data.push_back(extern_one_route.get_name_leafdata());
+    if (extern_two_route.is_set || is_set(extern_two_route.yfilter)) leaf_name_data.push_back(extern_two_route.get_name_leafdata());
+    if (inter_area_route.is_set || is_set(inter_area_route.yfilter)) leaf_name_data.push_back(inter_area_route.get_name_leafdata());
+    if (intra_area_route.is_set || is_set(intra_area_route.yfilter)) leaf_name_data.push_back(intra_area_route.get_name_leafdata());
+    if (nssa_one_route.is_set || is_set(nssa_one_route.yfilter)) leaf_name_data.push_back(nssa_one_route.get_name_leafdata());
+    if (nssa_two_route.is_set || is_set(nssa_two_route.yfilter)) leaf_name_data.push_back(nssa_two_route.get_name_leafdata());
+    if (redistribution_route.is_set || is_set(redistribution_route.yfilter)) leaf_name_data.push_back(redistribution_route.get_name_leafdata());
+    if (route_connected.is_set || is_set(route_connected.yfilter)) leaf_name_data.push_back(route_connected.get_name_leafdata());
+    if (route_id.is_set || is_set(route_id.yfilter)) leaf_name_data.push_back(route_id.get_name_leafdata());
+    if (total_received_route.is_set || is_set(total_received_route.yfilter)) leaf_name_data.push_back(total_received_route.get_name_leafdata());
+    if (total_sent_route.is_set || is_set(total_sent_route.yfilter)) leaf_name_data.push_back(total_sent_route.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13494,52 +18741,129 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::Summary::Route::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "extern-one-route")
     {
         extern_one_route = value;
+        extern_one_route.value_namespace = name_space;
+        extern_one_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "extern-two-route")
     {
         extern_two_route = value;
+        extern_two_route.value_namespace = name_space;
+        extern_two_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-area-route")
     {
         inter_area_route = value;
+        inter_area_route.value_namespace = name_space;
+        inter_area_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intra-area-route")
     {
         intra_area_route = value;
+        intra_area_route.value_namespace = name_space;
+        intra_area_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nssa-one-route")
     {
         nssa_one_route = value;
+        nssa_one_route.value_namespace = name_space;
+        nssa_one_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nssa-two-route")
     {
         nssa_two_route = value;
+        nssa_two_route.value_namespace = name_space;
+        nssa_two_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redistribution-route")
     {
         redistribution_route = value;
+        redistribution_route.value_namespace = name_space;
+        redistribution_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-connected")
     {
         route_connected = value;
+        route_connected.value_namespace = name_space;
+        route_connected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-id")
     {
         route_id = value;
+        route_id.value_namespace = name_space;
+        route_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-received-route")
     {
         total_received_route = value;
+        total_received_route.value_namespace = name_space;
+        total_received_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-sent-route")
     {
         total_sent_route = value;
+        total_sent_route.value_namespace = name_space;
+        total_sent_route.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::Summary::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "extern-one-route")
+    {
+        extern_one_route.yfilter = yfilter;
+    }
+    if(value_path == "extern-two-route")
+    {
+        extern_two_route.yfilter = yfilter;
+    }
+    if(value_path == "inter-area-route")
+    {
+        inter_area_route.yfilter = yfilter;
+    }
+    if(value_path == "intra-area-route")
+    {
+        intra_area_route.yfilter = yfilter;
+    }
+    if(value_path == "nssa-one-route")
+    {
+        nssa_one_route.yfilter = yfilter;
+    }
+    if(value_path == "nssa-two-route")
+    {
+        nssa_two_route.yfilter = yfilter;
+    }
+    if(value_path == "redistribution-route")
+    {
+        redistribution_route.yfilter = yfilter;
+    }
+    if(value_path == "route-connected")
+    {
+        route_connected.yfilter = yfilter;
+    }
+    if(value_path == "route-id")
+    {
+        route_id.yfilter = yfilter;
+    }
+    if(value_path == "total-received-route")
+    {
+        total_received_route.yfilter = yfilter;
+    }
+    if(value_path == "total-sent-route")
+    {
+        total_sent_route.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::Summary::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "extern-one-route" || name == "extern-two-route" || name == "inter-area-route" || name == "intra-area-route" || name == "nssa-one-route" || name == "nssa-two-route" || name == "redistribution-route" || name == "route-connected" || name == "route-id" || name == "total-received-route" || name == "total-sent-route")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::RetransmissionListProcessTable()
@@ -13568,7 +18892,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::has
         if(retransmission[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::get_segment_path() const
@@ -13633,8 +18957,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "retransmission")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::Retransmission()
@@ -13701,16 +19036,16 @@ bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Ret
         if(retransmissionvirtual_link_db[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_retransmission_sham_link.operation)
-	|| is_set(is_retransmissionvirtual_link.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(retransmission_length.operation)
-	|| is_set(retransmission_neighbor_address.operation)
-	|| is_set(retransmission_sham_link_id.operation)
-	|| is_set(retransmission_timer.operation)
-	|| is_set(retransmissionvirtual_link_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_retransmission_sham_link.yfilter)
+	|| ydk::is_set(is_retransmissionvirtual_link.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(retransmission_length.yfilter)
+	|| ydk::is_set(retransmission_neighbor_address.yfilter)
+	|| ydk::is_set(retransmission_sham_link_id.yfilter)
+	|| ydk::is_set(retransmission_timer.yfilter)
+	|| ydk::is_set(retransmissionvirtual_link_id.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::get_segment_path() const
@@ -13736,15 +19071,15 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProce
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_retransmission_sham_link.is_set || is_set(is_retransmission_sham_link.operation)) leaf_name_data.push_back(is_retransmission_sham_link.get_name_leafdata());
-    if (is_retransmissionvirtual_link.is_set || is_set(is_retransmissionvirtual_link.operation)) leaf_name_data.push_back(is_retransmissionvirtual_link.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (retransmission_length.is_set || is_set(retransmission_length.operation)) leaf_name_data.push_back(retransmission_length.get_name_leafdata());
-    if (retransmission_neighbor_address.is_set || is_set(retransmission_neighbor_address.operation)) leaf_name_data.push_back(retransmission_neighbor_address.get_name_leafdata());
-    if (retransmission_sham_link_id.is_set || is_set(retransmission_sham_link_id.operation)) leaf_name_data.push_back(retransmission_sham_link_id.get_name_leafdata());
-    if (retransmission_timer.is_set || is_set(retransmission_timer.operation)) leaf_name_data.push_back(retransmission_timer.get_name_leafdata());
-    if (retransmissionvirtual_link_id.is_set || is_set(retransmissionvirtual_link_id.operation)) leaf_name_data.push_back(retransmissionvirtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_retransmission_sham_link.is_set || is_set(is_retransmission_sham_link.yfilter)) leaf_name_data.push_back(is_retransmission_sham_link.get_name_leafdata());
+    if (is_retransmissionvirtual_link.is_set || is_set(is_retransmissionvirtual_link.yfilter)) leaf_name_data.push_back(is_retransmissionvirtual_link.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (retransmission_length.is_set || is_set(retransmission_length.yfilter)) leaf_name_data.push_back(retransmission_length.get_name_leafdata());
+    if (retransmission_neighbor_address.is_set || is_set(retransmission_neighbor_address.yfilter)) leaf_name_data.push_back(retransmission_neighbor_address.get_name_leafdata());
+    if (retransmission_sham_link_id.is_set || is_set(retransmission_sham_link_id.yfilter)) leaf_name_data.push_back(retransmission_sham_link_id.get_name_leafdata());
+    if (retransmission_timer.is_set || is_set(retransmission_timer.yfilter)) leaf_name_data.push_back(retransmission_timer.get_name_leafdata());
+    if (retransmissionvirtual_link_id.is_set || is_set(retransmissionvirtual_link_id.yfilter)) leaf_name_data.push_back(retransmissionvirtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13826,44 +19161,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-retransmission-sham-link")
     {
         is_retransmission_sham_link = value;
+        is_retransmission_sham_link.value_namespace = name_space;
+        is_retransmission_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-retransmissionvirtual-link")
     {
         is_retransmissionvirtual_link = value;
+        is_retransmissionvirtual_link.value_namespace = name_space;
+        is_retransmissionvirtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmission-length")
     {
         retransmission_length = value;
+        retransmission_length.value_namespace = name_space;
+        retransmission_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmission-neighbor-address")
     {
         retransmission_neighbor_address = value;
+        retransmission_neighbor_address.value_namespace = name_space;
+        retransmission_neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmission-sham-link-id")
     {
         retransmission_sham_link_id = value;
+        retransmission_sham_link_id.value_namespace = name_space;
+        retransmission_sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmission-timer")
     {
         retransmission_timer = value;
+        retransmission_timer.value_namespace = name_space;
+        retransmission_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmissionvirtual-link-id")
     {
         retransmissionvirtual_link_id = value;
+        retransmissionvirtual_link_id.value_namespace = name_space;
+        retransmissionvirtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-retransmission-sham-link")
+    {
+        is_retransmission_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-retransmissionvirtual-link")
+    {
+        is_retransmissionvirtual_link.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "retransmission-length")
+    {
+        retransmission_length.yfilter = yfilter;
+    }
+    if(value_path == "retransmission-neighbor-address")
+    {
+        retransmission_neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "retransmission-sham-link-id")
+    {
+        retransmission_sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "retransmission-timer")
+    {
+        retransmission_timer.yfilter = yfilter;
+    }
+    if(value_path == "retransmissionvirtual-link-id")
+    {
+        retransmissionvirtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "retransmission-area-db" || name == "retransmission-asdb" || name == "retransmissionvirtual-link-db" || name == "interface-name" || name == "is-retransmission-sham-link" || name == "is-retransmissionvirtual-link" || name == "neighbor-address" || name == "retransmission-length" || name == "retransmission-neighbor-address" || name == "retransmission-sham-link-id" || name == "retransmission-timer" || name == "retransmissionvirtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::RetransmissionvirtualLinkDb()
@@ -13892,12 +19292,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Ret
 
 bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(header_advertising_router.operation)
-	|| is_set(header_lsa_age.operation)
-	|| is_set(header_lsa_id.operation)
-	|| is_set(header_lsa_type.operation)
-	|| is_set(header_sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(header_advertising_router.yfilter)
+	|| ydk::is_set(header_lsa_age.yfilter)
+	|| ydk::is_set(header_lsa_id.yfilter)
+	|| ydk::is_set(header_lsa_type.yfilter)
+	|| ydk::is_set(header_sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::get_segment_path() const
@@ -13923,11 +19323,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProce
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (header_advertising_router.is_set || is_set(header_advertising_router.operation)) leaf_name_data.push_back(header_advertising_router.get_name_leafdata());
-    if (header_lsa_age.is_set || is_set(header_lsa_age.operation)) leaf_name_data.push_back(header_lsa_age.get_name_leafdata());
-    if (header_lsa_id.is_set || is_set(header_lsa_id.operation)) leaf_name_data.push_back(header_lsa_id.get_name_leafdata());
-    if (header_lsa_type.is_set || is_set(header_lsa_type.operation)) leaf_name_data.push_back(header_lsa_type.get_name_leafdata());
-    if (header_sequence_number.is_set || is_set(header_sequence_number.operation)) leaf_name_data.push_back(header_sequence_number.get_name_leafdata());
+    if (header_advertising_router.is_set || is_set(header_advertising_router.yfilter)) leaf_name_data.push_back(header_advertising_router.get_name_leafdata());
+    if (header_lsa_age.is_set || is_set(header_lsa_age.yfilter)) leaf_name_data.push_back(header_lsa_age.get_name_leafdata());
+    if (header_lsa_id.is_set || is_set(header_lsa_id.yfilter)) leaf_name_data.push_back(header_lsa_id.get_name_leafdata());
+    if (header_lsa_type.is_set || is_set(header_lsa_type.yfilter)) leaf_name_data.push_back(header_lsa_type.get_name_leafdata());
+    if (header_sequence_number.is_set || is_set(header_sequence_number.yfilter)) leaf_name_data.push_back(header_sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13946,28 +19346,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "header-advertising-router")
     {
         header_advertising_router = value;
+        header_advertising_router.value_namespace = name_space;
+        header_advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-age")
     {
         header_lsa_age = value;
+        header_lsa_age.value_namespace = name_space;
+        header_lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-id")
     {
         header_lsa_id = value;
+        header_lsa_id.value_namespace = name_space;
+        header_lsa_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-type")
     {
         header_lsa_type = value;
+        header_lsa_type.value_namespace = name_space;
+        header_lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-sequence-number")
     {
         header_sequence_number = value;
+        header_sequence_number.value_namespace = name_space;
+        header_sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "header-advertising-router")
+    {
+        header_advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-age")
+    {
+        header_lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-id")
+    {
+        header_lsa_id.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-type")
+    {
+        header_lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "header-sequence-number")
+    {
+        header_sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionvirtualLinkDb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "header-advertising-router" || name == "header-lsa-age" || name == "header-lsa-id" || name == "header-lsa-type" || name == "header-sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::RetransmissionAreaDb()
@@ -13996,12 +19437,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Ret
 
 bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(header_advertising_router.operation)
-	|| is_set(header_lsa_age.operation)
-	|| is_set(header_lsa_id.operation)
-	|| is_set(header_lsa_type.operation)
-	|| is_set(header_sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(header_advertising_router.yfilter)
+	|| ydk::is_set(header_lsa_age.yfilter)
+	|| ydk::is_set(header_lsa_id.yfilter)
+	|| ydk::is_set(header_lsa_type.yfilter)
+	|| ydk::is_set(header_sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::get_segment_path() const
@@ -14027,11 +19468,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProce
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (header_advertising_router.is_set || is_set(header_advertising_router.operation)) leaf_name_data.push_back(header_advertising_router.get_name_leafdata());
-    if (header_lsa_age.is_set || is_set(header_lsa_age.operation)) leaf_name_data.push_back(header_lsa_age.get_name_leafdata());
-    if (header_lsa_id.is_set || is_set(header_lsa_id.operation)) leaf_name_data.push_back(header_lsa_id.get_name_leafdata());
-    if (header_lsa_type.is_set || is_set(header_lsa_type.operation)) leaf_name_data.push_back(header_lsa_type.get_name_leafdata());
-    if (header_sequence_number.is_set || is_set(header_sequence_number.operation)) leaf_name_data.push_back(header_sequence_number.get_name_leafdata());
+    if (header_advertising_router.is_set || is_set(header_advertising_router.yfilter)) leaf_name_data.push_back(header_advertising_router.get_name_leafdata());
+    if (header_lsa_age.is_set || is_set(header_lsa_age.yfilter)) leaf_name_data.push_back(header_lsa_age.get_name_leafdata());
+    if (header_lsa_id.is_set || is_set(header_lsa_id.yfilter)) leaf_name_data.push_back(header_lsa_id.get_name_leafdata());
+    if (header_lsa_type.is_set || is_set(header_lsa_type.yfilter)) leaf_name_data.push_back(header_lsa_type.get_name_leafdata());
+    if (header_sequence_number.is_set || is_set(header_sequence_number.yfilter)) leaf_name_data.push_back(header_sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14050,28 +19491,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "header-advertising-router")
     {
         header_advertising_router = value;
+        header_advertising_router.value_namespace = name_space;
+        header_advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-age")
     {
         header_lsa_age = value;
+        header_lsa_age.value_namespace = name_space;
+        header_lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-id")
     {
         header_lsa_id = value;
+        header_lsa_id.value_namespace = name_space;
+        header_lsa_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-type")
     {
         header_lsa_type = value;
+        header_lsa_type.value_namespace = name_space;
+        header_lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-sequence-number")
     {
         header_sequence_number = value;
+        header_sequence_number.value_namespace = name_space;
+        header_sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "header-advertising-router")
+    {
+        header_advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-age")
+    {
+        header_lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-id")
+    {
+        header_lsa_id.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-type")
+    {
+        header_lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "header-sequence-number")
+    {
+        header_sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAreaDb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "header-advertising-router" || name == "header-lsa-age" || name == "header-lsa-id" || name == "header-lsa-type" || name == "header-sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::RetransmissionAsdb()
@@ -14100,12 +19582,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Ret
 
 bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(header_advertising_router.operation)
-	|| is_set(header_lsa_age.operation)
-	|| is_set(header_lsa_id.operation)
-	|| is_set(header_lsa_type.operation)
-	|| is_set(header_sequence_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(header_advertising_router.yfilter)
+	|| ydk::is_set(header_lsa_age.yfilter)
+	|| ydk::is_set(header_lsa_id.yfilter)
+	|| ydk::is_set(header_lsa_type.yfilter)
+	|| ydk::is_set(header_sequence_number.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::get_segment_path() const
@@ -14131,11 +19613,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProce
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (header_advertising_router.is_set || is_set(header_advertising_router.operation)) leaf_name_data.push_back(header_advertising_router.get_name_leafdata());
-    if (header_lsa_age.is_set || is_set(header_lsa_age.operation)) leaf_name_data.push_back(header_lsa_age.get_name_leafdata());
-    if (header_lsa_id.is_set || is_set(header_lsa_id.operation)) leaf_name_data.push_back(header_lsa_id.get_name_leafdata());
-    if (header_lsa_type.is_set || is_set(header_lsa_type.operation)) leaf_name_data.push_back(header_lsa_type.get_name_leafdata());
-    if (header_sequence_number.is_set || is_set(header_sequence_number.operation)) leaf_name_data.push_back(header_sequence_number.get_name_leafdata());
+    if (header_advertising_router.is_set || is_set(header_advertising_router.yfilter)) leaf_name_data.push_back(header_advertising_router.get_name_leafdata());
+    if (header_lsa_age.is_set || is_set(header_lsa_age.yfilter)) leaf_name_data.push_back(header_lsa_age.get_name_leafdata());
+    if (header_lsa_id.is_set || is_set(header_lsa_id.yfilter)) leaf_name_data.push_back(header_lsa_id.get_name_leafdata());
+    if (header_lsa_type.is_set || is_set(header_lsa_type.yfilter)) leaf_name_data.push_back(header_lsa_type.get_name_leafdata());
+    if (header_sequence_number.is_set || is_set(header_sequence_number.yfilter)) leaf_name_data.push_back(header_sequence_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14154,28 +19636,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "header-advertising-router")
     {
         header_advertising_router = value;
+        header_advertising_router.value_namespace = name_space;
+        header_advertising_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-age")
     {
         header_lsa_age = value;
+        header_lsa_age.value_namespace = name_space;
+        header_lsa_age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-id")
     {
         header_lsa_id = value;
+        header_lsa_id.value_namespace = name_space;
+        header_lsa_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-lsa-type")
     {
         header_lsa_type = value;
+        header_lsa_type.value_namespace = name_space;
+        header_lsa_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "header-sequence-number")
     {
         header_sequence_number = value;
+        header_sequence_number.value_namespace = name_space;
+        header_sequence_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "header-advertising-router")
+    {
+        header_advertising_router.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-age")
+    {
+        header_lsa_age.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-id")
+    {
+        header_lsa_id.yfilter = yfilter;
+    }
+    if(value_path == "header-lsa-type")
+    {
+        header_lsa_type.yfilter = yfilter;
+    }
+    if(value_path == "header-sequence-number")
+    {
+        header_sequence_number.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::RetransmissionListProcessTable::Retransmission::RetransmissionAsdb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "header-advertising-router" || name == "header-lsa-age" || name == "header-lsa-id" || name == "header-lsa-type" || name == "header-sequence-number")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksums()
@@ -14204,7 +19727,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::has_operation() const
         if(bad_checksum[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::BadChecksums::get_segment_path() const
@@ -14269,8 +19792,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-checksum")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::BadChecksum()
@@ -14302,11 +19836,11 @@ bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::has_data
 
 bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(packet_number.operation)
-	|| is_set(computed_checksum.operation)
-	|| is_set(received_checksum.operation)
-	|| is_set(received_data.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(packet_number.yfilter)
+	|| ydk::is_set(computed_checksum.yfilter)
+	|| ydk::is_set(received_checksum.yfilter)
+	|| ydk::is_set(received_data.yfilter)
 	|| (timestamp !=  nullptr && timestamp->has_operation());
 }
 
@@ -14333,10 +19867,10 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecks
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (packet_number.is_set || is_set(packet_number.operation)) leaf_name_data.push_back(packet_number.get_name_leafdata());
-    if (computed_checksum.is_set || is_set(computed_checksum.operation)) leaf_name_data.push_back(computed_checksum.get_name_leafdata());
-    if (received_checksum.is_set || is_set(received_checksum.operation)) leaf_name_data.push_back(received_checksum.get_name_leafdata());
-    if (received_data.is_set || is_set(received_data.operation)) leaf_name_data.push_back(received_data.get_name_leafdata());
+    if (packet_number.is_set || is_set(packet_number.yfilter)) leaf_name_data.push_back(packet_number.get_name_leafdata());
+    if (computed_checksum.is_set || is_set(computed_checksum.yfilter)) leaf_name_data.push_back(computed_checksum.get_name_leafdata());
+    if (received_checksum.is_set || is_set(received_checksum.yfilter)) leaf_name_data.push_back(received_checksum.get_name_leafdata());
+    if (received_data.is_set || is_set(received_data.yfilter)) leaf_name_data.push_back(received_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14369,24 +19903,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-number")
     {
         packet_number = value;
+        packet_number.value_namespace = name_space;
+        packet_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "computed-checksum")
     {
         computed_checksum = value;
+        computed_checksum.value_namespace = name_space;
+        computed_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-checksum")
     {
         received_checksum = value;
+        received_checksum.value_namespace = name_space;
+        received_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-data")
     {
         received_data = value;
+        received_data.value_namespace = name_space;
+        received_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packet-number")
+    {
+        packet_number.yfilter = yfilter;
+    }
+    if(value_path == "computed-checksum")
+    {
+        computed_checksum.yfilter = yfilter;
+    }
+    if(value_path == "received-checksum")
+    {
+        received_checksum.yfilter = yfilter;
+    }
+    if(value_path == "received-data")
+    {
+        received_data.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timestamp" || name == "packet-number" || name == "computed-checksum" || name == "received-checksum" || name == "received-data")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestamp::Timestamp()
@@ -14409,9 +19978,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestam
 
 bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestamp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanosecond.operation)
-	|| is_set(second.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanosecond.yfilter)
+	|| ydk::is_set(second.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestamp::get_segment_path() const
@@ -14437,8 +20006,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecks
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanosecond.is_set || is_set(nanosecond.operation)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
-    if (second.is_set || is_set(second.operation)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (nanosecond.is_set || is_set(nanosecond.yfilter)) leaf_name_data.push_back(nanosecond.get_name_leafdata());
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14457,16 +20026,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestamp::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanosecond")
     {
         nanosecond = value;
+        nanosecond.value_namespace = name_space;
+        nanosecond.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second")
     {
         second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestamp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanosecond")
+    {
+        nanosecond.yfilter = yfilter;
+    }
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::BadChecksums::BadChecksum::Timestamp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanosecond" || name == "second")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummaryTable()
@@ -14489,7 +20081,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::has_data() co
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (database_summary !=  nullptr && database_summary->has_operation());
 }
 
@@ -14548,8 +20140,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "database-summary")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseSummary()
@@ -14587,9 +20190,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
         if(area_database[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(database_router_id.operation)
-	|| is_set(is_opaque_database_capable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(database_router_id.yfilter)
+	|| ydk::is_set(is_opaque_database_capable.yfilter)
 	|| (database_counters !=  nullptr && database_counters->has_operation());
 }
 
@@ -14616,8 +20219,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::D
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (database_router_id.is_set || is_set(database_router_id.operation)) leaf_name_data.push_back(database_router_id.get_name_leafdata());
-    if (is_opaque_database_capable.is_set || is_set(is_opaque_database_capable.operation)) leaf_name_data.push_back(is_opaque_database_capable.get_name_leafdata());
+    if (database_router_id.is_set || is_set(database_router_id.yfilter)) leaf_name_data.push_back(database_router_id.get_name_leafdata());
+    if (is_opaque_database_capable.is_set || is_set(is_opaque_database_capable.yfilter)) leaf_name_data.push_back(is_opaque_database_capable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14671,16 +20274,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "database-router-id")
     {
         database_router_id = value;
+        database_router_id.value_namespace = name_space;
+        database_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-opaque-database-capable")
     {
         is_opaque_database_capable = value;
+        is_opaque_database_capable.value_namespace = name_space;
+        is_opaque_database_capable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "database-router-id")
+    {
+        database_router_id.yfilter = yfilter;
+    }
+    if(value_path == "is-opaque-database-capable")
+    {
+        is_opaque_database_capable.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-database" || name == "database-counters" || name == "database-router-id" || name == "is-opaque-database-capable")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::DatabaseCounters()
@@ -14726,29 +20352,29 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
 {
     for (auto const & leaf : deleted_lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lsa_checksum.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : max_age_lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(deleted_lsa.operation)
-	|| is_set(lsa.operation)
-	|| is_set(lsa_checksum.operation)
-	|| is_set(max_age_lsa.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(deleted_lsa.yfilter)
+	|| ydk::is_set(lsa.yfilter)
+	|| ydk::is_set(lsa_checksum.yfilter)
+	|| ydk::is_set(max_age_lsa.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::get_segment_path() const
@@ -14800,7 +20426,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "deleted-lsa")
     {
@@ -14818,6 +20444,33 @@ void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
     {
         max_age_lsa.append(value);
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "deleted-lsa")
+    {
+        deleted_lsa.yfilter = yfilter;
+    }
+    if(value_path == "lsa")
+    {
+        lsa.yfilter = yfilter;
+    }
+    if(value_path == "lsa-checksum")
+    {
+        lsa_checksum.yfilter = yfilter;
+    }
+    if(value_path == "max-age-lsa")
+    {
+        max_age_lsa.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "deleted-lsa" || name == "lsa" || name == "lsa-checksum" || name == "max-age-lsa")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabase()
@@ -14843,8 +20496,8 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
 
 bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsa_area_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsa_area_id.yfilter)
 	|| (area_database_summary !=  nullptr && area_database_summary->has_operation());
 }
 
@@ -14871,7 +20524,7 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::D
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsa_area_id.is_set || is_set(lsa_area_id.operation)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
+    if (lsa_area_id.is_set || is_set(lsa_area_id.yfilter)) leaf_name_data.push_back(lsa_area_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14904,12 +20557,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsa-area-id")
     {
         lsa_area_id = value;
+        lsa_area_id.value_namespace = name_space;
+        lsa_area_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsa-area-id")
+    {
+        lsa_area_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-database-summary" || name == "lsa-area-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::AreaDatabaseSummary()
@@ -14955,29 +20625,29 @@ bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
 {
     for (auto const & leaf : deleted_lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : lsa_checksum.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : max_age_lsa.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(deleted_lsa.operation)
-	|| is_set(lsa.operation)
-	|| is_set(lsa_checksum.operation)
-	|| is_set(max_age_lsa.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(deleted_lsa.yfilter)
+	|| ydk::is_set(lsa.yfilter)
+	|| ydk::is_set(lsa_checksum.yfilter)
+	|| ydk::is_set(max_age_lsa.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::get_segment_path() const
@@ -15029,7 +20699,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "deleted-lsa")
     {
@@ -15047,6 +20717,33 @@ void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSumma
     {
         max_age_lsa.append(value);
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "deleted-lsa")
+    {
+        deleted_lsa.yfilter = yfilter;
+    }
+    if(value_path == "lsa")
+    {
+        lsa.yfilter = yfilter;
+    }
+    if(value_path == "lsa-checksum")
+    {
+        lsa_checksum.yfilter = yfilter;
+    }
+    if(value_path == "max-age-lsa")
+    {
+        max_age_lsa.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::DatabaseSummaryTable::DatabaseSummary::AreaDatabase::AreaDatabaseSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "deleted-lsa" || name == "lsa" || name == "lsa-checksum" || name == "max-age-lsa")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::NeighborProcessTable()
@@ -15075,7 +20772,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::has_operation
         if(neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::get_segment_path() const
@@ -15140,8 +20837,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::Neighbor()
@@ -15195,20 +20903,20 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::has
 
 bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_neighbor_sham_link.operation)
-	|| is_set(is_neighbor_virtual_link.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_address_xr.operation)
-	|| is_set(neighbor_dead_timer.operation)
-	|| is_set(neighbor_designated_router.operation)
-	|| is_set(neighbor_dr_priority.operation)
-	|| is_set(neighbor_interface_id.operation)
-	|| is_set(neighbor_sham_link_id.operation)
-	|| is_set(neighbor_state.operation)
-	|| is_set(neighbor_up_time.operation)
-	|| is_set(neighbor_virtual_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_neighbor_sham_link.yfilter)
+	|| ydk::is_set(is_neighbor_virtual_link.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_address_xr.yfilter)
+	|| ydk::is_set(neighbor_dead_timer.yfilter)
+	|| ydk::is_set(neighbor_designated_router.yfilter)
+	|| ydk::is_set(neighbor_dr_priority.yfilter)
+	|| ydk::is_set(neighbor_interface_id.yfilter)
+	|| ydk::is_set(neighbor_sham_link_id.yfilter)
+	|| ydk::is_set(neighbor_state.yfilter)
+	|| ydk::is_set(neighbor_up_time.yfilter)
+	|| ydk::is_set(neighbor_virtual_link_id.yfilter)
 	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
 	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
@@ -15236,19 +20944,19 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::N
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_neighbor_sham_link.is_set || is_set(is_neighbor_sham_link.operation)) leaf_name_data.push_back(is_neighbor_sham_link.get_name_leafdata());
-    if (is_neighbor_virtual_link.is_set || is_set(is_neighbor_virtual_link.operation)) leaf_name_data.push_back(is_neighbor_virtual_link.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_address_xr.is_set || is_set(neighbor_address_xr.operation)) leaf_name_data.push_back(neighbor_address_xr.get_name_leafdata());
-    if (neighbor_dead_timer.is_set || is_set(neighbor_dead_timer.operation)) leaf_name_data.push_back(neighbor_dead_timer.get_name_leafdata());
-    if (neighbor_designated_router.is_set || is_set(neighbor_designated_router.operation)) leaf_name_data.push_back(neighbor_designated_router.get_name_leafdata());
-    if (neighbor_dr_priority.is_set || is_set(neighbor_dr_priority.operation)) leaf_name_data.push_back(neighbor_dr_priority.get_name_leafdata());
-    if (neighbor_interface_id.is_set || is_set(neighbor_interface_id.operation)) leaf_name_data.push_back(neighbor_interface_id.get_name_leafdata());
-    if (neighbor_sham_link_id.is_set || is_set(neighbor_sham_link_id.operation)) leaf_name_data.push_back(neighbor_sham_link_id.get_name_leafdata());
-    if (neighbor_state.is_set || is_set(neighbor_state.operation)) leaf_name_data.push_back(neighbor_state.get_name_leafdata());
-    if (neighbor_up_time.is_set || is_set(neighbor_up_time.operation)) leaf_name_data.push_back(neighbor_up_time.get_name_leafdata());
-    if (neighbor_virtual_link_id.is_set || is_set(neighbor_virtual_link_id.operation)) leaf_name_data.push_back(neighbor_virtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_neighbor_sham_link.is_set || is_set(is_neighbor_sham_link.yfilter)) leaf_name_data.push_back(is_neighbor_sham_link.get_name_leafdata());
+    if (is_neighbor_virtual_link.is_set || is_set(is_neighbor_virtual_link.yfilter)) leaf_name_data.push_back(is_neighbor_virtual_link.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_address_xr.is_set || is_set(neighbor_address_xr.yfilter)) leaf_name_data.push_back(neighbor_address_xr.get_name_leafdata());
+    if (neighbor_dead_timer.is_set || is_set(neighbor_dead_timer.yfilter)) leaf_name_data.push_back(neighbor_dead_timer.get_name_leafdata());
+    if (neighbor_designated_router.is_set || is_set(neighbor_designated_router.yfilter)) leaf_name_data.push_back(neighbor_designated_router.get_name_leafdata());
+    if (neighbor_dr_priority.is_set || is_set(neighbor_dr_priority.yfilter)) leaf_name_data.push_back(neighbor_dr_priority.get_name_leafdata());
+    if (neighbor_interface_id.is_set || is_set(neighbor_interface_id.yfilter)) leaf_name_data.push_back(neighbor_interface_id.get_name_leafdata());
+    if (neighbor_sham_link_id.is_set || is_set(neighbor_sham_link_id.yfilter)) leaf_name_data.push_back(neighbor_sham_link_id.get_name_leafdata());
+    if (neighbor_state.is_set || is_set(neighbor_state.yfilter)) leaf_name_data.push_back(neighbor_state.get_name_leafdata());
+    if (neighbor_up_time.is_set || is_set(neighbor_up_time.yfilter)) leaf_name_data.push_back(neighbor_up_time.get_name_leafdata());
+    if (neighbor_virtual_link_id.is_set || is_set(neighbor_virtual_link_id.yfilter)) leaf_name_data.push_back(neighbor_virtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15295,60 +21003,149 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-sham-link")
     {
         is_neighbor_sham_link = value;
+        is_neighbor_sham_link.value_namespace = name_space;
+        is_neighbor_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-virtual-link")
     {
         is_neighbor_virtual_link = value;
+        is_neighbor_virtual_link.value_namespace = name_space;
+        is_neighbor_virtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address-xr")
     {
         neighbor_address_xr = value;
+        neighbor_address_xr.value_namespace = name_space;
+        neighbor_address_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-dead-timer")
     {
         neighbor_dead_timer = value;
+        neighbor_dead_timer.value_namespace = name_space;
+        neighbor_dead_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-designated-router")
     {
         neighbor_designated_router = value;
+        neighbor_designated_router.value_namespace = name_space;
+        neighbor_designated_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-dr-priority")
     {
         neighbor_dr_priority = value;
+        neighbor_dr_priority.value_namespace = name_space;
+        neighbor_dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-interface-id")
     {
         neighbor_interface_id = value;
+        neighbor_interface_id.value_namespace = name_space;
+        neighbor_interface_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-sham-link-id")
     {
         neighbor_sham_link_id = value;
+        neighbor_sham_link_id.value_namespace = name_space;
+        neighbor_sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-state")
     {
         neighbor_state = value;
+        neighbor_state.value_namespace = name_space;
+        neighbor_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-up-time")
     {
         neighbor_up_time = value;
+        neighbor_up_time.value_namespace = name_space;
+        neighbor_up_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-virtual-link-id")
     {
         neighbor_virtual_link_id = value;
+        neighbor_virtual_link_id.value_namespace = name_space;
+        neighbor_virtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-sham-link")
+    {
+        is_neighbor_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-virtual-link")
+    {
+        is_neighbor_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address-xr")
+    {
+        neighbor_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-dead-timer")
+    {
+        neighbor_dead_timer.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-designated-router")
+    {
+        neighbor_designated_router.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-dr-priority")
+    {
+        neighbor_dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-interface-id")
+    {
+        neighbor_interface_id.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-sham-link-id")
+    {
+        neighbor_sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-state")
+    {
+        neighbor_state.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-up-time")
+    {
+        neighbor_up_time.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-virtual-link-id")
+    {
+        neighbor_virtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-bfd-info" || name == "neighbor-detail" || name == "interface-name" || name == "is-neighbor-sham-link" || name == "is-neighbor-virtual-link" || name == "neighbor-address" || name == "neighbor-address-xr" || name == "neighbor-dead-timer" || name == "neighbor-designated-router" || name == "neighbor-dr-priority" || name == "neighbor-interface-id" || name == "neighbor-sham-link-id" || name == "neighbor-state" || name == "neighbor-up-time" || name == "neighbor-virtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborDetail()
@@ -15394,18 +21191,18 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::Nei
 
 bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_type.operation)
-	|| is_set(is_neighbor_filtered.operation)
-	|| is_set(neighbor_backup_designated_router_address.operation)
-	|| is_set(neighbor_cost.operation)
-	|| is_set(neighbor_designated_router_address.operation)
-	|| is_set(neighbor_ignore_timer.operation)
-	|| is_set(neighbor_option.operation)
-	|| is_set(next_poll_interval.operation)
-	|| is_set(pending_events.operation)
-	|| is_set(poll_interval.operation)
-	|| is_set(state_changes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_type.yfilter)
+	|| ydk::is_set(is_neighbor_filtered.yfilter)
+	|| ydk::is_set(neighbor_backup_designated_router_address.yfilter)
+	|| ydk::is_set(neighbor_cost.yfilter)
+	|| ydk::is_set(neighbor_designated_router_address.yfilter)
+	|| ydk::is_set(neighbor_ignore_timer.yfilter)
+	|| ydk::is_set(neighbor_option.yfilter)
+	|| ydk::is_set(next_poll_interval.yfilter)
+	|| ydk::is_set(pending_events.yfilter)
+	|| ydk::is_set(poll_interval.yfilter)
+	|| ydk::is_set(state_changes.yfilter)
 	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
@@ -15432,17 +21229,17 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::N
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_type.is_set || is_set(interface_type.operation)) leaf_name_data.push_back(interface_type.get_name_leafdata());
-    if (is_neighbor_filtered.is_set || is_set(is_neighbor_filtered.operation)) leaf_name_data.push_back(is_neighbor_filtered.get_name_leafdata());
-    if (neighbor_backup_designated_router_address.is_set || is_set(neighbor_backup_designated_router_address.operation)) leaf_name_data.push_back(neighbor_backup_designated_router_address.get_name_leafdata());
-    if (neighbor_cost.is_set || is_set(neighbor_cost.operation)) leaf_name_data.push_back(neighbor_cost.get_name_leafdata());
-    if (neighbor_designated_router_address.is_set || is_set(neighbor_designated_router_address.operation)) leaf_name_data.push_back(neighbor_designated_router_address.get_name_leafdata());
-    if (neighbor_ignore_timer.is_set || is_set(neighbor_ignore_timer.operation)) leaf_name_data.push_back(neighbor_ignore_timer.get_name_leafdata());
-    if (neighbor_option.is_set || is_set(neighbor_option.operation)) leaf_name_data.push_back(neighbor_option.get_name_leafdata());
-    if (next_poll_interval.is_set || is_set(next_poll_interval.operation)) leaf_name_data.push_back(next_poll_interval.get_name_leafdata());
-    if (pending_events.is_set || is_set(pending_events.operation)) leaf_name_data.push_back(pending_events.get_name_leafdata());
-    if (poll_interval.is_set || is_set(poll_interval.operation)) leaf_name_data.push_back(poll_interval.get_name_leafdata());
-    if (state_changes.is_set || is_set(state_changes.operation)) leaf_name_data.push_back(state_changes.get_name_leafdata());
+    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
+    if (is_neighbor_filtered.is_set || is_set(is_neighbor_filtered.yfilter)) leaf_name_data.push_back(is_neighbor_filtered.get_name_leafdata());
+    if (neighbor_backup_designated_router_address.is_set || is_set(neighbor_backup_designated_router_address.yfilter)) leaf_name_data.push_back(neighbor_backup_designated_router_address.get_name_leafdata());
+    if (neighbor_cost.is_set || is_set(neighbor_cost.yfilter)) leaf_name_data.push_back(neighbor_cost.get_name_leafdata());
+    if (neighbor_designated_router_address.is_set || is_set(neighbor_designated_router_address.yfilter)) leaf_name_data.push_back(neighbor_designated_router_address.get_name_leafdata());
+    if (neighbor_ignore_timer.is_set || is_set(neighbor_ignore_timer.yfilter)) leaf_name_data.push_back(neighbor_ignore_timer.get_name_leafdata());
+    if (neighbor_option.is_set || is_set(neighbor_option.yfilter)) leaf_name_data.push_back(neighbor_option.get_name_leafdata());
+    if (next_poll_interval.is_set || is_set(next_poll_interval.yfilter)) leaf_name_data.push_back(next_poll_interval.get_name_leafdata());
+    if (pending_events.is_set || is_set(pending_events.yfilter)) leaf_name_data.push_back(pending_events.get_name_leafdata());
+    if (poll_interval.is_set || is_set(poll_interval.yfilter)) leaf_name_data.push_back(poll_interval.get_name_leafdata());
+    if (state_changes.is_set || is_set(state_changes.yfilter)) leaf_name_data.push_back(state_changes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15475,52 +21272,129 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-type")
     {
         interface_type = value;
+        interface_type.value_namespace = name_space;
+        interface_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-filtered")
     {
         is_neighbor_filtered = value;
+        is_neighbor_filtered.value_namespace = name_space;
+        is_neighbor_filtered.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-backup-designated-router-address")
     {
         neighbor_backup_designated_router_address = value;
+        neighbor_backup_designated_router_address.value_namespace = name_space;
+        neighbor_backup_designated_router_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-cost")
     {
         neighbor_cost = value;
+        neighbor_cost.value_namespace = name_space;
+        neighbor_cost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-designated-router-address")
     {
         neighbor_designated_router_address = value;
+        neighbor_designated_router_address.value_namespace = name_space;
+        neighbor_designated_router_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-ignore-timer")
     {
         neighbor_ignore_timer = value;
+        neighbor_ignore_timer.value_namespace = name_space;
+        neighbor_ignore_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-option")
     {
         neighbor_option = value;
+        neighbor_option.value_namespace = name_space;
+        neighbor_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-poll-interval")
     {
         next_poll_interval = value;
+        next_poll_interval.value_namespace = name_space;
+        next_poll_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pending-events")
     {
         pending_events = value;
+        pending_events.value_namespace = name_space;
+        pending_events.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll-interval")
     {
         poll_interval = value;
+        poll_interval.value_namespace = name_space;
+        poll_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state-changes")
     {
         state_changes = value;
+        state_changes.value_namespace = name_space;
+        state_changes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-type")
+    {
+        interface_type.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-filtered")
+    {
+        is_neighbor_filtered.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-backup-designated-router-address")
+    {
+        neighbor_backup_designated_router_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-cost")
+    {
+        neighbor_cost.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-designated-router-address")
+    {
+        neighbor_designated_router_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-ignore-timer")
+    {
+        neighbor_ignore_timer.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-option")
+    {
+        neighbor_option.yfilter = yfilter;
+    }
+    if(value_path == "next-poll-interval")
+    {
+        next_poll_interval.yfilter = yfilter;
+    }
+    if(value_path == "pending-events")
+    {
+        pending_events.yfilter = yfilter;
+    }
+    if(value_path == "poll-interval")
+    {
+        poll_interval.yfilter = yfilter;
+    }
+    if(value_path == "state-changes")
+    {
+        state_changes.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-retransmission" || name == "interface-type" || name == "is-neighbor-filtered" || name == "neighbor-backup-designated-router-address" || name == "neighbor-cost" || name == "neighbor-designated-router-address" || name == "neighbor-ignore-timer" || name == "neighbor-option" || name == "next-poll-interval" || name == "pending-events" || name == "poll-interval" || name == "state-changes")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::NeighborRetransmission()
@@ -15585,30 +21459,30 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::Nei
 
 bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area_first_flood.operation)
-	|| is_set(area_first_flood_index.operation)
-	|| is_set(area_flood_index.operation)
-	|| is_set(area_next_flood.operation)
-	|| is_set(area_next_flood_index.operation)
-	|| is_set(as_first_flood.operation)
-	|| is_set(as_first_flood_index.operation)
-	|| is_set(as_flood_index.operation)
-	|| is_set(as_next_flood.operation)
-	|| is_set(as_next_flood_index.operation)
-	|| is_set(database_descriptor_retransmissions.operation)
-	|| is_set(last_retransmission_length.operation)
-	|| is_set(last_retransmission_time.operation)
-	|| is_set(link_first_flood.operation)
-	|| is_set(link_first_flood_index.operation)
-	|| is_set(link_flood_index.operation)
-	|| is_set(link_next_flood.operation)
-	|| is_set(link_next_flood_index.operation)
-	|| is_set(lsa_retransmission_timer.operation)
-	|| is_set(maximum_retransmission_length.operation)
-	|| is_set(maximum_retransmission_time.operation)
-	|| is_set(neighbor_retransmissions.operation)
-	|| is_set(retransmissions.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area_first_flood.yfilter)
+	|| ydk::is_set(area_first_flood_index.yfilter)
+	|| ydk::is_set(area_flood_index.yfilter)
+	|| ydk::is_set(area_next_flood.yfilter)
+	|| ydk::is_set(area_next_flood_index.yfilter)
+	|| ydk::is_set(as_first_flood.yfilter)
+	|| ydk::is_set(as_first_flood_index.yfilter)
+	|| ydk::is_set(as_flood_index.yfilter)
+	|| ydk::is_set(as_next_flood.yfilter)
+	|| ydk::is_set(as_next_flood_index.yfilter)
+	|| ydk::is_set(database_descriptor_retransmissions.yfilter)
+	|| ydk::is_set(last_retransmission_length.yfilter)
+	|| ydk::is_set(last_retransmission_time.yfilter)
+	|| ydk::is_set(link_first_flood.yfilter)
+	|| ydk::is_set(link_first_flood_index.yfilter)
+	|| ydk::is_set(link_flood_index.yfilter)
+	|| ydk::is_set(link_next_flood.yfilter)
+	|| ydk::is_set(link_next_flood_index.yfilter)
+	|| ydk::is_set(lsa_retransmission_timer.yfilter)
+	|| ydk::is_set(maximum_retransmission_length.yfilter)
+	|| ydk::is_set(maximum_retransmission_time.yfilter)
+	|| ydk::is_set(neighbor_retransmissions.yfilter)
+	|| ydk::is_set(retransmissions.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::get_segment_path() const
@@ -15634,29 +21508,29 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::N
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area_first_flood.is_set || is_set(area_first_flood.operation)) leaf_name_data.push_back(area_first_flood.get_name_leafdata());
-    if (area_first_flood_index.is_set || is_set(area_first_flood_index.operation)) leaf_name_data.push_back(area_first_flood_index.get_name_leafdata());
-    if (area_flood_index.is_set || is_set(area_flood_index.operation)) leaf_name_data.push_back(area_flood_index.get_name_leafdata());
-    if (area_next_flood.is_set || is_set(area_next_flood.operation)) leaf_name_data.push_back(area_next_flood.get_name_leafdata());
-    if (area_next_flood_index.is_set || is_set(area_next_flood_index.operation)) leaf_name_data.push_back(area_next_flood_index.get_name_leafdata());
-    if (as_first_flood.is_set || is_set(as_first_flood.operation)) leaf_name_data.push_back(as_first_flood.get_name_leafdata());
-    if (as_first_flood_index.is_set || is_set(as_first_flood_index.operation)) leaf_name_data.push_back(as_first_flood_index.get_name_leafdata());
-    if (as_flood_index.is_set || is_set(as_flood_index.operation)) leaf_name_data.push_back(as_flood_index.get_name_leafdata());
-    if (as_next_flood.is_set || is_set(as_next_flood.operation)) leaf_name_data.push_back(as_next_flood.get_name_leafdata());
-    if (as_next_flood_index.is_set || is_set(as_next_flood_index.operation)) leaf_name_data.push_back(as_next_flood_index.get_name_leafdata());
-    if (database_descriptor_retransmissions.is_set || is_set(database_descriptor_retransmissions.operation)) leaf_name_data.push_back(database_descriptor_retransmissions.get_name_leafdata());
-    if (last_retransmission_length.is_set || is_set(last_retransmission_length.operation)) leaf_name_data.push_back(last_retransmission_length.get_name_leafdata());
-    if (last_retransmission_time.is_set || is_set(last_retransmission_time.operation)) leaf_name_data.push_back(last_retransmission_time.get_name_leafdata());
-    if (link_first_flood.is_set || is_set(link_first_flood.operation)) leaf_name_data.push_back(link_first_flood.get_name_leafdata());
-    if (link_first_flood_index.is_set || is_set(link_first_flood_index.operation)) leaf_name_data.push_back(link_first_flood_index.get_name_leafdata());
-    if (link_flood_index.is_set || is_set(link_flood_index.operation)) leaf_name_data.push_back(link_flood_index.get_name_leafdata());
-    if (link_next_flood.is_set || is_set(link_next_flood.operation)) leaf_name_data.push_back(link_next_flood.get_name_leafdata());
-    if (link_next_flood_index.is_set || is_set(link_next_flood_index.operation)) leaf_name_data.push_back(link_next_flood_index.get_name_leafdata());
-    if (lsa_retransmission_timer.is_set || is_set(lsa_retransmission_timer.operation)) leaf_name_data.push_back(lsa_retransmission_timer.get_name_leafdata());
-    if (maximum_retransmission_length.is_set || is_set(maximum_retransmission_length.operation)) leaf_name_data.push_back(maximum_retransmission_length.get_name_leafdata());
-    if (maximum_retransmission_time.is_set || is_set(maximum_retransmission_time.operation)) leaf_name_data.push_back(maximum_retransmission_time.get_name_leafdata());
-    if (neighbor_retransmissions.is_set || is_set(neighbor_retransmissions.operation)) leaf_name_data.push_back(neighbor_retransmissions.get_name_leafdata());
-    if (retransmissions.is_set || is_set(retransmissions.operation)) leaf_name_data.push_back(retransmissions.get_name_leafdata());
+    if (area_first_flood.is_set || is_set(area_first_flood.yfilter)) leaf_name_data.push_back(area_first_flood.get_name_leafdata());
+    if (area_first_flood_index.is_set || is_set(area_first_flood_index.yfilter)) leaf_name_data.push_back(area_first_flood_index.get_name_leafdata());
+    if (area_flood_index.is_set || is_set(area_flood_index.yfilter)) leaf_name_data.push_back(area_flood_index.get_name_leafdata());
+    if (area_next_flood.is_set || is_set(area_next_flood.yfilter)) leaf_name_data.push_back(area_next_flood.get_name_leafdata());
+    if (area_next_flood_index.is_set || is_set(area_next_flood_index.yfilter)) leaf_name_data.push_back(area_next_flood_index.get_name_leafdata());
+    if (as_first_flood.is_set || is_set(as_first_flood.yfilter)) leaf_name_data.push_back(as_first_flood.get_name_leafdata());
+    if (as_first_flood_index.is_set || is_set(as_first_flood_index.yfilter)) leaf_name_data.push_back(as_first_flood_index.get_name_leafdata());
+    if (as_flood_index.is_set || is_set(as_flood_index.yfilter)) leaf_name_data.push_back(as_flood_index.get_name_leafdata());
+    if (as_next_flood.is_set || is_set(as_next_flood.yfilter)) leaf_name_data.push_back(as_next_flood.get_name_leafdata());
+    if (as_next_flood_index.is_set || is_set(as_next_flood_index.yfilter)) leaf_name_data.push_back(as_next_flood_index.get_name_leafdata());
+    if (database_descriptor_retransmissions.is_set || is_set(database_descriptor_retransmissions.yfilter)) leaf_name_data.push_back(database_descriptor_retransmissions.get_name_leafdata());
+    if (last_retransmission_length.is_set || is_set(last_retransmission_length.yfilter)) leaf_name_data.push_back(last_retransmission_length.get_name_leafdata());
+    if (last_retransmission_time.is_set || is_set(last_retransmission_time.yfilter)) leaf_name_data.push_back(last_retransmission_time.get_name_leafdata());
+    if (link_first_flood.is_set || is_set(link_first_flood.yfilter)) leaf_name_data.push_back(link_first_flood.get_name_leafdata());
+    if (link_first_flood_index.is_set || is_set(link_first_flood_index.yfilter)) leaf_name_data.push_back(link_first_flood_index.get_name_leafdata());
+    if (link_flood_index.is_set || is_set(link_flood_index.yfilter)) leaf_name_data.push_back(link_flood_index.get_name_leafdata());
+    if (link_next_flood.is_set || is_set(link_next_flood.yfilter)) leaf_name_data.push_back(link_next_flood.get_name_leafdata());
+    if (link_next_flood_index.is_set || is_set(link_next_flood_index.yfilter)) leaf_name_data.push_back(link_next_flood_index.get_name_leafdata());
+    if (lsa_retransmission_timer.is_set || is_set(lsa_retransmission_timer.yfilter)) leaf_name_data.push_back(lsa_retransmission_timer.get_name_leafdata());
+    if (maximum_retransmission_length.is_set || is_set(maximum_retransmission_length.yfilter)) leaf_name_data.push_back(maximum_retransmission_length.get_name_leafdata());
+    if (maximum_retransmission_time.is_set || is_set(maximum_retransmission_time.yfilter)) leaf_name_data.push_back(maximum_retransmission_time.get_name_leafdata());
+    if (neighbor_retransmissions.is_set || is_set(neighbor_retransmissions.yfilter)) leaf_name_data.push_back(neighbor_retransmissions.get_name_leafdata());
+    if (retransmissions.is_set || is_set(retransmissions.yfilter)) leaf_name_data.push_back(retransmissions.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15675,100 +21549,249 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area-first-flood")
     {
         area_first_flood = value;
+        area_first_flood.value_namespace = name_space;
+        area_first_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-first-flood-index")
     {
         area_first_flood_index = value;
+        area_first_flood_index.value_namespace = name_space;
+        area_first_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-flood-index")
     {
         area_flood_index = value;
+        area_flood_index.value_namespace = name_space;
+        area_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-next-flood")
     {
         area_next_flood = value;
+        area_next_flood.value_namespace = name_space;
+        area_next_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-next-flood-index")
     {
         area_next_flood_index = value;
+        area_next_flood_index.value_namespace = name_space;
+        area_next_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-first-flood")
     {
         as_first_flood = value;
+        as_first_flood.value_namespace = name_space;
+        as_first_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-first-flood-index")
     {
         as_first_flood_index = value;
+        as_first_flood_index.value_namespace = name_space;
+        as_first_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-flood-index")
     {
         as_flood_index = value;
+        as_flood_index.value_namespace = name_space;
+        as_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-next-flood")
     {
         as_next_flood = value;
+        as_next_flood.value_namespace = name_space;
+        as_next_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-next-flood-index")
     {
         as_next_flood_index = value;
+        as_next_flood_index.value_namespace = name_space;
+        as_next_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "database-descriptor-retransmissions")
     {
         database_descriptor_retransmissions = value;
+        database_descriptor_retransmissions.value_namespace = name_space;
+        database_descriptor_retransmissions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-retransmission-length")
     {
         last_retransmission_length = value;
+        last_retransmission_length.value_namespace = name_space;
+        last_retransmission_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-retransmission-time")
     {
         last_retransmission_time = value;
+        last_retransmission_time.value_namespace = name_space;
+        last_retransmission_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-first-flood")
     {
         link_first_flood = value;
+        link_first_flood.value_namespace = name_space;
+        link_first_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-first-flood-index")
     {
         link_first_flood_index = value;
+        link_first_flood_index.value_namespace = name_space;
+        link_first_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-flood-index")
     {
         link_flood_index = value;
+        link_flood_index.value_namespace = name_space;
+        link_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-next-flood")
     {
         link_next_flood = value;
+        link_next_flood.value_namespace = name_space;
+        link_next_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-next-flood-index")
     {
         link_next_flood_index = value;
+        link_next_flood_index.value_namespace = name_space;
+        link_next_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-retransmission-timer")
     {
         lsa_retransmission_timer = value;
+        lsa_retransmission_timer.value_namespace = name_space;
+        lsa_retransmission_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-retransmission-length")
     {
         maximum_retransmission_length = value;
+        maximum_retransmission_length.value_namespace = name_space;
+        maximum_retransmission_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-retransmission-time")
     {
         maximum_retransmission_time = value;
+        maximum_retransmission_time.value_namespace = name_space;
+        maximum_retransmission_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-retransmissions")
     {
         neighbor_retransmissions = value;
+        neighbor_retransmissions.value_namespace = name_space;
+        neighbor_retransmissions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmissions")
     {
         retransmissions = value;
+        retransmissions.value_namespace = name_space;
+        retransmissions.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area-first-flood")
+    {
+        area_first_flood.yfilter = yfilter;
+    }
+    if(value_path == "area-first-flood-index")
+    {
+        area_first_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "area-flood-index")
+    {
+        area_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "area-next-flood")
+    {
+        area_next_flood.yfilter = yfilter;
+    }
+    if(value_path == "area-next-flood-index")
+    {
+        area_next_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "as-first-flood")
+    {
+        as_first_flood.yfilter = yfilter;
+    }
+    if(value_path == "as-first-flood-index")
+    {
+        as_first_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "as-flood-index")
+    {
+        as_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "as-next-flood")
+    {
+        as_next_flood.yfilter = yfilter;
+    }
+    if(value_path == "as-next-flood-index")
+    {
+        as_next_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "database-descriptor-retransmissions")
+    {
+        database_descriptor_retransmissions.yfilter = yfilter;
+    }
+    if(value_path == "last-retransmission-length")
+    {
+        last_retransmission_length.yfilter = yfilter;
+    }
+    if(value_path == "last-retransmission-time")
+    {
+        last_retransmission_time.yfilter = yfilter;
+    }
+    if(value_path == "link-first-flood")
+    {
+        link_first_flood.yfilter = yfilter;
+    }
+    if(value_path == "link-first-flood-index")
+    {
+        link_first_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "link-flood-index")
+    {
+        link_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "link-next-flood")
+    {
+        link_next_flood.yfilter = yfilter;
+    }
+    if(value_path == "link-next-flood-index")
+    {
+        link_next_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "lsa-retransmission-timer")
+    {
+        lsa_retransmission_timer.yfilter = yfilter;
+    }
+    if(value_path == "maximum-retransmission-length")
+    {
+        maximum_retransmission_length.yfilter = yfilter;
+    }
+    if(value_path == "maximum-retransmission-time")
+    {
+        maximum_retransmission_time.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-retransmissions")
+    {
+        neighbor_retransmissions.yfilter = yfilter;
+    }
+    if(value_path == "retransmissions")
+    {
+        retransmissions.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborDetail::NeighborRetransmission::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-first-flood" || name == "area-first-flood-index" || name == "area-flood-index" || name == "area-next-flood" || name == "area-next-flood-index" || name == "as-first-flood" || name == "as-first-flood-index" || name == "as-flood-index" || name == "as-next-flood" || name == "as-next-flood-index" || name == "database-descriptor-retransmissions" || name == "last-retransmission-length" || name == "last-retransmission-time" || name == "link-first-flood" || name == "link-first-flood-index" || name == "link-flood-index" || name == "link-next-flood" || name == "link-next-flood-index" || name == "lsa-retransmission-timer" || name == "maximum-retransmission-length" || name == "maximum-retransmission-time" || name == "neighbor-retransmissions" || name == "retransmissions")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::NeighborBfdInfo()
@@ -15791,9 +21814,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::Nei
 
 bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bfd_intf_enable_mode.operation)
-	|| is_set(bfd_status_flag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bfd_intf_enable_mode.yfilter)
+	|| ydk::is_set(bfd_status_flag.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::get_segment_path() const
@@ -15819,8 +21842,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::N
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bfd_intf_enable_mode.is_set || is_set(bfd_intf_enable_mode.operation)) leaf_name_data.push_back(bfd_intf_enable_mode.get_name_leafdata());
-    if (bfd_status_flag.is_set || is_set(bfd_status_flag.operation)) leaf_name_data.push_back(bfd_status_flag.get_name_leafdata());
+    if (bfd_intf_enable_mode.is_set || is_set(bfd_intf_enable_mode.yfilter)) leaf_name_data.push_back(bfd_intf_enable_mode.get_name_leafdata());
+    if (bfd_status_flag.is_set || is_set(bfd_status_flag.yfilter)) leaf_name_data.push_back(bfd_status_flag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15839,16 +21862,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bfd-intf-enable-mode")
     {
         bfd_intf_enable_mode = value;
+        bfd_intf_enable_mode.value_namespace = name_space;
+        bfd_intf_enable_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-status-flag")
     {
         bfd_status_flag = value;
+        bfd_status_flag.value_namespace = name_space;
+        bfd_status_flag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bfd-intf-enable-mode")
+    {
+        bfd_intf_enable_mode.yfilter = yfilter;
+    }
+    if(value_path == "bfd-status-flag")
+    {
+        bfd_status_flag.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborProcessTable::Neighbor::NeighborBfdInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-intf-enable-mode" || name == "bfd-status-flag")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroutes()
@@ -15877,7 +21923,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::FastReroutes::has_operation() const
         if(fast_reroute[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::FastReroutes::get_segment_path() const
@@ -15942,8 +21988,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::FastReroutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fast-reroute")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::FastReroute()
@@ -15982,12 +22039,12 @@ bool Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::has_oper
         if(ipfrr_topo[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(area_id.operation)
-	|| is_set(ipfrr_area_revision.operation)
-	|| is_set(ipfrr_router_id.operation)
-	|| is_set(ipfrr_topo_area_id.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(ipfrr_area_revision.yfilter)
+	|| ydk::is_set(ipfrr_router_id.yfilter)
+	|| ydk::is_set(ipfrr_topo_area_id.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::get_segment_path() const
@@ -16013,11 +22070,11 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastRerou
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (ipfrr_area_revision.is_set || is_set(ipfrr_area_revision.operation)) leaf_name_data.push_back(ipfrr_area_revision.get_name_leafdata());
-    if (ipfrr_router_id.is_set || is_set(ipfrr_router_id.operation)) leaf_name_data.push_back(ipfrr_router_id.get_name_leafdata());
-    if (ipfrr_topo_area_id.is_set || is_set(ipfrr_topo_area_id.operation)) leaf_name_data.push_back(ipfrr_topo_area_id.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (ipfrr_area_revision.is_set || is_set(ipfrr_area_revision.yfilter)) leaf_name_data.push_back(ipfrr_area_revision.get_name_leafdata());
+    if (ipfrr_router_id.is_set || is_set(ipfrr_router_id.yfilter)) leaf_name_data.push_back(ipfrr_router_id.get_name_leafdata());
+    if (ipfrr_topo_area_id.is_set || is_set(ipfrr_topo_area_id.yfilter)) leaf_name_data.push_back(ipfrr_topo_area_id.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16057,28 +22114,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipfrr-area-revision")
     {
         ipfrr_area_revision = value;
+        ipfrr_area_revision.value_namespace = name_space;
+        ipfrr_area_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipfrr-router-id")
     {
         ipfrr_router_id = value;
+        ipfrr_router_id.value_namespace = name_space;
+        ipfrr_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipfrr-topo-area-id")
     {
         ipfrr_topo_area_id = value;
+        ipfrr_topo_area_id.value_namespace = name_space;
+        ipfrr_topo_area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "ipfrr-area-revision")
+    {
+        ipfrr_area_revision.yfilter = yfilter;
+    }
+    if(value_path == "ipfrr-router-id")
+    {
+        ipfrr_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ipfrr-topo-area-id")
+    {
+        ipfrr_topo_area_id.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipfrr-topo" || name == "area-id" || name == "ipfrr-area-revision" || name == "ipfrr-router-id" || name == "ipfrr-topo-area-id" || name == "router-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo::IpfrrTopo()
@@ -16111,14 +22209,14 @@ bool Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTop
 
 bool Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(distance.operation)
-	|| is_set(dr.operation)
-	|| is_set(lsaid.operation)
-	|| is_set(neighbor_sourced.operation)
-	|| is_set(node_id.operation)
-	|| is_set(revision.operation)
-	|| is_set(type4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(distance.yfilter)
+	|| ydk::is_set(dr.yfilter)
+	|| ydk::is_set(lsaid.yfilter)
+	|| ydk::is_set(neighbor_sourced.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(revision.yfilter)
+	|| ydk::is_set(type4.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo::get_segment_path() const
@@ -16144,13 +22242,13 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastRerou
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (distance.is_set || is_set(distance.operation)) leaf_name_data.push_back(distance.get_name_leafdata());
-    if (dr.is_set || is_set(dr.operation)) leaf_name_data.push_back(dr.get_name_leafdata());
-    if (lsaid.is_set || is_set(lsaid.operation)) leaf_name_data.push_back(lsaid.get_name_leafdata());
-    if (neighbor_sourced.is_set || is_set(neighbor_sourced.operation)) leaf_name_data.push_back(neighbor_sourced.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (revision.is_set || is_set(revision.operation)) leaf_name_data.push_back(revision.get_name_leafdata());
-    if (type4.is_set || is_set(type4.operation)) leaf_name_data.push_back(type4.get_name_leafdata());
+    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
+    if (dr.is_set || is_set(dr.yfilter)) leaf_name_data.push_back(dr.get_name_leafdata());
+    if (lsaid.is_set || is_set(lsaid.yfilter)) leaf_name_data.push_back(lsaid.get_name_leafdata());
+    if (neighbor_sourced.is_set || is_set(neighbor_sourced.yfilter)) leaf_name_data.push_back(neighbor_sourced.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
+    if (type4.is_set || is_set(type4.yfilter)) leaf_name_data.push_back(type4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16169,36 +22267,89 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "distance")
     {
         distance = value;
+        distance.value_namespace = name_space;
+        distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr")
     {
         dr = value;
+        dr.value_namespace = name_space;
+        dr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsaid")
     {
         lsaid = value;
+        lsaid.value_namespace = name_space;
+        lsaid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-sourced")
     {
         neighbor_sourced = value;
+        neighbor_sourced.value_namespace = name_space;
+        neighbor_sourced.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "revision")
     {
         revision = value;
+        revision.value_namespace = name_space;
+        revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type4")
     {
         type4 = value;
+        type4.value_namespace = name_space;
+        type4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "distance")
+    {
+        distance.yfilter = yfilter;
+    }
+    if(value_path == "dr")
+    {
+        dr.yfilter = yfilter;
+    }
+    if(value_path == "lsaid")
+    {
+        lsaid.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-sourced")
+    {
+        neighbor_sourced.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "revision")
+    {
+        revision.yfilter = yfilter;
+    }
+    if(value_path == "type4")
+    {
+        type4.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::FastReroutes::FastReroute::IpfrrTopo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "distance" || name == "dr" || name == "lsaid" || name == "neighbor-sourced" || name == "node-id" || name == "revision" || name == "type4")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBriefProcessTable()
@@ -16227,7 +22378,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::has_ope
         if(interface_brief[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::get_segment_path() const
@@ -16292,8 +22443,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-brief")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief::InterfaceBrief()
@@ -16326,14 +22488,14 @@ bool Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::Interfa
 
 bool Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_address.operation)
-	|| is_set(interface_adjacent_neighbors.operation)
-	|| is_set(interface_link_cost.operation)
-	|| is_set(interface_neighbors.operation)
-	|| is_set(network_type.operation)
-	|| is_set(ospf_interface_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_address.yfilter)
+	|| ydk::is_set(interface_adjacent_neighbors.yfilter)
+	|| ydk::is_set(interface_link_cost.yfilter)
+	|| ydk::is_set(interface_neighbors.yfilter)
+	|| ydk::is_set(network_type.yfilter)
+	|| ydk::is_set(ospf_interface_state.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief::get_segment_path() const
@@ -16359,13 +22521,13 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_address.is_set || is_set(interface_address.operation)) leaf_name_data.push_back(interface_address.get_name_leafdata());
-    if (interface_adjacent_neighbors.is_set || is_set(interface_adjacent_neighbors.operation)) leaf_name_data.push_back(interface_adjacent_neighbors.get_name_leafdata());
-    if (interface_link_cost.is_set || is_set(interface_link_cost.operation)) leaf_name_data.push_back(interface_link_cost.get_name_leafdata());
-    if (interface_neighbors.is_set || is_set(interface_neighbors.operation)) leaf_name_data.push_back(interface_neighbors.get_name_leafdata());
-    if (network_type.is_set || is_set(network_type.operation)) leaf_name_data.push_back(network_type.get_name_leafdata());
-    if (ospf_interface_state.is_set || is_set(ospf_interface_state.operation)) leaf_name_data.push_back(ospf_interface_state.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_address.is_set || is_set(interface_address.yfilter)) leaf_name_data.push_back(interface_address.get_name_leafdata());
+    if (interface_adjacent_neighbors.is_set || is_set(interface_adjacent_neighbors.yfilter)) leaf_name_data.push_back(interface_adjacent_neighbors.get_name_leafdata());
+    if (interface_link_cost.is_set || is_set(interface_link_cost.yfilter)) leaf_name_data.push_back(interface_link_cost.get_name_leafdata());
+    if (interface_neighbors.is_set || is_set(interface_neighbors.yfilter)) leaf_name_data.push_back(interface_neighbors.get_name_leafdata());
+    if (network_type.is_set || is_set(network_type.yfilter)) leaf_name_data.push_back(network_type.get_name_leafdata());
+    if (ospf_interface_state.is_set || is_set(ospf_interface_state.yfilter)) leaf_name_data.push_back(ospf_interface_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16384,36 +22546,89 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-address")
     {
         interface_address = value;
+        interface_address.value_namespace = name_space;
+        interface_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-adjacent-neighbors")
     {
         interface_adjacent_neighbors = value;
+        interface_adjacent_neighbors.value_namespace = name_space;
+        interface_adjacent_neighbors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-link-cost")
     {
         interface_link_cost = value;
+        interface_link_cost.value_namespace = name_space;
+        interface_link_cost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-neighbors")
     {
         interface_neighbors = value;
+        interface_neighbors.value_namespace = name_space;
+        interface_neighbors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "network-type")
     {
         network_type = value;
+        network_type.value_namespace = name_space;
+        network_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospf-interface-state")
     {
         ospf_interface_state = value;
+        ospf_interface_state.value_namespace = name_space;
+        ospf_interface_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-address")
+    {
+        interface_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-adjacent-neighbors")
+    {
+        interface_adjacent_neighbors.yfilter = yfilter;
+    }
+    if(value_path == "interface-link-cost")
+    {
+        interface_link_cost.yfilter = yfilter;
+    }
+    if(value_path == "interface-neighbors")
+    {
+        interface_neighbors.yfilter = yfilter;
+    }
+    if(value_path == "network-type")
+    {
+        network_type.yfilter = yfilter;
+    }
+    if(value_path == "ospf-interface-state")
+    {
+        ospf_interface_state.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::InterfaceBriefProcessTable::InterfaceBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface-address" || name == "interface-adjacent-neighbors" || name == "interface-link-cost" || name == "interface-neighbors" || name == "network-type" || name == "ospf-interface-state")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetailProcessTable()
@@ -16442,7 +22657,7 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::has_ope
         if(neighbor_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::get_segment_path() const
@@ -16507,8 +22722,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-detail")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail()
@@ -16562,20 +22788,20 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::Neighbo
 
 bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_neighbor_sham_link.operation)
-	|| is_set(is_neighbor_virtual_link.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_address_xr.operation)
-	|| is_set(neighbor_dead_timer.operation)
-	|| is_set(neighbor_designated_router.operation)
-	|| is_set(neighbor_dr_priority.operation)
-	|| is_set(neighbor_interface_id.operation)
-	|| is_set(neighbor_sham_link_id.operation)
-	|| is_set(neighbor_state.operation)
-	|| is_set(neighbor_up_time.operation)
-	|| is_set(neighbor_virtual_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_neighbor_sham_link.yfilter)
+	|| ydk::is_set(is_neighbor_virtual_link.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_address_xr.yfilter)
+	|| ydk::is_set(neighbor_dead_timer.yfilter)
+	|| ydk::is_set(neighbor_designated_router.yfilter)
+	|| ydk::is_set(neighbor_dr_priority.yfilter)
+	|| ydk::is_set(neighbor_interface_id.yfilter)
+	|| ydk::is_set(neighbor_sham_link_id.yfilter)
+	|| ydk::is_set(neighbor_state.yfilter)
+	|| ydk::is_set(neighbor_up_time.yfilter)
+	|| ydk::is_set(neighbor_virtual_link_id.yfilter)
 	|| (neighbor_bfd_info !=  nullptr && neighbor_bfd_info->has_operation())
 	|| (neighbor_detail !=  nullptr && neighbor_detail->has_operation());
 }
@@ -16603,19 +22829,19 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_neighbor_sham_link.is_set || is_set(is_neighbor_sham_link.operation)) leaf_name_data.push_back(is_neighbor_sham_link.get_name_leafdata());
-    if (is_neighbor_virtual_link.is_set || is_set(is_neighbor_virtual_link.operation)) leaf_name_data.push_back(is_neighbor_virtual_link.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_address_xr.is_set || is_set(neighbor_address_xr.operation)) leaf_name_data.push_back(neighbor_address_xr.get_name_leafdata());
-    if (neighbor_dead_timer.is_set || is_set(neighbor_dead_timer.operation)) leaf_name_data.push_back(neighbor_dead_timer.get_name_leafdata());
-    if (neighbor_designated_router.is_set || is_set(neighbor_designated_router.operation)) leaf_name_data.push_back(neighbor_designated_router.get_name_leafdata());
-    if (neighbor_dr_priority.is_set || is_set(neighbor_dr_priority.operation)) leaf_name_data.push_back(neighbor_dr_priority.get_name_leafdata());
-    if (neighbor_interface_id.is_set || is_set(neighbor_interface_id.operation)) leaf_name_data.push_back(neighbor_interface_id.get_name_leafdata());
-    if (neighbor_sham_link_id.is_set || is_set(neighbor_sham_link_id.operation)) leaf_name_data.push_back(neighbor_sham_link_id.get_name_leafdata());
-    if (neighbor_state.is_set || is_set(neighbor_state.operation)) leaf_name_data.push_back(neighbor_state.get_name_leafdata());
-    if (neighbor_up_time.is_set || is_set(neighbor_up_time.operation)) leaf_name_data.push_back(neighbor_up_time.get_name_leafdata());
-    if (neighbor_virtual_link_id.is_set || is_set(neighbor_virtual_link_id.operation)) leaf_name_data.push_back(neighbor_virtual_link_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_neighbor_sham_link.is_set || is_set(is_neighbor_sham_link.yfilter)) leaf_name_data.push_back(is_neighbor_sham_link.get_name_leafdata());
+    if (is_neighbor_virtual_link.is_set || is_set(is_neighbor_virtual_link.yfilter)) leaf_name_data.push_back(is_neighbor_virtual_link.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_address_xr.is_set || is_set(neighbor_address_xr.yfilter)) leaf_name_data.push_back(neighbor_address_xr.get_name_leafdata());
+    if (neighbor_dead_timer.is_set || is_set(neighbor_dead_timer.yfilter)) leaf_name_data.push_back(neighbor_dead_timer.get_name_leafdata());
+    if (neighbor_designated_router.is_set || is_set(neighbor_designated_router.yfilter)) leaf_name_data.push_back(neighbor_designated_router.get_name_leafdata());
+    if (neighbor_dr_priority.is_set || is_set(neighbor_dr_priority.yfilter)) leaf_name_data.push_back(neighbor_dr_priority.get_name_leafdata());
+    if (neighbor_interface_id.is_set || is_set(neighbor_interface_id.yfilter)) leaf_name_data.push_back(neighbor_interface_id.get_name_leafdata());
+    if (neighbor_sham_link_id.is_set || is_set(neighbor_sham_link_id.yfilter)) leaf_name_data.push_back(neighbor_sham_link_id.get_name_leafdata());
+    if (neighbor_state.is_set || is_set(neighbor_state.yfilter)) leaf_name_data.push_back(neighbor_state.get_name_leafdata());
+    if (neighbor_up_time.is_set || is_set(neighbor_up_time.yfilter)) leaf_name_data.push_back(neighbor_up_time.get_name_leafdata());
+    if (neighbor_virtual_link_id.is_set || is_set(neighbor_virtual_link_id.yfilter)) leaf_name_data.push_back(neighbor_virtual_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16662,60 +22888,149 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-sham-link")
     {
         is_neighbor_sham_link = value;
+        is_neighbor_sham_link.value_namespace = name_space;
+        is_neighbor_sham_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-virtual-link")
     {
         is_neighbor_virtual_link = value;
+        is_neighbor_virtual_link.value_namespace = name_space;
+        is_neighbor_virtual_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address-xr")
     {
         neighbor_address_xr = value;
+        neighbor_address_xr.value_namespace = name_space;
+        neighbor_address_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-dead-timer")
     {
         neighbor_dead_timer = value;
+        neighbor_dead_timer.value_namespace = name_space;
+        neighbor_dead_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-designated-router")
     {
         neighbor_designated_router = value;
+        neighbor_designated_router.value_namespace = name_space;
+        neighbor_designated_router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-dr-priority")
     {
         neighbor_dr_priority = value;
+        neighbor_dr_priority.value_namespace = name_space;
+        neighbor_dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-interface-id")
     {
         neighbor_interface_id = value;
+        neighbor_interface_id.value_namespace = name_space;
+        neighbor_interface_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-sham-link-id")
     {
         neighbor_sham_link_id = value;
+        neighbor_sham_link_id.value_namespace = name_space;
+        neighbor_sham_link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-state")
     {
         neighbor_state = value;
+        neighbor_state.value_namespace = name_space;
+        neighbor_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-up-time")
     {
         neighbor_up_time = value;
+        neighbor_up_time.value_namespace = name_space;
+        neighbor_up_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-virtual-link-id")
     {
         neighbor_virtual_link_id = value;
+        neighbor_virtual_link_id.value_namespace = name_space;
+        neighbor_virtual_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-sham-link")
+    {
+        is_neighbor_sham_link.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-virtual-link")
+    {
+        is_neighbor_virtual_link.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address-xr")
+    {
+        neighbor_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-dead-timer")
+    {
+        neighbor_dead_timer.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-designated-router")
+    {
+        neighbor_designated_router.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-dr-priority")
+    {
+        neighbor_dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-interface-id")
+    {
+        neighbor_interface_id.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-sham-link-id")
+    {
+        neighbor_sham_link_id.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-state")
+    {
+        neighbor_state.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-up-time")
+    {
+        neighbor_up_time.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-virtual-link-id")
+    {
+        neighbor_virtual_link_id.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-bfd-info" || name == "neighbor-detail" || name == "interface-name" || name == "is-neighbor-sham-link" || name == "is-neighbor-virtual-link" || name == "neighbor-address" || name == "neighbor-address-xr" || name == "neighbor-dead-timer" || name == "neighbor-designated-router" || name == "neighbor-dr-priority" || name == "neighbor-interface-id" || name == "neighbor-sham-link-id" || name == "neighbor-state" || name == "neighbor-up-time" || name == "neighbor-virtual-link-id")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborDetail_()
@@ -16761,18 +23076,18 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::Neighbo
 
 bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_type.operation)
-	|| is_set(is_neighbor_filtered.operation)
-	|| is_set(neighbor_backup_designated_router_address.operation)
-	|| is_set(neighbor_cost.operation)
-	|| is_set(neighbor_designated_router_address.operation)
-	|| is_set(neighbor_ignore_timer.operation)
-	|| is_set(neighbor_option.operation)
-	|| is_set(next_poll_interval.operation)
-	|| is_set(pending_events.operation)
-	|| is_set(poll_interval.operation)
-	|| is_set(state_changes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_type.yfilter)
+	|| ydk::is_set(is_neighbor_filtered.yfilter)
+	|| ydk::is_set(neighbor_backup_designated_router_address.yfilter)
+	|| ydk::is_set(neighbor_cost.yfilter)
+	|| ydk::is_set(neighbor_designated_router_address.yfilter)
+	|| ydk::is_set(neighbor_ignore_timer.yfilter)
+	|| ydk::is_set(neighbor_option.yfilter)
+	|| ydk::is_set(next_poll_interval.yfilter)
+	|| ydk::is_set(pending_events.yfilter)
+	|| ydk::is_set(poll_interval.yfilter)
+	|| ydk::is_set(state_changes.yfilter)
 	|| (neighbor_retransmission !=  nullptr && neighbor_retransmission->has_operation());
 }
 
@@ -16799,17 +23114,17 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_type.is_set || is_set(interface_type.operation)) leaf_name_data.push_back(interface_type.get_name_leafdata());
-    if (is_neighbor_filtered.is_set || is_set(is_neighbor_filtered.operation)) leaf_name_data.push_back(is_neighbor_filtered.get_name_leafdata());
-    if (neighbor_backup_designated_router_address.is_set || is_set(neighbor_backup_designated_router_address.operation)) leaf_name_data.push_back(neighbor_backup_designated_router_address.get_name_leafdata());
-    if (neighbor_cost.is_set || is_set(neighbor_cost.operation)) leaf_name_data.push_back(neighbor_cost.get_name_leafdata());
-    if (neighbor_designated_router_address.is_set || is_set(neighbor_designated_router_address.operation)) leaf_name_data.push_back(neighbor_designated_router_address.get_name_leafdata());
-    if (neighbor_ignore_timer.is_set || is_set(neighbor_ignore_timer.operation)) leaf_name_data.push_back(neighbor_ignore_timer.get_name_leafdata());
-    if (neighbor_option.is_set || is_set(neighbor_option.operation)) leaf_name_data.push_back(neighbor_option.get_name_leafdata());
-    if (next_poll_interval.is_set || is_set(next_poll_interval.operation)) leaf_name_data.push_back(next_poll_interval.get_name_leafdata());
-    if (pending_events.is_set || is_set(pending_events.operation)) leaf_name_data.push_back(pending_events.get_name_leafdata());
-    if (poll_interval.is_set || is_set(poll_interval.operation)) leaf_name_data.push_back(poll_interval.get_name_leafdata());
-    if (state_changes.is_set || is_set(state_changes.operation)) leaf_name_data.push_back(state_changes.get_name_leafdata());
+    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
+    if (is_neighbor_filtered.is_set || is_set(is_neighbor_filtered.yfilter)) leaf_name_data.push_back(is_neighbor_filtered.get_name_leafdata());
+    if (neighbor_backup_designated_router_address.is_set || is_set(neighbor_backup_designated_router_address.yfilter)) leaf_name_data.push_back(neighbor_backup_designated_router_address.get_name_leafdata());
+    if (neighbor_cost.is_set || is_set(neighbor_cost.yfilter)) leaf_name_data.push_back(neighbor_cost.get_name_leafdata());
+    if (neighbor_designated_router_address.is_set || is_set(neighbor_designated_router_address.yfilter)) leaf_name_data.push_back(neighbor_designated_router_address.get_name_leafdata());
+    if (neighbor_ignore_timer.is_set || is_set(neighbor_ignore_timer.yfilter)) leaf_name_data.push_back(neighbor_ignore_timer.get_name_leafdata());
+    if (neighbor_option.is_set || is_set(neighbor_option.yfilter)) leaf_name_data.push_back(neighbor_option.get_name_leafdata());
+    if (next_poll_interval.is_set || is_set(next_poll_interval.yfilter)) leaf_name_data.push_back(next_poll_interval.get_name_leafdata());
+    if (pending_events.is_set || is_set(pending_events.yfilter)) leaf_name_data.push_back(pending_events.get_name_leafdata());
+    if (poll_interval.is_set || is_set(poll_interval.yfilter)) leaf_name_data.push_back(poll_interval.get_name_leafdata());
+    if (state_changes.is_set || is_set(state_changes.yfilter)) leaf_name_data.push_back(state_changes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16842,52 +23157,129 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-type")
     {
         interface_type = value;
+        interface_type.value_namespace = name_space;
+        interface_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-neighbor-filtered")
     {
         is_neighbor_filtered = value;
+        is_neighbor_filtered.value_namespace = name_space;
+        is_neighbor_filtered.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-backup-designated-router-address")
     {
         neighbor_backup_designated_router_address = value;
+        neighbor_backup_designated_router_address.value_namespace = name_space;
+        neighbor_backup_designated_router_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-cost")
     {
         neighbor_cost = value;
+        neighbor_cost.value_namespace = name_space;
+        neighbor_cost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-designated-router-address")
     {
         neighbor_designated_router_address = value;
+        neighbor_designated_router_address.value_namespace = name_space;
+        neighbor_designated_router_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-ignore-timer")
     {
         neighbor_ignore_timer = value;
+        neighbor_ignore_timer.value_namespace = name_space;
+        neighbor_ignore_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-option")
     {
         neighbor_option = value;
+        neighbor_option.value_namespace = name_space;
+        neighbor_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-poll-interval")
     {
         next_poll_interval = value;
+        next_poll_interval.value_namespace = name_space;
+        next_poll_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pending-events")
     {
         pending_events = value;
+        pending_events.value_namespace = name_space;
+        pending_events.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poll-interval")
     {
         poll_interval = value;
+        poll_interval.value_namespace = name_space;
+        poll_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state-changes")
     {
         state_changes = value;
+        state_changes.value_namespace = name_space;
+        state_changes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-type")
+    {
+        interface_type.yfilter = yfilter;
+    }
+    if(value_path == "is-neighbor-filtered")
+    {
+        is_neighbor_filtered.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-backup-designated-router-address")
+    {
+        neighbor_backup_designated_router_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-cost")
+    {
+        neighbor_cost.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-designated-router-address")
+    {
+        neighbor_designated_router_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-ignore-timer")
+    {
+        neighbor_ignore_timer.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-option")
+    {
+        neighbor_option.yfilter = yfilter;
+    }
+    if(value_path == "next-poll-interval")
+    {
+        next_poll_interval.yfilter = yfilter;
+    }
+    if(value_path == "pending-events")
+    {
+        pending_events.yfilter = yfilter;
+    }
+    if(value_path == "poll-interval")
+    {
+        poll_interval.yfilter = yfilter;
+    }
+    if(value_path == "state-changes")
+    {
+        state_changes.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-retransmission" || name == "interface-type" || name == "is-neighbor-filtered" || name == "neighbor-backup-designated-router-address" || name == "neighbor-cost" || name == "neighbor-designated-router-address" || name == "neighbor-ignore-timer" || name == "neighbor-option" || name == "next-poll-interval" || name == "pending-events" || name == "poll-interval" || name == "state-changes")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::NeighborRetransmission()
@@ -16952,30 +23344,30 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::Neighbo
 
 bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area_first_flood.operation)
-	|| is_set(area_first_flood_index.operation)
-	|| is_set(area_flood_index.operation)
-	|| is_set(area_next_flood.operation)
-	|| is_set(area_next_flood_index.operation)
-	|| is_set(as_first_flood.operation)
-	|| is_set(as_first_flood_index.operation)
-	|| is_set(as_flood_index.operation)
-	|| is_set(as_next_flood.operation)
-	|| is_set(as_next_flood_index.operation)
-	|| is_set(database_descriptor_retransmissions.operation)
-	|| is_set(last_retransmission_length.operation)
-	|| is_set(last_retransmission_time.operation)
-	|| is_set(link_first_flood.operation)
-	|| is_set(link_first_flood_index.operation)
-	|| is_set(link_flood_index.operation)
-	|| is_set(link_next_flood.operation)
-	|| is_set(link_next_flood_index.operation)
-	|| is_set(lsa_retransmission_timer.operation)
-	|| is_set(maximum_retransmission_length.operation)
-	|| is_set(maximum_retransmission_time.operation)
-	|| is_set(neighbor_retransmissions.operation)
-	|| is_set(retransmissions.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area_first_flood.yfilter)
+	|| ydk::is_set(area_first_flood_index.yfilter)
+	|| ydk::is_set(area_flood_index.yfilter)
+	|| ydk::is_set(area_next_flood.yfilter)
+	|| ydk::is_set(area_next_flood_index.yfilter)
+	|| ydk::is_set(as_first_flood.yfilter)
+	|| ydk::is_set(as_first_flood_index.yfilter)
+	|| ydk::is_set(as_flood_index.yfilter)
+	|| ydk::is_set(as_next_flood.yfilter)
+	|| ydk::is_set(as_next_flood_index.yfilter)
+	|| ydk::is_set(database_descriptor_retransmissions.yfilter)
+	|| ydk::is_set(last_retransmission_length.yfilter)
+	|| ydk::is_set(last_retransmission_time.yfilter)
+	|| ydk::is_set(link_first_flood.yfilter)
+	|| ydk::is_set(link_first_flood_index.yfilter)
+	|| ydk::is_set(link_flood_index.yfilter)
+	|| ydk::is_set(link_next_flood.yfilter)
+	|| ydk::is_set(link_next_flood_index.yfilter)
+	|| ydk::is_set(lsa_retransmission_timer.yfilter)
+	|| ydk::is_set(maximum_retransmission_length.yfilter)
+	|| ydk::is_set(maximum_retransmission_time.yfilter)
+	|| ydk::is_set(neighbor_retransmissions.yfilter)
+	|| ydk::is_set(retransmissions.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::get_segment_path() const
@@ -17001,29 +23393,29 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area_first_flood.is_set || is_set(area_first_flood.operation)) leaf_name_data.push_back(area_first_flood.get_name_leafdata());
-    if (area_first_flood_index.is_set || is_set(area_first_flood_index.operation)) leaf_name_data.push_back(area_first_flood_index.get_name_leafdata());
-    if (area_flood_index.is_set || is_set(area_flood_index.operation)) leaf_name_data.push_back(area_flood_index.get_name_leafdata());
-    if (area_next_flood.is_set || is_set(area_next_flood.operation)) leaf_name_data.push_back(area_next_flood.get_name_leafdata());
-    if (area_next_flood_index.is_set || is_set(area_next_flood_index.operation)) leaf_name_data.push_back(area_next_flood_index.get_name_leafdata());
-    if (as_first_flood.is_set || is_set(as_first_flood.operation)) leaf_name_data.push_back(as_first_flood.get_name_leafdata());
-    if (as_first_flood_index.is_set || is_set(as_first_flood_index.operation)) leaf_name_data.push_back(as_first_flood_index.get_name_leafdata());
-    if (as_flood_index.is_set || is_set(as_flood_index.operation)) leaf_name_data.push_back(as_flood_index.get_name_leafdata());
-    if (as_next_flood.is_set || is_set(as_next_flood.operation)) leaf_name_data.push_back(as_next_flood.get_name_leafdata());
-    if (as_next_flood_index.is_set || is_set(as_next_flood_index.operation)) leaf_name_data.push_back(as_next_flood_index.get_name_leafdata());
-    if (database_descriptor_retransmissions.is_set || is_set(database_descriptor_retransmissions.operation)) leaf_name_data.push_back(database_descriptor_retransmissions.get_name_leafdata());
-    if (last_retransmission_length.is_set || is_set(last_retransmission_length.operation)) leaf_name_data.push_back(last_retransmission_length.get_name_leafdata());
-    if (last_retransmission_time.is_set || is_set(last_retransmission_time.operation)) leaf_name_data.push_back(last_retransmission_time.get_name_leafdata());
-    if (link_first_flood.is_set || is_set(link_first_flood.operation)) leaf_name_data.push_back(link_first_flood.get_name_leafdata());
-    if (link_first_flood_index.is_set || is_set(link_first_flood_index.operation)) leaf_name_data.push_back(link_first_flood_index.get_name_leafdata());
-    if (link_flood_index.is_set || is_set(link_flood_index.operation)) leaf_name_data.push_back(link_flood_index.get_name_leafdata());
-    if (link_next_flood.is_set || is_set(link_next_flood.operation)) leaf_name_data.push_back(link_next_flood.get_name_leafdata());
-    if (link_next_flood_index.is_set || is_set(link_next_flood_index.operation)) leaf_name_data.push_back(link_next_flood_index.get_name_leafdata());
-    if (lsa_retransmission_timer.is_set || is_set(lsa_retransmission_timer.operation)) leaf_name_data.push_back(lsa_retransmission_timer.get_name_leafdata());
-    if (maximum_retransmission_length.is_set || is_set(maximum_retransmission_length.operation)) leaf_name_data.push_back(maximum_retransmission_length.get_name_leafdata());
-    if (maximum_retransmission_time.is_set || is_set(maximum_retransmission_time.operation)) leaf_name_data.push_back(maximum_retransmission_time.get_name_leafdata());
-    if (neighbor_retransmissions.is_set || is_set(neighbor_retransmissions.operation)) leaf_name_data.push_back(neighbor_retransmissions.get_name_leafdata());
-    if (retransmissions.is_set || is_set(retransmissions.operation)) leaf_name_data.push_back(retransmissions.get_name_leafdata());
+    if (area_first_flood.is_set || is_set(area_first_flood.yfilter)) leaf_name_data.push_back(area_first_flood.get_name_leafdata());
+    if (area_first_flood_index.is_set || is_set(area_first_flood_index.yfilter)) leaf_name_data.push_back(area_first_flood_index.get_name_leafdata());
+    if (area_flood_index.is_set || is_set(area_flood_index.yfilter)) leaf_name_data.push_back(area_flood_index.get_name_leafdata());
+    if (area_next_flood.is_set || is_set(area_next_flood.yfilter)) leaf_name_data.push_back(area_next_flood.get_name_leafdata());
+    if (area_next_flood_index.is_set || is_set(area_next_flood_index.yfilter)) leaf_name_data.push_back(area_next_flood_index.get_name_leafdata());
+    if (as_first_flood.is_set || is_set(as_first_flood.yfilter)) leaf_name_data.push_back(as_first_flood.get_name_leafdata());
+    if (as_first_flood_index.is_set || is_set(as_first_flood_index.yfilter)) leaf_name_data.push_back(as_first_flood_index.get_name_leafdata());
+    if (as_flood_index.is_set || is_set(as_flood_index.yfilter)) leaf_name_data.push_back(as_flood_index.get_name_leafdata());
+    if (as_next_flood.is_set || is_set(as_next_flood.yfilter)) leaf_name_data.push_back(as_next_flood.get_name_leafdata());
+    if (as_next_flood_index.is_set || is_set(as_next_flood_index.yfilter)) leaf_name_data.push_back(as_next_flood_index.get_name_leafdata());
+    if (database_descriptor_retransmissions.is_set || is_set(database_descriptor_retransmissions.yfilter)) leaf_name_data.push_back(database_descriptor_retransmissions.get_name_leafdata());
+    if (last_retransmission_length.is_set || is_set(last_retransmission_length.yfilter)) leaf_name_data.push_back(last_retransmission_length.get_name_leafdata());
+    if (last_retransmission_time.is_set || is_set(last_retransmission_time.yfilter)) leaf_name_data.push_back(last_retransmission_time.get_name_leafdata());
+    if (link_first_flood.is_set || is_set(link_first_flood.yfilter)) leaf_name_data.push_back(link_first_flood.get_name_leafdata());
+    if (link_first_flood_index.is_set || is_set(link_first_flood_index.yfilter)) leaf_name_data.push_back(link_first_flood_index.get_name_leafdata());
+    if (link_flood_index.is_set || is_set(link_flood_index.yfilter)) leaf_name_data.push_back(link_flood_index.get_name_leafdata());
+    if (link_next_flood.is_set || is_set(link_next_flood.yfilter)) leaf_name_data.push_back(link_next_flood.get_name_leafdata());
+    if (link_next_flood_index.is_set || is_set(link_next_flood_index.yfilter)) leaf_name_data.push_back(link_next_flood_index.get_name_leafdata());
+    if (lsa_retransmission_timer.is_set || is_set(lsa_retransmission_timer.yfilter)) leaf_name_data.push_back(lsa_retransmission_timer.get_name_leafdata());
+    if (maximum_retransmission_length.is_set || is_set(maximum_retransmission_length.yfilter)) leaf_name_data.push_back(maximum_retransmission_length.get_name_leafdata());
+    if (maximum_retransmission_time.is_set || is_set(maximum_retransmission_time.yfilter)) leaf_name_data.push_back(maximum_retransmission_time.get_name_leafdata());
+    if (neighbor_retransmissions.is_set || is_set(neighbor_retransmissions.yfilter)) leaf_name_data.push_back(neighbor_retransmissions.get_name_leafdata());
+    if (retransmissions.is_set || is_set(retransmissions.yfilter)) leaf_name_data.push_back(retransmissions.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17042,100 +23434,249 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area-first-flood")
     {
         area_first_flood = value;
+        area_first_flood.value_namespace = name_space;
+        area_first_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-first-flood-index")
     {
         area_first_flood_index = value;
+        area_first_flood_index.value_namespace = name_space;
+        area_first_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-flood-index")
     {
         area_flood_index = value;
+        area_flood_index.value_namespace = name_space;
+        area_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-next-flood")
     {
         area_next_flood = value;
+        area_next_flood.value_namespace = name_space;
+        area_next_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-next-flood-index")
     {
         area_next_flood_index = value;
+        area_next_flood_index.value_namespace = name_space;
+        area_next_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-first-flood")
     {
         as_first_flood = value;
+        as_first_flood.value_namespace = name_space;
+        as_first_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-first-flood-index")
     {
         as_first_flood_index = value;
+        as_first_flood_index.value_namespace = name_space;
+        as_first_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-flood-index")
     {
         as_flood_index = value;
+        as_flood_index.value_namespace = name_space;
+        as_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-next-flood")
     {
         as_next_flood = value;
+        as_next_flood.value_namespace = name_space;
+        as_next_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-next-flood-index")
     {
         as_next_flood_index = value;
+        as_next_flood_index.value_namespace = name_space;
+        as_next_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "database-descriptor-retransmissions")
     {
         database_descriptor_retransmissions = value;
+        database_descriptor_retransmissions.value_namespace = name_space;
+        database_descriptor_retransmissions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-retransmission-length")
     {
         last_retransmission_length = value;
+        last_retransmission_length.value_namespace = name_space;
+        last_retransmission_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-retransmission-time")
     {
         last_retransmission_time = value;
+        last_retransmission_time.value_namespace = name_space;
+        last_retransmission_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-first-flood")
     {
         link_first_flood = value;
+        link_first_flood.value_namespace = name_space;
+        link_first_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-first-flood-index")
     {
         link_first_flood_index = value;
+        link_first_flood_index.value_namespace = name_space;
+        link_first_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-flood-index")
     {
         link_flood_index = value;
+        link_flood_index.value_namespace = name_space;
+        link_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-next-flood")
     {
         link_next_flood = value;
+        link_next_flood.value_namespace = name_space;
+        link_next_flood.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-next-flood-index")
     {
         link_next_flood_index = value;
+        link_next_flood_index.value_namespace = name_space;
+        link_next_flood_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsa-retransmission-timer")
     {
         lsa_retransmission_timer = value;
+        lsa_retransmission_timer.value_namespace = name_space;
+        lsa_retransmission_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-retransmission-length")
     {
         maximum_retransmission_length = value;
+        maximum_retransmission_length.value_namespace = name_space;
+        maximum_retransmission_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-retransmission-time")
     {
         maximum_retransmission_time = value;
+        maximum_retransmission_time.value_namespace = name_space;
+        maximum_retransmission_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-retransmissions")
     {
         neighbor_retransmissions = value;
+        neighbor_retransmissions.value_namespace = name_space;
+        neighbor_retransmissions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmissions")
     {
         retransmissions = value;
+        retransmissions.value_namespace = name_space;
+        retransmissions.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area-first-flood")
+    {
+        area_first_flood.yfilter = yfilter;
+    }
+    if(value_path == "area-first-flood-index")
+    {
+        area_first_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "area-flood-index")
+    {
+        area_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "area-next-flood")
+    {
+        area_next_flood.yfilter = yfilter;
+    }
+    if(value_path == "area-next-flood-index")
+    {
+        area_next_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "as-first-flood")
+    {
+        as_first_flood.yfilter = yfilter;
+    }
+    if(value_path == "as-first-flood-index")
+    {
+        as_first_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "as-flood-index")
+    {
+        as_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "as-next-flood")
+    {
+        as_next_flood.yfilter = yfilter;
+    }
+    if(value_path == "as-next-flood-index")
+    {
+        as_next_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "database-descriptor-retransmissions")
+    {
+        database_descriptor_retransmissions.yfilter = yfilter;
+    }
+    if(value_path == "last-retransmission-length")
+    {
+        last_retransmission_length.yfilter = yfilter;
+    }
+    if(value_path == "last-retransmission-time")
+    {
+        last_retransmission_time.yfilter = yfilter;
+    }
+    if(value_path == "link-first-flood")
+    {
+        link_first_flood.yfilter = yfilter;
+    }
+    if(value_path == "link-first-flood-index")
+    {
+        link_first_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "link-flood-index")
+    {
+        link_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "link-next-flood")
+    {
+        link_next_flood.yfilter = yfilter;
+    }
+    if(value_path == "link-next-flood-index")
+    {
+        link_next_flood_index.yfilter = yfilter;
+    }
+    if(value_path == "lsa-retransmission-timer")
+    {
+        lsa_retransmission_timer.yfilter = yfilter;
+    }
+    if(value_path == "maximum-retransmission-length")
+    {
+        maximum_retransmission_length.yfilter = yfilter;
+    }
+    if(value_path == "maximum-retransmission-time")
+    {
+        maximum_retransmission_time.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-retransmissions")
+    {
+        neighbor_retransmissions.yfilter = yfilter;
+    }
+    if(value_path == "retransmissions")
+    {
+        retransmissions.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborDetail_::NeighborRetransmission::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area-first-flood" || name == "area-first-flood-index" || name == "area-flood-index" || name == "area-next-flood" || name == "area-next-flood-index" || name == "as-first-flood" || name == "as-first-flood-index" || name == "as-flood-index" || name == "as-next-flood" || name == "as-next-flood-index" || name == "database-descriptor-retransmissions" || name == "last-retransmission-length" || name == "last-retransmission-time" || name == "link-first-flood" || name == "link-first-flood-index" || name == "link-flood-index" || name == "link-next-flood" || name == "link-next-flood-index" || name == "lsa-retransmission-timer" || name == "maximum-retransmission-length" || name == "maximum-retransmission-time" || name == "neighbor-retransmissions" || name == "retransmissions")
+        return true;
+    return false;
 }
 
 Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::NeighborBfdInfo()
@@ -17158,9 +23699,9 @@ bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::Neighbo
 
 bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bfd_intf_enable_mode.operation)
-	|| is_set(bfd_status_flag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bfd_intf_enable_mode.yfilter)
+	|| ydk::is_set(bfd_status_flag.yfilter);
 }
 
 std::string Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::get_segment_path() const
@@ -17186,8 +23727,8 @@ const EntityPath Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bfd_intf_enable_mode.is_set || is_set(bfd_intf_enable_mode.operation)) leaf_name_data.push_back(bfd_intf_enable_mode.get_name_leafdata());
-    if (bfd_status_flag.is_set || is_set(bfd_status_flag.operation)) leaf_name_data.push_back(bfd_status_flag.get_name_leafdata());
+    if (bfd_intf_enable_mode.is_set || is_set(bfd_intf_enable_mode.yfilter)) leaf_name_data.push_back(bfd_intf_enable_mode.get_name_leafdata());
+    if (bfd_status_flag.is_set || is_set(bfd_status_flag.yfilter)) leaf_name_data.push_back(bfd_status_flag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17206,16 +23747,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ospfv3::Processes::Process::Defau
     return children;
 }
 
-void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::set_value(const std::string & value_path, std::string value)
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bfd-intf-enable-mode")
     {
         bfd_intf_enable_mode = value;
+        bfd_intf_enable_mode.value_namespace = name_space;
+        bfd_intf_enable_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-status-flag")
     {
         bfd_status_flag = value;
+        bfd_status_flag.value_namespace = name_space;
+        bfd_status_flag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bfd-intf-enable-mode")
+    {
+        bfd_intf_enable_mode.yfilter = yfilter;
+    }
+    if(value_path == "bfd-status-flag")
+    {
+        bfd_status_flag.yfilter = yfilter;
+    }
+}
+
+bool Ospfv3::Processes::Process::DefaultVrf::NeighborDetailProcessTable::NeighborDetail::NeighborBfdInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-intf-enable-mode" || name == "bfd-status-flag")
+        return true;
+    return false;
 }
 
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_Ethernet_SPAN_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_Ethernet_SPAN_oper {
 
 SpanMonitorSession::SpanMonitorSession()
@@ -33,7 +35,7 @@ bool SpanMonitorSession::has_data() const
 
 bool SpanMonitorSession::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global !=  nullptr && global->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::get_children(
     return children;
 }
 
-void SpanMonitorSession::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SpanMonitorSession::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string SpanMonitorSession::get_bundle_name() const
 augment_capabilities_function SpanMonitorSession::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SpanMonitorSession::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SpanMonitorSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "nodes")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::Global()
@@ -152,7 +170,7 @@ bool SpanMonitorSession::Global::has_data() const
 
 bool SpanMonitorSession::Global::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global_sessions !=  nullptr && global_sessions->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
@@ -226,8 +244,19 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::get_c
     return children;
 }
 
-void SpanMonitorSession::Global::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SpanMonitorSession::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SpanMonitorSession::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-sessions" || name == "statistics")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::Statistics::Statistics()
@@ -256,7 +285,7 @@ bool SpanMonitorSession::Global::Statistics::has_operation() const
         if(statistic[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SpanMonitorSession::Global::Statistics::get_segment_path() const
@@ -321,8 +350,19 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Stati
     return children;
 }
 
-void SpanMonitorSession::Global::Statistics::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SpanMonitorSession::Global::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SpanMonitorSession::Global::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistic")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::Statistics::Statistic::Statistic()
@@ -357,15 +397,15 @@ bool SpanMonitorSession::Global::Statistics::Statistic::has_data() const
 
 bool SpanMonitorSession::Global::Statistics::Statistic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session.operation)
-	|| is_set(interface.operation)
-	|| is_set(octets_not_mirrored.operation)
-	|| is_set(packets_not_mirrored.operation)
-	|| is_set(rx_octets_mirrored.operation)
-	|| is_set(rx_packets_mirrored.operation)
-	|| is_set(tx_octets_mirrored.operation)
-	|| is_set(tx_packets_mirrored.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(octets_not_mirrored.yfilter)
+	|| ydk::is_set(packets_not_mirrored.yfilter)
+	|| ydk::is_set(rx_octets_mirrored.yfilter)
+	|| ydk::is_set(rx_packets_mirrored.yfilter)
+	|| ydk::is_set(tx_octets_mirrored.yfilter)
+	|| ydk::is_set(tx_packets_mirrored.yfilter);
 }
 
 std::string SpanMonitorSession::Global::Statistics::Statistic::get_segment_path() const
@@ -391,14 +431,14 @@ const EntityPath SpanMonitorSession::Global::Statistics::Statistic::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session.is_set || is_set(session.operation)) leaf_name_data.push_back(session.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (octets_not_mirrored.is_set || is_set(octets_not_mirrored.operation)) leaf_name_data.push_back(octets_not_mirrored.get_name_leafdata());
-    if (packets_not_mirrored.is_set || is_set(packets_not_mirrored.operation)) leaf_name_data.push_back(packets_not_mirrored.get_name_leafdata());
-    if (rx_octets_mirrored.is_set || is_set(rx_octets_mirrored.operation)) leaf_name_data.push_back(rx_octets_mirrored.get_name_leafdata());
-    if (rx_packets_mirrored.is_set || is_set(rx_packets_mirrored.operation)) leaf_name_data.push_back(rx_packets_mirrored.get_name_leafdata());
-    if (tx_octets_mirrored.is_set || is_set(tx_octets_mirrored.operation)) leaf_name_data.push_back(tx_octets_mirrored.get_name_leafdata());
-    if (tx_packets_mirrored.is_set || is_set(tx_packets_mirrored.operation)) leaf_name_data.push_back(tx_packets_mirrored.get_name_leafdata());
+    if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (octets_not_mirrored.is_set || is_set(octets_not_mirrored.yfilter)) leaf_name_data.push_back(octets_not_mirrored.get_name_leafdata());
+    if (packets_not_mirrored.is_set || is_set(packets_not_mirrored.yfilter)) leaf_name_data.push_back(packets_not_mirrored.get_name_leafdata());
+    if (rx_octets_mirrored.is_set || is_set(rx_octets_mirrored.yfilter)) leaf_name_data.push_back(rx_octets_mirrored.get_name_leafdata());
+    if (rx_packets_mirrored.is_set || is_set(rx_packets_mirrored.yfilter)) leaf_name_data.push_back(rx_packets_mirrored.get_name_leafdata());
+    if (tx_octets_mirrored.is_set || is_set(tx_octets_mirrored.yfilter)) leaf_name_data.push_back(tx_octets_mirrored.get_name_leafdata());
+    if (tx_packets_mirrored.is_set || is_set(tx_packets_mirrored.yfilter)) leaf_name_data.push_back(tx_packets_mirrored.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -417,40 +457,99 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Stati
     return children;
 }
 
-void SpanMonitorSession::Global::Statistics::Statistic::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::Statistics::Statistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session")
     {
         session = value;
+        session.value_namespace = name_space;
+        session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "octets-not-mirrored")
     {
         octets_not_mirrored = value;
+        octets_not_mirrored.value_namespace = name_space;
+        octets_not_mirrored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-not-mirrored")
     {
         packets_not_mirrored = value;
+        packets_not_mirrored.value_namespace = name_space;
+        packets_not_mirrored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-octets-mirrored")
     {
         rx_octets_mirrored = value;
+        rx_octets_mirrored.value_namespace = name_space;
+        rx_octets_mirrored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-packets-mirrored")
     {
         rx_packets_mirrored = value;
+        rx_packets_mirrored.value_namespace = name_space;
+        rx_packets_mirrored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-octets-mirrored")
     {
         tx_octets_mirrored = value;
+        tx_octets_mirrored.value_namespace = name_space;
+        tx_octets_mirrored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-packets-mirrored")
     {
         tx_packets_mirrored = value;
+        tx_packets_mirrored.value_namespace = name_space;
+        tx_packets_mirrored.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::Statistics::Statistic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session")
+    {
+        session.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "octets-not-mirrored")
+    {
+        octets_not_mirrored.yfilter = yfilter;
+    }
+    if(value_path == "packets-not-mirrored")
+    {
+        packets_not_mirrored.yfilter = yfilter;
+    }
+    if(value_path == "rx-octets-mirrored")
+    {
+        rx_octets_mirrored.yfilter = yfilter;
+    }
+    if(value_path == "rx-packets-mirrored")
+    {
+        rx_packets_mirrored.yfilter = yfilter;
+    }
+    if(value_path == "tx-octets-mirrored")
+    {
+        tx_octets_mirrored.yfilter = yfilter;
+    }
+    if(value_path == "tx-packets-mirrored")
+    {
+        tx_packets_mirrored.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::Statistics::Statistic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session" || name == "interface" || name == "octets-not-mirrored" || name == "packets-not-mirrored" || name == "rx-octets-mirrored" || name == "rx-packets-mirrored" || name == "tx-octets-mirrored" || name == "tx-packets-mirrored")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSessions()
@@ -479,7 +578,7 @@ bool SpanMonitorSession::Global::GlobalSessions::has_operation() const
         if(global_session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::get_segment_path() const
@@ -544,8 +643,19 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SpanMonitorSession::Global::GlobalSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-session")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::GlobalSession()
@@ -589,15 +699,15 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_data() const
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session.operation)
-	|| is_set(destination_error.operation)
-	|| is_set(destination_interface_handle.operation)
-	|| is_set(destination_interface_name.operation)
-	|| is_set(id.operation)
-	|| is_set(interface_error.operation)
-	|| is_set(name.operation)
-	|| is_set(session_class.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(session.yfilter)
+	|| ydk::is_set(destination_error.yfilter)
+	|| ydk::is_set(destination_interface_handle.yfilter)
+	|| ydk::is_set(destination_interface_name.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(interface_error.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(session_class.yfilter)
 	|| (destination_data !=  nullptr && destination_data->has_operation())
 	|| (destination_id !=  nullptr && destination_id->has_operation());
 }
@@ -625,14 +735,14 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session.is_set || is_set(session.operation)) leaf_name_data.push_back(session.get_name_leafdata());
-    if (destination_error.is_set || is_set(destination_error.operation)) leaf_name_data.push_back(destination_error.get_name_leafdata());
-    if (destination_interface_handle.is_set || is_set(destination_interface_handle.operation)) leaf_name_data.push_back(destination_interface_handle.get_name_leafdata());
-    if (destination_interface_name.is_set || is_set(destination_interface_name.operation)) leaf_name_data.push_back(destination_interface_name.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (interface_error.is_set || is_set(interface_error.operation)) leaf_name_data.push_back(interface_error.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (session_class.is_set || is_set(session_class.operation)) leaf_name_data.push_back(session_class.get_name_leafdata());
+    if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
+    if (destination_error.is_set || is_set(destination_error.yfilter)) leaf_name_data.push_back(destination_error.get_name_leafdata());
+    if (destination_interface_handle.is_set || is_set(destination_interface_handle.yfilter)) leaf_name_data.push_back(destination_interface_handle.get_name_leafdata());
+    if (destination_interface_name.is_set || is_set(destination_interface_name.yfilter)) leaf_name_data.push_back(destination_interface_name.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (interface_error.is_set || is_set(interface_error.yfilter)) leaf_name_data.push_back(interface_error.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (session_class.is_set || is_set(session_class.yfilter)) leaf_name_data.push_back(session_class.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -679,40 +789,99 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session")
     {
         session = value;
+        session.value_namespace = name_space;
+        session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-error")
     {
         destination_error = value;
+        destination_error.value_namespace = name_space;
+        destination_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-interface-handle")
     {
         destination_interface_handle = value;
+        destination_interface_handle.value_namespace = name_space;
+        destination_interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-interface-name")
     {
         destination_interface_name = value;
+        destination_interface_name.value_namespace = name_space;
+        destination_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-error")
     {
         interface_error = value;
+        interface_error.value_namespace = name_space;
+        interface_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-class")
     {
         session_class = value;
+        session_class.value_namespace = name_space;
+        session_class.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session")
+    {
+        session.yfilter = yfilter;
+    }
+    if(value_path == "destination-error")
+    {
+        destination_error.yfilter = yfilter;
+    }
+    if(value_path == "destination-interface-handle")
+    {
+        destination_interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "destination-interface-name")
+    {
+        destination_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "interface-error")
+    {
+        interface_error.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "session-class")
+    {
+        session_class.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-data" || name == "destination-id" || name == "session" || name == "destination-error" || name == "destination-interface-handle" || name == "destination-interface-name" || name == "id" || name == "interface-error" || name == "name" || name == "session-class")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::DestinationData()
@@ -752,9 +921,9 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData:
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_class.operation)
-	|| is_set(invalid_value.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_class.yfilter)
+	|| ydk::is_set(invalid_value.yfilter)
 	|| (interface_data !=  nullptr && interface_data->has_operation())
 	|| (next_hop_ipv4_data !=  nullptr && next_hop_ipv4_data->has_operation())
 	|| (next_hop_ipv6_data !=  nullptr && next_hop_ipv6_data->has_operation())
@@ -784,8 +953,8 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_class.is_set || is_set(destination_class.operation)) leaf_name_data.push_back(destination_class.get_name_leafdata());
-    if (invalid_value.is_set || is_set(invalid_value.operation)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
+    if (destination_class.is_set || is_set(destination_class.yfilter)) leaf_name_data.push_back(destination_class.get_name_leafdata());
+    if (invalid_value.is_set || is_set(invalid_value.yfilter)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -860,16 +1029,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-class")
     {
         destination_class = value;
+        destination_class.value_namespace = name_space;
+        destination_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-value")
     {
         invalid_value = value;
+        invalid_value.value_namespace = name_space;
+        invalid_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-class")
+    {
+        destination_class.yfilter = yfilter;
+    }
+    if(value_path == "invalid-value")
+    {
+        invalid_value.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-data" || name == "next-hop-ipv4-data" || name == "next-hop-ipv6-data" || name == "pseudowire-data" || name == "destination-class" || name == "invalid-value")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::InterfaceData()
@@ -892,9 +1084,9 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData:
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_state.yfilter);
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::get_segment_path() const
@@ -920,8 +1112,8 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_state.is_set || is_set(interface_state.operation)) leaf_name_data.push_back(interface_state.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_state.is_set || is_set(interface_state.yfilter)) leaf_name_data.push_back(interface_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -940,16 +1132,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-state")
     {
         interface_state = value;
+        interface_state.value_namespace = name_space;
+        interface_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-state")
+    {
+        interface_state.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface-state")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::PseudowireData()
@@ -972,9 +1187,9 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData:
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pseudowire_is_up.operation)
-	|| is_set(pseudowire_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pseudowire_is_up.yfilter)
+	|| ydk::is_set(pseudowire_name.yfilter);
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::get_segment_path() const
@@ -1000,8 +1215,8 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pseudowire_is_up.is_set || is_set(pseudowire_is_up.operation)) leaf_name_data.push_back(pseudowire_is_up.get_name_leafdata());
-    if (pseudowire_name.is_set || is_set(pseudowire_name.operation)) leaf_name_data.push_back(pseudowire_name.get_name_leafdata());
+    if (pseudowire_is_up.is_set || is_set(pseudowire_is_up.yfilter)) leaf_name_data.push_back(pseudowire_is_up.get_name_leafdata());
+    if (pseudowire_name.is_set || is_set(pseudowire_name.yfilter)) leaf_name_data.push_back(pseudowire_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1020,16 +1235,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pseudowire-is-up")
     {
         pseudowire_is_up = value;
+        pseudowire_is_up.value_namespace = name_space;
+        pseudowire_is_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudowire-name")
     {
         pseudowire_name = value;
+        pseudowire_name.value_namespace = name_space;
+        pseudowire_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pseudowire-is-up")
+    {
+        pseudowire_is_up.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire-name")
+    {
+        pseudowire_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pseudowire-is-up" || name == "pseudowire-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::NextHopIpv4Data()
@@ -1054,10 +1292,10 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData:
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_is_reachable.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_is_reachable.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::get_segment_path() const
@@ -1083,9 +1321,9 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_is_reachable.is_set || is_set(address_is_reachable.operation)) leaf_name_data.push_back(address_is_reachable.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (address_is_reachable.is_set || is_set(address_is_reachable.yfilter)) leaf_name_data.push_back(address_is_reachable.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1104,20 +1342,49 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-is-reachable")
     {
         address_is_reachable = value;
+        address_is_reachable.value_namespace = name_space;
+        address_is_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-is-reachable")
+    {
+        address_is_reachable.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-is-reachable" || name == "ipv4-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::NextHopIpv6Data()
@@ -1142,10 +1409,10 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData:
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_is_reachable.operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_is_reachable.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::get_segment_path() const
@@ -1171,9 +1438,9 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_is_reachable.is_set || is_set(address_is_reachable.operation)) leaf_name_data.push_back(address_is_reachable.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (address_is_reachable.is_set || is_set(address_is_reachable.yfilter)) leaf_name_data.push_back(address_is_reachable.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1192,20 +1459,49 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-is-reachable")
     {
         address_is_reachable = value;
+        address_is_reachable.value_namespace = name_space;
+        address_is_reachable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-is-reachable")
+    {
+        address_is_reachable.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-is-reachable" || name == "ipv6-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::DestinationId()
@@ -1241,11 +1537,11 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::h
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_class.operation)
-	|| is_set(interface.operation)
-	|| is_set(invalid_value.operation)
-	|| is_set(pseudowire_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_class.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(invalid_value.yfilter)
+	|| ydk::is_set(pseudowire_id.yfilter)
 	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
 	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
@@ -1273,10 +1569,10 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_class.is_set || is_set(destination_class.operation)) leaf_name_data.push_back(destination_class.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (invalid_value.is_set || is_set(invalid_value.operation)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
-    if (pseudowire_id.is_set || is_set(pseudowire_id.operation)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
+    if (destination_class.is_set || is_set(destination_class.yfilter)) leaf_name_data.push_back(destination_class.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (invalid_value.is_set || is_set(invalid_value.yfilter)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
+    if (pseudowire_id.is_set || is_set(pseudowire_id.yfilter)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1323,24 +1619,59 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-class")
     {
         destination_class = value;
+        destination_class.value_namespace = name_space;
+        destination_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-value")
     {
         invalid_value = value;
+        invalid_value.value_namespace = name_space;
+        invalid_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudowire-id")
     {
         pseudowire_id = value;
+        pseudowire_id.value_namespace = name_space;
+        pseudowire_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-class")
+    {
+        destination_class.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "invalid-value")
+    {
+        invalid_value.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire-id")
+    {
+        pseudowire_id.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address-and-vrf" || name == "ipv6-address-and-vrf" || name == "destination-class" || name == "interface" || name == "invalid-value" || name == "pseudowire-id")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::Ipv4AddressAndVrf()
@@ -1363,9 +1694,9 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::I
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::get_segment_path() const
@@ -1391,8 +1722,8 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1411,16 +1742,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::Ipv6AddressAndVrf()
@@ -1443,9 +1797,9 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::I
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::get_segment_path() const
@@ -1471,8 +1825,8 @@ const EntityPath SpanMonitorSession::Global::GlobalSessions::GlobalSession::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1491,16 +1845,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     return children;
 }
 
-void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Nodes()
@@ -1529,7 +1906,7 @@ bool SpanMonitorSession::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::get_segment_path() const
@@ -1594,8 +1971,19 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::get_ch
     return children;
 }
 
-void SpanMonitorSession::Nodes::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SpanMonitorSession::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SpanMonitorSession::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Node()
@@ -1629,8 +2017,8 @@ bool SpanMonitorSession::Nodes::Node::has_data() const
 
 bool SpanMonitorSession::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node.yfilter)
 	|| (attachments !=  nullptr && attachments->has_operation())
 	|| (hardware_sessions !=  nullptr && hardware_sessions->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation());
@@ -1659,7 +2047,7 @@ const EntityPath SpanMonitorSession::Nodes::Node::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node.is_set || is_set(node.operation)) leaf_name_data.push_back(node.get_name_leafdata());
+    if (node.is_set || is_set(node.yfilter)) leaf_name_data.push_back(node.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1720,12 +2108,29 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node")
     {
         node = value;
+        node.value_namespace = name_space;
+        node.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node")
+    {
+        node.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attachments" || name == "hardware-sessions" || name == "interfaces" || name == "node")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachments()
@@ -1754,7 +2159,7 @@ bool SpanMonitorSession::Nodes::Node::Attachments::has_operation() const
         if(attachment[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Attachments::get_segment_path() const
@@ -1819,8 +2224,19 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Attachments::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Attachments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SpanMonitorSession::Nodes::Node::Attachments::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SpanMonitorSession::Nodes::Node::Attachments::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attachment")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::Attachment()
@@ -1876,21 +2292,21 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::has_data() const
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session.operation)
-	|| is_set(interface.operation)
-	|| is_set(dest_pw_type_not_supported.operation)
-	|| is_set(destination_interface.operation)
-	|| is_set(global_class.operation)
-	|| is_set(id.operation)
-	|| is_set(local_class.operation)
-	|| is_set(name.operation)
-	|| is_set(pfi_error.operation)
-	|| is_set(session_is_configured.operation)
-	|| is_set(source_interface.operation)
-	|| is_set(source_interface_is_a_destination.operation)
-	|| is_set(source_interface_state.operation)
-	|| is_set(traffic_direction.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(session.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(dest_pw_type_not_supported.yfilter)
+	|| ydk::is_set(destination_interface.yfilter)
+	|| ydk::is_set(global_class.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(local_class.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(pfi_error.yfilter)
+	|| ydk::is_set(session_is_configured.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| ydk::is_set(source_interface_is_a_destination.yfilter)
+	|| ydk::is_set(source_interface_state.yfilter)
+	|| ydk::is_set(traffic_direction.yfilter)
 	|| (destination_id !=  nullptr && destination_id->has_operation())
 	|| (traffic_parameters !=  nullptr && traffic_parameters->has_operation());
 }
@@ -1918,20 +2334,20 @@ const EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session.is_set || is_set(session.operation)) leaf_name_data.push_back(session.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (dest_pw_type_not_supported.is_set || is_set(dest_pw_type_not_supported.operation)) leaf_name_data.push_back(dest_pw_type_not_supported.get_name_leafdata());
-    if (destination_interface.is_set || is_set(destination_interface.operation)) leaf_name_data.push_back(destination_interface.get_name_leafdata());
-    if (global_class.is_set || is_set(global_class.operation)) leaf_name_data.push_back(global_class.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (local_class.is_set || is_set(local_class.operation)) leaf_name_data.push_back(local_class.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (pfi_error.is_set || is_set(pfi_error.operation)) leaf_name_data.push_back(pfi_error.get_name_leafdata());
-    if (session_is_configured.is_set || is_set(session_is_configured.operation)) leaf_name_data.push_back(session_is_configured.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
-    if (source_interface_is_a_destination.is_set || is_set(source_interface_is_a_destination.operation)) leaf_name_data.push_back(source_interface_is_a_destination.get_name_leafdata());
-    if (source_interface_state.is_set || is_set(source_interface_state.operation)) leaf_name_data.push_back(source_interface_state.get_name_leafdata());
-    if (traffic_direction.is_set || is_set(traffic_direction.operation)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
+    if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (dest_pw_type_not_supported.is_set || is_set(dest_pw_type_not_supported.yfilter)) leaf_name_data.push_back(dest_pw_type_not_supported.get_name_leafdata());
+    if (destination_interface.is_set || is_set(destination_interface.yfilter)) leaf_name_data.push_back(destination_interface.get_name_leafdata());
+    if (global_class.is_set || is_set(global_class.yfilter)) leaf_name_data.push_back(global_class.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (local_class.is_set || is_set(local_class.yfilter)) leaf_name_data.push_back(local_class.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (pfi_error.is_set || is_set(pfi_error.yfilter)) leaf_name_data.push_back(pfi_error.get_name_leafdata());
+    if (session_is_configured.is_set || is_set(session_is_configured.yfilter)) leaf_name_data.push_back(session_is_configured.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (source_interface_is_a_destination.is_set || is_set(source_interface_is_a_destination.yfilter)) leaf_name_data.push_back(source_interface_is_a_destination.get_name_leafdata());
+    if (source_interface_state.is_set || is_set(source_interface_state.yfilter)) leaf_name_data.push_back(source_interface_state.get_name_leafdata());
+    if (traffic_direction.is_set || is_set(traffic_direction.yfilter)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1978,64 +2394,159 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Attachments::Attachment::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session")
     {
         session = value;
+        session.value_namespace = name_space;
+        session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dest-pw-type-not-supported")
     {
         dest_pw_type_not_supported = value;
+        dest_pw_type_not_supported.value_namespace = name_space;
+        dest_pw_type_not_supported.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-interface")
     {
         destination_interface = value;
+        destination_interface.value_namespace = name_space;
+        destination_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "global-class")
     {
         global_class = value;
+        global_class.value_namespace = name_space;
+        global_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-class")
     {
         local_class = value;
+        local_class.value_namespace = name_space;
+        local_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pfi-error")
     {
         pfi_error = value;
+        pfi_error.value_namespace = name_space;
+        pfi_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-is-configured")
     {
         session_is_configured = value;
+        session_is_configured.value_namespace = name_space;
+        session_is_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface-is-a-destination")
     {
         source_interface_is_a_destination = value;
+        source_interface_is_a_destination.value_namespace = name_space;
+        source_interface_is_a_destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface-state")
     {
         source_interface_state = value;
+        source_interface_state.value_namespace = name_space;
+        source_interface_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-direction")
     {
         traffic_direction = value;
+        traffic_direction.value_namespace = name_space;
+        traffic_direction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session")
+    {
+        session.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "dest-pw-type-not-supported")
+    {
+        dest_pw_type_not_supported.yfilter = yfilter;
+    }
+    if(value_path == "destination-interface")
+    {
+        destination_interface.yfilter = yfilter;
+    }
+    if(value_path == "global-class")
+    {
+        global_class.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "local-class")
+    {
+        local_class.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "pfi-error")
+    {
+        pfi_error.yfilter = yfilter;
+    }
+    if(value_path == "session-is-configured")
+    {
+        session_is_configured.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+    if(value_path == "source-interface-is-a-destination")
+    {
+        source_interface_is_a_destination.yfilter = yfilter;
+    }
+    if(value_path == "source-interface-state")
+    {
+        source_interface_state.yfilter = yfilter;
+    }
+    if(value_path == "traffic-direction")
+    {
+        traffic_direction.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-id" || name == "traffic-parameters" || name == "session" || name == "interface" || name == "dest-pw-type-not-supported" || name == "destination-interface" || name == "global-class" || name == "id" || name == "local-class" || name == "name" || name == "pfi-error" || name == "session-is-configured" || name == "source-interface" || name == "source-interface-is-a-destination" || name == "source-interface-state" || name == "traffic-direction")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::TrafficParameters()
@@ -2064,12 +2575,12 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_acl_enabled.operation)
-	|| is_set(mirror_bytes.operation)
-	|| is_set(mirror_interval.operation)
-	|| is_set(port_level.operation)
-	|| is_set(traffic_direction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_acl_enabled.yfilter)
+	|| ydk::is_set(mirror_bytes.yfilter)
+	|| ydk::is_set(mirror_interval.yfilter)
+	|| ydk::is_set(port_level.yfilter)
+	|| ydk::is_set(traffic_direction.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::get_segment_path() const
@@ -2095,11 +2606,11 @@ const EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::Traff
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_acl_enabled.is_set || is_set(is_acl_enabled.operation)) leaf_name_data.push_back(is_acl_enabled.get_name_leafdata());
-    if (mirror_bytes.is_set || is_set(mirror_bytes.operation)) leaf_name_data.push_back(mirror_bytes.get_name_leafdata());
-    if (mirror_interval.is_set || is_set(mirror_interval.operation)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
-    if (port_level.is_set || is_set(port_level.operation)) leaf_name_data.push_back(port_level.get_name_leafdata());
-    if (traffic_direction.is_set || is_set(traffic_direction.operation)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
+    if (is_acl_enabled.is_set || is_set(is_acl_enabled.yfilter)) leaf_name_data.push_back(is_acl_enabled.get_name_leafdata());
+    if (mirror_bytes.is_set || is_set(mirror_bytes.yfilter)) leaf_name_data.push_back(mirror_bytes.get_name_leafdata());
+    if (mirror_interval.is_set || is_set(mirror_interval.yfilter)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
+    if (port_level.is_set || is_set(port_level.yfilter)) leaf_name_data.push_back(port_level.get_name_leafdata());
+    if (traffic_direction.is_set || is_set(traffic_direction.yfilter)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2118,28 +2629,69 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-acl-enabled")
     {
         is_acl_enabled = value;
+        is_acl_enabled.value_namespace = name_space;
+        is_acl_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-bytes")
     {
         mirror_bytes = value;
+        mirror_bytes.value_namespace = name_space;
+        mirror_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-interval")
     {
         mirror_interval = value;
+        mirror_interval.value_namespace = name_space;
+        mirror_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-level")
     {
         port_level = value;
+        port_level.value_namespace = name_space;
+        port_level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-direction")
     {
         traffic_direction = value;
+        traffic_direction.value_namespace = name_space;
+        traffic_direction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-acl-enabled")
+    {
+        is_acl_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mirror-bytes")
+    {
+        mirror_bytes.yfilter = yfilter;
+    }
+    if(value_path == "mirror-interval")
+    {
+        mirror_interval.yfilter = yfilter;
+    }
+    if(value_path == "port-level")
+    {
+        port_level.yfilter = yfilter;
+    }
+    if(value_path == "traffic-direction")
+    {
+        traffic_direction.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-acl-enabled" || name == "mirror-bytes" || name == "mirror-interval" || name == "port-level" || name == "traffic-direction")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::DestinationId()
@@ -2175,11 +2727,11 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::ha
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_class.operation)
-	|| is_set(interface.operation)
-	|| is_set(invalid_value.operation)
-	|| is_set(pseudowire_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_class.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(invalid_value.yfilter)
+	|| ydk::is_set(pseudowire_id.yfilter)
 	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
 	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
@@ -2207,10 +2759,10 @@ const EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::Desti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_class.is_set || is_set(destination_class.operation)) leaf_name_data.push_back(destination_class.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (invalid_value.is_set || is_set(invalid_value.operation)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
-    if (pseudowire_id.is_set || is_set(pseudowire_id.operation)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
+    if (destination_class.is_set || is_set(destination_class.yfilter)) leaf_name_data.push_back(destination_class.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (invalid_value.is_set || is_set(invalid_value.yfilter)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
+    if (pseudowire_id.is_set || is_set(pseudowire_id.yfilter)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2257,24 +2809,59 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-class")
     {
         destination_class = value;
+        destination_class.value_namespace = name_space;
+        destination_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-value")
     {
         invalid_value = value;
+        invalid_value.value_namespace = name_space;
+        invalid_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudowire-id")
     {
         pseudowire_id = value;
+        pseudowire_id.value_namespace = name_space;
+        pseudowire_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-class")
+    {
+        destination_class.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "invalid-value")
+    {
+        invalid_value.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire-id")
+    {
+        pseudowire_id.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address-and-vrf" || name == "ipv6-address-and-vrf" || name == "destination-class" || name == "interface" || name == "invalid-value" || name == "pseudowire-id")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::Ipv4AddressAndVrf()
@@ -2297,9 +2884,9 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ip
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::get_segment_path() const
@@ -2325,8 +2912,8 @@ const EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::Desti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2345,16 +2932,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::Ipv6AddressAndVrf()
@@ -2377,9 +2987,9 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ip
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::get_segment_path() const
@@ -2405,8 +3015,8 @@ const EntityPath SpanMonitorSession::Nodes::Node::Attachments::Attachment::Desti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2425,16 +3035,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSessions()
@@ -2463,7 +3096,7 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::has_operation() const
         if(hardware_session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::HardwareSessions::get_segment_path() const
@@ -2528,8 +3161,19 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::HardwareSessions::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::HardwareSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SpanMonitorSession::Nodes::Node::HardwareSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SpanMonitorSession::Nodes::Node::HardwareSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hardware-session")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::HardwareSession()
@@ -2567,14 +3211,14 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::has_dat
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_interface.operation)
-	|| is_set(id.operation)
-	|| is_set(name.operation)
-	|| is_set(platform_error.operation)
-	|| is_set(session_class.operation)
-	|| is_set(session_class_xr.operation)
-	|| is_set(session_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_interface.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(platform_error.yfilter)
+	|| ydk::is_set(session_class.yfilter)
+	|| ydk::is_set(session_class_xr.yfilter)
+	|| ydk::is_set(session_id.yfilter)
 	|| (destination_id !=  nullptr && destination_id->has_operation());
 }
 
@@ -2601,13 +3245,13 @@ const EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSess
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_interface.is_set || is_set(destination_interface.operation)) leaf_name_data.push_back(destination_interface.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (platform_error.is_set || is_set(platform_error.operation)) leaf_name_data.push_back(platform_error.get_name_leafdata());
-    if (session_class.is_set || is_set(session_class.operation)) leaf_name_data.push_back(session_class.get_name_leafdata());
-    if (session_class_xr.is_set || is_set(session_class_xr.operation)) leaf_name_data.push_back(session_class_xr.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (destination_interface.is_set || is_set(destination_interface.yfilter)) leaf_name_data.push_back(destination_interface.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (platform_error.is_set || is_set(platform_error.yfilter)) leaf_name_data.push_back(platform_error.get_name_leafdata());
+    if (session_class.is_set || is_set(session_class.yfilter)) leaf_name_data.push_back(session_class.get_name_leafdata());
+    if (session_class_xr.is_set || is_set(session_class_xr.yfilter)) leaf_name_data.push_back(session_class_xr.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2640,36 +3284,89 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-interface")
     {
         destination_interface = value;
+        destination_interface.value_namespace = name_space;
+        destination_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-error")
     {
         platform_error = value;
+        platform_error.value_namespace = name_space;
+        platform_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-class")
     {
         session_class = value;
+        session_class.value_namespace = name_space;
+        session_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-class-xr")
     {
         session_class_xr = value;
+        session_class_xr.value_namespace = name_space;
+        session_class_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-interface")
+    {
+        destination_interface.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "platform-error")
+    {
+        platform_error.yfilter = yfilter;
+    }
+    if(value_path == "session-class")
+    {
+        session_class.yfilter = yfilter;
+    }
+    if(value_path == "session-class-xr")
+    {
+        session_class_xr.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-id" || name == "destination-interface" || name == "id" || name == "name" || name == "platform-error" || name == "session-class" || name == "session-class-xr" || name == "session-id")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::DestinationId()
@@ -2705,11 +3402,11 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::Destina
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_class.operation)
-	|| is_set(interface.operation)
-	|| is_set(invalid_value.operation)
-	|| is_set(pseudowire_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_class.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(invalid_value.yfilter)
+	|| ydk::is_set(pseudowire_id.yfilter)
 	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
 	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
@@ -2737,10 +3434,10 @@ const EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSess
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_class.is_set || is_set(destination_class.operation)) leaf_name_data.push_back(destination_class.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (invalid_value.is_set || is_set(invalid_value.operation)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
-    if (pseudowire_id.is_set || is_set(pseudowire_id.operation)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
+    if (destination_class.is_set || is_set(destination_class.yfilter)) leaf_name_data.push_back(destination_class.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (invalid_value.is_set || is_set(invalid_value.yfilter)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
+    if (pseudowire_id.is_set || is_set(pseudowire_id.yfilter)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2787,24 +3484,59 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-class")
     {
         destination_class = value;
+        destination_class.value_namespace = name_space;
+        destination_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-value")
     {
         invalid_value = value;
+        invalid_value.value_namespace = name_space;
+        invalid_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudowire-id")
     {
         pseudowire_id = value;
+        pseudowire_id.value_namespace = name_space;
+        pseudowire_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-class")
+    {
+        destination_class.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "invalid-value")
+    {
+        invalid_value.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire-id")
+    {
+        pseudowire_id.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address-and-vrf" || name == "ipv6-address-and-vrf" || name == "destination-class" || name == "interface" || name == "invalid-value" || name == "pseudowire-id")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::Ipv4AddressAndVrf()
@@ -2827,9 +3559,9 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::Destina
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::get_segment_path() const
@@ -2855,8 +3587,8 @@ const EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSess
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2875,16 +3607,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::Ipv6AddressAndVrf()
@@ -2907,9 +3662,9 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::Destina
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::get_segment_path() const
@@ -2935,8 +3690,8 @@ const EntityPath SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSess
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2955,16 +3710,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interfaces()
@@ -2993,7 +3771,7 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::get_segment_path() const
@@ -3058,8 +3836,19 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Interface()
@@ -3107,12 +3896,12 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::has_operation() con
         if(attachment[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(destination_interface.operation)
-	|| is_set(platform_error.operation)
-	|| is_set(source_interface.operation)
-	|| is_set(traffic_direction.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(destination_interface.yfilter)
+	|| ydk::is_set(platform_error.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| ydk::is_set(traffic_direction.yfilter)
 	|| (destination_id !=  nullptr && destination_id->has_operation())
 	|| (traffic_mirroring_parameters !=  nullptr && traffic_mirroring_parameters->has_operation());
 }
@@ -3140,11 +3929,11 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (destination_interface.is_set || is_set(destination_interface.operation)) leaf_name_data.push_back(destination_interface.get_name_leafdata());
-    if (platform_error.is_set || is_set(platform_error.operation)) leaf_name_data.push_back(platform_error.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
-    if (traffic_direction.is_set || is_set(traffic_direction.operation)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (destination_interface.is_set || is_set(destination_interface.yfilter)) leaf_name_data.push_back(destination_interface.get_name_leafdata());
+    if (platform_error.is_set || is_set(platform_error.yfilter)) leaf_name_data.push_back(platform_error.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (traffic_direction.is_set || is_set(traffic_direction.yfilter)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3212,28 +4001,69 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-interface")
     {
         destination_interface = value;
+        destination_interface.value_namespace = name_space;
+        destination_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-error")
     {
         platform_error = value;
+        platform_error.value_namespace = name_space;
+        platform_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-direction")
     {
         traffic_direction = value;
+        traffic_direction.value_namespace = name_space;
+        traffic_direction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "destination-interface")
+    {
+        destination_interface.yfilter = yfilter;
+    }
+    if(value_path == "platform-error")
+    {
+        platform_error.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+    if(value_path == "traffic-direction")
+    {
+        traffic_direction.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attachment" || name == "destination-id" || name == "traffic-mirroring-parameters" || name == "interface" || name == "destination-interface" || name == "platform-error" || name == "source-interface" || name == "traffic-direction")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::DestinationId()
@@ -3269,11 +4099,11 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::has_
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_class.operation)
-	|| is_set(interface.operation)
-	|| is_set(invalid_value.operation)
-	|| is_set(pseudowire_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_class.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(invalid_value.yfilter)
+	|| ydk::is_set(pseudowire_id.yfilter)
 	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
 	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
@@ -3301,10 +4131,10 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Destina
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_class.is_set || is_set(destination_class.operation)) leaf_name_data.push_back(destination_class.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (invalid_value.is_set || is_set(invalid_value.operation)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
-    if (pseudowire_id.is_set || is_set(pseudowire_id.operation)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
+    if (destination_class.is_set || is_set(destination_class.yfilter)) leaf_name_data.push_back(destination_class.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (invalid_value.is_set || is_set(invalid_value.yfilter)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
+    if (pseudowire_id.is_set || is_set(pseudowire_id.yfilter)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3351,24 +4181,59 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-class")
     {
         destination_class = value;
+        destination_class.value_namespace = name_space;
+        destination_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-value")
     {
         invalid_value = value;
+        invalid_value.value_namespace = name_space;
+        invalid_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudowire-id")
     {
         pseudowire_id = value;
+        pseudowire_id.value_namespace = name_space;
+        pseudowire_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-class")
+    {
+        destination_class.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "invalid-value")
+    {
+        invalid_value.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire-id")
+    {
+        pseudowire_id.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address-and-vrf" || name == "ipv6-address-and-vrf" || name == "destination-class" || name == "interface" || name == "invalid-value" || name == "pseudowire-id")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::Ipv4AddressAndVrf()
@@ -3391,9 +4256,9 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::get_segment_path() const
@@ -3419,8 +4284,8 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Destina
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3439,16 +4304,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::Ipv6AddressAndVrf()
@@ -3471,9 +4359,9 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::get_segment_path() const
@@ -3499,8 +4387,8 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Destina
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3519,16 +4407,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::TrafficMirroringParameters()
@@ -3557,12 +4468,12 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringPar
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_acl_enabled.operation)
-	|| is_set(mirror_bytes.operation)
-	|| is_set(mirror_interval.operation)
-	|| is_set(port_level.operation)
-	|| is_set(traffic_direction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_acl_enabled.yfilter)
+	|| ydk::is_set(mirror_bytes.yfilter)
+	|| ydk::is_set(mirror_interval.yfilter)
+	|| ydk::is_set(port_level.yfilter)
+	|| ydk::is_set(traffic_direction.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::get_segment_path() const
@@ -3588,11 +4499,11 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Traffic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_acl_enabled.is_set || is_set(is_acl_enabled.operation)) leaf_name_data.push_back(is_acl_enabled.get_name_leafdata());
-    if (mirror_bytes.is_set || is_set(mirror_bytes.operation)) leaf_name_data.push_back(mirror_bytes.get_name_leafdata());
-    if (mirror_interval.is_set || is_set(mirror_interval.operation)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
-    if (port_level.is_set || is_set(port_level.operation)) leaf_name_data.push_back(port_level.get_name_leafdata());
-    if (traffic_direction.is_set || is_set(traffic_direction.operation)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
+    if (is_acl_enabled.is_set || is_set(is_acl_enabled.yfilter)) leaf_name_data.push_back(is_acl_enabled.get_name_leafdata());
+    if (mirror_bytes.is_set || is_set(mirror_bytes.yfilter)) leaf_name_data.push_back(mirror_bytes.get_name_leafdata());
+    if (mirror_interval.is_set || is_set(mirror_interval.yfilter)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
+    if (port_level.is_set || is_set(port_level.yfilter)) leaf_name_data.push_back(port_level.get_name_leafdata());
+    if (traffic_direction.is_set || is_set(traffic_direction.yfilter)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3611,28 +4522,69 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-acl-enabled")
     {
         is_acl_enabled = value;
+        is_acl_enabled.value_namespace = name_space;
+        is_acl_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-bytes")
     {
         mirror_bytes = value;
+        mirror_bytes.value_namespace = name_space;
+        mirror_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-interval")
     {
         mirror_interval = value;
+        mirror_interval.value_namespace = name_space;
+        mirror_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-level")
     {
         port_level = value;
+        port_level.value_namespace = name_space;
+        port_level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-direction")
     {
         traffic_direction = value;
+        traffic_direction.value_namespace = name_space;
+        traffic_direction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-acl-enabled")
+    {
+        is_acl_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mirror-bytes")
+    {
+        mirror_bytes.yfilter = yfilter;
+    }
+    if(value_path == "mirror-interval")
+    {
+        mirror_interval.yfilter = yfilter;
+    }
+    if(value_path == "port-level")
+    {
+        port_level.yfilter = yfilter;
+    }
+    if(value_path == "traffic-direction")
+    {
+        traffic_direction.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-acl-enabled" || name == "mirror-bytes" || name == "mirror-interval" || name == "port-level" || name == "traffic-direction")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Attachment()
@@ -3662,8 +4614,8 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::has_dat
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(class_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(class_.yfilter)
 	|| (destination_id !=  nullptr && destination_id->has_operation())
 	|| (traffic_mirroring_parameters !=  nullptr && traffic_mirroring_parameters->has_operation());
 }
@@ -3691,7 +4643,7 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachm
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_.is_set || is_set(class_.operation)) leaf_name_data.push_back(class_.get_name_leafdata());
+    if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3738,12 +4690,29 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class")
     {
         class_ = value;
+        class_.value_namespace = name_space;
+        class_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class")
+    {
+        class_.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-id" || name == "traffic-mirroring-parameters" || name == "class")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::DestinationId()
@@ -3779,11 +4748,11 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Destina
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination_class.operation)
-	|| is_set(interface.operation)
-	|| is_set(invalid_value.operation)
-	|| is_set(pseudowire_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_class.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(invalid_value.yfilter)
+	|| ydk::is_set(pseudowire_id.yfilter)
 	|| (ipv4_address_and_vrf !=  nullptr && ipv4_address_and_vrf->has_operation())
 	|| (ipv6_address_and_vrf !=  nullptr && ipv6_address_and_vrf->has_operation());
 }
@@ -3811,10 +4780,10 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachm
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_class.is_set || is_set(destination_class.operation)) leaf_name_data.push_back(destination_class.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (invalid_value.is_set || is_set(invalid_value.operation)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
-    if (pseudowire_id.is_set || is_set(pseudowire_id.operation)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
+    if (destination_class.is_set || is_set(destination_class.yfilter)) leaf_name_data.push_back(destination_class.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (invalid_value.is_set || is_set(invalid_value.yfilter)) leaf_name_data.push_back(invalid_value.get_name_leafdata());
+    if (pseudowire_id.is_set || is_set(pseudowire_id.yfilter)) leaf_name_data.push_back(pseudowire_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3861,24 +4830,59 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-class")
     {
         destination_class = value;
+        destination_class.value_namespace = name_space;
+        destination_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-value")
     {
         invalid_value = value;
+        invalid_value.value_namespace = name_space;
+        invalid_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudowire-id")
     {
         pseudowire_id = value;
+        pseudowire_id.value_namespace = name_space;
+        pseudowire_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-class")
+    {
+        destination_class.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "invalid-value")
+    {
+        invalid_value.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire-id")
+    {
+        pseudowire_id.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address-and-vrf" || name == "ipv6-address-and-vrf" || name == "destination-class" || name == "interface" || name == "invalid-value" || name == "pseudowire-id")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::Ipv4AddressAndVrf()
@@ -3901,9 +4905,9 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Destina
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::get_segment_path() const
@@ -3929,8 +4933,8 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachm
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3949,16 +4953,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::Ipv6AddressAndVrf()
@@ -3981,9 +5008,9 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Destina
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::get_segment_path() const
@@ -4009,8 +5036,8 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachm
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4029,16 +5056,39 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::TrafficMirroringParameters()
@@ -4067,12 +5117,12 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Traffic
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_acl_enabled.operation)
-	|| is_set(mirror_bytes.operation)
-	|| is_set(mirror_interval.operation)
-	|| is_set(port_level.operation)
-	|| is_set(traffic_direction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_acl_enabled.yfilter)
+	|| ydk::is_set(mirror_bytes.yfilter)
+	|| ydk::is_set(mirror_interval.yfilter)
+	|| ydk::is_set(port_level.yfilter)
+	|| ydk::is_set(traffic_direction.yfilter);
 }
 
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::get_segment_path() const
@@ -4098,11 +5148,11 @@ const EntityPath SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachm
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_acl_enabled.is_set || is_set(is_acl_enabled.operation)) leaf_name_data.push_back(is_acl_enabled.get_name_leafdata());
-    if (mirror_bytes.is_set || is_set(mirror_bytes.operation)) leaf_name_data.push_back(mirror_bytes.get_name_leafdata());
-    if (mirror_interval.is_set || is_set(mirror_interval.operation)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
-    if (port_level.is_set || is_set(port_level.operation)) leaf_name_data.push_back(port_level.get_name_leafdata());
-    if (traffic_direction.is_set || is_set(traffic_direction.operation)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
+    if (is_acl_enabled.is_set || is_set(is_acl_enabled.yfilter)) leaf_name_data.push_back(is_acl_enabled.get_name_leafdata());
+    if (mirror_bytes.is_set || is_set(mirror_bytes.yfilter)) leaf_name_data.push_back(mirror_bytes.get_name_leafdata());
+    if (mirror_interval.is_set || is_set(mirror_interval.yfilter)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
+    if (port_level.is_set || is_set(port_level.yfilter)) leaf_name_data.push_back(port_level.get_name_leafdata());
+    if (traffic_direction.is_set || is_set(traffic_direction.yfilter)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4121,73 +5171,114 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     return children;
 }
 
-void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::set_value(const std::string & value_path, std::string value)
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-acl-enabled")
     {
         is_acl_enabled = value;
+        is_acl_enabled.value_namespace = name_space;
+        is_acl_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-bytes")
     {
         mirror_bytes = value;
+        mirror_bytes.value_namespace = name_space;
+        mirror_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-interval")
     {
         mirror_interval = value;
+        mirror_interval.value_namespace = name_space;
+        mirror_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-level")
     {
         port_level = value;
+        port_level.value_namespace = name_space;
+        port_level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-direction")
     {
         traffic_direction = value;
+        traffic_direction.value_namespace = name_space;
+        traffic_direction.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::YLeaf ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::YLeaf ImStateEnumEnum::im_state_down {2, "im-state-down"};
-const Enum::YLeaf ImStateEnumEnum::im_state_up {3, "im-state-up"};
-const Enum::YLeaf ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::YLeaf ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::YLeaf ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::YLeaf ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::YLeaf ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::YLeaf ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::YLeaf ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::YLeaf ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::YLeaf ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
-const Enum::YLeaf ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
-const Enum::YLeaf ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::YLeaf ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::YLeaf ImStateEnumEnum::im_state_last {18, "im-state-last"};
+void SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-acl-enabled")
+    {
+        is_acl_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mirror-bytes")
+    {
+        mirror_bytes.yfilter = yfilter;
+    }
+    if(value_path == "mirror-interval")
+    {
+        mirror_interval.yfilter = yfilter;
+    }
+    if(value_path == "port-level")
+    {
+        port_level.yfilter = yfilter;
+    }
+    if(value_path == "traffic-direction")
+    {
+        traffic_direction.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf DestinationClassEnum::interface_class {0, "interface-class"};
-const Enum::YLeaf DestinationClassEnum::pseudowire_class {1, "pseudowire-class"};
-const Enum::YLeaf DestinationClassEnum::next_hop_ipv4_class {2, "next-hop-ipv4-class"};
-const Enum::YLeaf DestinationClassEnum::next_hop_ipv6_class {3, "next-hop-ipv6-class"};
-const Enum::YLeaf DestinationClassEnum::invalid_class {255, "invalid-class"};
+bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-acl-enabled" || name == "mirror-bytes" || name == "mirror-interval" || name == "port-level" || name == "traffic-direction")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf TrafficDirectionEnum::invalid {0, "invalid"};
-const Enum::YLeaf TrafficDirectionEnum::rx_only {1, "rx-only"};
-const Enum::YLeaf TrafficDirectionEnum::tx_only {2, "tx-only"};
-const Enum::YLeaf TrafficDirectionEnum::both {3, "both"};
+const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
 
-const Enum::YLeaf SessionClassEnum::ethernet_class {0, "ethernet-class"};
-const Enum::YLeaf SessionClassEnum::ipv4_class {1, "ipv4-class"};
-const Enum::YLeaf SessionClassEnum::ipv6_class {2, "ipv6-class"};
-const Enum::YLeaf SessionClassEnum::invalid_class {65535, "invalid-class"};
+const Enum::YLeaf MirrorInterval::mirror_interval_all {0, "mirror-interval-all"};
+const Enum::YLeaf MirrorInterval::mirror_interval512 {1, "mirror-interval512"};
+const Enum::YLeaf MirrorInterval::mirror_interval1k {2, "mirror-interval1k"};
+const Enum::YLeaf MirrorInterval::mirror_interval2k {3, "mirror-interval2k"};
+const Enum::YLeaf MirrorInterval::mirror_interval4k {4, "mirror-interval4k"};
+const Enum::YLeaf MirrorInterval::mirror_interval8k {5, "mirror-interval8k"};
+const Enum::YLeaf MirrorInterval::mirror_interval16k {6, "mirror-interval16k"};
 
-const Enum::YLeaf MirrorIntervalEnum::mirror_interval_all {0, "mirror-interval-all"};
-const Enum::YLeaf MirrorIntervalEnum::mirror_interval512 {1, "mirror-interval512"};
-const Enum::YLeaf MirrorIntervalEnum::mirror_interval1k {2, "mirror-interval1k"};
-const Enum::YLeaf MirrorIntervalEnum::mirror_interval2k {3, "mirror-interval2k"};
-const Enum::YLeaf MirrorIntervalEnum::mirror_interval4k {4, "mirror-interval4k"};
-const Enum::YLeaf MirrorIntervalEnum::mirror_interval8k {5, "mirror-interval8k"};
-const Enum::YLeaf MirrorIntervalEnum::mirror_interval16k {6, "mirror-interval16k"};
+const Enum::YLeaf DestinationClass::interface_class {0, "interface-class"};
+const Enum::YLeaf DestinationClass::pseudowire_class {1, "pseudowire-class"};
+const Enum::YLeaf DestinationClass::next_hop_ipv4_class {2, "next-hop-ipv4-class"};
+const Enum::YLeaf DestinationClass::next_hop_ipv6_class {3, "next-hop-ipv6-class"};
+const Enum::YLeaf DestinationClass::invalid_class {255, "invalid-class"};
+
+const Enum::YLeaf SessionClass::ethernet_class {0, "ethernet-class"};
+const Enum::YLeaf SessionClass::ipv4_class {1, "ipv4-class"};
+const Enum::YLeaf SessionClass::ipv6_class {2, "ipv6-class"};
+const Enum::YLeaf SessionClass::invalid_class {65535, "invalid-class"};
+
+const Enum::YLeaf TrafficDirection::invalid {0, "invalid"};
+const Enum::YLeaf TrafficDirection::rx_only {1, "rx-only"};
+const Enum::YLeaf TrafficDirection::tx_only {2, "tx-only"};
+const Enum::YLeaf TrafficDirection::both {3, "both"};
 
 
 }

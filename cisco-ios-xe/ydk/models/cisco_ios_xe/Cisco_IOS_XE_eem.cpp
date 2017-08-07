@@ -6,15 +6,17 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_eem.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_eem {
 
-const Enum::YLeaf OperatorTypeEnum::eq {0, "eq"};
-const Enum::YLeaf OperatorTypeEnum::ge {1, "ge"};
-const Enum::YLeaf OperatorTypeEnum::gt {2, "gt"};
-const Enum::YLeaf OperatorTypeEnum::le {3, "le"};
-const Enum::YLeaf OperatorTypeEnum::lt {4, "lt"};
-const Enum::YLeaf OperatorTypeEnum::ne {5, "ne"};
+const Enum::YLeaf OperatorType::eq {0, "eq"};
+const Enum::YLeaf OperatorType::ge {1, "ge"};
+const Enum::YLeaf OperatorType::gt {2, "gt"};
+const Enum::YLeaf OperatorType::le {3, "le"};
+const Enum::YLeaf OperatorType::lt {4, "lt"};
+const Enum::YLeaf OperatorType::ne {5, "ne"};
 
 
 }

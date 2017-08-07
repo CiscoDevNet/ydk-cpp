@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_alarm_logger_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_alarm_logger_oper {
 
 AlarmLogger::AlarmLogger()
@@ -33,7 +35,7 @@ bool AlarmLogger::has_data() const
 
 bool AlarmLogger::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (alarms !=  nullptr && alarms->has_operation())
 	|| (buffer_status !=  nullptr && buffer_status->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::get_children() const
     return children;
 }
 
-void AlarmLogger::set_value(const std::string & value_path, std::string value)
+void AlarmLogger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AlarmLogger::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string AlarmLogger::get_bundle_name() const
 augment_capabilities_function AlarmLogger::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> AlarmLogger::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool AlarmLogger::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarms" || name == "buffer-status")
+        return true;
+    return false;
 }
 
 AlarmLogger::BufferStatus::BufferStatus()
@@ -154,12 +172,12 @@ bool AlarmLogger::BufferStatus::has_data() const
 
 bool AlarmLogger::BufferStatus::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(capacity_threshold.operation)
-	|| is_set(log_buffer_size.operation)
-	|| is_set(max_log_buffer_size.operation)
-	|| is_set(record_count.operation)
-	|| is_set(severity_filter.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(capacity_threshold.yfilter)
+	|| ydk::is_set(log_buffer_size.yfilter)
+	|| ydk::is_set(max_log_buffer_size.yfilter)
+	|| ydk::is_set(record_count.yfilter)
+	|| ydk::is_set(severity_filter.yfilter);
 }
 
 std::string AlarmLogger::BufferStatus::get_segment_path() const
@@ -185,11 +203,11 @@ const EntityPath AlarmLogger::BufferStatus::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (capacity_threshold.is_set || is_set(capacity_threshold.operation)) leaf_name_data.push_back(capacity_threshold.get_name_leafdata());
-    if (log_buffer_size.is_set || is_set(log_buffer_size.operation)) leaf_name_data.push_back(log_buffer_size.get_name_leafdata());
-    if (max_log_buffer_size.is_set || is_set(max_log_buffer_size.operation)) leaf_name_data.push_back(max_log_buffer_size.get_name_leafdata());
-    if (record_count.is_set || is_set(record_count.operation)) leaf_name_data.push_back(record_count.get_name_leafdata());
-    if (severity_filter.is_set || is_set(severity_filter.operation)) leaf_name_data.push_back(severity_filter.get_name_leafdata());
+    if (capacity_threshold.is_set || is_set(capacity_threshold.yfilter)) leaf_name_data.push_back(capacity_threshold.get_name_leafdata());
+    if (log_buffer_size.is_set || is_set(log_buffer_size.yfilter)) leaf_name_data.push_back(log_buffer_size.get_name_leafdata());
+    if (max_log_buffer_size.is_set || is_set(max_log_buffer_size.yfilter)) leaf_name_data.push_back(max_log_buffer_size.get_name_leafdata());
+    if (record_count.is_set || is_set(record_count.yfilter)) leaf_name_data.push_back(record_count.get_name_leafdata());
+    if (severity_filter.is_set || is_set(severity_filter.yfilter)) leaf_name_data.push_back(severity_filter.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -208,28 +226,69 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::BufferStatus::get_ch
     return children;
 }
 
-void AlarmLogger::BufferStatus::set_value(const std::string & value_path, std::string value)
+void AlarmLogger::BufferStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "capacity-threshold")
     {
         capacity_threshold = value;
+        capacity_threshold.value_namespace = name_space;
+        capacity_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-buffer-size")
     {
         log_buffer_size = value;
+        log_buffer_size.value_namespace = name_space;
+        log_buffer_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-log-buffer-size")
     {
         max_log_buffer_size = value;
+        max_log_buffer_size.value_namespace = name_space;
+        max_log_buffer_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "record-count")
     {
         record_count = value;
+        record_count.value_namespace = name_space;
+        record_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severity-filter")
     {
         severity_filter = value;
+        severity_filter.value_namespace = name_space;
+        severity_filter.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AlarmLogger::BufferStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capacity-threshold")
+    {
+        capacity_threshold.yfilter = yfilter;
+    }
+    if(value_path == "log-buffer-size")
+    {
+        log_buffer_size.yfilter = yfilter;
+    }
+    if(value_path == "max-log-buffer-size")
+    {
+        max_log_buffer_size.yfilter = yfilter;
+    }
+    if(value_path == "record-count")
+    {
+        record_count.yfilter = yfilter;
+    }
+    if(value_path == "severity-filter")
+    {
+        severity_filter.yfilter = yfilter;
+    }
+}
+
+bool AlarmLogger::BufferStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capacity-threshold" || name == "log-buffer-size" || name == "max-log-buffer-size" || name == "record-count" || name == "severity-filter")
+        return true;
+    return false;
 }
 
 AlarmLogger::Alarms::Alarms()
@@ -258,7 +317,7 @@ bool AlarmLogger::Alarms::has_operation() const
         if(alarm[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AlarmLogger::Alarms::get_segment_path() const
@@ -323,8 +382,19 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::Alarms::get_children
     return children;
 }
 
-void AlarmLogger::Alarms::set_value(const std::string & value_path, std::string value)
+void AlarmLogger::Alarms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AlarmLogger::Alarms::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AlarmLogger::Alarms::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm")
+        return true;
+    return false;
 }
 
 AlarmLogger::Alarms::Alarm::Alarm()
@@ -365,18 +435,18 @@ bool AlarmLogger::Alarms::Alarm::has_data() const
 
 bool AlarmLogger::Alarms::Alarm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_id.operation)
-	|| is_set(additional_text.operation)
-	|| is_set(category.operation)
-	|| is_set(code.operation)
-	|| is_set(correlation_id.operation)
-	|| is_set(group.operation)
-	|| is_set(is_admin.operation)
-	|| is_set(severity.operation)
-	|| is_set(source_id.operation)
-	|| is_set(state.operation)
-	|| is_set(timestamp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_id.yfilter)
+	|| ydk::is_set(additional_text.yfilter)
+	|| ydk::is_set(category.yfilter)
+	|| ydk::is_set(code.yfilter)
+	|| ydk::is_set(correlation_id.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(is_admin.yfilter)
+	|| ydk::is_set(severity.yfilter)
+	|| ydk::is_set(source_id.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(timestamp.yfilter);
 }
 
 std::string AlarmLogger::Alarms::Alarm::get_segment_path() const
@@ -402,17 +472,17 @@ const EntityPath AlarmLogger::Alarms::Alarm::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_id.is_set || is_set(event_id.operation)) leaf_name_data.push_back(event_id.get_name_leafdata());
-    if (additional_text.is_set || is_set(additional_text.operation)) leaf_name_data.push_back(additional_text.get_name_leafdata());
-    if (category.is_set || is_set(category.operation)) leaf_name_data.push_back(category.get_name_leafdata());
-    if (code.is_set || is_set(code.operation)) leaf_name_data.push_back(code.get_name_leafdata());
-    if (correlation_id.is_set || is_set(correlation_id.operation)) leaf_name_data.push_back(correlation_id.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (is_admin.is_set || is_set(is_admin.operation)) leaf_name_data.push_back(is_admin.get_name_leafdata());
-    if (severity.is_set || is_set(severity.operation)) leaf_name_data.push_back(severity.get_name_leafdata());
-    if (source_id.is_set || is_set(source_id.operation)) leaf_name_data.push_back(source_id.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (event_id.is_set || is_set(event_id.yfilter)) leaf_name_data.push_back(event_id.get_name_leafdata());
+    if (additional_text.is_set || is_set(additional_text.yfilter)) leaf_name_data.push_back(additional_text.get_name_leafdata());
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (code.is_set || is_set(code.yfilter)) leaf_name_data.push_back(code.get_name_leafdata());
+    if (correlation_id.is_set || is_set(correlation_id.yfilter)) leaf_name_data.push_back(correlation_id.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (is_admin.is_set || is_set(is_admin.yfilter)) leaf_name_data.push_back(is_admin.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (source_id.is_set || is_set(source_id.yfilter)) leaf_name_data.push_back(source_id.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -431,67 +501,144 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::Alarms::Alarm::get_c
     return children;
 }
 
-void AlarmLogger::Alarms::Alarm::set_value(const std::string & value_path, std::string value)
+void AlarmLogger::Alarms::Alarm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-id")
     {
         event_id = value;
+        event_id.value_namespace = name_space;
+        event_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "additional-text")
     {
         additional_text = value;
+        additional_text.value_namespace = name_space;
+        additional_text.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "category")
     {
         category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "code")
     {
         code = value;
+        code.value_namespace = name_space;
+        code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "correlation-id")
     {
         correlation_id = value;
+        correlation_id.value_namespace = name_space;
+        correlation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-admin")
     {
         is_admin = value;
+        is_admin.value_namespace = name_space;
+        is_admin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severity")
     {
         severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-id")
     {
         source_id = value;
+        source_id.value_namespace = name_space;
+        source_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf AlAlarmBistateEnum::not_available {0, "not-available"};
-const Enum::YLeaf AlAlarmBistateEnum::active {1, "active"};
-const Enum::YLeaf AlAlarmBistateEnum::clear {2, "clear"};
+void AlarmLogger::Alarms::Alarm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-id")
+    {
+        event_id.yfilter = yfilter;
+    }
+    if(value_path == "additional-text")
+    {
+        additional_text.yfilter = yfilter;
+    }
+    if(value_path == "category")
+    {
+        category.yfilter = yfilter;
+    }
+    if(value_path == "code")
+    {
+        code.yfilter = yfilter;
+    }
+    if(value_path == "correlation-id")
+    {
+        correlation_id.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "is-admin")
+    {
+        is_admin.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+    if(value_path == "source-id")
+    {
+        source_id.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf AlAlarmSeverityEnum::unknown {-1, "unknown"};
-const Enum::YLeaf AlAlarmSeverityEnum::emergency {0, "emergency"};
-const Enum::YLeaf AlAlarmSeverityEnum::alert {1, "alert"};
-const Enum::YLeaf AlAlarmSeverityEnum::critical {2, "critical"};
-const Enum::YLeaf AlAlarmSeverityEnum::error {3, "error"};
-const Enum::YLeaf AlAlarmSeverityEnum::warning {4, "warning"};
-const Enum::YLeaf AlAlarmSeverityEnum::notice {5, "notice"};
-const Enum::YLeaf AlAlarmSeverityEnum::informational {6, "informational"};
-const Enum::YLeaf AlAlarmSeverityEnum::debugging {7, "debugging"};
+bool AlarmLogger::Alarms::Alarm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-id" || name == "additional-text" || name == "category" || name == "code" || name == "correlation-id" || name == "group" || name == "is-admin" || name == "severity" || name == "source-id" || name == "state" || name == "timestamp")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf AlAlarmBistate::not_available {0, "not-available"};
+const Enum::YLeaf AlAlarmBistate::active {1, "active"};
+const Enum::YLeaf AlAlarmBistate::clear {2, "clear"};
+
+const Enum::YLeaf AlAlarmSeverity::unknown {-1, "unknown"};
+const Enum::YLeaf AlAlarmSeverity::emergency {0, "emergency"};
+const Enum::YLeaf AlAlarmSeverity::alert {1, "alert"};
+const Enum::YLeaf AlAlarmSeverity::critical {2, "critical"};
+const Enum::YLeaf AlAlarmSeverity::error {3, "error"};
+const Enum::YLeaf AlAlarmSeverity::warning {4, "warning"};
+const Enum::YLeaf AlAlarmSeverity::notice {5, "notice"};
+const Enum::YLeaf AlAlarmSeverity::informational {6, "informational"};
+const Enum::YLeaf AlAlarmSeverity::debugging {7, "debugging"};
 
 
 }

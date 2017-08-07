@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_vrrp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_vrrp_cfg {
 
 Vrrp::Vrrp()
@@ -33,7 +35,7 @@ bool Vrrp::has_data() const
 
 bool Vrrp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (logging !=  nullptr && logging->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::get_children() const
     return children;
 }
 
-void Vrrp::set_value(const std::string & value_path, std::string value)
+void Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vrrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -128,6 +134,18 @@ augment_capabilities_function Vrrp::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Vrrp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Vrrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "logging")
+        return true;
+    return false;
+}
+
 Vrrp::Logging::Logging()
     :
     state_change_disable{YType::empty, "state-change-disable"}
@@ -146,8 +164,8 @@ bool Vrrp::Logging::has_data() const
 
 bool Vrrp::Logging::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(state_change_disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(state_change_disable.yfilter);
 }
 
 std::string Vrrp::Logging::get_segment_path() const
@@ -173,7 +191,7 @@ const EntityPath Vrrp::Logging::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (state_change_disable.is_set || is_set(state_change_disable.operation)) leaf_name_data.push_back(state_change_disable.get_name_leafdata());
+    if (state_change_disable.is_set || is_set(state_change_disable.yfilter)) leaf_name_data.push_back(state_change_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -192,12 +210,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Logging::get_children() con
     return children;
 }
 
-void Vrrp::Logging::set_value(const std::string & value_path, std::string value)
+void Vrrp::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "state-change-disable")
     {
         state_change_disable = value;
+        state_change_disable.value_namespace = name_space;
+        state_change_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "state-change-disable")
+    {
+        state_change_disable.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Logging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state-change-disable")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interfaces()
@@ -226,7 +261,7 @@ bool Vrrp::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::get_segment_path() const
@@ -291,8 +326,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::get_children() 
     return children;
 }
 
-void Vrrp::Interfaces::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Interface()
@@ -332,9 +378,9 @@ bool Vrrp::Interfaces::Interface::has_data() const
 
 bool Vrrp::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(mac_refresh.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(mac_refresh.yfilter)
 	|| (bfd !=  nullptr && bfd->has_operation())
 	|| (delay !=  nullptr && delay->has_operation())
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
@@ -364,8 +410,8 @@ const EntityPath Vrrp::Interfaces::Interface::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (mac_refresh.is_set || is_set(mac_refresh.operation)) leaf_name_data.push_back(mac_refresh.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (mac_refresh.is_set || is_set(mac_refresh.yfilter)) leaf_name_data.push_back(mac_refresh.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -440,16 +486,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::get_
     return children;
 }
 
-void Vrrp::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-refresh")
     {
         mac_refresh = value;
+        mac_refresh.value_namespace = name_space;
+        mac_refresh.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-refresh")
+    {
+        mac_refresh.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd" || name == "delay" || name == "ipv4" || name == "ipv6" || name == "interface-name" || name == "mac-refresh")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Ipv6()
@@ -476,7 +545,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::has_data() const
 
 bool Vrrp::Interfaces::Interface::Ipv6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (slave_virtual_routers !=  nullptr && slave_virtual_routers->has_operation())
 	|| (version3 !=  nullptr && version3->has_operation());
 }
@@ -550,8 +619,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slave-virtual-routers" || name == "version3")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::Version3()
@@ -574,7 +654,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::has_data() const
 
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
 }
 
@@ -633,8 +713,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual-routers")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouters()
@@ -663,7 +754,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::has_operation(
         if(virtual_router[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::get_segment_path() const
@@ -728,8 +819,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual-router")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::VirtualRouter()
@@ -781,13 +883,13 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vr_id.operation)
-	|| is_set(accept_mode_disable.operation)
-	|| is_set(bfd.operation)
-	|| is_set(preempt.operation)
-	|| is_set(priority.operation)
-	|| is_set(session_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vr_id.yfilter)
+	|| ydk::is_set(accept_mode_disable.yfilter)
+	|| ydk::is_set(bfd.yfilter)
+	|| ydk::is_set(preempt.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(session_name.yfilter)
 	|| (global_ipv6_addresses !=  nullptr && global_ipv6_addresses->has_operation())
 	|| (link_local_ipv6_address !=  nullptr && link_local_ipv6_address->has_operation())
 	|| (timer !=  nullptr && timer->has_operation())
@@ -818,12 +920,12 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vr_id.is_set || is_set(vr_id.operation)) leaf_name_data.push_back(vr_id.get_name_leafdata());
-    if (accept_mode_disable.is_set || is_set(accept_mode_disable.operation)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
-    if (bfd.is_set || is_set(bfd.operation)) leaf_name_data.push_back(bfd.get_name_leafdata());
-    if (preempt.is_set || is_set(preempt.operation)) leaf_name_data.push_back(preempt.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (vr_id.is_set || is_set(vr_id.yfilter)) leaf_name_data.push_back(vr_id.get_name_leafdata());
+    if (accept_mode_disable.is_set || is_set(accept_mode_disable.yfilter)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
+    if (bfd.is_set || is_set(bfd.yfilter)) leaf_name_data.push_back(bfd.get_name_leafdata());
+    if (preempt.is_set || is_set(preempt.yfilter)) leaf_name_data.push_back(preempt.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -912,32 +1014,79 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vr-id")
     {
         vr_id = value;
+        vr_id.value_namespace = name_space;
+        vr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accept-mode-disable")
     {
         accept_mode_disable = value;
+        accept_mode_disable.value_namespace = name_space;
+        accept_mode_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd")
     {
         bfd = value;
+        bfd.value_namespace = name_space;
+        bfd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preempt")
     {
         preempt = value;
+        preempt.value_namespace = name_space;
+        preempt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vr-id")
+    {
+        vr_id.yfilter = yfilter;
+    }
+    if(value_path == "accept-mode-disable")
+    {
+        accept_mode_disable.yfilter = yfilter;
+    }
+    if(value_path == "bfd")
+    {
+        bfd.yfilter = yfilter;
+    }
+    if(value_path == "preempt")
+    {
+        preempt.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-ipv6-addresses" || name == "link-local-ipv6-address" || name == "timer" || name == "tracked-objects" || name == "tracks" || name == "vr-id" || name == "accept-mode-disable" || name == "bfd" || name == "preempt" || name == "priority" || name == "session-name")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Addresses()
@@ -966,7 +1115,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
         if(global_ipv6_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::get_segment_path() const
@@ -1031,8 +1180,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-ipv6-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::GlobalIpv6Address()
@@ -1053,8 +1213,8 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::get_segment_path() const
@@ -1080,7 +1240,7 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1099,12 +1259,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Tracks()
@@ -1133,7 +1310,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
         if(track[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::get_segment_path() const
@@ -1198,8 +1375,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track::Track()
@@ -1222,9 +1410,9 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track::get_segment_path() const
@@ -1250,8 +1438,8 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1270,16 +1458,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Tracks::Track::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "priority")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::Timer()
@@ -1306,11 +1517,11 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertisement_time_in_msec.operation)
-	|| is_set(advertisement_time_in_sec.operation)
-	|| is_set(forced.operation)
-	|| is_set(in_msec.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertisement_time_in_msec.yfilter)
+	|| ydk::is_set(advertisement_time_in_sec.yfilter)
+	|| ydk::is_set(forced.yfilter)
+	|| ydk::is_set(in_msec.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::get_segment_path() const
@@ -1336,10 +1547,10 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.operation)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
-    if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.operation)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
-    if (forced.is_set || is_set(forced.operation)) leaf_name_data.push_back(forced.get_name_leafdata());
-    if (in_msec.is_set || is_set(in_msec.operation)) leaf_name_data.push_back(in_msec.get_name_leafdata());
+    if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.yfilter)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
+    if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.yfilter)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+    if (in_msec.is_set || is_set(in_msec.yfilter)) leaf_name_data.push_back(in_msec.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1358,24 +1569,59 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec = value;
+        advertisement_time_in_msec.value_namespace = name_space;
+        advertisement_time_in_msec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "advertisement-time-in-sec")
     {
         advertisement_time_in_sec = value;
+        advertisement_time_in_sec.value_namespace = name_space;
+        advertisement_time_in_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forced")
     {
         forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-msec")
     {
         in_msec = value;
+        in_msec.value_namespace = name_space;
+        in_msec.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertisement-time-in-msec")
+    {
+        advertisement_time_in_msec.yfilter = yfilter;
+    }
+    if(value_path == "advertisement-time-in-sec")
+    {
+        advertisement_time_in_sec.yfilter = yfilter;
+    }
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+    if(value_path == "in-msec")
+    {
+        in_msec.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::Timer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced" || name == "in-msec")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObjects()
@@ -1404,7 +1650,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
         if(tracked_object[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::get_segment_path() const
@@ -1469,8 +1715,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tracked-object")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::TrackedObject()
@@ -1493,9 +1750,9 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(object_name.operation)
-	|| is_set(priority_decrement.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(priority_decrement.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::get_segment_path() const
@@ -1521,8 +1778,8 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (priority_decrement.is_set || is_set(priority_decrement.operation)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1541,16 +1798,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-decrement")
     {
         priority_decrement = value;
+        priority_decrement.value_namespace = name_space;
+        priority_decrement.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-name" || name == "priority-decrement")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::LinkLocalIpv6Address::LinkLocalIpv6Address()
@@ -1573,9 +1853,9 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::LinkLocalIpv6Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_configure.operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(auto_configure.yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::LinkLocalIpv6Address::get_segment_path() const
@@ -1601,8 +1881,8 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_configure.is_set || is_set(auto_configure.operation)) leaf_name_data.push_back(auto_configure.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (auto_configure.is_set || is_set(auto_configure.yfilter)) leaf_name_data.push_back(auto_configure.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1621,16 +1901,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::LinkLocalIpv6Address::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::LinkLocalIpv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-configure")
     {
         auto_configure = value;
+        auto_configure.value_namespace = name_space;
+        auto_configure.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::LinkLocalIpv6Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-configure")
+    {
+        auto_configure.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::LinkLocalIpv6Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-configure" || name == "ip-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouters()
@@ -1659,7 +1962,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::has_operation() con
         if(slave_virtual_router[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::get_segment_path() const
@@ -1724,8 +2027,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slave-virtual-router")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::SlaveVirtualRouter()
@@ -1759,10 +2073,10 @@ bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(slave_virtual_router_id.operation)
-	|| is_set(accept_mode_disable.operation)
-	|| is_set(follow.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(slave_virtual_router_id.yfilter)
+	|| ydk::is_set(accept_mode_disable.yfilter)
+	|| ydk::is_set(follow.yfilter)
 	|| (global_ipv6_addresses !=  nullptr && global_ipv6_addresses->has_operation())
 	|| (link_local_ipv6_address !=  nullptr && link_local_ipv6_address->has_operation());
 }
@@ -1790,9 +2104,9 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slave_virtual_router_id.is_set || is_set(slave_virtual_router_id.operation)) leaf_name_data.push_back(slave_virtual_router_id.get_name_leafdata());
-    if (accept_mode_disable.is_set || is_set(accept_mode_disable.operation)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
-    if (follow.is_set || is_set(follow.operation)) leaf_name_data.push_back(follow.get_name_leafdata());
+    if (slave_virtual_router_id.is_set || is_set(slave_virtual_router_id.yfilter)) leaf_name_data.push_back(slave_virtual_router_id.get_name_leafdata());
+    if (accept_mode_disable.is_set || is_set(accept_mode_disable.yfilter)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
+    if (follow.is_set || is_set(follow.yfilter)) leaf_name_data.push_back(follow.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1839,20 +2153,49 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slave-virtual-router-id")
     {
         slave_virtual_router_id = value;
+        slave_virtual_router_id.value_namespace = name_space;
+        slave_virtual_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accept-mode-disable")
     {
         accept_mode_disable = value;
+        accept_mode_disable.value_namespace = name_space;
+        accept_mode_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "follow")
     {
         follow = value;
+        follow.value_namespace = name_space;
+        follow.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slave-virtual-router-id")
+    {
+        slave_virtual_router_id.yfilter = yfilter;
+    }
+    if(value_path == "accept-mode-disable")
+    {
+        accept_mode_disable.yfilter = yfilter;
+    }
+    if(value_path == "follow")
+    {
+        follow.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-ipv6-addresses" || name == "link-local-ipv6-address" || name == "slave-virtual-router-id" || name == "accept-mode-disable" || name == "follow")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::LinkLocalIpv6Address::LinkLocalIpv6Address()
@@ -1875,9 +2218,9 @@ bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::LinkLocalIpv6Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_configure.operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(auto_configure.yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::LinkLocalIpv6Address::get_segment_path() const
@@ -1903,8 +2246,8 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_configure.is_set || is_set(auto_configure.operation)) leaf_name_data.push_back(auto_configure.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (auto_configure.is_set || is_set(auto_configure.yfilter)) leaf_name_data.push_back(auto_configure.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1923,16 +2266,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::LinkLocalIpv6Address::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::LinkLocalIpv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-configure")
     {
         auto_configure = value;
+        auto_configure.value_namespace = name_space;
+        auto_configure.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::LinkLocalIpv6Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-configure")
+    {
+        auto_configure.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::LinkLocalIpv6Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-configure" || name == "ip-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Addresses()
@@ -1961,7 +2327,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter:
         if(global_ipv6_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::get_segment_path() const
@@ -2026,8 +2392,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-ipv6-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::GlobalIpv6Address()
@@ -2048,8 +2425,8 @@ bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::get_segment_path() const
@@ -2075,7 +2452,7 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2094,12 +2471,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv6
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::GlobalIpv6Addresses::GlobalIpv6Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Delay::Delay()
@@ -2122,9 +2516,9 @@ bool Vrrp::Interfaces::Interface::Delay::has_data() const
 
 bool Vrrp::Interfaces::Interface::Delay::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(min_delay.operation)
-	|| is_set(reload_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(min_delay.yfilter)
+	|| ydk::is_set(reload_delay.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Delay::get_segment_path() const
@@ -2150,8 +2544,8 @@ const EntityPath Vrrp::Interfaces::Interface::Delay::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (min_delay.is_set || is_set(min_delay.operation)) leaf_name_data.push_back(min_delay.get_name_leafdata());
-    if (reload_delay.is_set || is_set(reload_delay.operation)) leaf_name_data.push_back(reload_delay.get_name_leafdata());
+    if (min_delay.is_set || is_set(min_delay.yfilter)) leaf_name_data.push_back(min_delay.get_name_leafdata());
+    if (reload_delay.is_set || is_set(reload_delay.yfilter)) leaf_name_data.push_back(reload_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2170,16 +2564,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Dela
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Delay::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "min-delay")
     {
         min_delay = value;
+        min_delay.value_namespace = name_space;
+        min_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reload-delay")
     {
         reload_delay = value;
+        reload_delay.value_namespace = name_space;
+        reload_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Delay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "min-delay")
+    {
+        min_delay.yfilter = yfilter;
+    }
+    if(value_path == "reload-delay")
+    {
+        reload_delay.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Delay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "min-delay" || name == "reload-delay")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Ipv4()
@@ -2210,7 +2627,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::has_data() const
 
 bool Vrrp::Interfaces::Interface::Ipv4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (slave_virtual_routers !=  nullptr && slave_virtual_routers->has_operation())
 	|| (version2 !=  nullptr && version2->has_operation())
 	|| (version3 !=  nullptr && version3->has_operation());
@@ -2299,8 +2716,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slave-virtual-routers" || name == "version2" || name == "version3")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::Version3()
@@ -2323,7 +2751,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::has_data() const
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
 }
 
@@ -2382,8 +2810,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual-routers")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouters()
@@ -2412,7 +2851,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::has_operation(
         if(virtual_router[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::get_segment_path() const
@@ -2477,8 +2916,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual-router")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::VirtualRouter()
@@ -2528,14 +2978,14 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vr_id.operation)
-	|| is_set(accept_mode_disable.operation)
-	|| is_set(bfd.operation)
-	|| is_set(preempt.operation)
-	|| is_set(primary_ipv4_address.operation)
-	|| is_set(priority.operation)
-	|| is_set(session_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vr_id.yfilter)
+	|| ydk::is_set(accept_mode_disable.yfilter)
+	|| ydk::is_set(bfd.yfilter)
+	|| ydk::is_set(preempt.yfilter)
+	|| ydk::is_set(primary_ipv4_address.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(session_name.yfilter)
 	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation())
 	|| (timer !=  nullptr && timer->has_operation())
 	|| (tracked_objects !=  nullptr && tracked_objects->has_operation())
@@ -2565,13 +3015,13 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vr_id.is_set || is_set(vr_id.operation)) leaf_name_data.push_back(vr_id.get_name_leafdata());
-    if (accept_mode_disable.is_set || is_set(accept_mode_disable.operation)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
-    if (bfd.is_set || is_set(bfd.operation)) leaf_name_data.push_back(bfd.get_name_leafdata());
-    if (preempt.is_set || is_set(preempt.operation)) leaf_name_data.push_back(preempt.get_name_leafdata());
-    if (primary_ipv4_address.is_set || is_set(primary_ipv4_address.operation)) leaf_name_data.push_back(primary_ipv4_address.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (vr_id.is_set || is_set(vr_id.yfilter)) leaf_name_data.push_back(vr_id.get_name_leafdata());
+    if (accept_mode_disable.is_set || is_set(accept_mode_disable.yfilter)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
+    if (bfd.is_set || is_set(bfd.yfilter)) leaf_name_data.push_back(bfd.get_name_leafdata());
+    if (preempt.is_set || is_set(preempt.yfilter)) leaf_name_data.push_back(preempt.get_name_leafdata());
+    if (primary_ipv4_address.is_set || is_set(primary_ipv4_address.yfilter)) leaf_name_data.push_back(primary_ipv4_address.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2646,36 +3096,89 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vr-id")
     {
         vr_id = value;
+        vr_id.value_namespace = name_space;
+        vr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accept-mode-disable")
     {
         accept_mode_disable = value;
+        accept_mode_disable.value_namespace = name_space;
+        accept_mode_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd")
     {
         bfd = value;
+        bfd.value_namespace = name_space;
+        bfd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preempt")
     {
         preempt = value;
+        preempt.value_namespace = name_space;
+        preempt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-ipv4-address")
     {
         primary_ipv4_address = value;
+        primary_ipv4_address.value_namespace = name_space;
+        primary_ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vr-id")
+    {
+        vr_id.yfilter = yfilter;
+    }
+    if(value_path == "accept-mode-disable")
+    {
+        accept_mode_disable.yfilter = yfilter;
+    }
+    if(value_path == "bfd")
+    {
+        bfd.yfilter = yfilter;
+    }
+    if(value_path == "preempt")
+    {
+        preempt.yfilter = yfilter;
+    }
+    if(value_path == "primary-ipv4-address")
+    {
+        primary_ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secondary-ipv4-addresses" || name == "timer" || name == "tracked-objects" || name == "tracks" || name == "vr-id" || name == "accept-mode-disable" || name == "bfd" || name == "preempt" || name == "primary-ipv4-address" || name == "priority" || name == "session-name")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::Timer()
@@ -2702,11 +3205,11 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertisement_time_in_msec.operation)
-	|| is_set(advertisement_time_in_sec.operation)
-	|| is_set(forced.operation)
-	|| is_set(in_msec.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertisement_time_in_msec.yfilter)
+	|| ydk::is_set(advertisement_time_in_sec.yfilter)
+	|| ydk::is_set(forced.yfilter)
+	|| ydk::is_set(in_msec.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::get_segment_path() const
@@ -2732,10 +3235,10 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.operation)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
-    if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.operation)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
-    if (forced.is_set || is_set(forced.operation)) leaf_name_data.push_back(forced.get_name_leafdata());
-    if (in_msec.is_set || is_set(in_msec.operation)) leaf_name_data.push_back(in_msec.get_name_leafdata());
+    if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.yfilter)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
+    if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.yfilter)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+    if (in_msec.is_set || is_set(in_msec.yfilter)) leaf_name_data.push_back(in_msec.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2754,24 +3257,59 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec = value;
+        advertisement_time_in_msec.value_namespace = name_space;
+        advertisement_time_in_msec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "advertisement-time-in-sec")
     {
         advertisement_time_in_sec = value;
+        advertisement_time_in_sec.value_namespace = name_space;
+        advertisement_time_in_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forced")
     {
         forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-msec")
     {
         in_msec = value;
+        in_msec.value_namespace = name_space;
+        in_msec.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertisement-time-in-msec")
+    {
+        advertisement_time_in_msec.yfilter = yfilter;
+    }
+    if(value_path == "advertisement-time-in-sec")
+    {
+        advertisement_time_in_sec.yfilter = yfilter;
+    }
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+    if(value_path == "in-msec")
+    {
+        in_msec.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Timer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced" || name == "in-msec")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Addresses()
@@ -2800,7 +3338,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
         if(secondary_ipv4_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::get_segment_path() const
@@ -2865,8 +3403,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secondary-ipv4-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::SecondaryIpv4Address()
@@ -2887,8 +3436,8 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::get_segment_path() const
@@ -2914,7 +3463,7 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2933,12 +3482,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObjects()
@@ -2967,7 +3533,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
         if(tracked_object[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::get_segment_path() const
@@ -3032,8 +3598,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tracked-object")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::TrackedObject()
@@ -3056,9 +3633,9 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(object_name.operation)
-	|| is_set(priority_decrement.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(priority_decrement.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::get_segment_path() const
@@ -3084,8 +3661,8 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (priority_decrement.is_set || is_set(priority_decrement.operation)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3104,16 +3681,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-decrement")
     {
         priority_decrement = value;
+        priority_decrement.value_namespace = name_space;
+        priority_decrement.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-name" || name == "priority-decrement")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Tracks()
@@ -3142,7 +3742,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
         if(track[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::get_segment_path() const
@@ -3207,8 +3807,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track::Track()
@@ -3231,9 +3842,9 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track::get_segment_path() const
@@ -3259,8 +3870,8 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3279,16 +3890,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::Tracks::Track::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "priority")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouters()
@@ -3317,7 +3951,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::has_operation() con
         if(slave_virtual_router[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::get_segment_path() const
@@ -3382,8 +4016,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slave-virtual-router")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SlaveVirtualRouter()
@@ -3415,11 +4060,11 @@ bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(slave_virtual_router_id.operation)
-	|| is_set(accept_mode_disable.operation)
-	|| is_set(follow.operation)
-	|| is_set(primary_ipv4_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(slave_virtual_router_id.yfilter)
+	|| ydk::is_set(accept_mode_disable.yfilter)
+	|| ydk::is_set(follow.yfilter)
+	|| ydk::is_set(primary_ipv4_address.yfilter)
 	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation());
 }
 
@@ -3446,10 +4091,10 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slave_virtual_router_id.is_set || is_set(slave_virtual_router_id.operation)) leaf_name_data.push_back(slave_virtual_router_id.get_name_leafdata());
-    if (accept_mode_disable.is_set || is_set(accept_mode_disable.operation)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
-    if (follow.is_set || is_set(follow.operation)) leaf_name_data.push_back(follow.get_name_leafdata());
-    if (primary_ipv4_address.is_set || is_set(primary_ipv4_address.operation)) leaf_name_data.push_back(primary_ipv4_address.get_name_leafdata());
+    if (slave_virtual_router_id.is_set || is_set(slave_virtual_router_id.yfilter)) leaf_name_data.push_back(slave_virtual_router_id.get_name_leafdata());
+    if (accept_mode_disable.is_set || is_set(accept_mode_disable.yfilter)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
+    if (follow.is_set || is_set(follow.yfilter)) leaf_name_data.push_back(follow.get_name_leafdata());
+    if (primary_ipv4_address.is_set || is_set(primary_ipv4_address.yfilter)) leaf_name_data.push_back(primary_ipv4_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3482,24 +4127,59 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slave-virtual-router-id")
     {
         slave_virtual_router_id = value;
+        slave_virtual_router_id.value_namespace = name_space;
+        slave_virtual_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accept-mode-disable")
     {
         accept_mode_disable = value;
+        accept_mode_disable.value_namespace = name_space;
+        accept_mode_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "follow")
     {
         follow = value;
+        follow.value_namespace = name_space;
+        follow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-ipv4-address")
     {
         primary_ipv4_address = value;
+        primary_ipv4_address.value_namespace = name_space;
+        primary_ipv4_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slave-virtual-router-id")
+    {
+        slave_virtual_router_id.yfilter = yfilter;
+    }
+    if(value_path == "accept-mode-disable")
+    {
+        accept_mode_disable.yfilter = yfilter;
+    }
+    if(value_path == "follow")
+    {
+        follow.yfilter = yfilter;
+    }
+    if(value_path == "primary-ipv4-address")
+    {
+        primary_ipv4_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secondary-ipv4-addresses" || name == "slave-virtual-router-id" || name == "accept-mode-disable" || name == "follow" || name == "primary-ipv4-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Addresses()
@@ -3528,7 +4208,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter:
         if(secondary_ipv4_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::get_segment_path() const
@@ -3593,8 +4273,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secondary-ipv4-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::SecondaryIpv4Address()
@@ -3615,8 +4306,8 @@ bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::get_segment_path() const
@@ -3642,7 +4333,7 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3661,12 +4352,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::Version2()
@@ -3689,7 +4397,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::has_data() const
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
 }
 
@@ -3748,8 +4456,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual-routers")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouters()
@@ -3778,7 +4497,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::has_operation(
         if(virtual_router[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::get_segment_path() const
@@ -3843,8 +4562,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual-router")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::VirtualRouter()
@@ -3896,15 +4626,15 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vr_id.operation)
-	|| is_set(accept_mode_disable.operation)
-	|| is_set(bfd.operation)
-	|| is_set(preempt.operation)
-	|| is_set(primary_ipv4_address.operation)
-	|| is_set(priority.operation)
-	|| is_set(session_name.operation)
-	|| is_set(text_password.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vr_id.yfilter)
+	|| ydk::is_set(accept_mode_disable.yfilter)
+	|| ydk::is_set(bfd.yfilter)
+	|| ydk::is_set(preempt.yfilter)
+	|| ydk::is_set(primary_ipv4_address.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(session_name.yfilter)
+	|| ydk::is_set(text_password.yfilter)
 	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation())
 	|| (timer !=  nullptr && timer->has_operation())
 	|| (tracked_objects !=  nullptr && tracked_objects->has_operation())
@@ -3934,14 +4664,14 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vr_id.is_set || is_set(vr_id.operation)) leaf_name_data.push_back(vr_id.get_name_leafdata());
-    if (accept_mode_disable.is_set || is_set(accept_mode_disable.operation)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
-    if (bfd.is_set || is_set(bfd.operation)) leaf_name_data.push_back(bfd.get_name_leafdata());
-    if (preempt.is_set || is_set(preempt.operation)) leaf_name_data.push_back(preempt.get_name_leafdata());
-    if (primary_ipv4_address.is_set || is_set(primary_ipv4_address.operation)) leaf_name_data.push_back(primary_ipv4_address.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
-    if (text_password.is_set || is_set(text_password.operation)) leaf_name_data.push_back(text_password.get_name_leafdata());
+    if (vr_id.is_set || is_set(vr_id.yfilter)) leaf_name_data.push_back(vr_id.get_name_leafdata());
+    if (accept_mode_disable.is_set || is_set(accept_mode_disable.yfilter)) leaf_name_data.push_back(accept_mode_disable.get_name_leafdata());
+    if (bfd.is_set || is_set(bfd.yfilter)) leaf_name_data.push_back(bfd.get_name_leafdata());
+    if (preempt.is_set || is_set(preempt.yfilter)) leaf_name_data.push_back(preempt.get_name_leafdata());
+    if (primary_ipv4_address.is_set || is_set(primary_ipv4_address.yfilter)) leaf_name_data.push_back(primary_ipv4_address.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (text_password.is_set || is_set(text_password.yfilter)) leaf_name_data.push_back(text_password.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4016,40 +4746,99 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vr-id")
     {
         vr_id = value;
+        vr_id.value_namespace = name_space;
+        vr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accept-mode-disable")
     {
         accept_mode_disable = value;
+        accept_mode_disable.value_namespace = name_space;
+        accept_mode_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd")
     {
         bfd = value;
+        bfd.value_namespace = name_space;
+        bfd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preempt")
     {
         preempt = value;
+        preempt.value_namespace = name_space;
+        preempt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-ipv4-address")
     {
         primary_ipv4_address = value;
+        primary_ipv4_address.value_namespace = name_space;
+        primary_ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "text-password")
     {
         text_password = value;
+        text_password.value_namespace = name_space;
+        text_password.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vr-id")
+    {
+        vr_id.yfilter = yfilter;
+    }
+    if(value_path == "accept-mode-disable")
+    {
+        accept_mode_disable.yfilter = yfilter;
+    }
+    if(value_path == "bfd")
+    {
+        bfd.yfilter = yfilter;
+    }
+    if(value_path == "preempt")
+    {
+        preempt.yfilter = yfilter;
+    }
+    if(value_path == "primary-ipv4-address")
+    {
+        primary_ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+    if(value_path == "text-password")
+    {
+        text_password.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secondary-ipv4-addresses" || name == "timer" || name == "tracked-objects" || name == "tracks" || name == "vr-id" || name == "accept-mode-disable" || name == "bfd" || name == "preempt" || name == "primary-ipv4-address" || name == "priority" || name == "session-name" || name == "text-password")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::Timer()
@@ -4076,11 +4865,11 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertisement_time_in_msec.operation)
-	|| is_set(advertisement_time_in_sec.operation)
-	|| is_set(forced.operation)
-	|| is_set(in_msec.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertisement_time_in_msec.yfilter)
+	|| ydk::is_set(advertisement_time_in_sec.yfilter)
+	|| ydk::is_set(forced.yfilter)
+	|| ydk::is_set(in_msec.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::get_segment_path() const
@@ -4106,10 +4895,10 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.operation)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
-    if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.operation)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
-    if (forced.is_set || is_set(forced.operation)) leaf_name_data.push_back(forced.get_name_leafdata());
-    if (in_msec.is_set || is_set(in_msec.operation)) leaf_name_data.push_back(in_msec.get_name_leafdata());
+    if (advertisement_time_in_msec.is_set || is_set(advertisement_time_in_msec.yfilter)) leaf_name_data.push_back(advertisement_time_in_msec.get_name_leafdata());
+    if (advertisement_time_in_sec.is_set || is_set(advertisement_time_in_sec.yfilter)) leaf_name_data.push_back(advertisement_time_in_sec.get_name_leafdata());
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+    if (in_msec.is_set || is_set(in_msec.yfilter)) leaf_name_data.push_back(in_msec.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4128,24 +4917,59 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertisement-time-in-msec")
     {
         advertisement_time_in_msec = value;
+        advertisement_time_in_msec.value_namespace = name_space;
+        advertisement_time_in_msec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "advertisement-time-in-sec")
     {
         advertisement_time_in_sec = value;
+        advertisement_time_in_sec.value_namespace = name_space;
+        advertisement_time_in_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forced")
     {
         forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-msec")
     {
         in_msec = value;
+        in_msec.value_namespace = name_space;
+        in_msec.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertisement-time-in-msec")
+    {
+        advertisement_time_in_msec.yfilter = yfilter;
+    }
+    if(value_path == "advertisement-time-in-sec")
+    {
+        advertisement_time_in_sec.yfilter = yfilter;
+    }
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+    if(value_path == "in-msec")
+    {
+        in_msec.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Timer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertisement-time-in-msec" || name == "advertisement-time-in-sec" || name == "forced" || name == "in-msec")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Addresses()
@@ -4174,7 +4998,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
         if(secondary_ipv4_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::get_segment_path() const
@@ -4239,8 +5063,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secondary-ipv4-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::SecondaryIpv4Address()
@@ -4261,8 +5096,8 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::get_segment_path() const
@@ -4288,7 +5123,7 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4307,12 +5142,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::SecondaryIpv4Addresses::SecondaryIpv4Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Tracks()
@@ -4341,7 +5193,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
         if(track[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::get_segment_path() const
@@ -4406,8 +5258,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track::Track()
@@ -4430,9 +5293,9 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track::get_segment_path() const
@@ -4458,8 +5321,8 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4478,16 +5341,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::Tracks::Track::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "priority")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObjects()
@@ -4516,7 +5402,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
         if(tracked_object[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::get_segment_path() const
@@ -4581,8 +5467,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tracked-object")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::TrackedObject()
@@ -4605,9 +5502,9 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(object_name.operation)
-	|| is_set(priority_decrement.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(priority_decrement.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::get_segment_path() const
@@ -4633,8 +5530,8 @@ const EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (priority_decrement.is_set || is_set(priority_decrement.operation)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4653,16 +5550,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Ipv4
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-decrement")
     {
         priority_decrement = value;
+        priority_decrement.value_namespace = name_space;
+        priority_decrement.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::TrackedObjects::TrackedObject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object-name" || name == "priority-decrement")
+        return true;
+    return false;
 }
 
 Vrrp::Interfaces::Interface::Bfd::Bfd()
@@ -4685,9 +5605,9 @@ bool Vrrp::Interfaces::Interface::Bfd::has_data() const
 
 bool Vrrp::Interfaces::Interface::Bfd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Vrrp::Interfaces::Interface::Bfd::get_segment_path() const
@@ -4713,8 +5633,8 @@ const EntityPath Vrrp::Interfaces::Interface::Bfd::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4733,16 +5653,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Interfaces::Interface::Bfd:
     return children;
 }
 
-void Vrrp::Interfaces::Interface::Bfd::set_value(const std::string & value_path, std::string value)
+void Vrrp::Interfaces::Interface::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Interfaces::Interface::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Interfaces::Interface::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "interval")
+        return true;
+    return false;
 }
 
 

@@ -6,38 +6,40 @@
 #include "generated_entity_lookup.hpp"
 #include "DS3_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace DS3_MIB {
 
 Ds3Mib::Ds3Mib()
     :
-    dsx3configtable_(std::make_shared<Ds3Mib::Dsx3Configtable>())
-	,dsx3currenttable_(std::make_shared<Ds3Mib::Dsx3Currenttable>())
-	,dsx3farendconfigtable_(std::make_shared<Ds3Mib::Dsx3Farendconfigtable>())
-	,dsx3farendcurrenttable_(std::make_shared<Ds3Mib::Dsx3Farendcurrenttable>())
-	,dsx3farendintervaltable_(std::make_shared<Ds3Mib::Dsx3Farendintervaltable>())
-	,dsx3farendtotaltable_(std::make_shared<Ds3Mib::Dsx3Farendtotaltable>())
-	,dsx3fractable_(std::make_shared<Ds3Mib::Dsx3Fractable>())
-	,dsx3intervaltable_(std::make_shared<Ds3Mib::Dsx3Intervaltable>())
-	,dsx3totaltable_(std::make_shared<Ds3Mib::Dsx3Totaltable>())
+    dsx3configtable(std::make_shared<Ds3Mib::Dsx3Configtable>())
+	,dsx3currenttable(std::make_shared<Ds3Mib::Dsx3Currenttable>())
+	,dsx3farendconfigtable(std::make_shared<Ds3Mib::Dsx3Farendconfigtable>())
+	,dsx3farendcurrenttable(std::make_shared<Ds3Mib::Dsx3Farendcurrenttable>())
+	,dsx3farendintervaltable(std::make_shared<Ds3Mib::Dsx3Farendintervaltable>())
+	,dsx3farendtotaltable(std::make_shared<Ds3Mib::Dsx3Farendtotaltable>())
+	,dsx3fractable(std::make_shared<Ds3Mib::Dsx3Fractable>())
+	,dsx3intervaltable(std::make_shared<Ds3Mib::Dsx3Intervaltable>())
+	,dsx3totaltable(std::make_shared<Ds3Mib::Dsx3Totaltable>())
 {
-    dsx3configtable_->parent = this;
+    dsx3configtable->parent = this;
 
-    dsx3currenttable_->parent = this;
+    dsx3currenttable->parent = this;
 
-    dsx3farendconfigtable_->parent = this;
+    dsx3farendconfigtable->parent = this;
 
-    dsx3farendcurrenttable_->parent = this;
+    dsx3farendcurrenttable->parent = this;
 
-    dsx3farendintervaltable_->parent = this;
+    dsx3farendintervaltable->parent = this;
 
-    dsx3farendtotaltable_->parent = this;
+    dsx3farendtotaltable->parent = this;
 
-    dsx3fractable_->parent = this;
+    dsx3fractable->parent = this;
 
-    dsx3intervaltable_->parent = this;
+    dsx3intervaltable->parent = this;
 
-    dsx3totaltable_->parent = this;
+    dsx3totaltable->parent = this;
 
     yang_name = "DS3-MIB"; yang_parent_name = "DS3-MIB";
 }
@@ -48,29 +50,29 @@ Ds3Mib::~Ds3Mib()
 
 bool Ds3Mib::has_data() const
 {
-    return (dsx3configtable_ !=  nullptr && dsx3configtable_->has_data())
-	|| (dsx3currenttable_ !=  nullptr && dsx3currenttable_->has_data())
-	|| (dsx3farendconfigtable_ !=  nullptr && dsx3farendconfigtable_->has_data())
-	|| (dsx3farendcurrenttable_ !=  nullptr && dsx3farendcurrenttable_->has_data())
-	|| (dsx3farendintervaltable_ !=  nullptr && dsx3farendintervaltable_->has_data())
-	|| (dsx3farendtotaltable_ !=  nullptr && dsx3farendtotaltable_->has_data())
-	|| (dsx3fractable_ !=  nullptr && dsx3fractable_->has_data())
-	|| (dsx3intervaltable_ !=  nullptr && dsx3intervaltable_->has_data())
-	|| (dsx3totaltable_ !=  nullptr && dsx3totaltable_->has_data());
+    return (dsx3configtable !=  nullptr && dsx3configtable->has_data())
+	|| (dsx3currenttable !=  nullptr && dsx3currenttable->has_data())
+	|| (dsx3farendconfigtable !=  nullptr && dsx3farendconfigtable->has_data())
+	|| (dsx3farendcurrenttable !=  nullptr && dsx3farendcurrenttable->has_data())
+	|| (dsx3farendintervaltable !=  nullptr && dsx3farendintervaltable->has_data())
+	|| (dsx3farendtotaltable !=  nullptr && dsx3farendtotaltable->has_data())
+	|| (dsx3fractable !=  nullptr && dsx3fractable->has_data())
+	|| (dsx3intervaltable !=  nullptr && dsx3intervaltable->has_data())
+	|| (dsx3totaltable !=  nullptr && dsx3totaltable->has_data());
 }
 
 bool Ds3Mib::has_operation() const
 {
-    return is_set(operation)
-	|| (dsx3configtable_ !=  nullptr && dsx3configtable_->has_operation())
-	|| (dsx3currenttable_ !=  nullptr && dsx3currenttable_->has_operation())
-	|| (dsx3farendconfigtable_ !=  nullptr && dsx3farendconfigtable_->has_operation())
-	|| (dsx3farendcurrenttable_ !=  nullptr && dsx3farendcurrenttable_->has_operation())
-	|| (dsx3farendintervaltable_ !=  nullptr && dsx3farendintervaltable_->has_operation())
-	|| (dsx3farendtotaltable_ !=  nullptr && dsx3farendtotaltable_->has_operation())
-	|| (dsx3fractable_ !=  nullptr && dsx3fractable_->has_operation())
-	|| (dsx3intervaltable_ !=  nullptr && dsx3intervaltable_->has_operation())
-	|| (dsx3totaltable_ !=  nullptr && dsx3totaltable_->has_operation());
+    return is_set(yfilter)
+	|| (dsx3configtable !=  nullptr && dsx3configtable->has_operation())
+	|| (dsx3currenttable !=  nullptr && dsx3currenttable->has_operation())
+	|| (dsx3farendconfigtable !=  nullptr && dsx3farendconfigtable->has_operation())
+	|| (dsx3farendcurrenttable !=  nullptr && dsx3farendcurrenttable->has_operation())
+	|| (dsx3farendintervaltable !=  nullptr && dsx3farendintervaltable->has_operation())
+	|| (dsx3farendtotaltable !=  nullptr && dsx3farendtotaltable->has_operation())
+	|| (dsx3fractable !=  nullptr && dsx3fractable->has_operation())
+	|| (dsx3intervaltable !=  nullptr && dsx3intervaltable->has_operation())
+	|| (dsx3totaltable !=  nullptr && dsx3totaltable->has_operation());
 }
 
 std::string Ds3Mib::get_segment_path() const
@@ -104,83 +106,83 @@ std::shared_ptr<Entity> Ds3Mib::get_child_by_name(const std::string & child_yang
 {
     if(child_yang_name == "dsx3ConfigTable")
     {
-        if(dsx3configtable_ == nullptr)
+        if(dsx3configtable == nullptr)
         {
-            dsx3configtable_ = std::make_shared<Ds3Mib::Dsx3Configtable>();
+            dsx3configtable = std::make_shared<Ds3Mib::Dsx3Configtable>();
         }
-        return dsx3configtable_;
+        return dsx3configtable;
     }
 
     if(child_yang_name == "dsx3CurrentTable")
     {
-        if(dsx3currenttable_ == nullptr)
+        if(dsx3currenttable == nullptr)
         {
-            dsx3currenttable_ = std::make_shared<Ds3Mib::Dsx3Currenttable>();
+            dsx3currenttable = std::make_shared<Ds3Mib::Dsx3Currenttable>();
         }
-        return dsx3currenttable_;
+        return dsx3currenttable;
     }
 
     if(child_yang_name == "dsx3FarEndConfigTable")
     {
-        if(dsx3farendconfigtable_ == nullptr)
+        if(dsx3farendconfigtable == nullptr)
         {
-            dsx3farendconfigtable_ = std::make_shared<Ds3Mib::Dsx3Farendconfigtable>();
+            dsx3farendconfigtable = std::make_shared<Ds3Mib::Dsx3Farendconfigtable>();
         }
-        return dsx3farendconfigtable_;
+        return dsx3farendconfigtable;
     }
 
     if(child_yang_name == "dsx3FarEndCurrentTable")
     {
-        if(dsx3farendcurrenttable_ == nullptr)
+        if(dsx3farendcurrenttable == nullptr)
         {
-            dsx3farendcurrenttable_ = std::make_shared<Ds3Mib::Dsx3Farendcurrenttable>();
+            dsx3farendcurrenttable = std::make_shared<Ds3Mib::Dsx3Farendcurrenttable>();
         }
-        return dsx3farendcurrenttable_;
+        return dsx3farendcurrenttable;
     }
 
     if(child_yang_name == "dsx3FarEndIntervalTable")
     {
-        if(dsx3farendintervaltable_ == nullptr)
+        if(dsx3farendintervaltable == nullptr)
         {
-            dsx3farendintervaltable_ = std::make_shared<Ds3Mib::Dsx3Farendintervaltable>();
+            dsx3farendintervaltable = std::make_shared<Ds3Mib::Dsx3Farendintervaltable>();
         }
-        return dsx3farendintervaltable_;
+        return dsx3farendintervaltable;
     }
 
     if(child_yang_name == "dsx3FarEndTotalTable")
     {
-        if(dsx3farendtotaltable_ == nullptr)
+        if(dsx3farendtotaltable == nullptr)
         {
-            dsx3farendtotaltable_ = std::make_shared<Ds3Mib::Dsx3Farendtotaltable>();
+            dsx3farendtotaltable = std::make_shared<Ds3Mib::Dsx3Farendtotaltable>();
         }
-        return dsx3farendtotaltable_;
+        return dsx3farendtotaltable;
     }
 
     if(child_yang_name == "dsx3FracTable")
     {
-        if(dsx3fractable_ == nullptr)
+        if(dsx3fractable == nullptr)
         {
-            dsx3fractable_ = std::make_shared<Ds3Mib::Dsx3Fractable>();
+            dsx3fractable = std::make_shared<Ds3Mib::Dsx3Fractable>();
         }
-        return dsx3fractable_;
+        return dsx3fractable;
     }
 
     if(child_yang_name == "dsx3IntervalTable")
     {
-        if(dsx3intervaltable_ == nullptr)
+        if(dsx3intervaltable == nullptr)
         {
-            dsx3intervaltable_ = std::make_shared<Ds3Mib::Dsx3Intervaltable>();
+            dsx3intervaltable = std::make_shared<Ds3Mib::Dsx3Intervaltable>();
         }
-        return dsx3intervaltable_;
+        return dsx3intervaltable;
     }
 
     if(child_yang_name == "dsx3TotalTable")
     {
-        if(dsx3totaltable_ == nullptr)
+        if(dsx3totaltable == nullptr)
         {
-            dsx3totaltable_ = std::make_shared<Ds3Mib::Dsx3Totaltable>();
+            dsx3totaltable = std::make_shared<Ds3Mib::Dsx3Totaltable>();
         }
-        return dsx3totaltable_;
+        return dsx3totaltable;
     }
 
     return nullptr;
@@ -189,55 +191,59 @@ std::shared_ptr<Entity> Ds3Mib::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dsx3configtable_ != nullptr)
+    if(dsx3configtable != nullptr)
     {
-        children["dsx3ConfigTable"] = dsx3configtable_;
+        children["dsx3ConfigTable"] = dsx3configtable;
     }
 
-    if(dsx3currenttable_ != nullptr)
+    if(dsx3currenttable != nullptr)
     {
-        children["dsx3CurrentTable"] = dsx3currenttable_;
+        children["dsx3CurrentTable"] = dsx3currenttable;
     }
 
-    if(dsx3farendconfigtable_ != nullptr)
+    if(dsx3farendconfigtable != nullptr)
     {
-        children["dsx3FarEndConfigTable"] = dsx3farendconfigtable_;
+        children["dsx3FarEndConfigTable"] = dsx3farendconfigtable;
     }
 
-    if(dsx3farendcurrenttable_ != nullptr)
+    if(dsx3farendcurrenttable != nullptr)
     {
-        children["dsx3FarEndCurrentTable"] = dsx3farendcurrenttable_;
+        children["dsx3FarEndCurrentTable"] = dsx3farendcurrenttable;
     }
 
-    if(dsx3farendintervaltable_ != nullptr)
+    if(dsx3farendintervaltable != nullptr)
     {
-        children["dsx3FarEndIntervalTable"] = dsx3farendintervaltable_;
+        children["dsx3FarEndIntervalTable"] = dsx3farendintervaltable;
     }
 
-    if(dsx3farendtotaltable_ != nullptr)
+    if(dsx3farendtotaltable != nullptr)
     {
-        children["dsx3FarEndTotalTable"] = dsx3farendtotaltable_;
+        children["dsx3FarEndTotalTable"] = dsx3farendtotaltable;
     }
 
-    if(dsx3fractable_ != nullptr)
+    if(dsx3fractable != nullptr)
     {
-        children["dsx3FracTable"] = dsx3fractable_;
+        children["dsx3FracTable"] = dsx3fractable;
     }
 
-    if(dsx3intervaltable_ != nullptr)
+    if(dsx3intervaltable != nullptr)
     {
-        children["dsx3IntervalTable"] = dsx3intervaltable_;
+        children["dsx3IntervalTable"] = dsx3intervaltable;
     }
 
-    if(dsx3totaltable_ != nullptr)
+    if(dsx3totaltable != nullptr)
     {
-        children["dsx3TotalTable"] = dsx3totaltable_;
+        children["dsx3TotalTable"] = dsx3totaltable;
     }
 
     return children;
 }
 
-void Ds3Mib::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ds3Mib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -261,6 +267,18 @@ augment_capabilities_function Ds3Mib::get_augment_capabilities_function() const
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Ds3Mib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Ds3Mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3ConfigTable" || name == "dsx3CurrentTable" || name == "dsx3FarEndConfigTable" || name == "dsx3FarEndCurrentTable" || name == "dsx3FarEndIntervalTable" || name == "dsx3FarEndTotalTable" || name == "dsx3FracTable" || name == "dsx3IntervalTable" || name == "dsx3TotalTable")
+        return true;
+    return false;
+}
+
 Ds3Mib::Dsx3Configtable::Dsx3Configtable()
 {
     yang_name = "dsx3ConfigTable"; yang_parent_name = "DS3-MIB";
@@ -272,9 +290,9 @@ Ds3Mib::Dsx3Configtable::~Dsx3Configtable()
 
 bool Ds3Mib::Dsx3Configtable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3configentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3configentry.size(); index++)
     {
-        if(dsx3configentry_[index]->has_data())
+        if(dsx3configentry[index]->has_data())
             return true;
     }
     return false;
@@ -282,12 +300,12 @@ bool Ds3Mib::Dsx3Configtable::has_data() const
 
 bool Ds3Mib::Dsx3Configtable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3configentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3configentry.size(); index++)
     {
-        if(dsx3configentry_[index]->has_operation())
+        if(dsx3configentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Configtable::get_segment_path() const
@@ -324,7 +342,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Configtable::get_child_by_name(const std::st
 {
     if(child_yang_name == "dsx3ConfigEntry")
     {
-        for(auto const & c : dsx3configentry_)
+        for(auto const & c : dsx3configentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -334,7 +352,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Configtable::get_child_by_name(const std::st
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Configtable::Dsx3Configentry>();
         c->parent = this;
-        dsx3configentry_.push_back(c);
+        dsx3configentry.push_back(c);
         return c;
     }
 
@@ -344,7 +362,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Configtable::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Configtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3configentry_)
+    for (auto const & c : dsx3configentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -352,8 +370,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Configtable::get_chil
     return children;
 }
 
-void Ds3Mib::Dsx3Configtable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Configtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Configtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Configtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3ConfigEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Configentry()
@@ -408,25 +437,25 @@ bool Ds3Mib::Dsx3Configtable::Dsx3Configentry::has_data() const
 
 bool Ds3Mib::Dsx3Configtable::Dsx3Configentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3lineindex.operation)
-	|| is_set(dsx3channelization.operation)
-	|| is_set(dsx3circuitidentifier.operation)
-	|| is_set(dsx3ds1forremoteloop.operation)
-	|| is_set(dsx3ifindex.operation)
-	|| is_set(dsx3invalidintervals.operation)
-	|| is_set(dsx3linecoding.operation)
-	|| is_set(dsx3linelength.operation)
-	|| is_set(dsx3linestatus.operation)
-	|| is_set(dsx3linestatuschangetrapenable.operation)
-	|| is_set(dsx3linestatuslastchange.operation)
-	|| is_set(dsx3linetype.operation)
-	|| is_set(dsx3loopbackconfig.operation)
-	|| is_set(dsx3loopbackstatus.operation)
-	|| is_set(dsx3sendcode.operation)
-	|| is_set(dsx3timeelapsed.operation)
-	|| is_set(dsx3transmitclocksource.operation)
-	|| is_set(dsx3validintervals.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3lineindex.yfilter)
+	|| ydk::is_set(dsx3channelization.yfilter)
+	|| ydk::is_set(dsx3circuitidentifier.yfilter)
+	|| ydk::is_set(dsx3ds1forremoteloop.yfilter)
+	|| ydk::is_set(dsx3ifindex.yfilter)
+	|| ydk::is_set(dsx3invalidintervals.yfilter)
+	|| ydk::is_set(dsx3linecoding.yfilter)
+	|| ydk::is_set(dsx3linelength.yfilter)
+	|| ydk::is_set(dsx3linestatus.yfilter)
+	|| ydk::is_set(dsx3linestatuschangetrapenable.yfilter)
+	|| ydk::is_set(dsx3linestatuslastchange.yfilter)
+	|| ydk::is_set(dsx3linetype.yfilter)
+	|| ydk::is_set(dsx3loopbackconfig.yfilter)
+	|| ydk::is_set(dsx3loopbackstatus.yfilter)
+	|| ydk::is_set(dsx3sendcode.yfilter)
+	|| ydk::is_set(dsx3timeelapsed.yfilter)
+	|| ydk::is_set(dsx3transmitclocksource.yfilter)
+	|| ydk::is_set(dsx3validintervals.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Configtable::Dsx3Configentry::get_segment_path() const
@@ -452,24 +481,24 @@ const EntityPath Ds3Mib::Dsx3Configtable::Dsx3Configentry::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3lineindex.is_set || is_set(dsx3lineindex.operation)) leaf_name_data.push_back(dsx3lineindex.get_name_leafdata());
-    if (dsx3channelization.is_set || is_set(dsx3channelization.operation)) leaf_name_data.push_back(dsx3channelization.get_name_leafdata());
-    if (dsx3circuitidentifier.is_set || is_set(dsx3circuitidentifier.operation)) leaf_name_data.push_back(dsx3circuitidentifier.get_name_leafdata());
-    if (dsx3ds1forremoteloop.is_set || is_set(dsx3ds1forremoteloop.operation)) leaf_name_data.push_back(dsx3ds1forremoteloop.get_name_leafdata());
-    if (dsx3ifindex.is_set || is_set(dsx3ifindex.operation)) leaf_name_data.push_back(dsx3ifindex.get_name_leafdata());
-    if (dsx3invalidintervals.is_set || is_set(dsx3invalidintervals.operation)) leaf_name_data.push_back(dsx3invalidintervals.get_name_leafdata());
-    if (dsx3linecoding.is_set || is_set(dsx3linecoding.operation)) leaf_name_data.push_back(dsx3linecoding.get_name_leafdata());
-    if (dsx3linelength.is_set || is_set(dsx3linelength.operation)) leaf_name_data.push_back(dsx3linelength.get_name_leafdata());
-    if (dsx3linestatus.is_set || is_set(dsx3linestatus.operation)) leaf_name_data.push_back(dsx3linestatus.get_name_leafdata());
-    if (dsx3linestatuschangetrapenable.is_set || is_set(dsx3linestatuschangetrapenable.operation)) leaf_name_data.push_back(dsx3linestatuschangetrapenable.get_name_leafdata());
-    if (dsx3linestatuslastchange.is_set || is_set(dsx3linestatuslastchange.operation)) leaf_name_data.push_back(dsx3linestatuslastchange.get_name_leafdata());
-    if (dsx3linetype.is_set || is_set(dsx3linetype.operation)) leaf_name_data.push_back(dsx3linetype.get_name_leafdata());
-    if (dsx3loopbackconfig.is_set || is_set(dsx3loopbackconfig.operation)) leaf_name_data.push_back(dsx3loopbackconfig.get_name_leafdata());
-    if (dsx3loopbackstatus.is_set || is_set(dsx3loopbackstatus.operation)) leaf_name_data.push_back(dsx3loopbackstatus.get_name_leafdata());
-    if (dsx3sendcode.is_set || is_set(dsx3sendcode.operation)) leaf_name_data.push_back(dsx3sendcode.get_name_leafdata());
-    if (dsx3timeelapsed.is_set || is_set(dsx3timeelapsed.operation)) leaf_name_data.push_back(dsx3timeelapsed.get_name_leafdata());
-    if (dsx3transmitclocksource.is_set || is_set(dsx3transmitclocksource.operation)) leaf_name_data.push_back(dsx3transmitclocksource.get_name_leafdata());
-    if (dsx3validintervals.is_set || is_set(dsx3validintervals.operation)) leaf_name_data.push_back(dsx3validintervals.get_name_leafdata());
+    if (dsx3lineindex.is_set || is_set(dsx3lineindex.yfilter)) leaf_name_data.push_back(dsx3lineindex.get_name_leafdata());
+    if (dsx3channelization.is_set || is_set(dsx3channelization.yfilter)) leaf_name_data.push_back(dsx3channelization.get_name_leafdata());
+    if (dsx3circuitidentifier.is_set || is_set(dsx3circuitidentifier.yfilter)) leaf_name_data.push_back(dsx3circuitidentifier.get_name_leafdata());
+    if (dsx3ds1forremoteloop.is_set || is_set(dsx3ds1forremoteloop.yfilter)) leaf_name_data.push_back(dsx3ds1forremoteloop.get_name_leafdata());
+    if (dsx3ifindex.is_set || is_set(dsx3ifindex.yfilter)) leaf_name_data.push_back(dsx3ifindex.get_name_leafdata());
+    if (dsx3invalidintervals.is_set || is_set(dsx3invalidintervals.yfilter)) leaf_name_data.push_back(dsx3invalidintervals.get_name_leafdata());
+    if (dsx3linecoding.is_set || is_set(dsx3linecoding.yfilter)) leaf_name_data.push_back(dsx3linecoding.get_name_leafdata());
+    if (dsx3linelength.is_set || is_set(dsx3linelength.yfilter)) leaf_name_data.push_back(dsx3linelength.get_name_leafdata());
+    if (dsx3linestatus.is_set || is_set(dsx3linestatus.yfilter)) leaf_name_data.push_back(dsx3linestatus.get_name_leafdata());
+    if (dsx3linestatuschangetrapenable.is_set || is_set(dsx3linestatuschangetrapenable.yfilter)) leaf_name_data.push_back(dsx3linestatuschangetrapenable.get_name_leafdata());
+    if (dsx3linestatuslastchange.is_set || is_set(dsx3linestatuslastchange.yfilter)) leaf_name_data.push_back(dsx3linestatuslastchange.get_name_leafdata());
+    if (dsx3linetype.is_set || is_set(dsx3linetype.yfilter)) leaf_name_data.push_back(dsx3linetype.get_name_leafdata());
+    if (dsx3loopbackconfig.is_set || is_set(dsx3loopbackconfig.yfilter)) leaf_name_data.push_back(dsx3loopbackconfig.get_name_leafdata());
+    if (dsx3loopbackstatus.is_set || is_set(dsx3loopbackstatus.yfilter)) leaf_name_data.push_back(dsx3loopbackstatus.get_name_leafdata());
+    if (dsx3sendcode.is_set || is_set(dsx3sendcode.yfilter)) leaf_name_data.push_back(dsx3sendcode.get_name_leafdata());
+    if (dsx3timeelapsed.is_set || is_set(dsx3timeelapsed.yfilter)) leaf_name_data.push_back(dsx3timeelapsed.get_name_leafdata());
+    if (dsx3transmitclocksource.is_set || is_set(dsx3transmitclocksource.yfilter)) leaf_name_data.push_back(dsx3transmitclocksource.get_name_leafdata());
+    if (dsx3validintervals.is_set || is_set(dsx3validintervals.yfilter)) leaf_name_data.push_back(dsx3validintervals.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -488,80 +517,199 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Configtable::Dsx3Conf
     return children;
 }
 
-void Ds3Mib::Dsx3Configtable::Dsx3Configentry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Configtable::Dsx3Configentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3LineIndex")
     {
         dsx3lineindex = value;
+        dsx3lineindex.value_namespace = name_space;
+        dsx3lineindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3Channelization")
     {
         dsx3channelization = value;
+        dsx3channelization.value_namespace = name_space;
+        dsx3channelization.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CircuitIdentifier")
     {
         dsx3circuitidentifier = value;
+        dsx3circuitidentifier.value_namespace = name_space;
+        dsx3circuitidentifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3Ds1ForRemoteLoop")
     {
         dsx3ds1forremoteloop = value;
+        dsx3ds1forremoteloop.value_namespace = name_space;
+        dsx3ds1forremoteloop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IfIndex")
     {
         dsx3ifindex = value;
+        dsx3ifindex.value_namespace = name_space;
+        dsx3ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3InvalidIntervals")
     {
         dsx3invalidintervals = value;
+        dsx3invalidintervals.value_namespace = name_space;
+        dsx3invalidintervals.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3LineCoding")
     {
         dsx3linecoding = value;
+        dsx3linecoding.value_namespace = name_space;
+        dsx3linecoding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3LineLength")
     {
         dsx3linelength = value;
+        dsx3linelength.value_namespace = name_space;
+        dsx3linelength.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3LineStatus")
     {
         dsx3linestatus = value;
+        dsx3linestatus.value_namespace = name_space;
+        dsx3linestatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3LineStatusChangeTrapEnable")
     {
         dsx3linestatuschangetrapenable = value;
+        dsx3linestatuschangetrapenable.value_namespace = name_space;
+        dsx3linestatuschangetrapenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3LineStatusLastChange")
     {
         dsx3linestatuslastchange = value;
+        dsx3linestatuslastchange.value_namespace = name_space;
+        dsx3linestatuslastchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3LineType")
     {
         dsx3linetype = value;
+        dsx3linetype.value_namespace = name_space;
+        dsx3linetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3LoopbackConfig")
     {
         dsx3loopbackconfig = value;
+        dsx3loopbackconfig.value_namespace = name_space;
+        dsx3loopbackconfig.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3LoopbackStatus")
     {
         dsx3loopbackstatus = value;
+        dsx3loopbackstatus.value_namespace = name_space;
+        dsx3loopbackstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3SendCode")
     {
         dsx3sendcode = value;
+        dsx3sendcode.value_namespace = name_space;
+        dsx3sendcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TimeElapsed")
     {
         dsx3timeelapsed = value;
+        dsx3timeelapsed.value_namespace = name_space;
+        dsx3timeelapsed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TransmitClockSource")
     {
         dsx3transmitclocksource = value;
+        dsx3transmitclocksource.value_namespace = name_space;
+        dsx3transmitclocksource.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3ValidIntervals")
     {
         dsx3validintervals = value;
+        dsx3validintervals.value_namespace = name_space;
+        dsx3validintervals.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ds3Mib::Dsx3Configtable::Dsx3Configentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3LineIndex")
+    {
+        dsx3lineindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3Channelization")
+    {
+        dsx3channelization.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CircuitIdentifier")
+    {
+        dsx3circuitidentifier.yfilter = yfilter;
+    }
+    if(value_path == "dsx3Ds1ForRemoteLoop")
+    {
+        dsx3ds1forremoteloop.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IfIndex")
+    {
+        dsx3ifindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3InvalidIntervals")
+    {
+        dsx3invalidintervals.yfilter = yfilter;
+    }
+    if(value_path == "dsx3LineCoding")
+    {
+        dsx3linecoding.yfilter = yfilter;
+    }
+    if(value_path == "dsx3LineLength")
+    {
+        dsx3linelength.yfilter = yfilter;
+    }
+    if(value_path == "dsx3LineStatus")
+    {
+        dsx3linestatus.yfilter = yfilter;
+    }
+    if(value_path == "dsx3LineStatusChangeTrapEnable")
+    {
+        dsx3linestatuschangetrapenable.yfilter = yfilter;
+    }
+    if(value_path == "dsx3LineStatusLastChange")
+    {
+        dsx3linestatuslastchange.yfilter = yfilter;
+    }
+    if(value_path == "dsx3LineType")
+    {
+        dsx3linetype.yfilter = yfilter;
+    }
+    if(value_path == "dsx3LoopbackConfig")
+    {
+        dsx3loopbackconfig.yfilter = yfilter;
+    }
+    if(value_path == "dsx3LoopbackStatus")
+    {
+        dsx3loopbackstatus.yfilter = yfilter;
+    }
+    if(value_path == "dsx3SendCode")
+    {
+        dsx3sendcode.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TimeElapsed")
+    {
+        dsx3timeelapsed.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TransmitClockSource")
+    {
+        dsx3transmitclocksource.yfilter = yfilter;
+    }
+    if(value_path == "dsx3ValidIntervals")
+    {
+        dsx3validintervals.yfilter = yfilter;
+    }
+}
+
+bool Ds3Mib::Dsx3Configtable::Dsx3Configentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3LineIndex" || name == "dsx3Channelization" || name == "dsx3CircuitIdentifier" || name == "dsx3Ds1ForRemoteLoop" || name == "dsx3IfIndex" || name == "dsx3InvalidIntervals" || name == "dsx3LineCoding" || name == "dsx3LineLength" || name == "dsx3LineStatus" || name == "dsx3LineStatusChangeTrapEnable" || name == "dsx3LineStatusLastChange" || name == "dsx3LineType" || name == "dsx3LoopbackConfig" || name == "dsx3LoopbackStatus" || name == "dsx3SendCode" || name == "dsx3TimeElapsed" || name == "dsx3TransmitClockSource" || name == "dsx3ValidIntervals")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Currenttable::Dsx3Currenttable()
@@ -575,9 +723,9 @@ Ds3Mib::Dsx3Currenttable::~Dsx3Currenttable()
 
 bool Ds3Mib::Dsx3Currenttable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3currententry_.size(); index++)
+    for (std::size_t index=0; index<dsx3currententry.size(); index++)
     {
-        if(dsx3currententry_[index]->has_data())
+        if(dsx3currententry[index]->has_data())
             return true;
     }
     return false;
@@ -585,12 +733,12 @@ bool Ds3Mib::Dsx3Currenttable::has_data() const
 
 bool Ds3Mib::Dsx3Currenttable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3currententry_.size(); index++)
+    for (std::size_t index=0; index<dsx3currententry.size(); index++)
     {
-        if(dsx3currententry_[index]->has_operation())
+        if(dsx3currententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Currenttable::get_segment_path() const
@@ -627,7 +775,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Currenttable::get_child_by_name(const std::s
 {
     if(child_yang_name == "dsx3CurrentEntry")
     {
-        for(auto const & c : dsx3currententry_)
+        for(auto const & c : dsx3currententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -637,7 +785,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Currenttable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Currenttable::Dsx3Currententry>();
         c->parent = this;
-        dsx3currententry_.push_back(c);
+        dsx3currententry.push_back(c);
         return c;
     }
 
@@ -647,7 +795,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Currenttable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Currenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3currententry_)
+    for (auto const & c : dsx3currententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -655,8 +803,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Currenttable::get_chi
     return children;
 }
 
-void Ds3Mib::Dsx3Currenttable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Currenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Currenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Currenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3CurrentEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Currenttable::Dsx3Currententry::Dsx3Currententry()
@@ -697,18 +856,18 @@ bool Ds3Mib::Dsx3Currenttable::Dsx3Currententry::has_data() const
 
 bool Ds3Mib::Dsx3Currenttable::Dsx3Currententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3currentindex.operation)
-	|| is_set(dsx3currentccvs.operation)
-	|| is_set(dsx3currentcess.operation)
-	|| is_set(dsx3currentcsess.operation)
-	|| is_set(dsx3currentlcvs.operation)
-	|| is_set(dsx3currentless.operation)
-	|| is_set(dsx3currentpcvs.operation)
-	|| is_set(dsx3currentpess.operation)
-	|| is_set(dsx3currentpsess.operation)
-	|| is_set(dsx3currentsefss.operation)
-	|| is_set(dsx3currentuass.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3currentindex.yfilter)
+	|| ydk::is_set(dsx3currentccvs.yfilter)
+	|| ydk::is_set(dsx3currentcess.yfilter)
+	|| ydk::is_set(dsx3currentcsess.yfilter)
+	|| ydk::is_set(dsx3currentlcvs.yfilter)
+	|| ydk::is_set(dsx3currentless.yfilter)
+	|| ydk::is_set(dsx3currentpcvs.yfilter)
+	|| ydk::is_set(dsx3currentpess.yfilter)
+	|| ydk::is_set(dsx3currentpsess.yfilter)
+	|| ydk::is_set(dsx3currentsefss.yfilter)
+	|| ydk::is_set(dsx3currentuass.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Currenttable::Dsx3Currententry::get_segment_path() const
@@ -734,17 +893,17 @@ const EntityPath Ds3Mib::Dsx3Currenttable::Dsx3Currententry::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3currentindex.is_set || is_set(dsx3currentindex.operation)) leaf_name_data.push_back(dsx3currentindex.get_name_leafdata());
-    if (dsx3currentccvs.is_set || is_set(dsx3currentccvs.operation)) leaf_name_data.push_back(dsx3currentccvs.get_name_leafdata());
-    if (dsx3currentcess.is_set || is_set(dsx3currentcess.operation)) leaf_name_data.push_back(dsx3currentcess.get_name_leafdata());
-    if (dsx3currentcsess.is_set || is_set(dsx3currentcsess.operation)) leaf_name_data.push_back(dsx3currentcsess.get_name_leafdata());
-    if (dsx3currentlcvs.is_set || is_set(dsx3currentlcvs.operation)) leaf_name_data.push_back(dsx3currentlcvs.get_name_leafdata());
-    if (dsx3currentless.is_set || is_set(dsx3currentless.operation)) leaf_name_data.push_back(dsx3currentless.get_name_leafdata());
-    if (dsx3currentpcvs.is_set || is_set(dsx3currentpcvs.operation)) leaf_name_data.push_back(dsx3currentpcvs.get_name_leafdata());
-    if (dsx3currentpess.is_set || is_set(dsx3currentpess.operation)) leaf_name_data.push_back(dsx3currentpess.get_name_leafdata());
-    if (dsx3currentpsess.is_set || is_set(dsx3currentpsess.operation)) leaf_name_data.push_back(dsx3currentpsess.get_name_leafdata());
-    if (dsx3currentsefss.is_set || is_set(dsx3currentsefss.operation)) leaf_name_data.push_back(dsx3currentsefss.get_name_leafdata());
-    if (dsx3currentuass.is_set || is_set(dsx3currentuass.operation)) leaf_name_data.push_back(dsx3currentuass.get_name_leafdata());
+    if (dsx3currentindex.is_set || is_set(dsx3currentindex.yfilter)) leaf_name_data.push_back(dsx3currentindex.get_name_leafdata());
+    if (dsx3currentccvs.is_set || is_set(dsx3currentccvs.yfilter)) leaf_name_data.push_back(dsx3currentccvs.get_name_leafdata());
+    if (dsx3currentcess.is_set || is_set(dsx3currentcess.yfilter)) leaf_name_data.push_back(dsx3currentcess.get_name_leafdata());
+    if (dsx3currentcsess.is_set || is_set(dsx3currentcsess.yfilter)) leaf_name_data.push_back(dsx3currentcsess.get_name_leafdata());
+    if (dsx3currentlcvs.is_set || is_set(dsx3currentlcvs.yfilter)) leaf_name_data.push_back(dsx3currentlcvs.get_name_leafdata());
+    if (dsx3currentless.is_set || is_set(dsx3currentless.yfilter)) leaf_name_data.push_back(dsx3currentless.get_name_leafdata());
+    if (dsx3currentpcvs.is_set || is_set(dsx3currentpcvs.yfilter)) leaf_name_data.push_back(dsx3currentpcvs.get_name_leafdata());
+    if (dsx3currentpess.is_set || is_set(dsx3currentpess.yfilter)) leaf_name_data.push_back(dsx3currentpess.get_name_leafdata());
+    if (dsx3currentpsess.is_set || is_set(dsx3currentpsess.yfilter)) leaf_name_data.push_back(dsx3currentpsess.get_name_leafdata());
+    if (dsx3currentsefss.is_set || is_set(dsx3currentsefss.yfilter)) leaf_name_data.push_back(dsx3currentsefss.get_name_leafdata());
+    if (dsx3currentuass.is_set || is_set(dsx3currentuass.yfilter)) leaf_name_data.push_back(dsx3currentuass.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -763,52 +922,129 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Currenttable::Dsx3Cur
     return children;
 }
 
-void Ds3Mib::Dsx3Currenttable::Dsx3Currententry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Currenttable::Dsx3Currententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3CurrentIndex")
     {
         dsx3currentindex = value;
+        dsx3currentindex.value_namespace = name_space;
+        dsx3currentindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentCCVs")
     {
         dsx3currentccvs = value;
+        dsx3currentccvs.value_namespace = name_space;
+        dsx3currentccvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentCESs")
     {
         dsx3currentcess = value;
+        dsx3currentcess.value_namespace = name_space;
+        dsx3currentcess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentCSESs")
     {
         dsx3currentcsess = value;
+        dsx3currentcsess.value_namespace = name_space;
+        dsx3currentcsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentLCVs")
     {
         dsx3currentlcvs = value;
+        dsx3currentlcvs.value_namespace = name_space;
+        dsx3currentlcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentLESs")
     {
         dsx3currentless = value;
+        dsx3currentless.value_namespace = name_space;
+        dsx3currentless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentPCVs")
     {
         dsx3currentpcvs = value;
+        dsx3currentpcvs.value_namespace = name_space;
+        dsx3currentpcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentPESs")
     {
         dsx3currentpess = value;
+        dsx3currentpess.value_namespace = name_space;
+        dsx3currentpess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentPSESs")
     {
         dsx3currentpsess = value;
+        dsx3currentpsess.value_namespace = name_space;
+        dsx3currentpsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentSEFSs")
     {
         dsx3currentsefss = value;
+        dsx3currentsefss.value_namespace = name_space;
+        dsx3currentsefss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3CurrentUASs")
     {
         dsx3currentuass = value;
+        dsx3currentuass.value_namespace = name_space;
+        dsx3currentuass.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ds3Mib::Dsx3Currenttable::Dsx3Currententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3CurrentIndex")
+    {
+        dsx3currentindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentCCVs")
+    {
+        dsx3currentccvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentCESs")
+    {
+        dsx3currentcess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentCSESs")
+    {
+        dsx3currentcsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentLCVs")
+    {
+        dsx3currentlcvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentLESs")
+    {
+        dsx3currentless.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentPCVs")
+    {
+        dsx3currentpcvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentPESs")
+    {
+        dsx3currentpess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentPSESs")
+    {
+        dsx3currentpsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentSEFSs")
+    {
+        dsx3currentsefss.yfilter = yfilter;
+    }
+    if(value_path == "dsx3CurrentUASs")
+    {
+        dsx3currentuass.yfilter = yfilter;
+    }
+}
+
+bool Ds3Mib::Dsx3Currenttable::Dsx3Currententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3CurrentIndex" || name == "dsx3CurrentCCVs" || name == "dsx3CurrentCESs" || name == "dsx3CurrentCSESs" || name == "dsx3CurrentLCVs" || name == "dsx3CurrentLESs" || name == "dsx3CurrentPCVs" || name == "dsx3CurrentPESs" || name == "dsx3CurrentPSESs" || name == "dsx3CurrentSEFSs" || name == "dsx3CurrentUASs")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Intervaltable::Dsx3Intervaltable()
@@ -822,9 +1058,9 @@ Ds3Mib::Dsx3Intervaltable::~Dsx3Intervaltable()
 
 bool Ds3Mib::Dsx3Intervaltable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3intervalentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3intervalentry.size(); index++)
     {
-        if(dsx3intervalentry_[index]->has_data())
+        if(dsx3intervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -832,12 +1068,12 @@ bool Ds3Mib::Dsx3Intervaltable::has_data() const
 
 bool Ds3Mib::Dsx3Intervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3intervalentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3intervalentry.size(); index++)
     {
-        if(dsx3intervalentry_[index]->has_operation())
+        if(dsx3intervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Intervaltable::get_segment_path() const
@@ -874,7 +1110,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Intervaltable::get_child_by_name(const std::
 {
     if(child_yang_name == "dsx3IntervalEntry")
     {
-        for(auto const & c : dsx3intervalentry_)
+        for(auto const & c : dsx3intervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -884,7 +1120,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Intervaltable::get_child_by_name(const std::
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry>();
         c->parent = this;
-        dsx3intervalentry_.push_back(c);
+        dsx3intervalentry.push_back(c);
         return c;
     }
 
@@ -894,7 +1130,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Intervaltable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Intervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3intervalentry_)
+    for (auto const & c : dsx3intervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -902,8 +1138,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Intervaltable::get_ch
     return children;
 }
 
-void Ds3Mib::Dsx3Intervaltable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Intervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Intervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Intervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3IntervalEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::Dsx3Intervalentry()
@@ -948,20 +1195,20 @@ bool Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::has_data() const
 
 bool Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3intervalindex.operation)
-	|| is_set(dsx3intervalnumber.operation)
-	|| is_set(dsx3intervalccvs.operation)
-	|| is_set(dsx3intervalcess.operation)
-	|| is_set(dsx3intervalcsess.operation)
-	|| is_set(dsx3intervallcvs.operation)
-	|| is_set(dsx3intervalless.operation)
-	|| is_set(dsx3intervalpcvs.operation)
-	|| is_set(dsx3intervalpess.operation)
-	|| is_set(dsx3intervalpsess.operation)
-	|| is_set(dsx3intervalsefss.operation)
-	|| is_set(dsx3intervaluass.operation)
-	|| is_set(dsx3intervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3intervalindex.yfilter)
+	|| ydk::is_set(dsx3intervalnumber.yfilter)
+	|| ydk::is_set(dsx3intervalccvs.yfilter)
+	|| ydk::is_set(dsx3intervalcess.yfilter)
+	|| ydk::is_set(dsx3intervalcsess.yfilter)
+	|| ydk::is_set(dsx3intervallcvs.yfilter)
+	|| ydk::is_set(dsx3intervalless.yfilter)
+	|| ydk::is_set(dsx3intervalpcvs.yfilter)
+	|| ydk::is_set(dsx3intervalpess.yfilter)
+	|| ydk::is_set(dsx3intervalpsess.yfilter)
+	|| ydk::is_set(dsx3intervalsefss.yfilter)
+	|| ydk::is_set(dsx3intervaluass.yfilter)
+	|| ydk::is_set(dsx3intervalvaliddata.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::get_segment_path() const
@@ -987,19 +1234,19 @@ const EntityPath Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3intervalindex.is_set || is_set(dsx3intervalindex.operation)) leaf_name_data.push_back(dsx3intervalindex.get_name_leafdata());
-    if (dsx3intervalnumber.is_set || is_set(dsx3intervalnumber.operation)) leaf_name_data.push_back(dsx3intervalnumber.get_name_leafdata());
-    if (dsx3intervalccvs.is_set || is_set(dsx3intervalccvs.operation)) leaf_name_data.push_back(dsx3intervalccvs.get_name_leafdata());
-    if (dsx3intervalcess.is_set || is_set(dsx3intervalcess.operation)) leaf_name_data.push_back(dsx3intervalcess.get_name_leafdata());
-    if (dsx3intervalcsess.is_set || is_set(dsx3intervalcsess.operation)) leaf_name_data.push_back(dsx3intervalcsess.get_name_leafdata());
-    if (dsx3intervallcvs.is_set || is_set(dsx3intervallcvs.operation)) leaf_name_data.push_back(dsx3intervallcvs.get_name_leafdata());
-    if (dsx3intervalless.is_set || is_set(dsx3intervalless.operation)) leaf_name_data.push_back(dsx3intervalless.get_name_leafdata());
-    if (dsx3intervalpcvs.is_set || is_set(dsx3intervalpcvs.operation)) leaf_name_data.push_back(dsx3intervalpcvs.get_name_leafdata());
-    if (dsx3intervalpess.is_set || is_set(dsx3intervalpess.operation)) leaf_name_data.push_back(dsx3intervalpess.get_name_leafdata());
-    if (dsx3intervalpsess.is_set || is_set(dsx3intervalpsess.operation)) leaf_name_data.push_back(dsx3intervalpsess.get_name_leafdata());
-    if (dsx3intervalsefss.is_set || is_set(dsx3intervalsefss.operation)) leaf_name_data.push_back(dsx3intervalsefss.get_name_leafdata());
-    if (dsx3intervaluass.is_set || is_set(dsx3intervaluass.operation)) leaf_name_data.push_back(dsx3intervaluass.get_name_leafdata());
-    if (dsx3intervalvaliddata.is_set || is_set(dsx3intervalvaliddata.operation)) leaf_name_data.push_back(dsx3intervalvaliddata.get_name_leafdata());
+    if (dsx3intervalindex.is_set || is_set(dsx3intervalindex.yfilter)) leaf_name_data.push_back(dsx3intervalindex.get_name_leafdata());
+    if (dsx3intervalnumber.is_set || is_set(dsx3intervalnumber.yfilter)) leaf_name_data.push_back(dsx3intervalnumber.get_name_leafdata());
+    if (dsx3intervalccvs.is_set || is_set(dsx3intervalccvs.yfilter)) leaf_name_data.push_back(dsx3intervalccvs.get_name_leafdata());
+    if (dsx3intervalcess.is_set || is_set(dsx3intervalcess.yfilter)) leaf_name_data.push_back(dsx3intervalcess.get_name_leafdata());
+    if (dsx3intervalcsess.is_set || is_set(dsx3intervalcsess.yfilter)) leaf_name_data.push_back(dsx3intervalcsess.get_name_leafdata());
+    if (dsx3intervallcvs.is_set || is_set(dsx3intervallcvs.yfilter)) leaf_name_data.push_back(dsx3intervallcvs.get_name_leafdata());
+    if (dsx3intervalless.is_set || is_set(dsx3intervalless.yfilter)) leaf_name_data.push_back(dsx3intervalless.get_name_leafdata());
+    if (dsx3intervalpcvs.is_set || is_set(dsx3intervalpcvs.yfilter)) leaf_name_data.push_back(dsx3intervalpcvs.get_name_leafdata());
+    if (dsx3intervalpess.is_set || is_set(dsx3intervalpess.yfilter)) leaf_name_data.push_back(dsx3intervalpess.get_name_leafdata());
+    if (dsx3intervalpsess.is_set || is_set(dsx3intervalpsess.yfilter)) leaf_name_data.push_back(dsx3intervalpsess.get_name_leafdata());
+    if (dsx3intervalsefss.is_set || is_set(dsx3intervalsefss.yfilter)) leaf_name_data.push_back(dsx3intervalsefss.get_name_leafdata());
+    if (dsx3intervaluass.is_set || is_set(dsx3intervaluass.yfilter)) leaf_name_data.push_back(dsx3intervaluass.get_name_leafdata());
+    if (dsx3intervalvaliddata.is_set || is_set(dsx3intervalvaliddata.yfilter)) leaf_name_data.push_back(dsx3intervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1018,60 +1265,149 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Intervaltable::Dsx3In
     return children;
 }
 
-void Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3IntervalIndex")
     {
         dsx3intervalindex = value;
+        dsx3intervalindex.value_namespace = name_space;
+        dsx3intervalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalNumber")
     {
         dsx3intervalnumber = value;
+        dsx3intervalnumber.value_namespace = name_space;
+        dsx3intervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalCCVs")
     {
         dsx3intervalccvs = value;
+        dsx3intervalccvs.value_namespace = name_space;
+        dsx3intervalccvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalCESs")
     {
         dsx3intervalcess = value;
+        dsx3intervalcess.value_namespace = name_space;
+        dsx3intervalcess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalCSESs")
     {
         dsx3intervalcsess = value;
+        dsx3intervalcsess.value_namespace = name_space;
+        dsx3intervalcsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalLCVs")
     {
         dsx3intervallcvs = value;
+        dsx3intervallcvs.value_namespace = name_space;
+        dsx3intervallcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalLESs")
     {
         dsx3intervalless = value;
+        dsx3intervalless.value_namespace = name_space;
+        dsx3intervalless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalPCVs")
     {
         dsx3intervalpcvs = value;
+        dsx3intervalpcvs.value_namespace = name_space;
+        dsx3intervalpcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalPESs")
     {
         dsx3intervalpess = value;
+        dsx3intervalpess.value_namespace = name_space;
+        dsx3intervalpess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalPSESs")
     {
         dsx3intervalpsess = value;
+        dsx3intervalpsess.value_namespace = name_space;
+        dsx3intervalpsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalSEFSs")
     {
         dsx3intervalsefss = value;
+        dsx3intervalsefss.value_namespace = name_space;
+        dsx3intervalsefss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalUASs")
     {
         dsx3intervaluass = value;
+        dsx3intervaluass.value_namespace = name_space;
+        dsx3intervaluass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3IntervalValidData")
     {
         dsx3intervalvaliddata = value;
+        dsx3intervalvaliddata.value_namespace = name_space;
+        dsx3intervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3IntervalIndex")
+    {
+        dsx3intervalindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalNumber")
+    {
+        dsx3intervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalCCVs")
+    {
+        dsx3intervalccvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalCESs")
+    {
+        dsx3intervalcess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalCSESs")
+    {
+        dsx3intervalcsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalLCVs")
+    {
+        dsx3intervallcvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalLESs")
+    {
+        dsx3intervalless.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalPCVs")
+    {
+        dsx3intervalpcvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalPESs")
+    {
+        dsx3intervalpess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalPSESs")
+    {
+        dsx3intervalpsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalSEFSs")
+    {
+        dsx3intervalsefss.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalUASs")
+    {
+        dsx3intervaluass.yfilter = yfilter;
+    }
+    if(value_path == "dsx3IntervalValidData")
+    {
+        dsx3intervalvaliddata.yfilter = yfilter;
+    }
+}
+
+bool Ds3Mib::Dsx3Intervaltable::Dsx3Intervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3IntervalIndex" || name == "dsx3IntervalNumber" || name == "dsx3IntervalCCVs" || name == "dsx3IntervalCESs" || name == "dsx3IntervalCSESs" || name == "dsx3IntervalLCVs" || name == "dsx3IntervalLESs" || name == "dsx3IntervalPCVs" || name == "dsx3IntervalPESs" || name == "dsx3IntervalPSESs" || name == "dsx3IntervalSEFSs" || name == "dsx3IntervalUASs" || name == "dsx3IntervalValidData")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Totaltable::Dsx3Totaltable()
@@ -1085,9 +1421,9 @@ Ds3Mib::Dsx3Totaltable::~Dsx3Totaltable()
 
 bool Ds3Mib::Dsx3Totaltable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3totalentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3totalentry.size(); index++)
     {
-        if(dsx3totalentry_[index]->has_data())
+        if(dsx3totalentry[index]->has_data())
             return true;
     }
     return false;
@@ -1095,12 +1431,12 @@ bool Ds3Mib::Dsx3Totaltable::has_data() const
 
 bool Ds3Mib::Dsx3Totaltable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3totalentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3totalentry.size(); index++)
     {
-        if(dsx3totalentry_[index]->has_operation())
+        if(dsx3totalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Totaltable::get_segment_path() const
@@ -1137,7 +1473,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Totaltable::get_child_by_name(const std::str
 {
     if(child_yang_name == "dsx3TotalEntry")
     {
-        for(auto const & c : dsx3totalentry_)
+        for(auto const & c : dsx3totalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1147,7 +1483,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Totaltable::get_child_by_name(const std::str
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Totaltable::Dsx3Totalentry>();
         c->parent = this;
-        dsx3totalentry_.push_back(c);
+        dsx3totalentry.push_back(c);
         return c;
     }
 
@@ -1157,7 +1493,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Totaltable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Totaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3totalentry_)
+    for (auto const & c : dsx3totalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1165,8 +1501,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Totaltable::get_child
     return children;
 }
 
-void Ds3Mib::Dsx3Totaltable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Totaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Totaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Totaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3TotalEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::Dsx3Totalentry()
@@ -1207,18 +1554,18 @@ bool Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::has_data() const
 
 bool Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3totalindex.operation)
-	|| is_set(dsx3totalccvs.operation)
-	|| is_set(dsx3totalcess.operation)
-	|| is_set(dsx3totalcsess.operation)
-	|| is_set(dsx3totallcvs.operation)
-	|| is_set(dsx3totalless.operation)
-	|| is_set(dsx3totalpcvs.operation)
-	|| is_set(dsx3totalpess.operation)
-	|| is_set(dsx3totalpsess.operation)
-	|| is_set(dsx3totalsefss.operation)
-	|| is_set(dsx3totaluass.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3totalindex.yfilter)
+	|| ydk::is_set(dsx3totalccvs.yfilter)
+	|| ydk::is_set(dsx3totalcess.yfilter)
+	|| ydk::is_set(dsx3totalcsess.yfilter)
+	|| ydk::is_set(dsx3totallcvs.yfilter)
+	|| ydk::is_set(dsx3totalless.yfilter)
+	|| ydk::is_set(dsx3totalpcvs.yfilter)
+	|| ydk::is_set(dsx3totalpess.yfilter)
+	|| ydk::is_set(dsx3totalpsess.yfilter)
+	|| ydk::is_set(dsx3totalsefss.yfilter)
+	|| ydk::is_set(dsx3totaluass.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::get_segment_path() const
@@ -1244,17 +1591,17 @@ const EntityPath Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3totalindex.is_set || is_set(dsx3totalindex.operation)) leaf_name_data.push_back(dsx3totalindex.get_name_leafdata());
-    if (dsx3totalccvs.is_set || is_set(dsx3totalccvs.operation)) leaf_name_data.push_back(dsx3totalccvs.get_name_leafdata());
-    if (dsx3totalcess.is_set || is_set(dsx3totalcess.operation)) leaf_name_data.push_back(dsx3totalcess.get_name_leafdata());
-    if (dsx3totalcsess.is_set || is_set(dsx3totalcsess.operation)) leaf_name_data.push_back(dsx3totalcsess.get_name_leafdata());
-    if (dsx3totallcvs.is_set || is_set(dsx3totallcvs.operation)) leaf_name_data.push_back(dsx3totallcvs.get_name_leafdata());
-    if (dsx3totalless.is_set || is_set(dsx3totalless.operation)) leaf_name_data.push_back(dsx3totalless.get_name_leafdata());
-    if (dsx3totalpcvs.is_set || is_set(dsx3totalpcvs.operation)) leaf_name_data.push_back(dsx3totalpcvs.get_name_leafdata());
-    if (dsx3totalpess.is_set || is_set(dsx3totalpess.operation)) leaf_name_data.push_back(dsx3totalpess.get_name_leafdata());
-    if (dsx3totalpsess.is_set || is_set(dsx3totalpsess.operation)) leaf_name_data.push_back(dsx3totalpsess.get_name_leafdata());
-    if (dsx3totalsefss.is_set || is_set(dsx3totalsefss.operation)) leaf_name_data.push_back(dsx3totalsefss.get_name_leafdata());
-    if (dsx3totaluass.is_set || is_set(dsx3totaluass.operation)) leaf_name_data.push_back(dsx3totaluass.get_name_leafdata());
+    if (dsx3totalindex.is_set || is_set(dsx3totalindex.yfilter)) leaf_name_data.push_back(dsx3totalindex.get_name_leafdata());
+    if (dsx3totalccvs.is_set || is_set(dsx3totalccvs.yfilter)) leaf_name_data.push_back(dsx3totalccvs.get_name_leafdata());
+    if (dsx3totalcess.is_set || is_set(dsx3totalcess.yfilter)) leaf_name_data.push_back(dsx3totalcess.get_name_leafdata());
+    if (dsx3totalcsess.is_set || is_set(dsx3totalcsess.yfilter)) leaf_name_data.push_back(dsx3totalcsess.get_name_leafdata());
+    if (dsx3totallcvs.is_set || is_set(dsx3totallcvs.yfilter)) leaf_name_data.push_back(dsx3totallcvs.get_name_leafdata());
+    if (dsx3totalless.is_set || is_set(dsx3totalless.yfilter)) leaf_name_data.push_back(dsx3totalless.get_name_leafdata());
+    if (dsx3totalpcvs.is_set || is_set(dsx3totalpcvs.yfilter)) leaf_name_data.push_back(dsx3totalpcvs.get_name_leafdata());
+    if (dsx3totalpess.is_set || is_set(dsx3totalpess.yfilter)) leaf_name_data.push_back(dsx3totalpess.get_name_leafdata());
+    if (dsx3totalpsess.is_set || is_set(dsx3totalpsess.yfilter)) leaf_name_data.push_back(dsx3totalpsess.get_name_leafdata());
+    if (dsx3totalsefss.is_set || is_set(dsx3totalsefss.yfilter)) leaf_name_data.push_back(dsx3totalsefss.get_name_leafdata());
+    if (dsx3totaluass.is_set || is_set(dsx3totaluass.yfilter)) leaf_name_data.push_back(dsx3totaluass.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1273,52 +1620,129 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Totaltable::Dsx3Total
     return children;
 }
 
-void Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3TotalIndex")
     {
         dsx3totalindex = value;
+        dsx3totalindex.value_namespace = name_space;
+        dsx3totalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalCCVs")
     {
         dsx3totalccvs = value;
+        dsx3totalccvs.value_namespace = name_space;
+        dsx3totalccvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalCESs")
     {
         dsx3totalcess = value;
+        dsx3totalcess.value_namespace = name_space;
+        dsx3totalcess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalCSESs")
     {
         dsx3totalcsess = value;
+        dsx3totalcsess.value_namespace = name_space;
+        dsx3totalcsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalLCVs")
     {
         dsx3totallcvs = value;
+        dsx3totallcvs.value_namespace = name_space;
+        dsx3totallcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalLESs")
     {
         dsx3totalless = value;
+        dsx3totalless.value_namespace = name_space;
+        dsx3totalless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalPCVs")
     {
         dsx3totalpcvs = value;
+        dsx3totalpcvs.value_namespace = name_space;
+        dsx3totalpcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalPESs")
     {
         dsx3totalpess = value;
+        dsx3totalpess.value_namespace = name_space;
+        dsx3totalpess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalPSESs")
     {
         dsx3totalpsess = value;
+        dsx3totalpsess.value_namespace = name_space;
+        dsx3totalpsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalSEFSs")
     {
         dsx3totalsefss = value;
+        dsx3totalsefss.value_namespace = name_space;
+        dsx3totalsefss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3TotalUASs")
     {
         dsx3totaluass = value;
+        dsx3totaluass.value_namespace = name_space;
+        dsx3totaluass.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3TotalIndex")
+    {
+        dsx3totalindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalCCVs")
+    {
+        dsx3totalccvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalCESs")
+    {
+        dsx3totalcess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalCSESs")
+    {
+        dsx3totalcsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalLCVs")
+    {
+        dsx3totallcvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalLESs")
+    {
+        dsx3totalless.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalPCVs")
+    {
+        dsx3totalpcvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalPESs")
+    {
+        dsx3totalpess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalPSESs")
+    {
+        dsx3totalpsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalSEFSs")
+    {
+        dsx3totalsefss.yfilter = yfilter;
+    }
+    if(value_path == "dsx3TotalUASs")
+    {
+        dsx3totaluass.yfilter = yfilter;
+    }
+}
+
+bool Ds3Mib::Dsx3Totaltable::Dsx3Totalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3TotalIndex" || name == "dsx3TotalCCVs" || name == "dsx3TotalCESs" || name == "dsx3TotalCSESs" || name == "dsx3TotalLCVs" || name == "dsx3TotalLESs" || name == "dsx3TotalPCVs" || name == "dsx3TotalPESs" || name == "dsx3TotalPSESs" || name == "dsx3TotalSEFSs" || name == "dsx3TotalUASs")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigtable()
@@ -1332,9 +1756,9 @@ Ds3Mib::Dsx3Farendconfigtable::~Dsx3Farendconfigtable()
 
 bool Ds3Mib::Dsx3Farendconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3farendconfigentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3farendconfigentry.size(); index++)
     {
-        if(dsx3farendconfigentry_[index]->has_data())
+        if(dsx3farendconfigentry[index]->has_data())
             return true;
     }
     return false;
@@ -1342,12 +1766,12 @@ bool Ds3Mib::Dsx3Farendconfigtable::has_data() const
 
 bool Ds3Mib::Dsx3Farendconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3farendconfigentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3farendconfigentry.size(); index++)
     {
-        if(dsx3farendconfigentry_[index]->has_operation())
+        if(dsx3farendconfigentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Farendconfigtable::get_segment_path() const
@@ -1384,7 +1808,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendconfigtable::get_child_by_name(const s
 {
     if(child_yang_name == "dsx3FarEndConfigEntry")
     {
-        for(auto const & c : dsx3farendconfigentry_)
+        for(auto const & c : dsx3farendconfigentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1394,7 +1818,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendconfigtable::get_child_by_name(const s
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry>();
         c->parent = this;
-        dsx3farendconfigentry_.push_back(c);
+        dsx3farendconfigentry.push_back(c);
         return c;
     }
 
@@ -1404,7 +1828,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendconfigtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3farendconfigentry_)
+    for (auto const & c : dsx3farendconfigentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1412,8 +1836,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendconfigtable::ge
     return children;
 }
 
-void Ds3Mib::Dsx3Farendconfigtable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Farendconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Farendconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Farendconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FarEndConfigEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::Dsx3Farendconfigentry()
@@ -1444,13 +1879,13 @@ bool Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::has_data() const
 
 bool Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3farendlineindex.operation)
-	|| is_set(dsx3farendequipcode.operation)
-	|| is_set(dsx3farendfacilityidcode.operation)
-	|| is_set(dsx3farendframeidcode.operation)
-	|| is_set(dsx3farendlocationidcode.operation)
-	|| is_set(dsx3farendunitcode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3farendlineindex.yfilter)
+	|| ydk::is_set(dsx3farendequipcode.yfilter)
+	|| ydk::is_set(dsx3farendfacilityidcode.yfilter)
+	|| ydk::is_set(dsx3farendframeidcode.yfilter)
+	|| ydk::is_set(dsx3farendlocationidcode.yfilter)
+	|| ydk::is_set(dsx3farendunitcode.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::get_segment_path() const
@@ -1476,12 +1911,12 @@ const EntityPath Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3farendlineindex.is_set || is_set(dsx3farendlineindex.operation)) leaf_name_data.push_back(dsx3farendlineindex.get_name_leafdata());
-    if (dsx3farendequipcode.is_set || is_set(dsx3farendequipcode.operation)) leaf_name_data.push_back(dsx3farendequipcode.get_name_leafdata());
-    if (dsx3farendfacilityidcode.is_set || is_set(dsx3farendfacilityidcode.operation)) leaf_name_data.push_back(dsx3farendfacilityidcode.get_name_leafdata());
-    if (dsx3farendframeidcode.is_set || is_set(dsx3farendframeidcode.operation)) leaf_name_data.push_back(dsx3farendframeidcode.get_name_leafdata());
-    if (dsx3farendlocationidcode.is_set || is_set(dsx3farendlocationidcode.operation)) leaf_name_data.push_back(dsx3farendlocationidcode.get_name_leafdata());
-    if (dsx3farendunitcode.is_set || is_set(dsx3farendunitcode.operation)) leaf_name_data.push_back(dsx3farendunitcode.get_name_leafdata());
+    if (dsx3farendlineindex.is_set || is_set(dsx3farendlineindex.yfilter)) leaf_name_data.push_back(dsx3farendlineindex.get_name_leafdata());
+    if (dsx3farendequipcode.is_set || is_set(dsx3farendequipcode.yfilter)) leaf_name_data.push_back(dsx3farendequipcode.get_name_leafdata());
+    if (dsx3farendfacilityidcode.is_set || is_set(dsx3farendfacilityidcode.yfilter)) leaf_name_data.push_back(dsx3farendfacilityidcode.get_name_leafdata());
+    if (dsx3farendframeidcode.is_set || is_set(dsx3farendframeidcode.yfilter)) leaf_name_data.push_back(dsx3farendframeidcode.get_name_leafdata());
+    if (dsx3farendlocationidcode.is_set || is_set(dsx3farendlocationidcode.yfilter)) leaf_name_data.push_back(dsx3farendlocationidcode.get_name_leafdata());
+    if (dsx3farendunitcode.is_set || is_set(dsx3farendunitcode.yfilter)) leaf_name_data.push_back(dsx3farendunitcode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1500,32 +1935,79 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendconfigtable::Ds
     return children;
 }
 
-void Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3FarEndLineIndex")
     {
         dsx3farendlineindex = value;
+        dsx3farendlineindex.value_namespace = name_space;
+        dsx3farendlineindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndEquipCode")
     {
         dsx3farendequipcode = value;
+        dsx3farendequipcode.value_namespace = name_space;
+        dsx3farendequipcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndFacilityIDCode")
     {
         dsx3farendfacilityidcode = value;
+        dsx3farendfacilityidcode.value_namespace = name_space;
+        dsx3farendfacilityidcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndFrameIDCode")
     {
         dsx3farendframeidcode = value;
+        dsx3farendframeidcode.value_namespace = name_space;
+        dsx3farendframeidcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndLocationIDCode")
     {
         dsx3farendlocationidcode = value;
+        dsx3farendlocationidcode.value_namespace = name_space;
+        dsx3farendlocationidcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndUnitCode")
     {
         dsx3farendunitcode = value;
+        dsx3farendunitcode.value_namespace = name_space;
+        dsx3farendunitcode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3FarEndLineIndex")
+    {
+        dsx3farendlineindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndEquipCode")
+    {
+        dsx3farendequipcode.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndFacilityIDCode")
+    {
+        dsx3farendfacilityidcode.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndFrameIDCode")
+    {
+        dsx3farendframeidcode.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndLocationIDCode")
+    {
+        dsx3farendlocationidcode.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndUnitCode")
+    {
+        dsx3farendunitcode.yfilter = yfilter;
+    }
+}
+
+bool Ds3Mib::Dsx3Farendconfigtable::Dsx3Farendconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FarEndLineIndex" || name == "dsx3FarEndEquipCode" || name == "dsx3FarEndFacilityIDCode" || name == "dsx3FarEndFrameIDCode" || name == "dsx3FarEndLocationIDCode" || name == "dsx3FarEndUnitCode")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrenttable()
@@ -1539,9 +2021,9 @@ Ds3Mib::Dsx3Farendcurrenttable::~Dsx3Farendcurrenttable()
 
 bool Ds3Mib::Dsx3Farendcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3farendcurrententry_.size(); index++)
+    for (std::size_t index=0; index<dsx3farendcurrententry.size(); index++)
     {
-        if(dsx3farendcurrententry_[index]->has_data())
+        if(dsx3farendcurrententry[index]->has_data())
             return true;
     }
     return false;
@@ -1549,12 +2031,12 @@ bool Ds3Mib::Dsx3Farendcurrenttable::has_data() const
 
 bool Ds3Mib::Dsx3Farendcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3farendcurrententry_.size(); index++)
+    for (std::size_t index=0; index<dsx3farendcurrententry.size(); index++)
     {
-        if(dsx3farendcurrententry_[index]->has_operation())
+        if(dsx3farendcurrententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Farendcurrenttable::get_segment_path() const
@@ -1591,7 +2073,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendcurrenttable::get_child_by_name(const 
 {
     if(child_yang_name == "dsx3FarEndCurrentEntry")
     {
-        for(auto const & c : dsx3farendcurrententry_)
+        for(auto const & c : dsx3farendcurrententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1601,7 +2083,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendcurrenttable::get_child_by_name(const 
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry>();
         c->parent = this;
-        dsx3farendcurrententry_.push_back(c);
+        dsx3farendcurrententry.push_back(c);
         return c;
     }
 
@@ -1611,7 +2093,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendcurrenttable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3farendcurrententry_)
+    for (auto const & c : dsx3farendcurrententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1619,8 +2101,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendcurrenttable::g
     return children;
 }
 
-void Ds3Mib::Dsx3Farendcurrenttable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Farendcurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Farendcurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Farendcurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FarEndCurrentEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::Dsx3Farendcurrententry()
@@ -1655,15 +2148,15 @@ bool Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::has_data() const
 
 bool Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3farendcurrentindex.operation)
-	|| is_set(dsx3farendcurrentccvs.operation)
-	|| is_set(dsx3farendcurrentcess.operation)
-	|| is_set(dsx3farendcurrentcsess.operation)
-	|| is_set(dsx3farendcurrentuass.operation)
-	|| is_set(dsx3farendinvalidintervals.operation)
-	|| is_set(dsx3farendtimeelapsed.operation)
-	|| is_set(dsx3farendvalidintervals.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3farendcurrentindex.yfilter)
+	|| ydk::is_set(dsx3farendcurrentccvs.yfilter)
+	|| ydk::is_set(dsx3farendcurrentcess.yfilter)
+	|| ydk::is_set(dsx3farendcurrentcsess.yfilter)
+	|| ydk::is_set(dsx3farendcurrentuass.yfilter)
+	|| ydk::is_set(dsx3farendinvalidintervals.yfilter)
+	|| ydk::is_set(dsx3farendtimeelapsed.yfilter)
+	|| ydk::is_set(dsx3farendvalidintervals.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::get_segment_path() const
@@ -1689,14 +2182,14 @@ const EntityPath Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3farendcurrentindex.is_set || is_set(dsx3farendcurrentindex.operation)) leaf_name_data.push_back(dsx3farendcurrentindex.get_name_leafdata());
-    if (dsx3farendcurrentccvs.is_set || is_set(dsx3farendcurrentccvs.operation)) leaf_name_data.push_back(dsx3farendcurrentccvs.get_name_leafdata());
-    if (dsx3farendcurrentcess.is_set || is_set(dsx3farendcurrentcess.operation)) leaf_name_data.push_back(dsx3farendcurrentcess.get_name_leafdata());
-    if (dsx3farendcurrentcsess.is_set || is_set(dsx3farendcurrentcsess.operation)) leaf_name_data.push_back(dsx3farendcurrentcsess.get_name_leafdata());
-    if (dsx3farendcurrentuass.is_set || is_set(dsx3farendcurrentuass.operation)) leaf_name_data.push_back(dsx3farendcurrentuass.get_name_leafdata());
-    if (dsx3farendinvalidintervals.is_set || is_set(dsx3farendinvalidintervals.operation)) leaf_name_data.push_back(dsx3farendinvalidintervals.get_name_leafdata());
-    if (dsx3farendtimeelapsed.is_set || is_set(dsx3farendtimeelapsed.operation)) leaf_name_data.push_back(dsx3farendtimeelapsed.get_name_leafdata());
-    if (dsx3farendvalidintervals.is_set || is_set(dsx3farendvalidintervals.operation)) leaf_name_data.push_back(dsx3farendvalidintervals.get_name_leafdata());
+    if (dsx3farendcurrentindex.is_set || is_set(dsx3farendcurrentindex.yfilter)) leaf_name_data.push_back(dsx3farendcurrentindex.get_name_leafdata());
+    if (dsx3farendcurrentccvs.is_set || is_set(dsx3farendcurrentccvs.yfilter)) leaf_name_data.push_back(dsx3farendcurrentccvs.get_name_leafdata());
+    if (dsx3farendcurrentcess.is_set || is_set(dsx3farendcurrentcess.yfilter)) leaf_name_data.push_back(dsx3farendcurrentcess.get_name_leafdata());
+    if (dsx3farendcurrentcsess.is_set || is_set(dsx3farendcurrentcsess.yfilter)) leaf_name_data.push_back(dsx3farendcurrentcsess.get_name_leafdata());
+    if (dsx3farendcurrentuass.is_set || is_set(dsx3farendcurrentuass.yfilter)) leaf_name_data.push_back(dsx3farendcurrentuass.get_name_leafdata());
+    if (dsx3farendinvalidintervals.is_set || is_set(dsx3farendinvalidintervals.yfilter)) leaf_name_data.push_back(dsx3farendinvalidintervals.get_name_leafdata());
+    if (dsx3farendtimeelapsed.is_set || is_set(dsx3farendtimeelapsed.yfilter)) leaf_name_data.push_back(dsx3farendtimeelapsed.get_name_leafdata());
+    if (dsx3farendvalidintervals.is_set || is_set(dsx3farendvalidintervals.yfilter)) leaf_name_data.push_back(dsx3farendvalidintervals.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1715,40 +2208,99 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendcurrenttable::D
     return children;
 }
 
-void Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3FarEndCurrentIndex")
     {
         dsx3farendcurrentindex = value;
+        dsx3farendcurrentindex.value_namespace = name_space;
+        dsx3farendcurrentindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndCurrentCCVs")
     {
         dsx3farendcurrentccvs = value;
+        dsx3farendcurrentccvs.value_namespace = name_space;
+        dsx3farendcurrentccvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndCurrentCESs")
     {
         dsx3farendcurrentcess = value;
+        dsx3farendcurrentcess.value_namespace = name_space;
+        dsx3farendcurrentcess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndCurrentCSESs")
     {
         dsx3farendcurrentcsess = value;
+        dsx3farendcurrentcsess.value_namespace = name_space;
+        dsx3farendcurrentcsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndCurrentUASs")
     {
         dsx3farendcurrentuass = value;
+        dsx3farendcurrentuass.value_namespace = name_space;
+        dsx3farendcurrentuass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndInvalidIntervals")
     {
         dsx3farendinvalidintervals = value;
+        dsx3farendinvalidintervals.value_namespace = name_space;
+        dsx3farendinvalidintervals.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndTimeElapsed")
     {
         dsx3farendtimeelapsed = value;
+        dsx3farendtimeelapsed.value_namespace = name_space;
+        dsx3farendtimeelapsed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndValidIntervals")
     {
         dsx3farendvalidintervals = value;
+        dsx3farendvalidintervals.value_namespace = name_space;
+        dsx3farendvalidintervals.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3FarEndCurrentIndex")
+    {
+        dsx3farendcurrentindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndCurrentCCVs")
+    {
+        dsx3farendcurrentccvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndCurrentCESs")
+    {
+        dsx3farendcurrentcess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndCurrentCSESs")
+    {
+        dsx3farendcurrentcsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndCurrentUASs")
+    {
+        dsx3farendcurrentuass.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndInvalidIntervals")
+    {
+        dsx3farendinvalidintervals.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndTimeElapsed")
+    {
+        dsx3farendtimeelapsed.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndValidIntervals")
+    {
+        dsx3farendvalidintervals.yfilter = yfilter;
+    }
+}
+
+bool Ds3Mib::Dsx3Farendcurrenttable::Dsx3Farendcurrententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FarEndCurrentIndex" || name == "dsx3FarEndCurrentCCVs" || name == "dsx3FarEndCurrentCESs" || name == "dsx3FarEndCurrentCSESs" || name == "dsx3FarEndCurrentUASs" || name == "dsx3FarEndInvalidIntervals" || name == "dsx3FarEndTimeElapsed" || name == "dsx3FarEndValidIntervals")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervaltable()
@@ -1762,9 +2314,9 @@ Ds3Mib::Dsx3Farendintervaltable::~Dsx3Farendintervaltable()
 
 bool Ds3Mib::Dsx3Farendintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3farendintervalentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3farendintervalentry.size(); index++)
     {
-        if(dsx3farendintervalentry_[index]->has_data())
+        if(dsx3farendintervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -1772,12 +2324,12 @@ bool Ds3Mib::Dsx3Farendintervaltable::has_data() const
 
 bool Ds3Mib::Dsx3Farendintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3farendintervalentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3farendintervalentry.size(); index++)
     {
-        if(dsx3farendintervalentry_[index]->has_operation())
+        if(dsx3farendintervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Farendintervaltable::get_segment_path() const
@@ -1814,7 +2366,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendintervaltable::get_child_by_name(const
 {
     if(child_yang_name == "dsx3FarEndIntervalEntry")
     {
-        for(auto const & c : dsx3farendintervalentry_)
+        for(auto const & c : dsx3farendintervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1824,7 +2376,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendintervaltable::get_child_by_name(const
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry>();
         c->parent = this;
-        dsx3farendintervalentry_.push_back(c);
+        dsx3farendintervalentry.push_back(c);
         return c;
     }
 
@@ -1834,7 +2386,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendintervaltable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3farendintervalentry_)
+    for (auto const & c : dsx3farendintervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1842,8 +2394,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendintervaltable::
     return children;
 }
 
-void Ds3Mib::Dsx3Farendintervaltable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Farendintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Farendintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Farendintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FarEndIntervalEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::Dsx3Farendintervalentry()
@@ -1876,14 +2439,14 @@ bool Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::has_data() const
 
 bool Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3farendintervalindex.operation)
-	|| is_set(dsx3farendintervalnumber.operation)
-	|| is_set(dsx3farendintervalccvs.operation)
-	|| is_set(dsx3farendintervalcess.operation)
-	|| is_set(dsx3farendintervalcsess.operation)
-	|| is_set(dsx3farendintervaluass.operation)
-	|| is_set(dsx3farendintervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3farendintervalindex.yfilter)
+	|| ydk::is_set(dsx3farendintervalnumber.yfilter)
+	|| ydk::is_set(dsx3farendintervalccvs.yfilter)
+	|| ydk::is_set(dsx3farendintervalcess.yfilter)
+	|| ydk::is_set(dsx3farendintervalcsess.yfilter)
+	|| ydk::is_set(dsx3farendintervaluass.yfilter)
+	|| ydk::is_set(dsx3farendintervalvaliddata.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::get_segment_path() const
@@ -1909,13 +2472,13 @@ const EntityPath Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3farendintervalindex.is_set || is_set(dsx3farendintervalindex.operation)) leaf_name_data.push_back(dsx3farendintervalindex.get_name_leafdata());
-    if (dsx3farendintervalnumber.is_set || is_set(dsx3farendintervalnumber.operation)) leaf_name_data.push_back(dsx3farendintervalnumber.get_name_leafdata());
-    if (dsx3farendintervalccvs.is_set || is_set(dsx3farendintervalccvs.operation)) leaf_name_data.push_back(dsx3farendintervalccvs.get_name_leafdata());
-    if (dsx3farendintervalcess.is_set || is_set(dsx3farendintervalcess.operation)) leaf_name_data.push_back(dsx3farendintervalcess.get_name_leafdata());
-    if (dsx3farendintervalcsess.is_set || is_set(dsx3farendintervalcsess.operation)) leaf_name_data.push_back(dsx3farendintervalcsess.get_name_leafdata());
-    if (dsx3farendintervaluass.is_set || is_set(dsx3farendintervaluass.operation)) leaf_name_data.push_back(dsx3farendintervaluass.get_name_leafdata());
-    if (dsx3farendintervalvaliddata.is_set || is_set(dsx3farendintervalvaliddata.operation)) leaf_name_data.push_back(dsx3farendintervalvaliddata.get_name_leafdata());
+    if (dsx3farendintervalindex.is_set || is_set(dsx3farendintervalindex.yfilter)) leaf_name_data.push_back(dsx3farendintervalindex.get_name_leafdata());
+    if (dsx3farendintervalnumber.is_set || is_set(dsx3farendintervalnumber.yfilter)) leaf_name_data.push_back(dsx3farendintervalnumber.get_name_leafdata());
+    if (dsx3farendintervalccvs.is_set || is_set(dsx3farendintervalccvs.yfilter)) leaf_name_data.push_back(dsx3farendintervalccvs.get_name_leafdata());
+    if (dsx3farendintervalcess.is_set || is_set(dsx3farendintervalcess.yfilter)) leaf_name_data.push_back(dsx3farendintervalcess.get_name_leafdata());
+    if (dsx3farendintervalcsess.is_set || is_set(dsx3farendintervalcsess.yfilter)) leaf_name_data.push_back(dsx3farendintervalcsess.get_name_leafdata());
+    if (dsx3farendintervaluass.is_set || is_set(dsx3farendintervaluass.yfilter)) leaf_name_data.push_back(dsx3farendintervaluass.get_name_leafdata());
+    if (dsx3farendintervalvaliddata.is_set || is_set(dsx3farendintervalvaliddata.yfilter)) leaf_name_data.push_back(dsx3farendintervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1934,36 +2497,89 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendintervaltable::
     return children;
 }
 
-void Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3FarEndIntervalIndex")
     {
         dsx3farendintervalindex = value;
+        dsx3farendintervalindex.value_namespace = name_space;
+        dsx3farendintervalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndIntervalNumber")
     {
         dsx3farendintervalnumber = value;
+        dsx3farendintervalnumber.value_namespace = name_space;
+        dsx3farendintervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndIntervalCCVs")
     {
         dsx3farendintervalccvs = value;
+        dsx3farendintervalccvs.value_namespace = name_space;
+        dsx3farendintervalccvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndIntervalCESs")
     {
         dsx3farendintervalcess = value;
+        dsx3farendintervalcess.value_namespace = name_space;
+        dsx3farendintervalcess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndIntervalCSESs")
     {
         dsx3farendintervalcsess = value;
+        dsx3farendintervalcsess.value_namespace = name_space;
+        dsx3farendintervalcsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndIntervalUASs")
     {
         dsx3farendintervaluass = value;
+        dsx3farendintervaluass.value_namespace = name_space;
+        dsx3farendintervaluass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndIntervalValidData")
     {
         dsx3farendintervalvaliddata = value;
+        dsx3farendintervalvaliddata.value_namespace = name_space;
+        dsx3farendintervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3FarEndIntervalIndex")
+    {
+        dsx3farendintervalindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndIntervalNumber")
+    {
+        dsx3farendintervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndIntervalCCVs")
+    {
+        dsx3farendintervalccvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndIntervalCESs")
+    {
+        dsx3farendintervalcess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndIntervalCSESs")
+    {
+        dsx3farendintervalcsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndIntervalUASs")
+    {
+        dsx3farendintervaluass.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndIntervalValidData")
+    {
+        dsx3farendintervalvaliddata.yfilter = yfilter;
+    }
+}
+
+bool Ds3Mib::Dsx3Farendintervaltable::Dsx3Farendintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FarEndIntervalIndex" || name == "dsx3FarEndIntervalNumber" || name == "dsx3FarEndIntervalCCVs" || name == "dsx3FarEndIntervalCESs" || name == "dsx3FarEndIntervalCSESs" || name == "dsx3FarEndIntervalUASs" || name == "dsx3FarEndIntervalValidData")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotaltable()
@@ -1977,9 +2593,9 @@ Ds3Mib::Dsx3Farendtotaltable::~Dsx3Farendtotaltable()
 
 bool Ds3Mib::Dsx3Farendtotaltable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3farendtotalentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3farendtotalentry.size(); index++)
     {
-        if(dsx3farendtotalentry_[index]->has_data())
+        if(dsx3farendtotalentry[index]->has_data())
             return true;
     }
     return false;
@@ -1987,12 +2603,12 @@ bool Ds3Mib::Dsx3Farendtotaltable::has_data() const
 
 bool Ds3Mib::Dsx3Farendtotaltable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3farendtotalentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3farendtotalentry.size(); index++)
     {
-        if(dsx3farendtotalentry_[index]->has_operation())
+        if(dsx3farendtotalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Farendtotaltable::get_segment_path() const
@@ -2029,7 +2645,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendtotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "dsx3FarEndTotalEntry")
     {
-        for(auto const & c : dsx3farendtotalentry_)
+        for(auto const & c : dsx3farendtotalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2039,7 +2655,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendtotaltable::get_child_by_name(const st
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry>();
         c->parent = this;
-        dsx3farendtotalentry_.push_back(c);
+        dsx3farendtotalentry.push_back(c);
         return c;
     }
 
@@ -2049,7 +2665,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Farendtotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendtotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3farendtotalentry_)
+    for (auto const & c : dsx3farendtotalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2057,8 +2673,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendtotaltable::get
     return children;
 }
 
-void Ds3Mib::Dsx3Farendtotaltable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Farendtotaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Farendtotaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Farendtotaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FarEndTotalEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::Dsx3Farendtotalentry()
@@ -2087,12 +2714,12 @@ bool Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::has_data() const
 
 bool Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3farendtotalindex.operation)
-	|| is_set(dsx3farendtotalccvs.operation)
-	|| is_set(dsx3farendtotalcess.operation)
-	|| is_set(dsx3farendtotalcsess.operation)
-	|| is_set(dsx3farendtotaluass.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3farendtotalindex.yfilter)
+	|| ydk::is_set(dsx3farendtotalccvs.yfilter)
+	|| ydk::is_set(dsx3farendtotalcess.yfilter)
+	|| ydk::is_set(dsx3farendtotalcsess.yfilter)
+	|| ydk::is_set(dsx3farendtotaluass.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::get_segment_path() const
@@ -2118,11 +2745,11 @@ const EntityPath Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3farendtotalindex.is_set || is_set(dsx3farendtotalindex.operation)) leaf_name_data.push_back(dsx3farendtotalindex.get_name_leafdata());
-    if (dsx3farendtotalccvs.is_set || is_set(dsx3farendtotalccvs.operation)) leaf_name_data.push_back(dsx3farendtotalccvs.get_name_leafdata());
-    if (dsx3farendtotalcess.is_set || is_set(dsx3farendtotalcess.operation)) leaf_name_data.push_back(dsx3farendtotalcess.get_name_leafdata());
-    if (dsx3farendtotalcsess.is_set || is_set(dsx3farendtotalcsess.operation)) leaf_name_data.push_back(dsx3farendtotalcsess.get_name_leafdata());
-    if (dsx3farendtotaluass.is_set || is_set(dsx3farendtotaluass.operation)) leaf_name_data.push_back(dsx3farendtotaluass.get_name_leafdata());
+    if (dsx3farendtotalindex.is_set || is_set(dsx3farendtotalindex.yfilter)) leaf_name_data.push_back(dsx3farendtotalindex.get_name_leafdata());
+    if (dsx3farendtotalccvs.is_set || is_set(dsx3farendtotalccvs.yfilter)) leaf_name_data.push_back(dsx3farendtotalccvs.get_name_leafdata());
+    if (dsx3farendtotalcess.is_set || is_set(dsx3farendtotalcess.yfilter)) leaf_name_data.push_back(dsx3farendtotalcess.get_name_leafdata());
+    if (dsx3farendtotalcsess.is_set || is_set(dsx3farendtotalcsess.yfilter)) leaf_name_data.push_back(dsx3farendtotalcsess.get_name_leafdata());
+    if (dsx3farendtotaluass.is_set || is_set(dsx3farendtotaluass.yfilter)) leaf_name_data.push_back(dsx3farendtotaluass.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2141,28 +2768,69 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Farendtotaltable::Dsx
     return children;
 }
 
-void Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3FarEndTotalIndex")
     {
         dsx3farendtotalindex = value;
+        dsx3farendtotalindex.value_namespace = name_space;
+        dsx3farendtotalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndTotalCCVs")
     {
         dsx3farendtotalccvs = value;
+        dsx3farendtotalccvs.value_namespace = name_space;
+        dsx3farendtotalccvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndTotalCESs")
     {
         dsx3farendtotalcess = value;
+        dsx3farendtotalcess.value_namespace = name_space;
+        dsx3farendtotalcess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndTotalCSESs")
     {
         dsx3farendtotalcsess = value;
+        dsx3farendtotalcsess.value_namespace = name_space;
+        dsx3farendtotalcsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FarEndTotalUASs")
     {
         dsx3farendtotaluass = value;
+        dsx3farendtotaluass.value_namespace = name_space;
+        dsx3farendtotaluass.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3FarEndTotalIndex")
+    {
+        dsx3farendtotalindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndTotalCCVs")
+    {
+        dsx3farendtotalccvs.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndTotalCESs")
+    {
+        dsx3farendtotalcess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndTotalCSESs")
+    {
+        dsx3farendtotalcsess.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FarEndTotalUASs")
+    {
+        dsx3farendtotaluass.yfilter = yfilter;
+    }
+}
+
+bool Ds3Mib::Dsx3Farendtotaltable::Dsx3Farendtotalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FarEndTotalIndex" || name == "dsx3FarEndTotalCCVs" || name == "dsx3FarEndTotalCESs" || name == "dsx3FarEndTotalCSESs" || name == "dsx3FarEndTotalUASs")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Fractable::Dsx3Fractable()
@@ -2176,9 +2844,9 @@ Ds3Mib::Dsx3Fractable::~Dsx3Fractable()
 
 bool Ds3Mib::Dsx3Fractable::has_data() const
 {
-    for (std::size_t index=0; index<dsx3fracentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3fracentry.size(); index++)
     {
-        if(dsx3fracentry_[index]->has_data())
+        if(dsx3fracentry[index]->has_data())
             return true;
     }
     return false;
@@ -2186,12 +2854,12 @@ bool Ds3Mib::Dsx3Fractable::has_data() const
 
 bool Ds3Mib::Dsx3Fractable::has_operation() const
 {
-    for (std::size_t index=0; index<dsx3fracentry_.size(); index++)
+    for (std::size_t index=0; index<dsx3fracentry.size(); index++)
     {
-        if(dsx3fracentry_[index]->has_operation())
+        if(dsx3fracentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ds3Mib::Dsx3Fractable::get_segment_path() const
@@ -2228,7 +2896,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Fractable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "dsx3FracEntry")
     {
-        for(auto const & c : dsx3fracentry_)
+        for(auto const & c : dsx3fracentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2238,7 +2906,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Fractable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<Ds3Mib::Dsx3Fractable::Dsx3Fracentry>();
         c->parent = this;
-        dsx3fracentry_.push_back(c);
+        dsx3fracentry.push_back(c);
         return c;
     }
 
@@ -2248,7 +2916,7 @@ std::shared_ptr<Entity> Ds3Mib::Dsx3Fractable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Fractable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dsx3fracentry_)
+    for (auto const & c : dsx3fracentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2256,8 +2924,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Fractable::get_childr
     return children;
 }
 
-void Ds3Mib::Dsx3Fractable::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Fractable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ds3Mib::Dsx3Fractable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ds3Mib::Dsx3Fractable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FracEntry")
+        return true;
+    return false;
 }
 
 Ds3Mib::Dsx3Fractable::Dsx3Fracentry::Dsx3Fracentry()
@@ -2282,10 +2961,10 @@ bool Ds3Mib::Dsx3Fractable::Dsx3Fracentry::has_data() const
 
 bool Ds3Mib::Dsx3Fractable::Dsx3Fracentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dsx3fracindex.operation)
-	|| is_set(dsx3fracnumber.operation)
-	|| is_set(dsx3fracifindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dsx3fracindex.yfilter)
+	|| ydk::is_set(dsx3fracnumber.yfilter)
+	|| ydk::is_set(dsx3fracifindex.yfilter);
 }
 
 std::string Ds3Mib::Dsx3Fractable::Dsx3Fracentry::get_segment_path() const
@@ -2311,9 +2990,9 @@ const EntityPath Ds3Mib::Dsx3Fractable::Dsx3Fracentry::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dsx3fracindex.is_set || is_set(dsx3fracindex.operation)) leaf_name_data.push_back(dsx3fracindex.get_name_leafdata());
-    if (dsx3fracnumber.is_set || is_set(dsx3fracnumber.operation)) leaf_name_data.push_back(dsx3fracnumber.get_name_leafdata());
-    if (dsx3fracifindex.is_set || is_set(dsx3fracifindex.operation)) leaf_name_data.push_back(dsx3fracifindex.get_name_leafdata());
+    if (dsx3fracindex.is_set || is_set(dsx3fracindex.yfilter)) leaf_name_data.push_back(dsx3fracindex.get_name_leafdata());
+    if (dsx3fracnumber.is_set || is_set(dsx3fracnumber.yfilter)) leaf_name_data.push_back(dsx3fracnumber.get_name_leafdata());
+    if (dsx3fracifindex.is_set || is_set(dsx3fracifindex.yfilter)) leaf_name_data.push_back(dsx3fracifindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2332,59 +3011,88 @@ std::map<std::string, std::shared_ptr<Entity>> Ds3Mib::Dsx3Fractable::Dsx3Fracen
     return children;
 }
 
-void Ds3Mib::Dsx3Fractable::Dsx3Fracentry::set_value(const std::string & value_path, std::string value)
+void Ds3Mib::Dsx3Fractable::Dsx3Fracentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dsx3FracIndex")
     {
         dsx3fracindex = value;
+        dsx3fracindex.value_namespace = name_space;
+        dsx3fracindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FracNumber")
     {
         dsx3fracnumber = value;
+        dsx3fracnumber.value_namespace = name_space;
+        dsx3fracnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dsx3FracIfIndex")
     {
         dsx3fracifindex = value;
+        dsx3fracifindex.value_namespace = name_space;
+        dsx3fracifindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinetypeEnum::dsx3other {1, "dsx3other"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinetypeEnum::dsx3M23 {2, "dsx3M23"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinetypeEnum::dsx3SYNTRAN {3, "dsx3SYNTRAN"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinetypeEnum::dsx3CbitParity {4, "dsx3CbitParity"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinetypeEnum::dsx3ClearChannel {5, "dsx3ClearChannel"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinetypeEnum::e3other {6, "e3other"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinetypeEnum::e3Framed {7, "e3Framed"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinetypeEnum::e3Plcp {8, "e3Plcp"};
+void Ds3Mib::Dsx3Fractable::Dsx3Fracentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dsx3FracIndex")
+    {
+        dsx3fracindex.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FracNumber")
+    {
+        dsx3fracnumber.yfilter = yfilter;
+    }
+    if(value_path == "dsx3FracIfIndex")
+    {
+        dsx3fracifindex.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinecodingEnum::dsx3Other {1, "dsx3Other"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinecodingEnum::dsx3B3ZS {2, "dsx3B3ZS"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinecodingEnum::e3HDB3 {3, "e3HDB3"};
+bool Ds3Mib::Dsx3Fractable::Dsx3Fracentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dsx3FracIndex" || name == "dsx3FracNumber" || name == "dsx3FracIfIndex")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3SendcodeEnum::dsx3SendNoCode {1, "dsx3SendNoCode"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3SendcodeEnum::dsx3SendLineCode {2, "dsx3SendLineCode"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3SendcodeEnum::dsx3SendPayloadCode {3, "dsx3SendPayloadCode"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3SendcodeEnum::dsx3SendResetCode {4, "dsx3SendResetCode"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3SendcodeEnum::dsx3SendDS1LoopCode {5, "dsx3SendDS1LoopCode"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3SendcodeEnum::dsx3SendTestPattern {6, "dsx3SendTestPattern"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype::dsx3other {1, "dsx3other"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype::dsx3M23 {2, "dsx3M23"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype::dsx3SYNTRAN {3, "dsx3SYNTRAN"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype::dsx3CbitParity {4, "dsx3CbitParity"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype::dsx3ClearChannel {5, "dsx3ClearChannel"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype::e3other {6, "e3other"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype::e3Framed {7, "e3Framed"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype::e3Plcp {8, "e3Plcp"};
 
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LoopbackconfigEnum::dsx3NoLoop {1, "dsx3NoLoop"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LoopbackconfigEnum::dsx3PayloadLoop {2, "dsx3PayloadLoop"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LoopbackconfigEnum::dsx3LineLoop {3, "dsx3LineLoop"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LoopbackconfigEnum::dsx3OtherLoop {4, "dsx3OtherLoop"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LoopbackconfigEnum::dsx3InwardLoop {5, "dsx3InwardLoop"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LoopbackconfigEnum::dsx3DualLoop {6, "dsx3DualLoop"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linecoding::dsx3Other {1, "dsx3Other"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linecoding::dsx3B3ZS {2, "dsx3B3ZS"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linecoding::e3HDB3 {3, "e3HDB3"};
 
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3TransmitclocksourceEnum::loopTiming {1, "loopTiming"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3TransmitclocksourceEnum::localTiming {2, "localTiming"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3TransmitclocksourceEnum::throughTiming {3, "throughTiming"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Sendcode::dsx3SendNoCode {1, "dsx3SendNoCode"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Sendcode::dsx3SendLineCode {2, "dsx3SendLineCode"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Sendcode::dsx3SendPayloadCode {3, "dsx3SendPayloadCode"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Sendcode::dsx3SendResetCode {4, "dsx3SendResetCode"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Sendcode::dsx3SendDS1LoopCode {5, "dsx3SendDS1LoopCode"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Sendcode::dsx3SendTestPattern {6, "dsx3SendTestPattern"};
 
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinestatuschangetrapenableEnum::enabled {1, "enabled"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3LinestatuschangetrapenableEnum::disabled {2, "disabled"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Loopbackconfig::dsx3NoLoop {1, "dsx3NoLoop"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Loopbackconfig::dsx3PayloadLoop {2, "dsx3PayloadLoop"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Loopbackconfig::dsx3LineLoop {3, "dsx3LineLoop"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Loopbackconfig::dsx3OtherLoop {4, "dsx3OtherLoop"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Loopbackconfig::dsx3InwardLoop {5, "dsx3InwardLoop"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Loopbackconfig::dsx3DualLoop {6, "dsx3DualLoop"};
 
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3ChannelizationEnum::disabled {1, "disabled"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3ChannelizationEnum::enabledDs1 {2, "enabledDs1"};
-const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3ChannelizationEnum::enabledDs2 {3, "enabledDs2"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Transmitclocksource::loopTiming {1, "loopTiming"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Transmitclocksource::localTiming {2, "localTiming"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Transmitclocksource::throughTiming {3, "throughTiming"};
+
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linestatuschangetrapenable::enabled {1, "enabled"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Linestatuschangetrapenable::disabled {2, "disabled"};
+
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Channelization::disabled {1, "disabled"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Channelization::enabledDs1 {2, "enabledDs1"};
+const Enum::YLeaf Ds3Mib::Dsx3Configtable::Dsx3Configentry::Dsx3Channelization::enabledDs2 {3, "enabledDs2"};
 
 
 }

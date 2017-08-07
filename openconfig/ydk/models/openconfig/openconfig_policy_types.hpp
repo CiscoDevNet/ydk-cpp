@@ -7,131 +7,131 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_policy_types {
 
-class InstallProtocolTypeIdentity : public virtual Identity
+class Install_Protocol_Type : public virtual ydk::Identity
 {
     public:
-        InstallProtocolTypeIdentity();
-        ~InstallProtocolTypeIdentity();
+        Install_Protocol_Type();
+        ~Install_Protocol_Type();
 
 
-}; // InstallProtocolTypeIdentity
+}; // Install_Protocol_Type
 
-class AttributeComparisonIdentity : public virtual Identity
+class Attribute_Comparison : public virtual ydk::Identity
 {
     public:
-        AttributeComparisonIdentity();
-        ~AttributeComparisonIdentity();
+        Attribute_Comparison();
+        ~Attribute_Comparison();
 
 
-}; // AttributeComparisonIdentity
+}; // Attribute_Comparison
 
-class IsisIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
+class Ospf3 : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
 {
     public:
-        IsisIdentity();
-        ~IsisIdentity();
+        Ospf3();
+        ~Ospf3();
 
 
-}; // IsisIdentity
+}; // Ospf3
 
-class AttributeLeIdentity : public openconfig_policy_types::AttributeComparisonIdentity, virtual Identity
+class Static_ : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
 {
     public:
-        AttributeLeIdentity();
-        ~AttributeLeIdentity();
+        Static_();
+        ~Static_();
 
 
-}; // AttributeLeIdentity
+}; // Static_
 
-class AttributeGeIdentity : public openconfig_policy_types::AttributeComparisonIdentity, virtual Identity
+class Ospf : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
 {
     public:
-        AttributeGeIdentity();
-        ~AttributeGeIdentity();
+        Ospf();
+        ~Ospf();
 
 
-}; // AttributeGeIdentity
+}; // Ospf
 
-class BgpIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
+class Isis : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
 {
     public:
-        BgpIdentity();
-        ~BgpIdentity();
+        Isis();
+        ~Isis();
 
 
-}; // BgpIdentity
+}; // Isis
 
-class DirectlyConnectedIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
+class Attribute_Eq : public openconfig_policy_types::Attribute_Comparison, virtual ydk::Identity
 {
     public:
-        DirectlyConnectedIdentity();
-        ~DirectlyConnectedIdentity();
+        Attribute_Eq();
+        ~Attribute_Eq();
 
 
-}; // DirectlyConnectedIdentity
+}; // Attribute_Eq
 
-class StaticIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
+class Attribute_Ge : public openconfig_policy_types::Attribute_Comparison, virtual ydk::Identity
 {
     public:
-        StaticIdentity();
-        ~StaticIdentity();
+        Attribute_Ge();
+        ~Attribute_Ge();
 
 
-}; // StaticIdentity
+}; // Attribute_Ge
 
-class LocalAggregateIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
+class Local_Aggregate : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
 {
     public:
-        LocalAggregateIdentity();
-        ~LocalAggregateIdentity();
+        Local_Aggregate();
+        ~Local_Aggregate();
 
 
-}; // LocalAggregateIdentity
+}; // Local_Aggregate
 
-class AttributeEqIdentity : public openconfig_policy_types::AttributeComparisonIdentity, virtual Identity
+class Bgp : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
 {
     public:
-        AttributeEqIdentity();
-        ~AttributeEqIdentity();
+        Bgp();
+        ~Bgp();
 
 
-}; // AttributeEqIdentity
+}; // Bgp
 
-class OspfIdentity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
+class Directly_Connected : public openconfig_policy_types::Install_Protocol_Type, virtual ydk::Identity
 {
     public:
-        OspfIdentity();
-        ~OspfIdentity();
+        Directly_Connected();
+        ~Directly_Connected();
 
 
-}; // OspfIdentity
+}; // Directly_Connected
 
-class Ospf3Identity : public openconfig_policy_types::InstallProtocolTypeIdentity, virtual Identity
+class Attribute_Le : public openconfig_policy_types::Attribute_Comparison, virtual ydk::Identity
 {
     public:
-        Ospf3Identity();
-        ~Ospf3Identity();
+        Attribute_Le();
+        ~Attribute_Le();
 
 
-}; // Ospf3Identity
+}; // Attribute_Le
 
-class MatchSetOptionsRestrictedTypeEnum : public Enum
+class MatchSetOptionsRestrictedType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ANY;
-        static const Enum::YLeaf INVERT;
+        static const ydk::Enum::YLeaf ANY;
+        static const ydk::Enum::YLeaf INVERT;
 
 };
 
-class MatchSetOptionsTypeEnum : public Enum
+class MatchSetOptionsType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ANY;
-        static const Enum::YLeaf ALL;
-        static const Enum::YLeaf INVERT;
+        static const ydk::Enum::YLeaf ANY;
+        static const ydk::Enum::YLeaf ALL;
+        static const ydk::Enum::YLeaf INVERT;
 
 };
 

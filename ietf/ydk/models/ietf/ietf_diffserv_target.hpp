@@ -7,35 +7,35 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace ietf {
 namespace ietf_diffserv_target {
 
-class DirectionIdentity : public virtual Identity
+class Direction : public virtual ydk::Identity
 {
     public:
-        DirectionIdentity();
-        ~DirectionIdentity();
+        Direction();
+        ~Direction();
 
 
-}; // DirectionIdentity
+}; // Direction
 
-class InboundIdentity : public ietf_diffserv_target::DirectionIdentity, virtual Identity
+class Outbound : public ietf_diffserv_target::Direction, virtual ydk::Identity
 {
     public:
-        InboundIdentity();
-        ~InboundIdentity();
+        Outbound();
+        ~Outbound();
 
 
-}; // InboundIdentity
+}; // Outbound
 
-class OutboundIdentity : public ietf_diffserv_target::DirectionIdentity, virtual Identity
+class Inbound : public ietf_diffserv_target::Direction, virtual ydk::Identity
 {
     public:
-        OutboundIdentity();
-        ~OutboundIdentity();
+        Inbound();
+        ~Inbound();
 
 
-}; // OutboundIdentity
+}; // Inbound
 
 
 }

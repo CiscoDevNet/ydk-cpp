@@ -6,33 +6,35 @@
 #include "generated_entity_lookup.hpp"
 #include "openconfig_types.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace openconfig {
 namespace openconfig_types {
 
-Address_FamilyIdentity::Address_FamilyIdentity()
-     : Identity("openconfig-types:ADDRESS_FAMILY")
+Address_Family::Address_Family()
+     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:ADDRESS_FAMILY")
 {
 }
 
-Address_FamilyIdentity::~Address_FamilyIdentity()
+Address_Family::~Address_Family()
 {
 }
 
-Ipv6Identity::Ipv6Identity()
-     : Identity("openconfig-types:IPV6")
+Ipv4::Ipv4()
+     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:IPV4")
 {
 }
 
-Ipv6Identity::~Ipv6Identity()
+Ipv4::~Ipv4()
 {
 }
 
-Ipv4Identity::Ipv4Identity()
-     : Identity("openconfig-types:IPV4")
+Ipv6::Ipv6()
+     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:IPV6")
 {
 }
 
-Ipv4Identity::~Ipv4Identity()
+Ipv6::~Ipv6()
 {
 }
 

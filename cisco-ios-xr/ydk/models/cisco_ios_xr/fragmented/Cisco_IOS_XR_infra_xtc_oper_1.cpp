@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_xtc_oper_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_xtc_oper {
 
 Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::Ospf()
@@ -29,9 +31,9 @@ bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::S
 
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::get_segment_path() const
@@ -57,8 +59,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.operation)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -77,20 +79,44 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area")
     {
         area = value;
+        area.value_namespace = name_space;
+        area.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area")
+    {
+        area.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::Bgp()
     :
+    confed_asn{YType::uint32, "confed-asn"},
     router_id{YType::str, "router-id"}
 {
     yang_name = "bgp"; yang_parent_name = "igp-srgb";
@@ -102,13 +128,15 @@ Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbIn
 
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_data() const
 {
-    return router_id.is_set;
+    return confed_asn.is_set
+	|| router_id.is_set;
 }
 
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(confed_asn.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::get_segment_path() const
@@ -134,7 +162,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (confed_asn.is_set || is_set(confed_asn.yfilter)) leaf_name_data.push_back(confed_asn.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -153,12 +182,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "confed-asn")
+    {
+        confed_asn = value;
+        confed_asn.value_namespace = name_space;
+        confed_asn.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "confed-asn")
+    {
+        confed_asn.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "confed-asn" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::AdjacencySid()
@@ -200,16 +256,16 @@ bool Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::has_data() const
 
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain_identifier.operation)
-	|| is_set(eflag.operation)
-	|| is_set(lflag.operation)
-	|| is_set(mpls_label.operation)
-	|| is_set(nflag.operation)
-	|| is_set(pflag.operation)
-	|| is_set(rflag.operation)
-	|| is_set(sid_type.operation)
-	|| is_set(vflag.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(domain_identifier.yfilter)
+	|| ydk::is_set(eflag.yfilter)
+	|| ydk::is_set(lflag.yfilter)
+	|| ydk::is_set(mpls_label.yfilter)
+	|| ydk::is_set(nflag.yfilter)
+	|| ydk::is_set(pflag.yfilter)
+	|| ydk::is_set(rflag.yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(vflag.yfilter)
 	|| (sid_prefix !=  nullptr && sid_prefix->has_operation());
 }
 
@@ -236,15 +292,15 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_identifier.is_set || is_set(domain_identifier.operation)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
-    if (eflag.is_set || is_set(eflag.operation)) leaf_name_data.push_back(eflag.get_name_leafdata());
-    if (lflag.is_set || is_set(lflag.operation)) leaf_name_data.push_back(lflag.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-    if (nflag.is_set || is_set(nflag.operation)) leaf_name_data.push_back(nflag.get_name_leafdata());
-    if (pflag.is_set || is_set(pflag.operation)) leaf_name_data.push_back(pflag.get_name_leafdata());
-    if (rflag.is_set || is_set(rflag.operation)) leaf_name_data.push_back(rflag.get_name_leafdata());
-    if (sid_type.is_set || is_set(sid_type.operation)) leaf_name_data.push_back(sid_type.get_name_leafdata());
-    if (vflag.is_set || is_set(vflag.operation)) leaf_name_data.push_back(vflag.get_name_leafdata());
+    if (domain_identifier.is_set || is_set(domain_identifier.yfilter)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
+    if (eflag.is_set || is_set(eflag.yfilter)) leaf_name_data.push_back(eflag.get_name_leafdata());
+    if (lflag.is_set || is_set(lflag.yfilter)) leaf_name_data.push_back(lflag.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (nflag.is_set || is_set(nflag.yfilter)) leaf_name_data.push_back(nflag.get_name_leafdata());
+    if (pflag.is_set || is_set(pflag.yfilter)) leaf_name_data.push_back(pflag.get_name_leafdata());
+    if (rflag.is_set || is_set(rflag.yfilter)) leaf_name_data.push_back(rflag.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (vflag.is_set || is_set(vflag.yfilter)) leaf_name_data.push_back(vflag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -277,44 +333,109 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "domain-identifier")
     {
         domain_identifier = value;
+        domain_identifier.value_namespace = name_space;
+        domain_identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eflag")
     {
         eflag = value;
+        eflag.value_namespace = name_space;
+        eflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lflag")
     {
         lflag = value;
+        lflag.value_namespace = name_space;
+        lflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nflag")
     {
         nflag = value;
+        nflag.value_namespace = name_space;
+        nflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pflag")
     {
         pflag = value;
+        pflag.value_namespace = name_space;
+        pflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rflag")
     {
         rflag = value;
+        rflag.value_namespace = name_space;
+        rflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-type")
     {
         sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vflag")
     {
         vflag = value;
+        vflag.value_namespace = name_space;
+        vflag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "domain-identifier")
+    {
+        domain_identifier.yfilter = yfilter;
+    }
+    if(value_path == "eflag")
+    {
+        eflag.yfilter = yfilter;
+    }
+    if(value_path == "lflag")
+    {
+        lflag.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+    if(value_path == "nflag")
+    {
+        nflag.yfilter = yfilter;
+    }
+    if(value_path == "pflag")
+    {
+        pflag.yfilter = yfilter;
+    }
+    if(value_path == "rflag")
+    {
+        rflag.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "vflag")
+    {
+        vflag.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-prefix" || name == "domain-identifier" || name == "eflag" || name == "lflag" || name == "mpls-label" || name == "nflag" || name == "pflag" || name == "rflag" || name == "sid-type" || name == "vflag")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::SidPrefix()
@@ -339,10 +460,10 @@ bool Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::has_da
 
 bool Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::get_segment_path() const
@@ -368,9 +489,9 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -389,20 +510,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::SidPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::Ipv6Link()
@@ -452,13 +602,13 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::has_operation() const
         if(adjacency_sid[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(igp_metric.operation)
-	|| is_set(local_ipv6_address.operation)
-	|| is_set(max_reservable_bandwidth.operation)
-	|| is_set(maximum_link_bandwidth.operation)
-	|| is_set(remote_ipv6_address.operation)
-	|| is_set(te_metric.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(igp_metric.yfilter)
+	|| ydk::is_set(local_ipv6_address.yfilter)
+	|| ydk::is_set(max_reservable_bandwidth.yfilter)
+	|| ydk::is_set(maximum_link_bandwidth.yfilter)
+	|| ydk::is_set(remote_ipv6_address.yfilter)
+	|| ydk::is_set(te_metric.yfilter)
 	|| (local_igp_information !=  nullptr && local_igp_information->has_operation())
 	|| (remote_node_protocol_identifier !=  nullptr && remote_node_protocol_identifier->has_operation());
 }
@@ -486,12 +636,12 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (igp_metric.is_set || is_set(igp_metric.operation)) leaf_name_data.push_back(igp_metric.get_name_leafdata());
-    if (local_ipv6_address.is_set || is_set(local_ipv6_address.operation)) leaf_name_data.push_back(local_ipv6_address.get_name_leafdata());
-    if (max_reservable_bandwidth.is_set || is_set(max_reservable_bandwidth.operation)) leaf_name_data.push_back(max_reservable_bandwidth.get_name_leafdata());
-    if (maximum_link_bandwidth.is_set || is_set(maximum_link_bandwidth.operation)) leaf_name_data.push_back(maximum_link_bandwidth.get_name_leafdata());
-    if (remote_ipv6_address.is_set || is_set(remote_ipv6_address.operation)) leaf_name_data.push_back(remote_ipv6_address.get_name_leafdata());
-    if (te_metric.is_set || is_set(te_metric.operation)) leaf_name_data.push_back(te_metric.get_name_leafdata());
+    if (igp_metric.is_set || is_set(igp_metric.yfilter)) leaf_name_data.push_back(igp_metric.get_name_leafdata());
+    if (local_ipv6_address.is_set || is_set(local_ipv6_address.yfilter)) leaf_name_data.push_back(local_ipv6_address.get_name_leafdata());
+    if (max_reservable_bandwidth.is_set || is_set(max_reservable_bandwidth.yfilter)) leaf_name_data.push_back(max_reservable_bandwidth.get_name_leafdata());
+    if (maximum_link_bandwidth.is_set || is_set(maximum_link_bandwidth.yfilter)) leaf_name_data.push_back(maximum_link_bandwidth.get_name_leafdata());
+    if (remote_ipv6_address.is_set || is_set(remote_ipv6_address.yfilter)) leaf_name_data.push_back(remote_ipv6_address.get_name_leafdata());
+    if (te_metric.is_set || is_set(te_metric.yfilter)) leaf_name_data.push_back(te_metric.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -559,36 +709,84 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "igp-metric")
     {
         igp_metric = value;
+        igp_metric.value_namespace = name_space;
+        igp_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-ipv6-address")
     {
         local_ipv6_address = value;
+        local_ipv6_address.value_namespace = name_space;
+        local_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-reservable-bandwidth")
     {
         max_reservable_bandwidth = value;
+        max_reservable_bandwidth.value_namespace = name_space;
+        max_reservable_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-link-bandwidth")
     {
         maximum_link_bandwidth = value;
+        maximum_link_bandwidth.value_namespace = name_space;
+        maximum_link_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-ipv6-address")
     {
         remote_ipv6_address = value;
+        remote_ipv6_address.value_namespace = name_space;
+        remote_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "te-metric")
     {
         te_metric = value;
+        te_metric.value_namespace = name_space;
+        te_metric.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igp-metric")
+    {
+        igp_metric.yfilter = yfilter;
+    }
+    if(value_path == "local-ipv6-address")
+    {
+        local_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "max-reservable-bandwidth")
+    {
+        max_reservable_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "maximum-link-bandwidth")
+    {
+        maximum_link_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "remote-ipv6-address")
+    {
+        remote_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "te-metric")
+    {
+        te_metric.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjacency-sid" || name == "local-igp-information" || name == "remote-node-protocol-identifier" || name == "igp-metric" || name == "local-ipv6-address" || name == "max-reservable-bandwidth" || name == "maximum-link-bandwidth" || name == "remote-ipv6-address" || name == "te-metric")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::LocalIgpInformation()
     :
+    autonomous_system_number{YType::uint32, "autonomous-system-number"},
     domain_identifier{YType::uint64, "domain-identifier"}
     	,
     igp(std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp>())
@@ -604,14 +802,16 @@ Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::~LocalIgpInform
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::has_data() const
 {
-    return domain_identifier.is_set
+    return autonomous_system_number.is_set
+	|| domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain_identifier.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(autonomous_system_number.yfilter)
+	|| ydk::is_set(domain_identifier.yfilter)
 	|| (igp !=  nullptr && igp->has_operation());
 }
 
@@ -638,7 +838,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_identifier.is_set || is_set(domain_identifier.operation)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
+    if (autonomous_system_number.is_set || is_set(autonomous_system_number.yfilter)) leaf_name_data.push_back(autonomous_system_number.get_name_leafdata());
+    if (domain_identifier.is_set || is_set(domain_identifier.yfilter)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -671,12 +872,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "autonomous-system-number")
+    {
+        autonomous_system_number = value;
+        autonomous_system_number.value_namespace = name_space;
+        autonomous_system_number.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "domain-identifier")
     {
         domain_identifier = value;
+        domain_identifier.value_namespace = name_space;
+        domain_identifier.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "autonomous-system-number")
+    {
+        autonomous_system_number.yfilter = yfilter;
+    }
+    if(value_path == "domain-identifier")
+    {
+        domain_identifier.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igp" || name == "autonomous-system-number" || name == "domain-identifier")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Igp()
@@ -710,8 +938,8 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::has_d
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(igp_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(igp_id.yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (isis !=  nullptr && isis->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation());
@@ -740,7 +968,7 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (igp_id.is_set || is_set(igp_id.operation)) leaf_name_data.push_back(igp_id.get_name_leafdata());
+    if (igp_id.is_set || is_set(igp_id.yfilter)) leaf_name_data.push_back(igp_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -801,12 +1029,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "igp-id")
     {
         igp_id = value;
+        igp_id.value_namespace = name_space;
+        igp_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igp-id")
+    {
+        igp_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp" || name == "isis" || name == "ospf" || name == "igp-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::Isis()
@@ -829,9 +1074,9 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis:
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(level.operation)
-	|| is_set(system_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(system_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::get_segment_path() const
@@ -857,8 +1102,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (system_id.is_set || is_set(system_id.operation)) leaf_name_data.push_back(system_id.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (system_id.is_set || is_set(system_id.yfilter)) leaf_name_data.push_back(system_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -877,16 +1122,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
         level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-id")
     {
         system_id = value;
+        system_id.value_namespace = name_space;
+        system_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "system-id")
+    {
+        system_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "system-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::Ospf()
@@ -909,9 +1177,9 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf:
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::get_segment_path() const
@@ -937,8 +1205,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.operation)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -957,20 +1225,44 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area")
     {
         area = value;
+        area.value_namespace = name_space;
+        area.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area")
+    {
+        area.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::Bgp()
     :
+    confed_asn{YType::uint32, "confed-asn"},
     router_id{YType::str, "router-id"}
 {
     yang_name = "bgp"; yang_parent_name = "igp";
@@ -982,13 +1274,15 @@ Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::~Bgp(
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::has_data() const
 {
-    return router_id.is_set;
+    return confed_asn.is_set
+	|| router_id.is_set;
 }
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(confed_asn.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::get_segment_path() const
@@ -1014,7 +1308,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (confed_asn.is_set || is_set(confed_asn.yfilter)) leaf_name_data.push_back(confed_asn.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1033,12 +1328,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "confed-asn")
+    {
+        confed_asn = value;
+        confed_asn.value_namespace = name_space;
+        confed_asn.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "confed-asn")
+    {
+        confed_asn.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::LocalIgpInformation::Igp::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "confed-asn" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::RemoteNodeProtocolIdentifier()
@@ -1087,12 +1409,12 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::h
         if(srgb_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(ipv4bgp_router_id.operation)
-	|| is_set(ipv4bgp_router_id_set.operation)
-	|| is_set(ipv4te_router_id.operation)
-	|| is_set(ipv4te_router_id_set.operation)
-	|| is_set(node_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4bgp_router_id.yfilter)
+	|| ydk::is_set(ipv4bgp_router_id_set.yfilter)
+	|| ydk::is_set(ipv4te_router_id.yfilter)
+	|| ydk::is_set(ipv4te_router_id_set.yfilter)
+	|| ydk::is_set(node_name.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::get_segment_path() const
@@ -1118,11 +1440,11 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4bgp_router_id.is_set || is_set(ipv4bgp_router_id.operation)) leaf_name_data.push_back(ipv4bgp_router_id.get_name_leafdata());
-    if (ipv4bgp_router_id_set.is_set || is_set(ipv4bgp_router_id_set.operation)) leaf_name_data.push_back(ipv4bgp_router_id_set.get_name_leafdata());
-    if (ipv4te_router_id.is_set || is_set(ipv4te_router_id.operation)) leaf_name_data.push_back(ipv4te_router_id.get_name_leafdata());
-    if (ipv4te_router_id_set.is_set || is_set(ipv4te_router_id_set.operation)) leaf_name_data.push_back(ipv4te_router_id_set.get_name_leafdata());
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (ipv4bgp_router_id.is_set || is_set(ipv4bgp_router_id.yfilter)) leaf_name_data.push_back(ipv4bgp_router_id.get_name_leafdata());
+    if (ipv4bgp_router_id_set.is_set || is_set(ipv4bgp_router_id_set.yfilter)) leaf_name_data.push_back(ipv4bgp_router_id_set.get_name_leafdata());
+    if (ipv4te_router_id.is_set || is_set(ipv4te_router_id.yfilter)) leaf_name_data.push_back(ipv4te_router_id.get_name_leafdata());
+    if (ipv4te_router_id_set.is_set || is_set(ipv4te_router_id_set.yfilter)) leaf_name_data.push_back(ipv4te_router_id_set.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1183,32 +1505,74 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4bgp-router-id")
     {
         ipv4bgp_router_id = value;
+        ipv4bgp_router_id.value_namespace = name_space;
+        ipv4bgp_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4bgp-router-id-set")
     {
         ipv4bgp_router_id_set = value;
+        ipv4bgp_router_id_set.value_namespace = name_space;
+        ipv4bgp_router_id_set.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4te-router-id")
     {
         ipv4te_router_id = value;
+        ipv4te_router_id.value_namespace = name_space;
+        ipv4te_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4te-router-id-set")
     {
         ipv4te_router_id_set = value;
+        ipv4te_router_id_set.value_namespace = name_space;
+        ipv4te_router_id_set.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4bgp-router-id")
+    {
+        ipv4bgp_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ipv4bgp-router-id-set")
+    {
+        ipv4bgp_router_id_set.yfilter = yfilter;
+    }
+    if(value_path == "ipv4te-router-id")
+    {
+        ipv4te_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ipv4te-router-id-set")
+    {
+        ipv4te_router_id_set.yfilter = yfilter;
+    }
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igp-information" || name == "srgb-information" || name == "ipv4bgp-router-id" || name == "ipv4bgp-router-id-set" || name == "ipv4te-router-id" || name == "ipv4te-router-id-set" || name == "node-name")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::IgpInformation()
     :
+    autonomous_system_number{YType::uint32, "autonomous-system-number"},
     domain_identifier{YType::uint64, "domain-identifier"}
     	,
     igp(std::make_shared<Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp>())
@@ -1224,14 +1588,16 @@ Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::has_data() const
 {
-    return domain_identifier.is_set
+    return autonomous_system_number.is_set
+	|| domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain_identifier.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(autonomous_system_number.yfilter)
+	|| ydk::is_set(domain_identifier.yfilter)
 	|| (igp !=  nullptr && igp->has_operation());
 }
 
@@ -1258,7 +1624,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_identifier.is_set || is_set(domain_identifier.operation)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
+    if (autonomous_system_number.is_set || is_set(autonomous_system_number.yfilter)) leaf_name_data.push_back(autonomous_system_number.get_name_leafdata());
+    if (domain_identifier.is_set || is_set(domain_identifier.yfilter)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1291,12 +1658,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "autonomous-system-number")
+    {
+        autonomous_system_number = value;
+        autonomous_system_number.value_namespace = name_space;
+        autonomous_system_number.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "domain-identifier")
     {
         domain_identifier = value;
+        domain_identifier.value_namespace = name_space;
+        domain_identifier.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "autonomous-system-number")
+    {
+        autonomous_system_number.yfilter = yfilter;
+    }
+    if(value_path == "domain-identifier")
+    {
+        domain_identifier.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igp" || name == "autonomous-system-number" || name == "domain-identifier")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Igp()
@@ -1330,8 +1724,8 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::I
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(igp_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(igp_id.yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (isis !=  nullptr && isis->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation());
@@ -1360,7 +1754,7 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (igp_id.is_set || is_set(igp_id.operation)) leaf_name_data.push_back(igp_id.get_name_leafdata());
+    if (igp_id.is_set || is_set(igp_id.yfilter)) leaf_name_data.push_back(igp_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1421,12 +1815,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "igp-id")
     {
         igp_id = value;
+        igp_id.value_namespace = name_space;
+        igp_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igp-id")
+    {
+        igp_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp" || name == "isis" || name == "ospf" || name == "igp-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::Isis()
@@ -1449,9 +1860,9 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::I
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(level.operation)
-	|| is_set(system_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(system_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::get_segment_path() const
@@ -1477,8 +1888,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (system_id.is_set || is_set(system_id.operation)) leaf_name_data.push_back(system_id.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (system_id.is_set || is_set(system_id.yfilter)) leaf_name_data.push_back(system_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1497,16 +1908,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
         level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-id")
     {
         system_id = value;
+        system_id.value_namespace = name_space;
+        system_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "system-id")
+    {
+        system_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "system-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::Ospf()
@@ -1529,9 +1963,9 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::I
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_segment_path() const
@@ -1557,8 +1991,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.operation)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1577,20 +2011,44 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area")
     {
         area = value;
+        area.value_namespace = name_space;
+        area.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area")
+    {
+        area.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::Bgp()
     :
+    confed_asn{YType::uint32, "confed-asn"},
     router_id{YType::str, "router-id"}
 {
     yang_name = "bgp"; yang_parent_name = "igp";
@@ -1602,13 +2060,15 @@ Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInf
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_data() const
 {
-    return router_id.is_set;
+    return confed_asn.is_set
+	|| router_id.is_set;
 }
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(confed_asn.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_segment_path() const
@@ -1634,7 +2094,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (confed_asn.is_set || is_set(confed_asn.yfilter)) leaf_name_data.push_back(confed_asn.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1653,12 +2114,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "confed-asn")
+    {
+        confed_asn = value;
+        confed_asn.value_namespace = name_space;
+        confed_asn.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "confed-asn")
+    {
+        confed_asn.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "confed-asn" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::SrgbInformation()
@@ -1686,9 +2174,9 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::S
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(size.operation)
-	|| is_set(start.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(start.yfilter)
 	|| (igp_srgb !=  nullptr && igp_srgb->has_operation());
 }
 
@@ -1715,8 +2203,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (size.is_set || is_set(size.operation)) leaf_name_data.push_back(size.get_name_leafdata());
-    if (start.is_set || is_set(start.operation)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1749,16 +2237,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "size")
     {
         size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start")
     {
         start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igp-srgb" || name == "size" || name == "start")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::IgpSrgb()
@@ -1792,8 +2303,8 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::S
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(igp_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(igp_id.yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (isis !=  nullptr && isis->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation());
@@ -1822,7 +2333,7 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (igp_id.is_set || is_set(igp_id.operation)) leaf_name_data.push_back(igp_id.get_name_leafdata());
+    if (igp_id.is_set || is_set(igp_id.yfilter)) leaf_name_data.push_back(igp_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1883,12 +2394,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "igp-id")
     {
         igp_id = value;
+        igp_id.value_namespace = name_space;
+        igp_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igp-id")
+    {
+        igp_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp" || name == "isis" || name == "ospf" || name == "igp-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::Isis()
@@ -1911,9 +2439,9 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::S
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(level.operation)
-	|| is_set(system_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(system_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::get_segment_path() const
@@ -1939,8 +2467,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (system_id.is_set || is_set(system_id.operation)) leaf_name_data.push_back(system_id.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (system_id.is_set || is_set(system_id.yfilter)) leaf_name_data.push_back(system_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1959,16 +2487,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
         level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-id")
     {
         system_id = value;
+        system_id.value_namespace = name_space;
+        system_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "system-id")
+    {
+        system_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "system-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::Ospf()
@@ -1991,9 +2542,9 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::S
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::get_segment_path() const
@@ -2019,8 +2570,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.operation)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2039,20 +2590,44 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area")
     {
         area = value;
+        area.value_namespace = name_space;
+        area.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area")
+    {
+        area.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::Bgp()
     :
+    confed_asn{YType::uint32, "confed-asn"},
     router_id{YType::str, "router-id"}
 {
     yang_name = "bgp"; yang_parent_name = "igp-srgb";
@@ -2064,13 +2639,15 @@ Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbIn
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_data() const
 {
-    return router_id.is_set;
+    return confed_asn.is_set
+	|| router_id.is_set;
 }
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(confed_asn.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::get_segment_path() const
@@ -2096,7 +2673,8 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (confed_asn.is_set || is_set(confed_asn.yfilter)) leaf_name_data.push_back(confed_asn.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2115,12 +2693,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "confed-asn")
+    {
+        confed_asn = value;
+        confed_asn.value_namespace = name_space;
+        confed_asn.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "confed-asn")
+    {
+        confed_asn.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "confed-asn" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::AdjacencySid()
@@ -2162,16 +2767,16 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::has_data() const
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain_identifier.operation)
-	|| is_set(eflag.operation)
-	|| is_set(lflag.operation)
-	|| is_set(mpls_label.operation)
-	|| is_set(nflag.operation)
-	|| is_set(pflag.operation)
-	|| is_set(rflag.operation)
-	|| is_set(sid_type.operation)
-	|| is_set(vflag.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(domain_identifier.yfilter)
+	|| ydk::is_set(eflag.yfilter)
+	|| ydk::is_set(lflag.yfilter)
+	|| ydk::is_set(mpls_label.yfilter)
+	|| ydk::is_set(nflag.yfilter)
+	|| ydk::is_set(pflag.yfilter)
+	|| ydk::is_set(rflag.yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(vflag.yfilter)
 	|| (sid_prefix !=  nullptr && sid_prefix->has_operation());
 }
 
@@ -2198,15 +2803,15 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_identifier.is_set || is_set(domain_identifier.operation)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
-    if (eflag.is_set || is_set(eflag.operation)) leaf_name_data.push_back(eflag.get_name_leafdata());
-    if (lflag.is_set || is_set(lflag.operation)) leaf_name_data.push_back(lflag.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-    if (nflag.is_set || is_set(nflag.operation)) leaf_name_data.push_back(nflag.get_name_leafdata());
-    if (pflag.is_set || is_set(pflag.operation)) leaf_name_data.push_back(pflag.get_name_leafdata());
-    if (rflag.is_set || is_set(rflag.operation)) leaf_name_data.push_back(rflag.get_name_leafdata());
-    if (sid_type.is_set || is_set(sid_type.operation)) leaf_name_data.push_back(sid_type.get_name_leafdata());
-    if (vflag.is_set || is_set(vflag.operation)) leaf_name_data.push_back(vflag.get_name_leafdata());
+    if (domain_identifier.is_set || is_set(domain_identifier.yfilter)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
+    if (eflag.is_set || is_set(eflag.yfilter)) leaf_name_data.push_back(eflag.get_name_leafdata());
+    if (lflag.is_set || is_set(lflag.yfilter)) leaf_name_data.push_back(lflag.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (nflag.is_set || is_set(nflag.yfilter)) leaf_name_data.push_back(nflag.get_name_leafdata());
+    if (pflag.is_set || is_set(pflag.yfilter)) leaf_name_data.push_back(pflag.get_name_leafdata());
+    if (rflag.is_set || is_set(rflag.yfilter)) leaf_name_data.push_back(rflag.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (vflag.is_set || is_set(vflag.yfilter)) leaf_name_data.push_back(vflag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2239,44 +2844,109 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "domain-identifier")
     {
         domain_identifier = value;
+        domain_identifier.value_namespace = name_space;
+        domain_identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eflag")
     {
         eflag = value;
+        eflag.value_namespace = name_space;
+        eflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lflag")
     {
         lflag = value;
+        lflag.value_namespace = name_space;
+        lflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nflag")
     {
         nflag = value;
+        nflag.value_namespace = name_space;
+        nflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pflag")
     {
         pflag = value;
+        pflag.value_namespace = name_space;
+        pflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rflag")
     {
         rflag = value;
+        rflag.value_namespace = name_space;
+        rflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-type")
     {
         sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vflag")
     {
         vflag = value;
+        vflag.value_namespace = name_space;
+        vflag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "domain-identifier")
+    {
+        domain_identifier.yfilter = yfilter;
+    }
+    if(value_path == "eflag")
+    {
+        eflag.yfilter = yfilter;
+    }
+    if(value_path == "lflag")
+    {
+        lflag.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+    if(value_path == "nflag")
+    {
+        nflag.yfilter = yfilter;
+    }
+    if(value_path == "pflag")
+    {
+        pflag.yfilter = yfilter;
+    }
+    if(value_path == "rflag")
+    {
+        rflag.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "vflag")
+    {
+        vflag.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-prefix" || name == "domain-identifier" || name == "eflag" || name == "lflag" || name == "mpls-label" || name == "nflag" || name == "pflag" || name == "rflag" || name == "sid-type" || name == "vflag")
+        return true;
+    return false;
 }
 
 Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::SidPrefix()
@@ -2301,10 +2971,10 @@ bool Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::has_da
 
 bool Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::get_segment_path() const
@@ -2330,9 +3000,9 @@ const EntityPath Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2351,20 +3021,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TopologyNodes::TopologyNode:
     return children;
 }
 
-void Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::set_value(const std::string & value_path, std::string value)
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Pce::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfos()
@@ -2393,7 +3092,7 @@ bool Pce::PrefixInfos::has_operation() const
         if(prefix_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::PrefixInfos::get_segment_path() const
@@ -2458,8 +3157,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::get_children() 
     return children;
 }
 
-void Pce::PrefixInfos::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::PrefixInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::PrefixInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-info")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::PrefixInfo()
@@ -2497,9 +3207,9 @@ bool Pce::PrefixInfos::PrefixInfo::has_operation() const
         if(address[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(node_identifier.operation)
-	|| is_set(node_identifier_xr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_identifier.yfilter)
+	|| ydk::is_set(node_identifier_xr.yfilter)
 	|| (node_protocol_identifier !=  nullptr && node_protocol_identifier->has_operation());
 }
 
@@ -2526,8 +3236,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_identifier.is_set || is_set(node_identifier.operation)) leaf_name_data.push_back(node_identifier.get_name_leafdata());
-    if (node_identifier_xr.is_set || is_set(node_identifier_xr.operation)) leaf_name_data.push_back(node_identifier_xr.get_name_leafdata());
+    if (node_identifier.is_set || is_set(node_identifier.yfilter)) leaf_name_data.push_back(node_identifier.get_name_leafdata());
+    if (node_identifier_xr.is_set || is_set(node_identifier_xr.yfilter)) leaf_name_data.push_back(node_identifier_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2581,16 +3291,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::get
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-identifier")
     {
         node_identifier = value;
+        node_identifier.value_namespace = name_space;
+        node_identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-identifier-xr")
     {
         node_identifier_xr = value;
+        node_identifier_xr.value_namespace = name_space;
+        node_identifier_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-identifier")
+    {
+        node_identifier.yfilter = yfilter;
+    }
+    if(value_path == "node-identifier-xr")
+    {
+        node_identifier_xr.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "node-protocol-identifier" || name == "node-identifier" || name == "node-identifier-xr")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::NodeProtocolIdentifier()
@@ -2639,12 +3372,12 @@ bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::has_operation() const
         if(srgb_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(ipv4bgp_router_id.operation)
-	|| is_set(ipv4bgp_router_id_set.operation)
-	|| is_set(ipv4te_router_id.operation)
-	|| is_set(ipv4te_router_id_set.operation)
-	|| is_set(node_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4bgp_router_id.yfilter)
+	|| ydk::is_set(ipv4bgp_router_id_set.yfilter)
+	|| ydk::is_set(ipv4te_router_id.yfilter)
+	|| ydk::is_set(ipv4te_router_id_set.yfilter)
+	|| ydk::is_set(node_name.yfilter);
 }
 
 std::string Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::get_segment_path() const
@@ -2670,11 +3403,11 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4bgp_router_id.is_set || is_set(ipv4bgp_router_id.operation)) leaf_name_data.push_back(ipv4bgp_router_id.get_name_leafdata());
-    if (ipv4bgp_router_id_set.is_set || is_set(ipv4bgp_router_id_set.operation)) leaf_name_data.push_back(ipv4bgp_router_id_set.get_name_leafdata());
-    if (ipv4te_router_id.is_set || is_set(ipv4te_router_id.operation)) leaf_name_data.push_back(ipv4te_router_id.get_name_leafdata());
-    if (ipv4te_router_id_set.is_set || is_set(ipv4te_router_id_set.operation)) leaf_name_data.push_back(ipv4te_router_id_set.get_name_leafdata());
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (ipv4bgp_router_id.is_set || is_set(ipv4bgp_router_id.yfilter)) leaf_name_data.push_back(ipv4bgp_router_id.get_name_leafdata());
+    if (ipv4bgp_router_id_set.is_set || is_set(ipv4bgp_router_id_set.yfilter)) leaf_name_data.push_back(ipv4bgp_router_id_set.get_name_leafdata());
+    if (ipv4te_router_id.is_set || is_set(ipv4te_router_id.yfilter)) leaf_name_data.push_back(ipv4te_router_id.get_name_leafdata());
+    if (ipv4te_router_id_set.is_set || is_set(ipv4te_router_id_set.yfilter)) leaf_name_data.push_back(ipv4te_router_id_set.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2735,32 +3468,74 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4bgp-router-id")
     {
         ipv4bgp_router_id = value;
+        ipv4bgp_router_id.value_namespace = name_space;
+        ipv4bgp_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4bgp-router-id-set")
     {
         ipv4bgp_router_id_set = value;
+        ipv4bgp_router_id_set.value_namespace = name_space;
+        ipv4bgp_router_id_set.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4te-router-id")
     {
         ipv4te_router_id = value;
+        ipv4te_router_id.value_namespace = name_space;
+        ipv4te_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4te-router-id-set")
     {
         ipv4te_router_id_set = value;
+        ipv4te_router_id_set.value_namespace = name_space;
+        ipv4te_router_id_set.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4bgp-router-id")
+    {
+        ipv4bgp_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ipv4bgp-router-id-set")
+    {
+        ipv4bgp_router_id_set.yfilter = yfilter;
+    }
+    if(value_path == "ipv4te-router-id")
+    {
+        ipv4te_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ipv4te-router-id-set")
+    {
+        ipv4te_router_id_set.yfilter = yfilter;
+    }
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igp-information" || name == "srgb-information" || name == "ipv4bgp-router-id" || name == "ipv4bgp-router-id-set" || name == "ipv4te-router-id" || name == "ipv4te-router-id-set" || name == "node-name")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::IgpInformation()
     :
+    autonomous_system_number{YType::uint32, "autonomous-system-number"},
     domain_identifier{YType::uint64, "domain-identifier"}
     	,
     igp(std::make_shared<Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp>())
@@ -2776,14 +3551,16 @@ Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::~IgpInform
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::has_data() const
 {
-    return domain_identifier.is_set
+    return autonomous_system_number.is_set
+	|| domain_identifier.is_set
 	|| (igp !=  nullptr && igp->has_data());
 }
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain_identifier.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(autonomous_system_number.yfilter)
+	|| ydk::is_set(domain_identifier.yfilter)
 	|| (igp !=  nullptr && igp->has_operation());
 }
 
@@ -2810,7 +3587,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_identifier.is_set || is_set(domain_identifier.operation)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
+    if (autonomous_system_number.is_set || is_set(autonomous_system_number.yfilter)) leaf_name_data.push_back(autonomous_system_number.get_name_leafdata());
+    if (domain_identifier.is_set || is_set(domain_identifier.yfilter)) leaf_name_data.push_back(domain_identifier.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2843,12 +3621,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "autonomous-system-number")
+    {
+        autonomous_system_number = value;
+        autonomous_system_number.value_namespace = name_space;
+        autonomous_system_number.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "domain-identifier")
     {
         domain_identifier = value;
+        domain_identifier.value_namespace = name_space;
+        domain_identifier.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "autonomous-system-number")
+    {
+        autonomous_system_number.yfilter = yfilter;
+    }
+    if(value_path == "domain-identifier")
+    {
+        domain_identifier.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igp" || name == "autonomous-system-number" || name == "domain-identifier")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Igp()
@@ -2882,8 +3687,8 @@ bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(igp_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(igp_id.yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (isis !=  nullptr && isis->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation());
@@ -2912,7 +3717,7 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (igp_id.is_set || is_set(igp_id.operation)) leaf_name_data.push_back(igp_id.get_name_leafdata());
+    if (igp_id.is_set || is_set(igp_id.yfilter)) leaf_name_data.push_back(igp_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2973,12 +3778,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "igp-id")
     {
         igp_id = value;
+        igp_id.value_namespace = name_space;
+        igp_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igp-id")
+    {
+        igp_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp" || name == "isis" || name == "ospf" || name == "igp-id")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::Isis()
@@ -3001,9 +3823,9 @@ bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(level.operation)
-	|| is_set(system_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(system_id.yfilter);
 }
 
 std::string Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::get_segment_path() const
@@ -3029,8 +3851,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (system_id.is_set || is_set(system_id.operation)) leaf_name_data.push_back(system_id.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (system_id.is_set || is_set(system_id.yfilter)) leaf_name_data.push_back(system_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3049,16 +3871,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
         level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-id")
     {
         system_id = value;
+        system_id.value_namespace = name_space;
+        system_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "system-id")
+    {
+        system_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "system-id")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::Ospf()
@@ -3081,9 +3926,9 @@ bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::get_segment_path() const
@@ -3109,8 +3954,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.operation)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3129,20 +3974,44 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area")
     {
         area = value;
+        area.value_namespace = name_space;
+        area.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area")
+    {
+        area.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::Bgp()
     :
+    confed_asn{YType::uint32, "confed-asn"},
     router_id{YType::str, "router-id"}
 {
     yang_name = "bgp"; yang_parent_name = "igp";
@@ -3154,13 +4023,15 @@ Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_data() const
 {
-    return router_id.is_set;
+    return confed_asn.is_set
+	|| router_id.is_set;
 }
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(confed_asn.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::get_segment_path() const
@@ -3186,7 +4057,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInform
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (confed_asn.is_set || is_set(confed_asn.yfilter)) leaf_name_data.push_back(confed_asn.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3205,12 +4077,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "confed-asn")
+    {
+        confed_asn = value;
+        confed_asn.value_namespace = name_space;
+        confed_asn.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "confed-asn")
+    {
+        confed_asn.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "confed-asn" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::SrgbInformation()
@@ -3238,9 +4137,9 @@ bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::has_
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(size.operation)
-	|| is_set(start.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(start.yfilter)
 	|| (igp_srgb !=  nullptr && igp_srgb->has_operation());
 }
 
@@ -3267,8 +4166,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInfor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (size.is_set || is_set(size.operation)) leaf_name_data.push_back(size.get_name_leafdata());
-    if (start.is_set || is_set(start.operation)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3301,16 +4200,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "size")
     {
         size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start")
     {
         start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igp-srgb" || name == "size" || name == "start")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::IgpSrgb()
@@ -3344,8 +4266,8 @@ bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpS
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(igp_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(igp_id.yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (isis !=  nullptr && isis->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation());
@@ -3374,7 +4296,7 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInfor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (igp_id.is_set || is_set(igp_id.operation)) leaf_name_data.push_back(igp_id.get_name_leafdata());
+    if (igp_id.is_set || is_set(igp_id.yfilter)) leaf_name_data.push_back(igp_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3435,12 +4357,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "igp-id")
     {
         igp_id = value;
+        igp_id.value_namespace = name_space;
+        igp_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "igp-id")
+    {
+        igp_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp" || name == "isis" || name == "ospf" || name == "igp-id")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::Isis()
@@ -3463,9 +4402,9 @@ bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpS
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(level.operation)
-	|| is_set(system_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(system_id.yfilter);
 }
 
 std::string Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::get_segment_path() const
@@ -3491,8 +4430,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInfor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (level.is_set || is_set(level.operation)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (system_id.is_set || is_set(system_id.operation)) leaf_name_data.push_back(system_id.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (system_id.is_set || is_set(system_id.yfilter)) leaf_name_data.push_back(system_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3511,16 +4450,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
         level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-id")
     {
         system_id = value;
+        system_id.value_namespace = name_space;
+        system_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "system-id")
+    {
+        system_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "system-id")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::Ospf()
@@ -3543,9 +4505,9 @@ bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpS
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(area.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(area.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::get_segment_path() const
@@ -3571,8 +4533,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInfor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (area.is_set || is_set(area.operation)) leaf_name_data.push_back(area.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3591,20 +4553,44 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "area")
     {
         area = value;
+        area.value_namespace = name_space;
+        area.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "area")
+    {
+        area.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::Bgp()
     :
+    confed_asn{YType::uint32, "confed-asn"},
     router_id{YType::str, "router-id"}
 {
     yang_name = "bgp"; yang_parent_name = "igp-srgb";
@@ -3616,13 +4602,15 @@ Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_data() const
 {
-    return router_id.is_set;
+    return confed_asn.is_set
+	|| router_id.is_set;
 }
 
 bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(confed_asn.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::get_segment_path() const
@@ -3648,7 +4636,8 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInfor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (confed_asn.is_set || is_set(confed_asn.yfilter)) leaf_name_data.push_back(confed_asn.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3667,12 +4656,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Nod
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "confed-asn")
+    {
+        confed_asn = value;
+        confed_asn.value_namespace = name_space;
+        confed_asn.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "confed-asn")
+    {
+        confed_asn.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbInformation::IgpSrgb::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "confed-asn" || name == "router-id")
+        return true;
+    return false;
 }
 
 Pce::PrefixInfos::PrefixInfo::Address::Address()
@@ -3697,10 +4713,10 @@ bool Pce::PrefixInfos::PrefixInfo::Address::has_data() const
 
 bool Pce::PrefixInfos::PrefixInfo::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string Pce::PrefixInfos::PrefixInfo::Address::get_segment_path() const
@@ -3726,9 +4742,9 @@ const EntityPath Pce::PrefixInfos::PrefixInfo::Address::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3747,20 +4763,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PrefixInfos::PrefixInfo::Add
     return children;
 }
 
-void Pce::PrefixInfos::PrefixInfo::Address::set_value(const std::string & value_path, std::string value)
+void Pce::PrefixInfos::PrefixInfo::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PrefixInfos::PrefixInfo::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Pce::PrefixInfos::PrefixInfo::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Pce::LspSummary::LspSummary()
@@ -3793,7 +4838,7 @@ bool Pce::LspSummary::has_operation() const
         if(peer_ls_ps_info[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (all_ls_ps !=  nullptr && all_ls_ps->has_operation());
 }
 
@@ -3873,8 +4918,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::LspSummary::get_children() c
     return children;
 }
 
-void Pce::LspSummary::set_value(const std::string & value_path, std::string value)
+void Pce::LspSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::LspSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::LspSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all-ls-ps" || name == "peer-ls-ps-info")
+        return true;
+    return false;
 }
 
 Pce::LspSummary::AllLsPs::AllLsPs()
@@ -3903,12 +4959,12 @@ bool Pce::LspSummary::AllLsPs::has_data() const
 
 bool Pce::LspSummary::AllLsPs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_up_ls_ps.operation)
-	|| is_set(all_ls_ps.operation)
-	|| is_set(rsvp_ls_ps.operation)
-	|| is_set(sr_ls_ps.operation)
-	|| is_set(up_ls_ps.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_up_ls_ps.yfilter)
+	|| ydk::is_set(all_ls_ps.yfilter)
+	|| ydk::is_set(rsvp_ls_ps.yfilter)
+	|| ydk::is_set(sr_ls_ps.yfilter)
+	|| ydk::is_set(up_ls_ps.yfilter);
 }
 
 std::string Pce::LspSummary::AllLsPs::get_segment_path() const
@@ -3934,11 +4990,11 @@ const EntityPath Pce::LspSummary::AllLsPs::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_up_ls_ps.is_set || is_set(admin_up_ls_ps.operation)) leaf_name_data.push_back(admin_up_ls_ps.get_name_leafdata());
-    if (all_ls_ps.is_set || is_set(all_ls_ps.operation)) leaf_name_data.push_back(all_ls_ps.get_name_leafdata());
-    if (rsvp_ls_ps.is_set || is_set(rsvp_ls_ps.operation)) leaf_name_data.push_back(rsvp_ls_ps.get_name_leafdata());
-    if (sr_ls_ps.is_set || is_set(sr_ls_ps.operation)) leaf_name_data.push_back(sr_ls_ps.get_name_leafdata());
-    if (up_ls_ps.is_set || is_set(up_ls_ps.operation)) leaf_name_data.push_back(up_ls_ps.get_name_leafdata());
+    if (admin_up_ls_ps.is_set || is_set(admin_up_ls_ps.yfilter)) leaf_name_data.push_back(admin_up_ls_ps.get_name_leafdata());
+    if (all_ls_ps.is_set || is_set(all_ls_ps.yfilter)) leaf_name_data.push_back(all_ls_ps.get_name_leafdata());
+    if (rsvp_ls_ps.is_set || is_set(rsvp_ls_ps.yfilter)) leaf_name_data.push_back(rsvp_ls_ps.get_name_leafdata());
+    if (sr_ls_ps.is_set || is_set(sr_ls_ps.yfilter)) leaf_name_data.push_back(sr_ls_ps.get_name_leafdata());
+    if (up_ls_ps.is_set || is_set(up_ls_ps.yfilter)) leaf_name_data.push_back(up_ls_ps.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3957,28 +5013,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::LspSummary::AllLsPs::get_chi
     return children;
 }
 
-void Pce::LspSummary::AllLsPs::set_value(const std::string & value_path, std::string value)
+void Pce::LspSummary::AllLsPs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-up-ls-ps")
     {
         admin_up_ls_ps = value;
+        admin_up_ls_ps.value_namespace = name_space;
+        admin_up_ls_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "all-ls-ps")
     {
         all_ls_ps = value;
+        all_ls_ps.value_namespace = name_space;
+        all_ls_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rsvp-ls-ps")
     {
         rsvp_ls_ps = value;
+        rsvp_ls_ps.value_namespace = name_space;
+        rsvp_ls_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sr-ls-ps")
     {
         sr_ls_ps = value;
+        sr_ls_ps.value_namespace = name_space;
+        sr_ls_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-ls-ps")
     {
         up_ls_ps = value;
+        up_ls_ps.value_namespace = name_space;
+        up_ls_ps.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::LspSummary::AllLsPs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-up-ls-ps")
+    {
+        admin_up_ls_ps.yfilter = yfilter;
+    }
+    if(value_path == "all-ls-ps")
+    {
+        all_ls_ps.yfilter = yfilter;
+    }
+    if(value_path == "rsvp-ls-ps")
+    {
+        rsvp_ls_ps.yfilter = yfilter;
+    }
+    if(value_path == "sr-ls-ps")
+    {
+        sr_ls_ps.yfilter = yfilter;
+    }
+    if(value_path == "up-ls-ps")
+    {
+        up_ls_ps.yfilter = yfilter;
+    }
+}
+
+bool Pce::LspSummary::AllLsPs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-up-ls-ps" || name == "all-ls-ps" || name == "rsvp-ls-ps" || name == "sr-ls-ps" || name == "up-ls-ps")
+        return true;
+    return false;
 }
 
 Pce::LspSummary::PeerLsPsInfo::PeerLsPsInfo()
@@ -4004,8 +5101,8 @@ bool Pce::LspSummary::PeerLsPsInfo::has_data() const
 
 bool Pce::LspSummary::PeerLsPsInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_address.yfilter)
 	|| (lsp_summary !=  nullptr && lsp_summary->has_operation());
 }
 
@@ -4032,7 +5129,7 @@ const EntityPath Pce::LspSummary::PeerLsPsInfo::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_address.is_set || is_set(peer_address.operation)) leaf_name_data.push_back(peer_address.get_name_leafdata());
+    if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4065,12 +5162,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::LspSummary::PeerLsPsInfo::ge
     return children;
 }
 
-void Pce::LspSummary::PeerLsPsInfo::set_value(const std::string & value_path, std::string value)
+void Pce::LspSummary::PeerLsPsInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-address")
     {
         peer_address = value;
+        peer_address.value_namespace = name_space;
+        peer_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::LspSummary::PeerLsPsInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-address")
+    {
+        peer_address.yfilter = yfilter;
+    }
+}
+
+bool Pce::LspSummary::PeerLsPsInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-summary" || name == "peer-address")
+        return true;
+    return false;
 }
 
 Pce::LspSummary::PeerLsPsInfo::LspSummary_::LspSummary_()
@@ -4099,12 +5213,12 @@ bool Pce::LspSummary::PeerLsPsInfo::LspSummary_::has_data() const
 
 bool Pce::LspSummary::PeerLsPsInfo::LspSummary_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_up_ls_ps.operation)
-	|| is_set(all_ls_ps.operation)
-	|| is_set(rsvp_ls_ps.operation)
-	|| is_set(sr_ls_ps.operation)
-	|| is_set(up_ls_ps.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_up_ls_ps.yfilter)
+	|| ydk::is_set(all_ls_ps.yfilter)
+	|| ydk::is_set(rsvp_ls_ps.yfilter)
+	|| ydk::is_set(sr_ls_ps.yfilter)
+	|| ydk::is_set(up_ls_ps.yfilter);
 }
 
 std::string Pce::LspSummary::PeerLsPsInfo::LspSummary_::get_segment_path() const
@@ -4130,11 +5244,11 @@ const EntityPath Pce::LspSummary::PeerLsPsInfo::LspSummary_::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_up_ls_ps.is_set || is_set(admin_up_ls_ps.operation)) leaf_name_data.push_back(admin_up_ls_ps.get_name_leafdata());
-    if (all_ls_ps.is_set || is_set(all_ls_ps.operation)) leaf_name_data.push_back(all_ls_ps.get_name_leafdata());
-    if (rsvp_ls_ps.is_set || is_set(rsvp_ls_ps.operation)) leaf_name_data.push_back(rsvp_ls_ps.get_name_leafdata());
-    if (sr_ls_ps.is_set || is_set(sr_ls_ps.operation)) leaf_name_data.push_back(sr_ls_ps.get_name_leafdata());
-    if (up_ls_ps.is_set || is_set(up_ls_ps.operation)) leaf_name_data.push_back(up_ls_ps.get_name_leafdata());
+    if (admin_up_ls_ps.is_set || is_set(admin_up_ls_ps.yfilter)) leaf_name_data.push_back(admin_up_ls_ps.get_name_leafdata());
+    if (all_ls_ps.is_set || is_set(all_ls_ps.yfilter)) leaf_name_data.push_back(all_ls_ps.get_name_leafdata());
+    if (rsvp_ls_ps.is_set || is_set(rsvp_ls_ps.yfilter)) leaf_name_data.push_back(rsvp_ls_ps.get_name_leafdata());
+    if (sr_ls_ps.is_set || is_set(sr_ls_ps.yfilter)) leaf_name_data.push_back(sr_ls_ps.get_name_leafdata());
+    if (up_ls_ps.is_set || is_set(up_ls_ps.yfilter)) leaf_name_data.push_back(up_ls_ps.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4153,28 +5267,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::LspSummary::PeerLsPsInfo::Ls
     return children;
 }
 
-void Pce::LspSummary::PeerLsPsInfo::LspSummary_::set_value(const std::string & value_path, std::string value)
+void Pce::LspSummary::PeerLsPsInfo::LspSummary_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-up-ls-ps")
     {
         admin_up_ls_ps = value;
+        admin_up_ls_ps.value_namespace = name_space;
+        admin_up_ls_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "all-ls-ps")
     {
         all_ls_ps = value;
+        all_ls_ps.value_namespace = name_space;
+        all_ls_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rsvp-ls-ps")
     {
         rsvp_ls_ps = value;
+        rsvp_ls_ps.value_namespace = name_space;
+        rsvp_ls_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sr-ls-ps")
     {
         sr_ls_ps = value;
+        sr_ls_ps.value_namespace = name_space;
+        sr_ls_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-ls-ps")
     {
         up_ls_ps = value;
+        up_ls_ps.value_namespace = name_space;
+        up_ls_ps.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::LspSummary::PeerLsPsInfo::LspSummary_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-up-ls-ps")
+    {
+        admin_up_ls_ps.yfilter = yfilter;
+    }
+    if(value_path == "all-ls-ps")
+    {
+        all_ls_ps.yfilter = yfilter;
+    }
+    if(value_path == "rsvp-ls-ps")
+    {
+        rsvp_ls_ps.yfilter = yfilter;
+    }
+    if(value_path == "sr-ls-ps")
+    {
+        sr_ls_ps.yfilter = yfilter;
+    }
+    if(value_path == "up-ls-ps")
+    {
+        up_ls_ps.yfilter = yfilter;
+    }
+}
+
+bool Pce::LspSummary::PeerLsPsInfo::LspSummary_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-up-ls-ps" || name == "all-ls-ps" || name == "rsvp-ls-ps" || name == "sr-ls-ps" || name == "up-ls-ps")
+        return true;
+    return false;
 }
 
 Pce::PeerInfos::PeerInfos()
@@ -4203,7 +5358,7 @@ bool Pce::PeerInfos::has_operation() const
         if(peer_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::PeerInfos::get_segment_path() const
@@ -4268,8 +5423,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PeerInfos::get_children() co
     return children;
 }
 
-void Pce::PeerInfos::set_value(const std::string & value_path, std::string value)
+void Pce::PeerInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::PeerInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::PeerInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-info")
+        return true;
+    return false;
 }
 
 Pce::PeerInfos::PeerInfo::PeerInfo()
@@ -4299,10 +5465,10 @@ bool Pce::PeerInfos::PeerInfo::has_data() const
 
 bool Pce::PeerInfos::PeerInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_address.operation)
-	|| is_set(peer_address_xr.operation)
-	|| is_set(peer_protocol.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_address.yfilter)
+	|| ydk::is_set(peer_address_xr.yfilter)
+	|| ydk::is_set(peer_protocol.yfilter)
 	|| (brief_pcep_information !=  nullptr && brief_pcep_information->has_operation());
 }
 
@@ -4329,9 +5495,9 @@ const EntityPath Pce::PeerInfos::PeerInfo::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_address.is_set || is_set(peer_address.operation)) leaf_name_data.push_back(peer_address.get_name_leafdata());
-    if (peer_address_xr.is_set || is_set(peer_address_xr.operation)) leaf_name_data.push_back(peer_address_xr.get_name_leafdata());
-    if (peer_protocol.is_set || is_set(peer_protocol.operation)) leaf_name_data.push_back(peer_protocol.get_name_leafdata());
+    if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
+    if (peer_address_xr.is_set || is_set(peer_address_xr.yfilter)) leaf_name_data.push_back(peer_address_xr.get_name_leafdata());
+    if (peer_protocol.is_set || is_set(peer_protocol.yfilter)) leaf_name_data.push_back(peer_protocol.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4364,20 +5530,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PeerInfos::PeerInfo::get_chi
     return children;
 }
 
-void Pce::PeerInfos::PeerInfo::set_value(const std::string & value_path, std::string value)
+void Pce::PeerInfos::PeerInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-address")
     {
         peer_address = value;
+        peer_address.value_namespace = name_space;
+        peer_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-address-xr")
     {
         peer_address_xr = value;
+        peer_address_xr.value_namespace = name_space;
+        peer_address_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-protocol")
     {
         peer_protocol = value;
+        peer_protocol.value_namespace = name_space;
+        peer_protocol.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PeerInfos::PeerInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-address")
+    {
+        peer_address.yfilter = yfilter;
+    }
+    if(value_path == "peer-address-xr")
+    {
+        peer_address_xr.yfilter = yfilter;
+    }
+    if(value_path == "peer-protocol")
+    {
+        peer_protocol.yfilter = yfilter;
+    }
+}
+
+bool Pce::PeerInfos::PeerInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief-pcep-information" || name == "peer-address" || name == "peer-address-xr" || name == "peer-protocol")
+        return true;
+    return false;
 }
 
 Pce::PeerInfos::PeerInfo::BriefPcepInformation::BriefPcepInformation()
@@ -4412,15 +5607,15 @@ bool Pce::PeerInfos::PeerInfo::BriefPcepInformation::has_data() const
 
 bool Pce::PeerInfos::PeerInfo::BriefPcepInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(capability_db_version.operation)
-	|| is_set(capability_delta_sync.operation)
-	|| is_set(capability_instantiate.operation)
-	|| is_set(capability_segment_routing.operation)
-	|| is_set(capability_triggered_sync.operation)
-	|| is_set(capability_update.operation)
-	|| is_set(pcep_state.operation)
-	|| is_set(stateful.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(capability_db_version.yfilter)
+	|| ydk::is_set(capability_delta_sync.yfilter)
+	|| ydk::is_set(capability_instantiate.yfilter)
+	|| ydk::is_set(capability_segment_routing.yfilter)
+	|| ydk::is_set(capability_triggered_sync.yfilter)
+	|| ydk::is_set(capability_update.yfilter)
+	|| ydk::is_set(pcep_state.yfilter)
+	|| ydk::is_set(stateful.yfilter);
 }
 
 std::string Pce::PeerInfos::PeerInfo::BriefPcepInformation::get_segment_path() const
@@ -4446,14 +5641,14 @@ const EntityPath Pce::PeerInfos::PeerInfo::BriefPcepInformation::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (capability_db_version.is_set || is_set(capability_db_version.operation)) leaf_name_data.push_back(capability_db_version.get_name_leafdata());
-    if (capability_delta_sync.is_set || is_set(capability_delta_sync.operation)) leaf_name_data.push_back(capability_delta_sync.get_name_leafdata());
-    if (capability_instantiate.is_set || is_set(capability_instantiate.operation)) leaf_name_data.push_back(capability_instantiate.get_name_leafdata());
-    if (capability_segment_routing.is_set || is_set(capability_segment_routing.operation)) leaf_name_data.push_back(capability_segment_routing.get_name_leafdata());
-    if (capability_triggered_sync.is_set || is_set(capability_triggered_sync.operation)) leaf_name_data.push_back(capability_triggered_sync.get_name_leafdata());
-    if (capability_update.is_set || is_set(capability_update.operation)) leaf_name_data.push_back(capability_update.get_name_leafdata());
-    if (pcep_state.is_set || is_set(pcep_state.operation)) leaf_name_data.push_back(pcep_state.get_name_leafdata());
-    if (stateful.is_set || is_set(stateful.operation)) leaf_name_data.push_back(stateful.get_name_leafdata());
+    if (capability_db_version.is_set || is_set(capability_db_version.yfilter)) leaf_name_data.push_back(capability_db_version.get_name_leafdata());
+    if (capability_delta_sync.is_set || is_set(capability_delta_sync.yfilter)) leaf_name_data.push_back(capability_delta_sync.get_name_leafdata());
+    if (capability_instantiate.is_set || is_set(capability_instantiate.yfilter)) leaf_name_data.push_back(capability_instantiate.get_name_leafdata());
+    if (capability_segment_routing.is_set || is_set(capability_segment_routing.yfilter)) leaf_name_data.push_back(capability_segment_routing.get_name_leafdata());
+    if (capability_triggered_sync.is_set || is_set(capability_triggered_sync.yfilter)) leaf_name_data.push_back(capability_triggered_sync.get_name_leafdata());
+    if (capability_update.is_set || is_set(capability_update.yfilter)) leaf_name_data.push_back(capability_update.get_name_leafdata());
+    if (pcep_state.is_set || is_set(pcep_state.yfilter)) leaf_name_data.push_back(pcep_state.get_name_leafdata());
+    if (stateful.is_set || is_set(stateful.yfilter)) leaf_name_data.push_back(stateful.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4472,40 +5667,99 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PeerInfos::PeerInfo::BriefPc
     return children;
 }
 
-void Pce::PeerInfos::PeerInfo::BriefPcepInformation::set_value(const std::string & value_path, std::string value)
+void Pce::PeerInfos::PeerInfo::BriefPcepInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "capability-db-version")
     {
         capability_db_version = value;
+        capability_db_version.value_namespace = name_space;
+        capability_db_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "capability-delta-sync")
     {
         capability_delta_sync = value;
+        capability_delta_sync.value_namespace = name_space;
+        capability_delta_sync.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "capability-instantiate")
     {
         capability_instantiate = value;
+        capability_instantiate.value_namespace = name_space;
+        capability_instantiate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "capability-segment-routing")
     {
         capability_segment_routing = value;
+        capability_segment_routing.value_namespace = name_space;
+        capability_segment_routing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "capability-triggered-sync")
     {
         capability_triggered_sync = value;
+        capability_triggered_sync.value_namespace = name_space;
+        capability_triggered_sync.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "capability-update")
     {
         capability_update = value;
+        capability_update.value_namespace = name_space;
+        capability_update.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcep-state")
     {
         pcep_state = value;
+        pcep_state.value_namespace = name_space;
+        pcep_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stateful")
     {
         stateful = value;
+        stateful.value_namespace = name_space;
+        stateful.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::PeerInfos::PeerInfo::BriefPcepInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capability-db-version")
+    {
+        capability_db_version.yfilter = yfilter;
+    }
+    if(value_path == "capability-delta-sync")
+    {
+        capability_delta_sync.yfilter = yfilter;
+    }
+    if(value_path == "capability-instantiate")
+    {
+        capability_instantiate.yfilter = yfilter;
+    }
+    if(value_path == "capability-segment-routing")
+    {
+        capability_segment_routing.yfilter = yfilter;
+    }
+    if(value_path == "capability-triggered-sync")
+    {
+        capability_triggered_sync.yfilter = yfilter;
+    }
+    if(value_path == "capability-update")
+    {
+        capability_update.yfilter = yfilter;
+    }
+    if(value_path == "pcep-state")
+    {
+        pcep_state.yfilter = yfilter;
+    }
+    if(value_path == "stateful")
+    {
+        stateful.yfilter = yfilter;
+    }
+}
+
+bool Pce::PeerInfos::PeerInfo::BriefPcepInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capability-db-version" || name == "capability-delta-sync" || name == "capability-instantiate" || name == "capability-segment-routing" || name == "capability-triggered-sync" || name == "capability-update" || name == "pcep-state" || name == "stateful")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfos()
@@ -4534,7 +5788,7 @@ bool Pce::TunnelDetailInfos::has_operation() const
         if(tunnel_detail_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::get_segment_path() const
@@ -4599,8 +5853,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::get_child
     return children;
 }
 
-void Pce::TunnelDetailInfos::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::TunnelDetailInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::TunnelDetailInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-detail-info")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::TunnelDetailInfo()
@@ -4644,12 +5909,12 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::has_operation() const
         if(detail_lsp_information[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(peer_address.operation)
-	|| is_set(plsp_id.operation)
-	|| is_set(tunnel_name.operation)
-	|| is_set(pcc_address.operation)
-	|| is_set(tunnel_name_xr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_address.yfilter)
+	|| ydk::is_set(plsp_id.yfilter)
+	|| ydk::is_set(tunnel_name.yfilter)
+	|| ydk::is_set(pcc_address.yfilter)
+	|| ydk::is_set(tunnel_name_xr.yfilter)
 	|| (private_lsp_information !=  nullptr && private_lsp_information->has_operation());
 }
 
@@ -4676,11 +5941,11 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_address.is_set || is_set(peer_address.operation)) leaf_name_data.push_back(peer_address.get_name_leafdata());
-    if (plsp_id.is_set || is_set(plsp_id.operation)) leaf_name_data.push_back(plsp_id.get_name_leafdata());
-    if (tunnel_name.is_set || is_set(tunnel_name.operation)) leaf_name_data.push_back(tunnel_name.get_name_leafdata());
-    if (pcc_address.is_set || is_set(pcc_address.operation)) leaf_name_data.push_back(pcc_address.get_name_leafdata());
-    if (tunnel_name_xr.is_set || is_set(tunnel_name_xr.operation)) leaf_name_data.push_back(tunnel_name_xr.get_name_leafdata());
+    if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
+    if (plsp_id.is_set || is_set(plsp_id.yfilter)) leaf_name_data.push_back(plsp_id.get_name_leafdata());
+    if (tunnel_name.is_set || is_set(tunnel_name.yfilter)) leaf_name_data.push_back(tunnel_name.get_name_leafdata());
+    if (pcc_address.is_set || is_set(pcc_address.yfilter)) leaf_name_data.push_back(pcc_address.get_name_leafdata());
+    if (tunnel_name_xr.is_set || is_set(tunnel_name_xr.yfilter)) leaf_name_data.push_back(tunnel_name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4734,28 +5999,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-address")
     {
         peer_address = value;
+        peer_address.value_namespace = name_space;
+        peer_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "plsp-id")
     {
         plsp_id = value;
+        plsp_id.value_namespace = name_space;
+        plsp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-name")
     {
         tunnel_name = value;
+        tunnel_name.value_namespace = name_space;
+        tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcc-address")
     {
         pcc_address = value;
+        pcc_address.value_namespace = name_space;
+        pcc_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-name-xr")
     {
         tunnel_name_xr = value;
+        tunnel_name_xr.value_namespace = name_space;
+        tunnel_name_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-address")
+    {
+        peer_address.yfilter = yfilter;
+    }
+    if(value_path == "plsp-id")
+    {
+        plsp_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-name")
+    {
+        tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "pcc-address")
+    {
+        pcc_address.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-name-xr")
+    {
+        tunnel_name_xr.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail-lsp-information" || name == "private-lsp-information" || name == "peer-address" || name == "plsp-id" || name == "tunnel-name" || name == "pcc-address" || name == "tunnel-name-xr")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::PrivateLspInformation()
@@ -4784,7 +6090,7 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::has_operat
         if(event_buffer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::get_segment_path() const
@@ -4849,8 +6155,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-buffer")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer::EventBuffer()
@@ -4873,9 +6190,9 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffe
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_message.operation)
-	|| is_set(time_stamp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_message.yfilter)
+	|| ydk::is_set(time_stamp.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer::get_segment_path() const
@@ -4901,8 +6218,8 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_message.is_set || is_set(event_message.operation)) leaf_name_data.push_back(event_message.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (event_message.is_set || is_set(event_message.yfilter)) leaf_name_data.push_back(event_message.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4921,16 +6238,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-message")
     {
         event_message = value;
+        event_message.value_namespace = name_space;
+        event_message.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-message")
+    {
+        event_message.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformation::EventBuffer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-message" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::DetailLspInformation()
@@ -5006,20 +6346,20 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::has_operati
     }
     for (auto const & leaf : srlg_info.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(actual_bandwidth.operation)
-	|| is_set(actual_bandwidth_specified.operation)
-	|| is_set(computing_pce.operation)
-	|| is_set(lsp_role.operation)
-	|| is_set(reporting_pcc_address.operation)
-	|| is_set(signaled_bandwidth.operation)
-	|| is_set(signaled_bandwidth_specified.operation)
-	|| is_set(srlg_info.operation)
-	|| is_set(state_sync_pce.operation)
-	|| is_set(sub_delegated_pce.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(actual_bandwidth.yfilter)
+	|| ydk::is_set(actual_bandwidth_specified.yfilter)
+	|| ydk::is_set(computing_pce.yfilter)
+	|| ydk::is_set(lsp_role.yfilter)
+	|| ydk::is_set(reporting_pcc_address.yfilter)
+	|| ydk::is_set(signaled_bandwidth.yfilter)
+	|| ydk::is_set(signaled_bandwidth_specified.yfilter)
+	|| ydk::is_set(srlg_info.yfilter)
+	|| ydk::is_set(state_sync_pce.yfilter)
+	|| ydk::is_set(sub_delegated_pce.yfilter)
 	|| (brief_lsp_information !=  nullptr && brief_lsp_information->has_operation())
 	|| (er_os !=  nullptr && er_os->has_operation())
 	|| (lsp_association_info !=  nullptr && lsp_association_info->has_operation())
@@ -5050,15 +6390,15 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actual_bandwidth.is_set || is_set(actual_bandwidth.operation)) leaf_name_data.push_back(actual_bandwidth.get_name_leafdata());
-    if (actual_bandwidth_specified.is_set || is_set(actual_bandwidth_specified.operation)) leaf_name_data.push_back(actual_bandwidth_specified.get_name_leafdata());
-    if (computing_pce.is_set || is_set(computing_pce.operation)) leaf_name_data.push_back(computing_pce.get_name_leafdata());
-    if (lsp_role.is_set || is_set(lsp_role.operation)) leaf_name_data.push_back(lsp_role.get_name_leafdata());
-    if (reporting_pcc_address.is_set || is_set(reporting_pcc_address.operation)) leaf_name_data.push_back(reporting_pcc_address.get_name_leafdata());
-    if (signaled_bandwidth.is_set || is_set(signaled_bandwidth.operation)) leaf_name_data.push_back(signaled_bandwidth.get_name_leafdata());
-    if (signaled_bandwidth_specified.is_set || is_set(signaled_bandwidth_specified.operation)) leaf_name_data.push_back(signaled_bandwidth_specified.get_name_leafdata());
-    if (state_sync_pce.is_set || is_set(state_sync_pce.operation)) leaf_name_data.push_back(state_sync_pce.get_name_leafdata());
-    if (sub_delegated_pce.is_set || is_set(sub_delegated_pce.operation)) leaf_name_data.push_back(sub_delegated_pce.get_name_leafdata());
+    if (actual_bandwidth.is_set || is_set(actual_bandwidth.yfilter)) leaf_name_data.push_back(actual_bandwidth.get_name_leafdata());
+    if (actual_bandwidth_specified.is_set || is_set(actual_bandwidth_specified.yfilter)) leaf_name_data.push_back(actual_bandwidth_specified.get_name_leafdata());
+    if (computing_pce.is_set || is_set(computing_pce.yfilter)) leaf_name_data.push_back(computing_pce.get_name_leafdata());
+    if (lsp_role.is_set || is_set(lsp_role.yfilter)) leaf_name_data.push_back(lsp_role.get_name_leafdata());
+    if (reporting_pcc_address.is_set || is_set(reporting_pcc_address.yfilter)) leaf_name_data.push_back(reporting_pcc_address.get_name_leafdata());
+    if (signaled_bandwidth.is_set || is_set(signaled_bandwidth.yfilter)) leaf_name_data.push_back(signaled_bandwidth.get_name_leafdata());
+    if (signaled_bandwidth_specified.is_set || is_set(signaled_bandwidth_specified.yfilter)) leaf_name_data.push_back(signaled_bandwidth_specified.get_name_leafdata());
+    if (state_sync_pce.is_set || is_set(state_sync_pce.yfilter)) leaf_name_data.push_back(state_sync_pce.get_name_leafdata());
+    if (sub_delegated_pce.is_set || is_set(sub_delegated_pce.yfilter)) leaf_name_data.push_back(sub_delegated_pce.get_name_leafdata());
 
     auto srlg_info_name_datas = srlg_info.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), srlg_info_name_datas.begin(), srlg_info_name_datas.end());
@@ -5170,35 +6510,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actual-bandwidth")
     {
         actual_bandwidth = value;
+        actual_bandwidth.value_namespace = name_space;
+        actual_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actual-bandwidth-specified")
     {
         actual_bandwidth_specified = value;
+        actual_bandwidth_specified.value_namespace = name_space;
+        actual_bandwidth_specified.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "computing-pce")
     {
         computing_pce = value;
+        computing_pce.value_namespace = name_space;
+        computing_pce.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-role")
     {
         lsp_role = value;
+        lsp_role.value_namespace = name_space;
+        lsp_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-pcc-address")
     {
         reporting_pcc_address = value;
+        reporting_pcc_address.value_namespace = name_space;
+        reporting_pcc_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signaled-bandwidth")
     {
         signaled_bandwidth = value;
+        signaled_bandwidth.value_namespace = name_space;
+        signaled_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signaled-bandwidth-specified")
     {
         signaled_bandwidth_specified = value;
+        signaled_bandwidth_specified.value_namespace = name_space;
+        signaled_bandwidth_specified.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-info")
     {
@@ -5207,11 +6561,66 @@ void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::set_value(c
     if(value_path == "state-sync-pce")
     {
         state_sync_pce = value;
+        state_sync_pce.value_namespace = name_space;
+        state_sync_pce.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-delegated-pce")
     {
         sub_delegated_pce = value;
+        sub_delegated_pce.value_namespace = name_space;
+        sub_delegated_pce.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actual-bandwidth")
+    {
+        actual_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "actual-bandwidth-specified")
+    {
+        actual_bandwidth_specified.yfilter = yfilter;
+    }
+    if(value_path == "computing-pce")
+    {
+        computing_pce.yfilter = yfilter;
+    }
+    if(value_path == "lsp-role")
+    {
+        lsp_role.yfilter = yfilter;
+    }
+    if(value_path == "reporting-pcc-address")
+    {
+        reporting_pcc_address.yfilter = yfilter;
+    }
+    if(value_path == "signaled-bandwidth")
+    {
+        signaled_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "signaled-bandwidth-specified")
+    {
+        signaled_bandwidth_specified.yfilter = yfilter;
+    }
+    if(value_path == "srlg-info")
+    {
+        srlg_info.yfilter = yfilter;
+    }
+    if(value_path == "state-sync-pce")
+    {
+        state_sync_pce.yfilter = yfilter;
+    }
+    if(value_path == "sub-delegated-pce")
+    {
+        sub_delegated_pce.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief-lsp-information" || name == "er-os" || name == "lsp-association-info" || name == "lsp-attributes" || name == "lsppcep-information" || name == "rro" || name == "actual-bandwidth" || name == "actual-bandwidth-specified" || name == "computing-pce" || name == "lsp-role" || name == "reporting-pcc-address" || name == "signaled-bandwidth" || name == "signaled-bandwidth-specified" || name == "srlg-info" || name == "state-sync-pce" || name == "sub-delegated-pce")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::BriefLspInformation()
@@ -5246,15 +6655,15 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInf
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(administrative_state.operation)
-	|| is_set(binding_sid.operation)
-	|| is_set(destination_address.operation)
-	|| is_set(lsp_setup_type.operation)
-	|| is_set(lspid.operation)
-	|| is_set(operational_state.operation)
-	|| is_set(source_address.operation)
-	|| is_set(tunnel_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(administrative_state.yfilter)
+	|| ydk::is_set(binding_sid.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(lsp_setup_type.yfilter)
+	|| ydk::is_set(lspid.yfilter)
+	|| ydk::is_set(operational_state.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::get_segment_path() const
@@ -5280,14 +6689,14 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (administrative_state.is_set || is_set(administrative_state.operation)) leaf_name_data.push_back(administrative_state.get_name_leafdata());
-    if (binding_sid.is_set || is_set(binding_sid.operation)) leaf_name_data.push_back(binding_sid.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (lsp_setup_type.is_set || is_set(lsp_setup_type.operation)) leaf_name_data.push_back(lsp_setup_type.get_name_leafdata());
-    if (lspid.is_set || is_set(lspid.operation)) leaf_name_data.push_back(lspid.get_name_leafdata());
-    if (operational_state.is_set || is_set(operational_state.operation)) leaf_name_data.push_back(operational_state.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (administrative_state.is_set || is_set(administrative_state.yfilter)) leaf_name_data.push_back(administrative_state.get_name_leafdata());
+    if (binding_sid.is_set || is_set(binding_sid.yfilter)) leaf_name_data.push_back(binding_sid.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (lsp_setup_type.is_set || is_set(lsp_setup_type.yfilter)) leaf_name_data.push_back(lsp_setup_type.get_name_leafdata());
+    if (lspid.is_set || is_set(lspid.yfilter)) leaf_name_data.push_back(lspid.get_name_leafdata());
+    if (operational_state.is_set || is_set(operational_state.yfilter)) leaf_name_data.push_back(operational_state.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5306,40 +6715,99 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "administrative-state")
     {
         administrative_state = value;
+        administrative_state.value_namespace = name_space;
+        administrative_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "binding-sid")
     {
         binding_sid = value;
+        binding_sid.value_namespace = name_space;
+        binding_sid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-setup-type")
     {
         lsp_setup_type = value;
+        lsp_setup_type.value_namespace = name_space;
+        lsp_setup_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lspid")
     {
         lspid = value;
+        lspid.value_namespace = name_space;
+        lspid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational-state")
     {
         operational_state = value;
+        operational_state.value_namespace = name_space;
+        operational_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "administrative-state")
+    {
+        administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "binding-sid")
+    {
+        binding_sid.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "lsp-setup-type")
+    {
+        lsp_setup_type.yfilter = yfilter;
+    }
+    if(value_path == "lspid")
+    {
+        lspid.yfilter = yfilter;
+    }
+    if(value_path == "operational-state")
+    {
+        operational_state.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "administrative-state" || name == "binding-sid" || name == "destination-address" || name == "lsp-setup-type" || name == "lspid" || name == "operational-state" || name == "source-address" || name == "tunnel-id")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ErOs()
@@ -5408,12 +6876,12 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::has_o
         if(reported_sr_path[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(computed_hop_list_time.operation)
-	|| is_set(computed_metric_type.operation)
-	|| is_set(computed_metric_value.operation)
-	|| is_set(reported_metric_type.operation)
-	|| is_set(reported_metric_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(computed_hop_list_time.yfilter)
+	|| ydk::is_set(computed_metric_type.yfilter)
+	|| ydk::is_set(computed_metric_value.yfilter)
+	|| ydk::is_set(reported_metric_type.yfilter)
+	|| ydk::is_set(reported_metric_value.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::get_segment_path() const
@@ -5439,11 +6907,11 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (computed_hop_list_time.is_set || is_set(computed_hop_list_time.operation)) leaf_name_data.push_back(computed_hop_list_time.get_name_leafdata());
-    if (computed_metric_type.is_set || is_set(computed_metric_type.operation)) leaf_name_data.push_back(computed_metric_type.get_name_leafdata());
-    if (computed_metric_value.is_set || is_set(computed_metric_value.operation)) leaf_name_data.push_back(computed_metric_value.get_name_leafdata());
-    if (reported_metric_type.is_set || is_set(reported_metric_type.operation)) leaf_name_data.push_back(reported_metric_type.get_name_leafdata());
-    if (reported_metric_value.is_set || is_set(reported_metric_value.operation)) leaf_name_data.push_back(reported_metric_value.get_name_leafdata());
+    if (computed_hop_list_time.is_set || is_set(computed_hop_list_time.yfilter)) leaf_name_data.push_back(computed_hop_list_time.get_name_leafdata());
+    if (computed_metric_type.is_set || is_set(computed_metric_type.yfilter)) leaf_name_data.push_back(computed_metric_type.get_name_leafdata());
+    if (computed_metric_value.is_set || is_set(computed_metric_value.yfilter)) leaf_name_data.push_back(computed_metric_value.get_name_leafdata());
+    if (reported_metric_type.is_set || is_set(reported_metric_type.yfilter)) leaf_name_data.push_back(reported_metric_type.get_name_leafdata());
+    if (reported_metric_value.is_set || is_set(reported_metric_value.yfilter)) leaf_name_data.push_back(reported_metric_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5546,28 +7014,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "computed-hop-list-time")
     {
         computed_hop_list_time = value;
+        computed_hop_list_time.value_namespace = name_space;
+        computed_hop_list_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "computed-metric-type")
     {
         computed_metric_type = value;
+        computed_metric_type.value_namespace = name_space;
+        computed_metric_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "computed-metric-value")
     {
         computed_metric_value = value;
+        computed_metric_value.value_namespace = name_space;
+        computed_metric_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reported-metric-type")
     {
         reported_metric_type = value;
+        reported_metric_type.value_namespace = name_space;
+        reported_metric_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reported-metric-value")
     {
         reported_metric_value = value;
+        reported_metric_value.value_namespace = name_space;
+        reported_metric_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "computed-hop-list-time")
+    {
+        computed_hop_list_time.yfilter = yfilter;
+    }
+    if(value_path == "computed-metric-type")
+    {
+        computed_metric_type.yfilter = yfilter;
+    }
+    if(value_path == "computed-metric-value")
+    {
+        computed_metric_value.yfilter = yfilter;
+    }
+    if(value_path == "reported-metric-type")
+    {
+        reported_metric_type.yfilter = yfilter;
+    }
+    if(value_path == "reported-metric-value")
+    {
+        reported_metric_value.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "computed-rsvp-path" || name == "computed-sr-path" || name == "reported-rsvp-path" || name == "reported-sr-path" || name == "computed-hop-list-time" || name == "computed-metric-type" || name == "computed-metric-value" || name == "reported-metric-type" || name == "reported-metric-value")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath::ReportedRsvpPath()
@@ -5588,8 +7097,8 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::Repor
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hop_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hop_address.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath::get_segment_path() const
@@ -5615,7 +7124,7 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hop_address.is_set || is_set(hop_address.operation)) leaf_name_data.push_back(hop_address.get_name_leafdata());
+    if (hop_address.is_set || is_set(hop_address.yfilter)) leaf_name_data.push_back(hop_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5634,12 +7143,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hop-address")
     {
         hop_address = value;
+        hop_address.value_namespace = name_space;
+        hop_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hop-address")
+    {
+        hop_address.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedRsvpPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hop-address")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath::ReportedSrPath()
@@ -5666,11 +7192,11 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::Repor
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_addr.operation)
-	|| is_set(mpls_label.operation)
-	|| is_set(remote_addr.operation)
-	|| is_set(sid_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_addr.yfilter)
+	|| ydk::is_set(mpls_label.yfilter)
+	|| ydk::is_set(remote_addr.yfilter)
+	|| ydk::is_set(sid_type.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath::get_segment_path() const
@@ -5696,10 +7222,10 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_addr.is_set || is_set(local_addr.operation)) leaf_name_data.push_back(local_addr.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-    if (remote_addr.is_set || is_set(remote_addr.operation)) leaf_name_data.push_back(remote_addr.get_name_leafdata());
-    if (sid_type.is_set || is_set(sid_type.operation)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (local_addr.is_set || is_set(local_addr.yfilter)) leaf_name_data.push_back(local_addr.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (remote_addr.is_set || is_set(remote_addr.yfilter)) leaf_name_data.push_back(remote_addr.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5718,24 +7244,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-addr")
     {
         local_addr = value;
+        local_addr.value_namespace = name_space;
+        local_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-addr")
     {
         remote_addr = value;
+        remote_addr.value_namespace = name_space;
+        remote_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-type")
     {
         sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-addr")
+    {
+        local_addr.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+    if(value_path == "remote-addr")
+    {
+        remote_addr.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ReportedSrPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-addr" || name == "mpls-label" || name == "remote-addr" || name == "sid-type")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::ComputedRsvpPath()
@@ -5756,8 +7317,8 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::Compu
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hop_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hop_address.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::get_segment_path() const
@@ -5783,7 +7344,7 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hop_address.is_set || is_set(hop_address.operation)) leaf_name_data.push_back(hop_address.get_name_leafdata());
+    if (hop_address.is_set || is_set(hop_address.yfilter)) leaf_name_data.push_back(hop_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5802,12 +7363,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hop-address")
     {
         hop_address = value;
+        hop_address.value_namespace = name_space;
+        hop_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hop-address")
+    {
+        hop_address.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedRsvpPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hop-address")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::ComputedSrPath()
@@ -5834,11 +7412,11 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::Compu
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_addr.operation)
-	|| is_set(mpls_label.operation)
-	|| is_set(remote_addr.operation)
-	|| is_set(sid_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_addr.yfilter)
+	|| ydk::is_set(mpls_label.yfilter)
+	|| ydk::is_set(remote_addr.yfilter)
+	|| ydk::is_set(sid_type.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::get_segment_path() const
@@ -5864,10 +7442,10 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_addr.is_set || is_set(local_addr.operation)) leaf_name_data.push_back(local_addr.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-    if (remote_addr.is_set || is_set(remote_addr.operation)) leaf_name_data.push_back(remote_addr.get_name_leafdata());
-    if (sid_type.is_set || is_set(sid_type.operation)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (local_addr.is_set || is_set(local_addr.yfilter)) leaf_name_data.push_back(local_addr.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (remote_addr.is_set || is_set(remote_addr.yfilter)) leaf_name_data.push_back(remote_addr.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5886,24 +7464,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-addr")
     {
         local_addr = value;
+        local_addr.value_namespace = name_space;
+        local_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-addr")
     {
         remote_addr = value;
+        remote_addr.value_namespace = name_space;
+        remote_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-type")
     {
         sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-addr")
+    {
+        local_addr.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+    if(value_path == "remote-addr")
+    {
+        remote_addr.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::ErOs::ComputedSrPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-addr" || name == "mpls-label" || name == "remote-addr" || name == "sid-type")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::LsppcepInformation()
@@ -5939,13 +7552,13 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInfo
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pcep_flag_a.operation)
-	|| is_set(pcep_flag_d.operation)
-	|| is_set(pcep_flag_o.operation)
-	|| is_set(pcep_flag_r.operation)
-	|| is_set(pcep_flag_s.operation)
-	|| is_set(pcepid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(pcep_flag_a.yfilter)
+	|| ydk::is_set(pcep_flag_d.yfilter)
+	|| ydk::is_set(pcep_flag_o.yfilter)
+	|| ydk::is_set(pcep_flag_r.yfilter)
+	|| ydk::is_set(pcep_flag_s.yfilter)
+	|| ydk::is_set(pcepid.yfilter)
 	|| (rsvp_error !=  nullptr && rsvp_error->has_operation());
 }
 
@@ -5972,12 +7585,12 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pcep_flag_a.is_set || is_set(pcep_flag_a.operation)) leaf_name_data.push_back(pcep_flag_a.get_name_leafdata());
-    if (pcep_flag_d.is_set || is_set(pcep_flag_d.operation)) leaf_name_data.push_back(pcep_flag_d.get_name_leafdata());
-    if (pcep_flag_o.is_set || is_set(pcep_flag_o.operation)) leaf_name_data.push_back(pcep_flag_o.get_name_leafdata());
-    if (pcep_flag_r.is_set || is_set(pcep_flag_r.operation)) leaf_name_data.push_back(pcep_flag_r.get_name_leafdata());
-    if (pcep_flag_s.is_set || is_set(pcep_flag_s.operation)) leaf_name_data.push_back(pcep_flag_s.get_name_leafdata());
-    if (pcepid.is_set || is_set(pcepid.operation)) leaf_name_data.push_back(pcepid.get_name_leafdata());
+    if (pcep_flag_a.is_set || is_set(pcep_flag_a.yfilter)) leaf_name_data.push_back(pcep_flag_a.get_name_leafdata());
+    if (pcep_flag_d.is_set || is_set(pcep_flag_d.yfilter)) leaf_name_data.push_back(pcep_flag_d.get_name_leafdata());
+    if (pcep_flag_o.is_set || is_set(pcep_flag_o.yfilter)) leaf_name_data.push_back(pcep_flag_o.get_name_leafdata());
+    if (pcep_flag_r.is_set || is_set(pcep_flag_r.yfilter)) leaf_name_data.push_back(pcep_flag_r.get_name_leafdata());
+    if (pcep_flag_s.is_set || is_set(pcep_flag_s.yfilter)) leaf_name_data.push_back(pcep_flag_s.get_name_leafdata());
+    if (pcepid.is_set || is_set(pcepid.yfilter)) leaf_name_data.push_back(pcepid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6010,32 +7623,79 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pcep-flag-a")
     {
         pcep_flag_a = value;
+        pcep_flag_a.value_namespace = name_space;
+        pcep_flag_a.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcep-flag-d")
     {
         pcep_flag_d = value;
+        pcep_flag_d.value_namespace = name_space;
+        pcep_flag_d.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcep-flag-o")
     {
         pcep_flag_o = value;
+        pcep_flag_o.value_namespace = name_space;
+        pcep_flag_o.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcep-flag-r")
     {
         pcep_flag_r = value;
+        pcep_flag_r.value_namespace = name_space;
+        pcep_flag_r.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcep-flag-s")
     {
         pcep_flag_s = value;
+        pcep_flag_s.value_namespace = name_space;
+        pcep_flag_s.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcepid")
     {
         pcepid = value;
+        pcepid.value_namespace = name_space;
+        pcepid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pcep-flag-a")
+    {
+        pcep_flag_a.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-d")
+    {
+        pcep_flag_d.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-o")
+    {
+        pcep_flag_o.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-r")
+    {
+        pcep_flag_r.yfilter = yfilter;
+    }
+    if(value_path == "pcep-flag-s")
+    {
+        pcep_flag_s.yfilter = yfilter;
+    }
+    if(value_path == "pcepid")
+    {
+        pcepid.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rsvp-error" || name == "pcep-flag-a" || name == "pcep-flag-d" || name == "pcep-flag-o" || name == "pcep-flag-r" || name == "pcep-flag-s" || name == "pcepid")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::RsvpError()
@@ -6062,11 +7722,11 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInfo
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(error_code.operation)
-	|| is_set(error_flags.operation)
-	|| is_set(error_value.operation)
-	|| is_set(node_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(error_code.yfilter)
+	|| ydk::is_set(error_flags.yfilter)
+	|| ydk::is_set(error_value.yfilter)
+	|| ydk::is_set(node_address.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::get_segment_path() const
@@ -6092,10 +7752,10 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error_code.is_set || is_set(error_code.operation)) leaf_name_data.push_back(error_code.get_name_leafdata());
-    if (error_flags.is_set || is_set(error_flags.operation)) leaf_name_data.push_back(error_flags.get_name_leafdata());
-    if (error_value.is_set || is_set(error_value.operation)) leaf_name_data.push_back(error_value.get_name_leafdata());
-    if (node_address.is_set || is_set(node_address.operation)) leaf_name_data.push_back(node_address.get_name_leafdata());
+    if (error_code.is_set || is_set(error_code.yfilter)) leaf_name_data.push_back(error_code.get_name_leafdata());
+    if (error_flags.is_set || is_set(error_flags.yfilter)) leaf_name_data.push_back(error_flags.get_name_leafdata());
+    if (error_value.is_set || is_set(error_value.yfilter)) leaf_name_data.push_back(error_value.get_name_leafdata());
+    if (node_address.is_set || is_set(node_address.yfilter)) leaf_name_data.push_back(node_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6114,24 +7774,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error-code")
     {
         error_code = value;
+        error_code.value_namespace = name_space;
+        error_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error-flags")
     {
         error_flags = value;
+        error_flags.value_namespace = name_space;
+        error_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error-value")
     {
         error_value = value;
+        error_value.value_namespace = name_space;
+        error_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-address")
     {
         node_address = value;
+        node_address.value_namespace = name_space;
+        node_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-code")
+    {
+        error_code.yfilter = yfilter;
+    }
+    if(value_path == "error-flags")
+    {
+        error_flags.yfilter = yfilter;
+    }
+    if(value_path == "error-value")
+    {
+        error_value.yfilter = yfilter;
+    }
+    if(value_path == "node-address")
+    {
+        node_address.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LsppcepInformation::RsvpError::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-code" || name == "error-flags" || name == "error-value" || name == "node-address")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::LspAssociationInfo()
@@ -6156,10 +7851,10 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociat
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(association_id.operation)
-	|| is_set(association_source.operation)
-	|| is_set(association_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(association_id.yfilter)
+	|| ydk::is_set(association_source.yfilter)
+	|| ydk::is_set(association_type.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::get_segment_path() const
@@ -6185,9 +7880,9 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (association_id.is_set || is_set(association_id.operation)) leaf_name_data.push_back(association_id.get_name_leafdata());
-    if (association_source.is_set || is_set(association_source.operation)) leaf_name_data.push_back(association_source.get_name_leafdata());
-    if (association_type.is_set || is_set(association_type.operation)) leaf_name_data.push_back(association_type.get_name_leafdata());
+    if (association_id.is_set || is_set(association_id.yfilter)) leaf_name_data.push_back(association_id.get_name_leafdata());
+    if (association_source.is_set || is_set(association_source.yfilter)) leaf_name_data.push_back(association_source.get_name_leafdata());
+    if (association_type.is_set || is_set(association_type.yfilter)) leaf_name_data.push_back(association_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6206,20 +7901,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "association-id")
     {
         association_id = value;
+        association_id.value_namespace = name_space;
+        association_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "association-source")
     {
         association_source = value;
+        association_source.value_namespace = name_space;
+        association_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "association-type")
     {
         association_type = value;
+        association_type.value_namespace = name_space;
+        association_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "association-id")
+    {
+        association_id.yfilter = yfilter;
+    }
+    if(value_path == "association-source")
+    {
+        association_source.yfilter = yfilter;
+    }
+    if(value_path == "association-type")
+    {
+        association_type.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAssociationInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "association-id" || name == "association-source" || name == "association-type")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::LspAttributes()
@@ -6250,13 +7974,13 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttribut
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(affinity_exclude_any.operation)
-	|| is_set(affinity_include_all.operation)
-	|| is_set(affinity_include_any.operation)
-	|| is_set(hold_priority.operation)
-	|| is_set(local_protection.operation)
-	|| is_set(setup_priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(affinity_exclude_any.yfilter)
+	|| ydk::is_set(affinity_include_all.yfilter)
+	|| ydk::is_set(affinity_include_any.yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(local_protection.yfilter)
+	|| ydk::is_set(setup_priority.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::get_segment_path() const
@@ -6282,12 +8006,12 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (affinity_exclude_any.is_set || is_set(affinity_exclude_any.operation)) leaf_name_data.push_back(affinity_exclude_any.get_name_leafdata());
-    if (affinity_include_all.is_set || is_set(affinity_include_all.operation)) leaf_name_data.push_back(affinity_include_all.get_name_leafdata());
-    if (affinity_include_any.is_set || is_set(affinity_include_any.operation)) leaf_name_data.push_back(affinity_include_any.get_name_leafdata());
-    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
-    if (local_protection.is_set || is_set(local_protection.operation)) leaf_name_data.push_back(local_protection.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (affinity_exclude_any.is_set || is_set(affinity_exclude_any.yfilter)) leaf_name_data.push_back(affinity_exclude_any.get_name_leafdata());
+    if (affinity_include_all.is_set || is_set(affinity_include_all.yfilter)) leaf_name_data.push_back(affinity_include_all.get_name_leafdata());
+    if (affinity_include_any.is_set || is_set(affinity_include_any.yfilter)) leaf_name_data.push_back(affinity_include_any.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (local_protection.is_set || is_set(local_protection.yfilter)) leaf_name_data.push_back(local_protection.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6306,32 +8030,79 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-exclude-any")
     {
         affinity_exclude_any = value;
+        affinity_exclude_any.value_namespace = name_space;
+        affinity_exclude_any.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "affinity-include-all")
     {
         affinity_include_all = value;
+        affinity_include_all.value_namespace = name_space;
+        affinity_include_all.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "affinity-include-any")
     {
         affinity_include_any = value;
+        affinity_include_any.value_namespace = name_space;
+        affinity_include_any.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-priority")
     {
         hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-protection")
     {
         local_protection = value;
+        local_protection.value_namespace = name_space;
+        local_protection.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-priority")
     {
         setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "affinity-exclude-any")
+    {
+        affinity_exclude_any.yfilter = yfilter;
+    }
+    if(value_path == "affinity-include-all")
+    {
+        affinity_include_all.yfilter = yfilter;
+    }
+    if(value_path == "affinity-include-any")
+    {
+        affinity_include_any.yfilter = yfilter;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "local-protection")
+    {
+        local_protection.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::LspAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-exclude-any" || name == "affinity-include-all" || name == "affinity-include-any" || name == "hold-priority" || name == "local-protection" || name == "setup-priority")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::Rro()
@@ -6363,11 +8134,11 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::has_da
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(flags.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(mpls_label.operation)
-	|| is_set(rro_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(mpls_label.yfilter)
+	|| ydk::is_set(rro_type.yfilter)
 	|| (sr_rro !=  nullptr && sr_rro->has_operation());
 }
 
@@ -6394,10 +8165,10 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flags.is_set || is_set(flags.operation)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-    if (rro_type.is_set || is_set(rro_type.operation)) leaf_name_data.push_back(rro_type.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (rro_type.is_set || is_set(rro_type.yfilter)) leaf_name_data.push_back(rro_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6430,24 +8201,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flags")
     {
         flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rro-type")
     {
         rro_type = value;
+        rro_type.value_namespace = name_space;
+        rro_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+    if(value_path == "rro-type")
+    {
+        rro_type.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-rro" || name == "flags" || name == "ipv4-address" || name == "mpls-label" || name == "rro-type")
+        return true;
+    return false;
 }
 
 Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro::SrRro()
@@ -6474,11 +8280,11 @@ bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro:
 
 bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_addr.operation)
-	|| is_set(mpls_label.operation)
-	|| is_set(remote_addr.operation)
-	|| is_set(sid_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_addr.yfilter)
+	|| ydk::is_set(mpls_label.yfilter)
+	|| ydk::is_set(remote_addr.yfilter)
+	|| ydk::is_set(sid_type.yfilter);
 }
 
 std::string Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro::get_segment_path() const
@@ -6504,10 +8310,10 @@ const EntityPath Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_addr.is_set || is_set(local_addr.operation)) leaf_name_data.push_back(local_addr.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
-    if (remote_addr.is_set || is_set(remote_addr.operation)) leaf_name_data.push_back(remote_addr.get_name_leafdata());
-    if (sid_type.is_set || is_set(sid_type.operation)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (local_addr.is_set || is_set(local_addr.yfilter)) leaf_name_data.push_back(local_addr.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (remote_addr.is_set || is_set(remote_addr.yfilter)) leaf_name_data.push_back(remote_addr.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6526,24 +8332,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::TunnelDetailInfos::TunnelDet
     return children;
 }
 
-void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro::set_value(const std::string & value_path, std::string value)
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-addr")
     {
         local_addr = value;
+        local_addr.value_namespace = name_space;
+        local_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-addr")
     {
         remote_addr = value;
+        remote_addr.value_namespace = name_space;
+        remote_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-type")
     {
         sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-addr")
+    {
+        local_addr.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+    if(value_path == "remote-addr")
+    {
+        remote_addr.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+}
+
+bool Pce::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Rro::SrRro::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-addr" || name == "mpls-label" || name == "remote-addr" || name == "sid-type")
+        return true;
+    return false;
 }
 
 

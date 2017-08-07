@@ -6,11 +6,13 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_ospf.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_ospf {
 
-const Enum::YLeaf RedistOspfExternalTypeEnum::Y_1 {0, "1"};
-const Enum::YLeaf RedistOspfExternalTypeEnum::Y_2 {1, "2"};
+const Enum::YLeaf RedistOspfExternalType::Y_1 {0, "1"};
+const Enum::YLeaf RedistOspfExternalType::Y_2 {1, "2"};
 
 
 }

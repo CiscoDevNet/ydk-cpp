@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_fretta_bcm_dpa_drop_stats_oper {
 
 Drop::Drop()
@@ -29,7 +31,7 @@ bool Drop::has_data() const
 
 bool Drop::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Drop::get_children() const
     return children;
 }
 
-void Drop::set_value(const std::string & value_path, std::string value)
+void Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Drop::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Drop::get_bundle_name() const
 augment_capabilities_function Drop::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Drop::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Drop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Drop::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool Drop::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Drop::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::get_children() const
     return children;
 }
 
-void Drop::Nodes::set_value(const std::string & value_path, std::string value)
+void Drop::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Drop::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Drop::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Drop::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool Drop::Nodes::Node::has_data() const
 
 bool Drop::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (npu_number_for_drop_stats !=  nullptr && npu_number_for_drop_stats->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath Drop::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::Node::get_children()
     return children;
 }
 
-void Drop::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Drop::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Drop::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Drop::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "npu-number-for-drop-stats" || name == "node-name")
+        return true;
+    return false;
 }
 
 Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStats()
@@ -322,7 +368,7 @@ bool Drop::Nodes::Node::NpuNumberForDropStats::has_operation() const
         if(npu_number_for_drop_stat[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Drop::Nodes::Node::NpuNumberForDropStats::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::Node::NpuNumberForDr
     return children;
 }
 
-void Drop::Nodes::Node::NpuNumberForDropStats::set_value(const std::string & value_path, std::string value)
+void Drop::Nodes::Node::NpuNumberForDropStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Drop::Nodes::Node::NpuNumberForDropStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Drop::Nodes::Node::NpuNumberForDropStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "npu-number-for-drop-stat")
+        return true;
+    return false;
 }
 
 Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::NpuNumberForDropStat()
@@ -419,8 +476,8 @@ bool Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::has_operati
         if(drop_specific_stats_data[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(npu_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(npu_id.yfilter);
 }
 
 std::string Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::get_segment_path() const
@@ -446,7 +503,7 @@ const EntityPath Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -486,12 +543,29 @@ std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::Node::NpuNumberForDr
     return children;
 }
 
-void Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::set_value(const std::string & value_path, std::string value)
+void Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "npu-id")
     {
         npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "npu-id")
+    {
+        npu_id.yfilter = yfilter;
+    }
+}
+
+bool Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop-specific-stats-data" || name == "npu-id")
+        return true;
+    return false;
 }
 
 Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::DropSpecificStatsData()
@@ -518,11 +592,11 @@ bool Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecifi
 
 bool Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(drop_data.operation)
-	|| is_set(count.operation)
-	|| is_set(id.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(drop_data.yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::get_segment_path() const
@@ -548,10 +622,10 @@ const EntityPath Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (drop_data.is_set || is_set(drop_data.operation)) leaf_name_data.push_back(drop_data.get_name_leafdata());
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (drop_data.is_set || is_set(drop_data.yfilter)) leaf_name_data.push_back(drop_data.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -570,24 +644,59 @@ std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::Node::NpuNumberForDr
     return children;
 }
 
-void Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::set_value(const std::string & value_path, std::string value)
+void Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "drop-data")
     {
         drop_data = value;
+        drop_data.value_namespace = name_space;
+        drop_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "drop-data")
+    {
+        drop_data.yfilter = yfilter;
+    }
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop-data" || name == "count" || name == "id" || name == "name")
+        return true;
+    return false;
 }
 
 

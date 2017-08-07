@@ -9,53 +9,53 @@
 
 #include "ydk_ietf/ietf_routing.hpp"
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace cisco_routing_ext {
 
-class BgpIdentity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class Bgp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        BgpIdentity();
-        ~BgpIdentity();
+        Bgp();
+        ~Bgp();
 
 
-}; // BgpIdentity
+}; // Bgp
 
-class MobileIdentity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class Rip : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        MobileIdentity();
-        ~MobileIdentity();
+        Rip();
+        ~Rip();
 
 
-}; // MobileIdentity
+}; // Rip
 
-class EigrpIdentity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class Eigrp : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        EigrpIdentity();
-        ~EigrpIdentity();
+        Eigrp();
+        ~Eigrp();
 
 
-}; // EigrpIdentity
+}; // Eigrp
 
-class IsIsIdentity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class IsIs : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        IsIsIdentity();
-        ~IsIsIdentity();
+        IsIs();
+        ~IsIs();
 
 
-}; // IsIsIdentity
+}; // IsIs
 
-class RipIdentity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class Mobile : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        RipIdentity();
-        ~RipIdentity();
+        Mobile();
+        ~Mobile();
 
 
-}; // RipIdentity
+}; // Mobile
 
 
 }

@@ -1094,7 +1094,7 @@ module tailf-common {
     }
     tailf:use-in "tailf:transaction-hook";
     description
-      "By default, the node-specific write callbacks (create(), set_elem(),
+      "By default, the node-specific write callbacks (create_datanode(), set_elem(),
       etc) for a transaction hook are invoked for the invidual data nodes
       that are modified in the transaction. If 'tailf:invocation-mode' is
       set to 'per-transaction', there will instead be a single invocation

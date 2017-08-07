@@ -6,42 +6,44 @@
 #include "generated_entity_lookup.hpp"
 #include "cisco_storm_control.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace cisco_storm_control {
 
-StormControlActionIdentity::StormControlActionIdentity()
-     : Identity("cisco-storm-control:storm-control-action")
+StormControlAction::StormControlAction()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-storm-control", "cisco-storm-control", "cisco-storm-control:storm-control-action")
 {
 }
 
-StormControlActionIdentity::~StormControlActionIdentity()
+StormControlAction::~StormControlAction()
 {
 }
 
-ActionShutdownIdentity::ActionShutdownIdentity()
-     : Identity("cisco-storm-control:action-shutdown")
+ActionShutdown::ActionShutdown()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-storm-control", "cisco-storm-control", "cisco-storm-control:action-shutdown")
 {
 }
 
-ActionShutdownIdentity::~ActionShutdownIdentity()
+ActionShutdown::~ActionShutdown()
 {
 }
 
-ActionSnmpTrapIdentity::ActionSnmpTrapIdentity()
-     : Identity("cisco-storm-control:action-snmp-trap")
+ActionDrop::ActionDrop()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-storm-control", "cisco-storm-control", "cisco-storm-control:action-drop")
 {
 }
 
-ActionSnmpTrapIdentity::~ActionSnmpTrapIdentity()
+ActionDrop::~ActionDrop()
 {
 }
 
-ActionDropIdentity::ActionDropIdentity()
-     : Identity("cisco-storm-control:action-drop")
+ActionSnmpTrap::ActionSnmpTrap()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-storm-control", "cisco-storm-control", "cisco-storm-control:action-snmp-trap")
 {
 }
 
-ActionDropIdentity::~ActionDropIdentity()
+ActionSnmpTrap::~ActionSnmpTrap()
 {
 }
 

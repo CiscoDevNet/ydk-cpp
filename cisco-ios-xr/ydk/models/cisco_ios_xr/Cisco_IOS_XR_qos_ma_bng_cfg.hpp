@@ -7,27 +7,27 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_qos_ma_bng_cfg {
 
-class Qosl2DataLinkEnum : public Enum
+class Qosl2Encap : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf aal5;
+        static const ydk::Enum::YLeaf snap_pppoa;
+        static const ydk::Enum::YLeaf mux_pppoa;
+        static const ydk::Enum::YLeaf snap1483_routed;
+        static const ydk::Enum::YLeaf mux1483_routed;
+        static const ydk::Enum::YLeaf snap_rbe;
+        static const ydk::Enum::YLeaf snap_dot1qrbe;
+        static const ydk::Enum::YLeaf mux_rbe;
+        static const ydk::Enum::YLeaf mux_dot1qrbe;
 
 };
 
-class Qosl2EncapEnum : public Enum
+class Qosl2DataLink : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf snap_pppoa;
-        static const Enum::YLeaf mux_pppoa;
-        static const Enum::YLeaf snap1483_routed;
-        static const Enum::YLeaf mux1483_routed;
-        static const Enum::YLeaf snap_rbe;
-        static const Enum::YLeaf snap_dot1qrbe;
-        static const Enum::YLeaf mux_rbe;
-        static const Enum::YLeaf mux_dot1qrbe;
+        static const ydk::Enum::YLeaf aal5;
 
 };
 

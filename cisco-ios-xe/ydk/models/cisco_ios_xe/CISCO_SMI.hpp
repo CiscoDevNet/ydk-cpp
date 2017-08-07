@@ -9,458 +9,458 @@
 
 #include "ydk_ietf/ietf_yang_smiv2.hpp"
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_SMI {
 
-class Ciscochipsetsaint2Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscorptrgroupobjectid : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscochipsetsaint2Identity();
-        ~Ciscochipsetsaint2Identity();
+        Ciscorptrgroupobjectid();
+        ~Ciscorptrgroupobjectid();
 
 
-}; // Ciscochipsetsaint2Identity
+}; // Ciscorptrgroupobjectid
 
-class CiscotdomainclnsIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Pakmon : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscotdomainclnsIdentity();
-        ~CiscotdomainclnsIdentity();
+        Pakmon();
+        ~Pakmon();
 
 
-}; // CiscotdomainclnsIdentity
+}; // Pakmon
 
-class CiscoproxyIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscopolicyauto : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscoproxyIdentity();
-        ~CiscoproxyIdentity();
+        Ciscopolicyauto();
+        ~Ciscopolicyauto();
 
 
-}; // CiscoproxyIdentity
+}; // Ciscopolicyauto
 
-class CiscotdomainconsIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscochipsetsaint1 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscotdomainconsIdentity();
-        ~CiscotdomainconsIdentity();
+        Ciscochipsetsaint1();
+        ~Ciscochipsetsaint1();
 
 
-}; // CiscotdomainconsIdentity
+}; // Ciscochipsetsaint1
 
-class CiscopolicyautoIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscounknownrptrgroup : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscopolicyautoIdentity();
-        ~CiscopolicyautoIdentity();
+        Ciscounknownrptrgroup();
+        ~Ciscounknownrptrgroup();
 
 
-}; // CiscopolicyautoIdentity
+}; // Ciscounknownrptrgroup
 
-class Ciscotdomaintcpipv6Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomainsctpipv6 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscotdomaintcpipv6Identity();
-        ~Ciscotdomaintcpipv6Identity();
+        Ciscotdomainsctpipv6();
+        ~Ciscotdomainsctpipv6();
 
 
-}; // Ciscotdomaintcpipv6Identity
+}; // Ciscotdomainsctpipv6
 
-class Cisco2505RptrgroupIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Temporary : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Cisco2505RptrgroupIdentity();
-        ~Cisco2505RptrgroupIdentity();
+        Temporary();
+        ~Temporary();
 
 
-}; // Cisco2505RptrgroupIdentity
+}; // Temporary
 
-class Ciscotdomainudpipv6Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscoadmin : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscotdomainudpipv6Identity();
-        ~Ciscotdomainudpipv6Identity();
+        Ciscoadmin();
+        ~Ciscoadmin();
 
 
-}; // Ciscotdomainudpipv6Identity
+}; // Ciscoadmin
 
-class Ciscotdomainudpipv4Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomainudpipv4 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscotdomainudpipv4Identity();
-        ~Ciscotdomainudpipv4Identity();
+        Ciscotdomainudpipv4();
+        ~Ciscotdomainudpipv4();
 
 
-}; // Ciscotdomainudpipv4Identity
+}; // Ciscotdomainudpipv4
 
-class CiscopibIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscoproducts : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscopibIdentity();
-        ~CiscopibIdentity();
+        Ciscoproducts();
+        ~Ciscoproducts();
 
 
-}; // CiscopibIdentity
+}; // Ciscoproducts
 
-class CiscoexperimentIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscocib : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscoexperimentIdentity();
-        ~CiscoexperimentIdentity();
+        Ciscocib();
+        ~Ciscocib();
 
 
-}; // CiscoexperimentIdentity
+}; // Ciscocib
 
-class CiscomgmtIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscosmb : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscomgmtIdentity();
-        ~CiscomgmtIdentity();
+        Ciscosmb();
+        ~Ciscosmb();
 
 
-}; // CiscomgmtIdentity
+}; // Ciscosmb
 
-class CiscocibprovgroupIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscochipsetsaint2 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscocibprovgroupIdentity();
-        ~CiscocibprovgroupIdentity();
+        Ciscochipsetsaint2();
+        ~Ciscochipsetsaint2();
 
 
-}; // CiscocibprovgroupIdentity
+}; // Ciscochipsetsaint2
 
-class CiscorptrgroupobjectidIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomainsctpipv4 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscorptrgroupobjectidIdentity();
-        ~CiscorptrgroupobjectidIdentity();
+        Ciscotdomainsctpipv4();
+        ~Ciscotdomainsctpipv4();
 
 
-}; // CiscorptrgroupobjectidIdentity
+}; // Ciscotdomainsctpipv4
 
-class CiscodomainsIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Cisco2505Rptrgroup : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscodomainsIdentity();
-        ~CiscodomainsIdentity();
+        Cisco2505Rptrgroup();
+        ~Cisco2505Rptrgroup();
 
 
-}; // CiscodomainsIdentity
+}; // Cisco2505Rptrgroup
 
-class CiscopibtomibIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Otherenterprises : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscopibtomibIdentity();
-        ~CiscopibtomibIdentity();
+        Otherenterprises();
+        ~Otherenterprises();
 
 
-}; // CiscopibtomibIdentity
+}; // Otherenterprises
 
-class CiscotdomainipxIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscoexperiment : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscotdomainipxIdentity();
-        ~CiscotdomainipxIdentity();
+        Ciscoexperiment();
+        ~Ciscoexperiment();
 
 
-}; // CiscotdomainipxIdentity
+}; // Ciscoexperiment
 
-class Ciscotdomainsctpipv4Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscocibmmigroup : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscotdomainsctpipv4Identity();
-        ~Ciscotdomainsctpipv4Identity();
+        Ciscocibmmigroup();
+        ~Ciscocibmmigroup();
 
 
-}; // Ciscotdomainsctpipv4Identity
+}; // Ciscocibmmigroup
 
-class CiscounknownrptrgroupIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomainudpipv6 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscounknownrptrgroupIdentity();
-        ~CiscounknownrptrgroupIdentity();
+        Ciscotdomainudpipv6();
+        ~Ciscotdomainudpipv6();
 
 
-}; // CiscounknownrptrgroupIdentity
+}; // Ciscotdomainudpipv6
 
-class CiscomodulesIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscopib : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscomodulesIdentity();
-        ~CiscomodulesIdentity();
+        Ciscopib();
+        ~Ciscopib();
 
 
-}; // CiscomodulesIdentity
+}; // Ciscopib
 
-class LightstreamIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscopartnerproducts : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        LightstreamIdentity();
-        ~LightstreamIdentity();
+        Ciscopartnerproducts();
+        ~Ciscopartnerproducts();
 
 
-}; // LightstreamIdentity
+}; // Ciscopartnerproducts
 
-class CiscoadminIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscomodules : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscoadminIdentity();
-        ~CiscoadminIdentity();
+        Ciscomodules();
+        ~Ciscomodules();
 
 
-}; // CiscoadminIdentity
+}; // Ciscomodules
 
-class CiscotdomainlocalIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscopki : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscotdomainlocalIdentity();
-        ~CiscotdomainlocalIdentity();
+        Ciscopki();
+        ~Ciscopki();
 
 
-}; // CiscotdomainlocalIdentity
+}; // Ciscopki
 
-class CiscotdomainddpIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomainlocal : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscotdomainddpIdentity();
-        ~CiscotdomainddpIdentity();
+        Ciscotdomainlocal();
+        ~Ciscotdomainlocal();
 
 
-}; // CiscotdomainddpIdentity
+}; // Ciscotdomainlocal
 
-class Cisco2507RptrgroupIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Local : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Cisco2507RptrgroupIdentity();
-        ~Cisco2507RptrgroupIdentity();
+        Local();
+        ~Local();
 
 
-}; // Cisco2507RptrgroupIdentity
+}; // Local
 
-class Ciscochipsetsaint3Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscopibtomib : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscochipsetsaint3Identity();
-        ~Ciscochipsetsaint3Identity();
+        Ciscopibtomib();
+        ~Ciscopibtomib();
 
 
-}; // Ciscochipsetsaint3Identity
+}; // Ciscopibtomib
 
-class Ciscochipsetsaint1Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscomgmt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscochipsetsaint1Identity();
-        ~Ciscochipsetsaint1Identity();
+        Ciscomgmt();
+        ~Ciscomgmt();
 
 
-}; // Ciscochipsetsaint1Identity
+}; // Ciscomgmt
 
-class TemporaryIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Cisco2516Rptrgroup : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        TemporaryIdentity();
-        ~TemporaryIdentity();
+        Cisco2516Rptrgroup();
+        ~Cisco2516Rptrgroup();
 
 
-}; // TemporaryIdentity
+}; // Cisco2516Rptrgroup
 
-class WorkgroupIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscodomains : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        WorkgroupIdentity();
-        ~WorkgroupIdentity();
+        Ciscodomains();
+        ~Ciscodomains();
 
 
-}; // WorkgroupIdentity
+}; // Ciscodomains
 
-class Ciscochipsetsaint4Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscosb : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscochipsetsaint4Identity();
-        ~Ciscochipsetsaint4Identity();
+        Ciscosb();
+        ~Ciscosb();
 
 
-}; // Ciscochipsetsaint4Identity
+}; // Ciscosb
 
-class CiscoworksIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscochipsetsaint4 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscoworksIdentity();
-        ~CiscoworksIdentity();
+        Ciscochipsetsaint4();
+        ~Ciscochipsetsaint4();
 
 
-}; // CiscoworksIdentity
+}; // Ciscochipsetsaint4
 
-class PakmonIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscochipsets : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        PakmonIdentity();
-        ~PakmonIdentity();
+        Ciscochipsets();
+        ~Ciscochipsets();
 
 
-}; // PakmonIdentity
+}; // Ciscochipsets
 
-class Ciscowsx5020RptrgroupIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Lightstream : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscowsx5020RptrgroupIdentity();
-        ~Ciscowsx5020RptrgroupIdentity();
+        Lightstream();
+        ~Lightstream();
 
 
-}; // Ciscowsx5020RptrgroupIdentity
+}; // Lightstream
 
-class CiscoagentcapabilityIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscopolicy : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscoagentcapabilityIdentity();
-        ~CiscoagentcapabilityIdentity();
+        Ciscopolicy();
+        ~Ciscopolicy();
 
 
-}; // CiscoagentcapabilityIdentity
+}; // Ciscopolicy
 
-class CiscopartnerproductsIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscoproxy : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscopartnerproductsIdentity();
-        ~CiscopartnerproductsIdentity();
+        Ciscoproxy();
+        ~Ciscoproxy();
 
 
-}; // CiscopartnerproductsIdentity
+}; // Ciscoproxy
 
-class CiscocibmmigroupIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomainipx : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscocibmmigroupIdentity();
-        ~CiscocibmmigroupIdentity();
+        Ciscotdomainipx();
+        ~Ciscotdomainipx();
 
 
-}; // CiscocibmmigroupIdentity
+}; // Ciscotdomainipx
 
-class CiscoproductsIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Workgroup : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscoproductsIdentity();
-        ~CiscoproductsIdentity();
+        Workgroup();
+        ~Workgroup();
 
 
-}; // CiscoproductsIdentity
+}; // Workgroup
 
-class CiscopkiIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscoworks : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscopkiIdentity();
-        ~CiscopkiIdentity();
+        Ciscoworks();
+        ~Ciscoworks();
 
 
-}; // CiscopkiIdentity
+}; // Ciscoworks
 
-class Cisco2516RptrgroupIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomaintcpipv4 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Cisco2516RptrgroupIdentity();
-        ~Cisco2516RptrgroupIdentity();
+        Ciscotdomaintcpipv4();
+        ~Ciscotdomaintcpipv4();
 
 
-}; // Cisco2516RptrgroupIdentity
+}; // Ciscotdomaintcpipv4
 
-class CiscoconfigIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomainddp : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscoconfigIdentity();
-        ~CiscoconfigIdentity();
+        Ciscotdomainddp();
+        ~Ciscotdomainddp();
 
 
-}; // CiscoconfigIdentity
+}; // Ciscotdomainddp
 
-class CiscochipsetsIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscoagentcapability : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscochipsetsIdentity();
-        ~CiscochipsetsIdentity();
+        Ciscoagentcapability();
+        ~Ciscoagentcapability();
 
 
-}; // CiscochipsetsIdentity
+}; // Ciscoagentcapability
 
-class OtherenterprisesIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Cisco2507Rptrgroup : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        OtherenterprisesIdentity();
-        ~OtherenterprisesIdentity();
+        Cisco2507Rptrgroup();
+        ~Cisco2507Rptrgroup();
 
 
-}; // OtherenterprisesIdentity
+}; // Cisco2507Rptrgroup
 
-class CiscocibIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomaintcpipv6 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscocibIdentity();
-        ~CiscocibIdentity();
+        Ciscotdomaintcpipv6();
+        ~Ciscotdomaintcpipv6();
 
 
-}; // CiscocibIdentity
+}; // Ciscotdomaintcpipv6
 
-class LocalIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscoconfig : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        LocalIdentity();
-        ~LocalIdentity();
+        Ciscoconfig();
+        ~Ciscoconfig();
 
 
-}; // LocalIdentity
+}; // Ciscoconfig
 
-class CiscopolicyIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomainclns : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscopolicyIdentity();
-        ~CiscopolicyIdentity();
+        Ciscotdomainclns();
+        ~Ciscotdomainclns();
 
 
-}; // CiscopolicyIdentity
+}; // Ciscotdomainclns
 
-class Ciscotdomainsctpipv6Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Newport : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscotdomainsctpipv6Identity();
-        ~Ciscotdomainsctpipv6Identity();
+        Newport();
+        ~Newport();
 
 
-}; // Ciscotdomainsctpipv6Identity
+}; // Newport
 
-class NewportIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscowsx5020Rptrgroup : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        NewportIdentity();
-        ~NewportIdentity();
+        Ciscowsx5020Rptrgroup();
+        ~Ciscowsx5020Rptrgroup();
 
 
-}; // NewportIdentity
+}; // Ciscowsx5020Rptrgroup
 
-class CiscosbIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscochipsetsaint3 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscosbIdentity();
-        ~CiscosbIdentity();
+        Ciscochipsetsaint3();
+        ~Ciscochipsetsaint3();
 
 
-}; // CiscosbIdentity
+}; // Ciscochipsetsaint3
 
-class Ciscotdomaintcpipv4Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscotdomaincons : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Ciscotdomaintcpipv4Identity();
-        ~Ciscotdomaintcpipv4Identity();
+        Ciscotdomaincons();
+        ~Ciscotdomaincons();
 
 
-}; // Ciscotdomaintcpipv4Identity
+}; // Ciscotdomaincons
 
-class CiscosmbIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Ciscocibprovgroup : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        CiscosmbIdentity();
-        ~CiscosmbIdentity();
+        Ciscocibprovgroup();
+        ~Ciscocibprovgroup();
 
 
-}; // CiscosmbIdentity
+}; // Ciscocibprovgroup
 
 
 }

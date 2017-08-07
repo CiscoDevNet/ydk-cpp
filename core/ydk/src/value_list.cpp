@@ -57,17 +57,17 @@ std::string to_string(YType t)
 }
 
 YLeafList::YLeafList(YType type, std::string name)
-    : operation(EditOperation::not_set), type(type), name(name)
+    : yfilter(YFilter::not_set), type(type), name(name)
 {
 }
 
 YLeafList::YLeafList(const YLeafList& other)
-    : operation(EditOperation::not_set), values(other.getYLeafs()), type(other.type), name(other.name)
+    : yfilter(YFilter::not_set), values(other.getYLeafs()), type(other.type), name(other.name)
 {
 }
 
 YLeafList::YLeafList(YLeafList&& other)
-    : operation(EditOperation::not_set), values(other.getYLeafs()), type(other.type), name(other.name)
+    : yfilter(YFilter::not_set), values(other.getYLeafs()), type(other.type), name(other.name)
 {
 }
 
@@ -77,7 +77,7 @@ YLeafList::operator=(const YLeafList& other)
     type = other.type;
     name = other.name;
     values = other.getYLeafs();
-    operation = other.operation;
+    yfilter = other.yfilter;
     return *this;
 }
 
@@ -87,7 +87,7 @@ YLeafList::operator=(YLeafList&& other)
     type = other.type;
     name = other.name;
     values = other.getYLeafs();
-    operation = other.operation;
+    yfilter = other.yfilter;
     return *this;
 }
 
@@ -97,38 +97,38 @@ YLeafList::~YLeafList()
 
 void YLeafList::append(uint8 val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(uint32 val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(uint64 val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(long val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(double val)
@@ -142,83 +142,83 @@ void YLeafList::append(double val)
 
 void YLeafList::append(int8 val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(int32 val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(Enum::YLeaf val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(int64 val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(Empty val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(Identity val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(Bits val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(std::string val)
 {
-	YLeaf value {type, name};
-	value = val;
+    YLeaf value {type, name};
+    value = val;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 void YLeafList::append(Decimal64 val)
 {
-	YLeaf value {type, name};
-	value = val.value;
+    YLeaf value {type, name};
+    value = val.value;
 
 
-	values.push_back(value);
+    values.push_back(value);
 }
 
 bool YLeafList::operator == (YLeafList & other) const
@@ -233,16 +233,21 @@ bool YLeafList::operator == (const YLeafList & other) const
 
 YLeaf & YLeafList::operator [] (size_t key)
 {
-	if(key >= values.size())
-	{
-		throw(YCPPInvalidArgumentError{"List index out of range"});
-	}
-	return values[key];
+    if(key >= values.size())
+    {
+        throw(YCPPInvalidArgumentError{"List index out of range"});
+    }
+    return values[key];
 }
 
 std::vector<YLeaf> YLeafList::getYLeafs() const
 {
     return values;
+}
+
+void YLeafList::clear()
+{
+    values.clear();
 }
 
 std::vector<std::pair<std::string, LeafData> > YLeafList::get_name_leafdata() const
@@ -253,7 +258,7 @@ std::vector<std::pair<std::string, LeafData> > YLeafList::get_name_leafdata() co
         name_values.push_back(
                             {
                                 (value.get_name_leafdata().first+"[.='"+value.get()+"']"),
-                                {"", operation, value.is_set}
+                                {"", yfilter, value.is_set, value.value_namespace, value.value_namespace_prefix}
                             }
                             );
     }

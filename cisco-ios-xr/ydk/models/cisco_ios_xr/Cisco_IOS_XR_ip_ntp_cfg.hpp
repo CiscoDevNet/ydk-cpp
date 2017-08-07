@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_ntp_cfg {
 
-class Ntp : public Entity
+class Ntp : public ydk::Entity
 {
     public:
         Ntp();
@@ -18,21 +18,24 @@ class Ntp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf max_associations; //type: int32
-        YLeaf master; //type: uint32
-        YLeaf broadcast_delay; //type: uint32
-        YLeaf log_internal_sync; //type: empty
-        YLeaf update_calendar; //type: empty
+        ydk::YLeaf max_associations; //type: int32
+        ydk::YLeaf master; //type: uint32
+        ydk::YLeaf broadcast_delay; //type: uint32
+        ydk::YLeaf log_internal_sync; //type: empty
+        ydk::YLeaf update_calendar; //type: empty
         class PeerVrfs; //type: Ntp::PeerVrfs
         class DscpIpv4; //type: Ntp::DscpIpv4
         class DscpIpv6; //type: Ntp::DscpIpv6
@@ -54,7 +57,7 @@ class Ntp : public Entity
 }; // Ntp
 
 
-class Ntp::PeerVrfs : public Entity
+class Ntp::PeerVrfs : public ydk::Entity
 {
     public:
         PeerVrfs();
@@ -62,11 +65,13 @@ class Ntp::PeerVrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PeerVrf; //type: Ntp::PeerVrfs::PeerVrf
 
@@ -75,7 +80,7 @@ class Ntp::PeerVrfs : public Entity
 }; // Ntp::PeerVrfs
 
 
-class Ntp::PeerVrfs::PeerVrf : public Entity
+class Ntp::PeerVrfs::PeerVrf : public ydk::Entity
 {
     public:
         PeerVrf();
@@ -83,13 +88,15 @@ class Ntp::PeerVrfs::PeerVrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class PeerIpv4S; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4S
         class PeerIpv6S; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6S
 
@@ -99,7 +106,7 @@ class Ntp::PeerVrfs::PeerVrf : public Entity
 }; // Ntp::PeerVrfs::PeerVrf
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv4S : public Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv4S : public ydk::Entity
 {
     public:
         PeerIpv4S();
@@ -107,11 +114,13 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv4S : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PeerIpv4; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4
 
@@ -120,7 +129,7 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv4S : public Entity
 }; // Ntp::PeerVrfs::PeerVrf::PeerIpv4S
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4 : public Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4 : public ydk::Entity
 {
     public:
         PeerIpv4();
@@ -128,13 +137,15 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_ipv4; //type: string
+        ydk::YLeaf address_ipv4; //type: string
         class PeerTypeIpv4; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4> > peer_type_ipv4;
@@ -142,7 +153,7 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4 : public Entity
 }; // Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4 : public Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4 : public ydk::Entity
 {
     public:
         PeerTypeIpv4();
@@ -150,26 +161,28 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf peer_type; //type: NtpPeerEnum
-        YLeaf ntp_version; //type: uint32
-        YLeaf authentication_key; //type: uint32
-        YLeaf min_poll; //type: uint32
-        YLeaf max_poll; //type: uint32
-        YLeaf preferred_peer; //type: empty
-        YLeaf source_interface; //type: string
-        YLeaf burst; //type: empty
-        YLeaf iburst; //type: empty
+        ydk::YLeaf peer_type; //type: NtpPeer
+        ydk::YLeaf ntp_version; //type: uint32
+        ydk::YLeaf authentication_key; //type: uint32
+        ydk::YLeaf min_poll; //type: uint32
+        ydk::YLeaf max_poll; //type: uint32
+        ydk::YLeaf preferred_peer; //type: empty
+        ydk::YLeaf source_interface; //type: string
+        ydk::YLeaf burst; //type: empty
+        ydk::YLeaf iburst; //type: empty
 
 }; // Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv6S : public Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv6S : public ydk::Entity
 {
     public:
         PeerIpv6S();
@@ -177,11 +190,13 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv6S : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PeerIpv6; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6
 
@@ -190,7 +205,7 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv6S : public Entity
 }; // Ntp::PeerVrfs::PeerVrf::PeerIpv6S
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6 : public Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6 : public ydk::Entity
 {
     public:
         PeerIpv6();
@@ -198,13 +213,15 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_ipv6; //type: string
+        ydk::YLeaf address_ipv6; //type: string
         class PeerTypeIpv6; //type: Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_cfg::Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6> > peer_type_ipv6;
@@ -212,7 +229,7 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6 : public Entity
 }; // Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6
 
 
-class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6 : public Entity
+class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6 : public ydk::Entity
 {
     public:
         PeerTypeIpv6();
@@ -220,27 +237,29 @@ class Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf peer_type; //type: NtpPeerEnum
-        YLeaf ntp_version; //type: uint32
-        YLeaf authentication_key; //type: uint32
-        YLeaf min_poll; //type: uint32
-        YLeaf max_poll; //type: uint32
-        YLeaf preferred_peer; //type: empty
-        YLeaf source_interface; //type: string
-        YLeaf burst; //type: empty
-        YLeaf iburst; //type: empty
-        YLeaf address_ipv6; //type: string
+        ydk::YLeaf peer_type; //type: NtpPeer
+        ydk::YLeaf ntp_version; //type: uint32
+        ydk::YLeaf authentication_key; //type: uint32
+        ydk::YLeaf min_poll; //type: uint32
+        ydk::YLeaf max_poll; //type: uint32
+        ydk::YLeaf preferred_peer; //type: empty
+        ydk::YLeaf source_interface; //type: string
+        ydk::YLeaf burst; //type: empty
+        ydk::YLeaf iburst; //type: empty
+        ydk::YLeaf address_ipv6; //type: string
 
 }; // Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6
 
 
-class Ntp::DscpIpv4 : public Entity
+class Ntp::DscpIpv4 : public ydk::Entity
 {
     public:
         DscpIpv4();
@@ -248,19 +267,21 @@ class Ntp::DscpIpv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mode; //type: NtpdscpEnum
-        YLeaf dscp_or_precedence_value; //type: uint32
+        ydk::YLeaf mode; //type: Ntpdscp
+        ydk::YLeaf dscp_or_precedence_value; //type: uint32
 
 }; // Ntp::DscpIpv4
 
 
-class Ntp::DscpIpv6 : public Entity
+class Ntp::DscpIpv6 : public ydk::Entity
 {
     public:
         DscpIpv6();
@@ -268,19 +289,21 @@ class Ntp::DscpIpv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mode; //type: NtpdscpEnum
-        YLeaf dscp_or_precedence_value; //type: uint32
+        ydk::YLeaf mode; //type: Ntpdscp
+        ydk::YLeaf dscp_or_precedence_value; //type: uint32
 
 }; // Ntp::DscpIpv6
 
 
-class Ntp::Sources : public Entity
+class Ntp::Sources : public ydk::Entity
 {
     public:
         Sources();
@@ -288,11 +311,13 @@ class Ntp::Sources : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Source; //type: Ntp::Sources::Source
 
@@ -301,7 +326,7 @@ class Ntp::Sources : public Entity
 }; // Ntp::Sources
 
 
-class Ntp::Sources::Source : public Entity
+class Ntp::Sources::Source : public ydk::Entity
 {
     public:
         Source();
@@ -309,19 +334,21 @@ class Ntp::Sources::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
-        YLeaf source_interface; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf source_interface; //type: string
 
 }; // Ntp::Sources::Source
 
 
-class Ntp::Authentication : public Entity
+class Ntp::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -329,13 +356,15 @@ class Ntp::Authentication : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
+        ydk::YLeaf enable; //type: empty
         class Keies; //type: Ntp::Authentication::Keies
         class TrustedKeies; //type: Ntp::Authentication::TrustedKeies
 
@@ -345,7 +374,7 @@ class Ntp::Authentication : public Entity
 }; // Ntp::Authentication
 
 
-class Ntp::Authentication::Keies : public Entity
+class Ntp::Authentication::Keies : public ydk::Entity
 {
     public:
         Keies();
@@ -353,11 +382,13 @@ class Ntp::Authentication::Keies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Key; //type: Ntp::Authentication::Keies::Key
 
@@ -366,7 +397,7 @@ class Ntp::Authentication::Keies : public Entity
 }; // Ntp::Authentication::Keies
 
 
-class Ntp::Authentication::Keies::Key : public Entity
+class Ntp::Authentication::Keies::Key : public ydk::Entity
 {
     public:
         Key();
@@ -374,19 +405,21 @@ class Ntp::Authentication::Keies::Key : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf key_number; //type: uint32
-        YLeaf authentication_key; //type: string
+        ydk::YLeaf key_number; //type: uint32
+        ydk::YLeaf authentication_key; //type: string
 
 }; // Ntp::Authentication::Keies::Key
 
 
-class Ntp::Authentication::TrustedKeies : public Entity
+class Ntp::Authentication::TrustedKeies : public ydk::Entity
 {
     public:
         TrustedKeies();
@@ -394,11 +427,13 @@ class Ntp::Authentication::TrustedKeies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TrustedKey; //type: Ntp::Authentication::TrustedKeies::TrustedKey
 
@@ -407,7 +442,7 @@ class Ntp::Authentication::TrustedKeies : public Entity
 }; // Ntp::Authentication::TrustedKeies
 
 
-class Ntp::Authentication::TrustedKeies::TrustedKey : public Entity
+class Ntp::Authentication::TrustedKeies::TrustedKey : public ydk::Entity
 {
     public:
         TrustedKey();
@@ -415,18 +450,20 @@ class Ntp::Authentication::TrustedKeies::TrustedKey : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf key_number; //type: uint32
+        ydk::YLeaf key_number; //type: uint32
 
 }; // Ntp::Authentication::TrustedKeies::TrustedKey
 
 
-class Ntp::Passive : public Entity
+class Ntp::Passive : public ydk::Entity
 {
     public:
         Passive();
@@ -434,18 +471,20 @@ class Ntp::Passive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
+        ydk::YLeaf enable; //type: empty
 
 }; // Ntp::Passive
 
 
-class Ntp::InterfaceTables : public Entity
+class Ntp::InterfaceTables : public ydk::Entity
 {
     public:
         InterfaceTables();
@@ -453,11 +492,13 @@ class Ntp::InterfaceTables : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceTable; //type: Ntp::InterfaceTables::InterfaceTable
 
@@ -466,7 +507,7 @@ class Ntp::InterfaceTables : public Entity
 }; // Ntp::InterfaceTables
 
 
-class Ntp::InterfaceTables::InterfaceTable : public Entity
+class Ntp::InterfaceTables::InterfaceTable : public ydk::Entity
 {
     public:
         InterfaceTable();
@@ -474,13 +515,15 @@ class Ntp::InterfaceTables::InterfaceTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Interface; //type: Ntp::InterfaceTables::InterfaceTable::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables::InterfaceTable::Interface> > interface;
@@ -488,7 +531,7 @@ class Ntp::InterfaceTables::InterfaceTable : public Entity
 }; // Ntp::InterfaceTables::InterfaceTable
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface : public Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -496,14 +539,16 @@ class Ntp::InterfaceTables::InterfaceTable::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface; //type: string
-        YLeaf disable; //type: empty
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf disable; //type: empty
         class InterfaceMulticast; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast
         class InterfaceBroadcast; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast
 
@@ -513,7 +558,7 @@ class Ntp::InterfaceTables::InterfaceTable::Interface : public Entity
 }; // Ntp::InterfaceTables::InterfaceTable::Interface
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast : public Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast : public ydk::Entity
 {
     public:
         InterfaceMulticast();
@@ -521,11 +566,13 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MulticastClients; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients
         class MulticastServers; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers
@@ -536,7 +583,7 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast : publ
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients : public Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients : public ydk::Entity
 {
     public:
         MulticastClients();
@@ -544,11 +591,13 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MulticastClient; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient
 
@@ -557,7 +606,7 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multi
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient : public Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient : public ydk::Entity
 {
     public:
         MulticastClient();
@@ -565,18 +614,20 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_address; //type: string
+        ydk::YLeaf ip_address; //type: string
 
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers : public Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers : public ydk::Entity
 {
     public:
         MulticastServers();
@@ -584,11 +635,13 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MulticastServer; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer
 
@@ -597,7 +650,7 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multi
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer : public Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer : public ydk::Entity
 {
     public:
         MulticastServer();
@@ -605,21 +658,23 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_address; //type: string
-        YLeaf authentication_key; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf ttl; //type: uint32
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf authentication_key; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf ttl; //type: uint32
 
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast : public Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast : public ydk::Entity
 {
     public:
         InterfaceBroadcast();
@@ -627,13 +682,15 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf broadcast_client; //type: empty
+        ydk::YLeaf broadcast_client; //type: empty
         class Broadcast; //type: Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast
 
         std::shared_ptr<Cisco_IOS_XR_ip_ntp_cfg::Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast> broadcast;
@@ -641,7 +698,7 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast : publ
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast
 
 
-class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast : public Entity
+class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast : public ydk::Entity
 {
     public:
         Broadcast();
@@ -649,20 +706,22 @@ class Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broad
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf authentication_key; //type: uint32
-        YLeaf ntp_version; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf authentication_key; //type: uint32
+        ydk::YLeaf ntp_version; //type: uint32
 
 }; // Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast
 
 
-class Ntp::AccessGroupTables : public Entity
+class Ntp::AccessGroupTables : public ydk::Entity
 {
     public:
         AccessGroupTables();
@@ -670,11 +729,13 @@ class Ntp::AccessGroupTables : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AccessGroupTable; //type: Ntp::AccessGroupTables::AccessGroupTable
 
@@ -683,7 +744,7 @@ class Ntp::AccessGroupTables : public Entity
 }; // Ntp::AccessGroupTables
 
 
-class Ntp::AccessGroupTables::AccessGroupTable : public Entity
+class Ntp::AccessGroupTables::AccessGroupTable : public ydk::Entity
 {
     public:
         AccessGroupTable();
@@ -691,13 +752,15 @@ class Ntp::AccessGroupTables::AccessGroupTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class AccessGroupAfTable; //type: Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_cfg::Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable> > access_group_af_table;
@@ -705,7 +768,7 @@ class Ntp::AccessGroupTables::AccessGroupTable : public Entity
 }; // Ntp::AccessGroupTables::AccessGroupTable
 
 
-class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable : public Entity
+class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable : public ydk::Entity
 {
     public:
         AccessGroupAfTable();
@@ -713,13 +776,15 @@ class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: NtpAccessAfEnum
+        ydk::YLeaf af; //type: NtpAccessAf
         class AccessGroup; //type: Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_ntp_cfg::Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup> > access_group;
@@ -727,7 +792,7 @@ class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable : public Enti
 }; // Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable
 
 
-class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup : public Entity
+class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup : public ydk::Entity
 {
     public:
         AccessGroup();
@@ -735,48 +800,50 @@ class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_group_type; //type: NtpAccessEnum
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf access_group_type; //type: NtpAccess
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup
 
-class NtpAccessAfEnum : public Enum
+class NtpAccessAf : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class NtpPeerEnum : public Enum
+class NtpPeer : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf peer;
-        static const Enum::YLeaf server;
+        static const ydk::Enum::YLeaf peer;
+        static const ydk::Enum::YLeaf server;
 
 };
 
-class NtpdscpEnum : public Enum
+class Ntpdscp : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ntp_precedence;
-        static const Enum::YLeaf ntpdscp;
+        static const ydk::Enum::YLeaf ntp_precedence;
+        static const ydk::Enum::YLeaf ntpdscp;
 
 };
 
-class NtpAccessEnum : public Enum
+class NtpAccess : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf peer;
-        static const Enum::YLeaf serve;
-        static const Enum::YLeaf serve_only;
-        static const Enum::YLeaf query_only;
+        static const ydk::Enum::YLeaf peer;
+        static const ydk::Enum::YLeaf serve;
+        static const ydk::Enum::YLeaf serve_only;
+        static const ydk::Enum::YLeaf query_only;
 
 };
 

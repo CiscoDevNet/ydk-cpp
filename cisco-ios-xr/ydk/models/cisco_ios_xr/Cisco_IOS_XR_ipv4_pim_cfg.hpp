@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_cfg {
 
-class Pim : public Entity
+class Pim : public ydk::Entity
 {
     public:
         Pim();
@@ -19,15 +19,18 @@ class Pim : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Vrfs; //type: Pim::Vrfs
         class DefaultContext; //type: Pim::DefaultContext
@@ -38,7 +41,7 @@ class Pim : public Entity
 }; // Pim
 
 
-class Pim::Vrfs : public Entity
+class Pim::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -46,11 +49,13 @@ class Pim::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: Pim::Vrfs::Vrf
 
@@ -59,7 +64,7 @@ class Pim::Vrfs : public Entity
 }; // Pim::Vrfs
 
 
-class Pim::Vrfs::Vrf : public Entity
+class Pim::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -67,13 +72,15 @@ class Pim::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Ipv4; //type: Pim::Vrfs::Vrf::Ipv4
         class Ipv6; //type: Pim::Vrfs::Vrf::Ipv6
 
@@ -83,7 +90,7 @@ class Pim::Vrfs::Vrf : public Entity
 }; // Pim::Vrfs::Vrf
 
 
-class Pim::Vrfs::Vrf::Ipv4 : public Entity
+class Pim::Vrfs::Vrf::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -91,26 +98,28 @@ class Pim::Vrfs::Vrf::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_check_on_receive; //type: empty
-        YLeaf old_register_checksum; //type: empty
-        YLeaf neighbor_filter; //type: string
-        YLeaf spt_threshold_infinity; //type: string
-        YLeaf log_neighbor_changes; //type: empty
-        YLeaf register_source; //type: string
-        YLeaf accept_register; //type: string
-        YLeaf suppress_rpf_prunes; //type: empty
-        YLeaf ssm_allow_override; //type: empty
-        YLeaf multipath; //type: PimMultipathEnum
-        YLeaf rp_static_deny; //type: string
-        YLeaf suppress_data_registers; //type: empty
-        YLeaf neighbor_check_on_send; //type: empty
-        YLeaf auto_rp_disable; //type: empty
+        ydk::YLeaf neighbor_check_on_receive; //type: empty
+        ydk::YLeaf old_register_checksum; //type: empty
+        ydk::YLeaf neighbor_filter; //type: string
+        ydk::YLeaf spt_threshold_infinity; //type: string
+        ydk::YLeaf log_neighbor_changes; //type: empty
+        ydk::YLeaf register_source; //type: string
+        ydk::YLeaf accept_register; //type: string
+        ydk::YLeaf suppress_rpf_prunes; //type: empty
+        ydk::YLeaf ssm_allow_override; //type: empty
+        ydk::YLeaf multipath; //type: PimMultipath
+        ydk::YLeaf rp_static_deny; //type: string
+        ydk::YLeaf suppress_data_registers; //type: empty
+        ydk::YLeaf neighbor_check_on_send; //type: empty
+        ydk::YLeaf auto_rp_disable; //type: empty
         class SparseModeRpAddresses; //type: Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses
         class MulticastOnlyFrr; //type: Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr
         class CsMulticastOnlyFrrs; //type: Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs
@@ -150,7 +159,7 @@ class Pim::Vrfs::Vrf::Ipv4 : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4
 
 
-class Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses : public Entity
+class Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses : public ydk::Entity
 {
     public:
         SparseModeRpAddresses();
@@ -158,11 +167,13 @@ class Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SparseModeRpAddress; //type: Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress
 
@@ -171,7 +182,7 @@ class Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses
 
 
-class Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress : public Entity
+class Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress : public ydk::Entity
 {
     public:
         SparseModeRpAddress();
@@ -179,20 +190,22 @@ class Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
-        YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf auto_rp_override; //type: boolean
 
 }; // Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress
 
 
-class Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr : public Entity
+class Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr : public ydk::Entity
 {
     public:
         MulticastOnlyFrr();
@@ -200,21 +213,23 @@ class Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf non_revertive_multicast_only_frr; //type: empty
-        YLeaf flow_multicast_only_frr; //type: string
-        YLeaf enable; //type: empty
-        YLeaf rib_multicast_only_frr; //type: string
+        ydk::YLeaf non_revertive_multicast_only_frr; //type: empty
+        ydk::YLeaf flow_multicast_only_frr; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf rib_multicast_only_frr; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr
 
 
-class Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs : public Entity
+class Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs : public ydk::Entity
 {
     public:
         CsMulticastOnlyFrrs();
@@ -222,11 +237,13 @@ class Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CsMulticastOnlyFrr; //type: Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr
 
@@ -235,7 +252,7 @@ class Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs
 
 
-class Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr : public Entity
+class Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr : public ydk::Entity
 {
     public:
         CsMulticastOnlyFrr();
@@ -243,21 +260,23 @@ class Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source; //type: string
-        YLeaf primary; //type: string
-        YLeaf backup; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf primary; //type: string
+        ydk::YLeaf backup; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr
 
 
-class Pim::Vrfs::Vrf::Ipv4::InheritableDefaults : public Entity
+class Pim::Vrfs::Vrf::Ipv4::InheritableDefaults : public ydk::Entity
 {
     public:
         InheritableDefaults();
@@ -265,24 +284,26 @@ class Pim::Vrfs::Vrf::Ipv4::InheritableDefaults : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf convergency; //type: uint32
-        YLeaf hello_interval; //type: uint32
-        YLeaf propagation_delay; //type: uint32
-        YLeaf dr_priority; //type: uint32
-        YLeaf join_prune_mtu; //type: uint32
-        YLeaf jp_interval; //type: uint32
-        YLeaf override_interval; //type: uint32
+        ydk::YLeaf convergency; //type: uint32
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf propagation_delay; //type: uint32
+        ydk::YLeaf dr_priority; //type: uint32
+        ydk::YLeaf join_prune_mtu; //type: uint32
+        ydk::YLeaf jp_interval; //type: uint32
+        ydk::YLeaf override_interval; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::InheritableDefaults
 
 
-class Pim::Vrfs::Vrf::Ipv4::Rpf : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Rpf : public ydk::Entity
 {
     public:
         Rpf();
@@ -290,18 +311,20 @@ class Pim::Vrfs::Vrf::Ipv4::Rpf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy; //type: string
+        ydk::YLeaf route_policy; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv4::Rpf
 
 
-class Pim::Vrfs::Vrf::Ipv4::Maximum : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Maximum : public ydk::Entity
 {
     public:
         Maximum();
@@ -309,11 +332,13 @@ class Pim::Vrfs::Vrf::Ipv4::Maximum : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class GroupMappingsAutoRp; //type: Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp
         class BsrGroupMappings; //type: Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings
@@ -332,7 +357,7 @@ class Pim::Vrfs::Vrf::Ipv4::Maximum : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::Maximum
 
 
-class Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp : public ydk::Entity
 {
     public:
         GroupMappingsAutoRp();
@@ -340,19 +365,21 @@ class Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_group_ranges_auto_rp; //type: uint32
-        YLeaf threshold_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf maximum_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf threshold_group_ranges_auto_rp; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp
 
 
-class Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings : public ydk::Entity
 {
     public:
         BsrGroupMappings();
@@ -360,19 +387,21 @@ class Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_group_ranges; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_group_ranges; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings
 
 
-class Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates : public ydk::Entity
 {
     public:
         RegisterStates();
@@ -380,19 +409,21 @@ class Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_register_states; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_register_states; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates
 
 
-class Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces : public ydk::Entity
 {
     public:
         RouteInterfaces();
@@ -400,19 +431,21 @@ class Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_route_interfaces; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_route_interfaces; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces
 
 
-class Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache : public ydk::Entity
 {
     public:
         BsrCandidateRpCache();
@@ -420,19 +453,21 @@ class Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache
 
 
-class Pim::Vrfs::Vrf::Ipv4::Maximum::Routes : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Maximum::Routes : public ydk::Entity
 {
     public:
         Routes();
@@ -440,19 +475,21 @@ class Pim::Vrfs::Vrf::Ipv4::Maximum::Routes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_routes; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_routes; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Maximum::Routes
 
 
-class Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer : public Entity
+class Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer : public ydk::Entity
 {
     public:
         SgExpiryTimer();
@@ -460,19 +497,21 @@ class Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer
 
 
-class Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable : public Entity
+class Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable : public ydk::Entity
 {
     public:
         RpfVectorEnable();
@@ -480,20 +519,22 @@ class Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
-        YLeaf allow_ebgp; //type: empty
-        YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf allow_ebgp; //type: empty
+        ydk::YLeaf disable_ibgp; //type: empty
 
 }; // Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable
 
 
-class Pim::Vrfs::Vrf::Ipv4::Ssm : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Ssm : public ydk::Entity
 {
     public:
         Ssm();
@@ -501,19 +542,21 @@ class Pim::Vrfs::Vrf::Ipv4::Ssm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf disable; //type: boolean
-        YLeaf range; //type: string
+        ydk::YLeaf disable; //type: boolean
+        ydk::YLeaf range; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv4::Ssm
 
 
-class Pim::Vrfs::Vrf::Ipv4::Injects : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Injects : public ydk::Entity
 {
     public:
         Injects();
@@ -521,11 +564,13 @@ class Pim::Vrfs::Vrf::Ipv4::Injects : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inject; //type: Pim::Vrfs::Vrf::Ipv4::Injects::Inject
 
@@ -534,7 +579,7 @@ class Pim::Vrfs::Vrf::Ipv4::Injects : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::Injects
 
 
-class Pim::Vrfs::Vrf::Ipv4::Injects::Inject : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Injects::Inject : public ydk::Entity
 {
     public:
         Inject();
@@ -542,20 +587,22 @@ class Pim::Vrfs::Vrf::Ipv4::Injects::Inject : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeafList rpf_proxy_address; //type: list of  string
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeafList rpf_proxy_address; //type: list of  string
 
 }; // Pim::Vrfs::Vrf::Ipv4::Injects::Inject
 
 
-class Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses : public Entity
+class Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses : public ydk::Entity
 {
     public:
         BidirRpAddresses();
@@ -563,11 +610,13 @@ class Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BidirRpAddress; //type: Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress
 
@@ -576,7 +625,7 @@ class Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses
 
 
-class Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress : public Entity
+class Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress : public ydk::Entity
 {
     public:
         BidirRpAddress();
@@ -584,20 +633,22 @@ class Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
-        YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf auto_rp_override; //type: boolean
 
 }; // Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress
 
 
-class Pim::Vrfs::Vrf::Ipv4::Bsr : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Bsr : public ydk::Entity
 {
     public:
         Bsr();
@@ -605,11 +656,13 @@ class Pim::Vrfs::Vrf::Ipv4::Bsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CandidateBsr; //type: Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr
         class CandidateRps; //type: Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps
@@ -620,7 +673,7 @@ class Pim::Vrfs::Vrf::Ipv4::Bsr : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::Bsr
 
 
-class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr : public ydk::Entity
 {
     public:
         CandidateBsr();
@@ -628,20 +681,22 @@ class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf priority; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf priority; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr
 
 
-class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps : public ydk::Entity
 {
     public:
         CandidateRps();
@@ -649,11 +704,13 @@ class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CandidateRp; //type: Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp
 
@@ -662,7 +719,7 @@ class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps
 
 
-class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp : public ydk::Entity
 {
     public:
         CandidateRp();
@@ -670,22 +727,24 @@ class Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf mode; //type: PimProtocolModeEnum
-        YLeaf group_list; //type: string
-        YLeaf priority; //type: uint32
-        YLeaf interval; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf mode; //type: PimProtocolMode
+        ydk::YLeaf group_list; //type: string
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf interval; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp
 
 
-class Pim::Vrfs::Vrf::Ipv4::Paths : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Paths : public ydk::Entity
 {
     public:
         Paths();
@@ -693,11 +752,13 @@ class Pim::Vrfs::Vrf::Ipv4::Paths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Path; //type: Pim::Vrfs::Vrf::Ipv4::Paths::Path
 
@@ -706,7 +767,7 @@ class Pim::Vrfs::Vrf::Ipv4::Paths : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::Paths
 
 
-class Pim::Vrfs::Vrf::Ipv4::Paths::Path : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Paths::Path : public ydk::Entity
 {
     public:
         Path();
@@ -714,20 +775,22 @@ class Pim::Vrfs::Vrf::Ipv4::Paths::Path : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeafList rpf_proxy_address; //type: list of  string
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeafList rpf_proxy_address; //type: list of  string
 
 }; // Pim::Vrfs::Vrf::Ipv4::Paths::Path
 
 
-class Pim::Vrfs::Vrf::Ipv4::AllowRp : public Entity
+class Pim::Vrfs::Vrf::Ipv4::AllowRp : public ydk::Entity
 {
     public:
         AllowRp();
@@ -735,19 +798,21 @@ class Pim::Vrfs::Vrf::Ipv4::AllowRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_list_name; //type: string
-        YLeaf group_list_name; //type: string
+        ydk::YLeaf rp_list_name; //type: string
+        ydk::YLeaf group_list_name; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv4::AllowRp
 
 
-class Pim::Vrfs::Vrf::Ipv4::Convergence : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Convergence : public ydk::Entity
 {
     public:
         Convergence();
@@ -755,19 +820,21 @@ class Pim::Vrfs::Vrf::Ipv4::Convergence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rpf_conflict_join_delay; //type: uint32
-        YLeaf link_down_prune_delay; //type: uint32
+        ydk::YLeaf rpf_conflict_join_delay; //type: uint32
+        ydk::YLeaf link_down_prune_delay; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv4::Convergence
 
 
-class Pim::Vrfs::Vrf::Ipv4::Interfaces : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -775,11 +842,13 @@ class Pim::Vrfs::Vrf::Ipv4::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface
 
@@ -788,7 +857,7 @@ class Pim::Vrfs::Vrf::Ipv4::Interfaces : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::Interfaces
 
 
-class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -796,23 +865,25 @@ class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf enable; //type: empty
-        YLeaf neighbor_filter; //type: string
-        YLeaf hello_interval; //type: uint32
-        YLeaf bsr_border; //type: boolean
-        YLeaf propagation_delay; //type: uint32
-        YLeaf dr_priority; //type: uint32
-        YLeaf join_prune_mtu; //type: uint32
-        YLeaf interface_enable; //type: boolean
-        YLeaf jp_interval; //type: uint32
-        YLeaf override_interval; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf neighbor_filter; //type: string
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf bsr_border; //type: boolean
+        ydk::YLeaf propagation_delay; //type: uint32
+        ydk::YLeaf dr_priority; //type: uint32
+        ydk::YLeaf join_prune_mtu; //type: uint32
+        ydk::YLeaf interface_enable; //type: boolean
+        ydk::YLeaf jp_interval; //type: uint32
+        ydk::YLeaf override_interval; //type: uint32
         class MaximumRoutes; //type: Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes
         class Bfd; //type: Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd
 
@@ -822,7 +893,7 @@ class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface
 
 
-class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes : public ydk::Entity
 {
     public:
         MaximumRoutes();
@@ -830,20 +901,22 @@ class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum; //type: uint32
-        YLeaf warning_threshold; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes
 
 
-class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd : public Entity
+class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -851,20 +924,22 @@ class Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf interval; //type: uint32
-        YLeaf enable; //type: boolean
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf enable; //type: boolean
 
 }; // Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd
 
 
-class Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs : public Entity
+class Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs : public ydk::Entity
 {
     public:
         CjMulticastOnlyFrrs();
@@ -872,11 +947,13 @@ class Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CjMulticastOnlyFrr; //type: Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr
 
@@ -885,7 +962,7 @@ class Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs : public Entity
 }; // Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs
 
 
-class Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr : public Entity
+class Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr : public ydk::Entity
 {
     public:
         CjMulticastOnlyFrr();
@@ -893,21 +970,23 @@ class Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source; //type: string
-        YLeaf primary; //type: string
-        YLeaf backup; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf primary; //type: string
+        ydk::YLeaf backup; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr
 
 
-class Pim::Vrfs::Vrf::Ipv6 : public Entity
+class Pim::Vrfs::Vrf::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -915,26 +994,28 @@ class Pim::Vrfs::Vrf::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_check_on_receive; //type: empty
-        YLeaf old_register_checksum; //type: empty
-        YLeaf neighbor_filter; //type: string
-        YLeaf spt_threshold_infinity; //type: string
-        YLeaf log_neighbor_changes; //type: empty
-        YLeaf register_source; //type: string
-        YLeaf accept_register; //type: string
-        YLeaf embedded_rp_disable; //type: empty
-        YLeaf suppress_rpf_prunes; //type: empty
-        YLeaf ssm_allow_override; //type: empty
-        YLeaf multipath; //type: PimMultipathEnum
-        YLeaf rp_static_deny; //type: string
-        YLeaf suppress_data_registers; //type: empty
-        YLeaf neighbor_check_on_send; //type: empty
+        ydk::YLeaf neighbor_check_on_receive; //type: empty
+        ydk::YLeaf old_register_checksum; //type: empty
+        ydk::YLeaf neighbor_filter; //type: string
+        ydk::YLeaf spt_threshold_infinity; //type: string
+        ydk::YLeaf log_neighbor_changes; //type: empty
+        ydk::YLeaf register_source; //type: string
+        ydk::YLeaf accept_register; //type: string
+        ydk::YLeaf embedded_rp_disable; //type: empty
+        ydk::YLeaf suppress_rpf_prunes; //type: empty
+        ydk::YLeaf ssm_allow_override; //type: empty
+        ydk::YLeaf multipath; //type: PimMultipath
+        ydk::YLeaf rp_static_deny; //type: string
+        ydk::YLeaf suppress_data_registers; //type: empty
+        ydk::YLeaf neighbor_check_on_send; //type: empty
         class SparseModeRpAddresses; //type: Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses
         class InheritableDefaults; //type: Pim::Vrfs::Vrf::Ipv6::InheritableDefaults
         class Rpf; //type: Pim::Vrfs::Vrf::Ipv6::Rpf
@@ -966,7 +1047,7 @@ class Pim::Vrfs::Vrf::Ipv6 : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6
 
 
-class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses : public Entity
+class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses : public ydk::Entity
 {
     public:
         SparseModeRpAddresses();
@@ -974,11 +1055,13 @@ class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SparseModeRpAddress; //type: Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress
 
@@ -987,7 +1070,7 @@ class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses
 
 
-class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress : public Entity
+class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress : public ydk::Entity
 {
     public:
         SparseModeRpAddress();
@@ -995,20 +1078,22 @@ class Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
-        YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf auto_rp_override; //type: boolean
 
 }; // Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress
 
 
-class Pim::Vrfs::Vrf::Ipv6::InheritableDefaults : public Entity
+class Pim::Vrfs::Vrf::Ipv6::InheritableDefaults : public ydk::Entity
 {
     public:
         InheritableDefaults();
@@ -1016,24 +1101,26 @@ class Pim::Vrfs::Vrf::Ipv6::InheritableDefaults : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf convergency; //type: uint32
-        YLeaf hello_interval; //type: uint32
-        YLeaf propagation_delay; //type: uint32
-        YLeaf dr_priority; //type: uint32
-        YLeaf join_prune_mtu; //type: uint32
-        YLeaf jp_interval; //type: uint32
-        YLeaf override_interval; //type: uint32
+        ydk::YLeaf convergency; //type: uint32
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf propagation_delay; //type: uint32
+        ydk::YLeaf dr_priority; //type: uint32
+        ydk::YLeaf join_prune_mtu; //type: uint32
+        ydk::YLeaf jp_interval; //type: uint32
+        ydk::YLeaf override_interval; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::InheritableDefaults
 
 
-class Pim::Vrfs::Vrf::Ipv6::Rpf : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Rpf : public ydk::Entity
 {
     public:
         Rpf();
@@ -1041,18 +1128,20 @@ class Pim::Vrfs::Vrf::Ipv6::Rpf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy; //type: string
+        ydk::YLeaf route_policy; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv6::Rpf
 
 
-class Pim::Vrfs::Vrf::Ipv6::Maximum : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Maximum : public ydk::Entity
 {
     public:
         Maximum();
@@ -1060,11 +1149,13 @@ class Pim::Vrfs::Vrf::Ipv6::Maximum : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class GroupMappingsAutoRp; //type: Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp
         class BsrGroupMappings; //type: Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings
@@ -1083,7 +1174,7 @@ class Pim::Vrfs::Vrf::Ipv6::Maximum : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6::Maximum
 
 
-class Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp : public ydk::Entity
 {
     public:
         GroupMappingsAutoRp();
@@ -1091,19 +1182,21 @@ class Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_group_ranges_auto_rp; //type: uint32
-        YLeaf threshold_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf maximum_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf threshold_group_ranges_auto_rp; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp
 
 
-class Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings : public ydk::Entity
 {
     public:
         BsrGroupMappings();
@@ -1111,19 +1204,21 @@ class Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_group_ranges; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_group_ranges; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings
 
 
-class Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates : public ydk::Entity
 {
     public:
         RegisterStates();
@@ -1131,19 +1226,21 @@ class Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_register_states; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_register_states; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates
 
 
-class Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces : public ydk::Entity
 {
     public:
         RouteInterfaces();
@@ -1151,19 +1248,21 @@ class Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_route_interfaces; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_route_interfaces; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces
 
 
-class Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache : public ydk::Entity
 {
     public:
         BsrCandidateRpCache();
@@ -1171,19 +1270,21 @@ class Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache
 
 
-class Pim::Vrfs::Vrf::Ipv6::Maximum::Routes : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Maximum::Routes : public ydk::Entity
 {
     public:
         Routes();
@@ -1191,19 +1292,21 @@ class Pim::Vrfs::Vrf::Ipv6::Maximum::Routes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_routes; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_routes; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Maximum::Routes
 
 
-class Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer : public Entity
+class Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer : public ydk::Entity
 {
     public:
         SgExpiryTimer();
@@ -1211,19 +1314,21 @@ class Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer
 
 
-class Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable : public Entity
+class Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable : public ydk::Entity
 {
     public:
         RpfVectorEnable();
@@ -1231,20 +1336,22 @@ class Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
-        YLeaf allow_ebgp; //type: empty
-        YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf allow_ebgp; //type: empty
+        ydk::YLeaf disable_ibgp; //type: empty
 
 }; // Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable
 
 
-class Pim::Vrfs::Vrf::Ipv6::Ssm : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Ssm : public ydk::Entity
 {
     public:
         Ssm();
@@ -1252,19 +1359,21 @@ class Pim::Vrfs::Vrf::Ipv6::Ssm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf disable; //type: boolean
-        YLeaf range; //type: string
+        ydk::YLeaf disable; //type: boolean
+        ydk::YLeaf range; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv6::Ssm
 
 
-class Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses : public Entity
+class Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses : public ydk::Entity
 {
     public:
         BidirRpAddresses();
@@ -1272,11 +1381,13 @@ class Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BidirRpAddress; //type: Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress
 
@@ -1285,7 +1396,7 @@ class Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses
 
 
-class Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress : public Entity
+class Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress : public ydk::Entity
 {
     public:
         BidirRpAddress();
@@ -1293,20 +1404,22 @@ class Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
-        YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf auto_rp_override; //type: boolean
 
 }; // Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress
 
 
-class Pim::Vrfs::Vrf::Ipv6::Bsr : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Bsr : public ydk::Entity
 {
     public:
         Bsr();
@@ -1314,11 +1427,13 @@ class Pim::Vrfs::Vrf::Ipv6::Bsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CandidateBsr; //type: Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr
         class CandidateRps; //type: Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps
@@ -1329,7 +1444,7 @@ class Pim::Vrfs::Vrf::Ipv6::Bsr : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6::Bsr
 
 
-class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr : public ydk::Entity
 {
     public:
         CandidateBsr();
@@ -1337,20 +1452,22 @@ class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf priority; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf priority; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr
 
 
-class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps : public ydk::Entity
 {
     public:
         CandidateRps();
@@ -1358,11 +1475,13 @@ class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CandidateRp; //type: Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp
 
@@ -1371,7 +1490,7 @@ class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps
 
 
-class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp : public ydk::Entity
 {
     public:
         CandidateRp();
@@ -1379,22 +1498,24 @@ class Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf mode; //type: PimProtocolModeEnum
-        YLeaf group_list; //type: string
-        YLeaf priority; //type: uint32
-        YLeaf interval; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf mode; //type: PimProtocolMode
+        ydk::YLeaf group_list; //type: string
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf interval; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp
 
 
-class Pim::Vrfs::Vrf::Ipv6::AllowRp : public Entity
+class Pim::Vrfs::Vrf::Ipv6::AllowRp : public ydk::Entity
 {
     public:
         AllowRp();
@@ -1402,19 +1523,21 @@ class Pim::Vrfs::Vrf::Ipv6::AllowRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_list_name; //type: string
-        YLeaf group_list_name; //type: string
+        ydk::YLeaf rp_list_name; //type: string
+        ydk::YLeaf group_list_name; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv6::AllowRp
 
 
-class Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses : public Entity
+class Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses : public ydk::Entity
 {
     public:
         EmbeddedRpAddresses();
@@ -1422,11 +1545,13 @@ class Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EmbeddedRpAddress; //type: Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress
 
@@ -1435,7 +1560,7 @@ class Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses
 
 
-class Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress : public Entity
+class Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress : public ydk::Entity
 {
     public:
         EmbeddedRpAddress();
@@ -1443,19 +1568,21 @@ class Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress
 
 
-class Pim::Vrfs::Vrf::Ipv6::Convergence : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Convergence : public ydk::Entity
 {
     public:
         Convergence();
@@ -1463,19 +1590,21 @@ class Pim::Vrfs::Vrf::Ipv6::Convergence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rpf_conflict_join_delay; //type: uint32
-        YLeaf link_down_prune_delay; //type: uint32
+        ydk::YLeaf rpf_conflict_join_delay; //type: uint32
+        ydk::YLeaf link_down_prune_delay; //type: uint32
 
 }; // Pim::Vrfs::Vrf::Ipv6::Convergence
 
 
-class Pim::Vrfs::Vrf::Ipv6::Interfaces : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -1483,11 +1612,13 @@ class Pim::Vrfs::Vrf::Ipv6::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface
 
@@ -1496,7 +1627,7 @@ class Pim::Vrfs::Vrf::Ipv6::Interfaces : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6::Interfaces
 
 
-class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1504,23 +1635,25 @@ class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf enable; //type: empty
-        YLeaf neighbor_filter; //type: string
-        YLeaf hello_interval; //type: uint32
-        YLeaf bsr_border; //type: boolean
-        YLeaf propagation_delay; //type: uint32
-        YLeaf dr_priority; //type: uint32
-        YLeaf join_prune_mtu; //type: uint32
-        YLeaf interface_enable; //type: boolean
-        YLeaf jp_interval; //type: uint32
-        YLeaf override_interval; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf neighbor_filter; //type: string
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf bsr_border; //type: boolean
+        ydk::YLeaf propagation_delay; //type: uint32
+        ydk::YLeaf dr_priority; //type: uint32
+        ydk::YLeaf join_prune_mtu; //type: uint32
+        ydk::YLeaf interface_enable; //type: boolean
+        ydk::YLeaf jp_interval; //type: uint32
+        ydk::YLeaf override_interval; //type: uint32
         class MaximumRoutes; //type: Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes
         class Bfd; //type: Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd
 
@@ -1530,7 +1663,7 @@ class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface : public Entity
 }; // Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface
 
 
-class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes : public ydk::Entity
 {
     public:
         MaximumRoutes();
@@ -1538,20 +1671,22 @@ class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum; //type: uint32
-        YLeaf warning_threshold; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes
 
 
-class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd : public Entity
+class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -1559,20 +1694,22 @@ class Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf interval; //type: uint32
-        YLeaf enable; //type: boolean
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf enable; //type: boolean
 
 }; // Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd
 
 
-class Pim::DefaultContext : public Entity
+class Pim::DefaultContext : public ydk::Entity
 {
     public:
         DefaultContext();
@@ -1580,11 +1717,13 @@ class Pim::DefaultContext : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv6; //type: Pim::DefaultContext::Ipv6
         class Ipv4; //type: Pim::DefaultContext::Ipv4
@@ -1595,7 +1734,7 @@ class Pim::DefaultContext : public Entity
 }; // Pim::DefaultContext
 
 
-class Pim::DefaultContext::Ipv6 : public Entity
+class Pim::DefaultContext::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -1603,26 +1742,28 @@ class Pim::DefaultContext::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_check_on_receive; //type: empty
-        YLeaf old_register_checksum; //type: empty
-        YLeaf neighbor_filter; //type: string
-        YLeaf spt_threshold_infinity; //type: string
-        YLeaf log_neighbor_changes; //type: empty
-        YLeaf register_source; //type: string
-        YLeaf accept_register; //type: string
-        YLeaf embedded_rp_disable; //type: empty
-        YLeaf suppress_rpf_prunes; //type: empty
-        YLeaf ssm_allow_override; //type: empty
-        YLeaf multipath; //type: PimMultipathEnum
-        YLeaf rp_static_deny; //type: string
-        YLeaf suppress_data_registers; //type: empty
-        YLeaf neighbor_check_on_send; //type: empty
+        ydk::YLeaf neighbor_check_on_receive; //type: empty
+        ydk::YLeaf old_register_checksum; //type: empty
+        ydk::YLeaf neighbor_filter; //type: string
+        ydk::YLeaf spt_threshold_infinity; //type: string
+        ydk::YLeaf log_neighbor_changes; //type: empty
+        ydk::YLeaf register_source; //type: string
+        ydk::YLeaf accept_register; //type: string
+        ydk::YLeaf embedded_rp_disable; //type: empty
+        ydk::YLeaf suppress_rpf_prunes; //type: empty
+        ydk::YLeaf ssm_allow_override; //type: empty
+        ydk::YLeaf multipath; //type: PimMultipath
+        ydk::YLeaf rp_static_deny; //type: string
+        ydk::YLeaf suppress_data_registers; //type: empty
+        ydk::YLeaf neighbor_check_on_send; //type: empty
         class Interfaces; //type: Pim::DefaultContext::Ipv6::Interfaces
         class SparseModeRpAddresses; //type: Pim::DefaultContext::Ipv6::SparseModeRpAddresses
         class InheritableDefaults; //type: Pim::DefaultContext::Ipv6::InheritableDefaults
@@ -1656,7 +1797,7 @@ class Pim::DefaultContext::Ipv6 : public Entity
 }; // Pim::DefaultContext::Ipv6
 
 
-class Pim::DefaultContext::Ipv6::Interfaces : public Entity
+class Pim::DefaultContext::Ipv6::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -1664,11 +1805,13 @@ class Pim::DefaultContext::Ipv6::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Pim::DefaultContext::Ipv6::Interfaces::Interface
 
@@ -1677,7 +1820,7 @@ class Pim::DefaultContext::Ipv6::Interfaces : public Entity
 }; // Pim::DefaultContext::Ipv6::Interfaces
 
 
-class Pim::DefaultContext::Ipv6::Interfaces::Interface : public Entity
+class Pim::DefaultContext::Ipv6::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1685,23 +1828,25 @@ class Pim::DefaultContext::Ipv6::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf enable; //type: empty
-        YLeaf neighbor_filter; //type: string
-        YLeaf hello_interval; //type: uint32
-        YLeaf bsr_border; //type: boolean
-        YLeaf propagation_delay; //type: uint32
-        YLeaf dr_priority; //type: uint32
-        YLeaf join_prune_mtu; //type: uint32
-        YLeaf interface_enable; //type: boolean
-        YLeaf jp_interval; //type: uint32
-        YLeaf override_interval; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf neighbor_filter; //type: string
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf bsr_border; //type: boolean
+        ydk::YLeaf propagation_delay; //type: uint32
+        ydk::YLeaf dr_priority; //type: uint32
+        ydk::YLeaf join_prune_mtu; //type: uint32
+        ydk::YLeaf interface_enable; //type: boolean
+        ydk::YLeaf jp_interval; //type: uint32
+        ydk::YLeaf override_interval; //type: uint32
         class MaximumRoutes; //type: Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes
         class Bfd; //type: Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd
 
@@ -1711,7 +1856,7 @@ class Pim::DefaultContext::Ipv6::Interfaces::Interface : public Entity
 }; // Pim::DefaultContext::Ipv6::Interfaces::Interface
 
 
-class Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes : public Entity
+class Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes : public ydk::Entity
 {
     public:
         MaximumRoutes();
@@ -1719,20 +1864,22 @@ class Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum; //type: uint32
-        YLeaf warning_threshold; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes
 
 
-class Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd : public Entity
+class Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -1740,20 +1887,22 @@ class Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf interval; //type: uint32
-        YLeaf enable; //type: boolean
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf enable; //type: boolean
 
 }; // Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd
 
 
-class Pim::DefaultContext::Ipv6::SparseModeRpAddresses : public Entity
+class Pim::DefaultContext::Ipv6::SparseModeRpAddresses : public ydk::Entity
 {
     public:
         SparseModeRpAddresses();
@@ -1761,11 +1910,13 @@ class Pim::DefaultContext::Ipv6::SparseModeRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SparseModeRpAddress; //type: Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress
 
@@ -1774,7 +1925,7 @@ class Pim::DefaultContext::Ipv6::SparseModeRpAddresses : public Entity
 }; // Pim::DefaultContext::Ipv6::SparseModeRpAddresses
 
 
-class Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress : public Entity
+class Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress : public ydk::Entity
 {
     public:
         SparseModeRpAddress();
@@ -1782,20 +1933,22 @@ class Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
-        YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf auto_rp_override; //type: boolean
 
 }; // Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress
 
 
-class Pim::DefaultContext::Ipv6::InheritableDefaults : public Entity
+class Pim::DefaultContext::Ipv6::InheritableDefaults : public ydk::Entity
 {
     public:
         InheritableDefaults();
@@ -1803,24 +1956,26 @@ class Pim::DefaultContext::Ipv6::InheritableDefaults : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf convergency; //type: uint32
-        YLeaf hello_interval; //type: uint32
-        YLeaf propagation_delay; //type: uint32
-        YLeaf dr_priority; //type: uint32
-        YLeaf join_prune_mtu; //type: uint32
-        YLeaf jp_interval; //type: uint32
-        YLeaf override_interval; //type: uint32
+        ydk::YLeaf convergency; //type: uint32
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf propagation_delay; //type: uint32
+        ydk::YLeaf dr_priority; //type: uint32
+        ydk::YLeaf join_prune_mtu; //type: uint32
+        ydk::YLeaf jp_interval; //type: uint32
+        ydk::YLeaf override_interval; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::InheritableDefaults
 
 
-class Pim::DefaultContext::Ipv6::Rpf : public Entity
+class Pim::DefaultContext::Ipv6::Rpf : public ydk::Entity
 {
     public:
         Rpf();
@@ -1828,18 +1983,20 @@ class Pim::DefaultContext::Ipv6::Rpf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy; //type: string
+        ydk::YLeaf route_policy; //type: string
 
 }; // Pim::DefaultContext::Ipv6::Rpf
 
 
-class Pim::DefaultContext::Ipv6::SgExpiryTimer : public Entity
+class Pim::DefaultContext::Ipv6::SgExpiryTimer : public ydk::Entity
 {
     public:
         SgExpiryTimer();
@@ -1847,19 +2004,21 @@ class Pim::DefaultContext::Ipv6::SgExpiryTimer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::DefaultContext::Ipv6::SgExpiryTimer
 
 
-class Pim::DefaultContext::Ipv6::RpfVectorEnable : public Entity
+class Pim::DefaultContext::Ipv6::RpfVectorEnable : public ydk::Entity
 {
     public:
         RpfVectorEnable();
@@ -1867,20 +2026,22 @@ class Pim::DefaultContext::Ipv6::RpfVectorEnable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
-        YLeaf allow_ebgp; //type: empty
-        YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf allow_ebgp; //type: empty
+        ydk::YLeaf disable_ibgp; //type: empty
 
 }; // Pim::DefaultContext::Ipv6::RpfVectorEnable
 
 
-class Pim::DefaultContext::Ipv6::Nsf : public Entity
+class Pim::DefaultContext::Ipv6::Nsf : public ydk::Entity
 {
     public:
         Nsf();
@@ -1888,18 +2049,20 @@ class Pim::DefaultContext::Ipv6::Nsf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lifetime; //type: uint32
+        ydk::YLeaf lifetime; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Nsf
 
 
-class Pim::DefaultContext::Ipv6::Maximum : public Entity
+class Pim::DefaultContext::Ipv6::Maximum : public ydk::Entity
 {
     public:
         Maximum();
@@ -1907,14 +2070,16 @@ class Pim::DefaultContext::Ipv6::Maximum : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf global_low_priority_packet_queue; //type: uint32
-        YLeaf global_high_priority_packet_queue; //type: uint32
+        ydk::YLeaf global_low_priority_packet_queue; //type: uint32
+        ydk::YLeaf global_high_priority_packet_queue; //type: uint32
         class BsrGlobalGroupMappings; //type: Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings
         class GlobalRoutes; //type: Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes
         class GlobalGroupMappingsAutoRp; //type: Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp
@@ -1944,7 +2109,7 @@ class Pim::DefaultContext::Ipv6::Maximum : public Entity
 }; // Pim::DefaultContext::Ipv6::Maximum
 
 
-class Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings : public ydk::Entity
 {
     public:
         BsrGlobalGroupMappings();
@@ -1952,19 +2117,21 @@ class Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_global_group_mappings; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_global_group_mappings; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings
 
 
-class Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes : public ydk::Entity
 {
     public:
         GlobalRoutes();
@@ -1972,19 +2139,21 @@ class Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_routes; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_routes; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes
 
 
-class Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp : public ydk::Entity
 {
     public:
         GlobalGroupMappingsAutoRp();
@@ -1992,19 +2161,21 @@ class Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_global_group_ranges_auto_rp; //type: uint32
-        YLeaf threshold_global_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf maximum_global_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf threshold_global_group_ranges_auto_rp; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp
 
 
-class Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache : public ydk::Entity
 {
     public:
         BsrGlobalCandidateRpCache();
@@ -2012,19 +2183,21 @@ class Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_global_candidate_rp_cache; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_global_candidate_rp_cache; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache
 
 
-class Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates : public ydk::Entity
 {
     public:
         GlobalRegisterStates();
@@ -2032,19 +2205,21 @@ class Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_register_states; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_register_states; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates
 
 
-class Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces : public ydk::Entity
 {
     public:
         GlobalRouteInterfaces();
@@ -2052,19 +2227,21 @@ class Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_route_interfaces; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_route_interfaces; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces
 
 
-class Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp : public ydk::Entity
 {
     public:
         GroupMappingsAutoRp();
@@ -2072,19 +2249,21 @@ class Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_group_ranges_auto_rp; //type: uint32
-        YLeaf threshold_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf maximum_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf threshold_group_ranges_auto_rp; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp
 
 
-class Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings : public ydk::Entity
 {
     public:
         BsrGroupMappings();
@@ -2092,19 +2271,21 @@ class Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_group_ranges; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_group_ranges; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings
 
 
-class Pim::DefaultContext::Ipv6::Maximum::RegisterStates : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::RegisterStates : public ydk::Entity
 {
     public:
         RegisterStates();
@@ -2112,19 +2293,21 @@ class Pim::DefaultContext::Ipv6::Maximum::RegisterStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_register_states; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_register_states; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::RegisterStates
 
 
-class Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces : public ydk::Entity
 {
     public:
         RouteInterfaces();
@@ -2132,19 +2315,21 @@ class Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_route_interfaces; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_route_interfaces; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces
 
 
-class Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache : public ydk::Entity
 {
     public:
         BsrCandidateRpCache();
@@ -2152,19 +2337,21 @@ class Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache
 
 
-class Pim::DefaultContext::Ipv6::Maximum::Routes : public Entity
+class Pim::DefaultContext::Ipv6::Maximum::Routes : public ydk::Entity
 {
     public:
         Routes();
@@ -2172,19 +2359,21 @@ class Pim::DefaultContext::Ipv6::Maximum::Routes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_routes; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_routes; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Maximum::Routes
 
 
-class Pim::DefaultContext::Ipv6::Ssm : public Entity
+class Pim::DefaultContext::Ipv6::Ssm : public ydk::Entity
 {
     public:
         Ssm();
@@ -2192,19 +2381,21 @@ class Pim::DefaultContext::Ipv6::Ssm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf disable; //type: boolean
-        YLeaf range; //type: string
+        ydk::YLeaf disable; //type: boolean
+        ydk::YLeaf range; //type: string
 
 }; // Pim::DefaultContext::Ipv6::Ssm
 
 
-class Pim::DefaultContext::Ipv6::BidirRpAddresses : public Entity
+class Pim::DefaultContext::Ipv6::BidirRpAddresses : public ydk::Entity
 {
     public:
         BidirRpAddresses();
@@ -2212,11 +2403,13 @@ class Pim::DefaultContext::Ipv6::BidirRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BidirRpAddress; //type: Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress
 
@@ -2225,7 +2418,7 @@ class Pim::DefaultContext::Ipv6::BidirRpAddresses : public Entity
 }; // Pim::DefaultContext::Ipv6::BidirRpAddresses
 
 
-class Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress : public Entity
+class Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress : public ydk::Entity
 {
     public:
         BidirRpAddress();
@@ -2233,20 +2426,22 @@ class Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
-        YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf auto_rp_override; //type: boolean
 
 }; // Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress
 
 
-class Pim::DefaultContext::Ipv6::Bsr : public Entity
+class Pim::DefaultContext::Ipv6::Bsr : public ydk::Entity
 {
     public:
         Bsr();
@@ -2254,11 +2449,13 @@ class Pim::DefaultContext::Ipv6::Bsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CandidateBsr; //type: Pim::DefaultContext::Ipv6::Bsr::CandidateBsr
         class CandidateRps; //type: Pim::DefaultContext::Ipv6::Bsr::CandidateRps
@@ -2269,7 +2466,7 @@ class Pim::DefaultContext::Ipv6::Bsr : public Entity
 }; // Pim::DefaultContext::Ipv6::Bsr
 
 
-class Pim::DefaultContext::Ipv6::Bsr::CandidateBsr : public Entity
+class Pim::DefaultContext::Ipv6::Bsr::CandidateBsr : public ydk::Entity
 {
     public:
         CandidateBsr();
@@ -2277,20 +2474,22 @@ class Pim::DefaultContext::Ipv6::Bsr::CandidateBsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf priority; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf priority; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Bsr::CandidateBsr
 
 
-class Pim::DefaultContext::Ipv6::Bsr::CandidateRps : public Entity
+class Pim::DefaultContext::Ipv6::Bsr::CandidateRps : public ydk::Entity
 {
     public:
         CandidateRps();
@@ -2298,11 +2497,13 @@ class Pim::DefaultContext::Ipv6::Bsr::CandidateRps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CandidateRp; //type: Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp
 
@@ -2311,7 +2512,7 @@ class Pim::DefaultContext::Ipv6::Bsr::CandidateRps : public Entity
 }; // Pim::DefaultContext::Ipv6::Bsr::CandidateRps
 
 
-class Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp : public Entity
+class Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp : public ydk::Entity
 {
     public:
         CandidateRp();
@@ -2319,22 +2520,24 @@ class Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf mode; //type: PimProtocolModeEnum
-        YLeaf group_list; //type: string
-        YLeaf priority; //type: uint32
-        YLeaf interval; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf mode; //type: PimProtocolMode
+        ydk::YLeaf group_list; //type: string
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf interval; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp
 
 
-class Pim::DefaultContext::Ipv6::AllowRp : public Entity
+class Pim::DefaultContext::Ipv6::AllowRp : public ydk::Entity
 {
     public:
         AllowRp();
@@ -2342,19 +2545,21 @@ class Pim::DefaultContext::Ipv6::AllowRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_list_name; //type: string
-        YLeaf group_list_name; //type: string
+        ydk::YLeaf rp_list_name; //type: string
+        ydk::YLeaf group_list_name; //type: string
 
 }; // Pim::DefaultContext::Ipv6::AllowRp
 
 
-class Pim::DefaultContext::Ipv6::EmbeddedRpAddresses : public Entity
+class Pim::DefaultContext::Ipv6::EmbeddedRpAddresses : public ydk::Entity
 {
     public:
         EmbeddedRpAddresses();
@@ -2362,11 +2567,13 @@ class Pim::DefaultContext::Ipv6::EmbeddedRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EmbeddedRpAddress; //type: Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress
 
@@ -2375,7 +2582,7 @@ class Pim::DefaultContext::Ipv6::EmbeddedRpAddresses : public Entity
 }; // Pim::DefaultContext::Ipv6::EmbeddedRpAddresses
 
 
-class Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress : public Entity
+class Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress : public ydk::Entity
 {
     public:
         EmbeddedRpAddress();
@@ -2383,19 +2590,21 @@ class Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress
 
 
-class Pim::DefaultContext::Ipv6::Convergence : public Entity
+class Pim::DefaultContext::Ipv6::Convergence : public ydk::Entity
 {
     public:
         Convergence();
@@ -2403,19 +2612,21 @@ class Pim::DefaultContext::Ipv6::Convergence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rpf_conflict_join_delay; //type: uint32
-        YLeaf link_down_prune_delay; //type: uint32
+        ydk::YLeaf rpf_conflict_join_delay; //type: uint32
+        ydk::YLeaf link_down_prune_delay; //type: uint32
 
 }; // Pim::DefaultContext::Ipv6::Convergence
 
 
-class Pim::DefaultContext::Ipv4 : public Entity
+class Pim::DefaultContext::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -2423,26 +2634,28 @@ class Pim::DefaultContext::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_check_on_receive; //type: empty
-        YLeaf old_register_checksum; //type: empty
-        YLeaf neighbor_filter; //type: string
-        YLeaf spt_threshold_infinity; //type: string
-        YLeaf log_neighbor_changes; //type: empty
-        YLeaf register_source; //type: string
-        YLeaf accept_register; //type: string
-        YLeaf suppress_rpf_prunes; //type: empty
-        YLeaf ssm_allow_override; //type: empty
-        YLeaf multipath; //type: PimMultipathEnum
-        YLeaf rp_static_deny; //type: string
-        YLeaf suppress_data_registers; //type: empty
-        YLeaf neighbor_check_on_send; //type: empty
-        YLeaf auto_rp_disable; //type: empty
+        ydk::YLeaf neighbor_check_on_receive; //type: empty
+        ydk::YLeaf old_register_checksum; //type: empty
+        ydk::YLeaf neighbor_filter; //type: string
+        ydk::YLeaf spt_threshold_infinity; //type: string
+        ydk::YLeaf log_neighbor_changes; //type: empty
+        ydk::YLeaf register_source; //type: string
+        ydk::YLeaf accept_register; //type: string
+        ydk::YLeaf suppress_rpf_prunes; //type: empty
+        ydk::YLeaf ssm_allow_override; //type: empty
+        ydk::YLeaf multipath; //type: PimMultipath
+        ydk::YLeaf rp_static_deny; //type: string
+        ydk::YLeaf suppress_data_registers; //type: empty
+        ydk::YLeaf neighbor_check_on_send; //type: empty
+        ydk::YLeaf auto_rp_disable; //type: empty
         class RpfRedirect; //type: Pim::DefaultContext::Ipv4::RpfRedirect
         class Interfaces; //type: Pim::DefaultContext::Ipv4::Interfaces
         class AutoRpCandidateRps; //type: Pim::DefaultContext::Ipv4::AutoRpCandidateRps
@@ -2490,7 +2703,7 @@ class Pim::DefaultContext::Ipv4 : public Entity
 }; // Pim::DefaultContext::Ipv4
 
 
-class Pim::DefaultContext::Ipv4::RpfRedirect : public Entity
+class Pim::DefaultContext::Ipv4::RpfRedirect : public ydk::Entity
 {
     public:
         RpfRedirect();
@@ -2498,18 +2711,20 @@ class Pim::DefaultContext::Ipv4::RpfRedirect : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy; //type: string
+        ydk::YLeaf route_policy; //type: string
 
 }; // Pim::DefaultContext::Ipv4::RpfRedirect
 
 
-class Pim::DefaultContext::Ipv4::Interfaces : public Entity
+class Pim::DefaultContext::Ipv4::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -2517,11 +2732,13 @@ class Pim::DefaultContext::Ipv4::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Pim::DefaultContext::Ipv4::Interfaces::Interface
 
@@ -2530,7 +2747,7 @@ class Pim::DefaultContext::Ipv4::Interfaces : public Entity
 }; // Pim::DefaultContext::Ipv4::Interfaces
 
 
-class Pim::DefaultContext::Ipv4::Interfaces::Interface : public Entity
+class Pim::DefaultContext::Ipv4::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2538,23 +2755,25 @@ class Pim::DefaultContext::Ipv4::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf enable; //type: empty
-        YLeaf neighbor_filter; //type: string
-        YLeaf hello_interval; //type: uint32
-        YLeaf bsr_border; //type: boolean
-        YLeaf propagation_delay; //type: uint32
-        YLeaf dr_priority; //type: uint32
-        YLeaf join_prune_mtu; //type: uint32
-        YLeaf interface_enable; //type: boolean
-        YLeaf jp_interval; //type: uint32
-        YLeaf override_interval; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf neighbor_filter; //type: string
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf bsr_border; //type: boolean
+        ydk::YLeaf propagation_delay; //type: uint32
+        ydk::YLeaf dr_priority; //type: uint32
+        ydk::YLeaf join_prune_mtu; //type: uint32
+        ydk::YLeaf interface_enable; //type: boolean
+        ydk::YLeaf jp_interval; //type: uint32
+        ydk::YLeaf override_interval; //type: uint32
         class RedirectBundle; //type: Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle
         class MaximumRoutes; //type: Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes
         class Bfd; //type: Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd
@@ -2566,7 +2785,7 @@ class Pim::DefaultContext::Ipv4::Interfaces::Interface : public Entity
 }; // Pim::DefaultContext::Ipv4::Interfaces::Interface
 
 
-class Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle : public Entity
+class Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle : public ydk::Entity
 {
     public:
         RedirectBundle();
@@ -2574,20 +2793,22 @@ class Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_name; //type: string
-        YLeaf interface_bandwidth; //type: uint32
-        YLeaf threshold_bandwidth; //type: uint32
+        ydk::YLeaf bundle_name; //type: string
+        ydk::YLeaf interface_bandwidth; //type: uint32
+        ydk::YLeaf threshold_bandwidth; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle
 
 
-class Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes : public Entity
+class Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes : public ydk::Entity
 {
     public:
         MaximumRoutes();
@@ -2595,20 +2816,22 @@ class Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum; //type: uint32
-        YLeaf warning_threshold; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf maximum; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes
 
 
-class Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd : public Entity
+class Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd : public ydk::Entity
 {
     public:
         Bfd();
@@ -2616,20 +2839,22 @@ class Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf detection_multiplier; //type: uint32
-        YLeaf interval; //type: uint32
-        YLeaf enable; //type: boolean
+        ydk::YLeaf detection_multiplier; //type: uint32
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf enable; //type: boolean
 
 }; // Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd
 
 
-class Pim::DefaultContext::Ipv4::AutoRpCandidateRps : public Entity
+class Pim::DefaultContext::Ipv4::AutoRpCandidateRps : public ydk::Entity
 {
     public:
         AutoRpCandidateRps();
@@ -2637,11 +2862,13 @@ class Pim::DefaultContext::Ipv4::AutoRpCandidateRps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AutoRpCandidateRp; //type: Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp
 
@@ -2650,7 +2877,7 @@ class Pim::DefaultContext::Ipv4::AutoRpCandidateRps : public Entity
 }; // Pim::DefaultContext::Ipv4::AutoRpCandidateRps
 
 
-class Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp : public Entity
+class Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp : public ydk::Entity
 {
     public:
         AutoRpCandidateRp();
@@ -2658,22 +2885,24 @@ class Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf protocol_mode; //type: AutoRpProtocolModeEnum
-        YLeaf ttl; //type: uint32
-        YLeaf access_list_name; //type: string
-        YLeaf announce_period; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol_mode; //type: AutoRpProtocolMode
+        ydk::YLeaf ttl; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf announce_period; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp
 
 
-class Pim::DefaultContext::Ipv4::AutoRpMappingAgent : public Entity
+class Pim::DefaultContext::Ipv4::AutoRpMappingAgent : public ydk::Entity
 {
     public:
         AutoRpMappingAgent();
@@ -2681,11 +2910,13 @@ class Pim::DefaultContext::Ipv4::AutoRpMappingAgent : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Parameters; //type: Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters
         class CacheLimit; //type: Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit
@@ -2696,7 +2927,7 @@ class Pim::DefaultContext::Ipv4::AutoRpMappingAgent : public Entity
 }; // Pim::DefaultContext::Ipv4::AutoRpMappingAgent
 
 
-class Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters : public Entity
+class Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters : public ydk::Entity
 {
     public:
         Parameters();
@@ -2704,20 +2935,22 @@ class Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf ttl; //type: uint32
-        YLeaf announce_period; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf ttl; //type: uint32
+        ydk::YLeaf announce_period; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters
 
 
-class Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit : public Entity
+class Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit : public ydk::Entity
 {
     public:
         CacheLimit();
@@ -2725,19 +2958,21 @@ class Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_cache_entry; //type: uint32
-        YLeaf threshold_cache_entry; //type: uint32
+        ydk::YLeaf maximum_cache_entry; //type: uint32
+        ydk::YLeaf threshold_cache_entry; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit
 
 
-class Pim::DefaultContext::Ipv4::SparseModeRpAddresses : public Entity
+class Pim::DefaultContext::Ipv4::SparseModeRpAddresses : public ydk::Entity
 {
     public:
         SparseModeRpAddresses();
@@ -2745,11 +2980,13 @@ class Pim::DefaultContext::Ipv4::SparseModeRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SparseModeRpAddress; //type: Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress
 
@@ -2758,7 +2995,7 @@ class Pim::DefaultContext::Ipv4::SparseModeRpAddresses : public Entity
 }; // Pim::DefaultContext::Ipv4::SparseModeRpAddresses
 
 
-class Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress : public Entity
+class Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress : public ydk::Entity
 {
     public:
         SparseModeRpAddress();
@@ -2766,20 +3003,22 @@ class Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
-        YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf auto_rp_override; //type: boolean
 
 }; // Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress
 
 
-class Pim::DefaultContext::Ipv4::MulticastOnlyFrr : public Entity
+class Pim::DefaultContext::Ipv4::MulticastOnlyFrr : public ydk::Entity
 {
     public:
         MulticastOnlyFrr();
@@ -2787,21 +3026,23 @@ class Pim::DefaultContext::Ipv4::MulticastOnlyFrr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf non_revertive_multicast_only_frr; //type: empty
-        YLeaf flow_multicast_only_frr; //type: string
-        YLeaf enable; //type: empty
-        YLeaf rib_multicast_only_frr; //type: string
+        ydk::YLeaf non_revertive_multicast_only_frr; //type: empty
+        ydk::YLeaf flow_multicast_only_frr; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf rib_multicast_only_frr; //type: string
 
 }; // Pim::DefaultContext::Ipv4::MulticastOnlyFrr
 
 
-class Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs : public Entity
+class Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs : public ydk::Entity
 {
     public:
         CsMulticastOnlyFrrs();
@@ -2809,11 +3050,13 @@ class Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CsMulticastOnlyFrr; //type: Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr
 
@@ -2822,7 +3065,7 @@ class Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs : public Entity
 }; // Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs
 
 
-class Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr : public Entity
+class Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr : public ydk::Entity
 {
     public:
         CsMulticastOnlyFrr();
@@ -2830,21 +3073,23 @@ class Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source; //type: string
-        YLeaf primary; //type: string
-        YLeaf backup; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf primary; //type: string
+        ydk::YLeaf backup; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr
 
 
-class Pim::DefaultContext::Ipv4::InheritableDefaults : public Entity
+class Pim::DefaultContext::Ipv4::InheritableDefaults : public ydk::Entity
 {
     public:
         InheritableDefaults();
@@ -2852,24 +3097,26 @@ class Pim::DefaultContext::Ipv4::InheritableDefaults : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf convergency; //type: uint32
-        YLeaf hello_interval; //type: uint32
-        YLeaf propagation_delay; //type: uint32
-        YLeaf dr_priority; //type: uint32
-        YLeaf join_prune_mtu; //type: uint32
-        YLeaf jp_interval; //type: uint32
-        YLeaf override_interval; //type: uint32
+        ydk::YLeaf convergency; //type: uint32
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf propagation_delay; //type: uint32
+        ydk::YLeaf dr_priority; //type: uint32
+        ydk::YLeaf join_prune_mtu; //type: uint32
+        ydk::YLeaf jp_interval; //type: uint32
+        ydk::YLeaf override_interval; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::InheritableDefaults
 
 
-class Pim::DefaultContext::Ipv4::Rpf : public Entity
+class Pim::DefaultContext::Ipv4::Rpf : public ydk::Entity
 {
     public:
         Rpf();
@@ -2877,18 +3124,20 @@ class Pim::DefaultContext::Ipv4::Rpf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy; //type: string
+        ydk::YLeaf route_policy; //type: string
 
 }; // Pim::DefaultContext::Ipv4::Rpf
 
 
-class Pim::DefaultContext::Ipv4::SgExpiryTimer : public Entity
+class Pim::DefaultContext::Ipv4::SgExpiryTimer : public ydk::Entity
 {
     public:
         SgExpiryTimer();
@@ -2896,19 +3145,21 @@ class Pim::DefaultContext::Ipv4::SgExpiryTimer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interval; //type: uint32
-        YLeaf access_list_name; //type: string
+        ydk::YLeaf interval; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
 
 }; // Pim::DefaultContext::Ipv4::SgExpiryTimer
 
 
-class Pim::DefaultContext::Ipv4::RpfVectorEnable : public Entity
+class Pim::DefaultContext::Ipv4::RpfVectorEnable : public ydk::Entity
 {
     public:
         RpfVectorEnable();
@@ -2916,20 +3167,22 @@ class Pim::DefaultContext::Ipv4::RpfVectorEnable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
-        YLeaf allow_ebgp; //type: empty
-        YLeaf disable_ibgp; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf allow_ebgp; //type: empty
+        ydk::YLeaf disable_ibgp; //type: empty
 
 }; // Pim::DefaultContext::Ipv4::RpfVectorEnable
 
 
-class Pim::DefaultContext::Ipv4::Nsf : public Entity
+class Pim::DefaultContext::Ipv4::Nsf : public ydk::Entity
 {
     public:
         Nsf();
@@ -2937,18 +3190,20 @@ class Pim::DefaultContext::Ipv4::Nsf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lifetime; //type: uint32
+        ydk::YLeaf lifetime; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Nsf
 
 
-class Pim::DefaultContext::Ipv4::Maximum : public Entity
+class Pim::DefaultContext::Ipv4::Maximum : public ydk::Entity
 {
     public:
         Maximum();
@@ -2956,14 +3211,16 @@ class Pim::DefaultContext::Ipv4::Maximum : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf global_low_priority_packet_queue; //type: uint32
-        YLeaf global_high_priority_packet_queue; //type: uint32
+        ydk::YLeaf global_low_priority_packet_queue; //type: uint32
+        ydk::YLeaf global_high_priority_packet_queue; //type: uint32
         class BsrGlobalGroupMappings; //type: Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings
         class GlobalRoutes; //type: Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes
         class GlobalGroupMappingsAutoRp; //type: Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp
@@ -2993,7 +3250,7 @@ class Pim::DefaultContext::Ipv4::Maximum : public Entity
 }; // Pim::DefaultContext::Ipv4::Maximum
 
 
-class Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings : public ydk::Entity
 {
     public:
         BsrGlobalGroupMappings();
@@ -3001,19 +3258,21 @@ class Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_global_group_mappings; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_global_group_mappings; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings
 
 
-class Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes : public ydk::Entity
 {
     public:
         GlobalRoutes();
@@ -3021,19 +3280,21 @@ class Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_routes; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_routes; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes
 
 
-class Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp : public ydk::Entity
 {
     public:
         GlobalGroupMappingsAutoRp();
@@ -3041,19 +3302,21 @@ class Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_global_group_ranges_auto_rp; //type: uint32
-        YLeaf threshold_global_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf maximum_global_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf threshold_global_group_ranges_auto_rp; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp
 
 
-class Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache : public ydk::Entity
 {
     public:
         BsrGlobalCandidateRpCache();
@@ -3061,19 +3324,21 @@ class Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_global_candidate_rp_cache; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_global_candidate_rp_cache; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache
 
 
-class Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates : public ydk::Entity
 {
     public:
         GlobalRegisterStates();
@@ -3081,19 +3346,21 @@ class Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_register_states; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_register_states; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates
 
 
-class Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces : public ydk::Entity
 {
     public:
         GlobalRouteInterfaces();
@@ -3101,19 +3368,21 @@ class Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_route_interfaces; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_route_interfaces; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces
 
 
-class Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp : public ydk::Entity
 {
     public:
         GroupMappingsAutoRp();
@@ -3121,19 +3390,21 @@ class Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_group_ranges_auto_rp; //type: uint32
-        YLeaf threshold_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf maximum_group_ranges_auto_rp; //type: uint32
+        ydk::YLeaf threshold_group_ranges_auto_rp; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp
 
 
-class Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings : public ydk::Entity
 {
     public:
         BsrGroupMappings();
@@ -3141,19 +3412,21 @@ class Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_group_ranges; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_group_ranges; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings
 
 
-class Pim::DefaultContext::Ipv4::Maximum::RegisterStates : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::RegisterStates : public ydk::Entity
 {
     public:
         RegisterStates();
@@ -3161,19 +3434,21 @@ class Pim::DefaultContext::Ipv4::Maximum::RegisterStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_register_states; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_register_states; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::RegisterStates
 
 
-class Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces : public ydk::Entity
 {
     public:
         RouteInterfaces();
@@ -3181,19 +3456,21 @@ class Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_route_interfaces; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_route_interfaces; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces
 
 
-class Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache : public ydk::Entity
 {
     public:
         BsrCandidateRpCache();
@@ -3201,19 +3478,21 @@ class Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache
 
 
-class Pim::DefaultContext::Ipv4::Maximum::Routes : public Entity
+class Pim::DefaultContext::Ipv4::Maximum::Routes : public ydk::Entity
 {
     public:
         Routes();
@@ -3221,19 +3500,21 @@ class Pim::DefaultContext::Ipv4::Maximum::Routes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_routes; //type: uint32
-        YLeaf warning_threshold; //type: uint32
+        ydk::YLeaf maximum_routes; //type: uint32
+        ydk::YLeaf warning_threshold; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Maximum::Routes
 
 
-class Pim::DefaultContext::Ipv4::Ssm : public Entity
+class Pim::DefaultContext::Ipv4::Ssm : public ydk::Entity
 {
     public:
         Ssm();
@@ -3241,19 +3522,21 @@ class Pim::DefaultContext::Ipv4::Ssm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf disable; //type: boolean
-        YLeaf range; //type: string
+        ydk::YLeaf disable; //type: boolean
+        ydk::YLeaf range; //type: string
 
 }; // Pim::DefaultContext::Ipv4::Ssm
 
 
-class Pim::DefaultContext::Ipv4::Injects : public Entity
+class Pim::DefaultContext::Ipv4::Injects : public ydk::Entity
 {
     public:
         Injects();
@@ -3261,11 +3544,13 @@ class Pim::DefaultContext::Ipv4::Injects : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inject; //type: Pim::DefaultContext::Ipv4::Injects::Inject
 
@@ -3274,7 +3559,7 @@ class Pim::DefaultContext::Ipv4::Injects : public Entity
 }; // Pim::DefaultContext::Ipv4::Injects
 
 
-class Pim::DefaultContext::Ipv4::Injects::Inject : public Entity
+class Pim::DefaultContext::Ipv4::Injects::Inject : public ydk::Entity
 {
     public:
         Inject();
@@ -3282,20 +3567,22 @@ class Pim::DefaultContext::Ipv4::Injects::Inject : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeafList rpf_proxy_address; //type: list of  string
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeafList rpf_proxy_address; //type: list of  string
 
 }; // Pim::DefaultContext::Ipv4::Injects::Inject
 
 
-class Pim::DefaultContext::Ipv4::BidirRpAddresses : public Entity
+class Pim::DefaultContext::Ipv4::BidirRpAddresses : public ydk::Entity
 {
     public:
         BidirRpAddresses();
@@ -3303,11 +3590,13 @@ class Pim::DefaultContext::Ipv4::BidirRpAddresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BidirRpAddress; //type: Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress
 
@@ -3316,7 +3605,7 @@ class Pim::DefaultContext::Ipv4::BidirRpAddresses : public Entity
 }; // Pim::DefaultContext::Ipv4::BidirRpAddresses
 
 
-class Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress : public Entity
+class Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress : public ydk::Entity
 {
     public:
         BidirRpAddress();
@@ -3324,20 +3613,22 @@ class Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_address; //type: string
-        YLeaf access_list_name; //type: string
-        YLeaf auto_rp_override; //type: boolean
+        ydk::YLeaf rp_address; //type: string
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf auto_rp_override; //type: boolean
 
 }; // Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress
 
 
-class Pim::DefaultContext::Ipv4::Bsr : public Entity
+class Pim::DefaultContext::Ipv4::Bsr : public ydk::Entity
 {
     public:
         Bsr();
@@ -3345,11 +3636,13 @@ class Pim::DefaultContext::Ipv4::Bsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CandidateBsr; //type: Pim::DefaultContext::Ipv4::Bsr::CandidateBsr
         class CandidateRps; //type: Pim::DefaultContext::Ipv4::Bsr::CandidateRps
@@ -3360,7 +3653,7 @@ class Pim::DefaultContext::Ipv4::Bsr : public Entity
 }; // Pim::DefaultContext::Ipv4::Bsr
 
 
-class Pim::DefaultContext::Ipv4::Bsr::CandidateBsr : public Entity
+class Pim::DefaultContext::Ipv4::Bsr::CandidateBsr : public ydk::Entity
 {
     public:
         CandidateBsr();
@@ -3368,20 +3661,22 @@ class Pim::DefaultContext::Ipv4::Bsr::CandidateBsr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf priority; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf priority; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Bsr::CandidateBsr
 
 
-class Pim::DefaultContext::Ipv4::Bsr::CandidateRps : public Entity
+class Pim::DefaultContext::Ipv4::Bsr::CandidateRps : public ydk::Entity
 {
     public:
         CandidateRps();
@@ -3389,11 +3684,13 @@ class Pim::DefaultContext::Ipv4::Bsr::CandidateRps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CandidateRp; //type: Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp
 
@@ -3402,7 +3699,7 @@ class Pim::DefaultContext::Ipv4::Bsr::CandidateRps : public Entity
 }; // Pim::DefaultContext::Ipv4::Bsr::CandidateRps
 
 
-class Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp : public Entity
+class Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp : public ydk::Entity
 {
     public:
         CandidateRp();
@@ -3410,22 +3707,24 @@ class Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf mode; //type: PimProtocolModeEnum
-        YLeaf group_list; //type: string
-        YLeaf priority; //type: uint32
-        YLeaf interval; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf mode; //type: PimProtocolMode
+        ydk::YLeaf group_list; //type: string
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf interval; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp
 
 
-class Pim::DefaultContext::Ipv4::Paths : public Entity
+class Pim::DefaultContext::Ipv4::Paths : public ydk::Entity
 {
     public:
         Paths();
@@ -3433,11 +3732,13 @@ class Pim::DefaultContext::Ipv4::Paths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Path; //type: Pim::DefaultContext::Ipv4::Paths::Path
 
@@ -3446,7 +3747,7 @@ class Pim::DefaultContext::Ipv4::Paths : public Entity
 }; // Pim::DefaultContext::Ipv4::Paths
 
 
-class Pim::DefaultContext::Ipv4::Paths::Path : public Entity
+class Pim::DefaultContext::Ipv4::Paths::Path : public ydk::Entity
 {
     public:
         Path();
@@ -3454,20 +3755,22 @@ class Pim::DefaultContext::Ipv4::Paths::Path : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeafList rpf_proxy_address; //type: list of  string
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeafList rpf_proxy_address; //type: list of  string
 
 }; // Pim::DefaultContext::Ipv4::Paths::Path
 
 
-class Pim::DefaultContext::Ipv4::AllowRp : public Entity
+class Pim::DefaultContext::Ipv4::AllowRp : public ydk::Entity
 {
     public:
         AllowRp();
@@ -3475,19 +3778,21 @@ class Pim::DefaultContext::Ipv4::AllowRp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rp_list_name; //type: string
-        YLeaf group_list_name; //type: string
+        ydk::YLeaf rp_list_name; //type: string
+        ydk::YLeaf group_list_name; //type: string
 
 }; // Pim::DefaultContext::Ipv4::AllowRp
 
 
-class Pim::DefaultContext::Ipv4::Convergence : public Entity
+class Pim::DefaultContext::Ipv4::Convergence : public ydk::Entity
 {
     public:
         Convergence();
@@ -3495,19 +3800,21 @@ class Pim::DefaultContext::Ipv4::Convergence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rpf_conflict_join_delay; //type: uint32
-        YLeaf link_down_prune_delay; //type: uint32
+        ydk::YLeaf rpf_conflict_join_delay; //type: uint32
+        ydk::YLeaf link_down_prune_delay; //type: uint32
 
 }; // Pim::DefaultContext::Ipv4::Convergence
 
 
-class Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs : public Entity
+class Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs : public ydk::Entity
 {
     public:
         CjMulticastOnlyFrrs();
@@ -3515,11 +3822,13 @@ class Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CjMulticastOnlyFrr; //type: Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr
 
@@ -3528,7 +3837,7 @@ class Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs : public Entity
 }; // Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs
 
 
-class Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr : public Entity
+class Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr : public ydk::Entity
 {
     public:
         CjMulticastOnlyFrr();
@@ -3536,35 +3845,37 @@ class Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source; //type: string
-        YLeaf primary; //type: string
-        YLeaf backup; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf primary; //type: string
+        ydk::YLeaf backup; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // Pim::DefaultContext::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr
 
-class PimProtocolModeEnum : public Enum
+class PimMultipath : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf sm;
-        static const Enum::YLeaf bidir;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf interface_hash;
+        static const ydk::Enum::YLeaf source_hash;
+        static const ydk::Enum::YLeaf source_next_hop_hash;
+        static const ydk::Enum::YLeaf source_group_hash;
 
 };
 
-class PimMultipathEnum : public Enum
+class PimProtocolMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enable;
-        static const Enum::YLeaf interface_hash;
-        static const Enum::YLeaf source_hash;
-        static const Enum::YLeaf source_next_hop_hash;
-        static const Enum::YLeaf source_group_hash;
+        static const ydk::Enum::YLeaf sm;
+        static const ydk::Enum::YLeaf bidir;
 
 };
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_restconf_monitoring.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_restconf_monitoring {
 
 RestconfState::RestconfState()
@@ -33,7 +35,7 @@ bool RestconfState::has_data() const
 
 bool RestconfState::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (capabilities !=  nullptr && capabilities->has_operation())
 	|| (streams !=  nullptr && streams->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> RestconfState::get_children() con
     return children;
 }
 
-void RestconfState::set_value(const std::string & value_path, std::string value)
+void RestconfState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RestconfState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string RestconfState::get_bundle_name() const
 augment_capabilities_function RestconfState::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> RestconfState::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool RestconfState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capabilities" || name == "streams")
+        return true;
+    return false;
 }
 
 RestconfState::Capabilities::Capabilities()
@@ -153,11 +171,11 @@ bool RestconfState::Capabilities::has_operation() const
 {
     for (auto const & leaf : capability.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(capability.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(capability.yfilter);
 }
 
 std::string RestconfState::Capabilities::get_segment_path() const
@@ -203,12 +221,27 @@ std::map<std::string, std::shared_ptr<Entity>> RestconfState::Capabilities::get_
     return children;
 }
 
-void RestconfState::Capabilities::set_value(const std::string & value_path, std::string value)
+void RestconfState::Capabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "capability")
     {
         capability.append(value);
     }
+}
+
+void RestconfState::Capabilities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capability")
+    {
+        capability.yfilter = yfilter;
+    }
+}
+
+bool RestconfState::Capabilities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capability")
+        return true;
+    return false;
 }
 
 RestconfState::Streams::Streams()
@@ -237,7 +270,7 @@ bool RestconfState::Streams::has_operation() const
         if(stream[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RestconfState::Streams::get_segment_path() const
@@ -302,8 +335,19 @@ std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::get_child
     return children;
 }
 
-void RestconfState::Streams::set_value(const std::string & value_path, std::string value)
+void RestconfState::Streams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RestconfState::Streams::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RestconfState::Streams::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "stream")
+        return true;
+    return false;
 }
 
 RestconfState::Streams::Stream::Stream()
@@ -340,11 +384,11 @@ bool RestconfState::Streams::Stream::has_operation() const
         if(access[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(description.operation)
-	|| is_set(replay_log_creation_time.operation)
-	|| is_set(replay_support.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(replay_log_creation_time.yfilter)
+	|| ydk::is_set(replay_support.yfilter);
 }
 
 std::string RestconfState::Streams::Stream::get_segment_path() const
@@ -370,10 +414,10 @@ const EntityPath RestconfState::Streams::Stream::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (replay_log_creation_time.is_set || is_set(replay_log_creation_time.operation)) leaf_name_data.push_back(replay_log_creation_time.get_name_leafdata());
-    if (replay_support.is_set || is_set(replay_support.operation)) leaf_name_data.push_back(replay_support.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (replay_log_creation_time.is_set || is_set(replay_log_creation_time.yfilter)) leaf_name_data.push_back(replay_log_creation_time.get_name_leafdata());
+    if (replay_support.is_set || is_set(replay_support.yfilter)) leaf_name_data.push_back(replay_support.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -413,24 +457,59 @@ std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::Stream::g
     return children;
 }
 
-void RestconfState::Streams::Stream::set_value(const std::string & value_path, std::string value)
+void RestconfState::Streams::Stream::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replay-log-creation-time")
     {
         replay_log_creation_time = value;
+        replay_log_creation_time.value_namespace = name_space;
+        replay_log_creation_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replay-support")
     {
         replay_support = value;
+        replay_support.value_namespace = name_space;
+        replay_support.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RestconfState::Streams::Stream::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "replay-log-creation-time")
+    {
+        replay_log_creation_time.yfilter = yfilter;
+    }
+    if(value_path == "replay-support")
+    {
+        replay_support.yfilter = yfilter;
+    }
+}
+
+bool RestconfState::Streams::Stream::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access" || name == "name" || name == "description" || name == "replay-log-creation-time" || name == "replay-support")
+        return true;
+    return false;
 }
 
 RestconfState::Streams::Stream::Access::Access()
@@ -453,9 +532,9 @@ bool RestconfState::Streams::Stream::Access::has_data() const
 
 bool RestconfState::Streams::Stream::Access::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(encoding.operation)
-	|| is_set(location.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(encoding.yfilter)
+	|| ydk::is_set(location.yfilter);
 }
 
 std::string RestconfState::Streams::Stream::Access::get_segment_path() const
@@ -481,8 +560,8 @@ const EntityPath RestconfState::Streams::Stream::Access::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (encoding.is_set || is_set(encoding.operation)) leaf_name_data.push_back(encoding.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -501,16 +580,39 @@ std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::Stream::A
     return children;
 }
 
-void RestconfState::Streams::Stream::Access::set_value(const std::string & value_path, std::string value)
+void RestconfState::Streams::Stream::Access::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encoding")
     {
         encoding = value;
+        encoding.value_namespace = name_space;
+        encoding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RestconfState::Streams::Stream::Access::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encoding")
+    {
+        encoding.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool RestconfState::Streams::Stream::Access::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "encoding" || name == "location")
+        return true;
+    return false;
 }
 
 

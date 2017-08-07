@@ -7,125 +7,125 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_platform_types {
 
-class Openconfig_Hardware_ComponentIdentity : public virtual Identity
+class Openconfig_Software_Component : public virtual ydk::Identity
 {
     public:
-        Openconfig_Hardware_ComponentIdentity();
-        ~Openconfig_Hardware_ComponentIdentity();
+        Openconfig_Software_Component();
+        ~Openconfig_Software_Component();
 
 
-}; // Openconfig_Hardware_ComponentIdentity
+}; // Openconfig_Software_Component
 
-class Openconfig_Software_ComponentIdentity : public virtual Identity
+class Openconfig_Hardware_Component : public virtual ydk::Identity
 {
     public:
-        Openconfig_Software_ComponentIdentity();
-        ~Openconfig_Software_ComponentIdentity();
+        Openconfig_Hardware_Component();
+        ~Openconfig_Hardware_Component();
 
 
-}; // Openconfig_Software_ComponentIdentity
+}; // Openconfig_Hardware_Component
 
-class Operating_SystemIdentity : public openconfig_platform_types::Openconfig_Software_ComponentIdentity, virtual Identity
+class Transceiver : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        Operating_SystemIdentity();
-        ~Operating_SystemIdentity();
+        Transceiver();
+        ~Transceiver();
 
 
-}; // Operating_SystemIdentity
+}; // Transceiver
 
-class LinecardIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Backplane : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        LinecardIdentity();
-        ~LinecardIdentity();
+        Backplane();
+        ~Backplane();
 
 
-}; // LinecardIdentity
+}; // Backplane
 
-class ModuleIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Power_Supply : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        ModuleIdentity();
-        ~ModuleIdentity();
+        Power_Supply();
+        ~Power_Supply();
 
 
-}; // ModuleIdentity
+}; // Power_Supply
 
-class CpuIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Operating_System : public openconfig_platform_types::Openconfig_Software_Component, virtual ydk::Identity
 {
     public:
-        CpuIdentity();
-        ~CpuIdentity();
+        Operating_System();
+        ~Operating_System();
 
 
-}; // CpuIdentity
+}; // Operating_System
 
-class TransceiverIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Cpu : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        TransceiverIdentity();
-        ~TransceiverIdentity();
+        Cpu();
+        ~Cpu();
 
 
-}; // TransceiverIdentity
+}; // Cpu
 
-class ChassisIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Module : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        ChassisIdentity();
-        ~ChassisIdentity();
+        Module();
+        ~Module();
 
 
-}; // ChassisIdentity
+}; // Module
 
-class FanIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Chassis : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        FanIdentity();
-        ~FanIdentity();
+        Chassis();
+        ~Chassis();
 
 
-}; // FanIdentity
+}; // Chassis
 
-class BackplaneIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Fan : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        BackplaneIdentity();
-        ~BackplaneIdentity();
+        Fan();
+        ~Fan();
 
 
-}; // BackplaneIdentity
+}; // Fan
 
-class SensorIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Linecard : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        SensorIdentity();
-        ~SensorIdentity();
+        Linecard();
+        ~Linecard();
 
 
-}; // SensorIdentity
+}; // Linecard
 
-class PortIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Port : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        PortIdentity();
-        ~PortIdentity();
+        Port();
+        ~Port();
 
 
-}; // PortIdentity
+}; // Port
 
-class Power_SupplyIdentity : public openconfig_platform_types::Openconfig_Hardware_ComponentIdentity, virtual Identity
+class Sensor : public openconfig_platform_types::Openconfig_Hardware_Component, virtual ydk::Identity
 {
     public:
-        Power_SupplyIdentity();
-        ~Power_SupplyIdentity();
+        Sensor();
+        ~Sensor();
 
 
-}; // Power_SupplyIdentity
+}; // Sensor
 
 
 }

@@ -7,7 +7,9 @@
 #include "Cisco_IOS_XR_ipv4_pim_cfg_0.hpp"
 #include "Cisco_IOS_XR_ipv4_pim_cfg_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_cfg {
 
 Pim::Pim()
@@ -32,7 +34,7 @@ bool Pim::has_data() const
 
 bool Pim::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_context !=  nullptr && default_context->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -103,7 +105,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::get_children() const
     return children;
 }
 
-void Pim::set_value(const std::string & value_path, std::string value)
+void Pim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pim::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -125,6 +131,18 @@ std::string Pim::get_bundle_name() const
 augment_capabilities_function Pim::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Pim::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Pim::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-context" || name == "vrfs")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrfs()
@@ -153,7 +171,7 @@ bool Pim::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::get_segment_path() const
@@ -218,8 +236,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::get_children() const
     return children;
 }
 
-void Pim::Vrfs::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Vrf()
@@ -249,8 +278,8 @@ bool Pim::Vrfs::Vrf::has_data() const
 
 bool Pim::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -278,7 +307,7 @@ const EntityPath Pim::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -325,12 +354,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::get_children() co
     return children;
 }
 
-void Pim::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Ipv4()
@@ -442,21 +488,21 @@ bool Pim::Vrfs::Vrf::Ipv4::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accept_register.operation)
-	|| is_set(auto_rp_disable.operation)
-	|| is_set(log_neighbor_changes.operation)
-	|| is_set(multipath.operation)
-	|| is_set(neighbor_check_on_receive.operation)
-	|| is_set(neighbor_check_on_send.operation)
-	|| is_set(neighbor_filter.operation)
-	|| is_set(old_register_checksum.operation)
-	|| is_set(register_source.operation)
-	|| is_set(rp_static_deny.operation)
-	|| is_set(spt_threshold_infinity.operation)
-	|| is_set(ssm_allow_override.operation)
-	|| is_set(suppress_data_registers.operation)
-	|| is_set(suppress_rpf_prunes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accept_register.yfilter)
+	|| ydk::is_set(auto_rp_disable.yfilter)
+	|| ydk::is_set(log_neighbor_changes.yfilter)
+	|| ydk::is_set(multipath.yfilter)
+	|| ydk::is_set(neighbor_check_on_receive.yfilter)
+	|| ydk::is_set(neighbor_check_on_send.yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| ydk::is_set(old_register_checksum.yfilter)
+	|| ydk::is_set(register_source.yfilter)
+	|| ydk::is_set(rp_static_deny.yfilter)
+	|| ydk::is_set(spt_threshold_infinity.yfilter)
+	|| ydk::is_set(ssm_allow_override.yfilter)
+	|| ydk::is_set(suppress_data_registers.yfilter)
+	|| ydk::is_set(suppress_rpf_prunes.yfilter)
 	|| (allow_rp !=  nullptr && allow_rp->has_operation())
 	|| (bidir_rp_addresses !=  nullptr && bidir_rp_addresses->has_operation())
 	|| (bsr !=  nullptr && bsr->has_operation())
@@ -499,20 +545,20 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accept_register.is_set || is_set(accept_register.operation)) leaf_name_data.push_back(accept_register.get_name_leafdata());
-    if (auto_rp_disable.is_set || is_set(auto_rp_disable.operation)) leaf_name_data.push_back(auto_rp_disable.get_name_leafdata());
-    if (log_neighbor_changes.is_set || is_set(log_neighbor_changes.operation)) leaf_name_data.push_back(log_neighbor_changes.get_name_leafdata());
-    if (multipath.is_set || is_set(multipath.operation)) leaf_name_data.push_back(multipath.get_name_leafdata());
-    if (neighbor_check_on_receive.is_set || is_set(neighbor_check_on_receive.operation)) leaf_name_data.push_back(neighbor_check_on_receive.get_name_leafdata());
-    if (neighbor_check_on_send.is_set || is_set(neighbor_check_on_send.operation)) leaf_name_data.push_back(neighbor_check_on_send.get_name_leafdata());
-    if (neighbor_filter.is_set || is_set(neighbor_filter.operation)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
-    if (old_register_checksum.is_set || is_set(old_register_checksum.operation)) leaf_name_data.push_back(old_register_checksum.get_name_leafdata());
-    if (register_source.is_set || is_set(register_source.operation)) leaf_name_data.push_back(register_source.get_name_leafdata());
-    if (rp_static_deny.is_set || is_set(rp_static_deny.operation)) leaf_name_data.push_back(rp_static_deny.get_name_leafdata());
-    if (spt_threshold_infinity.is_set || is_set(spt_threshold_infinity.operation)) leaf_name_data.push_back(spt_threshold_infinity.get_name_leafdata());
-    if (ssm_allow_override.is_set || is_set(ssm_allow_override.operation)) leaf_name_data.push_back(ssm_allow_override.get_name_leafdata());
-    if (suppress_data_registers.is_set || is_set(suppress_data_registers.operation)) leaf_name_data.push_back(suppress_data_registers.get_name_leafdata());
-    if (suppress_rpf_prunes.is_set || is_set(suppress_rpf_prunes.operation)) leaf_name_data.push_back(suppress_rpf_prunes.get_name_leafdata());
+    if (accept_register.is_set || is_set(accept_register.yfilter)) leaf_name_data.push_back(accept_register.get_name_leafdata());
+    if (auto_rp_disable.is_set || is_set(auto_rp_disable.yfilter)) leaf_name_data.push_back(auto_rp_disable.get_name_leafdata());
+    if (log_neighbor_changes.is_set || is_set(log_neighbor_changes.yfilter)) leaf_name_data.push_back(log_neighbor_changes.get_name_leafdata());
+    if (multipath.is_set || is_set(multipath.yfilter)) leaf_name_data.push_back(multipath.get_name_leafdata());
+    if (neighbor_check_on_receive.is_set || is_set(neighbor_check_on_receive.yfilter)) leaf_name_data.push_back(neighbor_check_on_receive.get_name_leafdata());
+    if (neighbor_check_on_send.is_set || is_set(neighbor_check_on_send.yfilter)) leaf_name_data.push_back(neighbor_check_on_send.get_name_leafdata());
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+    if (old_register_checksum.is_set || is_set(old_register_checksum.yfilter)) leaf_name_data.push_back(old_register_checksum.get_name_leafdata());
+    if (register_source.is_set || is_set(register_source.yfilter)) leaf_name_data.push_back(register_source.get_name_leafdata());
+    if (rp_static_deny.is_set || is_set(rp_static_deny.yfilter)) leaf_name_data.push_back(rp_static_deny.get_name_leafdata());
+    if (spt_threshold_infinity.is_set || is_set(spt_threshold_infinity.yfilter)) leaf_name_data.push_back(spt_threshold_infinity.get_name_leafdata());
+    if (ssm_allow_override.is_set || is_set(ssm_allow_override.yfilter)) leaf_name_data.push_back(ssm_allow_override.get_name_leafdata());
+    if (suppress_data_registers.is_set || is_set(suppress_data_registers.yfilter)) leaf_name_data.push_back(suppress_data_registers.get_name_leafdata());
+    if (suppress_rpf_prunes.is_set || is_set(suppress_rpf_prunes.yfilter)) leaf_name_data.push_back(suppress_rpf_prunes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -769,64 +815,159 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::get_childre
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accept-register")
     {
         accept_register = value;
+        accept_register.value_namespace = name_space;
+        accept_register.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-disable")
     {
         auto_rp_disable = value;
+        auto_rp_disable.value_namespace = name_space;
+        auto_rp_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-neighbor-changes")
     {
         log_neighbor_changes = value;
+        log_neighbor_changes.value_namespace = name_space;
+        log_neighbor_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multipath")
     {
         multipath = value;
+        multipath.value_namespace = name_space;
+        multipath.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-check-on-receive")
     {
         neighbor_check_on_receive = value;
+        neighbor_check_on_receive.value_namespace = name_space;
+        neighbor_check_on_receive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-check-on-send")
     {
         neighbor_check_on_send = value;
+        neighbor_check_on_send.value_namespace = name_space;
+        neighbor_check_on_send.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-filter")
     {
         neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "old-register-checksum")
     {
         old_register_checksum = value;
+        old_register_checksum.value_namespace = name_space;
+        old_register_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "register-source")
     {
         register_source = value;
+        register_source.value_namespace = name_space;
+        register_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-static-deny")
     {
         rp_static_deny = value;
+        rp_static_deny.value_namespace = name_space;
+        rp_static_deny.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spt-threshold-infinity")
     {
         spt_threshold_infinity = value;
+        spt_threshold_infinity.value_namespace = name_space;
+        spt_threshold_infinity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssm-allow-override")
     {
         ssm_allow_override = value;
+        ssm_allow_override.value_namespace = name_space;
+        ssm_allow_override.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-data-registers")
     {
         suppress_data_registers = value;
+        suppress_data_registers.value_namespace = name_space;
+        suppress_data_registers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-rpf-prunes")
     {
         suppress_rpf_prunes = value;
+        suppress_rpf_prunes.value_namespace = name_space;
+        suppress_rpf_prunes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accept-register")
+    {
+        accept_register.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-disable")
+    {
+        auto_rp_disable.yfilter = yfilter;
+    }
+    if(value_path == "log-neighbor-changes")
+    {
+        log_neighbor_changes.yfilter = yfilter;
+    }
+    if(value_path == "multipath")
+    {
+        multipath.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-check-on-receive")
+    {
+        neighbor_check_on_receive.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-check-on-send")
+    {
+        neighbor_check_on_send.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+    if(value_path == "old-register-checksum")
+    {
+        old_register_checksum.yfilter = yfilter;
+    }
+    if(value_path == "register-source")
+    {
+        register_source.yfilter = yfilter;
+    }
+    if(value_path == "rp-static-deny")
+    {
+        rp_static_deny.yfilter = yfilter;
+    }
+    if(value_path == "spt-threshold-infinity")
+    {
+        spt_threshold_infinity.yfilter = yfilter;
+    }
+    if(value_path == "ssm-allow-override")
+    {
+        ssm_allow_override.yfilter = yfilter;
+    }
+    if(value_path == "suppress-data-registers")
+    {
+        suppress_data_registers.yfilter = yfilter;
+    }
+    if(value_path == "suppress-rpf-prunes")
+    {
+        suppress_rpf_prunes.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-rp" || name == "bidir-rp-addresses" || name == "bsr" || name == "cj-multicast-only-frrs" || name == "convergence" || name == "cs-multicast-only-frrs" || name == "inheritable-defaults" || name == "injects" || name == "interfaces" || name == "maximum" || name == "multicast-only-frr" || name == "paths" || name == "rpf" || name == "rpf-vector-enable" || name == "sg-expiry-timer" || name == "sparse-mode-rp-addresses" || name == "ssm" || name == "accept-register" || name == "auto-rp-disable" || name == "log-neighbor-changes" || name == "multipath" || name == "neighbor-check-on-receive" || name == "neighbor-check-on-send" || name == "neighbor-filter" || name == "old-register-checksum" || name == "register-source" || name == "rp-static-deny" || name == "spt-threshold-infinity" || name == "ssm-allow-override" || name == "suppress-data-registers" || name == "suppress-rpf-prunes")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddresses()
@@ -855,7 +996,7 @@ bool Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::has_operation() const
         if(sparse_mode_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::get_segment_path() const
@@ -920,8 +1061,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::SparseModeR
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sparse-mode-rp-address")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::SparseModeRpAddress()
@@ -946,10 +1098,10 @@ bool Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::has_data(
 
 bool Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(auto_rp_override.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(auto_rp_override.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::get_segment_path() const
@@ -975,9 +1127,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddres
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.operation)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -996,20 +1148,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::SparseModeR
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-override")
     {
         auto_rp_override = value;
+        auto_rp_override.value_namespace = name_space;
+        auto_rp_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-override")
+    {
+        auto_rp_override.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::MulticastOnlyFrr()
@@ -1036,11 +1217,11 @@ bool Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(flow_multicast_only_frr.operation)
-	|| is_set(non_revertive_multicast_only_frr.operation)
-	|| is_set(rib_multicast_only_frr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(flow_multicast_only_frr.yfilter)
+	|| ydk::is_set(non_revertive_multicast_only_frr.yfilter)
+	|| ydk::is_set(rib_multicast_only_frr.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::get_segment_path() const
@@ -1066,10 +1247,10 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (flow_multicast_only_frr.is_set || is_set(flow_multicast_only_frr.operation)) leaf_name_data.push_back(flow_multicast_only_frr.get_name_leafdata());
-    if (non_revertive_multicast_only_frr.is_set || is_set(non_revertive_multicast_only_frr.operation)) leaf_name_data.push_back(non_revertive_multicast_only_frr.get_name_leafdata());
-    if (rib_multicast_only_frr.is_set || is_set(rib_multicast_only_frr.operation)) leaf_name_data.push_back(rib_multicast_only_frr.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (flow_multicast_only_frr.is_set || is_set(flow_multicast_only_frr.yfilter)) leaf_name_data.push_back(flow_multicast_only_frr.get_name_leafdata());
+    if (non_revertive_multicast_only_frr.is_set || is_set(non_revertive_multicast_only_frr.yfilter)) leaf_name_data.push_back(non_revertive_multicast_only_frr.get_name_leafdata());
+    if (rib_multicast_only_frr.is_set || is_set(rib_multicast_only_frr.yfilter)) leaf_name_data.push_back(rib_multicast_only_frr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1088,24 +1269,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::MulticastOn
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-multicast-only-frr")
     {
         flow_multicast_only_frr = value;
+        flow_multicast_only_frr.value_namespace = name_space;
+        flow_multicast_only_frr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "non-revertive-multicast-only-frr")
     {
         non_revertive_multicast_only_frr = value;
+        non_revertive_multicast_only_frr.value_namespace = name_space;
+        non_revertive_multicast_only_frr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rib-multicast-only-frr")
     {
         rib_multicast_only_frr = value;
+        rib_multicast_only_frr.value_namespace = name_space;
+        rib_multicast_only_frr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "flow-multicast-only-frr")
+    {
+        flow_multicast_only_frr.yfilter = yfilter;
+    }
+    if(value_path == "non-revertive-multicast-only-frr")
+    {
+        non_revertive_multicast_only_frr.yfilter = yfilter;
+    }
+    if(value_path == "rib-multicast-only-frr")
+    {
+        rib_multicast_only_frr.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "flow-multicast-only-frr" || name == "non-revertive-multicast-only-frr" || name == "rib-multicast-only-frr")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrrs()
@@ -1134,7 +1350,7 @@ bool Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::has_operation() const
         if(cs_multicast_only_frr[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::get_segment_path() const
@@ -1199,8 +1415,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::CsMulticast
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cs-multicast-only-frr")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::CsMulticastOnlyFrr()
@@ -1227,11 +1454,11 @@ bool Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::has_data() c
 
 bool Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source.operation)
-	|| is_set(primary.operation)
-	|| is_set(backup.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(primary.yfilter)
+	|| ydk::is_set(backup.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::get_segment_path() const
@@ -1257,10 +1484,10 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (primary.is_set || is_set(primary.operation)) leaf_name_data.push_back(primary.get_name_leafdata());
-    if (backup.is_set || is_set(backup.operation)) leaf_name_data.push_back(backup.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (primary.is_set || is_set(primary.yfilter)) leaf_name_data.push_back(primary.get_name_leafdata());
+    if (backup.is_set || is_set(backup.yfilter)) leaf_name_data.push_back(backup.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1279,24 +1506,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::CsMulticast
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary")
     {
         primary = value;
+        primary.value_namespace = name_space;
+        primary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup")
     {
         backup = value;
+        backup.value_namespace = name_space;
+        backup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "primary")
+    {
+        primary.yfilter = yfilter;
+    }
+    if(value_path == "backup")
+    {
+        backup.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "primary" || name == "backup" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::InheritableDefaults()
@@ -1329,14 +1591,14 @@ bool Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(convergency.operation)
-	|| is_set(dr_priority.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(join_prune_mtu.operation)
-	|| is_set(jp_interval.operation)
-	|| is_set(override_interval.operation)
-	|| is_set(propagation_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(convergency.yfilter)
+	|| ydk::is_set(dr_priority.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(join_prune_mtu.yfilter)
+	|| ydk::is_set(jp_interval.yfilter)
+	|| ydk::is_set(override_interval.yfilter)
+	|| ydk::is_set(propagation_delay.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::get_segment_path() const
@@ -1362,13 +1624,13 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (convergency.is_set || is_set(convergency.operation)) leaf_name_data.push_back(convergency.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.operation)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (join_prune_mtu.is_set || is_set(join_prune_mtu.operation)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
-    if (jp_interval.is_set || is_set(jp_interval.operation)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.operation)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.operation)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
+    if (convergency.is_set || is_set(convergency.yfilter)) leaf_name_data.push_back(convergency.get_name_leafdata());
+    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (join_prune_mtu.is_set || is_set(join_prune_mtu.yfilter)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
+    if (jp_interval.is_set || is_set(jp_interval.yfilter)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
+    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
+    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1387,36 +1649,89 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Inheritable
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "convergency")
     {
         convergency = value;
+        convergency.value_namespace = name_space;
+        convergency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr-priority")
     {
         dr_priority = value;
+        dr_priority.value_namespace = name_space;
+        dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "join-prune-mtu")
     {
         join_prune_mtu = value;
+        join_prune_mtu.value_namespace = name_space;
+        join_prune_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jp-interval")
     {
         jp_interval = value;
+        jp_interval.value_namespace = name_space;
+        jp_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "override-interval")
     {
         override_interval = value;
+        override_interval.value_namespace = name_space;
+        override_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propagation-delay")
     {
         propagation_delay = value;
+        propagation_delay.value_namespace = name_space;
+        propagation_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "convergency")
+    {
+        convergency.yfilter = yfilter;
+    }
+    if(value_path == "dr-priority")
+    {
+        dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "join-prune-mtu")
+    {
+        join_prune_mtu.yfilter = yfilter;
+    }
+    if(value_path == "jp-interval")
+    {
+        jp_interval.yfilter = yfilter;
+    }
+    if(value_path == "override-interval")
+    {
+        override_interval.yfilter = yfilter;
+    }
+    if(value_path == "propagation-delay")
+    {
+        propagation_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "convergency" || name == "dr-priority" || name == "hello-interval" || name == "join-prune-mtu" || name == "jp-interval" || name == "override-interval" || name == "propagation-delay")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Rpf::Rpf()
@@ -1437,8 +1752,8 @@ bool Pim::Vrfs::Vrf::Ipv4::Rpf::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Rpf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Rpf::get_segment_path() const
@@ -1464,7 +1779,7 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Rpf::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy.is_set || is_set(route_policy.operation)) leaf_name_data.push_back(route_policy.get_name_leafdata());
+    if (route_policy.is_set || is_set(route_policy.yfilter)) leaf_name_data.push_back(route_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1483,12 +1798,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Rpf::get_ch
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Rpf::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy")
     {
         route_policy = value;
+        route_policy.value_namespace = name_space;
+        route_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Rpf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy")
+    {
+        route_policy.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Rpf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Maximum::Maximum()
@@ -1519,7 +1851,7 @@ bool Pim::Vrfs::Vrf::Ipv4::Maximum::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Maximum::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bsr_candidate_rp_cache !=  nullptr && bsr_candidate_rp_cache->has_operation())
 	|| (bsr_group_mappings !=  nullptr && bsr_group_mappings->has_operation())
 	|| (group_mappings_auto_rp !=  nullptr && group_mappings_auto_rp->has_operation())
@@ -1653,8 +1985,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::ge
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Maximum::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Maximum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Maximum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-candidate-rp-cache" || name == "bsr-group-mappings" || name == "group-mappings-auto-rp" || name == "register-states" || name == "route-interfaces" || name == "routes")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::GroupMappingsAutoRp()
@@ -1677,9 +2020,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_group_ranges_auto_rp.operation)
-	|| is_set(threshold_group_ranges_auto_rp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_group_ranges_auto_rp.yfilter)
+	|| ydk::is_set(threshold_group_ranges_auto_rp.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::get_segment_path() const
@@ -1705,8 +2048,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_group_ranges_auto_rp.is_set || is_set(maximum_group_ranges_auto_rp.operation)) leaf_name_data.push_back(maximum_group_ranges_auto_rp.get_name_leafdata());
-    if (threshold_group_ranges_auto_rp.is_set || is_set(threshold_group_ranges_auto_rp.operation)) leaf_name_data.push_back(threshold_group_ranges_auto_rp.get_name_leafdata());
+    if (maximum_group_ranges_auto_rp.is_set || is_set(maximum_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(maximum_group_ranges_auto_rp.get_name_leafdata());
+    if (threshold_group_ranges_auto_rp.is_set || is_set(threshold_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(threshold_group_ranges_auto_rp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1725,16 +2068,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::Gr
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-group-ranges-auto-rp")
     {
         maximum_group_ranges_auto_rp = value;
+        maximum_group_ranges_auto_rp.value_namespace = name_space;
+        maximum_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-group-ranges-auto-rp")
     {
         threshold_group_ranges_auto_rp = value;
+        threshold_group_ranges_auto_rp.value_namespace = name_space;
+        threshold_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-group-ranges-auto-rp")
+    {
+        maximum_group_ranges_auto_rp.yfilter = yfilter;
+    }
+    if(value_path == "threshold-group-ranges-auto-rp")
+    {
+        threshold_group_ranges_auto_rp.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-group-ranges-auto-rp" || name == "threshold-group-ranges-auto-rp")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::BsrGroupMappings()
@@ -1757,9 +2123,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_group_ranges.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_group_ranges.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::get_segment_path() const
@@ -1785,8 +2151,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_group_ranges.is_set || is_set(bsr_maximum_group_ranges.operation)) leaf_name_data.push_back(bsr_maximum_group_ranges.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_group_ranges.is_set || is_set(bsr_maximum_group_ranges.yfilter)) leaf_name_data.push_back(bsr_maximum_group_ranges.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1805,16 +2171,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::Bs
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-group-ranges")
     {
         bsr_maximum_group_ranges = value;
+        bsr_maximum_group_ranges.value_namespace = name_space;
+        bsr_maximum_group_ranges.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-group-ranges")
+    {
+        bsr_maximum_group_ranges.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-group-ranges" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::RegisterStates()
@@ -1837,9 +2226,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_register_states.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_register_states.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::get_segment_path() const
@@ -1865,8 +2254,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_register_states.is_set || is_set(maximum_register_states.operation)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_register_states.is_set || is_set(maximum_register_states.yfilter)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1885,16 +2274,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::Re
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-register-states")
     {
         maximum_register_states = value;
+        maximum_register_states.value_namespace = name_space;
+        maximum_register_states.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-register-states")
+    {
+        maximum_register_states.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-register-states" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::RouteInterfaces()
@@ -1917,9 +2329,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_route_interfaces.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_route_interfaces.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::get_segment_path() const
@@ -1945,8 +2357,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.operation)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.yfilter)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1965,16 +2377,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::Ro
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-route-interfaces")
     {
         maximum_route_interfaces = value;
+        maximum_route_interfaces.value_namespace = name_space;
+        maximum_route_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-route-interfaces")
+    {
+        maximum_route_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-route-interfaces" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::BsrCandidateRpCache()
@@ -1997,9 +2432,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_candidate_rp_cache.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_candidate_rp_cache.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::get_segment_path() const
@@ -2025,8 +2460,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_candidate_rp_cache.is_set || is_set(bsr_maximum_candidate_rp_cache.operation)) leaf_name_data.push_back(bsr_maximum_candidate_rp_cache.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_candidate_rp_cache.is_set || is_set(bsr_maximum_candidate_rp_cache.yfilter)) leaf_name_data.push_back(bsr_maximum_candidate_rp_cache.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2045,16 +2480,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::Bs
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-candidate-rp-cache")
     {
         bsr_maximum_candidate_rp_cache = value;
+        bsr_maximum_candidate_rp_cache.value_namespace = name_space;
+        bsr_maximum_candidate_rp_cache.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-candidate-rp-cache")
+    {
+        bsr_maximum_candidate_rp_cache.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-candidate-rp-cache" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::Routes()
@@ -2077,9 +2535,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_routes.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_routes.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::get_segment_path() const
@@ -2105,8 +2563,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_routes.is_set || is_set(maximum_routes.operation)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_routes.is_set || is_set(maximum_routes.yfilter)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2125,16 +2583,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::Ro
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-routes")
     {
         maximum_routes = value;
+        maximum_routes.value_namespace = name_space;
+        maximum_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-routes")
+    {
+        maximum_routes.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-routes" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::SgExpiryTimer()
@@ -2157,9 +2638,9 @@ bool Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::get_segment_path() const
@@ -2185,8 +2666,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2205,16 +2686,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::SgExpiryTim
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "interval")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::RpfVectorEnable()
@@ -2239,10 +2743,10 @@ bool Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_ebgp.operation)
-	|| is_set(disable_ibgp.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_ebgp.yfilter)
+	|| ydk::is_set(disable_ibgp.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::get_segment_path() const
@@ -2268,9 +2772,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_ebgp.is_set || is_set(allow_ebgp.operation)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
-    if (disable_ibgp.is_set || is_set(disable_ibgp.operation)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
+    if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2289,20 +2793,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::RpfVectorEn
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-ebgp")
     {
         allow_ebgp = value;
+        allow_ebgp.value_namespace = name_space;
+        allow_ebgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-ibgp")
     {
         disable_ibgp = value;
+        disable_ibgp.value_namespace = name_space;
+        disable_ibgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-ebgp")
+    {
+        allow_ebgp.yfilter = yfilter;
+    }
+    if(value_path == "disable-ibgp")
+    {
+        disable_ibgp.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-ebgp" || name == "disable-ibgp" || name == "enable")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Ssm::Ssm()
@@ -2325,9 +2858,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Ssm::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Ssm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation)
-	|| is_set(range.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(range.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Ssm::get_segment_path() const
@@ -2353,8 +2886,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Ssm::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (range.is_set || is_set(range.operation)) leaf_name_data.push_back(range.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2373,16 +2906,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Ssm::get_ch
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Ssm::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Ssm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "range")
     {
         range = value;
+        range.value_namespace = name_space;
+        range.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Ssm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "range")
+    {
+        range.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Ssm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable" || name == "range")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Injects::Injects()
@@ -2411,7 +2967,7 @@ bool Pim::Vrfs::Vrf::Ipv4::Injects::has_operation() const
         if(inject[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Injects::get_segment_path() const
@@ -2476,8 +3032,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Injects::ge
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Injects::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Injects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Injects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Injects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inject")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Injects::Inject::Inject()
@@ -2508,13 +3075,13 @@ bool Pim::Vrfs::Vrf::Ipv4::Injects::Inject::has_operation() const
 {
     for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(source_address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(rpf_proxy_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(rpf_proxy_address.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Injects::Inject::get_segment_path() const
@@ -2540,8 +3107,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Injects::Inject::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
     auto rpf_proxy_address_name_datas = rpf_proxy_address.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), rpf_proxy_address_name_datas.begin(), rpf_proxy_address_name_datas.end());
@@ -2562,20 +3129,47 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Injects::In
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Injects::Inject::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Injects::Inject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf-proxy-address")
     {
         rpf_proxy_address.append(value);
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Injects::Inject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "rpf-proxy-address")
+    {
+        rpf_proxy_address.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Injects::Inject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "prefix-length" || name == "rpf-proxy-address")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddresses()
@@ -2604,7 +3198,7 @@ bool Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::has_operation() const
         if(bidir_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::get_segment_path() const
@@ -2669,8 +3263,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::BidirRpAddr
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bidir-rp-address")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::BidirRpAddress()
@@ -2695,10 +3300,10 @@ bool Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(auto_rp_override.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(auto_rp_override.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::get_segment_path() const
@@ -2724,9 +3329,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.operation)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2745,20 +3350,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::BidirRpAddr
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-override")
     {
         auto_rp_override = value;
+        auto_rp_override.value_namespace = name_space;
+        auto_rp_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-override")
+    {
+        auto_rp_override.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Bsr::Bsr()
@@ -2783,7 +3417,7 @@ bool Pim::Vrfs::Vrf::Ipv4::Bsr::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Bsr::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (candidate_bsr !=  nullptr && candidate_bsr->has_operation())
 	|| (candidate_rps !=  nullptr && candidate_rps->has_operation());
 }
@@ -2857,8 +3491,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Bsr::get_ch
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Bsr::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Bsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Bsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Bsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-bsr" || name == "candidate-rps")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::CandidateBsr()
@@ -2883,10 +3528,10 @@ bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::get_segment_path() const
@@ -2912,9 +3557,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2933,20 +3578,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Bsr::Candid
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length" || name == "priority")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRps()
@@ -2975,7 +3649,7 @@ bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::has_operation() const
         if(candidate_rp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::get_segment_path() const
@@ -3040,8 +3714,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Bsr::Candid
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-rp")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::CandidateRp()
@@ -3070,12 +3755,12 @@ bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(mode.operation)
-	|| is_set(group_list.operation)
-	|| is_set(interval.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(group_list.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::get_segment_path() const
@@ -3101,11 +3786,11 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (group_list.is_set || is_set(group_list.operation)) leaf_name_data.push_back(group_list.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_list.is_set || is_set(group_list.yfilter)) leaf_name_data.push_back(group_list.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3124,28 +3809,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Bsr::Candid
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-list")
     {
         group_list = value;
+        group_list.value_namespace = name_space;
+        group_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "group-list")
+    {
+        group_list.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "mode" || name == "group-list" || name == "interval" || name == "priority")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Paths::Paths()
@@ -3174,7 +3900,7 @@ bool Pim::Vrfs::Vrf::Ipv4::Paths::has_operation() const
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Paths::get_segment_path() const
@@ -3239,8 +3965,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Paths::get_
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Paths::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Paths::Path::Path()
@@ -3271,13 +4008,13 @@ bool Pim::Vrfs::Vrf::Ipv4::Paths::Path::has_operation() const
 {
     for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(source_address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(rpf_proxy_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(rpf_proxy_address.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Paths::Path::get_segment_path() const
@@ -3303,8 +4040,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Paths::Path::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
     auto rpf_proxy_address_name_datas = rpf_proxy_address.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), rpf_proxy_address_name_datas.begin(), rpf_proxy_address_name_datas.end());
@@ -3325,20 +4062,47 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Paths::Path
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Paths::Path::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Paths::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf-proxy-address")
     {
         rpf_proxy_address.append(value);
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Paths::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "rpf-proxy-address")
+    {
+        rpf_proxy_address.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Paths::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "prefix-length" || name == "rpf-proxy-address")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::AllowRp::AllowRp()
@@ -3361,9 +4125,9 @@ bool Pim::Vrfs::Vrf::Ipv4::AllowRp::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::AllowRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_list_name.operation)
-	|| is_set(rp_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_list_name.yfilter)
+	|| ydk::is_set(rp_list_name.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::AllowRp::get_segment_path() const
@@ -3389,8 +4153,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::AllowRp::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_list_name.is_set || is_set(group_list_name.operation)) leaf_name_data.push_back(group_list_name.get_name_leafdata());
-    if (rp_list_name.is_set || is_set(rp_list_name.operation)) leaf_name_data.push_back(rp_list_name.get_name_leafdata());
+    if (group_list_name.is_set || is_set(group_list_name.yfilter)) leaf_name_data.push_back(group_list_name.get_name_leafdata());
+    if (rp_list_name.is_set || is_set(rp_list_name.yfilter)) leaf_name_data.push_back(rp_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3409,16 +4173,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::AllowRp::ge
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::AllowRp::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::AllowRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-list-name")
     {
         group_list_name = value;
+        group_list_name.value_namespace = name_space;
+        group_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-list-name")
     {
         rp_list_name = value;
+        rp_list_name.value_namespace = name_space;
+        rp_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::AllowRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-list-name")
+    {
+        group_list_name.yfilter = yfilter;
+    }
+    if(value_path == "rp-list-name")
+    {
+        rp_list_name.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::AllowRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-list-name" || name == "rp-list-name")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Convergence::Convergence()
@@ -3441,9 +4228,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Convergence::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Convergence::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(link_down_prune_delay.operation)
-	|| is_set(rpf_conflict_join_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(link_down_prune_delay.yfilter)
+	|| ydk::is_set(rpf_conflict_join_delay.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Convergence::get_segment_path() const
@@ -3469,8 +4256,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Convergence::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_down_prune_delay.is_set || is_set(link_down_prune_delay.operation)) leaf_name_data.push_back(link_down_prune_delay.get_name_leafdata());
-    if (rpf_conflict_join_delay.is_set || is_set(rpf_conflict_join_delay.operation)) leaf_name_data.push_back(rpf_conflict_join_delay.get_name_leafdata());
+    if (link_down_prune_delay.is_set || is_set(link_down_prune_delay.yfilter)) leaf_name_data.push_back(link_down_prune_delay.get_name_leafdata());
+    if (rpf_conflict_join_delay.is_set || is_set(rpf_conflict_join_delay.yfilter)) leaf_name_data.push_back(rpf_conflict_join_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3489,16 +4276,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Convergence
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Convergence::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Convergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-down-prune-delay")
     {
         link_down_prune_delay = value;
+        link_down_prune_delay.value_namespace = name_space;
+        link_down_prune_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf-conflict-join-delay")
     {
         rpf_conflict_join_delay = value;
+        rpf_conflict_join_delay.value_namespace = name_space;
+        rpf_conflict_join_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Convergence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-down-prune-delay")
+    {
+        link_down_prune_delay.yfilter = yfilter;
+    }
+    if(value_path == "rpf-conflict-join-delay")
+    {
+        rpf_conflict_join_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Convergence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-down-prune-delay" || name == "rpf-conflict-join-delay")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Interfaces::Interfaces()
@@ -3527,7 +4337,7 @@ bool Pim::Vrfs::Vrf::Ipv4::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Interfaces::get_segment_path() const
@@ -3592,8 +4402,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Interfaces:
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Interfaces::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Interface()
@@ -3641,18 +4462,18 @@ bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(bsr_border.operation)
-	|| is_set(dr_priority.operation)
-	|| is_set(enable.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(interface_enable.operation)
-	|| is_set(join_prune_mtu.operation)
-	|| is_set(jp_interval.operation)
-	|| is_set(neighbor_filter.operation)
-	|| is_set(override_interval.operation)
-	|| is_set(propagation_delay.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(bsr_border.yfilter)
+	|| ydk::is_set(dr_priority.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(interface_enable.yfilter)
+	|| ydk::is_set(join_prune_mtu.yfilter)
+	|| ydk::is_set(jp_interval.yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| ydk::is_set(override_interval.yfilter)
+	|| ydk::is_set(propagation_delay.yfilter)
 	|| (bfd !=  nullptr && bfd->has_operation())
 	|| (maximum_routes !=  nullptr && maximum_routes->has_operation());
 }
@@ -3680,17 +4501,17 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (bsr_border.is_set || is_set(bsr_border.operation)) leaf_name_data.push_back(bsr_border.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.operation)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (interface_enable.is_set || is_set(interface_enable.operation)) leaf_name_data.push_back(interface_enable.get_name_leafdata());
-    if (join_prune_mtu.is_set || is_set(join_prune_mtu.operation)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
-    if (jp_interval.is_set || is_set(jp_interval.operation)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
-    if (neighbor_filter.is_set || is_set(neighbor_filter.operation)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.operation)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.operation)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (bsr_border.is_set || is_set(bsr_border.yfilter)) leaf_name_data.push_back(bsr_border.get_name_leafdata());
+    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (interface_enable.is_set || is_set(interface_enable.yfilter)) leaf_name_data.push_back(interface_enable.get_name_leafdata());
+    if (join_prune_mtu.is_set || is_set(join_prune_mtu.yfilter)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
+    if (jp_interval.is_set || is_set(jp_interval.yfilter)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
+    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3737,52 +4558,129 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Interfaces:
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bsr-border")
     {
         bsr_border = value;
+        bsr_border.value_namespace = name_space;
+        bsr_border.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr-priority")
     {
         dr_priority = value;
+        dr_priority.value_namespace = name_space;
+        dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-enable")
     {
         interface_enable = value;
+        interface_enable.value_namespace = name_space;
+        interface_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "join-prune-mtu")
     {
         join_prune_mtu = value;
+        join_prune_mtu.value_namespace = name_space;
+        join_prune_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jp-interval")
     {
         jp_interval = value;
+        jp_interval.value_namespace = name_space;
+        jp_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-filter")
     {
         neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "override-interval")
     {
         override_interval = value;
+        override_interval.value_namespace = name_space;
+        override_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propagation-delay")
     {
         propagation_delay = value;
+        propagation_delay.value_namespace = name_space;
+        propagation_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bsr-border")
+    {
+        bsr_border.yfilter = yfilter;
+    }
+    if(value_path == "dr-priority")
+    {
+        dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "interface-enable")
+    {
+        interface_enable.yfilter = yfilter;
+    }
+    if(value_path == "join-prune-mtu")
+    {
+        join_prune_mtu.yfilter = yfilter;
+    }
+    if(value_path == "jp-interval")
+    {
+        jp_interval.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+    if(value_path == "override-interval")
+    {
+        override_interval.yfilter = yfilter;
+    }
+    if(value_path == "propagation-delay")
+    {
+        propagation_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd" || name == "maximum-routes" || name == "interface-name" || name == "bsr-border" || name == "dr-priority" || name == "enable" || name == "hello-interval" || name == "interface-enable" || name == "join-prune-mtu" || name == "jp-interval" || name == "neighbor-filter" || name == "override-interval" || name == "propagation-delay")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::MaximumRoutes()
@@ -3807,10 +4705,10 @@ bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::has_data() cons
 
 bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::get_segment_path() const
@@ -3836,9 +4734,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3857,20 +4755,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Interfaces:
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::Bfd()
@@ -3895,10 +4822,10 @@ bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(enable.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::get_segment_path() const
@@ -3924,9 +4851,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3945,20 +4872,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Interfaces:
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "enable" || name == "interval")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrrs()
@@ -3987,7 +4943,7 @@ bool Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::has_operation() const
         if(cj_multicast_only_frr[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::get_segment_path() const
@@ -4052,8 +5008,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::CjMulticast
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cj-multicast-only-frr")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::CjMulticastOnlyFrr()
@@ -4080,11 +5047,11 @@ bool Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::has_data() c
 
 bool Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source.operation)
-	|| is_set(primary.operation)
-	|| is_set(backup.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(primary.yfilter)
+	|| ydk::is_set(backup.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::get_segment_path() const
@@ -4110,10 +5077,10 @@ const EntityPath Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (primary.is_set || is_set(primary.operation)) leaf_name_data.push_back(primary.get_name_leafdata());
-    if (backup.is_set || is_set(backup.operation)) leaf_name_data.push_back(backup.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (primary.is_set || is_set(primary.yfilter)) leaf_name_data.push_back(primary.get_name_leafdata());
+    if (backup.is_set || is_set(backup.yfilter)) leaf_name_data.push_back(backup.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4132,24 +5099,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::CjMulticast
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary")
     {
         primary = value;
+        primary.value_namespace = name_space;
+        primary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup")
     {
         backup = value;
+        backup.value_namespace = name_space;
+        backup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "primary")
+    {
+        primary.yfilter = yfilter;
+    }
+    if(value_path == "backup")
+    {
+        backup.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "primary" || name == "backup" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Ipv6()
@@ -4245,21 +5247,21 @@ bool Pim::Vrfs::Vrf::Ipv6::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accept_register.operation)
-	|| is_set(embedded_rp_disable.operation)
-	|| is_set(log_neighbor_changes.operation)
-	|| is_set(multipath.operation)
-	|| is_set(neighbor_check_on_receive.operation)
-	|| is_set(neighbor_check_on_send.operation)
-	|| is_set(neighbor_filter.operation)
-	|| is_set(old_register_checksum.operation)
-	|| is_set(register_source.operation)
-	|| is_set(rp_static_deny.operation)
-	|| is_set(spt_threshold_infinity.operation)
-	|| is_set(ssm_allow_override.operation)
-	|| is_set(suppress_data_registers.operation)
-	|| is_set(suppress_rpf_prunes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accept_register.yfilter)
+	|| ydk::is_set(embedded_rp_disable.yfilter)
+	|| ydk::is_set(log_neighbor_changes.yfilter)
+	|| ydk::is_set(multipath.yfilter)
+	|| ydk::is_set(neighbor_check_on_receive.yfilter)
+	|| ydk::is_set(neighbor_check_on_send.yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| ydk::is_set(old_register_checksum.yfilter)
+	|| ydk::is_set(register_source.yfilter)
+	|| ydk::is_set(rp_static_deny.yfilter)
+	|| ydk::is_set(spt_threshold_infinity.yfilter)
+	|| ydk::is_set(ssm_allow_override.yfilter)
+	|| ydk::is_set(suppress_data_registers.yfilter)
+	|| ydk::is_set(suppress_rpf_prunes.yfilter)
 	|| (allow_rp !=  nullptr && allow_rp->has_operation())
 	|| (bidir_rp_addresses !=  nullptr && bidir_rp_addresses->has_operation())
 	|| (bsr !=  nullptr && bsr->has_operation())
@@ -4298,20 +5300,20 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accept_register.is_set || is_set(accept_register.operation)) leaf_name_data.push_back(accept_register.get_name_leafdata());
-    if (embedded_rp_disable.is_set || is_set(embedded_rp_disable.operation)) leaf_name_data.push_back(embedded_rp_disable.get_name_leafdata());
-    if (log_neighbor_changes.is_set || is_set(log_neighbor_changes.operation)) leaf_name_data.push_back(log_neighbor_changes.get_name_leafdata());
-    if (multipath.is_set || is_set(multipath.operation)) leaf_name_data.push_back(multipath.get_name_leafdata());
-    if (neighbor_check_on_receive.is_set || is_set(neighbor_check_on_receive.operation)) leaf_name_data.push_back(neighbor_check_on_receive.get_name_leafdata());
-    if (neighbor_check_on_send.is_set || is_set(neighbor_check_on_send.operation)) leaf_name_data.push_back(neighbor_check_on_send.get_name_leafdata());
-    if (neighbor_filter.is_set || is_set(neighbor_filter.operation)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
-    if (old_register_checksum.is_set || is_set(old_register_checksum.operation)) leaf_name_data.push_back(old_register_checksum.get_name_leafdata());
-    if (register_source.is_set || is_set(register_source.operation)) leaf_name_data.push_back(register_source.get_name_leafdata());
-    if (rp_static_deny.is_set || is_set(rp_static_deny.operation)) leaf_name_data.push_back(rp_static_deny.get_name_leafdata());
-    if (spt_threshold_infinity.is_set || is_set(spt_threshold_infinity.operation)) leaf_name_data.push_back(spt_threshold_infinity.get_name_leafdata());
-    if (ssm_allow_override.is_set || is_set(ssm_allow_override.operation)) leaf_name_data.push_back(ssm_allow_override.get_name_leafdata());
-    if (suppress_data_registers.is_set || is_set(suppress_data_registers.operation)) leaf_name_data.push_back(suppress_data_registers.get_name_leafdata());
-    if (suppress_rpf_prunes.is_set || is_set(suppress_rpf_prunes.operation)) leaf_name_data.push_back(suppress_rpf_prunes.get_name_leafdata());
+    if (accept_register.is_set || is_set(accept_register.yfilter)) leaf_name_data.push_back(accept_register.get_name_leafdata());
+    if (embedded_rp_disable.is_set || is_set(embedded_rp_disable.yfilter)) leaf_name_data.push_back(embedded_rp_disable.get_name_leafdata());
+    if (log_neighbor_changes.is_set || is_set(log_neighbor_changes.yfilter)) leaf_name_data.push_back(log_neighbor_changes.get_name_leafdata());
+    if (multipath.is_set || is_set(multipath.yfilter)) leaf_name_data.push_back(multipath.get_name_leafdata());
+    if (neighbor_check_on_receive.is_set || is_set(neighbor_check_on_receive.yfilter)) leaf_name_data.push_back(neighbor_check_on_receive.get_name_leafdata());
+    if (neighbor_check_on_send.is_set || is_set(neighbor_check_on_send.yfilter)) leaf_name_data.push_back(neighbor_check_on_send.get_name_leafdata());
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+    if (old_register_checksum.is_set || is_set(old_register_checksum.yfilter)) leaf_name_data.push_back(old_register_checksum.get_name_leafdata());
+    if (register_source.is_set || is_set(register_source.yfilter)) leaf_name_data.push_back(register_source.get_name_leafdata());
+    if (rp_static_deny.is_set || is_set(rp_static_deny.yfilter)) leaf_name_data.push_back(rp_static_deny.get_name_leafdata());
+    if (spt_threshold_infinity.is_set || is_set(spt_threshold_infinity.yfilter)) leaf_name_data.push_back(spt_threshold_infinity.get_name_leafdata());
+    if (ssm_allow_override.is_set || is_set(ssm_allow_override.yfilter)) leaf_name_data.push_back(ssm_allow_override.get_name_leafdata());
+    if (suppress_data_registers.is_set || is_set(suppress_data_registers.yfilter)) leaf_name_data.push_back(suppress_data_registers.get_name_leafdata());
+    if (suppress_rpf_prunes.is_set || is_set(suppress_rpf_prunes.yfilter)) leaf_name_data.push_back(suppress_rpf_prunes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4512,64 +5514,159 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::get_childre
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accept-register")
     {
         accept_register = value;
+        accept_register.value_namespace = name_space;
+        accept_register.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "embedded-rp-disable")
     {
         embedded_rp_disable = value;
+        embedded_rp_disable.value_namespace = name_space;
+        embedded_rp_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-neighbor-changes")
     {
         log_neighbor_changes = value;
+        log_neighbor_changes.value_namespace = name_space;
+        log_neighbor_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multipath")
     {
         multipath = value;
+        multipath.value_namespace = name_space;
+        multipath.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-check-on-receive")
     {
         neighbor_check_on_receive = value;
+        neighbor_check_on_receive.value_namespace = name_space;
+        neighbor_check_on_receive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-check-on-send")
     {
         neighbor_check_on_send = value;
+        neighbor_check_on_send.value_namespace = name_space;
+        neighbor_check_on_send.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-filter")
     {
         neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "old-register-checksum")
     {
         old_register_checksum = value;
+        old_register_checksum.value_namespace = name_space;
+        old_register_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "register-source")
     {
         register_source = value;
+        register_source.value_namespace = name_space;
+        register_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-static-deny")
     {
         rp_static_deny = value;
+        rp_static_deny.value_namespace = name_space;
+        rp_static_deny.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spt-threshold-infinity")
     {
         spt_threshold_infinity = value;
+        spt_threshold_infinity.value_namespace = name_space;
+        spt_threshold_infinity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssm-allow-override")
     {
         ssm_allow_override = value;
+        ssm_allow_override.value_namespace = name_space;
+        ssm_allow_override.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-data-registers")
     {
         suppress_data_registers = value;
+        suppress_data_registers.value_namespace = name_space;
+        suppress_data_registers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-rpf-prunes")
     {
         suppress_rpf_prunes = value;
+        suppress_rpf_prunes.value_namespace = name_space;
+        suppress_rpf_prunes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accept-register")
+    {
+        accept_register.yfilter = yfilter;
+    }
+    if(value_path == "embedded-rp-disable")
+    {
+        embedded_rp_disable.yfilter = yfilter;
+    }
+    if(value_path == "log-neighbor-changes")
+    {
+        log_neighbor_changes.yfilter = yfilter;
+    }
+    if(value_path == "multipath")
+    {
+        multipath.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-check-on-receive")
+    {
+        neighbor_check_on_receive.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-check-on-send")
+    {
+        neighbor_check_on_send.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+    if(value_path == "old-register-checksum")
+    {
+        old_register_checksum.yfilter = yfilter;
+    }
+    if(value_path == "register-source")
+    {
+        register_source.yfilter = yfilter;
+    }
+    if(value_path == "rp-static-deny")
+    {
+        rp_static_deny.yfilter = yfilter;
+    }
+    if(value_path == "spt-threshold-infinity")
+    {
+        spt_threshold_infinity.yfilter = yfilter;
+    }
+    if(value_path == "ssm-allow-override")
+    {
+        ssm_allow_override.yfilter = yfilter;
+    }
+    if(value_path == "suppress-data-registers")
+    {
+        suppress_data_registers.yfilter = yfilter;
+    }
+    if(value_path == "suppress-rpf-prunes")
+    {
+        suppress_rpf_prunes.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-rp" || name == "bidir-rp-addresses" || name == "bsr" || name == "convergence" || name == "embedded-rp-addresses" || name == "inheritable-defaults" || name == "interfaces" || name == "maximum" || name == "rpf" || name == "rpf-vector-enable" || name == "sg-expiry-timer" || name == "sparse-mode-rp-addresses" || name == "ssm" || name == "accept-register" || name == "embedded-rp-disable" || name == "log-neighbor-changes" || name == "multipath" || name == "neighbor-check-on-receive" || name == "neighbor-check-on-send" || name == "neighbor-filter" || name == "old-register-checksum" || name == "register-source" || name == "rp-static-deny" || name == "spt-threshold-infinity" || name == "ssm-allow-override" || name == "suppress-data-registers" || name == "suppress-rpf-prunes")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddresses()
@@ -4598,7 +5695,7 @@ bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::has_operation() const
         if(sparse_mode_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_segment_path() const
@@ -4663,8 +5760,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SparseModeR
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sparse-mode-rp-address")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::SparseModeRpAddress()
@@ -4689,10 +5797,10 @@ bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_data(
 
 bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(auto_rp_override.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(auto_rp_override.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get_segment_path() const
@@ -4718,9 +5826,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddres
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.operation)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4739,20 +5847,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SparseModeR
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-override")
     {
         auto_rp_override = value;
+        auto_rp_override.value_namespace = name_space;
+        auto_rp_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-override")
+    {
+        auto_rp_override.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::InheritableDefaults()
@@ -4785,14 +5922,14 @@ bool Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(convergency.operation)
-	|| is_set(dr_priority.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(join_prune_mtu.operation)
-	|| is_set(jp_interval.operation)
-	|| is_set(override_interval.operation)
-	|| is_set(propagation_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(convergency.yfilter)
+	|| ydk::is_set(dr_priority.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(join_prune_mtu.yfilter)
+	|| ydk::is_set(jp_interval.yfilter)
+	|| ydk::is_set(override_interval.yfilter)
+	|| ydk::is_set(propagation_delay.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::get_segment_path() const
@@ -4818,13 +5955,13 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (convergency.is_set || is_set(convergency.operation)) leaf_name_data.push_back(convergency.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.operation)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (join_prune_mtu.is_set || is_set(join_prune_mtu.operation)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
-    if (jp_interval.is_set || is_set(jp_interval.operation)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.operation)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.operation)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
+    if (convergency.is_set || is_set(convergency.yfilter)) leaf_name_data.push_back(convergency.get_name_leafdata());
+    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (join_prune_mtu.is_set || is_set(join_prune_mtu.yfilter)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
+    if (jp_interval.is_set || is_set(jp_interval.yfilter)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
+    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
+    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4843,36 +5980,89 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Inheritable
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "convergency")
     {
         convergency = value;
+        convergency.value_namespace = name_space;
+        convergency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr-priority")
     {
         dr_priority = value;
+        dr_priority.value_namespace = name_space;
+        dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "join-prune-mtu")
     {
         join_prune_mtu = value;
+        join_prune_mtu.value_namespace = name_space;
+        join_prune_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jp-interval")
     {
         jp_interval = value;
+        jp_interval.value_namespace = name_space;
+        jp_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "override-interval")
     {
         override_interval = value;
+        override_interval.value_namespace = name_space;
+        override_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propagation-delay")
     {
         propagation_delay = value;
+        propagation_delay.value_namespace = name_space;
+        propagation_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "convergency")
+    {
+        convergency.yfilter = yfilter;
+    }
+    if(value_path == "dr-priority")
+    {
+        dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "join-prune-mtu")
+    {
+        join_prune_mtu.yfilter = yfilter;
+    }
+    if(value_path == "jp-interval")
+    {
+        jp_interval.yfilter = yfilter;
+    }
+    if(value_path == "override-interval")
+    {
+        override_interval.yfilter = yfilter;
+    }
+    if(value_path == "propagation-delay")
+    {
+        propagation_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "convergency" || name == "dr-priority" || name == "hello-interval" || name == "join-prune-mtu" || name == "jp-interval" || name == "override-interval" || name == "propagation-delay")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Rpf::Rpf()
@@ -4893,8 +6083,8 @@ bool Pim::Vrfs::Vrf::Ipv6::Rpf::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Rpf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Rpf::get_segment_path() const
@@ -4920,7 +6110,7 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Rpf::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy.is_set || is_set(route_policy.operation)) leaf_name_data.push_back(route_policy.get_name_leafdata());
+    if (route_policy.is_set || is_set(route_policy.yfilter)) leaf_name_data.push_back(route_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4939,12 +6129,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Rpf::get_ch
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Rpf::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy")
     {
         route_policy = value;
+        route_policy.value_namespace = name_space;
+        route_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Rpf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy")
+    {
+        route_policy.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Rpf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Maximum::Maximum()
@@ -4975,7 +6182,7 @@ bool Pim::Vrfs::Vrf::Ipv6::Maximum::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Maximum::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bsr_candidate_rp_cache !=  nullptr && bsr_candidate_rp_cache->has_operation())
 	|| (bsr_group_mappings !=  nullptr && bsr_group_mappings->has_operation())
 	|| (group_mappings_auto_rp !=  nullptr && group_mappings_auto_rp->has_operation())
@@ -5109,8 +6316,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::ge
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Maximum::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Maximum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Maximum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-candidate-rp-cache" || name == "bsr-group-mappings" || name == "group-mappings-auto-rp" || name == "register-states" || name == "route-interfaces" || name == "routes")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::GroupMappingsAutoRp()
@@ -5133,9 +6351,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_group_ranges_auto_rp.operation)
-	|| is_set(threshold_group_ranges_auto_rp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_group_ranges_auto_rp.yfilter)
+	|| ydk::is_set(threshold_group_ranges_auto_rp.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::get_segment_path() const
@@ -5161,8 +6379,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_group_ranges_auto_rp.is_set || is_set(maximum_group_ranges_auto_rp.operation)) leaf_name_data.push_back(maximum_group_ranges_auto_rp.get_name_leafdata());
-    if (threshold_group_ranges_auto_rp.is_set || is_set(threshold_group_ranges_auto_rp.operation)) leaf_name_data.push_back(threshold_group_ranges_auto_rp.get_name_leafdata());
+    if (maximum_group_ranges_auto_rp.is_set || is_set(maximum_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(maximum_group_ranges_auto_rp.get_name_leafdata());
+    if (threshold_group_ranges_auto_rp.is_set || is_set(threshold_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(threshold_group_ranges_auto_rp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5181,16 +6399,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::Gr
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-group-ranges-auto-rp")
     {
         maximum_group_ranges_auto_rp = value;
+        maximum_group_ranges_auto_rp.value_namespace = name_space;
+        maximum_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-group-ranges-auto-rp")
     {
         threshold_group_ranges_auto_rp = value;
+        threshold_group_ranges_auto_rp.value_namespace = name_space;
+        threshold_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-group-ranges-auto-rp")
+    {
+        maximum_group_ranges_auto_rp.yfilter = yfilter;
+    }
+    if(value_path == "threshold-group-ranges-auto-rp")
+    {
+        threshold_group_ranges_auto_rp.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-group-ranges-auto-rp" || name == "threshold-group-ranges-auto-rp")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::BsrGroupMappings()
@@ -5213,9 +6454,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_group_ranges.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_group_ranges.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::get_segment_path() const
@@ -5241,8 +6482,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_group_ranges.is_set || is_set(bsr_maximum_group_ranges.operation)) leaf_name_data.push_back(bsr_maximum_group_ranges.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_group_ranges.is_set || is_set(bsr_maximum_group_ranges.yfilter)) leaf_name_data.push_back(bsr_maximum_group_ranges.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5261,16 +6502,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::Bs
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-group-ranges")
     {
         bsr_maximum_group_ranges = value;
+        bsr_maximum_group_ranges.value_namespace = name_space;
+        bsr_maximum_group_ranges.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-group-ranges")
+    {
+        bsr_maximum_group_ranges.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-group-ranges" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::RegisterStates()
@@ -5293,9 +6557,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_register_states.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_register_states.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::get_segment_path() const
@@ -5321,8 +6585,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_register_states.is_set || is_set(maximum_register_states.operation)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_register_states.is_set || is_set(maximum_register_states.yfilter)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5341,16 +6605,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::Re
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-register-states")
     {
         maximum_register_states = value;
+        maximum_register_states.value_namespace = name_space;
+        maximum_register_states.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-register-states")
+    {
+        maximum_register_states.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-register-states" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::RouteInterfaces()
@@ -5373,9 +6660,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_route_interfaces.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_route_interfaces.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::get_segment_path() const
@@ -5401,8 +6688,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.operation)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.yfilter)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5421,16 +6708,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::Ro
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-route-interfaces")
     {
         maximum_route_interfaces = value;
+        maximum_route_interfaces.value_namespace = name_space;
+        maximum_route_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-route-interfaces")
+    {
+        maximum_route_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-route-interfaces" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::BsrCandidateRpCache()
@@ -5453,9 +6763,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_candidate_rp_cache.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_candidate_rp_cache.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::get_segment_path() const
@@ -5481,8 +6791,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_candidate_rp_cache.is_set || is_set(bsr_maximum_candidate_rp_cache.operation)) leaf_name_data.push_back(bsr_maximum_candidate_rp_cache.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_candidate_rp_cache.is_set || is_set(bsr_maximum_candidate_rp_cache.yfilter)) leaf_name_data.push_back(bsr_maximum_candidate_rp_cache.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5501,16 +6811,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::Bs
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-candidate-rp-cache")
     {
         bsr_maximum_candidate_rp_cache = value;
+        bsr_maximum_candidate_rp_cache.value_namespace = name_space;
+        bsr_maximum_candidate_rp_cache.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-candidate-rp-cache")
+    {
+        bsr_maximum_candidate_rp_cache.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-candidate-rp-cache" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::Routes()
@@ -5533,9 +6866,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_routes.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_routes.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::get_segment_path() const
@@ -5561,8 +6894,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_routes.is_set || is_set(maximum_routes.operation)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_routes.is_set || is_set(maximum_routes.yfilter)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5581,16 +6914,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::Ro
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-routes")
     {
         maximum_routes = value;
+        maximum_routes.value_namespace = name_space;
+        maximum_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-routes")
+    {
+        maximum_routes.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-routes" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::SgExpiryTimer()
@@ -5613,9 +6969,9 @@ bool Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_segment_path() const
@@ -5641,8 +6997,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5661,16 +7017,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SgExpiryTim
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "interval")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::RpfVectorEnable()
@@ -5695,10 +7074,10 @@ bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_ebgp.operation)
-	|| is_set(disable_ibgp.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_ebgp.yfilter)
+	|| ydk::is_set(disable_ibgp.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_segment_path() const
@@ -5724,9 +7103,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_ebgp.is_set || is_set(allow_ebgp.operation)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
-    if (disable_ibgp.is_set || is_set(disable_ibgp.operation)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
+    if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5745,20 +7124,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::RpfVectorEn
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-ebgp")
     {
         allow_ebgp = value;
+        allow_ebgp.value_namespace = name_space;
+        allow_ebgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-ibgp")
     {
         disable_ibgp = value;
+        disable_ibgp.value_namespace = name_space;
+        disable_ibgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-ebgp")
+    {
+        allow_ebgp.yfilter = yfilter;
+    }
+    if(value_path == "disable-ibgp")
+    {
+        disable_ibgp.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-ebgp" || name == "disable-ibgp" || name == "enable")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Ssm::Ssm()
@@ -5781,9 +7189,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Ssm::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Ssm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation)
-	|| is_set(range.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(range.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Ssm::get_segment_path() const
@@ -5809,8 +7217,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Ssm::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (range.is_set || is_set(range.operation)) leaf_name_data.push_back(range.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5829,16 +7237,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Ssm::get_ch
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Ssm::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Ssm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "range")
     {
         range = value;
+        range.value_namespace = name_space;
+        range.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Ssm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "range")
+    {
+        range.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Ssm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable" || name == "range")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddresses()
@@ -5867,7 +7298,7 @@ bool Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::has_operation() const
         if(bidir_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::get_segment_path() const
@@ -5932,8 +7363,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::BidirRpAddr
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bidir-rp-address")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::BidirRpAddress()
@@ -5958,10 +7400,10 @@ bool Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(auto_rp_override.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(auto_rp_override.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::get_segment_path() const
@@ -5987,9 +7429,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.operation)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6008,20 +7450,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::BidirRpAddr
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-override")
     {
         auto_rp_override = value;
+        auto_rp_override.value_namespace = name_space;
+        auto_rp_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-override")
+    {
+        auto_rp_override.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Bsr::Bsr()
@@ -6046,7 +7517,7 @@ bool Pim::Vrfs::Vrf::Ipv6::Bsr::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Bsr::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (candidate_bsr !=  nullptr && candidate_bsr->has_operation())
 	|| (candidate_rps !=  nullptr && candidate_rps->has_operation());
 }
@@ -6120,8 +7591,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Bsr::get_ch
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Bsr::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Bsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Bsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Bsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-bsr" || name == "candidate-rps")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::CandidateBsr()
@@ -6146,10 +7628,10 @@ bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::get_segment_path() const
@@ -6175,9 +7657,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6196,20 +7678,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Bsr::Candid
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length" || name == "priority")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRps()
@@ -6238,7 +7749,7 @@ bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::has_operation() const
         if(candidate_rp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::get_segment_path() const
@@ -6303,8 +7814,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Bsr::Candid
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-rp")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::CandidateRp()
@@ -6333,12 +7855,12 @@ bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(mode.operation)
-	|| is_set(group_list.operation)
-	|| is_set(interval.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(group_list.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::get_segment_path() const
@@ -6364,11 +7886,11 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (group_list.is_set || is_set(group_list.operation)) leaf_name_data.push_back(group_list.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_list.is_set || is_set(group_list.yfilter)) leaf_name_data.push_back(group_list.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6387,28 +7909,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Bsr::Candid
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-list")
     {
         group_list = value;
+        group_list.value_namespace = name_space;
+        group_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "group-list")
+    {
+        group_list.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "mode" || name == "group-list" || name == "interval" || name == "priority")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::AllowRp::AllowRp()
@@ -6431,9 +7994,9 @@ bool Pim::Vrfs::Vrf::Ipv6::AllowRp::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::AllowRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_list_name.operation)
-	|| is_set(rp_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_list_name.yfilter)
+	|| ydk::is_set(rp_list_name.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::AllowRp::get_segment_path() const
@@ -6459,8 +8022,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::AllowRp::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_list_name.is_set || is_set(group_list_name.operation)) leaf_name_data.push_back(group_list_name.get_name_leafdata());
-    if (rp_list_name.is_set || is_set(rp_list_name.operation)) leaf_name_data.push_back(rp_list_name.get_name_leafdata());
+    if (group_list_name.is_set || is_set(group_list_name.yfilter)) leaf_name_data.push_back(group_list_name.get_name_leafdata());
+    if (rp_list_name.is_set || is_set(rp_list_name.yfilter)) leaf_name_data.push_back(rp_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6479,16 +8042,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::AllowRp::ge
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::AllowRp::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::AllowRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-list-name")
     {
         group_list_name = value;
+        group_list_name.value_namespace = name_space;
+        group_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-list-name")
     {
         rp_list_name = value;
+        rp_list_name.value_namespace = name_space;
+        rp_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::AllowRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-list-name")
+    {
+        group_list_name.yfilter = yfilter;
+    }
+    if(value_path == "rp-list-name")
+    {
+        rp_list_name.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::AllowRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-list-name" || name == "rp-list-name")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddresses()
@@ -6517,7 +8103,7 @@ bool Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::has_operation() const
         if(embedded_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::get_segment_path() const
@@ -6582,8 +8168,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::EmbeddedRpA
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "embedded-rp-address")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::EmbeddedRpAddress()
@@ -6606,9 +8203,9 @@ bool Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::has_data() co
 
 bool Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::get_segment_path() const
@@ -6634,8 +8231,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6654,16 +8251,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::EmbeddedRpA
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Convergence::Convergence()
@@ -6686,9 +8306,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Convergence::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Convergence::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(link_down_prune_delay.operation)
-	|| is_set(rpf_conflict_join_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(link_down_prune_delay.yfilter)
+	|| ydk::is_set(rpf_conflict_join_delay.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Convergence::get_segment_path() const
@@ -6714,8 +8334,8 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Convergence::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_down_prune_delay.is_set || is_set(link_down_prune_delay.operation)) leaf_name_data.push_back(link_down_prune_delay.get_name_leafdata());
-    if (rpf_conflict_join_delay.is_set || is_set(rpf_conflict_join_delay.operation)) leaf_name_data.push_back(rpf_conflict_join_delay.get_name_leafdata());
+    if (link_down_prune_delay.is_set || is_set(link_down_prune_delay.yfilter)) leaf_name_data.push_back(link_down_prune_delay.get_name_leafdata());
+    if (rpf_conflict_join_delay.is_set || is_set(rpf_conflict_join_delay.yfilter)) leaf_name_data.push_back(rpf_conflict_join_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6734,16 +8354,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Convergence
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Convergence::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Convergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-down-prune-delay")
     {
         link_down_prune_delay = value;
+        link_down_prune_delay.value_namespace = name_space;
+        link_down_prune_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf-conflict-join-delay")
     {
         rpf_conflict_join_delay = value;
+        rpf_conflict_join_delay.value_namespace = name_space;
+        rpf_conflict_join_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Convergence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-down-prune-delay")
+    {
+        link_down_prune_delay.yfilter = yfilter;
+    }
+    if(value_path == "rpf-conflict-join-delay")
+    {
+        rpf_conflict_join_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Convergence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-down-prune-delay" || name == "rpf-conflict-join-delay")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Interfaces::Interfaces()
@@ -6772,7 +8415,7 @@ bool Pim::Vrfs::Vrf::Ipv6::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Interfaces::get_segment_path() const
@@ -6837,8 +8480,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Interfaces:
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Interfaces::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Interface()
@@ -6886,18 +8540,18 @@ bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(bsr_border.operation)
-	|| is_set(dr_priority.operation)
-	|| is_set(enable.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(interface_enable.operation)
-	|| is_set(join_prune_mtu.operation)
-	|| is_set(jp_interval.operation)
-	|| is_set(neighbor_filter.operation)
-	|| is_set(override_interval.operation)
-	|| is_set(propagation_delay.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(bsr_border.yfilter)
+	|| ydk::is_set(dr_priority.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(interface_enable.yfilter)
+	|| ydk::is_set(join_prune_mtu.yfilter)
+	|| ydk::is_set(jp_interval.yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| ydk::is_set(override_interval.yfilter)
+	|| ydk::is_set(propagation_delay.yfilter)
 	|| (bfd !=  nullptr && bfd->has_operation())
 	|| (maximum_routes !=  nullptr && maximum_routes->has_operation());
 }
@@ -6925,17 +8579,17 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (bsr_border.is_set || is_set(bsr_border.operation)) leaf_name_data.push_back(bsr_border.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.operation)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (interface_enable.is_set || is_set(interface_enable.operation)) leaf_name_data.push_back(interface_enable.get_name_leafdata());
-    if (join_prune_mtu.is_set || is_set(join_prune_mtu.operation)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
-    if (jp_interval.is_set || is_set(jp_interval.operation)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
-    if (neighbor_filter.is_set || is_set(neighbor_filter.operation)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.operation)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.operation)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (bsr_border.is_set || is_set(bsr_border.yfilter)) leaf_name_data.push_back(bsr_border.get_name_leafdata());
+    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (interface_enable.is_set || is_set(interface_enable.yfilter)) leaf_name_data.push_back(interface_enable.get_name_leafdata());
+    if (join_prune_mtu.is_set || is_set(join_prune_mtu.yfilter)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
+    if (jp_interval.is_set || is_set(jp_interval.yfilter)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
+    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6982,52 +8636,129 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Interfaces:
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bsr-border")
     {
         bsr_border = value;
+        bsr_border.value_namespace = name_space;
+        bsr_border.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr-priority")
     {
         dr_priority = value;
+        dr_priority.value_namespace = name_space;
+        dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-enable")
     {
         interface_enable = value;
+        interface_enable.value_namespace = name_space;
+        interface_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "join-prune-mtu")
     {
         join_prune_mtu = value;
+        join_prune_mtu.value_namespace = name_space;
+        join_prune_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jp-interval")
     {
         jp_interval = value;
+        jp_interval.value_namespace = name_space;
+        jp_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-filter")
     {
         neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "override-interval")
     {
         override_interval = value;
+        override_interval.value_namespace = name_space;
+        override_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propagation-delay")
     {
         propagation_delay = value;
+        propagation_delay.value_namespace = name_space;
+        propagation_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bsr-border")
+    {
+        bsr_border.yfilter = yfilter;
+    }
+    if(value_path == "dr-priority")
+    {
+        dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "interface-enable")
+    {
+        interface_enable.yfilter = yfilter;
+    }
+    if(value_path == "join-prune-mtu")
+    {
+        join_prune_mtu.yfilter = yfilter;
+    }
+    if(value_path == "jp-interval")
+    {
+        jp_interval.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+    if(value_path == "override-interval")
+    {
+        override_interval.yfilter = yfilter;
+    }
+    if(value_path == "propagation-delay")
+    {
+        propagation_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd" || name == "maximum-routes" || name == "interface-name" || name == "bsr-border" || name == "dr-priority" || name == "enable" || name == "hello-interval" || name == "interface-enable" || name == "join-prune-mtu" || name == "jp-interval" || name == "neighbor-filter" || name == "override-interval" || name == "propagation-delay")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::MaximumRoutes()
@@ -7052,10 +8783,10 @@ bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::has_data() cons
 
 bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::get_segment_path() const
@@ -7081,9 +8812,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7102,20 +8833,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Interfaces:
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::Bfd()
@@ -7140,10 +8900,10 @@ bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(enable.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::get_segment_path() const
@@ -7169,9 +8929,9 @@ const EntityPath Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7190,20 +8950,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Interfaces:
     return children;
 }
 
-void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::set_value(const std::string & value_path, std::string value)
+void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "enable" || name == "interval")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::DefaultContext()
@@ -7230,7 +9019,7 @@ bool Pim::DefaultContext::has_data() const
 
 bool Pim::DefaultContext::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -7304,8 +9093,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::get_children
     return children;
 }
 
-void Pim::DefaultContext::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Ipv6()
@@ -7405,21 +9205,21 @@ bool Pim::DefaultContext::Ipv6::has_data() const
 
 bool Pim::DefaultContext::Ipv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accept_register.operation)
-	|| is_set(embedded_rp_disable.operation)
-	|| is_set(log_neighbor_changes.operation)
-	|| is_set(multipath.operation)
-	|| is_set(neighbor_check_on_receive.operation)
-	|| is_set(neighbor_check_on_send.operation)
-	|| is_set(neighbor_filter.operation)
-	|| is_set(old_register_checksum.operation)
-	|| is_set(register_source.operation)
-	|| is_set(rp_static_deny.operation)
-	|| is_set(spt_threshold_infinity.operation)
-	|| is_set(ssm_allow_override.operation)
-	|| is_set(suppress_data_registers.operation)
-	|| is_set(suppress_rpf_prunes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accept_register.yfilter)
+	|| ydk::is_set(embedded_rp_disable.yfilter)
+	|| ydk::is_set(log_neighbor_changes.yfilter)
+	|| ydk::is_set(multipath.yfilter)
+	|| ydk::is_set(neighbor_check_on_receive.yfilter)
+	|| ydk::is_set(neighbor_check_on_send.yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| ydk::is_set(old_register_checksum.yfilter)
+	|| ydk::is_set(register_source.yfilter)
+	|| ydk::is_set(rp_static_deny.yfilter)
+	|| ydk::is_set(spt_threshold_infinity.yfilter)
+	|| ydk::is_set(ssm_allow_override.yfilter)
+	|| ydk::is_set(suppress_data_registers.yfilter)
+	|| ydk::is_set(suppress_rpf_prunes.yfilter)
 	|| (allow_rp !=  nullptr && allow_rp->has_operation())
 	|| (bidir_rp_addresses !=  nullptr && bidir_rp_addresses->has_operation())
 	|| (bsr !=  nullptr && bsr->has_operation())
@@ -7459,20 +9259,20 @@ const EntityPath Pim::DefaultContext::Ipv6::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accept_register.is_set || is_set(accept_register.operation)) leaf_name_data.push_back(accept_register.get_name_leafdata());
-    if (embedded_rp_disable.is_set || is_set(embedded_rp_disable.operation)) leaf_name_data.push_back(embedded_rp_disable.get_name_leafdata());
-    if (log_neighbor_changes.is_set || is_set(log_neighbor_changes.operation)) leaf_name_data.push_back(log_neighbor_changes.get_name_leafdata());
-    if (multipath.is_set || is_set(multipath.operation)) leaf_name_data.push_back(multipath.get_name_leafdata());
-    if (neighbor_check_on_receive.is_set || is_set(neighbor_check_on_receive.operation)) leaf_name_data.push_back(neighbor_check_on_receive.get_name_leafdata());
-    if (neighbor_check_on_send.is_set || is_set(neighbor_check_on_send.operation)) leaf_name_data.push_back(neighbor_check_on_send.get_name_leafdata());
-    if (neighbor_filter.is_set || is_set(neighbor_filter.operation)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
-    if (old_register_checksum.is_set || is_set(old_register_checksum.operation)) leaf_name_data.push_back(old_register_checksum.get_name_leafdata());
-    if (register_source.is_set || is_set(register_source.operation)) leaf_name_data.push_back(register_source.get_name_leafdata());
-    if (rp_static_deny.is_set || is_set(rp_static_deny.operation)) leaf_name_data.push_back(rp_static_deny.get_name_leafdata());
-    if (spt_threshold_infinity.is_set || is_set(spt_threshold_infinity.operation)) leaf_name_data.push_back(spt_threshold_infinity.get_name_leafdata());
-    if (ssm_allow_override.is_set || is_set(ssm_allow_override.operation)) leaf_name_data.push_back(ssm_allow_override.get_name_leafdata());
-    if (suppress_data_registers.is_set || is_set(suppress_data_registers.operation)) leaf_name_data.push_back(suppress_data_registers.get_name_leafdata());
-    if (suppress_rpf_prunes.is_set || is_set(suppress_rpf_prunes.operation)) leaf_name_data.push_back(suppress_rpf_prunes.get_name_leafdata());
+    if (accept_register.is_set || is_set(accept_register.yfilter)) leaf_name_data.push_back(accept_register.get_name_leafdata());
+    if (embedded_rp_disable.is_set || is_set(embedded_rp_disable.yfilter)) leaf_name_data.push_back(embedded_rp_disable.get_name_leafdata());
+    if (log_neighbor_changes.is_set || is_set(log_neighbor_changes.yfilter)) leaf_name_data.push_back(log_neighbor_changes.get_name_leafdata());
+    if (multipath.is_set || is_set(multipath.yfilter)) leaf_name_data.push_back(multipath.get_name_leafdata());
+    if (neighbor_check_on_receive.is_set || is_set(neighbor_check_on_receive.yfilter)) leaf_name_data.push_back(neighbor_check_on_receive.get_name_leafdata());
+    if (neighbor_check_on_send.is_set || is_set(neighbor_check_on_send.yfilter)) leaf_name_data.push_back(neighbor_check_on_send.get_name_leafdata());
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+    if (old_register_checksum.is_set || is_set(old_register_checksum.yfilter)) leaf_name_data.push_back(old_register_checksum.get_name_leafdata());
+    if (register_source.is_set || is_set(register_source.yfilter)) leaf_name_data.push_back(register_source.get_name_leafdata());
+    if (rp_static_deny.is_set || is_set(rp_static_deny.yfilter)) leaf_name_data.push_back(rp_static_deny.get_name_leafdata());
+    if (spt_threshold_infinity.is_set || is_set(spt_threshold_infinity.yfilter)) leaf_name_data.push_back(spt_threshold_infinity.get_name_leafdata());
+    if (ssm_allow_override.is_set || is_set(ssm_allow_override.yfilter)) leaf_name_data.push_back(ssm_allow_override.get_name_leafdata());
+    if (suppress_data_registers.is_set || is_set(suppress_data_registers.yfilter)) leaf_name_data.push_back(suppress_data_registers.get_name_leafdata());
+    if (suppress_rpf_prunes.is_set || is_set(suppress_rpf_prunes.yfilter)) leaf_name_data.push_back(suppress_rpf_prunes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7687,64 +9487,159 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::get_ch
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accept-register")
     {
         accept_register = value;
+        accept_register.value_namespace = name_space;
+        accept_register.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "embedded-rp-disable")
     {
         embedded_rp_disable = value;
+        embedded_rp_disable.value_namespace = name_space;
+        embedded_rp_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-neighbor-changes")
     {
         log_neighbor_changes = value;
+        log_neighbor_changes.value_namespace = name_space;
+        log_neighbor_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multipath")
     {
         multipath = value;
+        multipath.value_namespace = name_space;
+        multipath.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-check-on-receive")
     {
         neighbor_check_on_receive = value;
+        neighbor_check_on_receive.value_namespace = name_space;
+        neighbor_check_on_receive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-check-on-send")
     {
         neighbor_check_on_send = value;
+        neighbor_check_on_send.value_namespace = name_space;
+        neighbor_check_on_send.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-filter")
     {
         neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "old-register-checksum")
     {
         old_register_checksum = value;
+        old_register_checksum.value_namespace = name_space;
+        old_register_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "register-source")
     {
         register_source = value;
+        register_source.value_namespace = name_space;
+        register_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-static-deny")
     {
         rp_static_deny = value;
+        rp_static_deny.value_namespace = name_space;
+        rp_static_deny.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spt-threshold-infinity")
     {
         spt_threshold_infinity = value;
+        spt_threshold_infinity.value_namespace = name_space;
+        spt_threshold_infinity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssm-allow-override")
     {
         ssm_allow_override = value;
+        ssm_allow_override.value_namespace = name_space;
+        ssm_allow_override.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-data-registers")
     {
         suppress_data_registers = value;
+        suppress_data_registers.value_namespace = name_space;
+        suppress_data_registers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-rpf-prunes")
     {
         suppress_rpf_prunes = value;
+        suppress_rpf_prunes.value_namespace = name_space;
+        suppress_rpf_prunes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accept-register")
+    {
+        accept_register.yfilter = yfilter;
+    }
+    if(value_path == "embedded-rp-disable")
+    {
+        embedded_rp_disable.yfilter = yfilter;
+    }
+    if(value_path == "log-neighbor-changes")
+    {
+        log_neighbor_changes.yfilter = yfilter;
+    }
+    if(value_path == "multipath")
+    {
+        multipath.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-check-on-receive")
+    {
+        neighbor_check_on_receive.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-check-on-send")
+    {
+        neighbor_check_on_send.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+    if(value_path == "old-register-checksum")
+    {
+        old_register_checksum.yfilter = yfilter;
+    }
+    if(value_path == "register-source")
+    {
+        register_source.yfilter = yfilter;
+    }
+    if(value_path == "rp-static-deny")
+    {
+        rp_static_deny.yfilter = yfilter;
+    }
+    if(value_path == "spt-threshold-infinity")
+    {
+        spt_threshold_infinity.yfilter = yfilter;
+    }
+    if(value_path == "ssm-allow-override")
+    {
+        ssm_allow_override.yfilter = yfilter;
+    }
+    if(value_path == "suppress-data-registers")
+    {
+        suppress_data_registers.yfilter = yfilter;
+    }
+    if(value_path == "suppress-rpf-prunes")
+    {
+        suppress_rpf_prunes.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-rp" || name == "bidir-rp-addresses" || name == "bsr" || name == "convergence" || name == "embedded-rp-addresses" || name == "inheritable-defaults" || name == "interfaces" || name == "maximum" || name == "nsf" || name == "rpf" || name == "rpf-vector-enable" || name == "sg-expiry-timer" || name == "sparse-mode-rp-addresses" || name == "ssm" || name == "accept-register" || name == "embedded-rp-disable" || name == "log-neighbor-changes" || name == "multipath" || name == "neighbor-check-on-receive" || name == "neighbor-check-on-send" || name == "neighbor-filter" || name == "old-register-checksum" || name == "register-source" || name == "rp-static-deny" || name == "spt-threshold-infinity" || name == "ssm-allow-override" || name == "suppress-data-registers" || name == "suppress-rpf-prunes")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Interfaces::Interfaces()
@@ -7773,7 +9668,7 @@ bool Pim::DefaultContext::Ipv6::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Interfaces::get_segment_path() const
@@ -7838,8 +9733,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Interfaces::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv6::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv6::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Interfaces::Interface::Interface()
@@ -7887,18 +9793,18 @@ bool Pim::DefaultContext::Ipv6::Interfaces::Interface::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(bsr_border.operation)
-	|| is_set(dr_priority.operation)
-	|| is_set(enable.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(interface_enable.operation)
-	|| is_set(join_prune_mtu.operation)
-	|| is_set(jp_interval.operation)
-	|| is_set(neighbor_filter.operation)
-	|| is_set(override_interval.operation)
-	|| is_set(propagation_delay.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(bsr_border.yfilter)
+	|| ydk::is_set(dr_priority.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(interface_enable.yfilter)
+	|| ydk::is_set(join_prune_mtu.yfilter)
+	|| ydk::is_set(jp_interval.yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| ydk::is_set(override_interval.yfilter)
+	|| ydk::is_set(propagation_delay.yfilter)
 	|| (bfd !=  nullptr && bfd->has_operation())
 	|| (maximum_routes !=  nullptr && maximum_routes->has_operation());
 }
@@ -7926,17 +9832,17 @@ const EntityPath Pim::DefaultContext::Ipv6::Interfaces::Interface::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (bsr_border.is_set || is_set(bsr_border.operation)) leaf_name_data.push_back(bsr_border.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.operation)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (interface_enable.is_set || is_set(interface_enable.operation)) leaf_name_data.push_back(interface_enable.get_name_leafdata());
-    if (join_prune_mtu.is_set || is_set(join_prune_mtu.operation)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
-    if (jp_interval.is_set || is_set(jp_interval.operation)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
-    if (neighbor_filter.is_set || is_set(neighbor_filter.operation)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.operation)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.operation)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (bsr_border.is_set || is_set(bsr_border.yfilter)) leaf_name_data.push_back(bsr_border.get_name_leafdata());
+    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (interface_enable.is_set || is_set(interface_enable.yfilter)) leaf_name_data.push_back(interface_enable.get_name_leafdata());
+    if (join_prune_mtu.is_set || is_set(join_prune_mtu.yfilter)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
+    if (jp_interval.is_set || is_set(jp_interval.yfilter)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
+    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7983,52 +9889,129 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bsr-border")
     {
         bsr_border = value;
+        bsr_border.value_namespace = name_space;
+        bsr_border.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr-priority")
     {
         dr_priority = value;
+        dr_priority.value_namespace = name_space;
+        dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-enable")
     {
         interface_enable = value;
+        interface_enable.value_namespace = name_space;
+        interface_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "join-prune-mtu")
     {
         join_prune_mtu = value;
+        join_prune_mtu.value_namespace = name_space;
+        join_prune_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jp-interval")
     {
         jp_interval = value;
+        jp_interval.value_namespace = name_space;
+        jp_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-filter")
     {
         neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "override-interval")
     {
         override_interval = value;
+        override_interval.value_namespace = name_space;
+        override_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propagation-delay")
     {
         propagation_delay = value;
+        propagation_delay.value_namespace = name_space;
+        propagation_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bsr-border")
+    {
+        bsr_border.yfilter = yfilter;
+    }
+    if(value_path == "dr-priority")
+    {
+        dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "interface-enable")
+    {
+        interface_enable.yfilter = yfilter;
+    }
+    if(value_path == "join-prune-mtu")
+    {
+        join_prune_mtu.yfilter = yfilter;
+    }
+    if(value_path == "jp-interval")
+    {
+        jp_interval.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+    if(value_path == "override-interval")
+    {
+        override_interval.yfilter = yfilter;
+    }
+    if(value_path == "propagation-delay")
+    {
+        propagation_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd" || name == "maximum-routes" || name == "interface-name" || name == "bsr-border" || name == "dr-priority" || name == "enable" || name == "hello-interval" || name == "interface-enable" || name == "join-prune-mtu" || name == "jp-interval" || name == "neighbor-filter" || name == "override-interval" || name == "propagation-delay")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::MaximumRoutes()
@@ -8053,10 +10036,10 @@ bool Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::has_data()
 
 bool Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::get_segment_path() const
@@ -8082,9 +10065,9 @@ const EntityPath Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8103,20 +10086,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::Bfd()
@@ -8141,10 +10153,10 @@ bool Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(enable.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::get_segment_path() const
@@ -8170,9 +10182,9 @@ const EntityPath Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8191,20 +10203,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "enable" || name == "interval")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddresses()
@@ -8233,7 +10274,7 @@ bool Pim::DefaultContext::Ipv6::SparseModeRpAddresses::has_operation() const
         if(sparse_mode_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::SparseModeRpAddresses::get_segment_path() const
@@ -8298,8 +10339,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Sparse
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::SparseModeRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::SparseModeRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv6::SparseModeRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv6::SparseModeRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sparse-mode-rp-address")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::SparseModeRpAddress()
@@ -8324,10 +10376,10 @@ bool Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_
 
 bool Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(auto_rp_override.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(auto_rp_override.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get_segment_path() const
@@ -8353,9 +10405,9 @@ const EntityPath Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpA
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.operation)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8374,20 +10426,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Sparse
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-override")
     {
         auto_rp_override = value;
+        auto_rp_override.value_namespace = name_space;
+        auto_rp_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-override")
+    {
+        auto_rp_override.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::InheritableDefaults::InheritableDefaults()
@@ -8420,14 +10501,14 @@ bool Pim::DefaultContext::Ipv6::InheritableDefaults::has_data() const
 
 bool Pim::DefaultContext::Ipv6::InheritableDefaults::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(convergency.operation)
-	|| is_set(dr_priority.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(join_prune_mtu.operation)
-	|| is_set(jp_interval.operation)
-	|| is_set(override_interval.operation)
-	|| is_set(propagation_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(convergency.yfilter)
+	|| ydk::is_set(dr_priority.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(join_prune_mtu.yfilter)
+	|| ydk::is_set(jp_interval.yfilter)
+	|| ydk::is_set(override_interval.yfilter)
+	|| ydk::is_set(propagation_delay.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::InheritableDefaults::get_segment_path() const
@@ -8453,13 +10534,13 @@ const EntityPath Pim::DefaultContext::Ipv6::InheritableDefaults::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (convergency.is_set || is_set(convergency.operation)) leaf_name_data.push_back(convergency.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.operation)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (join_prune_mtu.is_set || is_set(join_prune_mtu.operation)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
-    if (jp_interval.is_set || is_set(jp_interval.operation)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.operation)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.operation)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
+    if (convergency.is_set || is_set(convergency.yfilter)) leaf_name_data.push_back(convergency.get_name_leafdata());
+    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (join_prune_mtu.is_set || is_set(join_prune_mtu.yfilter)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
+    if (jp_interval.is_set || is_set(jp_interval.yfilter)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
+    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
+    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8478,36 +10559,89 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Inheri
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::InheritableDefaults::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "convergency")
     {
         convergency = value;
+        convergency.value_namespace = name_space;
+        convergency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr-priority")
     {
         dr_priority = value;
+        dr_priority.value_namespace = name_space;
+        dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "join-prune-mtu")
     {
         join_prune_mtu = value;
+        join_prune_mtu.value_namespace = name_space;
+        join_prune_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jp-interval")
     {
         jp_interval = value;
+        jp_interval.value_namespace = name_space;
+        jp_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "override-interval")
     {
         override_interval = value;
+        override_interval.value_namespace = name_space;
+        override_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propagation-delay")
     {
         propagation_delay = value;
+        propagation_delay.value_namespace = name_space;
+        propagation_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::InheritableDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "convergency")
+    {
+        convergency.yfilter = yfilter;
+    }
+    if(value_path == "dr-priority")
+    {
+        dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "join-prune-mtu")
+    {
+        join_prune_mtu.yfilter = yfilter;
+    }
+    if(value_path == "jp-interval")
+    {
+        jp_interval.yfilter = yfilter;
+    }
+    if(value_path == "override-interval")
+    {
+        override_interval.yfilter = yfilter;
+    }
+    if(value_path == "propagation-delay")
+    {
+        propagation_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::InheritableDefaults::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "convergency" || name == "dr-priority" || name == "hello-interval" || name == "join-prune-mtu" || name == "jp-interval" || name == "override-interval" || name == "propagation-delay")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Rpf::Rpf()
@@ -8528,8 +10662,8 @@ bool Pim::DefaultContext::Ipv6::Rpf::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Rpf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Rpf::get_segment_path() const
@@ -8555,7 +10689,7 @@ const EntityPath Pim::DefaultContext::Ipv6::Rpf::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy.is_set || is_set(route_policy.operation)) leaf_name_data.push_back(route_policy.get_name_leafdata());
+    if (route_policy.is_set || is_set(route_policy.yfilter)) leaf_name_data.push_back(route_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8574,12 +10708,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Rpf::g
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Rpf::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy")
     {
         route_policy = value;
+        route_policy.value_namespace = name_space;
+        route_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Rpf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy")
+    {
+        route_policy.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Rpf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::SgExpiryTimer::SgExpiryTimer()
@@ -8602,9 +10753,9 @@ bool Pim::DefaultContext::Ipv6::SgExpiryTimer::has_data() const
 
 bool Pim::DefaultContext::Ipv6::SgExpiryTimer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::SgExpiryTimer::get_segment_path() const
@@ -8630,8 +10781,8 @@ const EntityPath Pim::DefaultContext::Ipv6::SgExpiryTimer::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8650,16 +10801,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::SgExpi
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::SgExpiryTimer::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::SgExpiryTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::SgExpiryTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::SgExpiryTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "interval")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::RpfVectorEnable::RpfVectorEnable()
@@ -8684,10 +10858,10 @@ bool Pim::DefaultContext::Ipv6::RpfVectorEnable::has_data() const
 
 bool Pim::DefaultContext::Ipv6::RpfVectorEnable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_ebgp.operation)
-	|| is_set(disable_ibgp.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_ebgp.yfilter)
+	|| ydk::is_set(disable_ibgp.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::RpfVectorEnable::get_segment_path() const
@@ -8713,9 +10887,9 @@ const EntityPath Pim::DefaultContext::Ipv6::RpfVectorEnable::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_ebgp.is_set || is_set(allow_ebgp.operation)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
-    if (disable_ibgp.is_set || is_set(disable_ibgp.operation)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
+    if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8734,20 +10908,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::RpfVec
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::RpfVectorEnable::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::RpfVectorEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-ebgp")
     {
         allow_ebgp = value;
+        allow_ebgp.value_namespace = name_space;
+        allow_ebgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-ibgp")
     {
         disable_ibgp = value;
+        disable_ibgp.value_namespace = name_space;
+        disable_ibgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-ebgp")
+    {
+        allow_ebgp.yfilter = yfilter;
+    }
+    if(value_path == "disable-ibgp")
+    {
+        disable_ibgp.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-ebgp" || name == "disable-ibgp" || name == "enable")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Nsf::Nsf()
@@ -8768,8 +10971,8 @@ bool Pim::DefaultContext::Ipv6::Nsf::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Nsf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lifetime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lifetime.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Nsf::get_segment_path() const
@@ -8795,7 +10998,7 @@ const EntityPath Pim::DefaultContext::Ipv6::Nsf::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lifetime.is_set || is_set(lifetime.operation)) leaf_name_data.push_back(lifetime.get_name_leafdata());
+    if (lifetime.is_set || is_set(lifetime.yfilter)) leaf_name_data.push_back(lifetime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8814,12 +11017,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Nsf::g
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Nsf::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lifetime")
     {
         lifetime = value;
+        lifetime.value_namespace = name_space;
+        lifetime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Nsf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lifetime")
+    {
+        lifetime.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Nsf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lifetime")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::Maximum()
@@ -8867,9 +11087,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(global_high_priority_packet_queue.operation)
-	|| is_set(global_low_priority_packet_queue.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(global_high_priority_packet_queue.yfilter)
+	|| ydk::is_set(global_low_priority_packet_queue.yfilter)
 	|| (bsr_candidate_rp_cache !=  nullptr && bsr_candidate_rp_cache->has_operation())
 	|| (bsr_global_candidate_rp_cache !=  nullptr && bsr_global_candidate_rp_cache->has_operation())
 	|| (bsr_global_group_mappings !=  nullptr && bsr_global_group_mappings->has_operation())
@@ -8907,8 +11127,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (global_high_priority_packet_queue.is_set || is_set(global_high_priority_packet_queue.operation)) leaf_name_data.push_back(global_high_priority_packet_queue.get_name_leafdata());
-    if (global_low_priority_packet_queue.is_set || is_set(global_low_priority_packet_queue.operation)) leaf_name_data.push_back(global_low_priority_packet_queue.get_name_leafdata());
+    if (global_high_priority_packet_queue.is_set || is_set(global_high_priority_packet_queue.yfilter)) leaf_name_data.push_back(global_high_priority_packet_queue.get_name_leafdata());
+    if (global_low_priority_packet_queue.is_set || is_set(global_low_priority_packet_queue.yfilter)) leaf_name_data.push_back(global_low_priority_packet_queue.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9095,16 +11315,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "global-high-priority-packet-queue")
     {
         global_high_priority_packet_queue = value;
+        global_high_priority_packet_queue.value_namespace = name_space;
+        global_high_priority_packet_queue.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "global-low-priority-packet-queue")
     {
         global_low_priority_packet_queue = value;
+        global_low_priority_packet_queue.value_namespace = name_space;
+        global_low_priority_packet_queue.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "global-high-priority-packet-queue")
+    {
+        global_high_priority_packet_queue.yfilter = yfilter;
+    }
+    if(value_path == "global-low-priority-packet-queue")
+    {
+        global_low_priority_packet_queue.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-candidate-rp-cache" || name == "bsr-global-candidate-rp-cache" || name == "bsr-global-group-mappings" || name == "bsr-group-mappings" || name == "global-group-mappings-auto-rp" || name == "global-register-states" || name == "global-route-interfaces" || name == "global-routes" || name == "group-mappings-auto-rp" || name == "register-states" || name == "route-interfaces" || name == "routes" || name == "global-high-priority-packet-queue" || name == "global-low-priority-packet-queue")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::BsrGlobalGroupMappings()
@@ -9127,9 +11370,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::has_data() cons
 
 bool Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_global_group_mappings.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_global_group_mappings.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::get_segment_path() const
@@ -9155,8 +11398,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_global_group_mappings.is_set || is_set(bsr_maximum_global_group_mappings.operation)) leaf_name_data.push_back(bsr_maximum_global_group_mappings.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_global_group_mappings.is_set || is_set(bsr_maximum_global_group_mappings.yfilter)) leaf_name_data.push_back(bsr_maximum_global_group_mappings.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9175,16 +11418,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-global-group-mappings")
     {
         bsr_maximum_global_group_mappings = value;
+        bsr_maximum_global_group_mappings.value_namespace = name_space;
+        bsr_maximum_global_group_mappings.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-global-group-mappings")
+    {
+        bsr_maximum_global_group_mappings.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-global-group-mappings" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::GlobalRoutes()
@@ -9207,9 +11473,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_routes.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_routes.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::get_segment_path() const
@@ -9235,8 +11501,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_routes.is_set || is_set(maximum_routes.operation)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_routes.is_set || is_set(maximum_routes.yfilter)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9255,16 +11521,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-routes")
     {
         maximum_routes = value;
+        maximum_routes.value_namespace = name_space;
+        maximum_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-routes")
+    {
+        maximum_routes.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-routes" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::GlobalGroupMappingsAutoRp()
@@ -9287,9 +11576,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::has_data() c
 
 bool Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_global_group_ranges_auto_rp.operation)
-	|| is_set(threshold_global_group_ranges_auto_rp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_global_group_ranges_auto_rp.yfilter)
+	|| ydk::is_set(threshold_global_group_ranges_auto_rp.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::get_segment_path() const
@@ -9315,8 +11604,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_global_group_ranges_auto_rp.is_set || is_set(maximum_global_group_ranges_auto_rp.operation)) leaf_name_data.push_back(maximum_global_group_ranges_auto_rp.get_name_leafdata());
-    if (threshold_global_group_ranges_auto_rp.is_set || is_set(threshold_global_group_ranges_auto_rp.operation)) leaf_name_data.push_back(threshold_global_group_ranges_auto_rp.get_name_leafdata());
+    if (maximum_global_group_ranges_auto_rp.is_set || is_set(maximum_global_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(maximum_global_group_ranges_auto_rp.get_name_leafdata());
+    if (threshold_global_group_ranges_auto_rp.is_set || is_set(threshold_global_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(threshold_global_group_ranges_auto_rp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9335,16 +11624,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-global-group-ranges-auto-rp")
     {
         maximum_global_group_ranges_auto_rp = value;
+        maximum_global_group_ranges_auto_rp.value_namespace = name_space;
+        maximum_global_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-global-group-ranges-auto-rp")
     {
         threshold_global_group_ranges_auto_rp = value;
+        threshold_global_group_ranges_auto_rp.value_namespace = name_space;
+        threshold_global_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-global-group-ranges-auto-rp")
+    {
+        maximum_global_group_ranges_auto_rp.yfilter = yfilter;
+    }
+    if(value_path == "threshold-global-group-ranges-auto-rp")
+    {
+        threshold_global_group_ranges_auto_rp.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-global-group-ranges-auto-rp" || name == "threshold-global-group-ranges-auto-rp")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::BsrGlobalCandidateRpCache()
@@ -9367,9 +11679,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::has_data() c
 
 bool Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_global_candidate_rp_cache.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_global_candidate_rp_cache.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::get_segment_path() const
@@ -9395,8 +11707,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_global_candidate_rp_cache.is_set || is_set(bsr_maximum_global_candidate_rp_cache.operation)) leaf_name_data.push_back(bsr_maximum_global_candidate_rp_cache.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_global_candidate_rp_cache.is_set || is_set(bsr_maximum_global_candidate_rp_cache.yfilter)) leaf_name_data.push_back(bsr_maximum_global_candidate_rp_cache.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9415,16 +11727,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-global-candidate-rp-cache")
     {
         bsr_maximum_global_candidate_rp_cache = value;
+        bsr_maximum_global_candidate_rp_cache.value_namespace = name_space;
+        bsr_maximum_global_candidate_rp_cache.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-global-candidate-rp-cache")
+    {
+        bsr_maximum_global_candidate_rp_cache.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-global-candidate-rp-cache" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::GlobalRegisterStates()
@@ -9447,9 +11782,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_register_states.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_register_states.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::get_segment_path() const
@@ -9475,8 +11810,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_register_states.is_set || is_set(maximum_register_states.operation)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_register_states.is_set || is_set(maximum_register_states.yfilter)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9495,16 +11830,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-register-states")
     {
         maximum_register_states = value;
+        maximum_register_states.value_namespace = name_space;
+        maximum_register_states.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-register-states")
+    {
+        maximum_register_states.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-register-states" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::GlobalRouteInterfaces()
@@ -9527,9 +11885,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_route_interfaces.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_route_interfaces.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::get_segment_path() const
@@ -9555,8 +11913,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.operation)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.yfilter)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9575,16 +11933,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-route-interfaces")
     {
         maximum_route_interfaces = value;
+        maximum_route_interfaces.value_namespace = name_space;
+        maximum_route_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-route-interfaces")
+    {
+        maximum_route_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-route-interfaces" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::GroupMappingsAutoRp()
@@ -9607,9 +11988,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_group_ranges_auto_rp.operation)
-	|| is_set(threshold_group_ranges_auto_rp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_group_ranges_auto_rp.yfilter)
+	|| ydk::is_set(threshold_group_ranges_auto_rp.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::get_segment_path() const
@@ -9635,8 +12016,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_group_ranges_auto_rp.is_set || is_set(maximum_group_ranges_auto_rp.operation)) leaf_name_data.push_back(maximum_group_ranges_auto_rp.get_name_leafdata());
-    if (threshold_group_ranges_auto_rp.is_set || is_set(threshold_group_ranges_auto_rp.operation)) leaf_name_data.push_back(threshold_group_ranges_auto_rp.get_name_leafdata());
+    if (maximum_group_ranges_auto_rp.is_set || is_set(maximum_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(maximum_group_ranges_auto_rp.get_name_leafdata());
+    if (threshold_group_ranges_auto_rp.is_set || is_set(threshold_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(threshold_group_ranges_auto_rp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9655,16 +12036,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-group-ranges-auto-rp")
     {
         maximum_group_ranges_auto_rp = value;
+        maximum_group_ranges_auto_rp.value_namespace = name_space;
+        maximum_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-group-ranges-auto-rp")
     {
         threshold_group_ranges_auto_rp = value;
+        threshold_group_ranges_auto_rp.value_namespace = name_space;
+        threshold_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-group-ranges-auto-rp")
+    {
+        maximum_group_ranges_auto_rp.yfilter = yfilter;
+    }
+    if(value_path == "threshold-group-ranges-auto-rp")
+    {
+        threshold_group_ranges_auto_rp.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-group-ranges-auto-rp" || name == "threshold-group-ranges-auto-rp")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::BsrGroupMappings()
@@ -9687,9 +12091,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_group_ranges.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_group_ranges.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::get_segment_path() const
@@ -9715,8 +12119,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_group_ranges.is_set || is_set(bsr_maximum_group_ranges.operation)) leaf_name_data.push_back(bsr_maximum_group_ranges.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_group_ranges.is_set || is_set(bsr_maximum_group_ranges.yfilter)) leaf_name_data.push_back(bsr_maximum_group_ranges.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9735,16 +12139,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-group-ranges")
     {
         bsr_maximum_group_ranges = value;
+        bsr_maximum_group_ranges.value_namespace = name_space;
+        bsr_maximum_group_ranges.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-group-ranges")
+    {
+        bsr_maximum_group_ranges.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-group-ranges" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::RegisterStates::RegisterStates()
@@ -9767,9 +12194,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::RegisterStates::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::RegisterStates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_register_states.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_register_states.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::RegisterStates::get_segment_path() const
@@ -9795,8 +12222,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::RegisterStates::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_register_states.is_set || is_set(maximum_register_states.operation)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_register_states.is_set || is_set(maximum_register_states.yfilter)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9815,16 +12242,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::RegisterStates::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::RegisterStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-register-states")
     {
         maximum_register_states = value;
+        maximum_register_states.value_namespace = name_space;
+        maximum_register_states.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::RegisterStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-register-states")
+    {
+        maximum_register_states.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::RegisterStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-register-states" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::RouteInterfaces()
@@ -9847,9 +12297,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_route_interfaces.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_route_interfaces.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::get_segment_path() const
@@ -9875,8 +12325,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.operation)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.yfilter)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9895,16 +12345,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-route-interfaces")
     {
         maximum_route_interfaces = value;
+        maximum_route_interfaces.value_namespace = name_space;
+        maximum_route_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-route-interfaces")
+    {
+        maximum_route_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-route-interfaces" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::BsrCandidateRpCache()
@@ -9927,9 +12400,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_candidate_rp_cache.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_candidate_rp_cache.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::get_segment_path() const
@@ -9955,8 +12428,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_candidate_rp_cache.is_set || is_set(bsr_maximum_candidate_rp_cache.operation)) leaf_name_data.push_back(bsr_maximum_candidate_rp_cache.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_candidate_rp_cache.is_set || is_set(bsr_maximum_candidate_rp_cache.yfilter)) leaf_name_data.push_back(bsr_maximum_candidate_rp_cache.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9975,16 +12448,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-candidate-rp-cache")
     {
         bsr_maximum_candidate_rp_cache = value;
+        bsr_maximum_candidate_rp_cache.value_namespace = name_space;
+        bsr_maximum_candidate_rp_cache.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-candidate-rp-cache")
+    {
+        bsr_maximum_candidate_rp_cache.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-candidate-rp-cache" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Maximum::Routes::Routes()
@@ -10007,9 +12503,9 @@ bool Pim::DefaultContext::Ipv6::Maximum::Routes::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Maximum::Routes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_routes.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_routes.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::Routes::get_segment_path() const
@@ -10035,8 +12531,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Maximum::Routes::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_routes.is_set || is_set(maximum_routes.operation)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_routes.is_set || is_set(maximum_routes.yfilter)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10055,16 +12551,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Maximum::Routes::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Maximum::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-routes")
     {
         maximum_routes = value;
+        maximum_routes.value_namespace = name_space;
+        maximum_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Maximum::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-routes")
+    {
+        maximum_routes.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Maximum::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-routes" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Ssm::Ssm()
@@ -10087,9 +12606,9 @@ bool Pim::DefaultContext::Ipv6::Ssm::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Ssm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation)
-	|| is_set(range.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(range.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Ssm::get_segment_path() const
@@ -10115,8 +12634,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Ssm::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (range.is_set || is_set(range.operation)) leaf_name_data.push_back(range.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10135,16 +12654,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Ssm::g
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Ssm::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Ssm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "range")
     {
         range = value;
+        range.value_namespace = name_space;
+        range.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Ssm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "range")
+    {
+        range.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Ssm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable" || name == "range")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddresses()
@@ -10173,7 +12715,7 @@ bool Pim::DefaultContext::Ipv6::BidirRpAddresses::has_operation() const
         if(bidir_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::BidirRpAddresses::get_segment_path() const
@@ -10238,8 +12780,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::BidirR
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::BidirRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::BidirRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv6::BidirRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv6::BidirRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bidir-rp-address")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::BidirRpAddress()
@@ -10264,10 +12817,10 @@ bool Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::has_data() con
 
 bool Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(auto_rp_override.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(auto_rp_override.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::get_segment_path() const
@@ -10293,9 +12846,9 @@ const EntityPath Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.operation)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10314,20 +12867,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::BidirR
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-override")
     {
         auto_rp_override = value;
+        auto_rp_override.value_namespace = name_space;
+        auto_rp_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-override")
+    {
+        auto_rp_override.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Bsr::Bsr()
@@ -10352,7 +12934,7 @@ bool Pim::DefaultContext::Ipv6::Bsr::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Bsr::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (candidate_bsr !=  nullptr && candidate_bsr->has_operation())
 	|| (candidate_rps !=  nullptr && candidate_rps->has_operation());
 }
@@ -10426,8 +13008,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Bsr::g
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Bsr::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Bsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv6::Bsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv6::Bsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-bsr" || name == "candidate-rps")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::CandidateBsr()
@@ -10452,10 +13045,10 @@ bool Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::get_segment_path() const
@@ -10481,9 +13074,9 @@ const EntityPath Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10502,20 +13095,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Bsr::C
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length" || name == "priority")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRps()
@@ -10544,7 +13166,7 @@ bool Pim::DefaultContext::Ipv6::Bsr::CandidateRps::has_operation() const
         if(candidate_rp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Bsr::CandidateRps::get_segment_path() const
@@ -10609,8 +13231,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Bsr::C
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Bsr::CandidateRps::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Bsr::CandidateRps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv6::Bsr::CandidateRps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv6::Bsr::CandidateRps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-rp")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::CandidateRp()
@@ -10639,12 +13272,12 @@ bool Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(mode.operation)
-	|| is_set(group_list.operation)
-	|| is_set(interval.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(group_list.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::get_segment_path() const
@@ -10670,11 +13303,11 @@ const EntityPath Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (group_list.is_set || is_set(group_list.operation)) leaf_name_data.push_back(group_list.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_list.is_set || is_set(group_list.yfilter)) leaf_name_data.push_back(group_list.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10693,28 +13326,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Bsr::C
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-list")
     {
         group_list = value;
+        group_list.value_namespace = name_space;
+        group_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "group-list")
+    {
+        group_list.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "mode" || name == "group-list" || name == "interval" || name == "priority")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::AllowRp::AllowRp()
@@ -10737,9 +13411,9 @@ bool Pim::DefaultContext::Ipv6::AllowRp::has_data() const
 
 bool Pim::DefaultContext::Ipv6::AllowRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_list_name.operation)
-	|| is_set(rp_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_list_name.yfilter)
+	|| ydk::is_set(rp_list_name.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::AllowRp::get_segment_path() const
@@ -10765,8 +13439,8 @@ const EntityPath Pim::DefaultContext::Ipv6::AllowRp::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_list_name.is_set || is_set(group_list_name.operation)) leaf_name_data.push_back(group_list_name.get_name_leafdata());
-    if (rp_list_name.is_set || is_set(rp_list_name.operation)) leaf_name_data.push_back(rp_list_name.get_name_leafdata());
+    if (group_list_name.is_set || is_set(group_list_name.yfilter)) leaf_name_data.push_back(group_list_name.get_name_leafdata());
+    if (rp_list_name.is_set || is_set(rp_list_name.yfilter)) leaf_name_data.push_back(rp_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10785,16 +13459,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::AllowR
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::AllowRp::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::AllowRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-list-name")
     {
         group_list_name = value;
+        group_list_name.value_namespace = name_space;
+        group_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-list-name")
     {
         rp_list_name = value;
+        rp_list_name.value_namespace = name_space;
+        rp_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::AllowRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-list-name")
+    {
+        group_list_name.yfilter = yfilter;
+    }
+    if(value_path == "rp-list-name")
+    {
+        rp_list_name.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::AllowRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-list-name" || name == "rp-list-name")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddresses()
@@ -10823,7 +13520,7 @@ bool Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::has_operation() const
         if(embedded_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::get_segment_path() const
@@ -10888,8 +13585,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Embedd
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "embedded-rp-address")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::EmbeddedRpAddress()
@@ -10912,9 +13620,9 @@ bool Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::has_data
 
 bool Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::get_segment_path() const
@@ -10940,8 +13648,8 @@ const EntityPath Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10960,16 +13668,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Embedd
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv6::Convergence::Convergence()
@@ -10992,9 +13723,9 @@ bool Pim::DefaultContext::Ipv6::Convergence::has_data() const
 
 bool Pim::DefaultContext::Ipv6::Convergence::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(link_down_prune_delay.operation)
-	|| is_set(rpf_conflict_join_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(link_down_prune_delay.yfilter)
+	|| ydk::is_set(rpf_conflict_join_delay.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv6::Convergence::get_segment_path() const
@@ -11020,8 +13751,8 @@ const EntityPath Pim::DefaultContext::Ipv6::Convergence::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_down_prune_delay.is_set || is_set(link_down_prune_delay.operation)) leaf_name_data.push_back(link_down_prune_delay.get_name_leafdata());
-    if (rpf_conflict_join_delay.is_set || is_set(rpf_conflict_join_delay.operation)) leaf_name_data.push_back(rpf_conflict_join_delay.get_name_leafdata());
+    if (link_down_prune_delay.is_set || is_set(link_down_prune_delay.yfilter)) leaf_name_data.push_back(link_down_prune_delay.get_name_leafdata());
+    if (rpf_conflict_join_delay.is_set || is_set(rpf_conflict_join_delay.yfilter)) leaf_name_data.push_back(rpf_conflict_join_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11040,16 +13771,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Conver
     return children;
 }
 
-void Pim::DefaultContext::Ipv6::Convergence::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv6::Convergence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-down-prune-delay")
     {
         link_down_prune_delay = value;
+        link_down_prune_delay.value_namespace = name_space;
+        link_down_prune_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf-conflict-join-delay")
     {
         rpf_conflict_join_delay = value;
+        rpf_conflict_join_delay.value_namespace = name_space;
+        rpf_conflict_join_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv6::Convergence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-down-prune-delay")
+    {
+        link_down_prune_delay.yfilter = yfilter;
+    }
+    if(value_path == "rpf-conflict-join-delay")
+    {
+        rpf_conflict_join_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv6::Convergence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-down-prune-delay" || name == "rpf-conflict-join-delay")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Ipv4()
@@ -11177,21 +13931,21 @@ bool Pim::DefaultContext::Ipv4::has_data() const
 
 bool Pim::DefaultContext::Ipv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accept_register.operation)
-	|| is_set(auto_rp_disable.operation)
-	|| is_set(log_neighbor_changes.operation)
-	|| is_set(multipath.operation)
-	|| is_set(neighbor_check_on_receive.operation)
-	|| is_set(neighbor_check_on_send.operation)
-	|| is_set(neighbor_filter.operation)
-	|| is_set(old_register_checksum.operation)
-	|| is_set(register_source.operation)
-	|| is_set(rp_static_deny.operation)
-	|| is_set(spt_threshold_infinity.operation)
-	|| is_set(ssm_allow_override.operation)
-	|| is_set(suppress_data_registers.operation)
-	|| is_set(suppress_rpf_prunes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accept_register.yfilter)
+	|| ydk::is_set(auto_rp_disable.yfilter)
+	|| ydk::is_set(log_neighbor_changes.yfilter)
+	|| ydk::is_set(multipath.yfilter)
+	|| ydk::is_set(neighbor_check_on_receive.yfilter)
+	|| ydk::is_set(neighbor_check_on_send.yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| ydk::is_set(old_register_checksum.yfilter)
+	|| ydk::is_set(register_source.yfilter)
+	|| ydk::is_set(rp_static_deny.yfilter)
+	|| ydk::is_set(spt_threshold_infinity.yfilter)
+	|| ydk::is_set(ssm_allow_override.yfilter)
+	|| ydk::is_set(suppress_data_registers.yfilter)
+	|| ydk::is_set(suppress_rpf_prunes.yfilter)
 	|| (allow_rp !=  nullptr && allow_rp->has_operation())
 	|| (auto_rp_candidate_rps !=  nullptr && auto_rp_candidate_rps->has_operation())
 	|| (auto_rp_mapping_agent !=  nullptr && auto_rp_mapping_agent->has_operation())
@@ -11238,20 +13992,20 @@ const EntityPath Pim::DefaultContext::Ipv4::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accept_register.is_set || is_set(accept_register.operation)) leaf_name_data.push_back(accept_register.get_name_leafdata());
-    if (auto_rp_disable.is_set || is_set(auto_rp_disable.operation)) leaf_name_data.push_back(auto_rp_disable.get_name_leafdata());
-    if (log_neighbor_changes.is_set || is_set(log_neighbor_changes.operation)) leaf_name_data.push_back(log_neighbor_changes.get_name_leafdata());
-    if (multipath.is_set || is_set(multipath.operation)) leaf_name_data.push_back(multipath.get_name_leafdata());
-    if (neighbor_check_on_receive.is_set || is_set(neighbor_check_on_receive.operation)) leaf_name_data.push_back(neighbor_check_on_receive.get_name_leafdata());
-    if (neighbor_check_on_send.is_set || is_set(neighbor_check_on_send.operation)) leaf_name_data.push_back(neighbor_check_on_send.get_name_leafdata());
-    if (neighbor_filter.is_set || is_set(neighbor_filter.operation)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
-    if (old_register_checksum.is_set || is_set(old_register_checksum.operation)) leaf_name_data.push_back(old_register_checksum.get_name_leafdata());
-    if (register_source.is_set || is_set(register_source.operation)) leaf_name_data.push_back(register_source.get_name_leafdata());
-    if (rp_static_deny.is_set || is_set(rp_static_deny.operation)) leaf_name_data.push_back(rp_static_deny.get_name_leafdata());
-    if (spt_threshold_infinity.is_set || is_set(spt_threshold_infinity.operation)) leaf_name_data.push_back(spt_threshold_infinity.get_name_leafdata());
-    if (ssm_allow_override.is_set || is_set(ssm_allow_override.operation)) leaf_name_data.push_back(ssm_allow_override.get_name_leafdata());
-    if (suppress_data_registers.is_set || is_set(suppress_data_registers.operation)) leaf_name_data.push_back(suppress_data_registers.get_name_leafdata());
-    if (suppress_rpf_prunes.is_set || is_set(suppress_rpf_prunes.operation)) leaf_name_data.push_back(suppress_rpf_prunes.get_name_leafdata());
+    if (accept_register.is_set || is_set(accept_register.yfilter)) leaf_name_data.push_back(accept_register.get_name_leafdata());
+    if (auto_rp_disable.is_set || is_set(auto_rp_disable.yfilter)) leaf_name_data.push_back(auto_rp_disable.get_name_leafdata());
+    if (log_neighbor_changes.is_set || is_set(log_neighbor_changes.yfilter)) leaf_name_data.push_back(log_neighbor_changes.get_name_leafdata());
+    if (multipath.is_set || is_set(multipath.yfilter)) leaf_name_data.push_back(multipath.get_name_leafdata());
+    if (neighbor_check_on_receive.is_set || is_set(neighbor_check_on_receive.yfilter)) leaf_name_data.push_back(neighbor_check_on_receive.get_name_leafdata());
+    if (neighbor_check_on_send.is_set || is_set(neighbor_check_on_send.yfilter)) leaf_name_data.push_back(neighbor_check_on_send.get_name_leafdata());
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+    if (old_register_checksum.is_set || is_set(old_register_checksum.yfilter)) leaf_name_data.push_back(old_register_checksum.get_name_leafdata());
+    if (register_source.is_set || is_set(register_source.yfilter)) leaf_name_data.push_back(register_source.get_name_leafdata());
+    if (rp_static_deny.is_set || is_set(rp_static_deny.yfilter)) leaf_name_data.push_back(rp_static_deny.get_name_leafdata());
+    if (spt_threshold_infinity.is_set || is_set(spt_threshold_infinity.yfilter)) leaf_name_data.push_back(spt_threshold_infinity.get_name_leafdata());
+    if (ssm_allow_override.is_set || is_set(ssm_allow_override.yfilter)) leaf_name_data.push_back(ssm_allow_override.get_name_leafdata());
+    if (suppress_data_registers.is_set || is_set(suppress_data_registers.yfilter)) leaf_name_data.push_back(suppress_data_registers.get_name_leafdata());
+    if (suppress_rpf_prunes.is_set || is_set(suppress_rpf_prunes.yfilter)) leaf_name_data.push_back(suppress_rpf_prunes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11564,64 +14318,159 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::get_ch
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accept-register")
     {
         accept_register = value;
+        accept_register.value_namespace = name_space;
+        accept_register.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-disable")
     {
         auto_rp_disable = value;
+        auto_rp_disable.value_namespace = name_space;
+        auto_rp_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-neighbor-changes")
     {
         log_neighbor_changes = value;
+        log_neighbor_changes.value_namespace = name_space;
+        log_neighbor_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multipath")
     {
         multipath = value;
+        multipath.value_namespace = name_space;
+        multipath.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-check-on-receive")
     {
         neighbor_check_on_receive = value;
+        neighbor_check_on_receive.value_namespace = name_space;
+        neighbor_check_on_receive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-check-on-send")
     {
         neighbor_check_on_send = value;
+        neighbor_check_on_send.value_namespace = name_space;
+        neighbor_check_on_send.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-filter")
     {
         neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "old-register-checksum")
     {
         old_register_checksum = value;
+        old_register_checksum.value_namespace = name_space;
+        old_register_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "register-source")
     {
         register_source = value;
+        register_source.value_namespace = name_space;
+        register_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-static-deny")
     {
         rp_static_deny = value;
+        rp_static_deny.value_namespace = name_space;
+        rp_static_deny.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spt-threshold-infinity")
     {
         spt_threshold_infinity = value;
+        spt_threshold_infinity.value_namespace = name_space;
+        spt_threshold_infinity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssm-allow-override")
     {
         ssm_allow_override = value;
+        ssm_allow_override.value_namespace = name_space;
+        ssm_allow_override.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-data-registers")
     {
         suppress_data_registers = value;
+        suppress_data_registers.value_namespace = name_space;
+        suppress_data_registers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-rpf-prunes")
     {
         suppress_rpf_prunes = value;
+        suppress_rpf_prunes.value_namespace = name_space;
+        suppress_rpf_prunes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accept-register")
+    {
+        accept_register.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-disable")
+    {
+        auto_rp_disable.yfilter = yfilter;
+    }
+    if(value_path == "log-neighbor-changes")
+    {
+        log_neighbor_changes.yfilter = yfilter;
+    }
+    if(value_path == "multipath")
+    {
+        multipath.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-check-on-receive")
+    {
+        neighbor_check_on_receive.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-check-on-send")
+    {
+        neighbor_check_on_send.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+    if(value_path == "old-register-checksum")
+    {
+        old_register_checksum.yfilter = yfilter;
+    }
+    if(value_path == "register-source")
+    {
+        register_source.yfilter = yfilter;
+    }
+    if(value_path == "rp-static-deny")
+    {
+        rp_static_deny.yfilter = yfilter;
+    }
+    if(value_path == "spt-threshold-infinity")
+    {
+        spt_threshold_infinity.yfilter = yfilter;
+    }
+    if(value_path == "ssm-allow-override")
+    {
+        ssm_allow_override.yfilter = yfilter;
+    }
+    if(value_path == "suppress-data-registers")
+    {
+        suppress_data_registers.yfilter = yfilter;
+    }
+    if(value_path == "suppress-rpf-prunes")
+    {
+        suppress_rpf_prunes.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-rp" || name == "auto-rp-candidate-rps" || name == "auto-rp-mapping-agent" || name == "bidir-rp-addresses" || name == "bsr" || name == "cj-multicast-only-frrs" || name == "convergence" || name == "cs-multicast-only-frrs" || name == "inheritable-defaults" || name == "injects" || name == "interfaces" || name == "maximum" || name == "multicast-only-frr" || name == "nsf" || name == "paths" || name == "rpf" || name == "rpf-redirect" || name == "rpf-vector-enable" || name == "sg-expiry-timer" || name == "sparse-mode-rp-addresses" || name == "ssm" || name == "accept-register" || name == "auto-rp-disable" || name == "log-neighbor-changes" || name == "multipath" || name == "neighbor-check-on-receive" || name == "neighbor-check-on-send" || name == "neighbor-filter" || name == "old-register-checksum" || name == "register-source" || name == "rp-static-deny" || name == "spt-threshold-infinity" || name == "ssm-allow-override" || name == "suppress-data-registers" || name == "suppress-rpf-prunes")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::RpfRedirect::RpfRedirect()
@@ -11642,8 +14491,8 @@ bool Pim::DefaultContext::Ipv4::RpfRedirect::has_data() const
 
 bool Pim::DefaultContext::Ipv4::RpfRedirect::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::RpfRedirect::get_segment_path() const
@@ -11669,7 +14518,7 @@ const EntityPath Pim::DefaultContext::Ipv4::RpfRedirect::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy.is_set || is_set(route_policy.operation)) leaf_name_data.push_back(route_policy.get_name_leafdata());
+    if (route_policy.is_set || is_set(route_policy.yfilter)) leaf_name_data.push_back(route_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11688,12 +14537,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::RpfRed
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::RpfRedirect::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::RpfRedirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy")
     {
         route_policy = value;
+        route_policy.value_namespace = name_space;
+        route_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::RpfRedirect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy")
+    {
+        route_policy.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::RpfRedirect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Interfaces::Interfaces()
@@ -11722,7 +14588,7 @@ bool Pim::DefaultContext::Ipv4::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Interfaces::get_segment_path() const
@@ -11787,8 +14653,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Interfaces::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Interfaces::Interface::Interface()
@@ -11840,18 +14717,18 @@ bool Pim::DefaultContext::Ipv4::Interfaces::Interface::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(bsr_border.operation)
-	|| is_set(dr_priority.operation)
-	|| is_set(enable.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(interface_enable.operation)
-	|| is_set(join_prune_mtu.operation)
-	|| is_set(jp_interval.operation)
-	|| is_set(neighbor_filter.operation)
-	|| is_set(override_interval.operation)
-	|| is_set(propagation_delay.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(bsr_border.yfilter)
+	|| ydk::is_set(dr_priority.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(interface_enable.yfilter)
+	|| ydk::is_set(join_prune_mtu.yfilter)
+	|| ydk::is_set(jp_interval.yfilter)
+	|| ydk::is_set(neighbor_filter.yfilter)
+	|| ydk::is_set(override_interval.yfilter)
+	|| ydk::is_set(propagation_delay.yfilter)
 	|| (bfd !=  nullptr && bfd->has_operation())
 	|| (maximum_routes !=  nullptr && maximum_routes->has_operation())
 	|| (redirect_bundle !=  nullptr && redirect_bundle->has_operation());
@@ -11880,17 +14757,17 @@ const EntityPath Pim::DefaultContext::Ipv4::Interfaces::Interface::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (bsr_border.is_set || is_set(bsr_border.operation)) leaf_name_data.push_back(bsr_border.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.operation)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (interface_enable.is_set || is_set(interface_enable.operation)) leaf_name_data.push_back(interface_enable.get_name_leafdata());
-    if (join_prune_mtu.is_set || is_set(join_prune_mtu.operation)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
-    if (jp_interval.is_set || is_set(jp_interval.operation)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
-    if (neighbor_filter.is_set || is_set(neighbor_filter.operation)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.operation)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.operation)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (bsr_border.is_set || is_set(bsr_border.yfilter)) leaf_name_data.push_back(bsr_border.get_name_leafdata());
+    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (interface_enable.is_set || is_set(interface_enable.yfilter)) leaf_name_data.push_back(interface_enable.get_name_leafdata());
+    if (join_prune_mtu.is_set || is_set(join_prune_mtu.yfilter)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
+    if (jp_interval.is_set || is_set(jp_interval.yfilter)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
+    if (neighbor_filter.is_set || is_set(neighbor_filter.yfilter)) leaf_name_data.push_back(neighbor_filter.get_name_leafdata());
+    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
+    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11951,52 +14828,129 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bsr-border")
     {
         bsr_border = value;
+        bsr_border.value_namespace = name_space;
+        bsr_border.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr-priority")
     {
         dr_priority = value;
+        dr_priority.value_namespace = name_space;
+        dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-enable")
     {
         interface_enable = value;
+        interface_enable.value_namespace = name_space;
+        interface_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "join-prune-mtu")
     {
         join_prune_mtu = value;
+        join_prune_mtu.value_namespace = name_space;
+        join_prune_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jp-interval")
     {
         jp_interval = value;
+        jp_interval.value_namespace = name_space;
+        jp_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-filter")
     {
         neighbor_filter = value;
+        neighbor_filter.value_namespace = name_space;
+        neighbor_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "override-interval")
     {
         override_interval = value;
+        override_interval.value_namespace = name_space;
+        override_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propagation-delay")
     {
         propagation_delay = value;
+        propagation_delay.value_namespace = name_space;
+        propagation_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bsr-border")
+    {
+        bsr_border.yfilter = yfilter;
+    }
+    if(value_path == "dr-priority")
+    {
+        dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "interface-enable")
+    {
+        interface_enable.yfilter = yfilter;
+    }
+    if(value_path == "join-prune-mtu")
+    {
+        join_prune_mtu.yfilter = yfilter;
+    }
+    if(value_path == "jp-interval")
+    {
+        jp_interval.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-filter")
+    {
+        neighbor_filter.yfilter = yfilter;
+    }
+    if(value_path == "override-interval")
+    {
+        override_interval.yfilter = yfilter;
+    }
+    if(value_path == "propagation-delay")
+    {
+        propagation_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd" || name == "maximum-routes" || name == "redirect-bundle" || name == "interface-name" || name == "bsr-border" || name == "dr-priority" || name == "enable" || name == "hello-interval" || name == "interface-enable" || name == "join-prune-mtu" || name == "jp-interval" || name == "neighbor-filter" || name == "override-interval" || name == "propagation-delay")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::RedirectBundle()
@@ -12021,10 +14975,10 @@ bool Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::has_data(
 
 bool Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_name.operation)
-	|| is_set(interface_bandwidth.operation)
-	|| is_set(threshold_bandwidth.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_name.yfilter)
+	|| ydk::is_set(interface_bandwidth.yfilter)
+	|| ydk::is_set(threshold_bandwidth.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::get_segment_path() const
@@ -12050,9 +15004,9 @@ const EntityPath Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundl
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_name.is_set || is_set(bundle_name.operation)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
-    if (interface_bandwidth.is_set || is_set(interface_bandwidth.operation)) leaf_name_data.push_back(interface_bandwidth.get_name_leafdata());
-    if (threshold_bandwidth.is_set || is_set(threshold_bandwidth.operation)) leaf_name_data.push_back(threshold_bandwidth.get_name_leafdata());
+    if (bundle_name.is_set || is_set(bundle_name.yfilter)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
+    if (interface_bandwidth.is_set || is_set(interface_bandwidth.yfilter)) leaf_name_data.push_back(interface_bandwidth.get_name_leafdata());
+    if (threshold_bandwidth.is_set || is_set(threshold_bandwidth.yfilter)) leaf_name_data.push_back(threshold_bandwidth.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12071,20 +15025,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-name")
     {
         bundle_name = value;
+        bundle_name.value_namespace = name_space;
+        bundle_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-bandwidth")
     {
         interface_bandwidth = value;
+        interface_bandwidth.value_namespace = name_space;
+        interface_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-bandwidth")
     {
         threshold_bandwidth = value;
+        threshold_bandwidth.value_namespace = name_space;
+        threshold_bandwidth.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-name")
+    {
+        bundle_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-bandwidth")
+    {
+        interface_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "threshold-bandwidth")
+    {
+        threshold_bandwidth.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-name" || name == "interface-bandwidth" || name == "threshold-bandwidth")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::MaximumRoutes()
@@ -12109,10 +15092,10 @@ bool Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::has_data()
 
 bool Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::get_segment_path() const
@@ -12138,9 +15121,9 @@ const EntityPath Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12159,20 +15142,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::Bfd()
@@ -12197,10 +15209,10 @@ bool Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(detection_multiplier.operation)
-	|| is_set(enable.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(detection_multiplier.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::get_segment_path() const
@@ -12226,9 +15238,9 @@ const EntityPath Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (detection_multiplier.is_set || is_set(detection_multiplier.operation)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12247,20 +15259,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interf
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "detection-multiplier")
     {
         detection_multiplier = value;
+        detection_multiplier.value_namespace = name_space;
+        detection_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "detection-multiplier")
+    {
+        detection_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detection-multiplier" || name == "enable" || name == "interval")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRps()
@@ -12289,7 +15330,7 @@ bool Pim::DefaultContext::Ipv4::AutoRpCandidateRps::has_operation() const
         if(auto_rp_candidate_rp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::AutoRpCandidateRps::get_segment_path() const
@@ -12354,8 +15395,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRp
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::AutoRpCandidateRps::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::AutoRpCandidateRps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::AutoRpCandidateRps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::AutoRpCandidateRps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-rp-candidate-rp")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::AutoRpCandidateRp()
@@ -12384,12 +15436,12 @@ bool Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::has_data(
 
 bool Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(protocol_mode.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(announce_period.operation)
-	|| is_set(ttl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(protocol_mode.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(announce_period.yfilter)
+	|| ydk::is_set(ttl.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::get_segment_path() const
@@ -12415,11 +15467,11 @@ const EntityPath Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (protocol_mode.is_set || is_set(protocol_mode.operation)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (announce_period.is_set || is_set(announce_period.operation)) leaf_name_data.push_back(announce_period.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (protocol_mode.is_set || is_set(protocol_mode.yfilter)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (announce_period.is_set || is_set(announce_period.yfilter)) leaf_name_data.push_back(announce_period.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12438,28 +15490,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRp
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-mode")
     {
         protocol_mode = value;
+        protocol_mode.value_namespace = name_space;
+        protocol_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "announce-period")
     {
         announce_period = value;
+        announce_period.value_namespace = name_space;
+        announce_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "protocol-mode")
+    {
+        protocol_mode.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "announce-period")
+    {
+        announce_period.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "protocol-mode" || name == "access-list-name" || name == "announce-period" || name == "ttl")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::AutoRpMappingAgent::AutoRpMappingAgent()
@@ -12482,7 +15575,7 @@ bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::has_data() const
 
 bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (cache_limit !=  nullptr && cache_limit->has_operation())
 	|| (parameters !=  nullptr && parameters->has_operation());
 }
@@ -12556,8 +15649,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRp
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-limit" || name == "parameters")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::Parameters()
@@ -12582,10 +15686,10 @@ bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::has_data() const
 
 bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(announce_period.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(ttl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(announce_period.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(ttl.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::get_segment_path() const
@@ -12611,9 +15715,9 @@ const EntityPath Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (announce_period.is_set || is_set(announce_period.operation)) leaf_name_data.push_back(announce_period.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (announce_period.is_set || is_set(announce_period.yfilter)) leaf_name_data.push_back(announce_period.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12632,20 +15736,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRp
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "announce-period")
     {
         announce_period = value;
+        announce_period.value_namespace = name_space;
+        announce_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "announce-period")
+    {
+        announce_period.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "announce-period" || name == "interface-name" || name == "ttl")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::CacheLimit()
@@ -12668,9 +15801,9 @@ bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::has_data() const
 
 bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_cache_entry.operation)
-	|| is_set(threshold_cache_entry.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_cache_entry.yfilter)
+	|| ydk::is_set(threshold_cache_entry.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::get_segment_path() const
@@ -12696,8 +15829,8 @@ const EntityPath Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_cache_entry.is_set || is_set(maximum_cache_entry.operation)) leaf_name_data.push_back(maximum_cache_entry.get_name_leafdata());
-    if (threshold_cache_entry.is_set || is_set(threshold_cache_entry.operation)) leaf_name_data.push_back(threshold_cache_entry.get_name_leafdata());
+    if (maximum_cache_entry.is_set || is_set(maximum_cache_entry.yfilter)) leaf_name_data.push_back(maximum_cache_entry.get_name_leafdata());
+    if (threshold_cache_entry.is_set || is_set(threshold_cache_entry.yfilter)) leaf_name_data.push_back(threshold_cache_entry.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12716,16 +15849,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRp
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-cache-entry")
     {
         maximum_cache_entry = value;
+        maximum_cache_entry.value_namespace = name_space;
+        maximum_cache_entry.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-cache-entry")
     {
         threshold_cache_entry = value;
+        threshold_cache_entry.value_namespace = name_space;
+        threshold_cache_entry.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-cache-entry")
+    {
+        maximum_cache_entry.yfilter = yfilter;
+    }
+    if(value_path == "threshold-cache-entry")
+    {
+        threshold_cache_entry.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-cache-entry" || name == "threshold-cache-entry")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddresses()
@@ -12754,7 +15910,7 @@ bool Pim::DefaultContext::Ipv4::SparseModeRpAddresses::has_operation() const
         if(sparse_mode_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::SparseModeRpAddresses::get_segment_path() const
@@ -12819,8 +15975,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Sparse
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::SparseModeRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::SparseModeRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::SparseModeRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::SparseModeRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sparse-mode-rp-address")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::SparseModeRpAddress()
@@ -12845,10 +16012,10 @@ bool Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::has_
 
 bool Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(auto_rp_override.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(auto_rp_override.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::get_segment_path() const
@@ -12874,9 +16041,9 @@ const EntityPath Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpA
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.operation)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12895,20 +16062,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Sparse
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-override")
     {
         auto_rp_override = value;
+        auto_rp_override.value_namespace = name_space;
+        auto_rp_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-override")
+    {
+        auto_rp_override.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::MulticastOnlyFrr::MulticastOnlyFrr()
@@ -12935,11 +16131,11 @@ bool Pim::DefaultContext::Ipv4::MulticastOnlyFrr::has_data() const
 
 bool Pim::DefaultContext::Ipv4::MulticastOnlyFrr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(flow_multicast_only_frr.operation)
-	|| is_set(non_revertive_multicast_only_frr.operation)
-	|| is_set(rib_multicast_only_frr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(flow_multicast_only_frr.yfilter)
+	|| ydk::is_set(non_revertive_multicast_only_frr.yfilter)
+	|| ydk::is_set(rib_multicast_only_frr.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::MulticastOnlyFrr::get_segment_path() const
@@ -12965,10 +16161,10 @@ const EntityPath Pim::DefaultContext::Ipv4::MulticastOnlyFrr::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (flow_multicast_only_frr.is_set || is_set(flow_multicast_only_frr.operation)) leaf_name_data.push_back(flow_multicast_only_frr.get_name_leafdata());
-    if (non_revertive_multicast_only_frr.is_set || is_set(non_revertive_multicast_only_frr.operation)) leaf_name_data.push_back(non_revertive_multicast_only_frr.get_name_leafdata());
-    if (rib_multicast_only_frr.is_set || is_set(rib_multicast_only_frr.operation)) leaf_name_data.push_back(rib_multicast_only_frr.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (flow_multicast_only_frr.is_set || is_set(flow_multicast_only_frr.yfilter)) leaf_name_data.push_back(flow_multicast_only_frr.get_name_leafdata());
+    if (non_revertive_multicast_only_frr.is_set || is_set(non_revertive_multicast_only_frr.yfilter)) leaf_name_data.push_back(non_revertive_multicast_only_frr.get_name_leafdata());
+    if (rib_multicast_only_frr.is_set || is_set(rib_multicast_only_frr.yfilter)) leaf_name_data.push_back(rib_multicast_only_frr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12987,24 +16183,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Multic
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::MulticastOnlyFrr::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::MulticastOnlyFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-multicast-only-frr")
     {
         flow_multicast_only_frr = value;
+        flow_multicast_only_frr.value_namespace = name_space;
+        flow_multicast_only_frr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "non-revertive-multicast-only-frr")
     {
         non_revertive_multicast_only_frr = value;
+        non_revertive_multicast_only_frr.value_namespace = name_space;
+        non_revertive_multicast_only_frr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rib-multicast-only-frr")
     {
         rib_multicast_only_frr = value;
+        rib_multicast_only_frr.value_namespace = name_space;
+        rib_multicast_only_frr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::MulticastOnlyFrr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "flow-multicast-only-frr")
+    {
+        flow_multicast_only_frr.yfilter = yfilter;
+    }
+    if(value_path == "non-revertive-multicast-only-frr")
+    {
+        non_revertive_multicast_only_frr.yfilter = yfilter;
+    }
+    if(value_path == "rib-multicast-only-frr")
+    {
+        rib_multicast_only_frr.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::MulticastOnlyFrr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "flow-multicast-only-frr" || name == "non-revertive-multicast-only-frr" || name == "rib-multicast-only-frr")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrrs()
@@ -13033,7 +16264,7 @@ bool Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::has_operation() const
         if(cs_multicast_only_frr[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::get_segment_path() const
@@ -13098,8 +16329,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::CsMult
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cs-multicast-only-frr")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::CsMulticastOnlyFrr()
@@ -13126,11 +16368,11 @@ bool Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::has_dat
 
 bool Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source.operation)
-	|| is_set(primary.operation)
-	|| is_set(backup.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(primary.yfilter)
+	|| ydk::is_set(backup.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::get_segment_path() const
@@ -13156,10 +16398,10 @@ const EntityPath Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnly
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (primary.is_set || is_set(primary.operation)) leaf_name_data.push_back(primary.get_name_leafdata());
-    if (backup.is_set || is_set(backup.operation)) leaf_name_data.push_back(backup.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (primary.is_set || is_set(primary.yfilter)) leaf_name_data.push_back(primary.get_name_leafdata());
+    if (backup.is_set || is_set(backup.yfilter)) leaf_name_data.push_back(backup.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13178,24 +16420,59 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::CsMult
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary")
     {
         primary = value;
+        primary.value_namespace = name_space;
+        primary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup")
     {
         backup = value;
+        backup.value_namespace = name_space;
+        backup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "primary")
+    {
+        primary.yfilter = yfilter;
+    }
+    if(value_path == "backup")
+    {
+        backup.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "primary" || name == "backup" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::InheritableDefaults::InheritableDefaults()
@@ -13228,14 +16505,14 @@ bool Pim::DefaultContext::Ipv4::InheritableDefaults::has_data() const
 
 bool Pim::DefaultContext::Ipv4::InheritableDefaults::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(convergency.operation)
-	|| is_set(dr_priority.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(join_prune_mtu.operation)
-	|| is_set(jp_interval.operation)
-	|| is_set(override_interval.operation)
-	|| is_set(propagation_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(convergency.yfilter)
+	|| ydk::is_set(dr_priority.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(join_prune_mtu.yfilter)
+	|| ydk::is_set(jp_interval.yfilter)
+	|| ydk::is_set(override_interval.yfilter)
+	|| ydk::is_set(propagation_delay.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::InheritableDefaults::get_segment_path() const
@@ -13261,13 +16538,13 @@ const EntityPath Pim::DefaultContext::Ipv4::InheritableDefaults::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (convergency.is_set || is_set(convergency.operation)) leaf_name_data.push_back(convergency.get_name_leafdata());
-    if (dr_priority.is_set || is_set(dr_priority.operation)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (join_prune_mtu.is_set || is_set(join_prune_mtu.operation)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
-    if (jp_interval.is_set || is_set(jp_interval.operation)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
-    if (override_interval.is_set || is_set(override_interval.operation)) leaf_name_data.push_back(override_interval.get_name_leafdata());
-    if (propagation_delay.is_set || is_set(propagation_delay.operation)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
+    if (convergency.is_set || is_set(convergency.yfilter)) leaf_name_data.push_back(convergency.get_name_leafdata());
+    if (dr_priority.is_set || is_set(dr_priority.yfilter)) leaf_name_data.push_back(dr_priority.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (join_prune_mtu.is_set || is_set(join_prune_mtu.yfilter)) leaf_name_data.push_back(join_prune_mtu.get_name_leafdata());
+    if (jp_interval.is_set || is_set(jp_interval.yfilter)) leaf_name_data.push_back(jp_interval.get_name_leafdata());
+    if (override_interval.is_set || is_set(override_interval.yfilter)) leaf_name_data.push_back(override_interval.get_name_leafdata());
+    if (propagation_delay.is_set || is_set(propagation_delay.yfilter)) leaf_name_data.push_back(propagation_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13286,36 +16563,89 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Inheri
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::InheritableDefaults::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "convergency")
     {
         convergency = value;
+        convergency.value_namespace = name_space;
+        convergency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dr-priority")
     {
         dr_priority = value;
+        dr_priority.value_namespace = name_space;
+        dr_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "join-prune-mtu")
     {
         join_prune_mtu = value;
+        join_prune_mtu.value_namespace = name_space;
+        join_prune_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "jp-interval")
     {
         jp_interval = value;
+        jp_interval.value_namespace = name_space;
+        jp_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "override-interval")
     {
         override_interval = value;
+        override_interval.value_namespace = name_space;
+        override_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propagation-delay")
     {
         propagation_delay = value;
+        propagation_delay.value_namespace = name_space;
+        propagation_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::InheritableDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "convergency")
+    {
+        convergency.yfilter = yfilter;
+    }
+    if(value_path == "dr-priority")
+    {
+        dr_priority.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "join-prune-mtu")
+    {
+        join_prune_mtu.yfilter = yfilter;
+    }
+    if(value_path == "jp-interval")
+    {
+        jp_interval.yfilter = yfilter;
+    }
+    if(value_path == "override-interval")
+    {
+        override_interval.yfilter = yfilter;
+    }
+    if(value_path == "propagation-delay")
+    {
+        propagation_delay.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::InheritableDefaults::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "convergency" || name == "dr-priority" || name == "hello-interval" || name == "join-prune-mtu" || name == "jp-interval" || name == "override-interval" || name == "propagation-delay")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Rpf::Rpf()
@@ -13336,8 +16666,8 @@ bool Pim::DefaultContext::Ipv4::Rpf::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Rpf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Rpf::get_segment_path() const
@@ -13363,7 +16693,7 @@ const EntityPath Pim::DefaultContext::Ipv4::Rpf::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy.is_set || is_set(route_policy.operation)) leaf_name_data.push_back(route_policy.get_name_leafdata());
+    if (route_policy.is_set || is_set(route_policy.yfilter)) leaf_name_data.push_back(route_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13382,12 +16712,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Rpf::g
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Rpf::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Rpf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy")
     {
         route_policy = value;
+        route_policy.value_namespace = name_space;
+        route_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Rpf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy")
+    {
+        route_policy.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Rpf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::SgExpiryTimer::SgExpiryTimer()
@@ -13410,9 +16757,9 @@ bool Pim::DefaultContext::Ipv4::SgExpiryTimer::has_data() const
 
 bool Pim::DefaultContext::Ipv4::SgExpiryTimer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::SgExpiryTimer::get_segment_path() const
@@ -13438,8 +16785,8 @@ const EntityPath Pim::DefaultContext::Ipv4::SgExpiryTimer::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13458,16 +16805,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::SgExpi
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::SgExpiryTimer::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::SgExpiryTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::SgExpiryTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::SgExpiryTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "interval")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::RpfVectorEnable::RpfVectorEnable()
@@ -13492,10 +16862,10 @@ bool Pim::DefaultContext::Ipv4::RpfVectorEnable::has_data() const
 
 bool Pim::DefaultContext::Ipv4::RpfVectorEnable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_ebgp.operation)
-	|| is_set(disable_ibgp.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_ebgp.yfilter)
+	|| ydk::is_set(disable_ibgp.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::RpfVectorEnable::get_segment_path() const
@@ -13521,9 +16891,9 @@ const EntityPath Pim::DefaultContext::Ipv4::RpfVectorEnable::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_ebgp.is_set || is_set(allow_ebgp.operation)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
-    if (disable_ibgp.is_set || is_set(disable_ibgp.operation)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (allow_ebgp.is_set || is_set(allow_ebgp.yfilter)) leaf_name_data.push_back(allow_ebgp.get_name_leafdata());
+    if (disable_ibgp.is_set || is_set(disable_ibgp.yfilter)) leaf_name_data.push_back(disable_ibgp.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13542,20 +16912,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::RpfVec
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::RpfVectorEnable::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::RpfVectorEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-ebgp")
     {
         allow_ebgp = value;
+        allow_ebgp.value_namespace = name_space;
+        allow_ebgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-ibgp")
     {
         disable_ibgp = value;
+        disable_ibgp.value_namespace = name_space;
+        disable_ibgp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::RpfVectorEnable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-ebgp")
+    {
+        allow_ebgp.yfilter = yfilter;
+    }
+    if(value_path == "disable-ibgp")
+    {
+        disable_ibgp.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::RpfVectorEnable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-ebgp" || name == "disable-ibgp" || name == "enable")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Nsf::Nsf()
@@ -13576,8 +16975,8 @@ bool Pim::DefaultContext::Ipv4::Nsf::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Nsf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lifetime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lifetime.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Nsf::get_segment_path() const
@@ -13603,7 +17002,7 @@ const EntityPath Pim::DefaultContext::Ipv4::Nsf::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lifetime.is_set || is_set(lifetime.operation)) leaf_name_data.push_back(lifetime.get_name_leafdata());
+    if (lifetime.is_set || is_set(lifetime.yfilter)) leaf_name_data.push_back(lifetime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13622,12 +17021,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Nsf::g
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Nsf::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lifetime")
     {
         lifetime = value;
+        lifetime.value_namespace = name_space;
+        lifetime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Nsf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lifetime")
+    {
+        lifetime.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Nsf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lifetime")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::Maximum()
@@ -13675,9 +17091,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(global_high_priority_packet_queue.operation)
-	|| is_set(global_low_priority_packet_queue.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(global_high_priority_packet_queue.yfilter)
+	|| ydk::is_set(global_low_priority_packet_queue.yfilter)
 	|| (bsr_candidate_rp_cache !=  nullptr && bsr_candidate_rp_cache->has_operation())
 	|| (bsr_global_candidate_rp_cache !=  nullptr && bsr_global_candidate_rp_cache->has_operation())
 	|| (bsr_global_group_mappings !=  nullptr && bsr_global_group_mappings->has_operation())
@@ -13715,8 +17131,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (global_high_priority_packet_queue.is_set || is_set(global_high_priority_packet_queue.operation)) leaf_name_data.push_back(global_high_priority_packet_queue.get_name_leafdata());
-    if (global_low_priority_packet_queue.is_set || is_set(global_low_priority_packet_queue.operation)) leaf_name_data.push_back(global_low_priority_packet_queue.get_name_leafdata());
+    if (global_high_priority_packet_queue.is_set || is_set(global_high_priority_packet_queue.yfilter)) leaf_name_data.push_back(global_high_priority_packet_queue.get_name_leafdata());
+    if (global_low_priority_packet_queue.is_set || is_set(global_low_priority_packet_queue.yfilter)) leaf_name_data.push_back(global_low_priority_packet_queue.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13903,16 +17319,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "global-high-priority-packet-queue")
     {
         global_high_priority_packet_queue = value;
+        global_high_priority_packet_queue.value_namespace = name_space;
+        global_high_priority_packet_queue.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "global-low-priority-packet-queue")
     {
         global_low_priority_packet_queue = value;
+        global_low_priority_packet_queue.value_namespace = name_space;
+        global_low_priority_packet_queue.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "global-high-priority-packet-queue")
+    {
+        global_high_priority_packet_queue.yfilter = yfilter;
+    }
+    if(value_path == "global-low-priority-packet-queue")
+    {
+        global_low_priority_packet_queue.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-candidate-rp-cache" || name == "bsr-global-candidate-rp-cache" || name == "bsr-global-group-mappings" || name == "bsr-group-mappings" || name == "global-group-mappings-auto-rp" || name == "global-register-states" || name == "global-route-interfaces" || name == "global-routes" || name == "group-mappings-auto-rp" || name == "register-states" || name == "route-interfaces" || name == "routes" || name == "global-high-priority-packet-queue" || name == "global-low-priority-packet-queue")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::BsrGlobalGroupMappings()
@@ -13935,9 +17374,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::has_data() cons
 
 bool Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_global_group_mappings.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_global_group_mappings.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::get_segment_path() const
@@ -13963,8 +17402,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_global_group_mappings.is_set || is_set(bsr_maximum_global_group_mappings.operation)) leaf_name_data.push_back(bsr_maximum_global_group_mappings.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_global_group_mappings.is_set || is_set(bsr_maximum_global_group_mappings.yfilter)) leaf_name_data.push_back(bsr_maximum_global_group_mappings.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13983,16 +17422,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-global-group-mappings")
     {
         bsr_maximum_global_group_mappings = value;
+        bsr_maximum_global_group_mappings.value_namespace = name_space;
+        bsr_maximum_global_group_mappings.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-global-group-mappings")
+    {
+        bsr_maximum_global_group_mappings.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-global-group-mappings" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::GlobalRoutes()
@@ -14015,9 +17477,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_routes.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_routes.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::get_segment_path() const
@@ -14043,8 +17505,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_routes.is_set || is_set(maximum_routes.operation)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_routes.is_set || is_set(maximum_routes.yfilter)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14063,16 +17525,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-routes")
     {
         maximum_routes = value;
+        maximum_routes.value_namespace = name_space;
+        maximum_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-routes")
+    {
+        maximum_routes.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-routes" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::GlobalGroupMappingsAutoRp()
@@ -14095,9 +17580,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::has_data() c
 
 bool Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_global_group_ranges_auto_rp.operation)
-	|| is_set(threshold_global_group_ranges_auto_rp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_global_group_ranges_auto_rp.yfilter)
+	|| ydk::is_set(threshold_global_group_ranges_auto_rp.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::get_segment_path() const
@@ -14123,8 +17608,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_global_group_ranges_auto_rp.is_set || is_set(maximum_global_group_ranges_auto_rp.operation)) leaf_name_data.push_back(maximum_global_group_ranges_auto_rp.get_name_leafdata());
-    if (threshold_global_group_ranges_auto_rp.is_set || is_set(threshold_global_group_ranges_auto_rp.operation)) leaf_name_data.push_back(threshold_global_group_ranges_auto_rp.get_name_leafdata());
+    if (maximum_global_group_ranges_auto_rp.is_set || is_set(maximum_global_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(maximum_global_group_ranges_auto_rp.get_name_leafdata());
+    if (threshold_global_group_ranges_auto_rp.is_set || is_set(threshold_global_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(threshold_global_group_ranges_auto_rp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14143,16 +17628,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-global-group-ranges-auto-rp")
     {
         maximum_global_group_ranges_auto_rp = value;
+        maximum_global_group_ranges_auto_rp.value_namespace = name_space;
+        maximum_global_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-global-group-ranges-auto-rp")
     {
         threshold_global_group_ranges_auto_rp = value;
+        threshold_global_group_ranges_auto_rp.value_namespace = name_space;
+        threshold_global_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-global-group-ranges-auto-rp")
+    {
+        maximum_global_group_ranges_auto_rp.yfilter = yfilter;
+    }
+    if(value_path == "threshold-global-group-ranges-auto-rp")
+    {
+        threshold_global_group_ranges_auto_rp.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-global-group-ranges-auto-rp" || name == "threshold-global-group-ranges-auto-rp")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::BsrGlobalCandidateRpCache()
@@ -14175,9 +17683,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::has_data() c
 
 bool Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_global_candidate_rp_cache.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_global_candidate_rp_cache.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::get_segment_path() const
@@ -14203,8 +17711,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_global_candidate_rp_cache.is_set || is_set(bsr_maximum_global_candidate_rp_cache.operation)) leaf_name_data.push_back(bsr_maximum_global_candidate_rp_cache.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_global_candidate_rp_cache.is_set || is_set(bsr_maximum_global_candidate_rp_cache.yfilter)) leaf_name_data.push_back(bsr_maximum_global_candidate_rp_cache.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14223,16 +17731,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-global-candidate-rp-cache")
     {
         bsr_maximum_global_candidate_rp_cache = value;
+        bsr_maximum_global_candidate_rp_cache.value_namespace = name_space;
+        bsr_maximum_global_candidate_rp_cache.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-global-candidate-rp-cache")
+    {
+        bsr_maximum_global_candidate_rp_cache.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-global-candidate-rp-cache" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::GlobalRegisterStates()
@@ -14255,9 +17786,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_register_states.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_register_states.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::get_segment_path() const
@@ -14283,8 +17814,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_register_states.is_set || is_set(maximum_register_states.operation)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_register_states.is_set || is_set(maximum_register_states.yfilter)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14303,16 +17834,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-register-states")
     {
         maximum_register_states = value;
+        maximum_register_states.value_namespace = name_space;
+        maximum_register_states.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-register-states")
+    {
+        maximum_register_states.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-register-states" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::GlobalRouteInterfaces()
@@ -14335,9 +17889,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_route_interfaces.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_route_interfaces.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::get_segment_path() const
@@ -14363,8 +17917,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.operation)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.yfilter)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14383,16 +17937,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-route-interfaces")
     {
         maximum_route_interfaces = value;
+        maximum_route_interfaces.value_namespace = name_space;
+        maximum_route_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-route-interfaces")
+    {
+        maximum_route_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-route-interfaces" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::GroupMappingsAutoRp()
@@ -14415,9 +17992,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_group_ranges_auto_rp.operation)
-	|| is_set(threshold_group_ranges_auto_rp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_group_ranges_auto_rp.yfilter)
+	|| ydk::is_set(threshold_group_ranges_auto_rp.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::get_segment_path() const
@@ -14443,8 +18020,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_group_ranges_auto_rp.is_set || is_set(maximum_group_ranges_auto_rp.operation)) leaf_name_data.push_back(maximum_group_ranges_auto_rp.get_name_leafdata());
-    if (threshold_group_ranges_auto_rp.is_set || is_set(threshold_group_ranges_auto_rp.operation)) leaf_name_data.push_back(threshold_group_ranges_auto_rp.get_name_leafdata());
+    if (maximum_group_ranges_auto_rp.is_set || is_set(maximum_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(maximum_group_ranges_auto_rp.get_name_leafdata());
+    if (threshold_group_ranges_auto_rp.is_set || is_set(threshold_group_ranges_auto_rp.yfilter)) leaf_name_data.push_back(threshold_group_ranges_auto_rp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14463,16 +18040,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-group-ranges-auto-rp")
     {
         maximum_group_ranges_auto_rp = value;
+        maximum_group_ranges_auto_rp.value_namespace = name_space;
+        maximum_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-group-ranges-auto-rp")
     {
         threshold_group_ranges_auto_rp = value;
+        threshold_group_ranges_auto_rp.value_namespace = name_space;
+        threshold_group_ranges_auto_rp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-group-ranges-auto-rp")
+    {
+        maximum_group_ranges_auto_rp.yfilter = yfilter;
+    }
+    if(value_path == "threshold-group-ranges-auto-rp")
+    {
+        threshold_group_ranges_auto_rp.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-group-ranges-auto-rp" || name == "threshold-group-ranges-auto-rp")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::BsrGroupMappings()
@@ -14495,9 +18095,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_group_ranges.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_group_ranges.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::get_segment_path() const
@@ -14523,8 +18123,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_group_ranges.is_set || is_set(bsr_maximum_group_ranges.operation)) leaf_name_data.push_back(bsr_maximum_group_ranges.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_group_ranges.is_set || is_set(bsr_maximum_group_ranges.yfilter)) leaf_name_data.push_back(bsr_maximum_group_ranges.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14543,16 +18143,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-group-ranges")
     {
         bsr_maximum_group_ranges = value;
+        bsr_maximum_group_ranges.value_namespace = name_space;
+        bsr_maximum_group_ranges.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-group-ranges")
+    {
+        bsr_maximum_group_ranges.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-group-ranges" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::RegisterStates::RegisterStates()
@@ -14575,9 +18198,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::RegisterStates::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::RegisterStates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_register_states.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_register_states.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::RegisterStates::get_segment_path() const
@@ -14603,8 +18226,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::RegisterStates::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_register_states.is_set || is_set(maximum_register_states.operation)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_register_states.is_set || is_set(maximum_register_states.yfilter)) leaf_name_data.push_back(maximum_register_states.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14623,16 +18246,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::RegisterStates::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::RegisterStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-register-states")
     {
         maximum_register_states = value;
+        maximum_register_states.value_namespace = name_space;
+        maximum_register_states.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::RegisterStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-register-states")
+    {
+        maximum_register_states.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::RegisterStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-register-states" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::RouteInterfaces()
@@ -14655,9 +18301,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_route_interfaces.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_route_interfaces.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::get_segment_path() const
@@ -14683,8 +18329,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.operation)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_route_interfaces.is_set || is_set(maximum_route_interfaces.yfilter)) leaf_name_data.push_back(maximum_route_interfaces.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14703,16 +18349,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-route-interfaces")
     {
         maximum_route_interfaces = value;
+        maximum_route_interfaces.value_namespace = name_space;
+        maximum_route_interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-route-interfaces")
+    {
+        maximum_route_interfaces.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-route-interfaces" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::BsrCandidateRpCache()
@@ -14735,9 +18404,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bsr_maximum_candidate_rp_cache.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bsr_maximum_candidate_rp_cache.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::get_segment_path() const
@@ -14763,8 +18432,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bsr_maximum_candidate_rp_cache.is_set || is_set(bsr_maximum_candidate_rp_cache.operation)) leaf_name_data.push_back(bsr_maximum_candidate_rp_cache.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (bsr_maximum_candidate_rp_cache.is_set || is_set(bsr_maximum_candidate_rp_cache.yfilter)) leaf_name_data.push_back(bsr_maximum_candidate_rp_cache.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14783,16 +18452,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsr-maximum-candidate-rp-cache")
     {
         bsr_maximum_candidate_rp_cache = value;
+        bsr_maximum_candidate_rp_cache.value_namespace = name_space;
+        bsr_maximum_candidate_rp_cache.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bsr-maximum-candidate-rp-cache")
+    {
+        bsr_maximum_candidate_rp_cache.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bsr-maximum-candidate-rp-cache" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Maximum::Routes::Routes()
@@ -14815,9 +18507,9 @@ bool Pim::DefaultContext::Ipv4::Maximum::Routes::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Maximum::Routes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_routes.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_routes.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::Routes::get_segment_path() const
@@ -14843,8 +18535,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Maximum::Routes::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_routes.is_set || is_set(maximum_routes.operation)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (maximum_routes.is_set || is_set(maximum_routes.yfilter)) leaf_name_data.push_back(maximum_routes.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14863,16 +18555,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximu
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Maximum::Routes::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Maximum::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-routes")
     {
         maximum_routes = value;
+        maximum_routes.value_namespace = name_space;
+        maximum_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Maximum::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-routes")
+    {
+        maximum_routes.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Maximum::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-routes" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Ssm::Ssm()
@@ -14895,9 +18610,9 @@ bool Pim::DefaultContext::Ipv4::Ssm::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Ssm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation)
-	|| is_set(range.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(range.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Ssm::get_segment_path() const
@@ -14923,8 +18638,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Ssm::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (range.is_set || is_set(range.operation)) leaf_name_data.push_back(range.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14943,16 +18658,39 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Ssm::g
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Ssm::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Ssm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "range")
     {
         range = value;
+        range.value_namespace = name_space;
+        range.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Ssm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "range")
+    {
+        range.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Ssm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable" || name == "range")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Injects::Injects()
@@ -14981,7 +18719,7 @@ bool Pim::DefaultContext::Ipv4::Injects::has_operation() const
         if(inject[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Injects::get_segment_path() const
@@ -15046,8 +18784,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Inject
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Injects::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Injects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::Injects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::Injects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inject")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Injects::Inject::Inject()
@@ -15078,13 +18827,13 @@ bool Pim::DefaultContext::Ipv4::Injects::Inject::has_operation() const
 {
     for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(source_address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(rpf_proxy_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(rpf_proxy_address.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Injects::Inject::get_segment_path() const
@@ -15110,8 +18859,8 @@ const EntityPath Pim::DefaultContext::Ipv4::Injects::Inject::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
     auto rpf_proxy_address_name_datas = rpf_proxy_address.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), rpf_proxy_address_name_datas.begin(), rpf_proxy_address_name_datas.end());
@@ -15132,20 +18881,47 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Inject
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Injects::Inject::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Injects::Inject::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf-proxy-address")
     {
         rpf_proxy_address.append(value);
     }
+}
+
+void Pim::DefaultContext::Ipv4::Injects::Inject::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "rpf-proxy-address")
+    {
+        rpf_proxy_address.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Injects::Inject::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "prefix-length" || name == "rpf-proxy-address")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddresses()
@@ -15174,7 +18950,7 @@ bool Pim::DefaultContext::Ipv4::BidirRpAddresses::has_operation() const
         if(bidir_rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::BidirRpAddresses::get_segment_path() const
@@ -15239,8 +19015,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::BidirR
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::BidirRpAddresses::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::BidirRpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::BidirRpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::BidirRpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bidir-rp-address")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::BidirRpAddress()
@@ -15265,10 +19052,10 @@ bool Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::has_data() con
 
 bool Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(auto_rp_override.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(auto_rp_override.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::get_segment_path() const
@@ -15294,9 +19081,9 @@ const EntityPath Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (auto_rp_override.is_set || is_set(auto_rp_override.operation)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (auto_rp_override.is_set || is_set(auto_rp_override.yfilter)) leaf_name_data.push_back(auto_rp_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15315,20 +19102,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::BidirR
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-rp-override")
     {
         auto_rp_override = value;
+        auto_rp_override.value_namespace = name_space;
+        auto_rp_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-rp-override")
+    {
+        auto_rp_override.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address" || name == "access-list-name" || name == "auto-rp-override")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Bsr::Bsr()
@@ -15353,7 +19169,7 @@ bool Pim::DefaultContext::Ipv4::Bsr::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Bsr::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (candidate_bsr !=  nullptr && candidate_bsr->has_operation())
 	|| (candidate_rps !=  nullptr && candidate_rps->has_operation());
 }
@@ -15427,8 +19243,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Bsr::g
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Bsr::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Bsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::Bsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::Bsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-bsr" || name == "candidate-rps")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::CandidateBsr()
@@ -15453,10 +19280,10 @@ bool Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::get_segment_path() const
@@ -15482,9 +19309,9 @@ const EntityPath Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15503,20 +19330,49 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Bsr::C
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length" || name == "priority")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRps()
@@ -15545,7 +19401,7 @@ bool Pim::DefaultContext::Ipv4::Bsr::CandidateRps::has_operation() const
         if(candidate_rp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Bsr::CandidateRps::get_segment_path() const
@@ -15610,8 +19466,19 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Bsr::C
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Bsr::CandidateRps::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Bsr::CandidateRps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Pim::DefaultContext::Ipv4::Bsr::CandidateRps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::DefaultContext::Ipv4::Bsr::CandidateRps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-rp")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::CandidateRp()
@@ -15640,12 +19507,12 @@ bool Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(mode.operation)
-	|| is_set(group_list.operation)
-	|| is_set(interval.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(group_list.yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::get_segment_path() const
@@ -15671,11 +19538,11 @@ const EntityPath Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (group_list.is_set || is_set(group_list.operation)) leaf_name_data.push_back(group_list.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_list.is_set || is_set(group_list.yfilter)) leaf_name_data.push_back(group_list.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15694,28 +19561,69 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Bsr::C
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-list")
     {
         group_list = value;
+        group_list.value_namespace = name_space;
+        group_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "group-list")
+    {
+        group_list.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "mode" || name == "group-list" || name == "interval" || name == "priority")
+        return true;
+    return false;
 }
 
 Pim::DefaultContext::Ipv4::Paths::Paths()
@@ -15744,7 +19652,7 @@ bool Pim::DefaultContext::Ipv4::Paths::has_operation() const
         if(path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Pim::DefaultContext::Ipv4::Paths::get_segment_path() const
@@ -15809,18 +19717,29 @@ std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Paths:
     return children;
 }
 
-void Pim::DefaultContext::Ipv4::Paths::set_value(const std::string & value_path, std::string value)
+void Pim::DefaultContext::Ipv4::Paths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-const Enum::YLeaf PimProtocolModeEnum::sm {0, "sm"};
-const Enum::YLeaf PimProtocolModeEnum::bidir {1, "bidir"};
+void Pim::DefaultContext::Ipv4::Paths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
 
-const Enum::YLeaf PimMultipathEnum::enable {0, "enable"};
-const Enum::YLeaf PimMultipathEnum::interface_hash {1, "interface-hash"};
-const Enum::YLeaf PimMultipathEnum::source_hash {2, "source-hash"};
-const Enum::YLeaf PimMultipathEnum::source_next_hop_hash {3, "source-next-hop-hash"};
-const Enum::YLeaf PimMultipathEnum::source_group_hash {4, "source-group-hash"};
+bool Pim::DefaultContext::Ipv4::Paths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf PimMultipath::enable {0, "enable"};
+const Enum::YLeaf PimMultipath::interface_hash {1, "interface-hash"};
+const Enum::YLeaf PimMultipath::source_hash {2, "source-hash"};
+const Enum::YLeaf PimMultipath::source_next_hop_hash {3, "source-next-hop-hash"};
+const Enum::YLeaf PimMultipath::source_group_hash {4, "source-group-hash"};
+
+const Enum::YLeaf PimProtocolMode::sm {0, "sm"};
+const Enum::YLeaf PimProtocolMode::bidir {1, "bidir"};
 
 
 }

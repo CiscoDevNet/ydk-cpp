@@ -6,65 +6,67 @@
 #include "generated_entity_lookup.hpp"
 #include "cisco_pw.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace cisco_pw {
 
-PwSignalingProtocolTypeIdentity::PwSignalingProtocolTypeIdentity()
-     : Identity("cisco-pw:pw-signaling-protocol-type")
+PwEncapsulationType::PwEncapsulationType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encapsulation-type")
 {
 }
 
-PwSignalingProtocolTypeIdentity::~PwSignalingProtocolTypeIdentity()
+PwEncapsulationType::~PwEncapsulationType()
 {
 }
 
-PwLoadBalanceTypeIdentity::PwLoadBalanceTypeIdentity()
-     : Identity("cisco-pw:pw-load-balance-type")
+PwLoadBalanceType::PwLoadBalanceType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-load-balance-type")
 {
 }
 
-PwLoadBalanceTypeIdentity::~PwLoadBalanceTypeIdentity()
+PwLoadBalanceType::~PwLoadBalanceType()
 {
 }
 
-PwEncapsulationTypeIdentity::PwEncapsulationTypeIdentity()
-     : Identity("cisco-pw:pw-encapsulation-type")
+PwSequencingType::PwSequencingType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-type")
 {
 }
 
-PwEncapsulationTypeIdentity::~PwEncapsulationTypeIdentity()
+PwSequencingType::~PwSequencingType()
 {
 }
 
-PwVcTypeIdentity::PwVcTypeIdentity()
-     : Identity("cisco-pw:pw-vc-type")
+PwSignalingProtocolType::PwSignalingProtocolType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-type")
 {
 }
 
-PwVcTypeIdentity::~PwVcTypeIdentity()
+PwSignalingProtocolType::~PwSignalingProtocolType()
 {
 }
 
-PwSequencingTypeIdentity::PwSequencingTypeIdentity()
-     : Identity("cisco-pw:pw-sequencing-type")
+PwVcType::PwVcType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type")
 {
 }
 
-PwSequencingTypeIdentity::~PwSequencingTypeIdentity()
+PwVcType::~PwVcType()
 {
 }
 
 PseudowireConfig::PseudowireConfig()
     :
-    global_(std::make_shared<PseudowireConfig::Global>())
-	,pw_static_oam_classes_(std::make_shared<PseudowireConfig::PwStaticOamClasses>())
-	,pw_templates_(std::make_shared<PseudowireConfig::PwTemplates>())
+    global(std::make_shared<PseudowireConfig::Global>())
+	,pw_static_oam_classes(std::make_shared<PseudowireConfig::PwStaticOamClasses>())
+	,pw_templates(std::make_shared<PseudowireConfig::PwTemplates>())
 {
-    global_->parent = this;
+    global->parent = this;
 
-    pw_static_oam_classes_->parent = this;
+    pw_static_oam_classes->parent = this;
 
-    pw_templates_->parent = this;
+    pw_templates->parent = this;
 
     yang_name = "pseudowire-config"; yang_parent_name = "cisco-pw";
 }
@@ -75,17 +77,17 @@ PseudowireConfig::~PseudowireConfig()
 
 bool PseudowireConfig::has_data() const
 {
-    return (global_ !=  nullptr && global_->has_data())
-	|| (pw_static_oam_classes_ !=  nullptr && pw_static_oam_classes_->has_data())
-	|| (pw_templates_ !=  nullptr && pw_templates_->has_data());
+    return (global !=  nullptr && global->has_data())
+	|| (pw_static_oam_classes !=  nullptr && pw_static_oam_classes->has_data())
+	|| (pw_templates !=  nullptr && pw_templates->has_data());
 }
 
 bool PseudowireConfig::has_operation() const
 {
-    return is_set(operation)
-	|| (global_ !=  nullptr && global_->has_operation())
-	|| (pw_static_oam_classes_ !=  nullptr && pw_static_oam_classes_->has_operation())
-	|| (pw_templates_ !=  nullptr && pw_templates_->has_operation());
+    return is_set(yfilter)
+	|| (global !=  nullptr && global->has_operation())
+	|| (pw_static_oam_classes !=  nullptr && pw_static_oam_classes->has_operation())
+	|| (pw_templates !=  nullptr && pw_templates->has_operation());
 }
 
 std::string PseudowireConfig::get_segment_path() const
@@ -119,29 +121,29 @@ std::shared_ptr<Entity> PseudowireConfig::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "global")
     {
-        if(global_ == nullptr)
+        if(global == nullptr)
         {
-            global_ = std::make_shared<PseudowireConfig::Global>();
+            global = std::make_shared<PseudowireConfig::Global>();
         }
-        return global_;
+        return global;
     }
 
     if(child_yang_name == "pw-static-oam-classes")
     {
-        if(pw_static_oam_classes_ == nullptr)
+        if(pw_static_oam_classes == nullptr)
         {
-            pw_static_oam_classes_ = std::make_shared<PseudowireConfig::PwStaticOamClasses>();
+            pw_static_oam_classes = std::make_shared<PseudowireConfig::PwStaticOamClasses>();
         }
-        return pw_static_oam_classes_;
+        return pw_static_oam_classes;
     }
 
     if(child_yang_name == "pw-templates")
     {
-        if(pw_templates_ == nullptr)
+        if(pw_templates == nullptr)
         {
-            pw_templates_ = std::make_shared<PseudowireConfig::PwTemplates>();
+            pw_templates = std::make_shared<PseudowireConfig::PwTemplates>();
         }
-        return pw_templates_;
+        return pw_templates;
     }
 
     return nullptr;
@@ -150,25 +152,29 @@ std::shared_ptr<Entity> PseudowireConfig::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(global_ != nullptr)
+    if(global != nullptr)
     {
-        children["global"] = global_;
+        children["global"] = global;
     }
 
-    if(pw_static_oam_classes_ != nullptr)
+    if(pw_static_oam_classes != nullptr)
     {
-        children["pw-static-oam-classes"] = pw_static_oam_classes_;
+        children["pw-static-oam-classes"] = pw_static_oam_classes;
     }
 
-    if(pw_templates_ != nullptr)
+    if(pw_templates != nullptr)
     {
-        children["pw-templates"] = pw_templates_;
+        children["pw-templates"] = pw_templates;
     }
 
     return children;
 }
 
-void PseudowireConfig::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PseudowireConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -190,6 +196,18 @@ std::string PseudowireConfig::get_bundle_name() const
 augment_capabilities_function PseudowireConfig::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> PseudowireConfig::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool PseudowireConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "pw-static-oam-classes" || name == "pw-templates")
+        return true;
+    return false;
 }
 
 PseudowireConfig::Global::Global()
@@ -222,14 +240,14 @@ bool PseudowireConfig::Global::has_data() const
 
 bool PseudowireConfig::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(predictive_redundancy.operation)
-	|| is_set(pw_grouping.operation)
-	|| is_set(pw_oam_refresh_transmit.operation)
-	|| is_set(pw_status.operation)
-	|| is_set(vc_state_notification_batch_size.operation)
-	|| is_set(vc_state_notification_enabled.operation)
-	|| is_set(vc_state_notification_rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(predictive_redundancy.yfilter)
+	|| ydk::is_set(pw_grouping.yfilter)
+	|| ydk::is_set(pw_oam_refresh_transmit.yfilter)
+	|| ydk::is_set(pw_status.yfilter)
+	|| ydk::is_set(vc_state_notification_batch_size.yfilter)
+	|| ydk::is_set(vc_state_notification_enabled.yfilter)
+	|| ydk::is_set(vc_state_notification_rate.yfilter);
 }
 
 std::string PseudowireConfig::Global::get_segment_path() const
@@ -255,13 +273,13 @@ const EntityPath PseudowireConfig::Global::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (predictive_redundancy.is_set || is_set(predictive_redundancy.operation)) leaf_name_data.push_back(predictive_redundancy.get_name_leafdata());
-    if (pw_grouping.is_set || is_set(pw_grouping.operation)) leaf_name_data.push_back(pw_grouping.get_name_leafdata());
-    if (pw_oam_refresh_transmit.is_set || is_set(pw_oam_refresh_transmit.operation)) leaf_name_data.push_back(pw_oam_refresh_transmit.get_name_leafdata());
-    if (pw_status.is_set || is_set(pw_status.operation)) leaf_name_data.push_back(pw_status.get_name_leafdata());
-    if (vc_state_notification_batch_size.is_set || is_set(vc_state_notification_batch_size.operation)) leaf_name_data.push_back(vc_state_notification_batch_size.get_name_leafdata());
-    if (vc_state_notification_enabled.is_set || is_set(vc_state_notification_enabled.operation)) leaf_name_data.push_back(vc_state_notification_enabled.get_name_leafdata());
-    if (vc_state_notification_rate.is_set || is_set(vc_state_notification_rate.operation)) leaf_name_data.push_back(vc_state_notification_rate.get_name_leafdata());
+    if (predictive_redundancy.is_set || is_set(predictive_redundancy.yfilter)) leaf_name_data.push_back(predictive_redundancy.get_name_leafdata());
+    if (pw_grouping.is_set || is_set(pw_grouping.yfilter)) leaf_name_data.push_back(pw_grouping.get_name_leafdata());
+    if (pw_oam_refresh_transmit.is_set || is_set(pw_oam_refresh_transmit.yfilter)) leaf_name_data.push_back(pw_oam_refresh_transmit.get_name_leafdata());
+    if (pw_status.is_set || is_set(pw_status.yfilter)) leaf_name_data.push_back(pw_status.get_name_leafdata());
+    if (vc_state_notification_batch_size.is_set || is_set(vc_state_notification_batch_size.yfilter)) leaf_name_data.push_back(vc_state_notification_batch_size.get_name_leafdata());
+    if (vc_state_notification_enabled.is_set || is_set(vc_state_notification_enabled.yfilter)) leaf_name_data.push_back(vc_state_notification_enabled.get_name_leafdata());
+    if (vc_state_notification_rate.is_set || is_set(vc_state_notification_rate.yfilter)) leaf_name_data.push_back(vc_state_notification_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -280,36 +298,89 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::Global::get_chi
     return children;
 }
 
-void PseudowireConfig::Global::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "predictive-redundancy")
     {
         predictive_redundancy = value;
+        predictive_redundancy.value_namespace = name_space;
+        predictive_redundancy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-grouping")
     {
         pw_grouping = value;
+        pw_grouping.value_namespace = name_space;
+        pw_grouping.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-oam-refresh-transmit")
     {
         pw_oam_refresh_transmit = value;
+        pw_oam_refresh_transmit.value_namespace = name_space;
+        pw_oam_refresh_transmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-status")
     {
         pw_status = value;
+        pw_status.value_namespace = name_space;
+        pw_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-state-notification-batch-size")
     {
         vc_state_notification_batch_size = value;
+        vc_state_notification_batch_size.value_namespace = name_space;
+        vc_state_notification_batch_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-state-notification-enabled")
     {
         vc_state_notification_enabled = value;
+        vc_state_notification_enabled.value_namespace = name_space;
+        vc_state_notification_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-state-notification-rate")
     {
         vc_state_notification_rate = value;
+        vc_state_notification_rate.value_namespace = name_space;
+        vc_state_notification_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "predictive-redundancy")
+    {
+        predictive_redundancy.yfilter = yfilter;
+    }
+    if(value_path == "pw-grouping")
+    {
+        pw_grouping.yfilter = yfilter;
+    }
+    if(value_path == "pw-oam-refresh-transmit")
+    {
+        pw_oam_refresh_transmit.yfilter = yfilter;
+    }
+    if(value_path == "pw-status")
+    {
+        pw_status.yfilter = yfilter;
+    }
+    if(value_path == "vc-state-notification-batch-size")
+    {
+        vc_state_notification_batch_size.yfilter = yfilter;
+    }
+    if(value_path == "vc-state-notification-enabled")
+    {
+        vc_state_notification_enabled.yfilter = yfilter;
+    }
+    if(value_path == "vc-state-notification-rate")
+    {
+        vc_state_notification_rate.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "predictive-redundancy" || name == "pw-grouping" || name == "pw-oam-refresh-transmit" || name == "pw-status" || name == "vc-state-notification-batch-size" || name == "vc-state-notification-enabled" || name == "vc-state-notification-rate")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplates()
@@ -323,9 +394,9 @@ PseudowireConfig::PwTemplates::~PwTemplates()
 
 bool PseudowireConfig::PwTemplates::has_data() const
 {
-    for (std::size_t index=0; index<pw_template_.size(); index++)
+    for (std::size_t index=0; index<pw_template.size(); index++)
     {
-        if(pw_template_[index]->has_data())
+        if(pw_template[index]->has_data())
             return true;
     }
     return false;
@@ -333,12 +404,12 @@ bool PseudowireConfig::PwTemplates::has_data() const
 
 bool PseudowireConfig::PwTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<pw_template_.size(); index++)
+    for (std::size_t index=0; index<pw_template.size(); index++)
     {
-        if(pw_template_[index]->has_operation())
+        if(pw_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PseudowireConfig::PwTemplates::get_segment_path() const
@@ -375,7 +446,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
 {
     if(child_yang_name == "pw-template")
     {
-        for(auto const & c : pw_template_)
+        for(auto const & c : pw_template)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -385,7 +456,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
         }
         auto c = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate>();
         c->parent = this;
-        pw_template_.push_back(c);
+        pw_template.push_back(c);
         return c;
     }
 
@@ -395,7 +466,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pw_template_)
+    for (auto const & c : pw_template)
     {
         children[c->get_segment_path()] = c;
     }
@@ -403,8 +474,19 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::ge
     return children;
 }
 
-void PseudowireConfig::PwTemplates::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PseudowireConfig::PwTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PseudowireConfig::PwTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pw-template")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::PwTemplate()
@@ -419,27 +501,27 @@ PseudowireConfig::PwTemplates::PwTemplate::PwTemplate()
     tag_rewrite_ingress_vlan{YType::uint16, "tag-rewrite-ingress-vlan"},
     vc_type{YType::identityref, "vc-type"}
     	,
-    load_balance_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>())
-	,port_profile_spec_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>())
-	,preferred_path_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>())
-	,sequencing_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>())
-	,status_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>())
-	,switchover_delay_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>())
-	,vccv_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>())
+    load_balance(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>())
+	,port_profile_spec(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>())
+	,preferred_path(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>())
+	,sequencing(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>())
+	,status(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>())
+	,switchover_delay(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>())
+	,vccv(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>())
 {
-    load_balance_->parent = this;
+    load_balance->parent = this;
 
-    port_profile_spec_->parent = this;
+    port_profile_spec->parent = this;
 
-    preferred_path_->parent = this;
+    preferred_path->parent = this;
 
-    sequencing_->parent = this;
+    sequencing->parent = this;
 
-    status_->parent = this;
+    status->parent = this;
 
-    switchover_delay_->parent = this;
+    switchover_delay->parent = this;
 
-    vccv_->parent = this;
+    vccv->parent = this;
 
     yang_name = "pw-template"; yang_parent_name = "pw-templates";
 }
@@ -459,34 +541,34 @@ bool PseudowireConfig::PwTemplates::PwTemplate::has_data() const
 	|| switching_tlv.is_set
 	|| tag_rewrite_ingress_vlan.is_set
 	|| vc_type.is_set
-	|| (load_balance_ !=  nullptr && load_balance_->has_data())
-	|| (port_profile_spec_ !=  nullptr && port_profile_spec_->has_data())
-	|| (preferred_path_ !=  nullptr && preferred_path_->has_data())
-	|| (sequencing_ !=  nullptr && sequencing_->has_data())
-	|| (status_ !=  nullptr && status_->has_data())
-	|| (switchover_delay_ !=  nullptr && switchover_delay_->has_data())
-	|| (vccv_ !=  nullptr && vccv_->has_data());
+	|| (load_balance !=  nullptr && load_balance->has_data())
+	|| (port_profile_spec !=  nullptr && port_profile_spec->has_data())
+	|| (preferred_path !=  nullptr && preferred_path->has_data())
+	|| (sequencing !=  nullptr && sequencing->has_data())
+	|| (status !=  nullptr && status->has_data())
+	|| (switchover_delay !=  nullptr && switchover_delay->has_data())
+	|| (vccv !=  nullptr && vccv->has_data());
 }
 
 bool PseudowireConfig::PwTemplates::PwTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(control_word.operation)
-	|| is_set(encapsulation.operation)
-	|| is_set(mac_withdraw.operation)
-	|| is_set(signaling_protocol.operation)
-	|| is_set(source_ip.operation)
-	|| is_set(switching_tlv.operation)
-	|| is_set(tag_rewrite_ingress_vlan.operation)
-	|| is_set(vc_type.operation)
-	|| (load_balance_ !=  nullptr && load_balance_->has_operation())
-	|| (port_profile_spec_ !=  nullptr && port_profile_spec_->has_operation())
-	|| (preferred_path_ !=  nullptr && preferred_path_->has_operation())
-	|| (sequencing_ !=  nullptr && sequencing_->has_operation())
-	|| (status_ !=  nullptr && status_->has_operation())
-	|| (switchover_delay_ !=  nullptr && switchover_delay_->has_operation())
-	|| (vccv_ !=  nullptr && vccv_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(control_word.yfilter)
+	|| ydk::is_set(encapsulation.yfilter)
+	|| ydk::is_set(mac_withdraw.yfilter)
+	|| ydk::is_set(signaling_protocol.yfilter)
+	|| ydk::is_set(source_ip.yfilter)
+	|| ydk::is_set(switching_tlv.yfilter)
+	|| ydk::is_set(tag_rewrite_ingress_vlan.yfilter)
+	|| ydk::is_set(vc_type.yfilter)
+	|| (load_balance !=  nullptr && load_balance->has_operation())
+	|| (port_profile_spec !=  nullptr && port_profile_spec->has_operation())
+	|| (preferred_path !=  nullptr && preferred_path->has_operation())
+	|| (sequencing !=  nullptr && sequencing->has_operation())
+	|| (status !=  nullptr && status->has_operation())
+	|| (switchover_delay !=  nullptr && switchover_delay->has_operation())
+	|| (vccv !=  nullptr && vccv->has_operation());
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::get_segment_path() const
@@ -512,15 +594,15 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (control_word.is_set || is_set(control_word.operation)) leaf_name_data.push_back(control_word.get_name_leafdata());
-    if (encapsulation.is_set || is_set(encapsulation.operation)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
-    if (mac_withdraw.is_set || is_set(mac_withdraw.operation)) leaf_name_data.push_back(mac_withdraw.get_name_leafdata());
-    if (signaling_protocol.is_set || is_set(signaling_protocol.operation)) leaf_name_data.push_back(signaling_protocol.get_name_leafdata());
-    if (source_ip.is_set || is_set(source_ip.operation)) leaf_name_data.push_back(source_ip.get_name_leafdata());
-    if (switching_tlv.is_set || is_set(switching_tlv.operation)) leaf_name_data.push_back(switching_tlv.get_name_leafdata());
-    if (tag_rewrite_ingress_vlan.is_set || is_set(tag_rewrite_ingress_vlan.operation)) leaf_name_data.push_back(tag_rewrite_ingress_vlan.get_name_leafdata());
-    if (vc_type.is_set || is_set(vc_type.operation)) leaf_name_data.push_back(vc_type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (control_word.is_set || is_set(control_word.yfilter)) leaf_name_data.push_back(control_word.get_name_leafdata());
+    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
+    if (mac_withdraw.is_set || is_set(mac_withdraw.yfilter)) leaf_name_data.push_back(mac_withdraw.get_name_leafdata());
+    if (signaling_protocol.is_set || is_set(signaling_protocol.yfilter)) leaf_name_data.push_back(signaling_protocol.get_name_leafdata());
+    if (source_ip.is_set || is_set(source_ip.yfilter)) leaf_name_data.push_back(source_ip.get_name_leafdata());
+    if (switching_tlv.is_set || is_set(switching_tlv.yfilter)) leaf_name_data.push_back(switching_tlv.get_name_leafdata());
+    if (tag_rewrite_ingress_vlan.is_set || is_set(tag_rewrite_ingress_vlan.yfilter)) leaf_name_data.push_back(tag_rewrite_ingress_vlan.get_name_leafdata());
+    if (vc_type.is_set || is_set(vc_type.yfilter)) leaf_name_data.push_back(vc_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -532,65 +614,65 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::get_child_by_
 {
     if(child_yang_name == "load-balance")
     {
-        if(load_balance_ == nullptr)
+        if(load_balance == nullptr)
         {
-            load_balance_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>();
+            load_balance = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>();
         }
-        return load_balance_;
+        return load_balance;
     }
 
     if(child_yang_name == "port-profile-spec")
     {
-        if(port_profile_spec_ == nullptr)
+        if(port_profile_spec == nullptr)
         {
-            port_profile_spec_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>();
+            port_profile_spec = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>();
         }
-        return port_profile_spec_;
+        return port_profile_spec;
     }
 
     if(child_yang_name == "preferred-path")
     {
-        if(preferred_path_ == nullptr)
+        if(preferred_path == nullptr)
         {
-            preferred_path_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>();
+            preferred_path = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>();
         }
-        return preferred_path_;
+        return preferred_path;
     }
 
     if(child_yang_name == "sequencing")
     {
-        if(sequencing_ == nullptr)
+        if(sequencing == nullptr)
         {
-            sequencing_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>();
+            sequencing = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>();
         }
-        return sequencing_;
+        return sequencing;
     }
 
     if(child_yang_name == "status")
     {
-        if(status_ == nullptr)
+        if(status == nullptr)
         {
-            status_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>();
+            status = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>();
         }
-        return status_;
+        return status;
     }
 
     if(child_yang_name == "switchover-delay")
     {
-        if(switchover_delay_ == nullptr)
+        if(switchover_delay == nullptr)
         {
-            switchover_delay_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>();
+            switchover_delay = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>();
         }
-        return switchover_delay_;
+        return switchover_delay;
     }
 
     if(child_yang_name == "vccv")
     {
-        if(vccv_ == nullptr)
+        if(vccv == nullptr)
         {
-            vccv_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>();
+            vccv = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>();
         }
-        return vccv_;
+        return vccv;
     }
 
     return nullptr;
@@ -599,82 +681,147 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(load_balance_ != nullptr)
+    if(load_balance != nullptr)
     {
-        children["load-balance"] = load_balance_;
+        children["load-balance"] = load_balance;
     }
 
-    if(port_profile_spec_ != nullptr)
+    if(port_profile_spec != nullptr)
     {
-        children["port-profile-spec"] = port_profile_spec_;
+        children["port-profile-spec"] = port_profile_spec;
     }
 
-    if(preferred_path_ != nullptr)
+    if(preferred_path != nullptr)
     {
-        children["preferred-path"] = preferred_path_;
+        children["preferred-path"] = preferred_path;
     }
 
-    if(sequencing_ != nullptr)
+    if(sequencing != nullptr)
     {
-        children["sequencing"] = sequencing_;
+        children["sequencing"] = sequencing;
     }
 
-    if(status_ != nullptr)
+    if(status != nullptr)
     {
-        children["status"] = status_;
+        children["status"] = status;
     }
 
-    if(switchover_delay_ != nullptr)
+    if(switchover_delay != nullptr)
     {
-        children["switchover-delay"] = switchover_delay_;
+        children["switchover-delay"] = switchover_delay;
     }
 
-    if(vccv_ != nullptr)
+    if(vccv != nullptr)
     {
-        children["vccv"] = vccv_;
+        children["vccv"] = vccv;
     }
 
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "control-word")
     {
         control_word = value;
+        control_word.value_namespace = name_space;
+        control_word.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation")
     {
         encapsulation = value;
+        encapsulation.value_namespace = name_space;
+        encapsulation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-withdraw")
     {
         mac_withdraw = value;
+        mac_withdraw.value_namespace = name_space;
+        mac_withdraw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signaling-protocol")
     {
         signaling_protocol = value;
+        signaling_protocol.value_namespace = name_space;
+        signaling_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-ip")
     {
         source_ip = value;
+        source_ip.value_namespace = name_space;
+        source_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switching-tlv")
     {
         switching_tlv = value;
+        switching_tlv.value_namespace = name_space;
+        switching_tlv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag-rewrite-ingress-vlan")
     {
         tag_rewrite_ingress_vlan = value;
+        tag_rewrite_ingress_vlan.value_namespace = name_space;
+        tag_rewrite_ingress_vlan.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-type")
     {
         vc_type = value;
+        vc_type.value_namespace = name_space;
+        vc_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "control-word")
+    {
+        control_word.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation")
+    {
+        encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "mac-withdraw")
+    {
+        mac_withdraw.yfilter = yfilter;
+    }
+    if(value_path == "signaling-protocol")
+    {
+        signaling_protocol.yfilter = yfilter;
+    }
+    if(value_path == "source-ip")
+    {
+        source_ip.yfilter = yfilter;
+    }
+    if(value_path == "switching-tlv")
+    {
+        switching_tlv.yfilter = yfilter;
+    }
+    if(value_path == "tag-rewrite-ingress-vlan")
+    {
+        tag_rewrite_ingress_vlan.yfilter = yfilter;
+    }
+    if(value_path == "vc-type")
+    {
+        vc_type.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "load-balance" || name == "port-profile-spec" || name == "preferred-path" || name == "sequencing" || name == "status" || name == "switchover-delay" || name == "vccv" || name == "name" || name == "control-word" || name == "encapsulation" || name == "mac-withdraw" || name == "signaling-protocol" || name == "source-ip" || name == "switching-tlv" || name == "tag-rewrite-ingress-vlan" || name == "vc-type")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::LoadBalance()
@@ -682,9 +829,9 @@ PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::LoadBalance()
     ethernet{YType::identityref, "ethernet"},
     ip{YType::identityref, "ip"}
     	,
-    flow_label_(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>())
+    flow_label(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>())
 {
-    flow_label_->parent = this;
+    flow_label->parent = this;
 
     yang_name = "load-balance"; yang_parent_name = "pw-template";
 }
@@ -697,15 +844,15 @@ bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::has_data() const
 {
     return ethernet.is_set
 	|| ip.is_set
-	|| (flow_label_ !=  nullptr && flow_label_->has_data());
+	|| (flow_label !=  nullptr && flow_label->has_data());
 }
 
 bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ethernet.operation)
-	|| is_set(ip.operation)
-	|| (flow_label_ !=  nullptr && flow_label_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(ethernet.yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| (flow_label !=  nullptr && flow_label->has_operation());
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_segment_path() const
@@ -731,8 +878,8 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ethernet.is_set || is_set(ethernet.operation)) leaf_name_data.push_back(ethernet.get_name_leafdata());
-    if (ip.is_set || is_set(ip.operation)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (ethernet.is_set || is_set(ethernet.yfilter)) leaf_name_data.push_back(ethernet.get_name_leafdata());
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -744,11 +891,11 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::
 {
     if(child_yang_name == "flow-label")
     {
-        if(flow_label_ == nullptr)
+        if(flow_label == nullptr)
         {
-            flow_label_ = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>();
+            flow_label = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>();
         }
-        return flow_label_;
+        return flow_label;
     }
 
     return nullptr;
@@ -757,24 +904,47 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(flow_label_ != nullptr)
+    if(flow_label != nullptr)
     {
-        children["flow-label"] = flow_label_;
+        children["flow-label"] = flow_label;
     }
 
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethernet")
     {
         ethernet = value;
+        ethernet.value_namespace = name_space;
+        ethernet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip")
     {
         ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethernet")
+    {
+        ethernet.yfilter = yfilter;
+    }
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-label" || name == "ethernet" || name == "ip")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::FlowLabel()
@@ -799,10 +969,10 @@ bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::has_data
 
 bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(static_.operation)
-	|| is_set(tlv_code_17.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(static_.yfilter)
+	|| ydk::is_set(tlv_code_17.yfilter);
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::get_segment_path() const
@@ -828,9 +998,9 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLab
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (static_.is_set || is_set(static_.operation)) leaf_name_data.push_back(static_.get_name_leafdata());
-    if (tlv_code_17.is_set || is_set(tlv_code_17.operation)) leaf_name_data.push_back(tlv_code_17.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (static_.is_set || is_set(static_.yfilter)) leaf_name_data.push_back(static_.get_name_leafdata());
+    if (tlv_code_17.is_set || is_set(tlv_code_17.yfilter)) leaf_name_data.push_back(tlv_code_17.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -849,20 +1019,49 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::Pw
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "static")
     {
         static_ = value;
+        static_.value_namespace = name_space;
+        static_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tlv-code-17")
     {
         tlv_code_17 = value;
+        tlv_code_17.value_namespace = name_space;
+        tlv_code_17.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "static")
+    {
+        static_.yfilter = yfilter;
+    }
+    if(value_path == "tlv-code-17")
+    {
+        tlv_code_17.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "static" || name == "tlv-code-17")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::PreferredPath()
@@ -889,11 +1088,11 @@ bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_data() const
 
 bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(disable_fallback.operation)
-	|| is_set(hostname.operation)
-	|| is_set(interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(disable_fallback.yfilter)
+	|| ydk::is_set(hostname.yfilter)
+	|| ydk::is_set(interface.yfilter);
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_segment_path() const
@@ -919,10 +1118,10 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (disable_fallback.is_set || is_set(disable_fallback.operation)) leaf_name_data.push_back(disable_fallback.get_name_leafdata());
-    if (hostname.is_set || is_set(hostname.operation)) leaf_name_data.push_back(hostname.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (disable_fallback.is_set || is_set(disable_fallback.yfilter)) leaf_name_data.push_back(disable_fallback.get_name_leafdata());
+    if (hostname.is_set || is_set(hostname.yfilter)) leaf_name_data.push_back(hostname.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -941,24 +1140,59 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::Pw
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-fallback")
     {
         disable_fallback = value;
+        disable_fallback.value_namespace = name_space;
+        disable_fallback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hostname")
     {
         hostname = value;
+        hostname.value_namespace = name_space;
+        hostname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "disable-fallback")
+    {
+        disable_fallback.yfilter = yfilter;
+    }
+    if(value_path == "hostname")
+    {
+        hostname.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "disable-fallback" || name == "hostname" || name == "interface")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::Sequencing::Sequencing()
@@ -981,9 +1215,9 @@ bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_data() const
 
 bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(resync.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(resync.yfilter);
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_segment_path() const
@@ -1009,8 +1243,8 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::Sequencing::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (resync.is_set || is_set(resync.operation)) leaf_name_data.push_back(resync.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (resync.is_set || is_set(resync.yfilter)) leaf_name_data.push_back(resync.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1029,16 +1263,39 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::Pw
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::Sequencing::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::Sequencing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resync")
     {
         resync = value;
+        resync.value_namespace = name_space;
+        resync.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::Sequencing::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "resync")
+    {
+        resync.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "resync")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::Vccv::Vccv()
@@ -1059,8 +1316,8 @@ bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_data() const
 
 bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(control_word.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(control_word.yfilter);
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_segment_path() const
@@ -1086,7 +1343,7 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::Vccv::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (control_word.is_set || is_set(control_word.operation)) leaf_name_data.push_back(control_word.get_name_leafdata());
+    if (control_word.is_set || is_set(control_word.yfilter)) leaf_name_data.push_back(control_word.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1105,12 +1362,29 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::Pw
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::Vccv::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::Vccv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "control-word")
     {
         control_word = value;
+        control_word.value_namespace = name_space;
+        control_word.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::Vccv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "control-word")
+    {
+        control_word.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "control-word")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::SwitchoverDelay()
@@ -1135,10 +1409,10 @@ bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_data() cons
 
 bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(never.operation)
-	|| is_set(switchover_timer.operation)
-	|| is_set(timer.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(never.yfilter)
+	|| ydk::is_set(switchover_timer.yfilter)
+	|| ydk::is_set(timer.yfilter);
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get_segment_path() const
@@ -1164,9 +1438,9 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (never.is_set || is_set(never.operation)) leaf_name_data.push_back(never.get_name_leafdata());
-    if (switchover_timer.is_set || is_set(switchover_timer.operation)) leaf_name_data.push_back(switchover_timer.get_name_leafdata());
-    if (timer.is_set || is_set(timer.operation)) leaf_name_data.push_back(timer.get_name_leafdata());
+    if (never.is_set || is_set(never.yfilter)) leaf_name_data.push_back(never.get_name_leafdata());
+    if (switchover_timer.is_set || is_set(switchover_timer.yfilter)) leaf_name_data.push_back(switchover_timer.get_name_leafdata());
+    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1185,20 +1459,49 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::Pw
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "never")
     {
         never = value;
+        never.value_namespace = name_space;
+        never.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switchover-timer")
     {
         switchover_timer = value;
+        switchover_timer.value_namespace = name_space;
+        switchover_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timer")
     {
         timer = value;
+        timer.value_namespace = name_space;
+        timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "never")
+    {
+        never.yfilter = yfilter;
+    }
+    if(value_path == "switchover-timer")
+    {
+        switchover_timer.yfilter = yfilter;
+    }
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "never" || name == "switchover-timer" || name == "timer")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::Status::Status()
@@ -1227,12 +1530,12 @@ bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_data() const
 
 bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(decoupled.operation)
-	|| is_set(disable.operation)
-	|| is_set(peer_topo_dual_homed.operation)
-	|| is_set(redundancy_master.operation)
-	|| is_set(route_watch_disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(decoupled.yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(peer_topo_dual_homed.yfilter)
+	|| ydk::is_set(redundancy_master.yfilter)
+	|| ydk::is_set(route_watch_disable.yfilter);
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::Status::get_segment_path() const
@@ -1258,11 +1561,11 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::Status::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (decoupled.is_set || is_set(decoupled.operation)) leaf_name_data.push_back(decoupled.get_name_leafdata());
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (peer_topo_dual_homed.is_set || is_set(peer_topo_dual_homed.operation)) leaf_name_data.push_back(peer_topo_dual_homed.get_name_leafdata());
-    if (redundancy_master.is_set || is_set(redundancy_master.operation)) leaf_name_data.push_back(redundancy_master.get_name_leafdata());
-    if (route_watch_disable.is_set || is_set(route_watch_disable.operation)) leaf_name_data.push_back(route_watch_disable.get_name_leafdata());
+    if (decoupled.is_set || is_set(decoupled.yfilter)) leaf_name_data.push_back(decoupled.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (peer_topo_dual_homed.is_set || is_set(peer_topo_dual_homed.yfilter)) leaf_name_data.push_back(peer_topo_dual_homed.get_name_leafdata());
+    if (redundancy_master.is_set || is_set(redundancy_master.yfilter)) leaf_name_data.push_back(redundancy_master.get_name_leafdata());
+    if (route_watch_disable.is_set || is_set(route_watch_disable.yfilter)) leaf_name_data.push_back(route_watch_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1281,28 +1584,69 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::Pw
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::Status::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "decoupled")
     {
         decoupled = value;
+        decoupled.value_namespace = name_space;
+        decoupled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-topo-dual-homed")
     {
         peer_topo_dual_homed = value;
+        peer_topo_dual_homed.value_namespace = name_space;
+        peer_topo_dual_homed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redundancy-master")
     {
         redundancy_master = value;
+        redundancy_master.value_namespace = name_space;
+        redundancy_master.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-watch-disable")
     {
         route_watch_disable = value;
+        route_watch_disable.value_namespace = name_space;
+        route_watch_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::Status::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "decoupled")
+    {
+        decoupled.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "peer-topo-dual-homed")
+    {
+        peer_topo_dual_homed.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-master")
+    {
+        redundancy_master.yfilter = yfilter;
+    }
+    if(value_path == "route-watch-disable")
+    {
+        route_watch_disable.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "decoupled" || name == "disable" || name == "peer-topo-dual-homed" || name == "redundancy-master" || name == "route-watch-disable")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::PortProfileSpec()
@@ -1333,13 +1677,13 @@ bool PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::has_data() cons
 
 bool PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(enabled.operation)
-	|| is_set(max_ports.operation)
-	|| is_set(mtu.operation)
-	|| is_set(shut_force.operation)
-	|| is_set(shutdown.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(max_ports.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(shut_force.yfilter)
+	|| ydk::is_set(shutdown.yfilter);
 }
 
 std::string PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get_segment_path() const
@@ -1365,12 +1709,12 @@ const EntityPath PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (max_ports.is_set || is_set(max_ports.operation)) leaf_name_data.push_back(max_ports.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (shut_force.is_set || is_set(shut_force.operation)) leaf_name_data.push_back(shut_force.get_name_leafdata());
-    if (shutdown.is_set || is_set(shutdown.operation)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (max_ports.is_set || is_set(max_ports.yfilter)) leaf_name_data.push_back(max_ports.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (shut_force.is_set || is_set(shut_force.yfilter)) leaf_name_data.push_back(shut_force.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1389,32 +1733,79 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::Pw
     return children;
 }
 
-void PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-ports")
     {
         max_ports = value;
+        max_ports.value_namespace = name_space;
+        max_ports.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "shut-force")
     {
         shut_force = value;
+        shut_force.value_namespace = name_space;
+        shut_force.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "shutdown")
     {
         shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "max-ports")
+    {
+        max_ports.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "shut-force")
+    {
+        shut_force.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "enabled" || name == "max-ports" || name == "mtu" || name == "shut-force" || name == "shutdown")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwStaticOamClasses::PwStaticOamClasses()
@@ -1428,9 +1819,9 @@ PseudowireConfig::PwStaticOamClasses::~PwStaticOamClasses()
 
 bool PseudowireConfig::PwStaticOamClasses::has_data() const
 {
-    for (std::size_t index=0; index<pw_static_oam_class_.size(); index++)
+    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
     {
-        if(pw_static_oam_class_[index]->has_data())
+        if(pw_static_oam_class[index]->has_data())
             return true;
     }
     return false;
@@ -1438,12 +1829,12 @@ bool PseudowireConfig::PwStaticOamClasses::has_data() const
 
 bool PseudowireConfig::PwStaticOamClasses::has_operation() const
 {
-    for (std::size_t index=0; index<pw_static_oam_class_.size(); index++)
+    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
     {
-        if(pw_static_oam_class_[index]->has_operation())
+        if(pw_static_oam_class[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PseudowireConfig::PwStaticOamClasses::get_segment_path() const
@@ -1480,7 +1871,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
 {
     if(child_yang_name == "pw-static-oam-class")
     {
-        for(auto const & c : pw_static_oam_class_)
+        for(auto const & c : pw_static_oam_class)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1490,7 +1881,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
         }
         auto c = std::make_shared<PseudowireConfig::PwStaticOamClasses::PwStaticOamClass>();
         c->parent = this;
-        pw_static_oam_class_.push_back(c);
+        pw_static_oam_class.push_back(c);
         return c;
     }
 
@@ -1500,7 +1891,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClasses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pw_static_oam_class_)
+    for (auto const & c : pw_static_oam_class)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1508,8 +1899,19 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClas
     return children;
 }
 
-void PseudowireConfig::PwStaticOamClasses::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwStaticOamClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PseudowireConfig::PwStaticOamClasses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PseudowireConfig::PwStaticOamClasses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pw-static-oam-class")
+        return true;
+    return false;
 }
 
 PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::PwStaticOamClass()
@@ -1538,12 +1940,12 @@ bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_data() const
 
 bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(ack.operation)
-	|| is_set(keepalive.operation)
-	|| is_set(timeout_refresh_ack.operation)
-	|| is_set(timeout_refresh_send.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(ack.yfilter)
+	|| ydk::is_set(keepalive.yfilter)
+	|| ydk::is_set(timeout_refresh_ack.yfilter)
+	|| ydk::is_set(timeout_refresh_send.yfilter);
 }
 
 std::string PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_segment_path() const
@@ -1569,11 +1971,11 @@ const EntityPath PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (ack.is_set || is_set(ack.operation)) leaf_name_data.push_back(ack.get_name_leafdata());
-    if (keepalive.is_set || is_set(keepalive.operation)) leaf_name_data.push_back(keepalive.get_name_leafdata());
-    if (timeout_refresh_ack.is_set || is_set(timeout_refresh_ack.operation)) leaf_name_data.push_back(timeout_refresh_ack.get_name_leafdata());
-    if (timeout_refresh_send.is_set || is_set(timeout_refresh_send.operation)) leaf_name_data.push_back(timeout_refresh_send.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (ack.is_set || is_set(ack.yfilter)) leaf_name_data.push_back(ack.get_name_leafdata());
+    if (keepalive.is_set || is_set(keepalive.yfilter)) leaf_name_data.push_back(keepalive.get_name_leafdata());
+    if (timeout_refresh_ack.is_set || is_set(timeout_refresh_ack.yfilter)) leaf_name_data.push_back(timeout_refresh_ack.get_name_leafdata());
+    if (timeout_refresh_send.is_set || is_set(timeout_refresh_send.yfilter)) leaf_name_data.push_back(timeout_refresh_send.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1592,28 +1994,69 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClas
     return children;
 }
 
-void PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::set_value(const std::string & value_path, std::string value)
+void PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ack")
     {
         ack = value;
+        ack.value_namespace = name_space;
+        ack.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "keepalive")
     {
         keepalive = value;
+        keepalive.value_namespace = name_space;
+        keepalive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-refresh-ack")
     {
         timeout_refresh_ack = value;
+        timeout_refresh_ack.value_namespace = name_space;
+        timeout_refresh_ack.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-refresh-send")
     {
         timeout_refresh_send = value;
+        timeout_refresh_send.value_namespace = name_space;
+        timeout_refresh_send.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "ack")
+    {
+        ack.yfilter = yfilter;
+    }
+    if(value_path == "keepalive")
+    {
+        keepalive.yfilter = yfilter;
+    }
+    if(value_path == "timeout-refresh-ack")
+    {
+        timeout_refresh_ack.yfilter = yfilter;
+    }
+    if(value_path == "timeout-refresh-send")
+    {
+        timeout_refresh_send.yfilter = yfilter;
+    }
+}
+
+bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "ack" || name == "keepalive" || name == "timeout-refresh-ack" || name == "timeout-refresh-send")
+        return true;
+    return false;
 }
 
 PseudowireState::PseudowireState()
@@ -1627,9 +2070,9 @@ PseudowireState::~PseudowireState()
 
 bool PseudowireState::has_data() const
 {
-    for (std::size_t index=0; index<pseudowires_.size(); index++)
+    for (std::size_t index=0; index<pseudowires.size(); index++)
     {
-        if(pseudowires_[index]->has_data())
+        if(pseudowires[index]->has_data())
             return true;
     }
     return false;
@@ -1637,12 +2080,12 @@ bool PseudowireState::has_data() const
 
 bool PseudowireState::has_operation() const
 {
-    for (std::size_t index=0; index<pseudowires_.size(); index++)
+    for (std::size_t index=0; index<pseudowires.size(); index++)
     {
-        if(pseudowires_[index]->has_operation())
+        if(pseudowires[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PseudowireState::get_segment_path() const
@@ -1676,7 +2119,7 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "pseudowires")
     {
-        for(auto const & c : pseudowires_)
+        for(auto const & c : pseudowires)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1686,7 +2129,7 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
         }
         auto c = std::make_shared<PseudowireState::Pseudowires>();
         c->parent = this;
-        pseudowires_.push_back(c);
+        pseudowires.push_back(c);
         return c;
     }
 
@@ -1696,7 +2139,7 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> PseudowireState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : pseudowires_)
+    for (auto const & c : pseudowires)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1704,7 +2147,11 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireState::get_children() c
     return children;
 }
 
-void PseudowireState::set_value(const std::string & value_path, std::string value)
+void PseudowireState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PseudowireState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -1726,6 +2173,18 @@ std::string PseudowireState::get_bundle_name() const
 augment_capabilities_function PseudowireState::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> PseudowireState::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool PseudowireState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pseudowires")
+        return true;
+    return false;
 }
 
 PseudowireState::Pseudowires::Pseudowires()
@@ -1750,9 +2209,9 @@ PseudowireState::Pseudowires::Pseudowires()
     vc_remote_if_mtu{YType::uint32, "vc-remote-if-mtu"},
     vc_type{YType::identityref, "vc-type"}
     	,
-    statistics_(std::make_shared<PseudowireState::Pseudowires::Statistics>())
+    statistics(std::make_shared<PseudowireState::Pseudowires::Statistics>())
 {
-    statistics_->parent = this;
+    statistics->parent = this;
 
     yang_name = "pseudowires"; yang_parent_name = "pseudowire-state";
 }
@@ -1782,32 +2241,32 @@ bool PseudowireState::Pseudowires::has_data() const
 	|| vc_remote_group_id.is_set
 	|| vc_remote_if_mtu.is_set
 	|| vc_type.is_set
-	|| (statistics_ !=  nullptr && statistics_->has_data());
+	|| (statistics !=  nullptr && statistics->has_data());
 }
 
 bool PseudowireState::Pseudowires::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vc_peer_address.operation)
-	|| is_set(vc_id.operation)
-	|| is_set(vc_owner_type.operation)
-	|| is_set(vc_name.operation)
-	|| is_set(vc_index.operation)
-	|| is_set(vc_control_word.operation)
-	|| is_set(vc_inbound_label.operation)
-	|| is_set(vc_inbound_oper_status.operation)
-	|| is_set(vc_local_group_id.operation)
-	|| is_set(vc_local_if_mtu.operation)
-	|| is_set(vc_oper_status.operation)
-	|| is_set(vc_outbound_label.operation)
-	|| is_set(vc_outbound_oper_status.operation)
-	|| is_set(vc_owner_name.operation)
-	|| is_set(vc_psn_type.operation)
-	|| is_set(vc_remote_control_word.operation)
-	|| is_set(vc_remote_group_id.operation)
-	|| is_set(vc_remote_if_mtu.operation)
-	|| is_set(vc_type.operation)
-	|| (statistics_ !=  nullptr && statistics_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(vc_peer_address.yfilter)
+	|| ydk::is_set(vc_id.yfilter)
+	|| ydk::is_set(vc_owner_type.yfilter)
+	|| ydk::is_set(vc_name.yfilter)
+	|| ydk::is_set(vc_index.yfilter)
+	|| ydk::is_set(vc_control_word.yfilter)
+	|| ydk::is_set(vc_inbound_label.yfilter)
+	|| ydk::is_set(vc_inbound_oper_status.yfilter)
+	|| ydk::is_set(vc_local_group_id.yfilter)
+	|| ydk::is_set(vc_local_if_mtu.yfilter)
+	|| ydk::is_set(vc_oper_status.yfilter)
+	|| ydk::is_set(vc_outbound_label.yfilter)
+	|| ydk::is_set(vc_outbound_oper_status.yfilter)
+	|| ydk::is_set(vc_owner_name.yfilter)
+	|| ydk::is_set(vc_psn_type.yfilter)
+	|| ydk::is_set(vc_remote_control_word.yfilter)
+	|| ydk::is_set(vc_remote_group_id.yfilter)
+	|| ydk::is_set(vc_remote_if_mtu.yfilter)
+	|| ydk::is_set(vc_type.yfilter)
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string PseudowireState::Pseudowires::get_segment_path() const
@@ -1833,25 +2292,25 @@ const EntityPath PseudowireState::Pseudowires::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vc_peer_address.is_set || is_set(vc_peer_address.operation)) leaf_name_data.push_back(vc_peer_address.get_name_leafdata());
-    if (vc_id.is_set || is_set(vc_id.operation)) leaf_name_data.push_back(vc_id.get_name_leafdata());
-    if (vc_owner_type.is_set || is_set(vc_owner_type.operation)) leaf_name_data.push_back(vc_owner_type.get_name_leafdata());
-    if (vc_name.is_set || is_set(vc_name.operation)) leaf_name_data.push_back(vc_name.get_name_leafdata());
-    if (vc_index.is_set || is_set(vc_index.operation)) leaf_name_data.push_back(vc_index.get_name_leafdata());
-    if (vc_control_word.is_set || is_set(vc_control_word.operation)) leaf_name_data.push_back(vc_control_word.get_name_leafdata());
-    if (vc_inbound_label.is_set || is_set(vc_inbound_label.operation)) leaf_name_data.push_back(vc_inbound_label.get_name_leafdata());
-    if (vc_inbound_oper_status.is_set || is_set(vc_inbound_oper_status.operation)) leaf_name_data.push_back(vc_inbound_oper_status.get_name_leafdata());
-    if (vc_local_group_id.is_set || is_set(vc_local_group_id.operation)) leaf_name_data.push_back(vc_local_group_id.get_name_leafdata());
-    if (vc_local_if_mtu.is_set || is_set(vc_local_if_mtu.operation)) leaf_name_data.push_back(vc_local_if_mtu.get_name_leafdata());
-    if (vc_oper_status.is_set || is_set(vc_oper_status.operation)) leaf_name_data.push_back(vc_oper_status.get_name_leafdata());
-    if (vc_outbound_label.is_set || is_set(vc_outbound_label.operation)) leaf_name_data.push_back(vc_outbound_label.get_name_leafdata());
-    if (vc_outbound_oper_status.is_set || is_set(vc_outbound_oper_status.operation)) leaf_name_data.push_back(vc_outbound_oper_status.get_name_leafdata());
-    if (vc_owner_name.is_set || is_set(vc_owner_name.operation)) leaf_name_data.push_back(vc_owner_name.get_name_leafdata());
-    if (vc_psn_type.is_set || is_set(vc_psn_type.operation)) leaf_name_data.push_back(vc_psn_type.get_name_leafdata());
-    if (vc_remote_control_word.is_set || is_set(vc_remote_control_word.operation)) leaf_name_data.push_back(vc_remote_control_word.get_name_leafdata());
-    if (vc_remote_group_id.is_set || is_set(vc_remote_group_id.operation)) leaf_name_data.push_back(vc_remote_group_id.get_name_leafdata());
-    if (vc_remote_if_mtu.is_set || is_set(vc_remote_if_mtu.operation)) leaf_name_data.push_back(vc_remote_if_mtu.get_name_leafdata());
-    if (vc_type.is_set || is_set(vc_type.operation)) leaf_name_data.push_back(vc_type.get_name_leafdata());
+    if (vc_peer_address.is_set || is_set(vc_peer_address.yfilter)) leaf_name_data.push_back(vc_peer_address.get_name_leafdata());
+    if (vc_id.is_set || is_set(vc_id.yfilter)) leaf_name_data.push_back(vc_id.get_name_leafdata());
+    if (vc_owner_type.is_set || is_set(vc_owner_type.yfilter)) leaf_name_data.push_back(vc_owner_type.get_name_leafdata());
+    if (vc_name.is_set || is_set(vc_name.yfilter)) leaf_name_data.push_back(vc_name.get_name_leafdata());
+    if (vc_index.is_set || is_set(vc_index.yfilter)) leaf_name_data.push_back(vc_index.get_name_leafdata());
+    if (vc_control_word.is_set || is_set(vc_control_word.yfilter)) leaf_name_data.push_back(vc_control_word.get_name_leafdata());
+    if (vc_inbound_label.is_set || is_set(vc_inbound_label.yfilter)) leaf_name_data.push_back(vc_inbound_label.get_name_leafdata());
+    if (vc_inbound_oper_status.is_set || is_set(vc_inbound_oper_status.yfilter)) leaf_name_data.push_back(vc_inbound_oper_status.get_name_leafdata());
+    if (vc_local_group_id.is_set || is_set(vc_local_group_id.yfilter)) leaf_name_data.push_back(vc_local_group_id.get_name_leafdata());
+    if (vc_local_if_mtu.is_set || is_set(vc_local_if_mtu.yfilter)) leaf_name_data.push_back(vc_local_if_mtu.get_name_leafdata());
+    if (vc_oper_status.is_set || is_set(vc_oper_status.yfilter)) leaf_name_data.push_back(vc_oper_status.get_name_leafdata());
+    if (vc_outbound_label.is_set || is_set(vc_outbound_label.yfilter)) leaf_name_data.push_back(vc_outbound_label.get_name_leafdata());
+    if (vc_outbound_oper_status.is_set || is_set(vc_outbound_oper_status.yfilter)) leaf_name_data.push_back(vc_outbound_oper_status.get_name_leafdata());
+    if (vc_owner_name.is_set || is_set(vc_owner_name.yfilter)) leaf_name_data.push_back(vc_owner_name.get_name_leafdata());
+    if (vc_psn_type.is_set || is_set(vc_psn_type.yfilter)) leaf_name_data.push_back(vc_psn_type.get_name_leafdata());
+    if (vc_remote_control_word.is_set || is_set(vc_remote_control_word.yfilter)) leaf_name_data.push_back(vc_remote_control_word.get_name_leafdata());
+    if (vc_remote_group_id.is_set || is_set(vc_remote_group_id.yfilter)) leaf_name_data.push_back(vc_remote_group_id.get_name_leafdata());
+    if (vc_remote_if_mtu.is_set || is_set(vc_remote_if_mtu.yfilter)) leaf_name_data.push_back(vc_remote_if_mtu.get_name_leafdata());
+    if (vc_type.is_set || is_set(vc_type.yfilter)) leaf_name_data.push_back(vc_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1863,11 +2322,11 @@ std::shared_ptr<Entity> PseudowireState::Pseudowires::get_child_by_name(const st
 {
     if(child_yang_name == "statistics")
     {
-        if(statistics_ == nullptr)
+        if(statistics == nullptr)
         {
-            statistics_ = std::make_shared<PseudowireState::Pseudowires::Statistics>();
+            statistics = std::make_shared<PseudowireState::Pseudowires::Statistics>();
         }
-        return statistics_;
+        return statistics;
     }
 
     return nullptr;
@@ -1876,92 +2335,217 @@ std::shared_ptr<Entity> PseudowireState::Pseudowires::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> PseudowireState::Pseudowires::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(statistics_ != nullptr)
+    if(statistics != nullptr)
     {
-        children["statistics"] = statistics_;
+        children["statistics"] = statistics;
     }
 
     return children;
 }
 
-void PseudowireState::Pseudowires::set_value(const std::string & value_path, std::string value)
+void PseudowireState::Pseudowires::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vc-peer-address")
     {
         vc_peer_address = value;
+        vc_peer_address.value_namespace = name_space;
+        vc_peer_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-id")
     {
         vc_id = value;
+        vc_id.value_namespace = name_space;
+        vc_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-owner-type")
     {
         vc_owner_type = value;
+        vc_owner_type.value_namespace = name_space;
+        vc_owner_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-name")
     {
         vc_name = value;
+        vc_name.value_namespace = name_space;
+        vc_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-index")
     {
         vc_index = value;
+        vc_index.value_namespace = name_space;
+        vc_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-control-word")
     {
         vc_control_word = value;
+        vc_control_word.value_namespace = name_space;
+        vc_control_word.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-inbound-label")
     {
         vc_inbound_label = value;
+        vc_inbound_label.value_namespace = name_space;
+        vc_inbound_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-inbound-oper-status")
     {
         vc_inbound_oper_status = value;
+        vc_inbound_oper_status.value_namespace = name_space;
+        vc_inbound_oper_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-local-group-id")
     {
         vc_local_group_id = value;
+        vc_local_group_id.value_namespace = name_space;
+        vc_local_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-local-if-mtu")
     {
         vc_local_if_mtu = value;
+        vc_local_if_mtu.value_namespace = name_space;
+        vc_local_if_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-oper-status")
     {
         vc_oper_status = value;
+        vc_oper_status.value_namespace = name_space;
+        vc_oper_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-outbound-label")
     {
         vc_outbound_label = value;
+        vc_outbound_label.value_namespace = name_space;
+        vc_outbound_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-outbound-oper-status")
     {
         vc_outbound_oper_status = value;
+        vc_outbound_oper_status.value_namespace = name_space;
+        vc_outbound_oper_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-owner-name")
     {
         vc_owner_name = value;
+        vc_owner_name.value_namespace = name_space;
+        vc_owner_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-psn-type")
     {
         vc_psn_type = value;
+        vc_psn_type.value_namespace = name_space;
+        vc_psn_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-remote-control-word")
     {
         vc_remote_control_word = value;
+        vc_remote_control_word.value_namespace = name_space;
+        vc_remote_control_word.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-remote-group-id")
     {
         vc_remote_group_id = value;
+        vc_remote_group_id.value_namespace = name_space;
+        vc_remote_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-remote-if-mtu")
     {
         vc_remote_if_mtu = value;
+        vc_remote_if_mtu.value_namespace = name_space;
+        vc_remote_if_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-type")
     {
         vc_type = value;
+        vc_type.value_namespace = name_space;
+        vc_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PseudowireState::Pseudowires::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vc-peer-address")
+    {
+        vc_peer_address.yfilter = yfilter;
+    }
+    if(value_path == "vc-id")
+    {
+        vc_id.yfilter = yfilter;
+    }
+    if(value_path == "vc-owner-type")
+    {
+        vc_owner_type.yfilter = yfilter;
+    }
+    if(value_path == "vc-name")
+    {
+        vc_name.yfilter = yfilter;
+    }
+    if(value_path == "vc-index")
+    {
+        vc_index.yfilter = yfilter;
+    }
+    if(value_path == "vc-control-word")
+    {
+        vc_control_word.yfilter = yfilter;
+    }
+    if(value_path == "vc-inbound-label")
+    {
+        vc_inbound_label.yfilter = yfilter;
+    }
+    if(value_path == "vc-inbound-oper-status")
+    {
+        vc_inbound_oper_status.yfilter = yfilter;
+    }
+    if(value_path == "vc-local-group-id")
+    {
+        vc_local_group_id.yfilter = yfilter;
+    }
+    if(value_path == "vc-local-if-mtu")
+    {
+        vc_local_if_mtu.yfilter = yfilter;
+    }
+    if(value_path == "vc-oper-status")
+    {
+        vc_oper_status.yfilter = yfilter;
+    }
+    if(value_path == "vc-outbound-label")
+    {
+        vc_outbound_label.yfilter = yfilter;
+    }
+    if(value_path == "vc-outbound-oper-status")
+    {
+        vc_outbound_oper_status.yfilter = yfilter;
+    }
+    if(value_path == "vc-owner-name")
+    {
+        vc_owner_name.yfilter = yfilter;
+    }
+    if(value_path == "vc-psn-type")
+    {
+        vc_psn_type.yfilter = yfilter;
+    }
+    if(value_path == "vc-remote-control-word")
+    {
+        vc_remote_control_word.yfilter = yfilter;
+    }
+    if(value_path == "vc-remote-group-id")
+    {
+        vc_remote_group_id.yfilter = yfilter;
+    }
+    if(value_path == "vc-remote-if-mtu")
+    {
+        vc_remote_if_mtu.yfilter = yfilter;
+    }
+    if(value_path == "vc-type")
+    {
+        vc_type.yfilter = yfilter;
+    }
+}
+
+bool PseudowireState::Pseudowires::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics" || name == "vc-peer-address" || name == "vc-id" || name == "vc-owner-type" || name == "vc-name" || name == "vc-index" || name == "vc-control-word" || name == "vc-inbound-label" || name == "vc-inbound-oper-status" || name == "vc-local-group-id" || name == "vc-local-if-mtu" || name == "vc-oper-status" || name == "vc-outbound-label" || name == "vc-outbound-oper-status" || name == "vc-owner-name" || name == "vc-psn-type" || name == "vc-remote-control-word" || name == "vc-remote-group-id" || name == "vc-remote-if-mtu" || name == "vc-type")
+        return true;
+    return false;
 }
 
 PseudowireState::Pseudowires::Statistics::Statistics()
@@ -1998,16 +2582,16 @@ bool PseudowireState::Pseudowires::Statistics::has_data() const
 
 bool PseudowireState::Pseudowires::Statistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(discontinuity_time.operation)
-	|| is_set(in_errors.operation)
-	|| is_set(in_octets.operation)
-	|| is_set(in_pkts.operation)
-	|| is_set(out_errors.operation)
-	|| is_set(out_octets.operation)
-	|| is_set(out_pkts.operation)
-	|| is_set(vc_create_time.operation)
-	|| is_set(vc_up_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(discontinuity_time.yfilter)
+	|| ydk::is_set(in_errors.yfilter)
+	|| ydk::is_set(in_octets.yfilter)
+	|| ydk::is_set(in_pkts.yfilter)
+	|| ydk::is_set(out_errors.yfilter)
+	|| ydk::is_set(out_octets.yfilter)
+	|| ydk::is_set(out_pkts.yfilter)
+	|| ydk::is_set(vc_create_time.yfilter)
+	|| ydk::is_set(vc_up_time.yfilter);
 }
 
 std::string PseudowireState::Pseudowires::Statistics::get_segment_path() const
@@ -2033,15 +2617,15 @@ const EntityPath PseudowireState::Pseudowires::Statistics::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (discontinuity_time.is_set || is_set(discontinuity_time.operation)) leaf_name_data.push_back(discontinuity_time.get_name_leafdata());
-    if (in_errors.is_set || is_set(in_errors.operation)) leaf_name_data.push_back(in_errors.get_name_leafdata());
-    if (in_octets.is_set || is_set(in_octets.operation)) leaf_name_data.push_back(in_octets.get_name_leafdata());
-    if (in_pkts.is_set || is_set(in_pkts.operation)) leaf_name_data.push_back(in_pkts.get_name_leafdata());
-    if (out_errors.is_set || is_set(out_errors.operation)) leaf_name_data.push_back(out_errors.get_name_leafdata());
-    if (out_octets.is_set || is_set(out_octets.operation)) leaf_name_data.push_back(out_octets.get_name_leafdata());
-    if (out_pkts.is_set || is_set(out_pkts.operation)) leaf_name_data.push_back(out_pkts.get_name_leafdata());
-    if (vc_create_time.is_set || is_set(vc_create_time.operation)) leaf_name_data.push_back(vc_create_time.get_name_leafdata());
-    if (vc_up_time.is_set || is_set(vc_up_time.operation)) leaf_name_data.push_back(vc_up_time.get_name_leafdata());
+    if (discontinuity_time.is_set || is_set(discontinuity_time.yfilter)) leaf_name_data.push_back(discontinuity_time.get_name_leafdata());
+    if (in_errors.is_set || is_set(in_errors.yfilter)) leaf_name_data.push_back(in_errors.get_name_leafdata());
+    if (in_octets.is_set || is_set(in_octets.yfilter)) leaf_name_data.push_back(in_octets.get_name_leafdata());
+    if (in_pkts.is_set || is_set(in_pkts.yfilter)) leaf_name_data.push_back(in_pkts.get_name_leafdata());
+    if (out_errors.is_set || is_set(out_errors.yfilter)) leaf_name_data.push_back(out_errors.get_name_leafdata());
+    if (out_octets.is_set || is_set(out_octets.yfilter)) leaf_name_data.push_back(out_octets.get_name_leafdata());
+    if (out_pkts.is_set || is_set(out_pkts.yfilter)) leaf_name_data.push_back(out_pkts.get_name_leafdata());
+    if (vc_create_time.is_set || is_set(vc_create_time.yfilter)) leaf_name_data.push_back(vc_create_time.get_name_leafdata());
+    if (vc_up_time.is_set || is_set(vc_up_time.yfilter)) leaf_name_data.push_back(vc_up_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2060,239 +2644,304 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireState::Pseudowires::Sta
     return children;
 }
 
-void PseudowireState::Pseudowires::Statistics::set_value(const std::string & value_path, std::string value)
+void PseudowireState::Pseudowires::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "discontinuity-time")
     {
         discontinuity_time = value;
+        discontinuity_time.value_namespace = name_space;
+        discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-errors")
     {
         in_errors = value;
+        in_errors.value_namespace = name_space;
+        in_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-octets")
     {
         in_octets = value;
+        in_octets.value_namespace = name_space;
+        in_octets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts")
     {
         in_pkts = value;
+        in_pkts.value_namespace = name_space;
+        in_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-errors")
     {
         out_errors = value;
+        out_errors.value_namespace = name_space;
+        out_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-octets")
     {
         out_octets = value;
+        out_octets.value_namespace = name_space;
+        out_octets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-pkts")
     {
         out_pkts = value;
+        out_pkts.value_namespace = name_space;
+        out_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-create-time")
     {
         vc_create_time = value;
+        vc_create_time.value_namespace = name_space;
+        vc_create_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vc-up-time")
     {
         vc_up_time = value;
+        vc_up_time.value_namespace = name_space;
+        vc_up_time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-PwVcTypeEtherIdentity::PwVcTypeEtherIdentity()
-     : Identity("cisco-pw:pw-vc-type-ether")
+void PseudowireState::Pseudowires::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discontinuity-time")
+    {
+        discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "in-errors")
+    {
+        in_errors.yfilter = yfilter;
+    }
+    if(value_path == "in-octets")
+    {
+        in_octets.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts")
+    {
+        in_pkts.yfilter = yfilter;
+    }
+    if(value_path == "out-errors")
+    {
+        out_errors.yfilter = yfilter;
+    }
+    if(value_path == "out-octets")
+    {
+        out_octets.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts")
+    {
+        out_pkts.yfilter = yfilter;
+    }
+    if(value_path == "vc-create-time")
+    {
+        vc_create_time.yfilter = yfilter;
+    }
+    if(value_path == "vc-up-time")
+    {
+        vc_up_time.yfilter = yfilter;
+    }
+}
+
+bool PseudowireState::Pseudowires::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discontinuity-time" || name == "in-errors" || name == "in-octets" || name == "in-pkts" || name == "out-errors" || name == "out-octets" || name == "out-pkts" || name == "vc-create-time" || name == "vc-up-time")
+        return true;
+    return false;
+}
+
+PwSequencingReceive::PwSequencingReceive()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-receive")
 {
 }
 
-PwVcTypeEtherIdentity::~PwVcTypeEtherIdentity()
+PwSequencingReceive::~PwSequencingReceive()
 {
 }
 
-PwSequencingTransmitIdentity::PwSequencingTransmitIdentity()
-     : Identity("cisco-pw:pw-sequencing-transmit")
+PwSignalingProtocolBgp::PwSignalingProtocolBgp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-bgp")
 {
 }
 
-PwSequencingTransmitIdentity::~PwSequencingTransmitIdentity()
+PwSignalingProtocolBgp::~PwSignalingProtocolBgp()
 {
 }
 
-PwVcTypeVlanPassthroughIdentity::PwVcTypeVlanPassthroughIdentity()
-     : Identity("cisco-pw:pw-vc-type-vlan-passthrough")
+PwSignalingProtocolLdp::PwSignalingProtocolLdp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-ldp")
 {
 }
 
-PwVcTypeVlanPassthroughIdentity::~PwVcTypeVlanPassthroughIdentity()
+PwSignalingProtocolLdp::~PwSignalingProtocolLdp()
 {
 }
 
-PwEncapMplsIdentity::PwEncapMplsIdentity()
-     : Identity("cisco-pw:pw-encap-mpls")
+PwLbIpType::PwLbIpType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-type")
 {
 }
 
-PwEncapMplsIdentity::~PwEncapMplsIdentity()
+PwLbIpType::~PwLbIpType()
 {
 }
 
-PwLbIpDstIpIdentity::PwLbIpDstIpIdentity()
-     : Identity("cisco-pw:pw-lb-ip-dst-ip")
+PwSignalingProtocolNone::PwSignalingProtocolNone()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-none")
 {
 }
 
-PwLbIpDstIpIdentity::~PwLbIpDstIpIdentity()
+PwSignalingProtocolNone::~PwSignalingProtocolNone()
 {
 }
 
-PwSequencingReceiveIdentity::PwSequencingReceiveIdentity()
-     : Identity("cisco-pw:pw-sequencing-receive")
+PwSequencingBoth::PwSequencingBoth()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-both")
 {
 }
 
-PwSequencingReceiveIdentity::~PwSequencingReceiveIdentity()
+PwSequencingBoth::~PwSequencingBoth()
 {
 }
 
-PwLbEthernetTypeIdentity::PwLbEthernetTypeIdentity()
-     : Identity("cisco-pw:pw-lb-ethernet-type")
+PwVcTypeEther::PwVcTypeEther()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-ether")
 {
 }
 
-PwLbEthernetTypeIdentity::~PwLbEthernetTypeIdentity()
+PwVcTypeEther::~PwVcTypeEther()
 {
 }
 
-PwSignalingProtocolLdpIdentity::PwSignalingProtocolLdpIdentity()
-     : Identity("cisco-pw:pw-signaling-protocol-ldp")
+PwLbIpDstIp::PwLbIpDstIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-dst-ip")
 {
 }
 
-PwSignalingProtocolLdpIdentity::~PwSignalingProtocolLdpIdentity()
+PwLbIpDstIp::~PwLbIpDstIp()
 {
 }
 
-PwSequencingBothIdentity::PwSequencingBothIdentity()
-     : Identity("cisco-pw:pw-sequencing-both")
+PwEncapMpls::PwEncapMpls()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encap-mpls")
 {
 }
 
-PwSequencingBothIdentity::~PwSequencingBothIdentity()
+PwEncapMpls::~PwEncapMpls()
 {
 }
 
-PwVcTypeVlanIdentity::PwVcTypeVlanIdentity()
-     : Identity("cisco-pw:pw-vc-type-vlan")
+PwLbEthernetType::PwLbEthernetType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ethernet-type")
 {
 }
 
-PwVcTypeVlanIdentity::~PwVcTypeVlanIdentity()
+PwLbEthernetType::~PwLbEthernetType()
 {
 }
 
-PwLbIpTypeIdentity::PwLbIpTypeIdentity()
-     : Identity("cisco-pw:pw-lb-ip-type")
+PwSequencingTransmit::PwSequencingTransmit()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-transmit")
 {
 }
 
-PwLbIpTypeIdentity::~PwLbIpTypeIdentity()
+PwSequencingTransmit::~PwSequencingTransmit()
 {
 }
 
-PwSignalingProtocolNoneIdentity::PwSignalingProtocolNoneIdentity()
-     : Identity("cisco-pw:pw-signaling-protocol-none")
+PwLbEthSrcDstMac::PwLbEthSrcDstMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-dst-mac")
 {
 }
 
-PwSignalingProtocolNoneIdentity::~PwSignalingProtocolNoneIdentity()
+PwLbEthSrcDstMac::~PwLbEthSrcDstMac()
 {
 }
 
-PwSignalingProtocolBgpIdentity::PwSignalingProtocolBgpIdentity()
-     : Identity("cisco-pw:pw-signaling-protocol-bgp")
+PwVcTypeVlan::PwVcTypeVlan()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan")
 {
 }
 
-PwSignalingProtocolBgpIdentity::~PwSignalingProtocolBgpIdentity()
+PwVcTypeVlan::~PwVcTypeVlan()
 {
 }
 
-PwLbIpSrcIpIdentity::PwLbIpSrcIpIdentity()
-     : Identity("cisco-pw:pw-lb-ip-src-ip")
+PwVcTypeVlanPassthrough::PwVcTypeVlanPassthrough()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan-passthrough")
 {
 }
 
-PwLbIpSrcIpIdentity::~PwLbIpSrcIpIdentity()
+PwVcTypeVlanPassthrough::~PwVcTypeVlanPassthrough()
 {
 }
 
-PwLbEthSrcDstMacIdentity::PwLbEthSrcDstMacIdentity()
-     : Identity("cisco-pw:pw-lb-eth-src-dst-mac")
+PwLbIpSrcDstIp::PwLbIpSrcDstIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-dst-ip")
 {
 }
 
-PwLbEthSrcDstMacIdentity::~PwLbEthSrcDstMacIdentity()
+PwLbIpSrcDstIp::~PwLbIpSrcDstIp()
 {
 }
 
-PwLbEthDstMacIdentity::PwLbEthDstMacIdentity()
-     : Identity("cisco-pw:pw-lb-eth-dst-mac")
+PwLbEthSrcMac::PwLbEthSrcMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-mac")
 {
 }
 
-PwLbEthDstMacIdentity::~PwLbEthDstMacIdentity()
+PwLbEthSrcMac::~PwLbEthSrcMac()
 {
 }
 
-PwLbIpSrcDstIpIdentity::PwLbIpSrcDstIpIdentity()
-     : Identity("cisco-pw:pw-lb-ip-src-dst-ip")
+PwLbIpSrcIp::PwLbIpSrcIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-ip")
 {
 }
 
-PwLbIpSrcDstIpIdentity::~PwLbIpSrcDstIpIdentity()
+PwLbIpSrcIp::~PwLbIpSrcIp()
 {
 }
 
-PwLbEthSrcMacIdentity::PwLbEthSrcMacIdentity()
-     : Identity("cisco-pw:pw-lb-eth-src-mac")
+PwLbEthDstMac::PwLbEthDstMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-dst-mac")
 {
 }
 
-PwLbEthSrcMacIdentity::~PwLbEthSrcMacIdentity()
+PwLbEthDstMac::~PwLbEthDstMac()
 {
 }
 
-const Enum::YLeaf PwOperStateTypeEnum::up {1, "up"};
-const Enum::YLeaf PwOperStateTypeEnum::down {2, "down"};
-const Enum::YLeaf PwOperStateTypeEnum::cold_standby {3, "cold-standby"};
-const Enum::YLeaf PwOperStateTypeEnum::hot_standby {4, "hot-standby"};
-const Enum::YLeaf PwOperStateTypeEnum::recovering {5, "recovering"};
-const Enum::YLeaf PwOperStateTypeEnum::no_hardware {6, "no-hardware"};
-const Enum::YLeaf PwOperStateTypeEnum::unresolved {7, "unresolved"};
-const Enum::YLeaf PwOperStateTypeEnum::provisioned {8, "provisioned"};
-const Enum::YLeaf PwOperStateTypeEnum::remote_standby {9, "remote-standby"};
-const Enum::YLeaf PwOperStateTypeEnum::local_ready {10, "local-ready"};
-const Enum::YLeaf PwOperStateTypeEnum::all_ready {11, "all-ready"};
+const Enum::YLeaf PwOperStateType::up {1, "up"};
+const Enum::YLeaf PwOperStateType::down {2, "down"};
+const Enum::YLeaf PwOperStateType::cold_standby {3, "cold-standby"};
+const Enum::YLeaf PwOperStateType::hot_standby {4, "hot-standby"};
+const Enum::YLeaf PwOperStateType::recovering {5, "recovering"};
+const Enum::YLeaf PwOperStateType::no_hardware {6, "no-hardware"};
+const Enum::YLeaf PwOperStateType::unresolved {7, "unresolved"};
+const Enum::YLeaf PwOperStateType::provisioned {8, "provisioned"};
+const Enum::YLeaf PwOperStateType::remote_standby {9, "remote-standby"};
+const Enum::YLeaf PwOperStateType::local_ready {10, "local-ready"};
+const Enum::YLeaf PwOperStateType::all_ready {11, "all-ready"};
 
-const Enum::YLeaf PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::DirectionEnum::transmit {1, "transmit"};
-const Enum::YLeaf PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::DirectionEnum::receive {2, "receive"};
-const Enum::YLeaf PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::DirectionEnum::both {3, "both"};
+const Enum::YLeaf PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::Direction::transmit {1, "transmit"};
+const Enum::YLeaf PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::Direction::receive {2, "receive"};
+const Enum::YLeaf PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::Direction::both {3, "both"};
 
-const Enum::YLeaf PseudowireState::Pseudowires::VcOwnerTypeEnum::vpws {1, "vpws"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcOwnerTypeEnum::vpls_vfi {2, "vpls-vfi"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcOwnerTypeEnum::vpls_bridge_domain {3, "vpls-bridge-domain"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcOwnerTypeEnum::interface {4, "interface"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcOwnerType::vpws {1, "vpws"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcOwnerType::vpls_vfi {2, "vpls-vfi"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcOwnerType::vpls_bridge_domain {3, "vpls-bridge-domain"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcOwnerType::interface {4, "interface"};
 
-const Enum::YLeaf PseudowireState::Pseudowires::VcPsnTypeEnum::mpls {1, "mpls"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcPsnTypeEnum::l2tp {2, "l2tp"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcPsnTypeEnum::ip {3, "ip"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcPsnTypeEnum::mpls_over_ip {4, "mpls-over-ip"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcPsnTypeEnum::gre {5, "gre"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcPsnTypeEnum::other {6, "other"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcPsnType::mpls {1, "mpls"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcPsnType::l2tp {2, "l2tp"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcPsnType::ip {3, "ip"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcPsnType::mpls_over_ip {4, "mpls-over-ip"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcPsnType::gre {5, "gre"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcPsnType::other {6, "other"};
 
-const Enum::YLeaf PseudowireState::Pseudowires::VcRemoteControlWordEnum::noControlWord {1, "noControlWord"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcRemoteControlWordEnum::withControlWord {2, "withControlWord"};
-const Enum::YLeaf PseudowireState::Pseudowires::VcRemoteControlWordEnum::notYetKnown {3, "notYetKnown"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcRemoteControlWord::noControlWord {1, "noControlWord"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcRemoteControlWord::withControlWord {2, "withControlWord"};
+const Enum::YLeaf PseudowireState::Pseudowires::VcRemoteControlWord::notYetKnown {3, "notYetKnown"};
 
 
 }

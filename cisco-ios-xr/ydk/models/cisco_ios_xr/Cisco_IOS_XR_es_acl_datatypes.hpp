@@ -7,15 +7,15 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_es_acl_datatypes {
 
-class AclUsageAppIdEnumEnum : public Enum
+class AclUsageAppIdEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf pfilter;
-        static const Enum::YLeaf bgp;
-        static const Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf pfilter;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf ospf;
 
 };
 

@@ -6,12 +6,14 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_wanphy_ui_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_wanphy_ui_cfg {
 
-const Enum::YLeaf WanphyLanModeEnum::on {1, "on"};
+const Enum::YLeaf WanphyWanMode::on {1, "on"};
 
-const Enum::YLeaf WanphyWanModeEnum::on {1, "on"};
+const Enum::YLeaf WanphyLanMode::on {1, "on"};
 
 
 }

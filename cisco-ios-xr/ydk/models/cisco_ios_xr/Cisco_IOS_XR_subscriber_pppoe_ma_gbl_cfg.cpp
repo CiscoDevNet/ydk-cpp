@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_subscriber_pppoe_ma_gbl_cfg {
 
 PppoeCfg::PppoeCfg()
@@ -34,9 +36,9 @@ bool PppoeCfg::has_data() const
 
 bool PppoeCfg::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_flight_window.operation)
-	|| is_set(session_id_space_flat.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(in_flight_window.yfilter)
+	|| ydk::is_set(session_id_space_flat.yfilter)
 	|| (pppoe_bba_groups !=  nullptr && pppoe_bba_groups->has_operation());
 }
 
@@ -60,8 +62,8 @@ const EntityPath PppoeCfg::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_flight_window.is_set || is_set(in_flight_window.operation)) leaf_name_data.push_back(in_flight_window.get_name_leafdata());
-    if (session_id_space_flat.is_set || is_set(session_id_space_flat.operation)) leaf_name_data.push_back(session_id_space_flat.get_name_leafdata());
+    if (in_flight_window.is_set || is_set(in_flight_window.yfilter)) leaf_name_data.push_back(in_flight_window.get_name_leafdata());
+    if (session_id_space_flat.is_set || is_set(session_id_space_flat.yfilter)) leaf_name_data.push_back(session_id_space_flat.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -94,15 +96,31 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::get_children() const
     return children;
 }
 
-void PppoeCfg::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-flight-window")
     {
         in_flight_window = value;
+        in_flight_window.value_namespace = name_space;
+        in_flight_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id-space-flat")
     {
         session_id_space_flat = value;
+        session_id_space_flat.value_namespace = name_space;
+        session_id_space_flat.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PppoeCfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-flight-window")
+    {
+        in_flight_window.yfilter = yfilter;
+    }
+    if(value_path == "session-id-space-flat")
+    {
+        session_id_space_flat.yfilter = yfilter;
     }
 }
 
@@ -124,6 +142,18 @@ std::string PppoeCfg::get_bundle_name() const
 augment_capabilities_function PppoeCfg::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> PppoeCfg::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PppoeCfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pppoe-bba-groups" || name == "in-flight-window" || name == "session-id-space-flat")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroups()
@@ -152,7 +182,7 @@ bool PppoeCfg::PppoeBbaGroups::has_operation() const
         if(pppoe_bba_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::get_segment_path() const
@@ -217,8 +247,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::get_chi
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pppoe-bba-group")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PppoeBbaGroup()
@@ -264,12 +305,12 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::has_data() const
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bba_group.operation)
-	|| is_set(completion_timeout.operation)
-	|| is_set(enable_padt_after_shut_down.operation)
-	|| is_set(invalid_session_id.operation)
-	|| is_set(mtu.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bba_group.yfilter)
+	|| ydk::is_set(completion_timeout.yfilter)
+	|| ydk::is_set(enable_padt_after_shut_down.yfilter)
+	|| ydk::is_set(invalid_session_id.yfilter)
+	|| ydk::is_set(mtu.yfilter)
 	|| (control_packets !=  nullptr && control_packets->has_operation())
 	|| (pa_do_delay !=  nullptr && pa_do_delay->has_operation())
 	|| (sessions !=  nullptr && sessions->has_operation())
@@ -299,11 +340,11 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bba_group.is_set || is_set(bba_group.operation)) leaf_name_data.push_back(bba_group.get_name_leafdata());
-    if (completion_timeout.is_set || is_set(completion_timeout.operation)) leaf_name_data.push_back(completion_timeout.get_name_leafdata());
-    if (enable_padt_after_shut_down.is_set || is_set(enable_padt_after_shut_down.operation)) leaf_name_data.push_back(enable_padt_after_shut_down.get_name_leafdata());
-    if (invalid_session_id.is_set || is_set(invalid_session_id.operation)) leaf_name_data.push_back(invalid_session_id.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (bba_group.is_set || is_set(bba_group.yfilter)) leaf_name_data.push_back(bba_group.get_name_leafdata());
+    if (completion_timeout.is_set || is_set(completion_timeout.yfilter)) leaf_name_data.push_back(completion_timeout.get_name_leafdata());
+    if (enable_padt_after_shut_down.is_set || is_set(enable_padt_after_shut_down.yfilter)) leaf_name_data.push_back(enable_padt_after_shut_down.get_name_leafdata());
+    if (invalid_session_id.is_set || is_set(invalid_session_id.yfilter)) leaf_name_data.push_back(invalid_session_id.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -378,28 +419,69 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bba-group")
     {
         bba_group = value;
+        bba_group.value_namespace = name_space;
+        bba_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "completion-timeout")
     {
         completion_timeout = value;
+        completion_timeout.value_namespace = name_space;
+        completion_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-padt-after-shut-down")
     {
         enable_padt_after_shut_down = value;
+        enable_padt_after_shut_down.value_namespace = name_space;
+        enable_padt_after_shut_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-session-id")
     {
         invalid_session_id = value;
+        invalid_session_id.value_namespace = name_space;
+        invalid_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bba-group")
+    {
+        bba_group.yfilter = yfilter;
+    }
+    if(value_path == "completion-timeout")
+    {
+        completion_timeout.yfilter = yfilter;
+    }
+    if(value_path == "enable-padt-after-shut-down")
+    {
+        enable_padt_after_shut_down.yfilter = yfilter;
+    }
+    if(value_path == "invalid-session-id")
+    {
+        invalid_session_id.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "control-packets" || name == "pa-do-delay" || name == "sessions" || name == "tag" || name == "bba-group" || name == "completion-timeout" || name == "enable-padt-after-shut-down" || name == "invalid-session-id" || name == "mtu")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Tag()
@@ -437,10 +519,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::has_data() const
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ac_name.operation)
-	|| is_set(ppp_max_payload_deny.operation)
-	|| is_set(service_selection_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ac_name.yfilter)
+	|| ydk::is_set(ppp_max_payload_deny.yfilter)
+	|| ydk::is_set(service_selection_disable.yfilter)
 	|| (padr !=  nullptr && padr->has_operation())
 	|| (ppp_max_payload !=  nullptr && ppp_max_payload->has_operation())
 	|| (service_name_configureds !=  nullptr && service_name_configureds->has_operation());
@@ -469,9 +551,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ac_name.is_set || is_set(ac_name.operation)) leaf_name_data.push_back(ac_name.get_name_leafdata());
-    if (ppp_max_payload_deny.is_set || is_set(ppp_max_payload_deny.operation)) leaf_name_data.push_back(ppp_max_payload_deny.get_name_leafdata());
-    if (service_selection_disable.is_set || is_set(service_selection_disable.operation)) leaf_name_data.push_back(service_selection_disable.get_name_leafdata());
+    if (ac_name.is_set || is_set(ac_name.yfilter)) leaf_name_data.push_back(ac_name.get_name_leafdata());
+    if (ppp_max_payload_deny.is_set || is_set(ppp_max_payload_deny.yfilter)) leaf_name_data.push_back(ppp_max_payload_deny.get_name_leafdata());
+    if (service_selection_disable.is_set || is_set(service_selection_disable.yfilter)) leaf_name_data.push_back(service_selection_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -532,20 +614,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ac-name")
     {
         ac_name = value;
+        ac_name.value_namespace = name_space;
+        ac_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ppp-max-payload-deny")
     {
         ppp_max_payload_deny = value;
+        ppp_max_payload_deny.value_namespace = name_space;
+        ppp_max_payload_deny.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-selection-disable")
     {
         service_selection_disable = value;
+        service_selection_disable.value_namespace = name_space;
+        service_selection_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ac-name")
+    {
+        ac_name.yfilter = yfilter;
+    }
+    if(value_path == "ppp-max-payload-deny")
+    {
+        ppp_max_payload_deny.yfilter = yfilter;
+    }
+    if(value_path == "service-selection-disable")
+    {
+        service_selection_disable.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "padr" || name == "ppp-max-payload" || name == "service-name-configureds" || name == "ac-name" || name == "ppp-max-payload-deny" || name == "service-selection-disable")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::Padr()
@@ -568,9 +679,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::has_data() const
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(invalid_payload_allow.operation)
-	|| is_set(session_unique_relay_session_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(invalid_payload_allow.yfilter)
+	|| ydk::is_set(session_unique_relay_session_id.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_segment_path() const
@@ -596,8 +707,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (invalid_payload_allow.is_set || is_set(invalid_payload_allow.operation)) leaf_name_data.push_back(invalid_payload_allow.get_name_leafdata());
-    if (session_unique_relay_session_id.is_set || is_set(session_unique_relay_session_id.operation)) leaf_name_data.push_back(session_unique_relay_session_id.get_name_leafdata());
+    if (invalid_payload_allow.is_set || is_set(invalid_payload_allow.yfilter)) leaf_name_data.push_back(invalid_payload_allow.get_name_leafdata());
+    if (session_unique_relay_session_id.is_set || is_set(session_unique_relay_session_id.yfilter)) leaf_name_data.push_back(session_unique_relay_session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -616,16 +727,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "invalid-payload-allow")
     {
         invalid_payload_allow = value;
+        invalid_payload_allow.value_namespace = name_space;
+        invalid_payload_allow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-unique-relay-session-id")
     {
         session_unique_relay_session_id = value;
+        session_unique_relay_session_id.value_namespace = name_space;
+        session_unique_relay_session_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "invalid-payload-allow")
+    {
+        invalid_payload_allow.yfilter = yfilter;
+    }
+    if(value_path == "session-unique-relay-session-id")
+    {
+        session_unique_relay_session_id.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "invalid-payload-allow" || name == "session-unique-relay-session-id")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigureds()
@@ -654,7 +788,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::has_o
         if(service_name_configured[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::get_segment_path() const
@@ -719,8 +853,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-name-configured")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::ServiceNameConfigured()
@@ -741,8 +886,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::Servi
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_segment_path() const
@@ -768,7 +913,7 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfig
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -787,12 +932,29 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::PppMaxPayload()
@@ -815,9 +977,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::has_data() con
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max.operation)
-	|| is_set(min.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max.yfilter)
+	|| ydk::is_set(min.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::get_segment_path() const
@@ -843,8 +1005,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max.is_set || is_set(max.operation)) leaf_name_data.push_back(max.get_name_leafdata());
-    if (min.is_set || is_set(min.operation)) leaf_name_data.push_back(min.get_name_leafdata());
+    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
+    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -863,16 +1025,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max")
     {
         max = value;
+        max.value_namespace = name_space;
+        max.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min")
     {
         min = value;
+        min.value_namespace = name_space;
+        min.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max")
+    {
+        max.yfilter = yfilter;
+    }
+    if(value_path == "min")
+    {
+        min.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max" || name == "min")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::Sessions()
@@ -933,7 +1118,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::has_data() const
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (access_interface_limit !=  nullptr && access_interface_limit->has_operation())
 	|| (circuit_id_and_remote_id_limit !=  nullptr && circuit_id_and_remote_id_limit->has_operation())
 	|| (circuit_id_and_remote_id_throttle !=  nullptr && circuit_id_and_remote_id_throttle->has_operation())
@@ -1292,8 +1477,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-interface-limit" || name == "circuit-id-and-remote-id-limit" || name == "circuit-id-and-remote-id-throttle" || name == "circuit-id-limit" || name == "circuit-id-throttle" || name == "inner-vlan-limit" || name == "inner-vlan-throttle" || name == "mac-access-interface-limit" || name == "mac-access-interface-throttle" || name == "mac-iwf-access-interface-limit" || name == "mac-iwf-access-interface-throttle" || name == "mac-iwf-limit" || name == "mac-limit" || name == "mac-throttle" || name == "max-limit" || name == "outer-vlan-limit" || name == "outer-vlan-throttle" || name == "remote-id-limit" || name == "remote-id-throttle" || name == "vlan-limit" || name == "vlan-throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::VlanThrottle()
@@ -1318,10 +1514,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::has_data()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::get_segment_path() const
@@ -1347,9 +1543,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1368,20 +1564,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::InnerVlanThrottle()
@@ -1406,10 +1631,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::has_d
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::get_segment_path() const
@@ -1435,9 +1660,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1456,20 +1681,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::RemoteIdLimit()
@@ -1492,9 +1746,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::has_data(
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::get_segment_path() const
@@ -1520,8 +1774,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1540,16 +1794,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::MacIwfAccessInterfaceThrottle()
@@ -1574,10 +1851,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThr
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::get_segment_path() const
@@ -1603,9 +1880,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccess
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1624,20 +1901,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::AccessInterfaceLimit()
@@ -1660,9 +1966,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::ha
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::get_segment_path() const
@@ -1688,8 +1994,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterf
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1708,16 +2014,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::MacAccessInterfaceThrottle()
@@ -1742,10 +2071,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrott
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::get_segment_path() const
@@ -1771,9 +2100,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1792,20 +2121,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::OuterVlanLimit()
@@ -1828,9 +2186,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::has_data
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::get_segment_path() const
@@ -1856,8 +2214,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLim
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1876,16 +2234,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::CircuitIdThrottle()
@@ -1910,10 +2291,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::has_d
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::get_segment_path() const
@@ -1939,9 +2320,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1960,20 +2341,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::MacLimit()
@@ -1996,9 +2406,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::has_data() con
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::get_segment_path() const
@@ -2024,8 +2434,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2044,16 +2454,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::CircuitIdLimit()
@@ -2076,9 +2509,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::has_data
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::get_segment_path() const
@@ -2104,8 +2537,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLim
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2124,16 +2557,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::MacIwfLimit()
@@ -2156,9 +2612,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::has_data() 
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::get_segment_path() const
@@ -2184,8 +2640,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2204,16 +2660,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::MacIwfAccessInterfaceLimit()
@@ -2236,9 +2715,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLim
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::get_segment_path() const
@@ -2264,8 +2743,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccess
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2284,16 +2763,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::InnerVlanLimit()
@@ -2316,9 +2818,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::has_data
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::get_segment_path() const
@@ -2344,8 +2846,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLim
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2364,16 +2866,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::OuterVlanThrottle()
@@ -2398,10 +2923,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::has_d
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::get_segment_path() const
@@ -2427,9 +2952,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2448,20 +2973,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::MacThrottle()
@@ -2486,10 +3040,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::has_data() 
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::get_segment_path() const
@@ -2515,9 +3069,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2536,20 +3090,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::CircuitIdAndRemoteIdLimit()
@@ -2572,9 +3155,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimi
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::get_segment_path() const
@@ -2600,8 +3183,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAnd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2620,16 +3203,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::VlanLimit()
@@ -2652,9 +3258,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::has_data() co
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::get_segment_path() const
@@ -2680,8 +3286,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2700,16 +3306,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::MacAccessInterfaceLimit()
@@ -2732,9 +3361,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit:
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::get_segment_path() const
@@ -2760,8 +3389,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2780,16 +3409,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::RemoteIdThrottle()
@@ -2814,10 +3466,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::has_da
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::get_segment_path() const
@@ -2843,9 +3495,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThro
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2864,20 +3516,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::MaxLimit()
@@ -2900,9 +3581,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::has_data() con
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(limit.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(limit.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::get_segment_path() const
@@ -2928,8 +3609,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (limit.is_set || is_set(limit.operation)) leaf_name_data.push_back(limit.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (limit.is_set || is_set(limit.yfilter)) leaf_name_data.push_back(limit.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2948,16 +3629,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "limit")
     {
         limit = value;
+        limit.value_namespace = name_space;
+        limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "limit")
+    {
+        limit.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "threshold")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::CircuitIdAndRemoteIdThrottle()
@@ -2982,10 +3686,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThro
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(blocking_period.operation)
-	|| is_set(request_period.operation)
-	|| is_set(throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(blocking_period.yfilter)
+	|| ydk::is_set(request_period.yfilter)
+	|| ydk::is_set(throttle.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::get_segment_path() const
@@ -3011,9 +3715,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAnd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (blocking_period.is_set || is_set(blocking_period.operation)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
-    if (request_period.is_set || is_set(request_period.operation)) leaf_name_data.push_back(request_period.get_name_leafdata());
-    if (throttle.is_set || is_set(throttle.operation)) leaf_name_data.push_back(throttle.get_name_leafdata());
+    if (blocking_period.is_set || is_set(blocking_period.yfilter)) leaf_name_data.push_back(blocking_period.get_name_leafdata());
+    if (request_period.is_set || is_set(request_period.yfilter)) leaf_name_data.push_back(request_period.get_name_leafdata());
+    if (throttle.is_set || is_set(throttle.yfilter)) leaf_name_data.push_back(throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3032,20 +3736,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blocking-period")
     {
         blocking_period = value;
+        blocking_period.value_namespace = name_space;
+        blocking_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "request-period")
     {
         request_period = value;
+        request_period.value_namespace = name_space;
+        request_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttle")
     {
         throttle = value;
+        throttle.value_namespace = name_space;
+        throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "blocking-period")
+    {
+        blocking_period.yfilter = yfilter;
+    }
+    if(value_path == "request-period")
+    {
+        request_period.yfilter = yfilter;
+    }
+    if(value_path == "throttle")
+    {
+        throttle.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "blocking-period" || name == "request-period" || name == "throttle")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::ControlPackets()
@@ -3066,8 +3799,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::has_data() const
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_segment_path() const
@@ -3093,7 +3826,7 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3112,12 +3845,29 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::PaDoDelay()
@@ -3167,10 +3917,10 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::has_data() const
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(circuit_id.operation)
-	|| is_set(default_.operation)
-	|| is_set(remote_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(circuit_id.yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| ydk::is_set(remote_id.yfilter)
 	|| (circuit_id_strings !=  nullptr && circuit_id_strings->has_operation())
 	|| (circuit_id_substrings !=  nullptr && circuit_id_substrings->has_operation())
 	|| (remote_id_strings !=  nullptr && remote_id_strings->has_operation())
@@ -3202,9 +3952,9 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (circuit_id.is_set || is_set(circuit_id.operation)) leaf_name_data.push_back(circuit_id.get_name_leafdata());
-    if (default_.is_set || is_set(default_.operation)) leaf_name_data.push_back(default_.get_name_leafdata());
-    if (remote_id.is_set || is_set(remote_id.operation)) leaf_name_data.push_back(remote_id.get_name_leafdata());
+    if (circuit_id.is_set || is_set(circuit_id.yfilter)) leaf_name_data.push_back(circuit_id.get_name_leafdata());
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+    if (remote_id.is_set || is_set(remote_id.yfilter)) leaf_name_data.push_back(remote_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3307,20 +4057,49 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "circuit-id")
     {
         circuit_id = value;
+        circuit_id.value_namespace = name_space;
+        circuit_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default")
     {
         default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-id")
     {
         remote_id = value;
+        remote_id.value_namespace = name_space;
+        remote_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "circuit-id")
+    {
+        circuit_id.yfilter = yfilter;
+    }
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+    if(value_path == "remote-id")
+    {
+        remote_id.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "circuit-id-strings" || name == "circuit-id-substrings" || name == "remote-id-strings" || name == "remote-id-substrings" || name == "service-name-strings" || name == "service-name-substrings" || name == "circuit-id" || name == "default" || name == "remote-id")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstrings()
@@ -3349,7 +4128,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::has
         if(remote_id_substring[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::get_segment_path() const
@@ -3414,8 +4193,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remote-id-substring")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::RemoteIdSubstring()
@@ -3438,9 +4228,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::Rem
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(delay.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_segment_path() const
@@ -3466,8 +4256,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSub
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (delay.is_set || is_set(delay.operation)) leaf_name_data.push_back(delay.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3486,16 +4276,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay")
     {
         delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "delay")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdStrings()
@@ -3524,7 +4337,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::has_op
         if(remote_id_string[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::get_segment_path() const
@@ -3589,8 +4402,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remote-id-string")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::RemoteIdString()
@@ -3613,9 +4437,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::Remote
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(delay.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_segment_path() const
@@ -3641,8 +4465,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (delay.is_set || is_set(delay.operation)) leaf_name_data.push_back(delay.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3661,16 +4485,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay")
     {
         delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "delay")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameStrings()
@@ -3699,7 +4546,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::has
         if(service_name_string[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::get_segment_path() const
@@ -3764,8 +4611,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-name-string")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::ServiceNameString()
@@ -3788,9 +4646,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::Ser
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(delay.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_segment_path() const
@@ -3816,8 +4674,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceName
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (delay.is_set || is_set(delay.operation)) leaf_name_data.push_back(delay.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3836,16 +4694,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay")
     {
         delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "delay")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstrings()
@@ -3874,7 +4755,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::ha
         if(circuit_id_substring[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::get_segment_path() const
@@ -3939,8 +4820,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "circuit-id-substring")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::CircuitIdSubstring()
@@ -3963,9 +4855,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::Ci
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(delay.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_segment_path() const
@@ -3991,8 +4883,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (delay.is_set || is_set(delay.operation)) leaf_name_data.push_back(delay.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4011,16 +4903,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay")
     {
         delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "delay")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstrings()
@@ -4049,7 +4964,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::
         if(service_name_substring[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::get_segment_path() const
@@ -4114,8 +5029,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-name-substring")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::ServiceNameSubstring()
@@ -4138,9 +5064,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(delay.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_segment_path() const
@@ -4166,8 +5092,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceName
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (delay.is_set || is_set(delay.operation)) leaf_name_data.push_back(delay.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4186,16 +5112,39 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay")
     {
         delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "delay")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdStrings()
@@ -4224,7 +5173,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::has_o
         if(circuit_id_string[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::get_segment_path() const
@@ -4289,8 +5238,19 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "circuit-id-string")
+        return true;
+    return false;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::CircuitIdString()
@@ -4313,9 +5273,9 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::Circu
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(delay.yfilter);
 }
 
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_segment_path() const
@@ -4341,8 +5301,8 @@ const EntityPath PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (delay.is_set || is_set(delay.operation)) leaf_name_data.push_back(delay.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4361,20 +5321,43 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     return children;
 }
 
-void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::set_value(const std::string & value_path, std::string value)
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay")
     {
         delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf PppoeInvalidSessionIdBehaviorEnum::drop {0, "drop"};
-const Enum::YLeaf PppoeInvalidSessionIdBehaviorEnum::log {1, "log"};
+void PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+}
+
+bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "delay")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf PppoeInvalidSessionIdBehavior::drop {0, "drop"};
+const Enum::YLeaf PppoeInvalidSessionIdBehavior::log {1, "log"};
 
 
 }

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_yang_library.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_yang_library {
 
 ModulesState::ModulesState()
@@ -37,8 +39,8 @@ bool ModulesState::has_operation() const
         if(module[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(module_set_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(module_set_id.yfilter);
 }
 
 std::string ModulesState::get_segment_path() const
@@ -61,7 +63,7 @@ const EntityPath ModulesState::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_set_id.is_set || is_set(module_set_id.operation)) leaf_name_data.push_back(module_set_id.get_name_leafdata());
+    if (module_set_id.is_set || is_set(module_set_id.yfilter)) leaf_name_data.push_back(module_set_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -101,11 +103,21 @@ std::map<std::string, std::shared_ptr<Entity>> ModulesState::get_children() cons
     return children;
 }
 
-void ModulesState::set_value(const std::string & value_path, std::string value)
+void ModulesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "module-set-id")
     {
         module_set_id = value;
+        module_set_id.value_namespace = name_space;
+        module_set_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ModulesState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module-set-id")
+    {
+        module_set_id.yfilter = yfilter;
     }
 }
 
@@ -127,6 +139,18 @@ std::string ModulesState::get_bundle_name() const
 augment_capabilities_function ModulesState::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ModulesState::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool ModulesState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "module" || name == "module-set-id")
+        return true;
+    return false;
 }
 
 ModulesState::Module::Module()
@@ -183,16 +207,16 @@ bool ModulesState::Module::has_operation() const
     }
     for (auto const & leaf : feature.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(revision.operation)
-	|| is_set(conformance_type.operation)
-	|| is_set(feature.operation)
-	|| is_set(namespace_.operation)
-	|| is_set(schema.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(revision.yfilter)
+	|| ydk::is_set(conformance_type.yfilter)
+	|| ydk::is_set(feature.yfilter)
+	|| ydk::is_set(namespace_.yfilter)
+	|| ydk::is_set(schema.yfilter);
 }
 
 std::string ModulesState::Module::get_segment_path() const
@@ -218,11 +242,11 @@ const EntityPath ModulesState::Module::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (revision.is_set || is_set(revision.operation)) leaf_name_data.push_back(revision.get_name_leafdata());
-    if (conformance_type.is_set || is_set(conformance_type.operation)) leaf_name_data.push_back(conformance_type.get_name_leafdata());
-    if (namespace_.is_set || is_set(namespace_.operation)) leaf_name_data.push_back(namespace_.get_name_leafdata());
-    if (schema.is_set || is_set(schema.operation)) leaf_name_data.push_back(schema.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
+    if (conformance_type.is_set || is_set(conformance_type.yfilter)) leaf_name_data.push_back(conformance_type.get_name_leafdata());
+    if (namespace_.is_set || is_set(namespace_.yfilter)) leaf_name_data.push_back(namespace_.get_name_leafdata());
+    if (schema.is_set || is_set(schema.yfilter)) leaf_name_data.push_back(schema.get_name_leafdata());
 
     auto feature_name_datas = feature.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), feature_name_datas.begin(), feature_name_datas.end());
@@ -285,19 +309,25 @@ std::map<std::string, std::shared_ptr<Entity>> ModulesState::Module::get_childre
     return children;
 }
 
-void ModulesState::Module::set_value(const std::string & value_path, std::string value)
+void ModulesState::Module::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "revision")
     {
         revision = value;
+        revision.value_namespace = name_space;
+        revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conformance-type")
     {
         conformance_type = value;
+        conformance_type.value_namespace = name_space;
+        conformance_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "feature")
     {
@@ -306,11 +336,50 @@ void ModulesState::Module::set_value(const std::string & value_path, std::string
     if(value_path == "namespace")
     {
         namespace_ = value;
+        namespace_.value_namespace = name_space;
+        namespace_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "schema")
     {
         schema = value;
+        schema.value_namespace = name_space;
+        schema.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ModulesState::Module::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "revision")
+    {
+        revision.yfilter = yfilter;
+    }
+    if(value_path == "conformance-type")
+    {
+        conformance_type.yfilter = yfilter;
+    }
+    if(value_path == "feature")
+    {
+        feature.yfilter = yfilter;
+    }
+    if(value_path == "namespace")
+    {
+        namespace_.yfilter = yfilter;
+    }
+    if(value_path == "schema")
+    {
+        schema.yfilter = yfilter;
+    }
+}
+
+bool ModulesState::Module::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "deviation" || name == "submodule" || name == "name" || name == "revision" || name == "conformance-type" || name == "feature" || name == "namespace" || name == "schema")
+        return true;
+    return false;
 }
 
 ModulesState::Module::Deviation::Deviation()
@@ -333,9 +402,9 @@ bool ModulesState::Module::Deviation::has_data() const
 
 bool ModulesState::Module::Deviation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(revision.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(revision.yfilter);
 }
 
 std::string ModulesState::Module::Deviation::get_segment_path() const
@@ -361,8 +430,8 @@ const EntityPath ModulesState::Module::Deviation::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (revision.is_set || is_set(revision.operation)) leaf_name_data.push_back(revision.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -381,16 +450,39 @@ std::map<std::string, std::shared_ptr<Entity>> ModulesState::Module::Deviation::
     return children;
 }
 
-void ModulesState::Module::Deviation::set_value(const std::string & value_path, std::string value)
+void ModulesState::Module::Deviation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "revision")
     {
         revision = value;
+        revision.value_namespace = name_space;
+        revision.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ModulesState::Module::Deviation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "revision")
+    {
+        revision.yfilter = yfilter;
+    }
+}
+
+bool ModulesState::Module::Deviation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "revision")
+        return true;
+    return false;
 }
 
 ModulesState::Module::Submodule::Submodule()
@@ -415,10 +507,10 @@ bool ModulesState::Module::Submodule::has_data() const
 
 bool ModulesState::Module::Submodule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(revision.operation)
-	|| is_set(schema.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(revision.yfilter)
+	|| ydk::is_set(schema.yfilter);
 }
 
 std::string ModulesState::Module::Submodule::get_segment_path() const
@@ -444,9 +536,9 @@ const EntityPath ModulesState::Module::Submodule::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (revision.is_set || is_set(revision.operation)) leaf_name_data.push_back(revision.get_name_leafdata());
-    if (schema.is_set || is_set(schema.operation)) leaf_name_data.push_back(schema.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
+    if (schema.is_set || is_set(schema.yfilter)) leaf_name_data.push_back(schema.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -465,24 +557,53 @@ std::map<std::string, std::shared_ptr<Entity>> ModulesState::Module::Submodule::
     return children;
 }
 
-void ModulesState::Module::Submodule::set_value(const std::string & value_path, std::string value)
+void ModulesState::Module::Submodule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "revision")
     {
         revision = value;
+        revision.value_namespace = name_space;
+        revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "schema")
     {
         schema = value;
+        schema.value_namespace = name_space;
+        schema.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf ModulesState::Module::ConformanceTypeEnum::implement {0, "implement"};
-const Enum::YLeaf ModulesState::Module::ConformanceTypeEnum::import {1, "import"};
+void ModulesState::Module::Submodule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "revision")
+    {
+        revision.yfilter = yfilter;
+    }
+    if(value_path == "schema")
+    {
+        schema.yfilter = yfilter;
+    }
+}
+
+bool ModulesState::Module::Submodule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "revision" || name == "schema")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf ModulesState::Module::ConformanceType::implement {0, "implement"};
+const Enum::YLeaf ModulesState::Module::ConformanceType::import {1, "import"};
 
 
 }

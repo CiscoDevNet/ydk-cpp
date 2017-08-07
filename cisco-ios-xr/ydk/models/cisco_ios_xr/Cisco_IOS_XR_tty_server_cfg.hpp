@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_server_cfg {
 
-class Tty : public Entity
+class Tty : public ydk::Entity
 {
     public:
         Tty();
@@ -19,15 +19,18 @@ class Tty : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class TtyLines; //type: Tty::TtyLines
 
@@ -36,7 +39,7 @@ class Tty : public Entity
 }; // Tty
 
 
-class Tty::TtyLines : public Entity
+class Tty::TtyLines : public ydk::Entity
 {
     public:
         TtyLines();
@@ -44,11 +47,13 @@ class Tty::TtyLines : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TtyLine; //type: Tty::TtyLines::TtyLine
 
@@ -57,7 +62,7 @@ class Tty::TtyLines : public Entity
 }; // Tty::TtyLines
 
 
-class Tty::TtyLines::TtyLine : public Entity
+class Tty::TtyLines::TtyLine : public ydk::Entity
 {
     public:
         TtyLine();
@@ -65,13 +70,15 @@ class Tty::TtyLines::TtyLine : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
+        ydk::YLeaf name; //type: string
         class General; //type: Tty::TtyLines::TtyLine::General
         class Telnet; //type: Tty::TtyLines::TtyLine::Telnet
         class Aaa; //type: Tty::TtyLines::TtyLine::Aaa
@@ -89,7 +96,7 @@ class Tty::TtyLines::TtyLine : public Entity
 }; // Tty::TtyLines::TtyLine
 
 
-class Tty::TtyLines::TtyLine::General : public Entity
+class Tty::TtyLines::TtyLine::General : public ydk::Entity
 {
     public:
         General();
@@ -97,20 +104,22 @@ class Tty::TtyLines::TtyLine::General : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf length; //type: uint32
-        YLeaf absolute_timeout; //type: uint32
-        YLeaf width; //type: uint32
+        ydk::YLeaf length; //type: uint32
+        ydk::YLeaf absolute_timeout; //type: uint32
+        ydk::YLeaf width; //type: uint32
 
 }; // Tty::TtyLines::TtyLine::General
 
 
-class Tty::TtyLines::TtyLine::Telnet : public Entity
+class Tty::TtyLines::TtyLine::Telnet : public ydk::Entity
 {
     public:
         Telnet();
@@ -118,18 +127,20 @@ class Tty::TtyLines::TtyLine::Telnet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transparent; //type: empty
+        ydk::YLeaf transparent; //type: empty
 
 }; // Tty::TtyLines::TtyLine::Telnet
 
 
-class Tty::TtyLines::TtyLine::Aaa : public Entity
+class Tty::TtyLines::TtyLine::Aaa : public ydk::Entity
 {
     public:
         Aaa();
@@ -137,15 +148,17 @@ class Tty::TtyLines::TtyLine::Aaa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf login_timeout; //type: uint32
-        YLeaf secret; //type: string
-        YLeaf password; //type: string
+        ydk::YLeaf login_timeout; //type: uint32
+        ydk::YLeaf secret; //type: string
+        ydk::YLeaf password; //type: string
         class UserGroups; //type: Tty::TtyLines::TtyLine::Aaa::UserGroups
         class Authorization; //type: Tty::TtyLines::TtyLine::Aaa::Authorization
         class Authentication; //type: Tty::TtyLines::TtyLine::Aaa::Authentication
@@ -159,7 +172,7 @@ class Tty::TtyLines::TtyLine::Aaa : public Entity
 }; // Tty::TtyLines::TtyLine::Aaa
 
 
-class Tty::TtyLines::TtyLine::Aaa::UserGroups : public Entity
+class Tty::TtyLines::TtyLine::Aaa::UserGroups : public ydk::Entity
 {
     public:
         UserGroups();
@@ -167,11 +180,13 @@ class Tty::TtyLines::TtyLine::Aaa::UserGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class UserGroup; //type: Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup
 
@@ -180,7 +195,7 @@ class Tty::TtyLines::TtyLine::Aaa::UserGroups : public Entity
 }; // Tty::TtyLines::TtyLine::Aaa::UserGroups
 
 
-class Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup : public Entity
+class Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup : public ydk::Entity
 {
     public:
         UserGroup();
@@ -188,19 +203,21 @@ class Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf category; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf category; //type: string
 
 }; // Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup
 
 
-class Tty::TtyLines::TtyLine::Aaa::Authorization : public Entity
+class Tty::TtyLines::TtyLine::Aaa::Authorization : public ydk::Entity
 {
     public:
         Authorization();
@@ -208,20 +225,22 @@ class Tty::TtyLines::TtyLine::Aaa::Authorization : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf exec; //type: string
-        YLeaf event_manager; //type: string
-        YLeaf commands; //type: string
+        ydk::YLeaf exec; //type: string
+        ydk::YLeaf event_manager; //type: string
+        ydk::YLeaf commands; //type: string
 
 }; // Tty::TtyLines::TtyLine::Aaa::Authorization
 
 
-class Tty::TtyLines::TtyLine::Aaa::Authentication : public Entity
+class Tty::TtyLines::TtyLine::Aaa::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -229,18 +248,20 @@ class Tty::TtyLines::TtyLine::Aaa::Authentication : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf login; //type: string
+        ydk::YLeaf login; //type: string
 
 }; // Tty::TtyLines::TtyLine::Aaa::Authentication
 
 
-class Tty::TtyLines::TtyLine::Aaa::Accounting : public Entity
+class Tty::TtyLines::TtyLine::Aaa::Accounting : public ydk::Entity
 {
     public:
         Accounting();
@@ -248,19 +269,21 @@ class Tty::TtyLines::TtyLine::Aaa::Accounting : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf exec; //type: string
-        YLeaf commands; //type: string
+        ydk::YLeaf exec; //type: string
+        ydk::YLeaf commands; //type: string
 
 }; // Tty::TtyLines::TtyLine::Aaa::Accounting
 
 
-class Tty::TtyLines::TtyLine::Exec : public Entity
+class Tty::TtyLines::TtyLine::Exec : public ydk::Entity
 {
     public:
         Exec();
@@ -268,13 +291,15 @@ class Tty::TtyLines::TtyLine::Exec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_stamp; //type: boolean
+        ydk::YLeaf time_stamp; //type: boolean
         class Timeout; //type: Tty::TtyLines::TtyLine::Exec::Timeout
 
         std::shared_ptr<Cisco_IOS_XR_tty_server_cfg::Tty::TtyLines::TtyLine::Exec::Timeout> timeout; // presence node
@@ -282,7 +307,7 @@ class Tty::TtyLines::TtyLine::Exec : public Entity
 }; // Tty::TtyLines::TtyLine::Exec
 
 
-class Tty::TtyLines::TtyLine::Exec::Timeout : public Entity
+class Tty::TtyLines::TtyLine::Exec::Timeout : public ydk::Entity
 {
     public:
         Timeout();
@@ -290,19 +315,21 @@ class Tty::TtyLines::TtyLine::Exec::Timeout : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf minutes; //type: uint32
-        YLeaf seconds; //type: uint32
+        ydk::YLeaf minutes; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
 
 }; // Tty::TtyLines::TtyLine::Exec::Timeout
 
 
-class Tty::TtyLines::TtyLine::Connection : public Entity
+class Tty::TtyLines::TtyLine::Connection : public ydk::Entity
 {
     public:
         Connection();
@@ -310,19 +337,21 @@ class Tty::TtyLines::TtyLine::Connection : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf disconnect_character; //type: one of string, uint8
-        YLeaf acl_in; //type: string
-        YLeaf acl_out; //type: string
-        YLeaf cli_white_space_completion; //type: empty
-        YLeaf session_limit; //type: uint32
-        YLeaf escape_character; //type: one of string, uint8
-        YLeaf transport_preferred; //type: TtyTransportProtocolEnum
+        ydk::YLeaf disconnect_character; //type: one of string, uint8
+        ydk::YLeaf acl_in; //type: string
+        ydk::YLeaf acl_out; //type: string
+        ydk::YLeaf cli_white_space_completion; //type: empty
+        ydk::YLeaf session_limit; //type: uint32
+        ydk::YLeaf escape_character; //type: one of string, uint8
+        ydk::YLeaf transport_preferred; //type: TtyTransportProtocol
         class TransportInput; //type: Tty::TtyLines::TtyLine::Connection::TransportInput
         class TransportOutput; //type: Tty::TtyLines::TtyLine::Connection::TransportOutput
         class SessionTimeout; //type: Tty::TtyLines::TtyLine::Connection::SessionTimeout
@@ -334,7 +363,7 @@ class Tty::TtyLines::TtyLine::Connection : public Entity
 }; // Tty::TtyLines::TtyLine::Connection
 
 
-class Tty::TtyLines::TtyLine::Connection::TransportInput : public Entity
+class Tty::TtyLines::TtyLine::Connection::TransportInput : public ydk::Entity
 {
     public:
         TransportInput();
@@ -342,21 +371,23 @@ class Tty::TtyLines::TtyLine::Connection::TransportInput : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf select; //type: TtyTransportProtocolSelectEnum
-        YLeaf protocol1; //type: TtyTransportProtocolEnum
-        YLeaf protocol2; //type: TtyTransportProtocolEnum
-        YLeaf none; //type: int32
+        ydk::YLeaf select; //type: TtyTransportProtocolSelect
+        ydk::YLeaf protocol1; //type: TtyTransportProtocol
+        ydk::YLeaf protocol2; //type: TtyTransportProtocol
+        ydk::YLeaf none; //type: int32
 
 }; // Tty::TtyLines::TtyLine::Connection::TransportInput
 
 
-class Tty::TtyLines::TtyLine::Connection::TransportOutput : public Entity
+class Tty::TtyLines::TtyLine::Connection::TransportOutput : public ydk::Entity
 {
     public:
         TransportOutput();
@@ -364,21 +395,23 @@ class Tty::TtyLines::TtyLine::Connection::TransportOutput : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf select; //type: TtyTransportProtocolSelectEnum
-        YLeaf protocol1; //type: TtyTransportProtocolEnum
-        YLeaf protocol2; //type: TtyTransportProtocolEnum
-        YLeaf none; //type: int32
+        ydk::YLeaf select; //type: TtyTransportProtocolSelect
+        ydk::YLeaf protocol1; //type: TtyTransportProtocol
+        ydk::YLeaf protocol2; //type: TtyTransportProtocol
+        ydk::YLeaf none; //type: int32
 
 }; // Tty::TtyLines::TtyLine::Connection::TransportOutput
 
 
-class Tty::TtyLines::TtyLine::Connection::SessionTimeout : public Entity
+class Tty::TtyLines::TtyLine::Connection::SessionTimeout : public ydk::Entity
 {
     public:
         SessionTimeout();
@@ -386,19 +419,21 @@ class Tty::TtyLines::TtyLine::Connection::SessionTimeout : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf timeout; //type: uint32
-        YLeaf direction; //type: TtySessionTimeoutDirectionEnum
+        ydk::YLeaf timeout; //type: uint32
+        ydk::YLeaf direction; //type: TtySessionTimeoutDirection
 
 }; // Tty::TtyLines::TtyLine::Connection::SessionTimeout
 
 
-class Tty::TtyLines::TtyLine::ExecMode : public Entity
+class Tty::TtyLines::TtyLine::ExecMode : public ydk::Entity
 {
     public:
         ExecMode();
@@ -406,13 +441,15 @@ class Tty::TtyLines::TtyLine::ExecMode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pager; //type: TtyPagerEnum
+        ydk::YLeaf pager; //type: TtyPager
 
 }; // Tty::TtyLines::TtyLine::ExecMode
 

@@ -7,245 +7,245 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace ietf {
 namespace ietf_syslog_types {
 
-class SyslogFacilityIdentity : public virtual Identity
+class SyslogFacility : public virtual ydk::Identity
 {
     public:
-        SyslogFacilityIdentity();
-        ~SyslogFacilityIdentity();
+        SyslogFacility();
+        ~SyslogFacility();
 
 
-}; // SyslogFacilityIdentity
+}; // SyslogFacility
 
-class Cron2Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class User : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Cron2Identity();
-        ~Cron2Identity();
+        User();
+        ~User();
 
 
-}; // Cron2Identity
+}; // User
 
-class CronIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Ftp : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        CronIdentity();
-        ~CronIdentity();
+        Ftp();
+        ~Ftp();
 
 
-}; // CronIdentity
+}; // Ftp
 
-class SyslogIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Kern : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        SyslogIdentity();
-        ~SyslogIdentity();
+        Kern();
+        ~Kern();
 
 
-}; // SyslogIdentity
+}; // Kern
 
-class Local4Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Local4 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Local4Identity();
-        ~Local4Identity();
+        Local4();
+        ~Local4();
 
 
-}; // Local4Identity
+}; // Local4
 
-class FtpIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Local1 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        FtpIdentity();
-        ~FtpIdentity();
+        Local1();
+        ~Local1();
 
 
-}; // FtpIdentity
+}; // Local1
 
-class UucpIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Cron : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        UucpIdentity();
-        ~UucpIdentity();
+        Cron();
+        ~Cron();
 
 
-}; // UucpIdentity
+}; // Cron
 
-class ConsoleIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Mail : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        ConsoleIdentity();
-        ~ConsoleIdentity();
+        Mail();
+        ~Mail();
 
 
-}; // ConsoleIdentity
+}; // Mail
 
-class MailIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Local3 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        MailIdentity();
-        ~MailIdentity();
+        Local3();
+        ~Local3();
 
 
-}; // MailIdentity
+}; // Local3
 
-class AuthprivIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Local5 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        AuthprivIdentity();
-        ~AuthprivIdentity();
+        Local5();
+        ~Local5();
 
 
-}; // AuthprivIdentity
+}; // Local5
 
-class NtpIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Authpriv : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        NtpIdentity();
-        ~NtpIdentity();
+        Authpriv();
+        ~Authpriv();
 
 
-}; // NtpIdentity
+}; // Authpriv
 
-class AuthIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Daemon : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        AuthIdentity();
-        ~AuthIdentity();
+        Daemon();
+        ~Daemon();
 
 
-}; // AuthIdentity
+}; // Daemon
 
-class UserIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Syslog : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        UserIdentity();
-        ~UserIdentity();
+        Syslog();
+        ~Syslog();
 
 
-}; // UserIdentity
+}; // Syslog
 
-class Local5Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Ntp : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Local5Identity();
-        ~Local5Identity();
+        Ntp();
+        ~Ntp();
 
 
-}; // Local5Identity
+}; // Ntp
 
-class NewsIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Audit : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        NewsIdentity();
-        ~NewsIdentity();
+        Audit();
+        ~Audit();
 
 
-}; // NewsIdentity
+}; // Audit
 
-class Local7Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Local6 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Local7Identity();
-        ~Local7Identity();
+        Local6();
+        ~Local6();
 
 
-}; // Local7Identity
+}; // Local6
 
-class Local6Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Cron2 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Local6Identity();
-        ~Local6Identity();
+        Cron2();
+        ~Cron2();
 
 
-}; // Local6Identity
+}; // Cron2
 
-class Local1Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Uucp : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Local1Identity();
-        ~Local1Identity();
+        Uucp();
+        ~Uucp();
 
 
-}; // Local1Identity
+}; // Uucp
 
-class Local0Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Local7 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Local0Identity();
-        ~Local0Identity();
+        Local7();
+        ~Local7();
 
 
-}; // Local0Identity
+}; // Local7
 
-class Local3Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class News : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Local3Identity();
-        ~Local3Identity();
+        News();
+        ~News();
 
 
-}; // Local3Identity
+}; // News
 
-class Local2Identity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Console : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        Local2Identity();
-        ~Local2Identity();
+        Console();
+        ~Console();
 
 
-}; // Local2Identity
+}; // Console
 
-class AuditIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Auth : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        AuditIdentity();
-        ~AuditIdentity();
+        Auth();
+        ~Auth();
 
 
-}; // AuditIdentity
+}; // Auth
 
-class DaemonIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Lpr : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        DaemonIdentity();
-        ~DaemonIdentity();
+        Lpr();
+        ~Lpr();
 
 
-}; // DaemonIdentity
+}; // Lpr
 
-class LprIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Local2 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        LprIdentity();
-        ~LprIdentity();
+        Local2();
+        ~Local2();
 
 
-}; // LprIdentity
+}; // Local2
 
-class KernIdentity : public ietf_syslog_types::SyslogFacilityIdentity, virtual Identity
+class Local0 : public ietf_syslog_types::SyslogFacility, virtual ydk::Identity
 {
     public:
-        KernIdentity();
-        ~KernIdentity();
+        Local0();
+        ~Local0();
 
 
-}; // KernIdentity
+}; // Local0
 
-class SeverityEnum : public Enum
+class Severity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf emergency;
-        static const Enum::YLeaf alert;
-        static const Enum::YLeaf critical;
-        static const Enum::YLeaf error;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf notice;
-        static const Enum::YLeaf info;
-        static const Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf emergency;
+        static const ydk::Enum::YLeaf alert;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf notice;
+        static const ydk::Enum::YLeaf info;
+        static const ydk::Enum::YLeaf debug;
 
 };
 

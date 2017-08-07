@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_pfilter_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_pfilter_oper {
 
 PfilterMa::PfilterMa()
@@ -29,7 +31,7 @@ bool PfilterMa::has_data() const
 
 bool PfilterMa::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::get_children() const
     return children;
 }
 
-void PfilterMa::set_value(const std::string & value_path, std::string value)
+void PfilterMa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PfilterMa::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string PfilterMa::get_bundle_name() const
 augment_capabilities_function PfilterMa::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> PfilterMa::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PfilterMa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool PfilterMa::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PfilterMa::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::get_children() 
     return children;
 }
 
-void PfilterMa::Nodes::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PfilterMa::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool PfilterMa::Nodes::Node::has_data() const
 
 bool PfilterMa::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (process !=  nullptr && process->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath PfilterMa::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::get_child
     return children;
 }
 
-void PfilterMa::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PfilterMa::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool PfilterMa::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process" || name == "node-name")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Process()
@@ -320,7 +366,7 @@ bool PfilterMa::Nodes::Node::Process::has_data() const
 
 bool PfilterMa::Nodes::Node::Process::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -394,8 +440,19 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PfilterMa::Nodes::Node::Process::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Ipv6::Ipv6()
@@ -418,7 +475,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv6::has_data() const
 
 bool PfilterMa::Nodes::Node::Process::Ipv6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (acl_info_table !=  nullptr && acl_info_table->has_operation());
 }
 
@@ -477,8 +534,19 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::Ipv6::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-info-table")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::AclInfoTable()
@@ -501,7 +569,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::has_data() const
 
 bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interface_infos !=  nullptr && interface_infos->has_operation());
 }
 
@@ -560,8 +628,19 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-infos")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfos()
@@ -590,7 +669,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::has_op
         if(interface_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::get_segment_path() const
@@ -655,8 +734,19 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-info")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::InterfaceInfo()
@@ -679,9 +769,9 @@ bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::Interf
 
 bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(acl_info.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(acl_info.yfilter);
 }
 
 std::string PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::get_segment_path() const
@@ -707,8 +797,8 @@ const EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (acl_info.is_set || is_set(acl_info.operation)) leaf_name_data.push_back(acl_info.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (acl_info.is_set || is_set(acl_info.yfilter)) leaf_name_data.push_back(acl_info.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -727,16 +817,39 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl-info")
     {
         acl_info = value;
+        acl_info.value_namespace = name_space;
+        acl_info.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "acl-info")
+    {
+        acl_info.yfilter = yfilter;
+    }
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::InterfaceInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "acl-info")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Ipv4::Ipv4()
@@ -759,7 +872,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv4::has_data() const
 
 bool PfilterMa::Nodes::Node::Process::Ipv4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (acl_info_table !=  nullptr && acl_info_table->has_operation());
 }
 
@@ -818,8 +931,19 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::Ipv4::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-info-table")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::AclInfoTable()
@@ -842,7 +966,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_data() const
 
 bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interface_infos !=  nullptr && interface_infos->has_operation());
 }
 
@@ -901,8 +1025,19 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-infos")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfos()
@@ -931,7 +1066,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::has_op
         if(interface_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::get_segment_path() const
@@ -996,8 +1131,19 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-info")
+        return true;
+    return false;
 }
 
 PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::InterfaceInfo()
@@ -1020,9 +1166,9 @@ bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::Interf
 
 bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(acl_info.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(acl_info.yfilter);
 }
 
 std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::get_segment_path() const
@@ -1048,8 +1194,8 @@ const EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (acl_info.is_set || is_set(acl_info.operation)) leaf_name_data.push_back(acl_info.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (acl_info.is_set || is_set(acl_info.yfilter)) leaf_name_data.push_back(acl_info.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1068,16 +1214,39 @@ std::map<std::string, std::shared_ptr<Entity>> PfilterMa::Nodes::Node::Process::
     return children;
 }
 
-void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::set_value(const std::string & value_path, std::string value)
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl-info")
     {
         acl_info = value;
+        acl_info.value_namespace = name_space;
+        acl_info.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "acl-info")
+    {
+        acl_info.yfilter = yfilter;
+    }
+}
+
+bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::InterfaceInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "acl-info")
+        return true;
+    return false;
 }
 
 

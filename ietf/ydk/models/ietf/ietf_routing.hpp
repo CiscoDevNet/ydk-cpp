@@ -8,37 +8,37 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace ietf {
 namespace ietf_routing {
 
-class RoutingProtocolIdentity : public virtual Identity
+class AddressFamily : public virtual ydk::Identity
 {
     public:
-        RoutingProtocolIdentity();
-        ~RoutingProtocolIdentity();
+        AddressFamily();
+        ~AddressFamily();
 
 
-}; // RoutingProtocolIdentity
+}; // AddressFamily
 
-class RoutingInstanceIdentity : public virtual Identity
+class RoutingInstance : public virtual ydk::Identity
 {
     public:
-        RoutingInstanceIdentity();
-        ~RoutingInstanceIdentity();
+        RoutingInstance();
+        ~RoutingInstance();
 
 
-}; // RoutingInstanceIdentity
+}; // RoutingInstance
 
-class AddressFamilyIdentity : public virtual Identity
+class RoutingProtocol : public virtual ydk::Identity
 {
     public:
-        AddressFamilyIdentity();
-        ~AddressFamilyIdentity();
+        RoutingProtocol();
+        ~RoutingProtocol();
 
 
-}; // AddressFamilyIdentity
+}; // RoutingProtocol
 
-class RoutingState : public Entity
+class RoutingState : public ydk::Entity
 {
     public:
         RoutingState();
@@ -46,15 +46,18 @@ class RoutingState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class RoutingInstance; //type: RoutingState::RoutingInstance
 
@@ -63,7 +66,7 @@ class RoutingState : public Entity
 }; // RoutingState
 
 
-class RoutingState::RoutingInstance : public Entity
+class RoutingState::RoutingInstance : public ydk::Entity
 {
     public:
         RoutingInstance();
@@ -71,15 +74,17 @@ class RoutingState::RoutingInstance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf type; //type: RoutingInstanceIdentity
-        YLeaf router_id; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf type; //type: RoutingInstance
+        ydk::YLeaf router_id; //type: string
         class Interfaces; //type: RoutingState::RoutingInstance::Interfaces
         class RoutingProtocols; //type: RoutingState::RoutingInstance::RoutingProtocols
         class Ribs; //type: RoutingState::RoutingInstance::Ribs
@@ -91,7 +96,7 @@ class RoutingState::RoutingInstance : public Entity
 }; // RoutingState::RoutingInstance
 
 
-class RoutingState::RoutingInstance::Interfaces : public Entity
+class RoutingState::RoutingInstance::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -99,19 +104,21 @@ class RoutingState::RoutingInstance::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: list of  string (refers to ietf_interfaces::InterfacesState::Interface::name)
-        YLeafList interface;
+        ydk::YLeafList interface;
 
 }; // RoutingState::RoutingInstance::Interfaces
 
 
-class RoutingState::RoutingInstance::RoutingProtocols : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols : public ydk::Entity
 {
     public:
         RoutingProtocols();
@@ -119,11 +126,13 @@ class RoutingState::RoutingInstance::RoutingProtocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RoutingProtocol; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol
 
@@ -132,7 +141,7 @@ class RoutingState::RoutingInstance::RoutingProtocols : public Entity
 }; // RoutingState::RoutingInstance::RoutingProtocols
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol : public ydk::Entity
 {
     public:
         RoutingProtocol();
@@ -140,14 +149,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: RoutingProtocolIdentity
-        YLeaf name; //type: string
+        ydk::YLeaf type; //type: RoutingProtocol
+        ydk::YLeaf name; //type: string
         class Ospf; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf
 
         std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf> ospf;
@@ -155,7 +166,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol : public 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -163,13 +174,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf operation_mode; //type: OperationModeIdentity
+        ydk::YLeaf operation_mode; //type: OperationMode
         class Instance; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance> > instance;
@@ -177,7 +190,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : p
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -185,14 +198,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: AddressFamilyIdentity
-        YLeaf router_id; //type: string
+        ydk::YLeaf af; //type: AddressFamily
+        ydk::YLeaf router_id; //type: string
         class Area; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area
         class AsScopeLsas; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology
@@ -204,7 +219,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area : public ydk::Entity
 {
     public:
         Area();
@@ -212,13 +227,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf area_id; //type: one of uint32, string
+        ydk::YLeaf area_id; //type: one of string, uint32
         class Interfaces; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces
         class AreaScopeLsas; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas
 
@@ -228,7 +245,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -236,32 +253,34 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface; //type: string
-        YLeaf network_type; //type: NetworkTypeEnum
-        YLeaf passive; //type: boolean
-        YLeaf demand_circuit; //type: boolean
-        YLeaf node_flag; //type: boolean
-        YLeaf cost; //type: uint16
-        YLeaf hello_interval; //type: uint16
-        YLeaf dead_interval; //type: uint16
-        YLeaf retransmit_interval; //type: uint16
-        YLeaf transmit_delay; //type: uint16
-        YLeaf mtu_ignore; //type: boolean
-        YLeaf lls; //type: boolean
-        YLeaf prefix_suppression; //type: boolean
-        YLeaf bfd; //type: boolean
-        YLeaf enable; //type: boolean
-        YLeaf state; //type: string
-        YLeaf hello_timer; //type: uint32
-        YLeaf wait_timer; //type: uint32
-        YLeaf dr; //type: string
-        YLeaf bdr; //type: string
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf network_type; //type: NetworkType
+        ydk::YLeaf passive; //type: boolean
+        ydk::YLeaf demand_circuit; //type: boolean
+        ydk::YLeaf node_flag; //type: boolean
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf hello_interval; //type: uint16
+        ydk::YLeaf dead_interval; //type: uint16
+        ydk::YLeaf retransmit_interval; //type: uint16
+        ydk::YLeaf transmit_delay; //type: uint16
+        ydk::YLeaf mtu_ignore; //type: boolean
+        ydk::YLeaf lls; //type: boolean
+        ydk::YLeaf prefix_suppression; //type: boolean
+        ydk::YLeaf bfd; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf state; //type: string
+        ydk::YLeaf hello_timer; //type: uint32
+        ydk::YLeaf wait_timer; //type: uint32
+        ydk::YLeaf dr; //type: string
+        ydk::YLeaf bdr; //type: string
         class MultiArea; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea
         class StaticNeighbors; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors
         class FastReroute; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute
@@ -279,12 +298,12 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
         std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors> static_neighbors;
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology> > topology;
         std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity> ttl_security;
-                class NetworkTypeEnum;
+                class NetworkType;
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea : public ydk::Entity
 {
     public:
         MultiArea();
@@ -292,19 +311,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf multi_area_id; //type: one of uint32, string
-        YLeaf cost; //type: uint16
+        ydk::YLeaf multi_area_id; //type: one of string, uint32
+        ydk::YLeaf cost; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::MultiArea
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors : public ydk::Entity
 {
     public:
         StaticNeighbors();
@@ -312,11 +333,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbor; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor
 
@@ -325,7 +348,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -333,21 +356,23 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf cost; //type: uint16
-        YLeaf poll_interval; //type: uint16
-        YLeaf priority; //type: uint8
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf poll_interval; //type: uint16
+        ydk::YLeaf priority; //type: uint8
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::StaticNeighbors::Neighbor
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute : public ydk::Entity
 {
     public:
         FastReroute();
@@ -355,11 +380,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Lfa; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa
 
@@ -368,7 +395,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa : public ydk::Entity
 {
     public:
         Lfa();
@@ -376,14 +403,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate_disabled; //type: boolean
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf candidate_disabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
         class RemoteLfa; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa
 
         std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa> remote_lfa;
@@ -391,7 +420,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa : public ydk::Entity
 {
     public:
         RemoteLfa();
@@ -399,18 +428,20 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::FastReroute::Lfa::RemoteLfa
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity : public ydk::Entity
 {
     public:
         TtlSecurity();
@@ -418,19 +449,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
-        YLeaf hops; //type: uint8
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf hops; //type: uint8
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::TtlSecurity
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -438,16 +471,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sa; //type: string
+        ydk::YLeaf sa; //type: string
         //type: string (refers to ietf_key_chain::KeyChains::name)
-        YLeaf key_chain;
-        YLeaf key; //type: string
+        ydk::YLeaf key_chain;
+        ydk::YLeaf key; //type: string
         class CryptoAlgorithm; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm
 
         std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm> crypto_algorithm;
@@ -455,7 +490,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm : public ydk::Entity
 {
     public:
         CryptoAlgorithm();
@@ -463,25 +498,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hmac_sha1_12; //type: empty
-        YLeaf hmac_sha1_20; //type: empty
-        YLeaf md5; //type: empty
-        YLeaf sha_1; //type: empty
-        YLeaf hmac_sha_1; //type: empty
-        YLeaf hmac_sha_256; //type: empty
-        YLeaf hmac_sha_384; //type: empty
-        YLeaf hmac_sha_512; //type: empty
+        ydk::YLeaf hmac_sha1_12; //type: empty
+        ydk::YLeaf hmac_sha1_20; //type: empty
+        ydk::YLeaf md5; //type: empty
+        ydk::YLeaf sha_1; //type: empty
+        ydk::YLeaf hmac_sha_1; //type: empty
+        ydk::YLeaf hmac_sha_256; //type: empty
+        ydk::YLeaf hmac_sha_384; //type: empty
+        ydk::YLeaf hmac_sha_512; //type: empty
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Authentication::CryptoAlgorithm
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -489,22 +526,24 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_id; //type: string
-        YLeaf address; //type: string
-        YLeaf dr; //type: string
-        YLeaf bdr; //type: string
-        YLeaf state; //type: NbrStateTypeEnum
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf dr; //type: string
+        ydk::YLeaf bdr; //type: string
+        ydk::YLeaf state; //type: NbrStateType
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Neighbor
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas : public ydk::Entity
 {
     public:
         LinkScopeLsas();
@@ -512,13 +551,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint8
+        ydk::YLeaf lsa_type; //type: uint8
         class LinkScopeLsa; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa> > link_scope_lsa;
@@ -526,7 +567,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa : public ydk::Entity
 {
     public:
         LinkScopeLsa();
@@ -534,16 +575,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_id; //type: one of string, uint32
-        YLeaf adv_router; //type: string
-        YLeaf decoded_completed; //type: boolean
-        YLeaf raw_data; //type: string
+        ydk::YLeaf lsa_id; //type: one of string, uint32
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf decoded_completed; //type: boolean
+        ydk::YLeaf raw_data; //type: string
         class Ospfv2; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2
         class Ospfv3; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3
 
@@ -553,7 +596,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2 : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2 : public ydk::Entity
 {
     public:
         Ospfv2();
@@ -561,11 +604,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Header; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Header
         class Body; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body
@@ -576,7 +621,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Header : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Header : public ydk::Entity
 {
     public:
         Header();
@@ -584,27 +629,29 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeaf lsa_id; //type: string
-        YLeaf opaque_type; //type: uint8
-        YLeaf opaque_id; //type: uint32
-        YLeaf age; //type: uint16
-        YLeaf type; //type: uint16
-        YLeaf adv_router; //type: string
-        YLeaf seq_num; //type: string
-        YLeaf checksum; //type: string
-        YLeaf length; //type: uint16
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf lsa_id; //type: string
+        ydk::YLeaf opaque_type; //type: uint8
+        ydk::YLeaf opaque_id; //type: uint32
+        ydk::YLeaf age; //type: uint16
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf seq_num; //type: string
+        ydk::YLeaf checksum; //type: string
+        ydk::YLeaf length; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Header
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body : public ydk::Entity
 {
     public:
         Body();
@@ -612,11 +659,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Router; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router
         class Network; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network
@@ -633,7 +682,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router : public ydk::Entity
 {
     public:
         Router();
@@ -641,14 +690,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flags; //type: Flags
-        YLeaf num_of_links; //type: uint16
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf num_of_links; //type: uint16
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link> > link;
@@ -656,7 +707,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link : public ydk::Entity
 {
     public:
         Link();
@@ -664,15 +715,17 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_id; //type: string
-        YLeaf link_data; //type: one of string, uint32
-        YLeaf type; //type: uint8
+        ydk::YLeaf link_id; //type: string
+        ydk::YLeaf link_data; //type: one of string, uint32
+        ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology> > topology;
@@ -680,7 +733,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -688,19 +741,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf metric; //type: uint16
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf metric; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Router::Link::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network : public ydk::Entity
 {
     public:
         Network();
@@ -708,19 +763,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
-        YLeafList attached_router; //type: list of  string
+        ydk::YLeaf network_mask; //type: string
+        ydk::YLeafList attached_router; //type: list of  string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Network
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -728,13 +785,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
+        ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology> > topology;
@@ -742,7 +801,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -750,19 +809,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf metric; //type: uint32
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf metric; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Summary::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External : public ydk::Entity
 {
     public:
         External();
@@ -770,13 +831,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
+        ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology> > topology;
@@ -784,7 +847,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -792,22 +855,24 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf flags; //type: Flags
-        YLeaf metric; //type: uint32
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::External::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque : public ydk::Entity
 {
     public:
         Opaque();
@@ -815,11 +880,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class UnknownTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv
         class RouterAddressTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
@@ -832,7 +899,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv : public ydk::Entity
 {
     public:
         UnknownTlv();
@@ -840,20 +907,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: uint16
-        YLeaf length; //type: uint16
-        YLeaf value_; //type: string
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf value_; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::UnknownTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv : public ydk::Entity
 {
     public:
         RouterAddressTlv();
@@ -861,18 +930,20 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_address; //type: string
+        ydk::YLeaf router_address; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv : public ydk::Entity
 {
     public:
         LinkTlv();
@@ -880,21 +951,23 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_type; //type: uint8
-        YLeaf link_id; //type: string
-        YLeaf te_metric; //type: uint32
-        YLeaf max_bandwidth; //type: decimal64
-        YLeaf max_reservable_bandwidth; //type: decimal64
-        YLeaf unreserved_bandwidth; //type: decimal64
-        YLeaf admin_group; //type: uint32
-        YLeafList local_if_ipv4_addr; //type: list of  string
-        YLeafList local_remote_ipv4_addr; //type: list of  string
+        ydk::YLeaf link_type; //type: uint8
+        ydk::YLeaf link_id; //type: string
+        ydk::YLeaf te_metric; //type: uint32
+        ydk::YLeaf max_bandwidth; //type: decimal64
+        ydk::YLeaf max_reservable_bandwidth; //type: decimal64
+        ydk::YLeaf unreserved_bandwidth; //type: decimal64
+        ydk::YLeaf admin_group; //type: uint32
+        ydk::YLeafList local_if_ipv4_addr; //type: list of  string
+        ydk::YLeafList local_remote_ipv4_addr; //type: list of  string
         class UnknownSubtlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv> > unknown_subtlv;
@@ -902,7 +975,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv : public ydk::Entity
 {
     public:
         UnknownSubtlv();
@@ -910,20 +983,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: uint16
-        YLeaf length; //type: uint16
-        YLeaf value_; //type: string
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf value_; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3 : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3 : public ydk::Entity
 {
     public:
         Ospfv3();
@@ -931,11 +1006,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Header; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Header
         class Body; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body
@@ -946,7 +1023,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Header : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Header : public ydk::Entity
 {
     public:
         Header();
@@ -954,25 +1031,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_id; //type: uint32
-        YLeaf age; //type: uint16
-        YLeaf type; //type: uint16
-        YLeaf adv_router; //type: string
-        YLeaf seq_num; //type: string
-        YLeaf checksum; //type: string
-        YLeaf length; //type: uint16
-        YLeaf options; //type: Options
+        ydk::YLeaf lsa_id; //type: uint32
+        ydk::YLeaf age; //type: uint16
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf seq_num; //type: string
+        ydk::YLeaf checksum; //type: string
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf options; //type: Options
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Header
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body : public ydk::Entity
 {
     public:
         Body();
@@ -980,11 +1059,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Router; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router
         class Network; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network
@@ -1007,7 +1088,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router : public ydk::Entity
 {
     public:
         Router();
@@ -1015,14 +1096,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flags; //type: Flags
-        YLeaf options; //type: Options
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf options; //type: Options
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link> > link;
@@ -1030,7 +1113,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link : public ydk::Entity
 {
     public:
         Link();
@@ -1038,22 +1121,24 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_id; //type: uint32
-        YLeaf neighbor_interface_id; //type: uint32
-        YLeaf neighbor_router_id; //type: string
-        YLeaf type; //type: uint8
-        YLeaf metric; //type: uint16
+        ydk::YLeaf interface_id; //type: uint32
+        ydk::YLeaf neighbor_interface_id; //type: uint32
+        ydk::YLeaf neighbor_router_id; //type: string
+        ydk::YLeaf type; //type: uint8
+        ydk::YLeaf metric; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Router::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network : public ydk::Entity
 {
     public:
         Network();
@@ -1061,19 +1146,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeafList attached_router; //type: list of  string
+        ydk::YLeaf options; //type: Options
+        ydk::YLeafList attached_router; //type: list of  string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Network
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaPrefix : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaPrefix : public ydk::Entity
 {
     public:
         InterAreaPrefix();
@@ -1081,20 +1168,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaPrefix
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaRouter : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaRouter : public ydk::Entity
 {
     public:
         InterAreaRouter();
@@ -1102,20 +1191,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeaf metric; //type: uint32
-        YLeaf destination_router_id; //type: string
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf destination_router_id; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::InterAreaRouter
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::AsExternal : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::AsExternal : public ydk::Entity
 {
     public:
         AsExternal();
@@ -1123,25 +1214,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf flags; //type: Flags
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
-        YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf referenced_link_state_id; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::AsExternal
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Nssa : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Nssa : public ydk::Entity
 {
     public:
         Nssa();
@@ -1149,25 +1242,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf flags; //type: Flags
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
-        YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf referenced_link_state_id; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Nssa
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link : public ydk::Entity
 {
     public:
         Link();
@@ -1175,16 +1270,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rtr_priority; //type: uint8
-        YLeaf options; //type: Options
-        YLeaf link_local_interface_address; //type: string
-        YLeaf num_of_prefixes; //type: uint32
+        ydk::YLeaf rtr_priority; //type: uint8
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf link_local_interface_address; //type: string
+        ydk::YLeaf num_of_prefixes; //type: uint32
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList> > prefix_list;
@@ -1192,7 +1289,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList : public ydk::Entity
 {
     public:
         PrefixList();
@@ -1200,19 +1297,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::Link::PrefixList
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix : public ydk::Entity
 {
     public:
         IntraAreaPrefix();
@@ -1220,16 +1319,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf referenced_link_state_id; //type: uint32
-        YLeaf referenced_adv_router; //type: string
-        YLeaf num_of_prefixes; //type: uint16
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf referenced_adv_router; //type: string
+        ydk::YLeaf num_of_prefixes; //type: uint16
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList> > prefix_list;
@@ -1237,7 +1338,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList : public ydk::Entity
 {
     public:
         PrefixList();
@@ -1245,20 +1346,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf metric; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf metric; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::LinkScopeLsas::LinkScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -1266,19 +1369,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to ietf_routing::Routing::RoutingInstance::Ribs::Rib::name)
-        YLeaf name;
+        ydk::YLeaf name;
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas : public ydk::Entity
 {
     public:
         AreaScopeLsas();
@@ -1286,13 +1391,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint8
+        ydk::YLeaf lsa_type; //type: uint8
         class AreaScopeLsa; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa> > area_scope_lsa;
@@ -1300,7 +1407,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa : public ydk::Entity
 {
     public:
         AreaScopeLsa();
@@ -1308,16 +1415,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_id; //type: one of string, uint32
-        YLeaf adv_router; //type: string
-        YLeaf decoded_completed; //type: boolean
-        YLeaf raw_data; //type: string
+        ydk::YLeaf lsa_id; //type: one of string, uint32
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf decoded_completed; //type: boolean
+        ydk::YLeaf raw_data; //type: string
         class Ospfv2; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2
         class Ospfv3; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3
 
@@ -1327,7 +1436,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2 : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2 : public ydk::Entity
 {
     public:
         Ospfv2();
@@ -1335,11 +1444,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Header; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Header
         class Body; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body
@@ -1350,7 +1461,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Header : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Header : public ydk::Entity
 {
     public:
         Header();
@@ -1358,27 +1469,29 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeaf lsa_id; //type: string
-        YLeaf opaque_type; //type: uint8
-        YLeaf opaque_id; //type: uint32
-        YLeaf age; //type: uint16
-        YLeaf type; //type: uint16
-        YLeaf adv_router; //type: string
-        YLeaf seq_num; //type: string
-        YLeaf checksum; //type: string
-        YLeaf length; //type: uint16
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf lsa_id; //type: string
+        ydk::YLeaf opaque_type; //type: uint8
+        ydk::YLeaf opaque_id; //type: uint32
+        ydk::YLeaf age; //type: uint16
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf seq_num; //type: string
+        ydk::YLeaf checksum; //type: string
+        ydk::YLeaf length; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Header
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body : public ydk::Entity
 {
     public:
         Body();
@@ -1386,11 +1499,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Router; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router
         class Network; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network
@@ -1407,7 +1522,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router : public ydk::Entity
 {
     public:
         Router();
@@ -1415,14 +1530,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flags; //type: Flags
-        YLeaf num_of_links; //type: uint16
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf num_of_links; //type: uint16
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link> > link;
@@ -1430,7 +1547,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link : public ydk::Entity
 {
     public:
         Link();
@@ -1438,15 +1555,17 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_id; //type: string
-        YLeaf link_data; //type: one of string, uint32
-        YLeaf type; //type: uint8
+        ydk::YLeaf link_id; //type: string
+        ydk::YLeaf link_data; //type: one of string, uint32
+        ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology> > topology;
@@ -1454,7 +1573,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -1462,19 +1581,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf metric; //type: uint16
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf metric; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Router::Link::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network : public ydk::Entity
 {
     public:
         Network();
@@ -1482,19 +1603,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
-        YLeafList attached_router; //type: list of  string
+        ydk::YLeaf network_mask; //type: string
+        ydk::YLeafList attached_router; //type: list of  string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Network
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -1502,13 +1625,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
+        ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology> > topology;
@@ -1516,7 +1641,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -1524,19 +1649,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf metric; //type: uint32
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf metric; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Summary::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External : public ydk::Entity
 {
     public:
         External();
@@ -1544,13 +1671,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
+        ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology> > topology;
@@ -1558,7 +1687,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -1566,22 +1695,24 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf flags; //type: Flags
-        YLeaf metric; //type: uint32
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::External::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque : public ydk::Entity
 {
     public:
         Opaque();
@@ -1589,11 +1720,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class UnknownTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv
         class RouterAddressTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
@@ -1606,7 +1739,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv : public ydk::Entity
 {
     public:
         UnknownTlv();
@@ -1614,20 +1747,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: uint16
-        YLeaf length; //type: uint16
-        YLeaf value_; //type: string
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf value_; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::UnknownTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv : public ydk::Entity
 {
     public:
         RouterAddressTlv();
@@ -1635,18 +1770,20 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_address; //type: string
+        ydk::YLeaf router_address; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv : public ydk::Entity
 {
     public:
         LinkTlv();
@@ -1654,21 +1791,23 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_type; //type: uint8
-        YLeaf link_id; //type: string
-        YLeaf te_metric; //type: uint32
-        YLeaf max_bandwidth; //type: decimal64
-        YLeaf max_reservable_bandwidth; //type: decimal64
-        YLeaf unreserved_bandwidth; //type: decimal64
-        YLeaf admin_group; //type: uint32
-        YLeafList local_if_ipv4_addr; //type: list of  string
-        YLeafList local_remote_ipv4_addr; //type: list of  string
+        ydk::YLeaf link_type; //type: uint8
+        ydk::YLeaf link_id; //type: string
+        ydk::YLeaf te_metric; //type: uint32
+        ydk::YLeaf max_bandwidth; //type: decimal64
+        ydk::YLeaf max_reservable_bandwidth; //type: decimal64
+        ydk::YLeaf unreserved_bandwidth; //type: decimal64
+        ydk::YLeaf admin_group; //type: uint32
+        ydk::YLeafList local_if_ipv4_addr; //type: list of  string
+        ydk::YLeafList local_remote_ipv4_addr; //type: list of  string
         class UnknownSubtlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv> > unknown_subtlv;
@@ -1676,7 +1815,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv : public ydk::Entity
 {
     public:
         UnknownSubtlv();
@@ -1684,20 +1823,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: uint16
-        YLeaf length; //type: uint16
-        YLeaf value_; //type: string
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf value_; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3 : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3 : public ydk::Entity
 {
     public:
         Ospfv3();
@@ -1705,11 +1846,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Header; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Header
         class Body; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body
@@ -1720,7 +1863,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Header : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Header : public ydk::Entity
 {
     public:
         Header();
@@ -1728,25 +1871,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_id; //type: uint32
-        YLeaf age; //type: uint16
-        YLeaf type; //type: uint16
-        YLeaf adv_router; //type: string
-        YLeaf seq_num; //type: string
-        YLeaf checksum; //type: string
-        YLeaf length; //type: uint16
-        YLeaf options; //type: Options
+        ydk::YLeaf lsa_id; //type: uint32
+        ydk::YLeaf age; //type: uint16
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf seq_num; //type: string
+        ydk::YLeaf checksum; //type: string
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf options; //type: Options
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Header
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body : public ydk::Entity
 {
     public:
         Body();
@@ -1754,11 +1899,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Router; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router
         class Network; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network
@@ -1781,7 +1928,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router : public ydk::Entity
 {
     public:
         Router();
@@ -1789,14 +1936,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flags; //type: Flags
-        YLeaf options; //type: Options
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf options; //type: Options
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link> > link;
@@ -1804,7 +1953,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link : public ydk::Entity
 {
     public:
         Link();
@@ -1812,22 +1961,24 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_id; //type: uint32
-        YLeaf neighbor_interface_id; //type: uint32
-        YLeaf neighbor_router_id; //type: string
-        YLeaf type; //type: uint8
-        YLeaf metric; //type: uint16
+        ydk::YLeaf interface_id; //type: uint32
+        ydk::YLeaf neighbor_interface_id; //type: uint32
+        ydk::YLeaf neighbor_router_id; //type: string
+        ydk::YLeaf type; //type: uint8
+        ydk::YLeaf metric; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Router::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network : public ydk::Entity
 {
     public:
         Network();
@@ -1835,19 +1986,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeafList attached_router; //type: list of  string
+        ydk::YLeaf options; //type: Options
+        ydk::YLeafList attached_router; //type: list of  string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Network
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaPrefix : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaPrefix : public ydk::Entity
 {
     public:
         InterAreaPrefix();
@@ -1855,20 +2008,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaPrefix
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaRouter : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaRouter : public ydk::Entity
 {
     public:
         InterAreaRouter();
@@ -1876,20 +2031,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeaf metric; //type: uint32
-        YLeaf destination_router_id; //type: string
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf destination_router_id; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::InterAreaRouter
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::AsExternal : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::AsExternal : public ydk::Entity
 {
     public:
         AsExternal();
@@ -1897,25 +2054,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf flags; //type: Flags
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
-        YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf referenced_link_state_id; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::AsExternal
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Nssa : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Nssa : public ydk::Entity
 {
     public:
         Nssa();
@@ -1923,25 +2082,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf flags; //type: Flags
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
-        YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf referenced_link_state_id; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Nssa
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link : public ydk::Entity
 {
     public:
         Link();
@@ -1949,16 +2110,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rtr_priority; //type: uint8
-        YLeaf options; //type: Options
-        YLeaf link_local_interface_address; //type: string
-        YLeaf num_of_prefixes; //type: uint32
+        ydk::YLeaf rtr_priority; //type: uint8
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf link_local_interface_address; //type: string
+        ydk::YLeaf num_of_prefixes; //type: uint32
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList> > prefix_list;
@@ -1966,7 +2129,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList : public ydk::Entity
 {
     public:
         PrefixList();
@@ -1974,19 +2137,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::Link::PrefixList
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix : public ydk::Entity
 {
     public:
         IntraAreaPrefix();
@@ -1994,16 +2159,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf referenced_link_state_id; //type: uint32
-        YLeaf referenced_adv_router; //type: string
-        YLeaf num_of_prefixes; //type: uint16
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf referenced_adv_router; //type: string
+        ydk::YLeaf num_of_prefixes; //type: uint16
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList> > prefix_list;
@@ -2011,7 +2178,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList : public ydk::Entity
 {
     public:
         PrefixList();
@@ -2019,20 +2186,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf metric; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf metric; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AreaScopeLsas::AreaScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas : public ydk::Entity
 {
     public:
         AsScopeLsas();
@@ -2040,13 +2209,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint8
+        ydk::YLeaf lsa_type; //type: uint8
         class AsScopeLsa; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa> > as_scope_lsa;
@@ -2054,7 +2225,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa : public ydk::Entity
 {
     public:
         AsScopeLsa();
@@ -2062,16 +2233,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_id; //type: one of string, uint32
-        YLeaf adv_router; //type: string
-        YLeaf decoded_completed; //type: boolean
-        YLeaf raw_data; //type: string
+        ydk::YLeaf lsa_id; //type: one of string, uint32
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf decoded_completed; //type: boolean
+        ydk::YLeaf raw_data; //type: string
         class Ospfv2; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2
         class Ospfv3; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3
 
@@ -2081,7 +2254,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2 : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2 : public ydk::Entity
 {
     public:
         Ospfv2();
@@ -2089,11 +2262,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Header; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Header
         class Body; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body
@@ -2104,7 +2279,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Header : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Header : public ydk::Entity
 {
     public:
         Header();
@@ -2112,27 +2287,29 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeaf lsa_id; //type: string
-        YLeaf opaque_type; //type: uint8
-        YLeaf opaque_id; //type: uint32
-        YLeaf age; //type: uint16
-        YLeaf type; //type: uint16
-        YLeaf adv_router; //type: string
-        YLeaf seq_num; //type: string
-        YLeaf checksum; //type: string
-        YLeaf length; //type: uint16
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf lsa_id; //type: string
+        ydk::YLeaf opaque_type; //type: uint8
+        ydk::YLeaf opaque_id; //type: uint32
+        ydk::YLeaf age; //type: uint16
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf seq_num; //type: string
+        ydk::YLeaf checksum; //type: string
+        ydk::YLeaf length; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Header
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body : public ydk::Entity
 {
     public:
         Body();
@@ -2140,11 +2317,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Router; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router
         class Network; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network
@@ -2161,7 +2340,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router : public ydk::Entity
 {
     public:
         Router();
@@ -2169,14 +2348,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flags; //type: Flags
-        YLeaf num_of_links; //type: uint16
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf num_of_links; //type: uint16
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link> > link;
@@ -2184,7 +2365,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link : public ydk::Entity
 {
     public:
         Link();
@@ -2192,15 +2373,17 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_id; //type: string
-        YLeaf link_data; //type: one of string, uint32
-        YLeaf type; //type: uint8
+        ydk::YLeaf link_id; //type: string
+        ydk::YLeaf link_data; //type: one of string, uint32
+        ydk::YLeaf type; //type: uint8
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology> > topology;
@@ -2208,7 +2391,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -2216,19 +2399,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf metric; //type: uint16
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf metric; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Router::Link::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network : public ydk::Entity
 {
     public:
         Network();
@@ -2236,19 +2421,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
-        YLeafList attached_router; //type: list of  string
+        ydk::YLeaf network_mask; //type: string
+        ydk::YLeafList attached_router; //type: list of  string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Network
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -2256,13 +2443,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
+        ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology> > topology;
@@ -2270,7 +2459,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -2278,19 +2467,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf metric; //type: uint32
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf metric; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Summary::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External : public ydk::Entity
 {
     public:
         External();
@@ -2298,13 +2489,15 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf network_mask; //type: string
+        ydk::YLeaf network_mask; //type: string
         class Topology; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology> > topology;
@@ -2312,7 +2505,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -2320,22 +2513,24 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mt_id; //type: uint8
-        YLeaf flags; //type: Flags
-        YLeaf metric; //type: uint32
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf mt_id; //type: uint8
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::External::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque : public ydk::Entity
 {
     public:
         Opaque();
@@ -2343,11 +2538,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class UnknownTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv
         class RouterAddressTlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
@@ -2360,7 +2557,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv : public ydk::Entity
 {
     public:
         UnknownTlv();
@@ -2368,20 +2565,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: uint16
-        YLeaf length; //type: uint16
-        YLeaf value_; //type: string
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf value_; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::UnknownTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv : public ydk::Entity
 {
     public:
         RouterAddressTlv();
@@ -2389,18 +2588,20 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_address; //type: string
+        ydk::YLeaf router_address; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::RouterAddressTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv : public ydk::Entity
 {
     public:
         LinkTlv();
@@ -2408,21 +2609,23 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_type; //type: uint8
-        YLeaf link_id; //type: string
-        YLeaf te_metric; //type: uint32
-        YLeaf max_bandwidth; //type: decimal64
-        YLeaf max_reservable_bandwidth; //type: decimal64
-        YLeaf unreserved_bandwidth; //type: decimal64
-        YLeaf admin_group; //type: uint32
-        YLeafList local_if_ipv4_addr; //type: list of  string
-        YLeafList local_remote_ipv4_addr; //type: list of  string
+        ydk::YLeaf link_type; //type: uint8
+        ydk::YLeaf link_id; //type: string
+        ydk::YLeaf te_metric; //type: uint32
+        ydk::YLeaf max_bandwidth; //type: decimal64
+        ydk::YLeaf max_reservable_bandwidth; //type: decimal64
+        ydk::YLeaf unreserved_bandwidth; //type: decimal64
+        ydk::YLeaf admin_group; //type: uint32
+        ydk::YLeafList local_if_ipv4_addr; //type: list of  string
+        ydk::YLeafList local_remote_ipv4_addr; //type: list of  string
         class UnknownSubtlv; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv> > unknown_subtlv;
@@ -2430,7 +2633,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv : public ydk::Entity
 {
     public:
         UnknownSubtlv();
@@ -2438,20 +2641,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: uint16
-        YLeaf length; //type: uint16
-        YLeaf value_; //type: string
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf value_; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv2::Body::Opaque::LinkTlv::UnknownSubtlv
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3 : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3 : public ydk::Entity
 {
     public:
         Ospfv3();
@@ -2459,11 +2664,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Header; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Header
         class Body; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body
@@ -2474,7 +2681,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Header : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Header : public ydk::Entity
 {
     public:
         Header();
@@ -2482,25 +2689,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_id; //type: uint32
-        YLeaf age; //type: uint16
-        YLeaf type; //type: uint16
-        YLeaf adv_router; //type: string
-        YLeaf seq_num; //type: string
-        YLeaf checksum; //type: string
-        YLeaf length; //type: uint16
-        YLeaf options; //type: Options
+        ydk::YLeaf lsa_id; //type: uint32
+        ydk::YLeaf age; //type: uint16
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf adv_router; //type: string
+        ydk::YLeaf seq_num; //type: string
+        ydk::YLeaf checksum; //type: string
+        ydk::YLeaf length; //type: uint16
+        ydk::YLeaf options; //type: Options
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Header
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body : public ydk::Entity
 {
     public:
         Body();
@@ -2508,11 +2717,13 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Router; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router
         class Network; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network
@@ -2535,7 +2746,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router : public ydk::Entity
 {
     public:
         Router();
@@ -2543,14 +2754,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flags; //type: Flags
-        YLeaf options; //type: Options
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf options; //type: Options
         class Link; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link> > link;
@@ -2558,7 +2771,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link : public ydk::Entity
 {
     public:
         Link();
@@ -2566,22 +2779,24 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_id; //type: uint32
-        YLeaf neighbor_interface_id; //type: uint32
-        YLeaf neighbor_router_id; //type: string
-        YLeaf type; //type: uint8
-        YLeaf metric; //type: uint16
+        ydk::YLeaf interface_id; //type: uint32
+        ydk::YLeaf neighbor_interface_id; //type: uint32
+        ydk::YLeaf neighbor_router_id; //type: string
+        ydk::YLeaf type; //type: uint8
+        ydk::YLeaf metric; //type: uint16
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Router::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network : public ydk::Entity
 {
     public:
         Network();
@@ -2589,19 +2804,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeafList attached_router; //type: list of  string
+        ydk::YLeaf options; //type: Options
+        ydk::YLeafList attached_router; //type: list of  string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Network
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaPrefix : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaPrefix : public ydk::Entity
 {
     public:
         InterAreaPrefix();
@@ -2609,20 +2826,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaPrefix
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaRouter : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaRouter : public ydk::Entity
 {
     public:
         InterAreaRouter();
@@ -2630,20 +2849,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf options; //type: Options
-        YLeaf metric; //type: uint32
-        YLeaf destination_router_id; //type: string
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf destination_router_id; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::InterAreaRouter
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::AsExternal : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::AsExternal : public ydk::Entity
 {
     public:
         AsExternal();
@@ -2651,25 +2872,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf flags; //type: Flags
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
-        YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf referenced_link_state_id; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::AsExternal
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Nssa : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Nssa : public ydk::Entity
 {
     public:
         Nssa();
@@ -2677,25 +2900,27 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf metric; //type: uint32
-        YLeaf flags; //type: Flags
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf forwarding_address; //type: string
-        YLeaf external_route_tag; //type: uint32
-        YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf flags; //type: Flags
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_route_tag; //type: uint32
+        ydk::YLeaf referenced_link_state_id; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Nssa
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link : public ydk::Entity
 {
     public:
         Link();
@@ -2703,16 +2928,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rtr_priority; //type: uint8
-        YLeaf options; //type: Options
-        YLeaf link_local_interface_address; //type: string
-        YLeaf num_of_prefixes; //type: uint32
+        ydk::YLeaf rtr_priority; //type: uint8
+        ydk::YLeaf options; //type: Options
+        ydk::YLeaf link_local_interface_address; //type: string
+        ydk::YLeaf num_of_prefixes; //type: uint32
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList> > prefix_list;
@@ -2720,7 +2947,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList : public ydk::Entity
 {
     public:
         PrefixList();
@@ -2728,19 +2955,21 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::Link::PrefixList
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix : public ydk::Entity
 {
     public:
         IntraAreaPrefix();
@@ -2748,16 +2977,18 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf referenced_ls_type; //type: uint16
-        YLeaf referenced_link_state_id; //type: uint32
-        YLeaf referenced_adv_router; //type: string
-        YLeaf num_of_prefixes; //type: uint16
+        ydk::YLeaf referenced_ls_type; //type: uint16
+        ydk::YLeaf referenced_link_state_id; //type: uint32
+        ydk::YLeaf referenced_adv_router; //type: string
+        ydk::YLeaf num_of_prefixes; //type: uint16
         class PrefixList; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList> > prefix_list;
@@ -2765,7 +2996,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList : public ydk::Entity
 {
     public:
         PrefixList();
@@ -2773,20 +3004,22 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_options; //type: string
-        YLeaf metric; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_options; //type: string
+        ydk::YLeaf metric; //type: uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AsScopeLsas::AsScopeLsa::Ospfv3::Body::IntraAreaPrefix::PrefixList
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -2794,14 +3027,16 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to ietf_routing::Routing::RoutingInstance::Ribs::Rib::name)
-        YLeaf name;
+        ydk::YLeaf name;
         class Area; //type: RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
         std::vector<std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area> > area;
@@ -2809,7 +3044,7 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology
 
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area : public Entity
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area : public ydk::Entity
 {
     public:
         Area();
@@ -2817,18 +3052,20 @@ class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::In
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf area_id; //type: one of uint32, string
+        ydk::YLeaf area_id; //type: one of string, uint32
 
 }; // RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
 
-class RoutingState::RoutingInstance::Ribs : public Entity
+class RoutingState::RoutingInstance::Ribs : public ydk::Entity
 {
     public:
         Ribs();
@@ -2836,11 +3073,13 @@ class RoutingState::RoutingInstance::Ribs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rib; //type: RoutingState::RoutingInstance::Ribs::Rib
 
@@ -2849,7 +3088,7 @@ class RoutingState::RoutingInstance::Ribs : public Entity
 }; // RoutingState::RoutingInstance::Ribs
 
 
-class RoutingState::RoutingInstance::Ribs::Rib : public Entity
+class RoutingState::RoutingInstance::Ribs::Rib : public ydk::Entity
 {
     public:
         Rib();
@@ -2857,15 +3096,17 @@ class RoutingState::RoutingInstance::Ribs::Rib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address_family; //type: AddressFamilyIdentity
-        YLeaf default_rib; //type: boolean
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address_family; //type: AddressFamily
+        ydk::YLeaf default_rib; //type: boolean
         class Routes; //type: RoutingState::RoutingInstance::Ribs::Rib::Routes
 
         std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::Ribs::Rib::Routes> routes;
@@ -2873,7 +3114,7 @@ class RoutingState::RoutingInstance::Ribs::Rib : public Entity
 }; // RoutingState::RoutingInstance::Ribs::Rib
 
 
-class RoutingState::RoutingInstance::Ribs::Rib::Routes : public Entity
+class RoutingState::RoutingInstance::Ribs::Rib::Routes : public ydk::Entity
 {
     public:
         Routes();
@@ -2881,11 +3122,13 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Route; //type: RoutingState::RoutingInstance::Ribs::Rib::Routes::Route
 
@@ -2894,7 +3137,7 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes : public Entity
 }; // RoutingState::RoutingInstance::Ribs::Rib::Routes
 
 
-class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route : public Entity
+class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route : public ydk::Entity
 {
     public:
         Route();
@@ -2902,30 +3145,32 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf route_preference; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf source_protocol; //type: RoutingProtocolIdentity
-        YLeaf active; //type: empty
-        YLeaf last_updated; //type: string
-        YLeaf update_source; //type: string
-        YLeaf tag; //type: uint32
-        YLeaf route_type; //type: RouteTypeEnum
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf route_preference; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf source_protocol; //type: RoutingProtocol
+        ydk::YLeaf active; //type: empty
+        ydk::YLeaf last_updated; //type: string
+        ydk::YLeaf update_source; //type: string
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf route_type; //type: RouteType
         class NextHop; //type: RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop
 
         std::shared_ptr<ietf_routing::RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop> next_hop;
-                class RouteTypeEnum;
+                class RouteType;
 
 }; // RoutingState::RoutingInstance::Ribs::Rib::Routes::Route
 
 
-class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop : public Entity
+class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -2933,20 +3178,22 @@ class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf outgoing_interface; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf special_next_hop; //type: SpecialNextHopEnum
-        class SpecialNextHopEnum;
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf special_next_hop; //type: SpecialNextHop
+        class SpecialNextHop;
 
 }; // RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop
 
-class Routing : public Entity
+class Routing : public ydk::Entity
 {
     public:
         Routing();
@@ -2954,15 +3201,18 @@ class Routing : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class RoutingInstance; //type: Routing::RoutingInstance
 
@@ -2971,7 +3221,7 @@ class Routing : public Entity
 }; // Routing
 
 
-class Routing::RoutingInstance : public Entity
+class Routing::RoutingInstance : public ydk::Entity
 {
     public:
         RoutingInstance();
@@ -2979,17 +3229,19 @@ class Routing::RoutingInstance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf type; //type: RoutingInstanceIdentity
-        YLeaf enabled; //type: boolean
-        YLeaf router_id; //type: string
-        YLeaf description; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf type; //type: RoutingInstance
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf description; //type: string
         class Interfaces; //type: Routing::RoutingInstance::Interfaces
         class RoutingProtocols; //type: Routing::RoutingInstance::RoutingProtocols
         class Ribs; //type: Routing::RoutingInstance::Ribs
@@ -3001,7 +3253,7 @@ class Routing::RoutingInstance : public Entity
 }; // Routing::RoutingInstance
 
 
-class Routing::RoutingInstance::Interfaces : public Entity
+class Routing::RoutingInstance::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -3009,19 +3261,21 @@ class Routing::RoutingInstance::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: list of  string (refers to ietf_interfaces::Interfaces::Interface::name)
-        YLeafList interface;
+        ydk::YLeafList interface;
 
 }; // Routing::RoutingInstance::Interfaces
 
 
-class Routing::RoutingInstance::RoutingProtocols : public Entity
+class Routing::RoutingInstance::RoutingProtocols : public ydk::Entity
 {
     public:
         RoutingProtocols();
@@ -3029,11 +3283,13 @@ class Routing::RoutingInstance::RoutingProtocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RoutingProtocol; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol
 
@@ -3042,7 +3298,7 @@ class Routing::RoutingInstance::RoutingProtocols : public Entity
 }; // Routing::RoutingInstance::RoutingProtocols
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol : public ydk::Entity
 {
     public:
         RoutingProtocol();
@@ -3050,15 +3306,17 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: RoutingProtocolIdentity
-        YLeaf name; //type: string
-        YLeaf description; //type: string
+        ydk::YLeaf type; //type: RoutingProtocol
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf description; //type: string
         class StaticRoutes; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes
         class Ospf; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf
 
@@ -3068,7 +3326,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol : public Entit
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes : public ydk::Entity
 {
     public:
         StaticRoutes();
@@ -3076,11 +3334,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
         class Ipv6; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6
@@ -3091,7 +3351,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4 : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -3099,11 +3359,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Route; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
 
@@ -3112,7 +3374,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route : public ydk::Entity
 {
     public:
         Route();
@@ -3120,14 +3382,16 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf description; //type: string
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf description; //type: string
         class NextHop; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
 
         std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop> next_hop;
@@ -3135,7 +3399,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -3143,21 +3407,23 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf outgoing_interface; //type: string
-        YLeaf special_next_hop; //type: SpecialNextHopEnum
-        YLeaf next_hop_address; //type: string
-        class SpecialNextHopEnum;
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf special_next_hop; //type: SpecialNextHop
+        ydk::YLeaf next_hop_address; //type: string
+        class SpecialNextHop;
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6 : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -3165,11 +3431,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Route; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route
 
@@ -3178,7 +3446,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route : public ydk::Entity
 {
     public:
         Route();
@@ -3186,14 +3454,16 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf description; //type: string
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf description; //type: string
         class NextHop; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop
 
         std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop> next_hop;
@@ -3201,7 +3471,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -3209,21 +3479,23 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf outgoing_interface; //type: string
-        YLeaf special_next_hop; //type: SpecialNextHopEnum
-        YLeaf next_hop_address; //type: string
-        class SpecialNextHopEnum;
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf special_next_hop; //type: SpecialNextHop
+        ydk::YLeaf next_hop_address; //type: string
+        class SpecialNextHop;
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public ydk::Entity
 {
     public:
         Ospf();
@@ -3231,13 +3503,15 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf operation_mode; //type: OperationModeIdentity
+        ydk::YLeaf operation_mode; //type: OperationMode
         class AllInstancesInherit; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit
         class Instance; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
@@ -3247,7 +3521,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf : public
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit : public ydk::Entity
 {
     public:
         AllInstancesInherit();
@@ -3255,11 +3529,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInst
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Area; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area
         class Interface; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface
@@ -3270,7 +3546,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInst
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area : public ydk::Entity
 {
     public:
         Area();
@@ -3278,17 +3554,19 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInst
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Area
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3296,17 +3574,19 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInst
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::AllInstancesInherit::Interface
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -3314,15 +3594,17 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: AddressFamilyIdentity
-        YLeaf router_id; //type: string
-        YLeaf enable; //type: boolean
+        ydk::YLeaf af; //type: AddressFamily
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf enable; //type: boolean
         class AdminDistance; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AdminDistance
         class Nsr; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr
         class GracefulRestart; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart
@@ -3352,7 +3634,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AdminDistance : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AdminDistance : public ydk::Entity
 {
     public:
         AdminDistance();
@@ -3360,21 +3642,23 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf intra_area; //type: uint8
-        YLeaf inter_area; //type: uint8
-        YLeaf internal; //type: uint8
-        YLeaf external; //type: uint8
+        ydk::YLeaf intra_area; //type: uint8
+        ydk::YLeaf inter_area; //type: uint8
+        ydk::YLeaf internal; //type: uint8
+        ydk::YLeaf external; //type: uint8
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AdminDistance
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr : public ydk::Entity
 {
     public:
         Nsr();
@@ -3382,18 +3666,20 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
+        ydk::YLeaf enable; //type: boolean
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Nsr
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart : public ydk::Entity
 {
     public:
         GracefulRestart();
@@ -3401,21 +3687,23 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
-        YLeaf helper_enable; //type: boolean
-        YLeaf restart_interval; //type: uint16
-        YLeaf helper_strict_lsa_checking; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf helper_enable; //type: boolean
+        ydk::YLeaf restart_interval; //type: uint16
+        ydk::YLeaf helper_strict_lsa_checking; //type: boolean
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::GracefulRestart
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AutoCost : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AutoCost : public ydk::Entity
 {
     public:
         AutoCost();
@@ -3423,19 +3711,21 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
-        YLeaf reference_bandwidth; //type: uint32
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf reference_bandwidth; //type: uint32
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AutoCost
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::SpfControl : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::SpfControl : public ydk::Entity
 {
     public:
         SpfControl();
@@ -3443,18 +3733,20 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf paths; //type: uint16
+        ydk::YLeaf paths; //type: uint16
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::SpfControl
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::DatabaseControl : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::DatabaseControl : public ydk::Entity
 {
     public:
         DatabaseControl();
@@ -3462,18 +3754,20 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf max_lsa; //type: uint32
+        ydk::YLeaf max_lsa; //type: uint32
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::DatabaseControl
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl : public ydk::Entity
 {
     public:
         ReloadControl();
@@ -3481,17 +3775,19 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::ReloadControl
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls : public ydk::Entity
 {
     public:
         Mpls();
@@ -3499,11 +3795,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TeRid; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::TeRid
         class Ldp; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp
@@ -3514,7 +3812,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::TeRid : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::TeRid : public ydk::Entity
 {
     public:
         TeRid();
@@ -3522,20 +3820,22 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        YLeaf interface;
-        YLeaf router_id; //type: string
+        ydk::YLeaf interface;
+        ydk::YLeaf router_id; //type: string
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::TeRid
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp : public ydk::Entity
 {
     public:
         Ldp();
@@ -3543,19 +3843,21 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf igp_sync; //type: boolean
-        YLeaf autoconfig; //type: boolean
+        ydk::YLeaf igp_sync; //type: boolean
+        ydk::YLeaf autoconfig; //type: boolean
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Mpls::Ldp
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute : public ydk::Entity
 {
     public:
         FastReroute();
@@ -3563,11 +3865,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Lfa; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::Lfa
 
@@ -3576,7 +3880,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::Lfa : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::Lfa : public ydk::Entity
 {
     public:
         Lfa();
@@ -3584,17 +3888,19 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::FastReroute::Lfa
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit : public ydk::Entity
 {
     public:
         AllAreasInherit();
@@ -3602,11 +3908,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Area; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area
         class Interface; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface
@@ -3617,7 +3925,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area : public ydk::Entity
 {
     public:
         Area();
@@ -3625,17 +3933,19 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Area
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3643,17 +3953,19 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::AllAreasInherit::Interface
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area : public ydk::Entity
 {
     public:
         Area();
@@ -3661,16 +3973,18 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf area_id; //type: one of uint32, string
-        YLeaf area_type; //type: AreaTypeIdentity
-        YLeaf summary; //type: boolean
-        YLeaf default_cost; //type: uint32
+        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_type; //type: AreaType
+        ydk::YLeaf summary; //type: boolean
+        ydk::YLeaf default_cost; //type: uint32
         class Range; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range
         class AllInterfacesInherit; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit
         class VirtualLink; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink
@@ -3686,7 +4000,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range : public ydk::Entity
 {
     public:
         Range();
@@ -3694,20 +4008,22 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf advertise; //type: boolean
-        YLeaf cost; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf advertise; //type: boolean
+        ydk::YLeaf cost; //type: uint32
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Range
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit : public ydk::Entity
 {
     public:
         AllInterfacesInherit();
@@ -3715,11 +4031,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::Interface
 
@@ -3728,7 +4046,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::Interface : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3736,17 +4054,19 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::AllInterfacesInherit::Interface
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink : public ydk::Entity
 {
     public:
         VirtualLink();
@@ -3754,23 +4074,25 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf cost; //type: uint16
-        YLeaf hello_interval; //type: uint16
-        YLeaf dead_interval; //type: uint16
-        YLeaf retransmit_interval; //type: uint16
-        YLeaf transmit_delay; //type: uint16
-        YLeaf mtu_ignore; //type: boolean
-        YLeaf lls; //type: boolean
-        YLeaf prefix_suppression; //type: boolean
-        YLeaf bfd; //type: boolean
-        YLeaf enable; //type: boolean
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf hello_interval; //type: uint16
+        ydk::YLeaf dead_interval; //type: uint16
+        ydk::YLeaf retransmit_interval; //type: uint16
+        ydk::YLeaf transmit_delay; //type: uint16
+        ydk::YLeaf mtu_ignore; //type: boolean
+        ydk::YLeaf lls; //type: boolean
+        ydk::YLeaf prefix_suppression; //type: boolean
+        ydk::YLeaf bfd; //type: boolean
+        ydk::YLeaf enable; //type: boolean
         class TtlSecurity; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::TtlSecurity
         class Authentication; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication
 
@@ -3780,7 +4102,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::TtlSecurity : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::TtlSecurity : public ydk::Entity
 {
     public:
         TtlSecurity();
@@ -3788,19 +4110,21 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
-        YLeaf hops; //type: uint8
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf hops; //type: uint8
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::TtlSecurity
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -3808,16 +4132,18 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sa; //type: string
+        ydk::YLeaf sa; //type: string
         //type: string (refers to ietf_key_chain::KeyChains::name)
-        YLeaf key_chain;
-        YLeaf key; //type: string
+        ydk::YLeaf key_chain;
+        ydk::YLeaf key; //type: string
         class CryptoAlgorithm; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm
 
         std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm> crypto_algorithm;
@@ -3825,7 +4151,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm : public ydk::Entity
 {
     public:
         CryptoAlgorithm();
@@ -3833,25 +4159,27 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hmac_sha1_12; //type: empty
-        YLeaf hmac_sha1_20; //type: empty
-        YLeaf md5; //type: empty
-        YLeaf sha_1; //type: empty
-        YLeaf hmac_sha_1; //type: empty
-        YLeaf hmac_sha_256; //type: empty
-        YLeaf hmac_sha_384; //type: empty
-        YLeaf hmac_sha_512; //type: empty
+        ydk::YLeaf hmac_sha1_12; //type: empty
+        ydk::YLeaf hmac_sha1_20; //type: empty
+        ydk::YLeaf md5; //type: empty
+        ydk::YLeaf sha_1; //type: empty
+        ydk::YLeaf hmac_sha_1; //type: empty
+        ydk::YLeaf hmac_sha_256; //type: empty
+        ydk::YLeaf hmac_sha_384; //type: empty
+        ydk::YLeaf hmac_sha_512; //type: empty
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::VirtualLink::Authentication::CryptoAlgorithm
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink : public ydk::Entity
 {
     public:
         ShamLink();
@@ -3859,24 +4187,26 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf local_id; //type: string
-        YLeaf remote_id; //type: string
-        YLeaf cost; //type: uint16
-        YLeaf hello_interval; //type: uint16
-        YLeaf dead_interval; //type: uint16
-        YLeaf retransmit_interval; //type: uint16
-        YLeaf transmit_delay; //type: uint16
-        YLeaf mtu_ignore; //type: boolean
-        YLeaf lls; //type: boolean
-        YLeaf prefix_suppression; //type: boolean
-        YLeaf bfd; //type: boolean
-        YLeaf enable; //type: boolean
+        ydk::YLeaf local_id; //type: string
+        ydk::YLeaf remote_id; //type: string
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf hello_interval; //type: uint16
+        ydk::YLeaf dead_interval; //type: uint16
+        ydk::YLeaf retransmit_interval; //type: uint16
+        ydk::YLeaf transmit_delay; //type: uint16
+        ydk::YLeaf mtu_ignore; //type: boolean
+        ydk::YLeaf lls; //type: boolean
+        ydk::YLeaf prefix_suppression; //type: boolean
+        ydk::YLeaf bfd; //type: boolean
+        ydk::YLeaf enable; //type: boolean
         class TtlSecurity; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::TtlSecurity
         class Authentication; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication
 
@@ -3886,7 +4216,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::TtlSecurity : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::TtlSecurity : public ydk::Entity
 {
     public:
         TtlSecurity();
@@ -3894,19 +4224,21 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
-        YLeaf hops; //type: uint8
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf hops; //type: uint8
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::TtlSecurity
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -3914,16 +4246,18 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sa; //type: string
+        ydk::YLeaf sa; //type: string
         //type: string (refers to ietf_key_chain::KeyChains::name)
-        YLeaf key_chain;
-        YLeaf key; //type: string
+        ydk::YLeaf key_chain;
+        ydk::YLeaf key; //type: string
         class CryptoAlgorithm; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm
 
         std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm> crypto_algorithm;
@@ -3931,7 +4265,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm : public ydk::Entity
 {
     public:
         CryptoAlgorithm();
@@ -3939,25 +4273,27 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hmac_sha1_12; //type: empty
-        YLeaf hmac_sha1_20; //type: empty
-        YLeaf md5; //type: empty
-        YLeaf sha_1; //type: empty
-        YLeaf hmac_sha_1; //type: empty
-        YLeaf hmac_sha_256; //type: empty
-        YLeaf hmac_sha_384; //type: empty
-        YLeaf hmac_sha_512; //type: empty
+        ydk::YLeaf hmac_sha1_12; //type: empty
+        ydk::YLeaf hmac_sha1_20; //type: empty
+        ydk::YLeaf md5; //type: empty
+        ydk::YLeaf sha_1; //type: empty
+        ydk::YLeaf hmac_sha_1; //type: empty
+        ydk::YLeaf hmac_sha_256; //type: empty
+        ydk::YLeaf hmac_sha_384; //type: empty
+        ydk::YLeaf hmac_sha_512; //type: empty
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::ShamLink::Authentication::CryptoAlgorithm
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3965,28 +4301,30 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        YLeaf interface;
-        YLeaf network_type; //type: NetworkTypeEnum
-        YLeaf passive; //type: boolean
-        YLeaf demand_circuit; //type: boolean
-        YLeaf node_flag; //type: boolean
-        YLeaf cost; //type: uint16
-        YLeaf hello_interval; //type: uint16
-        YLeaf dead_interval; //type: uint16
-        YLeaf retransmit_interval; //type: uint16
-        YLeaf transmit_delay; //type: uint16
-        YLeaf mtu_ignore; //type: boolean
-        YLeaf lls; //type: boolean
-        YLeaf prefix_suppression; //type: boolean
-        YLeaf bfd; //type: boolean
-        YLeaf enable; //type: boolean
+        ydk::YLeaf interface;
+        ydk::YLeaf network_type; //type: NetworkType
+        ydk::YLeaf passive; //type: boolean
+        ydk::YLeaf demand_circuit; //type: boolean
+        ydk::YLeaf node_flag; //type: boolean
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf hello_interval; //type: uint16
+        ydk::YLeaf dead_interval; //type: uint16
+        ydk::YLeaf retransmit_interval; //type: uint16
+        ydk::YLeaf transmit_delay; //type: uint16
+        ydk::YLeaf mtu_ignore; //type: boolean
+        ydk::YLeaf lls; //type: boolean
+        ydk::YLeaf prefix_suppression; //type: boolean
+        ydk::YLeaf bfd; //type: boolean
+        ydk::YLeaf enable; //type: boolean
         class MultiArea; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea
         class StaticNeighbors; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors
         class FastReroute; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute
@@ -4000,12 +4338,12 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
         std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors> static_neighbors;
         std::vector<std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology> > topology;
         std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity> ttl_security;
-                class NetworkTypeEnum;
+                class NetworkType;
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea : public ydk::Entity
 {
     public:
         MultiArea();
@@ -4013,19 +4351,21 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf multi_area_id; //type: one of uint32, string
-        YLeaf cost; //type: uint16
+        ydk::YLeaf multi_area_id; //type: one of string, uint32
+        ydk::YLeaf cost; //type: uint16
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::MultiArea
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors : public ydk::Entity
 {
     public:
         StaticNeighbors();
@@ -4033,11 +4373,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbor; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor
 
@@ -4046,7 +4388,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -4054,21 +4396,23 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf cost; //type: uint16
-        YLeaf poll_interval; //type: uint16
-        YLeaf priority; //type: uint8
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf cost; //type: uint16
+        ydk::YLeaf poll_interval; //type: uint16
+        ydk::YLeaf priority; //type: uint8
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::StaticNeighbors::Neighbor
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute : public ydk::Entity
 {
     public:
         FastReroute();
@@ -4076,11 +4420,13 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Lfa; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa
 
@@ -4089,7 +4435,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa : public ydk::Entity
 {
     public:
         Lfa();
@@ -4097,14 +4443,16 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf candidate_disabled; //type: boolean
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf candidate_disabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
         class RemoteLfa; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa
 
         std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa> remote_lfa;
@@ -4112,7 +4460,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa : public ydk::Entity
 {
     public:
         RemoteLfa();
@@ -4120,18 +4468,20 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::FastReroute::Lfa::RemoteLfa
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity : public ydk::Entity
 {
     public:
         TtlSecurity();
@@ -4139,19 +4489,21 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: boolean
-        YLeaf hops; //type: uint8
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf hops; //type: uint8
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::TtlSecurity
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -4159,16 +4511,18 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sa; //type: string
+        ydk::YLeaf sa; //type: string
         //type: string (refers to ietf_key_chain::KeyChains::name)
-        YLeaf key_chain;
-        YLeaf key; //type: string
+        ydk::YLeaf key_chain;
+        ydk::YLeaf key; //type: string
         class CryptoAlgorithm; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm
 
         std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm> crypto_algorithm;
@@ -4176,7 +4530,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm : public ydk::Entity
 {
     public:
         CryptoAlgorithm();
@@ -4184,25 +4538,27 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hmac_sha1_12; //type: empty
-        YLeaf hmac_sha1_20; //type: empty
-        YLeaf md5; //type: empty
-        YLeaf sha_1; //type: empty
-        YLeaf hmac_sha_1; //type: empty
-        YLeaf hmac_sha_256; //type: empty
-        YLeaf hmac_sha_384; //type: empty
-        YLeaf hmac_sha_512; //type: empty
+        ydk::YLeaf hmac_sha1_12; //type: empty
+        ydk::YLeaf hmac_sha1_20; //type: empty
+        ydk::YLeaf md5; //type: empty
+        ydk::YLeaf sha_1; //type: empty
+        ydk::YLeaf hmac_sha_1; //type: empty
+        ydk::YLeaf hmac_sha_256; //type: empty
+        ydk::YLeaf hmac_sha_384; //type: empty
+        ydk::YLeaf hmac_sha_512; //type: empty
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Authentication::CryptoAlgorithm
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -4210,20 +4566,22 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to ietf_routing::Routing::RoutingInstance::Ribs::Rib::name)
-        YLeaf name;
-        YLeaf cost; //type: uint32
+        ydk::YLeaf name;
+        ydk::YLeaf cost; //type: uint32
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::Topology
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -4231,14 +4589,16 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to ietf_routing::Routing::RoutingInstance::Ribs::Rib::name)
-        YLeaf name;
+        ydk::YLeaf name;
         class Area; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
         std::vector<std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area> > area;
@@ -4246,7 +4606,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area : public ydk::Entity
 {
     public:
         Area();
@@ -4254,16 +4614,18 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf area_id; //type: one of uint32, string
-        YLeaf area_type; //type: AreaTypeIdentity
-        YLeaf summary; //type: boolean
-        YLeaf default_cost; //type: uint32
+        ydk::YLeaf area_id; //type: one of string, uint32
+        ydk::YLeaf area_type; //type: AreaType
+        ydk::YLeaf summary; //type: boolean
+        ydk::YLeaf default_cost; //type: uint32
         class Range; //type: Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range
 
         std::vector<std::shared_ptr<ietf_routing::Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range> > range;
@@ -4271,7 +4633,7 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area
 
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range : public Entity
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range : public ydk::Entity
 {
     public:
         Range();
@@ -4279,20 +4641,22 @@ class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instanc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf advertise; //type: boolean
-        YLeaf cost; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf advertise; //type: boolean
+        ydk::YLeaf cost; //type: uint32
 
 }; // Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Topology::Area::Range
 
 
-class Routing::RoutingInstance::Ribs : public Entity
+class Routing::RoutingInstance::Ribs : public ydk::Entity
 {
     public:
         Ribs();
@@ -4300,11 +4664,13 @@ class Routing::RoutingInstance::Ribs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rib; //type: Routing::RoutingInstance::Ribs::Rib
 
@@ -4313,7 +4679,7 @@ class Routing::RoutingInstance::Ribs : public Entity
 }; // Routing::RoutingInstance::Ribs
 
 
-class Routing::RoutingInstance::Ribs::Rib : public Entity
+class Routing::RoutingInstance::Ribs::Rib : public ydk::Entity
 {
     public:
         Rib();
@@ -4321,46 +4687,51 @@ class Routing::RoutingInstance::Ribs::Rib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address_family; //type: AddressFamilyIdentity
-        YLeaf description; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address_family; //type: AddressFamily
+        ydk::YLeaf description; //type: string
 
 }; // Routing::RoutingInstance::Ribs::Rib
 
-class FibRouteRpc : public Entity
+class FibRoute : public ydk::Entity
 {
     public:
-        FibRouteRpc();
-        ~FibRouteRpc();
+        FibRoute();
+        ~FibRoute();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: FibRouteRpc::Input
-        class Output; //type: FibRouteRpc::Output
+        class Input; //type: FibRoute::Input
+        class Output; //type: FibRoute::Output
 
-        std::shared_ptr<ietf_routing::FibRouteRpc::Input> input;
-        std::shared_ptr<ietf_routing::FibRouteRpc::Output> output;
+        std::shared_ptr<ietf_routing::FibRoute::Input> input;
+        std::shared_ptr<ietf_routing::FibRoute::Output> output;
         
-}; // FibRouteRpc
+}; // FibRoute
 
 
-class FibRouteRpc::Input : public Entity
+class FibRoute::Input : public ydk::Entity
 {
     public:
         Input();
@@ -4368,21 +4739,23 @@ class FibRouteRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf routing_instance_name; //type: string
-        class DestinationAddress; //type: FibRouteRpc::Input::DestinationAddress
+        ydk::YLeaf routing_instance_name; //type: string
+        class DestinationAddress; //type: FibRoute::Input::DestinationAddress
 
-        std::shared_ptr<ietf_routing::FibRouteRpc::Input::DestinationAddress> destination_address;
+        std::shared_ptr<ietf_routing::FibRoute::Input::DestinationAddress> destination_address;
         
-}; // FibRouteRpc::Input
+}; // FibRoute::Input
 
 
-class FibRouteRpc::Input::DestinationAddress : public Entity
+class FibRoute::Input::DestinationAddress : public ydk::Entity
 {
     public:
         DestinationAddress();
@@ -4390,20 +4763,22 @@ class FibRouteRpc::Input::DestinationAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_family; //type: AddressFamilyIdentity
-        YLeaf ietf_ipv4_unicast_routing_address; //type: string
-        YLeaf ietf_ipv6_unicast_routing_address; //type: string
+        ydk::YLeaf address_family; //type: AddressFamily
+        ydk::YLeaf ietf_ipv4_unicast_routing_address; //type: string
+        ydk::YLeaf ietf_ipv6_unicast_routing_address; //type: string
 
-}; // FibRouteRpc::Input::DestinationAddress
+}; // FibRoute::Input::DestinationAddress
 
 
-class FibRouteRpc::Output : public Entity
+class FibRoute::Output : public ydk::Entity
 {
     public:
         Output();
@@ -4411,20 +4786,22 @@ class FibRouteRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Route; //type: FibRouteRpc::Output::Route
+        class Route; //type: FibRoute::Output::Route
 
-        std::shared_ptr<ietf_routing::FibRouteRpc::Output::Route> route;
+        std::shared_ptr<ietf_routing::FibRoute::Output::Route> route;
         
-}; // FibRouteRpc::Output
+}; // FibRoute::Output
 
 
-class FibRouteRpc::Output::Route : public Entity
+class FibRoute::Output::Route : public ydk::Entity
 {
     public:
         Route();
@@ -4432,26 +4809,28 @@ class FibRouteRpc::Output::Route : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_family; //type: AddressFamilyIdentity
-        YLeaf source_protocol; //type: RoutingProtocolIdentity
-        YLeaf active; //type: empty
-        YLeaf last_updated; //type: string
-        YLeaf ietf_ipv4_unicast_routing_destination_prefix; //type: string
-        YLeaf ietf_ipv6_unicast_routing_destination_prefix; //type: string
-        class NextHop; //type: FibRouteRpc::Output::Route::NextHop
+        ydk::YLeaf address_family; //type: AddressFamily
+        ydk::YLeaf source_protocol; //type: RoutingProtocol
+        ydk::YLeaf active; //type: empty
+        ydk::YLeaf last_updated; //type: string
+        ydk::YLeaf ietf_ipv4_unicast_routing_destination_prefix; //type: string
+        ydk::YLeaf ietf_ipv6_unicast_routing_destination_prefix; //type: string
+        class NextHop; //type: FibRoute::Output::Route::NextHop
 
-        std::shared_ptr<ietf_routing::FibRouteRpc::Output::Route::NextHop> next_hop;
+        std::shared_ptr<ietf_routing::FibRoute::Output::Route::NextHop> next_hop;
         
-}; // FibRouteRpc::Output::Route
+}; // FibRoute::Output::Route
 
 
-class FibRouteRpc::Output::Route::NextHop : public Entity
+class FibRoute::Output::Route::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -4459,144 +4838,146 @@ class FibRouteRpc::Output::Route::NextHop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf outgoing_interface; //type: string
-        YLeaf ietf_routing_next_hop_address; //type: string
-        YLeaf ietf_ipv4_unicast_routing_next_hop_address; //type: string
-        YLeaf ietf_ipv6_unicast_routing_next_hop_address; //type: string
-        YLeaf special_next_hop; //type: SpecialNextHopEnum
-        class SpecialNextHopEnum;
+        ydk::YLeaf outgoing_interface; //type: string
+        ydk::YLeaf ietf_routing_next_hop_address; //type: string
+        ydk::YLeaf ietf_ipv4_unicast_routing_next_hop_address; //type: string
+        ydk::YLeaf ietf_ipv6_unicast_routing_next_hop_address; //type: string
+        ydk::YLeaf special_next_hop; //type: SpecialNextHop
+        class SpecialNextHop;
 
-}; // FibRouteRpc::Output::Route::NextHop
+}; // FibRoute::Output::Route::NextHop
 
-class VrfRoutingInstanceIdentity : public ietf_routing::RoutingInstanceIdentity, virtual Identity
+class Ipv4 : public ietf_routing::AddressFamily, virtual ydk::Identity
 {
     public:
-        VrfRoutingInstanceIdentity();
-        ~VrfRoutingInstanceIdentity();
+        Ipv4();
+        ~Ipv4();
 
 
-}; // VrfRoutingInstanceIdentity
+}; // Ipv4
 
-class DirectIdentity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class VrfRoutingInstance : public ietf_routing::RoutingInstance, virtual ydk::Identity
 {
     public:
-        DirectIdentity();
-        ~DirectIdentity();
+        VrfRoutingInstance();
+        ~VrfRoutingInstance();
 
 
-}; // DirectIdentity
+}; // VrfRoutingInstance
 
-class DefaultRoutingInstanceIdentity : public ietf_routing::RoutingInstanceIdentity, virtual Identity
+class Direct : public ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        DefaultRoutingInstanceIdentity();
-        ~DefaultRoutingInstanceIdentity();
+        Direct();
+        ~Direct();
 
 
-}; // DefaultRoutingInstanceIdentity
+}; // Direct
 
-class StaticIdentity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class Ipv6 : public ietf_routing::AddressFamily, virtual ydk::Identity
 {
     public:
-        StaticIdentity();
-        ~StaticIdentity();
+        Ipv6();
+        ~Ipv6();
 
 
-}; // StaticIdentity
+}; // Ipv6
 
-class Ipv4Identity : public ietf_routing::AddressFamilyIdentity, virtual Identity
+class Static_ : public ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        Ipv4Identity();
-        ~Ipv4Identity();
+        Static_();
+        ~Static_();
 
 
-}; // Ipv4Identity
+}; // Static_
 
-class Ipv6Identity : public ietf_routing::AddressFamilyIdentity, virtual Identity
+class DefaultRoutingInstance : public ietf_routing::RoutingInstance, virtual ydk::Identity
 {
     public:
-        Ipv6Identity();
-        ~Ipv6Identity();
+        DefaultRoutingInstance();
+        ~DefaultRoutingInstance();
 
 
-}; // Ipv6Identity
+}; // DefaultRoutingInstance
 
-class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::NetworkTypeEnum : public Enum
+class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::NetworkType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf broadcast;
-        static const Enum::YLeaf non_broadcast;
-        static const Enum::YLeaf point_to_multipoint;
-        static const Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf non_broadcast;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf point_to_point;
 
 };
 
-class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::RouteTypeEnum : public Enum
+class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::RouteType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf intra_area;
-        static const Enum::YLeaf inter_area;
-        static const Enum::YLeaf external_1;
-        static const Enum::YLeaf external_2;
-        static const Enum::YLeaf nssa_1;
-        static const Enum::YLeaf nssa_2;
+        static const ydk::Enum::YLeaf intra_area;
+        static const ydk::Enum::YLeaf inter_area;
+        static const ydk::Enum::YLeaf external_1;
+        static const ydk::Enum::YLeaf external_2;
+        static const ydk::Enum::YLeaf nssa_1;
+        static const ydk::Enum::YLeaf nssa_2;
 
 };
 
-class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialNextHopEnum : public Enum
+class RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialNextHop : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf blackhole;
-        static const Enum::YLeaf unreachable;
-        static const Enum::YLeaf prohibit;
-        static const Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf blackhole;
+        static const ydk::Enum::YLeaf unreachable;
+        static const ydk::Enum::YLeaf prohibit;
+        static const ydk::Enum::YLeaf receive;
 
 };
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHopEnum : public Enum
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf blackhole;
-        static const Enum::YLeaf unreachable;
-        static const Enum::YLeaf prohibit;
-        static const Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf blackhole;
+        static const ydk::Enum::YLeaf unreachable;
+        static const ydk::Enum::YLeaf prohibit;
+        static const ydk::Enum::YLeaf receive;
 
 };
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHopEnum : public Enum
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf blackhole;
-        static const Enum::YLeaf unreachable;
-        static const Enum::YLeaf prohibit;
-        static const Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf blackhole;
+        static const ydk::Enum::YLeaf unreachable;
+        static const ydk::Enum::YLeaf prohibit;
+        static const ydk::Enum::YLeaf receive;
 
 };
 
-class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::NetworkTypeEnum : public Enum
+class Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::NetworkType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf broadcast;
-        static const Enum::YLeaf non_broadcast;
-        static const Enum::YLeaf point_to_multipoint;
-        static const Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf non_broadcast;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf point_to_point;
 
 };
 
-class FibRouteRpc::Output::Route::NextHop::SpecialNextHopEnum : public Enum
+class FibRoute::Output::Route::NextHop::SpecialNextHop : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf blackhole;
-        static const Enum::YLeaf unreachable;
-        static const Enum::YLeaf prohibit;
-        static const Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf blackhole;
+        static const ydk::Enum::YLeaf unreachable;
+        static const ydk::Enum::YLeaf prohibit;
+        static const ydk::Enum::YLeaf receive;
 
 };
 

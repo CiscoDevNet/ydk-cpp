@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_oam_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_oam_cfg {
 
 MplsOam::MplsOam()
@@ -34,9 +36,9 @@ bool MplsOam::has_data() const
 
 bool MplsOam::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable_vendor_extension.operation)
-	|| is_set(enable_oam.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(disable_vendor_extension.yfilter)
+	|| ydk::is_set(enable_oam.yfilter)
 	|| (reply_mode !=  nullptr && reply_mode->has_operation());
 }
 
@@ -60,8 +62,8 @@ const EntityPath MplsOam::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable_vendor_extension.is_set || is_set(disable_vendor_extension.operation)) leaf_name_data.push_back(disable_vendor_extension.get_name_leafdata());
-    if (enable_oam.is_set || is_set(enable_oam.operation)) leaf_name_data.push_back(enable_oam.get_name_leafdata());
+    if (disable_vendor_extension.is_set || is_set(disable_vendor_extension.yfilter)) leaf_name_data.push_back(disable_vendor_extension.get_name_leafdata());
+    if (enable_oam.is_set || is_set(enable_oam.yfilter)) leaf_name_data.push_back(enable_oam.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -94,15 +96,31 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
     return children;
 }
 
-void MplsOam::set_value(const std::string & value_path, std::string value)
+void MplsOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable-vendor-extension")
     {
         disable_vendor_extension = value;
+        disable_vendor_extension.value_namespace = name_space;
+        disable_vendor_extension.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-oam")
     {
         enable_oam = value;
+        enable_oam.value_namespace = name_space;
+        enable_oam.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsOam::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable-vendor-extension")
+    {
+        disable_vendor_extension.yfilter = yfilter;
+    }
+    if(value_path == "enable-oam")
+    {
+        enable_oam.yfilter = yfilter;
     }
 }
 
@@ -126,6 +144,18 @@ augment_capabilities_function MplsOam::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> MplsOam::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool MplsOam::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reply-mode" || name == "disable-vendor-extension" || name == "enable-oam")
+        return true;
+    return false;
+}
+
 MplsOam::ReplyMode::ReplyMode()
     :
     control_channel(std::make_shared<MplsOam::ReplyMode::ControlChannel>())
@@ -146,7 +176,7 @@ bool MplsOam::ReplyMode::has_data() const
 
 bool MplsOam::ReplyMode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (control_channel !=  nullptr && control_channel->has_operation());
 }
 
@@ -205,8 +235,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::ReplyMode::get_children(
     return children;
 }
 
-void MplsOam::ReplyMode::set_value(const std::string & value_path, std::string value)
+void MplsOam::ReplyMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::ReplyMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::ReplyMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "control-channel")
+        return true;
+    return false;
 }
 
 MplsOam::ReplyMode::ControlChannel::ControlChannel()
@@ -227,8 +268,8 @@ bool MplsOam::ReplyMode::ControlChannel::has_data() const
 
 bool MplsOam::ReplyMode::ControlChannel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_reverse_lsp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_reverse_lsp.yfilter);
 }
 
 std::string MplsOam::ReplyMode::ControlChannel::get_segment_path() const
@@ -254,7 +295,7 @@ const EntityPath MplsOam::ReplyMode::ControlChannel::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_reverse_lsp.is_set || is_set(allow_reverse_lsp.operation)) leaf_name_data.push_back(allow_reverse_lsp.get_name_leafdata());
+    if (allow_reverse_lsp.is_set || is_set(allow_reverse_lsp.yfilter)) leaf_name_data.push_back(allow_reverse_lsp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -273,12 +314,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::ReplyMode::ControlChanne
     return children;
 }
 
-void MplsOam::ReplyMode::ControlChannel::set_value(const std::string & value_path, std::string value)
+void MplsOam::ReplyMode::ControlChannel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-reverse-lsp")
     {
         allow_reverse_lsp = value;
+        allow_reverse_lsp.value_namespace = name_space;
+        allow_reverse_lsp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::ReplyMode::ControlChannel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-reverse-lsp")
+    {
+        allow_reverse_lsp.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::ReplyMode::ControlChannel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-reverse-lsp")
+        return true;
+    return false;
 }
 
 

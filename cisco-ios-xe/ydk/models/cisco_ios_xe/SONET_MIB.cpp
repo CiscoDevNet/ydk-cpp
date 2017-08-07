@@ -6,59 +6,61 @@
 #include "generated_entity_lookup.hpp"
 #include "SONET_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace SONET_MIB {
 
 SonetMib::SonetMib()
     :
-    sonetfarendlinecurrenttable_(std::make_shared<SonetMib::Sonetfarendlinecurrenttable>())
-	,sonetfarendlineintervaltable_(std::make_shared<SonetMib::Sonetfarendlineintervaltable>())
-	,sonetfarendpathcurrenttable_(std::make_shared<SonetMib::Sonetfarendpathcurrenttable>())
-	,sonetfarendpathintervaltable_(std::make_shared<SonetMib::Sonetfarendpathintervaltable>())
-	,sonetfarendvtcurrenttable_(std::make_shared<SonetMib::Sonetfarendvtcurrenttable>())
-	,sonetfarendvtintervaltable_(std::make_shared<SonetMib::Sonetfarendvtintervaltable>())
-	,sonetlinecurrenttable_(std::make_shared<SonetMib::Sonetlinecurrenttable>())
-	,sonetlineintervaltable_(std::make_shared<SonetMib::Sonetlineintervaltable>())
-	,sonetmedium_(std::make_shared<SonetMib::Sonetmedium>())
-	,sonetmediumtable_(std::make_shared<SonetMib::Sonetmediumtable>())
-	,sonetpathcurrenttable_(std::make_shared<SonetMib::Sonetpathcurrenttable>())
-	,sonetpathintervaltable_(std::make_shared<SonetMib::Sonetpathintervaltable>())
-	,sonetsectioncurrenttable_(std::make_shared<SonetMib::Sonetsectioncurrenttable>())
-	,sonetsectionintervaltable_(std::make_shared<SonetMib::Sonetsectionintervaltable>())
-	,sonetvtcurrenttable_(std::make_shared<SonetMib::Sonetvtcurrenttable>())
-	,sonetvtintervaltable_(std::make_shared<SonetMib::Sonetvtintervaltable>())
+    sonetfarendlinecurrenttable(std::make_shared<SonetMib::Sonetfarendlinecurrenttable>())
+	,sonetfarendlineintervaltable(std::make_shared<SonetMib::Sonetfarendlineintervaltable>())
+	,sonetfarendpathcurrenttable(std::make_shared<SonetMib::Sonetfarendpathcurrenttable>())
+	,sonetfarendpathintervaltable(std::make_shared<SonetMib::Sonetfarendpathintervaltable>())
+	,sonetfarendvtcurrenttable(std::make_shared<SonetMib::Sonetfarendvtcurrenttable>())
+	,sonetfarendvtintervaltable(std::make_shared<SonetMib::Sonetfarendvtintervaltable>())
+	,sonetlinecurrenttable(std::make_shared<SonetMib::Sonetlinecurrenttable>())
+	,sonetlineintervaltable(std::make_shared<SonetMib::Sonetlineintervaltable>())
+	,sonetmedium(std::make_shared<SonetMib::Sonetmedium>())
+	,sonetmediumtable(std::make_shared<SonetMib::Sonetmediumtable>())
+	,sonetpathcurrenttable(std::make_shared<SonetMib::Sonetpathcurrenttable>())
+	,sonetpathintervaltable(std::make_shared<SonetMib::Sonetpathintervaltable>())
+	,sonetsectioncurrenttable(std::make_shared<SonetMib::Sonetsectioncurrenttable>())
+	,sonetsectionintervaltable(std::make_shared<SonetMib::Sonetsectionintervaltable>())
+	,sonetvtcurrenttable(std::make_shared<SonetMib::Sonetvtcurrenttable>())
+	,sonetvtintervaltable(std::make_shared<SonetMib::Sonetvtintervaltable>())
 {
-    sonetfarendlinecurrenttable_->parent = this;
+    sonetfarendlinecurrenttable->parent = this;
 
-    sonetfarendlineintervaltable_->parent = this;
+    sonetfarendlineintervaltable->parent = this;
 
-    sonetfarendpathcurrenttable_->parent = this;
+    sonetfarendpathcurrenttable->parent = this;
 
-    sonetfarendpathintervaltable_->parent = this;
+    sonetfarendpathintervaltable->parent = this;
 
-    sonetfarendvtcurrenttable_->parent = this;
+    sonetfarendvtcurrenttable->parent = this;
 
-    sonetfarendvtintervaltable_->parent = this;
+    sonetfarendvtintervaltable->parent = this;
 
-    sonetlinecurrenttable_->parent = this;
+    sonetlinecurrenttable->parent = this;
 
-    sonetlineintervaltable_->parent = this;
+    sonetlineintervaltable->parent = this;
 
-    sonetmedium_->parent = this;
+    sonetmedium->parent = this;
 
-    sonetmediumtable_->parent = this;
+    sonetmediumtable->parent = this;
 
-    sonetpathcurrenttable_->parent = this;
+    sonetpathcurrenttable->parent = this;
 
-    sonetpathintervaltable_->parent = this;
+    sonetpathintervaltable->parent = this;
 
-    sonetsectioncurrenttable_->parent = this;
+    sonetsectioncurrenttable->parent = this;
 
-    sonetsectionintervaltable_->parent = this;
+    sonetsectionintervaltable->parent = this;
 
-    sonetvtcurrenttable_->parent = this;
+    sonetvtcurrenttable->parent = this;
 
-    sonetvtintervaltable_->parent = this;
+    sonetvtintervaltable->parent = this;
 
     yang_name = "SONET-MIB"; yang_parent_name = "SONET-MIB";
 }
@@ -69,43 +71,43 @@ SonetMib::~SonetMib()
 
 bool SonetMib::has_data() const
 {
-    return (sonetfarendlinecurrenttable_ !=  nullptr && sonetfarendlinecurrenttable_->has_data())
-	|| (sonetfarendlineintervaltable_ !=  nullptr && sonetfarendlineintervaltable_->has_data())
-	|| (sonetfarendpathcurrenttable_ !=  nullptr && sonetfarendpathcurrenttable_->has_data())
-	|| (sonetfarendpathintervaltable_ !=  nullptr && sonetfarendpathintervaltable_->has_data())
-	|| (sonetfarendvtcurrenttable_ !=  nullptr && sonetfarendvtcurrenttable_->has_data())
-	|| (sonetfarendvtintervaltable_ !=  nullptr && sonetfarendvtintervaltable_->has_data())
-	|| (sonetlinecurrenttable_ !=  nullptr && sonetlinecurrenttable_->has_data())
-	|| (sonetlineintervaltable_ !=  nullptr && sonetlineintervaltable_->has_data())
-	|| (sonetmedium_ !=  nullptr && sonetmedium_->has_data())
-	|| (sonetmediumtable_ !=  nullptr && sonetmediumtable_->has_data())
-	|| (sonetpathcurrenttable_ !=  nullptr && sonetpathcurrenttable_->has_data())
-	|| (sonetpathintervaltable_ !=  nullptr && sonetpathintervaltable_->has_data())
-	|| (sonetsectioncurrenttable_ !=  nullptr && sonetsectioncurrenttable_->has_data())
-	|| (sonetsectionintervaltable_ !=  nullptr && sonetsectionintervaltable_->has_data())
-	|| (sonetvtcurrenttable_ !=  nullptr && sonetvtcurrenttable_->has_data())
-	|| (sonetvtintervaltable_ !=  nullptr && sonetvtintervaltable_->has_data());
+    return (sonetfarendlinecurrenttable !=  nullptr && sonetfarendlinecurrenttable->has_data())
+	|| (sonetfarendlineintervaltable !=  nullptr && sonetfarendlineintervaltable->has_data())
+	|| (sonetfarendpathcurrenttable !=  nullptr && sonetfarendpathcurrenttable->has_data())
+	|| (sonetfarendpathintervaltable !=  nullptr && sonetfarendpathintervaltable->has_data())
+	|| (sonetfarendvtcurrenttable !=  nullptr && sonetfarendvtcurrenttable->has_data())
+	|| (sonetfarendvtintervaltable !=  nullptr && sonetfarendvtintervaltable->has_data())
+	|| (sonetlinecurrenttable !=  nullptr && sonetlinecurrenttable->has_data())
+	|| (sonetlineintervaltable !=  nullptr && sonetlineintervaltable->has_data())
+	|| (sonetmedium !=  nullptr && sonetmedium->has_data())
+	|| (sonetmediumtable !=  nullptr && sonetmediumtable->has_data())
+	|| (sonetpathcurrenttable !=  nullptr && sonetpathcurrenttable->has_data())
+	|| (sonetpathintervaltable !=  nullptr && sonetpathintervaltable->has_data())
+	|| (sonetsectioncurrenttable !=  nullptr && sonetsectioncurrenttable->has_data())
+	|| (sonetsectionintervaltable !=  nullptr && sonetsectionintervaltable->has_data())
+	|| (sonetvtcurrenttable !=  nullptr && sonetvtcurrenttable->has_data())
+	|| (sonetvtintervaltable !=  nullptr && sonetvtintervaltable->has_data());
 }
 
 bool SonetMib::has_operation() const
 {
-    return is_set(operation)
-	|| (sonetfarendlinecurrenttable_ !=  nullptr && sonetfarendlinecurrenttable_->has_operation())
-	|| (sonetfarendlineintervaltable_ !=  nullptr && sonetfarendlineintervaltable_->has_operation())
-	|| (sonetfarendpathcurrenttable_ !=  nullptr && sonetfarendpathcurrenttable_->has_operation())
-	|| (sonetfarendpathintervaltable_ !=  nullptr && sonetfarendpathintervaltable_->has_operation())
-	|| (sonetfarendvtcurrenttable_ !=  nullptr && sonetfarendvtcurrenttable_->has_operation())
-	|| (sonetfarendvtintervaltable_ !=  nullptr && sonetfarendvtintervaltable_->has_operation())
-	|| (sonetlinecurrenttable_ !=  nullptr && sonetlinecurrenttable_->has_operation())
-	|| (sonetlineintervaltable_ !=  nullptr && sonetlineintervaltable_->has_operation())
-	|| (sonetmedium_ !=  nullptr && sonetmedium_->has_operation())
-	|| (sonetmediumtable_ !=  nullptr && sonetmediumtable_->has_operation())
-	|| (sonetpathcurrenttable_ !=  nullptr && sonetpathcurrenttable_->has_operation())
-	|| (sonetpathintervaltable_ !=  nullptr && sonetpathintervaltable_->has_operation())
-	|| (sonetsectioncurrenttable_ !=  nullptr && sonetsectioncurrenttable_->has_operation())
-	|| (sonetsectionintervaltable_ !=  nullptr && sonetsectionintervaltable_->has_operation())
-	|| (sonetvtcurrenttable_ !=  nullptr && sonetvtcurrenttable_->has_operation())
-	|| (sonetvtintervaltable_ !=  nullptr && sonetvtintervaltable_->has_operation());
+    return is_set(yfilter)
+	|| (sonetfarendlinecurrenttable !=  nullptr && sonetfarendlinecurrenttable->has_operation())
+	|| (sonetfarendlineintervaltable !=  nullptr && sonetfarendlineintervaltable->has_operation())
+	|| (sonetfarendpathcurrenttable !=  nullptr && sonetfarendpathcurrenttable->has_operation())
+	|| (sonetfarendpathintervaltable !=  nullptr && sonetfarendpathintervaltable->has_operation())
+	|| (sonetfarendvtcurrenttable !=  nullptr && sonetfarendvtcurrenttable->has_operation())
+	|| (sonetfarendvtintervaltable !=  nullptr && sonetfarendvtintervaltable->has_operation())
+	|| (sonetlinecurrenttable !=  nullptr && sonetlinecurrenttable->has_operation())
+	|| (sonetlineintervaltable !=  nullptr && sonetlineintervaltable->has_operation())
+	|| (sonetmedium !=  nullptr && sonetmedium->has_operation())
+	|| (sonetmediumtable !=  nullptr && sonetmediumtable->has_operation())
+	|| (sonetpathcurrenttable !=  nullptr && sonetpathcurrenttable->has_operation())
+	|| (sonetpathintervaltable !=  nullptr && sonetpathintervaltable->has_operation())
+	|| (sonetsectioncurrenttable !=  nullptr && sonetsectioncurrenttable->has_operation())
+	|| (sonetsectionintervaltable !=  nullptr && sonetsectionintervaltable->has_operation())
+	|| (sonetvtcurrenttable !=  nullptr && sonetvtcurrenttable->has_operation())
+	|| (sonetvtintervaltable !=  nullptr && sonetvtintervaltable->has_operation());
 }
 
 std::string SonetMib::get_segment_path() const
@@ -139,146 +141,146 @@ std::shared_ptr<Entity> SonetMib::get_child_by_name(const std::string & child_ya
 {
     if(child_yang_name == "sonetFarEndLineCurrentTable")
     {
-        if(sonetfarendlinecurrenttable_ == nullptr)
+        if(sonetfarendlinecurrenttable == nullptr)
         {
-            sonetfarendlinecurrenttable_ = std::make_shared<SonetMib::Sonetfarendlinecurrenttable>();
+            sonetfarendlinecurrenttable = std::make_shared<SonetMib::Sonetfarendlinecurrenttable>();
         }
-        return sonetfarendlinecurrenttable_;
+        return sonetfarendlinecurrenttable;
     }
 
     if(child_yang_name == "sonetFarEndLineIntervalTable")
     {
-        if(sonetfarendlineintervaltable_ == nullptr)
+        if(sonetfarendlineintervaltable == nullptr)
         {
-            sonetfarendlineintervaltable_ = std::make_shared<SonetMib::Sonetfarendlineintervaltable>();
+            sonetfarendlineintervaltable = std::make_shared<SonetMib::Sonetfarendlineintervaltable>();
         }
-        return sonetfarendlineintervaltable_;
+        return sonetfarendlineintervaltable;
     }
 
     if(child_yang_name == "sonetFarEndPathCurrentTable")
     {
-        if(sonetfarendpathcurrenttable_ == nullptr)
+        if(sonetfarendpathcurrenttable == nullptr)
         {
-            sonetfarendpathcurrenttable_ = std::make_shared<SonetMib::Sonetfarendpathcurrenttable>();
+            sonetfarendpathcurrenttable = std::make_shared<SonetMib::Sonetfarendpathcurrenttable>();
         }
-        return sonetfarendpathcurrenttable_;
+        return sonetfarendpathcurrenttable;
     }
 
     if(child_yang_name == "sonetFarEndPathIntervalTable")
     {
-        if(sonetfarendpathintervaltable_ == nullptr)
+        if(sonetfarendpathintervaltable == nullptr)
         {
-            sonetfarendpathintervaltable_ = std::make_shared<SonetMib::Sonetfarendpathintervaltable>();
+            sonetfarendpathintervaltable = std::make_shared<SonetMib::Sonetfarendpathintervaltable>();
         }
-        return sonetfarendpathintervaltable_;
+        return sonetfarendpathintervaltable;
     }
 
     if(child_yang_name == "sonetFarEndVTCurrentTable")
     {
-        if(sonetfarendvtcurrenttable_ == nullptr)
+        if(sonetfarendvtcurrenttable == nullptr)
         {
-            sonetfarendvtcurrenttable_ = std::make_shared<SonetMib::Sonetfarendvtcurrenttable>();
+            sonetfarendvtcurrenttable = std::make_shared<SonetMib::Sonetfarendvtcurrenttable>();
         }
-        return sonetfarendvtcurrenttable_;
+        return sonetfarendvtcurrenttable;
     }
 
     if(child_yang_name == "sonetFarEndVTIntervalTable")
     {
-        if(sonetfarendvtintervaltable_ == nullptr)
+        if(sonetfarendvtintervaltable == nullptr)
         {
-            sonetfarendvtintervaltable_ = std::make_shared<SonetMib::Sonetfarendvtintervaltable>();
+            sonetfarendvtintervaltable = std::make_shared<SonetMib::Sonetfarendvtintervaltable>();
         }
-        return sonetfarendvtintervaltable_;
+        return sonetfarendvtintervaltable;
     }
 
     if(child_yang_name == "sonetLineCurrentTable")
     {
-        if(sonetlinecurrenttable_ == nullptr)
+        if(sonetlinecurrenttable == nullptr)
         {
-            sonetlinecurrenttable_ = std::make_shared<SonetMib::Sonetlinecurrenttable>();
+            sonetlinecurrenttable = std::make_shared<SonetMib::Sonetlinecurrenttable>();
         }
-        return sonetlinecurrenttable_;
+        return sonetlinecurrenttable;
     }
 
     if(child_yang_name == "sonetLineIntervalTable")
     {
-        if(sonetlineintervaltable_ == nullptr)
+        if(sonetlineintervaltable == nullptr)
         {
-            sonetlineintervaltable_ = std::make_shared<SonetMib::Sonetlineintervaltable>();
+            sonetlineintervaltable = std::make_shared<SonetMib::Sonetlineintervaltable>();
         }
-        return sonetlineintervaltable_;
+        return sonetlineintervaltable;
     }
 
     if(child_yang_name == "sonetMedium")
     {
-        if(sonetmedium_ == nullptr)
+        if(sonetmedium == nullptr)
         {
-            sonetmedium_ = std::make_shared<SonetMib::Sonetmedium>();
+            sonetmedium = std::make_shared<SonetMib::Sonetmedium>();
         }
-        return sonetmedium_;
+        return sonetmedium;
     }
 
     if(child_yang_name == "sonetMediumTable")
     {
-        if(sonetmediumtable_ == nullptr)
+        if(sonetmediumtable == nullptr)
         {
-            sonetmediumtable_ = std::make_shared<SonetMib::Sonetmediumtable>();
+            sonetmediumtable = std::make_shared<SonetMib::Sonetmediumtable>();
         }
-        return sonetmediumtable_;
+        return sonetmediumtable;
     }
 
     if(child_yang_name == "sonetPathCurrentTable")
     {
-        if(sonetpathcurrenttable_ == nullptr)
+        if(sonetpathcurrenttable == nullptr)
         {
-            sonetpathcurrenttable_ = std::make_shared<SonetMib::Sonetpathcurrenttable>();
+            sonetpathcurrenttable = std::make_shared<SonetMib::Sonetpathcurrenttable>();
         }
-        return sonetpathcurrenttable_;
+        return sonetpathcurrenttable;
     }
 
     if(child_yang_name == "sonetPathIntervalTable")
     {
-        if(sonetpathintervaltable_ == nullptr)
+        if(sonetpathintervaltable == nullptr)
         {
-            sonetpathintervaltable_ = std::make_shared<SonetMib::Sonetpathintervaltable>();
+            sonetpathintervaltable = std::make_shared<SonetMib::Sonetpathintervaltable>();
         }
-        return sonetpathintervaltable_;
+        return sonetpathintervaltable;
     }
 
     if(child_yang_name == "sonetSectionCurrentTable")
     {
-        if(sonetsectioncurrenttable_ == nullptr)
+        if(sonetsectioncurrenttable == nullptr)
         {
-            sonetsectioncurrenttable_ = std::make_shared<SonetMib::Sonetsectioncurrenttable>();
+            sonetsectioncurrenttable = std::make_shared<SonetMib::Sonetsectioncurrenttable>();
         }
-        return sonetsectioncurrenttable_;
+        return sonetsectioncurrenttable;
     }
 
     if(child_yang_name == "sonetSectionIntervalTable")
     {
-        if(sonetsectionintervaltable_ == nullptr)
+        if(sonetsectionintervaltable == nullptr)
         {
-            sonetsectionintervaltable_ = std::make_shared<SonetMib::Sonetsectionintervaltable>();
+            sonetsectionintervaltable = std::make_shared<SonetMib::Sonetsectionintervaltable>();
         }
-        return sonetsectionintervaltable_;
+        return sonetsectionintervaltable;
     }
 
     if(child_yang_name == "sonetVTCurrentTable")
     {
-        if(sonetvtcurrenttable_ == nullptr)
+        if(sonetvtcurrenttable == nullptr)
         {
-            sonetvtcurrenttable_ = std::make_shared<SonetMib::Sonetvtcurrenttable>();
+            sonetvtcurrenttable = std::make_shared<SonetMib::Sonetvtcurrenttable>();
         }
-        return sonetvtcurrenttable_;
+        return sonetvtcurrenttable;
     }
 
     if(child_yang_name == "sonetVTIntervalTable")
     {
-        if(sonetvtintervaltable_ == nullptr)
+        if(sonetvtintervaltable == nullptr)
         {
-            sonetvtintervaltable_ = std::make_shared<SonetMib::Sonetvtintervaltable>();
+            sonetvtintervaltable = std::make_shared<SonetMib::Sonetvtintervaltable>();
         }
-        return sonetvtintervaltable_;
+        return sonetvtintervaltable;
     }
 
     return nullptr;
@@ -287,90 +289,94 @@ std::shared_ptr<Entity> SonetMib::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(sonetfarendlinecurrenttable_ != nullptr)
+    if(sonetfarendlinecurrenttable != nullptr)
     {
-        children["sonetFarEndLineCurrentTable"] = sonetfarendlinecurrenttable_;
+        children["sonetFarEndLineCurrentTable"] = sonetfarendlinecurrenttable;
     }
 
-    if(sonetfarendlineintervaltable_ != nullptr)
+    if(sonetfarendlineintervaltable != nullptr)
     {
-        children["sonetFarEndLineIntervalTable"] = sonetfarendlineintervaltable_;
+        children["sonetFarEndLineIntervalTable"] = sonetfarendlineintervaltable;
     }
 
-    if(sonetfarendpathcurrenttable_ != nullptr)
+    if(sonetfarendpathcurrenttable != nullptr)
     {
-        children["sonetFarEndPathCurrentTable"] = sonetfarendpathcurrenttable_;
+        children["sonetFarEndPathCurrentTable"] = sonetfarendpathcurrenttable;
     }
 
-    if(sonetfarendpathintervaltable_ != nullptr)
+    if(sonetfarendpathintervaltable != nullptr)
     {
-        children["sonetFarEndPathIntervalTable"] = sonetfarendpathintervaltable_;
+        children["sonetFarEndPathIntervalTable"] = sonetfarendpathintervaltable;
     }
 
-    if(sonetfarendvtcurrenttable_ != nullptr)
+    if(sonetfarendvtcurrenttable != nullptr)
     {
-        children["sonetFarEndVTCurrentTable"] = sonetfarendvtcurrenttable_;
+        children["sonetFarEndVTCurrentTable"] = sonetfarendvtcurrenttable;
     }
 
-    if(sonetfarendvtintervaltable_ != nullptr)
+    if(sonetfarendvtintervaltable != nullptr)
     {
-        children["sonetFarEndVTIntervalTable"] = sonetfarendvtintervaltable_;
+        children["sonetFarEndVTIntervalTable"] = sonetfarendvtintervaltable;
     }
 
-    if(sonetlinecurrenttable_ != nullptr)
+    if(sonetlinecurrenttable != nullptr)
     {
-        children["sonetLineCurrentTable"] = sonetlinecurrenttable_;
+        children["sonetLineCurrentTable"] = sonetlinecurrenttable;
     }
 
-    if(sonetlineintervaltable_ != nullptr)
+    if(sonetlineintervaltable != nullptr)
     {
-        children["sonetLineIntervalTable"] = sonetlineintervaltable_;
+        children["sonetLineIntervalTable"] = sonetlineintervaltable;
     }
 
-    if(sonetmedium_ != nullptr)
+    if(sonetmedium != nullptr)
     {
-        children["sonetMedium"] = sonetmedium_;
+        children["sonetMedium"] = sonetmedium;
     }
 
-    if(sonetmediumtable_ != nullptr)
+    if(sonetmediumtable != nullptr)
     {
-        children["sonetMediumTable"] = sonetmediumtable_;
+        children["sonetMediumTable"] = sonetmediumtable;
     }
 
-    if(sonetpathcurrenttable_ != nullptr)
+    if(sonetpathcurrenttable != nullptr)
     {
-        children["sonetPathCurrentTable"] = sonetpathcurrenttable_;
+        children["sonetPathCurrentTable"] = sonetpathcurrenttable;
     }
 
-    if(sonetpathintervaltable_ != nullptr)
+    if(sonetpathintervaltable != nullptr)
     {
-        children["sonetPathIntervalTable"] = sonetpathintervaltable_;
+        children["sonetPathIntervalTable"] = sonetpathintervaltable;
     }
 
-    if(sonetsectioncurrenttable_ != nullptr)
+    if(sonetsectioncurrenttable != nullptr)
     {
-        children["sonetSectionCurrentTable"] = sonetsectioncurrenttable_;
+        children["sonetSectionCurrentTable"] = sonetsectioncurrenttable;
     }
 
-    if(sonetsectionintervaltable_ != nullptr)
+    if(sonetsectionintervaltable != nullptr)
     {
-        children["sonetSectionIntervalTable"] = sonetsectionintervaltable_;
+        children["sonetSectionIntervalTable"] = sonetsectionintervaltable;
     }
 
-    if(sonetvtcurrenttable_ != nullptr)
+    if(sonetvtcurrenttable != nullptr)
     {
-        children["sonetVTCurrentTable"] = sonetvtcurrenttable_;
+        children["sonetVTCurrentTable"] = sonetvtcurrenttable;
     }
 
-    if(sonetvtintervaltable_ != nullptr)
+    if(sonetvtintervaltable != nullptr)
     {
-        children["sonetVTIntervalTable"] = sonetvtintervaltable_;
+        children["sonetVTIntervalTable"] = sonetvtintervaltable;
     }
 
     return children;
 }
 
-void SonetMib::set_value(const std::string & value_path, std::string value)
+void SonetMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SonetMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -394,6 +400,18 @@ augment_capabilities_function SonetMib::get_augment_capabilities_function() cons
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> SonetMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool SonetMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetFarEndLineCurrentTable" || name == "sonetFarEndLineIntervalTable" || name == "sonetFarEndPathCurrentTable" || name == "sonetFarEndPathIntervalTable" || name == "sonetFarEndVTCurrentTable" || name == "sonetFarEndVTIntervalTable" || name == "sonetLineCurrentTable" || name == "sonetLineIntervalTable" || name == "sonetMedium" || name == "sonetMediumTable" || name == "sonetPathCurrentTable" || name == "sonetPathIntervalTable" || name == "sonetSectionCurrentTable" || name == "sonetSectionIntervalTable" || name == "sonetVTCurrentTable" || name == "sonetVTIntervalTable")
+        return true;
+    return false;
+}
+
 SonetMib::Sonetmedium::Sonetmedium()
     :
     sonetsesthresholdset{YType::enumeration, "sonetSESthresholdSet"}
@@ -412,8 +430,8 @@ bool SonetMib::Sonetmedium::has_data() const
 
 bool SonetMib::Sonetmedium::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(sonetsesthresholdset.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(sonetsesthresholdset.yfilter);
 }
 
 std::string SonetMib::Sonetmedium::get_segment_path() const
@@ -439,7 +457,7 @@ const EntityPath SonetMib::Sonetmedium::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sonetsesthresholdset.is_set || is_set(sonetsesthresholdset.operation)) leaf_name_data.push_back(sonetsesthresholdset.get_name_leafdata());
+    if (sonetsesthresholdset.is_set || is_set(sonetsesthresholdset.yfilter)) leaf_name_data.push_back(sonetsesthresholdset.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -458,12 +476,29 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetmedium::get_childr
     return children;
 }
 
-void SonetMib::Sonetmedium::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetmedium::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sonetSESthresholdSet")
     {
         sonetsesthresholdset = value;
+        sonetsesthresholdset.value_namespace = name_space;
+        sonetsesthresholdset.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetmedium::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sonetSESthresholdSet")
+    {
+        sonetsesthresholdset.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetmedium::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetSESthresholdSet")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetmediumtable::Sonetmediumtable()
@@ -477,9 +512,9 @@ SonetMib::Sonetmediumtable::~Sonetmediumtable()
 
 bool SonetMib::Sonetmediumtable::has_data() const
 {
-    for (std::size_t index=0; index<sonetmediumentry_.size(); index++)
+    for (std::size_t index=0; index<sonetmediumentry.size(); index++)
     {
-        if(sonetmediumentry_[index]->has_data())
+        if(sonetmediumentry[index]->has_data())
             return true;
     }
     return false;
@@ -487,12 +522,12 @@ bool SonetMib::Sonetmediumtable::has_data() const
 
 bool SonetMib::Sonetmediumtable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetmediumentry_.size(); index++)
+    for (std::size_t index=0; index<sonetmediumentry.size(); index++)
     {
-        if(sonetmediumentry_[index]->has_operation())
+        if(sonetmediumentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetmediumtable::get_segment_path() const
@@ -529,7 +564,7 @@ std::shared_ptr<Entity> SonetMib::Sonetmediumtable::get_child_by_name(const std:
 {
     if(child_yang_name == "sonetMediumEntry")
     {
-        for(auto const & c : sonetmediumentry_)
+        for(auto const & c : sonetmediumentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -539,7 +574,7 @@ std::shared_ptr<Entity> SonetMib::Sonetmediumtable::get_child_by_name(const std:
         }
         auto c = std::make_shared<SonetMib::Sonetmediumtable::Sonetmediumentry>();
         c->parent = this;
-        sonetmediumentry_.push_back(c);
+        sonetmediumentry.push_back(c);
         return c;
     }
 
@@ -549,7 +584,7 @@ std::shared_ptr<Entity> SonetMib::Sonetmediumtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetmediumtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetmediumentry_)
+    for (auto const & c : sonetmediumentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -557,8 +592,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetmediumtable::get_c
     return children;
 }
 
-void SonetMib::Sonetmediumtable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetmediumtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetmediumtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetmediumtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetMediumEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumentry()
@@ -595,16 +641,16 @@ bool SonetMib::Sonetmediumtable::Sonetmediumentry::has_data() const
 
 bool SonetMib::Sonetmediumtable::Sonetmediumentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetmediumcircuitidentifier.operation)
-	|| is_set(sonetmediuminvalidintervals.operation)
-	|| is_set(sonetmediumlinecoding.operation)
-	|| is_set(sonetmediumlinetype.operation)
-	|| is_set(sonetmediumloopbackconfig.operation)
-	|| is_set(sonetmediumtimeelapsed.operation)
-	|| is_set(sonetmediumtype.operation)
-	|| is_set(sonetmediumvalidintervals.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetmediumcircuitidentifier.yfilter)
+	|| ydk::is_set(sonetmediuminvalidintervals.yfilter)
+	|| ydk::is_set(sonetmediumlinecoding.yfilter)
+	|| ydk::is_set(sonetmediumlinetype.yfilter)
+	|| ydk::is_set(sonetmediumloopbackconfig.yfilter)
+	|| ydk::is_set(sonetmediumtimeelapsed.yfilter)
+	|| ydk::is_set(sonetmediumtype.yfilter)
+	|| ydk::is_set(sonetmediumvalidintervals.yfilter);
 }
 
 std::string SonetMib::Sonetmediumtable::Sonetmediumentry::get_segment_path() const
@@ -630,15 +676,15 @@ const EntityPath SonetMib::Sonetmediumtable::Sonetmediumentry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetmediumcircuitidentifier.is_set || is_set(sonetmediumcircuitidentifier.operation)) leaf_name_data.push_back(sonetmediumcircuitidentifier.get_name_leafdata());
-    if (sonetmediuminvalidintervals.is_set || is_set(sonetmediuminvalidintervals.operation)) leaf_name_data.push_back(sonetmediuminvalidintervals.get_name_leafdata());
-    if (sonetmediumlinecoding.is_set || is_set(sonetmediumlinecoding.operation)) leaf_name_data.push_back(sonetmediumlinecoding.get_name_leafdata());
-    if (sonetmediumlinetype.is_set || is_set(sonetmediumlinetype.operation)) leaf_name_data.push_back(sonetmediumlinetype.get_name_leafdata());
-    if (sonetmediumloopbackconfig.is_set || is_set(sonetmediumloopbackconfig.operation)) leaf_name_data.push_back(sonetmediumloopbackconfig.get_name_leafdata());
-    if (sonetmediumtimeelapsed.is_set || is_set(sonetmediumtimeelapsed.operation)) leaf_name_data.push_back(sonetmediumtimeelapsed.get_name_leafdata());
-    if (sonetmediumtype.is_set || is_set(sonetmediumtype.operation)) leaf_name_data.push_back(sonetmediumtype.get_name_leafdata());
-    if (sonetmediumvalidintervals.is_set || is_set(sonetmediumvalidintervals.operation)) leaf_name_data.push_back(sonetmediumvalidintervals.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetmediumcircuitidentifier.is_set || is_set(sonetmediumcircuitidentifier.yfilter)) leaf_name_data.push_back(sonetmediumcircuitidentifier.get_name_leafdata());
+    if (sonetmediuminvalidintervals.is_set || is_set(sonetmediuminvalidintervals.yfilter)) leaf_name_data.push_back(sonetmediuminvalidintervals.get_name_leafdata());
+    if (sonetmediumlinecoding.is_set || is_set(sonetmediumlinecoding.yfilter)) leaf_name_data.push_back(sonetmediumlinecoding.get_name_leafdata());
+    if (sonetmediumlinetype.is_set || is_set(sonetmediumlinetype.yfilter)) leaf_name_data.push_back(sonetmediumlinetype.get_name_leafdata());
+    if (sonetmediumloopbackconfig.is_set || is_set(sonetmediumloopbackconfig.yfilter)) leaf_name_data.push_back(sonetmediumloopbackconfig.get_name_leafdata());
+    if (sonetmediumtimeelapsed.is_set || is_set(sonetmediumtimeelapsed.yfilter)) leaf_name_data.push_back(sonetmediumtimeelapsed.get_name_leafdata());
+    if (sonetmediumtype.is_set || is_set(sonetmediumtype.yfilter)) leaf_name_data.push_back(sonetmediumtype.get_name_leafdata());
+    if (sonetmediumvalidintervals.is_set || is_set(sonetmediumvalidintervals.yfilter)) leaf_name_data.push_back(sonetmediumvalidintervals.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -657,27 +703,37 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetmediumtable::Sonet
     return children;
 }
 
-void SonetMib::Sonetmediumtable::Sonetmediumentry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetmediumtable::Sonetmediumentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetMediumCircuitIdentifier")
     {
         sonetmediumcircuitidentifier = value;
+        sonetmediumcircuitidentifier.value_namespace = name_space;
+        sonetmediumcircuitidentifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetMediumInvalidIntervals")
     {
         sonetmediuminvalidintervals = value;
+        sonetmediuminvalidintervals.value_namespace = name_space;
+        sonetmediuminvalidintervals.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetMediumLineCoding")
     {
         sonetmediumlinecoding = value;
+        sonetmediumlinecoding.value_namespace = name_space;
+        sonetmediumlinecoding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetMediumLineType")
     {
         sonetmediumlinetype = value;
+        sonetmediumlinetype.value_namespace = name_space;
+        sonetmediumlinetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetMediumLoopbackConfig")
     {
@@ -686,15 +742,68 @@ void SonetMib::Sonetmediumtable::Sonetmediumentry::set_value(const std::string &
     if(value_path == "sonetMediumTimeElapsed")
     {
         sonetmediumtimeelapsed = value;
+        sonetmediumtimeelapsed.value_namespace = name_space;
+        sonetmediumtimeelapsed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetMediumType")
     {
         sonetmediumtype = value;
+        sonetmediumtype.value_namespace = name_space;
+        sonetmediumtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetMediumValidIntervals")
     {
         sonetmediumvalidintervals = value;
+        sonetmediumvalidintervals.value_namespace = name_space;
+        sonetmediumvalidintervals.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetmediumtable::Sonetmediumentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetMediumCircuitIdentifier")
+    {
+        sonetmediumcircuitidentifier.yfilter = yfilter;
+    }
+    if(value_path == "sonetMediumInvalidIntervals")
+    {
+        sonetmediuminvalidintervals.yfilter = yfilter;
+    }
+    if(value_path == "sonetMediumLineCoding")
+    {
+        sonetmediumlinecoding.yfilter = yfilter;
+    }
+    if(value_path == "sonetMediumLineType")
+    {
+        sonetmediumlinetype.yfilter = yfilter;
+    }
+    if(value_path == "sonetMediumLoopbackConfig")
+    {
+        sonetmediumloopbackconfig.yfilter = yfilter;
+    }
+    if(value_path == "sonetMediumTimeElapsed")
+    {
+        sonetmediumtimeelapsed.yfilter = yfilter;
+    }
+    if(value_path == "sonetMediumType")
+    {
+        sonetmediumtype.yfilter = yfilter;
+    }
+    if(value_path == "sonetMediumValidIntervals")
+    {
+        sonetmediumvalidintervals.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetmediumtable::Sonetmediumentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetMediumCircuitIdentifier" || name == "sonetMediumInvalidIntervals" || name == "sonetMediumLineCoding" || name == "sonetMediumLineType" || name == "sonetMediumLoopbackConfig" || name == "sonetMediumTimeElapsed" || name == "sonetMediumType" || name == "sonetMediumValidIntervals")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrenttable()
@@ -708,9 +817,9 @@ SonetMib::Sonetsectioncurrenttable::~Sonetsectioncurrenttable()
 
 bool SonetMib::Sonetsectioncurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<sonetsectioncurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetsectioncurrententry.size(); index++)
     {
-        if(sonetsectioncurrententry_[index]->has_data())
+        if(sonetsectioncurrententry[index]->has_data())
             return true;
     }
     return false;
@@ -718,12 +827,12 @@ bool SonetMib::Sonetsectioncurrenttable::has_data() const
 
 bool SonetMib::Sonetsectioncurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetsectioncurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetsectioncurrententry.size(); index++)
     {
-        if(sonetsectioncurrententry_[index]->has_operation())
+        if(sonetsectioncurrententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetsectioncurrenttable::get_segment_path() const
@@ -760,7 +869,7 @@ std::shared_ptr<Entity> SonetMib::Sonetsectioncurrenttable::get_child_by_name(co
 {
     if(child_yang_name == "sonetSectionCurrentEntry")
     {
-        for(auto const & c : sonetsectioncurrententry_)
+        for(auto const & c : sonetsectioncurrententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -770,7 +879,7 @@ std::shared_ptr<Entity> SonetMib::Sonetsectioncurrenttable::get_child_by_name(co
         }
         auto c = std::make_shared<SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry>();
         c->parent = this;
-        sonetsectioncurrententry_.push_back(c);
+        sonetsectioncurrententry.push_back(c);
         return c;
     }
 
@@ -780,7 +889,7 @@ std::shared_ptr<Entity> SonetMib::Sonetsectioncurrenttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetsectioncurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetsectioncurrententry_)
+    for (auto const & c : sonetsectioncurrententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -788,8 +897,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetsectioncurrenttabl
     return children;
 }
 
-void SonetMib::Sonetsectioncurrenttable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetsectioncurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetsectioncurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetsectioncurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetSectionCurrentEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::Sonetsectioncurrententry()
@@ -820,13 +940,13 @@ bool SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::has_data() co
 
 bool SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetsectioncurrentcvs.operation)
-	|| is_set(sonetsectioncurrentess.operation)
-	|| is_set(sonetsectioncurrentsefss.operation)
-	|| is_set(sonetsectioncurrentsess.operation)
-	|| is_set(sonetsectioncurrentstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetsectioncurrentcvs.yfilter)
+	|| ydk::is_set(sonetsectioncurrentess.yfilter)
+	|| ydk::is_set(sonetsectioncurrentsefss.yfilter)
+	|| ydk::is_set(sonetsectioncurrentsess.yfilter)
+	|| ydk::is_set(sonetsectioncurrentstatus.yfilter);
 }
 
 std::string SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::get_segment_path() const
@@ -852,12 +972,12 @@ const EntityPath SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetsectioncurrentcvs.is_set || is_set(sonetsectioncurrentcvs.operation)) leaf_name_data.push_back(sonetsectioncurrentcvs.get_name_leafdata());
-    if (sonetsectioncurrentess.is_set || is_set(sonetsectioncurrentess.operation)) leaf_name_data.push_back(sonetsectioncurrentess.get_name_leafdata());
-    if (sonetsectioncurrentsefss.is_set || is_set(sonetsectioncurrentsefss.operation)) leaf_name_data.push_back(sonetsectioncurrentsefss.get_name_leafdata());
-    if (sonetsectioncurrentsess.is_set || is_set(sonetsectioncurrentsess.operation)) leaf_name_data.push_back(sonetsectioncurrentsess.get_name_leafdata());
-    if (sonetsectioncurrentstatus.is_set || is_set(sonetsectioncurrentstatus.operation)) leaf_name_data.push_back(sonetsectioncurrentstatus.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetsectioncurrentcvs.is_set || is_set(sonetsectioncurrentcvs.yfilter)) leaf_name_data.push_back(sonetsectioncurrentcvs.get_name_leafdata());
+    if (sonetsectioncurrentess.is_set || is_set(sonetsectioncurrentess.yfilter)) leaf_name_data.push_back(sonetsectioncurrentess.get_name_leafdata());
+    if (sonetsectioncurrentsefss.is_set || is_set(sonetsectioncurrentsefss.yfilter)) leaf_name_data.push_back(sonetsectioncurrentsefss.get_name_leafdata());
+    if (sonetsectioncurrentsess.is_set || is_set(sonetsectioncurrentsess.yfilter)) leaf_name_data.push_back(sonetsectioncurrentsess.get_name_leafdata());
+    if (sonetsectioncurrentstatus.is_set || is_set(sonetsectioncurrentstatus.yfilter)) leaf_name_data.push_back(sonetsectioncurrentstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -876,32 +996,79 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetsectioncurrenttabl
     return children;
 }
 
-void SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionCurrentCVs")
     {
         sonetsectioncurrentcvs = value;
+        sonetsectioncurrentcvs.value_namespace = name_space;
+        sonetsectioncurrentcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionCurrentESs")
     {
         sonetsectioncurrentess = value;
+        sonetsectioncurrentess.value_namespace = name_space;
+        sonetsectioncurrentess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionCurrentSEFSs")
     {
         sonetsectioncurrentsefss = value;
+        sonetsectioncurrentsefss.value_namespace = name_space;
+        sonetsectioncurrentsefss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionCurrentSESs")
     {
         sonetsectioncurrentsess = value;
+        sonetsectioncurrentsess.value_namespace = name_space;
+        sonetsectioncurrentsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionCurrentStatus")
     {
         sonetsectioncurrentstatus = value;
+        sonetsectioncurrentstatus.value_namespace = name_space;
+        sonetsectioncurrentstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionCurrentCVs")
+    {
+        sonetsectioncurrentcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionCurrentESs")
+    {
+        sonetsectioncurrentess.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionCurrentSEFSs")
+    {
+        sonetsectioncurrentsefss.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionCurrentSESs")
+    {
+        sonetsectioncurrentsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionCurrentStatus")
+    {
+        sonetsectioncurrentstatus.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetsectioncurrenttable::Sonetsectioncurrententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetSectionCurrentCVs" || name == "sonetSectionCurrentESs" || name == "sonetSectionCurrentSEFSs" || name == "sonetSectionCurrentSESs" || name == "sonetSectionCurrentStatus")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetsectionintervaltable::Sonetsectionintervaltable()
@@ -915,9 +1082,9 @@ SonetMib::Sonetsectionintervaltable::~Sonetsectionintervaltable()
 
 bool SonetMib::Sonetsectionintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<sonetsectionintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetsectionintervalentry.size(); index++)
     {
-        if(sonetsectionintervalentry_[index]->has_data())
+        if(sonetsectionintervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -925,12 +1092,12 @@ bool SonetMib::Sonetsectionintervaltable::has_data() const
 
 bool SonetMib::Sonetsectionintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetsectionintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetsectionintervalentry.size(); index++)
     {
-        if(sonetsectionintervalentry_[index]->has_operation())
+        if(sonetsectionintervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetsectionintervaltable::get_segment_path() const
@@ -967,7 +1134,7 @@ std::shared_ptr<Entity> SonetMib::Sonetsectionintervaltable::get_child_by_name(c
 {
     if(child_yang_name == "sonetSectionIntervalEntry")
     {
-        for(auto const & c : sonetsectionintervalentry_)
+        for(auto const & c : sonetsectionintervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -977,7 +1144,7 @@ std::shared_ptr<Entity> SonetMib::Sonetsectionintervaltable::get_child_by_name(c
         }
         auto c = std::make_shared<SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry>();
         c->parent = this;
-        sonetsectionintervalentry_.push_back(c);
+        sonetsectionintervalentry.push_back(c);
         return c;
     }
 
@@ -987,7 +1154,7 @@ std::shared_ptr<Entity> SonetMib::Sonetsectionintervaltable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetsectionintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetsectionintervalentry_)
+    for (auto const & c : sonetsectionintervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -995,8 +1162,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetsectionintervaltab
     return children;
 }
 
-void SonetMib::Sonetsectionintervaltable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetsectionintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetsectionintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetsectionintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetSectionIntervalEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry::Sonetsectionintervalentry()
@@ -1029,14 +1207,14 @@ bool SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry::has_data() 
 
 bool SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetsectionintervalnumber.operation)
-	|| is_set(sonetsectionintervalcvs.operation)
-	|| is_set(sonetsectionintervaless.operation)
-	|| is_set(sonetsectionintervalsefss.operation)
-	|| is_set(sonetsectionintervalsess.operation)
-	|| is_set(sonetsectionintervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetsectionintervalnumber.yfilter)
+	|| ydk::is_set(sonetsectionintervalcvs.yfilter)
+	|| ydk::is_set(sonetsectionintervaless.yfilter)
+	|| ydk::is_set(sonetsectionintervalsefss.yfilter)
+	|| ydk::is_set(sonetsectionintervalsess.yfilter)
+	|| ydk::is_set(sonetsectionintervalvaliddata.yfilter);
 }
 
 std::string SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry::get_segment_path() const
@@ -1062,13 +1240,13 @@ const EntityPath SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetsectionintervalnumber.is_set || is_set(sonetsectionintervalnumber.operation)) leaf_name_data.push_back(sonetsectionintervalnumber.get_name_leafdata());
-    if (sonetsectionintervalcvs.is_set || is_set(sonetsectionintervalcvs.operation)) leaf_name_data.push_back(sonetsectionintervalcvs.get_name_leafdata());
-    if (sonetsectionintervaless.is_set || is_set(sonetsectionintervaless.operation)) leaf_name_data.push_back(sonetsectionintervaless.get_name_leafdata());
-    if (sonetsectionintervalsefss.is_set || is_set(sonetsectionintervalsefss.operation)) leaf_name_data.push_back(sonetsectionintervalsefss.get_name_leafdata());
-    if (sonetsectionintervalsess.is_set || is_set(sonetsectionintervalsess.operation)) leaf_name_data.push_back(sonetsectionintervalsess.get_name_leafdata());
-    if (sonetsectionintervalvaliddata.is_set || is_set(sonetsectionintervalvaliddata.operation)) leaf_name_data.push_back(sonetsectionintervalvaliddata.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetsectionintervalnumber.is_set || is_set(sonetsectionintervalnumber.yfilter)) leaf_name_data.push_back(sonetsectionintervalnumber.get_name_leafdata());
+    if (sonetsectionintervalcvs.is_set || is_set(sonetsectionintervalcvs.yfilter)) leaf_name_data.push_back(sonetsectionintervalcvs.get_name_leafdata());
+    if (sonetsectionintervaless.is_set || is_set(sonetsectionintervaless.yfilter)) leaf_name_data.push_back(sonetsectionintervaless.get_name_leafdata());
+    if (sonetsectionintervalsefss.is_set || is_set(sonetsectionintervalsefss.yfilter)) leaf_name_data.push_back(sonetsectionintervalsefss.get_name_leafdata());
+    if (sonetsectionintervalsess.is_set || is_set(sonetsectionintervalsess.yfilter)) leaf_name_data.push_back(sonetsectionintervalsess.get_name_leafdata());
+    if (sonetsectionintervalvaliddata.is_set || is_set(sonetsectionintervalvaliddata.yfilter)) leaf_name_data.push_back(sonetsectionintervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1087,36 +1265,89 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetsectionintervaltab
     return children;
 }
 
-void SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionIntervalNumber")
     {
         sonetsectionintervalnumber = value;
+        sonetsectionintervalnumber.value_namespace = name_space;
+        sonetsectionintervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionIntervalCVs")
     {
         sonetsectionintervalcvs = value;
+        sonetsectionintervalcvs.value_namespace = name_space;
+        sonetsectionintervalcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionIntervalESs")
     {
         sonetsectionintervaless = value;
+        sonetsectionintervaless.value_namespace = name_space;
+        sonetsectionintervaless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionIntervalSEFSs")
     {
         sonetsectionintervalsefss = value;
+        sonetsectionintervalsefss.value_namespace = name_space;
+        sonetsectionintervalsefss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionIntervalSESs")
     {
         sonetsectionintervalsess = value;
+        sonetsectionintervalsess.value_namespace = name_space;
+        sonetsectionintervalsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetSectionIntervalValidData")
     {
         sonetsectionintervalvaliddata = value;
+        sonetsectionintervalvaliddata.value_namespace = name_space;
+        sonetsectionintervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionIntervalNumber")
+    {
+        sonetsectionintervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionIntervalCVs")
+    {
+        sonetsectionintervalcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionIntervalESs")
+    {
+        sonetsectionintervaless.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionIntervalSEFSs")
+    {
+        sonetsectionintervalsefss.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionIntervalSESs")
+    {
+        sonetsectionintervalsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetSectionIntervalValidData")
+    {
+        sonetsectionintervalvaliddata.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetsectionintervaltable::Sonetsectionintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetSectionIntervalNumber" || name == "sonetSectionIntervalCVs" || name == "sonetSectionIntervalESs" || name == "sonetSectionIntervalSEFSs" || name == "sonetSectionIntervalSESs" || name == "sonetSectionIntervalValidData")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetlinecurrenttable::Sonetlinecurrenttable()
@@ -1130,9 +1361,9 @@ SonetMib::Sonetlinecurrenttable::~Sonetlinecurrenttable()
 
 bool SonetMib::Sonetlinecurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<sonetlinecurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetlinecurrententry.size(); index++)
     {
-        if(sonetlinecurrententry_[index]->has_data())
+        if(sonetlinecurrententry[index]->has_data())
             return true;
     }
     return false;
@@ -1140,12 +1371,12 @@ bool SonetMib::Sonetlinecurrenttable::has_data() const
 
 bool SonetMib::Sonetlinecurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetlinecurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetlinecurrententry.size(); index++)
     {
-        if(sonetlinecurrententry_[index]->has_operation())
+        if(sonetlinecurrententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetlinecurrenttable::get_segment_path() const
@@ -1182,7 +1413,7 @@ std::shared_ptr<Entity> SonetMib::Sonetlinecurrenttable::get_child_by_name(const
 {
     if(child_yang_name == "sonetLineCurrentEntry")
     {
-        for(auto const & c : sonetlinecurrententry_)
+        for(auto const & c : sonetlinecurrententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1192,7 +1423,7 @@ std::shared_ptr<Entity> SonetMib::Sonetlinecurrenttable::get_child_by_name(const
         }
         auto c = std::make_shared<SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry>();
         c->parent = this;
-        sonetlinecurrententry_.push_back(c);
+        sonetlinecurrententry.push_back(c);
         return c;
     }
 
@@ -1202,7 +1433,7 @@ std::shared_ptr<Entity> SonetMib::Sonetlinecurrenttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetlinecurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetlinecurrententry_)
+    for (auto const & c : sonetlinecurrententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1210,8 +1441,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetlinecurrenttable::
     return children;
 }
 
-void SonetMib::Sonetlinecurrenttable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetlinecurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetlinecurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetlinecurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetLineCurrentEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::Sonetlinecurrententry()
@@ -1242,13 +1484,13 @@ bool SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::has_data() const
 
 bool SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetlinecurrentcvs.operation)
-	|| is_set(sonetlinecurrentess.operation)
-	|| is_set(sonetlinecurrentsess.operation)
-	|| is_set(sonetlinecurrentstatus.operation)
-	|| is_set(sonetlinecurrentuass.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetlinecurrentcvs.yfilter)
+	|| ydk::is_set(sonetlinecurrentess.yfilter)
+	|| ydk::is_set(sonetlinecurrentsess.yfilter)
+	|| ydk::is_set(sonetlinecurrentstatus.yfilter)
+	|| ydk::is_set(sonetlinecurrentuass.yfilter);
 }
 
 std::string SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::get_segment_path() const
@@ -1274,12 +1516,12 @@ const EntityPath SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetlinecurrentcvs.is_set || is_set(sonetlinecurrentcvs.operation)) leaf_name_data.push_back(sonetlinecurrentcvs.get_name_leafdata());
-    if (sonetlinecurrentess.is_set || is_set(sonetlinecurrentess.operation)) leaf_name_data.push_back(sonetlinecurrentess.get_name_leafdata());
-    if (sonetlinecurrentsess.is_set || is_set(sonetlinecurrentsess.operation)) leaf_name_data.push_back(sonetlinecurrentsess.get_name_leafdata());
-    if (sonetlinecurrentstatus.is_set || is_set(sonetlinecurrentstatus.operation)) leaf_name_data.push_back(sonetlinecurrentstatus.get_name_leafdata());
-    if (sonetlinecurrentuass.is_set || is_set(sonetlinecurrentuass.operation)) leaf_name_data.push_back(sonetlinecurrentuass.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetlinecurrentcvs.is_set || is_set(sonetlinecurrentcvs.yfilter)) leaf_name_data.push_back(sonetlinecurrentcvs.get_name_leafdata());
+    if (sonetlinecurrentess.is_set || is_set(sonetlinecurrentess.yfilter)) leaf_name_data.push_back(sonetlinecurrentess.get_name_leafdata());
+    if (sonetlinecurrentsess.is_set || is_set(sonetlinecurrentsess.yfilter)) leaf_name_data.push_back(sonetlinecurrentsess.get_name_leafdata());
+    if (sonetlinecurrentstatus.is_set || is_set(sonetlinecurrentstatus.yfilter)) leaf_name_data.push_back(sonetlinecurrentstatus.get_name_leafdata());
+    if (sonetlinecurrentuass.is_set || is_set(sonetlinecurrentuass.yfilter)) leaf_name_data.push_back(sonetlinecurrentuass.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1298,32 +1540,79 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetlinecurrenttable::
     return children;
 }
 
-void SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineCurrentCVs")
     {
         sonetlinecurrentcvs = value;
+        sonetlinecurrentcvs.value_namespace = name_space;
+        sonetlinecurrentcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineCurrentESs")
     {
         sonetlinecurrentess = value;
+        sonetlinecurrentess.value_namespace = name_space;
+        sonetlinecurrentess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineCurrentSESs")
     {
         sonetlinecurrentsess = value;
+        sonetlinecurrentsess.value_namespace = name_space;
+        sonetlinecurrentsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineCurrentStatus")
     {
         sonetlinecurrentstatus = value;
+        sonetlinecurrentstatus.value_namespace = name_space;
+        sonetlinecurrentstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineCurrentUASs")
     {
         sonetlinecurrentuass = value;
+        sonetlinecurrentuass.value_namespace = name_space;
+        sonetlinecurrentuass.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineCurrentCVs")
+    {
+        sonetlinecurrentcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineCurrentESs")
+    {
+        sonetlinecurrentess.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineCurrentSESs")
+    {
+        sonetlinecurrentsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineCurrentStatus")
+    {
+        sonetlinecurrentstatus.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineCurrentUASs")
+    {
+        sonetlinecurrentuass.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetlinecurrenttable::Sonetlinecurrententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetLineCurrentCVs" || name == "sonetLineCurrentESs" || name == "sonetLineCurrentSESs" || name == "sonetLineCurrentStatus" || name == "sonetLineCurrentUASs")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetlineintervaltable::Sonetlineintervaltable()
@@ -1337,9 +1626,9 @@ SonetMib::Sonetlineintervaltable::~Sonetlineintervaltable()
 
 bool SonetMib::Sonetlineintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<sonetlineintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetlineintervalentry.size(); index++)
     {
-        if(sonetlineintervalentry_[index]->has_data())
+        if(sonetlineintervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -1347,12 +1636,12 @@ bool SonetMib::Sonetlineintervaltable::has_data() const
 
 bool SonetMib::Sonetlineintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetlineintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetlineintervalentry.size(); index++)
     {
-        if(sonetlineintervalentry_[index]->has_operation())
+        if(sonetlineintervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetlineintervaltable::get_segment_path() const
@@ -1389,7 +1678,7 @@ std::shared_ptr<Entity> SonetMib::Sonetlineintervaltable::get_child_by_name(cons
 {
     if(child_yang_name == "sonetLineIntervalEntry")
     {
-        for(auto const & c : sonetlineintervalentry_)
+        for(auto const & c : sonetlineintervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1399,7 +1688,7 @@ std::shared_ptr<Entity> SonetMib::Sonetlineintervaltable::get_child_by_name(cons
         }
         auto c = std::make_shared<SonetMib::Sonetlineintervaltable::Sonetlineintervalentry>();
         c->parent = this;
-        sonetlineintervalentry_.push_back(c);
+        sonetlineintervalentry.push_back(c);
         return c;
     }
 
@@ -1409,7 +1698,7 @@ std::shared_ptr<Entity> SonetMib::Sonetlineintervaltable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetlineintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetlineintervalentry_)
+    for (auto const & c : sonetlineintervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1417,8 +1706,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetlineintervaltable:
     return children;
 }
 
-void SonetMib::Sonetlineintervaltable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetlineintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetlineintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetlineintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetLineIntervalEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::Sonetlineintervalentry()
@@ -1451,14 +1751,14 @@ bool SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::has_data() const
 
 bool SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetlineintervalnumber.operation)
-	|| is_set(sonetlineintervalcvs.operation)
-	|| is_set(sonetlineintervaless.operation)
-	|| is_set(sonetlineintervalsess.operation)
-	|| is_set(sonetlineintervaluass.operation)
-	|| is_set(sonetlineintervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetlineintervalnumber.yfilter)
+	|| ydk::is_set(sonetlineintervalcvs.yfilter)
+	|| ydk::is_set(sonetlineintervaless.yfilter)
+	|| ydk::is_set(sonetlineintervalsess.yfilter)
+	|| ydk::is_set(sonetlineintervaluass.yfilter)
+	|| ydk::is_set(sonetlineintervalvaliddata.yfilter);
 }
 
 std::string SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::get_segment_path() const
@@ -1484,13 +1784,13 @@ const EntityPath SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetlineintervalnumber.is_set || is_set(sonetlineintervalnumber.operation)) leaf_name_data.push_back(sonetlineintervalnumber.get_name_leafdata());
-    if (sonetlineintervalcvs.is_set || is_set(sonetlineintervalcvs.operation)) leaf_name_data.push_back(sonetlineintervalcvs.get_name_leafdata());
-    if (sonetlineintervaless.is_set || is_set(sonetlineintervaless.operation)) leaf_name_data.push_back(sonetlineintervaless.get_name_leafdata());
-    if (sonetlineintervalsess.is_set || is_set(sonetlineintervalsess.operation)) leaf_name_data.push_back(sonetlineintervalsess.get_name_leafdata());
-    if (sonetlineintervaluass.is_set || is_set(sonetlineintervaluass.operation)) leaf_name_data.push_back(sonetlineintervaluass.get_name_leafdata());
-    if (sonetlineintervalvaliddata.is_set || is_set(sonetlineintervalvaliddata.operation)) leaf_name_data.push_back(sonetlineintervalvaliddata.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetlineintervalnumber.is_set || is_set(sonetlineintervalnumber.yfilter)) leaf_name_data.push_back(sonetlineintervalnumber.get_name_leafdata());
+    if (sonetlineintervalcvs.is_set || is_set(sonetlineintervalcvs.yfilter)) leaf_name_data.push_back(sonetlineintervalcvs.get_name_leafdata());
+    if (sonetlineintervaless.is_set || is_set(sonetlineintervaless.yfilter)) leaf_name_data.push_back(sonetlineintervaless.get_name_leafdata());
+    if (sonetlineintervalsess.is_set || is_set(sonetlineintervalsess.yfilter)) leaf_name_data.push_back(sonetlineintervalsess.get_name_leafdata());
+    if (sonetlineintervaluass.is_set || is_set(sonetlineintervaluass.yfilter)) leaf_name_data.push_back(sonetlineintervaluass.get_name_leafdata());
+    if (sonetlineintervalvaliddata.is_set || is_set(sonetlineintervalvaliddata.yfilter)) leaf_name_data.push_back(sonetlineintervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1509,36 +1809,89 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetlineintervaltable:
     return children;
 }
 
-void SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineIntervalNumber")
     {
         sonetlineintervalnumber = value;
+        sonetlineintervalnumber.value_namespace = name_space;
+        sonetlineintervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineIntervalCVs")
     {
         sonetlineintervalcvs = value;
+        sonetlineintervalcvs.value_namespace = name_space;
+        sonetlineintervalcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineIntervalESs")
     {
         sonetlineintervaless = value;
+        sonetlineintervaless.value_namespace = name_space;
+        sonetlineintervaless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineIntervalSESs")
     {
         sonetlineintervalsess = value;
+        sonetlineintervalsess.value_namespace = name_space;
+        sonetlineintervalsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineIntervalUASs")
     {
         sonetlineintervaluass = value;
+        sonetlineintervaluass.value_namespace = name_space;
+        sonetlineintervaluass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetLineIntervalValidData")
     {
         sonetlineintervalvaliddata = value;
+        sonetlineintervalvaliddata.value_namespace = name_space;
+        sonetlineintervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineIntervalNumber")
+    {
+        sonetlineintervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineIntervalCVs")
+    {
+        sonetlineintervalcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineIntervalESs")
+    {
+        sonetlineintervaless.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineIntervalSESs")
+    {
+        sonetlineintervalsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineIntervalUASs")
+    {
+        sonetlineintervaluass.yfilter = yfilter;
+    }
+    if(value_path == "sonetLineIntervalValidData")
+    {
+        sonetlineintervalvaliddata.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetlineintervaltable::Sonetlineintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetLineIntervalNumber" || name == "sonetLineIntervalCVs" || name == "sonetLineIntervalESs" || name == "sonetLineIntervalSESs" || name == "sonetLineIntervalUASs" || name == "sonetLineIntervalValidData")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrenttable()
@@ -1552,9 +1905,9 @@ SonetMib::Sonetfarendlinecurrenttable::~Sonetfarendlinecurrenttable()
 
 bool SonetMib::Sonetfarendlinecurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<sonetfarendlinecurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendlinecurrententry.size(); index++)
     {
-        if(sonetfarendlinecurrententry_[index]->has_data())
+        if(sonetfarendlinecurrententry[index]->has_data())
             return true;
     }
     return false;
@@ -1562,12 +1915,12 @@ bool SonetMib::Sonetfarendlinecurrenttable::has_data() const
 
 bool SonetMib::Sonetfarendlinecurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetfarendlinecurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendlinecurrententry.size(); index++)
     {
-        if(sonetfarendlinecurrententry_[index]->has_operation())
+        if(sonetfarendlinecurrententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetfarendlinecurrenttable::get_segment_path() const
@@ -1604,7 +1957,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendlinecurrenttable::get_child_by_name
 {
     if(child_yang_name == "sonetFarEndLineCurrentEntry")
     {
-        for(auto const & c : sonetfarendlinecurrententry_)
+        for(auto const & c : sonetfarendlinecurrententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1614,7 +1967,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendlinecurrenttable::get_child_by_name
         }
         auto c = std::make_shared<SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry>();
         c->parent = this;
-        sonetfarendlinecurrententry_.push_back(c);
+        sonetfarendlinecurrententry.push_back(c);
         return c;
     }
 
@@ -1624,7 +1977,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendlinecurrenttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendlinecurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetfarendlinecurrententry_)
+    for (auto const & c : sonetfarendlinecurrententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1632,8 +1985,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendlinecurrentt
     return children;
 }
 
-void SonetMib::Sonetfarendlinecurrenttable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendlinecurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetfarendlinecurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetfarendlinecurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetFarEndLineCurrentEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::Sonetfarendlinecurrententry()
@@ -1662,12 +2026,12 @@ bool SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::has_dat
 
 bool SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetfarendlinecurrentcvs.operation)
-	|| is_set(sonetfarendlinecurrentess.operation)
-	|| is_set(sonetfarendlinecurrentsess.operation)
-	|| is_set(sonetfarendlinecurrentuass.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetfarendlinecurrentcvs.yfilter)
+	|| ydk::is_set(sonetfarendlinecurrentess.yfilter)
+	|| ydk::is_set(sonetfarendlinecurrentsess.yfilter)
+	|| ydk::is_set(sonetfarendlinecurrentuass.yfilter);
 }
 
 std::string SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::get_segment_path() const
@@ -1693,11 +2057,11 @@ const EntityPath SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrenten
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetfarendlinecurrentcvs.is_set || is_set(sonetfarendlinecurrentcvs.operation)) leaf_name_data.push_back(sonetfarendlinecurrentcvs.get_name_leafdata());
-    if (sonetfarendlinecurrentess.is_set || is_set(sonetfarendlinecurrentess.operation)) leaf_name_data.push_back(sonetfarendlinecurrentess.get_name_leafdata());
-    if (sonetfarendlinecurrentsess.is_set || is_set(sonetfarendlinecurrentsess.operation)) leaf_name_data.push_back(sonetfarendlinecurrentsess.get_name_leafdata());
-    if (sonetfarendlinecurrentuass.is_set || is_set(sonetfarendlinecurrentuass.operation)) leaf_name_data.push_back(sonetfarendlinecurrentuass.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetfarendlinecurrentcvs.is_set || is_set(sonetfarendlinecurrentcvs.yfilter)) leaf_name_data.push_back(sonetfarendlinecurrentcvs.get_name_leafdata());
+    if (sonetfarendlinecurrentess.is_set || is_set(sonetfarendlinecurrentess.yfilter)) leaf_name_data.push_back(sonetfarendlinecurrentess.get_name_leafdata());
+    if (sonetfarendlinecurrentsess.is_set || is_set(sonetfarendlinecurrentsess.yfilter)) leaf_name_data.push_back(sonetfarendlinecurrentsess.get_name_leafdata());
+    if (sonetfarendlinecurrentuass.is_set || is_set(sonetfarendlinecurrentuass.yfilter)) leaf_name_data.push_back(sonetfarendlinecurrentuass.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1716,28 +2080,69 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendlinecurrentt
     return children;
 }
 
-void SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineCurrentCVs")
     {
         sonetfarendlinecurrentcvs = value;
+        sonetfarendlinecurrentcvs.value_namespace = name_space;
+        sonetfarendlinecurrentcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineCurrentESs")
     {
         sonetfarendlinecurrentess = value;
+        sonetfarendlinecurrentess.value_namespace = name_space;
+        sonetfarendlinecurrentess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineCurrentSESs")
     {
         sonetfarendlinecurrentsess = value;
+        sonetfarendlinecurrentsess.value_namespace = name_space;
+        sonetfarendlinecurrentsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineCurrentUASs")
     {
         sonetfarendlinecurrentuass = value;
+        sonetfarendlinecurrentuass.value_namespace = name_space;
+        sonetfarendlinecurrentuass.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineCurrentCVs")
+    {
+        sonetfarendlinecurrentcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineCurrentESs")
+    {
+        sonetfarendlinecurrentess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineCurrentSESs")
+    {
+        sonetfarendlinecurrentsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineCurrentUASs")
+    {
+        sonetfarendlinecurrentuass.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetFarEndLineCurrentCVs" || name == "sonetFarEndLineCurrentESs" || name == "sonetFarEndLineCurrentSESs" || name == "sonetFarEndLineCurrentUASs")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervaltable()
@@ -1751,9 +2156,9 @@ SonetMib::Sonetfarendlineintervaltable::~Sonetfarendlineintervaltable()
 
 bool SonetMib::Sonetfarendlineintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<sonetfarendlineintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendlineintervalentry.size(); index++)
     {
-        if(sonetfarendlineintervalentry_[index]->has_data())
+        if(sonetfarendlineintervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -1761,12 +2166,12 @@ bool SonetMib::Sonetfarendlineintervaltable::has_data() const
 
 bool SonetMib::Sonetfarendlineintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetfarendlineintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendlineintervalentry.size(); index++)
     {
-        if(sonetfarendlineintervalentry_[index]->has_operation())
+        if(sonetfarendlineintervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetfarendlineintervaltable::get_segment_path() const
@@ -1803,7 +2208,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendlineintervaltable::get_child_by_nam
 {
     if(child_yang_name == "sonetFarEndLineIntervalEntry")
     {
-        for(auto const & c : sonetfarendlineintervalentry_)
+        for(auto const & c : sonetfarendlineintervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1813,7 +2218,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendlineintervaltable::get_child_by_nam
         }
         auto c = std::make_shared<SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry>();
         c->parent = this;
-        sonetfarendlineintervalentry_.push_back(c);
+        sonetfarendlineintervalentry.push_back(c);
         return c;
     }
 
@@ -1823,7 +2228,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendlineintervaltable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendlineintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetfarendlineintervalentry_)
+    for (auto const & c : sonetfarendlineintervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1831,8 +2236,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendlineinterval
     return children;
 }
 
-void SonetMib::Sonetfarendlineintervaltable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendlineintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetfarendlineintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetfarendlineintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetFarEndLineIntervalEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::Sonetfarendlineintervalentry()
@@ -1865,14 +2281,14 @@ bool SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::has_d
 
 bool SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetfarendlineintervalnumber.operation)
-	|| is_set(sonetfarendlineintervalcvs.operation)
-	|| is_set(sonetfarendlineintervaless.operation)
-	|| is_set(sonetfarendlineintervalsess.operation)
-	|| is_set(sonetfarendlineintervaluass.operation)
-	|| is_set(sonetfarendlineintervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetfarendlineintervalnumber.yfilter)
+	|| ydk::is_set(sonetfarendlineintervalcvs.yfilter)
+	|| ydk::is_set(sonetfarendlineintervaless.yfilter)
+	|| ydk::is_set(sonetfarendlineintervalsess.yfilter)
+	|| ydk::is_set(sonetfarendlineintervaluass.yfilter)
+	|| ydk::is_set(sonetfarendlineintervalvaliddata.yfilter);
 }
 
 std::string SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::get_segment_path() const
@@ -1898,13 +2314,13 @@ const EntityPath SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineinterval
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetfarendlineintervalnumber.is_set || is_set(sonetfarendlineintervalnumber.operation)) leaf_name_data.push_back(sonetfarendlineintervalnumber.get_name_leafdata());
-    if (sonetfarendlineintervalcvs.is_set || is_set(sonetfarendlineintervalcvs.operation)) leaf_name_data.push_back(sonetfarendlineintervalcvs.get_name_leafdata());
-    if (sonetfarendlineintervaless.is_set || is_set(sonetfarendlineintervaless.operation)) leaf_name_data.push_back(sonetfarendlineintervaless.get_name_leafdata());
-    if (sonetfarendlineintervalsess.is_set || is_set(sonetfarendlineintervalsess.operation)) leaf_name_data.push_back(sonetfarendlineintervalsess.get_name_leafdata());
-    if (sonetfarendlineintervaluass.is_set || is_set(sonetfarendlineintervaluass.operation)) leaf_name_data.push_back(sonetfarendlineintervaluass.get_name_leafdata());
-    if (sonetfarendlineintervalvaliddata.is_set || is_set(sonetfarendlineintervalvaliddata.operation)) leaf_name_data.push_back(sonetfarendlineintervalvaliddata.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetfarendlineintervalnumber.is_set || is_set(sonetfarendlineintervalnumber.yfilter)) leaf_name_data.push_back(sonetfarendlineintervalnumber.get_name_leafdata());
+    if (sonetfarendlineintervalcvs.is_set || is_set(sonetfarendlineintervalcvs.yfilter)) leaf_name_data.push_back(sonetfarendlineintervalcvs.get_name_leafdata());
+    if (sonetfarendlineintervaless.is_set || is_set(sonetfarendlineintervaless.yfilter)) leaf_name_data.push_back(sonetfarendlineintervaless.get_name_leafdata());
+    if (sonetfarendlineintervalsess.is_set || is_set(sonetfarendlineintervalsess.yfilter)) leaf_name_data.push_back(sonetfarendlineintervalsess.get_name_leafdata());
+    if (sonetfarendlineintervaluass.is_set || is_set(sonetfarendlineintervaluass.yfilter)) leaf_name_data.push_back(sonetfarendlineintervaluass.get_name_leafdata());
+    if (sonetfarendlineintervalvaliddata.is_set || is_set(sonetfarendlineintervalvaliddata.yfilter)) leaf_name_data.push_back(sonetfarendlineintervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1923,36 +2339,89 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendlineinterval
     return children;
 }
 
-void SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineIntervalNumber")
     {
         sonetfarendlineintervalnumber = value;
+        sonetfarendlineintervalnumber.value_namespace = name_space;
+        sonetfarendlineintervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineIntervalCVs")
     {
         sonetfarendlineintervalcvs = value;
+        sonetfarendlineintervalcvs.value_namespace = name_space;
+        sonetfarendlineintervalcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineIntervalESs")
     {
         sonetfarendlineintervaless = value;
+        sonetfarendlineintervaless.value_namespace = name_space;
+        sonetfarendlineintervaless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineIntervalSESs")
     {
         sonetfarendlineintervalsess = value;
+        sonetfarendlineintervalsess.value_namespace = name_space;
+        sonetfarendlineintervalsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineIntervalUASs")
     {
         sonetfarendlineintervaluass = value;
+        sonetfarendlineintervaluass.value_namespace = name_space;
+        sonetfarendlineintervaluass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndLineIntervalValidData")
     {
         sonetfarendlineintervalvaliddata = value;
+        sonetfarendlineintervalvaliddata.value_namespace = name_space;
+        sonetfarendlineintervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineIntervalNumber")
+    {
+        sonetfarendlineintervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineIntervalCVs")
+    {
+        sonetfarendlineintervalcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineIntervalESs")
+    {
+        sonetfarendlineintervaless.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineIntervalSESs")
+    {
+        sonetfarendlineintervalsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineIntervalUASs")
+    {
+        sonetfarendlineintervaluass.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndLineIntervalValidData")
+    {
+        sonetfarendlineintervalvaliddata.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetFarEndLineIntervalNumber" || name == "sonetFarEndLineIntervalCVs" || name == "sonetFarEndLineIntervalESs" || name == "sonetFarEndLineIntervalSESs" || name == "sonetFarEndLineIntervalUASs" || name == "sonetFarEndLineIntervalValidData")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetpathcurrenttable::Sonetpathcurrenttable()
@@ -1966,9 +2435,9 @@ SonetMib::Sonetpathcurrenttable::~Sonetpathcurrenttable()
 
 bool SonetMib::Sonetpathcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<sonetpathcurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetpathcurrententry.size(); index++)
     {
-        if(sonetpathcurrententry_[index]->has_data())
+        if(sonetpathcurrententry[index]->has_data())
             return true;
     }
     return false;
@@ -1976,12 +2445,12 @@ bool SonetMib::Sonetpathcurrenttable::has_data() const
 
 bool SonetMib::Sonetpathcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetpathcurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetpathcurrententry.size(); index++)
     {
-        if(sonetpathcurrententry_[index]->has_operation())
+        if(sonetpathcurrententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetpathcurrenttable::get_segment_path() const
@@ -2018,7 +2487,7 @@ std::shared_ptr<Entity> SonetMib::Sonetpathcurrenttable::get_child_by_name(const
 {
     if(child_yang_name == "sonetPathCurrentEntry")
     {
-        for(auto const & c : sonetpathcurrententry_)
+        for(auto const & c : sonetpathcurrententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2028,7 +2497,7 @@ std::shared_ptr<Entity> SonetMib::Sonetpathcurrenttable::get_child_by_name(const
         }
         auto c = std::make_shared<SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry>();
         c->parent = this;
-        sonetpathcurrententry_.push_back(c);
+        sonetpathcurrententry.push_back(c);
         return c;
     }
 
@@ -2038,7 +2507,7 @@ std::shared_ptr<Entity> SonetMib::Sonetpathcurrenttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetpathcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetpathcurrententry_)
+    for (auto const & c : sonetpathcurrententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2046,8 +2515,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetpathcurrenttable::
     return children;
 }
 
-void SonetMib::Sonetpathcurrenttable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetpathcurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetpathcurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetpathcurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetPathCurrentEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrententry()
@@ -2088,18 +2568,18 @@ bool SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::has_data() const
 
 bool SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(cspsignallingtransportmode.operation)
-	|| is_set(cspsonetpathpayload.operation)
-	|| is_set(csptributarygroupingtype.operation)
-	|| is_set(csptributarymappingtype.operation)
-	|| is_set(sonetpathcurrentcvs.operation)
-	|| is_set(sonetpathcurrentess.operation)
-	|| is_set(sonetpathcurrentsess.operation)
-	|| is_set(sonetpathcurrentstatus.operation)
-	|| is_set(sonetpathcurrentuass.operation)
-	|| is_set(sonetpathcurrentwidth.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cspsignallingtransportmode.yfilter)
+	|| ydk::is_set(cspsonetpathpayload.yfilter)
+	|| ydk::is_set(csptributarygroupingtype.yfilter)
+	|| ydk::is_set(csptributarymappingtype.yfilter)
+	|| ydk::is_set(sonetpathcurrentcvs.yfilter)
+	|| ydk::is_set(sonetpathcurrentess.yfilter)
+	|| ydk::is_set(sonetpathcurrentsess.yfilter)
+	|| ydk::is_set(sonetpathcurrentstatus.yfilter)
+	|| ydk::is_set(sonetpathcurrentuass.yfilter)
+	|| ydk::is_set(sonetpathcurrentwidth.yfilter);
 }
 
 std::string SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::get_segment_path() const
@@ -2125,17 +2605,17 @@ const EntityPath SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cspsignallingtransportmode.is_set || is_set(cspsignallingtransportmode.operation)) leaf_name_data.push_back(cspsignallingtransportmode.get_name_leafdata());
-    if (cspsonetpathpayload.is_set || is_set(cspsonetpathpayload.operation)) leaf_name_data.push_back(cspsonetpathpayload.get_name_leafdata());
-    if (csptributarygroupingtype.is_set || is_set(csptributarygroupingtype.operation)) leaf_name_data.push_back(csptributarygroupingtype.get_name_leafdata());
-    if (csptributarymappingtype.is_set || is_set(csptributarymappingtype.operation)) leaf_name_data.push_back(csptributarymappingtype.get_name_leafdata());
-    if (sonetpathcurrentcvs.is_set || is_set(sonetpathcurrentcvs.operation)) leaf_name_data.push_back(sonetpathcurrentcvs.get_name_leafdata());
-    if (sonetpathcurrentess.is_set || is_set(sonetpathcurrentess.operation)) leaf_name_data.push_back(sonetpathcurrentess.get_name_leafdata());
-    if (sonetpathcurrentsess.is_set || is_set(sonetpathcurrentsess.operation)) leaf_name_data.push_back(sonetpathcurrentsess.get_name_leafdata());
-    if (sonetpathcurrentstatus.is_set || is_set(sonetpathcurrentstatus.operation)) leaf_name_data.push_back(sonetpathcurrentstatus.get_name_leafdata());
-    if (sonetpathcurrentuass.is_set || is_set(sonetpathcurrentuass.operation)) leaf_name_data.push_back(sonetpathcurrentuass.get_name_leafdata());
-    if (sonetpathcurrentwidth.is_set || is_set(sonetpathcurrentwidth.operation)) leaf_name_data.push_back(sonetpathcurrentwidth.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cspsignallingtransportmode.is_set || is_set(cspsignallingtransportmode.yfilter)) leaf_name_data.push_back(cspsignallingtransportmode.get_name_leafdata());
+    if (cspsonetpathpayload.is_set || is_set(cspsonetpathpayload.yfilter)) leaf_name_data.push_back(cspsonetpathpayload.get_name_leafdata());
+    if (csptributarygroupingtype.is_set || is_set(csptributarygroupingtype.yfilter)) leaf_name_data.push_back(csptributarygroupingtype.get_name_leafdata());
+    if (csptributarymappingtype.is_set || is_set(csptributarymappingtype.yfilter)) leaf_name_data.push_back(csptributarymappingtype.get_name_leafdata());
+    if (sonetpathcurrentcvs.is_set || is_set(sonetpathcurrentcvs.yfilter)) leaf_name_data.push_back(sonetpathcurrentcvs.get_name_leafdata());
+    if (sonetpathcurrentess.is_set || is_set(sonetpathcurrentess.yfilter)) leaf_name_data.push_back(sonetpathcurrentess.get_name_leafdata());
+    if (sonetpathcurrentsess.is_set || is_set(sonetpathcurrentsess.yfilter)) leaf_name_data.push_back(sonetpathcurrentsess.get_name_leafdata());
+    if (sonetpathcurrentstatus.is_set || is_set(sonetpathcurrentstatus.yfilter)) leaf_name_data.push_back(sonetpathcurrentstatus.get_name_leafdata());
+    if (sonetpathcurrentuass.is_set || is_set(sonetpathcurrentuass.yfilter)) leaf_name_data.push_back(sonetpathcurrentuass.get_name_leafdata());
+    if (sonetpathcurrentwidth.is_set || is_set(sonetpathcurrentwidth.yfilter)) leaf_name_data.push_back(sonetpathcurrentwidth.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2154,52 +2634,129 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetpathcurrenttable::
     return children;
 }
 
-void SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cspSignallingTransportMode")
     {
         cspsignallingtransportmode = value;
+        cspsignallingtransportmode.value_namespace = name_space;
+        cspsignallingtransportmode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cspSonetPathPayload")
     {
         cspsonetpathpayload = value;
+        cspsonetpathpayload.value_namespace = name_space;
+        cspsonetpathpayload.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cspTributaryGroupingType")
     {
         csptributarygroupingtype = value;
+        csptributarygroupingtype.value_namespace = name_space;
+        csptributarygroupingtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cspTributaryMappingType")
     {
         csptributarymappingtype = value;
+        csptributarymappingtype.value_namespace = name_space;
+        csptributarymappingtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathCurrentCVs")
     {
         sonetpathcurrentcvs = value;
+        sonetpathcurrentcvs.value_namespace = name_space;
+        sonetpathcurrentcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathCurrentESs")
     {
         sonetpathcurrentess = value;
+        sonetpathcurrentess.value_namespace = name_space;
+        sonetpathcurrentess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathCurrentSESs")
     {
         sonetpathcurrentsess = value;
+        sonetpathcurrentsess.value_namespace = name_space;
+        sonetpathcurrentsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathCurrentStatus")
     {
         sonetpathcurrentstatus = value;
+        sonetpathcurrentstatus.value_namespace = name_space;
+        sonetpathcurrentstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathCurrentUASs")
     {
         sonetpathcurrentuass = value;
+        sonetpathcurrentuass.value_namespace = name_space;
+        sonetpathcurrentuass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathCurrentWidth")
     {
         sonetpathcurrentwidth = value;
+        sonetpathcurrentwidth.value_namespace = name_space;
+        sonetpathcurrentwidth.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "cspSignallingTransportMode")
+    {
+        cspsignallingtransportmode.yfilter = yfilter;
+    }
+    if(value_path == "cspSonetPathPayload")
+    {
+        cspsonetpathpayload.yfilter = yfilter;
+    }
+    if(value_path == "cspTributaryGroupingType")
+    {
+        csptributarygroupingtype.yfilter = yfilter;
+    }
+    if(value_path == "cspTributaryMappingType")
+    {
+        csptributarymappingtype.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathCurrentCVs")
+    {
+        sonetpathcurrentcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathCurrentESs")
+    {
+        sonetpathcurrentess.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathCurrentSESs")
+    {
+        sonetpathcurrentsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathCurrentStatus")
+    {
+        sonetpathcurrentstatus.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathCurrentUASs")
+    {
+        sonetpathcurrentuass.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathCurrentWidth")
+    {
+        sonetpathcurrentwidth.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "cspSignallingTransportMode" || name == "cspSonetPathPayload" || name == "cspTributaryGroupingType" || name == "cspTributaryMappingType" || name == "sonetPathCurrentCVs" || name == "sonetPathCurrentESs" || name == "sonetPathCurrentSESs" || name == "sonetPathCurrentStatus" || name == "sonetPathCurrentUASs" || name == "sonetPathCurrentWidth")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetpathintervaltable::Sonetpathintervaltable()
@@ -2213,9 +2770,9 @@ SonetMib::Sonetpathintervaltable::~Sonetpathintervaltable()
 
 bool SonetMib::Sonetpathintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<sonetpathintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetpathintervalentry.size(); index++)
     {
-        if(sonetpathintervalentry_[index]->has_data())
+        if(sonetpathintervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -2223,12 +2780,12 @@ bool SonetMib::Sonetpathintervaltable::has_data() const
 
 bool SonetMib::Sonetpathintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetpathintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetpathintervalentry.size(); index++)
     {
-        if(sonetpathintervalentry_[index]->has_operation())
+        if(sonetpathintervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetpathintervaltable::get_segment_path() const
@@ -2265,7 +2822,7 @@ std::shared_ptr<Entity> SonetMib::Sonetpathintervaltable::get_child_by_name(cons
 {
     if(child_yang_name == "sonetPathIntervalEntry")
     {
-        for(auto const & c : sonetpathintervalentry_)
+        for(auto const & c : sonetpathintervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2275,7 +2832,7 @@ std::shared_ptr<Entity> SonetMib::Sonetpathintervaltable::get_child_by_name(cons
         }
         auto c = std::make_shared<SonetMib::Sonetpathintervaltable::Sonetpathintervalentry>();
         c->parent = this;
-        sonetpathintervalentry_.push_back(c);
+        sonetpathintervalentry.push_back(c);
         return c;
     }
 
@@ -2285,7 +2842,7 @@ std::shared_ptr<Entity> SonetMib::Sonetpathintervaltable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetpathintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetpathintervalentry_)
+    for (auto const & c : sonetpathintervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2293,8 +2850,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetpathintervaltable:
     return children;
 }
 
-void SonetMib::Sonetpathintervaltable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetpathintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetpathintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetpathintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetPathIntervalEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::Sonetpathintervalentry()
@@ -2327,14 +2895,14 @@ bool SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::has_data() const
 
 bool SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetpathintervalnumber.operation)
-	|| is_set(sonetpathintervalcvs.operation)
-	|| is_set(sonetpathintervaless.operation)
-	|| is_set(sonetpathintervalsess.operation)
-	|| is_set(sonetpathintervaluass.operation)
-	|| is_set(sonetpathintervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetpathintervalnumber.yfilter)
+	|| ydk::is_set(sonetpathintervalcvs.yfilter)
+	|| ydk::is_set(sonetpathintervaless.yfilter)
+	|| ydk::is_set(sonetpathintervalsess.yfilter)
+	|| ydk::is_set(sonetpathintervaluass.yfilter)
+	|| ydk::is_set(sonetpathintervalvaliddata.yfilter);
 }
 
 std::string SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::get_segment_path() const
@@ -2360,13 +2928,13 @@ const EntityPath SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetpathintervalnumber.is_set || is_set(sonetpathintervalnumber.operation)) leaf_name_data.push_back(sonetpathintervalnumber.get_name_leafdata());
-    if (sonetpathintervalcvs.is_set || is_set(sonetpathintervalcvs.operation)) leaf_name_data.push_back(sonetpathintervalcvs.get_name_leafdata());
-    if (sonetpathintervaless.is_set || is_set(sonetpathintervaless.operation)) leaf_name_data.push_back(sonetpathintervaless.get_name_leafdata());
-    if (sonetpathintervalsess.is_set || is_set(sonetpathintervalsess.operation)) leaf_name_data.push_back(sonetpathintervalsess.get_name_leafdata());
-    if (sonetpathintervaluass.is_set || is_set(sonetpathintervaluass.operation)) leaf_name_data.push_back(sonetpathintervaluass.get_name_leafdata());
-    if (sonetpathintervalvaliddata.is_set || is_set(sonetpathintervalvaliddata.operation)) leaf_name_data.push_back(sonetpathintervalvaliddata.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetpathintervalnumber.is_set || is_set(sonetpathintervalnumber.yfilter)) leaf_name_data.push_back(sonetpathintervalnumber.get_name_leafdata());
+    if (sonetpathintervalcvs.is_set || is_set(sonetpathintervalcvs.yfilter)) leaf_name_data.push_back(sonetpathintervalcvs.get_name_leafdata());
+    if (sonetpathintervaless.is_set || is_set(sonetpathintervaless.yfilter)) leaf_name_data.push_back(sonetpathintervaless.get_name_leafdata());
+    if (sonetpathintervalsess.is_set || is_set(sonetpathintervalsess.yfilter)) leaf_name_data.push_back(sonetpathintervalsess.get_name_leafdata());
+    if (sonetpathintervaluass.is_set || is_set(sonetpathintervaluass.yfilter)) leaf_name_data.push_back(sonetpathintervaluass.get_name_leafdata());
+    if (sonetpathintervalvaliddata.is_set || is_set(sonetpathintervalvaliddata.yfilter)) leaf_name_data.push_back(sonetpathintervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2385,36 +2953,89 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetpathintervaltable:
     return children;
 }
 
-void SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathIntervalNumber")
     {
         sonetpathintervalnumber = value;
+        sonetpathintervalnumber.value_namespace = name_space;
+        sonetpathintervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathIntervalCVs")
     {
         sonetpathintervalcvs = value;
+        sonetpathintervalcvs.value_namespace = name_space;
+        sonetpathintervalcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathIntervalESs")
     {
         sonetpathintervaless = value;
+        sonetpathintervaless.value_namespace = name_space;
+        sonetpathintervaless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathIntervalSESs")
     {
         sonetpathintervalsess = value;
+        sonetpathintervalsess.value_namespace = name_space;
+        sonetpathintervalsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathIntervalUASs")
     {
         sonetpathintervaluass = value;
+        sonetpathintervaluass.value_namespace = name_space;
+        sonetpathintervaluass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetPathIntervalValidData")
     {
         sonetpathintervalvaliddata = value;
+        sonetpathintervalvaliddata.value_namespace = name_space;
+        sonetpathintervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathIntervalNumber")
+    {
+        sonetpathintervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathIntervalCVs")
+    {
+        sonetpathintervalcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathIntervalESs")
+    {
+        sonetpathintervaless.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathIntervalSESs")
+    {
+        sonetpathintervalsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathIntervalUASs")
+    {
+        sonetpathintervaluass.yfilter = yfilter;
+    }
+    if(value_path == "sonetPathIntervalValidData")
+    {
+        sonetpathintervalvaliddata.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetpathintervaltable::Sonetpathintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetPathIntervalNumber" || name == "sonetPathIntervalCVs" || name == "sonetPathIntervalESs" || name == "sonetPathIntervalSESs" || name == "sonetPathIntervalUASs" || name == "sonetPathIntervalValidData")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrenttable()
@@ -2428,9 +3049,9 @@ SonetMib::Sonetfarendpathcurrenttable::~Sonetfarendpathcurrenttable()
 
 bool SonetMib::Sonetfarendpathcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<sonetfarendpathcurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendpathcurrententry.size(); index++)
     {
-        if(sonetfarendpathcurrententry_[index]->has_data())
+        if(sonetfarendpathcurrententry[index]->has_data())
             return true;
     }
     return false;
@@ -2438,12 +3059,12 @@ bool SonetMib::Sonetfarendpathcurrenttable::has_data() const
 
 bool SonetMib::Sonetfarendpathcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetfarendpathcurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendpathcurrententry.size(); index++)
     {
-        if(sonetfarendpathcurrententry_[index]->has_operation())
+        if(sonetfarendpathcurrententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetfarendpathcurrenttable::get_segment_path() const
@@ -2480,7 +3101,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendpathcurrenttable::get_child_by_name
 {
     if(child_yang_name == "sonetFarEndPathCurrentEntry")
     {
-        for(auto const & c : sonetfarendpathcurrententry_)
+        for(auto const & c : sonetfarendpathcurrententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2490,7 +3111,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendpathcurrenttable::get_child_by_name
         }
         auto c = std::make_shared<SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry>();
         c->parent = this;
-        sonetfarendpathcurrententry_.push_back(c);
+        sonetfarendpathcurrententry.push_back(c);
         return c;
     }
 
@@ -2500,7 +3121,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendpathcurrenttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendpathcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetfarendpathcurrententry_)
+    for (auto const & c : sonetfarendpathcurrententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2508,8 +3129,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendpathcurrentt
     return children;
 }
 
-void SonetMib::Sonetfarendpathcurrenttable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendpathcurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetfarendpathcurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetfarendpathcurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetFarEndPathCurrentEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::Sonetfarendpathcurrententry()
@@ -2538,12 +3170,12 @@ bool SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::has_dat
 
 bool SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetfarendpathcurrentcvs.operation)
-	|| is_set(sonetfarendpathcurrentess.operation)
-	|| is_set(sonetfarendpathcurrentsess.operation)
-	|| is_set(sonetfarendpathcurrentuass.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetfarendpathcurrentcvs.yfilter)
+	|| ydk::is_set(sonetfarendpathcurrentess.yfilter)
+	|| ydk::is_set(sonetfarendpathcurrentsess.yfilter)
+	|| ydk::is_set(sonetfarendpathcurrentuass.yfilter);
 }
 
 std::string SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::get_segment_path() const
@@ -2569,11 +3201,11 @@ const EntityPath SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrenten
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetfarendpathcurrentcvs.is_set || is_set(sonetfarendpathcurrentcvs.operation)) leaf_name_data.push_back(sonetfarendpathcurrentcvs.get_name_leafdata());
-    if (sonetfarendpathcurrentess.is_set || is_set(sonetfarendpathcurrentess.operation)) leaf_name_data.push_back(sonetfarendpathcurrentess.get_name_leafdata());
-    if (sonetfarendpathcurrentsess.is_set || is_set(sonetfarendpathcurrentsess.operation)) leaf_name_data.push_back(sonetfarendpathcurrentsess.get_name_leafdata());
-    if (sonetfarendpathcurrentuass.is_set || is_set(sonetfarendpathcurrentuass.operation)) leaf_name_data.push_back(sonetfarendpathcurrentuass.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetfarendpathcurrentcvs.is_set || is_set(sonetfarendpathcurrentcvs.yfilter)) leaf_name_data.push_back(sonetfarendpathcurrentcvs.get_name_leafdata());
+    if (sonetfarendpathcurrentess.is_set || is_set(sonetfarendpathcurrentess.yfilter)) leaf_name_data.push_back(sonetfarendpathcurrentess.get_name_leafdata());
+    if (sonetfarendpathcurrentsess.is_set || is_set(sonetfarendpathcurrentsess.yfilter)) leaf_name_data.push_back(sonetfarendpathcurrentsess.get_name_leafdata());
+    if (sonetfarendpathcurrentuass.is_set || is_set(sonetfarendpathcurrentuass.yfilter)) leaf_name_data.push_back(sonetfarendpathcurrentuass.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2592,28 +3224,69 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendpathcurrentt
     return children;
 }
 
-void SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathCurrentCVs")
     {
         sonetfarendpathcurrentcvs = value;
+        sonetfarendpathcurrentcvs.value_namespace = name_space;
+        sonetfarendpathcurrentcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathCurrentESs")
     {
         sonetfarendpathcurrentess = value;
+        sonetfarendpathcurrentess.value_namespace = name_space;
+        sonetfarendpathcurrentess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathCurrentSESs")
     {
         sonetfarendpathcurrentsess = value;
+        sonetfarendpathcurrentsess.value_namespace = name_space;
+        sonetfarendpathcurrentsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathCurrentUASs")
     {
         sonetfarendpathcurrentuass = value;
+        sonetfarendpathcurrentuass.value_namespace = name_space;
+        sonetfarendpathcurrentuass.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathCurrentCVs")
+    {
+        sonetfarendpathcurrentcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathCurrentESs")
+    {
+        sonetfarendpathcurrentess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathCurrentSESs")
+    {
+        sonetfarendpathcurrentsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathCurrentUASs")
+    {
+        sonetfarendpathcurrentuass.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetFarEndPathCurrentCVs" || name == "sonetFarEndPathCurrentESs" || name == "sonetFarEndPathCurrentSESs" || name == "sonetFarEndPathCurrentUASs")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervaltable()
@@ -2627,9 +3300,9 @@ SonetMib::Sonetfarendpathintervaltable::~Sonetfarendpathintervaltable()
 
 bool SonetMib::Sonetfarendpathintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<sonetfarendpathintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendpathintervalentry.size(); index++)
     {
-        if(sonetfarendpathintervalentry_[index]->has_data())
+        if(sonetfarendpathintervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -2637,12 +3310,12 @@ bool SonetMib::Sonetfarendpathintervaltable::has_data() const
 
 bool SonetMib::Sonetfarendpathintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetfarendpathintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendpathintervalentry.size(); index++)
     {
-        if(sonetfarendpathintervalentry_[index]->has_operation())
+        if(sonetfarendpathintervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetfarendpathintervaltable::get_segment_path() const
@@ -2679,7 +3352,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendpathintervaltable::get_child_by_nam
 {
     if(child_yang_name == "sonetFarEndPathIntervalEntry")
     {
-        for(auto const & c : sonetfarendpathintervalentry_)
+        for(auto const & c : sonetfarendpathintervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2689,7 +3362,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendpathintervaltable::get_child_by_nam
         }
         auto c = std::make_shared<SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry>();
         c->parent = this;
-        sonetfarendpathintervalentry_.push_back(c);
+        sonetfarendpathintervalentry.push_back(c);
         return c;
     }
 
@@ -2699,7 +3372,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendpathintervaltable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendpathintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetfarendpathintervalentry_)
+    for (auto const & c : sonetfarendpathintervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2707,8 +3380,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendpathinterval
     return children;
 }
 
-void SonetMib::Sonetfarendpathintervaltable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendpathintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetfarendpathintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetfarendpathintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetFarEndPathIntervalEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::Sonetfarendpathintervalentry()
@@ -2741,14 +3425,14 @@ bool SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::has_d
 
 bool SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetfarendpathintervalnumber.operation)
-	|| is_set(sonetfarendpathintervalcvs.operation)
-	|| is_set(sonetfarendpathintervaless.operation)
-	|| is_set(sonetfarendpathintervalsess.operation)
-	|| is_set(sonetfarendpathintervaluass.operation)
-	|| is_set(sonetfarendpathintervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetfarendpathintervalnumber.yfilter)
+	|| ydk::is_set(sonetfarendpathintervalcvs.yfilter)
+	|| ydk::is_set(sonetfarendpathintervaless.yfilter)
+	|| ydk::is_set(sonetfarendpathintervalsess.yfilter)
+	|| ydk::is_set(sonetfarendpathintervaluass.yfilter)
+	|| ydk::is_set(sonetfarendpathintervalvaliddata.yfilter);
 }
 
 std::string SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::get_segment_path() const
@@ -2774,13 +3458,13 @@ const EntityPath SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathinterval
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetfarendpathintervalnumber.is_set || is_set(sonetfarendpathintervalnumber.operation)) leaf_name_data.push_back(sonetfarendpathintervalnumber.get_name_leafdata());
-    if (sonetfarendpathintervalcvs.is_set || is_set(sonetfarendpathintervalcvs.operation)) leaf_name_data.push_back(sonetfarendpathintervalcvs.get_name_leafdata());
-    if (sonetfarendpathintervaless.is_set || is_set(sonetfarendpathintervaless.operation)) leaf_name_data.push_back(sonetfarendpathintervaless.get_name_leafdata());
-    if (sonetfarendpathintervalsess.is_set || is_set(sonetfarendpathintervalsess.operation)) leaf_name_data.push_back(sonetfarendpathintervalsess.get_name_leafdata());
-    if (sonetfarendpathintervaluass.is_set || is_set(sonetfarendpathintervaluass.operation)) leaf_name_data.push_back(sonetfarendpathintervaluass.get_name_leafdata());
-    if (sonetfarendpathintervalvaliddata.is_set || is_set(sonetfarendpathintervalvaliddata.operation)) leaf_name_data.push_back(sonetfarendpathintervalvaliddata.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetfarendpathintervalnumber.is_set || is_set(sonetfarendpathintervalnumber.yfilter)) leaf_name_data.push_back(sonetfarendpathintervalnumber.get_name_leafdata());
+    if (sonetfarendpathintervalcvs.is_set || is_set(sonetfarendpathintervalcvs.yfilter)) leaf_name_data.push_back(sonetfarendpathintervalcvs.get_name_leafdata());
+    if (sonetfarendpathintervaless.is_set || is_set(sonetfarendpathintervaless.yfilter)) leaf_name_data.push_back(sonetfarendpathintervaless.get_name_leafdata());
+    if (sonetfarendpathintervalsess.is_set || is_set(sonetfarendpathintervalsess.yfilter)) leaf_name_data.push_back(sonetfarendpathintervalsess.get_name_leafdata());
+    if (sonetfarendpathintervaluass.is_set || is_set(sonetfarendpathintervaluass.yfilter)) leaf_name_data.push_back(sonetfarendpathintervaluass.get_name_leafdata());
+    if (sonetfarendpathintervalvaliddata.is_set || is_set(sonetfarendpathintervalvaliddata.yfilter)) leaf_name_data.push_back(sonetfarendpathintervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2799,36 +3483,89 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendpathinterval
     return children;
 }
 
-void SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathIntervalNumber")
     {
         sonetfarendpathintervalnumber = value;
+        sonetfarendpathintervalnumber.value_namespace = name_space;
+        sonetfarendpathintervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathIntervalCVs")
     {
         sonetfarendpathintervalcvs = value;
+        sonetfarendpathintervalcvs.value_namespace = name_space;
+        sonetfarendpathintervalcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathIntervalESs")
     {
         sonetfarendpathintervaless = value;
+        sonetfarendpathintervaless.value_namespace = name_space;
+        sonetfarendpathintervaless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathIntervalSESs")
     {
         sonetfarendpathintervalsess = value;
+        sonetfarendpathintervalsess.value_namespace = name_space;
+        sonetfarendpathintervalsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathIntervalUASs")
     {
         sonetfarendpathintervaluass = value;
+        sonetfarendpathintervaluass.value_namespace = name_space;
+        sonetfarendpathintervaluass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndPathIntervalValidData")
     {
         sonetfarendpathintervalvaliddata = value;
+        sonetfarendpathintervalvaliddata.value_namespace = name_space;
+        sonetfarendpathintervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathIntervalNumber")
+    {
+        sonetfarendpathintervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathIntervalCVs")
+    {
+        sonetfarendpathintervalcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathIntervalESs")
+    {
+        sonetfarendpathintervaless.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathIntervalSESs")
+    {
+        sonetfarendpathintervalsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathIntervalUASs")
+    {
+        sonetfarendpathintervaluass.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndPathIntervalValidData")
+    {
+        sonetfarendpathintervalvaliddata.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetFarEndPathIntervalNumber" || name == "sonetFarEndPathIntervalCVs" || name == "sonetFarEndPathIntervalESs" || name == "sonetFarEndPathIntervalSESs" || name == "sonetFarEndPathIntervalUASs" || name == "sonetFarEndPathIntervalValidData")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetvtcurrenttable::Sonetvtcurrenttable()
@@ -2842,9 +3579,9 @@ SonetMib::Sonetvtcurrenttable::~Sonetvtcurrenttable()
 
 bool SonetMib::Sonetvtcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<sonetvtcurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetvtcurrententry.size(); index++)
     {
-        if(sonetvtcurrententry_[index]->has_data())
+        if(sonetvtcurrententry[index]->has_data())
             return true;
     }
     return false;
@@ -2852,12 +3589,12 @@ bool SonetMib::Sonetvtcurrenttable::has_data() const
 
 bool SonetMib::Sonetvtcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetvtcurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetvtcurrententry.size(); index++)
     {
-        if(sonetvtcurrententry_[index]->has_operation())
+        if(sonetvtcurrententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetvtcurrenttable::get_segment_path() const
@@ -2894,7 +3631,7 @@ std::shared_ptr<Entity> SonetMib::Sonetvtcurrenttable::get_child_by_name(const s
 {
     if(child_yang_name == "sonetVTCurrentEntry")
     {
-        for(auto const & c : sonetvtcurrententry_)
+        for(auto const & c : sonetvtcurrententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2904,7 +3641,7 @@ std::shared_ptr<Entity> SonetMib::Sonetvtcurrenttable::get_child_by_name(const s
         }
         auto c = std::make_shared<SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry>();
         c->parent = this;
-        sonetvtcurrententry_.push_back(c);
+        sonetvtcurrententry.push_back(c);
         return c;
     }
 
@@ -2914,7 +3651,7 @@ std::shared_ptr<Entity> SonetMib::Sonetvtcurrenttable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetvtcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetvtcurrententry_)
+    for (auto const & c : sonetvtcurrententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2922,8 +3659,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetvtcurrenttable::ge
     return children;
 }
 
-void SonetMib::Sonetvtcurrenttable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetvtcurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetvtcurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetvtcurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetVTCurrentEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::Sonetvtcurrententry()
@@ -2956,14 +3704,14 @@ bool SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::has_data() const
 
 bool SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetvtcurrentcvs.operation)
-	|| is_set(sonetvtcurrentess.operation)
-	|| is_set(sonetvtcurrentsess.operation)
-	|| is_set(sonetvtcurrentstatus.operation)
-	|| is_set(sonetvtcurrentuass.operation)
-	|| is_set(sonetvtcurrentwidth.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetvtcurrentcvs.yfilter)
+	|| ydk::is_set(sonetvtcurrentess.yfilter)
+	|| ydk::is_set(sonetvtcurrentsess.yfilter)
+	|| ydk::is_set(sonetvtcurrentstatus.yfilter)
+	|| ydk::is_set(sonetvtcurrentuass.yfilter)
+	|| ydk::is_set(sonetvtcurrentwidth.yfilter);
 }
 
 std::string SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::get_segment_path() const
@@ -2989,13 +3737,13 @@ const EntityPath SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetvtcurrentcvs.is_set || is_set(sonetvtcurrentcvs.operation)) leaf_name_data.push_back(sonetvtcurrentcvs.get_name_leafdata());
-    if (sonetvtcurrentess.is_set || is_set(sonetvtcurrentess.operation)) leaf_name_data.push_back(sonetvtcurrentess.get_name_leafdata());
-    if (sonetvtcurrentsess.is_set || is_set(sonetvtcurrentsess.operation)) leaf_name_data.push_back(sonetvtcurrentsess.get_name_leafdata());
-    if (sonetvtcurrentstatus.is_set || is_set(sonetvtcurrentstatus.operation)) leaf_name_data.push_back(sonetvtcurrentstatus.get_name_leafdata());
-    if (sonetvtcurrentuass.is_set || is_set(sonetvtcurrentuass.operation)) leaf_name_data.push_back(sonetvtcurrentuass.get_name_leafdata());
-    if (sonetvtcurrentwidth.is_set || is_set(sonetvtcurrentwidth.operation)) leaf_name_data.push_back(sonetvtcurrentwidth.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetvtcurrentcvs.is_set || is_set(sonetvtcurrentcvs.yfilter)) leaf_name_data.push_back(sonetvtcurrentcvs.get_name_leafdata());
+    if (sonetvtcurrentess.is_set || is_set(sonetvtcurrentess.yfilter)) leaf_name_data.push_back(sonetvtcurrentess.get_name_leafdata());
+    if (sonetvtcurrentsess.is_set || is_set(sonetvtcurrentsess.yfilter)) leaf_name_data.push_back(sonetvtcurrentsess.get_name_leafdata());
+    if (sonetvtcurrentstatus.is_set || is_set(sonetvtcurrentstatus.yfilter)) leaf_name_data.push_back(sonetvtcurrentstatus.get_name_leafdata());
+    if (sonetvtcurrentuass.is_set || is_set(sonetvtcurrentuass.yfilter)) leaf_name_data.push_back(sonetvtcurrentuass.get_name_leafdata());
+    if (sonetvtcurrentwidth.is_set || is_set(sonetvtcurrentwidth.yfilter)) leaf_name_data.push_back(sonetvtcurrentwidth.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3014,36 +3762,89 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetvtcurrenttable::So
     return children;
 }
 
-void SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTCurrentCVs")
     {
         sonetvtcurrentcvs = value;
+        sonetvtcurrentcvs.value_namespace = name_space;
+        sonetvtcurrentcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTCurrentESs")
     {
         sonetvtcurrentess = value;
+        sonetvtcurrentess.value_namespace = name_space;
+        sonetvtcurrentess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTCurrentSESs")
     {
         sonetvtcurrentsess = value;
+        sonetvtcurrentsess.value_namespace = name_space;
+        sonetvtcurrentsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTCurrentStatus")
     {
         sonetvtcurrentstatus = value;
+        sonetvtcurrentstatus.value_namespace = name_space;
+        sonetvtcurrentstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTCurrentUASs")
     {
         sonetvtcurrentuass = value;
+        sonetvtcurrentuass.value_namespace = name_space;
+        sonetvtcurrentuass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTCurrentWidth")
     {
         sonetvtcurrentwidth = value;
+        sonetvtcurrentwidth.value_namespace = name_space;
+        sonetvtcurrentwidth.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTCurrentCVs")
+    {
+        sonetvtcurrentcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTCurrentESs")
+    {
+        sonetvtcurrentess.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTCurrentSESs")
+    {
+        sonetvtcurrentsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTCurrentStatus")
+    {
+        sonetvtcurrentstatus.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTCurrentUASs")
+    {
+        sonetvtcurrentuass.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTCurrentWidth")
+    {
+        sonetvtcurrentwidth.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetVTCurrentCVs" || name == "sonetVTCurrentESs" || name == "sonetVTCurrentSESs" || name == "sonetVTCurrentStatus" || name == "sonetVTCurrentUASs" || name == "sonetVTCurrentWidth")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetvtintervaltable::Sonetvtintervaltable()
@@ -3057,9 +3858,9 @@ SonetMib::Sonetvtintervaltable::~Sonetvtintervaltable()
 
 bool SonetMib::Sonetvtintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<sonetvtintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetvtintervalentry.size(); index++)
     {
-        if(sonetvtintervalentry_[index]->has_data())
+        if(sonetvtintervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -3067,12 +3868,12 @@ bool SonetMib::Sonetvtintervaltable::has_data() const
 
 bool SonetMib::Sonetvtintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetvtintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetvtintervalentry.size(); index++)
     {
-        if(sonetvtintervalentry_[index]->has_operation())
+        if(sonetvtintervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetvtintervaltable::get_segment_path() const
@@ -3109,7 +3910,7 @@ std::shared_ptr<Entity> SonetMib::Sonetvtintervaltable::get_child_by_name(const 
 {
     if(child_yang_name == "sonetVTIntervalEntry")
     {
-        for(auto const & c : sonetvtintervalentry_)
+        for(auto const & c : sonetvtintervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3119,7 +3920,7 @@ std::shared_ptr<Entity> SonetMib::Sonetvtintervaltable::get_child_by_name(const 
         }
         auto c = std::make_shared<SonetMib::Sonetvtintervaltable::Sonetvtintervalentry>();
         c->parent = this;
-        sonetvtintervalentry_.push_back(c);
+        sonetvtintervalentry.push_back(c);
         return c;
     }
 
@@ -3129,7 +3930,7 @@ std::shared_ptr<Entity> SonetMib::Sonetvtintervaltable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetvtintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetvtintervalentry_)
+    for (auto const & c : sonetvtintervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3137,8 +3938,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetvtintervaltable::g
     return children;
 }
 
-void SonetMib::Sonetvtintervaltable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetvtintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetvtintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetvtintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetVTIntervalEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::Sonetvtintervalentry()
@@ -3171,14 +3983,14 @@ bool SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::has_data() const
 
 bool SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetvtintervalnumber.operation)
-	|| is_set(sonetvtintervalcvs.operation)
-	|| is_set(sonetvtintervaless.operation)
-	|| is_set(sonetvtintervalsess.operation)
-	|| is_set(sonetvtintervaluass.operation)
-	|| is_set(sonetvtintervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetvtintervalnumber.yfilter)
+	|| ydk::is_set(sonetvtintervalcvs.yfilter)
+	|| ydk::is_set(sonetvtintervaless.yfilter)
+	|| ydk::is_set(sonetvtintervalsess.yfilter)
+	|| ydk::is_set(sonetvtintervaluass.yfilter)
+	|| ydk::is_set(sonetvtintervalvaliddata.yfilter);
 }
 
 std::string SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::get_segment_path() const
@@ -3204,13 +4016,13 @@ const EntityPath SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetvtintervalnumber.is_set || is_set(sonetvtintervalnumber.operation)) leaf_name_data.push_back(sonetvtintervalnumber.get_name_leafdata());
-    if (sonetvtintervalcvs.is_set || is_set(sonetvtintervalcvs.operation)) leaf_name_data.push_back(sonetvtintervalcvs.get_name_leafdata());
-    if (sonetvtintervaless.is_set || is_set(sonetvtintervaless.operation)) leaf_name_data.push_back(sonetvtintervaless.get_name_leafdata());
-    if (sonetvtintervalsess.is_set || is_set(sonetvtintervalsess.operation)) leaf_name_data.push_back(sonetvtintervalsess.get_name_leafdata());
-    if (sonetvtintervaluass.is_set || is_set(sonetvtintervaluass.operation)) leaf_name_data.push_back(sonetvtintervaluass.get_name_leafdata());
-    if (sonetvtintervalvaliddata.is_set || is_set(sonetvtintervalvaliddata.operation)) leaf_name_data.push_back(sonetvtintervalvaliddata.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetvtintervalnumber.is_set || is_set(sonetvtintervalnumber.yfilter)) leaf_name_data.push_back(sonetvtintervalnumber.get_name_leafdata());
+    if (sonetvtintervalcvs.is_set || is_set(sonetvtintervalcvs.yfilter)) leaf_name_data.push_back(sonetvtintervalcvs.get_name_leafdata());
+    if (sonetvtintervaless.is_set || is_set(sonetvtintervaless.yfilter)) leaf_name_data.push_back(sonetvtintervaless.get_name_leafdata());
+    if (sonetvtintervalsess.is_set || is_set(sonetvtintervalsess.yfilter)) leaf_name_data.push_back(sonetvtintervalsess.get_name_leafdata());
+    if (sonetvtintervaluass.is_set || is_set(sonetvtintervaluass.yfilter)) leaf_name_data.push_back(sonetvtintervaluass.get_name_leafdata());
+    if (sonetvtintervalvaliddata.is_set || is_set(sonetvtintervalvaliddata.yfilter)) leaf_name_data.push_back(sonetvtintervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3229,36 +4041,89 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetvtintervaltable::S
     return children;
 }
 
-void SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTIntervalNumber")
     {
         sonetvtintervalnumber = value;
+        sonetvtintervalnumber.value_namespace = name_space;
+        sonetvtintervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTIntervalCVs")
     {
         sonetvtintervalcvs = value;
+        sonetvtintervalcvs.value_namespace = name_space;
+        sonetvtintervalcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTIntervalESs")
     {
         sonetvtintervaless = value;
+        sonetvtintervaless.value_namespace = name_space;
+        sonetvtintervaless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTIntervalSESs")
     {
         sonetvtintervalsess = value;
+        sonetvtintervalsess.value_namespace = name_space;
+        sonetvtintervalsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTIntervalUASs")
     {
         sonetvtintervaluass = value;
+        sonetvtintervaluass.value_namespace = name_space;
+        sonetvtintervaluass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetVTIntervalValidData")
     {
         sonetvtintervalvaliddata = value;
+        sonetvtintervalvaliddata.value_namespace = name_space;
+        sonetvtintervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTIntervalNumber")
+    {
+        sonetvtintervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTIntervalCVs")
+    {
+        sonetvtintervalcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTIntervalESs")
+    {
+        sonetvtintervaless.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTIntervalSESs")
+    {
+        sonetvtintervalsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTIntervalUASs")
+    {
+        sonetvtintervaluass.yfilter = yfilter;
+    }
+    if(value_path == "sonetVTIntervalValidData")
+    {
+        sonetvtintervalvaliddata.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetvtintervaltable::Sonetvtintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetVTIntervalNumber" || name == "sonetVTIntervalCVs" || name == "sonetVTIntervalESs" || name == "sonetVTIntervalSESs" || name == "sonetVTIntervalUASs" || name == "sonetVTIntervalValidData")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrenttable()
@@ -3272,9 +4137,9 @@ SonetMib::Sonetfarendvtcurrenttable::~Sonetfarendvtcurrenttable()
 
 bool SonetMib::Sonetfarendvtcurrenttable::has_data() const
 {
-    for (std::size_t index=0; index<sonetfarendvtcurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendvtcurrententry.size(); index++)
     {
-        if(sonetfarendvtcurrententry_[index]->has_data())
+        if(sonetfarendvtcurrententry[index]->has_data())
             return true;
     }
     return false;
@@ -3282,12 +4147,12 @@ bool SonetMib::Sonetfarendvtcurrenttable::has_data() const
 
 bool SonetMib::Sonetfarendvtcurrenttable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetfarendvtcurrententry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendvtcurrententry.size(); index++)
     {
-        if(sonetfarendvtcurrententry_[index]->has_operation())
+        if(sonetfarendvtcurrententry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetfarendvtcurrenttable::get_segment_path() const
@@ -3324,7 +4189,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendvtcurrenttable::get_child_by_name(c
 {
     if(child_yang_name == "sonetFarEndVTCurrentEntry")
     {
-        for(auto const & c : sonetfarendvtcurrententry_)
+        for(auto const & c : sonetfarendvtcurrententry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3334,7 +4199,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendvtcurrenttable::get_child_by_name(c
         }
         auto c = std::make_shared<SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry>();
         c->parent = this;
-        sonetfarendvtcurrententry_.push_back(c);
+        sonetfarendvtcurrententry.push_back(c);
         return c;
     }
 
@@ -3344,7 +4209,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendvtcurrenttable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendvtcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetfarendvtcurrententry_)
+    for (auto const & c : sonetfarendvtcurrententry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3352,8 +4217,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendvtcurrenttab
     return children;
 }
 
-void SonetMib::Sonetfarendvtcurrenttable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendvtcurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetfarendvtcurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetfarendvtcurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetFarEndVTCurrentEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::Sonetfarendvtcurrententry()
@@ -3382,12 +4258,12 @@ bool SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::has_data() 
 
 bool SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetfarendvtcurrentcvs.operation)
-	|| is_set(sonetfarendvtcurrentess.operation)
-	|| is_set(sonetfarendvtcurrentsess.operation)
-	|| is_set(sonetfarendvtcurrentuass.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetfarendvtcurrentcvs.yfilter)
+	|| ydk::is_set(sonetfarendvtcurrentess.yfilter)
+	|| ydk::is_set(sonetfarendvtcurrentsess.yfilter)
+	|| ydk::is_set(sonetfarendvtcurrentuass.yfilter);
 }
 
 std::string SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::get_segment_path() const
@@ -3413,11 +4289,11 @@ const EntityPath SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetfarendvtcurrentcvs.is_set || is_set(sonetfarendvtcurrentcvs.operation)) leaf_name_data.push_back(sonetfarendvtcurrentcvs.get_name_leafdata());
-    if (sonetfarendvtcurrentess.is_set || is_set(sonetfarendvtcurrentess.operation)) leaf_name_data.push_back(sonetfarendvtcurrentess.get_name_leafdata());
-    if (sonetfarendvtcurrentsess.is_set || is_set(sonetfarendvtcurrentsess.operation)) leaf_name_data.push_back(sonetfarendvtcurrentsess.get_name_leafdata());
-    if (sonetfarendvtcurrentuass.is_set || is_set(sonetfarendvtcurrentuass.operation)) leaf_name_data.push_back(sonetfarendvtcurrentuass.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetfarendvtcurrentcvs.is_set || is_set(sonetfarendvtcurrentcvs.yfilter)) leaf_name_data.push_back(sonetfarendvtcurrentcvs.get_name_leafdata());
+    if (sonetfarendvtcurrentess.is_set || is_set(sonetfarendvtcurrentess.yfilter)) leaf_name_data.push_back(sonetfarendvtcurrentess.get_name_leafdata());
+    if (sonetfarendvtcurrentsess.is_set || is_set(sonetfarendvtcurrentsess.yfilter)) leaf_name_data.push_back(sonetfarendvtcurrentsess.get_name_leafdata());
+    if (sonetfarendvtcurrentuass.is_set || is_set(sonetfarendvtcurrentuass.yfilter)) leaf_name_data.push_back(sonetfarendvtcurrentuass.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3436,28 +4312,69 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendvtcurrenttab
     return children;
 }
 
-void SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTCurrentCVs")
     {
         sonetfarendvtcurrentcvs = value;
+        sonetfarendvtcurrentcvs.value_namespace = name_space;
+        sonetfarendvtcurrentcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTCurrentESs")
     {
         sonetfarendvtcurrentess = value;
+        sonetfarendvtcurrentess.value_namespace = name_space;
+        sonetfarendvtcurrentess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTCurrentSESs")
     {
         sonetfarendvtcurrentsess = value;
+        sonetfarendvtcurrentsess.value_namespace = name_space;
+        sonetfarendvtcurrentsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTCurrentUASs")
     {
         sonetfarendvtcurrentuass = value;
+        sonetfarendvtcurrentuass.value_namespace = name_space;
+        sonetfarendvtcurrentuass.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTCurrentCVs")
+    {
+        sonetfarendvtcurrentcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTCurrentESs")
+    {
+        sonetfarendvtcurrentess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTCurrentSESs")
+    {
+        sonetfarendvtcurrentsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTCurrentUASs")
+    {
+        sonetfarendvtcurrentuass.yfilter = yfilter;
+    }
+}
+
+bool SonetMib::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetFarEndVTCurrentCVs" || name == "sonetFarEndVTCurrentESs" || name == "sonetFarEndVTCurrentSESs" || name == "sonetFarEndVTCurrentUASs")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervaltable()
@@ -3471,9 +4388,9 @@ SonetMib::Sonetfarendvtintervaltable::~Sonetfarendvtintervaltable()
 
 bool SonetMib::Sonetfarendvtintervaltable::has_data() const
 {
-    for (std::size_t index=0; index<sonetfarendvtintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendvtintervalentry.size(); index++)
     {
-        if(sonetfarendvtintervalentry_[index]->has_data())
+        if(sonetfarendvtintervalentry[index]->has_data())
             return true;
     }
     return false;
@@ -3481,12 +4398,12 @@ bool SonetMib::Sonetfarendvtintervaltable::has_data() const
 
 bool SonetMib::Sonetfarendvtintervaltable::has_operation() const
 {
-    for (std::size_t index=0; index<sonetfarendvtintervalentry_.size(); index++)
+    for (std::size_t index=0; index<sonetfarendvtintervalentry.size(); index++)
     {
-        if(sonetfarendvtintervalentry_[index]->has_operation())
+        if(sonetfarendvtintervalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SonetMib::Sonetfarendvtintervaltable::get_segment_path() const
@@ -3523,7 +4440,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendvtintervaltable::get_child_by_name(
 {
     if(child_yang_name == "sonetFarEndVTIntervalEntry")
     {
-        for(auto const & c : sonetfarendvtintervalentry_)
+        for(auto const & c : sonetfarendvtintervalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3533,7 +4450,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendvtintervaltable::get_child_by_name(
         }
         auto c = std::make_shared<SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry>();
         c->parent = this;
-        sonetfarendvtintervalentry_.push_back(c);
+        sonetfarendvtintervalentry.push_back(c);
         return c;
     }
 
@@ -3543,7 +4460,7 @@ std::shared_ptr<Entity> SonetMib::Sonetfarendvtintervaltable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendvtintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : sonetfarendvtintervalentry_)
+    for (auto const & c : sonetfarendvtintervalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3551,8 +4468,19 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendvtintervalta
     return children;
 }
 
-void SonetMib::Sonetfarendvtintervaltable::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendvtintervaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SonetMib::Sonetfarendvtintervaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SonetMib::Sonetfarendvtintervaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sonetFarEndVTIntervalEntry")
+        return true;
+    return false;
 }
 
 SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::Sonetfarendvtintervalentry()
@@ -3585,14 +4513,14 @@ bool SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::has_data(
 
 bool SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(sonetfarendvtintervalnumber.operation)
-	|| is_set(sonetfarendvtintervalcvs.operation)
-	|| is_set(sonetfarendvtintervaless.operation)
-	|| is_set(sonetfarendvtintervalsess.operation)
-	|| is_set(sonetfarendvtintervaluass.operation)
-	|| is_set(sonetfarendvtintervalvaliddata.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(sonetfarendvtintervalnumber.yfilter)
+	|| ydk::is_set(sonetfarendvtintervalcvs.yfilter)
+	|| ydk::is_set(sonetfarendvtintervaless.yfilter)
+	|| ydk::is_set(sonetfarendvtintervalsess.yfilter)
+	|| ydk::is_set(sonetfarendvtintervaluass.yfilter)
+	|| ydk::is_set(sonetfarendvtintervalvaliddata.yfilter);
 }
 
 std::string SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::get_segment_path() const
@@ -3618,13 +4546,13 @@ const EntityPath SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (sonetfarendvtintervalnumber.is_set || is_set(sonetfarendvtintervalnumber.operation)) leaf_name_data.push_back(sonetfarendvtintervalnumber.get_name_leafdata());
-    if (sonetfarendvtintervalcvs.is_set || is_set(sonetfarendvtintervalcvs.operation)) leaf_name_data.push_back(sonetfarendvtintervalcvs.get_name_leafdata());
-    if (sonetfarendvtintervaless.is_set || is_set(sonetfarendvtintervaless.operation)) leaf_name_data.push_back(sonetfarendvtintervaless.get_name_leafdata());
-    if (sonetfarendvtintervalsess.is_set || is_set(sonetfarendvtintervalsess.operation)) leaf_name_data.push_back(sonetfarendvtintervalsess.get_name_leafdata());
-    if (sonetfarendvtintervaluass.is_set || is_set(sonetfarendvtintervaluass.operation)) leaf_name_data.push_back(sonetfarendvtintervaluass.get_name_leafdata());
-    if (sonetfarendvtintervalvaliddata.is_set || is_set(sonetfarendvtintervalvaliddata.operation)) leaf_name_data.push_back(sonetfarendvtintervalvaliddata.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (sonetfarendvtintervalnumber.is_set || is_set(sonetfarendvtintervalnumber.yfilter)) leaf_name_data.push_back(sonetfarendvtintervalnumber.get_name_leafdata());
+    if (sonetfarendvtintervalcvs.is_set || is_set(sonetfarendvtintervalcvs.yfilter)) leaf_name_data.push_back(sonetfarendvtintervalcvs.get_name_leafdata());
+    if (sonetfarendvtintervaless.is_set || is_set(sonetfarendvtintervaless.yfilter)) leaf_name_data.push_back(sonetfarendvtintervaless.get_name_leafdata());
+    if (sonetfarendvtintervalsess.is_set || is_set(sonetfarendvtintervalsess.yfilter)) leaf_name_data.push_back(sonetfarendvtintervalsess.get_name_leafdata());
+    if (sonetfarendvtintervaluass.is_set || is_set(sonetfarendvtintervaluass.yfilter)) leaf_name_data.push_back(sonetfarendvtintervaluass.get_name_leafdata());
+    if (sonetfarendvtintervalvaliddata.is_set || is_set(sonetfarendvtintervalvaliddata.yfilter)) leaf_name_data.push_back(sonetfarendvtintervalvaliddata.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3643,94 +4571,147 @@ std::map<std::string, std::shared_ptr<Entity>> SonetMib::Sonetfarendvtintervalta
     return children;
 }
 
-void SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::set_value(const std::string & value_path, std::string value)
+void SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTIntervalNumber")
     {
         sonetfarendvtintervalnumber = value;
+        sonetfarendvtintervalnumber.value_namespace = name_space;
+        sonetfarendvtintervalnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTIntervalCVs")
     {
         sonetfarendvtintervalcvs = value;
+        sonetfarendvtintervalcvs.value_namespace = name_space;
+        sonetfarendvtintervalcvs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTIntervalESs")
     {
         sonetfarendvtintervaless = value;
+        sonetfarendvtintervaless.value_namespace = name_space;
+        sonetfarendvtintervaless.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTIntervalSESs")
     {
         sonetfarendvtintervalsess = value;
+        sonetfarendvtintervalsess.value_namespace = name_space;
+        sonetfarendvtintervalsess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTIntervalUASs")
     {
         sonetfarendvtintervaluass = value;
+        sonetfarendvtintervaluass.value_namespace = name_space;
+        sonetfarendvtintervaluass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sonetFarEndVTIntervalValidData")
     {
         sonetfarendvtintervalvaliddata = value;
+        sonetfarendvtintervalvaliddata.value_namespace = name_space;
+        sonetfarendvtintervalvaliddata.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SonetMib::Sonetmedium::SonetsesthresholdsetEnum::other {1, "other"};
-const Enum::YLeaf SonetMib::Sonetmedium::SonetsesthresholdsetEnum::bellcore1991 {2, "bellcore1991"};
-const Enum::YLeaf SonetMib::Sonetmedium::SonetsesthresholdsetEnum::ansi1993 {3, "ansi1993"};
-const Enum::YLeaf SonetMib::Sonetmedium::SonetsesthresholdsetEnum::itu1995 {4, "itu1995"};
-const Enum::YLeaf SonetMib::Sonetmedium::SonetsesthresholdsetEnum::ansi1997 {5, "ansi1997"};
+void SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTIntervalNumber")
+    {
+        sonetfarendvtintervalnumber.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTIntervalCVs")
+    {
+        sonetfarendvtintervalcvs.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTIntervalESs")
+    {
+        sonetfarendvtintervaless.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTIntervalSESs")
+    {
+        sonetfarendvtintervalsess.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTIntervalUASs")
+    {
+        sonetfarendvtintervaluass.yfilter = yfilter;
+    }
+    if(value_path == "sonetFarEndVTIntervalValidData")
+    {
+        sonetfarendvtintervalvaliddata.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumtypeEnum::sonet {1, "sonet"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumtypeEnum::sdh {2, "sdh"};
+bool SonetMib::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "sonetFarEndVTIntervalNumber" || name == "sonetFarEndVTIntervalCVs" || name == "sonetFarEndVTIntervalESs" || name == "sonetFarEndVTIntervalSESs" || name == "sonetFarEndVTIntervalUASs" || name == "sonetFarEndVTIntervalValidData")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinecodingEnum::sonetMediumOther {1, "sonetMediumOther"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinecodingEnum::sonetMediumB3ZS {2, "sonetMediumB3ZS"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinecodingEnum::sonetMediumCMI {3, "sonetMediumCMI"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinecodingEnum::sonetMediumNRZ {4, "sonetMediumNRZ"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinecodingEnum::sonetMediumRZ {5, "sonetMediumRZ"};
+const Enum::YLeaf SonetMib::Sonetmedium::Sonetsesthresholdset::other {1, "other"};
+const Enum::YLeaf SonetMib::Sonetmedium::Sonetsesthresholdset::bellcore1991 {2, "bellcore1991"};
+const Enum::YLeaf SonetMib::Sonetmedium::Sonetsesthresholdset::ansi1993 {3, "ansi1993"};
+const Enum::YLeaf SonetMib::Sonetmedium::Sonetsesthresholdset::itu1995 {4, "itu1995"};
+const Enum::YLeaf SonetMib::Sonetmedium::Sonetsesthresholdset::ansi1997 {5, "ansi1997"};
 
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinetypeEnum::sonetOther {1, "sonetOther"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinetypeEnum::sonetShortSingleMode {2, "sonetShortSingleMode"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinetypeEnum::sonetLongSingleMode {3, "sonetLongSingleMode"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinetypeEnum::sonetMultiMode {4, "sonetMultiMode"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinetypeEnum::sonetCoax {5, "sonetCoax"};
-const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::SonetmediumlinetypeEnum::sonetUTP {6, "sonetUTP"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumtype::sonet {1, "sonet"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumtype::sdh {2, "sdh"};
 
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::SonetpathcurrentwidthEnum::sts1 {1, "sts1"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::SonetpathcurrentwidthEnum::sts3cSTM1 {2, "sts3cSTM1"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::SonetpathcurrentwidthEnum::sts12cSTM4 {3, "sts12cSTM4"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::SonetpathcurrentwidthEnum::sts24c {4, "sts24c"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::SonetpathcurrentwidthEnum::sts48cSTM16 {5, "sts48cSTM16"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::SonetpathcurrentwidthEnum::sts192cSTM64 {6, "sts192cSTM64"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::SonetpathcurrentwidthEnum::sts768cSTM256 {7, "sts768cSTM256"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinecoding::sonetMediumOther {1, "sonetMediumOther"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinecoding::sonetMediumB3ZS {2, "sonetMediumB3ZS"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinecoding::sonetMediumCMI {3, "sonetMediumCMI"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinecoding::sonetMediumNRZ {4, "sonetMediumNRZ"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinecoding::sonetMediumRZ {5, "sonetMediumRZ"};
 
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::unequipped {1, "unequipped"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::unspecified {2, "unspecified"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::ds3 {3, "ds3"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::vt15vc11 {4, "vt15vc11"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::vt2vc12 {5, "vt2vc12"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::atmCell {6, "atmCell"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::hdlcFr {7, "hdlcFr"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::e3 {8, "e3"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsonetpathpayloadEnum::vtStructured {9, "vtStructured"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype::sonetOther {1, "sonetOther"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype::sonetShortSingleMode {2, "sonetShortSingleMode"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype::sonetLongSingleMode {3, "sonetLongSingleMode"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype::sonetMultiMode {4, "sonetMultiMode"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype::sonetCoax {5, "sonetCoax"};
+const Enum::YLeaf SonetMib::Sonetmediumtable::Sonetmediumentry::Sonetmediumlinetype::sonetUTP {6, "sonetUTP"};
 
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CsptributarymappingtypeEnum::asynchronous {1, "asynchronous"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CsptributarymappingtypeEnum::byteSynchronous {2, "byteSynchronous"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth::sts1 {1, "sts1"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth::sts3cSTM1 {2, "sts3cSTM1"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth::sts12cSTM4 {3, "sts12cSTM4"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth::sts24c {4, "sts24c"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth::sts48cSTM16 {5, "sts48cSTM16"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth::sts192cSTM64 {6, "sts192cSTM64"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Sonetpathcurrentwidth::sts768cSTM256 {7, "sts768cSTM256"};
 
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsignallingtransportmodeEnum::notApplicable {1, "notApplicable"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsignallingtransportmodeEnum::signallingTransferMode {2, "signallingTransferMode"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CspsignallingtransportmodeEnum::clearMode {3, "clearMode"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::unequipped {1, "unequipped"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::unspecified {2, "unspecified"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::ds3 {3, "ds3"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::vt15vc11 {4, "vt15vc11"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::vt2vc12 {5, "vt2vc12"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::atmCell {6, "atmCell"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::hdlcFr {7, "hdlcFr"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::e3 {8, "e3"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsonetpathpayload::vtStructured {9, "vtStructured"};
 
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CsptributarygroupingtypeEnum::notApplicable {1, "notApplicable"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CsptributarygroupingtypeEnum::au3Grouping {2, "au3Grouping"};
-const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::CsptributarygroupingtypeEnum::au4Grouping {3, "au4Grouping"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarymappingtype::asynchronous {1, "asynchronous"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarymappingtype::byteSynchronous {2, "byteSynchronous"};
 
-const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::SonetvtcurrentwidthEnum::vtWidth15VC11 {1, "vtWidth15VC11"};
-const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::SonetvtcurrentwidthEnum::vtWidth2VC12 {2, "vtWidth2VC12"};
-const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::SonetvtcurrentwidthEnum::vtWidth3 {3, "vtWidth3"};
-const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::SonetvtcurrentwidthEnum::vtWidth6VC2 {4, "vtWidth6VC2"};
-const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::SonetvtcurrentwidthEnum::vtWidth6c {5, "vtWidth6c"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsignallingtransportmode::notApplicable {1, "notApplicable"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsignallingtransportmode::signallingTransferMode {2, "signallingTransferMode"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Cspsignallingtransportmode::clearMode {3, "clearMode"};
+
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarygroupingtype::notApplicable {1, "notApplicable"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarygroupingtype::au3Grouping {2, "au3Grouping"};
+const Enum::YLeaf SonetMib::Sonetpathcurrenttable::Sonetpathcurrententry::Csptributarygroupingtype::au4Grouping {3, "au4Grouping"};
+
+const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::Sonetvtcurrentwidth::vtWidth15VC11 {1, "vtWidth15VC11"};
+const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::Sonetvtcurrentwidth::vtWidth2VC12 {2, "vtWidth2VC12"};
+const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::Sonetvtcurrentwidth::vtWidth3 {3, "vtWidth3"};
+const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::Sonetvtcurrentwidth::vtWidth6VC2 {4, "vtWidth6VC2"};
+const Enum::YLeaf SonetMib::Sonetvtcurrenttable::Sonetvtcurrententry::Sonetvtcurrentwidth::vtWidth6c {5, "vtWidth6c"};
 
 
 }

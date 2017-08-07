@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_installmgr_admin_oper_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_installmgr_admin_oper {
 
 Install::Logs::Log::Communication::LogContents::V3::V3()
@@ -34,9 +36,9 @@ bool Install::Logs::Log::Communication::LogContents::V3::has_data() const
 
 bool Install::Logs::Log::Communication::LogContents::V3::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(category.operation)
-	|| is_set(message.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(category.yfilter)
+	|| ydk::is_set(message.yfilter)
 	|| (scope !=  nullptr && scope->has_operation());
 }
 
@@ -63,8 +65,8 @@ const EntityPath Install::Logs::Log::Communication::LogContents::V3::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (category.is_set || is_set(category.operation)) leaf_name_data.push_back(category.get_name_leafdata());
-    if (message.is_set || is_set(message.operation)) leaf_name_data.push_back(message.get_name_leafdata());
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -97,16 +99,39 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication
     return children;
 }
 
-void Install::Logs::Log::Communication::LogContents::V3::set_value(const std::string & value_path, std::string value)
+void Install::Logs::Log::Communication::LogContents::V3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "category")
     {
         category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "message")
     {
         message = value;
+        message.value_namespace = name_space;
+        message.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Install::Logs::Log::Communication::LogContents::V3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "category")
+    {
+        category.yfilter = yfilter;
+    }
+    if(value_path == "message")
+    {
+        message.yfilter = yfilter;
+    }
+}
+
+bool Install::Logs::Log::Communication::LogContents::V3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "scope" || name == "category" || name == "message")
+        return true;
+    return false;
 }
 
 Install::Logs::Log::Communication::LogContents::V3::Scope::Scope()
@@ -129,9 +154,9 @@ bool Install::Logs::Log::Communication::LogContents::V3::Scope::has_data() const
 
 bool Install::Logs::Log::Communication::LogContents::V3::Scope::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_read.operation)
-	|| is_set(affected_sd_rs.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_read.yfilter)
+	|| ydk::is_set(affected_sd_rs.yfilter);
 }
 
 std::string Install::Logs::Log::Communication::LogContents::V3::Scope::get_segment_path() const
@@ -157,8 +182,8 @@ const EntityPath Install::Logs::Log::Communication::LogContents::V3::Scope::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_read.is_set || is_set(admin_read.operation)) leaf_name_data.push_back(admin_read.get_name_leafdata());
-    if (affected_sd_rs.is_set || is_set(affected_sd_rs.operation)) leaf_name_data.push_back(affected_sd_rs.get_name_leafdata());
+    if (admin_read.is_set || is_set(admin_read.yfilter)) leaf_name_data.push_back(admin_read.get_name_leafdata());
+    if (affected_sd_rs.is_set || is_set(affected_sd_rs.yfilter)) leaf_name_data.push_back(affected_sd_rs.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -177,16 +202,39 @@ std::map<std::string, std::shared_ptr<Entity>> Install::Logs::Log::Communication
     return children;
 }
 
-void Install::Logs::Log::Communication::LogContents::V3::Scope::set_value(const std::string & value_path, std::string value)
+void Install::Logs::Log::Communication::LogContents::V3::Scope::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-read")
     {
         admin_read = value;
+        admin_read.value_namespace = name_space;
+        admin_read.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "affected-sd-rs")
     {
         affected_sd_rs = value;
+        affected_sd_rs.value_namespace = name_space;
+        affected_sd_rs.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Install::Logs::Log::Communication::LogContents::V3::Scope::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-read")
+    {
+        admin_read.yfilter = yfilter;
+    }
+    if(value_path == "affected-sd-rs")
+    {
+        affected_sd_rs.yfilter = yfilter;
+    }
+}
+
+bool Install::Logs::Log::Communication::LogContents::V3::Scope::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-read" || name == "affected-sd-rs")
+        return true;
+    return false;
 }
 
 

@@ -6,20 +6,22 @@
 #include "generated_entity_lookup.hpp"
 #include "MPLS_TC_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace MPLS_TC_MIB {
 
-const Enum::YLeaf MplsldplabeltypesEnum::generic {1, "generic"};
-const Enum::YLeaf MplsldplabeltypesEnum::atm {2, "atm"};
-const Enum::YLeaf MplsldplabeltypesEnum::frameRelay {3, "frameRelay"};
+const Enum::YLeaf Mplsinitialcreationsource::other {1, "other"};
+const Enum::YLeaf Mplsinitialcreationsource::snmp {2, "snmp"};
+const Enum::YLeaf Mplsinitialcreationsource::ldp {3, "ldp"};
+const Enum::YLeaf Mplsinitialcreationsource::rsvp {4, "rsvp"};
+const Enum::YLeaf Mplsinitialcreationsource::crldp {5, "crldp"};
+const Enum::YLeaf Mplsinitialcreationsource::policyAgent {6, "policyAgent"};
+const Enum::YLeaf Mplsinitialcreationsource::unknown {7, "unknown"};
 
-const Enum::YLeaf MplsinitialcreationsourceEnum::other {1, "other"};
-const Enum::YLeaf MplsinitialcreationsourceEnum::snmp {2, "snmp"};
-const Enum::YLeaf MplsinitialcreationsourceEnum::ldp {3, "ldp"};
-const Enum::YLeaf MplsinitialcreationsourceEnum::rsvp {4, "rsvp"};
-const Enum::YLeaf MplsinitialcreationsourceEnum::crldp {5, "crldp"};
-const Enum::YLeaf MplsinitialcreationsourceEnum::policyAgent {6, "policyAgent"};
-const Enum::YLeaf MplsinitialcreationsourceEnum::unknown {7, "unknown"};
+const Enum::YLeaf Mplsldplabeltypes::generic {1, "generic"};
+const Enum::YLeaf Mplsldplabeltypes::atm {2, "atm"};
+const Enum::YLeaf Mplsldplabeltypes::frameRelay {3, "frameRelay"};
 
 
 }

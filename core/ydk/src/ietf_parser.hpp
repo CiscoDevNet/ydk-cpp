@@ -17,6 +17,8 @@
 #ifndef _IETF_PARSER_H_
 #define _IETF_PARSER_H_
 
+#include <unordered_map>
+
 #include "capabilities_parser.hpp"
 
 struct _xmlDoc;
@@ -29,24 +31,26 @@ namespace ydk
 
 class IetfCapabilitiesXmlParser : public CapabilitiesXmlParser
 {
-	public:
-		IetfCapabilitiesXmlParser();
-		~IetfCapabilitiesXmlParser();
+    public:
+        IetfCapabilitiesXmlParser();
+        ~IetfCapabilitiesXmlParser();
 
-		std::vector<std::string> parse(const std::string & buffer);
+        std::vector<std::string> parse(const std::string & buffer);
 
-	private:
-		xmlDocPtr doc;
+    private:
+        xmlDocPtr doc;
 };
 
 
 class IetfCapabilitiesParser : public CapabilitiesParser
 {
-	public:
-		IetfCapabilitiesParser();
-		~IetfCapabilitiesParser();
+    public:
+        IetfCapabilitiesParser();
+        ~IetfCapabilitiesParser();
 
-		std::vector<path::Capability> parse(std::vector<std::string> & capabilities) const;
+        std::vector<path::Capability> parse(std::vector<std::string> & capabilities) const;
+        std::vector<std::unordered_map<std::string, path::Capability>> get_lookup_tables(std::vector<std::string>& capabilities) const;
+        std::vector<std::pair<std::string, path::Capability>> segmentalize_capabilities(std::vector<std::string>& capabilities) const;
 };
 }
 

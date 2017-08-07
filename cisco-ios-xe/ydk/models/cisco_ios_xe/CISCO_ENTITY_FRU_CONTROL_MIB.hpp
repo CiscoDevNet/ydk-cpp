@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_ENTITY_FRU_CONTROL_MIB {
 
-class CiscoEntityFruControlMib : public Entity
+class CiscoEntityFruControlMib : public ydk::Entity
 {
     public:
         CiscoEntityFruControlMib();
@@ -19,15 +19,18 @@ class CiscoEntityFruControlMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Cefcfrupower; //type: CiscoEntityFruControlMib::Cefcfrupower
         class Cefcmibnotificationenables; //type: CiscoEntityFruControlMib::Cefcmibnotificationenables
@@ -48,29 +51,29 @@ class CiscoEntityFruControlMib : public Entity
         class Cefcconnectorratingtable; //type: CiscoEntityFruControlMib::Cefcconnectorratingtable
         class Cefcmodulepowerconsumptiontable; //type: CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable
 
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcchassiscoolingtable> cefcchassiscoolingtable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcconnectorratingtable> cefcconnectorratingtable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingcaptable> cefcfancoolingcaptable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingtable> cefcfancoolingtable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfantraystatustable> cefcfantraystatustable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupower> cefcfrupower_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowerstatustable> cefcfrupowerstatustable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable> cefcfrupowersupplygrouptable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable> cefcfrupowersupplyvaluetable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcintellimoduletable> cefcintellimoduletable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmibnotificationenables> cefcmibnotificationenables_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulecoolingtable> cefcmodulecoolingtable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable> cefcmodulelocalswitchingtable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable> cefcmodulepowerconsumptiontable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmoduletable> cefcmoduletable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcphysicaltable> cefcphysicaltable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyinputtable> cefcpowersupplyinputtable_;
-        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyoutputtable> cefcpowersupplyoutputtable_;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcchassiscoolingtable> cefcchassiscoolingtable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcconnectorratingtable> cefcconnectorratingtable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingcaptable> cefcfancoolingcaptable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingtable> cefcfancoolingtable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfantraystatustable> cefcfantraystatustable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupower> cefcfrupower;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowerstatustable> cefcfrupowerstatustable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable> cefcfrupowersupplygrouptable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable> cefcfrupowersupplyvaluetable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcintellimoduletable> cefcintellimoduletable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmibnotificationenables> cefcmibnotificationenables;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulecoolingtable> cefcmodulecoolingtable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable> cefcmodulelocalswitchingtable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable> cefcmodulepowerconsumptiontable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmoduletable> cefcmoduletable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcphysicaltable> cefcphysicaltable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyinputtable> cefcpowersupplyinputtable;
+        std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyoutputtable> cefcpowersupplyoutputtable;
         
 }; // CiscoEntityFruControlMib
 
 
-class CiscoEntityFruControlMib::Cefcfrupower : public Entity
+class CiscoEntityFruControlMib::Cefcfrupower : public ydk::Entity
 {
     public:
         Cefcfrupower();
@@ -78,19 +81,21 @@ class CiscoEntityFruControlMib::Cefcfrupower : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cefcmaxdefaultinlinepower; //type: int32
-        YLeaf cefcmaxdefaulthighinlinepower; //type: uint32
+        ydk::YLeaf cefcmaxdefaultinlinepower; //type: int32
+        ydk::YLeaf cefcmaxdefaulthighinlinepower; //type: uint32
 
 }; // CiscoEntityFruControlMib::Cefcfrupower
 
 
-class CiscoEntityFruControlMib::Cefcmibnotificationenables : public Entity
+class CiscoEntityFruControlMib::Cefcmibnotificationenables : public ydk::Entity
 {
     public:
         Cefcmibnotificationenables();
@@ -98,19 +103,21 @@ class CiscoEntityFruControlMib::Cefcmibnotificationenables : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cefcmibenablestatusnotification; //type: boolean
-        YLeaf cefcenablepsoutputchangenotif; //type: boolean
+        ydk::YLeaf cefcmibenablestatusnotification; //type: boolean
+        ydk::YLeaf cefcenablepsoutputchangenotif; //type: boolean
 
 }; // CiscoEntityFruControlMib::Cefcmibnotificationenables
 
 
-class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable : public Entity
+class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable : public ydk::Entity
 {
     public:
         Cefcfrupowersupplygrouptable();
@@ -118,20 +125,22 @@ class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcfrupowersupplygroupentry; //type: CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry> > cefcfrupowersupplygroupentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry> > cefcfrupowersupplygroupentry;
         
 }; // CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable
 
 
-class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry : public Entity
+class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry : public ydk::Entity
 {
     public:
         Cefcfrupowersupplygroupentry();
@@ -139,27 +148,29 @@ class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupply
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcpowerredundancymode; //type: PowerredundancytypeEnum
-        YLeaf cefcpowerunits; //type: string
-        YLeaf cefctotalavailablecurrent; //type: int32
-        YLeaf cefctotaldrawncurrent; //type: int32
-        YLeaf cefcpowerredundancyopermode; //type: PowerredundancytypeEnum
-        YLeaf cefcpowernonredundantreason; //type: CefcpowernonredundantreasonEnum
-        YLeaf cefctotaldrawninlinecurrent; //type: int32
-        class CefcpowernonredundantreasonEnum;
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcpowerredundancymode; //type: Powerredundancytype
+        ydk::YLeaf cefcpowerunits; //type: string
+        ydk::YLeaf cefctotalavailablecurrent; //type: int32
+        ydk::YLeaf cefctotaldrawncurrent; //type: int32
+        ydk::YLeaf cefcpowerredundancyopermode; //type: Powerredundancytype
+        ydk::YLeaf cefcpowernonredundantreason; //type: Cefcpowernonredundantreason
+        ydk::YLeaf cefctotaldrawninlinecurrent; //type: int32
+        class Cefcpowernonredundantreason;
 
 }; // CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry
 
 
-class CiscoEntityFruControlMib::Cefcfrupowerstatustable : public Entity
+class CiscoEntityFruControlMib::Cefcfrupowerstatustable : public ydk::Entity
 {
     public:
         Cefcfrupowerstatustable();
@@ -167,20 +178,22 @@ class CiscoEntityFruControlMib::Cefcfrupowerstatustable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcfrupowerstatusentry; //type: CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry> > cefcfrupowerstatusentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry> > cefcfrupowerstatusentry;
         
 }; // CiscoEntityFruControlMib::Cefcfrupowerstatustable
 
 
-class CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry : public Entity
+class CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry : public ydk::Entity
 {
     public:
         Cefcfrupowerstatusentry();
@@ -188,24 +201,26 @@ class CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcfrupoweradminstatus; //type: PoweradmintypeEnum
-        YLeaf cefcfrupoweroperstatus; //type: PoweropertypeEnum
-        YLeaf cefcfrucurrent; //type: int32
-        YLeaf cefcfrupowercapability; //type: Cefcfrupowercapability
-        YLeaf cefcfrurealtimecurrent; //type: int32
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcfrupoweradminstatus; //type: Poweradmintype
+        ydk::YLeaf cefcfrupoweroperstatus; //type: Poweropertype
+        ydk::YLeaf cefcfrucurrent; //type: int32
+        ydk::YLeaf cefcfrupowercapability; //type: Cefcfrupowercapability
+        ydk::YLeaf cefcfrurealtimecurrent; //type: int32
 
 }; // CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry
 
 
-class CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable : public Entity
+class CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable : public ydk::Entity
 {
     public:
         Cefcfrupowersupplyvaluetable();
@@ -213,20 +228,22 @@ class CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcfrupowersupplyvalueentry; //type: CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry> > cefcfrupowersupplyvalueentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry> > cefcfrupowersupplyvalueentry;
         
 }; // CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable
 
 
-class CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry : public Entity
+class CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry : public ydk::Entity
 {
     public:
         Cefcfrupowersupplyvalueentry();
@@ -234,23 +251,25 @@ class CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupply
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcfrutotalsystemcurrent; //type: int32
-        YLeaf cefcfrudrawnsystemcurrent; //type: int32
-        YLeaf cefcfrutotalinlinecurrent; //type: int32
-        YLeaf cefcfrudrawninlinecurrent; //type: int32
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcfrutotalsystemcurrent; //type: int32
+        ydk::YLeaf cefcfrudrawnsystemcurrent; //type: int32
+        ydk::YLeaf cefcfrutotalinlinecurrent; //type: int32
+        ydk::YLeaf cefcfrudrawninlinecurrent; //type: int32
 
 }; // CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry
 
 
-class CiscoEntityFruControlMib::Cefcmoduletable : public Entity
+class CiscoEntityFruControlMib::Cefcmoduletable : public ydk::Entity
 {
     public:
         Cefcmoduletable();
@@ -258,20 +277,22 @@ class CiscoEntityFruControlMib::Cefcmoduletable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcmoduleentry; //type: CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry> > cefcmoduleentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry> > cefcmoduleentry;
         
 }; // CiscoEntityFruControlMib::Cefcmoduletable
 
 
-class CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry : public Entity
+class CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry : public ydk::Entity
 {
     public:
         Cefcmoduleentry();
@@ -279,27 +300,29 @@ class CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcmoduleadminstatus; //type: ModuleadmintypeEnum
-        YLeaf cefcmoduleoperstatus; //type: ModuleopertypeEnum
-        YLeaf cefcmoduleresetreason; //type: ModuleresetreasontypeEnum
-        YLeaf cefcmodulestatuslastchangetime; //type: uint32
-        YLeaf cefcmodulelastclearconfigtime; //type: uint32
-        YLeaf cefcmoduleresetreasondescription; //type: string
-        YLeaf cefcmodulestatechangereasondescr; //type: string
-        YLeaf cefcmoduleuptime; //type: uint32
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcmoduleadminstatus; //type: Moduleadmintype
+        ydk::YLeaf cefcmoduleoperstatus; //type: Moduleopertype
+        ydk::YLeaf cefcmoduleresetreason; //type: Moduleresetreasontype
+        ydk::YLeaf cefcmodulestatuslastchangetime; //type: uint32
+        ydk::YLeaf cefcmodulelastclearconfigtime; //type: uint32
+        ydk::YLeaf cefcmoduleresetreasondescription; //type: string
+        ydk::YLeaf cefcmodulestatechangereasondescr; //type: string
+        ydk::YLeaf cefcmoduleuptime; //type: uint32
 
 }; // CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry
 
 
-class CiscoEntityFruControlMib::Cefcintellimoduletable : public Entity
+class CiscoEntityFruControlMib::Cefcintellimoduletable : public ydk::Entity
 {
     public:
         Cefcintellimoduletable();
@@ -307,20 +330,22 @@ class CiscoEntityFruControlMib::Cefcintellimoduletable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcintellimoduleentry; //type: CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry> > cefcintellimoduleentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry> > cefcintellimoduleentry;
         
 }; // CiscoEntityFruControlMib::Cefcintellimoduletable
 
 
-class CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry : public Entity
+class CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry : public ydk::Entity
 {
     public:
         Cefcintellimoduleentry();
@@ -328,21 +353,23 @@ class CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcintellimoduleipaddrtype; //type: InetaddresstypeEnum
-        YLeaf cefcintellimoduleipaddr; //type: binary
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcintellimoduleipaddrtype; //type: Inetaddresstype
+        ydk::YLeaf cefcintellimoduleipaddr; //type: binary
 
 }; // CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry
 
 
-class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable : public Entity
+class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable : public ydk::Entity
 {
     public:
         Cefcmodulelocalswitchingtable();
@@ -350,20 +377,22 @@ class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcmodulelocalswitchingentry; //type: CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry> > cefcmodulelocalswitchingentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry> > cefcmodulelocalswitchingentry;
         
 }; // CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable
 
 
-class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry : public Entity
+class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry : public ydk::Entity
 {
     public:
         Cefcmodulelocalswitchingentry();
@@ -371,21 +400,23 @@ class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalsw
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcmodulelocalswitchingmode; //type: CefcmodulelocalswitchingmodeEnum
-        class CefcmodulelocalswitchingmodeEnum;
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcmodulelocalswitchingmode; //type: Cefcmodulelocalswitchingmode
+        class Cefcmodulelocalswitchingmode;
 
 }; // CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry
 
 
-class CiscoEntityFruControlMib::Cefcfantraystatustable : public Entity
+class CiscoEntityFruControlMib::Cefcfantraystatustable : public ydk::Entity
 {
     public:
         Cefcfantraystatustable();
@@ -393,20 +424,22 @@ class CiscoEntityFruControlMib::Cefcfantraystatustable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcfantraystatusentry; //type: CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry> > cefcfantraystatusentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry> > cefcfantraystatusentry;
         
 }; // CiscoEntityFruControlMib::Cefcfantraystatustable
 
 
-class CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry : public Entity
+class CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry : public ydk::Entity
 {
     public:
         Cefcfantraystatusentry();
@@ -414,21 +447,23 @@ class CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcfantrayoperstatus; //type: CefcfantrayoperstatusEnum
-        class CefcfantrayoperstatusEnum;
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcfantrayoperstatus; //type: Cefcfantrayoperstatus
+        class Cefcfantrayoperstatus;
 
 }; // CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry
 
 
-class CiscoEntityFruControlMib::Cefcphysicaltable : public Entity
+class CiscoEntityFruControlMib::Cefcphysicaltable : public ydk::Entity
 {
     public:
         Cefcphysicaltable();
@@ -436,20 +471,22 @@ class CiscoEntityFruControlMib::Cefcphysicaltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcphysicalentry; //type: CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry> > cefcphysicalentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry> > cefcphysicalentry;
         
 }; // CiscoEntityFruControlMib::Cefcphysicaltable
 
 
-class CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry : public Entity
+class CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry : public ydk::Entity
 {
     public:
         Cefcphysicalentry();
@@ -457,21 +494,23 @@ class CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcphysicalstatus; //type: CefcphysicalstatusEnum
-        class CefcphysicalstatusEnum;
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcphysicalstatus; //type: Cefcphysicalstatus
+        class Cefcphysicalstatus;
 
 }; // CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry
 
 
-class CiscoEntityFruControlMib::Cefcpowersupplyinputtable : public Entity
+class CiscoEntityFruControlMib::Cefcpowersupplyinputtable : public ydk::Entity
 {
     public:
         Cefcpowersupplyinputtable();
@@ -479,20 +518,22 @@ class CiscoEntityFruControlMib::Cefcpowersupplyinputtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcpowersupplyinputentry; //type: CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry> > cefcpowersupplyinputentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry> > cefcpowersupplyinputentry;
         
 }; // CiscoEntityFruControlMib::Cefcpowersupplyinputtable
 
 
-class CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry : public Entity
+class CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry : public ydk::Entity
 {
     public:
         Cefcpowersupplyinputentry();
@@ -500,22 +541,24 @@ class CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinpute
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcpowersupplyinputindex; //type: uint32
-        YLeaf cefcpowersupplyinputtype; //type: CefcpowersupplyinputtypeEnum
-        class CefcpowersupplyinputtypeEnum;
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcpowersupplyinputindex; //type: uint32
+        ydk::YLeaf cefcpowersupplyinputtype; //type: Cefcpowersupplyinputtype
+        class Cefcpowersupplyinputtype;
 
 }; // CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry
 
 
-class CiscoEntityFruControlMib::Cefcpowersupplyoutputtable : public Entity
+class CiscoEntityFruControlMib::Cefcpowersupplyoutputtable : public ydk::Entity
 {
     public:
         Cefcpowersupplyoutputtable();
@@ -523,20 +566,22 @@ class CiscoEntityFruControlMib::Cefcpowersupplyoutputtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcpowersupplyoutputentry; //type: CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry> > cefcpowersupplyoutputentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry> > cefcpowersupplyoutputentry;
         
 }; // CiscoEntityFruControlMib::Cefcpowersupplyoutputtable
 
 
-class CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry : public Entity
+class CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry : public ydk::Entity
 {
     public:
         Cefcpowersupplyoutputentry();
@@ -544,22 +589,24 @@ class CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutpu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcpsoutputmodeindex; //type: uint32
-        YLeaf cefcpsoutputmodecurrent; //type: int32
-        YLeaf cefcpsoutputmodeinoperation; //type: boolean
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcpsoutputmodeindex; //type: uint32
+        ydk::YLeaf cefcpsoutputmodecurrent; //type: int32
+        ydk::YLeaf cefcpsoutputmodeinoperation; //type: boolean
 
 }; // CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry
 
 
-class CiscoEntityFruControlMib::Cefcchassiscoolingtable : public Entity
+class CiscoEntityFruControlMib::Cefcchassiscoolingtable : public ydk::Entity
 {
     public:
         Cefcchassiscoolingtable();
@@ -567,20 +614,22 @@ class CiscoEntityFruControlMib::Cefcchassiscoolingtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcchassiscoolingentry; //type: CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry> > cefcchassiscoolingentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry> > cefcchassiscoolingentry;
         
 }; // CiscoEntityFruControlMib::Cefcchassiscoolingtable
 
 
-class CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry : public Entity
+class CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry : public ydk::Entity
 {
     public:
         Cefcchassiscoolingentry();
@@ -588,21 +637,23 @@ class CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcchassisperslotcoolingcap; //type: uint32
-        YLeaf cefcchassisperslotcoolingunit; //type: FrucoolingunitEnum
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcchassisperslotcoolingcap; //type: uint32
+        ydk::YLeaf cefcchassisperslotcoolingunit; //type: Frucoolingunit
 
 }; // CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry
 
 
-class CiscoEntityFruControlMib::Cefcfancoolingtable : public Entity
+class CiscoEntityFruControlMib::Cefcfancoolingtable : public ydk::Entity
 {
     public:
         Cefcfancoolingtable();
@@ -610,20 +661,22 @@ class CiscoEntityFruControlMib::Cefcfancoolingtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcfancoolingentry; //type: CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry> > cefcfancoolingentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry> > cefcfancoolingentry;
         
 }; // CiscoEntityFruControlMib::Cefcfancoolingtable
 
 
-class CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry : public Entity
+class CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry : public ydk::Entity
 {
     public:
         Cefcfancoolingentry();
@@ -631,21 +684,23 @@ class CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcfancoolingcapacity; //type: uint32
-        YLeaf cefcfancoolingcapacityunit; //type: FrucoolingunitEnum
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcfancoolingcapacity; //type: uint32
+        ydk::YLeaf cefcfancoolingcapacityunit; //type: Frucoolingunit
 
 }; // CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry
 
 
-class CiscoEntityFruControlMib::Cefcmodulecoolingtable : public Entity
+class CiscoEntityFruControlMib::Cefcmodulecoolingtable : public ydk::Entity
 {
     public:
         Cefcmodulecoolingtable();
@@ -653,20 +708,22 @@ class CiscoEntityFruControlMib::Cefcmodulecoolingtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcmodulecoolingentry; //type: CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry> > cefcmodulecoolingentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry> > cefcmodulecoolingentry;
         
 }; // CiscoEntityFruControlMib::Cefcmodulecoolingtable
 
 
-class CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry : public Entity
+class CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry : public ydk::Entity
 {
     public:
         Cefcmodulecoolingentry();
@@ -674,21 +731,23 @@ class CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcmodulecooling; //type: uint32
-        YLeaf cefcmodulecoolingunit; //type: FrucoolingunitEnum
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcmodulecooling; //type: uint32
+        ydk::YLeaf cefcmodulecoolingunit; //type: Frucoolingunit
 
 }; // CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry
 
 
-class CiscoEntityFruControlMib::Cefcfancoolingcaptable : public Entity
+class CiscoEntityFruControlMib::Cefcfancoolingcaptable : public ydk::Entity
 {
     public:
         Cefcfancoolingcaptable();
@@ -696,20 +755,22 @@ class CiscoEntityFruControlMib::Cefcfancoolingcaptable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcfancoolingcapentry; //type: CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry> > cefcfancoolingcapentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry> > cefcfancoolingcapentry;
         
 }; // CiscoEntityFruControlMib::Cefcfancoolingcaptable
 
 
-class CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry : public Entity
+class CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry : public ydk::Entity
 {
     public:
         Cefcfancoolingcapentry();
@@ -717,24 +778,26 @@ class CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcfancoolingcapindex; //type: uint32
-        YLeaf cefcfancoolingcapmodedescr; //type: string
-        YLeaf cefcfancoolingcapcapacity; //type: uint32
-        YLeaf cefcfancoolingcapcurrent; //type: int32
-        YLeaf cefcfancoolingcapcapacityunit; //type: FrucoolingunitEnum
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcfancoolingcapindex; //type: uint32
+        ydk::YLeaf cefcfancoolingcapmodedescr; //type: string
+        ydk::YLeaf cefcfancoolingcapcapacity; //type: uint32
+        ydk::YLeaf cefcfancoolingcapcurrent; //type: int32
+        ydk::YLeaf cefcfancoolingcapcapacityunit; //type: Frucoolingunit
 
 }; // CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry
 
 
-class CiscoEntityFruControlMib::Cefcconnectorratingtable : public Entity
+class CiscoEntityFruControlMib::Cefcconnectorratingtable : public ydk::Entity
 {
     public:
         Cefcconnectorratingtable();
@@ -742,20 +805,22 @@ class CiscoEntityFruControlMib::Cefcconnectorratingtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcconnectorratingentry; //type: CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry> > cefcconnectorratingentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry> > cefcconnectorratingentry;
         
 }; // CiscoEntityFruControlMib::Cefcconnectorratingtable
 
 
-class CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry : public Entity
+class CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry : public ydk::Entity
 {
     public:
         Cefcconnectorratingentry();
@@ -763,20 +828,22 @@ class CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcconnectorrating; //type: int32
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcconnectorrating; //type: int32
 
 }; // CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry
 
 
-class CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable : public Entity
+class CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable : public ydk::Entity
 {
     public:
         Cefcmodulepowerconsumptiontable();
@@ -784,20 +851,22 @@ class CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cefcmodulepowerconsumptionentry; //type: CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry
 
-        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry> > cefcmodulepowerconsumptionentry_;
+        std::vector<std::shared_ptr<CISCO_ENTITY_FRU_CONTROL_MIB::CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry> > cefcmodulepowerconsumptionentry;
         
 }; // CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable
 
 
-class CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry : public Entity
+class CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry : public ydk::Entity
 {
     public:
         Cefcmodulepowerconsumptionentry();
@@ -805,187 +874,189 @@ class CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepower
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to ENTITY_MIB::EntityMib::Entphysicaltable::Entphysicalentry::entphysicalindex)
-        YLeaf entphysicalindex;
-        YLeaf cefcmodulepowerconsumption; //type: int32
+        ydk::YLeaf entphysicalindex;
+        ydk::YLeaf cefcmodulepowerconsumption; //type: int32
 
 }; // CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry
 
-class ModuleadmintypeEnum : public Enum
+class Powerredundancytype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enabled;
-        static const Enum::YLeaf disabled;
-        static const Enum::YLeaf reset;
-        static const Enum::YLeaf outOfServiceAdmin;
+        static const ydk::Enum::YLeaf notsupported;
+        static const ydk::Enum::YLeaf redundant;
+        static const ydk::Enum::YLeaf combined;
+        static const ydk::Enum::YLeaf nonRedundant;
+        static const ydk::Enum::YLeaf psRedundant;
+        static const ydk::Enum::YLeaf inPwrSrcRedundant;
+        static const ydk::Enum::YLeaf psRedundantSingleInput;
 
 };
 
-class FrucoolingunitEnum : public Enum
+class Poweradmintype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf cfm;
-        static const Enum::YLeaf watts;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf inlineAuto;
+        static const ydk::Enum::YLeaf inlineOn;
+        static const ydk::Enum::YLeaf powerCycle;
 
 };
 
-class PoweradmintypeEnum : public Enum
+class Moduleopertype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf on;
-        static const Enum::YLeaf off;
-        static const Enum::YLeaf inlineAuto;
-        static const Enum::YLeaf inlineOn;
-        static const Enum::YLeaf powerCycle;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf okButDiagFailed;
+        static const ydk::Enum::YLeaf boot;
+        static const ydk::Enum::YLeaf selfTest;
+        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf missing;
+        static const ydk::Enum::YLeaf mismatchWithParent;
+        static const ydk::Enum::YLeaf mismatchConfig;
+        static const ydk::Enum::YLeaf diagFailed;
+        static const ydk::Enum::YLeaf dormant;
+        static const ydk::Enum::YLeaf outOfServiceAdmin;
+        static const ydk::Enum::YLeaf outOfServiceEnvTemp;
+        static const ydk::Enum::YLeaf poweredDown;
+        static const ydk::Enum::YLeaf poweredUp;
+        static const ydk::Enum::YLeaf powerDenied;
+        static const ydk::Enum::YLeaf powerCycled;
+        static const ydk::Enum::YLeaf okButPowerOverWarning;
+        static const ydk::Enum::YLeaf okButPowerOverCritical;
+        static const ydk::Enum::YLeaf syncInProgress;
+        static const ydk::Enum::YLeaf upgrading;
+        static const ydk::Enum::YLeaf okButAuthFailed;
+        static const ydk::Enum::YLeaf mdr;
+        static const ydk::Enum::YLeaf fwMismatchFound;
+        static const ydk::Enum::YLeaf fwDownloadSuccess;
+        static const ydk::Enum::YLeaf fwDownloadFailure;
 
 };
 
-class ModuleopertypeEnum : public Enum
+class Frucoolingunit : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf ok;
-        static const Enum::YLeaf disabled;
-        static const Enum::YLeaf okButDiagFailed;
-        static const Enum::YLeaf boot;
-        static const Enum::YLeaf selfTest;
-        static const Enum::YLeaf failed;
-        static const Enum::YLeaf missing;
-        static const Enum::YLeaf mismatchWithParent;
-        static const Enum::YLeaf mismatchConfig;
-        static const Enum::YLeaf diagFailed;
-        static const Enum::YLeaf dormant;
-        static const Enum::YLeaf outOfServiceAdmin;
-        static const Enum::YLeaf outOfServiceEnvTemp;
-        static const Enum::YLeaf poweredDown;
-        static const Enum::YLeaf poweredUp;
-        static const Enum::YLeaf powerDenied;
-        static const Enum::YLeaf powerCycled;
-        static const Enum::YLeaf okButPowerOverWarning;
-        static const Enum::YLeaf okButPowerOverCritical;
-        static const Enum::YLeaf syncInProgress;
-        static const Enum::YLeaf upgrading;
-        static const Enum::YLeaf okButAuthFailed;
-        static const Enum::YLeaf mdr;
-        static const Enum::YLeaf fwMismatchFound;
-        static const Enum::YLeaf fwDownloadSuccess;
-        static const Enum::YLeaf fwDownloadFailure;
+        static const ydk::Enum::YLeaf cfm;
+        static const ydk::Enum::YLeaf watts;
 
 };
 
-class ModuleresetreasontypeEnum : public Enum
+class Moduleresetreasontype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf powerUp;
-        static const Enum::YLeaf parityError;
-        static const Enum::YLeaf clearConfigReset;
-        static const Enum::YLeaf manualReset;
-        static const Enum::YLeaf watchDogTimeoutReset;
-        static const Enum::YLeaf resourceOverflowReset;
-        static const Enum::YLeaf missingTaskReset;
-        static const Enum::YLeaf lowVoltageReset;
-        static const Enum::YLeaf controllerReset;
-        static const Enum::YLeaf systemReset;
-        static const Enum::YLeaf switchoverReset;
-        static const Enum::YLeaf upgradeReset;
-        static const Enum::YLeaf downgradeReset;
-        static const Enum::YLeaf cacheErrorReset;
-        static const Enum::YLeaf deviceDriverReset;
-        static const Enum::YLeaf softwareExceptionReset;
-        static const Enum::YLeaf restoreConfigReset;
-        static const Enum::YLeaf abortRevReset;
-        static const Enum::YLeaf burnBootReset;
-        static const Enum::YLeaf standbyCdHealthierReset;
-        static const Enum::YLeaf nonNativeConfigClearReset;
-        static const Enum::YLeaf memoryProtectionErrorReset;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf powerUp;
+        static const ydk::Enum::YLeaf parityError;
+        static const ydk::Enum::YLeaf clearConfigReset;
+        static const ydk::Enum::YLeaf manualReset;
+        static const ydk::Enum::YLeaf watchDogTimeoutReset;
+        static const ydk::Enum::YLeaf resourceOverflowReset;
+        static const ydk::Enum::YLeaf missingTaskReset;
+        static const ydk::Enum::YLeaf lowVoltageReset;
+        static const ydk::Enum::YLeaf controllerReset;
+        static const ydk::Enum::YLeaf systemReset;
+        static const ydk::Enum::YLeaf switchoverReset;
+        static const ydk::Enum::YLeaf upgradeReset;
+        static const ydk::Enum::YLeaf downgradeReset;
+        static const ydk::Enum::YLeaf cacheErrorReset;
+        static const ydk::Enum::YLeaf deviceDriverReset;
+        static const ydk::Enum::YLeaf softwareExceptionReset;
+        static const ydk::Enum::YLeaf restoreConfigReset;
+        static const ydk::Enum::YLeaf abortRevReset;
+        static const ydk::Enum::YLeaf burnBootReset;
+        static const ydk::Enum::YLeaf standbyCdHealthierReset;
+        static const ydk::Enum::YLeaf nonNativeConfigClearReset;
+        static const ydk::Enum::YLeaf memoryProtectionErrorReset;
 
 };
 
-class PowerredundancytypeEnum : public Enum
+class Poweropertype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notsupported;
-        static const Enum::YLeaf redundant;
-        static const Enum::YLeaf combined;
-        static const Enum::YLeaf nonRedundant;
-        static const Enum::YLeaf psRedundant;
-        static const Enum::YLeaf inPwrSrcRedundant;
-        static const Enum::YLeaf psRedundantSingleInput;
+        static const ydk::Enum::YLeaf offEnvOther;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf offAdmin;
+        static const ydk::Enum::YLeaf offDenied;
+        static const ydk::Enum::YLeaf offEnvPower;
+        static const ydk::Enum::YLeaf offEnvTemp;
+        static const ydk::Enum::YLeaf offEnvFan;
+        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf onButFanFail;
+        static const ydk::Enum::YLeaf offCooling;
+        static const ydk::Enum::YLeaf offConnectorRating;
+        static const ydk::Enum::YLeaf onButInlinePowerFail;
 
 };
 
-class PoweropertypeEnum : public Enum
+class Moduleadmintype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf offEnvOther;
-        static const Enum::YLeaf on;
-        static const Enum::YLeaf offAdmin;
-        static const Enum::YLeaf offDenied;
-        static const Enum::YLeaf offEnvPower;
-        static const Enum::YLeaf offEnvTemp;
-        static const Enum::YLeaf offEnvFan;
-        static const Enum::YLeaf failed;
-        static const Enum::YLeaf onButFanFail;
-        static const Enum::YLeaf offCooling;
-        static const Enum::YLeaf offConnectorRating;
-        static const Enum::YLeaf onButInlinePowerFail;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf reset;
+        static const ydk::Enum::YLeaf outOfServiceAdmin;
 
 };
 
-class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::CefcpowernonredundantreasonEnum : public Enum
+class CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf notApplicable;
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf singleSupply;
-        static const Enum::YLeaf mismatchedSupplies;
-        static const Enum::YLeaf supplyError;
+        static const ydk::Enum::YLeaf notApplicable;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf singleSupply;
+        static const ydk::Enum::YLeaf mismatchedSupplies;
+        static const ydk::Enum::YLeaf supplyError;
 
 };
 
-class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::CefcmodulelocalswitchingmodeEnum : public Enum
+class CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::Cefcmodulelocalswitchingmode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enabled;
-        static const Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::CefcfantrayoperstatusEnum : public Enum
+class CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf up;
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf warning;
 
 };
 
-class CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::CefcphysicalstatusEnum : public Enum
+class CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf supported;
-        static const Enum::YLeaf unsupported;
-        static const Enum::YLeaf incompatible;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf supported;
+        static const ydk::Enum::YLeaf unsupported;
+        static const ydk::Enum::YLeaf incompatible;
 
 };
 
-class CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::CefcpowersupplyinputtypeEnum : public Enum
+class CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf acLow;
-        static const Enum::YLeaf acHigh;
-        static const Enum::YLeaf dcLow;
-        static const Enum::YLeaf dcHigh;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf acLow;
+        static const ydk::Enum::YLeaf acHigh;
+        static const ydk::Enum::YLeaf dcLow;
+        static const ydk::Enum::YLeaf dcHigh;
 
 };
 

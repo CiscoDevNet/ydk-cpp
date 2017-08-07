@@ -6,772 +6,774 @@
 #include "generated_entity_lookup.hpp"
 #include "openconfig_transport_types.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace openconfig {
 namespace openconfig_transport_types {
 
-Sonet_Application_CodeIdentity::Sonet_Application_CodeIdentity()
-     : Identity("openconfig-transport-types:SONET_APPLICATION_CODE")
+Sonet_Application_Code::Sonet_Application_Code()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:SONET_APPLICATION_CODE")
 {
 }
 
-Sonet_Application_CodeIdentity::~Sonet_Application_CodeIdentity()
+Sonet_Application_Code::~Sonet_Application_Code()
 {
 }
 
-Otn_Application_CodeIdentity::Otn_Application_CodeIdentity()
-     : Identity("openconfig-transport-types:OTN_APPLICATION_CODE")
+Transceiver_Form_Factor_Type::Transceiver_Form_Factor_Type()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:TRANSCEIVER_FORM_FACTOR_TYPE")
 {
 }
 
-Otn_Application_CodeIdentity::~Otn_Application_CodeIdentity()
+Transceiver_Form_Factor_Type::~Transceiver_Form_Factor_Type()
 {
 }
 
-Transceiver_Form_Factor_TypeIdentity::Transceiver_Form_Factor_TypeIdentity()
-     : Identity("openconfig-transport-types:TRANSCEIVER_FORM_FACTOR_TYPE")
+Fiber_Connector_Type::Fiber_Connector_Type()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:FIBER_CONNECTOR_TYPE")
 {
 }
 
-Transceiver_Form_Factor_TypeIdentity::~Transceiver_Form_Factor_TypeIdentity()
+Fiber_Connector_Type::~Fiber_Connector_Type()
 {
 }
 
-Logical_Element_Protocol_TypeIdentity::Logical_Element_Protocol_TypeIdentity()
-     : Identity("openconfig-transport-types:LOGICAL_ELEMENT_PROTOCOL_TYPE")
+Tributary_Protocol_Type::Tributary_Protocol_Type()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:TRIBUTARY_PROTOCOL_TYPE")
 {
 }
 
-Logical_Element_Protocol_TypeIdentity::~Logical_Element_Protocol_TypeIdentity()
+Tributary_Protocol_Type::~Tributary_Protocol_Type()
 {
 }
 
-Tributary_Rate_Class_TypeIdentity::Tributary_Rate_Class_TypeIdentity()
-     : Identity("openconfig-transport-types:TRIBUTARY_RATE_CLASS_TYPE")
+Tributary_Rate_Class_Type::Tributary_Rate_Class_Type()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:TRIBUTARY_RATE_CLASS_TYPE")
 {
 }
 
-Tributary_Rate_Class_TypeIdentity::~Tributary_Rate_Class_TypeIdentity()
+Tributary_Rate_Class_Type::~Tributary_Rate_Class_Type()
 {
 }
 
-Ethernet_Pmd_TypeIdentity::Ethernet_Pmd_TypeIdentity()
-     : Identity("openconfig-transport-types:ETHERNET_PMD_TYPE")
+Ethernet_Pmd_Type::Ethernet_Pmd_Type()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETHERNET_PMD_TYPE")
 {
 }
 
-Ethernet_Pmd_TypeIdentity::~Ethernet_Pmd_TypeIdentity()
+Ethernet_Pmd_Type::~Ethernet_Pmd_Type()
 {
 }
 
-Fiber_Connector_TypeIdentity::Fiber_Connector_TypeIdentity()
-     : Identity("openconfig-transport-types:FIBER_CONNECTOR_TYPE")
+Otn_Application_Code::Otn_Application_Code()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:OTN_APPLICATION_CODE")
 {
 }
 
-Fiber_Connector_TypeIdentity::~Fiber_Connector_TypeIdentity()
+Otn_Application_Code::~Otn_Application_Code()
 {
 }
 
-Optical_ChannelIdentity::Optical_ChannelIdentity()
-     : Identity("openconfig-transport-types:OPTICAL_CHANNEL")
+Logical_Element_Protocol_Type::Logical_Element_Protocol_Type()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:LOGICAL_ELEMENT_PROTOCOL_TYPE")
 {
 }
 
-Optical_ChannelIdentity::~Optical_ChannelIdentity()
+Logical_Element_Protocol_Type::~Logical_Element_Protocol_Type()
 {
 }
 
-Tributary_Protocol_TypeIdentity::Tributary_Protocol_TypeIdentity()
-     : Identity("openconfig-transport-types:TRIBUTARY_PROTOCOL_TYPE")
+Optical_Channel::Optical_Channel()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:OPTICAL_CHANNEL")
 {
 }
 
-Tributary_Protocol_TypeIdentity::~Tributary_Protocol_TypeIdentity()
+Optical_Channel::~Optical_Channel()
 {
 }
 
-Cfp2Identity::Cfp2Identity()
-     : Identity("openconfig-transport-types:CFP2")
+Vsr2000_3R5::Vsr2000_3R5()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:VSR2000_3R5")
 {
 }
 
-Cfp2Identity::~Cfp2Identity()
+Vsr2000_3R5::~Vsr2000_3R5()
 {
 }
 
-Qsfp28Identity::Qsfp28Identity()
-     : Identity("openconfig-transport-types:QSFP28")
+Eth_100Gbase_Sr10::Eth_100Gbase_Sr10()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100GBASE_SR10")
 {
 }
 
-Qsfp28Identity::~Qsfp28Identity()
+Eth_100Gbase_Sr10::~Eth_100Gbase_Sr10()
 {
 }
 
-Eth_40Gbase_Sr4Identity::Eth_40Gbase_Sr4Identity()
-     : Identity("openconfig-transport-types:ETH_40GBASE_SR4")
+Prot_Otu4::Prot_Otu4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OTU4")
 {
 }
 
-Eth_40Gbase_Sr4Identity::~Eth_40Gbase_Sr4Identity()
+Prot_Otu4::~Prot_Otu4()
 {
 }
 
-Eth_10Gbase_LrmIdentity::Eth_10Gbase_LrmIdentity()
-     : Identity("openconfig-transport-types:ETH_10GBASE_LRM")
+Eth_10Gbase_Lrm::Eth_10Gbase_Lrm()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_10GBASE_LRM")
 {
 }
 
-Eth_10Gbase_LrmIdentity::~Eth_10Gbase_LrmIdentity()
+Eth_10Gbase_Lrm::~Eth_10Gbase_Lrm()
 {
 }
 
-Eth_4X10Gbase_SrIdentity::Eth_4X10Gbase_SrIdentity()
-     : Identity("openconfig-transport-types:ETH_4X10GBASE_SR")
+Eth_40Gbase_Cr4::Eth_40Gbase_Cr4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_40GBASE_CR4")
 {
 }
 
-Eth_4X10Gbase_SrIdentity::~Eth_4X10Gbase_SrIdentity()
+Eth_40Gbase_Cr4::~Eth_40Gbase_Cr4()
 {
 }
 
-Eth_100G_AocIdentity::Eth_100G_AocIdentity()
-     : Identity("openconfig-transport-types:ETH_100G_AOC")
+Trib_Rate_100G::Trib_Rate_100G()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:TRIB_RATE_100G")
 {
 }
 
-Eth_100G_AocIdentity::~Eth_100G_AocIdentity()
+Trib_Rate_100G::~Trib_Rate_100G()
 {
 }
 
-Cfp4Identity::Cfp4Identity()
-     : Identity("openconfig-transport-types:CFP4")
+Xfp::Xfp()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:XFP")
 {
 }
 
-Cfp4Identity::~Cfp4Identity()
+Xfp::~Xfp()
 {
 }
 
-Sonet_UndefinedIdentity::Sonet_UndefinedIdentity()
-     : Identity("openconfig-transport-types:SONET_UNDEFINED")
+Prot_Odu2E::Prot_Odu2E()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_ODU2E")
 {
 }
 
-Sonet_UndefinedIdentity::~Sonet_UndefinedIdentity()
+Prot_Odu2E::~Prot_Odu2E()
 {
 }
 
-P1L1_2D2Identity::P1L1_2D2Identity()
-     : Identity("openconfig-transport-types:P1L1_2D2")
+Prot_Otn::Prot_Otn()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OTN")
 {
 }
 
-P1L1_2D2Identity::~P1L1_2D2Identity()
+Prot_Otn::~Prot_Otn()
 {
 }
 
-P1L1_2D1Identity::P1L1_2D1Identity()
-     : Identity("openconfig-transport-types:P1L1_2D1")
+Vsr2000_3R3::Vsr2000_3R3()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:VSR2000_3R3")
 {
 }
 
-P1L1_2D1Identity::~P1L1_2D1Identity()
+Vsr2000_3R3::~Vsr2000_3R3()
 {
 }
 
-Trib_Rate_10GIdentity::Trib_Rate_10GIdentity()
-     : Identity("openconfig-transport-types:TRIB_RATE_10G")
+Eth_100G_Aoc::Eth_100G_Aoc()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100G_AOC")
 {
 }
 
-Trib_Rate_10GIdentity::~Trib_Rate_10GIdentity()
+Eth_100G_Aoc::~Eth_100G_Aoc()
 {
 }
 
-Prot_Otu2EIdentity::Prot_Otu2EIdentity()
-     : Identity("openconfig-transport-types:PROT_OTU2E")
+Eth_Undefined::Eth_Undefined()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_UNDEFINED")
 {
 }
 
-Prot_Otu2EIdentity::~Prot_Otu2EIdentity()
+Eth_Undefined::~Eth_Undefined()
 {
 }
 
-Eth_100Gbase_Sr4Identity::Eth_100Gbase_Sr4Identity()
-     : Identity("openconfig-transport-types:ETH_100GBASE_SR4")
+Prot_40Ge::Prot_40Ge()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_40GE")
 {
 }
 
-Eth_100Gbase_Sr4Identity::~Eth_100Gbase_Sr4Identity()
+Prot_40Ge::~Prot_40Ge()
 {
 }
 
-Eth_10Gbase_ZrIdentity::Eth_10Gbase_ZrIdentity()
-     : Identity("openconfig-transport-types:ETH_10GBASE_ZR")
+Prot_Stm16::Prot_Stm16()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_STM16")
 {
 }
 
-Eth_10Gbase_ZrIdentity::~Eth_10Gbase_ZrIdentity()
+Prot_Stm16::~Prot_Stm16()
 {
 }
 
-Sc_ConnectorIdentity::Sc_ConnectorIdentity()
-     : Identity("openconfig-transport-types:SC_CONNECTOR")
+Eth_40Gbase_Er4::Eth_40Gbase_Er4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_40GBASE_ER4")
 {
 }
 
-Sc_ConnectorIdentity::~Sc_ConnectorIdentity()
+Eth_40Gbase_Er4::~Eth_40Gbase_Er4()
 {
 }
 
-Vsr2000_3R3Identity::Vsr2000_3R3Identity()
-     : Identity("openconfig-transport-types:VSR2000_3R3")
+Eth_10Gbase_Sr::Eth_10Gbase_Sr()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_10GBASE_SR")
 {
 }
 
-Vsr2000_3R3Identity::~Vsr2000_3R3Identity()
+Eth_10Gbase_Sr::~Eth_10Gbase_Sr()
 {
 }
 
-Eth_100Gbase_Er4Identity::Eth_100Gbase_Er4Identity()
-     : Identity("openconfig-transport-types:ETH_100GBASE_ER4")
+Eth_100Gbase_Psm4::Eth_100Gbase_Psm4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100GBASE_PSM4")
 {
 }
 
-Eth_100Gbase_Er4Identity::~Eth_100Gbase_Er4Identity()
+Eth_100Gbase_Psm4::~Eth_100Gbase_Psm4()
 {
 }
 
-Otn_UndefinedIdentity::Otn_UndefinedIdentity()
-     : Identity("openconfig-transport-types:OTN_UNDEFINED")
+Trib_Rate_1G::Trib_Rate_1G()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:TRIB_RATE_1G")
 {
 }
 
-Otn_UndefinedIdentity::~Otn_UndefinedIdentity()
+Trib_Rate_1G::~Trib_Rate_1G()
 {
 }
 
-Eth_40Gbase_Er4Identity::Eth_40Gbase_Er4Identity()
-     : Identity("openconfig-transport-types:ETH_40GBASE_ER4")
+Trib_Rate_2__Dot__5G::Trib_Rate_2__Dot__5G()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:TRIB_RATE_2.5G")
 {
 }
 
-Eth_40Gbase_Er4Identity::~Eth_40Gbase_Er4Identity()
+Trib_Rate_2__Dot__5G::~Trib_Rate_2__Dot__5G()
 {
 }
 
-Prot_Odu2EIdentity::Prot_Odu2EIdentity()
-     : Identity("openconfig-transport-types:PROT_ODU2E")
+Eth_40Gbase_Lr4::Eth_40Gbase_Lr4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_40GBASE_LR4")
 {
 }
 
-Prot_Odu2EIdentity::~Prot_Odu2EIdentity()
+Eth_40Gbase_Lr4::~Eth_40Gbase_Lr4()
 {
 }
 
-Eth_100G_AccIdentity::Eth_100G_AccIdentity()
-     : Identity("openconfig-transport-types:ETH_100G_ACC")
+Eth_4X10Gbase_Sr::Eth_4X10Gbase_Sr()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_4X10GBASE_SR")
 {
 }
 
-Eth_100G_AccIdentity::~Eth_100G_AccIdentity()
+Eth_4X10Gbase_Sr::~Eth_4X10Gbase_Sr()
 {
 }
 
-Prot_Oc768Identity::Prot_Oc768Identity()
-     : Identity("openconfig-transport-types:PROT_OC768")
+Sc_Connector::Sc_Connector()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:SC_CONNECTOR")
 {
 }
 
-Prot_Oc768Identity::~Prot_Oc768Identity()
+Sc_Connector::~Sc_Connector()
 {
 }
 
-Eth_UndefinedIdentity::Eth_UndefinedIdentity()
-     : Identity("openconfig-transport-types:ETH_UNDEFINED")
+Non_Pluggable::Non_Pluggable()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:NON_PLUGGABLE")
 {
 }
 
-Eth_UndefinedIdentity::~Eth_UndefinedIdentity()
+Non_Pluggable::~Non_Pluggable()
 {
 }
 
-Prot_10Ge_WanIdentity::Prot_10Ge_WanIdentity()
-     : Identity("openconfig-transport-types:PROT_10GE_WAN")
+Eth_4X10Gbase_Lr::Eth_4X10Gbase_Lr()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_4X10GBASE_LR")
 {
 }
 
-Prot_10Ge_WanIdentity::~Prot_10Ge_WanIdentity()
+Eth_4X10Gbase_Lr::~Eth_4X10Gbase_Lr()
 {
 }
 
-Eth_40Gbase_Lr4Identity::Eth_40Gbase_Lr4Identity()
-     : Identity("openconfig-transport-types:ETH_40GBASE_LR4")
+Prot_Oc768::Prot_Oc768()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OC768")
 {
 }
 
-Eth_40Gbase_Lr4Identity::~Eth_40Gbase_Lr4Identity()
+Prot_Oc768::~Prot_Oc768()
 {
 }
 
-Eth_40Gbase_Psm4Identity::Eth_40Gbase_Psm4Identity()
-     : Identity("openconfig-transport-types:ETH_40GBASE_PSM4")
+X2::X2()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:X2")
 {
 }
 
-Eth_40Gbase_Psm4Identity::~Eth_40Gbase_Psm4Identity()
+X2::~X2()
 {
 }
 
-Trib_Rate_40GIdentity::Trib_Rate_40GIdentity()
-     : Identity("openconfig-transport-types:TRIB_RATE_40G")
+Prot_Oc48::Prot_Oc48()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OC48")
 {
 }
 
-Trib_Rate_40GIdentity::~Trib_Rate_40GIdentity()
+Prot_Oc48::~Prot_Oc48()
 {
 }
 
-Vsr2000_3R2Identity::Vsr2000_3R2Identity()
-     : Identity("openconfig-transport-types:VSR2000_3R2")
+Eth_100Gbase_Clr4::Eth_100Gbase_Clr4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100GBASE_CLR4")
 {
 }
 
-Vsr2000_3R2Identity::~Vsr2000_3R2Identity()
+Eth_100Gbase_Clr4::~Eth_100Gbase_Clr4()
 {
 }
 
-Prot_Stm16Identity::Prot_Stm16Identity()
-     : Identity("openconfig-transport-types:PROT_STM16")
+Prot_100Ge::Prot_100Ge()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_100GE")
 {
 }
 
-Prot_Stm16Identity::~Prot_Stm16Identity()
+Prot_100Ge::~Prot_100Ge()
 {
 }
 
-Prot_OtucnIdentity::Prot_OtucnIdentity()
-     : Identity("openconfig-transport-types:PROT_OTUCN")
+Sfp::Sfp()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:SFP")
 {
 }
 
-Prot_OtucnIdentity::~Prot_OtucnIdentity()
+Sfp::~Sfp()
 {
 }
 
-Cfp2_AcoIdentity::Cfp2_AcoIdentity()
-     : Identity("openconfig-transport-types:CFP2_ACO")
+Qsfp28::Qsfp28()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:QSFP28")
 {
 }
 
-Cfp2_AcoIdentity::~Cfp2_AcoIdentity()
+Qsfp28::~Qsfp28()
 {
 }
 
-X2Identity::X2Identity()
-     : Identity("openconfig-transport-types:X2")
+Mpo_Connector::Mpo_Connector()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:MPO_CONNECTOR")
 {
 }
 
-X2Identity::~X2Identity()
+Mpo_Connector::~Mpo_Connector()
 {
 }
 
-XfpIdentity::XfpIdentity()
-     : Identity("openconfig-transport-types:XFP")
+Eth_100G_Acc::Eth_100G_Acc()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100G_ACC")
 {
 }
 
-XfpIdentity::~XfpIdentity()
+Eth_100G_Acc::~Eth_100G_Acc()
 {
 }
 
-Prot_1GeIdentity::Prot_1GeIdentity()
-     : Identity("openconfig-transport-types:PROT_1GE")
+Prot_10Ge_Lan::Prot_10Ge_Lan()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_10GE_LAN")
 {
 }
 
-Prot_1GeIdentity::~Prot_1GeIdentity()
+Prot_10Ge_Lan::~Prot_10Ge_Lan()
 {
 }
 
-Vsr2000_3R5Identity::Vsr2000_3R5Identity()
-     : Identity("openconfig-transport-types:VSR2000_3R5")
+Prot_1Ge::Prot_1Ge()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_1GE")
 {
 }
 
-Vsr2000_3R5Identity::~Vsr2000_3R5Identity()
+Prot_1Ge::~Prot_1Ge()
 {
 }
 
-Prot_100GeIdentity::Prot_100GeIdentity()
-     : Identity("openconfig-transport-types:PROT_100GE")
+Cfp::Cfp()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:CFP")
 {
 }
 
-Prot_100GeIdentity::~Prot_100GeIdentity()
+Cfp::~Cfp()
 {
 }
 
-Prot_Otu3Identity::Prot_Otu3Identity()
-     : Identity("openconfig-transport-types:PROT_OTU3")
+Cfp2_Aco::Cfp2_Aco()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:CFP2_ACO")
 {
 }
 
-Prot_Otu3Identity::~Prot_Otu3Identity()
+Cfp2_Aco::~Cfp2_Aco()
 {
 }
 
-Prot_Otu2Identity::Prot_Otu2Identity()
-     : Identity("openconfig-transport-types:PROT_OTU2")
+Cfp2::Cfp2()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:CFP2")
 {
 }
 
-Prot_Otu2Identity::~Prot_Otu2Identity()
+Cfp2::~Cfp2()
 {
 }
 
-Prot_Otu4Identity::Prot_Otu4Identity()
-     : Identity("openconfig-transport-types:PROT_OTU4")
+Trib_Rate_10G::Trib_Rate_10G()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:TRIB_RATE_10G")
 {
 }
 
-Prot_Otu4Identity::~Prot_Otu4Identity()
+Trib_Rate_10G::~Trib_Rate_10G()
 {
 }
 
-Prot_EthernetIdentity::Prot_EthernetIdentity()
-     : Identity("openconfig-transport-types:PROT_ETHERNET")
+Eth_10Gbase_Lr::Eth_10Gbase_Lr()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_10GBASE_LR")
 {
 }
 
-Prot_EthernetIdentity::~Prot_EthernetIdentity()
+Eth_10Gbase_Lr::~Eth_10Gbase_Lr()
 {
 }
 
-Trib_Rate_100GIdentity::Trib_Rate_100GIdentity()
-     : Identity("openconfig-transport-types:TRIB_RATE_100G")
+Cfp4::Cfp4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:CFP4")
 {
 }
 
-Trib_Rate_100GIdentity::~Trib_Rate_100GIdentity()
+Cfp4::~Cfp4()
 {
 }
 
-Prot_Stm256Identity::Prot_Stm256Identity()
-     : Identity("openconfig-transport-types:PROT_STM256")
+Prot_10Ge_Wan::Prot_10Ge_Wan()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_10GE_WAN")
 {
 }
 
-Prot_Stm256Identity::~Prot_Stm256Identity()
+Prot_10Ge_Wan::~Prot_10Ge_Wan()
 {
 }
 
-Prot_OtnIdentity::Prot_OtnIdentity()
-     : Identity("openconfig-transport-types:PROT_OTN")
+Trib_Rate_40G::Trib_Rate_40G()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:TRIB_RATE_40G")
 {
 }
 
-Prot_OtnIdentity::~Prot_OtnIdentity()
+Trib_Rate_40G::~Trib_Rate_40G()
 {
 }
 
-Eth_10Gbase_LrIdentity::Eth_10Gbase_LrIdentity()
-     : Identity("openconfig-transport-types:ETH_10GBASE_LR")
+Eth_100Gbase_Cr4::Eth_100Gbase_Cr4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100GBASE_CR4")
 {
 }
 
-Eth_10Gbase_LrIdentity::~Eth_10Gbase_LrIdentity()
+Eth_100Gbase_Cr4::~Eth_100Gbase_Cr4()
 {
 }
 
-Eth_100Gbase_Sr10Identity::Eth_100Gbase_Sr10Identity()
-     : Identity("openconfig-transport-types:ETH_100GBASE_SR10")
+Qsfp::Qsfp()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:QSFP")
 {
 }
 
-Eth_100Gbase_Sr10Identity::~Eth_100Gbase_Sr10Identity()
+Qsfp::~Qsfp()
 {
 }
 
-Eth_4X10Gbase_LrIdentity::Eth_4X10Gbase_LrIdentity()
-     : Identity("openconfig-transport-types:ETH_4X10GBASE_LR")
+Prot_Odu3::Prot_Odu3()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_ODU3")
 {
 }
 
-Eth_4X10Gbase_LrIdentity::~Eth_4X10Gbase_LrIdentity()
+Prot_Odu3::~Prot_Odu3()
 {
 }
 
-Sfp_PlusIdentity::Sfp_PlusIdentity()
-     : Identity("openconfig-transport-types:SFP_PLUS")
+Prot_Otucn::Prot_Otucn()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OTUCN")
 {
 }
 
-Sfp_PlusIdentity::~Sfp_PlusIdentity()
+Prot_Otucn::~Prot_Otucn()
 {
 }
 
-Non_PluggableIdentity::Non_PluggableIdentity()
-     : Identity("openconfig-transport-types:NON_PLUGGABLE")
+Eth_40Gbase_Psm4::Eth_40Gbase_Psm4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_40GBASE_PSM4")
 {
 }
 
-Non_PluggableIdentity::~Non_PluggableIdentity()
+Eth_40Gbase_Psm4::~Eth_40Gbase_Psm4()
 {
 }
 
-OtherIdentity::OtherIdentity()
-     : Identity("openconfig-transport-types:OTHER")
+Other::Other()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:OTHER")
 {
 }
 
-OtherIdentity::~OtherIdentity()
+Other::~Other()
 {
 }
 
-Prot_10Ge_LanIdentity::Prot_10Ge_LanIdentity()
-     : Identity("openconfig-transport-types:PROT_10GE_LAN")
+Vsr2000_3R2::Vsr2000_3R2()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:VSR2000_3R2")
 {
 }
 
-Prot_10Ge_LanIdentity::~Prot_10Ge_LanIdentity()
+Vsr2000_3R2::~Vsr2000_3R2()
 {
 }
 
-Prot_Oc48Identity::Prot_Oc48Identity()
-     : Identity("openconfig-transport-types:PROT_OC48")
+Prot_Stm256::Prot_Stm256()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_STM256")
 {
 }
 
-Prot_Oc48Identity::~Prot_Oc48Identity()
+Prot_Stm256::~Prot_Stm256()
 {
 }
 
-P1S1_2D2Identity::P1S1_2D2Identity()
-     : Identity("openconfig-transport-types:P1S1_2D2")
+Lc_Connector::Lc_Connector()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:LC_CONNECTOR")
 {
 }
 
-P1S1_2D2Identity::~P1S1_2D2Identity()
+Lc_Connector::~Lc_Connector()
 {
 }
 
-Prot_Oc192Identity::Prot_Oc192Identity()
-     : Identity("openconfig-transport-types:PROT_OC192")
+Prot_Stm64::Prot_Stm64()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_STM64")
 {
 }
 
-Prot_Oc192Identity::~Prot_Oc192Identity()
+Prot_Stm64::~Prot_Stm64()
 {
 }
 
-Eth_100Gbase_Lr4Identity::Eth_100Gbase_Lr4Identity()
-     : Identity("openconfig-transport-types:ETH_100GBASE_LR4")
+Prot_Odu2::Prot_Odu2()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_ODU2")
 {
 }
 
-Eth_100Gbase_Lr4Identity::~Eth_100Gbase_Lr4Identity()
+Prot_Odu2::~Prot_Odu2()
 {
 }
 
-Trib_Rate_1GIdentity::Trib_Rate_1GIdentity()
-     : Identity("openconfig-transport-types:TRIB_RATE_1G")
+Prot_Otu2E::Prot_Otu2E()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OTU2E")
 {
 }
 
-Trib_Rate_1GIdentity::~Trib_Rate_1GIdentity()
+Prot_Otu2E::~Prot_Otu2E()
 {
 }
 
-Prot_40GeIdentity::Prot_40GeIdentity()
-     : Identity("openconfig-transport-types:PROT_40GE")
+Prot_Oc192::Prot_Oc192()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OC192")
 {
 }
 
-Prot_40GeIdentity::~Prot_40GeIdentity()
+Prot_Oc192::~Prot_Oc192()
 {
 }
 
-Eth_100Gbase_Clr4Identity::Eth_100Gbase_Clr4Identity()
-     : Identity("openconfig-transport-types:ETH_100GBASE_CLR4")
+Otn_Undefined::Otn_Undefined()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:OTN_UNDEFINED")
 {
 }
 
-Eth_100Gbase_Clr4Identity::~Eth_100Gbase_Clr4Identity()
+Otn_Undefined::~Otn_Undefined()
 {
 }
 
-QsfpIdentity::QsfpIdentity()
-     : Identity("openconfig-transport-types:QSFP")
+Prot_Otu1E::Prot_Otu1E()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OTU1E")
 {
 }
 
-QsfpIdentity::~QsfpIdentity()
+Prot_Otu1E::~Prot_Otu1E()
 {
 }
 
-Mpo_ConnectorIdentity::Mpo_ConnectorIdentity()
-     : Identity("openconfig-transport-types:MPO_CONNECTOR")
+Sfp_Plus::Sfp_Plus()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:SFP_PLUS")
 {
 }
 
-Mpo_ConnectorIdentity::~Mpo_ConnectorIdentity()
+Sfp_Plus::~Sfp_Plus()
 {
 }
 
-Prot_100G_MlgIdentity::Prot_100G_MlgIdentity()
-     : Identity("openconfig-transport-types:PROT_100G_MLG")
+P1L1_2D1::P1L1_2D1()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:P1L1_2D1")
 {
 }
 
-Prot_100G_MlgIdentity::~Prot_100G_MlgIdentity()
+P1L1_2D1::~P1L1_2D1()
 {
 }
 
-Trib_Rate_2__Dot__5GIdentity::Trib_Rate_2__Dot__5GIdentity()
-     : Identity("openconfig-transport-types:TRIB_RATE_2.5G")
+Eth_40Gbase_Sr4::Eth_40Gbase_Sr4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_40GBASE_SR4")
 {
 }
 
-Trib_Rate_2__Dot__5GIdentity::~Trib_Rate_2__Dot__5GIdentity()
+Eth_40Gbase_Sr4::~Eth_40Gbase_Sr4()
 {
 }
 
-Eth_10Gbase_SrIdentity::Eth_10Gbase_SrIdentity()
-     : Identity("openconfig-transport-types:ETH_10GBASE_SR")
+P1S1_2D2::P1S1_2D2()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:P1S1_2D2")
 {
 }
 
-Eth_10Gbase_SrIdentity::~Eth_10Gbase_SrIdentity()
+P1S1_2D2::~P1S1_2D2()
 {
 }
 
-Eth_100Gbase_Cwdm4Identity::Eth_100Gbase_Cwdm4Identity()
-     : Identity("openconfig-transport-types:ETH_100GBASE_CWDM4")
+Prot_100G_Mlg::Prot_100G_Mlg()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_100G_MLG")
 {
 }
 
-Eth_100Gbase_Cwdm4Identity::~Eth_100Gbase_Cwdm4Identity()
+Prot_100G_Mlg::~Prot_100G_Mlg()
 {
 }
 
-SfpIdentity::SfpIdentity()
-     : Identity("openconfig-transport-types:SFP")
+Eth_100Gbase_Er4::Eth_100Gbase_Er4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100GBASE_ER4")
 {
 }
 
-SfpIdentity::~SfpIdentity()
+Eth_100Gbase_Er4::~Eth_100Gbase_Er4()
 {
 }
 
-Eth_100Gbase_Psm4Identity::Eth_100Gbase_Psm4Identity()
-     : Identity("openconfig-transport-types:ETH_100GBASE_PSM4")
+Prot_Otu2::Prot_Otu2()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OTU2")
 {
 }
 
-Eth_100Gbase_Psm4Identity::~Eth_100Gbase_Psm4Identity()
+Prot_Otu2::~Prot_Otu2()
 {
 }
 
-Eth_40Gbase_Cr4Identity::Eth_40Gbase_Cr4Identity()
-     : Identity("openconfig-transport-types:ETH_40GBASE_CR4")
+Eth_10Gbase_Er::Eth_10Gbase_Er()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_10GBASE_ER")
 {
 }
 
-Eth_40Gbase_Cr4Identity::~Eth_40Gbase_Cr4Identity()
+Eth_10Gbase_Er::~Eth_10Gbase_Er()
 {
 }
 
-Prot_Odu3Identity::Prot_Odu3Identity()
-     : Identity("openconfig-transport-types:PROT_ODU3")
+Eth_10Gbase_Zr::Eth_10Gbase_Zr()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_10GBASE_ZR")
 {
 }
 
-Prot_Odu3Identity::~Prot_Odu3Identity()
+Eth_10Gbase_Zr::~Eth_10Gbase_Zr()
 {
 }
 
-Prot_Odu2Identity::Prot_Odu2Identity()
-     : Identity("openconfig-transport-types:PROT_ODU2")
+Prot_Otu3::Prot_Otu3()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_OTU3")
 {
 }
 
-Prot_Odu2Identity::~Prot_Odu2Identity()
+Prot_Otu3::~Prot_Otu3()
 {
 }
 
-Prot_Odu4Identity::Prot_Odu4Identity()
-     : Identity("openconfig-transport-types:PROT_ODU4")
+Eth_100Gbase_Cwdm4::Eth_100Gbase_Cwdm4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100GBASE_CWDM4")
 {
 }
 
-Prot_Odu4Identity::~Prot_Odu4Identity()
+Eth_100Gbase_Cwdm4::~Eth_100Gbase_Cwdm4()
 {
 }
 
-Eth_100Gbase_Cr4Identity::Eth_100Gbase_Cr4Identity()
-     : Identity("openconfig-transport-types:ETH_100GBASE_CR4")
+Prot_Ethernet::Prot_Ethernet()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_ETHERNET")
 {
 }
 
-Eth_100Gbase_Cr4Identity::~Eth_100Gbase_Cr4Identity()
+Prot_Ethernet::~Prot_Ethernet()
 {
 }
 
-Lc_ConnectorIdentity::Lc_ConnectorIdentity()
-     : Identity("openconfig-transport-types:LC_CONNECTOR")
+Eth_100Gbase_Sr4::Eth_100Gbase_Sr4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100GBASE_SR4")
 {
 }
 
-Lc_ConnectorIdentity::~Lc_ConnectorIdentity()
+Eth_100Gbase_Sr4::~Eth_100Gbase_Sr4()
 {
 }
 
-Prot_Stm64Identity::Prot_Stm64Identity()
-     : Identity("openconfig-transport-types:PROT_STM64")
+Eth_100Gbase_Lr4::Eth_100Gbase_Lr4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:ETH_100GBASE_LR4")
 {
 }
 
-Prot_Stm64Identity::~Prot_Stm64Identity()
+Eth_100Gbase_Lr4::~Eth_100Gbase_Lr4()
 {
 }
 
-Prot_Otu1EIdentity::Prot_Otu1EIdentity()
-     : Identity("openconfig-transport-types:PROT_OTU1E")
+P1L1_2D2::P1L1_2D2()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:P1L1_2D2")
 {
 }
 
-Prot_Otu1EIdentity::~Prot_Otu1EIdentity()
+P1L1_2D2::~P1L1_2D2()
 {
 }
 
-Eth_10Gbase_ErIdentity::Eth_10Gbase_ErIdentity()
-     : Identity("openconfig-transport-types:ETH_10GBASE_ER")
+Prot_Odu4::Prot_Odu4()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:PROT_ODU4")
 {
 }
 
-Eth_10Gbase_ErIdentity::~Eth_10Gbase_ErIdentity()
+Prot_Odu4::~Prot_Odu4()
 {
 }
 
-CfpIdentity::CfpIdentity()
-     : Identity("openconfig-transport-types:CFP")
+Sonet_Undefined::Sonet_Undefined()
+     : Identity("http://openconfig.net/yang/transport-types", "openconfig-transport-types", "openconfig-transport-types:SONET_UNDEFINED")
 {
 }
 
-CfpIdentity::~CfpIdentity()
+Sonet_Undefined::~Sonet_Undefined()
 {
 }
 
-const Enum::YLeaf LoopbackModeTypeEnum::NONE {0, "NONE"};
-const Enum::YLeaf LoopbackModeTypeEnum::FACILITY {1, "FACILITY"};
-const Enum::YLeaf LoopbackModeTypeEnum::TERMINAL {2, "TERMINAL"};
+const Enum::YLeaf AdminStateType::ENABLED {0, "ENABLED"};
+const Enum::YLeaf AdminStateType::DISABLED {1, "DISABLED"};
+const Enum::YLeaf AdminStateType::MAINT {2, "MAINT"};
 
-const Enum::YLeaf AdminStateTypeEnum::ENABLED {0, "ENABLED"};
-const Enum::YLeaf AdminStateTypeEnum::DISABLED {1, "DISABLED"};
-const Enum::YLeaf AdminStateTypeEnum::MAINT {2, "MAINT"};
+const Enum::YLeaf LoopbackModeType::NONE {0, "NONE"};
+const Enum::YLeaf LoopbackModeType::FACILITY {1, "FACILITY"};
+const Enum::YLeaf LoopbackModeType::TERMINAL {2, "TERMINAL"};
 
 
 }

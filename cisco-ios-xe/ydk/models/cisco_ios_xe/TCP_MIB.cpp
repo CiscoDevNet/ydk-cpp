@@ -6,23 +6,25 @@
 #include "generated_entity_lookup.hpp"
 #include "TCP_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace TCP_MIB {
 
 TcpMib::TcpMib()
     :
-    tcp_(std::make_shared<TcpMib::Tcp>())
-	,tcpconnectiontable_(std::make_shared<TcpMib::Tcpconnectiontable>())
-	,tcpconntable_(std::make_shared<TcpMib::Tcpconntable>())
-	,tcplistenertable_(std::make_shared<TcpMib::Tcplistenertable>())
+    tcp(std::make_shared<TcpMib::Tcp>())
+	,tcpconnectiontable(std::make_shared<TcpMib::Tcpconnectiontable>())
+	,tcpconntable(std::make_shared<TcpMib::Tcpconntable>())
+	,tcplistenertable(std::make_shared<TcpMib::Tcplistenertable>())
 {
-    tcp_->parent = this;
+    tcp->parent = this;
 
-    tcpconnectiontable_->parent = this;
+    tcpconnectiontable->parent = this;
 
-    tcpconntable_->parent = this;
+    tcpconntable->parent = this;
 
-    tcplistenertable_->parent = this;
+    tcplistenertable->parent = this;
 
     yang_name = "TCP-MIB"; yang_parent_name = "TCP-MIB";
 }
@@ -33,19 +35,19 @@ TcpMib::~TcpMib()
 
 bool TcpMib::has_data() const
 {
-    return (tcp_ !=  nullptr && tcp_->has_data())
-	|| (tcpconnectiontable_ !=  nullptr && tcpconnectiontable_->has_data())
-	|| (tcpconntable_ !=  nullptr && tcpconntable_->has_data())
-	|| (tcplistenertable_ !=  nullptr && tcplistenertable_->has_data());
+    return (tcp !=  nullptr && tcp->has_data())
+	|| (tcpconnectiontable !=  nullptr && tcpconnectiontable->has_data())
+	|| (tcpconntable !=  nullptr && tcpconntable->has_data())
+	|| (tcplistenertable !=  nullptr && tcplistenertable->has_data());
 }
 
 bool TcpMib::has_operation() const
 {
-    return is_set(operation)
-	|| (tcp_ !=  nullptr && tcp_->has_operation())
-	|| (tcpconnectiontable_ !=  nullptr && tcpconnectiontable_->has_operation())
-	|| (tcpconntable_ !=  nullptr && tcpconntable_->has_operation())
-	|| (tcplistenertable_ !=  nullptr && tcplistenertable_->has_operation());
+    return is_set(yfilter)
+	|| (tcp !=  nullptr && tcp->has_operation())
+	|| (tcpconnectiontable !=  nullptr && tcpconnectiontable->has_operation())
+	|| (tcpconntable !=  nullptr && tcpconntable->has_operation())
+	|| (tcplistenertable !=  nullptr && tcplistenertable->has_operation());
 }
 
 std::string TcpMib::get_segment_path() const
@@ -79,38 +81,38 @@ std::shared_ptr<Entity> TcpMib::get_child_by_name(const std::string & child_yang
 {
     if(child_yang_name == "tcp")
     {
-        if(tcp_ == nullptr)
+        if(tcp == nullptr)
         {
-            tcp_ = std::make_shared<TcpMib::Tcp>();
+            tcp = std::make_shared<TcpMib::Tcp>();
         }
-        return tcp_;
+        return tcp;
     }
 
     if(child_yang_name == "tcpConnectionTable")
     {
-        if(tcpconnectiontable_ == nullptr)
+        if(tcpconnectiontable == nullptr)
         {
-            tcpconnectiontable_ = std::make_shared<TcpMib::Tcpconnectiontable>();
+            tcpconnectiontable = std::make_shared<TcpMib::Tcpconnectiontable>();
         }
-        return tcpconnectiontable_;
+        return tcpconnectiontable;
     }
 
     if(child_yang_name == "tcpConnTable")
     {
-        if(tcpconntable_ == nullptr)
+        if(tcpconntable == nullptr)
         {
-            tcpconntable_ = std::make_shared<TcpMib::Tcpconntable>();
+            tcpconntable = std::make_shared<TcpMib::Tcpconntable>();
         }
-        return tcpconntable_;
+        return tcpconntable;
     }
 
     if(child_yang_name == "tcpListenerTable")
     {
-        if(tcplistenertable_ == nullptr)
+        if(tcplistenertable == nullptr)
         {
-            tcplistenertable_ = std::make_shared<TcpMib::Tcplistenertable>();
+            tcplistenertable = std::make_shared<TcpMib::Tcplistenertable>();
         }
-        return tcplistenertable_;
+        return tcplistenertable;
     }
 
     return nullptr;
@@ -119,30 +121,34 @@ std::shared_ptr<Entity> TcpMib::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> TcpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(tcp_ != nullptr)
+    if(tcp != nullptr)
     {
-        children["tcp"] = tcp_;
+        children["tcp"] = tcp;
     }
 
-    if(tcpconnectiontable_ != nullptr)
+    if(tcpconnectiontable != nullptr)
     {
-        children["tcpConnectionTable"] = tcpconnectiontable_;
+        children["tcpConnectionTable"] = tcpconnectiontable;
     }
 
-    if(tcpconntable_ != nullptr)
+    if(tcpconntable != nullptr)
     {
-        children["tcpConnTable"] = tcpconntable_;
+        children["tcpConnTable"] = tcpconntable;
     }
 
-    if(tcplistenertable_ != nullptr)
+    if(tcplistenertable != nullptr)
     {
-        children["tcpListenerTable"] = tcplistenertable_;
+        children["tcpListenerTable"] = tcplistenertable;
     }
 
     return children;
 }
 
-void TcpMib::set_value(const std::string & value_path, std::string value)
+void TcpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void TcpMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -164,6 +170,18 @@ std::string TcpMib::get_bundle_name() const
 augment_capabilities_function TcpMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> TcpMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool TcpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcp" || name == "tcpConnectionTable" || name == "tcpConnTable" || name == "tcpListenerTable")
+        return true;
+    return false;
 }
 
 TcpMib::Tcp::Tcp()
@@ -214,23 +232,23 @@ bool TcpMib::Tcp::has_data() const
 
 bool TcpMib::Tcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tcpactiveopens.operation)
-	|| is_set(tcpattemptfails.operation)
-	|| is_set(tcpcurrestab.operation)
-	|| is_set(tcpestabresets.operation)
-	|| is_set(tcphcinsegs.operation)
-	|| is_set(tcphcoutsegs.operation)
-	|| is_set(tcpinerrs.operation)
-	|| is_set(tcpinsegs.operation)
-	|| is_set(tcpmaxconn.operation)
-	|| is_set(tcpoutrsts.operation)
-	|| is_set(tcpoutsegs.operation)
-	|| is_set(tcppassiveopens.operation)
-	|| is_set(tcpretranssegs.operation)
-	|| is_set(tcprtoalgorithm.operation)
-	|| is_set(tcprtomax.operation)
-	|| is_set(tcprtomin.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tcpactiveopens.yfilter)
+	|| ydk::is_set(tcpattemptfails.yfilter)
+	|| ydk::is_set(tcpcurrestab.yfilter)
+	|| ydk::is_set(tcpestabresets.yfilter)
+	|| ydk::is_set(tcphcinsegs.yfilter)
+	|| ydk::is_set(tcphcoutsegs.yfilter)
+	|| ydk::is_set(tcpinerrs.yfilter)
+	|| ydk::is_set(tcpinsegs.yfilter)
+	|| ydk::is_set(tcpmaxconn.yfilter)
+	|| ydk::is_set(tcpoutrsts.yfilter)
+	|| ydk::is_set(tcpoutsegs.yfilter)
+	|| ydk::is_set(tcppassiveopens.yfilter)
+	|| ydk::is_set(tcpretranssegs.yfilter)
+	|| ydk::is_set(tcprtoalgorithm.yfilter)
+	|| ydk::is_set(tcprtomax.yfilter)
+	|| ydk::is_set(tcprtomin.yfilter);
 }
 
 std::string TcpMib::Tcp::get_segment_path() const
@@ -256,22 +274,22 @@ const EntityPath TcpMib::Tcp::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tcpactiveopens.is_set || is_set(tcpactiveopens.operation)) leaf_name_data.push_back(tcpactiveopens.get_name_leafdata());
-    if (tcpattemptfails.is_set || is_set(tcpattemptfails.operation)) leaf_name_data.push_back(tcpattemptfails.get_name_leafdata());
-    if (tcpcurrestab.is_set || is_set(tcpcurrestab.operation)) leaf_name_data.push_back(tcpcurrestab.get_name_leafdata());
-    if (tcpestabresets.is_set || is_set(tcpestabresets.operation)) leaf_name_data.push_back(tcpestabresets.get_name_leafdata());
-    if (tcphcinsegs.is_set || is_set(tcphcinsegs.operation)) leaf_name_data.push_back(tcphcinsegs.get_name_leafdata());
-    if (tcphcoutsegs.is_set || is_set(tcphcoutsegs.operation)) leaf_name_data.push_back(tcphcoutsegs.get_name_leafdata());
-    if (tcpinerrs.is_set || is_set(tcpinerrs.operation)) leaf_name_data.push_back(tcpinerrs.get_name_leafdata());
-    if (tcpinsegs.is_set || is_set(tcpinsegs.operation)) leaf_name_data.push_back(tcpinsegs.get_name_leafdata());
-    if (tcpmaxconn.is_set || is_set(tcpmaxconn.operation)) leaf_name_data.push_back(tcpmaxconn.get_name_leafdata());
-    if (tcpoutrsts.is_set || is_set(tcpoutrsts.operation)) leaf_name_data.push_back(tcpoutrsts.get_name_leafdata());
-    if (tcpoutsegs.is_set || is_set(tcpoutsegs.operation)) leaf_name_data.push_back(tcpoutsegs.get_name_leafdata());
-    if (tcppassiveopens.is_set || is_set(tcppassiveopens.operation)) leaf_name_data.push_back(tcppassiveopens.get_name_leafdata());
-    if (tcpretranssegs.is_set || is_set(tcpretranssegs.operation)) leaf_name_data.push_back(tcpretranssegs.get_name_leafdata());
-    if (tcprtoalgorithm.is_set || is_set(tcprtoalgorithm.operation)) leaf_name_data.push_back(tcprtoalgorithm.get_name_leafdata());
-    if (tcprtomax.is_set || is_set(tcprtomax.operation)) leaf_name_data.push_back(tcprtomax.get_name_leafdata());
-    if (tcprtomin.is_set || is_set(tcprtomin.operation)) leaf_name_data.push_back(tcprtomin.get_name_leafdata());
+    if (tcpactiveopens.is_set || is_set(tcpactiveopens.yfilter)) leaf_name_data.push_back(tcpactiveopens.get_name_leafdata());
+    if (tcpattemptfails.is_set || is_set(tcpattemptfails.yfilter)) leaf_name_data.push_back(tcpattemptfails.get_name_leafdata());
+    if (tcpcurrestab.is_set || is_set(tcpcurrestab.yfilter)) leaf_name_data.push_back(tcpcurrestab.get_name_leafdata());
+    if (tcpestabresets.is_set || is_set(tcpestabresets.yfilter)) leaf_name_data.push_back(tcpestabresets.get_name_leafdata());
+    if (tcphcinsegs.is_set || is_set(tcphcinsegs.yfilter)) leaf_name_data.push_back(tcphcinsegs.get_name_leafdata());
+    if (tcphcoutsegs.is_set || is_set(tcphcoutsegs.yfilter)) leaf_name_data.push_back(tcphcoutsegs.get_name_leafdata());
+    if (tcpinerrs.is_set || is_set(tcpinerrs.yfilter)) leaf_name_data.push_back(tcpinerrs.get_name_leafdata());
+    if (tcpinsegs.is_set || is_set(tcpinsegs.yfilter)) leaf_name_data.push_back(tcpinsegs.get_name_leafdata());
+    if (tcpmaxconn.is_set || is_set(tcpmaxconn.yfilter)) leaf_name_data.push_back(tcpmaxconn.get_name_leafdata());
+    if (tcpoutrsts.is_set || is_set(tcpoutrsts.yfilter)) leaf_name_data.push_back(tcpoutrsts.get_name_leafdata());
+    if (tcpoutsegs.is_set || is_set(tcpoutsegs.yfilter)) leaf_name_data.push_back(tcpoutsegs.get_name_leafdata());
+    if (tcppassiveopens.is_set || is_set(tcppassiveopens.yfilter)) leaf_name_data.push_back(tcppassiveopens.get_name_leafdata());
+    if (tcpretranssegs.is_set || is_set(tcpretranssegs.yfilter)) leaf_name_data.push_back(tcpretranssegs.get_name_leafdata());
+    if (tcprtoalgorithm.is_set || is_set(tcprtoalgorithm.yfilter)) leaf_name_data.push_back(tcprtoalgorithm.get_name_leafdata());
+    if (tcprtomax.is_set || is_set(tcprtomax.yfilter)) leaf_name_data.push_back(tcprtomax.get_name_leafdata());
+    if (tcprtomin.is_set || is_set(tcprtomin.yfilter)) leaf_name_data.push_back(tcprtomin.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -290,72 +308,179 @@ std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcp::get_children() const
     return children;
 }
 
-void TcpMib::Tcp::set_value(const std::string & value_path, std::string value)
+void TcpMib::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tcpActiveOpens")
     {
         tcpactiveopens = value;
+        tcpactiveopens.value_namespace = name_space;
+        tcpactiveopens.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpAttemptFails")
     {
         tcpattemptfails = value;
+        tcpattemptfails.value_namespace = name_space;
+        tcpattemptfails.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpCurrEstab")
     {
         tcpcurrestab = value;
+        tcpcurrestab.value_namespace = name_space;
+        tcpcurrestab.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpEstabResets")
     {
         tcpestabresets = value;
+        tcpestabresets.value_namespace = name_space;
+        tcpestabresets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpHCInSegs")
     {
         tcphcinsegs = value;
+        tcphcinsegs.value_namespace = name_space;
+        tcphcinsegs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpHCOutSegs")
     {
         tcphcoutsegs = value;
+        tcphcoutsegs.value_namespace = name_space;
+        tcphcoutsegs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpInErrs")
     {
         tcpinerrs = value;
+        tcpinerrs.value_namespace = name_space;
+        tcpinerrs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpInSegs")
     {
         tcpinsegs = value;
+        tcpinsegs.value_namespace = name_space;
+        tcpinsegs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpMaxConn")
     {
         tcpmaxconn = value;
+        tcpmaxconn.value_namespace = name_space;
+        tcpmaxconn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpOutRsts")
     {
         tcpoutrsts = value;
+        tcpoutrsts.value_namespace = name_space;
+        tcpoutrsts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpOutSegs")
     {
         tcpoutsegs = value;
+        tcpoutsegs.value_namespace = name_space;
+        tcpoutsegs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpPassiveOpens")
     {
         tcppassiveopens = value;
+        tcppassiveopens.value_namespace = name_space;
+        tcppassiveopens.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpRetransSegs")
     {
         tcpretranssegs = value;
+        tcpretranssegs.value_namespace = name_space;
+        tcpretranssegs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpRtoAlgorithm")
     {
         tcprtoalgorithm = value;
+        tcprtoalgorithm.value_namespace = name_space;
+        tcprtoalgorithm.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpRtoMax")
     {
         tcprtomax = value;
+        tcprtomax.value_namespace = name_space;
+        tcprtomax.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpRtoMin")
     {
         tcprtomin = value;
+        tcprtomin.value_namespace = name_space;
+        tcprtomin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TcpMib::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tcpActiveOpens")
+    {
+        tcpactiveopens.yfilter = yfilter;
+    }
+    if(value_path == "tcpAttemptFails")
+    {
+        tcpattemptfails.yfilter = yfilter;
+    }
+    if(value_path == "tcpCurrEstab")
+    {
+        tcpcurrestab.yfilter = yfilter;
+    }
+    if(value_path == "tcpEstabResets")
+    {
+        tcpestabresets.yfilter = yfilter;
+    }
+    if(value_path == "tcpHCInSegs")
+    {
+        tcphcinsegs.yfilter = yfilter;
+    }
+    if(value_path == "tcpHCOutSegs")
+    {
+        tcphcoutsegs.yfilter = yfilter;
+    }
+    if(value_path == "tcpInErrs")
+    {
+        tcpinerrs.yfilter = yfilter;
+    }
+    if(value_path == "tcpInSegs")
+    {
+        tcpinsegs.yfilter = yfilter;
+    }
+    if(value_path == "tcpMaxConn")
+    {
+        tcpmaxconn.yfilter = yfilter;
+    }
+    if(value_path == "tcpOutRsts")
+    {
+        tcpoutrsts.yfilter = yfilter;
+    }
+    if(value_path == "tcpOutSegs")
+    {
+        tcpoutsegs.yfilter = yfilter;
+    }
+    if(value_path == "tcpPassiveOpens")
+    {
+        tcppassiveopens.yfilter = yfilter;
+    }
+    if(value_path == "tcpRetransSegs")
+    {
+        tcpretranssegs.yfilter = yfilter;
+    }
+    if(value_path == "tcpRtoAlgorithm")
+    {
+        tcprtoalgorithm.yfilter = yfilter;
+    }
+    if(value_path == "tcpRtoMax")
+    {
+        tcprtomax.yfilter = yfilter;
+    }
+    if(value_path == "tcpRtoMin")
+    {
+        tcprtomin.yfilter = yfilter;
+    }
+}
+
+bool TcpMib::Tcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcpActiveOpens" || name == "tcpAttemptFails" || name == "tcpCurrEstab" || name == "tcpEstabResets" || name == "tcpHCInSegs" || name == "tcpHCOutSegs" || name == "tcpInErrs" || name == "tcpInSegs" || name == "tcpMaxConn" || name == "tcpOutRsts" || name == "tcpOutSegs" || name == "tcpPassiveOpens" || name == "tcpRetransSegs" || name == "tcpRtoAlgorithm" || name == "tcpRtoMax" || name == "tcpRtoMin")
+        return true;
+    return false;
 }
 
 TcpMib::Tcpconntable::Tcpconntable()
@@ -369,9 +494,9 @@ TcpMib::Tcpconntable::~Tcpconntable()
 
 bool TcpMib::Tcpconntable::has_data() const
 {
-    for (std::size_t index=0; index<tcpconnentry_.size(); index++)
+    for (std::size_t index=0; index<tcpconnentry.size(); index++)
     {
-        if(tcpconnentry_[index]->has_data())
+        if(tcpconnentry[index]->has_data())
             return true;
     }
     return false;
@@ -379,12 +504,12 @@ bool TcpMib::Tcpconntable::has_data() const
 
 bool TcpMib::Tcpconntable::has_operation() const
 {
-    for (std::size_t index=0; index<tcpconnentry_.size(); index++)
+    for (std::size_t index=0; index<tcpconnentry.size(); index++)
     {
-        if(tcpconnentry_[index]->has_operation())
+        if(tcpconnentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TcpMib::Tcpconntable::get_segment_path() const
@@ -421,7 +546,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconntable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "tcpConnEntry")
     {
-        for(auto const & c : tcpconnentry_)
+        for(auto const & c : tcpconnentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -431,7 +556,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconntable::get_child_by_name(const std::strin
         }
         auto c = std::make_shared<TcpMib::Tcpconntable::Tcpconnentry>();
         c->parent = this;
-        tcpconnentry_.push_back(c);
+        tcpconnentry.push_back(c);
         return c;
     }
 
@@ -441,7 +566,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconntable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcpconntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tcpconnentry_)
+    for (auto const & c : tcpconnentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -449,8 +574,19 @@ std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcpconntable::get_childre
     return children;
 }
 
-void TcpMib::Tcpconntable::set_value(const std::string & value_path, std::string value)
+void TcpMib::Tcpconntable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TcpMib::Tcpconntable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TcpMib::Tcpconntable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcpConnEntry")
+        return true;
+    return false;
 }
 
 TcpMib::Tcpconntable::Tcpconnentry::Tcpconnentry()
@@ -479,12 +615,12 @@ bool TcpMib::Tcpconntable::Tcpconnentry::has_data() const
 
 bool TcpMib::Tcpconntable::Tcpconnentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tcpconnlocaladdress.operation)
-	|| is_set(tcpconnlocalport.operation)
-	|| is_set(tcpconnremaddress.operation)
-	|| is_set(tcpconnremport.operation)
-	|| is_set(tcpconnstate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tcpconnlocaladdress.yfilter)
+	|| ydk::is_set(tcpconnlocalport.yfilter)
+	|| ydk::is_set(tcpconnremaddress.yfilter)
+	|| ydk::is_set(tcpconnremport.yfilter)
+	|| ydk::is_set(tcpconnstate.yfilter);
 }
 
 std::string TcpMib::Tcpconntable::Tcpconnentry::get_segment_path() const
@@ -510,11 +646,11 @@ const EntityPath TcpMib::Tcpconntable::Tcpconnentry::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tcpconnlocaladdress.is_set || is_set(tcpconnlocaladdress.operation)) leaf_name_data.push_back(tcpconnlocaladdress.get_name_leafdata());
-    if (tcpconnlocalport.is_set || is_set(tcpconnlocalport.operation)) leaf_name_data.push_back(tcpconnlocalport.get_name_leafdata());
-    if (tcpconnremaddress.is_set || is_set(tcpconnremaddress.operation)) leaf_name_data.push_back(tcpconnremaddress.get_name_leafdata());
-    if (tcpconnremport.is_set || is_set(tcpconnremport.operation)) leaf_name_data.push_back(tcpconnremport.get_name_leafdata());
-    if (tcpconnstate.is_set || is_set(tcpconnstate.operation)) leaf_name_data.push_back(tcpconnstate.get_name_leafdata());
+    if (tcpconnlocaladdress.is_set || is_set(tcpconnlocaladdress.yfilter)) leaf_name_data.push_back(tcpconnlocaladdress.get_name_leafdata());
+    if (tcpconnlocalport.is_set || is_set(tcpconnlocalport.yfilter)) leaf_name_data.push_back(tcpconnlocalport.get_name_leafdata());
+    if (tcpconnremaddress.is_set || is_set(tcpconnremaddress.yfilter)) leaf_name_data.push_back(tcpconnremaddress.get_name_leafdata());
+    if (tcpconnremport.is_set || is_set(tcpconnremport.yfilter)) leaf_name_data.push_back(tcpconnremport.get_name_leafdata());
+    if (tcpconnstate.is_set || is_set(tcpconnstate.yfilter)) leaf_name_data.push_back(tcpconnstate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -533,28 +669,69 @@ std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcpconntable::Tcpconnentr
     return children;
 }
 
-void TcpMib::Tcpconntable::Tcpconnentry::set_value(const std::string & value_path, std::string value)
+void TcpMib::Tcpconntable::Tcpconnentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tcpConnLocalAddress")
     {
         tcpconnlocaladdress = value;
+        tcpconnlocaladdress.value_namespace = name_space;
+        tcpconnlocaladdress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnLocalPort")
     {
         tcpconnlocalport = value;
+        tcpconnlocalport.value_namespace = name_space;
+        tcpconnlocalport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnRemAddress")
     {
         tcpconnremaddress = value;
+        tcpconnremaddress.value_namespace = name_space;
+        tcpconnremaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnRemPort")
     {
         tcpconnremport = value;
+        tcpconnremport.value_namespace = name_space;
+        tcpconnremport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnState")
     {
         tcpconnstate = value;
+        tcpconnstate.value_namespace = name_space;
+        tcpconnstate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TcpMib::Tcpconntable::Tcpconnentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tcpConnLocalAddress")
+    {
+        tcpconnlocaladdress.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnLocalPort")
+    {
+        tcpconnlocalport.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnRemAddress")
+    {
+        tcpconnremaddress.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnRemPort")
+    {
+        tcpconnremport.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnState")
+    {
+        tcpconnstate.yfilter = yfilter;
+    }
+}
+
+bool TcpMib::Tcpconntable::Tcpconnentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcpConnLocalAddress" || name == "tcpConnLocalPort" || name == "tcpConnRemAddress" || name == "tcpConnRemPort" || name == "tcpConnState")
+        return true;
+    return false;
 }
 
 TcpMib::Tcpconnectiontable::Tcpconnectiontable()
@@ -568,9 +745,9 @@ TcpMib::Tcpconnectiontable::~Tcpconnectiontable()
 
 bool TcpMib::Tcpconnectiontable::has_data() const
 {
-    for (std::size_t index=0; index<tcpconnectionentry_.size(); index++)
+    for (std::size_t index=0; index<tcpconnectionentry.size(); index++)
     {
-        if(tcpconnectionentry_[index]->has_data())
+        if(tcpconnectionentry[index]->has_data())
             return true;
     }
     return false;
@@ -578,12 +755,12 @@ bool TcpMib::Tcpconnectiontable::has_data() const
 
 bool TcpMib::Tcpconnectiontable::has_operation() const
 {
-    for (std::size_t index=0; index<tcpconnectionentry_.size(); index++)
+    for (std::size_t index=0; index<tcpconnectionentry.size(); index++)
     {
-        if(tcpconnectionentry_[index]->has_operation())
+        if(tcpconnectionentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TcpMib::Tcpconnectiontable::get_segment_path() const
@@ -620,7 +797,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconnectiontable::get_child_by_name(const std:
 {
     if(child_yang_name == "tcpConnectionEntry")
     {
-        for(auto const & c : tcpconnectionentry_)
+        for(auto const & c : tcpconnectionentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -630,7 +807,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconnectiontable::get_child_by_name(const std:
         }
         auto c = std::make_shared<TcpMib::Tcpconnectiontable::Tcpconnectionentry>();
         c->parent = this;
-        tcpconnectionentry_.push_back(c);
+        tcpconnectionentry.push_back(c);
         return c;
     }
 
@@ -640,7 +817,7 @@ std::shared_ptr<Entity> TcpMib::Tcpconnectiontable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcpconnectiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tcpconnectionentry_)
+    for (auto const & c : tcpconnectionentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -648,8 +825,19 @@ std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcpconnectiontable::get_c
     return children;
 }
 
-void TcpMib::Tcpconnectiontable::set_value(const std::string & value_path, std::string value)
+void TcpMib::Tcpconnectiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TcpMib::Tcpconnectiontable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TcpMib::Tcpconnectiontable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcpConnectionEntry")
+        return true;
+    return false;
 }
 
 TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionentry()
@@ -684,15 +872,15 @@ bool TcpMib::Tcpconnectiontable::Tcpconnectionentry::has_data() const
 
 bool TcpMib::Tcpconnectiontable::Tcpconnectionentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tcpconnectionlocaladdresstype.operation)
-	|| is_set(tcpconnectionlocaladdress.operation)
-	|| is_set(tcpconnectionlocalport.operation)
-	|| is_set(tcpconnectionremaddresstype.operation)
-	|| is_set(tcpconnectionremaddress.operation)
-	|| is_set(tcpconnectionremport.operation)
-	|| is_set(tcpconnectionprocess.operation)
-	|| is_set(tcpconnectionstate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tcpconnectionlocaladdresstype.yfilter)
+	|| ydk::is_set(tcpconnectionlocaladdress.yfilter)
+	|| ydk::is_set(tcpconnectionlocalport.yfilter)
+	|| ydk::is_set(tcpconnectionremaddresstype.yfilter)
+	|| ydk::is_set(tcpconnectionremaddress.yfilter)
+	|| ydk::is_set(tcpconnectionremport.yfilter)
+	|| ydk::is_set(tcpconnectionprocess.yfilter)
+	|| ydk::is_set(tcpconnectionstate.yfilter);
 }
 
 std::string TcpMib::Tcpconnectiontable::Tcpconnectionentry::get_segment_path() const
@@ -718,14 +906,14 @@ const EntityPath TcpMib::Tcpconnectiontable::Tcpconnectionentry::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tcpconnectionlocaladdresstype.is_set || is_set(tcpconnectionlocaladdresstype.operation)) leaf_name_data.push_back(tcpconnectionlocaladdresstype.get_name_leafdata());
-    if (tcpconnectionlocaladdress.is_set || is_set(tcpconnectionlocaladdress.operation)) leaf_name_data.push_back(tcpconnectionlocaladdress.get_name_leafdata());
-    if (tcpconnectionlocalport.is_set || is_set(tcpconnectionlocalport.operation)) leaf_name_data.push_back(tcpconnectionlocalport.get_name_leafdata());
-    if (tcpconnectionremaddresstype.is_set || is_set(tcpconnectionremaddresstype.operation)) leaf_name_data.push_back(tcpconnectionremaddresstype.get_name_leafdata());
-    if (tcpconnectionremaddress.is_set || is_set(tcpconnectionremaddress.operation)) leaf_name_data.push_back(tcpconnectionremaddress.get_name_leafdata());
-    if (tcpconnectionremport.is_set || is_set(tcpconnectionremport.operation)) leaf_name_data.push_back(tcpconnectionremport.get_name_leafdata());
-    if (tcpconnectionprocess.is_set || is_set(tcpconnectionprocess.operation)) leaf_name_data.push_back(tcpconnectionprocess.get_name_leafdata());
-    if (tcpconnectionstate.is_set || is_set(tcpconnectionstate.operation)) leaf_name_data.push_back(tcpconnectionstate.get_name_leafdata());
+    if (tcpconnectionlocaladdresstype.is_set || is_set(tcpconnectionlocaladdresstype.yfilter)) leaf_name_data.push_back(tcpconnectionlocaladdresstype.get_name_leafdata());
+    if (tcpconnectionlocaladdress.is_set || is_set(tcpconnectionlocaladdress.yfilter)) leaf_name_data.push_back(tcpconnectionlocaladdress.get_name_leafdata());
+    if (tcpconnectionlocalport.is_set || is_set(tcpconnectionlocalport.yfilter)) leaf_name_data.push_back(tcpconnectionlocalport.get_name_leafdata());
+    if (tcpconnectionremaddresstype.is_set || is_set(tcpconnectionremaddresstype.yfilter)) leaf_name_data.push_back(tcpconnectionremaddresstype.get_name_leafdata());
+    if (tcpconnectionremaddress.is_set || is_set(tcpconnectionremaddress.yfilter)) leaf_name_data.push_back(tcpconnectionremaddress.get_name_leafdata());
+    if (tcpconnectionremport.is_set || is_set(tcpconnectionremport.yfilter)) leaf_name_data.push_back(tcpconnectionremport.get_name_leafdata());
+    if (tcpconnectionprocess.is_set || is_set(tcpconnectionprocess.yfilter)) leaf_name_data.push_back(tcpconnectionprocess.get_name_leafdata());
+    if (tcpconnectionstate.is_set || is_set(tcpconnectionstate.yfilter)) leaf_name_data.push_back(tcpconnectionstate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -744,40 +932,99 @@ std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcpconnectiontable::Tcpco
     return children;
 }
 
-void TcpMib::Tcpconnectiontable::Tcpconnectionentry::set_value(const std::string & value_path, std::string value)
+void TcpMib::Tcpconnectiontable::Tcpconnectionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tcpConnectionLocalAddressType")
     {
         tcpconnectionlocaladdresstype = value;
+        tcpconnectionlocaladdresstype.value_namespace = name_space;
+        tcpconnectionlocaladdresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnectionLocalAddress")
     {
         tcpconnectionlocaladdress = value;
+        tcpconnectionlocaladdress.value_namespace = name_space;
+        tcpconnectionlocaladdress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnectionLocalPort")
     {
         tcpconnectionlocalport = value;
+        tcpconnectionlocalport.value_namespace = name_space;
+        tcpconnectionlocalport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnectionRemAddressType")
     {
         tcpconnectionremaddresstype = value;
+        tcpconnectionremaddresstype.value_namespace = name_space;
+        tcpconnectionremaddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnectionRemAddress")
     {
         tcpconnectionremaddress = value;
+        tcpconnectionremaddress.value_namespace = name_space;
+        tcpconnectionremaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnectionRemPort")
     {
         tcpconnectionremport = value;
+        tcpconnectionremport.value_namespace = name_space;
+        tcpconnectionremport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnectionProcess")
     {
         tcpconnectionprocess = value;
+        tcpconnectionprocess.value_namespace = name_space;
+        tcpconnectionprocess.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpConnectionState")
     {
         tcpconnectionstate = value;
+        tcpconnectionstate.value_namespace = name_space;
+        tcpconnectionstate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TcpMib::Tcpconnectiontable::Tcpconnectionentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tcpConnectionLocalAddressType")
+    {
+        tcpconnectionlocaladdresstype.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnectionLocalAddress")
+    {
+        tcpconnectionlocaladdress.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnectionLocalPort")
+    {
+        tcpconnectionlocalport.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnectionRemAddressType")
+    {
+        tcpconnectionremaddresstype.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnectionRemAddress")
+    {
+        tcpconnectionremaddress.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnectionRemPort")
+    {
+        tcpconnectionremport.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnectionProcess")
+    {
+        tcpconnectionprocess.yfilter = yfilter;
+    }
+    if(value_path == "tcpConnectionState")
+    {
+        tcpconnectionstate.yfilter = yfilter;
+    }
+}
+
+bool TcpMib::Tcpconnectiontable::Tcpconnectionentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcpConnectionLocalAddressType" || name == "tcpConnectionLocalAddress" || name == "tcpConnectionLocalPort" || name == "tcpConnectionRemAddressType" || name == "tcpConnectionRemAddress" || name == "tcpConnectionRemPort" || name == "tcpConnectionProcess" || name == "tcpConnectionState")
+        return true;
+    return false;
 }
 
 TcpMib::Tcplistenertable::Tcplistenertable()
@@ -791,9 +1038,9 @@ TcpMib::Tcplistenertable::~Tcplistenertable()
 
 bool TcpMib::Tcplistenertable::has_data() const
 {
-    for (std::size_t index=0; index<tcplistenerentry_.size(); index++)
+    for (std::size_t index=0; index<tcplistenerentry.size(); index++)
     {
-        if(tcplistenerentry_[index]->has_data())
+        if(tcplistenerentry[index]->has_data())
             return true;
     }
     return false;
@@ -801,12 +1048,12 @@ bool TcpMib::Tcplistenertable::has_data() const
 
 bool TcpMib::Tcplistenertable::has_operation() const
 {
-    for (std::size_t index=0; index<tcplistenerentry_.size(); index++)
+    for (std::size_t index=0; index<tcplistenerentry.size(); index++)
     {
-        if(tcplistenerentry_[index]->has_operation())
+        if(tcplistenerentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TcpMib::Tcplistenertable::get_segment_path() const
@@ -843,7 +1090,7 @@ std::shared_ptr<Entity> TcpMib::Tcplistenertable::get_child_by_name(const std::s
 {
     if(child_yang_name == "tcpListenerEntry")
     {
-        for(auto const & c : tcplistenerentry_)
+        for(auto const & c : tcplistenerentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -853,7 +1100,7 @@ std::shared_ptr<Entity> TcpMib::Tcplistenertable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<TcpMib::Tcplistenertable::Tcplistenerentry>();
         c->parent = this;
-        tcplistenerentry_.push_back(c);
+        tcplistenerentry.push_back(c);
         return c;
     }
 
@@ -863,7 +1110,7 @@ std::shared_ptr<Entity> TcpMib::Tcplistenertable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcplistenertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : tcplistenerentry_)
+    for (auto const & c : tcplistenerentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -871,8 +1118,19 @@ std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcplistenertable::get_chi
     return children;
 }
 
-void TcpMib::Tcplistenertable::set_value(const std::string & value_path, std::string value)
+void TcpMib::Tcplistenertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TcpMib::Tcplistenertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TcpMib::Tcplistenertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcpListenerEntry")
+        return true;
+    return false;
 }
 
 TcpMib::Tcplistenertable::Tcplistenerentry::Tcplistenerentry()
@@ -899,11 +1157,11 @@ bool TcpMib::Tcplistenertable::Tcplistenerentry::has_data() const
 
 bool TcpMib::Tcplistenertable::Tcplistenerentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tcplistenerlocaladdresstype.operation)
-	|| is_set(tcplistenerlocaladdress.operation)
-	|| is_set(tcplistenerlocalport.operation)
-	|| is_set(tcplistenerprocess.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tcplistenerlocaladdresstype.yfilter)
+	|| ydk::is_set(tcplistenerlocaladdress.yfilter)
+	|| ydk::is_set(tcplistenerlocalport.yfilter)
+	|| ydk::is_set(tcplistenerprocess.yfilter);
 }
 
 std::string TcpMib::Tcplistenertable::Tcplistenerentry::get_segment_path() const
@@ -929,10 +1187,10 @@ const EntityPath TcpMib::Tcplistenertable::Tcplistenerentry::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tcplistenerlocaladdresstype.is_set || is_set(tcplistenerlocaladdresstype.operation)) leaf_name_data.push_back(tcplistenerlocaladdresstype.get_name_leafdata());
-    if (tcplistenerlocaladdress.is_set || is_set(tcplistenerlocaladdress.operation)) leaf_name_data.push_back(tcplistenerlocaladdress.get_name_leafdata());
-    if (tcplistenerlocalport.is_set || is_set(tcplistenerlocalport.operation)) leaf_name_data.push_back(tcplistenerlocalport.get_name_leafdata());
-    if (tcplistenerprocess.is_set || is_set(tcplistenerprocess.operation)) leaf_name_data.push_back(tcplistenerprocess.get_name_leafdata());
+    if (tcplistenerlocaladdresstype.is_set || is_set(tcplistenerlocaladdresstype.yfilter)) leaf_name_data.push_back(tcplistenerlocaladdresstype.get_name_leafdata());
+    if (tcplistenerlocaladdress.is_set || is_set(tcplistenerlocaladdress.yfilter)) leaf_name_data.push_back(tcplistenerlocaladdress.get_name_leafdata());
+    if (tcplistenerlocalport.is_set || is_set(tcplistenerlocalport.yfilter)) leaf_name_data.push_back(tcplistenerlocalport.get_name_leafdata());
+    if (tcplistenerprocess.is_set || is_set(tcplistenerprocess.yfilter)) leaf_name_data.push_back(tcplistenerprocess.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -951,57 +1209,92 @@ std::map<std::string, std::shared_ptr<Entity>> TcpMib::Tcplistenertable::Tcplist
     return children;
 }
 
-void TcpMib::Tcplistenertable::Tcplistenerentry::set_value(const std::string & value_path, std::string value)
+void TcpMib::Tcplistenertable::Tcplistenerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tcpListenerLocalAddressType")
     {
         tcplistenerlocaladdresstype = value;
+        tcplistenerlocaladdresstype.value_namespace = name_space;
+        tcplistenerlocaladdresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpListenerLocalAddress")
     {
         tcplistenerlocaladdress = value;
+        tcplistenerlocaladdress.value_namespace = name_space;
+        tcplistenerlocaladdress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpListenerLocalPort")
     {
         tcplistenerlocalport = value;
+        tcplistenerlocalport.value_namespace = name_space;
+        tcplistenerlocalport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpListenerProcess")
     {
         tcplistenerprocess = value;
+        tcplistenerprocess.value_namespace = name_space;
+        tcplistenerprocess.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf TcpMib::Tcp::TcprtoalgorithmEnum::other {1, "other"};
-const Enum::YLeaf TcpMib::Tcp::TcprtoalgorithmEnum::constant {2, "constant"};
-const Enum::YLeaf TcpMib::Tcp::TcprtoalgorithmEnum::rsre {3, "rsre"};
-const Enum::YLeaf TcpMib::Tcp::TcprtoalgorithmEnum::vanj {4, "vanj"};
-const Enum::YLeaf TcpMib::Tcp::TcprtoalgorithmEnum::rfc2988 {5, "rfc2988"};
+void TcpMib::Tcplistenertable::Tcplistenerentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tcpListenerLocalAddressType")
+    {
+        tcplistenerlocaladdresstype.yfilter = yfilter;
+    }
+    if(value_path == "tcpListenerLocalAddress")
+    {
+        tcplistenerlocaladdress.yfilter = yfilter;
+    }
+    if(value_path == "tcpListenerLocalPort")
+    {
+        tcplistenerlocalport.yfilter = yfilter;
+    }
+    if(value_path == "tcpListenerProcess")
+    {
+        tcplistenerprocess.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::closed {1, "closed"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::listen {2, "listen"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::synSent {3, "synSent"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::synReceived {4, "synReceived"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::established {5, "established"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::finWait1 {6, "finWait1"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::finWait2 {7, "finWait2"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::closeWait {8, "closeWait"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::lastAck {9, "lastAck"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::closing {10, "closing"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::timeWait {11, "timeWait"};
-const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::TcpconnstateEnum::deleteTCB {12, "deleteTCB"};
+bool TcpMib::Tcplistenertable::Tcplistenerentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcpListenerLocalAddressType" || name == "tcpListenerLocalAddress" || name == "tcpListenerLocalPort" || name == "tcpListenerProcess")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::closed {1, "closed"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::listen {2, "listen"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::synSent {3, "synSent"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::synReceived {4, "synReceived"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::established {5, "established"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::finWait1 {6, "finWait1"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::finWait2 {7, "finWait2"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::closeWait {8, "closeWait"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::lastAck {9, "lastAck"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::closing {10, "closing"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::timeWait {11, "timeWait"};
-const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::TcpconnectionstateEnum::deleteTCB {12, "deleteTCB"};
+const Enum::YLeaf TcpMib::Tcp::Tcprtoalgorithm::other {1, "other"};
+const Enum::YLeaf TcpMib::Tcp::Tcprtoalgorithm::constant {2, "constant"};
+const Enum::YLeaf TcpMib::Tcp::Tcprtoalgorithm::rsre {3, "rsre"};
+const Enum::YLeaf TcpMib::Tcp::Tcprtoalgorithm::vanj {4, "vanj"};
+const Enum::YLeaf TcpMib::Tcp::Tcprtoalgorithm::rfc2988 {5, "rfc2988"};
+
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::closed {1, "closed"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::listen {2, "listen"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::synSent {3, "synSent"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::synReceived {4, "synReceived"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::established {5, "established"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::finWait1 {6, "finWait1"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::finWait2 {7, "finWait2"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::closeWait {8, "closeWait"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::lastAck {9, "lastAck"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::closing {10, "closing"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::timeWait {11, "timeWait"};
+const Enum::YLeaf TcpMib::Tcpconntable::Tcpconnentry::Tcpconnstate::deleteTCB {12, "deleteTCB"};
+
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::closed {1, "closed"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::listen {2, "listen"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::synSent {3, "synSent"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::synReceived {4, "synReceived"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::established {5, "established"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::finWait1 {6, "finWait1"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::finWait2 {7, "finWait2"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::closeWait {8, "closeWait"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::lastAck {9, "lastAck"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::closing {10, "closing"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::timeWait {11, "timeWait"};
+const Enum::YLeaf TcpMib::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate::deleteTCB {12, "deleteTCB"};
 
 
 }

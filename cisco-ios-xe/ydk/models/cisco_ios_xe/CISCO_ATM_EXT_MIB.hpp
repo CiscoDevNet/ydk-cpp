@@ -7,26 +7,26 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_ATM_EXT_MIB {
 
-class OamccvcstateEnum : public Enum
+class Oamccvcstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf verified;
-        static const Enum::YLeaf aisrdi;
-        static const Enum::YLeaf notManaged;
+        static const ydk::Enum::YLeaf verified;
+        static const ydk::Enum::YLeaf aisrdi;
+        static const ydk::Enum::YLeaf notManaged;
 
 };
 
-class OamccstatusEnum : public Enum
+class Oamccstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ready;
-        static const Enum::YLeaf waitActiveResponse;
-        static const Enum::YLeaf waitActiveConfirm;
-        static const Enum::YLeaf active;
-        static const Enum::YLeaf waitDeactiveConfirm;
+        static const ydk::Enum::YLeaf ready;
+        static const ydk::Enum::YLeaf waitActiveResponse;
+        static const ydk::Enum::YLeaf waitActiveConfirm;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf waitDeactiveConfirm;
 
 };
 

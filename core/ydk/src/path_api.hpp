@@ -29,8 +29,11 @@
 #define YDK_CORE_HPP
 
 #include <string>
+#include <memory>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
+
 #include "errors.hpp"
 #include "types.hpp"
 #include "validation_service.hpp"
@@ -50,7 +53,7 @@ namespace path {
 /// - Creation of DataNode Tree's for config and oper
 /// - Create and Invoke RPC's
 /// - ValidationService that validates DataNode Tree's based on criteria.
-/// - CodecService that can encode a DataNode to XML/JSON and decode from XML/JSON to a dataNode tree
+/// - Codec that can encode a DataNode to XML/JSON and decode from XML/JSON to a dataNode tree
 ///
 /// @section about-license License
 ///
@@ -222,7 +225,7 @@ namespace path {
 
 ///
 /// @page howtocodec Encoding and Decoding.
-/// A given DataNode Tree can be encoded and decoded into a variety of formats using the CodecService.
+/// A given DataNode Tree can be encoded and decoded into a variety of formats using the Codec.
 //
 /// DataNode Tree can be validated using the ValidationService
 ///
@@ -233,10 +236,16 @@ namespace path {
 ///
 
 // Forward References
-class DataNode ;
+class DataNode;
 class Rpc;
-class SchemaNode ;
-class RootSchemaNode ;
+class SchemaNode;
+class RootSchemaNode;
+class RepositoryPtr;
+
+enum class ModelCachingOption {
+    COMMON,
+    PER_DEVICE
+};
 
 ///
 /// @brief Validation Service
@@ -262,15 +271,15 @@ public:
 };
 
 ///
-/// @brief CodecService
+/// @brief Codec
 ///
 /// The Encode/Decode Service.
 ///
-class CodecService
+class Codec
 {
 public:
-    CodecService();
-    ~CodecService();
+    Codec();
+    ~Codec();
 
     ///
     /// @brief encode the given DataNode Tree
@@ -292,9 +301,9 @@ public:
     /// @return The DataNode instantiated or nullptr in case of error.
     /// @throws YCPPInvalidArgumentError if the arguments are invalid.
     ///
-    std::shared_ptr<DataNode> decode(const RootSchemaNode & root_schema, const std::string& buffer, EncodingFormat format);
+    std::shared_ptr<DataNode> decode(RootSchemaNode & root_schema, const std::string& buffer, EncodingFormat format);
+    std::shared_ptr<DataNode> decode_rpc_output(RootSchemaNode & root_schema, const std::string& buffer, const std:: string & rpc_path, EncodingFormat format);
 };
-
 
 ///
 /// @brief Base class for YCPP Errors
@@ -366,7 +375,7 @@ struct YCPPPathError : public YCPPCoreError
 
         XPATH_INTOK,  /// unexpected XPath token
         XPATH_EOF,    /// unexpected end of an XPath expression
-        XPATH_INOP,   /// invalid XPath operation operands
+        XPATH_INOP,   /// invalid XPath yfilter operands
         /* */
         XPATH_INCTX,  /// invalid XPath context type
 
@@ -415,7 +424,7 @@ struct YCPPCodecError : public YCPPCoreError
 /// the annotation nc:operation (nc refers to the netconf namespace) on the data nodes
 /// to describe the kind of operation one needs to perform on the given DataNode.
 ///
-struct Annotation{
+struct Annotation {
 
     Annotation(const std::string& ns, const std::string& name, const std::string& val);
 
@@ -461,6 +470,8 @@ struct Statement {
     std::string keyword;
     /// the arg if any
     std::string  arg;
+    /// the namespace if any
+    std::string  name_space;
 
 };
 
@@ -485,7 +496,7 @@ public:
     /// Get the path expression representing this Node in in the NodeTree.
     /// @return std::string representing the path to this Node.
     ///
-    virtual std::string path() const = 0;
+    virtual std::string get_path() const = 0;
 
     ///
     /// @brief finds descendant nodes that match the given xpath expression
@@ -497,7 +508,7 @@ public:
     /// @throws YCPPPathError if the path expression in invalid, See error code for details.
     /// @throws YCPPInvalidArgumentError if the argument is invalid.
     ///
-    virtual std::vector<SchemaNode*> find(const std::string& path) const = 0;
+    virtual std::vector<SchemaNode*> find(const std::string& path) = 0;
 
     ///
     /// @brief get the Parent Node of this SchemaNode in the tree.
@@ -505,14 +516,14 @@ public:
     /// Returns the parent Node of this SchemaNode in the tree
     /// @return pointer the parent Node or nullptr in case this is the root.
     ///
-    virtual const SchemaNode* parent() const noexcept = 0 ;
+    virtual const SchemaNode* get_parent() const noexcept = 0 ;
 
     ///
     /// @brief return the children of this SchemaNode in the NodeTree.
     ///
     /// Returns the children of this SchemaNode.
     ///@return the children of this node.
-    virtual const std::vector<std::unique_ptr<SchemaNode>> & children() const = 0;
+    virtual const std::vector<std::unique_ptr<SchemaNode>> & get_children() const = 0;
 
     ///
     /// @brief get the root of NodeTree this node is part of
@@ -520,7 +531,7 @@ public:
     /// Returns the root of the NodeTree this nodes is part of
     /// @return the pointer to the root
     ///
-    virtual const SchemaNode& root() const noexcept = 0;
+    virtual const SchemaNode& get_root() const noexcept = 0;
 
     ///
     /// @brief return the YANG statement associated with this SchemaNode
@@ -528,7 +539,7 @@ public:
     /// Returns the YANG statement associated with this SchemaNode
     /// @return the yang statement for this SchemaNode
     ///
-    virtual Statement statement() const = 0;
+    virtual Statement get_statement() const = 0;
 
     ///
     /// @brief return YANG statement corresponding the the keys
@@ -536,7 +547,7 @@ public:
     /// Returns the vector of Statement keys
     /// @return vector of Statement that represent keys
     ///
-    virtual std::vector<Statement> keys() const = 0;
+    virtual std::vector<Statement> get_keys() const = 0;
 
 };
 
@@ -556,7 +567,7 @@ public:
     ///
    virtual ~RootSchemaNode();
 
-   std::string path() const;
+   std::string get_path() const;
 
     ///
     /// @brief finds descendant nodes that match the given xpath expression
@@ -568,7 +579,7 @@ public:
     /// @throws YCPPPathError if the path expression in invalid, See error code for details.
     /// @throws YCPPInvalidArgumentError if the argument is invalid.
     ///
-    virtual std::vector<SchemaNode*> find(const std::string& path) const = 0;
+    virtual std::vector<SchemaNode*> find(const std::string& path) = 0;
 
     ///
     /// @brief get the Parent Node of this SchemaNode in the tree.
@@ -576,14 +587,14 @@ public:
     /// Returns the parent Node of this SchemaNode in the tree
     /// @return pointer the parent Node or nullptr in case this is the root.
     ///
-   virtual SchemaNode* parent() const noexcept;
+   virtual SchemaNode* get_parent() const noexcept;
 
     ///
     /// @brief return the children of this SchemaNode in the NodeTree.
     ///
     /// Returns the children of this SchemaNode.
     ///@return the children of this node.
-    virtual const std::vector<std::unique_ptr<SchemaNode>>& children() const = 0;
+    virtual const std::vector<std::unique_ptr<SchemaNode>>& get_children() const = 0;
 
     ///
     /// @brief get the root of NodeTree this node is part of
@@ -591,7 +602,7 @@ public:
     /// Returns the root of the NodeTree this nodes is part of
     /// @return the pointer to the root
     ///
-    virtual const SchemaNode& root() const noexcept;
+    virtual const SchemaNode& get_root() const noexcept;
 
     ///
     /// @brief create a DataNode corresponding to the path and set its value
@@ -600,7 +611,7 @@ public:
     /// expression must identify a single node. If the last node created is of schema
     /// type list, leaf-list or anyxml that value is also set in the node.
     /// The returned DataNode is the last node created (the terminal part of the path).
-    /// The user is responsible for managing the memory of this returned tree. Use DataNode#root()
+    /// The user is responsible for managing the memory of this returned tree. Use DataNode#get_root()
     /// to get the root element of the this tree and use that pointer to dispose of the entire tree.
     /// Note in the case of List nodes the keys must be present in the path expression in the form
     /// of predicates.
@@ -612,7 +623,7 @@ public:
     /// @throws YCPPInvalidArgumentError In case the argument is invalid.
     /// @throws YCPPPathError In case the path is invalid.
     ///
-    virtual DataNode& create(const std::string& path, const std::string& value) = 0;
+    virtual DataNode& create_datanode(const std::string& path, const std::string& value) = 0;
 
     ///
     /// @brief create a DataNode corresponding to the path and set its value
@@ -621,7 +632,7 @@ public:
     /// expression must identify a single node. If the last node created is of schema
     /// type list, leaf-list or anyxml that value is also set in the node.
     /// The returned DataNode is the last node created (the terminal part of the path).
-    /// The user is responsible for managing the memory of this returned tree. Use DataNode#root()
+    /// The user is responsible for managing the memory of this returned tree. Use DataNode#get_root()
     /// to get the root element of the this tree and use that pointer to dispose of the entire tree.
     /// Note in the case of List nodes the keys must be present in the path expression in the form
     /// of predicates.
@@ -631,7 +642,7 @@ public:
     /// @throws YCPPInvalidArgumentError In case the argument is invalid.
     /// @throws YCPPPathError In case the path is invalid.
     ///
-    virtual DataNode& create(const std::string& path)  = 0;
+    virtual DataNode& create_datanode(const std::string& path)  = 0;
 
     ///
     /// @brief return the Statement representing this SchemaNode
@@ -640,7 +651,7 @@ public:
     /// So this method returns an empty statement.
     /// @return an empty statement
     ///
-   virtual Statement statement() const;
+   virtual Statement get_statement() const;
 
     ///
     /// @brief return vector of keys
@@ -648,7 +659,7 @@ public:
     /// For a root node this will always return an empty vector
     /// @return empty vector
     ///
-    virtual std::vector<Statement> keys() const;
+    virtual std::vector<Statement> get_keys() const;
 
     ///
     /// @brief create an rpc instance
@@ -659,8 +670,7 @@ public:
     /// @throws YCPPInvalidArgumentError if the argument is invalid.
     /// @throws YCPPPathError if the path is invalid
     ///
-    virtual std::shared_ptr<Rpc> rpc(const std::string& path) const = 0;
-
+    virtual std::shared_ptr<Rpc> create_rpc(const std::string& path) = 0;
 };
 
 ///
@@ -684,7 +694,7 @@ public:
     /// Return the SchemaNode associated with this DataNode.
     /// @return SchemaNode associated with this DataNode
     ///
-    virtual const SchemaNode& schema() const = 0;
+    virtual const SchemaNode& get_schema_node() const = 0;
 
     ///
     /// @brief returns the XPath expression of this Node in the NodeTree
@@ -692,7 +702,7 @@ public:
     /// Get the path expression representing this Node in in the NodeTree.
     /// @return std::string representing the path to this Node.
     ///
-    virtual std::string path() const = 0;
+    virtual std::string get_path() const = 0;
 
     ///
     /// @brief create a DataNode corresponding to the path and set its value
@@ -701,7 +711,7 @@ public:
     /// expression must identify a single node. If the last node created is of schema
     /// type list, leaf-list or anyxml that value is also set in the node.
     /// The returned DataNode is the last node created (the terminal part of the path).
-    /// The user is responsible for managing the memory of this returned tree. Use DataNode#root()
+    /// The user is responsible for managing the memory of this returned tree. Use DataNode#get_root()
     /// to get the root element of the this tree and use that pointer to dispose of the entire tree.
     /// Note in the case of List nodes the keys must be present in the path expression in the form
     /// of predicates.
@@ -712,7 +722,7 @@ public:
     /// @throws YCPPInvalidArgumentError In case the argument is invalid.
     /// @throws YCPPPathError In case the path is invalid.
     ///
-   virtual DataNode& create(const std::string& path);
+   virtual DataNode& create_datanode(const std::string& path);
 
     ///
     /// @brief create a DataNode corresponding to the path and set its value
@@ -721,7 +731,7 @@ public:
     /// expression must identify a single node. If the last node created is of schema
     /// type list, leaf-list or anyxml that value is also set in the node.
     /// The returned DataNode is the last node created (the terminal part of the path).
-    /// The user is responsible for managing the memory of this returned tree. Use DataNode#root()
+    /// The user is responsible for managing the memory of this returned tree. Use DataNode#get_root()
     /// to get the root element of the this tree and use that pointer to dispose of the entire tree.
     /// Note in the case of List nodes the keys must be present in the path expression in the form
     /// of predicates.
@@ -731,7 +741,7 @@ public:
     /// @throws YCPPInvalidArgumentError In case the argument is invalid.
     /// @throws YCPPPathError In case the path is invalid.
     ///
-    virtual DataNode& create(const std::string& path, const std::string& value) = 0;
+    virtual DataNode& create_datanode(const std::string& path, const std::string& value) = 0;
 
     ///
     /// @brief set the value of this DataNode.
@@ -744,7 +754,7 @@ public:
     /// @param[in] value The value to set. This should be the string representation of the YANG type.
     /// @throws YCPPInvalidArgumentError if the DataNode's value cannot be set (for example it represents
     /// a container)
-    virtual void set(const std::string& value) = 0;
+    virtual void set_value(const std::string& value) = 0;
 
 
 
@@ -755,7 +765,7 @@ public:
     ///
     // @returns The string representation of the value.
     ///
-    virtual std::string get() const = 0;
+    virtual std::string get_value() const = 0;
 
     ///
     /// @brief finds nodes that satisfy the given path expression.
@@ -765,7 +775,7 @@ public:
     ///
     /// @param[in] path The path expression.
     /// @return vector of DataNodes that satisfy the path expression supplied.
-    virtual std::vector<std::shared_ptr<DataNode>> find(const std::string& path) const = 0 ;
+    virtual std::vector<std::shared_ptr<DataNode>> find(const std::string& path) = 0 ;
 
 
     ///
@@ -773,21 +783,21 @@ public:
     ///
     /// Returns the parent of this DataNode or nullptr if None exist
     ///
-    virtual DataNode* parent() const = 0;
+    virtual DataNode* get_parent() const = 0;
 
     ///
     /// @brief returns the children of this DataNode
     ///
     /// Returns the children of this DataNode
     ///
-    virtual std::vector<std::shared_ptr<DataNode>> children() const = 0;
+    virtual std::vector<std::shared_ptr<DataNode>> get_children() const = 0;
 
     ///
     /// @brief returns the root DataNode of this tree.
     ///
     /// Returns the root of the DataNode.
     ///
-    virtual const DataNode& root() const = 0;
+    virtual const DataNode& get_root() const = 0;
 
     ///
     /// @brief Add the annotation to this datanode
@@ -897,14 +907,13 @@ class ModelProvider {
 ///
 class Repository {
 public:
-
     ///
     /// @brief Constructor for the Repositor.
     ///
     /// Constructor
     /// Uses the temp directory to download the yang files
     /// from the model provider
-    Repository();
+    Repository(ModelCachingOption caching_option = ModelCachingOption::PER_DEVICE);
 
     ///
     /// @brief Constructor for the Repository.
@@ -913,7 +922,7 @@ public:
     /// @param[in] search_dir The path in the filesystem where yang files can be found.
     /// @throws YCPPInvalidArgumentError if the search_dir is not a valid directory in the
     /// filesystem
-    Repository(const std::string& search_dir);
+    Repository(const std::string& search_dir, ModelCachingOption caching_option = ModelCachingOption::PER_DEVICE);
 
     ~Repository();
 
@@ -927,7 +936,9 @@ public:
     /// @param[in] capabilities vector of Capability
     /// @return pointer to the RootSchemaNode or nullptr if one could not be created.
     ///
-    std::shared_ptr<RootSchemaNode> create_root_schema(const std::vector<path::Capability> & capabilities) ;
+    std::shared_ptr<RootSchemaNode> create_root_schema(const std::vector<path::Capability> & capabilities);
+    std::shared_ptr<RootSchemaNode> create_root_schema(const std::vector<std::unordered_map<std::string, path::Capability>>& lookup_tables,
+                                                       const std::vector<path::Capability> &caps_to_load);
 
     ///
     /// @brief Adds a model provider.
@@ -962,6 +973,10 @@ public:
  private:
     std::vector<ModelProvider*> model_providers;
     bool using_temp_directory;
+
+    // class Repository is the resource manager class for RepositoryPtr,
+    // which is shared by all DataNode/SchemaNode/RootDataNode/RootSchemaNode
+    std::shared_ptr<RepositoryPtr> m_priv_repo;
 };
 
 
@@ -1028,13 +1043,15 @@ public:
     ///@return pointer to the input DataNode or nullptr if the rpc does not have
     /// an input element in the schema.
     ///
-    virtual DataNode& input() const = 0;
+    virtual DataNode& get_input_node() const = 0;
+
+    virtual bool has_output_node() const = 0;
 
     ///
     /// @brief return the SchemaNode associated with this rpc
     ///
     /// @return pointer to the SchemaNode associated with this rpc.
-    virtual SchemaNode& schema() const = 0;
+    virtual SchemaNode& get_schema_node() const = 0;
 
 
 };

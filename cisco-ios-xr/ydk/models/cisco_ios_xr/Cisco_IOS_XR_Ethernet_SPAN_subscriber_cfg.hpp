@@ -7,26 +7,26 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_Ethernet_SPAN_subscriber_cfg {
 
-class SpanTrafficDirectionEnum : public Enum
+class SpanTrafficDirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf rx_only;
-        static const Enum::YLeaf tx_only;
+        static const ydk::Enum::YLeaf rx_only;
+        static const ydk::Enum::YLeaf tx_only;
 
 };
 
-class SpanMirrorIntervalEnum : public Enum
+class SpanMirrorInterval : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_512;
-        static const Enum::YLeaf Y_1k;
-        static const Enum::YLeaf Y_2k;
-        static const Enum::YLeaf Y_4k;
-        static const Enum::YLeaf Y_8k;
-        static const Enum::YLeaf Y_16k;
+        static const ydk::Enum::YLeaf Y_512;
+        static const ydk::Enum::YLeaf Y_1k;
+        static const ydk::Enum::YLeaf Y_2k;
+        static const ydk::Enum::YLeaf Y_4k;
+        static const ydk::Enum::YLeaf Y_8k;
+        static const ydk::Enum::YLeaf Y_16k;
 
 };
 

@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tunnel_vpdn_oper {
 
-class Vpdn : public Entity
+class Vpdn : public ydk::Entity
 {
     public:
         Vpdn();
@@ -18,15 +18,18 @@ class Vpdn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Sessions; //type: Vpdn::Sessions
         class TunnelDestinations; //type: Vpdn::TunnelDestinations
@@ -43,7 +46,7 @@ class Vpdn : public Entity
 }; // Vpdn
 
 
-class Vpdn::Sessions : public Entity
+class Vpdn::Sessions : public ydk::Entity
 {
     public:
         Sessions();
@@ -51,11 +54,13 @@ class Vpdn::Sessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Session; //type: Vpdn::Sessions::Session
 
@@ -64,7 +69,7 @@ class Vpdn::Sessions : public Entity
 }; // Vpdn::Sessions
 
 
-class Vpdn::Sessions::Session : public Entity
+class Vpdn::Sessions::Session : public ydk::Entity
 {
     public:
         Session();
@@ -72,15 +77,17 @@ class Vpdn::Sessions::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_label; //type: string
-        YLeaf setup_time; //type: uint32
-        YLeaf parent_interface_name; //type: string
+        ydk::YLeaf session_label; //type: string
+        ydk::YLeaf setup_time; //type: uint32
+        ydk::YLeaf parent_interface_name; //type: string
         class Session_; //type: Vpdn::Sessions::Session::Session_
         class L2Tp; //type: Vpdn::Sessions::Session::L2Tp
         class Subscriber; //type: Vpdn::Sessions::Session::Subscriber
@@ -94,7 +101,7 @@ class Vpdn::Sessions::Session : public Entity
 }; // Vpdn::Sessions::Session
 
 
-class Vpdn::Sessions::Session::Session_ : public Entity
+class Vpdn::Sessions::Session::Session_ : public ydk::Entity
 {
     public:
         Session_();
@@ -102,25 +109,27 @@ class Vpdn::Sessions::Session::Session_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf last_change; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf username; //type: string
-        YLeaf domain_name; //type: string
-        YLeaf state; //type: SessionStateEnum
-        YLeaf l2tp_session_id; //type: uint16
-        YLeaf l2tp_tunnel_id; //type: uint16
-        YLeaf srg_slave; //type: boolean
+        ydk::YLeaf last_change; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf username; //type: string
+        ydk::YLeaf domain_name; //type: string
+        ydk::YLeaf state; //type: SessionState
+        ydk::YLeaf l2tp_session_id; //type: uint16
+        ydk::YLeaf l2tp_tunnel_id; //type: uint16
+        ydk::YLeaf srg_slave; //type: boolean
 
 }; // Vpdn::Sessions::Session::Session_
 
 
-class Vpdn::Sessions::Session::L2Tp : public Entity
+class Vpdn::Sessions::Session::L2Tp : public ydk::Entity
 {
     public:
         L2Tp();
@@ -128,30 +137,32 @@ class Vpdn::Sessions::Session::L2Tp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf local_endpoint; //type: string
-        YLeaf remote_endpoint; //type: string
-        YLeaf call_serial_number; //type: uint32
-        YLeaf is_l2tp_class_attribute_mask_set; //type: boolean
-        YLeaf local_tunnel_id; //type: uint16
-        YLeaf remote_tunnel_id; //type: uint16
-        YLeaf local_session_id; //type: uint16
-        YLeaf remote_session_id; //type: uint16
-        YLeaf remote_port; //type: uint16
-        YLeaf tunnel_client_authentication_id; //type: string
-        YLeaf tunnel_server_authentication_id; //type: string
-        YLeaf tunnel_assignment_id; //type: string
-        YLeaf is_tunnel_authentication_enabled; //type: boolean
+        ydk::YLeaf local_endpoint; //type: string
+        ydk::YLeaf remote_endpoint; //type: string
+        ydk::YLeaf call_serial_number; //type: uint32
+        ydk::YLeaf is_l2tp_class_attribute_mask_set; //type: boolean
+        ydk::YLeaf local_tunnel_id; //type: uint16
+        ydk::YLeaf remote_tunnel_id; //type: uint16
+        ydk::YLeaf local_session_id; //type: uint16
+        ydk::YLeaf remote_session_id; //type: uint16
+        ydk::YLeaf remote_port; //type: uint16
+        ydk::YLeaf tunnel_client_authentication_id; //type: string
+        ydk::YLeaf tunnel_server_authentication_id; //type: string
+        ydk::YLeaf tunnel_assignment_id; //type: string
+        ydk::YLeaf is_tunnel_authentication_enabled; //type: boolean
 
 }; // Vpdn::Sessions::Session::L2Tp
 
 
-class Vpdn::Sessions::Session::Subscriber : public Entity
+class Vpdn::Sessions::Session::Subscriber : public ydk::Entity
 {
     public:
         Subscriber();
@@ -159,22 +170,24 @@ class Vpdn::Sessions::Session::Subscriber : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf nas_port_type; //type: VpdnNasPortEnum
-        YLeaf physical_channel_id; //type: uint32
-        YLeaf receive_connect_speed; //type: uint64
-        YLeaf transmit_connect_speed; //type: uint64
-        YLeafList nas_port; //type: list of  uint8
+        ydk::YLeaf nas_port_type; //type: VpdnNasPort
+        ydk::YLeaf physical_channel_id; //type: uint32
+        ydk::YLeaf receive_connect_speed; //type: uint64
+        ydk::YLeaf transmit_connect_speed; //type: uint64
+        ydk::YLeafList nas_port; //type: list of  uint8
 
 }; // Vpdn::Sessions::Session::Subscriber
 
 
-class Vpdn::Sessions::Session::Configuration : public Entity
+class Vpdn::Sessions::Session::Configuration : public ydk::Entity
 {
     public:
         Configuration();
@@ -182,18 +195,20 @@ class Vpdn::Sessions::Session::Configuration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf template_name; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf l2tp_busy_timeout; //type: uint16
-        YLeaf tos_mode; //type: TosModeEnum
-        YLeaf tos; //type: uint8
-        YLeaf dsl_line_forwarding; //type: boolean
+        ydk::YLeaf template_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf l2tp_busy_timeout; //type: uint16
+        ydk::YLeaf tos_mode; //type: TosMode
+        ydk::YLeaf tos; //type: uint8
+        ydk::YLeaf dsl_line_forwarding; //type: boolean
         class VpnId; //type: Vpdn::Sessions::Session::Configuration::VpnId
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_vpdn_oper::Vpdn::Sessions::Session::Configuration::VpnId> vpn_id;
@@ -201,7 +216,7 @@ class Vpdn::Sessions::Session::Configuration : public Entity
 }; // Vpdn::Sessions::Session::Configuration
 
 
-class Vpdn::Sessions::Session::Configuration::VpnId : public Entity
+class Vpdn::Sessions::Session::Configuration::VpnId : public ydk::Entity
 {
     public:
         VpnId();
@@ -209,19 +224,21 @@ class Vpdn::Sessions::Session::Configuration::VpnId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf oui; //type: uint32
-        YLeaf index_; //type: uint32
+        ydk::YLeaf oui; //type: uint32
+        ydk::YLeaf index_; //type: uint32
 
 }; // Vpdn::Sessions::Session::Configuration::VpnId
 
 
-class Vpdn::TunnelDestinations : public Entity
+class Vpdn::TunnelDestinations : public ydk::Entity
 {
     public:
         TunnelDestinations();
@@ -229,11 +246,13 @@ class Vpdn::TunnelDestinations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TunnelDestination; //type: Vpdn::TunnelDestinations::TunnelDestination
 
@@ -242,7 +261,7 @@ class Vpdn::TunnelDestinations : public Entity
 }; // Vpdn::TunnelDestinations
 
 
-class Vpdn::TunnelDestinations::TunnelDestination : public Entity
+class Vpdn::TunnelDestinations::TunnelDestination : public ydk::Entity
 {
     public:
         TunnelDestination();
@@ -250,26 +269,28 @@ class Vpdn::TunnelDestinations::TunnelDestination : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
-        YLeaf address; //type: string
-        YLeaf vrf_name_xr; //type: string
-        YLeaf load; //type: uint32
-        YLeaf status; //type: LsgStatusEnum
-        YLeaf connects; //type: uint32
-        YLeaf disconnects; //type: uint32
-        YLeaf retry; //type: uint32
-        YLeaf status_change_time; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf vrf_name_xr; //type: string
+        ydk::YLeaf load; //type: uint32
+        ydk::YLeaf status; //type: LsgStatus
+        ydk::YLeaf connects; //type: uint32
+        ydk::YLeaf disconnects; //type: uint32
+        ydk::YLeaf retry; //type: uint32
+        ydk::YLeaf status_change_time; //type: uint32
 
 }; // Vpdn::TunnelDestinations::TunnelDestination
 
 
-class Vpdn::VpdnMirroring : public Entity
+class Vpdn::VpdnMirroring : public ydk::Entity
 {
     public:
         VpdnMirroring();
@@ -277,17 +298,19 @@ class Vpdn::VpdnMirroring : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sync_not_conn_cnt; //type: uint32
-        YLeaf sso_err_cnt; //type: uint32
-        YLeaf sso_batch_err_cnt; //type: uint32
-        YLeaf alloc_err_cnt; //type: uint32
-        YLeaf alloc_cnt; //type: uint32
+        ydk::YLeaf sync_not_conn_cnt; //type: uint32
+        ydk::YLeaf sso_err_cnt; //type: uint32
+        ydk::YLeaf sso_batch_err_cnt; //type: uint32
+        ydk::YLeaf alloc_err_cnt; //type: uint32
+        ydk::YLeaf alloc_cnt; //type: uint32
         class QadSendStats; //type: Vpdn::VpdnMirroring::QadSendStats
         class QadRecvStats; //type: Vpdn::VpdnMirroring::QadRecvStats
         class QadSendStatsLastClear; //type: Vpdn::VpdnMirroring::QadSendStatsLastClear
@@ -301,7 +324,7 @@ class Vpdn::VpdnMirroring : public Entity
 }; // Vpdn::VpdnMirroring
 
 
-class Vpdn::VpdnMirroring::QadSendStats : public Entity
+class Vpdn::VpdnMirroring::QadSendStats : public ydk::Entity
 {
     public:
         QadSendStats();
@@ -309,36 +332,38 @@ class Vpdn::VpdnMirroring::QadSendStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf msgs_sent; //type: uint32
-        YLeaf acks_sent; //type: uint32
-        YLeaf no_partner; //type: uint32
-        YLeaf sends_failed; //type: uint32
-        YLeaf acks_failed; //type: uint32
-        YLeaf pending_acks; //type: uint32
-        YLeaf timeouts; //type: uint32
-        YLeaf suspends; //type: uint32
-        YLeaf resumes; //type: uint32
-        YLeaf sends_fragment; //type: uint32
-        YLeaf qad_last_seq_number; //type: uint32
-        YLeaf qad_frag_count; //type: uint32
-        YLeaf qad_ack_count; //type: uint32
-        YLeaf qad_unknown_acks; //type: uint32
-        YLeaf qad_timeouts; //type: uint32
-        YLeaf qad_rx_count; //type: uint32
-        YLeaf qad_rx_list_count; //type: uint32
-        YLeaf qad_rx_list_q_size; //type: uint32
-        YLeaf qad_rx_first_seq_number; //type: uint32
+        ydk::YLeaf msgs_sent; //type: uint32
+        ydk::YLeaf acks_sent; //type: uint32
+        ydk::YLeaf no_partner; //type: uint32
+        ydk::YLeaf sends_failed; //type: uint32
+        ydk::YLeaf acks_failed; //type: uint32
+        ydk::YLeaf pending_acks; //type: uint32
+        ydk::YLeaf timeouts; //type: uint32
+        ydk::YLeaf suspends; //type: uint32
+        ydk::YLeaf resumes; //type: uint32
+        ydk::YLeaf sends_fragment; //type: uint32
+        ydk::YLeaf qad_last_seq_number; //type: uint32
+        ydk::YLeaf qad_frag_count; //type: uint32
+        ydk::YLeaf qad_ack_count; //type: uint32
+        ydk::YLeaf qad_unknown_acks; //type: uint32
+        ydk::YLeaf qad_timeouts; //type: uint32
+        ydk::YLeaf qad_rx_count; //type: uint32
+        ydk::YLeaf qad_rx_list_count; //type: uint32
+        ydk::YLeaf qad_rx_list_q_size; //type: uint32
+        ydk::YLeaf qad_rx_first_seq_number; //type: uint32
 
 }; // Vpdn::VpdnMirroring::QadSendStats
 
 
-class Vpdn::VpdnMirroring::QadRecvStats : public Entity
+class Vpdn::VpdnMirroring::QadRecvStats : public ydk::Entity
 {
     public:
         QadRecvStats();
@@ -346,24 +371,26 @@ class Vpdn::VpdnMirroring::QadRecvStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf msgs_recvd; //type: uint32
-        YLeaf acks_recvd; //type: uint32
-        YLeaf recvd_acks_failed; //type: uint32
-        YLeaf init_drops; //type: uint32
-        YLeaf msg_drops; //type: uint32
-        YLeaf ooo_drops; //type: uint32
-        YLeaf stale_msgs; //type: uint32
+        ydk::YLeaf msgs_recvd; //type: uint32
+        ydk::YLeaf acks_recvd; //type: uint32
+        ydk::YLeaf recvd_acks_failed; //type: uint32
+        ydk::YLeaf init_drops; //type: uint32
+        ydk::YLeaf msg_drops; //type: uint32
+        ydk::YLeaf ooo_drops; //type: uint32
+        ydk::YLeaf stale_msgs; //type: uint32
 
 }; // Vpdn::VpdnMirroring::QadRecvStats
 
 
-class Vpdn::VpdnMirroring::QadSendStatsLastClear : public Entity
+class Vpdn::VpdnMirroring::QadSendStatsLastClear : public ydk::Entity
 {
     public:
         QadSendStatsLastClear();
@@ -371,36 +398,38 @@ class Vpdn::VpdnMirroring::QadSendStatsLastClear : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf msgs_sent; //type: uint32
-        YLeaf acks_sent; //type: uint32
-        YLeaf no_partner; //type: uint32
-        YLeaf sends_failed; //type: uint32
-        YLeaf acks_failed; //type: uint32
-        YLeaf pending_acks; //type: uint32
-        YLeaf timeouts; //type: uint32
-        YLeaf suspends; //type: uint32
-        YLeaf resumes; //type: uint32
-        YLeaf sends_fragment; //type: uint32
-        YLeaf qad_last_seq_number; //type: uint32
-        YLeaf qad_frag_count; //type: uint32
-        YLeaf qad_ack_count; //type: uint32
-        YLeaf qad_unknown_acks; //type: uint32
-        YLeaf qad_timeouts; //type: uint32
-        YLeaf qad_rx_count; //type: uint32
-        YLeaf qad_rx_list_count; //type: uint32
-        YLeaf qad_rx_list_q_size; //type: uint32
-        YLeaf qad_rx_first_seq_number; //type: uint32
+        ydk::YLeaf msgs_sent; //type: uint32
+        ydk::YLeaf acks_sent; //type: uint32
+        ydk::YLeaf no_partner; //type: uint32
+        ydk::YLeaf sends_failed; //type: uint32
+        ydk::YLeaf acks_failed; //type: uint32
+        ydk::YLeaf pending_acks; //type: uint32
+        ydk::YLeaf timeouts; //type: uint32
+        ydk::YLeaf suspends; //type: uint32
+        ydk::YLeaf resumes; //type: uint32
+        ydk::YLeaf sends_fragment; //type: uint32
+        ydk::YLeaf qad_last_seq_number; //type: uint32
+        ydk::YLeaf qad_frag_count; //type: uint32
+        ydk::YLeaf qad_ack_count; //type: uint32
+        ydk::YLeaf qad_unknown_acks; //type: uint32
+        ydk::YLeaf qad_timeouts; //type: uint32
+        ydk::YLeaf qad_rx_count; //type: uint32
+        ydk::YLeaf qad_rx_list_count; //type: uint32
+        ydk::YLeaf qad_rx_list_q_size; //type: uint32
+        ydk::YLeaf qad_rx_first_seq_number; //type: uint32
 
 }; // Vpdn::VpdnMirroring::QadSendStatsLastClear
 
 
-class Vpdn::VpdnMirroring::QadRecvStatsLastClear : public Entity
+class Vpdn::VpdnMirroring::QadRecvStatsLastClear : public ydk::Entity
 {
     public:
         QadRecvStatsLastClear();
@@ -408,24 +437,26 @@ class Vpdn::VpdnMirroring::QadRecvStatsLastClear : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf msgs_recvd; //type: uint32
-        YLeaf acks_recvd; //type: uint32
-        YLeaf recvd_acks_failed; //type: uint32
-        YLeaf init_drops; //type: uint32
-        YLeaf msg_drops; //type: uint32
-        YLeaf ooo_drops; //type: uint32
-        YLeaf stale_msgs; //type: uint32
+        ydk::YLeaf msgs_recvd; //type: uint32
+        ydk::YLeaf acks_recvd; //type: uint32
+        ydk::YLeaf recvd_acks_failed; //type: uint32
+        ydk::YLeaf init_drops; //type: uint32
+        ydk::YLeaf msg_drops; //type: uint32
+        ydk::YLeaf ooo_drops; //type: uint32
+        ydk::YLeaf stale_msgs; //type: uint32
 
 }; // Vpdn::VpdnMirroring::QadRecvStatsLastClear
 
 
-class Vpdn::VpdnRedundancy : public Entity
+class Vpdn::VpdnRedundancy : public ydk::Entity
 {
     public:
         VpdnRedundancy();
@@ -433,23 +464,25 @@ class Vpdn::VpdnRedundancy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_total; //type: uint32
-        YLeaf session_synced; //type: uint32
-        YLeaf state; //type: VpdnStateEnum
-        YLeaf start_time; //type: uint64
-        YLeaf finish_time; //type: uint64
-        YLeaf abort_time; //type: uint64
+        ydk::YLeaf session_total; //type: uint32
+        ydk::YLeaf session_synced; //type: uint32
+        ydk::YLeaf state; //type: VpdnState
+        ydk::YLeaf start_time; //type: uint64
+        ydk::YLeaf finish_time; //type: uint64
+        ydk::YLeaf abort_time; //type: uint64
 
 }; // Vpdn::VpdnRedundancy
 
 
-class Vpdn::HistoryFailures : public Entity
+class Vpdn::HistoryFailures : public ydk::Entity
 {
     public:
         HistoryFailures();
@@ -457,11 +490,13 @@ class Vpdn::HistoryFailures : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class HistoryFailure; //type: Vpdn::HistoryFailures::HistoryFailure
 
@@ -470,7 +505,7 @@ class Vpdn::HistoryFailures : public Entity
 }; // Vpdn::HistoryFailures
 
 
-class Vpdn::HistoryFailures::HistoryFailure : public Entity
+class Vpdn::HistoryFailures::HistoryFailure : public ydk::Entity
 {
     public:
         HistoryFailure();
@@ -478,124 +513,126 @@ class Vpdn::HistoryFailures::HistoryFailure : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf username; //type: string
-        YLeaf remote_name; //type: string
-        YLeaf username_xr; //type: string
-        YLeaf domain_name; //type: string
-        YLeaf mid; //type: uint16
-        YLeaf nas; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf remote_client_id; //type: uint16
-        YLeaf home_gateway; //type: string
-        YLeaf source_address; //type: string
-        YLeaf local_client_id; //type: uint16
-        YLeaf event_time; //type: string
-        YLeaf error_repeat_count; //type: uint16
-        YLeaf failure_type; //type: VpdnFailcodeEnum
+        ydk::YLeaf username; //type: string
+        ydk::YLeaf remote_name; //type: string
+        ydk::YLeaf username_xr; //type: string
+        ydk::YLeaf domain_name; //type: string
+        ydk::YLeaf mid; //type: uint16
+        ydk::YLeaf nas; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf remote_client_id; //type: uint16
+        ydk::YLeaf home_gateway; //type: string
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf local_client_id; //type: uint16
+        ydk::YLeaf event_time; //type: string
+        ydk::YLeaf error_repeat_count; //type: uint16
+        ydk::YLeaf failure_type; //type: VpdnFailcode
 
 }; // Vpdn::HistoryFailures::HistoryFailure
 
-class SessionStateEnum : public Enum
+class LsgStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf idle;
-        static const Enum::YLeaf connected;
-        static const Enum::YLeaf established;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf testable;
+        static const ydk::Enum::YLeaf testing;
 
 };
 
-class VpdnStateEnum : public Enum
+class VpdnNasPort : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf initial_state;
-        static const Enum::YLeaf init_sync_in_progress;
-        static const Enum::YLeaf steady_state;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf bri;
+        static const ydk::Enum::YLeaf serial;
+        static const ydk::Enum::YLeaf asynchronous;
+        static const ydk::Enum::YLeaf vty;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf ppp_atm;
+        static const ydk::Enum::YLeaf pppoe_over_atm;
+        static const ydk::Enum::YLeaf pppoe_over_ethernet;
+        static const ydk::Enum::YLeaf pppoe_over_vlan;
+        static const ydk::Enum::YLeaf pppoe_over_q_in_q;
+        static const ydk::Enum::YLeaf v120;
+        static const ydk::Enum::YLeaf v110;
+        static const ydk::Enum::YLeaf piafs;
+        static const ydk::Enum::YLeaf x75;
+        static const ydk::Enum::YLeaf ip_sec;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf virtual_pppoe_over_ethernet;
+        static const ydk::Enum::YLeaf virtual_pppoe_over_vlan;
+        static const ydk::Enum::YLeaf virtual_pppoe_over_q_in_q;
+        static const ydk::Enum::YLeaf ipo_e_over_ethernet;
+        static const ydk::Enum::YLeaf ipo_e_over_vlan;
+        static const ydk::Enum::YLeaf ipo_e_over_q_in_q;
+        static const ydk::Enum::YLeaf virtual_i_po_e_over_ethernet;
+        static const ydk::Enum::YLeaf virtual_i_po_e_over_vlan;
+        static const ydk::Enum::YLeaf virtual_i_po_e_over_q_in_q;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
-class VpdnFailcodeEnum : public Enum
+class TosMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf peer_action;
-        static const Enum::YLeaf authentication;
-        static const Enum::YLeaf authentication_error;
-        static const Enum::YLeaf authentication_failed;
-        static const Enum::YLeaf authorization;
-        static const Enum::YLeaf authorization_failed;
-        static const Enum::YLeaf home_gatewayfailure;
-        static const Enum::YLeaf connection_termination;
-        static const Enum::YLeaf no_resources_available;
-        static const Enum::YLeaf timer_expiry;
-        static const Enum::YLeaf session_mid_exceeded;
-        static const Enum::YLeaf soft_shut;
-        static const Enum::YLeaf session_limit_exceeded;
-        static const Enum::YLeaf administrative;
-        static const Enum::YLeaf link_failure;
-        static const Enum::YLeaf security;
-        static const Enum::YLeaf tunnel_in_resync;
-        static const Enum::YLeaf call_prarmeters;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf reflect;
 
 };
 
-class VpdnNasPortEnum : public Enum
+class VpdnState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf primary;
-        static const Enum::YLeaf bri;
-        static const Enum::YLeaf serial;
-        static const Enum::YLeaf asynchronous;
-        static const Enum::YLeaf vty;
-        static const Enum::YLeaf atm;
-        static const Enum::YLeaf ethernet;
-        static const Enum::YLeaf ppp_atm;
-        static const Enum::YLeaf pppoe_over_atm;
-        static const Enum::YLeaf pppoe_over_ethernet;
-        static const Enum::YLeaf pppoe_over_vlan;
-        static const Enum::YLeaf pppoe_over_q_in_q;
-        static const Enum::YLeaf v120;
-        static const Enum::YLeaf v110;
-        static const Enum::YLeaf piafs;
-        static const Enum::YLeaf x75;
-        static const Enum::YLeaf ip_sec;
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf virtual_pppoe_over_ethernet;
-        static const Enum::YLeaf virtual_pppoe_over_vlan;
-        static const Enum::YLeaf virtual_pppoe_over_q_in_q;
-        static const Enum::YLeaf ipo_e_over_ethernet;
-        static const Enum::YLeaf ipo_e_over_vlan;
-        static const Enum::YLeaf ipo_e_over_q_in_q;
-        static const Enum::YLeaf virtual_i_po_e_over_ethernet;
-        static const Enum::YLeaf virtual_i_po_e_over_vlan;
-        static const Enum::YLeaf virtual_i_po_e_over_q_in_q;
-        static const Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf initial_state;
+        static const ydk::Enum::YLeaf init_sync_in_progress;
+        static const ydk::Enum::YLeaf steady_state;
 
 };
 
-class TosModeEnum : public Enum
+class VpdnFailcode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf default_;
-        static const Enum::YLeaf set;
-        static const Enum::YLeaf reflect;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf peer_action;
+        static const ydk::Enum::YLeaf authentication;
+        static const ydk::Enum::YLeaf authentication_error;
+        static const ydk::Enum::YLeaf authentication_failed;
+        static const ydk::Enum::YLeaf authorization;
+        static const ydk::Enum::YLeaf authorization_failed;
+        static const ydk::Enum::YLeaf home_gatewayfailure;
+        static const ydk::Enum::YLeaf connection_termination;
+        static const ydk::Enum::YLeaf no_resources_available;
+        static const ydk::Enum::YLeaf timer_expiry;
+        static const ydk::Enum::YLeaf session_mid_exceeded;
+        static const ydk::Enum::YLeaf soft_shut;
+        static const ydk::Enum::YLeaf session_limit_exceeded;
+        static const ydk::Enum::YLeaf administrative;
+        static const ydk::Enum::YLeaf link_failure;
+        static const ydk::Enum::YLeaf security;
+        static const ydk::Enum::YLeaf tunnel_in_resync;
+        static const ydk::Enum::YLeaf call_prarmeters;
 
 };
 
-class LsgStatusEnum : public Enum
+class SessionState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf active;
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf testable;
-        static const Enum::YLeaf testing;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf established;
 
 };
 

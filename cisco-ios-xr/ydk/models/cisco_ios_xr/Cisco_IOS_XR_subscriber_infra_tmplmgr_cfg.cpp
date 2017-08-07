@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg {
 
 DynamicTemplate::DynamicTemplate()
@@ -37,7 +39,7 @@ bool DynamicTemplate::has_data() const
 
 bool DynamicTemplate::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ip_subscribers !=  nullptr && ip_subscribers->has_operation())
 	|| (ppps !=  nullptr && ppps->has_operation())
 	|| (subscriber_services !=  nullptr && subscriber_services->has_operation());
@@ -123,7 +125,11 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::get_children() c
     return children;
 }
 
-void DynamicTemplate::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void DynamicTemplate::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -145,6 +151,18 @@ std::string DynamicTemplate::get_bundle_name() const
 augment_capabilities_function DynamicTemplate::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> DynamicTemplate::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool DynamicTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscribers" || name == "ppps" || name == "subscriber-services")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppps()
@@ -173,7 +191,7 @@ bool DynamicTemplate::Ppps::has_operation() const
         if(ppp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DynamicTemplate::Ppps::get_segment_path() const
@@ -238,8 +256,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::get_childr
     return children;
 }
 
-void DynamicTemplate::Ppps::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ppp")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ppp()
@@ -315,9 +344,9 @@ bool DynamicTemplate::Ppps::Ppp::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(vrf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(vrf.yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (dhcpv6 !=  nullptr && dhcpv6->has_operation())
 	|| (igmp !=  nullptr && igmp->has_operation())
@@ -356,8 +385,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -558,16 +587,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::get_c
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting" || name == "dhcpv6" || name == "igmp" || name == "ipv4-network" || name == "ipv4-packet-filter" || name == "ipv6-neighbor" || name == "ipv6-network" || name == "ipv6-packet-filter" || name == "pbr" || name == "ppp-template" || name == "pppoe-template" || name == "qos" || name == "span-monitor-sessions" || name == "template-name" || name == "vrf")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSessions()
@@ -596,7 +648,7 @@ bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::has_operation() const
         if(span_monitor_session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::get_segment_path() const
@@ -661,8 +713,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::SpanM
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "span-monitor-session")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::SpanMonitorSession()
@@ -692,11 +755,11 @@ bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::has_da
 
 bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_class.operation)
-	|| is_set(acl.operation)
-	|| is_set(mirror_first.operation)
-	|| is_set(mirror_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(session_class.yfilter)
+	|| ydk::is_set(acl.yfilter)
+	|| ydk::is_set(mirror_first.yfilter)
+	|| ydk::is_set(mirror_interval.yfilter)
 	|| (attachment !=  nullptr && attachment->has_operation());
 }
 
@@ -723,10 +786,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_class.is_set || is_set(session_class.operation)) leaf_name_data.push_back(session_class.get_name_leafdata());
-    if (acl.is_set || is_set(acl.operation)) leaf_name_data.push_back(acl.get_name_leafdata());
-    if (mirror_first.is_set || is_set(mirror_first.operation)) leaf_name_data.push_back(mirror_first.get_name_leafdata());
-    if (mirror_interval.is_set || is_set(mirror_interval.operation)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
+    if (session_class.is_set || is_set(session_class.yfilter)) leaf_name_data.push_back(session_class.get_name_leafdata());
+    if (acl.is_set || is_set(acl.yfilter)) leaf_name_data.push_back(acl.get_name_leafdata());
+    if (mirror_first.is_set || is_set(mirror_first.yfilter)) leaf_name_data.push_back(mirror_first.get_name_leafdata());
+    if (mirror_interval.is_set || is_set(mirror_interval.yfilter)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -759,24 +822,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::SpanM
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-class")
     {
         session_class = value;
+        session_class.value_namespace = name_space;
+        session_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl")
     {
         acl = value;
+        acl.value_namespace = name_space;
+        acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-first")
     {
         mirror_first = value;
+        mirror_first.value_namespace = name_space;
+        mirror_first.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-interval")
     {
         mirror_interval = value;
+        mirror_interval.value_namespace = name_space;
+        mirror_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-class")
+    {
+        session_class.yfilter = yfilter;
+    }
+    if(value_path == "acl")
+    {
+        acl.yfilter = yfilter;
+    }
+    if(value_path == "mirror-first")
+    {
+        mirror_first.yfilter = yfilter;
+    }
+    if(value_path == "mirror-interval")
+    {
+        mirror_interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attachment" || name == "session-class" || name == "acl" || name == "mirror-first" || name == "mirror-interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment::Attachment()
@@ -801,10 +899,10 @@ bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attach
 
 bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(port_level_enable.operation)
-	|| is_set(session_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(port_level_enable.yfilter)
+	|| ydk::is_set(session_name.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment::get_segment_path() const
@@ -830,9 +928,9 @@ const EntityPath DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (port_level_enable.is_set || is_set(port_level_enable.operation)) leaf_name_data.push_back(port_level_enable.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (port_level_enable.is_set || is_set(port_level_enable.yfilter)) leaf_name_data.push_back(port_level_enable.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -851,20 +949,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::SpanM
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-level-enable")
     {
         port_level_enable = value;
+        port_level_enable.value_namespace = name_space;
+        port_level_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "port-level-enable")
+    {
+        port_level_enable.yfilter = yfilter;
+    }
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "port-level-enable" || name == "session-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Ipv4PacketFilter()
@@ -889,7 +1016,7 @@ bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inbound !=  nullptr && inbound->has_operation())
 	|| (outbound !=  nullptr && outbound->has_operation());
 }
@@ -963,8 +1090,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4P
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::Outbound()
@@ -991,11 +1129,11 @@ bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(hardware_count.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(hardware_count.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::get_segment_path() const
@@ -1021,10 +1159,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (hardware_count.is_set || is_set(hardware_count.operation)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (hardware_count.is_set || is_set(hardware_count.yfilter)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1043,24 +1181,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4P
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-count")
     {
         hardware_count = value;
+        hardware_count.value_namespace = name_space;
+        hardware_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-count")
+    {
+        hardware_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "hardware-count" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::Inbound()
@@ -1087,11 +1260,11 @@ bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(hardware_count.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(hardware_count.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::get_segment_path() const
@@ -1117,10 +1290,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (hardware_count.is_set || is_set(hardware_count.operation)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (hardware_count.is_set || is_set(hardware_count.yfilter)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1139,24 +1312,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4P
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-count")
     {
         hardware_count = value;
+        hardware_count.value_namespace = name_space;
+        hardware_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-count")
+    {
+        hardware_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "hardware-count" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Ipv6PacketFilter()
@@ -1181,7 +1389,7 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inbound !=  nullptr && inbound->has_operation())
 	|| (outbound !=  nullptr && outbound->has_operation());
 }
@@ -1255,8 +1463,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6P
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::Inbound()
@@ -1281,10 +1500,10 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::get_segment_path() const
@@ -1310,9 +1529,9 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1331,20 +1550,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6P
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::Outbound()
@@ -1369,10 +1617,10 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::get_segment_path() const
@@ -1398,9 +1646,9 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1419,20 +1667,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6P
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Igmp::Igmp()
@@ -1455,7 +1732,7 @@ bool DynamicTemplate::Ppps::Ppp::Igmp::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Igmp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_vrf !=  nullptr && default_vrf->has_operation());
 }
 
@@ -1514,8 +1791,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp:
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Igmp::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::DefaultVrf()
@@ -1549,13 +1837,13 @@ bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_group.operation)
-	|| is_set(max_groups.operation)
-	|| is_set(multicast_mode.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(max_groups.yfilter)
+	|| ydk::is_set(multicast_mode.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation());
 }
 
@@ -1582,12 +1870,12 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (max_groups.is_set || is_set(max_groups.operation)) leaf_name_data.push_back(max_groups.get_name_leafdata());
-    if (multicast_mode.is_set || is_set(multicast_mode.operation)) leaf_name_data.push_back(multicast_mode.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (max_groups.is_set || is_set(max_groups.yfilter)) leaf_name_data.push_back(max_groups.get_name_leafdata());
+    if (multicast_mode.is_set || is_set(multicast_mode.yfilter)) leaf_name_data.push_back(multicast_mode.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1620,32 +1908,79 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp:
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-groups")
     {
         max_groups = value;
+        max_groups.value_namespace = name_space;
+        max_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-mode")
     {
         multicast_mode = value;
+        multicast_mode.value_namespace = name_space;
+        multicast_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "max-groups")
+    {
+        max_groups.yfilter = yfilter;
+    }
+    if(value_path == "multicast-mode")
+    {
+        multicast_mode.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "access-group" || name == "max-groups" || name == "multicast-mode" || name == "query-interval" || name == "query-max-response-time" || name == "version")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::ExplicitTracking()
@@ -1668,9 +2003,9 @@ bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_data() 
 
 bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_segment_path() const
@@ -1696,8 +2031,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1716,16 +2051,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Igmp:
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv4Network::Ipv4Network()
@@ -1752,11 +2110,11 @@ bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mtu.operation)
-	|| is_set(rpf.operation)
-	|| is_set(unnumbered.operation)
-	|| is_set(unreachables.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(rpf.yfilter)
+	|| ydk::is_set(unnumbered.yfilter)
+	|| ydk::is_set(unreachables.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv4Network::get_segment_path() const
@@ -1782,10 +2140,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv4Network::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (rpf.is_set || is_set(rpf.operation)) leaf_name_data.push_back(rpf.get_name_leafdata());
-    if (unnumbered.is_set || is_set(unnumbered.operation)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.operation)) leaf_name_data.push_back(unreachables.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1804,31 +2162,66 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv4N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv4Network::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf")
     {
         rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unnumbered")
     {
         unnumbered = value;
+        unnumbered.value_namespace = name_space;
+        unnumbered.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unreachables")
     {
         unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+    if(value_path == "unnumbered")
+    {
+        unnumbered.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mtu" || name == "rpf" || name == "unnumbered" || name == "unreachables")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6Network::Ipv6Network()
     :
     mtu{YType::uint32, "mtu"},
-    unreachables{YType::empty, "unreachables"},
-    verify{YType::enumeration, "verify"}
+    rpf{YType::boolean, "rpf"},
+    unreachables{YType::empty, "unreachables"}
     	,
     addresses(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses>())
 {
@@ -1844,17 +2237,17 @@ DynamicTemplate::Ppps::Ppp::Ipv6Network::~Ipv6Network()
 bool DynamicTemplate::Ppps::Ppp::Ipv6Network::has_data() const
 {
     return mtu.is_set
+	|| rpf.is_set
 	|| unreachables.is_set
-	|| verify.is_set
 	|| (addresses !=  nullptr && addresses->has_data());
 }
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6Network::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mtu.operation)
-	|| is_set(unreachables.operation)
-	|| is_set(verify.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(rpf.yfilter)
+	|| ydk::is_set(unreachables.yfilter)
 	|| (addresses !=  nullptr && addresses->has_operation());
 }
 
@@ -1881,9 +2274,9 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Network::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.operation)) leaf_name_data.push_back(unreachables.get_name_leafdata());
-    if (verify.is_set || is_set(verify.operation)) leaf_name_data.push_back(verify.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1916,20 +2309,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6Network::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf")
+    {
+        rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unreachables")
     {
         unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "verify")
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
     {
-        verify = value;
+        mtu.yfilter = yfilter;
     }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addresses" || name == "mtu" || name == "rpf" || name == "unreachables")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::Addresses()
@@ -1952,7 +2374,7 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (auto_configuration !=  nullptr && auto_configuration->has_operation());
 }
 
@@ -2011,8 +2433,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-configuration")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::AutoConfiguration()
@@ -2033,8 +2466,8 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::has_
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::get_segment_path() const
@@ -2060,7 +2493,7 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfigu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2079,12 +2512,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::Ipv6Neighbor()
@@ -2142,21 +2592,21 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(framed_prefix_pool.operation)
-	|| is_set(managed_config.operation)
-	|| is_set(ns_interval.operation)
-	|| is_set(nud_enable.operation)
-	|| is_set(other_config.operation)
-	|| is_set(ra_lifetime.operation)
-	|| is_set(ra_suppress.operation)
-	|| is_set(ra_suppress_mtu.operation)
-	|| is_set(ra_unicast.operation)
-	|| is_set(ra_unspecify_hoplimit.operation)
-	|| is_set(reachable_time.operation)
-	|| is_set(router_preference.operation)
-	|| is_set(start_ra_on_ipv6_enable.operation)
-	|| is_set(suppress_cache_learning.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(framed_prefix_pool.yfilter)
+	|| ydk::is_set(managed_config.yfilter)
+	|| ydk::is_set(ns_interval.yfilter)
+	|| ydk::is_set(nud_enable.yfilter)
+	|| ydk::is_set(other_config.yfilter)
+	|| ydk::is_set(ra_lifetime.yfilter)
+	|| ydk::is_set(ra_suppress.yfilter)
+	|| ydk::is_set(ra_suppress_mtu.yfilter)
+	|| ydk::is_set(ra_unicast.yfilter)
+	|| ydk::is_set(ra_unspecify_hoplimit.yfilter)
+	|| ydk::is_set(reachable_time.yfilter)
+	|| ydk::is_set(router_preference.yfilter)
+	|| ydk::is_set(start_ra_on_ipv6_enable.yfilter)
+	|| ydk::is_set(suppress_cache_learning.yfilter)
 	|| (duplicate_address_detection !=  nullptr && duplicate_address_detection->has_operation())
 	|| (framed_prefix !=  nullptr && framed_prefix->has_operation())
 	|| (ra_initial !=  nullptr && ra_initial->has_operation())
@@ -2186,20 +2636,20 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (framed_prefix_pool.is_set || is_set(framed_prefix_pool.operation)) leaf_name_data.push_back(framed_prefix_pool.get_name_leafdata());
-    if (managed_config.is_set || is_set(managed_config.operation)) leaf_name_data.push_back(managed_config.get_name_leafdata());
-    if (ns_interval.is_set || is_set(ns_interval.operation)) leaf_name_data.push_back(ns_interval.get_name_leafdata());
-    if (nud_enable.is_set || is_set(nud_enable.operation)) leaf_name_data.push_back(nud_enable.get_name_leafdata());
-    if (other_config.is_set || is_set(other_config.operation)) leaf_name_data.push_back(other_config.get_name_leafdata());
-    if (ra_lifetime.is_set || is_set(ra_lifetime.operation)) leaf_name_data.push_back(ra_lifetime.get_name_leafdata());
-    if (ra_suppress.is_set || is_set(ra_suppress.operation)) leaf_name_data.push_back(ra_suppress.get_name_leafdata());
-    if (ra_suppress_mtu.is_set || is_set(ra_suppress_mtu.operation)) leaf_name_data.push_back(ra_suppress_mtu.get_name_leafdata());
-    if (ra_unicast.is_set || is_set(ra_unicast.operation)) leaf_name_data.push_back(ra_unicast.get_name_leafdata());
-    if (ra_unspecify_hoplimit.is_set || is_set(ra_unspecify_hoplimit.operation)) leaf_name_data.push_back(ra_unspecify_hoplimit.get_name_leafdata());
-    if (reachable_time.is_set || is_set(reachable_time.operation)) leaf_name_data.push_back(reachable_time.get_name_leafdata());
-    if (router_preference.is_set || is_set(router_preference.operation)) leaf_name_data.push_back(router_preference.get_name_leafdata());
-    if (start_ra_on_ipv6_enable.is_set || is_set(start_ra_on_ipv6_enable.operation)) leaf_name_data.push_back(start_ra_on_ipv6_enable.get_name_leafdata());
-    if (suppress_cache_learning.is_set || is_set(suppress_cache_learning.operation)) leaf_name_data.push_back(suppress_cache_learning.get_name_leafdata());
+    if (framed_prefix_pool.is_set || is_set(framed_prefix_pool.yfilter)) leaf_name_data.push_back(framed_prefix_pool.get_name_leafdata());
+    if (managed_config.is_set || is_set(managed_config.yfilter)) leaf_name_data.push_back(managed_config.get_name_leafdata());
+    if (ns_interval.is_set || is_set(ns_interval.yfilter)) leaf_name_data.push_back(ns_interval.get_name_leafdata());
+    if (nud_enable.is_set || is_set(nud_enable.yfilter)) leaf_name_data.push_back(nud_enable.get_name_leafdata());
+    if (other_config.is_set || is_set(other_config.yfilter)) leaf_name_data.push_back(other_config.get_name_leafdata());
+    if (ra_lifetime.is_set || is_set(ra_lifetime.yfilter)) leaf_name_data.push_back(ra_lifetime.get_name_leafdata());
+    if (ra_suppress.is_set || is_set(ra_suppress.yfilter)) leaf_name_data.push_back(ra_suppress.get_name_leafdata());
+    if (ra_suppress_mtu.is_set || is_set(ra_suppress_mtu.yfilter)) leaf_name_data.push_back(ra_suppress_mtu.get_name_leafdata());
+    if (ra_unicast.is_set || is_set(ra_unicast.yfilter)) leaf_name_data.push_back(ra_unicast.get_name_leafdata());
+    if (ra_unspecify_hoplimit.is_set || is_set(ra_unspecify_hoplimit.yfilter)) leaf_name_data.push_back(ra_unspecify_hoplimit.get_name_leafdata());
+    if (reachable_time.is_set || is_set(reachable_time.yfilter)) leaf_name_data.push_back(reachable_time.get_name_leafdata());
+    if (router_preference.is_set || is_set(router_preference.yfilter)) leaf_name_data.push_back(router_preference.get_name_leafdata());
+    if (start_ra_on_ipv6_enable.is_set || is_set(start_ra_on_ipv6_enable.yfilter)) leaf_name_data.push_back(start_ra_on_ipv6_enable.get_name_leafdata());
+    if (suppress_cache_learning.is_set || is_set(suppress_cache_learning.yfilter)) leaf_name_data.push_back(suppress_cache_learning.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2274,64 +2724,159 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "framed-prefix-pool")
     {
         framed_prefix_pool = value;
+        framed_prefix_pool.value_namespace = name_space;
+        framed_prefix_pool.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managed-config")
     {
         managed_config = value;
+        managed_config.value_namespace = name_space;
+        managed_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ns-interval")
     {
         ns_interval = value;
+        ns_interval.value_namespace = name_space;
+        ns_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nud-enable")
     {
         nud_enable = value;
+        nud_enable.value_namespace = name_space;
+        nud_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "other-config")
     {
         other_config = value;
+        other_config.value_namespace = name_space;
+        other_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-lifetime")
     {
         ra_lifetime = value;
+        ra_lifetime.value_namespace = name_space;
+        ra_lifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-suppress")
     {
         ra_suppress = value;
+        ra_suppress.value_namespace = name_space;
+        ra_suppress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-suppress-mtu")
     {
         ra_suppress_mtu = value;
+        ra_suppress_mtu.value_namespace = name_space;
+        ra_suppress_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-unicast")
     {
         ra_unicast = value;
+        ra_unicast.value_namespace = name_space;
+        ra_unicast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-unspecify-hoplimit")
     {
         ra_unspecify_hoplimit = value;
+        ra_unspecify_hoplimit.value_namespace = name_space;
+        ra_unspecify_hoplimit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reachable-time")
     {
         reachable_time = value;
+        reachable_time.value_namespace = name_space;
+        reachable_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-preference")
     {
         router_preference = value;
+        router_preference.value_namespace = name_space;
+        router_preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-ra-on-ipv6-enable")
     {
         start_ra_on_ipv6_enable = value;
+        start_ra_on_ipv6_enable.value_namespace = name_space;
+        start_ra_on_ipv6_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-cache-learning")
     {
         suppress_cache_learning = value;
+        suppress_cache_learning.value_namespace = name_space;
+        suppress_cache_learning.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "framed-prefix-pool")
+    {
+        framed_prefix_pool.yfilter = yfilter;
+    }
+    if(value_path == "managed-config")
+    {
+        managed_config.yfilter = yfilter;
+    }
+    if(value_path == "ns-interval")
+    {
+        ns_interval.yfilter = yfilter;
+    }
+    if(value_path == "nud-enable")
+    {
+        nud_enable.yfilter = yfilter;
+    }
+    if(value_path == "other-config")
+    {
+        other_config.yfilter = yfilter;
+    }
+    if(value_path == "ra-lifetime")
+    {
+        ra_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "ra-suppress")
+    {
+        ra_suppress.yfilter = yfilter;
+    }
+    if(value_path == "ra-suppress-mtu")
+    {
+        ra_suppress_mtu.yfilter = yfilter;
+    }
+    if(value_path == "ra-unicast")
+    {
+        ra_unicast.yfilter = yfilter;
+    }
+    if(value_path == "ra-unspecify-hoplimit")
+    {
+        ra_unspecify_hoplimit.yfilter = yfilter;
+    }
+    if(value_path == "reachable-time")
+    {
+        reachable_time.yfilter = yfilter;
+    }
+    if(value_path == "router-preference")
+    {
+        router_preference.yfilter = yfilter;
+    }
+    if(value_path == "start-ra-on-ipv6-enable")
+    {
+        start_ra_on_ipv6_enable.yfilter = yfilter;
+    }
+    if(value_path == "suppress-cache-learning")
+    {
+        suppress_cache_learning.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "duplicate-address-detection" || name == "framed-prefix" || name == "ra-initial" || name == "ra-interval" || name == "framed-prefix-pool" || name == "managed-config" || name == "ns-interval" || name == "nud-enable" || name == "other-config" || name == "ra-lifetime" || name == "ra-suppress" || name == "ra-suppress-mtu" || name == "ra-unicast" || name == "ra-unspecify-hoplimit" || name == "reachable-time" || name == "router-preference" || name == "start-ra-on-ipv6-enable" || name == "suppress-cache-learning")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::RaInterval()
@@ -2354,9 +2899,9 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::get_segment_path() const
@@ -2382,8 +2927,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2402,16 +2947,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum" || name == "minimum")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::FramedPrefix()
@@ -2434,9 +3002,9 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::get_segment_path() const
@@ -2462,8 +3030,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2482,16 +3050,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::FramedPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::DuplicateAddressDetection()
@@ -2512,8 +3103,8 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::has_da
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attempts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attempts.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::get_segment_path() const
@@ -2539,7 +3130,7 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetec
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attempts.is_set || is_set(attempts.operation)) leaf_name_data.push_back(attempts.get_name_leafdata());
+    if (attempts.is_set || is_set(attempts.yfilter)) leaf_name_data.push_back(attempts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2558,12 +3149,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attempts")
     {
         attempts = value;
+        attempts.value_namespace = name_space;
+        attempts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attempts")
+    {
+        attempts.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::DuplicateAddressDetection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attempts")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::RaInitial()
@@ -2586,9 +3194,9 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get_segment_path() const
@@ -2614,8 +3222,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2634,16 +3242,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Ipv6N
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Dhcpv6::Dhcpv6()
@@ -2677,13 +3308,13 @@ bool DynamicTemplate::Ppps::Ppp::Dhcpv6::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Dhcpv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_pool.operation)
-	|| is_set(class_.operation)
-	|| is_set(delegated_prefix_pool.operation)
-	|| is_set(dns_ipv6address.operation)
-	|| is_set(mode_class.operation)
-	|| is_set(stateful_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(address_pool.yfilter)
+	|| ydk::is_set(class_.yfilter)
+	|| ydk::is_set(delegated_prefix_pool.yfilter)
+	|| ydk::is_set(dns_ipv6address.yfilter)
+	|| ydk::is_set(mode_class.yfilter)
+	|| ydk::is_set(stateful_address.yfilter)
 	|| (delegated_prefix !=  nullptr && delegated_prefix->has_operation());
 }
 
@@ -2710,12 +3341,12 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Dhcpv6::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_pool.is_set || is_set(address_pool.operation)) leaf_name_data.push_back(address_pool.get_name_leafdata());
-    if (class_.is_set || is_set(class_.operation)) leaf_name_data.push_back(class_.get_name_leafdata());
-    if (delegated_prefix_pool.is_set || is_set(delegated_prefix_pool.operation)) leaf_name_data.push_back(delegated_prefix_pool.get_name_leafdata());
-    if (dns_ipv6address.is_set || is_set(dns_ipv6address.operation)) leaf_name_data.push_back(dns_ipv6address.get_name_leafdata());
-    if (mode_class.is_set || is_set(mode_class.operation)) leaf_name_data.push_back(mode_class.get_name_leafdata());
-    if (stateful_address.is_set || is_set(stateful_address.operation)) leaf_name_data.push_back(stateful_address.get_name_leafdata());
+    if (address_pool.is_set || is_set(address_pool.yfilter)) leaf_name_data.push_back(address_pool.get_name_leafdata());
+    if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
+    if (delegated_prefix_pool.is_set || is_set(delegated_prefix_pool.yfilter)) leaf_name_data.push_back(delegated_prefix_pool.get_name_leafdata());
+    if (dns_ipv6address.is_set || is_set(dns_ipv6address.yfilter)) leaf_name_data.push_back(dns_ipv6address.get_name_leafdata());
+    if (mode_class.is_set || is_set(mode_class.yfilter)) leaf_name_data.push_back(mode_class.get_name_leafdata());
+    if (stateful_address.is_set || is_set(stateful_address.yfilter)) leaf_name_data.push_back(stateful_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2748,32 +3379,79 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Dhcpv
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Dhcpv6::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Dhcpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-pool")
     {
         address_pool = value;
+        address_pool.value_namespace = name_space;
+        address_pool.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class")
     {
         class_ = value;
+        class_.value_namespace = name_space;
+        class_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delegated-prefix-pool")
     {
         delegated_prefix_pool = value;
+        delegated_prefix_pool.value_namespace = name_space;
+        delegated_prefix_pool.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dns-ipv6address")
     {
         dns_ipv6address = value;
+        dns_ipv6address.value_namespace = name_space;
+        dns_ipv6address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-class")
     {
         mode_class = value;
+        mode_class.value_namespace = name_space;
+        mode_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stateful-address")
     {
         stateful_address = value;
+        stateful_address.value_namespace = name_space;
+        stateful_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Dhcpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-pool")
+    {
+        address_pool.yfilter = yfilter;
+    }
+    if(value_path == "class")
+    {
+        class_.yfilter = yfilter;
+    }
+    if(value_path == "delegated-prefix-pool")
+    {
+        delegated_prefix_pool.yfilter = yfilter;
+    }
+    if(value_path == "dns-ipv6address")
+    {
+        dns_ipv6address.yfilter = yfilter;
+    }
+    if(value_path == "mode-class")
+    {
+        mode_class.yfilter = yfilter;
+    }
+    if(value_path == "stateful-address")
+    {
+        stateful_address.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Dhcpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delegated-prefix" || name == "address-pool" || name == "class" || name == "delegated-prefix-pool" || name == "dns-ipv6address" || name == "mode-class" || name == "stateful-address")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::DelegatedPrefix()
@@ -2796,9 +3474,9 @@ bool DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get_segment_path() const
@@ -2824,8 +3502,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2844,16 +3522,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Dhcpv
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Pbr::Pbr()
@@ -2879,8 +3580,8 @@ bool DynamicTemplate::Ppps::Ppp::Pbr::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Pbr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(service_policy_in.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(service_policy_in.yfilter)
 	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
@@ -2907,7 +3608,7 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Pbr::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (service_policy_in.is_set || is_set(service_policy_in.operation)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
+    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2940,12 +3641,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Pbr::
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Pbr::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "service-policy-in")
     {
         service_policy_in = value;
+        service_policy_in.value_namespace = name_space;
+        service_policy_in.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Pbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-policy" || name == "service-policy-in")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::ServicePolicy()
@@ -2966,8 +3684,8 @@ bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(input.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_segment_path() const
@@ -2993,7 +3711,7 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (input.is_set || is_set(input.operation)) leaf_name_data.push_back(input.get_name_leafdata());
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3012,12 +3730,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Pbr::
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "input")
     {
         input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::PppTemplate()
@@ -3052,7 +3787,7 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (fsm !=  nullptr && fsm->has_operation())
 	|| (ipcp !=  nullptr && ipcp->has_operation())
 	|| (ipv6cp !=  nullptr && ipv6cp->has_operation())
@@ -3156,8 +3891,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsm" || name == "ipcp" || name == "ipv6cp" || name == "lcp")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::Fsm()
@@ -3184,11 +3930,11 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_consecutive_conf_naks.operation)
-	|| is_set(max_unacknowledged_conf_requests.operation)
-	|| is_set(protocol_reject_timeout.operation)
-	|| is_set(retry_timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_consecutive_conf_naks.yfilter)
+	|| ydk::is_set(max_unacknowledged_conf_requests.yfilter)
+	|| ydk::is_set(protocol_reject_timeout.yfilter)
+	|| ydk::is_set(retry_timeout.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::get_segment_path() const
@@ -3214,10 +3960,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_consecutive_conf_naks.is_set || is_set(max_consecutive_conf_naks.operation)) leaf_name_data.push_back(max_consecutive_conf_naks.get_name_leafdata());
-    if (max_unacknowledged_conf_requests.is_set || is_set(max_unacknowledged_conf_requests.operation)) leaf_name_data.push_back(max_unacknowledged_conf_requests.get_name_leafdata());
-    if (protocol_reject_timeout.is_set || is_set(protocol_reject_timeout.operation)) leaf_name_data.push_back(protocol_reject_timeout.get_name_leafdata());
-    if (retry_timeout.is_set || is_set(retry_timeout.operation)) leaf_name_data.push_back(retry_timeout.get_name_leafdata());
+    if (max_consecutive_conf_naks.is_set || is_set(max_consecutive_conf_naks.yfilter)) leaf_name_data.push_back(max_consecutive_conf_naks.get_name_leafdata());
+    if (max_unacknowledged_conf_requests.is_set || is_set(max_unacknowledged_conf_requests.yfilter)) leaf_name_data.push_back(max_unacknowledged_conf_requests.get_name_leafdata());
+    if (protocol_reject_timeout.is_set || is_set(protocol_reject_timeout.yfilter)) leaf_name_data.push_back(protocol_reject_timeout.get_name_leafdata());
+    if (retry_timeout.is_set || is_set(retry_timeout.yfilter)) leaf_name_data.push_back(retry_timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3236,24 +3982,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-consecutive-conf-naks")
     {
         max_consecutive_conf_naks = value;
+        max_consecutive_conf_naks.value_namespace = name_space;
+        max_consecutive_conf_naks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-unacknowledged-conf-requests")
     {
         max_unacknowledged_conf_requests = value;
+        max_unacknowledged_conf_requests.value_namespace = name_space;
+        max_unacknowledged_conf_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-reject-timeout")
     {
         protocol_reject_timeout = value;
+        protocol_reject_timeout.value_namespace = name_space;
+        protocol_reject_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-timeout")
     {
         retry_timeout = value;
+        retry_timeout.value_namespace = name_space;
+        retry_timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-consecutive-conf-naks")
+    {
+        max_consecutive_conf_naks.yfilter = yfilter;
+    }
+    if(value_path == "max-unacknowledged-conf-requests")
+    {
+        max_unacknowledged_conf_requests.yfilter = yfilter;
+    }
+    if(value_path == "protocol-reject-timeout")
+    {
+        protocol_reject_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retry-timeout")
+    {
+        retry_timeout.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Fsm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-consecutive-conf-naks" || name == "max-unacknowledged-conf-requests" || name == "protocol-reject-timeout" || name == "retry-timeout")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Lcp()
@@ -3297,11 +4078,11 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mru_ignore.operation)
-	|| is_set(renegotiation.operation)
-	|| is_set(send_term_request_on_shut_down.operation)
-	|| is_set(service_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mru_ignore.yfilter)
+	|| ydk::is_set(renegotiation.yfilter)
+	|| ydk::is_set(send_term_request_on_shut_down.yfilter)
+	|| ydk::is_set(service_type.yfilter)
 	|| (absolute_timeout !=  nullptr && absolute_timeout->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (delay !=  nullptr && delay->has_operation())
@@ -3331,10 +4112,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mru_ignore.is_set || is_set(mru_ignore.operation)) leaf_name_data.push_back(mru_ignore.get_name_leafdata());
-    if (renegotiation.is_set || is_set(renegotiation.operation)) leaf_name_data.push_back(renegotiation.get_name_leafdata());
-    if (send_term_request_on_shut_down.is_set || is_set(send_term_request_on_shut_down.operation)) leaf_name_data.push_back(send_term_request_on_shut_down.get_name_leafdata());
-    if (service_type.is_set || is_set(service_type.operation)) leaf_name_data.push_back(service_type.get_name_leafdata());
+    if (mru_ignore.is_set || is_set(mru_ignore.yfilter)) leaf_name_data.push_back(mru_ignore.get_name_leafdata());
+    if (renegotiation.is_set || is_set(renegotiation.yfilter)) leaf_name_data.push_back(renegotiation.get_name_leafdata());
+    if (send_term_request_on_shut_down.is_set || is_set(send_term_request_on_shut_down.yfilter)) leaf_name_data.push_back(send_term_request_on_shut_down.get_name_leafdata());
+    if (service_type.is_set || is_set(service_type.yfilter)) leaf_name_data.push_back(service_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3409,24 +4190,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mru-ignore")
     {
         mru_ignore = value;
+        mru_ignore.value_namespace = name_space;
+        mru_ignore.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "renegotiation")
     {
         renegotiation = value;
+        renegotiation.value_namespace = name_space;
+        renegotiation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "send-term-request-on-shut-down")
     {
         send_term_request_on_shut_down = value;
+        send_term_request_on_shut_down.value_namespace = name_space;
+        send_term_request_on_shut_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-type")
     {
         service_type = value;
+        service_type.value_namespace = name_space;
+        service_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mru-ignore")
+    {
+        mru_ignore.yfilter = yfilter;
+    }
+    if(value_path == "renegotiation")
+    {
+        renegotiation.yfilter = yfilter;
+    }
+    if(value_path == "send-term-request-on-shut-down")
+    {
+        send_term_request_on_shut_down.yfilter = yfilter;
+    }
+    if(value_path == "service-type")
+    {
+        service_type.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "absolute-timeout" || name == "authentication" || name == "delay" || name == "keepalive" || name == "mru-ignore" || name == "renegotiation" || name == "send-term-request-on-shut-down" || name == "service-type")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::AbsoluteTimeout()
@@ -3449,9 +4265,9 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::has_data() c
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(minutes.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::get_segment_path() const
@@ -3477,8 +4293,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (minutes.is_set || is_set(minutes.operation)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3497,16 +4313,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minutes")
     {
         minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minutes")
+    {
+        minutes.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::AbsoluteTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minutes" || name == "seconds")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::Delay()
@@ -3529,9 +4368,9 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(milliseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(milliseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::get_segment_path() const
@@ -3557,8 +4396,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (milliseconds.is_set || is_set(milliseconds.operation)) leaf_name_data.push_back(milliseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (milliseconds.is_set || is_set(milliseconds.yfilter)) leaf_name_data.push_back(milliseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3577,16 +4416,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "milliseconds")
     {
         milliseconds = value;
+        milliseconds.value_namespace = name_space;
+        milliseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "milliseconds")
+    {
+        milliseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Delay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "milliseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Authentication()
@@ -3620,12 +4482,12 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::has_data() co
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chap_host_name.operation)
-	|| is_set(max_authentication_failures.operation)
-	|| is_set(mschap_host_name.operation)
-	|| is_set(pap.operation)
-	|| is_set(timeout.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(chap_host_name.yfilter)
+	|| ydk::is_set(max_authentication_failures.yfilter)
+	|| ydk::is_set(mschap_host_name.yfilter)
+	|| ydk::is_set(pap.yfilter)
+	|| ydk::is_set(timeout.yfilter)
 	|| (methods !=  nullptr && methods->has_operation());
 }
 
@@ -3652,11 +4514,11 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chap_host_name.is_set || is_set(chap_host_name.operation)) leaf_name_data.push_back(chap_host_name.get_name_leafdata());
-    if (max_authentication_failures.is_set || is_set(max_authentication_failures.operation)) leaf_name_data.push_back(max_authentication_failures.get_name_leafdata());
-    if (mschap_host_name.is_set || is_set(mschap_host_name.operation)) leaf_name_data.push_back(mschap_host_name.get_name_leafdata());
-    if (pap.is_set || is_set(pap.operation)) leaf_name_data.push_back(pap.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (chap_host_name.is_set || is_set(chap_host_name.yfilter)) leaf_name_data.push_back(chap_host_name.get_name_leafdata());
+    if (max_authentication_failures.is_set || is_set(max_authentication_failures.yfilter)) leaf_name_data.push_back(max_authentication_failures.get_name_leafdata());
+    if (mschap_host_name.is_set || is_set(mschap_host_name.yfilter)) leaf_name_data.push_back(mschap_host_name.get_name_leafdata());
+    if (pap.is_set || is_set(pap.yfilter)) leaf_name_data.push_back(pap.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3689,28 +4551,69 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chap-host-name")
     {
         chap_host_name = value;
+        chap_host_name.value_namespace = name_space;
+        chap_host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-authentication-failures")
     {
         max_authentication_failures = value;
+        max_authentication_failures.value_namespace = name_space;
+        max_authentication_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mschap-host-name")
     {
         mschap_host_name = value;
+        mschap_host_name.value_namespace = name_space;
+        mschap_host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap")
     {
         pap = value;
+        pap.value_namespace = name_space;
+        pap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chap-host-name")
+    {
+        chap_host_name.yfilter = yfilter;
+    }
+    if(value_path == "max-authentication-failures")
+    {
+        max_authentication_failures.yfilter = yfilter;
+    }
+    if(value_path == "mschap-host-name")
+    {
+        mschap_host_name.yfilter = yfilter;
+    }
+    if(value_path == "pap")
+    {
+        pap.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "methods" || name == "chap-host-name" || name == "max-authentication-failures" || name == "mschap-host-name" || name == "pap" || name == "timeout")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::Methods()
@@ -3738,11 +4641,11 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::has_
 {
     for (auto const & leaf : method.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(method.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(method.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::get_segment_path() const
@@ -3788,12 +4691,27 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "method")
     {
         method.append(value);
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "method")
+    {
+        method.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Authentication::Methods::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "method")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::Keepalive()
@@ -3818,10 +4736,10 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interval.operation)
-	|| is_set(keepalive_disable.operation)
-	|| is_set(retry_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(keepalive_disable.yfilter)
+	|| ydk::is_set(retry_count.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::get_segment_path() const
@@ -3847,9 +4765,9 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (keepalive_disable.is_set || is_set(keepalive_disable.operation)) leaf_name_data.push_back(keepalive_disable.get_name_leafdata());
-    if (retry_count.is_set || is_set(retry_count.operation)) leaf_name_data.push_back(retry_count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (keepalive_disable.is_set || is_set(keepalive_disable.yfilter)) leaf_name_data.push_back(keepalive_disable.get_name_leafdata());
+    if (retry_count.is_set || is_set(retry_count.yfilter)) leaf_name_data.push_back(retry_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3868,20 +4786,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "keepalive-disable")
     {
         keepalive_disable = value;
+        keepalive_disable.value_namespace = name_space;
+        keepalive_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-count")
     {
         retry_count = value;
+        retry_count.value_namespace = name_space;
+        retry_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "keepalive-disable")
+    {
+        keepalive_disable.yfilter = yfilter;
+    }
+    if(value_path == "retry-count")
+    {
+        retry_count.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Lcp::Keepalive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interval" || name == "keepalive-disable" || name == "retry-count")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::Ipv6Cp()
@@ -3908,11 +4855,11 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(passive.operation)
-	|| is_set(peer_interface_id.operation)
-	|| is_set(protocol_reject.operation)
-	|| is_set(renegotiation.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(passive.yfilter)
+	|| ydk::is_set(peer_interface_id.yfilter)
+	|| ydk::is_set(protocol_reject.yfilter)
+	|| ydk::is_set(renegotiation.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::get_segment_path() const
@@ -3938,10 +4885,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (passive.is_set || is_set(passive.operation)) leaf_name_data.push_back(passive.get_name_leafdata());
-    if (peer_interface_id.is_set || is_set(peer_interface_id.operation)) leaf_name_data.push_back(peer_interface_id.get_name_leafdata());
-    if (protocol_reject.is_set || is_set(protocol_reject.operation)) leaf_name_data.push_back(protocol_reject.get_name_leafdata());
-    if (renegotiation.is_set || is_set(renegotiation.operation)) leaf_name_data.push_back(renegotiation.get_name_leafdata());
+    if (passive.is_set || is_set(passive.yfilter)) leaf_name_data.push_back(passive.get_name_leafdata());
+    if (peer_interface_id.is_set || is_set(peer_interface_id.yfilter)) leaf_name_data.push_back(peer_interface_id.get_name_leafdata());
+    if (protocol_reject.is_set || is_set(protocol_reject.yfilter)) leaf_name_data.push_back(protocol_reject.get_name_leafdata());
+    if (renegotiation.is_set || is_set(renegotiation.yfilter)) leaf_name_data.push_back(renegotiation.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3960,24 +4907,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "passive")
     {
         passive = value;
+        passive.value_namespace = name_space;
+        passive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-interface-id")
     {
         peer_interface_id = value;
+        peer_interface_id.value_namespace = name_space;
+        peer_interface_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-reject")
     {
         protocol_reject = value;
+        protocol_reject.value_namespace = name_space;
+        protocol_reject.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "renegotiation")
     {
         renegotiation = value;
+        renegotiation.value_namespace = name_space;
+        renegotiation.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "passive")
+    {
+        passive.yfilter = yfilter;
+    }
+    if(value_path == "peer-interface-id")
+    {
+        peer_interface_id.yfilter = yfilter;
+    }
+    if(value_path == "protocol-reject")
+    {
+        protocol_reject.yfilter = yfilter;
+    }
+    if(value_path == "renegotiation")
+    {
+        renegotiation.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipv6Cp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "passive" || name == "peer-interface-id" || name == "protocol-reject" || name == "renegotiation")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Ipcp()
@@ -4017,11 +4999,11 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(passive.operation)
-	|| is_set(peer_netmask.operation)
-	|| is_set(protocol_reject.operation)
-	|| is_set(renegotiation.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(passive.yfilter)
+	|| ydk::is_set(peer_netmask.yfilter)
+	|| ydk::is_set(protocol_reject.yfilter)
+	|| ydk::is_set(renegotiation.yfilter)
 	|| (dns !=  nullptr && dns->has_operation())
 	|| (peer_address !=  nullptr && peer_address->has_operation())
 	|| (wins !=  nullptr && wins->has_operation());
@@ -4050,10 +5032,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (passive.is_set || is_set(passive.operation)) leaf_name_data.push_back(passive.get_name_leafdata());
-    if (peer_netmask.is_set || is_set(peer_netmask.operation)) leaf_name_data.push_back(peer_netmask.get_name_leafdata());
-    if (protocol_reject.is_set || is_set(protocol_reject.operation)) leaf_name_data.push_back(protocol_reject.get_name_leafdata());
-    if (renegotiation.is_set || is_set(renegotiation.operation)) leaf_name_data.push_back(renegotiation.get_name_leafdata());
+    if (passive.is_set || is_set(passive.yfilter)) leaf_name_data.push_back(passive.get_name_leafdata());
+    if (peer_netmask.is_set || is_set(peer_netmask.yfilter)) leaf_name_data.push_back(peer_netmask.get_name_leafdata());
+    if (protocol_reject.is_set || is_set(protocol_reject.yfilter)) leaf_name_data.push_back(protocol_reject.get_name_leafdata());
+    if (renegotiation.is_set || is_set(renegotiation.yfilter)) leaf_name_data.push_back(renegotiation.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4114,24 +5096,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "passive")
     {
         passive = value;
+        passive.value_namespace = name_space;
+        passive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-netmask")
     {
         peer_netmask = value;
+        peer_netmask.value_namespace = name_space;
+        peer_netmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-reject")
     {
         protocol_reject = value;
+        protocol_reject.value_namespace = name_space;
+        protocol_reject.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "renegotiation")
     {
         renegotiation = value;
+        renegotiation.value_namespace = name_space;
+        renegotiation.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "passive")
+    {
+        passive.yfilter = yfilter;
+    }
+    if(value_path == "peer-netmask")
+    {
+        peer_netmask.yfilter = yfilter;
+    }
+    if(value_path == "protocol-reject")
+    {
+        protocol_reject.yfilter = yfilter;
+    }
+    if(value_path == "renegotiation")
+    {
+        renegotiation.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dns" || name == "peer-address" || name == "wins" || name == "passive" || name == "peer-netmask" || name == "protocol-reject" || name == "renegotiation")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::Wins()
@@ -4154,7 +5171,7 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (wins_addresses !=  nullptr && wins_addresses->has_operation());
 }
 
@@ -4213,8 +5230,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "wins-addresses")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::WinsAddresses()
@@ -4237,9 +5265,9 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::has_dat
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(primary.operation)
-	|| is_set(secondary.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(primary.yfilter)
+	|| ydk::is_set(secondary.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::get_segment_path() const
@@ -4265,8 +5293,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddres
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (primary.is_set || is_set(primary.operation)) leaf_name_data.push_back(primary.get_name_leafdata());
-    if (secondary.is_set || is_set(secondary.operation)) leaf_name_data.push_back(secondary.get_name_leafdata());
+    if (primary.is_set || is_set(primary.yfilter)) leaf_name_data.push_back(primary.get_name_leafdata());
+    if (secondary.is_set || is_set(secondary.yfilter)) leaf_name_data.push_back(secondary.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4285,16 +5313,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "primary")
     {
         primary = value;
+        primary.value_namespace = name_space;
+        primary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary")
     {
         secondary = value;
+        secondary.value_namespace = name_space;
+        secondary.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "primary")
+    {
+        primary.yfilter = yfilter;
+    }
+    if(value_path == "secondary")
+    {
+        secondary.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Wins::WinsAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "primary" || name == "secondary")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::Dns()
@@ -4317,7 +5368,7 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dns_addresses !=  nullptr && dns_addresses->has_operation());
 }
 
@@ -4376,8 +5427,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dns-addresses")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::DnsAddresses()
@@ -4400,9 +5462,9 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::has_data(
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(primary.operation)
-	|| is_set(secondary.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(primary.yfilter)
+	|| ydk::is_set(secondary.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::get_segment_path() const
@@ -4428,8 +5490,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (primary.is_set || is_set(primary.operation)) leaf_name_data.push_back(primary.get_name_leafdata());
-    if (secondary.is_set || is_set(secondary.operation)) leaf_name_data.push_back(secondary.get_name_leafdata());
+    if (primary.is_set || is_set(primary.yfilter)) leaf_name_data.push_back(primary.get_name_leafdata());
+    if (secondary.is_set || is_set(secondary.yfilter)) leaf_name_data.push_back(secondary.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4448,16 +5510,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "primary")
     {
         primary = value;
+        primary.value_namespace = name_space;
+        primary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary")
     {
         secondary = value;
+        secondary.value_namespace = name_space;
+        secondary.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "primary")
+    {
+        primary.yfilter = yfilter;
+    }
+    if(value_path == "secondary")
+    {
+        secondary.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::Dns::DnsAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "primary" || name == "secondary")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::PeerAddress()
@@ -4480,9 +5565,9 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::has_data() cons
 
 bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(default_.operation)
-	|| is_set(pool.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| ydk::is_set(pool.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::get_segment_path() const
@@ -4508,8 +5593,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_.is_set || is_set(default_.operation)) leaf_name_data.push_back(default_.get_name_leafdata());
-    if (pool.is_set || is_set(pool.operation)) leaf_name_data.push_back(pool.get_name_leafdata());
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+    if (pool.is_set || is_set(pool.yfilter)) leaf_name_data.push_back(pool.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4528,16 +5613,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::PppTe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
         default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool")
     {
         pool = value;
+        pool.value_namespace = name_space;
+        pool.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+    if(value_path == "pool")
+    {
+        pool.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default" || name == "pool")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Qos::Qos()
@@ -4568,7 +5676,7 @@ bool DynamicTemplate::Ppps::Ppp::Qos::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Qos::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (account !=  nullptr && account->has_operation())
 	|| (output !=  nullptr && output->has_operation())
 	|| (service_policy !=  nullptr && service_policy->has_operation());
@@ -4657,8 +5765,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Qos::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::Qos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Qos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account" || name == "output" || name == "service-policy")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::ServicePolicy()
@@ -4681,7 +5800,7 @@ bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
@@ -4755,8 +5874,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::Input()
@@ -4785,12 +5915,12 @@ bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(account_stats.operation)
-	|| is_set(merge.operation)
-	|| is_set(merge_id.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(spi_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(account_stats.yfilter)
+	|| ydk::is_set(merge.yfilter)
+	|| ydk::is_set(merge_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(spi_name.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::get_segment_path() const
@@ -4816,11 +5946,11 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (account_stats.is_set || is_set(account_stats.operation)) leaf_name_data.push_back(account_stats.get_name_leafdata());
-    if (merge.is_set || is_set(merge.operation)) leaf_name_data.push_back(merge.get_name_leafdata());
-    if (merge_id.is_set || is_set(merge_id.operation)) leaf_name_data.push_back(merge_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (spi_name.is_set || is_set(spi_name.operation)) leaf_name_data.push_back(spi_name.get_name_leafdata());
+    if (account_stats.is_set || is_set(account_stats.yfilter)) leaf_name_data.push_back(account_stats.get_name_leafdata());
+    if (merge.is_set || is_set(merge.yfilter)) leaf_name_data.push_back(merge.get_name_leafdata());
+    if (merge_id.is_set || is_set(merge_id.yfilter)) leaf_name_data.push_back(merge_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (spi_name.is_set || is_set(spi_name.yfilter)) leaf_name_data.push_back(spi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4839,28 +5969,69 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "account-stats")
     {
         account_stats = value;
+        account_stats.value_namespace = name_space;
+        account_stats.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge")
     {
         merge = value;
+        merge.value_namespace = name_space;
+        merge.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge-id")
     {
         merge_id = value;
+        merge_id.value_namespace = name_space;
+        merge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spi-name")
     {
         spi_name = value;
+        spi_name.value_namespace = name_space;
+        spi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "account-stats")
+    {
+        account_stats.yfilter = yfilter;
+    }
+    if(value_path == "merge")
+    {
+        merge.yfilter = yfilter;
+    }
+    if(value_path == "merge-id")
+    {
+        merge_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "spi-name")
+    {
+        spi_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account-stats" || name == "merge" || name == "merge-id" || name == "policy-name" || name == "spi-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::Output()
@@ -4889,12 +6060,12 @@ bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(account_stats.operation)
-	|| is_set(merge.operation)
-	|| is_set(merge_id.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(spi_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(account_stats.yfilter)
+	|| ydk::is_set(merge.yfilter)
+	|| ydk::is_set(merge_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(spi_name.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::get_segment_path() const
@@ -4920,11 +6091,11 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (account_stats.is_set || is_set(account_stats.operation)) leaf_name_data.push_back(account_stats.get_name_leafdata());
-    if (merge.is_set || is_set(merge.operation)) leaf_name_data.push_back(merge.get_name_leafdata());
-    if (merge_id.is_set || is_set(merge_id.operation)) leaf_name_data.push_back(merge_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (spi_name.is_set || is_set(spi_name.operation)) leaf_name_data.push_back(spi_name.get_name_leafdata());
+    if (account_stats.is_set || is_set(account_stats.yfilter)) leaf_name_data.push_back(account_stats.get_name_leafdata());
+    if (merge.is_set || is_set(merge.yfilter)) leaf_name_data.push_back(merge.get_name_leafdata());
+    if (merge_id.is_set || is_set(merge_id.yfilter)) leaf_name_data.push_back(merge_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (spi_name.is_set || is_set(spi_name.yfilter)) leaf_name_data.push_back(spi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4943,28 +6114,69 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "account-stats")
     {
         account_stats = value;
+        account_stats.value_namespace = name_space;
+        account_stats.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge")
     {
         merge = value;
+        merge.value_namespace = name_space;
+        merge.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge-id")
     {
         merge_id = value;
+        merge_id.value_namespace = name_space;
+        merge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spi-name")
     {
         spi_name = value;
+        spi_name.value_namespace = name_space;
+        spi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "account-stats")
+    {
+        account_stats.yfilter = yfilter;
+    }
+    if(value_path == "merge")
+    {
+        merge.yfilter = yfilter;
+    }
+    if(value_path == "merge-id")
+    {
+        merge_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "spi-name")
+    {
+        spi_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account-stats" || name == "merge" || name == "merge-id" || name == "policy-name" || name == "spi-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Qos::Account::Account()
@@ -4991,11 +6203,11 @@ bool DynamicTemplate::Ppps::Ppp::Qos::Account::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Qos::Account::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aal.operation)
-	|| is_set(atm_cell_tax.operation)
-	|| is_set(encapsulation.operation)
-	|| is_set(user_defined.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aal.yfilter)
+	|| ydk::is_set(atm_cell_tax.yfilter)
+	|| ydk::is_set(encapsulation.yfilter)
+	|| ydk::is_set(user_defined.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Qos::Account::get_segment_path() const
@@ -5021,10 +6233,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Qos::Account::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aal.is_set || is_set(aal.operation)) leaf_name_data.push_back(aal.get_name_leafdata());
-    if (atm_cell_tax.is_set || is_set(atm_cell_tax.operation)) leaf_name_data.push_back(atm_cell_tax.get_name_leafdata());
-    if (encapsulation.is_set || is_set(encapsulation.operation)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
-    if (user_defined.is_set || is_set(user_defined.operation)) leaf_name_data.push_back(user_defined.get_name_leafdata());
+    if (aal.is_set || is_set(aal.yfilter)) leaf_name_data.push_back(aal.get_name_leafdata());
+    if (atm_cell_tax.is_set || is_set(atm_cell_tax.yfilter)) leaf_name_data.push_back(atm_cell_tax.get_name_leafdata());
+    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
+    if (user_defined.is_set || is_set(user_defined.yfilter)) leaf_name_data.push_back(user_defined.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5043,24 +6255,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Qos::Account::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Qos::Account::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aal")
     {
         aal = value;
+        aal.value_namespace = name_space;
+        aal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atm-cell-tax")
     {
         atm_cell_tax = value;
+        atm_cell_tax.value_namespace = name_space;
+        atm_cell_tax.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation")
     {
         encapsulation = value;
+        encapsulation.value_namespace = name_space;
+        encapsulation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "user-defined")
     {
         user_defined = value;
+        user_defined.value_namespace = name_space;
+        user_defined.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Qos::Account::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aal")
+    {
+        aal.yfilter = yfilter;
+    }
+    if(value_path == "atm-cell-tax")
+    {
+        atm_cell_tax.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation")
+    {
+        encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "user-defined")
+    {
+        user_defined.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Qos::Account::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aal" || name == "atm-cell-tax" || name == "encapsulation" || name == "user-defined")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Qos::Output::Output()
@@ -5081,8 +6328,8 @@ bool DynamicTemplate::Ppps::Ppp::Qos::Output::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Qos::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(minimum_bandwidth.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Qos::Output::get_segment_path() const
@@ -5108,7 +6355,7 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Qos::Output::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5127,12 +6374,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Qos::
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Qos::Output::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Qos::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Qos::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Qos::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minimum-bandwidth")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Accounting::Accounting()
@@ -5166,8 +6430,8 @@ bool DynamicTemplate::Ppps::Ppp::Accounting::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Accounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prepaid_feature.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(prepaid_feature.yfilter)
 	|| (idle_timeout !=  nullptr && idle_timeout->has_operation())
 	|| (service_accounting !=  nullptr && service_accounting->has_operation())
 	|| (session !=  nullptr && session->has_operation());
@@ -5196,7 +6460,7 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Accounting::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prepaid_feature.is_set || is_set(prepaid_feature.operation)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
+    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5257,12 +6521,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accou
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Accounting::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prepaid-feature")
     {
         prepaid_feature = value;
+        prepaid_feature.value_namespace = name_space;
+        prepaid_feature.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prepaid-feature")
+    {
+        prepaid_feature.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idle-timeout" || name == "service-accounting" || name == "session" || name == "prepaid-feature")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::IdleTimeout()
@@ -5287,10 +6568,10 @@ bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(threshold.operation)
-	|| is_set(timeout_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(timeout_value.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_segment_path() const
@@ -5316,9 +6597,9 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (timeout_value.is_set || is_set(timeout_value.operation)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5337,20 +6618,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accou
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-value")
     {
         timeout_value = value;
+        timeout_value.value_namespace = name_space;
+        timeout_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "timeout-value")
+    {
+        timeout_value.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "threshold" || name == "timeout-value")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Accounting::Session::Session()
@@ -5377,11 +6687,11 @@ bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dual_stack_delay.operation)
-	|| is_set(hold_acct_start.operation)
-	|| is_set(method_list_name.operation)
-	|| is_set(periodic_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dual_stack_delay.yfilter)
+	|| ydk::is_set(hold_acct_start.yfilter)
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(periodic_interval.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Accounting::Session::get_segment_path() const
@@ -5407,10 +6717,10 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Accounting::Session::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dual_stack_delay.is_set || is_set(dual_stack_delay.operation)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
-    if (hold_acct_start.is_set || is_set(hold_acct_start.operation)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
-    if (method_list_name.is_set || is_set(method_list_name.operation)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (periodic_interval.is_set || is_set(periodic_interval.operation)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
+    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
+    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5429,24 +6739,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accou
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Accounting::Session::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dual-stack-delay")
     {
         dual_stack_delay = value;
+        dual_stack_delay.value_namespace = name_space;
+        dual_stack_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-acct-start")
     {
         hold_acct_start = value;
+        hold_acct_start.value_namespace = name_space;
+        hold_acct_start.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "method-list-name")
     {
         method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "periodic-interval")
     {
         periodic_interval = value;
+        periodic_interval.value_namespace = name_space;
+        periodic_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-stack-delay")
+    {
+        dual_stack_delay.yfilter = yfilter;
+    }
+    if(value_path == "hold-acct-start")
+    {
+        hold_acct_start.yfilter = yfilter;
+    }
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-stack-delay" || name == "hold-acct-start" || name == "method-list-name" || name == "periodic-interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::ServiceAccounting()
@@ -5469,9 +6814,9 @@ bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting_interim_interval.operation)
-	|| is_set(method_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(accounting_interim_interval.yfilter)
+	|| ydk::is_set(method_list_name.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_segment_path() const
@@ -5497,8 +6842,8 @@ const EntityPath DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.operation)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
-    if (method_list_name.is_set || is_set(method_list_name.operation)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5517,16 +6862,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Accou
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting-interim-interval")
     {
         accounting_interim_interval = value;
+        accounting_interim_interval.value_namespace = name_space;
+        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "method-list-name")
     {
         method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting-interim-interval")
+    {
+        accounting_interim_interval.yfilter = yfilter;
+    }
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting-interim-interval" || name == "method-list-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::Ppps::Ppp::PppoeTemplate::PppoeTemplate()
@@ -5547,8 +6915,8 @@ bool DynamicTemplate::Ppps::Ppp::PppoeTemplate::has_data() const
 
 bool DynamicTemplate::Ppps::Ppp::PppoeTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(port_limit.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(port_limit.yfilter);
 }
 
 std::string DynamicTemplate::Ppps::Ppp::PppoeTemplate::get_segment_path() const
@@ -5574,7 +6942,7 @@ const EntityPath DynamicTemplate::Ppps::Ppp::PppoeTemplate::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (port_limit.is_set || is_set(port_limit.operation)) leaf_name_data.push_back(port_limit.get_name_leafdata());
+    if (port_limit.is_set || is_set(port_limit.yfilter)) leaf_name_data.push_back(port_limit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5593,12 +6961,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::Ppps::Ppp::Pppoe
     return children;
 }
 
-void DynamicTemplate::Ppps::Ppp::PppoeTemplate::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::Ppps::Ppp::PppoeTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "port-limit")
     {
         port_limit = value;
+        port_limit.value_namespace = name_space;
+        port_limit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::Ppps::Ppp::PppoeTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "port-limit")
+    {
+        port_limit.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::PppoeTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-limit")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscribers()
@@ -5627,7 +7012,7 @@ bool DynamicTemplate::IpSubscribers::has_operation() const
         if(ip_subscriber[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::get_segment_path() const
@@ -5692,8 +7077,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::g
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::IpSubscribers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-subscriber")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::IpSubscriber()
@@ -5765,9 +7161,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(vrf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(vrf.yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (dhcpd !=  nullptr && dhcpd->has_operation())
 	|| (dhcpv6 !=  nullptr && dhcpv6->has_operation())
@@ -5805,8 +7201,8 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5993,16 +7389,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting" || name == "dhcpd" || name == "dhcpv6" || name == "igmp" || name == "ipv4-network" || name == "ipv4-packet-filter" || name == "ipv6-neighbor" || name == "ipv6-network" || name == "ipv6-packet-filter" || name == "pbr" || name == "qos" || name == "span-monitor-sessions" || name == "template-name" || name == "vrf")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSessions()
@@ -6031,7 +7450,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::has_oper
         if(span_monitor_session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::get_segment_path() const
@@ -6096,8 +7515,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "span-monitor-session")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::SpanMonitorSession()
@@ -6127,11 +7557,11 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMoni
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_class.operation)
-	|| is_set(acl.operation)
-	|| is_set(mirror_first.operation)
-	|| is_set(mirror_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(session_class.yfilter)
+	|| ydk::is_set(acl.yfilter)
+	|| ydk::is_set(mirror_first.yfilter)
+	|| ydk::is_set(mirror_interval.yfilter)
 	|| (attachment !=  nullptr && attachment->has_operation());
 }
 
@@ -6158,10 +7588,10 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_class.is_set || is_set(session_class.operation)) leaf_name_data.push_back(session_class.get_name_leafdata());
-    if (acl.is_set || is_set(acl.operation)) leaf_name_data.push_back(acl.get_name_leafdata());
-    if (mirror_first.is_set || is_set(mirror_first.operation)) leaf_name_data.push_back(mirror_first.get_name_leafdata());
-    if (mirror_interval.is_set || is_set(mirror_interval.operation)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
+    if (session_class.is_set || is_set(session_class.yfilter)) leaf_name_data.push_back(session_class.get_name_leafdata());
+    if (acl.is_set || is_set(acl.yfilter)) leaf_name_data.push_back(acl.get_name_leafdata());
+    if (mirror_first.is_set || is_set(mirror_first.yfilter)) leaf_name_data.push_back(mirror_first.get_name_leafdata());
+    if (mirror_interval.is_set || is_set(mirror_interval.yfilter)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6194,24 +7624,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-class")
     {
         session_class = value;
+        session_class.value_namespace = name_space;
+        session_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl")
     {
         acl = value;
+        acl.value_namespace = name_space;
+        acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-first")
     {
         mirror_first = value;
+        mirror_first.value_namespace = name_space;
+        mirror_first.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-interval")
     {
         mirror_interval = value;
+        mirror_interval.value_namespace = name_space;
+        mirror_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-class")
+    {
+        session_class.yfilter = yfilter;
+    }
+    if(value_path == "acl")
+    {
+        acl.yfilter = yfilter;
+    }
+    if(value_path == "mirror-first")
+    {
+        mirror_first.yfilter = yfilter;
+    }
+    if(value_path == "mirror-interval")
+    {
+        mirror_interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attachment" || name == "session-class" || name == "acl" || name == "mirror-first" || name == "mirror-interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment::Attachment()
@@ -6236,10 +7701,10 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMoni
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(port_level_enable.operation)
-	|| is_set(session_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(port_level_enable.yfilter)
+	|| ydk::is_set(session_name.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment::get_segment_path() const
@@ -6265,9 +7730,9 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (port_level_enable.is_set || is_set(port_level_enable.operation)) leaf_name_data.push_back(port_level_enable.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (port_level_enable.is_set || is_set(port_level_enable.yfilter)) leaf_name_data.push_back(port_level_enable.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6286,20 +7751,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-level-enable")
     {
         port_level_enable = value;
+        port_level_enable.value_namespace = name_space;
+        port_level_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "port-level-enable")
+    {
+        port_level_enable.yfilter = yfilter;
+    }
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "port-level-enable" || name == "session-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Ipv4PacketFilter()
@@ -6324,7 +7818,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::has_data() 
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inbound !=  nullptr && inbound->has_operation())
 	|| (outbound !=  nullptr && outbound->has_operation());
 }
@@ -6398,8 +7892,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::Outbound()
@@ -6426,11 +7931,11 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::h
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(hardware_count.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(hardware_count.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::get_segment_path() const
@@ -6456,10 +7961,10 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (hardware_count.is_set || is_set(hardware_count.operation)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (hardware_count.is_set || is_set(hardware_count.yfilter)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6478,24 +7983,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-count")
     {
         hardware_count = value;
+        hardware_count.value_namespace = name_space;
+        hardware_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-count")
+    {
+        hardware_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "hardware-count" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::Inbound()
@@ -6522,11 +8062,11 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::ha
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(hardware_count.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(hardware_count.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::get_segment_path() const
@@ -6552,10 +8092,10 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (hardware_count.is_set || is_set(hardware_count.operation)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (hardware_count.is_set || is_set(hardware_count.yfilter)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6574,24 +8114,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-count")
     {
         hardware_count = value;
+        hardware_count.value_namespace = name_space;
+        hardware_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-count")
+    {
+        hardware_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "hardware-count" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Ipv6PacketFilter()
@@ -6616,7 +8191,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::has_data() 
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inbound !=  nullptr && inbound->has_operation())
 	|| (outbound !=  nullptr && outbound->has_operation());
 }
@@ -6690,8 +8265,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::Inbound()
@@ -6716,10 +8302,10 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::ha
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::get_segment_path() const
@@ -6745,9 +8331,9 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6766,20 +8352,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::Outbound()
@@ -6804,10 +8419,10 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::h
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::get_segment_path() const
@@ -6833,9 +8448,9 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6854,20 +8469,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::Dhcpd()
@@ -6894,11 +8538,11 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(class_.operation)
-	|| is_set(default_gateway.operation)
-	|| is_set(dhcpv4_option.operation)
-	|| is_set(session_limit.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(class_.yfilter)
+	|| ydk::is_set(default_gateway.yfilter)
+	|| ydk::is_set(dhcpv4_option.yfilter)
+	|| ydk::is_set(session_limit.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::get_segment_path() const
@@ -6924,10 +8568,10 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_.is_set || is_set(class_.operation)) leaf_name_data.push_back(class_.get_name_leafdata());
-    if (default_gateway.is_set || is_set(default_gateway.operation)) leaf_name_data.push_back(default_gateway.get_name_leafdata());
-    if (dhcpv4_option.is_set || is_set(dhcpv4_option.operation)) leaf_name_data.push_back(dhcpv4_option.get_name_leafdata());
-    if (session_limit.is_set || is_set(session_limit.operation)) leaf_name_data.push_back(session_limit.get_name_leafdata());
+    if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
+    if (default_gateway.is_set || is_set(default_gateway.yfilter)) leaf_name_data.push_back(default_gateway.get_name_leafdata());
+    if (dhcpv4_option.is_set || is_set(dhcpv4_option.yfilter)) leaf_name_data.push_back(dhcpv4_option.get_name_leafdata());
+    if (session_limit.is_set || is_set(session_limit.yfilter)) leaf_name_data.push_back(session_limit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6946,24 +8590,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class")
     {
         class_ = value;
+        class_.value_namespace = name_space;
+        class_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-gateway")
     {
         default_gateway = value;
+        default_gateway.value_namespace = name_space;
+        default_gateway.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dhcpv4-option")
     {
         dhcpv4_option = value;
+        dhcpv4_option.value_namespace = name_space;
+        dhcpv4_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-limit")
     {
         session_limit = value;
+        session_limit.value_namespace = name_space;
+        session_limit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class")
+    {
+        class_.yfilter = yfilter;
+    }
+    if(value_path == "default-gateway")
+    {
+        default_gateway.yfilter = yfilter;
+    }
+    if(value_path == "dhcpv4-option")
+    {
+        dhcpv4_option.yfilter = yfilter;
+    }
+    if(value_path == "session-limit")
+    {
+        session_limit.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class" || name == "default-gateway" || name == "dhcpv4-option" || name == "session-limit")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::Igmp()
@@ -6986,7 +8665,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_vrf !=  nullptr && default_vrf->has_operation());
 }
 
@@ -7045,8 +8724,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::DefaultVrf()
@@ -7080,13 +8770,13 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_data() 
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_group.operation)
-	|| is_set(max_groups.operation)
-	|| is_set(multicast_mode.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(max_groups.yfilter)
+	|| ydk::is_set(multicast_mode.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation());
 }
 
@@ -7113,12 +8803,12 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (max_groups.is_set || is_set(max_groups.operation)) leaf_name_data.push_back(max_groups.get_name_leafdata());
-    if (multicast_mode.is_set || is_set(multicast_mode.operation)) leaf_name_data.push_back(multicast_mode.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (max_groups.is_set || is_set(max_groups.yfilter)) leaf_name_data.push_back(max_groups.get_name_leafdata());
+    if (multicast_mode.is_set || is_set(multicast_mode.yfilter)) leaf_name_data.push_back(multicast_mode.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7151,32 +8841,79 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-groups")
     {
         max_groups = value;
+        max_groups.value_namespace = name_space;
+        max_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-mode")
     {
         multicast_mode = value;
+        multicast_mode.value_namespace = name_space;
+        multicast_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "max-groups")
+    {
+        max_groups.yfilter = yfilter;
+    }
+    if(value_path == "multicast-mode")
+    {
+        multicast_mode.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "access-group" || name == "max-groups" || name == "multicast-mode" || name == "query-interval" || name == "query-max-response-time" || name == "version")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::ExplicitTracking()
@@ -7199,9 +8936,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTra
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_segment_path() const
@@ -7227,8 +8964,8 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7247,16 +8984,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::Ipv4Network()
@@ -7283,11 +9043,11 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mtu.operation)
-	|| is_set(rpf.operation)
-	|| is_set(unnumbered.operation)
-	|| is_set(unreachables.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(rpf.yfilter)
+	|| ydk::is_set(unnumbered.yfilter)
+	|| ydk::is_set(unreachables.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_segment_path() const
@@ -7313,10 +9073,10 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (rpf.is_set || is_set(rpf.operation)) leaf_name_data.push_back(rpf.get_name_leafdata());
-    if (unnumbered.is_set || is_set(unnumbered.operation)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.operation)) leaf_name_data.push_back(unreachables.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7335,31 +9095,66 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf")
     {
         rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unnumbered")
     {
         unnumbered = value;
+        unnumbered.value_namespace = name_space;
+        unnumbered.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unreachables")
     {
         unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+    if(value_path == "unnumbered")
+    {
+        unnumbered.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mtu" || name == "rpf" || name == "unnumbered" || name == "unreachables")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Ipv6Network()
     :
     mtu{YType::uint32, "mtu"},
-    unreachables{YType::empty, "unreachables"},
-    verify{YType::enumeration, "verify"}
+    rpf{YType::boolean, "rpf"},
+    unreachables{YType::empty, "unreachables"}
     	,
     addresses(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses>())
 {
@@ -7375,17 +9170,17 @@ DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::~Ipv6Network()
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::has_data() const
 {
     return mtu.is_set
+	|| rpf.is_set
 	|| unreachables.is_set
-	|| verify.is_set
 	|| (addresses !=  nullptr && addresses->has_data());
 }
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mtu.operation)
-	|| is_set(unreachables.operation)
-	|| is_set(verify.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(rpf.yfilter)
+	|| ydk::is_set(unreachables.yfilter)
 	|| (addresses !=  nullptr && addresses->has_operation());
 }
 
@@ -7412,9 +9207,9 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.operation)) leaf_name_data.push_back(unreachables.get_name_leafdata());
-    if (verify.is_set || is_set(verify.operation)) leaf_name_data.push_back(verify.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7447,20 +9242,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf")
+    {
+        rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unreachables")
     {
         unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "verify")
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
     {
-        verify = value;
+        mtu.yfilter = yfilter;
     }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addresses" || name == "mtu" || name == "rpf" || name == "unreachables")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::Addresses()
@@ -7483,7 +9307,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::has_d
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (auto_configuration !=  nullptr && auto_configuration->has_operation());
 }
 
@@ -7542,8 +9366,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-configuration")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::AutoConfiguration()
@@ -7564,8 +9399,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoC
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::get_segment_path() const
@@ -7591,7 +9426,7 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7610,12 +9445,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::Ipv6Neighbor()
@@ -7673,21 +9525,21 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::has_data() cons
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(framed_prefix_pool.operation)
-	|| is_set(managed_config.operation)
-	|| is_set(ns_interval.operation)
-	|| is_set(nud_enable.operation)
-	|| is_set(other_config.operation)
-	|| is_set(ra_lifetime.operation)
-	|| is_set(ra_suppress.operation)
-	|| is_set(ra_suppress_mtu.operation)
-	|| is_set(ra_unicast.operation)
-	|| is_set(ra_unspecify_hoplimit.operation)
-	|| is_set(reachable_time.operation)
-	|| is_set(router_preference.operation)
-	|| is_set(start_ra_on_ipv6_enable.operation)
-	|| is_set(suppress_cache_learning.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(framed_prefix_pool.yfilter)
+	|| ydk::is_set(managed_config.yfilter)
+	|| ydk::is_set(ns_interval.yfilter)
+	|| ydk::is_set(nud_enable.yfilter)
+	|| ydk::is_set(other_config.yfilter)
+	|| ydk::is_set(ra_lifetime.yfilter)
+	|| ydk::is_set(ra_suppress.yfilter)
+	|| ydk::is_set(ra_suppress_mtu.yfilter)
+	|| ydk::is_set(ra_unicast.yfilter)
+	|| ydk::is_set(ra_unspecify_hoplimit.yfilter)
+	|| ydk::is_set(reachable_time.yfilter)
+	|| ydk::is_set(router_preference.yfilter)
+	|| ydk::is_set(start_ra_on_ipv6_enable.yfilter)
+	|| ydk::is_set(suppress_cache_learning.yfilter)
 	|| (duplicate_address_detection !=  nullptr && duplicate_address_detection->has_operation())
 	|| (framed_prefix !=  nullptr && framed_prefix->has_operation())
 	|| (ra_initial !=  nullptr && ra_initial->has_operation())
@@ -7717,20 +9569,20 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (framed_prefix_pool.is_set || is_set(framed_prefix_pool.operation)) leaf_name_data.push_back(framed_prefix_pool.get_name_leafdata());
-    if (managed_config.is_set || is_set(managed_config.operation)) leaf_name_data.push_back(managed_config.get_name_leafdata());
-    if (ns_interval.is_set || is_set(ns_interval.operation)) leaf_name_data.push_back(ns_interval.get_name_leafdata());
-    if (nud_enable.is_set || is_set(nud_enable.operation)) leaf_name_data.push_back(nud_enable.get_name_leafdata());
-    if (other_config.is_set || is_set(other_config.operation)) leaf_name_data.push_back(other_config.get_name_leafdata());
-    if (ra_lifetime.is_set || is_set(ra_lifetime.operation)) leaf_name_data.push_back(ra_lifetime.get_name_leafdata());
-    if (ra_suppress.is_set || is_set(ra_suppress.operation)) leaf_name_data.push_back(ra_suppress.get_name_leafdata());
-    if (ra_suppress_mtu.is_set || is_set(ra_suppress_mtu.operation)) leaf_name_data.push_back(ra_suppress_mtu.get_name_leafdata());
-    if (ra_unicast.is_set || is_set(ra_unicast.operation)) leaf_name_data.push_back(ra_unicast.get_name_leafdata());
-    if (ra_unspecify_hoplimit.is_set || is_set(ra_unspecify_hoplimit.operation)) leaf_name_data.push_back(ra_unspecify_hoplimit.get_name_leafdata());
-    if (reachable_time.is_set || is_set(reachable_time.operation)) leaf_name_data.push_back(reachable_time.get_name_leafdata());
-    if (router_preference.is_set || is_set(router_preference.operation)) leaf_name_data.push_back(router_preference.get_name_leafdata());
-    if (start_ra_on_ipv6_enable.is_set || is_set(start_ra_on_ipv6_enable.operation)) leaf_name_data.push_back(start_ra_on_ipv6_enable.get_name_leafdata());
-    if (suppress_cache_learning.is_set || is_set(suppress_cache_learning.operation)) leaf_name_data.push_back(suppress_cache_learning.get_name_leafdata());
+    if (framed_prefix_pool.is_set || is_set(framed_prefix_pool.yfilter)) leaf_name_data.push_back(framed_prefix_pool.get_name_leafdata());
+    if (managed_config.is_set || is_set(managed_config.yfilter)) leaf_name_data.push_back(managed_config.get_name_leafdata());
+    if (ns_interval.is_set || is_set(ns_interval.yfilter)) leaf_name_data.push_back(ns_interval.get_name_leafdata());
+    if (nud_enable.is_set || is_set(nud_enable.yfilter)) leaf_name_data.push_back(nud_enable.get_name_leafdata());
+    if (other_config.is_set || is_set(other_config.yfilter)) leaf_name_data.push_back(other_config.get_name_leafdata());
+    if (ra_lifetime.is_set || is_set(ra_lifetime.yfilter)) leaf_name_data.push_back(ra_lifetime.get_name_leafdata());
+    if (ra_suppress.is_set || is_set(ra_suppress.yfilter)) leaf_name_data.push_back(ra_suppress.get_name_leafdata());
+    if (ra_suppress_mtu.is_set || is_set(ra_suppress_mtu.yfilter)) leaf_name_data.push_back(ra_suppress_mtu.get_name_leafdata());
+    if (ra_unicast.is_set || is_set(ra_unicast.yfilter)) leaf_name_data.push_back(ra_unicast.get_name_leafdata());
+    if (ra_unspecify_hoplimit.is_set || is_set(ra_unspecify_hoplimit.yfilter)) leaf_name_data.push_back(ra_unspecify_hoplimit.get_name_leafdata());
+    if (reachable_time.is_set || is_set(reachable_time.yfilter)) leaf_name_data.push_back(reachable_time.get_name_leafdata());
+    if (router_preference.is_set || is_set(router_preference.yfilter)) leaf_name_data.push_back(router_preference.get_name_leafdata());
+    if (start_ra_on_ipv6_enable.is_set || is_set(start_ra_on_ipv6_enable.yfilter)) leaf_name_data.push_back(start_ra_on_ipv6_enable.get_name_leafdata());
+    if (suppress_cache_learning.is_set || is_set(suppress_cache_learning.yfilter)) leaf_name_data.push_back(suppress_cache_learning.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7805,64 +9657,159 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "framed-prefix-pool")
     {
         framed_prefix_pool = value;
+        framed_prefix_pool.value_namespace = name_space;
+        framed_prefix_pool.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managed-config")
     {
         managed_config = value;
+        managed_config.value_namespace = name_space;
+        managed_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ns-interval")
     {
         ns_interval = value;
+        ns_interval.value_namespace = name_space;
+        ns_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nud-enable")
     {
         nud_enable = value;
+        nud_enable.value_namespace = name_space;
+        nud_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "other-config")
     {
         other_config = value;
+        other_config.value_namespace = name_space;
+        other_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-lifetime")
     {
         ra_lifetime = value;
+        ra_lifetime.value_namespace = name_space;
+        ra_lifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-suppress")
     {
         ra_suppress = value;
+        ra_suppress.value_namespace = name_space;
+        ra_suppress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-suppress-mtu")
     {
         ra_suppress_mtu = value;
+        ra_suppress_mtu.value_namespace = name_space;
+        ra_suppress_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-unicast")
     {
         ra_unicast = value;
+        ra_unicast.value_namespace = name_space;
+        ra_unicast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-unspecify-hoplimit")
     {
         ra_unspecify_hoplimit = value;
+        ra_unspecify_hoplimit.value_namespace = name_space;
+        ra_unspecify_hoplimit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reachable-time")
     {
         reachable_time = value;
+        reachable_time.value_namespace = name_space;
+        reachable_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-preference")
     {
         router_preference = value;
+        router_preference.value_namespace = name_space;
+        router_preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-ra-on-ipv6-enable")
     {
         start_ra_on_ipv6_enable = value;
+        start_ra_on_ipv6_enable.value_namespace = name_space;
+        start_ra_on_ipv6_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-cache-learning")
     {
         suppress_cache_learning = value;
+        suppress_cache_learning.value_namespace = name_space;
+        suppress_cache_learning.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "framed-prefix-pool")
+    {
+        framed_prefix_pool.yfilter = yfilter;
+    }
+    if(value_path == "managed-config")
+    {
+        managed_config.yfilter = yfilter;
+    }
+    if(value_path == "ns-interval")
+    {
+        ns_interval.yfilter = yfilter;
+    }
+    if(value_path == "nud-enable")
+    {
+        nud_enable.yfilter = yfilter;
+    }
+    if(value_path == "other-config")
+    {
+        other_config.yfilter = yfilter;
+    }
+    if(value_path == "ra-lifetime")
+    {
+        ra_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "ra-suppress")
+    {
+        ra_suppress.yfilter = yfilter;
+    }
+    if(value_path == "ra-suppress-mtu")
+    {
+        ra_suppress_mtu.yfilter = yfilter;
+    }
+    if(value_path == "ra-unicast")
+    {
+        ra_unicast.yfilter = yfilter;
+    }
+    if(value_path == "ra-unspecify-hoplimit")
+    {
+        ra_unspecify_hoplimit.yfilter = yfilter;
+    }
+    if(value_path == "reachable-time")
+    {
+        reachable_time.yfilter = yfilter;
+    }
+    if(value_path == "router-preference")
+    {
+        router_preference.yfilter = yfilter;
+    }
+    if(value_path == "start-ra-on-ipv6-enable")
+    {
+        start_ra_on_ipv6_enable.yfilter = yfilter;
+    }
+    if(value_path == "suppress-cache-learning")
+    {
+        suppress_cache_learning.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "duplicate-address-detection" || name == "framed-prefix" || name == "ra-initial" || name == "ra-interval" || name == "framed-prefix-pool" || name == "managed-config" || name == "ns-interval" || name == "nud-enable" || name == "other-config" || name == "ra-lifetime" || name == "ra-suppress" || name == "ra-suppress-mtu" || name == "ra-unicast" || name == "ra-unspecify-hoplimit" || name == "reachable-time" || name == "router-preference" || name == "start-ra-on-ipv6-enable" || name == "suppress-cache-learning")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::RaInterval()
@@ -7885,9 +9832,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::has
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::get_segment_path() const
@@ -7913,8 +9860,8 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7933,16 +9880,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum" || name == "minimum")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::FramedPrefix()
@@ -7965,9 +9935,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::h
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::get_segment_path() const
@@ -7993,8 +9963,8 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::Fra
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8013,16 +9983,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::FramedPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::DuplicateAddressDetection()
@@ -8043,8 +10036,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddres
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attempts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attempts.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::get_segment_path() const
@@ -8070,7 +10063,7 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::Dup
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attempts.is_set || is_set(attempts.operation)) leaf_name_data.push_back(attempts.get_name_leafdata());
+    if (attempts.is_set || is_set(attempts.yfilter)) leaf_name_data.push_back(attempts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8089,12 +10082,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attempts")
     {
         attempts = value;
+        attempts.value_namespace = name_space;
+        attempts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attempts")
+    {
+        attempts.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::DuplicateAddressDetection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attempts")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::RaInitial()
@@ -8117,9 +10127,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::has_
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::get_segment_path() const
@@ -8145,8 +10155,8 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8165,16 +10175,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::Dhcpv6()
@@ -8208,13 +10241,13 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_pool.operation)
-	|| is_set(class_.operation)
-	|| is_set(delegated_prefix_pool.operation)
-	|| is_set(dns_ipv6address.operation)
-	|| is_set(mode_class.operation)
-	|| is_set(stateful_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(address_pool.yfilter)
+	|| ydk::is_set(class_.yfilter)
+	|| ydk::is_set(delegated_prefix_pool.yfilter)
+	|| ydk::is_set(dns_ipv6address.yfilter)
+	|| ydk::is_set(mode_class.yfilter)
+	|| ydk::is_set(stateful_address.yfilter)
 	|| (delegated_prefix !=  nullptr && delegated_prefix->has_operation());
 }
 
@@ -8241,12 +10274,12 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_pool.is_set || is_set(address_pool.operation)) leaf_name_data.push_back(address_pool.get_name_leafdata());
-    if (class_.is_set || is_set(class_.operation)) leaf_name_data.push_back(class_.get_name_leafdata());
-    if (delegated_prefix_pool.is_set || is_set(delegated_prefix_pool.operation)) leaf_name_data.push_back(delegated_prefix_pool.get_name_leafdata());
-    if (dns_ipv6address.is_set || is_set(dns_ipv6address.operation)) leaf_name_data.push_back(dns_ipv6address.get_name_leafdata());
-    if (mode_class.is_set || is_set(mode_class.operation)) leaf_name_data.push_back(mode_class.get_name_leafdata());
-    if (stateful_address.is_set || is_set(stateful_address.operation)) leaf_name_data.push_back(stateful_address.get_name_leafdata());
+    if (address_pool.is_set || is_set(address_pool.yfilter)) leaf_name_data.push_back(address_pool.get_name_leafdata());
+    if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
+    if (delegated_prefix_pool.is_set || is_set(delegated_prefix_pool.yfilter)) leaf_name_data.push_back(delegated_prefix_pool.get_name_leafdata());
+    if (dns_ipv6address.is_set || is_set(dns_ipv6address.yfilter)) leaf_name_data.push_back(dns_ipv6address.get_name_leafdata());
+    if (mode_class.is_set || is_set(mode_class.yfilter)) leaf_name_data.push_back(mode_class.get_name_leafdata());
+    if (stateful_address.is_set || is_set(stateful_address.yfilter)) leaf_name_data.push_back(stateful_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8279,32 +10312,79 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-pool")
     {
         address_pool = value;
+        address_pool.value_namespace = name_space;
+        address_pool.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class")
     {
         class_ = value;
+        class_.value_namespace = name_space;
+        class_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delegated-prefix-pool")
     {
         delegated_prefix_pool = value;
+        delegated_prefix_pool.value_namespace = name_space;
+        delegated_prefix_pool.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dns-ipv6address")
     {
         dns_ipv6address = value;
+        dns_ipv6address.value_namespace = name_space;
+        dns_ipv6address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-class")
     {
         mode_class = value;
+        mode_class.value_namespace = name_space;
+        mode_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stateful-address")
     {
         stateful_address = value;
+        stateful_address.value_namespace = name_space;
+        stateful_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-pool")
+    {
+        address_pool.yfilter = yfilter;
+    }
+    if(value_path == "class")
+    {
+        class_.yfilter = yfilter;
+    }
+    if(value_path == "delegated-prefix-pool")
+    {
+        delegated_prefix_pool.yfilter = yfilter;
+    }
+    if(value_path == "dns-ipv6address")
+    {
+        dns_ipv6address.yfilter = yfilter;
+    }
+    if(value_path == "mode-class")
+    {
+        mode_class.yfilter = yfilter;
+    }
+    if(value_path == "stateful-address")
+    {
+        stateful_address.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delegated-prefix" || name == "address-pool" || name == "class" || name == "delegated-prefix-pool" || name == "dns-ipv6address" || name == "mode-class" || name == "stateful-address")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::DelegatedPrefix()
@@ -8327,9 +10407,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::has_
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::get_segment_path() const
@@ -8355,8 +10435,8 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::Delegated
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8375,16 +10455,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::Pbr()
@@ -8410,8 +10513,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(service_policy_in.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(service_policy_in.yfilter)
 	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
@@ -8438,7 +10541,7 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (service_policy_in.is_set || is_set(service_policy_in.operation)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
+    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8471,12 +10574,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "service-policy-in")
     {
         service_policy_in = value;
+        service_policy_in.value_namespace = name_space;
+        service_policy_in.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-policy" || name == "service-policy-in")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::ServicePolicy()
@@ -8497,8 +10617,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_data(
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(input.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_segment_path() const
@@ -8524,7 +10644,7 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (input.is_set || is_set(input.operation)) leaf_name_data.push_back(input.get_name_leafdata());
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8543,12 +10663,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "input")
     {
         input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Qos()
@@ -8579,7 +10716,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (account !=  nullptr && account->has_operation())
 	|| (output !=  nullptr && output->has_operation())
 	|| (service_policy !=  nullptr && service_policy->has_operation());
@@ -8668,8 +10805,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account" || name == "output" || name == "service-policy")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::ServicePolicy()
@@ -8692,7 +10840,7 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::has_data(
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
@@ -8766,8 +10914,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::Input()
@@ -8796,12 +10955,12 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::ha
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(account_stats.operation)
-	|| is_set(merge.operation)
-	|| is_set(merge_id.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(spi_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(account_stats.yfilter)
+	|| ydk::is_set(merge.yfilter)
+	|| ydk::is_set(merge_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(spi_name.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::get_segment_path() const
@@ -8827,11 +10986,11 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (account_stats.is_set || is_set(account_stats.operation)) leaf_name_data.push_back(account_stats.get_name_leafdata());
-    if (merge.is_set || is_set(merge.operation)) leaf_name_data.push_back(merge.get_name_leafdata());
-    if (merge_id.is_set || is_set(merge_id.operation)) leaf_name_data.push_back(merge_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (spi_name.is_set || is_set(spi_name.operation)) leaf_name_data.push_back(spi_name.get_name_leafdata());
+    if (account_stats.is_set || is_set(account_stats.yfilter)) leaf_name_data.push_back(account_stats.get_name_leafdata());
+    if (merge.is_set || is_set(merge.yfilter)) leaf_name_data.push_back(merge.get_name_leafdata());
+    if (merge_id.is_set || is_set(merge_id.yfilter)) leaf_name_data.push_back(merge_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (spi_name.is_set || is_set(spi_name.yfilter)) leaf_name_data.push_back(spi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8850,28 +11009,69 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "account-stats")
     {
         account_stats = value;
+        account_stats.value_namespace = name_space;
+        account_stats.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge")
     {
         merge = value;
+        merge.value_namespace = name_space;
+        merge.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge-id")
     {
         merge_id = value;
+        merge_id.value_namespace = name_space;
+        merge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spi-name")
     {
         spi_name = value;
+        spi_name.value_namespace = name_space;
+        spi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "account-stats")
+    {
+        account_stats.yfilter = yfilter;
+    }
+    if(value_path == "merge")
+    {
+        merge.yfilter = yfilter;
+    }
+    if(value_path == "merge-id")
+    {
+        merge_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "spi-name")
+    {
+        spi_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account-stats" || name == "merge" || name == "merge-id" || name == "policy-name" || name == "spi-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::Output()
@@ -8900,12 +11100,12 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::h
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(account_stats.operation)
-	|| is_set(merge.operation)
-	|| is_set(merge_id.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(spi_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(account_stats.yfilter)
+	|| ydk::is_set(merge.yfilter)
+	|| ydk::is_set(merge_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(spi_name.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::get_segment_path() const
@@ -8931,11 +11131,11 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (account_stats.is_set || is_set(account_stats.operation)) leaf_name_data.push_back(account_stats.get_name_leafdata());
-    if (merge.is_set || is_set(merge.operation)) leaf_name_data.push_back(merge.get_name_leafdata());
-    if (merge_id.is_set || is_set(merge_id.operation)) leaf_name_data.push_back(merge_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (spi_name.is_set || is_set(spi_name.operation)) leaf_name_data.push_back(spi_name.get_name_leafdata());
+    if (account_stats.is_set || is_set(account_stats.yfilter)) leaf_name_data.push_back(account_stats.get_name_leafdata());
+    if (merge.is_set || is_set(merge.yfilter)) leaf_name_data.push_back(merge.get_name_leafdata());
+    if (merge_id.is_set || is_set(merge_id.yfilter)) leaf_name_data.push_back(merge_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (spi_name.is_set || is_set(spi_name.yfilter)) leaf_name_data.push_back(spi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8954,28 +11154,69 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "account-stats")
     {
         account_stats = value;
+        account_stats.value_namespace = name_space;
+        account_stats.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge")
     {
         merge = value;
+        merge.value_namespace = name_space;
+        merge.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge-id")
     {
         merge_id = value;
+        merge_id.value_namespace = name_space;
+        merge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spi-name")
     {
         spi_name = value;
+        spi_name.value_namespace = name_space;
+        spi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "account-stats")
+    {
+        account_stats.yfilter = yfilter;
+    }
+    if(value_path == "merge")
+    {
+        merge.yfilter = yfilter;
+    }
+    if(value_path == "merge-id")
+    {
+        merge_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "spi-name")
+    {
+        spi_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account-stats" || name == "merge" || name == "merge-id" || name == "policy-name" || name == "spi-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::Account()
@@ -9002,11 +11243,11 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::has_data() cons
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aal.operation)
-	|| is_set(atm_cell_tax.operation)
-	|| is_set(encapsulation.operation)
-	|| is_set(user_defined.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aal.yfilter)
+	|| ydk::is_set(atm_cell_tax.yfilter)
+	|| ydk::is_set(encapsulation.yfilter)
+	|| ydk::is_set(user_defined.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::get_segment_path() const
@@ -9032,10 +11273,10 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aal.is_set || is_set(aal.operation)) leaf_name_data.push_back(aal.get_name_leafdata());
-    if (atm_cell_tax.is_set || is_set(atm_cell_tax.operation)) leaf_name_data.push_back(atm_cell_tax.get_name_leafdata());
-    if (encapsulation.is_set || is_set(encapsulation.operation)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
-    if (user_defined.is_set || is_set(user_defined.operation)) leaf_name_data.push_back(user_defined.get_name_leafdata());
+    if (aal.is_set || is_set(aal.yfilter)) leaf_name_data.push_back(aal.get_name_leafdata());
+    if (atm_cell_tax.is_set || is_set(atm_cell_tax.yfilter)) leaf_name_data.push_back(atm_cell_tax.get_name_leafdata());
+    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
+    if (user_defined.is_set || is_set(user_defined.yfilter)) leaf_name_data.push_back(user_defined.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9054,24 +11295,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aal")
     {
         aal = value;
+        aal.value_namespace = name_space;
+        aal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atm-cell-tax")
     {
         atm_cell_tax = value;
+        atm_cell_tax.value_namespace = name_space;
+        atm_cell_tax.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation")
     {
         encapsulation = value;
+        encapsulation.value_namespace = name_space;
+        encapsulation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "user-defined")
     {
         user_defined = value;
+        user_defined.value_namespace = name_space;
+        user_defined.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aal")
+    {
+        aal.yfilter = yfilter;
+    }
+    if(value_path == "atm-cell-tax")
+    {
+        atm_cell_tax.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation")
+    {
+        encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "user-defined")
+    {
+        user_defined.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aal" || name == "atm-cell-tax" || name == "encapsulation" || name == "user-defined")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::Output()
@@ -9092,8 +11368,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(minimum_bandwidth.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::get_segment_path() const
@@ -9119,7 +11395,7 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9138,12 +11414,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minimum-bandwidth")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Accounting()
@@ -9177,8 +11470,8 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_data() const
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prepaid_feature.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(prepaid_feature.yfilter)
 	|| (idle_timeout !=  nullptr && idle_timeout->has_operation())
 	|| (service_accounting !=  nullptr && service_accounting->has_operation())
 	|| (session !=  nullptr && session->has_operation());
@@ -9207,7 +11500,7 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prepaid_feature.is_set || is_set(prepaid_feature.operation)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
+    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9268,12 +11561,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prepaid-feature")
     {
         prepaid_feature = value;
+        prepaid_feature.value_namespace = name_space;
+        prepaid_feature.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prepaid-feature")
+    {
+        prepaid_feature.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idle-timeout" || name == "service-accounting" || name == "session" || name == "prepaid-feature")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::ServiceAccounting()
@@ -9296,9 +11606,9 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting_interim_interval.operation)
-	|| is_set(method_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(accounting_interim_interval.yfilter)
+	|| ydk::is_set(method_list_name.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_segment_path() const
@@ -9324,8 +11634,8 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Servi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.operation)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
-    if (method_list_name.is_set || is_set(method_list_name.operation)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9344,16 +11654,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting-interim-interval")
     {
         accounting_interim_interval = value;
+        accounting_interim_interval.value_namespace = name_space;
+        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "method-list-name")
     {
         method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting-interim-interval")
+    {
+        accounting_interim_interval.yfilter = yfilter;
+    }
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting-interim-interval" || name == "method-list-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::Session()
@@ -9380,11 +11713,11 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_data
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dual_stack_delay.operation)
-	|| is_set(hold_acct_start.operation)
-	|| is_set(method_list_name.operation)
-	|| is_set(periodic_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dual_stack_delay.yfilter)
+	|| ydk::is_set(hold_acct_start.yfilter)
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(periodic_interval.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_segment_path() const
@@ -9410,10 +11743,10 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Sessi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dual_stack_delay.is_set || is_set(dual_stack_delay.operation)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
-    if (hold_acct_start.is_set || is_set(hold_acct_start.operation)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
-    if (method_list_name.is_set || is_set(method_list_name.operation)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (periodic_interval.is_set || is_set(periodic_interval.operation)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
+    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
+    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9432,24 +11765,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dual-stack-delay")
     {
         dual_stack_delay = value;
+        dual_stack_delay.value_namespace = name_space;
+        dual_stack_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-acct-start")
     {
         hold_acct_start = value;
+        hold_acct_start.value_namespace = name_space;
+        hold_acct_start.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "method-list-name")
     {
         method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "periodic-interval")
     {
         periodic_interval = value;
+        periodic_interval.value_namespace = name_space;
+        periodic_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-stack-delay")
+    {
+        dual_stack_delay.yfilter = yfilter;
+    }
+    if(value_path == "hold-acct-start")
+    {
+        hold_acct_start.yfilter = yfilter;
+    }
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-stack-delay" || name == "hold-acct-start" || name == "method-list-name" || name == "periodic-interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::IdleTimeout()
@@ -9474,10 +11842,10 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(threshold.operation)
-	|| is_set(timeout_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(timeout_value.yfilter);
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_segment_path() const
@@ -9503,9 +11871,9 @@ const EntityPath DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleT
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (timeout_value.is_set || is_set(timeout_value.operation)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9524,20 +11892,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::IpSubscribers::I
     return children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-value")
     {
         timeout_value = value;
+        timeout_value.value_namespace = name_space;
+        timeout_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "timeout-value")
+    {
+        timeout_value.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "threshold" || name == "timeout-value")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberServices()
@@ -9566,7 +11963,7 @@ bool DynamicTemplate::SubscriberServices::has_operation() const
         if(subscriber_service[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::get_segment_path() const
@@ -9631,8 +12028,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::SubscriberServices::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::SubscriberServices::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subscriber-service")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::SubscriberService()
@@ -9692,9 +12100,9 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::has_data() const
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(vrf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(vrf.yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (ipv4_network !=  nullptr && ipv4_network->has_operation())
 	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_operation())
@@ -9729,8 +12137,8 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9875,16 +12283,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting" || name == "ipv4-network" || name == "ipv4-packet-filter" || name == "ipv6-neighbor" || name == "ipv6-network" || name == "ipv6-packet-filter" || name == "pbr" || name == "qos" || name == "span-monitor-sessions" || name == "template-name" || name == "vrf")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSessions()
@@ -9913,7 +12344,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
         if(span_monitor_session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::get_segment_path() const
@@ -9978,8 +12409,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "span-monitor-session")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::SpanMonitorSession()
@@ -10009,11 +12451,11 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_class.operation)
-	|| is_set(acl.operation)
-	|| is_set(mirror_first.operation)
-	|| is_set(mirror_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(session_class.yfilter)
+	|| ydk::is_set(acl.yfilter)
+	|| ydk::is_set(mirror_first.yfilter)
+	|| ydk::is_set(mirror_interval.yfilter)
 	|| (attachment !=  nullptr && attachment->has_operation());
 }
 
@@ -10040,10 +12482,10 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::SpanMon
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_class.is_set || is_set(session_class.operation)) leaf_name_data.push_back(session_class.get_name_leafdata());
-    if (acl.is_set || is_set(acl.operation)) leaf_name_data.push_back(acl.get_name_leafdata());
-    if (mirror_first.is_set || is_set(mirror_first.operation)) leaf_name_data.push_back(mirror_first.get_name_leafdata());
-    if (mirror_interval.is_set || is_set(mirror_interval.operation)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
+    if (session_class.is_set || is_set(session_class.yfilter)) leaf_name_data.push_back(session_class.get_name_leafdata());
+    if (acl.is_set || is_set(acl.yfilter)) leaf_name_data.push_back(acl.get_name_leafdata());
+    if (mirror_first.is_set || is_set(mirror_first.yfilter)) leaf_name_data.push_back(mirror_first.get_name_leafdata());
+    if (mirror_interval.is_set || is_set(mirror_interval.yfilter)) leaf_name_data.push_back(mirror_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10076,24 +12518,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-class")
     {
         session_class = value;
+        session_class.value_namespace = name_space;
+        session_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl")
     {
         acl = value;
+        acl.value_namespace = name_space;
+        acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-first")
     {
         mirror_first = value;
+        mirror_first.value_namespace = name_space;
+        mirror_first.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mirror-interval")
     {
         mirror_interval = value;
+        mirror_interval.value_namespace = name_space;
+        mirror_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-class")
+    {
+        session_class.yfilter = yfilter;
+    }
+    if(value_path == "acl")
+    {
+        acl.yfilter = yfilter;
+    }
+    if(value_path == "mirror-first")
+    {
+        mirror_first.yfilter = yfilter;
+    }
+    if(value_path == "mirror-interval")
+    {
+        mirror_interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attachment" || name == "session-class" || name == "acl" || name == "mirror-first" || name == "mirror-interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment::Attachment()
@@ -10118,10 +12595,10 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(port_level_enable.operation)
-	|| is_set(session_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(port_level_enable.yfilter)
+	|| ydk::is_set(session_name.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment::get_segment_path() const
@@ -10147,9 +12624,9 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::SpanMon
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (port_level_enable.is_set || is_set(port_level_enable.operation)) leaf_name_data.push_back(port_level_enable.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (port_level_enable.is_set || is_set(port_level_enable.yfilter)) leaf_name_data.push_back(port_level_enable.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10168,20 +12645,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-level-enable")
     {
         port_level_enable = value;
+        port_level_enable.value_namespace = name_space;
+        port_level_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "port-level-enable")
+    {
+        port_level_enable.yfilter = yfilter;
+    }
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "port-level-enable" || name == "session-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Ipv4PacketFilter()
@@ -10206,7 +12712,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::h
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inbound !=  nullptr && inbound->has_operation())
 	|| (outbound !=  nullptr && outbound->has_operation());
 }
@@ -10280,8 +12786,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::Outbound()
@@ -10308,11 +12825,11 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::O
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(hardware_count.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(hardware_count.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::get_segment_path() const
@@ -10338,10 +12855,10 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Pac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (hardware_count.is_set || is_set(hardware_count.operation)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (hardware_count.is_set || is_set(hardware_count.yfilter)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10360,24 +12877,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-count")
     {
         hardware_count = value;
+        hardware_count.value_namespace = name_space;
+        hardware_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-count")
+    {
+        hardware_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "hardware-count" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::Inbound()
@@ -10404,11 +12956,11 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::I
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(hardware_count.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(hardware_count.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::get_segment_path() const
@@ -10434,10 +12986,10 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Pac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (hardware_count.is_set || is_set(hardware_count.operation)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (hardware_count.is_set || is_set(hardware_count.yfilter)) leaf_name_data.push_back(hardware_count.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10456,24 +13008,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-count")
     {
         hardware_count = value;
+        hardware_count.value_namespace = name_space;
+        hardware_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-count")
+    {
+        hardware_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "hardware-count" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Ipv6PacketFilter()
@@ -10498,7 +13085,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::h
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inbound !=  nullptr && inbound->has_operation())
 	|| (outbound !=  nullptr && outbound->has_operation());
 }
@@ -10572,8 +13159,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inbound" || name == "outbound")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::Inbound()
@@ -10598,10 +13196,10 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::I
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::get_segment_path() const
@@ -10627,9 +13225,9 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Pac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10648,20 +13246,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Inbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::Outbound()
@@ -10686,10 +13313,10 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::O
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(common_acl_name.operation)
-	|| is_set(interface_statistics.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(common_acl_name.yfilter)
+	|| ydk::is_set(interface_statistics.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::get_segment_path() const
@@ -10715,9 +13342,9 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Pac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (common_acl_name.is_set || is_set(common_acl_name.operation)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
-    if (interface_statistics.is_set || is_set(interface_statistics.operation)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (common_acl_name.is_set || is_set(common_acl_name.yfilter)) leaf_name_data.push_back(common_acl_name.get_name_leafdata());
+    if (interface_statistics.is_set || is_set(interface_statistics.yfilter)) leaf_name_data.push_back(interface_statistics.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10736,20 +13363,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "common-acl-name")
     {
         common_acl_name = value;
+        common_acl_name.value_namespace = name_space;
+        common_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-statistics")
     {
         interface_statistics = value;
+        interface_statistics.value_namespace = name_space;
+        interface_statistics.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "common-acl-name")
+    {
+        common_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-statistics")
+    {
+        interface_statistics.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter::Outbound::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "common-acl-name" || name == "interface-statistics" || name == "name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::Ipv4Network()
@@ -10776,11 +13432,11 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_da
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mtu.operation)
-	|| is_set(rpf.operation)
-	|| is_set(unnumbered.operation)
-	|| is_set(unreachables.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(rpf.yfilter)
+	|| ydk::is_set(unnumbered.yfilter)
+	|| ydk::is_set(unreachables.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_segment_path() const
@@ -10806,10 +13462,10 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Net
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (rpf.is_set || is_set(rpf.operation)) leaf_name_data.push_back(rpf.get_name_leafdata());
-    if (unnumbered.is_set || is_set(unnumbered.operation)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.operation)) leaf_name_data.push_back(unreachables.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10828,31 +13484,66 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpf")
     {
         rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unnumbered")
     {
         unnumbered = value;
+        unnumbered.value_namespace = name_space;
+        unnumbered.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unreachables")
     {
         unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+    if(value_path == "unnumbered")
+    {
+        unnumbered.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mtu" || name == "rpf" || name == "unnumbered" || name == "unreachables")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Ipv6Network()
     :
     mtu{YType::uint32, "mtu"},
-    unreachables{YType::empty, "unreachables"},
-    verify{YType::enumeration, "verify"}
+    rpf{YType::boolean, "rpf"},
+    unreachables{YType::empty, "unreachables"}
     	,
     addresses(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses>())
 {
@@ -10868,17 +13559,17 @@ DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::~Ipv6Networ
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::has_data() const
 {
     return mtu.is_set
+	|| rpf.is_set
 	|| unreachables.is_set
-	|| verify.is_set
 	|| (addresses !=  nullptr && addresses->has_data());
 }
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mtu.operation)
-	|| is_set(unreachables.operation)
-	|| is_set(verify.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(rpf.yfilter)
+	|| ydk::is_set(unreachables.yfilter)
 	|| (addresses !=  nullptr && addresses->has_operation());
 }
 
@@ -10905,9 +13596,9 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Net
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.operation)) leaf_name_data.push_back(unreachables.get_name_leafdata());
-    if (verify.is_set || is_set(verify.operation)) leaf_name_data.push_back(verify.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10940,20 +13631,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf")
+    {
+        rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unreachables")
     {
         unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "verify")
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
     {
-        verify = value;
+        mtu.yfilter = yfilter;
     }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addresses" || name == "mtu" || name == "rpf" || name == "unreachables")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::Addresses()
@@ -10976,7 +13696,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addres
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (auto_configuration !=  nullptr && auto_configuration->has_operation());
 }
 
@@ -11035,8 +13755,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-configuration")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::AutoConfiguration()
@@ -11057,8 +13788,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addres
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::get_segment_path() const
@@ -11084,7 +13815,7 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Net
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11103,12 +13834,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::Ipv6Neighbor()
@@ -11166,21 +13914,21 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::has_d
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(framed_prefix_pool.operation)
-	|| is_set(managed_config.operation)
-	|| is_set(ns_interval.operation)
-	|| is_set(nud_enable.operation)
-	|| is_set(other_config.operation)
-	|| is_set(ra_lifetime.operation)
-	|| is_set(ra_suppress.operation)
-	|| is_set(ra_suppress_mtu.operation)
-	|| is_set(ra_unicast.operation)
-	|| is_set(ra_unspecify_hoplimit.operation)
-	|| is_set(reachable_time.operation)
-	|| is_set(router_preference.operation)
-	|| is_set(start_ra_on_ipv6_enable.operation)
-	|| is_set(suppress_cache_learning.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(framed_prefix_pool.yfilter)
+	|| ydk::is_set(managed_config.yfilter)
+	|| ydk::is_set(ns_interval.yfilter)
+	|| ydk::is_set(nud_enable.yfilter)
+	|| ydk::is_set(other_config.yfilter)
+	|| ydk::is_set(ra_lifetime.yfilter)
+	|| ydk::is_set(ra_suppress.yfilter)
+	|| ydk::is_set(ra_suppress_mtu.yfilter)
+	|| ydk::is_set(ra_unicast.yfilter)
+	|| ydk::is_set(ra_unspecify_hoplimit.yfilter)
+	|| ydk::is_set(reachable_time.yfilter)
+	|| ydk::is_set(router_preference.yfilter)
+	|| ydk::is_set(start_ra_on_ipv6_enable.yfilter)
+	|| ydk::is_set(suppress_cache_learning.yfilter)
 	|| (duplicate_address_detection !=  nullptr && duplicate_address_detection->has_operation())
 	|| (framed_prefix !=  nullptr && framed_prefix->has_operation())
 	|| (ra_initial !=  nullptr && ra_initial->has_operation())
@@ -11210,20 +13958,20 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Nei
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (framed_prefix_pool.is_set || is_set(framed_prefix_pool.operation)) leaf_name_data.push_back(framed_prefix_pool.get_name_leafdata());
-    if (managed_config.is_set || is_set(managed_config.operation)) leaf_name_data.push_back(managed_config.get_name_leafdata());
-    if (ns_interval.is_set || is_set(ns_interval.operation)) leaf_name_data.push_back(ns_interval.get_name_leafdata());
-    if (nud_enable.is_set || is_set(nud_enable.operation)) leaf_name_data.push_back(nud_enable.get_name_leafdata());
-    if (other_config.is_set || is_set(other_config.operation)) leaf_name_data.push_back(other_config.get_name_leafdata());
-    if (ra_lifetime.is_set || is_set(ra_lifetime.operation)) leaf_name_data.push_back(ra_lifetime.get_name_leafdata());
-    if (ra_suppress.is_set || is_set(ra_suppress.operation)) leaf_name_data.push_back(ra_suppress.get_name_leafdata());
-    if (ra_suppress_mtu.is_set || is_set(ra_suppress_mtu.operation)) leaf_name_data.push_back(ra_suppress_mtu.get_name_leafdata());
-    if (ra_unicast.is_set || is_set(ra_unicast.operation)) leaf_name_data.push_back(ra_unicast.get_name_leafdata());
-    if (ra_unspecify_hoplimit.is_set || is_set(ra_unspecify_hoplimit.operation)) leaf_name_data.push_back(ra_unspecify_hoplimit.get_name_leafdata());
-    if (reachable_time.is_set || is_set(reachable_time.operation)) leaf_name_data.push_back(reachable_time.get_name_leafdata());
-    if (router_preference.is_set || is_set(router_preference.operation)) leaf_name_data.push_back(router_preference.get_name_leafdata());
-    if (start_ra_on_ipv6_enable.is_set || is_set(start_ra_on_ipv6_enable.operation)) leaf_name_data.push_back(start_ra_on_ipv6_enable.get_name_leafdata());
-    if (suppress_cache_learning.is_set || is_set(suppress_cache_learning.operation)) leaf_name_data.push_back(suppress_cache_learning.get_name_leafdata());
+    if (framed_prefix_pool.is_set || is_set(framed_prefix_pool.yfilter)) leaf_name_data.push_back(framed_prefix_pool.get_name_leafdata());
+    if (managed_config.is_set || is_set(managed_config.yfilter)) leaf_name_data.push_back(managed_config.get_name_leafdata());
+    if (ns_interval.is_set || is_set(ns_interval.yfilter)) leaf_name_data.push_back(ns_interval.get_name_leafdata());
+    if (nud_enable.is_set || is_set(nud_enable.yfilter)) leaf_name_data.push_back(nud_enable.get_name_leafdata());
+    if (other_config.is_set || is_set(other_config.yfilter)) leaf_name_data.push_back(other_config.get_name_leafdata());
+    if (ra_lifetime.is_set || is_set(ra_lifetime.yfilter)) leaf_name_data.push_back(ra_lifetime.get_name_leafdata());
+    if (ra_suppress.is_set || is_set(ra_suppress.yfilter)) leaf_name_data.push_back(ra_suppress.get_name_leafdata());
+    if (ra_suppress_mtu.is_set || is_set(ra_suppress_mtu.yfilter)) leaf_name_data.push_back(ra_suppress_mtu.get_name_leafdata());
+    if (ra_unicast.is_set || is_set(ra_unicast.yfilter)) leaf_name_data.push_back(ra_unicast.get_name_leafdata());
+    if (ra_unspecify_hoplimit.is_set || is_set(ra_unspecify_hoplimit.yfilter)) leaf_name_data.push_back(ra_unspecify_hoplimit.get_name_leafdata());
+    if (reachable_time.is_set || is_set(reachable_time.yfilter)) leaf_name_data.push_back(reachable_time.get_name_leafdata());
+    if (router_preference.is_set || is_set(router_preference.yfilter)) leaf_name_data.push_back(router_preference.get_name_leafdata());
+    if (start_ra_on_ipv6_enable.is_set || is_set(start_ra_on_ipv6_enable.yfilter)) leaf_name_data.push_back(start_ra_on_ipv6_enable.get_name_leafdata());
+    if (suppress_cache_learning.is_set || is_set(suppress_cache_learning.yfilter)) leaf_name_data.push_back(suppress_cache_learning.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11298,64 +14046,159 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "framed-prefix-pool")
     {
         framed_prefix_pool = value;
+        framed_prefix_pool.value_namespace = name_space;
+        framed_prefix_pool.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managed-config")
     {
         managed_config = value;
+        managed_config.value_namespace = name_space;
+        managed_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ns-interval")
     {
         ns_interval = value;
+        ns_interval.value_namespace = name_space;
+        ns_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nud-enable")
     {
         nud_enable = value;
+        nud_enable.value_namespace = name_space;
+        nud_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "other-config")
     {
         other_config = value;
+        other_config.value_namespace = name_space;
+        other_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-lifetime")
     {
         ra_lifetime = value;
+        ra_lifetime.value_namespace = name_space;
+        ra_lifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-suppress")
     {
         ra_suppress = value;
+        ra_suppress.value_namespace = name_space;
+        ra_suppress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-suppress-mtu")
     {
         ra_suppress_mtu = value;
+        ra_suppress_mtu.value_namespace = name_space;
+        ra_suppress_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-unicast")
     {
         ra_unicast = value;
+        ra_unicast.value_namespace = name_space;
+        ra_unicast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ra-unspecify-hoplimit")
     {
         ra_unspecify_hoplimit = value;
+        ra_unspecify_hoplimit.value_namespace = name_space;
+        ra_unspecify_hoplimit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reachable-time")
     {
         reachable_time = value;
+        reachable_time.value_namespace = name_space;
+        reachable_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-preference")
     {
         router_preference = value;
+        router_preference.value_namespace = name_space;
+        router_preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-ra-on-ipv6-enable")
     {
         start_ra_on_ipv6_enable = value;
+        start_ra_on_ipv6_enable.value_namespace = name_space;
+        start_ra_on_ipv6_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-cache-learning")
     {
         suppress_cache_learning = value;
+        suppress_cache_learning.value_namespace = name_space;
+        suppress_cache_learning.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "framed-prefix-pool")
+    {
+        framed_prefix_pool.yfilter = yfilter;
+    }
+    if(value_path == "managed-config")
+    {
+        managed_config.yfilter = yfilter;
+    }
+    if(value_path == "ns-interval")
+    {
+        ns_interval.yfilter = yfilter;
+    }
+    if(value_path == "nud-enable")
+    {
+        nud_enable.yfilter = yfilter;
+    }
+    if(value_path == "other-config")
+    {
+        other_config.yfilter = yfilter;
+    }
+    if(value_path == "ra-lifetime")
+    {
+        ra_lifetime.yfilter = yfilter;
+    }
+    if(value_path == "ra-suppress")
+    {
+        ra_suppress.yfilter = yfilter;
+    }
+    if(value_path == "ra-suppress-mtu")
+    {
+        ra_suppress_mtu.yfilter = yfilter;
+    }
+    if(value_path == "ra-unicast")
+    {
+        ra_unicast.yfilter = yfilter;
+    }
+    if(value_path == "ra-unspecify-hoplimit")
+    {
+        ra_unspecify_hoplimit.yfilter = yfilter;
+    }
+    if(value_path == "reachable-time")
+    {
+        reachable_time.yfilter = yfilter;
+    }
+    if(value_path == "router-preference")
+    {
+        router_preference.yfilter = yfilter;
+    }
+    if(value_path == "start-ra-on-ipv6-enable")
+    {
+        start_ra_on_ipv6_enable.yfilter = yfilter;
+    }
+    if(value_path == "suppress-cache-learning")
+    {
+        suppress_cache_learning.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "duplicate-address-detection" || name == "framed-prefix" || name == "ra-initial" || name == "ra-interval" || name == "framed-prefix-pool" || name == "managed-config" || name == "ns-interval" || name == "nud-enable" || name == "other-config" || name == "ra-lifetime" || name == "ra-suppress" || name == "ra-suppress-mtu" || name == "ra-unicast" || name == "ra-unspecify-hoplimit" || name == "reachable-time" || name == "router-preference" || name == "start-ra-on-ipv6-enable" || name == "suppress-cache-learning")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::RaInterval()
@@ -11378,9 +14221,9 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInt
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::get_segment_path() const
@@ -11406,8 +14249,8 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Nei
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11426,16 +14269,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum" || name == "minimum")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::FramedPrefix()
@@ -11458,9 +14324,9 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::Frame
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::get_segment_path() const
@@ -11486,8 +14352,8 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Nei
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11506,16 +14372,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::FramedPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::DuplicateAddressDetection()
@@ -11536,8 +14425,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::Dupli
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(attempts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(attempts.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::get_segment_path() const
@@ -11563,7 +14452,7 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Nei
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (attempts.is_set || is_set(attempts.operation)) leaf_name_data.push_back(attempts.get_name_leafdata());
+    if (attempts.is_set || is_set(attempts.yfilter)) leaf_name_data.push_back(attempts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11582,12 +14471,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attempts")
     {
         attempts = value;
+        attempts.value_namespace = name_space;
+        attempts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "attempts")
+    {
+        attempts.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::DuplicateAddressDetection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attempts")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::RaInitial()
@@ -11610,9 +14516,9 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaIni
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::get_segment_path() const
@@ -11638,8 +14544,8 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Nei
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11658,16 +14564,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaInitial::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Pbr::Pbr()
@@ -11693,8 +14622,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Pbr::has_data() con
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Pbr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(service_policy_in.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(service_policy_in.yfilter)
 	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
@@ -11721,7 +14650,7 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (service_policy_in.is_set || is_set(service_policy_in.operation)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
+    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11754,12 +14683,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "service-policy-in")
     {
         service_policy_in = value;
+        service_policy_in.value_namespace = name_space;
+        service_policy_in.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Pbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-policy" || name == "service-policy-in")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::ServicePolicy()
@@ -11780,8 +14726,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy:
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(input.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::get_segment_path() const
@@ -11807,7 +14753,7 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Pbr::Se
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (input.is_set || is_set(input.operation)) leaf_name_data.push_back(input.get_name_leafdata());
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11826,12 +14772,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "input")
     {
         input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Qos::Qos()
@@ -11862,7 +14825,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::has_data() con
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (account !=  nullptr && account->has_operation())
 	|| (output !=  nullptr && output->has_operation())
 	|| (service_policy !=  nullptr && service_policy->has_operation());
@@ -11951,8 +14914,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Qos::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account" || name == "output" || name == "service-policy")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::ServicePolicy()
@@ -11975,7 +14949,7 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy:
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
@@ -12049,8 +15023,19 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input::Input()
@@ -12079,12 +15064,12 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy:
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(account_stats.operation)
-	|| is_set(merge.operation)
-	|| is_set(merge_id.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(spi_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(account_stats.yfilter)
+	|| ydk::is_set(merge.yfilter)
+	|| ydk::is_set(merge_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(spi_name.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input::get_segment_path() const
@@ -12110,11 +15095,11 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::Se
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (account_stats.is_set || is_set(account_stats.operation)) leaf_name_data.push_back(account_stats.get_name_leafdata());
-    if (merge.is_set || is_set(merge.operation)) leaf_name_data.push_back(merge.get_name_leafdata());
-    if (merge_id.is_set || is_set(merge_id.operation)) leaf_name_data.push_back(merge_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (spi_name.is_set || is_set(spi_name.operation)) leaf_name_data.push_back(spi_name.get_name_leafdata());
+    if (account_stats.is_set || is_set(account_stats.yfilter)) leaf_name_data.push_back(account_stats.get_name_leafdata());
+    if (merge.is_set || is_set(merge.yfilter)) leaf_name_data.push_back(merge.get_name_leafdata());
+    if (merge_id.is_set || is_set(merge_id.yfilter)) leaf_name_data.push_back(merge_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (spi_name.is_set || is_set(spi_name.yfilter)) leaf_name_data.push_back(spi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12133,28 +15118,69 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "account-stats")
     {
         account_stats = value;
+        account_stats.value_namespace = name_space;
+        account_stats.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge")
     {
         merge = value;
+        merge.value_namespace = name_space;
+        merge.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge-id")
     {
         merge_id = value;
+        merge_id.value_namespace = name_space;
+        merge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spi-name")
     {
         spi_name = value;
+        spi_name.value_namespace = name_space;
+        spi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "account-stats")
+    {
+        account_stats.yfilter = yfilter;
+    }
+    if(value_path == "merge")
+    {
+        merge.yfilter = yfilter;
+    }
+    if(value_path == "merge-id")
+    {
+        merge_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "spi-name")
+    {
+        spi_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account-stats" || name == "merge" || name == "merge-id" || name == "policy-name" || name == "spi-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output::Output()
@@ -12183,12 +15209,12 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy:
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(account_stats.operation)
-	|| is_set(merge.operation)
-	|| is_set(merge_id.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(spi_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(account_stats.yfilter)
+	|| ydk::is_set(merge.yfilter)
+	|| ydk::is_set(merge_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(spi_name.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output::get_segment_path() const
@@ -12214,11 +15240,11 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::Se
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (account_stats.is_set || is_set(account_stats.operation)) leaf_name_data.push_back(account_stats.get_name_leafdata());
-    if (merge.is_set || is_set(merge.operation)) leaf_name_data.push_back(merge.get_name_leafdata());
-    if (merge_id.is_set || is_set(merge_id.operation)) leaf_name_data.push_back(merge_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (spi_name.is_set || is_set(spi_name.operation)) leaf_name_data.push_back(spi_name.get_name_leafdata());
+    if (account_stats.is_set || is_set(account_stats.yfilter)) leaf_name_data.push_back(account_stats.get_name_leafdata());
+    if (merge.is_set || is_set(merge.yfilter)) leaf_name_data.push_back(merge.get_name_leafdata());
+    if (merge_id.is_set || is_set(merge_id.yfilter)) leaf_name_data.push_back(merge_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (spi_name.is_set || is_set(spi_name.yfilter)) leaf_name_data.push_back(spi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12237,28 +15263,69 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "account-stats")
     {
         account_stats = value;
+        account_stats.value_namespace = name_space;
+        account_stats.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge")
     {
         merge = value;
+        merge.value_namespace = name_space;
+        merge.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "merge-id")
     {
         merge_id = value;
+        merge_id.value_namespace = name_space;
+        merge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spi-name")
     {
         spi_name = value;
+        spi_name.value_namespace = name_space;
+        spi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "account-stats")
+    {
+        account_stats.yfilter = yfilter;
+    }
+    if(value_path == "merge")
+    {
+        merge.yfilter = yfilter;
+    }
+    if(value_path == "merge-id")
+    {
+        merge_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "spi-name")
+    {
+        spi_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "account-stats" || name == "merge" || name == "merge-id" || name == "policy-name" || name == "spi-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::Account()
@@ -12285,11 +15352,11 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::has_d
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aal.operation)
-	|| is_set(atm_cell_tax.operation)
-	|| is_set(encapsulation.operation)
-	|| is_set(user_defined.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aal.yfilter)
+	|| ydk::is_set(atm_cell_tax.yfilter)
+	|| ydk::is_set(encapsulation.yfilter)
+	|| ydk::is_set(user_defined.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::get_segment_path() const
@@ -12315,10 +15382,10 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::Ac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aal.is_set || is_set(aal.operation)) leaf_name_data.push_back(aal.get_name_leafdata());
-    if (atm_cell_tax.is_set || is_set(atm_cell_tax.operation)) leaf_name_data.push_back(atm_cell_tax.get_name_leafdata());
-    if (encapsulation.is_set || is_set(encapsulation.operation)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
-    if (user_defined.is_set || is_set(user_defined.operation)) leaf_name_data.push_back(user_defined.get_name_leafdata());
+    if (aal.is_set || is_set(aal.yfilter)) leaf_name_data.push_back(aal.get_name_leafdata());
+    if (atm_cell_tax.is_set || is_set(atm_cell_tax.yfilter)) leaf_name_data.push_back(atm_cell_tax.get_name_leafdata());
+    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
+    if (user_defined.is_set || is_set(user_defined.yfilter)) leaf_name_data.push_back(user_defined.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12337,24 +15404,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aal")
     {
         aal = value;
+        aal.value_namespace = name_space;
+        aal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atm-cell-tax")
     {
         atm_cell_tax = value;
+        atm_cell_tax.value_namespace = name_space;
+        atm_cell_tax.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation")
     {
         encapsulation = value;
+        encapsulation.value_namespace = name_space;
+        encapsulation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "user-defined")
     {
         user_defined = value;
+        user_defined.value_namespace = name_space;
+        user_defined.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aal")
+    {
+        aal.yfilter = yfilter;
+    }
+    if(value_path == "atm-cell-tax")
+    {
+        atm_cell_tax.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation")
+    {
+        encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "user-defined")
+    {
+        user_defined.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aal" || name == "atm-cell-tax" || name == "encapsulation" || name == "user-defined")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::Output()
@@ -12375,8 +15477,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::has_da
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(minimum_bandwidth.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::get_segment_path() const
@@ -12402,7 +15504,7 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Qos::Ou
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12421,12 +15523,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minimum-bandwidth")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Accounting()
@@ -12460,8 +15579,8 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_dat
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prepaid_feature.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(prepaid_feature.yfilter)
 	|| (idle_timeout !=  nullptr && idle_timeout->has_operation())
 	|| (service_accounting !=  nullptr && service_accounting->has_operation())
 	|| (session !=  nullptr && session->has_operation());
@@ -12490,7 +15609,7 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Account
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prepaid_feature.is_set || is_set(prepaid_feature.operation)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
+    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12551,12 +15670,29 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prepaid-feature")
     {
         prepaid_feature = value;
+        prepaid_feature.value_namespace = name_space;
+        prepaid_feature.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prepaid-feature")
+    {
+        prepaid_feature.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idle-timeout" || name == "service-accounting" || name == "session" || name == "prepaid-feature")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::ServiceAccounting()
@@ -12579,9 +15715,9 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Service
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting_interim_interval.operation)
-	|| is_set(method_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(accounting_interim_interval.yfilter)
+	|| ydk::is_set(method_list_name.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_segment_path() const
@@ -12607,8 +15743,8 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Account
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.operation)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
-    if (method_list_name.is_set || is_set(method_list_name.operation)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12627,16 +15763,39 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting-interim-interval")
     {
         accounting_interim_interval = value;
+        accounting_interim_interval.value_namespace = name_space;
+        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "method-list-name")
     {
         method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting-interim-interval")
+    {
+        accounting_interim_interval.yfilter = yfilter;
+    }
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting-interim-interval" || name == "method-list-name")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::Session()
@@ -12663,11 +15822,11 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dual_stack_delay.operation)
-	|| is_set(hold_acct_start.operation)
-	|| is_set(method_list_name.operation)
-	|| is_set(periodic_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dual_stack_delay.yfilter)
+	|| ydk::is_set(hold_acct_start.yfilter)
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(periodic_interval.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_segment_path() const
@@ -12693,10 +15852,10 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Account
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dual_stack_delay.is_set || is_set(dual_stack_delay.operation)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
-    if (hold_acct_start.is_set || is_set(hold_acct_start.operation)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
-    if (method_list_name.is_set || is_set(method_list_name.operation)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (periodic_interval.is_set || is_set(periodic_interval.operation)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
+    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
+    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12715,24 +15874,59 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dual-stack-delay")
     {
         dual_stack_delay = value;
+        dual_stack_delay.value_namespace = name_space;
+        dual_stack_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-acct-start")
     {
         hold_acct_start = value;
+        hold_acct_start.value_namespace = name_space;
+        hold_acct_start.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "method-list-name")
     {
         method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "periodic-interval")
     {
         periodic_interval = value;
+        periodic_interval.value_namespace = name_space;
+        periodic_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-stack-delay")
+    {
+        dual_stack_delay.yfilter = yfilter;
+    }
+    if(value_path == "hold-acct-start")
+    {
+        hold_acct_start.yfilter = yfilter;
+    }
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-stack-delay" || name == "hold-acct-start" || name == "method-list-name" || name == "periodic-interval")
+        return true;
+    return false;
 }
 
 DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::IdleTimeout()
@@ -12757,10 +15951,10 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTim
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(threshold.operation)
-	|| is_set(timeout_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(timeout_value.yfilter);
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_segment_path() const
@@ -12786,9 +15980,9 @@ const EntityPath DynamicTemplate::SubscriberServices::SubscriberService::Account
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (timeout_value.is_set || is_set(timeout_value.operation)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12807,20 +16001,49 @@ std::map<std::string, std::shared_ptr<Entity>> DynamicTemplate::SubscriberServic
     return children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::set_value(const std::string & value_path, std::string value)
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-value")
     {
         timeout_value = value;
+        timeout_value.value_namespace = name_space;
+        timeout_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "timeout-value")
+    {
+        timeout_value.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "threshold" || name == "timeout-value")
+        return true;
+    return false;
 }
 
 

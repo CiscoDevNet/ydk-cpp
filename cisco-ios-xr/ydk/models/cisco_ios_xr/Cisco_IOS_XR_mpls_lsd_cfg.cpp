@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_lsd_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_lsd_cfg {
 
 MplsLsd::MplsLsd()
@@ -44,10 +46,10 @@ bool MplsLsd::has_data() const
 
 bool MplsLsd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(app_reg_delay_disable.operation)
-	|| is_set(mpls_entropy_label.operation)
-	|| is_set(mpls_ip_ttl_propagate_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(app_reg_delay_disable.yfilter)
+	|| ydk::is_set(mpls_entropy_label.yfilter)
+	|| ydk::is_set(mpls_ip_ttl_propagate_disable.yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation())
 	|| (label_databases !=  nullptr && label_databases->has_operation());
@@ -73,9 +75,9 @@ const EntityPath MplsLsd::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (app_reg_delay_disable.is_set || is_set(app_reg_delay_disable.operation)) leaf_name_data.push_back(app_reg_delay_disable.get_name_leafdata());
-    if (mpls_entropy_label.is_set || is_set(mpls_entropy_label.operation)) leaf_name_data.push_back(mpls_entropy_label.get_name_leafdata());
-    if (mpls_ip_ttl_propagate_disable.is_set || is_set(mpls_ip_ttl_propagate_disable.operation)) leaf_name_data.push_back(mpls_ip_ttl_propagate_disable.get_name_leafdata());
+    if (app_reg_delay_disable.is_set || is_set(app_reg_delay_disable.yfilter)) leaf_name_data.push_back(app_reg_delay_disable.get_name_leafdata());
+    if (mpls_entropy_label.is_set || is_set(mpls_entropy_label.yfilter)) leaf_name_data.push_back(mpls_entropy_label.get_name_leafdata());
+    if (mpls_ip_ttl_propagate_disable.is_set || is_set(mpls_ip_ttl_propagate_disable.yfilter)) leaf_name_data.push_back(mpls_ip_ttl_propagate_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -136,19 +138,41 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::get_children() const
     return children;
 }
 
-void MplsLsd::set_value(const std::string & value_path, std::string value)
+void MplsLsd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "app-reg-delay-disable")
     {
         app_reg_delay_disable = value;
+        app_reg_delay_disable.value_namespace = name_space;
+        app_reg_delay_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-entropy-label")
     {
         mpls_entropy_label = value;
+        mpls_entropy_label.value_namespace = name_space;
+        mpls_entropy_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-ip-ttl-propagate-disable")
     {
         mpls_ip_ttl_propagate_disable = value;
+        mpls_ip_ttl_propagate_disable.value_namespace = name_space;
+        mpls_ip_ttl_propagate_disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLsd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "app-reg-delay-disable")
+    {
+        app_reg_delay_disable.yfilter = yfilter;
+    }
+    if(value_path == "mpls-entropy-label")
+    {
+        mpls_entropy_label.yfilter = yfilter;
+    }
+    if(value_path == "mpls-ip-ttl-propagate-disable")
+    {
+        mpls_ip_ttl_propagate_disable.yfilter = yfilter;
     }
 }
 
@@ -172,6 +196,18 @@ augment_capabilities_function MplsLsd::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> MplsLsd::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool MplsLsd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "label-databases" || name == "app-reg-delay-disable" || name == "mpls-entropy-label" || name == "mpls-ip-ttl-propagate-disable")
+        return true;
+    return false;
+}
+
 MplsLsd::Ipv6::Ipv6()
     :
     ttl_expiration_pop{YType::uint32, "ttl-expiration-pop"}
@@ -190,8 +226,8 @@ bool MplsLsd::Ipv6::has_data() const
 
 bool MplsLsd::Ipv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ttl_expiration_pop.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ttl_expiration_pop.yfilter);
 }
 
 std::string MplsLsd::Ipv6::get_segment_path() const
@@ -217,7 +253,7 @@ const EntityPath MplsLsd::Ipv6::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ttl_expiration_pop.is_set || is_set(ttl_expiration_pop.operation)) leaf_name_data.push_back(ttl_expiration_pop.get_name_leafdata());
+    if (ttl_expiration_pop.is_set || is_set(ttl_expiration_pop.yfilter)) leaf_name_data.push_back(ttl_expiration_pop.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -236,12 +272,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv6::get_children() con
     return children;
 }
 
-void MplsLsd::Ipv6::set_value(const std::string & value_path, std::string value)
+void MplsLsd::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ttl-expiration-pop")
     {
         ttl_expiration_pop = value;
+        ttl_expiration_pop.value_namespace = name_space;
+        ttl_expiration_pop.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLsd::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ttl-expiration-pop")
+    {
+        ttl_expiration_pop.yfilter = yfilter;
+    }
+}
+
+bool MplsLsd::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ttl-expiration-pop")
+        return true;
+    return false;
 }
 
 MplsLsd::Ipv4::Ipv4()
@@ -262,8 +315,8 @@ bool MplsLsd::Ipv4::has_data() const
 
 bool MplsLsd::Ipv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ttl_expiration_pop.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ttl_expiration_pop.yfilter);
 }
 
 std::string MplsLsd::Ipv4::get_segment_path() const
@@ -289,7 +342,7 @@ const EntityPath MplsLsd::Ipv4::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ttl_expiration_pop.is_set || is_set(ttl_expiration_pop.operation)) leaf_name_data.push_back(ttl_expiration_pop.get_name_leafdata());
+    if (ttl_expiration_pop.is_set || is_set(ttl_expiration_pop.yfilter)) leaf_name_data.push_back(ttl_expiration_pop.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -308,12 +361,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::Ipv4::get_children() con
     return children;
 }
 
-void MplsLsd::Ipv4::set_value(const std::string & value_path, std::string value)
+void MplsLsd::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ttl-expiration-pop")
     {
         ttl_expiration_pop = value;
+        ttl_expiration_pop.value_namespace = name_space;
+        ttl_expiration_pop.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLsd::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ttl-expiration-pop")
+    {
+        ttl_expiration_pop.yfilter = yfilter;
+    }
+}
+
+bool MplsLsd::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ttl-expiration-pop")
+        return true;
+    return false;
 }
 
 MplsLsd::LabelDatabases::LabelDatabases()
@@ -342,7 +412,7 @@ bool MplsLsd::LabelDatabases::has_operation() const
         if(label_database[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLsd::LabelDatabases::get_segment_path() const
@@ -407,8 +477,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::get_chil
     return children;
 }
 
-void MplsLsd::LabelDatabases::set_value(const std::string & value_path, std::string value)
+void MplsLsd::LabelDatabases::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLsd::LabelDatabases::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLsd::LabelDatabases::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-database")
+        return true;
+    return false;
 }
 
 MplsLsd::LabelDatabases::LabelDatabase::LabelDatabase()
@@ -434,8 +515,8 @@ bool MplsLsd::LabelDatabases::LabelDatabase::has_data() const
 
 bool MplsLsd::LabelDatabases::LabelDatabase::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(label_database_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(label_database_id.yfilter)
 	|| (label_range !=  nullptr && label_range->has_operation());
 }
 
@@ -462,7 +543,7 @@ const EntityPath MplsLsd::LabelDatabases::LabelDatabase::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label_database_id.is_set || is_set(label_database_id.operation)) leaf_name_data.push_back(label_database_id.get_name_leafdata());
+    if (label_database_id.is_set || is_set(label_database_id.yfilter)) leaf_name_data.push_back(label_database_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -495,12 +576,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::LabelDat
     return children;
 }
 
-void MplsLsd::LabelDatabases::LabelDatabase::set_value(const std::string & value_path, std::string value)
+void MplsLsd::LabelDatabases::LabelDatabase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label-database-id")
     {
         label_database_id = value;
+        label_database_id.value_namespace = name_space;
+        label_database_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLsd::LabelDatabases::LabelDatabase::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label-database-id")
+    {
+        label_database_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLsd::LabelDatabases::LabelDatabase::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-range" || name == "label-database-id")
+        return true;
+    return false;
 }
 
 MplsLsd::LabelDatabases::LabelDatabase::LabelRange::LabelRange()
@@ -527,11 +625,11 @@ bool MplsLsd::LabelDatabases::LabelDatabase::LabelRange::has_data() const
 
 bool MplsLsd::LabelDatabases::LabelDatabase::LabelRange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_static_value.operation)
-	|| is_set(max_value.operation)
-	|| is_set(min_static_value.operation)
-	|| is_set(minvalue.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_static_value.yfilter)
+	|| ydk::is_set(max_value.yfilter)
+	|| ydk::is_set(min_static_value.yfilter)
+	|| ydk::is_set(minvalue.yfilter);
 }
 
 std::string MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_segment_path() const
@@ -557,10 +655,10 @@ const EntityPath MplsLsd::LabelDatabases::LabelDatabase::LabelRange::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_static_value.is_set || is_set(max_static_value.operation)) leaf_name_data.push_back(max_static_value.get_name_leafdata());
-    if (max_value.is_set || is_set(max_value.operation)) leaf_name_data.push_back(max_value.get_name_leafdata());
-    if (min_static_value.is_set || is_set(min_static_value.operation)) leaf_name_data.push_back(min_static_value.get_name_leafdata());
-    if (minvalue.is_set || is_set(minvalue.operation)) leaf_name_data.push_back(minvalue.get_name_leafdata());
+    if (max_static_value.is_set || is_set(max_static_value.yfilter)) leaf_name_data.push_back(max_static_value.get_name_leafdata());
+    if (max_value.is_set || is_set(max_value.yfilter)) leaf_name_data.push_back(max_value.get_name_leafdata());
+    if (min_static_value.is_set || is_set(min_static_value.yfilter)) leaf_name_data.push_back(min_static_value.get_name_leafdata());
+    if (minvalue.is_set || is_set(minvalue.yfilter)) leaf_name_data.push_back(minvalue.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -579,29 +677,64 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::LabelDat
     return children;
 }
 
-void MplsLsd::LabelDatabases::LabelDatabase::LabelRange::set_value(const std::string & value_path, std::string value)
+void MplsLsd::LabelDatabases::LabelDatabase::LabelRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-static-value")
     {
         max_static_value = value;
+        max_static_value.value_namespace = name_space;
+        max_static_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-value")
     {
         max_value = value;
+        max_value.value_namespace = name_space;
+        max_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-static-value")
     {
         min_static_value = value;
+        min_static_value.value_namespace = name_space;
+        min_static_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minvalue")
     {
         minvalue = value;
+        minvalue.value_namespace = name_space;
+        minvalue.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf MplsIpTtlPropagateDisableEnum::all {0, "all"};
-const Enum::YLeaf MplsIpTtlPropagateDisableEnum::forward {1, "forward"};
-const Enum::YLeaf MplsIpTtlPropagateDisableEnum::local {2, "local"};
+void MplsLsd::LabelDatabases::LabelDatabase::LabelRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-static-value")
+    {
+        max_static_value.yfilter = yfilter;
+    }
+    if(value_path == "max-value")
+    {
+        max_value.yfilter = yfilter;
+    }
+    if(value_path == "min-static-value")
+    {
+        min_static_value.yfilter = yfilter;
+    }
+    if(value_path == "minvalue")
+    {
+        minvalue.yfilter = yfilter;
+    }
+}
+
+bool MplsLsd::LabelDatabases::LabelDatabase::LabelRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-static-value" || name == "max-value" || name == "min-static-value" || name == "minvalue")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf MplsIpTtlPropagateDisable::all {0, "all"};
+const Enum::YLeaf MplsIpTtlPropagateDisable::forward {1, "forward"};
+const Enum::YLeaf MplsIpTtlPropagateDisable::local {2, "local"};
 
 
 }

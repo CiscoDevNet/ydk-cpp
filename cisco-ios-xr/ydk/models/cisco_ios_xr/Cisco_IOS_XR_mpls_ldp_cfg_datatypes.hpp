@@ -7,48 +7,48 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_ldp_cfg_datatypes {
 
-class MplsLdpNbrPasswordEnum : public Enum
+class MplsLdpRouterId : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf specified;
+        static const ydk::Enum::YLeaf address;
 
 };
 
-class MplsLdpDownstreamOnDemandEnum : public Enum
+class MplsLdpafName : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf peer_acl;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class MplsLdpRouterIdEnum : public Enum
+class MplsLdpDownstreamOnDemand : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf address;
+        static const ydk::Enum::YLeaf peer_acl;
 
 };
 
-class MplsLdpafNameEnum : public Enum
+class MplsLdpSessionProtection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf for_;
+        static const ydk::Enum::YLeaf all_with_duration;
+        static const ydk::Enum::YLeaf for_with_duration;
+        static const ydk::Enum::YLeaf all_with_forever;
+        static const ydk::Enum::YLeaf for_with_forever;
 
 };
 
-class MplsLdpSessionProtectionEnum : public Enum
+class MplsLdpNbrPassword : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
-        static const Enum::YLeaf for_;
-        static const Enum::YLeaf all_with_duration;
-        static const Enum::YLeaf for_with_duration;
-        static const Enum::YLeaf all_with_forever;
-        static const Enum::YLeaf for_with_forever;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf specified;
 
 };
 

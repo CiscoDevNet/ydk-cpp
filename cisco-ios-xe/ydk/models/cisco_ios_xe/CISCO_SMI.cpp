@@ -6,456 +6,458 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_SMI.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_SMI {
 
-Ciscochipsetsaint2Identity::Ciscochipsetsaint2Identity()
-     : Identity("CISCO-SMI:ciscoChipSetSaint2")
+Ciscorptrgroupobjectid::Ciscorptrgroupobjectid()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoRptrGroupObjectID")
 {
 }
 
-Ciscochipsetsaint2Identity::~Ciscochipsetsaint2Identity()
+Ciscorptrgroupobjectid::~Ciscorptrgroupobjectid()
 {
 }
 
-CiscotdomainclnsIdentity::CiscotdomainclnsIdentity()
-     : Identity("CISCO-SMI:ciscoTDomainClns")
+Pakmon::Pakmon()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:pakmon")
 {
 }
 
-CiscotdomainclnsIdentity::~CiscotdomainclnsIdentity()
+Pakmon::~Pakmon()
 {
 }
 
-CiscoproxyIdentity::CiscoproxyIdentity()
-     : Identity("CISCO-SMI:ciscoProxy")
+Ciscopolicyauto::Ciscopolicyauto()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoPolicyAuto")
 {
 }
 
-CiscoproxyIdentity::~CiscoproxyIdentity()
+Ciscopolicyauto::~Ciscopolicyauto()
 {
 }
 
-CiscotdomainconsIdentity::CiscotdomainconsIdentity()
-     : Identity("CISCO-SMI:ciscoTDomainCons")
+Ciscochipsetsaint1::Ciscochipsetsaint1()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoChipSetSaint1")
 {
 }
 
-CiscotdomainconsIdentity::~CiscotdomainconsIdentity()
+Ciscochipsetsaint1::~Ciscochipsetsaint1()
 {
 }
 
-CiscopolicyautoIdentity::CiscopolicyautoIdentity()
-     : Identity("CISCO-SMI:ciscoPolicyAuto")
+Ciscounknownrptrgroup::Ciscounknownrptrgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoUnknownRptrGroup")
 {
 }
 
-CiscopolicyautoIdentity::~CiscopolicyautoIdentity()
+Ciscounknownrptrgroup::~Ciscounknownrptrgroup()
 {
 }
 
-Ciscotdomaintcpipv6Identity::Ciscotdomaintcpipv6Identity()
-     : Identity("CISCO-SMI:ciscoTDomainTcpIpv6")
+Ciscotdomainsctpipv6::Ciscotdomainsctpipv6()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainSctpIpv6")
 {
 }
 
-Ciscotdomaintcpipv6Identity::~Ciscotdomaintcpipv6Identity()
+Ciscotdomainsctpipv6::~Ciscotdomainsctpipv6()
 {
 }
 
-Cisco2505RptrgroupIdentity::Cisco2505RptrgroupIdentity()
-     : Identity("CISCO-SMI:cisco2505RptrGroup")
+Temporary::Temporary()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:temporary")
 {
 }
 
-Cisco2505RptrgroupIdentity::~Cisco2505RptrgroupIdentity()
+Temporary::~Temporary()
 {
 }
 
-Ciscotdomainudpipv6Identity::Ciscotdomainudpipv6Identity()
-     : Identity("CISCO-SMI:ciscoTDomainUdpIpv6")
+Ciscoadmin::Ciscoadmin()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoAdmin")
 {
 }
 
-Ciscotdomainudpipv6Identity::~Ciscotdomainudpipv6Identity()
+Ciscoadmin::~Ciscoadmin()
 {
 }
 
-Ciscotdomainudpipv4Identity::Ciscotdomainudpipv4Identity()
-     : Identity("CISCO-SMI:ciscoTDomainUdpIpv4")
+Ciscotdomainudpipv4::Ciscotdomainudpipv4()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainUdpIpv4")
 {
 }
 
-Ciscotdomainudpipv4Identity::~Ciscotdomainudpipv4Identity()
+Ciscotdomainudpipv4::~Ciscotdomainudpipv4()
 {
 }
 
-CiscopibIdentity::CiscopibIdentity()
-     : Identity("CISCO-SMI:ciscoPIB")
+Ciscoproducts::Ciscoproducts()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoProducts")
 {
 }
 
-CiscopibIdentity::~CiscopibIdentity()
+Ciscoproducts::~Ciscoproducts()
 {
 }
 
-CiscoexperimentIdentity::CiscoexperimentIdentity()
-     : Identity("CISCO-SMI:ciscoExperiment")
+Ciscocib::Ciscocib()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoCIB")
 {
 }
 
-CiscoexperimentIdentity::~CiscoexperimentIdentity()
+Ciscocib::~Ciscocib()
 {
 }
 
-CiscomgmtIdentity::CiscomgmtIdentity()
-     : Identity("CISCO-SMI:ciscoMgmt")
+Ciscosmb::Ciscosmb()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoSMB")
 {
 }
 
-CiscomgmtIdentity::~CiscomgmtIdentity()
+Ciscosmb::~Ciscosmb()
 {
 }
 
-CiscocibprovgroupIdentity::CiscocibprovgroupIdentity()
-     : Identity("CISCO-SMI:ciscoCibProvGroup")
+Ciscochipsetsaint2::Ciscochipsetsaint2()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoChipSetSaint2")
 {
 }
 
-CiscocibprovgroupIdentity::~CiscocibprovgroupIdentity()
+Ciscochipsetsaint2::~Ciscochipsetsaint2()
 {
 }
 
-CiscorptrgroupobjectidIdentity::CiscorptrgroupobjectidIdentity()
-     : Identity("CISCO-SMI:ciscoRptrGroupObjectID")
+Ciscotdomainsctpipv4::Ciscotdomainsctpipv4()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainSctpIpv4")
 {
 }
 
-CiscorptrgroupobjectidIdentity::~CiscorptrgroupobjectidIdentity()
+Ciscotdomainsctpipv4::~Ciscotdomainsctpipv4()
 {
 }
 
-CiscodomainsIdentity::CiscodomainsIdentity()
-     : Identity("CISCO-SMI:ciscoDomains")
+Cisco2505Rptrgroup::Cisco2505Rptrgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:cisco2505RptrGroup")
 {
 }
 
-CiscodomainsIdentity::~CiscodomainsIdentity()
+Cisco2505Rptrgroup::~Cisco2505Rptrgroup()
 {
 }
 
-CiscopibtomibIdentity::CiscopibtomibIdentity()
-     : Identity("CISCO-SMI:ciscoPibToMib")
+Otherenterprises::Otherenterprises()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:otherEnterprises")
 {
 }
 
-CiscopibtomibIdentity::~CiscopibtomibIdentity()
+Otherenterprises::~Otherenterprises()
 {
 }
 
-CiscotdomainipxIdentity::CiscotdomainipxIdentity()
-     : Identity("CISCO-SMI:ciscoTDomainIpx")
+Ciscoexperiment::Ciscoexperiment()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoExperiment")
 {
 }
 
-CiscotdomainipxIdentity::~CiscotdomainipxIdentity()
+Ciscoexperiment::~Ciscoexperiment()
 {
 }
 
-Ciscotdomainsctpipv4Identity::Ciscotdomainsctpipv4Identity()
-     : Identity("CISCO-SMI:ciscoTDomainSctpIpv4")
+Ciscocibmmigroup::Ciscocibmmigroup()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoCibMmiGroup")
 {
 }
 
-Ciscotdomainsctpipv4Identity::~Ciscotdomainsctpipv4Identity()
+Ciscocibmmigroup::~Ciscocibmmigroup()
 {
 }
 
-CiscounknownrptrgroupIdentity::CiscounknownrptrgroupIdentity()
-     : Identity("CISCO-SMI:ciscoUnknownRptrGroup")
+Ciscotdomainudpipv6::Ciscotdomainudpipv6()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainUdpIpv6")
 {
 }
 
-CiscounknownrptrgroupIdentity::~CiscounknownrptrgroupIdentity()
+Ciscotdomainudpipv6::~Ciscotdomainudpipv6()
 {
 }
 
-CiscomodulesIdentity::CiscomodulesIdentity()
-     : Identity("CISCO-SMI:ciscoModules")
+Ciscopib::Ciscopib()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoPIB")
 {
 }
 
-CiscomodulesIdentity::~CiscomodulesIdentity()
+Ciscopib::~Ciscopib()
 {
 }
 
-LightstreamIdentity::LightstreamIdentity()
-     : Identity("CISCO-SMI:lightstream")
+Ciscopartnerproducts::Ciscopartnerproducts()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoPartnerProducts")
 {
 }
 
-LightstreamIdentity::~LightstreamIdentity()
+Ciscopartnerproducts::~Ciscopartnerproducts()
 {
 }
 
-CiscoadminIdentity::CiscoadminIdentity()
-     : Identity("CISCO-SMI:ciscoAdmin")
+Ciscomodules::Ciscomodules()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoModules")
 {
 }
 
-CiscoadminIdentity::~CiscoadminIdentity()
+Ciscomodules::~Ciscomodules()
 {
 }
 
-CiscotdomainlocalIdentity::CiscotdomainlocalIdentity()
-     : Identity("CISCO-SMI:ciscoTDomainLocal")
+Ciscopki::Ciscopki()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoPKI")
 {
 }
 
-CiscotdomainlocalIdentity::~CiscotdomainlocalIdentity()
+Ciscopki::~Ciscopki()
 {
 }
 
-CiscotdomainddpIdentity::CiscotdomainddpIdentity()
-     : Identity("CISCO-SMI:ciscoTDomainDdp")
+Ciscotdomainlocal::Ciscotdomainlocal()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainLocal")
 {
 }
 
-CiscotdomainddpIdentity::~CiscotdomainddpIdentity()
+Ciscotdomainlocal::~Ciscotdomainlocal()
 {
 }
 
-Cisco2507RptrgroupIdentity::Cisco2507RptrgroupIdentity()
-     : Identity("CISCO-SMI:cisco2507RptrGroup")
+Local::Local()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:local")
 {
 }
 
-Cisco2507RptrgroupIdentity::~Cisco2507RptrgroupIdentity()
+Local::~Local()
 {
 }
 
-Ciscochipsetsaint3Identity::Ciscochipsetsaint3Identity()
-     : Identity("CISCO-SMI:ciscoChipSetSaint3")
+Ciscopibtomib::Ciscopibtomib()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoPibToMib")
 {
 }
 
-Ciscochipsetsaint3Identity::~Ciscochipsetsaint3Identity()
+Ciscopibtomib::~Ciscopibtomib()
 {
 }
 
-Ciscochipsetsaint1Identity::Ciscochipsetsaint1Identity()
-     : Identity("CISCO-SMI:ciscoChipSetSaint1")
+Ciscomgmt::Ciscomgmt()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoMgmt")
 {
 }
 
-Ciscochipsetsaint1Identity::~Ciscochipsetsaint1Identity()
+Ciscomgmt::~Ciscomgmt()
 {
 }
 
-TemporaryIdentity::TemporaryIdentity()
-     : Identity("CISCO-SMI:temporary")
+Cisco2516Rptrgroup::Cisco2516Rptrgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:cisco2516RptrGroup")
 {
 }
 
-TemporaryIdentity::~TemporaryIdentity()
+Cisco2516Rptrgroup::~Cisco2516Rptrgroup()
 {
 }
 
-WorkgroupIdentity::WorkgroupIdentity()
-     : Identity("CISCO-SMI:workgroup")
+Ciscodomains::Ciscodomains()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoDomains")
 {
 }
 
-WorkgroupIdentity::~WorkgroupIdentity()
+Ciscodomains::~Ciscodomains()
 {
 }
 
-Ciscochipsetsaint4Identity::Ciscochipsetsaint4Identity()
-     : Identity("CISCO-SMI:ciscoChipSetSaint4")
+Ciscosb::Ciscosb()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoSB")
 {
 }
 
-Ciscochipsetsaint4Identity::~Ciscochipsetsaint4Identity()
+Ciscosb::~Ciscosb()
 {
 }
 
-CiscoworksIdentity::CiscoworksIdentity()
-     : Identity("CISCO-SMI:ciscoworks")
+Ciscochipsetsaint4::Ciscochipsetsaint4()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoChipSetSaint4")
 {
 }
 
-CiscoworksIdentity::~CiscoworksIdentity()
+Ciscochipsetsaint4::~Ciscochipsetsaint4()
 {
 }
 
-PakmonIdentity::PakmonIdentity()
-     : Identity("CISCO-SMI:pakmon")
+Ciscochipsets::Ciscochipsets()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoChipSets")
 {
 }
 
-PakmonIdentity::~PakmonIdentity()
+Ciscochipsets::~Ciscochipsets()
 {
 }
 
-Ciscowsx5020RptrgroupIdentity::Ciscowsx5020RptrgroupIdentity()
-     : Identity("CISCO-SMI:ciscoWsx5020RptrGroup")
+Lightstream::Lightstream()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:lightstream")
 {
 }
 
-Ciscowsx5020RptrgroupIdentity::~Ciscowsx5020RptrgroupIdentity()
+Lightstream::~Lightstream()
 {
 }
 
-CiscoagentcapabilityIdentity::CiscoagentcapabilityIdentity()
-     : Identity("CISCO-SMI:ciscoAgentCapability")
+Ciscopolicy::Ciscopolicy()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoPolicy")
 {
 }
 
-CiscoagentcapabilityIdentity::~CiscoagentcapabilityIdentity()
+Ciscopolicy::~Ciscopolicy()
 {
 }
 
-CiscopartnerproductsIdentity::CiscopartnerproductsIdentity()
-     : Identity("CISCO-SMI:ciscoPartnerProducts")
+Ciscoproxy::Ciscoproxy()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoProxy")
 {
 }
 
-CiscopartnerproductsIdentity::~CiscopartnerproductsIdentity()
+Ciscoproxy::~Ciscoproxy()
 {
 }
 
-CiscocibmmigroupIdentity::CiscocibmmigroupIdentity()
-     : Identity("CISCO-SMI:ciscoCibMmiGroup")
+Ciscotdomainipx::Ciscotdomainipx()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainIpx")
 {
 }
 
-CiscocibmmigroupIdentity::~CiscocibmmigroupIdentity()
+Ciscotdomainipx::~Ciscotdomainipx()
 {
 }
 
-CiscoproductsIdentity::CiscoproductsIdentity()
-     : Identity("CISCO-SMI:ciscoProducts")
+Workgroup::Workgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:workgroup")
 {
 }
 
-CiscoproductsIdentity::~CiscoproductsIdentity()
+Workgroup::~Workgroup()
 {
 }
 
-CiscopkiIdentity::CiscopkiIdentity()
-     : Identity("CISCO-SMI:ciscoPKI")
+Ciscoworks::Ciscoworks()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoworks")
 {
 }
 
-CiscopkiIdentity::~CiscopkiIdentity()
+Ciscoworks::~Ciscoworks()
 {
 }
 
-Cisco2516RptrgroupIdentity::Cisco2516RptrgroupIdentity()
-     : Identity("CISCO-SMI:cisco2516RptrGroup")
+Ciscotdomaintcpipv4::Ciscotdomaintcpipv4()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainTcpIpv4")
 {
 }
 
-Cisco2516RptrgroupIdentity::~Cisco2516RptrgroupIdentity()
+Ciscotdomaintcpipv4::~Ciscotdomaintcpipv4()
 {
 }
 
-CiscoconfigIdentity::CiscoconfigIdentity()
-     : Identity("CISCO-SMI:ciscoConfig")
+Ciscotdomainddp::Ciscotdomainddp()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainDdp")
 {
 }
 
-CiscoconfigIdentity::~CiscoconfigIdentity()
+Ciscotdomainddp::~Ciscotdomainddp()
 {
 }
 
-CiscochipsetsIdentity::CiscochipsetsIdentity()
-     : Identity("CISCO-SMI:ciscoChipSets")
+Ciscoagentcapability::Ciscoagentcapability()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoAgentCapability")
 {
 }
 
-CiscochipsetsIdentity::~CiscochipsetsIdentity()
+Ciscoagentcapability::~Ciscoagentcapability()
 {
 }
 
-OtherenterprisesIdentity::OtherenterprisesIdentity()
-     : Identity("CISCO-SMI:otherEnterprises")
+Cisco2507Rptrgroup::Cisco2507Rptrgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:cisco2507RptrGroup")
 {
 }
 
-OtherenterprisesIdentity::~OtherenterprisesIdentity()
+Cisco2507Rptrgroup::~Cisco2507Rptrgroup()
 {
 }
 
-CiscocibIdentity::CiscocibIdentity()
-     : Identity("CISCO-SMI:ciscoCIB")
+Ciscotdomaintcpipv6::Ciscotdomaintcpipv6()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainTcpIpv6")
 {
 }
 
-CiscocibIdentity::~CiscocibIdentity()
+Ciscotdomaintcpipv6::~Ciscotdomaintcpipv6()
 {
 }
 
-LocalIdentity::LocalIdentity()
-     : Identity("CISCO-SMI:local")
+Ciscoconfig::Ciscoconfig()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoConfig")
 {
 }
 
-LocalIdentity::~LocalIdentity()
+Ciscoconfig::~Ciscoconfig()
 {
 }
 
-CiscopolicyIdentity::CiscopolicyIdentity()
-     : Identity("CISCO-SMI:ciscoPolicy")
+Ciscotdomainclns::Ciscotdomainclns()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainClns")
 {
 }
 
-CiscopolicyIdentity::~CiscopolicyIdentity()
+Ciscotdomainclns::~Ciscotdomainclns()
 {
 }
 
-Ciscotdomainsctpipv6Identity::Ciscotdomainsctpipv6Identity()
-     : Identity("CISCO-SMI:ciscoTDomainSctpIpv6")
+Newport::Newport()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:newport")
 {
 }
 
-Ciscotdomainsctpipv6Identity::~Ciscotdomainsctpipv6Identity()
+Newport::~Newport()
 {
 }
 
-NewportIdentity::NewportIdentity()
-     : Identity("CISCO-SMI:newport")
+Ciscowsx5020Rptrgroup::Ciscowsx5020Rptrgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoWsx5020RptrGroup")
 {
 }
 
-NewportIdentity::~NewportIdentity()
+Ciscowsx5020Rptrgroup::~Ciscowsx5020Rptrgroup()
 {
 }
 
-CiscosbIdentity::CiscosbIdentity()
-     : Identity("CISCO-SMI:ciscoSB")
+Ciscochipsetsaint3::Ciscochipsetsaint3()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoChipSetSaint3")
 {
 }
 
-CiscosbIdentity::~CiscosbIdentity()
+Ciscochipsetsaint3::~Ciscochipsetsaint3()
 {
 }
 
-Ciscotdomaintcpipv4Identity::Ciscotdomaintcpipv4Identity()
-     : Identity("CISCO-SMI:ciscoTDomainTcpIpv4")
+Ciscotdomaincons::Ciscotdomaincons()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoTDomainCons")
 {
 }
 
-Ciscotdomaintcpipv4Identity::~Ciscotdomaintcpipv4Identity()
+Ciscotdomaincons::~Ciscotdomaincons()
 {
 }
 
-CiscosmbIdentity::CiscosmbIdentity()
-     : Identity("CISCO-SMI:ciscoSMB")
+Ciscocibprovgroup::Ciscocibprovgroup()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:CISCO-SMI", "CISCO-SMI", "CISCO-SMI:ciscoCibProvGroup")
 {
 }
 
-CiscosmbIdentity::~CiscosmbIdentity()
+Ciscocibprovgroup::~Ciscocibprovgroup()
 {
 }
 

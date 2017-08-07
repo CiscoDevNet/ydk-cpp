@@ -7,26 +7,26 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_if_ip {
 
-class NeighborOriginEnum : public Enum
+class IpAddressOrigin : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf OTHER;
-        static const Enum::YLeaf STATIC;
-        static const Enum::YLeaf DYNAMIC;
+        static const ydk::Enum::YLeaf OTHER;
+        static const ydk::Enum::YLeaf STATIC;
+        static const ydk::Enum::YLeaf DHCP;
+        static const ydk::Enum::YLeaf LINK_LAYER;
+        static const ydk::Enum::YLeaf RANDOM;
 
 };
 
-class IpAddressOriginEnum : public Enum
+class NeighborOrigin : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf OTHER;
-        static const Enum::YLeaf STATIC;
-        static const Enum::YLeaf DHCP;
-        static const Enum::YLeaf LINK_LAYER;
-        static const Enum::YLeaf RANDOM;
+        static const ydk::Enum::YLeaf OTHER;
+        static const ydk::Enum::YLeaf STATIC;
+        static const ydk::Enum::YLeaf DYNAMIC;
 
 };
 

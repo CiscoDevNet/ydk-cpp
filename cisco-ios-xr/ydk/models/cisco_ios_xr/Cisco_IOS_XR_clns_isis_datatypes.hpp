@@ -7,31 +7,31 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_datatypes {
 
-class IsisInternalLevelEnum : public Enum
+class IsisSubAddressFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_set;
-        static const Enum::YLeaf level1;
-        static const Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
 
 };
 
-class IsisAddressFamilyEnum : public Enum
+class IsisAddressFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class IsisSubAddressFamilyEnum : public Enum
+class IsisInternalLevel : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unicast;
-        static const Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
 
 };
 

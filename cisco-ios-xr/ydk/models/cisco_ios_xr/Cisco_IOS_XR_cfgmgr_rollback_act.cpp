@@ -6,34 +6,36 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_cfgmgr_rollback_act.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_cfgmgr_rollback_act {
 
-RollBackConfigurationLastRpc::RollBackConfigurationLastRpc()
+RollBackConfigurationLast::RollBackConfigurationLast()
     :
-    input(std::make_shared<RollBackConfigurationLastRpc::Input>())
+    input(std::make_shared<RollBackConfigurationLast::Input>())
 {
     input->parent = this;
 
     yang_name = "roll-back-configuration-last"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act";
 }
 
-RollBackConfigurationLastRpc::~RollBackConfigurationLastRpc()
+RollBackConfigurationLast::~RollBackConfigurationLast()
 {
 }
 
-bool RollBackConfigurationLastRpc::has_data() const
+bool RollBackConfigurationLast::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RollBackConfigurationLastRpc::has_operation() const
+bool RollBackConfigurationLast::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RollBackConfigurationLastRpc::get_segment_path() const
+std::string RollBackConfigurationLast::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-cfgmgr-rollback-act:roll-back-configuration-last";
@@ -42,7 +44,7 @@ std::string RollBackConfigurationLastRpc::get_segment_path() const
 
 }
 
-const EntityPath RollBackConfigurationLastRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RollBackConfigurationLast::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -60,13 +62,13 @@ const EntityPath RollBackConfigurationLastRpc::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> RollBackConfigurationLastRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RollBackConfigurationLast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RollBackConfigurationLastRpc::Input>();
+            input = std::make_shared<RollBackConfigurationLast::Input>();
         }
         return input;
     }
@@ -74,7 +76,7 @@ std::shared_ptr<Entity> RollBackConfigurationLastRpc::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationLastRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationLast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -85,31 +87,47 @@ std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationLastRpc::get
     return children;
 }
 
-void RollBackConfigurationLastRpc::set_value(const std::string & value_path, std::string value)
+void RollBackConfigurationLast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RollBackConfigurationLastRpc::clone_ptr() const
+void RollBackConfigurationLast::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RollBackConfigurationLastRpc>();
 }
 
-std::string RollBackConfigurationLastRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RollBackConfigurationLast::clone_ptr() const
+{
+    return std::make_shared<RollBackConfigurationLast>();
+}
+
+std::string RollBackConfigurationLast::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RollBackConfigurationLastRpc::get_bundle_name() const
+std::string RollBackConfigurationLast::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RollBackConfigurationLastRpc::get_augment_capabilities_function() const
+augment_capabilities_function RollBackConfigurationLast::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RollBackConfigurationLastRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RollBackConfigurationLast::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RollBackConfigurationLast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RollBackConfigurationLast::Input::Input()
     :
     best_effort{YType::boolean, "best-effort"},
     comment{YType::str, "comment"},
@@ -120,11 +138,11 @@ RollBackConfigurationLastRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "roll-back-configuration-last";
 }
 
-RollBackConfigurationLastRpc::Input::~Input()
+RollBackConfigurationLast::Input::~Input()
 {
 }
 
-bool RollBackConfigurationLastRpc::Input::has_data() const
+bool RollBackConfigurationLast::Input::has_data() const
 {
     return best_effort.is_set
 	|| comment.is_set
@@ -133,17 +151,17 @@ bool RollBackConfigurationLastRpc::Input::has_data() const
 	|| label.is_set;
 }
 
-bool RollBackConfigurationLastRpc::Input::has_operation() const
+bool RollBackConfigurationLast::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_effort.operation)
-	|| is_set(comment.operation)
-	|| is_set(count.operation)
-	|| is_set(force.operation)
-	|| is_set(label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(best_effort.yfilter)
+	|| ydk::is_set(comment.yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(force.yfilter)
+	|| ydk::is_set(label.yfilter);
 }
 
-std::string RollBackConfigurationLastRpc::Input::get_segment_path() const
+std::string RollBackConfigurationLast::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -152,7 +170,7 @@ std::string RollBackConfigurationLastRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RollBackConfigurationLastRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RollBackConfigurationLast::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -166,11 +184,11 @@ const EntityPath RollBackConfigurationLastRpc::Input::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_effort.is_set || is_set(best_effort.operation)) leaf_name_data.push_back(best_effort.get_name_leafdata());
-    if (comment.is_set || is_set(comment.operation)) leaf_name_data.push_back(comment.get_name_leafdata());
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (force.is_set || is_set(force.operation)) leaf_name_data.push_back(force.get_name_leafdata());
-    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (best_effort.is_set || is_set(best_effort.yfilter)) leaf_name_data.push_back(best_effort.get_name_leafdata());
+    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -178,66 +196,107 @@ const EntityPath RollBackConfigurationLastRpc::Input::get_entity_path(Entity* an
 
 }
 
-std::shared_ptr<Entity> RollBackConfigurationLastRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RollBackConfigurationLast::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationLastRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationLast::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RollBackConfigurationLastRpc::Input::set_value(const std::string & value_path, std::string value)
+void RollBackConfigurationLast::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-effort")
     {
         best_effort = value;
+        best_effort.value_namespace = name_space;
+        best_effort.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "comment")
     {
         comment = value;
+        comment.value_namespace = name_space;
+        comment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "force")
     {
         force = value;
+        force.value_namespace = name_space;
+        force.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
         label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RollBackConfigurationToRpc::RollBackConfigurationToRpc()
+void RollBackConfigurationLast::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-effort")
+    {
+        best_effort.yfilter = yfilter;
+    }
+    if(value_path == "comment")
+    {
+        comment.yfilter = yfilter;
+    }
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "force")
+    {
+        force.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+}
+
+bool RollBackConfigurationLast::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "best-effort" || name == "comment" || name == "count" || name == "force" || name == "label")
+        return true;
+    return false;
+}
+
+RollBackConfigurationTo::RollBackConfigurationTo()
     :
-    input(std::make_shared<RollBackConfigurationToRpc::Input>())
+    input(std::make_shared<RollBackConfigurationTo::Input>())
 {
     input->parent = this;
 
     yang_name = "roll-back-configuration-to"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act";
 }
 
-RollBackConfigurationToRpc::~RollBackConfigurationToRpc()
+RollBackConfigurationTo::~RollBackConfigurationTo()
 {
 }
 
-bool RollBackConfigurationToRpc::has_data() const
+bool RollBackConfigurationTo::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RollBackConfigurationToRpc::has_operation() const
+bool RollBackConfigurationTo::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RollBackConfigurationToRpc::get_segment_path() const
+std::string RollBackConfigurationTo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-cfgmgr-rollback-act:roll-back-configuration-to";
@@ -246,7 +305,7 @@ std::string RollBackConfigurationToRpc::get_segment_path() const
 
 }
 
-const EntityPath RollBackConfigurationToRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RollBackConfigurationTo::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -264,13 +323,13 @@ const EntityPath RollBackConfigurationToRpc::get_entity_path(Entity* ancestor) c
 
 }
 
-std::shared_ptr<Entity> RollBackConfigurationToRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RollBackConfigurationTo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RollBackConfigurationToRpc::Input>();
+            input = std::make_shared<RollBackConfigurationTo::Input>();
         }
         return input;
     }
@@ -278,7 +337,7 @@ std::shared_ptr<Entity> RollBackConfigurationToRpc::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationTo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -289,31 +348,47 @@ std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToRpc::get_c
     return children;
 }
 
-void RollBackConfigurationToRpc::set_value(const std::string & value_path, std::string value)
+void RollBackConfigurationTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RollBackConfigurationToRpc::clone_ptr() const
+void RollBackConfigurationTo::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RollBackConfigurationToRpc>();
 }
 
-std::string RollBackConfigurationToRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RollBackConfigurationTo::clone_ptr() const
+{
+    return std::make_shared<RollBackConfigurationTo>();
+}
+
+std::string RollBackConfigurationTo::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RollBackConfigurationToRpc::get_bundle_name() const
+std::string RollBackConfigurationTo::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RollBackConfigurationToRpc::get_augment_capabilities_function() const
+augment_capabilities_function RollBackConfigurationTo::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RollBackConfigurationToRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RollBackConfigurationTo::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RollBackConfigurationTo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RollBackConfigurationTo::Input::Input()
     :
     best_effort{YType::boolean, "best-effort"},
     comment{YType::str, "comment"},
@@ -324,11 +399,11 @@ RollBackConfigurationToRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "roll-back-configuration-to";
 }
 
-RollBackConfigurationToRpc::Input::~Input()
+RollBackConfigurationTo::Input::~Input()
 {
 }
 
-bool RollBackConfigurationToRpc::Input::has_data() const
+bool RollBackConfigurationTo::Input::has_data() const
 {
     return best_effort.is_set
 	|| comment.is_set
@@ -337,17 +412,17 @@ bool RollBackConfigurationToRpc::Input::has_data() const
 	|| label.is_set;
 }
 
-bool RollBackConfigurationToRpc::Input::has_operation() const
+bool RollBackConfigurationTo::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_effort.operation)
-	|| is_set(comment.operation)
-	|| is_set(commit_id.operation)
-	|| is_set(force.operation)
-	|| is_set(label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(best_effort.yfilter)
+	|| ydk::is_set(comment.yfilter)
+	|| ydk::is_set(commit_id.yfilter)
+	|| ydk::is_set(force.yfilter)
+	|| ydk::is_set(label.yfilter);
 }
 
-std::string RollBackConfigurationToRpc::Input::get_segment_path() const
+std::string RollBackConfigurationTo::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -356,7 +431,7 @@ std::string RollBackConfigurationToRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RollBackConfigurationToRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RollBackConfigurationTo::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -370,11 +445,11 @@ const EntityPath RollBackConfigurationToRpc::Input::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_effort.is_set || is_set(best_effort.operation)) leaf_name_data.push_back(best_effort.get_name_leafdata());
-    if (comment.is_set || is_set(comment.operation)) leaf_name_data.push_back(comment.get_name_leafdata());
-    if (commit_id.is_set || is_set(commit_id.operation)) leaf_name_data.push_back(commit_id.get_name_leafdata());
-    if (force.is_set || is_set(force.operation)) leaf_name_data.push_back(force.get_name_leafdata());
-    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (best_effort.is_set || is_set(best_effort.yfilter)) leaf_name_data.push_back(best_effort.get_name_leafdata());
+    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
+    if (commit_id.is_set || is_set(commit_id.yfilter)) leaf_name_data.push_back(commit_id.get_name_leafdata());
+    if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -382,66 +457,107 @@ const EntityPath RollBackConfigurationToRpc::Input::get_entity_path(Entity* ance
 
 }
 
-std::shared_ptr<Entity> RollBackConfigurationToRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RollBackConfigurationTo::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationTo::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RollBackConfigurationToRpc::Input::set_value(const std::string & value_path, std::string value)
+void RollBackConfigurationTo::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-effort")
     {
         best_effort = value;
+        best_effort.value_namespace = name_space;
+        best_effort.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "comment")
     {
         comment = value;
+        comment.value_namespace = name_space;
+        comment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "commit-id")
     {
         commit_id = value;
+        commit_id.value_namespace = name_space;
+        commit_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "force")
     {
         force = value;
+        force.value_namespace = name_space;
+        force.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
         label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RollBackConfigurationToExcludeRpc::RollBackConfigurationToExcludeRpc()
+void RollBackConfigurationTo::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-effort")
+    {
+        best_effort.yfilter = yfilter;
+    }
+    if(value_path == "comment")
+    {
+        comment.yfilter = yfilter;
+    }
+    if(value_path == "commit-id")
+    {
+        commit_id.yfilter = yfilter;
+    }
+    if(value_path == "force")
+    {
+        force.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+}
+
+bool RollBackConfigurationTo::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "best-effort" || name == "comment" || name == "commit-id" || name == "force" || name == "label")
+        return true;
+    return false;
+}
+
+RollBackConfigurationToExclude::RollBackConfigurationToExclude()
     :
-    input(std::make_shared<RollBackConfigurationToExcludeRpc::Input>())
+    input(std::make_shared<RollBackConfigurationToExclude::Input>())
 {
     input->parent = this;
 
     yang_name = "roll-back-configuration-to-exclude"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act";
 }
 
-RollBackConfigurationToExcludeRpc::~RollBackConfigurationToExcludeRpc()
+RollBackConfigurationToExclude::~RollBackConfigurationToExclude()
 {
 }
 
-bool RollBackConfigurationToExcludeRpc::has_data() const
+bool RollBackConfigurationToExclude::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RollBackConfigurationToExcludeRpc::has_operation() const
+bool RollBackConfigurationToExclude::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RollBackConfigurationToExcludeRpc::get_segment_path() const
+std::string RollBackConfigurationToExclude::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-cfgmgr-rollback-act:roll-back-configuration-to-exclude";
@@ -450,7 +566,7 @@ std::string RollBackConfigurationToExcludeRpc::get_segment_path() const
 
 }
 
-const EntityPath RollBackConfigurationToExcludeRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RollBackConfigurationToExclude::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -468,13 +584,13 @@ const EntityPath RollBackConfigurationToExcludeRpc::get_entity_path(Entity* ance
 
 }
 
-std::shared_ptr<Entity> RollBackConfigurationToExcludeRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RollBackConfigurationToExclude::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RollBackConfigurationToExcludeRpc::Input>();
+            input = std::make_shared<RollBackConfigurationToExclude::Input>();
         }
         return input;
     }
@@ -482,7 +598,7 @@ std::shared_ptr<Entity> RollBackConfigurationToExcludeRpc::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToExcludeRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToExclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -493,31 +609,47 @@ std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToExcludeRpc
     return children;
 }
 
-void RollBackConfigurationToExcludeRpc::set_value(const std::string & value_path, std::string value)
+void RollBackConfigurationToExclude::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RollBackConfigurationToExcludeRpc::clone_ptr() const
+void RollBackConfigurationToExclude::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RollBackConfigurationToExcludeRpc>();
 }
 
-std::string RollBackConfigurationToExcludeRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RollBackConfigurationToExclude::clone_ptr() const
+{
+    return std::make_shared<RollBackConfigurationToExclude>();
+}
+
+std::string RollBackConfigurationToExclude::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RollBackConfigurationToExcludeRpc::get_bundle_name() const
+std::string RollBackConfigurationToExclude::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RollBackConfigurationToExcludeRpc::get_augment_capabilities_function() const
+augment_capabilities_function RollBackConfigurationToExclude::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RollBackConfigurationToExcludeRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RollBackConfigurationToExclude::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RollBackConfigurationToExclude::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RollBackConfigurationToExclude::Input::Input()
     :
     best_effort{YType::boolean, "best-effort"},
     comment{YType::str, "comment"},
@@ -528,11 +660,11 @@ RollBackConfigurationToExcludeRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "roll-back-configuration-to-exclude";
 }
 
-RollBackConfigurationToExcludeRpc::Input::~Input()
+RollBackConfigurationToExclude::Input::~Input()
 {
 }
 
-bool RollBackConfigurationToExcludeRpc::Input::has_data() const
+bool RollBackConfigurationToExclude::Input::has_data() const
 {
     return best_effort.is_set
 	|| comment.is_set
@@ -541,17 +673,17 @@ bool RollBackConfigurationToExcludeRpc::Input::has_data() const
 	|| label.is_set;
 }
 
-bool RollBackConfigurationToExcludeRpc::Input::has_operation() const
+bool RollBackConfigurationToExclude::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_effort.operation)
-	|| is_set(comment.operation)
-	|| is_set(commit_id.operation)
-	|| is_set(force.operation)
-	|| is_set(label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(best_effort.yfilter)
+	|| ydk::is_set(comment.yfilter)
+	|| ydk::is_set(commit_id.yfilter)
+	|| ydk::is_set(force.yfilter)
+	|| ydk::is_set(label.yfilter);
 }
 
-std::string RollBackConfigurationToExcludeRpc::Input::get_segment_path() const
+std::string RollBackConfigurationToExclude::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -560,7 +692,7 @@ std::string RollBackConfigurationToExcludeRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RollBackConfigurationToExcludeRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RollBackConfigurationToExclude::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -574,11 +706,11 @@ const EntityPath RollBackConfigurationToExcludeRpc::Input::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_effort.is_set || is_set(best_effort.operation)) leaf_name_data.push_back(best_effort.get_name_leafdata());
-    if (comment.is_set || is_set(comment.operation)) leaf_name_data.push_back(comment.get_name_leafdata());
-    if (commit_id.is_set || is_set(commit_id.operation)) leaf_name_data.push_back(commit_id.get_name_leafdata());
-    if (force.is_set || is_set(force.operation)) leaf_name_data.push_back(force.get_name_leafdata());
-    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (best_effort.is_set || is_set(best_effort.yfilter)) leaf_name_data.push_back(best_effort.get_name_leafdata());
+    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
+    if (commit_id.is_set || is_set(commit_id.yfilter)) leaf_name_data.push_back(commit_id.get_name_leafdata());
+    if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -586,66 +718,107 @@ const EntityPath RollBackConfigurationToExcludeRpc::Input::get_entity_path(Entit
 
 }
 
-std::shared_ptr<Entity> RollBackConfigurationToExcludeRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RollBackConfigurationToExclude::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToExcludeRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToExclude::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RollBackConfigurationToExcludeRpc::Input::set_value(const std::string & value_path, std::string value)
+void RollBackConfigurationToExclude::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-effort")
     {
         best_effort = value;
+        best_effort.value_namespace = name_space;
+        best_effort.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "comment")
     {
         comment = value;
+        comment.value_namespace = name_space;
+        comment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "commit-id")
     {
         commit_id = value;
+        commit_id.value_namespace = name_space;
+        commit_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "force")
     {
         force = value;
+        force.value_namespace = name_space;
+        force.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
         label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RollBackConfigurationRpc::RollBackConfigurationRpc()
+void RollBackConfigurationToExclude::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-effort")
+    {
+        best_effort.yfilter = yfilter;
+    }
+    if(value_path == "comment")
+    {
+        comment.yfilter = yfilter;
+    }
+    if(value_path == "commit-id")
+    {
+        commit_id.yfilter = yfilter;
+    }
+    if(value_path == "force")
+    {
+        force.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+}
+
+bool RollBackConfigurationToExclude::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "best-effort" || name == "comment" || name == "commit-id" || name == "force" || name == "label")
+        return true;
+    return false;
+}
+
+RollBackConfiguration::RollBackConfiguration()
     :
-    input(std::make_shared<RollBackConfigurationRpc::Input>())
+    input(std::make_shared<RollBackConfiguration::Input>())
 {
     input->parent = this;
 
     yang_name = "roll-back-configuration"; yang_parent_name = "Cisco-IOS-XR-cfgmgr-rollback-act";
 }
 
-RollBackConfigurationRpc::~RollBackConfigurationRpc()
+RollBackConfiguration::~RollBackConfiguration()
 {
 }
 
-bool RollBackConfigurationRpc::has_data() const
+bool RollBackConfiguration::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RollBackConfigurationRpc::has_operation() const
+bool RollBackConfiguration::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RollBackConfigurationRpc::get_segment_path() const
+std::string RollBackConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-cfgmgr-rollback-act:roll-back-configuration";
@@ -654,7 +827,7 @@ std::string RollBackConfigurationRpc::get_segment_path() const
 
 }
 
-const EntityPath RollBackConfigurationRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RollBackConfiguration::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -672,13 +845,13 @@ const EntityPath RollBackConfigurationRpc::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> RollBackConfigurationRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RollBackConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RollBackConfigurationRpc::Input>();
+            input = std::make_shared<RollBackConfiguration::Input>();
         }
         return input;
     }
@@ -686,7 +859,7 @@ std::shared_ptr<Entity> RollBackConfigurationRpc::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RollBackConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -697,31 +870,47 @@ std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationRpc::get_chi
     return children;
 }
 
-void RollBackConfigurationRpc::set_value(const std::string & value_path, std::string value)
+void RollBackConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RollBackConfigurationRpc::clone_ptr() const
+void RollBackConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RollBackConfigurationRpc>();
 }
 
-std::string RollBackConfigurationRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RollBackConfiguration::clone_ptr() const
+{
+    return std::make_shared<RollBackConfiguration>();
+}
+
+std::string RollBackConfiguration::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RollBackConfigurationRpc::get_bundle_name() const
+std::string RollBackConfiguration::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RollBackConfigurationRpc::get_augment_capabilities_function() const
+augment_capabilities_function RollBackConfiguration::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RollBackConfigurationRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RollBackConfiguration::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RollBackConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RollBackConfiguration::Input::Input()
     :
     best_effort{YType::boolean, "best-effort"},
     comment{YType::str, "comment"},
@@ -732,11 +921,11 @@ RollBackConfigurationRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "roll-back-configuration";
 }
 
-RollBackConfigurationRpc::Input::~Input()
+RollBackConfiguration::Input::~Input()
 {
 }
 
-bool RollBackConfigurationRpc::Input::has_data() const
+bool RollBackConfiguration::Input::has_data() const
 {
     return best_effort.is_set
 	|| comment.is_set
@@ -745,17 +934,17 @@ bool RollBackConfigurationRpc::Input::has_data() const
 	|| label.is_set;
 }
 
-bool RollBackConfigurationRpc::Input::has_operation() const
+bool RollBackConfiguration::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(best_effort.operation)
-	|| is_set(comment.operation)
-	|| is_set(commit_id.operation)
-	|| is_set(force.operation)
-	|| is_set(label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(best_effort.yfilter)
+	|| ydk::is_set(comment.yfilter)
+	|| ydk::is_set(commit_id.yfilter)
+	|| ydk::is_set(force.yfilter)
+	|| ydk::is_set(label.yfilter);
 }
 
-std::string RollBackConfigurationRpc::Input::get_segment_path() const
+std::string RollBackConfiguration::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -764,7 +953,7 @@ std::string RollBackConfigurationRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RollBackConfigurationRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RollBackConfiguration::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -778,11 +967,11 @@ const EntityPath RollBackConfigurationRpc::Input::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (best_effort.is_set || is_set(best_effort.operation)) leaf_name_data.push_back(best_effort.get_name_leafdata());
-    if (comment.is_set || is_set(comment.operation)) leaf_name_data.push_back(comment.get_name_leafdata());
-    if (commit_id.is_set || is_set(commit_id.operation)) leaf_name_data.push_back(commit_id.get_name_leafdata());
-    if (force.is_set || is_set(force.operation)) leaf_name_data.push_back(force.get_name_leafdata());
-    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (best_effort.is_set || is_set(best_effort.yfilter)) leaf_name_data.push_back(best_effort.get_name_leafdata());
+    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
+    if (commit_id.is_set || is_set(commit_id.yfilter)) leaf_name_data.push_back(commit_id.get_name_leafdata());
+    if (force.is_set || is_set(force.yfilter)) leaf_name_data.push_back(force.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -790,39 +979,80 @@ const EntityPath RollBackConfigurationRpc::Input::get_entity_path(Entity* ancest
 
 }
 
-std::shared_ptr<Entity> RollBackConfigurationRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RollBackConfiguration::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RollBackConfiguration::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RollBackConfigurationRpc::Input::set_value(const std::string & value_path, std::string value)
+void RollBackConfiguration::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "best-effort")
     {
         best_effort = value;
+        best_effort.value_namespace = name_space;
+        best_effort.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "comment")
     {
         comment = value;
+        comment.value_namespace = name_space;
+        comment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "commit-id")
     {
         commit_id = value;
+        commit_id.value_namespace = name_space;
+        commit_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "force")
     {
         force = value;
+        force.value_namespace = name_space;
+        force.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
         label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RollBackConfiguration::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "best-effort")
+    {
+        best_effort.yfilter = yfilter;
+    }
+    if(value_path == "comment")
+    {
+        comment.yfilter = yfilter;
+    }
+    if(value_path == "commit-id")
+    {
+        commit_id.yfilter = yfilter;
+    }
+    if(value_path == "force")
+    {
+        force.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+}
+
+bool RollBackConfiguration::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "best-effort" || name == "comment" || name == "commit-id" || name == "force" || name == "label")
+        return true;
+    return false;
 }
 
 

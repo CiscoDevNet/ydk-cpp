@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pbr_vservice_mgr_oper {
 
-class GlobalServiceFunctionChaining : public Entity
+class GlobalServiceFunctionChaining : public ydk::Entity
 {
     public:
         GlobalServiceFunctionChaining();
@@ -18,15 +18,18 @@ class GlobalServiceFunctionChaining : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class ServiceFunctionPath; //type: GlobalServiceFunctionChaining::ServiceFunctionPath
         class ServiceFunction; //type: GlobalServiceFunctionChaining::ServiceFunction
@@ -39,7 +42,7 @@ class GlobalServiceFunctionChaining : public Entity
 }; // GlobalServiceFunctionChaining
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath : public ydk::Entity
 {
     public:
         ServiceFunctionPath();
@@ -47,11 +50,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PathIds; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds
 
@@ -60,7 +65,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath : public Entity
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds : public ydk::Entity
 {
     public:
         PathIds();
@@ -68,11 +73,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PathId; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId
 
@@ -81,7 +88,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds : public Entit
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId : public ydk::Entity
 {
     public:
         PathId();
@@ -89,13 +96,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
+        ydk::YLeaf id; //type: uint32
         class Stats; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
         class ServiceIndexes; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes
 
@@ -105,7 +114,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId : publ
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats : public ydk::Entity
 {
     public:
         Stats();
@@ -113,11 +122,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Detail; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail
         class Summarized; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized
@@ -128,7 +139,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail : public ydk::Entity
 {
     public:
         Detail();
@@ -136,11 +147,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr
@@ -151,7 +164,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data : public ydk::Entity
 {
     public:
         Data();
@@ -159,13 +172,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class Sfp; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term
@@ -183,7 +198,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp : public ydk::Entity
 {
     public:
         Sfp();
@@ -191,11 +206,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term
@@ -206,7 +223,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -214,19 +231,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term : public ydk::Entity
 {
     public:
         Term();
@@ -234,19 +253,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -254,19 +275,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -274,19 +297,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf : public ydk::Entity
 {
     public:
         Sf();
@@ -294,19 +319,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff : public ydk::Entity
 {
     public:
         Sff();
@@ -314,19 +341,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal : public ydk::Entity
 {
     public:
         SffLocal();
@@ -334,21 +363,23 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf malformed_err_pkts; //type: uint64
-        YLeaf lookup_err_pkts; //type: uint64
-        YLeaf malformed_err_bytes; //type: uint64
-        YLeaf lookup_err_bytes; //type: uint64
+        ydk::YLeaf malformed_err_pkts; //type: uint64
+        ydk::YLeaf lookup_err_pkts; //type: uint64
+        ydk::YLeaf malformed_err_bytes; //type: uint64
+        ydk::YLeaf lookup_err_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr : public ydk::Entity
 {
     public:
         SiArr();
@@ -356,13 +387,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf si; //type: uint8
+        ydk::YLeaf si; //type: uint8
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data> data;
@@ -370,7 +403,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data : public ydk::Entity
 {
     public:
         Data();
@@ -378,13 +411,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term
 
@@ -394,7 +429,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -402,19 +437,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -422,19 +459,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized : public ydk::Entity
 {
     public:
         Summarized();
@@ -442,11 +481,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr
@@ -457,7 +498,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data : public ydk::Entity
 {
     public:
         Data();
@@ -465,13 +506,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class Sfp; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term
@@ -489,7 +532,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp : public ydk::Entity
 {
     public:
         Sfp();
@@ -497,11 +540,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term
@@ -512,7 +557,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -520,19 +565,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term : public ydk::Entity
 {
     public:
         Term();
@@ -540,19 +587,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -560,19 +609,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -580,19 +631,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf : public ydk::Entity
 {
     public:
         Sf();
@@ -600,19 +653,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff : public ydk::Entity
 {
     public:
         Sff();
@@ -620,19 +675,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal : public ydk::Entity
 {
     public:
         SffLocal();
@@ -640,21 +697,23 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf malformed_err_pkts; //type: uint64
-        YLeaf lookup_err_pkts; //type: uint64
-        YLeaf malformed_err_bytes; //type: uint64
-        YLeaf lookup_err_bytes; //type: uint64
+        ydk::YLeaf malformed_err_pkts; //type: uint64
+        ydk::YLeaf lookup_err_pkts; //type: uint64
+        ydk::YLeaf malformed_err_bytes; //type: uint64
+        ydk::YLeaf lookup_err_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr : public ydk::Entity
 {
     public:
         SiArr();
@@ -662,13 +721,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf si; //type: uint8
+        ydk::YLeaf si; //type: uint8
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data> data;
@@ -676,7 +737,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data : public ydk::Entity
 {
     public:
         Data();
@@ -684,13 +745,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term
 
@@ -700,7 +763,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -708,19 +771,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -728,19 +793,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes : public ydk::Entity
 {
     public:
         ServiceIndexes();
@@ -748,11 +815,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ServiceIndex; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex
 
@@ -761,7 +830,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex : public ydk::Entity
 {
     public:
         ServiceIndex();
@@ -769,13 +838,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf index_; //type: uint32
+        ydk::YLeaf index_; //type: uint32
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr
 
@@ -785,7 +856,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data : public ydk::Entity
 {
     public:
         Data();
@@ -793,13 +864,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class Sfp; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term
@@ -817,7 +890,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp : public ydk::Entity
 {
     public:
         Sfp();
@@ -825,11 +898,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term
@@ -840,7 +915,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -848,19 +923,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term : public ydk::Entity
 {
     public:
         Term();
@@ -868,19 +945,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -888,19 +967,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -908,19 +989,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf : public ydk::Entity
 {
     public:
         Sf();
@@ -928,19 +1011,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff : public ydk::Entity
 {
     public:
         Sff();
@@ -948,19 +1033,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal : public ydk::Entity
 {
     public:
         SffLocal();
@@ -968,21 +1055,23 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf malformed_err_pkts; //type: uint64
-        YLeaf lookup_err_pkts; //type: uint64
-        YLeaf malformed_err_bytes; //type: uint64
-        YLeaf lookup_err_bytes; //type: uint64
+        ydk::YLeaf malformed_err_pkts; //type: uint64
+        ydk::YLeaf lookup_err_pkts; //type: uint64
+        ydk::YLeaf malformed_err_bytes; //type: uint64
+        ydk::YLeaf lookup_err_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr : public ydk::Entity
 {
     public:
         SiArr();
@@ -990,13 +1079,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf si; //type: uint8
+        ydk::YLeaf si; //type: uint8
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data> data;
@@ -1004,7 +1095,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data : public ydk::Entity
 {
     public:
         Data();
@@ -1012,13 +1103,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term
 
@@ -1028,7 +1121,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1036,19 +1129,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1056,19 +1151,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Servi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunction : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction : public ydk::Entity
 {
     public:
         ServiceFunction();
@@ -1076,11 +1173,13 @@ class GlobalServiceFunctionChaining::ServiceFunction : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SfNames; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames
 
@@ -1089,7 +1188,7 @@ class GlobalServiceFunctionChaining::ServiceFunction : public Entity
 }; // GlobalServiceFunctionChaining::ServiceFunction
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames : public ydk::Entity
 {
     public:
         SfNames();
@@ -1097,11 +1196,13 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SfName; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName
 
@@ -1110,7 +1211,7 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames : public Entity
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName : public ydk::Entity
 {
     public:
         SfName();
@@ -1118,13 +1219,15 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
+        ydk::YLeaf name; //type: string
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr
 
@@ -1134,7 +1237,7 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName : public E
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data : public ydk::Entity
 {
     public:
         Data();
@@ -1142,13 +1245,15 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class Sfp; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term
@@ -1166,7 +1271,7 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data : pu
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp : public ydk::Entity
 {
     public:
         Sfp();
@@ -1174,11 +1279,13 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term
@@ -1189,7 +1296,7 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1197,19 +1304,21 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1217,19 +1326,21 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1237,19 +1348,21 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Spi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1257,19 +1370,21 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Ter
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf : public ydk::Entity
 {
     public:
         Sf();
@@ -1277,19 +1392,21 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sf
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff : public ydk::Entity
 {
     public:
         Sff();
@@ -1297,19 +1414,21 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SffLocal : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SffLocal : public ydk::Entity
 {
     public:
         SffLocal();
@@ -1317,21 +1436,23 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sff
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf malformed_err_pkts; //type: uint64
-        YLeaf lookup_err_pkts; //type: uint64
-        YLeaf malformed_err_bytes; //type: uint64
-        YLeaf lookup_err_bytes; //type: uint64
+        ydk::YLeaf malformed_err_pkts; //type: uint64
+        ydk::YLeaf lookup_err_pkts; //type: uint64
+        ydk::YLeaf malformed_err_bytes; //type: uint64
+        ydk::YLeaf lookup_err_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SffLocal
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr : public ydk::Entity
 {
     public:
         SiArr();
@@ -1339,13 +1460,15 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf si; //type: uint8
+        ydk::YLeaf si; //type: uint8
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data> data;
@@ -1353,7 +1476,7 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr : p
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data : public ydk::Entity
 {
     public:
         Data();
@@ -1361,13 +1484,15 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Da
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term
 
@@ -1377,7 +1502,7 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Da
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1385,19 +1510,21 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Da
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1405,19 +1532,21 @@ class GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Da
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder : public ydk::Entity
 {
     public:
         ServiceFunctionForwarder();
@@ -1425,11 +1554,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SffNames; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames
         class Local; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local
@@ -1440,7 +1571,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder : public Entity
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames : public ydk::Entity
 {
     public:
         SffNames();
@@ -1448,11 +1579,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SffName; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
@@ -1461,7 +1594,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames : public
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName : public ydk::Entity
 {
     public:
         SffName();
@@ -1469,13 +1602,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
+        ydk::YLeaf name; //type: string
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr
 
@@ -1485,7 +1620,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data : public ydk::Entity
 {
     public:
         Data();
@@ -1493,13 +1628,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class Sfp; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term
@@ -1517,7 +1654,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp : public ydk::Entity
 {
     public:
         Sfp();
@@ -1525,11 +1662,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term
@@ -1540,7 +1679,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1548,19 +1687,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1568,19 +1709,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1588,19 +1731,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1608,19 +1753,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sf : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sf : public ydk::Entity
 {
     public:
         Sf();
@@ -1628,19 +1775,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sf
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sff : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sff : public ydk::Entity
 {
     public:
         Sff();
@@ -1648,19 +1797,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sff
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal : public ydk::Entity
 {
     public:
         SffLocal();
@@ -1668,21 +1819,23 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf malformed_err_pkts; //type: uint64
-        YLeaf lookup_err_pkts; //type: uint64
-        YLeaf malformed_err_bytes; //type: uint64
-        YLeaf lookup_err_bytes; //type: uint64
+        ydk::YLeaf malformed_err_pkts; //type: uint64
+        ydk::YLeaf lookup_err_pkts; //type: uint64
+        ydk::YLeaf malformed_err_bytes; //type: uint64
+        ydk::YLeaf lookup_err_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr : public ydk::Entity
 {
     public:
         SiArr();
@@ -1690,13 +1843,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf si; //type: uint8
+        ydk::YLeaf si; //type: uint8
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data> data;
@@ -1704,7 +1859,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data : public ydk::Entity
 {
     public:
         Data();
@@ -1712,13 +1867,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term
 
@@ -1728,7 +1885,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1736,19 +1893,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1756,19 +1915,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local : public ydk::Entity
 {
     public:
         Local();
@@ -1776,11 +1937,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error
 
@@ -1789,7 +1952,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local : public En
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error : public ydk::Entity
 {
     public:
         Error();
@@ -1797,11 +1960,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data
         class SiArr; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr
@@ -1812,7 +1977,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error : pu
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data : public ydk::Entity
 {
     public:
         Data();
@@ -1820,13 +1985,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class Sfp; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term
@@ -1844,7 +2011,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp : public ydk::Entity
 {
     public:
         Sfp();
@@ -1852,11 +2019,13 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term
@@ -1867,7 +2036,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1875,19 +2044,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1895,19 +2066,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -1915,19 +2088,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -1935,19 +2110,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sf : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sf : public ydk::Entity
 {
     public:
         Sf();
@@ -1955,19 +2132,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sf
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sff : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sff : public ydk::Entity
 {
     public:
         Sff();
@@ -1975,19 +2154,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sff
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SffLocal : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SffLocal : public ydk::Entity
 {
     public:
         SffLocal();
@@ -1995,21 +2176,23 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Dat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf malformed_err_pkts; //type: uint64
-        YLeaf lookup_err_pkts; //type: uint64
-        YLeaf malformed_err_bytes; //type: uint64
-        YLeaf lookup_err_bytes; //type: uint64
+        ydk::YLeaf malformed_err_pkts; //type: uint64
+        ydk::YLeaf lookup_err_pkts; //type: uint64
+        ydk::YLeaf malformed_err_bytes; //type: uint64
+        ydk::YLeaf lookup_err_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SffLocal
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr : public ydk::Entity
 {
     public:
         SiArr();
@@ -2017,13 +2200,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiA
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf si; //type: uint8
+        ydk::YLeaf si; //type: uint8
         class Data; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data
 
         std::shared_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data> data;
@@ -2031,7 +2216,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiA
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2039,13 +2224,15 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiA
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: VsNshStatsEnum
+        ydk::YLeaf type; //type: VsNshStats
         class SpiSi; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi
         class Term; //type: GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term
 
@@ -2055,7 +2242,7 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiA
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi : public ydk::Entity
 {
     public:
         SpiSi();
@@ -2063,19 +2250,21 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiA
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf processed_pkts; //type: uint64
-        YLeaf processed_bytes; //type: uint64
+        ydk::YLeaf processed_pkts; //type: uint64
+        ydk::YLeaf processed_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi
 
 
-class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term : public Entity
+class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term : public ydk::Entity
 {
     public:
         Term();
@@ -2083,28 +2272,30 @@ class GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiA
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf terminated_pkts; //type: uint64
-        YLeaf terminated_bytes; //type: uint64
+        ydk::YLeaf terminated_pkts; //type: uint64
+        ydk::YLeaf terminated_bytes; //type: uint64
 
 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term
 
-class VsNshStatsEnum : public Enum
+class VsNshStats : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf vs_nsh_stats_spi_si;
-        static const Enum::YLeaf vs_nsh_stats_ter_min_ate;
-        static const Enum::YLeaf vs_nsh_stats_sf;
-        static const Enum::YLeaf vs_nsh_stats_sff;
-        static const Enum::YLeaf vs_nsh_stats_sff_local;
-        static const Enum::YLeaf vs_nsh_stats_sfp;
-        static const Enum::YLeaf vs_nsh_stats_sfp_detail;
-        static const Enum::YLeaf vs_nsh_stats_max;
+        static const ydk::Enum::YLeaf vs_nsh_stats_spi_si;
+        static const ydk::Enum::YLeaf vs_nsh_stats_ter_min_ate;
+        static const ydk::Enum::YLeaf vs_nsh_stats_sf;
+        static const ydk::Enum::YLeaf vs_nsh_stats_sff;
+        static const ydk::Enum::YLeaf vs_nsh_stats_sff_local;
+        static const ydk::Enum::YLeaf vs_nsh_stats_sfp;
+        static const ydk::Enum::YLeaf vs_nsh_stats_sfp_detail;
+        static const ydk::Enum::YLeaf vs_nsh_stats_max;
 
 };
 

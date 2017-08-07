@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_telnet_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_telnet_cfg {
 
 Ipv6Telnet::Ipv6Telnet()
@@ -29,7 +31,7 @@ bool Ipv6Telnet::has_data() const
 
 bool Ipv6Telnet::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (client !=  nullptr && client->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Telnet::get_children() const
     return children;
 }
 
-void Ipv6Telnet::set_value(const std::string & value_path, std::string value)
+void Ipv6Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv6Telnet::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,6 +115,18 @@ augment_capabilities_function Ipv6Telnet::get_augment_capabilities_function() co
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Ipv6Telnet::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ipv6Telnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client")
+        return true;
+    return false;
+}
+
 Ipv6Telnet::Client::Client()
     :
     source_interface{YType::str, "source-interface"}
@@ -127,8 +145,8 @@ bool Ipv6Telnet::Client::has_data() const
 
 bool Ipv6Telnet::Client::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_interface.yfilter);
 }
 
 std::string Ipv6Telnet::Client::get_segment_path() const
@@ -154,7 +172,7 @@ const EntityPath Ipv6Telnet::Client::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -173,12 +191,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Telnet::Client::get_children(
     return children;
 }
 
-void Ipv6Telnet::Client::set_value(const std::string & value_path, std::string value)
+void Ipv6Telnet::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Telnet::Client::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Telnet::Client::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-interface")
+        return true;
+    return false;
 }
 
 Ipv4Telnet::Ipv4Telnet()
@@ -201,7 +236,7 @@ bool Ipv4Telnet::has_data() const
 
 bool Ipv4Telnet::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (client !=  nullptr && client->has_operation());
 }
 
@@ -257,7 +292,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Telnet::get_children() const
     return children;
 }
 
-void Ipv4Telnet::set_value(const std::string & value_path, std::string value)
+void Ipv4Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Telnet::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -281,6 +320,18 @@ augment_capabilities_function Ipv4Telnet::get_augment_capabilities_function() co
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Ipv4Telnet::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ipv4Telnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client")
+        return true;
+    return false;
+}
+
 Ipv4Telnet::Client::Client()
     :
     source_interface{YType::str, "source-interface"}
@@ -299,8 +350,8 @@ bool Ipv4Telnet::Client::has_data() const
 
 bool Ipv4Telnet::Client::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_interface.yfilter);
 }
 
 std::string Ipv4Telnet::Client::get_segment_path() const
@@ -326,7 +377,7 @@ const EntityPath Ipv4Telnet::Client::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -345,12 +396,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Telnet::Client::get_children(
     return children;
 }
 
-void Ipv4Telnet::Client::set_value(const std::string & value_path, std::string value)
+void Ipv4Telnet::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv4Telnet::Client::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Telnet::Client::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-interface")
+        return true;
+    return false;
 }
 
 

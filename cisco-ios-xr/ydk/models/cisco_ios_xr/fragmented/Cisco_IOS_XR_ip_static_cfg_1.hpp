@@ -9,11 +9,11 @@
 
 #include "Cisco_IOS_XR_ip_static_cfg_0.hpp"
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_static_cfg {
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute : public ydk::Entity
 {
     public:
         VrfSegRoute();
@@ -21,11 +21,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
@@ -34,7 +36,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable : public ydk::Entity
 {
     public:
         SegmentRouteNextHopTable();
@@ -42,11 +44,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -63,7 +67,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -71,30 +75,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -102,31 +108,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -134,30 +142,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -165,31 +175,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -197,30 +209,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv4::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6 : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6 : public ydk::Entity
 {
     public:
         Vrfipv6();
@@ -228,11 +242,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfUnicast; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast
         class VrfMulticast; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast
@@ -243,7 +259,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6 : public Entity
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast : public ydk::Entity
 {
     public:
         VrfUnicast();
@@ -251,11 +267,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Topologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies
         class VrfPrefixes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes
@@ -268,7 +286,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast : public Entit
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies : public ydk::Entity
 {
     public:
         Topologies();
@@ -276,11 +294,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Topology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology
 
@@ -289,7 +309,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies : 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -297,13 +317,15 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf topology_name; //type: string
+        ydk::YLeaf topology_name; //type: string
         class VrfPrefixTopologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies> vrf_prefix_topologies;
@@ -311,7 +333,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies : public ydk::Entity
 {
     public:
         VrfPrefixTopologies();
@@ -319,11 +341,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfPrefixTopology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology
 
@@ -332,7 +356,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology : public ydk::Entity
 {
     public:
         VrfPrefixTopology();
@@ -340,14 +364,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
@@ -359,7 +385,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute : public ydk::Entity
 {
     public:
         VrfRoute();
@@ -367,11 +393,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
@@ -380,7 +408,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable : public ydk::Entity
 {
     public:
         VrfNextHopTable();
@@ -388,11 +416,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -409,7 +439,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -417,30 +447,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -448,31 +480,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -480,30 +514,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -511,31 +547,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -543,30 +581,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes : public ydk::Entity
 {
     public:
         VrfRecurseRoutes();
@@ -574,11 +614,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
@@ -587,7 +629,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute : public ydk::Entity
 {
     public:
         VrfRecurseRoute();
@@ -595,13 +637,15 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
@@ -609,7 +653,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public ydk::Entity
 {
     public:
         VrfRecursiveNextHopTable();
@@ -617,11 +661,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -638,7 +684,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -646,30 +692,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -677,31 +725,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -709,30 +759,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -740,31 +792,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -772,30 +826,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute : public ydk::Entity
 {
     public:
         VrfSegRoute();
@@ -803,11 +859,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
@@ -816,7 +874,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable : public ydk::Entity
 {
     public:
         SegmentRouteNextHopTable();
@@ -824,11 +882,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -845,7 +905,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -853,30 +913,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -884,31 +946,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -916,30 +980,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -947,31 +1013,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -979,30 +1047,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::T
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes : public ydk::Entity
 {
     public:
         VrfPrefixes();
@@ -1010,11 +1080,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfPrefix; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix
 
@@ -1023,7 +1095,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes :
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix : public ydk::Entity
 {
     public:
         VrfPrefix();
@@ -1031,14 +1103,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute
@@ -1050,7 +1124,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute : public ydk::Entity
 {
     public:
         VrfRoute();
@@ -1058,11 +1132,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable
 
@@ -1071,7 +1147,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable : public ydk::Entity
 {
     public:
         VrfNextHopTable();
@@ -1079,11 +1155,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -1100,7 +1178,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -1108,30 +1186,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -1139,31 +1219,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -1171,30 +1253,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -1202,31 +1286,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -1234,30 +1320,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes : public ydk::Entity
 {
     public:
         VrfRecurseRoutes();
@@ -1265,11 +1353,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute
 
@@ -1278,7 +1368,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute : public ydk::Entity
 {
     public:
         VrfRecurseRoute();
@@ -1286,13 +1376,15 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
@@ -1300,7 +1392,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public ydk::Entity
 {
     public:
         VrfRecursiveNextHopTable();
@@ -1308,11 +1400,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -1329,7 +1423,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -1337,30 +1431,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -1368,31 +1464,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -1400,30 +1498,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -1431,31 +1531,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -1463,30 +1565,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute : public ydk::Entity
 {
     public:
         VrfSegRoute();
@@ -1494,11 +1598,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable
 
@@ -1507,7 +1613,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable : public ydk::Entity
 {
     public:
         SegmentRouteNextHopTable();
@@ -1515,11 +1621,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -1536,7 +1644,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -1544,30 +1652,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -1575,31 +1685,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -1607,30 +1719,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -1638,31 +1752,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -1670,30 +1786,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology : public ydk::Entity
 {
     public:
         DefaultTopology();
@@ -1701,11 +1819,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfPrefixTopologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies
 
@@ -1714,7 +1834,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies : public ydk::Entity
 {
     public:
         VrfPrefixTopologies();
@@ -1722,11 +1842,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfPrefixTopology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology
 
@@ -1735,7 +1857,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology : public ydk::Entity
 {
     public:
         VrfPrefixTopology();
@@ -1743,14 +1865,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
@@ -1762,7 +1886,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute : public ydk::Entity
 {
     public:
         VrfRoute();
@@ -1770,11 +1894,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
@@ -1783,7 +1909,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable : public ydk::Entity
 {
     public:
         VrfNextHopTable();
@@ -1791,11 +1917,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -1812,7 +1940,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -1820,30 +1948,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -1851,31 +1981,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -1883,30 +2015,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -1914,31 +2048,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -1946,30 +2082,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes : public ydk::Entity
 {
     public:
         VrfRecurseRoutes();
@@ -1977,11 +2115,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
@@ -1990,7 +2130,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute : public ydk::Entity
 {
     public:
         VrfRecurseRoute();
@@ -1998,13 +2138,15 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
@@ -2012,7 +2154,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public ydk::Entity
 {
     public:
         VrfRecursiveNextHopTable();
@@ -2020,11 +2162,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -2041,7 +2185,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -2049,30 +2193,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -2080,31 +2226,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -2112,30 +2260,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -2143,31 +2293,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -2175,30 +2327,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute : public ydk::Entity
 {
     public:
         VrfSegRoute();
@@ -2206,11 +2360,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
@@ -2219,7 +2375,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable : public ydk::Entity
 {
     public:
         SegmentRouteNextHopTable();
@@ -2227,11 +2383,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -2248,7 +2406,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -2256,30 +2414,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -2287,31 +2447,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -2319,30 +2481,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -2350,31 +2514,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -2382,30 +2548,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopolo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfUnicast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast : public ydk::Entity
 {
     public:
         VrfMulticast();
@@ -2413,11 +2581,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Topologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies
         class VrfPrefixes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
@@ -2430,7 +2600,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast : public Ent
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies : public ydk::Entity
 {
     public:
         Topologies();
@@ -2438,11 +2608,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Topology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology
 
@@ -2451,7 +2623,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -2459,13 +2631,15 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf topology_name; //type: string
+        ydk::YLeaf topology_name; //type: string
         class VrfPrefixTopologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies> vrf_prefix_topologies;
@@ -2473,7 +2647,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies : public ydk::Entity
 {
     public:
         VrfPrefixTopologies();
@@ -2481,11 +2655,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfPrefixTopology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology
 
@@ -2494,7 +2670,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology : public ydk::Entity
 {
     public:
         VrfPrefixTopology();
@@ -2502,14 +2678,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
@@ -2521,7 +2699,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute : public ydk::Entity
 {
     public:
         VrfRoute();
@@ -2529,11 +2707,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
@@ -2542,7 +2722,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable : public ydk::Entity
 {
     public:
         VrfNextHopTable();
@@ -2550,11 +2730,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -2571,7 +2753,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -2579,30 +2761,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -2610,31 +2794,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -2642,30 +2828,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -2673,31 +2861,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -2705,30 +2895,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes : public ydk::Entity
 {
     public:
         VrfRecurseRoutes();
@@ -2736,11 +2928,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
@@ -2749,7 +2943,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute : public ydk::Entity
 {
     public:
         VrfRecurseRoute();
@@ -2757,13 +2951,15 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
@@ -2771,7 +2967,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public ydk::Entity
 {
     public:
         VrfRecursiveNextHopTable();
@@ -2779,11 +2975,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -2800,7 +2998,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -2808,30 +3006,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -2839,31 +3039,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -2871,30 +3073,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -2902,31 +3106,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -2934,30 +3140,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute : public ydk::Entity
 {
     public:
         VrfSegRoute();
@@ -2965,11 +3173,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
@@ -2978,7 +3188,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable : public ydk::Entity
 {
     public:
         SegmentRouteNextHopTable();
@@ -2986,11 +3196,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3007,7 +3219,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -3015,30 +3227,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -3046,31 +3260,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -3078,30 +3294,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -3109,31 +3327,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -3141,30 +3361,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::Topologies::Topology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes : public ydk::Entity
 {
     public:
         VrfPrefixes();
@@ -3172,11 +3394,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfPrefix; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix
 
@@ -3185,7 +3409,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix : public ydk::Entity
 {
     public:
         VrfPrefix();
@@ -3193,14 +3417,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute
@@ -3212,7 +3438,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute : public ydk::Entity
 {
     public:
         VrfRoute();
@@ -3220,11 +3446,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable
 
@@ -3233,7 +3461,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable : public ydk::Entity
 {
     public:
         VrfNextHopTable();
@@ -3241,11 +3469,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3262,7 +3492,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -3270,30 +3500,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -3301,31 +3533,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -3333,30 +3567,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -3364,31 +3600,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -3396,30 +3634,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes : public ydk::Entity
 {
     public:
         VrfRecurseRoutes();
@@ -3427,11 +3667,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute
 
@@ -3440,7 +3682,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute : public ydk::Entity
 {
     public:
         VrfRecurseRoute();
@@ -3448,13 +3690,15 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
@@ -3462,7 +3706,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public ydk::Entity
 {
     public:
         VrfRecursiveNextHopTable();
@@ -3470,11 +3714,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3491,7 +3737,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -3499,30 +3745,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -3530,31 +3778,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -3562,30 +3812,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -3593,31 +3845,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -3625,30 +3879,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute : public ydk::Entity
 {
     public:
         VrfSegRoute();
@@ -3656,11 +3912,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SegmentRouteNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable
 
@@ -3669,7 +3927,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable : public ydk::Entity
 {
     public:
         SegmentRouteNextHopTable();
@@ -3677,11 +3935,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3698,7 +3958,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -3706,30 +3966,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -3737,31 +3999,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -3769,30 +4033,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -3800,31 +4066,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -3832,30 +4100,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::VrfPrefixes::VrfPrefix::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology : public ydk::Entity
 {
     public:
         DefaultTopology();
@@ -3863,11 +4133,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfPrefixTopologies; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies
 
@@ -3876,7 +4148,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies : public ydk::Entity
 {
     public:
         VrfPrefixTopologies();
@@ -3884,11 +4156,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfPrefixTopology; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology
 
@@ -3897,7 +4171,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology : public ydk::Entity
 {
     public:
         VrfPrefixTopology();
@@ -3905,14 +4179,16 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint32
         class VrfRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
         class VrfRecurseRoutes; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
         class VrfSegRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute
@@ -3924,7 +4200,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute : public ydk::Entity
 {
     public:
         VrfRoute();
@@ -3932,11 +4208,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
@@ -3945,7 +4223,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable : public ydk::Entity
 {
     public:
         VrfNextHopTable();
@@ -3953,11 +4231,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -3974,7 +4254,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -3982,30 +4262,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -4013,31 +4295,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddress();
@@ -4045,30 +4329,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopNextHopAddressExplicitPathName();
@@ -4076,31 +4362,33 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop_address; //type: string
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName : public ydk::Entity
 {
     public:
         VrfNextHopExplicitPathName();
@@ -4108,30 +4396,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf explicit_path_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf explicit_path_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes : public ydk::Entity
 {
     public:
         VrfRecurseRoutes();
@@ -4139,11 +4429,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfRecurseRoute; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
@@ -4152,7 +4444,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute : public ydk::Entity
 {
     public:
         VrfRecurseRoute();
@@ -4160,13 +4452,15 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class VrfRecursiveNextHopTable; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
         std::shared_ptr<Cisco_IOS_XR_ip_static_cfg::RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable> vrf_recursive_next_hop_table;
@@ -4174,7 +4468,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable : public ydk::Entity
 {
     public:
         VrfRecursiveNextHopTable();
@@ -4182,11 +4476,13 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class VrfNextHopInterfaceName; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
         class VrfNextHopInterfaceNameNextHopAddress; //type: RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
@@ -4203,7 +4499,7 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceName();
@@ -4211,30 +4507,32 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName
 
 
-class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public Entity
+class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress : public ydk::Entity
 {
     public:
         VrfNextHopInterfaceNameNextHopAddress();
@@ -4242,26 +4540,28 @@ class RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf next_hop_address; //type: string
-        YLeaf bfd_fast_detect; //type: boolean
-        YLeaf minimum_interval; //type: uint32
-        YLeaf detect_multiplier; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf tag; //type: uint32
-        YLeaf permanent; //type: boolean
-        YLeaf vrf_lable; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf object_name; //type: string
-        YLeaf description; //type: string
-        YLeaf load_metric; //type: uint32
-        YLeaf index_; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf next_hop_address; //type: string
+        ydk::YLeaf bfd_fast_detect; //type: boolean
+        ydk::YLeaf minimum_interval; //type: uint32
+        ydk::YLeaf detect_multiplier; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf vrf_lable; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf object_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf index_; //type: string
 
 }; // RouterStatic::Vrfs::Vrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress
 

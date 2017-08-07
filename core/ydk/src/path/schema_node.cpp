@@ -50,7 +50,32 @@ ydk::path::SchemaNodeImpl::SchemaNodeImpl(const SchemaNode* parent, struct lys_n
             last = q;
         }
     }
+}
 
+void
+ydk::path::SchemaNodeImpl::populate_augmented_schema_node(std::vector<lys_node*>& ancestors, struct lys_node* node) {
+    if (!ancestors.empty()) {
+        auto curr = ancestors.back();
+        ancestors.pop_back();
+        for (auto &c: m_children) {
+            if (c->get_statement().arg == curr->name) {
+                reinterpret_cast<SchemaNodeImpl*>(c.get())->populate_augmented_schema_node(ancestors, node);
+            }
+        }
+    }
+    else {
+        while(node) {
+            auto p = node;
+            while(p && (p->nodetype == LYS_USES)) {
+                p = p->child;
+            }
+            if (p) {
+                YLOG_DEBUG("Populating new schema node '{}'", std::string(p->name));
+                m_children.emplace_back(std::make_unique<SchemaNodeImpl>(this, const_cast<struct lys_node*>(p)));
+            }
+            node = node->next;
+        }
+    }
 }
 
 ydk::path::SchemaNodeImpl::~SchemaNodeImpl()
@@ -58,7 +83,7 @@ ydk::path::SchemaNodeImpl::~SchemaNodeImpl()
 }
 
 std::string
-ydk::path::SchemaNodeImpl::path() const
+ydk::path::SchemaNodeImpl::get_path() const
 {
     std::string ret{};
 
@@ -93,8 +118,10 @@ ydk::path::SchemaNodeImpl::path() const
 }
 
 std::vector<ydk::path::SchemaNode*>
-ydk::path::SchemaNodeImpl::find(const std::string& path) const
+ydk::path::SchemaNodeImpl::find(const std::string& path)
 {
+    populate_new_schemas_from_path(path);
+
     if(path.empty())
     {
         YLOG_ERROR("Path is empty");
@@ -105,7 +132,7 @@ ydk::path::SchemaNodeImpl::find(const std::string& path) const
     if(path.at(0) == '/')
     {
         YLOG_ERROR("path must be a relative path");
-	throw(YCPPInvalidArgumentError{"path must be a relative path"});
+        throw(YCPPInvalidArgumentError{"path must be a relative path"});
     }
 
     std::vector<SchemaNode*> ret;
@@ -126,20 +153,20 @@ ydk::path::SchemaNodeImpl::find(const std::string& path) const
 }
 
 const ydk::path::SchemaNode*
-ydk::path::SchemaNodeImpl::parent() const noexcept
+ydk::path::SchemaNodeImpl::get_parent() const noexcept
 {
     return m_parent;
 }
 
 const std::vector<std::unique_ptr<ydk::path::SchemaNode>> &
-ydk::path::SchemaNodeImpl::children() const
+ydk::path::SchemaNodeImpl::get_children() const
 {
 
     return m_children;
 }
 
 const ydk::path::SchemaNode&
-ydk::path::SchemaNodeImpl::root() const noexcept
+ydk::path::SchemaNodeImpl::get_root() const noexcept
 {
     if(m_parent == nullptr)
     {
@@ -147,15 +174,35 @@ ydk::path::SchemaNodeImpl::root() const noexcept
     }
     else
     {
-        return m_parent->root();
+        return m_parent->get_root();
     }
 }
 
+void
+ydk::path::SchemaNodeImpl::populate_new_schemas_from_path(const std::string& path) {
+    auto snode = const_cast<SchemaNode*>(&get_root());
+    auto rsnode = reinterpret_cast<RootSchemaNodeImpl*>(snode);
+    rsnode->populate_new_schemas_from_path(path);
+}
+
+static bool is_submodule(lys_node* node)
+{
+    return node->module->type;
+}
+
 ydk::path::Statement
-ydk::path::SchemaNodeImpl::statement() const
+ydk::path::SchemaNodeImpl::get_statement() const
 {
     Statement s{};
     s.arg = m_node->name;
+    if(is_submodule(m_node))
+    {
+        s.name_space = ((lys_submodule*)m_node->module)->belongsto->ns;
+    }
+    else
+    {
+        s.name_space = m_node->module->ns;
+    }
 
     switch(m_node->nodetype) {
     case LYS_CONTAINER:
@@ -217,11 +264,11 @@ ydk::path::SchemaNodeImpl::statement() const
 /// @return vector of Statement that represent keys
 ///
 std::vector<ydk::path::Statement>
-ydk::path::SchemaNodeImpl::keys() const
+ydk::path::SchemaNodeImpl::get_keys() const
 {
     std::vector<Statement> stmts{};
 
-    Statement stmt = statement();
+    Statement stmt = get_statement();
     if(stmt.keyword == "list") {
         //sanity check
         if(m_node->nodetype != LYS_LIST) {
@@ -232,12 +279,10 @@ ydk::path::SchemaNodeImpl::keys() const
         for(uint8_t i=0; i < slist->keys_size; ++i) {
             SchemaNode* sn = reinterpret_cast<SchemaNode*>(slist->keys[i]->priv);
             if(sn != nullptr){
-                stmts.push_back(sn->statement());
+                stmts.push_back(sn->get_statement());
             }
         }
     }
 
     return stmts;
 }
-
-

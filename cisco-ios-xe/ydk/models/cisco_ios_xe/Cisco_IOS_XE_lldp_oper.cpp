@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_lldp_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_lldp_oper {
 
 LldpEntries::LldpEntries()
@@ -20,9 +22,9 @@ LldpEntries::~LldpEntries()
 
 bool LldpEntries::has_data() const
 {
-    for (std::size_t index=0; index<lldp_entry_.size(); index++)
+    for (std::size_t index=0; index<lldp_entry.size(); index++)
     {
-        if(lldp_entry_[index]->has_data())
+        if(lldp_entry[index]->has_data())
             return true;
     }
     return false;
@@ -30,12 +32,12 @@ bool LldpEntries::has_data() const
 
 bool LldpEntries::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_entry_.size(); index++)
+    for (std::size_t index=0; index<lldp_entry.size(); index++)
     {
-        if(lldp_entry_[index]->has_operation())
+        if(lldp_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LldpEntries::get_segment_path() const
@@ -69,7 +71,7 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "lldp-entry")
     {
-        for(auto const & c : lldp_entry_)
+        for(auto const & c : lldp_entry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +81,7 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
         }
         auto c = std::make_shared<LldpEntries::LldpEntry>();
         c->parent = this;
-        lldp_entry_.push_back(c);
+        lldp_entry.push_back(c);
         return c;
     }
 
@@ -89,7 +91,7 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> LldpEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : lldp_entry_)
+    for (auto const & c : lldp_entry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> LldpEntries::get_children() const
     return children;
 }
 
-void LldpEntries::set_value(const std::string & value_path, std::string value)
+void LldpEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void LldpEntries::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -121,6 +127,18 @@ augment_capabilities_function LldpEntries::get_augment_capabilities_function() c
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> LldpEntries::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool LldpEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-entry")
+        return true;
+    return false;
+}
+
 LldpEntries::LldpEntry::LldpEntry()
     :
     device_id{YType::str, "device-id"},
@@ -128,9 +146,9 @@ LldpEntries::LldpEntry::LldpEntry()
     connecting_interface{YType::str, "connecting-interface"},
     ttl{YType::uint32, "ttl"}
     	,
-    capabilities_(std::make_shared<LldpEntries::LldpEntry::Capabilities>())
+    capabilities(std::make_shared<LldpEntries::LldpEntry::Capabilities>())
 {
-    capabilities_->parent = this;
+    capabilities->parent = this;
 
     yang_name = "lldp-entry"; yang_parent_name = "lldp-entries";
 }
@@ -145,17 +163,17 @@ bool LldpEntries::LldpEntry::has_data() const
 	|| local_interface.is_set
 	|| connecting_interface.is_set
 	|| ttl.is_set
-	|| (capabilities_ !=  nullptr && capabilities_->has_data());
+	|| (capabilities !=  nullptr && capabilities->has_data());
 }
 
 bool LldpEntries::LldpEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(device_id.operation)
-	|| is_set(local_interface.operation)
-	|| is_set(connecting_interface.operation)
-	|| is_set(ttl.operation)
-	|| (capabilities_ !=  nullptr && capabilities_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(local_interface.yfilter)
+	|| ydk::is_set(connecting_interface.yfilter)
+	|| ydk::is_set(ttl.yfilter)
+	|| (capabilities !=  nullptr && capabilities->has_operation());
 }
 
 std::string LldpEntries::LldpEntry::get_segment_path() const
@@ -181,10 +199,10 @@ const EntityPath LldpEntries::LldpEntry::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (local_interface.is_set || is_set(local_interface.operation)) leaf_name_data.push_back(local_interface.get_name_leafdata());
-    if (connecting_interface.is_set || is_set(connecting_interface.operation)) leaf_name_data.push_back(connecting_interface.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (local_interface.is_set || is_set(local_interface.yfilter)) leaf_name_data.push_back(local_interface.get_name_leafdata());
+    if (connecting_interface.is_set || is_set(connecting_interface.yfilter)) leaf_name_data.push_back(connecting_interface.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -196,11 +214,11 @@ std::shared_ptr<Entity> LldpEntries::LldpEntry::get_child_by_name(const std::str
 {
     if(child_yang_name == "capabilities")
     {
-        if(capabilities_ == nullptr)
+        if(capabilities == nullptr)
         {
-            capabilities_ = std::make_shared<LldpEntries::LldpEntry::Capabilities>();
+            capabilities = std::make_shared<LldpEntries::LldpEntry::Capabilities>();
         }
-        return capabilities_;
+        return capabilities;
     }
 
     return nullptr;
@@ -209,32 +227,67 @@ std::shared_ptr<Entity> LldpEntries::LldpEntry::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> LldpEntries::LldpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(capabilities_ != nullptr)
+    if(capabilities != nullptr)
     {
-        children["capabilities"] = capabilities_;
+        children["capabilities"] = capabilities;
     }
 
     return children;
 }
 
-void LldpEntries::LldpEntry::set_value(const std::string & value_path, std::string value)
+void LldpEntries::LldpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-interface")
     {
         local_interface = value;
+        local_interface.value_namespace = name_space;
+        local_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "connecting-interface")
     {
         connecting_interface = value;
+        connecting_interface.value_namespace = name_space;
+        connecting_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LldpEntries::LldpEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "local-interface")
+    {
+        local_interface.yfilter = yfilter;
+    }
+    if(value_path == "connecting-interface")
+    {
+        connecting_interface.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+}
+
+bool LldpEntries::LldpEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capabilities" || name == "device-id" || name == "local-interface" || name == "connecting-interface" || name == "ttl")
+        return true;
+    return false;
 }
 
 LldpEntries::LldpEntry::Capabilities::Capabilities()
@@ -269,15 +322,15 @@ bool LldpEntries::LldpEntry::Capabilities::has_data() const
 
 bool LldpEntries::LldpEntry::Capabilities::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_point.operation)
-	|| is_set(bridge.operation)
-	|| is_set(docsis.operation)
-	|| is_set(other.operation)
-	|| is_set(repeater.operation)
-	|| is_set(router.operation)
-	|| is_set(station.operation)
-	|| is_set(telephone.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_point.yfilter)
+	|| ydk::is_set(bridge.yfilter)
+	|| ydk::is_set(docsis.yfilter)
+	|| ydk::is_set(other.yfilter)
+	|| ydk::is_set(repeater.yfilter)
+	|| ydk::is_set(router.yfilter)
+	|| ydk::is_set(station.yfilter)
+	|| ydk::is_set(telephone.yfilter);
 }
 
 std::string LldpEntries::LldpEntry::Capabilities::get_segment_path() const
@@ -303,14 +356,14 @@ const EntityPath LldpEntries::LldpEntry::Capabilities::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_point.is_set || is_set(access_point.operation)) leaf_name_data.push_back(access_point.get_name_leafdata());
-    if (bridge.is_set || is_set(bridge.operation)) leaf_name_data.push_back(bridge.get_name_leafdata());
-    if (docsis.is_set || is_set(docsis.operation)) leaf_name_data.push_back(docsis.get_name_leafdata());
-    if (other.is_set || is_set(other.operation)) leaf_name_data.push_back(other.get_name_leafdata());
-    if (repeater.is_set || is_set(repeater.operation)) leaf_name_data.push_back(repeater.get_name_leafdata());
-    if (router.is_set || is_set(router.operation)) leaf_name_data.push_back(router.get_name_leafdata());
-    if (station.is_set || is_set(station.operation)) leaf_name_data.push_back(station.get_name_leafdata());
-    if (telephone.is_set || is_set(telephone.operation)) leaf_name_data.push_back(telephone.get_name_leafdata());
+    if (access_point.is_set || is_set(access_point.yfilter)) leaf_name_data.push_back(access_point.get_name_leafdata());
+    if (bridge.is_set || is_set(bridge.yfilter)) leaf_name_data.push_back(bridge.get_name_leafdata());
+    if (docsis.is_set || is_set(docsis.yfilter)) leaf_name_data.push_back(docsis.get_name_leafdata());
+    if (other.is_set || is_set(other.yfilter)) leaf_name_data.push_back(other.get_name_leafdata());
+    if (repeater.is_set || is_set(repeater.yfilter)) leaf_name_data.push_back(repeater.get_name_leafdata());
+    if (router.is_set || is_set(router.yfilter)) leaf_name_data.push_back(router.get_name_leafdata());
+    if (station.is_set || is_set(station.yfilter)) leaf_name_data.push_back(station.get_name_leafdata());
+    if (telephone.is_set || is_set(telephone.yfilter)) leaf_name_data.push_back(telephone.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -329,40 +382,99 @@ std::map<std::string, std::shared_ptr<Entity>> LldpEntries::LldpEntry::Capabilit
     return children;
 }
 
-void LldpEntries::LldpEntry::Capabilities::set_value(const std::string & value_path, std::string value)
+void LldpEntries::LldpEntry::Capabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-point")
     {
         access_point = value;
+        access_point.value_namespace = name_space;
+        access_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge")
     {
         bridge = value;
+        bridge.value_namespace = name_space;
+        bridge.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "docsis")
     {
         docsis = value;
+        docsis.value_namespace = name_space;
+        docsis.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "other")
     {
         other = value;
+        other.value_namespace = name_space;
+        other.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "repeater")
     {
         repeater = value;
+        repeater.value_namespace = name_space;
+        repeater.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router")
     {
         router = value;
+        router.value_namespace = name_space;
+        router.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "station")
     {
         station = value;
+        station.value_namespace = name_space;
+        station.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "telephone")
     {
         telephone = value;
+        telephone.value_namespace = name_space;
+        telephone.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LldpEntries::LldpEntry::Capabilities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-point")
+    {
+        access_point.yfilter = yfilter;
+    }
+    if(value_path == "bridge")
+    {
+        bridge.yfilter = yfilter;
+    }
+    if(value_path == "docsis")
+    {
+        docsis.yfilter = yfilter;
+    }
+    if(value_path == "other")
+    {
+        other.yfilter = yfilter;
+    }
+    if(value_path == "repeater")
+    {
+        repeater.yfilter = yfilter;
+    }
+    if(value_path == "router")
+    {
+        router.yfilter = yfilter;
+    }
+    if(value_path == "station")
+    {
+        station.yfilter = yfilter;
+    }
+    if(value_path == "telephone")
+    {
+        telephone.yfilter = yfilter;
+    }
+}
+
+bool LldpEntries::LldpEntry::Capabilities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-point" || name == "bridge" || name == "docsis" || name == "other" || name == "repeater" || name == "router" || name == "station" || name == "telephone")
+        return true;
+    return false;
 }
 
 

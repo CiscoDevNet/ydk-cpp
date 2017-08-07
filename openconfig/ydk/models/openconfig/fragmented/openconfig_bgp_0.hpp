@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_bgp {
 
-class Bgp : public Entity
+class Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -19,15 +19,18 @@ class Bgp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Global; //type: Bgp::Global
         class Neighbors; //type: Bgp::Neighbors
@@ -40,7 +43,7 @@ class Bgp : public Entity
 }; // Bgp
 
 
-class Bgp::Global : public Entity
+class Bgp::Global : public ydk::Entity
 {
     public:
         Global();
@@ -48,19 +51,21 @@ class Bgp::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::Config
         class State; //type: Bgp::Global::State
-        class RouteSelectionOptions; //type: Bgp::Global::RouteSelectionOptions
         class DefaultRouteDistance; //type: Bgp::Global::DefaultRouteDistance
         class Confederation; //type: Bgp::Global::Confederation
-        class UseMultiplePaths; //type: Bgp::Global::UseMultiplePaths
         class GracefulRestart; //type: Bgp::Global::GracefulRestart
+        class UseMultiplePaths; //type: Bgp::Global::UseMultiplePaths
+        class RouteSelectionOptions; //type: Bgp::Global::RouteSelectionOptions
         class AfiSafis; //type: Bgp::Global::AfiSafis
         class ApplyPolicy; //type: Bgp::Global::ApplyPolicy
 
@@ -77,7 +82,7 @@ class Bgp::Global : public Entity
 }; // Bgp::Global
 
 
-class Bgp::Global::Config : public Entity
+class Bgp::Global::Config : public ydk::Entity
 {
     public:
         Config();
@@ -85,19 +90,21 @@ class Bgp::Global::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as; //type: uint32
-        YLeaf router_id; //type: string
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf router_id; //type: string
 
 }; // Bgp::Global::Config
 
 
-class Bgp::Global::State : public Entity
+class Bgp::Global::State : public ydk::Entity
 {
     public:
         State();
@@ -105,92 +112,23 @@ class Bgp::Global::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as; //type: uint32
-        YLeaf router_id; //type: string
-        YLeaf total_paths; //type: uint32
-        YLeaf total_prefixes; //type: uint32
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf total_paths; //type: uint32
+        ydk::YLeaf total_prefixes; //type: uint32
 
 }; // Bgp::Global::State
 
 
-class Bgp::Global::RouteSelectionOptions : public Entity
-{
-    public:
-        RouteSelectionOptions();
-        ~RouteSelectionOptions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::RouteSelectionOptions::Config
-        class State; //type: Bgp::Global::RouteSelectionOptions::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::RouteSelectionOptions::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::RouteSelectionOptions::State> state;
-        
-}; // Bgp::Global::RouteSelectionOptions
-
-
-class Bgp::Global::RouteSelectionOptions::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf always_compare_med; //type: boolean
-        YLeaf ignore_as_path_length; //type: boolean
-        YLeaf external_compare_router_id; //type: boolean
-        YLeaf advertise_inactive_routes; //type: boolean
-        YLeaf enable_aigp; //type: boolean
-        YLeaf ignore_next_hop_igp_metric; //type: boolean
-
-}; // Bgp::Global::RouteSelectionOptions::Config
-
-
-class Bgp::Global::RouteSelectionOptions::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf always_compare_med; //type: boolean
-        YLeaf ignore_as_path_length; //type: boolean
-        YLeaf external_compare_router_id; //type: boolean
-        YLeaf advertise_inactive_routes; //type: boolean
-        YLeaf enable_aigp; //type: boolean
-        YLeaf ignore_next_hop_igp_metric; //type: boolean
-
-}; // Bgp::Global::RouteSelectionOptions::State
-
-
-class Bgp::Global::DefaultRouteDistance : public Entity
+class Bgp::Global::DefaultRouteDistance : public ydk::Entity
 {
     public:
         DefaultRouteDistance();
@@ -198,11 +136,13 @@ class Bgp::Global::DefaultRouteDistance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::DefaultRouteDistance::Config
         class State; //type: Bgp::Global::DefaultRouteDistance::State
@@ -213,7 +153,7 @@ class Bgp::Global::DefaultRouteDistance : public Entity
 }; // Bgp::Global::DefaultRouteDistance
 
 
-class Bgp::Global::DefaultRouteDistance::Config : public Entity
+class Bgp::Global::DefaultRouteDistance::Config : public ydk::Entity
 {
     public:
         Config();
@@ -221,19 +161,21 @@ class Bgp::Global::DefaultRouteDistance::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf external_route_distance; //type: uint8
-        YLeaf internal_route_distance; //type: uint8
+        ydk::YLeaf external_route_distance; //type: uint8
+        ydk::YLeaf internal_route_distance; //type: uint8
 
 }; // Bgp::Global::DefaultRouteDistance::Config
 
 
-class Bgp::Global::DefaultRouteDistance::State : public Entity
+class Bgp::Global::DefaultRouteDistance::State : public ydk::Entity
 {
     public:
         State();
@@ -241,19 +183,21 @@ class Bgp::Global::DefaultRouteDistance::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf external_route_distance; //type: uint8
-        YLeaf internal_route_distance; //type: uint8
+        ydk::YLeaf external_route_distance; //type: uint8
+        ydk::YLeaf internal_route_distance; //type: uint8
 
 }; // Bgp::Global::DefaultRouteDistance::State
 
 
-class Bgp::Global::Confederation : public Entity
+class Bgp::Global::Confederation : public ydk::Entity
 {
     public:
         Confederation();
@@ -261,11 +205,13 @@ class Bgp::Global::Confederation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::Confederation::Config
         class State; //type: Bgp::Global::Confederation::State
@@ -276,7 +222,7 @@ class Bgp::Global::Confederation : public Entity
 }; // Bgp::Global::Confederation
 
 
-class Bgp::Global::Confederation::Config : public Entity
+class Bgp::Global::Confederation::Config : public ydk::Entity
 {
     public:
         Config();
@@ -284,20 +230,22 @@ class Bgp::Global::Confederation::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf identifier; //type: uint32
-        YLeafList member_as; //type: list of  uint32
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf identifier; //type: uint32
+        ydk::YLeafList member_as; //type: list of  uint32
 
 }; // Bgp::Global::Confederation::Config
 
 
-class Bgp::Global::Confederation::State : public Entity
+class Bgp::Global::Confederation::State : public ydk::Entity
 {
     public:
         State();
@@ -305,20 +253,95 @@ class Bgp::Global::Confederation::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf identifier; //type: uint32
-        YLeafList member_as; //type: list of  uint32
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf identifier; //type: uint32
+        ydk::YLeafList member_as; //type: list of  uint32
 
 }; // Bgp::Global::Confederation::State
 
 
-class Bgp::Global::UseMultiplePaths : public Entity
+class Bgp::Global::GracefulRestart : public ydk::Entity
+{
+    public:
+        GracefulRestart();
+        ~GracefulRestart();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::GracefulRestart::Config
+        class State; //type: Bgp::Global::GracefulRestart::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::GracefulRestart::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::GracefulRestart::State> state;
+        
+}; // Bgp::Global::GracefulRestart
+
+
+class Bgp::Global::GracefulRestart::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf restart_time; //type: uint16
+        ydk::YLeaf stale_routes_time; //type: decimal64
+        ydk::YLeaf helper_only; //type: boolean
+
+}; // Bgp::Global::GracefulRestart::Config
+
+
+class Bgp::Global::GracefulRestart::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf restart_time; //type: uint16
+        ydk::YLeaf stale_routes_time; //type: decimal64
+        ydk::YLeaf helper_only; //type: boolean
+
+}; // Bgp::Global::GracefulRestart::State
+
+
+class Bgp::Global::UseMultiplePaths : public ydk::Entity
 {
     public:
         UseMultiplePaths();
@@ -326,11 +349,13 @@ class Bgp::Global::UseMultiplePaths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::UseMultiplePaths::Config
         class State; //type: Bgp::Global::UseMultiplePaths::State
@@ -345,7 +370,7 @@ class Bgp::Global::UseMultiplePaths : public Entity
 }; // Bgp::Global::UseMultiplePaths
 
 
-class Bgp::Global::UseMultiplePaths::Config : public Entity
+class Bgp::Global::UseMultiplePaths::Config : public ydk::Entity
 {
     public:
         Config();
@@ -353,18 +378,20 @@ class Bgp::Global::UseMultiplePaths::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // Bgp::Global::UseMultiplePaths::Config
 
 
-class Bgp::Global::UseMultiplePaths::State : public Entity
+class Bgp::Global::UseMultiplePaths::State : public ydk::Entity
 {
     public:
         State();
@@ -372,18 +399,20 @@ class Bgp::Global::UseMultiplePaths::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // Bgp::Global::UseMultiplePaths::State
 
 
-class Bgp::Global::UseMultiplePaths::Ebgp : public Entity
+class Bgp::Global::UseMultiplePaths::Ebgp : public ydk::Entity
 {
     public:
         Ebgp();
@@ -391,11 +420,13 @@ class Bgp::Global::UseMultiplePaths::Ebgp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::UseMultiplePaths::Ebgp::Config
         class State; //type: Bgp::Global::UseMultiplePaths::Ebgp::State
@@ -406,7 +437,7 @@ class Bgp::Global::UseMultiplePaths::Ebgp : public Entity
 }; // Bgp::Global::UseMultiplePaths::Ebgp
 
 
-class Bgp::Global::UseMultiplePaths::Ebgp::Config : public Entity
+class Bgp::Global::UseMultiplePaths::Ebgp::Config : public ydk::Entity
 {
     public:
         Config();
@@ -414,19 +445,21 @@ class Bgp::Global::UseMultiplePaths::Ebgp::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allow_multiple_as; //type: boolean
-        YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf allow_multiple_as; //type: boolean
+        ydk::YLeaf maximum_paths; //type: uint32
 
 }; // Bgp::Global::UseMultiplePaths::Ebgp::Config
 
 
-class Bgp::Global::UseMultiplePaths::Ebgp::State : public Entity
+class Bgp::Global::UseMultiplePaths::Ebgp::State : public ydk::Entity
 {
     public:
         State();
@@ -434,19 +467,21 @@ class Bgp::Global::UseMultiplePaths::Ebgp::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allow_multiple_as; //type: boolean
-        YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf allow_multiple_as; //type: boolean
+        ydk::YLeaf maximum_paths; //type: uint32
 
 }; // Bgp::Global::UseMultiplePaths::Ebgp::State
 
 
-class Bgp::Global::UseMultiplePaths::Ibgp : public Entity
+class Bgp::Global::UseMultiplePaths::Ibgp : public ydk::Entity
 {
     public:
         Ibgp();
@@ -454,11 +489,13 @@ class Bgp::Global::UseMultiplePaths::Ibgp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::UseMultiplePaths::Ibgp::Config
         class State; //type: Bgp::Global::UseMultiplePaths::Ibgp::State
@@ -469,7 +506,7 @@ class Bgp::Global::UseMultiplePaths::Ibgp : public Entity
 }; // Bgp::Global::UseMultiplePaths::Ibgp
 
 
-class Bgp::Global::UseMultiplePaths::Ibgp::Config : public Entity
+class Bgp::Global::UseMultiplePaths::Ibgp::Config : public ydk::Entity
 {
     public:
         Config();
@@ -477,18 +514,20 @@ class Bgp::Global::UseMultiplePaths::Ibgp::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf maximum_paths; //type: uint32
 
 }; // Bgp::Global::UseMultiplePaths::Ibgp::Config
 
 
-class Bgp::Global::UseMultiplePaths::Ibgp::State : public Entity
+class Bgp::Global::UseMultiplePaths::Ibgp::State : public ydk::Entity
 {
     public:
         State();
@@ -496,41 +535,45 @@ class Bgp::Global::UseMultiplePaths::Ibgp::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf maximum_paths; //type: uint32
 
 }; // Bgp::Global::UseMultiplePaths::Ibgp::State
 
 
-class Bgp::Global::GracefulRestart : public Entity
+class Bgp::Global::RouteSelectionOptions : public ydk::Entity
 {
     public:
-        GracefulRestart();
-        ~GracefulRestart();
+        RouteSelectionOptions();
+        ~RouteSelectionOptions();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Config; //type: Bgp::Global::GracefulRestart::Config
-        class State; //type: Bgp::Global::GracefulRestart::State
+        class Config; //type: Bgp::Global::RouteSelectionOptions::Config
+        class State; //type: Bgp::Global::RouteSelectionOptions::State
 
-        std::shared_ptr<openconfig_bgp::Bgp::Global::GracefulRestart::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::GracefulRestart::State> state;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::RouteSelectionOptions::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::RouteSelectionOptions::State> state;
         
-}; // Bgp::Global::GracefulRestart
+}; // Bgp::Global::RouteSelectionOptions
 
 
-class Bgp::Global::GracefulRestart::Config : public Entity
+class Bgp::Global::RouteSelectionOptions::Config : public ydk::Entity
 {
     public:
         Config();
@@ -538,21 +581,25 @@ class Bgp::Global::GracefulRestart::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf restart_time; //type: uint16
-        YLeaf stale_routes_time; //type: decimal64
-        YLeaf helper_only; //type: boolean
+        ydk::YLeaf always_compare_med; //type: boolean
+        ydk::YLeaf ignore_as_path_length; //type: boolean
+        ydk::YLeaf external_compare_router_id; //type: boolean
+        ydk::YLeaf advertise_inactive_routes; //type: boolean
+        ydk::YLeaf enable_aigp; //type: boolean
+        ydk::YLeaf ignore_next_hop_igp_metric; //type: boolean
 
-}; // Bgp::Global::GracefulRestart::Config
+}; // Bgp::Global::RouteSelectionOptions::Config
 
 
-class Bgp::Global::GracefulRestart::State : public Entity
+class Bgp::Global::RouteSelectionOptions::State : public ydk::Entity
 {
     public:
         State();
@@ -560,21 +607,25 @@ class Bgp::Global::GracefulRestart::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf restart_time; //type: uint16
-        YLeaf stale_routes_time; //type: decimal64
-        YLeaf helper_only; //type: boolean
+        ydk::YLeaf always_compare_med; //type: boolean
+        ydk::YLeaf ignore_as_path_length; //type: boolean
+        ydk::YLeaf external_compare_router_id; //type: boolean
+        ydk::YLeaf advertise_inactive_routes; //type: boolean
+        ydk::YLeaf enable_aigp; //type: boolean
+        ydk::YLeaf ignore_next_hop_igp_metric; //type: boolean
 
-}; // Bgp::Global::GracefulRestart::State
+}; // Bgp::Global::RouteSelectionOptions::State
 
 
-class Bgp::Global::AfiSafis : public Entity
+class Bgp::Global::AfiSafis : public ydk::Entity
 {
     public:
         AfiSafis();
@@ -582,11 +633,13 @@ class Bgp::Global::AfiSafis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AfiSafi; //type: Bgp::Global::AfiSafis::AfiSafi
 
@@ -595,7 +648,7 @@ class Bgp::Global::AfiSafis : public Entity
 }; // Bgp::Global::AfiSafis
 
 
-class Bgp::Global::AfiSafis::AfiSafi : public Entity
+class Bgp::Global::AfiSafis::AfiSafi : public ydk::Entity
 {
     public:
         AfiSafi();
@@ -603,36 +656,38 @@ class Bgp::Global::AfiSafis::AfiSafi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
-        class GracefulRestart; //type: Bgp::Global::AfiSafis::AfiSafi::GracefulRestart
+        ydk::YLeaf afi_safi_name; //type: Afi_Safi_Type
         class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Config
         class State; //type: Bgp::Global::AfiSafis::AfiSafi::State
+        class GracefulRestart; //type: Bgp::Global::AfiSafis::AfiSafi::GracefulRestart
+        class RouteSelectionOptions; //type: Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions
+        class UseMultiplePaths; //type: Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths
         class ApplyPolicy; //type: Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy
         class Ipv4Unicast; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast
         class Ipv6Unicast; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast
-        class Ipv4LabelledUnicast; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast
-        class Ipv6LabelledUnicast; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast
+        class Ipv4LabeledUnicast; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast
+        class Ipv6LabeledUnicast; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast
         class L3VpnIpv4Unicast; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast
         class L3VpnIpv6Unicast; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast
         class L3VpnIpv4Multicast; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast
         class L3VpnIpv6Multicast; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast
         class L2VpnVpls; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls
         class L2VpnEvpn; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn
-        class RouteSelectionOptions; //type: Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions
-        class UseMultiplePaths; //type: Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths
 
         std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy> apply_policy;
         std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Config> config;
         std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::GracefulRestart> graceful_restart;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast> ipv4_labelled_unicast;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast> ipv4_labeled_unicast;
         std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast> ipv4_unicast;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast> ipv6_labelled_unicast;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast> ipv6_labeled_unicast;
         std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast> ipv6_unicast;
         std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn> l2vpn_evpn;
         std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls> l2vpn_vpls;
@@ -647,7 +702,53 @@ class Bgp::Global::AfiSafis::AfiSafi : public Entity
 }; // Bgp::Global::AfiSafis::AfiSafi
 
 
-class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi_safi_name; //type: Afi_Safi_Type
+        ydk::YLeaf enabled; //type: boolean
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi_safi_name; //type: Afi_Safi_Type
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf total_paths; //type: uint32
+        ydk::YLeaf total_prefixes; //type: uint32
+
+}; // Bgp::Global::AfiSafis::AfiSafi::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart : public ydk::Entity
 {
     public:
         GracefulRestart();
@@ -655,11 +756,13 @@ class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config
         class State; //type: Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State
@@ -670,7 +773,7 @@ class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart : public Entity
 }; // Bgp::Global::AfiSafis::AfiSafi::GracefulRestart
 
 
-class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config : public ydk::Entity
 {
     public:
         Config();
@@ -678,18 +781,20 @@ class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config
 
 
-class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State : public ydk::Entity
 {
     public:
         State();
@@ -697,1075 +802,20 @@ class Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State
 
 
-class Bgp::Global::AfiSafis::AfiSafi::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
-        YLeaf enabled; //type: boolean
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
-        YLeaf enabled; //type: boolean
-        YLeaf total_paths; //type: uint32
-        YLeaf total_prefixes; //type: uint32
-
-}; // Bgp::Global::AfiSafis::AfiSafi::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy : public Entity
-{
-    public:
-        ApplyPolicy();
-        ~ApplyPolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy
-
-
-class Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
-        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList import_policy;
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList export_policy;
-
-}; // Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
-        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList import_policy;
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList export_policy;
-
-}; // Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast : public Entity
-{
-    public:
-        Ipv4Unicast();
-        ~Ipv4Unicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit> prefix_limit;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf send_default_route; //type: boolean
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf send_default_route; //type: boolean
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast : public Entity
-{
-    public:
-        Ipv6Unicast();
-        ~Ipv6Unicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit> prefix_limit;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf send_default_route; //type: boolean
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf send_default_route; //type: boolean
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast : public Entity
-{
-    public:
-        Ipv4LabelledUnicast();
-        ~Ipv4LabelledUnicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast : public Entity
-{
-    public:
-        Ipv6LabelledUnicast();
-        ~Ipv6LabelledUnicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast : public Entity
-{
-    public:
-        L3VpnIpv4Unicast();
-        ~L3VpnIpv4Unicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast : public Entity
-{
-    public:
-        L3VpnIpv6Unicast();
-        ~L3VpnIpv6Unicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast : public Entity
-{
-    public:
-        L3VpnIpv4Multicast();
-        ~L3VpnIpv4Multicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast : public Entity
-{
-    public:
-        L3VpnIpv6Multicast();
-        ~L3VpnIpv6Multicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls : public Entity
-{
-    public:
-        L2VpnVpls();
-        ~L2VpnVpls();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn : public Entity
-{
-    public:
-        L2VpnEvpn();
-        ~L2VpnEvpn();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config
-        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State> state;
-        
-}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config
-
-
-class Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State
-
-
-class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions : public ydk::Entity
 {
     public:
         RouteSelectionOptions();
@@ -1773,11 +823,13 @@ class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config
         class State; //type: Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State
@@ -1788,7 +840,7 @@ class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions : public Entity
 }; // Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions
 
 
-class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config : public ydk::Entity
 {
     public:
         Config();
@@ -1796,23 +848,25 @@ class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf always_compare_med; //type: boolean
-        YLeaf ignore_as_path_length; //type: boolean
-        YLeaf external_compare_router_id; //type: boolean
-        YLeaf advertise_inactive_routes; //type: boolean
-        YLeaf enable_aigp; //type: boolean
-        YLeaf ignore_next_hop_igp_metric; //type: boolean
+        ydk::YLeaf always_compare_med; //type: boolean
+        ydk::YLeaf ignore_as_path_length; //type: boolean
+        ydk::YLeaf external_compare_router_id; //type: boolean
+        ydk::YLeaf advertise_inactive_routes; //type: boolean
+        ydk::YLeaf enable_aigp; //type: boolean
+        ydk::YLeaf ignore_next_hop_igp_metric; //type: boolean
 
 }; // Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config
 
 
-class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State : public ydk::Entity
 {
     public:
         State();
@@ -1820,23 +874,25 @@ class Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf always_compare_med; //type: boolean
-        YLeaf ignore_as_path_length; //type: boolean
-        YLeaf external_compare_router_id; //type: boolean
-        YLeaf advertise_inactive_routes; //type: boolean
-        YLeaf enable_aigp; //type: boolean
-        YLeaf ignore_next_hop_igp_metric; //type: boolean
+        ydk::YLeaf always_compare_med; //type: boolean
+        ydk::YLeaf ignore_as_path_length; //type: boolean
+        ydk::YLeaf external_compare_router_id; //type: boolean
+        ydk::YLeaf advertise_inactive_routes; //type: boolean
+        ydk::YLeaf enable_aigp; //type: boolean
+        ydk::YLeaf ignore_next_hop_igp_metric; //type: boolean
 
 }; // Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths : public ydk::Entity
 {
     public:
         UseMultiplePaths();
@@ -1844,11 +900,13 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config
         class State; //type: Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State
@@ -1863,7 +921,7 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths : public Entity
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config : public ydk::Entity
 {
     public:
         Config();
@@ -1871,18 +929,20 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State : public ydk::Entity
 {
     public:
         State();
@@ -1890,18 +950,20 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp : public ydk::Entity
 {
     public:
         Ebgp();
@@ -1909,11 +971,13 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config
         class State; //type: Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State
@@ -1924,7 +988,7 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp : public Entity
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config : public ydk::Entity
 {
     public:
         Config();
@@ -1932,19 +996,21 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allow_multiple_as; //type: boolean
-        YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf allow_multiple_as; //type: boolean
+        ydk::YLeaf maximum_paths; //type: uint32
 
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State : public ydk::Entity
 {
     public:
         State();
@@ -1952,19 +1018,21 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allow_multiple_as; //type: boolean
-        YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf allow_multiple_as; //type: boolean
+        ydk::YLeaf maximum_paths; //type: uint32
 
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp : public ydk::Entity
 {
     public:
         Ibgp();
@@ -1972,11 +1040,13 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config
         class State; //type: Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State
@@ -1987,7 +1057,7 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp : public Entity
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config : public ydk::Entity
 {
     public:
         Config();
@@ -1995,18 +1065,20 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf maximum_paths; //type: uint32
 
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config
 
 
-class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State : public ydk::Entity
 {
     public:
         State();
@@ -2014,18 +1086,20 @@ class Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_paths; //type: uint32
+        ydk::YLeaf maximum_paths; //type: uint32
 
 }; // Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State
 
 
-class Bgp::Global::ApplyPolicy : public Entity
+class Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy : public ydk::Entity
 {
     public:
         ApplyPolicy();
@@ -2033,11 +1107,1122 @@ class Bgp::Global::ApplyPolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy
+
+
+class Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf default_import_policy; //type: DefaultPolicyType
+        ydk::YLeaf default_export_policy; //type: DefaultPolicyType
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList import_policy;
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList export_policy;
+
+}; // Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf default_import_policy; //type: DefaultPolicyType
+        ydk::YLeaf default_export_policy; //type: DefaultPolicyType
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList import_policy;
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList export_policy;
+
+}; // Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast : public ydk::Entity
+{
+    public:
+        Ipv4Unicast();
+        ~Ipv4Unicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf send_default_route; //type: boolean
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf send_default_route; //type: boolean
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast : public ydk::Entity
+{
+    public:
+        Ipv6Unicast();
+        ~Ipv6Unicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit> prefix_limit;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf send_default_route; //type: boolean
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf send_default_route; //type: boolean
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast : public ydk::Entity
+{
+    public:
+        Ipv4LabeledUnicast();
+        ~Ipv4LabeledUnicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit> prefix_limit;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast : public ydk::Entity
+{
+    public:
+        Ipv6LabeledUnicast();
+        ~Ipv6LabeledUnicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit> prefix_limit;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast : public ydk::Entity
+{
+    public:
+        L3VpnIpv4Unicast();
+        ~L3VpnIpv4Unicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit> prefix_limit;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast : public ydk::Entity
+{
+    public:
+        L3VpnIpv6Unicast();
+        ~L3VpnIpv6Unicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit> prefix_limit;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast : public ydk::Entity
+{
+    public:
+        L3VpnIpv4Multicast();
+        ~L3VpnIpv4Multicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit> prefix_limit;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast : public ydk::Entity
+{
+    public:
+        L3VpnIpv6Multicast();
+        ~L3VpnIpv6Multicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit> prefix_limit;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls : public ydk::Entity
+{
+    public:
+        L2VpnVpls();
+        ~L2VpnVpls();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit> prefix_limit;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn : public ydk::Entity
+{
+    public:
+        L2VpnEvpn();
+        ~L2VpnEvpn();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PrefixLimit; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit> prefix_limit;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit : public ydk::Entity
+{
+    public:
+        PrefixLimit();
+        ~PrefixLimit();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config
+        class State; //type: Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State> state;
+        
+}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config
+
+
+class Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf max_prefixes; //type: uint32
+        ydk::YLeaf shutdown_threshold_pct; //type: uint8
+        ydk::YLeaf restart_timer; //type: decimal64
+
+}; // Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State
+
+
+class Bgp::Global::ApplyPolicy : public ydk::Entity
+{
+    public:
+        ApplyPolicy();
+        ~ApplyPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Global::ApplyPolicy::Config
         class State; //type: Bgp::Global::ApplyPolicy::State
@@ -2048,7 +2233,7 @@ class Bgp::Global::ApplyPolicy : public Entity
 }; // Bgp::Global::ApplyPolicy
 
 
-class Bgp::Global::ApplyPolicy::Config : public Entity
+class Bgp::Global::ApplyPolicy::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2056,23 +2241,25 @@ class Bgp::Global::ApplyPolicy::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
-        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList import_policy;
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList export_policy;
+        ydk::YLeaf default_import_policy; //type: DefaultPolicyType
+        ydk::YLeaf default_export_policy; //type: DefaultPolicyType
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList import_policy;
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList export_policy;
 
 }; // Bgp::Global::ApplyPolicy::Config
 
 
-class Bgp::Global::ApplyPolicy::State : public Entity
+class Bgp::Global::ApplyPolicy::State : public ydk::Entity
 {
     public:
         State();
@@ -2080,23 +2267,25 @@ class Bgp::Global::ApplyPolicy::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
-        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList import_policy;
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList export_policy;
+        ydk::YLeaf default_import_policy; //type: DefaultPolicyType
+        ydk::YLeaf default_export_policy; //type: DefaultPolicyType
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList import_policy;
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList export_policy;
 
 }; // Bgp::Global::ApplyPolicy::State
 
 
-class Bgp::Neighbors : public Entity
+class Bgp::Neighbors : public ydk::Entity
 {
     public:
         Neighbors();
@@ -2104,11 +2293,13 @@ class Bgp::Neighbors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbor; //type: Bgp::Neighbors::Neighbor
 
@@ -2117,7 +2308,7 @@ class Bgp::Neighbors : public Entity
 }; // Bgp::Neighbors
 
 
-class Bgp::Neighbors::Neighbor : public Entity
+class Bgp::Neighbors::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -2125,28 +2316,30 @@ class Bgp::Neighbors::Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: union (refers to openconfig_bgp::Bgp::Neighbors::Neighbor::Config::neighbor_address)
-        YLeaf neighbor_address;
+        ydk::YLeaf neighbor_address;
         class Config; //type: Bgp::Neighbors::Neighbor::Config
         class State; //type: Bgp::Neighbors::Neighbor::State
         class Timers; //type: Bgp::Neighbors::Neighbor::Timers
         class Transport; //type: Bgp::Neighbors::Neighbor::Transport
         class ErrorHandling; //type: Bgp::Neighbors::Neighbor::ErrorHandling
+        class GracefulRestart; //type: Bgp::Neighbors::Neighbor::GracefulRestart
         class LoggingOptions; //type: Bgp::Neighbors::Neighbor::LoggingOptions
         class EbgpMultihop; //type: Bgp::Neighbors::Neighbor::EbgpMultihop
         class RouteReflector; //type: Bgp::Neighbors::Neighbor::RouteReflector
         class AsPathOptions; //type: Bgp::Neighbors::Neighbor::AsPathOptions
         class AddPaths; //type: Bgp::Neighbors::Neighbor::AddPaths
-        class AfiSafis; //type: Bgp::Neighbors::Neighbor::AfiSafis
-        class GracefulRestart; //type: Bgp::Neighbors::Neighbor::GracefulRestart
-        class ApplyPolicy; //type: Bgp::Neighbors::Neighbor::ApplyPolicy
         class UseMultiplePaths; //type: Bgp::Neighbors::Neighbor::UseMultiplePaths
+        class ApplyPolicy; //type: Bgp::Neighbors::Neighbor::ApplyPolicy
+        class AfiSafis; //type: Bgp::Neighbors::Neighbor::AfiSafis
 
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AddPaths> add_paths;
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis> afi_safis;
@@ -2166,7 +2359,7 @@ class Bgp::Neighbors::Neighbor : public Entity
 }; // Bgp::Neighbors::Neighbor
 
 
-class Bgp::Neighbors::Neighbor::Config : public Entity
+class Bgp::Neighbors::Neighbor::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2174,28 +2367,31 @@ class Bgp::Neighbors::Neighbor::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf peer_as; //type: uint32
-        YLeaf local_as; //type: uint32
-        YLeaf peer_type; //type: PeerTypeEnum
-        YLeaf auth_password; //type: string
-        YLeaf remove_private_as; //type: RemovePrivateAsOptionEnum
-        YLeaf route_flap_damping; //type: boolean
-        YLeaf send_community; //type: CommunityTypeEnum
-        YLeaf description; //type: string
         //type: leafref (refers to openconfig_bgp::Bgp::PeerGroups::PeerGroup::peer_group_name)
-        YLeaf peer_group;
-        YLeaf neighbor_address; //type: string
+        ydk::YLeaf peer_group;
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf peer_as; //type: uint32
+        ydk::YLeaf local_as; //type: uint32
+        ydk::YLeaf peer_type; //type: PeerType
+        ydk::YLeaf auth_password; //type: string
+        ydk::YLeaf remove_private_as; //type: Remove_Private_As_Option
+        ydk::YLeaf route_flap_damping; //type: boolean
+        ydk::YLeaf send_community; //type: CommunityType
+        ydk::YLeaf description; //type: string
 
 }; // Bgp::Neighbors::Neighbor::Config
 
 
-class Bgp::Neighbors::Neighbor::State : public Entity
+class Bgp::Neighbors::Neighbor::State : public ydk::Entity
 {
     public:
         State();
@@ -2203,36 +2399,41 @@ class Bgp::Neighbors::Neighbor::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf peer_as; //type: uint32
-        YLeaf local_as; //type: uint32
-        YLeaf peer_type; //type: PeerTypeEnum
-        YLeaf auth_password; //type: string
-        YLeaf remove_private_as; //type: RemovePrivateAsOptionEnum
-        YLeaf route_flap_damping; //type: boolean
-        YLeaf send_community; //type: CommunityTypeEnum
-        YLeaf description; //type: string
         //type: leafref (refers to openconfig_bgp::Bgp::PeerGroups::PeerGroup::peer_group_name)
-        YLeaf peer_group;
-        YLeaf neighbor_address; //type: string
-        YLeaf session_state; //type: SessionStateEnum
-        YLeafList supported_capabilities; //type: list of  BgpCapabilityIdentity
+        ydk::YLeaf peer_group;
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf peer_as; //type: uint32
+        ydk::YLeaf local_as; //type: uint32
+        ydk::YLeaf peer_type; //type: PeerType
+        ydk::YLeaf auth_password; //type: string
+        ydk::YLeaf remove_private_as; //type: Remove_Private_As_Option
+        ydk::YLeaf route_flap_damping; //type: boolean
+        ydk::YLeaf send_community; //type: CommunityType
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf session_state; //type: SessionState
+        ydk::YLeaf last_established; //type: uint64
+        ydk::YLeaf established_transitions; //type: uint64
+        ydk::YLeafList supported_capabilities; //type: list of  Bgp_Capability
         class Messages; //type: Bgp::Neighbors::Neighbor::State::Messages
         class Queues; //type: Bgp::Neighbors::Neighbor::State::Queues
 
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::State::Messages> messages;
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::State::Queues> queues;
-                class SessionStateEnum;
+                class SessionState;
 
 }; // Bgp::Neighbors::Neighbor::State
 
 
-class Bgp::Neighbors::Neighbor::State::Messages : public Entity
+class Bgp::Neighbors::Neighbor::State::Messages : public ydk::Entity
 {
     public:
         Messages();
@@ -2240,11 +2441,13 @@ class Bgp::Neighbors::Neighbor::State::Messages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sent; //type: Bgp::Neighbors::Neighbor::State::Messages::Sent
         class Received; //type: Bgp::Neighbors::Neighbor::State::Messages::Received
@@ -2255,7 +2458,7 @@ class Bgp::Neighbors::Neighbor::State::Messages : public Entity
 }; // Bgp::Neighbors::Neighbor::State::Messages
 
 
-class Bgp::Neighbors::Neighbor::State::Messages::Sent : public Entity
+class Bgp::Neighbors::Neighbor::State::Messages::Sent : public ydk::Entity
 {
     public:
         Sent();
@@ -2263,19 +2466,21 @@ class Bgp::Neighbors::Neighbor::State::Messages::Sent : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf update; //type: uint64
-        YLeaf notification; //type: uint64
+        ydk::YLeaf update; //type: uint64
+        ydk::YLeaf notification; //type: uint64
 
 }; // Bgp::Neighbors::Neighbor::State::Messages::Sent
 
 
-class Bgp::Neighbors::Neighbor::State::Messages::Received : public Entity
+class Bgp::Neighbors::Neighbor::State::Messages::Received : public ydk::Entity
 {
     public:
         Received();
@@ -2283,19 +2488,21 @@ class Bgp::Neighbors::Neighbor::State::Messages::Received : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf update; //type: uint64
-        YLeaf notification; //type: uint64
+        ydk::YLeaf update; //type: uint64
+        ydk::YLeaf notification; //type: uint64
 
 }; // Bgp::Neighbors::Neighbor::State::Messages::Received
 
 
-class Bgp::Neighbors::Neighbor::State::Queues : public Entity
+class Bgp::Neighbors::Neighbor::State::Queues : public ydk::Entity
 {
     public:
         Queues();
@@ -2303,19 +2510,21 @@ class Bgp::Neighbors::Neighbor::State::Queues : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf input; //type: uint32
-        YLeaf output; //type: uint32
+        ydk::YLeaf input; //type: uint32
+        ydk::YLeaf output; //type: uint32
 
 }; // Bgp::Neighbors::Neighbor::State::Queues
 
 
-class Bgp::Neighbors::Neighbor::Timers : public Entity
+class Bgp::Neighbors::Neighbor::Timers : public ydk::Entity
 {
     public:
         Timers();
@@ -2323,11 +2532,13 @@ class Bgp::Neighbors::Neighbor::Timers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::Timers::Config
         class State; //type: Bgp::Neighbors::Neighbor::Timers::State
@@ -2338,7 +2549,7 @@ class Bgp::Neighbors::Neighbor::Timers : public Entity
 }; // Bgp::Neighbors::Neighbor::Timers
 
 
-class Bgp::Neighbors::Neighbor::Timers::Config : public Entity
+class Bgp::Neighbors::Neighbor::Timers::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2346,21 +2557,23 @@ class Bgp::Neighbors::Neighbor::Timers::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf connect_retry; //type: decimal64
-        YLeaf hold_time; //type: decimal64
-        YLeaf keepalive_interval; //type: decimal64
-        YLeaf minimum_advertisement_interval; //type: decimal64
+        ydk::YLeaf connect_retry; //type: decimal64
+        ydk::YLeaf hold_time; //type: decimal64
+        ydk::YLeaf keepalive_interval; //type: decimal64
+        ydk::YLeaf minimum_advertisement_interval; //type: decimal64
 
 }; // Bgp::Neighbors::Neighbor::Timers::Config
 
 
-class Bgp::Neighbors::Neighbor::Timers::State : public Entity
+class Bgp::Neighbors::Neighbor::Timers::State : public ydk::Entity
 {
     public:
         State();
@@ -2368,23 +2581,24 @@ class Bgp::Neighbors::Neighbor::Timers::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf connect_retry; //type: decimal64
-        YLeaf hold_time; //type: decimal64
-        YLeaf keepalive_interval; //type: decimal64
-        YLeaf minimum_advertisement_interval; //type: decimal64
-        YLeaf uptime; //type: uint32
-        YLeaf negotiated_hold_time; //type: decimal64
+        ydk::YLeaf connect_retry; //type: decimal64
+        ydk::YLeaf hold_time; //type: decimal64
+        ydk::YLeaf keepalive_interval; //type: decimal64
+        ydk::YLeaf minimum_advertisement_interval; //type: decimal64
+        ydk::YLeaf negotiated_hold_time; //type: decimal64
 
 }; // Bgp::Neighbors::Neighbor::Timers::State
 
 
-class Bgp::Neighbors::Neighbor::Transport : public Entity
+class Bgp::Neighbors::Neighbor::Transport : public ydk::Entity
 {
     public:
         Transport();
@@ -2392,11 +2606,13 @@ class Bgp::Neighbors::Neighbor::Transport : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::Transport::Config
         class State; //type: Bgp::Neighbors::Neighbor::Transport::State
@@ -2407,7 +2623,7 @@ class Bgp::Neighbors::Neighbor::Transport : public Entity
 }; // Bgp::Neighbors::Neighbor::Transport
 
 
-class Bgp::Neighbors::Neighbor::Transport::Config : public Entity
+class Bgp::Neighbors::Neighbor::Transport::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2415,21 +2631,23 @@ class Bgp::Neighbors::Neighbor::Transport::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tcp_mss; //type: uint16
-        YLeaf mtu_discovery; //type: boolean
-        YLeaf passive_mode; //type: boolean
-        YLeaf local_address; //type: one of union, string
+        ydk::YLeaf tcp_mss; //type: uint16
+        ydk::YLeaf mtu_discovery; //type: boolean
+        ydk::YLeaf passive_mode; //type: boolean
+        ydk::YLeaf local_address; //type: one of string, union
 
 }; // Bgp::Neighbors::Neighbor::Transport::Config
 
 
-class Bgp::Neighbors::Neighbor::Transport::State : public Entity
+class Bgp::Neighbors::Neighbor::Transport::State : public ydk::Entity
 {
     public:
         State();
@@ -2437,24 +2655,26 @@ class Bgp::Neighbors::Neighbor::Transport::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tcp_mss; //type: uint16
-        YLeaf mtu_discovery; //type: boolean
-        YLeaf passive_mode; //type: boolean
-        YLeaf local_address; //type: one of union, string
-        YLeaf local_port; //type: uint16
-        YLeaf remote_address; //type: string
-        YLeaf remote_port; //type: uint16
+        ydk::YLeaf tcp_mss; //type: uint16
+        ydk::YLeaf mtu_discovery; //type: boolean
+        ydk::YLeaf passive_mode; //type: boolean
+        ydk::YLeaf local_address; //type: one of string, union
+        ydk::YLeaf local_port; //type: uint16
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf remote_port; //type: uint16
 
 }; // Bgp::Neighbors::Neighbor::Transport::State
 
 
-class Bgp::Neighbors::Neighbor::ErrorHandling : public Entity
+class Bgp::Neighbors::Neighbor::ErrorHandling : public ydk::Entity
 {
     public:
         ErrorHandling();
@@ -2462,11 +2682,13 @@ class Bgp::Neighbors::Neighbor::ErrorHandling : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::ErrorHandling::Config
         class State; //type: Bgp::Neighbors::Neighbor::ErrorHandling::State
@@ -2477,7 +2699,7 @@ class Bgp::Neighbors::Neighbor::ErrorHandling : public Entity
 }; // Bgp::Neighbors::Neighbor::ErrorHandling
 
 
-class Bgp::Neighbors::Neighbor::ErrorHandling::Config : public Entity
+class Bgp::Neighbors::Neighbor::ErrorHandling::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2485,18 +2707,20 @@ class Bgp::Neighbors::Neighbor::ErrorHandling::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf treat_as_withdraw; //type: boolean
+        ydk::YLeaf treat_as_withdraw; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::ErrorHandling::Config
 
 
-class Bgp::Neighbors::Neighbor::ErrorHandling::State : public Entity
+class Bgp::Neighbors::Neighbor::ErrorHandling::State : public ydk::Entity
 {
     public:
         State();
@@ -2504,19 +2728,99 @@ class Bgp::Neighbors::Neighbor::ErrorHandling::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf treat_as_withdraw; //type: boolean
-        YLeaf erroneous_update_messages; //type: uint32
+        ydk::YLeaf treat_as_withdraw; //type: boolean
+        ydk::YLeaf erroneous_update_messages; //type: uint32
 
 }; // Bgp::Neighbors::Neighbor::ErrorHandling::State
 
 
-class Bgp::Neighbors::Neighbor::LoggingOptions : public Entity
+class Bgp::Neighbors::Neighbor::GracefulRestart : public ydk::Entity
+{
+    public:
+        GracefulRestart();
+        ~GracefulRestart();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Neighbors::Neighbor::GracefulRestart::Config
+        class State; //type: Bgp::Neighbors::Neighbor::GracefulRestart::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::GracefulRestart::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::GracefulRestart::State> state;
+        
+}; // Bgp::Neighbors::Neighbor::GracefulRestart
+
+
+class Bgp::Neighbors::Neighbor::GracefulRestart::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf restart_time; //type: uint16
+        ydk::YLeaf stale_routes_time; //type: decimal64
+        ydk::YLeaf helper_only; //type: boolean
+
+}; // Bgp::Neighbors::Neighbor::GracefulRestart::Config
+
+
+class Bgp::Neighbors::Neighbor::GracefulRestart::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf restart_time; //type: uint16
+        ydk::YLeaf stale_routes_time; //type: decimal64
+        ydk::YLeaf helper_only; //type: boolean
+        ydk::YLeaf peer_restart_time; //type: uint16
+        ydk::YLeaf peer_restarting; //type: boolean
+        ydk::YLeaf local_restarting; //type: boolean
+        ydk::YLeaf mode; //type: Mode
+        class Mode;
+
+}; // Bgp::Neighbors::Neighbor::GracefulRestart::State
+
+
+class Bgp::Neighbors::Neighbor::LoggingOptions : public ydk::Entity
 {
     public:
         LoggingOptions();
@@ -2524,11 +2828,13 @@ class Bgp::Neighbors::Neighbor::LoggingOptions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::LoggingOptions::Config
         class State; //type: Bgp::Neighbors::Neighbor::LoggingOptions::State
@@ -2539,7 +2845,7 @@ class Bgp::Neighbors::Neighbor::LoggingOptions : public Entity
 }; // Bgp::Neighbors::Neighbor::LoggingOptions
 
 
-class Bgp::Neighbors::Neighbor::LoggingOptions::Config : public Entity
+class Bgp::Neighbors::Neighbor::LoggingOptions::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2547,18 +2853,20 @@ class Bgp::Neighbors::Neighbor::LoggingOptions::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf log_neighbor_state_changes; //type: boolean
+        ydk::YLeaf log_neighbor_state_changes; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::LoggingOptions::Config
 
 
-class Bgp::Neighbors::Neighbor::LoggingOptions::State : public Entity
+class Bgp::Neighbors::Neighbor::LoggingOptions::State : public ydk::Entity
 {
     public:
         State();
@@ -2566,18 +2874,20 @@ class Bgp::Neighbors::Neighbor::LoggingOptions::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf log_neighbor_state_changes; //type: boolean
+        ydk::YLeaf log_neighbor_state_changes; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::LoggingOptions::State
 
 
-class Bgp::Neighbors::Neighbor::EbgpMultihop : public Entity
+class Bgp::Neighbors::Neighbor::EbgpMultihop : public ydk::Entity
 {
     public:
         EbgpMultihop();
@@ -2585,11 +2895,13 @@ class Bgp::Neighbors::Neighbor::EbgpMultihop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::EbgpMultihop::Config
         class State; //type: Bgp::Neighbors::Neighbor::EbgpMultihop::State
@@ -2600,7 +2912,7 @@ class Bgp::Neighbors::Neighbor::EbgpMultihop : public Entity
 }; // Bgp::Neighbors::Neighbor::EbgpMultihop
 
 
-class Bgp::Neighbors::Neighbor::EbgpMultihop::Config : public Entity
+class Bgp::Neighbors::Neighbor::EbgpMultihop::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2608,19 +2920,21 @@ class Bgp::Neighbors::Neighbor::EbgpMultihop::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf multihop_ttl; //type: uint8
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf multihop_ttl; //type: uint8
 
 }; // Bgp::Neighbors::Neighbor::EbgpMultihop::Config
 
 
-class Bgp::Neighbors::Neighbor::EbgpMultihop::State : public Entity
+class Bgp::Neighbors::Neighbor::EbgpMultihop::State : public ydk::Entity
 {
     public:
         State();
@@ -2628,19 +2942,21 @@ class Bgp::Neighbors::Neighbor::EbgpMultihop::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf multihop_ttl; //type: uint8
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf multihop_ttl; //type: uint8
 
 }; // Bgp::Neighbors::Neighbor::EbgpMultihop::State
 
 
-class Bgp::Neighbors::Neighbor::RouteReflector : public Entity
+class Bgp::Neighbors::Neighbor::RouteReflector : public ydk::Entity
 {
     public:
         RouteReflector();
@@ -2648,11 +2964,13 @@ class Bgp::Neighbors::Neighbor::RouteReflector : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::RouteReflector::Config
         class State; //type: Bgp::Neighbors::Neighbor::RouteReflector::State
@@ -2663,7 +2981,7 @@ class Bgp::Neighbors::Neighbor::RouteReflector : public Entity
 }; // Bgp::Neighbors::Neighbor::RouteReflector
 
 
-class Bgp::Neighbors::Neighbor::RouteReflector::Config : public Entity
+class Bgp::Neighbors::Neighbor::RouteReflector::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2671,19 +2989,21 @@ class Bgp::Neighbors::Neighbor::RouteReflector::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_reflector_cluster_id; //type: one of uint32, string
-        YLeaf route_reflector_client; //type: boolean
+        ydk::YLeaf route_reflector_cluster_id; //type: one of uint32, string
+        ydk::YLeaf route_reflector_client; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::RouteReflector::Config
 
 
-class Bgp::Neighbors::Neighbor::RouteReflector::State : public Entity
+class Bgp::Neighbors::Neighbor::RouteReflector::State : public ydk::Entity
 {
     public:
         State();
@@ -2691,19 +3011,21 @@ class Bgp::Neighbors::Neighbor::RouteReflector::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_reflector_cluster_id; //type: one of uint32, string
-        YLeaf route_reflector_client; //type: boolean
+        ydk::YLeaf route_reflector_cluster_id; //type: one of uint32, string
+        ydk::YLeaf route_reflector_client; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::RouteReflector::State
 
 
-class Bgp::Neighbors::Neighbor::AsPathOptions : public Entity
+class Bgp::Neighbors::Neighbor::AsPathOptions : public ydk::Entity
 {
     public:
         AsPathOptions();
@@ -2711,11 +3033,13 @@ class Bgp::Neighbors::Neighbor::AsPathOptions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::AsPathOptions::Config
         class State; //type: Bgp::Neighbors::Neighbor::AsPathOptions::State
@@ -2726,7 +3050,7 @@ class Bgp::Neighbors::Neighbor::AsPathOptions : public Entity
 }; // Bgp::Neighbors::Neighbor::AsPathOptions
 
 
-class Bgp::Neighbors::Neighbor::AsPathOptions::Config : public Entity
+class Bgp::Neighbors::Neighbor::AsPathOptions::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2734,19 +3058,21 @@ class Bgp::Neighbors::Neighbor::AsPathOptions::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allow_own_as; //type: uint8
-        YLeaf replace_peer_as; //type: boolean
+        ydk::YLeaf allow_own_as; //type: uint8
+        ydk::YLeaf replace_peer_as; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::AsPathOptions::Config
 
 
-class Bgp::Neighbors::Neighbor::AsPathOptions::State : public Entity
+class Bgp::Neighbors::Neighbor::AsPathOptions::State : public ydk::Entity
 {
     public:
         State();
@@ -2754,19 +3080,21 @@ class Bgp::Neighbors::Neighbor::AsPathOptions::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allow_own_as; //type: uint8
-        YLeaf replace_peer_as; //type: boolean
+        ydk::YLeaf allow_own_as; //type: uint8
+        ydk::YLeaf replace_peer_as; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::AsPathOptions::State
 
 
-class Bgp::Neighbors::Neighbor::AddPaths : public Entity
+class Bgp::Neighbors::Neighbor::AddPaths : public ydk::Entity
 {
     public:
         AddPaths();
@@ -2774,11 +3102,13 @@ class Bgp::Neighbors::Neighbor::AddPaths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::AddPaths::Config
         class State; //type: Bgp::Neighbors::Neighbor::AddPaths::State
@@ -2789,7 +3119,7 @@ class Bgp::Neighbors::Neighbor::AddPaths : public Entity
 }; // Bgp::Neighbors::Neighbor::AddPaths
 
 
-class Bgp::Neighbors::Neighbor::AddPaths::Config : public Entity
+class Bgp::Neighbors::Neighbor::AddPaths::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2797,19 +3127,23 @@ class Bgp::Neighbors::Neighbor::AddPaths::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf receive; //type: boolean
-        YLeaf send_max; //type: uint8
+        ydk::YLeaf receive; //type: boolean
+        ydk::YLeaf send_max; //type: uint8
+        //type: leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeaf eligible_prefix_policy;
 
 }; // Bgp::Neighbors::Neighbor::AddPaths::Config
 
 
-class Bgp::Neighbors::Neighbor::AddPaths::State : public Entity
+class Bgp::Neighbors::Neighbor::AddPaths::State : public ydk::Entity
 {
     public:
         State();
@@ -2817,19 +3151,236 @@ class Bgp::Neighbors::Neighbor::AddPaths::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf receive; //type: boolean
-        YLeaf send_max; //type: uint8
+        ydk::YLeaf receive; //type: boolean
+        ydk::YLeaf send_max; //type: uint8
+        //type: leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeaf eligible_prefix_policy;
 
 }; // Bgp::Neighbors::Neighbor::AddPaths::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis : public Entity
+class Bgp::Neighbors::Neighbor::UseMultiplePaths : public ydk::Entity
+{
+    public:
+        UseMultiplePaths();
+        ~UseMultiplePaths();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Neighbors::Neighbor::UseMultiplePaths::Config
+        class State; //type: Bgp::Neighbors::Neighbor::UseMultiplePaths::State
+        class Ebgp; //type: Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp
+
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::UseMultiplePaths::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp> ebgp;
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::UseMultiplePaths::State> state;
+        
+}; // Bgp::Neighbors::Neighbor::UseMultiplePaths
+
+
+class Bgp::Neighbors::Neighbor::UseMultiplePaths::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: boolean
+
+}; // Bgp::Neighbors::Neighbor::UseMultiplePaths::Config
+
+
+class Bgp::Neighbors::Neighbor::UseMultiplePaths::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enabled; //type: boolean
+
+}; // Bgp::Neighbors::Neighbor::UseMultiplePaths::State
+
+
+class Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp : public ydk::Entity
+{
+    public:
+        Ebgp();
+        ~Ebgp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config
+        class State; //type: Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State> state;
+        
+}; // Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp
+
+
+class Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf allow_multiple_as; //type: boolean
+
+}; // Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config
+
+
+class Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf allow_multiple_as; //type: boolean
+
+}; // Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State
+
+
+class Bgp::Neighbors::Neighbor::ApplyPolicy : public ydk::Entity
+{
+    public:
+        ApplyPolicy();
+        ~ApplyPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: Bgp::Neighbors::Neighbor::ApplyPolicy::Config
+        class State; //type: Bgp::Neighbors::Neighbor::ApplyPolicy::State
+
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::ApplyPolicy::Config> config;
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::ApplyPolicy::State> state;
+        
+}; // Bgp::Neighbors::Neighbor::ApplyPolicy
+
+
+class Bgp::Neighbors::Neighbor::ApplyPolicy::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf default_import_policy; //type: DefaultPolicyType
+        ydk::YLeaf default_export_policy; //type: DefaultPolicyType
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList import_policy;
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList export_policy;
+
+}; // Bgp::Neighbors::Neighbor::ApplyPolicy::Config
+
+
+class Bgp::Neighbors::Neighbor::ApplyPolicy::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf default_import_policy; //type: DefaultPolicyType
+        ydk::YLeaf default_export_policy; //type: DefaultPolicyType
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList import_policy;
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList export_policy;
+
+}; // Bgp::Neighbors::Neighbor::ApplyPolicy::State
+
+
+class Bgp::Neighbors::Neighbor::AfiSafis : public ydk::Entity
 {
     public:
         AfiSafis();
@@ -2837,11 +3388,13 @@ class Bgp::Neighbors::Neighbor::AfiSafis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AfiSafi; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi
 
@@ -2850,7 +3403,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis : public Entity
 }; // Bgp::Neighbors::Neighbor::AfiSafis
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi : public Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi : public ydk::Entity
 {
     public:
         AfiSafi();
@@ -2858,21 +3411,23 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
-        class GracefulRestart; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart
+        ydk::YLeaf afi_safi_name; //type: Afi_Safi_Type
         class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config
         class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State
+        class GracefulRestart; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart
         class ApplyPolicy; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy
         class Ipv4Unicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast
         class Ipv6Unicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast
-        class Ipv4LabelledUnicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast
-        class Ipv6LabelledUnicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast
+        class Ipv4LabeledUnicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabeledUnicast
+        class Ipv6LabeledUnicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabeledUnicast
         class L3VpnIpv4Unicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast
         class L3VpnIpv6Unicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast
         class L3VpnIpv4Multicast; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast
@@ -2884,9 +3439,9 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi : public Entity
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy> apply_policy;
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config> config;
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart> graceful_restart;
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast> ipv4_labelled_unicast;
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabeledUnicast> ipv4_labeled_unicast;
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast> ipv4_unicast;
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast> ipv6_labelled_unicast;
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabeledUnicast> ipv6_labeled_unicast;
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast> ipv6_unicast;
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn> l2vpn_evpn;
         std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls> l2vpn_vpls;
@@ -2900,7 +3455,78 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi : public Entity
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart : public Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi_safi_name; //type: Afi_Safi_Type
+        ydk::YLeaf enabled; //type: boolean
+
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config
+
+
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi_safi_name; //type: Afi_Safi_Type
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf active; //type: boolean
+        class Prefixes; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes
+
+        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes> prefixes;
+        
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State
+
+
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes : public ydk::Entity
+{
+    public:
+        Prefixes();
+        ~Prefixes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf received; //type: uint32
+        ydk::YLeaf sent; //type: uint32
+        ydk::YLeaf installed; //type: uint32
+
+}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes
+
+
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart : public ydk::Entity
 {
     public:
         GracefulRestart();
@@ -2908,11 +3534,13 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config
         class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State
@@ -2923,7 +3551,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart : public Enti
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config : public Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config : public ydk::Entity
 {
     public:
         Config();
@@ -2931,18 +3559,20 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State : public Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State : public ydk::Entity
 {
     public:
         State();
@@ -2950,85 +3580,22 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf received; //type: boolean
-        YLeaf advertised; //type: boolean
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf received; //type: boolean
+        ydk::YLeaf advertised; //type: boolean
 
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
-        YLeaf enabled; //type: boolean
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf afi_safi_name; //type: AfiSafiTypeIdentity
-        YLeaf enabled; //type: boolean
-        YLeaf active; //type: boolean
-        class Prefixes; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes
-
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes> prefixes;
-        
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes : public Entity
-{
-    public:
-        Prefixes();
-        ~Prefixes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf received; //type: uint32
-        YLeaf sent; //type: uint32
-        YLeaf installed; //type: uint32
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy : public Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy : public ydk::Entity
 {
     public:
         ApplyPolicy();
@@ -3036,11 +3603,13 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config
         class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State
@@ -3051,7 +3620,7 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy : public Entity
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config : public Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config : public ydk::Entity
 {
     public:
         Config();
@@ -3059,23 +3628,25 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
-        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList import_policy;
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList export_policy;
+        ydk::YLeaf default_import_policy; //type: DefaultPolicyType
+        ydk::YLeaf default_export_policy; //type: DefaultPolicyType
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList import_policy;
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList export_policy;
 
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State : public Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State : public ydk::Entity
 {
     public:
         State();
@@ -3083,23 +3654,25 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf default_import_policy; //type: DefaultPolicyTypeEnum
-        YLeaf default_export_policy; //type: DefaultPolicyTypeEnum
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList import_policy;
-        //type: list of  string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-        YLeafList export_policy;
+        ydk::YLeaf default_import_policy; //type: DefaultPolicyType
+        ydk::YLeaf default_export_policy; //type: DefaultPolicyType
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList import_policy;
+        //type: list of  leafref (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+        ydk::YLeafList export_policy;
 
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State
 
 
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast : public Entity
+class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast : public ydk::Entity
 {
     public:
         Ipv4Unicast();
@@ -3107,11 +3680,13 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
         class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config
@@ -3123,267 +3698,24 @@ class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast : public Entity
         
 }; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast
 
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit : public Entity
+class Bgp::Neighbors::Neighbor::State::SessionState : public ydk::Enum
 {
     public:
-        PrefixLimit();
-        ~PrefixLimit();
+        static const ydk::Enum::YLeaf IDLE;
+        static const ydk::Enum::YLeaf CONNECT;
+        static const ydk::Enum::YLeaf ACTIVE;
+        static const ydk::Enum::YLeaf OPENSENT;
+        static const ydk::Enum::YLeaf OPENCONFIRM;
+        static const ydk::Enum::YLeaf ESTABLISHED;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+};
 
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State> state;
-        
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config : public Entity
+class Bgp::Neighbors::Neighbor::GracefulRestart::State::Mode : public ydk::Enum
 {
     public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf send_default_route; //type: boolean
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf send_default_route; //type: boolean
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast : public Entity
-{
-    public:
-        Ipv6Unicast();
-        ~Ipv6Unicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit> prefix_limit;
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State> state;
-        
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit : public Entity
-{
-    public:
-        PrefixLimit();
-        ~PrefixLimit();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Config; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config
-        class State; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State
-
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config> config;
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State> state;
-        
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf max_prefixes; //type: uint32
-        YLeaf shutdown_threshold_pct; //type: uint8
-        YLeaf restart_timer; //type: decimal64
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config : public Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf send_default_route; //type: boolean
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State : public Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf send_default_route; //type: boolean
-
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State
-
-
-class Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast : public Entity
-{
-    public:
-        Ipv4LabelledUnicast();
-        ~Ipv4LabelledUnicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class PrefixLimit; //type: Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit
-
-        std::shared_ptr<openconfig_bgp::Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit> prefix_limit;
-        
-}; // Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast
-
-class Bgp::Neighbors::Neighbor::State::SessionStateEnum : public Enum
-{
-    public:
-        static const Enum::YLeaf IDLE;
-        static const Enum::YLeaf CONNECT;
-        static const Enum::YLeaf ACTIVE;
-        static const Enum::YLeaf OPENSENT;
-        static const Enum::YLeaf OPENCONFIRM;
-        static const Enum::YLeaf ESTABLISHED;
+        static const ydk::Enum::YLeaf HELPER_ONLY;
+        static const ydk::Enum::YLeaf BILATERAL;
+        static const ydk::Enum::YLeaf REMOTE_HELPER;
 
 };
 

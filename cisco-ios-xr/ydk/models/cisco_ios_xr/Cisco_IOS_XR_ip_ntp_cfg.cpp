@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_ntp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_ntp_cfg {
 
 Ntp::Ntp()
@@ -64,12 +66,12 @@ bool Ntp::has_data() const
 
 bool Ntp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(broadcast_delay.operation)
-	|| is_set(log_internal_sync.operation)
-	|| is_set(master.operation)
-	|| is_set(max_associations.operation)
-	|| is_set(update_calendar.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(broadcast_delay.yfilter)
+	|| ydk::is_set(log_internal_sync.yfilter)
+	|| ydk::is_set(master.yfilter)
+	|| ydk::is_set(max_associations.yfilter)
+	|| ydk::is_set(update_calendar.yfilter)
 	|| (access_group_tables !=  nullptr && access_group_tables->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (dscp_ipv4 !=  nullptr && dscp_ipv4->has_operation())
@@ -100,11 +102,11 @@ const EntityPath Ntp::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (broadcast_delay.is_set || is_set(broadcast_delay.operation)) leaf_name_data.push_back(broadcast_delay.get_name_leafdata());
-    if (log_internal_sync.is_set || is_set(log_internal_sync.operation)) leaf_name_data.push_back(log_internal_sync.get_name_leafdata());
-    if (master.is_set || is_set(master.operation)) leaf_name_data.push_back(master.get_name_leafdata());
-    if (max_associations.is_set || is_set(max_associations.operation)) leaf_name_data.push_back(max_associations.get_name_leafdata());
-    if (update_calendar.is_set || is_set(update_calendar.operation)) leaf_name_data.push_back(update_calendar.get_name_leafdata());
+    if (broadcast_delay.is_set || is_set(broadcast_delay.yfilter)) leaf_name_data.push_back(broadcast_delay.get_name_leafdata());
+    if (log_internal_sync.is_set || is_set(log_internal_sync.yfilter)) leaf_name_data.push_back(log_internal_sync.get_name_leafdata());
+    if (master.is_set || is_set(master.yfilter)) leaf_name_data.push_back(master.get_name_leafdata());
+    if (max_associations.is_set || is_set(max_associations.yfilter)) leaf_name_data.push_back(max_associations.get_name_leafdata());
+    if (update_calendar.is_set || is_set(update_calendar.yfilter)) leaf_name_data.push_back(update_calendar.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -235,27 +237,61 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::get_children() const
     return children;
 }
 
-void Ntp::set_value(const std::string & value_path, std::string value)
+void Ntp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast-delay")
     {
         broadcast_delay = value;
+        broadcast_delay.value_namespace = name_space;
+        broadcast_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-internal-sync")
     {
         log_internal_sync = value;
+        log_internal_sync.value_namespace = name_space;
+        log_internal_sync.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master")
     {
         master = value;
+        master.value_namespace = name_space;
+        master.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-associations")
     {
         max_associations = value;
+        max_associations.value_namespace = name_space;
+        max_associations.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "update-calendar")
     {
         update_calendar = value;
+        update_calendar.value_namespace = name_space;
+        update_calendar.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ntp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "broadcast-delay")
+    {
+        broadcast_delay.yfilter = yfilter;
+    }
+    if(value_path == "log-internal-sync")
+    {
+        log_internal_sync.yfilter = yfilter;
+    }
+    if(value_path == "master")
+    {
+        master.yfilter = yfilter;
+    }
+    if(value_path == "max-associations")
+    {
+        max_associations.yfilter = yfilter;
+    }
+    if(value_path == "update-calendar")
+    {
+        update_calendar.yfilter = yfilter;
     }
 }
 
@@ -277,6 +313,18 @@ std::string Ntp::get_bundle_name() const
 augment_capabilities_function Ntp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Ntp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ntp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group-tables" || name == "authentication" || name == "dscp-ipv4" || name == "dscp-ipv6" || name == "interface-tables" || name == "passive" || name == "peer-vrfs" || name == "sources" || name == "broadcast-delay" || name == "log-internal-sync" || name == "master" || name == "max-associations" || name == "update-calendar")
+        return true;
+    return false;
 }
 
 Ntp::PeerVrfs::PeerVrfs()
@@ -305,7 +353,7 @@ bool Ntp::PeerVrfs::has_operation() const
         if(peer_vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::PeerVrfs::get_segment_path() const
@@ -370,8 +418,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::get_children() con
     return children;
 }
 
-void Ntp::PeerVrfs::set_value(const std::string & value_path, std::string value)
+void Ntp::PeerVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::PeerVrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::PeerVrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-vrf")
+        return true;
+    return false;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerVrf()
@@ -401,8 +460,8 @@ bool Ntp::PeerVrfs::PeerVrf::has_data() const
 
 bool Ntp::PeerVrfs::PeerVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (peer_ipv4s !=  nullptr && peer_ipv4s->has_operation())
 	|| (peer_ipv6s !=  nullptr && peer_ipv6s->has_operation());
 }
@@ -430,7 +489,7 @@ const EntityPath Ntp::PeerVrfs::PeerVrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -477,12 +536,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::get_child
     return children;
 }
 
-void Ntp::PeerVrfs::PeerVrf::set_value(const std::string & value_path, std::string value)
+void Ntp::PeerVrfs::PeerVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::PeerVrfs::PeerVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ntp::PeerVrfs::PeerVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-ipv4s" || name == "peer-ipv6s" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4S()
@@ -511,7 +587,7 @@ bool Ntp::PeerVrfs::PeerVrf::PeerIpv4S::has_operation() const
         if(peer_ipv4[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::get_segment_path() const
@@ -576,8 +652,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4S
     return children;
 }
 
-void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::set_value(const std::string & value_path, std::string value)
+void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::PeerVrfs::PeerVrf::PeerIpv4S::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-ipv4")
+        return true;
+    return false;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerIpv4()
@@ -608,8 +695,8 @@ bool Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::has_operation() const
         if(peer_type_ipv4[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(address_ipv4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_ipv4.yfilter);
 }
 
 std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_segment_path() const
@@ -635,7 +722,7 @@ const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_ipv4.is_set || is_set(address_ipv4.operation)) leaf_name_data.push_back(address_ipv4.get_name_leafdata());
+    if (address_ipv4.is_set || is_set(address_ipv4.yfilter)) leaf_name_data.push_back(address_ipv4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -675,12 +762,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4S
     return children;
 }
 
-void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::set_value(const std::string & value_path, std::string value)
+void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-ipv4")
     {
         address_ipv4 = value;
+        address_ipv4.value_namespace = name_space;
+        address_ipv4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-ipv4")
+    {
+        address_ipv4.yfilter = yfilter;
+    }
+}
+
+bool Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-type-ipv4" || name == "address-ipv4")
+        return true;
+    return false;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::PeerTypeIpv4()
@@ -717,16 +821,16 @@ bool Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::has_data() const
 
 bool Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_type.operation)
-	|| is_set(authentication_key.operation)
-	|| is_set(burst.operation)
-	|| is_set(iburst.operation)
-	|| is_set(max_poll.operation)
-	|| is_set(min_poll.operation)
-	|| is_set(ntp_version.operation)
-	|| is_set(preferred_peer.operation)
-	|| is_set(source_interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(peer_type.yfilter)
+	|| ydk::is_set(authentication_key.yfilter)
+	|| ydk::is_set(burst.yfilter)
+	|| ydk::is_set(iburst.yfilter)
+	|| ydk::is_set(max_poll.yfilter)
+	|| ydk::is_set(min_poll.yfilter)
+	|| ydk::is_set(ntp_version.yfilter)
+	|| ydk::is_set(preferred_peer.yfilter)
+	|| ydk::is_set(source_interface.yfilter);
 }
 
 std::string Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_segment_path() const
@@ -752,15 +856,15 @@ const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_type.is_set || is_set(peer_type.operation)) leaf_name_data.push_back(peer_type.get_name_leafdata());
-    if (authentication_key.is_set || is_set(authentication_key.operation)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-    if (burst.is_set || is_set(burst.operation)) leaf_name_data.push_back(burst.get_name_leafdata());
-    if (iburst.is_set || is_set(iburst.operation)) leaf_name_data.push_back(iburst.get_name_leafdata());
-    if (max_poll.is_set || is_set(max_poll.operation)) leaf_name_data.push_back(max_poll.get_name_leafdata());
-    if (min_poll.is_set || is_set(min_poll.operation)) leaf_name_data.push_back(min_poll.get_name_leafdata());
-    if (ntp_version.is_set || is_set(ntp_version.operation)) leaf_name_data.push_back(ntp_version.get_name_leafdata());
-    if (preferred_peer.is_set || is_set(preferred_peer.operation)) leaf_name_data.push_back(preferred_peer.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (peer_type.is_set || is_set(peer_type.yfilter)) leaf_name_data.push_back(peer_type.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (burst.is_set || is_set(burst.yfilter)) leaf_name_data.push_back(burst.get_name_leafdata());
+    if (iburst.is_set || is_set(iburst.yfilter)) leaf_name_data.push_back(iburst.get_name_leafdata());
+    if (max_poll.is_set || is_set(max_poll.yfilter)) leaf_name_data.push_back(max_poll.get_name_leafdata());
+    if (min_poll.is_set || is_set(min_poll.yfilter)) leaf_name_data.push_back(min_poll.get_name_leafdata());
+    if (ntp_version.is_set || is_set(ntp_version.yfilter)) leaf_name_data.push_back(ntp_version.get_name_leafdata());
+    if (preferred_peer.is_set || is_set(preferred_peer.yfilter)) leaf_name_data.push_back(preferred_peer.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -779,44 +883,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv4S
     return children;
 }
 
-void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::set_value(const std::string & value_path, std::string value)
+void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-type")
     {
         peer_type = value;
+        peer_type.value_namespace = name_space;
+        peer_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-key")
     {
         authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "burst")
     {
         burst = value;
+        burst.value_namespace = name_space;
+        burst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iburst")
     {
         iburst = value;
+        iburst.value_namespace = name_space;
+        iburst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-poll")
     {
         max_poll = value;
+        max_poll.value_namespace = name_space;
+        max_poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-poll")
     {
         min_poll = value;
+        min_poll.value_namespace = name_space;
+        min_poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ntp-version")
     {
         ntp_version = value;
+        ntp_version.value_namespace = name_space;
+        ntp_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preferred-peer")
     {
         preferred_peer = value;
+        preferred_peer.value_namespace = name_space;
+        preferred_peer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-type")
+    {
+        peer_type.yfilter = yfilter;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+    if(value_path == "burst")
+    {
+        burst.yfilter = yfilter;
+    }
+    if(value_path == "iburst")
+    {
+        iburst.yfilter = yfilter;
+    }
+    if(value_path == "max-poll")
+    {
+        max_poll.yfilter = yfilter;
+    }
+    if(value_path == "min-poll")
+    {
+        min_poll.yfilter = yfilter;
+    }
+    if(value_path == "ntp-version")
+    {
+        ntp_version.yfilter = yfilter;
+    }
+    if(value_path == "preferred-peer")
+    {
+        preferred_peer.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+}
+
+bool Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-type" || name == "authentication-key" || name == "burst" || name == "iburst" || name == "max-poll" || name == "min-poll" || name == "ntp-version" || name == "preferred-peer" || name == "source-interface")
+        return true;
+    return false;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6S()
@@ -845,7 +1014,7 @@ bool Ntp::PeerVrfs::PeerVrf::PeerIpv6S::has_operation() const
         if(peer_ipv6[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::get_segment_path() const
@@ -910,8 +1079,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6S
     return children;
 }
 
-void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::set_value(const std::string & value_path, std::string value)
+void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::PeerVrfs::PeerVrf::PeerIpv6S::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-ipv6")
+        return true;
+    return false;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerIpv6()
@@ -942,8 +1122,8 @@ bool Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::has_operation() const
         if(peer_type_ipv6[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(address_ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_ipv6.yfilter);
 }
 
 std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_segment_path() const
@@ -969,7 +1149,7 @@ const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_ipv6.is_set || is_set(address_ipv6.operation)) leaf_name_data.push_back(address_ipv6.get_name_leafdata());
+    if (address_ipv6.is_set || is_set(address_ipv6.yfilter)) leaf_name_data.push_back(address_ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1009,12 +1189,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6S
     return children;
 }
 
-void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::set_value(const std::string & value_path, std::string value)
+void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-ipv6")
     {
         address_ipv6 = value;
+        address_ipv6.value_namespace = name_space;
+        address_ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-ipv6")
+    {
+        address_ipv6.yfilter = yfilter;
+    }
+}
+
+bool Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-type-ipv6" || name == "address-ipv6")
+        return true;
+    return false;
 }
 
 Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::PeerTypeIpv6()
@@ -1053,17 +1250,17 @@ bool Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::has_data() const
 
 bool Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_type.operation)
-	|| is_set(address_ipv6.operation)
-	|| is_set(authentication_key.operation)
-	|| is_set(burst.operation)
-	|| is_set(iburst.operation)
-	|| is_set(max_poll.operation)
-	|| is_set(min_poll.operation)
-	|| is_set(ntp_version.operation)
-	|| is_set(preferred_peer.operation)
-	|| is_set(source_interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(peer_type.yfilter)
+	|| ydk::is_set(address_ipv6.yfilter)
+	|| ydk::is_set(authentication_key.yfilter)
+	|| ydk::is_set(burst.yfilter)
+	|| ydk::is_set(iburst.yfilter)
+	|| ydk::is_set(max_poll.yfilter)
+	|| ydk::is_set(min_poll.yfilter)
+	|| ydk::is_set(ntp_version.yfilter)
+	|| ydk::is_set(preferred_peer.yfilter)
+	|| ydk::is_set(source_interface.yfilter);
 }
 
 std::string Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_segment_path() const
@@ -1089,16 +1286,16 @@ const EntityPath Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_type.is_set || is_set(peer_type.operation)) leaf_name_data.push_back(peer_type.get_name_leafdata());
-    if (address_ipv6.is_set || is_set(address_ipv6.operation)) leaf_name_data.push_back(address_ipv6.get_name_leafdata());
-    if (authentication_key.is_set || is_set(authentication_key.operation)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-    if (burst.is_set || is_set(burst.operation)) leaf_name_data.push_back(burst.get_name_leafdata());
-    if (iburst.is_set || is_set(iburst.operation)) leaf_name_data.push_back(iburst.get_name_leafdata());
-    if (max_poll.is_set || is_set(max_poll.operation)) leaf_name_data.push_back(max_poll.get_name_leafdata());
-    if (min_poll.is_set || is_set(min_poll.operation)) leaf_name_data.push_back(min_poll.get_name_leafdata());
-    if (ntp_version.is_set || is_set(ntp_version.operation)) leaf_name_data.push_back(ntp_version.get_name_leafdata());
-    if (preferred_peer.is_set || is_set(preferred_peer.operation)) leaf_name_data.push_back(preferred_peer.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (peer_type.is_set || is_set(peer_type.yfilter)) leaf_name_data.push_back(peer_type.get_name_leafdata());
+    if (address_ipv6.is_set || is_set(address_ipv6.yfilter)) leaf_name_data.push_back(address_ipv6.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (burst.is_set || is_set(burst.yfilter)) leaf_name_data.push_back(burst.get_name_leafdata());
+    if (iburst.is_set || is_set(iburst.yfilter)) leaf_name_data.push_back(iburst.get_name_leafdata());
+    if (max_poll.is_set || is_set(max_poll.yfilter)) leaf_name_data.push_back(max_poll.get_name_leafdata());
+    if (min_poll.is_set || is_set(min_poll.yfilter)) leaf_name_data.push_back(min_poll.get_name_leafdata());
+    if (ntp_version.is_set || is_set(ntp_version.yfilter)) leaf_name_data.push_back(ntp_version.get_name_leafdata());
+    if (preferred_peer.is_set || is_set(preferred_peer.yfilter)) leaf_name_data.push_back(preferred_peer.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1117,48 +1314,119 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::PeerVrfs::PeerVrf::PeerIpv6S
     return children;
 }
 
-void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::set_value(const std::string & value_path, std::string value)
+void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-type")
     {
         peer_type = value;
+        peer_type.value_namespace = name_space;
+        peer_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-ipv6")
     {
         address_ipv6 = value;
+        address_ipv6.value_namespace = name_space;
+        address_ipv6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-key")
     {
         authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "burst")
     {
         burst = value;
+        burst.value_namespace = name_space;
+        burst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iburst")
     {
         iburst = value;
+        iburst.value_namespace = name_space;
+        iburst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-poll")
     {
         max_poll = value;
+        max_poll.value_namespace = name_space;
+        max_poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-poll")
     {
         min_poll = value;
+        min_poll.value_namespace = name_space;
+        min_poll.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ntp-version")
     {
         ntp_version = value;
+        ntp_version.value_namespace = name_space;
+        ntp_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preferred-peer")
     {
         preferred_peer = value;
+        preferred_peer.value_namespace = name_space;
+        preferred_peer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-type")
+    {
+        peer_type.yfilter = yfilter;
+    }
+    if(value_path == "address-ipv6")
+    {
+        address_ipv6.yfilter = yfilter;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+    if(value_path == "burst")
+    {
+        burst.yfilter = yfilter;
+    }
+    if(value_path == "iburst")
+    {
+        iburst.yfilter = yfilter;
+    }
+    if(value_path == "max-poll")
+    {
+        max_poll.yfilter = yfilter;
+    }
+    if(value_path == "min-poll")
+    {
+        min_poll.yfilter = yfilter;
+    }
+    if(value_path == "ntp-version")
+    {
+        ntp_version.yfilter = yfilter;
+    }
+    if(value_path == "preferred-peer")
+    {
+        preferred_peer.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+}
+
+bool Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-type" || name == "address-ipv6" || name == "authentication-key" || name == "burst" || name == "iburst" || name == "max-poll" || name == "min-poll" || name == "ntp-version" || name == "preferred-peer" || name == "source-interface")
+        return true;
+    return false;
 }
 
 Ntp::DscpIpv4::DscpIpv4()
@@ -1181,9 +1449,9 @@ bool Ntp::DscpIpv4::has_data() const
 
 bool Ntp::DscpIpv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dscp_or_precedence_value.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dscp_or_precedence_value.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Ntp::DscpIpv4::get_segment_path() const
@@ -1209,8 +1477,8 @@ const EntityPath Ntp::DscpIpv4::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dscp_or_precedence_value.is_set || is_set(dscp_or_precedence_value.operation)) leaf_name_data.push_back(dscp_or_precedence_value.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (dscp_or_precedence_value.is_set || is_set(dscp_or_precedence_value.yfilter)) leaf_name_data.push_back(dscp_or_precedence_value.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1229,16 +1497,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv4::get_children() con
     return children;
 }
 
-void Ntp::DscpIpv4::set_value(const std::string & value_path, std::string value)
+void Ntp::DscpIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dscp-or-precedence-value")
     {
         dscp_or_precedence_value = value;
+        dscp_or_precedence_value.value_namespace = name_space;
+        dscp_or_precedence_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::DscpIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dscp-or-precedence-value")
+    {
+        dscp_or_precedence_value.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Ntp::DscpIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dscp-or-precedence-value" || name == "mode")
+        return true;
+    return false;
 }
 
 Ntp::DscpIpv6::DscpIpv6()
@@ -1261,9 +1552,9 @@ bool Ntp::DscpIpv6::has_data() const
 
 bool Ntp::DscpIpv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dscp_or_precedence_value.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dscp_or_precedence_value.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Ntp::DscpIpv6::get_segment_path() const
@@ -1289,8 +1580,8 @@ const EntityPath Ntp::DscpIpv6::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dscp_or_precedence_value.is_set || is_set(dscp_or_precedence_value.operation)) leaf_name_data.push_back(dscp_or_precedence_value.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (dscp_or_precedence_value.is_set || is_set(dscp_or_precedence_value.yfilter)) leaf_name_data.push_back(dscp_or_precedence_value.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1309,16 +1600,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::DscpIpv6::get_children() con
     return children;
 }
 
-void Ntp::DscpIpv6::set_value(const std::string & value_path, std::string value)
+void Ntp::DscpIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dscp-or-precedence-value")
     {
         dscp_or_precedence_value = value;
+        dscp_or_precedence_value.value_namespace = name_space;
+        dscp_or_precedence_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::DscpIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dscp-or-precedence-value")
+    {
+        dscp_or_precedence_value.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Ntp::DscpIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dscp-or-precedence-value" || name == "mode")
+        return true;
+    return false;
 }
 
 Ntp::Sources::Sources()
@@ -1347,7 +1661,7 @@ bool Ntp::Sources::has_operation() const
         if(source[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::Sources::get_segment_path() const
@@ -1412,8 +1726,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Sources::get_children() cons
     return children;
 }
 
-void Ntp::Sources::set_value(const std::string & value_path, std::string value)
+void Ntp::Sources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::Sources::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::Sources::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source")
+        return true;
+    return false;
 }
 
 Ntp::Sources::Source::Source()
@@ -1436,9 +1761,9 @@ bool Ntp::Sources::Source::has_data() const
 
 bool Ntp::Sources::Source::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(source_interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(source_interface.yfilter);
 }
 
 std::string Ntp::Sources::Source::get_segment_path() const
@@ -1464,8 +1789,8 @@ const EntityPath Ntp::Sources::Source::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1484,16 +1809,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Sources::Source::get_childre
     return children;
 }
 
-void Ntp::Sources::Source::set_value(const std::string & value_path, std::string value)
+void Ntp::Sources::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::Sources::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Sources::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "source-interface")
+        return true;
+    return false;
 }
 
 Ntp::Authentication::Authentication()
@@ -1523,8 +1871,8 @@ bool Ntp::Authentication::has_data() const
 
 bool Ntp::Authentication::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (keies !=  nullptr && keies->has_operation())
 	|| (trusted_keies !=  nullptr && trusted_keies->has_operation());
 }
@@ -1552,7 +1900,7 @@ const EntityPath Ntp::Authentication::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1599,12 +1947,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::get_children
     return children;
 }
 
-void Ntp::Authentication::set_value(const std::string & value_path, std::string value)
+void Ntp::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keies" || name == "trusted-keies" || name == "enable")
+        return true;
+    return false;
 }
 
 Ntp::Authentication::Keies::Keies()
@@ -1633,7 +1998,7 @@ bool Ntp::Authentication::Keies::has_operation() const
         if(key[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::Authentication::Keies::get_segment_path() const
@@ -1698,8 +2063,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::get_c
     return children;
 }
 
-void Ntp::Authentication::Keies::set_value(const std::string & value_path, std::string value)
+void Ntp::Authentication::Keies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::Authentication::Keies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::Authentication::Keies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key")
+        return true;
+    return false;
 }
 
 Ntp::Authentication::Keies::Key::Key()
@@ -1722,9 +2098,9 @@ bool Ntp::Authentication::Keies::Key::has_data() const
 
 bool Ntp::Authentication::Keies::Key::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(key_number.operation)
-	|| is_set(authentication_key.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(key_number.yfilter)
+	|| ydk::is_set(authentication_key.yfilter);
 }
 
 std::string Ntp::Authentication::Keies::Key::get_segment_path() const
@@ -1750,8 +2126,8 @@ const EntityPath Ntp::Authentication::Keies::Key::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (key_number.is_set || is_set(key_number.operation)) leaf_name_data.push_back(key_number.get_name_leafdata());
-    if (authentication_key.is_set || is_set(authentication_key.operation)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (key_number.is_set || is_set(key_number.yfilter)) leaf_name_data.push_back(key_number.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1770,16 +2146,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::Keies::Key::
     return children;
 }
 
-void Ntp::Authentication::Keies::Key::set_value(const std::string & value_path, std::string value)
+void Ntp::Authentication::Keies::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-number")
     {
         key_number = value;
+        key_number.value_namespace = name_space;
+        key_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-key")
     {
         authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::Authentication::Keies::Key::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-number")
+    {
+        key_number.yfilter = yfilter;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Authentication::Keies::Key::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-number" || name == "authentication-key")
+        return true;
+    return false;
 }
 
 Ntp::Authentication::TrustedKeies::TrustedKeies()
@@ -1808,7 +2207,7 @@ bool Ntp::Authentication::TrustedKeies::has_operation() const
         if(trusted_key[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::Authentication::TrustedKeies::get_segment_path() const
@@ -1873,8 +2272,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies
     return children;
 }
 
-void Ntp::Authentication::TrustedKeies::set_value(const std::string & value_path, std::string value)
+void Ntp::Authentication::TrustedKeies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::Authentication::TrustedKeies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::Authentication::TrustedKeies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trusted-key")
+        return true;
+    return false;
 }
 
 Ntp::Authentication::TrustedKeies::TrustedKey::TrustedKey()
@@ -1895,8 +2305,8 @@ bool Ntp::Authentication::TrustedKeies::TrustedKey::has_data() const
 
 bool Ntp::Authentication::TrustedKeies::TrustedKey::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(key_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(key_number.yfilter);
 }
 
 std::string Ntp::Authentication::TrustedKeies::TrustedKey::get_segment_path() const
@@ -1922,7 +2332,7 @@ const EntityPath Ntp::Authentication::TrustedKeies::TrustedKey::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (key_number.is_set || is_set(key_number.operation)) leaf_name_data.push_back(key_number.get_name_leafdata());
+    if (key_number.is_set || is_set(key_number.yfilter)) leaf_name_data.push_back(key_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1941,12 +2351,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Authentication::TrustedKeies
     return children;
 }
 
-void Ntp::Authentication::TrustedKeies::TrustedKey::set_value(const std::string & value_path, std::string value)
+void Ntp::Authentication::TrustedKeies::TrustedKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-number")
     {
         key_number = value;
+        key_number.value_namespace = name_space;
+        key_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::Authentication::TrustedKeies::TrustedKey::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-number")
+    {
+        key_number.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Authentication::TrustedKeies::TrustedKey::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-number")
+        return true;
+    return false;
 }
 
 Ntp::Passive::Passive()
@@ -1967,8 +2394,8 @@ bool Ntp::Passive::has_data() const
 
 bool Ntp::Passive::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Ntp::Passive::get_segment_path() const
@@ -1994,7 +2421,7 @@ const EntityPath Ntp::Passive::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2013,12 +2440,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Passive::get_children() cons
     return children;
 }
 
-void Ntp::Passive::set_value(const std::string & value_path, std::string value)
+void Ntp::Passive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::Passive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Ntp::Passive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTables()
@@ -2047,7 +2491,7 @@ bool Ntp::InterfaceTables::has_operation() const
         if(interface_table[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::InterfaceTables::get_segment_path() const
@@ -2112,8 +2556,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::get_childre
     return children;
 }
 
-void Ntp::InterfaceTables::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::InterfaceTables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::InterfaceTables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-table")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::InterfaceTable()
@@ -2144,8 +2599,8 @@ bool Ntp::InterfaceTables::InterfaceTable::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::get_segment_path() const
@@ -2171,7 +2626,7 @@ const EntityPath Ntp::InterfaceTables::InterfaceTable::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2211,12 +2666,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::Interface::Interface()
@@ -2248,9 +2720,9 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::has_data() const
 
 bool Ntp::InterfaceTables::InterfaceTable::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(disable.yfilter)
 	|| (interface_broadcast !=  nullptr && interface_broadcast->has_operation())
 	|| (interface_multicast !=  nullptr && interface_multicast->has_operation());
 }
@@ -2278,8 +2750,8 @@ const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2326,16 +2798,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::Interface::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-broadcast" || name == "interface-multicast" || name == "interface" || name == "disable")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::InterfaceMulticast()
@@ -2362,7 +2857,7 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_da
 
 bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (multicast_clients !=  nullptr && multicast_clients->has_operation())
 	|| (multicast_servers !=  nullptr && multicast_servers->has_operation());
 }
@@ -2436,8 +2931,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast-clients" || name == "multicast-servers")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClients()
@@ -2466,7 +2972,7 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multic
         if(multicast_client[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::get_segment_path() const
@@ -2531,8 +3037,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast-client")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::MulticastClient()
@@ -2553,8 +3070,8 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multic
 
 bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::get_segment_path() const
@@ -2580,7 +3097,7 @@ const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2599,12 +3116,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastClients::MulticastClient::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServers()
@@ -2633,7 +3167,7 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multic
         if(multicast_server[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::get_segment_path() const
@@ -2698,8 +3232,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast-server")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::MulticastServer()
@@ -2726,11 +3271,11 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::Multic
 
 bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation)
-	|| is_set(authentication_key.operation)
-	|| is_set(ttl.operation)
-	|| is_set(version.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(authentication_key.yfilter)
+	|| ydk::is_set(ttl.yfilter)
+	|| ydk::is_set(version.yfilter);
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::get_segment_path() const
@@ -2756,10 +3301,10 @@ const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (authentication_key.is_set || is_set(authentication_key.operation)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2778,24 +3323,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-key")
     {
         authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceMulticast::MulticastServers::MulticastServer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address" || name == "authentication-key" || name == "ttl" || name == "version")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::InterfaceBroadcast()
@@ -2821,8 +3401,8 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_da
 
 bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(broadcast_client.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(broadcast_client.yfilter)
 	|| (broadcast !=  nullptr && broadcast->has_operation());
 }
 
@@ -2849,7 +3429,7 @@ const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (broadcast_client.is_set || is_set(broadcast_client.operation)) leaf_name_data.push_back(broadcast_client.get_name_leafdata());
+    if (broadcast_client.is_set || is_set(broadcast_client.yfilter)) leaf_name_data.push_back(broadcast_client.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2882,12 +3462,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast-client")
     {
         broadcast_client = value;
+        broadcast_client.value_namespace = name_space;
+        broadcast_client.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "broadcast-client")
+    {
+        broadcast_client.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast" || name == "broadcast-client")
+        return true;
+    return false;
 }
 
 Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::Broadcast()
@@ -2912,10 +3509,10 @@ bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadc
 
 bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(authentication_key.operation)
-	|| is_set(ntp_version.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(authentication_key.yfilter)
+	|| ydk::is_set(ntp_version.yfilter);
 }
 
 std::string Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::get_segment_path() const
@@ -2941,9 +3538,9 @@ const EntityPath Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroad
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (authentication_key.is_set || is_set(authentication_key.operation)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-    if (ntp_version.is_set || is_set(ntp_version.operation)) leaf_name_data.push_back(ntp_version.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (ntp_version.is_set || is_set(ntp_version.yfilter)) leaf_name_data.push_back(ntp_version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2962,20 +3559,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::InterfaceTables::InterfaceTa
     return children;
 }
 
-void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::set_value(const std::string & value_path, std::string value)
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-key")
     {
         authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ntp-version")
     {
         ntp_version = value;
+        ntp_version.value_namespace = name_space;
+        ntp_version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+    if(value_path == "ntp-version")
+    {
+        ntp_version.yfilter = yfilter;
+    }
+}
+
+bool Ntp::InterfaceTables::InterfaceTable::Interface::InterfaceBroadcast::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "authentication-key" || name == "ntp-version")
+        return true;
+    return false;
 }
 
 Ntp::AccessGroupTables::AccessGroupTables()
@@ -3004,7 +3630,7 @@ bool Ntp::AccessGroupTables::has_operation() const
         if(access_group_table[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ntp::AccessGroupTables::get_segment_path() const
@@ -3069,8 +3695,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::get_child
     return children;
 }
 
-void Ntp::AccessGroupTables::set_value(const std::string & value_path, std::string value)
+void Ntp::AccessGroupTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ntp::AccessGroupTables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ntp::AccessGroupTables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group-table")
+        return true;
+    return false;
 }
 
 Ntp::AccessGroupTables::AccessGroupTable::AccessGroupTable()
@@ -3101,8 +3738,8 @@ bool Ntp::AccessGroupTables::AccessGroupTable::has_operation() const
         if(access_group_af_table[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string Ntp::AccessGroupTables::AccessGroupTable::get_segment_path() const
@@ -3128,7 +3765,7 @@ const EntityPath Ntp::AccessGroupTables::AccessGroupTable::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3168,12 +3805,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGro
     return children;
 }
 
-void Ntp::AccessGroupTables::AccessGroupTable::set_value(const std::string & value_path, std::string value)
+void Ntp::AccessGroupTables::AccessGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::AccessGroupTables::AccessGroupTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group-af-table" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroupAfTable()
@@ -3204,8 +3858,8 @@ bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::has_operation
         if(access_group[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(af.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter);
 }
 
 std::string Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::get_segment_path() const
@@ -3231,7 +3885,7 @@ const EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af.is_set || is_set(af.operation)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3271,12 +3925,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGro
     return children;
 }
 
-void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::set_value(const std::string & value_path, std::string value)
+void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af")
     {
         af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+}
+
+bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group" || name == "af")
+        return true;
+    return false;
 }
 
 Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::AccessGroup()
@@ -3299,9 +3970,9 @@ bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::
 
 bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_group_type.operation)
-	|| is_set(access_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_group_type.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
 }
 
 std::string Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::get_segment_path() const
@@ -3327,8 +3998,8 @@ const EntityPath Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::A
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_group_type.is_set || is_set(access_group_type.operation)) leaf_name_data.push_back(access_group_type.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (access_group_type.is_set || is_set(access_group_type.yfilter)) leaf_name_data.push_back(access_group_type.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3347,31 +4018,54 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::AccessGroupTables::AccessGro
     return children;
 }
 
-void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::set_value(const std::string & value_path, std::string value)
+void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-group-type")
     {
         access_group_type = value;
+        access_group_type.value_namespace = name_space;
+        access_group_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf NtpAccessAfEnum::ipv4 {0, "ipv4"};
-const Enum::YLeaf NtpAccessAfEnum::ipv6 {1, "ipv6"};
+void Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-group-type")
+    {
+        access_group_type.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf NtpPeerEnum::peer {0, "peer"};
-const Enum::YLeaf NtpPeerEnum::server {1, "server"};
+bool Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-group-type" || name == "access-list-name")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf NtpdscpEnum::ntp_precedence {0, "ntp-precedence"};
-const Enum::YLeaf NtpdscpEnum::ntpdscp {1, "ntpdscp"};
+const Enum::YLeaf NtpAccessAf::ipv4 {0, "ipv4"};
+const Enum::YLeaf NtpAccessAf::ipv6 {1, "ipv6"};
 
-const Enum::YLeaf NtpAccessEnum::peer {0, "peer"};
-const Enum::YLeaf NtpAccessEnum::serve {1, "serve"};
-const Enum::YLeaf NtpAccessEnum::serve_only {2, "serve-only"};
-const Enum::YLeaf NtpAccessEnum::query_only {3, "query-only"};
+const Enum::YLeaf NtpPeer::peer {0, "peer"};
+const Enum::YLeaf NtpPeer::server {1, "server"};
+
+const Enum::YLeaf Ntpdscp::ntp_precedence {0, "ntp-precedence"};
+const Enum::YLeaf Ntpdscp::ntpdscp {1, "ntpdscp"};
+
+const Enum::YLeaf NtpAccess::peer {0, "peer"};
+const Enum::YLeaf NtpAccess::serve {1, "serve"};
+const Enum::YLeaf NtpAccess::serve_only {2, "serve-only"};
+const Enum::YLeaf NtpAccess::query_only {3, "query-only"};
 
 
 }

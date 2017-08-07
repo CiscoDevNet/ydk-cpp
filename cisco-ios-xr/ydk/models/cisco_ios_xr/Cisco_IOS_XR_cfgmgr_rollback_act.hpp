@@ -7,35 +7,38 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_cfgmgr_rollback_act {
 
-class RollBackConfigurationLastRpc : public Entity
+class RollBackConfigurationLast : public ydk::Entity
 {
     public:
-        RollBackConfigurationLastRpc();
-        ~RollBackConfigurationLastRpc();
+        RollBackConfigurationLast();
+        ~RollBackConfigurationLast();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: RollBackConfigurationLastRpc::Input
+        class Input; //type: RollBackConfigurationLast::Input
 
-        std::shared_ptr<Cisco_IOS_XR_cfgmgr_rollback_act::RollBackConfigurationLastRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_cfgmgr_rollback_act::RollBackConfigurationLast::Input> input;
         
-}; // RollBackConfigurationLastRpc
+}; // RollBackConfigurationLast
 
 
-class RollBackConfigurationLastRpc::Input : public Entity
+class RollBackConfigurationLast::Input : public ydk::Entity
 {
     public:
         Input();
@@ -43,46 +46,51 @@ class RollBackConfigurationLastRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf count; //type: int32
-        YLeaf force; //type: boolean
-        YLeaf best_effort; //type: boolean
-        YLeaf label; //type: string
-        YLeaf comment; //type: string
+        ydk::YLeaf count; //type: int32
+        ydk::YLeaf force; //type: boolean
+        ydk::YLeaf best_effort; //type: boolean
+        ydk::YLeaf label; //type: string
+        ydk::YLeaf comment; //type: string
 
-}; // RollBackConfigurationLastRpc::Input
+}; // RollBackConfigurationLast::Input
 
-class RollBackConfigurationToRpc : public Entity
+class RollBackConfigurationTo : public ydk::Entity
 {
     public:
-        RollBackConfigurationToRpc();
-        ~RollBackConfigurationToRpc();
+        RollBackConfigurationTo();
+        ~RollBackConfigurationTo();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: RollBackConfigurationToRpc::Input
+        class Input; //type: RollBackConfigurationTo::Input
 
-        std::shared_ptr<Cisco_IOS_XR_cfgmgr_rollback_act::RollBackConfigurationToRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_cfgmgr_rollback_act::RollBackConfigurationTo::Input> input;
         
-}; // RollBackConfigurationToRpc
+}; // RollBackConfigurationTo
 
 
-class RollBackConfigurationToRpc::Input : public Entity
+class RollBackConfigurationTo::Input : public ydk::Entity
 {
     public:
         Input();
@@ -90,46 +98,51 @@ class RollBackConfigurationToRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf commit_id; //type: string
-        YLeaf force; //type: boolean
-        YLeaf best_effort; //type: boolean
-        YLeaf label; //type: string
-        YLeaf comment; //type: string
+        ydk::YLeaf commit_id; //type: string
+        ydk::YLeaf force; //type: boolean
+        ydk::YLeaf best_effort; //type: boolean
+        ydk::YLeaf label; //type: string
+        ydk::YLeaf comment; //type: string
 
-}; // RollBackConfigurationToRpc::Input
+}; // RollBackConfigurationTo::Input
 
-class RollBackConfigurationToExcludeRpc : public Entity
+class RollBackConfigurationToExclude : public ydk::Entity
 {
     public:
-        RollBackConfigurationToExcludeRpc();
-        ~RollBackConfigurationToExcludeRpc();
+        RollBackConfigurationToExclude();
+        ~RollBackConfigurationToExclude();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: RollBackConfigurationToExcludeRpc::Input
+        class Input; //type: RollBackConfigurationToExclude::Input
 
-        std::shared_ptr<Cisco_IOS_XR_cfgmgr_rollback_act::RollBackConfigurationToExcludeRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_cfgmgr_rollback_act::RollBackConfigurationToExclude::Input> input;
         
-}; // RollBackConfigurationToExcludeRpc
+}; // RollBackConfigurationToExclude
 
 
-class RollBackConfigurationToExcludeRpc::Input : public Entity
+class RollBackConfigurationToExclude::Input : public ydk::Entity
 {
     public:
         Input();
@@ -137,46 +150,51 @@ class RollBackConfigurationToExcludeRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf commit_id; //type: string
-        YLeaf force; //type: boolean
-        YLeaf best_effort; //type: boolean
-        YLeaf label; //type: string
-        YLeaf comment; //type: string
+        ydk::YLeaf commit_id; //type: string
+        ydk::YLeaf force; //type: boolean
+        ydk::YLeaf best_effort; //type: boolean
+        ydk::YLeaf label; //type: string
+        ydk::YLeaf comment; //type: string
 
-}; // RollBackConfigurationToExcludeRpc::Input
+}; // RollBackConfigurationToExclude::Input
 
-class RollBackConfigurationRpc : public Entity
+class RollBackConfiguration : public ydk::Entity
 {
     public:
-        RollBackConfigurationRpc();
-        ~RollBackConfigurationRpc();
+        RollBackConfiguration();
+        ~RollBackConfiguration();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: RollBackConfigurationRpc::Input
+        class Input; //type: RollBackConfiguration::Input
 
-        std::shared_ptr<Cisco_IOS_XR_cfgmgr_rollback_act::RollBackConfigurationRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_cfgmgr_rollback_act::RollBackConfiguration::Input> input;
         
-}; // RollBackConfigurationRpc
+}; // RollBackConfiguration
 
 
-class RollBackConfigurationRpc::Input : public Entity
+class RollBackConfiguration::Input : public ydk::Entity
 {
     public:
         Input();
@@ -184,19 +202,21 @@ class RollBackConfigurationRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf commit_id; //type: string
-        YLeaf force; //type: boolean
-        YLeaf best_effort; //type: boolean
-        YLeaf label; //type: string
-        YLeaf comment; //type: string
+        ydk::YLeaf commit_id; //type: string
+        ydk::YLeaf force; //type: boolean
+        ydk::YLeaf best_effort; //type: boolean
+        ydk::YLeaf label; //type: string
+        ydk::YLeaf comment; //type: string
 
-}; // RollBackConfigurationRpc::Input
+}; // RollBackConfiguration::Input
 
 
 }

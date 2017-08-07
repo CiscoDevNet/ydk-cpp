@@ -7,38 +7,41 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_checkpoint_archive_oper {
 
-class CheckpointArchive : public Entity
+class CheckpointArchives : public ydk::Entity
 {
     public:
-        CheckpointArchive();
-        ~CheckpointArchive();
+        CheckpointArchives();
+        ~CheckpointArchives();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf max; //type: uint8
-        YLeaf current; //type: uint8
-        YLeaf recent; //type: string
-        class Archives; //type: CheckpointArchive::Archives
+        ydk::YLeaf max; //type: uint8
+        ydk::YLeaf current; //type: uint8
+        ydk::YLeaf recent; //type: string
+        class Archives; //type: CheckpointArchives::Archives
 
-        std::shared_ptr<Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchive::Archives> archives_;
+        std::shared_ptr<Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchives::Archives> archives;
         
-}; // CheckpointArchive
+}; // CheckpointArchives
 
 
-class CheckpointArchive::Archives : public Entity
+class CheckpointArchives::Archives : public ydk::Entity
 {
     public:
         Archives();
@@ -46,20 +49,22 @@ class CheckpointArchive::Archives : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Archive; //type: CheckpointArchive::Archives::Archive
+        class Archive; //type: CheckpointArchives::Archives::Archive
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchive::Archives::Archive> > archive_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchives::Archives::Archive> > archive;
         
-}; // CheckpointArchive::Archives
+}; // CheckpointArchives::Archives
 
 
-class CheckpointArchive::Archives::Archive : public Entity
+class CheckpointArchives::Archives::Archive : public ydk::Entity
 {
     public:
         Archive();
@@ -67,16 +72,18 @@ class CheckpointArchive::Archives::Archive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: uint16
-        YLeaf name; //type: string
+        ydk::YLeaf number; //type: uint16
+        ydk::YLeaf name; //type: string
 
-}; // CheckpointArchive::Archives::Archive
+}; // CheckpointArchives::Archives::Archive
 
 
 }

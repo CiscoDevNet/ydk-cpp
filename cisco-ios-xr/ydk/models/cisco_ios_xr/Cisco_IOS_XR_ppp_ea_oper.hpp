@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ppp_ea_oper {
 
-class Pppea : public Entity
+class Pppea : public ydk::Entity
 {
     public:
         Pppea();
@@ -18,15 +18,18 @@ class Pppea : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: Pppea::Nodes
 
@@ -35,7 +38,7 @@ class Pppea : public Entity
 }; // Pppea
 
 
-class Pppea::Nodes : public Entity
+class Pppea::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -43,11 +46,13 @@ class Pppea::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: Pppea::Nodes::Node
 
@@ -56,7 +61,7 @@ class Pppea::Nodes : public Entity
 }; // Pppea::Nodes
 
 
-class Pppea::Nodes::Node : public Entity
+class Pppea::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -64,13 +69,15 @@ class Pppea::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class EaInterfaceNames; //type: Pppea::Nodes::Node::EaInterfaceNames
 
         std::shared_ptr<Cisco_IOS_XR_ppp_ea_oper::Pppea::Nodes::Node::EaInterfaceNames> ea_interface_names;
@@ -78,7 +85,7 @@ class Pppea::Nodes::Node : public Entity
 }; // Pppea::Nodes::Node
 
 
-class Pppea::Nodes::Node::EaInterfaceNames : public Entity
+class Pppea::Nodes::Node::EaInterfaceNames : public ydk::Entity
 {
     public:
         EaInterfaceNames();
@@ -86,11 +93,13 @@ class Pppea::Nodes::Node::EaInterfaceNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EaInterfaceName; //type: Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName
 
@@ -99,7 +108,7 @@ class Pppea::Nodes::Node::EaInterfaceNames : public Entity
 }; // Pppea::Nodes::Node::EaInterfaceNames
 
 
-class Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName : public Entity
+class Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName : public ydk::Entity
 {
     public:
         EaInterfaceName();
@@ -107,54 +116,56 @@ class Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface; //type: string
-        YLeaf is_lcp_running; //type: boolean
-        YLeaf is_ipcp_running; //type: boolean
-        YLeaf is_ipv6cp_running; //type: boolean
-        YLeaf is_mplscp_running; //type: boolean
-        YLeaf local_mtu; //type: uint16
-        YLeaf local_mrru; //type: uint16
-        YLeaf peer_mrru; //type: uint16
-        YLeaf local_magic; //type: uint32
-        YLeaf peer_magic; //type: uint32
-        YLeaf local_mcmp_classes; //type: uint8
-        YLeaf peer_mcmp_classes; //type: uint8
-        YLeaf echo_request_interval; //type: uint32
-        YLeaf echo_request_retry_count; //type: uint32
-        YLeaf is_multilink_bundle; //type: boolean
-        YLeaf synchronized; //type: boolean
-        YLeaf forwarding_enabled; //type: boolean
-        YLeaf multilink_interface; //type: string
-        YLeaf l2_tunnel_enabled; //type: boolean
-        YLeaf l2_provisioned; //type: boolean
-        YLeaf l2ip_interworking_enabled; //type: boolean
-        YLeaf is_vpdn_tunneled; //type: boolean
-        YLeaf xconnect_id; //type: uint32
-        YLeaf parent_interface_handle; //type: string
-        YLeaf vrf_table_id; //type: uint32
-        YLeaf ipv6vrf_table_id; //type: uint32
-        YLeaf l2_adjacency_state; //type: PppEaAdjStateEnum
-        YLeaf l2ip_interworking_adjacency_state; //type: PppEaAdjStateEnum
-        YLeaf lac_adjacency_state; //type: PppEaAdjStateEnum
-        YLeaf interface_adjacency_state; //type: PppEaAdjStateEnum
-        YLeaf ipv4_adjacency_state; //type: PppEaAdjStateEnum
-        YLeaf ipv6_adjacency_state; //type: PppEaAdjStateEnum
-        YLeaf mpls_adjacency_state; //type: PppEaAdjStateEnum
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf is_lcp_running; //type: boolean
+        ydk::YLeaf is_ipcp_running; //type: boolean
+        ydk::YLeaf is_ipv6cp_running; //type: boolean
+        ydk::YLeaf is_mplscp_running; //type: boolean
+        ydk::YLeaf local_mtu; //type: uint16
+        ydk::YLeaf local_mrru; //type: uint16
+        ydk::YLeaf peer_mrru; //type: uint16
+        ydk::YLeaf local_magic; //type: uint32
+        ydk::YLeaf peer_magic; //type: uint32
+        ydk::YLeaf local_mcmp_classes; //type: uint8
+        ydk::YLeaf peer_mcmp_classes; //type: uint8
+        ydk::YLeaf echo_request_interval; //type: uint32
+        ydk::YLeaf echo_request_retry_count; //type: uint32
+        ydk::YLeaf is_multilink_bundle; //type: boolean
+        ydk::YLeaf synchronized; //type: boolean
+        ydk::YLeaf forwarding_enabled; //type: boolean
+        ydk::YLeaf multilink_interface; //type: string
+        ydk::YLeaf l2_tunnel_enabled; //type: boolean
+        ydk::YLeaf l2_provisioned; //type: boolean
+        ydk::YLeaf l2ip_interworking_enabled; //type: boolean
+        ydk::YLeaf is_vpdn_tunneled; //type: boolean
+        ydk::YLeaf xconnect_id; //type: uint32
+        ydk::YLeaf parent_interface_handle; //type: string
+        ydk::YLeaf vrf_table_id; //type: uint32
+        ydk::YLeaf ipv6vrf_table_id; //type: uint32
+        ydk::YLeaf l2_adjacency_state; //type: PppEaAdjState
+        ydk::YLeaf l2ip_interworking_adjacency_state; //type: PppEaAdjState
+        ydk::YLeaf lac_adjacency_state; //type: PppEaAdjState
+        ydk::YLeaf interface_adjacency_state; //type: PppEaAdjState
+        ydk::YLeaf ipv4_adjacency_state; //type: PppEaAdjState
+        ydk::YLeaf ipv6_adjacency_state; //type: PppEaAdjState
+        ydk::YLeaf mpls_adjacency_state; //type: PppEaAdjState
 
 }; // Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName
 
-class PppEaAdjStateEnum : public Enum
+class PppEaAdjState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ppp_ea_adj_state_not_installed;
-        static const Enum::YLeaf ppp_ea_adj_state_installed;
+        static const ydk::Enum::YLeaf ppp_ea_adj_state_not_installed;
+        static const ydk::Enum::YLeaf ppp_ea_adj_state_installed;
 
 };
 

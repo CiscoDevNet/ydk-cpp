@@ -6,17 +6,16 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_platform_software_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_platform_software_oper {
 
 CiscoPlatformSoftware::CiscoPlatformSoftware()
     :
-    platform_software_interface_rp_active_brief_forwarding_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding>())
-	,platform_software_status_control_processes_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses>())
+    control_processes(std::make_shared<CiscoPlatformSoftware::ControlProcesses>())
 {
-    platform_software_interface_rp_active_brief_forwarding_->parent = this;
-
-    platform_software_status_control_processes_->parent = this;
+    control_processes->parent = this;
 
     yang_name = "cisco-platform-software"; yang_parent_name = "Cisco-IOS-XE-platform-software-oper";
 }
@@ -27,15 +26,13 @@ CiscoPlatformSoftware::~CiscoPlatformSoftware()
 
 bool CiscoPlatformSoftware::has_data() const
 {
-    return (platform_software_interface_rp_active_brief_forwarding_ !=  nullptr && platform_software_interface_rp_active_brief_forwarding_->has_data())
-	|| (platform_software_status_control_processes_ !=  nullptr && platform_software_status_control_processes_->has_data());
+    return (control_processes !=  nullptr && control_processes->has_data());
 }
 
 bool CiscoPlatformSoftware::has_operation() const
 {
-    return is_set(operation)
-	|| (platform_software_interface_rp_active_brief_forwarding_ !=  nullptr && platform_software_interface_rp_active_brief_forwarding_->has_operation())
-	|| (platform_software_status_control_processes_ !=  nullptr && platform_software_status_control_processes_->has_operation());
+    return is_set(yfilter)
+	|| (control_processes !=  nullptr && control_processes->has_operation());
 }
 
 std::string CiscoPlatformSoftware::get_segment_path() const
@@ -67,22 +64,13 @@ const EntityPath CiscoPlatformSoftware::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "platform-software-interface-rp-active-brief-forwarding")
+    if(child_yang_name == "control-processes")
     {
-        if(platform_software_interface_rp_active_brief_forwarding_ == nullptr)
+        if(control_processes == nullptr)
         {
-            platform_software_interface_rp_active_brief_forwarding_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding>();
+            control_processes = std::make_shared<CiscoPlatformSoftware::ControlProcesses>();
         }
-        return platform_software_interface_rp_active_brief_forwarding_;
-    }
-
-    if(child_yang_name == "platform-software-status-control-processes")
-    {
-        if(platform_software_status_control_processes_ == nullptr)
-        {
-            platform_software_status_control_processes_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses>();
-        }
-        return platform_software_status_control_processes_;
+        return control_processes;
     }
 
     return nullptr;
@@ -91,20 +79,19 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(platform_software_interface_rp_active_brief_forwarding_ != nullptr)
+    if(control_processes != nullptr)
     {
-        children["platform-software-interface-rp-active-brief-forwarding"] = platform_software_interface_rp_active_brief_forwarding_;
-    }
-
-    if(platform_software_status_control_processes_ != nullptr)
-    {
-        children["platform-software-status-control-processes"] = platform_software_status_control_processes_;
+        children["control-processes"] = control_processes;
     }
 
     return children;
 }
 
-void CiscoPlatformSoftware::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoPlatformSoftware::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -128,40 +115,57 @@ augment_capabilities_function CiscoPlatformSoftware::get_augment_capabilities_fu
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::PlatformSoftwareStatusControlProcesses()
-    :
-    control_processes_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses>())
+std::map<std::pair<std::string, std::string>, std::string> CiscoPlatformSoftware::get_namespace_identity_lookup() const
 {
-    control_processes_->parent = this;
-
-    yang_name = "platform-software-status-control-processes"; yang_parent_name = "cisco-platform-software";
+    return cisco_ios_xe_namespace_identity_lookup;
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::~PlatformSoftwareStatusControlProcesses()
+bool CiscoPlatformSoftware::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "control-processes")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcesses()
+{
+    yang_name = "control-processes"; yang_parent_name = "cisco-platform-software";
+}
+
+CiscoPlatformSoftware::ControlProcesses::~ControlProcesses()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::has_data() const
 {
-    return (control_processes_ !=  nullptr && control_processes_->has_data());
+    for (std::size_t index=0; index<control_process.size(); index++)
+    {
+        if(control_process[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::has_operation() const
 {
-    return is_set(operation)
-	|| (control_processes_ !=  nullptr && control_processes_->has_operation());
+    for (std::size_t index=0; index<control_process.size(); index++)
+    {
+        if(control_process[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "platform-software-status-control-processes";
+    path_buffer << "control-processes";
 
     return path_buffer.str();
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -182,99 +186,11 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "control-processes")
-    {
-        if(control_processes_ == nullptr)
-        {
-            control_processes_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses>();
-        }
-        return control_processes_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(control_processes_ != nullptr)
-    {
-        children["control-processes"] = control_processes_;
-    }
-
-    return children;
-}
-
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::set_value(const std::string & value_path, std::string value)
-{
-}
-
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcesses()
-{
-    yang_name = "control-processes"; yang_parent_name = "platform-software-status-control-processes";
-}
-
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::~ControlProcesses()
-{
-}
-
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::has_data() const
-{
-    for (std::size_t index=0; index<control_process_.size(); index++)
-    {
-        if(control_process_[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::has_operation() const
-{
-    for (std::size_t index=0; index<control_process_.size(); index++)
-    {
-        if(control_process_[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "control-processes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/platform-software-status-control-processes/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "control-process")
     {
-        for(auto const & c : control_process_)
+        for(auto const & c : control_process)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -282,19 +198,19 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess>();
+        auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess>();
         c->parent = this;
-        control_process_.push_back(c);
+        control_process.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : control_process_)
+    for (auto const & c : control_process)
     {
         children[c->get_segment_path()] = c;
     }
@@ -302,74 +218,94 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSo
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::ControlProcess()
+void CiscoPlatformSoftware::ControlProcesses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "control-process")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::ControlProcess()
     :
-    name{YType::str, "name"},
-    status{YType::str, "status"},
+    fru{YType::enumeration, "fru"},
+    slotnum{YType::int16, "slotnum"},
+    baynum{YType::int16, "baynum"},
+    chassisnum{YType::int16, "chassisnum"},
+    control_process_status{YType::str, "control-process-status"},
     updated{YType::uint64, "updated"}
     	,
-    load_average_stats_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats>())
-	,load_avg_minutes_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes>())
-	,memory_stats_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats>())
-	,per_core_stats_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats>())
+    load_average_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats>())
+	,load_avg_minutes(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes>())
+	,memory_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats>())
+	,per_core_stats(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats>())
 {
-    load_average_stats_->parent = this;
+    load_average_stats->parent = this;
 
-    load_avg_minutes_->parent = this;
+    load_avg_minutes->parent = this;
 
-    memory_stats_->parent = this;
+    memory_stats->parent = this;
 
-    per_core_stats_->parent = this;
+    per_core_stats->parent = this;
 
     yang_name = "control-process"; yang_parent_name = "control-processes";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::~ControlProcess()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::~ControlProcess()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::has_data() const
 {
-    return name.is_set
-	|| status.is_set
+    return fru.is_set
+	|| slotnum.is_set
+	|| baynum.is_set
+	|| chassisnum.is_set
+	|| control_process_status.is_set
 	|| updated.is_set
-	|| (load_average_stats_ !=  nullptr && load_average_stats_->has_data())
-	|| (load_avg_minutes_ !=  nullptr && load_avg_minutes_->has_data())
-	|| (memory_stats_ !=  nullptr && memory_stats_->has_data())
-	|| (per_core_stats_ !=  nullptr && per_core_stats_->has_data());
+	|| (load_average_stats !=  nullptr && load_average_stats->has_data())
+	|| (load_avg_minutes !=  nullptr && load_avg_minutes->has_data())
+	|| (memory_stats !=  nullptr && memory_stats->has_data())
+	|| (per_core_stats !=  nullptr && per_core_stats->has_data());
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(status.operation)
-	|| is_set(updated.operation)
-	|| (load_average_stats_ !=  nullptr && load_average_stats_->has_operation())
-	|| (load_avg_minutes_ !=  nullptr && load_avg_minutes_->has_operation())
-	|| (memory_stats_ !=  nullptr && memory_stats_->has_operation())
-	|| (per_core_stats_ !=  nullptr && per_core_stats_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(fru.yfilter)
+	|| ydk::is_set(slotnum.yfilter)
+	|| ydk::is_set(baynum.yfilter)
+	|| ydk::is_set(chassisnum.yfilter)
+	|| ydk::is_set(control_process_status.yfilter)
+	|| ydk::is_set(updated.yfilter)
+	|| (load_average_stats !=  nullptr && load_average_stats->has_operation())
+	|| (load_avg_minutes !=  nullptr && load_avg_minutes->has_operation())
+	|| (memory_stats !=  nullptr && memory_stats->has_operation())
+	|| (per_core_stats !=  nullptr && per_core_stats->has_operation());
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "control-process" <<"[name='" <<name <<"']";
+    path_buffer << "control-process" <<"[fru='" <<fru <<"']" <<"[slotnum='" <<slotnum <<"']" <<"[baynum='" <<baynum <<"']" <<"[chassisnum='" <<chassisnum <<"']";
 
     return path_buffer.str();
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/platform-software-status-control-processes/control-processes/" << get_segment_path();
+        path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/control-processes/" << get_segment_path();
     }
     else
     {
@@ -378,9 +314,12 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (updated.is_set || is_set(updated.operation)) leaf_name_data.push_back(updated.get_name_leafdata());
+    if (fru.is_set || is_set(fru.yfilter)) leaf_name_data.push_back(fru.get_name_leafdata());
+    if (slotnum.is_set || is_set(slotnum.yfilter)) leaf_name_data.push_back(slotnum.get_name_leafdata());
+    if (baynum.is_set || is_set(baynum.yfilter)) leaf_name_data.push_back(baynum.get_name_leafdata());
+    if (chassisnum.is_set || is_set(chassisnum.yfilter)) leaf_name_data.push_back(chassisnum.get_name_leafdata());
+    if (control_process_status.is_set || is_set(control_process_status.yfilter)) leaf_name_data.push_back(control_process_status.get_name_leafdata());
+    if (updated.is_set || is_set(updated.yfilter)) leaf_name_data.push_back(updated.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -388,112 +327,171 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "load-average-stats")
     {
-        if(load_average_stats_ == nullptr)
+        if(load_average_stats == nullptr)
         {
-            load_average_stats_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats>();
+            load_average_stats = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats>();
         }
-        return load_average_stats_;
+        return load_average_stats;
     }
 
     if(child_yang_name == "load-avg-minutes")
     {
-        if(load_avg_minutes_ == nullptr)
+        if(load_avg_minutes == nullptr)
         {
-            load_avg_minutes_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes>();
+            load_avg_minutes = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes>();
         }
-        return load_avg_minutes_;
+        return load_avg_minutes;
     }
 
     if(child_yang_name == "memory-stats")
     {
-        if(memory_stats_ == nullptr)
+        if(memory_stats == nullptr)
         {
-            memory_stats_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats>();
+            memory_stats = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats>();
         }
-        return memory_stats_;
+        return memory_stats;
     }
 
     if(child_yang_name == "per-core-stats")
     {
-        if(per_core_stats_ == nullptr)
+        if(per_core_stats == nullptr)
         {
-            per_core_stats_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats>();
+            per_core_stats = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats>();
         }
-        return per_core_stats_;
+        return per_core_stats;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(load_average_stats_ != nullptr)
+    if(load_average_stats != nullptr)
     {
-        children["load-average-stats"] = load_average_stats_;
+        children["load-average-stats"] = load_average_stats;
     }
 
-    if(load_avg_minutes_ != nullptr)
+    if(load_avg_minutes != nullptr)
     {
-        children["load-avg-minutes"] = load_avg_minutes_;
+        children["load-avg-minutes"] = load_avg_minutes;
     }
 
-    if(memory_stats_ != nullptr)
+    if(memory_stats != nullptr)
     {
-        children["memory-stats"] = memory_stats_;
+        children["memory-stats"] = memory_stats;
     }
 
-    if(per_core_stats_ != nullptr)
+    if(per_core_stats != nullptr)
     {
-        children["per-core-stats"] = per_core_stats_;
+        children["per-core-stats"] = per_core_stats;
     }
 
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
+    if(value_path == "fru")
     {
-        name = value;
+        fru = value;
+        fru.value_namespace = name_space;
+        fru.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "status")
+    if(value_path == "slotnum")
     {
-        status = value;
+        slotnum = value;
+        slotnum.value_namespace = name_space;
+        slotnum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "baynum")
+    {
+        baynum = value;
+        baynum.value_namespace = name_space;
+        baynum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "chassisnum")
+    {
+        chassisnum = value;
+        chassisnum.value_namespace = name_space;
+        chassisnum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-process-status")
+    {
+        control_process_status = value;
+        control_process_status.value_namespace = name_space;
+        control_process_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "updated")
     {
         updated = value;
+        updated.value_namespace = name_space;
+        updated.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::LoadAverageStats()
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fru")
+    {
+        fru.yfilter = yfilter;
+    }
+    if(value_path == "slotnum")
+    {
+        slotnum.yfilter = yfilter;
+    }
+    if(value_path == "baynum")
+    {
+        baynum.yfilter = yfilter;
+    }
+    if(value_path == "chassisnum")
+    {
+        chassisnum.yfilter = yfilter;
+    }
+    if(value_path == "control-process-status")
+    {
+        control_process_status.yfilter = yfilter;
+    }
+    if(value_path == "updated")
+    {
+        updated.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "load-average-stats" || name == "load-avg-minutes" || name == "memory-stats" || name == "per-core-stats" || name == "fru" || name == "slotnum" || name == "baynum" || name == "chassisnum" || name == "control-process-status" || name == "updated")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::LoadAverageStats()
     :
     load_average_status{YType::str, "load-average-status"}
 {
     yang_name = "load-average-stats"; yang_parent_name = "control-process";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::~LoadAverageStats()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::~LoadAverageStats()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::has_data() const
 {
     return load_average_status.is_set;
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(load_average_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(load_average_status.yfilter);
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "load-average-stats";
@@ -502,7 +500,7 @@ std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::Contr
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -516,7 +514,7 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (load_average_status.is_set || is_set(load_average_status.operation)) leaf_name_data.push_back(load_average_status.get_name_leafdata());
+    if (load_average_status.is_set || is_set(load_average_status.yfilter)) leaf_name_data.push_back(load_average_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -524,55 +522,72 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAverageStats::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "load-average-status")
     {
         load_average_status = value;
+        load_average_status.value_namespace = name_space;
+        load_average_status.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinutes()
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "load-average-status")
+    {
+        load_average_status.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "load-average-status")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinutes()
 {
     yang_name = "load-avg-minutes"; yang_parent_name = "control-process";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::~LoadAvgMinutes()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::~LoadAvgMinutes()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::has_data() const
 {
-    for (std::size_t index=0; index<load_avg_minute_.size(); index++)
+    for (std::size_t index=0; index<load_avg_minute.size(); index++)
     {
-        if(load_avg_minute_[index]->has_data())
+        if(load_avg_minute[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::has_operation() const
 {
-    for (std::size_t index=0; index<load_avg_minute_.size(); index++)
+    for (std::size_t index=0; index<load_avg_minute.size(); index++)
     {
-        if(load_avg_minute_[index]->has_operation())
+        if(load_avg_minute[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "load-avg-minutes";
@@ -581,7 +596,7 @@ std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::Contr
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -602,11 +617,11 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "load-avg-minute")
     {
-        for(auto const & c : load_avg_minute_)
+        for(auto const & c : load_avg_minute)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -614,19 +629,19 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute>();
+        auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute>();
         c->parent = this;
-        load_avg_minute_.push_back(c);
+        load_avg_minute.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : load_avg_minute_)
+    for (auto const & c : load_avg_minute)
     {
         children[c->get_segment_path()] = c;
     }
@@ -634,42 +649,53 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSo
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::LoadAvgMinute()
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "load-avg-minute")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::LoadAvgMinute()
     :
     number{YType::uint64, "number"},
     average{YType::str, "average"}
     	,
-    status_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>())
+    status(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>())
 {
-    status_->parent = this;
+    status->parent = this;
 
     yang_name = "load-avg-minute"; yang_parent_name = "load-avg-minutes";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::~LoadAvgMinute()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::~LoadAvgMinute()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::has_data() const
 {
     return number.is_set
 	|| average.is_set
-	|| (status_ !=  nullptr && status_->has_data());
+	|| (status !=  nullptr && status->has_data());
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(average.operation)
-	|| (status_ !=  nullptr && status_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| (status !=  nullptr && status->has_operation());
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "load-avg-minute" <<"[number='" <<number <<"']";
@@ -678,7 +704,7 @@ std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::Contr
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -692,8 +718,8 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -701,44 +727,67 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status")
     {
-        if(status_ == nullptr)
+        if(status == nullptr)
         {
-            status_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>();
+            status = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status>();
         }
-        return status_;
+        return status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(status_ != nullptr)
+    if(status != nullptr)
     {
-        children["status"] = status_;
+        children["status"] = status;
     }
 
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::Status()
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "status" || name == "number" || name == "average")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::Status()
     :
     condition{YType::str, "condition"},
     threshold_status{YType::str, "threshold-status"},
@@ -747,26 +796,26 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
     yang_name = "status"; yang_parent_name = "load-avg-minute";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::~Status()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::~Status()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::has_data() const
 {
     return condition.is_set
 	|| threshold_status.is_set
 	|| threshold_value.is_set;
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(condition.operation)
-	|| is_set(threshold_status.operation)
-	|| is_set(threshold_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(condition.yfilter)
+	|| ydk::is_set(threshold_status.yfilter)
+	|| ydk::is_set(threshold_value.yfilter);
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "status";
@@ -775,7 +824,7 @@ std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::Contr
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -789,9 +838,9 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (condition.is_set || is_set(condition.operation)) leaf_name_data.push_back(condition.get_name_leafdata());
-    if (threshold_status.is_set || is_set(threshold_status.operation)) leaf_name_data.push_back(threshold_status.get_name_leafdata());
-    if (threshold_value.is_set || is_set(threshold_value.operation)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
+    if (condition.is_set || is_set(condition.yfilter)) leaf_name_data.push_back(condition.get_name_leafdata());
+    if (threshold_status.is_set || is_set(threshold_status.yfilter)) leaf_name_data.push_back(threshold_status.get_name_leafdata());
+    if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -799,34 +848,63 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "condition")
     {
         condition = value;
+        condition.value_namespace = name_space;
+        condition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-status")
     {
         threshold_status = value;
+        threshold_status.value_namespace = name_space;
+        threshold_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-value")
     {
         threshold_value = value;
+        threshold_value.value_namespace = name_space;
+        threshold_value.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::MemoryStats()
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "condition")
+    {
+        condition.yfilter = yfilter;
+    }
+    if(value_path == "threshold-status")
+    {
+        threshold_status.yfilter = yfilter;
+    }
+    if(value_path == "threshold-value")
+    {
+        threshold_value.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "condition" || name == "threshold-status" || name == "threshold-value")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::MemoryStats()
     :
     available_number{YType::uint64, "available-number"},
     available_percent{YType::uint64, "available-percent"},
@@ -839,18 +917,18 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
     used_number{YType::uint64, "used-number"},
     used_percent{YType::uint64, "used-percent"}
     	,
-    status_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status>())
+    status(std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status>())
 {
-    status_->parent = this;
+    status->parent = this;
 
     yang_name = "memory-stats"; yang_parent_name = "control-process";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::~MemoryStats()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::~MemoryStats()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::has_data() const
 {
     return available_number.is_set
 	|| available_percent.is_set
@@ -862,26 +940,26 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 	|| total.is_set
 	|| used_number.is_set
 	|| used_percent.is_set
-	|| (status_ !=  nullptr && status_->has_data());
+	|| (status !=  nullptr && status->has_data());
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(available_number.operation)
-	|| is_set(available_percent.operation)
-	|| is_set(committed_number.operation)
-	|| is_set(committed_percent.operation)
-	|| is_set(free_number.operation)
-	|| is_set(free_percent.operation)
-	|| is_set(memory_status.operation)
-	|| is_set(total.operation)
-	|| is_set(used_number.operation)
-	|| is_set(used_percent.operation)
-	|| (status_ !=  nullptr && status_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(available_number.yfilter)
+	|| ydk::is_set(available_percent.yfilter)
+	|| ydk::is_set(committed_number.yfilter)
+	|| ydk::is_set(committed_percent.yfilter)
+	|| ydk::is_set(free_number.yfilter)
+	|| ydk::is_set(free_percent.yfilter)
+	|| ydk::is_set(memory_status.yfilter)
+	|| ydk::is_set(total.yfilter)
+	|| ydk::is_set(used_number.yfilter)
+	|| ydk::is_set(used_percent.yfilter)
+	|| (status !=  nullptr && status->has_operation());
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "memory-stats";
@@ -890,7 +968,7 @@ std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::Contr
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -904,16 +982,16 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (available_number.is_set || is_set(available_number.operation)) leaf_name_data.push_back(available_number.get_name_leafdata());
-    if (available_percent.is_set || is_set(available_percent.operation)) leaf_name_data.push_back(available_percent.get_name_leafdata());
-    if (committed_number.is_set || is_set(committed_number.operation)) leaf_name_data.push_back(committed_number.get_name_leafdata());
-    if (committed_percent.is_set || is_set(committed_percent.operation)) leaf_name_data.push_back(committed_percent.get_name_leafdata());
-    if (free_number.is_set || is_set(free_number.operation)) leaf_name_data.push_back(free_number.get_name_leafdata());
-    if (free_percent.is_set || is_set(free_percent.operation)) leaf_name_data.push_back(free_percent.get_name_leafdata());
-    if (memory_status.is_set || is_set(memory_status.operation)) leaf_name_data.push_back(memory_status.get_name_leafdata());
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
-    if (used_number.is_set || is_set(used_number.operation)) leaf_name_data.push_back(used_number.get_name_leafdata());
-    if (used_percent.is_set || is_set(used_percent.operation)) leaf_name_data.push_back(used_percent.get_name_leafdata());
+    if (available_number.is_set || is_set(available_number.yfilter)) leaf_name_data.push_back(available_number.get_name_leafdata());
+    if (available_percent.is_set || is_set(available_percent.yfilter)) leaf_name_data.push_back(available_percent.get_name_leafdata());
+    if (committed_number.is_set || is_set(committed_number.yfilter)) leaf_name_data.push_back(committed_number.get_name_leafdata());
+    if (committed_percent.is_set || is_set(committed_percent.yfilter)) leaf_name_data.push_back(committed_percent.get_name_leafdata());
+    if (free_number.is_set || is_set(free_number.yfilter)) leaf_name_data.push_back(free_number.get_name_leafdata());
+    if (free_percent.is_set || is_set(free_percent.yfilter)) leaf_name_data.push_back(free_percent.get_name_leafdata());
+    if (memory_status.is_set || is_set(memory_status.yfilter)) leaf_name_data.push_back(memory_status.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (used_number.is_set || is_set(used_number.yfilter)) leaf_name_data.push_back(used_number.get_name_leafdata());
+    if (used_percent.is_set || is_set(used_percent.yfilter)) leaf_name_data.push_back(used_percent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -921,104 +999,172 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "status")
     {
-        if(status_ == nullptr)
+        if(status == nullptr)
         {
-            status_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status>();
+            status = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status>();
         }
-        return status_;
+        return status;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(status_ != nullptr)
+    if(status != nullptr)
     {
-        children["status"] = status_;
+        children["status"] = status;
     }
 
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "available-number")
     {
         available_number = value;
+        available_number.value_namespace = name_space;
+        available_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "available-percent")
     {
         available_percent = value;
+        available_percent.value_namespace = name_space;
+        available_percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "committed-number")
     {
         committed_number = value;
+        committed_number.value_namespace = name_space;
+        committed_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "committed-percent")
     {
         committed_percent = value;
+        committed_percent.value_namespace = name_space;
+        committed_percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free-number")
     {
         free_number = value;
+        free_number.value_namespace = name_space;
+        free_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free-percent")
     {
         free_percent = value;
+        free_percent.value_namespace = name_space;
+        free_percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "memory-status")
     {
         memory_status = value;
+        memory_status.value_namespace = name_space;
+        memory_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-number")
     {
         used_number = value;
+        used_number.value_namespace = name_space;
+        used_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-percent")
     {
         used_percent = value;
+        used_percent.value_namespace = name_space;
+        used_percent.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::Status()
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "available-number")
+    {
+        available_number.yfilter = yfilter;
+    }
+    if(value_path == "available-percent")
+    {
+        available_percent.yfilter = yfilter;
+    }
+    if(value_path == "committed-number")
+    {
+        committed_number.yfilter = yfilter;
+    }
+    if(value_path == "committed-percent")
+    {
+        committed_percent.yfilter = yfilter;
+    }
+    if(value_path == "free-number")
+    {
+        free_number.yfilter = yfilter;
+    }
+    if(value_path == "free-percent")
+    {
+        free_percent.yfilter = yfilter;
+    }
+    if(value_path == "memory-status")
+    {
+        memory_status.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+    if(value_path == "used-number")
+    {
+        used_number.yfilter = yfilter;
+    }
+    if(value_path == "used-percent")
+    {
+        used_percent.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "status" || name == "available-number" || name == "available-percent" || name == "committed-number" || name == "committed-percent" || name == "free-number" || name == "free-percent" || name == "memory-status" || name == "total" || name == "used-number" || name == "used-percent")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::Status()
     :
-    condition{YType::str, "condition"},
-    threshold_status{YType::str, "threshold-status"},
-    threshold_value_percent{YType::uint64, "threshold-value-percent"}
+    critical_threshold_percent{YType::uint32, "critical-threshold-percent"},
+    warning_threshold_percent{YType::uint32, "warning-threshold-percent"}
 {
     yang_name = "status"; yang_parent_name = "memory-stats";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::~Status()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::~Status()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::has_data() const
 {
-    return condition.is_set
-	|| threshold_status.is_set
-	|| threshold_value_percent.is_set;
+    return critical_threshold_percent.is_set
+	|| warning_threshold_percent.is_set;
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(condition.operation)
-	|| is_set(threshold_status.operation)
-	|| is_set(threshold_value_percent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(critical_threshold_percent.yfilter)
+	|| ydk::is_set(warning_threshold_percent.yfilter);
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "status";
@@ -1027,7 +1173,7 @@ std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::Contr
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1041,9 +1187,8 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (condition.is_set || is_set(condition.operation)) leaf_name_data.push_back(condition.get_name_leafdata());
-    if (threshold_status.is_set || is_set(threshold_status.operation)) leaf_name_data.push_back(threshold_status.get_name_leafdata());
-    if (threshold_value_percent.is_set || is_set(threshold_value_percent.operation)) leaf_name_data.push_back(threshold_value_percent.get_name_leafdata());
+    if (critical_threshold_percent.is_set || is_set(critical_threshold_percent.yfilter)) leaf_name_data.push_back(critical_threshold_percent.get_name_leafdata());
+    if (warning_threshold_percent.is_set || is_set(warning_threshold_percent.yfilter)) leaf_name_data.push_back(warning_threshold_percent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1051,63 +1196,82 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::MemoryStats::Status::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "condition")
+    if(value_path == "critical-threshold-percent")
     {
-        condition = value;
+        critical_threshold_percent = value;
+        critical_threshold_percent.value_namespace = name_space;
+        critical_threshold_percent.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "threshold-status")
+    if(value_path == "warning-threshold-percent")
     {
-        threshold_status = value;
-    }
-    if(value_path == "threshold-value-percent")
-    {
-        threshold_value_percent = value;
+        warning_threshold_percent = value;
+        warning_threshold_percent.value_namespace = name_space;
+        warning_threshold_percent.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStats()
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "critical-threshold-percent")
+    {
+        critical_threshold_percent.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold-percent")
+    {
+        warning_threshold_percent.yfilter = yfilter;
+    }
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "critical-threshold-percent" || name == "warning-threshold-percent")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStats()
 {
     yang_name = "per-core-stats"; yang_parent_name = "control-process";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::~PerCoreStats()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::~PerCoreStats()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::has_data() const
 {
-    for (std::size_t index=0; index<per_core_stat_.size(); index++)
+    for (std::size_t index=0; index<per_core_stat.size(); index++)
     {
-        if(per_core_stat_[index]->has_data())
+        if(per_core_stat[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::has_operation() const
 {
-    for (std::size_t index=0; index<per_core_stat_.size(); index++)
+    for (std::size_t index=0; index<per_core_stat.size(); index++)
     {
-        if(per_core_stat_[index]->has_operation())
+        if(per_core_stat[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "per-core-stats";
@@ -1116,7 +1280,7 @@ std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::Contr
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1137,11 +1301,11 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "per-core-stat")
     {
-        for(auto const & c : per_core_stat_)
+        for(auto const & c : per_core_stat)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1149,19 +1313,19 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProc
                 return c;
             }
         }
-        auto c = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat>();
+        auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat>();
         c->parent = this;
-        per_core_stat_.push_back(c);
+        per_core_stat.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : per_core_stat_)
+    for (auto const & c : per_core_stat)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1169,13 +1333,24 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSo
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::PerCoreStat()
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "per-core-stat")
+        return true;
+    return false;
+}
+
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::PerCoreStat()
     :
-    name{YType::str, "name"},
+    name{YType::uint32, "name"},
     idle{YType::str, "idle"},
     io_wait{YType::str, "io-wait"},
     irq{YType::str, "irq"},
@@ -1187,11 +1362,11 @@ CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses:
     yang_name = "per-core-stat"; yang_parent_name = "per-core-stats";
 }
 
-CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::~PerCoreStat()
+CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::~PerCoreStat()
 {
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_data() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_data() const
 {
     return name.is_set
 	|| idle.is_set
@@ -1203,20 +1378,20 @@ bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProce
 	|| user.is_set;
 }
 
-bool CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_operation() const
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(idle.operation)
-	|| is_set(io_wait.operation)
-	|| is_set(irq.operation)
-	|| is_set(nice.operation)
-	|| is_set(sirq.operation)
-	|| is_set(system.operation)
-	|| is_set(user.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(idle.yfilter)
+	|| ydk::is_set(io_wait.yfilter)
+	|| ydk::is_set(irq.yfilter)
+	|| ydk::is_set(nice.yfilter)
+	|| ydk::is_set(sirq.yfilter)
+	|| ydk::is_set(system.yfilter)
+	|| ydk::is_set(user.yfilter);
 }
 
-std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_segment_path() const
+std::string CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "per-core-stat" <<"[name='" <<name <<"']";
@@ -1225,7 +1400,7 @@ std::string CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::Contr
 
 }
 
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_entity_path(Entity* ancestor) const
+const EntityPath CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1239,14 +1414,14 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (idle.is_set || is_set(idle.operation)) leaf_name_data.push_back(idle.get_name_leafdata());
-    if (io_wait.is_set || is_set(io_wait.operation)) leaf_name_data.push_back(io_wait.get_name_leafdata());
-    if (irq.is_set || is_set(irq.operation)) leaf_name_data.push_back(irq.get_name_leafdata());
-    if (nice.is_set || is_set(nice.operation)) leaf_name_data.push_back(nice.get_name_leafdata());
-    if (sirq.is_set || is_set(sirq.operation)) leaf_name_data.push_back(sirq.get_name_leafdata());
-    if (system.is_set || is_set(system.operation)) leaf_name_data.push_back(system.get_name_leafdata());
-    if (user.is_set || is_set(user.operation)) leaf_name_data.push_back(user.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (idle.is_set || is_set(idle.yfilter)) leaf_name_data.push_back(idle.get_name_leafdata());
+    if (io_wait.is_set || is_set(io_wait.yfilter)) leaf_name_data.push_back(io_wait.get_name_leafdata());
+    if (irq.is_set || is_set(irq.yfilter)) leaf_name_data.push_back(irq.get_name_leafdata());
+    if (nice.is_set || is_set(nice.yfilter)) leaf_name_data.push_back(nice.get_name_leafdata());
+    if (sirq.is_set || is_set(sirq.yfilter)) leaf_name_data.push_back(sirq.get_name_leafdata());
+    if (system.is_set || is_set(system.yfilter)) leaf_name_data.push_back(system.get_name_leafdata());
+    if (user.is_set || is_set(user.yfilter)) leaf_name_data.push_back(user.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1254,318 +1429,116 @@ const EntityPath CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::
 
 }
 
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CiscoPlatformSoftware::PlatformSoftwareStatusControlProcesses::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idle")
     {
         idle = value;
+        idle.value_namespace = name_space;
+        idle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "io-wait")
     {
         io_wait = value;
+        io_wait.value_namespace = name_space;
+        io_wait.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "irq")
     {
         irq = value;
+        irq.value_namespace = name_space;
+        irq.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nice")
     {
         nice = value;
+        nice.value_namespace = name_space;
+        nice.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sirq")
     {
         sirq = value;
+        sirq.value_namespace = name_space;
+        sirq.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system")
     {
         system = value;
+        system.value_namespace = name_space;
+        system.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "user")
     {
         user = value;
+        user.value_namespace = name_space;
+        user.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::PlatformSoftwareInterfaceRpActiveBriefForwarding()
-    :
-    xos_interfaces_(std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces>())
-{
-    xos_interfaces_->parent = this;
-
-    yang_name = "platform-software-interface-rp-active-brief-forwarding"; yang_parent_name = "cisco-platform-software";
-}
-
-CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::~PlatformSoftwareInterfaceRpActiveBriefForwarding()
-{
-}
-
-bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::has_data() const
-{
-    return (xos_interfaces_ !=  nullptr && xos_interfaces_->has_data());
-}
-
-bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::has_operation() const
-{
-    return is_set(operation)
-	|| (xos_interfaces_ !=  nullptr && xos_interfaces_->has_operation());
-}
-
-std::string CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "platform-software-interface-rp-active-brief-forwarding";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "xos-interfaces")
-    {
-        if(xos_interfaces_ == nullptr)
-        {
-            xos_interfaces_ = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces>();
-        }
-        return xos_interfaces_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(xos_interfaces_ != nullptr)
-    {
-        children["xos-interfaces"] = xos_interfaces_;
-    }
-
-    return children;
-}
-
-void CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::set_value(const std::string & value_path, std::string value)
-{
-}
-
-CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterfaces()
-{
-    yang_name = "xos-interfaces"; yang_parent_name = "platform-software-interface-rp-active-brief-forwarding";
-}
-
-CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::~XosInterfaces()
-{
-}
-
-bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::has_data() const
-{
-    for (std::size_t index=0; index<xos_interface_.size(); index++)
-    {
-        if(xos_interface_[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::has_operation() const
-{
-    for (std::size_t index=0; index<xos_interface_.size(); index++)
-    {
-        if(xos_interface_[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "xos-interfaces";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/platform-software-interface-rp-active-brief-forwarding/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "xos-interface")
-    {
-        for(auto const & c : xos_interface_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface>();
-        c->parent = this;
-        xos_interface_.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : xos_interface_)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::set_value(const std::string & value_path, std::string value)
-{
-}
-
-CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::XosInterface()
-    :
-    name{YType::str, "name"},
-    id{YType::uint64, "id"},
-    qfp_id{YType::uint64, "qfp-id"}
-{
-    yang_name = "xos-interface"; yang_parent_name = "xos-interfaces";
-}
-
-CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::~XosInterface()
-{
-}
-
-bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::has_data() const
-{
-    return name.is_set
-	|| id.is_set
-	|| qfp_id.is_set;
-}
-
-bool CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(id.operation)
-	|| is_set(qfp_id.operation);
-}
-
-std::string CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "xos-interface" <<"[name='" <<name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XE-platform-software-oper:cisco-platform-software/platform-software-interface-rp-active-brief-forwarding/xos-interfaces/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (qfp_id.is_set || is_set(qfp_id.operation)) leaf_name_data.push_back(qfp_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void CiscoPlatformSoftware::PlatformSoftwareInterfaceRpActiveBriefForwarding::XosInterfaces::XosInterface::set_value(const std::string & value_path, std::string value)
+void CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
-        name = value;
+        name.yfilter = yfilter;
     }
-    if(value_path == "id")
+    if(value_path == "idle")
     {
-        id = value;
+        idle.yfilter = yfilter;
     }
-    if(value_path == "qfp-id")
+    if(value_path == "io-wait")
     {
-        qfp_id = value;
+        io_wait.yfilter = yfilter;
+    }
+    if(value_path == "irq")
+    {
+        irq.yfilter = yfilter;
+    }
+    if(value_path == "nice")
+    {
+        nice.yfilter = yfilter;
+    }
+    if(value_path == "sirq")
+    {
+        sirq.yfilter = yfilter;
+    }
+    if(value_path == "system")
+    {
+        system.yfilter = yfilter;
+    }
+    if(value_path == "user")
+    {
+        user.yfilter = yfilter;
     }
 }
+
+bool CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "idle" || name == "io-wait" || name == "irq" || name == "nice" || name == "sirq" || name == "system" || name == "user")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf BFru::platform_fru_rp {0, "platform-fru-rp"};
+const Enum::YLeaf BFru::platform_fru_fp {1, "platform-fru-fp"};
+const Enum::YLeaf BFru::platform_fru_cc {2, "platform-fru-cc"};
+const Enum::YLeaf BFru::platform_fru_max {3, "platform-fru-max"};
 
 
 }

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_pbr_vservice_ea_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pbr_vservice_ea_oper {
 
 ServiceFunctionChaining::ServiceFunctionChaining()
@@ -29,7 +31,7 @@ bool ServiceFunctionChaining::has_data() const
 
 bool ServiceFunctionChaining::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::get_chil
     return children;
 }
 
-void ServiceFunctionChaining::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ServiceFunctionChaining::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string ServiceFunctionChaining::get_bundle_name() const
 augment_capabilities_function ServiceFunctionChaining::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ServiceFunctionChaining::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ServiceFunctionChaining::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool ServiceFunctionChaining::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::g
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool ServiceFunctionChaining::Nodes::Node::has_data() const
 
 bool ServiceFunctionChaining::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (process !=  nullptr && process->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process" || name == "node-name")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::Process()
@@ -324,7 +370,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::has_data() const
 
 bool ServiceFunctionChaining::Nodes::Node::Process::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (service_function !=  nullptr && service_function->has_operation())
 	|| (service_function_forwarder !=  nullptr && service_function_forwarder->has_operation())
 	|| (service_function_path !=  nullptr && service_function_path->has_operation());
@@ -413,8 +459,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-function" || name == "service-function-forwarder" || name == "service-function-path")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::ServiceFunctionPath()
@@ -437,7 +494,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::has_dat
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (path_ids !=  nullptr && path_ids->has_operation());
 }
 
@@ -496,8 +553,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-ids")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathIds()
@@ -526,7 +594,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
         if(path_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::get_segment_path() const
@@ -591,8 +659,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-id")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::PathId()
@@ -622,8 +701,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
 	|| (service_indexes !=  nullptr && service_indexes->has_operation())
 	|| (stats !=  nullptr && stats->has_operation());
 }
@@ -651,7 +730,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -698,12 +777,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-indexes" || name == "stats" || name == "id")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndexes()
@@ -732,7 +828,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
         if(service_index[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::get_segment_path() const
@@ -797,8 +893,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-index")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::ServiceIndex()
@@ -834,8 +941,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
         if(si_arr[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(index_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -862,7 +969,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -916,12 +1023,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si-arr" || name == "index")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Data()
@@ -967,8 +1091,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (sf !=  nullptr && sf->has_operation())
 	|| (sff !=  nullptr && sff->has_operation())
 	|| (sff_local !=  nullptr && sff_local->has_operation())
@@ -1000,7 +1124,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1103,12 +1227,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf" || name == "sff" || name == "sff-local" || name == "sfp" || name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Sfp()
@@ -1135,7 +1276,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -1209,8 +1350,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::SpiSi()
@@ -1233,9 +1385,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::get_segment_path() const
@@ -1261,8 +1413,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1281,16 +1433,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::Term()
@@ -1313,9 +1488,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::get_segment_path() const
@@ -1341,8 +1516,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1361,16 +1536,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::SpiSi()
@@ -1393,9 +1591,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::get_segment_path() const
@@ -1421,8 +1619,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1441,16 +1639,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::Term()
@@ -1473,9 +1694,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::get_segment_path() const
@@ -1501,8 +1722,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1521,16 +1742,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::Sf()
@@ -1553,9 +1797,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::get_segment_path() const
@@ -1581,8 +1825,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1601,16 +1845,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::Sff()
@@ -1633,9 +1900,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::get_segment_path() const
@@ -1661,8 +1928,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1681,16 +1948,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::SffLocal()
@@ -1717,11 +2007,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lookup_err_bytes.operation)
-	|| is_set(lookup_err_pkts.operation)
-	|| is_set(malformed_err_bytes.operation)
-	|| is_set(malformed_err_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lookup_err_bytes.yfilter)
+	|| ydk::is_set(lookup_err_pkts.yfilter)
+	|| ydk::is_set(malformed_err_bytes.yfilter)
+	|| ydk::is_set(malformed_err_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::get_segment_path() const
@@ -1747,10 +2037,10 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.operation)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
-    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.operation)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
-    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.operation)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
-    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.operation)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
+    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.yfilter)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
+    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.yfilter)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
+    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.yfilter)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
+    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.yfilter)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1769,24 +2059,59 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lookup-err-bytes")
     {
         lookup_err_bytes = value;
+        lookup_err_bytes.value_namespace = name_space;
+        lookup_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lookup-err-pkts")
     {
         lookup_err_pkts = value;
+        lookup_err_pkts.value_namespace = name_space;
+        lookup_err_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-bytes")
     {
         malformed_err_bytes = value;
+        malformed_err_bytes.value_namespace = name_space;
+        malformed_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-pkts")
     {
         malformed_err_pkts = value;
+        malformed_err_pkts.value_namespace = name_space;
+        malformed_err_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lookup-err-bytes")
+    {
+        lookup_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "lookup-err-pkts")
+    {
+        lookup_err_pkts.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-bytes")
+    {
+        malformed_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-pkts")
+    {
+        malformed_err_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SffLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lookup-err-bytes" || name == "lookup-err-pkts" || name == "malformed-err-bytes" || name == "malformed-err-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::SiArr()
@@ -1812,8 +2137,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(si.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(si.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -1840,7 +2165,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (si.is_set || is_set(si.operation)) leaf_name_data.push_back(si.get_name_leafdata());
+    if (si.is_set || is_set(si.yfilter)) leaf_name_data.push_back(si.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1873,12 +2198,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "si")
     {
         si = value;
+        si.value_namespace = name_space;
+        si.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "si")
+    {
+        si.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Data()
@@ -1908,8 +2250,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -1937,7 +2279,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1984,12 +2326,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::SpiSi()
@@ -2012,9 +2371,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::get_segment_path() const
@@ -2040,8 +2399,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2060,16 +2419,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::Term()
@@ -2092,9 +2474,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::get_segment_path() const
@@ -2120,8 +2502,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2140,16 +2522,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Stats()
@@ -2176,7 +2581,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (detail !=  nullptr && detail->has_operation())
 	|| (summarized !=  nullptr && summarized->has_operation());
 }
@@ -2250,8 +2655,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "summarized")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Detail()
@@ -2284,7 +2700,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
         if(si_arr[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -2364,8 +2780,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si-arr")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Data()
@@ -2411,8 +2838,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (sf !=  nullptr && sf->has_operation())
 	|| (sff !=  nullptr && sff->has_operation())
 	|| (sff_local !=  nullptr && sff_local->has_operation())
@@ -2444,7 +2871,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2547,12 +2974,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf" || name == "sff" || name == "sff-local" || name == "sfp" || name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Sfp()
@@ -2579,7 +3023,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -2653,8 +3097,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::SpiSi()
@@ -2677,9 +3132,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::get_segment_path() const
@@ -2705,8 +3160,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2725,16 +3180,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::Term()
@@ -2757,9 +3235,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::get_segment_path() const
@@ -2785,8 +3263,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2805,16 +3283,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::SpiSi()
@@ -2837,9 +3338,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::get_segment_path() const
@@ -2865,8 +3366,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2885,16 +3386,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::Term()
@@ -2917,9 +3441,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::get_segment_path() const
@@ -2945,8 +3469,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2965,16 +3489,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::Sf()
@@ -2997,9 +3544,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::get_segment_path() const
@@ -3025,8 +3572,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3045,16 +3592,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::Sff()
@@ -3077,9 +3647,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::get_segment_path() const
@@ -3105,8 +3675,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3125,16 +3695,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::SffLocal()
@@ -3161,11 +3754,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lookup_err_bytes.operation)
-	|| is_set(lookup_err_pkts.operation)
-	|| is_set(malformed_err_bytes.operation)
-	|| is_set(malformed_err_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lookup_err_bytes.yfilter)
+	|| ydk::is_set(lookup_err_pkts.yfilter)
+	|| ydk::is_set(malformed_err_bytes.yfilter)
+	|| ydk::is_set(malformed_err_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::get_segment_path() const
@@ -3191,10 +3784,10 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.operation)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
-    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.operation)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
-    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.operation)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
-    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.operation)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
+    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.yfilter)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
+    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.yfilter)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
+    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.yfilter)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
+    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.yfilter)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3213,24 +3806,59 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lookup-err-bytes")
     {
         lookup_err_bytes = value;
+        lookup_err_bytes.value_namespace = name_space;
+        lookup_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lookup-err-pkts")
     {
         lookup_err_pkts = value;
+        lookup_err_pkts.value_namespace = name_space;
+        lookup_err_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-bytes")
     {
         malformed_err_bytes = value;
+        malformed_err_bytes.value_namespace = name_space;
+        malformed_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-pkts")
     {
         malformed_err_pkts = value;
+        malformed_err_pkts.value_namespace = name_space;
+        malformed_err_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lookup-err-bytes")
+    {
+        lookup_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "lookup-err-pkts")
+    {
+        lookup_err_pkts.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-bytes")
+    {
+        malformed_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-pkts")
+    {
+        malformed_err_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SffLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lookup-err-bytes" || name == "lookup-err-pkts" || name == "malformed-err-bytes" || name == "malformed-err-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::SiArr()
@@ -3256,8 +3884,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(si.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(si.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -3284,7 +3912,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (si.is_set || is_set(si.operation)) leaf_name_data.push_back(si.get_name_leafdata());
+    if (si.is_set || is_set(si.yfilter)) leaf_name_data.push_back(si.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3317,12 +3945,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "si")
     {
         si = value;
+        si.value_namespace = name_space;
+        si.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "si")
+    {
+        si.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Data()
@@ -3352,8 +3997,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -3381,7 +4026,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3428,12 +4073,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::SpiSi()
@@ -3456,9 +4118,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::get_segment_path() const
@@ -3484,8 +4146,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3504,16 +4166,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::Term()
@@ -3536,9 +4221,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::get_segment_path() const
@@ -3564,8 +4249,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3584,16 +4269,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Summarized()
@@ -3626,7 +4334,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
         if(si_arr[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -3706,8 +4414,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si-arr")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Data()
@@ -3753,8 +4472,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (sf !=  nullptr && sf->has_operation())
 	|| (sff !=  nullptr && sff->has_operation())
 	|| (sff_local !=  nullptr && sff_local->has_operation())
@@ -3786,7 +4505,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3889,12 +4608,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf" || name == "sff" || name == "sff-local" || name == "sfp" || name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Sfp()
@@ -3921,7 +4657,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -3995,8 +4731,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::SpiSi()
@@ -4019,9 +4766,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::get_segment_path() const
@@ -4047,8 +4794,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4067,16 +4814,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::Term()
@@ -4099,9 +4869,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::get_segment_path() const
@@ -4127,8 +4897,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4147,16 +4917,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::SpiSi()
@@ -4179,9 +4972,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::get_segment_path() const
@@ -4207,8 +5000,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4227,16 +5020,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::Term()
@@ -4259,9 +5075,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::get_segment_path() const
@@ -4287,8 +5103,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4307,16 +5123,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::Sf()
@@ -4339,9 +5178,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::get_segment_path() const
@@ -4367,8 +5206,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4387,16 +5226,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::Sff()
@@ -4419,9 +5281,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::get_segment_path() const
@@ -4447,8 +5309,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4467,16 +5329,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::SffLocal()
@@ -4503,11 +5388,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lookup_err_bytes.operation)
-	|| is_set(lookup_err_pkts.operation)
-	|| is_set(malformed_err_bytes.operation)
-	|| is_set(malformed_err_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lookup_err_bytes.yfilter)
+	|| ydk::is_set(lookup_err_pkts.yfilter)
+	|| ydk::is_set(malformed_err_bytes.yfilter)
+	|| ydk::is_set(malformed_err_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::get_segment_path() const
@@ -4533,10 +5418,10 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.operation)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
-    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.operation)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
-    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.operation)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
-    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.operation)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
+    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.yfilter)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
+    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.yfilter)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
+    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.yfilter)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
+    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.yfilter)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4555,24 +5440,59 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lookup-err-bytes")
     {
         lookup_err_bytes = value;
+        lookup_err_bytes.value_namespace = name_space;
+        lookup_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lookup-err-pkts")
     {
         lookup_err_pkts = value;
+        lookup_err_pkts.value_namespace = name_space;
+        lookup_err_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-bytes")
     {
         malformed_err_bytes = value;
+        malformed_err_bytes.value_namespace = name_space;
+        malformed_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-pkts")
     {
         malformed_err_pkts = value;
+        malformed_err_pkts.value_namespace = name_space;
+        malformed_err_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lookup-err-bytes")
+    {
+        lookup_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "lookup-err-pkts")
+    {
+        lookup_err_pkts.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-bytes")
+    {
+        malformed_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-pkts")
+    {
+        malformed_err_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SffLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lookup-err-bytes" || name == "lookup-err-pkts" || name == "malformed-err-bytes" || name == "malformed-err-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::SiArr()
@@ -4598,8 +5518,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(si.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(si.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -4626,7 +5546,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (si.is_set || is_set(si.operation)) leaf_name_data.push_back(si.get_name_leafdata());
+    if (si.is_set || is_set(si.yfilter)) leaf_name_data.push_back(si.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4659,12 +5579,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "si")
     {
         si = value;
+        si.value_namespace = name_space;
+        si.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "si")
+    {
+        si.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Data()
@@ -4694,8 +5631,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -4723,7 +5660,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4770,12 +5707,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::SpiSi()
@@ -4798,9 +5752,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::get_segment_path() const
@@ -4826,8 +5780,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4846,16 +5800,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::Term()
@@ -4878,9 +5855,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::get_segment_path() const
@@ -4906,8 +5883,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4926,16 +5903,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::ServiceFunction()
@@ -4958,7 +5958,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::has_data() 
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sf_names !=  nullptr && sf_names->has_operation());
 }
 
@@ -5017,8 +6017,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf-names")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfNames()
@@ -5047,7 +6058,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::ha
         if(sf_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::get_segment_path() const
@@ -5112,8 +6123,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf-name")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SfName()
@@ -5149,8 +6171,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
         if(si_arr[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -5177,7 +6199,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5231,12 +6253,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si-arr" || name == "name")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Data()
@@ -5282,8 +6321,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (sf !=  nullptr && sf->has_operation())
 	|| (sff !=  nullptr && sff->has_operation())
 	|| (sff_local !=  nullptr && sff_local->has_operation())
@@ -5315,7 +6354,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5418,12 +6457,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf" || name == "sff" || name == "sff-local" || name == "sfp" || name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Sfp()
@@ -5450,7 +6506,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -5524,8 +6580,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::SpiSi()
@@ -5548,9 +6615,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::get_segment_path() const
@@ -5576,8 +6643,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5596,16 +6663,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::Term()
@@ -5628,9 +6718,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::get_segment_path() const
@@ -5656,8 +6746,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5676,16 +6766,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::SpiSi()
@@ -5708,9 +6821,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::get_segment_path() const
@@ -5736,8 +6849,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5756,16 +6869,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::Term()
@@ -5788,9 +6924,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::get_segment_path() const
@@ -5816,8 +6952,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5836,16 +6972,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::Sf()
@@ -5868,9 +7027,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::get_segment_path() const
@@ -5896,8 +7055,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5916,16 +7075,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::Sff()
@@ -5948,9 +7130,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::get_segment_path() const
@@ -5976,8 +7158,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5996,16 +7178,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::SffLocal()
@@ -6032,11 +7237,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lookup_err_bytes.operation)
-	|| is_set(lookup_err_pkts.operation)
-	|| is_set(malformed_err_bytes.operation)
-	|| is_set(malformed_err_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lookup_err_bytes.yfilter)
+	|| ydk::is_set(lookup_err_pkts.yfilter)
+	|| ydk::is_set(malformed_err_bytes.yfilter)
+	|| ydk::is_set(malformed_err_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::get_segment_path() const
@@ -6062,10 +7267,10 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.operation)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
-    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.operation)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
-    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.operation)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
-    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.operation)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
+    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.yfilter)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
+    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.yfilter)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
+    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.yfilter)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
+    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.yfilter)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6084,24 +7289,59 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lookup-err-bytes")
     {
         lookup_err_bytes = value;
+        lookup_err_bytes.value_namespace = name_space;
+        lookup_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lookup-err-pkts")
     {
         lookup_err_pkts = value;
+        lookup_err_pkts.value_namespace = name_space;
+        lookup_err_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-bytes")
     {
         malformed_err_bytes = value;
+        malformed_err_bytes.value_namespace = name_space;
+        malformed_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-pkts")
     {
         malformed_err_pkts = value;
+        malformed_err_pkts.value_namespace = name_space;
+        malformed_err_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lookup-err-bytes")
+    {
+        lookup_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "lookup-err-pkts")
+    {
+        lookup_err_pkts.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-bytes")
+    {
+        malformed_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-pkts")
+    {
+        malformed_err_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::SffLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lookup-err-bytes" || name == "lookup-err-pkts" || name == "malformed-err-bytes" || name == "malformed-err-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::SiArr()
@@ -6127,8 +7367,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(si.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(si.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -6155,7 +7395,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (si.is_set || is_set(si.operation)) leaf_name_data.push_back(si.get_name_leafdata());
+    if (si.is_set || is_set(si.yfilter)) leaf_name_data.push_back(si.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6188,12 +7428,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "si")
     {
         si = value;
+        si.value_namespace = name_space;
+        si.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "si")
+    {
+        si.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Data()
@@ -6223,8 +7480,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -6252,7 +7509,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6299,12 +7556,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::SpiSi()
@@ -6327,9 +7601,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::get_segment_path() const
@@ -6355,8 +7629,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6375,16 +7649,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::Term()
@@ -6407,9 +7704,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::get_segment_path() const
@@ -6435,8 +7732,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6455,16 +7752,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::ServiceFunctionForwarder()
@@ -6491,7 +7811,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::ha
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (local !=  nullptr && local->has_operation())
 	|| (sff_names !=  nullptr && sff_names->has_operation());
 }
@@ -6565,8 +7885,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local" || name == "sff-names")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Local()
@@ -6589,7 +7920,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (error !=  nullptr && error->has_operation());
 }
 
@@ -6648,8 +7979,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Error()
@@ -6682,7 +8024,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
         if(si_arr[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -6762,8 +8104,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si-arr")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Data()
@@ -6809,8 +8162,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (sf !=  nullptr && sf->has_operation())
 	|| (sff !=  nullptr && sff->has_operation())
 	|| (sff_local !=  nullptr && sff_local->has_operation())
@@ -6842,7 +8195,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6945,12 +8298,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf" || name == "sff" || name == "sff-local" || name == "sfp" || name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Sfp()
@@ -6977,7 +8347,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -7051,8 +8421,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::SpiSi()
@@ -7075,9 +8456,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::get_segment_path() const
@@ -7103,8 +8484,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7123,16 +8504,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::Term()
@@ -7155,9 +8559,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::get_segment_path() const
@@ -7183,8 +8587,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7203,16 +8607,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::SpiSi()
@@ -7235,9 +8662,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::get_segment_path() const
@@ -7263,8 +8690,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7283,16 +8710,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::Term()
@@ -7315,9 +8765,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::get_segment_path() const
@@ -7343,8 +8793,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7363,16 +8813,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::Sf()
@@ -7395,9 +8868,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::get_segment_path() const
@@ -7423,8 +8896,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7443,16 +8916,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::Sff()
@@ -7475,9 +8971,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::get_segment_path() const
@@ -7503,8 +8999,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7523,16 +9019,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::SffLocal()
@@ -7559,11 +9078,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lookup_err_bytes.operation)
-	|| is_set(lookup_err_pkts.operation)
-	|| is_set(malformed_err_bytes.operation)
-	|| is_set(malformed_err_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lookup_err_bytes.yfilter)
+	|| ydk::is_set(lookup_err_pkts.yfilter)
+	|| ydk::is_set(malformed_err_bytes.yfilter)
+	|| ydk::is_set(malformed_err_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::get_segment_path() const
@@ -7589,10 +9108,10 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.operation)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
-    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.operation)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
-    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.operation)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
-    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.operation)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
+    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.yfilter)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
+    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.yfilter)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
+    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.yfilter)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
+    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.yfilter)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7611,24 +9130,59 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lookup-err-bytes")
     {
         lookup_err_bytes = value;
+        lookup_err_bytes.value_namespace = name_space;
+        lookup_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lookup-err-pkts")
     {
         lookup_err_pkts = value;
+        lookup_err_pkts.value_namespace = name_space;
+        lookup_err_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-bytes")
     {
         malformed_err_bytes = value;
+        malformed_err_bytes.value_namespace = name_space;
+        malformed_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-pkts")
     {
         malformed_err_pkts = value;
+        malformed_err_pkts.value_namespace = name_space;
+        malformed_err_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lookup-err-bytes")
+    {
+        lookup_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "lookup-err-pkts")
+    {
+        lookup_err_pkts.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-bytes")
+    {
+        malformed_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-pkts")
+    {
+        malformed_err_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::SffLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lookup-err-bytes" || name == "lookup-err-pkts" || name == "malformed-err-bytes" || name == "malformed-err-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::SiArr()
@@ -7654,8 +9208,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(si.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(si.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -7682,7 +9236,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (si.is_set || is_set(si.operation)) leaf_name_data.push_back(si.get_name_leafdata());
+    if (si.is_set || is_set(si.yfilter)) leaf_name_data.push_back(si.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7715,12 +9269,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "si")
     {
         si = value;
+        si.value_namespace = name_space;
+        si.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "si")
+    {
+        si.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Data()
@@ -7750,8 +9321,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -7779,7 +9350,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7826,12 +9397,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::SpiSi()
@@ -7854,9 +9442,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::get_segment_path() const
@@ -7882,8 +9470,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7902,16 +9490,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::Term()
@@ -7934,9 +9545,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::get_segment_path() const
@@ -7962,8 +9573,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7982,16 +9593,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffNames()
@@ -8020,7 +9654,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
         if(sff_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::get_segment_path() const
@@ -8085,8 +9719,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sff-name")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SffName()
@@ -8122,8 +9767,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
         if(si_arr[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -8150,7 +9795,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8204,12 +9849,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si-arr" || name == "name")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Data()
@@ -8255,8 +9917,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (sf !=  nullptr && sf->has_operation())
 	|| (sff !=  nullptr && sff->has_operation())
 	|| (sff_local !=  nullptr && sff_local->has_operation())
@@ -8288,7 +9950,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8391,12 +10053,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sf" || name == "sff" || name == "sff-local" || name == "sfp" || name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Sfp()
@@ -8423,7 +10102,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -8497,8 +10176,19 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::SpiSi()
@@ -8521,9 +10211,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::get_segment_path() const
@@ -8549,8 +10239,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8569,16 +10259,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::Term()
@@ -8601,9 +10314,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::get_segment_path() const
@@ -8629,8 +10342,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8649,16 +10362,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::SpiSi()
@@ -8681,9 +10417,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::get_segment_path() const
@@ -8709,8 +10445,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8729,16 +10465,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::Term()
@@ -8761,9 +10520,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::get_segment_path() const
@@ -8789,8 +10548,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8809,16 +10568,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::Sf()
@@ -8841,9 +10623,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::get_segment_path() const
@@ -8869,8 +10651,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8889,16 +10671,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::Sff()
@@ -8921,9 +10726,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::get_segment_path() const
@@ -8949,8 +10754,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8969,16 +10774,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sff::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::SffLocal()
@@ -9005,11 +10833,11 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lookup_err_bytes.operation)
-	|| is_set(lookup_err_pkts.operation)
-	|| is_set(malformed_err_bytes.operation)
-	|| is_set(malformed_err_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lookup_err_bytes.yfilter)
+	|| ydk::is_set(lookup_err_pkts.yfilter)
+	|| ydk::is_set(malformed_err_bytes.yfilter)
+	|| ydk::is_set(malformed_err_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::get_segment_path() const
@@ -9035,10 +10863,10 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.operation)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
-    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.operation)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
-    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.operation)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
-    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.operation)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
+    if (lookup_err_bytes.is_set || is_set(lookup_err_bytes.yfilter)) leaf_name_data.push_back(lookup_err_bytes.get_name_leafdata());
+    if (lookup_err_pkts.is_set || is_set(lookup_err_pkts.yfilter)) leaf_name_data.push_back(lookup_err_pkts.get_name_leafdata());
+    if (malformed_err_bytes.is_set || is_set(malformed_err_bytes.yfilter)) leaf_name_data.push_back(malformed_err_bytes.get_name_leafdata());
+    if (malformed_err_pkts.is_set || is_set(malformed_err_pkts.yfilter)) leaf_name_data.push_back(malformed_err_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9057,24 +10885,59 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lookup-err-bytes")
     {
         lookup_err_bytes = value;
+        lookup_err_bytes.value_namespace = name_space;
+        lookup_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lookup-err-pkts")
     {
         lookup_err_pkts = value;
+        lookup_err_pkts.value_namespace = name_space;
+        lookup_err_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-bytes")
     {
         malformed_err_bytes = value;
+        malformed_err_bytes.value_namespace = name_space;
+        malformed_err_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "malformed-err-pkts")
     {
         malformed_err_pkts = value;
+        malformed_err_pkts.value_namespace = name_space;
+        malformed_err_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lookup-err-bytes")
+    {
+        lookup_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "lookup-err-pkts")
+    {
+        lookup_err_pkts.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-bytes")
+    {
+        malformed_err_bytes.yfilter = yfilter;
+    }
+    if(value_path == "malformed-err-pkts")
+    {
+        malformed_err_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::SffLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lookup-err-bytes" || name == "lookup-err-pkts" || name == "malformed-err-bytes" || name == "malformed-err-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::SiArr()
@@ -9100,8 +10963,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(si.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(si.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -9128,7 +10991,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (si.is_set || is_set(si.operation)) leaf_name_data.push_back(si.get_name_leafdata());
+    if (si.is_set || is_set(si.yfilter)) leaf_name_data.push_back(si.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9161,12 +11024,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "si")
     {
         si = value;
+        si.value_namespace = name_space;
+        si.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "si")
+    {
+        si.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "si")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Data()
@@ -9196,8 +11076,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (spi_si !=  nullptr && spi_si->has_operation())
 	|| (term !=  nullptr && term->has_operation());
 }
@@ -9225,7 +11105,7 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9272,12 +11152,29 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "spi-si" || name == "term" || name == "type")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::SpiSi()
@@ -9300,9 +11197,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(processed_bytes.operation)
-	|| is_set(processed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(processed_bytes.yfilter)
+	|| ydk::is_set(processed_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::get_segment_path() const
@@ -9328,8 +11225,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (processed_bytes.is_set || is_set(processed_bytes.operation)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
-    if (processed_pkts.is_set || is_set(processed_pkts.operation)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
+    if (processed_bytes.is_set || is_set(processed_bytes.yfilter)) leaf_name_data.push_back(processed_bytes.get_name_leafdata());
+    if (processed_pkts.is_set || is_set(processed_pkts.yfilter)) leaf_name_data.push_back(processed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9348,16 +11245,39 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "processed-bytes")
     {
         processed_bytes = value;
+        processed_bytes.value_namespace = name_space;
+        processed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "processed-pkts")
     {
         processed_pkts = value;
+        processed_pkts.value_namespace = name_space;
+        processed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "processed-bytes")
+    {
+        processed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "processed-pkts")
+    {
+        processed_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "processed-bytes" || name == "processed-pkts")
+        return true;
+    return false;
 }
 
 ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::Term()
@@ -9380,9 +11300,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(terminated_bytes.operation)
-	|| is_set(terminated_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(terminated_bytes.yfilter)
+	|| ydk::is_set(terminated_pkts.yfilter);
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::get_segment_path() const
@@ -9408,8 +11328,8 @@ const EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionF
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (terminated_bytes.is_set || is_set(terminated_bytes.operation)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
-    if (terminated_pkts.is_set || is_set(terminated_pkts.operation)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
+    if (terminated_bytes.is_set || is_set(terminated_bytes.yfilter)) leaf_name_data.push_back(terminated_bytes.get_name_leafdata());
+    if (terminated_pkts.is_set || is_set(terminated_pkts.yfilter)) leaf_name_data.push_back(terminated_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9428,26 +11348,49 @@ std::map<std::string, std::shared_ptr<Entity>> ServiceFunctionChaining::Nodes::N
     return children;
 }
 
-void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::set_value(const std::string & value_path, std::string value)
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "terminated-bytes")
     {
         terminated_bytes = value;
+        terminated_bytes.value_namespace = name_space;
+        terminated_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminated-pkts")
     {
         terminated_pkts = value;
+        terminated_pkts.value_namespace = name_space;
+        terminated_pkts.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_spi_si {0, "vs-nsh-stats-spi-si"};
-const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_ter_min_ate {1, "vs-nsh-stats-ter-min-ate"};
-const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sf {2, "vs-nsh-stats-sf"};
-const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sff {3, "vs-nsh-stats-sff"};
-const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sff_local {4, "vs-nsh-stats-sff-local"};
-const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sfp {5, "vs-nsh-stats-sfp"};
-const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sfp_detail {6, "vs-nsh-stats-sfp-detail"};
-const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_max {7, "vs-nsh-stats-max"};
+void ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "terminated-bytes")
+    {
+        terminated_bytes.yfilter = yfilter;
+    }
+    if(value_path == "terminated-pkts")
+    {
+        terminated_pkts.yfilter = yfilter;
+    }
+}
+
+bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "terminated-bytes" || name == "terminated-pkts")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf VsNshStats::vs_nsh_stats_spi_si {0, "vs-nsh-stats-spi-si"};
+const Enum::YLeaf VsNshStats::vs_nsh_stats_ter_min_ate {1, "vs-nsh-stats-ter-min-ate"};
+const Enum::YLeaf VsNshStats::vs_nsh_stats_sf {2, "vs-nsh-stats-sf"};
+const Enum::YLeaf VsNshStats::vs_nsh_stats_sff {3, "vs-nsh-stats-sff"};
+const Enum::YLeaf VsNshStats::vs_nsh_stats_sff_local {4, "vs-nsh-stats-sff-local"};
+const Enum::YLeaf VsNshStats::vs_nsh_stats_sfp {5, "vs-nsh-stats-sfp"};
+const Enum::YLeaf VsNshStats::vs_nsh_stats_sfp_detail {6, "vs-nsh-stats-sfp-detail"};
+const Enum::YLeaf VsNshStats::vs_nsh_stats_max {7, "vs-nsh-stats-max"};
 
 
 }

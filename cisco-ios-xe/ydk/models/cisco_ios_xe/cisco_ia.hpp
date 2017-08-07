@@ -7,37 +7,40 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace cisco_ia {
 
-class SyncFromRpc : public Entity
+class SyncFrom : public ydk::Entity
 {
     public:
-        SyncFromRpc();
-        ~SyncFromRpc();
+        SyncFrom();
+        ~SyncFrom();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: SyncFromRpc::Input
-        class Output; //type: SyncFromRpc::Output
+        class Input; //type: SyncFrom::Input
+        class Output; //type: SyncFrom::Output
 
-        std::shared_ptr<cisco_ia::SyncFromRpc::Input> input_;
-        std::shared_ptr<cisco_ia::SyncFromRpc::Output> output_;
+        std::shared_ptr<cisco_ia::SyncFrom::Input> input;
+        std::shared_ptr<cisco_ia::SyncFrom::Output> output;
         
-}; // SyncFromRpc
+}; // SyncFrom
 
 
-class SyncFromRpc::Input : public Entity
+class SyncFrom::Input : public ydk::Entity
 {
     public:
         Input();
@@ -45,18 +48,21 @@ class SyncFromRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sync_defaults; //type: empty
+        ydk::YLeaf sync_defaults; //type: empty
+        ydk::YLeaf ignore_presrv_paths; //type: empty
 
-}; // SyncFromRpc::Input
+}; // SyncFrom::Input
 
 
-class SyncFromRpc::Output : public Entity
+class SyncFrom::Output : public ydk::Entity
 {
     public:
         Output();
@@ -64,42 +70,47 @@ class SyncFromRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf result; //type: string
+        ydk::YLeaf result; //type: string
 
-}; // SyncFromRpc::Output
+}; // SyncFrom::Output
 
-class SaveConfigRpc : public Entity
+class SaveConfig : public ydk::Entity
 {
     public:
-        SaveConfigRpc();
-        ~SaveConfigRpc();
+        SaveConfig();
+        ~SaveConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Output; //type: SaveConfigRpc::Output
+        class Output; //type: SaveConfig::Output
 
-        std::shared_ptr<cisco_ia::SaveConfigRpc::Output> output_;
+        std::shared_ptr<cisco_ia::SaveConfig::Output> output;
         
-}; // SaveConfigRpc
+}; // SaveConfig
 
 
-class SaveConfigRpc::Output : public Entity
+class SaveConfig::Output : public ydk::Entity
 {
     public:
         Output();
@@ -107,42 +118,47 @@ class SaveConfigRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf result; //type: string
+        ydk::YLeaf result; //type: string
 
-}; // SaveConfigRpc::Output
+}; // SaveConfig::Output
 
-class CheckpointRpc : public Entity
+class IsSyncing : public ydk::Entity
 {
     public:
-        CheckpointRpc();
-        ~CheckpointRpc();
+        IsSyncing();
+        ~IsSyncing();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Output; //type: CheckpointRpc::Output
+        class Output; //type: IsSyncing::Output
 
-        std::shared_ptr<cisco_ia::CheckpointRpc::Output> output_;
+        std::shared_ptr<cisco_ia::IsSyncing::Output> output;
         
-}; // CheckpointRpc
+}; // IsSyncing
 
 
-class CheckpointRpc::Output : public Entity
+class IsSyncing::Output : public ydk::Entity
 {
     public:
         Output();
@@ -150,44 +166,97 @@ class CheckpointRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf result; //type: string
+        ydk::YLeaf result; //type: string
 
-}; // CheckpointRpc::Output
+}; // IsSyncing::Output
 
-class RevertRpc : public Entity
+class Checkpoint : public ydk::Entity
 {
     public:
-        RevertRpc();
-        ~RevertRpc();
+        Checkpoint();
+        ~Checkpoint();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: RevertRpc::Input
-        class Output; //type: RevertRpc::Output
+        class Output; //type: Checkpoint::Output
 
-        std::shared_ptr<cisco_ia::RevertRpc::Input> input_;
-        std::shared_ptr<cisco_ia::RevertRpc::Output> output_;
+        std::shared_ptr<cisco_ia::Checkpoint::Output> output;
         
-}; // RevertRpc
+}; // Checkpoint
 
 
-class RevertRpc::Input : public Entity
+class Checkpoint::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf result; //type: string
+
+}; // Checkpoint::Output
+
+class Revert : public ydk::Entity
+{
+    public:
+        Revert();
+        ~Revert();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Input; //type: Revert::Input
+        class Output; //type: Revert::Output
+
+        std::shared_ptr<cisco_ia::Revert::Input> input;
+        std::shared_ptr<cisco_ia::Revert::Output> output;
+        
+}; // Revert
+
+
+class Revert::Input : public ydk::Entity
 {
     public:
         Input();
@@ -195,20 +264,22 @@ class RevertRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf now; //type: empty
-        YLeaf timer; //type: int16
-        YLeaf idle; //type: int16
+        ydk::YLeaf now; //type: empty
+        ydk::YLeaf timer; //type: int16
+        ydk::YLeaf idle; //type: int16
 
-}; // RevertRpc::Input
+}; // Revert::Input
 
 
-class RevertRpc::Output : public Entity
+class Revert::Output : public ydk::Entity
 {
     public:
         Output();
@@ -216,44 +287,49 @@ class RevertRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf result; //type: string
+        ydk::YLeaf result; //type: string
 
-}; // RevertRpc::Output
+}; // Revert::Output
 
-class RollbackRpc : public Entity
+class Rollback : public ydk::Entity
 {
     public:
-        RollbackRpc();
-        ~RollbackRpc();
+        Rollback();
+        ~Rollback();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: RollbackRpc::Input
-        class Output; //type: RollbackRpc::Output
+        class Input; //type: Rollback::Input
+        class Output; //type: Rollback::Output
 
-        std::shared_ptr<cisco_ia::RollbackRpc::Input> input_;
-        std::shared_ptr<cisco_ia::RollbackRpc::Output> output_;
+        std::shared_ptr<cisco_ia::Rollback::Input> input;
+        std::shared_ptr<cisco_ia::Rollback::Output> output;
         
-}; // RollbackRpc
+}; // Rollback
 
 
-class RollbackRpc::Input : public Entity
+class Rollback::Input : public ydk::Entity
 {
     public:
         Input();
@@ -261,22 +337,24 @@ class RollbackRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf target_url; //type: string
-        YLeaf verbose; //type: boolean
-        YLeaf nolock; //type: boolean
-        YLeaf revert_on_error; //type: empty
-        YLeaf revert_timer; //type: int16
+        ydk::YLeaf target_url; //type: string
+        ydk::YLeaf verbose; //type: boolean
+        ydk::YLeaf nolock; //type: boolean
+        ydk::YLeaf revert_on_error; //type: empty
+        ydk::YLeaf revert_timer; //type: int16
 
-}; // RollbackRpc::Input
+}; // Rollback::Input
 
 
-class RollbackRpc::Output : public Entity
+class Rollback::Output : public ydk::Entity
 {
     public:
         Output();
@@ -284,61 +362,63 @@ class RollbackRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf result; //type: string
+        ydk::YLeaf result; //type: string
 
-}; // RollbackRpc::Output
+}; // Rollback::Output
 
-class CiaLogLevelEnum : public Enum
+class CiaLogLevel : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf error;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf information;
-        static const Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf debug;
 
 };
 
-class CiaSyncTypeEnum : public Enum
+class CiaSyncType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disabled;
-        static const Enum::YLeaf without_defaults;
-        static const Enum::YLeaf include_defaults;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf without_defaults;
+        static const ydk::Enum::YLeaf include_defaults;
 
 };
 
-class SyslogSeverityEnum : public Enum
+class SyslogSeverity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf emergency;
-        static const Enum::YLeaf alert;
-        static const Enum::YLeaf critical;
-        static const Enum::YLeaf error;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf notice;
-        static const Enum::YLeaf info;
-        static const Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf emergency;
+        static const ydk::Enum::YLeaf alert;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf notice;
+        static const ydk::Enum::YLeaf info;
+        static const ydk::Enum::YLeaf debug;
 
 };
 
-class OnepLogLevelEnum : public Enum
+class OnepLogLevel : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf fatal;
-        static const Enum::YLeaf error;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf information;
-        static const Enum::YLeaf debug;
-        static const Enum::YLeaf trace;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf fatal;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf trace;
 
 };
 

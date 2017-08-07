@@ -6,69 +6,71 @@
 #include "generated_entity_lookup.hpp"
 #include "cisco_ethernet.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace cisco_ethernet {
 
-EthIfSpeedIdentity::EthIfSpeedIdentity()
-     : Identity("cisco-ethernet:eth-if-speed")
+EthIfSpeed::EthIfSpeed()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed")
 {
 }
 
-EthIfSpeedIdentity::~EthIfSpeedIdentity()
+EthIfSpeed::~EthIfSpeed()
 {
 }
 
-EthIfSpeed1GbIdentity::EthIfSpeed1GbIdentity()
-     : Identity("cisco-ethernet:eth-if-speed-1gb")
+EthIfSpeed40Gb::EthIfSpeed40Gb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-40gb")
 {
 }
 
-EthIfSpeed1GbIdentity::~EthIfSpeed1GbIdentity()
+EthIfSpeed40Gb::~EthIfSpeed40Gb()
 {
 }
 
-EthIfSpeed40GbIdentity::EthIfSpeed40GbIdentity()
-     : Identity("cisco-ethernet:eth-if-speed-40gb")
+EthIfSpeed100Gb::EthIfSpeed100Gb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-100gb")
 {
 }
 
-EthIfSpeed40GbIdentity::~EthIfSpeed40GbIdentity()
+EthIfSpeed100Gb::~EthIfSpeed100Gb()
 {
 }
 
-EthIfSpeed10MbIdentity::EthIfSpeed10MbIdentity()
-     : Identity("cisco-ethernet:eth-if-speed-10mb")
+EthIfSpeed100Mb::EthIfSpeed100Mb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-100mb")
 {
 }
 
-EthIfSpeed10MbIdentity::~EthIfSpeed10MbIdentity()
+EthIfSpeed100Mb::~EthIfSpeed100Mb()
 {
 }
 
-EthIfSpeed10GbIdentity::EthIfSpeed10GbIdentity()
-     : Identity("cisco-ethernet:eth-if-speed-10gb")
+EthIfSpeed1Gb::EthIfSpeed1Gb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-1gb")
 {
 }
 
-EthIfSpeed10GbIdentity::~EthIfSpeed10GbIdentity()
+EthIfSpeed1Gb::~EthIfSpeed1Gb()
 {
 }
 
-EthIfSpeed100GbIdentity::EthIfSpeed100GbIdentity()
-     : Identity("cisco-ethernet:eth-if-speed-100gb")
+EthIfSpeed10Gb::EthIfSpeed10Gb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-10gb")
 {
 }
 
-EthIfSpeed100GbIdentity::~EthIfSpeed100GbIdentity()
+EthIfSpeed10Gb::~EthIfSpeed10Gb()
 {
 }
 
-EthIfSpeed100MbIdentity::EthIfSpeed100MbIdentity()
-     : Identity("cisco-ethernet:eth-if-speed-100mb")
+EthIfSpeed10Mb::EthIfSpeed10Mb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-10mb")
 {
 }
 
-EthIfSpeed100MbIdentity::~EthIfSpeed100MbIdentity()
+EthIfSpeed10Mb::~EthIfSpeed10Mb()
 {
 }
 

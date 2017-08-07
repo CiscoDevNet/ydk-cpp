@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_arp_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_arp_oper {
 
 ArpGmp::ArpGmp()
@@ -33,7 +35,7 @@ bool ArpGmp::has_data() const
 
 bool ArpGmp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (vrf_infos !=  nullptr && vrf_infos->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::get_children() const
     return children;
 }
 
-void ArpGmp::set_value(const std::string & value_path, std::string value)
+void ArpGmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ArpGmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string ArpGmp::get_bundle_name() const
 augment_capabilities_function ArpGmp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ArpGmp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ArpGmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-infos" || name == "vrfs")
+        return true;
+    return false;
 }
 
 ArpGmp::VrfInfos::VrfInfos()
@@ -154,7 +172,7 @@ bool ArpGmp::VrfInfos::has_operation() const
         if(vrf_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ArpGmp::VrfInfos::get_segment_path() const
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::VrfInfos::get_children() 
     return children;
 }
 
-void ArpGmp::VrfInfos::set_value(const std::string & value_path, std::string value)
+void ArpGmp::VrfInfos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ArpGmp::VrfInfos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ArpGmp::VrfInfos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-info")
+        return true;
+    return false;
 }
 
 ArpGmp::VrfInfos::VrfInfo::VrfInfo()
@@ -251,13 +280,13 @@ bool ArpGmp::VrfInfos::VrfInfo::has_data() const
 
 bool ArpGmp::VrfInfos::VrfInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(rsi_handle.operation)
-	|| is_set(rsi_handle_high.operation)
-	|| is_set(table_id.operation)
-	|| is_set(vrf_id_number.operation)
-	|| is_set(vrf_name_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(rsi_handle.yfilter)
+	|| ydk::is_set(rsi_handle_high.yfilter)
+	|| ydk::is_set(table_id.yfilter)
+	|| ydk::is_set(vrf_id_number.yfilter)
+	|| ydk::is_set(vrf_name_xr.yfilter);
 }
 
 std::string ArpGmp::VrfInfos::VrfInfo::get_segment_path() const
@@ -283,12 +312,12 @@ const EntityPath ArpGmp::VrfInfos::VrfInfo::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (rsi_handle.is_set || is_set(rsi_handle.operation)) leaf_name_data.push_back(rsi_handle.get_name_leafdata());
-    if (rsi_handle_high.is_set || is_set(rsi_handle_high.operation)) leaf_name_data.push_back(rsi_handle_high.get_name_leafdata());
-    if (table_id.is_set || is_set(table_id.operation)) leaf_name_data.push_back(table_id.get_name_leafdata());
-    if (vrf_id_number.is_set || is_set(vrf_id_number.operation)) leaf_name_data.push_back(vrf_id_number.get_name_leafdata());
-    if (vrf_name_xr.is_set || is_set(vrf_name_xr.operation)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (rsi_handle.is_set || is_set(rsi_handle.yfilter)) leaf_name_data.push_back(rsi_handle.get_name_leafdata());
+    if (rsi_handle_high.is_set || is_set(rsi_handle_high.yfilter)) leaf_name_data.push_back(rsi_handle_high.get_name_leafdata());
+    if (table_id.is_set || is_set(table_id.yfilter)) leaf_name_data.push_back(table_id.get_name_leafdata());
+    if (vrf_id_number.is_set || is_set(vrf_id_number.yfilter)) leaf_name_data.push_back(vrf_id_number.get_name_leafdata());
+    if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -307,32 +336,79 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::VrfInfos::VrfInfo::get_ch
     return children;
 }
 
-void ArpGmp::VrfInfos::VrfInfo::set_value(const std::string & value_path, std::string value)
+void ArpGmp::VrfInfos::VrfInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rsi-handle")
     {
         rsi_handle = value;
+        rsi_handle.value_namespace = name_space;
+        rsi_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rsi-handle-high")
     {
         rsi_handle_high = value;
+        rsi_handle_high.value_namespace = name_space;
+        rsi_handle_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "table-id")
     {
         table_id = value;
+        table_id.value_namespace = name_space;
+        table_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-id-number")
     {
         vrf_id_number = value;
+        vrf_id_number.value_namespace = name_space;
+        vrf_id_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name-xr")
     {
         vrf_name_xr = value;
+        vrf_name_xr.value_namespace = name_space;
+        vrf_name_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ArpGmp::VrfInfos::VrfInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "rsi-handle")
+    {
+        rsi_handle.yfilter = yfilter;
+    }
+    if(value_path == "rsi-handle-high")
+    {
+        rsi_handle_high.yfilter = yfilter;
+    }
+    if(value_path == "table-id")
+    {
+        table_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-id-number")
+    {
+        vrf_id_number.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name-xr")
+    {
+        vrf_name_xr.yfilter = yfilter;
+    }
+}
+
+bool ArpGmp::VrfInfos::VrfInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "rsi-handle" || name == "rsi-handle-high" || name == "table-id" || name == "vrf-id-number" || name == "vrf-name-xr")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrfs()
@@ -361,7 +437,7 @@ bool ArpGmp::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ArpGmp::Vrfs::get_segment_path() const
@@ -426,8 +502,19 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::get_children() cons
     return children;
 }
 
-void ArpGmp::Vrfs::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ArpGmp::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ArpGmp::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrf::Vrf()
@@ -461,8 +548,8 @@ bool ArpGmp::Vrfs::Vrf::has_data() const
 
 bool ArpGmp::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (configured_ip_addresses !=  nullptr && configured_ip_addresses->has_operation())
 	|| (interface_configured_ips !=  nullptr && interface_configured_ips->has_operation())
 	|| (routes !=  nullptr && routes->has_operation());
@@ -491,7 +578,7 @@ const EntityPath ArpGmp::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -552,12 +639,29 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::get_children()
     return children;
 }
 
-void ArpGmp::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ArpGmp::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool ArpGmp::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-ip-addresses" || name == "interface-configured-ips" || name == "routes" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddresses()
@@ -586,7 +690,7 @@ bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::has_operation() const
         if(configured_ip_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::get_segment_path() const
@@ -651,8 +755,19 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAd
     return children;
 }
 
-void ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-ip-address")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::ConfiguredIpAddress()
@@ -681,12 +796,12 @@ bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::has_data() c
 
 bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(encapsulation_type.operation)
-	|| is_set(entry_type.operation)
-	|| is_set(hardware_address.operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(encapsulation_type.yfilter)
+	|| ydk::is_set(entry_type.yfilter)
+	|| ydk::is_set(hardware_address.yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::get_segment_path() const
@@ -712,11 +827,11 @@ const EntityPath ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (encapsulation_type.is_set || is_set(encapsulation_type.operation)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
-    if (entry_type.is_set || is_set(entry_type.operation)) leaf_name_data.push_back(entry_type.get_name_leafdata());
-    if (hardware_address.is_set || is_set(hardware_address.operation)) leaf_name_data.push_back(hardware_address.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (encapsulation_type.is_set || is_set(encapsulation_type.yfilter)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
+    if (entry_type.is_set || is_set(entry_type.yfilter)) leaf_name_data.push_back(entry_type.get_name_leafdata());
+    if (hardware_address.is_set || is_set(hardware_address.yfilter)) leaf_name_data.push_back(hardware_address.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -735,28 +850,69 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::ConfiguredIpAd
     return children;
 }
 
-void ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation-type")
     {
         encapsulation_type = value;
+        encapsulation_type.value_namespace = name_space;
+        encapsulation_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entry-type")
     {
         entry_type = value;
+        entry_type.value_namespace = name_space;
+        entry_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-address")
     {
         hardware_address = value;
+        hardware_address.value_namespace = name_space;
+        hardware_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type.yfilter = yfilter;
+    }
+    if(value_path == "entry-type")
+    {
+        entry_type.yfilter = yfilter;
+    }
+    if(value_path == "hardware-address")
+    {
+        hardware_address.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "encapsulation-type" || name == "entry-type" || name == "hardware-address" || name == "ip-address")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrf::Routes::Routes()
@@ -785,7 +941,7 @@ bool ArpGmp::Vrfs::Vrf::Routes::has_operation() const
         if(route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ArpGmp::Vrfs::Vrf::Routes::get_segment_path() const
@@ -850,8 +1006,19 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::Routes::get_ch
     return children;
 }
 
-void ArpGmp::Vrfs::Vrf::Routes::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::Vrf::Routes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ArpGmp::Vrfs::Vrf::Routes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ArpGmp::Vrfs::Vrf::Routes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrf::Routes::Route::Route()
@@ -888,16 +1055,16 @@ bool ArpGmp::Vrfs::Vrf::Routes::Route::has_operation() const
 {
     for (auto const & leaf : interface_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(ip_address.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(prefix_length_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(prefix_length_xr.yfilter);
 }
 
 std::string ArpGmp::Vrfs::Vrf::Routes::Route::get_segment_path() const
@@ -923,11 +1090,11 @@ const EntityPath ArpGmp::Vrfs::Vrf::Routes::Route::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (prefix_length_xr.is_set || is_set(prefix_length_xr.operation)) leaf_name_data.push_back(prefix_length_xr.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix_length_xr.is_set || is_set(prefix_length_xr.yfilter)) leaf_name_data.push_back(prefix_length_xr.get_name_leafdata());
 
     auto interface_name_name_datas = interface_name.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), interface_name_name_datas.begin(), interface_name_name_datas.end());
@@ -948,11 +1115,13 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::Routes::Route:
     return children;
 }
 
-void ArpGmp::Vrfs::Vrf::Routes::Route::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::Vrf::Routes::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
@@ -961,19 +1130,62 @@ void ArpGmp::Vrfs::Vrf::Routes::Route::set_value(const std::string & value_path,
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length-xr")
     {
         prefix_length_xr = value;
+        prefix_length_xr.value_namespace = name_space;
+        prefix_length_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ArpGmp::Vrfs::Vrf::Routes::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length-xr")
+    {
+        prefix_length_xr.yfilter = yfilter;
+    }
+}
+
+bool ArpGmp::Vrfs::Vrf::Routes::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "interface-name" || name == "interface-name-xr" || name == "ip-address" || name == "prefix-length" || name == "prefix-length-xr")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIps()
@@ -1002,7 +1214,7 @@ bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::has_operation() const
         if(interface_configured_ip[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::get_segment_path() const
@@ -1067,8 +1279,19 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfi
     return children;
 }
 
-void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-configured-ip")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::InterfaceConfiguredIp()
@@ -1100,11 +1323,11 @@ bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::has_data(
 
 bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(reference_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(reference_count.yfilter)
 	|| (associated_configuration_entry !=  nullptr && associated_configuration_entry->has_operation());
 }
 
@@ -1131,10 +1354,10 @@ const EntityPath ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (reference_count.is_set || is_set(reference_count.operation)) leaf_name_data.push_back(reference_count.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (reference_count.is_set || is_set(reference_count.yfilter)) leaf_name_data.push_back(reference_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1167,24 +1390,59 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfi
     return children;
 }
 
-void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reference-count")
     {
         reference_count = value;
+        reference_count.value_namespace = name_space;
+        reference_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "reference-count")
+    {
+        reference_count.yfilter = yfilter;
+    }
+}
+
+bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "associated-configuration-entry" || name == "address" || name == "interface-name" || name == "interface-name-xr" || name == "reference-count")
+        return true;
+    return false;
 }
 
 ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::AssociatedConfigurationEntry()
@@ -1211,11 +1469,11 @@ bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::Associate
 
 bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(encapsulation_type.operation)
-	|| is_set(entry_type.operation)
-	|| is_set(hardware_address.operation)
-	|| is_set(ip_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(encapsulation_type.yfilter)
+	|| ydk::is_set(entry_type.yfilter)
+	|| ydk::is_set(hardware_address.yfilter)
+	|| ydk::is_set(ip_address.yfilter);
 }
 
 std::string ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::get_segment_path() const
@@ -1241,10 +1499,10 @@ const EntityPath ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (encapsulation_type.is_set || is_set(encapsulation_type.operation)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
-    if (entry_type.is_set || is_set(entry_type.operation)) leaf_name_data.push_back(entry_type.get_name_leafdata());
-    if (hardware_address.is_set || is_set(hardware_address.operation)) leaf_name_data.push_back(hardware_address.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (encapsulation_type.is_set || is_set(encapsulation_type.yfilter)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
+    if (entry_type.is_set || is_set(entry_type.yfilter)) leaf_name_data.push_back(entry_type.get_name_leafdata());
+    if (hardware_address.is_set || is_set(hardware_address.yfilter)) leaf_name_data.push_back(hardware_address.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1263,24 +1521,59 @@ std::map<std::string, std::shared_ptr<Entity>> ArpGmp::Vrfs::Vrf::InterfaceConfi
     return children;
 }
 
-void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::set_value(const std::string & value_path, std::string value)
+void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encapsulation-type")
     {
         encapsulation_type = value;
+        encapsulation_type.value_namespace = name_space;
+        encapsulation_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entry-type")
     {
         entry_type = value;
+        entry_type.value_namespace = name_space;
+        entry_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-address")
     {
         hardware_address = value;
+        hardware_address.value_namespace = name_space;
+        hardware_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type.yfilter = yfilter;
+    }
+    if(value_path == "entry-type")
+    {
+        entry_type.yfilter = yfilter;
+    }
+    if(value_path == "hardware-address")
+    {
+        hardware_address.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+}
+
+bool ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::AssociatedConfigurationEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "encapsulation-type" || name == "entry-type" || name == "hardware-address" || name == "ip-address")
+        return true;
+    return false;
 }
 
 Arp::Arp()
@@ -1303,7 +1596,7 @@ bool Arp::has_data() const
 
 bool Arp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -1359,7 +1652,11 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::get_children() const
     return children;
 }
 
-void Arp::set_value(const std::string & value_path, std::string value)
+void Arp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Arp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -1381,6 +1678,18 @@ std::string Arp::get_bundle_name() const
 augment_capabilities_function Arp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Arp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Arp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Nodes()
@@ -1409,7 +1718,7 @@ bool Arp::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Arp::Nodes::get_segment_path() const
@@ -1474,8 +1783,19 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::get_children() const
     return children;
 }
 
-void Arp::Nodes::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Arp::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Arp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::Node()
@@ -1521,8 +1841,8 @@ bool Arp::Nodes::Node::has_data() const
 
 bool Arp::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (entries !=  nullptr && entries->has_operation())
 	|| (resolution_history_client !=  nullptr && resolution_history_client->has_operation())
 	|| (resolution_history_dynamic !=  nullptr && resolution_history_dynamic->has_operation())
@@ -1554,7 +1874,7 @@ const EntityPath Arp::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1657,12 +1977,29 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::get_children() 
     return children;
 }
 
-void Arp::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Arp::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Arp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entries" || name == "resolution-history-client" || name == "resolution-history-dynamic" || name == "traffic-interfaces" || name == "traffic-node" || name == "traffic-vrfs" || name == "node-name")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::ResolutionHistoryDynamic::ResolutionHistoryDynamic()
@@ -1691,7 +2028,7 @@ bool Arp::Nodes::Node::ResolutionHistoryDynamic::has_operation() const
         if(arp_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Arp::Nodes::Node::ResolutionHistoryDynamic::get_segment_path() const
@@ -1756,8 +2093,19 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHisto
     return children;
 }
 
-void Arp::Nodes::Node::ResolutionHistoryDynamic::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::ResolutionHistoryDynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Arp::Nodes::Node::ResolutionHistoryDynamic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Arp::Nodes::Node::ResolutionHistoryDynamic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "arp-entry")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::ArpEntry()
@@ -1792,15 +2140,15 @@ bool Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::has_data() const
 
 bool Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(client_id.operation)
-	|| is_set(entry_state.operation)
-	|| is_set(idb_interface_name.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(nsec_timestamp.operation)
-	|| is_set(resolution_request_count.operation)
-	|| is_set(status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(client_id.yfilter)
+	|| ydk::is_set(entry_state.yfilter)
+	|| ydk::is_set(idb_interface_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(nsec_timestamp.yfilter)
+	|| ydk::is_set(resolution_request_count.yfilter)
+	|| ydk::is_set(status.yfilter);
 }
 
 std::string Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_segment_path() const
@@ -1826,14 +2174,14 @@ const EntityPath Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client_id.is_set || is_set(client_id.operation)) leaf_name_data.push_back(client_id.get_name_leafdata());
-    if (entry_state.is_set || is_set(entry_state.operation)) leaf_name_data.push_back(entry_state.get_name_leafdata());
-    if (idb_interface_name.is_set || is_set(idb_interface_name.operation)) leaf_name_data.push_back(idb_interface_name.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (nsec_timestamp.is_set || is_set(nsec_timestamp.operation)) leaf_name_data.push_back(nsec_timestamp.get_name_leafdata());
-    if (resolution_request_count.is_set || is_set(resolution_request_count.operation)) leaf_name_data.push_back(resolution_request_count.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (client_id.is_set || is_set(client_id.yfilter)) leaf_name_data.push_back(client_id.get_name_leafdata());
+    if (entry_state.is_set || is_set(entry_state.yfilter)) leaf_name_data.push_back(entry_state.get_name_leafdata());
+    if (idb_interface_name.is_set || is_set(idb_interface_name.yfilter)) leaf_name_data.push_back(idb_interface_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (nsec_timestamp.is_set || is_set(nsec_timestamp.yfilter)) leaf_name_data.push_back(nsec_timestamp.get_name_leafdata());
+    if (resolution_request_count.is_set || is_set(resolution_request_count.yfilter)) leaf_name_data.push_back(resolution_request_count.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1852,40 +2200,99 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHisto
     return children;
 }
 
-void Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-id")
     {
         client_id = value;
+        client_id.value_namespace = name_space;
+        client_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entry-state")
     {
         entry_state = value;
+        entry_state.value_namespace = name_space;
+        entry_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idb-interface-name")
     {
         idb_interface_name = value;
+        idb_interface_name.value_namespace = name_space;
+        idb_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsec-timestamp")
     {
         nsec_timestamp = value;
+        nsec_timestamp.value_namespace = name_space;
+        nsec_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-request-count")
     {
         resolution_request_count = value;
+        resolution_request_count.value_namespace = name_space;
+        resolution_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-id")
+    {
+        client_id.yfilter = yfilter;
+    }
+    if(value_path == "entry-state")
+    {
+        entry_state.yfilter = yfilter;
+    }
+    if(value_path == "idb-interface-name")
+    {
+        idb_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "nsec-timestamp")
+    {
+        nsec_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "resolution-request-count")
+    {
+        resolution_request_count.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-id" || name == "entry-state" || name == "idb-interface-name" || name == "ipv4-address" || name == "mac-address" || name == "nsec-timestamp" || name == "resolution-request-count" || name == "status")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::TrafficVrfs::TrafficVrfs()
@@ -1914,7 +2321,7 @@ bool Arp::Nodes::Node::TrafficVrfs::has_operation() const
         if(traffic_vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Arp::Nodes::Node::TrafficVrfs::get_segment_path() const
@@ -1979,8 +2386,19 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficVrfs::ge
     return children;
 }
 
-void Arp::Nodes::Node::TrafficVrfs::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::TrafficVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Arp::Nodes::Node::TrafficVrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Arp::Nodes::Node::TrafficVrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "traffic-vrf")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::TrafficVrfs::TrafficVrf::TrafficVrf()
@@ -2057,36 +2475,36 @@ bool Arp::Nodes::Node::TrafficVrfs::TrafficVrf::has_data() const
 
 bool Arp::Nodes::Node::TrafficVrfs::TrafficVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(alias_entries.operation)
-	|| is_set(arp_packet_interface_out_of_subnet.operation)
-	|| is_set(arp_packet_node_out_of_subnet.operation)
-	|| is_set(dhcp_entries.operation)
-	|| is_set(dynamic_entries.operation)
-	|| is_set(gratuitous_replies_sent.operation)
-	|| is_set(idb_structures.operation)
-	|| is_set(interface_entries.operation)
-	|| is_set(ip_packets_dropped_interface.operation)
-	|| is_set(ip_packets_dropped_node.operation)
-	|| is_set(local_proxy_replies_sent.operation)
-	|| is_set(no_buffer_errors.operation)
-	|| is_set(out_of_memory_errors.operation)
-	|| is_set(proxy_replies_sent.operation)
-	|| is_set(replies_received.operation)
-	|| is_set(replies_sent.operation)
-	|| is_set(requests_received.operation)
-	|| is_set(requests_sent.operation)
-	|| is_set(resolution_replies_received.operation)
-	|| is_set(resolution_requests_dropped.operation)
-	|| is_set(resolution_requests_received.operation)
-	|| is_set(standby_entries.operation)
-	|| is_set(static_entries.operation)
-	|| is_set(subscr_replies_gratg_sent.operation)
-	|| is_set(subscr_replies_sent.operation)
-	|| is_set(subscr_requests_received.operation)
-	|| is_set(total_entries.operation)
-	|| is_set(vxlan_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(alias_entries.yfilter)
+	|| ydk::is_set(arp_packet_interface_out_of_subnet.yfilter)
+	|| ydk::is_set(arp_packet_node_out_of_subnet.yfilter)
+	|| ydk::is_set(dhcp_entries.yfilter)
+	|| ydk::is_set(dynamic_entries.yfilter)
+	|| ydk::is_set(gratuitous_replies_sent.yfilter)
+	|| ydk::is_set(idb_structures.yfilter)
+	|| ydk::is_set(interface_entries.yfilter)
+	|| ydk::is_set(ip_packets_dropped_interface.yfilter)
+	|| ydk::is_set(ip_packets_dropped_node.yfilter)
+	|| ydk::is_set(local_proxy_replies_sent.yfilter)
+	|| ydk::is_set(no_buffer_errors.yfilter)
+	|| ydk::is_set(out_of_memory_errors.yfilter)
+	|| ydk::is_set(proxy_replies_sent.yfilter)
+	|| ydk::is_set(replies_received.yfilter)
+	|| ydk::is_set(replies_sent.yfilter)
+	|| ydk::is_set(requests_received.yfilter)
+	|| ydk::is_set(requests_sent.yfilter)
+	|| ydk::is_set(resolution_replies_received.yfilter)
+	|| ydk::is_set(resolution_requests_dropped.yfilter)
+	|| ydk::is_set(resolution_requests_received.yfilter)
+	|| ydk::is_set(standby_entries.yfilter)
+	|| ydk::is_set(static_entries.yfilter)
+	|| ydk::is_set(subscr_replies_gratg_sent.yfilter)
+	|| ydk::is_set(subscr_replies_sent.yfilter)
+	|| ydk::is_set(subscr_requests_received.yfilter)
+	|| ydk::is_set(total_entries.yfilter)
+	|| ydk::is_set(vxlan_entries.yfilter);
 }
 
 std::string Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_segment_path() const
@@ -2112,35 +2530,35 @@ const EntityPath Arp::Nodes::Node::TrafficVrfs::TrafficVrf::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (alias_entries.is_set || is_set(alias_entries.operation)) leaf_name_data.push_back(alias_entries.get_name_leafdata());
-    if (arp_packet_interface_out_of_subnet.is_set || is_set(arp_packet_interface_out_of_subnet.operation)) leaf_name_data.push_back(arp_packet_interface_out_of_subnet.get_name_leafdata());
-    if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.operation)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
-    if (dhcp_entries.is_set || is_set(dhcp_entries.operation)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
-    if (dynamic_entries.is_set || is_set(dynamic_entries.operation)) leaf_name_data.push_back(dynamic_entries.get_name_leafdata());
-    if (gratuitous_replies_sent.is_set || is_set(gratuitous_replies_sent.operation)) leaf_name_data.push_back(gratuitous_replies_sent.get_name_leafdata());
-    if (idb_structures.is_set || is_set(idb_structures.operation)) leaf_name_data.push_back(idb_structures.get_name_leafdata());
-    if (interface_entries.is_set || is_set(interface_entries.operation)) leaf_name_data.push_back(interface_entries.get_name_leafdata());
-    if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.operation)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
-    if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.operation)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
-    if (local_proxy_replies_sent.is_set || is_set(local_proxy_replies_sent.operation)) leaf_name_data.push_back(local_proxy_replies_sent.get_name_leafdata());
-    if (no_buffer_errors.is_set || is_set(no_buffer_errors.operation)) leaf_name_data.push_back(no_buffer_errors.get_name_leafdata());
-    if (out_of_memory_errors.is_set || is_set(out_of_memory_errors.operation)) leaf_name_data.push_back(out_of_memory_errors.get_name_leafdata());
-    if (proxy_replies_sent.is_set || is_set(proxy_replies_sent.operation)) leaf_name_data.push_back(proxy_replies_sent.get_name_leafdata());
-    if (replies_received.is_set || is_set(replies_received.operation)) leaf_name_data.push_back(replies_received.get_name_leafdata());
-    if (replies_sent.is_set || is_set(replies_sent.operation)) leaf_name_data.push_back(replies_sent.get_name_leafdata());
-    if (requests_received.is_set || is_set(requests_received.operation)) leaf_name_data.push_back(requests_received.get_name_leafdata());
-    if (requests_sent.is_set || is_set(requests_sent.operation)) leaf_name_data.push_back(requests_sent.get_name_leafdata());
-    if (resolution_replies_received.is_set || is_set(resolution_replies_received.operation)) leaf_name_data.push_back(resolution_replies_received.get_name_leafdata());
-    if (resolution_requests_dropped.is_set || is_set(resolution_requests_dropped.operation)) leaf_name_data.push_back(resolution_requests_dropped.get_name_leafdata());
-    if (resolution_requests_received.is_set || is_set(resolution_requests_received.operation)) leaf_name_data.push_back(resolution_requests_received.get_name_leafdata());
-    if (standby_entries.is_set || is_set(standby_entries.operation)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
-    if (static_entries.is_set || is_set(static_entries.operation)) leaf_name_data.push_back(static_entries.get_name_leafdata());
-    if (subscr_replies_gratg_sent.is_set || is_set(subscr_replies_gratg_sent.operation)) leaf_name_data.push_back(subscr_replies_gratg_sent.get_name_leafdata());
-    if (subscr_replies_sent.is_set || is_set(subscr_replies_sent.operation)) leaf_name_data.push_back(subscr_replies_sent.get_name_leafdata());
-    if (subscr_requests_received.is_set || is_set(subscr_requests_received.operation)) leaf_name_data.push_back(subscr_requests_received.get_name_leafdata());
-    if (total_entries.is_set || is_set(total_entries.operation)) leaf_name_data.push_back(total_entries.get_name_leafdata());
-    if (vxlan_entries.is_set || is_set(vxlan_entries.operation)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (alias_entries.is_set || is_set(alias_entries.yfilter)) leaf_name_data.push_back(alias_entries.get_name_leafdata());
+    if (arp_packet_interface_out_of_subnet.is_set || is_set(arp_packet_interface_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_interface_out_of_subnet.get_name_leafdata());
+    if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
+    if (dhcp_entries.is_set || is_set(dhcp_entries.yfilter)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
+    if (dynamic_entries.is_set || is_set(dynamic_entries.yfilter)) leaf_name_data.push_back(dynamic_entries.get_name_leafdata());
+    if (gratuitous_replies_sent.is_set || is_set(gratuitous_replies_sent.yfilter)) leaf_name_data.push_back(gratuitous_replies_sent.get_name_leafdata());
+    if (idb_structures.is_set || is_set(idb_structures.yfilter)) leaf_name_data.push_back(idb_structures.get_name_leafdata());
+    if (interface_entries.is_set || is_set(interface_entries.yfilter)) leaf_name_data.push_back(interface_entries.get_name_leafdata());
+    if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.yfilter)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
+    if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.yfilter)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
+    if (local_proxy_replies_sent.is_set || is_set(local_proxy_replies_sent.yfilter)) leaf_name_data.push_back(local_proxy_replies_sent.get_name_leafdata());
+    if (no_buffer_errors.is_set || is_set(no_buffer_errors.yfilter)) leaf_name_data.push_back(no_buffer_errors.get_name_leafdata());
+    if (out_of_memory_errors.is_set || is_set(out_of_memory_errors.yfilter)) leaf_name_data.push_back(out_of_memory_errors.get_name_leafdata());
+    if (proxy_replies_sent.is_set || is_set(proxy_replies_sent.yfilter)) leaf_name_data.push_back(proxy_replies_sent.get_name_leafdata());
+    if (replies_received.is_set || is_set(replies_received.yfilter)) leaf_name_data.push_back(replies_received.get_name_leafdata());
+    if (replies_sent.is_set || is_set(replies_sent.yfilter)) leaf_name_data.push_back(replies_sent.get_name_leafdata());
+    if (requests_received.is_set || is_set(requests_received.yfilter)) leaf_name_data.push_back(requests_received.get_name_leafdata());
+    if (requests_sent.is_set || is_set(requests_sent.yfilter)) leaf_name_data.push_back(requests_sent.get_name_leafdata());
+    if (resolution_replies_received.is_set || is_set(resolution_replies_received.yfilter)) leaf_name_data.push_back(resolution_replies_received.get_name_leafdata());
+    if (resolution_requests_dropped.is_set || is_set(resolution_requests_dropped.yfilter)) leaf_name_data.push_back(resolution_requests_dropped.get_name_leafdata());
+    if (resolution_requests_received.is_set || is_set(resolution_requests_received.yfilter)) leaf_name_data.push_back(resolution_requests_received.get_name_leafdata());
+    if (standby_entries.is_set || is_set(standby_entries.yfilter)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
+    if (static_entries.is_set || is_set(static_entries.yfilter)) leaf_name_data.push_back(static_entries.get_name_leafdata());
+    if (subscr_replies_gratg_sent.is_set || is_set(subscr_replies_gratg_sent.yfilter)) leaf_name_data.push_back(subscr_replies_gratg_sent.get_name_leafdata());
+    if (subscr_replies_sent.is_set || is_set(subscr_replies_sent.yfilter)) leaf_name_data.push_back(subscr_replies_sent.get_name_leafdata());
+    if (subscr_requests_received.is_set || is_set(subscr_requests_received.yfilter)) leaf_name_data.push_back(subscr_requests_received.get_name_leafdata());
+    if (total_entries.is_set || is_set(total_entries.yfilter)) leaf_name_data.push_back(total_entries.get_name_leafdata());
+    if (vxlan_entries.is_set || is_set(vxlan_entries.yfilter)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2159,124 +2577,309 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficVrfs::Tr
     return children;
 }
 
-void Arp::Nodes::Node::TrafficVrfs::TrafficVrf::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::TrafficVrfs::TrafficVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "alias-entries")
     {
         alias_entries = value;
+        alias_entries.value_namespace = name_space;
+        alias_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arp-packet-interface-out-of-subnet")
     {
         arp_packet_interface_out_of_subnet = value;
+        arp_packet_interface_out_of_subnet.value_namespace = name_space;
+        arp_packet_interface_out_of_subnet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arp-packet-node-out-of-subnet")
     {
         arp_packet_node_out_of_subnet = value;
+        arp_packet_node_out_of_subnet.value_namespace = name_space;
+        arp_packet_node_out_of_subnet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dhcp-entries")
     {
         dhcp_entries = value;
+        dhcp_entries.value_namespace = name_space;
+        dhcp_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dynamic-entries")
     {
         dynamic_entries = value;
+        dynamic_entries.value_namespace = name_space;
+        dynamic_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gratuitous-replies-sent")
     {
         gratuitous_replies_sent = value;
+        gratuitous_replies_sent.value_namespace = name_space;
+        gratuitous_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idb-structures")
     {
         idb_structures = value;
+        idb_structures.value_namespace = name_space;
+        idb_structures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-entries")
     {
         interface_entries = value;
+        interface_entries.value_namespace = name_space;
+        interface_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-packets-dropped-interface")
     {
         ip_packets_dropped_interface = value;
+        ip_packets_dropped_interface.value_namespace = name_space;
+        ip_packets_dropped_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node = value;
+        ip_packets_dropped_node.value_namespace = name_space;
+        ip_packets_dropped_node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-proxy-replies-sent")
     {
         local_proxy_replies_sent = value;
+        local_proxy_replies_sent.value_namespace = name_space;
+        local_proxy_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-buffer-errors")
     {
         no_buffer_errors = value;
+        no_buffer_errors.value_namespace = name_space;
+        no_buffer_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-memory-errors")
     {
         out_of_memory_errors = value;
+        out_of_memory_errors.value_namespace = name_space;
+        out_of_memory_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proxy-replies-sent")
     {
         proxy_replies_sent = value;
+        proxy_replies_sent.value_namespace = name_space;
+        proxy_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replies-received")
     {
         replies_received = value;
+        replies_received.value_namespace = name_space;
+        replies_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replies-sent")
     {
         replies_sent = value;
+        replies_sent.value_namespace = name_space;
+        replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "requests-received")
     {
         requests_received = value;
+        requests_received.value_namespace = name_space;
+        requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "requests-sent")
     {
         requests_sent = value;
+        requests_sent.value_namespace = name_space;
+        requests_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-replies-received")
     {
         resolution_replies_received = value;
+        resolution_replies_received.value_namespace = name_space;
+        resolution_replies_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-requests-dropped")
     {
         resolution_requests_dropped = value;
+        resolution_requests_dropped.value_namespace = name_space;
+        resolution_requests_dropped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-requests-received")
     {
         resolution_requests_received = value;
+        resolution_requests_received.value_namespace = name_space;
+        resolution_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-entries")
     {
         standby_entries = value;
+        standby_entries.value_namespace = name_space;
+        standby_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "static-entries")
     {
         static_entries = value;
+        static_entries.value_namespace = name_space;
+        static_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-replies-gratg-sent")
     {
         subscr_replies_gratg_sent = value;
+        subscr_replies_gratg_sent.value_namespace = name_space;
+        subscr_replies_gratg_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-replies-sent")
     {
         subscr_replies_sent = value;
+        subscr_replies_sent.value_namespace = name_space;
+        subscr_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-requests-received")
     {
         subscr_requests_received = value;
+        subscr_requests_received.value_namespace = name_space;
+        subscr_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-entries")
     {
         total_entries = value;
+        total_entries.value_namespace = name_space;
+        total_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vxlan-entries")
     {
         vxlan_entries = value;
+        vxlan_entries.value_namespace = name_space;
+        vxlan_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Arp::Nodes::Node::TrafficVrfs::TrafficVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "alias-entries")
+    {
+        alias_entries.yfilter = yfilter;
+    }
+    if(value_path == "arp-packet-interface-out-of-subnet")
+    {
+        arp_packet_interface_out_of_subnet.yfilter = yfilter;
+    }
+    if(value_path == "arp-packet-node-out-of-subnet")
+    {
+        arp_packet_node_out_of_subnet.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-entries")
+    {
+        dhcp_entries.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-entries")
+    {
+        dynamic_entries.yfilter = yfilter;
+    }
+    if(value_path == "gratuitous-replies-sent")
+    {
+        gratuitous_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "idb-structures")
+    {
+        idb_structures.yfilter = yfilter;
+    }
+    if(value_path == "interface-entries")
+    {
+        interface_entries.yfilter = yfilter;
+    }
+    if(value_path == "ip-packets-dropped-interface")
+    {
+        ip_packets_dropped_interface.yfilter = yfilter;
+    }
+    if(value_path == "ip-packets-dropped-node")
+    {
+        ip_packets_dropped_node.yfilter = yfilter;
+    }
+    if(value_path == "local-proxy-replies-sent")
+    {
+        local_proxy_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "no-buffer-errors")
+    {
+        no_buffer_errors.yfilter = yfilter;
+    }
+    if(value_path == "out-of-memory-errors")
+    {
+        out_of_memory_errors.yfilter = yfilter;
+    }
+    if(value_path == "proxy-replies-sent")
+    {
+        proxy_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "replies-received")
+    {
+        replies_received.yfilter = yfilter;
+    }
+    if(value_path == "replies-sent")
+    {
+        replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "requests-received")
+    {
+        requests_received.yfilter = yfilter;
+    }
+    if(value_path == "requests-sent")
+    {
+        requests_sent.yfilter = yfilter;
+    }
+    if(value_path == "resolution-replies-received")
+    {
+        resolution_replies_received.yfilter = yfilter;
+    }
+    if(value_path == "resolution-requests-dropped")
+    {
+        resolution_requests_dropped.yfilter = yfilter;
+    }
+    if(value_path == "resolution-requests-received")
+    {
+        resolution_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "standby-entries")
+    {
+        standby_entries.yfilter = yfilter;
+    }
+    if(value_path == "static-entries")
+    {
+        static_entries.yfilter = yfilter;
+    }
+    if(value_path == "subscr-replies-gratg-sent")
+    {
+        subscr_replies_gratg_sent.yfilter = yfilter;
+    }
+    if(value_path == "subscr-replies-sent")
+    {
+        subscr_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "subscr-requests-received")
+    {
+        subscr_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "total-entries")
+    {
+        total_entries.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-entries")
+    {
+        vxlan_entries.yfilter = yfilter;
+    }
+}
+
+bool Arp::Nodes::Node::TrafficVrfs::TrafficVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "alias-entries" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-node-out-of-subnet" || name == "dhcp-entries" || name == "dynamic-entries" || name == "gratuitous-replies-sent" || name == "idb-structures" || name == "interface-entries" || name == "ip-packets-dropped-interface" || name == "ip-packets-dropped-node" || name == "local-proxy-replies-sent" || name == "no-buffer-errors" || name == "out-of-memory-errors" || name == "proxy-replies-sent" || name == "replies-received" || name == "replies-sent" || name == "requests-received" || name == "requests-sent" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "resolution-requests-received" || name == "standby-entries" || name == "static-entries" || name == "subscr-replies-gratg-sent" || name == "subscr-replies-sent" || name == "subscr-requests-received" || name == "total-entries" || name == "vxlan-entries")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::TrafficNode::TrafficNode()
@@ -2351,35 +2954,35 @@ bool Arp::Nodes::Node::TrafficNode::has_data() const
 
 bool Arp::Nodes::Node::TrafficNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(alias_entries.operation)
-	|| is_set(arp_packet_interface_out_of_subnet.operation)
-	|| is_set(arp_packet_node_out_of_subnet.operation)
-	|| is_set(dhcp_entries.operation)
-	|| is_set(dynamic_entries.operation)
-	|| is_set(gratuitous_replies_sent.operation)
-	|| is_set(idb_structures.operation)
-	|| is_set(interface_entries.operation)
-	|| is_set(ip_packets_dropped_interface.operation)
-	|| is_set(ip_packets_dropped_node.operation)
-	|| is_set(local_proxy_replies_sent.operation)
-	|| is_set(no_buffer_errors.operation)
-	|| is_set(out_of_memory_errors.operation)
-	|| is_set(proxy_replies_sent.operation)
-	|| is_set(replies_received.operation)
-	|| is_set(replies_sent.operation)
-	|| is_set(requests_received.operation)
-	|| is_set(requests_sent.operation)
-	|| is_set(resolution_replies_received.operation)
-	|| is_set(resolution_requests_dropped.operation)
-	|| is_set(resolution_requests_received.operation)
-	|| is_set(standby_entries.operation)
-	|| is_set(static_entries.operation)
-	|| is_set(subscr_replies_gratg_sent.operation)
-	|| is_set(subscr_replies_sent.operation)
-	|| is_set(subscr_requests_received.operation)
-	|| is_set(total_entries.operation)
-	|| is_set(vxlan_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(alias_entries.yfilter)
+	|| ydk::is_set(arp_packet_interface_out_of_subnet.yfilter)
+	|| ydk::is_set(arp_packet_node_out_of_subnet.yfilter)
+	|| ydk::is_set(dhcp_entries.yfilter)
+	|| ydk::is_set(dynamic_entries.yfilter)
+	|| ydk::is_set(gratuitous_replies_sent.yfilter)
+	|| ydk::is_set(idb_structures.yfilter)
+	|| ydk::is_set(interface_entries.yfilter)
+	|| ydk::is_set(ip_packets_dropped_interface.yfilter)
+	|| ydk::is_set(ip_packets_dropped_node.yfilter)
+	|| ydk::is_set(local_proxy_replies_sent.yfilter)
+	|| ydk::is_set(no_buffer_errors.yfilter)
+	|| ydk::is_set(out_of_memory_errors.yfilter)
+	|| ydk::is_set(proxy_replies_sent.yfilter)
+	|| ydk::is_set(replies_received.yfilter)
+	|| ydk::is_set(replies_sent.yfilter)
+	|| ydk::is_set(requests_received.yfilter)
+	|| ydk::is_set(requests_sent.yfilter)
+	|| ydk::is_set(resolution_replies_received.yfilter)
+	|| ydk::is_set(resolution_requests_dropped.yfilter)
+	|| ydk::is_set(resolution_requests_received.yfilter)
+	|| ydk::is_set(standby_entries.yfilter)
+	|| ydk::is_set(static_entries.yfilter)
+	|| ydk::is_set(subscr_replies_gratg_sent.yfilter)
+	|| ydk::is_set(subscr_replies_sent.yfilter)
+	|| ydk::is_set(subscr_requests_received.yfilter)
+	|| ydk::is_set(total_entries.yfilter)
+	|| ydk::is_set(vxlan_entries.yfilter);
 }
 
 std::string Arp::Nodes::Node::TrafficNode::get_segment_path() const
@@ -2405,34 +3008,34 @@ const EntityPath Arp::Nodes::Node::TrafficNode::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (alias_entries.is_set || is_set(alias_entries.operation)) leaf_name_data.push_back(alias_entries.get_name_leafdata());
-    if (arp_packet_interface_out_of_subnet.is_set || is_set(arp_packet_interface_out_of_subnet.operation)) leaf_name_data.push_back(arp_packet_interface_out_of_subnet.get_name_leafdata());
-    if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.operation)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
-    if (dhcp_entries.is_set || is_set(dhcp_entries.operation)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
-    if (dynamic_entries.is_set || is_set(dynamic_entries.operation)) leaf_name_data.push_back(dynamic_entries.get_name_leafdata());
-    if (gratuitous_replies_sent.is_set || is_set(gratuitous_replies_sent.operation)) leaf_name_data.push_back(gratuitous_replies_sent.get_name_leafdata());
-    if (idb_structures.is_set || is_set(idb_structures.operation)) leaf_name_data.push_back(idb_structures.get_name_leafdata());
-    if (interface_entries.is_set || is_set(interface_entries.operation)) leaf_name_data.push_back(interface_entries.get_name_leafdata());
-    if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.operation)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
-    if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.operation)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
-    if (local_proxy_replies_sent.is_set || is_set(local_proxy_replies_sent.operation)) leaf_name_data.push_back(local_proxy_replies_sent.get_name_leafdata());
-    if (no_buffer_errors.is_set || is_set(no_buffer_errors.operation)) leaf_name_data.push_back(no_buffer_errors.get_name_leafdata());
-    if (out_of_memory_errors.is_set || is_set(out_of_memory_errors.operation)) leaf_name_data.push_back(out_of_memory_errors.get_name_leafdata());
-    if (proxy_replies_sent.is_set || is_set(proxy_replies_sent.operation)) leaf_name_data.push_back(proxy_replies_sent.get_name_leafdata());
-    if (replies_received.is_set || is_set(replies_received.operation)) leaf_name_data.push_back(replies_received.get_name_leafdata());
-    if (replies_sent.is_set || is_set(replies_sent.operation)) leaf_name_data.push_back(replies_sent.get_name_leafdata());
-    if (requests_received.is_set || is_set(requests_received.operation)) leaf_name_data.push_back(requests_received.get_name_leafdata());
-    if (requests_sent.is_set || is_set(requests_sent.operation)) leaf_name_data.push_back(requests_sent.get_name_leafdata());
-    if (resolution_replies_received.is_set || is_set(resolution_replies_received.operation)) leaf_name_data.push_back(resolution_replies_received.get_name_leafdata());
-    if (resolution_requests_dropped.is_set || is_set(resolution_requests_dropped.operation)) leaf_name_data.push_back(resolution_requests_dropped.get_name_leafdata());
-    if (resolution_requests_received.is_set || is_set(resolution_requests_received.operation)) leaf_name_data.push_back(resolution_requests_received.get_name_leafdata());
-    if (standby_entries.is_set || is_set(standby_entries.operation)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
-    if (static_entries.is_set || is_set(static_entries.operation)) leaf_name_data.push_back(static_entries.get_name_leafdata());
-    if (subscr_replies_gratg_sent.is_set || is_set(subscr_replies_gratg_sent.operation)) leaf_name_data.push_back(subscr_replies_gratg_sent.get_name_leafdata());
-    if (subscr_replies_sent.is_set || is_set(subscr_replies_sent.operation)) leaf_name_data.push_back(subscr_replies_sent.get_name_leafdata());
-    if (subscr_requests_received.is_set || is_set(subscr_requests_received.operation)) leaf_name_data.push_back(subscr_requests_received.get_name_leafdata());
-    if (total_entries.is_set || is_set(total_entries.operation)) leaf_name_data.push_back(total_entries.get_name_leafdata());
-    if (vxlan_entries.is_set || is_set(vxlan_entries.operation)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
+    if (alias_entries.is_set || is_set(alias_entries.yfilter)) leaf_name_data.push_back(alias_entries.get_name_leafdata());
+    if (arp_packet_interface_out_of_subnet.is_set || is_set(arp_packet_interface_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_interface_out_of_subnet.get_name_leafdata());
+    if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
+    if (dhcp_entries.is_set || is_set(dhcp_entries.yfilter)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
+    if (dynamic_entries.is_set || is_set(dynamic_entries.yfilter)) leaf_name_data.push_back(dynamic_entries.get_name_leafdata());
+    if (gratuitous_replies_sent.is_set || is_set(gratuitous_replies_sent.yfilter)) leaf_name_data.push_back(gratuitous_replies_sent.get_name_leafdata());
+    if (idb_structures.is_set || is_set(idb_structures.yfilter)) leaf_name_data.push_back(idb_structures.get_name_leafdata());
+    if (interface_entries.is_set || is_set(interface_entries.yfilter)) leaf_name_data.push_back(interface_entries.get_name_leafdata());
+    if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.yfilter)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
+    if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.yfilter)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
+    if (local_proxy_replies_sent.is_set || is_set(local_proxy_replies_sent.yfilter)) leaf_name_data.push_back(local_proxy_replies_sent.get_name_leafdata());
+    if (no_buffer_errors.is_set || is_set(no_buffer_errors.yfilter)) leaf_name_data.push_back(no_buffer_errors.get_name_leafdata());
+    if (out_of_memory_errors.is_set || is_set(out_of_memory_errors.yfilter)) leaf_name_data.push_back(out_of_memory_errors.get_name_leafdata());
+    if (proxy_replies_sent.is_set || is_set(proxy_replies_sent.yfilter)) leaf_name_data.push_back(proxy_replies_sent.get_name_leafdata());
+    if (replies_received.is_set || is_set(replies_received.yfilter)) leaf_name_data.push_back(replies_received.get_name_leafdata());
+    if (replies_sent.is_set || is_set(replies_sent.yfilter)) leaf_name_data.push_back(replies_sent.get_name_leafdata());
+    if (requests_received.is_set || is_set(requests_received.yfilter)) leaf_name_data.push_back(requests_received.get_name_leafdata());
+    if (requests_sent.is_set || is_set(requests_sent.yfilter)) leaf_name_data.push_back(requests_sent.get_name_leafdata());
+    if (resolution_replies_received.is_set || is_set(resolution_replies_received.yfilter)) leaf_name_data.push_back(resolution_replies_received.get_name_leafdata());
+    if (resolution_requests_dropped.is_set || is_set(resolution_requests_dropped.yfilter)) leaf_name_data.push_back(resolution_requests_dropped.get_name_leafdata());
+    if (resolution_requests_received.is_set || is_set(resolution_requests_received.yfilter)) leaf_name_data.push_back(resolution_requests_received.get_name_leafdata());
+    if (standby_entries.is_set || is_set(standby_entries.yfilter)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
+    if (static_entries.is_set || is_set(static_entries.yfilter)) leaf_name_data.push_back(static_entries.get_name_leafdata());
+    if (subscr_replies_gratg_sent.is_set || is_set(subscr_replies_gratg_sent.yfilter)) leaf_name_data.push_back(subscr_replies_gratg_sent.get_name_leafdata());
+    if (subscr_replies_sent.is_set || is_set(subscr_replies_sent.yfilter)) leaf_name_data.push_back(subscr_replies_sent.get_name_leafdata());
+    if (subscr_requests_received.is_set || is_set(subscr_requests_received.yfilter)) leaf_name_data.push_back(subscr_requests_received.get_name_leafdata());
+    if (total_entries.is_set || is_set(total_entries.yfilter)) leaf_name_data.push_back(total_entries.get_name_leafdata());
+    if (vxlan_entries.is_set || is_set(vxlan_entries.yfilter)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2451,120 +3054,299 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficNode::ge
     return children;
 }
 
-void Arp::Nodes::Node::TrafficNode::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::TrafficNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "alias-entries")
     {
         alias_entries = value;
+        alias_entries.value_namespace = name_space;
+        alias_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arp-packet-interface-out-of-subnet")
     {
         arp_packet_interface_out_of_subnet = value;
+        arp_packet_interface_out_of_subnet.value_namespace = name_space;
+        arp_packet_interface_out_of_subnet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arp-packet-node-out-of-subnet")
     {
         arp_packet_node_out_of_subnet = value;
+        arp_packet_node_out_of_subnet.value_namespace = name_space;
+        arp_packet_node_out_of_subnet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dhcp-entries")
     {
         dhcp_entries = value;
+        dhcp_entries.value_namespace = name_space;
+        dhcp_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dynamic-entries")
     {
         dynamic_entries = value;
+        dynamic_entries.value_namespace = name_space;
+        dynamic_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gratuitous-replies-sent")
     {
         gratuitous_replies_sent = value;
+        gratuitous_replies_sent.value_namespace = name_space;
+        gratuitous_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idb-structures")
     {
         idb_structures = value;
+        idb_structures.value_namespace = name_space;
+        idb_structures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-entries")
     {
         interface_entries = value;
+        interface_entries.value_namespace = name_space;
+        interface_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-packets-dropped-interface")
     {
         ip_packets_dropped_interface = value;
+        ip_packets_dropped_interface.value_namespace = name_space;
+        ip_packets_dropped_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node = value;
+        ip_packets_dropped_node.value_namespace = name_space;
+        ip_packets_dropped_node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-proxy-replies-sent")
     {
         local_proxy_replies_sent = value;
+        local_proxy_replies_sent.value_namespace = name_space;
+        local_proxy_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-buffer-errors")
     {
         no_buffer_errors = value;
+        no_buffer_errors.value_namespace = name_space;
+        no_buffer_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-memory-errors")
     {
         out_of_memory_errors = value;
+        out_of_memory_errors.value_namespace = name_space;
+        out_of_memory_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proxy-replies-sent")
     {
         proxy_replies_sent = value;
+        proxy_replies_sent.value_namespace = name_space;
+        proxy_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replies-received")
     {
         replies_received = value;
+        replies_received.value_namespace = name_space;
+        replies_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replies-sent")
     {
         replies_sent = value;
+        replies_sent.value_namespace = name_space;
+        replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "requests-received")
     {
         requests_received = value;
+        requests_received.value_namespace = name_space;
+        requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "requests-sent")
     {
         requests_sent = value;
+        requests_sent.value_namespace = name_space;
+        requests_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-replies-received")
     {
         resolution_replies_received = value;
+        resolution_replies_received.value_namespace = name_space;
+        resolution_replies_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-requests-dropped")
     {
         resolution_requests_dropped = value;
+        resolution_requests_dropped.value_namespace = name_space;
+        resolution_requests_dropped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-requests-received")
     {
         resolution_requests_received = value;
+        resolution_requests_received.value_namespace = name_space;
+        resolution_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-entries")
     {
         standby_entries = value;
+        standby_entries.value_namespace = name_space;
+        standby_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "static-entries")
     {
         static_entries = value;
+        static_entries.value_namespace = name_space;
+        static_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-replies-gratg-sent")
     {
         subscr_replies_gratg_sent = value;
+        subscr_replies_gratg_sent.value_namespace = name_space;
+        subscr_replies_gratg_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-replies-sent")
     {
         subscr_replies_sent = value;
+        subscr_replies_sent.value_namespace = name_space;
+        subscr_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-requests-received")
     {
         subscr_requests_received = value;
+        subscr_requests_received.value_namespace = name_space;
+        subscr_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-entries")
     {
         total_entries = value;
+        total_entries.value_namespace = name_space;
+        total_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vxlan-entries")
     {
         vxlan_entries = value;
+        vxlan_entries.value_namespace = name_space;
+        vxlan_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Arp::Nodes::Node::TrafficNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "alias-entries")
+    {
+        alias_entries.yfilter = yfilter;
+    }
+    if(value_path == "arp-packet-interface-out-of-subnet")
+    {
+        arp_packet_interface_out_of_subnet.yfilter = yfilter;
+    }
+    if(value_path == "arp-packet-node-out-of-subnet")
+    {
+        arp_packet_node_out_of_subnet.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-entries")
+    {
+        dhcp_entries.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-entries")
+    {
+        dynamic_entries.yfilter = yfilter;
+    }
+    if(value_path == "gratuitous-replies-sent")
+    {
+        gratuitous_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "idb-structures")
+    {
+        idb_structures.yfilter = yfilter;
+    }
+    if(value_path == "interface-entries")
+    {
+        interface_entries.yfilter = yfilter;
+    }
+    if(value_path == "ip-packets-dropped-interface")
+    {
+        ip_packets_dropped_interface.yfilter = yfilter;
+    }
+    if(value_path == "ip-packets-dropped-node")
+    {
+        ip_packets_dropped_node.yfilter = yfilter;
+    }
+    if(value_path == "local-proxy-replies-sent")
+    {
+        local_proxy_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "no-buffer-errors")
+    {
+        no_buffer_errors.yfilter = yfilter;
+    }
+    if(value_path == "out-of-memory-errors")
+    {
+        out_of_memory_errors.yfilter = yfilter;
+    }
+    if(value_path == "proxy-replies-sent")
+    {
+        proxy_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "replies-received")
+    {
+        replies_received.yfilter = yfilter;
+    }
+    if(value_path == "replies-sent")
+    {
+        replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "requests-received")
+    {
+        requests_received.yfilter = yfilter;
+    }
+    if(value_path == "requests-sent")
+    {
+        requests_sent.yfilter = yfilter;
+    }
+    if(value_path == "resolution-replies-received")
+    {
+        resolution_replies_received.yfilter = yfilter;
+    }
+    if(value_path == "resolution-requests-dropped")
+    {
+        resolution_requests_dropped.yfilter = yfilter;
+    }
+    if(value_path == "resolution-requests-received")
+    {
+        resolution_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "standby-entries")
+    {
+        standby_entries.yfilter = yfilter;
+    }
+    if(value_path == "static-entries")
+    {
+        static_entries.yfilter = yfilter;
+    }
+    if(value_path == "subscr-replies-gratg-sent")
+    {
+        subscr_replies_gratg_sent.yfilter = yfilter;
+    }
+    if(value_path == "subscr-replies-sent")
+    {
+        subscr_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "subscr-requests-received")
+    {
+        subscr_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "total-entries")
+    {
+        total_entries.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-entries")
+    {
+        vxlan_entries.yfilter = yfilter;
+    }
+}
+
+bool Arp::Nodes::Node::TrafficNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alias-entries" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-node-out-of-subnet" || name == "dhcp-entries" || name == "dynamic-entries" || name == "gratuitous-replies-sent" || name == "idb-structures" || name == "interface-entries" || name == "ip-packets-dropped-interface" || name == "ip-packets-dropped-node" || name == "local-proxy-replies-sent" || name == "no-buffer-errors" || name == "out-of-memory-errors" || name == "proxy-replies-sent" || name == "replies-received" || name == "replies-sent" || name == "requests-received" || name == "requests-sent" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "resolution-requests-received" || name == "standby-entries" || name == "static-entries" || name == "subscr-replies-gratg-sent" || name == "subscr-replies-sent" || name == "subscr-requests-received" || name == "total-entries" || name == "vxlan-entries")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::ResolutionHistoryClient::ResolutionHistoryClient()
@@ -2593,7 +3375,7 @@ bool Arp::Nodes::Node::ResolutionHistoryClient::has_operation() const
         if(arp_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Arp::Nodes::Node::ResolutionHistoryClient::get_segment_path() const
@@ -2658,8 +3440,19 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHisto
     return children;
 }
 
-void Arp::Nodes::Node::ResolutionHistoryClient::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::ResolutionHistoryClient::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Arp::Nodes::Node::ResolutionHistoryClient::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Arp::Nodes::Node::ResolutionHistoryClient::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "arp-entry")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::ArpEntry()
@@ -2694,15 +3487,15 @@ bool Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::has_data() const
 
 bool Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(client_id.operation)
-	|| is_set(entry_state.operation)
-	|| is_set(idb_interface_name.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(nsec_timestamp.operation)
-	|| is_set(resolution_request_count.operation)
-	|| is_set(status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(client_id.yfilter)
+	|| ydk::is_set(entry_state.yfilter)
+	|| ydk::is_set(idb_interface_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(nsec_timestamp.yfilter)
+	|| ydk::is_set(resolution_request_count.yfilter)
+	|| ydk::is_set(status.yfilter);
 }
 
 std::string Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_segment_path() const
@@ -2728,14 +3521,14 @@ const EntityPath Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client_id.is_set || is_set(client_id.operation)) leaf_name_data.push_back(client_id.get_name_leafdata());
-    if (entry_state.is_set || is_set(entry_state.operation)) leaf_name_data.push_back(entry_state.get_name_leafdata());
-    if (idb_interface_name.is_set || is_set(idb_interface_name.operation)) leaf_name_data.push_back(idb_interface_name.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (nsec_timestamp.is_set || is_set(nsec_timestamp.operation)) leaf_name_data.push_back(nsec_timestamp.get_name_leafdata());
-    if (resolution_request_count.is_set || is_set(resolution_request_count.operation)) leaf_name_data.push_back(resolution_request_count.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (client_id.is_set || is_set(client_id.yfilter)) leaf_name_data.push_back(client_id.get_name_leafdata());
+    if (entry_state.is_set || is_set(entry_state.yfilter)) leaf_name_data.push_back(entry_state.get_name_leafdata());
+    if (idb_interface_name.is_set || is_set(idb_interface_name.yfilter)) leaf_name_data.push_back(idb_interface_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (nsec_timestamp.is_set || is_set(nsec_timestamp.yfilter)) leaf_name_data.push_back(nsec_timestamp.get_name_leafdata());
+    if (resolution_request_count.is_set || is_set(resolution_request_count.yfilter)) leaf_name_data.push_back(resolution_request_count.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2754,40 +3547,99 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::ResolutionHisto
     return children;
 }
 
-void Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-id")
     {
         client_id = value;
+        client_id.value_namespace = name_space;
+        client_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entry-state")
     {
         entry_state = value;
+        entry_state.value_namespace = name_space;
+        entry_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idb-interface-name")
     {
         idb_interface_name = value;
+        idb_interface_name.value_namespace = name_space;
+        idb_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsec-timestamp")
     {
         nsec_timestamp = value;
+        nsec_timestamp.value_namespace = name_space;
+        nsec_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-request-count")
     {
         resolution_request_count = value;
+        resolution_request_count.value_namespace = name_space;
+        resolution_request_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-id")
+    {
+        client_id.yfilter = yfilter;
+    }
+    if(value_path == "entry-state")
+    {
+        entry_state.yfilter = yfilter;
+    }
+    if(value_path == "idb-interface-name")
+    {
+        idb_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "nsec-timestamp")
+    {
+        nsec_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "resolution-request-count")
+    {
+        resolution_request_count.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-id" || name == "entry-state" || name == "idb-interface-name" || name == "ipv4-address" || name == "mac-address" || name == "nsec-timestamp" || name == "resolution-request-count" || name == "status")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::Entries::Entries()
@@ -2816,7 +3668,7 @@ bool Arp::Nodes::Node::Entries::has_operation() const
         if(entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Arp::Nodes::Node::Entries::get_segment_path() const
@@ -2881,8 +3733,19 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::Entries::get_ch
     return children;
 }
 
-void Arp::Nodes::Node::Entries::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::Entries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Arp::Nodes::Node::Entries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Arp::Nodes::Node::Entries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::Entries::Entry::Entry()
@@ -2919,16 +3782,16 @@ bool Arp::Nodes::Node::Entries::Entry::has_data() const
 
 bool Arp::Nodes::Node::Entries::Entry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(age.operation)
-	|| is_set(encapsulation_type.operation)
-	|| is_set(flag.operation)
-	|| is_set(hardware_address.operation)
-	|| is_set(hardware_length.operation)
-	|| is_set(media_type.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(age.yfilter)
+	|| ydk::is_set(encapsulation_type.yfilter)
+	|| ydk::is_set(flag.yfilter)
+	|| ydk::is_set(hardware_address.yfilter)
+	|| ydk::is_set(hardware_length.yfilter)
+	|| ydk::is_set(media_type.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string Arp::Nodes::Node::Entries::Entry::get_segment_path() const
@@ -2954,15 +3817,15 @@ const EntityPath Arp::Nodes::Node::Entries::Entry::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (age.is_set || is_set(age.operation)) leaf_name_data.push_back(age.get_name_leafdata());
-    if (encapsulation_type.is_set || is_set(encapsulation_type.operation)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
-    if (flag.is_set || is_set(flag.operation)) leaf_name_data.push_back(flag.get_name_leafdata());
-    if (hardware_address.is_set || is_set(hardware_address.operation)) leaf_name_data.push_back(hardware_address.get_name_leafdata());
-    if (hardware_length.is_set || is_set(hardware_length.operation)) leaf_name_data.push_back(hardware_length.get_name_leafdata());
-    if (media_type.is_set || is_set(media_type.operation)) leaf_name_data.push_back(media_type.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (age.is_set || is_set(age.yfilter)) leaf_name_data.push_back(age.get_name_leafdata());
+    if (encapsulation_type.is_set || is_set(encapsulation_type.yfilter)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
+    if (flag.is_set || is_set(flag.yfilter)) leaf_name_data.push_back(flag.get_name_leafdata());
+    if (hardware_address.is_set || is_set(hardware_address.yfilter)) leaf_name_data.push_back(hardware_address.get_name_leafdata());
+    if (hardware_length.is_set || is_set(hardware_length.yfilter)) leaf_name_data.push_back(hardware_length.get_name_leafdata());
+    if (media_type.is_set || is_set(media_type.yfilter)) leaf_name_data.push_back(media_type.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2981,44 +3844,109 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::Entries::Entry:
     return children;
 }
 
-void Arp::Nodes::Node::Entries::Entry::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::Entries::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "age")
     {
         age = value;
+        age.value_namespace = name_space;
+        age.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encapsulation-type")
     {
         encapsulation_type = value;
+        encapsulation_type.value_namespace = name_space;
+        encapsulation_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flag")
     {
         flag = value;
+        flag.value_namespace = name_space;
+        flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-address")
     {
         hardware_address = value;
+        hardware_address.value_namespace = name_space;
+        hardware_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-length")
     {
         hardware_length = value;
+        hardware_length.value_namespace = name_space;
+        hardware_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "media-type")
     {
         media_type = value;
+        media_type.value_namespace = name_space;
+        media_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Arp::Nodes::Node::Entries::Entry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "age")
+    {
+        age.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type.yfilter = yfilter;
+    }
+    if(value_path == "flag")
+    {
+        flag.yfilter = yfilter;
+    }
+    if(value_path == "hardware-address")
+    {
+        hardware_address.yfilter = yfilter;
+    }
+    if(value_path == "hardware-length")
+    {
+        hardware_length.yfilter = yfilter;
+    }
+    if(value_path == "media-type")
+    {
+        media_type.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Arp::Nodes::Node::Entries::Entry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "interface-name" || name == "age" || name == "encapsulation-type" || name == "flag" || name == "hardware-address" || name == "hardware-length" || name == "media-type" || name == "state")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::TrafficInterfaces::TrafficInterfaces()
@@ -3047,7 +3975,7 @@ bool Arp::Nodes::Node::TrafficInterfaces::has_operation() const
         if(traffic_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Arp::Nodes::Node::TrafficInterfaces::get_segment_path() const
@@ -3112,8 +4040,19 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficInterfac
     return children;
 }
 
-void Arp::Nodes::Node::TrafficInterfaces::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::TrafficInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Arp::Nodes::Node::TrafficInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Arp::Nodes::Node::TrafficInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "traffic-interface")
+        return true;
+    return false;
 }
 
 Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::TrafficInterface()
@@ -3190,36 +4129,36 @@ bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_data() const
 
 bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(alias_entries.operation)
-	|| is_set(arp_packet_interface_out_of_subnet.operation)
-	|| is_set(arp_packet_node_out_of_subnet.operation)
-	|| is_set(dhcp_entries.operation)
-	|| is_set(dynamic_entries.operation)
-	|| is_set(gratuitous_replies_sent.operation)
-	|| is_set(idb_structures.operation)
-	|| is_set(interface_entries.operation)
-	|| is_set(ip_packets_dropped_interface.operation)
-	|| is_set(ip_packets_dropped_node.operation)
-	|| is_set(local_proxy_replies_sent.operation)
-	|| is_set(no_buffer_errors.operation)
-	|| is_set(out_of_memory_errors.operation)
-	|| is_set(proxy_replies_sent.operation)
-	|| is_set(replies_received.operation)
-	|| is_set(replies_sent.operation)
-	|| is_set(requests_received.operation)
-	|| is_set(requests_sent.operation)
-	|| is_set(resolution_replies_received.operation)
-	|| is_set(resolution_requests_dropped.operation)
-	|| is_set(resolution_requests_received.operation)
-	|| is_set(standby_entries.operation)
-	|| is_set(static_entries.operation)
-	|| is_set(subscr_replies_gratg_sent.operation)
-	|| is_set(subscr_replies_sent.operation)
-	|| is_set(subscr_requests_received.operation)
-	|| is_set(total_entries.operation)
-	|| is_set(vxlan_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(alias_entries.yfilter)
+	|| ydk::is_set(arp_packet_interface_out_of_subnet.yfilter)
+	|| ydk::is_set(arp_packet_node_out_of_subnet.yfilter)
+	|| ydk::is_set(dhcp_entries.yfilter)
+	|| ydk::is_set(dynamic_entries.yfilter)
+	|| ydk::is_set(gratuitous_replies_sent.yfilter)
+	|| ydk::is_set(idb_structures.yfilter)
+	|| ydk::is_set(interface_entries.yfilter)
+	|| ydk::is_set(ip_packets_dropped_interface.yfilter)
+	|| ydk::is_set(ip_packets_dropped_node.yfilter)
+	|| ydk::is_set(local_proxy_replies_sent.yfilter)
+	|| ydk::is_set(no_buffer_errors.yfilter)
+	|| ydk::is_set(out_of_memory_errors.yfilter)
+	|| ydk::is_set(proxy_replies_sent.yfilter)
+	|| ydk::is_set(replies_received.yfilter)
+	|| ydk::is_set(replies_sent.yfilter)
+	|| ydk::is_set(requests_received.yfilter)
+	|| ydk::is_set(requests_sent.yfilter)
+	|| ydk::is_set(resolution_replies_received.yfilter)
+	|| ydk::is_set(resolution_requests_dropped.yfilter)
+	|| ydk::is_set(resolution_requests_received.yfilter)
+	|| ydk::is_set(standby_entries.yfilter)
+	|| ydk::is_set(static_entries.yfilter)
+	|| ydk::is_set(subscr_replies_gratg_sent.yfilter)
+	|| ydk::is_set(subscr_replies_sent.yfilter)
+	|| ydk::is_set(subscr_requests_received.yfilter)
+	|| ydk::is_set(total_entries.yfilter)
+	|| ydk::is_set(vxlan_entries.yfilter);
 }
 
 std::string Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_segment_path() const
@@ -3245,35 +4184,35 @@ const EntityPath Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (alias_entries.is_set || is_set(alias_entries.operation)) leaf_name_data.push_back(alias_entries.get_name_leafdata());
-    if (arp_packet_interface_out_of_subnet.is_set || is_set(arp_packet_interface_out_of_subnet.operation)) leaf_name_data.push_back(arp_packet_interface_out_of_subnet.get_name_leafdata());
-    if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.operation)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
-    if (dhcp_entries.is_set || is_set(dhcp_entries.operation)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
-    if (dynamic_entries.is_set || is_set(dynamic_entries.operation)) leaf_name_data.push_back(dynamic_entries.get_name_leafdata());
-    if (gratuitous_replies_sent.is_set || is_set(gratuitous_replies_sent.operation)) leaf_name_data.push_back(gratuitous_replies_sent.get_name_leafdata());
-    if (idb_structures.is_set || is_set(idb_structures.operation)) leaf_name_data.push_back(idb_structures.get_name_leafdata());
-    if (interface_entries.is_set || is_set(interface_entries.operation)) leaf_name_data.push_back(interface_entries.get_name_leafdata());
-    if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.operation)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
-    if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.operation)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
-    if (local_proxy_replies_sent.is_set || is_set(local_proxy_replies_sent.operation)) leaf_name_data.push_back(local_proxy_replies_sent.get_name_leafdata());
-    if (no_buffer_errors.is_set || is_set(no_buffer_errors.operation)) leaf_name_data.push_back(no_buffer_errors.get_name_leafdata());
-    if (out_of_memory_errors.is_set || is_set(out_of_memory_errors.operation)) leaf_name_data.push_back(out_of_memory_errors.get_name_leafdata());
-    if (proxy_replies_sent.is_set || is_set(proxy_replies_sent.operation)) leaf_name_data.push_back(proxy_replies_sent.get_name_leafdata());
-    if (replies_received.is_set || is_set(replies_received.operation)) leaf_name_data.push_back(replies_received.get_name_leafdata());
-    if (replies_sent.is_set || is_set(replies_sent.operation)) leaf_name_data.push_back(replies_sent.get_name_leafdata());
-    if (requests_received.is_set || is_set(requests_received.operation)) leaf_name_data.push_back(requests_received.get_name_leafdata());
-    if (requests_sent.is_set || is_set(requests_sent.operation)) leaf_name_data.push_back(requests_sent.get_name_leafdata());
-    if (resolution_replies_received.is_set || is_set(resolution_replies_received.operation)) leaf_name_data.push_back(resolution_replies_received.get_name_leafdata());
-    if (resolution_requests_dropped.is_set || is_set(resolution_requests_dropped.operation)) leaf_name_data.push_back(resolution_requests_dropped.get_name_leafdata());
-    if (resolution_requests_received.is_set || is_set(resolution_requests_received.operation)) leaf_name_data.push_back(resolution_requests_received.get_name_leafdata());
-    if (standby_entries.is_set || is_set(standby_entries.operation)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
-    if (static_entries.is_set || is_set(static_entries.operation)) leaf_name_data.push_back(static_entries.get_name_leafdata());
-    if (subscr_replies_gratg_sent.is_set || is_set(subscr_replies_gratg_sent.operation)) leaf_name_data.push_back(subscr_replies_gratg_sent.get_name_leafdata());
-    if (subscr_replies_sent.is_set || is_set(subscr_replies_sent.operation)) leaf_name_data.push_back(subscr_replies_sent.get_name_leafdata());
-    if (subscr_requests_received.is_set || is_set(subscr_requests_received.operation)) leaf_name_data.push_back(subscr_requests_received.get_name_leafdata());
-    if (total_entries.is_set || is_set(total_entries.operation)) leaf_name_data.push_back(total_entries.get_name_leafdata());
-    if (vxlan_entries.is_set || is_set(vxlan_entries.operation)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (alias_entries.is_set || is_set(alias_entries.yfilter)) leaf_name_data.push_back(alias_entries.get_name_leafdata());
+    if (arp_packet_interface_out_of_subnet.is_set || is_set(arp_packet_interface_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_interface_out_of_subnet.get_name_leafdata());
+    if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
+    if (dhcp_entries.is_set || is_set(dhcp_entries.yfilter)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
+    if (dynamic_entries.is_set || is_set(dynamic_entries.yfilter)) leaf_name_data.push_back(dynamic_entries.get_name_leafdata());
+    if (gratuitous_replies_sent.is_set || is_set(gratuitous_replies_sent.yfilter)) leaf_name_data.push_back(gratuitous_replies_sent.get_name_leafdata());
+    if (idb_structures.is_set || is_set(idb_structures.yfilter)) leaf_name_data.push_back(idb_structures.get_name_leafdata());
+    if (interface_entries.is_set || is_set(interface_entries.yfilter)) leaf_name_data.push_back(interface_entries.get_name_leafdata());
+    if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.yfilter)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
+    if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.yfilter)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
+    if (local_proxy_replies_sent.is_set || is_set(local_proxy_replies_sent.yfilter)) leaf_name_data.push_back(local_proxy_replies_sent.get_name_leafdata());
+    if (no_buffer_errors.is_set || is_set(no_buffer_errors.yfilter)) leaf_name_data.push_back(no_buffer_errors.get_name_leafdata());
+    if (out_of_memory_errors.is_set || is_set(out_of_memory_errors.yfilter)) leaf_name_data.push_back(out_of_memory_errors.get_name_leafdata());
+    if (proxy_replies_sent.is_set || is_set(proxy_replies_sent.yfilter)) leaf_name_data.push_back(proxy_replies_sent.get_name_leafdata());
+    if (replies_received.is_set || is_set(replies_received.yfilter)) leaf_name_data.push_back(replies_received.get_name_leafdata());
+    if (replies_sent.is_set || is_set(replies_sent.yfilter)) leaf_name_data.push_back(replies_sent.get_name_leafdata());
+    if (requests_received.is_set || is_set(requests_received.yfilter)) leaf_name_data.push_back(requests_received.get_name_leafdata());
+    if (requests_sent.is_set || is_set(requests_sent.yfilter)) leaf_name_data.push_back(requests_sent.get_name_leafdata());
+    if (resolution_replies_received.is_set || is_set(resolution_replies_received.yfilter)) leaf_name_data.push_back(resolution_replies_received.get_name_leafdata());
+    if (resolution_requests_dropped.is_set || is_set(resolution_requests_dropped.yfilter)) leaf_name_data.push_back(resolution_requests_dropped.get_name_leafdata());
+    if (resolution_requests_received.is_set || is_set(resolution_requests_received.yfilter)) leaf_name_data.push_back(resolution_requests_received.get_name_leafdata());
+    if (standby_entries.is_set || is_set(standby_entries.yfilter)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
+    if (static_entries.is_set || is_set(static_entries.yfilter)) leaf_name_data.push_back(static_entries.get_name_leafdata());
+    if (subscr_replies_gratg_sent.is_set || is_set(subscr_replies_gratg_sent.yfilter)) leaf_name_data.push_back(subscr_replies_gratg_sent.get_name_leafdata());
+    if (subscr_replies_sent.is_set || is_set(subscr_replies_sent.yfilter)) leaf_name_data.push_back(subscr_replies_sent.get_name_leafdata());
+    if (subscr_requests_received.is_set || is_set(subscr_requests_received.yfilter)) leaf_name_data.push_back(subscr_requests_received.get_name_leafdata());
+    if (total_entries.is_set || is_set(total_entries.yfilter)) leaf_name_data.push_back(total_entries.get_name_leafdata());
+    if (vxlan_entries.is_set || is_set(vxlan_entries.yfilter)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3292,195 +4231,380 @@ std::map<std::string, std::shared_ptr<Entity>> Arp::Nodes::Node::TrafficInterfac
     return children;
 }
 
-void Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::set_value(const std::string & value_path, std::string value)
+void Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "alias-entries")
     {
         alias_entries = value;
+        alias_entries.value_namespace = name_space;
+        alias_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arp-packet-interface-out-of-subnet")
     {
         arp_packet_interface_out_of_subnet = value;
+        arp_packet_interface_out_of_subnet.value_namespace = name_space;
+        arp_packet_interface_out_of_subnet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arp-packet-node-out-of-subnet")
     {
         arp_packet_node_out_of_subnet = value;
+        arp_packet_node_out_of_subnet.value_namespace = name_space;
+        arp_packet_node_out_of_subnet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dhcp-entries")
     {
         dhcp_entries = value;
+        dhcp_entries.value_namespace = name_space;
+        dhcp_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dynamic-entries")
     {
         dynamic_entries = value;
+        dynamic_entries.value_namespace = name_space;
+        dynamic_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gratuitous-replies-sent")
     {
         gratuitous_replies_sent = value;
+        gratuitous_replies_sent.value_namespace = name_space;
+        gratuitous_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idb-structures")
     {
         idb_structures = value;
+        idb_structures.value_namespace = name_space;
+        idb_structures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-entries")
     {
         interface_entries = value;
+        interface_entries.value_namespace = name_space;
+        interface_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-packets-dropped-interface")
     {
         ip_packets_dropped_interface = value;
+        ip_packets_dropped_interface.value_namespace = name_space;
+        ip_packets_dropped_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node = value;
+        ip_packets_dropped_node.value_namespace = name_space;
+        ip_packets_dropped_node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-proxy-replies-sent")
     {
         local_proxy_replies_sent = value;
+        local_proxy_replies_sent.value_namespace = name_space;
+        local_proxy_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-buffer-errors")
     {
         no_buffer_errors = value;
+        no_buffer_errors.value_namespace = name_space;
+        no_buffer_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-memory-errors")
     {
         out_of_memory_errors = value;
+        out_of_memory_errors.value_namespace = name_space;
+        out_of_memory_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proxy-replies-sent")
     {
         proxy_replies_sent = value;
+        proxy_replies_sent.value_namespace = name_space;
+        proxy_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replies-received")
     {
         replies_received = value;
+        replies_received.value_namespace = name_space;
+        replies_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replies-sent")
     {
         replies_sent = value;
+        replies_sent.value_namespace = name_space;
+        replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "requests-received")
     {
         requests_received = value;
+        requests_received.value_namespace = name_space;
+        requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "requests-sent")
     {
         requests_sent = value;
+        requests_sent.value_namespace = name_space;
+        requests_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-replies-received")
     {
         resolution_replies_received = value;
+        resolution_replies_received.value_namespace = name_space;
+        resolution_replies_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-requests-dropped")
     {
         resolution_requests_dropped = value;
+        resolution_requests_dropped.value_namespace = name_space;
+        resolution_requests_dropped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resolution-requests-received")
     {
         resolution_requests_received = value;
+        resolution_requests_received.value_namespace = name_space;
+        resolution_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-entries")
     {
         standby_entries = value;
+        standby_entries.value_namespace = name_space;
+        standby_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "static-entries")
     {
         static_entries = value;
+        static_entries.value_namespace = name_space;
+        static_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-replies-gratg-sent")
     {
         subscr_replies_gratg_sent = value;
+        subscr_replies_gratg_sent.value_namespace = name_space;
+        subscr_replies_gratg_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-replies-sent")
     {
         subscr_replies_sent = value;
+        subscr_replies_sent.value_namespace = name_space;
+        subscr_replies_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "subscr-requests-received")
     {
         subscr_requests_received = value;
+        subscr_requests_received.value_namespace = name_space;
+        subscr_requests_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-entries")
     {
         total_entries = value;
+        total_entries.value_namespace = name_space;
+        total_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vxlan-entries")
     {
         vxlan_entries = value;
+        vxlan_entries.value_namespace = name_space;
+        vxlan_entries.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf IpArpBagFlagsEnum::flag_none {0, "flag-none"};
-const Enum::YLeaf IpArpBagFlagsEnum::flag_dynamic {1, "flag-dynamic"};
-const Enum::YLeaf IpArpBagFlagsEnum::flag_evpn_sync {2, "flag-evpn-sync"};
-const Enum::YLeaf IpArpBagFlagsEnum::flag_max {3, "flag-max"};
+void Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "alias-entries")
+    {
+        alias_entries.yfilter = yfilter;
+    }
+    if(value_path == "arp-packet-interface-out-of-subnet")
+    {
+        arp_packet_interface_out_of_subnet.yfilter = yfilter;
+    }
+    if(value_path == "arp-packet-node-out-of-subnet")
+    {
+        arp_packet_node_out_of_subnet.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-entries")
+    {
+        dhcp_entries.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-entries")
+    {
+        dynamic_entries.yfilter = yfilter;
+    }
+    if(value_path == "gratuitous-replies-sent")
+    {
+        gratuitous_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "idb-structures")
+    {
+        idb_structures.yfilter = yfilter;
+    }
+    if(value_path == "interface-entries")
+    {
+        interface_entries.yfilter = yfilter;
+    }
+    if(value_path == "ip-packets-dropped-interface")
+    {
+        ip_packets_dropped_interface.yfilter = yfilter;
+    }
+    if(value_path == "ip-packets-dropped-node")
+    {
+        ip_packets_dropped_node.yfilter = yfilter;
+    }
+    if(value_path == "local-proxy-replies-sent")
+    {
+        local_proxy_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "no-buffer-errors")
+    {
+        no_buffer_errors.yfilter = yfilter;
+    }
+    if(value_path == "out-of-memory-errors")
+    {
+        out_of_memory_errors.yfilter = yfilter;
+    }
+    if(value_path == "proxy-replies-sent")
+    {
+        proxy_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "replies-received")
+    {
+        replies_received.yfilter = yfilter;
+    }
+    if(value_path == "replies-sent")
+    {
+        replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "requests-received")
+    {
+        requests_received.yfilter = yfilter;
+    }
+    if(value_path == "requests-sent")
+    {
+        requests_sent.yfilter = yfilter;
+    }
+    if(value_path == "resolution-replies-received")
+    {
+        resolution_replies_received.yfilter = yfilter;
+    }
+    if(value_path == "resolution-requests-dropped")
+    {
+        resolution_requests_dropped.yfilter = yfilter;
+    }
+    if(value_path == "resolution-requests-received")
+    {
+        resolution_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "standby-entries")
+    {
+        standby_entries.yfilter = yfilter;
+    }
+    if(value_path == "static-entries")
+    {
+        static_entries.yfilter = yfilter;
+    }
+    if(value_path == "subscr-replies-gratg-sent")
+    {
+        subscr_replies_gratg_sent.yfilter = yfilter;
+    }
+    if(value_path == "subscr-replies-sent")
+    {
+        subscr_replies_sent.yfilter = yfilter;
+    }
+    if(value_path == "subscr-requests-received")
+    {
+        subscr_requests_received.yfilter = yfilter;
+    }
+    if(value_path == "total-entries")
+    {
+        total_entries.yfilter = yfilter;
+    }
+    if(value_path == "vxlan-entries")
+    {
+        vxlan_entries.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_none {0, "status-none"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolution_request {1, "status-resolution-request"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_reply {2, "status-resolved-reply"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_grat_arp {3, "status-resolved-grat-arp"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_request {4, "status-resolved-request"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_lc_sync {5, "status-resolved-lc-sync"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_lc_sync_purge_delay {6, "status-resolved-lc-sync-purge-delay"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_client {7, "status-resolved-client"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_removed_client {8, "status-removed-client"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_already_resolved {9, "status-already-resolved"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_failed {10, "status-failed"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_interface_down {11, "status-dropped-interface-down"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_broadcast_disabled {12, "status-dropped-broadcast-disabled"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_interface_unavailable {13, "status-dropped-interface-unavailable"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_bad_subnet {14, "status-dropped-bad-subnet"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_dynamic_learning_disabled {15, "status-dropped-dynamic-learning-disabled"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_dropped_out_of_subnet_disabled {16, "status-dropped-out-of-subnet-disabled"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_removed_client_sweep {17, "status-removed-client-sweep"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_added_client {18, "status-added-client"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_added_v1 {19, "status-added-v1"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_removed_v1 {20, "status-removed-v1"};
-const Enum::YLeaf ArpResolutionHistoryStatusEnum::status_resolved_peer_sync {21, "status-resolved-peer-sync"};
+bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "alias-entries" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-node-out-of-subnet" || name == "dhcp-entries" || name == "dynamic-entries" || name == "gratuitous-replies-sent" || name == "idb-structures" || name == "interface-entries" || name == "ip-packets-dropped-interface" || name == "ip-packets-dropped-node" || name == "local-proxy-replies-sent" || name == "no-buffer-errors" || name == "out-of-memory-errors" || name == "proxy-replies-sent" || name == "replies-received" || name == "replies-sent" || name == "requests-received" || name == "requests-sent" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "resolution-requests-received" || name == "standby-entries" || name == "static-entries" || name == "subscr-replies-gratg-sent" || name == "subscr-replies-sent" || name == "subscr-requests-received" || name == "total-entries" || name == "vxlan-entries")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf IpArpBagEncapEnum::none {0, "none"};
-const Enum::YLeaf IpArpBagEncapEnum::arpa {1, "arpa"};
-const Enum::YLeaf IpArpBagEncapEnum::snap {2, "snap"};
-const Enum::YLeaf IpArpBagEncapEnum::ieee802_1q {3, "ieee802-1q"};
-const Enum::YLeaf IpArpBagEncapEnum::srp {4, "srp"};
-const Enum::YLeaf IpArpBagEncapEnum::srpa {5, "srpa"};
-const Enum::YLeaf IpArpBagEncapEnum::srpb {6, "srpb"};
+const Enum::YLeaf IpArpBagMedia::media_arpa {0, "media-arpa"};
+const Enum::YLeaf IpArpBagMedia::media_srp {1, "media-srp"};
+const Enum::YLeaf IpArpBagMedia::media_unknown {2, "media-unknown"};
 
-const Enum::YLeaf ArpGmpBagEncapEnum::none {0, "none"};
-const Enum::YLeaf ArpGmpBagEncapEnum::arpa {1, "arpa"};
-const Enum::YLeaf ArpGmpBagEncapEnum::snap {2, "snap"};
-const Enum::YLeaf ArpGmpBagEncapEnum::ieee802_1q {3, "ieee802-1q"};
-const Enum::YLeaf ArpGmpBagEncapEnum::srp {4, "srp"};
-const Enum::YLeaf ArpGmpBagEncapEnum::srpa {5, "srpa"};
-const Enum::YLeaf ArpGmpBagEncapEnum::srpb {6, "srpb"};
+const Enum::YLeaf IpArpBagEncap::none {0, "none"};
+const Enum::YLeaf IpArpBagEncap::arpa {1, "arpa"};
+const Enum::YLeaf IpArpBagEncap::snap {2, "snap"};
+const Enum::YLeaf IpArpBagEncap::ieee802_1q {3, "ieee802-1q"};
+const Enum::YLeaf IpArpBagEncap::srp {4, "srp"};
+const Enum::YLeaf IpArpBagEncap::srpa {5, "srpa"};
+const Enum::YLeaf IpArpBagEncap::srpb {6, "srpb"};
 
-const Enum::YLeaf IpArpBagMediaEnum::media_arpa {0, "media-arpa"};
-const Enum::YLeaf IpArpBagMediaEnum::media_srp {1, "media-srp"};
-const Enum::YLeaf IpArpBagMediaEnum::media_unknown {2, "media-unknown"};
+const Enum::YLeaf ArpGmpBagEntry::null {0, "null"};
+const Enum::YLeaf ArpGmpBagEntry::static_ {1, "static"};
+const Enum::YLeaf ArpGmpBagEntry::alias {2, "alias"};
 
-const Enum::YLeaf ArpGmpBagEntryEnum::null {0, "null"};
-const Enum::YLeaf ArpGmpBagEntryEnum::static_ {1, "static"};
-const Enum::YLeaf ArpGmpBagEntryEnum::alias {2, "alias"};
+const Enum::YLeaf IpArpBagFlags::flag_none {0, "flag-none"};
+const Enum::YLeaf IpArpBagFlags::flag_dynamic {1, "flag-dynamic"};
+const Enum::YLeaf IpArpBagFlags::flag_evpn_sync {2, "flag-evpn-sync"};
+const Enum::YLeaf IpArpBagFlags::flag_max {3, "flag-max"};
 
-const Enum::YLeaf IpArpBagStateEnum::state_none {0, "state-none"};
-const Enum::YLeaf IpArpBagStateEnum::state_interface {1, "state-interface"};
-const Enum::YLeaf IpArpBagStateEnum::state_standby {2, "state-standby"};
-const Enum::YLeaf IpArpBagStateEnum::state_static {3, "state-static"};
-const Enum::YLeaf IpArpBagStateEnum::state_alias {4, "state-alias"};
-const Enum::YLeaf IpArpBagStateEnum::state_mobile {5, "state-mobile"};
-const Enum::YLeaf IpArpBagStateEnum::state_incomplete {6, "state-incomplete"};
-const Enum::YLeaf IpArpBagStateEnum::state_deleted {7, "state-deleted"};
-const Enum::YLeaf IpArpBagStateEnum::state_dynamic {8, "state-dynamic"};
-const Enum::YLeaf IpArpBagStateEnum::state_probe {9, "state-probe"};
-const Enum::YLeaf IpArpBagStateEnum::state_purge_delayed {10, "state-purge-delayed"};
-const Enum::YLeaf IpArpBagStateEnum::state_dhcp {11, "state-dhcp"};
-const Enum::YLeaf IpArpBagStateEnum::state_vxlan {12, "state-vxlan"};
-const Enum::YLeaf IpArpBagStateEnum::state_evpn_sync {13, "state-evpn-sync"};
-const Enum::YLeaf IpArpBagStateEnum::state_sat {14, "state-sat"};
-const Enum::YLeaf IpArpBagStateEnum::state_r_sync {15, "state-r-sync"};
-const Enum::YLeaf IpArpBagStateEnum::state_max {16, "state-max"};
+const Enum::YLeaf IpArpBagState::state_none {0, "state-none"};
+const Enum::YLeaf IpArpBagState::state_interface {1, "state-interface"};
+const Enum::YLeaf IpArpBagState::state_standby {2, "state-standby"};
+const Enum::YLeaf IpArpBagState::state_static {3, "state-static"};
+const Enum::YLeaf IpArpBagState::state_alias {4, "state-alias"};
+const Enum::YLeaf IpArpBagState::state_mobile {5, "state-mobile"};
+const Enum::YLeaf IpArpBagState::state_incomplete {6, "state-incomplete"};
+const Enum::YLeaf IpArpBagState::state_deleted {7, "state-deleted"};
+const Enum::YLeaf IpArpBagState::state_dynamic {8, "state-dynamic"};
+const Enum::YLeaf IpArpBagState::state_probe {9, "state-probe"};
+const Enum::YLeaf IpArpBagState::state_purge_delayed {10, "state-purge-delayed"};
+const Enum::YLeaf IpArpBagState::state_dhcp {11, "state-dhcp"};
+const Enum::YLeaf IpArpBagState::state_vxlan {12, "state-vxlan"};
+const Enum::YLeaf IpArpBagState::state_evpn_sync {13, "state-evpn-sync"};
+const Enum::YLeaf IpArpBagState::state_sat {14, "state-sat"};
+const Enum::YLeaf IpArpBagState::state_r_sync {15, "state-r-sync"};
+const Enum::YLeaf IpArpBagState::state_max {16, "state-max"};
+
+const Enum::YLeaf ArpResolutionHistoryStatus::status_none {0, "status-none"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_resolution_request {1, "status-resolution-request"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_reply {2, "status-resolved-reply"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_grat_arp {3, "status-resolved-grat-arp"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_request {4, "status-resolved-request"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_lc_sync {5, "status-resolved-lc-sync"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_lc_sync_purge_delay {6, "status-resolved-lc-sync-purge-delay"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_client {7, "status-resolved-client"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_removed_client {8, "status-removed-client"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_already_resolved {9, "status-already-resolved"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_failed {10, "status-failed"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_dropped_interface_down {11, "status-dropped-interface-down"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_dropped_broadcast_disabled {12, "status-dropped-broadcast-disabled"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_dropped_interface_unavailable {13, "status-dropped-interface-unavailable"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_dropped_bad_subnet {14, "status-dropped-bad-subnet"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_dropped_dynamic_learning_disabled {15, "status-dropped-dynamic-learning-disabled"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_dropped_out_of_subnet_disabled {16, "status-dropped-out-of-subnet-disabled"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_removed_client_sweep {17, "status-removed-client-sweep"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_added_client {18, "status-added-client"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_added_v1 {19, "status-added-v1"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_removed_v1 {20, "status-removed-v1"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_peer_sync {21, "status-resolved-peer-sync"};
+
+const Enum::YLeaf ArpGmpBagEncap::none {0, "none"};
+const Enum::YLeaf ArpGmpBagEncap::arpa {1, "arpa"};
+const Enum::YLeaf ArpGmpBagEncap::snap {2, "snap"};
+const Enum::YLeaf ArpGmpBagEncap::ieee802_1q {3, "ieee802-1q"};
+const Enum::YLeaf ArpGmpBagEncap::srp {4, "srp"};
+const Enum::YLeaf ArpGmpBagEncap::srpa {5, "srpa"};
+const Enum::YLeaf ArpGmpBagEncap::srpb {6, "srpb"};
 
 
 }

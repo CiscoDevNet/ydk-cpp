@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_bfd_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_bfd_cfg {
 
 Bfd::Bfd()
@@ -62,13 +64,13 @@ bool Bfd::has_data() const
 
 bool Bfd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(global_echo_min_interval.operation)
-	|| is_set(global_echo_usage.operation)
-	|| is_set(global_ipv4_echo_source.operation)
-	|| is_set(ipv6_checksum_disable.operation)
-	|| is_set(single_hop_trap.operation)
-	|| is_set(ttl_drop_threshold.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(global_echo_min_interval.yfilter)
+	|| ydk::is_set(global_echo_usage.yfilter)
+	|| ydk::is_set(global_ipv4_echo_source.yfilter)
+	|| ydk::is_set(ipv6_checksum_disable.yfilter)
+	|| ydk::is_set(single_hop_trap.yfilter)
+	|| ydk::is_set(ttl_drop_threshold.yfilter)
 	|| (bundle !=  nullptr && bundle->has_operation())
 	|| (echo_latency !=  nullptr && echo_latency->has_operation())
 	|| (echo_startup !=  nullptr && echo_startup->has_operation())
@@ -97,12 +99,12 @@ const EntityPath Bfd::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (global_echo_min_interval.is_set || is_set(global_echo_min_interval.operation)) leaf_name_data.push_back(global_echo_min_interval.get_name_leafdata());
-    if (global_echo_usage.is_set || is_set(global_echo_usage.operation)) leaf_name_data.push_back(global_echo_usage.get_name_leafdata());
-    if (global_ipv4_echo_source.is_set || is_set(global_ipv4_echo_source.operation)) leaf_name_data.push_back(global_ipv4_echo_source.get_name_leafdata());
-    if (ipv6_checksum_disable.is_set || is_set(ipv6_checksum_disable.operation)) leaf_name_data.push_back(ipv6_checksum_disable.get_name_leafdata());
-    if (single_hop_trap.is_set || is_set(single_hop_trap.operation)) leaf_name_data.push_back(single_hop_trap.get_name_leafdata());
-    if (ttl_drop_threshold.is_set || is_set(ttl_drop_threshold.operation)) leaf_name_data.push_back(ttl_drop_threshold.get_name_leafdata());
+    if (global_echo_min_interval.is_set || is_set(global_echo_min_interval.yfilter)) leaf_name_data.push_back(global_echo_min_interval.get_name_leafdata());
+    if (global_echo_usage.is_set || is_set(global_echo_usage.yfilter)) leaf_name_data.push_back(global_echo_usage.get_name_leafdata());
+    if (global_ipv4_echo_source.is_set || is_set(global_ipv4_echo_source.yfilter)) leaf_name_data.push_back(global_ipv4_echo_source.get_name_leafdata());
+    if (ipv6_checksum_disable.is_set || is_set(ipv6_checksum_disable.yfilter)) leaf_name_data.push_back(ipv6_checksum_disable.get_name_leafdata());
+    if (single_hop_trap.is_set || is_set(single_hop_trap.yfilter)) leaf_name_data.push_back(single_hop_trap.get_name_leafdata());
+    if (ttl_drop_threshold.is_set || is_set(ttl_drop_threshold.yfilter)) leaf_name_data.push_back(ttl_drop_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -205,31 +207,71 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::get_children() const
     return children;
 }
 
-void Bfd::set_value(const std::string & value_path, std::string value)
+void Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "global-echo-min-interval")
     {
         global_echo_min_interval = value;
+        global_echo_min_interval.value_namespace = name_space;
+        global_echo_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "global-echo-usage")
     {
         global_echo_usage = value;
+        global_echo_usage.value_namespace = name_space;
+        global_echo_usage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "global-ipv4-echo-source")
     {
         global_ipv4_echo_source = value;
+        global_ipv4_echo_source.value_namespace = name_space;
+        global_ipv4_echo_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-checksum-disable")
     {
         ipv6_checksum_disable = value;
+        ipv6_checksum_disable.value_namespace = name_space;
+        ipv6_checksum_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "single-hop-trap")
     {
         single_hop_trap = value;
+        single_hop_trap.value_namespace = name_space;
+        single_hop_trap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl-drop-threshold")
     {
         ttl_drop_threshold = value;
+        ttl_drop_threshold.value_namespace = name_space;
+        ttl_drop_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "global-echo-min-interval")
+    {
+        global_echo_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "global-echo-usage")
+    {
+        global_echo_usage.yfilter = yfilter;
+    }
+    if(value_path == "global-ipv4-echo-source")
+    {
+        global_ipv4_echo_source.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-checksum-disable")
+    {
+        ipv6_checksum_disable.yfilter = yfilter;
+    }
+    if(value_path == "single-hop-trap")
+    {
+        single_hop_trap.yfilter = yfilter;
+    }
+    if(value_path == "ttl-drop-threshold")
+    {
+        ttl_drop_threshold.yfilter = yfilter;
     }
 }
 
@@ -251,6 +293,18 @@ std::string Bfd::get_bundle_name() const
 augment_capabilities_function Bfd::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Bfd::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle" || name == "echo-latency" || name == "echo-startup" || name == "flap-damp" || name == "interfaces" || name == "multi-path-includes" || name == "global-echo-min-interval" || name == "global-echo-usage" || name == "global-ipv4-echo-source" || name == "ipv6-checksum-disable" || name == "single-hop-trap" || name == "ttl-drop-threshold")
+        return true;
+    return false;
 }
 
 Bfd::FlapDamp::FlapDamp()
@@ -288,12 +342,12 @@ bool Bfd::FlapDamp::has_data() const
 
 bool Bfd::FlapDamp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dampen_disable.operation)
-	|| is_set(initial_delay.operation)
-	|| is_set(maximum_delay.operation)
-	|| is_set(secondary_delay.operation)
-	|| is_set(threshold.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(dampen_disable.yfilter)
+	|| ydk::is_set(initial_delay.yfilter)
+	|| ydk::is_set(maximum_delay.yfilter)
+	|| ydk::is_set(secondary_delay.yfilter)
+	|| ydk::is_set(threshold.yfilter)
 	|| (bundle_member !=  nullptr && bundle_member->has_operation())
 	|| (extensions !=  nullptr && extensions->has_operation());
 }
@@ -321,11 +375,11 @@ const EntityPath Bfd::FlapDamp::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dampen_disable.is_set || is_set(dampen_disable.operation)) leaf_name_data.push_back(dampen_disable.get_name_leafdata());
-    if (initial_delay.is_set || is_set(initial_delay.operation)) leaf_name_data.push_back(initial_delay.get_name_leafdata());
-    if (maximum_delay.is_set || is_set(maximum_delay.operation)) leaf_name_data.push_back(maximum_delay.get_name_leafdata());
-    if (secondary_delay.is_set || is_set(secondary_delay.operation)) leaf_name_data.push_back(secondary_delay.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (dampen_disable.is_set || is_set(dampen_disable.yfilter)) leaf_name_data.push_back(dampen_disable.get_name_leafdata());
+    if (initial_delay.is_set || is_set(initial_delay.yfilter)) leaf_name_data.push_back(initial_delay.get_name_leafdata());
+    if (maximum_delay.is_set || is_set(maximum_delay.yfilter)) leaf_name_data.push_back(maximum_delay.get_name_leafdata());
+    if (secondary_delay.is_set || is_set(secondary_delay.yfilter)) leaf_name_data.push_back(secondary_delay.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -372,28 +426,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::get_children() con
     return children;
 }
 
-void Bfd::FlapDamp::set_value(const std::string & value_path, std::string value)
+void Bfd::FlapDamp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dampen-disable")
     {
         dampen_disable = value;
+        dampen_disable.value_namespace = name_space;
+        dampen_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-delay")
     {
         initial_delay = value;
+        initial_delay.value_namespace = name_space;
+        initial_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-delay")
     {
         maximum_delay = value;
+        maximum_delay.value_namespace = name_space;
+        maximum_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-delay")
     {
         secondary_delay = value;
+        secondary_delay.value_namespace = name_space;
+        secondary_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::FlapDamp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dampen-disable")
+    {
+        dampen_disable.yfilter = yfilter;
+    }
+    if(value_path == "initial-delay")
+    {
+        initial_delay.yfilter = yfilter;
+    }
+    if(value_path == "maximum-delay")
+    {
+        maximum_delay.yfilter = yfilter;
+    }
+    if(value_path == "secondary-delay")
+    {
+        secondary_delay.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Bfd::FlapDamp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-member" || name == "extensions" || name == "dampen-disable" || name == "initial-delay" || name == "maximum-delay" || name == "secondary-delay" || name == "threshold")
+        return true;
+    return false;
 }
 
 Bfd::FlapDamp::BundleMember::BundleMember()
@@ -420,11 +515,11 @@ bool Bfd::FlapDamp::BundleMember::has_data() const
 
 bool Bfd::FlapDamp::BundleMember::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(initial_delay.operation)
-	|| is_set(l3_only_mode.operation)
-	|| is_set(maximum_delay.operation)
-	|| is_set(secondary_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(initial_delay.yfilter)
+	|| ydk::is_set(l3_only_mode.yfilter)
+	|| ydk::is_set(maximum_delay.yfilter)
+	|| ydk::is_set(secondary_delay.yfilter);
 }
 
 std::string Bfd::FlapDamp::BundleMember::get_segment_path() const
@@ -450,10 +545,10 @@ const EntityPath Bfd::FlapDamp::BundleMember::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (initial_delay.is_set || is_set(initial_delay.operation)) leaf_name_data.push_back(initial_delay.get_name_leafdata());
-    if (l3_only_mode.is_set || is_set(l3_only_mode.operation)) leaf_name_data.push_back(l3_only_mode.get_name_leafdata());
-    if (maximum_delay.is_set || is_set(maximum_delay.operation)) leaf_name_data.push_back(maximum_delay.get_name_leafdata());
-    if (secondary_delay.is_set || is_set(secondary_delay.operation)) leaf_name_data.push_back(secondary_delay.get_name_leafdata());
+    if (initial_delay.is_set || is_set(initial_delay.yfilter)) leaf_name_data.push_back(initial_delay.get_name_leafdata());
+    if (l3_only_mode.is_set || is_set(l3_only_mode.yfilter)) leaf_name_data.push_back(l3_only_mode.get_name_leafdata());
+    if (maximum_delay.is_set || is_set(maximum_delay.yfilter)) leaf_name_data.push_back(maximum_delay.get_name_leafdata());
+    if (secondary_delay.is_set || is_set(secondary_delay.yfilter)) leaf_name_data.push_back(secondary_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -472,24 +567,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::BundleMember::get_
     return children;
 }
 
-void Bfd::FlapDamp::BundleMember::set_value(const std::string & value_path, std::string value)
+void Bfd::FlapDamp::BundleMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "initial-delay")
     {
         initial_delay = value;
+        initial_delay.value_namespace = name_space;
+        initial_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l3-only-mode")
     {
         l3_only_mode = value;
+        l3_only_mode.value_namespace = name_space;
+        l3_only_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-delay")
     {
         maximum_delay = value;
+        maximum_delay.value_namespace = name_space;
+        maximum_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-delay")
     {
         secondary_delay = value;
+        secondary_delay.value_namespace = name_space;
+        secondary_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::FlapDamp::BundleMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "initial-delay")
+    {
+        initial_delay.yfilter = yfilter;
+    }
+    if(value_path == "l3-only-mode")
+    {
+        l3_only_mode.yfilter = yfilter;
+    }
+    if(value_path == "maximum-delay")
+    {
+        maximum_delay.yfilter = yfilter;
+    }
+    if(value_path == "secondary-delay")
+    {
+        secondary_delay.yfilter = yfilter;
+    }
+}
+
+bool Bfd::FlapDamp::BundleMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "initial-delay" || name == "l3-only-mode" || name == "maximum-delay" || name == "secondary-delay")
+        return true;
+    return false;
 }
 
 Bfd::FlapDamp::Extensions::Extensions()
@@ -510,8 +640,8 @@ bool Bfd::FlapDamp::Extensions::has_data() const
 
 bool Bfd::FlapDamp::Extensions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down_monitor.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down_monitor.yfilter);
 }
 
 std::string Bfd::FlapDamp::Extensions::get_segment_path() const
@@ -537,7 +667,7 @@ const EntityPath Bfd::FlapDamp::Extensions::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down_monitor.is_set || is_set(down_monitor.operation)) leaf_name_data.push_back(down_monitor.get_name_leafdata());
+    if (down_monitor.is_set || is_set(down_monitor.yfilter)) leaf_name_data.push_back(down_monitor.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -556,12 +686,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::Extensions::get_ch
     return children;
 }
 
-void Bfd::FlapDamp::Extensions::set_value(const std::string & value_path, std::string value)
+void Bfd::FlapDamp::Extensions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down-monitor")
     {
         down_monitor = value;
+        down_monitor.value_namespace = name_space;
+        down_monitor.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::FlapDamp::Extensions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down-monitor")
+    {
+        down_monitor.yfilter = yfilter;
+    }
+}
+
+bool Bfd::FlapDamp::Extensions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down-monitor")
+        return true;
+    return false;
 }
 
 Bfd::EchoLatency::EchoLatency()
@@ -584,7 +731,7 @@ bool Bfd::EchoLatency::has_data() const
 
 bool Bfd::EchoLatency::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (detect !=  nullptr && detect->has_operation());
 }
 
@@ -643,8 +790,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::get_children() 
     return children;
 }
 
-void Bfd::EchoLatency::set_value(const std::string & value_path, std::string value)
+void Bfd::EchoLatency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::EchoLatency::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::EchoLatency::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detect")
+        return true;
+    return false;
 }
 
 Bfd::EchoLatency::Detect::Detect()
@@ -669,10 +827,10 @@ bool Bfd::EchoLatency::Detect::has_data() const
 
 bool Bfd::EchoLatency::Detect::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(latency_detect_count.operation)
-	|| is_set(latency_detect_enabled.operation)
-	|| is_set(latency_detect_percentage.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(latency_detect_count.yfilter)
+	|| ydk::is_set(latency_detect_enabled.yfilter)
+	|| ydk::is_set(latency_detect_percentage.yfilter);
 }
 
 std::string Bfd::EchoLatency::Detect::get_segment_path() const
@@ -698,9 +856,9 @@ const EntityPath Bfd::EchoLatency::Detect::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (latency_detect_count.is_set || is_set(latency_detect_count.operation)) leaf_name_data.push_back(latency_detect_count.get_name_leafdata());
-    if (latency_detect_enabled.is_set || is_set(latency_detect_enabled.operation)) leaf_name_data.push_back(latency_detect_enabled.get_name_leafdata());
-    if (latency_detect_percentage.is_set || is_set(latency_detect_percentage.operation)) leaf_name_data.push_back(latency_detect_percentage.get_name_leafdata());
+    if (latency_detect_count.is_set || is_set(latency_detect_count.yfilter)) leaf_name_data.push_back(latency_detect_count.get_name_leafdata());
+    if (latency_detect_enabled.is_set || is_set(latency_detect_enabled.yfilter)) leaf_name_data.push_back(latency_detect_enabled.get_name_leafdata());
+    if (latency_detect_percentage.is_set || is_set(latency_detect_percentage.yfilter)) leaf_name_data.push_back(latency_detect_percentage.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -719,20 +877,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::Detect::get_chi
     return children;
 }
 
-void Bfd::EchoLatency::Detect::set_value(const std::string & value_path, std::string value)
+void Bfd::EchoLatency::Detect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "latency-detect-count")
     {
         latency_detect_count = value;
+        latency_detect_count.value_namespace = name_space;
+        latency_detect_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-detect-enabled")
     {
         latency_detect_enabled = value;
+        latency_detect_enabled.value_namespace = name_space;
+        latency_detect_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "latency-detect-percentage")
     {
         latency_detect_percentage = value;
+        latency_detect_percentage.value_namespace = name_space;
+        latency_detect_percentage.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::EchoLatency::Detect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "latency-detect-count")
+    {
+        latency_detect_count.yfilter = yfilter;
+    }
+    if(value_path == "latency-detect-enabled")
+    {
+        latency_detect_enabled.yfilter = yfilter;
+    }
+    if(value_path == "latency-detect-percentage")
+    {
+        latency_detect_percentage.yfilter = yfilter;
+    }
+}
+
+bool Bfd::EchoLatency::Detect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "latency-detect-count" || name == "latency-detect-enabled" || name == "latency-detect-percentage")
+        return true;
+    return false;
 }
 
 Bfd::EchoStartup::EchoStartup()
@@ -753,8 +940,8 @@ bool Bfd::EchoStartup::has_data() const
 
 bool Bfd::EchoStartup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string Bfd::EchoStartup::get_segment_path() const
@@ -780,7 +967,7 @@ const EntityPath Bfd::EchoStartup::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -799,12 +986,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoStartup::get_children() 
     return children;
 }
 
-void Bfd::EchoStartup::set_value(const std::string & value_path, std::string value)
+void Bfd::EchoStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::EchoStartup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool Bfd::EchoStartup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "validate")
+        return true;
+    return false;
 }
 
 Bfd::Interfaces::Interfaces()
@@ -833,7 +1037,7 @@ bool Bfd::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::Interfaces::get_segment_path() const
@@ -898,8 +1102,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Interfaces::get_children() c
     return children;
 }
 
-void Bfd::Interfaces::set_value(const std::string & value_path, std::string value)
+void Bfd::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Bfd::Interfaces::Interface::Interface()
@@ -926,11 +1141,11 @@ bool Bfd::Interfaces::Interface::has_data() const
 
 bool Bfd::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_echo_usage.operation)
-	|| is_set(interface_ipv4_echo_source.operation)
-	|| is_set(ipv6_checksum.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_echo_usage.yfilter)
+	|| ydk::is_set(interface_ipv4_echo_source.yfilter)
+	|| ydk::is_set(ipv6_checksum.yfilter);
 }
 
 std::string Bfd::Interfaces::Interface::get_segment_path() const
@@ -956,10 +1171,10 @@ const EntityPath Bfd::Interfaces::Interface::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_echo_usage.is_set || is_set(interface_echo_usage.operation)) leaf_name_data.push_back(interface_echo_usage.get_name_leafdata());
-    if (interface_ipv4_echo_source.is_set || is_set(interface_ipv4_echo_source.operation)) leaf_name_data.push_back(interface_ipv4_echo_source.get_name_leafdata());
-    if (ipv6_checksum.is_set || is_set(ipv6_checksum.operation)) leaf_name_data.push_back(ipv6_checksum.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_echo_usage.is_set || is_set(interface_echo_usage.yfilter)) leaf_name_data.push_back(interface_echo_usage.get_name_leafdata());
+    if (interface_ipv4_echo_source.is_set || is_set(interface_ipv4_echo_source.yfilter)) leaf_name_data.push_back(interface_ipv4_echo_source.get_name_leafdata());
+    if (ipv6_checksum.is_set || is_set(ipv6_checksum.yfilter)) leaf_name_data.push_back(ipv6_checksum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -978,24 +1193,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Interfaces::Interface::get_c
     return children;
 }
 
-void Bfd::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Bfd::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-echo-usage")
     {
         interface_echo_usage = value;
+        interface_echo_usage.value_namespace = name_space;
+        interface_echo_usage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-ipv4-echo-source")
     {
         interface_ipv4_echo_source = value;
+        interface_ipv4_echo_source.value_namespace = name_space;
+        interface_ipv4_echo_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-checksum")
     {
         ipv6_checksum = value;
+        ipv6_checksum.value_namespace = name_space;
+        ipv6_checksum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-echo-usage")
+    {
+        interface_echo_usage.yfilter = yfilter;
+    }
+    if(value_path == "interface-ipv4-echo-source")
+    {
+        interface_ipv4_echo_source.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-checksum")
+    {
+        ipv6_checksum.yfilter = yfilter;
+    }
+}
+
+bool Bfd::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface-echo-usage" || name == "interface-ipv4-echo-source" || name == "ipv6-checksum")
+        return true;
+    return false;
 }
 
 Bfd::MultiPathIncludes::MultiPathIncludes()
@@ -1024,7 +1274,7 @@ bool Bfd::MultiPathIncludes::has_operation() const
         if(multi_path_include[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bfd::MultiPathIncludes::get_segment_path() const
@@ -1089,8 +1339,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::MultiPathIncludes::get_child
     return children;
 }
 
-void Bfd::MultiPathIncludes::set_value(const std::string & value_path, std::string value)
+void Bfd::MultiPathIncludes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::MultiPathIncludes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::MultiPathIncludes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multi-path-include")
+        return true;
+    return false;
 }
 
 Bfd::MultiPathIncludes::MultiPathInclude::MultiPathInclude()
@@ -1111,8 +1372,8 @@ bool Bfd::MultiPathIncludes::MultiPathInclude::has_data() const
 
 bool Bfd::MultiPathIncludes::MultiPathInclude::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(location.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(location.yfilter);
 }
 
 std::string Bfd::MultiPathIncludes::MultiPathInclude::get_segment_path() const
@@ -1138,7 +1399,7 @@ const EntityPath Bfd::MultiPathIncludes::MultiPathInclude::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1157,12 +1418,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::MultiPathIncludes::MultiPath
     return children;
 }
 
-void Bfd::MultiPathIncludes::MultiPathInclude::set_value(const std::string & value_path, std::string value)
+void Bfd::MultiPathIncludes::MultiPathInclude::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bfd::MultiPathIncludes::MultiPathInclude::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool Bfd::MultiPathIncludes::MultiPathInclude::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location")
+        return true;
+    return false;
 }
 
 Bfd::Bundle::Bundle()
@@ -1185,7 +1463,7 @@ bool Bfd::Bundle::has_data() const
 
 bool Bfd::Bundle::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (coexistence !=  nullptr && coexistence->has_operation());
 }
 
@@ -1244,8 +1522,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::get_children() const
     return children;
 }
 
-void Bfd::Bundle::set_value(const std::string & value_path, std::string value)
+void Bfd::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bfd::Bundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bfd::Bundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "coexistence")
+        return true;
+    return false;
 }
 
 Bfd::Bundle::Coexistence::Coexistence()
@@ -1266,8 +1555,8 @@ bool Bfd::Bundle::Coexistence::has_data() const
 
 bool Bfd::Bundle::Coexistence::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bob_blb.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bob_blb.yfilter);
 }
 
 std::string Bfd::Bundle::Coexistence::get_segment_path() const
@@ -1293,7 +1582,7 @@ const EntityPath Bfd::Bundle::Coexistence::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bob_blb.is_set || is_set(bob_blb.operation)) leaf_name_data.push_back(bob_blb.get_name_leafdata());
+    if (bob_blb.is_set || is_set(bob_blb.yfilter)) leaf_name_data.push_back(bob_blb.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1312,26 +1601,43 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::Coexistence::get_chi
     return children;
 }
 
-void Bfd::Bundle::Coexistence::set_value(const std::string & value_path, std::string value)
+void Bfd::Bundle::Coexistence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bob-blb")
     {
         bob_blb = value;
+        bob_blb.value_namespace = name_space;
+        bob_blb.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf BfdEchoStartupValidateEnum::off {0, "off"};
-const Enum::YLeaf BfdEchoStartupValidateEnum::on {1, "on"};
-const Enum::YLeaf BfdEchoStartupValidateEnum::force {2, "force"};
+void Bfd::Bundle::Coexistence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bob-blb")
+    {
+        bob_blb.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf BfdIfIpv6ChecksumUsageEnum::disable {0, "disable"};
-const Enum::YLeaf BfdIfIpv6ChecksumUsageEnum::enable {1, "enable"};
+bool Bfd::Bundle::Coexistence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bob-blb")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf BfdIfEchoUsageEnum::enable {0, "enable"};
-const Enum::YLeaf BfdIfEchoUsageEnum::disable {1, "disable"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsage::disable {0, "disable"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsage::enable {1, "enable"};
 
-const Enum::YLeaf BfdBundleCoexistenceBobBlbEnum::inherited {1, "inherited"};
-const Enum::YLeaf BfdBundleCoexistenceBobBlbEnum::logical {2, "logical"};
+const Enum::YLeaf BfdEchoStartupValidate::off {0, "off"};
+const Enum::YLeaf BfdEchoStartupValidate::on {1, "on"};
+const Enum::YLeaf BfdEchoStartupValidate::force {2, "force"};
+
+const Enum::YLeaf BfdIfEchoUsage::enable {0, "enable"};
+const Enum::YLeaf BfdIfEchoUsage::disable {1, "disable"};
+
+const Enum::YLeaf BfdBundleCoexistenceBobBlb::inherited {1, "inherited"};
+const Enum::YLeaf BfdBundleCoexistenceBobBlb::logical {2, "logical"};
 
 
 }

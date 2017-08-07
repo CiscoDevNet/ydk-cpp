@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_ldp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_ldp_cfg {
 
 MplsLdp::MplsLdp()
@@ -40,8 +42,8 @@ bool MplsLdp::has_data() const
 
 bool MplsLdp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (default_vrf !=  nullptr && default_vrf->has_operation())
 	|| (global !=  nullptr && global->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
@@ -67,7 +69,7 @@ const EntityPath MplsLdp::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -128,11 +130,21 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::get_children() const
     return children;
 }
 
-void MplsLdp::set_value(const std::string & value_path, std::string value)
+void MplsLdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
     }
 }
 
@@ -154,6 +166,18 @@ std::string MplsLdp::get_bundle_name() const
 augment_capabilities_function MplsLdp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> MplsLdp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool MplsLdp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf" || name == "global" || name == "vrfs" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::DefaultVrf()
@@ -184,7 +208,7 @@ bool MplsLdp::DefaultVrf::has_data() const
 
 bool MplsLdp::DefaultVrf::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (afs !=  nullptr && afs->has_operation())
 	|| (global !=  nullptr && global->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation());
@@ -273,8 +297,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::get_children
     return children;
 }
 
-void MplsLdp::DefaultVrf::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs" || name == "global" || name == "interfaces")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Afs()
@@ -303,7 +338,7 @@ bool MplsLdp::DefaultVrf::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::get_segment_path() const
@@ -368,8 +403,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::get_chi
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Af()
@@ -413,9 +459,9 @@ bool MplsLdp::DefaultVrf::Afs::Af::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (discovery !=  nullptr && discovery->has_operation())
 	|| (label !=  nullptr && label->has_operation())
 	|| (neighbor !=  nullptr && neighbor->has_operation())
@@ -446,8 +492,8 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -536,16 +582,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::get
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery" || name == "label" || name == "neighbor" || name == "redistribution-protocol" || name == "traffic-engineering" || name == "af-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Label()
@@ -572,7 +641,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (local !=  nullptr && local->has_operation())
 	|| (remote !=  nullptr && remote->has_operation());
 }
@@ -646,8 +715,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local" || name == "remote")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Remote()
@@ -670,7 +750,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (accept !=  nullptr && accept->has_operation());
 }
 
@@ -729,8 +809,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accept")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::Accept()
@@ -753,7 +844,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_accept_policies !=  nullptr && peer_accept_policies->has_operation());
 }
 
@@ -812,8 +903,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-accept-policies")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicies()
@@ -842,7 +944,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::ha
         if(peer_accept_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::get_segment_path() const
@@ -907,8 +1009,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-accept-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicy()
@@ -933,10 +1046,10 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::Pe
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsr_id.operation)
-	|| is_set(label_space_id.operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(label_space_id.yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::get_segment_path() const
@@ -962,9 +1075,9 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAccept
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsr_id.is_set || is_set(lsr_id.operation)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (label_space_id.is_set || is_set(label_space_id.operation)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -983,20 +1096,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsr-id")
     {
         lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-space-id")
     {
         label_space_id = value;
+        label_space_id.value_namespace = name_space;
+        label_space_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "label-space-id")
+    {
+        label_space_id.yfilter = yfilter;
+    }
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsr-id" || name == "label-space-id" || name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Local()
@@ -1028,9 +1170,9 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(default_route.operation)
-	|| is_set(implicit_null_override.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(default_route.yfilter)
+	|| ydk::is_set(implicit_null_override.yfilter)
 	|| (advertise !=  nullptr && advertise->has_operation())
 	|| (allocate !=  nullptr && allocate->has_operation());
 }
@@ -1058,8 +1200,8 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_route.is_set || is_set(default_route.operation)) leaf_name_data.push_back(default_route.get_name_leafdata());
-    if (implicit_null_override.is_set || is_set(implicit_null_override.operation)) leaf_name_data.push_back(implicit_null_override.get_name_leafdata());
+    if (default_route.is_set || is_set(default_route.yfilter)) leaf_name_data.push_back(default_route.get_name_leafdata());
+    if (implicit_null_override.is_set || is_set(implicit_null_override.yfilter)) leaf_name_data.push_back(implicit_null_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1106,16 +1248,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default-route")
     {
         default_route = value;
+        default_route.value_namespace = name_space;
+        default_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "implicit-null-override")
     {
         implicit_null_override = value;
+        implicit_null_override.value_namespace = name_space;
+        implicit_null_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-route")
+    {
+        default_route.yfilter = yfilter;
+    }
+    if(value_path == "implicit-null-override")
+    {
+        implicit_null_override.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise" || name == "allocate" || name == "default-route" || name == "implicit-null-override")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Advertise()
@@ -1153,8 +1318,8 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
 	|| (explicit_null !=  nullptr && explicit_null->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (peer_advertise_policies !=  nullptr && peer_advertise_policies->has_operation())
@@ -1184,7 +1349,7 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1259,12 +1424,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-null" || name == "interfaces" || name == "peer-advertise-policies" || name == "prefix-advertise-policies" || name == "disable")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicies()
@@ -1293,7 +1475,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicie
         if(peer_advertise_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::get_segment_path() const
@@ -1358,8 +1540,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-advertise-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicy()
@@ -1384,10 +1577,10 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicie
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsr_id.operation)
-	|| is_set(label_space_id.operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(label_space_id.yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::get_segment_path() const
@@ -1413,9 +1606,9 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdve
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsr_id.is_set || is_set(lsr_id.operation)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (label_space_id.is_set || is_set(label_space_id.operation)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1434,20 +1627,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsr-id")
     {
         lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-space-id")
     {
         label_space_id = value;
+        label_space_id.value_namespace = name_space;
+        label_space_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "label-space-id")
+    {
+        label_space_id.yfilter = yfilter;
+    }
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsr-id" || name == "label-space-id" || name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicies()
@@ -1476,7 +1698,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolic
         if(prefix_advertise_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::get_segment_path() const
@@ -1541,8 +1763,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-advertise-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy::PrefixAdvertisePolicy()
@@ -1567,10 +1800,10 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolic
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix_acl_name.operation)
-	|| is_set(advertise_type.operation)
-	|| is_set(peer_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter)
+	|| ydk::is_set(advertise_type.yfilter)
+	|| ydk::is_set(peer_acl_name.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy::get_segment_path() const
@@ -1596,9 +1829,9 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
-    if (advertise_type.is_set || is_set(advertise_type.operation)) leaf_name_data.push_back(advertise_type.get_name_leafdata());
-    if (peer_acl_name.is_set || is_set(peer_acl_name.operation)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (advertise_type.is_set || is_set(advertise_type.yfilter)) leaf_name_data.push_back(advertise_type.get_name_leafdata());
+    if (peer_acl_name.is_set || is_set(peer_acl_name.yfilter)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1617,20 +1850,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "advertise-type")
     {
         advertise_type = value;
+        advertise_type.value_namespace = name_space;
+        advertise_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-acl-name")
     {
         peer_acl_name = value;
+        peer_acl_name.value_namespace = name_space;
+        peer_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "advertise-type")
+    {
+        advertise_type.yfilter = yfilter;
+    }
+    if(value_path == "peer-acl-name")
+    {
+        peer_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-acl-name" || name == "advertise-type" || name == "peer-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::ExplicitNull()
@@ -1655,10 +1917,10 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::has_da
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(explicit_null_type.operation)
-	|| is_set(peer_acl_name.operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(explicit_null_type.yfilter)
+	|| ydk::is_set(peer_acl_name.yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::get_segment_path() const
@@ -1684,9 +1946,9 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Explicit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_null_type.is_set || is_set(explicit_null_type.operation)) leaf_name_data.push_back(explicit_null_type.get_name_leafdata());
-    if (peer_acl_name.is_set || is_set(peer_acl_name.operation)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (explicit_null_type.is_set || is_set(explicit_null_type.yfilter)) leaf_name_data.push_back(explicit_null_type.get_name_leafdata());
+    if (peer_acl_name.is_set || is_set(peer_acl_name.yfilter)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1705,20 +1967,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "explicit-null-type")
     {
         explicit_null_type = value;
+        explicit_null_type.value_namespace = name_space;
+        explicit_null_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-acl-name")
     {
         peer_acl_name = value;
+        peer_acl_name.value_namespace = name_space;
+        peer_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "explicit-null-type")
+    {
+        explicit_null_type.yfilter = yfilter;
+    }
+    if(value_path == "peer-acl-name")
+    {
+        peer_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-null-type" || name == "peer-acl-name" || name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interfaces()
@@ -1747,7 +2038,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::has_oper
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::get_segment_path() const
@@ -1812,8 +2103,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::Interface()
@@ -1834,8 +2136,8 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interfac
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::get_segment_path() const
@@ -1861,7 +2163,7 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1880,12 +2182,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::Allocate()
@@ -1908,9 +2227,9 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allocation_type.operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allocation_type.yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::get_segment_path() const
@@ -1936,8 +2255,8 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allocation_type.is_set || is_set(allocation_type.operation)) leaf_name_data.push_back(allocation_type.get_name_leafdata());
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (allocation_type.is_set || is_set(allocation_type.yfilter)) leaf_name_data.push_back(allocation_type.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1956,16 +2275,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Lab
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allocation-type")
     {
         allocation_type = value;
+        allocation_type.value_namespace = name_space;
+        allocation_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allocation-type")
+    {
+        allocation_type.yfilter = yfilter;
+    }
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocation-type" || name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Discovery::Discovery()
@@ -1991,8 +2333,8 @@ bool MplsLdp::DefaultVrf::Afs::Af::Discovery::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::Discovery::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(transport_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(transport_address.yfilter)
 	|| (targeted_hello_accept !=  nullptr && targeted_hello_accept->has_operation());
 }
 
@@ -2019,7 +2361,7 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Discovery::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transport_address.is_set || is_set(transport_address.operation)) leaf_name_data.push_back(transport_address.get_name_leafdata());
+    if (transport_address.is_set || is_set(transport_address.yfilter)) leaf_name_data.push_back(transport_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2052,12 +2394,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Dis
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Discovery::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transport-address")
     {
         transport_address = value;
+        transport_address.value_namespace = name_space;
+        transport_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transport-address")
+    {
+        transport_address.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Discovery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "targeted-hello-accept" || name == "transport-address")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::TargetedHelloAccept()
@@ -2080,9 +2439,9 @@ bool MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::has_data() co
 
 bool MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accept_type.operation)
-	|| is_set(peer_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(accept_type.yfilter)
+	|| ydk::is_set(peer_acl_name.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::get_segment_path() const
@@ -2108,8 +2467,8 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accept_type.is_set || is_set(accept_type.operation)) leaf_name_data.push_back(accept_type.get_name_leafdata());
-    if (peer_acl_name.is_set || is_set(peer_acl_name.operation)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
+    if (accept_type.is_set || is_set(accept_type.yfilter)) leaf_name_data.push_back(accept_type.get_name_leafdata());
+    if (peer_acl_name.is_set || is_set(peer_acl_name.yfilter)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2128,16 +2487,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Dis
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accept-type")
     {
         accept_type = value;
+        accept_type.value_namespace = name_space;
+        accept_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-acl-name")
     {
         peer_acl_name = value;
+        peer_acl_name.value_namespace = name_space;
+        peer_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accept-type")
+    {
+        accept_type.yfilter = yfilter;
+    }
+    if(value_path == "peer-acl-name")
+    {
+        peer_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accept-type" || name == "peer-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::TrafficEngineering()
@@ -2160,7 +2542,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (auto_tunnel_mesh !=  nullptr && auto_tunnel_mesh->has_operation());
 }
 
@@ -2219,8 +2601,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Tra
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-tunnel-mesh")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::AutoTunnelMesh()
@@ -2246,8 +2639,8 @@ bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::has_data(
 
 bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(group_all.yfilter)
 	|| (group_ids !=  nullptr && group_ids->has_operation());
 }
 
@@ -2274,7 +2667,7 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_all.is_set || is_set(group_all.operation)) leaf_name_data.push_back(group_all.get_name_leafdata());
+    if (group_all.is_set || is_set(group_all.yfilter)) leaf_name_data.push_back(group_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2307,12 +2700,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Tra
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-all")
     {
         group_all = value;
+        group_all.value_namespace = name_space;
+        group_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-all")
+    {
+        group_all.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-ids" || name == "group-all")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupIds()
@@ -2341,7 +2751,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds:
         if(group_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::get_segment_path() const
@@ -2406,8 +2816,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Tra
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-id")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId::GroupId()
@@ -2428,8 +2849,8 @@ bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds:
 
 bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mesh_group_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mesh_group_id.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId::get_segment_path() const
@@ -2455,7 +2876,7 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mesh_group_id.is_set || is_set(mesh_group_id.operation)) leaf_name_data.push_back(mesh_group_id.get_name_leafdata());
+    if (mesh_group_id.is_set || is_set(mesh_group_id.yfilter)) leaf_name_data.push_back(mesh_group_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2474,12 +2895,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Tra
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mesh-group-id")
     {
         mesh_group_id = value;
+        mesh_group_id.value_namespace = name_space;
+        mesh_group_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mesh-group-id")
+    {
+        mesh_group_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds::GroupId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mesh-group-id")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Neighbor::Neighbor()
@@ -2502,7 +2940,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (addresses !=  nullptr && addresses->has_operation());
 }
 
@@ -2561,8 +2999,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Nei
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Neighbor::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addresses")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Addresses()
@@ -2591,7 +3040,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::has_operation() const
         if(address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::get_segment_path() const
@@ -2656,8 +3105,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Nei
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::Address()
@@ -2680,9 +3140,9 @@ bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::has_data() cons
 
 bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_address.operation)
-	|| is_set(targeted.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(targeted.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::get_segment_path() const
@@ -2708,8 +3168,8 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (targeted.is_set || is_set(targeted.operation)) leaf_name_data.push_back(targeted.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (targeted.is_set || is_set(targeted.yfilter)) leaf_name_data.push_back(targeted.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2728,16 +3188,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Nei
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "targeted")
     {
         targeted = value;
+        targeted.value_namespace = name_space;
+        targeted.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "targeted")
+    {
+        targeted.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address" || name == "targeted")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::RedistributionProtocol()
@@ -2760,7 +3243,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bgp !=  nullptr && bgp->has_operation());
 }
 
@@ -2819,8 +3302,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Red
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::Bgp()
@@ -2847,7 +3341,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::has_data() const
 
 bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (advertise_to !=  nullptr && advertise_to->has_operation())
 	|| (as !=  nullptr && as->has_operation());
 }
@@ -2921,8 +3415,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Red
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise-to" || name == "as")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::As()
@@ -2945,9 +3450,9 @@ bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::has_data() c
 
 bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(as_xx.operation)
-	|| is_set(as_yy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as_yy.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::get_segment_path() const
@@ -2973,8 +3478,8 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as_xx.is_set || is_set(as_xx.operation)) leaf_name_data.push_back(as_xx.get_name_leafdata());
-    if (as_yy.is_set || is_set(as_yy.operation)) leaf_name_data.push_back(as_yy.get_name_leafdata());
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as_yy.is_set || is_set(as_yy.yfilter)) leaf_name_data.push_back(as_yy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2993,16 +3498,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Red
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as-xx")
     {
         as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-yy")
     {
         as_yy = value;
+        as_yy.value_namespace = name_space;
+        as_yy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as-yy")
+    {
+        as_yy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-xx" || name == "as-yy")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo::AdvertiseTo()
@@ -3025,9 +3553,9 @@ bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo::has
 
 bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_acl_name.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(peer_acl_name.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo::get_segment_path() const
@@ -3053,8 +3581,8 @@ const EntityPath MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::Adve
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_acl_name.is_set || is_set(peer_acl_name.operation)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (peer_acl_name.is_set || is_set(peer_acl_name.yfilter)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3073,16 +3601,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Afs::Af::Red
     return children;
 }
 
-void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-acl-name")
     {
         peer_acl_name = value;
+        peer_acl_name.value_namespace = name_space;
+        peer_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-acl-name")
+    {
+        peer_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-acl-name" || name == "type")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Global()
@@ -3116,8 +3667,8 @@ bool MplsLdp::DefaultVrf::Global::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(router_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(router_id.yfilter)
 	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
 	|| (neighbor !=  nullptr && neighbor->has_operation())
 	|| (session !=  nullptr && session->has_operation());
@@ -3146,7 +3697,7 @@ const EntityPath MplsLdp::DefaultVrf::Global::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3207,12 +3758,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::get_
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "graceful-restart" || name == "neighbor" || name == "session" || name == "router-id")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Session::Session()
@@ -3239,7 +3807,7 @@ bool MplsLdp::DefaultVrf::Global::Session::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::Session::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (downstream_on_demand !=  nullptr && downstream_on_demand->has_operation())
 	|| (protection !=  nullptr && protection->has_operation());
 }
@@ -3313,8 +3881,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Sess
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Session::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Global::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Global::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downstream-on-demand" || name == "protection")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Session::Protection::Protection()
@@ -3339,10 +3918,10 @@ bool MplsLdp::DefaultVrf::Global::Session::Protection::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::Session::Protection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(duration.operation)
-	|| is_set(peer_acl_name.operation)
-	|| is_set(protection_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(duration.yfilter)
+	|| ydk::is_set(peer_acl_name.yfilter)
+	|| ydk::is_set(protection_type.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Global::Session::Protection::get_segment_path() const
@@ -3368,9 +3947,9 @@ const EntityPath MplsLdp::DefaultVrf::Global::Session::Protection::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (duration.is_set || is_set(duration.operation)) leaf_name_data.push_back(duration.get_name_leafdata());
-    if (peer_acl_name.is_set || is_set(peer_acl_name.operation)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
-    if (protection_type.is_set || is_set(protection_type.operation)) leaf_name_data.push_back(protection_type.get_name_leafdata());
+    if (duration.is_set || is_set(duration.yfilter)) leaf_name_data.push_back(duration.get_name_leafdata());
+    if (peer_acl_name.is_set || is_set(peer_acl_name.yfilter)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
+    if (protection_type.is_set || is_set(protection_type.yfilter)) leaf_name_data.push_back(protection_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3389,20 +3968,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Sess
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Session::Protection::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Session::Protection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "duration")
     {
         duration = value;
+        duration.value_namespace = name_space;
+        duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-acl-name")
     {
         peer_acl_name = value;
+        peer_acl_name.value_namespace = name_space;
+        peer_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protection-type")
     {
         protection_type = value;
+        protection_type.value_namespace = name_space;
+        protection_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::Session::Protection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "duration")
+    {
+        duration.yfilter = yfilter;
+    }
+    if(value_path == "peer-acl-name")
+    {
+        peer_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "protection-type")
+    {
+        protection_type.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::Session::Protection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "duration" || name == "peer-acl-name" || name == "protection-type")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::DownstreamOnDemand()
@@ -3425,9 +4033,9 @@ bool MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_acl_name.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(peer_acl_name.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::get_segment_path() const
@@ -3453,8 +4061,8 @@ const EntityPath MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_acl_name.is_set || is_set(peer_acl_name.operation)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (peer_acl_name.is_set || is_set(peer_acl_name.yfilter)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3473,16 +4081,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Sess
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-acl-name")
     {
         peer_acl_name = value;
+        peer_acl_name.value_namespace = name_space;
+        peer_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-acl-name")
+    {
+        peer_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-acl-name" || name == "type")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Neighbor::Neighbor()
@@ -3512,8 +4143,8 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(password.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(password.yfilter)
 	|| (dual_stack !=  nullptr && dual_stack->has_operation())
 	|| (ldp_ids !=  nullptr && ldp_ids->has_operation());
 }
@@ -3541,7 +4172,7 @@ const EntityPath MplsLdp::DefaultVrf::Global::Neighbor::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3588,12 +4219,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Neig
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Neighbor::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-stack" || name == "ldp-ids" || name == "password")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpIds()
@@ -3622,7 +4270,7 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::has_operation() const
         if(ldp_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::get_segment_path() const
@@ -3687,8 +4335,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Neig
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ldp-id")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::LdpId()
@@ -3716,9 +4375,9 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsr_id.operation)
-	|| is_set(label_space_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(label_space_id.yfilter)
 	|| (password !=  nullptr && password->has_operation());
 }
 
@@ -3745,8 +4404,8 @@ const EntityPath MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsr_id.is_set || is_set(lsr_id.operation)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (label_space_id.is_set || is_set(label_space_id.operation)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3779,16 +4438,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Neig
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsr-id")
     {
         lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-space-id")
     {
         label_space_id = value;
+        label_space_id.value_namespace = name_space;
+        label_space_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "label-space-id")
+    {
+        label_space_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "password" || name == "lsr-id" || name == "label-space-id")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::Password()
@@ -3811,9 +4493,9 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::has_data() 
 
 bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(command_type.operation)
-	|| is_set(password.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(command_type.yfilter)
+	|| ydk::is_set(password.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::get_segment_path() const
@@ -3839,8 +4521,8 @@ const EntityPath MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (command_type.is_set || is_set(command_type.operation)) leaf_name_data.push_back(command_type.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (command_type.is_set || is_set(command_type.yfilter)) leaf_name_data.push_back(command_type.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3859,16 +4541,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Neig
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "command-type")
     {
         command_type = value;
+        command_type.value_namespace = name_space;
+        command_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "command-type")
+    {
+        command_type.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "command-type" || name == "password")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Neighbor::DualStack::DualStack()
@@ -3894,8 +4599,8 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tlv_compliance.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tlv_compliance.yfilter)
 	|| (transport_connection !=  nullptr && transport_connection->has_operation());
 }
 
@@ -3922,7 +4627,7 @@ const EntityPath MplsLdp::DefaultVrf::Global::Neighbor::DualStack::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tlv_compliance.is_set || is_set(tlv_compliance.operation)) leaf_name_data.push_back(tlv_compliance.get_name_leafdata());
+    if (tlv_compliance.is_set || is_set(tlv_compliance.yfilter)) leaf_name_data.push_back(tlv_compliance.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3955,12 +4660,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Neig
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-compliance")
     {
         tlv_compliance = value;
+        tlv_compliance.value_namespace = name_space;
+        tlv_compliance.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tlv-compliance")
+    {
+        tlv_compliance.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-connection" || name == "tlv-compliance")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::TransportConnection()
@@ -3986,8 +4708,8 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::has_
 
 bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_wait.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(max_wait.yfilter)
 	|| (prefer !=  nullptr && prefer->has_operation());
 }
 
@@ -4014,7 +4736,7 @@ const EntityPath MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConn
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_wait.is_set || is_set(max_wait.operation)) leaf_name_data.push_back(max_wait.get_name_leafdata());
+    if (max_wait.is_set || is_set(max_wait.yfilter)) leaf_name_data.push_back(max_wait.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4047,12 +4769,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Neig
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-wait")
     {
         max_wait = value;
+        max_wait.value_namespace = name_space;
+        max_wait.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-wait")
+    {
+        max_wait.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefer" || name == "max-wait")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::Prefer::Prefer()
@@ -4073,8 +4812,8 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::Pref
 
 bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::Prefer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::Prefer::get_segment_path() const
@@ -4100,7 +4839,7 @@ const EntityPath MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConn
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4119,12 +4858,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Neig
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::Prefer::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::Prefer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::Prefer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::Prefer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::GracefulRestart::GracefulRestart()
@@ -4147,7 +4903,7 @@ bool MplsLdp::DefaultVrf::Global::GracefulRestart::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::GracefulRestart::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (helper_peer !=  nullptr && helper_peer->has_operation());
 }
 
@@ -4206,8 +4962,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Grac
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::GracefulRestart::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Global::GracefulRestart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Global::GracefulRestart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-peer")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::HelperPeer()
@@ -4228,8 +4995,8 @@ bool MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::has_data() const
 
 bool MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maintain_on_local_reset.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maintain_on_local_reset.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::get_segment_path() const
@@ -4255,7 +5022,7 @@ const EntityPath MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maintain_on_local_reset.is_set || is_set(maintain_on_local_reset.operation)) leaf_name_data.push_back(maintain_on_local_reset.get_name_leafdata());
+    if (maintain_on_local_reset.is_set || is_set(maintain_on_local_reset.yfilter)) leaf_name_data.push_back(maintain_on_local_reset.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4274,12 +5041,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Global::Grac
     return children;
 }
 
-void MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maintain-on-local-reset")
     {
         maintain_on_local_reset = value;
+        maintain_on_local_reset.value_namespace = name_space;
+        maintain_on_local_reset.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maintain-on-local-reset")
+    {
+        maintain_on_local_reset.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Global::GracefulRestart::HelperPeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maintain-on-local-reset")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interfaces()
@@ -4308,7 +5092,7 @@ bool MplsLdp::DefaultVrf::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::get_segment_path() const
@@ -4373,8 +5157,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Interface()
@@ -4406,9 +5201,9 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::has_data() const
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (afs !=  nullptr && afs->has_operation())
 	|| (global !=  nullptr && global->has_operation());
 }
@@ -4436,8 +5231,8 @@ const EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4484,16 +5279,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs" || name == "global" || name == "interface-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Afs()
@@ -4522,7 +5340,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Afs::get_segment_path() const
@@ -4587,8 +5405,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Af()
@@ -4624,9 +5453,9 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::has_data() const
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (discovery !=  nullptr && discovery->has_operation())
 	|| (igp !=  nullptr && igp->has_operation())
 	|| (mldp !=  nullptr && mldp->has_operation());
@@ -4655,8 +5484,8 @@ const EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4717,16 +5546,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery" || name == "igp" || name == "mldp" || name == "af-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::Discovery()
@@ -4749,7 +5601,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::has_data() 
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (transport_address !=  nullptr && transport_address->has_operation());
 }
 
@@ -4808,8 +5660,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-address")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::TransportAddress()
@@ -4832,9 +5695,9 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAd
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_type.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::get_segment_path() const
@@ -4860,8 +5723,8 @@ const EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4880,16 +5743,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-type")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::Igp()
@@ -4910,8 +5796,8 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::has_data() const
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable_auto_config.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable_auto_config.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::get_segment_path() const
@@ -4937,7 +5823,7 @@ const EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable_auto_config.is_set || is_set(disable_auto_config.operation)) leaf_name_data.push_back(disable_auto_config.get_name_leafdata());
+    if (disable_auto_config.is_set || is_set(disable_auto_config.yfilter)) leaf_name_data.push_back(disable_auto_config.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4956,12 +5842,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable-auto-config")
     {
         disable_auto_config = value;
+        disable_auto_config.value_namespace = name_space;
+        disable_auto_config.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable-auto-config")
+    {
+        disable_auto_config.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable-auto-config")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::Mldp()
@@ -4982,8 +5885,8 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::has_data() const
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::get_segment_path() const
@@ -5009,7 +5912,7 @@ const EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5028,12 +5931,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Global::Global()
@@ -5060,7 +5980,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::has_data() const
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (discovery !=  nullptr && discovery->has_operation())
 	|| (igp !=  nullptr && igp->has_operation());
 }
@@ -5134,8 +6054,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Global::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery" || name == "igp")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::Discovery()
@@ -5161,8 +6092,8 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::has_data() c
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable_quick_start.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(disable_quick_start.yfilter)
 	|| (link_hello !=  nullptr && link_hello->has_operation());
 }
 
@@ -5189,7 +6120,7 @@ const EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable_quick_start.is_set || is_set(disable_quick_start.operation)) leaf_name_data.push_back(disable_quick_start.get_name_leafdata());
+    if (disable_quick_start.is_set || is_set(disable_quick_start.yfilter)) leaf_name_data.push_back(disable_quick_start.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5222,12 +6153,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable-quick-start")
     {
         disable_quick_start = value;
+        disable_quick_start.value_namespace = name_space;
+        disable_quick_start.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable-quick-start")
+    {
+        disable_quick_start.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-hello" || name == "disable-quick-start")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello::LinkHello()
@@ -5252,10 +6200,10 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello::h
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dual_stack.operation)
-	|| is_set(hold_time.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dual_stack.yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello::get_segment_path() const
@@ -5281,9 +6229,9 @@ const EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dual_stack.is_set || is_set(dual_stack.operation)) leaf_name_data.push_back(dual_stack.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (dual_stack.is_set || is_set(dual_stack.yfilter)) leaf_name_data.push_back(dual_stack.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5302,20 +6250,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dual-stack")
     {
         dual_stack = value;
+        dual_stack.value_namespace = name_space;
+        dual_stack.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dual-stack")
+    {
+        dual_stack.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dual-stack" || name == "hold-time" || name == "interval")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Igp()
@@ -5338,7 +6315,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::has_data() const
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sync !=  nullptr && sync->has_operation());
 }
 
@@ -5397,8 +6374,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sync")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Sync()
@@ -5421,7 +6409,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::has_data() c
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (delay !=  nullptr && delay->has_operation());
 }
 
@@ -5480,8 +6468,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delay")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::Delay()
@@ -5504,7 +6503,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::has_d
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (on_session_up !=  nullptr && on_session_up->has_operation());
 }
 
@@ -5563,8 +6562,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-session-up")
+        return true;
+    return false;
 }
 
 MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::OnSessionUp::OnSessionUp()
@@ -5587,9 +6597,9 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::OnSes
 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::OnSessionUp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation)
-	|| is_set(timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::OnSessionUp::get_segment_path() const
@@ -5615,8 +6625,8 @@ const EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5635,16 +6645,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::DefaultVrf::Interfaces::
     return children;
 }
 
-void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::OnSessionUp::set_value(const std::string & value_path, std::string value)
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::OnSessionUp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::OnSessionUp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::OnSessionUp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable" || name == "timeout")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrfs()
@@ -5673,7 +6706,7 @@ bool MplsLdp::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Vrfs::get_segment_path() const
@@ -5738,8 +6771,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::get_children() con
     return children;
 }
 
-void MplsLdp::Vrfs::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Vrf()
@@ -5775,9 +6819,9 @@ bool MplsLdp::Vrfs::Vrf::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (afs !=  nullptr && afs->has_operation())
 	|| (global !=  nullptr && global->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation());
@@ -5806,8 +6850,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5868,16 +6912,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::get_children(
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs" || name == "global" || name == "interfaces" || name == "vrf-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::Global()
@@ -5911,8 +6978,8 @@ bool MplsLdp::Vrfs::Vrf::Global::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(router_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(router_id.yfilter)
 	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
 	|| (neighbor !=  nullptr && neighbor->has_operation())
 	|| (session !=  nullptr && session->has_operation());
@@ -5941,7 +7008,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Global::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6002,12 +7069,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::get_c
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "graceful-restart" || name == "neighbor" || name == "session" || name == "router-id")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::Session::Session()
@@ -6030,7 +7114,7 @@ bool MplsLdp::Vrfs::Vrf::Global::Session::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Global::Session::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (downstream_on_demand !=  nullptr && downstream_on_demand->has_operation());
 }
 
@@ -6089,8 +7173,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Sessi
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::Session::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downstream-on-demand")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::DownstreamOnDemand()
@@ -6113,9 +7208,9 @@ bool MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_acl_name.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(peer_acl_name.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::get_segment_path() const
@@ -6141,8 +7236,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_acl_name.is_set || is_set(peer_acl_name.operation)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (peer_acl_name.is_set || is_set(peer_acl_name.yfilter)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6161,16 +7256,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Sessi
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-acl-name")
     {
         peer_acl_name = value;
+        peer_acl_name.value_namespace = name_space;
+        peer_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-acl-name")
+    {
+        peer_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-acl-name" || name == "type")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::Neighbor::Neighbor()
@@ -6196,8 +7314,8 @@ bool MplsLdp::Vrfs::Vrf::Global::Neighbor::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Global::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(password.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(password.yfilter)
 	|| (ldp_ids !=  nullptr && ldp_ids->has_operation());
 }
 
@@ -6224,7 +7342,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Global::Neighbor::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6257,12 +7375,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Neigh
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::Neighbor::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ldp-ids" || name == "password")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpIds()
@@ -6291,7 +7426,7 @@ bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::has_operation() const
         if(ldp_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::get_segment_path() const
@@ -6356,8 +7491,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Neigh
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ldp-id")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::LdpId()
@@ -6385,9 +7531,9 @@ bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsr_id.operation)
-	|| is_set(label_space_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(label_space_id.yfilter)
 	|| (password !=  nullptr && password->has_operation());
 }
 
@@ -6414,8 +7560,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsr_id.is_set || is_set(lsr_id.operation)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (label_space_id.is_set || is_set(label_space_id.operation)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6448,16 +7594,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Neigh
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsr-id")
     {
         lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-space-id")
     {
         label_space_id = value;
+        label_space_id.value_namespace = name_space;
+        label_space_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "label-space-id")
+    {
+        label_space_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "password" || name == "lsr-id" || name == "label-space-id")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::Password()
@@ -6480,9 +7649,9 @@ bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::has_data() c
 
 bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(command_type.operation)
-	|| is_set(password.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(command_type.yfilter)
+	|| ydk::is_set(password.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::get_segment_path() const
@@ -6508,8 +7677,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (command_type.is_set || is_set(command_type.operation)) leaf_name_data.push_back(command_type.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (command_type.is_set || is_set(command_type.yfilter)) leaf_name_data.push_back(command_type.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6528,16 +7697,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Neigh
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "command-type")
     {
         command_type = value;
+        command_type.value_namespace = name_space;
+        command_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "command-type")
+    {
+        command_type.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "command-type" || name == "password")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::GracefulRestart::GracefulRestart()
@@ -6560,7 +7752,7 @@ bool MplsLdp::Vrfs::Vrf::Global::GracefulRestart::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Global::GracefulRestart::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (helper_peer !=  nullptr && helper_peer->has_operation());
 }
 
@@ -6619,8 +7811,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Grace
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::GracefulRestart::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Global::GracefulRestart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::GracefulRestart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "helper-peer")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::HelperPeer()
@@ -6641,8 +7844,8 @@ bool MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maintain_on_local_reset.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maintain_on_local_reset.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::get_segment_path() const
@@ -6668,7 +7871,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maintain_on_local_reset.is_set || is_set(maintain_on_local_reset.operation)) leaf_name_data.push_back(maintain_on_local_reset.get_name_leafdata());
+    if (maintain_on_local_reset.is_set || is_set(maintain_on_local_reset.yfilter)) leaf_name_data.push_back(maintain_on_local_reset.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6687,12 +7890,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Global::Grace
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maintain-on-local-reset")
     {
         maintain_on_local_reset = value;
+        maintain_on_local_reset.value_namespace = name_space;
+        maintain_on_local_reset.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maintain-on-local-reset")
+    {
+        maintain_on_local_reset.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maintain-on-local-reset")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Afs()
@@ -6721,7 +7941,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::get_segment_path() const
@@ -6786,8 +8006,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::get_chil
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Af()
@@ -6819,9 +8050,9 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (discovery !=  nullptr && discovery->has_operation())
 	|| (label !=  nullptr && label->has_operation());
 }
@@ -6849,8 +8080,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6897,16 +8128,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::get_
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery" || name == "label" || name == "af-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::Discovery()
@@ -6927,8 +8181,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(transport_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transport_address.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::get_segment_path() const
@@ -6954,7 +8208,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transport_address.is_set || is_set(transport_address.operation)) leaf_name_data.push_back(transport_address.get_name_leafdata());
+    if (transport_address.is_set || is_set(transport_address.yfilter)) leaf_name_data.push_back(transport_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6973,12 +8227,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Disc
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transport-address")
     {
         transport_address = value;
+        transport_address.value_namespace = name_space;
+        transport_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transport-address")
+    {
+        transport_address.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-address")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Label()
@@ -7005,7 +8276,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (local !=  nullptr && local->has_operation())
 	|| (remote !=  nullptr && remote->has_operation());
 }
@@ -7079,8 +8350,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local" || name == "remote")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Remote()
@@ -7103,7 +8385,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (accept !=  nullptr && accept->has_operation());
 }
 
@@ -7162,8 +8444,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accept")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::Accept()
@@ -7186,7 +8479,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_accept_policies !=  nullptr && peer_accept_policies->has_operation());
 }
 
@@ -7245,8 +8538,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-accept-policies")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicies()
@@ -7275,7 +8579,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::has
         if(peer_accept_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::get_segment_path() const
@@ -7340,8 +8644,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-accept-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicy()
@@ -7377,8 +8692,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::Pee
         if(lsr_id[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(label_space_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(label_space_id.yfilter)
 	|| (peer_accept_policy_data !=  nullptr && peer_accept_policy_data->has_operation());
 }
 
@@ -7405,7 +8720,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label_space_id.is_set || is_set(label_space_id.operation)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
+    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7459,12 +8774,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label-space-id")
     {
         label_space_id = value;
+        label_space_id.value_namespace = name_space;
+        label_space_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label-space-id")
+    {
+        label_space_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsr-id" || name == "peer-accept-policy-data" || name == "label-space-id")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicyData::PeerAcceptPolicyData()
@@ -7485,8 +8817,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::Pee
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicyData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicyData::get_segment_path() const
@@ -7512,7 +8844,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7531,12 +8863,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicyData::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicyData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicyData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::PeerAcceptPolicyData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId::LsrId()
@@ -7559,9 +8908,9 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::Pee
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsr_id.operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId::get_segment_path() const
@@ -7587,8 +8936,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsr_id.is_set || is_set(lsr_id.operation)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7607,16 +8956,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsr-id")
     {
         lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::LsrId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsr-id" || name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Local()
@@ -7648,9 +9020,9 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(default_route.operation)
-	|| is_set(implicit_null_override.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(default_route.yfilter)
+	|| ydk::is_set(implicit_null_override.yfilter)
 	|| (advertise !=  nullptr && advertise->has_operation())
 	|| (allocate !=  nullptr && allocate->has_operation());
 }
@@ -7678,8 +9050,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_route.is_set || is_set(default_route.operation)) leaf_name_data.push_back(default_route.get_name_leafdata());
-    if (implicit_null_override.is_set || is_set(implicit_null_override.operation)) leaf_name_data.push_back(implicit_null_override.get_name_leafdata());
+    if (default_route.is_set || is_set(default_route.yfilter)) leaf_name_data.push_back(default_route.get_name_leafdata());
+    if (implicit_null_override.is_set || is_set(implicit_null_override.yfilter)) leaf_name_data.push_back(implicit_null_override.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7726,16 +9098,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default-route")
     {
         default_route = value;
+        default_route.value_namespace = name_space;
+        default_route.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "implicit-null-override")
     {
         implicit_null_override = value;
+        implicit_null_override.value_namespace = name_space;
+        implicit_null_override.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-route")
+    {
+        default_route.yfilter = yfilter;
+    }
+    if(value_path == "implicit-null-override")
+    {
+        implicit_null_override.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise" || name == "allocate" || name == "default-route" || name == "implicit-null-override")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Advertise()
@@ -7769,8 +9164,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
 	|| (explicit_null !=  nullptr && explicit_null->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (peer_advertise_policies !=  nullptr && peer_advertise_policies->has_operation());
@@ -7799,7 +9194,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7860,12 +9255,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-null" || name == "interfaces" || name == "peer-advertise-policies" || name == "disable")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicies()
@@ -7894,7 +9306,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies
         if(peer_advertise_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::get_segment_path() const
@@ -7959,8 +9371,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-advertise-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicy()
@@ -7996,8 +9419,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies
         if(lsr_id[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(label_space_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(label_space_id.yfilter)
 	|| (peer_advertise_policy_data !=  nullptr && peer_advertise_policy_data->has_operation());
 }
 
@@ -8024,7 +9447,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdver
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label_space_id.is_set || is_set(label_space_id.operation)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
+    if (label_space_id.is_set || is_set(label_space_id.yfilter)) leaf_name_data.push_back(label_space_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8078,12 +9501,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label-space-id")
     {
         label_space_id = value;
+        label_space_id.value_namespace = name_space;
+        label_space_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label-space-id")
+    {
+        label_space_id.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsr-id" || name == "peer-advertise-policy-data" || name == "label-space-id")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicyData::PeerAdvertisePolicyData()
@@ -8104,8 +9544,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicyData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicyData::get_segment_path() const
@@ -8131,7 +9571,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdver
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8150,12 +9590,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicyData::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicyData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicyData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::PeerAdvertisePolicyData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId::LsrId()
@@ -8178,9 +9635,9 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lsr_id.operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId::get_segment_path() const
@@ -8206,8 +9663,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdver
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lsr_id.is_set || is_set(lsr_id.operation)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8226,16 +9683,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsr-id")
     {
         lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::LsrId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsr-id" || name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interfaces()
@@ -8264,7 +9744,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::has_opera
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::get_segment_path() const
@@ -8329,8 +9809,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::Interface()
@@ -8351,8 +9842,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::get_segment_path() const
@@ -8378,7 +9869,7 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interface
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8397,12 +9888,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::ExplicitNull()
@@ -8427,10 +9935,10 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::has_dat
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(explicit_null_type.operation)
-	|| is_set(peer_acl_name.operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(explicit_null_type.yfilter)
+	|| ydk::is_set(peer_acl_name.yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::get_segment_path() const
@@ -8456,9 +9964,9 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitN
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_null_type.is_set || is_set(explicit_null_type.operation)) leaf_name_data.push_back(explicit_null_type.get_name_leafdata());
-    if (peer_acl_name.is_set || is_set(peer_acl_name.operation)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (explicit_null_type.is_set || is_set(explicit_null_type.yfilter)) leaf_name_data.push_back(explicit_null_type.get_name_leafdata());
+    if (peer_acl_name.is_set || is_set(peer_acl_name.yfilter)) leaf_name_data.push_back(peer_acl_name.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8477,20 +9985,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "explicit-null-type")
     {
         explicit_null_type = value;
+        explicit_null_type.value_namespace = name_space;
+        explicit_null_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-acl-name")
     {
         peer_acl_name = value;
+        peer_acl_name.value_namespace = name_space;
+        peer_acl_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "explicit-null-type")
+    {
+        explicit_null_type.yfilter = yfilter;
+    }
+    if(value_path == "peer-acl-name")
+    {
+        peer_acl_name.yfilter = yfilter;
+    }
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-null-type" || name == "peer-acl-name" || name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::Allocate()
@@ -8513,9 +10050,9 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allocation_type.operation)
-	|| is_set(prefix_acl_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allocation_type.yfilter)
+	|| ydk::is_set(prefix_acl_name.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::get_segment_path() const
@@ -8541,8 +10078,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allocation_type.is_set || is_set(allocation_type.operation)) leaf_name_data.push_back(allocation_type.get_name_leafdata());
-    if (prefix_acl_name.is_set || is_set(prefix_acl_name.operation)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
+    if (allocation_type.is_set || is_set(allocation_type.yfilter)) leaf_name_data.push_back(allocation_type.get_name_leafdata());
+    if (prefix_acl_name.is_set || is_set(prefix_acl_name.yfilter)) leaf_name_data.push_back(prefix_acl_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8561,16 +10098,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Afs::Af::Labe
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allocation-type")
     {
         allocation_type = value;
+        allocation_type.value_namespace = name_space;
+        allocation_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-acl-name")
     {
         prefix_acl_name = value;
+        prefix_acl_name.value_namespace = name_space;
+        prefix_acl_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allocation-type")
+    {
+        allocation_type.yfilter = yfilter;
+    }
+    if(value_path == "prefix-acl-name")
+    {
+        prefix_acl_name.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocation-type" || name == "prefix-acl-name")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Interfaces::Interfaces()
@@ -8599,7 +10159,7 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Interfaces::get_segment_path() const
@@ -8664,8 +10224,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Interfaces::g
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Interfaces::Interface::Interface()
@@ -8693,9 +10264,9 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (afs !=  nullptr && afs->has_operation());
 }
 
@@ -8722,8 +10293,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8756,16 +10327,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Interfaces::I
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs" || name == "interface-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Afs()
@@ -8794,7 +10388,7 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::get_segment_path() const
@@ -8859,8 +10453,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Interfaces::I
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Af()
@@ -8888,9 +10493,9 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::has_data() const
 
 bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (discovery !=  nullptr && discovery->has_operation());
 }
 
@@ -8917,8 +10522,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8951,16 +10556,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Interfaces::I
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery" || name == "af-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::Discovery()
@@ -8983,7 +10611,7 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::has_data() c
 
 bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (transport_address !=  nullptr && transport_address->has_operation());
 }
 
@@ -9042,8 +10670,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Interfaces::I
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-address")
+        return true;
+    return false;
 }
 
 MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::TransportAddress()
@@ -9066,9 +10705,9 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAdd
 
 bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_type.yfilter);
 }
 
 std::string MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::get_segment_path() const
@@ -9094,8 +10733,8 @@ const EntityPath MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9114,16 +10753,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Vrfs::Vrf::Interfaces::I
     return children;
 }
 
-void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-type")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Global()
@@ -9183,9 +10845,9 @@ bool MplsLdp::Global::has_data() const
 
 bool MplsLdp::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable_implicit_ipv4.operation)
-	|| is_set(ltrace_buf_multiplier.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(disable_implicit_ipv4.yfilter)
+	|| ydk::is_set(ltrace_buf_multiplier.yfilter)
 	|| (discovery !=  nullptr && discovery->has_operation())
 	|| (enable_logging !=  nullptr && enable_logging->has_operation())
 	|| (entropy_label !=  nullptr && entropy_label->has_operation())
@@ -9220,8 +10882,8 @@ const EntityPath MplsLdp::Global::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable_implicit_ipv4.is_set || is_set(disable_implicit_ipv4.operation)) leaf_name_data.push_back(disable_implicit_ipv4.get_name_leafdata());
-    if (ltrace_buf_multiplier.is_set || is_set(ltrace_buf_multiplier.operation)) leaf_name_data.push_back(ltrace_buf_multiplier.get_name_leafdata());
+    if (disable_implicit_ipv4.is_set || is_set(disable_implicit_ipv4.yfilter)) leaf_name_data.push_back(disable_implicit_ipv4.get_name_leafdata());
+    if (ltrace_buf_multiplier.is_set || is_set(ltrace_buf_multiplier.yfilter)) leaf_name_data.push_back(ltrace_buf_multiplier.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9366,16 +11028,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::get_children() c
     return children;
 }
 
-void MplsLdp::Global::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable-implicit-ipv4")
     {
         disable_implicit_ipv4 = value;
+        disable_implicit_ipv4.value_namespace = name_space;
+        disable_implicit_ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ltrace-buf-multiplier")
     {
         ltrace_buf_multiplier = value;
+        ltrace_buf_multiplier.value_namespace = name_space;
+        ltrace_buf_multiplier.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable-implicit-ipv4")
+    {
+        disable_implicit_ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ltrace-buf-multiplier")
+    {
+        ltrace_buf_multiplier.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery" || name == "enable-logging" || name == "entropy-label" || name == "graceful-restart" || name == "igp" || name == "mldp" || name == "nsr" || name == "session" || name == "signalling" || name == "disable-implicit-ipv4" || name == "ltrace-buf-multiplier")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::EntropyLabel::EntropyLabel()
@@ -9396,8 +11081,8 @@ bool MplsLdp::Global::EntropyLabel::has_data() const
 
 bool MplsLdp::Global::EntropyLabel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string MplsLdp::Global::EntropyLabel::get_segment_path() const
@@ -9423,7 +11108,7 @@ const EntityPath MplsLdp::Global::EntropyLabel::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9442,12 +11127,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::EntropyLabel::ge
     return children;
 }
 
-void MplsLdp::Global::EntropyLabel::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::EntropyLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::EntropyLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::EntropyLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Session::Session()
@@ -9473,8 +11175,8 @@ bool MplsLdp::Global::Session::has_data() const
 
 bool MplsLdp::Global::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hold_time.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(hold_time.yfilter)
 	|| (backoff_time !=  nullptr && backoff_time->has_operation());
 }
 
@@ -9501,7 +11203,7 @@ const EntityPath MplsLdp::Global::Session::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9534,12 +11236,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Session::get_chi
     return children;
 }
 
-void MplsLdp::Global::Session::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backoff-time" || name == "hold-time")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Session::BackoffTime::BackoffTime()
@@ -9562,9 +11281,9 @@ bool MplsLdp::Global::Session::BackoffTime::has_data() const
 
 bool MplsLdp::Global::Session::BackoffTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(initial_backoff_time.operation)
-	|| is_set(max_backoff_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(initial_backoff_time.yfilter)
+	|| ydk::is_set(max_backoff_time.yfilter);
 }
 
 std::string MplsLdp::Global::Session::BackoffTime::get_segment_path() const
@@ -9590,8 +11309,8 @@ const EntityPath MplsLdp::Global::Session::BackoffTime::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (initial_backoff_time.is_set || is_set(initial_backoff_time.operation)) leaf_name_data.push_back(initial_backoff_time.get_name_leafdata());
-    if (max_backoff_time.is_set || is_set(max_backoff_time.operation)) leaf_name_data.push_back(max_backoff_time.get_name_leafdata());
+    if (initial_backoff_time.is_set || is_set(initial_backoff_time.yfilter)) leaf_name_data.push_back(initial_backoff_time.get_name_leafdata());
+    if (max_backoff_time.is_set || is_set(max_backoff_time.yfilter)) leaf_name_data.push_back(max_backoff_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9610,16 +11329,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Session::Backoff
     return children;
 }
 
-void MplsLdp::Global::Session::BackoffTime::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Session::BackoffTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "initial-backoff-time")
     {
         initial_backoff_time = value;
+        initial_backoff_time.value_namespace = name_space;
+        initial_backoff_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-backoff-time")
     {
         max_backoff_time = value;
+        max_backoff_time.value_namespace = name_space;
+        max_backoff_time.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Session::BackoffTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "initial-backoff-time")
+    {
+        initial_backoff_time.yfilter = yfilter;
+    }
+    if(value_path == "max-backoff-time")
+    {
+        max_backoff_time.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Session::BackoffTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "initial-backoff-time" || name == "max-backoff-time")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Igp::Igp()
@@ -9642,7 +11384,7 @@ bool MplsLdp::Global::Igp::has_data() const
 
 bool MplsLdp::Global::Igp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sync !=  nullptr && sync->has_operation());
 }
 
@@ -9701,8 +11443,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Igp::get_childre
     return children;
 }
 
-void MplsLdp::Global::Igp::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Igp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Igp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Igp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sync")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Igp::Sync::Sync()
@@ -9725,7 +11478,7 @@ bool MplsLdp::Global::Igp::Sync::has_data() const
 
 bool MplsLdp::Global::Igp::Sync::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (delay !=  nullptr && delay->has_operation());
 }
 
@@ -9784,8 +11537,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Igp::Sync::get_c
     return children;
 }
 
-void MplsLdp::Global::Igp::Sync::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Igp::Sync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Igp::Sync::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Igp::Sync::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delay")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Igp::Sync::Delay::Delay()
@@ -9808,9 +11572,9 @@ bool MplsLdp::Global::Igp::Sync::Delay::has_data() const
 
 bool MplsLdp::Global::Igp::Sync::Delay::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(on_proc_restart.operation)
-	|| is_set(on_session_up.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(on_proc_restart.yfilter)
+	|| ydk::is_set(on_session_up.yfilter);
 }
 
 std::string MplsLdp::Global::Igp::Sync::Delay::get_segment_path() const
@@ -9836,8 +11600,8 @@ const EntityPath MplsLdp::Global::Igp::Sync::Delay::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (on_proc_restart.is_set || is_set(on_proc_restart.operation)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
-    if (on_session_up.is_set || is_set(on_session_up.operation)) leaf_name_data.push_back(on_session_up.get_name_leafdata());
+    if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
+    if (on_session_up.is_set || is_set(on_session_up.yfilter)) leaf_name_data.push_back(on_session_up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9856,16 +11620,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Igp::Sync::Delay
     return children;
 }
 
-void MplsLdp::Global::Igp::Sync::Delay::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Igp::Sync::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "on-proc-restart")
     {
         on_proc_restart = value;
+        on_proc_restart.value_namespace = name_space;
+        on_proc_restart.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "on-session-up")
     {
         on_session_up = value;
+        on_session_up.value_namespace = name_space;
+        on_session_up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Igp::Sync::Delay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "on-proc-restart")
+    {
+        on_proc_restart.yfilter = yfilter;
+    }
+    if(value_path == "on-session-up")
+    {
+        on_session_up.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Igp::Sync::Delay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-proc-restart" || name == "on-session-up")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::EnableLogging::EnableLogging()
@@ -9894,12 +11681,12 @@ bool MplsLdp::Global::EnableLogging::has_data() const
 
 bool MplsLdp::Global::EnableLogging::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjacency.operation)
-	|| is_set(gr_session_changes.operation)
-	|| is_set(neighbor_changes.operation)
-	|| is_set(nsr.operation)
-	|| is_set(session_protection.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjacency.yfilter)
+	|| ydk::is_set(gr_session_changes.yfilter)
+	|| ydk::is_set(neighbor_changes.yfilter)
+	|| ydk::is_set(nsr.yfilter)
+	|| ydk::is_set(session_protection.yfilter);
 }
 
 std::string MplsLdp::Global::EnableLogging::get_segment_path() const
@@ -9925,11 +11712,11 @@ const EntityPath MplsLdp::Global::EnableLogging::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjacency.is_set || is_set(adjacency.operation)) leaf_name_data.push_back(adjacency.get_name_leafdata());
-    if (gr_session_changes.is_set || is_set(gr_session_changes.operation)) leaf_name_data.push_back(gr_session_changes.get_name_leafdata());
-    if (neighbor_changes.is_set || is_set(neighbor_changes.operation)) leaf_name_data.push_back(neighbor_changes.get_name_leafdata());
-    if (nsr.is_set || is_set(nsr.operation)) leaf_name_data.push_back(nsr.get_name_leafdata());
-    if (session_protection.is_set || is_set(session_protection.operation)) leaf_name_data.push_back(session_protection.get_name_leafdata());
+    if (adjacency.is_set || is_set(adjacency.yfilter)) leaf_name_data.push_back(adjacency.get_name_leafdata());
+    if (gr_session_changes.is_set || is_set(gr_session_changes.yfilter)) leaf_name_data.push_back(gr_session_changes.get_name_leafdata());
+    if (neighbor_changes.is_set || is_set(neighbor_changes.yfilter)) leaf_name_data.push_back(neighbor_changes.get_name_leafdata());
+    if (nsr.is_set || is_set(nsr.yfilter)) leaf_name_data.push_back(nsr.get_name_leafdata());
+    if (session_protection.is_set || is_set(session_protection.yfilter)) leaf_name_data.push_back(session_protection.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9948,28 +11735,69 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::EnableLogging::g
     return children;
 }
 
-void MplsLdp::Global::EnableLogging::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::EnableLogging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjacency")
     {
         adjacency = value;
+        adjacency.value_namespace = name_space;
+        adjacency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gr-session-changes")
     {
         gr_session_changes = value;
+        gr_session_changes.value_namespace = name_space;
+        gr_session_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-changes")
     {
         neighbor_changes = value;
+        neighbor_changes.value_namespace = name_space;
+        neighbor_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr")
     {
         nsr = value;
+        nsr.value_namespace = name_space;
+        nsr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-protection")
     {
         session_protection = value;
+        session_protection.value_namespace = name_space;
+        session_protection.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::EnableLogging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjacency")
+    {
+        adjacency.yfilter = yfilter;
+    }
+    if(value_path == "gr-session-changes")
+    {
+        gr_session_changes.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-changes")
+    {
+        neighbor_changes.yfilter = yfilter;
+    }
+    if(value_path == "nsr")
+    {
+        nsr.yfilter = yfilter;
+    }
+    if(value_path == "session-protection")
+    {
+        session_protection.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::EnableLogging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjacency" || name == "gr-session-changes" || name == "neighbor-changes" || name == "nsr" || name == "session-protection")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Signalling::Signalling()
@@ -9990,8 +11818,8 @@ bool MplsLdp::Global::Signalling::has_data() const
 
 bool MplsLdp::Global::Signalling::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dscp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dscp.yfilter);
 }
 
 std::string MplsLdp::Global::Signalling::get_segment_path() const
@@ -10017,7 +11845,7 @@ const EntityPath MplsLdp::Global::Signalling::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dscp.is_set || is_set(dscp.operation)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10036,12 +11864,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Signalling::get_
     return children;
 }
 
-void MplsLdp::Global::Signalling::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Signalling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dscp")
     {
         dscp = value;
+        dscp.value_namespace = name_space;
+        dscp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Signalling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Signalling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dscp")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Nsr::Nsr()
@@ -10062,8 +11907,8 @@ bool MplsLdp::Global::Nsr::has_data() const
 
 bool MplsLdp::Global::Nsr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string MplsLdp::Global::Nsr::get_segment_path() const
@@ -10089,7 +11934,7 @@ const EntityPath MplsLdp::Global::Nsr::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10108,12 +11953,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Nsr::get_childre
     return children;
 }
 
-void MplsLdp::Global::Nsr::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Nsr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Nsr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Nsr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::GracefulRestart::GracefulRestart()
@@ -10138,10 +12000,10 @@ bool MplsLdp::Global::GracefulRestart::has_data() const
 
 bool MplsLdp::Global::GracefulRestart::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(forwarding_hold_time.operation)
-	|| is_set(reconnect_timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(forwarding_hold_time.yfilter)
+	|| ydk::is_set(reconnect_timeout.yfilter);
 }
 
 std::string MplsLdp::Global::GracefulRestart::get_segment_path() const
@@ -10167,9 +12029,9 @@ const EntityPath MplsLdp::Global::GracefulRestart::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (forwarding_hold_time.is_set || is_set(forwarding_hold_time.operation)) leaf_name_data.push_back(forwarding_hold_time.get_name_leafdata());
-    if (reconnect_timeout.is_set || is_set(reconnect_timeout.operation)) leaf_name_data.push_back(reconnect_timeout.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (forwarding_hold_time.is_set || is_set(forwarding_hold_time.yfilter)) leaf_name_data.push_back(forwarding_hold_time.get_name_leafdata());
+    if (reconnect_timeout.is_set || is_set(reconnect_timeout.yfilter)) leaf_name_data.push_back(reconnect_timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10188,20 +12050,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::GracefulRestart:
     return children;
 }
 
-void MplsLdp::Global::GracefulRestart::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forwarding-hold-time")
     {
         forwarding_hold_time = value;
+        forwarding_hold_time.value_namespace = name_space;
+        forwarding_hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reconnect-timeout")
     {
         reconnect_timeout = value;
+        reconnect_timeout.value_namespace = name_space;
+        reconnect_timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::GracefulRestart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "forwarding-hold-time")
+    {
+        forwarding_hold_time.yfilter = yfilter;
+    }
+    if(value_path == "reconnect-timeout")
+    {
+        reconnect_timeout.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::GracefulRestart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "forwarding-hold-time" || name == "reconnect-timeout")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Discovery::Discovery()
@@ -10233,9 +12124,9 @@ bool MplsLdp::Global::Discovery::has_data() const
 
 bool MplsLdp::Global::Discovery::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable_instance_tlv.operation)
-	|| is_set(disable_quick_start.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(disable_instance_tlv.yfilter)
+	|| ydk::is_set(disable_quick_start.yfilter)
 	|| (link_hello !=  nullptr && link_hello->has_operation())
 	|| (targeted_hello !=  nullptr && targeted_hello->has_operation());
 }
@@ -10263,8 +12154,8 @@ const EntityPath MplsLdp::Global::Discovery::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable_instance_tlv.is_set || is_set(disable_instance_tlv.operation)) leaf_name_data.push_back(disable_instance_tlv.get_name_leafdata());
-    if (disable_quick_start.is_set || is_set(disable_quick_start.operation)) leaf_name_data.push_back(disable_quick_start.get_name_leafdata());
+    if (disable_instance_tlv.is_set || is_set(disable_instance_tlv.yfilter)) leaf_name_data.push_back(disable_instance_tlv.get_name_leafdata());
+    if (disable_quick_start.is_set || is_set(disable_quick_start.yfilter)) leaf_name_data.push_back(disable_quick_start.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10311,16 +12202,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Discovery::get_c
     return children;
 }
 
-void MplsLdp::Global::Discovery::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable-instance-tlv")
     {
         disable_instance_tlv = value;
+        disable_instance_tlv.value_namespace = name_space;
+        disable_instance_tlv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-quick-start")
     {
         disable_quick_start = value;
+        disable_quick_start.value_namespace = name_space;
+        disable_quick_start.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable-instance-tlv")
+    {
+        disable_instance_tlv.yfilter = yfilter;
+    }
+    if(value_path == "disable-quick-start")
+    {
+        disable_quick_start.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Discovery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-hello" || name == "targeted-hello" || name == "disable-instance-tlv" || name == "disable-quick-start")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Discovery::LinkHello::LinkHello()
@@ -10343,9 +12257,9 @@ bool MplsLdp::Global::Discovery::LinkHello::has_data() const
 
 bool MplsLdp::Global::Discovery::LinkHello::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hold_time.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string MplsLdp::Global::Discovery::LinkHello::get_segment_path() const
@@ -10371,8 +12285,8 @@ const EntityPath MplsLdp::Global::Discovery::LinkHello::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10391,16 +12305,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Discovery::LinkH
     return children;
 }
 
-void MplsLdp::Global::Discovery::LinkHello::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Discovery::LinkHello::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Discovery::LinkHello::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Discovery::LinkHello::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hold-time" || name == "interval")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Discovery::TargetedHello::TargetedHello()
@@ -10423,9 +12360,9 @@ bool MplsLdp::Global::Discovery::TargetedHello::has_data() const
 
 bool MplsLdp::Global::Discovery::TargetedHello::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hold_time.operation)
-	|| is_set(interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(interval.yfilter);
 }
 
 std::string MplsLdp::Global::Discovery::TargetedHello::get_segment_path() const
@@ -10451,8 +12388,8 @@ const EntityPath MplsLdp::Global::Discovery::TargetedHello::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (interval.is_set || is_set(interval.operation)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10471,16 +12408,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Discovery::Targe
     return children;
 }
 
-void MplsLdp::Global::Discovery::TargetedHello::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Discovery::TargetedHello::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval")
     {
         interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Discovery::TargetedHello::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Discovery::TargetedHello::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hold-time" || name == "interval")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Mldp()
@@ -10514,8 +12474,8 @@ bool MplsLdp::Global::Mldp::has_data() const
 
 bool MplsLdp::Global::Mldp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (default_vrf !=  nullptr && default_vrf->has_operation())
 	|| (mldp_global !=  nullptr && mldp_global->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
@@ -10544,7 +12504,7 @@ const EntityPath MplsLdp::Global::Mldp::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10605,12 +12565,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::get_childr
     return children;
 }
 
-void MplsLdp::Global::Mldp::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf" || name == "mldp-global" || name == "vrfs" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrfs()
@@ -10639,7 +12616,7 @@ bool MplsLdp::Global::Mldp::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::get_segment_path() const
@@ -10704,8 +12681,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::get_
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Mldp::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Vrf()
@@ -10733,9 +12721,9 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::has_data() const
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (afs !=  nullptr && afs->has_operation());
 }
 
@@ -10762,8 +12750,8 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10796,16 +12784,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs" || name == "vrf-name" || name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Afs()
@@ -10834,7 +12845,7 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::get_segment_path() const
@@ -10899,8 +12910,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Af()
@@ -10950,10 +12972,10 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::has_data() const
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(enable.operation)
-	|| is_set(mldp_rib_unicast_always.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(mldp_rib_unicast_always.yfilter)
 	|| (csc !=  nullptr && csc->has_operation())
 	|| (make_before_break !=  nullptr && make_before_break->has_operation())
 	|| (mldp_recursive_fec !=  nullptr && mldp_recursive_fec->has_operation())
@@ -10985,9 +13007,9 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (mldp_rib_unicast_always.is_set || is_set(mldp_rib_unicast_always.operation)) leaf_name_data.push_back(mldp_rib_unicast_always.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (mldp_rib_unicast_always.is_set || is_set(mldp_rib_unicast_always.yfilter)) leaf_name_data.push_back(mldp_rib_unicast_always.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11090,20 +13112,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mldp-rib-unicast-always")
     {
         mldp_rib_unicast_always = value;
+        mldp_rib_unicast_always.value_namespace = name_space;
+        mldp_rib_unicast_always.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "mldp-rib-unicast-always")
+    {
+        mldp_rib_unicast_always.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "csc" || name == "make-before-break" || name == "mldp-recursive-fec" || name == "mo-frr" || name == "neighbor-policies" || name == "recursive-forwarding" || name == "af-name" || name == "enable" || name == "mldp-rib-unicast-always")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding::RecursiveForwarding()
@@ -11126,9 +13177,9 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding::has_data() 
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(policy.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding::get_segment_path() const
@@ -11154,8 +13205,8 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11174,16 +13225,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::RecursiveForwarding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::MldpRecursiveFec()
@@ -11206,9 +13280,9 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::has_data() con
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(policy.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::get_segment_path() const
@@ -11234,8 +13308,8 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11254,16 +13328,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicies()
@@ -11292,7 +13389,7 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::has_operation(
         if(neighbor_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::get_segment_path() const
@@ -11357,8 +13454,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy::NeighborPolicy()
@@ -11383,10 +13491,10 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(root_address.operation)
-	|| is_set(policy_mode.operation)
-	|| is_set(route_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(root_address.yfilter)
+	|| ydk::is_set(policy_mode.yfilter)
+	|| ydk::is_set(route_policy.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy::get_segment_path() const
@@ -11412,9 +13520,9 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::Ne
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (root_address.is_set || is_set(root_address.operation)) leaf_name_data.push_back(root_address.get_name_leafdata());
-    if (policy_mode.is_set || is_set(policy_mode.operation)) leaf_name_data.push_back(policy_mode.get_name_leafdata());
-    if (route_policy.is_set || is_set(route_policy.operation)) leaf_name_data.push_back(route_policy.get_name_leafdata());
+    if (root_address.is_set || is_set(root_address.yfilter)) leaf_name_data.push_back(root_address.get_name_leafdata());
+    if (policy_mode.is_set || is_set(policy_mode.yfilter)) leaf_name_data.push_back(policy_mode.get_name_leafdata());
+    if (route_policy.is_set || is_set(route_policy.yfilter)) leaf_name_data.push_back(route_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11433,20 +13541,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "root-address")
     {
         root_address = value;
+        root_address.value_namespace = name_space;
+        root_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-mode")
     {
         policy_mode = value;
+        policy_mode.value_namespace = name_space;
+        policy_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy")
     {
         route_policy = value;
+        route_policy.value_namespace = name_space;
+        route_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "root-address")
+    {
+        root_address.yfilter = yfilter;
+    }
+    if(value_path == "policy-mode")
+    {
+        policy_mode.yfilter = yfilter;
+    }
+    if(value_path == "route-policy")
+    {
+        route_policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::NeighborPolicies::NeighborPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "root-address" || name == "policy-mode" || name == "route-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::MoFrr()
@@ -11469,9 +13606,9 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::has_data() const
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(policy.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::get_segment_path() const
@@ -11497,8 +13634,8 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11517,16 +13654,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::MakeBeforeBreak()
@@ -11552,8 +13712,8 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::has_data() cons
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(policy.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(policy.yfilter)
 	|| (signaling !=  nullptr && signaling->has_operation());
 }
 
@@ -11580,7 +13740,7 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11613,12 +13773,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "signaling" || name == "policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling::Signaling()
@@ -11641,9 +13818,9 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling::has_
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(delete_delay.operation)
-	|| is_set(forward_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(delete_delay.yfilter)
+	|| ydk::is_set(forward_delay.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling::get_segment_path() const
@@ -11669,8 +13846,8 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Sig
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (delete_delay.is_set || is_set(delete_delay.operation)) leaf_name_data.push_back(delete_delay.get_name_leafdata());
-    if (forward_delay.is_set || is_set(forward_delay.operation)) leaf_name_data.push_back(forward_delay.get_name_leafdata());
+    if (delete_delay.is_set || is_set(delete_delay.yfilter)) leaf_name_data.push_back(delete_delay.get_name_leafdata());
+    if (forward_delay.is_set || is_set(forward_delay.yfilter)) leaf_name_data.push_back(forward_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11689,16 +13866,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delete-delay")
     {
         delete_delay = value;
+        delete_delay.value_namespace = name_space;
+        delete_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-delay")
     {
         forward_delay = value;
+        forward_delay.value_namespace = name_space;
+        forward_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "delete-delay")
+    {
+        delete_delay.yfilter = yfilter;
+    }
+    if(value_path == "forward-delay")
+    {
+        forward_delay.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delete-delay" || name == "forward-delay")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::Csc()
@@ -11719,8 +13919,8 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::has_data() const
 
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::get_segment_path() const
@@ -11746,7 +13946,7 @@ const EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11765,12 +13965,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::Vrfs::Vrf:
     return children;
 }
 
-void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::DefaultVrf()
@@ -11793,7 +14010,7 @@ bool MplsLdp::Global::Mldp::DefaultVrf::has_data() const
 
 bool MplsLdp::Global::Mldp::DefaultVrf::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (afs !=  nullptr && afs->has_operation());
 }
 
@@ -11852,8 +14069,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Afs()
@@ -11882,7 +14110,7 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::get_segment_path() const
@@ -11947,8 +14175,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Af()
@@ -11998,10 +14237,10 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::has_data() const
 
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(enable.operation)
-	|| is_set(mldp_rib_unicast_always.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(mldp_rib_unicast_always.yfilter)
 	|| (csc !=  nullptr && csc->has_operation())
 	|| (make_before_break !=  nullptr && make_before_break->has_operation())
 	|| (mldp_recursive_fec !=  nullptr && mldp_recursive_fec->has_operation())
@@ -12033,9 +14272,9 @@ const EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (mldp_rib_unicast_always.is_set || is_set(mldp_rib_unicast_always.operation)) leaf_name_data.push_back(mldp_rib_unicast_always.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (mldp_rib_unicast_always.is_set || is_set(mldp_rib_unicast_always.yfilter)) leaf_name_data.push_back(mldp_rib_unicast_always.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12138,20 +14377,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mldp-rib-unicast-always")
     {
         mldp_rib_unicast_always = value;
+        mldp_rib_unicast_always.value_namespace = name_space;
+        mldp_rib_unicast_always.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "mldp-rib-unicast-always")
+    {
+        mldp_rib_unicast_always.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "csc" || name == "make-before-break" || name == "mldp-recursive-fec" || name == "mo-frr" || name == "neighbor-policies" || name == "recursive-forwarding" || name == "af-name" || name == "enable" || name == "mldp-rib-unicast-always")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding::RecursiveForwarding()
@@ -12174,9 +14442,9 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding::has_data()
 
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(policy.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding::get_segment_path() const
@@ -12202,8 +14470,8 @@ const EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12222,16 +14490,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::RecursiveForwarding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::MldpRecursiveFec()
@@ -12254,9 +14545,9 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::has_data() co
 
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(policy.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::get_segment_path() const
@@ -12282,8 +14573,8 @@ const EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12302,16 +14593,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicies()
@@ -12340,7 +14654,7 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::has_operation
         if(neighbor_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::get_segment_path() const
@@ -12405,8 +14719,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy::NeighborPolicy()
@@ -12431,10 +14756,10 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolic
 
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(root_address.operation)
-	|| is_set(policy_mode.operation)
-	|| is_set(route_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(root_address.yfilter)
+	|| ydk::is_set(policy_mode.yfilter)
+	|| ydk::is_set(route_policy.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy::get_segment_path() const
@@ -12460,9 +14785,9 @@ const EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::N
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (root_address.is_set || is_set(root_address.operation)) leaf_name_data.push_back(root_address.get_name_leafdata());
-    if (policy_mode.is_set || is_set(policy_mode.operation)) leaf_name_data.push_back(policy_mode.get_name_leafdata());
-    if (route_policy.is_set || is_set(route_policy.operation)) leaf_name_data.push_back(route_policy.get_name_leafdata());
+    if (root_address.is_set || is_set(root_address.yfilter)) leaf_name_data.push_back(root_address.get_name_leafdata());
+    if (policy_mode.is_set || is_set(policy_mode.yfilter)) leaf_name_data.push_back(policy_mode.get_name_leafdata());
+    if (route_policy.is_set || is_set(route_policy.yfilter)) leaf_name_data.push_back(route_policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12481,20 +14806,49 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "root-address")
     {
         root_address = value;
+        root_address.value_namespace = name_space;
+        root_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-mode")
     {
         policy_mode = value;
+        policy_mode.value_namespace = name_space;
+        policy_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy")
     {
         route_policy = value;
+        route_policy.value_namespace = name_space;
+        route_policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "root-address")
+    {
+        root_address.yfilter = yfilter;
+    }
+    if(value_path == "policy-mode")
+    {
+        policy_mode.yfilter = yfilter;
+    }
+    if(value_path == "route-policy")
+    {
+        route_policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::NeighborPolicies::NeighborPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "root-address" || name == "policy-mode" || name == "route-policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::MoFrr()
@@ -12517,9 +14871,9 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::has_data() const
 
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(policy.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::get_segment_path() const
@@ -12545,8 +14899,8 @@ const EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12565,16 +14919,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::MakeBeforeBreak()
@@ -12600,8 +14977,8 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::has_data() con
 
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(policy.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(policy.yfilter)
 	|| (signaling !=  nullptr && signaling->has_operation());
 }
 
@@ -12628,7 +15005,7 @@ const EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12661,12 +15038,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "signaling" || name == "policy")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signaling::Signaling()
@@ -12689,9 +15083,9 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signaling::has
 
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signaling::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(delete_delay.operation)
-	|| is_set(forward_delay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(delete_delay.yfilter)
+	|| ydk::is_set(forward_delay.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signaling::get_segment_path() const
@@ -12717,8 +15111,8 @@ const EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Si
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (delete_delay.is_set || is_set(delete_delay.operation)) leaf_name_data.push_back(delete_delay.get_name_leafdata());
-    if (forward_delay.is_set || is_set(forward_delay.operation)) leaf_name_data.push_back(forward_delay.get_name_leafdata());
+    if (delete_delay.is_set || is_set(delete_delay.yfilter)) leaf_name_data.push_back(delete_delay.get_name_leafdata());
+    if (forward_delay.is_set || is_set(forward_delay.yfilter)) leaf_name_data.push_back(forward_delay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12737,16 +15131,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signaling::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signaling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delete-delay")
     {
         delete_delay = value;
+        delete_delay.value_namespace = name_space;
+        delete_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-delay")
     {
         forward_delay = value;
+        forward_delay.value_namespace = name_space;
+        forward_delay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signaling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "delete-delay")
+    {
+        delete_delay.yfilter = yfilter;
+    }
+    if(value_path == "forward-delay")
+    {
+        forward_delay.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signaling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delete-delay" || name == "forward-delay")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::Csc()
@@ -12767,8 +15184,8 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::has_data() const
 
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::get_segment_path() const
@@ -12794,7 +15211,7 @@ const EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12813,12 +15230,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::DefaultVrf
     return children;
 }
 
-void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::MldpGlobal::MldpGlobal()
@@ -12841,7 +15275,7 @@ bool MplsLdp::Global::Mldp::MldpGlobal::has_data() const
 
 bool MplsLdp::Global::Mldp::MldpGlobal::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (logging !=  nullptr && logging->has_operation());
 }
 
@@ -12900,8 +15334,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::MldpGlobal
     return children;
 }
 
-void MplsLdp::Global::Mldp::MldpGlobal::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::MldpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsLdp::Global::Mldp::MldpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::Global::Mldp::MldpGlobal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "logging")
+        return true;
+    return false;
 }
 
 MplsLdp::Global::Mldp::MldpGlobal::Logging::Logging()
@@ -12922,8 +15367,8 @@ bool MplsLdp::Global::Mldp::MldpGlobal::Logging::has_data() const
 
 bool MplsLdp::Global::Mldp::MldpGlobal::Logging::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(notifications.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(notifications.yfilter);
 }
 
 std::string MplsLdp::Global::Mldp::MldpGlobal::Logging::get_segment_path() const
@@ -12949,7 +15394,7 @@ const EntityPath MplsLdp::Global::Mldp::MldpGlobal::Logging::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (notifications.is_set || is_set(notifications.operation)) leaf_name_data.push_back(notifications.get_name_leafdata());
+    if (notifications.is_set || is_set(notifications.yfilter)) leaf_name_data.push_back(notifications.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12968,50 +15413,67 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::Global::Mldp::MldpGlobal
     return children;
 }
 
-void MplsLdp::Global::Mldp::MldpGlobal::Logging::set_value(const std::string & value_path, std::string value)
+void MplsLdp::Global::Mldp::MldpGlobal::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "notifications")
     {
         notifications = value;
+        notifications.value_namespace = name_space;
+        notifications.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf MplsLdpAdvertiseBgpaclEnum::peer_acl {1, "peer-acl"};
+void MplsLdp::Global::Mldp::MldpGlobal::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "notifications")
+    {
+        notifications.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf MplsLdpLabelAdvertiseEnum::for_ {1, "for"};
-const Enum::YLeaf MplsLdpLabelAdvertiseEnum::for_to {2, "for-to"};
+bool MplsLdp::Global::Mldp::MldpGlobal::Logging::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "notifications")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf MldpPolicyModeEnum::inbound {1, "inbound"};
-const Enum::YLeaf MldpPolicyModeEnum::outbound {2, "outbound"};
+const Enum::YLeaf MplsLdpExpNull::all {1, "all"};
+const Enum::YLeaf MplsLdpExpNull::for_ {2, "for"};
+const Enum::YLeaf MplsLdpExpNull::to {3, "to"};
+const Enum::YLeaf MplsLdpExpNull::for_to {4, "for-to"};
 
-const Enum::YLeaf MplsLdpLabelAllocationEnum::acl {1, "acl"};
-const Enum::YLeaf MplsLdpLabelAllocationEnum::host {2, "host"};
+const Enum::YLeaf MplsLdpafName::ipv4 {4, "ipv4"};
+const Enum::YLeaf MplsLdpafName::ipv6 {6, "ipv6"};
 
-const Enum::YLeaf MplsLdpTargetedAcceptEnum::all {1, "all"};
-const Enum::YLeaf MplsLdpTargetedAcceptEnum::from {2, "from"};
+const Enum::YLeaf MplsLdpAdvertiseBgpacl::peer_acl {1, "peer-acl"};
 
-const Enum::YLeaf MplsLdpNbrPasswordEnum::disable {1, "disable"};
-const Enum::YLeaf MplsLdpNbrPasswordEnum::specified {2, "specified"};
+const Enum::YLeaf MldpPolicyMode::inbound {1, "inbound"};
+const Enum::YLeaf MldpPolicyMode::outbound {2, "outbound"};
 
-const Enum::YLeaf MplsLdpDownstreamOnDemandEnum::peer_acl {1, "peer-acl"};
+const Enum::YLeaf MplsLdpLabelAllocation::acl {1, "acl"};
+const Enum::YLeaf MplsLdpLabelAllocation::host {2, "host"};
 
-const Enum::YLeaf MplsLdpExpNullEnum::all {1, "all"};
-const Enum::YLeaf MplsLdpExpNullEnum::for_ {2, "for"};
-const Enum::YLeaf MplsLdpExpNullEnum::to {3, "to"};
-const Enum::YLeaf MplsLdpExpNullEnum::for_to {4, "for-to"};
+const Enum::YLeaf MplsLdpLabelAdvertise::for_ {1, "for"};
+const Enum::YLeaf MplsLdpLabelAdvertise::for_to {2, "for-to"};
 
-const Enum::YLeaf MplsLdpafNameEnum::ipv4 {4, "ipv4"};
-const Enum::YLeaf MplsLdpafNameEnum::ipv6 {6, "ipv6"};
+const Enum::YLeaf MplsLdpSessionProtection::all {1, "all"};
+const Enum::YLeaf MplsLdpSessionProtection::for_ {2, "for"};
+const Enum::YLeaf MplsLdpSessionProtection::all_with_duration {3, "all-with-duration"};
+const Enum::YLeaf MplsLdpSessionProtection::for_with_duration {4, "for-with-duration"};
+const Enum::YLeaf MplsLdpSessionProtection::all_with_forever {5, "all-with-forever"};
+const Enum::YLeaf MplsLdpSessionProtection::for_with_forever {6, "for-with-forever"};
 
-const Enum::YLeaf MplsLdpTransportAddressEnum::interface {1, "interface"};
-const Enum::YLeaf MplsLdpTransportAddressEnum::address {2, "address"};
+const Enum::YLeaf MplsLdpTargetedAccept::all {1, "all"};
+const Enum::YLeaf MplsLdpTargetedAccept::from {2, "from"};
 
-const Enum::YLeaf MplsLdpSessionProtectionEnum::all {1, "all"};
-const Enum::YLeaf MplsLdpSessionProtectionEnum::for_ {2, "for"};
-const Enum::YLeaf MplsLdpSessionProtectionEnum::all_with_duration {3, "all-with-duration"};
-const Enum::YLeaf MplsLdpSessionProtectionEnum::for_with_duration {4, "for-with-duration"};
-const Enum::YLeaf MplsLdpSessionProtectionEnum::all_with_forever {5, "all-with-forever"};
-const Enum::YLeaf MplsLdpSessionProtectionEnum::for_with_forever {6, "for-with-forever"};
+const Enum::YLeaf MplsLdpDownstreamOnDemand::peer_acl {1, "peer-acl"};
+
+const Enum::YLeaf MplsLdpTransportAddress::interface {1, "interface"};
+const Enum::YLeaf MplsLdpTransportAddress::address {2, "address"};
+
+const Enum::YLeaf MplsLdpNbrPassword::disable {1, "disable"};
+const Enum::YLeaf MplsLdpNbrPassword::specified {2, "specified"};
 
 
 }

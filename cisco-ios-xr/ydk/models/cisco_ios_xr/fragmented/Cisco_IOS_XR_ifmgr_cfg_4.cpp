@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_4.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ifmgr_cfg {
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName::FlowMonitorName()
@@ -29,9 +31,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSect
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitor_map_name.operation)
-	|| is_set(sampler_map_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(sampler_map_name.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName::get_segment_path() const
@@ -57,8 +59,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataL
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.operation)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (sampler_map_name.is_set || is_set(sampler_map_name.operation)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (sampler_map_name.is_set || is_set(sampler_map_name.yfilter)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -77,16 +79,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitor-map-name")
     {
         monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sampler-map-name")
     {
         sampler_map_name = value;
+        sampler_map_name.value_namespace = name_space;
+        sampler_map_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "sampler-map-name")
+    {
+        sampler_map_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Ingress::FlowMonitorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-map-name" || name == "sampler-map-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::Egress()
@@ -115,7 +140,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSect
         if(flow_monitor_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::get_segment_path() const
@@ -180,8 +205,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName::FlowMonitorName()
@@ -204,9 +240,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSect
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitor_map_name.operation)
-	|| is_set(sampler_map_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(sampler_map_name.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName::get_segment_path() const
@@ -232,8 +268,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataL
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.operation)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (sampler_map_name.is_set || is_set(sampler_map_name.operation)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (sampler_map_name.is_set || is_set(sampler_map_name.yfilter)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -252,16 +288,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitor-map-name")
     {
         monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sampler-map-name")
     {
         sampler_map_name = value;
+        sampler_map_name.value_namespace = name_space;
+        sampler_map_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "sampler-map-name")
+    {
+        sampler_map_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::DataLinkFrameSection::FlowMonitorMap::Egress::FlowMonitorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-map-name" || name == "sampler-map-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::Mpls()
@@ -284,7 +343,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::has_data() 
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (flow_monitor_map !=  nullptr && flow_monitor_map->has_operation());
 }
 
@@ -343,8 +402,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-map")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::FlowMonitorMap()
@@ -371,7 +441,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (egress !=  nullptr && egress->has_operation())
 	|| (ingress !=  nullptr && ingress->has_operation());
 }
@@ -445,8 +515,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress" || name == "ingress")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::Ingress()
@@ -475,7 +556,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitor
         if(flow_monitor_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::get_segment_path() const
@@ -540,8 +621,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName::FlowMonitorName()
@@ -564,9 +656,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitor_map_name.operation)
-	|| is_set(sampler_map_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(sampler_map_name.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName::get_segment_path() const
@@ -592,8 +684,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.operation)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (sampler_map_name.is_set || is_set(sampler_map_name.operation)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (sampler_map_name.is_set || is_set(sampler_map_name.yfilter)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -612,16 +704,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitor-map-name")
     {
         monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sampler-map-name")
     {
         sampler_map_name = value;
+        sampler_map_name.value_namespace = name_space;
+        sampler_map_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "sampler-map-name")
+    {
+        sampler_map_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Ingress::FlowMonitorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-map-name" || name == "sampler-map-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::Egress()
@@ -650,7 +765,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitor
         if(flow_monitor_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::get_segment_path() const
@@ -715,8 +830,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::FlowMonitorName::FlowMonitorName()
@@ -739,9 +865,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::FlowMonitorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitor_map_name.operation)
-	|| is_set(sampler_map_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(sampler_map_name.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::FlowMonitorName::get_segment_path() const
@@ -767,8 +893,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.operation)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (sampler_map_name.is_set || is_set(sampler_map_name.operation)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (sampler_map_name.is_set || is_set(sampler_map_name.yfilter)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -787,16 +913,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::FlowMonitorName::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::FlowMonitorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitor-map-name")
     {
         monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sampler-map-name")
     {
         sampler_map_name = value;
+        sampler_map_name.value_namespace = name_space;
+        sampler_map_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::FlowMonitorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "sampler-map-name")
+    {
+        sampler_map_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Mpls::FlowMonitorMap::Egress::FlowMonitorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-map-name" || name == "sampler-map-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::Ipv6()
@@ -819,7 +968,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::has_data() 
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (flow_monitor_map !=  nullptr && flow_monitor_map->has_operation());
 }
 
@@ -878,8 +1027,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-map")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::FlowMonitorMap()
@@ -906,7 +1066,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (egress !=  nullptr && egress->has_operation())
 	|| (ingress !=  nullptr && ingress->has_operation());
 }
@@ -980,8 +1140,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress" || name == "ingress")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::Ingress()
@@ -1010,7 +1181,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitor
         if(flow_monitor_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::get_segment_path() const
@@ -1075,8 +1246,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::FlowMonitorName::FlowMonitorName()
@@ -1099,9 +1281,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::FlowMonitorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitor_map_name.operation)
-	|| is_set(sampler_map_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(sampler_map_name.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::FlowMonitorName::get_segment_path() const
@@ -1127,8 +1309,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.operation)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (sampler_map_name.is_set || is_set(sampler_map_name.operation)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (sampler_map_name.is_set || is_set(sampler_map_name.yfilter)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1147,16 +1329,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::FlowMonitorName::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::FlowMonitorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitor-map-name")
     {
         monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sampler-map-name")
     {
         sampler_map_name = value;
+        sampler_map_name.value_namespace = name_space;
+        sampler_map_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::FlowMonitorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "sampler-map-name")
+    {
+        sampler_map_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Ingress::FlowMonitorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-map-name" || name == "sampler-map-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::Egress()
@@ -1185,7 +1390,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitor
         if(flow_monitor_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::get_segment_path() const
@@ -1250,8 +1455,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::FlowMonitorName::FlowMonitorName()
@@ -1274,9 +1490,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::FlowMonitorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitor_map_name.operation)
-	|| is_set(sampler_map_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(sampler_map_name.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::FlowMonitorName::get_segment_path() const
@@ -1302,8 +1518,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.operation)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (sampler_map_name.is_set || is_set(sampler_map_name.operation)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (sampler_map_name.is_set || is_set(sampler_map_name.yfilter)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1322,16 +1538,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::FlowMonitorName::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::FlowMonitorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitor-map-name")
     {
         monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sampler-map-name")
     {
         sampler_map_name = value;
+        sampler_map_name.value_namespace = name_space;
+        sampler_map_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::FlowMonitorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "sampler-map-name")
+    {
+        sampler_map_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv6::FlowMonitorMap::Egress::FlowMonitorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-map-name" || name == "sampler-map-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::Ipv4()
@@ -1354,7 +1593,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::has_data() 
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (flow_monitor_map !=  nullptr && flow_monitor_map->has_operation());
 }
 
@@ -1413,8 +1652,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-map")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::FlowMonitorMap()
@@ -1441,7 +1691,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (egress !=  nullptr && egress->has_operation())
 	|| (ingress !=  nullptr && ingress->has_operation());
 }
@@ -1515,8 +1765,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress" || name == "ingress")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::Ingress()
@@ -1545,7 +1806,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitor
         if(flow_monitor_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::get_segment_path() const
@@ -1610,8 +1871,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::FlowMonitorName::FlowMonitorName()
@@ -1634,9 +1906,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::FlowMonitorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitor_map_name.operation)
-	|| is_set(sampler_map_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(sampler_map_name.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::FlowMonitorName::get_segment_path() const
@@ -1662,8 +1934,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.operation)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (sampler_map_name.is_set || is_set(sampler_map_name.operation)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (sampler_map_name.is_set || is_set(sampler_map_name.yfilter)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1682,16 +1954,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::FlowMonitorName::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::FlowMonitorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitor-map-name")
     {
         monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sampler-map-name")
     {
         sampler_map_name = value;
+        sampler_map_name.value_namespace = name_space;
+        sampler_map_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::FlowMonitorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "sampler-map-name")
+    {
+        sampler_map_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Ingress::FlowMonitorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-map-name" || name == "sampler-map-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::Egress()
@@ -1720,7 +2015,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitor
         if(flow_monitor_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::get_segment_path() const
@@ -1785,8 +2080,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-monitor-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::FlowMonitorName::FlowMonitorName()
@@ -1809,9 +2115,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitor
 
 bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::FlowMonitorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(monitor_map_name.operation)
-	|| is_set(sampler_map_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(monitor_map_name.yfilter)
+	|| ydk::is_set(sampler_map_name.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::FlowMonitorName::get_segment_path() const
@@ -1837,8 +2143,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_map_name.is_set || is_set(monitor_map_name.operation)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
-    if (sampler_map_name.is_set || is_set(sampler_map_name.operation)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
+    if (monitor_map_name.is_set || is_set(monitor_map_name.yfilter)) leaf_name_data.push_back(monitor_map_name.get_name_leafdata());
+    if (sampler_map_name.is_set || is_set(sampler_map_name.yfilter)) leaf_name_data.push_back(sampler_map_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1857,16 +2163,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::FlowMonitorName::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::FlowMonitorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "monitor-map-name")
     {
         monitor_map_name = value;
+        monitor_map_name.value_namespace = name_space;
+        monitor_map_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sampler-map-name")
     {
         sampler_map_name = value;
+        sampler_map_name.value_namespace = name_space;
+        sampler_map_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::FlowMonitorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-map-name")
+    {
+        monitor_map_name.yfilter = yfilter;
+    }
+    if(value_path == "sampler-map-name")
+    {
+        sampler_map_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::NetFlow::Ipv4::FlowMonitorMap::Egress::FlowMonitorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-map-name" || name == "sampler-map-name")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::TunnelIp::TunnelIp()
@@ -1916,12 +2245,12 @@ bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_data() const
 
 bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_key.operation)
-	|| is_set(disable.operation)
-	|| is_set(tos.operation)
-	|| is_set(ttl.operation)
-	|| is_set(tunnel_vrf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(allow_key.yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(tos.yfilter)
+	|| ydk::is_set(ttl.yfilter)
+	|| ydk::is_set(tunnel_vrf.yfilter)
 	|| (destination !=  nullptr && destination->has_operation())
 	|| (keepalive !=  nullptr && keepalive->has_operation())
 	|| (key !=  nullptr && key->has_operation())
@@ -1952,11 +2281,11 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_key.is_set || is_set(allow_key.operation)) leaf_name_data.push_back(allow_key.get_name_leafdata());
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (tos.is_set || is_set(tos.operation)) leaf_name_data.push_back(tos.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
-    if (tunnel_vrf.is_set || is_set(tunnel_vrf.operation)) leaf_name_data.push_back(tunnel_vrf.get_name_leafdata());
+    if (allow_key.is_set || is_set(allow_key.yfilter)) leaf_name_data.push_back(allow_key.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (tunnel_vrf.is_set || is_set(tunnel_vrf.yfilter)) leaf_name_data.push_back(tunnel_vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2045,28 +2374,69 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-key")
     {
         allow_key = value;
+        allow_key.value_namespace = name_space;
+        allow_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos")
     {
         tos = value;
+        tos.value_namespace = name_space;
+        tos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-vrf")
     {
         tunnel_vrf = value;
+        tunnel_vrf.value_namespace = name_space;
+        tunnel_vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-key")
+    {
+        allow_key.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "tos")
+    {
+        tos.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-vrf")
+    {
+        tunnel_vrf.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "keepalive" || name == "key" || name == "mode" || name == "source" || name == "allow-key" || name == "disable" || name == "tos" || name == "ttl" || name == "tunnel-vrf")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::Mode()
@@ -2089,9 +2459,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_data()
 
 bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(decap.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(decap.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_segment_path() const
@@ -2117,8 +2487,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (decap.is_set || is_set(decap.operation)) leaf_name_data.push_back(decap.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (decap.is_set || is_set(decap.yfilter)) leaf_name_data.push_back(decap.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2137,16 +2507,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "decap")
     {
         decap = value;
+        decap.value_namespace = name_space;
+        decap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "decap")
+    {
+        decap.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "decap" || name == "value")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::Source()
@@ -2173,11 +2566,11 @@ bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_data
 
 bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_segment_path() const
@@ -2203,10 +2596,10 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Sour
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2225,24 +2618,59 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "interface-name" || name == "ipv6-address" || name == "type")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::Key()
@@ -2265,9 +2693,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_data() 
 
 bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entropy.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entropy.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_segment_path() const
@@ -2293,8 +2721,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entropy.is_set || is_set(entropy.operation)) leaf_name_data.push_back(entropy.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (entropy.is_set || is_set(entropy.yfilter)) leaf_name_data.push_back(entropy.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2313,16 +2741,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entropy")
     {
         entropy = value;
+        entropy.value_namespace = name_space;
+        entropy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entropy")
+    {
+        entropy.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entropy" || name == "value")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::Keepalive()
@@ -2345,9 +2796,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_d
 
 bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(keep_alive_period.operation)
-	|| is_set(keep_alive_retries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(keep_alive_period.yfilter)
+	|| ydk::is_set(keep_alive_retries.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_segment_path() const
@@ -2373,8 +2824,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keep
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (keep_alive_period.is_set || is_set(keep_alive_period.operation)) leaf_name_data.push_back(keep_alive_period.get_name_leafdata());
-    if (keep_alive_retries.is_set || is_set(keep_alive_retries.operation)) leaf_name_data.push_back(keep_alive_retries.get_name_leafdata());
+    if (keep_alive_period.is_set || is_set(keep_alive_period.yfilter)) leaf_name_data.push_back(keep_alive_period.get_name_leafdata());
+    if (keep_alive_retries.is_set || is_set(keep_alive_retries.yfilter)) leaf_name_data.push_back(keep_alive_retries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2393,16 +2844,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "keep-alive-period")
     {
         keep_alive_period = value;
+        keep_alive_period.value_namespace = name_space;
+        keep_alive_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "keep-alive-retries")
     {
         keep_alive_retries = value;
+        keep_alive_retries.value_namespace = name_space;
+        keep_alive_retries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "keep-alive-period")
+    {
+        keep_alive_period.yfilter = yfilter;
+    }
+    if(value_path == "keep-alive-retries")
+    {
+        keep_alive_retries.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keep-alive-period" || name == "keep-alive-retries")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::Destination()
@@ -2431,12 +2905,12 @@ bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has
 
 bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_mask.operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(prefix_list_name.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_mask.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(prefix_list_name.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_segment_path() const
@@ -2462,11 +2936,11 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Dest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_mask.is_set || is_set(address_mask.operation)) leaf_name_data.push_back(address_mask.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (prefix_list_name.is_set || is_set(prefix_list_name.operation)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_mask.is_set || is_set(address_mask.yfilter)) leaf_name_data.push_back(address_mask.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2485,28 +2959,69 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-mask")
     {
         address_mask = value;
+        address_mask.value_namespace = name_space;
+        address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-list-name")
     {
         prefix_list_name = value;
+        prefix_list_name.value_namespace = name_space;
+        prefix_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-mask")
+    {
+        address_mask.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-mask" || name == "ipv6-address" || name == "prefix-list-name" || name == "type")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Nve::Nve()
@@ -2544,10 +3059,10 @@ bool InterfaceConfigurations::InterfaceConfiguration::Nve::has_data() const
 
 bool InterfaceConfigurations::InterfaceConfiguration::Nve::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(overlay_encapsulation.operation)
-	|| is_set(source_interface.operation)
-	|| is_set(vx_lan_udp_port.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(overlay_encapsulation.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| ydk::is_set(vx_lan_udp_port.yfilter)
 	|| (anycast !=  nullptr && anycast->has_operation())
 	|| (member_vnis !=  nullptr && member_vnis->has_operation())
 	|| (redundancy !=  nullptr && redundancy->has_operation());
@@ -2576,9 +3091,9 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::Nve::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (overlay_encapsulation.is_set || is_set(overlay_encapsulation.operation)) leaf_name_data.push_back(overlay_encapsulation.get_name_leafdata());
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
-    if (vx_lan_udp_port.is_set || is_set(vx_lan_udp_port.operation)) leaf_name_data.push_back(vx_lan_udp_port.get_name_leafdata());
+    if (overlay_encapsulation.is_set || is_set(overlay_encapsulation.yfilter)) leaf_name_data.push_back(overlay_encapsulation.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (vx_lan_udp_port.is_set || is_set(vx_lan_udp_port.yfilter)) leaf_name_data.push_back(vx_lan_udp_port.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2639,20 +3154,49 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Nve::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Nve::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "overlay-encapsulation")
     {
         overlay_encapsulation = value;
+        overlay_encapsulation.value_namespace = name_space;
+        overlay_encapsulation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vx-lan-udp-port")
     {
         vx_lan_udp_port = value;
+        vx_lan_udp_port.value_namespace = name_space;
+        vx_lan_udp_port.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Nve::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "overlay-encapsulation")
+    {
+        overlay_encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+    if(value_path == "vx-lan-udp-port")
+    {
+        vx_lan_udp_port.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Nve::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "anycast" || name == "member-vnis" || name == "redundancy" || name == "overlay-encapsulation" || name == "source-interface" || name == "vx-lan-udp-port")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::Anycast()
@@ -2675,9 +3219,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::has_data() c
 
 bool InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_interface.operation)
-	|| is_set(sync_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| ydk::is_set(sync_group.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::get_segment_path() const
@@ -2703,8 +3247,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_interface.is_set || is_set(source_interface.operation)) leaf_name_data.push_back(source_interface.get_name_leafdata());
-    if (sync_group.is_set || is_set(sync_group.operation)) leaf_name_data.push_back(sync_group.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+    if (sync_group.is_set || is_set(sync_group.yfilter)) leaf_name_data.push_back(sync_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2723,16 +3267,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-interface")
     {
         source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sync-group")
     {
         sync_group = value;
+        sync_group.value_namespace = name_space;
+        sync_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+    if(value_path == "sync-group")
+    {
+        sync_group.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Nve::Anycast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-interface" || name == "sync-group")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::Redundancy()
@@ -2762,8 +3329,8 @@ bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::has_data(
 
 bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (backbone_mpls !=  nullptr && backbone_mpls->has_operation())
 	|| (backbone_vx_lan !=  nullptr && backbone_vx_lan->has_operation());
 }
@@ -2791,7 +3358,7 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::Nve::Redundanc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2838,12 +3405,29 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backbone-mpls" || name == "backbone-vx-lan" || name == "enable")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan::BackboneVxLan()
@@ -2866,9 +3450,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneV
 
 bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(backbone_vx_laniccp.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(backbone_vx_laniccp.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan::get_segment_path() const
@@ -2894,8 +3478,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::Nve::Redundanc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (backbone_vx_laniccp.is_set || is_set(backbone_vx_laniccp.operation)) leaf_name_data.push_back(backbone_vx_laniccp.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (backbone_vx_laniccp.is_set || is_set(backbone_vx_laniccp.yfilter)) leaf_name_data.push_back(backbone_vx_laniccp.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2914,16 +3498,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backbone-vx-laniccp")
     {
         backbone_vx_laniccp = value;
+        backbone_vx_laniccp.value_namespace = name_space;
+        backbone_vx_laniccp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backbone-vx-laniccp")
+    {
+        backbone_vx_laniccp.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneVxLan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backbone-vx-laniccp" || name == "enable")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls::BackboneMpls()
@@ -2946,9 +3553,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneM
 
 bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(backbone_mplsiccp.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(backbone_mplsiccp.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls::get_segment_path() const
@@ -2974,8 +3581,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::Nve::Redundanc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (backbone_mplsiccp.is_set || is_set(backbone_mplsiccp.operation)) leaf_name_data.push_back(backbone_mplsiccp.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (backbone_mplsiccp.is_set || is_set(backbone_mplsiccp.yfilter)) leaf_name_data.push_back(backbone_mplsiccp.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2994,16 +3601,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backbone-mplsiccp")
     {
         backbone_mplsiccp = value;
+        backbone_mplsiccp.value_namespace = name_space;
+        backbone_mplsiccp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "backbone-mplsiccp")
+    {
+        backbone_mplsiccp.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Nve::Redundancy::BackboneMpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backbone-mplsiccp" || name == "enable")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVnis()
@@ -3032,7 +3662,7 @@ bool InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::has_opera
         if(member_vni[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::get_segment_path() const
@@ -3097,8 +3727,19 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-vni")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::MemberVni()
@@ -3134,14 +3775,14 @@ bool InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni
 
 bool InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vni_start.operation)
-	|| is_set(vni_end.operation)
-	|| is_set(enable.operation)
-	|| is_set(host_reachability.operation)
-	|| is_set(load_balance_per_evi.operation)
-	|| is_set(unknown_unicast_flooding.operation)
-	|| is_set(vrf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vni_start.yfilter)
+	|| ydk::is_set(vni_end.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(host_reachability.yfilter)
+	|| ydk::is_set(load_balance_per_evi.yfilter)
+	|| ydk::is_set(unknown_unicast_flooding.yfilter)
+	|| ydk::is_set(vrf.yfilter)
 	|| (multicast !=  nullptr && multicast->has_operation());
 }
 
@@ -3168,13 +3809,13 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVni
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vni_start.is_set || is_set(vni_start.operation)) leaf_name_data.push_back(vni_start.get_name_leafdata());
-    if (vni_end.is_set || is_set(vni_end.operation)) leaf_name_data.push_back(vni_end.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (host_reachability.is_set || is_set(host_reachability.operation)) leaf_name_data.push_back(host_reachability.get_name_leafdata());
-    if (load_balance_per_evi.is_set || is_set(load_balance_per_evi.operation)) leaf_name_data.push_back(load_balance_per_evi.get_name_leafdata());
-    if (unknown_unicast_flooding.is_set || is_set(unknown_unicast_flooding.operation)) leaf_name_data.push_back(unknown_unicast_flooding.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (vni_start.is_set || is_set(vni_start.yfilter)) leaf_name_data.push_back(vni_start.get_name_leafdata());
+    if (vni_end.is_set || is_set(vni_end.yfilter)) leaf_name_data.push_back(vni_end.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (host_reachability.is_set || is_set(host_reachability.yfilter)) leaf_name_data.push_back(host_reachability.get_name_leafdata());
+    if (load_balance_per_evi.is_set || is_set(load_balance_per_evi.yfilter)) leaf_name_data.push_back(load_balance_per_evi.get_name_leafdata());
+    if (unknown_unicast_flooding.is_set || is_set(unknown_unicast_flooding.yfilter)) leaf_name_data.push_back(unknown_unicast_flooding.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3207,36 +3848,89 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vni-start")
     {
         vni_start = value;
+        vni_start.value_namespace = name_space;
+        vni_start.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vni-end")
     {
         vni_end = value;
+        vni_end.value_namespace = name_space;
+        vni_end.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-reachability")
     {
         host_reachability = value;
+        host_reachability.value_namespace = name_space;
+        host_reachability.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-per-evi")
     {
         load_balance_per_evi = value;
+        load_balance_per_evi.value_namespace = name_space;
+        load_balance_per_evi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-unicast-flooding")
     {
         unknown_unicast_flooding = value;
+        unknown_unicast_flooding.value_namespace = name_space;
+        unknown_unicast_flooding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vni-start")
+    {
+        vni_start.yfilter = yfilter;
+    }
+    if(value_path == "vni-end")
+    {
+        vni_end.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "host-reachability")
+    {
+        host_reachability.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-per-evi")
+    {
+        load_balance_per_evi.yfilter = yfilter;
+    }
+    if(value_path == "unknown-unicast-flooding")
+    {
+        unknown_unicast_flooding.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast" || name == "vni-start" || name == "vni-end" || name == "enable" || name == "host-reachability" || name == "load-balance-per-evi" || name == "unknown-unicast-flooding" || name == "vrf")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast::Multicast()
@@ -3259,9 +3953,9 @@ bool InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni
 
 bool InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(multicast_group_max.operation)
-	|| is_set(multicast_group_min.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(multicast_group_max.yfilter)
+	|| ydk::is_set(multicast_group_min.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast::get_segment_path() const
@@ -3287,8 +3981,8 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVni
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (multicast_group_max.is_set || is_set(multicast_group_max.operation)) leaf_name_data.push_back(multicast_group_max.get_name_leafdata());
-    if (multicast_group_min.is_set || is_set(multicast_group_min.operation)) leaf_name_data.push_back(multicast_group_min.get_name_leafdata());
+    if (multicast_group_max.is_set || is_set(multicast_group_max.yfilter)) leaf_name_data.push_back(multicast_group_max.get_name_leafdata());
+    if (multicast_group_min.is_set || is_set(multicast_group_min.yfilter)) leaf_name_data.push_back(multicast_group_min.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3307,16 +4001,39 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "multicast-group-max")
     {
         multicast_group_max = value;
+        multicast_group_max.value_namespace = name_space;
+        multicast_group_max.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-group-min")
     {
         multicast_group_min = value;
+        multicast_group_min.value_namespace = name_space;
+        multicast_group_min.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "multicast-group-max")
+    {
+        multicast_group_max.yfilter = yfilter;
+    }
+    if(value_path == "multicast-group-min")
+    {
+        multicast_group_min.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Nve::MemberVnis::MemberVni::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "multicast-group-max" || name == "multicast-group-min")
+        return true;
+    return false;
 }
 
 InterfaceConfigurations::InterfaceConfiguration::Wanphy::Wanphy()
@@ -3369,24 +4086,24 @@ bool InterfaceConfigurations::InterfaceConfiguration::Wanphy::has_data() const
 
 bool InterfaceConfigurations::InterfaceConfiguration::Wanphy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lan_mode.operation)
-	|| is_set(report_line_ais.operation)
-	|| is_set(report_lof.operation)
-	|| is_set(report_lop.operation)
-	|| is_set(report_los.operation)
-	|| is_set(report_path_ais.operation)
-	|| is_set(report_path_fe_ais.operation)
-	|| is_set(report_path_fe_plm.operation)
-	|| is_set(report_path_lcd.operation)
-	|| is_set(report_path_plm.operation)
-	|| is_set(report_path_rdi.operation)
-	|| is_set(report_rdi.operation)
-	|| is_set(report_sd_ber.operation)
-	|| is_set(report_sf_ber.operation)
-	|| is_set(threshold_sd_ber.operation)
-	|| is_set(threshold_sf_ber.operation)
-	|| is_set(wan_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lan_mode.yfilter)
+	|| ydk::is_set(report_line_ais.yfilter)
+	|| ydk::is_set(report_lof.yfilter)
+	|| ydk::is_set(report_lop.yfilter)
+	|| ydk::is_set(report_los.yfilter)
+	|| ydk::is_set(report_path_ais.yfilter)
+	|| ydk::is_set(report_path_fe_ais.yfilter)
+	|| ydk::is_set(report_path_fe_plm.yfilter)
+	|| ydk::is_set(report_path_lcd.yfilter)
+	|| ydk::is_set(report_path_plm.yfilter)
+	|| ydk::is_set(report_path_rdi.yfilter)
+	|| ydk::is_set(report_rdi.yfilter)
+	|| ydk::is_set(report_sd_ber.yfilter)
+	|| ydk::is_set(report_sf_ber.yfilter)
+	|| ydk::is_set(threshold_sd_ber.yfilter)
+	|| ydk::is_set(threshold_sf_ber.yfilter)
+	|| ydk::is_set(wan_mode.yfilter);
 }
 
 std::string InterfaceConfigurations::InterfaceConfiguration::Wanphy::get_segment_path() const
@@ -3412,23 +4129,23 @@ const EntityPath InterfaceConfigurations::InterfaceConfiguration::Wanphy::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lan_mode.is_set || is_set(lan_mode.operation)) leaf_name_data.push_back(lan_mode.get_name_leafdata());
-    if (report_line_ais.is_set || is_set(report_line_ais.operation)) leaf_name_data.push_back(report_line_ais.get_name_leafdata());
-    if (report_lof.is_set || is_set(report_lof.operation)) leaf_name_data.push_back(report_lof.get_name_leafdata());
-    if (report_lop.is_set || is_set(report_lop.operation)) leaf_name_data.push_back(report_lop.get_name_leafdata());
-    if (report_los.is_set || is_set(report_los.operation)) leaf_name_data.push_back(report_los.get_name_leafdata());
-    if (report_path_ais.is_set || is_set(report_path_ais.operation)) leaf_name_data.push_back(report_path_ais.get_name_leafdata());
-    if (report_path_fe_ais.is_set || is_set(report_path_fe_ais.operation)) leaf_name_data.push_back(report_path_fe_ais.get_name_leafdata());
-    if (report_path_fe_plm.is_set || is_set(report_path_fe_plm.operation)) leaf_name_data.push_back(report_path_fe_plm.get_name_leafdata());
-    if (report_path_lcd.is_set || is_set(report_path_lcd.operation)) leaf_name_data.push_back(report_path_lcd.get_name_leafdata());
-    if (report_path_plm.is_set || is_set(report_path_plm.operation)) leaf_name_data.push_back(report_path_plm.get_name_leafdata());
-    if (report_path_rdi.is_set || is_set(report_path_rdi.operation)) leaf_name_data.push_back(report_path_rdi.get_name_leafdata());
-    if (report_rdi.is_set || is_set(report_rdi.operation)) leaf_name_data.push_back(report_rdi.get_name_leafdata());
-    if (report_sd_ber.is_set || is_set(report_sd_ber.operation)) leaf_name_data.push_back(report_sd_ber.get_name_leafdata());
-    if (report_sf_ber.is_set || is_set(report_sf_ber.operation)) leaf_name_data.push_back(report_sf_ber.get_name_leafdata());
-    if (threshold_sd_ber.is_set || is_set(threshold_sd_ber.operation)) leaf_name_data.push_back(threshold_sd_ber.get_name_leafdata());
-    if (threshold_sf_ber.is_set || is_set(threshold_sf_ber.operation)) leaf_name_data.push_back(threshold_sf_ber.get_name_leafdata());
-    if (wan_mode.is_set || is_set(wan_mode.operation)) leaf_name_data.push_back(wan_mode.get_name_leafdata());
+    if (lan_mode.is_set || is_set(lan_mode.yfilter)) leaf_name_data.push_back(lan_mode.get_name_leafdata());
+    if (report_line_ais.is_set || is_set(report_line_ais.yfilter)) leaf_name_data.push_back(report_line_ais.get_name_leafdata());
+    if (report_lof.is_set || is_set(report_lof.yfilter)) leaf_name_data.push_back(report_lof.get_name_leafdata());
+    if (report_lop.is_set || is_set(report_lop.yfilter)) leaf_name_data.push_back(report_lop.get_name_leafdata());
+    if (report_los.is_set || is_set(report_los.yfilter)) leaf_name_data.push_back(report_los.get_name_leafdata());
+    if (report_path_ais.is_set || is_set(report_path_ais.yfilter)) leaf_name_data.push_back(report_path_ais.get_name_leafdata());
+    if (report_path_fe_ais.is_set || is_set(report_path_fe_ais.yfilter)) leaf_name_data.push_back(report_path_fe_ais.get_name_leafdata());
+    if (report_path_fe_plm.is_set || is_set(report_path_fe_plm.yfilter)) leaf_name_data.push_back(report_path_fe_plm.get_name_leafdata());
+    if (report_path_lcd.is_set || is_set(report_path_lcd.yfilter)) leaf_name_data.push_back(report_path_lcd.get_name_leafdata());
+    if (report_path_plm.is_set || is_set(report_path_plm.yfilter)) leaf_name_data.push_back(report_path_plm.get_name_leafdata());
+    if (report_path_rdi.is_set || is_set(report_path_rdi.yfilter)) leaf_name_data.push_back(report_path_rdi.get_name_leafdata());
+    if (report_rdi.is_set || is_set(report_rdi.yfilter)) leaf_name_data.push_back(report_rdi.get_name_leafdata());
+    if (report_sd_ber.is_set || is_set(report_sd_ber.yfilter)) leaf_name_data.push_back(report_sd_ber.get_name_leafdata());
+    if (report_sf_ber.is_set || is_set(report_sf_ber.yfilter)) leaf_name_data.push_back(report_sf_ber.get_name_leafdata());
+    if (threshold_sd_ber.is_set || is_set(threshold_sd_ber.yfilter)) leaf_name_data.push_back(threshold_sd_ber.get_name_leafdata());
+    if (threshold_sf_ber.is_set || is_set(threshold_sf_ber.yfilter)) leaf_name_data.push_back(threshold_sf_ber.get_name_leafdata());
+    if (wan_mode.is_set || is_set(wan_mode.yfilter)) leaf_name_data.push_back(wan_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3447,76 +4164,189 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::Interfac
     return children;
 }
 
-void InterfaceConfigurations::InterfaceConfiguration::Wanphy::set_value(const std::string & value_path, std::string value)
+void InterfaceConfigurations::InterfaceConfiguration::Wanphy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lan-mode")
     {
         lan_mode = value;
+        lan_mode.value_namespace = name_space;
+        lan_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-line-ais")
     {
         report_line_ais = value;
+        report_line_ais.value_namespace = name_space;
+        report_line_ais.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-lof")
     {
         report_lof = value;
+        report_lof.value_namespace = name_space;
+        report_lof.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-lop")
     {
         report_lop = value;
+        report_lop.value_namespace = name_space;
+        report_lop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-los")
     {
         report_los = value;
+        report_los.value_namespace = name_space;
+        report_los.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-path-ais")
     {
         report_path_ais = value;
+        report_path_ais.value_namespace = name_space;
+        report_path_ais.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-path-fe-ais")
     {
         report_path_fe_ais = value;
+        report_path_fe_ais.value_namespace = name_space;
+        report_path_fe_ais.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-path-fe-plm")
     {
         report_path_fe_plm = value;
+        report_path_fe_plm.value_namespace = name_space;
+        report_path_fe_plm.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-path-lcd")
     {
         report_path_lcd = value;
+        report_path_lcd.value_namespace = name_space;
+        report_path_lcd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-path-plm")
     {
         report_path_plm = value;
+        report_path_plm.value_namespace = name_space;
+        report_path_plm.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-path-rdi")
     {
         report_path_rdi = value;
+        report_path_rdi.value_namespace = name_space;
+        report_path_rdi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-rdi")
     {
         report_rdi = value;
+        report_rdi.value_namespace = name_space;
+        report_rdi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-sd-ber")
     {
         report_sd_ber = value;
+        report_sd_ber.value_namespace = name_space;
+        report_sd_ber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "report-sf-ber")
     {
         report_sf_ber = value;
+        report_sf_ber.value_namespace = name_space;
+        report_sf_ber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-sd-ber")
     {
         threshold_sd_ber = value;
+        threshold_sd_ber.value_namespace = name_space;
+        threshold_sd_ber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-sf-ber")
     {
         threshold_sf_ber = value;
+        threshold_sf_ber.value_namespace = name_space;
+        threshold_sf_ber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-mode")
     {
         wan_mode = value;
+        wan_mode.value_namespace = name_space;
+        wan_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Wanphy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lan-mode")
+    {
+        lan_mode.yfilter = yfilter;
+    }
+    if(value_path == "report-line-ais")
+    {
+        report_line_ais.yfilter = yfilter;
+    }
+    if(value_path == "report-lof")
+    {
+        report_lof.yfilter = yfilter;
+    }
+    if(value_path == "report-lop")
+    {
+        report_lop.yfilter = yfilter;
+    }
+    if(value_path == "report-los")
+    {
+        report_los.yfilter = yfilter;
+    }
+    if(value_path == "report-path-ais")
+    {
+        report_path_ais.yfilter = yfilter;
+    }
+    if(value_path == "report-path-fe-ais")
+    {
+        report_path_fe_ais.yfilter = yfilter;
+    }
+    if(value_path == "report-path-fe-plm")
+    {
+        report_path_fe_plm.yfilter = yfilter;
+    }
+    if(value_path == "report-path-lcd")
+    {
+        report_path_lcd.yfilter = yfilter;
+    }
+    if(value_path == "report-path-plm")
+    {
+        report_path_plm.yfilter = yfilter;
+    }
+    if(value_path == "report-path-rdi")
+    {
+        report_path_rdi.yfilter = yfilter;
+    }
+    if(value_path == "report-rdi")
+    {
+        report_rdi.yfilter = yfilter;
+    }
+    if(value_path == "report-sd-ber")
+    {
+        report_sd_ber.yfilter = yfilter;
+    }
+    if(value_path == "report-sf-ber")
+    {
+        report_sf_ber.yfilter = yfilter;
+    }
+    if(value_path == "threshold-sd-ber")
+    {
+        threshold_sd_ber.yfilter = yfilter;
+    }
+    if(value_path == "threshold-sf-ber")
+    {
+        threshold_sf_ber.yfilter = yfilter;
+    }
+    if(value_path == "wan-mode")
+    {
+        wan_mode.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Wanphy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lan-mode" || name == "report-line-ais" || name == "report-lof" || name == "report-lop" || name == "report-los" || name == "report-path-ais" || name == "report-path-fe-ais" || name == "report-path-fe-plm" || name == "report-path-lcd" || name == "report-path-plm" || name == "report-path-rdi" || name == "report-rdi" || name == "report-sd-ber" || name == "report-sf-ber" || name == "threshold-sd-ber" || name == "threshold-sf-ber" || name == "wan-mode")
+        return true;
+    return false;
 }
 
 

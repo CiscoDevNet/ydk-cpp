@@ -6,13 +6,15 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_netconf.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_netconf {
 
-GetConfigRpc::GetConfigRpc()
+GetConfig::GetConfig()
     :
-    input(std::make_shared<GetConfigRpc::Input>())
-	,output(std::make_shared<GetConfigRpc::Output>())
+    input(std::make_shared<GetConfig::Input>())
+	,output(std::make_shared<GetConfig::Output>())
 {
     input->parent = this;
 
@@ -21,24 +23,24 @@ GetConfigRpc::GetConfigRpc()
     yang_name = "get-config"; yang_parent_name = "ietf-netconf";
 }
 
-GetConfigRpc::~GetConfigRpc()
+GetConfig::~GetConfig()
 {
 }
 
-bool GetConfigRpc::has_data() const
+bool GetConfig::has_data() const
 {
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
 
-bool GetConfigRpc::has_operation() const
+bool GetConfig::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string GetConfigRpc::get_segment_path() const
+std::string GetConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:get-config";
@@ -47,7 +49,7 @@ std::string GetConfigRpc::get_segment_path() const
 
 }
 
-const EntityPath GetConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath GetConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -65,13 +67,13 @@ const EntityPath GetConfigRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<GetConfigRpc::Input>();
+            input = std::make_shared<GetConfig::Input>();
         }
         return input;
     }
@@ -80,7 +82,7 @@ std::shared_ptr<Entity> GetConfigRpc::get_child_by_name(const std::string & chil
     {
         if(output == nullptr)
         {
-            output = std::make_shared<GetConfigRpc::Output>();
+            output = std::make_shared<GetConfig::Output>();
         }
         return output;
     }
@@ -88,7 +90,7 @@ std::shared_ptr<Entity> GetConfigRpc::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GetConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -104,62 +106,78 @@ std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::get_children() cons
     return children;
 }
 
-void GetConfigRpc::set_value(const std::string & value_path, std::string value)
+void GetConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> GetConfigRpc::clone_ptr() const
+void GetConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<GetConfigRpc>();
 }
 
-std::string GetConfigRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> GetConfig::clone_ptr() const
+{
+    return std::make_shared<GetConfig>();
+}
+
+std::string GetConfig::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string GetConfigRpc::get_bundle_name() const
+std::string GetConfig::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function GetConfigRpc::get_augment_capabilities_function() const
+augment_capabilities_function GetConfig::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-GetConfigRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> GetConfig::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool GetConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+GetConfig::Input::Input()
     :
     filter{YType::str, "filter"},
     with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
     	,
-    source(std::make_shared<GetConfigRpc::Input::Source>())
+    source(std::make_shared<GetConfig::Input::Source>())
 {
     source->parent = this;
 
     yang_name = "input"; yang_parent_name = "get-config";
 }
 
-GetConfigRpc::Input::~Input()
+GetConfig::Input::~Input()
 {
 }
 
-bool GetConfigRpc::Input::has_data() const
+bool GetConfig::Input::has_data() const
 {
     return filter.is_set
 	|| with_defaults.is_set
 	|| (source !=  nullptr && source->has_data());
 }
 
-bool GetConfigRpc::Input::has_operation() const
+bool GetConfig::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(filter.operation)
-	|| is_set(with_defaults.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(filter.yfilter)
+	|| ydk::is_set(with_defaults.yfilter)
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string GetConfigRpc::Input::get_segment_path() const
+std::string GetConfig::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -168,7 +186,7 @@ std::string GetConfigRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath GetConfigRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath GetConfig::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -182,8 +200,8 @@ const EntityPath GetConfigRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (filter.is_set || is_set(filter.operation)) leaf_name_data.push_back(filter.get_name_leafdata());
-    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
+    if (filter.is_set || is_set(filter.yfilter)) leaf_name_data.push_back(filter.get_name_leafdata());
+    if (with_defaults.is_set || is_set(with_defaults.yfilter)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -191,13 +209,13 @@ const EntityPath GetConfigRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetConfigRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetConfig::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<GetConfigRpc::Input::Source>();
+            source = std::make_shared<GetConfig::Input::Source>();
         }
         return source;
     }
@@ -205,7 +223,7 @@ std::shared_ptr<Entity> GetConfigRpc::Input::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GetConfig::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(source != nullptr)
@@ -216,19 +234,42 @@ std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::Input::get_children
     return children;
 }
 
-void GetConfigRpc::Input::set_value(const std::string & value_path, std::string value)
+void GetConfig::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "filter")
     {
         filter = value;
+        filter.value_namespace = name_space;
+        filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "with-defaults")
     {
         with_defaults = value;
+        with_defaults.value_namespace = name_space;
+        with_defaults.value_namespace_prefix = name_space_prefix;
     }
 }
 
-GetConfigRpc::Input::Source::Source()
+void GetConfig::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "filter")
+    {
+        filter.yfilter = yfilter;
+    }
+    if(value_path == "with-defaults")
+    {
+        with_defaults.yfilter = yfilter;
+    }
+}
+
+bool GetConfig::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "filter" || name == "with-defaults")
+        return true;
+    return false;
+}
+
+GetConfig::Input::Source::Source()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"},
@@ -237,26 +278,26 @@ GetConfigRpc::Input::Source::Source()
     yang_name = "source"; yang_parent_name = "input";
 }
 
-GetConfigRpc::Input::Source::~Source()
+GetConfig::Input::Source::~Source()
 {
 }
 
-bool GetConfigRpc::Input::Source::has_data() const
+bool GetConfig::Input::Source::has_data() const
 {
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
 }
 
-bool GetConfigRpc::Input::Source::has_operation() const
+bool GetConfig::Input::Source::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(candidate.operation)
-	|| is_set(running.operation)
-	|| is_set(startup.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(candidate.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(startup.yfilter);
 }
 
-std::string GetConfigRpc::Input::Source::get_segment_path() const
+std::string GetConfig::Input::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
@@ -265,7 +306,7 @@ std::string GetConfigRpc::Input::Source::get_segment_path() const
 
 }
 
-const EntityPath GetConfigRpc::Input::Source::get_entity_path(Entity* ancestor) const
+const EntityPath GetConfig::Input::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -279,9 +320,9 @@ const EntityPath GetConfigRpc::Input::Source::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
-    if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
-    if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
+    if (candidate.is_set || is_set(candidate.yfilter)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (startup.is_set || is_set(startup.yfilter)) leaf_name_data.push_back(startup.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -289,56 +330,85 @@ const EntityPath GetConfigRpc::Input::Source::get_entity_path(Entity* ancestor) 
 
 }
 
-std::shared_ptr<Entity> GetConfigRpc::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetConfig::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::Input::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GetConfig::Input::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void GetConfigRpc::Input::Source::set_value(const std::string & value_path, std::string value)
+void GetConfig::Input::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+        candidate.value_namespace = name_space;
+        candidate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "running")
     {
         running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "startup")
     {
         startup = value;
+        startup.value_namespace = name_space;
+        startup.value_namespace_prefix = name_space_prefix;
     }
 }
 
-GetConfigRpc::Output::Output()
+void GetConfig::Input::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "candidate")
+    {
+        candidate.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "startup")
+    {
+        startup.yfilter = yfilter;
+    }
+}
+
+bool GetConfig::Input::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate" || name == "running" || name == "startup")
+        return true;
+    return false;
+}
+
+GetConfig::Output::Output()
     :
     data{YType::str, "data"}
 {
     yang_name = "output"; yang_parent_name = "get-config";
 }
 
-GetConfigRpc::Output::~Output()
+GetConfig::Output::~Output()
 {
 }
 
-bool GetConfigRpc::Output::has_data() const
+bool GetConfig::Output::has_data() const
 {
     return data.is_set;
 }
 
-bool GetConfigRpc::Output::has_operation() const
+bool GetConfig::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter);
 }
 
-std::string GetConfigRpc::Output::get_segment_path() const
+std::string GetConfig::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -347,7 +417,7 @@ std::string GetConfigRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath GetConfigRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath GetConfig::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -361,7 +431,7 @@ const EntityPath GetConfigRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -369,50 +439,67 @@ const EntityPath GetConfigRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetConfigRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetConfig::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetConfigRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GetConfig::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void GetConfigRpc::Output::set_value(const std::string & value_path, std::string value)
+void GetConfig::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
 }
 
-EditConfigRpc::EditConfigRpc()
+void GetConfig::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+}
+
+bool GetConfig::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data")
+        return true;
+    return false;
+}
+
+EditConfig::EditConfig()
     :
-    input(std::make_shared<EditConfigRpc::Input>())
+    input(std::make_shared<EditConfig::Input>())
 {
     input->parent = this;
 
     yang_name = "edit-config"; yang_parent_name = "ietf-netconf";
 }
 
-EditConfigRpc::~EditConfigRpc()
+EditConfig::~EditConfig()
 {
 }
 
-bool EditConfigRpc::has_data() const
+bool EditConfig::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool EditConfigRpc::has_operation() const
+bool EditConfig::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string EditConfigRpc::get_segment_path() const
+std::string EditConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:edit-config";
@@ -421,7 +508,7 @@ std::string EditConfigRpc::get_segment_path() const
 
 }
 
-const EntityPath EditConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EditConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -439,13 +526,13 @@ const EntityPath EditConfigRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> EditConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EditConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<EditConfigRpc::Input>();
+            input = std::make_shared<EditConfig::Input>();
         }
         return input;
     }
@@ -453,7 +540,7 @@ std::shared_ptr<Entity> EditConfigRpc::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EditConfigRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EditConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -464,31 +551,47 @@ std::map<std::string, std::shared_ptr<Entity>> EditConfigRpc::get_children() con
     return children;
 }
 
-void EditConfigRpc::set_value(const std::string & value_path, std::string value)
+void EditConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> EditConfigRpc::clone_ptr() const
+void EditConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<EditConfigRpc>();
 }
 
-std::string EditConfigRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> EditConfig::clone_ptr() const
+{
+    return std::make_shared<EditConfig>();
+}
+
+std::string EditConfig::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string EditConfigRpc::get_bundle_name() const
+std::string EditConfig::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function EditConfigRpc::get_augment_capabilities_function() const
+augment_capabilities_function EditConfig::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-EditConfigRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> EditConfig::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool EditConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+EditConfig::Input::Input()
     :
     config{YType::str, "config"},
     default_operation{YType::enumeration, "default-operation"},
@@ -496,18 +599,18 @@ EditConfigRpc::Input::Input()
     test_option{YType::enumeration, "test-option"},
     url{YType::str, "url"}
     	,
-    target(std::make_shared<EditConfigRpc::Input::Target>())
+    target(std::make_shared<EditConfig::Input::Target>())
 {
     target->parent = this;
 
     yang_name = "input"; yang_parent_name = "edit-config";
 }
 
-EditConfigRpc::Input::~Input()
+EditConfig::Input::~Input()
 {
 }
 
-bool EditConfigRpc::Input::has_data() const
+bool EditConfig::Input::has_data() const
 {
     return config.is_set
 	|| default_operation.is_set
@@ -517,18 +620,18 @@ bool EditConfigRpc::Input::has_data() const
 	|| (target !=  nullptr && target->has_data());
 }
 
-bool EditConfigRpc::Input::has_operation() const
+bool EditConfig::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(config.operation)
-	|| is_set(default_operation.operation)
-	|| is_set(error_option.operation)
-	|| is_set(test_option.operation)
-	|| is_set(url.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(config.yfilter)
+	|| ydk::is_set(default_operation.yfilter)
+	|| ydk::is_set(error_option.yfilter)
+	|| ydk::is_set(test_option.yfilter)
+	|| ydk::is_set(url.yfilter)
 	|| (target !=  nullptr && target->has_operation());
 }
 
-std::string EditConfigRpc::Input::get_segment_path() const
+std::string EditConfig::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -537,7 +640,7 @@ std::string EditConfigRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath EditConfigRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath EditConfig::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -551,11 +654,11 @@ const EntityPath EditConfigRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (config.is_set || is_set(config.operation)) leaf_name_data.push_back(config.get_name_leafdata());
-    if (default_operation.is_set || is_set(default_operation.operation)) leaf_name_data.push_back(default_operation.get_name_leafdata());
-    if (error_option.is_set || is_set(error_option.operation)) leaf_name_data.push_back(error_option.get_name_leafdata());
-    if (test_option.is_set || is_set(test_option.operation)) leaf_name_data.push_back(test_option.get_name_leafdata());
-    if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
+    if (config.is_set || is_set(config.yfilter)) leaf_name_data.push_back(config.get_name_leafdata());
+    if (default_operation.is_set || is_set(default_operation.yfilter)) leaf_name_data.push_back(default_operation.get_name_leafdata());
+    if (error_option.is_set || is_set(error_option.yfilter)) leaf_name_data.push_back(error_option.get_name_leafdata());
+    if (test_option.is_set || is_set(test_option.yfilter)) leaf_name_data.push_back(test_option.get_name_leafdata());
+    if (url.is_set || is_set(url.yfilter)) leaf_name_data.push_back(url.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -563,13 +666,13 @@ const EntityPath EditConfigRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> EditConfigRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EditConfig::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target")
     {
         if(target == nullptr)
         {
-            target = std::make_shared<EditConfigRpc::Input::Target>();
+            target = std::make_shared<EditConfig::Input::Target>();
         }
         return target;
     }
@@ -577,7 +680,7 @@ std::shared_ptr<Entity> EditConfigRpc::Input::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EditConfigRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EditConfig::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(target != nullptr)
@@ -588,31 +691,72 @@ std::map<std::string, std::shared_ptr<Entity>> EditConfigRpc::Input::get_childre
     return children;
 }
 
-void EditConfigRpc::Input::set_value(const std::string & value_path, std::string value)
+void EditConfig::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "config")
     {
         config = value;
+        config.value_namespace = name_space;
+        config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-operation")
     {
         default_operation = value;
+        default_operation.value_namespace = name_space;
+        default_operation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error-option")
     {
         error_option = value;
+        error_option.value_namespace = name_space;
+        error_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-option")
     {
         test_option = value;
+        test_option.value_namespace = name_space;
+        test_option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "url")
     {
         url = value;
+        url.value_namespace = name_space;
+        url.value_namespace_prefix = name_space_prefix;
     }
 }
 
-EditConfigRpc::Input::Target::Target()
+void EditConfig::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "config")
+    {
+        config.yfilter = yfilter;
+    }
+    if(value_path == "default-operation")
+    {
+        default_operation.yfilter = yfilter;
+    }
+    if(value_path == "error-option")
+    {
+        error_option.yfilter = yfilter;
+    }
+    if(value_path == "test-option")
+    {
+        test_option.yfilter = yfilter;
+    }
+    if(value_path == "url")
+    {
+        url.yfilter = yfilter;
+    }
+}
+
+bool EditConfig::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "target" || name == "config" || name == "default-operation" || name == "error-option" || name == "test-option" || name == "url")
+        return true;
+    return false;
+}
+
+EditConfig::Input::Target::Target()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"}
@@ -620,24 +764,24 @@ EditConfigRpc::Input::Target::Target()
     yang_name = "target"; yang_parent_name = "input";
 }
 
-EditConfigRpc::Input::Target::~Target()
+EditConfig::Input::Target::~Target()
 {
 }
 
-bool EditConfigRpc::Input::Target::has_data() const
+bool EditConfig::Input::Target::has_data() const
 {
     return candidate.is_set
 	|| running.is_set;
 }
 
-bool EditConfigRpc::Input::Target::has_operation() const
+bool EditConfig::Input::Target::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(candidate.operation)
-	|| is_set(running.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(candidate.yfilter)
+	|| ydk::is_set(running.yfilter);
 }
 
-std::string EditConfigRpc::Input::Target::get_segment_path() const
+std::string EditConfig::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -646,7 +790,7 @@ std::string EditConfigRpc::Input::Target::get_segment_path() const
 
 }
 
-const EntityPath EditConfigRpc::Input::Target::get_entity_path(Entity* ancestor) const
+const EntityPath EditConfig::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -660,8 +804,8 @@ const EntityPath EditConfigRpc::Input::Target::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
-    if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (candidate.is_set || is_set(candidate.yfilter)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -669,54 +813,77 @@ const EntityPath EditConfigRpc::Input::Target::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> EditConfigRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EditConfig::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EditConfigRpc::Input::Target::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EditConfig::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EditConfigRpc::Input::Target::set_value(const std::string & value_path, std::string value)
+void EditConfig::Input::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+        candidate.value_namespace = name_space;
+        candidate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "running")
     {
         running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CopyConfigRpc::CopyConfigRpc()
+void EditConfig::Input::Target::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "candidate")
+    {
+        candidate.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+}
+
+bool EditConfig::Input::Target::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate" || name == "running")
+        return true;
+    return false;
+}
+
+CopyConfig::CopyConfig()
     :
-    input(std::make_shared<CopyConfigRpc::Input>())
+    input(std::make_shared<CopyConfig::Input>())
 {
     input->parent = this;
 
     yang_name = "copy-config"; yang_parent_name = "ietf-netconf";
 }
 
-CopyConfigRpc::~CopyConfigRpc()
+CopyConfig::~CopyConfig()
 {
 }
 
-bool CopyConfigRpc::has_data() const
+bool CopyConfig::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool CopyConfigRpc::has_operation() const
+bool CopyConfig::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string CopyConfigRpc::get_segment_path() const
+std::string CopyConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:copy-config";
@@ -725,7 +892,7 @@ std::string CopyConfigRpc::get_segment_path() const
 
 }
 
-const EntityPath CopyConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath CopyConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -743,13 +910,13 @@ const EntityPath CopyConfigRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CopyConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CopyConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<CopyConfigRpc::Input>();
+            input = std::make_shared<CopyConfig::Input>();
         }
         return input;
     }
@@ -757,7 +924,7 @@ std::shared_ptr<Entity> CopyConfigRpc::get_child_by_name(const std::string & chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CopyConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -768,36 +935,52 @@ std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::get_children() con
     return children;
 }
 
-void CopyConfigRpc::set_value(const std::string & value_path, std::string value)
+void CopyConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> CopyConfigRpc::clone_ptr() const
+void CopyConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<CopyConfigRpc>();
 }
 
-std::string CopyConfigRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> CopyConfig::clone_ptr() const
+{
+    return std::make_shared<CopyConfig>();
+}
+
+std::string CopyConfig::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string CopyConfigRpc::get_bundle_name() const
+std::string CopyConfig::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function CopyConfigRpc::get_augment_capabilities_function() const
+augment_capabilities_function CopyConfig::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-CopyConfigRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> CopyConfig::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool CopyConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+CopyConfig::Input::Input()
     :
     with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
     	,
-    source(std::make_shared<CopyConfigRpc::Input::Source>())
-	,target(std::make_shared<CopyConfigRpc::Input::Target>())
+    source(std::make_shared<CopyConfig::Input::Source>())
+	,target(std::make_shared<CopyConfig::Input::Target>())
 {
     source->parent = this;
 
@@ -806,26 +989,26 @@ CopyConfigRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "copy-config";
 }
 
-CopyConfigRpc::Input::~Input()
+CopyConfig::Input::~Input()
 {
 }
 
-bool CopyConfigRpc::Input::has_data() const
+bool CopyConfig::Input::has_data() const
 {
     return with_defaults.is_set
 	|| (source !=  nullptr && source->has_data())
 	|| (target !=  nullptr && target->has_data());
 }
 
-bool CopyConfigRpc::Input::has_operation() const
+bool CopyConfig::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(with_defaults.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(with_defaults.yfilter)
 	|| (source !=  nullptr && source->has_operation())
 	|| (target !=  nullptr && target->has_operation());
 }
 
-std::string CopyConfigRpc::Input::get_segment_path() const
+std::string CopyConfig::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -834,7 +1017,7 @@ std::string CopyConfigRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath CopyConfigRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath CopyConfig::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -848,7 +1031,7 @@ const EntityPath CopyConfigRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
+    if (with_defaults.is_set || is_set(with_defaults.yfilter)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -856,13 +1039,13 @@ const EntityPath CopyConfigRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CopyConfigRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CopyConfig::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<CopyConfigRpc::Input::Source>();
+            source = std::make_shared<CopyConfig::Input::Source>();
         }
         return source;
     }
@@ -871,7 +1054,7 @@ std::shared_ptr<Entity> CopyConfigRpc::Input::get_child_by_name(const std::strin
     {
         if(target == nullptr)
         {
-            target = std::make_shared<CopyConfigRpc::Input::Target>();
+            target = std::make_shared<CopyConfig::Input::Target>();
         }
         return target;
     }
@@ -879,7 +1062,7 @@ std::shared_ptr<Entity> CopyConfigRpc::Input::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CopyConfig::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(source != nullptr)
@@ -895,15 +1078,32 @@ std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::Input::get_childre
     return children;
 }
 
-void CopyConfigRpc::Input::set_value(const std::string & value_path, std::string value)
+void CopyConfig::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "with-defaults")
     {
         with_defaults = value;
+        with_defaults.value_namespace = name_space;
+        with_defaults.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CopyConfigRpc::Input::Target::Target()
+void CopyConfig::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "with-defaults")
+    {
+        with_defaults.yfilter = yfilter;
+    }
+}
+
+bool CopyConfig::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "target" || name == "with-defaults")
+        return true;
+    return false;
+}
+
+CopyConfig::Input::Target::Target()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"},
@@ -913,11 +1113,11 @@ CopyConfigRpc::Input::Target::Target()
     yang_name = "target"; yang_parent_name = "input";
 }
 
-CopyConfigRpc::Input::Target::~Target()
+CopyConfig::Input::Target::~Target()
 {
 }
 
-bool CopyConfigRpc::Input::Target::has_data() const
+bool CopyConfig::Input::Target::has_data() const
 {
     return candidate.is_set
 	|| running.is_set
@@ -925,16 +1125,16 @@ bool CopyConfigRpc::Input::Target::has_data() const
 	|| url.is_set;
 }
 
-bool CopyConfigRpc::Input::Target::has_operation() const
+bool CopyConfig::Input::Target::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(candidate.operation)
-	|| is_set(running.operation)
-	|| is_set(startup.operation)
-	|| is_set(url.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(candidate.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(startup.yfilter)
+	|| ydk::is_set(url.yfilter);
 }
 
-std::string CopyConfigRpc::Input::Target::get_segment_path() const
+std::string CopyConfig::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -943,7 +1143,7 @@ std::string CopyConfigRpc::Input::Target::get_segment_path() const
 
 }
 
-const EntityPath CopyConfigRpc::Input::Target::get_entity_path(Entity* ancestor) const
+const EntityPath CopyConfig::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -957,10 +1157,10 @@ const EntityPath CopyConfigRpc::Input::Target::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
-    if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
-    if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
-    if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
+    if (candidate.is_set || is_set(candidate.yfilter)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (startup.is_set || is_set(startup.yfilter)) leaf_name_data.push_back(startup.get_name_leafdata());
+    if (url.is_set || is_set(url.yfilter)) leaf_name_data.push_back(url.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -968,38 +1168,73 @@ const EntityPath CopyConfigRpc::Input::Target::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> CopyConfigRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CopyConfig::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::Input::Target::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CopyConfig::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CopyConfigRpc::Input::Target::set_value(const std::string & value_path, std::string value)
+void CopyConfig::Input::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+        candidate.value_namespace = name_space;
+        candidate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "running")
     {
         running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "startup")
     {
         startup = value;
+        startup.value_namespace = name_space;
+        startup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "url")
     {
         url = value;
+        url.value_namespace = name_space;
+        url.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CopyConfigRpc::Input::Source::Source()
+void CopyConfig::Input::Target::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "candidate")
+    {
+        candidate.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "startup")
+    {
+        startup.yfilter = yfilter;
+    }
+    if(value_path == "url")
+    {
+        url.yfilter = yfilter;
+    }
+}
+
+bool CopyConfig::Input::Target::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate" || name == "running" || name == "startup" || name == "url")
+        return true;
+    return false;
+}
+
+CopyConfig::Input::Source::Source()
     :
     candidate{YType::empty, "candidate"},
     config{YType::str, "config"},
@@ -1010,11 +1245,11 @@ CopyConfigRpc::Input::Source::Source()
     yang_name = "source"; yang_parent_name = "input";
 }
 
-CopyConfigRpc::Input::Source::~Source()
+CopyConfig::Input::Source::~Source()
 {
 }
 
-bool CopyConfigRpc::Input::Source::has_data() const
+bool CopyConfig::Input::Source::has_data() const
 {
     return candidate.is_set
 	|| config.is_set
@@ -1023,17 +1258,17 @@ bool CopyConfigRpc::Input::Source::has_data() const
 	|| url.is_set;
 }
 
-bool CopyConfigRpc::Input::Source::has_operation() const
+bool CopyConfig::Input::Source::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(candidate.operation)
-	|| is_set(config.operation)
-	|| is_set(running.operation)
-	|| is_set(startup.operation)
-	|| is_set(url.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(candidate.yfilter)
+	|| ydk::is_set(config.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(startup.yfilter)
+	|| ydk::is_set(url.yfilter);
 }
 
-std::string CopyConfigRpc::Input::Source::get_segment_path() const
+std::string CopyConfig::Input::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
@@ -1042,7 +1277,7 @@ std::string CopyConfigRpc::Input::Source::get_segment_path() const
 
 }
 
-const EntityPath CopyConfigRpc::Input::Source::get_entity_path(Entity* ancestor) const
+const EntityPath CopyConfig::Input::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1056,11 +1291,11 @@ const EntityPath CopyConfigRpc::Input::Source::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
-    if (config.is_set || is_set(config.operation)) leaf_name_data.push_back(config.get_name_leafdata());
-    if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
-    if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
-    if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
+    if (candidate.is_set || is_set(candidate.yfilter)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (config.is_set || is_set(config.yfilter)) leaf_name_data.push_back(config.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (startup.is_set || is_set(startup.yfilter)) leaf_name_data.push_back(startup.get_name_leafdata());
+    if (url.is_set || is_set(url.yfilter)) leaf_name_data.push_back(url.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1068,66 +1303,107 @@ const EntityPath CopyConfigRpc::Input::Source::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> CopyConfigRpc::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CopyConfig::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CopyConfigRpc::Input::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CopyConfig::Input::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CopyConfigRpc::Input::Source::set_value(const std::string & value_path, std::string value)
+void CopyConfig::Input::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+        candidate.value_namespace = name_space;
+        candidate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "config")
     {
         config = value;
+        config.value_namespace = name_space;
+        config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "running")
     {
         running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "startup")
     {
         startup = value;
+        startup.value_namespace = name_space;
+        startup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "url")
     {
         url = value;
+        url.value_namespace = name_space;
+        url.value_namespace_prefix = name_space_prefix;
     }
 }
 
-DeleteConfigRpc::DeleteConfigRpc()
+void CopyConfig::Input::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "candidate")
+    {
+        candidate.yfilter = yfilter;
+    }
+    if(value_path == "config")
+    {
+        config.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "startup")
+    {
+        startup.yfilter = yfilter;
+    }
+    if(value_path == "url")
+    {
+        url.yfilter = yfilter;
+    }
+}
+
+bool CopyConfig::Input::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate" || name == "config" || name == "running" || name == "startup" || name == "url")
+        return true;
+    return false;
+}
+
+DeleteConfig::DeleteConfig()
     :
-    input(std::make_shared<DeleteConfigRpc::Input>())
+    input(std::make_shared<DeleteConfig::Input>())
 {
     input->parent = this;
 
     yang_name = "delete-config"; yang_parent_name = "ietf-netconf";
 }
 
-DeleteConfigRpc::~DeleteConfigRpc()
+DeleteConfig::~DeleteConfig()
 {
 }
 
-bool DeleteConfigRpc::has_data() const
+bool DeleteConfig::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool DeleteConfigRpc::has_operation() const
+bool DeleteConfig::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string DeleteConfigRpc::get_segment_path() const
+std::string DeleteConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:delete-config";
@@ -1136,7 +1412,7 @@ std::string DeleteConfigRpc::get_segment_path() const
 
 }
 
-const EntityPath DeleteConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath DeleteConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1154,13 +1430,13 @@ const EntityPath DeleteConfigRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> DeleteConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DeleteConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<DeleteConfigRpc::Input>();
+            input = std::make_shared<DeleteConfig::Input>();
         }
         return input;
     }
@@ -1168,7 +1444,7 @@ std::shared_ptr<Entity> DeleteConfigRpc::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeleteConfigRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DeleteConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -1179,55 +1455,71 @@ std::map<std::string, std::shared_ptr<Entity>> DeleteConfigRpc::get_children() c
     return children;
 }
 
-void DeleteConfigRpc::set_value(const std::string & value_path, std::string value)
+void DeleteConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> DeleteConfigRpc::clone_ptr() const
+void DeleteConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<DeleteConfigRpc>();
 }
 
-std::string DeleteConfigRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> DeleteConfig::clone_ptr() const
+{
+    return std::make_shared<DeleteConfig>();
+}
+
+std::string DeleteConfig::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string DeleteConfigRpc::get_bundle_name() const
+std::string DeleteConfig::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function DeleteConfigRpc::get_augment_capabilities_function() const
+augment_capabilities_function DeleteConfig::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-DeleteConfigRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> DeleteConfig::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool DeleteConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+DeleteConfig::Input::Input()
     :
-    target(std::make_shared<DeleteConfigRpc::Input::Target>())
+    target(std::make_shared<DeleteConfig::Input::Target>())
 {
     target->parent = this;
 
     yang_name = "input"; yang_parent_name = "delete-config";
 }
 
-DeleteConfigRpc::Input::~Input()
+DeleteConfig::Input::~Input()
 {
 }
 
-bool DeleteConfigRpc::Input::has_data() const
+bool DeleteConfig::Input::has_data() const
 {
     return (target !=  nullptr && target->has_data());
 }
 
-bool DeleteConfigRpc::Input::has_operation() const
+bool DeleteConfig::Input::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (target !=  nullptr && target->has_operation());
 }
 
-std::string DeleteConfigRpc::Input::get_segment_path() const
+std::string DeleteConfig::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -1236,7 +1528,7 @@ std::string DeleteConfigRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath DeleteConfigRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath DeleteConfig::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1257,13 +1549,13 @@ const EntityPath DeleteConfigRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> DeleteConfigRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DeleteConfig::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target")
     {
         if(target == nullptr)
         {
-            target = std::make_shared<DeleteConfigRpc::Input::Target>();
+            target = std::make_shared<DeleteConfig::Input::Target>();
         }
         return target;
     }
@@ -1271,7 +1563,7 @@ std::shared_ptr<Entity> DeleteConfigRpc::Input::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeleteConfigRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DeleteConfig::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(target != nullptr)
@@ -1282,11 +1574,22 @@ std::map<std::string, std::shared_ptr<Entity>> DeleteConfigRpc::Input::get_child
     return children;
 }
 
-void DeleteConfigRpc::Input::set_value(const std::string & value_path, std::string value)
+void DeleteConfig::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-DeleteConfigRpc::Input::Target::Target()
+void DeleteConfig::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DeleteConfig::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "target")
+        return true;
+    return false;
+}
+
+DeleteConfig::Input::Target::Target()
     :
     startup{YType::empty, "startup"},
     url{YType::str, "url"}
@@ -1294,24 +1597,24 @@ DeleteConfigRpc::Input::Target::Target()
     yang_name = "target"; yang_parent_name = "input";
 }
 
-DeleteConfigRpc::Input::Target::~Target()
+DeleteConfig::Input::Target::~Target()
 {
 }
 
-bool DeleteConfigRpc::Input::Target::has_data() const
+bool DeleteConfig::Input::Target::has_data() const
 {
     return startup.is_set
 	|| url.is_set;
 }
 
-bool DeleteConfigRpc::Input::Target::has_operation() const
+bool DeleteConfig::Input::Target::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(startup.operation)
-	|| is_set(url.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(startup.yfilter)
+	|| ydk::is_set(url.yfilter);
 }
 
-std::string DeleteConfigRpc::Input::Target::get_segment_path() const
+std::string DeleteConfig::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -1320,7 +1623,7 @@ std::string DeleteConfigRpc::Input::Target::get_segment_path() const
 
 }
 
-const EntityPath DeleteConfigRpc::Input::Target::get_entity_path(Entity* ancestor) const
+const EntityPath DeleteConfig::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1334,8 +1637,8 @@ const EntityPath DeleteConfigRpc::Input::Target::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
-    if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
+    if (startup.is_set || is_set(startup.yfilter)) leaf_name_data.push_back(startup.get_name_leafdata());
+    if (url.is_set || is_set(url.yfilter)) leaf_name_data.push_back(url.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1343,54 +1646,77 @@ const EntityPath DeleteConfigRpc::Input::Target::get_entity_path(Entity* ancesto
 
 }
 
-std::shared_ptr<Entity> DeleteConfigRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DeleteConfig::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DeleteConfigRpc::Input::Target::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DeleteConfig::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void DeleteConfigRpc::Input::Target::set_value(const std::string & value_path, std::string value)
+void DeleteConfig::Input::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "startup")
     {
         startup = value;
+        startup.value_namespace = name_space;
+        startup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "url")
     {
         url = value;
+        url.value_namespace = name_space;
+        url.value_namespace_prefix = name_space_prefix;
     }
 }
 
-LockRpc::LockRpc()
+void DeleteConfig::Input::Target::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "startup")
+    {
+        startup.yfilter = yfilter;
+    }
+    if(value_path == "url")
+    {
+        url.yfilter = yfilter;
+    }
+}
+
+bool DeleteConfig::Input::Target::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "startup" || name == "url")
+        return true;
+    return false;
+}
+
+Lock::Lock()
     :
-    input(std::make_shared<LockRpc::Input>())
+    input(std::make_shared<Lock::Input>())
 {
     input->parent = this;
 
     yang_name = "lock"; yang_parent_name = "ietf-netconf";
 }
 
-LockRpc::~LockRpc()
+Lock::~Lock()
 {
 }
 
-bool LockRpc::has_data() const
+bool Lock::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool LockRpc::has_operation() const
+bool Lock::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string LockRpc::get_segment_path() const
+std::string Lock::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:lock";
@@ -1399,7 +1725,7 @@ std::string LockRpc::get_segment_path() const
 
 }
 
-const EntityPath LockRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Lock::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1417,13 +1743,13 @@ const EntityPath LockRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LockRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<LockRpc::Input>();
+            input = std::make_shared<Lock::Input>();
         }
         return input;
     }
@@ -1431,7 +1757,7 @@ std::shared_ptr<Entity> LockRpc::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LockRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -1442,55 +1768,71 @@ std::map<std::string, std::shared_ptr<Entity>> LockRpc::get_children() const
     return children;
 }
 
-void LockRpc::set_value(const std::string & value_path, std::string value)
+void Lock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> LockRpc::clone_ptr() const
+void Lock::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<LockRpc>();
 }
 
-std::string LockRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Lock::clone_ptr() const
+{
+    return std::make_shared<Lock>();
+}
+
+std::string Lock::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string LockRpc::get_bundle_name() const
+std::string Lock::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function LockRpc::get_augment_capabilities_function() const
+augment_capabilities_function Lock::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-LockRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Lock::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool Lock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+Lock::Input::Input()
     :
-    target(std::make_shared<LockRpc::Input::Target>())
+    target(std::make_shared<Lock::Input::Target>())
 {
     target->parent = this;
 
     yang_name = "input"; yang_parent_name = "lock";
 }
 
-LockRpc::Input::~Input()
+Lock::Input::~Input()
 {
 }
 
-bool LockRpc::Input::has_data() const
+bool Lock::Input::has_data() const
 {
     return (target !=  nullptr && target->has_data());
 }
 
-bool LockRpc::Input::has_operation() const
+bool Lock::Input::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (target !=  nullptr && target->has_operation());
 }
 
-std::string LockRpc::Input::get_segment_path() const
+std::string Lock::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -1499,7 +1841,7 @@ std::string LockRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath LockRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Lock::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1520,13 +1862,13 @@ const EntityPath LockRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LockRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lock::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target")
     {
         if(target == nullptr)
         {
-            target = std::make_shared<LockRpc::Input::Target>();
+            target = std::make_shared<Lock::Input::Target>();
         }
         return target;
     }
@@ -1534,7 +1876,7 @@ std::shared_ptr<Entity> LockRpc::Input::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LockRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lock::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(target != nullptr)
@@ -1545,11 +1887,22 @@ std::map<std::string, std::shared_ptr<Entity>> LockRpc::Input::get_children() co
     return children;
 }
 
-void LockRpc::Input::set_value(const std::string & value_path, std::string value)
+void Lock::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-LockRpc::Input::Target::Target()
+void Lock::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lock::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "target")
+        return true;
+    return false;
+}
+
+Lock::Input::Target::Target()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"},
@@ -1558,26 +1911,26 @@ LockRpc::Input::Target::Target()
     yang_name = "target"; yang_parent_name = "input";
 }
 
-LockRpc::Input::Target::~Target()
+Lock::Input::Target::~Target()
 {
 }
 
-bool LockRpc::Input::Target::has_data() const
+bool Lock::Input::Target::has_data() const
 {
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
 }
 
-bool LockRpc::Input::Target::has_operation() const
+bool Lock::Input::Target::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(candidate.operation)
-	|| is_set(running.operation)
-	|| is_set(startup.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(candidate.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(startup.yfilter);
 }
 
-std::string LockRpc::Input::Target::get_segment_path() const
+std::string Lock::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -1586,7 +1939,7 @@ std::string LockRpc::Input::Target::get_segment_path() const
 
 }
 
-const EntityPath LockRpc::Input::Target::get_entity_path(Entity* ancestor) const
+const EntityPath Lock::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1600,9 +1953,9 @@ const EntityPath LockRpc::Input::Target::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
-    if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
-    if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
+    if (candidate.is_set || is_set(candidate.yfilter)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (startup.is_set || is_set(startup.yfilter)) leaf_name_data.push_back(startup.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1610,58 +1963,87 @@ const EntityPath LockRpc::Input::Target::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LockRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lock::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LockRpc::Input::Target::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lock::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void LockRpc::Input::Target::set_value(const std::string & value_path, std::string value)
+void Lock::Input::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+        candidate.value_namespace = name_space;
+        candidate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "running")
     {
         running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "startup")
     {
         startup = value;
+        startup.value_namespace = name_space;
+        startup.value_namespace_prefix = name_space_prefix;
     }
 }
 
-UnlockRpc::UnlockRpc()
+void Lock::Input::Target::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "candidate")
+    {
+        candidate.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "startup")
+    {
+        startup.yfilter = yfilter;
+    }
+}
+
+bool Lock::Input::Target::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate" || name == "running" || name == "startup")
+        return true;
+    return false;
+}
+
+Unlock::Unlock()
     :
-    input(std::make_shared<UnlockRpc::Input>())
+    input(std::make_shared<Unlock::Input>())
 {
     input->parent = this;
 
     yang_name = "unlock"; yang_parent_name = "ietf-netconf";
 }
 
-UnlockRpc::~UnlockRpc()
+Unlock::~Unlock()
 {
 }
 
-bool UnlockRpc::has_data() const
+bool Unlock::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool UnlockRpc::has_operation() const
+bool Unlock::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string UnlockRpc::get_segment_path() const
+std::string Unlock::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:unlock";
@@ -1670,7 +2052,7 @@ std::string UnlockRpc::get_segment_path() const
 
 }
 
-const EntityPath UnlockRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Unlock::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1688,13 +2070,13 @@ const EntityPath UnlockRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> UnlockRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Unlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<UnlockRpc::Input>();
+            input = std::make_shared<Unlock::Input>();
         }
         return input;
     }
@@ -1702,7 +2084,7 @@ std::shared_ptr<Entity> UnlockRpc::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UnlockRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Unlock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -1713,55 +2095,71 @@ std::map<std::string, std::shared_ptr<Entity>> UnlockRpc::get_children() const
     return children;
 }
 
-void UnlockRpc::set_value(const std::string & value_path, std::string value)
+void Unlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> UnlockRpc::clone_ptr() const
+void Unlock::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<UnlockRpc>();
 }
 
-std::string UnlockRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Unlock::clone_ptr() const
+{
+    return std::make_shared<Unlock>();
+}
+
+std::string Unlock::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string UnlockRpc::get_bundle_name() const
+std::string Unlock::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function UnlockRpc::get_augment_capabilities_function() const
+augment_capabilities_function Unlock::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-UnlockRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Unlock::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool Unlock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+Unlock::Input::Input()
     :
-    target(std::make_shared<UnlockRpc::Input::Target>())
+    target(std::make_shared<Unlock::Input::Target>())
 {
     target->parent = this;
 
     yang_name = "input"; yang_parent_name = "unlock";
 }
 
-UnlockRpc::Input::~Input()
+Unlock::Input::~Input()
 {
 }
 
-bool UnlockRpc::Input::has_data() const
+bool Unlock::Input::has_data() const
 {
     return (target !=  nullptr && target->has_data());
 }
 
-bool UnlockRpc::Input::has_operation() const
+bool Unlock::Input::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (target !=  nullptr && target->has_operation());
 }
 
-std::string UnlockRpc::Input::get_segment_path() const
+std::string Unlock::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -1770,7 +2168,7 @@ std::string UnlockRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath UnlockRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Unlock::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1791,13 +2189,13 @@ const EntityPath UnlockRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> UnlockRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Unlock::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "target")
     {
         if(target == nullptr)
         {
-            target = std::make_shared<UnlockRpc::Input::Target>();
+            target = std::make_shared<Unlock::Input::Target>();
         }
         return target;
     }
@@ -1805,7 +2203,7 @@ std::shared_ptr<Entity> UnlockRpc::Input::get_child_by_name(const std::string & 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UnlockRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Unlock::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(target != nullptr)
@@ -1816,11 +2214,22 @@ std::map<std::string, std::shared_ptr<Entity>> UnlockRpc::Input::get_children() 
     return children;
 }
 
-void UnlockRpc::Input::set_value(const std::string & value_path, std::string value)
+void Unlock::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-UnlockRpc::Input::Target::Target()
+void Unlock::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Unlock::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "target")
+        return true;
+    return false;
+}
+
+Unlock::Input::Target::Target()
     :
     candidate{YType::empty, "candidate"},
     running{YType::empty, "running"},
@@ -1829,26 +2238,26 @@ UnlockRpc::Input::Target::Target()
     yang_name = "target"; yang_parent_name = "input";
 }
 
-UnlockRpc::Input::Target::~Target()
+Unlock::Input::Target::~Target()
 {
 }
 
-bool UnlockRpc::Input::Target::has_data() const
+bool Unlock::Input::Target::has_data() const
 {
     return candidate.is_set
 	|| running.is_set
 	|| startup.is_set;
 }
 
-bool UnlockRpc::Input::Target::has_operation() const
+bool Unlock::Input::Target::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(candidate.operation)
-	|| is_set(running.operation)
-	|| is_set(startup.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(candidate.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(startup.yfilter);
 }
 
-std::string UnlockRpc::Input::Target::get_segment_path() const
+std::string Unlock::Input::Target::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "target";
@@ -1857,7 +2266,7 @@ std::string UnlockRpc::Input::Target::get_segment_path() const
 
 }
 
-const EntityPath UnlockRpc::Input::Target::get_entity_path(Entity* ancestor) const
+const EntityPath Unlock::Input::Target::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1871,9 +2280,9 @@ const EntityPath UnlockRpc::Input::Target::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
-    if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
-    if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
+    if (candidate.is_set || is_set(candidate.yfilter)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (startup.is_set || is_set(startup.yfilter)) leaf_name_data.push_back(startup.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1881,37 +2290,66 @@ const EntityPath UnlockRpc::Input::Target::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> UnlockRpc::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Unlock::Input::Target::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> UnlockRpc::Input::Target::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Unlock::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void UnlockRpc::Input::Target::set_value(const std::string & value_path, std::string value)
+void Unlock::Input::Target::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+        candidate.value_namespace = name_space;
+        candidate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "running")
     {
         running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "startup")
     {
         startup = value;
+        startup.value_namespace = name_space;
+        startup.value_namespace_prefix = name_space_prefix;
     }
 }
 
-GetRpc::GetRpc()
+void Unlock::Input::Target::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "candidate")
+    {
+        candidate.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "startup")
+    {
+        startup.yfilter = yfilter;
+    }
+}
+
+bool Unlock::Input::Target::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate" || name == "running" || name == "startup")
+        return true;
+    return false;
+}
+
+Get::Get()
     :
-    input(std::make_shared<GetRpc::Input>())
-	,output(std::make_shared<GetRpc::Output>())
+    input(std::make_shared<Get::Input>())
+	,output(std::make_shared<Get::Output>())
 {
     input->parent = this;
 
@@ -1920,24 +2358,24 @@ GetRpc::GetRpc()
     yang_name = "get"; yang_parent_name = "ietf-netconf";
 }
 
-GetRpc::~GetRpc()
+Get::~Get()
 {
 }
 
-bool GetRpc::has_data() const
+bool Get::has_data() const
 {
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
 
-bool GetRpc::has_operation() const
+bool Get::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string GetRpc::get_segment_path() const
+std::string Get::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:get";
@@ -1946,7 +2384,7 @@ std::string GetRpc::get_segment_path() const
 
 }
 
-const EntityPath GetRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Get::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1964,13 +2402,13 @@ const EntityPath GetRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Get::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<GetRpc::Input>();
+            input = std::make_shared<Get::Input>();
         }
         return input;
     }
@@ -1979,7 +2417,7 @@ std::shared_ptr<Entity> GetRpc::get_child_by_name(const std::string & child_yang
     {
         if(output == nullptr)
         {
-            output = std::make_shared<GetRpc::Output>();
+            output = std::make_shared<Get::Output>();
         }
         return output;
     }
@@ -1987,7 +2425,7 @@ std::shared_ptr<Entity> GetRpc::get_child_by_name(const std::string & child_yang
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Get::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2003,31 +2441,47 @@ std::map<std::string, std::shared_ptr<Entity>> GetRpc::get_children() const
     return children;
 }
 
-void GetRpc::set_value(const std::string & value_path, std::string value)
+void Get::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> GetRpc::clone_ptr() const
+void Get::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<GetRpc>();
 }
 
-std::string GetRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Get::clone_ptr() const
+{
+    return std::make_shared<Get>();
+}
+
+std::string Get::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string GetRpc::get_bundle_name() const
+std::string Get::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function GetRpc::get_augment_capabilities_function() const
+augment_capabilities_function Get::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-GetRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Get::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool Get::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Get::Input::Input()
     :
     filter{YType::str, "filter"},
     with_defaults{YType::enumeration, "ietf-netconf-with-defaults:with-defaults"}
@@ -2035,24 +2489,24 @@ GetRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "get";
 }
 
-GetRpc::Input::~Input()
+Get::Input::~Input()
 {
 }
 
-bool GetRpc::Input::has_data() const
+bool Get::Input::has_data() const
 {
     return filter.is_set
 	|| with_defaults.is_set;
 }
 
-bool GetRpc::Input::has_operation() const
+bool Get::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(filter.operation)
-	|| is_set(with_defaults.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(filter.yfilter)
+	|| ydk::is_set(with_defaults.yfilter);
 }
 
-std::string GetRpc::Input::get_segment_path() const
+std::string Get::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2061,7 +2515,7 @@ std::string GetRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath GetRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Get::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2075,8 +2529,8 @@ const EntityPath GetRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (filter.is_set || is_set(filter.operation)) leaf_name_data.push_back(filter.get_name_leafdata());
-    if (with_defaults.is_set || is_set(with_defaults.operation)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
+    if (filter.is_set || is_set(filter.yfilter)) leaf_name_data.push_back(filter.get_name_leafdata());
+    if (with_defaults.is_set || is_set(with_defaults.yfilter)) leaf_name_data.push_back(with_defaults.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2084,52 +2538,75 @@ const EntityPath GetRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Get::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Get::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void GetRpc::Input::set_value(const std::string & value_path, std::string value)
+void Get::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "filter")
     {
         filter = value;
+        filter.value_namespace = name_space;
+        filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "with-defaults")
     {
         with_defaults = value;
+        with_defaults.value_namespace = name_space;
+        with_defaults.value_namespace_prefix = name_space_prefix;
     }
 }
 
-GetRpc::Output::Output()
+void Get::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "filter")
+    {
+        filter.yfilter = yfilter;
+    }
+    if(value_path == "with-defaults")
+    {
+        with_defaults.yfilter = yfilter;
+    }
+}
+
+bool Get::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "filter" || name == "with-defaults")
+        return true;
+    return false;
+}
+
+Get::Output::Output()
     :
     data{YType::str, "data"}
 {
     yang_name = "output"; yang_parent_name = "get";
 }
 
-GetRpc::Output::~Output()
+Get::Output::~Output()
 {
 }
 
-bool GetRpc::Output::has_data() const
+bool Get::Output::has_data() const
 {
     return data.is_set;
 }
 
-bool GetRpc::Output::has_operation() const
+bool Get::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter);
 }
 
-std::string GetRpc::Output::get_segment_path() const
+std::string Get::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -2138,7 +2615,7 @@ std::string GetRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath GetRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Get::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2152,7 +2629,7 @@ const EntityPath GetRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2160,45 +2637,62 @@ const EntityPath GetRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Get::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Get::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void GetRpc::Output::set_value(const std::string & value_path, std::string value)
+void Get::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CloseSessionRpc::CloseSessionRpc()
+void Get::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+}
+
+bool Get::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data")
+        return true;
+    return false;
+}
+
+CloseSession::CloseSession()
 {
     yang_name = "close-session"; yang_parent_name = "ietf-netconf";
 }
 
-CloseSessionRpc::~CloseSessionRpc()
+CloseSession::~CloseSession()
 {
 }
 
-bool CloseSessionRpc::has_data() const
+bool CloseSession::has_data() const
 {
     return false;
 }
 
-bool CloseSessionRpc::has_operation() const
+bool CloseSession::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string CloseSessionRpc::get_segment_path() const
+std::string CloseSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:close-session";
@@ -2207,7 +2701,7 @@ std::string CloseSessionRpc::get_segment_path() const
 
 }
 
-const EntityPath CloseSessionRpc::get_entity_path(Entity* ancestor) const
+const EntityPath CloseSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2225,66 +2719,80 @@ const EntityPath CloseSessionRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CloseSessionRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CloseSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CloseSessionRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CloseSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CloseSessionRpc::set_value(const std::string & value_path, std::string value)
+void CloseSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> CloseSessionRpc::clone_ptr() const
+void CloseSession::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<CloseSessionRpc>();
 }
 
-std::string CloseSessionRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> CloseSession::clone_ptr() const
+{
+    return std::make_shared<CloseSession>();
+}
+
+std::string CloseSession::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string CloseSessionRpc::get_bundle_name() const
+std::string CloseSession::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function CloseSessionRpc::get_augment_capabilities_function() const
+augment_capabilities_function CloseSession::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-KillSessionRpc::KillSessionRpc()
+std::map<std::pair<std::string, std::string>, std::string> CloseSession::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool CloseSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+KillSession::KillSession()
     :
-    input(std::make_shared<KillSessionRpc::Input>())
+    input(std::make_shared<KillSession::Input>())
 {
     input->parent = this;
 
     yang_name = "kill-session"; yang_parent_name = "ietf-netconf";
 }
 
-KillSessionRpc::~KillSessionRpc()
+KillSession::~KillSession()
 {
 }
 
-bool KillSessionRpc::has_data() const
+bool KillSession::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool KillSessionRpc::has_operation() const
+bool KillSession::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string KillSessionRpc::get_segment_path() const
+std::string KillSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:kill-session";
@@ -2293,7 +2801,7 @@ std::string KillSessionRpc::get_segment_path() const
 
 }
 
-const EntityPath KillSessionRpc::get_entity_path(Entity* ancestor) const
+const EntityPath KillSession::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2311,13 +2819,13 @@ const EntityPath KillSessionRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> KillSessionRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> KillSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<KillSessionRpc::Input>();
+            input = std::make_shared<KillSession::Input>();
         }
         return input;
     }
@@ -2325,7 +2833,7 @@ std::shared_ptr<Entity> KillSessionRpc::get_child_by_name(const std::string & ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KillSessionRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> KillSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2336,53 +2844,69 @@ std::map<std::string, std::shared_ptr<Entity>> KillSessionRpc::get_children() co
     return children;
 }
 
-void KillSessionRpc::set_value(const std::string & value_path, std::string value)
+void KillSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> KillSessionRpc::clone_ptr() const
+void KillSession::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<KillSessionRpc>();
 }
 
-std::string KillSessionRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> KillSession::clone_ptr() const
+{
+    return std::make_shared<KillSession>();
+}
+
+std::string KillSession::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string KillSessionRpc::get_bundle_name() const
+std::string KillSession::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function KillSessionRpc::get_augment_capabilities_function() const
+augment_capabilities_function KillSession::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-KillSessionRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> KillSession::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool KillSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+KillSession::Input::Input()
     :
     session_id{YType::uint32, "session-id"}
 {
     yang_name = "input"; yang_parent_name = "kill-session";
 }
 
-KillSessionRpc::Input::~Input()
+KillSession::Input::~Input()
 {
 }
 
-bool KillSessionRpc::Input::has_data() const
+bool KillSession::Input::has_data() const
 {
     return session_id.is_set;
 }
 
-bool KillSessionRpc::Input::has_operation() const
+bool KillSession::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter);
 }
 
-std::string KillSessionRpc::Input::get_segment_path() const
+std::string KillSession::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2391,7 +2915,7 @@ std::string KillSessionRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath KillSessionRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath KillSession::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2405,7 +2929,7 @@ const EntityPath KillSessionRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2413,50 +2937,67 @@ const EntityPath KillSessionRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> KillSessionRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> KillSession::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> KillSessionRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> KillSession::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void KillSessionRpc::Input::set_value(const std::string & value_path, std::string value)
+void KillSession::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CommitRpc::CommitRpc()
+void KillSession::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+}
+
+bool KillSession::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id")
+        return true;
+    return false;
+}
+
+Commit::Commit()
     :
-    input(std::make_shared<CommitRpc::Input>())
+    input(std::make_shared<Commit::Input>())
 {
     input->parent = this;
 
     yang_name = "commit"; yang_parent_name = "ietf-netconf";
 }
 
-CommitRpc::~CommitRpc()
+Commit::~Commit()
 {
 }
 
-bool CommitRpc::has_data() const
+bool Commit::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool CommitRpc::has_operation() const
+bool Commit::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string CommitRpc::get_segment_path() const
+std::string Commit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:commit";
@@ -2465,7 +3006,7 @@ std::string CommitRpc::get_segment_path() const
 
 }
 
-const EntityPath CommitRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Commit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2483,13 +3024,13 @@ const EntityPath CommitRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CommitRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Commit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<CommitRpc::Input>();
+            input = std::make_shared<Commit::Input>();
         }
         return input;
     }
@@ -2497,7 +3038,7 @@ std::shared_ptr<Entity> CommitRpc::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CommitRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Commit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2508,31 +3049,47 @@ std::map<std::string, std::shared_ptr<Entity>> CommitRpc::get_children() const
     return children;
 }
 
-void CommitRpc::set_value(const std::string & value_path, std::string value)
+void Commit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> CommitRpc::clone_ptr() const
+void Commit::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<CommitRpc>();
 }
 
-std::string CommitRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Commit::clone_ptr() const
+{
+    return std::make_shared<Commit>();
+}
+
+std::string Commit::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string CommitRpc::get_bundle_name() const
+std::string Commit::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function CommitRpc::get_augment_capabilities_function() const
+augment_capabilities_function Commit::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-CommitRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Commit::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool Commit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+Commit::Input::Input()
     :
     confirm_timeout{YType::uint32, "confirm-timeout"},
     confirmed{YType::empty, "confirmed"},
@@ -2542,11 +3099,11 @@ CommitRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "commit";
 }
 
-CommitRpc::Input::~Input()
+Commit::Input::~Input()
 {
 }
 
-bool CommitRpc::Input::has_data() const
+bool Commit::Input::has_data() const
 {
     return confirm_timeout.is_set
 	|| confirmed.is_set
@@ -2554,16 +3111,16 @@ bool CommitRpc::Input::has_data() const
 	|| persist_id.is_set;
 }
 
-bool CommitRpc::Input::has_operation() const
+bool Commit::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(confirm_timeout.operation)
-	|| is_set(confirmed.operation)
-	|| is_set(persist.operation)
-	|| is_set(persist_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(confirm_timeout.yfilter)
+	|| ydk::is_set(confirmed.yfilter)
+	|| ydk::is_set(persist.yfilter)
+	|| ydk::is_set(persist_id.yfilter);
 }
 
-std::string CommitRpc::Input::get_segment_path() const
+std::string Commit::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2572,7 +3129,7 @@ std::string CommitRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath CommitRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Commit::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2586,10 +3143,10 @@ const EntityPath CommitRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (confirm_timeout.is_set || is_set(confirm_timeout.operation)) leaf_name_data.push_back(confirm_timeout.get_name_leafdata());
-    if (confirmed.is_set || is_set(confirmed.operation)) leaf_name_data.push_back(confirmed.get_name_leafdata());
-    if (persist.is_set || is_set(persist.operation)) leaf_name_data.push_back(persist.get_name_leafdata());
-    if (persist_id.is_set || is_set(persist_id.operation)) leaf_name_data.push_back(persist_id.get_name_leafdata());
+    if (confirm_timeout.is_set || is_set(confirm_timeout.yfilter)) leaf_name_data.push_back(confirm_timeout.get_name_leafdata());
+    if (confirmed.is_set || is_set(confirmed.yfilter)) leaf_name_data.push_back(confirmed.get_name_leafdata());
+    if (persist.is_set || is_set(persist.yfilter)) leaf_name_data.push_back(persist.get_name_leafdata());
+    if (persist_id.is_set || is_set(persist_id.yfilter)) leaf_name_data.push_back(persist_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2597,57 +3154,92 @@ const EntityPath CommitRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CommitRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Commit::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CommitRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Commit::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CommitRpc::Input::set_value(const std::string & value_path, std::string value)
+void Commit::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "confirm-timeout")
     {
         confirm_timeout = value;
+        confirm_timeout.value_namespace = name_space;
+        confirm_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "confirmed")
     {
         confirmed = value;
+        confirmed.value_namespace = name_space;
+        confirmed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "persist")
     {
         persist = value;
+        persist.value_namespace = name_space;
+        persist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "persist-id")
     {
         persist_id = value;
+        persist_id.value_namespace = name_space;
+        persist_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-DiscardChangesRpc::DiscardChangesRpc()
+void Commit::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "confirm-timeout")
+    {
+        confirm_timeout.yfilter = yfilter;
+    }
+    if(value_path == "confirmed")
+    {
+        confirmed.yfilter = yfilter;
+    }
+    if(value_path == "persist")
+    {
+        persist.yfilter = yfilter;
+    }
+    if(value_path == "persist-id")
+    {
+        persist_id.yfilter = yfilter;
+    }
+}
+
+bool Commit::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "confirm-timeout" || name == "confirmed" || name == "persist" || name == "persist-id")
+        return true;
+    return false;
+}
+
+DiscardChanges::DiscardChanges()
 {
     yang_name = "discard-changes"; yang_parent_name = "ietf-netconf";
 }
 
-DiscardChangesRpc::~DiscardChangesRpc()
+DiscardChanges::~DiscardChanges()
 {
 }
 
-bool DiscardChangesRpc::has_data() const
+bool DiscardChanges::has_data() const
 {
     return false;
 }
 
-bool DiscardChangesRpc::has_operation() const
+bool DiscardChanges::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string DiscardChangesRpc::get_segment_path() const
+std::string DiscardChanges::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:discard-changes";
@@ -2656,7 +3248,7 @@ std::string DiscardChangesRpc::get_segment_path() const
 
 }
 
-const EntityPath DiscardChangesRpc::get_entity_path(Entity* ancestor) const
+const EntityPath DiscardChanges::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2674,66 +3266,80 @@ const EntityPath DiscardChangesRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> DiscardChangesRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DiscardChanges::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DiscardChangesRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DiscardChanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void DiscardChangesRpc::set_value(const std::string & value_path, std::string value)
+void DiscardChanges::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> DiscardChangesRpc::clone_ptr() const
+void DiscardChanges::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<DiscardChangesRpc>();
 }
 
-std::string DiscardChangesRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> DiscardChanges::clone_ptr() const
+{
+    return std::make_shared<DiscardChanges>();
+}
+
+std::string DiscardChanges::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string DiscardChangesRpc::get_bundle_name() const
+std::string DiscardChanges::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function DiscardChangesRpc::get_augment_capabilities_function() const
+augment_capabilities_function DiscardChanges::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-CancelCommitRpc::CancelCommitRpc()
+std::map<std::pair<std::string, std::string>, std::string> DiscardChanges::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool DiscardChanges::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+CancelCommit::CancelCommit()
     :
-    input(std::make_shared<CancelCommitRpc::Input>())
+    input(std::make_shared<CancelCommit::Input>())
 {
     input->parent = this;
 
     yang_name = "cancel-commit"; yang_parent_name = "ietf-netconf";
 }
 
-CancelCommitRpc::~CancelCommitRpc()
+CancelCommit::~CancelCommit()
 {
 }
 
-bool CancelCommitRpc::has_data() const
+bool CancelCommit::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool CancelCommitRpc::has_operation() const
+bool CancelCommit::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string CancelCommitRpc::get_segment_path() const
+std::string CancelCommit::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:cancel-commit";
@@ -2742,7 +3348,7 @@ std::string CancelCommitRpc::get_segment_path() const
 
 }
 
-const EntityPath CancelCommitRpc::get_entity_path(Entity* ancestor) const
+const EntityPath CancelCommit::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2760,13 +3366,13 @@ const EntityPath CancelCommitRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CancelCommitRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CancelCommit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<CancelCommitRpc::Input>();
+            input = std::make_shared<CancelCommit::Input>();
         }
         return input;
     }
@@ -2774,7 +3380,7 @@ std::shared_ptr<Entity> CancelCommitRpc::get_child_by_name(const std::string & c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CancelCommitRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CancelCommit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2785,53 +3391,69 @@ std::map<std::string, std::shared_ptr<Entity>> CancelCommitRpc::get_children() c
     return children;
 }
 
-void CancelCommitRpc::set_value(const std::string & value_path, std::string value)
+void CancelCommit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> CancelCommitRpc::clone_ptr() const
+void CancelCommit::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<CancelCommitRpc>();
 }
 
-std::string CancelCommitRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> CancelCommit::clone_ptr() const
+{
+    return std::make_shared<CancelCommit>();
+}
+
+std::string CancelCommit::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string CancelCommitRpc::get_bundle_name() const
+std::string CancelCommit::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function CancelCommitRpc::get_augment_capabilities_function() const
+augment_capabilities_function CancelCommit::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-CancelCommitRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> CancelCommit::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool CancelCommit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+CancelCommit::Input::Input()
     :
     persist_id{YType::str, "persist-id"}
 {
     yang_name = "input"; yang_parent_name = "cancel-commit";
 }
 
-CancelCommitRpc::Input::~Input()
+CancelCommit::Input::~Input()
 {
 }
 
-bool CancelCommitRpc::Input::has_data() const
+bool CancelCommit::Input::has_data() const
 {
     return persist_id.is_set;
 }
 
-bool CancelCommitRpc::Input::has_operation() const
+bool CancelCommit::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(persist_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(persist_id.yfilter);
 }
 
-std::string CancelCommitRpc::Input::get_segment_path() const
+std::string CancelCommit::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2840,7 +3462,7 @@ std::string CancelCommitRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath CancelCommitRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath CancelCommit::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2854,7 +3476,7 @@ const EntityPath CancelCommitRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (persist_id.is_set || is_set(persist_id.operation)) leaf_name_data.push_back(persist_id.get_name_leafdata());
+    if (persist_id.is_set || is_set(persist_id.yfilter)) leaf_name_data.push_back(persist_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2862,50 +3484,67 @@ const EntityPath CancelCommitRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CancelCommitRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CancelCommit::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CancelCommitRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CancelCommit::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CancelCommitRpc::Input::set_value(const std::string & value_path, std::string value)
+void CancelCommit::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "persist-id")
     {
         persist_id = value;
+        persist_id.value_namespace = name_space;
+        persist_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-ValidateRpc::ValidateRpc()
+void CancelCommit::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "persist-id")
+    {
+        persist_id.yfilter = yfilter;
+    }
+}
+
+bool CancelCommit::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "persist-id")
+        return true;
+    return false;
+}
+
+Validate::Validate()
     :
-    input(std::make_shared<ValidateRpc::Input>())
+    input(std::make_shared<Validate::Input>())
 {
     input->parent = this;
 
     yang_name = "validate"; yang_parent_name = "ietf-netconf";
 }
 
-ValidateRpc::~ValidateRpc()
+Validate::~Validate()
 {
 }
 
-bool ValidateRpc::has_data() const
+bool Validate::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool ValidateRpc::has_operation() const
+bool Validate::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string ValidateRpc::get_segment_path() const
+std::string Validate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf:validate";
@@ -2914,7 +3553,7 @@ std::string ValidateRpc::get_segment_path() const
 
 }
 
-const EntityPath ValidateRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Validate::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2932,13 +3571,13 @@ const EntityPath ValidateRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ValidateRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Validate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<ValidateRpc::Input>();
+            input = std::make_shared<Validate::Input>();
         }
         return input;
     }
@@ -2946,7 +3585,7 @@ std::shared_ptr<Entity> ValidateRpc::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ValidateRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Validate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2957,55 +3596,71 @@ std::map<std::string, std::shared_ptr<Entity>> ValidateRpc::get_children() const
     return children;
 }
 
-void ValidateRpc::set_value(const std::string & value_path, std::string value)
+void Validate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> ValidateRpc::clone_ptr() const
+void Validate::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<ValidateRpc>();
 }
 
-std::string ValidateRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Validate::clone_ptr() const
+{
+    return std::make_shared<Validate>();
+}
+
+std::string Validate::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string ValidateRpc::get_bundle_name() const
+std::string Validate::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function ValidateRpc::get_augment_capabilities_function() const
+augment_capabilities_function Validate::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-ValidateRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Validate::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool Validate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+Validate::Input::Input()
     :
-    source(std::make_shared<ValidateRpc::Input::Source>())
+    source(std::make_shared<Validate::Input::Source>())
 {
     source->parent = this;
 
     yang_name = "input"; yang_parent_name = "validate";
 }
 
-ValidateRpc::Input::~Input()
+Validate::Input::~Input()
 {
 }
 
-bool ValidateRpc::Input::has_data() const
+bool Validate::Input::has_data() const
 {
     return (source !=  nullptr && source->has_data());
 }
 
-bool ValidateRpc::Input::has_operation() const
+bool Validate::Input::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string ValidateRpc::Input::get_segment_path() const
+std::string Validate::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -3014,7 +3669,7 @@ std::string ValidateRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath ValidateRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Validate::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3035,13 +3690,13 @@ const EntityPath ValidateRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ValidateRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Validate::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<ValidateRpc::Input::Source>();
+            source = std::make_shared<Validate::Input::Source>();
         }
         return source;
     }
@@ -3049,7 +3704,7 @@ std::shared_ptr<Entity> ValidateRpc::Input::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ValidateRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Validate::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(source != nullptr)
@@ -3060,11 +3715,22 @@ std::map<std::string, std::shared_ptr<Entity>> ValidateRpc::Input::get_children(
     return children;
 }
 
-void ValidateRpc::Input::set_value(const std::string & value_path, std::string value)
+void Validate::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-ValidateRpc::Input::Source::Source()
+void Validate::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Validate::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source")
+        return true;
+    return false;
+}
+
+Validate::Input::Source::Source()
     :
     candidate{YType::empty, "candidate"},
     config{YType::str, "config"},
@@ -3075,11 +3741,11 @@ ValidateRpc::Input::Source::Source()
     yang_name = "source"; yang_parent_name = "input";
 }
 
-ValidateRpc::Input::Source::~Source()
+Validate::Input::Source::~Source()
 {
 }
 
-bool ValidateRpc::Input::Source::has_data() const
+bool Validate::Input::Source::has_data() const
 {
     return candidate.is_set
 	|| config.is_set
@@ -3088,17 +3754,17 @@ bool ValidateRpc::Input::Source::has_data() const
 	|| url.is_set;
 }
 
-bool ValidateRpc::Input::Source::has_operation() const
+bool Validate::Input::Source::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(candidate.operation)
-	|| is_set(config.operation)
-	|| is_set(running.operation)
-	|| is_set(startup.operation)
-	|| is_set(url.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(candidate.yfilter)
+	|| ydk::is_set(config.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(startup.yfilter)
+	|| ydk::is_set(url.yfilter);
 }
 
-std::string ValidateRpc::Input::Source::get_segment_path() const
+std::string Validate::Input::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
@@ -3107,7 +3773,7 @@ std::string ValidateRpc::Input::Source::get_segment_path() const
 
 }
 
-const EntityPath ValidateRpc::Input::Source::get_entity_path(Entity* ancestor) const
+const EntityPath Validate::Input::Source::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3121,11 +3787,11 @@ const EntityPath ValidateRpc::Input::Source::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (candidate.is_set || is_set(candidate.operation)) leaf_name_data.push_back(candidate.get_name_leafdata());
-    if (config.is_set || is_set(config.operation)) leaf_name_data.push_back(config.get_name_leafdata());
-    if (running.is_set || is_set(running.operation)) leaf_name_data.push_back(running.get_name_leafdata());
-    if (startup.is_set || is_set(startup.operation)) leaf_name_data.push_back(startup.get_name_leafdata());
-    if (url.is_set || is_set(url.operation)) leaf_name_data.push_back(url.get_name_leafdata());
+    if (candidate.is_set || is_set(candidate.yfilter)) leaf_name_data.push_back(candidate.get_name_leafdata());
+    if (config.is_set || is_set(config.yfilter)) leaf_name_data.push_back(config.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (startup.is_set || is_set(startup.yfilter)) leaf_name_data.push_back(startup.get_name_leafdata());
+    if (url.is_set || is_set(url.yfilter)) leaf_name_data.push_back(url.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3133,82 +3799,123 @@ const EntityPath ValidateRpc::Input::Source::get_entity_path(Entity* ancestor) c
 
 }
 
-std::shared_ptr<Entity> ValidateRpc::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Validate::Input::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ValidateRpc::Input::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Validate::Input::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ValidateRpc::Input::Source::set_value(const std::string & value_path, std::string value)
+void Validate::Input::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "candidate")
     {
         candidate = value;
+        candidate.value_namespace = name_space;
+        candidate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "config")
     {
         config = value;
+        config.value_namespace = name_space;
+        config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "running")
     {
         running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "startup")
     {
         startup = value;
+        startup.value_namespace = name_space;
+        startup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "url")
     {
         url = value;
+        url.value_namespace = name_space;
+        url.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf ErrorSeverityTypeEnum::error {0, "error"};
-const Enum::YLeaf ErrorSeverityTypeEnum::warning {1, "warning"};
+void Validate::Input::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "candidate")
+    {
+        candidate.yfilter = yfilter;
+    }
+    if(value_path == "config")
+    {
+        config.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "startup")
+    {
+        startup.yfilter = yfilter;
+    }
+    if(value_path == "url")
+    {
+        url.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf ErrorTagTypeEnum::in_use {0, "in-use"};
-const Enum::YLeaf ErrorTagTypeEnum::invalid_value {1, "invalid-value"};
-const Enum::YLeaf ErrorTagTypeEnum::too_big {2, "too-big"};
-const Enum::YLeaf ErrorTagTypeEnum::missing_attribute {3, "missing-attribute"};
-const Enum::YLeaf ErrorTagTypeEnum::bad_attribute {4, "bad-attribute"};
-const Enum::YLeaf ErrorTagTypeEnum::unknown_attribute {5, "unknown-attribute"};
-const Enum::YLeaf ErrorTagTypeEnum::missing_element {6, "missing-element"};
-const Enum::YLeaf ErrorTagTypeEnum::bad_element {7, "bad-element"};
-const Enum::YLeaf ErrorTagTypeEnum::unknown_element {8, "unknown-element"};
-const Enum::YLeaf ErrorTagTypeEnum::unknown_namespace {9, "unknown-namespace"};
-const Enum::YLeaf ErrorTagTypeEnum::access_denied {10, "access-denied"};
-const Enum::YLeaf ErrorTagTypeEnum::lock_denied {11, "lock-denied"};
-const Enum::YLeaf ErrorTagTypeEnum::resource_denied {12, "resource-denied"};
-const Enum::YLeaf ErrorTagTypeEnum::rollback_failed {13, "rollback-failed"};
-const Enum::YLeaf ErrorTagTypeEnum::data_exists {14, "data-exists"};
-const Enum::YLeaf ErrorTagTypeEnum::data_missing {15, "data-missing"};
-const Enum::YLeaf ErrorTagTypeEnum::operation_not_supported {16, "operation-not-supported"};
-const Enum::YLeaf ErrorTagTypeEnum::operation_failed {17, "operation-failed"};
-const Enum::YLeaf ErrorTagTypeEnum::partial_operation {18, "partial-operation"};
-const Enum::YLeaf ErrorTagTypeEnum::malformed_message {19, "malformed-message"};
+bool Validate::Input::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate" || name == "config" || name == "running" || name == "startup" || name == "url")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf EditOperationTypeEnum::merge {0, "merge"};
-const Enum::YLeaf EditOperationTypeEnum::replace {1, "replace"};
-const Enum::YLeaf EditOperationTypeEnum::create {2, "create"};
-const Enum::YLeaf EditOperationTypeEnum::delete_ {3, "delete"};
-const Enum::YLeaf EditOperationTypeEnum::remove {4, "remove"};
+const Enum::YLeaf EditOperationType::merge {0, "merge"};
+const Enum::YLeaf EditOperationType::replace {1, "replace"};
+const Enum::YLeaf EditOperationType::create {2, "create"};
+const Enum::YLeaf EditOperationType::delete_ {3, "delete"};
+const Enum::YLeaf EditOperationType::remove {4, "remove"};
 
-const Enum::YLeaf EditConfigRpc::Input::DefaultOperationEnum::merge {0, "merge"};
-const Enum::YLeaf EditConfigRpc::Input::DefaultOperationEnum::replace {1, "replace"};
-const Enum::YLeaf EditConfigRpc::Input::DefaultOperationEnum::none {2, "none"};
+const Enum::YLeaf ErrorTagType::in_use {0, "in-use"};
+const Enum::YLeaf ErrorTagType::invalid_value {1, "invalid-value"};
+const Enum::YLeaf ErrorTagType::too_big {2, "too-big"};
+const Enum::YLeaf ErrorTagType::missing_attribute {3, "missing-attribute"};
+const Enum::YLeaf ErrorTagType::bad_attribute {4, "bad-attribute"};
+const Enum::YLeaf ErrorTagType::unknown_attribute {5, "unknown-attribute"};
+const Enum::YLeaf ErrorTagType::missing_element {6, "missing-element"};
+const Enum::YLeaf ErrorTagType::bad_element {7, "bad-element"};
+const Enum::YLeaf ErrorTagType::unknown_element {8, "unknown-element"};
+const Enum::YLeaf ErrorTagType::unknown_namespace {9, "unknown-namespace"};
+const Enum::YLeaf ErrorTagType::access_denied {10, "access-denied"};
+const Enum::YLeaf ErrorTagType::lock_denied {11, "lock-denied"};
+const Enum::YLeaf ErrorTagType::resource_denied {12, "resource-denied"};
+const Enum::YLeaf ErrorTagType::rollback_failed {13, "rollback-failed"};
+const Enum::YLeaf ErrorTagType::data_exists {14, "data-exists"};
+const Enum::YLeaf ErrorTagType::data_missing {15, "data-missing"};
+const Enum::YLeaf ErrorTagType::operation_not_supported {16, "operation-not-supported"};
+const Enum::YLeaf ErrorTagType::operation_failed {17, "operation-failed"};
+const Enum::YLeaf ErrorTagType::partial_operation {18, "partial-operation"};
+const Enum::YLeaf ErrorTagType::malformed_message {19, "malformed-message"};
 
-const Enum::YLeaf EditConfigRpc::Input::TestOptionEnum::test_then_set {0, "test-then-set"};
-const Enum::YLeaf EditConfigRpc::Input::TestOptionEnum::set {1, "set"};
-const Enum::YLeaf EditConfigRpc::Input::TestOptionEnum::test_only {2, "test-only"};
+const Enum::YLeaf ErrorSeverityType::error {0, "error"};
+const Enum::YLeaf ErrorSeverityType::warning {1, "warning"};
 
-const Enum::YLeaf EditConfigRpc::Input::ErrorOptionEnum::stop_on_error {0, "stop-on-error"};
-const Enum::YLeaf EditConfigRpc::Input::ErrorOptionEnum::continue_on_error {1, "continue-on-error"};
-const Enum::YLeaf EditConfigRpc::Input::ErrorOptionEnum::rollback_on_error {2, "rollback-on-error"};
+const Enum::YLeaf EditConfig::Input::DefaultOperation::merge {0, "merge"};
+const Enum::YLeaf EditConfig::Input::DefaultOperation::replace {1, "replace"};
+const Enum::YLeaf EditConfig::Input::DefaultOperation::none {2, "none"};
+
+const Enum::YLeaf EditConfig::Input::TestOption::test_then_set {0, "test-then-set"};
+const Enum::YLeaf EditConfig::Input::TestOption::set {1, "set"};
+const Enum::YLeaf EditConfig::Input::TestOption::test_only {2, "test-only"};
+
+const Enum::YLeaf EditConfig::Input::ErrorOption::stop_on_error {0, "stop-on-error"};
+const Enum::YLeaf EditConfig::Input::ErrorOption::continue_on_error {1, "continue-on-error"};
+const Enum::YLeaf EditConfig::Input::ErrorOption::rollback_on_error {2, "rollback-on-error"};
 
 
 }

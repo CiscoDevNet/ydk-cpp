@@ -6,17 +6,19 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_VOICE_DNIS_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_VOICE_DNIS_MIB {
 
 CiscoVoiceDnisMib::CiscoVoiceDnisMib()
     :
-    cvdnismappingtable_(std::make_shared<CiscoVoiceDnisMib::Cvdnismappingtable>())
-	,cvdnisnodetable_(std::make_shared<CiscoVoiceDnisMib::Cvdnisnodetable>())
+    cvdnismappingtable(std::make_shared<CiscoVoiceDnisMib::Cvdnismappingtable>())
+	,cvdnisnodetable(std::make_shared<CiscoVoiceDnisMib::Cvdnisnodetable>())
 {
-    cvdnismappingtable_->parent = this;
+    cvdnismappingtable->parent = this;
 
-    cvdnisnodetable_->parent = this;
+    cvdnisnodetable->parent = this;
 
     yang_name = "CISCO-VOICE-DNIS-MIB"; yang_parent_name = "CISCO-VOICE-DNIS-MIB";
 }
@@ -27,15 +29,15 @@ CiscoVoiceDnisMib::~CiscoVoiceDnisMib()
 
 bool CiscoVoiceDnisMib::has_data() const
 {
-    return (cvdnismappingtable_ !=  nullptr && cvdnismappingtable_->has_data())
-	|| (cvdnisnodetable_ !=  nullptr && cvdnisnodetable_->has_data());
+    return (cvdnismappingtable !=  nullptr && cvdnismappingtable->has_data())
+	|| (cvdnisnodetable !=  nullptr && cvdnisnodetable->has_data());
 }
 
 bool CiscoVoiceDnisMib::has_operation() const
 {
-    return is_set(operation)
-	|| (cvdnismappingtable_ !=  nullptr && cvdnismappingtable_->has_operation())
-	|| (cvdnisnodetable_ !=  nullptr && cvdnisnodetable_->has_operation());
+    return is_set(yfilter)
+	|| (cvdnismappingtable !=  nullptr && cvdnismappingtable->has_operation())
+	|| (cvdnisnodetable !=  nullptr && cvdnisnodetable->has_operation());
 }
 
 std::string CiscoVoiceDnisMib::get_segment_path() const
@@ -69,20 +71,20 @@ std::shared_ptr<Entity> CiscoVoiceDnisMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "cvDnisMappingTable")
     {
-        if(cvdnismappingtable_ == nullptr)
+        if(cvdnismappingtable == nullptr)
         {
-            cvdnismappingtable_ = std::make_shared<CiscoVoiceDnisMib::Cvdnismappingtable>();
+            cvdnismappingtable = std::make_shared<CiscoVoiceDnisMib::Cvdnismappingtable>();
         }
-        return cvdnismappingtable_;
+        return cvdnismappingtable;
     }
 
     if(child_yang_name == "cvDnisNodeTable")
     {
-        if(cvdnisnodetable_ == nullptr)
+        if(cvdnisnodetable == nullptr)
         {
-            cvdnisnodetable_ = std::make_shared<CiscoVoiceDnisMib::Cvdnisnodetable>();
+            cvdnisnodetable = std::make_shared<CiscoVoiceDnisMib::Cvdnisnodetable>();
         }
-        return cvdnisnodetable_;
+        return cvdnisnodetable;
     }
 
     return nullptr;
@@ -91,20 +93,24 @@ std::shared_ptr<Entity> CiscoVoiceDnisMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDnisMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cvdnismappingtable_ != nullptr)
+    if(cvdnismappingtable != nullptr)
     {
-        children["cvDnisMappingTable"] = cvdnismappingtable_;
+        children["cvDnisMappingTable"] = cvdnismappingtable;
     }
 
-    if(cvdnisnodetable_ != nullptr)
+    if(cvdnisnodetable != nullptr)
     {
-        children["cvDnisNodeTable"] = cvdnisnodetable_;
+        children["cvDnisNodeTable"] = cvdnisnodetable;
     }
 
     return children;
 }
 
-void CiscoVoiceDnisMib::set_value(const std::string & value_path, std::string value)
+void CiscoVoiceDnisMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoVoiceDnisMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -128,6 +134,18 @@ augment_capabilities_function CiscoVoiceDnisMib::get_augment_capabilities_functi
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoVoiceDnisMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoVoiceDnisMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cvDnisMappingTable" || name == "cvDnisNodeTable")
+        return true;
+    return false;
+}
+
 CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingtable()
 {
     yang_name = "cvDnisMappingTable"; yang_parent_name = "CISCO-VOICE-DNIS-MIB";
@@ -139,9 +157,9 @@ CiscoVoiceDnisMib::Cvdnismappingtable::~Cvdnismappingtable()
 
 bool CiscoVoiceDnisMib::Cvdnismappingtable::has_data() const
 {
-    for (std::size_t index=0; index<cvdnismappingentry_.size(); index++)
+    for (std::size_t index=0; index<cvdnismappingentry.size(); index++)
     {
-        if(cvdnismappingentry_[index]->has_data())
+        if(cvdnismappingentry[index]->has_data())
             return true;
     }
     return false;
@@ -149,12 +167,12 @@ bool CiscoVoiceDnisMib::Cvdnismappingtable::has_data() const
 
 bool CiscoVoiceDnisMib::Cvdnismappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cvdnismappingentry_.size(); index++)
+    for (std::size_t index=0; index<cvdnismappingentry.size(); index++)
     {
-        if(cvdnismappingentry_[index]->has_operation())
+        if(cvdnismappingentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVoiceDnisMib::Cvdnismappingtable::get_segment_path() const
@@ -191,7 +209,7 @@ std::shared_ptr<Entity> CiscoVoiceDnisMib::Cvdnismappingtable::get_child_by_name
 {
     if(child_yang_name == "cvDnisMappingEntry")
     {
-        for(auto const & c : cvdnismappingentry_)
+        for(auto const & c : cvdnismappingentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -201,7 +219,7 @@ std::shared_ptr<Entity> CiscoVoiceDnisMib::Cvdnismappingtable::get_child_by_name
         }
         auto c = std::make_shared<CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry>();
         c->parent = this;
-        cvdnismappingentry_.push_back(c);
+        cvdnismappingentry.push_back(c);
         return c;
     }
 
@@ -211,7 +229,7 @@ std::shared_ptr<Entity> CiscoVoiceDnisMib::Cvdnismappingtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDnisMib::Cvdnismappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvdnismappingentry_)
+    for (auto const & c : cvdnismappingentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDnisMib::Cvdnismappingt
     return children;
 }
 
-void CiscoVoiceDnisMib::Cvdnismappingtable::set_value(const std::string & value_path, std::string value)
+void CiscoVoiceDnisMib::Cvdnismappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVoiceDnisMib::Cvdnismappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVoiceDnisMib::Cvdnismappingtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cvDnisMappingEntry")
+        return true;
+    return false;
 }
 
 CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingentry()
@@ -249,12 +278,12 @@ bool CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::has_data() const
 
 bool CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cvdnismappingname.operation)
-	|| is_set(cvdnismappingrefresh.operation)
-	|| is_set(cvdnismappingstatus.operation)
-	|| is_set(cvdnismappingurl.operation)
-	|| is_set(cvdnismappingurlaccesserror.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cvdnismappingname.yfilter)
+	|| ydk::is_set(cvdnismappingrefresh.yfilter)
+	|| ydk::is_set(cvdnismappingstatus.yfilter)
+	|| ydk::is_set(cvdnismappingurl.yfilter)
+	|| ydk::is_set(cvdnismappingurlaccesserror.yfilter);
 }
 
 std::string CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::get_segment_path() const
@@ -280,11 +309,11 @@ const EntityPath CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cvdnismappingname.is_set || is_set(cvdnismappingname.operation)) leaf_name_data.push_back(cvdnismappingname.get_name_leafdata());
-    if (cvdnismappingrefresh.is_set || is_set(cvdnismappingrefresh.operation)) leaf_name_data.push_back(cvdnismappingrefresh.get_name_leafdata());
-    if (cvdnismappingstatus.is_set || is_set(cvdnismappingstatus.operation)) leaf_name_data.push_back(cvdnismappingstatus.get_name_leafdata());
-    if (cvdnismappingurl.is_set || is_set(cvdnismappingurl.operation)) leaf_name_data.push_back(cvdnismappingurl.get_name_leafdata());
-    if (cvdnismappingurlaccesserror.is_set || is_set(cvdnismappingurlaccesserror.operation)) leaf_name_data.push_back(cvdnismappingurlaccesserror.get_name_leafdata());
+    if (cvdnismappingname.is_set || is_set(cvdnismappingname.yfilter)) leaf_name_data.push_back(cvdnismappingname.get_name_leafdata());
+    if (cvdnismappingrefresh.is_set || is_set(cvdnismappingrefresh.yfilter)) leaf_name_data.push_back(cvdnismappingrefresh.get_name_leafdata());
+    if (cvdnismappingstatus.is_set || is_set(cvdnismappingstatus.yfilter)) leaf_name_data.push_back(cvdnismappingstatus.get_name_leafdata());
+    if (cvdnismappingurl.is_set || is_set(cvdnismappingurl.yfilter)) leaf_name_data.push_back(cvdnismappingurl.get_name_leafdata());
+    if (cvdnismappingurlaccesserror.is_set || is_set(cvdnismappingurlaccesserror.yfilter)) leaf_name_data.push_back(cvdnismappingurlaccesserror.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -303,28 +332,69 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDnisMib::Cvdnismappingt
     return children;
 }
 
-void CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::set_value(const std::string & value_path, std::string value)
+void CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvDnisMappingName")
     {
         cvdnismappingname = value;
+        cvdnismappingname.value_namespace = name_space;
+        cvdnismappingname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cvDnisMappingRefresh")
     {
         cvdnismappingrefresh = value;
+        cvdnismappingrefresh.value_namespace = name_space;
+        cvdnismappingrefresh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cvDnisMappingStatus")
     {
         cvdnismappingstatus = value;
+        cvdnismappingstatus.value_namespace = name_space;
+        cvdnismappingstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cvDnisMappingUrl")
     {
         cvdnismappingurl = value;
+        cvdnismappingurl.value_namespace = name_space;
+        cvdnismappingurl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cvDnisMappingUrlAccessError")
     {
         cvdnismappingurlaccesserror = value;
+        cvdnismappingurlaccesserror.value_namespace = name_space;
+        cvdnismappingurlaccesserror.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cvDnisMappingName")
+    {
+        cvdnismappingname.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisMappingRefresh")
+    {
+        cvdnismappingrefresh.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisMappingStatus")
+    {
+        cvdnismappingstatus.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisMappingUrl")
+    {
+        cvdnismappingurl.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisMappingUrlAccessError")
+    {
+        cvdnismappingurlaccesserror.yfilter = yfilter;
+    }
+}
+
+bool CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cvDnisMappingName" || name == "cvDnisMappingRefresh" || name == "cvDnisMappingStatus" || name == "cvDnisMappingUrl" || name == "cvDnisMappingUrlAccessError")
+        return true;
+    return false;
 }
 
 CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodetable()
@@ -338,9 +408,9 @@ CiscoVoiceDnisMib::Cvdnisnodetable::~Cvdnisnodetable()
 
 bool CiscoVoiceDnisMib::Cvdnisnodetable::has_data() const
 {
-    for (std::size_t index=0; index<cvdnisnodeentry_.size(); index++)
+    for (std::size_t index=0; index<cvdnisnodeentry.size(); index++)
     {
-        if(cvdnisnodeentry_[index]->has_data())
+        if(cvdnisnodeentry[index]->has_data())
             return true;
     }
     return false;
@@ -348,12 +418,12 @@ bool CiscoVoiceDnisMib::Cvdnisnodetable::has_data() const
 
 bool CiscoVoiceDnisMib::Cvdnisnodetable::has_operation() const
 {
-    for (std::size_t index=0; index<cvdnisnodeentry_.size(); index++)
+    for (std::size_t index=0; index<cvdnisnodeentry.size(); index++)
     {
-        if(cvdnisnodeentry_[index]->has_operation())
+        if(cvdnisnodeentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVoiceDnisMib::Cvdnisnodetable::get_segment_path() const
@@ -390,7 +460,7 @@ std::shared_ptr<Entity> CiscoVoiceDnisMib::Cvdnisnodetable::get_child_by_name(co
 {
     if(child_yang_name == "cvDnisNodeEntry")
     {
-        for(auto const & c : cvdnisnodeentry_)
+        for(auto const & c : cvdnisnodeentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -400,7 +470,7 @@ std::shared_ptr<Entity> CiscoVoiceDnisMib::Cvdnisnodetable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry>();
         c->parent = this;
-        cvdnisnodeentry_.push_back(c);
+        cvdnisnodeentry.push_back(c);
         return c;
     }
 
@@ -410,7 +480,7 @@ std::shared_ptr<Entity> CiscoVoiceDnisMib::Cvdnisnodetable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDnisMib::Cvdnisnodetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cvdnisnodeentry_)
+    for (auto const & c : cvdnisnodeentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -418,8 +488,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDnisMib::Cvdnisnodetabl
     return children;
 }
 
-void CiscoVoiceDnisMib::Cvdnisnodetable::set_value(const std::string & value_path, std::string value)
+void CiscoVoiceDnisMib::Cvdnisnodetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVoiceDnisMib::Cvdnisnodetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVoiceDnisMib::Cvdnisnodetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cvDnisNodeEntry")
+        return true;
+    return false;
 }
 
 CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::Cvdnisnodeentry()
@@ -448,12 +529,12 @@ bool CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::has_data() const
 
 bool CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cvdnismappingname.operation)
-	|| is_set(cvdnisnumber.operation)
-	|| is_set(cvdnisnodemodifiable.operation)
-	|| is_set(cvdnisnodestatus.operation)
-	|| is_set(cvdnisnodeurl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cvdnismappingname.yfilter)
+	|| ydk::is_set(cvdnisnumber.yfilter)
+	|| ydk::is_set(cvdnisnodemodifiable.yfilter)
+	|| ydk::is_set(cvdnisnodestatus.yfilter)
+	|| ydk::is_set(cvdnisnodeurl.yfilter);
 }
 
 std::string CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::get_segment_path() const
@@ -479,11 +560,11 @@ const EntityPath CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cvdnismappingname.is_set || is_set(cvdnismappingname.operation)) leaf_name_data.push_back(cvdnismappingname.get_name_leafdata());
-    if (cvdnisnumber.is_set || is_set(cvdnisnumber.operation)) leaf_name_data.push_back(cvdnisnumber.get_name_leafdata());
-    if (cvdnisnodemodifiable.is_set || is_set(cvdnisnodemodifiable.operation)) leaf_name_data.push_back(cvdnisnodemodifiable.get_name_leafdata());
-    if (cvdnisnodestatus.is_set || is_set(cvdnisnodestatus.operation)) leaf_name_data.push_back(cvdnisnodestatus.get_name_leafdata());
-    if (cvdnisnodeurl.is_set || is_set(cvdnisnodeurl.operation)) leaf_name_data.push_back(cvdnisnodeurl.get_name_leafdata());
+    if (cvdnismappingname.is_set || is_set(cvdnismappingname.yfilter)) leaf_name_data.push_back(cvdnismappingname.get_name_leafdata());
+    if (cvdnisnumber.is_set || is_set(cvdnisnumber.yfilter)) leaf_name_data.push_back(cvdnisnumber.get_name_leafdata());
+    if (cvdnisnodemodifiable.is_set || is_set(cvdnisnodemodifiable.yfilter)) leaf_name_data.push_back(cvdnisnodemodifiable.get_name_leafdata());
+    if (cvdnisnodestatus.is_set || is_set(cvdnisnodestatus.yfilter)) leaf_name_data.push_back(cvdnisnodestatus.get_name_leafdata());
+    if (cvdnisnodeurl.is_set || is_set(cvdnisnodeurl.yfilter)) leaf_name_data.push_back(cvdnisnodeurl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -502,32 +583,73 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVoiceDnisMib::Cvdnisnodetabl
     return children;
 }
 
-void CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::set_value(const std::string & value_path, std::string value)
+void CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvDnisMappingName")
     {
         cvdnismappingname = value;
+        cvdnismappingname.value_namespace = name_space;
+        cvdnismappingname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cvDnisNumber")
     {
         cvdnisnumber = value;
+        cvdnisnumber.value_namespace = name_space;
+        cvdnisnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cvDnisNodeModifiable")
     {
         cvdnisnodemodifiable = value;
+        cvdnisnodemodifiable.value_namespace = name_space;
+        cvdnisnodemodifiable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cvDnisNodeStatus")
     {
         cvdnisnodestatus = value;
+        cvdnisnodestatus.value_namespace = name_space;
+        cvdnisnodestatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cvDnisNodeUrl")
     {
         cvdnisnodeurl = value;
+        cvdnisnodeurl.value_namespace = name_space;
+        cvdnisnodeurl.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::CvdnismappingrefreshEnum::idle {1, "idle"};
-const Enum::YLeaf CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::CvdnismappingrefreshEnum::refresh {2, "refresh"};
+void CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cvDnisMappingName")
+    {
+        cvdnismappingname.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisNumber")
+    {
+        cvdnisnumber.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisNodeModifiable")
+    {
+        cvdnisnodemodifiable.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisNodeStatus")
+    {
+        cvdnisnodestatus.yfilter = yfilter;
+    }
+    if(value_path == "cvDnisNodeUrl")
+    {
+        cvdnisnodeurl.yfilter = yfilter;
+    }
+}
+
+bool CiscoVoiceDnisMib::Cvdnisnodetable::Cvdnisnodeentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cvDnisMappingName" || name == "cvDnisNumber" || name == "cvDnisNodeModifiable" || name == "cvDnisNodeStatus" || name == "cvDnisNodeUrl")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingrefresh::idle {1, "idle"};
+const Enum::YLeaf CiscoVoiceDnisMib::Cvdnismappingtable::Cvdnismappingentry::Cvdnismappingrefresh::refresh {2, "refresh"};
 
 
 }

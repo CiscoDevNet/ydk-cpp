@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_terminal_device_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_terminal_device_cfg {
 
 LogicalChannels::LogicalChannels()
@@ -35,7 +37,7 @@ bool LogicalChannels::has_operation() const
         if(channel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LogicalChannels::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::get_children() c
     return children;
 }
 
-void LogicalChannels::set_value(const std::string & value_path, std::string value)
+void LogicalChannels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void LogicalChannels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string LogicalChannels::get_bundle_name() const
 augment_capabilities_function LogicalChannels::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> LogicalChannels::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool LogicalChannels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "channel")
+        return true;
+    return false;
 }
 
 LogicalChannels::Channel::Channel()
@@ -164,16 +182,16 @@ bool LogicalChannels::Channel::has_data() const
 
 bool LogicalChannels::Channel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(channel_index.operation)
-	|| is_set(admin_state.operation)
-	|| is_set(description.operation)
-	|| is_set(ingress_client_port.operation)
-	|| is_set(ingress_physical_channel.operation)
-	|| is_set(logical_channel_type.operation)
-	|| is_set(loopback_mode.operation)
-	|| is_set(rate_class.operation)
-	|| is_set(trib_protocol.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(channel_index.yfilter)
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(ingress_client_port.yfilter)
+	|| ydk::is_set(ingress_physical_channel.yfilter)
+	|| ydk::is_set(logical_channel_type.yfilter)
+	|| ydk::is_set(loopback_mode.yfilter)
+	|| ydk::is_set(rate_class.yfilter)
+	|| ydk::is_set(trib_protocol.yfilter)
 	|| (logical_channel_assignments !=  nullptr && logical_channel_assignments->has_operation())
 	|| (otn !=  nullptr && otn->has_operation());
 }
@@ -201,15 +219,15 @@ const EntityPath LogicalChannels::Channel::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (channel_index.is_set || is_set(channel_index.operation)) leaf_name_data.push_back(channel_index.get_name_leafdata());
-    if (admin_state.is_set || is_set(admin_state.operation)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (ingress_client_port.is_set || is_set(ingress_client_port.operation)) leaf_name_data.push_back(ingress_client_port.get_name_leafdata());
-    if (ingress_physical_channel.is_set || is_set(ingress_physical_channel.operation)) leaf_name_data.push_back(ingress_physical_channel.get_name_leafdata());
-    if (logical_channel_type.is_set || is_set(logical_channel_type.operation)) leaf_name_data.push_back(logical_channel_type.get_name_leafdata());
-    if (loopback_mode.is_set || is_set(loopback_mode.operation)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
-    if (rate_class.is_set || is_set(rate_class.operation)) leaf_name_data.push_back(rate_class.get_name_leafdata());
-    if (trib_protocol.is_set || is_set(trib_protocol.operation)) leaf_name_data.push_back(trib_protocol.get_name_leafdata());
+    if (channel_index.is_set || is_set(channel_index.yfilter)) leaf_name_data.push_back(channel_index.get_name_leafdata());
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (ingress_client_port.is_set || is_set(ingress_client_port.yfilter)) leaf_name_data.push_back(ingress_client_port.get_name_leafdata());
+    if (ingress_physical_channel.is_set || is_set(ingress_physical_channel.yfilter)) leaf_name_data.push_back(ingress_physical_channel.get_name_leafdata());
+    if (logical_channel_type.is_set || is_set(logical_channel_type.yfilter)) leaf_name_data.push_back(logical_channel_type.get_name_leafdata());
+    if (loopback_mode.is_set || is_set(loopback_mode.yfilter)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
+    if (rate_class.is_set || is_set(rate_class.yfilter)) leaf_name_data.push_back(rate_class.get_name_leafdata());
+    if (trib_protocol.is_set || is_set(trib_protocol.yfilter)) leaf_name_data.push_back(trib_protocol.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -256,44 +274,109 @@ std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::get_chi
     return children;
 }
 
-void LogicalChannels::Channel::set_value(const std::string & value_path, std::string value)
+void LogicalChannels::Channel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "channel-index")
     {
         channel_index = value;
+        channel_index.value_namespace = name_space;
+        channel_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admin-state")
     {
         admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ingress-client-port")
     {
         ingress_client_port = value;
+        ingress_client_port.value_namespace = name_space;
+        ingress_client_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ingress-physical-channel")
     {
         ingress_physical_channel = value;
+        ingress_physical_channel.value_namespace = name_space;
+        ingress_physical_channel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "logical-channel-type")
     {
         logical_channel_type = value;
+        logical_channel_type.value_namespace = name_space;
+        logical_channel_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loopback-mode")
     {
         loopback_mode = value;
+        loopback_mode.value_namespace = name_space;
+        loopback_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-class")
     {
         rate_class = value;
+        rate_class.value_namespace = name_space;
+        rate_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trib-protocol")
     {
         trib_protocol = value;
+        trib_protocol.value_namespace = name_space;
+        trib_protocol.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LogicalChannels::Channel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "channel-index")
+    {
+        channel_index.yfilter = yfilter;
+    }
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "ingress-client-port")
+    {
+        ingress_client_port.yfilter = yfilter;
+    }
+    if(value_path == "ingress-physical-channel")
+    {
+        ingress_physical_channel.yfilter = yfilter;
+    }
+    if(value_path == "logical-channel-type")
+    {
+        logical_channel_type.yfilter = yfilter;
+    }
+    if(value_path == "loopback-mode")
+    {
+        loopback_mode.yfilter = yfilter;
+    }
+    if(value_path == "rate-class")
+    {
+        rate_class.yfilter = yfilter;
+    }
+    if(value_path == "trib-protocol")
+    {
+        trib_protocol.yfilter = yfilter;
+    }
+}
+
+bool LogicalChannels::Channel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "logical-channel-assignments" || name == "otn" || name == "channel-index" || name == "admin-state" || name == "description" || name == "ingress-client-port" || name == "ingress-physical-channel" || name == "logical-channel-type" || name == "loopback-mode" || name == "rate-class" || name == "trib-protocol")
+        return true;
+    return false;
 }
 
 LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignments()
@@ -322,7 +405,7 @@ bool LogicalChannels::Channel::LogicalChannelAssignments::has_operation() const
         if(logical_channel_assignment[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LogicalChannels::Channel::LogicalChannelAssignments::get_segment_path() const
@@ -387,8 +470,19 @@ std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::Logical
     return children;
 }
 
-void LogicalChannels::Channel::LogicalChannelAssignments::set_value(const std::string & value_path, std::string value)
+void LogicalChannels::Channel::LogicalChannelAssignments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void LogicalChannels::Channel::LogicalChannelAssignments::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool LogicalChannels::Channel::LogicalChannelAssignments::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "logical-channel-assignment")
+        return true;
+    return false;
 }
 
 LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::LogicalChannelAssignment()
@@ -419,13 +513,13 @@ bool LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignme
 
 bool LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(assignment_index.operation)
-	|| is_set(allocation.operation)
-	|| is_set(assignment_type.operation)
-	|| is_set(description.operation)
-	|| is_set(logical_channel_id.operation)
-	|| is_set(optical_channel_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(assignment_index.yfilter)
+	|| ydk::is_set(allocation.yfilter)
+	|| ydk::is_set(assignment_type.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(logical_channel_id.yfilter)
+	|| ydk::is_set(optical_channel_id.yfilter);
 }
 
 std::string LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::get_segment_path() const
@@ -451,12 +545,12 @@ const EntityPath LogicalChannels::Channel::LogicalChannelAssignments::LogicalCha
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (assignment_index.is_set || is_set(assignment_index.operation)) leaf_name_data.push_back(assignment_index.get_name_leafdata());
-    if (allocation.is_set || is_set(allocation.operation)) leaf_name_data.push_back(allocation.get_name_leafdata());
-    if (assignment_type.is_set || is_set(assignment_type.operation)) leaf_name_data.push_back(assignment_type.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (logical_channel_id.is_set || is_set(logical_channel_id.operation)) leaf_name_data.push_back(logical_channel_id.get_name_leafdata());
-    if (optical_channel_id.is_set || is_set(optical_channel_id.operation)) leaf_name_data.push_back(optical_channel_id.get_name_leafdata());
+    if (assignment_index.is_set || is_set(assignment_index.yfilter)) leaf_name_data.push_back(assignment_index.get_name_leafdata());
+    if (allocation.is_set || is_set(allocation.yfilter)) leaf_name_data.push_back(allocation.get_name_leafdata());
+    if (assignment_type.is_set || is_set(assignment_type.yfilter)) leaf_name_data.push_back(assignment_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (logical_channel_id.is_set || is_set(logical_channel_id.yfilter)) leaf_name_data.push_back(logical_channel_id.get_name_leafdata());
+    if (optical_channel_id.is_set || is_set(optical_channel_id.yfilter)) leaf_name_data.push_back(optical_channel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -475,32 +569,79 @@ std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::Logical
     return children;
 }
 
-void LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::set_value(const std::string & value_path, std::string value)
+void LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "assignment-index")
     {
         assignment_index = value;
+        assignment_index.value_namespace = name_space;
+        assignment_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "allocation")
     {
         allocation = value;
+        allocation.value_namespace = name_space;
+        allocation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "assignment-type")
     {
         assignment_type = value;
+        assignment_type.value_namespace = name_space;
+        assignment_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "logical-channel-id")
     {
         logical_channel_id = value;
+        logical_channel_id.value_namespace = name_space;
+        logical_channel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "optical-channel-id")
     {
         optical_channel_id = value;
+        optical_channel_id.value_namespace = name_space;
+        optical_channel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "assignment-index")
+    {
+        assignment_index.yfilter = yfilter;
+    }
+    if(value_path == "allocation")
+    {
+        allocation.yfilter = yfilter;
+    }
+    if(value_path == "assignment-type")
+    {
+        assignment_type.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "logical-channel-id")
+    {
+        logical_channel_id.yfilter = yfilter;
+    }
+    if(value_path == "optical-channel-id")
+    {
+        optical_channel_id.yfilter = yfilter;
+    }
+}
+
+bool LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "assignment-index" || name == "allocation" || name == "assignment-type" || name == "description" || name == "logical-channel-id" || name == "optical-channel-id")
+        return true;
+    return false;
 }
 
 LogicalChannels::Channel::Otn::Otn()
@@ -525,10 +666,10 @@ bool LogicalChannels::Channel::Otn::has_data() const
 
 bool LogicalChannels::Channel::Otn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tti_msg_auto.operation)
-	|| is_set(tti_msg_expected.operation)
-	|| is_set(tti_msg_transmit.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tti_msg_auto.yfilter)
+	|| ydk::is_set(tti_msg_expected.yfilter)
+	|| ydk::is_set(tti_msg_transmit.yfilter);
 }
 
 std::string LogicalChannels::Channel::Otn::get_segment_path() const
@@ -554,9 +695,9 @@ const EntityPath LogicalChannels::Channel::Otn::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tti_msg_auto.is_set || is_set(tti_msg_auto.operation)) leaf_name_data.push_back(tti_msg_auto.get_name_leafdata());
-    if (tti_msg_expected.is_set || is_set(tti_msg_expected.operation)) leaf_name_data.push_back(tti_msg_expected.get_name_leafdata());
-    if (tti_msg_transmit.is_set || is_set(tti_msg_transmit.operation)) leaf_name_data.push_back(tti_msg_transmit.get_name_leafdata());
+    if (tti_msg_auto.is_set || is_set(tti_msg_auto.yfilter)) leaf_name_data.push_back(tti_msg_auto.get_name_leafdata());
+    if (tti_msg_expected.is_set || is_set(tti_msg_expected.yfilter)) leaf_name_data.push_back(tti_msg_expected.get_name_leafdata());
+    if (tti_msg_transmit.is_set || is_set(tti_msg_transmit.yfilter)) leaf_name_data.push_back(tti_msg_transmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -575,20 +716,49 @@ std::map<std::string, std::shared_ptr<Entity>> LogicalChannels::Channel::Otn::ge
     return children;
 }
 
-void LogicalChannels::Channel::Otn::set_value(const std::string & value_path, std::string value)
+void LogicalChannels::Channel::Otn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tti-msg-auto")
     {
         tti_msg_auto = value;
+        tti_msg_auto.value_namespace = name_space;
+        tti_msg_auto.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tti-msg-expected")
     {
         tti_msg_expected = value;
+        tti_msg_expected.value_namespace = name_space;
+        tti_msg_expected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tti-msg-transmit")
     {
         tti_msg_transmit = value;
+        tti_msg_transmit.value_namespace = name_space;
+        tti_msg_transmit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LogicalChannels::Channel::Otn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tti-msg-auto")
+    {
+        tti_msg_auto.yfilter = yfilter;
+    }
+    if(value_path == "tti-msg-expected")
+    {
+        tti_msg_expected.yfilter = yfilter;
+    }
+    if(value_path == "tti-msg-transmit")
+    {
+        tti_msg_transmit.yfilter = yfilter;
+    }
+}
+
+bool LogicalChannels::Channel::Otn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tti-msg-auto" || name == "tti-msg-expected" || name == "tti-msg-transmit")
+        return true;
+    return false;
 }
 
 OpticalChannels::OpticalChannels()
@@ -617,7 +787,7 @@ bool OpticalChannels::has_operation() const
         if(optical_channel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string OpticalChannels::get_segment_path() const
@@ -679,7 +849,11 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalChannels::get_children() c
     return children;
 }
 
-void OpticalChannels::set_value(const std::string & value_path, std::string value)
+void OpticalChannels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OpticalChannels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -701,6 +875,18 @@ std::string OpticalChannels::get_bundle_name() const
 augment_capabilities_function OpticalChannels::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> OpticalChannels::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool OpticalChannels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optical-channel")
+        return true;
+    return false;
 }
 
 OpticalChannels::OpticalChannel::OpticalChannel()
@@ -725,10 +911,10 @@ bool OpticalChannels::OpticalChannel::has_data() const
 
 bool OpticalChannels::OpticalChannel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifname.operation)
-	|| is_set(line_port.operation)
-	|| is_set(operational_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifname.yfilter)
+	|| ydk::is_set(line_port.yfilter)
+	|| ydk::is_set(operational_mode.yfilter);
 }
 
 std::string OpticalChannels::OpticalChannel::get_segment_path() const
@@ -754,9 +940,9 @@ const EntityPath OpticalChannels::OpticalChannel::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifname.is_set || is_set(ifname.operation)) leaf_name_data.push_back(ifname.get_name_leafdata());
-    if (line_port.is_set || is_set(line_port.operation)) leaf_name_data.push_back(line_port.get_name_leafdata());
-    if (operational_mode.is_set || is_set(operational_mode.operation)) leaf_name_data.push_back(operational_mode.get_name_leafdata());
+    if (ifname.is_set || is_set(ifname.yfilter)) leaf_name_data.push_back(ifname.get_name_leafdata());
+    if (line_port.is_set || is_set(line_port.yfilter)) leaf_name_data.push_back(line_port.get_name_leafdata());
+    if (operational_mode.is_set || is_set(operational_mode.yfilter)) leaf_name_data.push_back(operational_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -775,67 +961,96 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalChannels::OpticalChannel::
     return children;
 }
 
-void OpticalChannels::OpticalChannel::set_value(const std::string & value_path, std::string value)
+void OpticalChannels::OpticalChannel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifname")
     {
         ifname = value;
+        ifname.value_namespace = name_space;
+        ifname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-port")
     {
         line_port = value;
+        line_port.value_namespace = name_space;
+        line_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational-mode")
     {
         operational_mode = value;
+        operational_mode.value_namespace = name_space;
+        operational_mode.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf LogicalTribRateEnum::trib_rate1g {1, "trib-rate1g"};
-const Enum::YLeaf LogicalTribRateEnum::trib_rate2_5g {2, "trib-rate2-5g"};
-const Enum::YLeaf LogicalTribRateEnum::trib_rate10g {3, "trib-rate10g"};
-const Enum::YLeaf LogicalTribRateEnum::trib_rate40g {4, "trib-rate40g"};
-const Enum::YLeaf LogicalTribRateEnum::trib_rate100g {5, "trib-rate100g"};
+void OpticalChannels::OpticalChannel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifname")
+    {
+        ifname.yfilter = yfilter;
+    }
+    if(value_path == "line-port")
+    {
+        line_port.yfilter = yfilter;
+    }
+    if(value_path == "operational-mode")
+    {
+        operational_mode.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf LogicalLoopbackModeEnum::none {0, "none"};
-const Enum::YLeaf LogicalLoopbackModeEnum::facility {1, "facility"};
-const Enum::YLeaf LogicalLoopbackModeEnum::terminal {2, "terminal"};
+bool OpticalChannels::OpticalChannel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifname" || name == "line-port" || name == "operational-mode")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf LogicalChannelOtnTtiAutoEnum::false_ {0, "false"};
-const Enum::YLeaf LogicalChannelOtnTtiAutoEnum::true_ {1, "true"};
+const Enum::YLeaf LogicalTribRate::trib_rate1g {1, "trib-rate1g"};
+const Enum::YLeaf LogicalTribRate::trib_rate2_5g {2, "trib-rate2-5g"};
+const Enum::YLeaf LogicalTribRate::trib_rate10g {3, "trib-rate10g"};
+const Enum::YLeaf LogicalTribRate::trib_rate40g {4, "trib-rate40g"};
+const Enum::YLeaf LogicalTribRate::trib_rate100g {5, "trib-rate100g"};
 
-const Enum::YLeaf LogicalAdminStateEnum::enable {1, "enable"};
-const Enum::YLeaf LogicalAdminStateEnum::disable {2, "disable"};
-const Enum::YLeaf LogicalAdminStateEnum::maintenance {3, "maintenance"};
+const Enum::YLeaf LogicalChannelOtnTtiAuto::false_ {0, "false"};
+const Enum::YLeaf LogicalChannelOtnTtiAuto::true_ {1, "true"};
 
-const Enum::YLeaf LogicalChannelAssignmentEnum::type_logical_channel {1, "type-logical-channel"};
-const Enum::YLeaf LogicalChannelAssignmentEnum::type_optical_channel {2, "type-optical-channel"};
+const Enum::YLeaf LogicalChannelAssignment::type_logical_channel {1, "type-logical-channel"};
+const Enum::YLeaf LogicalChannelAssignment::type_optical_channel {2, "type-optical-channel"};
 
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type1ge {1, "trib-proto-type1ge"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_stm16 {3, "trib-proto-type-stm16"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type10gelan {4, "trib-proto-type10gelan"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type10gewan {5, "trib-proto-type10gewan"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_oc192 {6, "trib-proto-type-oc192"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_stm64 {7, "trib-proto-type-stm64"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu2 {8, "trib-proto-type-otu2"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu2e {9, "trib-proto-type-otu2e"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu1e {10, "trib-proto-type-otu1e"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_odu2 {11, "trib-proto-type-odu2"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_odu2e {12, "trib-proto-type-odu2e"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type40ge {13, "trib-proto-type40ge"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_oc768 {14, "trib-proto-type-oc768"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_stm256 {15, "trib-proto-type-stm256"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu3 {16, "trib-proto-type-otu3"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_odu3 {17, "trib-proto-type-odu3"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type100ge {18, "trib-proto-type100ge"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type100g_mlg {19, "trib-proto-type100g-mlg"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
-const Enum::YLeaf LogicalTribProtocolEnum::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
+const Enum::YLeaf LogicalProtocol::type_ethernet {1, "type-ethernet"};
+const Enum::YLeaf LogicalProtocol::type_otn {2, "type-otn"};
 
-const Enum::YLeaf LogicalProtocolEnum::type_ethernet {1, "type-ethernet"};
-const Enum::YLeaf LogicalProtocolEnum::type_otn {2, "type-otn"};
+const Enum::YLeaf LogicalAdminState::enable {1, "enable"};
+const Enum::YLeaf LogicalAdminState::disable {2, "disable"};
+const Enum::YLeaf LogicalAdminState::maintenance {3, "maintenance"};
+
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type1ge {1, "trib-proto-type1ge"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_stm16 {3, "trib-proto-type-stm16"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type10gelan {4, "trib-proto-type10gelan"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type10gewan {5, "trib-proto-type10gewan"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_oc192 {6, "trib-proto-type-oc192"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_stm64 {7, "trib-proto-type-stm64"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_otu2 {8, "trib-proto-type-otu2"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_otu2e {9, "trib-proto-type-otu2e"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_otu1e {10, "trib-proto-type-otu1e"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_odu2 {11, "trib-proto-type-odu2"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_odu2e {12, "trib-proto-type-odu2e"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type40ge {13, "trib-proto-type40ge"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_oc768 {14, "trib-proto-type-oc768"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_stm256 {15, "trib-proto-type-stm256"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_otu3 {16, "trib-proto-type-otu3"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_odu3 {17, "trib-proto-type-odu3"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type100ge {18, "trib-proto-type100ge"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type100g_mlg {19, "trib-proto-type100g-mlg"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
+const Enum::YLeaf LogicalTribProtocol::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
+
+const Enum::YLeaf LogicalLoopbackMode::none {0, "none"};
+const Enum::YLeaf LogicalLoopbackMode::facility {1, "facility"};
+const Enum::YLeaf LogicalLoopbackMode::terminal {2, "terminal"};
 
 
 }

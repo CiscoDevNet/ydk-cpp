@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_tc_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_tc_oper {
 
 TrafficCollector::TrafficCollector()
@@ -41,7 +43,7 @@ bool TrafficCollector::has_data() const
 
 bool TrafficCollector::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (afs !=  nullptr && afs->has_operation())
 	|| (external_interfaces !=  nullptr && external_interfaces->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
@@ -142,7 +144,11 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::get_children() 
     return children;
 }
 
-void TrafficCollector::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void TrafficCollector::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -164,6 +170,18 @@ std::string TrafficCollector::get_bundle_name() const
 augment_capabilities_function TrafficCollector::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> TrafficCollector::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool TrafficCollector::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs" || name == "external-interfaces" || name == "summary" || name == "vrf-table")
+        return true;
+    return false;
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterfaces()
@@ -192,7 +210,7 @@ bool TrafficCollector::ExternalInterfaces::has_operation() const
         if(external_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TrafficCollector::ExternalInterfaces::get_segment_path() const
@@ -257,8 +275,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfa
     return children;
 }
 
-void TrafficCollector::ExternalInterfaces::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::ExternalInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::ExternalInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::ExternalInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "external-interface")
+        return true;
+    return false;
 }
 
 TrafficCollector::ExternalInterfaces::ExternalInterface::ExternalInterface()
@@ -287,12 +316,12 @@ bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_data() const
 
 bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(is_interface_enabled.operation)
-	|| is_set(vrfid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(is_interface_enabled.yfilter)
+	|| ydk::is_set(vrfid.yfilter);
 }
 
 std::string TrafficCollector::ExternalInterfaces::ExternalInterface::get_segment_path() const
@@ -318,11 +347,11 @@ const EntityPath TrafficCollector::ExternalInterfaces::ExternalInterface::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (is_interface_enabled.is_set || is_set(is_interface_enabled.operation)) leaf_name_data.push_back(is_interface_enabled.get_name_leafdata());
-    if (vrfid.is_set || is_set(vrfid.operation)) leaf_name_data.push_back(vrfid.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (is_interface_enabled.is_set || is_set(is_interface_enabled.yfilter)) leaf_name_data.push_back(is_interface_enabled.get_name_leafdata());
+    if (vrfid.is_set || is_set(vrfid.yfilter)) leaf_name_data.push_back(vrfid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -341,28 +370,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::ExternalInterfa
     return children;
 }
 
-void TrafficCollector::ExternalInterfaces::ExternalInterface::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::ExternalInterfaces::ExternalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-interface-enabled")
     {
         is_interface_enabled = value;
+        is_interface_enabled.value_namespace = name_space;
+        is_interface_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrfid")
     {
         vrfid = value;
+        vrfid.value_namespace = name_space;
+        vrfid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::ExternalInterfaces::ExternalInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "is-interface-enabled")
+    {
+        is_interface_enabled.yfilter = yfilter;
+    }
+    if(value_path == "vrfid")
+    {
+        vrfid.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::ExternalInterfaces::ExternalInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface-handle" || name == "interface-name-xr" || name == "is-interface-enabled" || name == "vrfid")
+        return true;
+    return false;
 }
 
 TrafficCollector::Summary::Summary()
@@ -426,12 +496,12 @@ bool TrafficCollector::Summary::has_operation() const
         if(vrf_statistic[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(collection_interval.operation)
-	|| is_set(collection_timer_is_running.operation)
-	|| is_set(history_size.operation)
-	|| is_set(timeout_interval.operation)
-	|| is_set(timeout_timer_is_running.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(collection_interval.yfilter)
+	|| ydk::is_set(collection_timer_is_running.yfilter)
+	|| ydk::is_set(history_size.yfilter)
+	|| ydk::is_set(timeout_interval.yfilter)
+	|| ydk::is_set(timeout_timer_is_running.yfilter)
 	|| (database_statistics_external_interface !=  nullptr && database_statistics_external_interface->has_operation());
 }
 
@@ -458,11 +528,11 @@ const EntityPath TrafficCollector::Summary::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (collection_interval.is_set || is_set(collection_interval.operation)) leaf_name_data.push_back(collection_interval.get_name_leafdata());
-    if (collection_timer_is_running.is_set || is_set(collection_timer_is_running.operation)) leaf_name_data.push_back(collection_timer_is_running.get_name_leafdata());
-    if (history_size.is_set || is_set(history_size.operation)) leaf_name_data.push_back(history_size.get_name_leafdata());
-    if (timeout_interval.is_set || is_set(timeout_interval.operation)) leaf_name_data.push_back(timeout_interval.get_name_leafdata());
-    if (timeout_timer_is_running.is_set || is_set(timeout_timer_is_running.operation)) leaf_name_data.push_back(timeout_timer_is_running.get_name_leafdata());
+    if (collection_interval.is_set || is_set(collection_interval.yfilter)) leaf_name_data.push_back(collection_interval.get_name_leafdata());
+    if (collection_timer_is_running.is_set || is_set(collection_timer_is_running.yfilter)) leaf_name_data.push_back(collection_timer_is_running.get_name_leafdata());
+    if (history_size.is_set || is_set(history_size.yfilter)) leaf_name_data.push_back(history_size.get_name_leafdata());
+    if (timeout_interval.is_set || is_set(timeout_interval.yfilter)) leaf_name_data.push_back(timeout_interval.get_name_leafdata());
+    if (timeout_timer_is_running.is_set || is_set(timeout_timer_is_running.yfilter)) leaf_name_data.push_back(timeout_timer_is_running.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -558,28 +628,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::get_ch
     return children;
 }
 
-void TrafficCollector::Summary::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "collection-interval")
     {
         collection_interval = value;
+        collection_interval.value_namespace = name_space;
+        collection_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collection-timer-is-running")
     {
         collection_timer_is_running = value;
+        collection_timer_is_running.value_namespace = name_space;
+        collection_timer_is_running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-size")
     {
         history_size = value;
+        history_size.value_namespace = name_space;
+        history_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-interval")
     {
         timeout_interval = value;
+        timeout_interval.value_namespace = name_space;
+        timeout_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-timer-is-running")
     {
         timeout_timer_is_running = value;
+        timeout_timer_is_running.value_namespace = name_space;
+        timeout_timer_is_running.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "collection-interval")
+    {
+        collection_interval.yfilter = yfilter;
+    }
+    if(value_path == "collection-timer-is-running")
+    {
+        collection_timer_is_running.yfilter = yfilter;
+    }
+    if(value_path == "history-size")
+    {
+        history_size.yfilter = yfilter;
+    }
+    if(value_path == "timeout-interval")
+    {
+        timeout_interval.yfilter = yfilter;
+    }
+    if(value_path == "timeout-timer-is-running")
+    {
+        timeout_timer_is_running.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "checkpoint-message-statistic" || name == "collection-message-statistic" || name == "database-statistics-external-interface" || name == "vrf-statistic" || name == "collection-interval" || name == "collection-timer-is-running" || name == "history-size" || name == "timeout-interval" || name == "timeout-timer-is-running")
+        return true;
+    return false;
 }
 
 TrafficCollector::Summary::DatabaseStatisticsExternalInterface::DatabaseStatisticsExternalInterface()
@@ -606,11 +717,11 @@ bool TrafficCollector::Summary::DatabaseStatisticsExternalInterface::has_data() 
 
 bool TrafficCollector::Summary::DatabaseStatisticsExternalInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number_of_add_o_perations.operation)
-	|| is_set(number_of_delete_o_perations.operation)
-	|| is_set(number_of_entries.operation)
-	|| is_set(number_of_stale_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(number_of_add_o_perations.yfilter)
+	|| ydk::is_set(number_of_delete_o_perations.yfilter)
+	|| ydk::is_set(number_of_entries.yfilter)
+	|| ydk::is_set(number_of_stale_entries.yfilter);
 }
 
 std::string TrafficCollector::Summary::DatabaseStatisticsExternalInterface::get_segment_path() const
@@ -636,10 +747,10 @@ const EntityPath TrafficCollector::Summary::DatabaseStatisticsExternalInterface:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number_of_add_o_perations.is_set || is_set(number_of_add_o_perations.operation)) leaf_name_data.push_back(number_of_add_o_perations.get_name_leafdata());
-    if (number_of_delete_o_perations.is_set || is_set(number_of_delete_o_perations.operation)) leaf_name_data.push_back(number_of_delete_o_perations.get_name_leafdata());
-    if (number_of_entries.is_set || is_set(number_of_entries.operation)) leaf_name_data.push_back(number_of_entries.get_name_leafdata());
-    if (number_of_stale_entries.is_set || is_set(number_of_stale_entries.operation)) leaf_name_data.push_back(number_of_stale_entries.get_name_leafdata());
+    if (number_of_add_o_perations.is_set || is_set(number_of_add_o_perations.yfilter)) leaf_name_data.push_back(number_of_add_o_perations.get_name_leafdata());
+    if (number_of_delete_o_perations.is_set || is_set(number_of_delete_o_perations.yfilter)) leaf_name_data.push_back(number_of_delete_o_perations.get_name_leafdata());
+    if (number_of_entries.is_set || is_set(number_of_entries.yfilter)) leaf_name_data.push_back(number_of_entries.get_name_leafdata());
+    if (number_of_stale_entries.is_set || is_set(number_of_stale_entries.yfilter)) leaf_name_data.push_back(number_of_stale_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -658,24 +769,59 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::Databa
     return children;
 }
 
-void TrafficCollector::Summary::DatabaseStatisticsExternalInterface::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Summary::DatabaseStatisticsExternalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-of-add-o-perations")
     {
         number_of_add_o_perations = value;
+        number_of_add_o_perations.value_namespace = name_space;
+        number_of_add_o_perations.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-delete-o-perations")
     {
         number_of_delete_o_perations = value;
+        number_of_delete_o_perations.value_namespace = name_space;
+        number_of_delete_o_perations.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-entries")
     {
         number_of_entries = value;
+        number_of_entries.value_namespace = name_space;
+        number_of_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-stale-entries")
     {
         number_of_stale_entries = value;
+        number_of_stale_entries.value_namespace = name_space;
+        number_of_stale_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Summary::DatabaseStatisticsExternalInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-of-add-o-perations")
+    {
+        number_of_add_o_perations.yfilter = yfilter;
+    }
+    if(value_path == "number-of-delete-o-perations")
+    {
+        number_of_delete_o_perations.yfilter = yfilter;
+    }
+    if(value_path == "number-of-entries")
+    {
+        number_of_entries.yfilter = yfilter;
+    }
+    if(value_path == "number-of-stale-entries")
+    {
+        number_of_stale_entries.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Summary::DatabaseStatisticsExternalInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "number-of-add-o-perations" || name == "number-of-delete-o-perations" || name == "number-of-entries" || name == "number-of-stale-entries")
+        return true;
+    return false;
 }
 
 TrafficCollector::Summary::VrfStatistic::VrfStatistic()
@@ -705,8 +851,8 @@ bool TrafficCollector::Summary::VrfStatistic::has_data() const
 
 bool TrafficCollector::Summary::VrfStatistic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (database_statistics_ipv4 !=  nullptr && database_statistics_ipv4->has_operation())
 	|| (database_statistics_tunnel !=  nullptr && database_statistics_tunnel->has_operation());
 }
@@ -734,7 +880,7 @@ const EntityPath TrafficCollector::Summary::VrfStatistic::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -781,12 +927,29 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::VrfSta
     return children;
 }
 
-void TrafficCollector::Summary::VrfStatistic::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Summary::VrfStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Summary::VrfStatistic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Summary::VrfStatistic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "database-statistics-ipv4" || name == "database-statistics-tunnel" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::DatabaseStatisticsIpv4()
@@ -813,11 +976,11 @@ bool TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::has_data()
 
 bool TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number_of_add_o_perations.operation)
-	|| is_set(number_of_delete_o_perations.operation)
-	|| is_set(number_of_entries.operation)
-	|| is_set(number_of_stale_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(number_of_add_o_perations.yfilter)
+	|| ydk::is_set(number_of_delete_o_perations.yfilter)
+	|| ydk::is_set(number_of_entries.yfilter)
+	|| ydk::is_set(number_of_stale_entries.yfilter);
 }
 
 std::string TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::get_segment_path() const
@@ -843,10 +1006,10 @@ const EntityPath TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number_of_add_o_perations.is_set || is_set(number_of_add_o_perations.operation)) leaf_name_data.push_back(number_of_add_o_perations.get_name_leafdata());
-    if (number_of_delete_o_perations.is_set || is_set(number_of_delete_o_perations.operation)) leaf_name_data.push_back(number_of_delete_o_perations.get_name_leafdata());
-    if (number_of_entries.is_set || is_set(number_of_entries.operation)) leaf_name_data.push_back(number_of_entries.get_name_leafdata());
-    if (number_of_stale_entries.is_set || is_set(number_of_stale_entries.operation)) leaf_name_data.push_back(number_of_stale_entries.get_name_leafdata());
+    if (number_of_add_o_perations.is_set || is_set(number_of_add_o_perations.yfilter)) leaf_name_data.push_back(number_of_add_o_perations.get_name_leafdata());
+    if (number_of_delete_o_perations.is_set || is_set(number_of_delete_o_perations.yfilter)) leaf_name_data.push_back(number_of_delete_o_perations.get_name_leafdata());
+    if (number_of_entries.is_set || is_set(number_of_entries.yfilter)) leaf_name_data.push_back(number_of_entries.get_name_leafdata());
+    if (number_of_stale_entries.is_set || is_set(number_of_stale_entries.yfilter)) leaf_name_data.push_back(number_of_stale_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -865,24 +1028,59 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::VrfSta
     return children;
 }
 
-void TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-of-add-o-perations")
     {
         number_of_add_o_perations = value;
+        number_of_add_o_perations.value_namespace = name_space;
+        number_of_add_o_perations.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-delete-o-perations")
     {
         number_of_delete_o_perations = value;
+        number_of_delete_o_perations.value_namespace = name_space;
+        number_of_delete_o_perations.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-entries")
     {
         number_of_entries = value;
+        number_of_entries.value_namespace = name_space;
+        number_of_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-stale-entries")
     {
         number_of_stale_entries = value;
+        number_of_stale_entries.value_namespace = name_space;
+        number_of_stale_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-of-add-o-perations")
+    {
+        number_of_add_o_perations.yfilter = yfilter;
+    }
+    if(value_path == "number-of-delete-o-perations")
+    {
+        number_of_delete_o_perations.yfilter = yfilter;
+    }
+    if(value_path == "number-of-entries")
+    {
+        number_of_entries.yfilter = yfilter;
+    }
+    if(value_path == "number-of-stale-entries")
+    {
+        number_of_stale_entries.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "number-of-add-o-perations" || name == "number-of-delete-o-perations" || name == "number-of-entries" || name == "number-of-stale-entries")
+        return true;
+    return false;
 }
 
 TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::DatabaseStatisticsTunnel()
@@ -909,11 +1107,11 @@ bool TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::has_data
 
 bool TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number_of_add_o_perations.operation)
-	|| is_set(number_of_delete_o_perations.operation)
-	|| is_set(number_of_entries.operation)
-	|| is_set(number_of_stale_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(number_of_add_o_perations.yfilter)
+	|| ydk::is_set(number_of_delete_o_perations.yfilter)
+	|| ydk::is_set(number_of_entries.yfilter)
+	|| ydk::is_set(number_of_stale_entries.yfilter);
 }
 
 std::string TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::get_segment_path() const
@@ -939,10 +1137,10 @@ const EntityPath TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunn
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number_of_add_o_perations.is_set || is_set(number_of_add_o_perations.operation)) leaf_name_data.push_back(number_of_add_o_perations.get_name_leafdata());
-    if (number_of_delete_o_perations.is_set || is_set(number_of_delete_o_perations.operation)) leaf_name_data.push_back(number_of_delete_o_perations.get_name_leafdata());
-    if (number_of_entries.is_set || is_set(number_of_entries.operation)) leaf_name_data.push_back(number_of_entries.get_name_leafdata());
-    if (number_of_stale_entries.is_set || is_set(number_of_stale_entries.operation)) leaf_name_data.push_back(number_of_stale_entries.get_name_leafdata());
+    if (number_of_add_o_perations.is_set || is_set(number_of_add_o_perations.yfilter)) leaf_name_data.push_back(number_of_add_o_perations.get_name_leafdata());
+    if (number_of_delete_o_perations.is_set || is_set(number_of_delete_o_perations.yfilter)) leaf_name_data.push_back(number_of_delete_o_perations.get_name_leafdata());
+    if (number_of_entries.is_set || is_set(number_of_entries.yfilter)) leaf_name_data.push_back(number_of_entries.get_name_leafdata());
+    if (number_of_stale_entries.is_set || is_set(number_of_stale_entries.yfilter)) leaf_name_data.push_back(number_of_stale_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -961,24 +1159,59 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::VrfSta
     return children;
 }
 
-void TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-of-add-o-perations")
     {
         number_of_add_o_perations = value;
+        number_of_add_o_perations.value_namespace = name_space;
+        number_of_add_o_perations.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-delete-o-perations")
     {
         number_of_delete_o_perations = value;
+        number_of_delete_o_perations.value_namespace = name_space;
+        number_of_delete_o_perations.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-entries")
     {
         number_of_entries = value;
+        number_of_entries.value_namespace = name_space;
+        number_of_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-stale-entries")
     {
         number_of_stale_entries = value;
+        number_of_stale_entries.value_namespace = name_space;
+        number_of_stale_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-of-add-o-perations")
+    {
+        number_of_add_o_perations.yfilter = yfilter;
+    }
+    if(value_path == "number-of-delete-o-perations")
+    {
+        number_of_delete_o_perations.yfilter = yfilter;
+    }
+    if(value_path == "number-of-entries")
+    {
+        number_of_entries.yfilter = yfilter;
+    }
+    if(value_path == "number-of-stale-entries")
+    {
+        number_of_stale_entries.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Summary::VrfStatistic::DatabaseStatisticsTunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "number-of-add-o-perations" || name == "number-of-delete-o-perations" || name == "number-of-entries" || name == "number-of-stale-entries")
+        return true;
+    return false;
 }
 
 TrafficCollector::Summary::CollectionMessageStatistic::CollectionMessageStatistic()
@@ -1009,13 +1242,13 @@ bool TrafficCollector::Summary::CollectionMessageStatistic::has_data() const
 
 bool TrafficCollector::Summary::CollectionMessageStatistic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_received.operation)
-	|| is_set(byte_sent.operation)
-	|| is_set(maimum_latency_timestamp.operation)
-	|| is_set(maximum_roundtrip_latency.operation)
-	|| is_set(packet_received.operation)
-	|| is_set(packet_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_received.yfilter)
+	|| ydk::is_set(byte_sent.yfilter)
+	|| ydk::is_set(maimum_latency_timestamp.yfilter)
+	|| ydk::is_set(maximum_roundtrip_latency.yfilter)
+	|| ydk::is_set(packet_received.yfilter)
+	|| ydk::is_set(packet_sent.yfilter);
 }
 
 std::string TrafficCollector::Summary::CollectionMessageStatistic::get_segment_path() const
@@ -1041,12 +1274,12 @@ const EntityPath TrafficCollector::Summary::CollectionMessageStatistic::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_received.is_set || is_set(byte_received.operation)) leaf_name_data.push_back(byte_received.get_name_leafdata());
-    if (byte_sent.is_set || is_set(byte_sent.operation)) leaf_name_data.push_back(byte_sent.get_name_leafdata());
-    if (maimum_latency_timestamp.is_set || is_set(maimum_latency_timestamp.operation)) leaf_name_data.push_back(maimum_latency_timestamp.get_name_leafdata());
-    if (maximum_roundtrip_latency.is_set || is_set(maximum_roundtrip_latency.operation)) leaf_name_data.push_back(maximum_roundtrip_latency.get_name_leafdata());
-    if (packet_received.is_set || is_set(packet_received.operation)) leaf_name_data.push_back(packet_received.get_name_leafdata());
-    if (packet_sent.is_set || is_set(packet_sent.operation)) leaf_name_data.push_back(packet_sent.get_name_leafdata());
+    if (byte_received.is_set || is_set(byte_received.yfilter)) leaf_name_data.push_back(byte_received.get_name_leafdata());
+    if (byte_sent.is_set || is_set(byte_sent.yfilter)) leaf_name_data.push_back(byte_sent.get_name_leafdata());
+    if (maimum_latency_timestamp.is_set || is_set(maimum_latency_timestamp.yfilter)) leaf_name_data.push_back(maimum_latency_timestamp.get_name_leafdata());
+    if (maximum_roundtrip_latency.is_set || is_set(maximum_roundtrip_latency.yfilter)) leaf_name_data.push_back(maximum_roundtrip_latency.get_name_leafdata());
+    if (packet_received.is_set || is_set(packet_received.yfilter)) leaf_name_data.push_back(packet_received.get_name_leafdata());
+    if (packet_sent.is_set || is_set(packet_sent.yfilter)) leaf_name_data.push_back(packet_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1065,32 +1298,79 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::Collec
     return children;
 }
 
-void TrafficCollector::Summary::CollectionMessageStatistic::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Summary::CollectionMessageStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-received")
     {
         byte_received = value;
+        byte_received.value_namespace = name_space;
+        byte_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "byte-sent")
     {
         byte_sent = value;
+        byte_sent.value_namespace = name_space;
+        byte_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maimum-latency-timestamp")
     {
         maimum_latency_timestamp = value;
+        maimum_latency_timestamp.value_namespace = name_space;
+        maimum_latency_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-roundtrip-latency")
     {
         maximum_roundtrip_latency = value;
+        maximum_roundtrip_latency.value_namespace = name_space;
+        maximum_roundtrip_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-received")
     {
         packet_received = value;
+        packet_received.value_namespace = name_space;
+        packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-sent")
     {
         packet_sent = value;
+        packet_sent.value_namespace = name_space;
+        packet_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Summary::CollectionMessageStatistic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-received")
+    {
+        byte_received.yfilter = yfilter;
+    }
+    if(value_path == "byte-sent")
+    {
+        byte_sent.yfilter = yfilter;
+    }
+    if(value_path == "maimum-latency-timestamp")
+    {
+        maimum_latency_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "maximum-roundtrip-latency")
+    {
+        maximum_roundtrip_latency.yfilter = yfilter;
+    }
+    if(value_path == "packet-received")
+    {
+        packet_received.yfilter = yfilter;
+    }
+    if(value_path == "packet-sent")
+    {
+        packet_sent.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Summary::CollectionMessageStatistic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-received" || name == "byte-sent" || name == "maimum-latency-timestamp" || name == "maximum-roundtrip-latency" || name == "packet-received" || name == "packet-sent")
+        return true;
+    return false;
 }
 
 TrafficCollector::Summary::CheckpointMessageStatistic::CheckpointMessageStatistic()
@@ -1121,13 +1401,13 @@ bool TrafficCollector::Summary::CheckpointMessageStatistic::has_data() const
 
 bool TrafficCollector::Summary::CheckpointMessageStatistic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_received.operation)
-	|| is_set(byte_sent.operation)
-	|| is_set(maimum_latency_timestamp.operation)
-	|| is_set(maximum_roundtrip_latency.operation)
-	|| is_set(packet_received.operation)
-	|| is_set(packet_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_received.yfilter)
+	|| ydk::is_set(byte_sent.yfilter)
+	|| ydk::is_set(maimum_latency_timestamp.yfilter)
+	|| ydk::is_set(maximum_roundtrip_latency.yfilter)
+	|| ydk::is_set(packet_received.yfilter)
+	|| ydk::is_set(packet_sent.yfilter);
 }
 
 std::string TrafficCollector::Summary::CheckpointMessageStatistic::get_segment_path() const
@@ -1153,12 +1433,12 @@ const EntityPath TrafficCollector::Summary::CheckpointMessageStatistic::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_received.is_set || is_set(byte_received.operation)) leaf_name_data.push_back(byte_received.get_name_leafdata());
-    if (byte_sent.is_set || is_set(byte_sent.operation)) leaf_name_data.push_back(byte_sent.get_name_leafdata());
-    if (maimum_latency_timestamp.is_set || is_set(maimum_latency_timestamp.operation)) leaf_name_data.push_back(maimum_latency_timestamp.get_name_leafdata());
-    if (maximum_roundtrip_latency.is_set || is_set(maximum_roundtrip_latency.operation)) leaf_name_data.push_back(maximum_roundtrip_latency.get_name_leafdata());
-    if (packet_received.is_set || is_set(packet_received.operation)) leaf_name_data.push_back(packet_received.get_name_leafdata());
-    if (packet_sent.is_set || is_set(packet_sent.operation)) leaf_name_data.push_back(packet_sent.get_name_leafdata());
+    if (byte_received.is_set || is_set(byte_received.yfilter)) leaf_name_data.push_back(byte_received.get_name_leafdata());
+    if (byte_sent.is_set || is_set(byte_sent.yfilter)) leaf_name_data.push_back(byte_sent.get_name_leafdata());
+    if (maimum_latency_timestamp.is_set || is_set(maimum_latency_timestamp.yfilter)) leaf_name_data.push_back(maimum_latency_timestamp.get_name_leafdata());
+    if (maximum_roundtrip_latency.is_set || is_set(maximum_roundtrip_latency.yfilter)) leaf_name_data.push_back(maximum_roundtrip_latency.get_name_leafdata());
+    if (packet_received.is_set || is_set(packet_received.yfilter)) leaf_name_data.push_back(packet_received.get_name_leafdata());
+    if (packet_sent.is_set || is_set(packet_sent.yfilter)) leaf_name_data.push_back(packet_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1177,32 +1457,79 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Summary::Checkp
     return children;
 }
 
-void TrafficCollector::Summary::CheckpointMessageStatistic::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Summary::CheckpointMessageStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-received")
     {
         byte_received = value;
+        byte_received.value_namespace = name_space;
+        byte_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "byte-sent")
     {
         byte_sent = value;
+        byte_sent.value_namespace = name_space;
+        byte_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maimum-latency-timestamp")
     {
         maimum_latency_timestamp = value;
+        maimum_latency_timestamp.value_namespace = name_space;
+        maimum_latency_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-roundtrip-latency")
     {
         maximum_roundtrip_latency = value;
+        maximum_roundtrip_latency.value_namespace = name_space;
+        maximum_roundtrip_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-received")
     {
         packet_received = value;
+        packet_received.value_namespace = name_space;
+        packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-sent")
     {
         packet_sent = value;
+        packet_sent.value_namespace = name_space;
+        packet_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Summary::CheckpointMessageStatistic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-received")
+    {
+        byte_received.yfilter = yfilter;
+    }
+    if(value_path == "byte-sent")
+    {
+        byte_sent.yfilter = yfilter;
+    }
+    if(value_path == "maimum-latency-timestamp")
+    {
+        maimum_latency_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "maximum-roundtrip-latency")
+    {
+        maximum_roundtrip_latency.yfilter = yfilter;
+    }
+    if(value_path == "packet-received")
+    {
+        packet_received.yfilter = yfilter;
+    }
+    if(value_path == "packet-sent")
+    {
+        packet_sent.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Summary::CheckpointMessageStatistic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-received" || name == "byte-sent" || name == "maimum-latency-timestamp" || name == "maximum-roundtrip-latency" || name == "packet-received" || name == "packet-sent")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::VrfTable()
@@ -1225,7 +1552,7 @@ bool TrafficCollector::VrfTable::has_data() const
 
 bool TrafficCollector::VrfTable::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_vrf !=  nullptr && default_vrf->has_operation());
 }
 
@@ -1284,8 +1611,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::get_c
     return children;
 }
 
-void TrafficCollector::VrfTable::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::VrfTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::VrfTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::DefaultVrf()
@@ -1308,7 +1646,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::has_data() const
 
 bool TrafficCollector::VrfTable::DefaultVrf::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (afs !=  nullptr && afs->has_operation());
 }
 
@@ -1367,8 +1705,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afs")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Afs()
@@ -1397,7 +1746,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::get_segment_path() const
@@ -1462,8 +1811,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Af()
@@ -1489,8 +1849,8 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::has_data() const
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
 	|| (counters !=  nullptr && counters->has_operation());
 }
 
@@ -1517,7 +1877,7 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1550,12 +1910,29 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters" || name == "af-name")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Counters()
@@ -1582,7 +1959,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::has_data() const
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (prefixes !=  nullptr && prefixes->has_operation())
 	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
@@ -1656,8 +2033,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefixes" || name == "tunnels")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefixes()
@@ -1686,7 +2074,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::has_op
         if(prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::get_segment_path() const
@@ -1751,8 +2139,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::Prefix()
@@ -1792,13 +2191,13 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipaddr.operation)
-	|| is_set(is_active.operation)
-	|| is_set(label.operation)
-	|| is_set(label_xr.operation)
-	|| is_set(mask.operation)
-	|| is_set(prefix.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ipaddr.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(label_xr.yfilter)
+	|| ydk::is_set(mask.yfilter)
+	|| ydk::is_set(prefix.yfilter)
 	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation())
 	|| (traffic_matrix_counter_statistics !=  nullptr && traffic_matrix_counter_statistics->has_operation());
 }
@@ -1826,12 +2225,12 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Pref
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipaddr.is_set || is_set(ipaddr.operation)) leaf_name_data.push_back(ipaddr.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (label_xr.is_set || is_set(label_xr.operation)) leaf_name_data.push_back(label_xr.get_name_leafdata());
-    if (mask.is_set || is_set(mask.operation)) leaf_name_data.push_back(mask.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (ipaddr.is_set || is_set(ipaddr.yfilter)) leaf_name_data.push_back(ipaddr.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (label_xr.is_set || is_set(label_xr.yfilter)) leaf_name_data.push_back(label_xr.get_name_leafdata());
+    if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1878,32 +2277,79 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipaddr")
     {
         ipaddr = value;
+        ipaddr.value_namespace = name_space;
+        ipaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
         label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-xr")
     {
         label_xr = value;
+        label_xr.value_namespace = name_space;
+        label_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask")
     {
         mask = value;
+        mask.value_namespace = name_space;
+        mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipaddr")
+    {
+        ipaddr.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "label-xr")
+    {
+        label_xr.yfilter = yfilter;
+    }
+    if(value_path == "mask")
+    {
+        mask.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base-counter-statistics" || name == "traffic-matrix-counter-statistics" || name == "ipaddr" || name == "is-active" || name == "label" || name == "label-xr" || name == "mask" || name == "prefix")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::BaseCounterStatistics()
@@ -1936,9 +2382,9 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
         if(count_history[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(transmit_bytes_per_second_switched.operation)
-	|| is_set(transmit_packets_per_second_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transmit_bytes_per_second_switched.yfilter)
+	|| ydk::is_set(transmit_packets_per_second_switched.yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_segment_path() const
@@ -1964,8 +2410,8 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Pref
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.operation)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
-    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.operation)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
+    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
+    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2005,16 +2451,39 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transmit-bytes-per-second-switched")
     {
         transmit_bytes_per_second_switched = value;
+        transmit_bytes_per_second_switched.value_namespace = name_space;
+        transmit_bytes_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-packets-per-second-switched")
     {
         transmit_packets_per_second_switched = value;
+        transmit_packets_per_second_switched.value_namespace = name_space;
+        transmit_packets_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transmit-bytes-per-second-switched")
+    {
+        transmit_bytes_per_second_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-packets-per-second-switched")
+    {
+        transmit_packets_per_second_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count-history" || name == "transmit-bytes-per-second-switched" || name == "transmit-packets-per-second-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::CountHistory()
@@ -2043,12 +2512,12 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_end_timestamp.operation)
-	|| is_set(event_start_timestamp.operation)
-	|| is_set(is_valid.operation)
-	|| is_set(transmit_number_of_bytes_switched.operation)
-	|| is_set(transmit_number_of_packets_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_end_timestamp.yfilter)
+	|| ydk::is_set(event_start_timestamp.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(transmit_number_of_bytes_switched.yfilter)
+	|| ydk::is_set(transmit_number_of_packets_switched.yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_segment_path() const
@@ -2074,11 +2543,11 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Pref
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_end_timestamp.is_set || is_set(event_end_timestamp.operation)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
-    if (event_start_timestamp.is_set || is_set(event_start_timestamp.operation)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
-    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.operation)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
-    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.operation)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
+    if (event_end_timestamp.is_set || is_set(event_end_timestamp.yfilter)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
+    if (event_start_timestamp.is_set || is_set(event_start_timestamp.yfilter)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
+    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2097,28 +2566,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-end-timestamp")
     {
         event_end_timestamp = value;
+        event_end_timestamp.value_namespace = name_space;
+        event_end_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-start-timestamp")
     {
         event_start_timestamp = value;
+        event_start_timestamp.value_namespace = name_space;
+        event_start_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-bytes-switched")
     {
         transmit_number_of_bytes_switched = value;
+        transmit_number_of_bytes_switched.value_namespace = name_space;
+        transmit_number_of_bytes_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-packets-switched")
     {
         transmit_number_of_packets_switched = value;
+        transmit_number_of_packets_switched.value_namespace = name_space;
+        transmit_number_of_packets_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-end-timestamp")
+    {
+        event_end_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "event-start-timestamp")
+    {
+        event_start_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-bytes-switched")
+    {
+        transmit_number_of_bytes_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-packets-switched")
+    {
+        transmit_number_of_packets_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-end-timestamp" || name == "event-start-timestamp" || name == "is-valid" || name == "transmit-number-of-bytes-switched" || name == "transmit-number-of-packets-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::TrafficMatrixCounterStatistics()
@@ -2151,9 +2661,9 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
         if(count_history[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(transmit_bytes_per_second_switched.operation)
-	|| is_set(transmit_packets_per_second_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transmit_bytes_per_second_switched.yfilter)
+	|| ydk::is_set(transmit_packets_per_second_switched.yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_segment_path() const
@@ -2179,8 +2689,8 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Pref
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.operation)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
-    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.operation)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
+    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
+    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2220,16 +2730,39 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transmit-bytes-per-second-switched")
     {
         transmit_bytes_per_second_switched = value;
+        transmit_bytes_per_second_switched.value_namespace = name_space;
+        transmit_bytes_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-packets-per-second-switched")
     {
         transmit_packets_per_second_switched = value;
+        transmit_packets_per_second_switched.value_namespace = name_space;
+        transmit_packets_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transmit-bytes-per-second-switched")
+    {
+        transmit_bytes_per_second_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-packets-per-second-switched")
+    {
+        transmit_packets_per_second_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count-history" || name == "transmit-bytes-per-second-switched" || name == "transmit-packets-per-second-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::CountHistory()
@@ -2258,12 +2791,12 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_end_timestamp.operation)
-	|| is_set(event_start_timestamp.operation)
-	|| is_set(is_valid.operation)
-	|| is_set(transmit_number_of_bytes_switched.operation)
-	|| is_set(transmit_number_of_packets_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_end_timestamp.yfilter)
+	|| ydk::is_set(event_start_timestamp.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(transmit_number_of_bytes_switched.yfilter)
+	|| ydk::is_set(transmit_number_of_packets_switched.yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_segment_path() const
@@ -2289,11 +2822,11 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Pref
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_end_timestamp.is_set || is_set(event_end_timestamp.operation)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
-    if (event_start_timestamp.is_set || is_set(event_start_timestamp.operation)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
-    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.operation)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
-    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.operation)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
+    if (event_end_timestamp.is_set || is_set(event_end_timestamp.yfilter)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
+    if (event_start_timestamp.is_set || is_set(event_start_timestamp.yfilter)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
+    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2312,28 +2845,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-end-timestamp")
     {
         event_end_timestamp = value;
+        event_end_timestamp.value_namespace = name_space;
+        event_end_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-start-timestamp")
     {
         event_start_timestamp = value;
+        event_start_timestamp.value_namespace = name_space;
+        event_start_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-bytes-switched")
     {
         transmit_number_of_bytes_switched = value;
+        transmit_number_of_bytes_switched.value_namespace = name_space;
+        transmit_number_of_bytes_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-packets-switched")
     {
         transmit_number_of_packets_switched = value;
+        transmit_number_of_packets_switched.value_namespace = name_space;
+        transmit_number_of_packets_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-end-timestamp")
+    {
+        event_end_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "event-start-timestamp")
+    {
+        event_start_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-bytes-switched")
+    {
+        transmit_number_of_bytes_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-packets-switched")
+    {
+        transmit_number_of_packets_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-end-timestamp" || name == "event-start-timestamp" || name == "is-valid" || name == "transmit-number-of-bytes-switched" || name == "transmit-number-of-packets-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnels()
@@ -2362,7 +2936,7 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::has_ope
         if(tunnel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::get_segment_path() const
@@ -2427,8 +3001,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::Tunnel()
@@ -2462,12 +3047,12 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel:
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(is_active.operation)
-	|| is_set(vrfid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(vrfid.yfilter)
 	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation());
 }
 
@@ -2494,11 +3079,11 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunn
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (vrfid.is_set || is_set(vrfid.operation)) leaf_name_data.push_back(vrfid.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (vrfid.is_set || is_set(vrfid.yfilter)) leaf_name_data.push_back(vrfid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2531,28 +3116,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrfid")
     {
         vrfid = value;
+        vrfid.value_namespace = name_space;
+        vrfid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "vrfid")
+    {
+        vrfid.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base-counter-statistics" || name == "interface-name" || name == "interface-handle" || name == "interface-name-xr" || name == "is-active" || name == "vrfid")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::BaseCounterStatistics()
@@ -2585,9 +3211,9 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel:
         if(count_history[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(transmit_bytes_per_second_switched.operation)
-	|| is_set(transmit_packets_per_second_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transmit_bytes_per_second_switched.yfilter)
+	|| ydk::is_set(transmit_packets_per_second_switched.yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_segment_path() const
@@ -2613,8 +3239,8 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunn
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.operation)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
-    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.operation)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
+    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
+    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2654,16 +3280,39 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transmit-bytes-per-second-switched")
     {
         transmit_bytes_per_second_switched = value;
+        transmit_bytes_per_second_switched.value_namespace = name_space;
+        transmit_bytes_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-packets-per-second-switched")
     {
         transmit_packets_per_second_switched = value;
+        transmit_packets_per_second_switched.value_namespace = name_space;
+        transmit_packets_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transmit-bytes-per-second-switched")
+    {
+        transmit_bytes_per_second_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-packets-per-second-switched")
+    {
+        transmit_packets_per_second_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count-history" || name == "transmit-bytes-per-second-switched" || name == "transmit-packets-per-second-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::CountHistory()
@@ -2692,12 +3341,12 @@ bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel:
 
 bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_end_timestamp.operation)
-	|| is_set(event_start_timestamp.operation)
-	|| is_set(is_valid.operation)
-	|| is_set(transmit_number_of_bytes_switched.operation)
-	|| is_set(transmit_number_of_packets_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_end_timestamp.yfilter)
+	|| ydk::is_set(event_start_timestamp.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(transmit_number_of_bytes_switched.yfilter)
+	|| ydk::is_set(transmit_number_of_packets_switched.yfilter);
 }
 
 std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_segment_path() const
@@ -2723,11 +3372,11 @@ const EntityPath TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunn
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_end_timestamp.is_set || is_set(event_end_timestamp.operation)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
-    if (event_start_timestamp.is_set || is_set(event_start_timestamp.operation)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
-    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.operation)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
-    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.operation)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
+    if (event_end_timestamp.is_set || is_set(event_end_timestamp.yfilter)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
+    if (event_start_timestamp.is_set || is_set(event_start_timestamp.yfilter)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
+    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2746,28 +3395,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::VrfTable::Defau
     return children;
 }
 
-void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-end-timestamp")
     {
         event_end_timestamp = value;
+        event_end_timestamp.value_namespace = name_space;
+        event_end_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-start-timestamp")
     {
         event_start_timestamp = value;
+        event_start_timestamp.value_namespace = name_space;
+        event_start_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-bytes-switched")
     {
         transmit_number_of_bytes_switched = value;
+        transmit_number_of_bytes_switched.value_namespace = name_space;
+        transmit_number_of_bytes_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-packets-switched")
     {
         transmit_number_of_packets_switched = value;
+        transmit_number_of_packets_switched.value_namespace = name_space;
+        transmit_number_of_packets_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-end-timestamp")
+    {
+        event_end_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "event-start-timestamp")
+    {
+        event_start_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-bytes-switched")
+    {
+        transmit_number_of_bytes_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-packets-switched")
+    {
+        transmit_number_of_packets_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-end-timestamp" || name == "event-start-timestamp" || name == "is-valid" || name == "transmit-number-of-bytes-switched" || name == "transmit-number-of-packets-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Afs()
@@ -2796,7 +3486,7 @@ bool TrafficCollector::Afs::has_operation() const
         if(af[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TrafficCollector::Afs::get_segment_path() const
@@ -2861,8 +3551,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::get_childr
     return children;
 }
 
-void TrafficCollector::Afs::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::Afs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::Afs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Af()
@@ -2888,8 +3589,8 @@ bool TrafficCollector::Afs::Af::has_data() const
 
 bool TrafficCollector::Afs::Af::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
 	|| (counters !=  nullptr && counters->has_operation());
 }
 
@@ -2916,7 +3617,7 @@ const EntityPath TrafficCollector::Afs::Af::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2949,12 +3650,29 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::get_ch
     return children;
 }
 
-void TrafficCollector::Afs::Af::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Afs::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters" || name == "af-name")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Counters()
@@ -2981,7 +3699,7 @@ bool TrafficCollector::Afs::Af::Counters::has_data() const
 
 bool TrafficCollector::Afs::Af::Counters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (prefixes !=  nullptr && prefixes->has_operation())
 	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
@@ -3055,8 +3773,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::Afs::Af::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::Afs::Af::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefixes" || name == "tunnels")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefixes()
@@ -3085,7 +3814,7 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::has_operation() const
         if(prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Prefixes::get_segment_path() const
@@ -3150,8 +3879,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Prefixes::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::Afs::Af::Counters::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::Afs::Af::Counters::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::Prefix()
@@ -3191,13 +3931,13 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::has_data() const
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipaddr.operation)
-	|| is_set(is_active.operation)
-	|| is_set(label.operation)
-	|| is_set(label_xr.operation)
-	|| is_set(mask.operation)
-	|| is_set(prefix.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ipaddr.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(label_xr.yfilter)
+	|| ydk::is_set(mask.yfilter)
+	|| ydk::is_set(prefix.yfilter)
 	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation())
 	|| (traffic_matrix_counter_statistics !=  nullptr && traffic_matrix_counter_statistics->has_operation());
 }
@@ -3225,12 +3965,12 @@ const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipaddr.is_set || is_set(ipaddr.operation)) leaf_name_data.push_back(ipaddr.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (label.is_set || is_set(label.operation)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (label_xr.is_set || is_set(label_xr.operation)) leaf_name_data.push_back(label_xr.get_name_leafdata());
-    if (mask.is_set || is_set(mask.operation)) leaf_name_data.push_back(mask.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (ipaddr.is_set || is_set(ipaddr.yfilter)) leaf_name_data.push_back(ipaddr.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (label_xr.is_set || is_set(label_xr.yfilter)) leaf_name_data.push_back(label_xr.get_name_leafdata());
+    if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3277,32 +4017,79 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipaddr")
     {
         ipaddr = value;
+        ipaddr.value_namespace = name_space;
+        ipaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
         label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-xr")
     {
         label_xr = value;
+        label_xr.value_namespace = name_space;
+        label_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask")
     {
         mask = value;
+        mask.value_namespace = name_space;
+        mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipaddr")
+    {
+        ipaddr.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "label-xr")
+    {
+        label_xr.yfilter = yfilter;
+    }
+    if(value_path == "mask")
+    {
+        mask.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base-counter-statistics" || name == "traffic-matrix-counter-statistics" || name == "ipaddr" || name == "is-active" || name == "label" || name == "label-xr" || name == "mask" || name == "prefix")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::BaseCounterStatistics()
@@ -3335,9 +4122,9 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistic
         if(count_history[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(transmit_bytes_per_second_switched.operation)
-	|| is_set(transmit_packets_per_second_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transmit_bytes_per_second_switched.yfilter)
+	|| ydk::is_set(transmit_packets_per_second_switched.yfilter);
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::get_segment_path() const
@@ -3363,8 +4150,8 @@ const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCoun
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.operation)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
-    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.operation)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
+    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
+    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3404,16 +4191,39 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transmit-bytes-per-second-switched")
     {
         transmit_bytes_per_second_switched = value;
+        transmit_bytes_per_second_switched.value_namespace = name_space;
+        transmit_bytes_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-packets-per-second-switched")
     {
         transmit_packets_per_second_switched = value;
+        transmit_packets_per_second_switched.value_namespace = name_space;
+        transmit_packets_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transmit-bytes-per-second-switched")
+    {
+        transmit_bytes_per_second_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-packets-per-second-switched")
+    {
+        transmit_packets_per_second_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count-history" || name == "transmit-bytes-per-second-switched" || name == "transmit-packets-per-second-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::CountHistory()
@@ -3442,12 +4252,12 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistic
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_end_timestamp.operation)
-	|| is_set(event_start_timestamp.operation)
-	|| is_set(is_valid.operation)
-	|| is_set(transmit_number_of_bytes_switched.operation)
-	|| is_set(transmit_number_of_packets_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_end_timestamp.yfilter)
+	|| ydk::is_set(event_start_timestamp.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(transmit_number_of_bytes_switched.yfilter)
+	|| ydk::is_set(transmit_number_of_packets_switched.yfilter);
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::get_segment_path() const
@@ -3473,11 +4283,11 @@ const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCoun
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_end_timestamp.is_set || is_set(event_end_timestamp.operation)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
-    if (event_start_timestamp.is_set || is_set(event_start_timestamp.operation)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
-    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.operation)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
-    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.operation)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
+    if (event_end_timestamp.is_set || is_set(event_end_timestamp.yfilter)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
+    if (event_start_timestamp.is_set || is_set(event_start_timestamp.yfilter)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
+    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3496,28 +4306,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-end-timestamp")
     {
         event_end_timestamp = value;
+        event_end_timestamp.value_namespace = name_space;
+        event_end_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-start-timestamp")
     {
         event_start_timestamp = value;
+        event_start_timestamp.value_namespace = name_space;
+        event_start_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-bytes-switched")
     {
         transmit_number_of_bytes_switched = value;
+        transmit_number_of_bytes_switched.value_namespace = name_space;
+        transmit_number_of_bytes_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-packets-switched")
     {
         transmit_number_of_packets_switched = value;
+        transmit_number_of_packets_switched.value_namespace = name_space;
+        transmit_number_of_packets_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-end-timestamp")
+    {
+        event_end_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "event-start-timestamp")
+    {
+        event_start_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-bytes-switched")
+    {
+        transmit_number_of_bytes_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-packets-switched")
+    {
+        transmit_number_of_packets_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterStatistics::CountHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-end-timestamp" || name == "event-start-timestamp" || name == "is-valid" || name == "transmit-number-of-bytes-switched" || name == "transmit-number-of-packets-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::TrafficMatrixCounterStatistics()
@@ -3550,9 +4401,9 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounter
         if(count_history[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(transmit_bytes_per_second_switched.operation)
-	|| is_set(transmit_packets_per_second_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transmit_bytes_per_second_switched.yfilter)
+	|| ydk::is_set(transmit_packets_per_second_switched.yfilter);
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::get_segment_path() const
@@ -3578,8 +4429,8 @@ const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.operation)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
-    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.operation)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
+    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
+    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3619,16 +4470,39 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transmit-bytes-per-second-switched")
     {
         transmit_bytes_per_second_switched = value;
+        transmit_bytes_per_second_switched.value_namespace = name_space;
+        transmit_bytes_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-packets-per-second-switched")
     {
         transmit_packets_per_second_switched = value;
+        transmit_packets_per_second_switched.value_namespace = name_space;
+        transmit_packets_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transmit-bytes-per-second-switched")
+    {
+        transmit_bytes_per_second_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-packets-per-second-switched")
+    {
+        transmit_packets_per_second_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count-history" || name == "transmit-bytes-per-second-switched" || name == "transmit-packets-per-second-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::CountHistory()
@@ -3657,12 +4531,12 @@ bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounter
 
 bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_end_timestamp.operation)
-	|| is_set(event_start_timestamp.operation)
-	|| is_set(is_valid.operation)
-	|| is_set(transmit_number_of_bytes_switched.operation)
-	|| is_set(transmit_number_of_packets_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_end_timestamp.yfilter)
+	|| ydk::is_set(event_start_timestamp.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(transmit_number_of_bytes_switched.yfilter)
+	|| ydk::is_set(transmit_number_of_packets_switched.yfilter);
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::get_segment_path() const
@@ -3688,11 +4562,11 @@ const EntityPath TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_end_timestamp.is_set || is_set(event_end_timestamp.operation)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
-    if (event_start_timestamp.is_set || is_set(event_start_timestamp.operation)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
-    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.operation)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
-    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.operation)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
+    if (event_end_timestamp.is_set || is_set(event_end_timestamp.yfilter)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
+    if (event_start_timestamp.is_set || is_set(event_start_timestamp.yfilter)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
+    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3711,28 +4585,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-end-timestamp")
     {
         event_end_timestamp = value;
+        event_end_timestamp.value_namespace = name_space;
+        event_end_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-start-timestamp")
     {
         event_start_timestamp = value;
+        event_start_timestamp.value_namespace = name_space;
+        event_start_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-bytes-switched")
     {
         transmit_number_of_bytes_switched = value;
+        transmit_number_of_bytes_switched.value_namespace = name_space;
+        transmit_number_of_bytes_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-packets-switched")
     {
         transmit_number_of_packets_switched = value;
+        transmit_number_of_packets_switched.value_namespace = name_space;
+        transmit_number_of_packets_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-end-timestamp")
+    {
+        event_end_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "event-start-timestamp")
+    {
+        event_start_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-bytes-switched")
+    {
+        transmit_number_of_bytes_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-packets-switched")
+    {
+        transmit_number_of_packets_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrixCounterStatistics::CountHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-end-timestamp" || name == "event-start-timestamp" || name == "is-valid" || name == "transmit-number-of-bytes-switched" || name == "transmit-number-of-packets-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::Tunnels()
@@ -3761,7 +4676,7 @@ bool TrafficCollector::Afs::Af::Counters::Tunnels::has_operation() const
         if(tunnel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Tunnels::get_segment_path() const
@@ -3826,8 +4741,19 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Tunnels::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TrafficCollector::Afs::Af::Counters::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TrafficCollector::Afs::Af::Counters::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::Tunnel()
@@ -3861,12 +4787,12 @@ bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::has_data() const
 
 bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(is_active.operation)
-	|| is_set(vrfid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(vrfid.yfilter)
 	|| (base_counter_statistics !=  nullptr && base_counter_statistics->has_operation());
 }
 
@@ -3893,11 +4819,11 @@ const EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (vrfid.is_set || is_set(vrfid.operation)) leaf_name_data.push_back(vrfid.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (vrfid.is_set || is_set(vrfid.yfilter)) leaf_name_data.push_back(vrfid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3930,28 +4856,69 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrfid")
     {
         vrfid = value;
+        vrfid.value_namespace = name_space;
+        vrfid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "vrfid")
+    {
+        vrfid.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base-counter-statistics" || name == "interface-name" || name == "interface-handle" || name == "interface-name-xr" || name == "is-active" || name == "vrfid")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::BaseCounterStatistics()
@@ -3984,9 +4951,9 @@ bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
         if(count_history[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(transmit_bytes_per_second_switched.operation)
-	|| is_set(transmit_packets_per_second_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transmit_bytes_per_second_switched.yfilter)
+	|| ydk::is_set(transmit_packets_per_second_switched.yfilter);
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::get_segment_path() const
@@ -4012,8 +4979,8 @@ const EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCount
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.operation)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
-    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.operation)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
+    if (transmit_bytes_per_second_switched.is_set || is_set(transmit_bytes_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_bytes_per_second_switched.get_name_leafdata());
+    if (transmit_packets_per_second_switched.is_set || is_set(transmit_packets_per_second_switched.yfilter)) leaf_name_data.push_back(transmit_packets_per_second_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4053,16 +5020,39 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transmit-bytes-per-second-switched")
     {
         transmit_bytes_per_second_switched = value;
+        transmit_bytes_per_second_switched.value_namespace = name_space;
+        transmit_bytes_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-packets-per-second-switched")
     {
         transmit_packets_per_second_switched = value;
+        transmit_packets_per_second_switched.value_namespace = name_space;
+        transmit_packets_per_second_switched.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transmit-bytes-per-second-switched")
+    {
+        transmit_bytes_per_second_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-packets-per-second-switched")
+    {
+        transmit_packets_per_second_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count-history" || name == "transmit-bytes-per-second-switched" || name == "transmit-packets-per-second-switched")
+        return true;
+    return false;
 }
 
 TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::CountHistory()
@@ -4091,12 +5081,12 @@ bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics
 
 bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_end_timestamp.operation)
-	|| is_set(event_start_timestamp.operation)
-	|| is_set(is_valid.operation)
-	|| is_set(transmit_number_of_bytes_switched.operation)
-	|| is_set(transmit_number_of_packets_switched.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_end_timestamp.yfilter)
+	|| ydk::is_set(event_start_timestamp.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
+	|| ydk::is_set(transmit_number_of_bytes_switched.yfilter)
+	|| ydk::is_set(transmit_number_of_packets_switched.yfilter);
 }
 
 std::string TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::get_segment_path() const
@@ -4122,11 +5112,11 @@ const EntityPath TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCount
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_end_timestamp.is_set || is_set(event_end_timestamp.operation)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
-    if (event_start_timestamp.is_set || is_set(event_start_timestamp.operation)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
-    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.operation)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
-    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.operation)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
+    if (event_end_timestamp.is_set || is_set(event_end_timestamp.yfilter)) leaf_name_data.push_back(event_end_timestamp.get_name_leafdata());
+    if (event_start_timestamp.is_set || is_set(event_start_timestamp.yfilter)) leaf_name_data.push_back(event_start_timestamp.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (transmit_number_of_bytes_switched.is_set || is_set(transmit_number_of_bytes_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_bytes_switched.get_name_leafdata());
+    if (transmit_number_of_packets_switched.is_set || is_set(transmit_number_of_packets_switched.yfilter)) leaf_name_data.push_back(transmit_number_of_packets_switched.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4145,32 +5135,73 @@ std::map<std::string, std::shared_ptr<Entity>> TrafficCollector::Afs::Af::Counte
     return children;
 }
 
-void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::set_value(const std::string & value_path, std::string value)
+void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-end-timestamp")
     {
         event_end_timestamp = value;
+        event_end_timestamp.value_namespace = name_space;
+        event_end_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-start-timestamp")
     {
         event_start_timestamp = value;
+        event_start_timestamp.value_namespace = name_space;
+        event_start_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-bytes-switched")
     {
         transmit_number_of_bytes_switched = value;
+        transmit_number_of_bytes_switched.value_namespace = name_space;
+        transmit_number_of_bytes_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transmit-number-of-packets-switched")
     {
         transmit_number_of_packets_switched = value;
+        transmit_number_of_packets_switched.value_namespace = name_space;
+        transmit_number_of_packets_switched.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf TcOperAfNameEnum::ipv4 {0, "ipv4"};
-const Enum::YLeaf TcOperAfNameEnum::ipv6 {1, "ipv6"};
+void TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-end-timestamp")
+    {
+        event_end_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "event-start-timestamp")
+    {
+        event_start_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-bytes-switched")
+    {
+        transmit_number_of_bytes_switched.yfilter = yfilter;
+    }
+    if(value_path == "transmit-number-of-packets-switched")
+    {
+        transmit_number_of_packets_switched.yfilter = yfilter;
+    }
+}
+
+bool TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterStatistics::CountHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-end-timestamp" || name == "event-start-timestamp" || name == "is-valid" || name == "transmit-number-of-bytes-switched" || name == "transmit-number-of-packets-switched")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf TcOperAfName::ipv4 {0, "ipv4"};
+const Enum::YLeaf TcOperAfName::ipv6 {1, "ipv6"};
 
 
 }

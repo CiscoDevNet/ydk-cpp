@@ -29,30 +29,44 @@
 ///////////////////////////////////////////////////////////////////////////////
 // class ydk::RootDataImpl
 //////////////////////////////////////////////////////////////////////////
-ydk::path::RootDataImpl::RootDataImpl(const SchemaNode& schema, struct ly_ctx* ctx, const std::string path) : DataNodeImpl{nullptr, nullptr}, m_schema{schema}, m_ctx{ctx}, m_path{path}
+ydk::path::RootDataImpl::RootDataImpl(const SchemaNode& schema, struct ly_ctx* ctx, const std::string & path) : DataNodeImpl{nullptr, nullptr, nullptr}, m_schema{schema}, m_ctx{ctx}, m_path{path}
+{
+}
+
+ydk::path::RootDataImpl::RootDataImpl(const SchemaNode& schema, struct ly_ctx* ctx, const std::string & path, const std::shared_ptr<RepositoryPtr> & repo) : DataNodeImpl{nullptr, nullptr, repo}, m_schema{schema}, m_ctx{ctx}, m_path{path}, m_priv_repo{repo}
 {
 }
 
 ydk::path::RootDataImpl::~RootDataImpl()
 {
-    m_node = nullptr;
 }
 
 const ydk::path::SchemaNode&
-ydk::path::RootDataImpl::schema() const
+ydk::path::RootDataImpl::get_schema_node() const
 {
     return m_schema;
 }
 
 std::string
-ydk::path::RootDataImpl::path() const
+ydk::path::RootDataImpl::get_path() const
 {
-    return m_schema.path();
+    return m_schema.get_path();
+}
+
+void
+ydk::path::RootDataImpl::populate_new_schemas_from_path(const std::string& path)
+{
+    auto csnode = const_cast<SchemaNode*>(&m_schema);
+    auto snode = reinterpret_cast<SchemaNodeImpl*>(csnode);
+    snode->populate_new_schemas_from_path(path);
 }
 
 ydk::path::DataNode&
-ydk::path::RootDataImpl::create(const std::string& path, const std::string& value)
+ydk::path::RootDataImpl::create_datanode(const std::string& path, const std::string& value)
 {
+    populate_new_schemas_from_path(path);
+    populate_new_schemas_from_path(value);
+
     if(path.empty())
     {
         YLOG_ERROR("Path is empty");
@@ -62,14 +76,14 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
     //path should not start with /
     if(path.at(0) == '/')
     {
-        YLOG_ERROR("Path {} starts with /", path);
+        YLOG_ERROR("Path '{}' starts with /", path);
         throw(YCPPInvalidArgumentError{"Path starts with /"});
     }
     std::vector<std::string> segments = segmentalize(path);
     if(segments.size()<=0)
     {
-		YLOG_ERROR("Could not segmentalize");
-		throw(YCPPInvalidArgumentError{"Could not segmentalize"});
+        YLOG_ERROR("Could not segmentalize");
+        throw(YCPPInvalidArgumentError{"Could not segmentalize"});
     }
 
     std::string start_seg = m_path + segments[0];
@@ -79,7 +93,7 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
 
     if( dnode == nullptr)
     {
-        YLOG_ERROR("Path {} is invalid", path);
+        YLOG_ERROR("Path '{}' is invalid", path);
         throw(YCPPInvalidArgumentError{"Path is invalid: " + path});
     }
 
@@ -87,7 +101,7 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
     if(m_node == nullptr)
     {
         m_node = dnode;
-        child_map.insert(std::make_pair(m_node, std::make_shared<DataNodeImpl>(this, m_node)));
+        child_map.insert(std::make_pair(m_node, std::make_shared<DataNodeImpl>(this, m_node, m_priv_repo)));
         dn = dynamic_cast<DataNodeImpl*>(child_map[m_node].get());
     }
     else
@@ -101,7 +115,7 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
         }
         else
         {
-            child_map.insert(std::make_pair(m_node, std::make_shared<DataNodeImpl>(this, m_node)));
+            child_map.insert(std::make_pair(m_node, std::make_shared<DataNodeImpl>(this, m_node, m_priv_repo)));
             dn = dynamic_cast<DataNodeImpl*>(child_map[m_node].get());
         }
 
@@ -109,9 +123,9 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
 
     DataNode* rdn = dn;
     // created data node is the last child
-    while(!rdn->children().empty())
+    while(!rdn->get_children().empty())
     {
-        rdn = rdn->children()[0].get();
+        rdn = rdn->get_children()[0].get();
     }
 
     //at this stage we have dn so for the remaining segments use dn as the parent
@@ -127,7 +141,7 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
             remaining_path+=segments[i];
         }
 
-        rdn = &(rdn->create(remaining_path));
+        rdn = &(rdn->create_datanode(remaining_path));
     }
 
 
@@ -136,7 +150,7 @@ ydk::path::RootDataImpl::create(const std::string& path, const std::string& valu
  }
 
 void
-ydk::path::RootDataImpl::set(const std::string& value)
+ydk::path::RootDataImpl::set_value(const std::string& value)
 {
     if(!value.empty()) {
         YLOG_ERROR("Invalid value being assigned to root");
@@ -145,14 +159,14 @@ ydk::path::RootDataImpl::set(const std::string& value)
 }
 
 std::string
-ydk::path::RootDataImpl::get() const
+ydk::path::RootDataImpl::get_value() const
 {
     return "";
 }
 
 
 std::vector<std::shared_ptr<ydk::path::DataNode>>
-ydk::path::RootDataImpl::children() const
+ydk::path::RootDataImpl::get_children() const
 {
     std::vector<std::shared_ptr<DataNode>> ret{};
 
@@ -174,14 +188,16 @@ ydk::path::RootDataImpl::children() const
 }
 
 const ydk::path::DataNode&
-ydk::path::RootDataImpl::root() const
+ydk::path::RootDataImpl::get_root() const
 {
     return *this;
 }
 
 std::vector<std::shared_ptr<ydk::path::DataNode>>
-ydk::path::RootDataImpl::find(const std::string& path) const
+ydk::path::RootDataImpl::find(const std::string& path)
 {
+    populate_new_schemas_from_path(path);
+
     std::vector<std::shared_ptr<DataNode>> results;
 
     if(m_node == nullptr)
@@ -189,14 +205,13 @@ ydk::path::RootDataImpl::find(const std::string& path) const
         return results;
     }
 
-    std::string schema_path{ this->path() };
+    std::string schema_path{ this->get_path() };
     if(schema_path.size()!= 1)
     {
         schema_path+="/";
     }
 
-    auto s = schema().
-    statement();
+    auto s = get_schema_node().get_statement();
     if(s.keyword == "rpc")
     {
         schema_path+="input/";

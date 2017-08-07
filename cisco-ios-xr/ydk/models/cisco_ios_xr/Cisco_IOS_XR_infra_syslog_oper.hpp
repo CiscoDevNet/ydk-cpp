@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_syslog_oper {
 
-class Logging : public Entity
+class Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -18,15 +18,18 @@ class Logging : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class History; //type: Logging::History
 
@@ -35,7 +38,7 @@ class Logging : public Entity
 }; // Logging
 
 
-class Logging::History : public Entity
+class Logging::History : public ydk::Entity
 {
     public:
         History();
@@ -43,18 +46,20 @@ class Logging::History : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf properties; //type: string
-        YLeaf message; //type: string
+        ydk::YLeaf properties; //type: string
+        ydk::YLeaf message; //type: string
 
 }; // Logging::History
 
-class Syslog : public Entity
+class Syslog : public ydk::Entity
 {
     public:
         Syslog();
@@ -62,15 +67,18 @@ class Syslog : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class LoggingFiles; //type: Syslog::LoggingFiles
         class AnRemoteServers; //type: Syslog::AnRemoteServers
@@ -85,7 +93,7 @@ class Syslog : public Entity
 }; // Syslog
 
 
-class Syslog::LoggingFiles : public Entity
+class Syslog::LoggingFiles : public ydk::Entity
 {
     public:
         LoggingFiles();
@@ -93,11 +101,13 @@ class Syslog::LoggingFiles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FileLogDetail; //type: Syslog::LoggingFiles::FileLogDetail
 
@@ -106,7 +116,7 @@ class Syslog::LoggingFiles : public Entity
 }; // Syslog::LoggingFiles
 
 
-class Syslog::LoggingFiles::FileLogDetail : public Entity
+class Syslog::LoggingFiles::FileLogDetail : public ydk::Entity
 {
     public:
         FileLogDetail();
@@ -114,19 +124,21 @@ class Syslog::LoggingFiles::FileLogDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf file_path; //type: string
-        YLeaf file_name; //type: string
+        ydk::YLeaf file_path; //type: string
+        ydk::YLeaf file_name; //type: string
 
 }; // Syslog::LoggingFiles::FileLogDetail
 
 
-class Syslog::AnRemoteServers : public Entity
+class Syslog::AnRemoteServers : public ydk::Entity
 {
     public:
         AnRemoteServers();
@@ -134,11 +146,13 @@ class Syslog::AnRemoteServers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AnRemoteLogServer; //type: Syslog::AnRemoteServers::AnRemoteLogServer
 
@@ -147,7 +161,7 @@ class Syslog::AnRemoteServers : public Entity
 }; // Syslog::AnRemoteServers
 
 
-class Syslog::AnRemoteServers::AnRemoteLogServer : public Entity
+class Syslog::AnRemoteServers::AnRemoteLogServer : public ydk::Entity
 {
     public:
         AnRemoteLogServer();
@@ -155,21 +169,23 @@ class Syslog::AnRemoteServers::AnRemoteLogServer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_address; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf vrf_severity; //type: string
-        YLeaf rh_discriminator; //type: string
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_severity; //type: string
+        ydk::YLeaf rh_discriminator; //type: string
 
 }; // Syslog::AnRemoteServers::AnRemoteLogServer
 
 
-class Syslog::Messages : public Entity
+class Syslog::Messages : public ydk::Entity
 {
     public:
         Messages();
@@ -177,11 +193,13 @@ class Syslog::Messages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Message; //type: Syslog::Messages::Message
 
@@ -190,7 +208,7 @@ class Syslog::Messages : public Entity
 }; // Syslog::Messages
 
 
-class Syslog::Messages::Message : public Entity
+class Syslog::Messages::Message : public ydk::Entity
 {
     public:
         Message();
@@ -198,29 +216,31 @@ class Syslog::Messages::Message : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf message_id; //type: int32
-        YLeaf card_type; //type: string
-        YLeaf node_name; //type: string
-        YLeaf time_stamp; //type: uint64
-        YLeaf time_of_day; //type: string
-        YLeaf time_zone; //type: string
-        YLeaf process_name; //type: string
-        YLeaf category; //type: string
-        YLeaf group; //type: string
-        YLeaf message_name; //type: string
-        YLeaf severity; //type: SystemMessageSeverityEnum
-        YLeaf text; //type: string
+        ydk::YLeaf message_id; //type: int32
+        ydk::YLeaf card_type; //type: string
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf time_stamp; //type: uint64
+        ydk::YLeaf time_of_day; //type: string
+        ydk::YLeaf time_zone; //type: string
+        ydk::YLeaf process_name; //type: string
+        ydk::YLeaf category; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf message_name; //type: string
+        ydk::YLeaf severity; //type: SystemMessageSeverity
+        ydk::YLeaf text; //type: string
 
 }; // Syslog::Messages::Message
 
 
-class Syslog::LoggingStatistics : public Entity
+class Syslog::LoggingStatistics : public ydk::Entity
 {
     public:
         LoggingStatistics();
@@ -228,11 +248,13 @@ class Syslog::LoggingStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LoggingStats; //type: Syslog::LoggingStatistics::LoggingStats
         class ConsoleLoggingStats; //type: Syslog::LoggingStatistics::ConsoleLoggingStats
@@ -255,7 +277,7 @@ class Syslog::LoggingStatistics : public Entity
 }; // Syslog::LoggingStatistics
 
 
-class Syslog::LoggingStatistics::LoggingStats : public Entity
+class Syslog::LoggingStatistics::LoggingStats : public ydk::Entity
 {
     public:
         LoggingStats();
@@ -263,21 +285,23 @@ class Syslog::LoggingStatistics::LoggingStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_log_enabled; //type: boolean
-        YLeaf drop_count; //type: uint32
-        YLeaf flush_count; //type: uint32
-        YLeaf overrun_count; //type: uint32
+        ydk::YLeaf is_log_enabled; //type: boolean
+        ydk::YLeaf drop_count; //type: uint32
+        ydk::YLeaf flush_count; //type: uint32
+        ydk::YLeaf overrun_count; //type: uint32
 
 }; // Syslog::LoggingStatistics::LoggingStats
 
 
-class Syslog::LoggingStatistics::ConsoleLoggingStats : public Entity
+class Syslog::LoggingStatistics::ConsoleLoggingStats : public ydk::Entity
 {
     public:
         ConsoleLoggingStats();
@@ -285,21 +309,23 @@ class Syslog::LoggingStatistics::ConsoleLoggingStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_log_enabled; //type: boolean
-        YLeaf severity; //type: SystemMessageSeverityEnum
-        YLeaf message_count; //type: uint32
-        YLeaf buffer_size; //type: uint32
+        ydk::YLeaf is_log_enabled; //type: boolean
+        ydk::YLeaf severity; //type: SystemMessageSeverity
+        ydk::YLeaf message_count; //type: uint32
+        ydk::YLeaf buffer_size; //type: uint32
 
 }; // Syslog::LoggingStatistics::ConsoleLoggingStats
 
 
-class Syslog::LoggingStatistics::MonitorLoggingStats : public Entity
+class Syslog::LoggingStatistics::MonitorLoggingStats : public ydk::Entity
 {
     public:
         MonitorLoggingStats();
@@ -307,21 +333,23 @@ class Syslog::LoggingStatistics::MonitorLoggingStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_log_enabled; //type: boolean
-        YLeaf severity; //type: SystemMessageSeverityEnum
-        YLeaf message_count; //type: uint32
-        YLeaf buffer_size; //type: uint32
+        ydk::YLeaf is_log_enabled; //type: boolean
+        ydk::YLeaf severity; //type: SystemMessageSeverity
+        ydk::YLeaf message_count; //type: uint32
+        ydk::YLeaf buffer_size; //type: uint32
 
 }; // Syslog::LoggingStatistics::MonitorLoggingStats
 
 
-class Syslog::LoggingStatistics::TrapLoggingStats : public Entity
+class Syslog::LoggingStatistics::TrapLoggingStats : public ydk::Entity
 {
     public:
         TrapLoggingStats();
@@ -329,21 +357,23 @@ class Syslog::LoggingStatistics::TrapLoggingStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_log_enabled; //type: boolean
-        YLeaf severity; //type: SystemMessageSeverityEnum
-        YLeaf message_count; //type: uint32
-        YLeaf buffer_size; //type: uint32
+        ydk::YLeaf is_log_enabled; //type: boolean
+        ydk::YLeaf severity; //type: SystemMessageSeverity
+        ydk::YLeaf message_count; //type: uint32
+        ydk::YLeaf buffer_size; //type: uint32
 
 }; // Syslog::LoggingStatistics::TrapLoggingStats
 
 
-class Syslog::LoggingStatistics::BufferLoggingStats : public Entity
+class Syslog::LoggingStatistics::BufferLoggingStats : public ydk::Entity
 {
     public:
         BufferLoggingStats();
@@ -351,21 +381,23 @@ class Syslog::LoggingStatistics::BufferLoggingStats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_log_enabled; //type: boolean
-        YLeaf severity; //type: SystemMessageSeverityEnum
-        YLeaf message_count; //type: uint32
-        YLeaf buffer_size; //type: uint32
+        ydk::YLeaf is_log_enabled; //type: boolean
+        ydk::YLeaf severity; //type: SystemMessageSeverity
+        ydk::YLeaf message_count; //type: uint32
+        ydk::YLeaf buffer_size; //type: uint32
 
 }; // Syslog::LoggingStatistics::BufferLoggingStats
 
 
-class Syslog::LoggingStatistics::RemoteLoggingStat : public Entity
+class Syslog::LoggingStatistics::RemoteLoggingStat : public ydk::Entity
 {
     public:
         RemoteLoggingStat();
@@ -373,19 +405,21 @@ class Syslog::LoggingStatistics::RemoteLoggingStat : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf remote_host_name; //type: string
-        YLeaf message_count; //type: uint32
+        ydk::YLeaf remote_host_name; //type: string
+        ydk::YLeaf message_count; //type: uint32
 
 }; // Syslog::LoggingStatistics::RemoteLoggingStat
 
 
-class Syslog::LoggingStatistics::TlsRemoteLoggingStat : public Entity
+class Syslog::LoggingStatistics::TlsRemoteLoggingStat : public ydk::Entity
 {
     public:
         TlsRemoteLoggingStat();
@@ -393,19 +427,21 @@ class Syslog::LoggingStatistics::TlsRemoteLoggingStat : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf remote_host_name; //type: string
-        YLeaf message_count; //type: uint32
+        ydk::YLeaf remote_host_name; //type: string
+        ydk::YLeaf message_count; //type: uint32
 
 }; // Syslog::LoggingStatistics::TlsRemoteLoggingStat
 
 
-class Syslog::LoggingStatistics::FileLoggingStat : public Entity
+class Syslog::LoggingStatistics::FileLoggingStat : public ydk::Entity
 {
     public:
         FileLoggingStat();
@@ -413,29 +449,31 @@ class Syslog::LoggingStatistics::FileLoggingStat : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf file_name; //type: string
-        YLeaf message_count; //type: uint32
+        ydk::YLeaf file_name; //type: string
+        ydk::YLeaf message_count; //type: uint32
 
 }; // Syslog::LoggingStatistics::FileLoggingStat
 
-class SystemMessageSeverityEnum : public Enum
+class SystemMessageSeverity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf message_severity_unknown;
-        static const Enum::YLeaf message_severity_emergency;
-        static const Enum::YLeaf message_severity_alert;
-        static const Enum::YLeaf message_severity_critical;
-        static const Enum::YLeaf message_severity_error;
-        static const Enum::YLeaf message_severity_warning;
-        static const Enum::YLeaf message_severity_notice;
-        static const Enum::YLeaf message_severity_informational;
-        static const Enum::YLeaf message_severity_debug;
+        static const ydk::Enum::YLeaf message_severity_unknown;
+        static const ydk::Enum::YLeaf message_severity_emergency;
+        static const ydk::Enum::YLeaf message_severity_alert;
+        static const ydk::Enum::YLeaf message_severity_critical;
+        static const ydk::Enum::YLeaf message_severity_error;
+        static const ydk::Enum::YLeaf message_severity_warning;
+        static const ydk::Enum::YLeaf message_severity_notice;
+        static const ydk::Enum::YLeaf message_severity_informational;
+        static const ydk::Enum::YLeaf message_severity_debug;
 
 };
 

@@ -7,62 +7,62 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_icpe_sdacp_oper {
 
-class IcpeCpmChannelResyncStateEnum : public Enum
+class IcpeCpmControlFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_cpm_channel_resync_state_unknown;
-        static const Enum::YLeaf icpe_cpm_channel_resync_state_not_in_resync;
-        static const Enum::YLeaf icpe_cpm_channel_resync_state_in_client_resync;
-        static const Enum::YLeaf icpe_cpm_channel_resync_state_in_satellite_resync;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_disconnected;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_connecting;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_authenticating;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_check_ing_ver;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_connected;
+        static const ydk::Enum::YLeaf icpe_cpm_control_fsm_state_issu;
 
 };
 
-class IcpeCpmChanFsmStateEnum : public Enum
+class DpmProtoHostState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_cpm_chan_fsm_state_down;
-        static const Enum::YLeaf icpe_cpm_chan_fsm_state_not_supported;
-        static const Enum::YLeaf icpe_cpm_chan_fsm_state_closed;
-        static const Enum::YLeaf icpe_cpm_chan_fsm_state_opening;
-        static const Enum::YLeaf icpe_cpm_chan_fsm_state_opened;
-        static const Enum::YLeaf icpe_cpm_chan_fsm_state_open;
+        static const ydk::Enum::YLeaf dpm_proto_host_state_idle;
+        static const ydk::Enum::YLeaf dpm_proto_host_state_discovered;
+        static const ydk::Enum::YLeaf dpm_proto_host_state_rejecting;
 
 };
 
-class DpmProtoHostStateEnum : public Enum
+class IcpeCpmChanFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf dpm_proto_host_state_idle;
-        static const Enum::YLeaf dpm_proto_host_state_discovered;
-        static const Enum::YLeaf dpm_proto_host_state_rejecting;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_down;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_not_supported;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_closed;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_opening;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_opened;
+        static const ydk::Enum::YLeaf icpe_cpm_chan_fsm_state_open;
 
 };
 
-class IcpeCpmControlFsmStateEnum : public Enum
+class IcpeCpmChannelResyncState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_cpm_control_fsm_state_disconnected;
-        static const Enum::YLeaf icpe_cpm_control_fsm_state_connecting;
-        static const Enum::YLeaf icpe_cpm_control_fsm_state_authenticating;
-        static const Enum::YLeaf icpe_cpm_control_fsm_state_check_ing_ver;
-        static const Enum::YLeaf icpe_cpm_control_fsm_state_connected;
-        static const Enum::YLeaf icpe_cpm_control_fsm_state_issu;
+        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_unknown;
+        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_not_in_resync;
+        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_in_client_resync;
+        static const ydk::Enum::YLeaf icpe_cpm_channel_resync_state_in_satellite_resync;
 
 };
 
-class DpmProtoStateEnum : public Enum
+class DpmProtoState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf dpm_proto_state_idle;
-        static const Enum::YLeaf dpm_proto_state_probing;
-        static const Enum::YLeaf dpm_proto_state_legacy;
-        static const Enum::YLeaf dpm_proto_state_configuring;
-        static const Enum::YLeaf dpm_proto_state_discovered;
-        static const Enum::YLeaf dpm_proto_state_rejecting;
-        static const Enum::YLeaf dpm_proto_state_seen;
+        static const ydk::Enum::YLeaf dpm_proto_state_idle;
+        static const ydk::Enum::YLeaf dpm_proto_state_probing;
+        static const ydk::Enum::YLeaf dpm_proto_state_legacy;
+        static const ydk::Enum::YLeaf dpm_proto_state_configuring;
+        static const ydk::Enum::YLeaf dpm_proto_state_discovered;
+        static const ydk::Enum::YLeaf dpm_proto_state_rejecting;
+        static const ydk::Enum::YLeaf dpm_proto_state_seen;
 
 };
 

@@ -7,10 +7,10 @@
 #include "types.hpp"
 #include "errors.hpp"
 
-namespace ydk {
+namespace opendaylight {
 namespace network_topology {
 
-class NetworkTopology : public Entity
+class NetworkTopology : public ydk::Entity
 {
     public:
         NetworkTopology();
@@ -18,24 +18,23 @@ class NetworkTopology : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
 
         class Topology; //type: NetworkTopology::Topology
 
         std::vector<std::shared_ptr<network_topology::NetworkTopology::Topology> > topology;
-
-
+        
 }; // NetworkTopology
 
 
-class NetworkTopology::Topology : public Entity
+class NetworkTopology::Topology : public ydk::Entity
 {
     public:
         Topology();
@@ -43,16 +42,16 @@ class NetworkTopology::Topology : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf topology_id; //type: string
-        YLeaf server_provided; //type: boolean
-
+        ydk::YLeaf topology_id; //type: string
+        ydk::YLeaf server_provided; //type: boolean
         class TopologyTypes; //type: NetworkTopology::Topology::TopologyTypes
         class UnderlayTopology; //type: NetworkTopology::Topology::UnderlayTopology
         class Node; //type: NetworkTopology::Topology::Node
@@ -62,12 +61,11 @@ class NetworkTopology::Topology : public Entity
         std::vector<std::shared_ptr<network_topology::NetworkTopology::Topology::Node> > node;
         std::shared_ptr<network_topology::NetworkTopology::Topology::TopologyTypes> topology_types;
         std::vector<std::shared_ptr<network_topology::NetworkTopology::Topology::UnderlayTopology> > underlay_topology;
-
-
+        
 }; // NetworkTopology::Topology
 
 
-class NetworkTopology::Topology::TopologyTypes : public Entity
+class NetworkTopology::Topology::TopologyTypes : public ydk::Entity
 {
     public:
         TopologyTypes();
@@ -75,23 +73,22 @@ class NetworkTopology::Topology::TopologyTypes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TopologyNetconf; //type: NetworkTopology::Topology::TopologyTypes::TopologyNetconf
 
         std::shared_ptr<network_topology::NetworkTopology::Topology::TopologyTypes::TopologyNetconf> topology_netconf;
-
-
+        
 }; // NetworkTopology::Topology::TopologyTypes
 
 
-class NetworkTopology::Topology::TopologyTypes::TopologyNetconf : public Entity
+class NetworkTopology::Topology::TopologyTypes::TopologyNetconf : public ydk::Entity
 {
     public:
         TopologyNetconf();
@@ -99,20 +96,19 @@ class NetworkTopology::Topology::TopologyTypes::TopologyNetconf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // NetworkTopology::Topology::TopologyTypes::TopologyNetconf
 
 
-class NetworkTopology::Topology::UnderlayTopology : public Entity
+class NetworkTopology::Topology::UnderlayTopology : public ydk::Entity
 {
     public:
         UnderlayTopology();
@@ -120,22 +116,21 @@ class NetworkTopology::Topology::UnderlayTopology : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to network_topology::NetworkTopology::Topology::topology_id)
-        YLeaf topology_ref;
-
-
+        ydk::YLeaf topology_ref;
 
 }; // NetworkTopology::Topology::UnderlayTopology
 
 
-class NetworkTopology::Topology::Node : public Entity
+class NetworkTopology::Topology::Node : public ydk::Entity
 {
     public:
         Node();
@@ -143,32 +138,32 @@ class NetworkTopology::Topology::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf node_id; //type: string
-        YLeaf username; //type: string
-        YLeaf password; //type: string
-        YLeaf host; //type: one of union, string
-        YLeaf port; //type: uint16
-        YLeaf tcp_only; //type: boolean
-        YLeaf schemaless; //type: boolean
-        YLeaf reconnect_on_changed_schema; //type: boolean
-        YLeaf connection_timeout_millis; //type: uint32
-        YLeaf default_request_timeout_millis; //type: uint32
-        YLeaf max_connection_attempts; //type: uint32
-        YLeaf between_attempts_timeout_millis; //type: uint16
-        YLeaf sleep_factor; //type: decimal64
-        YLeaf keepalive_delay; //type: uint32
-        YLeaf concurrent_rpc_limit; //type: uint16
-        YLeaf connection_status; //type: ConnectionStatusEnum
-        YLeaf connected_message; //type: string
-        YLeaf schema_cache_directory; //type: string
-
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf username; //type: string
+        ydk::YLeaf password; //type: string
+        ydk::YLeaf host; //type: one of union, string
+        ydk::YLeaf port; //type: uint16
+        ydk::YLeaf tcp_only; //type: boolean
+        ydk::YLeaf schemaless; //type: boolean
+        ydk::YLeaf reconnect_on_changed_schema; //type: boolean
+        ydk::YLeaf connection_timeout_millis; //type: uint32
+        ydk::YLeaf default_request_timeout_millis; //type: uint32
+        ydk::YLeaf max_connection_attempts; //type: uint32
+        ydk::YLeaf between_attempts_timeout_millis; //type: uint16
+        ydk::YLeaf sleep_factor; //type: decimal64
+        ydk::YLeaf keepalive_delay; //type: uint32
+        ydk::YLeaf concurrent_rpc_limit; //type: uint16
+        ydk::YLeaf connection_status; //type: ConnectionStatus
+        ydk::YLeaf connected_message; //type: string
+        ydk::YLeaf schema_cache_directory; //type: string
         class SupportingNode; //type: NetworkTopology::Topology::Node::SupportingNode
         class TerminationPoint; //type: NetworkTopology::Topology::Node::TerminationPoint
         class YangModuleCapabilities; //type: NetworkTopology::Topology::Node::YangModuleCapabilities
@@ -186,13 +181,12 @@ class NetworkTopology::Topology::Node : public Entity
         std::shared_ptr<network_topology::NetworkTopology::Topology::Node::UnavailableCapabilities> unavailable_capabilities;
         std::shared_ptr<network_topology::NetworkTopology::Topology::Node::YangLibrary> yang_library;
         std::shared_ptr<network_topology::NetworkTopology::Topology::Node::YangModuleCapabilities> yang_module_capabilities;
-        class ConnectionStatusEnum;
-
+                class ConnectionStatus;
 
 }; // NetworkTopology::Topology::Node
 
 
-class NetworkTopology::Topology::Node::SupportingNode : public Entity
+class NetworkTopology::Topology::Node::SupportingNode : public ydk::Entity
 {
     public:
         SupportingNode();
@@ -200,24 +194,23 @@ class NetworkTopology::Topology::Node::SupportingNode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to network_topology::NetworkTopology::Topology::topology_id)
-        YLeaf topology_ref;
+        ydk::YLeaf topology_ref;
         //type: string (refers to network_topology::NetworkTopology::Topology::Node::node_id)
-        YLeaf node_ref;
-
-
+        ydk::YLeaf node_ref;
 
 }; // NetworkTopology::Topology::Node::SupportingNode
 
 
-class NetworkTopology::Topology::Node::TerminationPoint : public Entity
+class NetworkTopology::Topology::Node::TerminationPoint : public ydk::Entity
 {
     public:
         TerminationPoint();
@@ -225,23 +218,22 @@ class NetworkTopology::Topology::Node::TerminationPoint : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf tp_id; //type: string
+        ydk::YLeaf tp_id; //type: string
         //type: list of  string (refers to network_topology::NetworkTopology::Topology::Node::TerminationPoint::tp_id)
-        YLeafList tp_ref;
-
-
+        ydk::YLeafList tp_ref;
 
 }; // NetworkTopology::Topology::Node::TerminationPoint
 
 
-class NetworkTopology::Topology::Node::YangModuleCapabilities : public Entity
+class NetworkTopology::Topology::Node::YangModuleCapabilities : public ydk::Entity
 {
     public:
         YangModuleCapabilities();
@@ -249,22 +241,21 @@ class NetworkTopology::Topology::Node::YangModuleCapabilities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf override; //type: boolean
-        YLeafList capability; //type: list of  string
-
-
+        ydk::YLeaf override; //type: boolean
+        ydk::YLeafList capability; //type: list of  string
 
 }; // NetworkTopology::Topology::Node::YangModuleCapabilities
 
 
-class NetworkTopology::Topology::Node::ClusteredConnectionStatus : public Entity
+class NetworkTopology::Topology::Node::ClusteredConnectionStatus : public ydk::Entity
 {
     public:
         ClusteredConnectionStatus();
@@ -272,24 +263,23 @@ class NetworkTopology::Topology::Node::ClusteredConnectionStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf netconf_master_node; //type: string
-
+        ydk::YLeaf netconf_master_node; //type: string
         class NodeStatus; //type: NetworkTopology::Topology::Node::ClusteredConnectionStatus::NodeStatus
 
         std::vector<std::shared_ptr<network_topology::NetworkTopology::Topology::Node::ClusteredConnectionStatus::NodeStatus> > node_status;
-
-
+        
 }; // NetworkTopology::Topology::Node::ClusteredConnectionStatus
 
 
-class NetworkTopology::Topology::Node::ClusteredConnectionStatus::NodeStatus : public Entity
+class NetworkTopology::Topology::Node::ClusteredConnectionStatus::NodeStatus : public ydk::Entity
 {
     public:
         NodeStatus();
@@ -297,23 +287,22 @@ class NetworkTopology::Topology::Node::ClusteredConnectionStatus::NodeStatus : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf node; //type: string
-        YLeaf status; //type: StatusEnum
-
-        class StatusEnum;
-
+        ydk::YLeaf node; //type: string
+        ydk::YLeaf status; //type: Status
+        class Status;
 
 }; // NetworkTopology::Topology::Node::ClusteredConnectionStatus::NodeStatus
 
 
-class NetworkTopology::Topology::Node::AvailableCapabilities : public Entity
+class NetworkTopology::Topology::Node::AvailableCapabilities : public ydk::Entity
 {
     public:
         AvailableCapabilities();
@@ -321,23 +310,22 @@ class NetworkTopology::Topology::Node::AvailableCapabilities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AvailableCapability; //type: NetworkTopology::Topology::Node::AvailableCapabilities::AvailableCapability
 
         std::vector<std::shared_ptr<network_topology::NetworkTopology::Topology::Node::AvailableCapabilities::AvailableCapability> > available_capability;
-
-
+        
 }; // NetworkTopology::Topology::Node::AvailableCapabilities
 
 
-class NetworkTopology::Topology::Node::AvailableCapabilities::AvailableCapability : public Entity
+class NetworkTopology::Topology::Node::AvailableCapabilities::AvailableCapability : public ydk::Entity
 {
     public:
         AvailableCapability();
@@ -345,23 +333,22 @@ class NetworkTopology::Topology::Node::AvailableCapabilities::AvailableCapabilit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf capability; //type: string
-        YLeaf capability_origin; //type: CapabilityOriginEnum
-
-        class CapabilityOriginEnum;
-
+        ydk::YLeaf capability; //type: string
+        ydk::YLeaf capability_origin; //type: CapabilityOrigin
+        class CapabilityOrigin;
 
 }; // NetworkTopology::Topology::Node::AvailableCapabilities::AvailableCapability
 
 
-class NetworkTopology::Topology::Node::UnavailableCapabilities : public Entity
+class NetworkTopology::Topology::Node::UnavailableCapabilities : public ydk::Entity
 {
     public:
         UnavailableCapabilities();
@@ -369,23 +356,22 @@ class NetworkTopology::Topology::Node::UnavailableCapabilities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class UnavailableCapability; //type: NetworkTopology::Topology::Node::UnavailableCapabilities::UnavailableCapability
 
         std::vector<std::shared_ptr<network_topology::NetworkTopology::Topology::Node::UnavailableCapabilities::UnavailableCapability> > unavailable_capability;
-
-
+        
 }; // NetworkTopology::Topology::Node::UnavailableCapabilities
 
 
-class NetworkTopology::Topology::Node::UnavailableCapabilities::UnavailableCapability : public Entity
+class NetworkTopology::Topology::Node::UnavailableCapabilities::UnavailableCapability : public ydk::Entity
 {
     public:
         UnavailableCapability();
@@ -393,23 +379,22 @@ class NetworkTopology::Topology::Node::UnavailableCapabilities::UnavailableCapab
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf capability; //type: string
-        YLeaf failure_reason; //type: FailureReasonEnum
-
-        class FailureReasonEnum;
-
+        ydk::YLeaf capability; //type: string
+        ydk::YLeaf failure_reason; //type: FailureReason
+        class FailureReason;
 
 }; // NetworkTopology::Topology::Node::UnavailableCapabilities::UnavailableCapability
 
 
-class NetworkTopology::Topology::Node::PassThrough : public Entity
+class NetworkTopology::Topology::Node::PassThrough : public ydk::Entity
 {
     public:
         PassThrough();
@@ -417,20 +402,19 @@ class NetworkTopology::Topology::Node::PassThrough : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
 }; // NetworkTopology::Topology::Node::PassThrough
 
 
-class NetworkTopology::Topology::Node::YangLibrary : public Entity
+class NetworkTopology::Topology::Node::YangLibrary : public ydk::Entity
 {
     public:
         YangLibrary();
@@ -438,23 +422,22 @@ class NetworkTopology::Topology::Node::YangLibrary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf yang_library_url; //type: string
-        YLeaf username; //type: string
-        YLeaf password; //type: string
-
-
+        ydk::YLeaf yang_library_url; //type: string
+        ydk::YLeaf username; //type: string
+        ydk::YLeaf password; //type: string
 
 }; // NetworkTopology::Topology::Node::YangLibrary
 
 
-class NetworkTopology::Topology::Link : public Entity
+class NetworkTopology::Topology::Link : public ydk::Entity
 {
     public:
         Link();
@@ -462,15 +445,15 @@ class NetworkTopology::Topology::Link : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-
-        YLeaf link_id; //type: string
-
+        ydk::YLeaf link_id; //type: string
         class Source; //type: NetworkTopology::Topology::Link::Source
         class Destination; //type: NetworkTopology::Topology::Link::Destination
         class SupportingLink; //type: NetworkTopology::Topology::Link::SupportingLink
@@ -478,12 +461,11 @@ class NetworkTopology::Topology::Link : public Entity
         std::shared_ptr<network_topology::NetworkTopology::Topology::Link::Destination> destination;
         std::shared_ptr<network_topology::NetworkTopology::Topology::Link::Source> source;
         std::vector<std::shared_ptr<network_topology::NetworkTopology::Topology::Link::SupportingLink> > supporting_link;
-
-
+        
 }; // NetworkTopology::Topology::Link
 
 
-class NetworkTopology::Topology::Link::Source : public Entity
+class NetworkTopology::Topology::Link::Source : public ydk::Entity
 {
     public:
         Source();
@@ -491,24 +473,23 @@ class NetworkTopology::Topology::Link::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to network_topology::NetworkTopology::Topology::Node::node_id)
-        YLeaf source_node;
+        ydk::YLeaf source_node;
         //type: string (refers to network_topology::NetworkTopology::Topology::Node::TerminationPoint::tp_id)
-        YLeaf source_tp;
-
-
+        ydk::YLeaf source_tp;
 
 }; // NetworkTopology::Topology::Link::Source
 
 
-class NetworkTopology::Topology::Link::Destination : public Entity
+class NetworkTopology::Topology::Link::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -516,24 +497,23 @@ class NetworkTopology::Topology::Link::Destination : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to network_topology::NetworkTopology::Topology::Node::node_id)
-        YLeaf dest_node;
+        ydk::YLeaf dest_node;
         //type: string (refers to network_topology::NetworkTopology::Topology::Node::TerminationPoint::tp_id)
-        YLeaf dest_tp;
-
-
+        ydk::YLeaf dest_tp;
 
 }; // NetworkTopology::Topology::Link::Destination
 
 
-class NetworkTopology::Topology::Link::SupportingLink : public Entity
+class NetworkTopology::Topology::Link::SupportingLink : public ydk::Entity
 {
     public:
         SupportingLink();
@@ -541,51 +521,50 @@ class NetworkTopology::Topology::Link::SupportingLink : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to network_topology::NetworkTopology::Topology::Link::link_id)
-        YLeaf link_ref;
-
-
+        ydk::YLeaf link_ref;
 
 }; // NetworkTopology::Topology::Link::SupportingLink
 
-class NetworkTopology::Topology::Node::ConnectionStatusEnum : public Enum
+class NetworkTopology::Topology::Node::ConnectionStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf connecting;
-        static const Enum::YLeaf connected;
-        static const Enum::YLeaf unable_to_connect;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf unable_to_connect;
 
 };
 
-class NetworkTopology::Topology::Node::ClusteredConnectionStatus::NodeStatus::StatusEnum : public Enum
+class NetworkTopology::Topology::Node::ClusteredConnectionStatus::NodeStatus::Status : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf connected;
-        static const Enum::YLeaf unavailable;
-        static const Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf unavailable;
+        static const ydk::Enum::YLeaf failed;
 
 };
 
-class NetworkTopology::Topology::Node::AvailableCapabilities::AvailableCapability::CapabilityOriginEnum : public Enum
+class NetworkTopology::Topology::Node::AvailableCapabilities::AvailableCapability::CapabilityOrigin : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf user_defined;
-        static const Enum::YLeaf device_advertised;
+        static const ydk::Enum::YLeaf user_defined;
+        static const ydk::Enum::YLeaf device_advertised;
 
 };
 
-class NetworkTopology::Topology::Node::UnavailableCapabilities::UnavailableCapability::FailureReasonEnum : public Enum
+class NetworkTopology::Topology::Node::UnavailableCapabilities::UnavailableCapability::FailureReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf missing_source;
-        static const Enum::YLeaf unable_to_resolve;
+        static const ydk::Enum::YLeaf missing_source;
+        static const ydk::Enum::YLeaf unable_to_resolve;
 
 };
 

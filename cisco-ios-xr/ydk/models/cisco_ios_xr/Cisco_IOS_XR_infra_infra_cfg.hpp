@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_infra_cfg {
 
-class Banners : public Entity
+class Banners : public ydk::Entity
 {
     public:
         Banners();
@@ -18,15 +18,18 @@ class Banners : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Banner; //type: Banners::Banner
 
@@ -35,7 +38,7 @@ class Banners : public Entity
 }; // Banners
 
 
-class Banners::Banner : public Entity
+class Banners::Banner : public ydk::Entity
 {
     public:
         Banner();
@@ -43,26 +46,28 @@ class Banners::Banner : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf banner_name; //type: BannerEnum
-        YLeaf banner_text; //type: string
+        ydk::YLeaf banner_name; //type: Banner
+        ydk::YLeaf banner_text; //type: string
 
 }; // Banners::Banner
 
-class BannerEnum : public Enum
+class Banner : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf exec;
-        static const Enum::YLeaf incoming;
-        static const Enum::YLeaf motd;
-        static const Enum::YLeaf login;
-        static const Enum::YLeaf slip_ppp;
-        static const Enum::YLeaf prompt_timeout;
+        static const ydk::Enum::YLeaf exec;
+        static const ydk::Enum::YLeaf incoming;
+        static const ydk::Enum::YLeaf motd;
+        static const ydk::Enum::YLeaf login;
+        static const ydk::Enum::YLeaf slip_ppp;
+        static const ydk::Enum::YLeaf prompt_timeout;
 
 };
 

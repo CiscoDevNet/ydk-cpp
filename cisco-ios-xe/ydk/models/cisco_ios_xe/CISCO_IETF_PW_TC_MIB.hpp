@@ -7,45 +7,45 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_IETF_PW_TC_MIB {
 
-class CpwoperstatusEnum : public Enum
+class Cpwvctype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf up;
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf testing;
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf dormant;
-        static const Enum::YLeaf notPresent;
-        static const Enum::YLeaf lowerLayerDown;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf frameRelay;
+        static const ydk::Enum::YLeaf atmAal5Vcc;
+        static const ydk::Enum::YLeaf atmTransparent;
+        static const ydk::Enum::YLeaf ethernetVLAN;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf hdlc;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf cep;
+        static const ydk::Enum::YLeaf atmVccCell;
+        static const ydk::Enum::YLeaf atmVpcCell;
+        static const ydk::Enum::YLeaf ethernetVPLS;
+        static const ydk::Enum::YLeaf e1Satop;
+        static const ydk::Enum::YLeaf t1Satop;
+        static const ydk::Enum::YLeaf e3Satop;
+        static const ydk::Enum::YLeaf t3Satop;
+        static const ydk::Enum::YLeaf basicCesPsn;
+        static const ydk::Enum::YLeaf basicTdmIp;
+        static const ydk::Enum::YLeaf tdmCasCesPsn;
+        static const ydk::Enum::YLeaf tdmCasTdmIp;
 
 };
 
-class CpwvctypeEnum : public Enum
+class Cpwoperstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf frameRelay;
-        static const Enum::YLeaf atmAal5Vcc;
-        static const Enum::YLeaf atmTransparent;
-        static const Enum::YLeaf ethernetVLAN;
-        static const Enum::YLeaf ethernet;
-        static const Enum::YLeaf hdlc;
-        static const Enum::YLeaf ppp;
-        static const Enum::YLeaf cep;
-        static const Enum::YLeaf atmVccCell;
-        static const Enum::YLeaf atmVpcCell;
-        static const Enum::YLeaf ethernetVPLS;
-        static const Enum::YLeaf e1Satop;
-        static const Enum::YLeaf t1Satop;
-        static const Enum::YLeaf e3Satop;
-        static const Enum::YLeaf t3Satop;
-        static const Enum::YLeaf basicCesPsn;
-        static const Enum::YLeaf basicTdmIp;
-        static const Enum::YLeaf tdmCasCesPsn;
-        static const Enum::YLeaf tdmCasTdmIp;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf testing;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf dormant;
+        static const ydk::Enum::YLeaf notPresent;
+        static const ydk::Enum::YLeaf lowerLayerDown;
 
 };
 

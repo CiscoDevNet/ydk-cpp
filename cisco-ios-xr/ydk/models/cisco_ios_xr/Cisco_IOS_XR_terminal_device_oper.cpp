@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_terminal_device_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_terminal_device_oper {
 
 OpticalInterface::OpticalInterface()
@@ -45,7 +47,7 @@ bool OpticalInterface::has_data() const
 
 bool OpticalInterface::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config_status !=  nullptr && config_status->has_operation())
 	|| (graph !=  nullptr && graph->has_operation())
 	|| (operational_modes !=  nullptr && operational_modes->has_operation())
@@ -161,7 +163,11 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::get_children() 
     return children;
 }
 
-void OpticalInterface::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OpticalInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -183,6 +189,18 @@ std::string OpticalInterface::get_bundle_name() const
 augment_capabilities_function OpticalInterface::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> OpticalInterface::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool OpticalInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config-status" || name == "graph" || name == "operational-modes" || name == "optical-channel-interfaces" || name == "optical-logical-interfaces")
+        return true;
+    return false;
 }
 
 OpticalInterface::ConfigStatus::ConfigStatus()
@@ -209,7 +227,7 @@ bool OpticalInterface::ConfigStatus::has_data() const
 
 bool OpticalInterface::ConfigStatus::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (partial_config !=  nullptr && partial_config->has_operation())
 	|| (slice_tables !=  nullptr && slice_tables->has_operation());
 }
@@ -283,8 +301,19 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::g
     return children;
 }
 
-void OpticalInterface::ConfigStatus::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::ConfigStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void OpticalInterface::ConfigStatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::ConfigStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "partial-config" || name == "slice-tables")
+        return true;
+    return false;
 }
 
 OpticalInterface::ConfigStatus::PartialConfig::PartialConfig()
@@ -305,8 +334,8 @@ bool OpticalInterface::ConfigStatus::PartialConfig::has_data() const
 
 bool OpticalInterface::ConfigStatus::PartialConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(partial_config.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(partial_config.yfilter);
 }
 
 std::string OpticalInterface::ConfigStatus::PartialConfig::get_segment_path() const
@@ -332,7 +361,7 @@ const EntityPath OpticalInterface::ConfigStatus::PartialConfig::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (partial_config.is_set || is_set(partial_config.operation)) leaf_name_data.push_back(partial_config.get_name_leafdata());
+    if (partial_config.is_set || is_set(partial_config.yfilter)) leaf_name_data.push_back(partial_config.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -351,12 +380,29 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::P
     return children;
 }
 
-void OpticalInterface::ConfigStatus::PartialConfig::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::ConfigStatus::PartialConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "partial-config")
     {
         partial_config = value;
+        partial_config.value_namespace = name_space;
+        partial_config.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::ConfigStatus::PartialConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "partial-config")
+    {
+        partial_config.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::ConfigStatus::PartialConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "partial-config")
+        return true;
+    return false;
 }
 
 OpticalInterface::ConfigStatus::SliceTables::SliceTables()
@@ -385,7 +431,7 @@ bool OpticalInterface::ConfigStatus::SliceTables::has_operation() const
         if(slice_table[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string OpticalInterface::ConfigStatus::SliceTables::get_segment_path() const
@@ -450,8 +496,19 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::S
     return children;
 }
 
-void OpticalInterface::ConfigStatus::SliceTables::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::ConfigStatus::SliceTables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void OpticalInterface::ConfigStatus::SliceTables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::ConfigStatus::SliceTables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slice-table")
+        return true;
+    return false;
 }
 
 OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceTable()
@@ -477,8 +534,8 @@ bool OpticalInterface::ConfigStatus::SliceTables::SliceTable::has_data() const
 
 bool OpticalInterface::ConfigStatus::SliceTables::SliceTable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (slice_status_attr !=  nullptr && slice_status_attr->has_operation());
 }
 
@@ -505,7 +562,7 @@ const EntityPath OpticalInterface::ConfigStatus::SliceTables::SliceTable::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -538,12 +595,29 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::S
     return children;
 }
 
-void OpticalInterface::ConfigStatus::SliceTables::SliceTable::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::ConfigStatus::SliceTables::SliceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::ConfigStatus::SliceTables::SliceTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::ConfigStatus::SliceTables::SliceTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slice-status-attr" || name == "index")
+        return true;
+    return false;
 }
 
 OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::SliceStatusAttr()
@@ -578,15 +652,15 @@ bool OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::h
 
 bool OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(err_str.operation)
-	|| is_set(err_timestamp.operation)
-	|| is_set(past_config.operation)
-	|| is_set(past_timestamp.operation)
-	|| is_set(present_config.operation)
-	|| is_set(present_timestamp.operation)
-	|| is_set(prov_status.operation)
-	|| is_set(slice.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(err_str.yfilter)
+	|| ydk::is_set(err_timestamp.yfilter)
+	|| ydk::is_set(past_config.yfilter)
+	|| ydk::is_set(past_timestamp.yfilter)
+	|| ydk::is_set(present_config.yfilter)
+	|| ydk::is_set(present_timestamp.yfilter)
+	|| ydk::is_set(prov_status.yfilter)
+	|| ydk::is_set(slice.yfilter);
 }
 
 std::string OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::get_segment_path() const
@@ -612,14 +686,14 @@ const EntityPath OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceS
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (err_str.is_set || is_set(err_str.operation)) leaf_name_data.push_back(err_str.get_name_leafdata());
-    if (err_timestamp.is_set || is_set(err_timestamp.operation)) leaf_name_data.push_back(err_timestamp.get_name_leafdata());
-    if (past_config.is_set || is_set(past_config.operation)) leaf_name_data.push_back(past_config.get_name_leafdata());
-    if (past_timestamp.is_set || is_set(past_timestamp.operation)) leaf_name_data.push_back(past_timestamp.get_name_leafdata());
-    if (present_config.is_set || is_set(present_config.operation)) leaf_name_data.push_back(present_config.get_name_leafdata());
-    if (present_timestamp.is_set || is_set(present_timestamp.operation)) leaf_name_data.push_back(present_timestamp.get_name_leafdata());
-    if (prov_status.is_set || is_set(prov_status.operation)) leaf_name_data.push_back(prov_status.get_name_leafdata());
-    if (slice.is_set || is_set(slice.operation)) leaf_name_data.push_back(slice.get_name_leafdata());
+    if (err_str.is_set || is_set(err_str.yfilter)) leaf_name_data.push_back(err_str.get_name_leafdata());
+    if (err_timestamp.is_set || is_set(err_timestamp.yfilter)) leaf_name_data.push_back(err_timestamp.get_name_leafdata());
+    if (past_config.is_set || is_set(past_config.yfilter)) leaf_name_data.push_back(past_config.get_name_leafdata());
+    if (past_timestamp.is_set || is_set(past_timestamp.yfilter)) leaf_name_data.push_back(past_timestamp.get_name_leafdata());
+    if (present_config.is_set || is_set(present_config.yfilter)) leaf_name_data.push_back(present_config.get_name_leafdata());
+    if (present_timestamp.is_set || is_set(present_timestamp.yfilter)) leaf_name_data.push_back(present_timestamp.get_name_leafdata());
+    if (prov_status.is_set || is_set(prov_status.yfilter)) leaf_name_data.push_back(prov_status.get_name_leafdata());
+    if (slice.is_set || is_set(slice.yfilter)) leaf_name_data.push_back(slice.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -638,40 +712,99 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::ConfigStatus::S
     return children;
 }
 
-void OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "err-str")
     {
         err_str = value;
+        err_str.value_namespace = name_space;
+        err_str.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "err-timestamp")
     {
         err_timestamp = value;
+        err_timestamp.value_namespace = name_space;
+        err_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "past-config")
     {
         past_config = value;
+        past_config.value_namespace = name_space;
+        past_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "past-timestamp")
     {
         past_timestamp = value;
+        past_timestamp.value_namespace = name_space;
+        past_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "present-config")
     {
         present_config = value;
+        present_config.value_namespace = name_space;
+        present_config.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "present-timestamp")
     {
         present_timestamp = value;
+        present_timestamp.value_namespace = name_space;
+        present_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prov-status")
     {
         prov_status = value;
+        prov_status.value_namespace = name_space;
+        prov_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slice")
     {
         slice = value;
+        slice.value_namespace = name_space;
+        slice.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "err-str")
+    {
+        err_str.yfilter = yfilter;
+    }
+    if(value_path == "err-timestamp")
+    {
+        err_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "past-config")
+    {
+        past_config.yfilter = yfilter;
+    }
+    if(value_path == "past-timestamp")
+    {
+        past_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "present-config")
+    {
+        present_config.yfilter = yfilter;
+    }
+    if(value_path == "present-timestamp")
+    {
+        present_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "prov-status")
+    {
+        prov_status.yfilter = yfilter;
+    }
+    if(value_path == "slice")
+    {
+        slice.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::ConfigStatus::SliceTables::SliceTable::SliceStatusAttr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "err-str" || name == "err-timestamp" || name == "past-config" || name == "past-timestamp" || name == "present-config" || name == "present-timestamp" || name == "prov-status" || name == "slice")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterfaces()
@@ -700,7 +833,7 @@ bool OpticalInterface::OpticalChannelInterfaces::has_operation() const
         if(optical_channel_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string OpticalInterface::OpticalChannelInterfaces::get_segment_path() const
@@ -765,8 +898,19 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalChannelI
     return children;
 }
 
-void OpticalInterface::OpticalChannelInterfaces::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalChannelInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void OpticalInterface::OpticalChannelInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::OpticalChannelInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optical-channel-interface")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterface()
@@ -792,8 +936,8 @@ bool OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::has_da
 
 bool OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(location.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(location.yfilter)
 	|| (optical_channel_interface_attr !=  nullptr && optical_channel_interface_attr->has_operation());
 }
 
@@ -820,7 +964,7 @@ const EntityPath OpticalInterface::OpticalChannelInterfaces::OpticalChannelInter
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -853,12 +997,29 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalChannelI
     return children;
 }
 
-void OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optical-channel-interface-attr" || name == "location")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::OpticalChannelInterfaceAttr()
@@ -889,13 +1050,13 @@ bool OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::Optica
 
 bool OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(frequency.operation)
-	|| is_set(index_.operation)
-	|| is_set(line_port.operation)
-	|| is_set(name.operation)
-	|| is_set(oper_mode.operation)
-	|| is_set(power.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(frequency.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(line_port.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(oper_mode.yfilter)
+	|| ydk::is_set(power.yfilter);
 }
 
 std::string OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::get_segment_path() const
@@ -921,12 +1082,12 @@ const EntityPath OpticalInterface::OpticalChannelInterfaces::OpticalChannelInter
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (frequency.is_set || is_set(frequency.operation)) leaf_name_data.push_back(frequency.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (line_port.is_set || is_set(line_port.operation)) leaf_name_data.push_back(line_port.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (oper_mode.is_set || is_set(oper_mode.operation)) leaf_name_data.push_back(oper_mode.get_name_leafdata());
-    if (power.is_set || is_set(power.operation)) leaf_name_data.push_back(power.get_name_leafdata());
+    if (frequency.is_set || is_set(frequency.yfilter)) leaf_name_data.push_back(frequency.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (line_port.is_set || is_set(line_port.yfilter)) leaf_name_data.push_back(line_port.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (oper_mode.is_set || is_set(oper_mode.yfilter)) leaf_name_data.push_back(oper_mode.get_name_leafdata());
+    if (power.is_set || is_set(power.yfilter)) leaf_name_data.push_back(power.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -945,32 +1106,79 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalChannelI
     return children;
 }
 
-void OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frequency")
     {
         frequency = value;
+        frequency.value_namespace = name_space;
+        frequency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-port")
     {
         line_port = value;
+        line_port.value_namespace = name_space;
+        line_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oper-mode")
     {
         oper_mode = value;
+        oper_mode.value_namespace = name_space;
+        oper_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power")
     {
         power = value;
+        power.value_namespace = name_space;
+        power.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "frequency")
+    {
+        frequency.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "line-port")
+    {
+        line_port.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "oper-mode")
+    {
+        oper_mode.yfilter = yfilter;
+    }
+    if(value_path == "power")
+    {
+        power.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OpticalChannelInterfaces::OpticalChannelInterface::OpticalChannelInterfaceAttr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frequency" || name == "index" || name == "line-port" || name == "name" || name == "oper-mode" || name == "power")
+        return true;
+    return false;
 }
 
 OpticalInterface::Graph::Graph()
@@ -997,7 +1205,7 @@ bool OpticalInterface::Graph::has_data() const
 
 bool OpticalInterface::Graph::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (adj_list_path !=  nullptr && adj_list_path->has_operation())
 	|| (graph_structure_path !=  nullptr && graph_structure_path->has_operation());
 }
@@ -1071,8 +1279,19 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::get_chil
     return children;
 }
 
-void OpticalInterface::Graph::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::Graph::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void OpticalInterface::Graph::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::Graph::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adj-list-path" || name == "graph-structure-path")
+        return true;
+    return false;
 }
 
 OpticalInterface::Graph::AdjListPath::AdjListPath()
@@ -1093,8 +1312,8 @@ bool OpticalInterface::Graph::AdjListPath::has_data() const
 
 bool OpticalInterface::Graph::AdjListPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter);
 }
 
 std::string OpticalInterface::Graph::AdjListPath::get_segment_path() const
@@ -1120,7 +1339,7 @@ const EntityPath OpticalInterface::Graph::AdjListPath::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path.is_set || is_set(path.operation)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1139,12 +1358,29 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::AdjListP
     return children;
 }
 
-void OpticalInterface::Graph::AdjListPath::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::Graph::AdjListPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path")
     {
         path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::Graph::AdjListPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::Graph::AdjListPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 OpticalInterface::Graph::GraphStructurePath::GraphStructurePath()
@@ -1165,8 +1401,8 @@ bool OpticalInterface::Graph::GraphStructurePath::has_data() const
 
 bool OpticalInterface::Graph::GraphStructurePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter);
 }
 
 std::string OpticalInterface::Graph::GraphStructurePath::get_segment_path() const
@@ -1192,7 +1428,7 @@ const EntityPath OpticalInterface::Graph::GraphStructurePath::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path.is_set || is_set(path.operation)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1211,12 +1447,29 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::Graph::GraphStr
     return children;
 }
 
-void OpticalInterface::Graph::GraphStructurePath::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::Graph::GraphStructurePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path")
     {
         path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::Graph::GraphStructurePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::Graph::GraphStructurePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path")
+        return true;
+    return false;
 }
 
 OpticalInterface::OperationalModes::OperationalModes()
@@ -1245,7 +1498,7 @@ bool OpticalInterface::OperationalModes::has_operation() const
         if(operational_mode[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string OpticalInterface::OperationalModes::get_segment_path() const
@@ -1310,8 +1563,19 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalMode
     return children;
 }
 
-void OpticalInterface::OperationalModes::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OperationalModes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void OpticalInterface::OperationalModes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::OperationalModes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operational-mode")
+        return true;
+    return false;
 }
 
 OpticalInterface::OperationalModes::OperationalMode::OperationalMode()
@@ -1337,8 +1601,8 @@ bool OpticalInterface::OperationalModes::OperationalMode::has_data() const
 
 bool OpticalInterface::OperationalModes::OperationalMode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mode_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mode_id.yfilter)
 	|| (operational_mode_attributes !=  nullptr && operational_mode_attributes->has_operation());
 }
 
@@ -1365,7 +1629,7 @@ const EntityPath OpticalInterface::OperationalModes::OperationalMode::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mode_id.is_set || is_set(mode_id.operation)) leaf_name_data.push_back(mode_id.get_name_leafdata());
+    if (mode_id.is_set || is_set(mode_id.yfilter)) leaf_name_data.push_back(mode_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1398,12 +1662,29 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalMode
     return children;
 }
 
-void OpticalInterface::OperationalModes::OperationalMode::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OperationalModes::OperationalMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mode-id")
     {
         mode_id = value;
+        mode_id.value_namespace = name_space;
+        mode_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::OperationalModes::OperationalMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode-id")
+    {
+        mode_id.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OperationalModes::OperationalMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operational-mode-attributes" || name == "mode-id")
+        return true;
+    return false;
 }
 
 OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::OperationalModeAttributes()
@@ -1426,9 +1707,9 @@ bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttribu
 
 bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(vendor_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(vendor_id.yfilter);
 }
 
 std::string OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::get_segment_path() const
@@ -1454,8 +1735,8 @@ const EntityPath OpticalInterface::OperationalModes::OperationalMode::Operationa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (vendor_id.is_set || is_set(vendor_id.operation)) leaf_name_data.push_back(vendor_id.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (vendor_id.is_set || is_set(vendor_id.yfilter)) leaf_name_data.push_back(vendor_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1474,16 +1755,39 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OperationalMode
     return children;
 }
 
-void OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vendor-id")
     {
         vendor_id = value;
+        vendor_id.value_namespace = name_space;
+        vendor_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "vendor-id")
+    {
+        vendor_id.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OperationalModes::OperationalMode::OperationalModeAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "vendor-id")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterfaces()
@@ -1512,7 +1816,7 @@ bool OpticalInterface::OpticalLogicalInterfaces::has_operation() const
         if(optical_logical_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string OpticalInterface::OpticalLogicalInterfaces::get_segment_path() const
@@ -1577,8 +1881,19 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalI
     return children;
 }
 
-void OpticalInterface::OpticalLogicalInterfaces::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalLogicalInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void OpticalInterface::OpticalLogicalInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::OpticalLogicalInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optical-logical-interface")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterface()
@@ -1608,8 +1923,8 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::has_da
 
 bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (optical_logical_interface_attr !=  nullptr && optical_logical_interface_attr->has_operation())
 	|| (optical_logical_interface_logical_channel_assignments !=  nullptr && optical_logical_interface_logical_channel_assignments->has_operation());
 }
@@ -1637,7 +1952,7 @@ const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInter
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1684,12 +1999,29 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalI
     return children;
 }
 
-void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optical-logical-interface-attr" || name == "optical-logical-interface-logical-channel-assignments" || name == "index")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::OpticalLogicalInterfaceAttr()
@@ -1732,19 +2064,19 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optica
 
 bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_state.operation)
-	|| is_set(ingress_client_port.operation)
-	|| is_set(ingress_physical_channel.operation)
-	|| is_set(logical_channel_ifname.operation)
-	|| is_set(logical_channel_index.operation)
-	|| is_set(loopback_mode.operation)
-	|| is_set(protocol_type.operation)
-	|| is_set(trib_protocol.operation)
-	|| is_set(trib_rate_class.operation)
-	|| is_set(tti_expected.operation)
-	|| is_set(tti_transmit.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_state.yfilter)
+	|| ydk::is_set(ingress_client_port.yfilter)
+	|| ydk::is_set(ingress_physical_channel.yfilter)
+	|| ydk::is_set(logical_channel_ifname.yfilter)
+	|| ydk::is_set(logical_channel_index.yfilter)
+	|| ydk::is_set(loopback_mode.yfilter)
+	|| ydk::is_set(protocol_type.yfilter)
+	|| ydk::is_set(trib_protocol.yfilter)
+	|| ydk::is_set(trib_rate_class.yfilter)
+	|| ydk::is_set(tti_expected.yfilter)
+	|| ydk::is_set(tti_transmit.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::get_segment_path() const
@@ -1770,18 +2102,18 @@ const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInter
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_state.is_set || is_set(admin_state.operation)) leaf_name_data.push_back(admin_state.get_name_leafdata());
-    if (ingress_client_port.is_set || is_set(ingress_client_port.operation)) leaf_name_data.push_back(ingress_client_port.get_name_leafdata());
-    if (ingress_physical_channel.is_set || is_set(ingress_physical_channel.operation)) leaf_name_data.push_back(ingress_physical_channel.get_name_leafdata());
-    if (logical_channel_ifname.is_set || is_set(logical_channel_ifname.operation)) leaf_name_data.push_back(logical_channel_ifname.get_name_leafdata());
-    if (logical_channel_index.is_set || is_set(logical_channel_index.operation)) leaf_name_data.push_back(logical_channel_index.get_name_leafdata());
-    if (loopback_mode.is_set || is_set(loopback_mode.operation)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
-    if (protocol_type.is_set || is_set(protocol_type.operation)) leaf_name_data.push_back(protocol_type.get_name_leafdata());
-    if (trib_protocol.is_set || is_set(trib_protocol.operation)) leaf_name_data.push_back(trib_protocol.get_name_leafdata());
-    if (trib_rate_class.is_set || is_set(trib_rate_class.operation)) leaf_name_data.push_back(trib_rate_class.get_name_leafdata());
-    if (tti_expected.is_set || is_set(tti_expected.operation)) leaf_name_data.push_back(tti_expected.get_name_leafdata());
-    if (tti_transmit.is_set || is_set(tti_transmit.operation)) leaf_name_data.push_back(tti_transmit.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (admin_state.is_set || is_set(admin_state.yfilter)) leaf_name_data.push_back(admin_state.get_name_leafdata());
+    if (ingress_client_port.is_set || is_set(ingress_client_port.yfilter)) leaf_name_data.push_back(ingress_client_port.get_name_leafdata());
+    if (ingress_physical_channel.is_set || is_set(ingress_physical_channel.yfilter)) leaf_name_data.push_back(ingress_physical_channel.get_name_leafdata());
+    if (logical_channel_ifname.is_set || is_set(logical_channel_ifname.yfilter)) leaf_name_data.push_back(logical_channel_ifname.get_name_leafdata());
+    if (logical_channel_index.is_set || is_set(logical_channel_index.yfilter)) leaf_name_data.push_back(logical_channel_index.get_name_leafdata());
+    if (loopback_mode.is_set || is_set(loopback_mode.yfilter)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
+    if (protocol_type.is_set || is_set(protocol_type.yfilter)) leaf_name_data.push_back(protocol_type.get_name_leafdata());
+    if (trib_protocol.is_set || is_set(trib_protocol.yfilter)) leaf_name_data.push_back(trib_protocol.get_name_leafdata());
+    if (trib_rate_class.is_set || is_set(trib_rate_class.yfilter)) leaf_name_data.push_back(trib_rate_class.get_name_leafdata());
+    if (tti_expected.is_set || is_set(tti_expected.yfilter)) leaf_name_data.push_back(tti_expected.get_name_leafdata());
+    if (tti_transmit.is_set || is_set(tti_transmit.yfilter)) leaf_name_data.push_back(tti_transmit.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1800,56 +2132,139 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalI
     return children;
 }
 
-void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-state")
     {
         admin_state = value;
+        admin_state.value_namespace = name_space;
+        admin_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ingress-client-port")
     {
         ingress_client_port = value;
+        ingress_client_port.value_namespace = name_space;
+        ingress_client_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ingress-physical-channel")
     {
         ingress_physical_channel = value;
+        ingress_physical_channel.value_namespace = name_space;
+        ingress_physical_channel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "logical-channel-ifname")
     {
         logical_channel_ifname = value;
+        logical_channel_ifname.value_namespace = name_space;
+        logical_channel_ifname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "logical-channel-index")
     {
         logical_channel_index = value;
+        logical_channel_index.value_namespace = name_space;
+        logical_channel_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loopback-mode")
     {
         loopback_mode = value;
+        loopback_mode.value_namespace = name_space;
+        loopback_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-type")
     {
         protocol_type = value;
+        protocol_type.value_namespace = name_space;
+        protocol_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trib-protocol")
     {
         trib_protocol = value;
+        trib_protocol.value_namespace = name_space;
+        trib_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trib-rate-class")
     {
         trib_rate_class = value;
+        trib_rate_class.value_namespace = name_space;
+        trib_rate_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tti-expected")
     {
         tti_expected = value;
+        tti_expected.value_namespace = name_space;
+        tti_expected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tti-transmit")
     {
         tti_transmit = value;
+        tti_transmit.value_namespace = name_space;
+        tti_transmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-state")
+    {
+        admin_state.yfilter = yfilter;
+    }
+    if(value_path == "ingress-client-port")
+    {
+        ingress_client_port.yfilter = yfilter;
+    }
+    if(value_path == "ingress-physical-channel")
+    {
+        ingress_physical_channel.yfilter = yfilter;
+    }
+    if(value_path == "logical-channel-ifname")
+    {
+        logical_channel_ifname.yfilter = yfilter;
+    }
+    if(value_path == "logical-channel-index")
+    {
+        logical_channel_index.yfilter = yfilter;
+    }
+    if(value_path == "loopback-mode")
+    {
+        loopback_mode.yfilter = yfilter;
+    }
+    if(value_path == "protocol-type")
+    {
+        protocol_type.yfilter = yfilter;
+    }
+    if(value_path == "trib-protocol")
+    {
+        trib_protocol.yfilter = yfilter;
+    }
+    if(value_path == "trib-rate-class")
+    {
+        trib_rate_class.yfilter = yfilter;
+    }
+    if(value_path == "tti-expected")
+    {
+        tti_expected.yfilter = yfilter;
+    }
+    if(value_path == "tti-transmit")
+    {
+        tti_transmit.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceAttr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-state" || name == "ingress-client-port" || name == "ingress-physical-channel" || name == "logical-channel-ifname" || name == "logical-channel-index" || name == "loopback-mode" || name == "protocol-type" || name == "trib-protocol" || name == "trib-rate-class" || name == "tti-expected" || name == "tti-transmit" || name == "type")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignments()
@@ -1878,7 +2293,7 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optica
         if(optical_logical_interface_logical_channel_assignment[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::get_segment_path() const
@@ -1943,8 +2358,19 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalI
     return children;
 }
 
-void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optical-logical-interface-logical-channel-assignment")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignment()
@@ -1970,8 +2396,8 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optica
 
 bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (optical_logical_interface_logical_channel_assignment_attr !=  nullptr && optical_logical_interface_logical_channel_assignment_attr->has_operation());
 }
 
@@ -1998,7 +2424,7 @@ const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInter
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2031,12 +2457,29 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalI
     return children;
 }
 
-void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optical-logical-interface-logical-channel-assignment-attr" || name == "index")
+        return true;
+    return false;
 }
 
 OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::OpticalLogicalInterfaceLogicalChannelAssignmentAttr()
@@ -2069,14 +2512,14 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::Optica
 
 bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allocation.operation)
-	|| is_set(assignment_type.operation)
-	|| is_set(index_.operation)
-	|| is_set(is_logical_link.operation)
-	|| is_set(logical_channel.operation)
-	|| is_set(name.operation)
-	|| is_set(optical_channel.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allocation.yfilter)
+	|| ydk::is_set(assignment_type.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(is_logical_link.yfilter)
+	|| ydk::is_set(logical_channel.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(optical_channel.yfilter);
 }
 
 std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::get_segment_path() const
@@ -2102,13 +2545,13 @@ const EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInter
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allocation.is_set || is_set(allocation.operation)) leaf_name_data.push_back(allocation.get_name_leafdata());
-    if (assignment_type.is_set || is_set(assignment_type.operation)) leaf_name_data.push_back(assignment_type.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (is_logical_link.is_set || is_set(is_logical_link.operation)) leaf_name_data.push_back(is_logical_link.get_name_leafdata());
-    if (logical_channel.is_set || is_set(logical_channel.operation)) leaf_name_data.push_back(logical_channel.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (optical_channel.is_set || is_set(optical_channel.operation)) leaf_name_data.push_back(optical_channel.get_name_leafdata());
+    if (allocation.is_set || is_set(allocation.yfilter)) leaf_name_data.push_back(allocation.get_name_leafdata());
+    if (assignment_type.is_set || is_set(assignment_type.yfilter)) leaf_name_data.push_back(assignment_type.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (is_logical_link.is_set || is_set(is_logical_link.yfilter)) leaf_name_data.push_back(is_logical_link.get_name_leafdata());
+    if (logical_channel.is_set || is_set(logical_channel.yfilter)) leaf_name_data.push_back(logical_channel.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (optical_channel.is_set || is_set(optical_channel.yfilter)) leaf_name_data.push_back(optical_channel.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2127,72 +2570,125 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalInterface::OpticalLogicalI
     return children;
 }
 
-void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::set_value(const std::string & value_path, std::string value)
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allocation")
     {
         allocation = value;
+        allocation.value_namespace = name_space;
+        allocation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "assignment-type")
     {
         assignment_type = value;
+        assignment_type.value_namespace = name_space;
+        assignment_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-logical-link")
     {
         is_logical_link = value;
+        is_logical_link.value_namespace = name_space;
+        is_logical_link.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "logical-channel")
     {
         logical_channel = value;
+        logical_channel.value_namespace = name_space;
+        logical_channel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "optical-channel")
     {
         optical_channel = value;
+        optical_channel.value_namespace = name_space;
+        optical_channel.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf LogicalProtocolEnum::proto_type_unknown {0, "proto-type-unknown"};
-const Enum::YLeaf LogicalProtocolEnum::proto_type_ethernet {1, "proto-type-ethernet"};
-const Enum::YLeaf LogicalProtocolEnum::proto_type_otn {2, "proto-type-otn"};
+void OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allocation")
+    {
+        allocation.yfilter = yfilter;
+    }
+    if(value_path == "assignment-type")
+    {
+        assignment_type.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "is-logical-link")
+    {
+        is_logical_link.yfilter = yfilter;
+    }
+    if(value_path == "logical-channel")
+    {
+        logical_channel.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "optical-channel")
+    {
+        optical_channel.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_unknown {0, "trib-proto-type-unknown"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type1ge {1, "trib-proto-type1ge"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_stm16 {3, "trib-proto-type-stm16"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type10gelan {4, "trib-proto-type10gelan"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type10gewan {5, "trib-proto-type10gewan"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_oc192 {6, "trib-proto-type-oc192"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_stm64 {7, "trib-proto-type-stm64"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu2 {8, "trib-proto-type-otu2"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu2e {9, "trib-proto-type-otu2e"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu1e {10, "trib-proto-type-otu1e"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_odu2 {11, "trib-proto-type-odu2"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_odu2e {12, "trib-proto-type-odu2e"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type40ge {13, "trib-proto-type40ge"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_oc768 {14, "trib-proto-type-oc768"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_stm256 {15, "trib-proto-type-stm256"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu3 {16, "trib-proto-type-otu3"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_odu3 {17, "trib-proto-type-odu3"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type100ge {18, "trib-proto-type100ge"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type100g_mlg {19, "trib-proto-type100g-mlg"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
-const Enum::YLeaf TribProtocolEnum::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
+bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::OpticalLogicalInterfaceLogicalChannelAssignments::OpticalLogicalInterfaceLogicalChannelAssignment::OpticalLogicalInterfaceLogicalChannelAssignmentAttr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocation" || name == "assignment-type" || name == "index" || name == "is-logical-link" || name == "logical-channel" || name == "name" || name == "optical-channel")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf TribRateClassEnum::trib_rate_unknown {0, "trib-rate-unknown"};
-const Enum::YLeaf TribRateClassEnum::trib_rate1g {1, "trib-rate1g"};
-const Enum::YLeaf TribRateClassEnum::trib_rate25g {2, "trib-rate25g"};
-const Enum::YLeaf TribRateClassEnum::trib_rate10g {3, "trib-rate10g"};
-const Enum::YLeaf TribRateClassEnum::trib_rate40g {4, "trib-rate40g"};
-const Enum::YLeaf TribRateClassEnum::trib_rate100g {5, "trib-rate100g"};
+const Enum::YLeaf TribRateClass::trib_rate_unknown {0, "trib-rate-unknown"};
+const Enum::YLeaf TribRateClass::trib_rate1g {1, "trib-rate1g"};
+const Enum::YLeaf TribRateClass::trib_rate25g {2, "trib-rate25g"};
+const Enum::YLeaf TribRateClass::trib_rate10g {3, "trib-rate10g"};
+const Enum::YLeaf TribRateClass::trib_rate40g {4, "trib-rate40g"};
+const Enum::YLeaf TribRateClass::trib_rate100g {5, "trib-rate100g"};
+
+const Enum::YLeaf LogicalProtocol::proto_type_unknown {0, "proto-type-unknown"};
+const Enum::YLeaf LogicalProtocol::proto_type_ethernet {1, "proto-type-ethernet"};
+const Enum::YLeaf LogicalProtocol::proto_type_otn {2, "proto-type-otn"};
+
+const Enum::YLeaf TribProtocol::trib_proto_type_unknown {0, "trib-proto-type-unknown"};
+const Enum::YLeaf TribProtocol::trib_proto_type1ge {1, "trib-proto-type1ge"};
+const Enum::YLeaf TribProtocol::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
+const Enum::YLeaf TribProtocol::trib_proto_type_stm16 {3, "trib-proto-type-stm16"};
+const Enum::YLeaf TribProtocol::trib_proto_type10gelan {4, "trib-proto-type10gelan"};
+const Enum::YLeaf TribProtocol::trib_proto_type10gewan {5, "trib-proto-type10gewan"};
+const Enum::YLeaf TribProtocol::trib_proto_type_oc192 {6, "trib-proto-type-oc192"};
+const Enum::YLeaf TribProtocol::trib_proto_type_stm64 {7, "trib-proto-type-stm64"};
+const Enum::YLeaf TribProtocol::trib_proto_type_otu2 {8, "trib-proto-type-otu2"};
+const Enum::YLeaf TribProtocol::trib_proto_type_otu2e {9, "trib-proto-type-otu2e"};
+const Enum::YLeaf TribProtocol::trib_proto_type_otu1e {10, "trib-proto-type-otu1e"};
+const Enum::YLeaf TribProtocol::trib_proto_type_odu2 {11, "trib-proto-type-odu2"};
+const Enum::YLeaf TribProtocol::trib_proto_type_odu2e {12, "trib-proto-type-odu2e"};
+const Enum::YLeaf TribProtocol::trib_proto_type40ge {13, "trib-proto-type40ge"};
+const Enum::YLeaf TribProtocol::trib_proto_type_oc768 {14, "trib-proto-type-oc768"};
+const Enum::YLeaf TribProtocol::trib_proto_type_stm256 {15, "trib-proto-type-stm256"};
+const Enum::YLeaf TribProtocol::trib_proto_type_otu3 {16, "trib-proto-type-otu3"};
+const Enum::YLeaf TribProtocol::trib_proto_type_odu3 {17, "trib-proto-type-odu3"};
+const Enum::YLeaf TribProtocol::trib_proto_type100ge {18, "trib-proto-type100ge"};
+const Enum::YLeaf TribProtocol::trib_proto_type100g_mlg {19, "trib-proto-type100g-mlg"};
+const Enum::YLeaf TribProtocol::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
+const Enum::YLeaf TribProtocol::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
+const Enum::YLeaf TribProtocol::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
 
 
 }

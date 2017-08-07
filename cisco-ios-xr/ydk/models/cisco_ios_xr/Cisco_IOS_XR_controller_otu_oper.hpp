@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_controller_otu_oper {
 
-class Otu : public Entity
+class Otu : public ydk::Entity
 {
     public:
         Otu();
@@ -18,15 +18,18 @@ class Otu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Controllers; //type: Otu::Controllers
 
@@ -35,7 +38,7 @@ class Otu : public Entity
 }; // Otu
 
 
-class Otu::Controllers : public Entity
+class Otu::Controllers : public ydk::Entity
 {
     public:
         Controllers();
@@ -43,11 +46,13 @@ class Otu::Controllers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Controller; //type: Otu::Controllers::Controller
 
@@ -56,7 +61,7 @@ class Otu::Controllers : public Entity
 }; // Otu::Controllers
 
 
-class Otu::Controllers::Controller : public Entity
+class Otu::Controllers::Controller : public ydk::Entity
 {
     public:
         Controller();
@@ -64,13 +69,15 @@ class Otu::Controllers::Controller : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf controller_name; //type: string
+        ydk::YLeaf controller_name; //type: string
         class Info; //type: Otu::Controllers::Controller::Info
 
         std::shared_ptr<Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info> info;
@@ -78,7 +85,7 @@ class Otu::Controllers::Controller : public Entity
 }; // Otu::Controllers::Controller
 
 
-class Otu::Controllers::Controller::Info : public Entity
+class Otu::Controllers::Controller::Info : public ydk::Entity
 {
     public:
         Info();
@@ -86,37 +93,39 @@ class Otu::Controllers::Controller::Info : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf state; //type: OtuStateEtEnum
-        YLeaf name; //type: string
-        YLeaf sf; //type: uint8
-        YLeaf sd; //type: uint8
-        YLeaf loopback_mode; //type: OtuLoopBackModeEnum
-        YLeaf fec_mode; //type: OtuG709FecModeEnum
-        YLeaf derivedstate_mode; //type: OtuDerStateEnum
-        YLeaf inherit_sec_state; //type: OtuSecStateEnum
-        YLeaf config_sec_state; //type: OtuSecStateEnum
-        YLeaf gcc_mode; //type: boolean
-        YLeaf q; //type: uint64
-        YLeaf q_margin; //type: uint64
-        YLeaf performance_monitoring; //type: OtuPerMonEnum
-        YLeaf ec; //type: uint64
-        YLeaf uc; //type: uint64
-        YLeaf pre_fec_val; //type: int32
-        YLeaf pre_fec_mantissa; //type: int8
-        YLeaf ec_value; //type: boolean
-        YLeaf uc_value; //type: boolean
-        YLeaf pre_fec_ber_value; //type: boolean
-        YLeaf pre_fec_ber_mantissa; //type: boolean
-        YLeaf nv_optical_support; //type: boolean
-        YLeaf gmpls_tti_mode; //type: GmplsOtuTtiModeEnum
-        YLeaf gmpls_tvm_id; //type: uint8
-        YLeaf auto_tti_flag; //type: boolean
+        ydk::YLeaf state; //type: OtuStateEt
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf sf; //type: uint8
+        ydk::YLeaf sd; //type: uint8
+        ydk::YLeaf loopback_mode; //type: OtuLoopBackMode
+        ydk::YLeaf fec_mode; //type: OtuG709FecMode
+        ydk::YLeaf derivedstate_mode; //type: OtuDerState
+        ydk::YLeaf inherit_sec_state; //type: OtuSecState
+        ydk::YLeaf config_sec_state; //type: OtuSecState
+        ydk::YLeaf gcc_mode; //type: boolean
+        ydk::YLeaf q; //type: uint64
+        ydk::YLeaf q_margin; //type: uint64
+        ydk::YLeaf performance_monitoring; //type: OtuPerMon
+        ydk::YLeaf ec; //type: uint64
+        ydk::YLeaf uc; //type: uint64
+        ydk::YLeaf pre_fec_val; //type: int32
+        ydk::YLeaf pre_fec_mantissa; //type: int8
+        ydk::YLeaf ec_value; //type: boolean
+        ydk::YLeaf uc_value; //type: boolean
+        ydk::YLeaf pre_fec_ber_value; //type: boolean
+        ydk::YLeaf pre_fec_ber_mantissa; //type: boolean
+        ydk::YLeaf nv_optical_support; //type: boolean
+        ydk::YLeaf gmpls_tti_mode; //type: GmplsOtuTtiMode
+        ydk::YLeaf gmpls_tvm_id; //type: uint8
+        ydk::YLeaf auto_tti_flag; //type: boolean
         class Local; //type: Otu::Controllers::Controller::Info::Local
         class Remote; //type: Otu::Controllers::Controller::Info::Remote
         class TtiMode; //type: Otu::Controllers::Controller::Info::TtiMode
@@ -136,7 +145,7 @@ class Otu::Controllers::Controller::Info : public Entity
 }; // Otu::Controllers::Controller::Info
 
 
-class Otu::Controllers::Controller::Info::Local : public Entity
+class Otu::Controllers::Controller::Info::Local : public ydk::Entity
 {
     public:
         Local();
@@ -144,19 +153,21 @@ class Otu::Controllers::Controller::Info::Local : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: uint32
-        YLeaf if_index; //type: uint32
+        ydk::YLeaf router_id; //type: uint32
+        ydk::YLeaf if_index; //type: uint32
 
 }; // Otu::Controllers::Controller::Info::Local
 
 
-class Otu::Controllers::Controller::Info::Remote : public Entity
+class Otu::Controllers::Controller::Info::Remote : public ydk::Entity
 {
     public:
         Remote();
@@ -164,19 +175,21 @@ class Otu::Controllers::Controller::Info::Remote : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: uint32
-        YLeaf if_index; //type: uint32
+        ydk::YLeaf router_id; //type: uint32
+        ydk::YLeaf if_index; //type: uint32
 
 }; // Otu::Controllers::Controller::Info::Remote
 
 
-class Otu::Controllers::Controller::Info::TtiMode : public Entity
+class Otu::Controllers::Controller::Info::TtiMode : public ydk::Entity
 {
     public:
         TtiMode();
@@ -184,18 +197,20 @@ class Otu::Controllers::Controller::Info::TtiMode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf g709tti_sent_mode; //type: OtuTtiEtEnum
-        YLeaf g709tti_exp_mode; //type: OtuTtiEtEnum
-        YLeaf g709tti_rec_mode; //type: OtuTtiEtEnum
-        YLeaf remote_interface; //type: string
-        YLeaf remote_host_name; //type: string
-        YLeaf remote_ip_addr; //type: string
+        ydk::YLeaf g709tti_sent_mode; //type: OtuTtiEt
+        ydk::YLeaf g709tti_exp_mode; //type: OtuTtiEt
+        ydk::YLeaf g709tti_rec_mode; //type: OtuTtiEt
+        ydk::YLeaf remote_interface; //type: string
+        ydk::YLeaf remote_host_name; //type: string
+        ydk::YLeaf remote_ip_addr; //type: string
         class Tx; //type: Otu::Controllers::Controller::Info::TtiMode::Tx
         class Exp; //type: Otu::Controllers::Controller::Info::TtiMode::Exp
         class Rec; //type: Otu::Controllers::Controller::Info::TtiMode::Rec
@@ -207,7 +222,7 @@ class Otu::Controllers::Controller::Info::TtiMode : public Entity
 }; // Otu::Controllers::Controller::Info::TtiMode
 
 
-class Otu::Controllers::Controller::Info::TtiMode::Tx : public Entity
+class Otu::Controllers::Controller::Info::TtiMode::Tx : public ydk::Entity
 {
     public:
         Tx();
@@ -215,21 +230,23 @@ class Otu::Controllers::Controller::Info::TtiMode::Tx : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf full_tti_ascii_string; //type: string
-        YLeafList sapi; //type: list of  uint8
-        YLeafList dapi; //type: list of  uint8
-        YLeafList operator_specific; //type: list of  uint8
+        ydk::YLeaf full_tti_ascii_string; //type: string
+        ydk::YLeafList sapi; //type: list of  uint8
+        ydk::YLeafList dapi; //type: list of  uint8
+        ydk::YLeafList operator_specific; //type: list of  uint8
 
 }; // Otu::Controllers::Controller::Info::TtiMode::Tx
 
 
-class Otu::Controllers::Controller::Info::TtiMode::Exp : public Entity
+class Otu::Controllers::Controller::Info::TtiMode::Exp : public ydk::Entity
 {
     public:
         Exp();
@@ -237,21 +254,23 @@ class Otu::Controllers::Controller::Info::TtiMode::Exp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf full_tti_ascii_string; //type: string
-        YLeafList sapi; //type: list of  uint8
-        YLeafList dapi; //type: list of  uint8
-        YLeafList operator_specific; //type: list of  uint8
+        ydk::YLeaf full_tti_ascii_string; //type: string
+        ydk::YLeafList sapi; //type: list of  uint8
+        ydk::YLeafList dapi; //type: list of  uint8
+        ydk::YLeafList operator_specific; //type: list of  uint8
 
 }; // Otu::Controllers::Controller::Info::TtiMode::Exp
 
 
-class Otu::Controllers::Controller::Info::TtiMode::Rec : public Entity
+class Otu::Controllers::Controller::Info::TtiMode::Rec : public ydk::Entity
 {
     public:
         Rec();
@@ -259,21 +278,23 @@ class Otu::Controllers::Controller::Info::TtiMode::Rec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf full_tti_ascii_string; //type: string
-        YLeafList sapi; //type: list of  uint8
-        YLeafList dapi; //type: list of  uint8
-        YLeafList operator_specific; //type: list of  uint8
+        ydk::YLeaf full_tti_ascii_string; //type: string
+        ydk::YLeafList sapi; //type: list of  uint8
+        ydk::YLeafList dapi; //type: list of  uint8
+        ydk::YLeafList operator_specific; //type: list of  uint8
 
 }; // Otu::Controllers::Controller::Info::TtiMode::Rec
 
 
-class Otu::Controllers::Controller::Info::NetworkSrlg : public Entity
+class Otu::Controllers::Controller::Info::NetworkSrlg : public ydk::Entity
 {
     public:
         NetworkSrlg();
@@ -281,11 +302,13 @@ class Otu::Controllers::Controller::Info::NetworkSrlg : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SrlgInfo; //type: Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo
 
@@ -294,7 +317,7 @@ class Otu::Controllers::Controller::Info::NetworkSrlg : public Entity
 }; // Otu::Controllers::Controller::Info::NetworkSrlg
 
 
-class Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo : public Entity
+class Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo : public ydk::Entity
 {
     public:
         SrlgInfo();
@@ -302,19 +325,21 @@ class Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_id; //type: uint32
-        YLeafList srlg; //type: list of  uint32
+        ydk::YLeaf set_id; //type: uint32
+        ydk::YLeafList srlg; //type: list of  uint32
 
 }; // Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo : public ydk::Entity
 {
     public:
         OtuAlarmInfo();
@@ -322,11 +347,13 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Los; //type: Otu::Controllers::Controller::Info::OtuAlarmInfo::Los
         class Lof; //type: Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof
@@ -367,7 +394,7 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo : public Entity
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Los : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Los : public ydk::Entity
 {
     public:
         Los();
@@ -375,21 +402,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Los : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Los
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof : public ydk::Entity
 {
     public:
         Lof();
@@ -397,21 +426,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom : public ydk::Entity
 {
     public:
         Lom();
@@ -419,21 +450,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof : public ydk::Entity
 {
     public:
         Oof();
@@ -441,21 +474,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom : public ydk::Entity
 {
     public:
         Oom();
@@ -463,21 +498,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais : public ydk::Entity
 {
     public:
         Ais();
@@ -485,21 +522,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae : public ydk::Entity
 {
     public:
         Iae();
@@ -507,21 +546,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae : public ydk::Entity
 {
     public:
         Biae();
@@ -529,21 +570,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi : public ydk::Entity
 {
     public:
         Bdi();
@@ -551,21 +594,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim : public ydk::Entity
 {
     public:
         Tim();
@@ -573,21 +618,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc : public ydk::Entity
 {
     public:
         Eoc();
@@ -595,21 +642,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch : public ydk::Entity
 {
     public:
         FecMismatch();
@@ -617,21 +666,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer : public ydk::Entity
 {
     public:
         SfBer();
@@ -639,21 +690,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer : public ydk::Entity
 {
     public:
         SdBer();
@@ -661,21 +714,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec : public ydk::Entity
 {
     public:
         Ec();
@@ -683,21 +738,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc : public ydk::Entity
 {
     public:
         Uc();
@@ -705,21 +762,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc
 
 
-class Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc : public Entity
+class Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc : public ydk::Entity
 {
     public:
         Fecunc();
@@ -727,21 +786,23 @@ class Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reporting_enabled; //type: boolean
-        YLeaf is_detected; //type: boolean
-        YLeaf is_asserted; //type: boolean
-        YLeaf counter; //type: uint64
+        ydk::YLeaf reporting_enabled; //type: boolean
+        ydk::YLeaf is_detected; //type: boolean
+        ydk::YLeaf is_asserted; //type: boolean
+        ydk::YLeaf counter; //type: uint64
 
 }; // Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc
 
 
-class Otu::Controllers::Controller::Info::Proactive : public Entity
+class Otu::Controllers::Controller::Info::Proactive : public ydk::Entity
 {
     public:
         Proactive();
@@ -749,28 +810,30 @@ class Otu::Controllers::Controller::Info::Proactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf proactive_status; //type: boolean
-        YLeaf inherit_sec_state; //type: OtuSecStateEnum
-        YLeaf config_sec_state; //type: OtuSecStateEnum
-        YLeaf proactive_fsm_state; //type: OtuPpFsmStateEnum
-        YLeaf proactive_fsm_if_state; //type: OtuPpIntfStateEnum
-        YLeaf trig_thresh_coeff; //type: uint8
-        YLeaf trig_thresh_power; //type: uint8
-        YLeaf rvrt_thresh_coeff; //type: uint8
-        YLeaf rvrt_thresh_power; //type: uint8
-        YLeaf trigger_window; //type: uint32
-        YLeaf revert_window; //type: uint32
+        ydk::YLeaf proactive_status; //type: boolean
+        ydk::YLeaf inherit_sec_state; //type: OtuSecState
+        ydk::YLeaf config_sec_state; //type: OtuSecState
+        ydk::YLeaf proactive_fsm_state; //type: OtuPpFsmState
+        ydk::YLeaf proactive_fsm_if_state; //type: OtuPpIntfState
+        ydk::YLeaf trig_thresh_coeff; //type: uint8
+        ydk::YLeaf trig_thresh_power; //type: uint8
+        ydk::YLeaf rvrt_thresh_coeff; //type: uint8
+        ydk::YLeaf rvrt_thresh_power; //type: uint8
+        ydk::YLeaf trigger_window; //type: uint32
+        ydk::YLeaf revert_window; //type: uint32
 
 }; // Otu::Controllers::Controller::Info::Proactive
 
 
-class Otu::Controllers::Controller::Info::OtuFecSatistics : public Entity
+class Otu::Controllers::Controller::Info::OtuFecSatistics : public ydk::Entity
 {
     public:
         OtuFecSatistics();
@@ -778,137 +841,139 @@ class Otu::Controllers::Controller::Info::OtuFecSatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf post_fec_ber; //type: string
-        YLeaf pre_fec_ber; //type: string
+        ydk::YLeaf post_fec_ber; //type: string
+        ydk::YLeaf pre_fec_ber; //type: string
 
 }; // Otu::Controllers::Controller::Info::OtuFecSatistics
 
-class OtuStateEtEnum : public Enum
+class OtuPpIntfState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_ready;
-        static const Enum::YLeaf admin_down;
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf up;
-        static const Enum::YLeaf shutdown;
-        static const Enum::YLeaf error_disable;
-        static const Enum::YLeaf down_immediate;
-        static const Enum::YLeaf down_immediate_admin;
-        static const Enum::YLeaf down_graceful;
-        static const Enum::YLeaf begin_shutdown;
-        static const Enum::YLeaf end_shutdown;
-        static const Enum::YLeaf begin_error_disable;
-        static const Enum::YLeaf end_error_disable;
-        static const Enum::YLeaf begin_down_graceful;
-        static const Enum::YLeaf reset;
-        static const Enum::YLeaf operational;
-        static const Enum::YLeaf not_operational;
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf last;
+        static const ydk::Enum::YLeaf otu_pp_intf_up;
+        static const ydk::Enum::YLeaf otu_pp_intf_failing;
+        static const ydk::Enum::YLeaf otu_pp_intf_down;
 
 };
 
-class OtuPerMonEnum : public Enum
+class OtuSecState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf ais;
 
 };
 
-class OtuPpIntfStateEnum : public Enum
+class OtuPpFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf otu_pp_intf_up;
-        static const Enum::YLeaf otu_pp_intf_failing;
-        static const Enum::YLeaf otu_pp_intf_down;
+        static const ydk::Enum::YLeaf otu_in_active;
+        static const ydk::Enum::YLeaf otu_disabled;
+        static const ydk::Enum::YLeaf otu_normal_state;
+        static const ydk::Enum::YLeaf otu_local_failing;
+        static const ydk::Enum::YLeaf otu_remote_failing;
+        static const ydk::Enum::YLeaf otu_main_t_failing;
+        static const ydk::Enum::YLeaf otu_regen_failing;
+        static const ydk::Enum::YLeaf otu_local_failed;
+        static const ydk::Enum::YLeaf otu_remote_failed;
+        static const ydk::Enum::YLeaf otu_main_t_failed;
+        static const ydk::Enum::YLeaf otu_regen_failed;
 
 };
 
-class OtuPpFsmStateEnum : public Enum
+class OtuPerMon : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf otu_in_active;
-        static const Enum::YLeaf otu_disabled;
-        static const Enum::YLeaf otu_normal_state;
-        static const Enum::YLeaf otu_local_failing;
-        static const Enum::YLeaf otu_remote_failing;
-        static const Enum::YLeaf otu_main_t_failing;
-        static const Enum::YLeaf otu_regen_failing;
-        static const Enum::YLeaf otu_local_failed;
-        static const Enum::YLeaf otu_remote_failed;
-        static const Enum::YLeaf otu_main_t_failed;
-        static const Enum::YLeaf otu_regen_failed;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class OtuTtiEtEnum : public Enum
+class OtuDerState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ascii;
-        static const Enum::YLeaf hex;
-        static const Enum::YLeaf full_ascii;
-        static const Enum::YLeaf full_hex;
+        static const ydk::Enum::YLeaf out_of_service;
+        static const ydk::Enum::YLeaf in_service;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf ais;
 
 };
 
-class OtuG709FecModeEnum : public Enum
+class GmplsOtuTtiMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf otu_bag_none_fec;
-        static const Enum::YLeaf otu_bag_standard_fec;
-        static const Enum::YLeaf otu_bag_1_i_7_fec;
-        static const Enum::YLeaf otu_bag_1_i_4_fec;
-        static const Enum::YLeaf otu_bag_swizzle_fec;
-        static const Enum::YLeaf otu_bag_hg20_fec;
-        static const Enum::YLeaf otu_bag_enhanced_hg7_fec;
-        static const Enum::YLeaf otu_bag_sd20_fec;
-        static const Enum::YLeaf otu_bag_sd7_fec;
-        static const Enum::YLeaf otu_bag_all_fec;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_none;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_sm;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_pm;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_tcm;
 
 };
 
-class OtuSecStateEnum : public Enum
+class OtuStateEt : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf normal;
-        static const Enum::YLeaf maintenance;
-        static const Enum::YLeaf ais;
+        static const ydk::Enum::YLeaf not_ready;
+        static const ydk::Enum::YLeaf admin_down;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf error_disable;
+        static const ydk::Enum::YLeaf down_immediate;
+        static const ydk::Enum::YLeaf down_immediate_admin;
+        static const ydk::Enum::YLeaf down_graceful;
+        static const ydk::Enum::YLeaf begin_shutdown;
+        static const ydk::Enum::YLeaf end_shutdown;
+        static const ydk::Enum::YLeaf begin_error_disable;
+        static const ydk::Enum::YLeaf end_error_disable;
+        static const ydk::Enum::YLeaf begin_down_graceful;
+        static const ydk::Enum::YLeaf reset;
+        static const ydk::Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf not_operational;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf last;
 
 };
 
-class OtuLoopBackModeEnum : public Enum
+class OtuTtiEt : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf line;
-        static const Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf ascii;
+        static const ydk::Enum::YLeaf hex;
+        static const ydk::Enum::YLeaf full_ascii;
+        static const ydk::Enum::YLeaf full_hex;
 
 };
 
-class GmplsOtuTtiModeEnum : public Enum
+class OtuG709FecMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf gmpls_otu_tti_mode_none;
-        static const Enum::YLeaf gmpls_otu_tti_mode_sm;
-        static const Enum::YLeaf gmpls_otu_tti_mode_pm;
-        static const Enum::YLeaf gmpls_otu_tti_mode_tcm;
+        static const ydk::Enum::YLeaf otu_bag_none_fec;
+        static const ydk::Enum::YLeaf otu_bag_standard_fec;
+        static const ydk::Enum::YLeaf otu_bag_1_i_7_fec;
+        static const ydk::Enum::YLeaf otu_bag_1_i_4_fec;
+        static const ydk::Enum::YLeaf otu_bag_swizzle_fec;
+        static const ydk::Enum::YLeaf otu_bag_hg20_fec;
+        static const ydk::Enum::YLeaf otu_bag_enhanced_hg7_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd20_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd7_fec;
+        static const ydk::Enum::YLeaf otu_bag_all_fec;
 
 };
 
-class OtuDerStateEnum : public Enum
+class OtuLoopBackMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf out_of_service;
-        static const Enum::YLeaf in_service;
-        static const Enum::YLeaf maintenance;
-        static const Enum::YLeaf ais;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf internal;
 
 };
 

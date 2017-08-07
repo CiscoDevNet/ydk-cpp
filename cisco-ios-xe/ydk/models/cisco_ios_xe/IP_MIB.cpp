@@ -6,62 +6,64 @@
 #include "generated_entity_lookup.hpp"
 #include "IP_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace IP_MIB {
 
 IpMib::IpMib()
     :
-    icmp_(std::make_shared<IpMib::Icmp>())
-	,icmpmsgstatstable_(std::make_shared<IpMib::Icmpmsgstatstable>())
-	,icmpstatstable_(std::make_shared<IpMib::Icmpstatstable>())
-	,ip_(std::make_shared<IpMib::Ip>())
-	,ipaddressprefixtable_(std::make_shared<IpMib::Ipaddressprefixtable>())
-	,ipaddresstable_(std::make_shared<IpMib::Ipaddresstable>())
-	,ipaddrtable_(std::make_shared<IpMib::Ipaddrtable>())
-	,ipdefaultroutertable_(std::make_shared<IpMib::Ipdefaultroutertable>())
-	,ipifstatstable_(std::make_shared<IpMib::Ipifstatstable>())
-	,ipnettomediatable_(std::make_shared<IpMib::Ipnettomediatable>())
-	,ipnettophysicaltable_(std::make_shared<IpMib::Ipnettophysicaltable>())
-	,ipsystemstatstable_(std::make_shared<IpMib::Ipsystemstatstable>())
-	,iptrafficstats_(std::make_shared<IpMib::Iptrafficstats>())
-	,ipv4interfacetable_(std::make_shared<IpMib::Ipv4Interfacetable>())
-	,ipv6interfacetable_(std::make_shared<IpMib::Ipv6Interfacetable>())
-	,ipv6routeradverttable_(std::make_shared<IpMib::Ipv6Routeradverttable>())
-	,ipv6scopezoneindextable_(std::make_shared<IpMib::Ipv6Scopezoneindextable>())
+    icmp(std::make_shared<IpMib::Icmp>())
+	,icmpmsgstatstable(std::make_shared<IpMib::Icmpmsgstatstable>())
+	,icmpstatstable(std::make_shared<IpMib::Icmpstatstable>())
+	,ip(std::make_shared<IpMib::Ip>())
+	,ipaddressprefixtable(std::make_shared<IpMib::Ipaddressprefixtable>())
+	,ipaddresstable(std::make_shared<IpMib::Ipaddresstable>())
+	,ipaddrtable(std::make_shared<IpMib::Ipaddrtable>())
+	,ipdefaultroutertable(std::make_shared<IpMib::Ipdefaultroutertable>())
+	,ipifstatstable(std::make_shared<IpMib::Ipifstatstable>())
+	,ipnettomediatable(std::make_shared<IpMib::Ipnettomediatable>())
+	,ipnettophysicaltable(std::make_shared<IpMib::Ipnettophysicaltable>())
+	,ipsystemstatstable(std::make_shared<IpMib::Ipsystemstatstable>())
+	,iptrafficstats(std::make_shared<IpMib::Iptrafficstats>())
+	,ipv4interfacetable(std::make_shared<IpMib::Ipv4Interfacetable>())
+	,ipv6interfacetable(std::make_shared<IpMib::Ipv6Interfacetable>())
+	,ipv6routeradverttable(std::make_shared<IpMib::Ipv6Routeradverttable>())
+	,ipv6scopezoneindextable(std::make_shared<IpMib::Ipv6Scopezoneindextable>())
 {
-    icmp_->parent = this;
+    icmp->parent = this;
 
-    icmpmsgstatstable_->parent = this;
+    icmpmsgstatstable->parent = this;
 
-    icmpstatstable_->parent = this;
+    icmpstatstable->parent = this;
 
-    ip_->parent = this;
+    ip->parent = this;
 
-    ipaddressprefixtable_->parent = this;
+    ipaddressprefixtable->parent = this;
 
-    ipaddresstable_->parent = this;
+    ipaddresstable->parent = this;
 
-    ipaddrtable_->parent = this;
+    ipaddrtable->parent = this;
 
-    ipdefaultroutertable_->parent = this;
+    ipdefaultroutertable->parent = this;
 
-    ipifstatstable_->parent = this;
+    ipifstatstable->parent = this;
 
-    ipnettomediatable_->parent = this;
+    ipnettomediatable->parent = this;
 
-    ipnettophysicaltable_->parent = this;
+    ipnettophysicaltable->parent = this;
 
-    ipsystemstatstable_->parent = this;
+    ipsystemstatstable->parent = this;
 
-    iptrafficstats_->parent = this;
+    iptrafficstats->parent = this;
 
-    ipv4interfacetable_->parent = this;
+    ipv4interfacetable->parent = this;
 
-    ipv6interfacetable_->parent = this;
+    ipv6interfacetable->parent = this;
 
-    ipv6routeradverttable_->parent = this;
+    ipv6routeradverttable->parent = this;
 
-    ipv6scopezoneindextable_->parent = this;
+    ipv6scopezoneindextable->parent = this;
 
     yang_name = "IP-MIB"; yang_parent_name = "IP-MIB";
 }
@@ -72,45 +74,45 @@ IpMib::~IpMib()
 
 bool IpMib::has_data() const
 {
-    return (icmp_ !=  nullptr && icmp_->has_data())
-	|| (icmpmsgstatstable_ !=  nullptr && icmpmsgstatstable_->has_data())
-	|| (icmpstatstable_ !=  nullptr && icmpstatstable_->has_data())
-	|| (ip_ !=  nullptr && ip_->has_data())
-	|| (ipaddressprefixtable_ !=  nullptr && ipaddressprefixtable_->has_data())
-	|| (ipaddresstable_ !=  nullptr && ipaddresstable_->has_data())
-	|| (ipaddrtable_ !=  nullptr && ipaddrtable_->has_data())
-	|| (ipdefaultroutertable_ !=  nullptr && ipdefaultroutertable_->has_data())
-	|| (ipifstatstable_ !=  nullptr && ipifstatstable_->has_data())
-	|| (ipnettomediatable_ !=  nullptr && ipnettomediatable_->has_data())
-	|| (ipnettophysicaltable_ !=  nullptr && ipnettophysicaltable_->has_data())
-	|| (ipsystemstatstable_ !=  nullptr && ipsystemstatstable_->has_data())
-	|| (iptrafficstats_ !=  nullptr && iptrafficstats_->has_data())
-	|| (ipv4interfacetable_ !=  nullptr && ipv4interfacetable_->has_data())
-	|| (ipv6interfacetable_ !=  nullptr && ipv6interfacetable_->has_data())
-	|| (ipv6routeradverttable_ !=  nullptr && ipv6routeradverttable_->has_data())
-	|| (ipv6scopezoneindextable_ !=  nullptr && ipv6scopezoneindextable_->has_data());
+    return (icmp !=  nullptr && icmp->has_data())
+	|| (icmpmsgstatstable !=  nullptr && icmpmsgstatstable->has_data())
+	|| (icmpstatstable !=  nullptr && icmpstatstable->has_data())
+	|| (ip !=  nullptr && ip->has_data())
+	|| (ipaddressprefixtable !=  nullptr && ipaddressprefixtable->has_data())
+	|| (ipaddresstable !=  nullptr && ipaddresstable->has_data())
+	|| (ipaddrtable !=  nullptr && ipaddrtable->has_data())
+	|| (ipdefaultroutertable !=  nullptr && ipdefaultroutertable->has_data())
+	|| (ipifstatstable !=  nullptr && ipifstatstable->has_data())
+	|| (ipnettomediatable !=  nullptr && ipnettomediatable->has_data())
+	|| (ipnettophysicaltable !=  nullptr && ipnettophysicaltable->has_data())
+	|| (ipsystemstatstable !=  nullptr && ipsystemstatstable->has_data())
+	|| (iptrafficstats !=  nullptr && iptrafficstats->has_data())
+	|| (ipv4interfacetable !=  nullptr && ipv4interfacetable->has_data())
+	|| (ipv6interfacetable !=  nullptr && ipv6interfacetable->has_data())
+	|| (ipv6routeradverttable !=  nullptr && ipv6routeradverttable->has_data())
+	|| (ipv6scopezoneindextable !=  nullptr && ipv6scopezoneindextable->has_data());
 }
 
 bool IpMib::has_operation() const
 {
-    return is_set(operation)
-	|| (icmp_ !=  nullptr && icmp_->has_operation())
-	|| (icmpmsgstatstable_ !=  nullptr && icmpmsgstatstable_->has_operation())
-	|| (icmpstatstable_ !=  nullptr && icmpstatstable_->has_operation())
-	|| (ip_ !=  nullptr && ip_->has_operation())
-	|| (ipaddressprefixtable_ !=  nullptr && ipaddressprefixtable_->has_operation())
-	|| (ipaddresstable_ !=  nullptr && ipaddresstable_->has_operation())
-	|| (ipaddrtable_ !=  nullptr && ipaddrtable_->has_operation())
-	|| (ipdefaultroutertable_ !=  nullptr && ipdefaultroutertable_->has_operation())
-	|| (ipifstatstable_ !=  nullptr && ipifstatstable_->has_operation())
-	|| (ipnettomediatable_ !=  nullptr && ipnettomediatable_->has_operation())
-	|| (ipnettophysicaltable_ !=  nullptr && ipnettophysicaltable_->has_operation())
-	|| (ipsystemstatstable_ !=  nullptr && ipsystemstatstable_->has_operation())
-	|| (iptrafficstats_ !=  nullptr && iptrafficstats_->has_operation())
-	|| (ipv4interfacetable_ !=  nullptr && ipv4interfacetable_->has_operation())
-	|| (ipv6interfacetable_ !=  nullptr && ipv6interfacetable_->has_operation())
-	|| (ipv6routeradverttable_ !=  nullptr && ipv6routeradverttable_->has_operation())
-	|| (ipv6scopezoneindextable_ !=  nullptr && ipv6scopezoneindextable_->has_operation());
+    return is_set(yfilter)
+	|| (icmp !=  nullptr && icmp->has_operation())
+	|| (icmpmsgstatstable !=  nullptr && icmpmsgstatstable->has_operation())
+	|| (icmpstatstable !=  nullptr && icmpstatstable->has_operation())
+	|| (ip !=  nullptr && ip->has_operation())
+	|| (ipaddressprefixtable !=  nullptr && ipaddressprefixtable->has_operation())
+	|| (ipaddresstable !=  nullptr && ipaddresstable->has_operation())
+	|| (ipaddrtable !=  nullptr && ipaddrtable->has_operation())
+	|| (ipdefaultroutertable !=  nullptr && ipdefaultroutertable->has_operation())
+	|| (ipifstatstable !=  nullptr && ipifstatstable->has_operation())
+	|| (ipnettomediatable !=  nullptr && ipnettomediatable->has_operation())
+	|| (ipnettophysicaltable !=  nullptr && ipnettophysicaltable->has_operation())
+	|| (ipsystemstatstable !=  nullptr && ipsystemstatstable->has_operation())
+	|| (iptrafficstats !=  nullptr && iptrafficstats->has_operation())
+	|| (ipv4interfacetable !=  nullptr && ipv4interfacetable->has_operation())
+	|| (ipv6interfacetable !=  nullptr && ipv6interfacetable->has_operation())
+	|| (ipv6routeradverttable !=  nullptr && ipv6routeradverttable->has_operation())
+	|| (ipv6scopezoneindextable !=  nullptr && ipv6scopezoneindextable->has_operation());
 }
 
 std::string IpMib::get_segment_path() const
@@ -144,155 +146,155 @@ std::shared_ptr<Entity> IpMib::get_child_by_name(const std::string & child_yang_
 {
     if(child_yang_name == "icmp")
     {
-        if(icmp_ == nullptr)
+        if(icmp == nullptr)
         {
-            icmp_ = std::make_shared<IpMib::Icmp>();
+            icmp = std::make_shared<IpMib::Icmp>();
         }
-        return icmp_;
+        return icmp;
     }
 
     if(child_yang_name == "icmpMsgStatsTable")
     {
-        if(icmpmsgstatstable_ == nullptr)
+        if(icmpmsgstatstable == nullptr)
         {
-            icmpmsgstatstable_ = std::make_shared<IpMib::Icmpmsgstatstable>();
+            icmpmsgstatstable = std::make_shared<IpMib::Icmpmsgstatstable>();
         }
-        return icmpmsgstatstable_;
+        return icmpmsgstatstable;
     }
 
     if(child_yang_name == "icmpStatsTable")
     {
-        if(icmpstatstable_ == nullptr)
+        if(icmpstatstable == nullptr)
         {
-            icmpstatstable_ = std::make_shared<IpMib::Icmpstatstable>();
+            icmpstatstable = std::make_shared<IpMib::Icmpstatstable>();
         }
-        return icmpstatstable_;
+        return icmpstatstable;
     }
 
     if(child_yang_name == "ip")
     {
-        if(ip_ == nullptr)
+        if(ip == nullptr)
         {
-            ip_ = std::make_shared<IpMib::Ip>();
+            ip = std::make_shared<IpMib::Ip>();
         }
-        return ip_;
+        return ip;
     }
 
     if(child_yang_name == "ipAddressPrefixTable")
     {
-        if(ipaddressprefixtable_ == nullptr)
+        if(ipaddressprefixtable == nullptr)
         {
-            ipaddressprefixtable_ = std::make_shared<IpMib::Ipaddressprefixtable>();
+            ipaddressprefixtable = std::make_shared<IpMib::Ipaddressprefixtable>();
         }
-        return ipaddressprefixtable_;
+        return ipaddressprefixtable;
     }
 
     if(child_yang_name == "ipAddressTable")
     {
-        if(ipaddresstable_ == nullptr)
+        if(ipaddresstable == nullptr)
         {
-            ipaddresstable_ = std::make_shared<IpMib::Ipaddresstable>();
+            ipaddresstable = std::make_shared<IpMib::Ipaddresstable>();
         }
-        return ipaddresstable_;
+        return ipaddresstable;
     }
 
     if(child_yang_name == "ipAddrTable")
     {
-        if(ipaddrtable_ == nullptr)
+        if(ipaddrtable == nullptr)
         {
-            ipaddrtable_ = std::make_shared<IpMib::Ipaddrtable>();
+            ipaddrtable = std::make_shared<IpMib::Ipaddrtable>();
         }
-        return ipaddrtable_;
+        return ipaddrtable;
     }
 
     if(child_yang_name == "ipDefaultRouterTable")
     {
-        if(ipdefaultroutertable_ == nullptr)
+        if(ipdefaultroutertable == nullptr)
         {
-            ipdefaultroutertable_ = std::make_shared<IpMib::Ipdefaultroutertable>();
+            ipdefaultroutertable = std::make_shared<IpMib::Ipdefaultroutertable>();
         }
-        return ipdefaultroutertable_;
+        return ipdefaultroutertable;
     }
 
     if(child_yang_name == "ipIfStatsTable")
     {
-        if(ipifstatstable_ == nullptr)
+        if(ipifstatstable == nullptr)
         {
-            ipifstatstable_ = std::make_shared<IpMib::Ipifstatstable>();
+            ipifstatstable = std::make_shared<IpMib::Ipifstatstable>();
         }
-        return ipifstatstable_;
+        return ipifstatstable;
     }
 
     if(child_yang_name == "ipNetToMediaTable")
     {
-        if(ipnettomediatable_ == nullptr)
+        if(ipnettomediatable == nullptr)
         {
-            ipnettomediatable_ = std::make_shared<IpMib::Ipnettomediatable>();
+            ipnettomediatable = std::make_shared<IpMib::Ipnettomediatable>();
         }
-        return ipnettomediatable_;
+        return ipnettomediatable;
     }
 
     if(child_yang_name == "ipNetToPhysicalTable")
     {
-        if(ipnettophysicaltable_ == nullptr)
+        if(ipnettophysicaltable == nullptr)
         {
-            ipnettophysicaltable_ = std::make_shared<IpMib::Ipnettophysicaltable>();
+            ipnettophysicaltable = std::make_shared<IpMib::Ipnettophysicaltable>();
         }
-        return ipnettophysicaltable_;
+        return ipnettophysicaltable;
     }
 
     if(child_yang_name == "ipSystemStatsTable")
     {
-        if(ipsystemstatstable_ == nullptr)
+        if(ipsystemstatstable == nullptr)
         {
-            ipsystemstatstable_ = std::make_shared<IpMib::Ipsystemstatstable>();
+            ipsystemstatstable = std::make_shared<IpMib::Ipsystemstatstable>();
         }
-        return ipsystemstatstable_;
+        return ipsystemstatstable;
     }
 
     if(child_yang_name == "ipTrafficStats")
     {
-        if(iptrafficstats_ == nullptr)
+        if(iptrafficstats == nullptr)
         {
-            iptrafficstats_ = std::make_shared<IpMib::Iptrafficstats>();
+            iptrafficstats = std::make_shared<IpMib::Iptrafficstats>();
         }
-        return iptrafficstats_;
+        return iptrafficstats;
     }
 
     if(child_yang_name == "ipv4InterfaceTable")
     {
-        if(ipv4interfacetable_ == nullptr)
+        if(ipv4interfacetable == nullptr)
         {
-            ipv4interfacetable_ = std::make_shared<IpMib::Ipv4Interfacetable>();
+            ipv4interfacetable = std::make_shared<IpMib::Ipv4Interfacetable>();
         }
-        return ipv4interfacetable_;
+        return ipv4interfacetable;
     }
 
     if(child_yang_name == "ipv6InterfaceTable")
     {
-        if(ipv6interfacetable_ == nullptr)
+        if(ipv6interfacetable == nullptr)
         {
-            ipv6interfacetable_ = std::make_shared<IpMib::Ipv6Interfacetable>();
+            ipv6interfacetable = std::make_shared<IpMib::Ipv6Interfacetable>();
         }
-        return ipv6interfacetable_;
+        return ipv6interfacetable;
     }
 
     if(child_yang_name == "ipv6RouterAdvertTable")
     {
-        if(ipv6routeradverttable_ == nullptr)
+        if(ipv6routeradverttable == nullptr)
         {
-            ipv6routeradverttable_ = std::make_shared<IpMib::Ipv6Routeradverttable>();
+            ipv6routeradverttable = std::make_shared<IpMib::Ipv6Routeradverttable>();
         }
-        return ipv6routeradverttable_;
+        return ipv6routeradverttable;
     }
 
     if(child_yang_name == "ipv6ScopeZoneIndexTable")
     {
-        if(ipv6scopezoneindextable_ == nullptr)
+        if(ipv6scopezoneindextable == nullptr)
         {
-            ipv6scopezoneindextable_ = std::make_shared<IpMib::Ipv6Scopezoneindextable>();
+            ipv6scopezoneindextable = std::make_shared<IpMib::Ipv6Scopezoneindextable>();
         }
-        return ipv6scopezoneindextable_;
+        return ipv6scopezoneindextable;
     }
 
     return nullptr;
@@ -301,95 +303,99 @@ std::shared_ptr<Entity> IpMib::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> IpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(icmp_ != nullptr)
+    if(icmp != nullptr)
     {
-        children["icmp"] = icmp_;
+        children["icmp"] = icmp;
     }
 
-    if(icmpmsgstatstable_ != nullptr)
+    if(icmpmsgstatstable != nullptr)
     {
-        children["icmpMsgStatsTable"] = icmpmsgstatstable_;
+        children["icmpMsgStatsTable"] = icmpmsgstatstable;
     }
 
-    if(icmpstatstable_ != nullptr)
+    if(icmpstatstable != nullptr)
     {
-        children["icmpStatsTable"] = icmpstatstable_;
+        children["icmpStatsTable"] = icmpstatstable;
     }
 
-    if(ip_ != nullptr)
+    if(ip != nullptr)
     {
-        children["ip"] = ip_;
+        children["ip"] = ip;
     }
 
-    if(ipaddressprefixtable_ != nullptr)
+    if(ipaddressprefixtable != nullptr)
     {
-        children["ipAddressPrefixTable"] = ipaddressprefixtable_;
+        children["ipAddressPrefixTable"] = ipaddressprefixtable;
     }
 
-    if(ipaddresstable_ != nullptr)
+    if(ipaddresstable != nullptr)
     {
-        children["ipAddressTable"] = ipaddresstable_;
+        children["ipAddressTable"] = ipaddresstable;
     }
 
-    if(ipaddrtable_ != nullptr)
+    if(ipaddrtable != nullptr)
     {
-        children["ipAddrTable"] = ipaddrtable_;
+        children["ipAddrTable"] = ipaddrtable;
     }
 
-    if(ipdefaultroutertable_ != nullptr)
+    if(ipdefaultroutertable != nullptr)
     {
-        children["ipDefaultRouterTable"] = ipdefaultroutertable_;
+        children["ipDefaultRouterTable"] = ipdefaultroutertable;
     }
 
-    if(ipifstatstable_ != nullptr)
+    if(ipifstatstable != nullptr)
     {
-        children["ipIfStatsTable"] = ipifstatstable_;
+        children["ipIfStatsTable"] = ipifstatstable;
     }
 
-    if(ipnettomediatable_ != nullptr)
+    if(ipnettomediatable != nullptr)
     {
-        children["ipNetToMediaTable"] = ipnettomediatable_;
+        children["ipNetToMediaTable"] = ipnettomediatable;
     }
 
-    if(ipnettophysicaltable_ != nullptr)
+    if(ipnettophysicaltable != nullptr)
     {
-        children["ipNetToPhysicalTable"] = ipnettophysicaltable_;
+        children["ipNetToPhysicalTable"] = ipnettophysicaltable;
     }
 
-    if(ipsystemstatstable_ != nullptr)
+    if(ipsystemstatstable != nullptr)
     {
-        children["ipSystemStatsTable"] = ipsystemstatstable_;
+        children["ipSystemStatsTable"] = ipsystemstatstable;
     }
 
-    if(iptrafficstats_ != nullptr)
+    if(iptrafficstats != nullptr)
     {
-        children["ipTrafficStats"] = iptrafficstats_;
+        children["ipTrafficStats"] = iptrafficstats;
     }
 
-    if(ipv4interfacetable_ != nullptr)
+    if(ipv4interfacetable != nullptr)
     {
-        children["ipv4InterfaceTable"] = ipv4interfacetable_;
+        children["ipv4InterfaceTable"] = ipv4interfacetable;
     }
 
-    if(ipv6interfacetable_ != nullptr)
+    if(ipv6interfacetable != nullptr)
     {
-        children["ipv6InterfaceTable"] = ipv6interfacetable_;
+        children["ipv6InterfaceTable"] = ipv6interfacetable;
     }
 
-    if(ipv6routeradverttable_ != nullptr)
+    if(ipv6routeradverttable != nullptr)
     {
-        children["ipv6RouterAdvertTable"] = ipv6routeradverttable_;
+        children["ipv6RouterAdvertTable"] = ipv6routeradverttable;
     }
 
-    if(ipv6scopezoneindextable_ != nullptr)
+    if(ipv6scopezoneindextable != nullptr)
     {
-        children["ipv6ScopeZoneIndexTable"] = ipv6scopezoneindextable_;
+        children["ipv6ScopeZoneIndexTable"] = ipv6scopezoneindextable;
     }
 
     return children;
 }
 
-void IpMib::set_value(const std::string & value_path, std::string value)
+void IpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IpMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -411,6 +417,18 @@ std::string IpMib::get_bundle_name() const
 augment_capabilities_function IpMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> IpMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool IpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "icmp" || name == "icmpMsgStatsTable" || name == "icmpStatsTable" || name == "ip" || name == "ipAddressPrefixTable" || name == "ipAddressTable" || name == "ipAddrTable" || name == "ipDefaultRouterTable" || name == "ipIfStatsTable" || name == "ipNetToMediaTable" || name == "ipNetToPhysicalTable" || name == "ipSystemStatsTable" || name == "ipTrafficStats" || name == "ipv4InterfaceTable" || name == "ipv6InterfaceTable" || name == "ipv6RouterAdvertTable" || name == "ipv6ScopeZoneIndexTable")
+        return true;
+    return false;
 }
 
 IpMib::Ip::Ip()
@@ -481,33 +499,33 @@ bool IpMib::Ip::has_data() const
 
 bool IpMib::Ip::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipaddressspinlock.operation)
-	|| is_set(ipdefaultttl.operation)
-	|| is_set(ipforwarding.operation)
-	|| is_set(ipforwdatagrams.operation)
-	|| is_set(ipfragcreates.operation)
-	|| is_set(ipfragfails.operation)
-	|| is_set(ipfragoks.operation)
-	|| is_set(ipinaddrerrors.operation)
-	|| is_set(ipindelivers.operation)
-	|| is_set(ipindiscards.operation)
-	|| is_set(ipinhdrerrors.operation)
-	|| is_set(ipinreceives.operation)
-	|| is_set(ipinunknownprotos.operation)
-	|| is_set(ipoutdiscards.operation)
-	|| is_set(ipoutnoroutes.operation)
-	|| is_set(ipoutrequests.operation)
-	|| is_set(ipreasmfails.operation)
-	|| is_set(ipreasmoks.operation)
-	|| is_set(ipreasmreqds.operation)
-	|| is_set(ipreasmtimeout.operation)
-	|| is_set(iproutingdiscards.operation)
-	|| is_set(ipv4interfacetablelastchange.operation)
-	|| is_set(ipv6interfacetablelastchange.operation)
-	|| is_set(ipv6ipdefaulthoplimit.operation)
-	|| is_set(ipv6ipforwarding.operation)
-	|| is_set(ipv6routeradvertspinlock.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipaddressspinlock.yfilter)
+	|| ydk::is_set(ipdefaultttl.yfilter)
+	|| ydk::is_set(ipforwarding.yfilter)
+	|| ydk::is_set(ipforwdatagrams.yfilter)
+	|| ydk::is_set(ipfragcreates.yfilter)
+	|| ydk::is_set(ipfragfails.yfilter)
+	|| ydk::is_set(ipfragoks.yfilter)
+	|| ydk::is_set(ipinaddrerrors.yfilter)
+	|| ydk::is_set(ipindelivers.yfilter)
+	|| ydk::is_set(ipindiscards.yfilter)
+	|| ydk::is_set(ipinhdrerrors.yfilter)
+	|| ydk::is_set(ipinreceives.yfilter)
+	|| ydk::is_set(ipinunknownprotos.yfilter)
+	|| ydk::is_set(ipoutdiscards.yfilter)
+	|| ydk::is_set(ipoutnoroutes.yfilter)
+	|| ydk::is_set(ipoutrequests.yfilter)
+	|| ydk::is_set(ipreasmfails.yfilter)
+	|| ydk::is_set(ipreasmoks.yfilter)
+	|| ydk::is_set(ipreasmreqds.yfilter)
+	|| ydk::is_set(ipreasmtimeout.yfilter)
+	|| ydk::is_set(iproutingdiscards.yfilter)
+	|| ydk::is_set(ipv4interfacetablelastchange.yfilter)
+	|| ydk::is_set(ipv6interfacetablelastchange.yfilter)
+	|| ydk::is_set(ipv6ipdefaulthoplimit.yfilter)
+	|| ydk::is_set(ipv6ipforwarding.yfilter)
+	|| ydk::is_set(ipv6routeradvertspinlock.yfilter);
 }
 
 std::string IpMib::Ip::get_segment_path() const
@@ -533,32 +551,32 @@ const EntityPath IpMib::Ip::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipaddressspinlock.is_set || is_set(ipaddressspinlock.operation)) leaf_name_data.push_back(ipaddressspinlock.get_name_leafdata());
-    if (ipdefaultttl.is_set || is_set(ipdefaultttl.operation)) leaf_name_data.push_back(ipdefaultttl.get_name_leafdata());
-    if (ipforwarding.is_set || is_set(ipforwarding.operation)) leaf_name_data.push_back(ipforwarding.get_name_leafdata());
-    if (ipforwdatagrams.is_set || is_set(ipforwdatagrams.operation)) leaf_name_data.push_back(ipforwdatagrams.get_name_leafdata());
-    if (ipfragcreates.is_set || is_set(ipfragcreates.operation)) leaf_name_data.push_back(ipfragcreates.get_name_leafdata());
-    if (ipfragfails.is_set || is_set(ipfragfails.operation)) leaf_name_data.push_back(ipfragfails.get_name_leafdata());
-    if (ipfragoks.is_set || is_set(ipfragoks.operation)) leaf_name_data.push_back(ipfragoks.get_name_leafdata());
-    if (ipinaddrerrors.is_set || is_set(ipinaddrerrors.operation)) leaf_name_data.push_back(ipinaddrerrors.get_name_leafdata());
-    if (ipindelivers.is_set || is_set(ipindelivers.operation)) leaf_name_data.push_back(ipindelivers.get_name_leafdata());
-    if (ipindiscards.is_set || is_set(ipindiscards.operation)) leaf_name_data.push_back(ipindiscards.get_name_leafdata());
-    if (ipinhdrerrors.is_set || is_set(ipinhdrerrors.operation)) leaf_name_data.push_back(ipinhdrerrors.get_name_leafdata());
-    if (ipinreceives.is_set || is_set(ipinreceives.operation)) leaf_name_data.push_back(ipinreceives.get_name_leafdata());
-    if (ipinunknownprotos.is_set || is_set(ipinunknownprotos.operation)) leaf_name_data.push_back(ipinunknownprotos.get_name_leafdata());
-    if (ipoutdiscards.is_set || is_set(ipoutdiscards.operation)) leaf_name_data.push_back(ipoutdiscards.get_name_leafdata());
-    if (ipoutnoroutes.is_set || is_set(ipoutnoroutes.operation)) leaf_name_data.push_back(ipoutnoroutes.get_name_leafdata());
-    if (ipoutrequests.is_set || is_set(ipoutrequests.operation)) leaf_name_data.push_back(ipoutrequests.get_name_leafdata());
-    if (ipreasmfails.is_set || is_set(ipreasmfails.operation)) leaf_name_data.push_back(ipreasmfails.get_name_leafdata());
-    if (ipreasmoks.is_set || is_set(ipreasmoks.operation)) leaf_name_data.push_back(ipreasmoks.get_name_leafdata());
-    if (ipreasmreqds.is_set || is_set(ipreasmreqds.operation)) leaf_name_data.push_back(ipreasmreqds.get_name_leafdata());
-    if (ipreasmtimeout.is_set || is_set(ipreasmtimeout.operation)) leaf_name_data.push_back(ipreasmtimeout.get_name_leafdata());
-    if (iproutingdiscards.is_set || is_set(iproutingdiscards.operation)) leaf_name_data.push_back(iproutingdiscards.get_name_leafdata());
-    if (ipv4interfacetablelastchange.is_set || is_set(ipv4interfacetablelastchange.operation)) leaf_name_data.push_back(ipv4interfacetablelastchange.get_name_leafdata());
-    if (ipv6interfacetablelastchange.is_set || is_set(ipv6interfacetablelastchange.operation)) leaf_name_data.push_back(ipv6interfacetablelastchange.get_name_leafdata());
-    if (ipv6ipdefaulthoplimit.is_set || is_set(ipv6ipdefaulthoplimit.operation)) leaf_name_data.push_back(ipv6ipdefaulthoplimit.get_name_leafdata());
-    if (ipv6ipforwarding.is_set || is_set(ipv6ipforwarding.operation)) leaf_name_data.push_back(ipv6ipforwarding.get_name_leafdata());
-    if (ipv6routeradvertspinlock.is_set || is_set(ipv6routeradvertspinlock.operation)) leaf_name_data.push_back(ipv6routeradvertspinlock.get_name_leafdata());
+    if (ipaddressspinlock.is_set || is_set(ipaddressspinlock.yfilter)) leaf_name_data.push_back(ipaddressspinlock.get_name_leafdata());
+    if (ipdefaultttl.is_set || is_set(ipdefaultttl.yfilter)) leaf_name_data.push_back(ipdefaultttl.get_name_leafdata());
+    if (ipforwarding.is_set || is_set(ipforwarding.yfilter)) leaf_name_data.push_back(ipforwarding.get_name_leafdata());
+    if (ipforwdatagrams.is_set || is_set(ipforwdatagrams.yfilter)) leaf_name_data.push_back(ipforwdatagrams.get_name_leafdata());
+    if (ipfragcreates.is_set || is_set(ipfragcreates.yfilter)) leaf_name_data.push_back(ipfragcreates.get_name_leafdata());
+    if (ipfragfails.is_set || is_set(ipfragfails.yfilter)) leaf_name_data.push_back(ipfragfails.get_name_leafdata());
+    if (ipfragoks.is_set || is_set(ipfragoks.yfilter)) leaf_name_data.push_back(ipfragoks.get_name_leafdata());
+    if (ipinaddrerrors.is_set || is_set(ipinaddrerrors.yfilter)) leaf_name_data.push_back(ipinaddrerrors.get_name_leafdata());
+    if (ipindelivers.is_set || is_set(ipindelivers.yfilter)) leaf_name_data.push_back(ipindelivers.get_name_leafdata());
+    if (ipindiscards.is_set || is_set(ipindiscards.yfilter)) leaf_name_data.push_back(ipindiscards.get_name_leafdata());
+    if (ipinhdrerrors.is_set || is_set(ipinhdrerrors.yfilter)) leaf_name_data.push_back(ipinhdrerrors.get_name_leafdata());
+    if (ipinreceives.is_set || is_set(ipinreceives.yfilter)) leaf_name_data.push_back(ipinreceives.get_name_leafdata());
+    if (ipinunknownprotos.is_set || is_set(ipinunknownprotos.yfilter)) leaf_name_data.push_back(ipinunknownprotos.get_name_leafdata());
+    if (ipoutdiscards.is_set || is_set(ipoutdiscards.yfilter)) leaf_name_data.push_back(ipoutdiscards.get_name_leafdata());
+    if (ipoutnoroutes.is_set || is_set(ipoutnoroutes.yfilter)) leaf_name_data.push_back(ipoutnoroutes.get_name_leafdata());
+    if (ipoutrequests.is_set || is_set(ipoutrequests.yfilter)) leaf_name_data.push_back(ipoutrequests.get_name_leafdata());
+    if (ipreasmfails.is_set || is_set(ipreasmfails.yfilter)) leaf_name_data.push_back(ipreasmfails.get_name_leafdata());
+    if (ipreasmoks.is_set || is_set(ipreasmoks.yfilter)) leaf_name_data.push_back(ipreasmoks.get_name_leafdata());
+    if (ipreasmreqds.is_set || is_set(ipreasmreqds.yfilter)) leaf_name_data.push_back(ipreasmreqds.get_name_leafdata());
+    if (ipreasmtimeout.is_set || is_set(ipreasmtimeout.yfilter)) leaf_name_data.push_back(ipreasmtimeout.get_name_leafdata());
+    if (iproutingdiscards.is_set || is_set(iproutingdiscards.yfilter)) leaf_name_data.push_back(iproutingdiscards.get_name_leafdata());
+    if (ipv4interfacetablelastchange.is_set || is_set(ipv4interfacetablelastchange.yfilter)) leaf_name_data.push_back(ipv4interfacetablelastchange.get_name_leafdata());
+    if (ipv6interfacetablelastchange.is_set || is_set(ipv6interfacetablelastchange.yfilter)) leaf_name_data.push_back(ipv6interfacetablelastchange.get_name_leafdata());
+    if (ipv6ipdefaulthoplimit.is_set || is_set(ipv6ipdefaulthoplimit.yfilter)) leaf_name_data.push_back(ipv6ipdefaulthoplimit.get_name_leafdata());
+    if (ipv6ipforwarding.is_set || is_set(ipv6ipforwarding.yfilter)) leaf_name_data.push_back(ipv6ipforwarding.get_name_leafdata());
+    if (ipv6routeradvertspinlock.is_set || is_set(ipv6routeradvertspinlock.yfilter)) leaf_name_data.push_back(ipv6routeradvertspinlock.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -577,112 +595,279 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ip::get_children() const
     return children;
 }
 
-void IpMib::Ip::set_value(const std::string & value_path, std::string value)
+void IpMib::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipAddressSpinLock")
     {
         ipaddressspinlock = value;
+        ipaddressspinlock.value_namespace = name_space;
+        ipaddressspinlock.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipDefaultTTL")
     {
         ipdefaultttl = value;
+        ipdefaultttl.value_namespace = name_space;
+        ipdefaultttl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwarding")
     {
         ipforwarding = value;
+        ipforwarding.value_namespace = name_space;
+        ipforwarding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwDatagrams")
     {
         ipforwdatagrams = value;
+        ipforwdatagrams.value_namespace = name_space;
+        ipforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipFragCreates")
     {
         ipfragcreates = value;
+        ipfragcreates.value_namespace = name_space;
+        ipfragcreates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipFragFails")
     {
         ipfragfails = value;
+        ipfragfails.value_namespace = name_space;
+        ipfragfails.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipFragOKs")
     {
         ipfragoks = value;
+        ipfragoks.value_namespace = name_space;
+        ipfragoks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipInAddrErrors")
     {
         ipinaddrerrors = value;
+        ipinaddrerrors.value_namespace = name_space;
+        ipinaddrerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipInDelivers")
     {
         ipindelivers = value;
+        ipindelivers.value_namespace = name_space;
+        ipindelivers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipInDiscards")
     {
         ipindiscards = value;
+        ipindiscards.value_namespace = name_space;
+        ipindiscards.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipInHdrErrors")
     {
         ipinhdrerrors = value;
+        ipinhdrerrors.value_namespace = name_space;
+        ipinhdrerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipInReceives")
     {
         ipinreceives = value;
+        ipinreceives.value_namespace = name_space;
+        ipinreceives.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipInUnknownProtos")
     {
         ipinunknownprotos = value;
+        ipinunknownprotos.value_namespace = name_space;
+        ipinunknownprotos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipOutDiscards")
     {
         ipoutdiscards = value;
+        ipoutdiscards.value_namespace = name_space;
+        ipoutdiscards.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipOutNoRoutes")
     {
         ipoutnoroutes = value;
+        ipoutnoroutes.value_namespace = name_space;
+        ipoutnoroutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipOutRequests")
     {
         ipoutrequests = value;
+        ipoutrequests.value_namespace = name_space;
+        ipoutrequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipReasmFails")
     {
         ipreasmfails = value;
+        ipreasmfails.value_namespace = name_space;
+        ipreasmfails.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipReasmOKs")
     {
         ipreasmoks = value;
+        ipreasmoks.value_namespace = name_space;
+        ipreasmoks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipReasmReqds")
     {
         ipreasmreqds = value;
+        ipreasmreqds.value_namespace = name_space;
+        ipreasmreqds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipReasmTimeout")
     {
         ipreasmtimeout = value;
+        ipreasmtimeout.value_namespace = name_space;
+        ipreasmtimeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipRoutingDiscards")
     {
         iproutingdiscards = value;
+        iproutingdiscards.value_namespace = name_space;
+        iproutingdiscards.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4InterfaceTableLastChange")
     {
         ipv4interfacetablelastchange = value;
+        ipv4interfacetablelastchange.value_namespace = name_space;
+        ipv4interfacetablelastchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6InterfaceTableLastChange")
     {
         ipv6interfacetablelastchange = value;
+        ipv6interfacetablelastchange.value_namespace = name_space;
+        ipv6interfacetablelastchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6IpDefaultHopLimit")
     {
         ipv6ipdefaulthoplimit = value;
+        ipv6ipdefaulthoplimit.value_namespace = name_space;
+        ipv6ipdefaulthoplimit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6IpForwarding")
     {
         ipv6ipforwarding = value;
+        ipv6ipforwarding.value_namespace = name_space;
+        ipv6ipforwarding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertSpinLock")
     {
         ipv6routeradvertspinlock = value;
+        ipv6routeradvertspinlock.value_namespace = name_space;
+        ipv6routeradvertspinlock.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipAddressSpinLock")
+    {
+        ipaddressspinlock.yfilter = yfilter;
+    }
+    if(value_path == "ipDefaultTTL")
+    {
+        ipdefaultttl.yfilter = yfilter;
+    }
+    if(value_path == "ipForwarding")
+    {
+        ipforwarding.yfilter = yfilter;
+    }
+    if(value_path == "ipForwDatagrams")
+    {
+        ipforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipFragCreates")
+    {
+        ipfragcreates.yfilter = yfilter;
+    }
+    if(value_path == "ipFragFails")
+    {
+        ipfragfails.yfilter = yfilter;
+    }
+    if(value_path == "ipFragOKs")
+    {
+        ipfragoks.yfilter = yfilter;
+    }
+    if(value_path == "ipInAddrErrors")
+    {
+        ipinaddrerrors.yfilter = yfilter;
+    }
+    if(value_path == "ipInDelivers")
+    {
+        ipindelivers.yfilter = yfilter;
+    }
+    if(value_path == "ipInDiscards")
+    {
+        ipindiscards.yfilter = yfilter;
+    }
+    if(value_path == "ipInHdrErrors")
+    {
+        ipinhdrerrors.yfilter = yfilter;
+    }
+    if(value_path == "ipInReceives")
+    {
+        ipinreceives.yfilter = yfilter;
+    }
+    if(value_path == "ipInUnknownProtos")
+    {
+        ipinunknownprotos.yfilter = yfilter;
+    }
+    if(value_path == "ipOutDiscards")
+    {
+        ipoutdiscards.yfilter = yfilter;
+    }
+    if(value_path == "ipOutNoRoutes")
+    {
+        ipoutnoroutes.yfilter = yfilter;
+    }
+    if(value_path == "ipOutRequests")
+    {
+        ipoutrequests.yfilter = yfilter;
+    }
+    if(value_path == "ipReasmFails")
+    {
+        ipreasmfails.yfilter = yfilter;
+    }
+    if(value_path == "ipReasmOKs")
+    {
+        ipreasmoks.yfilter = yfilter;
+    }
+    if(value_path == "ipReasmReqds")
+    {
+        ipreasmreqds.yfilter = yfilter;
+    }
+    if(value_path == "ipReasmTimeout")
+    {
+        ipreasmtimeout.yfilter = yfilter;
+    }
+    if(value_path == "ipRoutingDiscards")
+    {
+        iproutingdiscards.yfilter = yfilter;
+    }
+    if(value_path == "ipv4InterfaceTableLastChange")
+    {
+        ipv4interfacetablelastchange.yfilter = yfilter;
+    }
+    if(value_path == "ipv6InterfaceTableLastChange")
+    {
+        ipv6interfacetablelastchange.yfilter = yfilter;
+    }
+    if(value_path == "ipv6IpDefaultHopLimit")
+    {
+        ipv6ipdefaulthoplimit.yfilter = yfilter;
+    }
+    if(value_path == "ipv6IpForwarding")
+    {
+        ipv6ipforwarding.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertSpinLock")
+    {
+        ipv6routeradvertspinlock.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ip::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipAddressSpinLock" || name == "ipDefaultTTL" || name == "ipForwarding" || name == "ipForwDatagrams" || name == "ipFragCreates" || name == "ipFragFails" || name == "ipFragOKs" || name == "ipInAddrErrors" || name == "ipInDelivers" || name == "ipInDiscards" || name == "ipInHdrErrors" || name == "ipInReceives" || name == "ipInUnknownProtos" || name == "ipOutDiscards" || name == "ipOutNoRoutes" || name == "ipOutRequests" || name == "ipReasmFails" || name == "ipReasmOKs" || name == "ipReasmReqds" || name == "ipReasmTimeout" || name == "ipRoutingDiscards" || name == "ipv4InterfaceTableLastChange" || name == "ipv6InterfaceTableLastChange" || name == "ipv6IpDefaultHopLimit" || name == "ipv6IpForwarding" || name == "ipv6RouterAdvertSpinLock")
+        return true;
+    return false;
 }
 
 IpMib::Iptrafficstats::Iptrafficstats()
@@ -703,8 +888,8 @@ bool IpMib::Iptrafficstats::has_data() const
 
 bool IpMib::Iptrafficstats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipifstatstablelastchange.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipifstatstablelastchange.yfilter);
 }
 
 std::string IpMib::Iptrafficstats::get_segment_path() const
@@ -730,7 +915,7 @@ const EntityPath IpMib::Iptrafficstats::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipifstatstablelastchange.is_set || is_set(ipifstatstablelastchange.operation)) leaf_name_data.push_back(ipifstatstablelastchange.get_name_leafdata());
+    if (ipifstatstablelastchange.is_set || is_set(ipifstatstablelastchange.yfilter)) leaf_name_data.push_back(ipifstatstablelastchange.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -749,12 +934,29 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Iptrafficstats::get_childr
     return children;
 }
 
-void IpMib::Iptrafficstats::set_value(const std::string & value_path, std::string value)
+void IpMib::Iptrafficstats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipIfStatsTableLastChange")
     {
         ipifstatstablelastchange = value;
+        ipifstatstablelastchange.value_namespace = name_space;
+        ipifstatstablelastchange.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Iptrafficstats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipIfStatsTableLastChange")
+    {
+        ipifstatstablelastchange.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Iptrafficstats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipIfStatsTableLastChange")
+        return true;
+    return false;
 }
 
 IpMib::Icmp::Icmp()
@@ -825,33 +1027,33 @@ bool IpMib::Icmp::has_data() const
 
 bool IpMib::Icmp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(icmpinaddrmaskreps.operation)
-	|| is_set(icmpinaddrmasks.operation)
-	|| is_set(icmpindestunreachs.operation)
-	|| is_set(icmpinechoreps.operation)
-	|| is_set(icmpinechos.operation)
-	|| is_set(icmpinerrors.operation)
-	|| is_set(icmpinmsgs.operation)
-	|| is_set(icmpinparmprobs.operation)
-	|| is_set(icmpinredirects.operation)
-	|| is_set(icmpinsrcquenchs.operation)
-	|| is_set(icmpintimeexcds.operation)
-	|| is_set(icmpintimestampreps.operation)
-	|| is_set(icmpintimestamps.operation)
-	|| is_set(icmpoutaddrmaskreps.operation)
-	|| is_set(icmpoutaddrmasks.operation)
-	|| is_set(icmpoutdestunreachs.operation)
-	|| is_set(icmpoutechoreps.operation)
-	|| is_set(icmpoutechos.operation)
-	|| is_set(icmpouterrors.operation)
-	|| is_set(icmpoutmsgs.operation)
-	|| is_set(icmpoutparmprobs.operation)
-	|| is_set(icmpoutredirects.operation)
-	|| is_set(icmpoutsrcquenchs.operation)
-	|| is_set(icmpouttimeexcds.operation)
-	|| is_set(icmpouttimestampreps.operation)
-	|| is_set(icmpouttimestamps.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(icmpinaddrmaskreps.yfilter)
+	|| ydk::is_set(icmpinaddrmasks.yfilter)
+	|| ydk::is_set(icmpindestunreachs.yfilter)
+	|| ydk::is_set(icmpinechoreps.yfilter)
+	|| ydk::is_set(icmpinechos.yfilter)
+	|| ydk::is_set(icmpinerrors.yfilter)
+	|| ydk::is_set(icmpinmsgs.yfilter)
+	|| ydk::is_set(icmpinparmprobs.yfilter)
+	|| ydk::is_set(icmpinredirects.yfilter)
+	|| ydk::is_set(icmpinsrcquenchs.yfilter)
+	|| ydk::is_set(icmpintimeexcds.yfilter)
+	|| ydk::is_set(icmpintimestampreps.yfilter)
+	|| ydk::is_set(icmpintimestamps.yfilter)
+	|| ydk::is_set(icmpoutaddrmaskreps.yfilter)
+	|| ydk::is_set(icmpoutaddrmasks.yfilter)
+	|| ydk::is_set(icmpoutdestunreachs.yfilter)
+	|| ydk::is_set(icmpoutechoreps.yfilter)
+	|| ydk::is_set(icmpoutechos.yfilter)
+	|| ydk::is_set(icmpouterrors.yfilter)
+	|| ydk::is_set(icmpoutmsgs.yfilter)
+	|| ydk::is_set(icmpoutparmprobs.yfilter)
+	|| ydk::is_set(icmpoutredirects.yfilter)
+	|| ydk::is_set(icmpoutsrcquenchs.yfilter)
+	|| ydk::is_set(icmpouttimeexcds.yfilter)
+	|| ydk::is_set(icmpouttimestampreps.yfilter)
+	|| ydk::is_set(icmpouttimestamps.yfilter);
 }
 
 std::string IpMib::Icmp::get_segment_path() const
@@ -877,32 +1079,32 @@ const EntityPath IpMib::Icmp::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (icmpinaddrmaskreps.is_set || is_set(icmpinaddrmaskreps.operation)) leaf_name_data.push_back(icmpinaddrmaskreps.get_name_leafdata());
-    if (icmpinaddrmasks.is_set || is_set(icmpinaddrmasks.operation)) leaf_name_data.push_back(icmpinaddrmasks.get_name_leafdata());
-    if (icmpindestunreachs.is_set || is_set(icmpindestunreachs.operation)) leaf_name_data.push_back(icmpindestunreachs.get_name_leafdata());
-    if (icmpinechoreps.is_set || is_set(icmpinechoreps.operation)) leaf_name_data.push_back(icmpinechoreps.get_name_leafdata());
-    if (icmpinechos.is_set || is_set(icmpinechos.operation)) leaf_name_data.push_back(icmpinechos.get_name_leafdata());
-    if (icmpinerrors.is_set || is_set(icmpinerrors.operation)) leaf_name_data.push_back(icmpinerrors.get_name_leafdata());
-    if (icmpinmsgs.is_set || is_set(icmpinmsgs.operation)) leaf_name_data.push_back(icmpinmsgs.get_name_leafdata());
-    if (icmpinparmprobs.is_set || is_set(icmpinparmprobs.operation)) leaf_name_data.push_back(icmpinparmprobs.get_name_leafdata());
-    if (icmpinredirects.is_set || is_set(icmpinredirects.operation)) leaf_name_data.push_back(icmpinredirects.get_name_leafdata());
-    if (icmpinsrcquenchs.is_set || is_set(icmpinsrcquenchs.operation)) leaf_name_data.push_back(icmpinsrcquenchs.get_name_leafdata());
-    if (icmpintimeexcds.is_set || is_set(icmpintimeexcds.operation)) leaf_name_data.push_back(icmpintimeexcds.get_name_leafdata());
-    if (icmpintimestampreps.is_set || is_set(icmpintimestampreps.operation)) leaf_name_data.push_back(icmpintimestampreps.get_name_leafdata());
-    if (icmpintimestamps.is_set || is_set(icmpintimestamps.operation)) leaf_name_data.push_back(icmpintimestamps.get_name_leafdata());
-    if (icmpoutaddrmaskreps.is_set || is_set(icmpoutaddrmaskreps.operation)) leaf_name_data.push_back(icmpoutaddrmaskreps.get_name_leafdata());
-    if (icmpoutaddrmasks.is_set || is_set(icmpoutaddrmasks.operation)) leaf_name_data.push_back(icmpoutaddrmasks.get_name_leafdata());
-    if (icmpoutdestunreachs.is_set || is_set(icmpoutdestunreachs.operation)) leaf_name_data.push_back(icmpoutdestunreachs.get_name_leafdata());
-    if (icmpoutechoreps.is_set || is_set(icmpoutechoreps.operation)) leaf_name_data.push_back(icmpoutechoreps.get_name_leafdata());
-    if (icmpoutechos.is_set || is_set(icmpoutechos.operation)) leaf_name_data.push_back(icmpoutechos.get_name_leafdata());
-    if (icmpouterrors.is_set || is_set(icmpouterrors.operation)) leaf_name_data.push_back(icmpouterrors.get_name_leafdata());
-    if (icmpoutmsgs.is_set || is_set(icmpoutmsgs.operation)) leaf_name_data.push_back(icmpoutmsgs.get_name_leafdata());
-    if (icmpoutparmprobs.is_set || is_set(icmpoutparmprobs.operation)) leaf_name_data.push_back(icmpoutparmprobs.get_name_leafdata());
-    if (icmpoutredirects.is_set || is_set(icmpoutredirects.operation)) leaf_name_data.push_back(icmpoutredirects.get_name_leafdata());
-    if (icmpoutsrcquenchs.is_set || is_set(icmpoutsrcquenchs.operation)) leaf_name_data.push_back(icmpoutsrcquenchs.get_name_leafdata());
-    if (icmpouttimeexcds.is_set || is_set(icmpouttimeexcds.operation)) leaf_name_data.push_back(icmpouttimeexcds.get_name_leafdata());
-    if (icmpouttimestampreps.is_set || is_set(icmpouttimestampreps.operation)) leaf_name_data.push_back(icmpouttimestampreps.get_name_leafdata());
-    if (icmpouttimestamps.is_set || is_set(icmpouttimestamps.operation)) leaf_name_data.push_back(icmpouttimestamps.get_name_leafdata());
+    if (icmpinaddrmaskreps.is_set || is_set(icmpinaddrmaskreps.yfilter)) leaf_name_data.push_back(icmpinaddrmaskreps.get_name_leafdata());
+    if (icmpinaddrmasks.is_set || is_set(icmpinaddrmasks.yfilter)) leaf_name_data.push_back(icmpinaddrmasks.get_name_leafdata());
+    if (icmpindestunreachs.is_set || is_set(icmpindestunreachs.yfilter)) leaf_name_data.push_back(icmpindestunreachs.get_name_leafdata());
+    if (icmpinechoreps.is_set || is_set(icmpinechoreps.yfilter)) leaf_name_data.push_back(icmpinechoreps.get_name_leafdata());
+    if (icmpinechos.is_set || is_set(icmpinechos.yfilter)) leaf_name_data.push_back(icmpinechos.get_name_leafdata());
+    if (icmpinerrors.is_set || is_set(icmpinerrors.yfilter)) leaf_name_data.push_back(icmpinerrors.get_name_leafdata());
+    if (icmpinmsgs.is_set || is_set(icmpinmsgs.yfilter)) leaf_name_data.push_back(icmpinmsgs.get_name_leafdata());
+    if (icmpinparmprobs.is_set || is_set(icmpinparmprobs.yfilter)) leaf_name_data.push_back(icmpinparmprobs.get_name_leafdata());
+    if (icmpinredirects.is_set || is_set(icmpinredirects.yfilter)) leaf_name_data.push_back(icmpinredirects.get_name_leafdata());
+    if (icmpinsrcquenchs.is_set || is_set(icmpinsrcquenchs.yfilter)) leaf_name_data.push_back(icmpinsrcquenchs.get_name_leafdata());
+    if (icmpintimeexcds.is_set || is_set(icmpintimeexcds.yfilter)) leaf_name_data.push_back(icmpintimeexcds.get_name_leafdata());
+    if (icmpintimestampreps.is_set || is_set(icmpintimestampreps.yfilter)) leaf_name_data.push_back(icmpintimestampreps.get_name_leafdata());
+    if (icmpintimestamps.is_set || is_set(icmpintimestamps.yfilter)) leaf_name_data.push_back(icmpintimestamps.get_name_leafdata());
+    if (icmpoutaddrmaskreps.is_set || is_set(icmpoutaddrmaskreps.yfilter)) leaf_name_data.push_back(icmpoutaddrmaskreps.get_name_leafdata());
+    if (icmpoutaddrmasks.is_set || is_set(icmpoutaddrmasks.yfilter)) leaf_name_data.push_back(icmpoutaddrmasks.get_name_leafdata());
+    if (icmpoutdestunreachs.is_set || is_set(icmpoutdestunreachs.yfilter)) leaf_name_data.push_back(icmpoutdestunreachs.get_name_leafdata());
+    if (icmpoutechoreps.is_set || is_set(icmpoutechoreps.yfilter)) leaf_name_data.push_back(icmpoutechoreps.get_name_leafdata());
+    if (icmpoutechos.is_set || is_set(icmpoutechos.yfilter)) leaf_name_data.push_back(icmpoutechos.get_name_leafdata());
+    if (icmpouterrors.is_set || is_set(icmpouterrors.yfilter)) leaf_name_data.push_back(icmpouterrors.get_name_leafdata());
+    if (icmpoutmsgs.is_set || is_set(icmpoutmsgs.yfilter)) leaf_name_data.push_back(icmpoutmsgs.get_name_leafdata());
+    if (icmpoutparmprobs.is_set || is_set(icmpoutparmprobs.yfilter)) leaf_name_data.push_back(icmpoutparmprobs.get_name_leafdata());
+    if (icmpoutredirects.is_set || is_set(icmpoutredirects.yfilter)) leaf_name_data.push_back(icmpoutredirects.get_name_leafdata());
+    if (icmpoutsrcquenchs.is_set || is_set(icmpoutsrcquenchs.yfilter)) leaf_name_data.push_back(icmpoutsrcquenchs.get_name_leafdata());
+    if (icmpouttimeexcds.is_set || is_set(icmpouttimeexcds.yfilter)) leaf_name_data.push_back(icmpouttimeexcds.get_name_leafdata());
+    if (icmpouttimestampreps.is_set || is_set(icmpouttimestampreps.yfilter)) leaf_name_data.push_back(icmpouttimestampreps.get_name_leafdata());
+    if (icmpouttimestamps.is_set || is_set(icmpouttimestamps.yfilter)) leaf_name_data.push_back(icmpouttimestamps.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -921,112 +1123,279 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Icmp::get_children() const
     return children;
 }
 
-void IpMib::Icmp::set_value(const std::string & value_path, std::string value)
+void IpMib::Icmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "icmpInAddrMaskReps")
     {
         icmpinaddrmaskreps = value;
+        icmpinaddrmaskreps.value_namespace = name_space;
+        icmpinaddrmaskreps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInAddrMasks")
     {
         icmpinaddrmasks = value;
+        icmpinaddrmasks.value_namespace = name_space;
+        icmpinaddrmasks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInDestUnreachs")
     {
         icmpindestunreachs = value;
+        icmpindestunreachs.value_namespace = name_space;
+        icmpindestunreachs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInEchoReps")
     {
         icmpinechoreps = value;
+        icmpinechoreps.value_namespace = name_space;
+        icmpinechoreps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInEchos")
     {
         icmpinechos = value;
+        icmpinechos.value_namespace = name_space;
+        icmpinechos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInErrors")
     {
         icmpinerrors = value;
+        icmpinerrors.value_namespace = name_space;
+        icmpinerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInMsgs")
     {
         icmpinmsgs = value;
+        icmpinmsgs.value_namespace = name_space;
+        icmpinmsgs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInParmProbs")
     {
         icmpinparmprobs = value;
+        icmpinparmprobs.value_namespace = name_space;
+        icmpinparmprobs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInRedirects")
     {
         icmpinredirects = value;
+        icmpinredirects.value_namespace = name_space;
+        icmpinredirects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInSrcQuenchs")
     {
         icmpinsrcquenchs = value;
+        icmpinsrcquenchs.value_namespace = name_space;
+        icmpinsrcquenchs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInTimeExcds")
     {
         icmpintimeexcds = value;
+        icmpintimeexcds.value_namespace = name_space;
+        icmpintimeexcds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInTimestampReps")
     {
         icmpintimestampreps = value;
+        icmpintimestampreps.value_namespace = name_space;
+        icmpintimestampreps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpInTimestamps")
     {
         icmpintimestamps = value;
+        icmpintimestamps.value_namespace = name_space;
+        icmpintimestamps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutAddrMaskReps")
     {
         icmpoutaddrmaskreps = value;
+        icmpoutaddrmaskreps.value_namespace = name_space;
+        icmpoutaddrmaskreps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutAddrMasks")
     {
         icmpoutaddrmasks = value;
+        icmpoutaddrmasks.value_namespace = name_space;
+        icmpoutaddrmasks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutDestUnreachs")
     {
         icmpoutdestunreachs = value;
+        icmpoutdestunreachs.value_namespace = name_space;
+        icmpoutdestunreachs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutEchoReps")
     {
         icmpoutechoreps = value;
+        icmpoutechoreps.value_namespace = name_space;
+        icmpoutechoreps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutEchos")
     {
         icmpoutechos = value;
+        icmpoutechos.value_namespace = name_space;
+        icmpoutechos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutErrors")
     {
         icmpouterrors = value;
+        icmpouterrors.value_namespace = name_space;
+        icmpouterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutMsgs")
     {
         icmpoutmsgs = value;
+        icmpoutmsgs.value_namespace = name_space;
+        icmpoutmsgs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutParmProbs")
     {
         icmpoutparmprobs = value;
+        icmpoutparmprobs.value_namespace = name_space;
+        icmpoutparmprobs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutRedirects")
     {
         icmpoutredirects = value;
+        icmpoutredirects.value_namespace = name_space;
+        icmpoutredirects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutSrcQuenchs")
     {
         icmpoutsrcquenchs = value;
+        icmpoutsrcquenchs.value_namespace = name_space;
+        icmpoutsrcquenchs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutTimeExcds")
     {
         icmpouttimeexcds = value;
+        icmpouttimeexcds.value_namespace = name_space;
+        icmpouttimeexcds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutTimestampReps")
     {
         icmpouttimestampreps = value;
+        icmpouttimestampreps.value_namespace = name_space;
+        icmpouttimestampreps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpOutTimestamps")
     {
         icmpouttimestamps = value;
+        icmpouttimestamps.value_namespace = name_space;
+        icmpouttimestamps.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Icmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "icmpInAddrMaskReps")
+    {
+        icmpinaddrmaskreps.yfilter = yfilter;
+    }
+    if(value_path == "icmpInAddrMasks")
+    {
+        icmpinaddrmasks.yfilter = yfilter;
+    }
+    if(value_path == "icmpInDestUnreachs")
+    {
+        icmpindestunreachs.yfilter = yfilter;
+    }
+    if(value_path == "icmpInEchoReps")
+    {
+        icmpinechoreps.yfilter = yfilter;
+    }
+    if(value_path == "icmpInEchos")
+    {
+        icmpinechos.yfilter = yfilter;
+    }
+    if(value_path == "icmpInErrors")
+    {
+        icmpinerrors.yfilter = yfilter;
+    }
+    if(value_path == "icmpInMsgs")
+    {
+        icmpinmsgs.yfilter = yfilter;
+    }
+    if(value_path == "icmpInParmProbs")
+    {
+        icmpinparmprobs.yfilter = yfilter;
+    }
+    if(value_path == "icmpInRedirects")
+    {
+        icmpinredirects.yfilter = yfilter;
+    }
+    if(value_path == "icmpInSrcQuenchs")
+    {
+        icmpinsrcquenchs.yfilter = yfilter;
+    }
+    if(value_path == "icmpInTimeExcds")
+    {
+        icmpintimeexcds.yfilter = yfilter;
+    }
+    if(value_path == "icmpInTimestampReps")
+    {
+        icmpintimestampreps.yfilter = yfilter;
+    }
+    if(value_path == "icmpInTimestamps")
+    {
+        icmpintimestamps.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutAddrMaskReps")
+    {
+        icmpoutaddrmaskreps.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutAddrMasks")
+    {
+        icmpoutaddrmasks.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutDestUnreachs")
+    {
+        icmpoutdestunreachs.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutEchoReps")
+    {
+        icmpoutechoreps.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutEchos")
+    {
+        icmpoutechos.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutErrors")
+    {
+        icmpouterrors.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutMsgs")
+    {
+        icmpoutmsgs.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutParmProbs")
+    {
+        icmpoutparmprobs.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutRedirects")
+    {
+        icmpoutredirects.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutSrcQuenchs")
+    {
+        icmpoutsrcquenchs.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutTimeExcds")
+    {
+        icmpouttimeexcds.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutTimestampReps")
+    {
+        icmpouttimestampreps.yfilter = yfilter;
+    }
+    if(value_path == "icmpOutTimestamps")
+    {
+        icmpouttimestamps.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Icmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "icmpInAddrMaskReps" || name == "icmpInAddrMasks" || name == "icmpInDestUnreachs" || name == "icmpInEchoReps" || name == "icmpInEchos" || name == "icmpInErrors" || name == "icmpInMsgs" || name == "icmpInParmProbs" || name == "icmpInRedirects" || name == "icmpInSrcQuenchs" || name == "icmpInTimeExcds" || name == "icmpInTimestampReps" || name == "icmpInTimestamps" || name == "icmpOutAddrMaskReps" || name == "icmpOutAddrMasks" || name == "icmpOutDestUnreachs" || name == "icmpOutEchoReps" || name == "icmpOutEchos" || name == "icmpOutErrors" || name == "icmpOutMsgs" || name == "icmpOutParmProbs" || name == "icmpOutRedirects" || name == "icmpOutSrcQuenchs" || name == "icmpOutTimeExcds" || name == "icmpOutTimestampReps" || name == "icmpOutTimestamps")
+        return true;
+    return false;
 }
 
 IpMib::Ipaddrtable::Ipaddrtable()
@@ -1040,9 +1409,9 @@ IpMib::Ipaddrtable::~Ipaddrtable()
 
 bool IpMib::Ipaddrtable::has_data() const
 {
-    for (std::size_t index=0; index<ipaddrentry_.size(); index++)
+    for (std::size_t index=0; index<ipaddrentry.size(); index++)
     {
-        if(ipaddrentry_[index]->has_data())
+        if(ipaddrentry[index]->has_data())
             return true;
     }
     return false;
@@ -1050,12 +1419,12 @@ bool IpMib::Ipaddrtable::has_data() const
 
 bool IpMib::Ipaddrtable::has_operation() const
 {
-    for (std::size_t index=0; index<ipaddrentry_.size(); index++)
+    for (std::size_t index=0; index<ipaddrentry.size(); index++)
     {
-        if(ipaddrentry_[index]->has_operation())
+        if(ipaddrentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipaddrtable::get_segment_path() const
@@ -1092,7 +1461,7 @@ std::shared_ptr<Entity> IpMib::Ipaddrtable::get_child_by_name(const std::string 
 {
     if(child_yang_name == "ipAddrEntry")
     {
-        for(auto const & c : ipaddrentry_)
+        for(auto const & c : ipaddrentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1102,7 +1471,7 @@ std::shared_ptr<Entity> IpMib::Ipaddrtable::get_child_by_name(const std::string 
         }
         auto c = std::make_shared<IpMib::Ipaddrtable::Ipaddrentry>();
         c->parent = this;
-        ipaddrentry_.push_back(c);
+        ipaddrentry.push_back(c);
         return c;
     }
 
@@ -1112,7 +1481,7 @@ std::shared_ptr<Entity> IpMib::Ipaddrtable::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipaddrentry_)
+    for (auto const & c : ipaddrentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1120,8 +1489,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddrtable::get_children(
     return children;
 }
 
-void IpMib::Ipaddrtable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipaddrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipaddrtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipaddrtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipAddrEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipaddrtable::Ipaddrentry::Ipaddrentry()
@@ -1150,12 +1530,12 @@ bool IpMib::Ipaddrtable::Ipaddrentry::has_data() const
 
 bool IpMib::Ipaddrtable::Ipaddrentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipadentaddr.operation)
-	|| is_set(ipadentbcastaddr.operation)
-	|| is_set(ipadentifindex.operation)
-	|| is_set(ipadentnetmask.operation)
-	|| is_set(ipadentreasmmaxsize.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipadentaddr.yfilter)
+	|| ydk::is_set(ipadentbcastaddr.yfilter)
+	|| ydk::is_set(ipadentifindex.yfilter)
+	|| ydk::is_set(ipadentnetmask.yfilter)
+	|| ydk::is_set(ipadentreasmmaxsize.yfilter);
 }
 
 std::string IpMib::Ipaddrtable::Ipaddrentry::get_segment_path() const
@@ -1181,11 +1561,11 @@ const EntityPath IpMib::Ipaddrtable::Ipaddrentry::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipadentaddr.is_set || is_set(ipadentaddr.operation)) leaf_name_data.push_back(ipadentaddr.get_name_leafdata());
-    if (ipadentbcastaddr.is_set || is_set(ipadentbcastaddr.operation)) leaf_name_data.push_back(ipadentbcastaddr.get_name_leafdata());
-    if (ipadentifindex.is_set || is_set(ipadentifindex.operation)) leaf_name_data.push_back(ipadentifindex.get_name_leafdata());
-    if (ipadentnetmask.is_set || is_set(ipadentnetmask.operation)) leaf_name_data.push_back(ipadentnetmask.get_name_leafdata());
-    if (ipadentreasmmaxsize.is_set || is_set(ipadentreasmmaxsize.operation)) leaf_name_data.push_back(ipadentreasmmaxsize.get_name_leafdata());
+    if (ipadentaddr.is_set || is_set(ipadentaddr.yfilter)) leaf_name_data.push_back(ipadentaddr.get_name_leafdata());
+    if (ipadentbcastaddr.is_set || is_set(ipadentbcastaddr.yfilter)) leaf_name_data.push_back(ipadentbcastaddr.get_name_leafdata());
+    if (ipadentifindex.is_set || is_set(ipadentifindex.yfilter)) leaf_name_data.push_back(ipadentifindex.get_name_leafdata());
+    if (ipadentnetmask.is_set || is_set(ipadentnetmask.yfilter)) leaf_name_data.push_back(ipadentnetmask.get_name_leafdata());
+    if (ipadentreasmmaxsize.is_set || is_set(ipadentreasmmaxsize.yfilter)) leaf_name_data.push_back(ipadentreasmmaxsize.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1204,28 +1584,69 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddrtable::Ipaddrentry::
     return children;
 }
 
-void IpMib::Ipaddrtable::Ipaddrentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipaddrtable::Ipaddrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipAdEntAddr")
     {
         ipadentaddr = value;
+        ipadentaddr.value_namespace = name_space;
+        ipadentaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAdEntBcastAddr")
     {
         ipadentbcastaddr = value;
+        ipadentbcastaddr.value_namespace = name_space;
+        ipadentbcastaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAdEntIfIndex")
     {
         ipadentifindex = value;
+        ipadentifindex.value_namespace = name_space;
+        ipadentifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAdEntNetMask")
     {
         ipadentnetmask = value;
+        ipadentnetmask.value_namespace = name_space;
+        ipadentnetmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAdEntReasmMaxSize")
     {
         ipadentreasmmaxsize = value;
+        ipadentreasmmaxsize.value_namespace = name_space;
+        ipadentreasmmaxsize.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipaddrtable::Ipaddrentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipAdEntAddr")
+    {
+        ipadentaddr.yfilter = yfilter;
+    }
+    if(value_path == "ipAdEntBcastAddr")
+    {
+        ipadentbcastaddr.yfilter = yfilter;
+    }
+    if(value_path == "ipAdEntIfIndex")
+    {
+        ipadentifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipAdEntNetMask")
+    {
+        ipadentnetmask.yfilter = yfilter;
+    }
+    if(value_path == "ipAdEntReasmMaxSize")
+    {
+        ipadentreasmmaxsize.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipaddrtable::Ipaddrentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipAdEntAddr" || name == "ipAdEntBcastAddr" || name == "ipAdEntIfIndex" || name == "ipAdEntNetMask" || name == "ipAdEntReasmMaxSize")
+        return true;
+    return false;
 }
 
 IpMib::Ipnettomediatable::Ipnettomediatable()
@@ -1239,9 +1660,9 @@ IpMib::Ipnettomediatable::~Ipnettomediatable()
 
 bool IpMib::Ipnettomediatable::has_data() const
 {
-    for (std::size_t index=0; index<ipnettomediaentry_.size(); index++)
+    for (std::size_t index=0; index<ipnettomediaentry.size(); index++)
     {
-        if(ipnettomediaentry_[index]->has_data())
+        if(ipnettomediaentry[index]->has_data())
             return true;
     }
     return false;
@@ -1249,12 +1670,12 @@ bool IpMib::Ipnettomediatable::has_data() const
 
 bool IpMib::Ipnettomediatable::has_operation() const
 {
-    for (std::size_t index=0; index<ipnettomediaentry_.size(); index++)
+    for (std::size_t index=0; index<ipnettomediaentry.size(); index++)
     {
-        if(ipnettomediaentry_[index]->has_operation())
+        if(ipnettomediaentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipnettomediatable::get_segment_path() const
@@ -1291,7 +1712,7 @@ std::shared_ptr<Entity> IpMib::Ipnettomediatable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ipNetToMediaEntry")
     {
-        for(auto const & c : ipnettomediaentry_)
+        for(auto const & c : ipnettomediaentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1301,7 +1722,7 @@ std::shared_ptr<Entity> IpMib::Ipnettomediatable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<IpMib::Ipnettomediatable::Ipnettomediaentry>();
         c->parent = this;
-        ipnettomediaentry_.push_back(c);
+        ipnettomediaentry.push_back(c);
         return c;
     }
 
@@ -1311,7 +1732,7 @@ std::shared_ptr<Entity> IpMib::Ipnettomediatable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipnettomediatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipnettomediaentry_)
+    for (auto const & c : ipnettomediaentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1319,8 +1740,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipnettomediatable::get_chi
     return children;
 }
 
-void IpMib::Ipnettomediatable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipnettomediatable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipnettomediatable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipnettomediatable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipNetToMediaEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipnettomediatable::Ipnettomediaentry::Ipnettomediaentry()
@@ -1347,11 +1779,11 @@ bool IpMib::Ipnettomediatable::Ipnettomediaentry::has_data() const
 
 bool IpMib::Ipnettomediatable::Ipnettomediaentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipnettomediaifindex.operation)
-	|| is_set(ipnettomedianetaddress.operation)
-	|| is_set(ipnettomediaphysaddress.operation)
-	|| is_set(ipnettomediatype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipnettomediaifindex.yfilter)
+	|| ydk::is_set(ipnettomedianetaddress.yfilter)
+	|| ydk::is_set(ipnettomediaphysaddress.yfilter)
+	|| ydk::is_set(ipnettomediatype.yfilter);
 }
 
 std::string IpMib::Ipnettomediatable::Ipnettomediaentry::get_segment_path() const
@@ -1377,10 +1809,10 @@ const EntityPath IpMib::Ipnettomediatable::Ipnettomediaentry::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipnettomediaifindex.is_set || is_set(ipnettomediaifindex.operation)) leaf_name_data.push_back(ipnettomediaifindex.get_name_leafdata());
-    if (ipnettomedianetaddress.is_set || is_set(ipnettomedianetaddress.operation)) leaf_name_data.push_back(ipnettomedianetaddress.get_name_leafdata());
-    if (ipnettomediaphysaddress.is_set || is_set(ipnettomediaphysaddress.operation)) leaf_name_data.push_back(ipnettomediaphysaddress.get_name_leafdata());
-    if (ipnettomediatype.is_set || is_set(ipnettomediatype.operation)) leaf_name_data.push_back(ipnettomediatype.get_name_leafdata());
+    if (ipnettomediaifindex.is_set || is_set(ipnettomediaifindex.yfilter)) leaf_name_data.push_back(ipnettomediaifindex.get_name_leafdata());
+    if (ipnettomedianetaddress.is_set || is_set(ipnettomedianetaddress.yfilter)) leaf_name_data.push_back(ipnettomedianetaddress.get_name_leafdata());
+    if (ipnettomediaphysaddress.is_set || is_set(ipnettomediaphysaddress.yfilter)) leaf_name_data.push_back(ipnettomediaphysaddress.get_name_leafdata());
+    if (ipnettomediatype.is_set || is_set(ipnettomediatype.yfilter)) leaf_name_data.push_back(ipnettomediatype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1399,24 +1831,59 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipnettomediatable::Ipnetto
     return children;
 }
 
-void IpMib::Ipnettomediatable::Ipnettomediaentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipnettomediatable::Ipnettomediaentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipNetToMediaIfIndex")
     {
         ipnettomediaifindex = value;
+        ipnettomediaifindex.value_namespace = name_space;
+        ipnettomediaifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToMediaNetAddress")
     {
         ipnettomedianetaddress = value;
+        ipnettomedianetaddress.value_namespace = name_space;
+        ipnettomedianetaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToMediaPhysAddress")
     {
         ipnettomediaphysaddress = value;
+        ipnettomediaphysaddress.value_namespace = name_space;
+        ipnettomediaphysaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToMediaType")
     {
         ipnettomediatype = value;
+        ipnettomediatype.value_namespace = name_space;
+        ipnettomediatype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipnettomediatable::Ipnettomediaentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipNetToMediaIfIndex")
+    {
+        ipnettomediaifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToMediaNetAddress")
+    {
+        ipnettomedianetaddress.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToMediaPhysAddress")
+    {
+        ipnettomediaphysaddress.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToMediaType")
+    {
+        ipnettomediatype.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipnettomediatable::Ipnettomediaentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipNetToMediaIfIndex" || name == "ipNetToMediaNetAddress" || name == "ipNetToMediaPhysAddress" || name == "ipNetToMediaType")
+        return true;
+    return false;
 }
 
 IpMib::Ipv4Interfacetable::Ipv4Interfacetable()
@@ -1430,9 +1897,9 @@ IpMib::Ipv4Interfacetable::~Ipv4Interfacetable()
 
 bool IpMib::Ipv4Interfacetable::has_data() const
 {
-    for (std::size_t index=0; index<ipv4interfaceentry_.size(); index++)
+    for (std::size_t index=0; index<ipv4interfaceentry.size(); index++)
     {
-        if(ipv4interfaceentry_[index]->has_data())
+        if(ipv4interfaceentry[index]->has_data())
             return true;
     }
     return false;
@@ -1440,12 +1907,12 @@ bool IpMib::Ipv4Interfacetable::has_data() const
 
 bool IpMib::Ipv4Interfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4interfaceentry_.size(); index++)
+    for (std::size_t index=0; index<ipv4interfaceentry.size(); index++)
     {
-        if(ipv4interfaceentry_[index]->has_operation())
+        if(ipv4interfaceentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipv4Interfacetable::get_segment_path() const
@@ -1482,7 +1949,7 @@ std::shared_ptr<Entity> IpMib::Ipv4Interfacetable::get_child_by_name(const std::
 {
     if(child_yang_name == "ipv4InterfaceEntry")
     {
-        for(auto const & c : ipv4interfaceentry_)
+        for(auto const & c : ipv4interfaceentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1492,7 +1959,7 @@ std::shared_ptr<Entity> IpMib::Ipv4Interfacetable::get_child_by_name(const std::
         }
         auto c = std::make_shared<IpMib::Ipv4Interfacetable::Ipv4Interfaceentry>();
         c->parent = this;
-        ipv4interfaceentry_.push_back(c);
+        ipv4interfaceentry.push_back(c);
         return c;
     }
 
@@ -1502,7 +1969,7 @@ std::shared_ptr<Entity> IpMib::Ipv4Interfacetable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv4Interfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv4interfaceentry_)
+    for (auto const & c : ipv4interfaceentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1510,8 +1977,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv4Interfacetable::get_ch
     return children;
 }
 
-void IpMib::Ipv4Interfacetable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipv4Interfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipv4Interfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipv4Interfacetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4InterfaceEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceentry()
@@ -1538,11 +2016,11 @@ bool IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::has_data() const
 
 bool IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4interfaceifindex.operation)
-	|| is_set(ipv4interfaceenablestatus.operation)
-	|| is_set(ipv4interfacereasmmaxsize.operation)
-	|| is_set(ipv4interfaceretransmittime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4interfaceifindex.yfilter)
+	|| ydk::is_set(ipv4interfaceenablestatus.yfilter)
+	|| ydk::is_set(ipv4interfacereasmmaxsize.yfilter)
+	|| ydk::is_set(ipv4interfaceretransmittime.yfilter);
 }
 
 std::string IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::get_segment_path() const
@@ -1568,10 +2046,10 @@ const EntityPath IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4interfaceifindex.is_set || is_set(ipv4interfaceifindex.operation)) leaf_name_data.push_back(ipv4interfaceifindex.get_name_leafdata());
-    if (ipv4interfaceenablestatus.is_set || is_set(ipv4interfaceenablestatus.operation)) leaf_name_data.push_back(ipv4interfaceenablestatus.get_name_leafdata());
-    if (ipv4interfacereasmmaxsize.is_set || is_set(ipv4interfacereasmmaxsize.operation)) leaf_name_data.push_back(ipv4interfacereasmmaxsize.get_name_leafdata());
-    if (ipv4interfaceretransmittime.is_set || is_set(ipv4interfaceretransmittime.operation)) leaf_name_data.push_back(ipv4interfaceretransmittime.get_name_leafdata());
+    if (ipv4interfaceifindex.is_set || is_set(ipv4interfaceifindex.yfilter)) leaf_name_data.push_back(ipv4interfaceifindex.get_name_leafdata());
+    if (ipv4interfaceenablestatus.is_set || is_set(ipv4interfaceenablestatus.yfilter)) leaf_name_data.push_back(ipv4interfaceenablestatus.get_name_leafdata());
+    if (ipv4interfacereasmmaxsize.is_set || is_set(ipv4interfacereasmmaxsize.yfilter)) leaf_name_data.push_back(ipv4interfacereasmmaxsize.get_name_leafdata());
+    if (ipv4interfaceretransmittime.is_set || is_set(ipv4interfaceretransmittime.yfilter)) leaf_name_data.push_back(ipv4interfaceretransmittime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1590,24 +2068,59 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv4Interfacetable::Ipv4In
     return children;
 }
 
-void IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4InterfaceIfIndex")
     {
         ipv4interfaceifindex = value;
+        ipv4interfaceifindex.value_namespace = name_space;
+        ipv4interfaceifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4InterfaceEnableStatus")
     {
         ipv4interfaceenablestatus = value;
+        ipv4interfaceenablestatus.value_namespace = name_space;
+        ipv4interfaceenablestatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4InterfaceReasmMaxSize")
     {
         ipv4interfacereasmmaxsize = value;
+        ipv4interfacereasmmaxsize.value_namespace = name_space;
+        ipv4interfacereasmmaxsize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4InterfaceRetransmitTime")
     {
         ipv4interfaceretransmittime = value;
+        ipv4interfaceretransmittime.value_namespace = name_space;
+        ipv4interfaceretransmittime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4InterfaceIfIndex")
+    {
+        ipv4interfaceifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipv4InterfaceEnableStatus")
+    {
+        ipv4interfaceenablestatus.yfilter = yfilter;
+    }
+    if(value_path == "ipv4InterfaceReasmMaxSize")
+    {
+        ipv4interfacereasmmaxsize.yfilter = yfilter;
+    }
+    if(value_path == "ipv4InterfaceRetransmitTime")
+    {
+        ipv4interfaceretransmittime.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4InterfaceIfIndex" || name == "ipv4InterfaceEnableStatus" || name == "ipv4InterfaceReasmMaxSize" || name == "ipv4InterfaceRetransmitTime")
+        return true;
+    return false;
 }
 
 IpMib::Ipv6Interfacetable::Ipv6Interfacetable()
@@ -1621,9 +2134,9 @@ IpMib::Ipv6Interfacetable::~Ipv6Interfacetable()
 
 bool IpMib::Ipv6Interfacetable::has_data() const
 {
-    for (std::size_t index=0; index<ipv6interfaceentry_.size(); index++)
+    for (std::size_t index=0; index<ipv6interfaceentry.size(); index++)
     {
-        if(ipv6interfaceentry_[index]->has_data())
+        if(ipv6interfaceentry[index]->has_data())
             return true;
     }
     return false;
@@ -1631,12 +2144,12 @@ bool IpMib::Ipv6Interfacetable::has_data() const
 
 bool IpMib::Ipv6Interfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6interfaceentry_.size(); index++)
+    for (std::size_t index=0; index<ipv6interfaceentry.size(); index++)
     {
-        if(ipv6interfaceentry_[index]->has_operation())
+        if(ipv6interfaceentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipv6Interfacetable::get_segment_path() const
@@ -1673,7 +2186,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Interfacetable::get_child_by_name(const std::
 {
     if(child_yang_name == "ipv6InterfaceEntry")
     {
-        for(auto const & c : ipv6interfaceentry_)
+        for(auto const & c : ipv6interfaceentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1683,7 +2196,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Interfacetable::get_child_by_name(const std::
         }
         auto c = std::make_shared<IpMib::Ipv6Interfacetable::Ipv6Interfaceentry>();
         c->parent = this;
-        ipv6interfaceentry_.push_back(c);
+        ipv6interfaceentry.push_back(c);
         return c;
     }
 
@@ -1693,7 +2206,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Interfacetable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Interfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv6interfaceentry_)
+    for (auto const & c : ipv6interfaceentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1701,8 +2214,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Interfacetable::get_ch
     return children;
 }
 
-void IpMib::Ipv6Interfacetable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipv6Interfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipv6Interfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipv6Interfacetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6InterfaceEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceentry()
@@ -1735,14 +2259,14 @@ bool IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::has_data() const
 
 bool IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6interfaceifindex.operation)
-	|| is_set(ipv6interfaceenablestatus.operation)
-	|| is_set(ipv6interfaceforwarding.operation)
-	|| is_set(ipv6interfaceidentifier.operation)
-	|| is_set(ipv6interfacereachabletime.operation)
-	|| is_set(ipv6interfacereasmmaxsize.operation)
-	|| is_set(ipv6interfaceretransmittime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6interfaceifindex.yfilter)
+	|| ydk::is_set(ipv6interfaceenablestatus.yfilter)
+	|| ydk::is_set(ipv6interfaceforwarding.yfilter)
+	|| ydk::is_set(ipv6interfaceidentifier.yfilter)
+	|| ydk::is_set(ipv6interfacereachabletime.yfilter)
+	|| ydk::is_set(ipv6interfacereasmmaxsize.yfilter)
+	|| ydk::is_set(ipv6interfaceretransmittime.yfilter);
 }
 
 std::string IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::get_segment_path() const
@@ -1768,13 +2292,13 @@ const EntityPath IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6interfaceifindex.is_set || is_set(ipv6interfaceifindex.operation)) leaf_name_data.push_back(ipv6interfaceifindex.get_name_leafdata());
-    if (ipv6interfaceenablestatus.is_set || is_set(ipv6interfaceenablestatus.operation)) leaf_name_data.push_back(ipv6interfaceenablestatus.get_name_leafdata());
-    if (ipv6interfaceforwarding.is_set || is_set(ipv6interfaceforwarding.operation)) leaf_name_data.push_back(ipv6interfaceforwarding.get_name_leafdata());
-    if (ipv6interfaceidentifier.is_set || is_set(ipv6interfaceidentifier.operation)) leaf_name_data.push_back(ipv6interfaceidentifier.get_name_leafdata());
-    if (ipv6interfacereachabletime.is_set || is_set(ipv6interfacereachabletime.operation)) leaf_name_data.push_back(ipv6interfacereachabletime.get_name_leafdata());
-    if (ipv6interfacereasmmaxsize.is_set || is_set(ipv6interfacereasmmaxsize.operation)) leaf_name_data.push_back(ipv6interfacereasmmaxsize.get_name_leafdata());
-    if (ipv6interfaceretransmittime.is_set || is_set(ipv6interfaceretransmittime.operation)) leaf_name_data.push_back(ipv6interfaceretransmittime.get_name_leafdata());
+    if (ipv6interfaceifindex.is_set || is_set(ipv6interfaceifindex.yfilter)) leaf_name_data.push_back(ipv6interfaceifindex.get_name_leafdata());
+    if (ipv6interfaceenablestatus.is_set || is_set(ipv6interfaceenablestatus.yfilter)) leaf_name_data.push_back(ipv6interfaceenablestatus.get_name_leafdata());
+    if (ipv6interfaceforwarding.is_set || is_set(ipv6interfaceforwarding.yfilter)) leaf_name_data.push_back(ipv6interfaceforwarding.get_name_leafdata());
+    if (ipv6interfaceidentifier.is_set || is_set(ipv6interfaceidentifier.yfilter)) leaf_name_data.push_back(ipv6interfaceidentifier.get_name_leafdata());
+    if (ipv6interfacereachabletime.is_set || is_set(ipv6interfacereachabletime.yfilter)) leaf_name_data.push_back(ipv6interfacereachabletime.get_name_leafdata());
+    if (ipv6interfacereasmmaxsize.is_set || is_set(ipv6interfacereasmmaxsize.yfilter)) leaf_name_data.push_back(ipv6interfacereasmmaxsize.get_name_leafdata());
+    if (ipv6interfaceretransmittime.is_set || is_set(ipv6interfaceretransmittime.yfilter)) leaf_name_data.push_back(ipv6interfaceretransmittime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1793,36 +2317,89 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Interfacetable::Ipv6In
     return children;
 }
 
-void IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6InterfaceIfIndex")
     {
         ipv6interfaceifindex = value;
+        ipv6interfaceifindex.value_namespace = name_space;
+        ipv6interfaceifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6InterfaceEnableStatus")
     {
         ipv6interfaceenablestatus = value;
+        ipv6interfaceenablestatus.value_namespace = name_space;
+        ipv6interfaceenablestatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6InterfaceForwarding")
     {
         ipv6interfaceforwarding = value;
+        ipv6interfaceforwarding.value_namespace = name_space;
+        ipv6interfaceforwarding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6InterfaceIdentifier")
     {
         ipv6interfaceidentifier = value;
+        ipv6interfaceidentifier.value_namespace = name_space;
+        ipv6interfaceidentifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6InterfaceReachableTime")
     {
         ipv6interfacereachabletime = value;
+        ipv6interfacereachabletime.value_namespace = name_space;
+        ipv6interfacereachabletime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6InterfaceReasmMaxSize")
     {
         ipv6interfacereasmmaxsize = value;
+        ipv6interfacereasmmaxsize.value_namespace = name_space;
+        ipv6interfacereasmmaxsize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6InterfaceRetransmitTime")
     {
         ipv6interfaceretransmittime = value;
+        ipv6interfaceretransmittime.value_namespace = name_space;
+        ipv6interfaceretransmittime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6InterfaceIfIndex")
+    {
+        ipv6interfaceifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipv6InterfaceEnableStatus")
+    {
+        ipv6interfaceenablestatus.yfilter = yfilter;
+    }
+    if(value_path == "ipv6InterfaceForwarding")
+    {
+        ipv6interfaceforwarding.yfilter = yfilter;
+    }
+    if(value_path == "ipv6InterfaceIdentifier")
+    {
+        ipv6interfaceidentifier.yfilter = yfilter;
+    }
+    if(value_path == "ipv6InterfaceReachableTime")
+    {
+        ipv6interfacereachabletime.yfilter = yfilter;
+    }
+    if(value_path == "ipv6InterfaceReasmMaxSize")
+    {
+        ipv6interfacereasmmaxsize.yfilter = yfilter;
+    }
+    if(value_path == "ipv6InterfaceRetransmitTime")
+    {
+        ipv6interfaceretransmittime.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6InterfaceIfIndex" || name == "ipv6InterfaceEnableStatus" || name == "ipv6InterfaceForwarding" || name == "ipv6InterfaceIdentifier" || name == "ipv6InterfaceReachableTime" || name == "ipv6InterfaceReasmMaxSize" || name == "ipv6InterfaceRetransmitTime")
+        return true;
+    return false;
 }
 
 IpMib::Ipsystemstatstable::Ipsystemstatstable()
@@ -1836,9 +2413,9 @@ IpMib::Ipsystemstatstable::~Ipsystemstatstable()
 
 bool IpMib::Ipsystemstatstable::has_data() const
 {
-    for (std::size_t index=0; index<ipsystemstatsentry_.size(); index++)
+    for (std::size_t index=0; index<ipsystemstatsentry.size(); index++)
     {
-        if(ipsystemstatsentry_[index]->has_data())
+        if(ipsystemstatsentry[index]->has_data())
             return true;
     }
     return false;
@@ -1846,12 +2423,12 @@ bool IpMib::Ipsystemstatstable::has_data() const
 
 bool IpMib::Ipsystemstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<ipsystemstatsentry_.size(); index++)
+    for (std::size_t index=0; index<ipsystemstatsentry.size(); index++)
     {
-        if(ipsystemstatsentry_[index]->has_operation())
+        if(ipsystemstatsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipsystemstatstable::get_segment_path() const
@@ -1888,7 +2465,7 @@ std::shared_ptr<Entity> IpMib::Ipsystemstatstable::get_child_by_name(const std::
 {
     if(child_yang_name == "ipSystemStatsEntry")
     {
-        for(auto const & c : ipsystemstatsentry_)
+        for(auto const & c : ipsystemstatsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1898,7 +2475,7 @@ std::shared_ptr<Entity> IpMib::Ipsystemstatstable::get_child_by_name(const std::
         }
         auto c = std::make_shared<IpMib::Ipsystemstatstable::Ipsystemstatsentry>();
         c->parent = this;
-        ipsystemstatsentry_.push_back(c);
+        ipsystemstatsentry.push_back(c);
         return c;
     }
 
@@ -1908,7 +2485,7 @@ std::shared_ptr<Entity> IpMib::Ipsystemstatstable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipsystemstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipsystemstatsentry_)
+    for (auto const & c : ipsystemstatsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1916,8 +2493,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipsystemstatstable::get_ch
     return children;
 }
 
-void IpMib::Ipsystemstatstable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipsystemstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipsystemstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipsystemstatstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipSystemStatsEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipsystemstatstable::Ipsystemstatsentry::Ipsystemstatsentry()
@@ -2028,53 +2616,53 @@ bool IpMib::Ipsystemstatstable::Ipsystemstatsentry::has_data() const
 
 bool IpMib::Ipsystemstatstable::Ipsystemstatsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipsystemstatsipversion.operation)
-	|| is_set(ipsystemstatsdiscontinuitytime.operation)
-	|| is_set(ipsystemstatshcinbcastpkts.operation)
-	|| is_set(ipsystemstatshcindelivers.operation)
-	|| is_set(ipsystemstatshcinforwdatagrams.operation)
-	|| is_set(ipsystemstatshcinmcastoctets.operation)
-	|| is_set(ipsystemstatshcinmcastpkts.operation)
-	|| is_set(ipsystemstatshcinoctets.operation)
-	|| is_set(ipsystemstatshcinreceives.operation)
-	|| is_set(ipsystemstatshcoutbcastpkts.operation)
-	|| is_set(ipsystemstatshcoutforwdatagrams.operation)
-	|| is_set(ipsystemstatshcoutmcastoctets.operation)
-	|| is_set(ipsystemstatshcoutmcastpkts.operation)
-	|| is_set(ipsystemstatshcoutoctets.operation)
-	|| is_set(ipsystemstatshcoutrequests.operation)
-	|| is_set(ipsystemstatshcouttransmits.operation)
-	|| is_set(ipsystemstatsinaddrerrors.operation)
-	|| is_set(ipsystemstatsinbcastpkts.operation)
-	|| is_set(ipsystemstatsindelivers.operation)
-	|| is_set(ipsystemstatsindiscards.operation)
-	|| is_set(ipsystemstatsinforwdatagrams.operation)
-	|| is_set(ipsystemstatsinhdrerrors.operation)
-	|| is_set(ipsystemstatsinmcastoctets.operation)
-	|| is_set(ipsystemstatsinmcastpkts.operation)
-	|| is_set(ipsystemstatsinnoroutes.operation)
-	|| is_set(ipsystemstatsinoctets.operation)
-	|| is_set(ipsystemstatsinreceives.operation)
-	|| is_set(ipsystemstatsintruncatedpkts.operation)
-	|| is_set(ipsystemstatsinunknownprotos.operation)
-	|| is_set(ipsystemstatsoutbcastpkts.operation)
-	|| is_set(ipsystemstatsoutdiscards.operation)
-	|| is_set(ipsystemstatsoutforwdatagrams.operation)
-	|| is_set(ipsystemstatsoutfragcreates.operation)
-	|| is_set(ipsystemstatsoutfragfails.operation)
-	|| is_set(ipsystemstatsoutfragoks.operation)
-	|| is_set(ipsystemstatsoutfragreqds.operation)
-	|| is_set(ipsystemstatsoutmcastoctets.operation)
-	|| is_set(ipsystemstatsoutmcastpkts.operation)
-	|| is_set(ipsystemstatsoutnoroutes.operation)
-	|| is_set(ipsystemstatsoutoctets.operation)
-	|| is_set(ipsystemstatsoutrequests.operation)
-	|| is_set(ipsystemstatsouttransmits.operation)
-	|| is_set(ipsystemstatsreasmfails.operation)
-	|| is_set(ipsystemstatsreasmoks.operation)
-	|| is_set(ipsystemstatsreasmreqds.operation)
-	|| is_set(ipsystemstatsrefreshrate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipsystemstatsipversion.yfilter)
+	|| ydk::is_set(ipsystemstatsdiscontinuitytime.yfilter)
+	|| ydk::is_set(ipsystemstatshcinbcastpkts.yfilter)
+	|| ydk::is_set(ipsystemstatshcindelivers.yfilter)
+	|| ydk::is_set(ipsystemstatshcinforwdatagrams.yfilter)
+	|| ydk::is_set(ipsystemstatshcinmcastoctets.yfilter)
+	|| ydk::is_set(ipsystemstatshcinmcastpkts.yfilter)
+	|| ydk::is_set(ipsystemstatshcinoctets.yfilter)
+	|| ydk::is_set(ipsystemstatshcinreceives.yfilter)
+	|| ydk::is_set(ipsystemstatshcoutbcastpkts.yfilter)
+	|| ydk::is_set(ipsystemstatshcoutforwdatagrams.yfilter)
+	|| ydk::is_set(ipsystemstatshcoutmcastoctets.yfilter)
+	|| ydk::is_set(ipsystemstatshcoutmcastpkts.yfilter)
+	|| ydk::is_set(ipsystemstatshcoutoctets.yfilter)
+	|| ydk::is_set(ipsystemstatshcoutrequests.yfilter)
+	|| ydk::is_set(ipsystemstatshcouttransmits.yfilter)
+	|| ydk::is_set(ipsystemstatsinaddrerrors.yfilter)
+	|| ydk::is_set(ipsystemstatsinbcastpkts.yfilter)
+	|| ydk::is_set(ipsystemstatsindelivers.yfilter)
+	|| ydk::is_set(ipsystemstatsindiscards.yfilter)
+	|| ydk::is_set(ipsystemstatsinforwdatagrams.yfilter)
+	|| ydk::is_set(ipsystemstatsinhdrerrors.yfilter)
+	|| ydk::is_set(ipsystemstatsinmcastoctets.yfilter)
+	|| ydk::is_set(ipsystemstatsinmcastpkts.yfilter)
+	|| ydk::is_set(ipsystemstatsinnoroutes.yfilter)
+	|| ydk::is_set(ipsystemstatsinoctets.yfilter)
+	|| ydk::is_set(ipsystemstatsinreceives.yfilter)
+	|| ydk::is_set(ipsystemstatsintruncatedpkts.yfilter)
+	|| ydk::is_set(ipsystemstatsinunknownprotos.yfilter)
+	|| ydk::is_set(ipsystemstatsoutbcastpkts.yfilter)
+	|| ydk::is_set(ipsystemstatsoutdiscards.yfilter)
+	|| ydk::is_set(ipsystemstatsoutforwdatagrams.yfilter)
+	|| ydk::is_set(ipsystemstatsoutfragcreates.yfilter)
+	|| ydk::is_set(ipsystemstatsoutfragfails.yfilter)
+	|| ydk::is_set(ipsystemstatsoutfragoks.yfilter)
+	|| ydk::is_set(ipsystemstatsoutfragreqds.yfilter)
+	|| ydk::is_set(ipsystemstatsoutmcastoctets.yfilter)
+	|| ydk::is_set(ipsystemstatsoutmcastpkts.yfilter)
+	|| ydk::is_set(ipsystemstatsoutnoroutes.yfilter)
+	|| ydk::is_set(ipsystemstatsoutoctets.yfilter)
+	|| ydk::is_set(ipsystemstatsoutrequests.yfilter)
+	|| ydk::is_set(ipsystemstatsouttransmits.yfilter)
+	|| ydk::is_set(ipsystemstatsreasmfails.yfilter)
+	|| ydk::is_set(ipsystemstatsreasmoks.yfilter)
+	|| ydk::is_set(ipsystemstatsreasmreqds.yfilter)
+	|| ydk::is_set(ipsystemstatsrefreshrate.yfilter);
 }
 
 std::string IpMib::Ipsystemstatstable::Ipsystemstatsentry::get_segment_path() const
@@ -2100,52 +2688,52 @@ const EntityPath IpMib::Ipsystemstatstable::Ipsystemstatsentry::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipsystemstatsipversion.is_set || is_set(ipsystemstatsipversion.operation)) leaf_name_data.push_back(ipsystemstatsipversion.get_name_leafdata());
-    if (ipsystemstatsdiscontinuitytime.is_set || is_set(ipsystemstatsdiscontinuitytime.operation)) leaf_name_data.push_back(ipsystemstatsdiscontinuitytime.get_name_leafdata());
-    if (ipsystemstatshcinbcastpkts.is_set || is_set(ipsystemstatshcinbcastpkts.operation)) leaf_name_data.push_back(ipsystemstatshcinbcastpkts.get_name_leafdata());
-    if (ipsystemstatshcindelivers.is_set || is_set(ipsystemstatshcindelivers.operation)) leaf_name_data.push_back(ipsystemstatshcindelivers.get_name_leafdata());
-    if (ipsystemstatshcinforwdatagrams.is_set || is_set(ipsystemstatshcinforwdatagrams.operation)) leaf_name_data.push_back(ipsystemstatshcinforwdatagrams.get_name_leafdata());
-    if (ipsystemstatshcinmcastoctets.is_set || is_set(ipsystemstatshcinmcastoctets.operation)) leaf_name_data.push_back(ipsystemstatshcinmcastoctets.get_name_leafdata());
-    if (ipsystemstatshcinmcastpkts.is_set || is_set(ipsystemstatshcinmcastpkts.operation)) leaf_name_data.push_back(ipsystemstatshcinmcastpkts.get_name_leafdata());
-    if (ipsystemstatshcinoctets.is_set || is_set(ipsystemstatshcinoctets.operation)) leaf_name_data.push_back(ipsystemstatshcinoctets.get_name_leafdata());
-    if (ipsystemstatshcinreceives.is_set || is_set(ipsystemstatshcinreceives.operation)) leaf_name_data.push_back(ipsystemstatshcinreceives.get_name_leafdata());
-    if (ipsystemstatshcoutbcastpkts.is_set || is_set(ipsystemstatshcoutbcastpkts.operation)) leaf_name_data.push_back(ipsystemstatshcoutbcastpkts.get_name_leafdata());
-    if (ipsystemstatshcoutforwdatagrams.is_set || is_set(ipsystemstatshcoutforwdatagrams.operation)) leaf_name_data.push_back(ipsystemstatshcoutforwdatagrams.get_name_leafdata());
-    if (ipsystemstatshcoutmcastoctets.is_set || is_set(ipsystemstatshcoutmcastoctets.operation)) leaf_name_data.push_back(ipsystemstatshcoutmcastoctets.get_name_leafdata());
-    if (ipsystemstatshcoutmcastpkts.is_set || is_set(ipsystemstatshcoutmcastpkts.operation)) leaf_name_data.push_back(ipsystemstatshcoutmcastpkts.get_name_leafdata());
-    if (ipsystemstatshcoutoctets.is_set || is_set(ipsystemstatshcoutoctets.operation)) leaf_name_data.push_back(ipsystemstatshcoutoctets.get_name_leafdata());
-    if (ipsystemstatshcoutrequests.is_set || is_set(ipsystemstatshcoutrequests.operation)) leaf_name_data.push_back(ipsystemstatshcoutrequests.get_name_leafdata());
-    if (ipsystemstatshcouttransmits.is_set || is_set(ipsystemstatshcouttransmits.operation)) leaf_name_data.push_back(ipsystemstatshcouttransmits.get_name_leafdata());
-    if (ipsystemstatsinaddrerrors.is_set || is_set(ipsystemstatsinaddrerrors.operation)) leaf_name_data.push_back(ipsystemstatsinaddrerrors.get_name_leafdata());
-    if (ipsystemstatsinbcastpkts.is_set || is_set(ipsystemstatsinbcastpkts.operation)) leaf_name_data.push_back(ipsystemstatsinbcastpkts.get_name_leafdata());
-    if (ipsystemstatsindelivers.is_set || is_set(ipsystemstatsindelivers.operation)) leaf_name_data.push_back(ipsystemstatsindelivers.get_name_leafdata());
-    if (ipsystemstatsindiscards.is_set || is_set(ipsystemstatsindiscards.operation)) leaf_name_data.push_back(ipsystemstatsindiscards.get_name_leafdata());
-    if (ipsystemstatsinforwdatagrams.is_set || is_set(ipsystemstatsinforwdatagrams.operation)) leaf_name_data.push_back(ipsystemstatsinforwdatagrams.get_name_leafdata());
-    if (ipsystemstatsinhdrerrors.is_set || is_set(ipsystemstatsinhdrerrors.operation)) leaf_name_data.push_back(ipsystemstatsinhdrerrors.get_name_leafdata());
-    if (ipsystemstatsinmcastoctets.is_set || is_set(ipsystemstatsinmcastoctets.operation)) leaf_name_data.push_back(ipsystemstatsinmcastoctets.get_name_leafdata());
-    if (ipsystemstatsinmcastpkts.is_set || is_set(ipsystemstatsinmcastpkts.operation)) leaf_name_data.push_back(ipsystemstatsinmcastpkts.get_name_leafdata());
-    if (ipsystemstatsinnoroutes.is_set || is_set(ipsystemstatsinnoroutes.operation)) leaf_name_data.push_back(ipsystemstatsinnoroutes.get_name_leafdata());
-    if (ipsystemstatsinoctets.is_set || is_set(ipsystemstatsinoctets.operation)) leaf_name_data.push_back(ipsystemstatsinoctets.get_name_leafdata());
-    if (ipsystemstatsinreceives.is_set || is_set(ipsystemstatsinreceives.operation)) leaf_name_data.push_back(ipsystemstatsinreceives.get_name_leafdata());
-    if (ipsystemstatsintruncatedpkts.is_set || is_set(ipsystemstatsintruncatedpkts.operation)) leaf_name_data.push_back(ipsystemstatsintruncatedpkts.get_name_leafdata());
-    if (ipsystemstatsinunknownprotos.is_set || is_set(ipsystemstatsinunknownprotos.operation)) leaf_name_data.push_back(ipsystemstatsinunknownprotos.get_name_leafdata());
-    if (ipsystemstatsoutbcastpkts.is_set || is_set(ipsystemstatsoutbcastpkts.operation)) leaf_name_data.push_back(ipsystemstatsoutbcastpkts.get_name_leafdata());
-    if (ipsystemstatsoutdiscards.is_set || is_set(ipsystemstatsoutdiscards.operation)) leaf_name_data.push_back(ipsystemstatsoutdiscards.get_name_leafdata());
-    if (ipsystemstatsoutforwdatagrams.is_set || is_set(ipsystemstatsoutforwdatagrams.operation)) leaf_name_data.push_back(ipsystemstatsoutforwdatagrams.get_name_leafdata());
-    if (ipsystemstatsoutfragcreates.is_set || is_set(ipsystemstatsoutfragcreates.operation)) leaf_name_data.push_back(ipsystemstatsoutfragcreates.get_name_leafdata());
-    if (ipsystemstatsoutfragfails.is_set || is_set(ipsystemstatsoutfragfails.operation)) leaf_name_data.push_back(ipsystemstatsoutfragfails.get_name_leafdata());
-    if (ipsystemstatsoutfragoks.is_set || is_set(ipsystemstatsoutfragoks.operation)) leaf_name_data.push_back(ipsystemstatsoutfragoks.get_name_leafdata());
-    if (ipsystemstatsoutfragreqds.is_set || is_set(ipsystemstatsoutfragreqds.operation)) leaf_name_data.push_back(ipsystemstatsoutfragreqds.get_name_leafdata());
-    if (ipsystemstatsoutmcastoctets.is_set || is_set(ipsystemstatsoutmcastoctets.operation)) leaf_name_data.push_back(ipsystemstatsoutmcastoctets.get_name_leafdata());
-    if (ipsystemstatsoutmcastpkts.is_set || is_set(ipsystemstatsoutmcastpkts.operation)) leaf_name_data.push_back(ipsystemstatsoutmcastpkts.get_name_leafdata());
-    if (ipsystemstatsoutnoroutes.is_set || is_set(ipsystemstatsoutnoroutes.operation)) leaf_name_data.push_back(ipsystemstatsoutnoroutes.get_name_leafdata());
-    if (ipsystemstatsoutoctets.is_set || is_set(ipsystemstatsoutoctets.operation)) leaf_name_data.push_back(ipsystemstatsoutoctets.get_name_leafdata());
-    if (ipsystemstatsoutrequests.is_set || is_set(ipsystemstatsoutrequests.operation)) leaf_name_data.push_back(ipsystemstatsoutrequests.get_name_leafdata());
-    if (ipsystemstatsouttransmits.is_set || is_set(ipsystemstatsouttransmits.operation)) leaf_name_data.push_back(ipsystemstatsouttransmits.get_name_leafdata());
-    if (ipsystemstatsreasmfails.is_set || is_set(ipsystemstatsreasmfails.operation)) leaf_name_data.push_back(ipsystemstatsreasmfails.get_name_leafdata());
-    if (ipsystemstatsreasmoks.is_set || is_set(ipsystemstatsreasmoks.operation)) leaf_name_data.push_back(ipsystemstatsreasmoks.get_name_leafdata());
-    if (ipsystemstatsreasmreqds.is_set || is_set(ipsystemstatsreasmreqds.operation)) leaf_name_data.push_back(ipsystemstatsreasmreqds.get_name_leafdata());
-    if (ipsystemstatsrefreshrate.is_set || is_set(ipsystemstatsrefreshrate.operation)) leaf_name_data.push_back(ipsystemstatsrefreshrate.get_name_leafdata());
+    if (ipsystemstatsipversion.is_set || is_set(ipsystemstatsipversion.yfilter)) leaf_name_data.push_back(ipsystemstatsipversion.get_name_leafdata());
+    if (ipsystemstatsdiscontinuitytime.is_set || is_set(ipsystemstatsdiscontinuitytime.yfilter)) leaf_name_data.push_back(ipsystemstatsdiscontinuitytime.get_name_leafdata());
+    if (ipsystemstatshcinbcastpkts.is_set || is_set(ipsystemstatshcinbcastpkts.yfilter)) leaf_name_data.push_back(ipsystemstatshcinbcastpkts.get_name_leafdata());
+    if (ipsystemstatshcindelivers.is_set || is_set(ipsystemstatshcindelivers.yfilter)) leaf_name_data.push_back(ipsystemstatshcindelivers.get_name_leafdata());
+    if (ipsystemstatshcinforwdatagrams.is_set || is_set(ipsystemstatshcinforwdatagrams.yfilter)) leaf_name_data.push_back(ipsystemstatshcinforwdatagrams.get_name_leafdata());
+    if (ipsystemstatshcinmcastoctets.is_set || is_set(ipsystemstatshcinmcastoctets.yfilter)) leaf_name_data.push_back(ipsystemstatshcinmcastoctets.get_name_leafdata());
+    if (ipsystemstatshcinmcastpkts.is_set || is_set(ipsystemstatshcinmcastpkts.yfilter)) leaf_name_data.push_back(ipsystemstatshcinmcastpkts.get_name_leafdata());
+    if (ipsystemstatshcinoctets.is_set || is_set(ipsystemstatshcinoctets.yfilter)) leaf_name_data.push_back(ipsystemstatshcinoctets.get_name_leafdata());
+    if (ipsystemstatshcinreceives.is_set || is_set(ipsystemstatshcinreceives.yfilter)) leaf_name_data.push_back(ipsystemstatshcinreceives.get_name_leafdata());
+    if (ipsystemstatshcoutbcastpkts.is_set || is_set(ipsystemstatshcoutbcastpkts.yfilter)) leaf_name_data.push_back(ipsystemstatshcoutbcastpkts.get_name_leafdata());
+    if (ipsystemstatshcoutforwdatagrams.is_set || is_set(ipsystemstatshcoutforwdatagrams.yfilter)) leaf_name_data.push_back(ipsystemstatshcoutforwdatagrams.get_name_leafdata());
+    if (ipsystemstatshcoutmcastoctets.is_set || is_set(ipsystemstatshcoutmcastoctets.yfilter)) leaf_name_data.push_back(ipsystemstatshcoutmcastoctets.get_name_leafdata());
+    if (ipsystemstatshcoutmcastpkts.is_set || is_set(ipsystemstatshcoutmcastpkts.yfilter)) leaf_name_data.push_back(ipsystemstatshcoutmcastpkts.get_name_leafdata());
+    if (ipsystemstatshcoutoctets.is_set || is_set(ipsystemstatshcoutoctets.yfilter)) leaf_name_data.push_back(ipsystemstatshcoutoctets.get_name_leafdata());
+    if (ipsystemstatshcoutrequests.is_set || is_set(ipsystemstatshcoutrequests.yfilter)) leaf_name_data.push_back(ipsystemstatshcoutrequests.get_name_leafdata());
+    if (ipsystemstatshcouttransmits.is_set || is_set(ipsystemstatshcouttransmits.yfilter)) leaf_name_data.push_back(ipsystemstatshcouttransmits.get_name_leafdata());
+    if (ipsystemstatsinaddrerrors.is_set || is_set(ipsystemstatsinaddrerrors.yfilter)) leaf_name_data.push_back(ipsystemstatsinaddrerrors.get_name_leafdata());
+    if (ipsystemstatsinbcastpkts.is_set || is_set(ipsystemstatsinbcastpkts.yfilter)) leaf_name_data.push_back(ipsystemstatsinbcastpkts.get_name_leafdata());
+    if (ipsystemstatsindelivers.is_set || is_set(ipsystemstatsindelivers.yfilter)) leaf_name_data.push_back(ipsystemstatsindelivers.get_name_leafdata());
+    if (ipsystemstatsindiscards.is_set || is_set(ipsystemstatsindiscards.yfilter)) leaf_name_data.push_back(ipsystemstatsindiscards.get_name_leafdata());
+    if (ipsystemstatsinforwdatagrams.is_set || is_set(ipsystemstatsinforwdatagrams.yfilter)) leaf_name_data.push_back(ipsystemstatsinforwdatagrams.get_name_leafdata());
+    if (ipsystemstatsinhdrerrors.is_set || is_set(ipsystemstatsinhdrerrors.yfilter)) leaf_name_data.push_back(ipsystemstatsinhdrerrors.get_name_leafdata());
+    if (ipsystemstatsinmcastoctets.is_set || is_set(ipsystemstatsinmcastoctets.yfilter)) leaf_name_data.push_back(ipsystemstatsinmcastoctets.get_name_leafdata());
+    if (ipsystemstatsinmcastpkts.is_set || is_set(ipsystemstatsinmcastpkts.yfilter)) leaf_name_data.push_back(ipsystemstatsinmcastpkts.get_name_leafdata());
+    if (ipsystemstatsinnoroutes.is_set || is_set(ipsystemstatsinnoroutes.yfilter)) leaf_name_data.push_back(ipsystemstatsinnoroutes.get_name_leafdata());
+    if (ipsystemstatsinoctets.is_set || is_set(ipsystemstatsinoctets.yfilter)) leaf_name_data.push_back(ipsystemstatsinoctets.get_name_leafdata());
+    if (ipsystemstatsinreceives.is_set || is_set(ipsystemstatsinreceives.yfilter)) leaf_name_data.push_back(ipsystemstatsinreceives.get_name_leafdata());
+    if (ipsystemstatsintruncatedpkts.is_set || is_set(ipsystemstatsintruncatedpkts.yfilter)) leaf_name_data.push_back(ipsystemstatsintruncatedpkts.get_name_leafdata());
+    if (ipsystemstatsinunknownprotos.is_set || is_set(ipsystemstatsinunknownprotos.yfilter)) leaf_name_data.push_back(ipsystemstatsinunknownprotos.get_name_leafdata());
+    if (ipsystemstatsoutbcastpkts.is_set || is_set(ipsystemstatsoutbcastpkts.yfilter)) leaf_name_data.push_back(ipsystemstatsoutbcastpkts.get_name_leafdata());
+    if (ipsystemstatsoutdiscards.is_set || is_set(ipsystemstatsoutdiscards.yfilter)) leaf_name_data.push_back(ipsystemstatsoutdiscards.get_name_leafdata());
+    if (ipsystemstatsoutforwdatagrams.is_set || is_set(ipsystemstatsoutforwdatagrams.yfilter)) leaf_name_data.push_back(ipsystemstatsoutforwdatagrams.get_name_leafdata());
+    if (ipsystemstatsoutfragcreates.is_set || is_set(ipsystemstatsoutfragcreates.yfilter)) leaf_name_data.push_back(ipsystemstatsoutfragcreates.get_name_leafdata());
+    if (ipsystemstatsoutfragfails.is_set || is_set(ipsystemstatsoutfragfails.yfilter)) leaf_name_data.push_back(ipsystemstatsoutfragfails.get_name_leafdata());
+    if (ipsystemstatsoutfragoks.is_set || is_set(ipsystemstatsoutfragoks.yfilter)) leaf_name_data.push_back(ipsystemstatsoutfragoks.get_name_leafdata());
+    if (ipsystemstatsoutfragreqds.is_set || is_set(ipsystemstatsoutfragreqds.yfilter)) leaf_name_data.push_back(ipsystemstatsoutfragreqds.get_name_leafdata());
+    if (ipsystemstatsoutmcastoctets.is_set || is_set(ipsystemstatsoutmcastoctets.yfilter)) leaf_name_data.push_back(ipsystemstatsoutmcastoctets.get_name_leafdata());
+    if (ipsystemstatsoutmcastpkts.is_set || is_set(ipsystemstatsoutmcastpkts.yfilter)) leaf_name_data.push_back(ipsystemstatsoutmcastpkts.get_name_leafdata());
+    if (ipsystemstatsoutnoroutes.is_set || is_set(ipsystemstatsoutnoroutes.yfilter)) leaf_name_data.push_back(ipsystemstatsoutnoroutes.get_name_leafdata());
+    if (ipsystemstatsoutoctets.is_set || is_set(ipsystemstatsoutoctets.yfilter)) leaf_name_data.push_back(ipsystemstatsoutoctets.get_name_leafdata());
+    if (ipsystemstatsoutrequests.is_set || is_set(ipsystemstatsoutrequests.yfilter)) leaf_name_data.push_back(ipsystemstatsoutrequests.get_name_leafdata());
+    if (ipsystemstatsouttransmits.is_set || is_set(ipsystemstatsouttransmits.yfilter)) leaf_name_data.push_back(ipsystemstatsouttransmits.get_name_leafdata());
+    if (ipsystemstatsreasmfails.is_set || is_set(ipsystemstatsreasmfails.yfilter)) leaf_name_data.push_back(ipsystemstatsreasmfails.get_name_leafdata());
+    if (ipsystemstatsreasmoks.is_set || is_set(ipsystemstatsreasmoks.yfilter)) leaf_name_data.push_back(ipsystemstatsreasmoks.get_name_leafdata());
+    if (ipsystemstatsreasmreqds.is_set || is_set(ipsystemstatsreasmreqds.yfilter)) leaf_name_data.push_back(ipsystemstatsreasmreqds.get_name_leafdata());
+    if (ipsystemstatsrefreshrate.is_set || is_set(ipsystemstatsrefreshrate.yfilter)) leaf_name_data.push_back(ipsystemstatsrefreshrate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2164,192 +2752,479 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipsystemstatstable::Ipsyst
     return children;
 }
 
-void IpMib::Ipsystemstatstable::Ipsystemstatsentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipsystemstatstable::Ipsystemstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipSystemStatsIPVersion")
     {
         ipsystemstatsipversion = value;
+        ipsystemstatsipversion.value_namespace = name_space;
+        ipsystemstatsipversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsDiscontinuityTime")
     {
         ipsystemstatsdiscontinuitytime = value;
+        ipsystemstatsdiscontinuitytime.value_namespace = name_space;
+        ipsystemstatsdiscontinuitytime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCInBcastPkts")
     {
         ipsystemstatshcinbcastpkts = value;
+        ipsystemstatshcinbcastpkts.value_namespace = name_space;
+        ipsystemstatshcinbcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCInDelivers")
     {
         ipsystemstatshcindelivers = value;
+        ipsystemstatshcindelivers.value_namespace = name_space;
+        ipsystemstatshcindelivers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCInForwDatagrams")
     {
         ipsystemstatshcinforwdatagrams = value;
+        ipsystemstatshcinforwdatagrams.value_namespace = name_space;
+        ipsystemstatshcinforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCInMcastOctets")
     {
         ipsystemstatshcinmcastoctets = value;
+        ipsystemstatshcinmcastoctets.value_namespace = name_space;
+        ipsystemstatshcinmcastoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCInMcastPkts")
     {
         ipsystemstatshcinmcastpkts = value;
+        ipsystemstatshcinmcastpkts.value_namespace = name_space;
+        ipsystemstatshcinmcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCInOctets")
     {
         ipsystemstatshcinoctets = value;
+        ipsystemstatshcinoctets.value_namespace = name_space;
+        ipsystemstatshcinoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCInReceives")
     {
         ipsystemstatshcinreceives = value;
+        ipsystemstatshcinreceives.value_namespace = name_space;
+        ipsystemstatshcinreceives.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCOutBcastPkts")
     {
         ipsystemstatshcoutbcastpkts = value;
+        ipsystemstatshcoutbcastpkts.value_namespace = name_space;
+        ipsystemstatshcoutbcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCOutForwDatagrams")
     {
         ipsystemstatshcoutforwdatagrams = value;
+        ipsystemstatshcoutforwdatagrams.value_namespace = name_space;
+        ipsystemstatshcoutforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCOutMcastOctets")
     {
         ipsystemstatshcoutmcastoctets = value;
+        ipsystemstatshcoutmcastoctets.value_namespace = name_space;
+        ipsystemstatshcoutmcastoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCOutMcastPkts")
     {
         ipsystemstatshcoutmcastpkts = value;
+        ipsystemstatshcoutmcastpkts.value_namespace = name_space;
+        ipsystemstatshcoutmcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCOutOctets")
     {
         ipsystemstatshcoutoctets = value;
+        ipsystemstatshcoutoctets.value_namespace = name_space;
+        ipsystemstatshcoutoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCOutRequests")
     {
         ipsystemstatshcoutrequests = value;
+        ipsystemstatshcoutrequests.value_namespace = name_space;
+        ipsystemstatshcoutrequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsHCOutTransmits")
     {
         ipsystemstatshcouttransmits = value;
+        ipsystemstatshcouttransmits.value_namespace = name_space;
+        ipsystemstatshcouttransmits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInAddrErrors")
     {
         ipsystemstatsinaddrerrors = value;
+        ipsystemstatsinaddrerrors.value_namespace = name_space;
+        ipsystemstatsinaddrerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInBcastPkts")
     {
         ipsystemstatsinbcastpkts = value;
+        ipsystemstatsinbcastpkts.value_namespace = name_space;
+        ipsystemstatsinbcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInDelivers")
     {
         ipsystemstatsindelivers = value;
+        ipsystemstatsindelivers.value_namespace = name_space;
+        ipsystemstatsindelivers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInDiscards")
     {
         ipsystemstatsindiscards = value;
+        ipsystemstatsindiscards.value_namespace = name_space;
+        ipsystemstatsindiscards.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInForwDatagrams")
     {
         ipsystemstatsinforwdatagrams = value;
+        ipsystemstatsinforwdatagrams.value_namespace = name_space;
+        ipsystemstatsinforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInHdrErrors")
     {
         ipsystemstatsinhdrerrors = value;
+        ipsystemstatsinhdrerrors.value_namespace = name_space;
+        ipsystemstatsinhdrerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInMcastOctets")
     {
         ipsystemstatsinmcastoctets = value;
+        ipsystemstatsinmcastoctets.value_namespace = name_space;
+        ipsystemstatsinmcastoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInMcastPkts")
     {
         ipsystemstatsinmcastpkts = value;
+        ipsystemstatsinmcastpkts.value_namespace = name_space;
+        ipsystemstatsinmcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInNoRoutes")
     {
         ipsystemstatsinnoroutes = value;
+        ipsystemstatsinnoroutes.value_namespace = name_space;
+        ipsystemstatsinnoroutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInOctets")
     {
         ipsystemstatsinoctets = value;
+        ipsystemstatsinoctets.value_namespace = name_space;
+        ipsystemstatsinoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInReceives")
     {
         ipsystemstatsinreceives = value;
+        ipsystemstatsinreceives.value_namespace = name_space;
+        ipsystemstatsinreceives.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInTruncatedPkts")
     {
         ipsystemstatsintruncatedpkts = value;
+        ipsystemstatsintruncatedpkts.value_namespace = name_space;
+        ipsystemstatsintruncatedpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsInUnknownProtos")
     {
         ipsystemstatsinunknownprotos = value;
+        ipsystemstatsinunknownprotos.value_namespace = name_space;
+        ipsystemstatsinunknownprotos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutBcastPkts")
     {
         ipsystemstatsoutbcastpkts = value;
+        ipsystemstatsoutbcastpkts.value_namespace = name_space;
+        ipsystemstatsoutbcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutDiscards")
     {
         ipsystemstatsoutdiscards = value;
+        ipsystemstatsoutdiscards.value_namespace = name_space;
+        ipsystemstatsoutdiscards.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutForwDatagrams")
     {
         ipsystemstatsoutforwdatagrams = value;
+        ipsystemstatsoutforwdatagrams.value_namespace = name_space;
+        ipsystemstatsoutforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutFragCreates")
     {
         ipsystemstatsoutfragcreates = value;
+        ipsystemstatsoutfragcreates.value_namespace = name_space;
+        ipsystemstatsoutfragcreates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutFragFails")
     {
         ipsystemstatsoutfragfails = value;
+        ipsystemstatsoutfragfails.value_namespace = name_space;
+        ipsystemstatsoutfragfails.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutFragOKs")
     {
         ipsystemstatsoutfragoks = value;
+        ipsystemstatsoutfragoks.value_namespace = name_space;
+        ipsystemstatsoutfragoks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutFragReqds")
     {
         ipsystemstatsoutfragreqds = value;
+        ipsystemstatsoutfragreqds.value_namespace = name_space;
+        ipsystemstatsoutfragreqds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutMcastOctets")
     {
         ipsystemstatsoutmcastoctets = value;
+        ipsystemstatsoutmcastoctets.value_namespace = name_space;
+        ipsystemstatsoutmcastoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutMcastPkts")
     {
         ipsystemstatsoutmcastpkts = value;
+        ipsystemstatsoutmcastpkts.value_namespace = name_space;
+        ipsystemstatsoutmcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutNoRoutes")
     {
         ipsystemstatsoutnoroutes = value;
+        ipsystemstatsoutnoroutes.value_namespace = name_space;
+        ipsystemstatsoutnoroutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutOctets")
     {
         ipsystemstatsoutoctets = value;
+        ipsystemstatsoutoctets.value_namespace = name_space;
+        ipsystemstatsoutoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutRequests")
     {
         ipsystemstatsoutrequests = value;
+        ipsystemstatsoutrequests.value_namespace = name_space;
+        ipsystemstatsoutrequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsOutTransmits")
     {
         ipsystemstatsouttransmits = value;
+        ipsystemstatsouttransmits.value_namespace = name_space;
+        ipsystemstatsouttransmits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsReasmFails")
     {
         ipsystemstatsreasmfails = value;
+        ipsystemstatsreasmfails.value_namespace = name_space;
+        ipsystemstatsreasmfails.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsReasmOKs")
     {
         ipsystemstatsreasmoks = value;
+        ipsystemstatsreasmoks.value_namespace = name_space;
+        ipsystemstatsreasmoks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsReasmReqds")
     {
         ipsystemstatsreasmreqds = value;
+        ipsystemstatsreasmreqds.value_namespace = name_space;
+        ipsystemstatsreasmreqds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipSystemStatsRefreshRate")
     {
         ipsystemstatsrefreshrate = value;
+        ipsystemstatsrefreshrate.value_namespace = name_space;
+        ipsystemstatsrefreshrate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipsystemstatstable::Ipsystemstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipSystemStatsIPVersion")
+    {
+        ipsystemstatsipversion.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsDiscontinuityTime")
+    {
+        ipsystemstatsdiscontinuitytime.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCInBcastPkts")
+    {
+        ipsystemstatshcinbcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCInDelivers")
+    {
+        ipsystemstatshcindelivers.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCInForwDatagrams")
+    {
+        ipsystemstatshcinforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCInMcastOctets")
+    {
+        ipsystemstatshcinmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCInMcastPkts")
+    {
+        ipsystemstatshcinmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCInOctets")
+    {
+        ipsystemstatshcinoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCInReceives")
+    {
+        ipsystemstatshcinreceives.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCOutBcastPkts")
+    {
+        ipsystemstatshcoutbcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCOutForwDatagrams")
+    {
+        ipsystemstatshcoutforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCOutMcastOctets")
+    {
+        ipsystemstatshcoutmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCOutMcastPkts")
+    {
+        ipsystemstatshcoutmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCOutOctets")
+    {
+        ipsystemstatshcoutoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCOutRequests")
+    {
+        ipsystemstatshcoutrequests.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsHCOutTransmits")
+    {
+        ipsystemstatshcouttransmits.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInAddrErrors")
+    {
+        ipsystemstatsinaddrerrors.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInBcastPkts")
+    {
+        ipsystemstatsinbcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInDelivers")
+    {
+        ipsystemstatsindelivers.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInDiscards")
+    {
+        ipsystemstatsindiscards.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInForwDatagrams")
+    {
+        ipsystemstatsinforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInHdrErrors")
+    {
+        ipsystemstatsinhdrerrors.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInMcastOctets")
+    {
+        ipsystemstatsinmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInMcastPkts")
+    {
+        ipsystemstatsinmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInNoRoutes")
+    {
+        ipsystemstatsinnoroutes.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInOctets")
+    {
+        ipsystemstatsinoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInReceives")
+    {
+        ipsystemstatsinreceives.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInTruncatedPkts")
+    {
+        ipsystemstatsintruncatedpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsInUnknownProtos")
+    {
+        ipsystemstatsinunknownprotos.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutBcastPkts")
+    {
+        ipsystemstatsoutbcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutDiscards")
+    {
+        ipsystemstatsoutdiscards.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutForwDatagrams")
+    {
+        ipsystemstatsoutforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutFragCreates")
+    {
+        ipsystemstatsoutfragcreates.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutFragFails")
+    {
+        ipsystemstatsoutfragfails.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutFragOKs")
+    {
+        ipsystemstatsoutfragoks.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutFragReqds")
+    {
+        ipsystemstatsoutfragreqds.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutMcastOctets")
+    {
+        ipsystemstatsoutmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutMcastPkts")
+    {
+        ipsystemstatsoutmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutNoRoutes")
+    {
+        ipsystemstatsoutnoroutes.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutOctets")
+    {
+        ipsystemstatsoutoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutRequests")
+    {
+        ipsystemstatsoutrequests.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsOutTransmits")
+    {
+        ipsystemstatsouttransmits.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsReasmFails")
+    {
+        ipsystemstatsreasmfails.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsReasmOKs")
+    {
+        ipsystemstatsreasmoks.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsReasmReqds")
+    {
+        ipsystemstatsreasmreqds.yfilter = yfilter;
+    }
+    if(value_path == "ipSystemStatsRefreshRate")
+    {
+        ipsystemstatsrefreshrate.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipsystemstatstable::Ipsystemstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipSystemStatsIPVersion" || name == "ipSystemStatsDiscontinuityTime" || name == "ipSystemStatsHCInBcastPkts" || name == "ipSystemStatsHCInDelivers" || name == "ipSystemStatsHCInForwDatagrams" || name == "ipSystemStatsHCInMcastOctets" || name == "ipSystemStatsHCInMcastPkts" || name == "ipSystemStatsHCInOctets" || name == "ipSystemStatsHCInReceives" || name == "ipSystemStatsHCOutBcastPkts" || name == "ipSystemStatsHCOutForwDatagrams" || name == "ipSystemStatsHCOutMcastOctets" || name == "ipSystemStatsHCOutMcastPkts" || name == "ipSystemStatsHCOutOctets" || name == "ipSystemStatsHCOutRequests" || name == "ipSystemStatsHCOutTransmits" || name == "ipSystemStatsInAddrErrors" || name == "ipSystemStatsInBcastPkts" || name == "ipSystemStatsInDelivers" || name == "ipSystemStatsInDiscards" || name == "ipSystemStatsInForwDatagrams" || name == "ipSystemStatsInHdrErrors" || name == "ipSystemStatsInMcastOctets" || name == "ipSystemStatsInMcastPkts" || name == "ipSystemStatsInNoRoutes" || name == "ipSystemStatsInOctets" || name == "ipSystemStatsInReceives" || name == "ipSystemStatsInTruncatedPkts" || name == "ipSystemStatsInUnknownProtos" || name == "ipSystemStatsOutBcastPkts" || name == "ipSystemStatsOutDiscards" || name == "ipSystemStatsOutForwDatagrams" || name == "ipSystemStatsOutFragCreates" || name == "ipSystemStatsOutFragFails" || name == "ipSystemStatsOutFragOKs" || name == "ipSystemStatsOutFragReqds" || name == "ipSystemStatsOutMcastOctets" || name == "ipSystemStatsOutMcastPkts" || name == "ipSystemStatsOutNoRoutes" || name == "ipSystemStatsOutOctets" || name == "ipSystemStatsOutRequests" || name == "ipSystemStatsOutTransmits" || name == "ipSystemStatsReasmFails" || name == "ipSystemStatsReasmOKs" || name == "ipSystemStatsReasmReqds" || name == "ipSystemStatsRefreshRate")
+        return true;
+    return false;
 }
 
 IpMib::Ipifstatstable::Ipifstatstable()
@@ -2363,9 +3238,9 @@ IpMib::Ipifstatstable::~Ipifstatstable()
 
 bool IpMib::Ipifstatstable::has_data() const
 {
-    for (std::size_t index=0; index<ipifstatsentry_.size(); index++)
+    for (std::size_t index=0; index<ipifstatsentry.size(); index++)
     {
-        if(ipifstatsentry_[index]->has_data())
+        if(ipifstatsentry[index]->has_data())
             return true;
     }
     return false;
@@ -2373,12 +3248,12 @@ bool IpMib::Ipifstatstable::has_data() const
 
 bool IpMib::Ipifstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<ipifstatsentry_.size(); index++)
+    for (std::size_t index=0; index<ipifstatsentry.size(); index++)
     {
-        if(ipifstatsentry_[index]->has_operation())
+        if(ipifstatsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipifstatstable::get_segment_path() const
@@ -2415,7 +3290,7 @@ std::shared_ptr<Entity> IpMib::Ipifstatstable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "ipIfStatsEntry")
     {
-        for(auto const & c : ipifstatsentry_)
+        for(auto const & c : ipifstatsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2425,7 +3300,7 @@ std::shared_ptr<Entity> IpMib::Ipifstatstable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<IpMib::Ipifstatstable::Ipifstatsentry>();
         c->parent = this;
-        ipifstatsentry_.push_back(c);
+        ipifstatsentry.push_back(c);
         return c;
     }
 
@@ -2435,7 +3310,7 @@ std::shared_ptr<Entity> IpMib::Ipifstatstable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipifstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipifstatsentry_)
+    for (auto const & c : ipifstatsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2443,8 +3318,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipifstatstable::get_childr
     return children;
 }
 
-void IpMib::Ipifstatstable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipifstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipifstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipifstatstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipIfStatsEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipifstatstable::Ipifstatsentry::Ipifstatsentry()
@@ -2555,53 +3441,53 @@ bool IpMib::Ipifstatstable::Ipifstatsentry::has_data() const
 
 bool IpMib::Ipifstatstable::Ipifstatsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipifstatsipversion.operation)
-	|| is_set(ipifstatsifindex.operation)
-	|| is_set(ipifstatsdiscontinuitytime.operation)
-	|| is_set(ipifstatshcinbcastpkts.operation)
-	|| is_set(ipifstatshcindelivers.operation)
-	|| is_set(ipifstatshcinforwdatagrams.operation)
-	|| is_set(ipifstatshcinmcastoctets.operation)
-	|| is_set(ipifstatshcinmcastpkts.operation)
-	|| is_set(ipifstatshcinoctets.operation)
-	|| is_set(ipifstatshcinreceives.operation)
-	|| is_set(ipifstatshcoutbcastpkts.operation)
-	|| is_set(ipifstatshcoutforwdatagrams.operation)
-	|| is_set(ipifstatshcoutmcastoctets.operation)
-	|| is_set(ipifstatshcoutmcastpkts.operation)
-	|| is_set(ipifstatshcoutoctets.operation)
-	|| is_set(ipifstatshcoutrequests.operation)
-	|| is_set(ipifstatshcouttransmits.operation)
-	|| is_set(ipifstatsinaddrerrors.operation)
-	|| is_set(ipifstatsinbcastpkts.operation)
-	|| is_set(ipifstatsindelivers.operation)
-	|| is_set(ipifstatsindiscards.operation)
-	|| is_set(ipifstatsinforwdatagrams.operation)
-	|| is_set(ipifstatsinhdrerrors.operation)
-	|| is_set(ipifstatsinmcastoctets.operation)
-	|| is_set(ipifstatsinmcastpkts.operation)
-	|| is_set(ipifstatsinnoroutes.operation)
-	|| is_set(ipifstatsinoctets.operation)
-	|| is_set(ipifstatsinreceives.operation)
-	|| is_set(ipifstatsintruncatedpkts.operation)
-	|| is_set(ipifstatsinunknownprotos.operation)
-	|| is_set(ipifstatsoutbcastpkts.operation)
-	|| is_set(ipifstatsoutdiscards.operation)
-	|| is_set(ipifstatsoutforwdatagrams.operation)
-	|| is_set(ipifstatsoutfragcreates.operation)
-	|| is_set(ipifstatsoutfragfails.operation)
-	|| is_set(ipifstatsoutfragoks.operation)
-	|| is_set(ipifstatsoutfragreqds.operation)
-	|| is_set(ipifstatsoutmcastoctets.operation)
-	|| is_set(ipifstatsoutmcastpkts.operation)
-	|| is_set(ipifstatsoutoctets.operation)
-	|| is_set(ipifstatsoutrequests.operation)
-	|| is_set(ipifstatsouttransmits.operation)
-	|| is_set(ipifstatsreasmfails.operation)
-	|| is_set(ipifstatsreasmoks.operation)
-	|| is_set(ipifstatsreasmreqds.operation)
-	|| is_set(ipifstatsrefreshrate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipifstatsipversion.yfilter)
+	|| ydk::is_set(ipifstatsifindex.yfilter)
+	|| ydk::is_set(ipifstatsdiscontinuitytime.yfilter)
+	|| ydk::is_set(ipifstatshcinbcastpkts.yfilter)
+	|| ydk::is_set(ipifstatshcindelivers.yfilter)
+	|| ydk::is_set(ipifstatshcinforwdatagrams.yfilter)
+	|| ydk::is_set(ipifstatshcinmcastoctets.yfilter)
+	|| ydk::is_set(ipifstatshcinmcastpkts.yfilter)
+	|| ydk::is_set(ipifstatshcinoctets.yfilter)
+	|| ydk::is_set(ipifstatshcinreceives.yfilter)
+	|| ydk::is_set(ipifstatshcoutbcastpkts.yfilter)
+	|| ydk::is_set(ipifstatshcoutforwdatagrams.yfilter)
+	|| ydk::is_set(ipifstatshcoutmcastoctets.yfilter)
+	|| ydk::is_set(ipifstatshcoutmcastpkts.yfilter)
+	|| ydk::is_set(ipifstatshcoutoctets.yfilter)
+	|| ydk::is_set(ipifstatshcoutrequests.yfilter)
+	|| ydk::is_set(ipifstatshcouttransmits.yfilter)
+	|| ydk::is_set(ipifstatsinaddrerrors.yfilter)
+	|| ydk::is_set(ipifstatsinbcastpkts.yfilter)
+	|| ydk::is_set(ipifstatsindelivers.yfilter)
+	|| ydk::is_set(ipifstatsindiscards.yfilter)
+	|| ydk::is_set(ipifstatsinforwdatagrams.yfilter)
+	|| ydk::is_set(ipifstatsinhdrerrors.yfilter)
+	|| ydk::is_set(ipifstatsinmcastoctets.yfilter)
+	|| ydk::is_set(ipifstatsinmcastpkts.yfilter)
+	|| ydk::is_set(ipifstatsinnoroutes.yfilter)
+	|| ydk::is_set(ipifstatsinoctets.yfilter)
+	|| ydk::is_set(ipifstatsinreceives.yfilter)
+	|| ydk::is_set(ipifstatsintruncatedpkts.yfilter)
+	|| ydk::is_set(ipifstatsinunknownprotos.yfilter)
+	|| ydk::is_set(ipifstatsoutbcastpkts.yfilter)
+	|| ydk::is_set(ipifstatsoutdiscards.yfilter)
+	|| ydk::is_set(ipifstatsoutforwdatagrams.yfilter)
+	|| ydk::is_set(ipifstatsoutfragcreates.yfilter)
+	|| ydk::is_set(ipifstatsoutfragfails.yfilter)
+	|| ydk::is_set(ipifstatsoutfragoks.yfilter)
+	|| ydk::is_set(ipifstatsoutfragreqds.yfilter)
+	|| ydk::is_set(ipifstatsoutmcastoctets.yfilter)
+	|| ydk::is_set(ipifstatsoutmcastpkts.yfilter)
+	|| ydk::is_set(ipifstatsoutoctets.yfilter)
+	|| ydk::is_set(ipifstatsoutrequests.yfilter)
+	|| ydk::is_set(ipifstatsouttransmits.yfilter)
+	|| ydk::is_set(ipifstatsreasmfails.yfilter)
+	|| ydk::is_set(ipifstatsreasmoks.yfilter)
+	|| ydk::is_set(ipifstatsreasmreqds.yfilter)
+	|| ydk::is_set(ipifstatsrefreshrate.yfilter);
 }
 
 std::string IpMib::Ipifstatstable::Ipifstatsentry::get_segment_path() const
@@ -2627,52 +3513,52 @@ const EntityPath IpMib::Ipifstatstable::Ipifstatsentry::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipifstatsipversion.is_set || is_set(ipifstatsipversion.operation)) leaf_name_data.push_back(ipifstatsipversion.get_name_leafdata());
-    if (ipifstatsifindex.is_set || is_set(ipifstatsifindex.operation)) leaf_name_data.push_back(ipifstatsifindex.get_name_leafdata());
-    if (ipifstatsdiscontinuitytime.is_set || is_set(ipifstatsdiscontinuitytime.operation)) leaf_name_data.push_back(ipifstatsdiscontinuitytime.get_name_leafdata());
-    if (ipifstatshcinbcastpkts.is_set || is_set(ipifstatshcinbcastpkts.operation)) leaf_name_data.push_back(ipifstatshcinbcastpkts.get_name_leafdata());
-    if (ipifstatshcindelivers.is_set || is_set(ipifstatshcindelivers.operation)) leaf_name_data.push_back(ipifstatshcindelivers.get_name_leafdata());
-    if (ipifstatshcinforwdatagrams.is_set || is_set(ipifstatshcinforwdatagrams.operation)) leaf_name_data.push_back(ipifstatshcinforwdatagrams.get_name_leafdata());
-    if (ipifstatshcinmcastoctets.is_set || is_set(ipifstatshcinmcastoctets.operation)) leaf_name_data.push_back(ipifstatshcinmcastoctets.get_name_leafdata());
-    if (ipifstatshcinmcastpkts.is_set || is_set(ipifstatshcinmcastpkts.operation)) leaf_name_data.push_back(ipifstatshcinmcastpkts.get_name_leafdata());
-    if (ipifstatshcinoctets.is_set || is_set(ipifstatshcinoctets.operation)) leaf_name_data.push_back(ipifstatshcinoctets.get_name_leafdata());
-    if (ipifstatshcinreceives.is_set || is_set(ipifstatshcinreceives.operation)) leaf_name_data.push_back(ipifstatshcinreceives.get_name_leafdata());
-    if (ipifstatshcoutbcastpkts.is_set || is_set(ipifstatshcoutbcastpkts.operation)) leaf_name_data.push_back(ipifstatshcoutbcastpkts.get_name_leafdata());
-    if (ipifstatshcoutforwdatagrams.is_set || is_set(ipifstatshcoutforwdatagrams.operation)) leaf_name_data.push_back(ipifstatshcoutforwdatagrams.get_name_leafdata());
-    if (ipifstatshcoutmcastoctets.is_set || is_set(ipifstatshcoutmcastoctets.operation)) leaf_name_data.push_back(ipifstatshcoutmcastoctets.get_name_leafdata());
-    if (ipifstatshcoutmcastpkts.is_set || is_set(ipifstatshcoutmcastpkts.operation)) leaf_name_data.push_back(ipifstatshcoutmcastpkts.get_name_leafdata());
-    if (ipifstatshcoutoctets.is_set || is_set(ipifstatshcoutoctets.operation)) leaf_name_data.push_back(ipifstatshcoutoctets.get_name_leafdata());
-    if (ipifstatshcoutrequests.is_set || is_set(ipifstatshcoutrequests.operation)) leaf_name_data.push_back(ipifstatshcoutrequests.get_name_leafdata());
-    if (ipifstatshcouttransmits.is_set || is_set(ipifstatshcouttransmits.operation)) leaf_name_data.push_back(ipifstatshcouttransmits.get_name_leafdata());
-    if (ipifstatsinaddrerrors.is_set || is_set(ipifstatsinaddrerrors.operation)) leaf_name_data.push_back(ipifstatsinaddrerrors.get_name_leafdata());
-    if (ipifstatsinbcastpkts.is_set || is_set(ipifstatsinbcastpkts.operation)) leaf_name_data.push_back(ipifstatsinbcastpkts.get_name_leafdata());
-    if (ipifstatsindelivers.is_set || is_set(ipifstatsindelivers.operation)) leaf_name_data.push_back(ipifstatsindelivers.get_name_leafdata());
-    if (ipifstatsindiscards.is_set || is_set(ipifstatsindiscards.operation)) leaf_name_data.push_back(ipifstatsindiscards.get_name_leafdata());
-    if (ipifstatsinforwdatagrams.is_set || is_set(ipifstatsinforwdatagrams.operation)) leaf_name_data.push_back(ipifstatsinforwdatagrams.get_name_leafdata());
-    if (ipifstatsinhdrerrors.is_set || is_set(ipifstatsinhdrerrors.operation)) leaf_name_data.push_back(ipifstatsinhdrerrors.get_name_leafdata());
-    if (ipifstatsinmcastoctets.is_set || is_set(ipifstatsinmcastoctets.operation)) leaf_name_data.push_back(ipifstatsinmcastoctets.get_name_leafdata());
-    if (ipifstatsinmcastpkts.is_set || is_set(ipifstatsinmcastpkts.operation)) leaf_name_data.push_back(ipifstatsinmcastpkts.get_name_leafdata());
-    if (ipifstatsinnoroutes.is_set || is_set(ipifstatsinnoroutes.operation)) leaf_name_data.push_back(ipifstatsinnoroutes.get_name_leafdata());
-    if (ipifstatsinoctets.is_set || is_set(ipifstatsinoctets.operation)) leaf_name_data.push_back(ipifstatsinoctets.get_name_leafdata());
-    if (ipifstatsinreceives.is_set || is_set(ipifstatsinreceives.operation)) leaf_name_data.push_back(ipifstatsinreceives.get_name_leafdata());
-    if (ipifstatsintruncatedpkts.is_set || is_set(ipifstatsintruncatedpkts.operation)) leaf_name_data.push_back(ipifstatsintruncatedpkts.get_name_leafdata());
-    if (ipifstatsinunknownprotos.is_set || is_set(ipifstatsinunknownprotos.operation)) leaf_name_data.push_back(ipifstatsinunknownprotos.get_name_leafdata());
-    if (ipifstatsoutbcastpkts.is_set || is_set(ipifstatsoutbcastpkts.operation)) leaf_name_data.push_back(ipifstatsoutbcastpkts.get_name_leafdata());
-    if (ipifstatsoutdiscards.is_set || is_set(ipifstatsoutdiscards.operation)) leaf_name_data.push_back(ipifstatsoutdiscards.get_name_leafdata());
-    if (ipifstatsoutforwdatagrams.is_set || is_set(ipifstatsoutforwdatagrams.operation)) leaf_name_data.push_back(ipifstatsoutforwdatagrams.get_name_leafdata());
-    if (ipifstatsoutfragcreates.is_set || is_set(ipifstatsoutfragcreates.operation)) leaf_name_data.push_back(ipifstatsoutfragcreates.get_name_leafdata());
-    if (ipifstatsoutfragfails.is_set || is_set(ipifstatsoutfragfails.operation)) leaf_name_data.push_back(ipifstatsoutfragfails.get_name_leafdata());
-    if (ipifstatsoutfragoks.is_set || is_set(ipifstatsoutfragoks.operation)) leaf_name_data.push_back(ipifstatsoutfragoks.get_name_leafdata());
-    if (ipifstatsoutfragreqds.is_set || is_set(ipifstatsoutfragreqds.operation)) leaf_name_data.push_back(ipifstatsoutfragreqds.get_name_leafdata());
-    if (ipifstatsoutmcastoctets.is_set || is_set(ipifstatsoutmcastoctets.operation)) leaf_name_data.push_back(ipifstatsoutmcastoctets.get_name_leafdata());
-    if (ipifstatsoutmcastpkts.is_set || is_set(ipifstatsoutmcastpkts.operation)) leaf_name_data.push_back(ipifstatsoutmcastpkts.get_name_leafdata());
-    if (ipifstatsoutoctets.is_set || is_set(ipifstatsoutoctets.operation)) leaf_name_data.push_back(ipifstatsoutoctets.get_name_leafdata());
-    if (ipifstatsoutrequests.is_set || is_set(ipifstatsoutrequests.operation)) leaf_name_data.push_back(ipifstatsoutrequests.get_name_leafdata());
-    if (ipifstatsouttransmits.is_set || is_set(ipifstatsouttransmits.operation)) leaf_name_data.push_back(ipifstatsouttransmits.get_name_leafdata());
-    if (ipifstatsreasmfails.is_set || is_set(ipifstatsreasmfails.operation)) leaf_name_data.push_back(ipifstatsreasmfails.get_name_leafdata());
-    if (ipifstatsreasmoks.is_set || is_set(ipifstatsreasmoks.operation)) leaf_name_data.push_back(ipifstatsreasmoks.get_name_leafdata());
-    if (ipifstatsreasmreqds.is_set || is_set(ipifstatsreasmreqds.operation)) leaf_name_data.push_back(ipifstatsreasmreqds.get_name_leafdata());
-    if (ipifstatsrefreshrate.is_set || is_set(ipifstatsrefreshrate.operation)) leaf_name_data.push_back(ipifstatsrefreshrate.get_name_leafdata());
+    if (ipifstatsipversion.is_set || is_set(ipifstatsipversion.yfilter)) leaf_name_data.push_back(ipifstatsipversion.get_name_leafdata());
+    if (ipifstatsifindex.is_set || is_set(ipifstatsifindex.yfilter)) leaf_name_data.push_back(ipifstatsifindex.get_name_leafdata());
+    if (ipifstatsdiscontinuitytime.is_set || is_set(ipifstatsdiscontinuitytime.yfilter)) leaf_name_data.push_back(ipifstatsdiscontinuitytime.get_name_leafdata());
+    if (ipifstatshcinbcastpkts.is_set || is_set(ipifstatshcinbcastpkts.yfilter)) leaf_name_data.push_back(ipifstatshcinbcastpkts.get_name_leafdata());
+    if (ipifstatshcindelivers.is_set || is_set(ipifstatshcindelivers.yfilter)) leaf_name_data.push_back(ipifstatshcindelivers.get_name_leafdata());
+    if (ipifstatshcinforwdatagrams.is_set || is_set(ipifstatshcinforwdatagrams.yfilter)) leaf_name_data.push_back(ipifstatshcinforwdatagrams.get_name_leafdata());
+    if (ipifstatshcinmcastoctets.is_set || is_set(ipifstatshcinmcastoctets.yfilter)) leaf_name_data.push_back(ipifstatshcinmcastoctets.get_name_leafdata());
+    if (ipifstatshcinmcastpkts.is_set || is_set(ipifstatshcinmcastpkts.yfilter)) leaf_name_data.push_back(ipifstatshcinmcastpkts.get_name_leafdata());
+    if (ipifstatshcinoctets.is_set || is_set(ipifstatshcinoctets.yfilter)) leaf_name_data.push_back(ipifstatshcinoctets.get_name_leafdata());
+    if (ipifstatshcinreceives.is_set || is_set(ipifstatshcinreceives.yfilter)) leaf_name_data.push_back(ipifstatshcinreceives.get_name_leafdata());
+    if (ipifstatshcoutbcastpkts.is_set || is_set(ipifstatshcoutbcastpkts.yfilter)) leaf_name_data.push_back(ipifstatshcoutbcastpkts.get_name_leafdata());
+    if (ipifstatshcoutforwdatagrams.is_set || is_set(ipifstatshcoutforwdatagrams.yfilter)) leaf_name_data.push_back(ipifstatshcoutforwdatagrams.get_name_leafdata());
+    if (ipifstatshcoutmcastoctets.is_set || is_set(ipifstatshcoutmcastoctets.yfilter)) leaf_name_data.push_back(ipifstatshcoutmcastoctets.get_name_leafdata());
+    if (ipifstatshcoutmcastpkts.is_set || is_set(ipifstatshcoutmcastpkts.yfilter)) leaf_name_data.push_back(ipifstatshcoutmcastpkts.get_name_leafdata());
+    if (ipifstatshcoutoctets.is_set || is_set(ipifstatshcoutoctets.yfilter)) leaf_name_data.push_back(ipifstatshcoutoctets.get_name_leafdata());
+    if (ipifstatshcoutrequests.is_set || is_set(ipifstatshcoutrequests.yfilter)) leaf_name_data.push_back(ipifstatshcoutrequests.get_name_leafdata());
+    if (ipifstatshcouttransmits.is_set || is_set(ipifstatshcouttransmits.yfilter)) leaf_name_data.push_back(ipifstatshcouttransmits.get_name_leafdata());
+    if (ipifstatsinaddrerrors.is_set || is_set(ipifstatsinaddrerrors.yfilter)) leaf_name_data.push_back(ipifstatsinaddrerrors.get_name_leafdata());
+    if (ipifstatsinbcastpkts.is_set || is_set(ipifstatsinbcastpkts.yfilter)) leaf_name_data.push_back(ipifstatsinbcastpkts.get_name_leafdata());
+    if (ipifstatsindelivers.is_set || is_set(ipifstatsindelivers.yfilter)) leaf_name_data.push_back(ipifstatsindelivers.get_name_leafdata());
+    if (ipifstatsindiscards.is_set || is_set(ipifstatsindiscards.yfilter)) leaf_name_data.push_back(ipifstatsindiscards.get_name_leafdata());
+    if (ipifstatsinforwdatagrams.is_set || is_set(ipifstatsinforwdatagrams.yfilter)) leaf_name_data.push_back(ipifstatsinforwdatagrams.get_name_leafdata());
+    if (ipifstatsinhdrerrors.is_set || is_set(ipifstatsinhdrerrors.yfilter)) leaf_name_data.push_back(ipifstatsinhdrerrors.get_name_leafdata());
+    if (ipifstatsinmcastoctets.is_set || is_set(ipifstatsinmcastoctets.yfilter)) leaf_name_data.push_back(ipifstatsinmcastoctets.get_name_leafdata());
+    if (ipifstatsinmcastpkts.is_set || is_set(ipifstatsinmcastpkts.yfilter)) leaf_name_data.push_back(ipifstatsinmcastpkts.get_name_leafdata());
+    if (ipifstatsinnoroutes.is_set || is_set(ipifstatsinnoroutes.yfilter)) leaf_name_data.push_back(ipifstatsinnoroutes.get_name_leafdata());
+    if (ipifstatsinoctets.is_set || is_set(ipifstatsinoctets.yfilter)) leaf_name_data.push_back(ipifstatsinoctets.get_name_leafdata());
+    if (ipifstatsinreceives.is_set || is_set(ipifstatsinreceives.yfilter)) leaf_name_data.push_back(ipifstatsinreceives.get_name_leafdata());
+    if (ipifstatsintruncatedpkts.is_set || is_set(ipifstatsintruncatedpkts.yfilter)) leaf_name_data.push_back(ipifstatsintruncatedpkts.get_name_leafdata());
+    if (ipifstatsinunknownprotos.is_set || is_set(ipifstatsinunknownprotos.yfilter)) leaf_name_data.push_back(ipifstatsinunknownprotos.get_name_leafdata());
+    if (ipifstatsoutbcastpkts.is_set || is_set(ipifstatsoutbcastpkts.yfilter)) leaf_name_data.push_back(ipifstatsoutbcastpkts.get_name_leafdata());
+    if (ipifstatsoutdiscards.is_set || is_set(ipifstatsoutdiscards.yfilter)) leaf_name_data.push_back(ipifstatsoutdiscards.get_name_leafdata());
+    if (ipifstatsoutforwdatagrams.is_set || is_set(ipifstatsoutforwdatagrams.yfilter)) leaf_name_data.push_back(ipifstatsoutforwdatagrams.get_name_leafdata());
+    if (ipifstatsoutfragcreates.is_set || is_set(ipifstatsoutfragcreates.yfilter)) leaf_name_data.push_back(ipifstatsoutfragcreates.get_name_leafdata());
+    if (ipifstatsoutfragfails.is_set || is_set(ipifstatsoutfragfails.yfilter)) leaf_name_data.push_back(ipifstatsoutfragfails.get_name_leafdata());
+    if (ipifstatsoutfragoks.is_set || is_set(ipifstatsoutfragoks.yfilter)) leaf_name_data.push_back(ipifstatsoutfragoks.get_name_leafdata());
+    if (ipifstatsoutfragreqds.is_set || is_set(ipifstatsoutfragreqds.yfilter)) leaf_name_data.push_back(ipifstatsoutfragreqds.get_name_leafdata());
+    if (ipifstatsoutmcastoctets.is_set || is_set(ipifstatsoutmcastoctets.yfilter)) leaf_name_data.push_back(ipifstatsoutmcastoctets.get_name_leafdata());
+    if (ipifstatsoutmcastpkts.is_set || is_set(ipifstatsoutmcastpkts.yfilter)) leaf_name_data.push_back(ipifstatsoutmcastpkts.get_name_leafdata());
+    if (ipifstatsoutoctets.is_set || is_set(ipifstatsoutoctets.yfilter)) leaf_name_data.push_back(ipifstatsoutoctets.get_name_leafdata());
+    if (ipifstatsoutrequests.is_set || is_set(ipifstatsoutrequests.yfilter)) leaf_name_data.push_back(ipifstatsoutrequests.get_name_leafdata());
+    if (ipifstatsouttransmits.is_set || is_set(ipifstatsouttransmits.yfilter)) leaf_name_data.push_back(ipifstatsouttransmits.get_name_leafdata());
+    if (ipifstatsreasmfails.is_set || is_set(ipifstatsreasmfails.yfilter)) leaf_name_data.push_back(ipifstatsreasmfails.get_name_leafdata());
+    if (ipifstatsreasmoks.is_set || is_set(ipifstatsreasmoks.yfilter)) leaf_name_data.push_back(ipifstatsreasmoks.get_name_leafdata());
+    if (ipifstatsreasmreqds.is_set || is_set(ipifstatsreasmreqds.yfilter)) leaf_name_data.push_back(ipifstatsreasmreqds.get_name_leafdata());
+    if (ipifstatsrefreshrate.is_set || is_set(ipifstatsrefreshrate.yfilter)) leaf_name_data.push_back(ipifstatsrefreshrate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2691,192 +3577,479 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipifstatstable::Ipifstatse
     return children;
 }
 
-void IpMib::Ipifstatstable::Ipifstatsentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipifstatstable::Ipifstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipIfStatsIPVersion")
     {
         ipifstatsipversion = value;
+        ipifstatsipversion.value_namespace = name_space;
+        ipifstatsipversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsIfIndex")
     {
         ipifstatsifindex = value;
+        ipifstatsifindex.value_namespace = name_space;
+        ipifstatsifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsDiscontinuityTime")
     {
         ipifstatsdiscontinuitytime = value;
+        ipifstatsdiscontinuitytime.value_namespace = name_space;
+        ipifstatsdiscontinuitytime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCInBcastPkts")
     {
         ipifstatshcinbcastpkts = value;
+        ipifstatshcinbcastpkts.value_namespace = name_space;
+        ipifstatshcinbcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCInDelivers")
     {
         ipifstatshcindelivers = value;
+        ipifstatshcindelivers.value_namespace = name_space;
+        ipifstatshcindelivers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCInForwDatagrams")
     {
         ipifstatshcinforwdatagrams = value;
+        ipifstatshcinforwdatagrams.value_namespace = name_space;
+        ipifstatshcinforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCInMcastOctets")
     {
         ipifstatshcinmcastoctets = value;
+        ipifstatshcinmcastoctets.value_namespace = name_space;
+        ipifstatshcinmcastoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCInMcastPkts")
     {
         ipifstatshcinmcastpkts = value;
+        ipifstatshcinmcastpkts.value_namespace = name_space;
+        ipifstatshcinmcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCInOctets")
     {
         ipifstatshcinoctets = value;
+        ipifstatshcinoctets.value_namespace = name_space;
+        ipifstatshcinoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCInReceives")
     {
         ipifstatshcinreceives = value;
+        ipifstatshcinreceives.value_namespace = name_space;
+        ipifstatshcinreceives.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCOutBcastPkts")
     {
         ipifstatshcoutbcastpkts = value;
+        ipifstatshcoutbcastpkts.value_namespace = name_space;
+        ipifstatshcoutbcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCOutForwDatagrams")
     {
         ipifstatshcoutforwdatagrams = value;
+        ipifstatshcoutforwdatagrams.value_namespace = name_space;
+        ipifstatshcoutforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCOutMcastOctets")
     {
         ipifstatshcoutmcastoctets = value;
+        ipifstatshcoutmcastoctets.value_namespace = name_space;
+        ipifstatshcoutmcastoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCOutMcastPkts")
     {
         ipifstatshcoutmcastpkts = value;
+        ipifstatshcoutmcastpkts.value_namespace = name_space;
+        ipifstatshcoutmcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCOutOctets")
     {
         ipifstatshcoutoctets = value;
+        ipifstatshcoutoctets.value_namespace = name_space;
+        ipifstatshcoutoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCOutRequests")
     {
         ipifstatshcoutrequests = value;
+        ipifstatshcoutrequests.value_namespace = name_space;
+        ipifstatshcoutrequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsHCOutTransmits")
     {
         ipifstatshcouttransmits = value;
+        ipifstatshcouttransmits.value_namespace = name_space;
+        ipifstatshcouttransmits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInAddrErrors")
     {
         ipifstatsinaddrerrors = value;
+        ipifstatsinaddrerrors.value_namespace = name_space;
+        ipifstatsinaddrerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInBcastPkts")
     {
         ipifstatsinbcastpkts = value;
+        ipifstatsinbcastpkts.value_namespace = name_space;
+        ipifstatsinbcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInDelivers")
     {
         ipifstatsindelivers = value;
+        ipifstatsindelivers.value_namespace = name_space;
+        ipifstatsindelivers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInDiscards")
     {
         ipifstatsindiscards = value;
+        ipifstatsindiscards.value_namespace = name_space;
+        ipifstatsindiscards.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInForwDatagrams")
     {
         ipifstatsinforwdatagrams = value;
+        ipifstatsinforwdatagrams.value_namespace = name_space;
+        ipifstatsinforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInHdrErrors")
     {
         ipifstatsinhdrerrors = value;
+        ipifstatsinhdrerrors.value_namespace = name_space;
+        ipifstatsinhdrerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInMcastOctets")
     {
         ipifstatsinmcastoctets = value;
+        ipifstatsinmcastoctets.value_namespace = name_space;
+        ipifstatsinmcastoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInMcastPkts")
     {
         ipifstatsinmcastpkts = value;
+        ipifstatsinmcastpkts.value_namespace = name_space;
+        ipifstatsinmcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInNoRoutes")
     {
         ipifstatsinnoroutes = value;
+        ipifstatsinnoroutes.value_namespace = name_space;
+        ipifstatsinnoroutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInOctets")
     {
         ipifstatsinoctets = value;
+        ipifstatsinoctets.value_namespace = name_space;
+        ipifstatsinoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInReceives")
     {
         ipifstatsinreceives = value;
+        ipifstatsinreceives.value_namespace = name_space;
+        ipifstatsinreceives.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInTruncatedPkts")
     {
         ipifstatsintruncatedpkts = value;
+        ipifstatsintruncatedpkts.value_namespace = name_space;
+        ipifstatsintruncatedpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsInUnknownProtos")
     {
         ipifstatsinunknownprotos = value;
+        ipifstatsinunknownprotos.value_namespace = name_space;
+        ipifstatsinunknownprotos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutBcastPkts")
     {
         ipifstatsoutbcastpkts = value;
+        ipifstatsoutbcastpkts.value_namespace = name_space;
+        ipifstatsoutbcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutDiscards")
     {
         ipifstatsoutdiscards = value;
+        ipifstatsoutdiscards.value_namespace = name_space;
+        ipifstatsoutdiscards.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutForwDatagrams")
     {
         ipifstatsoutforwdatagrams = value;
+        ipifstatsoutforwdatagrams.value_namespace = name_space;
+        ipifstatsoutforwdatagrams.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutFragCreates")
     {
         ipifstatsoutfragcreates = value;
+        ipifstatsoutfragcreates.value_namespace = name_space;
+        ipifstatsoutfragcreates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutFragFails")
     {
         ipifstatsoutfragfails = value;
+        ipifstatsoutfragfails.value_namespace = name_space;
+        ipifstatsoutfragfails.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutFragOKs")
     {
         ipifstatsoutfragoks = value;
+        ipifstatsoutfragoks.value_namespace = name_space;
+        ipifstatsoutfragoks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutFragReqds")
     {
         ipifstatsoutfragreqds = value;
+        ipifstatsoutfragreqds.value_namespace = name_space;
+        ipifstatsoutfragreqds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutMcastOctets")
     {
         ipifstatsoutmcastoctets = value;
+        ipifstatsoutmcastoctets.value_namespace = name_space;
+        ipifstatsoutmcastoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutMcastPkts")
     {
         ipifstatsoutmcastpkts = value;
+        ipifstatsoutmcastpkts.value_namespace = name_space;
+        ipifstatsoutmcastpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutOctets")
     {
         ipifstatsoutoctets = value;
+        ipifstatsoutoctets.value_namespace = name_space;
+        ipifstatsoutoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutRequests")
     {
         ipifstatsoutrequests = value;
+        ipifstatsoutrequests.value_namespace = name_space;
+        ipifstatsoutrequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsOutTransmits")
     {
         ipifstatsouttransmits = value;
+        ipifstatsouttransmits.value_namespace = name_space;
+        ipifstatsouttransmits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsReasmFails")
     {
         ipifstatsreasmfails = value;
+        ipifstatsreasmfails.value_namespace = name_space;
+        ipifstatsreasmfails.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsReasmOKs")
     {
         ipifstatsreasmoks = value;
+        ipifstatsreasmoks.value_namespace = name_space;
+        ipifstatsreasmoks.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsReasmReqds")
     {
         ipifstatsreasmreqds = value;
+        ipifstatsreasmreqds.value_namespace = name_space;
+        ipifstatsreasmreqds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipIfStatsRefreshRate")
     {
         ipifstatsrefreshrate = value;
+        ipifstatsrefreshrate.value_namespace = name_space;
+        ipifstatsrefreshrate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipifstatstable::Ipifstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipIfStatsIPVersion")
+    {
+        ipifstatsipversion.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsIfIndex")
+    {
+        ipifstatsifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsDiscontinuityTime")
+    {
+        ipifstatsdiscontinuitytime.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCInBcastPkts")
+    {
+        ipifstatshcinbcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCInDelivers")
+    {
+        ipifstatshcindelivers.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCInForwDatagrams")
+    {
+        ipifstatshcinforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCInMcastOctets")
+    {
+        ipifstatshcinmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCInMcastPkts")
+    {
+        ipifstatshcinmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCInOctets")
+    {
+        ipifstatshcinoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCInReceives")
+    {
+        ipifstatshcinreceives.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCOutBcastPkts")
+    {
+        ipifstatshcoutbcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCOutForwDatagrams")
+    {
+        ipifstatshcoutforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCOutMcastOctets")
+    {
+        ipifstatshcoutmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCOutMcastPkts")
+    {
+        ipifstatshcoutmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCOutOctets")
+    {
+        ipifstatshcoutoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCOutRequests")
+    {
+        ipifstatshcoutrequests.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsHCOutTransmits")
+    {
+        ipifstatshcouttransmits.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInAddrErrors")
+    {
+        ipifstatsinaddrerrors.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInBcastPkts")
+    {
+        ipifstatsinbcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInDelivers")
+    {
+        ipifstatsindelivers.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInDiscards")
+    {
+        ipifstatsindiscards.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInForwDatagrams")
+    {
+        ipifstatsinforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInHdrErrors")
+    {
+        ipifstatsinhdrerrors.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInMcastOctets")
+    {
+        ipifstatsinmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInMcastPkts")
+    {
+        ipifstatsinmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInNoRoutes")
+    {
+        ipifstatsinnoroutes.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInOctets")
+    {
+        ipifstatsinoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInReceives")
+    {
+        ipifstatsinreceives.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInTruncatedPkts")
+    {
+        ipifstatsintruncatedpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsInUnknownProtos")
+    {
+        ipifstatsinunknownprotos.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutBcastPkts")
+    {
+        ipifstatsoutbcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutDiscards")
+    {
+        ipifstatsoutdiscards.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutForwDatagrams")
+    {
+        ipifstatsoutforwdatagrams.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutFragCreates")
+    {
+        ipifstatsoutfragcreates.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutFragFails")
+    {
+        ipifstatsoutfragfails.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutFragOKs")
+    {
+        ipifstatsoutfragoks.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutFragReqds")
+    {
+        ipifstatsoutfragreqds.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutMcastOctets")
+    {
+        ipifstatsoutmcastoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutMcastPkts")
+    {
+        ipifstatsoutmcastpkts.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutOctets")
+    {
+        ipifstatsoutoctets.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutRequests")
+    {
+        ipifstatsoutrequests.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsOutTransmits")
+    {
+        ipifstatsouttransmits.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsReasmFails")
+    {
+        ipifstatsreasmfails.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsReasmOKs")
+    {
+        ipifstatsreasmoks.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsReasmReqds")
+    {
+        ipifstatsreasmreqds.yfilter = yfilter;
+    }
+    if(value_path == "ipIfStatsRefreshRate")
+    {
+        ipifstatsrefreshrate.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipifstatstable::Ipifstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipIfStatsIPVersion" || name == "ipIfStatsIfIndex" || name == "ipIfStatsDiscontinuityTime" || name == "ipIfStatsHCInBcastPkts" || name == "ipIfStatsHCInDelivers" || name == "ipIfStatsHCInForwDatagrams" || name == "ipIfStatsHCInMcastOctets" || name == "ipIfStatsHCInMcastPkts" || name == "ipIfStatsHCInOctets" || name == "ipIfStatsHCInReceives" || name == "ipIfStatsHCOutBcastPkts" || name == "ipIfStatsHCOutForwDatagrams" || name == "ipIfStatsHCOutMcastOctets" || name == "ipIfStatsHCOutMcastPkts" || name == "ipIfStatsHCOutOctets" || name == "ipIfStatsHCOutRequests" || name == "ipIfStatsHCOutTransmits" || name == "ipIfStatsInAddrErrors" || name == "ipIfStatsInBcastPkts" || name == "ipIfStatsInDelivers" || name == "ipIfStatsInDiscards" || name == "ipIfStatsInForwDatagrams" || name == "ipIfStatsInHdrErrors" || name == "ipIfStatsInMcastOctets" || name == "ipIfStatsInMcastPkts" || name == "ipIfStatsInNoRoutes" || name == "ipIfStatsInOctets" || name == "ipIfStatsInReceives" || name == "ipIfStatsInTruncatedPkts" || name == "ipIfStatsInUnknownProtos" || name == "ipIfStatsOutBcastPkts" || name == "ipIfStatsOutDiscards" || name == "ipIfStatsOutForwDatagrams" || name == "ipIfStatsOutFragCreates" || name == "ipIfStatsOutFragFails" || name == "ipIfStatsOutFragOKs" || name == "ipIfStatsOutFragReqds" || name == "ipIfStatsOutMcastOctets" || name == "ipIfStatsOutMcastPkts" || name == "ipIfStatsOutOctets" || name == "ipIfStatsOutRequests" || name == "ipIfStatsOutTransmits" || name == "ipIfStatsReasmFails" || name == "ipIfStatsReasmOKs" || name == "ipIfStatsReasmReqds" || name == "ipIfStatsRefreshRate")
+        return true;
+    return false;
 }
 
 IpMib::Ipaddressprefixtable::Ipaddressprefixtable()
@@ -2890,9 +4063,9 @@ IpMib::Ipaddressprefixtable::~Ipaddressprefixtable()
 
 bool IpMib::Ipaddressprefixtable::has_data() const
 {
-    for (std::size_t index=0; index<ipaddressprefixentry_.size(); index++)
+    for (std::size_t index=0; index<ipaddressprefixentry.size(); index++)
     {
-        if(ipaddressprefixentry_[index]->has_data())
+        if(ipaddressprefixentry[index]->has_data())
             return true;
     }
     return false;
@@ -2900,12 +4073,12 @@ bool IpMib::Ipaddressprefixtable::has_data() const
 
 bool IpMib::Ipaddressprefixtable::has_operation() const
 {
-    for (std::size_t index=0; index<ipaddressprefixentry_.size(); index++)
+    for (std::size_t index=0; index<ipaddressprefixentry.size(); index++)
     {
-        if(ipaddressprefixentry_[index]->has_operation())
+        if(ipaddressprefixentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipaddressprefixtable::get_segment_path() const
@@ -2942,7 +4115,7 @@ std::shared_ptr<Entity> IpMib::Ipaddressprefixtable::get_child_by_name(const std
 {
     if(child_yang_name == "ipAddressPrefixEntry")
     {
-        for(auto const & c : ipaddressprefixentry_)
+        for(auto const & c : ipaddressprefixentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2952,7 +4125,7 @@ std::shared_ptr<Entity> IpMib::Ipaddressprefixtable::get_child_by_name(const std
         }
         auto c = std::make_shared<IpMib::Ipaddressprefixtable::Ipaddressprefixentry>();
         c->parent = this;
-        ipaddressprefixentry_.push_back(c);
+        ipaddressprefixentry.push_back(c);
         return c;
     }
 
@@ -2962,7 +4135,7 @@ std::shared_ptr<Entity> IpMib::Ipaddressprefixtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddressprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipaddressprefixentry_)
+    for (auto const & c : ipaddressprefixentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2970,8 +4143,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddressprefixtable::get_
     return children;
 }
 
-void IpMib::Ipaddressprefixtable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipaddressprefixtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipaddressprefixtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipaddressprefixtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipAddressPrefixEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipaddressprefixtable::Ipaddressprefixentry::Ipaddressprefixentry()
@@ -3008,16 +4192,16 @@ bool IpMib::Ipaddressprefixtable::Ipaddressprefixentry::has_data() const
 
 bool IpMib::Ipaddressprefixtable::Ipaddressprefixentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipaddressprefixifindex.operation)
-	|| is_set(ipaddressprefixtype.operation)
-	|| is_set(ipaddressprefixprefix.operation)
-	|| is_set(ipaddressprefixlength.operation)
-	|| is_set(ipaddressprefixadvpreferredlifetime.operation)
-	|| is_set(ipaddressprefixadvvalidlifetime.operation)
-	|| is_set(ipaddressprefixautonomousflag.operation)
-	|| is_set(ipaddressprefixonlinkflag.operation)
-	|| is_set(ipaddressprefixorigin.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipaddressprefixifindex.yfilter)
+	|| ydk::is_set(ipaddressprefixtype.yfilter)
+	|| ydk::is_set(ipaddressprefixprefix.yfilter)
+	|| ydk::is_set(ipaddressprefixlength.yfilter)
+	|| ydk::is_set(ipaddressprefixadvpreferredlifetime.yfilter)
+	|| ydk::is_set(ipaddressprefixadvvalidlifetime.yfilter)
+	|| ydk::is_set(ipaddressprefixautonomousflag.yfilter)
+	|| ydk::is_set(ipaddressprefixonlinkflag.yfilter)
+	|| ydk::is_set(ipaddressprefixorigin.yfilter);
 }
 
 std::string IpMib::Ipaddressprefixtable::Ipaddressprefixentry::get_segment_path() const
@@ -3043,15 +4227,15 @@ const EntityPath IpMib::Ipaddressprefixtable::Ipaddressprefixentry::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipaddressprefixifindex.is_set || is_set(ipaddressprefixifindex.operation)) leaf_name_data.push_back(ipaddressprefixifindex.get_name_leafdata());
-    if (ipaddressprefixtype.is_set || is_set(ipaddressprefixtype.operation)) leaf_name_data.push_back(ipaddressprefixtype.get_name_leafdata());
-    if (ipaddressprefixprefix.is_set || is_set(ipaddressprefixprefix.operation)) leaf_name_data.push_back(ipaddressprefixprefix.get_name_leafdata());
-    if (ipaddressprefixlength.is_set || is_set(ipaddressprefixlength.operation)) leaf_name_data.push_back(ipaddressprefixlength.get_name_leafdata());
-    if (ipaddressprefixadvpreferredlifetime.is_set || is_set(ipaddressprefixadvpreferredlifetime.operation)) leaf_name_data.push_back(ipaddressprefixadvpreferredlifetime.get_name_leafdata());
-    if (ipaddressprefixadvvalidlifetime.is_set || is_set(ipaddressprefixadvvalidlifetime.operation)) leaf_name_data.push_back(ipaddressprefixadvvalidlifetime.get_name_leafdata());
-    if (ipaddressprefixautonomousflag.is_set || is_set(ipaddressprefixautonomousflag.operation)) leaf_name_data.push_back(ipaddressprefixautonomousflag.get_name_leafdata());
-    if (ipaddressprefixonlinkflag.is_set || is_set(ipaddressprefixonlinkflag.operation)) leaf_name_data.push_back(ipaddressprefixonlinkflag.get_name_leafdata());
-    if (ipaddressprefixorigin.is_set || is_set(ipaddressprefixorigin.operation)) leaf_name_data.push_back(ipaddressprefixorigin.get_name_leafdata());
+    if (ipaddressprefixifindex.is_set || is_set(ipaddressprefixifindex.yfilter)) leaf_name_data.push_back(ipaddressprefixifindex.get_name_leafdata());
+    if (ipaddressprefixtype.is_set || is_set(ipaddressprefixtype.yfilter)) leaf_name_data.push_back(ipaddressprefixtype.get_name_leafdata());
+    if (ipaddressprefixprefix.is_set || is_set(ipaddressprefixprefix.yfilter)) leaf_name_data.push_back(ipaddressprefixprefix.get_name_leafdata());
+    if (ipaddressprefixlength.is_set || is_set(ipaddressprefixlength.yfilter)) leaf_name_data.push_back(ipaddressprefixlength.get_name_leafdata());
+    if (ipaddressprefixadvpreferredlifetime.is_set || is_set(ipaddressprefixadvpreferredlifetime.yfilter)) leaf_name_data.push_back(ipaddressprefixadvpreferredlifetime.get_name_leafdata());
+    if (ipaddressprefixadvvalidlifetime.is_set || is_set(ipaddressprefixadvvalidlifetime.yfilter)) leaf_name_data.push_back(ipaddressprefixadvvalidlifetime.get_name_leafdata());
+    if (ipaddressprefixautonomousflag.is_set || is_set(ipaddressprefixautonomousflag.yfilter)) leaf_name_data.push_back(ipaddressprefixautonomousflag.get_name_leafdata());
+    if (ipaddressprefixonlinkflag.is_set || is_set(ipaddressprefixonlinkflag.yfilter)) leaf_name_data.push_back(ipaddressprefixonlinkflag.get_name_leafdata());
+    if (ipaddressprefixorigin.is_set || is_set(ipaddressprefixorigin.yfilter)) leaf_name_data.push_back(ipaddressprefixorigin.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3070,44 +4254,109 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddressprefixtable::Ipad
     return children;
 }
 
-void IpMib::Ipaddressprefixtable::Ipaddressprefixentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipaddressprefixtable::Ipaddressprefixentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipAddressPrefixIfIndex")
     {
         ipaddressprefixifindex = value;
+        ipaddressprefixifindex.value_namespace = name_space;
+        ipaddressprefixifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefixType")
     {
         ipaddressprefixtype = value;
+        ipaddressprefixtype.value_namespace = name_space;
+        ipaddressprefixtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefixPrefix")
     {
         ipaddressprefixprefix = value;
+        ipaddressprefixprefix.value_namespace = name_space;
+        ipaddressprefixprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefixLength")
     {
         ipaddressprefixlength = value;
+        ipaddressprefixlength.value_namespace = name_space;
+        ipaddressprefixlength.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefixAdvPreferredLifetime")
     {
         ipaddressprefixadvpreferredlifetime = value;
+        ipaddressprefixadvpreferredlifetime.value_namespace = name_space;
+        ipaddressprefixadvpreferredlifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefixAdvValidLifetime")
     {
         ipaddressprefixadvvalidlifetime = value;
+        ipaddressprefixadvvalidlifetime.value_namespace = name_space;
+        ipaddressprefixadvvalidlifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefixAutonomousFlag")
     {
         ipaddressprefixautonomousflag = value;
+        ipaddressprefixautonomousflag.value_namespace = name_space;
+        ipaddressprefixautonomousflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefixOnLinkFlag")
     {
         ipaddressprefixonlinkflag = value;
+        ipaddressprefixonlinkflag.value_namespace = name_space;
+        ipaddressprefixonlinkflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefixOrigin")
     {
         ipaddressprefixorigin = value;
+        ipaddressprefixorigin.value_namespace = name_space;
+        ipaddressprefixorigin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipaddressprefixtable::Ipaddressprefixentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipAddressPrefixIfIndex")
+    {
+        ipaddressprefixifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefixType")
+    {
+        ipaddressprefixtype.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefixPrefix")
+    {
+        ipaddressprefixprefix.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefixLength")
+    {
+        ipaddressprefixlength.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefixAdvPreferredLifetime")
+    {
+        ipaddressprefixadvpreferredlifetime.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefixAdvValidLifetime")
+    {
+        ipaddressprefixadvvalidlifetime.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefixAutonomousFlag")
+    {
+        ipaddressprefixautonomousflag.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefixOnLinkFlag")
+    {
+        ipaddressprefixonlinkflag.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefixOrigin")
+    {
+        ipaddressprefixorigin.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipaddressprefixtable::Ipaddressprefixentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipAddressPrefixIfIndex" || name == "ipAddressPrefixType" || name == "ipAddressPrefixPrefix" || name == "ipAddressPrefixLength" || name == "ipAddressPrefixAdvPreferredLifetime" || name == "ipAddressPrefixAdvValidLifetime" || name == "ipAddressPrefixAutonomousFlag" || name == "ipAddressPrefixOnLinkFlag" || name == "ipAddressPrefixOrigin")
+        return true;
+    return false;
 }
 
 IpMib::Ipaddresstable::Ipaddresstable()
@@ -3121,9 +4370,9 @@ IpMib::Ipaddresstable::~Ipaddresstable()
 
 bool IpMib::Ipaddresstable::has_data() const
 {
-    for (std::size_t index=0; index<ipaddressentry_.size(); index++)
+    for (std::size_t index=0; index<ipaddressentry.size(); index++)
     {
-        if(ipaddressentry_[index]->has_data())
+        if(ipaddressentry[index]->has_data())
             return true;
     }
     return false;
@@ -3131,12 +4380,12 @@ bool IpMib::Ipaddresstable::has_data() const
 
 bool IpMib::Ipaddresstable::has_operation() const
 {
-    for (std::size_t index=0; index<ipaddressentry_.size(); index++)
+    for (std::size_t index=0; index<ipaddressentry.size(); index++)
     {
-        if(ipaddressentry_[index]->has_operation())
+        if(ipaddressentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipaddresstable::get_segment_path() const
@@ -3173,7 +4422,7 @@ std::shared_ptr<Entity> IpMib::Ipaddresstable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "ipAddressEntry")
     {
-        for(auto const & c : ipaddressentry_)
+        for(auto const & c : ipaddressentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3183,7 +4432,7 @@ std::shared_ptr<Entity> IpMib::Ipaddresstable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<IpMib::Ipaddresstable::Ipaddressentry>();
         c->parent = this;
-        ipaddressentry_.push_back(c);
+        ipaddressentry.push_back(c);
         return c;
     }
 
@@ -3193,7 +4442,7 @@ std::shared_ptr<Entity> IpMib::Ipaddresstable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddresstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipaddressentry_)
+    for (auto const & c : ipaddressentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3201,8 +4450,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddresstable::get_childr
     return children;
 }
 
-void IpMib::Ipaddresstable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipaddresstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipaddresstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipaddresstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipAddressEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipaddresstable::Ipaddressentry::Ipaddressentry()
@@ -3243,18 +4503,18 @@ bool IpMib::Ipaddresstable::Ipaddressentry::has_data() const
 
 bool IpMib::Ipaddresstable::Ipaddressentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipaddressaddrtype.operation)
-	|| is_set(ipaddressaddr.operation)
-	|| is_set(ipaddresscreated.operation)
-	|| is_set(ipaddressifindex.operation)
-	|| is_set(ipaddresslastchanged.operation)
-	|| is_set(ipaddressorigin.operation)
-	|| is_set(ipaddressprefix.operation)
-	|| is_set(ipaddressrowstatus.operation)
-	|| is_set(ipaddressstatus.operation)
-	|| is_set(ipaddressstoragetype.operation)
-	|| is_set(ipaddresstype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipaddressaddrtype.yfilter)
+	|| ydk::is_set(ipaddressaddr.yfilter)
+	|| ydk::is_set(ipaddresscreated.yfilter)
+	|| ydk::is_set(ipaddressifindex.yfilter)
+	|| ydk::is_set(ipaddresslastchanged.yfilter)
+	|| ydk::is_set(ipaddressorigin.yfilter)
+	|| ydk::is_set(ipaddressprefix.yfilter)
+	|| ydk::is_set(ipaddressrowstatus.yfilter)
+	|| ydk::is_set(ipaddressstatus.yfilter)
+	|| ydk::is_set(ipaddressstoragetype.yfilter)
+	|| ydk::is_set(ipaddresstype.yfilter);
 }
 
 std::string IpMib::Ipaddresstable::Ipaddressentry::get_segment_path() const
@@ -3280,17 +4540,17 @@ const EntityPath IpMib::Ipaddresstable::Ipaddressentry::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipaddressaddrtype.is_set || is_set(ipaddressaddrtype.operation)) leaf_name_data.push_back(ipaddressaddrtype.get_name_leafdata());
-    if (ipaddressaddr.is_set || is_set(ipaddressaddr.operation)) leaf_name_data.push_back(ipaddressaddr.get_name_leafdata());
-    if (ipaddresscreated.is_set || is_set(ipaddresscreated.operation)) leaf_name_data.push_back(ipaddresscreated.get_name_leafdata());
-    if (ipaddressifindex.is_set || is_set(ipaddressifindex.operation)) leaf_name_data.push_back(ipaddressifindex.get_name_leafdata());
-    if (ipaddresslastchanged.is_set || is_set(ipaddresslastchanged.operation)) leaf_name_data.push_back(ipaddresslastchanged.get_name_leafdata());
-    if (ipaddressorigin.is_set || is_set(ipaddressorigin.operation)) leaf_name_data.push_back(ipaddressorigin.get_name_leafdata());
-    if (ipaddressprefix.is_set || is_set(ipaddressprefix.operation)) leaf_name_data.push_back(ipaddressprefix.get_name_leafdata());
-    if (ipaddressrowstatus.is_set || is_set(ipaddressrowstatus.operation)) leaf_name_data.push_back(ipaddressrowstatus.get_name_leafdata());
-    if (ipaddressstatus.is_set || is_set(ipaddressstatus.operation)) leaf_name_data.push_back(ipaddressstatus.get_name_leafdata());
-    if (ipaddressstoragetype.is_set || is_set(ipaddressstoragetype.operation)) leaf_name_data.push_back(ipaddressstoragetype.get_name_leafdata());
-    if (ipaddresstype.is_set || is_set(ipaddresstype.operation)) leaf_name_data.push_back(ipaddresstype.get_name_leafdata());
+    if (ipaddressaddrtype.is_set || is_set(ipaddressaddrtype.yfilter)) leaf_name_data.push_back(ipaddressaddrtype.get_name_leafdata());
+    if (ipaddressaddr.is_set || is_set(ipaddressaddr.yfilter)) leaf_name_data.push_back(ipaddressaddr.get_name_leafdata());
+    if (ipaddresscreated.is_set || is_set(ipaddresscreated.yfilter)) leaf_name_data.push_back(ipaddresscreated.get_name_leafdata());
+    if (ipaddressifindex.is_set || is_set(ipaddressifindex.yfilter)) leaf_name_data.push_back(ipaddressifindex.get_name_leafdata());
+    if (ipaddresslastchanged.is_set || is_set(ipaddresslastchanged.yfilter)) leaf_name_data.push_back(ipaddresslastchanged.get_name_leafdata());
+    if (ipaddressorigin.is_set || is_set(ipaddressorigin.yfilter)) leaf_name_data.push_back(ipaddressorigin.get_name_leafdata());
+    if (ipaddressprefix.is_set || is_set(ipaddressprefix.yfilter)) leaf_name_data.push_back(ipaddressprefix.get_name_leafdata());
+    if (ipaddressrowstatus.is_set || is_set(ipaddressrowstatus.yfilter)) leaf_name_data.push_back(ipaddressrowstatus.get_name_leafdata());
+    if (ipaddressstatus.is_set || is_set(ipaddressstatus.yfilter)) leaf_name_data.push_back(ipaddressstatus.get_name_leafdata());
+    if (ipaddressstoragetype.is_set || is_set(ipaddressstoragetype.yfilter)) leaf_name_data.push_back(ipaddressstoragetype.get_name_leafdata());
+    if (ipaddresstype.is_set || is_set(ipaddresstype.yfilter)) leaf_name_data.push_back(ipaddresstype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3309,52 +4569,129 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipaddresstable::Ipaddresse
     return children;
 }
 
-void IpMib::Ipaddresstable::Ipaddressentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipaddresstable::Ipaddressentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipAddressAddrType")
     {
         ipaddressaddrtype = value;
+        ipaddressaddrtype.value_namespace = name_space;
+        ipaddressaddrtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressAddr")
     {
         ipaddressaddr = value;
+        ipaddressaddr.value_namespace = name_space;
+        ipaddressaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressCreated")
     {
         ipaddresscreated = value;
+        ipaddresscreated.value_namespace = name_space;
+        ipaddresscreated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressIfIndex")
     {
         ipaddressifindex = value;
+        ipaddressifindex.value_namespace = name_space;
+        ipaddressifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressLastChanged")
     {
         ipaddresslastchanged = value;
+        ipaddresslastchanged.value_namespace = name_space;
+        ipaddresslastchanged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressOrigin")
     {
         ipaddressorigin = value;
+        ipaddressorigin.value_namespace = name_space;
+        ipaddressorigin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressPrefix")
     {
         ipaddressprefix = value;
+        ipaddressprefix.value_namespace = name_space;
+        ipaddressprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressRowStatus")
     {
         ipaddressrowstatus = value;
+        ipaddressrowstatus.value_namespace = name_space;
+        ipaddressrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressStatus")
     {
         ipaddressstatus = value;
+        ipaddressstatus.value_namespace = name_space;
+        ipaddressstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressStorageType")
     {
         ipaddressstoragetype = value;
+        ipaddressstoragetype.value_namespace = name_space;
+        ipaddressstoragetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipAddressType")
     {
         ipaddresstype = value;
+        ipaddresstype.value_namespace = name_space;
+        ipaddresstype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipaddresstable::Ipaddressentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipAddressAddrType")
+    {
+        ipaddressaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressAddr")
+    {
+        ipaddressaddr.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressCreated")
+    {
+        ipaddresscreated.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressIfIndex")
+    {
+        ipaddressifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressLastChanged")
+    {
+        ipaddresslastchanged.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressOrigin")
+    {
+        ipaddressorigin.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressPrefix")
+    {
+        ipaddressprefix.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressRowStatus")
+    {
+        ipaddressrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressStatus")
+    {
+        ipaddressstatus.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressStorageType")
+    {
+        ipaddressstoragetype.yfilter = yfilter;
+    }
+    if(value_path == "ipAddressType")
+    {
+        ipaddresstype.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipaddresstable::Ipaddressentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipAddressAddrType" || name == "ipAddressAddr" || name == "ipAddressCreated" || name == "ipAddressIfIndex" || name == "ipAddressLastChanged" || name == "ipAddressOrigin" || name == "ipAddressPrefix" || name == "ipAddressRowStatus" || name == "ipAddressStatus" || name == "ipAddressStorageType" || name == "ipAddressType")
+        return true;
+    return false;
 }
 
 IpMib::Ipnettophysicaltable::Ipnettophysicaltable()
@@ -3368,9 +4705,9 @@ IpMib::Ipnettophysicaltable::~Ipnettophysicaltable()
 
 bool IpMib::Ipnettophysicaltable::has_data() const
 {
-    for (std::size_t index=0; index<ipnettophysicalentry_.size(); index++)
+    for (std::size_t index=0; index<ipnettophysicalentry.size(); index++)
     {
-        if(ipnettophysicalentry_[index]->has_data())
+        if(ipnettophysicalentry[index]->has_data())
             return true;
     }
     return false;
@@ -3378,12 +4715,12 @@ bool IpMib::Ipnettophysicaltable::has_data() const
 
 bool IpMib::Ipnettophysicaltable::has_operation() const
 {
-    for (std::size_t index=0; index<ipnettophysicalentry_.size(); index++)
+    for (std::size_t index=0; index<ipnettophysicalentry.size(); index++)
     {
-        if(ipnettophysicalentry_[index]->has_operation())
+        if(ipnettophysicalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipnettophysicaltable::get_segment_path() const
@@ -3420,7 +4757,7 @@ std::shared_ptr<Entity> IpMib::Ipnettophysicaltable::get_child_by_name(const std
 {
     if(child_yang_name == "ipNetToPhysicalEntry")
     {
-        for(auto const & c : ipnettophysicalentry_)
+        for(auto const & c : ipnettophysicalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3430,7 +4767,7 @@ std::shared_ptr<Entity> IpMib::Ipnettophysicaltable::get_child_by_name(const std
         }
         auto c = std::make_shared<IpMib::Ipnettophysicaltable::Ipnettophysicalentry>();
         c->parent = this;
-        ipnettophysicalentry_.push_back(c);
+        ipnettophysicalentry.push_back(c);
         return c;
     }
 
@@ -3440,7 +4777,7 @@ std::shared_ptr<Entity> IpMib::Ipnettophysicaltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipnettophysicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipnettophysicalentry_)
+    for (auto const & c : ipnettophysicalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3448,8 +4785,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipnettophysicaltable::get_
     return children;
 }
 
-void IpMib::Ipnettophysicaltable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipnettophysicaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipnettophysicaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipnettophysicaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipNetToPhysicalEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalentry()
@@ -3484,15 +4832,15 @@ bool IpMib::Ipnettophysicaltable::Ipnettophysicalentry::has_data() const
 
 bool IpMib::Ipnettophysicaltable::Ipnettophysicalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipnettophysicalifindex.operation)
-	|| is_set(ipnettophysicalnetaddresstype.operation)
-	|| is_set(ipnettophysicalnetaddress.operation)
-	|| is_set(ipnettophysicallastupdated.operation)
-	|| is_set(ipnettophysicalphysaddress.operation)
-	|| is_set(ipnettophysicalrowstatus.operation)
-	|| is_set(ipnettophysicalstate.operation)
-	|| is_set(ipnettophysicaltype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipnettophysicalifindex.yfilter)
+	|| ydk::is_set(ipnettophysicalnetaddresstype.yfilter)
+	|| ydk::is_set(ipnettophysicalnetaddress.yfilter)
+	|| ydk::is_set(ipnettophysicallastupdated.yfilter)
+	|| ydk::is_set(ipnettophysicalphysaddress.yfilter)
+	|| ydk::is_set(ipnettophysicalrowstatus.yfilter)
+	|| ydk::is_set(ipnettophysicalstate.yfilter)
+	|| ydk::is_set(ipnettophysicaltype.yfilter);
 }
 
 std::string IpMib::Ipnettophysicaltable::Ipnettophysicalentry::get_segment_path() const
@@ -3518,14 +4866,14 @@ const EntityPath IpMib::Ipnettophysicaltable::Ipnettophysicalentry::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipnettophysicalifindex.is_set || is_set(ipnettophysicalifindex.operation)) leaf_name_data.push_back(ipnettophysicalifindex.get_name_leafdata());
-    if (ipnettophysicalnetaddresstype.is_set || is_set(ipnettophysicalnetaddresstype.operation)) leaf_name_data.push_back(ipnettophysicalnetaddresstype.get_name_leafdata());
-    if (ipnettophysicalnetaddress.is_set || is_set(ipnettophysicalnetaddress.operation)) leaf_name_data.push_back(ipnettophysicalnetaddress.get_name_leafdata());
-    if (ipnettophysicallastupdated.is_set || is_set(ipnettophysicallastupdated.operation)) leaf_name_data.push_back(ipnettophysicallastupdated.get_name_leafdata());
-    if (ipnettophysicalphysaddress.is_set || is_set(ipnettophysicalphysaddress.operation)) leaf_name_data.push_back(ipnettophysicalphysaddress.get_name_leafdata());
-    if (ipnettophysicalrowstatus.is_set || is_set(ipnettophysicalrowstatus.operation)) leaf_name_data.push_back(ipnettophysicalrowstatus.get_name_leafdata());
-    if (ipnettophysicalstate.is_set || is_set(ipnettophysicalstate.operation)) leaf_name_data.push_back(ipnettophysicalstate.get_name_leafdata());
-    if (ipnettophysicaltype.is_set || is_set(ipnettophysicaltype.operation)) leaf_name_data.push_back(ipnettophysicaltype.get_name_leafdata());
+    if (ipnettophysicalifindex.is_set || is_set(ipnettophysicalifindex.yfilter)) leaf_name_data.push_back(ipnettophysicalifindex.get_name_leafdata());
+    if (ipnettophysicalnetaddresstype.is_set || is_set(ipnettophysicalnetaddresstype.yfilter)) leaf_name_data.push_back(ipnettophysicalnetaddresstype.get_name_leafdata());
+    if (ipnettophysicalnetaddress.is_set || is_set(ipnettophysicalnetaddress.yfilter)) leaf_name_data.push_back(ipnettophysicalnetaddress.get_name_leafdata());
+    if (ipnettophysicallastupdated.is_set || is_set(ipnettophysicallastupdated.yfilter)) leaf_name_data.push_back(ipnettophysicallastupdated.get_name_leafdata());
+    if (ipnettophysicalphysaddress.is_set || is_set(ipnettophysicalphysaddress.yfilter)) leaf_name_data.push_back(ipnettophysicalphysaddress.get_name_leafdata());
+    if (ipnettophysicalrowstatus.is_set || is_set(ipnettophysicalrowstatus.yfilter)) leaf_name_data.push_back(ipnettophysicalrowstatus.get_name_leafdata());
+    if (ipnettophysicalstate.is_set || is_set(ipnettophysicalstate.yfilter)) leaf_name_data.push_back(ipnettophysicalstate.get_name_leafdata());
+    if (ipnettophysicaltype.is_set || is_set(ipnettophysicaltype.yfilter)) leaf_name_data.push_back(ipnettophysicaltype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3544,40 +4892,99 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipnettophysicaltable::Ipne
     return children;
 }
 
-void IpMib::Ipnettophysicaltable::Ipnettophysicalentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipnettophysicaltable::Ipnettophysicalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipNetToPhysicalIfIndex")
     {
         ipnettophysicalifindex = value;
+        ipnettophysicalifindex.value_namespace = name_space;
+        ipnettophysicalifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToPhysicalNetAddressType")
     {
         ipnettophysicalnetaddresstype = value;
+        ipnettophysicalnetaddresstype.value_namespace = name_space;
+        ipnettophysicalnetaddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToPhysicalNetAddress")
     {
         ipnettophysicalnetaddress = value;
+        ipnettophysicalnetaddress.value_namespace = name_space;
+        ipnettophysicalnetaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToPhysicalLastUpdated")
     {
         ipnettophysicallastupdated = value;
+        ipnettophysicallastupdated.value_namespace = name_space;
+        ipnettophysicallastupdated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToPhysicalPhysAddress")
     {
         ipnettophysicalphysaddress = value;
+        ipnettophysicalphysaddress.value_namespace = name_space;
+        ipnettophysicalphysaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToPhysicalRowStatus")
     {
         ipnettophysicalrowstatus = value;
+        ipnettophysicalrowstatus.value_namespace = name_space;
+        ipnettophysicalrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToPhysicalState")
     {
         ipnettophysicalstate = value;
+        ipnettophysicalstate.value_namespace = name_space;
+        ipnettophysicalstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipNetToPhysicalType")
     {
         ipnettophysicaltype = value;
+        ipnettophysicaltype.value_namespace = name_space;
+        ipnettophysicaltype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipnettophysicaltable::Ipnettophysicalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipNetToPhysicalIfIndex")
+    {
+        ipnettophysicalifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToPhysicalNetAddressType")
+    {
+        ipnettophysicalnetaddresstype.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToPhysicalNetAddress")
+    {
+        ipnettophysicalnetaddress.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToPhysicalLastUpdated")
+    {
+        ipnettophysicallastupdated.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToPhysicalPhysAddress")
+    {
+        ipnettophysicalphysaddress.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToPhysicalRowStatus")
+    {
+        ipnettophysicalrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToPhysicalState")
+    {
+        ipnettophysicalstate.yfilter = yfilter;
+    }
+    if(value_path == "ipNetToPhysicalType")
+    {
+        ipnettophysicaltype.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipnettophysicaltable::Ipnettophysicalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipNetToPhysicalIfIndex" || name == "ipNetToPhysicalNetAddressType" || name == "ipNetToPhysicalNetAddress" || name == "ipNetToPhysicalLastUpdated" || name == "ipNetToPhysicalPhysAddress" || name == "ipNetToPhysicalRowStatus" || name == "ipNetToPhysicalState" || name == "ipNetToPhysicalType")
+        return true;
+    return false;
 }
 
 IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindextable()
@@ -3591,9 +4998,9 @@ IpMib::Ipv6Scopezoneindextable::~Ipv6Scopezoneindextable()
 
 bool IpMib::Ipv6Scopezoneindextable::has_data() const
 {
-    for (std::size_t index=0; index<ipv6scopezoneindexentry_.size(); index++)
+    for (std::size_t index=0; index<ipv6scopezoneindexentry.size(); index++)
     {
-        if(ipv6scopezoneindexentry_[index]->has_data())
+        if(ipv6scopezoneindexentry[index]->has_data())
             return true;
     }
     return false;
@@ -3601,12 +5008,12 @@ bool IpMib::Ipv6Scopezoneindextable::has_data() const
 
 bool IpMib::Ipv6Scopezoneindextable::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6scopezoneindexentry_.size(); index++)
+    for (std::size_t index=0; index<ipv6scopezoneindexentry.size(); index++)
     {
-        if(ipv6scopezoneindexentry_[index]->has_operation())
+        if(ipv6scopezoneindexentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipv6Scopezoneindextable::get_segment_path() const
@@ -3643,7 +5050,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Scopezoneindextable::get_child_by_name(const 
 {
     if(child_yang_name == "ipv6ScopeZoneIndexEntry")
     {
-        for(auto const & c : ipv6scopezoneindexentry_)
+        for(auto const & c : ipv6scopezoneindexentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3653,7 +5060,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Scopezoneindextable::get_child_by_name(const 
         }
         auto c = std::make_shared<IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry>();
         c->parent = this;
-        ipv6scopezoneindexentry_.push_back(c);
+        ipv6scopezoneindexentry.push_back(c);
         return c;
     }
 
@@ -3663,7 +5070,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Scopezoneindextable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Scopezoneindextable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv6scopezoneindexentry_)
+    for (auto const & c : ipv6scopezoneindexentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3671,8 +5078,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Scopezoneindextable::g
     return children;
 }
 
-void IpMib::Ipv6Scopezoneindextable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipv6Scopezoneindextable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipv6Scopezoneindextable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipv6Scopezoneindextable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6ScopeZoneIndexEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::Ipv6Scopezoneindexentry()
@@ -3717,20 +5135,20 @@ bool IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_data() const
 
 bool IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6scopezoneindexifindex.operation)
-	|| is_set(ipv6scopezoneindex3.operation)
-	|| is_set(ipv6scopezoneindex6.operation)
-	|| is_set(ipv6scopezoneindex7.operation)
-	|| is_set(ipv6scopezoneindex9.operation)
-	|| is_set(ipv6scopezoneindexa.operation)
-	|| is_set(ipv6scopezoneindexadminlocal.operation)
-	|| is_set(ipv6scopezoneindexb.operation)
-	|| is_set(ipv6scopezoneindexc.operation)
-	|| is_set(ipv6scopezoneindexd.operation)
-	|| is_set(ipv6scopezoneindexlinklocal.operation)
-	|| is_set(ipv6scopezoneindexorganizationlocal.operation)
-	|| is_set(ipv6scopezoneindexsitelocal.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6scopezoneindexifindex.yfilter)
+	|| ydk::is_set(ipv6scopezoneindex3.yfilter)
+	|| ydk::is_set(ipv6scopezoneindex6.yfilter)
+	|| ydk::is_set(ipv6scopezoneindex7.yfilter)
+	|| ydk::is_set(ipv6scopezoneindex9.yfilter)
+	|| ydk::is_set(ipv6scopezoneindexa.yfilter)
+	|| ydk::is_set(ipv6scopezoneindexadminlocal.yfilter)
+	|| ydk::is_set(ipv6scopezoneindexb.yfilter)
+	|| ydk::is_set(ipv6scopezoneindexc.yfilter)
+	|| ydk::is_set(ipv6scopezoneindexd.yfilter)
+	|| ydk::is_set(ipv6scopezoneindexlinklocal.yfilter)
+	|| ydk::is_set(ipv6scopezoneindexorganizationlocal.yfilter)
+	|| ydk::is_set(ipv6scopezoneindexsitelocal.yfilter);
 }
 
 std::string IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::get_segment_path() const
@@ -3756,19 +5174,19 @@ const EntityPath IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6scopezoneindexifindex.is_set || is_set(ipv6scopezoneindexifindex.operation)) leaf_name_data.push_back(ipv6scopezoneindexifindex.get_name_leafdata());
-    if (ipv6scopezoneindex3.is_set || is_set(ipv6scopezoneindex3.operation)) leaf_name_data.push_back(ipv6scopezoneindex3.get_name_leafdata());
-    if (ipv6scopezoneindex6.is_set || is_set(ipv6scopezoneindex6.operation)) leaf_name_data.push_back(ipv6scopezoneindex6.get_name_leafdata());
-    if (ipv6scopezoneindex7.is_set || is_set(ipv6scopezoneindex7.operation)) leaf_name_data.push_back(ipv6scopezoneindex7.get_name_leafdata());
-    if (ipv6scopezoneindex9.is_set || is_set(ipv6scopezoneindex9.operation)) leaf_name_data.push_back(ipv6scopezoneindex9.get_name_leafdata());
-    if (ipv6scopezoneindexa.is_set || is_set(ipv6scopezoneindexa.operation)) leaf_name_data.push_back(ipv6scopezoneindexa.get_name_leafdata());
-    if (ipv6scopezoneindexadminlocal.is_set || is_set(ipv6scopezoneindexadminlocal.operation)) leaf_name_data.push_back(ipv6scopezoneindexadminlocal.get_name_leafdata());
-    if (ipv6scopezoneindexb.is_set || is_set(ipv6scopezoneindexb.operation)) leaf_name_data.push_back(ipv6scopezoneindexb.get_name_leafdata());
-    if (ipv6scopezoneindexc.is_set || is_set(ipv6scopezoneindexc.operation)) leaf_name_data.push_back(ipv6scopezoneindexc.get_name_leafdata());
-    if (ipv6scopezoneindexd.is_set || is_set(ipv6scopezoneindexd.operation)) leaf_name_data.push_back(ipv6scopezoneindexd.get_name_leafdata());
-    if (ipv6scopezoneindexlinklocal.is_set || is_set(ipv6scopezoneindexlinklocal.operation)) leaf_name_data.push_back(ipv6scopezoneindexlinklocal.get_name_leafdata());
-    if (ipv6scopezoneindexorganizationlocal.is_set || is_set(ipv6scopezoneindexorganizationlocal.operation)) leaf_name_data.push_back(ipv6scopezoneindexorganizationlocal.get_name_leafdata());
-    if (ipv6scopezoneindexsitelocal.is_set || is_set(ipv6scopezoneindexsitelocal.operation)) leaf_name_data.push_back(ipv6scopezoneindexsitelocal.get_name_leafdata());
+    if (ipv6scopezoneindexifindex.is_set || is_set(ipv6scopezoneindexifindex.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexifindex.get_name_leafdata());
+    if (ipv6scopezoneindex3.is_set || is_set(ipv6scopezoneindex3.yfilter)) leaf_name_data.push_back(ipv6scopezoneindex3.get_name_leafdata());
+    if (ipv6scopezoneindex6.is_set || is_set(ipv6scopezoneindex6.yfilter)) leaf_name_data.push_back(ipv6scopezoneindex6.get_name_leafdata());
+    if (ipv6scopezoneindex7.is_set || is_set(ipv6scopezoneindex7.yfilter)) leaf_name_data.push_back(ipv6scopezoneindex7.get_name_leafdata());
+    if (ipv6scopezoneindex9.is_set || is_set(ipv6scopezoneindex9.yfilter)) leaf_name_data.push_back(ipv6scopezoneindex9.get_name_leafdata());
+    if (ipv6scopezoneindexa.is_set || is_set(ipv6scopezoneindexa.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexa.get_name_leafdata());
+    if (ipv6scopezoneindexadminlocal.is_set || is_set(ipv6scopezoneindexadminlocal.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexadminlocal.get_name_leafdata());
+    if (ipv6scopezoneindexb.is_set || is_set(ipv6scopezoneindexb.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexb.get_name_leafdata());
+    if (ipv6scopezoneindexc.is_set || is_set(ipv6scopezoneindexc.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexc.get_name_leafdata());
+    if (ipv6scopezoneindexd.is_set || is_set(ipv6scopezoneindexd.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexd.get_name_leafdata());
+    if (ipv6scopezoneindexlinklocal.is_set || is_set(ipv6scopezoneindexlinklocal.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexlinklocal.get_name_leafdata());
+    if (ipv6scopezoneindexorganizationlocal.is_set || is_set(ipv6scopezoneindexorganizationlocal.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexorganizationlocal.get_name_leafdata());
+    if (ipv6scopezoneindexsitelocal.is_set || is_set(ipv6scopezoneindexsitelocal.yfilter)) leaf_name_data.push_back(ipv6scopezoneindexsitelocal.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3787,60 +5205,149 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Scopezoneindextable::I
     return children;
 }
 
-void IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6ScopeZoneIndexIfIndex")
     {
         ipv6scopezoneindexifindex = value;
+        ipv6scopezoneindexifindex.value_namespace = name_space;
+        ipv6scopezoneindexifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndex3")
     {
         ipv6scopezoneindex3 = value;
+        ipv6scopezoneindex3.value_namespace = name_space;
+        ipv6scopezoneindex3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndex6")
     {
         ipv6scopezoneindex6 = value;
+        ipv6scopezoneindex6.value_namespace = name_space;
+        ipv6scopezoneindex6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndex7")
     {
         ipv6scopezoneindex7 = value;
+        ipv6scopezoneindex7.value_namespace = name_space;
+        ipv6scopezoneindex7.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndex9")
     {
         ipv6scopezoneindex9 = value;
+        ipv6scopezoneindex9.value_namespace = name_space;
+        ipv6scopezoneindex9.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndexA")
     {
         ipv6scopezoneindexa = value;
+        ipv6scopezoneindexa.value_namespace = name_space;
+        ipv6scopezoneindexa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndexAdminLocal")
     {
         ipv6scopezoneindexadminlocal = value;
+        ipv6scopezoneindexadminlocal.value_namespace = name_space;
+        ipv6scopezoneindexadminlocal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndexB")
     {
         ipv6scopezoneindexb = value;
+        ipv6scopezoneindexb.value_namespace = name_space;
+        ipv6scopezoneindexb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndexC")
     {
         ipv6scopezoneindexc = value;
+        ipv6scopezoneindexc.value_namespace = name_space;
+        ipv6scopezoneindexc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndexD")
     {
         ipv6scopezoneindexd = value;
+        ipv6scopezoneindexd.value_namespace = name_space;
+        ipv6scopezoneindexd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndexLinkLocal")
     {
         ipv6scopezoneindexlinklocal = value;
+        ipv6scopezoneindexlinklocal.value_namespace = name_space;
+        ipv6scopezoneindexlinklocal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndexOrganizationLocal")
     {
         ipv6scopezoneindexorganizationlocal = value;
+        ipv6scopezoneindexorganizationlocal.value_namespace = name_space;
+        ipv6scopezoneindexorganizationlocal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6ScopeZoneIndexSiteLocal")
     {
         ipv6scopezoneindexsitelocal = value;
+        ipv6scopezoneindexsitelocal.value_namespace = name_space;
+        ipv6scopezoneindexsitelocal.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6ScopeZoneIndexIfIndex")
+    {
+        ipv6scopezoneindexifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndex3")
+    {
+        ipv6scopezoneindex3.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndex6")
+    {
+        ipv6scopezoneindex6.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndex7")
+    {
+        ipv6scopezoneindex7.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndex9")
+    {
+        ipv6scopezoneindex9.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndexA")
+    {
+        ipv6scopezoneindexa.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndexAdminLocal")
+    {
+        ipv6scopezoneindexadminlocal.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndexB")
+    {
+        ipv6scopezoneindexb.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndexC")
+    {
+        ipv6scopezoneindexc.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndexD")
+    {
+        ipv6scopezoneindexd.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndexLinkLocal")
+    {
+        ipv6scopezoneindexlinklocal.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndexOrganizationLocal")
+    {
+        ipv6scopezoneindexorganizationlocal.yfilter = yfilter;
+    }
+    if(value_path == "ipv6ScopeZoneIndexSiteLocal")
+    {
+        ipv6scopezoneindexsitelocal.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6ScopeZoneIndexIfIndex" || name == "ipv6ScopeZoneIndex3" || name == "ipv6ScopeZoneIndex6" || name == "ipv6ScopeZoneIndex7" || name == "ipv6ScopeZoneIndex9" || name == "ipv6ScopeZoneIndexA" || name == "ipv6ScopeZoneIndexAdminLocal" || name == "ipv6ScopeZoneIndexB" || name == "ipv6ScopeZoneIndexC" || name == "ipv6ScopeZoneIndexD" || name == "ipv6ScopeZoneIndexLinkLocal" || name == "ipv6ScopeZoneIndexOrganizationLocal" || name == "ipv6ScopeZoneIndexSiteLocal")
+        return true;
+    return false;
 }
 
 IpMib::Ipdefaultroutertable::Ipdefaultroutertable()
@@ -3854,9 +5361,9 @@ IpMib::Ipdefaultroutertable::~Ipdefaultroutertable()
 
 bool IpMib::Ipdefaultroutertable::has_data() const
 {
-    for (std::size_t index=0; index<ipdefaultrouterentry_.size(); index++)
+    for (std::size_t index=0; index<ipdefaultrouterentry.size(); index++)
     {
-        if(ipdefaultrouterentry_[index]->has_data())
+        if(ipdefaultrouterentry[index]->has_data())
             return true;
     }
     return false;
@@ -3864,12 +5371,12 @@ bool IpMib::Ipdefaultroutertable::has_data() const
 
 bool IpMib::Ipdefaultroutertable::has_operation() const
 {
-    for (std::size_t index=0; index<ipdefaultrouterentry_.size(); index++)
+    for (std::size_t index=0; index<ipdefaultrouterentry.size(); index++)
     {
-        if(ipdefaultrouterentry_[index]->has_operation())
+        if(ipdefaultrouterentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipdefaultroutertable::get_segment_path() const
@@ -3906,7 +5413,7 @@ std::shared_ptr<Entity> IpMib::Ipdefaultroutertable::get_child_by_name(const std
 {
     if(child_yang_name == "ipDefaultRouterEntry")
     {
-        for(auto const & c : ipdefaultrouterentry_)
+        for(auto const & c : ipdefaultrouterentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3916,7 +5423,7 @@ std::shared_ptr<Entity> IpMib::Ipdefaultroutertable::get_child_by_name(const std
         }
         auto c = std::make_shared<IpMib::Ipdefaultroutertable::Ipdefaultrouterentry>();
         c->parent = this;
-        ipdefaultrouterentry_.push_back(c);
+        ipdefaultrouterentry.push_back(c);
         return c;
     }
 
@@ -3926,7 +5433,7 @@ std::shared_ptr<Entity> IpMib::Ipdefaultroutertable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipdefaultroutertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipdefaultrouterentry_)
+    for (auto const & c : ipdefaultrouterentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3934,8 +5441,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipdefaultroutertable::get_
     return children;
 }
 
-void IpMib::Ipdefaultroutertable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipdefaultroutertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipdefaultroutertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipdefaultroutertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipDefaultRouterEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterentry()
@@ -3964,12 +5482,12 @@ bool IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::has_data() const
 
 bool IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipdefaultrouteraddresstype.operation)
-	|| is_set(ipdefaultrouteraddress.operation)
-	|| is_set(ipdefaultrouterifindex.operation)
-	|| is_set(ipdefaultrouterlifetime.operation)
-	|| is_set(ipdefaultrouterpreference.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipdefaultrouteraddresstype.yfilter)
+	|| ydk::is_set(ipdefaultrouteraddress.yfilter)
+	|| ydk::is_set(ipdefaultrouterifindex.yfilter)
+	|| ydk::is_set(ipdefaultrouterlifetime.yfilter)
+	|| ydk::is_set(ipdefaultrouterpreference.yfilter);
 }
 
 std::string IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::get_segment_path() const
@@ -3995,11 +5513,11 @@ const EntityPath IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipdefaultrouteraddresstype.is_set || is_set(ipdefaultrouteraddresstype.operation)) leaf_name_data.push_back(ipdefaultrouteraddresstype.get_name_leafdata());
-    if (ipdefaultrouteraddress.is_set || is_set(ipdefaultrouteraddress.operation)) leaf_name_data.push_back(ipdefaultrouteraddress.get_name_leafdata());
-    if (ipdefaultrouterifindex.is_set || is_set(ipdefaultrouterifindex.operation)) leaf_name_data.push_back(ipdefaultrouterifindex.get_name_leafdata());
-    if (ipdefaultrouterlifetime.is_set || is_set(ipdefaultrouterlifetime.operation)) leaf_name_data.push_back(ipdefaultrouterlifetime.get_name_leafdata());
-    if (ipdefaultrouterpreference.is_set || is_set(ipdefaultrouterpreference.operation)) leaf_name_data.push_back(ipdefaultrouterpreference.get_name_leafdata());
+    if (ipdefaultrouteraddresstype.is_set || is_set(ipdefaultrouteraddresstype.yfilter)) leaf_name_data.push_back(ipdefaultrouteraddresstype.get_name_leafdata());
+    if (ipdefaultrouteraddress.is_set || is_set(ipdefaultrouteraddress.yfilter)) leaf_name_data.push_back(ipdefaultrouteraddress.get_name_leafdata());
+    if (ipdefaultrouterifindex.is_set || is_set(ipdefaultrouterifindex.yfilter)) leaf_name_data.push_back(ipdefaultrouterifindex.get_name_leafdata());
+    if (ipdefaultrouterlifetime.is_set || is_set(ipdefaultrouterlifetime.yfilter)) leaf_name_data.push_back(ipdefaultrouterlifetime.get_name_leafdata());
+    if (ipdefaultrouterpreference.is_set || is_set(ipdefaultrouterpreference.yfilter)) leaf_name_data.push_back(ipdefaultrouterpreference.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4018,28 +5536,69 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipdefaultroutertable::Ipde
     return children;
 }
 
-void IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipDefaultRouterAddressType")
     {
         ipdefaultrouteraddresstype = value;
+        ipdefaultrouteraddresstype.value_namespace = name_space;
+        ipdefaultrouteraddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipDefaultRouterAddress")
     {
         ipdefaultrouteraddress = value;
+        ipdefaultrouteraddress.value_namespace = name_space;
+        ipdefaultrouteraddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipDefaultRouterIfIndex")
     {
         ipdefaultrouterifindex = value;
+        ipdefaultrouterifindex.value_namespace = name_space;
+        ipdefaultrouterifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipDefaultRouterLifetime")
     {
         ipdefaultrouterlifetime = value;
+        ipdefaultrouterlifetime.value_namespace = name_space;
+        ipdefaultrouterlifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipDefaultRouterPreference")
     {
         ipdefaultrouterpreference = value;
+        ipdefaultrouterpreference.value_namespace = name_space;
+        ipdefaultrouterpreference.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipDefaultRouterAddressType")
+    {
+        ipdefaultrouteraddresstype.yfilter = yfilter;
+    }
+    if(value_path == "ipDefaultRouterAddress")
+    {
+        ipdefaultrouteraddress.yfilter = yfilter;
+    }
+    if(value_path == "ipDefaultRouterIfIndex")
+    {
+        ipdefaultrouterifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipDefaultRouterLifetime")
+    {
+        ipdefaultrouterlifetime.yfilter = yfilter;
+    }
+    if(value_path == "ipDefaultRouterPreference")
+    {
+        ipdefaultrouterpreference.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipDefaultRouterAddressType" || name == "ipDefaultRouterAddress" || name == "ipDefaultRouterIfIndex" || name == "ipDefaultRouterLifetime" || name == "ipDefaultRouterPreference")
+        return true;
+    return false;
 }
 
 IpMib::Ipv6Routeradverttable::Ipv6Routeradverttable()
@@ -4053,9 +5612,9 @@ IpMib::Ipv6Routeradverttable::~Ipv6Routeradverttable()
 
 bool IpMib::Ipv6Routeradverttable::has_data() const
 {
-    for (std::size_t index=0; index<ipv6routeradvertentry_.size(); index++)
+    for (std::size_t index=0; index<ipv6routeradvertentry.size(); index++)
     {
-        if(ipv6routeradvertentry_[index]->has_data())
+        if(ipv6routeradvertentry[index]->has_data())
             return true;
     }
     return false;
@@ -4063,12 +5622,12 @@ bool IpMib::Ipv6Routeradverttable::has_data() const
 
 bool IpMib::Ipv6Routeradverttable::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6routeradvertentry_.size(); index++)
+    for (std::size_t index=0; index<ipv6routeradvertentry.size(); index++)
     {
-        if(ipv6routeradvertentry_[index]->has_operation())
+        if(ipv6routeradvertentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Ipv6Routeradverttable::get_segment_path() const
@@ -4105,7 +5664,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Routeradverttable::get_child_by_name(const st
 {
     if(child_yang_name == "ipv6RouterAdvertEntry")
     {
-        for(auto const & c : ipv6routeradvertentry_)
+        for(auto const & c : ipv6routeradvertentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4115,7 +5674,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Routeradverttable::get_child_by_name(const st
         }
         auto c = std::make_shared<IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry>();
         c->parent = this;
-        ipv6routeradvertentry_.push_back(c);
+        ipv6routeradvertentry.push_back(c);
         return c;
     }
 
@@ -4125,7 +5684,7 @@ std::shared_ptr<Entity> IpMib::Ipv6Routeradverttable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Routeradverttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipv6routeradvertentry_)
+    for (auto const & c : ipv6routeradvertentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4133,8 +5692,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Routeradverttable::get
     return children;
 }
 
-void IpMib::Ipv6Routeradverttable::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipv6Routeradverttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Ipv6Routeradverttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Ipv6Routeradverttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6RouterAdvertEntry")
+        return true;
+    return false;
 }
 
 IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::Ipv6Routeradvertentry()
@@ -4177,19 +5747,19 @@ bool IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::has_data() const
 
 bool IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6routeradvertifindex.operation)
-	|| is_set(ipv6routeradvertcurhoplimit.operation)
-	|| is_set(ipv6routeradvertdefaultlifetime.operation)
-	|| is_set(ipv6routeradvertlinkmtu.operation)
-	|| is_set(ipv6routeradvertmanagedflag.operation)
-	|| is_set(ipv6routeradvertmaxinterval.operation)
-	|| is_set(ipv6routeradvertmininterval.operation)
-	|| is_set(ipv6routeradvertotherconfigflag.operation)
-	|| is_set(ipv6routeradvertreachabletime.operation)
-	|| is_set(ipv6routeradvertretransmittime.operation)
-	|| is_set(ipv6routeradvertrowstatus.operation)
-	|| is_set(ipv6routeradvertsendadverts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6routeradvertifindex.yfilter)
+	|| ydk::is_set(ipv6routeradvertcurhoplimit.yfilter)
+	|| ydk::is_set(ipv6routeradvertdefaultlifetime.yfilter)
+	|| ydk::is_set(ipv6routeradvertlinkmtu.yfilter)
+	|| ydk::is_set(ipv6routeradvertmanagedflag.yfilter)
+	|| ydk::is_set(ipv6routeradvertmaxinterval.yfilter)
+	|| ydk::is_set(ipv6routeradvertmininterval.yfilter)
+	|| ydk::is_set(ipv6routeradvertotherconfigflag.yfilter)
+	|| ydk::is_set(ipv6routeradvertreachabletime.yfilter)
+	|| ydk::is_set(ipv6routeradvertretransmittime.yfilter)
+	|| ydk::is_set(ipv6routeradvertrowstatus.yfilter)
+	|| ydk::is_set(ipv6routeradvertsendadverts.yfilter);
 }
 
 std::string IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::get_segment_path() const
@@ -4215,18 +5785,18 @@ const EntityPath IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6routeradvertifindex.is_set || is_set(ipv6routeradvertifindex.operation)) leaf_name_data.push_back(ipv6routeradvertifindex.get_name_leafdata());
-    if (ipv6routeradvertcurhoplimit.is_set || is_set(ipv6routeradvertcurhoplimit.operation)) leaf_name_data.push_back(ipv6routeradvertcurhoplimit.get_name_leafdata());
-    if (ipv6routeradvertdefaultlifetime.is_set || is_set(ipv6routeradvertdefaultlifetime.operation)) leaf_name_data.push_back(ipv6routeradvertdefaultlifetime.get_name_leafdata());
-    if (ipv6routeradvertlinkmtu.is_set || is_set(ipv6routeradvertlinkmtu.operation)) leaf_name_data.push_back(ipv6routeradvertlinkmtu.get_name_leafdata());
-    if (ipv6routeradvertmanagedflag.is_set || is_set(ipv6routeradvertmanagedflag.operation)) leaf_name_data.push_back(ipv6routeradvertmanagedflag.get_name_leafdata());
-    if (ipv6routeradvertmaxinterval.is_set || is_set(ipv6routeradvertmaxinterval.operation)) leaf_name_data.push_back(ipv6routeradvertmaxinterval.get_name_leafdata());
-    if (ipv6routeradvertmininterval.is_set || is_set(ipv6routeradvertmininterval.operation)) leaf_name_data.push_back(ipv6routeradvertmininterval.get_name_leafdata());
-    if (ipv6routeradvertotherconfigflag.is_set || is_set(ipv6routeradvertotherconfigflag.operation)) leaf_name_data.push_back(ipv6routeradvertotherconfigflag.get_name_leafdata());
-    if (ipv6routeradvertreachabletime.is_set || is_set(ipv6routeradvertreachabletime.operation)) leaf_name_data.push_back(ipv6routeradvertreachabletime.get_name_leafdata());
-    if (ipv6routeradvertretransmittime.is_set || is_set(ipv6routeradvertretransmittime.operation)) leaf_name_data.push_back(ipv6routeradvertretransmittime.get_name_leafdata());
-    if (ipv6routeradvertrowstatus.is_set || is_set(ipv6routeradvertrowstatus.operation)) leaf_name_data.push_back(ipv6routeradvertrowstatus.get_name_leafdata());
-    if (ipv6routeradvertsendadverts.is_set || is_set(ipv6routeradvertsendadverts.operation)) leaf_name_data.push_back(ipv6routeradvertsendadverts.get_name_leafdata());
+    if (ipv6routeradvertifindex.is_set || is_set(ipv6routeradvertifindex.yfilter)) leaf_name_data.push_back(ipv6routeradvertifindex.get_name_leafdata());
+    if (ipv6routeradvertcurhoplimit.is_set || is_set(ipv6routeradvertcurhoplimit.yfilter)) leaf_name_data.push_back(ipv6routeradvertcurhoplimit.get_name_leafdata());
+    if (ipv6routeradvertdefaultlifetime.is_set || is_set(ipv6routeradvertdefaultlifetime.yfilter)) leaf_name_data.push_back(ipv6routeradvertdefaultlifetime.get_name_leafdata());
+    if (ipv6routeradvertlinkmtu.is_set || is_set(ipv6routeradvertlinkmtu.yfilter)) leaf_name_data.push_back(ipv6routeradvertlinkmtu.get_name_leafdata());
+    if (ipv6routeradvertmanagedflag.is_set || is_set(ipv6routeradvertmanagedflag.yfilter)) leaf_name_data.push_back(ipv6routeradvertmanagedflag.get_name_leafdata());
+    if (ipv6routeradvertmaxinterval.is_set || is_set(ipv6routeradvertmaxinterval.yfilter)) leaf_name_data.push_back(ipv6routeradvertmaxinterval.get_name_leafdata());
+    if (ipv6routeradvertmininterval.is_set || is_set(ipv6routeradvertmininterval.yfilter)) leaf_name_data.push_back(ipv6routeradvertmininterval.get_name_leafdata());
+    if (ipv6routeradvertotherconfigflag.is_set || is_set(ipv6routeradvertotherconfigflag.yfilter)) leaf_name_data.push_back(ipv6routeradvertotherconfigflag.get_name_leafdata());
+    if (ipv6routeradvertreachabletime.is_set || is_set(ipv6routeradvertreachabletime.yfilter)) leaf_name_data.push_back(ipv6routeradvertreachabletime.get_name_leafdata());
+    if (ipv6routeradvertretransmittime.is_set || is_set(ipv6routeradvertretransmittime.yfilter)) leaf_name_data.push_back(ipv6routeradvertretransmittime.get_name_leafdata());
+    if (ipv6routeradvertrowstatus.is_set || is_set(ipv6routeradvertrowstatus.yfilter)) leaf_name_data.push_back(ipv6routeradvertrowstatus.get_name_leafdata());
+    if (ipv6routeradvertsendadverts.is_set || is_set(ipv6routeradvertsendadverts.yfilter)) leaf_name_data.push_back(ipv6routeradvertsendadverts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4245,56 +5815,139 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Ipv6Routeradverttable::Ipv
     return children;
 }
 
-void IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6RouterAdvertIfIndex")
     {
         ipv6routeradvertifindex = value;
+        ipv6routeradvertifindex.value_namespace = name_space;
+        ipv6routeradvertifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertCurHopLimit")
     {
         ipv6routeradvertcurhoplimit = value;
+        ipv6routeradvertcurhoplimit.value_namespace = name_space;
+        ipv6routeradvertcurhoplimit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertDefaultLifetime")
     {
         ipv6routeradvertdefaultlifetime = value;
+        ipv6routeradvertdefaultlifetime.value_namespace = name_space;
+        ipv6routeradvertdefaultlifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertLinkMTU")
     {
         ipv6routeradvertlinkmtu = value;
+        ipv6routeradvertlinkmtu.value_namespace = name_space;
+        ipv6routeradvertlinkmtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertManagedFlag")
     {
         ipv6routeradvertmanagedflag = value;
+        ipv6routeradvertmanagedflag.value_namespace = name_space;
+        ipv6routeradvertmanagedflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertMaxInterval")
     {
         ipv6routeradvertmaxinterval = value;
+        ipv6routeradvertmaxinterval.value_namespace = name_space;
+        ipv6routeradvertmaxinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertMinInterval")
     {
         ipv6routeradvertmininterval = value;
+        ipv6routeradvertmininterval.value_namespace = name_space;
+        ipv6routeradvertmininterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertOtherConfigFlag")
     {
         ipv6routeradvertotherconfigflag = value;
+        ipv6routeradvertotherconfigflag.value_namespace = name_space;
+        ipv6routeradvertotherconfigflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertReachableTime")
     {
         ipv6routeradvertreachabletime = value;
+        ipv6routeradvertreachabletime.value_namespace = name_space;
+        ipv6routeradvertreachabletime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertRetransmitTime")
     {
         ipv6routeradvertretransmittime = value;
+        ipv6routeradvertretransmittime.value_namespace = name_space;
+        ipv6routeradvertretransmittime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertRowStatus")
     {
         ipv6routeradvertrowstatus = value;
+        ipv6routeradvertrowstatus.value_namespace = name_space;
+        ipv6routeradvertrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6RouterAdvertSendAdverts")
     {
         ipv6routeradvertsendadverts = value;
+        ipv6routeradvertsendadverts.value_namespace = name_space;
+        ipv6routeradvertsendadverts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6RouterAdvertIfIndex")
+    {
+        ipv6routeradvertifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertCurHopLimit")
+    {
+        ipv6routeradvertcurhoplimit.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertDefaultLifetime")
+    {
+        ipv6routeradvertdefaultlifetime.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertLinkMTU")
+    {
+        ipv6routeradvertlinkmtu.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertManagedFlag")
+    {
+        ipv6routeradvertmanagedflag.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertMaxInterval")
+    {
+        ipv6routeradvertmaxinterval.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertMinInterval")
+    {
+        ipv6routeradvertmininterval.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertOtherConfigFlag")
+    {
+        ipv6routeradvertotherconfigflag.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertReachableTime")
+    {
+        ipv6routeradvertreachabletime.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertRetransmitTime")
+    {
+        ipv6routeradvertretransmittime.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertRowStatus")
+    {
+        ipv6routeradvertrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "ipv6RouterAdvertSendAdverts")
+    {
+        ipv6routeradvertsendadverts.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Ipv6Routeradverttable::Ipv6Routeradvertentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6RouterAdvertIfIndex" || name == "ipv6RouterAdvertCurHopLimit" || name == "ipv6RouterAdvertDefaultLifetime" || name == "ipv6RouterAdvertLinkMTU" || name == "ipv6RouterAdvertManagedFlag" || name == "ipv6RouterAdvertMaxInterval" || name == "ipv6RouterAdvertMinInterval" || name == "ipv6RouterAdvertOtherConfigFlag" || name == "ipv6RouterAdvertReachableTime" || name == "ipv6RouterAdvertRetransmitTime" || name == "ipv6RouterAdvertRowStatus" || name == "ipv6RouterAdvertSendAdverts")
+        return true;
+    return false;
 }
 
 IpMib::Icmpstatstable::Icmpstatstable()
@@ -4308,9 +5961,9 @@ IpMib::Icmpstatstable::~Icmpstatstable()
 
 bool IpMib::Icmpstatstable::has_data() const
 {
-    for (std::size_t index=0; index<icmpstatsentry_.size(); index++)
+    for (std::size_t index=0; index<icmpstatsentry.size(); index++)
     {
-        if(icmpstatsentry_[index]->has_data())
+        if(icmpstatsentry[index]->has_data())
             return true;
     }
     return false;
@@ -4318,12 +5971,12 @@ bool IpMib::Icmpstatstable::has_data() const
 
 bool IpMib::Icmpstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<icmpstatsentry_.size(); index++)
+    for (std::size_t index=0; index<icmpstatsentry.size(); index++)
     {
-        if(icmpstatsentry_[index]->has_operation())
+        if(icmpstatsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Icmpstatstable::get_segment_path() const
@@ -4360,7 +6013,7 @@ std::shared_ptr<Entity> IpMib::Icmpstatstable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "icmpStatsEntry")
     {
-        for(auto const & c : icmpstatsentry_)
+        for(auto const & c : icmpstatsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4370,7 +6023,7 @@ std::shared_ptr<Entity> IpMib::Icmpstatstable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<IpMib::Icmpstatstable::Icmpstatsentry>();
         c->parent = this;
-        icmpstatsentry_.push_back(c);
+        icmpstatsentry.push_back(c);
         return c;
     }
 
@@ -4380,7 +6033,7 @@ std::shared_ptr<Entity> IpMib::Icmpstatstable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Icmpstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : icmpstatsentry_)
+    for (auto const & c : icmpstatsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4388,8 +6041,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Icmpstatstable::get_childr
     return children;
 }
 
-void IpMib::Icmpstatstable::set_value(const std::string & value_path, std::string value)
+void IpMib::Icmpstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Icmpstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Icmpstatstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "icmpStatsEntry")
+        return true;
+    return false;
 }
 
 IpMib::Icmpstatstable::Icmpstatsentry::Icmpstatsentry()
@@ -4418,12 +6082,12 @@ bool IpMib::Icmpstatstable::Icmpstatsentry::has_data() const
 
 bool IpMib::Icmpstatstable::Icmpstatsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(icmpstatsipversion.operation)
-	|| is_set(icmpstatsinerrors.operation)
-	|| is_set(icmpstatsinmsgs.operation)
-	|| is_set(icmpstatsouterrors.operation)
-	|| is_set(icmpstatsoutmsgs.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(icmpstatsipversion.yfilter)
+	|| ydk::is_set(icmpstatsinerrors.yfilter)
+	|| ydk::is_set(icmpstatsinmsgs.yfilter)
+	|| ydk::is_set(icmpstatsouterrors.yfilter)
+	|| ydk::is_set(icmpstatsoutmsgs.yfilter);
 }
 
 std::string IpMib::Icmpstatstable::Icmpstatsentry::get_segment_path() const
@@ -4449,11 +6113,11 @@ const EntityPath IpMib::Icmpstatstable::Icmpstatsentry::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (icmpstatsipversion.is_set || is_set(icmpstatsipversion.operation)) leaf_name_data.push_back(icmpstatsipversion.get_name_leafdata());
-    if (icmpstatsinerrors.is_set || is_set(icmpstatsinerrors.operation)) leaf_name_data.push_back(icmpstatsinerrors.get_name_leafdata());
-    if (icmpstatsinmsgs.is_set || is_set(icmpstatsinmsgs.operation)) leaf_name_data.push_back(icmpstatsinmsgs.get_name_leafdata());
-    if (icmpstatsouterrors.is_set || is_set(icmpstatsouterrors.operation)) leaf_name_data.push_back(icmpstatsouterrors.get_name_leafdata());
-    if (icmpstatsoutmsgs.is_set || is_set(icmpstatsoutmsgs.operation)) leaf_name_data.push_back(icmpstatsoutmsgs.get_name_leafdata());
+    if (icmpstatsipversion.is_set || is_set(icmpstatsipversion.yfilter)) leaf_name_data.push_back(icmpstatsipversion.get_name_leafdata());
+    if (icmpstatsinerrors.is_set || is_set(icmpstatsinerrors.yfilter)) leaf_name_data.push_back(icmpstatsinerrors.get_name_leafdata());
+    if (icmpstatsinmsgs.is_set || is_set(icmpstatsinmsgs.yfilter)) leaf_name_data.push_back(icmpstatsinmsgs.get_name_leafdata());
+    if (icmpstatsouterrors.is_set || is_set(icmpstatsouterrors.yfilter)) leaf_name_data.push_back(icmpstatsouterrors.get_name_leafdata());
+    if (icmpstatsoutmsgs.is_set || is_set(icmpstatsoutmsgs.yfilter)) leaf_name_data.push_back(icmpstatsoutmsgs.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4472,28 +6136,69 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Icmpstatstable::Icmpstatse
     return children;
 }
 
-void IpMib::Icmpstatstable::Icmpstatsentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Icmpstatstable::Icmpstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "icmpStatsIPVersion")
     {
         icmpstatsipversion = value;
+        icmpstatsipversion.value_namespace = name_space;
+        icmpstatsipversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpStatsInErrors")
     {
         icmpstatsinerrors = value;
+        icmpstatsinerrors.value_namespace = name_space;
+        icmpstatsinerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpStatsInMsgs")
     {
         icmpstatsinmsgs = value;
+        icmpstatsinmsgs.value_namespace = name_space;
+        icmpstatsinmsgs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpStatsOutErrors")
     {
         icmpstatsouterrors = value;
+        icmpstatsouterrors.value_namespace = name_space;
+        icmpstatsouterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpStatsOutMsgs")
     {
         icmpstatsoutmsgs = value;
+        icmpstatsoutmsgs.value_namespace = name_space;
+        icmpstatsoutmsgs.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpMib::Icmpstatstable::Icmpstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "icmpStatsIPVersion")
+    {
+        icmpstatsipversion.yfilter = yfilter;
+    }
+    if(value_path == "icmpStatsInErrors")
+    {
+        icmpstatsinerrors.yfilter = yfilter;
+    }
+    if(value_path == "icmpStatsInMsgs")
+    {
+        icmpstatsinmsgs.yfilter = yfilter;
+    }
+    if(value_path == "icmpStatsOutErrors")
+    {
+        icmpstatsouterrors.yfilter = yfilter;
+    }
+    if(value_path == "icmpStatsOutMsgs")
+    {
+        icmpstatsoutmsgs.yfilter = yfilter;
+    }
+}
+
+bool IpMib::Icmpstatstable::Icmpstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "icmpStatsIPVersion" || name == "icmpStatsInErrors" || name == "icmpStatsInMsgs" || name == "icmpStatsOutErrors" || name == "icmpStatsOutMsgs")
+        return true;
+    return false;
 }
 
 IpMib::Icmpmsgstatstable::Icmpmsgstatstable()
@@ -4507,9 +6212,9 @@ IpMib::Icmpmsgstatstable::~Icmpmsgstatstable()
 
 bool IpMib::Icmpmsgstatstable::has_data() const
 {
-    for (std::size_t index=0; index<icmpmsgstatsentry_.size(); index++)
+    for (std::size_t index=0; index<icmpmsgstatsentry.size(); index++)
     {
-        if(icmpmsgstatsentry_[index]->has_data())
+        if(icmpmsgstatsentry[index]->has_data())
             return true;
     }
     return false;
@@ -4517,12 +6222,12 @@ bool IpMib::Icmpmsgstatstable::has_data() const
 
 bool IpMib::Icmpmsgstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<icmpmsgstatsentry_.size(); index++)
+    for (std::size_t index=0; index<icmpmsgstatsentry.size(); index++)
     {
-        if(icmpmsgstatsentry_[index]->has_operation())
+        if(icmpmsgstatsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpMib::Icmpmsgstatstable::get_segment_path() const
@@ -4559,7 +6264,7 @@ std::shared_ptr<Entity> IpMib::Icmpmsgstatstable::get_child_by_name(const std::s
 {
     if(child_yang_name == "icmpMsgStatsEntry")
     {
-        for(auto const & c : icmpmsgstatsentry_)
+        for(auto const & c : icmpmsgstatsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -4569,7 +6274,7 @@ std::shared_ptr<Entity> IpMib::Icmpmsgstatstable::get_child_by_name(const std::s
         }
         auto c = std::make_shared<IpMib::Icmpmsgstatstable::Icmpmsgstatsentry>();
         c->parent = this;
-        icmpmsgstatsentry_.push_back(c);
+        icmpmsgstatsentry.push_back(c);
         return c;
     }
 
@@ -4579,7 +6284,7 @@ std::shared_ptr<Entity> IpMib::Icmpmsgstatstable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IpMib::Icmpmsgstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : icmpmsgstatsentry_)
+    for (auto const & c : icmpmsgstatsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -4587,8 +6292,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Icmpmsgstatstable::get_chi
     return children;
 }
 
-void IpMib::Icmpmsgstatstable::set_value(const std::string & value_path, std::string value)
+void IpMib::Icmpmsgstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpMib::Icmpmsgstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpMib::Icmpmsgstatstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "icmpMsgStatsEntry")
+        return true;
+    return false;
 }
 
 IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::Icmpmsgstatsentry()
@@ -4615,11 +6331,11 @@ bool IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::has_data() const
 
 bool IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(icmpmsgstatsipversion.operation)
-	|| is_set(icmpmsgstatstype.operation)
-	|| is_set(icmpmsgstatsinpkts.operation)
-	|| is_set(icmpmsgstatsoutpkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(icmpmsgstatsipversion.yfilter)
+	|| ydk::is_set(icmpmsgstatstype.yfilter)
+	|| ydk::is_set(icmpmsgstatsinpkts.yfilter)
+	|| ydk::is_set(icmpmsgstatsoutpkts.yfilter);
 }
 
 std::string IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::get_segment_path() const
@@ -4645,10 +6361,10 @@ const EntityPath IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (icmpmsgstatsipversion.is_set || is_set(icmpmsgstatsipversion.operation)) leaf_name_data.push_back(icmpmsgstatsipversion.get_name_leafdata());
-    if (icmpmsgstatstype.is_set || is_set(icmpmsgstatstype.operation)) leaf_name_data.push_back(icmpmsgstatstype.get_name_leafdata());
-    if (icmpmsgstatsinpkts.is_set || is_set(icmpmsgstatsinpkts.operation)) leaf_name_data.push_back(icmpmsgstatsinpkts.get_name_leafdata());
-    if (icmpmsgstatsoutpkts.is_set || is_set(icmpmsgstatsoutpkts.operation)) leaf_name_data.push_back(icmpmsgstatsoutpkts.get_name_leafdata());
+    if (icmpmsgstatsipversion.is_set || is_set(icmpmsgstatsipversion.yfilter)) leaf_name_data.push_back(icmpmsgstatsipversion.get_name_leafdata());
+    if (icmpmsgstatstype.is_set || is_set(icmpmsgstatstype.yfilter)) leaf_name_data.push_back(icmpmsgstatstype.get_name_leafdata());
+    if (icmpmsgstatsinpkts.is_set || is_set(icmpmsgstatsinpkts.yfilter)) leaf_name_data.push_back(icmpmsgstatsinpkts.get_name_leafdata());
+    if (icmpmsgstatsoutpkts.is_set || is_set(icmpmsgstatsoutpkts.yfilter)) leaf_name_data.push_back(icmpmsgstatsoutpkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4667,89 +6383,124 @@ std::map<std::string, std::shared_ptr<Entity>> IpMib::Icmpmsgstatstable::Icmpmsg
     return children;
 }
 
-void IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::set_value(const std::string & value_path, std::string value)
+void IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "icmpMsgStatsIPVersion")
     {
         icmpmsgstatsipversion = value;
+        icmpmsgstatsipversion.value_namespace = name_space;
+        icmpmsgstatsipversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpMsgStatsType")
     {
         icmpmsgstatstype = value;
+        icmpmsgstatstype.value_namespace = name_space;
+        icmpmsgstatstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpMsgStatsInPkts")
     {
         icmpmsgstatsinpkts = value;
+        icmpmsgstatsinpkts.value_namespace = name_space;
+        icmpmsgstatsinpkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "icmpMsgStatsOutPkts")
     {
         icmpmsgstatsoutpkts = value;
+        icmpmsgstatsoutpkts.value_namespace = name_space;
+        icmpmsgstatsoutpkts.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf IpaddressprefixorigintcEnum::other {1, "other"};
-const Enum::YLeaf IpaddressprefixorigintcEnum::manual {2, "manual"};
-const Enum::YLeaf IpaddressprefixorigintcEnum::wellknown {3, "wellknown"};
-const Enum::YLeaf IpaddressprefixorigintcEnum::dhcp {4, "dhcp"};
-const Enum::YLeaf IpaddressprefixorigintcEnum::routeradv {5, "routeradv"};
+void IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "icmpMsgStatsIPVersion")
+    {
+        icmpmsgstatsipversion.yfilter = yfilter;
+    }
+    if(value_path == "icmpMsgStatsType")
+    {
+        icmpmsgstatstype.yfilter = yfilter;
+    }
+    if(value_path == "icmpMsgStatsInPkts")
+    {
+        icmpmsgstatsinpkts.yfilter = yfilter;
+    }
+    if(value_path == "icmpMsgStatsOutPkts")
+    {
+        icmpmsgstatsoutpkts.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf IpaddressorigintcEnum::other {1, "other"};
-const Enum::YLeaf IpaddressorigintcEnum::manual {2, "manual"};
-const Enum::YLeaf IpaddressorigintcEnum::dhcp {4, "dhcp"};
-const Enum::YLeaf IpaddressorigintcEnum::linklayer {5, "linklayer"};
-const Enum::YLeaf IpaddressorigintcEnum::random {6, "random"};
+bool IpMib::Icmpmsgstatstable::Icmpmsgstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "icmpMsgStatsIPVersion" || name == "icmpMsgStatsType" || name == "icmpMsgStatsInPkts" || name == "icmpMsgStatsOutPkts")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf IpaddressstatustcEnum::preferred {1, "preferred"};
-const Enum::YLeaf IpaddressstatustcEnum::deprecated {2, "deprecated"};
-const Enum::YLeaf IpaddressstatustcEnum::invalid {3, "invalid"};
-const Enum::YLeaf IpaddressstatustcEnum::inaccessible {4, "inaccessible"};
-const Enum::YLeaf IpaddressstatustcEnum::unknown {5, "unknown"};
-const Enum::YLeaf IpaddressstatustcEnum::tentative {6, "tentative"};
-const Enum::YLeaf IpaddressstatustcEnum::duplicate {7, "duplicate"};
-const Enum::YLeaf IpaddressstatustcEnum::optimistic {8, "optimistic"};
+const Enum::YLeaf Ipaddressprefixorigintc::other {1, "other"};
+const Enum::YLeaf Ipaddressprefixorigintc::manual {2, "manual"};
+const Enum::YLeaf Ipaddressprefixorigintc::wellknown {3, "wellknown"};
+const Enum::YLeaf Ipaddressprefixorigintc::dhcp {4, "dhcp"};
+const Enum::YLeaf Ipaddressprefixorigintc::routeradv {5, "routeradv"};
 
-const Enum::YLeaf IpMib::Ip::IpforwardingEnum::forwarding {1, "forwarding"};
-const Enum::YLeaf IpMib::Ip::IpforwardingEnum::notForwarding {2, "notForwarding"};
+const Enum::YLeaf Ipaddressorigintc::other {1, "other"};
+const Enum::YLeaf Ipaddressorigintc::manual {2, "manual"};
+const Enum::YLeaf Ipaddressorigintc::dhcp {4, "dhcp"};
+const Enum::YLeaf Ipaddressorigintc::linklayer {5, "linklayer"};
+const Enum::YLeaf Ipaddressorigintc::random {6, "random"};
 
-const Enum::YLeaf IpMib::Ip::Ipv6IpforwardingEnum::forwarding {1, "forwarding"};
-const Enum::YLeaf IpMib::Ip::Ipv6IpforwardingEnum::notForwarding {2, "notForwarding"};
+const Enum::YLeaf Ipaddressstatustc::preferred {1, "preferred"};
+const Enum::YLeaf Ipaddressstatustc::deprecated {2, "deprecated"};
+const Enum::YLeaf Ipaddressstatustc::invalid {3, "invalid"};
+const Enum::YLeaf Ipaddressstatustc::inaccessible {4, "inaccessible"};
+const Enum::YLeaf Ipaddressstatustc::unknown {5, "unknown"};
+const Enum::YLeaf Ipaddressstatustc::tentative {6, "tentative"};
+const Enum::YLeaf Ipaddressstatustc::duplicate {7, "duplicate"};
+const Enum::YLeaf Ipaddressstatustc::optimistic {8, "optimistic"};
 
-const Enum::YLeaf IpMib::Ipnettomediatable::Ipnettomediaentry::IpnettomediatypeEnum::other {1, "other"};
-const Enum::YLeaf IpMib::Ipnettomediatable::Ipnettomediaentry::IpnettomediatypeEnum::invalid {2, "invalid"};
-const Enum::YLeaf IpMib::Ipnettomediatable::Ipnettomediaentry::IpnettomediatypeEnum::dynamic {3, "dynamic"};
-const Enum::YLeaf IpMib::Ipnettomediatable::Ipnettomediaentry::IpnettomediatypeEnum::static_ {4, "static"};
+const Enum::YLeaf IpMib::Ip::Ipforwarding::forwarding {1, "forwarding"};
+const Enum::YLeaf IpMib::Ip::Ipforwarding::notForwarding {2, "notForwarding"};
 
-const Enum::YLeaf IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4InterfaceenablestatusEnum::up {1, "up"};
-const Enum::YLeaf IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4InterfaceenablestatusEnum::down {2, "down"};
+const Enum::YLeaf IpMib::Ip::Ipv6Ipforwarding::forwarding {1, "forwarding"};
+const Enum::YLeaf IpMib::Ip::Ipv6Ipforwarding::notForwarding {2, "notForwarding"};
 
-const Enum::YLeaf IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6InterfaceenablestatusEnum::up {1, "up"};
-const Enum::YLeaf IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6InterfaceenablestatusEnum::down {2, "down"};
+const Enum::YLeaf IpMib::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::other {1, "other"};
+const Enum::YLeaf IpMib::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::invalid {2, "invalid"};
+const Enum::YLeaf IpMib::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::dynamic {3, "dynamic"};
+const Enum::YLeaf IpMib::Ipnettomediatable::Ipnettomediaentry::Ipnettomediatype::static_ {4, "static"};
 
-const Enum::YLeaf IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6InterfaceforwardingEnum::forwarding {1, "forwarding"};
-const Enum::YLeaf IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6InterfaceforwardingEnum::notForwarding {2, "notForwarding"};
+const Enum::YLeaf IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceenablestatus::up {1, "up"};
+const Enum::YLeaf IpMib::Ipv4Interfacetable::Ipv4Interfaceentry::Ipv4Interfaceenablestatus::down {2, "down"};
 
-const Enum::YLeaf IpMib::Ipaddresstable::Ipaddressentry::IpaddresstypeEnum::unicast {1, "unicast"};
-const Enum::YLeaf IpMib::Ipaddresstable::Ipaddressentry::IpaddresstypeEnum::anycast {2, "anycast"};
-const Enum::YLeaf IpMib::Ipaddresstable::Ipaddressentry::IpaddresstypeEnum::broadcast {3, "broadcast"};
+const Enum::YLeaf IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceenablestatus::up {1, "up"};
+const Enum::YLeaf IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceenablestatus::down {2, "down"};
 
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicaltypeEnum::other {1, "other"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicaltypeEnum::invalid {2, "invalid"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicaltypeEnum::dynamic {3, "dynamic"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicaltypeEnum::static_ {4, "static"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicaltypeEnum::local {5, "local"};
+const Enum::YLeaf IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceforwarding::forwarding {1, "forwarding"};
+const Enum::YLeaf IpMib::Ipv6Interfacetable::Ipv6Interfaceentry::Ipv6Interfaceforwarding::notForwarding {2, "notForwarding"};
 
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicalstateEnum::reachable {1, "reachable"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicalstateEnum::stale {2, "stale"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicalstateEnum::delay {3, "delay"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicalstateEnum::probe {4, "probe"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicalstateEnum::invalid {5, "invalid"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicalstateEnum::unknown {6, "unknown"};
-const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::IpnettophysicalstateEnum::incomplete {7, "incomplete"};
+const Enum::YLeaf IpMib::Ipaddresstable::Ipaddressentry::Ipaddresstype::unicast {1, "unicast"};
+const Enum::YLeaf IpMib::Ipaddresstable::Ipaddressentry::Ipaddresstype::anycast {2, "anycast"};
+const Enum::YLeaf IpMib::Ipaddresstable::Ipaddressentry::Ipaddresstype::broadcast {3, "broadcast"};
 
-const Enum::YLeaf IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::IpdefaultrouterpreferenceEnum::reserved {-2, "reserved"};
-const Enum::YLeaf IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::IpdefaultrouterpreferenceEnum::low {-1, "low"};
-const Enum::YLeaf IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::IpdefaultrouterpreferenceEnum::medium {0, "medium"};
-const Enum::YLeaf IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::IpdefaultrouterpreferenceEnum::high {1, "high"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::other {1, "other"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::invalid {2, "invalid"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::dynamic {3, "dynamic"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::static_ {4, "static"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicaltype::local {5, "local"};
+
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::reachable {1, "reachable"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::stale {2, "stale"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::delay {3, "delay"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::probe {4, "probe"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::invalid {5, "invalid"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::unknown {6, "unknown"};
+const Enum::YLeaf IpMib::Ipnettophysicaltable::Ipnettophysicalentry::Ipnettophysicalstate::incomplete {7, "incomplete"};
+
+const Enum::YLeaf IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference::reserved {-2, "reserved"};
+const Enum::YLeaf IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference::low {-1, "low"};
+const Enum::YLeaf IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference::medium {0, "medium"};
+const Enum::YLeaf IpMib::Ipdefaultroutertable::Ipdefaultrouterentry::Ipdefaultrouterpreference::high {1, "high"};
 
 
 }

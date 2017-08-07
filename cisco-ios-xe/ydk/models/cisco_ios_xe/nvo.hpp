@@ -7,19 +7,19 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace nvo {
 
-class OverlayEncapTypeIdentity : public virtual Identity
+class OverlayEncapType : public virtual ydk::Identity
 {
     public:
-        OverlayEncapTypeIdentity();
-        ~OverlayEncapTypeIdentity();
+        OverlayEncapType();
+        ~OverlayEncapType();
 
 
-}; // OverlayEncapTypeIdentity
+}; // OverlayEncapType
 
-class NvoInstances : public Entity
+class NvoInstances : public ydk::Entity
 {
     public:
         NvoInstances();
@@ -27,24 +27,27 @@ class NvoInstances : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class NvoInstance; //type: NvoInstances::NvoInstance
 
-        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance> > nvo_instance_;
+        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance> > nvo_instance;
         
 }; // NvoInstances
 
 
-class NvoInstances::NvoInstance : public Entity
+class NvoInstances::NvoInstance : public ydk::Entity
 {
     public:
         NvoInstance();
@@ -52,24 +55,26 @@ class NvoInstances::NvoInstance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf nvo_id; //type: uint16
+        ydk::YLeaf nvo_id; //type: uint16
+        ydk::YLeaf overlay_encapsulation; //type: OverlayEncapType
         //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        YLeaf source_interface;
-        YLeaf overlay_encapsulation; //type: OverlayEncapTypeIdentity
+        ydk::YLeaf source_interface;
         class VirtualNetwork; //type: NvoInstances::NvoInstance::VirtualNetwork
 
-        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork> > virtual_network_;
+        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork> > virtual_network;
         
 }; // NvoInstances::NvoInstance
 
 
-class NvoInstances::NvoInstance::VirtualNetwork : public Entity
+class NvoInstances::NvoInstance::VirtualNetwork : public ydk::Entity
 {
     public:
         VirtualNetwork();
@@ -77,30 +82,32 @@ class NvoInstances::NvoInstance::VirtualNetwork : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vni_start; //type: uint32
-        YLeaf vni_end; //type: uint32
-        YLeaf suppress_arp; //type: empty
-        YLeaf bgp; //type: empty
-        YLeaf end_host_discovery; //type: EndHostDiscoveryEnum
+        ydk::YLeaf vni_start; //type: uint32
+        ydk::YLeaf vni_end; //type: uint32
+        ydk::YLeaf end_host_discovery; //type: EndHostDiscovery
         //type: string (refers to ietf_routing::Routing::RoutingInstance::name)
-        YLeaf routing_instance;
+        ydk::YLeaf routing_instance;
+        ydk::YLeaf suppress_arp; //type: empty
+        ydk::YLeaf bgp; //type: empty
         class Peers; //type: NvoInstances::NvoInstance::VirtualNetwork::Peers
         class Multicast; //type: NvoInstances::NvoInstance::VirtualNetwork::Multicast
 
-        std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork::Multicast> multicast_;
-        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork::Peers> > peers_;
-                class EndHostDiscoveryEnum;
+        std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork::Multicast> multicast;
+        std::vector<std::shared_ptr<nvo::NvoInstances::NvoInstance::VirtualNetwork::Peers> > peers;
+                class EndHostDiscovery;
 
 }; // NvoInstances::NvoInstance::VirtualNetwork
 
 
-class NvoInstances::NvoInstance::VirtualNetwork::Peers : public Entity
+class NvoInstances::NvoInstance::VirtualNetwork::Peers : public ydk::Entity
 {
     public:
         Peers();
@@ -108,18 +115,20 @@ class NvoInstances::NvoInstance::VirtualNetwork::Peers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf peer_ip; //type: string
+        ydk::YLeaf peer_ip; //type: string
 
 }; // NvoInstances::NvoInstance::VirtualNetwork::Peers
 
 
-class NvoInstances::NvoInstance::VirtualNetwork::Multicast : public Entity
+class NvoInstances::NvoInstance::VirtualNetwork::Multicast : public ydk::Entity
 {
     public:
         Multicast();
@@ -127,40 +136,42 @@ class NvoInstances::NvoInstance::VirtualNetwork::Multicast : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf multicast_group_min; //type: string
-        YLeaf multicast_group_max; //type: string
+        ydk::YLeaf multicast_group_min; //type: string
+        ydk::YLeaf multicast_group_max; //type: string
 
 }; // NvoInstances::NvoInstance::VirtualNetwork::Multicast
 
-class NvgreTypeIdentity : public nvo::OverlayEncapTypeIdentity, virtual Identity
+class VxlanType : public nvo::OverlayEncapType, virtual ydk::Identity
 {
     public:
-        NvgreTypeIdentity();
-        ~NvgreTypeIdentity();
+        VxlanType();
+        ~VxlanType();
 
 
-}; // NvgreTypeIdentity
+}; // VxlanType
 
-class VxlanTypeIdentity : public nvo::OverlayEncapTypeIdentity, virtual Identity
+class NvgreType : public nvo::OverlayEncapType, virtual ydk::Identity
 {
     public:
-        VxlanTypeIdentity();
-        ~VxlanTypeIdentity();
+        NvgreType();
+        ~NvgreType();
 
 
-}; // VxlanTypeIdentity
+}; // NvgreType
 
-class NvoInstances::NvoInstance::VirtualNetwork::EndHostDiscoveryEnum : public Enum
+class NvoInstances::NvoInstance::VirtualNetwork::EndHostDiscovery : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf flood_and_learn;
-        static const Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf flood_and_learn;
+        static const ydk::Enum::YLeaf bgp;
 
 };
 

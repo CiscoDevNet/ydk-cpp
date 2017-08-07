@@ -7,55 +7,55 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace cisco_pw {
 
-class PwSignalingProtocolTypeIdentity : public virtual Identity
+class PwEncapsulationType : public virtual ydk::Identity
 {
     public:
-        PwSignalingProtocolTypeIdentity();
-        ~PwSignalingProtocolTypeIdentity();
+        PwEncapsulationType();
+        ~PwEncapsulationType();
 
 
-}; // PwSignalingProtocolTypeIdentity
+}; // PwEncapsulationType
 
-class PwLoadBalanceTypeIdentity : public virtual Identity
+class PwLoadBalanceType : public virtual ydk::Identity
 {
     public:
-        PwLoadBalanceTypeIdentity();
-        ~PwLoadBalanceTypeIdentity();
+        PwLoadBalanceType();
+        ~PwLoadBalanceType();
 
 
-}; // PwLoadBalanceTypeIdentity
+}; // PwLoadBalanceType
 
-class PwEncapsulationTypeIdentity : public virtual Identity
+class PwSequencingType : public virtual ydk::Identity
 {
     public:
-        PwEncapsulationTypeIdentity();
-        ~PwEncapsulationTypeIdentity();
+        PwSequencingType();
+        ~PwSequencingType();
 
 
-}; // PwEncapsulationTypeIdentity
+}; // PwSequencingType
 
-class PwVcTypeIdentity : public virtual Identity
+class PwSignalingProtocolType : public virtual ydk::Identity
 {
     public:
-        PwVcTypeIdentity();
-        ~PwVcTypeIdentity();
+        PwSignalingProtocolType();
+        ~PwSignalingProtocolType();
 
 
-}; // PwVcTypeIdentity
+}; // PwSignalingProtocolType
 
-class PwSequencingTypeIdentity : public virtual Identity
+class PwVcType : public virtual ydk::Identity
 {
     public:
-        PwSequencingTypeIdentity();
-        ~PwSequencingTypeIdentity();
+        PwVcType();
+        ~PwVcType();
 
 
-}; // PwSequencingTypeIdentity
+}; // PwVcType
 
-class PseudowireConfig : public Entity
+class PseudowireConfig : public ydk::Entity
 {
     public:
         PseudowireConfig();
@@ -63,28 +63,31 @@ class PseudowireConfig : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Global; //type: PseudowireConfig::Global
         class PwTemplates; //type: PseudowireConfig::PwTemplates
         class PwStaticOamClasses; //type: PseudowireConfig::PwStaticOamClasses
 
-        std::shared_ptr<cisco_pw::PseudowireConfig::Global> global_;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwStaticOamClasses> pw_static_oam_classes_;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates> pw_templates_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::Global> global;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwStaticOamClasses> pw_static_oam_classes;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates> pw_templates;
         
 }; // PseudowireConfig
 
 
-class PseudowireConfig::Global : public Entity
+class PseudowireConfig::Global : public ydk::Entity
 {
     public:
         Global();
@@ -92,24 +95,26 @@ class PseudowireConfig::Global : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pw_grouping; //type: boolean
-        YLeaf pw_oam_refresh_transmit; //type: uint32
-        YLeaf pw_status; //type: boolean
-        YLeaf predictive_redundancy; //type: boolean
-        YLeaf vc_state_notification_enabled; //type: boolean
-        YLeaf vc_state_notification_batch_size; //type: uint32
-        YLeaf vc_state_notification_rate; //type: uint32
+        ydk::YLeaf pw_grouping; //type: boolean
+        ydk::YLeaf pw_oam_refresh_transmit; //type: uint32
+        ydk::YLeaf pw_status; //type: boolean
+        ydk::YLeaf predictive_redundancy; //type: boolean
+        ydk::YLeaf vc_state_notification_enabled; //type: boolean
+        ydk::YLeaf vc_state_notification_batch_size; //type: uint32
+        ydk::YLeaf vc_state_notification_rate; //type: uint32
 
 }; // PseudowireConfig::Global
 
 
-class PseudowireConfig::PwTemplates : public Entity
+class PseudowireConfig::PwTemplates : public ydk::Entity
 {
     public:
         PwTemplates();
@@ -117,20 +122,22 @@ class PseudowireConfig::PwTemplates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PwTemplate; //type: PseudowireConfig::PwTemplates::PwTemplate
 
-        std::vector<std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate> > pw_template_;
+        std::vector<std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate> > pw_template;
         
 }; // PseudowireConfig::PwTemplates
 
 
-class PseudowireConfig::PwTemplates::PwTemplate : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate : public ydk::Entity
 {
     public:
         PwTemplate();
@@ -138,21 +145,23 @@ class PseudowireConfig::PwTemplates::PwTemplate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf encapsulation; //type: PwEncapsulationTypeIdentity
-        YLeaf control_word; //type: boolean
-        YLeaf signaling_protocol; //type: PwSignalingProtocolTypeIdentity
-        YLeaf vc_type; //type: PwVcTypeIdentity
-        YLeaf switching_tlv; //type: boolean
-        YLeaf source_ip; //type: string
-        YLeaf tag_rewrite_ingress_vlan; //type: uint16
-        YLeaf mac_withdraw; //type: boolean
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf encapsulation; //type: PwEncapsulationType
+        ydk::YLeaf control_word; //type: boolean
+        ydk::YLeaf signaling_protocol; //type: PwSignalingProtocolType
+        ydk::YLeaf vc_type; //type: PwVcType
+        ydk::YLeaf switching_tlv; //type: boolean
+        ydk::YLeaf source_ip; //type: string
+        ydk::YLeaf tag_rewrite_ingress_vlan; //type: uint16
+        ydk::YLeaf mac_withdraw; //type: boolean
         class LoadBalance; //type: PseudowireConfig::PwTemplates::PwTemplate::LoadBalance
         class PreferredPath; //type: PseudowireConfig::PwTemplates::PwTemplate::PreferredPath
         class Sequencing; //type: PseudowireConfig::PwTemplates::PwTemplate::Sequencing
@@ -161,18 +170,18 @@ class PseudowireConfig::PwTemplates::PwTemplate : public Entity
         class Status; //type: PseudowireConfig::PwTemplates::PwTemplate::Status
         class PortProfileSpec; //type: PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec
 
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance> load_balance_;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec> port_profile_spec_;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PreferredPath> preferred_path_;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Sequencing> sequencing_;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Status> status_;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay> switchover_delay_;
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Vccv> vccv_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance> load_balance;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec> port_profile_spec;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::PreferredPath> preferred_path;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Sequencing> sequencing;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Status> status;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay> switchover_delay;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::Vccv> vccv;
         
 }; // PseudowireConfig::PwTemplates::PwTemplate
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance : public ydk::Entity
 {
     public:
         LoadBalance();
@@ -180,22 +189,24 @@ class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ethernet; //type: PwLbEthernetTypeIdentity
-        YLeaf ip; //type: PwLbIpTypeIdentity
+        ydk::YLeaf ethernet; //type: PwLbEthernetType
+        ydk::YLeaf ip; //type: PwLbIpType
         class FlowLabel; //type: PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel
 
-        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel> flow_label_;
+        std::shared_ptr<cisco_pw::PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel> flow_label;
         
 }; // PseudowireConfig::PwTemplates::PwTemplate::LoadBalance
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel : public ydk::Entity
 {
     public:
         FlowLabel();
@@ -203,21 +214,23 @@ class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: DirectionEnum
-        YLeaf tlv_code_17; //type: boolean
-        YLeaf static_; //type: boolean
-        class DirectionEnum;
+        ydk::YLeaf direction; //type: Direction
+        ydk::YLeaf tlv_code_17; //type: boolean
+        ydk::YLeaf static_; //type: boolean
+        class Direction;
 
 }; // PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::PreferredPath : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate::PreferredPath : public ydk::Entity
 {
     public:
         PreferredPath();
@@ -225,22 +238,24 @@ class PseudowireConfig::PwTemplates::PwTemplate::PreferredPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to ietf_interfaces::Interfaces::Interface::name)
-        YLeaf interface;
-        YLeaf address; //type: string
-        YLeaf hostname; //type: string
-        YLeaf disable_fallback; //type: boolean
+        ydk::YLeaf interface;
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf hostname; //type: string
+        ydk::YLeaf disable_fallback; //type: boolean
 
 }; // PseudowireConfig::PwTemplates::PwTemplate::PreferredPath
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::Sequencing : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate::Sequencing : public ydk::Entity
 {
     public:
         Sequencing();
@@ -248,19 +263,21 @@ class PseudowireConfig::PwTemplates::PwTemplate::Sequencing : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: PwSequencingTypeIdentity
-        YLeaf resync; //type: int32
+        ydk::YLeaf direction; //type: PwSequencingType
+        ydk::YLeaf resync; //type: int32
 
 }; // PseudowireConfig::PwTemplates::PwTemplate::Sequencing
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::Vccv : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate::Vccv : public ydk::Entity
 {
     public:
         Vccv();
@@ -268,18 +285,20 @@ class PseudowireConfig::PwTemplates::PwTemplate::Vccv : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf control_word; //type: boolean
+        ydk::YLeaf control_word; //type: boolean
 
 }; // PseudowireConfig::PwTemplates::PwTemplate::Vccv
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay : public ydk::Entity
 {
     public:
         SwitchoverDelay();
@@ -287,20 +306,22 @@ class PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf switchover_timer; //type: uint8
-        YLeaf timer; //type: uint8
-        YLeaf never; //type: boolean
+        ydk::YLeaf switchover_timer; //type: uint8
+        ydk::YLeaf timer; //type: uint8
+        ydk::YLeaf never; //type: boolean
 
 }; // PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::Status : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate::Status : public ydk::Entity
 {
     public:
         Status();
@@ -308,22 +329,24 @@ class PseudowireConfig::PwTemplates::PwTemplate::Status : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf decoupled; //type: boolean
-        YLeaf disable; //type: boolean
-        YLeaf peer_topo_dual_homed; //type: boolean
-        YLeaf route_watch_disable; //type: boolean
-        YLeaf redundancy_master; //type: boolean
+        ydk::YLeaf decoupled; //type: boolean
+        ydk::YLeaf disable; //type: boolean
+        ydk::YLeaf peer_topo_dual_homed; //type: boolean
+        ydk::YLeaf route_watch_disable; //type: boolean
+        ydk::YLeaf redundancy_master; //type: boolean
 
 }; // PseudowireConfig::PwTemplates::PwTemplate::Status
 
 
-class PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec : public Entity
+class PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec : public ydk::Entity
 {
     public:
         PortProfileSpec();
@@ -331,23 +354,25 @@ class PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf shutdown; //type: boolean
-        YLeaf shut_force; //type: boolean
-        YLeaf mtu; //type: uint32
-        YLeaf max_ports; //type: uint16
-        YLeaf enabled; //type: boolean
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf shut_force; //type: boolean
+        ydk::YLeaf mtu; //type: uint32
+        ydk::YLeaf max_ports; //type: uint16
+        ydk::YLeaf enabled; //type: boolean
 
 }; // PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec
 
 
-class PseudowireConfig::PwStaticOamClasses : public Entity
+class PseudowireConfig::PwStaticOamClasses : public ydk::Entity
 {
     public:
         PwStaticOamClasses();
@@ -355,20 +380,22 @@ class PseudowireConfig::PwStaticOamClasses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PwStaticOamClass; //type: PseudowireConfig::PwStaticOamClasses::PwStaticOamClass
 
-        std::vector<std::shared_ptr<cisco_pw::PseudowireConfig::PwStaticOamClasses::PwStaticOamClass> > pw_static_oam_class_;
+        std::vector<std::shared_ptr<cisco_pw::PseudowireConfig::PwStaticOamClasses::PwStaticOamClass> > pw_static_oam_class;
         
 }; // PseudowireConfig::PwStaticOamClasses
 
 
-class PseudowireConfig::PwStaticOamClasses::PwStaticOamClass : public Entity
+class PseudowireConfig::PwStaticOamClasses::PwStaticOamClass : public ydk::Entity
 {
     public:
         PwStaticOamClass();
@@ -376,21 +403,23 @@ class PseudowireConfig::PwStaticOamClasses::PwStaticOamClass : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf ack; //type: boolean
-        YLeaf keepalive; //type: uint32
-        YLeaf timeout_refresh_send; //type: uint32
-        YLeaf timeout_refresh_ack; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf ack; //type: boolean
+        ydk::YLeaf keepalive; //type: uint32
+        ydk::YLeaf timeout_refresh_send; //type: uint32
+        ydk::YLeaf timeout_refresh_ack; //type: uint32
 
 }; // PseudowireConfig::PwStaticOamClasses::PwStaticOamClass
 
-class PseudowireState : public Entity
+class PseudowireState : public ydk::Entity
 {
     public:
         PseudowireState();
@@ -398,24 +427,27 @@ class PseudowireState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Pseudowires; //type: PseudowireState::Pseudowires
 
-        std::vector<std::shared_ptr<cisco_pw::PseudowireState::Pseudowires> > pseudowires_;
+        std::vector<std::shared_ptr<cisco_pw::PseudowireState::Pseudowires> > pseudowires;
         
 }; // PseudowireState
 
 
-class PseudowireState::Pseudowires : public Entity
+class PseudowireState::Pseudowires : public ydk::Entity
 {
     public:
         Pseudowires();
@@ -423,42 +455,44 @@ class PseudowireState::Pseudowires : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vc_peer_address; //type: string
-        YLeaf vc_id; //type: uint32
-        YLeaf vc_owner_type; //type: VcOwnerTypeEnum
-        YLeaf vc_name; //type: string
-        YLeaf vc_index; //type: uint32
-        YLeaf vc_type; //type: PwVcTypeIdentity
-        YLeaf vc_owner_name; //type: string
-        YLeaf vc_psn_type; //type: VcPsnTypeEnum
-        YLeaf vc_local_group_id; //type: uint32
-        YLeaf vc_control_word; //type: boolean
-        YLeaf vc_local_if_mtu; //type: uint32
-        YLeaf vc_remote_group_id; //type: uint32
-        YLeaf vc_remote_control_word; //type: VcRemoteControlWordEnum
-        YLeaf vc_remote_if_mtu; //type: uint32
-        YLeaf vc_outbound_label; //type: uint32
-        YLeaf vc_inbound_label; //type: uint32
-        YLeaf vc_oper_status; //type: PwOperStateTypeEnum
-        YLeaf vc_inbound_oper_status; //type: PwOperStateTypeEnum
-        YLeaf vc_outbound_oper_status; //type: PwOperStateTypeEnum
+        ydk::YLeaf vc_peer_address; //type: string
+        ydk::YLeaf vc_id; //type: uint32
+        ydk::YLeaf vc_owner_type; //type: VcOwnerType
+        ydk::YLeaf vc_name; //type: string
+        ydk::YLeaf vc_index; //type: uint32
+        ydk::YLeaf vc_type; //type: PwVcType
+        ydk::YLeaf vc_owner_name; //type: string
+        ydk::YLeaf vc_psn_type; //type: VcPsnType
+        ydk::YLeaf vc_local_group_id; //type: uint32
+        ydk::YLeaf vc_control_word; //type: boolean
+        ydk::YLeaf vc_local_if_mtu; //type: uint32
+        ydk::YLeaf vc_remote_group_id; //type: uint32
+        ydk::YLeaf vc_remote_control_word; //type: VcRemoteControlWord
+        ydk::YLeaf vc_remote_if_mtu; //type: uint32
+        ydk::YLeaf vc_outbound_label; //type: uint32
+        ydk::YLeaf vc_inbound_label; //type: uint32
+        ydk::YLeaf vc_oper_status; //type: PwOperStateType
+        ydk::YLeaf vc_inbound_oper_status; //type: PwOperStateType
+        ydk::YLeaf vc_outbound_oper_status; //type: PwOperStateType
         class Statistics; //type: PseudowireState::Pseudowires::Statistics
 
-        std::shared_ptr<cisco_pw::PseudowireState::Pseudowires::Statistics> statistics_;
-                class VcOwnerTypeEnum;
-        class VcPsnTypeEnum;
-        class VcRemoteControlWordEnum;
+        std::shared_ptr<cisco_pw::PseudowireState::Pseudowires::Statistics> statistics;
+                class VcOwnerType;
+        class VcPsnType;
+        class VcRemoteControlWord;
 
 }; // PseudowireState::Pseudowires
 
 
-class PseudowireState::Pseudowires::Statistics : public Entity
+class PseudowireState::Pseudowires::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -466,240 +500,242 @@ class PseudowireState::Pseudowires::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vc_create_time; //type: uint32
-        YLeaf vc_up_time; //type: uint32
-        YLeaf discontinuity_time; //type: string
-        YLeaf in_octets; //type: uint64
-        YLeaf in_pkts; //type: uint64
-        YLeaf in_errors; //type: uint64
-        YLeaf out_octets; //type: uint64
-        YLeaf out_pkts; //type: uint64
-        YLeaf out_errors; //type: uint64
+        ydk::YLeaf vc_create_time; //type: uint32
+        ydk::YLeaf vc_up_time; //type: uint32
+        ydk::YLeaf discontinuity_time; //type: string
+        ydk::YLeaf in_octets; //type: uint64
+        ydk::YLeaf in_pkts; //type: uint64
+        ydk::YLeaf in_errors; //type: uint64
+        ydk::YLeaf out_octets; //type: uint64
+        ydk::YLeaf out_pkts; //type: uint64
+        ydk::YLeaf out_errors; //type: uint64
 
 }; // PseudowireState::Pseudowires::Statistics
 
-class PwVcTypeEtherIdentity : public cisco_pw::PwVcTypeIdentity, virtual Identity
+class PwSequencingReceive : public cisco_pw::PwSequencingType, virtual ydk::Identity
 {
     public:
-        PwVcTypeEtherIdentity();
-        ~PwVcTypeEtherIdentity();
+        PwSequencingReceive();
+        ~PwSequencingReceive();
 
 
-}; // PwVcTypeEtherIdentity
+}; // PwSequencingReceive
 
-class PwSequencingTransmitIdentity : public cisco_pw::PwSequencingTypeIdentity, virtual Identity
+class PwSignalingProtocolBgp : public cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
 {
     public:
-        PwSequencingTransmitIdentity();
-        ~PwSequencingTransmitIdentity();
+        PwSignalingProtocolBgp();
+        ~PwSignalingProtocolBgp();
 
 
-}; // PwSequencingTransmitIdentity
+}; // PwSignalingProtocolBgp
 
-class PwVcTypeVlanPassthroughIdentity : public cisco_pw::PwVcTypeIdentity, virtual Identity
+class PwSignalingProtocolLdp : public cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
 {
     public:
-        PwVcTypeVlanPassthroughIdentity();
-        ~PwVcTypeVlanPassthroughIdentity();
+        PwSignalingProtocolLdp();
+        ~PwSignalingProtocolLdp();
 
 
-}; // PwVcTypeVlanPassthroughIdentity
+}; // PwSignalingProtocolLdp
 
-class PwEncapMplsIdentity : public cisco_pw::PwEncapsulationTypeIdentity, virtual Identity
+class PwLbIpType : public cisco_pw::PwLoadBalanceType, virtual ydk::Identity
 {
     public:
-        PwEncapMplsIdentity();
-        ~PwEncapMplsIdentity();
+        PwLbIpType();
+        ~PwLbIpType();
 
 
-}; // PwEncapMplsIdentity
+}; // PwLbIpType
 
-class PwLbIpDstIpIdentity : public cisco_pw::PwLoadBalanceTypeIdentity, virtual Identity
+class PwSignalingProtocolNone : public cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
 {
     public:
-        PwLbIpDstIpIdentity();
-        ~PwLbIpDstIpIdentity();
+        PwSignalingProtocolNone();
+        ~PwSignalingProtocolNone();
 
 
-}; // PwLbIpDstIpIdentity
+}; // PwSignalingProtocolNone
 
-class PwSequencingReceiveIdentity : public cisco_pw::PwSequencingTypeIdentity, virtual Identity
+class PwSequencingBoth : public cisco_pw::PwSequencingType, virtual ydk::Identity
 {
     public:
-        PwSequencingReceiveIdentity();
-        ~PwSequencingReceiveIdentity();
+        PwSequencingBoth();
+        ~PwSequencingBoth();
 
 
-}; // PwSequencingReceiveIdentity
+}; // PwSequencingBoth
 
-class PwLbEthernetTypeIdentity : public cisco_pw::PwLoadBalanceTypeIdentity, virtual Identity
+class PwVcTypeEther : public cisco_pw::PwVcType, virtual ydk::Identity
 {
     public:
-        PwLbEthernetTypeIdentity();
-        ~PwLbEthernetTypeIdentity();
+        PwVcTypeEther();
+        ~PwVcTypeEther();
 
 
-}; // PwLbEthernetTypeIdentity
+}; // PwVcTypeEther
 
-class PwSignalingProtocolLdpIdentity : public cisco_pw::PwSignalingProtocolTypeIdentity, virtual Identity
+class PwLbIpDstIp : public cisco_pw::PwLoadBalanceType, virtual ydk::Identity
 {
     public:
-        PwSignalingProtocolLdpIdentity();
-        ~PwSignalingProtocolLdpIdentity();
+        PwLbIpDstIp();
+        ~PwLbIpDstIp();
 
 
-}; // PwSignalingProtocolLdpIdentity
+}; // PwLbIpDstIp
 
-class PwSequencingBothIdentity : public cisco_pw::PwSequencingTypeIdentity, virtual Identity
+class PwEncapMpls : public cisco_pw::PwEncapsulationType, virtual ydk::Identity
 {
     public:
-        PwSequencingBothIdentity();
-        ~PwSequencingBothIdentity();
+        PwEncapMpls();
+        ~PwEncapMpls();
 
 
-}; // PwSequencingBothIdentity
+}; // PwEncapMpls
 
-class PwVcTypeVlanIdentity : public cisco_pw::PwVcTypeIdentity, virtual Identity
+class PwLbEthernetType : public cisco_pw::PwLoadBalanceType, virtual ydk::Identity
 {
     public:
-        PwVcTypeVlanIdentity();
-        ~PwVcTypeVlanIdentity();
+        PwLbEthernetType();
+        ~PwLbEthernetType();
 
 
-}; // PwVcTypeVlanIdentity
+}; // PwLbEthernetType
 
-class PwLbIpTypeIdentity : public cisco_pw::PwLoadBalanceTypeIdentity, virtual Identity
+class PwSequencingTransmit : public cisco_pw::PwSequencingType, virtual ydk::Identity
 {
     public:
-        PwLbIpTypeIdentity();
-        ~PwLbIpTypeIdentity();
+        PwSequencingTransmit();
+        ~PwSequencingTransmit();
 
 
-}; // PwLbIpTypeIdentity
+}; // PwSequencingTransmit
 
-class PwSignalingProtocolNoneIdentity : public cisco_pw::PwSignalingProtocolTypeIdentity, virtual Identity
+class PwLbEthSrcDstMac : public cisco_pw::PwLbEthernetType, virtual ydk::Identity
 {
     public:
-        PwSignalingProtocolNoneIdentity();
-        ~PwSignalingProtocolNoneIdentity();
+        PwLbEthSrcDstMac();
+        ~PwLbEthSrcDstMac();
 
 
-}; // PwSignalingProtocolNoneIdentity
+}; // PwLbEthSrcDstMac
 
-class PwSignalingProtocolBgpIdentity : public cisco_pw::PwSignalingProtocolTypeIdentity, virtual Identity
+class PwVcTypeVlan : public cisco_pw::PwVcType, virtual ydk::Identity
 {
     public:
-        PwSignalingProtocolBgpIdentity();
-        ~PwSignalingProtocolBgpIdentity();
+        PwVcTypeVlan();
+        ~PwVcTypeVlan();
 
 
-}; // PwSignalingProtocolBgpIdentity
+}; // PwVcTypeVlan
 
-class PwLbIpSrcIpIdentity : public cisco_pw::PwLbIpTypeIdentity, virtual Identity
+class PwVcTypeVlanPassthrough : public cisco_pw::PwVcType, virtual ydk::Identity
 {
     public:
-        PwLbIpSrcIpIdentity();
-        ~PwLbIpSrcIpIdentity();
+        PwVcTypeVlanPassthrough();
+        ~PwVcTypeVlanPassthrough();
 
 
-}; // PwLbIpSrcIpIdentity
+}; // PwVcTypeVlanPassthrough
 
-class PwLbEthSrcDstMacIdentity : public cisco_pw::PwLbEthernetTypeIdentity, virtual Identity
+class PwLbIpSrcDstIp : public cisco_pw::PwLbIpType, virtual ydk::Identity
 {
     public:
-        PwLbEthSrcDstMacIdentity();
-        ~PwLbEthSrcDstMacIdentity();
+        PwLbIpSrcDstIp();
+        ~PwLbIpSrcDstIp();
 
 
-}; // PwLbEthSrcDstMacIdentity
+}; // PwLbIpSrcDstIp
 
-class PwLbEthDstMacIdentity : public cisco_pw::PwLbEthernetTypeIdentity, virtual Identity
+class PwLbEthSrcMac : public cisco_pw::PwLbEthernetType, virtual ydk::Identity
 {
     public:
-        PwLbEthDstMacIdentity();
-        ~PwLbEthDstMacIdentity();
+        PwLbEthSrcMac();
+        ~PwLbEthSrcMac();
 
 
-}; // PwLbEthDstMacIdentity
+}; // PwLbEthSrcMac
 
-class PwLbIpSrcDstIpIdentity : public cisco_pw::PwLbIpTypeIdentity, virtual Identity
+class PwLbIpSrcIp : public cisco_pw::PwLbIpType, virtual ydk::Identity
 {
     public:
-        PwLbIpSrcDstIpIdentity();
-        ~PwLbIpSrcDstIpIdentity();
+        PwLbIpSrcIp();
+        ~PwLbIpSrcIp();
 
 
-}; // PwLbIpSrcDstIpIdentity
+}; // PwLbIpSrcIp
 
-class PwLbEthSrcMacIdentity : public cisco_pw::PwLbEthernetTypeIdentity, virtual Identity
+class PwLbEthDstMac : public cisco_pw::PwLbEthernetType, virtual ydk::Identity
 {
     public:
-        PwLbEthSrcMacIdentity();
-        ~PwLbEthSrcMacIdentity();
+        PwLbEthDstMac();
+        ~PwLbEthDstMac();
 
 
-}; // PwLbEthSrcMacIdentity
+}; // PwLbEthDstMac
 
-class PwOperStateTypeEnum : public Enum
+class PwOperStateType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf up;
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf cold_standby;
-        static const Enum::YLeaf hot_standby;
-        static const Enum::YLeaf recovering;
-        static const Enum::YLeaf no_hardware;
-        static const Enum::YLeaf unresolved;
-        static const Enum::YLeaf provisioned;
-        static const Enum::YLeaf remote_standby;
-        static const Enum::YLeaf local_ready;
-        static const Enum::YLeaf all_ready;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf cold_standby;
+        static const ydk::Enum::YLeaf hot_standby;
+        static const ydk::Enum::YLeaf recovering;
+        static const ydk::Enum::YLeaf no_hardware;
+        static const ydk::Enum::YLeaf unresolved;
+        static const ydk::Enum::YLeaf provisioned;
+        static const ydk::Enum::YLeaf remote_standby;
+        static const ydk::Enum::YLeaf local_ready;
+        static const ydk::Enum::YLeaf all_ready;
 
 };
 
-class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::DirectionEnum : public Enum
+class PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::Direction : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf transmit;
-        static const Enum::YLeaf receive;
-        static const Enum::YLeaf both;
+        static const ydk::Enum::YLeaf transmit;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf both;
 
 };
 
-class PseudowireState::Pseudowires::VcOwnerTypeEnum : public Enum
+class PseudowireState::Pseudowires::VcOwnerType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf vpws;
-        static const Enum::YLeaf vpls_vfi;
-        static const Enum::YLeaf vpls_bridge_domain;
-        static const Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf vpws;
+        static const ydk::Enum::YLeaf vpls_vfi;
+        static const ydk::Enum::YLeaf vpls_bridge_domain;
+        static const ydk::Enum::YLeaf interface;
 
 };
 
-class PseudowireState::Pseudowires::VcPsnTypeEnum : public Enum
+class PseudowireState::Pseudowires::VcPsnType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mpls;
-        static const Enum::YLeaf l2tp;
-        static const Enum::YLeaf ip;
-        static const Enum::YLeaf mpls_over_ip;
-        static const Enum::YLeaf gre;
-        static const Enum::YLeaf other;
+        static const ydk::Enum::YLeaf mpls;
+        static const ydk::Enum::YLeaf l2tp;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf mpls_over_ip;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf other;
 
 };
 
-class PseudowireState::Pseudowires::VcRemoteControlWordEnum : public Enum
+class PseudowireState::Pseudowires::VcRemoteControlWord : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf noControlWord;
-        static const Enum::YLeaf withControlWord;
-        static const Enum::YLeaf notYetKnown;
+        static const ydk::Enum::YLeaf noControlWord;
+        static const ydk::Enum::YLeaf withControlWord;
+        static const ydk::Enum::YLeaf notYetKnown;
 
 };
 

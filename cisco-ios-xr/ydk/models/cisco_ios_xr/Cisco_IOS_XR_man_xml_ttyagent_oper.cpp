@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_man_xml_ttyagent_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_man_xml_ttyagent_oper {
 
 Netconf::Netconf()
@@ -29,7 +31,7 @@ bool Netconf::has_data() const
 
 bool Netconf::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (agent !=  nullptr && agent->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::get_children() const
     return children;
 }
 
-void Netconf::set_value(const std::string & value_path, std::string value)
+void Netconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Netconf::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,6 +115,18 @@ augment_capabilities_function Netconf::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Netconf::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Netconf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "agent")
+        return true;
+    return false;
+}
+
 Netconf::Agent::Agent()
     :
     tty(std::make_shared<Netconf::Agent::Tty>())
@@ -129,7 +147,7 @@ bool Netconf::Agent::has_data() const
 
 bool Netconf::Agent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tty !=  nullptr && tty->has_operation());
 }
 
@@ -188,8 +206,19 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::get_children() co
     return children;
 }
 
-void Netconf::Agent::set_value(const std::string & value_path, std::string value)
+void Netconf::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Netconf::Agent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Netconf::Agent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tty")
+        return true;
+    return false;
 }
 
 Netconf::Agent::Tty::Tty()
@@ -212,7 +241,7 @@ bool Netconf::Agent::Tty::has_data() const
 
 bool Netconf::Agent::Tty::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
@@ -271,8 +300,19 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::get_children
     return children;
 }
 
-void Netconf::Agent::Tty::set_value(const std::string & value_path, std::string value)
+void Netconf::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Netconf::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Netconf::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions")
+        return true;
+    return false;
 }
 
 Netconf::Agent::Tty::Sessions::Sessions()
@@ -301,7 +341,7 @@ bool Netconf::Agent::Tty::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Netconf::Agent::Tty::Sessions::get_segment_path() const
@@ -366,8 +406,19 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Sessions::ge
     return children;
 }
 
-void Netconf::Agent::Tty::Sessions::set_value(const std::string & value_path, std::string value)
+void Netconf::Agent::Tty::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Netconf::Agent::Tty::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Netconf::Agent::Tty::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 Netconf::Agent::Tty::Sessions::Session::Session()
@@ -410,19 +461,19 @@ bool Netconf::Agent::Tty::Sessions::Session::has_data() const
 
 bool Netconf::Agent::Tty::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(admin_config_session_id.operation)
-	|| is_set(alarm_notification.operation)
-	|| is_set(client_address.operation)
-	|| is_set(client_port.operation)
-	|| is_set(config_session_id.operation)
-	|| is_set(elapsed_time.operation)
-	|| is_set(last_state_change.operation)
-	|| is_set(start_time.operation)
-	|| is_set(state.operation)
-	|| is_set(username.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(admin_config_session_id.yfilter)
+	|| ydk::is_set(alarm_notification.yfilter)
+	|| ydk::is_set(client_address.yfilter)
+	|| ydk::is_set(client_port.yfilter)
+	|| ydk::is_set(config_session_id.yfilter)
+	|| ydk::is_set(elapsed_time.yfilter)
+	|| ydk::is_set(last_state_change.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string Netconf::Agent::Tty::Sessions::Session::get_segment_path() const
@@ -448,18 +499,18 @@ const EntityPath Netconf::Agent::Tty::Sessions::Session::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (admin_config_session_id.is_set || is_set(admin_config_session_id.operation)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
-    if (alarm_notification.is_set || is_set(alarm_notification.operation)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
-    if (client_address.is_set || is_set(client_address.operation)) leaf_name_data.push_back(client_address.get_name_leafdata());
-    if (client_port.is_set || is_set(client_port.operation)) leaf_name_data.push_back(client_port.get_name_leafdata());
-    if (config_session_id.is_set || is_set(config_session_id.operation)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
-    if (elapsed_time.is_set || is_set(elapsed_time.operation)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
-    if (last_state_change.is_set || is_set(last_state_change.operation)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (username.is_set || is_set(username.operation)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (admin_config_session_id.is_set || is_set(admin_config_session_id.yfilter)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
+    if (alarm_notification.is_set || is_set(alarm_notification.yfilter)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
+    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
+    if (client_port.is_set || is_set(client_port.yfilter)) leaf_name_data.push_back(client_port.get_name_leafdata());
+    if (config_session_id.is_set || is_set(config_session_id.yfilter)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
+    if (elapsed_time.is_set || is_set(elapsed_time.yfilter)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
+    if (last_state_change.is_set || is_set(last_state_change.yfilter)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -478,56 +529,139 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Sessions::Se
     return children;
 }
 
-void Netconf::Agent::Tty::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void Netconf::Agent::Tty::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admin-config-session-id")
     {
         admin_config_session_id = value;
+        admin_config_session_id.value_namespace = name_space;
+        admin_config_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "alarm-notification")
     {
         alarm_notification = value;
+        alarm_notification.value_namespace = name_space;
+        alarm_notification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-address")
     {
         client_address = value;
+        client_address.value_namespace = name_space;
+        client_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-port")
     {
         client_port = value;
+        client_port.value_namespace = name_space;
+        client_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "config-session-id")
     {
         config_session_id = value;
+        config_session_id.value_namespace = name_space;
+        config_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "elapsed-time")
     {
         elapsed_time = value;
+        elapsed_time.value_namespace = name_space;
+        elapsed_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-state-change")
     {
         last_state_change = value;
+        last_state_change.value_namespace = name_space;
+        last_state_change.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "username")
     {
         username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Netconf::Agent::Tty::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "admin-config-session-id")
+    {
+        admin_config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "alarm-notification")
+    {
+        alarm_notification.yfilter = yfilter;
+    }
+    if(value_path == "client-address")
+    {
+        client_address.yfilter = yfilter;
+    }
+    if(value_path == "client-port")
+    {
+        client_port.yfilter = yfilter;
+    }
+    if(value_path == "config-session-id")
+    {
+        config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "elapsed-time")
+    {
+        elapsed_time.yfilter = yfilter;
+    }
+    if(value_path == "last-state-change")
+    {
+        last_state_change.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Netconf::Agent::Tty::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "admin-config-session-id" || name == "alarm-notification" || name == "client-address" || name == "client-port" || name == "config-session-id" || name == "elapsed-time" || name == "last-state-change" || name == "start-time" || name == "state" || name == "username" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 XrXml::XrXml()
@@ -550,7 +684,7 @@ bool XrXml::has_data() const
 
 bool XrXml::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (agent !=  nullptr && agent->has_operation());
 }
 
@@ -606,7 +740,11 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::get_children() const
     return children;
 }
 
-void XrXml::set_value(const std::string & value_path, std::string value)
+void XrXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void XrXml::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -628,6 +766,18 @@ std::string XrXml::get_bundle_name() const
 augment_capabilities_function XrXml::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> XrXml::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool XrXml::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "agent")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Agent()
@@ -658,7 +808,7 @@ bool XrXml::Agent::has_data() const
 
 bool XrXml::Agent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_ !=  nullptr && default_->has_operation())
 	|| (ssl !=  nullptr && ssl->has_operation())
 	|| (tty !=  nullptr && tty->has_operation());
@@ -747,8 +897,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::get_children() cons
     return children;
 }
 
-void XrXml::Agent::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default" || name == "ssl" || name == "tty")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Tty::Tty()
@@ -771,7 +932,7 @@ bool XrXml::Agent::Tty::has_data() const
 
 bool XrXml::Agent::Tty::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
@@ -830,8 +991,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children()
     return children;
 }
 
-void XrXml::Agent::Tty::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::Tty::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Tty::Sessions::Sessions()
@@ -860,7 +1032,7 @@ bool XrXml::Agent::Tty::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string XrXml::Agent::Tty::Sessions::get_segment_path() const
@@ -925,8 +1097,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Sessions::get_
     return children;
 }
 
-void XrXml::Agent::Tty::Sessions::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Tty::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::Tty::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Tty::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Tty::Sessions::Session::Session()
@@ -969,19 +1152,19 @@ bool XrXml::Agent::Tty::Sessions::Session::has_data() const
 
 bool XrXml::Agent::Tty::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(admin_config_session_id.operation)
-	|| is_set(alarm_notification.operation)
-	|| is_set(client_address.operation)
-	|| is_set(client_port.operation)
-	|| is_set(config_session_id.operation)
-	|| is_set(elapsed_time.operation)
-	|| is_set(last_state_change.operation)
-	|| is_set(start_time.operation)
-	|| is_set(state.operation)
-	|| is_set(username.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(admin_config_session_id.yfilter)
+	|| ydk::is_set(alarm_notification.yfilter)
+	|| ydk::is_set(client_address.yfilter)
+	|| ydk::is_set(client_port.yfilter)
+	|| ydk::is_set(config_session_id.yfilter)
+	|| ydk::is_set(elapsed_time.yfilter)
+	|| ydk::is_set(last_state_change.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string XrXml::Agent::Tty::Sessions::Session::get_segment_path() const
@@ -1007,18 +1190,18 @@ const EntityPath XrXml::Agent::Tty::Sessions::Session::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (admin_config_session_id.is_set || is_set(admin_config_session_id.operation)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
-    if (alarm_notification.is_set || is_set(alarm_notification.operation)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
-    if (client_address.is_set || is_set(client_address.operation)) leaf_name_data.push_back(client_address.get_name_leafdata());
-    if (client_port.is_set || is_set(client_port.operation)) leaf_name_data.push_back(client_port.get_name_leafdata());
-    if (config_session_id.is_set || is_set(config_session_id.operation)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
-    if (elapsed_time.is_set || is_set(elapsed_time.operation)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
-    if (last_state_change.is_set || is_set(last_state_change.operation)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (username.is_set || is_set(username.operation)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (admin_config_session_id.is_set || is_set(admin_config_session_id.yfilter)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
+    if (alarm_notification.is_set || is_set(alarm_notification.yfilter)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
+    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
+    if (client_port.is_set || is_set(client_port.yfilter)) leaf_name_data.push_back(client_port.get_name_leafdata());
+    if (config_session_id.is_set || is_set(config_session_id.yfilter)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
+    if (elapsed_time.is_set || is_set(elapsed_time.yfilter)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
+    if (last_state_change.is_set || is_set(last_state_change.yfilter)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1037,56 +1220,139 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Sessions::Sess
     return children;
 }
 
-void XrXml::Agent::Tty::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Tty::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admin-config-session-id")
     {
         admin_config_session_id = value;
+        admin_config_session_id.value_namespace = name_space;
+        admin_config_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "alarm-notification")
     {
         alarm_notification = value;
+        alarm_notification.value_namespace = name_space;
+        alarm_notification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-address")
     {
         client_address = value;
+        client_address.value_namespace = name_space;
+        client_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-port")
     {
         client_port = value;
+        client_port.value_namespace = name_space;
+        client_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "config-session-id")
     {
         config_session_id = value;
+        config_session_id.value_namespace = name_space;
+        config_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "elapsed-time")
     {
         elapsed_time = value;
+        elapsed_time.value_namespace = name_space;
+        elapsed_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-state-change")
     {
         last_state_change = value;
+        last_state_change.value_namespace = name_space;
+        last_state_change.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "username")
     {
         username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Tty::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "admin-config-session-id")
+    {
+        admin_config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "alarm-notification")
+    {
+        alarm_notification.yfilter = yfilter;
+    }
+    if(value_path == "client-address")
+    {
+        client_address.yfilter = yfilter;
+    }
+    if(value_path == "client-port")
+    {
+        client_port.yfilter = yfilter;
+    }
+    if(value_path == "config-session-id")
+    {
+        config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "elapsed-time")
+    {
+        elapsed_time.yfilter = yfilter;
+    }
+    if(value_path == "last-state-change")
+    {
+        last_state_change.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Tty::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "admin-config-session-id" || name == "alarm-notification" || name == "client-address" || name == "client-port" || name == "config-session-id" || name == "elapsed-time" || name == "last-state-change" || name == "start-time" || name == "state" || name == "username" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Default_::Default_()
@@ -1109,7 +1375,7 @@ bool XrXml::Agent::Default_::has_data() const
 
 bool XrXml::Agent::Default_::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
@@ -1168,8 +1434,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::get_child
     return children;
 }
 
-void XrXml::Agent::Default_::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Default_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Default_::Sessions::Sessions()
@@ -1198,7 +1475,7 @@ bool XrXml::Agent::Default_::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string XrXml::Agent::Default_::Sessions::get_segment_path() const
@@ -1263,8 +1540,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Sessions:
     return children;
 }
 
-void XrXml::Agent::Default_::Sessions::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Default_::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::Default_::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Default_::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Default_::Sessions::Session::Session()
@@ -1307,19 +1595,19 @@ bool XrXml::Agent::Default_::Sessions::Session::has_data() const
 
 bool XrXml::Agent::Default_::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(admin_config_session_id.operation)
-	|| is_set(alarm_notification.operation)
-	|| is_set(client_address.operation)
-	|| is_set(client_port.operation)
-	|| is_set(config_session_id.operation)
-	|| is_set(elapsed_time.operation)
-	|| is_set(last_state_change.operation)
-	|| is_set(start_time.operation)
-	|| is_set(state.operation)
-	|| is_set(username.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(admin_config_session_id.yfilter)
+	|| ydk::is_set(alarm_notification.yfilter)
+	|| ydk::is_set(client_address.yfilter)
+	|| ydk::is_set(client_port.yfilter)
+	|| ydk::is_set(config_session_id.yfilter)
+	|| ydk::is_set(elapsed_time.yfilter)
+	|| ydk::is_set(last_state_change.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string XrXml::Agent::Default_::Sessions::Session::get_segment_path() const
@@ -1345,18 +1633,18 @@ const EntityPath XrXml::Agent::Default_::Sessions::Session::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (admin_config_session_id.is_set || is_set(admin_config_session_id.operation)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
-    if (alarm_notification.is_set || is_set(alarm_notification.operation)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
-    if (client_address.is_set || is_set(client_address.operation)) leaf_name_data.push_back(client_address.get_name_leafdata());
-    if (client_port.is_set || is_set(client_port.operation)) leaf_name_data.push_back(client_port.get_name_leafdata());
-    if (config_session_id.is_set || is_set(config_session_id.operation)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
-    if (elapsed_time.is_set || is_set(elapsed_time.operation)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
-    if (last_state_change.is_set || is_set(last_state_change.operation)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (username.is_set || is_set(username.operation)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (admin_config_session_id.is_set || is_set(admin_config_session_id.yfilter)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
+    if (alarm_notification.is_set || is_set(alarm_notification.yfilter)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
+    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
+    if (client_port.is_set || is_set(client_port.yfilter)) leaf_name_data.push_back(client_port.get_name_leafdata());
+    if (config_session_id.is_set || is_set(config_session_id.yfilter)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
+    if (elapsed_time.is_set || is_set(elapsed_time.yfilter)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
+    if (last_state_change.is_set || is_set(last_state_change.yfilter)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1375,56 +1663,139 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Sessions:
     return children;
 }
 
-void XrXml::Agent::Default_::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Default_::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admin-config-session-id")
     {
         admin_config_session_id = value;
+        admin_config_session_id.value_namespace = name_space;
+        admin_config_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "alarm-notification")
     {
         alarm_notification = value;
+        alarm_notification.value_namespace = name_space;
+        alarm_notification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-address")
     {
         client_address = value;
+        client_address.value_namespace = name_space;
+        client_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-port")
     {
         client_port = value;
+        client_port.value_namespace = name_space;
+        client_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "config-session-id")
     {
         config_session_id = value;
+        config_session_id.value_namespace = name_space;
+        config_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "elapsed-time")
     {
         elapsed_time = value;
+        elapsed_time.value_namespace = name_space;
+        elapsed_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-state-change")
     {
         last_state_change = value;
+        last_state_change.value_namespace = name_space;
+        last_state_change.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "username")
     {
         username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void XrXml::Agent::Default_::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "admin-config-session-id")
+    {
+        admin_config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "alarm-notification")
+    {
+        alarm_notification.yfilter = yfilter;
+    }
+    if(value_path == "client-address")
+    {
+        client_address.yfilter = yfilter;
+    }
+    if(value_path == "client-port")
+    {
+        client_port.yfilter = yfilter;
+    }
+    if(value_path == "config-session-id")
+    {
+        config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "elapsed-time")
+    {
+        elapsed_time.yfilter = yfilter;
+    }
+    if(value_path == "last-state-change")
+    {
+        last_state_change.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool XrXml::Agent::Default_::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "admin-config-session-id" || name == "alarm-notification" || name == "client-address" || name == "client-port" || name == "config-session-id" || name == "elapsed-time" || name == "last-state-change" || name == "start-time" || name == "state" || name == "username" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Ssl::Ssl()
@@ -1447,7 +1818,7 @@ bool XrXml::Agent::Ssl::has_data() const
 
 bool XrXml::Agent::Ssl::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
@@ -1506,8 +1877,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::get_children()
     return children;
 }
 
-void XrXml::Agent::Ssl::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::Ssl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Ssl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Ssl::Sessions::Sessions()
@@ -1536,7 +1918,7 @@ bool XrXml::Agent::Ssl::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string XrXml::Agent::Ssl::Sessions::get_segment_path() const
@@ -1601,8 +1983,19 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Sessions::get_
     return children;
 }
 
-void XrXml::Agent::Ssl::Sessions::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Ssl::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void XrXml::Agent::Ssl::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool XrXml::Agent::Ssl::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 XrXml::Agent::Ssl::Sessions::Session::Session()
@@ -1645,19 +2038,19 @@ bool XrXml::Agent::Ssl::Sessions::Session::has_data() const
 
 bool XrXml::Agent::Ssl::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(admin_config_session_id.operation)
-	|| is_set(alarm_notification.operation)
-	|| is_set(client_address.operation)
-	|| is_set(client_port.operation)
-	|| is_set(config_session_id.operation)
-	|| is_set(elapsed_time.operation)
-	|| is_set(last_state_change.operation)
-	|| is_set(start_time.operation)
-	|| is_set(state.operation)
-	|| is_set(username.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(admin_config_session_id.yfilter)
+	|| ydk::is_set(alarm_notification.yfilter)
+	|| ydk::is_set(client_address.yfilter)
+	|| ydk::is_set(client_port.yfilter)
+	|| ydk::is_set(config_session_id.yfilter)
+	|| ydk::is_set(elapsed_time.yfilter)
+	|| ydk::is_set(last_state_change.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(username.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string XrXml::Agent::Ssl::Sessions::Session::get_segment_path() const
@@ -1683,18 +2076,18 @@ const EntityPath XrXml::Agent::Ssl::Sessions::Session::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (admin_config_session_id.is_set || is_set(admin_config_session_id.operation)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
-    if (alarm_notification.is_set || is_set(alarm_notification.operation)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
-    if (client_address.is_set || is_set(client_address.operation)) leaf_name_data.push_back(client_address.get_name_leafdata());
-    if (client_port.is_set || is_set(client_port.operation)) leaf_name_data.push_back(client_port.get_name_leafdata());
-    if (config_session_id.is_set || is_set(config_session_id.operation)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
-    if (elapsed_time.is_set || is_set(elapsed_time.operation)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
-    if (last_state_change.is_set || is_set(last_state_change.operation)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (username.is_set || is_set(username.operation)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (admin_config_session_id.is_set || is_set(admin_config_session_id.yfilter)) leaf_name_data.push_back(admin_config_session_id.get_name_leafdata());
+    if (alarm_notification.is_set || is_set(alarm_notification.yfilter)) leaf_name_data.push_back(alarm_notification.get_name_leafdata());
+    if (client_address.is_set || is_set(client_address.yfilter)) leaf_name_data.push_back(client_address.get_name_leafdata());
+    if (client_port.is_set || is_set(client_port.yfilter)) leaf_name_data.push_back(client_port.get_name_leafdata());
+    if (config_session_id.is_set || is_set(config_session_id.yfilter)) leaf_name_data.push_back(config_session_id.get_name_leafdata());
+    if (elapsed_time.is_set || is_set(elapsed_time.yfilter)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
+    if (last_state_change.is_set || is_set(last_state_change.yfilter)) leaf_name_data.push_back(last_state_change.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1713,63 +2106,146 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Sessions::Sess
     return children;
 }
 
-void XrXml::Agent::Ssl::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void XrXml::Agent::Ssl::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admin-config-session-id")
     {
         admin_config_session_id = value;
+        admin_config_session_id.value_namespace = name_space;
+        admin_config_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "alarm-notification")
     {
         alarm_notification = value;
+        alarm_notification.value_namespace = name_space;
+        alarm_notification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-address")
     {
         client_address = value;
+        client_address.value_namespace = name_space;
+        client_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "client-port")
     {
         client_port = value;
+        client_port.value_namespace = name_space;
+        client_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "config-session-id")
     {
         config_session_id = value;
+        config_session_id.value_namespace = name_space;
+        config_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "elapsed-time")
     {
         elapsed_time = value;
+        elapsed_time.value_namespace = name_space;
+        elapsed_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-state-change")
     {
         last_state_change = value;
+        last_state_change.value_namespace = name_space;
+        last_state_change.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "username")
     {
         username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf XrXmlSessionAlarmRegisterEnum::registered {1, "registered"};
-const Enum::YLeaf XrXmlSessionAlarmRegisterEnum::not_registered {2, "not-registered"};
+void XrXml::Agent::Ssl::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "admin-config-session-id")
+    {
+        admin_config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "alarm-notification")
+    {
+        alarm_notification.yfilter = yfilter;
+    }
+    if(value_path == "client-address")
+    {
+        client_address.yfilter = yfilter;
+    }
+    if(value_path == "client-port")
+    {
+        client_port.yfilter = yfilter;
+    }
+    if(value_path == "config-session-id")
+    {
+        config_session_id.yfilter = yfilter;
+    }
+    if(value_path == "elapsed-time")
+    {
+        elapsed_time.yfilter = yfilter;
+    }
+    if(value_path == "last-state-change")
+    {
+        last_state_change.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf XrXmlSessionStateEnum::idle {1, "idle"};
-const Enum::YLeaf XrXmlSessionStateEnum::busy {2, "busy"};
+bool XrXml::Agent::Ssl::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "admin-config-session-id" || name == "alarm-notification" || name == "client-address" || name == "client-port" || name == "config-session-id" || name == "elapsed-time" || name == "last-state-change" || name == "start-time" || name == "state" || name == "username" || name == "vrf-name")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf XrXmlSessionAlarmRegister::registered {1, "registered"};
+const Enum::YLeaf XrXmlSessionAlarmRegister::not_registered {2, "not-registered"};
+
+const Enum::YLeaf XrXmlSessionState::idle {1, "idle"};
+const Enum::YLeaf XrXmlSessionState::busy {2, "busy"};
 
 
 }

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_segment_routing_ms_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_segment_routing_ms_cfg {
 
 Sr::Sr()
@@ -34,8 +36,8 @@ bool Sr::has_data() const
 
 bool Sr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| (global_block !=  nullptr && global_block->has_operation())
 	|| (mappings !=  nullptr && mappings->has_operation());
 }
@@ -60,7 +62,7 @@ const EntityPath Sr::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -107,11 +109,21 @@ std::map<std::string, std::shared_ptr<Entity>> Sr::get_children() const
     return children;
 }
 
-void Sr::set_value(const std::string & value_path, std::string value)
+void Sr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Sr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
     }
 }
 
@@ -135,6 +147,18 @@ augment_capabilities_function Sr::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Sr::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Sr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-block" || name == "mappings" || name == "enable")
+        return true;
+    return false;
+}
+
 Sr::GlobalBlock::GlobalBlock()
     :
     lower_bound{YType::uint32, "lower-bound"},
@@ -155,9 +179,9 @@ bool Sr::GlobalBlock::has_data() const
 
 bool Sr::GlobalBlock::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lower_bound.operation)
-	|| is_set(upper_bound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(upper_bound.yfilter);
 }
 
 std::string Sr::GlobalBlock::get_segment_path() const
@@ -183,8 +207,8 @@ const EntityPath Sr::GlobalBlock::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lower_bound.is_set || is_set(lower_bound.operation)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.operation)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -203,16 +227,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sr::GlobalBlock::get_children() c
     return children;
 }
 
-void Sr::GlobalBlock::set_value(const std::string & value_path, std::string value)
+void Sr::GlobalBlock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lower-bound")
     {
         lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound")
     {
         upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sr::GlobalBlock::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+}
+
+bool Sr::GlobalBlock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower-bound" || name == "upper-bound")
+        return true;
+    return false;
 }
 
 Sr::Mappings::Mappings()
@@ -241,7 +288,7 @@ bool Sr::Mappings::has_operation() const
         if(mapping[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sr::Mappings::get_segment_path() const
@@ -306,8 +353,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sr::Mappings::get_children() cons
     return children;
 }
 
-void Sr::Mappings::set_value(const std::string & value_path, std::string value)
+void Sr::Mappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sr::Mappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sr::Mappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mapping")
+        return true;
+    return false;
 }
 
 Sr::Mappings::Mapping::Mapping()
@@ -338,13 +396,13 @@ bool Sr::Mappings::Mapping::has_data() const
 
 bool Sr::Mappings::Mapping::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af.operation)
-	|| is_set(ip.operation)
-	|| is_set(mask.operation)
-	|| is_set(flag_attached.operation)
-	|| is_set(sid_range.operation)
-	|| is_set(sid_start.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(mask.yfilter)
+	|| ydk::is_set(flag_attached.yfilter)
+	|| ydk::is_set(sid_range.yfilter)
+	|| ydk::is_set(sid_start.yfilter);
 }
 
 std::string Sr::Mappings::Mapping::get_segment_path() const
@@ -370,12 +428,12 @@ const EntityPath Sr::Mappings::Mapping::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af.is_set || is_set(af.operation)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ip.is_set || is_set(ip.operation)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (mask.is_set || is_set(mask.operation)) leaf_name_data.push_back(mask.get_name_leafdata());
-    if (flag_attached.is_set || is_set(flag_attached.operation)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
-    if (sid_range.is_set || is_set(sid_range.operation)) leaf_name_data.push_back(sid_range.get_name_leafdata());
-    if (sid_start.is_set || is_set(sid_start.operation)) leaf_name_data.push_back(sid_start.get_name_leafdata());
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
+    if (flag_attached.is_set || is_set(flag_attached.yfilter)) leaf_name_data.push_back(flag_attached.get_name_leafdata());
+    if (sid_range.is_set || is_set(sid_range.yfilter)) leaf_name_data.push_back(sid_range.get_name_leafdata());
+    if (sid_start.is_set || is_set(sid_start.yfilter)) leaf_name_data.push_back(sid_start.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -394,36 +452,83 @@ std::map<std::string, std::shared_ptr<Entity>> Sr::Mappings::Mapping::get_childr
     return children;
 }
 
-void Sr::Mappings::Mapping::set_value(const std::string & value_path, std::string value)
+void Sr::Mappings::Mapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af")
     {
         af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip")
     {
         ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mask")
     {
         mask = value;
+        mask.value_namespace = name_space;
+        mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flag-attached")
     {
         flag_attached = value;
+        flag_attached.value_namespace = name_space;
+        flag_attached.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-range")
     {
         sid_range = value;
+        sid_range.value_namespace = name_space;
+        sid_range.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sid-start")
     {
         sid_start = value;
+        sid_start.value_namespace = name_space;
+        sid_start.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SrmsMiFlagEnum::disable {0, "disable"};
-const Enum::YLeaf SrmsMiFlagEnum::enable {1, "enable"};
+void Sr::Mappings::Mapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "mask")
+    {
+        mask.yfilter = yfilter;
+    }
+    if(value_path == "flag-attached")
+    {
+        flag_attached.yfilter = yfilter;
+    }
+    if(value_path == "sid-range")
+    {
+        sid_range.yfilter = yfilter;
+    }
+    if(value_path == "sid-start")
+    {
+        sid_start.yfilter = yfilter;
+    }
+}
+
+bool Sr::Mappings::Mapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ip" || name == "mask" || name == "flag-attached" || name == "sid-range" || name == "sid-start")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf SrmsMiFlag::disable {0, "disable"};
+const Enum::YLeaf SrmsMiFlag::enable {1, "enable"};
 
 
 }

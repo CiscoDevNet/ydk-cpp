@@ -5,11 +5,13 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_0.hpp"
-#include "Cisco_IOS_XR_bundlemgr_oper_2.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_1.hpp"
+#include "Cisco_IOS_XR_bundlemgr_oper_2.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_3.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_bundlemgr_oper {
 
 LacpBundles::LacpBundles()
@@ -32,7 +34,7 @@ bool LacpBundles::has_data() const
 
 bool LacpBundles::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bundles !=  nullptr && bundles->has_operation());
 }
 
@@ -88,7 +90,11 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::get_children() const
     return children;
 }
 
-void LacpBundles::set_value(const std::string & value_path, std::string value)
+void LacpBundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void LacpBundles::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -110,6 +116,18 @@ std::string LacpBundles::get_bundle_name() const
 augment_capabilities_function LacpBundles::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> LacpBundles::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool LacpBundles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundles")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundles()
@@ -138,7 +156,7 @@ bool LacpBundles::Bundles::has_operation() const
         if(bundle[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LacpBundles::Bundles::get_segment_path() const
@@ -203,8 +221,19 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::get_childre
     return children;
 }
 
-void LacpBundles::Bundles::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void LacpBundles::Bundles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool LacpBundles::Bundles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Bundle()
@@ -234,8 +263,8 @@ bool LacpBundles::Bundles::Bundle::has_data() const
 
 bool LacpBundles::Bundles::Bundle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_interface.yfilter)
 	|| (data !=  nullptr && data->has_operation())
 	|| (members !=  nullptr && members->has_operation());
 }
@@ -263,7 +292,7 @@ const EntityPath LacpBundles::Bundles::Bundle::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_interface.is_set || is_set(bundle_interface.operation)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
+    if (bundle_interface.is_set || is_set(bundle_interface.yfilter)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -310,12 +339,29 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::get
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-interface")
     {
         bundle_interface = value;
+        bundle_interface.value_namespace = name_space;
+        bundle_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-interface")
+    {
+        bundle_interface.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "members" || name == "bundle-interface")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Data::Data()
@@ -351,11 +397,11 @@ bool LacpBundles::Bundles::Bundle::Data::has_data() const
 
 bool LacpBundles::Bundles::Bundle::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_operational_key.operation)
-	|| is_set(partner_operational_key.operation)
-	|| is_set(partner_system_mac_address.operation)
-	|| is_set(partner_system_priority.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(actor_operational_key.yfilter)
+	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(partner_system_mac_address.yfilter)
+	|| ydk::is_set(partner_system_priority.yfilter)
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
@@ -383,10 +429,10 @@ const EntityPath LacpBundles::Bundles::Bundle::Data::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_operational_key.is_set || is_set(actor_operational_key.operation)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
-    if (partner_operational_key.is_set || is_set(partner_operational_key.operation)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
-    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.operation)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
-    if (partner_system_priority.is_set || is_set(partner_system_priority.operation)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
+    if (actor_operational_key.is_set || is_set(actor_operational_key.yfilter)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
+    if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
+    if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -433,24 +479,59 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Dat
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Data::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-operational-key")
     {
         actor_operational_key = value;
+        actor_operational_key.value_namespace = name_space;
+        actor_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-operational-key")
     {
         partner_operational_key = value;
+        partner_operational_key.value_namespace = name_space;
+        partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-mac-address")
     {
         partner_system_mac_address = value;
+        partner_system_mac_address.value_namespace = name_space;
+        partner_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-priority")
     {
         partner_system_priority = value;
+        partner_system_priority.value_namespace = name_space;
+        partner_system_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-operational-key")
+    {
+        actor_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-operational-key")
+    {
+        partner_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-mac-address")
+    {
+        partner_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-priority")
+    {
+        partner_system_priority.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-operational-key" || name == "partner-system-mac-address" || name == "partner-system-priority")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Data::ActorBundleData::ActorBundleData()
@@ -560,45 +641,45 @@ bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::has_operation() const
         if(bfd_config[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active_foreign_member_count.operation)
-	|| is_set(active_member_count.operation)
-	|| is_set(available_bandwidth.operation)
-	|| is_set(bundle_interface_name.operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(cisco_extensions.operation)
-	|| is_set(collector_max_delay.operation)
-	|| is_set(configured_bandwidth.operation)
-	|| is_set(configured_foreign_member_count.operation)
-	|| is_set(configured_member_count.operation)
-	|| is_set(effective_bandwidth.operation)
-	|| is_set(iccp_group_id.operation)
-	|| is_set(inter_chassis.operation)
-	|| is_set(ipv4bfd_status.operation)
-	|| is_set(ipv6bfd_status.operation)
-	|| is_set(is_active.operation)
-	|| is_set(lacp_nonrevertive.operation)
-	|| is_set(lacp_status.operation)
-	|| is_set(link_order_status.operation)
-	|| is_set(load_balance_hash_type.operation)
-	|| is_set(load_balance_locality_threshold.operation)
-	|| is_set(mac_source.operation)
-	|| is_set(mac_source_member.operation)
-	|| is_set(maximize_threshold_value_band_width.operation)
-	|| is_set(maximize_threshold_value_links.operation)
-	|| is_set(maximum_active_links.operation)
-	|| is_set(maximum_active_links_source.operation)
-	|| is_set(minimum_active_links.operation)
-	|| is_set(minimum_bandwidth.operation)
-	|| is_set(mlacp_mode.operation)
-	|| is_set(mlacp_status.operation)
-	|| is_set(primary_member.operation)
-	|| is_set(recovery_delay.operation)
-	|| is_set(singleton.operation)
-	|| is_set(standby_member_count.operation)
-	|| is_set(suppression_timer.operation)
-	|| is_set(switchover_type.operation)
-	|| is_set(wait_while_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(active_foreign_member_count.yfilter)
+	|| ydk::is_set(active_member_count.yfilter)
+	|| ydk::is_set(available_bandwidth.yfilter)
+	|| ydk::is_set(bundle_interface_name.yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(cisco_extensions.yfilter)
+	|| ydk::is_set(collector_max_delay.yfilter)
+	|| ydk::is_set(configured_bandwidth.yfilter)
+	|| ydk::is_set(configured_foreign_member_count.yfilter)
+	|| ydk::is_set(configured_member_count.yfilter)
+	|| ydk::is_set(effective_bandwidth.yfilter)
+	|| ydk::is_set(iccp_group_id.yfilter)
+	|| ydk::is_set(inter_chassis.yfilter)
+	|| ydk::is_set(ipv4bfd_status.yfilter)
+	|| ydk::is_set(ipv6bfd_status.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(lacp_nonrevertive.yfilter)
+	|| ydk::is_set(lacp_status.yfilter)
+	|| ydk::is_set(link_order_status.yfilter)
+	|| ydk::is_set(load_balance_hash_type.yfilter)
+	|| ydk::is_set(load_balance_locality_threshold.yfilter)
+	|| ydk::is_set(mac_source.yfilter)
+	|| ydk::is_set(mac_source_member.yfilter)
+	|| ydk::is_set(maximize_threshold_value_band_width.yfilter)
+	|| ydk::is_set(maximize_threshold_value_links.yfilter)
+	|| ydk::is_set(maximum_active_links.yfilter)
+	|| ydk::is_set(maximum_active_links_source.yfilter)
+	|| ydk::is_set(minimum_active_links.yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter)
+	|| ydk::is_set(mlacp_mode.yfilter)
+	|| ydk::is_set(mlacp_status.yfilter)
+	|| ydk::is_set(primary_member.yfilter)
+	|| ydk::is_set(recovery_delay.yfilter)
+	|| ydk::is_set(singleton.yfilter)
+	|| ydk::is_set(standby_member_count.yfilter)
+	|| ydk::is_set(suppression_timer.yfilter)
+	|| ydk::is_set(switchover_type.yfilter)
+	|| ydk::is_set(wait_while_timer.yfilter)
 	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
@@ -625,44 +706,44 @@ const EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.operation)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
-    if (active_member_count.is_set || is_set(active_member_count.operation)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
-    if (available_bandwidth.is_set || is_set(available_bandwidth.operation)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
-    if (bundle_interface_name.is_set || is_set(bundle_interface_name.operation)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (cisco_extensions.is_set || is_set(cisco_extensions.operation)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
-    if (collector_max_delay.is_set || is_set(collector_max_delay.operation)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
-    if (configured_bandwidth.is_set || is_set(configured_bandwidth.operation)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
-    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.operation)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
-    if (configured_member_count.is_set || is_set(configured_member_count.operation)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
-    if (effective_bandwidth.is_set || is_set(effective_bandwidth.operation)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
-    if (iccp_group_id.is_set || is_set(iccp_group_id.operation)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
-    if (inter_chassis.is_set || is_set(inter_chassis.operation)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
-    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.operation)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
-    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.operation)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.operation)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
-    if (lacp_status.is_set || is_set(lacp_status.operation)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
-    if (link_order_status.is_set || is_set(link_order_status.operation)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
-    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.operation)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
-    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.operation)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
-    if (mac_source.is_set || is_set(mac_source.operation)) leaf_name_data.push_back(mac_source.get_name_leafdata());
-    if (mac_source_member.is_set || is_set(mac_source_member.operation)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
-    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.operation)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
-    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.operation)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
-    if (maximum_active_links.is_set || is_set(maximum_active_links.operation)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
-    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.operation)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
-    if (minimum_active_links.is_set || is_set(minimum_active_links.operation)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
-    if (mlacp_mode.is_set || is_set(mlacp_mode.operation)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
-    if (mlacp_status.is_set || is_set(mlacp_status.operation)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
-    if (primary_member.is_set || is_set(primary_member.operation)) leaf_name_data.push_back(primary_member.get_name_leafdata());
-    if (recovery_delay.is_set || is_set(recovery_delay.operation)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
-    if (singleton.is_set || is_set(singleton.operation)) leaf_name_data.push_back(singleton.get_name_leafdata());
-    if (standby_member_count.is_set || is_set(standby_member_count.operation)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
-    if (suppression_timer.is_set || is_set(suppression_timer.operation)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
-    if (switchover_type.is_set || is_set(switchover_type.operation)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
-    if (wait_while_timer.is_set || is_set(wait_while_timer.operation)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
+    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.yfilter)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
+    if (active_member_count.is_set || is_set(active_member_count.yfilter)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
+    if (available_bandwidth.is_set || is_set(available_bandwidth.yfilter)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
+    if (bundle_interface_name.is_set || is_set(bundle_interface_name.yfilter)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (cisco_extensions.is_set || is_set(cisco_extensions.yfilter)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
+    if (collector_max_delay.is_set || is_set(collector_max_delay.yfilter)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
+    if (configured_bandwidth.is_set || is_set(configured_bandwidth.yfilter)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
+    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.yfilter)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
+    if (configured_member_count.is_set || is_set(configured_member_count.yfilter)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
+    if (effective_bandwidth.is_set || is_set(effective_bandwidth.yfilter)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
+    if (iccp_group_id.is_set || is_set(iccp_group_id.yfilter)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
+    if (inter_chassis.is_set || is_set(inter_chassis.yfilter)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
+    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.yfilter)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
+    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.yfilter)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.yfilter)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
+    if (lacp_status.is_set || is_set(lacp_status.yfilter)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
+    if (link_order_status.is_set || is_set(link_order_status.yfilter)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
+    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.yfilter)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
+    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.yfilter)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
+    if (mac_source.is_set || is_set(mac_source.yfilter)) leaf_name_data.push_back(mac_source.get_name_leafdata());
+    if (mac_source_member.is_set || is_set(mac_source_member.yfilter)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
+    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.yfilter)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
+    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.yfilter)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
+    if (maximum_active_links.is_set || is_set(maximum_active_links.yfilter)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
+    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.yfilter)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
+    if (minimum_active_links.is_set || is_set(minimum_active_links.yfilter)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (mlacp_mode.is_set || is_set(mlacp_mode.yfilter)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
+    if (mlacp_status.is_set || is_set(mlacp_status.yfilter)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
+    if (primary_member.is_set || is_set(primary_member.yfilter)) leaf_name_data.push_back(primary_member.get_name_leafdata());
+    if (recovery_delay.is_set || is_set(recovery_delay.yfilter)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
+    if (singleton.is_set || is_set(singleton.yfilter)) leaf_name_data.push_back(singleton.get_name_leafdata());
+    if (standby_member_count.is_set || is_set(standby_member_count.yfilter)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
+    if (suppression_timer.is_set || is_set(suppression_timer.yfilter)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
+    if (switchover_type.is_set || is_set(switchover_type.yfilter)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
+    if (wait_while_timer.is_set || is_set(wait_while_timer.yfilter)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -716,160 +797,399 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Dat
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Data::ActorBundleData::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Data::ActorBundleData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-foreign-member-count")
     {
         active_foreign_member_count = value;
+        active_foreign_member_count.value_namespace = name_space;
+        active_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-member-count")
     {
         active_member_count = value;
+        active_member_count.value_namespace = name_space;
+        active_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "available-bandwidth")
     {
         available_bandwidth = value;
+        available_bandwidth.value_namespace = name_space;
+        available_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-interface-name")
     {
         bundle_interface_name = value;
+        bundle_interface_name.value_namespace = name_space;
+        bundle_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cisco-extensions")
     {
         cisco_extensions = value;
+        cisco_extensions.value_namespace = name_space;
+        cisco_extensions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collector-max-delay")
     {
         collector_max_delay = value;
+        collector_max_delay.value_namespace = name_space;
+        collector_max_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-bandwidth")
     {
         configured_bandwidth = value;
+        configured_bandwidth.value_namespace = name_space;
+        configured_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-foreign-member-count")
     {
         configured_foreign_member_count = value;
+        configured_foreign_member_count.value_namespace = name_space;
+        configured_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-member-count")
     {
         configured_member_count = value;
+        configured_member_count.value_namespace = name_space;
+        configured_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "effective-bandwidth")
     {
         effective_bandwidth = value;
+        effective_bandwidth.value_namespace = name_space;
+        effective_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-group-id")
     {
         iccp_group_id = value;
+        iccp_group_id.value_namespace = name_space;
+        iccp_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-chassis")
     {
         inter_chassis = value;
+        inter_chassis.value_namespace = name_space;
+        inter_chassis.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4bfd-status")
     {
         ipv4bfd_status = value;
+        ipv4bfd_status.value_namespace = name_space;
+        ipv4bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-status")
     {
         ipv6bfd_status = value;
+        ipv6bfd_status.value_namespace = name_space;
+        ipv6bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-nonrevertive")
     {
         lacp_nonrevertive = value;
+        lacp_nonrevertive.value_namespace = name_space;
+        lacp_nonrevertive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-status")
     {
         lacp_status = value;
+        lacp_status.value_namespace = name_space;
+        lacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-status")
     {
         link_order_status = value;
+        link_order_status.value_namespace = name_space;
+        link_order_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-hash-type")
     {
         load_balance_hash_type = value;
+        load_balance_hash_type.value_namespace = name_space;
+        load_balance_hash_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-locality-threshold")
     {
         load_balance_locality_threshold = value;
+        load_balance_locality_threshold.value_namespace = name_space;
+        load_balance_locality_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source")
     {
         mac_source = value;
+        mac_source.value_namespace = name_space;
+        mac_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source-member")
     {
         mac_source_member = value;
+        mac_source_member.value_namespace = name_space;
+        mac_source_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-band-width")
     {
         maximize_threshold_value_band_width = value;
+        maximize_threshold_value_band_width.value_namespace = name_space;
+        maximize_threshold_value_band_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-links")
     {
         maximize_threshold_value_links = value;
+        maximize_threshold_value_links.value_namespace = name_space;
+        maximize_threshold_value_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links")
     {
         maximum_active_links = value;
+        maximum_active_links.value_namespace = name_space;
+        maximum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links-source")
     {
         maximum_active_links_source = value;
+        maximum_active_links_source.value_namespace = name_space;
+        maximum_active_links_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-active-links")
     {
         minimum_active_links = value;
+        minimum_active_links.value_namespace = name_space;
+        minimum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-mode")
     {
         mlacp_mode = value;
+        mlacp_mode.value_namespace = name_space;
+        mlacp_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-status")
     {
         mlacp_status = value;
+        mlacp_status.value_namespace = name_space;
+        mlacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-member")
     {
         primary_member = value;
+        primary_member.value_namespace = name_space;
+        primary_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recovery-delay")
     {
         recovery_delay = value;
+        recovery_delay.value_namespace = name_space;
+        recovery_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "singleton")
     {
         singleton = value;
+        singleton.value_namespace = name_space;
+        singleton.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-member-count")
     {
         standby_member_count = value;
+        standby_member_count.value_namespace = name_space;
+        standby_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppression-timer")
     {
         suppression_timer = value;
+        suppression_timer.value_namespace = name_space;
+        suppression_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switchover-type")
     {
         switchover_type = value;
+        switchover_type.value_namespace = name_space;
+        switchover_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wait-while-timer")
     {
         wait_while_timer = value;
+        wait_while_timer.value_namespace = name_space;
+        wait_while_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Data::ActorBundleData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-foreign-member-count")
+    {
+        active_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "active-member-count")
+    {
+        active_member_count.yfilter = yfilter;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "bundle-interface-name")
+    {
+        bundle_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "cisco-extensions")
+    {
+        cisco_extensions.yfilter = yfilter;
+    }
+    if(value_path == "collector-max-delay")
+    {
+        collector_max_delay.yfilter = yfilter;
+    }
+    if(value_path == "configured-bandwidth")
+    {
+        configured_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "configured-foreign-member-count")
+    {
+        configured_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-member-count")
+    {
+        configured_member_count.yfilter = yfilter;
+    }
+    if(value_path == "effective-bandwidth")
+    {
+        effective_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-group-id")
+    {
+        iccp_group_id.yfilter = yfilter;
+    }
+    if(value_path == "inter-chassis")
+    {
+        inter_chassis.yfilter = yfilter;
+    }
+    if(value_path == "ipv4bfd-status")
+    {
+        ipv4bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-status")
+    {
+        ipv6bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "lacp-nonrevertive")
+    {
+        lacp_nonrevertive.yfilter = yfilter;
+    }
+    if(value_path == "lacp-status")
+    {
+        lacp_status.yfilter = yfilter;
+    }
+    if(value_path == "link-order-status")
+    {
+        link_order_status.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-hash-type")
+    {
+        load_balance_hash_type.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-locality-threshold")
+    {
+        load_balance_locality_threshold.yfilter = yfilter;
+    }
+    if(value_path == "mac-source")
+    {
+        mac_source.yfilter = yfilter;
+    }
+    if(value_path == "mac-source-member")
+    {
+        mac_source_member.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-band-width")
+    {
+        maximize_threshold_value_band_width.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-links")
+    {
+        maximize_threshold_value_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links")
+    {
+        maximum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links-source")
+    {
+        maximum_active_links_source.yfilter = yfilter;
+    }
+    if(value_path == "minimum-active-links")
+    {
+        minimum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-mode")
+    {
+        mlacp_mode.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-status")
+    {
+        mlacp_status.yfilter = yfilter;
+    }
+    if(value_path == "primary-member")
+    {
+        primary_member.yfilter = yfilter;
+    }
+    if(value_path == "recovery-delay")
+    {
+        recovery_delay.yfilter = yfilter;
+    }
+    if(value_path == "singleton")
+    {
+        singleton.yfilter = yfilter;
+    }
+    if(value_path == "standby-member-count")
+    {
+        standby_member_count.yfilter = yfilter;
+    }
+    if(value_path == "suppression-timer")
+    {
+        suppression_timer.yfilter = yfilter;
+    }
+    if(value_path == "switchover-type")
+    {
+        switchover_type.yfilter = yfilter;
+    }
+    if(value_path == "wait-while-timer")
+    {
+        wait_while_timer.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-config" || name == "mac-address" || name == "active-foreign-member-count" || name == "active-member-count" || name == "available-bandwidth" || name == "bundle-interface-name" || name == "bundle-status" || name == "cisco-extensions" || name == "collector-max-delay" || name == "configured-bandwidth" || name == "configured-foreign-member-count" || name == "configured-member-count" || name == "effective-bandwidth" || name == "iccp-group-id" || name == "inter-chassis" || name == "ipv4bfd-status" || name == "ipv6bfd-status" || name == "is-active" || name == "lacp-nonrevertive" || name == "lacp-status" || name == "link-order-status" || name == "load-balance-hash-type" || name == "load-balance-locality-threshold" || name == "mac-source" || name == "mac-source-member" || name == "maximize-threshold-value-band-width" || name == "maximize-threshold-value-links" || name == "maximum-active-links" || name == "maximum-active-links-source" || name == "minimum-active-links" || name == "minimum-bandwidth" || name == "mlacp-mode" || name == "mlacp-status" || name == "primary-member" || name == "recovery-delay" || name == "singleton" || name == "standby-member-count" || name == "suppression-timer" || name == "switchover-type" || name == "wait-while-timer")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::MacAddress()
@@ -890,8 +1210,8 @@ bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::has_data()
 
 bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get_segment_path() const
@@ -917,7 +1237,7 @@ const EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -936,12 +1256,29 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Dat
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::BfdConfig()
@@ -981,15 +1318,15 @@ bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::has_data() 
 
 bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(fast_detect.operation)
-	|| is_set(mode_info.operation)
-	|| is_set(nbr_unconfig_timer.operation)
-	|| is_set(pref_echo_min_interval.operation)
-	|| is_set(pref_min_interval.operation)
-	|| is_set(pref_multiplier.operation)
-	|| is_set(start_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(fast_detect.yfilter)
+	|| ydk::is_set(mode_info.yfilter)
+	|| ydk::is_set(nbr_unconfig_timer.yfilter)
+	|| ydk::is_set(pref_echo_min_interval.yfilter)
+	|| ydk::is_set(pref_min_interval.yfilter)
+	|| ydk::is_set(pref_multiplier.yfilter)
+	|| ydk::is_set(start_timer.yfilter)
 	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
@@ -1016,14 +1353,14 @@ const EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (fast_detect.is_set || is_set(fast_detect.operation)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
-    if (mode_info.is_set || is_set(mode_info.operation)) leaf_name_data.push_back(mode_info.get_name_leafdata());
-    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.operation)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
-    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.operation)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
-    if (pref_min_interval.is_set || is_set(pref_min_interval.operation)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
-    if (pref_multiplier.is_set || is_set(pref_multiplier.operation)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
-    if (start_timer.is_set || is_set(start_timer.operation)) leaf_name_data.push_back(start_timer.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (fast_detect.is_set || is_set(fast_detect.yfilter)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
+    if (mode_info.is_set || is_set(mode_info.yfilter)) leaf_name_data.push_back(mode_info.get_name_leafdata());
+    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.yfilter)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
+    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.yfilter)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
+    if (pref_min_interval.is_set || is_set(pref_min_interval.yfilter)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
+    if (pref_multiplier.is_set || is_set(pref_multiplier.yfilter)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
+    if (start_timer.is_set || is_set(start_timer.yfilter)) leaf_name_data.push_back(start_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1056,40 +1393,99 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Dat
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-detect")
     {
         fast_detect = value;
+        fast_detect.value_namespace = name_space;
+        fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-info")
     {
         mode_info = value;
+        mode_info.value_namespace = name_space;
+        mode_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nbr-unconfig-timer")
     {
         nbr_unconfig_timer = value;
+        nbr_unconfig_timer.value_namespace = name_space;
+        nbr_unconfig_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-echo-min-interval")
     {
         pref_echo_min_interval = value;
+        pref_echo_min_interval.value_namespace = name_space;
+        pref_echo_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-min-interval")
     {
         pref_min_interval = value;
+        pref_min_interval.value_namespace = name_space;
+        pref_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-multiplier")
     {
         pref_multiplier = value;
+        pref_multiplier.value_namespace = name_space;
+        pref_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timer")
     {
         start_timer = value;
+        start_timer.value_namespace = name_space;
+        start_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "fast-detect")
+    {
+        fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "mode-info")
+    {
+        mode_info.yfilter = yfilter;
+    }
+    if(value_path == "nbr-unconfig-timer")
+    {
+        nbr_unconfig_timer.yfilter = yfilter;
+    }
+    if(value_path == "pref-echo-min-interval")
+    {
+        pref_echo_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-min-interval")
+    {
+        pref_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-multiplier")
+    {
+        pref_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "start-timer")
+    {
+        start_timer.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "bundle-status" || name == "fast-detect" || name == "mode-info" || name == "nbr-unconfig-timer" || name == "pref-echo-min-interval" || name == "pref-min-interval" || name == "pref-multiplier" || name == "start-timer")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::DestinationAddress()
@@ -1114,10 +1510,10 @@ bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::Destination
 
 bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::get_segment_path() const
@@ -1143,9 +1539,9 @@ const EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af.is_set || is_set(af.operation)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1164,20 +1560,49 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Dat
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af")
     {
         af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Data::BundleSystemId::BundleSystemId()
@@ -1203,8 +1628,8 @@ bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::has_data() const
 
 bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_prio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(system_prio.yfilter)
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
@@ -1231,7 +1656,7 @@ const EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_prio.is_set || is_set(system_prio.operation)) leaf_name_data.push_back(system_prio.get_name_leafdata());
+    if (system_prio.is_set || is_set(system_prio.yfilter)) leaf_name_data.push_back(system_prio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1264,12 +1689,29 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Dat
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Data::BundleSystemId::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Data::BundleSystemId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-prio")
     {
         system_prio = value;
+        system_prio.value_namespace = name_space;
+        system_prio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Data::BundleSystemId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-prio")
+    {
+        system_prio.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac-addr" || name == "system-prio")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::SystemMacAddr()
@@ -1290,8 +1732,8 @@ bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::has_data
 
 bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(macaddr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
 }
 
 std::string LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::get_segment_path() const
@@ -1317,7 +1759,7 @@ const EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (macaddr.is_set || is_set(macaddr.operation)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1336,12 +1778,29 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Dat
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "macaddr")
     {
         macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Members::Members()
@@ -1370,7 +1829,7 @@ bool LacpBundles::Bundles::Bundle::Members::has_operation() const
         if(member[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LacpBundles::Bundles::Bundle::Members::get_segment_path() const
@@ -1435,8 +1894,19 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Mem
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Members::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Members::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void LacpBundles::Bundles::Bundle::Members::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool LacpBundles::Bundles::Bundle::Members::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::Member()
@@ -1492,17 +1962,17 @@ bool LacpBundles::Bundles::Bundle::Members::Member::has_data() const
 
 bool LacpBundles::Bundles::Bundle::Members::Member::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(iccp_node.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(link_order_number.operation)
-	|| is_set(member_name.operation)
-	|| is_set(member_type.operation)
-	|| is_set(port_number.operation)
-	|| is_set(port_priority.operation)
-	|| is_set(underlying_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(iccp_node.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(link_order_number.yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(member_type.yfilter)
+	|| ydk::is_set(port_number.yfilter)
+	|| ydk::is_set(port_priority.yfilter)
+	|| ydk::is_set(underlying_link_id.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (mac_address !=  nullptr && mac_address->has_operation())
@@ -1532,16 +2002,16 @@ const EntityPath LacpBundles::Bundles::Bundle::Members::Member::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (iccp_node.is_set || is_set(iccp_node.operation)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (link_order_number.is_set || is_set(link_order_number.operation)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (member_type.is_set || is_set(member_type.operation)) leaf_name_data.push_back(member_type.get_name_leafdata());
-    if (port_number.is_set || is_set(port_number.operation)) leaf_name_data.push_back(port_number.get_name_leafdata());
-    if (port_priority.is_set || is_set(port_priority.operation)) leaf_name_data.push_back(port_priority.get_name_leafdata());
-    if (underlying_link_id.is_set || is_set(underlying_link_id.operation)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (iccp_node.is_set || is_set(iccp_node.yfilter)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (link_order_number.is_set || is_set(link_order_number.yfilter)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
+    if (port_number.is_set || is_set(port_number.yfilter)) leaf_name_data.push_back(port_number.get_name_leafdata());
+    if (port_priority.is_set || is_set(port_priority.yfilter)) leaf_name_data.push_back(port_priority.get_name_leafdata());
+    if (underlying_link_id.is_set || is_set(underlying_link_id.yfilter)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1616,48 +2086,119 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Mem
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Members::Member::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Members::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-node")
     {
         iccp_node = value;
+        iccp_node.value_namespace = name_space;
+        iccp_node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-number")
     {
         link_order_number = value;
+        link_order_number.value_namespace = name_space;
+        link_order_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-type")
     {
         member_type = value;
+        member_type.value_namespace = name_space;
+        member_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-number")
     {
         port_number = value;
+        port_number.value_namespace = name_space;
+        port_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-priority")
     {
         port_priority = value;
+        port_priority.value_namespace = name_space;
+        port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "underlying-link-id")
     {
         underlying_link_id = value;
+        underlying_link_id.value_namespace = name_space;
+        underlying_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Members::Member::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-node")
+    {
+        iccp_node.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "link-order-number")
+    {
+        link_order_number.yfilter = yfilter;
+    }
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "member-type")
+    {
+        member_type.yfilter = yfilter;
+    }
+    if(value_path == "port-number")
+    {
+        port_number.yfilter = yfilter;
+    }
+    if(value_path == "port-priority")
+    {
+        port_priority.yfilter = yfilter;
+    }
+    if(value_path == "underlying-link-id")
+    {
+        underlying_link_id.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Members::Member::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters" || name == "link-data" || name == "mac-address" || name == "member-mux-data" || name == "member-interface" || name == "bandwidth" || name == "iccp-node" || name == "interface-name" || name == "link-order-number" || name == "member-name" || name == "member-type" || name == "port-number" || name == "port-priority" || name == "underlying-link-id")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::Counters::Counters()
@@ -1698,18 +2239,18 @@ bool LacpBundles::Bundles::Bundle::Members::Member::Counters::has_data() const
 
 bool LacpBundles::Bundles::Bundle::Members::Member::Counters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(defaulted.operation)
-	|| is_set(excess_lacpd_us_received.operation)
-	|| is_set(excess_marker_packets_received.operation)
-	|| is_set(expired.operation)
-	|| is_set(illegal_packets_received.operation)
-	|| is_set(lacpd_us_received.operation)
-	|| is_set(lacpd_us_transmitted.operation)
-	|| is_set(last_cleared_nsec.operation)
-	|| is_set(last_cleared_sec.operation)
-	|| is_set(marker_packets_received.operation)
-	|| is_set(marker_responses_transmitted.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(defaulted.yfilter)
+	|| ydk::is_set(excess_lacpd_us_received.yfilter)
+	|| ydk::is_set(excess_marker_packets_received.yfilter)
+	|| ydk::is_set(expired.yfilter)
+	|| ydk::is_set(illegal_packets_received.yfilter)
+	|| ydk::is_set(lacpd_us_received.yfilter)
+	|| ydk::is_set(lacpd_us_transmitted.yfilter)
+	|| ydk::is_set(last_cleared_nsec.yfilter)
+	|| ydk::is_set(last_cleared_sec.yfilter)
+	|| ydk::is_set(marker_packets_received.yfilter)
+	|| ydk::is_set(marker_responses_transmitted.yfilter);
 }
 
 std::string LacpBundles::Bundles::Bundle::Members::Member::Counters::get_segment_path() const
@@ -1735,17 +2276,17 @@ const EntityPath LacpBundles::Bundles::Bundle::Members::Member::Counters::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (defaulted.is_set || is_set(defaulted.operation)) leaf_name_data.push_back(defaulted.get_name_leafdata());
-    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.operation)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
-    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.operation)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
-    if (expired.is_set || is_set(expired.operation)) leaf_name_data.push_back(expired.get_name_leafdata());
-    if (illegal_packets_received.is_set || is_set(illegal_packets_received.operation)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
-    if (lacpd_us_received.is_set || is_set(lacpd_us_received.operation)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
-    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.operation)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
-    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.operation)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
-    if (last_cleared_sec.is_set || is_set(last_cleared_sec.operation)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
-    if (marker_packets_received.is_set || is_set(marker_packets_received.operation)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
-    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.operation)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
+    if (defaulted.is_set || is_set(defaulted.yfilter)) leaf_name_data.push_back(defaulted.get_name_leafdata());
+    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.yfilter)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
+    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.yfilter)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
+    if (expired.is_set || is_set(expired.yfilter)) leaf_name_data.push_back(expired.get_name_leafdata());
+    if (illegal_packets_received.is_set || is_set(illegal_packets_received.yfilter)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
+    if (lacpd_us_received.is_set || is_set(lacpd_us_received.yfilter)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
+    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.yfilter)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
+    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.yfilter)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
+    if (last_cleared_sec.is_set || is_set(last_cleared_sec.yfilter)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
+    if (marker_packets_received.is_set || is_set(marker_packets_received.yfilter)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
+    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.yfilter)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1764,52 +2305,129 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Mem
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Members::Member::Counters::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Members::Member::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "defaulted")
     {
         defaulted = value;
+        defaulted.value_namespace = name_space;
+        defaulted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-lacpd-us-received")
     {
         excess_lacpd_us_received = value;
+        excess_lacpd_us_received.value_namespace = name_space;
+        excess_lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-marker-packets-received")
     {
         excess_marker_packets_received = value;
+        excess_marker_packets_received.value_namespace = name_space;
+        excess_marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "expired")
     {
         expired = value;
+        expired.value_namespace = name_space;
+        expired.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "illegal-packets-received")
     {
         illegal_packets_received = value;
+        illegal_packets_received.value_namespace = name_space;
+        illegal_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-received")
     {
         lacpd_us_received = value;
+        lacpd_us_received.value_namespace = name_space;
+        lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-transmitted")
     {
         lacpd_us_transmitted = value;
+        lacpd_us_transmitted.value_namespace = name_space;
+        lacpd_us_transmitted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-nsec")
     {
         last_cleared_nsec = value;
+        last_cleared_nsec.value_namespace = name_space;
+        last_cleared_nsec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-sec")
     {
         last_cleared_sec = value;
+        last_cleared_sec.value_namespace = name_space;
+        last_cleared_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-packets-received")
     {
         marker_packets_received = value;
+        marker_packets_received.value_namespace = name_space;
+        marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-responses-transmitted")
     {
         marker_responses_transmitted = value;
+        marker_responses_transmitted.value_namespace = name_space;
+        marker_responses_transmitted.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Members::Member::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "defaulted")
+    {
+        defaulted.yfilter = yfilter;
+    }
+    if(value_path == "excess-lacpd-us-received")
+    {
+        excess_lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "excess-marker-packets-received")
+    {
+        excess_marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "expired")
+    {
+        expired.yfilter = yfilter;
+    }
+    if(value_path == "illegal-packets-received")
+    {
+        illegal_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-received")
+    {
+        lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-transmitted")
+    {
+        lacpd_us_transmitted.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-nsec")
+    {
+        last_cleared_nsec.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-sec")
+    {
+        last_cleared_sec.yfilter = yfilter;
+    }
+    if(value_path == "marker-packets-received")
+    {
+        marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "marker-responses-transmitted")
+    {
+        marker_responses_transmitted.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Members::Member::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "defaulted" || name == "excess-lacpd-us-received" || name == "excess-marker-packets-received" || name == "expired" || name == "illegal-packets-received" || name == "lacpd-us-received" || name == "lacpd-us-transmitted" || name == "last-cleared-nsec" || name == "last-cleared-sec" || name == "marker-packets-received" || name == "marker-responses-transmitted")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::LinkData::LinkData()
@@ -1858,22 +2476,22 @@ bool LacpBundles::Bundles::Bundle::Members::Member::LinkData::has_data() const
 
 bool LacpBundles::Bundles::Bundle::Members::Member::LinkData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_operational_key.operation)
-	|| is_set(actor_port_id.operation)
-	|| is_set(actor_port_priority.operation)
-	|| is_set(actor_port_state.operation)
-	|| is_set(actor_system_mac_address.operation)
-	|| is_set(actor_system_priority.operation)
-	|| is_set(attached_aggregator_id.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(partner_operational_key.operation)
-	|| is_set(partner_port_id.operation)
-	|| is_set(partner_port_priority.operation)
-	|| is_set(partner_port_state.operation)
-	|| is_set(partner_system_mac_address.operation)
-	|| is_set(partner_system_priority.operation)
-	|| is_set(selected_aggregator_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(actor_operational_key.yfilter)
+	|| ydk::is_set(actor_port_id.yfilter)
+	|| ydk::is_set(actor_port_priority.yfilter)
+	|| ydk::is_set(actor_port_state.yfilter)
+	|| ydk::is_set(actor_system_mac_address.yfilter)
+	|| ydk::is_set(actor_system_priority.yfilter)
+	|| ydk::is_set(attached_aggregator_id.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(partner_port_id.yfilter)
+	|| ydk::is_set(partner_port_priority.yfilter)
+	|| ydk::is_set(partner_port_state.yfilter)
+	|| ydk::is_set(partner_system_mac_address.yfilter)
+	|| ydk::is_set(partner_system_priority.yfilter)
+	|| ydk::is_set(selected_aggregator_id.yfilter);
 }
 
 std::string LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_segment_path() const
@@ -1899,21 +2517,21 @@ const EntityPath LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_operational_key.is_set || is_set(actor_operational_key.operation)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
-    if (actor_port_id.is_set || is_set(actor_port_id.operation)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
-    if (actor_port_priority.is_set || is_set(actor_port_priority.operation)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
-    if (actor_port_state.is_set || is_set(actor_port_state.operation)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
-    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.operation)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
-    if (actor_system_priority.is_set || is_set(actor_system_priority.operation)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
-    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.operation)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (partner_operational_key.is_set || is_set(partner_operational_key.operation)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
-    if (partner_port_id.is_set || is_set(partner_port_id.operation)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
-    if (partner_port_priority.is_set || is_set(partner_port_priority.operation)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
-    if (partner_port_state.is_set || is_set(partner_port_state.operation)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
-    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.operation)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
-    if (partner_system_priority.is_set || is_set(partner_system_priority.operation)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
-    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.operation)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
+    if (actor_operational_key.is_set || is_set(actor_operational_key.yfilter)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
+    if (actor_port_id.is_set || is_set(actor_port_id.yfilter)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
+    if (actor_port_priority.is_set || is_set(actor_port_priority.yfilter)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
+    if (actor_port_state.is_set || is_set(actor_port_state.yfilter)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
+    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.yfilter)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
+    if (actor_system_priority.is_set || is_set(actor_system_priority.yfilter)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
+    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.yfilter)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (partner_port_id.is_set || is_set(partner_port_id.yfilter)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
+    if (partner_port_priority.is_set || is_set(partner_port_priority.yfilter)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
+    if (partner_port_state.is_set || is_set(partner_port_state.yfilter)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
+    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
+    if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
+    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.yfilter)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1932,68 +2550,169 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Mem
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Members::Member::LinkData::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Members::Member::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-operational-key")
     {
         actor_operational_key = value;
+        actor_operational_key.value_namespace = name_space;
+        actor_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-id")
     {
         actor_port_id = value;
+        actor_port_id.value_namespace = name_space;
+        actor_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-priority")
     {
         actor_port_priority = value;
+        actor_port_priority.value_namespace = name_space;
+        actor_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-state")
     {
         actor_port_state = value;
+        actor_port_state.value_namespace = name_space;
+        actor_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-mac-address")
     {
         actor_system_mac_address = value;
+        actor_system_mac_address.value_namespace = name_space;
+        actor_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-priority")
     {
         actor_system_priority = value;
+        actor_system_priority.value_namespace = name_space;
+        actor_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-aggregator-id")
     {
         attached_aggregator_id = value;
+        attached_aggregator_id.value_namespace = name_space;
+        attached_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-operational-key")
     {
         partner_operational_key = value;
+        partner_operational_key.value_namespace = name_space;
+        partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-id")
     {
         partner_port_id = value;
+        partner_port_id.value_namespace = name_space;
+        partner_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-priority")
     {
         partner_port_priority = value;
+        partner_port_priority.value_namespace = name_space;
+        partner_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-state")
     {
         partner_port_state = value;
+        partner_port_state.value_namespace = name_space;
+        partner_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-mac-address")
     {
         partner_system_mac_address = value;
+        partner_system_mac_address.value_namespace = name_space;
+        partner_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-priority")
     {
         partner_system_priority = value;
+        partner_system_priority.value_namespace = name_space;
+        partner_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selected-aggregator-id")
     {
         selected_aggregator_id = value;
+        selected_aggregator_id.value_namespace = name_space;
+        selected_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Members::Member::LinkData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-operational-key")
+    {
+        actor_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-id")
+    {
+        actor_port_id.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-priority")
+    {
+        actor_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-state")
+    {
+        actor_port_state.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-mac-address")
+    {
+        actor_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-priority")
+    {
+        actor_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "attached-aggregator-id")
+    {
+        attached_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "partner-operational-key")
+    {
+        partner_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-id")
+    {
+        partner_port_id.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-priority")
+    {
+        partner_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-state")
+    {
+        partner_port_state.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-mac-address")
+    {
+        partner_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-priority")
+    {
+        partner_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "selected-aggregator-id")
+    {
+        selected_aggregator_id.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Members::Member::LinkData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-operational-key" || name == "actor-port-id" || name == "actor-port-priority" || name == "actor-port-state" || name == "actor-system-mac-address" || name == "actor-system-priority" || name == "attached-aggregator-id" || name == "interface-handle" || name == "partner-operational-key" || name == "partner-port-id" || name == "partner-port-priority" || name == "partner-port-state" || name == "partner-system-mac-address" || name == "partner-system-priority" || name == "selected-aggregator-id")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxData()
@@ -2027,12 +2746,12 @@ bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::has_data() co
 
 bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(error.operation)
-	|| is_set(member_mux_state_reason.operation)
-	|| is_set(member_state.operation)
-	|| is_set(mux_state.operation)
-	|| is_set(mux_state_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(member_mux_state_reason.yfilter)
+	|| ydk::is_set(member_state.yfilter)
+	|| ydk::is_set(mux_state.yfilter)
+	|| ydk::is_set(mux_state_reason.yfilter)
 	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
@@ -2059,11 +2778,11 @@ const EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.operation)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
-    if (member_state.is_set || is_set(member_state.operation)) leaf_name_data.push_back(member_state.get_name_leafdata());
-    if (mux_state.is_set || is_set(mux_state.operation)) leaf_name_data.push_back(mux_state.get_name_leafdata());
-    if (mux_state_reason.is_set || is_set(mux_state_reason.operation)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.yfilter)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
+    if (member_state.is_set || is_set(member_state.yfilter)) leaf_name_data.push_back(member_state.get_name_leafdata());
+    if (mux_state.is_set || is_set(mux_state.yfilter)) leaf_name_data.push_back(mux_state.get_name_leafdata());
+    if (mux_state_reason.is_set || is_set(mux_state_reason.yfilter)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2096,28 +2815,69 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Mem
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-mux-state-reason")
     {
         member_mux_state_reason = value;
+        member_mux_state_reason.value_namespace = name_space;
+        member_mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-state")
     {
         member_state = value;
+        member_state.value_namespace = name_space;
+        member_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state")
     {
         mux_state = value;
+        mux_state.value_namespace = name_space;
+        mux_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state-reason")
     {
         mux_state_reason = value;
+        mux_state_reason.value_namespace = name_space;
+        mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "member-mux-state-reason")
+    {
+        member_mux_state_reason.yfilter = yfilter;
+    }
+    if(value_path == "member-state")
+    {
+        member_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state")
+    {
+        mux_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state-reason")
+    {
+        mux_state_reason.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-mux-state-reason-data" || name == "error" || name == "member-mux-state-reason" || name == "member-state" || name == "mux-state" || name == "mux-state-reason")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::MemberMuxStateReasonData()
@@ -2140,9 +2900,9 @@ bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStat
 
 bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(reason_type.operation)
-	|| is_set(severity.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(reason_type.yfilter)
+	|| ydk::is_set(severity.yfilter);
 }
 
 std::string LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::get_segment_path() const
@@ -2168,8 +2928,8 @@ const EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::M
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reason_type.is_set || is_set(reason_type.operation)) leaf_name_data.push_back(reason_type.get_name_leafdata());
-    if (severity.is_set || is_set(severity.operation)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (reason_type.is_set || is_set(reason_type.yfilter)) leaf_name_data.push_back(reason_type.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2188,16 +2948,39 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Mem
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reason-type")
     {
         reason_type = value;
+        reason_type.value_namespace = name_space;
+        reason_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severity")
     {
         severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reason-type")
+    {
+        reason_type.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reason-type" || name == "severity")
+        return true;
+    return false;
 }
 
 LacpBundles::Bundles::Bundle::Members::Member::MacAddress::MacAddress()
@@ -2218,8 +3001,8 @@ bool LacpBundles::Bundles::Bundle::Members::Member::MacAddress::has_data() const
 
 bool LacpBundles::Bundles::Bundle::Members::Member::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_segment_path() const
@@ -2245,7 +3028,7 @@ const EntityPath LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2264,12 +3047,29 @@ std::map<std::string, std::shared_ptr<Entity>> LacpBundles::Bundles::Bundle::Mem
     return children;
 }
 
-void LacpBundles::Bundles::Bundle::Members::Member::MacAddress::set_value(const std::string & value_path, std::string value)
+void LacpBundles::Bundles::Bundle::Members::Member::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LacpBundles::Bundles::Bundle::Members::Member::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool LacpBundles::Bundles::Bundle::Members::Member::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::BundleInformation()
@@ -2356,7 +3156,7 @@ bool BundleInformation::has_data() const
 
 bool BundleInformation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_counters !=  nullptr && bfd_counters->has_operation())
 	|| (bundle !=  nullptr && bundle->has_operation())
 	|| (bundle_briefs !=  nullptr && bundle_briefs->has_operation())
@@ -2652,7 +3452,11 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::get_children()
     return children;
 }
 
-void BundleInformation::set_value(const std::string & value_path, std::string value)
+void BundleInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void BundleInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -2674,6 +3478,18 @@ std::string BundleInformation::get_bundle_name() const
 augment_capabilities_function BundleInformation::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> BundleInformation::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool BundleInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-counters" || name == "bundle" || name == "bundle-briefs" || name == "events" || name == "events-bdl" || name == "events-mbr" || name == "events-rg" || name == "lacp" || name == "mac-allocation" || name == "mlacp" || name == "mlacp-brief" || name == "mlacp-bundle-counters" || name == "mlacp-iccp-group-counters" || name == "mlacp-member-counters" || name == "protect" || name == "scheduled-actions" || name == "system-id")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCounters()
@@ -2700,7 +3516,7 @@ bool BundleInformation::BfdCounters::has_data() const
 
 bool BundleInformation::BfdCounters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_counters_bundles !=  nullptr && bfd_counters_bundles->has_operation())
 	|| (bfd_counters_members !=  nullptr && bfd_counters_members->has_operation());
 }
@@ -2774,8 +3590,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::g
     return children;
 }
 
-void BundleInformation::BfdCounters::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::BfdCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::BfdCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-counters-bundles" || name == "bfd-counters-members")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundles()
@@ -2804,7 +3631,7 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::has_operation() const
         if(bfd_counters_bundle[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersBundles::get_segment_path() const
@@ -2869,8 +3696,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersBundles::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersBundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::BfdCounters::BfdCountersBundles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::BfdCounters::BfdCountersBundles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-counters-bundle")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundle()
@@ -2904,8 +3742,8 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::has_
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_interface.yfilter)
 	|| (bfd_counters_bundle_children_members !=  nullptr && bfd_counters_bundle_children_members->has_operation())
 	|| (bfd_counters_bundle_descendant !=  nullptr && bfd_counters_bundle_descendant->has_operation())
 	|| (bfd_counters_bundle_item !=  nullptr && bfd_counters_bundle_item->has_operation());
@@ -2934,7 +3772,7 @@ const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCounters
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_interface.is_set || is_set(bundle_interface.operation)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
+    if (bundle_interface.is_set || is_set(bundle_interface.yfilter)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2995,12 +3833,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-interface")
     {
         bundle_interface = value;
+        bundle_interface.value_namespace = name_space;
+        bundle_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-interface")
+    {
+        bundle_interface.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-counters-bundle-children-members" || name == "bfd-counters-bundle-descendant" || name == "bfd-counters-bundle-item" || name == "bundle-interface")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCountersBundleDescendant()
@@ -3033,7 +3888,7 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
         if(bfd_counter[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bundle_name !=  nullptr && bundle_name->has_operation());
 }
 
@@ -3113,8 +3968,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-counter" || name == "bundle-name")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::BundleName()
@@ -3135,8 +4001,8 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(item_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(item_name.yfilter);
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::get_segment_path() const
@@ -3162,7 +4028,7 @@ const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCounters
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (item_name.is_set || is_set(item_name.operation)) leaf_name_data.push_back(item_name.get_name_leafdata());
+    if (item_name.is_set || is_set(item_name.yfilter)) leaf_name_data.push_back(item_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3181,12 +4047,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "item-name")
     {
         item_name = value;
+        item_name.value_namespace = name_space;
+        item_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "item-name")
+    {
+        item_name.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "item-name")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::BfdCounter()
@@ -3223,16 +4106,16 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down.operation)
-	|| is_set(last_time_cleared.operation)
-	|| is_set(member_name.operation)
-	|| is_set(neighbor_unconfigured.operation)
-	|| is_set(neighbor_unconfigured_timeouts.operation)
-	|| is_set(start_timeouts.operation)
-	|| is_set(starting.operation)
-	|| is_set(time_since_cleared.operation)
-	|| is_set(up.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(last_time_cleared.yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(neighbor_unconfigured.yfilter)
+	|| ydk::is_set(neighbor_unconfigured_timeouts.yfilter)
+	|| ydk::is_set(start_timeouts.yfilter)
+	|| ydk::is_set(starting.yfilter)
+	|| ydk::is_set(time_since_cleared.yfilter)
+	|| ydk::is_set(up.yfilter);
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::get_segment_path() const
@@ -3258,15 +4141,15 @@ const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCounters
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (last_time_cleared.is_set || is_set(last_time_cleared.operation)) leaf_name_data.push_back(last_time_cleared.get_name_leafdata());
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (neighbor_unconfigured.is_set || is_set(neighbor_unconfigured.operation)) leaf_name_data.push_back(neighbor_unconfigured.get_name_leafdata());
-    if (neighbor_unconfigured_timeouts.is_set || is_set(neighbor_unconfigured_timeouts.operation)) leaf_name_data.push_back(neighbor_unconfigured_timeouts.get_name_leafdata());
-    if (start_timeouts.is_set || is_set(start_timeouts.operation)) leaf_name_data.push_back(start_timeouts.get_name_leafdata());
-    if (starting.is_set || is_set(starting.operation)) leaf_name_data.push_back(starting.get_name_leafdata());
-    if (time_since_cleared.is_set || is_set(time_since_cleared.operation)) leaf_name_data.push_back(time_since_cleared.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (last_time_cleared.is_set || is_set(last_time_cleared.yfilter)) leaf_name_data.push_back(last_time_cleared.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (neighbor_unconfigured.is_set || is_set(neighbor_unconfigured.yfilter)) leaf_name_data.push_back(neighbor_unconfigured.get_name_leafdata());
+    if (neighbor_unconfigured_timeouts.is_set || is_set(neighbor_unconfigured_timeouts.yfilter)) leaf_name_data.push_back(neighbor_unconfigured_timeouts.get_name_leafdata());
+    if (start_timeouts.is_set || is_set(start_timeouts.yfilter)) leaf_name_data.push_back(start_timeouts.get_name_leafdata());
+    if (starting.is_set || is_set(starting.yfilter)) leaf_name_data.push_back(starting.get_name_leafdata());
+    if (time_since_cleared.is_set || is_set(time_since_cleared.yfilter)) leaf_name_data.push_back(time_since_cleared.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3285,44 +4168,109 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-time-cleared")
     {
         last_time_cleared = value;
+        last_time_cleared.value_namespace = name_space;
+        last_time_cleared.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-unconfigured")
     {
         neighbor_unconfigured = value;
+        neighbor_unconfigured.value_namespace = name_space;
+        neighbor_unconfigured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-unconfigured-timeouts")
     {
         neighbor_unconfigured_timeouts = value;
+        neighbor_unconfigured_timeouts.value_namespace = name_space;
+        neighbor_unconfigured_timeouts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timeouts")
     {
         start_timeouts = value;
+        start_timeouts.value_namespace = name_space;
+        start_timeouts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "starting")
     {
         starting = value;
+        starting.value_namespace = name_space;
+        starting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-since-cleared")
     {
         time_since_cleared = value;
+        time_since_cleared.value_namespace = name_space;
+        time_since_cleared.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "last-time-cleared")
+    {
+        last_time_cleared.yfilter = yfilter;
+    }
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-unconfigured")
+    {
+        neighbor_unconfigured.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-unconfigured-timeouts")
+    {
+        neighbor_unconfigured_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "start-timeouts")
+    {
+        start_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "starting")
+    {
+        starting.yfilter = yfilter;
+    }
+    if(value_path == "time-since-cleared")
+    {
+        time_since_cleared.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down" || name == "last-time-cleared" || name == "member-name" || name == "neighbor-unconfigured" || name == "neighbor-unconfigured-timeouts" || name == "start-timeouts" || name == "starting" || name == "time-since-cleared" || name == "up")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMembers()
@@ -3351,7 +4299,7 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
         if(bfd_counters_bundle_children_member[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::get_segment_path() const
@@ -3416,8 +4364,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-counters-bundle-children-member")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::BfdCountersBundleChildrenMember()
@@ -3456,17 +4415,17 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
-	|| is_set(down.operation)
-	|| is_set(last_time_cleared.operation)
-	|| is_set(member_name.operation)
-	|| is_set(neighbor_unconfigured.operation)
-	|| is_set(neighbor_unconfigured_timeouts.operation)
-	|| is_set(start_timeouts.operation)
-	|| is_set(starting.operation)
-	|| is_set(time_since_cleared.operation)
-	|| is_set(up.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(last_time_cleared.yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(neighbor_unconfigured.yfilter)
+	|| ydk::is_set(neighbor_unconfigured_timeouts.yfilter)
+	|| ydk::is_set(start_timeouts.yfilter)
+	|| ydk::is_set(starting.yfilter)
+	|| ydk::is_set(time_since_cleared.yfilter)
+	|| ydk::is_set(up.yfilter);
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::get_segment_path() const
@@ -3492,16 +4451,16 @@ const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCounters
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (last_time_cleared.is_set || is_set(last_time_cleared.operation)) leaf_name_data.push_back(last_time_cleared.get_name_leafdata());
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (neighbor_unconfigured.is_set || is_set(neighbor_unconfigured.operation)) leaf_name_data.push_back(neighbor_unconfigured.get_name_leafdata());
-    if (neighbor_unconfigured_timeouts.is_set || is_set(neighbor_unconfigured_timeouts.operation)) leaf_name_data.push_back(neighbor_unconfigured_timeouts.get_name_leafdata());
-    if (start_timeouts.is_set || is_set(start_timeouts.operation)) leaf_name_data.push_back(start_timeouts.get_name_leafdata());
-    if (starting.is_set || is_set(starting.operation)) leaf_name_data.push_back(starting.get_name_leafdata());
-    if (time_since_cleared.is_set || is_set(time_since_cleared.operation)) leaf_name_data.push_back(time_since_cleared.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (last_time_cleared.is_set || is_set(last_time_cleared.yfilter)) leaf_name_data.push_back(last_time_cleared.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (neighbor_unconfigured.is_set || is_set(neighbor_unconfigured.yfilter)) leaf_name_data.push_back(neighbor_unconfigured.get_name_leafdata());
+    if (neighbor_unconfigured_timeouts.is_set || is_set(neighbor_unconfigured_timeouts.yfilter)) leaf_name_data.push_back(neighbor_unconfigured_timeouts.get_name_leafdata());
+    if (start_timeouts.is_set || is_set(start_timeouts.yfilter)) leaf_name_data.push_back(start_timeouts.get_name_leafdata());
+    if (starting.is_set || is_set(starting.yfilter)) leaf_name_data.push_back(starting.get_name_leafdata());
+    if (time_since_cleared.is_set || is_set(time_since_cleared.yfilter)) leaf_name_data.push_back(time_since_cleared.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3520,48 +4479,119 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-time-cleared")
     {
         last_time_cleared = value;
+        last_time_cleared.value_namespace = name_space;
+        last_time_cleared.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-unconfigured")
     {
         neighbor_unconfigured = value;
+        neighbor_unconfigured.value_namespace = name_space;
+        neighbor_unconfigured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-unconfigured-timeouts")
     {
         neighbor_unconfigured_timeouts = value;
+        neighbor_unconfigured_timeouts.value_namespace = name_space;
+        neighbor_unconfigured_timeouts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timeouts")
     {
         start_timeouts = value;
+        start_timeouts.value_namespace = name_space;
+        start_timeouts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "starting")
     {
         starting = value;
+        starting.value_namespace = name_space;
+        starting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-since-cleared")
     {
         time_since_cleared = value;
+        time_since_cleared.value_namespace = name_space;
+        time_since_cleared.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "last-time-cleared")
+    {
+        last_time_cleared.yfilter = yfilter;
+    }
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-unconfigured")
+    {
+        neighbor_unconfigured.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-unconfigured-timeouts")
+    {
+        neighbor_unconfigured_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "start-timeouts")
+    {
+        start_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "starting")
+    {
+        starting.yfilter = yfilter;
+    }
+    if(value_path == "time-since-cleared")
+    {
+        time_since_cleared.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-interface" || name == "down" || name == "last-time-cleared" || name == "member-name" || name == "neighbor-unconfigured" || name == "neighbor-unconfigured-timeouts" || name == "start-timeouts" || name == "starting" || name == "time-since-cleared" || name == "up")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::BfdCountersBundleItem()
@@ -3582,8 +4612,8 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
 
 bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(item_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(item_name.yfilter);
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::get_segment_path() const
@@ -3609,7 +4639,7 @@ const EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCounters
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (item_name.is_set || is_set(item_name.operation)) leaf_name_data.push_back(item_name.get_name_leafdata());
+    if (item_name.is_set || is_set(item_name.yfilter)) leaf_name_data.push_back(item_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3628,12 +4658,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "item-name")
     {
         item_name = value;
+        item_name.value_namespace = name_space;
+        item_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "item-name")
+    {
+        item_name.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "item-name")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMembers()
@@ -3662,7 +4709,7 @@ bool BundleInformation::BfdCounters::BfdCountersMembers::has_operation() const
         if(bfd_counters_member[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersMembers::get_segment_path() const
@@ -3727,8 +4774,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersMembers::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersMembers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::BfdCounters::BfdCountersMembers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::BfdCounters::BfdCountersMembers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-counters-member")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMember()
@@ -3754,8 +4812,8 @@ bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::has_
 
 bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
 	|| (bfd_counters_member_item !=  nullptr && bfd_counters_member_item->has_operation());
 }
 
@@ -3782,7 +4840,7 @@ const EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCounters
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3815,12 +4873,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-counters-member-item" || name == "member-interface")
+        return true;
+    return false;
 }
 
 BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::BfdCountersMemberItem()
@@ -3857,16 +4932,16 @@ bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdC
 
 bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(down.operation)
-	|| is_set(last_time_cleared.operation)
-	|| is_set(member_name.operation)
-	|| is_set(neighbor_unconfigured.operation)
-	|| is_set(neighbor_unconfigured_timeouts.operation)
-	|| is_set(start_timeouts.operation)
-	|| is_set(starting.operation)
-	|| is_set(time_since_cleared.operation)
-	|| is_set(up.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(last_time_cleared.yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(neighbor_unconfigured.yfilter)
+	|| ydk::is_set(neighbor_unconfigured_timeouts.yfilter)
+	|| ydk::is_set(start_timeouts.yfilter)
+	|| ydk::is_set(starting.yfilter)
+	|| ydk::is_set(time_since_cleared.yfilter)
+	|| ydk::is_set(up.yfilter);
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::get_segment_path() const
@@ -3892,15 +4967,15 @@ const EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCounters
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (last_time_cleared.is_set || is_set(last_time_cleared.operation)) leaf_name_data.push_back(last_time_cleared.get_name_leafdata());
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (neighbor_unconfigured.is_set || is_set(neighbor_unconfigured.operation)) leaf_name_data.push_back(neighbor_unconfigured.get_name_leafdata());
-    if (neighbor_unconfigured_timeouts.is_set || is_set(neighbor_unconfigured_timeouts.operation)) leaf_name_data.push_back(neighbor_unconfigured_timeouts.get_name_leafdata());
-    if (start_timeouts.is_set || is_set(start_timeouts.operation)) leaf_name_data.push_back(start_timeouts.get_name_leafdata());
-    if (starting.is_set || is_set(starting.operation)) leaf_name_data.push_back(starting.get_name_leafdata());
-    if (time_since_cleared.is_set || is_set(time_since_cleared.operation)) leaf_name_data.push_back(time_since_cleared.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (last_time_cleared.is_set || is_set(last_time_cleared.yfilter)) leaf_name_data.push_back(last_time_cleared.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (neighbor_unconfigured.is_set || is_set(neighbor_unconfigured.yfilter)) leaf_name_data.push_back(neighbor_unconfigured.get_name_leafdata());
+    if (neighbor_unconfigured_timeouts.is_set || is_set(neighbor_unconfigured_timeouts.yfilter)) leaf_name_data.push_back(neighbor_unconfigured_timeouts.get_name_leafdata());
+    if (start_timeouts.is_set || is_set(start_timeouts.yfilter)) leaf_name_data.push_back(start_timeouts.get_name_leafdata());
+    if (starting.is_set || is_set(starting.yfilter)) leaf_name_data.push_back(starting.get_name_leafdata());
+    if (time_since_cleared.is_set || is_set(time_since_cleared.yfilter)) leaf_name_data.push_back(time_since_cleared.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3919,44 +4994,109 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BfdCounters::B
     return children;
 }
 
-void BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::set_value(const std::string & value_path, std::string value)
+void BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-time-cleared")
     {
         last_time_cleared = value;
+        last_time_cleared.value_namespace = name_space;
+        last_time_cleared.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-unconfigured")
     {
         neighbor_unconfigured = value;
+        neighbor_unconfigured.value_namespace = name_space;
+        neighbor_unconfigured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-unconfigured-timeouts")
     {
         neighbor_unconfigured_timeouts = value;
+        neighbor_unconfigured_timeouts.value_namespace = name_space;
+        neighbor_unconfigured_timeouts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timeouts")
     {
         start_timeouts = value;
+        start_timeouts.value_namespace = name_space;
+        start_timeouts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "starting")
     {
         starting = value;
+        starting.value_namespace = name_space;
+        starting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-since-cleared")
     {
         time_since_cleared = value;
+        time_since_cleared.value_namespace = name_space;
+        time_since_cleared.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "last-time-cleared")
+    {
+        last_time_cleared.yfilter = yfilter;
+    }
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-unconfigured")
+    {
+        neighbor_unconfigured.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-unconfigured-timeouts")
+    {
+        neighbor_unconfigured_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "start-timeouts")
+    {
+        start_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "starting")
+    {
+        starting.yfilter = yfilter;
+    }
+    if(value_path == "time-since-cleared")
+    {
+        time_since_cleared.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down" || name == "last-time-cleared" || name == "member-name" || name == "neighbor-unconfigured" || name == "neighbor-unconfigured-timeouts" || name == "start-timeouts" || name == "starting" || name == "time-since-cleared" || name == "up")
+        return true;
+    return false;
 }
 
 BundleInformation::ScheduledActions::ScheduledActions()
@@ -3979,7 +5119,7 @@ bool BundleInformation::ScheduledActions::has_data() const
 
 bool BundleInformation::ScheduledActions::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (scheduled_actions_bundles !=  nullptr && scheduled_actions_bundles->has_operation());
 }
 
@@ -4038,8 +5178,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActio
     return children;
 }
 
-void BundleInformation::ScheduledActions::set_value(const std::string & value_path, std::string value)
+void BundleInformation::ScheduledActions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::ScheduledActions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::ScheduledActions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "scheduled-actions-bundles")
+        return true;
+    return false;
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundles()
@@ -4068,7 +5219,7 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::has_operation
         if(scheduled_actions_bundle[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::get_segment_path() const
@@ -4133,8 +5284,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActio
     return children;
 }
 
-void BundleInformation::ScheduledActions::ScheduledActionsBundles::set_value(const std::string & value_path, std::string value)
+void BundleInformation::ScheduledActions::ScheduledActionsBundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::ScheduledActions::ScheduledActionsBundles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::ScheduledActions::ScheduledActionsBundles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "scheduled-actions-bundle")
+        return true;
+    return false;
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundle()
@@ -4160,8 +5322,8 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActi
 
 bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_interface.yfilter)
 	|| (scheduled_actions_bundle_item !=  nullptr && scheduled_actions_bundle_item->has_operation());
 }
 
@@ -4188,7 +5350,7 @@ const EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_interface.is_set || is_set(bundle_interface.operation)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
+    if (bundle_interface.is_set || is_set(bundle_interface.yfilter)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4221,12 +5383,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActio
     return children;
 }
 
-void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::set_value(const std::string & value_path, std::string value)
+void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-interface")
     {
         bundle_interface = value;
+        bundle_interface.value_namespace = name_space;
+        bundle_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-interface")
+    {
+        bundle_interface.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "scheduled-actions-bundle-item" || name == "bundle-interface")
+        return true;
+    return false;
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledActionsBundleItem()
@@ -4257,8 +5436,8 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActi
         if(scheduled_action[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(bundle_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_name.yfilter);
 }
 
 std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::get_segment_path() const
@@ -4284,7 +5463,7 @@ const EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_name.is_set || is_set(bundle_name.operation)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
+    if (bundle_name.is_set || is_set(bundle_name.yfilter)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4324,12 +5503,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActio
     return children;
 }
 
-void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::set_value(const std::string & value_path, std::string value)
+void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-name")
     {
         bundle_name = value;
+        bundle_name.value_namespace = name_space;
+        bundle_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-name")
+    {
+        bundle_name.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "scheduled-action" || name == "bundle-name")
+        return true;
+    return false;
 }
 
 BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::ScheduledAction()
@@ -4354,10 +5550,10 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActi
 
 bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(action_state.operation)
-	|| is_set(mlacp_action.operation)
-	|| is_set(time_remaining.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(action_state.yfilter)
+	|| ydk::is_set(mlacp_action.yfilter)
+	|| ydk::is_set(time_remaining.yfilter);
 }
 
 std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::get_segment_path() const
@@ -4383,9 +5579,9 @@ const EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_state.is_set || is_set(action_state.operation)) leaf_name_data.push_back(action_state.get_name_leafdata());
-    if (mlacp_action.is_set || is_set(mlacp_action.operation)) leaf_name_data.push_back(mlacp_action.get_name_leafdata());
-    if (time_remaining.is_set || is_set(time_remaining.operation)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
+    if (action_state.is_set || is_set(action_state.yfilter)) leaf_name_data.push_back(action_state.get_name_leafdata());
+    if (mlacp_action.is_set || is_set(mlacp_action.yfilter)) leaf_name_data.push_back(mlacp_action.get_name_leafdata());
+    if (time_remaining.is_set || is_set(time_remaining.yfilter)) leaf_name_data.push_back(time_remaining.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4404,20 +5600,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::ScheduledActio
     return children;
 }
 
-void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::set_value(const std::string & value_path, std::string value)
+void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-state")
     {
         action_state = value;
+        action_state.value_namespace = name_space;
+        action_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-action")
     {
         mlacp_action = value;
+        mlacp_action.value_namespace = name_space;
+        mlacp_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-remaining")
     {
         time_remaining = value;
+        time_remaining.value_namespace = name_space;
+        time_remaining.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-state")
+    {
+        action_state.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-action")
+    {
+        mlacp_action.yfilter = yfilter;
+    }
+    if(value_path == "time-remaining")
+    {
+        time_remaining.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action-state" || name == "mlacp-action" || name == "time-remaining")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::Bundle()
@@ -4444,7 +5669,7 @@ bool BundleInformation::Bundle::has_data() const
 
 bool BundleInformation::Bundle::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bundle_bundles !=  nullptr && bundle_bundles->has_operation())
 	|| (bundle_members !=  nullptr && bundle_members->has_operation());
 }
@@ -4518,8 +5743,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::get_ch
     return children;
 }
 
-void BundleInformation::Bundle::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Bundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Bundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-bundles" || name == "bundle-members")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundles()
@@ -4548,7 +5784,7 @@ bool BundleInformation::Bundle::BundleBundles::has_operation() const
         if(bundle_bundle[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::get_segment_path() const
@@ -4613,8 +5849,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Bundle::BundleBundles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Bundle::BundleBundles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-bundle")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle()
@@ -4648,8 +5895,8 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::has_data() const
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_interface.yfilter)
 	|| (bundle_bundle_children_members !=  nullptr && bundle_bundle_children_members->has_operation())
 	|| (bundle_bundle_descendant !=  nullptr && bundle_bundle_descendant->has_operation())
 	|| (bundle_bundle_item !=  nullptr && bundle_bundle_item->has_operation());
@@ -4678,7 +5925,7 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_interface.is_set || is_set(bundle_interface.operation)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
+    if (bundle_interface.is_set || is_set(bundle_interface.yfilter)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4739,12 +5986,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-interface")
     {
         bundle_interface = value;
+        bundle_interface.value_namespace = name_space;
+        bundle_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-interface")
+    {
+        bundle_interface.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-bundle-children-members" || name == "bundle-bundle-descendant" || name == "bundle-bundle-item" || name == "bundle-interface")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleBundleDescendant()
@@ -4777,7 +6041,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
         if(member_data[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
@@ -4857,8 +6121,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-data" || name == "member-data")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BundleData()
@@ -4968,45 +6243,45 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
         if(bfd_config[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active_foreign_member_count.operation)
-	|| is_set(active_member_count.operation)
-	|| is_set(available_bandwidth.operation)
-	|| is_set(bundle_interface_name.operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(cisco_extensions.operation)
-	|| is_set(collector_max_delay.operation)
-	|| is_set(configured_bandwidth.operation)
-	|| is_set(configured_foreign_member_count.operation)
-	|| is_set(configured_member_count.operation)
-	|| is_set(effective_bandwidth.operation)
-	|| is_set(iccp_group_id.operation)
-	|| is_set(inter_chassis.operation)
-	|| is_set(ipv4bfd_status.operation)
-	|| is_set(ipv6bfd_status.operation)
-	|| is_set(is_active.operation)
-	|| is_set(lacp_nonrevertive.operation)
-	|| is_set(lacp_status.operation)
-	|| is_set(link_order_status.operation)
-	|| is_set(load_balance_hash_type.operation)
-	|| is_set(load_balance_locality_threshold.operation)
-	|| is_set(mac_source.operation)
-	|| is_set(mac_source_member.operation)
-	|| is_set(maximize_threshold_value_band_width.operation)
-	|| is_set(maximize_threshold_value_links.operation)
-	|| is_set(maximum_active_links.operation)
-	|| is_set(maximum_active_links_source.operation)
-	|| is_set(minimum_active_links.operation)
-	|| is_set(minimum_bandwidth.operation)
-	|| is_set(mlacp_mode.operation)
-	|| is_set(mlacp_status.operation)
-	|| is_set(primary_member.operation)
-	|| is_set(recovery_delay.operation)
-	|| is_set(singleton.operation)
-	|| is_set(standby_member_count.operation)
-	|| is_set(suppression_timer.operation)
-	|| is_set(switchover_type.operation)
-	|| is_set(wait_while_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(active_foreign_member_count.yfilter)
+	|| ydk::is_set(active_member_count.yfilter)
+	|| ydk::is_set(available_bandwidth.yfilter)
+	|| ydk::is_set(bundle_interface_name.yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(cisco_extensions.yfilter)
+	|| ydk::is_set(collector_max_delay.yfilter)
+	|| ydk::is_set(configured_bandwidth.yfilter)
+	|| ydk::is_set(configured_foreign_member_count.yfilter)
+	|| ydk::is_set(configured_member_count.yfilter)
+	|| ydk::is_set(effective_bandwidth.yfilter)
+	|| ydk::is_set(iccp_group_id.yfilter)
+	|| ydk::is_set(inter_chassis.yfilter)
+	|| ydk::is_set(ipv4bfd_status.yfilter)
+	|| ydk::is_set(ipv6bfd_status.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(lacp_nonrevertive.yfilter)
+	|| ydk::is_set(lacp_status.yfilter)
+	|| ydk::is_set(link_order_status.yfilter)
+	|| ydk::is_set(load_balance_hash_type.yfilter)
+	|| ydk::is_set(load_balance_locality_threshold.yfilter)
+	|| ydk::is_set(mac_source.yfilter)
+	|| ydk::is_set(mac_source_member.yfilter)
+	|| ydk::is_set(maximize_threshold_value_band_width.yfilter)
+	|| ydk::is_set(maximize_threshold_value_links.yfilter)
+	|| ydk::is_set(maximum_active_links.yfilter)
+	|| ydk::is_set(maximum_active_links_source.yfilter)
+	|| ydk::is_set(minimum_active_links.yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter)
+	|| ydk::is_set(mlacp_mode.yfilter)
+	|| ydk::is_set(mlacp_status.yfilter)
+	|| ydk::is_set(primary_member.yfilter)
+	|| ydk::is_set(recovery_delay.yfilter)
+	|| ydk::is_set(singleton.yfilter)
+	|| ydk::is_set(standby_member_count.yfilter)
+	|| ydk::is_set(suppression_timer.yfilter)
+	|| ydk::is_set(switchover_type.yfilter)
+	|| ydk::is_set(wait_while_timer.yfilter)
 	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
@@ -5033,44 +6308,44 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.operation)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
-    if (active_member_count.is_set || is_set(active_member_count.operation)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
-    if (available_bandwidth.is_set || is_set(available_bandwidth.operation)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
-    if (bundle_interface_name.is_set || is_set(bundle_interface_name.operation)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (cisco_extensions.is_set || is_set(cisco_extensions.operation)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
-    if (collector_max_delay.is_set || is_set(collector_max_delay.operation)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
-    if (configured_bandwidth.is_set || is_set(configured_bandwidth.operation)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
-    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.operation)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
-    if (configured_member_count.is_set || is_set(configured_member_count.operation)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
-    if (effective_bandwidth.is_set || is_set(effective_bandwidth.operation)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
-    if (iccp_group_id.is_set || is_set(iccp_group_id.operation)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
-    if (inter_chassis.is_set || is_set(inter_chassis.operation)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
-    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.operation)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
-    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.operation)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.operation)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
-    if (lacp_status.is_set || is_set(lacp_status.operation)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
-    if (link_order_status.is_set || is_set(link_order_status.operation)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
-    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.operation)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
-    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.operation)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
-    if (mac_source.is_set || is_set(mac_source.operation)) leaf_name_data.push_back(mac_source.get_name_leafdata());
-    if (mac_source_member.is_set || is_set(mac_source_member.operation)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
-    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.operation)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
-    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.operation)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
-    if (maximum_active_links.is_set || is_set(maximum_active_links.operation)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
-    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.operation)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
-    if (minimum_active_links.is_set || is_set(minimum_active_links.operation)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
-    if (mlacp_mode.is_set || is_set(mlacp_mode.operation)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
-    if (mlacp_status.is_set || is_set(mlacp_status.operation)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
-    if (primary_member.is_set || is_set(primary_member.operation)) leaf_name_data.push_back(primary_member.get_name_leafdata());
-    if (recovery_delay.is_set || is_set(recovery_delay.operation)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
-    if (singleton.is_set || is_set(singleton.operation)) leaf_name_data.push_back(singleton.get_name_leafdata());
-    if (standby_member_count.is_set || is_set(standby_member_count.operation)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
-    if (suppression_timer.is_set || is_set(suppression_timer.operation)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
-    if (switchover_type.is_set || is_set(switchover_type.operation)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
-    if (wait_while_timer.is_set || is_set(wait_while_timer.operation)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
+    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.yfilter)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
+    if (active_member_count.is_set || is_set(active_member_count.yfilter)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
+    if (available_bandwidth.is_set || is_set(available_bandwidth.yfilter)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
+    if (bundle_interface_name.is_set || is_set(bundle_interface_name.yfilter)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (cisco_extensions.is_set || is_set(cisco_extensions.yfilter)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
+    if (collector_max_delay.is_set || is_set(collector_max_delay.yfilter)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
+    if (configured_bandwidth.is_set || is_set(configured_bandwidth.yfilter)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
+    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.yfilter)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
+    if (configured_member_count.is_set || is_set(configured_member_count.yfilter)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
+    if (effective_bandwidth.is_set || is_set(effective_bandwidth.yfilter)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
+    if (iccp_group_id.is_set || is_set(iccp_group_id.yfilter)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
+    if (inter_chassis.is_set || is_set(inter_chassis.yfilter)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
+    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.yfilter)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
+    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.yfilter)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.yfilter)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
+    if (lacp_status.is_set || is_set(lacp_status.yfilter)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
+    if (link_order_status.is_set || is_set(link_order_status.yfilter)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
+    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.yfilter)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
+    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.yfilter)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
+    if (mac_source.is_set || is_set(mac_source.yfilter)) leaf_name_data.push_back(mac_source.get_name_leafdata());
+    if (mac_source_member.is_set || is_set(mac_source_member.yfilter)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
+    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.yfilter)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
+    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.yfilter)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
+    if (maximum_active_links.is_set || is_set(maximum_active_links.yfilter)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
+    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.yfilter)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
+    if (minimum_active_links.is_set || is_set(minimum_active_links.yfilter)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (mlacp_mode.is_set || is_set(mlacp_mode.yfilter)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
+    if (mlacp_status.is_set || is_set(mlacp_status.yfilter)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
+    if (primary_member.is_set || is_set(primary_member.yfilter)) leaf_name_data.push_back(primary_member.get_name_leafdata());
+    if (recovery_delay.is_set || is_set(recovery_delay.yfilter)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
+    if (singleton.is_set || is_set(singleton.yfilter)) leaf_name_data.push_back(singleton.get_name_leafdata());
+    if (standby_member_count.is_set || is_set(standby_member_count.yfilter)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
+    if (suppression_timer.is_set || is_set(suppression_timer.yfilter)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
+    if (switchover_type.is_set || is_set(switchover_type.yfilter)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
+    if (wait_while_timer.is_set || is_set(wait_while_timer.yfilter)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5124,160 +6399,399 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-foreign-member-count")
     {
         active_foreign_member_count = value;
+        active_foreign_member_count.value_namespace = name_space;
+        active_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-member-count")
     {
         active_member_count = value;
+        active_member_count.value_namespace = name_space;
+        active_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "available-bandwidth")
     {
         available_bandwidth = value;
+        available_bandwidth.value_namespace = name_space;
+        available_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-interface-name")
     {
         bundle_interface_name = value;
+        bundle_interface_name.value_namespace = name_space;
+        bundle_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cisco-extensions")
     {
         cisco_extensions = value;
+        cisco_extensions.value_namespace = name_space;
+        cisco_extensions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collector-max-delay")
     {
         collector_max_delay = value;
+        collector_max_delay.value_namespace = name_space;
+        collector_max_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-bandwidth")
     {
         configured_bandwidth = value;
+        configured_bandwidth.value_namespace = name_space;
+        configured_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-foreign-member-count")
     {
         configured_foreign_member_count = value;
+        configured_foreign_member_count.value_namespace = name_space;
+        configured_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-member-count")
     {
         configured_member_count = value;
+        configured_member_count.value_namespace = name_space;
+        configured_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "effective-bandwidth")
     {
         effective_bandwidth = value;
+        effective_bandwidth.value_namespace = name_space;
+        effective_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-group-id")
     {
         iccp_group_id = value;
+        iccp_group_id.value_namespace = name_space;
+        iccp_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-chassis")
     {
         inter_chassis = value;
+        inter_chassis.value_namespace = name_space;
+        inter_chassis.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4bfd-status")
     {
         ipv4bfd_status = value;
+        ipv4bfd_status.value_namespace = name_space;
+        ipv4bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-status")
     {
         ipv6bfd_status = value;
+        ipv6bfd_status.value_namespace = name_space;
+        ipv6bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-nonrevertive")
     {
         lacp_nonrevertive = value;
+        lacp_nonrevertive.value_namespace = name_space;
+        lacp_nonrevertive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-status")
     {
         lacp_status = value;
+        lacp_status.value_namespace = name_space;
+        lacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-status")
     {
         link_order_status = value;
+        link_order_status.value_namespace = name_space;
+        link_order_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-hash-type")
     {
         load_balance_hash_type = value;
+        load_balance_hash_type.value_namespace = name_space;
+        load_balance_hash_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-locality-threshold")
     {
         load_balance_locality_threshold = value;
+        load_balance_locality_threshold.value_namespace = name_space;
+        load_balance_locality_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source")
     {
         mac_source = value;
+        mac_source.value_namespace = name_space;
+        mac_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source-member")
     {
         mac_source_member = value;
+        mac_source_member.value_namespace = name_space;
+        mac_source_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-band-width")
     {
         maximize_threshold_value_band_width = value;
+        maximize_threshold_value_band_width.value_namespace = name_space;
+        maximize_threshold_value_band_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-links")
     {
         maximize_threshold_value_links = value;
+        maximize_threshold_value_links.value_namespace = name_space;
+        maximize_threshold_value_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links")
     {
         maximum_active_links = value;
+        maximum_active_links.value_namespace = name_space;
+        maximum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links-source")
     {
         maximum_active_links_source = value;
+        maximum_active_links_source.value_namespace = name_space;
+        maximum_active_links_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-active-links")
     {
         minimum_active_links = value;
+        minimum_active_links.value_namespace = name_space;
+        minimum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-mode")
     {
         mlacp_mode = value;
+        mlacp_mode.value_namespace = name_space;
+        mlacp_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-status")
     {
         mlacp_status = value;
+        mlacp_status.value_namespace = name_space;
+        mlacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-member")
     {
         primary_member = value;
+        primary_member.value_namespace = name_space;
+        primary_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recovery-delay")
     {
         recovery_delay = value;
+        recovery_delay.value_namespace = name_space;
+        recovery_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "singleton")
     {
         singleton = value;
+        singleton.value_namespace = name_space;
+        singleton.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-member-count")
     {
         standby_member_count = value;
+        standby_member_count.value_namespace = name_space;
+        standby_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppression-timer")
     {
         suppression_timer = value;
+        suppression_timer.value_namespace = name_space;
+        suppression_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switchover-type")
     {
         switchover_type = value;
+        switchover_type.value_namespace = name_space;
+        switchover_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wait-while-timer")
     {
         wait_while_timer = value;
+        wait_while_timer.value_namespace = name_space;
+        wait_while_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-foreign-member-count")
+    {
+        active_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "active-member-count")
+    {
+        active_member_count.yfilter = yfilter;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "bundle-interface-name")
+    {
+        bundle_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "cisco-extensions")
+    {
+        cisco_extensions.yfilter = yfilter;
+    }
+    if(value_path == "collector-max-delay")
+    {
+        collector_max_delay.yfilter = yfilter;
+    }
+    if(value_path == "configured-bandwidth")
+    {
+        configured_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "configured-foreign-member-count")
+    {
+        configured_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-member-count")
+    {
+        configured_member_count.yfilter = yfilter;
+    }
+    if(value_path == "effective-bandwidth")
+    {
+        effective_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-group-id")
+    {
+        iccp_group_id.yfilter = yfilter;
+    }
+    if(value_path == "inter-chassis")
+    {
+        inter_chassis.yfilter = yfilter;
+    }
+    if(value_path == "ipv4bfd-status")
+    {
+        ipv4bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-status")
+    {
+        ipv6bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "lacp-nonrevertive")
+    {
+        lacp_nonrevertive.yfilter = yfilter;
+    }
+    if(value_path == "lacp-status")
+    {
+        lacp_status.yfilter = yfilter;
+    }
+    if(value_path == "link-order-status")
+    {
+        link_order_status.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-hash-type")
+    {
+        load_balance_hash_type.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-locality-threshold")
+    {
+        load_balance_locality_threshold.yfilter = yfilter;
+    }
+    if(value_path == "mac-source")
+    {
+        mac_source.yfilter = yfilter;
+    }
+    if(value_path == "mac-source-member")
+    {
+        mac_source_member.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-band-width")
+    {
+        maximize_threshold_value_band_width.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-links")
+    {
+        maximize_threshold_value_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links")
+    {
+        maximum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links-source")
+    {
+        maximum_active_links_source.yfilter = yfilter;
+    }
+    if(value_path == "minimum-active-links")
+    {
+        minimum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-mode")
+    {
+        mlacp_mode.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-status")
+    {
+        mlacp_status.yfilter = yfilter;
+    }
+    if(value_path == "primary-member")
+    {
+        primary_member.yfilter = yfilter;
+    }
+    if(value_path == "recovery-delay")
+    {
+        recovery_delay.yfilter = yfilter;
+    }
+    if(value_path == "singleton")
+    {
+        singleton.yfilter = yfilter;
+    }
+    if(value_path == "standby-member-count")
+    {
+        standby_member_count.yfilter = yfilter;
+    }
+    if(value_path == "suppression-timer")
+    {
+        suppression_timer.yfilter = yfilter;
+    }
+    if(value_path == "switchover-type")
+    {
+        switchover_type.yfilter = yfilter;
+    }
+    if(value_path == "wait-while-timer")
+    {
+        wait_while_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-config" || name == "mac-address" || name == "active-foreign-member-count" || name == "active-member-count" || name == "available-bandwidth" || name == "bundle-interface-name" || name == "bundle-status" || name == "cisco-extensions" || name == "collector-max-delay" || name == "configured-bandwidth" || name == "configured-foreign-member-count" || name == "configured-member-count" || name == "effective-bandwidth" || name == "iccp-group-id" || name == "inter-chassis" || name == "ipv4bfd-status" || name == "ipv6bfd-status" || name == "is-active" || name == "lacp-nonrevertive" || name == "lacp-status" || name == "link-order-status" || name == "load-balance-hash-type" || name == "load-balance-locality-threshold" || name == "mac-source" || name == "mac-source-member" || name == "maximize-threshold-value-band-width" || name == "maximize-threshold-value-links" || name == "maximum-active-links" || name == "maximum-active-links-source" || name == "minimum-active-links" || name == "minimum-bandwidth" || name == "mlacp-mode" || name == "mlacp-status" || name == "primary-member" || name == "recovery-delay" || name == "singleton" || name == "standby-member-count" || name == "suppression-timer" || name == "switchover-type" || name == "wait-while-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::MacAddress()
@@ -5298,8 +6812,8 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::get_segment_path() const
@@ -5325,7 +6839,7 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5344,12 +6858,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::BfdConfig()
@@ -5389,15 +6920,15 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(fast_detect.operation)
-	|| is_set(mode_info.operation)
-	|| is_set(nbr_unconfig_timer.operation)
-	|| is_set(pref_echo_min_interval.operation)
-	|| is_set(pref_min_interval.operation)
-	|| is_set(pref_multiplier.operation)
-	|| is_set(start_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(fast_detect.yfilter)
+	|| ydk::is_set(mode_info.yfilter)
+	|| ydk::is_set(nbr_unconfig_timer.yfilter)
+	|| ydk::is_set(pref_echo_min_interval.yfilter)
+	|| ydk::is_set(pref_min_interval.yfilter)
+	|| ydk::is_set(pref_multiplier.yfilter)
+	|| ydk::is_set(start_timer.yfilter)
 	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
@@ -5424,14 +6955,14 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (fast_detect.is_set || is_set(fast_detect.operation)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
-    if (mode_info.is_set || is_set(mode_info.operation)) leaf_name_data.push_back(mode_info.get_name_leafdata());
-    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.operation)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
-    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.operation)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
-    if (pref_min_interval.is_set || is_set(pref_min_interval.operation)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
-    if (pref_multiplier.is_set || is_set(pref_multiplier.operation)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
-    if (start_timer.is_set || is_set(start_timer.operation)) leaf_name_data.push_back(start_timer.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (fast_detect.is_set || is_set(fast_detect.yfilter)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
+    if (mode_info.is_set || is_set(mode_info.yfilter)) leaf_name_data.push_back(mode_info.get_name_leafdata());
+    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.yfilter)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
+    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.yfilter)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
+    if (pref_min_interval.is_set || is_set(pref_min_interval.yfilter)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
+    if (pref_multiplier.is_set || is_set(pref_multiplier.yfilter)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
+    if (start_timer.is_set || is_set(start_timer.yfilter)) leaf_name_data.push_back(start_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5464,40 +6995,99 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-detect")
     {
         fast_detect = value;
+        fast_detect.value_namespace = name_space;
+        fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-info")
     {
         mode_info = value;
+        mode_info.value_namespace = name_space;
+        mode_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nbr-unconfig-timer")
     {
         nbr_unconfig_timer = value;
+        nbr_unconfig_timer.value_namespace = name_space;
+        nbr_unconfig_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-echo-min-interval")
     {
         pref_echo_min_interval = value;
+        pref_echo_min_interval.value_namespace = name_space;
+        pref_echo_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-min-interval")
     {
         pref_min_interval = value;
+        pref_min_interval.value_namespace = name_space;
+        pref_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-multiplier")
     {
         pref_multiplier = value;
+        pref_multiplier.value_namespace = name_space;
+        pref_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timer")
     {
         start_timer = value;
+        start_timer.value_namespace = name_space;
+        start_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "fast-detect")
+    {
+        fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "mode-info")
+    {
+        mode_info.yfilter = yfilter;
+    }
+    if(value_path == "nbr-unconfig-timer")
+    {
+        nbr_unconfig_timer.yfilter = yfilter;
+    }
+    if(value_path == "pref-echo-min-interval")
+    {
+        pref_echo_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-min-interval")
+    {
+        pref_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-multiplier")
+    {
+        pref_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "start-timer")
+    {
+        start_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "bundle-status" || name == "fast-detect" || name == "mode-info" || name == "nbr-unconfig-timer" || name == "pref-echo-min-interval" || name == "pref-min-interval" || name == "pref-multiplier" || name == "start-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::DestinationAddress()
@@ -5522,10 +7112,10 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::get_segment_path() const
@@ -5551,9 +7141,9 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af.is_set || is_set(af.operation)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5572,20 +7162,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af")
     {
         af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberData()
@@ -5639,16 +7258,16 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(iccp_node.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(link_order_number.operation)
-	|| is_set(member_name.operation)
-	|| is_set(member_type.operation)
-	|| is_set(port_number.operation)
-	|| is_set(port_priority.operation)
-	|| is_set(underlying_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(iccp_node.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(link_order_number.yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(member_type.yfilter)
+	|| ydk::is_set(port_number.yfilter)
+	|| ydk::is_set(port_priority.yfilter)
+	|| ydk::is_set(underlying_link_id.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (mac_address !=  nullptr && mac_address->has_operation())
@@ -5678,15 +7297,15 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (iccp_node.is_set || is_set(iccp_node.operation)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (link_order_number.is_set || is_set(link_order_number.operation)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (member_type.is_set || is_set(member_type.operation)) leaf_name_data.push_back(member_type.get_name_leafdata());
-    if (port_number.is_set || is_set(port_number.operation)) leaf_name_data.push_back(port_number.get_name_leafdata());
-    if (port_priority.is_set || is_set(port_priority.operation)) leaf_name_data.push_back(port_priority.get_name_leafdata());
-    if (underlying_link_id.is_set || is_set(underlying_link_id.operation)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (iccp_node.is_set || is_set(iccp_node.yfilter)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (link_order_number.is_set || is_set(link_order_number.yfilter)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
+    if (port_number.is_set || is_set(port_number.yfilter)) leaf_name_data.push_back(port_number.get_name_leafdata());
+    if (port_priority.is_set || is_set(port_priority.yfilter)) leaf_name_data.push_back(port_priority.get_name_leafdata());
+    if (underlying_link_id.is_set || is_set(underlying_link_id.yfilter)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5761,44 +7380,109 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-node")
     {
         iccp_node = value;
+        iccp_node.value_namespace = name_space;
+        iccp_node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-number")
     {
         link_order_number = value;
+        link_order_number.value_namespace = name_space;
+        link_order_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-type")
     {
         member_type = value;
+        member_type.value_namespace = name_space;
+        member_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-number")
     {
         port_number = value;
+        port_number.value_namespace = name_space;
+        port_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-priority")
     {
         port_priority = value;
+        port_priority.value_namespace = name_space;
+        port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "underlying-link-id")
     {
         underlying_link_id = value;
+        underlying_link_id.value_namespace = name_space;
+        underlying_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-node")
+    {
+        iccp_node.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "link-order-number")
+    {
+        link_order_number.yfilter = yfilter;
+    }
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "member-type")
+    {
+        member_type.yfilter = yfilter;
+    }
+    if(value_path == "port-number")
+    {
+        port_number.yfilter = yfilter;
+    }
+    if(value_path == "port-priority")
+    {
+        port_priority.yfilter = yfilter;
+    }
+    if(value_path == "underlying-link-id")
+    {
+        underlying_link_id.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters" || name == "link-data" || name == "mac-address" || name == "member-mux-data" || name == "bandwidth" || name == "iccp-node" || name == "interface-name" || name == "link-order-number" || name == "member-name" || name == "member-type" || name == "port-number" || name == "port-priority" || name == "underlying-link-id")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::Counters()
@@ -5839,18 +7523,18 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(defaulted.operation)
-	|| is_set(excess_lacpd_us_received.operation)
-	|| is_set(excess_marker_packets_received.operation)
-	|| is_set(expired.operation)
-	|| is_set(illegal_packets_received.operation)
-	|| is_set(lacpd_us_received.operation)
-	|| is_set(lacpd_us_transmitted.operation)
-	|| is_set(last_cleared_nsec.operation)
-	|| is_set(last_cleared_sec.operation)
-	|| is_set(marker_packets_received.operation)
-	|| is_set(marker_responses_transmitted.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(defaulted.yfilter)
+	|| ydk::is_set(excess_lacpd_us_received.yfilter)
+	|| ydk::is_set(excess_marker_packets_received.yfilter)
+	|| ydk::is_set(expired.yfilter)
+	|| ydk::is_set(illegal_packets_received.yfilter)
+	|| ydk::is_set(lacpd_us_received.yfilter)
+	|| ydk::is_set(lacpd_us_transmitted.yfilter)
+	|| ydk::is_set(last_cleared_nsec.yfilter)
+	|| ydk::is_set(last_cleared_sec.yfilter)
+	|| ydk::is_set(marker_packets_received.yfilter)
+	|| ydk::is_set(marker_responses_transmitted.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::get_segment_path() const
@@ -5876,17 +7560,17 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (defaulted.is_set || is_set(defaulted.operation)) leaf_name_data.push_back(defaulted.get_name_leafdata());
-    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.operation)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
-    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.operation)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
-    if (expired.is_set || is_set(expired.operation)) leaf_name_data.push_back(expired.get_name_leafdata());
-    if (illegal_packets_received.is_set || is_set(illegal_packets_received.operation)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
-    if (lacpd_us_received.is_set || is_set(lacpd_us_received.operation)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
-    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.operation)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
-    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.operation)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
-    if (last_cleared_sec.is_set || is_set(last_cleared_sec.operation)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
-    if (marker_packets_received.is_set || is_set(marker_packets_received.operation)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
-    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.operation)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
+    if (defaulted.is_set || is_set(defaulted.yfilter)) leaf_name_data.push_back(defaulted.get_name_leafdata());
+    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.yfilter)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
+    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.yfilter)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
+    if (expired.is_set || is_set(expired.yfilter)) leaf_name_data.push_back(expired.get_name_leafdata());
+    if (illegal_packets_received.is_set || is_set(illegal_packets_received.yfilter)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
+    if (lacpd_us_received.is_set || is_set(lacpd_us_received.yfilter)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
+    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.yfilter)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
+    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.yfilter)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
+    if (last_cleared_sec.is_set || is_set(last_cleared_sec.yfilter)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
+    if (marker_packets_received.is_set || is_set(marker_packets_received.yfilter)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
+    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.yfilter)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5905,52 +7589,129 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "defaulted")
     {
         defaulted = value;
+        defaulted.value_namespace = name_space;
+        defaulted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-lacpd-us-received")
     {
         excess_lacpd_us_received = value;
+        excess_lacpd_us_received.value_namespace = name_space;
+        excess_lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-marker-packets-received")
     {
         excess_marker_packets_received = value;
+        excess_marker_packets_received.value_namespace = name_space;
+        excess_marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "expired")
     {
         expired = value;
+        expired.value_namespace = name_space;
+        expired.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "illegal-packets-received")
     {
         illegal_packets_received = value;
+        illegal_packets_received.value_namespace = name_space;
+        illegal_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-received")
     {
         lacpd_us_received = value;
+        lacpd_us_received.value_namespace = name_space;
+        lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-transmitted")
     {
         lacpd_us_transmitted = value;
+        lacpd_us_transmitted.value_namespace = name_space;
+        lacpd_us_transmitted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-nsec")
     {
         last_cleared_nsec = value;
+        last_cleared_nsec.value_namespace = name_space;
+        last_cleared_nsec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-sec")
     {
         last_cleared_sec = value;
+        last_cleared_sec.value_namespace = name_space;
+        last_cleared_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-packets-received")
     {
         marker_packets_received = value;
+        marker_packets_received.value_namespace = name_space;
+        marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-responses-transmitted")
     {
         marker_responses_transmitted = value;
+        marker_responses_transmitted.value_namespace = name_space;
+        marker_responses_transmitted.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "defaulted")
+    {
+        defaulted.yfilter = yfilter;
+    }
+    if(value_path == "excess-lacpd-us-received")
+    {
+        excess_lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "excess-marker-packets-received")
+    {
+        excess_marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "expired")
+    {
+        expired.yfilter = yfilter;
+    }
+    if(value_path == "illegal-packets-received")
+    {
+        illegal_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-received")
+    {
+        lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-transmitted")
+    {
+        lacpd_us_transmitted.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-nsec")
+    {
+        last_cleared_nsec.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-sec")
+    {
+        last_cleared_sec.yfilter = yfilter;
+    }
+    if(value_path == "marker-packets-received")
+    {
+        marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "marker-responses-transmitted")
+    {
+        marker_responses_transmitted.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "defaulted" || name == "excess-lacpd-us-received" || name == "excess-marker-packets-received" || name == "expired" || name == "illegal-packets-received" || name == "lacpd-us-received" || name == "lacpd-us-transmitted" || name == "last-cleared-nsec" || name == "last-cleared-sec" || name == "marker-packets-received" || name == "marker-responses-transmitted")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::LinkData()
@@ -5999,22 +7760,22 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_operational_key.operation)
-	|| is_set(actor_port_id.operation)
-	|| is_set(actor_port_priority.operation)
-	|| is_set(actor_port_state.operation)
-	|| is_set(actor_system_mac_address.operation)
-	|| is_set(actor_system_priority.operation)
-	|| is_set(attached_aggregator_id.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(partner_operational_key.operation)
-	|| is_set(partner_port_id.operation)
-	|| is_set(partner_port_priority.operation)
-	|| is_set(partner_port_state.operation)
-	|| is_set(partner_system_mac_address.operation)
-	|| is_set(partner_system_priority.operation)
-	|| is_set(selected_aggregator_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(actor_operational_key.yfilter)
+	|| ydk::is_set(actor_port_id.yfilter)
+	|| ydk::is_set(actor_port_priority.yfilter)
+	|| ydk::is_set(actor_port_state.yfilter)
+	|| ydk::is_set(actor_system_mac_address.yfilter)
+	|| ydk::is_set(actor_system_priority.yfilter)
+	|| ydk::is_set(attached_aggregator_id.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(partner_port_id.yfilter)
+	|| ydk::is_set(partner_port_priority.yfilter)
+	|| ydk::is_set(partner_port_state.yfilter)
+	|| ydk::is_set(partner_system_mac_address.yfilter)
+	|| ydk::is_set(partner_system_priority.yfilter)
+	|| ydk::is_set(selected_aggregator_id.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::get_segment_path() const
@@ -6040,21 +7801,21 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_operational_key.is_set || is_set(actor_operational_key.operation)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
-    if (actor_port_id.is_set || is_set(actor_port_id.operation)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
-    if (actor_port_priority.is_set || is_set(actor_port_priority.operation)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
-    if (actor_port_state.is_set || is_set(actor_port_state.operation)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
-    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.operation)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
-    if (actor_system_priority.is_set || is_set(actor_system_priority.operation)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
-    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.operation)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (partner_operational_key.is_set || is_set(partner_operational_key.operation)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
-    if (partner_port_id.is_set || is_set(partner_port_id.operation)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
-    if (partner_port_priority.is_set || is_set(partner_port_priority.operation)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
-    if (partner_port_state.is_set || is_set(partner_port_state.operation)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
-    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.operation)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
-    if (partner_system_priority.is_set || is_set(partner_system_priority.operation)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
-    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.operation)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
+    if (actor_operational_key.is_set || is_set(actor_operational_key.yfilter)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
+    if (actor_port_id.is_set || is_set(actor_port_id.yfilter)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
+    if (actor_port_priority.is_set || is_set(actor_port_priority.yfilter)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
+    if (actor_port_state.is_set || is_set(actor_port_state.yfilter)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
+    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.yfilter)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
+    if (actor_system_priority.is_set || is_set(actor_system_priority.yfilter)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
+    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.yfilter)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (partner_port_id.is_set || is_set(partner_port_id.yfilter)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
+    if (partner_port_priority.is_set || is_set(partner_port_priority.yfilter)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
+    if (partner_port_state.is_set || is_set(partner_port_state.yfilter)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
+    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
+    if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
+    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.yfilter)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6073,68 +7834,169 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-operational-key")
     {
         actor_operational_key = value;
+        actor_operational_key.value_namespace = name_space;
+        actor_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-id")
     {
         actor_port_id = value;
+        actor_port_id.value_namespace = name_space;
+        actor_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-priority")
     {
         actor_port_priority = value;
+        actor_port_priority.value_namespace = name_space;
+        actor_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-state")
     {
         actor_port_state = value;
+        actor_port_state.value_namespace = name_space;
+        actor_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-mac-address")
     {
         actor_system_mac_address = value;
+        actor_system_mac_address.value_namespace = name_space;
+        actor_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-priority")
     {
         actor_system_priority = value;
+        actor_system_priority.value_namespace = name_space;
+        actor_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-aggregator-id")
     {
         attached_aggregator_id = value;
+        attached_aggregator_id.value_namespace = name_space;
+        attached_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-operational-key")
     {
         partner_operational_key = value;
+        partner_operational_key.value_namespace = name_space;
+        partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-id")
     {
         partner_port_id = value;
+        partner_port_id.value_namespace = name_space;
+        partner_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-priority")
     {
         partner_port_priority = value;
+        partner_port_priority.value_namespace = name_space;
+        partner_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-state")
     {
         partner_port_state = value;
+        partner_port_state.value_namespace = name_space;
+        partner_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-mac-address")
     {
         partner_system_mac_address = value;
+        partner_system_mac_address.value_namespace = name_space;
+        partner_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-priority")
     {
         partner_system_priority = value;
+        partner_system_priority.value_namespace = name_space;
+        partner_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selected-aggregator-id")
     {
         selected_aggregator_id = value;
+        selected_aggregator_id.value_namespace = name_space;
+        selected_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-operational-key")
+    {
+        actor_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-id")
+    {
+        actor_port_id.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-priority")
+    {
+        actor_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-state")
+    {
+        actor_port_state.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-mac-address")
+    {
+        actor_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-priority")
+    {
+        actor_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "attached-aggregator-id")
+    {
+        attached_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "partner-operational-key")
+    {
+        partner_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-id")
+    {
+        partner_port_id.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-priority")
+    {
+        partner_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-state")
+    {
+        partner_port_state.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-mac-address")
+    {
+        partner_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-priority")
+    {
+        partner_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "selected-aggregator-id")
+    {
+        selected_aggregator_id.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-operational-key" || name == "actor-port-id" || name == "actor-port-priority" || name == "actor-port-state" || name == "actor-system-mac-address" || name == "actor-system-priority" || name == "attached-aggregator-id" || name == "interface-handle" || name == "partner-operational-key" || name == "partner-port-id" || name == "partner-port-priority" || name == "partner-port-state" || name == "partner-system-mac-address" || name == "partner-system-priority" || name == "selected-aggregator-id")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxData()
@@ -6168,12 +8030,12 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(error.operation)
-	|| is_set(member_mux_state_reason.operation)
-	|| is_set(member_state.operation)
-	|| is_set(mux_state.operation)
-	|| is_set(mux_state_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(member_mux_state_reason.yfilter)
+	|| ydk::is_set(member_state.yfilter)
+	|| ydk::is_set(mux_state.yfilter)
+	|| ydk::is_set(mux_state_reason.yfilter)
 	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
@@ -6200,11 +8062,11 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.operation)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
-    if (member_state.is_set || is_set(member_state.operation)) leaf_name_data.push_back(member_state.get_name_leafdata());
-    if (mux_state.is_set || is_set(mux_state.operation)) leaf_name_data.push_back(mux_state.get_name_leafdata());
-    if (mux_state_reason.is_set || is_set(mux_state_reason.operation)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.yfilter)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
+    if (member_state.is_set || is_set(member_state.yfilter)) leaf_name_data.push_back(member_state.get_name_leafdata());
+    if (mux_state.is_set || is_set(mux_state.yfilter)) leaf_name_data.push_back(mux_state.get_name_leafdata());
+    if (mux_state_reason.is_set || is_set(mux_state_reason.yfilter)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6237,28 +8099,69 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-mux-state-reason")
     {
         member_mux_state_reason = value;
+        member_mux_state_reason.value_namespace = name_space;
+        member_mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-state")
     {
         member_state = value;
+        member_state.value_namespace = name_space;
+        member_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state")
     {
         mux_state = value;
+        mux_state.value_namespace = name_space;
+        mux_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state-reason")
     {
         mux_state_reason = value;
+        mux_state_reason.value_namespace = name_space;
+        mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "member-mux-state-reason")
+    {
+        member_mux_state_reason.yfilter = yfilter;
+    }
+    if(value_path == "member-state")
+    {
+        member_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state")
+    {
+        mux_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state-reason")
+    {
+        mux_state_reason.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-mux-state-reason-data" || name == "error" || name == "member-mux-state-reason" || name == "member-state" || name == "mux-state" || name == "mux-state-reason")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::MemberMuxStateReasonData()
@@ -6281,9 +8184,9 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(reason_type.operation)
-	|| is_set(severity.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(reason_type.yfilter)
+	|| ydk::is_set(severity.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::get_segment_path() const
@@ -6309,8 +8212,8 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reason_type.is_set || is_set(reason_type.operation)) leaf_name_data.push_back(reason_type.get_name_leafdata());
-    if (severity.is_set || is_set(severity.operation)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (reason_type.is_set || is_set(reason_type.yfilter)) leaf_name_data.push_back(reason_type.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6329,16 +8232,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reason-type")
     {
         reason_type = value;
+        reason_type.value_namespace = name_space;
+        reason_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severity")
     {
         severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reason-type")
+    {
+        reason_type.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reason-type" || name == "severity")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::MacAddress()
@@ -6359,8 +8285,8 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::get_segment_path() const
@@ -6386,7 +8312,7 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6405,12 +8331,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMembers()
@@ -6439,7 +8382,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
         if(bundle_bundle_children_member[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::get_segment_path() const
@@ -6504,8 +8447,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-bundle-children-member")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::BundleBundleChildrenMember()
@@ -6561,17 +8515,17 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(iccp_node.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(link_order_number.operation)
-	|| is_set(member_name.operation)
-	|| is_set(member_type.operation)
-	|| is_set(port_number.operation)
-	|| is_set(port_priority.operation)
-	|| is_set(underlying_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(iccp_node.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(link_order_number.yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(member_type.yfilter)
+	|| ydk::is_set(port_number.yfilter)
+	|| ydk::is_set(port_priority.yfilter)
+	|| ydk::is_set(underlying_link_id.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (mac_address !=  nullptr && mac_address->has_operation())
@@ -6601,16 +8555,16 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (iccp_node.is_set || is_set(iccp_node.operation)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (link_order_number.is_set || is_set(link_order_number.operation)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (member_type.is_set || is_set(member_type.operation)) leaf_name_data.push_back(member_type.get_name_leafdata());
-    if (port_number.is_set || is_set(port_number.operation)) leaf_name_data.push_back(port_number.get_name_leafdata());
-    if (port_priority.is_set || is_set(port_priority.operation)) leaf_name_data.push_back(port_priority.get_name_leafdata());
-    if (underlying_link_id.is_set || is_set(underlying_link_id.operation)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (iccp_node.is_set || is_set(iccp_node.yfilter)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (link_order_number.is_set || is_set(link_order_number.yfilter)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
+    if (port_number.is_set || is_set(port_number.yfilter)) leaf_name_data.push_back(port_number.get_name_leafdata());
+    if (port_priority.is_set || is_set(port_priority.yfilter)) leaf_name_data.push_back(port_priority.get_name_leafdata());
+    if (underlying_link_id.is_set || is_set(underlying_link_id.yfilter)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6685,48 +8639,119 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-node")
     {
         iccp_node = value;
+        iccp_node.value_namespace = name_space;
+        iccp_node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-number")
     {
         link_order_number = value;
+        link_order_number.value_namespace = name_space;
+        link_order_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-type")
     {
         member_type = value;
+        member_type.value_namespace = name_space;
+        member_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-number")
     {
         port_number = value;
+        port_number.value_namespace = name_space;
+        port_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-priority")
     {
         port_priority = value;
+        port_priority.value_namespace = name_space;
+        port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "underlying-link-id")
     {
         underlying_link_id = value;
+        underlying_link_id.value_namespace = name_space;
+        underlying_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-node")
+    {
+        iccp_node.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "link-order-number")
+    {
+        link_order_number.yfilter = yfilter;
+    }
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "member-type")
+    {
+        member_type.yfilter = yfilter;
+    }
+    if(value_path == "port-number")
+    {
+        port_number.yfilter = yfilter;
+    }
+    if(value_path == "port-priority")
+    {
+        port_priority.yfilter = yfilter;
+    }
+    if(value_path == "underlying-link-id")
+    {
+        underlying_link_id.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters" || name == "link-data" || name == "mac-address" || name == "member-mux-data" || name == "member-interface" || name == "bandwidth" || name == "iccp-node" || name == "interface-name" || name == "link-order-number" || name == "member-name" || name == "member-type" || name == "port-number" || name == "port-priority" || name == "underlying-link-id")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::Counters()
@@ -6767,18 +8792,18 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(defaulted.operation)
-	|| is_set(excess_lacpd_us_received.operation)
-	|| is_set(excess_marker_packets_received.operation)
-	|| is_set(expired.operation)
-	|| is_set(illegal_packets_received.operation)
-	|| is_set(lacpd_us_received.operation)
-	|| is_set(lacpd_us_transmitted.operation)
-	|| is_set(last_cleared_nsec.operation)
-	|| is_set(last_cleared_sec.operation)
-	|| is_set(marker_packets_received.operation)
-	|| is_set(marker_responses_transmitted.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(defaulted.yfilter)
+	|| ydk::is_set(excess_lacpd_us_received.yfilter)
+	|| ydk::is_set(excess_marker_packets_received.yfilter)
+	|| ydk::is_set(expired.yfilter)
+	|| ydk::is_set(illegal_packets_received.yfilter)
+	|| ydk::is_set(lacpd_us_received.yfilter)
+	|| ydk::is_set(lacpd_us_transmitted.yfilter)
+	|| ydk::is_set(last_cleared_nsec.yfilter)
+	|| ydk::is_set(last_cleared_sec.yfilter)
+	|| ydk::is_set(marker_packets_received.yfilter)
+	|| ydk::is_set(marker_responses_transmitted.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::get_segment_path() const
@@ -6804,17 +8829,17 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (defaulted.is_set || is_set(defaulted.operation)) leaf_name_data.push_back(defaulted.get_name_leafdata());
-    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.operation)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
-    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.operation)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
-    if (expired.is_set || is_set(expired.operation)) leaf_name_data.push_back(expired.get_name_leafdata());
-    if (illegal_packets_received.is_set || is_set(illegal_packets_received.operation)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
-    if (lacpd_us_received.is_set || is_set(lacpd_us_received.operation)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
-    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.operation)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
-    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.operation)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
-    if (last_cleared_sec.is_set || is_set(last_cleared_sec.operation)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
-    if (marker_packets_received.is_set || is_set(marker_packets_received.operation)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
-    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.operation)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
+    if (defaulted.is_set || is_set(defaulted.yfilter)) leaf_name_data.push_back(defaulted.get_name_leafdata());
+    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.yfilter)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
+    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.yfilter)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
+    if (expired.is_set || is_set(expired.yfilter)) leaf_name_data.push_back(expired.get_name_leafdata());
+    if (illegal_packets_received.is_set || is_set(illegal_packets_received.yfilter)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
+    if (lacpd_us_received.is_set || is_set(lacpd_us_received.yfilter)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
+    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.yfilter)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
+    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.yfilter)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
+    if (last_cleared_sec.is_set || is_set(last_cleared_sec.yfilter)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
+    if (marker_packets_received.is_set || is_set(marker_packets_received.yfilter)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
+    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.yfilter)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6833,52 +8858,129 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "defaulted")
     {
         defaulted = value;
+        defaulted.value_namespace = name_space;
+        defaulted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-lacpd-us-received")
     {
         excess_lacpd_us_received = value;
+        excess_lacpd_us_received.value_namespace = name_space;
+        excess_lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-marker-packets-received")
     {
         excess_marker_packets_received = value;
+        excess_marker_packets_received.value_namespace = name_space;
+        excess_marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "expired")
     {
         expired = value;
+        expired.value_namespace = name_space;
+        expired.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "illegal-packets-received")
     {
         illegal_packets_received = value;
+        illegal_packets_received.value_namespace = name_space;
+        illegal_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-received")
     {
         lacpd_us_received = value;
+        lacpd_us_received.value_namespace = name_space;
+        lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-transmitted")
     {
         lacpd_us_transmitted = value;
+        lacpd_us_transmitted.value_namespace = name_space;
+        lacpd_us_transmitted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-nsec")
     {
         last_cleared_nsec = value;
+        last_cleared_nsec.value_namespace = name_space;
+        last_cleared_nsec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-sec")
     {
         last_cleared_sec = value;
+        last_cleared_sec.value_namespace = name_space;
+        last_cleared_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-packets-received")
     {
         marker_packets_received = value;
+        marker_packets_received.value_namespace = name_space;
+        marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-responses-transmitted")
     {
         marker_responses_transmitted = value;
+        marker_responses_transmitted.value_namespace = name_space;
+        marker_responses_transmitted.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "defaulted")
+    {
+        defaulted.yfilter = yfilter;
+    }
+    if(value_path == "excess-lacpd-us-received")
+    {
+        excess_lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "excess-marker-packets-received")
+    {
+        excess_marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "expired")
+    {
+        expired.yfilter = yfilter;
+    }
+    if(value_path == "illegal-packets-received")
+    {
+        illegal_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-received")
+    {
+        lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-transmitted")
+    {
+        lacpd_us_transmitted.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-nsec")
+    {
+        last_cleared_nsec.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-sec")
+    {
+        last_cleared_sec.yfilter = yfilter;
+    }
+    if(value_path == "marker-packets-received")
+    {
+        marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "marker-responses-transmitted")
+    {
+        marker_responses_transmitted.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "defaulted" || name == "excess-lacpd-us-received" || name == "excess-marker-packets-received" || name == "expired" || name == "illegal-packets-received" || name == "lacpd-us-received" || name == "lacpd-us-transmitted" || name == "last-cleared-nsec" || name == "last-cleared-sec" || name == "marker-packets-received" || name == "marker-responses-transmitted")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::LinkData()
@@ -6927,22 +9029,22 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_operational_key.operation)
-	|| is_set(actor_port_id.operation)
-	|| is_set(actor_port_priority.operation)
-	|| is_set(actor_port_state.operation)
-	|| is_set(actor_system_mac_address.operation)
-	|| is_set(actor_system_priority.operation)
-	|| is_set(attached_aggregator_id.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(partner_operational_key.operation)
-	|| is_set(partner_port_id.operation)
-	|| is_set(partner_port_priority.operation)
-	|| is_set(partner_port_state.operation)
-	|| is_set(partner_system_mac_address.operation)
-	|| is_set(partner_system_priority.operation)
-	|| is_set(selected_aggregator_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(actor_operational_key.yfilter)
+	|| ydk::is_set(actor_port_id.yfilter)
+	|| ydk::is_set(actor_port_priority.yfilter)
+	|| ydk::is_set(actor_port_state.yfilter)
+	|| ydk::is_set(actor_system_mac_address.yfilter)
+	|| ydk::is_set(actor_system_priority.yfilter)
+	|| ydk::is_set(attached_aggregator_id.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(partner_port_id.yfilter)
+	|| ydk::is_set(partner_port_priority.yfilter)
+	|| ydk::is_set(partner_port_state.yfilter)
+	|| ydk::is_set(partner_system_mac_address.yfilter)
+	|| ydk::is_set(partner_system_priority.yfilter)
+	|| ydk::is_set(selected_aggregator_id.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::get_segment_path() const
@@ -6968,21 +9070,21 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_operational_key.is_set || is_set(actor_operational_key.operation)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
-    if (actor_port_id.is_set || is_set(actor_port_id.operation)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
-    if (actor_port_priority.is_set || is_set(actor_port_priority.operation)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
-    if (actor_port_state.is_set || is_set(actor_port_state.operation)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
-    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.operation)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
-    if (actor_system_priority.is_set || is_set(actor_system_priority.operation)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
-    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.operation)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (partner_operational_key.is_set || is_set(partner_operational_key.operation)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
-    if (partner_port_id.is_set || is_set(partner_port_id.operation)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
-    if (partner_port_priority.is_set || is_set(partner_port_priority.operation)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
-    if (partner_port_state.is_set || is_set(partner_port_state.operation)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
-    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.operation)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
-    if (partner_system_priority.is_set || is_set(partner_system_priority.operation)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
-    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.operation)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
+    if (actor_operational_key.is_set || is_set(actor_operational_key.yfilter)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
+    if (actor_port_id.is_set || is_set(actor_port_id.yfilter)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
+    if (actor_port_priority.is_set || is_set(actor_port_priority.yfilter)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
+    if (actor_port_state.is_set || is_set(actor_port_state.yfilter)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
+    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.yfilter)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
+    if (actor_system_priority.is_set || is_set(actor_system_priority.yfilter)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
+    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.yfilter)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (partner_port_id.is_set || is_set(partner_port_id.yfilter)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
+    if (partner_port_priority.is_set || is_set(partner_port_priority.yfilter)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
+    if (partner_port_state.is_set || is_set(partner_port_state.yfilter)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
+    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
+    if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
+    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.yfilter)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7001,68 +9103,169 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-operational-key")
     {
         actor_operational_key = value;
+        actor_operational_key.value_namespace = name_space;
+        actor_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-id")
     {
         actor_port_id = value;
+        actor_port_id.value_namespace = name_space;
+        actor_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-priority")
     {
         actor_port_priority = value;
+        actor_port_priority.value_namespace = name_space;
+        actor_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-state")
     {
         actor_port_state = value;
+        actor_port_state.value_namespace = name_space;
+        actor_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-mac-address")
     {
         actor_system_mac_address = value;
+        actor_system_mac_address.value_namespace = name_space;
+        actor_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-priority")
     {
         actor_system_priority = value;
+        actor_system_priority.value_namespace = name_space;
+        actor_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-aggregator-id")
     {
         attached_aggregator_id = value;
+        attached_aggregator_id.value_namespace = name_space;
+        attached_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-operational-key")
     {
         partner_operational_key = value;
+        partner_operational_key.value_namespace = name_space;
+        partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-id")
     {
         partner_port_id = value;
+        partner_port_id.value_namespace = name_space;
+        partner_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-priority")
     {
         partner_port_priority = value;
+        partner_port_priority.value_namespace = name_space;
+        partner_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-state")
     {
         partner_port_state = value;
+        partner_port_state.value_namespace = name_space;
+        partner_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-mac-address")
     {
         partner_system_mac_address = value;
+        partner_system_mac_address.value_namespace = name_space;
+        partner_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-priority")
     {
         partner_system_priority = value;
+        partner_system_priority.value_namespace = name_space;
+        partner_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selected-aggregator-id")
     {
         selected_aggregator_id = value;
+        selected_aggregator_id.value_namespace = name_space;
+        selected_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-operational-key")
+    {
+        actor_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-id")
+    {
+        actor_port_id.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-priority")
+    {
+        actor_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-state")
+    {
+        actor_port_state.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-mac-address")
+    {
+        actor_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-priority")
+    {
+        actor_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "attached-aggregator-id")
+    {
+        attached_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "partner-operational-key")
+    {
+        partner_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-id")
+    {
+        partner_port_id.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-priority")
+    {
+        partner_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-state")
+    {
+        partner_port_state.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-mac-address")
+    {
+        partner_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-priority")
+    {
+        partner_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "selected-aggregator-id")
+    {
+        selected_aggregator_id.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-operational-key" || name == "actor-port-id" || name == "actor-port-priority" || name == "actor-port-state" || name == "actor-system-mac-address" || name == "actor-system-priority" || name == "attached-aggregator-id" || name == "interface-handle" || name == "partner-operational-key" || name == "partner-port-id" || name == "partner-port-priority" || name == "partner-port-state" || name == "partner-system-mac-address" || name == "partner-system-priority" || name == "selected-aggregator-id")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxData()
@@ -7096,12 +9299,12 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(error.operation)
-	|| is_set(member_mux_state_reason.operation)
-	|| is_set(member_state.operation)
-	|| is_set(mux_state.operation)
-	|| is_set(mux_state_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(member_mux_state_reason.yfilter)
+	|| ydk::is_set(member_state.yfilter)
+	|| ydk::is_set(mux_state.yfilter)
+	|| ydk::is_set(mux_state_reason.yfilter)
 	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
@@ -7128,11 +9331,11 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.operation)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
-    if (member_state.is_set || is_set(member_state.operation)) leaf_name_data.push_back(member_state.get_name_leafdata());
-    if (mux_state.is_set || is_set(mux_state.operation)) leaf_name_data.push_back(mux_state.get_name_leafdata());
-    if (mux_state_reason.is_set || is_set(mux_state_reason.operation)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.yfilter)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
+    if (member_state.is_set || is_set(member_state.yfilter)) leaf_name_data.push_back(member_state.get_name_leafdata());
+    if (mux_state.is_set || is_set(mux_state.yfilter)) leaf_name_data.push_back(mux_state.get_name_leafdata());
+    if (mux_state_reason.is_set || is_set(mux_state_reason.yfilter)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7165,28 +9368,69 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-mux-state-reason")
     {
         member_mux_state_reason = value;
+        member_mux_state_reason.value_namespace = name_space;
+        member_mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-state")
     {
         member_state = value;
+        member_state.value_namespace = name_space;
+        member_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state")
     {
         mux_state = value;
+        mux_state.value_namespace = name_space;
+        mux_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state-reason")
     {
         mux_state_reason = value;
+        mux_state_reason.value_namespace = name_space;
+        mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "member-mux-state-reason")
+    {
+        member_mux_state_reason.yfilter = yfilter;
+    }
+    if(value_path == "member-state")
+    {
+        member_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state")
+    {
+        mux_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state-reason")
+    {
+        mux_state_reason.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-mux-state-reason-data" || name == "error" || name == "member-mux-state-reason" || name == "member-state" || name == "mux-state" || name == "mux-state-reason")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::MemberMuxStateReasonData()
@@ -7209,9 +9453,9 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(reason_type.operation)
-	|| is_set(severity.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(reason_type.yfilter)
+	|| ydk::is_set(severity.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::get_segment_path() const
@@ -7237,8 +9481,8 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reason_type.is_set || is_set(reason_type.operation)) leaf_name_data.push_back(reason_type.get_name_leafdata());
-    if (severity.is_set || is_set(severity.operation)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (reason_type.is_set || is_set(reason_type.yfilter)) leaf_name_data.push_back(reason_type.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7257,16 +9501,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reason-type")
     {
         reason_type = value;
+        reason_type.value_namespace = name_space;
+        reason_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severity")
     {
         severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reason-type")
+    {
+        reason_type.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reason-type" || name == "severity")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::MacAddress()
@@ -7287,8 +9554,8 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::get_segment_path() const
@@ -7314,7 +9581,7 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7333,12 +9600,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BundleBundleItem()
@@ -7448,45 +9732,45 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::h
         if(bfd_config[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active_foreign_member_count.operation)
-	|| is_set(active_member_count.operation)
-	|| is_set(available_bandwidth.operation)
-	|| is_set(bundle_interface_name.operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(cisco_extensions.operation)
-	|| is_set(collector_max_delay.operation)
-	|| is_set(configured_bandwidth.operation)
-	|| is_set(configured_foreign_member_count.operation)
-	|| is_set(configured_member_count.operation)
-	|| is_set(effective_bandwidth.operation)
-	|| is_set(iccp_group_id.operation)
-	|| is_set(inter_chassis.operation)
-	|| is_set(ipv4bfd_status.operation)
-	|| is_set(ipv6bfd_status.operation)
-	|| is_set(is_active.operation)
-	|| is_set(lacp_nonrevertive.operation)
-	|| is_set(lacp_status.operation)
-	|| is_set(link_order_status.operation)
-	|| is_set(load_balance_hash_type.operation)
-	|| is_set(load_balance_locality_threshold.operation)
-	|| is_set(mac_source.operation)
-	|| is_set(mac_source_member.operation)
-	|| is_set(maximize_threshold_value_band_width.operation)
-	|| is_set(maximize_threshold_value_links.operation)
-	|| is_set(maximum_active_links.operation)
-	|| is_set(maximum_active_links_source.operation)
-	|| is_set(minimum_active_links.operation)
-	|| is_set(minimum_bandwidth.operation)
-	|| is_set(mlacp_mode.operation)
-	|| is_set(mlacp_status.operation)
-	|| is_set(primary_member.operation)
-	|| is_set(recovery_delay.operation)
-	|| is_set(singleton.operation)
-	|| is_set(standby_member_count.operation)
-	|| is_set(suppression_timer.operation)
-	|| is_set(switchover_type.operation)
-	|| is_set(wait_while_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(active_foreign_member_count.yfilter)
+	|| ydk::is_set(active_member_count.yfilter)
+	|| ydk::is_set(available_bandwidth.yfilter)
+	|| ydk::is_set(bundle_interface_name.yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(cisco_extensions.yfilter)
+	|| ydk::is_set(collector_max_delay.yfilter)
+	|| ydk::is_set(configured_bandwidth.yfilter)
+	|| ydk::is_set(configured_foreign_member_count.yfilter)
+	|| ydk::is_set(configured_member_count.yfilter)
+	|| ydk::is_set(effective_bandwidth.yfilter)
+	|| ydk::is_set(iccp_group_id.yfilter)
+	|| ydk::is_set(inter_chassis.yfilter)
+	|| ydk::is_set(ipv4bfd_status.yfilter)
+	|| ydk::is_set(ipv6bfd_status.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(lacp_nonrevertive.yfilter)
+	|| ydk::is_set(lacp_status.yfilter)
+	|| ydk::is_set(link_order_status.yfilter)
+	|| ydk::is_set(load_balance_hash_type.yfilter)
+	|| ydk::is_set(load_balance_locality_threshold.yfilter)
+	|| ydk::is_set(mac_source.yfilter)
+	|| ydk::is_set(mac_source_member.yfilter)
+	|| ydk::is_set(maximize_threshold_value_band_width.yfilter)
+	|| ydk::is_set(maximize_threshold_value_links.yfilter)
+	|| ydk::is_set(maximum_active_links.yfilter)
+	|| ydk::is_set(maximum_active_links_source.yfilter)
+	|| ydk::is_set(minimum_active_links.yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter)
+	|| ydk::is_set(mlacp_mode.yfilter)
+	|| ydk::is_set(mlacp_status.yfilter)
+	|| ydk::is_set(primary_member.yfilter)
+	|| ydk::is_set(recovery_delay.yfilter)
+	|| ydk::is_set(singleton.yfilter)
+	|| ydk::is_set(standby_member_count.yfilter)
+	|| ydk::is_set(suppression_timer.yfilter)
+	|| ydk::is_set(switchover_type.yfilter)
+	|| ydk::is_set(wait_while_timer.yfilter)
 	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
@@ -7513,44 +9797,44 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.operation)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
-    if (active_member_count.is_set || is_set(active_member_count.operation)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
-    if (available_bandwidth.is_set || is_set(available_bandwidth.operation)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
-    if (bundle_interface_name.is_set || is_set(bundle_interface_name.operation)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (cisco_extensions.is_set || is_set(cisco_extensions.operation)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
-    if (collector_max_delay.is_set || is_set(collector_max_delay.operation)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
-    if (configured_bandwidth.is_set || is_set(configured_bandwidth.operation)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
-    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.operation)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
-    if (configured_member_count.is_set || is_set(configured_member_count.operation)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
-    if (effective_bandwidth.is_set || is_set(effective_bandwidth.operation)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
-    if (iccp_group_id.is_set || is_set(iccp_group_id.operation)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
-    if (inter_chassis.is_set || is_set(inter_chassis.operation)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
-    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.operation)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
-    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.operation)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.operation)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
-    if (lacp_status.is_set || is_set(lacp_status.operation)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
-    if (link_order_status.is_set || is_set(link_order_status.operation)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
-    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.operation)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
-    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.operation)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
-    if (mac_source.is_set || is_set(mac_source.operation)) leaf_name_data.push_back(mac_source.get_name_leafdata());
-    if (mac_source_member.is_set || is_set(mac_source_member.operation)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
-    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.operation)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
-    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.operation)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
-    if (maximum_active_links.is_set || is_set(maximum_active_links.operation)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
-    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.operation)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
-    if (minimum_active_links.is_set || is_set(minimum_active_links.operation)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
-    if (mlacp_mode.is_set || is_set(mlacp_mode.operation)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
-    if (mlacp_status.is_set || is_set(mlacp_status.operation)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
-    if (primary_member.is_set || is_set(primary_member.operation)) leaf_name_data.push_back(primary_member.get_name_leafdata());
-    if (recovery_delay.is_set || is_set(recovery_delay.operation)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
-    if (singleton.is_set || is_set(singleton.operation)) leaf_name_data.push_back(singleton.get_name_leafdata());
-    if (standby_member_count.is_set || is_set(standby_member_count.operation)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
-    if (suppression_timer.is_set || is_set(suppression_timer.operation)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
-    if (switchover_type.is_set || is_set(switchover_type.operation)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
-    if (wait_while_timer.is_set || is_set(wait_while_timer.operation)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
+    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.yfilter)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
+    if (active_member_count.is_set || is_set(active_member_count.yfilter)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
+    if (available_bandwidth.is_set || is_set(available_bandwidth.yfilter)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
+    if (bundle_interface_name.is_set || is_set(bundle_interface_name.yfilter)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (cisco_extensions.is_set || is_set(cisco_extensions.yfilter)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
+    if (collector_max_delay.is_set || is_set(collector_max_delay.yfilter)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
+    if (configured_bandwidth.is_set || is_set(configured_bandwidth.yfilter)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
+    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.yfilter)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
+    if (configured_member_count.is_set || is_set(configured_member_count.yfilter)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
+    if (effective_bandwidth.is_set || is_set(effective_bandwidth.yfilter)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
+    if (iccp_group_id.is_set || is_set(iccp_group_id.yfilter)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
+    if (inter_chassis.is_set || is_set(inter_chassis.yfilter)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
+    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.yfilter)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
+    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.yfilter)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.yfilter)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
+    if (lacp_status.is_set || is_set(lacp_status.yfilter)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
+    if (link_order_status.is_set || is_set(link_order_status.yfilter)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
+    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.yfilter)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
+    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.yfilter)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
+    if (mac_source.is_set || is_set(mac_source.yfilter)) leaf_name_data.push_back(mac_source.get_name_leafdata());
+    if (mac_source_member.is_set || is_set(mac_source_member.yfilter)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
+    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.yfilter)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
+    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.yfilter)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
+    if (maximum_active_links.is_set || is_set(maximum_active_links.yfilter)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
+    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.yfilter)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
+    if (minimum_active_links.is_set || is_set(minimum_active_links.yfilter)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (mlacp_mode.is_set || is_set(mlacp_mode.yfilter)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
+    if (mlacp_status.is_set || is_set(mlacp_status.yfilter)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
+    if (primary_member.is_set || is_set(primary_member.yfilter)) leaf_name_data.push_back(primary_member.get_name_leafdata());
+    if (recovery_delay.is_set || is_set(recovery_delay.yfilter)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
+    if (singleton.is_set || is_set(singleton.yfilter)) leaf_name_data.push_back(singleton.get_name_leafdata());
+    if (standby_member_count.is_set || is_set(standby_member_count.yfilter)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
+    if (suppression_timer.is_set || is_set(suppression_timer.yfilter)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
+    if (switchover_type.is_set || is_set(switchover_type.yfilter)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
+    if (wait_while_timer.is_set || is_set(wait_while_timer.yfilter)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7604,160 +9888,399 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-foreign-member-count")
     {
         active_foreign_member_count = value;
+        active_foreign_member_count.value_namespace = name_space;
+        active_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-member-count")
     {
         active_member_count = value;
+        active_member_count.value_namespace = name_space;
+        active_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "available-bandwidth")
     {
         available_bandwidth = value;
+        available_bandwidth.value_namespace = name_space;
+        available_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-interface-name")
     {
         bundle_interface_name = value;
+        bundle_interface_name.value_namespace = name_space;
+        bundle_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cisco-extensions")
     {
         cisco_extensions = value;
+        cisco_extensions.value_namespace = name_space;
+        cisco_extensions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collector-max-delay")
     {
         collector_max_delay = value;
+        collector_max_delay.value_namespace = name_space;
+        collector_max_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-bandwidth")
     {
         configured_bandwidth = value;
+        configured_bandwidth.value_namespace = name_space;
+        configured_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-foreign-member-count")
     {
         configured_foreign_member_count = value;
+        configured_foreign_member_count.value_namespace = name_space;
+        configured_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-member-count")
     {
         configured_member_count = value;
+        configured_member_count.value_namespace = name_space;
+        configured_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "effective-bandwidth")
     {
         effective_bandwidth = value;
+        effective_bandwidth.value_namespace = name_space;
+        effective_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-group-id")
     {
         iccp_group_id = value;
+        iccp_group_id.value_namespace = name_space;
+        iccp_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-chassis")
     {
         inter_chassis = value;
+        inter_chassis.value_namespace = name_space;
+        inter_chassis.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4bfd-status")
     {
         ipv4bfd_status = value;
+        ipv4bfd_status.value_namespace = name_space;
+        ipv4bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-status")
     {
         ipv6bfd_status = value;
+        ipv6bfd_status.value_namespace = name_space;
+        ipv6bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-nonrevertive")
     {
         lacp_nonrevertive = value;
+        lacp_nonrevertive.value_namespace = name_space;
+        lacp_nonrevertive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-status")
     {
         lacp_status = value;
+        lacp_status.value_namespace = name_space;
+        lacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-status")
     {
         link_order_status = value;
+        link_order_status.value_namespace = name_space;
+        link_order_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-hash-type")
     {
         load_balance_hash_type = value;
+        load_balance_hash_type.value_namespace = name_space;
+        load_balance_hash_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-locality-threshold")
     {
         load_balance_locality_threshold = value;
+        load_balance_locality_threshold.value_namespace = name_space;
+        load_balance_locality_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source")
     {
         mac_source = value;
+        mac_source.value_namespace = name_space;
+        mac_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source-member")
     {
         mac_source_member = value;
+        mac_source_member.value_namespace = name_space;
+        mac_source_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-band-width")
     {
         maximize_threshold_value_band_width = value;
+        maximize_threshold_value_band_width.value_namespace = name_space;
+        maximize_threshold_value_band_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-links")
     {
         maximize_threshold_value_links = value;
+        maximize_threshold_value_links.value_namespace = name_space;
+        maximize_threshold_value_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links")
     {
         maximum_active_links = value;
+        maximum_active_links.value_namespace = name_space;
+        maximum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links-source")
     {
         maximum_active_links_source = value;
+        maximum_active_links_source.value_namespace = name_space;
+        maximum_active_links_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-active-links")
     {
         minimum_active_links = value;
+        minimum_active_links.value_namespace = name_space;
+        minimum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-mode")
     {
         mlacp_mode = value;
+        mlacp_mode.value_namespace = name_space;
+        mlacp_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-status")
     {
         mlacp_status = value;
+        mlacp_status.value_namespace = name_space;
+        mlacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-member")
     {
         primary_member = value;
+        primary_member.value_namespace = name_space;
+        primary_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recovery-delay")
     {
         recovery_delay = value;
+        recovery_delay.value_namespace = name_space;
+        recovery_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "singleton")
     {
         singleton = value;
+        singleton.value_namespace = name_space;
+        singleton.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-member-count")
     {
         standby_member_count = value;
+        standby_member_count.value_namespace = name_space;
+        standby_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppression-timer")
     {
         suppression_timer = value;
+        suppression_timer.value_namespace = name_space;
+        suppression_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switchover-type")
     {
         switchover_type = value;
+        switchover_type.value_namespace = name_space;
+        switchover_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wait-while-timer")
     {
         wait_while_timer = value;
+        wait_while_timer.value_namespace = name_space;
+        wait_while_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-foreign-member-count")
+    {
+        active_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "active-member-count")
+    {
+        active_member_count.yfilter = yfilter;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "bundle-interface-name")
+    {
+        bundle_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "cisco-extensions")
+    {
+        cisco_extensions.yfilter = yfilter;
+    }
+    if(value_path == "collector-max-delay")
+    {
+        collector_max_delay.yfilter = yfilter;
+    }
+    if(value_path == "configured-bandwidth")
+    {
+        configured_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "configured-foreign-member-count")
+    {
+        configured_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-member-count")
+    {
+        configured_member_count.yfilter = yfilter;
+    }
+    if(value_path == "effective-bandwidth")
+    {
+        effective_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-group-id")
+    {
+        iccp_group_id.yfilter = yfilter;
+    }
+    if(value_path == "inter-chassis")
+    {
+        inter_chassis.yfilter = yfilter;
+    }
+    if(value_path == "ipv4bfd-status")
+    {
+        ipv4bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-status")
+    {
+        ipv6bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "lacp-nonrevertive")
+    {
+        lacp_nonrevertive.yfilter = yfilter;
+    }
+    if(value_path == "lacp-status")
+    {
+        lacp_status.yfilter = yfilter;
+    }
+    if(value_path == "link-order-status")
+    {
+        link_order_status.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-hash-type")
+    {
+        load_balance_hash_type.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-locality-threshold")
+    {
+        load_balance_locality_threshold.yfilter = yfilter;
+    }
+    if(value_path == "mac-source")
+    {
+        mac_source.yfilter = yfilter;
+    }
+    if(value_path == "mac-source-member")
+    {
+        mac_source_member.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-band-width")
+    {
+        maximize_threshold_value_band_width.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-links")
+    {
+        maximize_threshold_value_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links")
+    {
+        maximum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links-source")
+    {
+        maximum_active_links_source.yfilter = yfilter;
+    }
+    if(value_path == "minimum-active-links")
+    {
+        minimum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-mode")
+    {
+        mlacp_mode.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-status")
+    {
+        mlacp_status.yfilter = yfilter;
+    }
+    if(value_path == "primary-member")
+    {
+        primary_member.yfilter = yfilter;
+    }
+    if(value_path == "recovery-delay")
+    {
+        recovery_delay.yfilter = yfilter;
+    }
+    if(value_path == "singleton")
+    {
+        singleton.yfilter = yfilter;
+    }
+    if(value_path == "standby-member-count")
+    {
+        standby_member_count.yfilter = yfilter;
+    }
+    if(value_path == "suppression-timer")
+    {
+        suppression_timer.yfilter = yfilter;
+    }
+    if(value_path == "switchover-type")
+    {
+        switchover_type.yfilter = yfilter;
+    }
+    if(value_path == "wait-while-timer")
+    {
+        wait_while_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-config" || name == "mac-address" || name == "active-foreign-member-count" || name == "active-member-count" || name == "available-bandwidth" || name == "bundle-interface-name" || name == "bundle-status" || name == "cisco-extensions" || name == "collector-max-delay" || name == "configured-bandwidth" || name == "configured-foreign-member-count" || name == "configured-member-count" || name == "effective-bandwidth" || name == "iccp-group-id" || name == "inter-chassis" || name == "ipv4bfd-status" || name == "ipv6bfd-status" || name == "is-active" || name == "lacp-nonrevertive" || name == "lacp-status" || name == "link-order-status" || name == "load-balance-hash-type" || name == "load-balance-locality-threshold" || name == "mac-source" || name == "mac-source-member" || name == "maximize-threshold-value-band-width" || name == "maximize-threshold-value-links" || name == "maximum-active-links" || name == "maximum-active-links-source" || name == "minimum-active-links" || name == "minimum-bandwidth" || name == "mlacp-mode" || name == "mlacp-status" || name == "primary-member" || name == "recovery-delay" || name == "singleton" || name == "standby-member-count" || name == "suppression-timer" || name == "switchover-type" || name == "wait-while-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::MacAddress()
@@ -7778,8 +10301,8 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::M
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::get_segment_path() const
@@ -7805,7 +10328,7 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7824,12 +10347,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::BfdConfig()
@@ -7869,15 +10409,15 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::B
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(fast_detect.operation)
-	|| is_set(mode_info.operation)
-	|| is_set(nbr_unconfig_timer.operation)
-	|| is_set(pref_echo_min_interval.operation)
-	|| is_set(pref_min_interval.operation)
-	|| is_set(pref_multiplier.operation)
-	|| is_set(start_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(fast_detect.yfilter)
+	|| ydk::is_set(mode_info.yfilter)
+	|| ydk::is_set(nbr_unconfig_timer.yfilter)
+	|| ydk::is_set(pref_echo_min_interval.yfilter)
+	|| ydk::is_set(pref_min_interval.yfilter)
+	|| ydk::is_set(pref_multiplier.yfilter)
+	|| ydk::is_set(start_timer.yfilter)
 	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
@@ -7904,14 +10444,14 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (fast_detect.is_set || is_set(fast_detect.operation)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
-    if (mode_info.is_set || is_set(mode_info.operation)) leaf_name_data.push_back(mode_info.get_name_leafdata());
-    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.operation)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
-    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.operation)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
-    if (pref_min_interval.is_set || is_set(pref_min_interval.operation)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
-    if (pref_multiplier.is_set || is_set(pref_multiplier.operation)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
-    if (start_timer.is_set || is_set(start_timer.operation)) leaf_name_data.push_back(start_timer.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (fast_detect.is_set || is_set(fast_detect.yfilter)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
+    if (mode_info.is_set || is_set(mode_info.yfilter)) leaf_name_data.push_back(mode_info.get_name_leafdata());
+    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.yfilter)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
+    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.yfilter)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
+    if (pref_min_interval.is_set || is_set(pref_min_interval.yfilter)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
+    if (pref_multiplier.is_set || is_set(pref_multiplier.yfilter)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
+    if (start_timer.is_set || is_set(start_timer.yfilter)) leaf_name_data.push_back(start_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7944,40 +10484,99 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-detect")
     {
         fast_detect = value;
+        fast_detect.value_namespace = name_space;
+        fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-info")
     {
         mode_info = value;
+        mode_info.value_namespace = name_space;
+        mode_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nbr-unconfig-timer")
     {
         nbr_unconfig_timer = value;
+        nbr_unconfig_timer.value_namespace = name_space;
+        nbr_unconfig_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-echo-min-interval")
     {
         pref_echo_min_interval = value;
+        pref_echo_min_interval.value_namespace = name_space;
+        pref_echo_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-min-interval")
     {
         pref_min_interval = value;
+        pref_min_interval.value_namespace = name_space;
+        pref_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-multiplier")
     {
         pref_multiplier = value;
+        pref_multiplier.value_namespace = name_space;
+        pref_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timer")
     {
         start_timer = value;
+        start_timer.value_namespace = name_space;
+        start_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "fast-detect")
+    {
+        fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "mode-info")
+    {
+        mode_info.yfilter = yfilter;
+    }
+    if(value_path == "nbr-unconfig-timer")
+    {
+        nbr_unconfig_timer.yfilter = yfilter;
+    }
+    if(value_path == "pref-echo-min-interval")
+    {
+        pref_echo_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-min-interval")
+    {
+        pref_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-multiplier")
+    {
+        pref_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "start-timer")
+    {
+        start_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "bundle-status" || name == "fast-detect" || name == "mode-info" || name == "nbr-unconfig-timer" || name == "pref-echo-min-interval" || name == "pref-min-interval" || name == "pref-multiplier" || name == "start-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::DestinationAddress()
@@ -8002,10 +10601,10 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::B
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::get_segment_path() const
@@ -8031,9 +10630,9 @@ const EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af.is_set || is_set(af.operation)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8052,20 +10651,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af")
     {
         af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMembers()
@@ -8094,7 +10722,7 @@ bool BundleInformation::Bundle::BundleMembers::has_operation() const
         if(bundle_member[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::get_segment_path() const
@@ -8159,8 +10787,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Bundle::BundleMembers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Bundle::BundleMembers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-member")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember()
@@ -8190,8 +10829,8 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::has_data() const
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
 	|| (bundle_member_ancestor !=  nullptr && bundle_member_ancestor->has_operation())
 	|| (bundle_member_item !=  nullptr && bundle_member_item->has_operation());
 }
@@ -8219,7 +10858,7 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8266,12 +10905,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-member-ancestor" || name == "bundle-member-item" || name == "member-interface")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleMemberAncestor()
@@ -8304,7 +10960,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
         if(member_data[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
@@ -8384,8 +11040,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-data" || name == "member-data")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BundleData()
@@ -8495,45 +11162,45 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
         if(bfd_config[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active_foreign_member_count.operation)
-	|| is_set(active_member_count.operation)
-	|| is_set(available_bandwidth.operation)
-	|| is_set(bundle_interface_name.operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(cisco_extensions.operation)
-	|| is_set(collector_max_delay.operation)
-	|| is_set(configured_bandwidth.operation)
-	|| is_set(configured_foreign_member_count.operation)
-	|| is_set(configured_member_count.operation)
-	|| is_set(effective_bandwidth.operation)
-	|| is_set(iccp_group_id.operation)
-	|| is_set(inter_chassis.operation)
-	|| is_set(ipv4bfd_status.operation)
-	|| is_set(ipv6bfd_status.operation)
-	|| is_set(is_active.operation)
-	|| is_set(lacp_nonrevertive.operation)
-	|| is_set(lacp_status.operation)
-	|| is_set(link_order_status.operation)
-	|| is_set(load_balance_hash_type.operation)
-	|| is_set(load_balance_locality_threshold.operation)
-	|| is_set(mac_source.operation)
-	|| is_set(mac_source_member.operation)
-	|| is_set(maximize_threshold_value_band_width.operation)
-	|| is_set(maximize_threshold_value_links.operation)
-	|| is_set(maximum_active_links.operation)
-	|| is_set(maximum_active_links_source.operation)
-	|| is_set(minimum_active_links.operation)
-	|| is_set(minimum_bandwidth.operation)
-	|| is_set(mlacp_mode.operation)
-	|| is_set(mlacp_status.operation)
-	|| is_set(primary_member.operation)
-	|| is_set(recovery_delay.operation)
-	|| is_set(singleton.operation)
-	|| is_set(standby_member_count.operation)
-	|| is_set(suppression_timer.operation)
-	|| is_set(switchover_type.operation)
-	|| is_set(wait_while_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(active_foreign_member_count.yfilter)
+	|| ydk::is_set(active_member_count.yfilter)
+	|| ydk::is_set(available_bandwidth.yfilter)
+	|| ydk::is_set(bundle_interface_name.yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(cisco_extensions.yfilter)
+	|| ydk::is_set(collector_max_delay.yfilter)
+	|| ydk::is_set(configured_bandwidth.yfilter)
+	|| ydk::is_set(configured_foreign_member_count.yfilter)
+	|| ydk::is_set(configured_member_count.yfilter)
+	|| ydk::is_set(effective_bandwidth.yfilter)
+	|| ydk::is_set(iccp_group_id.yfilter)
+	|| ydk::is_set(inter_chassis.yfilter)
+	|| ydk::is_set(ipv4bfd_status.yfilter)
+	|| ydk::is_set(ipv6bfd_status.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(lacp_nonrevertive.yfilter)
+	|| ydk::is_set(lacp_status.yfilter)
+	|| ydk::is_set(link_order_status.yfilter)
+	|| ydk::is_set(load_balance_hash_type.yfilter)
+	|| ydk::is_set(load_balance_locality_threshold.yfilter)
+	|| ydk::is_set(mac_source.yfilter)
+	|| ydk::is_set(mac_source_member.yfilter)
+	|| ydk::is_set(maximize_threshold_value_band_width.yfilter)
+	|| ydk::is_set(maximize_threshold_value_links.yfilter)
+	|| ydk::is_set(maximum_active_links.yfilter)
+	|| ydk::is_set(maximum_active_links_source.yfilter)
+	|| ydk::is_set(minimum_active_links.yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter)
+	|| ydk::is_set(mlacp_mode.yfilter)
+	|| ydk::is_set(mlacp_status.yfilter)
+	|| ydk::is_set(primary_member.yfilter)
+	|| ydk::is_set(recovery_delay.yfilter)
+	|| ydk::is_set(singleton.yfilter)
+	|| ydk::is_set(standby_member_count.yfilter)
+	|| ydk::is_set(suppression_timer.yfilter)
+	|| ydk::is_set(switchover_type.yfilter)
+	|| ydk::is_set(wait_while_timer.yfilter)
 	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
@@ -8560,44 +11227,44 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.operation)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
-    if (active_member_count.is_set || is_set(active_member_count.operation)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
-    if (available_bandwidth.is_set || is_set(available_bandwidth.operation)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
-    if (bundle_interface_name.is_set || is_set(bundle_interface_name.operation)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (cisco_extensions.is_set || is_set(cisco_extensions.operation)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
-    if (collector_max_delay.is_set || is_set(collector_max_delay.operation)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
-    if (configured_bandwidth.is_set || is_set(configured_bandwidth.operation)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
-    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.operation)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
-    if (configured_member_count.is_set || is_set(configured_member_count.operation)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
-    if (effective_bandwidth.is_set || is_set(effective_bandwidth.operation)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
-    if (iccp_group_id.is_set || is_set(iccp_group_id.operation)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
-    if (inter_chassis.is_set || is_set(inter_chassis.operation)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
-    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.operation)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
-    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.operation)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.operation)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
-    if (lacp_status.is_set || is_set(lacp_status.operation)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
-    if (link_order_status.is_set || is_set(link_order_status.operation)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
-    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.operation)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
-    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.operation)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
-    if (mac_source.is_set || is_set(mac_source.operation)) leaf_name_data.push_back(mac_source.get_name_leafdata());
-    if (mac_source_member.is_set || is_set(mac_source_member.operation)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
-    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.operation)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
-    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.operation)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
-    if (maximum_active_links.is_set || is_set(maximum_active_links.operation)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
-    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.operation)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
-    if (minimum_active_links.is_set || is_set(minimum_active_links.operation)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
-    if (mlacp_mode.is_set || is_set(mlacp_mode.operation)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
-    if (mlacp_status.is_set || is_set(mlacp_status.operation)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
-    if (primary_member.is_set || is_set(primary_member.operation)) leaf_name_data.push_back(primary_member.get_name_leafdata());
-    if (recovery_delay.is_set || is_set(recovery_delay.operation)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
-    if (singleton.is_set || is_set(singleton.operation)) leaf_name_data.push_back(singleton.get_name_leafdata());
-    if (standby_member_count.is_set || is_set(standby_member_count.operation)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
-    if (suppression_timer.is_set || is_set(suppression_timer.operation)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
-    if (switchover_type.is_set || is_set(switchover_type.operation)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
-    if (wait_while_timer.is_set || is_set(wait_while_timer.operation)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
+    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.yfilter)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
+    if (active_member_count.is_set || is_set(active_member_count.yfilter)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
+    if (available_bandwidth.is_set || is_set(available_bandwidth.yfilter)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
+    if (bundle_interface_name.is_set || is_set(bundle_interface_name.yfilter)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (cisco_extensions.is_set || is_set(cisco_extensions.yfilter)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
+    if (collector_max_delay.is_set || is_set(collector_max_delay.yfilter)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
+    if (configured_bandwidth.is_set || is_set(configured_bandwidth.yfilter)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
+    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.yfilter)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
+    if (configured_member_count.is_set || is_set(configured_member_count.yfilter)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
+    if (effective_bandwidth.is_set || is_set(effective_bandwidth.yfilter)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
+    if (iccp_group_id.is_set || is_set(iccp_group_id.yfilter)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
+    if (inter_chassis.is_set || is_set(inter_chassis.yfilter)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
+    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.yfilter)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
+    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.yfilter)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.yfilter)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
+    if (lacp_status.is_set || is_set(lacp_status.yfilter)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
+    if (link_order_status.is_set || is_set(link_order_status.yfilter)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
+    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.yfilter)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
+    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.yfilter)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
+    if (mac_source.is_set || is_set(mac_source.yfilter)) leaf_name_data.push_back(mac_source.get_name_leafdata());
+    if (mac_source_member.is_set || is_set(mac_source_member.yfilter)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
+    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.yfilter)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
+    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.yfilter)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
+    if (maximum_active_links.is_set || is_set(maximum_active_links.yfilter)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
+    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.yfilter)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
+    if (minimum_active_links.is_set || is_set(minimum_active_links.yfilter)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (mlacp_mode.is_set || is_set(mlacp_mode.yfilter)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
+    if (mlacp_status.is_set || is_set(mlacp_status.yfilter)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
+    if (primary_member.is_set || is_set(primary_member.yfilter)) leaf_name_data.push_back(primary_member.get_name_leafdata());
+    if (recovery_delay.is_set || is_set(recovery_delay.yfilter)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
+    if (singleton.is_set || is_set(singleton.yfilter)) leaf_name_data.push_back(singleton.get_name_leafdata());
+    if (standby_member_count.is_set || is_set(standby_member_count.yfilter)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
+    if (suppression_timer.is_set || is_set(suppression_timer.yfilter)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
+    if (switchover_type.is_set || is_set(switchover_type.yfilter)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
+    if (wait_while_timer.is_set || is_set(wait_while_timer.yfilter)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8651,160 +11318,399 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-foreign-member-count")
     {
         active_foreign_member_count = value;
+        active_foreign_member_count.value_namespace = name_space;
+        active_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-member-count")
     {
         active_member_count = value;
+        active_member_count.value_namespace = name_space;
+        active_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "available-bandwidth")
     {
         available_bandwidth = value;
+        available_bandwidth.value_namespace = name_space;
+        available_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-interface-name")
     {
         bundle_interface_name = value;
+        bundle_interface_name.value_namespace = name_space;
+        bundle_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cisco-extensions")
     {
         cisco_extensions = value;
+        cisco_extensions.value_namespace = name_space;
+        cisco_extensions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collector-max-delay")
     {
         collector_max_delay = value;
+        collector_max_delay.value_namespace = name_space;
+        collector_max_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-bandwidth")
     {
         configured_bandwidth = value;
+        configured_bandwidth.value_namespace = name_space;
+        configured_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-foreign-member-count")
     {
         configured_foreign_member_count = value;
+        configured_foreign_member_count.value_namespace = name_space;
+        configured_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-member-count")
     {
         configured_member_count = value;
+        configured_member_count.value_namespace = name_space;
+        configured_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "effective-bandwidth")
     {
         effective_bandwidth = value;
+        effective_bandwidth.value_namespace = name_space;
+        effective_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-group-id")
     {
         iccp_group_id = value;
+        iccp_group_id.value_namespace = name_space;
+        iccp_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-chassis")
     {
         inter_chassis = value;
+        inter_chassis.value_namespace = name_space;
+        inter_chassis.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4bfd-status")
     {
         ipv4bfd_status = value;
+        ipv4bfd_status.value_namespace = name_space;
+        ipv4bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-status")
     {
         ipv6bfd_status = value;
+        ipv6bfd_status.value_namespace = name_space;
+        ipv6bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-nonrevertive")
     {
         lacp_nonrevertive = value;
+        lacp_nonrevertive.value_namespace = name_space;
+        lacp_nonrevertive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-status")
     {
         lacp_status = value;
+        lacp_status.value_namespace = name_space;
+        lacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-status")
     {
         link_order_status = value;
+        link_order_status.value_namespace = name_space;
+        link_order_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-hash-type")
     {
         load_balance_hash_type = value;
+        load_balance_hash_type.value_namespace = name_space;
+        load_balance_hash_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-locality-threshold")
     {
         load_balance_locality_threshold = value;
+        load_balance_locality_threshold.value_namespace = name_space;
+        load_balance_locality_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source")
     {
         mac_source = value;
+        mac_source.value_namespace = name_space;
+        mac_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source-member")
     {
         mac_source_member = value;
+        mac_source_member.value_namespace = name_space;
+        mac_source_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-band-width")
     {
         maximize_threshold_value_band_width = value;
+        maximize_threshold_value_band_width.value_namespace = name_space;
+        maximize_threshold_value_band_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-links")
     {
         maximize_threshold_value_links = value;
+        maximize_threshold_value_links.value_namespace = name_space;
+        maximize_threshold_value_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links")
     {
         maximum_active_links = value;
+        maximum_active_links.value_namespace = name_space;
+        maximum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links-source")
     {
         maximum_active_links_source = value;
+        maximum_active_links_source.value_namespace = name_space;
+        maximum_active_links_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-active-links")
     {
         minimum_active_links = value;
+        minimum_active_links.value_namespace = name_space;
+        minimum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-mode")
     {
         mlacp_mode = value;
+        mlacp_mode.value_namespace = name_space;
+        mlacp_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-status")
     {
         mlacp_status = value;
+        mlacp_status.value_namespace = name_space;
+        mlacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-member")
     {
         primary_member = value;
+        primary_member.value_namespace = name_space;
+        primary_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recovery-delay")
     {
         recovery_delay = value;
+        recovery_delay.value_namespace = name_space;
+        recovery_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "singleton")
     {
         singleton = value;
+        singleton.value_namespace = name_space;
+        singleton.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-member-count")
     {
         standby_member_count = value;
+        standby_member_count.value_namespace = name_space;
+        standby_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppression-timer")
     {
         suppression_timer = value;
+        suppression_timer.value_namespace = name_space;
+        suppression_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switchover-type")
     {
         switchover_type = value;
+        switchover_type.value_namespace = name_space;
+        switchover_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wait-while-timer")
     {
         wait_while_timer = value;
+        wait_while_timer.value_namespace = name_space;
+        wait_while_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-foreign-member-count")
+    {
+        active_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "active-member-count")
+    {
+        active_member_count.yfilter = yfilter;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "bundle-interface-name")
+    {
+        bundle_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "cisco-extensions")
+    {
+        cisco_extensions.yfilter = yfilter;
+    }
+    if(value_path == "collector-max-delay")
+    {
+        collector_max_delay.yfilter = yfilter;
+    }
+    if(value_path == "configured-bandwidth")
+    {
+        configured_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "configured-foreign-member-count")
+    {
+        configured_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-member-count")
+    {
+        configured_member_count.yfilter = yfilter;
+    }
+    if(value_path == "effective-bandwidth")
+    {
+        effective_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-group-id")
+    {
+        iccp_group_id.yfilter = yfilter;
+    }
+    if(value_path == "inter-chassis")
+    {
+        inter_chassis.yfilter = yfilter;
+    }
+    if(value_path == "ipv4bfd-status")
+    {
+        ipv4bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-status")
+    {
+        ipv6bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "lacp-nonrevertive")
+    {
+        lacp_nonrevertive.yfilter = yfilter;
+    }
+    if(value_path == "lacp-status")
+    {
+        lacp_status.yfilter = yfilter;
+    }
+    if(value_path == "link-order-status")
+    {
+        link_order_status.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-hash-type")
+    {
+        load_balance_hash_type.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-locality-threshold")
+    {
+        load_balance_locality_threshold.yfilter = yfilter;
+    }
+    if(value_path == "mac-source")
+    {
+        mac_source.yfilter = yfilter;
+    }
+    if(value_path == "mac-source-member")
+    {
+        mac_source_member.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-band-width")
+    {
+        maximize_threshold_value_band_width.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-links")
+    {
+        maximize_threshold_value_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links")
+    {
+        maximum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links-source")
+    {
+        maximum_active_links_source.yfilter = yfilter;
+    }
+    if(value_path == "minimum-active-links")
+    {
+        minimum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-mode")
+    {
+        mlacp_mode.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-status")
+    {
+        mlacp_status.yfilter = yfilter;
+    }
+    if(value_path == "primary-member")
+    {
+        primary_member.yfilter = yfilter;
+    }
+    if(value_path == "recovery-delay")
+    {
+        recovery_delay.yfilter = yfilter;
+    }
+    if(value_path == "singleton")
+    {
+        singleton.yfilter = yfilter;
+    }
+    if(value_path == "standby-member-count")
+    {
+        standby_member_count.yfilter = yfilter;
+    }
+    if(value_path == "suppression-timer")
+    {
+        suppression_timer.yfilter = yfilter;
+    }
+    if(value_path == "switchover-type")
+    {
+        switchover_type.yfilter = yfilter;
+    }
+    if(value_path == "wait-while-timer")
+    {
+        wait_while_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-config" || name == "mac-address" || name == "active-foreign-member-count" || name == "active-member-count" || name == "available-bandwidth" || name == "bundle-interface-name" || name == "bundle-status" || name == "cisco-extensions" || name == "collector-max-delay" || name == "configured-bandwidth" || name == "configured-foreign-member-count" || name == "configured-member-count" || name == "effective-bandwidth" || name == "iccp-group-id" || name == "inter-chassis" || name == "ipv4bfd-status" || name == "ipv6bfd-status" || name == "is-active" || name == "lacp-nonrevertive" || name == "lacp-status" || name == "link-order-status" || name == "load-balance-hash-type" || name == "load-balance-locality-threshold" || name == "mac-source" || name == "mac-source-member" || name == "maximize-threshold-value-band-width" || name == "maximize-threshold-value-links" || name == "maximum-active-links" || name == "maximum-active-links-source" || name == "minimum-active-links" || name == "minimum-bandwidth" || name == "mlacp-mode" || name == "mlacp-status" || name == "primary-member" || name == "recovery-delay" || name == "singleton" || name == "standby-member-count" || name == "suppression-timer" || name == "switchover-type" || name == "wait-while-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::MacAddress()
@@ -8825,8 +11731,8 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::get_segment_path() const
@@ -8852,7 +11758,7 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8871,12 +11777,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::BfdConfig()
@@ -8916,15 +11839,15 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(fast_detect.operation)
-	|| is_set(mode_info.operation)
-	|| is_set(nbr_unconfig_timer.operation)
-	|| is_set(pref_echo_min_interval.operation)
-	|| is_set(pref_min_interval.operation)
-	|| is_set(pref_multiplier.operation)
-	|| is_set(start_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(fast_detect.yfilter)
+	|| ydk::is_set(mode_info.yfilter)
+	|| ydk::is_set(nbr_unconfig_timer.yfilter)
+	|| ydk::is_set(pref_echo_min_interval.yfilter)
+	|| ydk::is_set(pref_min_interval.yfilter)
+	|| ydk::is_set(pref_multiplier.yfilter)
+	|| ydk::is_set(start_timer.yfilter)
 	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
@@ -8951,14 +11874,14 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (fast_detect.is_set || is_set(fast_detect.operation)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
-    if (mode_info.is_set || is_set(mode_info.operation)) leaf_name_data.push_back(mode_info.get_name_leafdata());
-    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.operation)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
-    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.operation)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
-    if (pref_min_interval.is_set || is_set(pref_min_interval.operation)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
-    if (pref_multiplier.is_set || is_set(pref_multiplier.operation)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
-    if (start_timer.is_set || is_set(start_timer.operation)) leaf_name_data.push_back(start_timer.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (fast_detect.is_set || is_set(fast_detect.yfilter)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
+    if (mode_info.is_set || is_set(mode_info.yfilter)) leaf_name_data.push_back(mode_info.get_name_leafdata());
+    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.yfilter)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
+    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.yfilter)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
+    if (pref_min_interval.is_set || is_set(pref_min_interval.yfilter)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
+    if (pref_multiplier.is_set || is_set(pref_multiplier.yfilter)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
+    if (start_timer.is_set || is_set(start_timer.yfilter)) leaf_name_data.push_back(start_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8991,40 +11914,99 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-detect")
     {
         fast_detect = value;
+        fast_detect.value_namespace = name_space;
+        fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-info")
     {
         mode_info = value;
+        mode_info.value_namespace = name_space;
+        mode_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nbr-unconfig-timer")
     {
         nbr_unconfig_timer = value;
+        nbr_unconfig_timer.value_namespace = name_space;
+        nbr_unconfig_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-echo-min-interval")
     {
         pref_echo_min_interval = value;
+        pref_echo_min_interval.value_namespace = name_space;
+        pref_echo_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-min-interval")
     {
         pref_min_interval = value;
+        pref_min_interval.value_namespace = name_space;
+        pref_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-multiplier")
     {
         pref_multiplier = value;
+        pref_multiplier.value_namespace = name_space;
+        pref_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timer")
     {
         start_timer = value;
+        start_timer.value_namespace = name_space;
+        start_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "fast-detect")
+    {
+        fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "mode-info")
+    {
+        mode_info.yfilter = yfilter;
+    }
+    if(value_path == "nbr-unconfig-timer")
+    {
+        nbr_unconfig_timer.yfilter = yfilter;
+    }
+    if(value_path == "pref-echo-min-interval")
+    {
+        pref_echo_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-min-interval")
+    {
+        pref_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-multiplier")
+    {
+        pref_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "start-timer")
+    {
+        start_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "bundle-status" || name == "fast-detect" || name == "mode-info" || name == "nbr-unconfig-timer" || name == "pref-echo-min-interval" || name == "pref-min-interval" || name == "pref-multiplier" || name == "start-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::DestinationAddress()
@@ -9049,10 +12031,10 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::get_segment_path() const
@@ -9078,9 +12060,9 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af.is_set || is_set(af.operation)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9099,20 +12081,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af")
     {
         af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberData()
@@ -9166,16 +12177,16 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(iccp_node.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(link_order_number.operation)
-	|| is_set(member_name.operation)
-	|| is_set(member_type.operation)
-	|| is_set(port_number.operation)
-	|| is_set(port_priority.operation)
-	|| is_set(underlying_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(iccp_node.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(link_order_number.yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(member_type.yfilter)
+	|| ydk::is_set(port_number.yfilter)
+	|| ydk::is_set(port_priority.yfilter)
+	|| ydk::is_set(underlying_link_id.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (mac_address !=  nullptr && mac_address->has_operation())
@@ -9205,15 +12216,15 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (iccp_node.is_set || is_set(iccp_node.operation)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (link_order_number.is_set || is_set(link_order_number.operation)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (member_type.is_set || is_set(member_type.operation)) leaf_name_data.push_back(member_type.get_name_leafdata());
-    if (port_number.is_set || is_set(port_number.operation)) leaf_name_data.push_back(port_number.get_name_leafdata());
-    if (port_priority.is_set || is_set(port_priority.operation)) leaf_name_data.push_back(port_priority.get_name_leafdata());
-    if (underlying_link_id.is_set || is_set(underlying_link_id.operation)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (iccp_node.is_set || is_set(iccp_node.yfilter)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (link_order_number.is_set || is_set(link_order_number.yfilter)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
+    if (port_number.is_set || is_set(port_number.yfilter)) leaf_name_data.push_back(port_number.get_name_leafdata());
+    if (port_priority.is_set || is_set(port_priority.yfilter)) leaf_name_data.push_back(port_priority.get_name_leafdata());
+    if (underlying_link_id.is_set || is_set(underlying_link_id.yfilter)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9288,44 +12299,109 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-node")
     {
         iccp_node = value;
+        iccp_node.value_namespace = name_space;
+        iccp_node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-number")
     {
         link_order_number = value;
+        link_order_number.value_namespace = name_space;
+        link_order_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-type")
     {
         member_type = value;
+        member_type.value_namespace = name_space;
+        member_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-number")
     {
         port_number = value;
+        port_number.value_namespace = name_space;
+        port_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-priority")
     {
         port_priority = value;
+        port_priority.value_namespace = name_space;
+        port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "underlying-link-id")
     {
         underlying_link_id = value;
+        underlying_link_id.value_namespace = name_space;
+        underlying_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-node")
+    {
+        iccp_node.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "link-order-number")
+    {
+        link_order_number.yfilter = yfilter;
+    }
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "member-type")
+    {
+        member_type.yfilter = yfilter;
+    }
+    if(value_path == "port-number")
+    {
+        port_number.yfilter = yfilter;
+    }
+    if(value_path == "port-priority")
+    {
+        port_priority.yfilter = yfilter;
+    }
+    if(value_path == "underlying-link-id")
+    {
+        underlying_link_id.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters" || name == "link-data" || name == "mac-address" || name == "member-mux-data" || name == "bandwidth" || name == "iccp-node" || name == "interface-name" || name == "link-order-number" || name == "member-name" || name == "member-type" || name == "port-number" || name == "port-priority" || name == "underlying-link-id")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::Counters()
@@ -9366,18 +12442,18 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(defaulted.operation)
-	|| is_set(excess_lacpd_us_received.operation)
-	|| is_set(excess_marker_packets_received.operation)
-	|| is_set(expired.operation)
-	|| is_set(illegal_packets_received.operation)
-	|| is_set(lacpd_us_received.operation)
-	|| is_set(lacpd_us_transmitted.operation)
-	|| is_set(last_cleared_nsec.operation)
-	|| is_set(last_cleared_sec.operation)
-	|| is_set(marker_packets_received.operation)
-	|| is_set(marker_responses_transmitted.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(defaulted.yfilter)
+	|| ydk::is_set(excess_lacpd_us_received.yfilter)
+	|| ydk::is_set(excess_marker_packets_received.yfilter)
+	|| ydk::is_set(expired.yfilter)
+	|| ydk::is_set(illegal_packets_received.yfilter)
+	|| ydk::is_set(lacpd_us_received.yfilter)
+	|| ydk::is_set(lacpd_us_transmitted.yfilter)
+	|| ydk::is_set(last_cleared_nsec.yfilter)
+	|| ydk::is_set(last_cleared_sec.yfilter)
+	|| ydk::is_set(marker_packets_received.yfilter)
+	|| ydk::is_set(marker_responses_transmitted.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::get_segment_path() const
@@ -9403,17 +12479,17 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (defaulted.is_set || is_set(defaulted.operation)) leaf_name_data.push_back(defaulted.get_name_leafdata());
-    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.operation)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
-    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.operation)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
-    if (expired.is_set || is_set(expired.operation)) leaf_name_data.push_back(expired.get_name_leafdata());
-    if (illegal_packets_received.is_set || is_set(illegal_packets_received.operation)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
-    if (lacpd_us_received.is_set || is_set(lacpd_us_received.operation)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
-    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.operation)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
-    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.operation)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
-    if (last_cleared_sec.is_set || is_set(last_cleared_sec.operation)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
-    if (marker_packets_received.is_set || is_set(marker_packets_received.operation)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
-    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.operation)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
+    if (defaulted.is_set || is_set(defaulted.yfilter)) leaf_name_data.push_back(defaulted.get_name_leafdata());
+    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.yfilter)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
+    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.yfilter)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
+    if (expired.is_set || is_set(expired.yfilter)) leaf_name_data.push_back(expired.get_name_leafdata());
+    if (illegal_packets_received.is_set || is_set(illegal_packets_received.yfilter)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
+    if (lacpd_us_received.is_set || is_set(lacpd_us_received.yfilter)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
+    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.yfilter)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
+    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.yfilter)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
+    if (last_cleared_sec.is_set || is_set(last_cleared_sec.yfilter)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
+    if (marker_packets_received.is_set || is_set(marker_packets_received.yfilter)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
+    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.yfilter)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9432,52 +12508,129 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "defaulted")
     {
         defaulted = value;
+        defaulted.value_namespace = name_space;
+        defaulted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-lacpd-us-received")
     {
         excess_lacpd_us_received = value;
+        excess_lacpd_us_received.value_namespace = name_space;
+        excess_lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-marker-packets-received")
     {
         excess_marker_packets_received = value;
+        excess_marker_packets_received.value_namespace = name_space;
+        excess_marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "expired")
     {
         expired = value;
+        expired.value_namespace = name_space;
+        expired.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "illegal-packets-received")
     {
         illegal_packets_received = value;
+        illegal_packets_received.value_namespace = name_space;
+        illegal_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-received")
     {
         lacpd_us_received = value;
+        lacpd_us_received.value_namespace = name_space;
+        lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-transmitted")
     {
         lacpd_us_transmitted = value;
+        lacpd_us_transmitted.value_namespace = name_space;
+        lacpd_us_transmitted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-nsec")
     {
         last_cleared_nsec = value;
+        last_cleared_nsec.value_namespace = name_space;
+        last_cleared_nsec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-sec")
     {
         last_cleared_sec = value;
+        last_cleared_sec.value_namespace = name_space;
+        last_cleared_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-packets-received")
     {
         marker_packets_received = value;
+        marker_packets_received.value_namespace = name_space;
+        marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-responses-transmitted")
     {
         marker_responses_transmitted = value;
+        marker_responses_transmitted.value_namespace = name_space;
+        marker_responses_transmitted.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "defaulted")
+    {
+        defaulted.yfilter = yfilter;
+    }
+    if(value_path == "excess-lacpd-us-received")
+    {
+        excess_lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "excess-marker-packets-received")
+    {
+        excess_marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "expired")
+    {
+        expired.yfilter = yfilter;
+    }
+    if(value_path == "illegal-packets-received")
+    {
+        illegal_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-received")
+    {
+        lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-transmitted")
+    {
+        lacpd_us_transmitted.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-nsec")
+    {
+        last_cleared_nsec.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-sec")
+    {
+        last_cleared_sec.yfilter = yfilter;
+    }
+    if(value_path == "marker-packets-received")
+    {
+        marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "marker-responses-transmitted")
+    {
+        marker_responses_transmitted.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "defaulted" || name == "excess-lacpd-us-received" || name == "excess-marker-packets-received" || name == "expired" || name == "illegal-packets-received" || name == "lacpd-us-received" || name == "lacpd-us-transmitted" || name == "last-cleared-nsec" || name == "last-cleared-sec" || name == "marker-packets-received" || name == "marker-responses-transmitted")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::LinkData()
@@ -9526,22 +12679,22 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_operational_key.operation)
-	|| is_set(actor_port_id.operation)
-	|| is_set(actor_port_priority.operation)
-	|| is_set(actor_port_state.operation)
-	|| is_set(actor_system_mac_address.operation)
-	|| is_set(actor_system_priority.operation)
-	|| is_set(attached_aggregator_id.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(partner_operational_key.operation)
-	|| is_set(partner_port_id.operation)
-	|| is_set(partner_port_priority.operation)
-	|| is_set(partner_port_state.operation)
-	|| is_set(partner_system_mac_address.operation)
-	|| is_set(partner_system_priority.operation)
-	|| is_set(selected_aggregator_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(actor_operational_key.yfilter)
+	|| ydk::is_set(actor_port_id.yfilter)
+	|| ydk::is_set(actor_port_priority.yfilter)
+	|| ydk::is_set(actor_port_state.yfilter)
+	|| ydk::is_set(actor_system_mac_address.yfilter)
+	|| ydk::is_set(actor_system_priority.yfilter)
+	|| ydk::is_set(attached_aggregator_id.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(partner_port_id.yfilter)
+	|| ydk::is_set(partner_port_priority.yfilter)
+	|| ydk::is_set(partner_port_state.yfilter)
+	|| ydk::is_set(partner_system_mac_address.yfilter)
+	|| ydk::is_set(partner_system_priority.yfilter)
+	|| ydk::is_set(selected_aggregator_id.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::get_segment_path() const
@@ -9567,21 +12720,21 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_operational_key.is_set || is_set(actor_operational_key.operation)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
-    if (actor_port_id.is_set || is_set(actor_port_id.operation)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
-    if (actor_port_priority.is_set || is_set(actor_port_priority.operation)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
-    if (actor_port_state.is_set || is_set(actor_port_state.operation)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
-    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.operation)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
-    if (actor_system_priority.is_set || is_set(actor_system_priority.operation)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
-    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.operation)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (partner_operational_key.is_set || is_set(partner_operational_key.operation)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
-    if (partner_port_id.is_set || is_set(partner_port_id.operation)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
-    if (partner_port_priority.is_set || is_set(partner_port_priority.operation)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
-    if (partner_port_state.is_set || is_set(partner_port_state.operation)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
-    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.operation)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
-    if (partner_system_priority.is_set || is_set(partner_system_priority.operation)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
-    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.operation)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
+    if (actor_operational_key.is_set || is_set(actor_operational_key.yfilter)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
+    if (actor_port_id.is_set || is_set(actor_port_id.yfilter)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
+    if (actor_port_priority.is_set || is_set(actor_port_priority.yfilter)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
+    if (actor_port_state.is_set || is_set(actor_port_state.yfilter)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
+    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.yfilter)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
+    if (actor_system_priority.is_set || is_set(actor_system_priority.yfilter)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
+    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.yfilter)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (partner_port_id.is_set || is_set(partner_port_id.yfilter)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
+    if (partner_port_priority.is_set || is_set(partner_port_priority.yfilter)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
+    if (partner_port_state.is_set || is_set(partner_port_state.yfilter)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
+    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
+    if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
+    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.yfilter)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9600,68 +12753,169 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-operational-key")
     {
         actor_operational_key = value;
+        actor_operational_key.value_namespace = name_space;
+        actor_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-id")
     {
         actor_port_id = value;
+        actor_port_id.value_namespace = name_space;
+        actor_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-priority")
     {
         actor_port_priority = value;
+        actor_port_priority.value_namespace = name_space;
+        actor_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-state")
     {
         actor_port_state = value;
+        actor_port_state.value_namespace = name_space;
+        actor_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-mac-address")
     {
         actor_system_mac_address = value;
+        actor_system_mac_address.value_namespace = name_space;
+        actor_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-priority")
     {
         actor_system_priority = value;
+        actor_system_priority.value_namespace = name_space;
+        actor_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-aggregator-id")
     {
         attached_aggregator_id = value;
+        attached_aggregator_id.value_namespace = name_space;
+        attached_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-operational-key")
     {
         partner_operational_key = value;
+        partner_operational_key.value_namespace = name_space;
+        partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-id")
     {
         partner_port_id = value;
+        partner_port_id.value_namespace = name_space;
+        partner_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-priority")
     {
         partner_port_priority = value;
+        partner_port_priority.value_namespace = name_space;
+        partner_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-state")
     {
         partner_port_state = value;
+        partner_port_state.value_namespace = name_space;
+        partner_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-mac-address")
     {
         partner_system_mac_address = value;
+        partner_system_mac_address.value_namespace = name_space;
+        partner_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-priority")
     {
         partner_system_priority = value;
+        partner_system_priority.value_namespace = name_space;
+        partner_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selected-aggregator-id")
     {
         selected_aggregator_id = value;
+        selected_aggregator_id.value_namespace = name_space;
+        selected_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-operational-key")
+    {
+        actor_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-id")
+    {
+        actor_port_id.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-priority")
+    {
+        actor_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-state")
+    {
+        actor_port_state.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-mac-address")
+    {
+        actor_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-priority")
+    {
+        actor_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "attached-aggregator-id")
+    {
+        attached_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "partner-operational-key")
+    {
+        partner_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-id")
+    {
+        partner_port_id.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-priority")
+    {
+        partner_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-state")
+    {
+        partner_port_state.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-mac-address")
+    {
+        partner_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-priority")
+    {
+        partner_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "selected-aggregator-id")
+    {
+        selected_aggregator_id.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-operational-key" || name == "actor-port-id" || name == "actor-port-priority" || name == "actor-port-state" || name == "actor-system-mac-address" || name == "actor-system-priority" || name == "attached-aggregator-id" || name == "interface-handle" || name == "partner-operational-key" || name == "partner-port-id" || name == "partner-port-priority" || name == "partner-port-state" || name == "partner-system-mac-address" || name == "partner-system-priority" || name == "selected-aggregator-id")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxData()
@@ -9695,12 +12949,12 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(error.operation)
-	|| is_set(member_mux_state_reason.operation)
-	|| is_set(member_state.operation)
-	|| is_set(mux_state.operation)
-	|| is_set(mux_state_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(member_mux_state_reason.yfilter)
+	|| ydk::is_set(member_state.yfilter)
+	|| ydk::is_set(mux_state.yfilter)
+	|| ydk::is_set(mux_state_reason.yfilter)
 	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
@@ -9727,11 +12981,11 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.operation)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
-    if (member_state.is_set || is_set(member_state.operation)) leaf_name_data.push_back(member_state.get_name_leafdata());
-    if (mux_state.is_set || is_set(mux_state.operation)) leaf_name_data.push_back(mux_state.get_name_leafdata());
-    if (mux_state_reason.is_set || is_set(mux_state_reason.operation)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.yfilter)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
+    if (member_state.is_set || is_set(member_state.yfilter)) leaf_name_data.push_back(member_state.get_name_leafdata());
+    if (mux_state.is_set || is_set(mux_state.yfilter)) leaf_name_data.push_back(mux_state.get_name_leafdata());
+    if (mux_state_reason.is_set || is_set(mux_state_reason.yfilter)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9764,28 +13018,69 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-mux-state-reason")
     {
         member_mux_state_reason = value;
+        member_mux_state_reason.value_namespace = name_space;
+        member_mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-state")
     {
         member_state = value;
+        member_state.value_namespace = name_space;
+        member_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state")
     {
         mux_state = value;
+        mux_state.value_namespace = name_space;
+        mux_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state-reason")
     {
         mux_state_reason = value;
+        mux_state_reason.value_namespace = name_space;
+        mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "member-mux-state-reason")
+    {
+        member_mux_state_reason.yfilter = yfilter;
+    }
+    if(value_path == "member-state")
+    {
+        member_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state")
+    {
+        mux_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state-reason")
+    {
+        mux_state_reason.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-mux-state-reason-data" || name == "error" || name == "member-mux-state-reason" || name == "member-state" || name == "mux-state" || name == "mux-state-reason")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::MemberMuxStateReasonData()
@@ -9808,9 +13103,9 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(reason_type.operation)
-	|| is_set(severity.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(reason_type.yfilter)
+	|| ydk::is_set(severity.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::get_segment_path() const
@@ -9836,8 +13131,8 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reason_type.is_set || is_set(reason_type.operation)) leaf_name_data.push_back(reason_type.get_name_leafdata());
-    if (severity.is_set || is_set(severity.operation)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (reason_type.is_set || is_set(reason_type.yfilter)) leaf_name_data.push_back(reason_type.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9856,16 +13151,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reason-type")
     {
         reason_type = value;
+        reason_type.value_namespace = name_space;
+        reason_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severity")
     {
         severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reason-type")
+    {
+        reason_type.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reason-type" || name == "severity")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::MacAddress()
@@ -9886,8 +13204,8 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::get_segment_path() const
@@ -9913,7 +13231,7 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9932,12 +13250,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::BundleMemberItem()
@@ -9991,16 +13326,16 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::h
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(iccp_node.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(link_order_number.operation)
-	|| is_set(member_name.operation)
-	|| is_set(member_type.operation)
-	|| is_set(port_number.operation)
-	|| is_set(port_priority.operation)
-	|| is_set(underlying_link_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(iccp_node.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(link_order_number.yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(member_type.yfilter)
+	|| ydk::is_set(port_number.yfilter)
+	|| ydk::is_set(port_priority.yfilter)
+	|| ydk::is_set(underlying_link_id.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (mac_address !=  nullptr && mac_address->has_operation())
@@ -10030,15 +13365,15 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (iccp_node.is_set || is_set(iccp_node.operation)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (link_order_number.is_set || is_set(link_order_number.operation)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (member_type.is_set || is_set(member_type.operation)) leaf_name_data.push_back(member_type.get_name_leafdata());
-    if (port_number.is_set || is_set(port_number.operation)) leaf_name_data.push_back(port_number.get_name_leafdata());
-    if (port_priority.is_set || is_set(port_priority.operation)) leaf_name_data.push_back(port_priority.get_name_leafdata());
-    if (underlying_link_id.is_set || is_set(underlying_link_id.operation)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (iccp_node.is_set || is_set(iccp_node.yfilter)) leaf_name_data.push_back(iccp_node.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (link_order_number.is_set || is_set(link_order_number.yfilter)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
+    if (port_number.is_set || is_set(port_number.yfilter)) leaf_name_data.push_back(port_number.get_name_leafdata());
+    if (port_priority.is_set || is_set(port_priority.yfilter)) leaf_name_data.push_back(port_priority.get_name_leafdata());
+    if (underlying_link_id.is_set || is_set(underlying_link_id.yfilter)) leaf_name_data.push_back(underlying_link_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10113,44 +13448,109 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-node")
     {
         iccp_node = value;
+        iccp_node.value_namespace = name_space;
+        iccp_node.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-number")
     {
         link_order_number = value;
+        link_order_number.value_namespace = name_space;
+        link_order_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-type")
     {
         member_type = value;
+        member_type.value_namespace = name_space;
+        member_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-number")
     {
         port_number = value;
+        port_number.value_namespace = name_space;
+        port_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-priority")
     {
         port_priority = value;
+        port_priority.value_namespace = name_space;
+        port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "underlying-link-id")
     {
         underlying_link_id = value;
+        underlying_link_id.value_namespace = name_space;
+        underlying_link_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-node")
+    {
+        iccp_node.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "link-order-number")
+    {
+        link_order_number.yfilter = yfilter;
+    }
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "member-type")
+    {
+        member_type.yfilter = yfilter;
+    }
+    if(value_path == "port-number")
+    {
+        port_number.yfilter = yfilter;
+    }
+    if(value_path == "port-priority")
+    {
+        port_priority.yfilter = yfilter;
+    }
+    if(value_path == "underlying-link-id")
+    {
+        underlying_link_id.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters" || name == "link-data" || name == "mac-address" || name == "member-mux-data" || name == "bandwidth" || name == "iccp-node" || name == "interface-name" || name == "link-order-number" || name == "member-name" || name == "member-type" || name == "port-number" || name == "port-priority" || name == "underlying-link-id")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::Counters()
@@ -10191,18 +13591,18 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::C
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(defaulted.operation)
-	|| is_set(excess_lacpd_us_received.operation)
-	|| is_set(excess_marker_packets_received.operation)
-	|| is_set(expired.operation)
-	|| is_set(illegal_packets_received.operation)
-	|| is_set(lacpd_us_received.operation)
-	|| is_set(lacpd_us_transmitted.operation)
-	|| is_set(last_cleared_nsec.operation)
-	|| is_set(last_cleared_sec.operation)
-	|| is_set(marker_packets_received.operation)
-	|| is_set(marker_responses_transmitted.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(defaulted.yfilter)
+	|| ydk::is_set(excess_lacpd_us_received.yfilter)
+	|| ydk::is_set(excess_marker_packets_received.yfilter)
+	|| ydk::is_set(expired.yfilter)
+	|| ydk::is_set(illegal_packets_received.yfilter)
+	|| ydk::is_set(lacpd_us_received.yfilter)
+	|| ydk::is_set(lacpd_us_transmitted.yfilter)
+	|| ydk::is_set(last_cleared_nsec.yfilter)
+	|| ydk::is_set(last_cleared_sec.yfilter)
+	|| ydk::is_set(marker_packets_received.yfilter)
+	|| ydk::is_set(marker_responses_transmitted.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::get_segment_path() const
@@ -10228,17 +13628,17 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (defaulted.is_set || is_set(defaulted.operation)) leaf_name_data.push_back(defaulted.get_name_leafdata());
-    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.operation)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
-    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.operation)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
-    if (expired.is_set || is_set(expired.operation)) leaf_name_data.push_back(expired.get_name_leafdata());
-    if (illegal_packets_received.is_set || is_set(illegal_packets_received.operation)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
-    if (lacpd_us_received.is_set || is_set(lacpd_us_received.operation)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
-    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.operation)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
-    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.operation)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
-    if (last_cleared_sec.is_set || is_set(last_cleared_sec.operation)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
-    if (marker_packets_received.is_set || is_set(marker_packets_received.operation)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
-    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.operation)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
+    if (defaulted.is_set || is_set(defaulted.yfilter)) leaf_name_data.push_back(defaulted.get_name_leafdata());
+    if (excess_lacpd_us_received.is_set || is_set(excess_lacpd_us_received.yfilter)) leaf_name_data.push_back(excess_lacpd_us_received.get_name_leafdata());
+    if (excess_marker_packets_received.is_set || is_set(excess_marker_packets_received.yfilter)) leaf_name_data.push_back(excess_marker_packets_received.get_name_leafdata());
+    if (expired.is_set || is_set(expired.yfilter)) leaf_name_data.push_back(expired.get_name_leafdata());
+    if (illegal_packets_received.is_set || is_set(illegal_packets_received.yfilter)) leaf_name_data.push_back(illegal_packets_received.get_name_leafdata());
+    if (lacpd_us_received.is_set || is_set(lacpd_us_received.yfilter)) leaf_name_data.push_back(lacpd_us_received.get_name_leafdata());
+    if (lacpd_us_transmitted.is_set || is_set(lacpd_us_transmitted.yfilter)) leaf_name_data.push_back(lacpd_us_transmitted.get_name_leafdata());
+    if (last_cleared_nsec.is_set || is_set(last_cleared_nsec.yfilter)) leaf_name_data.push_back(last_cleared_nsec.get_name_leafdata());
+    if (last_cleared_sec.is_set || is_set(last_cleared_sec.yfilter)) leaf_name_data.push_back(last_cleared_sec.get_name_leafdata());
+    if (marker_packets_received.is_set || is_set(marker_packets_received.yfilter)) leaf_name_data.push_back(marker_packets_received.get_name_leafdata());
+    if (marker_responses_transmitted.is_set || is_set(marker_responses_transmitted.yfilter)) leaf_name_data.push_back(marker_responses_transmitted.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10257,52 +13657,129 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "defaulted")
     {
         defaulted = value;
+        defaulted.value_namespace = name_space;
+        defaulted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-lacpd-us-received")
     {
         excess_lacpd_us_received = value;
+        excess_lacpd_us_received.value_namespace = name_space;
+        excess_lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-marker-packets-received")
     {
         excess_marker_packets_received = value;
+        excess_marker_packets_received.value_namespace = name_space;
+        excess_marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "expired")
     {
         expired = value;
+        expired.value_namespace = name_space;
+        expired.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "illegal-packets-received")
     {
         illegal_packets_received = value;
+        illegal_packets_received.value_namespace = name_space;
+        illegal_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-received")
     {
         lacpd_us_received = value;
+        lacpd_us_received.value_namespace = name_space;
+        lacpd_us_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacpd-us-transmitted")
     {
         lacpd_us_transmitted = value;
+        lacpd_us_transmitted.value_namespace = name_space;
+        lacpd_us_transmitted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-nsec")
     {
         last_cleared_nsec = value;
+        last_cleared_nsec.value_namespace = name_space;
+        last_cleared_nsec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-cleared-sec")
     {
         last_cleared_sec = value;
+        last_cleared_sec.value_namespace = name_space;
+        last_cleared_sec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-packets-received")
     {
         marker_packets_received = value;
+        marker_packets_received.value_namespace = name_space;
+        marker_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "marker-responses-transmitted")
     {
         marker_responses_transmitted = value;
+        marker_responses_transmitted.value_namespace = name_space;
+        marker_responses_transmitted.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "defaulted")
+    {
+        defaulted.yfilter = yfilter;
+    }
+    if(value_path == "excess-lacpd-us-received")
+    {
+        excess_lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "excess-marker-packets-received")
+    {
+        excess_marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "expired")
+    {
+        expired.yfilter = yfilter;
+    }
+    if(value_path == "illegal-packets-received")
+    {
+        illegal_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-received")
+    {
+        lacpd_us_received.yfilter = yfilter;
+    }
+    if(value_path == "lacpd-us-transmitted")
+    {
+        lacpd_us_transmitted.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-nsec")
+    {
+        last_cleared_nsec.yfilter = yfilter;
+    }
+    if(value_path == "last-cleared-sec")
+    {
+        last_cleared_sec.yfilter = yfilter;
+    }
+    if(value_path == "marker-packets-received")
+    {
+        marker_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "marker-responses-transmitted")
+    {
+        marker_responses_transmitted.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "defaulted" || name == "excess-lacpd-us-received" || name == "excess-marker-packets-received" || name == "expired" || name == "illegal-packets-received" || name == "lacpd-us-received" || name == "lacpd-us-transmitted" || name == "last-cleared-nsec" || name == "last-cleared-sec" || name == "marker-packets-received" || name == "marker-responses-transmitted")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::LinkData()
@@ -10351,22 +13828,22 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::L
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_operational_key.operation)
-	|| is_set(actor_port_id.operation)
-	|| is_set(actor_port_priority.operation)
-	|| is_set(actor_port_state.operation)
-	|| is_set(actor_system_mac_address.operation)
-	|| is_set(actor_system_priority.operation)
-	|| is_set(attached_aggregator_id.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(partner_operational_key.operation)
-	|| is_set(partner_port_id.operation)
-	|| is_set(partner_port_priority.operation)
-	|| is_set(partner_port_state.operation)
-	|| is_set(partner_system_mac_address.operation)
-	|| is_set(partner_system_priority.operation)
-	|| is_set(selected_aggregator_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(actor_operational_key.yfilter)
+	|| ydk::is_set(actor_port_id.yfilter)
+	|| ydk::is_set(actor_port_priority.yfilter)
+	|| ydk::is_set(actor_port_state.yfilter)
+	|| ydk::is_set(actor_system_mac_address.yfilter)
+	|| ydk::is_set(actor_system_priority.yfilter)
+	|| ydk::is_set(attached_aggregator_id.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(partner_port_id.yfilter)
+	|| ydk::is_set(partner_port_priority.yfilter)
+	|| ydk::is_set(partner_port_state.yfilter)
+	|| ydk::is_set(partner_system_mac_address.yfilter)
+	|| ydk::is_set(partner_system_priority.yfilter)
+	|| ydk::is_set(selected_aggregator_id.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::get_segment_path() const
@@ -10392,21 +13869,21 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_operational_key.is_set || is_set(actor_operational_key.operation)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
-    if (actor_port_id.is_set || is_set(actor_port_id.operation)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
-    if (actor_port_priority.is_set || is_set(actor_port_priority.operation)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
-    if (actor_port_state.is_set || is_set(actor_port_state.operation)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
-    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.operation)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
-    if (actor_system_priority.is_set || is_set(actor_system_priority.operation)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
-    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.operation)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (partner_operational_key.is_set || is_set(partner_operational_key.operation)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
-    if (partner_port_id.is_set || is_set(partner_port_id.operation)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
-    if (partner_port_priority.is_set || is_set(partner_port_priority.operation)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
-    if (partner_port_state.is_set || is_set(partner_port_state.operation)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
-    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.operation)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
-    if (partner_system_priority.is_set || is_set(partner_system_priority.operation)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
-    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.operation)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
+    if (actor_operational_key.is_set || is_set(actor_operational_key.yfilter)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
+    if (actor_port_id.is_set || is_set(actor_port_id.yfilter)) leaf_name_data.push_back(actor_port_id.get_name_leafdata());
+    if (actor_port_priority.is_set || is_set(actor_port_priority.yfilter)) leaf_name_data.push_back(actor_port_priority.get_name_leafdata());
+    if (actor_port_state.is_set || is_set(actor_port_state.yfilter)) leaf_name_data.push_back(actor_port_state.get_name_leafdata());
+    if (actor_system_mac_address.is_set || is_set(actor_system_mac_address.yfilter)) leaf_name_data.push_back(actor_system_mac_address.get_name_leafdata());
+    if (actor_system_priority.is_set || is_set(actor_system_priority.yfilter)) leaf_name_data.push_back(actor_system_priority.get_name_leafdata());
+    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.yfilter)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (partner_port_id.is_set || is_set(partner_port_id.yfilter)) leaf_name_data.push_back(partner_port_id.get_name_leafdata());
+    if (partner_port_priority.is_set || is_set(partner_port_priority.yfilter)) leaf_name_data.push_back(partner_port_priority.get_name_leafdata());
+    if (partner_port_state.is_set || is_set(partner_port_state.yfilter)) leaf_name_data.push_back(partner_port_state.get_name_leafdata());
+    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
+    if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
+    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.yfilter)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10425,68 +13902,169 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-operational-key")
     {
         actor_operational_key = value;
+        actor_operational_key.value_namespace = name_space;
+        actor_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-id")
     {
         actor_port_id = value;
+        actor_port_id.value_namespace = name_space;
+        actor_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-priority")
     {
         actor_port_priority = value;
+        actor_port_priority.value_namespace = name_space;
+        actor_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-port-state")
     {
         actor_port_state = value;
+        actor_port_state.value_namespace = name_space;
+        actor_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-mac-address")
     {
         actor_system_mac_address = value;
+        actor_system_mac_address.value_namespace = name_space;
+        actor_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-system-priority")
     {
         actor_system_priority = value;
+        actor_system_priority.value_namespace = name_space;
+        actor_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-aggregator-id")
     {
         attached_aggregator_id = value;
+        attached_aggregator_id.value_namespace = name_space;
+        attached_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-operational-key")
     {
         partner_operational_key = value;
+        partner_operational_key.value_namespace = name_space;
+        partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-id")
     {
         partner_port_id = value;
+        partner_port_id.value_namespace = name_space;
+        partner_port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-priority")
     {
         partner_port_priority = value;
+        partner_port_priority.value_namespace = name_space;
+        partner_port_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-port-state")
     {
         partner_port_state = value;
+        partner_port_state.value_namespace = name_space;
+        partner_port_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-mac-address")
     {
         partner_system_mac_address = value;
+        partner_system_mac_address.value_namespace = name_space;
+        partner_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-priority")
     {
         partner_system_priority = value;
+        partner_system_priority.value_namespace = name_space;
+        partner_system_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selected-aggregator-id")
     {
         selected_aggregator_id = value;
+        selected_aggregator_id.value_namespace = name_space;
+        selected_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-operational-key")
+    {
+        actor_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-id")
+    {
+        actor_port_id.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-priority")
+    {
+        actor_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "actor-port-state")
+    {
+        actor_port_state.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-mac-address")
+    {
+        actor_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "actor-system-priority")
+    {
+        actor_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "attached-aggregator-id")
+    {
+        attached_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "partner-operational-key")
+    {
+        partner_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-id")
+    {
+        partner_port_id.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-priority")
+    {
+        partner_port_priority.yfilter = yfilter;
+    }
+    if(value_path == "partner-port-state")
+    {
+        partner_port_state.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-mac-address")
+    {
+        partner_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-priority")
+    {
+        partner_system_priority.yfilter = yfilter;
+    }
+    if(value_path == "selected-aggregator-id")
+    {
+        selected_aggregator_id.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-operational-key" || name == "actor-port-id" || name == "actor-port-priority" || name == "actor-port-state" || name == "actor-system-mac-address" || name == "actor-system-priority" || name == "attached-aggregator-id" || name == "interface-handle" || name == "partner-operational-key" || name == "partner-port-id" || name == "partner-port-priority" || name == "partner-port-state" || name == "partner-system-mac-address" || name == "partner-system-priority" || name == "selected-aggregator-id")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxData()
@@ -10520,12 +14098,12 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::M
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(error.operation)
-	|| is_set(member_mux_state_reason.operation)
-	|| is_set(member_state.operation)
-	|| is_set(mux_state.operation)
-	|| is_set(mux_state_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(member_mux_state_reason.yfilter)
+	|| ydk::is_set(member_state.yfilter)
+	|| ydk::is_set(mux_state.yfilter)
+	|| ydk::is_set(mux_state_reason.yfilter)
 	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
@@ -10552,11 +14130,11 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.operation)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
-    if (member_state.is_set || is_set(member_state.operation)) leaf_name_data.push_back(member_state.get_name_leafdata());
-    if (mux_state.is_set || is_set(mux_state.operation)) leaf_name_data.push_back(mux_state.get_name_leafdata());
-    if (mux_state_reason.is_set || is_set(mux_state_reason.operation)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (member_mux_state_reason.is_set || is_set(member_mux_state_reason.yfilter)) leaf_name_data.push_back(member_mux_state_reason.get_name_leafdata());
+    if (member_state.is_set || is_set(member_state.yfilter)) leaf_name_data.push_back(member_state.get_name_leafdata());
+    if (mux_state.is_set || is_set(mux_state.yfilter)) leaf_name_data.push_back(mux_state.get_name_leafdata());
+    if (mux_state_reason.is_set || is_set(mux_state_reason.yfilter)) leaf_name_data.push_back(mux_state_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10589,28 +14167,69 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-mux-state-reason")
     {
         member_mux_state_reason = value;
+        member_mux_state_reason.value_namespace = name_space;
+        member_mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-state")
     {
         member_state = value;
+        member_state.value_namespace = name_space;
+        member_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state")
     {
         mux_state = value;
+        mux_state.value_namespace = name_space;
+        mux_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state-reason")
     {
         mux_state_reason = value;
+        mux_state_reason.value_namespace = name_space;
+        mux_state_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "member-mux-state-reason")
+    {
+        member_mux_state_reason.yfilter = yfilter;
+    }
+    if(value_path == "member-state")
+    {
+        member_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state")
+    {
+        mux_state.yfilter = yfilter;
+    }
+    if(value_path == "mux-state-reason")
+    {
+        mux_state_reason.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-mux-state-reason-data" || name == "error" || name == "member-mux-state-reason" || name == "member-state" || name == "mux-state" || name == "mux-state-reason")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::MemberMuxStateReasonData()
@@ -10633,9 +14252,9 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::M
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(reason_type.operation)
-	|| is_set(severity.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(reason_type.yfilter)
+	|| ydk::is_set(severity.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::get_segment_path() const
@@ -10661,8 +14280,8 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reason_type.is_set || is_set(reason_type.operation)) leaf_name_data.push_back(reason_type.get_name_leafdata());
-    if (severity.is_set || is_set(severity.operation)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (reason_type.is_set || is_set(reason_type.yfilter)) leaf_name_data.push_back(reason_type.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10681,16 +14300,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reason-type")
     {
         reason_type = value;
+        reason_type.value_namespace = name_space;
+        reason_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severity")
     {
         severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reason-type")
+    {
+        reason_type.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reason-type" || name == "severity")
+        return true;
+    return false;
 }
 
 BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::MacAddress()
@@ -10711,8 +14353,8 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::M
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::get_segment_path() const
@@ -10738,7 +14380,7 @@ const EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10757,12 +14399,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Bundle::Bundle
     return children;
 }
 
-void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRg()
@@ -10793,7 +14452,7 @@ bool BundleInformation::EventsRg::has_data() const
 
 bool BundleInformation::EventsRg::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (events_rg_bundles !=  nullptr && events_rg_bundles->has_operation())
 	|| (events_rg_iccp_groups !=  nullptr && events_rg_iccp_groups->has_operation())
 	|| (events_rg_members !=  nullptr && events_rg_members->has_operation());
@@ -10882,8 +14541,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::get_
     return children;
 }
 
-void BundleInformation::EventsRg::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::EventsRg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::EventsRg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events-rg-bundles" || name == "events-rg-iccp-groups" || name == "events-rg-members")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMembers()
@@ -10912,7 +14582,7 @@ bool BundleInformation::EventsRg::EventsRgMembers::has_operation() const
         if(events_rg_member[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::get_segment_path() const
@@ -10977,8 +14647,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events-rg-member")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMember()
@@ -11004,8 +14685,8 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::has_data() co
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
 	|| (events_rg_member_ancestor !=  nullptr && events_rg_member_ancestor->has_operation());
 }
 
@@ -11032,7 +14713,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11065,12 +14746,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events-rg-member-ancestor" || name == "member-interface")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::EventsRgMemberAncestor()
@@ -11101,8 +14799,8 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
         if(items[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(item_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(item_name.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::get_segment_path() const
@@ -11128,7 +14826,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (item_name.is_set || is_set(item_name.operation)) leaf_name_data.push_back(item_name.get_name_leafdata());
+    if (item_name.is_set || is_set(item_name.yfilter)) leaf_name_data.push_back(item_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11168,12 +14866,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "item-name")
     {
         item_name = value;
+        item_name.value_namespace = name_space;
+        item_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "item-name")
+    {
+        item_name.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "items" || name == "item-name")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::Items()
@@ -11207,8 +14922,8 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(event_type.yfilter)
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
 	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
 	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
@@ -11237,7 +14952,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_type.is_set || is_set(event_type.operation)) leaf_name_data.push_back(event_type.get_name_leafdata());
+    if (event_type.is_set || is_set(event_type.yfilter)) leaf_name_data.push_back(event_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11298,12 +15013,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-type")
     {
         event_type = value;
+        event_type.value_namespace = name_space;
+        event_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-type")
+    {
+        event_type.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-evt-info" || name == "member-evt-info" || name == "rg-evt-info" || name == "event-type")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::MemberEvtInfo()
@@ -11331,9 +15063,9 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -11360,8 +15092,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_event_type.is_set || is_set(member_event_type.operation)) leaf_name_data.push_back(member_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (member_event_type.is_set || is_set(member_event_type.yfilter)) leaf_name_data.push_back(member_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11394,16 +15126,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-event-type")
     {
         member_event_type = value;
+        member_event_type.value_namespace = name_space;
+        member_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-event-type")
+    {
+        member_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "member-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::Data()
@@ -11430,11 +15185,11 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::get_segment_path() const
@@ -11460,10 +15215,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11482,24 +15237,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::BundleEvtInfo()
@@ -11527,9 +15317,9 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -11556,8 +15346,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_event_type.is_set || is_set(bundle_event_type.operation)) leaf_name_data.push_back(bundle_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (bundle_event_type.is_set || is_set(bundle_event_type.yfilter)) leaf_name_data.push_back(bundle_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11590,16 +15380,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-event-type")
     {
         bundle_event_type = value;
+        bundle_event_type.value_namespace = name_space;
+        bundle_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-event-type")
+    {
+        bundle_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "bundle-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::Data()
@@ -11626,11 +15439,11 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::get_segment_path() const
@@ -11656,10 +15469,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11678,24 +15491,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::RgEvtInfo()
@@ -11723,9 +15571,9 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rg_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rg_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -11752,8 +15600,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rg_event_type.is_set || is_set(rg_event_type.operation)) leaf_name_data.push_back(rg_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (rg_event_type.is_set || is_set(rg_event_type.yfilter)) leaf_name_data.push_back(rg_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11786,16 +15634,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rg-event-type")
     {
         rg_event_type = value;
+        rg_event_type.value_namespace = name_space;
+        rg_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rg-event-type")
+    {
+        rg_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "rg-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::Data()
@@ -11822,11 +15693,11 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 
 bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::get_segment_path() const
@@ -11852,10 +15723,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11874,24 +15745,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroups()
@@ -11920,7 +15826,7 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::has_operation() const
         if(events_rg_iccp_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::get_segment_path() const
@@ -11985,8 +15891,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events-rg-iccp-group")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgIccpGroup()
@@ -12012,8 +15929,8 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::has_dat
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(iccp_group.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(iccp_group.yfilter)
 	|| (events_rg_bundle_item_iccp_group !=  nullptr && events_rg_bundle_item_iccp_group->has_operation());
 }
 
@@ -12040,7 +15957,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (iccp_group.is_set || is_set(iccp_group.operation)) leaf_name_data.push_back(iccp_group.get_name_leafdata());
+    if (iccp_group.is_set || is_set(iccp_group.yfilter)) leaf_name_data.push_back(iccp_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12073,12 +15990,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "iccp-group")
     {
         iccp_group = value;
+        iccp_group.value_namespace = name_space;
+        iccp_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "iccp-group")
+    {
+        iccp_group.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events-rg-bundle-item-iccp-group" || name == "iccp-group")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::EventsRgBundleItemIccpGroup()
@@ -12109,8 +16043,8 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
         if(items[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(item_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(item_name.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::get_segment_path() const
@@ -12136,7 +16070,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (item_name.is_set || is_set(item_name.operation)) leaf_name_data.push_back(item_name.get_name_leafdata());
+    if (item_name.is_set || is_set(item_name.yfilter)) leaf_name_data.push_back(item_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12176,12 +16110,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "item-name")
     {
         item_name = value;
+        item_name.value_namespace = name_space;
+        item_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "item-name")
+    {
+        item_name.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "items" || name == "item-name")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::Items()
@@ -12215,8 +16166,8 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(event_type.yfilter)
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
 	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
 	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
@@ -12245,7 +16196,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_type.is_set || is_set(event_type.operation)) leaf_name_data.push_back(event_type.get_name_leafdata());
+    if (event_type.is_set || is_set(event_type.yfilter)) leaf_name_data.push_back(event_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12306,12 +16257,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-type")
     {
         event_type = value;
+        event_type.value_namespace = name_space;
+        event_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-type")
+    {
+        event_type.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-evt-info" || name == "member-evt-info" || name == "rg-evt-info" || name == "event-type")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::MemberEvtInfo()
@@ -12339,9 +16307,9 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -12368,8 +16336,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_event_type.is_set || is_set(member_event_type.operation)) leaf_name_data.push_back(member_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (member_event_type.is_set || is_set(member_event_type.yfilter)) leaf_name_data.push_back(member_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12402,16 +16370,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-event-type")
     {
         member_event_type = value;
+        member_event_type.value_namespace = name_space;
+        member_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-event-type")
+    {
+        member_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "member-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::Data()
@@ -12438,11 +16429,11 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::get_segment_path() const
@@ -12468,10 +16459,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12490,24 +16481,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::BundleEvtInfo()
@@ -12535,9 +16561,9 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -12564,8 +16590,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_event_type.is_set || is_set(bundle_event_type.operation)) leaf_name_data.push_back(bundle_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (bundle_event_type.is_set || is_set(bundle_event_type.yfilter)) leaf_name_data.push_back(bundle_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12598,16 +16624,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-event-type")
     {
         bundle_event_type = value;
+        bundle_event_type.value_namespace = name_space;
+        bundle_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-event-type")
+    {
+        bundle_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "bundle-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::Data()
@@ -12634,11 +16683,11 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::get_segment_path() const
@@ -12664,10 +16713,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12686,24 +16735,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::RgEvtInfo()
@@ -12731,9 +16815,9 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rg_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rg_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -12760,8 +16844,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rg_event_type.is_set || is_set(rg_event_type.operation)) leaf_name_data.push_back(rg_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (rg_event_type.is_set || is_set(rg_event_type.yfilter)) leaf_name_data.push_back(rg_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12794,16 +16878,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rg-event-type")
     {
         rg_event_type = value;
+        rg_event_type.value_namespace = name_space;
+        rg_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rg-event-type")
+    {
+        rg_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "rg-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::Data()
@@ -12830,11 +16937,11 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 
 bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::get_segment_path() const
@@ -12860,10 +16967,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12882,24 +16989,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundles()
@@ -12928,7 +17070,7 @@ bool BundleInformation::EventsRg::EventsRgBundles::has_operation() const
         if(events_rg_bundle[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::get_segment_path() const
@@ -12993,8 +17135,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events-rg-bundle")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundle()
@@ -13020,8 +17173,8 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::has_data() co
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_interface.yfilter)
 	|| (events_rg_bundle_ancestor !=  nullptr && events_rg_bundle_ancestor->has_operation());
 }
 
@@ -13048,7 +17201,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_interface.is_set || is_set(bundle_interface.operation)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
+    if (bundle_interface.is_set || is_set(bundle_interface.yfilter)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13081,12 +17234,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-interface")
     {
         bundle_interface = value;
+        bundle_interface.value_namespace = name_space;
+        bundle_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-interface")
+    {
+        bundle_interface.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events-rg-bundle-ancestor" || name == "bundle-interface")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::EventsRgBundleAncestor()
@@ -13117,8 +17287,8 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
         if(items[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(item_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(item_name.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::get_segment_path() const
@@ -13144,7 +17314,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (item_name.is_set || is_set(item_name.operation)) leaf_name_data.push_back(item_name.get_name_leafdata());
+    if (item_name.is_set || is_set(item_name.yfilter)) leaf_name_data.push_back(item_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13184,12 +17354,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "item-name")
     {
         item_name = value;
+        item_name.value_namespace = name_space;
+        item_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "item-name")
+    {
+        item_name.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "items" || name == "item-name")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::Items()
@@ -13223,8 +17410,8 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(event_type.yfilter)
 	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
 	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
 	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
@@ -13253,7 +17440,7 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_type.is_set || is_set(event_type.operation)) leaf_name_data.push_back(event_type.get_name_leafdata());
+    if (event_type.is_set || is_set(event_type.yfilter)) leaf_name_data.push_back(event_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13314,12 +17501,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-type")
     {
         event_type = value;
+        event_type.value_namespace = name_space;
+        event_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-type")
+    {
+        event_type.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-evt-info" || name == "member-evt-info" || name == "rg-evt-info" || name == "event-type")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::MemberEvtInfo()
@@ -13347,9 +17551,9 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -13376,8 +17580,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_event_type.is_set || is_set(member_event_type.operation)) leaf_name_data.push_back(member_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (member_event_type.is_set || is_set(member_event_type.yfilter)) leaf_name_data.push_back(member_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13410,16 +17614,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-event-type")
     {
         member_event_type = value;
+        member_event_type.value_namespace = name_space;
+        member_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-event-type")
+    {
+        member_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "member-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::Data()
@@ -13446,11 +17673,11 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::get_segment_path() const
@@ -13476,10 +17703,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13498,24 +17725,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::BundleEvtInfo()
@@ -13543,9 +17805,9 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -13572,8 +17834,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_event_type.is_set || is_set(bundle_event_type.operation)) leaf_name_data.push_back(bundle_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (bundle_event_type.is_set || is_set(bundle_event_type.yfilter)) leaf_name_data.push_back(bundle_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13606,16 +17868,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-event-type")
     {
         bundle_event_type = value;
+        bundle_event_type.value_namespace = name_space;
+        bundle_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-event-type")
+    {
+        bundle_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "bundle-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::Data()
@@ -13642,11 +17927,11 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::get_segment_path() const
@@ -13672,10 +17957,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13694,24 +17979,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::RgEvtInfo()
@@ -13739,9 +18059,9 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rg_event_type.operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rg_event_type.yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (data !=  nullptr && data->has_operation());
 }
 
@@ -13768,8 +18088,8 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rg_event_type.is_set || is_set(rg_event_type.operation)) leaf_name_data.push_back(rg_event_type.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (rg_event_type.is_set || is_set(rg_event_type.yfilter)) leaf_name_data.push_back(rg_event_type.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13802,16 +18122,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rg-event-type")
     {
         rg_event_type = value;
+        rg_event_type.value_namespace = name_space;
+        rg_event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rg-event-type")
+    {
+        rg_event_type.yfilter = yfilter;
+    }
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "rg-event-type" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::Data()
@@ -13838,11 +18181,11 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 
 bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
-	|| is_set(error.operation)
-	|| is_set(no_data.operation)
-	|| is_set(string_data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(no_data.yfilter)
+	|| ydk::is_set(string_data.yfilter);
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::get_segment_path() const
@@ -13868,10 +18211,10 @@ const EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (no_data.is_set || is_set(no_data.operation)) leaf_name_data.push_back(no_data.get_name_leafdata());
-    if (string_data.is_set || is_set(string_data.operation)) leaf_name_data.push_back(string_data.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (no_data.is_set || is_set(no_data.yfilter)) leaf_name_data.push_back(no_data.get_name_leafdata());
+    if (string_data.is_set || is_set(string_data.yfilter)) leaf_name_data.push_back(string_data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13890,24 +18233,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsRg::Even
     return children;
 }
 
-void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::set_value(const std::string & value_path, std::string value)
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data")
     {
         no_data = value;
+        no_data.value_namespace = name_space;
+        no_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "string-data")
     {
         string_data = value;
+        string_data.value_namespace = name_space;
+        string_data.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "no-data")
+    {
+        no_data.yfilter = yfilter;
+    }
+    if(value_path == "string-data")
+    {
+        string_data.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-type" || name == "error" || name == "no-data" || name == "string-data")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::Lacp()
@@ -13934,7 +18312,7 @@ bool BundleInformation::Lacp::has_data() const
 
 bool BundleInformation::Lacp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (lacp_bundles !=  nullptr && lacp_bundles->has_operation())
 	|| (lacp_members !=  nullptr && lacp_members->has_operation());
 }
@@ -14008,8 +18386,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::get_chil
     return children;
 }
 
-void BundleInformation::Lacp::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Lacp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Lacp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lacp-bundles" || name == "lacp-members")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundles()
@@ -14038,7 +18427,7 @@ bool BundleInformation::Lacp::LacpBundles::has_operation() const
         if(lacp_bundle[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::get_segment_path() const
@@ -14103,8 +18492,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Lacp::LacpBundles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Lacp::LacpBundles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lacp-bundle")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundle()
@@ -14138,8 +18538,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::has_data() const
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_interface.yfilter)
 	|| (lacp_bundle_children_members !=  nullptr && lacp_bundle_children_members->has_operation())
 	|| (lacp_bundle_descendant !=  nullptr && lacp_bundle_descendant->has_operation())
 	|| (lacp_bundle_item !=  nullptr && lacp_bundle_item->has_operation());
@@ -14168,7 +18568,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_interface.is_set || is_set(bundle_interface.operation)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
+    if (bundle_interface.is_set || is_set(bundle_interface.yfilter)) leaf_name_data.push_back(bundle_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14229,12 +18629,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-interface")
     {
         bundle_interface = value;
+        bundle_interface.value_namespace = name_space;
+        bundle_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-interface")
+    {
+        bundle_interface.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lacp-bundle-children-members" || name == "lacp-bundle-descendant" || name == "lacp-bundle-item" || name == "bundle-interface")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::LacpBundleItem()
@@ -14270,11 +18687,11 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::has_data(
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_operational_key.operation)
-	|| is_set(partner_operational_key.operation)
-	|| is_set(partner_system_mac_address.operation)
-	|| is_set(partner_system_priority.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(actor_operational_key.yfilter)
+	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(partner_system_mac_address.yfilter)
+	|| ydk::is_set(partner_system_priority.yfilter)
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
@@ -14302,10 +18719,10 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleIte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_operational_key.is_set || is_set(actor_operational_key.operation)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
-    if (partner_operational_key.is_set || is_set(partner_operational_key.operation)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
-    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.operation)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
-    if (partner_system_priority.is_set || is_set(partner_system_priority.operation)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
+    if (actor_operational_key.is_set || is_set(actor_operational_key.yfilter)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
+    if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
+    if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14352,24 +18769,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-operational-key")
     {
         actor_operational_key = value;
+        actor_operational_key.value_namespace = name_space;
+        actor_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-operational-key")
     {
         partner_operational_key = value;
+        partner_operational_key.value_namespace = name_space;
+        partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-mac-address")
     {
         partner_system_mac_address = value;
+        partner_system_mac_address.value_namespace = name_space;
+        partner_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-priority")
     {
         partner_system_priority = value;
+        partner_system_priority.value_namespace = name_space;
+        partner_system_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-operational-key")
+    {
+        actor_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-operational-key")
+    {
+        partner_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-mac-address")
+    {
+        partner_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-priority")
+    {
+        partner_system_priority.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-operational-key" || name == "partner-system-mac-address" || name == "partner-system-priority")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::ActorBundleData()
@@ -14479,45 +18931,45 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBund
         if(bfd_config[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active_foreign_member_count.operation)
-	|| is_set(active_member_count.operation)
-	|| is_set(available_bandwidth.operation)
-	|| is_set(bundle_interface_name.operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(cisco_extensions.operation)
-	|| is_set(collector_max_delay.operation)
-	|| is_set(configured_bandwidth.operation)
-	|| is_set(configured_foreign_member_count.operation)
-	|| is_set(configured_member_count.operation)
-	|| is_set(effective_bandwidth.operation)
-	|| is_set(iccp_group_id.operation)
-	|| is_set(inter_chassis.operation)
-	|| is_set(ipv4bfd_status.operation)
-	|| is_set(ipv6bfd_status.operation)
-	|| is_set(is_active.operation)
-	|| is_set(lacp_nonrevertive.operation)
-	|| is_set(lacp_status.operation)
-	|| is_set(link_order_status.operation)
-	|| is_set(load_balance_hash_type.operation)
-	|| is_set(load_balance_locality_threshold.operation)
-	|| is_set(mac_source.operation)
-	|| is_set(mac_source_member.operation)
-	|| is_set(maximize_threshold_value_band_width.operation)
-	|| is_set(maximize_threshold_value_links.operation)
-	|| is_set(maximum_active_links.operation)
-	|| is_set(maximum_active_links_source.operation)
-	|| is_set(minimum_active_links.operation)
-	|| is_set(minimum_bandwidth.operation)
-	|| is_set(mlacp_mode.operation)
-	|| is_set(mlacp_status.operation)
-	|| is_set(primary_member.operation)
-	|| is_set(recovery_delay.operation)
-	|| is_set(singleton.operation)
-	|| is_set(standby_member_count.operation)
-	|| is_set(suppression_timer.operation)
-	|| is_set(switchover_type.operation)
-	|| is_set(wait_while_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(active_foreign_member_count.yfilter)
+	|| ydk::is_set(active_member_count.yfilter)
+	|| ydk::is_set(available_bandwidth.yfilter)
+	|| ydk::is_set(bundle_interface_name.yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(cisco_extensions.yfilter)
+	|| ydk::is_set(collector_max_delay.yfilter)
+	|| ydk::is_set(configured_bandwidth.yfilter)
+	|| ydk::is_set(configured_foreign_member_count.yfilter)
+	|| ydk::is_set(configured_member_count.yfilter)
+	|| ydk::is_set(effective_bandwidth.yfilter)
+	|| ydk::is_set(iccp_group_id.yfilter)
+	|| ydk::is_set(inter_chassis.yfilter)
+	|| ydk::is_set(ipv4bfd_status.yfilter)
+	|| ydk::is_set(ipv6bfd_status.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(lacp_nonrevertive.yfilter)
+	|| ydk::is_set(lacp_status.yfilter)
+	|| ydk::is_set(link_order_status.yfilter)
+	|| ydk::is_set(load_balance_hash_type.yfilter)
+	|| ydk::is_set(load_balance_locality_threshold.yfilter)
+	|| ydk::is_set(mac_source.yfilter)
+	|| ydk::is_set(mac_source_member.yfilter)
+	|| ydk::is_set(maximize_threshold_value_band_width.yfilter)
+	|| ydk::is_set(maximize_threshold_value_links.yfilter)
+	|| ydk::is_set(maximum_active_links.yfilter)
+	|| ydk::is_set(maximum_active_links_source.yfilter)
+	|| ydk::is_set(minimum_active_links.yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter)
+	|| ydk::is_set(mlacp_mode.yfilter)
+	|| ydk::is_set(mlacp_status.yfilter)
+	|| ydk::is_set(primary_member.yfilter)
+	|| ydk::is_set(recovery_delay.yfilter)
+	|| ydk::is_set(singleton.yfilter)
+	|| ydk::is_set(standby_member_count.yfilter)
+	|| ydk::is_set(suppression_timer.yfilter)
+	|| ydk::is_set(switchover_type.yfilter)
+	|| ydk::is_set(wait_while_timer.yfilter)
 	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
@@ -14544,44 +18996,44 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleIte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.operation)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
-    if (active_member_count.is_set || is_set(active_member_count.operation)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
-    if (available_bandwidth.is_set || is_set(available_bandwidth.operation)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
-    if (bundle_interface_name.is_set || is_set(bundle_interface_name.operation)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (cisco_extensions.is_set || is_set(cisco_extensions.operation)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
-    if (collector_max_delay.is_set || is_set(collector_max_delay.operation)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
-    if (configured_bandwidth.is_set || is_set(configured_bandwidth.operation)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
-    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.operation)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
-    if (configured_member_count.is_set || is_set(configured_member_count.operation)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
-    if (effective_bandwidth.is_set || is_set(effective_bandwidth.operation)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
-    if (iccp_group_id.is_set || is_set(iccp_group_id.operation)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
-    if (inter_chassis.is_set || is_set(inter_chassis.operation)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
-    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.operation)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
-    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.operation)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.operation)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
-    if (lacp_status.is_set || is_set(lacp_status.operation)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
-    if (link_order_status.is_set || is_set(link_order_status.operation)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
-    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.operation)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
-    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.operation)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
-    if (mac_source.is_set || is_set(mac_source.operation)) leaf_name_data.push_back(mac_source.get_name_leafdata());
-    if (mac_source_member.is_set || is_set(mac_source_member.operation)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
-    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.operation)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
-    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.operation)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
-    if (maximum_active_links.is_set || is_set(maximum_active_links.operation)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
-    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.operation)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
-    if (minimum_active_links.is_set || is_set(minimum_active_links.operation)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
-    if (mlacp_mode.is_set || is_set(mlacp_mode.operation)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
-    if (mlacp_status.is_set || is_set(mlacp_status.operation)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
-    if (primary_member.is_set || is_set(primary_member.operation)) leaf_name_data.push_back(primary_member.get_name_leafdata());
-    if (recovery_delay.is_set || is_set(recovery_delay.operation)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
-    if (singleton.is_set || is_set(singleton.operation)) leaf_name_data.push_back(singleton.get_name_leafdata());
-    if (standby_member_count.is_set || is_set(standby_member_count.operation)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
-    if (suppression_timer.is_set || is_set(suppression_timer.operation)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
-    if (switchover_type.is_set || is_set(switchover_type.operation)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
-    if (wait_while_timer.is_set || is_set(wait_while_timer.operation)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
+    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.yfilter)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
+    if (active_member_count.is_set || is_set(active_member_count.yfilter)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
+    if (available_bandwidth.is_set || is_set(available_bandwidth.yfilter)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
+    if (bundle_interface_name.is_set || is_set(bundle_interface_name.yfilter)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (cisco_extensions.is_set || is_set(cisco_extensions.yfilter)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
+    if (collector_max_delay.is_set || is_set(collector_max_delay.yfilter)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
+    if (configured_bandwidth.is_set || is_set(configured_bandwidth.yfilter)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
+    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.yfilter)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
+    if (configured_member_count.is_set || is_set(configured_member_count.yfilter)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
+    if (effective_bandwidth.is_set || is_set(effective_bandwidth.yfilter)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
+    if (iccp_group_id.is_set || is_set(iccp_group_id.yfilter)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
+    if (inter_chassis.is_set || is_set(inter_chassis.yfilter)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
+    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.yfilter)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
+    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.yfilter)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.yfilter)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
+    if (lacp_status.is_set || is_set(lacp_status.yfilter)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
+    if (link_order_status.is_set || is_set(link_order_status.yfilter)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
+    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.yfilter)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
+    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.yfilter)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
+    if (mac_source.is_set || is_set(mac_source.yfilter)) leaf_name_data.push_back(mac_source.get_name_leafdata());
+    if (mac_source_member.is_set || is_set(mac_source_member.yfilter)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
+    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.yfilter)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
+    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.yfilter)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
+    if (maximum_active_links.is_set || is_set(maximum_active_links.yfilter)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
+    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.yfilter)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
+    if (minimum_active_links.is_set || is_set(minimum_active_links.yfilter)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (mlacp_mode.is_set || is_set(mlacp_mode.yfilter)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
+    if (mlacp_status.is_set || is_set(mlacp_status.yfilter)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
+    if (primary_member.is_set || is_set(primary_member.yfilter)) leaf_name_data.push_back(primary_member.get_name_leafdata());
+    if (recovery_delay.is_set || is_set(recovery_delay.yfilter)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
+    if (singleton.is_set || is_set(singleton.yfilter)) leaf_name_data.push_back(singleton.get_name_leafdata());
+    if (standby_member_count.is_set || is_set(standby_member_count.yfilter)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
+    if (suppression_timer.is_set || is_set(suppression_timer.yfilter)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
+    if (switchover_type.is_set || is_set(switchover_type.yfilter)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
+    if (wait_while_timer.is_set || is_set(wait_while_timer.yfilter)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14635,160 +19087,399 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-foreign-member-count")
     {
         active_foreign_member_count = value;
+        active_foreign_member_count.value_namespace = name_space;
+        active_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-member-count")
     {
         active_member_count = value;
+        active_member_count.value_namespace = name_space;
+        active_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "available-bandwidth")
     {
         available_bandwidth = value;
+        available_bandwidth.value_namespace = name_space;
+        available_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-interface-name")
     {
         bundle_interface_name = value;
+        bundle_interface_name.value_namespace = name_space;
+        bundle_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cisco-extensions")
     {
         cisco_extensions = value;
+        cisco_extensions.value_namespace = name_space;
+        cisco_extensions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collector-max-delay")
     {
         collector_max_delay = value;
+        collector_max_delay.value_namespace = name_space;
+        collector_max_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-bandwidth")
     {
         configured_bandwidth = value;
+        configured_bandwidth.value_namespace = name_space;
+        configured_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-foreign-member-count")
     {
         configured_foreign_member_count = value;
+        configured_foreign_member_count.value_namespace = name_space;
+        configured_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-member-count")
     {
         configured_member_count = value;
+        configured_member_count.value_namespace = name_space;
+        configured_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "effective-bandwidth")
     {
         effective_bandwidth = value;
+        effective_bandwidth.value_namespace = name_space;
+        effective_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-group-id")
     {
         iccp_group_id = value;
+        iccp_group_id.value_namespace = name_space;
+        iccp_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-chassis")
     {
         inter_chassis = value;
+        inter_chassis.value_namespace = name_space;
+        inter_chassis.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4bfd-status")
     {
         ipv4bfd_status = value;
+        ipv4bfd_status.value_namespace = name_space;
+        ipv4bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-status")
     {
         ipv6bfd_status = value;
+        ipv6bfd_status.value_namespace = name_space;
+        ipv6bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-nonrevertive")
     {
         lacp_nonrevertive = value;
+        lacp_nonrevertive.value_namespace = name_space;
+        lacp_nonrevertive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-status")
     {
         lacp_status = value;
+        lacp_status.value_namespace = name_space;
+        lacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-status")
     {
         link_order_status = value;
+        link_order_status.value_namespace = name_space;
+        link_order_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-hash-type")
     {
         load_balance_hash_type = value;
+        load_balance_hash_type.value_namespace = name_space;
+        load_balance_hash_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-locality-threshold")
     {
         load_balance_locality_threshold = value;
+        load_balance_locality_threshold.value_namespace = name_space;
+        load_balance_locality_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source")
     {
         mac_source = value;
+        mac_source.value_namespace = name_space;
+        mac_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source-member")
     {
         mac_source_member = value;
+        mac_source_member.value_namespace = name_space;
+        mac_source_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-band-width")
     {
         maximize_threshold_value_band_width = value;
+        maximize_threshold_value_band_width.value_namespace = name_space;
+        maximize_threshold_value_band_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-links")
     {
         maximize_threshold_value_links = value;
+        maximize_threshold_value_links.value_namespace = name_space;
+        maximize_threshold_value_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links")
     {
         maximum_active_links = value;
+        maximum_active_links.value_namespace = name_space;
+        maximum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links-source")
     {
         maximum_active_links_source = value;
+        maximum_active_links_source.value_namespace = name_space;
+        maximum_active_links_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-active-links")
     {
         minimum_active_links = value;
+        minimum_active_links.value_namespace = name_space;
+        minimum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-mode")
     {
         mlacp_mode = value;
+        mlacp_mode.value_namespace = name_space;
+        mlacp_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-status")
     {
         mlacp_status = value;
+        mlacp_status.value_namespace = name_space;
+        mlacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-member")
     {
         primary_member = value;
+        primary_member.value_namespace = name_space;
+        primary_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recovery-delay")
     {
         recovery_delay = value;
+        recovery_delay.value_namespace = name_space;
+        recovery_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "singleton")
     {
         singleton = value;
+        singleton.value_namespace = name_space;
+        singleton.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-member-count")
     {
         standby_member_count = value;
+        standby_member_count.value_namespace = name_space;
+        standby_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppression-timer")
     {
         suppression_timer = value;
+        suppression_timer.value_namespace = name_space;
+        suppression_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switchover-type")
     {
         switchover_type = value;
+        switchover_type.value_namespace = name_space;
+        switchover_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wait-while-timer")
     {
         wait_while_timer = value;
+        wait_while_timer.value_namespace = name_space;
+        wait_while_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-foreign-member-count")
+    {
+        active_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "active-member-count")
+    {
+        active_member_count.yfilter = yfilter;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "bundle-interface-name")
+    {
+        bundle_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "cisco-extensions")
+    {
+        cisco_extensions.yfilter = yfilter;
+    }
+    if(value_path == "collector-max-delay")
+    {
+        collector_max_delay.yfilter = yfilter;
+    }
+    if(value_path == "configured-bandwidth")
+    {
+        configured_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "configured-foreign-member-count")
+    {
+        configured_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-member-count")
+    {
+        configured_member_count.yfilter = yfilter;
+    }
+    if(value_path == "effective-bandwidth")
+    {
+        effective_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-group-id")
+    {
+        iccp_group_id.yfilter = yfilter;
+    }
+    if(value_path == "inter-chassis")
+    {
+        inter_chassis.yfilter = yfilter;
+    }
+    if(value_path == "ipv4bfd-status")
+    {
+        ipv4bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-status")
+    {
+        ipv6bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "lacp-nonrevertive")
+    {
+        lacp_nonrevertive.yfilter = yfilter;
+    }
+    if(value_path == "lacp-status")
+    {
+        lacp_status.yfilter = yfilter;
+    }
+    if(value_path == "link-order-status")
+    {
+        link_order_status.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-hash-type")
+    {
+        load_balance_hash_type.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-locality-threshold")
+    {
+        load_balance_locality_threshold.yfilter = yfilter;
+    }
+    if(value_path == "mac-source")
+    {
+        mac_source.yfilter = yfilter;
+    }
+    if(value_path == "mac-source-member")
+    {
+        mac_source_member.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-band-width")
+    {
+        maximize_threshold_value_band_width.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-links")
+    {
+        maximize_threshold_value_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links")
+    {
+        maximum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links-source")
+    {
+        maximum_active_links_source.yfilter = yfilter;
+    }
+    if(value_path == "minimum-active-links")
+    {
+        minimum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-mode")
+    {
+        mlacp_mode.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-status")
+    {
+        mlacp_status.yfilter = yfilter;
+    }
+    if(value_path == "primary-member")
+    {
+        primary_member.yfilter = yfilter;
+    }
+    if(value_path == "recovery-delay")
+    {
+        recovery_delay.yfilter = yfilter;
+    }
+    if(value_path == "singleton")
+    {
+        singleton.yfilter = yfilter;
+    }
+    if(value_path == "standby-member-count")
+    {
+        standby_member_count.yfilter = yfilter;
+    }
+    if(value_path == "suppression-timer")
+    {
+        suppression_timer.yfilter = yfilter;
+    }
+    if(value_path == "switchover-type")
+    {
+        switchover_type.yfilter = yfilter;
+    }
+    if(value_path == "wait-while-timer")
+    {
+        wait_while_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-config" || name == "mac-address" || name == "active-foreign-member-count" || name == "active-member-count" || name == "available-bandwidth" || name == "bundle-interface-name" || name == "bundle-status" || name == "cisco-extensions" || name == "collector-max-delay" || name == "configured-bandwidth" || name == "configured-foreign-member-count" || name == "configured-member-count" || name == "effective-bandwidth" || name == "iccp-group-id" || name == "inter-chassis" || name == "ipv4bfd-status" || name == "ipv6bfd-status" || name == "is-active" || name == "lacp-nonrevertive" || name == "lacp-status" || name == "link-order-status" || name == "load-balance-hash-type" || name == "load-balance-locality-threshold" || name == "mac-source" || name == "mac-source-member" || name == "maximize-threshold-value-band-width" || name == "maximize-threshold-value-links" || name == "maximum-active-links" || name == "maximum-active-links-source" || name == "minimum-active-links" || name == "minimum-bandwidth" || name == "mlacp-mode" || name == "mlacp-status" || name == "primary-member" || name == "recovery-delay" || name == "singleton" || name == "standby-member-count" || name == "suppression-timer" || name == "switchover-type" || name == "wait-while-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::MacAddress()
@@ -14809,8 +19500,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBund
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::get_segment_path() const
@@ -14836,7 +19527,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleIte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14855,12 +19546,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::BfdConfig()
@@ -14900,15 +19608,15 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBund
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(fast_detect.operation)
-	|| is_set(mode_info.operation)
-	|| is_set(nbr_unconfig_timer.operation)
-	|| is_set(pref_echo_min_interval.operation)
-	|| is_set(pref_min_interval.operation)
-	|| is_set(pref_multiplier.operation)
-	|| is_set(start_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(fast_detect.yfilter)
+	|| ydk::is_set(mode_info.yfilter)
+	|| ydk::is_set(nbr_unconfig_timer.yfilter)
+	|| ydk::is_set(pref_echo_min_interval.yfilter)
+	|| ydk::is_set(pref_min_interval.yfilter)
+	|| ydk::is_set(pref_multiplier.yfilter)
+	|| ydk::is_set(start_timer.yfilter)
 	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
@@ -14935,14 +19643,14 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleIte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (fast_detect.is_set || is_set(fast_detect.operation)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
-    if (mode_info.is_set || is_set(mode_info.operation)) leaf_name_data.push_back(mode_info.get_name_leafdata());
-    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.operation)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
-    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.operation)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
-    if (pref_min_interval.is_set || is_set(pref_min_interval.operation)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
-    if (pref_multiplier.is_set || is_set(pref_multiplier.operation)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
-    if (start_timer.is_set || is_set(start_timer.operation)) leaf_name_data.push_back(start_timer.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (fast_detect.is_set || is_set(fast_detect.yfilter)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
+    if (mode_info.is_set || is_set(mode_info.yfilter)) leaf_name_data.push_back(mode_info.get_name_leafdata());
+    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.yfilter)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
+    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.yfilter)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
+    if (pref_min_interval.is_set || is_set(pref_min_interval.yfilter)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
+    if (pref_multiplier.is_set || is_set(pref_multiplier.yfilter)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
+    if (start_timer.is_set || is_set(start_timer.yfilter)) leaf_name_data.push_back(start_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14975,40 +19683,99 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-detect")
     {
         fast_detect = value;
+        fast_detect.value_namespace = name_space;
+        fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-info")
     {
         mode_info = value;
+        mode_info.value_namespace = name_space;
+        mode_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nbr-unconfig-timer")
     {
         nbr_unconfig_timer = value;
+        nbr_unconfig_timer.value_namespace = name_space;
+        nbr_unconfig_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-echo-min-interval")
     {
         pref_echo_min_interval = value;
+        pref_echo_min_interval.value_namespace = name_space;
+        pref_echo_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-min-interval")
     {
         pref_min_interval = value;
+        pref_min_interval.value_namespace = name_space;
+        pref_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-multiplier")
     {
         pref_multiplier = value;
+        pref_multiplier.value_namespace = name_space;
+        pref_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timer")
     {
         start_timer = value;
+        start_timer.value_namespace = name_space;
+        start_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "fast-detect")
+    {
+        fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "mode-info")
+    {
+        mode_info.yfilter = yfilter;
+    }
+    if(value_path == "nbr-unconfig-timer")
+    {
+        nbr_unconfig_timer.yfilter = yfilter;
+    }
+    if(value_path == "pref-echo-min-interval")
+    {
+        pref_echo_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-min-interval")
+    {
+        pref_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-multiplier")
+    {
+        pref_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "start-timer")
+    {
+        start_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "bundle-status" || name == "fast-detect" || name == "mode-info" || name == "nbr-unconfig-timer" || name == "pref-echo-min-interval" || name == "pref-min-interval" || name == "pref-multiplier" || name == "start-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::DestinationAddress()
@@ -15033,10 +19800,10 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBund
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::get_segment_path() const
@@ -15062,9 +19829,9 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleIte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af.is_set || is_set(af.operation)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15083,20 +19850,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af")
     {
         af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::BundleSystemId()
@@ -15122,8 +19918,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSys
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_prio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(system_prio.yfilter)
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
@@ -15150,7 +19946,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleIte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_prio.is_set || is_set(system_prio.operation)) leaf_name_data.push_back(system_prio.get_name_leafdata());
+    if (system_prio.is_set || is_set(system_prio.yfilter)) leaf_name_data.push_back(system_prio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15183,12 +19979,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-prio")
     {
         system_prio = value;
+        system_prio.value_namespace = name_space;
+        system_prio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-prio")
+    {
+        system_prio.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac-addr" || name == "system-prio")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::SystemMacAddr()
@@ -15209,8 +20022,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSys
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(macaddr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::get_segment_path() const
@@ -15236,7 +20049,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleIte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (macaddr.is_set || is_set(macaddr.operation)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15255,12 +20068,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "macaddr")
     {
         macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::LacpBundleDescendant()
@@ -15293,7 +20123,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::has
         if(member_data[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
@@ -15373,8 +20203,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-data" || name == "member-data")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleData()
@@ -15410,11 +20251,11 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_operational_key.operation)
-	|| is_set(partner_operational_key.operation)
-	|| is_set(partner_system_mac_address.operation)
-	|| is_set(partner_system_priority.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(actor_operational_key.yfilter)
+	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(partner_system_mac_address.yfilter)
+	|| ydk::is_set(partner_system_priority.yfilter)
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
@@ -15442,10 +20283,10 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_operational_key.is_set || is_set(actor_operational_key.operation)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
-    if (partner_operational_key.is_set || is_set(partner_operational_key.operation)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
-    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.operation)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
-    if (partner_system_priority.is_set || is_set(partner_system_priority.operation)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
+    if (actor_operational_key.is_set || is_set(actor_operational_key.yfilter)) leaf_name_data.push_back(actor_operational_key.get_name_leafdata());
+    if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
+    if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15492,24 +20333,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-operational-key")
     {
         actor_operational_key = value;
+        actor_operational_key.value_namespace = name_space;
+        actor_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-operational-key")
     {
         partner_operational_key = value;
+        partner_operational_key.value_namespace = name_space;
+        partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-mac-address")
     {
         partner_system_mac_address = value;
+        partner_system_mac_address.value_namespace = name_space;
+        partner_system_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-system-priority")
     {
         partner_system_priority = value;
+        partner_system_priority.value_namespace = name_space;
+        partner_system_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-operational-key")
+    {
+        actor_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-operational-key")
+    {
+        partner_operational_key.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-mac-address")
+    {
+        partner_system_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "partner-system-priority")
+    {
+        partner_system_priority.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-operational-key" || name == "partner-system-mac-address" || name == "partner-system-priority")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::ActorBundleData()
@@ -15619,45 +20495,45 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
         if(bfd_config[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active_foreign_member_count.operation)
-	|| is_set(active_member_count.operation)
-	|| is_set(available_bandwidth.operation)
-	|| is_set(bundle_interface_name.operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(cisco_extensions.operation)
-	|| is_set(collector_max_delay.operation)
-	|| is_set(configured_bandwidth.operation)
-	|| is_set(configured_foreign_member_count.operation)
-	|| is_set(configured_member_count.operation)
-	|| is_set(effective_bandwidth.operation)
-	|| is_set(iccp_group_id.operation)
-	|| is_set(inter_chassis.operation)
-	|| is_set(ipv4bfd_status.operation)
-	|| is_set(ipv6bfd_status.operation)
-	|| is_set(is_active.operation)
-	|| is_set(lacp_nonrevertive.operation)
-	|| is_set(lacp_status.operation)
-	|| is_set(link_order_status.operation)
-	|| is_set(load_balance_hash_type.operation)
-	|| is_set(load_balance_locality_threshold.operation)
-	|| is_set(mac_source.operation)
-	|| is_set(mac_source_member.operation)
-	|| is_set(maximize_threshold_value_band_width.operation)
-	|| is_set(maximize_threshold_value_links.operation)
-	|| is_set(maximum_active_links.operation)
-	|| is_set(maximum_active_links_source.operation)
-	|| is_set(minimum_active_links.operation)
-	|| is_set(minimum_bandwidth.operation)
-	|| is_set(mlacp_mode.operation)
-	|| is_set(mlacp_status.operation)
-	|| is_set(primary_member.operation)
-	|| is_set(recovery_delay.operation)
-	|| is_set(singleton.operation)
-	|| is_set(standby_member_count.operation)
-	|| is_set(suppression_timer.operation)
-	|| is_set(switchover_type.operation)
-	|| is_set(wait_while_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(active_foreign_member_count.yfilter)
+	|| ydk::is_set(active_member_count.yfilter)
+	|| ydk::is_set(available_bandwidth.yfilter)
+	|| ydk::is_set(bundle_interface_name.yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(cisco_extensions.yfilter)
+	|| ydk::is_set(collector_max_delay.yfilter)
+	|| ydk::is_set(configured_bandwidth.yfilter)
+	|| ydk::is_set(configured_foreign_member_count.yfilter)
+	|| ydk::is_set(configured_member_count.yfilter)
+	|| ydk::is_set(effective_bandwidth.yfilter)
+	|| ydk::is_set(iccp_group_id.yfilter)
+	|| ydk::is_set(inter_chassis.yfilter)
+	|| ydk::is_set(ipv4bfd_status.yfilter)
+	|| ydk::is_set(ipv6bfd_status.yfilter)
+	|| ydk::is_set(is_active.yfilter)
+	|| ydk::is_set(lacp_nonrevertive.yfilter)
+	|| ydk::is_set(lacp_status.yfilter)
+	|| ydk::is_set(link_order_status.yfilter)
+	|| ydk::is_set(load_balance_hash_type.yfilter)
+	|| ydk::is_set(load_balance_locality_threshold.yfilter)
+	|| ydk::is_set(mac_source.yfilter)
+	|| ydk::is_set(mac_source_member.yfilter)
+	|| ydk::is_set(maximize_threshold_value_band_width.yfilter)
+	|| ydk::is_set(maximize_threshold_value_links.yfilter)
+	|| ydk::is_set(maximum_active_links.yfilter)
+	|| ydk::is_set(maximum_active_links_source.yfilter)
+	|| ydk::is_set(minimum_active_links.yfilter)
+	|| ydk::is_set(minimum_bandwidth.yfilter)
+	|| ydk::is_set(mlacp_mode.yfilter)
+	|| ydk::is_set(mlacp_status.yfilter)
+	|| ydk::is_set(primary_member.yfilter)
+	|| ydk::is_set(recovery_delay.yfilter)
+	|| ydk::is_set(singleton.yfilter)
+	|| ydk::is_set(standby_member_count.yfilter)
+	|| ydk::is_set(suppression_timer.yfilter)
+	|| ydk::is_set(switchover_type.yfilter)
+	|| ydk::is_set(wait_while_timer.yfilter)
 	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
@@ -15684,44 +20560,44 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.operation)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
-    if (active_member_count.is_set || is_set(active_member_count.operation)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
-    if (available_bandwidth.is_set || is_set(available_bandwidth.operation)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
-    if (bundle_interface_name.is_set || is_set(bundle_interface_name.operation)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (cisco_extensions.is_set || is_set(cisco_extensions.operation)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
-    if (collector_max_delay.is_set || is_set(collector_max_delay.operation)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
-    if (configured_bandwidth.is_set || is_set(configured_bandwidth.operation)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
-    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.operation)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
-    if (configured_member_count.is_set || is_set(configured_member_count.operation)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
-    if (effective_bandwidth.is_set || is_set(effective_bandwidth.operation)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
-    if (iccp_group_id.is_set || is_set(iccp_group_id.operation)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
-    if (inter_chassis.is_set || is_set(inter_chassis.operation)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
-    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.operation)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
-    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.operation)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
-    if (is_active.is_set || is_set(is_active.operation)) leaf_name_data.push_back(is_active.get_name_leafdata());
-    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.operation)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
-    if (lacp_status.is_set || is_set(lacp_status.operation)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
-    if (link_order_status.is_set || is_set(link_order_status.operation)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
-    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.operation)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
-    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.operation)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
-    if (mac_source.is_set || is_set(mac_source.operation)) leaf_name_data.push_back(mac_source.get_name_leafdata());
-    if (mac_source_member.is_set || is_set(mac_source_member.operation)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
-    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.operation)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
-    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.operation)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
-    if (maximum_active_links.is_set || is_set(maximum_active_links.operation)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
-    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.operation)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
-    if (minimum_active_links.is_set || is_set(minimum_active_links.operation)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
-    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.operation)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
-    if (mlacp_mode.is_set || is_set(mlacp_mode.operation)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
-    if (mlacp_status.is_set || is_set(mlacp_status.operation)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
-    if (primary_member.is_set || is_set(primary_member.operation)) leaf_name_data.push_back(primary_member.get_name_leafdata());
-    if (recovery_delay.is_set || is_set(recovery_delay.operation)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
-    if (singleton.is_set || is_set(singleton.operation)) leaf_name_data.push_back(singleton.get_name_leafdata());
-    if (standby_member_count.is_set || is_set(standby_member_count.operation)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
-    if (suppression_timer.is_set || is_set(suppression_timer.operation)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
-    if (switchover_type.is_set || is_set(switchover_type.operation)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
-    if (wait_while_timer.is_set || is_set(wait_while_timer.operation)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
+    if (active_foreign_member_count.is_set || is_set(active_foreign_member_count.yfilter)) leaf_name_data.push_back(active_foreign_member_count.get_name_leafdata());
+    if (active_member_count.is_set || is_set(active_member_count.yfilter)) leaf_name_data.push_back(active_member_count.get_name_leafdata());
+    if (available_bandwidth.is_set || is_set(available_bandwidth.yfilter)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
+    if (bundle_interface_name.is_set || is_set(bundle_interface_name.yfilter)) leaf_name_data.push_back(bundle_interface_name.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (cisco_extensions.is_set || is_set(cisco_extensions.yfilter)) leaf_name_data.push_back(cisco_extensions.get_name_leafdata());
+    if (collector_max_delay.is_set || is_set(collector_max_delay.yfilter)) leaf_name_data.push_back(collector_max_delay.get_name_leafdata());
+    if (configured_bandwidth.is_set || is_set(configured_bandwidth.yfilter)) leaf_name_data.push_back(configured_bandwidth.get_name_leafdata());
+    if (configured_foreign_member_count.is_set || is_set(configured_foreign_member_count.yfilter)) leaf_name_data.push_back(configured_foreign_member_count.get_name_leafdata());
+    if (configured_member_count.is_set || is_set(configured_member_count.yfilter)) leaf_name_data.push_back(configured_member_count.get_name_leafdata());
+    if (effective_bandwidth.is_set || is_set(effective_bandwidth.yfilter)) leaf_name_data.push_back(effective_bandwidth.get_name_leafdata());
+    if (iccp_group_id.is_set || is_set(iccp_group_id.yfilter)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
+    if (inter_chassis.is_set || is_set(inter_chassis.yfilter)) leaf_name_data.push_back(inter_chassis.get_name_leafdata());
+    if (ipv4bfd_status.is_set || is_set(ipv4bfd_status.yfilter)) leaf_name_data.push_back(ipv4bfd_status.get_name_leafdata());
+    if (ipv6bfd_status.is_set || is_set(ipv6bfd_status.yfilter)) leaf_name_data.push_back(ipv6bfd_status.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
+    if (lacp_nonrevertive.is_set || is_set(lacp_nonrevertive.yfilter)) leaf_name_data.push_back(lacp_nonrevertive.get_name_leafdata());
+    if (lacp_status.is_set || is_set(lacp_status.yfilter)) leaf_name_data.push_back(lacp_status.get_name_leafdata());
+    if (link_order_status.is_set || is_set(link_order_status.yfilter)) leaf_name_data.push_back(link_order_status.get_name_leafdata());
+    if (load_balance_hash_type.is_set || is_set(load_balance_hash_type.yfilter)) leaf_name_data.push_back(load_balance_hash_type.get_name_leafdata());
+    if (load_balance_locality_threshold.is_set || is_set(load_balance_locality_threshold.yfilter)) leaf_name_data.push_back(load_balance_locality_threshold.get_name_leafdata());
+    if (mac_source.is_set || is_set(mac_source.yfilter)) leaf_name_data.push_back(mac_source.get_name_leafdata());
+    if (mac_source_member.is_set || is_set(mac_source_member.yfilter)) leaf_name_data.push_back(mac_source_member.get_name_leafdata());
+    if (maximize_threshold_value_band_width.is_set || is_set(maximize_threshold_value_band_width.yfilter)) leaf_name_data.push_back(maximize_threshold_value_band_width.get_name_leafdata());
+    if (maximize_threshold_value_links.is_set || is_set(maximize_threshold_value_links.yfilter)) leaf_name_data.push_back(maximize_threshold_value_links.get_name_leafdata());
+    if (maximum_active_links.is_set || is_set(maximum_active_links.yfilter)) leaf_name_data.push_back(maximum_active_links.get_name_leafdata());
+    if (maximum_active_links_source.is_set || is_set(maximum_active_links_source.yfilter)) leaf_name_data.push_back(maximum_active_links_source.get_name_leafdata());
+    if (minimum_active_links.is_set || is_set(minimum_active_links.yfilter)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
+    if (minimum_bandwidth.is_set || is_set(minimum_bandwidth.yfilter)) leaf_name_data.push_back(minimum_bandwidth.get_name_leafdata());
+    if (mlacp_mode.is_set || is_set(mlacp_mode.yfilter)) leaf_name_data.push_back(mlacp_mode.get_name_leafdata());
+    if (mlacp_status.is_set || is_set(mlacp_status.yfilter)) leaf_name_data.push_back(mlacp_status.get_name_leafdata());
+    if (primary_member.is_set || is_set(primary_member.yfilter)) leaf_name_data.push_back(primary_member.get_name_leafdata());
+    if (recovery_delay.is_set || is_set(recovery_delay.yfilter)) leaf_name_data.push_back(recovery_delay.get_name_leafdata());
+    if (singleton.is_set || is_set(singleton.yfilter)) leaf_name_data.push_back(singleton.get_name_leafdata());
+    if (standby_member_count.is_set || is_set(standby_member_count.yfilter)) leaf_name_data.push_back(standby_member_count.get_name_leafdata());
+    if (suppression_timer.is_set || is_set(suppression_timer.yfilter)) leaf_name_data.push_back(suppression_timer.get_name_leafdata());
+    if (switchover_type.is_set || is_set(switchover_type.yfilter)) leaf_name_data.push_back(switchover_type.get_name_leafdata());
+    if (wait_while_timer.is_set || is_set(wait_while_timer.yfilter)) leaf_name_data.push_back(wait_while_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15775,160 +20651,399 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-foreign-member-count")
     {
         active_foreign_member_count = value;
+        active_foreign_member_count.value_namespace = name_space;
+        active_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-member-count")
     {
         active_member_count = value;
+        active_member_count.value_namespace = name_space;
+        active_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "available-bandwidth")
     {
         available_bandwidth = value;
+        available_bandwidth.value_namespace = name_space;
+        available_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-interface-name")
     {
         bundle_interface_name = value;
+        bundle_interface_name.value_namespace = name_space;
+        bundle_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cisco-extensions")
     {
         cisco_extensions = value;
+        cisco_extensions.value_namespace = name_space;
+        cisco_extensions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collector-max-delay")
     {
         collector_max_delay = value;
+        collector_max_delay.value_namespace = name_space;
+        collector_max_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-bandwidth")
     {
         configured_bandwidth = value;
+        configured_bandwidth.value_namespace = name_space;
+        configured_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-foreign-member-count")
     {
         configured_foreign_member_count = value;
+        configured_foreign_member_count.value_namespace = name_space;
+        configured_foreign_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-member-count")
     {
         configured_member_count = value;
+        configured_member_count.value_namespace = name_space;
+        configured_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "effective-bandwidth")
     {
         effective_bandwidth = value;
+        effective_bandwidth.value_namespace = name_space;
+        effective_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-group-id")
     {
         iccp_group_id = value;
+        iccp_group_id.value_namespace = name_space;
+        iccp_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-chassis")
     {
         inter_chassis = value;
+        inter_chassis.value_namespace = name_space;
+        inter_chassis.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4bfd-status")
     {
         ipv4bfd_status = value;
+        ipv4bfd_status.value_namespace = name_space;
+        ipv4bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-status")
     {
         ipv6bfd_status = value;
+        ipv6bfd_status.value_namespace = name_space;
+        ipv6bfd_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-active")
     {
         is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-nonrevertive")
     {
         lacp_nonrevertive = value;
+        lacp_nonrevertive.value_namespace = name_space;
+        lacp_nonrevertive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lacp-status")
     {
         lacp_status = value;
+        lacp_status.value_namespace = name_space;
+        lacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-status")
     {
         link_order_status = value;
+        link_order_status.value_namespace = name_space;
+        link_order_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-hash-type")
     {
         load_balance_hash_type = value;
+        load_balance_hash_type.value_namespace = name_space;
+        load_balance_hash_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-locality-threshold")
     {
         load_balance_locality_threshold = value;
+        load_balance_locality_threshold.value_namespace = name_space;
+        load_balance_locality_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source")
     {
         mac_source = value;
+        mac_source.value_namespace = name_space;
+        mac_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-source-member")
     {
         mac_source_member = value;
+        mac_source_member.value_namespace = name_space;
+        mac_source_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-band-width")
     {
         maximize_threshold_value_band_width = value;
+        maximize_threshold_value_band_width.value_namespace = name_space;
+        maximize_threshold_value_band_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximize-threshold-value-links")
     {
         maximize_threshold_value_links = value;
+        maximize_threshold_value_links.value_namespace = name_space;
+        maximize_threshold_value_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links")
     {
         maximum_active_links = value;
+        maximum_active_links.value_namespace = name_space;
+        maximum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-active-links-source")
     {
         maximum_active_links_source = value;
+        maximum_active_links_source.value_namespace = name_space;
+        maximum_active_links_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-active-links")
     {
         minimum_active_links = value;
+        minimum_active_links.value_namespace = name_space;
+        minimum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-bandwidth")
     {
         minimum_bandwidth = value;
+        minimum_bandwidth.value_namespace = name_space;
+        minimum_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-mode")
     {
         mlacp_mode = value;
+        mlacp_mode.value_namespace = name_space;
+        mlacp_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mlacp-status")
     {
         mlacp_status = value;
+        mlacp_status.value_namespace = name_space;
+        mlacp_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-member")
     {
         primary_member = value;
+        primary_member.value_namespace = name_space;
+        primary_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recovery-delay")
     {
         recovery_delay = value;
+        recovery_delay.value_namespace = name_space;
+        recovery_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "singleton")
     {
         singleton = value;
+        singleton.value_namespace = name_space;
+        singleton.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-member-count")
     {
         standby_member_count = value;
+        standby_member_count.value_namespace = name_space;
+        standby_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppression-timer")
     {
         suppression_timer = value;
+        suppression_timer.value_namespace = name_space;
+        suppression_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switchover-type")
     {
         switchover_type = value;
+        switchover_type.value_namespace = name_space;
+        switchover_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wait-while-timer")
     {
         wait_while_timer = value;
+        wait_while_timer.value_namespace = name_space;
+        wait_while_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-foreign-member-count")
+    {
+        active_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "active-member-count")
+    {
+        active_member_count.yfilter = yfilter;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "bundle-interface-name")
+    {
+        bundle_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "cisco-extensions")
+    {
+        cisco_extensions.yfilter = yfilter;
+    }
+    if(value_path == "collector-max-delay")
+    {
+        collector_max_delay.yfilter = yfilter;
+    }
+    if(value_path == "configured-bandwidth")
+    {
+        configured_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "configured-foreign-member-count")
+    {
+        configured_foreign_member_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-member-count")
+    {
+        configured_member_count.yfilter = yfilter;
+    }
+    if(value_path == "effective-bandwidth")
+    {
+        effective_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "iccp-group-id")
+    {
+        iccp_group_id.yfilter = yfilter;
+    }
+    if(value_path == "inter-chassis")
+    {
+        inter_chassis.yfilter = yfilter;
+    }
+    if(value_path == "ipv4bfd-status")
+    {
+        ipv4bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-status")
+    {
+        ipv6bfd_status.yfilter = yfilter;
+    }
+    if(value_path == "is-active")
+    {
+        is_active.yfilter = yfilter;
+    }
+    if(value_path == "lacp-nonrevertive")
+    {
+        lacp_nonrevertive.yfilter = yfilter;
+    }
+    if(value_path == "lacp-status")
+    {
+        lacp_status.yfilter = yfilter;
+    }
+    if(value_path == "link-order-status")
+    {
+        link_order_status.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-hash-type")
+    {
+        load_balance_hash_type.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-locality-threshold")
+    {
+        load_balance_locality_threshold.yfilter = yfilter;
+    }
+    if(value_path == "mac-source")
+    {
+        mac_source.yfilter = yfilter;
+    }
+    if(value_path == "mac-source-member")
+    {
+        mac_source_member.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-band-width")
+    {
+        maximize_threshold_value_band_width.yfilter = yfilter;
+    }
+    if(value_path == "maximize-threshold-value-links")
+    {
+        maximize_threshold_value_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links")
+    {
+        maximum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "maximum-active-links-source")
+    {
+        maximum_active_links_source.yfilter = yfilter;
+    }
+    if(value_path == "minimum-active-links")
+    {
+        minimum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "minimum-bandwidth")
+    {
+        minimum_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-mode")
+    {
+        mlacp_mode.yfilter = yfilter;
+    }
+    if(value_path == "mlacp-status")
+    {
+        mlacp_status.yfilter = yfilter;
+    }
+    if(value_path == "primary-member")
+    {
+        primary_member.yfilter = yfilter;
+    }
+    if(value_path == "recovery-delay")
+    {
+        recovery_delay.yfilter = yfilter;
+    }
+    if(value_path == "singleton")
+    {
+        singleton.yfilter = yfilter;
+    }
+    if(value_path == "standby-member-count")
+    {
+        standby_member_count.yfilter = yfilter;
+    }
+    if(value_path == "suppression-timer")
+    {
+        suppression_timer.yfilter = yfilter;
+    }
+    if(value_path == "switchover-type")
+    {
+        switchover_type.yfilter = yfilter;
+    }
+    if(value_path == "wait-while-timer")
+    {
+        wait_while_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-config" || name == "mac-address" || name == "active-foreign-member-count" || name == "active-member-count" || name == "available-bandwidth" || name == "bundle-interface-name" || name == "bundle-status" || name == "cisco-extensions" || name == "collector-max-delay" || name == "configured-bandwidth" || name == "configured-foreign-member-count" || name == "configured-member-count" || name == "effective-bandwidth" || name == "iccp-group-id" || name == "inter-chassis" || name == "ipv4bfd-status" || name == "ipv6bfd-status" || name == "is-active" || name == "lacp-nonrevertive" || name == "lacp-status" || name == "link-order-status" || name == "load-balance-hash-type" || name == "load-balance-locality-threshold" || name == "mac-source" || name == "mac-source-member" || name == "maximize-threshold-value-band-width" || name == "maximize-threshold-value-links" || name == "maximum-active-links" || name == "maximum-active-links-source" || name == "minimum-active-links" || name == "minimum-bandwidth" || name == "mlacp-mode" || name == "mlacp-status" || name == "primary-member" || name == "recovery-delay" || name == "singleton" || name == "standby-member-count" || name == "suppression-timer" || name == "switchover-type" || name == "wait-while-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::MacAddress()
@@ -15949,8 +21064,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::get_segment_path() const
@@ -15976,7 +21091,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15995,12 +21110,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::BfdConfig()
@@ -16040,15 +21172,15 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_status.operation)
-	|| is_set(fast_detect.operation)
-	|| is_set(mode_info.operation)
-	|| is_set(nbr_unconfig_timer.operation)
-	|| is_set(pref_echo_min_interval.operation)
-	|| is_set(pref_min_interval.operation)
-	|| is_set(pref_multiplier.operation)
-	|| is_set(start_timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_status.yfilter)
+	|| ydk::is_set(fast_detect.yfilter)
+	|| ydk::is_set(mode_info.yfilter)
+	|| ydk::is_set(nbr_unconfig_timer.yfilter)
+	|| ydk::is_set(pref_echo_min_interval.yfilter)
+	|| ydk::is_set(pref_min_interval.yfilter)
+	|| ydk::is_set(pref_multiplier.yfilter)
+	|| ydk::is_set(start_timer.yfilter)
 	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
@@ -16075,14 +21207,14 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_status.is_set || is_set(bundle_status.operation)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
-    if (fast_detect.is_set || is_set(fast_detect.operation)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
-    if (mode_info.is_set || is_set(mode_info.operation)) leaf_name_data.push_back(mode_info.get_name_leafdata());
-    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.operation)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
-    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.operation)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
-    if (pref_min_interval.is_set || is_set(pref_min_interval.operation)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
-    if (pref_multiplier.is_set || is_set(pref_multiplier.operation)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
-    if (start_timer.is_set || is_set(start_timer.operation)) leaf_name_data.push_back(start_timer.get_name_leafdata());
+    if (bundle_status.is_set || is_set(bundle_status.yfilter)) leaf_name_data.push_back(bundle_status.get_name_leafdata());
+    if (fast_detect.is_set || is_set(fast_detect.yfilter)) leaf_name_data.push_back(fast_detect.get_name_leafdata());
+    if (mode_info.is_set || is_set(mode_info.yfilter)) leaf_name_data.push_back(mode_info.get_name_leafdata());
+    if (nbr_unconfig_timer.is_set || is_set(nbr_unconfig_timer.yfilter)) leaf_name_data.push_back(nbr_unconfig_timer.get_name_leafdata());
+    if (pref_echo_min_interval.is_set || is_set(pref_echo_min_interval.yfilter)) leaf_name_data.push_back(pref_echo_min_interval.get_name_leafdata());
+    if (pref_min_interval.is_set || is_set(pref_min_interval.yfilter)) leaf_name_data.push_back(pref_min_interval.get_name_leafdata());
+    if (pref_multiplier.is_set || is_set(pref_multiplier.yfilter)) leaf_name_data.push_back(pref_multiplier.get_name_leafdata());
+    if (start_timer.is_set || is_set(start_timer.yfilter)) leaf_name_data.push_back(start_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16115,40 +21247,99 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-status")
     {
         bundle_status = value;
+        bundle_status.value_namespace = name_space;
+        bundle_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-detect")
     {
         fast_detect = value;
+        fast_detect.value_namespace = name_space;
+        fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-info")
     {
         mode_info = value;
+        mode_info.value_namespace = name_space;
+        mode_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nbr-unconfig-timer")
     {
         nbr_unconfig_timer = value;
+        nbr_unconfig_timer.value_namespace = name_space;
+        nbr_unconfig_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-echo-min-interval")
     {
         pref_echo_min_interval = value;
+        pref_echo_min_interval.value_namespace = name_space;
+        pref_echo_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-min-interval")
     {
         pref_min_interval = value;
+        pref_min_interval.value_namespace = name_space;
+        pref_min_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pref-multiplier")
     {
         pref_multiplier = value;
+        pref_multiplier.value_namespace = name_space;
+        pref_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-timer")
     {
         start_timer = value;
+        start_timer.value_namespace = name_space;
+        start_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-status")
+    {
+        bundle_status.yfilter = yfilter;
+    }
+    if(value_path == "fast-detect")
+    {
+        fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "mode-info")
+    {
+        mode_info.yfilter = yfilter;
+    }
+    if(value_path == "nbr-unconfig-timer")
+    {
+        nbr_unconfig_timer.yfilter = yfilter;
+    }
+    if(value_path == "pref-echo-min-interval")
+    {
+        pref_echo_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-min-interval")
+    {
+        pref_min_interval.yfilter = yfilter;
+    }
+    if(value_path == "pref-multiplier")
+    {
+        pref_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "start-timer")
+    {
+        start_timer.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address" || name == "bundle-status" || name == "fast-detect" || name == "mode-info" || name == "nbr-unconfig-timer" || name == "pref-echo-min-interval" || name == "pref-min-interval" || name == "pref-multiplier" || name == "start-timer")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::DestinationAddress()
@@ -16173,10 +21364,10 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af.operation)
-	|| is_set(ipv4.operation)
-	|| is_set(ipv6.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(ipv4.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::get_segment_path() const
@@ -16202,9 +21393,9 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af.is_set || is_set(af.operation)) leaf_name_data.push_back(af.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.operation)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.operation)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16223,20 +21414,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af")
     {
         af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4")
     {
         ipv4 = value;
+        ipv4.value_namespace = name_space;
+        ipv4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6")
     {
         ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "ipv4")
+    {
+        ipv4.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::BundleSystemId()
@@ -16262,8 +21482,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_prio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(system_prio.yfilter)
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
@@ -16290,7 +21510,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_prio.is_set || is_set(system_prio.operation)) leaf_name_data.push_back(system_prio.get_name_leafdata());
+    if (system_prio.is_set || is_set(system_prio.yfilter)) leaf_name_data.push_back(system_prio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16323,12 +21543,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-prio")
     {
         system_prio = value;
+        system_prio.value_namespace = name_space;
+        system_prio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-prio")
+    {
+        system_prio.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac-addr" || name == "system-prio")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::SystemMacAddr()
@@ -16349,8 +21586,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(macaddr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::get_segment_path() const
@@ -16376,7 +21613,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (macaddr.is_set || is_set(macaddr.operation)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16395,12 +21632,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "macaddr")
     {
         macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::MemberData()
@@ -16450,16 +21704,16 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actor_churn_state.operation)
-	|| is_set(attached_aggregator_id.operation)
-	|| is_set(iccp_group_id.operation)
-	|| is_set(mux_state.operation)
-	|| is_set(partner_churn_state.operation)
-	|| is_set(period_state.operation)
-	|| is_set(receive_machine_state.operation)
-	|| is_set(selected_aggregator_id.operation)
-	|| is_set(selection_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(actor_churn_state.yfilter)
+	|| ydk::is_set(attached_aggregator_id.yfilter)
+	|| ydk::is_set(iccp_group_id.yfilter)
+	|| ydk::is_set(mux_state.yfilter)
+	|| ydk::is_set(partner_churn_state.yfilter)
+	|| ydk::is_set(period_state.yfilter)
+	|| ydk::is_set(receive_machine_state.yfilter)
+	|| ydk::is_set(selected_aggregator_id.yfilter)
+	|| ydk::is_set(selection_state.yfilter)
 	|| (actor_info !=  nullptr && actor_info->has_operation())
 	|| (additional_info !=  nullptr && additional_info->has_operation())
 	|| (partner_info !=  nullptr && partner_info->has_operation());
@@ -16488,15 +21742,15 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actor_churn_state.is_set || is_set(actor_churn_state.operation)) leaf_name_data.push_back(actor_churn_state.get_name_leafdata());
-    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.operation)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
-    if (iccp_group_id.is_set || is_set(iccp_group_id.operation)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
-    if (mux_state.is_set || is_set(mux_state.operation)) leaf_name_data.push_back(mux_state.get_name_leafdata());
-    if (partner_churn_state.is_set || is_set(partner_churn_state.operation)) leaf_name_data.push_back(partner_churn_state.get_name_leafdata());
-    if (period_state.is_set || is_set(period_state.operation)) leaf_name_data.push_back(period_state.get_name_leafdata());
-    if (receive_machine_state.is_set || is_set(receive_machine_state.operation)) leaf_name_data.push_back(receive_machine_state.get_name_leafdata());
-    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.operation)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
-    if (selection_state.is_set || is_set(selection_state.operation)) leaf_name_data.push_back(selection_state.get_name_leafdata());
+    if (actor_churn_state.is_set || is_set(actor_churn_state.yfilter)) leaf_name_data.push_back(actor_churn_state.get_name_leafdata());
+    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.yfilter)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
+    if (iccp_group_id.is_set || is_set(iccp_group_id.yfilter)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
+    if (mux_state.is_set || is_set(mux_state.yfilter)) leaf_name_data.push_back(mux_state.get_name_leafdata());
+    if (partner_churn_state.is_set || is_set(partner_churn_state.yfilter)) leaf_name_data.push_back(partner_churn_state.get_name_leafdata());
+    if (period_state.is_set || is_set(period_state.yfilter)) leaf_name_data.push_back(period_state.get_name_leafdata());
+    if (receive_machine_state.is_set || is_set(receive_machine_state.yfilter)) leaf_name_data.push_back(receive_machine_state.get_name_leafdata());
+    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.yfilter)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
+    if (selection_state.is_set || is_set(selection_state.yfilter)) leaf_name_data.push_back(selection_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16557,44 +21811,109 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actor-churn-state")
     {
         actor_churn_state = value;
+        actor_churn_state.value_namespace = name_space;
+        actor_churn_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-aggregator-id")
     {
         attached_aggregator_id = value;
+        attached_aggregator_id.value_namespace = name_space;
+        attached_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-group-id")
     {
         iccp_group_id = value;
+        iccp_group_id.value_namespace = name_space;
+        iccp_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state")
     {
         mux_state = value;
+        mux_state.value_namespace = name_space;
+        mux_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-churn-state")
     {
         partner_churn_state = value;
+        partner_churn_state.value_namespace = name_space;
+        partner_churn_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "period-state")
     {
         period_state = value;
+        period_state.value_namespace = name_space;
+        period_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receive-machine-state")
     {
         receive_machine_state = value;
+        receive_machine_state.value_namespace = name_space;
+        receive_machine_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selected-aggregator-id")
     {
         selected_aggregator_id = value;
+        selected_aggregator_id.value_namespace = name_space;
+        selected_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selection-state")
     {
         selection_state = value;
+        selection_state.value_namespace = name_space;
+        selection_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actor-churn-state")
+    {
+        actor_churn_state.yfilter = yfilter;
+    }
+    if(value_path == "attached-aggregator-id")
+    {
+        attached_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "iccp-group-id")
+    {
+        iccp_group_id.yfilter = yfilter;
+    }
+    if(value_path == "mux-state")
+    {
+        mux_state.yfilter = yfilter;
+    }
+    if(value_path == "partner-churn-state")
+    {
+        partner_churn_state.yfilter = yfilter;
+    }
+    if(value_path == "period-state")
+    {
+        period_state.yfilter = yfilter;
+    }
+    if(value_path == "receive-machine-state")
+    {
+        receive_machine_state.yfilter = yfilter;
+    }
+    if(value_path == "selected-aggregator-id")
+    {
+        selected_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "selection-state")
+    {
+        selection_state.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-info" || name == "additional-info" || name == "partner-info" || name == "actor-churn-state" || name == "attached-aggregator-id" || name == "iccp-group-id" || name == "mux-state" || name == "partner-churn-state" || name == "period-state" || name == "receive-machine-state" || name == "selected-aggregator-id" || name == "selection-state")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::ActorInfo()
@@ -16620,8 +21939,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tx_period.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tx_period.yfilter)
 	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
@@ -16648,7 +21967,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tx_period.is_set || is_set(tx_period.operation)) leaf_name_data.push_back(tx_period.get_name_leafdata());
+    if (tx_period.is_set || is_set(tx_period.yfilter)) leaf_name_data.push_back(tx_period.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16681,12 +22000,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tx-period")
     {
         tx_period = value;
+        tx_period.value_namespace = name_space;
+        tx_period.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tx-period")
+    {
+        tx_period.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-info" || name == "tx-period")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::PortInfo()
@@ -16718,9 +22054,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(key.operation)
-	|| is_set(state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(key.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| (port !=  nullptr && port->has_operation())
 	|| (system !=  nullptr && system->has_operation());
 }
@@ -16748,8 +22084,8 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (key.is_set || is_set(key.operation)) leaf_name_data.push_back(key.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16796,16 +22132,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key")
     {
         key = value;
+        key.value_namespace = name_space;
+        key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key")
+    {
+        key.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port" || name == "system" || name == "key" || name == "state")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::System()
@@ -16831,8 +22190,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_prio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(system_prio.yfilter)
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
@@ -16859,7 +22218,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_prio.is_set || is_set(system_prio.operation)) leaf_name_data.push_back(system_prio.get_name_leafdata());
+    if (system_prio.is_set || is_set(system_prio.yfilter)) leaf_name_data.push_back(system_prio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16892,12 +22251,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-prio")
     {
         system_prio = value;
+        system_prio.value_namespace = name_space;
+        system_prio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-prio")
+    {
+        system_prio.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac-addr" || name == "system-prio")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::SystemMacAddr()
@@ -16918,8 +22294,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(macaddr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::get_segment_path() const
@@ -16945,7 +22321,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (macaddr.is_set || is_set(macaddr.operation)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16964,12 +22340,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "macaddr")
     {
         macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::Port()
@@ -16992,9 +22385,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(link_number.operation)
-	|| is_set(link_priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(link_number.yfilter)
+	|| ydk::is_set(link_priority.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::get_segment_path() const
@@ -17020,8 +22413,8 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_number.is_set || is_set(link_number.operation)) leaf_name_data.push_back(link_number.get_name_leafdata());
-    if (link_priority.is_set || is_set(link_priority.operation)) leaf_name_data.push_back(link_priority.get_name_leafdata());
+    if (link_number.is_set || is_set(link_number.yfilter)) leaf_name_data.push_back(link_number.get_name_leafdata());
+    if (link_priority.is_set || is_set(link_priority.yfilter)) leaf_name_data.push_back(link_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17040,16 +22433,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-number")
     {
         link_number = value;
+        link_number.value_namespace = name_space;
+        link_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-priority")
     {
         link_priority = value;
+        link_priority.value_namespace = name_space;
+        link_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-number")
+    {
+        link_number.yfilter = yfilter;
+    }
+    if(value_path == "link-priority")
+    {
+        link_priority.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-number" || name == "link-priority")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PartnerInfo()
@@ -17075,8 +22491,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tx_period.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tx_period.yfilter)
 	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
@@ -17103,7 +22519,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tx_period.is_set || is_set(tx_period.operation)) leaf_name_data.push_back(tx_period.get_name_leafdata());
+    if (tx_period.is_set || is_set(tx_period.yfilter)) leaf_name_data.push_back(tx_period.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17136,12 +22552,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tx-period")
     {
         tx_period = value;
+        tx_period.value_namespace = name_space;
+        tx_period.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tx-period")
+    {
+        tx_period.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-info" || name == "tx-period")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::PortInfo()
@@ -17173,9 +22606,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(key.operation)
-	|| is_set(state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(key.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| (port !=  nullptr && port->has_operation())
 	|| (system !=  nullptr && system->has_operation());
 }
@@ -17203,8 +22636,8 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (key.is_set || is_set(key.operation)) leaf_name_data.push_back(key.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17251,16 +22684,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key")
     {
         key = value;
+        key.value_namespace = name_space;
+        key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key")
+    {
+        key.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port" || name == "system" || name == "key" || name == "state")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::System()
@@ -17286,8 +22742,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_prio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(system_prio.yfilter)
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
@@ -17314,7 +22770,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_prio.is_set || is_set(system_prio.operation)) leaf_name_data.push_back(system_prio.get_name_leafdata());
+    if (system_prio.is_set || is_set(system_prio.yfilter)) leaf_name_data.push_back(system_prio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17347,12 +22803,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-prio")
     {
         system_prio = value;
+        system_prio.value_namespace = name_space;
+        system_prio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-prio")
+    {
+        system_prio.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac-addr" || name == "system-prio")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::SystemMacAddr()
@@ -17373,8 +22846,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(macaddr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::get_segment_path() const
@@ -17400,7 +22873,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (macaddr.is_set || is_set(macaddr.operation)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17419,12 +22892,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "macaddr")
     {
         macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::Port()
@@ -17447,9 +22937,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(link_number.operation)
-	|| is_set(link_priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(link_number.yfilter)
+	|| ydk::is_set(link_priority.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::get_segment_path() const
@@ -17475,8 +22965,8 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_number.is_set || is_set(link_number.operation)) leaf_name_data.push_back(link_number.get_name_leafdata());
-    if (link_priority.is_set || is_set(link_priority.operation)) leaf_name_data.push_back(link_priority.get_name_leafdata());
+    if (link_number.is_set || is_set(link_number.yfilter)) leaf_name_data.push_back(link_number.get_name_leafdata());
+    if (link_priority.is_set || is_set(link_priority.yfilter)) leaf_name_data.push_back(link_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17495,16 +22985,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-number")
     {
         link_number = value;
+        link_number.value_namespace = name_space;
+        link_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-priority")
     {
         link_priority = value;
+        link_priority.value_namespace = name_space;
+        link_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-number")
+    {
+        link_number.yfilter = yfilter;
+    }
+    if(value_path == "link-priority")
+    {
+        link_priority.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-number" || name == "link-priority")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::AdditionalInfo()
@@ -17534,8 +23047,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mbr_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mbr_type.yfilter)
 	|| (foreign !=  nullptr && foreign->has_operation())
 	|| (local !=  nullptr && local->has_operation());
 }
@@ -17563,7 +23076,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mbr_type.is_set || is_set(mbr_type.operation)) leaf_name_data.push_back(mbr_type.get_name_leafdata());
+    if (mbr_type.is_set || is_set(mbr_type.yfilter)) leaf_name_data.push_back(mbr_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17610,12 +23123,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mbr-type")
     {
         mbr_type = value;
+        mbr_type.value_namespace = name_space;
+        mbr_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mbr-type")
+    {
+        mbr_type.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "foreign" || name == "local" || name == "mbr-type")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::Local()
@@ -17636,8 +23166,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_handle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_handle.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::get_segment_path() const
@@ -17663,7 +23193,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17682,12 +23212,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-handle")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::Foreign()
@@ -17710,9 +23257,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_name.operation)
-	|| is_set(peer_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(peer_address.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::get_segment_path() const
@@ -17738,8 +23285,8 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDes
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_name.is_set || is_set(member_name.operation)) leaf_name_data.push_back(member_name.get_name_leafdata());
-    if (peer_address.is_set || is_set(peer_address.operation)) leaf_name_data.push_back(peer_address.get_name_leafdata());
+    if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -17758,16 +23305,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-name")
     {
         member_name = value;
+        member_name.value_namespace = name_space;
+        member_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-address")
     {
         peer_address = value;
+        peer_address.value_namespace = name_space;
+        peer_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-name")
+    {
+        member_name.yfilter = yfilter;
+    }
+    if(value_path == "peer-address")
+    {
+        peer_address.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-name" || name == "peer-address")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMembers()
@@ -17796,7 +23366,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
         if(lacp_bundle_children_member[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::get_segment_path() const
@@ -17861,8 +23431,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lacp-bundle-children-member")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::LacpBundleChildrenMember()
@@ -17914,17 +23495,17 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
-	|| is_set(actor_churn_state.operation)
-	|| is_set(attached_aggregator_id.operation)
-	|| is_set(iccp_group_id.operation)
-	|| is_set(mux_state.operation)
-	|| is_set(partner_churn_state.operation)
-	|| is_set(period_state.operation)
-	|| is_set(receive_machine_state.operation)
-	|| is_set(selected_aggregator_id.operation)
-	|| is_set(selection_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| ydk::is_set(actor_churn_state.yfilter)
+	|| ydk::is_set(attached_aggregator_id.yfilter)
+	|| ydk::is_set(iccp_group_id.yfilter)
+	|| ydk::is_set(mux_state.yfilter)
+	|| ydk::is_set(partner_churn_state.yfilter)
+	|| ydk::is_set(period_state.yfilter)
+	|| ydk::is_set(receive_machine_state.yfilter)
+	|| ydk::is_set(selected_aggregator_id.yfilter)
+	|| ydk::is_set(selection_state.yfilter)
 	|| (actor_info !=  nullptr && actor_info->has_operation())
 	|| (additional_info !=  nullptr && additional_info->has_operation())
 	|| (partner_info !=  nullptr && partner_info->has_operation());
@@ -17953,16 +23534,16 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-    if (actor_churn_state.is_set || is_set(actor_churn_state.operation)) leaf_name_data.push_back(actor_churn_state.get_name_leafdata());
-    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.operation)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
-    if (iccp_group_id.is_set || is_set(iccp_group_id.operation)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
-    if (mux_state.is_set || is_set(mux_state.operation)) leaf_name_data.push_back(mux_state.get_name_leafdata());
-    if (partner_churn_state.is_set || is_set(partner_churn_state.operation)) leaf_name_data.push_back(partner_churn_state.get_name_leafdata());
-    if (period_state.is_set || is_set(period_state.operation)) leaf_name_data.push_back(period_state.get_name_leafdata());
-    if (receive_machine_state.is_set || is_set(receive_machine_state.operation)) leaf_name_data.push_back(receive_machine_state.get_name_leafdata());
-    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.operation)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
-    if (selection_state.is_set || is_set(selection_state.operation)) leaf_name_data.push_back(selection_state.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (actor_churn_state.is_set || is_set(actor_churn_state.yfilter)) leaf_name_data.push_back(actor_churn_state.get_name_leafdata());
+    if (attached_aggregator_id.is_set || is_set(attached_aggregator_id.yfilter)) leaf_name_data.push_back(attached_aggregator_id.get_name_leafdata());
+    if (iccp_group_id.is_set || is_set(iccp_group_id.yfilter)) leaf_name_data.push_back(iccp_group_id.get_name_leafdata());
+    if (mux_state.is_set || is_set(mux_state.yfilter)) leaf_name_data.push_back(mux_state.get_name_leafdata());
+    if (partner_churn_state.is_set || is_set(partner_churn_state.yfilter)) leaf_name_data.push_back(partner_churn_state.get_name_leafdata());
+    if (period_state.is_set || is_set(period_state.yfilter)) leaf_name_data.push_back(period_state.get_name_leafdata());
+    if (receive_machine_state.is_set || is_set(receive_machine_state.yfilter)) leaf_name_data.push_back(receive_machine_state.get_name_leafdata());
+    if (selected_aggregator_id.is_set || is_set(selected_aggregator_id.yfilter)) leaf_name_data.push_back(selected_aggregator_id.get_name_leafdata());
+    if (selection_state.is_set || is_set(selection_state.yfilter)) leaf_name_data.push_back(selection_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18023,48 +23604,119 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "actor-churn-state")
     {
         actor_churn_state = value;
+        actor_churn_state.value_namespace = name_space;
+        actor_churn_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-aggregator-id")
     {
         attached_aggregator_id = value;
+        attached_aggregator_id.value_namespace = name_space;
+        attached_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "iccp-group-id")
     {
         iccp_group_id = value;
+        iccp_group_id.value_namespace = name_space;
+        iccp_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mux-state")
     {
         mux_state = value;
+        mux_state.value_namespace = name_space;
+        mux_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-churn-state")
     {
         partner_churn_state = value;
+        partner_churn_state.value_namespace = name_space;
+        partner_churn_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "period-state")
     {
         period_state = value;
+        period_state.value_namespace = name_space;
+        period_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receive-machine-state")
     {
         receive_machine_state = value;
+        receive_machine_state.value_namespace = name_space;
+        receive_machine_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selected-aggregator-id")
     {
         selected_aggregator_id = value;
+        selected_aggregator_id.value_namespace = name_space;
+        selected_aggregator_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selection-state")
     {
         selection_state = value;
+        selection_state.value_namespace = name_space;
+        selection_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+    if(value_path == "actor-churn-state")
+    {
+        actor_churn_state.yfilter = yfilter;
+    }
+    if(value_path == "attached-aggregator-id")
+    {
+        attached_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "iccp-group-id")
+    {
+        iccp_group_id.yfilter = yfilter;
+    }
+    if(value_path == "mux-state")
+    {
+        mux_state.yfilter = yfilter;
+    }
+    if(value_path == "partner-churn-state")
+    {
+        partner_churn_state.yfilter = yfilter;
+    }
+    if(value_path == "period-state")
+    {
+        period_state.yfilter = yfilter;
+    }
+    if(value_path == "receive-machine-state")
+    {
+        receive_machine_state.yfilter = yfilter;
+    }
+    if(value_path == "selected-aggregator-id")
+    {
+        selected_aggregator_id.yfilter = yfilter;
+    }
+    if(value_path == "selection-state")
+    {
+        selection_state.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "actor-info" || name == "additional-info" || name == "partner-info" || name == "member-interface" || name == "actor-churn-state" || name == "attached-aggregator-id" || name == "iccp-group-id" || name == "mux-state" || name == "partner-churn-state" || name == "period-state" || name == "receive-machine-state" || name == "selected-aggregator-id" || name == "selection-state")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::ActorInfo()
@@ -18090,8 +23742,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tx_period.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tx_period.yfilter)
 	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
@@ -18118,7 +23770,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tx_period.is_set || is_set(tx_period.operation)) leaf_name_data.push_back(tx_period.get_name_leafdata());
+    if (tx_period.is_set || is_set(tx_period.yfilter)) leaf_name_data.push_back(tx_period.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18151,12 +23803,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tx-period")
     {
         tx_period = value;
+        tx_period.value_namespace = name_space;
+        tx_period.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tx-period")
+    {
+        tx_period.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-info" || name == "tx-period")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::PortInfo()
@@ -18188,9 +23857,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(key.operation)
-	|| is_set(state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(key.yfilter)
+	|| ydk::is_set(state.yfilter)
 	|| (port !=  nullptr && port->has_operation())
 	|| (system !=  nullptr && system->has_operation());
 }
@@ -18218,8 +23887,8 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (key.is_set || is_set(key.operation)) leaf_name_data.push_back(key.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18266,16 +23935,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key")
     {
         key = value;
+        key.value_namespace = name_space;
+        key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key")
+    {
+        key.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port" || name == "system" || name == "key" || name == "state")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::System()
@@ -18301,8 +23993,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_prio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(system_prio.yfilter)
 	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
@@ -18329,7 +24021,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_prio.is_set || is_set(system_prio.operation)) leaf_name_data.push_back(system_prio.get_name_leafdata());
+    if (system_prio.is_set || is_set(system_prio.yfilter)) leaf_name_data.push_back(system_prio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18362,12 +24054,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-prio")
     {
         system_prio = value;
+        system_prio.value_namespace = name_space;
+        system_prio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-prio")
+    {
+        system_prio.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac-addr" || name == "system-prio")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::SystemMacAddr()
@@ -18388,8 +24097,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(macaddr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(macaddr.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::get_segment_path() const
@@ -18415,7 +24124,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (macaddr.is_set || is_set(macaddr.operation)) leaf_name_data.push_back(macaddr.get_name_leafdata());
+    if (macaddr.is_set || is_set(macaddr.yfilter)) leaf_name_data.push_back(macaddr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18434,12 +24143,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "macaddr")
     {
         macaddr = value;
+        macaddr.value_namespace = name_space;
+        macaddr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "macaddr")
+    {
+        macaddr.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "macaddr")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::Port()
@@ -18462,9 +24188,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(link_number.operation)
-	|| is_set(link_priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(link_number.yfilter)
+	|| ydk::is_set(link_priority.yfilter);
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::get_segment_path() const
@@ -18490,8 +24216,8 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (link_number.is_set || is_set(link_number.operation)) leaf_name_data.push_back(link_number.get_name_leafdata());
-    if (link_priority.is_set || is_set(link_priority.operation)) leaf_name_data.push_back(link_priority.get_name_leafdata());
+    if (link_number.is_set || is_set(link_number.yfilter)) leaf_name_data.push_back(link_number.get_name_leafdata());
+    if (link_priority.is_set || is_set(link_priority.yfilter)) leaf_name_data.push_back(link_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18510,16 +24236,39 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "link-number")
     {
         link_number = value;
+        link_number.value_namespace = name_space;
+        link_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-priority")
     {
         link_priority = value;
+        link_priority.value_namespace = name_space;
+        link_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-number")
+    {
+        link_number.yfilter = yfilter;
+    }
+    if(value_path == "link-priority")
+    {
+        link_priority.yfilter = yfilter;
+    }
+}
+
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-number" || name == "link-priority")
+        return true;
+    return false;
 }
 
 BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PartnerInfo()
@@ -18545,8 +24294,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tx_period.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tx_period.yfilter)
 	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
@@ -18573,7 +24322,7 @@ const EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tx_period.is_set || is_set(tx_period.operation)) leaf_name_data.push_back(tx_period.get_name_leafdata());
+    if (tx_period.is_set || is_set(tx_period.yfilter)) leaf_name_data.push_back(tx_period.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -18606,319 +24355,336 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Lacp::LacpBund
     return children;
 }
 
-void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::set_value(const std::string & value_path, std::string value)
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tx-period")
     {
         tx_period = value;
+        tx_period.value_namespace = name_space;
+        tx_period.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_nonrevertive {0, "bmd-mlacp-switchover-nonrevertive"};
-const Enum::YLeaf BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_brute_force {1, "bmd-mlacp-switchover-brute-force"};
-const Enum::YLeaf BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_revertive {2, "bmd-mlacp-switchover-revertive"};
-const Enum::YLeaf BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_count {3, "bmd-mlacp-switchover-count"};
+void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tx-period")
+    {
+        tx_period.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf LoadBalanceEnum::default_ {0, "default"};
-const Enum::YLeaf LoadBalanceEnum::auto_ {1, "auto"};
-const Enum::YLeaf LoadBalanceEnum::value_ {2, "value"};
-const Enum::YLeaf LoadBalanceEnum::source_ip {3, "source-ip"};
-const Enum::YLeaf LoadBalanceEnum::destination_ip {4, "destination-ip"};
-const Enum::YLeaf LoadBalanceEnum::unknown {5, "unknown"};
+bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-info" || name == "tx-period")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_admin_down {0, "bm-bdl-state-admin-down"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_down {1, "bm-bdl-state-down"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_client_down {2, "bm-bdl-state-client-down"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_ptnr_down {3, "bm-bdl-state-ptnr-down"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_bundle_shutdown {4, "bm-bdl-state-bundle-shutdown"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_pe_isolated {5, "bm-bdl-state-pe-isolated"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_nak {6, "bm-bdl-state-nak"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_up_active {7, "bm-bdl-state-up-active"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_mlacp_hot_standby {8, "bm-bdl-state-mlacp-hot-standby"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_mlacp_cold_standby {9, "bm-bdl-state-mlacp-cold-standby"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_unknown {10, "bm-bdl-state-unknown"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_cold_standby {11, "bm-bdl-state-cold-standby"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_error_disabled {12, "bm-bdl-state-error-disabled"};
-const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_efd_disabled {13, "bm-bdl-state-efd-disabled"};
+const Enum::YLeaf BmSeverity::ok {0, "ok"};
+const Enum::YLeaf BmSeverity::information {1, "information"};
+const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
+const Enum::YLeaf BmSeverity::warning {3, "warning"};
+const Enum::YLeaf BmSeverity::error {5, "error"};
 
-const Enum::YLeaf LacpPeriodStateEnum::period_s_low {0, "period-s-low"};
-const Enum::YLeaf LacpPeriodStateEnum::period_fast {1, "period-fast"};
-const Enum::YLeaf LacpPeriodStateEnum::period_none {2, "period-none"};
+const Enum::YLeaf BmFeatureStatus::bm_feature_not_configured {0, "bm-feature-not-configured"};
+const Enum::YLeaf BmFeatureStatus::bm_feature_not_operational {1, "bm-feature-not-operational"};
+const Enum::YLeaf BmFeatureStatus::bm_feature_operational {2, "bm-feature-operational"};
 
-const Enum::YLeaf BundleMediaEnum::bundle_media_ethernet {0, "bundle-media-ethernet"};
-const Enum::YLeaf BundleMediaEnum::bundle_media_pos {1, "bundle-media-pos"};
-const Enum::YLeaf BundleMediaEnum::bundle_media_count {2, "bundle-media-count"};
+const Enum::YLeaf LoadBalance::default_ {0, "default"};
+const Enum::YLeaf LoadBalance::auto_ {1, "auto"};
+const Enum::YLeaf LoadBalance::value_ {2, "value"};
+const Enum::YLeaf LoadBalance::source_ip {3, "source-ip"};
+const Enum::YLeaf LoadBalance::destination_ip {4, "destination-ip"};
+const Enum::YLeaf LoadBalance::unknown {5, "unknown"};
 
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_nak {0, "bdl-state-nak"};
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_unknown {1, "bdl-state-unknown"};
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_no_sync {2, "bdl-state-no-sync"};
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_rec_delay {3, "bdl-state-rec-delay"};
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_up {4, "bdl-state-up"};
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_down {5, "bdl-state-down"};
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_admin_down {6, "bdl-state-admin-down"};
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_test {7, "bdl-state-test"};
-const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_error {8, "bdl-state-error"};
+const Enum::YLeaf LacpSelState::unselected {0, "unselected"};
+const Enum::YLeaf LacpSelState::standby {1, "standby"};
+const Enum::YLeaf LacpSelState::selected {2, "selected"};
 
-const Enum::YLeaf BundleMedia1Enum::ethernet {0, "ethernet"};
-const Enum::YLeaf BundleMedia1Enum::pos {1, "pos"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_req {0, "node-sync-req"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_done {1, "node-sync-done"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_start {2, "node-sync-start"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_init {3, "node-sync-init"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_singleton {4, "node-sync-singleton"};
 
-const Enum::YLeaf RxstatesEnum::current_rx {1, "current-rx"};
-const Enum::YLeaf RxstatesEnum::expired {2, "expired"};
-const Enum::YLeaf RxstatesEnum::defaulted {3, "defaulted"};
-const Enum::YLeaf RxstatesEnum::initialize {4, "initialize"};
-const Enum::YLeaf RxstatesEnum::lacp_disabled {5, "lacp-disabled"};
-const Enum::YLeaf RxstatesEnum::port_disabled {6, "port-disabled"};
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_standby {0, "bundle-mlacp-mode-standby"};
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_active {1, "bundle-mlacp-mode-active"};
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_count {2, "bundle-mlacp-mode-count"};
 
-const Enum::YLeaf LacpChurnstatesEnum::no_churn {1, "no-churn"};
-const Enum::YLeaf LacpChurnstatesEnum::churn {2, "churn"};
-const Enum::YLeaf LacpChurnstatesEnum::churn_monitor {3, "churn-monitor"};
+const Enum::YLeaf BmdBagMlacpSchActionItem::switchover {0, "switchover"};
+const Enum::YLeaf BmdBagMlacpSchActionItem::switchback {1, "switchback"};
 
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_idb_create {0, "bmd-event-mbr-idb-create"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_bdl_add {1, "bmd-event-mbr-bdl-add"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_im_state {2, "bmd-event-mbr-im-state"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_sel_logic {3, "bmd-event-mbr-sel-logic"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_mux {4, "bmd-event-mbr-mux"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_bfd {5, "bmd-event-mbr-bfd"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_expired {6, "bmd-event-mbr-expired"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_defaulted {7, "bmd-event-mbr-defaulted"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_first_retry {8, "bmd-event-mbr-first-retry"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_msg {9, "bmd-event-mbr-msg"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_error {10, "bmd-event-mbr-error"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_mlacp_tlv {11, "bmd-event-mbr-mlacp-tlv"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_redundancy_role {12, "bmd-event-mbr-redundancy-role"};
-const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_count {13, "bmd-event-mbr-count"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_none {0, "bm-switch-reason-none"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_noop {1, "bm-switch-reason-noop"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_not_mlacp {2, "bm-switch-reason-not-mlacp"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_revertive {3, "bm-switch-reason-revertive"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_bdl_down {4, "bm-switch-reason-bdl-down"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_recovery {5, "bm-switch-reason-recovery"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_preceding_error {6, "bm-switch-reason-preceding-error"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_wrong_order {7, "bm-switch-reason-wrong-order"};
+const Enum::YLeaf BmdSwitchReason::bm_switch_reason_singleton {8, "bm-switch-reason-singleton"};
 
-const Enum::YLeaf BmdBagEventDataEnum::bmd_bag_evt_data_none {0, "bmd-bag-evt-data-none"};
-const Enum::YLeaf BmdBagEventDataEnum::bmd_bag_evt_data_error {1, "bmd-bag-evt-data-error"};
-const Enum::YLeaf BmdBagEventDataEnum::bmd_bag_evt_data_string {2, "bmd-bag-evt-data-string"};
+const Enum::YLeaf BmAfId::bm_af_id_ipv4 {1136568623, "bm-af-id-ipv4"};
+const Enum::YLeaf BmAfId::bm_af_id_ipv6 {1136568624, "bm-af-id-ipv6"};
 
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_none {0, "bm-switch-reason-none"};
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_noop {1, "bm-switch-reason-noop"};
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_not_mlacp {2, "bm-switch-reason-not-mlacp"};
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_revertive {3, "bm-switch-reason-revertive"};
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_bdl_down {4, "bm-switch-reason-bdl-down"};
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_recovery {5, "bm-switch-reason-recovery"};
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_preceding_error {6, "bm-switch-reason-preceding-error"};
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_wrong_order {7, "bm-switch-reason-wrong-order"};
-const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_singleton {8, "bm-switch-reason-singleton"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_idb_create {0, "bmd-event-bdl-idb-create"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_configured {1, "bmd-event-bdl-configured"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_im_state {2, "bmd-event-bdl-im-state"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_added {3, "bmd-event-bdl-mbr-added"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_deleted {4, "bmd-event-bdl-mbr-deleted"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mac_addr {5, "bmd-event-bdl-mac-addr"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_first_retry {6, "bmd-event-bdl-first-retry"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_user_config {7, "bmd-event-bdl-user-config"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_error {8, "bmd-event-bdl-error"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mlacp_tlv {9, "bmd-event-bdl-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_redundancy_role {10, "bmd-event-bdl-redundancy-role"};
+const Enum::YLeaf BmdBagEventBdlItem::bdl_bfd_state_change {11, "bdl-bfd-state-change"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_icl {12, "bmd-event-bdl-icl"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_count {13, "bmd-event-bdl-count"};
 
-const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_local {0, "bmd-mbr-local"};
-const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
-const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
 
-const Enum::YLeaf BmAfIdEnum::bm_af_id_ipv4 {1136568623, "bm-af-id-ipv4"};
-const Enum::YLeaf BmAfIdEnum::bm_af_id_ipv6 {1136568624, "bm-af-id-ipv6"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_nak {0, "mbr-state-nak"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_unknown {1, "mbr-state-unknown"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_up {2, "mbr-state-up"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_down {3, "mbr-state-down"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_admin_down {4, "mbr-state-admin-down"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_test {5, "mbr-state-test"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_error {6, "mbr-state-error"};
 
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_down {2, "bm-mbr-state-reason-link-down"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_deleting {3, "bm-mbr-state-reason-link-deleting"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_creating {4, "bm-mbr-state-reason-creating"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_creating {5, "bm-mbr-state-reason-bundle-creating"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_deleting {6, "bm-mbr-state-reason-bundle-deleting"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_admin_down {7, "bm-mbr-state-reason-bundle-admin-down"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_replicating {8, "bm-mbr-state-reason-replicating"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bandwidth {9, "bm-mbr-state-reason-bandwidth"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_loop_back {10, "bm-mbr-state-reason-loop-back"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_type {11, "bm-mbr-state-reason-activity-type"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_shutdown {12, "bm-mbr-state-reason-bundle-shutdown"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_min_selected {13, "bm-mbr-state-reason-min-selected"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_max_selected {14, "bm-mbr-state-reason-max-selected"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_limit {15, "bm-mbr-state-reason-link-limit"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_active_limit {16, "bm-mbr-state-reason-active-limit"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_unknown {17, "bm-mbr-state-reason-standby-unknown"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_expired {18, "bm-mbr-state-reason-expired"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_defaulted {19, "bm-mbr-state-reason-defaulted"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_act_or_not_agg {20, "bm-mbr-state-reason-act-or-not-agg"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_agg {21, "bm-mbr-state-reason-partner-not-agg"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_lagid {22, "bm-mbr-state-reason-lagid"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_cfgd {23, "bm-mbr-state-reason-bundle-not-cfgd"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_ready {24, "bm-mbr-state-reason-bundle-not-ready"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_ood {25, "bm-mbr-state-reason-partner-ood"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_in_sync {26, "bm-mbr-state-reason-partner-not-in-sync"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_foreign_partner_oos {27, "bm-mbr-state-reason-foreign-partner-oos"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_attach_unknown {28, "bm-mbr-state-reason-attach-unknown"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_collecting {29, "bm-mbr-state-reason-partner-not-collecting"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_collect_unknown {30, "bm-mbr-state-reason-collect-unknown"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_foreign {31, "bm-mbr-state-reason-standby-foreign"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_starting {32, "bm-mbr-state-reason-bfd-starting"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_down {33, "bm-mbr-state-reason-bfd-down"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_nbr_unconfig {34, "bm-mbr-state-reason-bfd-nbr-unconfig"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp {35, "bm-mbr-state-reason-mlacp"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_pe_isolated {36, "bm-mbr-state-reason-pe-isolated"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_forced_switchover {37, "bm-mbr-state-reason-forced-switchover"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_errdis_unknown {38, "bm-mbr-state-reason-errdis-unknown"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_mbr_state_info {39, "bm-mbr-state-reason-mlacp-no-mbr-state-info"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_active {40, "bm-mbr-state-reason-active"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_state_info {41, "bm-mbr-state-reason-mlacp-no-bdl-state-info"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_config_info {42, "bm-mbr-state-reason-mlacp-no-bdl-config-info"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_sync {43, "bm-mbr-state-reason-mlacp-no-bdl-sync"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_bdl_has_no_peer {44, "bm-mbr-state-reason-mlacp-bdl-has-no-peer"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_nak {45, "bm-mbr-state-reason-mlacp-nak"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_transport_unavailable {46, "bm-mbr-state-reason-mlacp-transport-unavailable"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_not_configured {47, "bm-mbr-state-reason-mlacp-not-configured"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_recovery_timer {48, "bm-mbr-state-reason-recovery-timer"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_standby {49, "bm-mbr-state-reason-mlacp-standby"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_maximized_out {50, "bm-mbr-state-reason-maximized-out"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_peer_selected {51, "bm-mbr-state-reason-mlacp-peer-selected"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_connect_timer_running {52, "bm-mbr-state-reason-mlacp-connect-timer-running"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_mlacp {53, "bm-mbr-state-reason-bundle-not-mlacp"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_lon {54, "bm-mbr-state-reason-no-lon"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_cumul_rel_bw_limit {55, "bm-mbr-state-reason-cumul-rel-bw-limit"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_mac {56, "bm-mbr-state-reason-no-mac"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_system_id {57, "bm-mbr-state-reason-no-system-id"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_shutdown {58, "bm-mbr-state-reason-link-shutdown"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_mlacp {59, "bm-mbr-state-reason-activity-mlacp"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_iccp {60, "bm-mbr-state-reason-activity-iccp"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_icpe_mlacp {61, "bm-mbr-state-reason-bundle-icpe-mlacp"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_link_num {62, "bm-mbr-state-reason-no-link-num"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_peer_higher_prio {63, "bm-mbr-state-reason-standby-peer-higher-prio"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_red_state_standby {64, "bm-mbr-state-reason-red-state-standby"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_other_red_state_standby {65, "bm-mbr-state-reason-other-red-state-standby"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_hold_ing {66, "bm-mbr-state-reason-hold-ing"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_error_disabled {67, "bm-mbr-state-reason-bundle-error-disabled"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_efd_disabled {68, "bm-mbr-state-reason-bundle-efd-disabled"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_singleton_pe_isolated {69, "bm-mbr-state-reason-singleton-pe-isolated"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_starting {70, "bm-mbr-state-reason-bfd-ipv6-starting"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_down {71, "bm-mbr-state-reason-bfd-ipv6-down"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_nbr_unconfig {72, "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_timer_running {73, "bm-mbr-state-reason-timer-running"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_client_bundle_ctrl {74, "bm-mbr-state-reason-client-bundle-ctrl"};
-const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_count {75, "bm-mbr-state-reason-count"};
+const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_local {0, "bmd-mbr-local"};
+const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
+const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
 
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_idb_create {0, "bmd-event-bdl-idb-create"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_configured {1, "bmd-event-bdl-configured"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_im_state {2, "bmd-event-bdl-im-state"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_mbr_added {3, "bmd-event-bdl-mbr-added"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_mbr_deleted {4, "bmd-event-bdl-mbr-deleted"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_mac_addr {5, "bmd-event-bdl-mac-addr"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_first_retry {6, "bmd-event-bdl-first-retry"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_user_config {7, "bmd-event-bdl-user-config"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_error {8, "bmd-event-bdl-error"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_mlacp_tlv {9, "bmd-event-bdl-mlacp-tlv"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_redundancy_role {10, "bmd-event-bdl-redundancy-role"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bdl_bfd_state_change {11, "bdl-bfd-state-change"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_icl {12, "bmd-event-bdl-icl"};
-const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_count {13, "bmd-event-bdl-count"};
+const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_unknown {0, "bm-bdl-mac-source-unknown"};
+const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_chassis {1, "bm-bdl-mac-source-chassis"};
+const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_configured {2, "bm-bdl-mac-source-configured"};
+const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_member {3, "bm-bdl-mac-source-member"};
+const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_peer {4, "bm-bdl-mac-source-peer"};
 
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_incomplete {0, "node-state-incomplete"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_conn_rejected {1, "node-state-conn-rejected"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_connect_sent {2, "node-state-connect-sent"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_unconfigured {3, "node-state-unconfigured"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_unreachable {4, "node-state-unreachable"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_iccp_down {5, "node-state-iccp-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_nak {6, "node-state-nak"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_unknown {7, "node-state-unknown"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_mlacp_down {8, "node-state-mlacp-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_admin_down {9, "node-state-admin-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_pe_isolated {10, "node-state-pe-isolated"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_error {11, "node-state-error"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_test {12, "node-state-test"};
-const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_up {13, "node-state-up"};
+const Enum::YLeaf LacpChurnstates::no_churn {1, "no-churn"};
+const Enum::YLeaf LacpChurnstates::churn {2, "churn"};
+const Enum::YLeaf LacpChurnstates::churn_monitor {3, "churn-monitor"};
 
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_idb_create {0, "bmd-event-rg-idb-create"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_configured {1, "bmd-event-rg-configured"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_user_config {2, "bmd-event-rg-user-config"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_connect_ion {3, "bmd-event-rg-connect-ion"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_data {4, "bmd-event-rg-data"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_sync {5, "bmd-event-rg-sync"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_first_retry {6, "bmd-event-rg-first-retry"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_error {7, "bmd-event-rg-error"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_mlacp_tlv {8, "bmd-event-rg-mlacp-tlv"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_iccp_event {9, "bmd-event-rg-iccp-event"};
-const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_count {10, "bmd-event-rg-count"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_incomplete {0, "node-state-incomplete"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_conn_rejected {1, "node-state-conn-rejected"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_connect_sent {2, "node-state-connect-sent"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unconfigured {3, "node-state-unconfigured"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unreachable {4, "node-state-unreachable"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_iccp_down {5, "node-state-iccp-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_nak {6, "node-state-nak"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unknown {7, "node-state-unknown"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_mlacp_down {8, "node-state-mlacp-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_admin_down {9, "node-state-admin-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_pe_isolated {10, "node-state-pe-isolated"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_error {11, "node-state-error"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_test {12, "node-state-test"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_up {13, "node-state-up"};
 
-const Enum::YLeaf BmWhichSystemEnum::bm_which_system_actr {0, "bm-which-system-actr"};
-const Enum::YLeaf BmWhichSystemEnum::bm_which_system_ptnr {1, "bm-which-system-ptnr"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_idb_create {0, "bmd-event-mbr-idb-create"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_bdl_add {1, "bmd-event-mbr-bdl-add"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_im_state {2, "bmd-event-mbr-im-state"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_sel_logic {3, "bmd-event-mbr-sel-logic"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_mux {4, "bmd-event-mbr-mux"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_bfd {5, "bmd-event-mbr-bfd"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_expired {6, "bmd-event-mbr-expired"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_defaulted {7, "bmd-event-mbr-defaulted"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_first_retry {8, "bmd-event-mbr-first-retry"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_msg {9, "bmd-event-mbr-msg"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_error {10, "bmd-event-mbr-error"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_mlacp_tlv {11, "bmd-event-mbr-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_redundancy_role {12, "bmd-event-mbr-redundancy-role"};
+const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_count {13, "bmd-event-mbr-count"};
 
-const Enum::YLeaf BmdBfdBdlStateEnum::bmd_bfd_bdl_down {0, "bmd-bfd-bdl-down"};
-const Enum::YLeaf BmdBfdBdlStateEnum::bmd_bfd_bdl_unknown {1, "bmd-bfd-bdl-unknown"};
-const Enum::YLeaf BmdBfdBdlStateEnum::bmd_bfd_bdl_up {2, "bmd-bfd-bdl-up"};
-const Enum::YLeaf BmdBfdBdlStateEnum::bmd_bfd_bdl_count {3, "bmd-bfd-bdl-count"};
+const Enum::YLeaf BmWhichSystem::bm_which_system_actr {0, "bm-which-system-actr"};
+const Enum::YLeaf BmWhichSystem::bm_which_system_ptnr {1, "bm-which-system-ptnr"};
 
-const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_nak {0, "mbr-state-nak"};
-const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_unknown {1, "mbr-state-unknown"};
-const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_up {2, "mbr-state-up"};
-const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_down {3, "mbr-state-down"};
-const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_admin_down {4, "mbr-state-admin-down"};
-const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_test {5, "mbr-state-test"};
-const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_error {6, "mbr-state-error"};
+const Enum::YLeaf Rxstates::current_rx {1, "current-rx"};
+const Enum::YLeaf Rxstates::expired {2, "expired"};
+const Enum::YLeaf Rxstates::defaulted {3, "defaulted"};
+const Enum::YLeaf Rxstates::initialize {4, "initialize"};
+const Enum::YLeaf Rxstates::lacp_disabled {5, "lacp-disabled"};
+const Enum::YLeaf Rxstates::port_disabled {6, "port-disabled"};
 
-const Enum::YLeaf BmdBagTargetEnum::bm_bag_target_mbr {0, "bm-bag-target-mbr"};
-const Enum::YLeaf BmdBagTargetEnum::bm_bag_target_bdl {1, "bm-bag-target-bdl"};
-const Enum::YLeaf BmdBagTargetEnum::bm_bag_target_node {2, "bm-bag-target-node"};
-const Enum::YLeaf BmdBagTargetEnum::bm_bag_target_rg {3, "bm-bag-target-rg"};
+const Enum::YLeaf BundleMedia::bundle_media_ethernet {0, "bundle-media-ethernet"};
+const Enum::YLeaf BundleMedia::bundle_media_pos {1, "bundle-media-pos"};
+const Enum::YLeaf BundleMedia::bundle_media_count {2, "bundle-media-count"};
 
-const Enum::YLeaf BmMuxstateEnum::detached {1, "detached"};
-const Enum::YLeaf BmMuxstateEnum::waiting {2, "waiting"};
-const Enum::YLeaf BmMuxstateEnum::attached {3, "attached"};
-const Enum::YLeaf BmMuxstateEnum::collecting {4, "collecting"};
-const Enum::YLeaf BmMuxstateEnum::distributing {5, "distributing"};
-const Enum::YLeaf BmMuxstateEnum::collecting_distributing {6, "collecting-distributing"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_mbr {0, "bm-bag-target-mbr"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_bdl {1, "bm-bag-target-bdl"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_node {2, "bm-bag-target-node"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_rg {3, "bm-bag-target-rg"};
 
-const Enum::YLeaf LacpSelStateEnum::unselected {0, "unselected"};
-const Enum::YLeaf LacpSelStateEnum::standby {1, "standby"};
-const Enum::YLeaf LacpSelStateEnum::selected {2, "selected"};
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_none {0, "bmd-bag-evt-data-none"};
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_error {1, "bmd-bag-evt-data-error"};
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_string {2, "bmd-bag-evt-data-string"};
 
-const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
-const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
-const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
-const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
-const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
-const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
+const Enum::YLeaf LacpPeriodState::period_s_low {0, "period-s-low"};
+const Enum::YLeaf LacpPeriodState::period_fast {1, "period-fast"};
+const Enum::YLeaf LacpPeriodState::period_none {2, "period-none"};
 
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
-const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_count {19, "bm-mux-reason-count"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_admin_down {0, "bm-bdl-state-admin-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_down {1, "bm-bdl-state-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_client_down {2, "bm-bdl-state-client-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_ptnr_down {3, "bm-bdl-state-ptnr-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_bundle_shutdown {4, "bm-bdl-state-bundle-shutdown"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_pe_isolated {5, "bm-bdl-state-pe-isolated"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_nak {6, "bm-bdl-state-nak"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_up_active {7, "bm-bdl-state-up-active"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_hot_standby {8, "bm-bdl-state-mlacp-hot-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_cold_standby {9, "bm-bdl-state-mlacp-cold-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_unknown {10, "bm-bdl-state-unknown"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_cold_standby {11, "bm-bdl-state-cold-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_error_disabled {12, "bm-bdl-state-error-disabled"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_efd_disabled {13, "bm-bdl-state-efd-disabled"};
 
-const Enum::YLeaf BmFeatureStatusEnum::bm_feature_not_configured {0, "bm-feature-not-configured"};
-const Enum::YLeaf BmFeatureStatusEnum::bm_feature_not_operational {1, "bm-feature-not-operational"};
-const Enum::YLeaf BmFeatureStatusEnum::bm_feature_operational {2, "bm-feature-operational"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_nak {0, "bdl-state-nak"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_unknown {1, "bdl-state-unknown"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_no_sync {2, "bdl-state-no-sync"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_rec_delay {3, "bdl-state-rec-delay"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_up {4, "bdl-state-up"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_down {5, "bdl-state-down"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_admin_down {6, "bdl-state-admin-down"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_test {7, "bdl-state-test"};
+const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_error {8, "bdl-state-error"};
 
-const Enum::YLeaf BmSeverityEnum::ok {0, "ok"};
-const Enum::YLeaf BmSeverityEnum::information {1, "information"};
-const Enum::YLeaf BmSeverityEnum::misconfiguration {2, "misconfiguration"};
-const Enum::YLeaf BmSeverityEnum::warning {3, "warning"};
-const Enum::YLeaf BmSeverityEnum::error {5, "error"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_idb_create {0, "bmd-event-rg-idb-create"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_configured {1, "bmd-event-rg-configured"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_user_config {2, "bmd-event-rg-user-config"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_connect_ion {3, "bmd-event-rg-connect-ion"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_data {4, "bmd-event-rg-data"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_sync {5, "bmd-event-rg-sync"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_first_retry {6, "bmd-event-rg-first-retry"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_error {7, "bmd-event-rg-error"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_mlacp_tlv {8, "bmd-event-rg-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_iccp_event {9, "bmd-event-rg-iccp-event"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_count {10, "bmd-event-rg-count"};
 
-const Enum::YLeaf BundleMlacpModeEnum::bundle_mlacp_mode_standby {0, "bundle-mlacp-mode-standby"};
-const Enum::YLeaf BundleMlacpModeEnum::bundle_mlacp_mode_active {1, "bundle-mlacp-mode-active"};
-const Enum::YLeaf BundleMlacpModeEnum::bundle_mlacp_mode_count {2, "bundle-mlacp-mode-count"};
+const Enum::YLeaf BundleMedia1::ethernet {0, "ethernet"};
+const Enum::YLeaf BundleMedia1::pos {1, "pos"};
 
-const Enum::YLeaf BmdBagMlacpSchActionItemEnum::switchover {0, "switchover"};
-const Enum::YLeaf BmdBagMlacpSchActionItemEnum::switchback {1, "switchback"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_nonrevertive {0, "bmd-mlacp-switchover-nonrevertive"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_brute_force {1, "bmd-mlacp-switchover-brute-force"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_revertive {2, "bmd-mlacp-switchover-revertive"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_count {3, "bmd-mlacp-switchover-count"};
 
-const Enum::YLeaf BmStateReasonTargetEnum::member_reason {0, "member-reason"};
-const Enum::YLeaf BmStateReasonTargetEnum::bundle_reason {1, "bundle-reason"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_link_down {2, "bm-mbr-state-reason-link-down"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_link_deleting {3, "bm-mbr-state-reason-link-deleting"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_creating {4, "bm-mbr-state-reason-creating"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_creating {5, "bm-mbr-state-reason-bundle-creating"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_deleting {6, "bm-mbr-state-reason-bundle-deleting"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_admin_down {7, "bm-mbr-state-reason-bundle-admin-down"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_replicating {8, "bm-mbr-state-reason-replicating"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bandwidth {9, "bm-mbr-state-reason-bandwidth"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_loop_back {10, "bm-mbr-state-reason-loop-back"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_activity_type {11, "bm-mbr-state-reason-activity-type"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_shutdown {12, "bm-mbr-state-reason-bundle-shutdown"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_min_selected {13, "bm-mbr-state-reason-min-selected"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_max_selected {14, "bm-mbr-state-reason-max-selected"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_link_limit {15, "bm-mbr-state-reason-link-limit"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_active_limit {16, "bm-mbr-state-reason-active-limit"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_standby_unknown {17, "bm-mbr-state-reason-standby-unknown"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_expired {18, "bm-mbr-state-reason-expired"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_defaulted {19, "bm-mbr-state-reason-defaulted"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_act_or_not_agg {20, "bm-mbr-state-reason-act-or-not-agg"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_partner_not_agg {21, "bm-mbr-state-reason-partner-not-agg"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_lagid {22, "bm-mbr-state-reason-lagid"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_not_cfgd {23, "bm-mbr-state-reason-bundle-not-cfgd"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_not_ready {24, "bm-mbr-state-reason-bundle-not-ready"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_partner_ood {25, "bm-mbr-state-reason-partner-ood"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_partner_not_in_sync {26, "bm-mbr-state-reason-partner-not-in-sync"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_foreign_partner_oos {27, "bm-mbr-state-reason-foreign-partner-oos"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_attach_unknown {28, "bm-mbr-state-reason-attach-unknown"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_partner_not_collecting {29, "bm-mbr-state-reason-partner-not-collecting"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_collect_unknown {30, "bm-mbr-state-reason-collect-unknown"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_standby_foreign {31, "bm-mbr-state-reason-standby-foreign"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_starting {32, "bm-mbr-state-reason-bfd-starting"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_down {33, "bm-mbr-state-reason-bfd-down"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_nbr_unconfig {34, "bm-mbr-state-reason-bfd-nbr-unconfig"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp {35, "bm-mbr-state-reason-mlacp"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_pe_isolated {36, "bm-mbr-state-reason-pe-isolated"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_forced_switchover {37, "bm-mbr-state-reason-forced-switchover"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_errdis_unknown {38, "bm-mbr-state-reason-errdis-unknown"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_no_mbr_state_info {39, "bm-mbr-state-reason-mlacp-no-mbr-state-info"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_active {40, "bm-mbr-state-reason-active"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_no_bdl_state_info {41, "bm-mbr-state-reason-mlacp-no-bdl-state-info"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_no_bdl_config_info {42, "bm-mbr-state-reason-mlacp-no-bdl-config-info"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_no_bdl_sync {43, "bm-mbr-state-reason-mlacp-no-bdl-sync"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_bdl_has_no_peer {44, "bm-mbr-state-reason-mlacp-bdl-has-no-peer"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_nak {45, "bm-mbr-state-reason-mlacp-nak"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_transport_unavailable {46, "bm-mbr-state-reason-mlacp-transport-unavailable"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_not_configured {47, "bm-mbr-state-reason-mlacp-not-configured"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_recovery_timer {48, "bm-mbr-state-reason-recovery-timer"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_standby {49, "bm-mbr-state-reason-mlacp-standby"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_maximized_out {50, "bm-mbr-state-reason-maximized-out"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_peer_selected {51, "bm-mbr-state-reason-mlacp-peer-selected"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_mlacp_connect_timer_running {52, "bm-mbr-state-reason-mlacp-connect-timer-running"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_not_mlacp {53, "bm-mbr-state-reason-bundle-not-mlacp"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_no_lon {54, "bm-mbr-state-reason-no-lon"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_cumul_rel_bw_limit {55, "bm-mbr-state-reason-cumul-rel-bw-limit"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_no_mac {56, "bm-mbr-state-reason-no-mac"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_no_system_id {57, "bm-mbr-state-reason-no-system-id"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_link_shutdown {58, "bm-mbr-state-reason-link-shutdown"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_activity_mlacp {59, "bm-mbr-state-reason-activity-mlacp"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_activity_iccp {60, "bm-mbr-state-reason-activity-iccp"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_icpe_mlacp {61, "bm-mbr-state-reason-bundle-icpe-mlacp"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_no_link_num {62, "bm-mbr-state-reason-no-link-num"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_standby_peer_higher_prio {63, "bm-mbr-state-reason-standby-peer-higher-prio"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_red_state_standby {64, "bm-mbr-state-reason-red-state-standby"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_other_red_state_standby {65, "bm-mbr-state-reason-other-red-state-standby"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_hold_ing {66, "bm-mbr-state-reason-hold-ing"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_error_disabled {67, "bm-mbr-state-reason-bundle-error-disabled"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bundle_efd_disabled {68, "bm-mbr-state-reason-bundle-efd-disabled"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_singleton_pe_isolated {69, "bm-mbr-state-reason-singleton-pe-isolated"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_ipv6_starting {70, "bm-mbr-state-reason-bfd-ipv6-starting"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_ipv6_down {71, "bm-mbr-state-reason-bfd-ipv6-down"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_ipv6_nbr_unconfig {72, "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_timer_running {73, "bm-mbr-state-reason-timer-running"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_client_bundle_ctrl {74, "bm-mbr-state-reason-client-bundle-ctrl"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_count {75, "bm-mbr-state-reason-count"};
 
-const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_req {0, "node-sync-req"};
-const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_done {1, "node-sync-done"};
-const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_start {2, "node-sync-start"};
-const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_init {3, "node-sync-init"};
-const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_singleton {4, "node-sync-singleton"};
+const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
+const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
 
-const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_unknown {0, "bm-bdl-mac-source-unknown"};
-const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_chassis {1, "bm-bdl-mac-source-chassis"};
-const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_configured {2, "bm-bdl-mac-source-configured"};
-const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_member {3, "bm-bdl-mac-source-member"};
-const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_peer {4, "bm-bdl-mac-source-peer"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_down {0, "bmd-bfd-bdl-down"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_unknown {1, "bmd-bfd-bdl-unknown"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_up {2, "bmd-bfd-bdl-up"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_count {3, "bmd-bfd-bdl-count"};
+
+const Enum::YLeaf BmMuxstate::detached {1, "detached"};
+const Enum::YLeaf BmMuxstate::waiting {2, "waiting"};
+const Enum::YLeaf BmMuxstate::attached {3, "attached"};
+const Enum::YLeaf BmMuxstate::collecting {4, "collecting"};
+const Enum::YLeaf BmMuxstate::distributing {5, "distributing"};
+const Enum::YLeaf BmMuxstate::collecting_distributing {6, "collecting-distributing"};
+
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
 
 
 }

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_environment_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_environment_oper {
 
 EnvironmentSensors::EnvironmentSensors()
@@ -20,9 +22,9 @@ EnvironmentSensors::~EnvironmentSensors()
 
 bool EnvironmentSensors::has_data() const
 {
-    for (std::size_t index=0; index<environment_sensor_.size(); index++)
+    for (std::size_t index=0; index<environment_sensor.size(); index++)
     {
-        if(environment_sensor_[index]->has_data())
+        if(environment_sensor[index]->has_data())
             return true;
     }
     return false;
@@ -30,12 +32,12 @@ bool EnvironmentSensors::has_data() const
 
 bool EnvironmentSensors::has_operation() const
 {
-    for (std::size_t index=0; index<environment_sensor_.size(); index++)
+    for (std::size_t index=0; index<environment_sensor.size(); index++)
     {
-        if(environment_sensor_[index]->has_operation())
+        if(environment_sensor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EnvironmentSensors::get_segment_path() const
@@ -69,7 +71,7 @@ std::shared_ptr<Entity> EnvironmentSensors::get_child_by_name(const std::string 
 {
     if(child_yang_name == "environment-sensor")
     {
-        for(auto const & c : environment_sensor_)
+        for(auto const & c : environment_sensor)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -79,7 +81,7 @@ std::shared_ptr<Entity> EnvironmentSensors::get_child_by_name(const std::string 
         }
         auto c = std::make_shared<EnvironmentSensors::EnvironmentSensor>();
         c->parent = this;
-        environment_sensor_.push_back(c);
+        environment_sensor.push_back(c);
         return c;
     }
 
@@ -89,7 +91,7 @@ std::shared_ptr<Entity> EnvironmentSensors::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> EnvironmentSensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : environment_sensor_)
+    for (auto const & c : environment_sensor)
     {
         children[c->get_segment_path()] = c;
     }
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentSensors::get_children(
     return children;
 }
 
-void EnvironmentSensors::set_value(const std::string & value_path, std::string value)
+void EnvironmentSensors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EnvironmentSensors::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string EnvironmentSensors::get_bundle_name() const
 augment_capabilities_function EnvironmentSensors::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> EnvironmentSensors::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool EnvironmentSensors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "environment-sensor")
+        return true;
+    return false;
 }
 
 EnvironmentSensors::EnvironmentSensor::EnvironmentSensor()
@@ -147,12 +165,12 @@ bool EnvironmentSensors::EnvironmentSensor::has_data() const
 
 bool EnvironmentSensors::EnvironmentSensor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(location.operation)
-	|| is_set(current_reading.operation)
-	|| is_set(sensor_units.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(current_reading.yfilter)
+	|| ydk::is_set(sensor_units.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string EnvironmentSensors::EnvironmentSensor::get_segment_path() const
@@ -178,11 +196,11 @@ const EntityPath EnvironmentSensors::EnvironmentSensor::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (current_reading.is_set || is_set(current_reading.operation)) leaf_name_data.push_back(current_reading.get_name_leafdata());
-    if (sensor_units.is_set || is_set(sensor_units.operation)) leaf_name_data.push_back(sensor_units.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (current_reading.is_set || is_set(current_reading.yfilter)) leaf_name_data.push_back(current_reading.get_name_leafdata());
+    if (sensor_units.is_set || is_set(sensor_units.yfilter)) leaf_name_data.push_back(sensor_units.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -201,37 +219,78 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentSensors::EnvironmentSe
     return children;
 }
 
-void EnvironmentSensors::EnvironmentSensor::set_value(const std::string & value_path, std::string value)
+void EnvironmentSensors::EnvironmentSensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "current-reading")
     {
         current_reading = value;
+        current_reading.value_namespace = name_space;
+        current_reading.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sensor-units")
     {
         sensor_units = value;
+        sensor_units.value_namespace = name_space;
+        sensor_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SensorUnitsTypeEnum::Watts {0, "Watts"};
-const Enum::YLeaf SensorUnitsTypeEnum::Celsius {1, "Celsius"};
-const Enum::YLeaf SensorUnitsTypeEnum::milliVolts {2, "milliVolts"};
-const Enum::YLeaf SensorUnitsTypeEnum::Amperes {3, "Amperes"};
-const Enum::YLeaf SensorUnitsTypeEnum::Volts_DC {4, "Volts-DC"};
-const Enum::YLeaf SensorUnitsTypeEnum::Volts_AC {5, "Volts-AC"};
-const Enum::YLeaf SensorUnitsTypeEnum::milliAmperes {6, "milliAmperes"};
+void EnvironmentSensors::EnvironmentSensor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "current-reading")
+    {
+        current_reading.yfilter = yfilter;
+    }
+    if(value_path == "sensor-units")
+    {
+        sensor_units.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentSensors::EnvironmentSensor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "location" || name == "current-reading" || name == "sensor-units" || name == "state")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf SensorUnitsType::Watts {0, "Watts"};
+const Enum::YLeaf SensorUnitsType::Celsius {1, "Celsius"};
+const Enum::YLeaf SensorUnitsType::milliVolts {2, "milliVolts"};
+const Enum::YLeaf SensorUnitsType::Amperes {3, "Amperes"};
+const Enum::YLeaf SensorUnitsType::Volts_DC {4, "Volts-DC"};
+const Enum::YLeaf SensorUnitsType::Volts_AC {5, "Volts-AC"};
+const Enum::YLeaf SensorUnitsType::milliAmperes {6, "milliAmperes"};
 
 
 }

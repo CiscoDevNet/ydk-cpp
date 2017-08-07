@@ -7,7 +7,9 @@
 #include "Cisco_IOS_XR_lib_mpp_cfg_0.hpp"
 #include "Cisco_IOS_XR_lib_mpp_cfg_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lib_mpp_cfg {
 
 ControlPlane::ControlPlane()
@@ -30,7 +32,7 @@ bool ControlPlane::has_data() const
 
 bool ControlPlane::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (management_plane_protection !=  nullptr && management_plane_protection->has_operation());
 }
 
@@ -86,7 +88,11 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::get_children() cons
     return children;
 }
 
-void ControlPlane::set_value(const std::string & value_path, std::string value)
+void ControlPlane::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ControlPlane::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -108,6 +114,18 @@ std::string ControlPlane::get_bundle_name() const
 augment_capabilities_function ControlPlane::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ControlPlane::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ControlPlane::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "management-plane-protection")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::ManagementPlaneProtection()
@@ -134,7 +152,7 @@ bool ControlPlane::ManagementPlaneProtection::has_data() const
 
 bool ControlPlane::ManagementPlaneProtection::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inband !=  nullptr && inband->has_operation())
 	|| (outband !=  nullptr && outband->has_operation());
 }
@@ -208,8 +226,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inband" || name == "outband")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::Outband()
@@ -235,8 +264,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::has_data() const
 
 bool ControlPlane::ManagementPlaneProtection::Outband::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(outband_vrf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(outband_vrf.yfilter)
 	|| (interface_selection !=  nullptr && interface_selection->has_operation());
 }
 
@@ -263,7 +292,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (outband_vrf.is_set || is_set(outband_vrf.operation)) leaf_name_data.push_back(outband_vrf.get_name_leafdata());
+    if (outband_vrf.is_set || is_set(outband_vrf.yfilter)) leaf_name_data.push_back(outband_vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -296,12 +325,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outband-vrf")
     {
         outband_vrf = value;
+        outband_vrf.value_namespace = name_space;
+        outband_vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outband-vrf")
+    {
+        outband_vrf.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-selection" || name == "outband-vrf")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::InterfaceSelection()
@@ -328,7 +374,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::has_d
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (all_interfaces !=  nullptr && all_interfaces->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
@@ -402,8 +448,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all-interfaces" || name == "interfaces")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interfaces()
@@ -432,7 +489,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::get_segment_path() const
@@ -497,8 +554,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::Interface()
@@ -552,8 +620,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (all_protocols !=  nullptr && all_protocols->has_operation())
 	|| (http_protocol !=  nullptr && http_protocol->has_operation())
 	|| (netconf_protocol !=  nullptr && netconf_protocol->has_operation())
@@ -587,7 +655,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -718,12 +786,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all-protocols" || name == "http-protocol" || name == "netconf-protocol" || name == "snmp-protocol" || name == "ssh-protocol" || name == "telnet-protocol" || name == "tftp-protocol" || name == "xr-xml" || name == "interface-name")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::HttpProtocol()
@@ -746,7 +831,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -805,8 +890,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerClass()
@@ -836,8 +932,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -865,7 +961,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -912,12 +1008,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerV4()
@@ -944,7 +1057,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -1018,8 +1131,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -1048,7 +1172,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -1113,8 +1237,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -1135,8 +1270,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -1162,7 +1297,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1181,12 +1316,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -1215,7 +1367,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -1280,8 +1432,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -1302,8 +1465,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -1329,7 +1492,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1348,12 +1511,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerV6()
@@ -1380,7 +1560,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -1454,8 +1634,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -1484,7 +1675,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -1549,8 +1740,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -1571,8 +1773,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -1598,7 +1800,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1617,12 +1819,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -1651,7 +1870,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -1716,8 +1935,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -1738,8 +1968,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -1765,7 +1995,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1784,12 +2014,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::TftpProtocol()
@@ -1812,7 +2059,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -1871,8 +2118,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerClass()
@@ -1902,8 +2160,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -1931,7 +2189,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1978,12 +2236,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerV4()
@@ -2010,7 +2285,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -2084,8 +2359,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -2114,7 +2400,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -2179,8 +2465,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -2201,8 +2498,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -2228,7 +2525,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2247,12 +2544,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -2281,7 +2595,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -2346,8 +2660,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -2368,8 +2693,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -2395,7 +2720,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2414,12 +2739,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerV6()
@@ -2446,7 +2788,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -2520,8 +2862,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -2550,7 +2903,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -2615,8 +2968,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -2637,8 +3001,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -2664,7 +3028,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2683,12 +3047,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -2717,7 +3098,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -2782,8 +3163,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -2804,8 +3196,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -2831,7 +3223,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2850,12 +3242,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::NetconfProtocol()
@@ -2878,7 +3287,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -2937,8 +3346,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerClass()
@@ -2968,8 +3388,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -2997,7 +3417,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3044,12 +3464,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerV4()
@@ -3076,7 +3513,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -3150,8 +3587,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -3180,7 +3628,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -3245,8 +3693,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -3267,8 +3726,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -3294,7 +3753,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3313,12 +3772,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -3347,7 +3823,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -3412,8 +3888,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -3434,8 +3921,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -3461,7 +3948,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3480,12 +3967,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerV6()
@@ -3512,7 +4016,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -3586,8 +4090,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -3616,7 +4131,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -3681,8 +4196,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -3703,8 +4229,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -3730,7 +4256,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3749,12 +4275,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -3783,7 +4326,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -3848,8 +4391,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -3870,8 +4424,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -3897,7 +4451,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3916,12 +4470,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::XrXml()
@@ -3944,7 +4515,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -4003,8 +4574,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerClass()
@@ -4034,8 +4616,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -4063,7 +4645,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4110,12 +4692,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerV4()
@@ -4142,7 +4741,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -4216,8 +4815,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peers()
@@ -4246,7 +4856,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -4311,8 +4921,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -4333,8 +4954,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -4360,7 +4981,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4379,12 +5000,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -4413,7 +5051,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -4478,8 +5116,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -4500,8 +5149,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -4527,7 +5176,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4546,12 +5195,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerV6()
@@ -4578,7 +5244,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -4652,8 +5318,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peers()
@@ -4682,7 +5359,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -4747,8 +5424,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -4769,8 +5457,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -4796,7 +5484,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4815,12 +5503,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -4849,7 +5554,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -4914,8 +5619,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -4936,8 +5652,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -4963,7 +5679,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4982,12 +5698,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::SshProtocol()
@@ -5010,7 +5743,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -5069,8 +5802,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerClass()
@@ -5100,8 +5844,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -5129,7 +5873,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5176,12 +5920,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerV4()
@@ -5208,7 +5969,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -5282,8 +6043,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -5312,7 +6084,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -5377,8 +6149,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -5399,8 +6182,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -5426,7 +6209,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5445,12 +6228,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -5479,7 +6279,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -5544,8 +6344,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -5566,8 +6377,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -5593,7 +6404,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5612,12 +6423,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerV6()
@@ -5644,7 +6472,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -5718,8 +6546,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -5748,7 +6587,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -5813,8 +6652,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -5835,8 +6685,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -5862,7 +6712,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5881,12 +6731,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -5915,7 +6782,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -5980,8 +6847,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -6002,8 +6880,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -6029,7 +6907,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6048,12 +6926,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::SnmpProtocol()
@@ -6076,7 +6971,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -6135,8 +7030,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerClass()
@@ -6166,8 +7072,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -6195,7 +7101,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6242,12 +7148,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerV4()
@@ -6274,7 +7197,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -6348,8 +7271,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -6378,7 +7312,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -6443,8 +7377,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -6465,8 +7410,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -6492,7 +7437,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6511,12 +7456,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -6545,7 +7507,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -6610,8 +7572,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -6632,8 +7605,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -6659,7 +7632,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6678,12 +7651,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerV6()
@@ -6710,7 +7700,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -6784,8 +7774,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -6814,7 +7815,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -6879,8 +7880,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -6901,8 +7913,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -6928,7 +7940,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6947,12 +7959,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -6981,7 +8010,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -7046,8 +8075,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -7068,8 +8108,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -7095,7 +8135,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7114,12 +8154,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::TelnetProtocol()
@@ -7142,7 +8199,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -7201,8 +8258,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerClass()
@@ -7232,8 +8300,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -7261,7 +8329,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7308,12 +8376,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerV4()
@@ -7340,7 +8425,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -7414,8 +8499,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -7444,7 +8540,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -7509,8 +8605,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -7531,8 +8638,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -7558,7 +8665,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7577,12 +8684,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -7611,7 +8735,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -7676,8 +8800,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -7698,8 +8833,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -7725,7 +8860,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7744,12 +8879,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerV6()
@@ -7776,7 +8928,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -7850,8 +9002,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -7880,7 +9043,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -7945,8 +9108,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -7967,8 +9141,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -7994,7 +9168,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8013,12 +9187,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -8047,7 +9238,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -8112,8 +9303,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -8134,8 +9336,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -8161,7 +9363,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8180,12 +9382,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::AllProtocols()
@@ -8208,7 +9427,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -8267,8 +9486,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerClass()
@@ -8298,8 +9528,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -8327,7 +9557,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8374,12 +9604,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerV4()
@@ -8406,7 +9653,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -8480,8 +9727,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peers()
@@ -8510,7 +9768,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -8575,8 +9833,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -8597,8 +9866,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -8624,7 +9893,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8643,12 +9912,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -8677,7 +9963,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -8742,8 +10028,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -8764,8 +10061,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -8791,7 +10088,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8810,12 +10107,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerV6()
@@ -8842,7 +10156,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -8916,8 +10230,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peers()
@@ -8946,7 +10271,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -9011,8 +10336,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -9033,8 +10369,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -9060,7 +10396,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9079,12 +10415,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -9113,7 +10466,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -9178,8 +10531,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -9200,8 +10564,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Inter
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -9227,7 +10591,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9246,12 +10610,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::Interfaces::Interface::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::AllInterfaces()
@@ -9302,7 +10683,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (all_protocols !=  nullptr && all_protocols->has_operation())
 	|| (http_protocol !=  nullptr && http_protocol->has_operation())
 	|| (netconf_protocol !=  nullptr && netconf_protocol->has_operation())
@@ -9466,8 +10847,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all-protocols" || name == "http-protocol" || name == "netconf-protocol" || name == "snmp-protocol" || name == "ssh-protocol" || name == "telnet-protocol" || name == "tftp-protocol" || name == "xr-xml")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::HttpProtocol()
@@ -9490,7 +10882,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -9549,8 +10941,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerClass()
@@ -9580,8 +10983,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -9609,7 +11012,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9656,12 +11059,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerV4()
@@ -9688,7 +11108,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -9762,8 +11182,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -9792,7 +11223,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -9857,8 +11288,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -9879,8 +11321,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -9906,7 +11348,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9925,12 +11367,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -9959,7 +11418,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -10024,8 +11483,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -10046,8 +11516,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -10073,7 +11543,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10092,12 +11562,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerV6()
@@ -10124,7 +11611,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -10198,8 +11685,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -10228,7 +11726,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -10293,8 +11791,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -10315,8 +11824,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -10342,7 +11851,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10361,12 +11870,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -10395,7 +11921,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -10460,8 +11986,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -10482,8 +12019,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -10509,7 +12046,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10528,12 +12065,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::TftpProtocol()
@@ -10556,7 +12110,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -10615,8 +12169,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerClass()
@@ -10646,8 +12211,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -10675,7 +12240,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10722,12 +12287,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerV4()
@@ -10754,7 +12336,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -10828,8 +12410,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -10858,7 +12451,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -10923,8 +12516,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -10945,8 +12549,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -10972,7 +12576,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10991,12 +12595,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -11025,7 +12646,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -11090,8 +12711,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -11112,8 +12744,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -11139,7 +12771,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11158,12 +12790,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerV6()
@@ -11190,7 +12839,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -11264,8 +12913,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -11294,7 +12954,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -11359,8 +13019,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -11381,8 +13052,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -11408,7 +13079,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11427,12 +13098,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -11461,7 +13149,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -11526,8 +13214,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -11548,8 +13247,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -11575,7 +13274,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11594,12 +13293,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::NetconfProtocol()
@@ -11622,7 +13338,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -11681,8 +13397,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerClass()
@@ -11712,8 +13439,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -11741,7 +13468,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11788,12 +13515,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerV4()
@@ -11820,7 +13564,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -11894,8 +13638,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peers()
@@ -11924,7 +13679,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -11989,8 +13744,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -12011,8 +13777,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -12038,7 +13804,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12057,12 +13823,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -12091,7 +13874,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -12156,8 +13939,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -12178,8 +13972,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -12205,7 +13999,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12224,12 +14018,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerV6()
@@ -12256,7 +14067,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -12330,8 +14141,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peers()
@@ -12360,7 +14182,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -12425,8 +14247,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -12447,8 +14280,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -12474,7 +14307,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12493,12 +14326,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -12527,7 +14377,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -12592,8 +14442,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -12614,8 +14475,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -12641,7 +14502,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12660,12 +14521,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::XrXml()
@@ -12688,7 +14566,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_class !=  nullptr && peer_class->has_operation());
 }
 
@@ -12747,8 +14625,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-class")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerClass()
@@ -12778,8 +14667,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_all.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(peer_all.yfilter)
 	|| (peer_v4 !=  nullptr && peer_v4->has_operation())
 	|| (peer_v6 !=  nullptr && peer_v6->has_operation());
 }
@@ -12807,7 +14696,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_all.is_set || is_set(peer_all.operation)) leaf_name_data.push_back(peer_all.get_name_leafdata());
+    if (peer_all.is_set || is_set(peer_all.yfilter)) leaf_name_data.push_back(peer_all.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12854,12 +14743,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-all")
     {
         peer_all = value;
+        peer_all.value_namespace = name_space;
+        peer_all.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-all")
+    {
+        peer_all.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-v4" || name == "peer-v6" || name == "peer-all")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerV4()
@@ -12886,7 +14792,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -12960,8 +14866,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peers()
@@ -12990,7 +14907,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::get_segment_path() const
@@ -13055,8 +14972,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::Peer()
@@ -13077,8 +15005,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::get_segment_path() const
@@ -13104,7 +15032,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13123,12 +15051,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefixes()
@@ -13157,7 +15102,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::get_segment_path() const
@@ -13222,8 +15167,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::PeerPrefix()
@@ -13244,8 +15200,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_prefix.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::get_segment_path() const
@@ -13271,7 +15227,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_prefix.is_set || is_set(address_prefix.operation)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13290,12 +15246,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-prefix")
     {
         address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerV6()
@@ -13322,7 +15295,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (peer_prefixes !=  nullptr && peer_prefixes->has_operation())
 	|| (peers !=  nullptr && peers->has_operation());
 }
@@ -13396,8 +15369,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefixes" || name == "peers")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peers()
@@ -13426,7 +15410,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::get_segment_path() const
@@ -13491,8 +15475,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::Peer()
@@ -13513,8 +15508,8 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
 
 bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::get_segment_path() const
@@ -13540,7 +15535,7 @@ const EntityPath ControlPlane::ManagementPlaneProtection::Outband::InterfaceSele
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13559,12 +15554,29 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
 }
 
 ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefixes()
@@ -13593,7 +15605,7 @@ bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllIn
         if(peer_prefix[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::get_segment_path() const
@@ -13658,8 +15670,19 @@ std::map<std::string, std::shared_ptr<Entity>> ControlPlane::ManagementPlaneProt
     return children;
 }
 
-void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, std::string value)
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ControlPlane::ManagementPlaneProtection::Outband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-prefix")
+        return true;
+    return false;
 }
 
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_subscriber_accounting_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_subscriber_accounting_cfg {
 
 SubscriberAccounting::SubscriberAccounting()
@@ -29,7 +31,7 @@ bool SubscriberAccounting::has_data() const
 
 bool SubscriberAccounting::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (prepaid_configurations !=  nullptr && prepaid_configurations->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::get_childre
     return children;
 }
 
-void SubscriberAccounting::set_value(const std::string & value_path, std::string value)
+void SubscriberAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberAccounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string SubscriberAccounting::get_bundle_name() const
 augment_capabilities_function SubscriberAccounting::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SubscriberAccounting::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SubscriberAccounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prepaid-configurations")
+        return true;
+    return false;
 }
 
 SubscriberAccounting::PrepaidConfigurations::PrepaidConfigurations()
@@ -135,7 +153,7 @@ bool SubscriberAccounting::PrepaidConfigurations::has_operation() const
         if(prepaid_configuration[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SubscriberAccounting::PrepaidConfigurations::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::PrepaidConf
     return children;
 }
 
-void SubscriberAccounting::PrepaidConfigurations::set_value(const std::string & value_path, std::string value)
+void SubscriberAccounting::PrepaidConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SubscriberAccounting::PrepaidConfigurations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberAccounting::PrepaidConfigurations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prepaid-configuration")
+        return true;
+    return false;
 }
 
 SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::PrepaidConfiguration()
@@ -238,16 +267,16 @@ bool SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::has_data
 
 bool SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prepaid_config_name.operation)
-	|| is_set(accounting_method_list.operation)
-	|| is_set(author_method_list.operation)
-	|| is_set(password.operation)
-	|| is_set(time_hold.operation)
-	|| is_set(time_threshold.operation)
-	|| is_set(time_valid.operation)
-	|| is_set(traffic_direction.operation)
-	|| is_set(volume_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prepaid_config_name.yfilter)
+	|| ydk::is_set(accounting_method_list.yfilter)
+	|| ydk::is_set(author_method_list.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(time_hold.yfilter)
+	|| ydk::is_set(time_threshold.yfilter)
+	|| ydk::is_set(time_valid.yfilter)
+	|| ydk::is_set(traffic_direction.yfilter)
+	|| ydk::is_set(volume_threshold.yfilter);
 }
 
 std::string SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::get_segment_path() const
@@ -273,15 +302,15 @@ const EntityPath SubscriberAccounting::PrepaidConfigurations::PrepaidConfigurati
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prepaid_config_name.is_set || is_set(prepaid_config_name.operation)) leaf_name_data.push_back(prepaid_config_name.get_name_leafdata());
-    if (accounting_method_list.is_set || is_set(accounting_method_list.operation)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
-    if (author_method_list.is_set || is_set(author_method_list.operation)) leaf_name_data.push_back(author_method_list.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (time_hold.is_set || is_set(time_hold.operation)) leaf_name_data.push_back(time_hold.get_name_leafdata());
-    if (time_threshold.is_set || is_set(time_threshold.operation)) leaf_name_data.push_back(time_threshold.get_name_leafdata());
-    if (time_valid.is_set || is_set(time_valid.operation)) leaf_name_data.push_back(time_valid.get_name_leafdata());
-    if (traffic_direction.is_set || is_set(traffic_direction.operation)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
-    if (volume_threshold.is_set || is_set(volume_threshold.operation)) leaf_name_data.push_back(volume_threshold.get_name_leafdata());
+    if (prepaid_config_name.is_set || is_set(prepaid_config_name.yfilter)) leaf_name_data.push_back(prepaid_config_name.get_name_leafdata());
+    if (accounting_method_list.is_set || is_set(accounting_method_list.yfilter)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
+    if (author_method_list.is_set || is_set(author_method_list.yfilter)) leaf_name_data.push_back(author_method_list.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (time_hold.is_set || is_set(time_hold.yfilter)) leaf_name_data.push_back(time_hold.get_name_leafdata());
+    if (time_threshold.is_set || is_set(time_threshold.yfilter)) leaf_name_data.push_back(time_threshold.get_name_leafdata());
+    if (time_valid.is_set || is_set(time_valid.yfilter)) leaf_name_data.push_back(time_valid.get_name_leafdata());
+    if (traffic_direction.is_set || is_set(traffic_direction.yfilter)) leaf_name_data.push_back(traffic_direction.get_name_leafdata());
+    if (volume_threshold.is_set || is_set(volume_threshold.yfilter)) leaf_name_data.push_back(volume_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -300,44 +329,109 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::PrepaidConf
     return children;
 }
 
-void SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::set_value(const std::string & value_path, std::string value)
+void SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prepaid-config-name")
     {
         prepaid_config_name = value;
+        prepaid_config_name.value_namespace = name_space;
+        prepaid_config_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accounting-method-list")
     {
         accounting_method_list = value;
+        accounting_method_list.value_namespace = name_space;
+        accounting_method_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "author-method-list")
     {
         author_method_list = value;
+        author_method_list.value_namespace = name_space;
+        author_method_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-hold")
     {
         time_hold = value;
+        time_hold.value_namespace = name_space;
+        time_hold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-threshold")
     {
         time_threshold = value;
+        time_threshold.value_namespace = name_space;
+        time_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-valid")
     {
         time_valid = value;
+        time_valid.value_namespace = name_space;
+        time_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-direction")
     {
         traffic_direction = value;
+        traffic_direction.value_namespace = name_space;
+        traffic_direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "volume-threshold")
     {
         volume_threshold = value;
+        volume_threshold.value_namespace = name_space;
+        volume_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prepaid-config-name")
+    {
+        prepaid_config_name.yfilter = yfilter;
+    }
+    if(value_path == "accounting-method-list")
+    {
+        accounting_method_list.yfilter = yfilter;
+    }
+    if(value_path == "author-method-list")
+    {
+        author_method_list.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "time-hold")
+    {
+        time_hold.yfilter = yfilter;
+    }
+    if(value_path == "time-threshold")
+    {
+        time_threshold.yfilter = yfilter;
+    }
+    if(value_path == "time-valid")
+    {
+        time_valid.yfilter = yfilter;
+    }
+    if(value_path == "traffic-direction")
+    {
+        traffic_direction.yfilter = yfilter;
+    }
+    if(value_path == "volume-threshold")
+    {
+        volume_threshold.yfilter = yfilter;
+    }
+}
+
+bool SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prepaid-config-name" || name == "accounting-method-list" || name == "author-method-list" || name == "password" || name == "time-hold" || name == "time-threshold" || name == "time-valid" || name == "traffic-direction" || name == "volume-threshold")
+        return true;
+    return false;
 }
 
 

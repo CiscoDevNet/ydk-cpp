@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_asr9k_sc_envmon_admin_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_sc_envmon_admin_oper {
 
 EnvironmentalMonitoring::EnvironmentalMonitoring()
@@ -29,7 +31,7 @@ bool EnvironmentalMonitoring::has_data() const
 
 bool EnvironmentalMonitoring::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (racks !=  nullptr && racks->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::get_chil
     return children;
 }
 
-void EnvironmentalMonitoring::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EnvironmentalMonitoring::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string EnvironmentalMonitoring::get_bundle_name() const
 augment_capabilities_function EnvironmentalMonitoring::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> EnvironmentalMonitoring::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EnvironmentalMonitoring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "racks")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Racks()
@@ -135,7 +153,7 @@ bool EnvironmentalMonitoring::Racks::has_operation() const
         if(rack[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::g
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EnvironmentalMonitoring::Racks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EnvironmentalMonitoring::Racks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rack")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Rack()
@@ -227,8 +256,8 @@ bool EnvironmentalMonitoring::Racks::Rack::has_data() const
 
 bool EnvironmentalMonitoring::Racks::Rack::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rack.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rack.yfilter)
 	|| (slots !=  nullptr && slots->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rack.is_set || is_set(rack.operation)) leaf_name_data.push_back(rack.get_name_leafdata());
+    if (rack.is_set || is_set(rack.yfilter)) leaf_name_data.push_back(rack.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rack")
     {
         rack = value;
+        rack.value_namespace = name_space;
+        rack.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rack")
+    {
+        rack.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slots" || name == "rack")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slots()
@@ -322,7 +368,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::has_operation() const
         if(slot[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slot")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Slot()
@@ -414,8 +471,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::has_data() const
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(slot.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(slot.yfilter)
 	|| (modules !=  nullptr && modules->has_operation());
 }
 
@@ -442,7 +499,7 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slot.is_set || is_set(slot.operation)) leaf_name_data.push_back(slot.get_name_leafdata());
+    if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -475,12 +532,29 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slot")
     {
         slot = value;
+        slot.value_namespace = name_space;
+        slot.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slot")
+    {
+        slot.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "modules" || name == "slot")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Modules()
@@ -509,7 +583,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::has_operation()
         if(module[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::get_segment_path() const
@@ -574,8 +648,19 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "module")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Module()
@@ -605,8 +690,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::has_dat
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(module.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(module.yfilter)
 	|| (power !=  nullptr && power->has_operation())
 	|| (sensor_types !=  nullptr && sensor_types->has_operation());
 }
@@ -634,7 +719,7 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module.is_set || is_set(module.operation)) leaf_name_data.push_back(module.get_name_leafdata());
+    if (module.is_set || is_set(module.yfilter)) leaf_name_data.push_back(module.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -681,12 +766,29 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "module")
     {
         module = value;
+        module.value_namespace = name_space;
+        module.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module")
+    {
+        module.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "power" || name == "sensor-types" || name == "module")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorTypes()
@@ -715,7 +817,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
         if(sensor_type[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::get_segment_path() const
@@ -780,8 +882,19 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor-type")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorType()
@@ -807,8 +920,8 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (sensor_names !=  nullptr && sensor_names->has_operation());
 }
 
@@ -835,7 +948,7 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -868,12 +981,29 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor-names" || name == "type")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorNames()
@@ -902,7 +1032,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
         if(sensor_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::get_segment_path() const
@@ -967,8 +1097,19 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor-name")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::SensorName()
@@ -1000,9 +1141,9 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(value_brief.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(value_brief.yfilter)
 	|| (thresholds !=  nullptr && thresholds->has_operation())
 	|| (value_detailed !=  nullptr && value_detailed->has_operation());
 }
@@ -1030,8 +1171,8 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (value_brief.is_set || is_set(value_brief.operation)) leaf_name_data.push_back(value_brief.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (value_brief.is_set || is_set(value_brief.yfilter)) leaf_name_data.push_back(value_brief.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1078,16 +1219,39 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value-brief")
     {
         value_brief = value;
+        value_brief.value_namespace = name_space;
+        value_brief.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "value-brief")
+    {
+        value_brief.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "thresholds" || name == "value-detailed" || name == "name" || name == "value-brief")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Thresholds()
@@ -1116,7 +1280,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
         if(threshold[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::get_segment_path() const
@@ -1181,8 +1345,19 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::Threshold()
@@ -1212,10 +1387,10 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
-	|| is_set(trap.operation)
-	|| is_set(value_brief.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(trap.yfilter)
+	|| ydk::is_set(value_brief.yfilter)
 	|| (value_detailed !=  nullptr && value_detailed->has_operation());
 }
 
@@ -1242,9 +1417,9 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (trap.is_set || is_set(trap.operation)) leaf_name_data.push_back(trap.get_name_leafdata());
-    if (value_brief.is_set || is_set(value_brief.operation)) leaf_name_data.push_back(value_brief.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (trap.is_set || is_set(trap.yfilter)) leaf_name_data.push_back(trap.get_name_leafdata());
+    if (value_brief.is_set || is_set(value_brief.yfilter)) leaf_name_data.push_back(value_brief.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1277,20 +1452,49 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trap")
     {
         trap = value;
+        trap.value_namespace = name_space;
+        trap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value-brief")
     {
         value_brief = value;
+        value_brief.value_namespace = name_space;
+        value_brief.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "trap")
+    {
+        trap.yfilter = yfilter;
+    }
+    if(value_path == "value-brief")
+    {
+        value_brief.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value-detailed" || name == "type" || name == "trap" || name == "value-brief")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::ValueDetailed()
@@ -1319,12 +1523,12 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(threshold_evaluation.operation)
-	|| is_set(threshold_notification_enabled.operation)
-	|| is_set(threshold_relation.operation)
-	|| is_set(threshold_severity.operation)
-	|| is_set(threshold_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(threshold_evaluation.yfilter)
+	|| ydk::is_set(threshold_notification_enabled.yfilter)
+	|| ydk::is_set(threshold_relation.yfilter)
+	|| ydk::is_set(threshold_severity.yfilter)
+	|| ydk::is_set(threshold_value.yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::get_segment_path() const
@@ -1350,11 +1554,11 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (threshold_evaluation.is_set || is_set(threshold_evaluation.operation)) leaf_name_data.push_back(threshold_evaluation.get_name_leafdata());
-    if (threshold_notification_enabled.is_set || is_set(threshold_notification_enabled.operation)) leaf_name_data.push_back(threshold_notification_enabled.get_name_leafdata());
-    if (threshold_relation.is_set || is_set(threshold_relation.operation)) leaf_name_data.push_back(threshold_relation.get_name_leafdata());
-    if (threshold_severity.is_set || is_set(threshold_severity.operation)) leaf_name_data.push_back(threshold_severity.get_name_leafdata());
-    if (threshold_value.is_set || is_set(threshold_value.operation)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
+    if (threshold_evaluation.is_set || is_set(threshold_evaluation.yfilter)) leaf_name_data.push_back(threshold_evaluation.get_name_leafdata());
+    if (threshold_notification_enabled.is_set || is_set(threshold_notification_enabled.yfilter)) leaf_name_data.push_back(threshold_notification_enabled.get_name_leafdata());
+    if (threshold_relation.is_set || is_set(threshold_relation.yfilter)) leaf_name_data.push_back(threshold_relation.get_name_leafdata());
+    if (threshold_severity.is_set || is_set(threshold_severity.yfilter)) leaf_name_data.push_back(threshold_severity.get_name_leafdata());
+    if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1373,28 +1577,69 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-evaluation")
     {
         threshold_evaluation = value;
+        threshold_evaluation.value_namespace = name_space;
+        threshold_evaluation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-notification-enabled")
     {
         threshold_notification_enabled = value;
+        threshold_notification_enabled.value_namespace = name_space;
+        threshold_notification_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-relation")
     {
         threshold_relation = value;
+        threshold_relation.value_namespace = name_space;
+        threshold_relation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-severity")
     {
         threshold_severity = value;
+        threshold_severity.value_namespace = name_space;
+        threshold_severity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-value")
     {
         threshold_value = value;
+        threshold_value.value_namespace = name_space;
+        threshold_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold-evaluation")
+    {
+        threshold_evaluation.yfilter = yfilter;
+    }
+    if(value_path == "threshold-notification-enabled")
+    {
+        threshold_notification_enabled.yfilter = yfilter;
+    }
+    if(value_path == "threshold-relation")
+    {
+        threshold_relation.yfilter = yfilter;
+    }
+    if(value_path == "threshold-severity")
+    {
+        threshold_severity.yfilter = yfilter;
+    }
+    if(value_path == "threshold-value")
+    {
+        threshold_value.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::Thresholds::Threshold::ValueDetailed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-evaluation" || name == "threshold-notification-enabled" || name == "threshold-relation" || name == "threshold-severity" || name == "threshold-value")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::ValueDetailed()
@@ -1437,19 +1682,19 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorT
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(age_time_stamp.operation)
-	|| is_set(alarm_type.operation)
-	|| is_set(data_type.operation)
-	|| is_set(device_description.operation)
-	|| is_set(device_id.operation)
-	|| is_set(field_validity_bitmap.operation)
-	|| is_set(precision.operation)
-	|| is_set(scale.operation)
-	|| is_set(status.operation)
-	|| is_set(units.operation)
-	|| is_set(update_rate.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(age_time_stamp.yfilter)
+	|| ydk::is_set(alarm_type.yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(device_description.yfilter)
+	|| ydk::is_set(device_id.yfilter)
+	|| ydk::is_set(field_validity_bitmap.yfilter)
+	|| ydk::is_set(precision.yfilter)
+	|| ydk::is_set(scale.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(update_rate.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::get_segment_path() const
@@ -1475,18 +1720,18 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (age_time_stamp.is_set || is_set(age_time_stamp.operation)) leaf_name_data.push_back(age_time_stamp.get_name_leafdata());
-    if (alarm_type.is_set || is_set(alarm_type.operation)) leaf_name_data.push_back(alarm_type.get_name_leafdata());
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (device_description.is_set || is_set(device_description.operation)) leaf_name_data.push_back(device_description.get_name_leafdata());
-    if (device_id.is_set || is_set(device_id.operation)) leaf_name_data.push_back(device_id.get_name_leafdata());
-    if (field_validity_bitmap.is_set || is_set(field_validity_bitmap.operation)) leaf_name_data.push_back(field_validity_bitmap.get_name_leafdata());
-    if (precision.is_set || is_set(precision.operation)) leaf_name_data.push_back(precision.get_name_leafdata());
-    if (scale.is_set || is_set(scale.operation)) leaf_name_data.push_back(scale.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (update_rate.is_set || is_set(update_rate.operation)) leaf_name_data.push_back(update_rate.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (age_time_stamp.is_set || is_set(age_time_stamp.yfilter)) leaf_name_data.push_back(age_time_stamp.get_name_leafdata());
+    if (alarm_type.is_set || is_set(alarm_type.yfilter)) leaf_name_data.push_back(alarm_type.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (device_description.is_set || is_set(device_description.yfilter)) leaf_name_data.push_back(device_description.get_name_leafdata());
+    if (device_id.is_set || is_set(device_id.yfilter)) leaf_name_data.push_back(device_id.get_name_leafdata());
+    if (field_validity_bitmap.is_set || is_set(field_validity_bitmap.yfilter)) leaf_name_data.push_back(field_validity_bitmap.get_name_leafdata());
+    if (precision.is_set || is_set(precision.yfilter)) leaf_name_data.push_back(precision.get_name_leafdata());
+    if (scale.is_set || is_set(scale.yfilter)) leaf_name_data.push_back(scale.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (update_rate.is_set || is_set(update_rate.yfilter)) leaf_name_data.push_back(update_rate.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1505,56 +1750,139 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "age-time-stamp")
     {
         age_time_stamp = value;
+        age_time_stamp.value_namespace = name_space;
+        age_time_stamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "alarm-type")
     {
         alarm_type = value;
+        alarm_type.value_namespace = name_space;
+        alarm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "device-description")
     {
         device_description = value;
+        device_description.value_namespace = name_space;
+        device_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "device-id")
     {
         device_id = value;
+        device_id.value_namespace = name_space;
+        device_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "field-validity-bitmap")
     {
         field_validity_bitmap = value;
+        field_validity_bitmap.value_namespace = name_space;
+        field_validity_bitmap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precision")
     {
         precision = value;
+        precision.value_namespace = name_space;
+        precision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "scale")
     {
         scale = value;
+        scale.value_namespace = name_space;
+        scale.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "update-rate")
     {
         update_rate = value;
+        update_rate.value_namespace = name_space;
+        update_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "age-time-stamp")
+    {
+        age_time_stamp.yfilter = yfilter;
+    }
+    if(value_path == "alarm-type")
+    {
+        alarm_type.yfilter = yfilter;
+    }
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "device-description")
+    {
+        device_description.yfilter = yfilter;
+    }
+    if(value_path == "device-id")
+    {
+        device_id.yfilter = yfilter;
+    }
+    if(value_path == "field-validity-bitmap")
+    {
+        field_validity_bitmap.yfilter = yfilter;
+    }
+    if(value_path == "precision")
+    {
+        precision.yfilter = yfilter;
+    }
+    if(value_path == "scale")
+    {
+        scale.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "update-rate")
+    {
+        update_rate.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "age-time-stamp" || name == "alarm-type" || name == "data-type" || name == "device-description" || name == "device-id" || name == "field-validity-bitmap" || name == "precision" || name == "scale" || name == "status" || name == "units" || name == "update-rate" || name == "value")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::Power()
@@ -1577,7 +1905,7 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (power_bag !=  nullptr && power_bag->has_operation());
 }
 
@@ -1636,8 +1964,19 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "power-bag")
+        return true;
+    return false;
 }
 
 EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::PowerBag()
@@ -1676,17 +2015,17 @@ bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::
 
 bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(power_accuracy.operation)
-	|| is_set(power_admin_state.operation)
-	|| is_set(power_current_type.operation)
-	|| is_set(power_max_value.operation)
-	|| is_set(power_measure_caliber.operation)
-	|| is_set(power_oper_state.operation)
-	|| is_set(power_origin.operation)
-	|| is_set(power_state_enter_reason.operation)
-	|| is_set(power_unit_multiplier.operation)
-	|| is_set(power_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(power_accuracy.yfilter)
+	|| ydk::is_set(power_admin_state.yfilter)
+	|| ydk::is_set(power_current_type.yfilter)
+	|| ydk::is_set(power_max_value.yfilter)
+	|| ydk::is_set(power_measure_caliber.yfilter)
+	|| ydk::is_set(power_oper_state.yfilter)
+	|| ydk::is_set(power_origin.yfilter)
+	|| ydk::is_set(power_state_enter_reason.yfilter)
+	|| ydk::is_set(power_unit_multiplier.yfilter)
+	|| ydk::is_set(power_value.yfilter);
 }
 
 std::string EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::get_segment_path() const
@@ -1712,16 +2051,16 @@ const EntityPath EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Mod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (power_accuracy.is_set || is_set(power_accuracy.operation)) leaf_name_data.push_back(power_accuracy.get_name_leafdata());
-    if (power_admin_state.is_set || is_set(power_admin_state.operation)) leaf_name_data.push_back(power_admin_state.get_name_leafdata());
-    if (power_current_type.is_set || is_set(power_current_type.operation)) leaf_name_data.push_back(power_current_type.get_name_leafdata());
-    if (power_max_value.is_set || is_set(power_max_value.operation)) leaf_name_data.push_back(power_max_value.get_name_leafdata());
-    if (power_measure_caliber.is_set || is_set(power_measure_caliber.operation)) leaf_name_data.push_back(power_measure_caliber.get_name_leafdata());
-    if (power_oper_state.is_set || is_set(power_oper_state.operation)) leaf_name_data.push_back(power_oper_state.get_name_leafdata());
-    if (power_origin.is_set || is_set(power_origin.operation)) leaf_name_data.push_back(power_origin.get_name_leafdata());
-    if (power_state_enter_reason.is_set || is_set(power_state_enter_reason.operation)) leaf_name_data.push_back(power_state_enter_reason.get_name_leafdata());
-    if (power_unit_multiplier.is_set || is_set(power_unit_multiplier.operation)) leaf_name_data.push_back(power_unit_multiplier.get_name_leafdata());
-    if (power_value.is_set || is_set(power_value.operation)) leaf_name_data.push_back(power_value.get_name_leafdata());
+    if (power_accuracy.is_set || is_set(power_accuracy.yfilter)) leaf_name_data.push_back(power_accuracy.get_name_leafdata());
+    if (power_admin_state.is_set || is_set(power_admin_state.yfilter)) leaf_name_data.push_back(power_admin_state.get_name_leafdata());
+    if (power_current_type.is_set || is_set(power_current_type.yfilter)) leaf_name_data.push_back(power_current_type.get_name_leafdata());
+    if (power_max_value.is_set || is_set(power_max_value.yfilter)) leaf_name_data.push_back(power_max_value.get_name_leafdata());
+    if (power_measure_caliber.is_set || is_set(power_measure_caliber.yfilter)) leaf_name_data.push_back(power_measure_caliber.get_name_leafdata());
+    if (power_oper_state.is_set || is_set(power_oper_state.yfilter)) leaf_name_data.push_back(power_oper_state.get_name_leafdata());
+    if (power_origin.is_set || is_set(power_origin.yfilter)) leaf_name_data.push_back(power_origin.get_name_leafdata());
+    if (power_state_enter_reason.is_set || is_set(power_state_enter_reason.yfilter)) leaf_name_data.push_back(power_state_enter_reason.get_name_leafdata());
+    if (power_unit_multiplier.is_set || is_set(power_unit_multiplier.yfilter)) leaf_name_data.push_back(power_unit_multiplier.get_name_leafdata());
+    if (power_value.is_set || is_set(power_value.yfilter)) leaf_name_data.push_back(power_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1740,48 +2079,119 @@ std::map<std::string, std::shared_ptr<Entity>> EnvironmentalMonitoring::Racks::R
     return children;
 }
 
-void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::set_value(const std::string & value_path, std::string value)
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "power-accuracy")
     {
         power_accuracy = value;
+        power_accuracy.value_namespace = name_space;
+        power_accuracy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-admin-state")
     {
         power_admin_state = value;
+        power_admin_state.value_namespace = name_space;
+        power_admin_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-current-type")
     {
         power_current_type = value;
+        power_current_type.value_namespace = name_space;
+        power_current_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-max-value")
     {
         power_max_value = value;
+        power_max_value.value_namespace = name_space;
+        power_max_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-measure-caliber")
     {
         power_measure_caliber = value;
+        power_measure_caliber.value_namespace = name_space;
+        power_measure_caliber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-oper-state")
     {
         power_oper_state = value;
+        power_oper_state.value_namespace = name_space;
+        power_oper_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-origin")
     {
         power_origin = value;
+        power_origin.value_namespace = name_space;
+        power_origin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-state-enter-reason")
     {
         power_state_enter_reason = value;
+        power_state_enter_reason.value_namespace = name_space;
+        power_state_enter_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-unit-multiplier")
     {
         power_unit_multiplier = value;
+        power_unit_multiplier.value_namespace = name_space;
+        power_unit_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-value")
     {
         power_value = value;
+        power_value.value_namespace = name_space;
+        power_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "power-accuracy")
+    {
+        power_accuracy.yfilter = yfilter;
+    }
+    if(value_path == "power-admin-state")
+    {
+        power_admin_state.yfilter = yfilter;
+    }
+    if(value_path == "power-current-type")
+    {
+        power_current_type.yfilter = yfilter;
+    }
+    if(value_path == "power-max-value")
+    {
+        power_max_value.yfilter = yfilter;
+    }
+    if(value_path == "power-measure-caliber")
+    {
+        power_measure_caliber.yfilter = yfilter;
+    }
+    if(value_path == "power-oper-state")
+    {
+        power_oper_state.yfilter = yfilter;
+    }
+    if(value_path == "power-origin")
+    {
+        power_origin.yfilter = yfilter;
+    }
+    if(value_path == "power-state-enter-reason")
+    {
+        power_state_enter_reason.yfilter = yfilter;
+    }
+    if(value_path == "power-unit-multiplier")
+    {
+        power_unit_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "power-value")
+    {
+        power_value.yfilter = yfilter;
+    }
+}
+
+bool EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Power::PowerBag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "power-accuracy" || name == "power-admin-state" || name == "power-current-type" || name == "power-max-value" || name == "power-measure-caliber" || name == "power-oper-state" || name == "power-origin" || name == "power-state-enter-reason" || name == "power-unit-multiplier" || name == "power-value")
+        return true;
+    return false;
 }
 
 

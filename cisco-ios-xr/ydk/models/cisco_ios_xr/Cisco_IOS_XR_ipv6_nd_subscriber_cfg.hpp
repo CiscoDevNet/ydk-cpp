@@ -7,15 +7,15 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_nd_subscriber_cfg {
 
-class Ipv6NdRouterPrefTemplateEnum : public Enum
+class Ipv6NdRouterPrefTemplate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf high;
-        static const Enum::YLeaf medium;
-        static const Enum::YLeaf low;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 

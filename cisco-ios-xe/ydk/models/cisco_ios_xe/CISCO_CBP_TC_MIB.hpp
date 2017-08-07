@@ -7,16 +7,16 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_CBP_TC_MIB {
 
-class CbpexecutionstrategyEnum : public Enum
+class Cbpexecutionstrategy : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf doUntilSuccess;
-        static const Enum::YLeaf doUntilFailure;
-        static const Enum::YLeaf doAll;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf doUntilSuccess;
+        static const ydk::Enum::YLeaf doUntilFailure;
+        static const ydk::Enum::YLeaf doAll;
 
 };
 

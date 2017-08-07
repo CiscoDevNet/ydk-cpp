@@ -7,63 +7,63 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_lib_datatypes {
 
-class AaaAccountingUpdateEnum : public Enum
+class AaaAccounting : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf newinfo;
-        static const Enum::YLeaf periodic;
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf start_stop;
+        static const ydk::Enum::YLeaf stop_only;
 
 };
 
-class AaaAccountingEnum : public Enum
+class AaaAccountingBroadcast : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_set;
-        static const Enum::YLeaf start_stop;
-        static const Enum::YLeaf stop_only;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class AaaMethodEnum : public Enum
+class AaaMethod : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_set;
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf local;
-        static const Enum::YLeaf radius;
-        static const Enum::YLeaf tacacs_plus;
-        static const Enum::YLeaf dsmd;
-        static const Enum::YLeaf sgbp;
-        static const Enum::YLeaf acct_d;
-        static const Enum::YLeaf error;
-        static const Enum::YLeaf if_authenticated;
-        static const Enum::YLeaf server_group;
-        static const Enum::YLeaf server_group_not_defined;
-        static const Enum::YLeaf line;
-        static const Enum::YLeaf enable;
-        static const Enum::YLeaf kerberos;
-        static const Enum::YLeaf diameter;
-        static const Enum::YLeaf last;
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf radius;
+        static const ydk::Enum::YLeaf tacacs_plus;
+        static const ydk::Enum::YLeaf dsmd;
+        static const ydk::Enum::YLeaf sgbp;
+        static const ydk::Enum::YLeaf acct_d;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf if_authenticated;
+        static const ydk::Enum::YLeaf server_group;
+        static const ydk::Enum::YLeaf server_group_not_defined;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf kerberos;
+        static const ydk::Enum::YLeaf diameter;
+        static const ydk::Enum::YLeaf last;
 
 };
 
-class AaaAccountingBroadcastEnum : public Enum
+class AaaAccountingRpFailover : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class AaaAccountingRpFailoverEnum : public Enum
+class AaaAccountingUpdate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf newinfo;
+        static const ydk::Enum::YLeaf periodic;
 
 };
 

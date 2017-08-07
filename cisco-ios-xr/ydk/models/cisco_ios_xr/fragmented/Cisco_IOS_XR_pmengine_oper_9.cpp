@@ -7,7 +7,9 @@
 #include "Cisco_IOS_XR_pmengine_oper_9.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_10.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pmengine_oper {
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::EsrNe()
@@ -32,10 +34,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::get_segment_path() const
@@ -61,9 +63,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -82,20 +84,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::SesNe()
@@ -120,10 +151,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::get_segment_path() const
@@ -149,9 +180,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -170,20 +201,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::SesrNe()
@@ -208,10 +268,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::get_segment_path() const
@@ -237,9 +297,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -258,20 +318,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::UasNe()
@@ -296,10 +385,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::get_segment_path() const
@@ -325,9 +414,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -346,20 +435,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::BbeNe()
@@ -384,10 +502,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::get_segment_path() const
@@ -413,9 +531,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -434,20 +552,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::BberNe()
@@ -472,10 +619,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::get_segment_path() const
@@ -501,9 +648,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -522,20 +669,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::FcNe()
@@ -560,10 +736,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::get_segment_path() const
@@ -589,9 +765,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -610,20 +786,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::EsFe()
@@ -648,10 +853,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::get_segment_path() const
@@ -677,9 +882,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -698,20 +903,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::EsrFe()
@@ -736,10 +970,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::get_segment_path() const
@@ -765,9 +999,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -786,20 +1020,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::SesFe()
@@ -824,10 +1087,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::get_segment_path() const
@@ -853,9 +1116,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -874,20 +1137,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::SesrFe()
@@ -912,10 +1204,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::get_segment_path() const
@@ -941,9 +1233,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -962,20 +1254,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::UasFe()
@@ -1000,10 +1321,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::get_segment_path() const
@@ -1029,9 +1350,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1050,20 +1371,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::BbeFe()
@@ -1088,10 +1438,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::get_segment_path() const
@@ -1117,9 +1467,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1138,20 +1488,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::BberFe()
@@ -1176,10 +1555,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::get_segment_path() const
@@ -1205,9 +1584,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1226,20 +1605,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::FcFe()
@@ -1264,10 +1672,10 @@ bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::get_segment_path() const
@@ -1293,9 +1701,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OduHistory::Odu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1314,20 +1722,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuHistory()
@@ -1350,7 +1787,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::has_data() cons
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (otu_port_histories !=  nullptr && otu_port_histories->has_operation());
 }
 
@@ -1409,8 +1846,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-port-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistories()
@@ -1439,7 +1887,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_port_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::get_segment_path() const
@@ -1504,8 +1952,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-port-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuPortHistory()
@@ -1539,8 +1998,8 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (otu_hour24_history !=  nullptr && otu_hour24_history->has_operation())
 	|| (otu_minute15_history !=  nullptr && otu_minute15_history->has_operation())
 	|| (otu_second30_history !=  nullptr && otu_second30_history->has_operation());
@@ -1569,7 +2028,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1630,12 +2089,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-hour24-history" || name == "otu-minute15-history" || name == "otu-second30-history" || name == "name")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30History()
@@ -1662,7 +2138,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (otu_second30fec_histories !=  nullptr && otu_second30fec_histories->has_operation())
 	|| (otu_second30otn_histories !=  nullptr && otu_second30otn_histories->has_operation());
 }
@@ -1736,8 +2212,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-second30fec-histories" || name == "otu-second30otn-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistories()
@@ -1766,7 +2253,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_second30fec_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::get_segment_path() const
@@ -1831,8 +2318,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-second30fec-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecHistory()
@@ -1858,8 +2356,8 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (otu_second30fec_time_line_instances !=  nullptr && otu_second30fec_time_line_instances->has_operation());
 }
 
@@ -1886,7 +2384,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1919,12 +2417,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-second30fec-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstances()
@@ -1953,7 +2468,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_second30fec_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::get_segment_path() const
@@ -2018,8 +2533,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-second30fec-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::OtuSecond30FecTimeLineInstance()
@@ -2081,16 +2607,16 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (ec_bits !=  nullptr && ec_bits->has_operation())
 	|| (post_fec_ber !=  nullptr && post_fec_ber->has_operation())
 	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_operation())
@@ -2122,15 +2648,15 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2233,44 +2759,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ec-bits" || name == "post-fec-ber" || name == "pre-fec-ber" || name == "q" || name == "qmargin" || name == "uc-words" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::EcBits()
@@ -2297,11 +2888,11 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::get_segment_path() const
@@ -2327,10 +2918,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2349,24 +2940,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::UcWords()
@@ -2393,11 +3019,11 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::get_segment_path() const
@@ -2423,10 +3049,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2445,24 +3071,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::PreFecBer()
@@ -2497,15 +3158,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::get_segment_path() const
@@ -2531,14 +3192,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2557,40 +3218,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::PostFecBer()
@@ -2625,15 +3345,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::get_segment_path() const
@@ -2659,14 +3379,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2685,40 +3405,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::Q()
@@ -2753,15 +3532,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::get_segment_path() const
@@ -2787,14 +3566,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2813,40 +3592,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::Qmargin()
@@ -2881,15 +3719,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::get_segment_path() const
@@ -2915,14 +3753,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2941,40 +3779,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistories()
@@ -3003,7 +3900,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_second30otn_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::get_segment_path() const
@@ -3068,8 +3965,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-second30otn-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnHistory()
@@ -3095,8 +4003,8 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (otu_second30otn_time_line_instances !=  nullptr && otu_second30otn_time_line_instances->has_operation());
 }
 
@@ -3123,7 +4031,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3156,12 +4064,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-second30otn-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstances()
@@ -3190,7 +4115,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_second30otn_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::get_segment_path() const
@@ -3255,8 +4180,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-second30otn-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::OtuSecond30OtnTimeLineInstance()
@@ -3362,16 +4298,16 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (bbe_fe !=  nullptr && bbe_fe->has_operation())
 	|| (bbe_ne !=  nullptr && bbe_ne->has_operation())
 	|| (bber_fe !=  nullptr && bber_fe->has_operation())
@@ -3414,15 +4350,15 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3679,44 +4615,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bbe-fe" || name == "bbe-ne" || name == "bber-fe" || name == "bber-ne" || name == "es-fe" || name == "es-ne" || name == "esr-fe" || name == "esr-ne" || name == "fc-fe" || name == "fc-ne" || name == "lbc" || name == "ses-fe" || name == "ses-ne" || name == "sesr-fe" || name == "sesr-ne" || name == "uas-fe" || name == "uas-ne" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::Lbc()
@@ -3741,10 +4742,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::get_segment_path() const
@@ -3770,9 +4771,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3791,20 +4792,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::EsNe()
@@ -3829,10 +4859,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::get_segment_path() const
@@ -3858,9 +4888,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3879,20 +4909,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::EsrNe()
@@ -3917,10 +4976,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::get_segment_path() const
@@ -3946,9 +5005,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3967,20 +5026,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::SesNe()
@@ -4005,10 +5093,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::get_segment_path() const
@@ -4034,9 +5122,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4055,20 +5143,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::SesrNe()
@@ -4093,10 +5210,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::get_segment_path() const
@@ -4122,9 +5239,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4143,20 +5260,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::UasNe()
@@ -4181,10 +5327,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::get_segment_path() const
@@ -4210,9 +5356,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4231,20 +5377,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::BbeNe()
@@ -4269,10 +5444,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::get_segment_path() const
@@ -4298,9 +5473,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4319,20 +5494,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::BberNe()
@@ -4357,10 +5561,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::get_segment_path() const
@@ -4386,9 +5590,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4407,20 +5611,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::FcNe()
@@ -4445,10 +5678,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::get_segment_path() const
@@ -4474,9 +5707,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4495,20 +5728,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::EsFe()
@@ -4533,10 +5795,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::get_segment_path() const
@@ -4562,9 +5824,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4583,20 +5845,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::EsrFe()
@@ -4621,10 +5912,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::get_segment_path() const
@@ -4650,9 +5941,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4671,20 +5962,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::SesFe()
@@ -4709,10 +6029,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::get_segment_path() const
@@ -4738,9 +6058,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4759,20 +6079,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::SesrFe()
@@ -4797,10 +6146,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::get_segment_path() const
@@ -4826,9 +6175,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4847,20 +6196,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::UasFe()
@@ -4885,10 +6263,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::get_segment_path() const
@@ -4914,9 +6292,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4935,20 +6313,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::UasFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::BbeFe()
@@ -4973,10 +6380,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::get_segment_path() const
@@ -5002,9 +6409,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5023,20 +6430,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::BberFe()
@@ -5061,10 +6497,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::get_segment_path() const
@@ -5090,9 +6526,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5111,20 +6547,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::BberFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::FcFe()
@@ -5149,10 +6614,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::get_segment_path() const
@@ -5178,9 +6643,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5199,20 +6664,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::FcFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15History()
@@ -5239,7 +6733,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (otu_minute15fec_histories !=  nullptr && otu_minute15fec_histories->has_operation())
 	|| (otu_minute15otn_histories !=  nullptr && otu_minute15otn_histories->has_operation());
 }
@@ -5313,8 +6807,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-minute15fec-histories" || name == "otu-minute15otn-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistories()
@@ -5343,7 +6848,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_minute15fec_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::get_segment_path() const
@@ -5408,8 +6913,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-minute15fec-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecHistory()
@@ -5435,8 +6951,8 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (otu_minute15fec_time_line_instances !=  nullptr && otu_minute15fec_time_line_instances->has_operation());
 }
 
@@ -5463,7 +6979,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5496,12 +7012,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-minute15fec-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstances()
@@ -5530,7 +7063,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_minute15fec_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::get_segment_path() const
@@ -5595,8 +7128,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-minute15fec-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::OtuMinute15FecTimeLineInstance()
@@ -5658,16 +7202,16 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (ec_bits !=  nullptr && ec_bits->has_operation())
 	|| (post_fec_ber !=  nullptr && post_fec_ber->has_operation())
 	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_operation())
@@ -5699,15 +7243,15 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5810,44 +7354,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ec-bits" || name == "post-fec-ber" || name == "pre-fec-ber" || name == "q" || name == "qmargin" || name == "uc-words" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::EcBits()
@@ -5874,11 +7483,11 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::get_segment_path() const
@@ -5904,10 +7513,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5926,24 +7535,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::UcWords()
@@ -5970,11 +7614,11 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::get_segment_path() const
@@ -6000,10 +7644,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6022,24 +7666,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::PreFecBer()
@@ -6074,15 +7753,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::get_segment_path() const
@@ -6108,14 +7787,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6134,40 +7813,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::PostFecBer()
@@ -6202,15 +7940,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::get_segment_path() const
@@ -6236,14 +7974,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6262,40 +8000,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::Q()
@@ -6330,15 +8127,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::get_segment_path() const
@@ -6364,14 +8161,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6390,40 +8187,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Q::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::Qmargin()
@@ -6458,15 +8314,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::get_segment_path() const
@@ -6492,14 +8348,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6518,40 +8374,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15FecHistories::OtuMinute15FecHistory::OtuMinute15FecTimeLineInstances::OtuMinute15FecTimeLineInstance::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistories()
@@ -6580,7 +8495,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_minute15otn_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::get_segment_path() const
@@ -6645,8 +8560,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-minute15otn-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnHistory()
@@ -6672,8 +8598,8 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (otu_minute15otn_time_line_instances !=  nullptr && otu_minute15otn_time_line_instances->has_operation());
 }
 
@@ -6700,7 +8626,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6733,12 +8659,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-minute15otn-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstances()
@@ -6767,7 +8710,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_minute15otn_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::get_segment_path() const
@@ -6832,8 +8775,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-minute15otn-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::OtuMinute15OtnTimeLineInstance()
@@ -6939,16 +8893,16 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (bbe_fe !=  nullptr && bbe_fe->has_operation())
 	|| (bbe_ne !=  nullptr && bbe_ne->has_operation())
 	|| (bber_fe !=  nullptr && bber_fe->has_operation())
@@ -6991,15 +8945,15 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7256,44 +9210,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bbe-fe" || name == "bbe-ne" || name == "bber-fe" || name == "bber-ne" || name == "es-fe" || name == "es-ne" || name == "esr-fe" || name == "esr-ne" || name == "fc-fe" || name == "fc-ne" || name == "lbc" || name == "ses-fe" || name == "ses-ne" || name == "sesr-fe" || name == "sesr-ne" || name == "uas-fe" || name == "uas-ne" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::Lbc()
@@ -7318,10 +9337,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::get_segment_path() const
@@ -7347,9 +9366,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7368,20 +9387,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::EsNe()
@@ -7406,10 +9454,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::get_segment_path() const
@@ -7435,9 +9483,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7456,20 +9504,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::EsrNe()
@@ -7494,10 +9571,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::get_segment_path() const
@@ -7523,9 +9600,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7544,20 +9621,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::SesNe()
@@ -7582,10 +9688,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::get_segment_path() const
@@ -7611,9 +9717,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7632,20 +9738,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::SesrNe()
@@ -7670,10 +9805,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::get_segment_path() const
@@ -7699,9 +9834,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7720,20 +9855,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::UasNe()
@@ -7758,10 +9922,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::get_segment_path() const
@@ -7787,9 +9951,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7808,20 +9972,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::BbeNe()
@@ -7846,10 +10039,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::get_segment_path() const
@@ -7875,9 +10068,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7896,20 +10089,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::BberNe()
@@ -7934,10 +10156,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::get_segment_path() const
@@ -7963,9 +10185,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7984,20 +10206,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::FcNe()
@@ -8022,10 +10273,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::get_segment_path() const
@@ -8051,9 +10302,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8072,20 +10323,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::EsFe()
@@ -8110,10 +10390,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::get_segment_path() const
@@ -8139,9 +10419,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8160,20 +10440,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::EsrFe()
@@ -8198,10 +10507,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::get_segment_path() const
@@ -8227,9 +10536,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8248,20 +10557,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::SesFe()
@@ -8286,10 +10624,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::get_segment_path() const
@@ -8315,9 +10653,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8336,20 +10674,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::SesrFe()
@@ -8374,10 +10741,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::get_segment_path() const
@@ -8403,9 +10770,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8424,20 +10791,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::UasFe()
@@ -8462,10 +10858,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::get_segment_path() const
@@ -8491,9 +10887,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8512,20 +10908,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::UasFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::BbeFe()
@@ -8550,10 +10975,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::get_segment_path() const
@@ -8579,9 +11004,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8600,20 +11025,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::BberFe()
@@ -8638,10 +11092,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::get_segment_path() const
@@ -8667,9 +11121,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8688,20 +11142,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::BberFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::FcFe()
@@ -8726,10 +11209,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::get_segment_path() const
@@ -8755,9 +11238,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8776,20 +11259,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuMinute15History::OtuMinute15OtnHistories::OtuMinute15OtnHistory::OtuMinute15OtnTimeLineInstances::OtuMinute15OtnTimeLineInstance::FcFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24History()
@@ -8816,7 +11328,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (otu_hour24fec_histories !=  nullptr && otu_hour24fec_histories->has_operation())
 	|| (otu_hour24otn_histories !=  nullptr && otu_hour24otn_histories->has_operation());
 }
@@ -8890,8 +11402,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-hour24fec-histories" || name == "otu-hour24otn-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistories()
@@ -8920,7 +11443,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_hour24otn_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::get_segment_path() const
@@ -8985,8 +11508,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-hour24otn-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnHistory()
@@ -9012,8 +11546,8 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (otu_hour24otn_time_line_instances !=  nullptr && otu_hour24otn_time_line_instances->has_operation());
 }
 
@@ -9040,7 +11574,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9073,12 +11607,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-hour24otn-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstances()
@@ -9107,7 +11658,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_hour24otn_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::get_segment_path() const
@@ -9172,8 +11723,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-hour24otn-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::OtuHour24OtnTimeLineInstance()
@@ -9279,16 +11841,16 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (bbe_fe !=  nullptr && bbe_fe->has_operation())
 	|| (bbe_ne !=  nullptr && bbe_ne->has_operation())
 	|| (bber_fe !=  nullptr && bber_fe->has_operation())
@@ -9331,15 +11893,15 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9596,44 +12158,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bbe-fe" || name == "bbe-ne" || name == "bber-fe" || name == "bber-ne" || name == "es-fe" || name == "es-ne" || name == "esr-fe" || name == "esr-ne" || name == "fc-fe" || name == "fc-ne" || name == "lbc" || name == "ses-fe" || name == "ses-ne" || name == "sesr-fe" || name == "sesr-ne" || name == "uas-fe" || name == "uas-ne" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::Lbc()
@@ -9658,10 +12285,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::get_segment_path() const
@@ -9687,9 +12314,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9708,20 +12335,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::Lbc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::EsNe()
@@ -9746,10 +12402,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::get_segment_path() const
@@ -9775,9 +12431,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9796,20 +12452,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::EsrNe()
@@ -9834,10 +12519,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::get_segment_path() const
@@ -9863,9 +12548,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9884,20 +12569,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::SesNe()
@@ -9922,10 +12636,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::get_segment_path() const
@@ -9951,9 +12665,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9972,20 +12686,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::SesrNe()
@@ -10010,10 +12753,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::get_segment_path() const
@@ -10039,9 +12782,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10060,20 +12803,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::UasNe()
@@ -10098,10 +12870,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::get_segment_path() const
@@ -10127,9 +12899,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10148,20 +12920,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::BbeNe()
@@ -10186,10 +12987,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::get_segment_path() const
@@ -10215,9 +13016,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10236,20 +13037,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::BberNe()
@@ -10274,10 +13104,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::get_segment_path() const
@@ -10303,9 +13133,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10324,20 +13154,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::FcNe()
@@ -10362,10 +13221,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::get_segment_path() const
@@ -10391,9 +13250,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10412,20 +13271,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcNe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::EsFe()
@@ -10450,10 +13338,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::get_segment_path() const
@@ -10479,9 +13367,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10500,20 +13388,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::EsrFe()
@@ -10538,10 +13455,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::get_segment_path() const
@@ -10567,9 +13484,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10588,20 +13505,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::EsrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::SesFe()
@@ -10626,10 +13572,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::get_segment_path() const
@@ -10655,9 +13601,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10676,20 +13622,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::SesrFe()
@@ -10714,10 +13689,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::get_segment_path() const
@@ -10743,9 +13718,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10764,20 +13739,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::SesrFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::UasFe()
@@ -10802,10 +13806,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::get_segment_path() const
@@ -10831,9 +13835,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10852,20 +13856,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::UasFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::BbeFe()
@@ -10890,10 +13923,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::get_segment_path() const
@@ -10919,9 +13952,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10940,20 +13973,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BbeFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::BberFe()
@@ -10978,10 +14040,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::get_segment_path() const
@@ -11007,9 +14069,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11028,20 +14090,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::BberFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::FcFe()
@@ -11066,10 +14157,10 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::get_segment_path() const
@@ -11095,9 +14186,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11116,20 +14207,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24OtnHistories::OtuHour24OtnHistory::OtuHour24OtnTimeLineInstances::OtuHour24OtnTimeLineInstance::FcFe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistories()
@@ -11158,7 +14278,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_hour24fec_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::get_segment_path() const
@@ -11223,8 +14343,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-hour24fec-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecHistory()
@@ -11250,8 +14381,8 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (otu_hour24fec_time_line_instances !=  nullptr && otu_hour24fec_time_line_instances->has_operation());
 }
 
@@ -11278,7 +14409,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11311,12 +14442,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-hour24fec-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstances()
@@ -11345,7 +14493,7 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
         if(otu_hour24fec_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::get_segment_path() const
@@ -11410,8 +14558,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otu-hour24fec-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::OtuHour24FecTimeLineInstance()
@@ -11473,16 +14632,16 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear30_sec_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(sec30_support.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear30_sec_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(sec30_support.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (ec_bits !=  nullptr && ec_bits->has_operation())
 	|| (post_fec_ber !=  nullptr && post_fec_ber->has_operation())
 	|| (pre_fec_ber !=  nullptr && pre_fec_ber->has_operation())
@@ -11514,15 +14673,15 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.operation)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (sec30_support.is_set || is_set(sec30_support.operation)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear30_sec_time.is_set || is_set(last_clear30_sec_time.yfilter)) leaf_name_data.push_back(last_clear30_sec_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (sec30_support.is_set || is_set(sec30_support.yfilter)) leaf_name_data.push_back(sec30_support.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11625,44 +14784,109 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear30-sec-time")
     {
         last_clear30_sec_time = value;
+        last_clear30_sec_time.value_namespace = name_space;
+        last_clear30_sec_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sec30-support")
     {
         sec30_support = value;
+        sec30_support.value_namespace = name_space;
+        sec30_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear30-sec-time")
+    {
+        last_clear30_sec_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "sec30-support")
+    {
+        sec30_support.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ec-bits" || name == "post-fec-ber" || name == "pre-fec-ber" || name == "q" || name == "qmargin" || name == "uc-words" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear30-sec-time" || name == "last-clear-time" || name == "sec30-support" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::EcBits()
@@ -11689,11 +14913,11 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::get_segment_path() const
@@ -11719,10 +14943,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11741,24 +14965,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::EcBits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::UcWords()
@@ -11785,11 +15044,11 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::get_segment_path() const
@@ -11815,10 +15074,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11837,24 +15096,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::UcWords::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::PreFecBer()
@@ -11889,15 +15183,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::get_segment_path() const
@@ -11923,14 +15217,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11949,40 +15243,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PreFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::PostFecBer()
@@ -12017,15 +15370,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::get_segment_path() const
@@ -12051,14 +15404,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12077,40 +15430,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::PostFecBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::Q()
@@ -12145,15 +15557,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::get_segment_path() const
@@ -12179,14 +15591,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12205,40 +15617,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Q::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::Qmargin()
@@ -12273,15 +15744,15 @@ bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistorie
 
 bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(maximum.operation)
-	|| is_set(maximum_tca_report.operation)
-	|| is_set(maximum_threshold.operation)
-	|| is_set(minimum.operation)
-	|| is_set(minimum_tca_report.operation)
-	|| is_set(minimum_threshold.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(maximum_tca_report.yfilter)
+	|| ydk::is_set(maximum_threshold.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(minimum_tca_report.yfilter)
+	|| ydk::is_set(minimum_threshold.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::get_segment_path() const
@@ -12307,14 +15778,14 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OtuHistory::Otu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (maximum_tca_report.is_set || is_set(maximum_tca_report.operation)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
-    if (maximum_threshold.is_set || is_set(maximum_threshold.operation)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (minimum_tca_report.is_set || is_set(minimum_tca_report.operation)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
-    if (minimum_threshold.is_set || is_set(minimum_threshold.operation)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (maximum_tca_report.is_set || is_set(maximum_tca_report.yfilter)) leaf_name_data.push_back(maximum_tca_report.get_name_leafdata());
+    if (maximum_threshold.is_set || is_set(maximum_threshold.yfilter)) leaf_name_data.push_back(maximum_threshold.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (minimum_tca_report.is_set || is_set(minimum_tca_report.yfilter)) leaf_name_data.push_back(minimum_tca_report.get_name_leafdata());
+    if (minimum_threshold.is_set || is_set(minimum_threshold.yfilter)) leaf_name_data.push_back(minimum_threshold.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12333,40 +15804,99 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-tca-report")
     {
         maximum_tca_report = value;
+        maximum_tca_report.value_namespace = name_space;
+        maximum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-threshold")
     {
         maximum_threshold = value;
+        maximum_threshold.value_namespace = name_space;
+        maximum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-tca-report")
     {
         minimum_tca_report = value;
+        minimum_tca_report.value_namespace = name_space;
+        minimum_tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-threshold")
     {
         minimum_threshold = value;
+        minimum_threshold.value_namespace = name_space;
+        minimum_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "maximum-tca-report")
+    {
+        maximum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "maximum-threshold")
+    {
+        maximum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "minimum-tca-report")
+    {
+        minimum_tca_report.yfilter = yfilter;
+    }
+    if(value_path == "minimum-threshold")
+    {
+        minimum_threshold.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuHour24History::OtuHour24FecHistories::OtuHour24FecHistory::OtuHour24FecTimeLineInstances::OtuHour24FecTimeLineInstance::Qmargin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "maximum" || name == "maximum-tca-report" || name == "maximum-threshold" || name == "minimum" || name == "minimum-tca-report" || name == "minimum-threshold" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcHistory()
@@ -12389,7 +15919,7 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::has_data() con
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ho_vc_port_histories !=  nullptr && ho_vc_port_histories->has_operation());
 }
 
@@ -12448,8 +15978,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-port-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistories()
@@ -12478,7 +16019,7 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
         if(ho_vc_port_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::get_segment_path() const
@@ -12543,8 +16084,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-port-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcPortHistory()
@@ -12574,8 +16126,8 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (ho_vc_hour24_history !=  nullptr && ho_vc_hour24_history->has_operation())
 	|| (ho_vc_minute15_history !=  nullptr && ho_vc_minute15_history->has_operation());
 }
@@ -12603,7 +16155,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12650,12 +16202,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-hour24-history" || name == "ho-vc-minute15-history" || name == "name")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15History()
@@ -12678,7 +16247,7 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ho_vc_minute15_path_histories !=  nullptr && ho_vc_minute15_path_histories->has_operation());
 }
 
@@ -12737,8 +16306,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-minute15-path-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistories()
@@ -12767,7 +16347,7 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
         if(ho_vc_minute15_path_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::get_segment_path() const
@@ -12832,8 +16412,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-minute15-path-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathHistory()
@@ -12859,8 +16450,8 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (ho_vc_minute15_path_time_line_instances !=  nullptr && ho_vc_minute15_path_time_line_instances->has_operation());
 }
 
@@ -12887,7 +16478,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12920,12 +16511,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-minute15-path-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstances()
@@ -12954,7 +16562,7 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
         if(ho_vc_minute15_path_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::get_segment_path() const
@@ -13019,8 +16627,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-minute15-path-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::HoVcMinute15PathTimeLineInstance()
@@ -13062,14 +16681,14 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -13097,13 +16716,13 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13150,36 +16769,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::Path()
@@ -13233,8 +16905,8 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
 	|| (path_bb_es !=  nullptr && path_bb_es->has_operation())
 	|| (path_bbe_rs !=  nullptr && path_bbe_rs->has_operation())
 	|| (path_e_bs !=  nullptr && path_e_bs->has_operation())
@@ -13268,7 +16940,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13399,12 +17071,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-bb-es" || name == "path-bbe-rs" || name == "path-e-bs" || name == "path-e-ss" || name == "path-es-rs" || name == "path-se-ss" || name == "path-ses-rs" || name == "path-ua-ss" || name == "path-status")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::PathESs()
@@ -13429,10 +17118,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::get_segment_path() const
@@ -13458,9 +17147,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13479,20 +17168,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::PathEsRs()
@@ -13517,10 +17235,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::get_segment_path() const
@@ -13546,9 +17264,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13567,20 +17285,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEsRs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::PathSeSs()
@@ -13605,10 +17352,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::get_segment_path() const
@@ -13634,9 +17381,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13655,20 +17402,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::PathSesRs()
@@ -13693,10 +17469,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::get_segment_path() const
@@ -13722,9 +17498,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13743,20 +17519,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathSesRs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::PathEBs()
@@ -13781,10 +17586,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::get_segment_path() const
@@ -13810,9 +17615,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13831,20 +17636,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathEBs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::PathUaSs()
@@ -13869,10 +17703,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::get_segment_path() const
@@ -13898,9 +17732,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13919,20 +17753,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::PathBbEs()
@@ -13957,10 +17820,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::get_segment_path() const
@@ -13986,9 +17849,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14007,20 +17870,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbEs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::PathBbeRs()
@@ -14045,10 +17937,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::get_segment_path() const
@@ -14074,9 +17966,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14095,20 +17987,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::Path::PathBbeRs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::FePath()
@@ -14135,11 +18056,11 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::get_segment_path() const
@@ -14165,10 +18086,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14187,24 +18108,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcMinute15History::HoVcMinute15PathHistories::HoVcMinute15PathHistory::HoVcMinute15PathTimeLineInstances::HoVcMinute15PathTimeLineInstance::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24History()
@@ -14227,7 +18183,7 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ho_vc_hour24_path_histories !=  nullptr && ho_vc_hour24_path_histories->has_operation());
 }
 
@@ -14286,8 +18242,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-hour24-path-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistories()
@@ -14316,7 +18283,7 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
         if(ho_vc_hour24_path_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::get_segment_path() const
@@ -14381,8 +18348,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-hour24-path-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathHistory()
@@ -14408,8 +18386,8 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
 	|| (ho_vc_hour24_path_time_line_instances !=  nullptr && ho_vc_hour24_path_time_line_instances->has_operation());
 }
 
@@ -14436,7 +18414,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14469,12 +18447,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-hour24-path-time-line-instances" || name == "number")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstances()
@@ -14503,7 +18498,7 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
         if(ho_vc_hour24_path_time_line_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::get_segment_path() const
@@ -14568,8 +18563,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ho-vc-hour24-path-time-line-instance")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::HoVcHour24PathTimeLineInstance()
@@ -14611,14 +18617,14 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number.operation)
-	|| is_set(index_.operation)
-	|| is_set(last_clear15_min_time.operation)
-	|| is_set(last_clear24_hr_time.operation)
-	|| is_set(last_clear_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(last_clear15_min_time.yfilter)
+	|| ydk::is_set(last_clear24_hr_time.yfilter)
+	|| ydk::is_set(last_clear_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(valid.yfilter)
 	|| (fe_path !=  nullptr && fe_path->has_operation())
 	|| (path !=  nullptr && path->has_operation());
 }
@@ -14646,13 +18652,13 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.operation)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.operation)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
-    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.operation)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
-    if (last_clear_time.is_set || is_set(last_clear_time.operation)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (last_clear15_min_time.is_set || is_set(last_clear15_min_time.yfilter)) leaf_name_data.push_back(last_clear15_min_time.get_name_leafdata());
+    if (last_clear24_hr_time.is_set || is_set(last_clear24_hr_time.yfilter)) leaf_name_data.push_back(last_clear24_hr_time.get_name_leafdata());
+    if (last_clear_time.is_set || is_set(last_clear_time.yfilter)) leaf_name_data.push_back(last_clear_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14699,36 +18705,89 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
         number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear15-min-time")
     {
         last_clear15_min_time = value;
+        last_clear15_min_time.value_namespace = name_space;
+        last_clear15_min_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear24-hr-time")
     {
         last_clear24_hr_time = value;
+        last_clear24_hr_time.value_namespace = name_space;
+        last_clear24_hr_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-clear-time")
     {
         last_clear_time = value;
+        last_clear_time.value_namespace = name_space;
+        last_clear_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "last-clear15-min-time")
+    {
+        last_clear15_min_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear24-hr-time")
+    {
+        last_clear24_hr_time.yfilter = yfilter;
+    }
+    if(value_path == "last-clear-time")
+    {
+        last_clear_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fe-path" || name == "path" || name == "number" || name == "index" || name == "last-clear15-min-time" || name == "last-clear24-hr-time" || name == "last-clear-time" || name == "timestamp" || name == "valid")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::Path()
@@ -14782,8 +18841,8 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_status.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_status.yfilter)
 	|| (path_bb_es !=  nullptr && path_bb_es->has_operation())
 	|| (path_bbe_rs !=  nullptr && path_bbe_rs->has_operation())
 	|| (path_e_bs !=  nullptr && path_e_bs->has_operation())
@@ -14817,7 +18876,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_status.is_set || is_set(path_status.operation)) leaf_name_data.push_back(path_status.get_name_leafdata());
+    if (path_status.is_set || is_set(path_status.yfilter)) leaf_name_data.push_back(path_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14948,12 +19007,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-status")
     {
         path_status = value;
+        path_status.value_namespace = name_space;
+        path_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-status")
+    {
+        path_status.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-bb-es" || name == "path-bbe-rs" || name == "path-e-bs" || name == "path-e-ss" || name == "path-es-rs" || name == "path-se-ss" || name == "path-ses-rs" || name == "path-ua-ss" || name == "path-status")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::PathESs()
@@ -14978,10 +19054,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::get_segment_path() const
@@ -15007,9 +19083,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15028,20 +19104,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathESs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::PathEsRs()
@@ -15066,10 +19171,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::get_segment_path() const
@@ -15095,9 +19200,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15116,20 +19221,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEsRs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::PathSeSs()
@@ -15154,10 +19288,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::get_segment_path() const
@@ -15183,9 +19317,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15204,20 +19338,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSeSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::PathSesRs()
@@ -15242,10 +19405,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::get_segment_path() const
@@ -15271,9 +19434,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15292,20 +19455,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathSesRs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::PathEBs()
@@ -15330,10 +19522,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::get_segment_path() const
@@ -15359,9 +19551,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15380,20 +19572,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathEBs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::PathUaSs()
@@ -15418,10 +19639,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::get_segment_path() const
@@ -15447,9 +19668,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15468,20 +19689,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathUaSs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::PathBbEs()
@@ -15506,10 +19756,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::get_segment_path() const
@@ -15535,9 +19785,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15556,20 +19806,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbEs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::PathBbeRs()
@@ -15594,10 +19873,10 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation)
-	|| is_set(tca_report.operation)
-	|| is_set(threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter)
+	|| ydk::is_set(tca_report.yfilter)
+	|| ydk::is_set(threshold.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::get_segment_path() const
@@ -15623,9 +19902,9 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
-    if (tca_report.is_set || is_set(tca_report.operation)) leaf_name_data.push_back(tca_report.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (tca_report.is_set || is_set(tca_report.yfilter)) leaf_name_data.push_back(tca_report.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15644,20 +19923,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tca-report")
     {
         tca_report = value;
+        tca_report.value_namespace = name_space;
+        tca_report.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+    if(value_path == "tca-report")
+    {
+        tca_report.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::Path::PathBbeRs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data" || name == "tca-report" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::FePath()
@@ -15684,11 +19992,11 @@ bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistor
 
 bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(far_end_path_c_vs.operation)
-	|| is_set(far_end_path_e_ss.operation)
-	|| is_set(far_end_path_se_ss.operation)
-	|| is_set(far_end_path_ua_ss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(far_end_path_c_vs.yfilter)
+	|| ydk::is_set(far_end_path_e_ss.yfilter)
+	|| ydk::is_set(far_end_path_se_ss.yfilter)
+	|| ydk::is_set(far_end_path_ua_ss.yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::get_segment_path() const
@@ -15714,10 +20022,10 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::HoVcHistory::Ho
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.operation)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
-    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.operation)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
-    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.operation)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
-    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.operation)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
+    if (far_end_path_c_vs.is_set || is_set(far_end_path_c_vs.yfilter)) leaf_name_data.push_back(far_end_path_c_vs.get_name_leafdata());
+    if (far_end_path_e_ss.is_set || is_set(far_end_path_e_ss.yfilter)) leaf_name_data.push_back(far_end_path_e_ss.get_name_leafdata());
+    if (far_end_path_se_ss.is_set || is_set(far_end_path_se_ss.yfilter)) leaf_name_data.push_back(far_end_path_se_ss.get_name_leafdata());
+    if (far_end_path_ua_ss.is_set || is_set(far_end_path_ua_ss.yfilter)) leaf_name_data.push_back(far_end_path_ua_ss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15736,24 +20044,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "far-end-path-c-vs")
     {
         far_end_path_c_vs = value;
+        far_end_path_c_vs.value_namespace = name_space;
+        far_end_path_c_vs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-e-ss")
     {
         far_end_path_e_ss = value;
+        far_end_path_e_ss.value_namespace = name_space;
+        far_end_path_e_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-se-ss")
     {
         far_end_path_se_ss = value;
+        far_end_path_se_ss.value_namespace = name_space;
+        far_end_path_se_ss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "far-end-path-ua-ss")
     {
         far_end_path_ua_ss = value;
+        far_end_path_ua_ss.value_namespace = name_space;
+        far_end_path_ua_ss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "far-end-path-c-vs")
+    {
+        far_end_path_c_vs.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-e-ss")
+    {
+        far_end_path_e_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-se-ss")
+    {
+        far_end_path_se_ss.yfilter = yfilter;
+    }
+    if(value_path == "far-end-path-ua-ss")
+    {
+        far_end_path_ua_ss.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::HoVcHistory::HoVcPortHistories::HoVcPortHistory::HoVcHour24History::HoVcHour24PathHistories::HoVcHour24PathHistory::HoVcHour24PathTimeLineInstances::HoVcHour24PathTimeLineInstance::FePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "far-end-path-c-vs" || name == "far-end-path-e-ss" || name == "far-end-path-se-ss" || name == "far-end-path-ua-ss")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsHistory()
@@ -15776,7 +20119,7 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::has_data() c
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (optics_port_histories !=  nullptr && optics_port_histories->has_operation());
 }
 
@@ -15835,8 +20178,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OpticsHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-port-histories")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistories()
@@ -15865,7 +20219,7 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
         if(optics_port_history[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::get_segment_path() const
@@ -15930,8 +20284,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-port-history")
+        return true;
+    return false;
 }
 
 PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::OpticsPortHistory()
@@ -15965,8 +20330,8 @@ bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHi
 
 bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (optics_hour24_history !=  nullptr && optics_hour24_history->has_operation())
 	|| (optics_minute15_history !=  nullptr && optics_minute15_history->has_operation())
 	|| (optics_second30_history !=  nullptr && optics_second30_history->has_operation());
@@ -15995,7 +20360,7 @@ const EntityPath PerformanceManagementHistory::Global::Periodic::OpticsHistory::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16056,12 +20421,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Glo
     return children;
 }
 
-void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::set_value(const std::string & value_path, std::string value)
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PerformanceManagementHistory::Global::Periodic::OpticsHistory::OpticsPortHistories::OpticsPortHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-hour24-history" || name == "optics-minute15-history" || name == "optics-second30-history" || name == "name")
+        return true;
+    return false;
 }
 
 

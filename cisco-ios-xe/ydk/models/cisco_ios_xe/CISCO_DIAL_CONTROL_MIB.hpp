@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_DIAL_CONTROL_MIB {
 
-class CiscoDialControlMib : public Entity
+class CiscoDialControlMib : public ydk::Entity
 {
     public:
         CiscoDialControlMib();
@@ -18,28 +18,31 @@ class CiscoDialControlMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Cpeerglobalconfiguration; //type: CiscoDialControlMib::Cpeerglobalconfiguration
         class Ccallhistorytable; //type: CiscoDialControlMib::Ccallhistorytable
         class Ccallhistoryiectable; //type: CiscoDialControlMib::Ccallhistoryiectable
 
-        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistoryiectable> ccallhistoryiectable_;
-        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable> ccallhistorytable_;
-        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Cpeerglobalconfiguration> cpeerglobalconfiguration_;
+        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistoryiectable> ccallhistoryiectable;
+        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable> ccallhistorytable;
+        std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Cpeerglobalconfiguration> cpeerglobalconfiguration;
         
 }; // CiscoDialControlMib
 
 
-class CiscoDialControlMib::Cpeerglobalconfiguration : public Entity
+class CiscoDialControlMib::Cpeerglobalconfiguration : public ydk::Entity
 {
     public:
         Cpeerglobalconfiguration();
@@ -47,19 +50,21 @@ class CiscoDialControlMib::Cpeerglobalconfiguration : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cpeersearchtype; //type: CpeersearchtypeEnum
-        class CpeersearchtypeEnum;
+        ydk::YLeaf cpeersearchtype; //type: Cpeersearchtype
+        class Cpeersearchtype;
 
 }; // CiscoDialControlMib::Cpeerglobalconfiguration
 
 
-class CiscoDialControlMib::Ccallhistorytable : public Entity
+class CiscoDialControlMib::Ccallhistorytable : public ydk::Entity
 {
     public:
         Ccallhistorytable();
@@ -67,20 +72,22 @@ class CiscoDialControlMib::Ccallhistorytable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ccallhistoryentry; //type: CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry
 
-        std::vector<std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry> > ccallhistoryentry_;
+        std::vector<std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry> > ccallhistoryentry;
         
 }; // CiscoDialControlMib::Ccallhistorytable
 
 
-class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry : public Entity
+class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry : public ydk::Entity
 {
     public:
         Ccallhistoryentry();
@@ -88,41 +95,43 @@ class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ccallhistoryindex; //type: uint32
-        YLeaf ccallhistorysetuptime; //type: uint32
-        YLeaf ccallhistorypeeraddress; //type: string
-        YLeaf ccallhistorypeersubaddress; //type: string
-        YLeaf ccallhistorypeerid; //type: int32
-        YLeaf ccallhistorypeerifindex; //type: int32
-        YLeaf ccallhistorylogicalifindex; //type: int32
-        YLeaf ccallhistorydisconnectcause; //type: binary
-        YLeaf ccallhistorydisconnecttext; //type: string
-        YLeaf ccallhistoryconnecttime; //type: uint32
-        YLeaf ccallhistorydisconnecttime; //type: uint32
-        YLeaf ccallhistorycallorigin; //type: CcallhistorycalloriginEnum
-        YLeaf ccallhistorychargedunits; //type: uint32
-        YLeaf ccallhistoryinfotype; //type: CcallhistoryinfotypeEnum
-        YLeaf ccallhistorytransmitpackets; //type: uint32
-        YLeaf ccallhistorytransmitbytes; //type: uint32
-        YLeaf ccallhistoryreceivepackets; //type: uint32
-        YLeaf ccallhistoryreceivebytes; //type: uint32
-        YLeaf ccallhistoryreleasesource; //type: CcallhistoryreleasesourceEnum
-        YLeaf ccallhistoryreleasesrc; //type: CcallhistoryreleasesrcEnum
-        class CcallhistorycalloriginEnum;
-        class CcallhistoryinfotypeEnum;
-        class CcallhistoryreleasesourceEnum;
-        class CcallhistoryreleasesrcEnum;
+        ydk::YLeaf ccallhistoryindex; //type: uint32
+        ydk::YLeaf ccallhistorysetuptime; //type: uint32
+        ydk::YLeaf ccallhistorypeeraddress; //type: string
+        ydk::YLeaf ccallhistorypeersubaddress; //type: string
+        ydk::YLeaf ccallhistorypeerid; //type: int32
+        ydk::YLeaf ccallhistorypeerifindex; //type: int32
+        ydk::YLeaf ccallhistorylogicalifindex; //type: int32
+        ydk::YLeaf ccallhistorydisconnectcause; //type: binary
+        ydk::YLeaf ccallhistorydisconnecttext; //type: string
+        ydk::YLeaf ccallhistoryconnecttime; //type: uint32
+        ydk::YLeaf ccallhistorydisconnecttime; //type: uint32
+        ydk::YLeaf ccallhistorycallorigin; //type: Ccallhistorycallorigin
+        ydk::YLeaf ccallhistorychargedunits; //type: uint32
+        ydk::YLeaf ccallhistoryinfotype; //type: Ccallhistoryinfotype
+        ydk::YLeaf ccallhistorytransmitpackets; //type: uint32
+        ydk::YLeaf ccallhistorytransmitbytes; //type: uint32
+        ydk::YLeaf ccallhistoryreceivepackets; //type: uint32
+        ydk::YLeaf ccallhistoryreceivebytes; //type: uint32
+        ydk::YLeaf ccallhistoryreleasesource; //type: Ccallhistoryreleasesource
+        ydk::YLeaf ccallhistoryreleasesrc; //type: Ccallhistoryreleasesrc
+        class Ccallhistorycallorigin;
+        class Ccallhistoryinfotype;
+        class Ccallhistoryreleasesource;
+        class Ccallhistoryreleasesrc;
 
 }; // CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry
 
 
-class CiscoDialControlMib::Ccallhistoryiectable : public Entity
+class CiscoDialControlMib::Ccallhistoryiectable : public ydk::Entity
 {
     public:
         Ccallhistoryiectable();
@@ -130,20 +139,22 @@ class CiscoDialControlMib::Ccallhistoryiectable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ccallhistoryiecentry; //type: CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry
 
-        std::vector<std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry> > ccallhistoryiecentry_;
+        std::vector<std::shared_ptr<CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry> > ccallhistoryiecentry;
         
 }; // CiscoDialControlMib::Ccallhistoryiectable
 
 
-class CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry : public Entity
+class CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry : public ydk::Entity
 {
     public:
         Ccallhistoryiecentry();
@@ -151,86 +162,88 @@ class CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: uint32 (refers to CISCO_DIAL_CONTROL_MIB::CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::ccallhistoryindex)
-        YLeaf ccallhistoryindex;
-        YLeaf ccallhistoryiecindex; //type: uint32
-        YLeaf ccallhistoryiec; //type: string
+        ydk::YLeaf ccallhistoryindex;
+        ydk::YLeaf ccallhistoryiecindex; //type: uint32
+        ydk::YLeaf ccallhistoryiec; //type: string
 
 }; // CiscoDialControlMib::Ccallhistoryiectable::Ccallhistoryiecentry
 
-class CiscoDialControlMib::Cpeerglobalconfiguration::CpeersearchtypeEnum : public Enum
+class CiscoDialControlMib::Cpeerglobalconfiguration::Cpeersearchtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf datavoice;
-        static const Enum::YLeaf voicedata;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf datavoice;
+        static const ydk::Enum::YLeaf voicedata;
 
 };
 
-class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::CcallhistorycalloriginEnum : public Enum
+class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistorycallorigin : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf originate;
-        static const Enum::YLeaf answer;
-        static const Enum::YLeaf callback;
+        static const ydk::Enum::YLeaf originate;
+        static const ydk::Enum::YLeaf answer;
+        static const ydk::Enum::YLeaf callback;
 
 };
 
-class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::CcallhistoryinfotypeEnum : public Enum
+class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryinfotype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf speech;
-        static const Enum::YLeaf unrestrictedDigital;
-        static const Enum::YLeaf unrestrictedDigital56;
-        static const Enum::YLeaf restrictedDigital;
-        static const Enum::YLeaf audio31;
-        static const Enum::YLeaf audio7;
-        static const Enum::YLeaf video;
-        static const Enum::YLeaf packetSwitched;
-        static const Enum::YLeaf fax;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf speech;
+        static const ydk::Enum::YLeaf unrestrictedDigital;
+        static const ydk::Enum::YLeaf unrestrictedDigital56;
+        static const ydk::Enum::YLeaf restrictedDigital;
+        static const ydk::Enum::YLeaf audio31;
+        static const ydk::Enum::YLeaf audio7;
+        static const ydk::Enum::YLeaf video;
+        static const ydk::Enum::YLeaf packetSwitched;
+        static const ydk::Enum::YLeaf fax;
 
 };
 
-class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::CcallhistoryreleasesourceEnum : public Enum
+class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesource : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf callingPartyInPstn;
-        static const Enum::YLeaf callingPartyInVoip;
-        static const Enum::YLeaf calledPartyInPstn;
-        static const Enum::YLeaf calledPartyInVoip;
-        static const Enum::YLeaf internalRelease;
-        static const Enum::YLeaf internalCallControlApp;
-        static const Enum::YLeaf consoleCommand;
-        static const Enum::YLeaf externalRadiusServer;
-        static const Enum::YLeaf externalNmsApp;
-        static const Enum::YLeaf externalCallControlAgent;
+        static const ydk::Enum::YLeaf callingPartyInPstn;
+        static const ydk::Enum::YLeaf callingPartyInVoip;
+        static const ydk::Enum::YLeaf calledPartyInPstn;
+        static const ydk::Enum::YLeaf calledPartyInVoip;
+        static const ydk::Enum::YLeaf internalRelease;
+        static const ydk::Enum::YLeaf internalCallControlApp;
+        static const ydk::Enum::YLeaf consoleCommand;
+        static const ydk::Enum::YLeaf externalRadiusServer;
+        static const ydk::Enum::YLeaf externalNmsApp;
+        static const ydk::Enum::YLeaf externalCallControlAgent;
 
 };
 
-class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::CcallhistoryreleasesrcEnum : public Enum
+class CiscoDialControlMib::Ccallhistorytable::Ccallhistoryentry::Ccallhistoryreleasesrc : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf callingPartyInPstn;
-        static const Enum::YLeaf callingPartyInVoip;
-        static const Enum::YLeaf calledPartyInPstn;
-        static const Enum::YLeaf calledPartyInVoip;
-        static const Enum::YLeaf internalReleaseInPotsLeg;
-        static const Enum::YLeaf internalReleaseInVoipLeg;
-        static const Enum::YLeaf internalCallControlApp;
-        static const Enum::YLeaf internalReleaseInVoipAAA;
-        static const Enum::YLeaf consoleCommand;
-        static const Enum::YLeaf externalRadiusServer;
-        static const Enum::YLeaf externalNmsApp;
-        static const Enum::YLeaf externalCallControlAgent;
-        static const Enum::YLeaf gatekeeper;
-        static const Enum::YLeaf externalGKTMPServer;
+        static const ydk::Enum::YLeaf callingPartyInPstn;
+        static const ydk::Enum::YLeaf callingPartyInVoip;
+        static const ydk::Enum::YLeaf calledPartyInPstn;
+        static const ydk::Enum::YLeaf calledPartyInVoip;
+        static const ydk::Enum::YLeaf internalReleaseInPotsLeg;
+        static const ydk::Enum::YLeaf internalReleaseInVoipLeg;
+        static const ydk::Enum::YLeaf internalCallControlApp;
+        static const ydk::Enum::YLeaf internalReleaseInVoipAAA;
+        static const ydk::Enum::YLeaf consoleCommand;
+        static const ydk::Enum::YLeaf externalRadiusServer;
+        static const ydk::Enum::YLeaf externalNmsApp;
+        static const ydk::Enum::YLeaf externalCallControlAgent;
+        static const ydk::Enum::YLeaf gatekeeper;
+        static const ydk::Enum::YLeaf externalGKTMPServer;
 
 };
 

@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_installmgr_admin_oper {
 
-class Install : public Entity
+class Install : public ydk::Entity
 {
     public:
         Install();
@@ -18,17 +18,20 @@ class Install : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf log_size; //type: int32
+        ydk::YLeaf log_size; //type: int32
         class ConfigurationRegisters; //type: Install::ConfigurationRegisters
         class RequestStatuses; //type: Install::RequestStatuses
         class BootVariables; //type: Install::BootVariables
@@ -50,7 +53,7 @@ class Install : public Entity
 }; // Install
 
 
-class Install::ConfigurationRegisters : public Entity
+class Install::ConfigurationRegisters : public ydk::Entity
 {
     public:
         ConfigurationRegisters();
@@ -58,11 +61,13 @@ class Install::ConfigurationRegisters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ConfigurationRegister; //type: Install::ConfigurationRegisters::ConfigurationRegister
 
@@ -71,7 +76,7 @@ class Install::ConfigurationRegisters : public Entity
 }; // Install::ConfigurationRegisters
 
 
-class Install::ConfigurationRegisters::ConfigurationRegister : public Entity
+class Install::ConfigurationRegisters::ConfigurationRegister : public ydk::Entity
 {
     public:
         ConfigurationRegister();
@@ -79,19 +84,21 @@ class Install::ConfigurationRegisters::ConfigurationRegister : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf config_register; //type: string
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf config_register; //type: string
 
 }; // Install::ConfigurationRegisters::ConfigurationRegister
 
 
-class Install::RequestStatuses : public Entity
+class Install::RequestStatuses : public ydk::Entity
 {
     public:
         RequestStatuses();
@@ -99,11 +106,13 @@ class Install::RequestStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RequestStatus; //type: Install::RequestStatuses::RequestStatus
 
@@ -112,7 +121,7 @@ class Install::RequestStatuses : public Entity
 }; // Install::RequestStatuses
 
 
-class Install::RequestStatuses::RequestStatus : public Entity
+class Install::RequestStatuses::RequestStatus : public ydk::Entity
 {
     public:
         RequestStatus();
@@ -120,18 +129,20 @@ class Install::RequestStatuses::RequestStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: int32
-        YLeaf percentage; //type: uint8
-        YLeaf abort_state; //type: InstmgrBagAbortStateEnum
-        YLeaf downloaded_bytes; //type: uint32
-        YLeaf unanswered_query; //type: boolean
-        YLeaf operation_phase; //type: InstmgrInstallPhaseEnum
+        ydk::YLeaf request_id; //type: int32
+        ydk::YLeaf percentage; //type: uint8
+        ydk::YLeaf abort_state; //type: InstmgrBagAbortState
+        ydk::YLeaf downloaded_bytes; //type: uint32
+        ydk::YLeaf unanswered_query; //type: boolean
+        ydk::YLeaf operation_phase; //type: InstmgrInstallPhase
         class RequestInformation; //type: Install::RequestStatuses::RequestStatus::RequestInformation
         class AbortStatus; //type: Install::RequestStatuses::RequestStatus::AbortStatus
         class IncrementalInstallInformation; //type: Install::RequestStatuses::RequestStatus::IncrementalInstallInformation
@@ -147,7 +158,7 @@ class Install::RequestStatuses::RequestStatus : public Entity
 }; // Install::RequestStatuses::RequestStatus
 
 
-class Install::RequestStatuses::RequestStatus::RequestInformation : public Entity
+class Install::RequestStatuses::RequestStatus::RequestInformation : public ydk::Entity
 {
     public:
         RequestInformation();
@@ -155,23 +166,25 @@ class Install::RequestStatuses::RequestStatus::RequestInformation : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf user_id; //type: string
-        YLeaf trigger_type; //type: InstmgrBagRequestTriggerEnum
-        YLeaf request_option; //type: int32
-        YLeaf operation_type; //type: InstmgrRequestEnum
-        YLeaf operation_detail; //type: string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf user_id; //type: string
+        ydk::YLeaf trigger_type; //type: InstmgrBagRequestTrigger
+        ydk::YLeaf request_option; //type: int32
+        ydk::YLeaf operation_type; //type: InstmgrRequest
+        ydk::YLeaf operation_detail; //type: string
 
 }; // Install::RequestStatuses::RequestStatus::RequestInformation
 
 
-class Install::RequestStatuses::RequestStatus::AbortStatus : public Entity
+class Install::RequestStatuses::RequestStatus::AbortStatus : public ydk::Entity
 {
     public:
         AbortStatus();
@@ -179,19 +192,21 @@ class Install::RequestStatuses::RequestStatus::AbortStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf abort_method; //type: InstmgrIssuAbortMethodEnum
-        YLeaf abort_impact; //type: InstmgrIssuAbortImpactEnum
+        ydk::YLeaf abort_method; //type: InstmgrIssuAbortMethod
+        ydk::YLeaf abort_impact; //type: InstmgrIssuAbortImpact
 
 }; // Install::RequestStatuses::RequestStatus::AbortStatus
 
 
-class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation : public Entity
+class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation : public ydk::Entity
 {
     public:
         IncrementalInstallInformation();
@@ -199,14 +214,16 @@ class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: InstmgrBagIiDirectionEnum
-        YLeaf ii_error; //type: string
+        ydk::YLeaf direction; //type: InstmgrBagIiDirection
+        ydk::YLeaf ii_error; //type: string
         class Nodes; //type: Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes> > nodes;
@@ -214,7 +231,7 @@ class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation : p
 }; // Install::RequestStatuses::RequestStatus::IncrementalInstallInformation
 
 
-class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes : public Entity
+class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -222,19 +239,21 @@ class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::No
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf state; //type: InstmgrBagIiStateEnum
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf state; //type: InstmgrBagIiState
 
 }; // Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes
 
 
-class Install::RequestStatuses::RequestStatus::IssuMessage : public Entity
+class Install::RequestStatuses::RequestStatus::IssuMessage : public ydk::Entity
 {
     public:
         IssuMessage();
@@ -242,14 +261,16 @@ class Install::RequestStatuses::RequestStatus::IssuMessage : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: InstmgrBagUserMsgCategoryEnum
-        YLeaf message; //type: string
+        ydk::YLeaf category; //type: InstmgrBagUserMsgCategory
+        ydk::YLeaf message; //type: string
         class Scope; //type: Install::RequestStatuses::RequestStatus::IssuMessage::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::IssuMessage::Scope> scope;
@@ -257,7 +278,7 @@ class Install::RequestStatuses::RequestStatus::IssuMessage : public Entity
 }; // Install::RequestStatuses::RequestStatus::IssuMessage
 
 
-class Install::RequestStatuses::RequestStatus::IssuMessage::Scope : public Entity
+class Install::RequestStatuses::RequestStatus::IssuMessage::Scope : public ydk::Entity
 {
     public:
         Scope();
@@ -265,19 +286,21 @@ class Install::RequestStatuses::RequestStatus::IssuMessage::Scope : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf admin_read; //type: boolean
-        YLeaf affected_sd_rs; //type: uint32
+        ydk::YLeaf admin_read; //type: boolean
+        ydk::YLeaf affected_sd_rs; //type: uint32
 
 }; // Install::RequestStatuses::RequestStatus::IssuMessage::Scope
 
 
-class Install::RequestStatuses::RequestStatus::Message : public Entity
+class Install::RequestStatuses::RequestStatus::Message : public ydk::Entity
 {
     public:
         Message();
@@ -285,14 +308,16 @@ class Install::RequestStatuses::RequestStatus::Message : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: InstmgrBagUserMsgCategoryEnum
-        YLeaf message; //type: string
+        ydk::YLeaf category; //type: InstmgrBagUserMsgCategory
+        ydk::YLeaf message; //type: string
         class Scope; //type: Install::RequestStatuses::RequestStatus::Message::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::Message::Scope> scope;
@@ -300,7 +325,7 @@ class Install::RequestStatuses::RequestStatus::Message : public Entity
 }; // Install::RequestStatuses::RequestStatus::Message
 
 
-class Install::RequestStatuses::RequestStatus::Message::Scope : public Entity
+class Install::RequestStatuses::RequestStatus::Message::Scope : public ydk::Entity
 {
     public:
         Scope();
@@ -308,19 +333,21 @@ class Install::RequestStatuses::RequestStatus::Message::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf admin_read; //type: boolean
-        YLeaf affected_sd_rs; //type: uint32
+        ydk::YLeaf admin_read; //type: boolean
+        ydk::YLeaf affected_sd_rs; //type: uint32
 
 }; // Install::RequestStatuses::RequestStatus::Message::Scope
 
 
-class Install::BootVariables : public Entity
+class Install::BootVariables : public ydk::Entity
 {
     public:
         BootVariables();
@@ -328,11 +355,13 @@ class Install::BootVariables : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BootVariable; //type: Install::BootVariables::BootVariable
 
@@ -341,7 +370,7 @@ class Install::BootVariables : public Entity
 }; // Install::BootVariables
 
 
-class Install::BootVariables::BootVariable : public Entity
+class Install::BootVariables::BootVariable : public ydk::Entity
 {
     public:
         BootVariable();
@@ -349,19 +378,21 @@ class Install::BootVariables::BootVariable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf boot_variable; //type: string
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf boot_variable; //type: string
 
 }; // Install::BootVariables::BootVariable
 
 
-class Install::Software : public Entity
+class Install::Software : public ydk::Entity
 {
     public:
         Software();
@@ -369,11 +400,13 @@ class Install::Software : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AliasDevices; //type: Install::Software::AliasDevices
         class PackageDevices; //type: Install::Software::PackageDevices
@@ -386,7 +419,7 @@ class Install::Software : public Entity
 }; // Install::Software
 
 
-class Install::Software::AliasDevices : public Entity
+class Install::Software::AliasDevices : public ydk::Entity
 {
     public:
         AliasDevices();
@@ -394,11 +427,13 @@ class Install::Software::AliasDevices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AliasDevice; //type: Install::Software::AliasDevices::AliasDevice
 
@@ -407,7 +442,7 @@ class Install::Software::AliasDevices : public Entity
 }; // Install::Software::AliasDevices
 
 
-class Install::Software::AliasDevices::AliasDevice : public Entity
+class Install::Software::AliasDevices::AliasDevice : public ydk::Entity
 {
     public:
         AliasDevice();
@@ -415,13 +450,15 @@ class Install::Software::AliasDevices::AliasDevice : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
+        ydk::YLeaf device_name; //type: string
         class Aliases; //type: Install::Software::AliasDevices::AliasDevice::Aliases
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::AliasDevices::AliasDevice::Aliases> aliases;
@@ -429,7 +466,7 @@ class Install::Software::AliasDevices::AliasDevice : public Entity
 }; // Install::Software::AliasDevices::AliasDevice
 
 
-class Install::Software::AliasDevices::AliasDevice::Aliases : public Entity
+class Install::Software::AliasDevices::AliasDevice::Aliases : public ydk::Entity
 {
     public:
         Aliases();
@@ -437,11 +474,13 @@ class Install::Software::AliasDevices::AliasDevice::Aliases : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Alias; //type: Install::Software::AliasDevices::AliasDevice::Aliases::Alias
 
@@ -450,7 +489,7 @@ class Install::Software::AliasDevices::AliasDevice::Aliases : public Entity
 }; // Install::Software::AliasDevices::AliasDevice::Aliases
 
 
-class Install::Software::AliasDevices::AliasDevice::Aliases::Alias : public Entity
+class Install::Software::AliasDevices::AliasDevice::Aliases::Alias : public ydk::Entity
 {
     public:
         Alias();
@@ -458,19 +497,21 @@ class Install::Software::AliasDevices::AliasDevice::Aliases::Alias : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf package_name; //type: string
-        YLeaf alias_names; //type: string
+        ydk::YLeaf package_name; //type: string
+        ydk::YLeaf alias_names; //type: string
 
 }; // Install::Software::AliasDevices::AliasDevice::Aliases::Alias
 
 
-class Install::Software::PackageDevices : public Entity
+class Install::Software::PackageDevices : public ydk::Entity
 {
     public:
         PackageDevices();
@@ -478,11 +519,13 @@ class Install::Software::PackageDevices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PackageDevice; //type: Install::Software::PackageDevices::PackageDevice
 
@@ -491,7 +534,7 @@ class Install::Software::PackageDevices : public Entity
 }; // Install::Software::PackageDevices
 
 
-class Install::Software::PackageDevices::PackageDevice : public Entity
+class Install::Software::PackageDevices::PackageDevice : public ydk::Entity
 {
     public:
         PackageDevice();
@@ -499,13 +542,15 @@ class Install::Software::PackageDevices::PackageDevice : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
+        ydk::YLeaf device_name; //type: string
         class Packages; //type: Install::Software::PackageDevices::PackageDevice::Packages
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice::Packages> packages;
@@ -513,7 +558,7 @@ class Install::Software::PackageDevices::PackageDevice : public Entity
 }; // Install::Software::PackageDevices::PackageDevice
 
 
-class Install::Software::PackageDevices::PackageDevice::Packages : public Entity
+class Install::Software::PackageDevices::PackageDevice::Packages : public ydk::Entity
 {
     public:
         Packages();
@@ -521,11 +566,13 @@ class Install::Software::PackageDevices::PackageDevice::Packages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Package; //type: Install::Software::PackageDevices::PackageDevice::Packages::Package
 
@@ -534,7 +581,7 @@ class Install::Software::PackageDevices::PackageDevice::Packages : public Entity
 }; // Install::Software::PackageDevices::PackageDevice::Packages
 
 
-class Install::Software::PackageDevices::PackageDevice::Packages::Package : public Entity
+class Install::Software::PackageDevices::PackageDevice::Packages::Package : public ydk::Entity
 {
     public:
         Package();
@@ -542,30 +589,32 @@ class Install::Software::PackageDevices::PackageDevice::Packages::Package : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf package_name; //type: string
-        YLeaf name; //type: string
-        YLeaf version; //type: string
-        YLeaf description; //type: string
-        YLeaf release; //type: string
-        YLeaf vendor; //type: string
-        YLeaf date; //type: string
-        YLeaf source; //type: string
-        YLeaf base; //type: string
-        YLeaf bootable; //type: boolean
-        YLeaf composite; //type: boolean
-        YLeaf restart_info; //type: string
-        YLeaf package_type; //type: InstmgrPkgEnum
-        YLeaf group_type; //type: InstmgrGroupEnum
-        YLeaf depth; //type: uint32
-        YLeaf uncompressed_size; //type: uint32
-        YLeaf compressed_size; //type: uint32
-        YLeafList cards; //type: list of  string
+        ydk::YLeaf package_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf release; //type: string
+        ydk::YLeaf vendor; //type: string
+        ydk::YLeaf date; //type: string
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf base; //type: string
+        ydk::YLeaf bootable; //type: boolean
+        ydk::YLeaf composite; //type: boolean
+        ydk::YLeaf restart_info; //type: string
+        ydk::YLeaf package_type; //type: InstmgrPkg
+        ydk::YLeaf group_type; //type: InstmgrGroup
+        ydk::YLeaf depth; //type: uint32
+        ydk::YLeaf uncompressed_size; //type: uint32
+        ydk::YLeaf compressed_size; //type: uint32
+        ydk::YLeafList cards; //type: list of  string
         class SubPkg; //type: Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg> > sub_pkg;
@@ -573,7 +622,7 @@ class Install::Software::PackageDevices::PackageDevice::Packages::Package : publ
 }; // Install::Software::PackageDevices::PackageDevice::Packages::Package
 
 
-class Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg : public Entity
+class Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg : public ydk::Entity
 {
     public:
         SubPkg();
@@ -581,19 +630,21 @@ class Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPk
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf node_types; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf node_types; //type: uint64
 
 }; // Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg
 
 
-class Install::Software::ComponentDevices : public Entity
+class Install::Software::ComponentDevices : public ydk::Entity
 {
     public:
         ComponentDevices();
@@ -601,11 +652,13 @@ class Install::Software::ComponentDevices : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ComponentDevice; //type: Install::Software::ComponentDevices::ComponentDevice
 
@@ -614,7 +667,7 @@ class Install::Software::ComponentDevices : public Entity
 }; // Install::Software::ComponentDevices
 
 
-class Install::Software::ComponentDevices::ComponentDevice : public Entity
+class Install::Software::ComponentDevices::ComponentDevice : public ydk::Entity
 {
     public:
         ComponentDevice();
@@ -622,13 +675,15 @@ class Install::Software::ComponentDevices::ComponentDevice : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
+        ydk::YLeaf device_name; //type: string
         class ComponentPackages; //type: Install::Software::ComponentDevices::ComponentDevice::ComponentPackages
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice::ComponentPackages> component_packages;
@@ -636,7 +691,7 @@ class Install::Software::ComponentDevices::ComponentDevice : public Entity
 }; // Install::Software::ComponentDevices::ComponentDevice
 
 
-class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages : public Entity
+class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages : public ydk::Entity
 {
     public:
         ComponentPackages();
@@ -644,11 +699,13 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ComponentPackage; //type: Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage
 
@@ -657,7 +714,7 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages : 
 }; // Install::Software::ComponentDevices::ComponentDevice::ComponentPackages
 
 
-class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage : public Entity
+class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage : public ydk::Entity
 {
     public:
         ComponentPackage();
@@ -665,13 +722,15 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::C
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf package_name; //type: string
+        ydk::YLeaf package_name; //type: string
         class Component; //type: Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component> > component;
@@ -679,7 +738,7 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::C
 }; // Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage
 
 
-class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component : public Entity
+class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component : public ydk::Entity
 {
     public:
         Component();
@@ -687,23 +746,25 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::C
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf component_name; //type: string
-        YLeaf name; //type: string
-        YLeaf version; //type: string
-        YLeaf release; //type: string
-        YLeaf description; //type: string
-        YLeafList files; //type: list of  string
+        ydk::YLeaf component_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf release; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeafList files; //type: list of  string
 
 }; // Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component
 
 
-class Install::SoftwareInventory : public Entity
+class Install::SoftwareInventory : public ydk::Entity
 {
     public:
         SoftwareInventory();
@@ -711,11 +772,13 @@ class Install::SoftwareInventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Committed; //type: Install::SoftwareInventory::Committed
         class Inactive; //type: Install::SoftwareInventory::Inactive
@@ -730,7 +793,7 @@ class Install::SoftwareInventory : public Entity
 }; // Install::SoftwareInventory
 
 
-class Install::SoftwareInventory::Committed : public Entity
+class Install::SoftwareInventory::Committed : public ydk::Entity
 {
     public:
         Committed();
@@ -738,11 +801,13 @@ class Install::SoftwareInventory::Committed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Summary; //type: Install::SoftwareInventory::Committed::Summary
         class Inventories; //type: Install::SoftwareInventory::Committed::Inventories
@@ -753,7 +818,7 @@ class Install::SoftwareInventory::Committed : public Entity
 }; // Install::SoftwareInventory::Committed
 
 
-class Install::SoftwareInventory::Committed::Summary : public Entity
+class Install::SoftwareInventory::Committed::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -761,11 +826,13 @@ class Install::SoftwareInventory::Committed::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DefaultLoadPath; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath
         class AdminLoadPath; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath
@@ -780,7 +847,7 @@ class Install::SoftwareInventory::Committed::Summary : public Entity
 }; // Install::SoftwareInventory::Committed::Summary
 
 
-class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath : public ydk::Entity
 {
     public:
         DefaultLoadPath();
@@ -788,15 +855,17 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf admin_match; //type: boolean
-        YLeafList secure_domain_router_name; //type: list of  string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf admin_match; //type: boolean
+        ydk::YLeafList secure_domain_router_name; //type: list of  string
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
 
@@ -806,7 +875,7 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath : public E
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -814,14 +883,16 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package> package;
@@ -829,7 +900,7 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath 
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -837,19 +908,21 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -857,14 +930,16 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package> package;
@@ -872,7 +947,7 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLo
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -880,19 +955,21 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Committed::Summary::AdminLoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::AdminLoadPath : public ydk::Entity
 {
     public:
         AdminLoadPath();
@@ -900,13 +977,15 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
+        ydk::YLeaf request_id; //type: uint32
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath
 
@@ -916,7 +995,7 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath : public Ent
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -924,14 +1003,16 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package> package;
@@ -939,7 +1020,7 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath : 
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -947,19 +1028,21 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::P
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -967,14 +1050,16 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoad
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package> package;
@@ -982,7 +1067,7 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoad
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -990,19 +1075,21 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoad
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Committed::Summary::SdrLoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::SdrLoadPath : public ydk::Entity
 {
     public:
         SdrLoadPath();
@@ -1010,14 +1097,16 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath
 
@@ -1027,7 +1116,7 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath : public Entit
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -1035,14 +1124,16 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package> package;
@@ -1050,7 +1141,7 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath : pu
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1058,19 +1149,21 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Pac
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -1078,14 +1171,16 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package> package;
@@ -1093,7 +1188,7 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPa
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1101,19 +1196,21 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Committed::Summary::LocationLoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::LocationLoadPath : public ydk::Entity
 {
     public:
         LocationLoadPath();
@@ -1121,15 +1218,17 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf secure_domain_router_name; //type: string
-        YLeaf node_name; //type: string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath
 
@@ -1139,7 +1238,7 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath : public 
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -1147,14 +1246,16 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package> package;
@@ -1162,7 +1263,7 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1170,19 +1271,21 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -1190,14 +1293,16 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyL
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package> package;
@@ -1205,7 +1310,7 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyL
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1213,19 +1318,21 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyL
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Committed::Inventories : public Entity
+class Install::SoftwareInventory::Committed::Inventories : public ydk::Entity
 {
     public:
         Inventories();
@@ -1233,11 +1340,13 @@ class Install::SoftwareInventory::Committed::Inventories : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inventory; //type: Install::SoftwareInventory::Committed::Inventories::Inventory
 
@@ -1246,7 +1355,7 @@ class Install::SoftwareInventory::Committed::Inventories : public Entity
 }; // Install::SoftwareInventory::Committed::Inventories
 
 
-class Install::SoftwareInventory::Committed::Inventories::Inventory : public Entity
+class Install::SoftwareInventory::Committed::Inventories::Inventory : public ydk::Entity
 {
     public:
         Inventory();
@@ -1254,18 +1363,20 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf major; //type: uint32
-        YLeaf minor; //type: uint32
-        YLeaf boot_image_name; //type: string
-        YLeaf node_type; //type: uint64
-        YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf major; //type: uint32
+        ydk::YLeaf minor; //type: uint32
+        ydk::YLeaf boot_image_name; //type: string
+        ydk::YLeaf node_type; //type: uint64
+        ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath> > load_path;
@@ -1273,7 +1384,7 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory : public Ent
 }; // Install::SoftwareInventory::Committed::Inventories::Inventory
 
 
-class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath : public Entity
+class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -1281,14 +1392,16 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package> package;
@@ -1296,7 +1409,7 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath : 
 }; // Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath
 
 
-class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1304,19 +1417,21 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::P
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive : public Entity
+class Install::SoftwareInventory::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -1324,11 +1439,13 @@ class Install::SoftwareInventory::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Summary; //type: Install::SoftwareInventory::Inactive::Summary
         class Inventories; //type: Install::SoftwareInventory::Inactive::Inventories
@@ -1339,7 +1456,7 @@ class Install::SoftwareInventory::Inactive : public Entity
 }; // Install::SoftwareInventory::Inactive
 
 
-class Install::SoftwareInventory::Inactive::Summary : public Entity
+class Install::SoftwareInventory::Inactive::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -1347,11 +1464,13 @@ class Install::SoftwareInventory::Inactive::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DefaultLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath
         class AdminLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath
@@ -1366,7 +1485,7 @@ class Install::SoftwareInventory::Inactive::Summary : public Entity
 }; // Install::SoftwareInventory::Inactive::Summary
 
 
-class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath : public ydk::Entity
 {
     public:
         DefaultLoadPath();
@@ -1374,15 +1493,17 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf admin_match; //type: boolean
-        YLeafList secure_domain_router_name; //type: list of  string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf admin_match; //type: boolean
+        ydk::YLeafList secure_domain_router_name; //type: list of  string
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath
 
@@ -1392,7 +1513,7 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath : public En
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -1400,14 +1521,16 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package> package;
@@ -1415,7 +1538,7 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath :
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1423,19 +1546,21 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -1443,14 +1568,16 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package> package;
@@ -1458,7 +1585,7 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoa
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1466,19 +1593,21 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath : public ydk::Entity
 {
     public:
         AdminLoadPath();
@@ -1486,13 +1615,15 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
+        ydk::YLeaf request_id; //type: uint32
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath
 
@@ -1502,7 +1633,7 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath : public Enti
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -1510,14 +1641,16 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package> package;
@@ -1525,7 +1658,7 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath : p
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1533,19 +1666,21 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Pa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -1553,14 +1688,16 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadP
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package> package;
@@ -1568,7 +1705,7 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadP
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1576,19 +1713,21 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadP
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath : public ydk::Entity
 {
     public:
         SdrLoadPath();
@@ -1596,14 +1735,16 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath
 
@@ -1613,7 +1754,7 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath : public Entity
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -1621,14 +1762,16 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package> package;
@@ -1636,7 +1779,7 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath : pub
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1644,19 +1787,21 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Pack
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -1664,14 +1809,16 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package> package;
@@ -1679,7 +1826,7 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPat
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1687,19 +1834,21 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath : public ydk::Entity
 {
     public:
         LocationLoadPath();
@@ -1707,15 +1856,17 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf secure_domain_router_name; //type: string
-        YLeaf node_name; //type: string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
 
@@ -1725,7 +1876,7 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath : public E
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -1733,14 +1884,16 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package> package;
@@ -1748,7 +1901,7 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath 
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1756,19 +1909,21 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -1776,14 +1931,16 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package> package;
@@ -1791,7 +1948,7 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLo
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1799,19 +1956,21 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Inactive::Inventories : public Entity
+class Install::SoftwareInventory::Inactive::Inventories : public ydk::Entity
 {
     public:
         Inventories();
@@ -1819,11 +1978,13 @@ class Install::SoftwareInventory::Inactive::Inventories : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inventory; //type: Install::SoftwareInventory::Inactive::Inventories::Inventory
 
@@ -1832,7 +1993,7 @@ class Install::SoftwareInventory::Inactive::Inventories : public Entity
 }; // Install::SoftwareInventory::Inactive::Inventories
 
 
-class Install::SoftwareInventory::Inactive::Inventories::Inventory : public Entity
+class Install::SoftwareInventory::Inactive::Inventories::Inventory : public ydk::Entity
 {
     public:
         Inventory();
@@ -1840,18 +2001,20 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf major; //type: uint32
-        YLeaf minor; //type: uint32
-        YLeaf boot_image_name; //type: string
-        YLeaf node_type; //type: uint64
-        YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf major; //type: uint32
+        ydk::YLeaf minor; //type: uint32
+        ydk::YLeaf boot_image_name; //type: string
+        ydk::YLeaf node_type; //type: uint64
+        ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath> > load_path;
@@ -1859,7 +2022,7 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory : public Enti
 }; // Install::SoftwareInventory::Inactive::Inventories::Inventory
 
 
-class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath : public Entity
+class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -1867,14 +2030,16 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package> package;
@@ -1882,7 +2047,7 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath : p
 }; // Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath
 
 
-class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1890,19 +2055,21 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Pa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::Package
 
 
-class Install::SoftwareInventory::Requests : public Entity
+class Install::SoftwareInventory::Requests : public ydk::Entity
 {
     public:
         Requests();
@@ -1910,11 +2077,13 @@ class Install::SoftwareInventory::Requests : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Requests_; //type: Install::SoftwareInventory::Requests::Requests_
 
@@ -1923,7 +2092,7 @@ class Install::SoftwareInventory::Requests : public Entity
 }; // Install::SoftwareInventory::Requests
 
 
-class Install::SoftwareInventory::Requests::Requests_ : public Entity
+class Install::SoftwareInventory::Requests::Requests_ : public ydk::Entity
 {
     public:
         Requests_();
@@ -1931,11 +2100,13 @@ class Install::SoftwareInventory::Requests::Requests_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Request; //type: Install::SoftwareInventory::Requests::Requests_::Request
 
@@ -1944,7 +2115,7 @@ class Install::SoftwareInventory::Requests::Requests_ : public Entity
 }; // Install::SoftwareInventory::Requests::Requests_
 
 
-class Install::SoftwareInventory::Requests::Requests_::Request : public Entity
+class Install::SoftwareInventory::Requests::Requests_::Request : public ydk::Entity
 {
     public:
         Request();
@@ -1952,13 +2123,15 @@ class Install::SoftwareInventory::Requests::Requests_::Request : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: int32
+        ydk::YLeaf request_id; //type: int32
         class Inventories; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories> inventories;
@@ -1966,7 +2139,7 @@ class Install::SoftwareInventory::Requests::Requests_::Request : public Entity
 }; // Install::SoftwareInventory::Requests::Requests_::Request
 
 
-class Install::SoftwareInventory::Requests::Requests_::Request::Inventories : public Entity
+class Install::SoftwareInventory::Requests::Requests_::Request::Inventories : public ydk::Entity
 {
     public:
         Inventories();
@@ -1974,11 +2147,13 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inventory; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
@@ -1987,7 +2162,7 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories : pu
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories
 
 
-class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory : public Entity
+class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory : public ydk::Entity
 {
     public:
         Inventory();
@@ -1995,18 +2170,20 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf major; //type: uint32
-        YLeaf minor; //type: uint32
-        YLeaf boot_image_name; //type: string
-        YLeaf node_type; //type: uint64
-        YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf major; //type: uint32
+        ydk::YLeaf minor; //type: uint32
+        ydk::YLeaf boot_image_name; //type: string
+        ydk::YLeaf node_type; //type: uint64
+        ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath> > load_path;
@@ -2014,7 +2191,7 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
 
-class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath : public Entity
+class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -2022,14 +2199,16 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package> package;
@@ -2037,7 +2216,7 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath
 
 
-class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2045,19 +2224,21 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::Package
 
 
-class Install::SoftwareInventory::Active : public Entity
+class Install::SoftwareInventory::Active : public ydk::Entity
 {
     public:
         Active();
@@ -2065,11 +2246,13 @@ class Install::SoftwareInventory::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Summary; //type: Install::SoftwareInventory::Active::Summary
         class Inventories; //type: Install::SoftwareInventory::Active::Inventories
@@ -2080,7 +2263,7 @@ class Install::SoftwareInventory::Active : public Entity
 }; // Install::SoftwareInventory::Active
 
 
-class Install::SoftwareInventory::Active::Summary : public Entity
+class Install::SoftwareInventory::Active::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -2088,11 +2271,13 @@ class Install::SoftwareInventory::Active::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DefaultLoadPath; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath
         class AdminLoadPath; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath
@@ -2107,7 +2292,7 @@ class Install::SoftwareInventory::Active::Summary : public Entity
 }; // Install::SoftwareInventory::Active::Summary
 
 
-class Install::SoftwareInventory::Active::Summary::DefaultLoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::DefaultLoadPath : public ydk::Entity
 {
     public:
         DefaultLoadPath();
@@ -2115,15 +2300,17 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf admin_match; //type: boolean
-        YLeafList secure_domain_router_name; //type: list of  string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf admin_match; //type: boolean
+        ydk::YLeafList secure_domain_router_name; //type: list of  string
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath
 
@@ -2133,7 +2320,7 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath : public Enti
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -2141,14 +2328,16 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package> package;
@@ -2156,7 +2345,7 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath : p
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2164,19 +2353,21 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Pa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -2184,14 +2375,16 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadP
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package> package;
@@ -2199,7 +2392,7 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadP
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2207,19 +2400,21 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadP
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Active::Summary::AdminLoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::AdminLoadPath : public ydk::Entity
 {
     public:
         AdminLoadPath();
@@ -2227,13 +2422,15 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
+        ydk::YLeaf request_id; //type: uint32
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath
 
@@ -2243,7 +2440,7 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath : public Entity
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -2251,14 +2448,16 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package> package;
@@ -2266,7 +2465,7 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath : pub
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2274,19 +2473,21 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Pack
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -2294,14 +2495,16 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package> package;
@@ -2309,7 +2512,7 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPat
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2317,19 +2520,21 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Active::Summary::SdrLoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::SdrLoadPath : public ydk::Entity
 {
     public:
         SdrLoadPath();
@@ -2337,14 +2542,16 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath
 
@@ -2354,7 +2561,7 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath : public Entity
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -2362,14 +2569,16 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package> package;
@@ -2377,7 +2586,7 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath : publi
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2385,19 +2594,21 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Packag
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -2405,14 +2616,16 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package> package;
@@ -2420,7 +2633,7 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath 
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2428,19 +2641,21 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Active::Summary::LocationLoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::LocationLoadPath : public ydk::Entity
 {
     public:
         LocationLoadPath();
@@ -2448,15 +2663,17 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: uint32
-        YLeaf secure_domain_router_name; //type: string
-        YLeaf node_name; //type: string
+        ydk::YLeaf request_id; //type: uint32
+        ydk::YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath
 
@@ -2466,7 +2683,7 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath : public Ent
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -2474,14 +2691,16 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package> package;
@@ -2489,7 +2708,7 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath : 
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2497,19 +2716,21 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::P
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::Package
 
 
-class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath : public Entity
+class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath : public ydk::Entity
 {
     public:
         StandbyLoadPath();
@@ -2517,14 +2738,16 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoad
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package> package;
@@ -2532,7 +2755,7 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoad
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath
 
 
-class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2540,19 +2763,21 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoad
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::Package
 
 
-class Install::SoftwareInventory::Active::Inventories : public Entity
+class Install::SoftwareInventory::Active::Inventories : public ydk::Entity
 {
     public:
         Inventories();
@@ -2560,11 +2785,13 @@ class Install::SoftwareInventory::Active::Inventories : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Inventory; //type: Install::SoftwareInventory::Active::Inventories::Inventory
 
@@ -2573,7 +2800,7 @@ class Install::SoftwareInventory::Active::Inventories : public Entity
 }; // Install::SoftwareInventory::Active::Inventories
 
 
-class Install::SoftwareInventory::Active::Inventories::Inventory : public Entity
+class Install::SoftwareInventory::Active::Inventories::Inventory : public ydk::Entity
 {
     public:
         Inventory();
@@ -2581,18 +2808,20 @@ class Install::SoftwareInventory::Active::Inventories::Inventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf major; //type: uint32
-        YLeaf minor; //type: uint32
-        YLeaf boot_image_name; //type: string
-        YLeaf node_type; //type: uint64
-        YLeaf secure_domain_router_name; //type: string
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf major; //type: uint32
+        ydk::YLeaf minor; //type: uint32
+        ydk::YLeaf boot_image_name; //type: string
+        ydk::YLeaf node_type; //type: uint64
+        ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath> > load_path;
@@ -2600,7 +2829,7 @@ class Install::SoftwareInventory::Active::Inventories::Inventory : public Entity
 }; // Install::SoftwareInventory::Active::Inventories::Inventory
 
 
-class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath : public Entity
+class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath : public ydk::Entity
 {
     public:
         LoadPath();
@@ -2608,14 +2837,16 @@ class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: string
-        YLeaf build_information; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf build_information; //type: string
         class Package; //type: Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package> package;
@@ -2623,7 +2854,7 @@ class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath : pub
 }; // Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath
 
 
-class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package : public Entity
+class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package : public ydk::Entity
 {
     public:
         Package();
@@ -2631,19 +2862,21 @@ class Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Pack
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_name; //type: string
-        YLeaf name; //type: string
+        ydk::YLeaf device_name; //type: string
+        ydk::YLeaf name; //type: string
 
 }; // Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::Package
 
 
-class Install::Issu : public Entity
+class Install::Issu : public ydk::Entity
 {
     public:
         Issu();
@@ -2651,11 +2884,13 @@ class Install::Issu : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CardInventories; //type: Install::Issu::CardInventories
         class Stage; //type: Install::Issu::Stage
@@ -2666,7 +2901,7 @@ class Install::Issu : public Entity
 }; // Install::Issu
 
 
-class Install::Issu::CardInventories : public Entity
+class Install::Issu::CardInventories : public ydk::Entity
 {
     public:
         CardInventories();
@@ -2674,11 +2909,13 @@ class Install::Issu::CardInventories : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CardInventory; //type: Install::Issu::CardInventories::CardInventory
 
@@ -2687,7 +2924,7 @@ class Install::Issu::CardInventories : public Entity
 }; // Install::Issu::CardInventories
 
 
-class Install::Issu::CardInventories::CardInventory : public Entity
+class Install::Issu::CardInventories::CardInventory : public ydk::Entity
 {
     public:
         CardInventory();
@@ -2695,13 +2932,15 @@ class Install::Issu::CardInventories::CardInventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_type_id; //type: IsmCardTypeFamilyEnum
+        ydk::YLeaf card_type_id; //type: IsmCardTypeFamily
         class Summary; //type: Install::Issu::CardInventories::CardInventory::Summary
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::CardInventories::CardInventory::Summary> > summary;
@@ -2709,7 +2948,7 @@ class Install::Issu::CardInventories::CardInventory : public Entity
 }; // Install::Issu::CardInventories::CardInventory
 
 
-class Install::Issu::CardInventories::CardInventory::Summary : public Entity
+class Install::Issu::CardInventories::CardInventory::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -2717,29 +2956,31 @@ class Install::Issu::CardInventories::CardInventory::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf partner_node_name; //type: string
-        YLeaf node_state; //type: InstmgrCardStateEnum
-        YLeaf node_role; //type: InstmgrNodeRoleEnum
-        YLeaf node_type_pi; //type: InstmgrPiCardEnum
-        YLeaf node_type_issu; //type: string
-        YLeaf node_current_state; //type: InstmgrIsmNodeStateEnum
-        YLeaf node_expected_state; //type: InstmgrIsmNodeStateEnum
-        YLeaf node_failure_reason; //type: string
-        YLeaf is_conforming_node; //type: InstallmgrIsmNodeConformingEnum
-        YLeaf attempts; //type: uint32
-        YLeaf is_node_upgraded; //type: boolean
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf partner_node_name; //type: string
+        ydk::YLeaf node_state; //type: InstmgrCardState
+        ydk::YLeaf node_role; //type: InstmgrNodeRole
+        ydk::YLeaf node_type_pi; //type: InstmgrPiCard
+        ydk::YLeaf node_type_issu; //type: string
+        ydk::YLeaf node_current_state; //type: InstmgrIsmNodeState
+        ydk::YLeaf node_expected_state; //type: InstmgrIsmNodeState
+        ydk::YLeaf node_failure_reason; //type: string
+        ydk::YLeaf is_conforming_node; //type: InstallmgrIsmNodeConforming
+        ydk::YLeaf attempts; //type: uint32
+        ydk::YLeaf is_node_upgraded; //type: boolean
 
 }; // Install::Issu::CardInventories::CardInventory::Summary
 
 
-class Install::Issu::Stage : public Entity
+class Install::Issu::Stage : public ydk::Entity
 {
     public:
         Stage();
@@ -2747,23 +2988,25 @@ class Install::Issu::Stage : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf issu_state; //type: string
-        YLeaf issu_op_id; //type: uint32
-        YLeaf percentage; //type: uint32
-        YLeaf is_issu_aborted; //type: boolean
-        YLeaf is_issu_aborted_by_ism; //type: boolean
-        YLeaf issu_manager_fsm_state; //type: InstmgrIsmFsmStateEnum
-        YLeaf participating_node_all; //type: uint32
-        YLeaf num_nodes_in_progress; //type: uint32
-        YLeaf num_of_nodes_in_load; //type: uint32
-        YLeaf num_of_nodes_in_run; //type: uint32
-        YLeaf numof_nc_nodes; //type: uint32
+        ydk::YLeaf issu_state; //type: string
+        ydk::YLeaf issu_op_id; //type: uint32
+        ydk::YLeaf percentage; //type: uint32
+        ydk::YLeaf is_issu_aborted; //type: boolean
+        ydk::YLeaf is_issu_aborted_by_ism; //type: boolean
+        ydk::YLeaf issu_manager_fsm_state; //type: InstmgrIsmFsmState
+        ydk::YLeaf participating_node_all; //type: uint32
+        ydk::YLeaf num_nodes_in_progress; //type: uint32
+        ydk::YLeaf num_of_nodes_in_load; //type: uint32
+        ydk::YLeaf num_of_nodes_in_run; //type: uint32
+        ydk::YLeaf numof_nc_nodes; //type: uint32
         class NodeInProgress; //type: Install::Issu::Stage::NodeInProgress
         class NodesInLoad; //type: Install::Issu::Stage::NodesInLoad
         class NodesInRun; //type: Install::Issu::Stage::NodesInRun
@@ -2777,7 +3020,7 @@ class Install::Issu::Stage : public Entity
 }; // Install::Issu::Stage
 
 
-class Install::Issu::Stage::NodeInProgress : public Entity
+class Install::Issu::Stage::NodeInProgress : public ydk::Entity
 {
     public:
         NodeInProgress();
@@ -2785,18 +3028,20 @@ class Install::Issu::Stage::NodeInProgress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList node; //type: list of  string
+        ydk::YLeafList node; //type: list of  string
 
 }; // Install::Issu::Stage::NodeInProgress
 
 
-class Install::Issu::Stage::NodesInLoad : public Entity
+class Install::Issu::Stage::NodesInLoad : public ydk::Entity
 {
     public:
         NodesInLoad();
@@ -2804,18 +3049,20 @@ class Install::Issu::Stage::NodesInLoad : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList node; //type: list of  string
+        ydk::YLeafList node; //type: list of  string
 
 }; // Install::Issu::Stage::NodesInLoad
 
 
-class Install::Issu::Stage::NodesInRun : public Entity
+class Install::Issu::Stage::NodesInRun : public ydk::Entity
 {
     public:
         NodesInRun();
@@ -2823,18 +3070,20 @@ class Install::Issu::Stage::NodesInRun : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList node; //type: list of  string
+        ydk::YLeafList node; //type: list of  string
 
 }; // Install::Issu::Stage::NodesInRun
 
 
-class Install::Issu::Stage::NcNodes : public Entity
+class Install::Issu::Stage::NcNodes : public ydk::Entity
 {
     public:
         NcNodes();
@@ -2842,18 +3091,20 @@ class Install::Issu::Stage::NcNodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList node; //type: list of  string
+        ydk::YLeafList node; //type: list of  string
 
 }; // Install::Issu::Stage::NcNodes
 
 
-class Install::BootImage : public Entity
+class Install::BootImage : public ydk::Entity
 {
     public:
         BootImage();
@@ -2861,18 +3112,20 @@ class Install::BootImage : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf system_image_file; //type: string
+        ydk::YLeaf system_image_file; //type: string
 
 }; // Install::BootImage
 
 
-class Install::Logs : public Entity
+class Install::Logs : public ydk::Entity
 {
     public:
         Logs();
@@ -2880,11 +3133,13 @@ class Install::Logs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Log; //type: Install::Logs::Log
 
@@ -2893,7 +3148,7 @@ class Install::Logs : public Entity
 }; // Install::Logs
 
 
-class Install::Logs::Log : public Entity
+class Install::Logs::Log : public ydk::Entity
 {
     public:
         Log();
@@ -2901,13 +3156,15 @@ class Install::Logs::Log : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf request_id; //type: int32
+        ydk::YLeaf request_id; //type: int32
         class Header; //type: Install::Logs::Log::Header
         class Summary; //type: Install::Logs::Log::Summary
         class Message; //type: Install::Logs::Log::Message
@@ -2925,7 +3182,7 @@ class Install::Logs::Log : public Entity
 }; // Install::Logs::Log
 
 
-class Install::Logs::Log::Header : public Entity
+class Install::Logs::Log::Header : public ydk::Entity
 {
     public:
         Header();
@@ -2933,11 +3190,13 @@ class Install::Logs::Log::Header : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LogContents; //type: Install::Logs::Log::Header::LogContents
 
@@ -2946,7 +3205,7 @@ class Install::Logs::Log::Header : public Entity
 }; // Install::Logs::Log::Header
 
 
-class Install::Logs::Log::Header::LogContents : public Entity
+class Install::Logs::Log::Header::LogContents : public ydk::Entity
 {
     public:
         LogContents();
@@ -2954,13 +3213,15 @@ class Install::Logs::Log::Header::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint32
+        ydk::YLeaf version; //type: uint32
         class V3; //type: Install::Logs::Log::Header::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Header::LogContents::V3> v3;
@@ -2968,7 +3229,7 @@ class Install::Logs::Log::Header::LogContents : public Entity
 }; // Install::Logs::Log::Header::LogContents
 
 
-class Install::Logs::Log::Header::LogContents::V3 : public Entity
+class Install::Logs::Log::Header::LogContents::V3 : public ydk::Entity
 {
     public:
         V3();
@@ -2976,14 +3237,16 @@ class Install::Logs::Log::Header::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
-        YLeaf message; //type: string
+        ydk::YLeaf category; //type: InstmgrBagLogEntryUserMsgCategory
+        ydk::YLeaf message; //type: string
         class Scope; //type: Install::Logs::Log::Header::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Header::LogContents::V3::Scope> scope;
@@ -2991,7 +3254,7 @@ class Install::Logs::Log::Header::LogContents::V3 : public Entity
 }; // Install::Logs::Log::Header::LogContents::V3
 
 
-class Install::Logs::Log::Header::LogContents::V3::Scope : public Entity
+class Install::Logs::Log::Header::LogContents::V3::Scope : public ydk::Entity
 {
     public:
         Scope();
@@ -2999,19 +3262,21 @@ class Install::Logs::Log::Header::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf admin_read; //type: boolean
-        YLeaf affected_sd_rs; //type: uint32
+        ydk::YLeaf admin_read; //type: boolean
+        ydk::YLeaf affected_sd_rs; //type: uint32
 
 }; // Install::Logs::Log::Header::LogContents::V3::Scope
 
 
-class Install::Logs::Log::Summary : public Entity
+class Install::Logs::Log::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -3019,11 +3284,13 @@ class Install::Logs::Log::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LogContents; //type: Install::Logs::Log::Summary::LogContents
 
@@ -3032,7 +3299,7 @@ class Install::Logs::Log::Summary : public Entity
 }; // Install::Logs::Log::Summary
 
 
-class Install::Logs::Log::Summary::LogContents : public Entity
+class Install::Logs::Log::Summary::LogContents : public ydk::Entity
 {
     public:
         LogContents();
@@ -3040,13 +3307,15 @@ class Install::Logs::Log::Summary::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint32
+        ydk::YLeaf version; //type: uint32
         class V3; //type: Install::Logs::Log::Summary::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Summary::LogContents::V3> v3;
@@ -3054,7 +3323,7 @@ class Install::Logs::Log::Summary::LogContents : public Entity
 }; // Install::Logs::Log::Summary::LogContents
 
 
-class Install::Logs::Log::Summary::LogContents::V3 : public Entity
+class Install::Logs::Log::Summary::LogContents::V3 : public ydk::Entity
 {
     public:
         V3();
@@ -3062,14 +3331,16 @@ class Install::Logs::Log::Summary::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
-        YLeaf message; //type: string
+        ydk::YLeaf category; //type: InstmgrBagLogEntryUserMsgCategory
+        ydk::YLeaf message; //type: string
         class Scope; //type: Install::Logs::Log::Summary::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Summary::LogContents::V3::Scope> scope;
@@ -3077,7 +3348,7 @@ class Install::Logs::Log::Summary::LogContents::V3 : public Entity
 }; // Install::Logs::Log::Summary::LogContents::V3
 
 
-class Install::Logs::Log::Summary::LogContents::V3::Scope : public Entity
+class Install::Logs::Log::Summary::LogContents::V3::Scope : public ydk::Entity
 {
     public:
         Scope();
@@ -3085,19 +3356,21 @@ class Install::Logs::Log::Summary::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf admin_read; //type: boolean
-        YLeaf affected_sd_rs; //type: uint32
+        ydk::YLeaf admin_read; //type: boolean
+        ydk::YLeaf affected_sd_rs; //type: uint32
 
 }; // Install::Logs::Log::Summary::LogContents::V3::Scope
 
 
-class Install::Logs::Log::Message : public Entity
+class Install::Logs::Log::Message : public ydk::Entity
 {
     public:
         Message();
@@ -3105,11 +3378,13 @@ class Install::Logs::Log::Message : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LogContents; //type: Install::Logs::Log::Message::LogContents
 
@@ -3118,7 +3393,7 @@ class Install::Logs::Log::Message : public Entity
 }; // Install::Logs::Log::Message
 
 
-class Install::Logs::Log::Message::LogContents : public Entity
+class Install::Logs::Log::Message::LogContents : public ydk::Entity
 {
     public:
         LogContents();
@@ -3126,13 +3401,15 @@ class Install::Logs::Log::Message::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint32
+        ydk::YLeaf version; //type: uint32
         class V3; //type: Install::Logs::Log::Message::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Message::LogContents::V3> v3;
@@ -3140,7 +3417,7 @@ class Install::Logs::Log::Message::LogContents : public Entity
 }; // Install::Logs::Log::Message::LogContents
 
 
-class Install::Logs::Log::Message::LogContents::V3 : public Entity
+class Install::Logs::Log::Message::LogContents::V3 : public ydk::Entity
 {
     public:
         V3();
@@ -3148,14 +3425,16 @@ class Install::Logs::Log::Message::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
-        YLeaf message; //type: string
+        ydk::YLeaf category; //type: InstmgrBagLogEntryUserMsgCategory
+        ydk::YLeaf message; //type: string
         class Scope; //type: Install::Logs::Log::Message::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Message::LogContents::V3::Scope> scope;
@@ -3163,7 +3442,7 @@ class Install::Logs::Log::Message::LogContents::V3 : public Entity
 }; // Install::Logs::Log::Message::LogContents::V3
 
 
-class Install::Logs::Log::Message::LogContents::V3::Scope : public Entity
+class Install::Logs::Log::Message::LogContents::V3::Scope : public ydk::Entity
 {
     public:
         Scope();
@@ -3171,19 +3450,21 @@ class Install::Logs::Log::Message::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf admin_read; //type: boolean
-        YLeaf affected_sd_rs; //type: uint32
+        ydk::YLeaf admin_read; //type: boolean
+        ydk::YLeaf affected_sd_rs; //type: uint32
 
 }; // Install::Logs::Log::Message::LogContents::V3::Scope
 
 
-class Install::Logs::Log::Change : public Entity
+class Install::Logs::Log::Change : public ydk::Entity
 {
     public:
         Change();
@@ -3191,11 +3472,13 @@ class Install::Logs::Log::Change : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LogContents; //type: Install::Logs::Log::Change::LogContents
 
@@ -3204,7 +3487,7 @@ class Install::Logs::Log::Change : public Entity
 }; // Install::Logs::Log::Change
 
 
-class Install::Logs::Log::Change::LogContents : public Entity
+class Install::Logs::Log::Change::LogContents : public ydk::Entity
 {
     public:
         LogContents();
@@ -3212,13 +3495,15 @@ class Install::Logs::Log::Change::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint32
+        ydk::YLeaf version; //type: uint32
         class V3; //type: Install::Logs::Log::Change::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Change::LogContents::V3> v3;
@@ -3226,7 +3511,7 @@ class Install::Logs::Log::Change::LogContents : public Entity
 }; // Install::Logs::Log::Change::LogContents
 
 
-class Install::Logs::Log::Change::LogContents::V3 : public Entity
+class Install::Logs::Log::Change::LogContents::V3 : public ydk::Entity
 {
     public:
         V3();
@@ -3234,14 +3519,16 @@ class Install::Logs::Log::Change::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
-        YLeaf message; //type: string
+        ydk::YLeaf category; //type: InstmgrBagLogEntryUserMsgCategory
+        ydk::YLeaf message; //type: string
         class Scope; //type: Install::Logs::Log::Change::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Change::LogContents::V3::Scope> scope;
@@ -3249,7 +3536,7 @@ class Install::Logs::Log::Change::LogContents::V3 : public Entity
 }; // Install::Logs::Log::Change::LogContents::V3
 
 
-class Install::Logs::Log::Change::LogContents::V3::Scope : public Entity
+class Install::Logs::Log::Change::LogContents::V3::Scope : public ydk::Entity
 {
     public:
         Scope();
@@ -3257,19 +3544,21 @@ class Install::Logs::Log::Change::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf admin_read; //type: boolean
-        YLeaf affected_sd_rs; //type: uint32
+        ydk::YLeaf admin_read; //type: boolean
+        ydk::YLeaf affected_sd_rs; //type: uint32
 
 }; // Install::Logs::Log::Change::LogContents::V3::Scope
 
 
-class Install::Logs::Log::Detail : public Entity
+class Install::Logs::Log::Detail : public ydk::Entity
 {
     public:
         Detail();
@@ -3277,11 +3566,13 @@ class Install::Logs::Log::Detail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LogContents; //type: Install::Logs::Log::Detail::LogContents
 
@@ -3290,7 +3581,7 @@ class Install::Logs::Log::Detail : public Entity
 }; // Install::Logs::Log::Detail
 
 
-class Install::Logs::Log::Detail::LogContents : public Entity
+class Install::Logs::Log::Detail::LogContents : public ydk::Entity
 {
     public:
         LogContents();
@@ -3298,13 +3589,15 @@ class Install::Logs::Log::Detail::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint32
+        ydk::YLeaf version; //type: uint32
         class V3; //type: Install::Logs::Log::Detail::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Detail::LogContents::V3> v3;
@@ -3312,7 +3605,7 @@ class Install::Logs::Log::Detail::LogContents : public Entity
 }; // Install::Logs::Log::Detail::LogContents
 
 
-class Install::Logs::Log::Detail::LogContents::V3 : public Entity
+class Install::Logs::Log::Detail::LogContents::V3 : public ydk::Entity
 {
     public:
         V3();
@@ -3320,14 +3613,16 @@ class Install::Logs::Log::Detail::LogContents::V3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: InstmgrBagLogEntryUserMsgCategoryEnum
-        YLeaf message; //type: string
+        ydk::YLeaf category; //type: InstmgrBagLogEntryUserMsgCategory
+        ydk::YLeaf message; //type: string
         class Scope; //type: Install::Logs::Log::Detail::LogContents::V3::Scope
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Detail::LogContents::V3::Scope> scope;
@@ -3335,7 +3630,7 @@ class Install::Logs::Log::Detail::LogContents::V3 : public Entity
 }; // Install::Logs::Log::Detail::LogContents::V3
 
 
-class Install::Logs::Log::Detail::LogContents::V3::Scope : public Entity
+class Install::Logs::Log::Detail::LogContents::V3::Scope : public ydk::Entity
 {
     public:
         Scope();
@@ -3343,19 +3638,21 @@ class Install::Logs::Log::Detail::LogContents::V3::Scope : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf admin_read; //type: boolean
-        YLeaf affected_sd_rs; //type: uint32
+        ydk::YLeaf admin_read; //type: boolean
+        ydk::YLeaf affected_sd_rs; //type: uint32
 
 }; // Install::Logs::Log::Detail::LogContents::V3::Scope
 
 
-class Install::Logs::Log::Communication : public Entity
+class Install::Logs::Log::Communication : public ydk::Entity
 {
     public:
         Communication();
@@ -3363,11 +3660,13 @@ class Install::Logs::Log::Communication : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LogContents; //type: Install::Logs::Log::Communication::LogContents
 
@@ -3376,7 +3675,7 @@ class Install::Logs::Log::Communication : public Entity
 }; // Install::Logs::Log::Communication
 
 
-class Install::Logs::Log::Communication::LogContents : public Entity
+class Install::Logs::Log::Communication::LogContents : public ydk::Entity
 {
     public:
         LogContents();
@@ -3384,329 +3683,331 @@ class Install::Logs::Log::Communication::LogContents : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version; //type: uint32
+        ydk::YLeaf version; //type: uint32
         class V3; //type: Install::Logs::Log::Communication::LogContents::V3
 
         std::shared_ptr<Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Communication::LogContents::V3> v3;
         
 }; // Install::Logs::Log::Communication::LogContents
 
-class InstmgrIssuAbortMethodEnum : public Enum
+class InstmgrInstallPhase : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf method_undefined;
-        static const Enum::YLeaf method_no_operation;
-        static const Enum::YLeaf method_standby_reload;
-        static const Enum::YLeaf method_system_reload;
-        static const Enum::YLeaf method_rollback;
-        static const Enum::YLeaf method_not_possible;
-        static const Enum::YLeaf method_admin_only;
+        static const ydk::Enum::YLeaf inst_phase_unknown;
+        static const ydk::Enum::YLeaf inst_phase_download;
+        static const ydk::Enum::YLeaf inst_phase_sw_change;
+        static const ydk::Enum::YLeaf inst_phase_cleaning_up;
 
 };
 
-class InstmgrBagRequestTriggerEnum : public Enum
+class InstmgrNodeRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf cli;
-        static const Enum::YLeaf xr_xml;
+        static const ydk::Enum::YLeaf redundency_unknown;
+        static const ydk::Enum::YLeaf redundency_active;
+        static const ydk::Enum::YLeaf redundency_standby;
+        static const ydk::Enum::YLeaf redundency_unusable;
 
 };
 
-class InstmgrGroupEnum : public Enum
+class InstmgrIssuAbortMethod : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inst_pkg_group_undefined;
-        static const Enum::YLeaf inst_pkg_group_grouped;
-        static const Enum::YLeaf inst_pkg_group_individual;
+        static const ydk::Enum::YLeaf method_undefined;
+        static const ydk::Enum::YLeaf method_no_operation;
+        static const ydk::Enum::YLeaf method_standby_reload;
+        static const ydk::Enum::YLeaf method_system_reload;
+        static const ydk::Enum::YLeaf method_rollback;
+        static const ydk::Enum::YLeaf method_not_possible;
+        static const ydk::Enum::YLeaf method_admin_only;
 
 };
 
-class IsmCardTypeFamilyEnum : public Enum
+class InstmgrGroup : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ndsc_active_rp;
-        static const Enum::YLeaf ndsc_standby_rp;
-        static const Enum::YLeaf active_drp;
-        static const Enum::YLeaf standby_drp;
-        static const Enum::YLeaf dsc_active_rp;
-        static const Enum::YLeaf dsc_standby_rp;
-        static const Enum::YLeaf active_sc;
-        static const Enum::YLeaf standby_sc;
-        static const Enum::YLeaf root_active_sc;
-        static const Enum::YLeaf root_standby_sc;
-        static const Enum::YLeaf lc;
-        static const Enum::YLeaf sp;
-        static const Enum::YLeaf fabric_sp;
-        static const Enum::YLeaf spa;
+        static const ydk::Enum::YLeaf inst_pkg_group_undefined;
+        static const ydk::Enum::YLeaf inst_pkg_group_grouped;
+        static const ydk::Enum::YLeaf inst_pkg_group_individual;
 
 };
 
-class InstmgrBagUserMsgCategoryEnum : public Enum
+class InstmgrPkg : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf user_error;
-        static const Enum::YLeaf non_specific;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf information;
-        static const Enum::YLeaf user_prompt;
-        static const Enum::YLeaf log;
-        static const Enum::YLeaf system_error;
-        static const Enum::YLeaf user_response;
+        static const ydk::Enum::YLeaf inst_pkg_type_undefined;
+        static const ydk::Enum::YLeaf inst_pkg_type_root;
+        static const ydk::Enum::YLeaf inst_pkg_type_standard;
+        static const ydk::Enum::YLeaf inst_pkg_type_internal;
 
 };
 
-class InstallmgrIsmNodeConformingEnum : public Enum
+class InstmgrBagRequestTrigger : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf conforming;
-        static const Enum::YLeaf none_conforming;
-        static const Enum::YLeaf upgrade_fail;
-        static const Enum::YLeaf none_conforming_spa;
-        static const Enum::YLeaf spa_upgrade_fail;
+        static const ydk::Enum::YLeaf cli;
+        static const ydk::Enum::YLeaf xr_xml;
 
 };
 
-class InstmgrInstallPhaseEnum : public Enum
+class InstmgrBagIiState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inst_phase_unknown;
-        static const Enum::YLeaf inst_phase_download;
-        static const Enum::YLeaf inst_phase_sw_change;
-        static const Enum::YLeaf inst_phase_cleaning_up;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf in_progress;
+        static const ydk::Enum::YLeaf completed;
+        static const ydk::Enum::YLeaf aborted;
+        static const ydk::Enum::YLeaf rebooted;
 
 };
 
-class InstmgrIssuAbortImpactEnum : public Enum
+class InstmgrIsmNodeState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf undefined;
-        static const Enum::YLeaf hitless;
-        static const Enum::YLeaf traffic_outage;
-        static const Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf issu_node_gsp_ready;
+        static const ydk::Enum::YLeaf load_shut_done;
+        static const ydk::Enum::YLeaf standby_management_upgrade_done;
+        static const ydk::Enum::YLeaf fabric_upgrade_done;
+        static const ydk::Enum::YLeaf imdr_preparation_ack_received;
+        static const ydk::Enum::YLeaf imdr_preparation_failed;
+        static const ydk::Enum::YLeaf imdr_start_ack_received;
+        static const ydk::Enum::YLeaf imdr_start_failed;
+        static const ydk::Enum::YLeaf imdr_complete_ack_received;
+        static const ydk::Enum::YLeaf imdr_complete_failed;
+        static const ydk::Enum::YLeaf standby_management_ready;
+        static const ydk::Enum::YLeaf fo_acknowledged;
+        static const ydk::Enum::YLeaf fo_complete;
+        static const ydk::Enum::YLeaf standby_ready_after_fo;
+        static const ydk::Enum::YLeaf iam_ready_afteri_mdr;
+        static const ydk::Enum::YLeaf nsf_ready;
+        static const ydk::Enum::YLeaf nsf_begin_ack_received;
+        static const ydk::Enum::YLeaf imdr_done;
+        static const ydk::Enum::YLeaf unshut_done;
+        static const ydk::Enum::YLeaf run_done;
+        static const ydk::Enum::YLeaf imdr_abort_sent;
+        static const ydk::Enum::YLeaf imdr_abort_ack_received;
+        static const ydk::Enum::YLeaf imdr_abort_failed;
+        static const ydk::Enum::YLeaf standby_management_downgrade_done;
+        static const ydk::Enum::YLeaf fabric_downgrade_done;
+        static const ydk::Enum::YLeaf reload_during_issu;
+        static const ydk::Enum::YLeaf timneout;
+        static const ydk::Enum::YLeaf fabric_upgrade_failed;
+        static const ydk::Enum::YLeaf unsupported_hw;
+        static const ydk::Enum::YLeaf not_reachable;
+        static const ydk::Enum::YLeaf max;
 
 };
 
-class InstmgrIsmNodeStateEnum : public Enum
+class InstmgrIssuAbortImpact : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf issu_node_gsp_ready;
-        static const Enum::YLeaf load_shut_done;
-        static const Enum::YLeaf standby_management_upgrade_done;
-        static const Enum::YLeaf fabric_upgrade_done;
-        static const Enum::YLeaf imdr_preparation_ack_received;
-        static const Enum::YLeaf imdr_preparation_failed;
-        static const Enum::YLeaf imdr_start_ack_received;
-        static const Enum::YLeaf imdr_start_failed;
-        static const Enum::YLeaf imdr_complete_ack_received;
-        static const Enum::YLeaf imdr_complete_failed;
-        static const Enum::YLeaf standby_management_ready;
-        static const Enum::YLeaf fo_acknowledged;
-        static const Enum::YLeaf fo_complete;
-        static const Enum::YLeaf standby_ready_after_fo;
-        static const Enum::YLeaf iam_ready_afteri_mdr;
-        static const Enum::YLeaf nsf_ready;
-        static const Enum::YLeaf nsf_begin_ack_received;
-        static const Enum::YLeaf imdr_done;
-        static const Enum::YLeaf unshut_done;
-        static const Enum::YLeaf run_done;
-        static const Enum::YLeaf imdr_abort_sent;
-        static const Enum::YLeaf imdr_abort_ack_received;
-        static const Enum::YLeaf imdr_abort_failed;
-        static const Enum::YLeaf standby_management_downgrade_done;
-        static const Enum::YLeaf fabric_downgrade_done;
-        static const Enum::YLeaf reload_during_issu;
-        static const Enum::YLeaf timneout;
-        static const Enum::YLeaf fabric_upgrade_failed;
-        static const Enum::YLeaf unsupported_hw;
-        static const Enum::YLeaf not_reachable;
-        static const Enum::YLeaf max;
+        static const ydk::Enum::YLeaf undefined;
+        static const ydk::Enum::YLeaf hitless;
+        static const ydk::Enum::YLeaf traffic_outage;
+        static const ydk::Enum::YLeaf not_applicable;
 
 };
 
-class InstmgrPkgEnum : public Enum
+class InstmgrBagLogEntryUserMsgCategory : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inst_pkg_type_undefined;
-        static const Enum::YLeaf inst_pkg_type_root;
-        static const Enum::YLeaf inst_pkg_type_standard;
-        static const Enum::YLeaf inst_pkg_type_internal;
+        static const ydk::Enum::YLeaf user_error;
+        static const ydk::Enum::YLeaf non_specific;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf user_prompt;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf system_error;
+        static const ydk::Enum::YLeaf user_response;
 
 };
 
-class InstmgrCardStateEnum : public Enum
+class InstmgrBagAbortState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf instmgr_card_not_present;
-        static const Enum::YLeaf instmgr_card_present;
-        static const Enum::YLeaf instmgr_card_reset;
-        static const Enum::YLeaf instmgr_card_booting;
-        static const Enum::YLeaf instmgr_card_mbi_booting;
-        static const Enum::YLeaf instmgr_card_running_mbi;
-        static const Enum::YLeaf instmgr_card_running_ena;
-        static const Enum::YLeaf instmgr_card_bring_down;
-        static const Enum::YLeaf instmgr_card_ena_failure;
-        static const Enum::YLeaf instmgr_card_f_diag_run;
-        static const Enum::YLeaf instmgr_card_f_diag_failure;
-        static const Enum::YLeaf instmgr_card_powered;
-        static const Enum::YLeaf instmgr_card_unpowered;
-        static const Enum::YLeaf instmgr_card_mdr;
-        static const Enum::YLeaf instmgr_card_mdr_running_mbi;
-        static const Enum::YLeaf instmgr_card_main_t_mode;
-        static const Enum::YLeaf instmgr_card_admin_down;
-        static const Enum::YLeaf instmgr_card_no_mon;
-        static const Enum::YLeaf instmgr_card_unknown;
-        static const Enum::YLeaf instmgr_card_failed;
-        static const Enum::YLeaf instmgr_card_ok;
-        static const Enum::YLeaf instmgr_card_missing;
-        static const Enum::YLeaf instmgr_card_field_diag_downloading;
-        static const Enum::YLeaf instmgr_card_field_diag_unmonitor;
-        static const Enum::YLeaf instmgr_card_fabric_field_diag_unmonitor;
-        static const Enum::YLeaf instmgr_card_field_diag_rp_launching;
-        static const Enum::YLeaf instmgr_card_field_diag_running;
-        static const Enum::YLeaf instmgr_card_field_diag_pass;
-        static const Enum::YLeaf instmgr_card_field_diag_fail;
-        static const Enum::YLeaf instmgr_card_field_diag_timeout;
-        static const Enum::YLeaf instmgr_card_disabled;
-        static const Enum::YLeaf instmgr_card_spa_booting;
-        static const Enum::YLeaf instmgr_card_not_allowed_online;
-        static const Enum::YLeaf instmgr_card_stopped;
-        static const Enum::YLeaf instmgr_card_incompatible_fw_ver;
-        static const Enum::YLeaf instmgr_card_fpd_hold;
-        static const Enum::YLeaf instmgr_card_updating_fpd;
-        static const Enum::YLeaf instmgr_card_num_states;
+        static const ydk::Enum::YLeaf abortable;
+        static const ydk::Enum::YLeaf no_longer_abortable;
+        static const ydk::Enum::YLeaf never_abortable;
+        static const ydk::Enum::YLeaf already_aborted;
 
 };
 
-class InstmgrNodeRoleEnum : public Enum
+class InstmgrBagUserMsgCategory : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf redundency_unknown;
-        static const Enum::YLeaf redundency_active;
-        static const Enum::YLeaf redundency_standby;
-        static const Enum::YLeaf redundency_unusable;
+        static const ydk::Enum::YLeaf user_error;
+        static const ydk::Enum::YLeaf non_specific;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf user_prompt;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf system_error;
+        static const ydk::Enum::YLeaf user_response;
 
 };
 
-class InstmgrRequestEnum : public Enum
+class InstmgrIsmFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf add;
-        static const Enum::YLeaf accept;
-        static const Enum::YLeaf clean;
-        static const Enum::YLeaf activate;
-        static const Enum::YLeaf deactivate;
-        static const Enum::YLeaf commit;
-        static const Enum::YLeaf verify;
-        static const Enum::YLeaf rollback;
-        static const Enum::YLeaf clear_rollback;
-        static const Enum::YLeaf clear_log;
-        static const Enum::YLeaf health_check;
-        static const Enum::YLeaf operation_;
-        static const Enum::YLeaf stop_timer;
-        static const Enum::YLeaf label;
-        static const Enum::YLeaf clear_label;
-        static const Enum::YLeaf extend;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf init_done;
+        static const ydk::Enum::YLeaf load_shut;
+        static const ydk::Enum::YLeaf load_wait;
+        static const ydk::Enum::YLeaf load_stp_root_before;
+        static const ydk::Enum::YLeaf load_standby_root_sc_upgrade;
+        static const ydk::Enum::YLeaf load_standby_management_upgrade;
+        static const ydk::Enum::YLeaf load_stp_root_after;
+        static const ydk::Enum::YLeaf load_fabric_upgrade;
+        static const ydk::Enum::YLeaf load_management_issu_ready;
+        static const ydk::Enum::YLeaf load_done;
+        static const ydk::Enum::YLeaf run_prep;
+        static const ydk::Enum::YLeaf run_wait;
+        static const ydk::Enum::YLeaf runi_mdr_prep;
+        static const ydk::Enum::YLeaf runi_mdr_start;
+        static const ydk::Enum::YLeaf runi_mdr_complete;
+        static const ydk::Enum::YLeaf run_make_standby_ready;
+        static const ydk::Enum::YLeaf run_root_scfo;
+        static const ydk::Enum::YLeaf run_ndscfo;
+        static const ydk::Enum::YLeaf run_transient1;
+        static const ydk::Enum::YLeaf run_dscfo;
+        static const ydk::Enum::YLeaf run_fo_complete;
+        static const ydk::Enum::YLeaf run_stp_root_return;
+        static const ydk::Enum::YLeaf runi_mdr_continue;
+        static const ydk::Enum::YLeaf run_am_i_ready_afteri_mdr;
+        static const ydk::Enum::YLeaf run_nsf_ready;
+        static const ydk::Enum::YLeaf run_nsf_begin;
+        static const ydk::Enum::YLeaf runi_mdr_done;
+        static const ydk::Enum::YLeaf run_management_issu_ready;
+        static const ydk::Enum::YLeaf run_un_shut;
+        static const ydk::Enum::YLeaf run_is_done;
+        static const ydk::Enum::YLeaf state_max;
 
 };
 
-class InstmgrIsmFsmStateEnum : public Enum
+class InstallmgrIsmNodeConforming : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf idle;
-        static const Enum::YLeaf init_done;
-        static const Enum::YLeaf load_shut;
-        static const Enum::YLeaf load_wait;
-        static const Enum::YLeaf load_stp_root_before;
-        static const Enum::YLeaf load_standby_root_sc_upgrade;
-        static const Enum::YLeaf load_standby_management_upgrade;
-        static const Enum::YLeaf load_stp_root_after;
-        static const Enum::YLeaf load_fabric_upgrade;
-        static const Enum::YLeaf load_management_issu_ready;
-        static const Enum::YLeaf load_done;
-        static const Enum::YLeaf run_prep;
-        static const Enum::YLeaf run_wait;
-        static const Enum::YLeaf runi_mdr_prep;
-        static const Enum::YLeaf runi_mdr_start;
-        static const Enum::YLeaf runi_mdr_complete;
-        static const Enum::YLeaf run_make_standby_ready;
-        static const Enum::YLeaf run_root_scfo;
-        static const Enum::YLeaf run_ndscfo;
-        static const Enum::YLeaf run_transient1;
-        static const Enum::YLeaf run_dscfo;
-        static const Enum::YLeaf run_fo_complete;
-        static const Enum::YLeaf run_stp_root_return;
-        static const Enum::YLeaf runi_mdr_continue;
-        static const Enum::YLeaf run_am_i_ready_afteri_mdr;
-        static const Enum::YLeaf run_nsf_ready;
-        static const Enum::YLeaf run_nsf_begin;
-        static const Enum::YLeaf runi_mdr_done;
-        static const Enum::YLeaf run_management_issu_ready;
-        static const Enum::YLeaf run_un_shut;
-        static const Enum::YLeaf run_is_done;
-        static const Enum::YLeaf state_max;
+        static const ydk::Enum::YLeaf conforming;
+        static const ydk::Enum::YLeaf none_conforming;
+        static const ydk::Enum::YLeaf upgrade_fail;
+        static const ydk::Enum::YLeaf none_conforming_spa;
+        static const ydk::Enum::YLeaf spa_upgrade_fail;
 
 };
 
-class InstmgrBagIiDirectionEnum : public Enum
+class InstmgrCardState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_incremental;
-        static const Enum::YLeaf installing;
-        static const Enum::YLeaf unwinding;
+        static const ydk::Enum::YLeaf instmgr_card_not_present;
+        static const ydk::Enum::YLeaf instmgr_card_present;
+        static const ydk::Enum::YLeaf instmgr_card_reset;
+        static const ydk::Enum::YLeaf instmgr_card_booting;
+        static const ydk::Enum::YLeaf instmgr_card_mbi_booting;
+        static const ydk::Enum::YLeaf instmgr_card_running_mbi;
+        static const ydk::Enum::YLeaf instmgr_card_running_ena;
+        static const ydk::Enum::YLeaf instmgr_card_bring_down;
+        static const ydk::Enum::YLeaf instmgr_card_ena_failure;
+        static const ydk::Enum::YLeaf instmgr_card_f_diag_run;
+        static const ydk::Enum::YLeaf instmgr_card_f_diag_failure;
+        static const ydk::Enum::YLeaf instmgr_card_powered;
+        static const ydk::Enum::YLeaf instmgr_card_unpowered;
+        static const ydk::Enum::YLeaf instmgr_card_mdr;
+        static const ydk::Enum::YLeaf instmgr_card_mdr_running_mbi;
+        static const ydk::Enum::YLeaf instmgr_card_main_t_mode;
+        static const ydk::Enum::YLeaf instmgr_card_admin_down;
+        static const ydk::Enum::YLeaf instmgr_card_no_mon;
+        static const ydk::Enum::YLeaf instmgr_card_unknown;
+        static const ydk::Enum::YLeaf instmgr_card_failed;
+        static const ydk::Enum::YLeaf instmgr_card_ok;
+        static const ydk::Enum::YLeaf instmgr_card_missing;
+        static const ydk::Enum::YLeaf instmgr_card_field_diag_downloading;
+        static const ydk::Enum::YLeaf instmgr_card_field_diag_unmonitor;
+        static const ydk::Enum::YLeaf instmgr_card_fabric_field_diag_unmonitor;
+        static const ydk::Enum::YLeaf instmgr_card_field_diag_rp_launching;
+        static const ydk::Enum::YLeaf instmgr_card_field_diag_running;
+        static const ydk::Enum::YLeaf instmgr_card_field_diag_pass;
+        static const ydk::Enum::YLeaf instmgr_card_field_diag_fail;
+        static const ydk::Enum::YLeaf instmgr_card_field_diag_timeout;
+        static const ydk::Enum::YLeaf instmgr_card_disabled;
+        static const ydk::Enum::YLeaf instmgr_card_spa_booting;
+        static const ydk::Enum::YLeaf instmgr_card_not_allowed_online;
+        static const ydk::Enum::YLeaf instmgr_card_stopped;
+        static const ydk::Enum::YLeaf instmgr_card_incompatible_fw_ver;
+        static const ydk::Enum::YLeaf instmgr_card_fpd_hold;
+        static const ydk::Enum::YLeaf instmgr_card_updating_fpd;
+        static const ydk::Enum::YLeaf instmgr_card_num_states;
 
 };
 
-class InstmgrPiCardEnum : public Enum
+class IsmCardTypeFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf type_rp;
-        static const Enum::YLeaf type_drp;
-        static const Enum::YLeaf type_lc;
-        static const Enum::YLeaf type_sc;
-        static const Enum::YLeaf type_sp;
-        static const Enum::YLeaf type_other;
+        static const ydk::Enum::YLeaf ndsc_active_rp;
+        static const ydk::Enum::YLeaf ndsc_standby_rp;
+        static const ydk::Enum::YLeaf active_drp;
+        static const ydk::Enum::YLeaf standby_drp;
+        static const ydk::Enum::YLeaf dsc_active_rp;
+        static const ydk::Enum::YLeaf dsc_standby_rp;
+        static const ydk::Enum::YLeaf active_sc;
+        static const ydk::Enum::YLeaf standby_sc;
+        static const ydk::Enum::YLeaf root_active_sc;
+        static const ydk::Enum::YLeaf root_standby_sc;
+        static const ydk::Enum::YLeaf lc;
+        static const ydk::Enum::YLeaf sp;
+        static const ydk::Enum::YLeaf fabric_sp;
+        static const ydk::Enum::YLeaf spa;
 
 };
 
-class InstmgrBagIiStateEnum : public Enum
+class InstmgrRequest : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf idle;
-        static const Enum::YLeaf in_progress;
-        static const Enum::YLeaf completed;
-        static const Enum::YLeaf aborted;
-        static const Enum::YLeaf rebooted;
+        static const ydk::Enum::YLeaf add;
+        static const ydk::Enum::YLeaf accept;
+        static const ydk::Enum::YLeaf clean;
+        static const ydk::Enum::YLeaf activate;
+        static const ydk::Enum::YLeaf deactivate;
+        static const ydk::Enum::YLeaf commit;
+        static const ydk::Enum::YLeaf verify;
+        static const ydk::Enum::YLeaf rollback;
+        static const ydk::Enum::YLeaf clear_rollback;
+        static const ydk::Enum::YLeaf clear_log;
+        static const ydk::Enum::YLeaf health_check;
+        static const ydk::Enum::YLeaf operation_;
+        static const ydk::Enum::YLeaf stop_timer;
+        static const ydk::Enum::YLeaf label;
+        static const ydk::Enum::YLeaf clear_label;
+        static const ydk::Enum::YLeaf extend;
 
 };
 
-class InstmgrBagLogEntryUserMsgCategoryEnum : public Enum
+class InstmgrBagIiDirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf user_error;
-        static const Enum::YLeaf non_specific;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf information;
-        static const Enum::YLeaf user_prompt;
-        static const Enum::YLeaf log;
-        static const Enum::YLeaf system_error;
-        static const Enum::YLeaf user_response;
+        static const ydk::Enum::YLeaf not_incremental;
+        static const ydk::Enum::YLeaf installing;
+        static const ydk::Enum::YLeaf unwinding;
 
 };
 
-class InstmgrBagAbortStateEnum : public Enum
+class InstmgrPiCard : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf abortable;
-        static const Enum::YLeaf no_longer_abortable;
-        static const Enum::YLeaf never_abortable;
-        static const Enum::YLeaf already_aborted;
+        static const ydk::Enum::YLeaf type_rp;
+        static const ydk::Enum::YLeaf type_drp;
+        static const ydk::Enum::YLeaf type_lc;
+        static const ydk::Enum::YLeaf type_sc;
+        static const ydk::Enum::YLeaf type_sp;
+        static const ydk::Enum::YLeaf type_other;
 
 };
 

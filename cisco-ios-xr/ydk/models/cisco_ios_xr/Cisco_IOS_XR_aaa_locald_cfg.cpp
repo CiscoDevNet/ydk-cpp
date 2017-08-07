@@ -6,13 +6,15 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_aaa_locald_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_locald_cfg {
 
-const Enum::YLeaf AaaLocaldTaskClassEnum::read {0, "read"};
-const Enum::YLeaf AaaLocaldTaskClassEnum::write {1, "write"};
-const Enum::YLeaf AaaLocaldTaskClassEnum::execute {2, "execute"};
-const Enum::YLeaf AaaLocaldTaskClassEnum::debug {3, "debug"};
+const Enum::YLeaf AaaLocaldTaskClass::read {0, "read"};
+const Enum::YLeaf AaaLocaldTaskClass::write {1, "write"};
+const Enum::YLeaf AaaLocaldTaskClass::execute {2, "execute"};
+const Enum::YLeaf AaaLocaldTaskClass::debug {3, "debug"};
 
 
 }

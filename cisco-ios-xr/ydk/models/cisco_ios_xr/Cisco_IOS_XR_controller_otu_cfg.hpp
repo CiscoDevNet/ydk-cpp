@@ -7,103 +7,103 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_controller_otu_cfg {
 
-class OtnLoopbackEnum : public Enum
+class OtnExpTtiTypeFull : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf line;
-        static const Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf exp_tti_full_ascii__FWD_SLASH__full_ascii;
+        static const ydk::Enum::YLeaf exp_tti_hex__FWD_SLASH__hex;
 
 };
 
-class OtnExpTtiTypeSapiEnum : public Enum
+class OtnSendTtiTypeSapi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf exp_tti_sapi_ascii__FWD_SLASH__sapi_ascii;
+        static const ydk::Enum::YLeaf send_tti_sapi_ascii__FWD_SLASH__sapi_ascii;
 
 };
 
-class OtnPerMonEnum : public Enum
+class OtnSendTtiTypeDapi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf send_tti_dapi_ascii__FWD_SLASH__dapi_ascii;
 
 };
 
-class OtnSendTtiTypeOsEnum : public Enum
+class OtnExpTtiTypeDapi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf send_tti_os_ascii__FWD_SLASH__os_ascii;
-        static const Enum::YLeaf send_tti_os_hex__FWD_SLASH__os_hex;
+        static const ydk::Enum::YLeaf exp_tti_dapi_ascii__FWD_SLASH__dapi_ascii;
 
 };
 
-class OtnSendTtiTypeSapiEnum : public Enum
+class OtnExpTtiTypeOs : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf send_tti_sapi_ascii__FWD_SLASH__sapi_ascii;
+        static const ydk::Enum::YLeaf exp_tti_os_ascii__FWD_SLASH__os_ascii;
+        static const ydk::Enum::YLeaf exp_tti_os_hex__FWD_SLASH__os_hex;
 
 };
 
-class OtnSendTtiTypeDapiEnum : public Enum
+class OtnLoopback : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf send_tti_dapi_ascii__FWD_SLASH__dapi_ascii;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf internal;
 
 };
 
-class OtnExpTtiTypeOsEnum : public Enum
+class OtnPerMon : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf exp_tti_os_ascii__FWD_SLASH__os_ascii;
-        static const Enum::YLeaf exp_tti_os_hex__FWD_SLASH__os_hex;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class OtnSecAdminStateEnum : public Enum
+class OtnSendTtiTypeFull : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf normal;
-        static const Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf send_tti_full_ascii__FWD_SLASH__full_ascii;
+        static const ydk::Enum::YLeaf send_tti_hex__FWD_SLASH__hex;
 
 };
 
-class OtnExpTtiTypeFullEnum : public Enum
+class OtnExpTtiTypeSapi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf exp_tti_full_ascii__FWD_SLASH__full_ascii;
-        static const Enum::YLeaf exp_tti_hex__FWD_SLASH__hex;
+        static const ydk::Enum::YLeaf exp_tti_sapi_ascii__FWD_SLASH__sapi_ascii;
 
 };
 
-class OtuForwardErrorCorrectionEnum : public Enum
+class OtnSendTtiTypeOs : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf standard;
-        static const Enum::YLeaf enhanced_i7;
-        static const Enum::YLeaf enhanced_i4;
-        static const Enum::YLeaf enhanced_swizzle;
-        static const Enum::YLeaf enhanced_hg20;
-        static const Enum::YLeaf enhanced_hg7;
+        static const ydk::Enum::YLeaf send_tti_os_ascii__FWD_SLASH__os_ascii;
+        static const ydk::Enum::YLeaf send_tti_os_hex__FWD_SLASH__os_hex;
 
 };
 
-class OtnExpTtiTypeDapiEnum : public Enum
+class OtnSecAdminState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf exp_tti_dapi_ascii__FWD_SLASH__dapi_ascii;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf maintenance;
 
 };
 
-class OtnSendTtiTypeFullEnum : public Enum
+class OtuForwardErrorCorrection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf send_tti_full_ascii__FWD_SLASH__full_ascii;
-        static const Enum::YLeaf send_tti_hex__FWD_SLASH__hex;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf enhanced_i7;
+        static const ydk::Enum::YLeaf enhanced_i4;
+        static const ydk::Enum::YLeaf enhanced_swizzle;
+        static const ydk::Enum::YLeaf enhanced_hg20;
+        static const ydk::Enum::YLeaf enhanced_hg7;
 
 };
 

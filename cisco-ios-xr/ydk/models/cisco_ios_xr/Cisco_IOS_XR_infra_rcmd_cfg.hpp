@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_rcmd_cfg {
 
-class RouterConvergence : public Entity
+class RouterConvergence : public ydk::Entity
 {
     public:
         RouterConvergence();
@@ -18,22 +18,25 @@ class RouterConvergence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf event_buffer_size; //type: uint32
-        YLeaf prefix_monitor_limit; //type: uint32
-        YLeaf disable; //type: empty
-        YLeaf enable; //type: empty
-        YLeaf max_events_stored; //type: uint32
-        YLeaf monitoring_interval; //type: uint32
+        ydk::YLeaf event_buffer_size; //type: uint32
+        ydk::YLeaf prefix_monitor_limit; //type: uint32
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf max_events_stored; //type: uint32
+        ydk::YLeaf monitoring_interval; //type: uint32
         class Protocols; //type: RouterConvergence::Protocols
         class StorageLocation; //type: RouterConvergence::StorageLocation
         class MplsLdp; //type: RouterConvergence::MplsLdp
@@ -49,7 +52,7 @@ class RouterConvergence : public Entity
 }; // RouterConvergence
 
 
-class RouterConvergence::Protocols : public Entity
+class RouterConvergence::Protocols : public ydk::Entity
 {
     public:
         Protocols();
@@ -57,11 +60,13 @@ class RouterConvergence::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Protocol; //type: RouterConvergence::Protocols::Protocol
 
@@ -70,7 +75,7 @@ class RouterConvergence::Protocols : public Entity
 }; // RouterConvergence::Protocols
 
 
-class RouterConvergence::Protocols::Protocol : public Entity
+class RouterConvergence::Protocols::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -78,14 +83,16 @@ class RouterConvergence::Protocols::Protocol : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: ProtocolNameEnum
-        YLeaf enable; //type: empty
+        ydk::YLeaf protocol_name; //type: ProtocolName
+        ydk::YLeaf enable; //type: empty
         class Priorities; //type: RouterConvergence::Protocols::Protocol::Priorities
 
         std::shared_ptr<Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Protocols::Protocol::Priorities> priorities;
@@ -93,7 +100,7 @@ class RouterConvergence::Protocols::Protocol : public Entity
 }; // RouterConvergence::Protocols::Protocol
 
 
-class RouterConvergence::Protocols::Protocol::Priorities : public Entity
+class RouterConvergence::Protocols::Protocol::Priorities : public ydk::Entity
 {
     public:
         Priorities();
@@ -101,11 +108,13 @@ class RouterConvergence::Protocols::Protocol::Priorities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Priority; //type: RouterConvergence::Protocols::Protocol::Priorities::Priority
 
@@ -114,7 +123,7 @@ class RouterConvergence::Protocols::Protocol::Priorities : public Entity
 }; // RouterConvergence::Protocols::Protocol::Priorities
 
 
-class RouterConvergence::Protocols::Protocol::Priorities::Priority : public Entity
+class RouterConvergence::Protocols::Protocol::Priorities::Priority : public ydk::Entity
 {
     public:
         Priority();
@@ -122,23 +131,25 @@ class RouterConvergence::Protocols::Protocol::Priorities::Priority : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rcmd_priority; //type: RcmdPriorityEnum
-        YLeaf threshold; //type: int32
-        YLeaf leaf_networks; //type: uint32
-        YLeaf disable; //type: empty
-        YLeaf enable; //type: empty
-        YLeaf frr_threshold; //type: uint32
+        ydk::YLeaf rcmd_priority; //type: RcmdPriority
+        ydk::YLeaf threshold; //type: int32
+        ydk::YLeaf leaf_networks; //type: uint32
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf frr_threshold; //type: uint32
 
 }; // RouterConvergence::Protocols::Protocol::Priorities::Priority
 
 
-class RouterConvergence::StorageLocation : public Entity
+class RouterConvergence::StorageLocation : public ydk::Entity
 {
     public:
         StorageLocation();
@@ -146,21 +157,23 @@ class RouterConvergence::StorageLocation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diagnostics; //type: string
-        YLeaf diagnostics_size; //type: uint32
-        YLeaf reports_size; //type: uint32
-        YLeaf reports; //type: string
+        ydk::YLeaf diagnostics; //type: string
+        ydk::YLeaf diagnostics_size; //type: uint32
+        ydk::YLeaf reports_size; //type: uint32
+        ydk::YLeaf reports; //type: string
 
 }; // RouterConvergence::StorageLocation
 
 
-class RouterConvergence::MplsLdp : public Entity
+class RouterConvergence::MplsLdp : public ydk::Entity
 {
     public:
         MplsLdp();
@@ -168,11 +181,13 @@ class RouterConvergence::MplsLdp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RemoteLfa; //type: RouterConvergence::MplsLdp::RemoteLfa
 
@@ -181,7 +196,7 @@ class RouterConvergence::MplsLdp : public Entity
 }; // RouterConvergence::MplsLdp
 
 
-class RouterConvergence::MplsLdp::RemoteLfa : public Entity
+class RouterConvergence::MplsLdp::RemoteLfa : public ydk::Entity
 {
     public:
         RemoteLfa();
@@ -189,18 +204,20 @@ class RouterConvergence::MplsLdp::RemoteLfa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold; //type: uint32
+        ydk::YLeaf threshold; //type: uint32
 
 }; // RouterConvergence::MplsLdp::RemoteLfa
 
 
-class RouterConvergence::CollectDiagnostics : public Entity
+class RouterConvergence::CollectDiagnostics : public ydk::Entity
 {
     public:
         CollectDiagnostics();
@@ -208,11 +225,13 @@ class RouterConvergence::CollectDiagnostics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class CollectDiagnostic; //type: RouterConvergence::CollectDiagnostics::CollectDiagnostic
 
@@ -221,7 +240,7 @@ class RouterConvergence::CollectDiagnostics : public Entity
 }; // RouterConvergence::CollectDiagnostics
 
 
-class RouterConvergence::CollectDiagnostics::CollectDiagnostic : public Entity
+class RouterConvergence::CollectDiagnostics::CollectDiagnostic : public ydk::Entity
 {
     public:
         CollectDiagnostic();
@@ -229,19 +248,21 @@ class RouterConvergence::CollectDiagnostics::CollectDiagnostic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf enable; //type: empty
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf enable; //type: empty
 
 }; // RouterConvergence::CollectDiagnostics::CollectDiagnostic
 
 
-class RouterConvergence::Nodes : public Entity
+class RouterConvergence::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -249,11 +270,13 @@ class RouterConvergence::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: RouterConvergence::Nodes::Node
 
@@ -262,7 +285,7 @@ class RouterConvergence::Nodes : public Entity
 }; // RouterConvergence::Nodes
 
 
-class RouterConvergence::Nodes::Node : public Entity
+class RouterConvergence::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -270,33 +293,35 @@ class RouterConvergence::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf disable; //type: empty
-        YLeaf enable; //type: empty
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf disable; //type: empty
+        ydk::YLeaf enable; //type: empty
 
 }; // RouterConvergence::Nodes::Node
 
-class RcmdPriorityEnum : public Enum
+class ProtocolName : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf critical;
-        static const Enum::YLeaf high;
-        static const Enum::YLeaf medium;
-        static const Enum::YLeaf low;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf isis;
 
 };
 
-class ProtocolNameEnum : public Enum
+class RcmdPriority : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ospf;
-        static const Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 

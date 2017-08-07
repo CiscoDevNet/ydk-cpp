@@ -6,15 +6,17 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_ipv6_unicast_routing.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_ipv6_unicast_routing {
 
-Ipv6UnicastIdentity::Ipv6UnicastIdentity()
-     : Identity("ietf-ipv6-unicast-routing:ipv6-unicast")
+Ipv6Unicast::Ipv6Unicast()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-ipv6-unicast-routing", "ietf-ipv6-unicast-routing", "ietf-ipv6-unicast-routing:ipv6-unicast")
 {
 }
 
-Ipv6UnicastIdentity::~Ipv6UnicastIdentity()
+Ipv6Unicast::~Ipv6Unicast()
 {
 }
 

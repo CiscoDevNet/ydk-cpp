@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_wanphy_ui_oper {
 
-class Wanphy : public Entity
+class Wanphy : public ydk::Entity
 {
     public:
         Wanphy();
@@ -18,15 +18,18 @@ class Wanphy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Controllers; //type: Wanphy::Controllers
 
@@ -35,7 +38,7 @@ class Wanphy : public Entity
 }; // Wanphy
 
 
-class Wanphy::Controllers : public Entity
+class Wanphy::Controllers : public ydk::Entity
 {
     public:
         Controllers();
@@ -43,11 +46,13 @@ class Wanphy::Controllers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Controller; //type: Wanphy::Controllers::Controller
 
@@ -56,7 +61,7 @@ class Wanphy::Controllers : public Entity
 }; // Wanphy::Controllers
 
 
-class Wanphy::Controllers::Controller : public Entity
+class Wanphy::Controllers::Controller : public ydk::Entity
 {
     public:
         Controller();
@@ -64,13 +69,15 @@ class Wanphy::Controllers::Controller : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf controller_name; //type: string
+        ydk::YLeaf controller_name; //type: string
         class Info; //type: Wanphy::Controllers::Controller::Info
 
         std::shared_ptr<Cisco_IOS_XR_wanphy_ui_oper::Wanphy::Controllers::Controller::Info> info;
@@ -78,7 +85,7 @@ class Wanphy::Controllers::Controller : public Entity
 }; // Wanphy::Controllers::Controller
 
 
-class Wanphy::Controllers::Controller::Info : public Entity
+class Wanphy::Controllers::Controller::Info : public ydk::Entity
 {
     public:
         Info();
@@ -86,73 +93,75 @@ class Wanphy::Controllers::Controller::Info : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf admin_mode; //type: WanphyModeInfoEnum
-        YLeaf port_state; //type: uint32
-        YLeaf section_lof; //type: uint32
-        YLeaf section_los; //type: uint32
-        YLeaf section_bip; //type: uint64
-        YLeaf line_ais; //type: uint32
-        YLeaf line_rdi; //type: uint32
-        YLeaf line_febe; //type: uint64
-        YLeaf line_bip; //type: uint64
-        YLeaf path_ais; //type: uint32
-        YLeaf path_rdi; //type: uint32
-        YLeaf path_febe; //type: uint64
-        YLeaf path_bip; //type: uint64
-        YLeaf path_lop; //type: uint32
-        YLeaf path_newptr; //type: uint32
-        YLeaf path_pse; //type: uint32
-        YLeaf path_nse; //type: uint32
-        YLeaf wis_alarms_ser; //type: uint32
-        YLeaf wis_alarms_felcdp; //type: uint32
-        YLeaf wis_alarms_feaisp; //type: uint32
-        YLeaf wis_alarms_wlos; //type: uint32
-        YLeaf wis_alarms_plcd; //type: uint32
-        YLeaf wis_alarms_lfebip; //type: uint64
-        YLeaf wis_alarms_pbec; //type: uint64
-        YLeaf wis_alarms_plmp; //type: uint32
-        YLeaf sf_ber_threshold; //type: uint32
-        YLeaf sd_ber_threshold; //type: uint32
-        YLeaf sf_ber_report; //type: WanphyAlarmRepStatusEnum
-        YLeaf sd_ber_report; //type: WanphyAlarmRepStatusEnum
-        YLeaf operational_mode; //type: WanphyModeInfoEnum
-        YLeaf remote_ip; //type: string
-        YLeaf register_p_febe; //type: uint32
-        YLeaf register_l_fe_bip; //type: uint32
-        YLeaf register_l_bip; //type: uint32
-        YLeaf register_p_bec; //type: uint32
-        YLeaf register_s_bip; //type: uint32
-        YLeaf register_j1_rx0; //type: uint32
-        YLeaf register_j1_rx1; //type: uint32
-        YLeaf register_j1_rx2; //type: uint32
-        YLeaf register_j1_rx3; //type: uint32
-        YLeaf register_j1_rx4; //type: uint32
-        YLeaf register_j1_rx5; //type: uint32
-        YLeaf register_j1_rx6; //type: uint32
-        YLeaf register_j1_rx7; //type: uint32
-        YLeaf wanphy_poll_timer; //type: uint32
+        ydk::YLeaf admin_mode; //type: WanphyModeInfo
+        ydk::YLeaf port_state; //type: uint32
+        ydk::YLeaf section_lof; //type: uint32
+        ydk::YLeaf section_los; //type: uint32
+        ydk::YLeaf section_bip; //type: uint64
+        ydk::YLeaf line_ais; //type: uint32
+        ydk::YLeaf line_rdi; //type: uint32
+        ydk::YLeaf line_febe; //type: uint64
+        ydk::YLeaf line_bip; //type: uint64
+        ydk::YLeaf path_ais; //type: uint32
+        ydk::YLeaf path_rdi; //type: uint32
+        ydk::YLeaf path_febe; //type: uint64
+        ydk::YLeaf path_bip; //type: uint64
+        ydk::YLeaf path_lop; //type: uint32
+        ydk::YLeaf path_newptr; //type: uint32
+        ydk::YLeaf path_pse; //type: uint32
+        ydk::YLeaf path_nse; //type: uint32
+        ydk::YLeaf wis_alarms_ser; //type: uint32
+        ydk::YLeaf wis_alarms_felcdp; //type: uint32
+        ydk::YLeaf wis_alarms_feaisp; //type: uint32
+        ydk::YLeaf wis_alarms_wlos; //type: uint32
+        ydk::YLeaf wis_alarms_plcd; //type: uint32
+        ydk::YLeaf wis_alarms_lfebip; //type: uint64
+        ydk::YLeaf wis_alarms_pbec; //type: uint64
+        ydk::YLeaf wis_alarms_plmp; //type: uint32
+        ydk::YLeaf sf_ber_threshold; //type: uint32
+        ydk::YLeaf sd_ber_threshold; //type: uint32
+        ydk::YLeaf sf_ber_report; //type: WanphyAlarmRepStatus
+        ydk::YLeaf sd_ber_report; //type: WanphyAlarmRepStatus
+        ydk::YLeaf operational_mode; //type: WanphyModeInfo
+        ydk::YLeaf remote_ip; //type: string
+        ydk::YLeaf register_p_febe; //type: uint32
+        ydk::YLeaf register_l_fe_bip; //type: uint32
+        ydk::YLeaf register_l_bip; //type: uint32
+        ydk::YLeaf register_p_bec; //type: uint32
+        ydk::YLeaf register_s_bip; //type: uint32
+        ydk::YLeaf register_j1_rx0; //type: uint32
+        ydk::YLeaf register_j1_rx1; //type: uint32
+        ydk::YLeaf register_j1_rx2; //type: uint32
+        ydk::YLeaf register_j1_rx3; //type: uint32
+        ydk::YLeaf register_j1_rx4; //type: uint32
+        ydk::YLeaf register_j1_rx5; //type: uint32
+        ydk::YLeaf register_j1_rx6; //type: uint32
+        ydk::YLeaf register_j1_rx7; //type: uint32
+        ydk::YLeaf wanphy_poll_timer; //type: uint32
 
 }; // Wanphy::Controllers::Controller::Info
 
-class WanphyAlarmRepStatusEnum : public Enum
+class WanphyAlarmRepStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class WanphyModeInfoEnum : public Enum
+class WanphyModeInfo : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf lan;
-        static const Enum::YLeaf wan;
+        static const ydk::Enum::YLeaf lan;
+        static const ydk::Enum::YLeaf wan;
 
 };
 

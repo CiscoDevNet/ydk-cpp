@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_alarmgr_server_oper {
 
-class Alarms : public Entity
+class Alarms : public ydk::Entity
 {
     public:
         Alarms();
@@ -18,15 +18,18 @@ class Alarms : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Detail; //type: Alarms::Detail
         class Brief; //type: Alarms::Brief
@@ -37,7 +40,7 @@ class Alarms : public Entity
 }; // Alarms
 
 
-class Alarms::Detail : public Entity
+class Alarms::Detail : public ydk::Entity
 {
     public:
         Detail();
@@ -45,11 +48,13 @@ class Alarms::Detail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DetailSystem; //type: Alarms::Detail::DetailSystem
         class DetailCard; //type: Alarms::Detail::DetailCard
@@ -60,7 +65,7 @@ class Alarms::Detail : public Entity
 }; // Alarms::Detail
 
 
-class Alarms::Detail::DetailSystem : public Entity
+class Alarms::Detail::DetailSystem : public ydk::Entity
 {
     public:
         DetailSystem();
@@ -68,11 +73,13 @@ class Alarms::Detail::DetailSystem : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Active; //type: Alarms::Detail::DetailSystem::Active
         class History; //type: Alarms::Detail::DetailSystem::History
@@ -89,7 +96,7 @@ class Alarms::Detail::DetailSystem : public Entity
 }; // Alarms::Detail::DetailSystem
 
 
-class Alarms::Detail::DetailSystem::Active : public Entity
+class Alarms::Detail::DetailSystem::Active : public ydk::Entity
 {
     public:
         Active();
@@ -97,11 +104,13 @@ class Alarms::Detail::DetailSystem::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AlarmInfo; //type: Alarms::Detail::DetailSystem::Active::AlarmInfo
 
@@ -110,7 +119,7 @@ class Alarms::Detail::DetailSystem::Active : public Entity
 }; // Alarms::Detail::DetailSystem::Active
 
 
-class Alarms::Detail::DetailSystem::Active::AlarmInfo : public Entity
+class Alarms::Detail::DetailSystem::Active::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -118,31 +127,33 @@ class Alarms::Detail::DetailSystem::Active::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf location; //type: string
-        YLeaf aid; //type: string
-        YLeaf tag; //type: string
-        YLeaf module; //type: string
-        YLeaf eid; //type: string
-        YLeaf reporting_agent_id; //type: uint32
-        YLeaf pending_sync; //type: boolean
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf status; //type: AlarmStatusEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf clear_time; //type: string
-        YLeaf clear_timestamp; //type: uint64
-        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
-        YLeaf type; //type: AlarmEventEnum
-        YLeaf interface; //type: string
-        YLeaf alarm_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf aid; //type: string
+        ydk::YLeaf tag; //type: string
+        ydk::YLeaf module; //type: string
+        ydk::YLeaf eid; //type: string
+        ydk::YLeaf reporting_agent_id; //type: uint32
+        ydk::YLeaf pending_sync; //type: boolean
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf status; //type: AlarmStatus
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf service_affecting; //type: AlarmServiceAffecting
+        ydk::YLeaf type; //type: AlarmEvent
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf alarm_name; //type: string
         class Otn; //type: Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn
         class Tca; //type: Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca
 
@@ -152,7 +163,7 @@ class Alarms::Detail::DetailSystem::Active::AlarmInfo : public Entity
 }; // Alarms::Detail::DetailSystem::Active::AlarmInfo
 
 
-class Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn : public Entity
+class Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn : public ydk::Entity
 {
     public:
         Otn();
@@ -160,19 +171,21 @@ class Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: AlarmDirectionEnum
-        YLeaf notification_source; //type: AlarmNotificationSrcEnum
+        ydk::YLeaf direction; //type: AlarmDirection
+        ydk::YLeaf notification_source; //type: AlarmNotificationSrc
 
 }; // Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn
 
 
-class Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca : public Entity
+class Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca : public ydk::Entity
 {
     public:
         Tca();
@@ -180,20 +193,22 @@ class Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_value; //type: string
-        YLeaf current_value; //type: string
-        YLeaf bucket_type; //type: TimingBucketEnum
+        ydk::YLeaf threshold_value; //type: string
+        ydk::YLeaf current_value; //type: string
+        ydk::YLeaf bucket_type; //type: TimingBucket
 
 }; // Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca
 
 
-class Alarms::Detail::DetailSystem::History : public Entity
+class Alarms::Detail::DetailSystem::History : public ydk::Entity
 {
     public:
         History();
@@ -201,11 +216,13 @@ class Alarms::Detail::DetailSystem::History : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AlarmInfo; //type: Alarms::Detail::DetailSystem::History::AlarmInfo
 
@@ -214,7 +231,7 @@ class Alarms::Detail::DetailSystem::History : public Entity
 }; // Alarms::Detail::DetailSystem::History
 
 
-class Alarms::Detail::DetailSystem::History::AlarmInfo : public Entity
+class Alarms::Detail::DetailSystem::History::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -222,31 +239,33 @@ class Alarms::Detail::DetailSystem::History::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf location; //type: string
-        YLeaf aid; //type: string
-        YLeaf tag; //type: string
-        YLeaf module; //type: string
-        YLeaf eid; //type: string
-        YLeaf reporting_agent_id; //type: uint32
-        YLeaf pending_sync; //type: boolean
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf status; //type: AlarmStatusEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf clear_time; //type: string
-        YLeaf clear_timestamp; //type: uint64
-        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
-        YLeaf type; //type: AlarmEventEnum
-        YLeaf interface; //type: string
-        YLeaf alarm_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf aid; //type: string
+        ydk::YLeaf tag; //type: string
+        ydk::YLeaf module; //type: string
+        ydk::YLeaf eid; //type: string
+        ydk::YLeaf reporting_agent_id; //type: uint32
+        ydk::YLeaf pending_sync; //type: boolean
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf status; //type: AlarmStatus
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf service_affecting; //type: AlarmServiceAffecting
+        ydk::YLeaf type; //type: AlarmEvent
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf alarm_name; //type: string
         class Otn; //type: Alarms::Detail::DetailSystem::History::AlarmInfo::Otn
         class Tca; //type: Alarms::Detail::DetailSystem::History::AlarmInfo::Tca
 
@@ -256,7 +275,7 @@ class Alarms::Detail::DetailSystem::History::AlarmInfo : public Entity
 }; // Alarms::Detail::DetailSystem::History::AlarmInfo
 
 
-class Alarms::Detail::DetailSystem::History::AlarmInfo::Otn : public Entity
+class Alarms::Detail::DetailSystem::History::AlarmInfo::Otn : public ydk::Entity
 {
     public:
         Otn();
@@ -264,19 +283,21 @@ class Alarms::Detail::DetailSystem::History::AlarmInfo::Otn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: AlarmDirectionEnum
-        YLeaf notification_source; //type: AlarmNotificationSrcEnum
+        ydk::YLeaf direction; //type: AlarmDirection
+        ydk::YLeaf notification_source; //type: AlarmNotificationSrc
 
 }; // Alarms::Detail::DetailSystem::History::AlarmInfo::Otn
 
 
-class Alarms::Detail::DetailSystem::History::AlarmInfo::Tca : public Entity
+class Alarms::Detail::DetailSystem::History::AlarmInfo::Tca : public ydk::Entity
 {
     public:
         Tca();
@@ -284,20 +305,22 @@ class Alarms::Detail::DetailSystem::History::AlarmInfo::Tca : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_value; //type: string
-        YLeaf current_value; //type: string
-        YLeaf bucket_type; //type: TimingBucketEnum
+        ydk::YLeaf threshold_value; //type: string
+        ydk::YLeaf current_value; //type: string
+        ydk::YLeaf bucket_type; //type: TimingBucket
 
 }; // Alarms::Detail::DetailSystem::History::AlarmInfo::Tca
 
 
-class Alarms::Detail::DetailSystem::Suppressed : public Entity
+class Alarms::Detail::DetailSystem::Suppressed : public ydk::Entity
 {
     public:
         Suppressed();
@@ -305,11 +328,13 @@ class Alarms::Detail::DetailSystem::Suppressed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SuppressedInfo; //type: Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo
 
@@ -318,7 +343,7 @@ class Alarms::Detail::DetailSystem::Suppressed : public Entity
 }; // Alarms::Detail::DetailSystem::Suppressed
 
 
-class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo : public Entity
+class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo : public ydk::Entity
 {
     public:
         SuppressedInfo();
@@ -326,30 +351,32 @@ class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf location; //type: string
-        YLeaf aid; //type: string
-        YLeaf tag; //type: string
-        YLeaf module; //type: string
-        YLeaf eid; //type: string
-        YLeaf reporting_agent_id; //type: uint32
-        YLeaf pending_sync; //type: boolean
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf status; //type: AlarmStatusEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf suppressed_time; //type: string
-        YLeaf suppressed_timestamp; //type: uint64
-        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
-        YLeaf interface; //type: string
-        YLeaf alarm_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf aid; //type: string
+        ydk::YLeaf tag; //type: string
+        ydk::YLeaf module; //type: string
+        ydk::YLeaf eid; //type: string
+        ydk::YLeaf reporting_agent_id; //type: uint32
+        ydk::YLeaf pending_sync; //type: boolean
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf status; //type: AlarmStatus
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf suppressed_time; //type: string
+        ydk::YLeaf suppressed_timestamp; //type: uint64
+        ydk::YLeaf service_affecting; //type: AlarmServiceAffecting
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf alarm_name; //type: string
         class Otn; //type: Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn> otn;
@@ -357,7 +384,7 @@ class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo : public Entity
 }; // Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo
 
 
-class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn : public Entity
+class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn : public ydk::Entity
 {
     public:
         Otn();
@@ -365,19 +392,21 @@ class Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: AlarmDirectionEnum
-        YLeaf notification_source; //type: AlarmNotificationSrcEnum
+        ydk::YLeaf direction; //type: AlarmDirection
+        ydk::YLeaf notification_source; //type: AlarmNotificationSrc
 
 }; // Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn
 
 
-class Alarms::Detail::DetailSystem::Stats : public Entity
+class Alarms::Detail::DetailSystem::Stats : public ydk::Entity
 {
     public:
         Stats();
@@ -385,32 +414,34 @@ class Alarms::Detail::DetailSystem::Stats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reported; //type: uint64
-        YLeaf dropped; //type: uint64
-        YLeaf active; //type: uint64
-        YLeaf history; //type: uint64
-        YLeaf suppressed; //type: uint64
-        YLeaf sysadmin_active; //type: uint64
-        YLeaf sysadmin_history; //type: uint64
-        YLeaf sysadmin_suppressed; //type: uint64
-        YLeaf dropped_invalid_aid; //type: uint32
-        YLeaf dropped_insuff_mem; //type: uint32
-        YLeaf dropped_db_error; //type: uint32
-        YLeaf dropped_clear_without_set; //type: uint32
-        YLeaf dropped_duplicate; //type: uint32
-        YLeaf cache_hit; //type: uint32
-        YLeaf cache_miss; //type: uint32
+        ydk::YLeaf reported; //type: uint64
+        ydk::YLeaf dropped; //type: uint64
+        ydk::YLeaf active; //type: uint64
+        ydk::YLeaf history; //type: uint64
+        ydk::YLeaf suppressed; //type: uint64
+        ydk::YLeaf sysadmin_active; //type: uint64
+        ydk::YLeaf sysadmin_history; //type: uint64
+        ydk::YLeaf sysadmin_suppressed; //type: uint64
+        ydk::YLeaf dropped_invalid_aid; //type: uint32
+        ydk::YLeaf dropped_insuff_mem; //type: uint32
+        ydk::YLeaf dropped_db_error; //type: uint32
+        ydk::YLeaf dropped_clear_without_set; //type: uint32
+        ydk::YLeaf dropped_duplicate; //type: uint32
+        ydk::YLeaf cache_hit; //type: uint32
+        ydk::YLeaf cache_miss; //type: uint32
 
 }; // Alarms::Detail::DetailSystem::Stats
 
 
-class Alarms::Detail::DetailSystem::Clients : public Entity
+class Alarms::Detail::DetailSystem::Clients : public ydk::Entity
 {
     public:
         Clients();
@@ -418,11 +449,13 @@ class Alarms::Detail::DetailSystem::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ClientInfo; //type: Alarms::Detail::DetailSystem::Clients::ClientInfo
 
@@ -431,7 +464,7 @@ class Alarms::Detail::DetailSystem::Clients : public Entity
 }; // Alarms::Detail::DetailSystem::Clients
 
 
-class Alarms::Detail::DetailSystem::Clients::ClientInfo : public Entity
+class Alarms::Detail::DetailSystem::Clients::ClientInfo : public ydk::Entity
 {
     public:
         ClientInfo();
@@ -439,33 +472,35 @@ class Alarms::Detail::DetailSystem::Clients::ClientInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf id; //type: uint32
-        YLeaf location; //type: string
-        YLeaf handle; //type: string
-        YLeaf state; //type: AlarmClientStateEnum
-        YLeaf type; //type: AlarmClientEnum
-        YLeaf filter_disp; //type: boolean
-        YLeaf subscriber_id; //type: uint32
-        YLeaf filter_severity; //type: AlarmSeverityEnum
-        YLeaf filter_state; //type: AlarmStatusEnum
-        YLeaf filter_group; //type: AlarmGroupsEnum
-        YLeaf connect_count; //type: uint32
-        YLeaf connect_timestamp; //type: string
-        YLeaf get_count; //type: uint32
-        YLeaf subscribe_count; //type: uint32
-        YLeaf report_count; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf handle; //type: string
+        ydk::YLeaf state; //type: AlarmClientState
+        ydk::YLeaf type; //type: AlarmClient
+        ydk::YLeaf filter_disp; //type: boolean
+        ydk::YLeaf subscriber_id; //type: uint32
+        ydk::YLeaf filter_severity; //type: AlarmSeverity
+        ydk::YLeaf filter_state; //type: AlarmStatus
+        ydk::YLeaf filter_group; //type: AlarmGroups
+        ydk::YLeaf connect_count; //type: uint32
+        ydk::YLeaf connect_timestamp; //type: string
+        ydk::YLeaf get_count; //type: uint32
+        ydk::YLeaf subscribe_count; //type: uint32
+        ydk::YLeaf report_count; //type: uint32
 
 }; // Alarms::Detail::DetailSystem::Clients::ClientInfo
 
 
-class Alarms::Detail::DetailCard : public Entity
+class Alarms::Detail::DetailCard : public ydk::Entity
 {
     public:
         DetailCard();
@@ -473,11 +508,13 @@ class Alarms::Detail::DetailCard : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DetailLocations; //type: Alarms::Detail::DetailCard::DetailLocations
 
@@ -486,7 +523,7 @@ class Alarms::Detail::DetailCard : public Entity
 }; // Alarms::Detail::DetailCard
 
 
-class Alarms::Detail::DetailCard::DetailLocations : public Entity
+class Alarms::Detail::DetailCard::DetailLocations : public ydk::Entity
 {
     public:
         DetailLocations();
@@ -494,11 +531,13 @@ class Alarms::Detail::DetailCard::DetailLocations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DetailLocation; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation
 
@@ -507,7 +546,7 @@ class Alarms::Detail::DetailCard::DetailLocations : public Entity
 }; // Alarms::Detail::DetailCard::DetailLocations
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation : public ydk::Entity
 {
     public:
         DetailLocation();
@@ -515,13 +554,15 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_id; //type: string
+        ydk::YLeaf node_id; //type: string
         class Active; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active
         class History; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History
         class Suppressed; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed
@@ -537,7 +578,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation : public Entit
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active : public ydk::Entity
 {
     public:
         Active();
@@ -545,11 +586,13 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AlarmInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo
 
@@ -558,7 +601,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active : publ
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -566,31 +609,33 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Alarm
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf location; //type: string
-        YLeaf aid; //type: string
-        YLeaf tag; //type: string
-        YLeaf module; //type: string
-        YLeaf eid; //type: string
-        YLeaf reporting_agent_id; //type: uint32
-        YLeaf pending_sync; //type: boolean
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf status; //type: AlarmStatusEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf clear_time; //type: string
-        YLeaf clear_timestamp; //type: uint64
-        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
-        YLeaf type; //type: AlarmEventEnum
-        YLeaf interface; //type: string
-        YLeaf alarm_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf aid; //type: string
+        ydk::YLeaf tag; //type: string
+        ydk::YLeaf module; //type: string
+        ydk::YLeaf eid; //type: string
+        ydk::YLeaf reporting_agent_id; //type: uint32
+        ydk::YLeaf pending_sync; //type: boolean
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf status; //type: AlarmStatus
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf service_affecting; //type: AlarmServiceAffecting
+        ydk::YLeaf type; //type: AlarmEvent
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf alarm_name; //type: string
         class Otn; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn
         class Tca; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca
 
@@ -600,7 +645,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Alarm
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn : public ydk::Entity
 {
     public:
         Otn();
@@ -608,19 +653,21 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Alarm
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: AlarmDirectionEnum
-        YLeaf notification_source; //type: AlarmNotificationSrcEnum
+        ydk::YLeaf direction; //type: AlarmDirection
+        ydk::YLeaf notification_source; //type: AlarmNotificationSrc
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca : public ydk::Entity
 {
     public:
         Tca();
@@ -628,20 +675,22 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Alarm
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_value; //type: string
-        YLeaf current_value; //type: string
-        YLeaf bucket_type; //type: TimingBucketEnum
+        ydk::YLeaf threshold_value; //type: string
+        ydk::YLeaf current_value; //type: string
+        ydk::YLeaf bucket_type; //type: TimingBucket
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History : public ydk::Entity
 {
     public:
         History();
@@ -649,11 +698,13 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AlarmInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo
 
@@ -662,7 +713,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History : pub
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -670,31 +721,33 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf location; //type: string
-        YLeaf aid; //type: string
-        YLeaf tag; //type: string
-        YLeaf module; //type: string
-        YLeaf eid; //type: string
-        YLeaf reporting_agent_id; //type: uint32
-        YLeaf pending_sync; //type: boolean
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf status; //type: AlarmStatusEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf clear_time; //type: string
-        YLeaf clear_timestamp; //type: uint64
-        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
-        YLeaf type; //type: AlarmEventEnum
-        YLeaf interface; //type: string
-        YLeaf alarm_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf aid; //type: string
+        ydk::YLeaf tag; //type: string
+        ydk::YLeaf module; //type: string
+        ydk::YLeaf eid; //type: string
+        ydk::YLeaf reporting_agent_id; //type: uint32
+        ydk::YLeaf pending_sync; //type: boolean
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf status; //type: AlarmStatus
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf service_affecting; //type: AlarmServiceAffecting
+        ydk::YLeaf type; //type: AlarmEvent
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf alarm_name; //type: string
         class Otn; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn
         class Tca; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca
 
@@ -704,7 +757,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alar
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn : public ydk::Entity
 {
     public:
         Otn();
@@ -712,19 +765,21 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: AlarmDirectionEnum
-        YLeaf notification_source; //type: AlarmNotificationSrcEnum
+        ydk::YLeaf direction; //type: AlarmDirection
+        ydk::YLeaf notification_source; //type: AlarmNotificationSrc
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca : public ydk::Entity
 {
     public:
         Tca();
@@ -732,20 +787,22 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_value; //type: string
-        YLeaf current_value; //type: string
-        YLeaf bucket_type; //type: TimingBucketEnum
+        ydk::YLeaf threshold_value; //type: string
+        ydk::YLeaf current_value; //type: string
+        ydk::YLeaf bucket_type; //type: TimingBucket
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed : public ydk::Entity
 {
     public:
         Suppressed();
@@ -753,11 +810,13 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SuppressedInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo
 
@@ -766,7 +825,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed : 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo : public ydk::Entity
 {
     public:
         SuppressedInfo();
@@ -774,30 +833,32 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf location; //type: string
-        YLeaf aid; //type: string
-        YLeaf tag; //type: string
-        YLeaf module; //type: string
-        YLeaf eid; //type: string
-        YLeaf reporting_agent_id; //type: uint32
-        YLeaf pending_sync; //type: boolean
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf status; //type: AlarmStatusEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf suppressed_time; //type: string
-        YLeaf suppressed_timestamp; //type: uint64
-        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
-        YLeaf interface; //type: string
-        YLeaf alarm_name; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf aid; //type: string
+        ydk::YLeaf tag; //type: string
+        ydk::YLeaf module; //type: string
+        ydk::YLeaf eid; //type: string
+        ydk::YLeaf reporting_agent_id; //type: uint32
+        ydk::YLeaf pending_sync; //type: boolean
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf status; //type: AlarmStatus
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf suppressed_time; //type: string
+        ydk::YLeaf suppressed_timestamp; //type: uint64
+        ydk::YLeaf service_affecting; //type: AlarmServiceAffecting
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf alarm_name; //type: string
         class Otn; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn
 
         std::shared_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn> otn;
@@ -805,7 +866,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::S
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn : public ydk::Entity
 {
     public:
         Otn();
@@ -813,19 +874,21 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf direction; //type: AlarmDirectionEnum
-        YLeaf notification_source; //type: AlarmNotificationSrcEnum
+        ydk::YLeaf direction; //type: AlarmDirection
+        ydk::YLeaf notification_source; //type: AlarmNotificationSrc
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats : public ydk::Entity
 {
     public:
         Stats();
@@ -833,32 +896,34 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reported; //type: uint64
-        YLeaf dropped; //type: uint64
-        YLeaf active; //type: uint64
-        YLeaf history; //type: uint64
-        YLeaf suppressed; //type: uint64
-        YLeaf sysadmin_active; //type: uint64
-        YLeaf sysadmin_history; //type: uint64
-        YLeaf sysadmin_suppressed; //type: uint64
-        YLeaf dropped_invalid_aid; //type: uint32
-        YLeaf dropped_insuff_mem; //type: uint32
-        YLeaf dropped_db_error; //type: uint32
-        YLeaf dropped_clear_without_set; //type: uint32
-        YLeaf dropped_duplicate; //type: uint32
-        YLeaf cache_hit; //type: uint32
-        YLeaf cache_miss; //type: uint32
+        ydk::YLeaf reported; //type: uint64
+        ydk::YLeaf dropped; //type: uint64
+        ydk::YLeaf active; //type: uint64
+        ydk::YLeaf history; //type: uint64
+        ydk::YLeaf suppressed; //type: uint64
+        ydk::YLeaf sysadmin_active; //type: uint64
+        ydk::YLeaf sysadmin_history; //type: uint64
+        ydk::YLeaf sysadmin_suppressed; //type: uint64
+        ydk::YLeaf dropped_invalid_aid; //type: uint32
+        ydk::YLeaf dropped_insuff_mem; //type: uint32
+        ydk::YLeaf dropped_db_error; //type: uint32
+        ydk::YLeaf dropped_clear_without_set; //type: uint32
+        ydk::YLeaf dropped_duplicate; //type: uint32
+        ydk::YLeaf cache_hit; //type: uint32
+        ydk::YLeaf cache_miss; //type: uint32
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients : public ydk::Entity
 {
     public:
         Clients();
@@ -866,11 +931,13 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ClientInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo
 
@@ -879,7 +946,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients : pub
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients
 
 
-class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo : public Entity
+class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo : public ydk::Entity
 {
     public:
         ClientInfo();
@@ -887,33 +954,35 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::Clie
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf id; //type: uint32
-        YLeaf location; //type: string
-        YLeaf handle; //type: string
-        YLeaf state; //type: AlarmClientStateEnum
-        YLeaf type; //type: AlarmClientEnum
-        YLeaf filter_disp; //type: boolean
-        YLeaf subscriber_id; //type: uint32
-        YLeaf filter_severity; //type: AlarmSeverityEnum
-        YLeaf filter_state; //type: AlarmStatusEnum
-        YLeaf filter_group; //type: AlarmGroupsEnum
-        YLeaf connect_count; //type: uint32
-        YLeaf connect_timestamp; //type: string
-        YLeaf get_count; //type: uint32
-        YLeaf subscribe_count; //type: uint32
-        YLeaf report_count; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf handle; //type: string
+        ydk::YLeaf state; //type: AlarmClientState
+        ydk::YLeaf type; //type: AlarmClient
+        ydk::YLeaf filter_disp; //type: boolean
+        ydk::YLeaf subscriber_id; //type: uint32
+        ydk::YLeaf filter_severity; //type: AlarmSeverity
+        ydk::YLeaf filter_state; //type: AlarmStatus
+        ydk::YLeaf filter_group; //type: AlarmGroups
+        ydk::YLeaf connect_count; //type: uint32
+        ydk::YLeaf connect_timestamp; //type: string
+        ydk::YLeaf get_count; //type: uint32
+        ydk::YLeaf subscribe_count; //type: uint32
+        ydk::YLeaf report_count; //type: uint32
 
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo
 
 
-class Alarms::Brief : public Entity
+class Alarms::Brief : public ydk::Entity
 {
     public:
         Brief();
@@ -921,11 +990,13 @@ class Alarms::Brief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BriefCard; //type: Alarms::Brief::BriefCard
         class BriefSystem; //type: Alarms::Brief::BriefSystem
@@ -936,7 +1007,7 @@ class Alarms::Brief : public Entity
 }; // Alarms::Brief
 
 
-class Alarms::Brief::BriefCard : public Entity
+class Alarms::Brief::BriefCard : public ydk::Entity
 {
     public:
         BriefCard();
@@ -944,11 +1015,13 @@ class Alarms::Brief::BriefCard : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BriefLocations; //type: Alarms::Brief::BriefCard::BriefLocations
 
@@ -957,7 +1030,7 @@ class Alarms::Brief::BriefCard : public Entity
 }; // Alarms::Brief::BriefCard
 
 
-class Alarms::Brief::BriefCard::BriefLocations : public Entity
+class Alarms::Brief::BriefCard::BriefLocations : public ydk::Entity
 {
     public:
         BriefLocations();
@@ -965,11 +1038,13 @@ class Alarms::Brief::BriefCard::BriefLocations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BriefLocation; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation
 
@@ -978,7 +1053,7 @@ class Alarms::Brief::BriefCard::BriefLocations : public Entity
 }; // Alarms::Brief::BriefCard::BriefLocations
 
 
-class Alarms::Brief::BriefCard::BriefLocations::BriefLocation : public Entity
+class Alarms::Brief::BriefCard::BriefLocations::BriefLocation : public ydk::Entity
 {
     public:
         BriefLocation();
@@ -986,13 +1061,15 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_id; //type: string
+        ydk::YLeaf node_id; //type: string
         class Active; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active
         class History; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History
         class Suppressed; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed
@@ -1004,7 +1081,7 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation : public Entity
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation
 
 
-class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active : public Entity
+class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active : public ydk::Entity
 {
     public:
         Active();
@@ -1012,11 +1089,13 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AlarmInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
 
@@ -1025,7 +1104,7 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active : public E
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active
 
 
-class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo : public Entity
+class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -1033,25 +1112,27 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location; //type: string
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf clear_time; //type: string
-        YLeaf clear_timestamp; //type: uint64
-        YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf description; //type: string
 
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
 
 
-class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History : public Entity
+class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History : public ydk::Entity
 {
     public:
         History();
@@ -1059,11 +1140,13 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AlarmInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo
 
@@ -1072,7 +1155,7 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History : public 
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History
 
 
-class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo : public Entity
+class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -1080,25 +1163,27 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInf
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location; //type: string
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf clear_time; //type: string
-        YLeaf clear_timestamp; //type: uint64
-        YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf description; //type: string
 
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo
 
 
-class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed : public Entity
+class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed : public ydk::Entity
 {
     public:
         Suppressed();
@@ -1106,11 +1191,13 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SuppressedInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo
 
@@ -1119,7 +1206,7 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed : publ
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed
 
 
-class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo : public Entity
+class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo : public ydk::Entity
 {
     public:
         SuppressedInfo();
@@ -1127,25 +1214,27 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::Suppr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location; //type: string
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf suppressed_time; //type: string
-        YLeaf suppressed_timestamp; //type: uint64
-        YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf suppressed_time; //type: string
+        ydk::YLeaf suppressed_timestamp; //type: uint64
+        ydk::YLeaf description; //type: string
 
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo
 
 
-class Alarms::Brief::BriefSystem : public Entity
+class Alarms::Brief::BriefSystem : public ydk::Entity
 {
     public:
         BriefSystem();
@@ -1153,11 +1242,13 @@ class Alarms::Brief::BriefSystem : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Active; //type: Alarms::Brief::BriefSystem::Active
         class History; //type: Alarms::Brief::BriefSystem::History
@@ -1170,7 +1261,7 @@ class Alarms::Brief::BriefSystem : public Entity
 }; // Alarms::Brief::BriefSystem
 
 
-class Alarms::Brief::BriefSystem::Active : public Entity
+class Alarms::Brief::BriefSystem::Active : public ydk::Entity
 {
     public:
         Active();
@@ -1178,11 +1269,13 @@ class Alarms::Brief::BriefSystem::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AlarmInfo; //type: Alarms::Brief::BriefSystem::Active::AlarmInfo
 
@@ -1191,7 +1284,7 @@ class Alarms::Brief::BriefSystem::Active : public Entity
 }; // Alarms::Brief::BriefSystem::Active
 
 
-class Alarms::Brief::BriefSystem::Active::AlarmInfo : public Entity
+class Alarms::Brief::BriefSystem::Active::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -1199,25 +1292,27 @@ class Alarms::Brief::BriefSystem::Active::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location; //type: string
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf clear_time; //type: string
-        YLeaf clear_timestamp; //type: uint64
-        YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf description; //type: string
 
 }; // Alarms::Brief::BriefSystem::Active::AlarmInfo
 
 
-class Alarms::Brief::BriefSystem::History : public Entity
+class Alarms::Brief::BriefSystem::History : public ydk::Entity
 {
     public:
         History();
@@ -1225,11 +1320,13 @@ class Alarms::Brief::BriefSystem::History : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AlarmInfo; //type: Alarms::Brief::BriefSystem::History::AlarmInfo
 
@@ -1238,7 +1335,7 @@ class Alarms::Brief::BriefSystem::History : public Entity
 }; // Alarms::Brief::BriefSystem::History
 
 
-class Alarms::Brief::BriefSystem::History::AlarmInfo : public Entity
+class Alarms::Brief::BriefSystem::History::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -1246,25 +1343,27 @@ class Alarms::Brief::BriefSystem::History::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location; //type: string
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf clear_time; //type: string
-        YLeaf clear_timestamp; //type: uint64
-        YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf description; //type: string
 
 }; // Alarms::Brief::BriefSystem::History::AlarmInfo
 
 
-class Alarms::Brief::BriefSystem::Suppressed : public Entity
+class Alarms::Brief::BriefSystem::Suppressed : public ydk::Entity
 {
     public:
         Suppressed();
@@ -1272,11 +1371,13 @@ class Alarms::Brief::BriefSystem::Suppressed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SuppressedInfo; //type: Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
 
@@ -1285,7 +1386,7 @@ class Alarms::Brief::BriefSystem::Suppressed : public Entity
 }; // Alarms::Brief::BriefSystem::Suppressed
 
 
-class Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo : public Entity
+class Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo : public ydk::Entity
 {
     public:
         SuppressedInfo();
@@ -1293,138 +1394,140 @@ class Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf location; //type: string
-        YLeaf severity; //type: AlarmSeverityEnum
-        YLeaf group; //type: AlarmGroupsEnum
-        YLeaf set_time; //type: string
-        YLeaf set_timestamp; //type: uint64
-        YLeaf suppressed_time; //type: string
-        YLeaf suppressed_timestamp; //type: uint64
-        YLeaf description; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf suppressed_time; //type: string
+        ydk::YLeaf suppressed_timestamp; //type: uint64
+        ydk::YLeaf description; //type: string
 
 }; // Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
 
-class TimingBucketEnum : public Enum
+class AlarmServiceAffecting : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_specified;
-        static const Enum::YLeaf fifteen_min;
-        static const Enum::YLeaf one_day;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_service_affecting;
+        static const ydk::Enum::YLeaf service_affecting;
 
 };
 
-class AlarmSeverityEnum : public Enum
+class AlarmGroups : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf not_reported;
-        static const Enum::YLeaf not_alarmed;
-        static const Enum::YLeaf minor;
-        static const Enum::YLeaf major;
-        static const Enum::YLeaf critical;
-        static const Enum::YLeaf severity_last;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf environ;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf fabric;
+        static const ydk::Enum::YLeaf power;
+        static const ydk::Enum::YLeaf software;
+        static const ydk::Enum::YLeaf slice;
+        static const ydk::Enum::YLeaf cpu;
+        static const ydk::Enum::YLeaf controller;
+        static const ydk::Enum::YLeaf sonet;
+        static const ydk::Enum::YLeaf otn;
+        static const ydk::Enum::YLeaf sdh_controller;
+        static const ydk::Enum::YLeaf asic;
+        static const ydk::Enum::YLeaf fpd_infra;
+        static const ydk::Enum::YLeaf shelf;
+        static const ydk::Enum::YLeaf mpa;
+        static const ydk::Enum::YLeaf ots;
+        static const ydk::Enum::YLeaf last;
 
 };
 
-class AlarmDirectionEnum : public Enum
+class AlarmClient : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_specified;
-        static const Enum::YLeaf send;
-        static const Enum::YLeaf receive;
-        static const Enum::YLeaf send_receive;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf producer;
+        static const ydk::Enum::YLeaf consumer;
+        static const ydk::Enum::YLeaf subscriber;
+        static const ydk::Enum::YLeaf client_last;
 
 };
 
-class AlarmStatusEnum : public Enum
+class AlarmClientState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf set;
-        static const Enum::YLeaf clear;
-        static const Enum::YLeaf suppress;
-        static const Enum::YLeaf last;
+        static const ydk::Enum::YLeaf start;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf registered;
+        static const ydk::Enum::YLeaf disconnected;
+        static const ydk::Enum::YLeaf ready;
 
 };
 
-class AlarmServiceAffectingEnum : public Enum
+class AlarmNotificationSrc : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf not_service_affecting;
-        static const Enum::YLeaf service_affecting;
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf near_end;
+        static const ydk::Enum::YLeaf far_end;
 
 };
 
-class AlarmNotificationSrcEnum : public Enum
+class TimingBucket : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_specified;
-        static const Enum::YLeaf near_end;
-        static const Enum::YLeaf far_end;
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf fifteen_min;
+        static const ydk::Enum::YLeaf one_day;
 
 };
 
-class AlarmEventEnum : public Enum
+class AlarmEvent : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf default_;
-        static const Enum::YLeaf notification;
-        static const Enum::YLeaf last;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf notification;
+        static const ydk::Enum::YLeaf last;
 
 };
 
-class AlarmClientEnum : public Enum
+class AlarmStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf producer;
-        static const Enum::YLeaf consumer;
-        static const Enum::YLeaf subscriber;
-        static const Enum::YLeaf client_last;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf suppress;
+        static const ydk::Enum::YLeaf last;
 
 };
 
-class AlarmClientStateEnum : public Enum
+class AlarmDirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf start;
-        static const Enum::YLeaf init;
-        static const Enum::YLeaf connecting;
-        static const Enum::YLeaf connected;
-        static const Enum::YLeaf registered;
-        static const Enum::YLeaf disconnected;
-        static const Enum::YLeaf ready;
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf send;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf send_receive;
 
 };
 
-class AlarmGroupsEnum : public Enum
+class AlarmSeverity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf environ;
-        static const Enum::YLeaf ethernet;
-        static const Enum::YLeaf fabric;
-        static const Enum::YLeaf power;
-        static const Enum::YLeaf software;
-        static const Enum::YLeaf slice;
-        static const Enum::YLeaf cpu;
-        static const Enum::YLeaf controller;
-        static const Enum::YLeaf sonet;
-        static const Enum::YLeaf otn;
-        static const Enum::YLeaf sdh_controller;
-        static const Enum::YLeaf asic;
-        static const Enum::YLeaf fpd_infra;
-        static const Enum::YLeaf shelf;
-        static const Enum::YLeaf mpa;
-        static const Enum::YLeaf ots;
-        static const Enum::YLeaf last;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_reported;
+        static const ydk::Enum::YLeaf not_alarmed;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf severity_last;
 
 };
 

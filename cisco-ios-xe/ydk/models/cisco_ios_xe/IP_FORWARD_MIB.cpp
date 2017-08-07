@@ -6,20 +6,22 @@
 #include "generated_entity_lookup.hpp"
 #include "IP_FORWARD_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace IP_FORWARD_MIB {
 
 IpForwardMib::IpForwardMib()
     :
-    ipcidrroutetable_(std::make_shared<IpForwardMib::Ipcidrroutetable>())
-	,ipforward_(std::make_shared<IpForwardMib::Ipforward>())
-	,ipforwardtable_(std::make_shared<IpForwardMib::Ipforwardtable>())
+    ipcidrroutetable(std::make_shared<IpForwardMib::Ipcidrroutetable>())
+	,ipforward(std::make_shared<IpForwardMib::Ipforward>())
+	,ipforwardtable(std::make_shared<IpForwardMib::Ipforwardtable>())
 {
-    ipcidrroutetable_->parent = this;
+    ipcidrroutetable->parent = this;
 
-    ipforward_->parent = this;
+    ipforward->parent = this;
 
-    ipforwardtable_->parent = this;
+    ipforwardtable->parent = this;
 
     yang_name = "IP-FORWARD-MIB"; yang_parent_name = "IP-FORWARD-MIB";
 }
@@ -30,17 +32,17 @@ IpForwardMib::~IpForwardMib()
 
 bool IpForwardMib::has_data() const
 {
-    return (ipcidrroutetable_ !=  nullptr && ipcidrroutetable_->has_data())
-	|| (ipforward_ !=  nullptr && ipforward_->has_data())
-	|| (ipforwardtable_ !=  nullptr && ipforwardtable_->has_data());
+    return (ipcidrroutetable !=  nullptr && ipcidrroutetable->has_data())
+	|| (ipforward !=  nullptr && ipforward->has_data())
+	|| (ipforwardtable !=  nullptr && ipforwardtable->has_data());
 }
 
 bool IpForwardMib::has_operation() const
 {
-    return is_set(operation)
-	|| (ipcidrroutetable_ !=  nullptr && ipcidrroutetable_->has_operation())
-	|| (ipforward_ !=  nullptr && ipforward_->has_operation())
-	|| (ipforwardtable_ !=  nullptr && ipforwardtable_->has_operation());
+    return is_set(yfilter)
+	|| (ipcidrroutetable !=  nullptr && ipcidrroutetable->has_operation())
+	|| (ipforward !=  nullptr && ipforward->has_operation())
+	|| (ipforwardtable !=  nullptr && ipforwardtable->has_operation());
 }
 
 std::string IpForwardMib::get_segment_path() const
@@ -74,29 +76,29 @@ std::shared_ptr<Entity> IpForwardMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "ipCidrRouteTable")
     {
-        if(ipcidrroutetable_ == nullptr)
+        if(ipcidrroutetable == nullptr)
         {
-            ipcidrroutetable_ = std::make_shared<IpForwardMib::Ipcidrroutetable>();
+            ipcidrroutetable = std::make_shared<IpForwardMib::Ipcidrroutetable>();
         }
-        return ipcidrroutetable_;
+        return ipcidrroutetable;
     }
 
     if(child_yang_name == "ipForward")
     {
-        if(ipforward_ == nullptr)
+        if(ipforward == nullptr)
         {
-            ipforward_ = std::make_shared<IpForwardMib::Ipforward>();
+            ipforward = std::make_shared<IpForwardMib::Ipforward>();
         }
-        return ipforward_;
+        return ipforward;
     }
 
     if(child_yang_name == "ipForwardTable")
     {
-        if(ipforwardtable_ == nullptr)
+        if(ipforwardtable == nullptr)
         {
-            ipforwardtable_ = std::make_shared<IpForwardMib::Ipforwardtable>();
+            ipforwardtable = std::make_shared<IpForwardMib::Ipforwardtable>();
         }
-        return ipforwardtable_;
+        return ipforwardtable;
     }
 
     return nullptr;
@@ -105,25 +107,29 @@ std::shared_ptr<Entity> IpForwardMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ipcidrroutetable_ != nullptr)
+    if(ipcidrroutetable != nullptr)
     {
-        children["ipCidrRouteTable"] = ipcidrroutetable_;
+        children["ipCidrRouteTable"] = ipcidrroutetable;
     }
 
-    if(ipforward_ != nullptr)
+    if(ipforward != nullptr)
     {
-        children["ipForward"] = ipforward_;
+        children["ipForward"] = ipforward;
     }
 
-    if(ipforwardtable_ != nullptr)
+    if(ipforwardtable != nullptr)
     {
-        children["ipForwardTable"] = ipforwardtable_;
+        children["ipForwardTable"] = ipforwardtable;
     }
 
     return children;
 }
 
-void IpForwardMib::set_value(const std::string & value_path, std::string value)
+void IpForwardMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IpForwardMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -147,6 +153,18 @@ augment_capabilities_function IpForwardMib::get_augment_capabilities_function() 
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> IpForwardMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool IpForwardMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipCidrRouteTable" || name == "ipForward" || name == "ipForwardTable")
+        return true;
+    return false;
+}
+
 IpForwardMib::Ipforward::Ipforward()
     :
     ipcidrroutenumber{YType::uint32, "ipCidrRouteNumber"},
@@ -167,9 +185,9 @@ bool IpForwardMib::Ipforward::has_data() const
 
 bool IpForwardMib::Ipforward::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipcidrroutenumber.operation)
-	|| is_set(ipforwardnumber.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipcidrroutenumber.yfilter)
+	|| ydk::is_set(ipforwardnumber.yfilter);
 }
 
 std::string IpForwardMib::Ipforward::get_segment_path() const
@@ -195,8 +213,8 @@ const EntityPath IpForwardMib::Ipforward::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipcidrroutenumber.is_set || is_set(ipcidrroutenumber.operation)) leaf_name_data.push_back(ipcidrroutenumber.get_name_leafdata());
-    if (ipforwardnumber.is_set || is_set(ipforwardnumber.operation)) leaf_name_data.push_back(ipforwardnumber.get_name_leafdata());
+    if (ipcidrroutenumber.is_set || is_set(ipcidrroutenumber.yfilter)) leaf_name_data.push_back(ipcidrroutenumber.get_name_leafdata());
+    if (ipforwardnumber.is_set || is_set(ipforwardnumber.yfilter)) leaf_name_data.push_back(ipforwardnumber.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -215,16 +233,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipforward::get_chil
     return children;
 }
 
-void IpForwardMib::Ipforward::set_value(const std::string & value_path, std::string value)
+void IpForwardMib::Ipforward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipCidrRouteNumber")
     {
         ipcidrroutenumber = value;
+        ipcidrroutenumber.value_namespace = name_space;
+        ipcidrroutenumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardNumber")
     {
         ipforwardnumber = value;
+        ipforwardnumber.value_namespace = name_space;
+        ipforwardnumber.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpForwardMib::Ipforward::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipCidrRouteNumber")
+    {
+        ipcidrroutenumber.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardNumber")
+    {
+        ipforwardnumber.yfilter = yfilter;
+    }
+}
+
+bool IpForwardMib::Ipforward::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipCidrRouteNumber" || name == "ipForwardNumber")
+        return true;
+    return false;
 }
 
 IpForwardMib::Ipforwardtable::Ipforwardtable()
@@ -238,9 +279,9 @@ IpForwardMib::Ipforwardtable::~Ipforwardtable()
 
 bool IpForwardMib::Ipforwardtable::has_data() const
 {
-    for (std::size_t index=0; index<ipforwardentry_.size(); index++)
+    for (std::size_t index=0; index<ipforwardentry.size(); index++)
     {
-        if(ipforwardentry_[index]->has_data())
+        if(ipforwardentry[index]->has_data())
             return true;
     }
     return false;
@@ -248,12 +289,12 @@ bool IpForwardMib::Ipforwardtable::has_data() const
 
 bool IpForwardMib::Ipforwardtable::has_operation() const
 {
-    for (std::size_t index=0; index<ipforwardentry_.size(); index++)
+    for (std::size_t index=0; index<ipforwardentry.size(); index++)
     {
-        if(ipforwardentry_[index]->has_operation())
+        if(ipforwardentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpForwardMib::Ipforwardtable::get_segment_path() const
@@ -290,7 +331,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipforwardtable::get_child_by_name(const st
 {
     if(child_yang_name == "ipForwardEntry")
     {
-        for(auto const & c : ipforwardentry_)
+        for(auto const & c : ipforwardentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -300,7 +341,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipforwardtable::get_child_by_name(const st
         }
         auto c = std::make_shared<IpForwardMib::Ipforwardtable::Ipforwardentry>();
         c->parent = this;
-        ipforwardentry_.push_back(c);
+        ipforwardentry.push_back(c);
         return c;
     }
 
@@ -310,7 +351,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipforwardtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipforwardtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipforwardentry_)
+    for (auto const & c : ipforwardentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -318,8 +359,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipforwardtable::get
     return children;
 }
 
-void IpForwardMib::Ipforwardtable::set_value(const std::string & value_path, std::string value)
+void IpForwardMib::Ipforwardtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpForwardMib::Ipforwardtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpForwardMib::Ipforwardtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipForwardEntry")
+        return true;
+    return false;
 }
 
 IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardentry()
@@ -368,22 +420,22 @@ bool IpForwardMib::Ipforwardtable::Ipforwardentry::has_data() const
 
 bool IpForwardMib::Ipforwardtable::Ipforwardentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipforwarddest.operation)
-	|| is_set(ipforwardproto.operation)
-	|| is_set(ipforwardpolicy.operation)
-	|| is_set(ipforwardnexthop.operation)
-	|| is_set(ipforwardage.operation)
-	|| is_set(ipforwardifindex.operation)
-	|| is_set(ipforwardinfo.operation)
-	|| is_set(ipforwardmask.operation)
-	|| is_set(ipforwardmetric1.operation)
-	|| is_set(ipforwardmetric2.operation)
-	|| is_set(ipforwardmetric3.operation)
-	|| is_set(ipforwardmetric4.operation)
-	|| is_set(ipforwardmetric5.operation)
-	|| is_set(ipforwardnexthopas.operation)
-	|| is_set(ipforwardtype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipforwarddest.yfilter)
+	|| ydk::is_set(ipforwardproto.yfilter)
+	|| ydk::is_set(ipforwardpolicy.yfilter)
+	|| ydk::is_set(ipforwardnexthop.yfilter)
+	|| ydk::is_set(ipforwardage.yfilter)
+	|| ydk::is_set(ipforwardifindex.yfilter)
+	|| ydk::is_set(ipforwardinfo.yfilter)
+	|| ydk::is_set(ipforwardmask.yfilter)
+	|| ydk::is_set(ipforwardmetric1.yfilter)
+	|| ydk::is_set(ipforwardmetric2.yfilter)
+	|| ydk::is_set(ipforwardmetric3.yfilter)
+	|| ydk::is_set(ipforwardmetric4.yfilter)
+	|| ydk::is_set(ipforwardmetric5.yfilter)
+	|| ydk::is_set(ipforwardnexthopas.yfilter)
+	|| ydk::is_set(ipforwardtype.yfilter);
 }
 
 std::string IpForwardMib::Ipforwardtable::Ipforwardentry::get_segment_path() const
@@ -409,21 +461,21 @@ const EntityPath IpForwardMib::Ipforwardtable::Ipforwardentry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipforwarddest.is_set || is_set(ipforwarddest.operation)) leaf_name_data.push_back(ipforwarddest.get_name_leafdata());
-    if (ipforwardproto.is_set || is_set(ipforwardproto.operation)) leaf_name_data.push_back(ipforwardproto.get_name_leafdata());
-    if (ipforwardpolicy.is_set || is_set(ipforwardpolicy.operation)) leaf_name_data.push_back(ipforwardpolicy.get_name_leafdata());
-    if (ipforwardnexthop.is_set || is_set(ipforwardnexthop.operation)) leaf_name_data.push_back(ipforwardnexthop.get_name_leafdata());
-    if (ipforwardage.is_set || is_set(ipforwardage.operation)) leaf_name_data.push_back(ipforwardage.get_name_leafdata());
-    if (ipforwardifindex.is_set || is_set(ipforwardifindex.operation)) leaf_name_data.push_back(ipforwardifindex.get_name_leafdata());
-    if (ipforwardinfo.is_set || is_set(ipforwardinfo.operation)) leaf_name_data.push_back(ipforwardinfo.get_name_leafdata());
-    if (ipforwardmask.is_set || is_set(ipforwardmask.operation)) leaf_name_data.push_back(ipforwardmask.get_name_leafdata());
-    if (ipforwardmetric1.is_set || is_set(ipforwardmetric1.operation)) leaf_name_data.push_back(ipforwardmetric1.get_name_leafdata());
-    if (ipforwardmetric2.is_set || is_set(ipforwardmetric2.operation)) leaf_name_data.push_back(ipforwardmetric2.get_name_leafdata());
-    if (ipforwardmetric3.is_set || is_set(ipforwardmetric3.operation)) leaf_name_data.push_back(ipforwardmetric3.get_name_leafdata());
-    if (ipforwardmetric4.is_set || is_set(ipforwardmetric4.operation)) leaf_name_data.push_back(ipforwardmetric4.get_name_leafdata());
-    if (ipforwardmetric5.is_set || is_set(ipforwardmetric5.operation)) leaf_name_data.push_back(ipforwardmetric5.get_name_leafdata());
-    if (ipforwardnexthopas.is_set || is_set(ipforwardnexthopas.operation)) leaf_name_data.push_back(ipforwardnexthopas.get_name_leafdata());
-    if (ipforwardtype.is_set || is_set(ipforwardtype.operation)) leaf_name_data.push_back(ipforwardtype.get_name_leafdata());
+    if (ipforwarddest.is_set || is_set(ipforwarddest.yfilter)) leaf_name_data.push_back(ipforwarddest.get_name_leafdata());
+    if (ipforwardproto.is_set || is_set(ipforwardproto.yfilter)) leaf_name_data.push_back(ipforwardproto.get_name_leafdata());
+    if (ipforwardpolicy.is_set || is_set(ipforwardpolicy.yfilter)) leaf_name_data.push_back(ipforwardpolicy.get_name_leafdata());
+    if (ipforwardnexthop.is_set || is_set(ipforwardnexthop.yfilter)) leaf_name_data.push_back(ipforwardnexthop.get_name_leafdata());
+    if (ipforwardage.is_set || is_set(ipforwardage.yfilter)) leaf_name_data.push_back(ipforwardage.get_name_leafdata());
+    if (ipforwardifindex.is_set || is_set(ipforwardifindex.yfilter)) leaf_name_data.push_back(ipforwardifindex.get_name_leafdata());
+    if (ipforwardinfo.is_set || is_set(ipforwardinfo.yfilter)) leaf_name_data.push_back(ipforwardinfo.get_name_leafdata());
+    if (ipforwardmask.is_set || is_set(ipforwardmask.yfilter)) leaf_name_data.push_back(ipforwardmask.get_name_leafdata());
+    if (ipforwardmetric1.is_set || is_set(ipforwardmetric1.yfilter)) leaf_name_data.push_back(ipforwardmetric1.get_name_leafdata());
+    if (ipforwardmetric2.is_set || is_set(ipforwardmetric2.yfilter)) leaf_name_data.push_back(ipforwardmetric2.get_name_leafdata());
+    if (ipforwardmetric3.is_set || is_set(ipforwardmetric3.yfilter)) leaf_name_data.push_back(ipforwardmetric3.get_name_leafdata());
+    if (ipforwardmetric4.is_set || is_set(ipforwardmetric4.yfilter)) leaf_name_data.push_back(ipforwardmetric4.get_name_leafdata());
+    if (ipforwardmetric5.is_set || is_set(ipforwardmetric5.yfilter)) leaf_name_data.push_back(ipforwardmetric5.get_name_leafdata());
+    if (ipforwardnexthopas.is_set || is_set(ipforwardnexthopas.yfilter)) leaf_name_data.push_back(ipforwardnexthopas.get_name_leafdata());
+    if (ipforwardtype.is_set || is_set(ipforwardtype.yfilter)) leaf_name_data.push_back(ipforwardtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -442,68 +494,169 @@ std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipforwardtable::Ipf
     return children;
 }
 
-void IpForwardMib::Ipforwardtable::Ipforwardentry::set_value(const std::string & value_path, std::string value)
+void IpForwardMib::Ipforwardtable::Ipforwardentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipForwardDest")
     {
         ipforwarddest = value;
+        ipforwarddest.value_namespace = name_space;
+        ipforwarddest.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardProto")
     {
         ipforwardproto = value;
+        ipforwardproto.value_namespace = name_space;
+        ipforwardproto.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardPolicy")
     {
         ipforwardpolicy = value;
+        ipforwardpolicy.value_namespace = name_space;
+        ipforwardpolicy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardNextHop")
     {
         ipforwardnexthop = value;
+        ipforwardnexthop.value_namespace = name_space;
+        ipforwardnexthop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardAge")
     {
         ipforwardage = value;
+        ipforwardage.value_namespace = name_space;
+        ipforwardage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardIfIndex")
     {
         ipforwardifindex = value;
+        ipforwardifindex.value_namespace = name_space;
+        ipforwardifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardInfo")
     {
         ipforwardinfo = value;
+        ipforwardinfo.value_namespace = name_space;
+        ipforwardinfo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardMask")
     {
         ipforwardmask = value;
+        ipforwardmask.value_namespace = name_space;
+        ipforwardmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardMetric1")
     {
         ipforwardmetric1 = value;
+        ipforwardmetric1.value_namespace = name_space;
+        ipforwardmetric1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardMetric2")
     {
         ipforwardmetric2 = value;
+        ipforwardmetric2.value_namespace = name_space;
+        ipforwardmetric2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardMetric3")
     {
         ipforwardmetric3 = value;
+        ipforwardmetric3.value_namespace = name_space;
+        ipforwardmetric3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardMetric4")
     {
         ipforwardmetric4 = value;
+        ipforwardmetric4.value_namespace = name_space;
+        ipforwardmetric4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardMetric5")
     {
         ipforwardmetric5 = value;
+        ipforwardmetric5.value_namespace = name_space;
+        ipforwardmetric5.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardNextHopAS")
     {
         ipforwardnexthopas = value;
+        ipforwardnexthopas.value_namespace = name_space;
+        ipforwardnexthopas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipForwardType")
     {
         ipforwardtype = value;
+        ipforwardtype.value_namespace = name_space;
+        ipforwardtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpForwardMib::Ipforwardtable::Ipforwardentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipForwardDest")
+    {
+        ipforwarddest.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardProto")
+    {
+        ipforwardproto.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardPolicy")
+    {
+        ipforwardpolicy.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardNextHop")
+    {
+        ipforwardnexthop.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardAge")
+    {
+        ipforwardage.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardIfIndex")
+    {
+        ipforwardifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardInfo")
+    {
+        ipforwardinfo.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardMask")
+    {
+        ipforwardmask.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardMetric1")
+    {
+        ipforwardmetric1.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardMetric2")
+    {
+        ipforwardmetric2.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardMetric3")
+    {
+        ipforwardmetric3.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardMetric4")
+    {
+        ipforwardmetric4.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardMetric5")
+    {
+        ipforwardmetric5.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardNextHopAS")
+    {
+        ipforwardnexthopas.yfilter = yfilter;
+    }
+    if(value_path == "ipForwardType")
+    {
+        ipforwardtype.yfilter = yfilter;
+    }
+}
+
+bool IpForwardMib::Ipforwardtable::Ipforwardentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipForwardDest" || name == "ipForwardProto" || name == "ipForwardPolicy" || name == "ipForwardNextHop" || name == "ipForwardAge" || name == "ipForwardIfIndex" || name == "ipForwardInfo" || name == "ipForwardMask" || name == "ipForwardMetric1" || name == "ipForwardMetric2" || name == "ipForwardMetric3" || name == "ipForwardMetric4" || name == "ipForwardMetric5" || name == "ipForwardNextHopAS" || name == "ipForwardType")
+        return true;
+    return false;
 }
 
 IpForwardMib::Ipcidrroutetable::Ipcidrroutetable()
@@ -517,9 +670,9 @@ IpForwardMib::Ipcidrroutetable::~Ipcidrroutetable()
 
 bool IpForwardMib::Ipcidrroutetable::has_data() const
 {
-    for (std::size_t index=0; index<ipcidrrouteentry_.size(); index++)
+    for (std::size_t index=0; index<ipcidrrouteentry.size(); index++)
     {
-        if(ipcidrrouteentry_[index]->has_data())
+        if(ipcidrrouteentry[index]->has_data())
             return true;
     }
     return false;
@@ -527,12 +680,12 @@ bool IpForwardMib::Ipcidrroutetable::has_data() const
 
 bool IpForwardMib::Ipcidrroutetable::has_operation() const
 {
-    for (std::size_t index=0; index<ipcidrrouteentry_.size(); index++)
+    for (std::size_t index=0; index<ipcidrrouteentry.size(); index++)
     {
-        if(ipcidrrouteentry_[index]->has_operation())
+        if(ipcidrrouteentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IpForwardMib::Ipcidrroutetable::get_segment_path() const
@@ -569,7 +722,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipcidrroutetable::get_child_by_name(const 
 {
     if(child_yang_name == "ipCidrRouteEntry")
     {
-        for(auto const & c : ipcidrrouteentry_)
+        for(auto const & c : ipcidrrouteentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -579,7 +732,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipcidrroutetable::get_child_by_name(const 
         }
         auto c = std::make_shared<IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry>();
         c->parent = this;
-        ipcidrrouteentry_.push_back(c);
+        ipcidrrouteentry.push_back(c);
         return c;
     }
 
@@ -589,7 +742,7 @@ std::shared_ptr<Entity> IpForwardMib::Ipcidrroutetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipcidrroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ipcidrrouteentry_)
+    for (auto const & c : ipcidrrouteentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -597,8 +750,19 @@ std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipcidrroutetable::g
     return children;
 }
 
-void IpForwardMib::Ipcidrroutetable::set_value(const std::string & value_path, std::string value)
+void IpForwardMib::Ipcidrroutetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void IpForwardMib::Ipcidrroutetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool IpForwardMib::Ipcidrroutetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipCidrRouteEntry")
+        return true;
+    return false;
 }
 
 IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteentry()
@@ -649,23 +813,23 @@ bool IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::has_data() const
 
 bool IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipcidrroutedest.operation)
-	|| is_set(ipcidrroutemask.operation)
-	|| is_set(ipcidrroutetos.operation)
-	|| is_set(ipcidrroutenexthop.operation)
-	|| is_set(ipcidrrouteage.operation)
-	|| is_set(ipcidrrouteifindex.operation)
-	|| is_set(ipcidrrouteinfo.operation)
-	|| is_set(ipcidrroutemetric1.operation)
-	|| is_set(ipcidrroutemetric2.operation)
-	|| is_set(ipcidrroutemetric3.operation)
-	|| is_set(ipcidrroutemetric4.operation)
-	|| is_set(ipcidrroutemetric5.operation)
-	|| is_set(ipcidrroutenexthopas.operation)
-	|| is_set(ipcidrrouteproto.operation)
-	|| is_set(ipcidrroutestatus.operation)
-	|| is_set(ipcidrroutetype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipcidrroutedest.yfilter)
+	|| ydk::is_set(ipcidrroutemask.yfilter)
+	|| ydk::is_set(ipcidrroutetos.yfilter)
+	|| ydk::is_set(ipcidrroutenexthop.yfilter)
+	|| ydk::is_set(ipcidrrouteage.yfilter)
+	|| ydk::is_set(ipcidrrouteifindex.yfilter)
+	|| ydk::is_set(ipcidrrouteinfo.yfilter)
+	|| ydk::is_set(ipcidrroutemetric1.yfilter)
+	|| ydk::is_set(ipcidrroutemetric2.yfilter)
+	|| ydk::is_set(ipcidrroutemetric3.yfilter)
+	|| ydk::is_set(ipcidrroutemetric4.yfilter)
+	|| ydk::is_set(ipcidrroutemetric5.yfilter)
+	|| ydk::is_set(ipcidrroutenexthopas.yfilter)
+	|| ydk::is_set(ipcidrrouteproto.yfilter)
+	|| ydk::is_set(ipcidrroutestatus.yfilter)
+	|| ydk::is_set(ipcidrroutetype.yfilter);
 }
 
 std::string IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::get_segment_path() const
@@ -691,22 +855,22 @@ const EntityPath IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipcidrroutedest.is_set || is_set(ipcidrroutedest.operation)) leaf_name_data.push_back(ipcidrroutedest.get_name_leafdata());
-    if (ipcidrroutemask.is_set || is_set(ipcidrroutemask.operation)) leaf_name_data.push_back(ipcidrroutemask.get_name_leafdata());
-    if (ipcidrroutetos.is_set || is_set(ipcidrroutetos.operation)) leaf_name_data.push_back(ipcidrroutetos.get_name_leafdata());
-    if (ipcidrroutenexthop.is_set || is_set(ipcidrroutenexthop.operation)) leaf_name_data.push_back(ipcidrroutenexthop.get_name_leafdata());
-    if (ipcidrrouteage.is_set || is_set(ipcidrrouteage.operation)) leaf_name_data.push_back(ipcidrrouteage.get_name_leafdata());
-    if (ipcidrrouteifindex.is_set || is_set(ipcidrrouteifindex.operation)) leaf_name_data.push_back(ipcidrrouteifindex.get_name_leafdata());
-    if (ipcidrrouteinfo.is_set || is_set(ipcidrrouteinfo.operation)) leaf_name_data.push_back(ipcidrrouteinfo.get_name_leafdata());
-    if (ipcidrroutemetric1.is_set || is_set(ipcidrroutemetric1.operation)) leaf_name_data.push_back(ipcidrroutemetric1.get_name_leafdata());
-    if (ipcidrroutemetric2.is_set || is_set(ipcidrroutemetric2.operation)) leaf_name_data.push_back(ipcidrroutemetric2.get_name_leafdata());
-    if (ipcidrroutemetric3.is_set || is_set(ipcidrroutemetric3.operation)) leaf_name_data.push_back(ipcidrroutemetric3.get_name_leafdata());
-    if (ipcidrroutemetric4.is_set || is_set(ipcidrroutemetric4.operation)) leaf_name_data.push_back(ipcidrroutemetric4.get_name_leafdata());
-    if (ipcidrroutemetric5.is_set || is_set(ipcidrroutemetric5.operation)) leaf_name_data.push_back(ipcidrroutemetric5.get_name_leafdata());
-    if (ipcidrroutenexthopas.is_set || is_set(ipcidrroutenexthopas.operation)) leaf_name_data.push_back(ipcidrroutenexthopas.get_name_leafdata());
-    if (ipcidrrouteproto.is_set || is_set(ipcidrrouteproto.operation)) leaf_name_data.push_back(ipcidrrouteproto.get_name_leafdata());
-    if (ipcidrroutestatus.is_set || is_set(ipcidrroutestatus.operation)) leaf_name_data.push_back(ipcidrroutestatus.get_name_leafdata());
-    if (ipcidrroutetype.is_set || is_set(ipcidrroutetype.operation)) leaf_name_data.push_back(ipcidrroutetype.get_name_leafdata());
+    if (ipcidrroutedest.is_set || is_set(ipcidrroutedest.yfilter)) leaf_name_data.push_back(ipcidrroutedest.get_name_leafdata());
+    if (ipcidrroutemask.is_set || is_set(ipcidrroutemask.yfilter)) leaf_name_data.push_back(ipcidrroutemask.get_name_leafdata());
+    if (ipcidrroutetos.is_set || is_set(ipcidrroutetos.yfilter)) leaf_name_data.push_back(ipcidrroutetos.get_name_leafdata());
+    if (ipcidrroutenexthop.is_set || is_set(ipcidrroutenexthop.yfilter)) leaf_name_data.push_back(ipcidrroutenexthop.get_name_leafdata());
+    if (ipcidrrouteage.is_set || is_set(ipcidrrouteage.yfilter)) leaf_name_data.push_back(ipcidrrouteage.get_name_leafdata());
+    if (ipcidrrouteifindex.is_set || is_set(ipcidrrouteifindex.yfilter)) leaf_name_data.push_back(ipcidrrouteifindex.get_name_leafdata());
+    if (ipcidrrouteinfo.is_set || is_set(ipcidrrouteinfo.yfilter)) leaf_name_data.push_back(ipcidrrouteinfo.get_name_leafdata());
+    if (ipcidrroutemetric1.is_set || is_set(ipcidrroutemetric1.yfilter)) leaf_name_data.push_back(ipcidrroutemetric1.get_name_leafdata());
+    if (ipcidrroutemetric2.is_set || is_set(ipcidrroutemetric2.yfilter)) leaf_name_data.push_back(ipcidrroutemetric2.get_name_leafdata());
+    if (ipcidrroutemetric3.is_set || is_set(ipcidrroutemetric3.yfilter)) leaf_name_data.push_back(ipcidrroutemetric3.get_name_leafdata());
+    if (ipcidrroutemetric4.is_set || is_set(ipcidrroutemetric4.yfilter)) leaf_name_data.push_back(ipcidrroutemetric4.get_name_leafdata());
+    if (ipcidrroutemetric5.is_set || is_set(ipcidrroutemetric5.yfilter)) leaf_name_data.push_back(ipcidrroutemetric5.get_name_leafdata());
+    if (ipcidrroutenexthopas.is_set || is_set(ipcidrroutenexthopas.yfilter)) leaf_name_data.push_back(ipcidrroutenexthopas.get_name_leafdata());
+    if (ipcidrrouteproto.is_set || is_set(ipcidrrouteproto.yfilter)) leaf_name_data.push_back(ipcidrrouteproto.get_name_leafdata());
+    if (ipcidrroutestatus.is_set || is_set(ipcidrroutestatus.yfilter)) leaf_name_data.push_back(ipcidrroutestatus.get_name_leafdata());
+    if (ipcidrroutetype.is_set || is_set(ipcidrroutetype.yfilter)) leaf_name_data.push_back(ipcidrroutetype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -725,116 +889,223 @@ std::map<std::string, std::shared_ptr<Entity>> IpForwardMib::Ipcidrroutetable::I
     return children;
 }
 
-void IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::set_value(const std::string & value_path, std::string value)
+void IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipCidrRouteDest")
     {
         ipcidrroutedest = value;
+        ipcidrroutedest.value_namespace = name_space;
+        ipcidrroutedest.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteMask")
     {
         ipcidrroutemask = value;
+        ipcidrroutemask.value_namespace = name_space;
+        ipcidrroutemask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteTos")
     {
         ipcidrroutetos = value;
+        ipcidrroutetos.value_namespace = name_space;
+        ipcidrroutetos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteNextHop")
     {
         ipcidrroutenexthop = value;
+        ipcidrroutenexthop.value_namespace = name_space;
+        ipcidrroutenexthop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteAge")
     {
         ipcidrrouteage = value;
+        ipcidrrouteage.value_namespace = name_space;
+        ipcidrrouteage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteIfIndex")
     {
         ipcidrrouteifindex = value;
+        ipcidrrouteifindex.value_namespace = name_space;
+        ipcidrrouteifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteInfo")
     {
         ipcidrrouteinfo = value;
+        ipcidrrouteinfo.value_namespace = name_space;
+        ipcidrrouteinfo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteMetric1")
     {
         ipcidrroutemetric1 = value;
+        ipcidrroutemetric1.value_namespace = name_space;
+        ipcidrroutemetric1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteMetric2")
     {
         ipcidrroutemetric2 = value;
+        ipcidrroutemetric2.value_namespace = name_space;
+        ipcidrroutemetric2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteMetric3")
     {
         ipcidrroutemetric3 = value;
+        ipcidrroutemetric3.value_namespace = name_space;
+        ipcidrroutemetric3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteMetric4")
     {
         ipcidrroutemetric4 = value;
+        ipcidrroutemetric4.value_namespace = name_space;
+        ipcidrroutemetric4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteMetric5")
     {
         ipcidrroutemetric5 = value;
+        ipcidrroutemetric5.value_namespace = name_space;
+        ipcidrroutemetric5.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteNextHopAS")
     {
         ipcidrroutenexthopas = value;
+        ipcidrroutenexthopas.value_namespace = name_space;
+        ipcidrroutenexthopas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteProto")
     {
         ipcidrrouteproto = value;
+        ipcidrrouteproto.value_namespace = name_space;
+        ipcidrrouteproto.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteStatus")
     {
         ipcidrroutestatus = value;
+        ipcidrroutestatus.value_namespace = name_space;
+        ipcidrroutestatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipCidrRouteType")
     {
         ipcidrroutetype = value;
+        ipcidrroutetype.value_namespace = name_space;
+        ipcidrroutetype.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::other {1, "other"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::local {2, "local"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::netmgmt {3, "netmgmt"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::icmp {4, "icmp"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::egp {5, "egp"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::ggp {6, "ggp"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::hello {7, "hello"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::rip {8, "rip"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::is_is {9, "is-is"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::es_is {10, "es-is"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::ciscoIgrp {11, "ciscoIgrp"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::bbnSpfIgp {12, "bbnSpfIgp"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::ospf {13, "ospf"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::bgp {14, "bgp"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardprotoEnum::idpr {15, "idpr"};
+void IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipCidrRouteDest")
+    {
+        ipcidrroutedest.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteMask")
+    {
+        ipcidrroutemask.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteTos")
+    {
+        ipcidrroutetos.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteNextHop")
+    {
+        ipcidrroutenexthop.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteAge")
+    {
+        ipcidrrouteage.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteIfIndex")
+    {
+        ipcidrrouteifindex.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteInfo")
+    {
+        ipcidrrouteinfo.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteMetric1")
+    {
+        ipcidrroutemetric1.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteMetric2")
+    {
+        ipcidrroutemetric2.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteMetric3")
+    {
+        ipcidrroutemetric3.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteMetric4")
+    {
+        ipcidrroutemetric4.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteMetric5")
+    {
+        ipcidrroutemetric5.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteNextHopAS")
+    {
+        ipcidrroutenexthopas.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteProto")
+    {
+        ipcidrrouteproto.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteStatus")
+    {
+        ipcidrroutestatus.yfilter = yfilter;
+    }
+    if(value_path == "ipCidrRouteType")
+    {
+        ipcidrroutetype.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardtypeEnum::other {1, "other"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardtypeEnum::invalid {2, "invalid"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardtypeEnum::local {3, "local"};
-const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::IpforwardtypeEnum::remote {4, "remote"};
+bool IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipCidrRouteDest" || name == "ipCidrRouteMask" || name == "ipCidrRouteTos" || name == "ipCidrRouteNextHop" || name == "ipCidrRouteAge" || name == "ipCidrRouteIfIndex" || name == "ipCidrRouteInfo" || name == "ipCidrRouteMetric1" || name == "ipCidrRouteMetric2" || name == "ipCidrRouteMetric3" || name == "ipCidrRouteMetric4" || name == "ipCidrRouteMetric5" || name == "ipCidrRouteNextHopAS" || name == "ipCidrRouteProto" || name == "ipCidrRouteStatus" || name == "ipCidrRouteType")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrroutetypeEnum::other {1, "other"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrroutetypeEnum::reject {2, "reject"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrroutetypeEnum::local {3, "local"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrroutetypeEnum::remote {4, "remote"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::other {1, "other"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::local {2, "local"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::netmgmt {3, "netmgmt"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::icmp {4, "icmp"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::egp {5, "egp"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::ggp {6, "ggp"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::hello {7, "hello"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::rip {8, "rip"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::is_is {9, "is-is"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::es_is {10, "es-is"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::ciscoIgrp {11, "ciscoIgrp"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::bbnSpfIgp {12, "bbnSpfIgp"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::ospf {13, "ospf"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::bgp {14, "bgp"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardproto::idpr {15, "idpr"};
 
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::other {1, "other"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::local {2, "local"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::netmgmt {3, "netmgmt"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::icmp {4, "icmp"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::egp {5, "egp"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::ggp {6, "ggp"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::hello {7, "hello"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::rip {8, "rip"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::isIs {9, "isIs"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::esIs {10, "esIs"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::ciscoIgrp {11, "ciscoIgrp"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::bbnSpfIgp {12, "bbnSpfIgp"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::ospf {13, "ospf"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::bgp {14, "bgp"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::idpr {15, "idpr"};
-const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::IpcidrrouteprotoEnum::ciscoEigrp {16, "ciscoEigrp"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardtype::other {1, "other"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardtype::invalid {2, "invalid"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardtype::local {3, "local"};
+const Enum::YLeaf IpForwardMib::Ipforwardtable::Ipforwardentry::Ipforwardtype::remote {4, "remote"};
+
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrroutetype::other {1, "other"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrroutetype::reject {2, "reject"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrroutetype::local {3, "local"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrroutetype::remote {4, "remote"};
+
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::other {1, "other"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::local {2, "local"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::netmgmt {3, "netmgmt"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::icmp {4, "icmp"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::egp {5, "egp"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::ggp {6, "ggp"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::hello {7, "hello"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::rip {8, "rip"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::isIs {9, "isIs"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::esIs {10, "esIs"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::ciscoIgrp {11, "ciscoIgrp"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::bbnSpfIgp {12, "bbnSpfIgp"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::ospf {13, "ospf"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::bgp {14, "bgp"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::idpr {15, "idpr"};
+const Enum::YLeaf IpForwardMib::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto::ciscoEigrp {16, "ciscoEigrp"};
 
 
 }

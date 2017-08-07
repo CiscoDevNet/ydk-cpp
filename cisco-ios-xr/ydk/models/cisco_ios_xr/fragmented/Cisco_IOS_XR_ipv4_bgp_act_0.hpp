@@ -7,77 +7,86 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_act {
 
-class ClearBgpAllGracefulRpc : public Entity
+class ClearBgpAllGraceful : public ydk::Entity
 {
     public:
-        ClearBgpAllGracefulRpc();
-        ~ClearBgpAllGracefulRpc();
+        ClearBgpAllGraceful();
+        ~ClearBgpAllGraceful();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
 
-}; // ClearBgpAllGracefulRpc
+}; // ClearBgpAllGraceful
 
-class ClearBgpAllRpc : public Entity
+class ClearBgpAll : public ydk::Entity
 {
     public:
-        ClearBgpAllRpc();
-        ~ClearBgpAllRpc();
+        ClearBgpAll();
+        ~ClearBgpAll();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
 
-}; // ClearBgpAllRpc
+}; // ClearBgpAll
 
-class ClearBgpIpAddrGracefulRpc : public Entity
+class ClearBgpIpAddrGraceful : public ydk::Entity
 {
     public:
-        ClearBgpIpAddrGracefulRpc();
-        ~ClearBgpIpAddrGracefulRpc();
+        ClearBgpIpAddrGraceful();
+        ~ClearBgpIpAddrGraceful();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpIpAddrGracefulRpc::Input
+        class Input; //type: ClearBgpIpAddrGraceful::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpIpAddrGracefulRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpIpAddrGraceful::Input> input;
         
-}; // ClearBgpIpAddrGracefulRpc
+}; // ClearBgpIpAddrGraceful
 
 
-class ClearBgpIpAddrGracefulRpc::Input : public Entity
+class ClearBgpIpAddrGraceful::Input : public ydk::Entity
 {
     public:
         Input();
@@ -85,42 +94,47 @@ class ClearBgpIpAddrGracefulRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpIpAddrGracefulRpc::Input
+}; // ClearBgpIpAddrGraceful::Input
 
-class ClearBgpIpAddrLongLivedStaleRpc : public Entity
+class ClearBgpIpAddrLongLivedStale : public ydk::Entity
 {
     public:
-        ClearBgpIpAddrLongLivedStaleRpc();
-        ~ClearBgpIpAddrLongLivedStaleRpc();
+        ClearBgpIpAddrLongLivedStale();
+        ~ClearBgpIpAddrLongLivedStale();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpIpAddrLongLivedStaleRpc::Input
+        class Input; //type: ClearBgpIpAddrLongLivedStale::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpIpAddrLongLivedStaleRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpIpAddrLongLivedStale::Input> input;
         
-}; // ClearBgpIpAddrLongLivedStaleRpc
+}; // ClearBgpIpAddrLongLivedStale
 
 
-class ClearBgpIpAddrLongLivedStaleRpc::Input : public Entity
+class ClearBgpIpAddrLongLivedStale::Input : public ydk::Entity
 {
     public:
         Input();
@@ -128,42 +142,47 @@ class ClearBgpIpAddrLongLivedStaleRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpIpAddrLongLivedStaleRpc::Input
+}; // ClearBgpIpAddrLongLivedStale::Input
 
-class ClearBgpIpAddrRpc : public Entity
+class ClearBgpIpAddr : public ydk::Entity
 {
     public:
-        ClearBgpIpAddrRpc();
-        ~ClearBgpIpAddrRpc();
+        ClearBgpIpAddr();
+        ~ClearBgpIpAddr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpIpAddrRpc::Input
+        class Input; //type: ClearBgpIpAddr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpIpAddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpIpAddr::Input> input;
         
-}; // ClearBgpIpAddrRpc
+}; // ClearBgpIpAddr
 
 
-class ClearBgpIpAddrRpc::Input : public Entity
+class ClearBgpIpAddr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -171,42 +190,47 @@ class ClearBgpIpAddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpIpAddrRpc::Input
+}; // ClearBgpIpAddr::Input
 
-class ClearBgpAfiSafiAllSoftInPrefixFilterRpc : public Entity
+class ClearBgpAfiSafiAllSoftInPrefixFilter : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiAllSoftInPrefixFilterRpc();
-        ~ClearBgpAfiSafiAllSoftInPrefixFilterRpc();
+        ClearBgpAfiSafiAllSoftInPrefixFilter();
+        ~ClearBgpAfiSafiAllSoftInPrefixFilter();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input
+        class Input; //type: ClearBgpAfiSafiAllSoftInPrefixFilter::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAllSoftInPrefixFilter::Input> input;
         
-}; // ClearBgpAfiSafiAllSoftInPrefixFilterRpc
+}; // ClearBgpAfiSafiAllSoftInPrefixFilter
 
 
-class ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input : public Entity
+class ClearBgpAfiSafiAllSoftInPrefixFilter::Input : public ydk::Entity
 {
     public:
         Input();
@@ -214,42 +238,47 @@ class ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiAllSoftInPrefixFilterRpc::Input
+}; // ClearBgpAfiSafiAllSoftInPrefixFilter::Input
 
-class ClearBgpAfiSafiAllSoftInRpc : public Entity
+class ClearBgpAfiSafiAllSoftIn : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiAllSoftInRpc();
-        ~ClearBgpAfiSafiAllSoftInRpc();
+        ClearBgpAfiSafiAllSoftIn();
+        ~ClearBgpAfiSafiAllSoftIn();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiAllSoftInRpc::Input
+        class Input; //type: ClearBgpAfiSafiAllSoftIn::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAllSoftInRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAllSoftIn::Input> input;
         
-}; // ClearBgpAfiSafiAllSoftInRpc
+}; // ClearBgpAfiSafiAllSoftIn
 
 
-class ClearBgpAfiSafiAllSoftInRpc::Input : public Entity
+class ClearBgpAfiSafiAllSoftIn::Input : public ydk::Entity
 {
     public:
         Input();
@@ -257,42 +286,47 @@ class ClearBgpAfiSafiAllSoftInRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiAllSoftInRpc::Input
+}; // ClearBgpAfiSafiAllSoftIn::Input
 
-class ClearBgpAfiSafiAllSoftOutRpc : public Entity
+class ClearBgpAfiSafiAllSoftOut : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiAllSoftOutRpc();
-        ~ClearBgpAfiSafiAllSoftOutRpc();
+        ClearBgpAfiSafiAllSoftOut();
+        ~ClearBgpAfiSafiAllSoftOut();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiAllSoftOutRpc::Input
+        class Input; //type: ClearBgpAfiSafiAllSoftOut::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAllSoftOutRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAllSoftOut::Input> input;
         
-}; // ClearBgpAfiSafiAllSoftOutRpc
+}; // ClearBgpAfiSafiAllSoftOut
 
 
-class ClearBgpAfiSafiAllSoftOutRpc::Input : public Entity
+class ClearBgpAfiSafiAllSoftOut::Input : public ydk::Entity
 {
     public:
         Input();
@@ -300,42 +334,47 @@ class ClearBgpAfiSafiAllSoftOutRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiAllSoftOutRpc::Input
+}; // ClearBgpAfiSafiAllSoftOut::Input
 
-class ClearBgpAfiSafiAllSoftRpc : public Entity
+class ClearBgpAfiSafiAllSoft : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiAllSoftRpc();
-        ~ClearBgpAfiSafiAllSoftRpc();
+        ClearBgpAfiSafiAllSoft();
+        ~ClearBgpAfiSafiAllSoft();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiAllSoftRpc::Input
+        class Input; //type: ClearBgpAfiSafiAllSoft::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAllSoftRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAllSoft::Input> input;
         
-}; // ClearBgpAfiSafiAllSoftRpc
+}; // ClearBgpAfiSafiAllSoft
 
 
-class ClearBgpAfiSafiAllSoftRpc::Input : public Entity
+class ClearBgpAfiSafiAllSoft::Input : public ydk::Entity
 {
     public:
         Input();
@@ -343,42 +382,47 @@ class ClearBgpAfiSafiAllSoftRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiAllSoftRpc::Input
+}; // ClearBgpAfiSafiAllSoft::Input
 
-class ClearBgpAfiSafiIpAddrLongLivedStaleRpc : public Entity
+class ClearBgpAfiSafiIpAddrLongLivedStale : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiIpAddrLongLivedStaleRpc();
-        ~ClearBgpAfiSafiIpAddrLongLivedStaleRpc();
+        ClearBgpAfiSafiIpAddrLongLivedStale();
+        ~ClearBgpAfiSafiIpAddrLongLivedStale();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input
+        class Input; //type: ClearBgpAfiSafiIpAddrLongLivedStale::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrLongLivedStale::Input> input;
         
-}; // ClearBgpAfiSafiIpAddrLongLivedStaleRpc
+}; // ClearBgpAfiSafiIpAddrLongLivedStale
 
 
-class ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input : public Entity
+class ClearBgpAfiSafiIpAddrLongLivedStale::Input : public ydk::Entity
 {
     public:
         Input();
@@ -386,43 +430,48 @@ class ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiIpAddrLongLivedStaleRpc::Input
+}; // ClearBgpAfiSafiIpAddrLongLivedStale::Input
 
-class ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc : public Entity
+class ClearBgpAfiSafiIpAddrSoftInPrefixFilter : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc();
-        ~ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc();
+        ClearBgpAfiSafiIpAddrSoftInPrefixFilter();
+        ~ClearBgpAfiSafiIpAddrSoftInPrefixFilter();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input
+        class Input; //type: ClearBgpAfiSafiIpAddrSoftInPrefixFilter::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrSoftInPrefixFilter::Input> input;
         
-}; // ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc
+}; // ClearBgpAfiSafiIpAddrSoftInPrefixFilter
 
 
-class ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input : public Entity
+class ClearBgpAfiSafiIpAddrSoftInPrefixFilter::Input : public ydk::Entity
 {
     public:
         Input();
@@ -430,43 +479,48 @@ class ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiIpAddrSoftInPrefixFilterRpc::Input
+}; // ClearBgpAfiSafiIpAddrSoftInPrefixFilter::Input
 
-class ClearBgpAfiSafiIpAddrSoftInRpc : public Entity
+class ClearBgpAfiSafiIpAddrSoftIn : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiIpAddrSoftInRpc();
-        ~ClearBgpAfiSafiIpAddrSoftInRpc();
+        ClearBgpAfiSafiIpAddrSoftIn();
+        ~ClearBgpAfiSafiIpAddrSoftIn();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiIpAddrSoftInRpc::Input
+        class Input; //type: ClearBgpAfiSafiIpAddrSoftIn::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrSoftInRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrSoftIn::Input> input;
         
-}; // ClearBgpAfiSafiIpAddrSoftInRpc
+}; // ClearBgpAfiSafiIpAddrSoftIn
 
 
-class ClearBgpAfiSafiIpAddrSoftInRpc::Input : public Entity
+class ClearBgpAfiSafiIpAddrSoftIn::Input : public ydk::Entity
 {
     public:
         Input();
@@ -474,43 +528,48 @@ class ClearBgpAfiSafiIpAddrSoftInRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiIpAddrSoftInRpc::Input
+}; // ClearBgpAfiSafiIpAddrSoftIn::Input
 
-class ClearBgpAfiSafiIpAddrSoftOutRpc : public Entity
+class ClearBgpAfiSafiIpAddrSoftOut : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiIpAddrSoftOutRpc();
-        ~ClearBgpAfiSafiIpAddrSoftOutRpc();
+        ClearBgpAfiSafiIpAddrSoftOut();
+        ~ClearBgpAfiSafiIpAddrSoftOut();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiIpAddrSoftOutRpc::Input
+        class Input; //type: ClearBgpAfiSafiIpAddrSoftOut::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrSoftOutRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrSoftOut::Input> input;
         
-}; // ClearBgpAfiSafiIpAddrSoftOutRpc
+}; // ClearBgpAfiSafiIpAddrSoftOut
 
 
-class ClearBgpAfiSafiIpAddrSoftOutRpc::Input : public Entity
+class ClearBgpAfiSafiIpAddrSoftOut::Input : public ydk::Entity
 {
     public:
         Input();
@@ -518,43 +577,48 @@ class ClearBgpAfiSafiIpAddrSoftOutRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiIpAddrSoftOutRpc::Input
+}; // ClearBgpAfiSafiIpAddrSoftOut::Input
 
-class ClearBgpAfiSafiIpAddrSoftRpc : public Entity
+class ClearBgpAfiSafiIpAddrSoft : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiIpAddrSoftRpc();
-        ~ClearBgpAfiSafiIpAddrSoftRpc();
+        ClearBgpAfiSafiIpAddrSoft();
+        ~ClearBgpAfiSafiIpAddrSoft();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiIpAddrSoftRpc::Input
+        class Input; //type: ClearBgpAfiSafiIpAddrSoft::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrSoftRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiIpAddrSoft::Input> input;
         
-}; // ClearBgpAfiSafiIpAddrSoftRpc
+}; // ClearBgpAfiSafiIpAddrSoft
 
 
-class ClearBgpAfiSafiIpAddrSoftRpc::Input : public Entity
+class ClearBgpAfiSafiIpAddrSoft::Input : public ydk::Entity
 {
     public:
         Input();
@@ -562,43 +626,48 @@ class ClearBgpAfiSafiIpAddrSoftRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiIpAddrSoftRpc::Input
+}; // ClearBgpAfiSafiIpAddrSoft::Input
 
-class ClearBgpAfiSafiAsSoftInPrefixFilterRpc : public Entity
+class ClearBgpAfiSafiAsSoftInPrefixFilter : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiAsSoftInPrefixFilterRpc();
-        ~ClearBgpAfiSafiAsSoftInPrefixFilterRpc();
+        ClearBgpAfiSafiAsSoftInPrefixFilter();
+        ~ClearBgpAfiSafiAsSoftInPrefixFilter();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input
+        class Input; //type: ClearBgpAfiSafiAsSoftInPrefixFilter::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAsSoftInPrefixFilter::Input> input;
         
-}; // ClearBgpAfiSafiAsSoftInPrefixFilterRpc
+}; // ClearBgpAfiSafiAsSoftInPrefixFilter
 
 
-class ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input : public Entity
+class ClearBgpAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
 {
     public:
         Input();
@@ -606,43 +675,48 @@ class ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf as_number; //type: one of uint16, union
 
-}; // ClearBgpAfiSafiAsSoftInPrefixFilterRpc::Input
+}; // ClearBgpAfiSafiAsSoftInPrefixFilter::Input
 
-class ClearBgpAfiSafiAsSoftInRpc : public Entity
+class ClearBgpAfiSafiAsSoftIn : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiAsSoftInRpc();
-        ~ClearBgpAfiSafiAsSoftInRpc();
+        ClearBgpAfiSafiAsSoftIn();
+        ~ClearBgpAfiSafiAsSoftIn();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiAsSoftInRpc::Input
+        class Input; //type: ClearBgpAfiSafiAsSoftIn::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAsSoftInRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAsSoftIn::Input> input;
         
-}; // ClearBgpAfiSafiAsSoftInRpc
+}; // ClearBgpAfiSafiAsSoftIn
 
 
-class ClearBgpAfiSafiAsSoftInRpc::Input : public Entity
+class ClearBgpAfiSafiAsSoftIn::Input : public ydk::Entity
 {
     public:
         Input();
@@ -650,43 +724,48 @@ class ClearBgpAfiSafiAsSoftInRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf as_number; //type: one of uint16, union
 
-}; // ClearBgpAfiSafiAsSoftInRpc::Input
+}; // ClearBgpAfiSafiAsSoftIn::Input
 
-class ClearBgpAfiSafiAsSoftOutRpc : public Entity
+class ClearBgpAfiSafiAsSoftOut : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiAsSoftOutRpc();
-        ~ClearBgpAfiSafiAsSoftOutRpc();
+        ClearBgpAfiSafiAsSoftOut();
+        ~ClearBgpAfiSafiAsSoftOut();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiAsSoftOutRpc::Input
+        class Input; //type: ClearBgpAfiSafiAsSoftOut::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAsSoftOutRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAsSoftOut::Input> input;
         
-}; // ClearBgpAfiSafiAsSoftOutRpc
+}; // ClearBgpAfiSafiAsSoftOut
 
 
-class ClearBgpAfiSafiAsSoftOutRpc::Input : public Entity
+class ClearBgpAfiSafiAsSoftOut::Input : public ydk::Entity
 {
     public:
         Input();
@@ -694,43 +773,48 @@ class ClearBgpAfiSafiAsSoftOutRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf as_number; //type: one of uint16, union
 
-}; // ClearBgpAfiSafiAsSoftOutRpc::Input
+}; // ClearBgpAfiSafiAsSoftOut::Input
 
-class ClearBgpAfiSafiAsSoftRpc : public Entity
+class ClearBgpAfiSafiAsSoft : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiAsSoftRpc();
-        ~ClearBgpAfiSafiAsSoftRpc();
+        ClearBgpAfiSafiAsSoft();
+        ~ClearBgpAfiSafiAsSoft();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiAsSoftRpc::Input
+        class Input; //type: ClearBgpAfiSafiAsSoft::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAsSoftRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiAsSoft::Input> input;
         
-}; // ClearBgpAfiSafiAsSoftRpc
+}; // ClearBgpAfiSafiAsSoft
 
 
-class ClearBgpAfiSafiAsSoftRpc::Input : public Entity
+class ClearBgpAfiSafiAsSoft::Input : public ydk::Entity
 {
     public:
         Input();
@@ -738,43 +822,48 @@ class ClearBgpAfiSafiAsSoftRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf as_number; //type: one of uint16, union
 
-}; // ClearBgpAfiSafiAsSoftRpc::Input
+}; // ClearBgpAfiSafiAsSoft::Input
 
-class ClearBgpAfiSafiDampeningIpPrefixRpc : public Entity
+class ClearBgpAfiSafiDampeningIpPrefix : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiDampeningIpPrefixRpc();
-        ~ClearBgpAfiSafiDampeningIpPrefixRpc();
+        ClearBgpAfiSafiDampeningIpPrefix();
+        ~ClearBgpAfiSafiDampeningIpPrefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiDampeningIpPrefixRpc::Input
+        class Input; //type: ClearBgpAfiSafiDampeningIpPrefix::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiDampeningIpPrefixRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiDampeningIpPrefix::Input> input;
         
-}; // ClearBgpAfiSafiDampeningIpPrefixRpc
+}; // ClearBgpAfiSafiDampeningIpPrefix
 
 
-class ClearBgpAfiSafiDampeningIpPrefixRpc::Input : public Entity
+class ClearBgpAfiSafiDampeningIpPrefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -782,43 +871,48 @@ class ClearBgpAfiSafiDampeningIpPrefixRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_prefix; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_prefix; //type: string
 
-}; // ClearBgpAfiSafiDampeningIpPrefixRpc::Input
+}; // ClearBgpAfiSafiDampeningIpPrefix::Input
 
-class ClearBgpAfiSafiDampeningRpc : public Entity
+class ClearBgpAfiSafiDampening : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiDampeningRpc();
-        ~ClearBgpAfiSafiDampeningRpc();
+        ClearBgpAfiSafiDampening();
+        ~ClearBgpAfiSafiDampening();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiDampeningRpc::Input
+        class Input; //type: ClearBgpAfiSafiDampening::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiDampeningRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiDampening::Input> input;
         
-}; // ClearBgpAfiSafiDampeningRpc
+}; // ClearBgpAfiSafiDampening
 
 
-class ClearBgpAfiSafiDampeningRpc::Input : public Entity
+class ClearBgpAfiSafiDampening::Input : public ydk::Entity
 {
     public:
         Input();
@@ -826,42 +920,47 @@ class ClearBgpAfiSafiDampeningRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiDampeningRpc::Input
+}; // ClearBgpAfiSafiDampening::Input
 
-class ClearBgpAfiSafiExternalSoftInPrefixFilterRpc : public Entity
+class ClearBgpAfiSafiExternalSoftInPrefixFilter : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiExternalSoftInPrefixFilterRpc();
-        ~ClearBgpAfiSafiExternalSoftInPrefixFilterRpc();
+        ClearBgpAfiSafiExternalSoftInPrefixFilter();
+        ~ClearBgpAfiSafiExternalSoftInPrefixFilter();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input
+        class Input; //type: ClearBgpAfiSafiExternalSoftInPrefixFilter::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiExternalSoftInPrefixFilter::Input> input;
         
-}; // ClearBgpAfiSafiExternalSoftInPrefixFilterRpc
+}; // ClearBgpAfiSafiExternalSoftInPrefixFilter
 
 
-class ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input : public Entity
+class ClearBgpAfiSafiExternalSoftInPrefixFilter::Input : public ydk::Entity
 {
     public:
         Input();
@@ -869,42 +968,47 @@ class ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiExternalSoftInPrefixFilterRpc::Input
+}; // ClearBgpAfiSafiExternalSoftInPrefixFilter::Input
 
-class ClearBgpAfiSafiExternalSoftInRpc : public Entity
+class ClearBgpAfiSafiExternalSoftIn : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiExternalSoftInRpc();
-        ~ClearBgpAfiSafiExternalSoftInRpc();
+        ClearBgpAfiSafiExternalSoftIn();
+        ~ClearBgpAfiSafiExternalSoftIn();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiExternalSoftInRpc::Input
+        class Input; //type: ClearBgpAfiSafiExternalSoftIn::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiExternalSoftInRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiExternalSoftIn::Input> input;
         
-}; // ClearBgpAfiSafiExternalSoftInRpc
+}; // ClearBgpAfiSafiExternalSoftIn
 
 
-class ClearBgpAfiSafiExternalSoftInRpc::Input : public Entity
+class ClearBgpAfiSafiExternalSoftIn::Input : public ydk::Entity
 {
     public:
         Input();
@@ -912,42 +1016,47 @@ class ClearBgpAfiSafiExternalSoftInRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiExternalSoftInRpc::Input
+}; // ClearBgpAfiSafiExternalSoftIn::Input
 
-class ClearBgpAfiSafiExternalSoftOutRpc : public Entity
+class ClearBgpAfiSafiExternalSoftOut : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiExternalSoftOutRpc();
-        ~ClearBgpAfiSafiExternalSoftOutRpc();
+        ClearBgpAfiSafiExternalSoftOut();
+        ~ClearBgpAfiSafiExternalSoftOut();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiExternalSoftOutRpc::Input
+        class Input; //type: ClearBgpAfiSafiExternalSoftOut::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiExternalSoftOutRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiExternalSoftOut::Input> input;
         
-}; // ClearBgpAfiSafiExternalSoftOutRpc
+}; // ClearBgpAfiSafiExternalSoftOut
 
 
-class ClearBgpAfiSafiExternalSoftOutRpc::Input : public Entity
+class ClearBgpAfiSafiExternalSoftOut::Input : public ydk::Entity
 {
     public:
         Input();
@@ -955,42 +1064,47 @@ class ClearBgpAfiSafiExternalSoftOutRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiExternalSoftOutRpc::Input
+}; // ClearBgpAfiSafiExternalSoftOut::Input
 
-class ClearBgpAfiSafiExternalSoftRpc : public Entity
+class ClearBgpAfiSafiExternalSoft : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiExternalSoftRpc();
-        ~ClearBgpAfiSafiExternalSoftRpc();
+        ClearBgpAfiSafiExternalSoft();
+        ~ClearBgpAfiSafiExternalSoft();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiExternalSoftRpc::Input
+        class Input; //type: ClearBgpAfiSafiExternalSoft::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiExternalSoftRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiExternalSoft::Input> input;
         
-}; // ClearBgpAfiSafiExternalSoftRpc
+}; // ClearBgpAfiSafiExternalSoft
 
 
-class ClearBgpAfiSafiExternalSoftRpc::Input : public Entity
+class ClearBgpAfiSafiExternalSoft::Input : public ydk::Entity
 {
     public:
         Input();
@@ -998,42 +1112,47 @@ class ClearBgpAfiSafiExternalSoftRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiExternalSoftRpc::Input
+}; // ClearBgpAfiSafiExternalSoft::Input
 
-class ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc : public Entity
+class ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc();
-        ~ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc();
+        ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask();
+        ~ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input
+        class Input; //type: ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask::Input> input;
         
-}; // ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc
+}; // ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask
 
 
-class ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input : public Entity
+class ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1041,44 +1160,49 @@ class ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
-        YLeaf ipv4_mask; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf ipv4_mask; //type: string
 
-}; // ClearBgpAfiSafiFlapStatisticsIpAddrIpv4MaskRpc::Input
+}; // ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask::Input
 
-class ClearBgpAfiSafiFlapStatisticsIpAddrRpc : public Entity
+class ClearBgpAfiSafiFlapStatisticsIpAddr : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiFlapStatisticsIpAddrRpc();
-        ~ClearBgpAfiSafiFlapStatisticsIpAddrRpc();
+        ClearBgpAfiSafiFlapStatisticsIpAddr();
+        ~ClearBgpAfiSafiFlapStatisticsIpAddr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input
+        class Input; //type: ClearBgpAfiSafiFlapStatisticsIpAddr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsIpAddr::Input> input;
         
-}; // ClearBgpAfiSafiFlapStatisticsIpAddrRpc
+}; // ClearBgpAfiSafiFlapStatisticsIpAddr
 
 
-class ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input : public Entity
+class ClearBgpAfiSafiFlapStatisticsIpAddr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1086,43 +1210,48 @@ class ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiFlapStatisticsIpAddrRpc::Input
+}; // ClearBgpAfiSafiFlapStatisticsIpAddr::Input
 
-class ClearBgpAfiSafiFlapStatisticsIpPrefixRpc : public Entity
+class ClearBgpAfiSafiFlapStatisticsIpPrefix : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiFlapStatisticsIpPrefixRpc();
-        ~ClearBgpAfiSafiFlapStatisticsIpPrefixRpc();
+        ClearBgpAfiSafiFlapStatisticsIpPrefix();
+        ~ClearBgpAfiSafiFlapStatisticsIpPrefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input
+        class Input; //type: ClearBgpAfiSafiFlapStatisticsIpPrefix::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsIpPrefix::Input> input;
         
-}; // ClearBgpAfiSafiFlapStatisticsIpPrefixRpc
+}; // ClearBgpAfiSafiFlapStatisticsIpPrefix
 
 
-class ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input : public Entity
+class ClearBgpAfiSafiFlapStatisticsIpPrefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1130,43 +1259,48 @@ class ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_prefix; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_prefix; //type: string
 
-}; // ClearBgpAfiSafiFlapStatisticsIpPrefixRpc::Input
+}; // ClearBgpAfiSafiFlapStatisticsIpPrefix::Input
 
-class ClearBgpAfiSafiFlapStatisticsRegexpRpc : public Entity
+class ClearBgpAfiSafiFlapStatisticsRegexp : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiFlapStatisticsRegexpRpc();
-        ~ClearBgpAfiSafiFlapStatisticsRegexpRpc();
+        ClearBgpAfiSafiFlapStatisticsRegexp();
+        ~ClearBgpAfiSafiFlapStatisticsRegexp();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input
+        class Input; //type: ClearBgpAfiSafiFlapStatisticsRegexp::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsRegexp::Input> input;
         
-}; // ClearBgpAfiSafiFlapStatisticsRegexpRpc
+}; // ClearBgpAfiSafiFlapStatisticsRegexp
 
 
-class ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input : public Entity
+class ClearBgpAfiSafiFlapStatisticsRegexp::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1174,43 +1308,48 @@ class ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf regexp_pattern; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf regexp_pattern; //type: string
 
-}; // ClearBgpAfiSafiFlapStatisticsRegexpRpc::Input
+}; // ClearBgpAfiSafiFlapStatisticsRegexp::Input
 
-class ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc : public Entity
+class ClearBgpAfiSafiFlapStatisticsRoutePolicy : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc();
-        ~ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc();
+        ClearBgpAfiSafiFlapStatisticsRoutePolicy();
+        ~ClearBgpAfiSafiFlapStatisticsRoutePolicy();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input
+        class Input; //type: ClearBgpAfiSafiFlapStatisticsRoutePolicy::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsRoutePolicy::Input> input;
         
-}; // ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc
+}; // ClearBgpAfiSafiFlapStatisticsRoutePolicy
 
 
-class ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input : public Entity
+class ClearBgpAfiSafiFlapStatisticsRoutePolicy::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1218,43 +1357,48 @@ class ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf route_policy_name; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf route_policy_name; //type: string
 
-}; // ClearBgpAfiSafiFlapStatisticsRoutePolicyRpc::Input
+}; // ClearBgpAfiSafiFlapStatisticsRoutePolicy::Input
 
-class ClearBgpAfiSafiFlapStatisticsRpc : public Entity
+class ClearBgpAfiSafiFlapStatistics : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiFlapStatisticsRpc();
-        ~ClearBgpAfiSafiFlapStatisticsRpc();
+        ClearBgpAfiSafiFlapStatistics();
+        ~ClearBgpAfiSafiFlapStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiFlapStatisticsRpc::Input
+        class Input; //type: ClearBgpAfiSafiFlapStatistics::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatisticsRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiFlapStatistics::Input> input;
         
-}; // ClearBgpAfiSafiFlapStatisticsRpc
+}; // ClearBgpAfiSafiFlapStatistics
 
 
-class ClearBgpAfiSafiFlapStatisticsRpc::Input : public Entity
+class ClearBgpAfiSafiFlapStatistics::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1262,42 +1406,47 @@ class ClearBgpAfiSafiFlapStatisticsRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiFlapStatisticsRpc::Input
+}; // ClearBgpAfiSafiFlapStatistics::Input
 
-class ClearBgpAfiSafiNexthopPerformanceStatisticsRpc : public Entity
+class ClearBgpAfiSafiNexthopPerformanceStatistics : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiNexthopPerformanceStatisticsRpc();
-        ~ClearBgpAfiSafiNexthopPerformanceStatisticsRpc();
+        ClearBgpAfiSafiNexthopPerformanceStatistics();
+        ~ClearBgpAfiSafiNexthopPerformanceStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input
+        class Input; //type: ClearBgpAfiSafiNexthopPerformanceStatistics::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiNexthopPerformanceStatistics::Input> input;
         
-}; // ClearBgpAfiSafiNexthopPerformanceStatisticsRpc
+}; // ClearBgpAfiSafiNexthopPerformanceStatistics
 
 
-class ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input : public Entity
+class ClearBgpAfiSafiNexthopPerformanceStatistics::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1305,42 +1454,47 @@ class ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiNexthopPerformanceStatisticsRpc::Input
+}; // ClearBgpAfiSafiNexthopPerformanceStatistics::Input
 
-class ClearBgpAfiSafiNexthopRegistrationIpAddrRpc : public Entity
+class ClearBgpAfiSafiNexthopRegistrationIpAddr : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiNexthopRegistrationIpAddrRpc();
-        ~ClearBgpAfiSafiNexthopRegistrationIpAddrRpc();
+        ClearBgpAfiSafiNexthopRegistrationIpAddr();
+        ~ClearBgpAfiSafiNexthopRegistrationIpAddr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input
+        class Input; //type: ClearBgpAfiSafiNexthopRegistrationIpAddr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiNexthopRegistrationIpAddr::Input> input;
         
-}; // ClearBgpAfiSafiNexthopRegistrationIpAddrRpc
+}; // ClearBgpAfiSafiNexthopRegistrationIpAddr
 
 
-class ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input : public Entity
+class ClearBgpAfiSafiNexthopRegistrationIpAddr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1348,43 +1502,48 @@ class ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiNexthopRegistrationIpAddrRpc::Input
+}; // ClearBgpAfiSafiNexthopRegistrationIpAddr::Input
 
-class ClearBgpAfiSafiSelfOriginatedRpc : public Entity
+class ClearBgpAfiSafiSelfOriginated : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiSelfOriginatedRpc();
-        ~ClearBgpAfiSafiSelfOriginatedRpc();
+        ClearBgpAfiSafiSelfOriginated();
+        ~ClearBgpAfiSafiSelfOriginated();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiSelfOriginatedRpc::Input
+        class Input; //type: ClearBgpAfiSafiSelfOriginated::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiSelfOriginatedRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiSelfOriginated::Input> input;
         
-}; // ClearBgpAfiSafiSelfOriginatedRpc
+}; // ClearBgpAfiSafiSelfOriginated
 
 
-class ClearBgpAfiSafiSelfOriginatedRpc::Input : public Entity
+class ClearBgpAfiSafiSelfOriginated::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1392,42 +1551,47 @@ class ClearBgpAfiSafiSelfOriginatedRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiSelfOriginatedRpc::Input
+}; // ClearBgpAfiSafiSelfOriginated::Input
 
-class ClearBgpAfiSafiShutdownRpc : public Entity
+class ClearBgpAfiSafiShutdown : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiShutdownRpc();
-        ~ClearBgpAfiSafiShutdownRpc();
+        ClearBgpAfiSafiShutdown();
+        ~ClearBgpAfiSafiShutdown();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiShutdownRpc::Input
+        class Input; //type: ClearBgpAfiSafiShutdown::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiShutdownRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiShutdown::Input> input;
         
-}; // ClearBgpAfiSafiShutdownRpc
+}; // ClearBgpAfiSafiShutdown
 
 
-class ClearBgpAfiSafiShutdownRpc::Input : public Entity
+class ClearBgpAfiSafiShutdown::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1435,42 +1599,47 @@ class ClearBgpAfiSafiShutdownRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiShutdownRpc::Input
+}; // ClearBgpAfiSafiShutdown::Input
 
-class ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc();
-        ~ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc();
+        ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent();
+        ~ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc
+}; // ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent
 
 
-class ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1478,42 +1647,47 @@ class ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParentRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent::Input
 
-class ClearBgpAfiSafiUpdateOutqAddressFamilyRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqAddressFamily : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqAddressFamilyRpc();
-        ~ClearBgpAfiSafiUpdateOutqAddressFamilyRpc();
+        ClearBgpAfiSafiUpdateOutqAddressFamily();
+        ~ClearBgpAfiSafiUpdateOutqAddressFamily();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqAddressFamily::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqAddressFamily::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqAddressFamilyRpc
+}; // ClearBgpAfiSafiUpdateOutqAddressFamily
 
 
-class ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqAddressFamily::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1521,42 +1695,47 @@ class ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpAfiSafiUpdateOutqAddressFamilyRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqAddressFamily::Input
 
-class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc();
-        ~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc();
+        ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent();
+        ~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc
+}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent
 
 
-class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1564,43 +1743,48 @@ class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParentRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent::Input
 
-class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc();
-        ~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc();
+        ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh();
+        ~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc
+}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh
 
 
-class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1608,43 +1792,48 @@ class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh::Input
 
-class ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc();
-        ~ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc();
+        ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent();
+        ~ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc
+}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent
 
 
-class ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1652,43 +1841,48 @@ class ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParentRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent::Input
 
-class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqNeighborIpAddr : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc();
-        ~ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc();
+        ClearBgpAfiSafiUpdateOutqNeighborIpAddr();
+        ~ClearBgpAfiSafiUpdateOutqNeighborIpAddr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqNeighborIpAddr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqNeighborIpAddr::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc
+}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddr
 
 
-class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqNeighborIpAddr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1696,43 +1890,48 @@ class ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddrRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqNeighborIpAddr::Input
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc();
-        ~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc();
+        ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent();
+        ~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent
 
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1740,44 +1939,49 @@ class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf update_group; //type: string
-        YLeaf sub_group; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf update_group; //type: string
+        ydk::YLeaf sub_group; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParentRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent::Input
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc();
-        ~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc();
+        ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup();
+        ~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup
 
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1785,44 +1989,49 @@ class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf update_group; //type: string
-        YLeaf sub_group; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf update_group; //type: string
+        ydk::YLeaf sub_group; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup::Input
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc();
-        ~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc();
+        ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent();
+        ~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent
 
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1830,44 +2039,49 @@ class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf update_group; //type: string
-        YLeaf refresh_sub_group; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf update_group; //type: string
+        ydk::YLeaf refresh_sub_group; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParentRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent::Input
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc();
-        ~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc();
+        ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup();
+        ~ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup
 
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1875,44 +2089,49 @@ class ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf update_group; //type: string
-        YLeaf refresh_sub_group; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf update_group; //type: string
+        ydk::YLeaf refresh_sub_group; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup::Input
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc();
-        ~ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc();
+        ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent();
+        ~ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent
 
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1920,43 +2139,48 @@ class ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf update_group; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf update_group; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParentRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent::Input
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupRpc : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroup : public ydk::Entity
 {
     public:
-        ClearBgpAfiSafiUpdateOutqUpdateGroupRpc();
-        ~ClearBgpAfiSafiUpdateOutqUpdateGroupRpc();
+        ClearBgpAfiSafiUpdateOutqUpdateGroup();
+        ~ClearBgpAfiSafiUpdateOutqUpdateGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input
+        class Input; //type: ClearBgpAfiSafiUpdateOutqUpdateGroup::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAfiSafiUpdateOutqUpdateGroup::Input> input;
         
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupRpc
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroup
 
 
-class ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input : public Entity
+class ClearBgpAfiSafiUpdateOutqUpdateGroup::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1964,43 +2188,48 @@ class ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf update_group; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf update_group; //type: string
 
-}; // ClearBgpAfiSafiUpdateOutqUpdateGroupRpc::Input
+}; // ClearBgpAfiSafiUpdateOutqUpdateGroup::Input
 
-class ClearBgpAsGracefulRpc : public Entity
+class ClearBgpAsGraceful : public ydk::Entity
 {
     public:
-        ClearBgpAsGracefulRpc();
-        ~ClearBgpAsGracefulRpc();
+        ClearBgpAsGraceful();
+        ~ClearBgpAsGraceful();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAsGracefulRpc::Input
+        class Input; //type: ClearBgpAsGraceful::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAsGracefulRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAsGraceful::Input> input;
         
-}; // ClearBgpAsGracefulRpc
+}; // ClearBgpAsGraceful
 
 
-class ClearBgpAsGracefulRpc::Input : public Entity
+class ClearBgpAsGraceful::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2008,42 +2237,47 @@ class ClearBgpAsGracefulRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
-}; // ClearBgpAsGracefulRpc::Input
+}; // ClearBgpAsGraceful::Input
 
-class ClearBgpAsRpc : public Entity
+class ClearBgpAs : public ydk::Entity
 {
     public:
-        ClearBgpAsRpc();
-        ~ClearBgpAsRpc();
+        ClearBgpAs();
+        ~ClearBgpAs();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpAsRpc::Input
+        class Input; //type: ClearBgpAs::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAsRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpAs::Input> input;
         
-}; // ClearBgpAsRpc
+}; // ClearBgpAs
 
 
-class ClearBgpAsRpc::Input : public Entity
+class ClearBgpAs::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2051,42 +2285,47 @@ class ClearBgpAsRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as_number; //type: one of union, uint16
+        ydk::YLeaf as_number; //type: one of uint16, union
 
-}; // ClearBgpAsRpc::Input
+}; // ClearBgpAs::Input
 
-class ClearBgpBestpathIpAddrIpNetmaskRpc : public Entity
+class ClearBgpBestpathIpAddrIpNetmask : public ydk::Entity
 {
     public:
-        ClearBgpBestpathIpAddrIpNetmaskRpc();
-        ~ClearBgpBestpathIpAddrIpNetmaskRpc();
+        ClearBgpBestpathIpAddrIpNetmask();
+        ~ClearBgpBestpathIpAddrIpNetmask();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathIpAddrIpNetmaskRpc::Input
+        class Input; //type: ClearBgpBestpathIpAddrIpNetmask::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathIpAddrIpNetmaskRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathIpAddrIpNetmask::Input> input;
         
-}; // ClearBgpBestpathIpAddrIpNetmaskRpc
+}; // ClearBgpBestpathIpAddrIpNetmask
 
 
-class ClearBgpBestpathIpAddrIpNetmaskRpc::Input : public Entity
+class ClearBgpBestpathIpAddrIpNetmask::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2094,43 +2333,48 @@ class ClearBgpBestpathIpAddrIpNetmaskRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_addr; //type: string
-        YLeaf ip_netmask; //type: string
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf ip_netmask; //type: string
 
-}; // ClearBgpBestpathIpAddrIpNetmaskRpc::Input
+}; // ClearBgpBestpathIpAddrIpNetmask::Input
 
-class ClearBgpBestpathIpAddrRpc : public Entity
+class ClearBgpBestpathIpAddr : public ydk::Entity
 {
     public:
-        ClearBgpBestpathIpAddrRpc();
-        ~ClearBgpBestpathIpAddrRpc();
+        ClearBgpBestpathIpAddr();
+        ~ClearBgpBestpathIpAddr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathIpAddrRpc::Input
+        class Input; //type: ClearBgpBestpathIpAddr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathIpAddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathIpAddr::Input> input;
         
-}; // ClearBgpBestpathIpAddrRpc
+}; // ClearBgpBestpathIpAddr
 
 
-class ClearBgpBestpathIpAddrRpc::Input : public Entity
+class ClearBgpBestpathIpAddr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2138,42 +2382,47 @@ class ClearBgpBestpathIpAddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpBestpathIpAddrRpc::Input
+}; // ClearBgpBestpathIpAddr::Input
 
-class ClearBgpBestpathIpPrefixRpc : public Entity
+class ClearBgpBestpathIpPrefix : public ydk::Entity
 {
     public:
-        ClearBgpBestpathIpPrefixRpc();
-        ~ClearBgpBestpathIpPrefixRpc();
+        ClearBgpBestpathIpPrefix();
+        ~ClearBgpBestpathIpPrefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathIpPrefixRpc::Input
+        class Input; //type: ClearBgpBestpathIpPrefix::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathIpPrefixRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathIpPrefix::Input> input;
         
-}; // ClearBgpBestpathIpPrefixRpc
+}; // ClearBgpBestpathIpPrefix
 
 
-class ClearBgpBestpathIpPrefixRpc::Input : public Entity
+class ClearBgpBestpathIpPrefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2181,42 +2430,47 @@ class ClearBgpBestpathIpPrefixRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_prefix; //type: string
+        ydk::YLeaf ip_prefix; //type: string
 
-}; // ClearBgpBestpathIpPrefixRpc::Input
+}; // ClearBgpBestpathIpPrefix::Input
 
-class ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc : public Entity
+class ClearBgpBestpathAfiSafiIpAddrIpNetmask : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc();
-        ~ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc();
+        ClearBgpBestpathAfiSafiIpAddrIpNetmask();
+        ~ClearBgpBestpathAfiSafiIpAddrIpNetmask();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpAddrIpNetmask::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpAddrIpNetmask::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc
+}; // ClearBgpBestpathAfiSafiIpAddrIpNetmask
 
 
-class ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpAddrIpNetmask::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2224,44 +2478,49 @@ class ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
-        YLeaf ip_netmask; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf ip_netmask; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpAddrIpNetmaskRpc::Input
+}; // ClearBgpBestpathAfiSafiIpAddrIpNetmask::Input
 
-class ClearBgpBestpathAfiSafiIpAddrRpc : public Entity
+class ClearBgpBestpathAfiSafiIpAddr : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpAddrRpc();
-        ~ClearBgpBestpathAfiSafiIpAddrRpc();
+        ClearBgpBestpathAfiSafiIpAddr();
+        ~ClearBgpBestpathAfiSafiIpAddr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpAddrRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpAddr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpAddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpAddr::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpAddrRpc
+}; // ClearBgpBestpathAfiSafiIpAddr
 
 
-class ClearBgpBestpathAfiSafiIpAddrRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpAddr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2269,43 +2528,48 @@ class ClearBgpBestpathAfiSafiIpAddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpAddrRpc::Input
+}; // ClearBgpBestpathAfiSafiIpAddr::Input
 
-class ClearBgpBestpathAfiSafiIpPrefixRpc : public Entity
+class ClearBgpBestpathAfiSafiIpPrefix : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpPrefixRpc();
-        ~ClearBgpBestpathAfiSafiIpPrefixRpc();
+        ClearBgpBestpathAfiSafiIpPrefix();
+        ~ClearBgpBestpathAfiSafiIpPrefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpPrefixRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpPrefix::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpPrefixRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpPrefix::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpPrefixRpc
+}; // ClearBgpBestpathAfiSafiIpPrefix
 
 
-class ClearBgpBestpathAfiSafiIpPrefixRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpPrefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2313,43 +2577,48 @@ class ClearBgpBestpathAfiSafiIpPrefixRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ip_prefix; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ip_prefix; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpPrefixRpc::Input
+}; // ClearBgpBestpathAfiSafiIpPrefix::Input
 
-class ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc : public Entity
+class ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc();
-        ~ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc();
+        ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask();
+        ~ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input> input;
         
-}; // ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc
+}; // ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask
 
 
-class ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2357,45 +2626,50 @@ class ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf bridge_domain_name; //type: string
-        YLeaf ip_addr; //type: string
-        YLeaf ip_netmask; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf bridge_domain_name; //type: string
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf ip_netmask; //type: string
 
-}; // ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmaskRpc::Input
+}; // ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input
 
-class ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc : public Entity
+class ClearBgpBestpathAfiSafiBridgeDomainIpAddr : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc();
-        ~ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc();
+        ClearBgpBestpathAfiSafiBridgeDomainIpAddr();
+        ~ClearBgpBestpathAfiSafiBridgeDomainIpAddr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiBridgeDomainIpAddr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiBridgeDomainIpAddr::Input> input;
         
-}; // ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc
+}; // ClearBgpBestpathAfiSafiBridgeDomainIpAddr
 
 
-class ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiBridgeDomainIpAddr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2403,44 +2677,49 @@ class ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf bridge_domain_name; //type: string
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf bridge_domain_name; //type: string
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpBestpathAfiSafiBridgeDomainIpAddrRpc::Input
+}; // ClearBgpBestpathAfiSafiBridgeDomainIpAddr::Input
 
-class ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc : public Entity
+class ClearBgpBestpathAfiSafiBridgeDomainIpPrefix : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc();
-        ~ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc();
+        ClearBgpBestpathAfiSafiBridgeDomainIpPrefix();
+        ~ClearBgpBestpathAfiSafiBridgeDomainIpPrefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiBridgeDomainIpPrefix::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiBridgeDomainIpPrefix::Input> input;
         
-}; // ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc
+}; // ClearBgpBestpathAfiSafiBridgeDomainIpPrefix
 
 
-class ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiBridgeDomainIpPrefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2448,44 +2727,49 @@ class ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf bridge_domain_name; //type: string
-        YLeaf ip_prefix; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf bridge_domain_name; //type: string
+        ydk::YLeaf ip_prefix; //type: string
 
-}; // ClearBgpBestpathAfiSafiBridgeDomainIpPrefixRpc::Input
+}; // ClearBgpBestpathAfiSafiBridgeDomainIpPrefix::Input
 
-class ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc : public Entity
+class ClearBgpBestpathAfiSafiRdIpAddrIpNetmask : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc();
-        ~ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc();
+        ClearBgpBestpathAfiSafiRdIpAddrIpNetmask();
+        ~ClearBgpBestpathAfiSafiRdIpAddrIpNetmask();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiRdIpAddrIpNetmask::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdIpAddrIpNetmask::Input> input;
         
-}; // ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc
+}; // ClearBgpBestpathAfiSafiRdIpAddrIpNetmask
 
 
-class ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiRdIpAddrIpNetmask::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2493,45 +2777,50 @@ class ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf rd; //type: string
-        YLeaf ip_addr; //type: string
-        YLeaf ip_netmask; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf rd; //type: string
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf ip_netmask; //type: string
 
-}; // ClearBgpBestpathAfiSafiRdIpAddrIpNetmaskRpc::Input
+}; // ClearBgpBestpathAfiSafiRdIpAddrIpNetmask::Input
 
-class ClearBgpBestpathAfiSafiRdIpAddrRpc : public Entity
+class ClearBgpBestpathAfiSafiRdIpAddr : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiRdIpAddrRpc();
-        ~ClearBgpBestpathAfiSafiRdIpAddrRpc();
+        ClearBgpBestpathAfiSafiRdIpAddr();
+        ~ClearBgpBestpathAfiSafiRdIpAddr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiRdIpAddrRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiRdIpAddr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdIpAddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdIpAddr::Input> input;
         
-}; // ClearBgpBestpathAfiSafiRdIpAddrRpc
+}; // ClearBgpBestpathAfiSafiRdIpAddr
 
 
-class ClearBgpBestpathAfiSafiRdIpAddrRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiRdIpAddr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2539,44 +2828,49 @@ class ClearBgpBestpathAfiSafiRdIpAddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf rd; //type: string
-        YLeaf ip_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf rd; //type: string
+        ydk::YLeaf ip_addr; //type: string
 
-}; // ClearBgpBestpathAfiSafiRdIpAddrRpc::Input
+}; // ClearBgpBestpathAfiSafiRdIpAddr::Input
 
-class ClearBgpBestpathAfiSafiRdIpPrefixRpc : public Entity
+class ClearBgpBestpathAfiSafiRdIpPrefix : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiRdIpPrefixRpc();
-        ~ClearBgpBestpathAfiSafiRdIpPrefixRpc();
+        ClearBgpBestpathAfiSafiRdIpPrefix();
+        ~ClearBgpBestpathAfiSafiRdIpPrefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiRdIpPrefix::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdIpPrefix::Input> input;
         
-}; // ClearBgpBestpathAfiSafiRdIpPrefixRpc
+}; // ClearBgpBestpathAfiSafiRdIpPrefix
 
 
-class ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiRdIpPrefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2584,44 +2878,49 @@ class ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf rd; //type: string
-        YLeaf ip_prefix; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf rd; //type: string
+        ydk::YLeaf ip_prefix; //type: string
 
-}; // ClearBgpBestpathAfiSafiRdIpPrefixRpc::Input
+}; // ClearBgpBestpathAfiSafiRdIpPrefix::Input
 
-class ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc : public Entity
+class ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc();
-        ~ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc();
+        ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask();
+        ~ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc
+}; // ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask
 
 
-class ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2629,44 +2928,49 @@ class ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ipv4_addr; //type: string
-        YLeaf ipv4_mask; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ipv4_addr; //type: string
+        ydk::YLeaf ipv4_mask; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpv4AddrIpv4MaskRpc::Input
+}; // ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask::Input
 
-class ClearBgpBestpathAfiSafiIpv4AddrRpc : public Entity
+class ClearBgpBestpathAfiSafiIpv4Addr : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpv4AddrRpc();
-        ~ClearBgpBestpathAfiSafiIpv4AddrRpc();
+        ClearBgpBestpathAfiSafiIpv4Addr();
+        ~ClearBgpBestpathAfiSafiIpv4Addr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpv4AddrRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpv4Addr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv4AddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv4Addr::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpv4AddrRpc
+}; // ClearBgpBestpathAfiSafiIpv4Addr
 
 
-class ClearBgpBestpathAfiSafiIpv4AddrRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpv4Addr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2674,43 +2978,48 @@ class ClearBgpBestpathAfiSafiIpv4AddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ipv4_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ipv4_addr; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpv4AddrRpc::Input
+}; // ClearBgpBestpathAfiSafiIpv4Addr::Input
 
-class ClearBgpBestpathAfiSafiIpv4PrefixRpc : public Entity
+class ClearBgpBestpathAfiSafiIpv4Prefix : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpv4PrefixRpc();
-        ~ClearBgpBestpathAfiSafiIpv4PrefixRpc();
+        ClearBgpBestpathAfiSafiIpv4Prefix();
+        ~ClearBgpBestpathAfiSafiIpv4Prefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpv4Prefix::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv4Prefix::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpv4PrefixRpc
+}; // ClearBgpBestpathAfiSafiIpv4Prefix
 
 
-class ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpv4Prefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2718,43 +3027,48 @@ class ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ipv4_prefix; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ipv4_prefix; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpv4PrefixRpc::Input
+}; // ClearBgpBestpathAfiSafiIpv4Prefix::Input
 
-class ClearBgpBestpathAfiSafiRdIpv4AddrRpc : public Entity
+class ClearBgpBestpathAfiSafiRdIpv4Addr : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiRdIpv4AddrRpc();
-        ~ClearBgpBestpathAfiSafiRdIpv4AddrRpc();
+        ClearBgpBestpathAfiSafiRdIpv4Addr();
+        ~ClearBgpBestpathAfiSafiRdIpv4Addr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiRdIpv4Addr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdIpv4Addr::Input> input;
         
-}; // ClearBgpBestpathAfiSafiRdIpv4AddrRpc
+}; // ClearBgpBestpathAfiSafiRdIpv4Addr
 
 
-class ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiRdIpv4Addr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2762,44 +3076,49 @@ class ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf rd; //type: string
-        YLeaf ipv4_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf rd; //type: string
+        ydk::YLeaf ipv4_addr; //type: string
 
-}; // ClearBgpBestpathAfiSafiRdIpv4AddrRpc::Input
+}; // ClearBgpBestpathAfiSafiRdIpv4Addr::Input
 
-class ClearBgpBestpathAfiSafiVrfIpv4AddrRpc : public Entity
+class ClearBgpBestpathAfiSafiVrfIpv4Addr : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiVrfIpv4AddrRpc();
-        ~ClearBgpBestpathAfiSafiVrfIpv4AddrRpc();
+        ClearBgpBestpathAfiSafiVrfIpv4Addr();
+        ~ClearBgpBestpathAfiSafiVrfIpv4Addr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiVrfIpv4Addr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiVrfIpv4Addr::Input> input;
         
-}; // ClearBgpBestpathAfiSafiVrfIpv4AddrRpc
+}; // ClearBgpBestpathAfiSafiVrfIpv4Addr
 
 
-class ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiVrfIpv4Addr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2807,44 +3126,49 @@ class ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf vrf_name; //type: string
-        YLeaf ipv4_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf ipv4_addr; //type: string
 
-}; // ClearBgpBestpathAfiSafiVrfIpv4AddrRpc::Input
+}; // ClearBgpBestpathAfiSafiVrfIpv4Addr::Input
 
-class ClearBgpBestpathAfiSafiNetworkRpc : public Entity
+class ClearBgpBestpathAfiSafiNetwork : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiNetworkRpc();
-        ~ClearBgpBestpathAfiSafiNetworkRpc();
+        ClearBgpBestpathAfiSafiNetwork();
+        ~ClearBgpBestpathAfiSafiNetwork();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiNetworkRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiNetwork::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiNetworkRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiNetwork::Input> input;
         
-}; // ClearBgpBestpathAfiSafiNetworkRpc
+}; // ClearBgpBestpathAfiSafiNetwork
 
 
-class ClearBgpBestpathAfiSafiNetworkRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiNetwork::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2852,43 +3176,48 @@ class ClearBgpBestpathAfiSafiNetworkRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf network; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf network; //type: string
 
-}; // ClearBgpBestpathAfiSafiNetworkRpc::Input
+}; // ClearBgpBestpathAfiSafiNetwork::Input
 
-class ClearBgpBestpathAfiSafiRdNetworkRpc : public Entity
+class ClearBgpBestpathAfiSafiRdNetwork : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiRdNetworkRpc();
-        ~ClearBgpBestpathAfiSafiRdNetworkRpc();
+        ClearBgpBestpathAfiSafiRdNetwork();
+        ~ClearBgpBestpathAfiSafiRdNetwork();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiRdNetworkRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiRdNetwork::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdNetworkRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdNetwork::Input> input;
         
-}; // ClearBgpBestpathAfiSafiRdNetworkRpc
+}; // ClearBgpBestpathAfiSafiRdNetwork
 
 
-class ClearBgpBestpathAfiSafiRdNetworkRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiRdNetwork::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2896,44 +3225,49 @@ class ClearBgpBestpathAfiSafiRdNetworkRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf rd; //type: string
-        YLeaf network; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf rd; //type: string
+        ydk::YLeaf network; //type: string
 
-}; // ClearBgpBestpathAfiSafiRdNetworkRpc::Input
+}; // ClearBgpBestpathAfiSafiRdNetwork::Input
 
-class ClearBgpBestpathAfiSafiVrfNetworkRpc : public Entity
+class ClearBgpBestpathAfiSafiVrfNetwork : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiVrfNetworkRpc();
-        ~ClearBgpBestpathAfiSafiVrfNetworkRpc();
+        ClearBgpBestpathAfiSafiVrfNetwork();
+        ~ClearBgpBestpathAfiSafiVrfNetwork();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiVrfNetworkRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiVrfNetwork::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiVrfNetworkRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiVrfNetwork::Input> input;
         
-}; // ClearBgpBestpathAfiSafiVrfNetworkRpc
+}; // ClearBgpBestpathAfiSafiVrfNetwork
 
 
-class ClearBgpBestpathAfiSafiVrfNetworkRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiVrfNetwork::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2941,44 +3275,49 @@ class ClearBgpBestpathAfiSafiVrfNetworkRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf vrf_name; //type: string
-        YLeaf network; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf network; //type: string
 
-}; // ClearBgpBestpathAfiSafiVrfNetworkRpc::Input
+}; // ClearBgpBestpathAfiSafiVrfNetwork::Input
 
-class ClearBgpBestpathAfiSafiRtConstraintNetworkRpc : public Entity
+class ClearBgpBestpathAfiSafiRtConstraintNetwork : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiRtConstraintNetworkRpc();
-        ~ClearBgpBestpathAfiSafiRtConstraintNetworkRpc();
+        ClearBgpBestpathAfiSafiRtConstraintNetwork();
+        ~ClearBgpBestpathAfiSafiRtConstraintNetwork();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiRtConstraintNetwork::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRtConstraintNetwork::Input> input;
         
-}; // ClearBgpBestpathAfiSafiRtConstraintNetworkRpc
+}; // ClearBgpBestpathAfiSafiRtConstraintNetwork
 
 
-class ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiRtConstraintNetwork::Input : public ydk::Entity
 {
     public:
         Input();
@@ -2986,43 +3325,48 @@ class ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf rt_constraint_network; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf rt_constraint_network; //type: string
 
-}; // ClearBgpBestpathAfiSafiRtConstraintNetworkRpc::Input
+}; // ClearBgpBestpathAfiSafiRtConstraintNetwork::Input
 
-class ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc : public Entity
+class ClearBgpBestpathAfiSafiIpv4TunnelNetwork : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc();
-        ~ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc();
+        ClearBgpBestpathAfiSafiIpv4TunnelNetwork();
+        ~ClearBgpBestpathAfiSafiIpv4TunnelNetwork();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpv4TunnelNetwork::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv4TunnelNetwork::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc
+}; // ClearBgpBestpathAfiSafiIpv4TunnelNetwork
 
 
-class ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpv4TunnelNetwork::Input : public ydk::Entity
 {
     public:
         Input();
@@ -3030,43 +3374,48 @@ class ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ipv4_tunnel_network; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ipv4_tunnel_network; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpv4TunnelNetworkRpc::Input
+}; // ClearBgpBestpathAfiSafiIpv4TunnelNetwork::Input
 
-class ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc : public Entity
+class ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc();
-        ~ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc();
+        ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask();
+        ~ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc
+}; // ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask
 
 
-class ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask::Input : public ydk::Entity
 {
     public:
         Input();
@@ -3074,44 +3423,49 @@ class ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ipv6_addr; //type: string
-        YLeaf ipv6_netmask; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ipv6_addr; //type: string
+        ydk::YLeaf ipv6_netmask; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpv6AddrIpv6NetmaskRpc::Input
+}; // ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask::Input
 
-class ClearBgpBestpathAfiSafiIpv6AddrRpc : public Entity
+class ClearBgpBestpathAfiSafiIpv6Addr : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpv6AddrRpc();
-        ~ClearBgpBestpathAfiSafiIpv6AddrRpc();
+        ClearBgpBestpathAfiSafiIpv6Addr();
+        ~ClearBgpBestpathAfiSafiIpv6Addr();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpv6AddrRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpv6Addr::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv6AddrRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv6Addr::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpv6AddrRpc
+}; // ClearBgpBestpathAfiSafiIpv6Addr
 
 
-class ClearBgpBestpathAfiSafiIpv6AddrRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpv6Addr::Input : public ydk::Entity
 {
     public:
         Input();
@@ -3119,43 +3473,48 @@ class ClearBgpBestpathAfiSafiIpv6AddrRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ipv6_addr; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ipv6_addr; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpv6AddrRpc::Input
+}; // ClearBgpBestpathAfiSafiIpv6Addr::Input
 
-class ClearBgpBestpathAfiSafiIpv6PrefixRpc : public Entity
+class ClearBgpBestpathAfiSafiIpv6Prefix : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiIpv6PrefixRpc();
-        ~ClearBgpBestpathAfiSafiIpv6PrefixRpc();
+        ClearBgpBestpathAfiSafiIpv6Prefix();
+        ~ClearBgpBestpathAfiSafiIpv6Prefix();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiIpv6Prefix::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiIpv6Prefix::Input> input;
         
-}; // ClearBgpBestpathAfiSafiIpv6PrefixRpc
+}; // ClearBgpBestpathAfiSafiIpv6Prefix
 
 
-class ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiIpv6Prefix::Input : public ydk::Entity
 {
     public:
         Input();
@@ -3163,43 +3522,48 @@ class ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf ipv6_prefix; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf ipv6_prefix; //type: string
 
-}; // ClearBgpBestpathAfiSafiIpv6PrefixRpc::Input
+}; // ClearBgpBestpathAfiSafiIpv6Prefix::Input
 
-class ClearBgpBestpathAfiSafiRdRpc : public Entity
+class ClearBgpBestpathAfiSafiRd : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiRdRpc();
-        ~ClearBgpBestpathAfiSafiRdRpc();
+        ClearBgpBestpathAfiSafiRd();
+        ~ClearBgpBestpathAfiSafiRd();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiRdRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiRd::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRdRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRd::Input> input;
         
-}; // ClearBgpBestpathAfiSafiRdRpc
+}; // ClearBgpBestpathAfiSafiRd
 
 
-class ClearBgpBestpathAfiSafiRdRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiRd::Input : public ydk::Entity
 {
     public:
         Input();
@@ -3207,43 +3571,48 @@ class ClearBgpBestpathAfiSafiRdRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf rd; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf rd; //type: string
 
-}; // ClearBgpBestpathAfiSafiRdRpc::Input
+}; // ClearBgpBestpathAfiSafiRd::Input
 
-class ClearBgpBestpathAfiSafiVrfRpc : public Entity
+class ClearBgpBestpathAfiSafiVrf : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiVrfRpc();
-        ~ClearBgpBestpathAfiSafiVrfRpc();
+        ClearBgpBestpathAfiSafiVrf();
+        ~ClearBgpBestpathAfiSafiVrf();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiVrfRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafiVrf::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiVrfRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiVrf::Input> input;
         
-}; // ClearBgpBestpathAfiSafiVrfRpc
+}; // ClearBgpBestpathAfiSafiVrf
 
 
-class ClearBgpBestpathAfiSafiVrfRpc::Input : public Entity
+class ClearBgpBestpathAfiSafiVrf::Input : public ydk::Entity
 {
     public:
         Input();
@@ -3251,43 +3620,48 @@ class ClearBgpBestpathAfiSafiVrfRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
+        ydk::YLeaf vrf_name; //type: string
 
-}; // ClearBgpBestpathAfiSafiVrfRpc::Input
+}; // ClearBgpBestpathAfiSafiVrf::Input
 
-class ClearBgpBestpathAfiSafiRpc : public Entity
+class ClearBgpBestpathAfiSafi : public ydk::Entity
 {
     public:
-        ClearBgpBestpathAfiSafiRpc();
-        ~ClearBgpBestpathAfiSafiRpc();
+        ClearBgpBestpathAfiSafi();
+        ~ClearBgpBestpathAfiSafi();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ClearBgpBestpathAfiSafiRpc::Input
+        class Input; //type: ClearBgpBestpathAfiSafi::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafiRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv4_bgp_act::ClearBgpBestpathAfiSafi::Input> input;
         
-}; // ClearBgpBestpathAfiSafiRpc
+}; // ClearBgpBestpathAfiSafi
 
 
-class ClearBgpBestpathAfiSafiRpc::Input : public Entity
+class ClearBgpBestpathAfiSafi::Input : public ydk::Entity
 {
     public:
         Input();
@@ -3295,152 +3669,154 @@ class ClearBgpBestpathAfiSafiRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf afi_safi_name; //type: AfiSafiTypeEnum
+        ydk::YLeaf afi_safi_name; //type: AfiSafiType
 
-}; // ClearBgpBestpathAfiSafiRpc::Input
+}; // ClearBgpBestpathAfiSafi::Input
 
-class InstanceNameEnum : public Enum
+class L2VpnSafi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
+        static const ydk::Enum::YLeaf evpn;
+        static const ydk::Enum::YLeaf mspw;
+        static const ydk::Enum::YLeaf vpls;
+        static const ydk::Enum::YLeaf vpws;
 
 };
 
-class Vpnv6SafiEnum : public Enum
+class Vpnv4Safi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf flowspec;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
 
 };
 
-class AfiEnum : public Enum
+class Ipv4Safi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
-        static const Enum::YLeaf l2vpn;
-        static const Enum::YLeaf link_state;
-        static const Enum::YLeaf vpnv4;
-        static const Enum::YLeaf vpnv6;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf labeled_unicast;
+        static const ydk::Enum::YLeaf mdt;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf mvpn;
+        static const ydk::Enum::YLeaf rt_filter;
+        static const ydk::Enum::YLeaf sr_policy;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf unicast;
 
 };
 
-class VrfNameEnum : public Enum
+class Ipv6Safi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf labeled_unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf mvpn;
+        static const ydk::Enum::YLeaf sr_policy;
+        static const ydk::Enum::YLeaf unicast;
 
 };
 
-class Ipv4SafiEnum : public Enum
+class LinkStateSafi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
-        static const Enum::YLeaf flowspec;
-        static const Enum::YLeaf labeled_unicast;
-        static const Enum::YLeaf mdt;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf mvpn;
-        static const Enum::YLeaf rt_filter;
-        static const Enum::YLeaf sr_policy;
-        static const Enum::YLeaf tunnel;
-        static const Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf link_state;
 
 };
 
-class AfiSafiTypeEnum : public Enum
+class Vpnv6Safi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all_alll;
-        static const Enum::YLeaf all_evpn;
-        static const Enum::YLeaf all_flowspec;
-        static const Enum::YLeaf all_labeled_unicast;
-        static const Enum::YLeaf all_mdt;
-        static const Enum::YLeaf all_mspw;
-        static const Enum::YLeaf all_multicast;
-        static const Enum::YLeaf all_mvpn;
-        static const Enum::YLeaf all_rt_filter;
-        static const Enum::YLeaf all_sr_policy;
-        static const Enum::YLeaf all_tunnel;
-        static const Enum::YLeaf all_unicast;
-        static const Enum::YLeaf all_vpls;
-        static const Enum::YLeaf all_vpws;
-        static const Enum::YLeaf ipv4_all;
-        static const Enum::YLeaf ipv4_flowspec;
-        static const Enum::YLeaf ipv4_labeled_unicast;
-        static const Enum::YLeaf ipv4_mdt;
-        static const Enum::YLeaf ipv4_multicast;
-        static const Enum::YLeaf ipv4_mvpn;
-        static const Enum::YLeaf ipv4_rt_filter;
-        static const Enum::YLeaf ipv4_sr_policy;
-        static const Enum::YLeaf ipv4_tunnel;
-        static const Enum::YLeaf ipv4_unicast;
-        static const Enum::YLeaf ipv6_all;
-        static const Enum::YLeaf ipv6_flowspec;
-        static const Enum::YLeaf ipv6_labeled_unicast;
-        static const Enum::YLeaf ipv6_multicast;
-        static const Enum::YLeaf ipv6_mvpn;
-        static const Enum::YLeaf ipv6_sr_policy;
-        static const Enum::YLeaf ipv6_unicast;
-        static const Enum::YLeaf l2vpn_evpn;
-        static const Enum::YLeaf l2vpn_mspw;
-        static const Enum::YLeaf l2vpn_vpls;
-        static const Enum::YLeaf l2vpn_vpws;
-        static const Enum::YLeaf link_state;
-        static const Enum::YLeaf vpnv4_flowspec;
-        static const Enum::YLeaf vpnv4_multicast;
-        static const Enum::YLeaf vpnv4_unicast;
-        static const Enum::YLeaf vpnv6_flowspec;
-        static const Enum::YLeaf vpnv6_multicast;
-        static const Enum::YLeaf vpnv6_unicast;
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
 
 };
 
-class Vpnv4SafiEnum : public Enum
+class InstanceName : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf flowspec;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf all;
 
 };
 
-class Ipv6SafiEnum : public Enum
+class Afi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
-        static const Enum::YLeaf flowspec;
-        static const Enum::YLeaf labeled_unicast;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf mvpn;
-        static const Enum::YLeaf sr_policy;
-        static const Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf l2vpn;
+        static const ydk::Enum::YLeaf link_state;
+        static const ydk::Enum::YLeaf vpnv4;
+        static const ydk::Enum::YLeaf vpnv6;
 
 };
 
-class L2VpnSafiEnum : public Enum
+class AfiSafiType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf evpn;
-        static const Enum::YLeaf mspw;
-        static const Enum::YLeaf vpls;
-        static const Enum::YLeaf vpws;
+        static const ydk::Enum::YLeaf all_all;
+        static const ydk::Enum::YLeaf all_evpn;
+        static const ydk::Enum::YLeaf all_flowspec;
+        static const ydk::Enum::YLeaf all_labeled_unicast;
+        static const ydk::Enum::YLeaf all_mdt;
+        static const ydk::Enum::YLeaf all_mspw;
+        static const ydk::Enum::YLeaf all_multicast;
+        static const ydk::Enum::YLeaf all_mvpn;
+        static const ydk::Enum::YLeaf all_rt_filter;
+        static const ydk::Enum::YLeaf all_sr_policy;
+        static const ydk::Enum::YLeaf all_tunnel;
+        static const ydk::Enum::YLeaf all_unicast;
+        static const ydk::Enum::YLeaf all_vpls;
+        static const ydk::Enum::YLeaf all_vpws;
+        static const ydk::Enum::YLeaf ipv4_all;
+        static const ydk::Enum::YLeaf ipv4_flowspec;
+        static const ydk::Enum::YLeaf ipv4_labeled_unicast;
+        static const ydk::Enum::YLeaf ipv4_mdt;
+        static const ydk::Enum::YLeaf ipv4_multicast;
+        static const ydk::Enum::YLeaf ipv4_mvpn;
+        static const ydk::Enum::YLeaf ipv4_rt_filter;
+        static const ydk::Enum::YLeaf ipv4_sr_policy;
+        static const ydk::Enum::YLeaf ipv4_tunnel;
+        static const ydk::Enum::YLeaf ipv4_unicast;
+        static const ydk::Enum::YLeaf ipv6_all;
+        static const ydk::Enum::YLeaf ipv6_flowspec;
+        static const ydk::Enum::YLeaf ipv6_labeled_unicast;
+        static const ydk::Enum::YLeaf ipv6_multicast;
+        static const ydk::Enum::YLeaf ipv6_mvpn;
+        static const ydk::Enum::YLeaf ipv6_sr_policy;
+        static const ydk::Enum::YLeaf ipv6_unicast;
+        static const ydk::Enum::YLeaf l2vpn_evpn;
+        static const ydk::Enum::YLeaf l2vpn_mspw;
+        static const ydk::Enum::YLeaf l2vpn_vpls;
+        static const ydk::Enum::YLeaf l2vpn_vpws;
+        static const ydk::Enum::YLeaf link_state;
+        static const ydk::Enum::YLeaf vpnv4_flowspec;
+        static const ydk::Enum::YLeaf vpnv4_multicast;
+        static const ydk::Enum::YLeaf vpnv4_unicast;
+        static const ydk::Enum::YLeaf vpnv6_flowspec;
+        static const ydk::Enum::YLeaf vpnv6_multicast;
+        static const ydk::Enum::YLeaf vpnv6_unicast;
 
 };
 
-class LinkStateSafiEnum : public Enum
+class VrfName : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf link_state;
+        static const ydk::Enum::YLeaf all;
 
 };
 

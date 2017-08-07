@@ -27,6 +27,7 @@ START_FLAGS ?=
 
 all:  ydktest-sanity-augm.fxs ydktest-sanity-types.fxs ydktest-sanity.fxs\
 	ydktest-types.fxs ietf-aug-base-1.fxs ietf-aug-base-2.fxs ydktest-aug-ietf-1.fxs ydktest-aug-ietf-2.fxs ydktest-aug-ietf-4.fxs \
+	ydktest-aug-ietf-5.fxs \
 		$(CDB_DIR) ssh-keydir
 	@echo "Build complete"
 
@@ -47,6 +48,9 @@ ydktest-aug-ietf-2.yang:
 
 ydktest-aug-ietf-4.yang:
 	cp ../../../../../../yang/ydktest-augmentation/ydktest-aug-ietf-4\@2016-06-27.yang ydktest-aug-ietf-4.yang
+
+ydktest-aug-ietf-5.yang:
+	cp ../../../../../../yang/ydktest-augmentation/ydktest-aug-ietf-5\@2017-07-26.yang ydktest-aug-ietf-5.yang
 
 ydktest-sanity-augm.yang: ydktest-sanity.yang
 	cp ../../models/ydktest-sanity-augm\@2015-11-17.yang ydktest-sanity-augm.yang

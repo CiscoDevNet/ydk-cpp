@@ -7,43 +7,43 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tunnel_nve_cfg {
 
-class HostReachProtocolEnum : public Enum
+class HostReachProtocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf bgp;
 
 };
 
-class VxlanUdpPortEnumEnum : public Enum
+class LoadBalanceEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ietf_udp_port;
-        static const Enum::YLeaf ivx_lan_udp_port;
+        static const ydk::Enum::YLeaf per_evi;
 
 };
 
-class LoadBalanceEnumEnum : public Enum
+class OverlayEncapEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf per_evi;
+        static const ydk::Enum::YLeaf vx_lan_encapsulation;
+        static const ydk::Enum::YLeaf soft_gre_encapsulation;
 
 };
 
-class UnknownUnicastFloodingEnumEnum : public Enum
+class UnknownUnicastFloodingEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf suppress_uuf;
+        static const ydk::Enum::YLeaf suppress_uuf;
 
 };
 
-class OverlayEncapEnumEnum : public Enum
+class VxlanUdpPortEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf vx_lan_encapsulation;
-        static const Enum::YLeaf soft_gre_encapsulation;
+        static const ydk::Enum::YLeaf ietf_udp_port;
+        static const ydk::Enum::YLeaf ivx_lan_udp_port;
 
 };
 

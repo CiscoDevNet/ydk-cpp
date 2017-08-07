@@ -7,46 +7,46 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_atm_common_datatypes {
 
-class AtmVpShapingEnum : public Enum
+class AtmVpShaping : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf cbr;
-        static const Enum::YLeaf vbr_nrt;
-        static const Enum::YLeaf vbr_rt;
-        static const Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf vbr_nrt;
+        static const ydk::Enum::YLeaf vbr_rt;
+        static const ydk::Enum::YLeaf ubr;
 
 };
 
-class AtmPvcShapingEnum : public Enum
+class AtmPvcEncapsulation : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf cbr;
-        static const Enum::YLeaf vbr_nrt;
-        static const Enum::YLeaf vbr_rt;
-        static const Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf vc_mux;
+        static const ydk::Enum::YLeaf nlpid;
+        static const ydk::Enum::YLeaf aal0;
+        static const ydk::Enum::YLeaf aal5;
 
 };
 
-class AtmPvcEncapsulationEnum : public Enum
+class AtmPvcShaping : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf snap;
-        static const Enum::YLeaf vc_mux;
-        static const Enum::YLeaf nlpid;
-        static const Enum::YLeaf aal0;
-        static const Enum::YLeaf aal5;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf vbr_nrt;
+        static const ydk::Enum::YLeaf vbr_rt;
+        static const ydk::Enum::YLeaf ubr;
 
 };
 
-class AtmPvcDataEnum : public Enum
+class AtmPvcData : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf data;
-        static const Enum::YLeaf ilmi;
-        static const Enum::YLeaf layer2;
+        static const ydk::Enum::YLeaf data;
+        static const ydk::Enum::YLeaf ilmi;
+        static const ydk::Enum::YLeaf layer2;
 
 };
 

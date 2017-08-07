@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace TUNNEL_MIB {
 
-class TunnelMib : public Entity
+class TunnelMib : public ydk::Entity
 {
     public:
         TunnelMib();
@@ -19,28 +19,31 @@ class TunnelMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Tunneliftable; //type: TunnelMib::Tunneliftable
         class Tunnelconfigtable; //type: TunnelMib::Tunnelconfigtable
         class Tunnelinetconfigtable; //type: TunnelMib::Tunnelinetconfigtable
 
-        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelconfigtable> tunnelconfigtable_;
-        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunneliftable> tunneliftable_;
-        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelinetconfigtable> tunnelinetconfigtable_;
+        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelconfigtable> tunnelconfigtable;
+        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunneliftable> tunneliftable;
+        std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelinetconfigtable> tunnelinetconfigtable;
         
 }; // TunnelMib
 
 
-class TunnelMib::Tunneliftable : public Entity
+class TunnelMib::Tunneliftable : public ydk::Entity
 {
     public:
         Tunneliftable();
@@ -48,20 +51,22 @@ class TunnelMib::Tunneliftable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tunnelifentry; //type: TunnelMib::Tunneliftable::Tunnelifentry
 
-        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunneliftable::Tunnelifentry> > tunnelifentry_;
+        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunneliftable::Tunnelifentry> > tunnelifentry;
         
 }; // TunnelMib::Tunneliftable
 
 
-class TunnelMib::Tunneliftable::Tunnelifentry : public Entity
+class TunnelMib::Tunneliftable::Tunnelifentry : public ydk::Entity
 {
     public:
         Tunnelifentry();
@@ -69,31 +74,33 @@ class TunnelMib::Tunneliftable::Tunnelifentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf tunneliflocaladdress; //type: string
-        YLeaf tunnelifremoteaddress; //type: string
-        YLeaf tunnelifencapsmethod; //type: IanatunneltypeEnum
-        YLeaf tunnelifhoplimit; //type: int32
-        YLeaf tunnelifsecurity; //type: TunnelifsecurityEnum
-        YLeaf tunneliftos; //type: int32
-        YLeaf tunnelifflowlabel; //type: int32
-        YLeaf tunnelifaddresstype; //type: InetaddresstypeEnum
-        YLeaf tunneliflocalinetaddress; //type: binary
-        YLeaf tunnelifremoteinetaddress; //type: binary
-        YLeaf tunnelifencapslimit; //type: int32
-        class TunnelifsecurityEnum;
+        ydk::YLeaf ifindex;
+        ydk::YLeaf tunneliflocaladdress; //type: string
+        ydk::YLeaf tunnelifremoteaddress; //type: string
+        ydk::YLeaf tunnelifencapsmethod; //type: Ianatunneltype
+        ydk::YLeaf tunnelifhoplimit; //type: int32
+        ydk::YLeaf tunnelifsecurity; //type: Tunnelifsecurity
+        ydk::YLeaf tunneliftos; //type: int32
+        ydk::YLeaf tunnelifflowlabel; //type: int32
+        ydk::YLeaf tunnelifaddresstype; //type: Inetaddresstype
+        ydk::YLeaf tunneliflocalinetaddress; //type: binary
+        ydk::YLeaf tunnelifremoteinetaddress; //type: binary
+        ydk::YLeaf tunnelifencapslimit; //type: int32
+        class Tunnelifsecurity;
 
 }; // TunnelMib::Tunneliftable::Tunnelifentry
 
 
-class TunnelMib::Tunnelconfigtable : public Entity
+class TunnelMib::Tunnelconfigtable : public ydk::Entity
 {
     public:
         Tunnelconfigtable();
@@ -101,20 +108,22 @@ class TunnelMib::Tunnelconfigtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tunnelconfigentry; //type: TunnelMib::Tunnelconfigtable::Tunnelconfigentry
 
-        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelconfigtable::Tunnelconfigentry> > tunnelconfigentry_;
+        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelconfigtable::Tunnelconfigentry> > tunnelconfigentry;
         
 }; // TunnelMib::Tunnelconfigtable
 
 
-class TunnelMib::Tunnelconfigtable::Tunnelconfigentry : public Entity
+class TunnelMib::Tunnelconfigtable::Tunnelconfigentry : public ydk::Entity
 {
     public:
         Tunnelconfigentry();
@@ -122,23 +131,25 @@ class TunnelMib::Tunnelconfigtable::Tunnelconfigentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnelconfiglocaladdress; //type: string
-        YLeaf tunnelconfigremoteaddress; //type: string
-        YLeaf tunnelconfigencapsmethod; //type: IanatunneltypeEnum
-        YLeaf tunnelconfigid; //type: int32
-        YLeaf tunnelconfigifindex; //type: int32
-        YLeaf tunnelconfigstatus; //type: RowstatusEnum
+        ydk::YLeaf tunnelconfiglocaladdress; //type: string
+        ydk::YLeaf tunnelconfigremoteaddress; //type: string
+        ydk::YLeaf tunnelconfigencapsmethod; //type: Ianatunneltype
+        ydk::YLeaf tunnelconfigid; //type: int32
+        ydk::YLeaf tunnelconfigifindex; //type: int32
+        ydk::YLeaf tunnelconfigstatus; //type: Rowstatus
 
 }; // TunnelMib::Tunnelconfigtable::Tunnelconfigentry
 
 
-class TunnelMib::Tunnelinetconfigtable : public Entity
+class TunnelMib::Tunnelinetconfigtable : public ydk::Entity
 {
     public:
         Tunnelinetconfigtable();
@@ -146,20 +157,22 @@ class TunnelMib::Tunnelinetconfigtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tunnelinetconfigentry; //type: TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry
 
-        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry> > tunnelinetconfigentry_;
+        std::vector<std::shared_ptr<TUNNEL_MIB::TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry> > tunnelinetconfigentry;
         
 }; // TunnelMib::Tunnelinetconfigtable
 
 
-class TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry : public Entity
+class TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry : public ydk::Entity
 {
     public:
         Tunnelinetconfigentry();
@@ -167,29 +180,31 @@ class TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnelinetconfigaddresstype; //type: InetaddresstypeEnum
-        YLeaf tunnelinetconfiglocaladdress; //type: binary
-        YLeaf tunnelinetconfigremoteaddress; //type: binary
-        YLeaf tunnelinetconfigencapsmethod; //type: IanatunneltypeEnum
-        YLeaf tunnelinetconfigid; //type: int32
-        YLeaf tunnelinetconfigifindex; //type: int32
-        YLeaf tunnelinetconfigstatus; //type: RowstatusEnum
-        YLeaf tunnelinetconfigstoragetype; //type: StoragetypeEnum
+        ydk::YLeaf tunnelinetconfigaddresstype; //type: Inetaddresstype
+        ydk::YLeaf tunnelinetconfiglocaladdress; //type: binary
+        ydk::YLeaf tunnelinetconfigremoteaddress; //type: binary
+        ydk::YLeaf tunnelinetconfigencapsmethod; //type: Ianatunneltype
+        ydk::YLeaf tunnelinetconfigid; //type: int32
+        ydk::YLeaf tunnelinetconfigifindex; //type: int32
+        ydk::YLeaf tunnelinetconfigstatus; //type: Rowstatus
+        ydk::YLeaf tunnelinetconfigstoragetype; //type: Storagetype
 
 }; // TunnelMib::Tunnelinetconfigtable::Tunnelinetconfigentry
 
-class TunnelMib::Tunneliftable::Tunnelifentry::TunnelifsecurityEnum : public Enum
+class TunnelMib::Tunneliftable::Tunnelifentry::Tunnelifsecurity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf ipsec;
-        static const Enum::YLeaf other;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ipsec;
+        static const ydk::Enum::YLeaf other;
 
 };
 

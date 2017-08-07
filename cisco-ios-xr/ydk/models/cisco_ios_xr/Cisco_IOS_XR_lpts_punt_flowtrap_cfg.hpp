@@ -7,24 +7,24 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lpts_punt_flowtrap_cfg {
 
-class LptsPuntFlowtrapProtoIdEnum : public Enum
+class LptsPuntFlowtrapProtoId : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf arp;
-        static const Enum::YLeaf icmp;
-        static const Enum::YLeaf dhcp;
-        static const Enum::YLeaf pppoe;
-        static const Enum::YLeaf ppp;
-        static const Enum::YLeaf igmp;
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf l2tp;
-        static const Enum::YLeaf unclassified;
-        static const Enum::YLeaf ospf;
-        static const Enum::YLeaf bgp;
-        static const Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf arp;
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf pppoe;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf igmp;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf l2tp;
+        static const ydk::Enum::YLeaf unclassified;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf default_;
 
 };
 

@@ -7,45 +7,45 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_aaacore_cfg {
 
-class NasPortValueEnum : public Enum
+class AaaServiceAccounting : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf async;
-        static const Enum::YLeaf sync;
-        static const Enum::YLeaf isdn;
-        static const Enum::YLeaf isdn_async_v120;
-        static const Enum::YLeaf isdn_async_v110;
-        static const Enum::YLeaf virtual_;
-        static const Enum::YLeaf isdn_async_piafs;
-        static const Enum::YLeaf x75;
-        static const Enum::YLeaf ethernet;
-        static const Enum::YLeaf pppoa;
-        static const Enum::YLeaf pppoeoa;
-        static const Enum::YLeaf pppoeoe;
-        static const Enum::YLeaf pppoeovlan;
-        static const Enum::YLeaf pppoeoqinq;
-        static const Enum::YLeaf virtual_pppoeoe;
-        static const Enum::YLeaf virtual_pppoeovlan;
-        static const Enum::YLeaf virtual_pppoeoqinaq;
-        static const Enum::YLeaf ipsec;
-        static const Enum::YLeaf ipoeoe;
-        static const Enum::YLeaf ipoeovlan;
-        static const Enum::YLeaf ipoeoqinq;
-        static const Enum::YLeaf virtual_ipoeoe;
-        static const Enum::YLeaf virtual_ipoeovlan;
-        static const Enum::YLeaf virtual_ipoeoqinq;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf extended;
+        static const ydk::Enum::YLeaf brief;
 
 };
 
-class AaaServiceAccountingEnum : public Enum
+class NasPortValue : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf extended;
-        static const Enum::YLeaf brief;
+        static const ydk::Enum::YLeaf async;
+        static const ydk::Enum::YLeaf sync;
+        static const ydk::Enum::YLeaf isdn;
+        static const ydk::Enum::YLeaf isdn_async_v120;
+        static const ydk::Enum::YLeaf isdn_async_v110;
+        static const ydk::Enum::YLeaf virtual_;
+        static const ydk::Enum::YLeaf isdn_async_piafs;
+        static const ydk::Enum::YLeaf x75;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf pppoa;
+        static const ydk::Enum::YLeaf pppoeoa;
+        static const ydk::Enum::YLeaf pppoeoe;
+        static const ydk::Enum::YLeaf pppoeovlan;
+        static const ydk::Enum::YLeaf pppoeoqinq;
+        static const ydk::Enum::YLeaf virtual_pppoeoe;
+        static const ydk::Enum::YLeaf virtual_pppoeovlan;
+        static const ydk::Enum::YLeaf virtual_pppoeoqinaq;
+        static const ydk::Enum::YLeaf ipsec;
+        static const ydk::Enum::YLeaf ipoeoe;
+        static const ydk::Enum::YLeaf ipoeovlan;
+        static const ydk::Enum::YLeaf ipoeoqinq;
+        static const ydk::Enum::YLeaf virtual_ipoeoe;
+        static const ydk::Enum::YLeaf virtual_ipoeovlan;
+        static const ydk::Enum::YLeaf virtual_ipoeoqinq;
 
 };
 

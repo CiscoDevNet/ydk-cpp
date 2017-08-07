@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_cmproxy_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_cmproxy_oper {
 
 SdrInventoryVm::SdrInventoryVm()
@@ -29,7 +31,7 @@ bool SdrInventoryVm::has_data() const
 
 bool SdrInventoryVm::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::get_children() co
     return children;
 }
 
-void SdrInventoryVm::set_value(const std::string & value_path, std::string value)
+void SdrInventoryVm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SdrInventoryVm::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string SdrInventoryVm::get_bundle_name() const
 augment_capabilities_function SdrInventoryVm::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SdrInventoryVm::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SdrInventoryVm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 SdrInventoryVm::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool SdrInventoryVm::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SdrInventoryVm::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::get_childr
     return children;
 }
 
-void SdrInventoryVm::Nodes::set_value(const std::string & value_path, std::string value)
+void SdrInventoryVm::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SdrInventoryVm::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SdrInventoryVm::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 SdrInventoryVm::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool SdrInventoryVm::Nodes::Node::has_data() const
 
 bool SdrInventoryVm::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (node_entries !=  nullptr && node_entries->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath SdrInventoryVm::Nodes::Node::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::Node::get_
     return children;
 }
 
-void SdrInventoryVm::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void SdrInventoryVm::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SdrInventoryVm::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool SdrInventoryVm::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-entries" || name == "name")
+        return true;
+    return false;
 }
 
 SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntries()
@@ -322,7 +368,7 @@ bool SdrInventoryVm::Nodes::Node::NodeEntries::has_operation() const
         if(node_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SdrInventoryVm::Nodes::Node::NodeEntries::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::Node::Node
     return children;
 }
 
-void SdrInventoryVm::Nodes::Node::NodeEntries::set_value(const std::string & value_path, std::string value)
+void SdrInventoryVm::Nodes::Node::NodeEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SdrInventoryVm::Nodes::Node::NodeEntries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SdrInventoryVm::Nodes::Node::NodeEntries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-entry")
+        return true;
+    return false;
 }
 
 SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::NodeEntry()
@@ -439,23 +496,23 @@ bool SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::has_data() const
 
 bool SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(card_type.operation)
-	|| is_set(card_type_string.operation)
-	|| is_set(node_ip.operation)
-	|| is_set(node_ipv4_string.operation)
-	|| is_set(node_name.operation)
-	|| is_set(node_sw_state.operation)
-	|| is_set(node_sw_state_string.operation)
-	|| is_set(nodeid.operation)
-	|| is_set(partner_id.operation)
-	|| is_set(partner_name.operation)
-	|| is_set(prev_sw_state.operation)
-	|| is_set(prev_sw_state_string.operation)
-	|| is_set(red_state.operation)
-	|| is_set(red_state_string.operation)
-	|| is_set(valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(card_type.yfilter)
+	|| ydk::is_set(card_type_string.yfilter)
+	|| ydk::is_set(node_ip.yfilter)
+	|| ydk::is_set(node_ipv4_string.yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(node_sw_state.yfilter)
+	|| ydk::is_set(node_sw_state_string.yfilter)
+	|| ydk::is_set(nodeid.yfilter)
+	|| ydk::is_set(partner_id.yfilter)
+	|| ydk::is_set(partner_name.yfilter)
+	|| ydk::is_set(prev_sw_state.yfilter)
+	|| ydk::is_set(prev_sw_state_string.yfilter)
+	|| ydk::is_set(red_state.yfilter)
+	|| ydk::is_set(red_state_string.yfilter)
+	|| ydk::is_set(valid.yfilter);
 }
 
 std::string SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::get_segment_path() const
@@ -481,22 +538,22 @@ const EntityPath SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (card_type.is_set || is_set(card_type.operation)) leaf_name_data.push_back(card_type.get_name_leafdata());
-    if (card_type_string.is_set || is_set(card_type_string.operation)) leaf_name_data.push_back(card_type_string.get_name_leafdata());
-    if (node_ip.is_set || is_set(node_ip.operation)) leaf_name_data.push_back(node_ip.get_name_leafdata());
-    if (node_ipv4_string.is_set || is_set(node_ipv4_string.operation)) leaf_name_data.push_back(node_ipv4_string.get_name_leafdata());
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (node_sw_state.is_set || is_set(node_sw_state.operation)) leaf_name_data.push_back(node_sw_state.get_name_leafdata());
-    if (node_sw_state_string.is_set || is_set(node_sw_state_string.operation)) leaf_name_data.push_back(node_sw_state_string.get_name_leafdata());
-    if (nodeid.is_set || is_set(nodeid.operation)) leaf_name_data.push_back(nodeid.get_name_leafdata());
-    if (partner_id.is_set || is_set(partner_id.operation)) leaf_name_data.push_back(partner_id.get_name_leafdata());
-    if (partner_name.is_set || is_set(partner_name.operation)) leaf_name_data.push_back(partner_name.get_name_leafdata());
-    if (prev_sw_state.is_set || is_set(prev_sw_state.operation)) leaf_name_data.push_back(prev_sw_state.get_name_leafdata());
-    if (prev_sw_state_string.is_set || is_set(prev_sw_state_string.operation)) leaf_name_data.push_back(prev_sw_state_string.get_name_leafdata());
-    if (red_state.is_set || is_set(red_state.operation)) leaf_name_data.push_back(red_state.get_name_leafdata());
-    if (red_state_string.is_set || is_set(red_state_string.operation)) leaf_name_data.push_back(red_state_string.get_name_leafdata());
-    if (valid.is_set || is_set(valid.operation)) leaf_name_data.push_back(valid.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (card_type.is_set || is_set(card_type.yfilter)) leaf_name_data.push_back(card_type.get_name_leafdata());
+    if (card_type_string.is_set || is_set(card_type_string.yfilter)) leaf_name_data.push_back(card_type_string.get_name_leafdata());
+    if (node_ip.is_set || is_set(node_ip.yfilter)) leaf_name_data.push_back(node_ip.get_name_leafdata());
+    if (node_ipv4_string.is_set || is_set(node_ipv4_string.yfilter)) leaf_name_data.push_back(node_ipv4_string.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_sw_state.is_set || is_set(node_sw_state.yfilter)) leaf_name_data.push_back(node_sw_state.get_name_leafdata());
+    if (node_sw_state_string.is_set || is_set(node_sw_state_string.yfilter)) leaf_name_data.push_back(node_sw_state_string.get_name_leafdata());
+    if (nodeid.is_set || is_set(nodeid.yfilter)) leaf_name_data.push_back(nodeid.get_name_leafdata());
+    if (partner_id.is_set || is_set(partner_id.yfilter)) leaf_name_data.push_back(partner_id.get_name_leafdata());
+    if (partner_name.is_set || is_set(partner_name.yfilter)) leaf_name_data.push_back(partner_name.get_name_leafdata());
+    if (prev_sw_state.is_set || is_set(prev_sw_state.yfilter)) leaf_name_data.push_back(prev_sw_state.get_name_leafdata());
+    if (prev_sw_state_string.is_set || is_set(prev_sw_state_string.yfilter)) leaf_name_data.push_back(prev_sw_state_string.get_name_leafdata());
+    if (red_state.is_set || is_set(red_state.yfilter)) leaf_name_data.push_back(red_state.get_name_leafdata());
+    if (red_state_string.is_set || is_set(red_state_string.yfilter)) leaf_name_data.push_back(red_state_string.get_name_leafdata());
+    if (valid.is_set || is_set(valid.yfilter)) leaf_name_data.push_back(valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -515,72 +572,179 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::Node::Node
     return children;
 }
 
-void SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::set_value(const std::string & value_path, std::string value)
+void SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "card-type")
     {
         card_type = value;
+        card_type.value_namespace = name_space;
+        card_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "card-type-string")
     {
         card_type_string = value;
+        card_type_string.value_namespace = name_space;
+        card_type_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-ip")
     {
         node_ip = value;
+        node_ip.value_namespace = name_space;
+        node_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-ipv4-string")
     {
         node_ipv4_string = value;
+        node_ipv4_string.value_namespace = name_space;
+        node_ipv4_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-sw-state")
     {
         node_sw_state = value;
+        node_sw_state.value_namespace = name_space;
+        node_sw_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-sw-state-string")
     {
         node_sw_state_string = value;
+        node_sw_state_string.value_namespace = name_space;
+        node_sw_state_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nodeid")
     {
         nodeid = value;
+        nodeid.value_namespace = name_space;
+        nodeid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-id")
     {
         partner_id = value;
+        partner_id.value_namespace = name_space;
+        partner_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partner-name")
     {
         partner_name = value;
+        partner_name.value_namespace = name_space;
+        partner_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prev-sw-state")
     {
         prev_sw_state = value;
+        prev_sw_state.value_namespace = name_space;
+        prev_sw_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prev-sw-state-string")
     {
         prev_sw_state_string = value;
+        prev_sw_state_string.value_namespace = name_space;
+        prev_sw_state_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "red-state")
     {
         red_state = value;
+        red_state.value_namespace = name_space;
+        red_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "red-state-string")
     {
         red_state_string = value;
+        red_state_string.value_namespace = name_space;
+        red_state_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid")
     {
         valid = value;
+        valid.value_namespace = name_space;
+        valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "card-type")
+    {
+        card_type.yfilter = yfilter;
+    }
+    if(value_path == "card-type-string")
+    {
+        card_type_string.yfilter = yfilter;
+    }
+    if(value_path == "node-ip")
+    {
+        node_ip.yfilter = yfilter;
+    }
+    if(value_path == "node-ipv4-string")
+    {
+        node_ipv4_string.yfilter = yfilter;
+    }
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "node-sw-state")
+    {
+        node_sw_state.yfilter = yfilter;
+    }
+    if(value_path == "node-sw-state-string")
+    {
+        node_sw_state_string.yfilter = yfilter;
+    }
+    if(value_path == "nodeid")
+    {
+        nodeid.yfilter = yfilter;
+    }
+    if(value_path == "partner-id")
+    {
+        partner_id.yfilter = yfilter;
+    }
+    if(value_path == "partner-name")
+    {
+        partner_name.yfilter = yfilter;
+    }
+    if(value_path == "prev-sw-state")
+    {
+        prev_sw_state.yfilter = yfilter;
+    }
+    if(value_path == "prev-sw-state-string")
+    {
+        prev_sw_state_string.yfilter = yfilter;
+    }
+    if(value_path == "red-state")
+    {
+        red_state.yfilter = yfilter;
+    }
+    if(value_path == "red-state-string")
+    {
+        red_state_string.yfilter = yfilter;
+    }
+    if(value_path == "valid")
+    {
+        valid.yfilter = yfilter;
+    }
+}
+
+bool SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "card-type" || name == "card-type-string" || name == "node-ip" || name == "node-ipv4-string" || name == "node-name" || name == "node-sw-state" || name == "node-sw-state-string" || name == "nodeid" || name == "partner-id" || name == "partner-name" || name == "prev-sw-state" || name == "prev-sw-state-string" || name == "red-state" || name == "red-state-string" || name == "valid")
+        return true;
+    return false;
 }
 
 

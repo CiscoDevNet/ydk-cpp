@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_rgmgr_oper {
 
-class RedundancyGroupManager : public Entity
+class RedundancyGroupManager : public ydk::Entity
 {
     public:
         RedundancyGroupManager();
@@ -18,15 +18,18 @@ class RedundancyGroupManager : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Controllers; //type: RedundancyGroupManager::Controllers
 
@@ -35,7 +38,7 @@ class RedundancyGroupManager : public Entity
 }; // RedundancyGroupManager
 
 
-class RedundancyGroupManager::Controllers : public Entity
+class RedundancyGroupManager::Controllers : public ydk::Entity
 {
     public:
         Controllers();
@@ -43,11 +46,13 @@ class RedundancyGroupManager::Controllers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Controller; //type: RedundancyGroupManager::Controllers::Controller
 
@@ -56,7 +61,7 @@ class RedundancyGroupManager::Controllers : public Entity
 }; // RedundancyGroupManager::Controllers
 
 
-class RedundancyGroupManager::Controllers::Controller : public Entity
+class RedundancyGroupManager::Controllers::Controller : public ydk::Entity
 {
     public:
         Controller();
@@ -64,20 +69,22 @@ class RedundancyGroupManager::Controllers::Controller : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf controller_name; //type: string
-        YLeaf multi_router_aps_group_number; //type: string
-        YLeaf controller_name_xr; //type: string
-        YLeaf controller_handle; //type: string
-        YLeaf backup_interface_name; //type: string
-        YLeaf backup_interface_handle; //type: string
-        YLeaf backup_interface_next_hop_ip_address; //type: string
-        YLeaf inter_chassis_group_state; //type: string
+        ydk::YLeaf controller_name; //type: string
+        ydk::YLeaf multi_router_aps_group_number; //type: string
+        ydk::YLeaf controller_name_xr; //type: string
+        ydk::YLeaf controller_handle; //type: string
+        ydk::YLeaf backup_interface_name; //type: string
+        ydk::YLeaf backup_interface_handle; //type: string
+        ydk::YLeaf backup_interface_next_hop_ip_address; //type: string
+        ydk::YLeaf inter_chassis_group_state; //type: string
 
 }; // RedundancyGroupManager::Controllers::Controller
 

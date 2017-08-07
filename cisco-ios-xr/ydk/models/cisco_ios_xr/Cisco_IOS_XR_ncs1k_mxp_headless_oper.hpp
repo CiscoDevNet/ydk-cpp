@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ncs1k_mxp_headless_oper {
 
-class HeadlessFuncData : public Entity
+class HeadlessFuncData : public ydk::Entity
 {
     public:
         HeadlessFuncData();
@@ -18,15 +18,18 @@ class HeadlessFuncData : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class OtnPortNames; //type: HeadlessFuncData::OtnPortNames
         class EthernetPortNames; //type: HeadlessFuncData::EthernetPortNames
@@ -37,7 +40,7 @@ class HeadlessFuncData : public Entity
 }; // HeadlessFuncData
 
 
-class HeadlessFuncData::OtnPortNames : public Entity
+class HeadlessFuncData::OtnPortNames : public ydk::Entity
 {
     public:
         OtnPortNames();
@@ -45,11 +48,13 @@ class HeadlessFuncData::OtnPortNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class OtnPortName; //type: HeadlessFuncData::OtnPortNames::OtnPortName
 
@@ -58,7 +63,7 @@ class HeadlessFuncData::OtnPortNames : public Entity
 }; // HeadlessFuncData::OtnPortNames
 
 
-class HeadlessFuncData::OtnPortNames::OtnPortName : public Entity
+class HeadlessFuncData::OtnPortNames::OtnPortName : public ydk::Entity
 {
     public:
         OtnPortName();
@@ -66,16 +71,18 @@ class HeadlessFuncData::OtnPortNames::OtnPortName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf started_stateful; //type: boolean
-        YLeaf headless_start_time; //type: string
-        YLeaf headless_end_time; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf started_stateful; //type: boolean
+        ydk::YLeaf headless_start_time; //type: string
+        ydk::YLeaf headless_end_time; //type: string
         class OtnStatistics; //type: HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics
 
         std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_headless_oper::HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics> otn_statistics;
@@ -83,7 +90,7 @@ class HeadlessFuncData::OtnPortNames::OtnPortName : public Entity
 }; // HeadlessFuncData::OtnPortNames::OtnPortName
 
 
-class HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics : public Entity
+class HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics : public ydk::Entity
 {
     public:
         OtnStatistics();
@@ -91,21 +98,23 @@ class HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sm_bip; //type: uint64
-        YLeaf sm_bei; //type: uint64
-        YLeaf fec_ec; //type: uint64
-        YLeaf fec_uc; //type: uint64
+        ydk::YLeaf sm_bip; //type: uint64
+        ydk::YLeaf sm_bei; //type: uint64
+        ydk::YLeaf fec_ec; //type: uint64
+        ydk::YLeaf fec_uc; //type: uint64
 
 }; // HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics
 
 
-class HeadlessFuncData::EthernetPortNames : public Entity
+class HeadlessFuncData::EthernetPortNames : public ydk::Entity
 {
     public:
         EthernetPortNames();
@@ -113,11 +122,13 @@ class HeadlessFuncData::EthernetPortNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EthernetPortName; //type: HeadlessFuncData::EthernetPortNames::EthernetPortName
 
@@ -126,7 +137,7 @@ class HeadlessFuncData::EthernetPortNames : public Entity
 }; // HeadlessFuncData::EthernetPortNames
 
 
-class HeadlessFuncData::EthernetPortNames::EthernetPortName : public Entity
+class HeadlessFuncData::EthernetPortNames::EthernetPortName : public ydk::Entity
 {
     public:
         EthernetPortName();
@@ -134,16 +145,18 @@ class HeadlessFuncData::EthernetPortNames::EthernetPortName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf started_stateful; //type: boolean
-        YLeaf headless_start_time; //type: string
-        YLeaf headless_end_time; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf started_stateful; //type: boolean
+        ydk::YLeaf headless_start_time; //type: string
+        ydk::YLeaf headless_end_time; //type: string
         class EtherStatistics; //type: HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics
 
         std::shared_ptr<Cisco_IOS_XR_ncs1k_mxp_headless_oper::HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics> ether_statistics;
@@ -151,7 +164,7 @@ class HeadlessFuncData::EthernetPortNames::EthernetPortName : public Entity
 }; // HeadlessFuncData::EthernetPortNames::EthernetPortName
 
 
-class HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics : public Entity
+class HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics : public ydk::Entity
 {
     public:
         EtherStatistics();
@@ -159,44 +172,46 @@ class HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rx_pkts_over_sized; //type: uint64
-        YLeaf rx_pkts_bad_fcs; //type: uint64
-        YLeaf rx_error_jabbers; //type: uint64
-        YLeaf rx_pkts_multicast; //type: uint64
-        YLeaf rx_pkts_broadcast; //type: uint64
-        YLeaf rx_pkts_under_sized; //type: uint64
-        YLeaf rx_packets; //type: uint64
-        YLeaf rx_total_bytes; //type: uint64
-        YLeaf rx_bytes_good; //type: uint64
-        YLeaf rx_pkts_good; //type: uint64
-        YLeaf tx_bytes_good; //type: uint64
-        YLeaf tx_pkts_good; //type: uint64
-        YLeaf rx_recv_fragments; //type: uint64
-        YLeaf rx_pkts64_bytes; //type: uint64
-        YLeaf rx_pkts65_to127_bytes; //type: uint64
-        YLeaf rx_pkts128to255_bytes; //type: uint64
-        YLeaf rx_pkts256_to511_bytes; //type: uint64
-        YLeaf rx_pkts512_to1023_bytes; //type: uint64
-        YLeaf rx_pkts1024_to1518_bytes; //type: uint64
-        YLeaf rx_pkts_unicast; //type: uint64
-        YLeaf tx_packets; //type: uint64
-        YLeaf tx_total_bytes; //type: uint64
-        YLeaf tx_pkts_under_sized; //type: uint64
-        YLeaf tx_pkts_over_sized; //type: uint64
-        YLeaf tx_fragments; //type: uint64
-        YLeaf tx_jabber; //type: uint64
-        YLeaf tx_bad_fcs; //type: uint64
-        YLeaf rx_pkt_drop; //type: uint64
-        YLeaf rx_pause; //type: uint64
-        YLeaf tx_pause; //type: uint64
-        YLeaf rx_lldp_pkt; //type: uint64
-        YLeaf rx8021q_pkt; //type: uint64
+        ydk::YLeaf rx_pkts_over_sized; //type: uint64
+        ydk::YLeaf rx_pkts_bad_fcs; //type: uint64
+        ydk::YLeaf rx_error_jabbers; //type: uint64
+        ydk::YLeaf rx_pkts_multicast; //type: uint64
+        ydk::YLeaf rx_pkts_broadcast; //type: uint64
+        ydk::YLeaf rx_pkts_under_sized; //type: uint64
+        ydk::YLeaf rx_packets; //type: uint64
+        ydk::YLeaf rx_total_bytes; //type: uint64
+        ydk::YLeaf rx_bytes_good; //type: uint64
+        ydk::YLeaf rx_pkts_good; //type: uint64
+        ydk::YLeaf tx_bytes_good; //type: uint64
+        ydk::YLeaf tx_pkts_good; //type: uint64
+        ydk::YLeaf rx_recv_fragments; //type: uint64
+        ydk::YLeaf rx_pkts64_bytes; //type: uint64
+        ydk::YLeaf rx_pkts65_to127_bytes; //type: uint64
+        ydk::YLeaf rx_pkts128to255_bytes; //type: uint64
+        ydk::YLeaf rx_pkts256_to511_bytes; //type: uint64
+        ydk::YLeaf rx_pkts512_to1023_bytes; //type: uint64
+        ydk::YLeaf rx_pkts1024_to1518_bytes; //type: uint64
+        ydk::YLeaf rx_pkts_unicast; //type: uint64
+        ydk::YLeaf tx_packets; //type: uint64
+        ydk::YLeaf tx_total_bytes; //type: uint64
+        ydk::YLeaf tx_pkts_under_sized; //type: uint64
+        ydk::YLeaf tx_pkts_over_sized; //type: uint64
+        ydk::YLeaf tx_fragments; //type: uint64
+        ydk::YLeaf tx_jabber; //type: uint64
+        ydk::YLeaf tx_bad_fcs; //type: uint64
+        ydk::YLeaf rx_pkt_drop; //type: uint64
+        ydk::YLeaf rx_pause; //type: uint64
+        ydk::YLeaf tx_pause; //type: uint64
+        ydk::YLeaf rx_lldp_pkt; //type: uint64
+        ydk::YLeaf rx8021q_pkt; //type: uint64
 
 }; // HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics
 

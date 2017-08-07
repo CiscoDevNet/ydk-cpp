@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ethernet_lldp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ethernet_lldp_cfg {
 
 Lldp::Lldp()
@@ -40,13 +42,13 @@ bool Lldp::has_data() const
 
 bool Lldp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(enable_subintf.operation)
-	|| is_set(extended_show_width.operation)
-	|| is_set(holdtime.operation)
-	|| is_set(reinit.operation)
-	|| is_set(timer.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(enable_subintf.yfilter)
+	|| ydk::is_set(extended_show_width.yfilter)
+	|| ydk::is_set(holdtime.yfilter)
+	|| ydk::is_set(reinit.yfilter)
+	|| ydk::is_set(timer.yfilter)
 	|| (tlv_select !=  nullptr && tlv_select->has_operation());
 }
 
@@ -70,12 +72,12 @@ const EntityPath Lldp::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (enable_subintf.is_set || is_set(enable_subintf.operation)) leaf_name_data.push_back(enable_subintf.get_name_leafdata());
-    if (extended_show_width.is_set || is_set(extended_show_width.operation)) leaf_name_data.push_back(extended_show_width.get_name_leafdata());
-    if (holdtime.is_set || is_set(holdtime.operation)) leaf_name_data.push_back(holdtime.get_name_leafdata());
-    if (reinit.is_set || is_set(reinit.operation)) leaf_name_data.push_back(reinit.get_name_leafdata());
-    if (timer.is_set || is_set(timer.operation)) leaf_name_data.push_back(timer.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable_subintf.is_set || is_set(enable_subintf.yfilter)) leaf_name_data.push_back(enable_subintf.get_name_leafdata());
+    if (extended_show_width.is_set || is_set(extended_show_width.yfilter)) leaf_name_data.push_back(extended_show_width.get_name_leafdata());
+    if (holdtime.is_set || is_set(holdtime.yfilter)) leaf_name_data.push_back(holdtime.get_name_leafdata());
+    if (reinit.is_set || is_set(reinit.yfilter)) leaf_name_data.push_back(reinit.get_name_leafdata());
+    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -108,31 +110,71 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::get_children() const
     return children;
 }
 
-void Lldp::set_value(const std::string & value_path, std::string value)
+void Lldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-subintf")
     {
         enable_subintf = value;
+        enable_subintf.value_namespace = name_space;
+        enable_subintf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "extended-show-width")
     {
         extended_show_width = value;
+        extended_show_width.value_namespace = name_space;
+        extended_show_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "holdtime")
     {
         holdtime = value;
+        holdtime.value_namespace = name_space;
+        holdtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reinit")
     {
         reinit = value;
+        reinit.value_namespace = name_space;
+        reinit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timer")
     {
         timer = value;
+        timer.value_namespace = name_space;
+        timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lldp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "enable-subintf")
+    {
+        enable_subintf.yfilter = yfilter;
+    }
+    if(value_path == "extended-show-width")
+    {
+        extended_show_width.yfilter = yfilter;
+    }
+    if(value_path == "holdtime")
+    {
+        holdtime.yfilter = yfilter;
+    }
+    if(value_path == "reinit")
+    {
+        reinit.yfilter = yfilter;
+    }
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
     }
 }
 
@@ -154,6 +196,18 @@ std::string Lldp::get_bundle_name() const
 augment_capabilities_function Lldp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Lldp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Lldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tlv-select" || name == "enable" || name == "enable-subintf" || name == "extended-show-width" || name == "holdtime" || name == "reinit" || name == "timer")
+        return true;
+    return false;
 }
 
 Lldp::TlvSelect::TlvSelect()
@@ -195,8 +249,8 @@ bool Lldp::TlvSelect::has_data() const
 
 bool Lldp::TlvSelect::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tlv_select_enter.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tlv_select_enter.yfilter)
 	|| (management_address !=  nullptr && management_address->has_operation())
 	|| (port_description !=  nullptr && port_description->has_operation())
 	|| (system_capabilities !=  nullptr && system_capabilities->has_operation())
@@ -227,7 +281,7 @@ const EntityPath Lldp::TlvSelect::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tlv_select_enter.is_set || is_set(tlv_select_enter.operation)) leaf_name_data.push_back(tlv_select_enter.get_name_leafdata());
+    if (tlv_select_enter.is_set || is_set(tlv_select_enter.yfilter)) leaf_name_data.push_back(tlv_select_enter.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -316,12 +370,29 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::get_children() c
     return children;
 }
 
-void Lldp::TlvSelect::set_value(const std::string & value_path, std::string value)
+void Lldp::TlvSelect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tlv-select-enter")
     {
         tlv_select_enter = value;
+        tlv_select_enter.value_namespace = name_space;
+        tlv_select_enter.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::TlvSelect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tlv-select-enter")
+    {
+        tlv_select_enter.yfilter = yfilter;
+    }
+}
+
+bool Lldp::TlvSelect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "management-address" || name == "port-description" || name == "system-capabilities" || name == "system-description" || name == "system-name" || name == "tlv-select-enter")
+        return true;
+    return false;
 }
 
 Lldp::TlvSelect::SystemName::SystemName()
@@ -342,8 +413,8 @@ bool Lldp::TlvSelect::SystemName::has_data() const
 
 bool Lldp::TlvSelect::SystemName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
 }
 
 std::string Lldp::TlvSelect::SystemName::get_segment_path() const
@@ -369,7 +440,7 @@ const EntityPath Lldp::TlvSelect::SystemName::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -388,12 +459,29 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemName::get_
     return children;
 }
 
-void Lldp::TlvSelect::SystemName::set_value(const std::string & value_path, std::string value)
+void Lldp::TlvSelect::SystemName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::TlvSelect::SystemName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Lldp::TlvSelect::SystemName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
 }
 
 Lldp::TlvSelect::PortDescription::PortDescription()
@@ -414,8 +502,8 @@ bool Lldp::TlvSelect::PortDescription::has_data() const
 
 bool Lldp::TlvSelect::PortDescription::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
 }
 
 std::string Lldp::TlvSelect::PortDescription::get_segment_path() const
@@ -441,7 +529,7 @@ const EntityPath Lldp::TlvSelect::PortDescription::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -460,12 +548,29 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::PortDescription:
     return children;
 }
 
-void Lldp::TlvSelect::PortDescription::set_value(const std::string & value_path, std::string value)
+void Lldp::TlvSelect::PortDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::TlvSelect::PortDescription::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Lldp::TlvSelect::PortDescription::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
 }
 
 Lldp::TlvSelect::SystemDescription::SystemDescription()
@@ -486,8 +591,8 @@ bool Lldp::TlvSelect::SystemDescription::has_data() const
 
 bool Lldp::TlvSelect::SystemDescription::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
 }
 
 std::string Lldp::TlvSelect::SystemDescription::get_segment_path() const
@@ -513,7 +618,7 @@ const EntityPath Lldp::TlvSelect::SystemDescription::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -532,12 +637,29 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemDescriptio
     return children;
 }
 
-void Lldp::TlvSelect::SystemDescription::set_value(const std::string & value_path, std::string value)
+void Lldp::TlvSelect::SystemDescription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::TlvSelect::SystemDescription::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Lldp::TlvSelect::SystemDescription::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
 }
 
 Lldp::TlvSelect::SystemCapabilities::SystemCapabilities()
@@ -558,8 +680,8 @@ bool Lldp::TlvSelect::SystemCapabilities::has_data() const
 
 bool Lldp::TlvSelect::SystemCapabilities::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
 }
 
 std::string Lldp::TlvSelect::SystemCapabilities::get_segment_path() const
@@ -585,7 +707,7 @@ const EntityPath Lldp::TlvSelect::SystemCapabilities::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -604,12 +726,29 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemCapabiliti
     return children;
 }
 
-void Lldp::TlvSelect::SystemCapabilities::set_value(const std::string & value_path, std::string value)
+void Lldp::TlvSelect::SystemCapabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::TlvSelect::SystemCapabilities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Lldp::TlvSelect::SystemCapabilities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
 }
 
 Lldp::TlvSelect::ManagementAddress::ManagementAddress()
@@ -630,8 +769,8 @@ bool Lldp::TlvSelect::ManagementAddress::has_data() const
 
 bool Lldp::TlvSelect::ManagementAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
 }
 
 std::string Lldp::TlvSelect::ManagementAddress::get_segment_path() const
@@ -657,7 +796,7 @@ const EntityPath Lldp::TlvSelect::ManagementAddress::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -676,12 +815,29 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::ManagementAddres
     return children;
 }
 
-void Lldp::TlvSelect::ManagementAddress::set_value(const std::string & value_path, std::string value)
+void Lldp::TlvSelect::ManagementAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Lldp::TlvSelect::ManagementAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Lldp::TlvSelect::ManagementAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
 }
 
 

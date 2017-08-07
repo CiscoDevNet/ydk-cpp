@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_CONFIG_COPY_MIB {
 
-class CiscoConfigCopyMib : public Entity
+class CiscoConfigCopyMib : public ydk::Entity
 {
     public:
         CiscoConfigCopyMib();
@@ -19,26 +19,29 @@ class CiscoConfigCopyMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Cccopytable; //type: CiscoConfigCopyMib::Cccopytable
         class Cccopyerrortable; //type: CiscoConfigCopyMib::Cccopyerrortable
 
-        std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopyerrortable> cccopyerrortable_;
-        std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable> cccopytable_;
+        std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopyerrortable> cccopyerrortable;
+        std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable> cccopytable;
         
 }; // CiscoConfigCopyMib
 
 
-class CiscoConfigCopyMib::Cccopytable : public Entity
+class CiscoConfigCopyMib::Cccopytable : public ydk::Entity
 {
     public:
         Cccopytable();
@@ -46,20 +49,22 @@ class CiscoConfigCopyMib::Cccopytable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cccopyentry; //type: CiscoConfigCopyMib::Cccopytable::Cccopyentry
 
-        std::vector<std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable::Cccopyentry> > cccopyentry_;
+        std::vector<std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable::Cccopyentry> > cccopyentry;
         
 }; // CiscoConfigCopyMib::Cccopytable
 
 
-class CiscoConfigCopyMib::Cccopytable::Cccopyentry : public Entity
+class CiscoConfigCopyMib::Cccopytable::Cccopyentry : public ydk::Entity
 {
     public:
         Cccopyentry();
@@ -67,33 +72,35 @@ class CiscoConfigCopyMib::Cccopytable::Cccopyentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cccopyindex; //type: uint32
-        YLeaf cccopyprotocol; //type: ConfigcopyprotocolEnum
-        YLeaf cccopysourcefiletype; //type: ConfigfiletypeEnum
-        YLeaf cccopydestfiletype; //type: ConfigfiletypeEnum
-        YLeaf cccopyserveraddress; //type: string
-        YLeaf cccopyfilename; //type: string
-        YLeaf cccopyusername; //type: string
-        YLeaf cccopyuserpassword; //type: string
-        YLeaf cccopynotificationoncompletion; //type: boolean
-        YLeaf cccopystate; //type: ConfigcopystateEnum
-        YLeaf cccopytimestarted; //type: uint32
-        YLeaf cccopytimecompleted; //type: uint32
-        YLeaf cccopyfailcause; //type: ConfigcopyfailcauseEnum
-        YLeaf cccopyentryrowstatus; //type: RowstatusEnum
-        YLeaf cccopyserveraddresstype; //type: InetaddresstypeEnum
-        YLeaf cccopyserveraddressrev1; //type: binary
+        ydk::YLeaf cccopyindex; //type: uint32
+        ydk::YLeaf cccopyprotocol; //type: Configcopyprotocol
+        ydk::YLeaf cccopysourcefiletype; //type: Configfiletype
+        ydk::YLeaf cccopydestfiletype; //type: Configfiletype
+        ydk::YLeaf cccopyserveraddress; //type: string
+        ydk::YLeaf cccopyfilename; //type: string
+        ydk::YLeaf cccopyusername; //type: string
+        ydk::YLeaf cccopyuserpassword; //type: string
+        ydk::YLeaf cccopynotificationoncompletion; //type: boolean
+        ydk::YLeaf cccopystate; //type: Configcopystate
+        ydk::YLeaf cccopytimestarted; //type: uint32
+        ydk::YLeaf cccopytimecompleted; //type: uint32
+        ydk::YLeaf cccopyfailcause; //type: Configcopyfailcause
+        ydk::YLeaf cccopyentryrowstatus; //type: Rowstatus
+        ydk::YLeaf cccopyserveraddresstype; //type: Inetaddresstype
+        ydk::YLeaf cccopyserveraddressrev1; //type: binary
 
 }; // CiscoConfigCopyMib::Cccopytable::Cccopyentry
 
 
-class CiscoConfigCopyMib::Cccopyerrortable : public Entity
+class CiscoConfigCopyMib::Cccopyerrortable : public ydk::Entity
 {
     public:
         Cccopyerrortable();
@@ -101,20 +108,22 @@ class CiscoConfigCopyMib::Cccopyerrortable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cccopyerrorentry; //type: CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry
 
-        std::vector<std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry> > cccopyerrorentry_;
+        std::vector<std::shared_ptr<CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry> > cccopyerrorentry;
         
 }; // CiscoConfigCopyMib::Cccopyerrortable
 
 
-class CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry : public Entity
+class CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry : public ydk::Entity
 {
     public:
         Cccopyerrorentry();
@@ -122,67 +131,69 @@ class CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: uint32 (refers to CISCO_CONFIG_COPY_MIB::CiscoConfigCopyMib::Cccopytable::Cccopyentry::cccopyindex)
-        YLeaf cccopyindex;
-        YLeaf cccopyerrorindex; //type: uint32
-        YLeaf cccopyerrordeviceipaddresstype; //type: InetaddresstypeEnum
-        YLeaf cccopyerrordeviceipaddress; //type: binary
-        YLeaf cccopyerrordevicewwn; //type: binary
-        YLeaf cccopyerrordescription; //type: string
+        ydk::YLeaf cccopyindex;
+        ydk::YLeaf cccopyerrorindex; //type: uint32
+        ydk::YLeaf cccopyerrordeviceipaddresstype; //type: Inetaddresstype
+        ydk::YLeaf cccopyerrordeviceipaddress; //type: binary
+        ydk::YLeaf cccopyerrordevicewwn; //type: binary
+        ydk::YLeaf cccopyerrordescription; //type: string
 
 }; // CiscoConfigCopyMib::Cccopyerrortable::Cccopyerrorentry
 
-class ConfigcopyfailcauseEnum : public Enum
+class Configcopyfailcause : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf badFileName;
-        static const Enum::YLeaf timeout;
-        static const Enum::YLeaf noMem;
-        static const Enum::YLeaf noConfig;
-        static const Enum::YLeaf unsupportedProtocol;
-        static const Enum::YLeaf someConfigApplyFailed;
-        static const Enum::YLeaf systemNotReady;
-        static const Enum::YLeaf requestAborted;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf badFileName;
+        static const ydk::Enum::YLeaf timeout;
+        static const ydk::Enum::YLeaf noMem;
+        static const ydk::Enum::YLeaf noConfig;
+        static const ydk::Enum::YLeaf unsupportedProtocol;
+        static const ydk::Enum::YLeaf someConfigApplyFailed;
+        static const ydk::Enum::YLeaf systemNotReady;
+        static const ydk::Enum::YLeaf requestAborted;
 
 };
 
-class ConfigcopystateEnum : public Enum
+class Configcopystate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf waiting;
-        static const Enum::YLeaf running;
-        static const Enum::YLeaf successful;
-        static const Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf waiting;
+        static const ydk::Enum::YLeaf running;
+        static const ydk::Enum::YLeaf successful;
+        static const ydk::Enum::YLeaf failed;
 
 };
 
-class ConfigfiletypeEnum : public Enum
+class Configcopyprotocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf networkFile;
-        static const Enum::YLeaf iosFile;
-        static const Enum::YLeaf startupConfig;
-        static const Enum::YLeaf runningConfig;
-        static const Enum::YLeaf terminal;
-        static const Enum::YLeaf fabricStartupConfig;
+        static const ydk::Enum::YLeaf tftp;
+        static const ydk::Enum::YLeaf ftp;
+        static const ydk::Enum::YLeaf rcp;
+        static const ydk::Enum::YLeaf scp;
+        static const ydk::Enum::YLeaf sftp;
 
 };
 
-class ConfigcopyprotocolEnum : public Enum
+class Configfiletype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf tftp;
-        static const Enum::YLeaf ftp;
-        static const Enum::YLeaf rcp;
-        static const Enum::YLeaf scp;
-        static const Enum::YLeaf sftp;
+        static const ydk::Enum::YLeaf networkFile;
+        static const ydk::Enum::YLeaf iosFile;
+        static const ydk::Enum::YLeaf startupConfig;
+        static const ydk::Enum::YLeaf runningConfig;
+        static const ydk::Enum::YLeaf terminal;
+        static const ydk::Enum::YLeaf fabricStartupConfig;
 
 };
 

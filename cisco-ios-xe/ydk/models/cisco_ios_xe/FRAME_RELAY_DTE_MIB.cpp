@@ -6,23 +6,25 @@
 #include "generated_entity_lookup.hpp"
 #include "FRAME_RELAY_DTE_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace FRAME_RELAY_DTE_MIB {
 
 FrameRelayDteMib::FrameRelayDteMib()
     :
-    framerelaytrapcontrol_(std::make_shared<FrameRelayDteMib::Framerelaytrapcontrol>())
-	,frcircuittable_(std::make_shared<FrameRelayDteMib::Frcircuittable>())
-	,frdlcmitable_(std::make_shared<FrameRelayDteMib::Frdlcmitable>())
-	,frerrtable_(std::make_shared<FrameRelayDteMib::Frerrtable>())
+    framerelaytrapcontrol(std::make_shared<FrameRelayDteMib::Framerelaytrapcontrol>())
+	,frcircuittable(std::make_shared<FrameRelayDteMib::Frcircuittable>())
+	,frdlcmitable(std::make_shared<FrameRelayDteMib::Frdlcmitable>())
+	,frerrtable(std::make_shared<FrameRelayDteMib::Frerrtable>())
 {
-    framerelaytrapcontrol_->parent = this;
+    framerelaytrapcontrol->parent = this;
 
-    frcircuittable_->parent = this;
+    frcircuittable->parent = this;
 
-    frdlcmitable_->parent = this;
+    frdlcmitable->parent = this;
 
-    frerrtable_->parent = this;
+    frerrtable->parent = this;
 
     yang_name = "FRAME-RELAY-DTE-MIB"; yang_parent_name = "FRAME-RELAY-DTE-MIB";
 }
@@ -33,19 +35,19 @@ FrameRelayDteMib::~FrameRelayDteMib()
 
 bool FrameRelayDteMib::has_data() const
 {
-    return (framerelaytrapcontrol_ !=  nullptr && framerelaytrapcontrol_->has_data())
-	|| (frcircuittable_ !=  nullptr && frcircuittable_->has_data())
-	|| (frdlcmitable_ !=  nullptr && frdlcmitable_->has_data())
-	|| (frerrtable_ !=  nullptr && frerrtable_->has_data());
+    return (framerelaytrapcontrol !=  nullptr && framerelaytrapcontrol->has_data())
+	|| (frcircuittable !=  nullptr && frcircuittable->has_data())
+	|| (frdlcmitable !=  nullptr && frdlcmitable->has_data())
+	|| (frerrtable !=  nullptr && frerrtable->has_data());
 }
 
 bool FrameRelayDteMib::has_operation() const
 {
-    return is_set(operation)
-	|| (framerelaytrapcontrol_ !=  nullptr && framerelaytrapcontrol_->has_operation())
-	|| (frcircuittable_ !=  nullptr && frcircuittable_->has_operation())
-	|| (frdlcmitable_ !=  nullptr && frdlcmitable_->has_operation())
-	|| (frerrtable_ !=  nullptr && frerrtable_->has_operation());
+    return is_set(yfilter)
+	|| (framerelaytrapcontrol !=  nullptr && framerelaytrapcontrol->has_operation())
+	|| (frcircuittable !=  nullptr && frcircuittable->has_operation())
+	|| (frdlcmitable !=  nullptr && frdlcmitable->has_operation())
+	|| (frerrtable !=  nullptr && frerrtable->has_operation());
 }
 
 std::string FrameRelayDteMib::get_segment_path() const
@@ -79,38 +81,38 @@ std::shared_ptr<Entity> FrameRelayDteMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "frameRelayTrapControl")
     {
-        if(framerelaytrapcontrol_ == nullptr)
+        if(framerelaytrapcontrol == nullptr)
         {
-            framerelaytrapcontrol_ = std::make_shared<FrameRelayDteMib::Framerelaytrapcontrol>();
+            framerelaytrapcontrol = std::make_shared<FrameRelayDteMib::Framerelaytrapcontrol>();
         }
-        return framerelaytrapcontrol_;
+        return framerelaytrapcontrol;
     }
 
     if(child_yang_name == "frCircuitTable")
     {
-        if(frcircuittable_ == nullptr)
+        if(frcircuittable == nullptr)
         {
-            frcircuittable_ = std::make_shared<FrameRelayDteMib::Frcircuittable>();
+            frcircuittable = std::make_shared<FrameRelayDteMib::Frcircuittable>();
         }
-        return frcircuittable_;
+        return frcircuittable;
     }
 
     if(child_yang_name == "frDlcmiTable")
     {
-        if(frdlcmitable_ == nullptr)
+        if(frdlcmitable == nullptr)
         {
-            frdlcmitable_ = std::make_shared<FrameRelayDteMib::Frdlcmitable>();
+            frdlcmitable = std::make_shared<FrameRelayDteMib::Frdlcmitable>();
         }
-        return frdlcmitable_;
+        return frdlcmitable;
     }
 
     if(child_yang_name == "frErrTable")
     {
-        if(frerrtable_ == nullptr)
+        if(frerrtable == nullptr)
         {
-            frerrtable_ = std::make_shared<FrameRelayDteMib::Frerrtable>();
+            frerrtable = std::make_shared<FrameRelayDteMib::Frerrtable>();
         }
-        return frerrtable_;
+        return frerrtable;
     }
 
     return nullptr;
@@ -119,30 +121,34 @@ std::shared_ptr<Entity> FrameRelayDteMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(framerelaytrapcontrol_ != nullptr)
+    if(framerelaytrapcontrol != nullptr)
     {
-        children["frameRelayTrapControl"] = framerelaytrapcontrol_;
+        children["frameRelayTrapControl"] = framerelaytrapcontrol;
     }
 
-    if(frcircuittable_ != nullptr)
+    if(frcircuittable != nullptr)
     {
-        children["frCircuitTable"] = frcircuittable_;
+        children["frCircuitTable"] = frcircuittable;
     }
 
-    if(frdlcmitable_ != nullptr)
+    if(frdlcmitable != nullptr)
     {
-        children["frDlcmiTable"] = frdlcmitable_;
+        children["frDlcmiTable"] = frdlcmitable;
     }
 
-    if(frerrtable_ != nullptr)
+    if(frerrtable != nullptr)
     {
-        children["frErrTable"] = frerrtable_;
+        children["frErrTable"] = frerrtable;
     }
 
     return children;
 }
 
-void FrameRelayDteMib::set_value(const std::string & value_path, std::string value)
+void FrameRelayDteMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void FrameRelayDteMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -166,6 +172,18 @@ augment_capabilities_function FrameRelayDteMib::get_augment_capabilities_functio
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> FrameRelayDteMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool FrameRelayDteMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frameRelayTrapControl" || name == "frCircuitTable" || name == "frDlcmiTable" || name == "frErrTable")
+        return true;
+    return false;
+}
+
 FrameRelayDteMib::Framerelaytrapcontrol::Framerelaytrapcontrol()
     :
     frtrapmaxrate{YType::int32, "frTrapMaxRate"},
@@ -186,9 +204,9 @@ bool FrameRelayDteMib::Framerelaytrapcontrol::has_data() const
 
 bool FrameRelayDteMib::Framerelaytrapcontrol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(frtrapmaxrate.operation)
-	|| is_set(frtrapstate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(frtrapmaxrate.yfilter)
+	|| ydk::is_set(frtrapstate.yfilter);
 }
 
 std::string FrameRelayDteMib::Framerelaytrapcontrol::get_segment_path() const
@@ -214,8 +232,8 @@ const EntityPath FrameRelayDteMib::Framerelaytrapcontrol::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (frtrapmaxrate.is_set || is_set(frtrapmaxrate.operation)) leaf_name_data.push_back(frtrapmaxrate.get_name_leafdata());
-    if (frtrapstate.is_set || is_set(frtrapstate.operation)) leaf_name_data.push_back(frtrapstate.get_name_leafdata());
+    if (frtrapmaxrate.is_set || is_set(frtrapmaxrate.yfilter)) leaf_name_data.push_back(frtrapmaxrate.get_name_leafdata());
+    if (frtrapstate.is_set || is_set(frtrapstate.yfilter)) leaf_name_data.push_back(frtrapstate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -234,16 +252,39 @@ std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Framerelaytrapc
     return children;
 }
 
-void FrameRelayDteMib::Framerelaytrapcontrol::set_value(const std::string & value_path, std::string value)
+void FrameRelayDteMib::Framerelaytrapcontrol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frTrapMaxRate")
     {
         frtrapmaxrate = value;
+        frtrapmaxrate.value_namespace = name_space;
+        frtrapmaxrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frTrapState")
     {
         frtrapstate = value;
+        frtrapstate.value_namespace = name_space;
+        frtrapstate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FrameRelayDteMib::Framerelaytrapcontrol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "frTrapMaxRate")
+    {
+        frtrapmaxrate.yfilter = yfilter;
+    }
+    if(value_path == "frTrapState")
+    {
+        frtrapstate.yfilter = yfilter;
+    }
+}
+
+bool FrameRelayDteMib::Framerelaytrapcontrol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frTrapMaxRate" || name == "frTrapState")
+        return true;
+    return false;
 }
 
 FrameRelayDteMib::Frdlcmitable::Frdlcmitable()
@@ -257,9 +298,9 @@ FrameRelayDteMib::Frdlcmitable::~Frdlcmitable()
 
 bool FrameRelayDteMib::Frdlcmitable::has_data() const
 {
-    for (std::size_t index=0; index<frdlcmientry_.size(); index++)
+    for (std::size_t index=0; index<frdlcmientry.size(); index++)
     {
-        if(frdlcmientry_[index]->has_data())
+        if(frdlcmientry[index]->has_data())
             return true;
     }
     return false;
@@ -267,12 +308,12 @@ bool FrameRelayDteMib::Frdlcmitable::has_data() const
 
 bool FrameRelayDteMib::Frdlcmitable::has_operation() const
 {
-    for (std::size_t index=0; index<frdlcmientry_.size(); index++)
+    for (std::size_t index=0; index<frdlcmientry.size(); index++)
     {
-        if(frdlcmientry_[index]->has_operation())
+        if(frdlcmientry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string FrameRelayDteMib::Frdlcmitable::get_segment_path() const
@@ -309,7 +350,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frdlcmitable::get_child_by_name(const 
 {
     if(child_yang_name == "frDlcmiEntry")
     {
-        for(auto const & c : frdlcmientry_)
+        for(auto const & c : frdlcmientry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -319,7 +360,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frdlcmitable::get_child_by_name(const 
         }
         auto c = std::make_shared<FrameRelayDteMib::Frdlcmitable::Frdlcmientry>();
         c->parent = this;
-        frdlcmientry_.push_back(c);
+        frdlcmientry.push_back(c);
         return c;
     }
 
@@ -329,7 +370,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frdlcmitable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frdlcmitable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frdlcmientry_)
+    for (auto const & c : frdlcmientry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -337,8 +378,19 @@ std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frdlcmitable::g
     return children;
 }
 
-void FrameRelayDteMib::Frdlcmitable::set_value(const std::string & value_path, std::string value)
+void FrameRelayDteMib::Frdlcmitable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void FrameRelayDteMib::Frdlcmitable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool FrameRelayDteMib::Frdlcmitable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frDlcmiEntry")
+        return true;
+    return false;
 }
 
 FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmientry()
@@ -381,19 +433,19 @@ bool FrameRelayDteMib::Frdlcmitable::Frdlcmientry::has_data() const
 
 bool FrameRelayDteMib::Frdlcmitable::Frdlcmientry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(frdlcmiifindex.operation)
-	|| is_set(frdlcmiaddress.operation)
-	|| is_set(frdlcmiaddresslen.operation)
-	|| is_set(frdlcmierrorthreshold.operation)
-	|| is_set(frdlcmifullenquiryinterval.operation)
-	|| is_set(frdlcmimaxsupportedvcs.operation)
-	|| is_set(frdlcmimonitoredevents.operation)
-	|| is_set(frdlcmimulticast.operation)
-	|| is_set(frdlcmipollinginterval.operation)
-	|| is_set(frdlcmirowstatus.operation)
-	|| is_set(frdlcmistate.operation)
-	|| is_set(frdlcmistatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(frdlcmiifindex.yfilter)
+	|| ydk::is_set(frdlcmiaddress.yfilter)
+	|| ydk::is_set(frdlcmiaddresslen.yfilter)
+	|| ydk::is_set(frdlcmierrorthreshold.yfilter)
+	|| ydk::is_set(frdlcmifullenquiryinterval.yfilter)
+	|| ydk::is_set(frdlcmimaxsupportedvcs.yfilter)
+	|| ydk::is_set(frdlcmimonitoredevents.yfilter)
+	|| ydk::is_set(frdlcmimulticast.yfilter)
+	|| ydk::is_set(frdlcmipollinginterval.yfilter)
+	|| ydk::is_set(frdlcmirowstatus.yfilter)
+	|| ydk::is_set(frdlcmistate.yfilter)
+	|| ydk::is_set(frdlcmistatus.yfilter);
 }
 
 std::string FrameRelayDteMib::Frdlcmitable::Frdlcmientry::get_segment_path() const
@@ -419,18 +471,18 @@ const EntityPath FrameRelayDteMib::Frdlcmitable::Frdlcmientry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (frdlcmiifindex.is_set || is_set(frdlcmiifindex.operation)) leaf_name_data.push_back(frdlcmiifindex.get_name_leafdata());
-    if (frdlcmiaddress.is_set || is_set(frdlcmiaddress.operation)) leaf_name_data.push_back(frdlcmiaddress.get_name_leafdata());
-    if (frdlcmiaddresslen.is_set || is_set(frdlcmiaddresslen.operation)) leaf_name_data.push_back(frdlcmiaddresslen.get_name_leafdata());
-    if (frdlcmierrorthreshold.is_set || is_set(frdlcmierrorthreshold.operation)) leaf_name_data.push_back(frdlcmierrorthreshold.get_name_leafdata());
-    if (frdlcmifullenquiryinterval.is_set || is_set(frdlcmifullenquiryinterval.operation)) leaf_name_data.push_back(frdlcmifullenquiryinterval.get_name_leafdata());
-    if (frdlcmimaxsupportedvcs.is_set || is_set(frdlcmimaxsupportedvcs.operation)) leaf_name_data.push_back(frdlcmimaxsupportedvcs.get_name_leafdata());
-    if (frdlcmimonitoredevents.is_set || is_set(frdlcmimonitoredevents.operation)) leaf_name_data.push_back(frdlcmimonitoredevents.get_name_leafdata());
-    if (frdlcmimulticast.is_set || is_set(frdlcmimulticast.operation)) leaf_name_data.push_back(frdlcmimulticast.get_name_leafdata());
-    if (frdlcmipollinginterval.is_set || is_set(frdlcmipollinginterval.operation)) leaf_name_data.push_back(frdlcmipollinginterval.get_name_leafdata());
-    if (frdlcmirowstatus.is_set || is_set(frdlcmirowstatus.operation)) leaf_name_data.push_back(frdlcmirowstatus.get_name_leafdata());
-    if (frdlcmistate.is_set || is_set(frdlcmistate.operation)) leaf_name_data.push_back(frdlcmistate.get_name_leafdata());
-    if (frdlcmistatus.is_set || is_set(frdlcmistatus.operation)) leaf_name_data.push_back(frdlcmistatus.get_name_leafdata());
+    if (frdlcmiifindex.is_set || is_set(frdlcmiifindex.yfilter)) leaf_name_data.push_back(frdlcmiifindex.get_name_leafdata());
+    if (frdlcmiaddress.is_set || is_set(frdlcmiaddress.yfilter)) leaf_name_data.push_back(frdlcmiaddress.get_name_leafdata());
+    if (frdlcmiaddresslen.is_set || is_set(frdlcmiaddresslen.yfilter)) leaf_name_data.push_back(frdlcmiaddresslen.get_name_leafdata());
+    if (frdlcmierrorthreshold.is_set || is_set(frdlcmierrorthreshold.yfilter)) leaf_name_data.push_back(frdlcmierrorthreshold.get_name_leafdata());
+    if (frdlcmifullenquiryinterval.is_set || is_set(frdlcmifullenquiryinterval.yfilter)) leaf_name_data.push_back(frdlcmifullenquiryinterval.get_name_leafdata());
+    if (frdlcmimaxsupportedvcs.is_set || is_set(frdlcmimaxsupportedvcs.yfilter)) leaf_name_data.push_back(frdlcmimaxsupportedvcs.get_name_leafdata());
+    if (frdlcmimonitoredevents.is_set || is_set(frdlcmimonitoredevents.yfilter)) leaf_name_data.push_back(frdlcmimonitoredevents.get_name_leafdata());
+    if (frdlcmimulticast.is_set || is_set(frdlcmimulticast.yfilter)) leaf_name_data.push_back(frdlcmimulticast.get_name_leafdata());
+    if (frdlcmipollinginterval.is_set || is_set(frdlcmipollinginterval.yfilter)) leaf_name_data.push_back(frdlcmipollinginterval.get_name_leafdata());
+    if (frdlcmirowstatus.is_set || is_set(frdlcmirowstatus.yfilter)) leaf_name_data.push_back(frdlcmirowstatus.get_name_leafdata());
+    if (frdlcmistate.is_set || is_set(frdlcmistate.yfilter)) leaf_name_data.push_back(frdlcmistate.get_name_leafdata());
+    if (frdlcmistatus.is_set || is_set(frdlcmistatus.yfilter)) leaf_name_data.push_back(frdlcmistatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -449,56 +501,139 @@ std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frdlcmitable::F
     return children;
 }
 
-void FrameRelayDteMib::Frdlcmitable::Frdlcmientry::set_value(const std::string & value_path, std::string value)
+void FrameRelayDteMib::Frdlcmitable::Frdlcmientry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frDlcmiIfIndex")
     {
         frdlcmiifindex = value;
+        frdlcmiifindex.value_namespace = name_space;
+        frdlcmiifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiAddress")
     {
         frdlcmiaddress = value;
+        frdlcmiaddress.value_namespace = name_space;
+        frdlcmiaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiAddressLen")
     {
         frdlcmiaddresslen = value;
+        frdlcmiaddresslen.value_namespace = name_space;
+        frdlcmiaddresslen.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiErrorThreshold")
     {
         frdlcmierrorthreshold = value;
+        frdlcmierrorthreshold.value_namespace = name_space;
+        frdlcmierrorthreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiFullEnquiryInterval")
     {
         frdlcmifullenquiryinterval = value;
+        frdlcmifullenquiryinterval.value_namespace = name_space;
+        frdlcmifullenquiryinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiMaxSupportedVCs")
     {
         frdlcmimaxsupportedvcs = value;
+        frdlcmimaxsupportedvcs.value_namespace = name_space;
+        frdlcmimaxsupportedvcs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiMonitoredEvents")
     {
         frdlcmimonitoredevents = value;
+        frdlcmimonitoredevents.value_namespace = name_space;
+        frdlcmimonitoredevents.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiMulticast")
     {
         frdlcmimulticast = value;
+        frdlcmimulticast.value_namespace = name_space;
+        frdlcmimulticast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiPollingInterval")
     {
         frdlcmipollinginterval = value;
+        frdlcmipollinginterval.value_namespace = name_space;
+        frdlcmipollinginterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiRowStatus")
     {
         frdlcmirowstatus = value;
+        frdlcmirowstatus.value_namespace = name_space;
+        frdlcmirowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiState")
     {
         frdlcmistate = value;
+        frdlcmistate.value_namespace = name_space;
+        frdlcmistate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frDlcmiStatus")
     {
         frdlcmistatus = value;
+        frdlcmistatus.value_namespace = name_space;
+        frdlcmistatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FrameRelayDteMib::Frdlcmitable::Frdlcmientry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "frDlcmiIfIndex")
+    {
+        frdlcmiifindex.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiAddress")
+    {
+        frdlcmiaddress.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiAddressLen")
+    {
+        frdlcmiaddresslen.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiErrorThreshold")
+    {
+        frdlcmierrorthreshold.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiFullEnquiryInterval")
+    {
+        frdlcmifullenquiryinterval.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiMaxSupportedVCs")
+    {
+        frdlcmimaxsupportedvcs.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiMonitoredEvents")
+    {
+        frdlcmimonitoredevents.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiMulticast")
+    {
+        frdlcmimulticast.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiPollingInterval")
+    {
+        frdlcmipollinginterval.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiRowStatus")
+    {
+        frdlcmirowstatus.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiState")
+    {
+        frdlcmistate.yfilter = yfilter;
+    }
+    if(value_path == "frDlcmiStatus")
+    {
+        frdlcmistatus.yfilter = yfilter;
+    }
+}
+
+bool FrameRelayDteMib::Frdlcmitable::Frdlcmientry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frDlcmiIfIndex" || name == "frDlcmiAddress" || name == "frDlcmiAddressLen" || name == "frDlcmiErrorThreshold" || name == "frDlcmiFullEnquiryInterval" || name == "frDlcmiMaxSupportedVCs" || name == "frDlcmiMonitoredEvents" || name == "frDlcmiMulticast" || name == "frDlcmiPollingInterval" || name == "frDlcmiRowStatus" || name == "frDlcmiState" || name == "frDlcmiStatus")
+        return true;
+    return false;
 }
 
 FrameRelayDteMib::Frcircuittable::Frcircuittable()
@@ -512,9 +647,9 @@ FrameRelayDteMib::Frcircuittable::~Frcircuittable()
 
 bool FrameRelayDteMib::Frcircuittable::has_data() const
 {
-    for (std::size_t index=0; index<frcircuitentry_.size(); index++)
+    for (std::size_t index=0; index<frcircuitentry.size(); index++)
     {
-        if(frcircuitentry_[index]->has_data())
+        if(frcircuitentry[index]->has_data())
             return true;
     }
     return false;
@@ -522,12 +657,12 @@ bool FrameRelayDteMib::Frcircuittable::has_data() const
 
 bool FrameRelayDteMib::Frcircuittable::has_operation() const
 {
-    for (std::size_t index=0; index<frcircuitentry_.size(); index++)
+    for (std::size_t index=0; index<frcircuitentry.size(); index++)
     {
-        if(frcircuitentry_[index]->has_operation())
+        if(frcircuitentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string FrameRelayDteMib::Frcircuittable::get_segment_path() const
@@ -564,7 +699,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frcircuittable::get_child_by_name(cons
 {
     if(child_yang_name == "frCircuitEntry")
     {
-        for(auto const & c : frcircuitentry_)
+        for(auto const & c : frcircuitentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -574,7 +709,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frcircuittable::get_child_by_name(cons
         }
         auto c = std::make_shared<FrameRelayDteMib::Frcircuittable::Frcircuitentry>();
         c->parent = this;
-        frcircuitentry_.push_back(c);
+        frcircuitentry.push_back(c);
         return c;
     }
 
@@ -584,7 +719,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frcircuittable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frcircuittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frcircuitentry_)
+    for (auto const & c : frcircuitentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -592,8 +727,19 @@ std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frcircuittable:
     return children;
 }
 
-void FrameRelayDteMib::Frcircuittable::set_value(const std::string & value_path, std::string value)
+void FrameRelayDteMib::Frcircuittable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void FrameRelayDteMib::Frcircuittable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool FrameRelayDteMib::Frcircuittable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frCircuitEntry")
+        return true;
+    return false;
 }
 
 FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuitentry()
@@ -654,28 +800,28 @@ bool FrameRelayDteMib::Frcircuittable::Frcircuitentry::has_data() const
 
 bool FrameRelayDteMib::Frcircuittable::Frcircuitentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(frcircuitifindex.operation)
-	|| is_set(frcircuitdlci.operation)
-	|| is_set(frcircuitcommittedburst.operation)
-	|| is_set(frcircuitcreationtime.operation)
-	|| is_set(frcircuitdiscards.operation)
-	|| is_set(frcircuitexcessburst.operation)
-	|| is_set(frcircuitlasttimechange.operation)
-	|| is_set(frcircuitlogicalifindex.operation)
-	|| is_set(frcircuitmulticast.operation)
-	|| is_set(frcircuitreceivedbecns.operation)
-	|| is_set(frcircuitreceiveddes.operation)
-	|| is_set(frcircuitreceivedfecns.operation)
-	|| is_set(frcircuitreceivedframes.operation)
-	|| is_set(frcircuitreceivedoctets.operation)
-	|| is_set(frcircuitrowstatus.operation)
-	|| is_set(frcircuitsentdes.operation)
-	|| is_set(frcircuitsentframes.operation)
-	|| is_set(frcircuitsentoctets.operation)
-	|| is_set(frcircuitstate.operation)
-	|| is_set(frcircuitthroughput.operation)
-	|| is_set(frcircuittype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(frcircuitifindex.yfilter)
+	|| ydk::is_set(frcircuitdlci.yfilter)
+	|| ydk::is_set(frcircuitcommittedburst.yfilter)
+	|| ydk::is_set(frcircuitcreationtime.yfilter)
+	|| ydk::is_set(frcircuitdiscards.yfilter)
+	|| ydk::is_set(frcircuitexcessburst.yfilter)
+	|| ydk::is_set(frcircuitlasttimechange.yfilter)
+	|| ydk::is_set(frcircuitlogicalifindex.yfilter)
+	|| ydk::is_set(frcircuitmulticast.yfilter)
+	|| ydk::is_set(frcircuitreceivedbecns.yfilter)
+	|| ydk::is_set(frcircuitreceiveddes.yfilter)
+	|| ydk::is_set(frcircuitreceivedfecns.yfilter)
+	|| ydk::is_set(frcircuitreceivedframes.yfilter)
+	|| ydk::is_set(frcircuitreceivedoctets.yfilter)
+	|| ydk::is_set(frcircuitrowstatus.yfilter)
+	|| ydk::is_set(frcircuitsentdes.yfilter)
+	|| ydk::is_set(frcircuitsentframes.yfilter)
+	|| ydk::is_set(frcircuitsentoctets.yfilter)
+	|| ydk::is_set(frcircuitstate.yfilter)
+	|| ydk::is_set(frcircuitthroughput.yfilter)
+	|| ydk::is_set(frcircuittype.yfilter);
 }
 
 std::string FrameRelayDteMib::Frcircuittable::Frcircuitentry::get_segment_path() const
@@ -701,27 +847,27 @@ const EntityPath FrameRelayDteMib::Frcircuittable::Frcircuitentry::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (frcircuitifindex.is_set || is_set(frcircuitifindex.operation)) leaf_name_data.push_back(frcircuitifindex.get_name_leafdata());
-    if (frcircuitdlci.is_set || is_set(frcircuitdlci.operation)) leaf_name_data.push_back(frcircuitdlci.get_name_leafdata());
-    if (frcircuitcommittedburst.is_set || is_set(frcircuitcommittedburst.operation)) leaf_name_data.push_back(frcircuitcommittedburst.get_name_leafdata());
-    if (frcircuitcreationtime.is_set || is_set(frcircuitcreationtime.operation)) leaf_name_data.push_back(frcircuitcreationtime.get_name_leafdata());
-    if (frcircuitdiscards.is_set || is_set(frcircuitdiscards.operation)) leaf_name_data.push_back(frcircuitdiscards.get_name_leafdata());
-    if (frcircuitexcessburst.is_set || is_set(frcircuitexcessburst.operation)) leaf_name_data.push_back(frcircuitexcessburst.get_name_leafdata());
-    if (frcircuitlasttimechange.is_set || is_set(frcircuitlasttimechange.operation)) leaf_name_data.push_back(frcircuitlasttimechange.get_name_leafdata());
-    if (frcircuitlogicalifindex.is_set || is_set(frcircuitlogicalifindex.operation)) leaf_name_data.push_back(frcircuitlogicalifindex.get_name_leafdata());
-    if (frcircuitmulticast.is_set || is_set(frcircuitmulticast.operation)) leaf_name_data.push_back(frcircuitmulticast.get_name_leafdata());
-    if (frcircuitreceivedbecns.is_set || is_set(frcircuitreceivedbecns.operation)) leaf_name_data.push_back(frcircuitreceivedbecns.get_name_leafdata());
-    if (frcircuitreceiveddes.is_set || is_set(frcircuitreceiveddes.operation)) leaf_name_data.push_back(frcircuitreceiveddes.get_name_leafdata());
-    if (frcircuitreceivedfecns.is_set || is_set(frcircuitreceivedfecns.operation)) leaf_name_data.push_back(frcircuitreceivedfecns.get_name_leafdata());
-    if (frcircuitreceivedframes.is_set || is_set(frcircuitreceivedframes.operation)) leaf_name_data.push_back(frcircuitreceivedframes.get_name_leafdata());
-    if (frcircuitreceivedoctets.is_set || is_set(frcircuitreceivedoctets.operation)) leaf_name_data.push_back(frcircuitreceivedoctets.get_name_leafdata());
-    if (frcircuitrowstatus.is_set || is_set(frcircuitrowstatus.operation)) leaf_name_data.push_back(frcircuitrowstatus.get_name_leafdata());
-    if (frcircuitsentdes.is_set || is_set(frcircuitsentdes.operation)) leaf_name_data.push_back(frcircuitsentdes.get_name_leafdata());
-    if (frcircuitsentframes.is_set || is_set(frcircuitsentframes.operation)) leaf_name_data.push_back(frcircuitsentframes.get_name_leafdata());
-    if (frcircuitsentoctets.is_set || is_set(frcircuitsentoctets.operation)) leaf_name_data.push_back(frcircuitsentoctets.get_name_leafdata());
-    if (frcircuitstate.is_set || is_set(frcircuitstate.operation)) leaf_name_data.push_back(frcircuitstate.get_name_leafdata());
-    if (frcircuitthroughput.is_set || is_set(frcircuitthroughput.operation)) leaf_name_data.push_back(frcircuitthroughput.get_name_leafdata());
-    if (frcircuittype.is_set || is_set(frcircuittype.operation)) leaf_name_data.push_back(frcircuittype.get_name_leafdata());
+    if (frcircuitifindex.is_set || is_set(frcircuitifindex.yfilter)) leaf_name_data.push_back(frcircuitifindex.get_name_leafdata());
+    if (frcircuitdlci.is_set || is_set(frcircuitdlci.yfilter)) leaf_name_data.push_back(frcircuitdlci.get_name_leafdata());
+    if (frcircuitcommittedburst.is_set || is_set(frcircuitcommittedburst.yfilter)) leaf_name_data.push_back(frcircuitcommittedburst.get_name_leafdata());
+    if (frcircuitcreationtime.is_set || is_set(frcircuitcreationtime.yfilter)) leaf_name_data.push_back(frcircuitcreationtime.get_name_leafdata());
+    if (frcircuitdiscards.is_set || is_set(frcircuitdiscards.yfilter)) leaf_name_data.push_back(frcircuitdiscards.get_name_leafdata());
+    if (frcircuitexcessburst.is_set || is_set(frcircuitexcessburst.yfilter)) leaf_name_data.push_back(frcircuitexcessburst.get_name_leafdata());
+    if (frcircuitlasttimechange.is_set || is_set(frcircuitlasttimechange.yfilter)) leaf_name_data.push_back(frcircuitlasttimechange.get_name_leafdata());
+    if (frcircuitlogicalifindex.is_set || is_set(frcircuitlogicalifindex.yfilter)) leaf_name_data.push_back(frcircuitlogicalifindex.get_name_leafdata());
+    if (frcircuitmulticast.is_set || is_set(frcircuitmulticast.yfilter)) leaf_name_data.push_back(frcircuitmulticast.get_name_leafdata());
+    if (frcircuitreceivedbecns.is_set || is_set(frcircuitreceivedbecns.yfilter)) leaf_name_data.push_back(frcircuitreceivedbecns.get_name_leafdata());
+    if (frcircuitreceiveddes.is_set || is_set(frcircuitreceiveddes.yfilter)) leaf_name_data.push_back(frcircuitreceiveddes.get_name_leafdata());
+    if (frcircuitreceivedfecns.is_set || is_set(frcircuitreceivedfecns.yfilter)) leaf_name_data.push_back(frcircuitreceivedfecns.get_name_leafdata());
+    if (frcircuitreceivedframes.is_set || is_set(frcircuitreceivedframes.yfilter)) leaf_name_data.push_back(frcircuitreceivedframes.get_name_leafdata());
+    if (frcircuitreceivedoctets.is_set || is_set(frcircuitreceivedoctets.yfilter)) leaf_name_data.push_back(frcircuitreceivedoctets.get_name_leafdata());
+    if (frcircuitrowstatus.is_set || is_set(frcircuitrowstatus.yfilter)) leaf_name_data.push_back(frcircuitrowstatus.get_name_leafdata());
+    if (frcircuitsentdes.is_set || is_set(frcircuitsentdes.yfilter)) leaf_name_data.push_back(frcircuitsentdes.get_name_leafdata());
+    if (frcircuitsentframes.is_set || is_set(frcircuitsentframes.yfilter)) leaf_name_data.push_back(frcircuitsentframes.get_name_leafdata());
+    if (frcircuitsentoctets.is_set || is_set(frcircuitsentoctets.yfilter)) leaf_name_data.push_back(frcircuitsentoctets.get_name_leafdata());
+    if (frcircuitstate.is_set || is_set(frcircuitstate.yfilter)) leaf_name_data.push_back(frcircuitstate.get_name_leafdata());
+    if (frcircuitthroughput.is_set || is_set(frcircuitthroughput.yfilter)) leaf_name_data.push_back(frcircuitthroughput.get_name_leafdata());
+    if (frcircuittype.is_set || is_set(frcircuittype.yfilter)) leaf_name_data.push_back(frcircuittype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -740,92 +886,229 @@ std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frcircuittable:
     return children;
 }
 
-void FrameRelayDteMib::Frcircuittable::Frcircuitentry::set_value(const std::string & value_path, std::string value)
+void FrameRelayDteMib::Frcircuittable::Frcircuitentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frCircuitIfIndex")
     {
         frcircuitifindex = value;
+        frcircuitifindex.value_namespace = name_space;
+        frcircuitifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitDlci")
     {
         frcircuitdlci = value;
+        frcircuitdlci.value_namespace = name_space;
+        frcircuitdlci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitCommittedBurst")
     {
         frcircuitcommittedburst = value;
+        frcircuitcommittedburst.value_namespace = name_space;
+        frcircuitcommittedburst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitCreationTime")
     {
         frcircuitcreationtime = value;
+        frcircuitcreationtime.value_namespace = name_space;
+        frcircuitcreationtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitDiscards")
     {
         frcircuitdiscards = value;
+        frcircuitdiscards.value_namespace = name_space;
+        frcircuitdiscards.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitExcessBurst")
     {
         frcircuitexcessburst = value;
+        frcircuitexcessburst.value_namespace = name_space;
+        frcircuitexcessburst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitLastTimeChange")
     {
         frcircuitlasttimechange = value;
+        frcircuitlasttimechange.value_namespace = name_space;
+        frcircuitlasttimechange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitLogicalIfIndex")
     {
         frcircuitlogicalifindex = value;
+        frcircuitlogicalifindex.value_namespace = name_space;
+        frcircuitlogicalifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitMulticast")
     {
         frcircuitmulticast = value;
+        frcircuitmulticast.value_namespace = name_space;
+        frcircuitmulticast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitReceivedBECNs")
     {
         frcircuitreceivedbecns = value;
+        frcircuitreceivedbecns.value_namespace = name_space;
+        frcircuitreceivedbecns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitReceivedDEs")
     {
         frcircuitreceiveddes = value;
+        frcircuitreceiveddes.value_namespace = name_space;
+        frcircuitreceiveddes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitReceivedFECNs")
     {
         frcircuitreceivedfecns = value;
+        frcircuitreceivedfecns.value_namespace = name_space;
+        frcircuitreceivedfecns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitReceivedFrames")
     {
         frcircuitreceivedframes = value;
+        frcircuitreceivedframes.value_namespace = name_space;
+        frcircuitreceivedframes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitReceivedOctets")
     {
         frcircuitreceivedoctets = value;
+        frcircuitreceivedoctets.value_namespace = name_space;
+        frcircuitreceivedoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitRowStatus")
     {
         frcircuitrowstatus = value;
+        frcircuitrowstatus.value_namespace = name_space;
+        frcircuitrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitSentDEs")
     {
         frcircuitsentdes = value;
+        frcircuitsentdes.value_namespace = name_space;
+        frcircuitsentdes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitSentFrames")
     {
         frcircuitsentframes = value;
+        frcircuitsentframes.value_namespace = name_space;
+        frcircuitsentframes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitSentOctets")
     {
         frcircuitsentoctets = value;
+        frcircuitsentoctets.value_namespace = name_space;
+        frcircuitsentoctets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitState")
     {
         frcircuitstate = value;
+        frcircuitstate.value_namespace = name_space;
+        frcircuitstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitThroughput")
     {
         frcircuitthroughput = value;
+        frcircuitthroughput.value_namespace = name_space;
+        frcircuitthroughput.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frCircuitType")
     {
         frcircuittype = value;
+        frcircuittype.value_namespace = name_space;
+        frcircuittype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FrameRelayDteMib::Frcircuittable::Frcircuitentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "frCircuitIfIndex")
+    {
+        frcircuitifindex.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitDlci")
+    {
+        frcircuitdlci.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitCommittedBurst")
+    {
+        frcircuitcommittedburst.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitCreationTime")
+    {
+        frcircuitcreationtime.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitDiscards")
+    {
+        frcircuitdiscards.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitExcessBurst")
+    {
+        frcircuitexcessburst.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitLastTimeChange")
+    {
+        frcircuitlasttimechange.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitLogicalIfIndex")
+    {
+        frcircuitlogicalifindex.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitMulticast")
+    {
+        frcircuitmulticast.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitReceivedBECNs")
+    {
+        frcircuitreceivedbecns.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitReceivedDEs")
+    {
+        frcircuitreceiveddes.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitReceivedFECNs")
+    {
+        frcircuitreceivedfecns.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitReceivedFrames")
+    {
+        frcircuitreceivedframes.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitReceivedOctets")
+    {
+        frcircuitreceivedoctets.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitRowStatus")
+    {
+        frcircuitrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitSentDEs")
+    {
+        frcircuitsentdes.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitSentFrames")
+    {
+        frcircuitsentframes.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitSentOctets")
+    {
+        frcircuitsentoctets.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitState")
+    {
+        frcircuitstate.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitThroughput")
+    {
+        frcircuitthroughput.yfilter = yfilter;
+    }
+    if(value_path == "frCircuitType")
+    {
+        frcircuittype.yfilter = yfilter;
+    }
+}
+
+bool FrameRelayDteMib::Frcircuittable::Frcircuitentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frCircuitIfIndex" || name == "frCircuitDlci" || name == "frCircuitCommittedBurst" || name == "frCircuitCreationTime" || name == "frCircuitDiscards" || name == "frCircuitExcessBurst" || name == "frCircuitLastTimeChange" || name == "frCircuitLogicalIfIndex" || name == "frCircuitMulticast" || name == "frCircuitReceivedBECNs" || name == "frCircuitReceivedDEs" || name == "frCircuitReceivedFECNs" || name == "frCircuitReceivedFrames" || name == "frCircuitReceivedOctets" || name == "frCircuitRowStatus" || name == "frCircuitSentDEs" || name == "frCircuitSentFrames" || name == "frCircuitSentOctets" || name == "frCircuitState" || name == "frCircuitThroughput" || name == "frCircuitType")
+        return true;
+    return false;
 }
 
 FrameRelayDteMib::Frerrtable::Frerrtable()
@@ -839,9 +1122,9 @@ FrameRelayDteMib::Frerrtable::~Frerrtable()
 
 bool FrameRelayDteMib::Frerrtable::has_data() const
 {
-    for (std::size_t index=0; index<frerrentry_.size(); index++)
+    for (std::size_t index=0; index<frerrentry.size(); index++)
     {
-        if(frerrentry_[index]->has_data())
+        if(frerrentry[index]->has_data())
             return true;
     }
     return false;
@@ -849,12 +1132,12 @@ bool FrameRelayDteMib::Frerrtable::has_data() const
 
 bool FrameRelayDteMib::Frerrtable::has_operation() const
 {
-    for (std::size_t index=0; index<frerrentry_.size(); index++)
+    for (std::size_t index=0; index<frerrentry.size(); index++)
     {
-        if(frerrentry_[index]->has_operation())
+        if(frerrentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string FrameRelayDteMib::Frerrtable::get_segment_path() const
@@ -891,7 +1174,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frerrtable::get_child_by_name(const st
 {
     if(child_yang_name == "frErrEntry")
     {
-        for(auto const & c : frerrentry_)
+        for(auto const & c : frerrentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -901,7 +1184,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frerrtable::get_child_by_name(const st
         }
         auto c = std::make_shared<FrameRelayDteMib::Frerrtable::Frerrentry>();
         c->parent = this;
-        frerrentry_.push_back(c);
+        frerrentry.push_back(c);
         return c;
     }
 
@@ -911,7 +1194,7 @@ std::shared_ptr<Entity> FrameRelayDteMib::Frerrtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frerrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : frerrentry_)
+    for (auto const & c : frerrentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -919,8 +1202,19 @@ std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frerrtable::get
     return children;
 }
 
-void FrameRelayDteMib::Frerrtable::set_value(const std::string & value_path, std::string value)
+void FrameRelayDteMib::Frerrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void FrameRelayDteMib::Frerrtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool FrameRelayDteMib::Frerrtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frErrEntry")
+        return true;
+    return false;
 }
 
 FrameRelayDteMib::Frerrtable::Frerrentry::Frerrentry()
@@ -951,13 +1245,13 @@ bool FrameRelayDteMib::Frerrtable::Frerrentry::has_data() const
 
 bool FrameRelayDteMib::Frerrtable::Frerrentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(frerrifindex.operation)
-	|| is_set(frerrdata.operation)
-	|| is_set(frerrfaults.operation)
-	|| is_set(frerrfaulttime.operation)
-	|| is_set(frerrtime.operation)
-	|| is_set(frerrtype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(frerrifindex.yfilter)
+	|| ydk::is_set(frerrdata.yfilter)
+	|| ydk::is_set(frerrfaults.yfilter)
+	|| ydk::is_set(frerrfaulttime.yfilter)
+	|| ydk::is_set(frerrtime.yfilter)
+	|| ydk::is_set(frerrtype.yfilter);
 }
 
 std::string FrameRelayDteMib::Frerrtable::Frerrentry::get_segment_path() const
@@ -983,12 +1277,12 @@ const EntityPath FrameRelayDteMib::Frerrtable::Frerrentry::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (frerrifindex.is_set || is_set(frerrifindex.operation)) leaf_name_data.push_back(frerrifindex.get_name_leafdata());
-    if (frerrdata.is_set || is_set(frerrdata.operation)) leaf_name_data.push_back(frerrdata.get_name_leafdata());
-    if (frerrfaults.is_set || is_set(frerrfaults.operation)) leaf_name_data.push_back(frerrfaults.get_name_leafdata());
-    if (frerrfaulttime.is_set || is_set(frerrfaulttime.operation)) leaf_name_data.push_back(frerrfaulttime.get_name_leafdata());
-    if (frerrtime.is_set || is_set(frerrtime.operation)) leaf_name_data.push_back(frerrtime.get_name_leafdata());
-    if (frerrtype.is_set || is_set(frerrtype.operation)) leaf_name_data.push_back(frerrtype.get_name_leafdata());
+    if (frerrifindex.is_set || is_set(frerrifindex.yfilter)) leaf_name_data.push_back(frerrifindex.get_name_leafdata());
+    if (frerrdata.is_set || is_set(frerrdata.yfilter)) leaf_name_data.push_back(frerrdata.get_name_leafdata());
+    if (frerrfaults.is_set || is_set(frerrfaults.yfilter)) leaf_name_data.push_back(frerrfaults.get_name_leafdata());
+    if (frerrfaulttime.is_set || is_set(frerrfaulttime.yfilter)) leaf_name_data.push_back(frerrfaulttime.get_name_leafdata());
+    if (frerrtime.is_set || is_set(frerrtime.yfilter)) leaf_name_data.push_back(frerrtime.get_name_leafdata());
+    if (frerrtype.is_set || is_set(frerrtype.yfilter)) leaf_name_data.push_back(frerrtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1007,82 +1301,129 @@ std::map<std::string, std::shared_ptr<Entity>> FrameRelayDteMib::Frerrtable::Fre
     return children;
 }
 
-void FrameRelayDteMib::Frerrtable::Frerrentry::set_value(const std::string & value_path, std::string value)
+void FrameRelayDteMib::Frerrtable::Frerrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frErrIfIndex")
     {
         frerrifindex = value;
+        frerrifindex.value_namespace = name_space;
+        frerrifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frErrData")
     {
         frerrdata = value;
+        frerrdata.value_namespace = name_space;
+        frerrdata.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frErrFaults")
     {
         frerrfaults = value;
+        frerrfaults.value_namespace = name_space;
+        frerrfaults.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frErrFaultTime")
     {
         frerrfaulttime = value;
+        frerrfaulttime.value_namespace = name_space;
+        frerrfaulttime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frErrTime")
     {
         frerrtime = value;
+        frerrtime.value_namespace = name_space;
+        frerrtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frErrType")
     {
         frerrtype = value;
+        frerrtype.value_namespace = name_space;
+        frerrtype.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf FrameRelayDteMib::Framerelaytrapcontrol::FrtrapstateEnum::enabled {1, "enabled"};
-const Enum::YLeaf FrameRelayDteMib::Framerelaytrapcontrol::FrtrapstateEnum::disabled {2, "disabled"};
+void FrameRelayDteMib::Frerrtable::Frerrentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "frErrIfIndex")
+    {
+        frerrifindex.yfilter = yfilter;
+    }
+    if(value_path == "frErrData")
+    {
+        frerrdata.yfilter = yfilter;
+    }
+    if(value_path == "frErrFaults")
+    {
+        frerrfaults.yfilter = yfilter;
+    }
+    if(value_path == "frErrFaultTime")
+    {
+        frerrfaulttime.yfilter = yfilter;
+    }
+    if(value_path == "frErrTime")
+    {
+        frerrtime.yfilter = yfilter;
+    }
+    if(value_path == "frErrType")
+    {
+        frerrtype.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistateEnum::noLmiConfigured {1, "noLmiConfigured"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistateEnum::lmiRev1 {2, "lmiRev1"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistateEnum::ansiT1617D {3, "ansiT1617D"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistateEnum::ansiT1617B {4, "ansiT1617B"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistateEnum::itut933A {5, "itut933A"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistateEnum::ansiT1617D1994 {6, "ansiT1617D1994"};
+bool FrameRelayDteMib::Frerrtable::Frerrentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frErrIfIndex" || name == "frErrData" || name == "frErrFaults" || name == "frErrFaultTime" || name == "frErrTime" || name == "frErrType")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmiaddressEnum::q921 {1, "q921"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmiaddressEnum::q922March90 {2, "q922March90"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmiaddressEnum::q922November90 {3, "q922November90"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmiaddressEnum::q922 {4, "q922"};
+const Enum::YLeaf FrameRelayDteMib::Framerelaytrapcontrol::Frtrapstate::enabled {1, "enabled"};
+const Enum::YLeaf FrameRelayDteMib::Framerelaytrapcontrol::Frtrapstate::disabled {2, "disabled"};
 
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmiaddresslenEnum::twoOctets {2, "twoOctets"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmiaddresslenEnum::threeOctets {3, "threeOctets"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmiaddresslenEnum::fourOctets {4, "fourOctets"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistate::noLmiConfigured {1, "noLmiConfigured"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistate::lmiRev1 {2, "lmiRev1"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistate::ansiT1617D {3, "ansiT1617D"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistate::ansiT1617B {4, "ansiT1617B"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistate::itut933A {5, "itut933A"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistate::ansiT1617D1994 {6, "ansiT1617D1994"};
 
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmimulticastEnum::nonBroadcast {1, "nonBroadcast"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmimulticastEnum::broadcast {2, "broadcast"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmiaddress::q921 {1, "q921"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmiaddress::q922March90 {2, "q922March90"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmiaddress::q922November90 {3, "q922November90"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmiaddress::q922 {4, "q922"};
 
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistatusEnum::running {1, "running"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistatusEnum::fault {2, "fault"};
-const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::FrdlcmistatusEnum::initializing {3, "initializing"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen::twoOctets {2, "twoOctets"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen::threeOctets {3, "threeOctets"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen::fourOctets {4, "fourOctets"};
 
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuitstateEnum::invalid {1, "invalid"};
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuitstateEnum::active {2, "active"};
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuitstateEnum::inactive {3, "inactive"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmimulticast::nonBroadcast {1, "nonBroadcast"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmimulticast::broadcast {2, "broadcast"};
 
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuitmulticastEnum::unicast {1, "unicast"};
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuitmulticastEnum::oneWay {2, "oneWay"};
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuitmulticastEnum::twoWay {3, "twoWay"};
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuitmulticastEnum::nWay {4, "nWay"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistatus::running {1, "running"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistatus::fault {2, "fault"};
+const Enum::YLeaf FrameRelayDteMib::Frdlcmitable::Frdlcmientry::Frdlcmistatus::initializing {3, "initializing"};
 
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuittypeEnum::static_ {1, "static"};
-const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::FrcircuittypeEnum::dynamic {2, "dynamic"};
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuitstate::invalid {1, "invalid"};
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuitstate::active {2, "active"};
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuitstate::inactive {3, "inactive"};
 
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::unknownError {1, "unknownError"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::receiveShort {2, "receiveShort"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::receiveLong {3, "receiveLong"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::illegalAddress {4, "illegalAddress"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::unknownAddress {5, "unknownAddress"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::dlcmiProtoErr {6, "dlcmiProtoErr"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::dlcmiUnknownIE {7, "dlcmiUnknownIE"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::dlcmiSequenceErr {8, "dlcmiSequenceErr"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::dlcmiUnknownRpt {9, "dlcmiUnknownRpt"};
-const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::FrerrtypeEnum::noErrorSinceReset {10, "noErrorSinceReset"};
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuitmulticast::unicast {1, "unicast"};
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuitmulticast::oneWay {2, "oneWay"};
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuitmulticast::twoWay {3, "twoWay"};
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuitmulticast::nWay {4, "nWay"};
+
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuittype::static_ {1, "static"};
+const Enum::YLeaf FrameRelayDteMib::Frcircuittable::Frcircuitentry::Frcircuittype::dynamic {2, "dynamic"};
+
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::unknownError {1, "unknownError"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::receiveShort {2, "receiveShort"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::receiveLong {3, "receiveLong"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::illegalAddress {4, "illegalAddress"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::unknownAddress {5, "unknownAddress"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::dlcmiProtoErr {6, "dlcmiProtoErr"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::dlcmiUnknownIE {7, "dlcmiUnknownIE"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::dlcmiSequenceErr {8, "dlcmiSequenceErr"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::dlcmiUnknownRpt {9, "dlcmiUnknownRpt"};
+const Enum::YLeaf FrameRelayDteMib::Frerrtable::Frerrentry::Frerrtype::noErrorSinceReset {10, "noErrorSinceReset"};
 
 
 }

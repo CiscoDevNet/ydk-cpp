@@ -6,15 +6,17 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_diffserv_target_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_diffserv_target_oper {
 
-DirectionIdentity::DirectionIdentity()
-     : Identity("Cisco-IOS-XE-diffserv-target-oper:direction")
+Direction::Direction()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper:direction")
 {
 }
 
-DirectionIdentity::~DirectionIdentity()
+Direction::~Direction()
 {
 }
 
@@ -29,9 +31,9 @@ DiffservInterfacesState::~DiffservInterfacesState()
 
 bool DiffservInterfacesState::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_interface_.size(); index++)
+    for (std::size_t index=0; index<diffserv_interface.size(); index++)
     {
-        if(diffserv_interface_[index]->has_data())
+        if(diffserv_interface[index]->has_data())
             return true;
     }
     return false;
@@ -39,12 +41,12 @@ bool DiffservInterfacesState::has_data() const
 
 bool DiffservInterfacesState::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_interface_.size(); index++)
+    for (std::size_t index=0; index<diffserv_interface.size(); index++)
     {
-        if(diffserv_interface_[index]->has_operation())
+        if(diffserv_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DiffservInterfacesState::get_segment_path() const
@@ -78,7 +80,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
 {
     if(child_yang_name == "diffserv-interface")
     {
-        for(auto const & c : diffserv_interface_)
+        for(auto const & c : diffserv_interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -88,7 +90,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
         }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface>();
         c->parent = this;
-        diffserv_interface_.push_back(c);
+        diffserv_interface.push_back(c);
         return c;
     }
 
@@ -98,7 +100,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffserv_interface_)
+    for (auto const & c : diffserv_interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -106,7 +108,11 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::get_chil
     return children;
 }
 
-void DiffservInterfacesState::set_value(const std::string & value_path, std::string value)
+void DiffservInterfacesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void DiffservInterfacesState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -130,6 +136,18 @@ augment_capabilities_function DiffservInterfacesState::get_augment_capabilities_
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> DiffservInterfacesState::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool DiffservInterfacesState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "diffserv-interface")
+        return true;
+    return false;
+}
+
 DiffservInterfacesState::DiffservInterface::DiffservInterface()
     :
     name{YType::str, "name"}
@@ -143,9 +161,9 @@ DiffservInterfacesState::DiffservInterface::~DiffservInterface()
 
 bool DiffservInterfacesState::DiffservInterface::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry_.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
     {
-        if(diffserv_target_entry_[index]->has_data())
+        if(diffserv_target_entry[index]->has_data())
             return true;
     }
     return name.is_set;
@@ -153,13 +171,13 @@ bool DiffservInterfacesState::DiffservInterface::has_data() const
 
 bool DiffservInterfacesState::DiffservInterface::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry_.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
     {
-        if(diffserv_target_entry_[index]->has_operation())
+        if(diffserv_target_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string DiffservInterfacesState::DiffservInterface::get_segment_path() const
@@ -185,7 +203,7 @@ const EntityPath DiffservInterfacesState::DiffservInterface::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -197,7 +215,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
 {
     if(child_yang_name == "diffserv-target-entry")
     {
-        for(auto const & c : diffserv_target_entry_)
+        for(auto const & c : diffserv_target_entry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -207,7 +225,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
         }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry>();
         c->parent = this;
-        diffserv_target_entry_.push_back(c);
+        diffserv_target_entry.push_back(c);
         return c;
     }
 
@@ -217,7 +235,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffserv_target_entry_)
+    for (auto const & c : diffserv_target_entry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -225,12 +243,29 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::Diffserv
     return children;
 }
 
-void DiffservInterfacesState::DiffservInterface::set_value(const std::string & value_path, std::string value)
+void DiffservInterfacesState::DiffservInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DiffservInterfacesState::DiffservInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool DiffservInterfacesState::DiffservInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "diffserv-target-entry" || name == "name")
+        return true;
+    return false;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetEntry()
@@ -247,9 +282,9 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::~DiffservTarget
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_statistics_.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_classifier_statistics.size(); index++)
     {
-        if(diffserv_target_classifier_statistics_[index]->has_data())
+        if(diffserv_target_classifier_statistics[index]->has_data())
             return true;
     }
     return direction.is_set
@@ -258,14 +293,14 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_data()
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_statistics_.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_classifier_statistics.size(); index++)
     {
-        if(diffserv_target_classifier_statistics_[index]->has_operation())
+        if(diffserv_target_classifier_statistics[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(policy_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(policy_name.yfilter);
 }
 
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::get_segment_path() const
@@ -291,8 +326,8 @@ const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -304,7 +339,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 {
     if(child_yang_name == "diffserv-target-classifier-statistics")
     {
-        for(auto const & c : diffserv_target_classifier_statistics_)
+        for(auto const & c : diffserv_target_classifier_statistics)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -314,7 +349,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
         }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics>();
         c->parent = this;
-        diffserv_target_classifier_statistics_.push_back(c);
+        diffserv_target_classifier_statistics.push_back(c);
         return c;
     }
 
@@ -324,7 +359,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : diffserv_target_classifier_statistics_)
+    for (auto const & c : diffserv_target_classifier_statistics)
     {
         children[c->get_segment_path()] = c;
     }
@@ -332,16 +367,39 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::Diffserv
     return children;
 }
 
-void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::set_value(const std::string & value_path, std::string value)
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+}
+
+bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "diffserv-target-classifier-statistics" || name == "direction" || name == "policy-name")
+        return true;
+    return false;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::DiffservTargetClassifierStatistics()
@@ -349,12 +407,12 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     classifier_entry_name{YType::str, "classifier-entry-name"},
     parent_path{YType::str, "parent-path"}
     	,
-    classifier_entry_statistics_(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>())
-	,queuing_statistics_(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
+    classifier_entry_statistics(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>())
+	,queuing_statistics(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
 {
-    classifier_entry_statistics_->parent = this;
+    classifier_entry_statistics->parent = this;
 
-    queuing_statistics_->parent = this;
+    queuing_statistics->parent = this;
 
     yang_name = "diffserv-target-classifier-statistics"; yang_parent_name = "diffserv-target-entry";
 }
@@ -365,29 +423,29 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_data() const
 {
-    for (std::size_t index=0; index<meter_statistics_.size(); index++)
+    for (std::size_t index=0; index<meter_statistics.size(); index++)
     {
-        if(meter_statistics_[index]->has_data())
+        if(meter_statistics[index]->has_data())
             return true;
     }
     return classifier_entry_name.is_set
 	|| parent_path.is_set
-	|| (classifier_entry_statistics_ !=  nullptr && classifier_entry_statistics_->has_data())
-	|| (queuing_statistics_ !=  nullptr && queuing_statistics_->has_data());
+	|| (classifier_entry_statistics !=  nullptr && classifier_entry_statistics->has_data())
+	|| (queuing_statistics !=  nullptr && queuing_statistics->has_data());
 }
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<meter_statistics_.size(); index++)
+    for (std::size_t index=0; index<meter_statistics.size(); index++)
     {
-        if(meter_statistics_[index]->has_operation())
+        if(meter_statistics[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(classifier_entry_name.operation)
-	|| is_set(parent_path.operation)
-	|| (classifier_entry_statistics_ !=  nullptr && classifier_entry_statistics_->has_operation())
-	|| (queuing_statistics_ !=  nullptr && queuing_statistics_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(classifier_entry_name.yfilter)
+	|| ydk::is_set(parent_path.yfilter)
+	|| (classifier_entry_statistics !=  nullptr && classifier_entry_statistics->has_operation())
+	|| (queuing_statistics !=  nullptr && queuing_statistics->has_operation());
 }
 
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_segment_path() const
@@ -413,8 +471,8 @@ const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (classifier_entry_name.is_set || is_set(classifier_entry_name.operation)) leaf_name_data.push_back(classifier_entry_name.get_name_leafdata());
-    if (parent_path.is_set || is_set(parent_path.operation)) leaf_name_data.push_back(parent_path.get_name_leafdata());
+    if (classifier_entry_name.is_set || is_set(classifier_entry_name.yfilter)) leaf_name_data.push_back(classifier_entry_name.get_name_leafdata());
+    if (parent_path.is_set || is_set(parent_path.yfilter)) leaf_name_data.push_back(parent_path.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -426,16 +484,16 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 {
     if(child_yang_name == "classifier-entry-statistics")
     {
-        if(classifier_entry_statistics_ == nullptr)
+        if(classifier_entry_statistics == nullptr)
         {
-            classifier_entry_statistics_ = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>();
+            classifier_entry_statistics = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>();
         }
-        return classifier_entry_statistics_;
+        return classifier_entry_statistics;
     }
 
     if(child_yang_name == "meter-statistics")
     {
-        for(auto const & c : meter_statistics_)
+        for(auto const & c : meter_statistics)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -445,17 +503,17 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
         }
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics>();
         c->parent = this;
-        meter_statistics_.push_back(c);
+        meter_statistics.push_back(c);
         return c;
     }
 
     if(child_yang_name == "queuing-statistics")
     {
-        if(queuing_statistics_ == nullptr)
+        if(queuing_statistics == nullptr)
         {
-            queuing_statistics_ = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>();
+            queuing_statistics = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>();
         }
-        return queuing_statistics_;
+        return queuing_statistics;
     }
 
     return nullptr;
@@ -464,34 +522,57 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(classifier_entry_statistics_ != nullptr)
+    if(classifier_entry_statistics != nullptr)
     {
-        children["classifier-entry-statistics"] = classifier_entry_statistics_;
+        children["classifier-entry-statistics"] = classifier_entry_statistics;
     }
 
-    for (auto const & c : meter_statistics_)
+    for (auto const & c : meter_statistics)
     {
         children[c->get_segment_path()] = c;
     }
 
-    if(queuing_statistics_ != nullptr)
+    if(queuing_statistics != nullptr)
     {
-        children["queuing-statistics"] = queuing_statistics_;
+        children["queuing-statistics"] = queuing_statistics;
     }
 
     return children;
 }
 
-void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::set_value(const std::string & value_path, std::string value)
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "classifier-entry-name")
     {
         classifier_entry_name = value;
+        classifier_entry_name.value_namespace = name_space;
+        classifier_entry_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parent-path")
     {
         parent_path = value;
+        parent_path.value_namespace = name_space;
+        parent_path.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "classifier-entry-name")
+    {
+        classifier_entry_name.yfilter = yfilter;
+    }
+    if(value_path == "parent-path")
+    {
+        parent_path.yfilter = yfilter;
+    }
+}
+
+bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classifier-entry-statistics" || name == "meter-statistics" || name == "queuing-statistics" || name == "classifier-entry-name" || name == "parent-path")
+        return true;
+    return false;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::ClassifierEntryStatistics()
@@ -516,10 +597,10 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(classified_bytes.operation)
-	|| is_set(classified_pkts.operation)
-	|| is_set(classified_rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(classified_bytes.yfilter)
+	|| ydk::is_set(classified_pkts.yfilter)
+	|| ydk::is_set(classified_rate.yfilter);
 }
 
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::get_segment_path() const
@@ -545,9 +626,9 @@ const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (classified_bytes.is_set || is_set(classified_bytes.operation)) leaf_name_data.push_back(classified_bytes.get_name_leafdata());
-    if (classified_pkts.is_set || is_set(classified_pkts.operation)) leaf_name_data.push_back(classified_pkts.get_name_leafdata());
-    if (classified_rate.is_set || is_set(classified_rate.operation)) leaf_name_data.push_back(classified_rate.get_name_leafdata());
+    if (classified_bytes.is_set || is_set(classified_bytes.yfilter)) leaf_name_data.push_back(classified_bytes.get_name_leafdata());
+    if (classified_pkts.is_set || is_set(classified_pkts.yfilter)) leaf_name_data.push_back(classified_pkts.get_name_leafdata());
+    if (classified_rate.is_set || is_set(classified_rate.yfilter)) leaf_name_data.push_back(classified_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -566,20 +647,49 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::Diffserv
     return children;
 }
 
-void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::set_value(const std::string & value_path, std::string value)
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "classified-bytes")
     {
         classified_bytes = value;
+        classified_bytes.value_namespace = name_space;
+        classified_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "classified-pkts")
     {
         classified_pkts = value;
+        classified_pkts.value_namespace = name_space;
+        classified_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "classified-rate")
     {
         classified_rate = value;
+        classified_rate.value_namespace = name_space;
+        classified_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "classified-bytes")
+    {
+        classified_bytes.yfilter = yfilter;
+    }
+    if(value_path == "classified-pkts")
+    {
+        classified_pkts.yfilter = yfilter;
+    }
+    if(value_path == "classified-rate")
+    {
+        classified_rate.yfilter = yfilter;
+    }
+}
+
+bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classified-bytes" || name == "classified-pkts" || name == "classified-rate")
+        return true;
+    return false;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::MeterStatistics()
@@ -608,12 +718,12 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(meter_id.operation)
-	|| is_set(meter_failed_bytes.operation)
-	|| is_set(meter_failed_pkts.operation)
-	|| is_set(meter_succeed_bytes.operation)
-	|| is_set(meter_succeed_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(meter_id.yfilter)
+	|| ydk::is_set(meter_failed_bytes.yfilter)
+	|| ydk::is_set(meter_failed_pkts.yfilter)
+	|| ydk::is_set(meter_succeed_bytes.yfilter)
+	|| ydk::is_set(meter_succeed_pkts.yfilter);
 }
 
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::get_segment_path() const
@@ -639,11 +749,11 @@ const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (meter_id.is_set || is_set(meter_id.operation)) leaf_name_data.push_back(meter_id.get_name_leafdata());
-    if (meter_failed_bytes.is_set || is_set(meter_failed_bytes.operation)) leaf_name_data.push_back(meter_failed_bytes.get_name_leafdata());
-    if (meter_failed_pkts.is_set || is_set(meter_failed_pkts.operation)) leaf_name_data.push_back(meter_failed_pkts.get_name_leafdata());
-    if (meter_succeed_bytes.is_set || is_set(meter_succeed_bytes.operation)) leaf_name_data.push_back(meter_succeed_bytes.get_name_leafdata());
-    if (meter_succeed_pkts.is_set || is_set(meter_succeed_pkts.operation)) leaf_name_data.push_back(meter_succeed_pkts.get_name_leafdata());
+    if (meter_id.is_set || is_set(meter_id.yfilter)) leaf_name_data.push_back(meter_id.get_name_leafdata());
+    if (meter_failed_bytes.is_set || is_set(meter_failed_bytes.yfilter)) leaf_name_data.push_back(meter_failed_bytes.get_name_leafdata());
+    if (meter_failed_pkts.is_set || is_set(meter_failed_pkts.yfilter)) leaf_name_data.push_back(meter_failed_pkts.get_name_leafdata());
+    if (meter_succeed_bytes.is_set || is_set(meter_succeed_bytes.yfilter)) leaf_name_data.push_back(meter_succeed_bytes.get_name_leafdata());
+    if (meter_succeed_pkts.is_set || is_set(meter_succeed_pkts.yfilter)) leaf_name_data.push_back(meter_succeed_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -662,28 +772,69 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::Diffserv
     return children;
 }
 
-void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::set_value(const std::string & value_path, std::string value)
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "meter-id")
     {
         meter_id = value;
+        meter_id.value_namespace = name_space;
+        meter_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "meter-failed-bytes")
     {
         meter_failed_bytes = value;
+        meter_failed_bytes.value_namespace = name_space;
+        meter_failed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "meter-failed-pkts")
     {
         meter_failed_pkts = value;
+        meter_failed_pkts.value_namespace = name_space;
+        meter_failed_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "meter-succeed-bytes")
     {
         meter_succeed_bytes = value;
+        meter_succeed_bytes.value_namespace = name_space;
+        meter_succeed_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "meter-succeed-pkts")
     {
         meter_succeed_pkts = value;
+        meter_succeed_pkts.value_namespace = name_space;
+        meter_succeed_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "meter-id")
+    {
+        meter_id.yfilter = yfilter;
+    }
+    if(value_path == "meter-failed-bytes")
+    {
+        meter_failed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "meter-failed-pkts")
+    {
+        meter_failed_pkts.yfilter = yfilter;
+    }
+    if(value_path == "meter-succeed-bytes")
+    {
+        meter_succeed_bytes.yfilter = yfilter;
+    }
+    if(value_path == "meter-succeed-pkts")
+    {
+        meter_succeed_pkts.yfilter = yfilter;
+    }
+}
+
+bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "meter-id" || name == "meter-failed-bytes" || name == "meter-failed-pkts" || name == "meter-succeed-bytes" || name == "meter-succeed-pkts")
+        return true;
+    return false;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::QueuingStatistics()
@@ -695,9 +846,9 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     queue_size_bytes{YType::uint64, "queue-size-bytes"},
     queue_size_pkts{YType::uint64, "queue-size-pkts"}
     	,
-    wred_stats_(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>())
+    wred_stats(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>())
 {
-    wred_stats_->parent = this;
+    wred_stats->parent = this;
 
     yang_name = "queuing-statistics"; yang_parent_name = "diffserv-target-classifier-statistics";
 }
@@ -714,19 +865,19 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 	|| output_pkts.is_set
 	|| queue_size_bytes.is_set
 	|| queue_size_pkts.is_set
-	|| (wred_stats_ !=  nullptr && wred_stats_->has_data());
+	|| (wred_stats !=  nullptr && wred_stats->has_data());
 }
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(drop_bytes.operation)
-	|| is_set(drop_pkts.operation)
-	|| is_set(output_bytes.operation)
-	|| is_set(output_pkts.operation)
-	|| is_set(queue_size_bytes.operation)
-	|| is_set(queue_size_pkts.operation)
-	|| (wred_stats_ !=  nullptr && wred_stats_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(drop_bytes.yfilter)
+	|| ydk::is_set(drop_pkts.yfilter)
+	|| ydk::is_set(output_bytes.yfilter)
+	|| ydk::is_set(output_pkts.yfilter)
+	|| ydk::is_set(queue_size_bytes.yfilter)
+	|| ydk::is_set(queue_size_pkts.yfilter)
+	|| (wred_stats !=  nullptr && wred_stats->has_operation());
 }
 
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::get_segment_path() const
@@ -752,12 +903,12 @@ const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (drop_bytes.is_set || is_set(drop_bytes.operation)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
-    if (drop_pkts.is_set || is_set(drop_pkts.operation)) leaf_name_data.push_back(drop_pkts.get_name_leafdata());
-    if (output_bytes.is_set || is_set(output_bytes.operation)) leaf_name_data.push_back(output_bytes.get_name_leafdata());
-    if (output_pkts.is_set || is_set(output_pkts.operation)) leaf_name_data.push_back(output_pkts.get_name_leafdata());
-    if (queue_size_bytes.is_set || is_set(queue_size_bytes.operation)) leaf_name_data.push_back(queue_size_bytes.get_name_leafdata());
-    if (queue_size_pkts.is_set || is_set(queue_size_pkts.operation)) leaf_name_data.push_back(queue_size_pkts.get_name_leafdata());
+    if (drop_bytes.is_set || is_set(drop_bytes.yfilter)) leaf_name_data.push_back(drop_bytes.get_name_leafdata());
+    if (drop_pkts.is_set || is_set(drop_pkts.yfilter)) leaf_name_data.push_back(drop_pkts.get_name_leafdata());
+    if (output_bytes.is_set || is_set(output_bytes.yfilter)) leaf_name_data.push_back(output_bytes.get_name_leafdata());
+    if (output_pkts.is_set || is_set(output_pkts.yfilter)) leaf_name_data.push_back(output_pkts.get_name_leafdata());
+    if (queue_size_bytes.is_set || is_set(queue_size_bytes.yfilter)) leaf_name_data.push_back(queue_size_bytes.get_name_leafdata());
+    if (queue_size_pkts.is_set || is_set(queue_size_pkts.yfilter)) leaf_name_data.push_back(queue_size_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -769,11 +920,11 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 {
     if(child_yang_name == "wred-stats")
     {
-        if(wred_stats_ == nullptr)
+        if(wred_stats == nullptr)
         {
-            wred_stats_ = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>();
+            wred_stats = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>();
         }
-        return wred_stats_;
+        return wred_stats;
     }
 
     return nullptr;
@@ -782,40 +933,87 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
 std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(wred_stats_ != nullptr)
+    if(wred_stats != nullptr)
     {
-        children["wred-stats"] = wred_stats_;
+        children["wred-stats"] = wred_stats;
     }
 
     return children;
 }
 
-void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::set_value(const std::string & value_path, std::string value)
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "drop-bytes")
     {
         drop_bytes = value;
+        drop_bytes.value_namespace = name_space;
+        drop_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drop-pkts")
     {
         drop_pkts = value;
+        drop_pkts.value_namespace = name_space;
+        drop_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-bytes")
     {
         output_bytes = value;
+        output_bytes.value_namespace = name_space;
+        output_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-pkts")
     {
         output_pkts = value;
+        output_pkts.value_namespace = name_space;
+        output_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "queue-size-bytes")
     {
         queue_size_bytes = value;
+        queue_size_bytes.value_namespace = name_space;
+        queue_size_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "queue-size-pkts")
     {
         queue_size_pkts = value;
+        queue_size_pkts.value_namespace = name_space;
+        queue_size_pkts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "drop-bytes")
+    {
+        drop_bytes.yfilter = yfilter;
+    }
+    if(value_path == "drop-pkts")
+    {
+        drop_pkts.yfilter = yfilter;
+    }
+    if(value_path == "output-bytes")
+    {
+        output_bytes.yfilter = yfilter;
+    }
+    if(value_path == "output-pkts")
+    {
+        output_pkts.yfilter = yfilter;
+    }
+    if(value_path == "queue-size-bytes")
+    {
+        queue_size_bytes.yfilter = yfilter;
+    }
+    if(value_path == "queue-size-pkts")
+    {
+        queue_size_pkts.yfilter = yfilter;
+    }
+}
+
+bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "wred-stats" || name == "drop-bytes" || name == "drop-pkts" || name == "output-bytes" || name == "output-pkts" || name == "queue-size-bytes" || name == "queue-size-pkts")
+        return true;
+    return false;
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::WredStats()
@@ -838,9 +1036,9 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(early_drop_bytes.operation)
-	|| is_set(early_drop_pkts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(early_drop_bytes.yfilter)
+	|| ydk::is_set(early_drop_pkts.yfilter);
 }
 
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::get_segment_path() const
@@ -866,8 +1064,8 @@ const EntityPath DiffservInterfacesState::DiffservInterface::DiffservTargetEntry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (early_drop_bytes.is_set || is_set(early_drop_bytes.operation)) leaf_name_data.push_back(early_drop_bytes.get_name_leafdata());
-    if (early_drop_pkts.is_set || is_set(early_drop_pkts.operation)) leaf_name_data.push_back(early_drop_pkts.get_name_leafdata());
+    if (early_drop_bytes.is_set || is_set(early_drop_bytes.yfilter)) leaf_name_data.push_back(early_drop_bytes.get_name_leafdata());
+    if (early_drop_pkts.is_set || is_set(early_drop_pkts.yfilter)) leaf_name_data.push_back(early_drop_pkts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -886,33 +1084,56 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::Diffserv
     return children;
 }
 
-void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::set_value(const std::string & value_path, std::string value)
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "early-drop-bytes")
     {
         early_drop_bytes = value;
+        early_drop_bytes.value_namespace = name_space;
+        early_drop_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "early-drop-pkts")
     {
         early_drop_pkts = value;
+        early_drop_pkts.value_namespace = name_space;
+        early_drop_pkts.value_namespace_prefix = name_space_prefix;
     }
 }
 
-InboundIdentity::InboundIdentity()
-     : Identity("Cisco-IOS-XE-diffserv-target-oper:inbound")
+void DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "early-drop-bytes")
+    {
+        early_drop_bytes.yfilter = yfilter;
+    }
+    if(value_path == "early-drop-pkts")
+    {
+        early_drop_pkts.yfilter = yfilter;
+    }
+}
+
+bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "early-drop-bytes" || name == "early-drop-pkts")
+        return true;
+    return false;
+}
+
+Inbound::Inbound()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper:inbound")
 {
 }
 
-InboundIdentity::~InboundIdentity()
+Inbound::~Inbound()
 {
 }
 
-OutboundIdentity::OutboundIdentity()
-     : Identity("Cisco-IOS-XE-diffserv-target-oper:outbound")
+Outbound::Outbound()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper", "Cisco-IOS-XE-diffserv-target-oper:outbound")
 {
 }
 
-OutboundIdentity::~OutboundIdentity()
+Outbound::~Outbound()
 {
 }
 

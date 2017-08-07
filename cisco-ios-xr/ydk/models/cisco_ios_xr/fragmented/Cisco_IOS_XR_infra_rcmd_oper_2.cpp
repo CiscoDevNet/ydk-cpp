@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_rcmd_oper_2.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_rcmd_oper {
 
 Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::RemoteNode()
@@ -45,17 +47,17 @@ bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::has_data() con
 
 bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_use_time.operation)
-	|| is_set(lsr_id.operation)
-	|| is_set(path_count.operation)
-	|| is_set(protected_path_count.operation)
-	|| is_set(protected_route_count.operation)
-	|| is_set(remote_label_count.operation)
-	|| is_set(remote_node_id.operation)
-	|| is_set(route_count.operation)
-	|| is_set(session_state.operation)
-	|| is_set(transport_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(in_use_time.yfilter)
+	|| ydk::is_set(lsr_id.yfilter)
+	|| ydk::is_set(path_count.yfilter)
+	|| ydk::is_set(protected_path_count.yfilter)
+	|| ydk::is_set(protected_route_count.yfilter)
+	|| ydk::is_set(remote_label_count.yfilter)
+	|| ydk::is_set(remote_node_id.yfilter)
+	|| ydk::is_set(route_count.yfilter)
+	|| ydk::is_set(session_state.yfilter)
+	|| ydk::is_set(transport_address.yfilter);
 }
 
 std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_segment_path() const
@@ -81,16 +83,16 @@ const EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_use_time.is_set || is_set(in_use_time.operation)) leaf_name_data.push_back(in_use_time.get_name_leafdata());
-    if (lsr_id.is_set || is_set(lsr_id.operation)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
-    if (path_count.is_set || is_set(path_count.operation)) leaf_name_data.push_back(path_count.get_name_leafdata());
-    if (protected_path_count.is_set || is_set(protected_path_count.operation)) leaf_name_data.push_back(protected_path_count.get_name_leafdata());
-    if (protected_route_count.is_set || is_set(protected_route_count.operation)) leaf_name_data.push_back(protected_route_count.get_name_leafdata());
-    if (remote_label_count.is_set || is_set(remote_label_count.operation)) leaf_name_data.push_back(remote_label_count.get_name_leafdata());
-    if (remote_node_id.is_set || is_set(remote_node_id.operation)) leaf_name_data.push_back(remote_node_id.get_name_leafdata());
-    if (route_count.is_set || is_set(route_count.operation)) leaf_name_data.push_back(route_count.get_name_leafdata());
-    if (session_state.is_set || is_set(session_state.operation)) leaf_name_data.push_back(session_state.get_name_leafdata());
-    if (transport_address.is_set || is_set(transport_address.operation)) leaf_name_data.push_back(transport_address.get_name_leafdata());
+    if (in_use_time.is_set || is_set(in_use_time.yfilter)) leaf_name_data.push_back(in_use_time.get_name_leafdata());
+    if (lsr_id.is_set || is_set(lsr_id.yfilter)) leaf_name_data.push_back(lsr_id.get_name_leafdata());
+    if (path_count.is_set || is_set(path_count.yfilter)) leaf_name_data.push_back(path_count.get_name_leafdata());
+    if (protected_path_count.is_set || is_set(protected_path_count.yfilter)) leaf_name_data.push_back(protected_path_count.get_name_leafdata());
+    if (protected_route_count.is_set || is_set(protected_route_count.yfilter)) leaf_name_data.push_back(protected_route_count.get_name_leafdata());
+    if (remote_label_count.is_set || is_set(remote_label_count.yfilter)) leaf_name_data.push_back(remote_label_count.get_name_leafdata());
+    if (remote_node_id.is_set || is_set(remote_node_id.yfilter)) leaf_name_data.push_back(remote_node_id.get_name_leafdata());
+    if (route_count.is_set || is_set(route_count.yfilter)) leaf_name_data.push_back(route_count.get_name_leafdata());
+    if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
+    if (transport_address.is_set || is_set(transport_address.yfilter)) leaf_name_data.push_back(transport_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -109,48 +111,119 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::Re
     return children;
 }
 
-void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::set_value(const std::string & value_path, std::string value)
+void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-use-time")
     {
         in_use_time = value;
+        in_use_time.value_namespace = name_space;
+        in_use_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsr-id")
     {
         lsr_id = value;
+        lsr_id.value_namespace = name_space;
+        lsr_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-count")
     {
         path_count = value;
+        path_count.value_namespace = name_space;
+        path_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protected-path-count")
     {
         protected_path_count = value;
+        protected_path_count.value_namespace = name_space;
+        protected_path_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protected-route-count")
     {
         protected_route_count = value;
+        protected_route_count.value_namespace = name_space;
+        protected_route_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-label-count")
     {
         remote_label_count = value;
+        remote_label_count.value_namespace = name_space;
+        remote_label_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-node-id")
     {
         remote_node_id = value;
+        remote_node_id.value_namespace = name_space;
+        remote_node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-count")
     {
         route_count = value;
+        route_count.value_namespace = name_space;
+        route_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-state")
     {
         session_state = value;
+        session_state.value_namespace = name_space;
+        session_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport-address")
     {
         transport_address = value;
+        transport_address.value_namespace = name_space;
+        transport_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-use-time")
+    {
+        in_use_time.yfilter = yfilter;
+    }
+    if(value_path == "lsr-id")
+    {
+        lsr_id.yfilter = yfilter;
+    }
+    if(value_path == "path-count")
+    {
+        path_count.yfilter = yfilter;
+    }
+    if(value_path == "protected-path-count")
+    {
+        protected_path_count.yfilter = yfilter;
+    }
+    if(value_path == "protected-route-count")
+    {
+        protected_route_count.yfilter = yfilter;
+    }
+    if(value_path == "remote-label-count")
+    {
+        remote_label_count.yfilter = yfilter;
+    }
+    if(value_path == "remote-node-id")
+    {
+        remote_node_id.yfilter = yfilter;
+    }
+    if(value_path == "route-count")
+    {
+        route_count.yfilter = yfilter;
+    }
+    if(value_path == "session-state")
+    {
+        session_state.yfilter = yfilter;
+    }
+    if(value_path == "transport-address")
+    {
+        transport_address.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-use-time" || name == "lsr-id" || name == "path-count" || name == "protected-path-count" || name == "protected-route-count" || name == "remote-label-count" || name == "remote-node-id" || name == "route-count" || name == "session-state" || name == "transport-address")
+        return true;
+    return false;
 }
 
 Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::Logs()
@@ -177,11 +250,11 @@ bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::has_data() const
 
 bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(label_coverage_state.operation)
-	|| is_set(log_time.operation)
-	|| is_set(remote_label_count.operation)
-	|| is_set(route_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(label_coverage_state.yfilter)
+	|| ydk::is_set(log_time.yfilter)
+	|| ydk::is_set(remote_label_count.yfilter)
+	|| ydk::is_set(route_count.yfilter);
 }
 
 std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_segment_path() const
@@ -207,10 +280,10 @@ const EntityPath Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label_coverage_state.is_set || is_set(label_coverage_state.operation)) leaf_name_data.push_back(label_coverage_state.get_name_leafdata());
-    if (log_time.is_set || is_set(log_time.operation)) leaf_name_data.push_back(log_time.get_name_leafdata());
-    if (remote_label_count.is_set || is_set(remote_label_count.operation)) leaf_name_data.push_back(remote_label_count.get_name_leafdata());
-    if (route_count.is_set || is_set(route_count.operation)) leaf_name_data.push_back(route_count.get_name_leafdata());
+    if (label_coverage_state.is_set || is_set(label_coverage_state.yfilter)) leaf_name_data.push_back(label_coverage_state.get_name_leafdata());
+    if (log_time.is_set || is_set(log_time.yfilter)) leaf_name_data.push_back(log_time.get_name_leafdata());
+    if (remote_label_count.is_set || is_set(remote_label_count.yfilter)) leaf_name_data.push_back(remote_label_count.get_name_leafdata());
+    if (route_count.is_set || is_set(route_count.yfilter)) leaf_name_data.push_back(route_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -229,24 +302,59 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Ldp::RemoteLfaSummaries::Re
     return children;
 }
 
-void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::set_value(const std::string & value_path, std::string value)
+void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "label-coverage-state")
     {
         label_coverage_state = value;
+        label_coverage_state.value_namespace = name_space;
+        label_coverage_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log-time")
     {
         log_time = value;
+        log_time.value_namespace = name_space;
+        log_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-label-count")
     {
         remote_label_count = value;
+        remote_label_count.value_namespace = name_space;
+        remote_label_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-count")
     {
         route_count = value;
+        route_count.value_namespace = name_space;
+        route_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label-coverage-state")
+    {
+        label_coverage_state.yfilter = yfilter;
+    }
+    if(value_path == "log-time")
+    {
+        log_time.yfilter = yfilter;
+    }
+    if(value_path == "remote-label-count")
+    {
+        remote_label_count.yfilter = yfilter;
+    }
+    if(value_path == "route-count")
+    {
+        route_count.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-coverage-state" || name == "log-time" || name == "remote-label-count" || name == "route-count")
+        return true;
+    return false;
 }
 
 Rcmd::Intf::Intf()
@@ -269,7 +377,7 @@ bool Rcmd::Intf::has_data() const
 
 bool Rcmd::Intf::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (events !=  nullptr && events->has_operation());
 }
 
@@ -328,8 +436,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::get_children() const
     return children;
 }
 
-void Rcmd::Intf::set_value(const std::string & value_path, std::string value)
+void Rcmd::Intf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rcmd::Intf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Intf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events")
+        return true;
+    return false;
 }
 
 Rcmd::Intf::Events::Events()
@@ -358,7 +477,7 @@ bool Rcmd::Intf::Events::has_operation() const
         if(event[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rcmd::Intf::Events::get_segment_path() const
@@ -423,8 +542,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::get_children(
     return children;
 }
 
-void Rcmd::Intf::Events::set_value(const std::string & value_path, std::string value)
+void Rcmd::Intf::Events::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rcmd::Intf::Events::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Intf::Events::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event")
+        return true;
+    return false;
 }
 
 Rcmd::Intf::Events::Event::Event()
@@ -457,14 +587,14 @@ bool Rcmd::Intf::Events::Event::has_data() const
 
 bool Rcmd::Intf::Events::Event::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_no.operation)
-	|| is_set(component.operation)
-	|| is_set(event_time.operation)
-	|| is_set(event_type.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(primary_address.operation)
-	|| is_set(sequence_no.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_no.yfilter)
+	|| ydk::is_set(component.yfilter)
+	|| ydk::is_set(event_time.yfilter)
+	|| ydk::is_set(event_type.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(primary_address.yfilter)
+	|| ydk::is_set(sequence_no.yfilter);
 }
 
 std::string Rcmd::Intf::Events::Event::get_segment_path() const
@@ -490,13 +620,13 @@ const EntityPath Rcmd::Intf::Events::Event::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_no.is_set || is_set(event_no.operation)) leaf_name_data.push_back(event_no.get_name_leafdata());
-    if (component.is_set || is_set(component.operation)) leaf_name_data.push_back(component.get_name_leafdata());
-    if (event_time.is_set || is_set(event_time.operation)) leaf_name_data.push_back(event_time.get_name_leafdata());
-    if (event_type.is_set || is_set(event_type.operation)) leaf_name_data.push_back(event_type.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (primary_address.is_set || is_set(primary_address.operation)) leaf_name_data.push_back(primary_address.get_name_leafdata());
-    if (sequence_no.is_set || is_set(sequence_no.operation)) leaf_name_data.push_back(sequence_no.get_name_leafdata());
+    if (event_no.is_set || is_set(event_no.yfilter)) leaf_name_data.push_back(event_no.get_name_leafdata());
+    if (component.is_set || is_set(component.yfilter)) leaf_name_data.push_back(component.get_name_leafdata());
+    if (event_time.is_set || is_set(event_time.yfilter)) leaf_name_data.push_back(event_time.get_name_leafdata());
+    if (event_type.is_set || is_set(event_type.yfilter)) leaf_name_data.push_back(event_type.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (primary_address.is_set || is_set(primary_address.yfilter)) leaf_name_data.push_back(primary_address.get_name_leafdata());
+    if (sequence_no.is_set || is_set(sequence_no.yfilter)) leaf_name_data.push_back(sequence_no.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -515,36 +645,89 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Intf::Events::Event::get_ch
     return children;
 }
 
-void Rcmd::Intf::Events::Event::set_value(const std::string & value_path, std::string value)
+void Rcmd::Intf::Events::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-no")
     {
         event_no = value;
+        event_no.value_namespace = name_space;
+        event_no.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "component")
     {
         component = value;
+        component.value_namespace = name_space;
+        component.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-time")
     {
         event_time = value;
+        event_time.value_namespace = name_space;
+        event_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-type")
     {
         event_type = value;
+        event_type.value_namespace = name_space;
+        event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address")
     {
         primary_address = value;
+        primary_address.value_namespace = name_space;
+        primary_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-no")
     {
         sequence_no = value;
+        sequence_no.value_namespace = name_space;
+        sequence_no.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Intf::Events::Event::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-no")
+    {
+        event_no.yfilter = yfilter;
+    }
+    if(value_path == "component")
+    {
+        component.yfilter = yfilter;
+    }
+    if(value_path == "event-time")
+    {
+        event_time.yfilter = yfilter;
+    }
+    if(value_path == "event-type")
+    {
+        event_type.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address.yfilter = yfilter;
+    }
+    if(value_path == "sequence-no")
+    {
+        sequence_no.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Intf::Events::Event::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-no" || name == "component" || name == "event-time" || name == "event-type" || name == "interface-name" || name == "primary-address" || name == "sequence-no")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Process()
@@ -575,7 +758,7 @@ bool Rcmd::Process::has_data() const
 
 bool Rcmd::Process::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (isis !=  nullptr && isis->has_operation())
 	|| (ldp !=  nullptr && ldp->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation());
@@ -664,8 +847,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::get_children() con
     return children;
 }
 
-void Rcmd::Process::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rcmd::Process::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Process::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "isis" || name == "ldp" || name == "ospf")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Isis::Isis()
@@ -694,7 +888,7 @@ bool Rcmd::Process::Isis::has_operation() const
         if(process[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rcmd::Process::Isis::get_segment_path() const
@@ -759,8 +953,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::get_children
     return children;
 }
 
-void Rcmd::Process::Isis::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rcmd::Process::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Process::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Isis::Process_::Process_()
@@ -793,9 +998,9 @@ bool Rcmd::Process::Isis::Process_::has_operation() const
         if(instance_name[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(process_name.operation)
-	|| is_set(protocol_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(process_name.yfilter)
+	|| ydk::is_set(protocol_id.yfilter);
 }
 
 std::string Rcmd::Process::Isis::Process_::get_segment_path() const
@@ -821,8 +1026,8 @@ const EntityPath Rcmd::Process::Isis::Process_::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process_name.is_set || is_set(process_name.operation)) leaf_name_data.push_back(process_name.get_name_leafdata());
-    if (protocol_id.is_set || is_set(protocol_id.operation)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
+    if (protocol_id.is_set || is_set(protocol_id.yfilter)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -862,16 +1067,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::ge
     return children;
 }
 
-void Rcmd::Process::Isis::Process_::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Isis::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "process-name")
     {
         process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-id")
     {
         protocol_id = value;
+        protocol_id.value_namespace = name_space;
+        protocol_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Isis::Process_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "process-name")
+    {
+        process_name.yfilter = yfilter;
+    }
+    if(value_path == "protocol-id")
+    {
+        protocol_id.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Isis::Process_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance-name" || name == "process-name" || name == "protocol-id")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Isis::Process_::InstanceName::InstanceName()
@@ -920,17 +1148,17 @@ bool Rcmd::Process::Isis::Process_::InstanceName::has_operation() const
         if(instance[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(arch_lsp_regeneration.operation)
-	|| is_set(arch_spf_event.operation)
-	|| is_set(last_update_time.operation)
-	|| is_set(lsp_regeneration_count.operation)
-	|| is_set(lsp_regeneration_serial.operation)
-	|| is_set(name.operation)
-	|| is_set(no_route_change_spf_nos.operation)
-	|| is_set(not_interested_spf_nos.operation)
-	|| is_set(route_change_spf_nos.operation)
-	|| is_set(total_spf_nos.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(arch_lsp_regeneration.yfilter)
+	|| ydk::is_set(arch_spf_event.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(lsp_regeneration_count.yfilter)
+	|| ydk::is_set(lsp_regeneration_serial.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter);
 }
 
 std::string Rcmd::Process::Isis::Process_::InstanceName::get_segment_path() const
@@ -956,16 +1184,16 @@ const EntityPath Rcmd::Process::Isis::Process_::InstanceName::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.operation)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
-    if (arch_spf_event.is_set || is_set(arch_spf_event.operation)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
-    if (last_update_time.is_set || is_set(last_update_time.operation)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.operation)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
-    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.operation)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.operation)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
-    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.operation)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.operation)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
-    if (total_spf_nos.is_set || is_set(total_spf_nos.operation)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.yfilter)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
+    if (arch_spf_event.is_set || is_set(arch_spf_event.yfilter)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.yfilter)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
+    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.yfilter)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1005,48 +1233,119 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::In
     return children;
 }
 
-void Rcmd::Process::Isis::Process_::InstanceName::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Isis::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "arch-lsp-regeneration")
     {
         arch_lsp_regeneration = value;
+        arch_lsp_regeneration.value_namespace = name_space;
+        arch_lsp_regeneration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arch-spf-event")
     {
         arch_spf_event = value;
+        arch_spf_event.value_namespace = name_space;
+        arch_spf_event.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
+        last_update_time.value_namespace = name_space;
+        last_update_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-regeneration-count")
     {
         lsp_regeneration_count = value;
+        lsp_regeneration_count.value_namespace = name_space;
+        lsp_regeneration_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-regeneration-serial")
     {
         lsp_regeneration_serial = value;
+        lsp_regeneration_serial.value_namespace = name_space;
+        lsp_regeneration_serial.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-route-change-spf-nos")
     {
         no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "not-interested-spf-nos")
     {
         not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-change-spf-nos")
     {
         route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spf-nos")
     {
         total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Isis::Process_::InstanceName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "arch-lsp-regeneration")
+    {
+        arch_lsp_regeneration.yfilter = yfilter;
+    }
+    if(value_path == "arch-spf-event")
+    {
+        arch_spf_event.yfilter = yfilter;
+    }
+    if(value_path == "last-update-time")
+    {
+        last_update_time.yfilter = yfilter;
+    }
+    if(value_path == "lsp-regeneration-count")
+    {
+        lsp_regeneration_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-regeneration-serial")
+    {
+        lsp_regeneration_serial.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Isis::Process_::InstanceName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance" || name == "arch-lsp-regeneration" || name == "arch-spf-event" || name == "last-update-time" || name == "lsp-regeneration-count" || name == "lsp-regeneration-serial" || name == "name" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "total-spf-nos")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Isis::Process_::InstanceName::Instance::Instance()
@@ -1091,20 +1390,20 @@ bool Rcmd::Process::Isis::Process_::InstanceName::Instance::has_data() const
 
 bool Rcmd::Process::Isis::Process_::InstanceName::Instance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(arch_spf_run.operation)
-	|| is_set(fwd_referenced.operation)
-	|| is_set(instance_deleted.operation)
-	|| is_set(instance_id.operation)
-	|| is_set(instance_state.operation)
-	|| is_set(last_update_time.operation)
-	|| is_set(no_route_change_spf_nos.operation)
-	|| is_set(node_id.operation)
-	|| is_set(not_interested_spf_nos.operation)
-	|| is_set(route_change_spf_nos.operation)
-	|| is_set(spf_offset.operation)
-	|| is_set(total_spf_nos.operation)
-	|| is_set(total_spt_nos.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(arch_spf_run.yfilter)
+	|| ydk::is_set(fwd_referenced.yfilter)
+	|| ydk::is_set(instance_deleted.yfilter)
+	|| ydk::is_set(instance_id.yfilter)
+	|| ydk::is_set(instance_state.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(spf_offset.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(total_spt_nos.yfilter);
 }
 
 std::string Rcmd::Process::Isis::Process_::InstanceName::Instance::get_segment_path() const
@@ -1130,19 +1429,19 @@ const EntityPath Rcmd::Process::Isis::Process_::InstanceName::Instance::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_spf_run.is_set || is_set(arch_spf_run.operation)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
-    if (fwd_referenced.is_set || is_set(fwd_referenced.operation)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
-    if (instance_deleted.is_set || is_set(instance_deleted.operation)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
-    if (instance_id.is_set || is_set(instance_id.operation)) leaf_name_data.push_back(instance_id.get_name_leafdata());
-    if (instance_state.is_set || is_set(instance_state.operation)) leaf_name_data.push_back(instance_state.get_name_leafdata());
-    if (last_update_time.is_set || is_set(last_update_time.operation)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.operation)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.operation)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.operation)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
-    if (spf_offset.is_set || is_set(spf_offset.operation)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
-    if (total_spf_nos.is_set || is_set(total_spf_nos.operation)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
-    if (total_spt_nos.is_set || is_set(total_spt_nos.operation)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
+    if (arch_spf_run.is_set || is_set(arch_spf_run.yfilter)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
+    if (fwd_referenced.is_set || is_set(fwd_referenced.yfilter)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
+    if (instance_deleted.is_set || is_set(instance_deleted.yfilter)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
+    if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
+    if (instance_state.is_set || is_set(instance_state.yfilter)) leaf_name_data.push_back(instance_state.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (spf_offset.is_set || is_set(spf_offset.yfilter)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (total_spt_nos.is_set || is_set(total_spt_nos.yfilter)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1161,60 +1460,149 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Isis::Process_::In
     return children;
 }
 
-void Rcmd::Process::Isis::Process_::InstanceName::Instance::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Isis::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "arch-spf-run")
     {
         arch_spf_run = value;
+        arch_spf_run.value_namespace = name_space;
+        arch_spf_run.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fwd-referenced")
     {
         fwd_referenced = value;
+        fwd_referenced.value_namespace = name_space;
+        fwd_referenced.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-deleted")
     {
         instance_deleted = value;
+        instance_deleted.value_namespace = name_space;
+        instance_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-id")
     {
         instance_id = value;
+        instance_id.value_namespace = name_space;
+        instance_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-state")
     {
         instance_state = value;
+        instance_state.value_namespace = name_space;
+        instance_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
+        last_update_time.value_namespace = name_space;
+        last_update_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-route-change-spf-nos")
     {
         no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "not-interested-spf-nos")
     {
         not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-change-spf-nos")
     {
         route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-offset")
     {
         spf_offset = value;
+        spf_offset.value_namespace = name_space;
+        spf_offset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spf-nos")
     {
         total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spt-nos")
     {
         total_spt_nos = value;
+        total_spt_nos.value_namespace = name_space;
+        total_spt_nos.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Isis::Process_::InstanceName::Instance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "arch-spf-run")
+    {
+        arch_spf_run.yfilter = yfilter;
+    }
+    if(value_path == "fwd-referenced")
+    {
+        fwd_referenced.yfilter = yfilter;
+    }
+    if(value_path == "instance-deleted")
+    {
+        instance_deleted.yfilter = yfilter;
+    }
+    if(value_path == "instance-id")
+    {
+        instance_id.yfilter = yfilter;
+    }
+    if(value_path == "instance-state")
+    {
+        instance_state.yfilter = yfilter;
+    }
+    if(value_path == "last-update-time")
+    {
+        last_update_time.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "spf-offset")
+    {
+        spf_offset.yfilter = yfilter;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "total-spt-nos")
+    {
+        total_spt_nos.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Isis::Process_::InstanceName::Instance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "arch-spf-run" || name == "fwd-referenced" || name == "instance-deleted" || name == "instance-id" || name == "instance-state" || name == "last-update-time" || name == "no-route-change-spf-nos" || name == "node-id" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "spf-offset" || name == "total-spf-nos" || name == "total-spt-nos")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Ospf::Ospf()
@@ -1243,7 +1631,7 @@ bool Rcmd::Process::Ospf::has_operation() const
         if(process[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rcmd::Process::Ospf::get_segment_path() const
@@ -1308,8 +1696,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::get_children
     return children;
 }
 
-void Rcmd::Process::Ospf::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rcmd::Process::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Process::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Ospf::Process_::Process_()
@@ -1342,9 +1741,9 @@ bool Rcmd::Process::Ospf::Process_::has_operation() const
         if(instance_name[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(process_name.operation)
-	|| is_set(protocol_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(process_name.yfilter)
+	|| ydk::is_set(protocol_id.yfilter);
 }
 
 std::string Rcmd::Process::Ospf::Process_::get_segment_path() const
@@ -1370,8 +1769,8 @@ const EntityPath Rcmd::Process::Ospf::Process_::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process_name.is_set || is_set(process_name.operation)) leaf_name_data.push_back(process_name.get_name_leafdata());
-    if (protocol_id.is_set || is_set(protocol_id.operation)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
+    if (protocol_id.is_set || is_set(protocol_id.yfilter)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1411,16 +1810,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::ge
     return children;
 }
 
-void Rcmd::Process::Ospf::Process_::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Ospf::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "process-name")
     {
         process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-id")
     {
         protocol_id = value;
+        protocol_id.value_namespace = name_space;
+        protocol_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Ospf::Process_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "process-name")
+    {
+        process_name.yfilter = yfilter;
+    }
+    if(value_path == "protocol-id")
+    {
+        protocol_id.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Ospf::Process_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance-name" || name == "process-name" || name == "protocol-id")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Ospf::Process_::InstanceName::InstanceName()
@@ -1469,17 +1891,17 @@ bool Rcmd::Process::Ospf::Process_::InstanceName::has_operation() const
         if(instance[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(arch_lsp_regeneration.operation)
-	|| is_set(arch_spf_event.operation)
-	|| is_set(last_update_time.operation)
-	|| is_set(lsp_regeneration_count.operation)
-	|| is_set(lsp_regeneration_serial.operation)
-	|| is_set(name.operation)
-	|| is_set(no_route_change_spf_nos.operation)
-	|| is_set(not_interested_spf_nos.operation)
-	|| is_set(route_change_spf_nos.operation)
-	|| is_set(total_spf_nos.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(arch_lsp_regeneration.yfilter)
+	|| ydk::is_set(arch_spf_event.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(lsp_regeneration_count.yfilter)
+	|| ydk::is_set(lsp_regeneration_serial.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter);
 }
 
 std::string Rcmd::Process::Ospf::Process_::InstanceName::get_segment_path() const
@@ -1505,16 +1927,16 @@ const EntityPath Rcmd::Process::Ospf::Process_::InstanceName::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.operation)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
-    if (arch_spf_event.is_set || is_set(arch_spf_event.operation)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
-    if (last_update_time.is_set || is_set(last_update_time.operation)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.operation)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
-    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.operation)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.operation)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
-    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.operation)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.operation)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
-    if (total_spf_nos.is_set || is_set(total_spf_nos.operation)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.yfilter)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
+    if (arch_spf_event.is_set || is_set(arch_spf_event.yfilter)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.yfilter)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
+    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.yfilter)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1554,48 +1976,119 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::In
     return children;
 }
 
-void Rcmd::Process::Ospf::Process_::InstanceName::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Ospf::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "arch-lsp-regeneration")
     {
         arch_lsp_regeneration = value;
+        arch_lsp_regeneration.value_namespace = name_space;
+        arch_lsp_regeneration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arch-spf-event")
     {
         arch_spf_event = value;
+        arch_spf_event.value_namespace = name_space;
+        arch_spf_event.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
+        last_update_time.value_namespace = name_space;
+        last_update_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-regeneration-count")
     {
         lsp_regeneration_count = value;
+        lsp_regeneration_count.value_namespace = name_space;
+        lsp_regeneration_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-regeneration-serial")
     {
         lsp_regeneration_serial = value;
+        lsp_regeneration_serial.value_namespace = name_space;
+        lsp_regeneration_serial.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-route-change-spf-nos")
     {
         no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "not-interested-spf-nos")
     {
         not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-change-spf-nos")
     {
         route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spf-nos")
     {
         total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Ospf::Process_::InstanceName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "arch-lsp-regeneration")
+    {
+        arch_lsp_regeneration.yfilter = yfilter;
+    }
+    if(value_path == "arch-spf-event")
+    {
+        arch_spf_event.yfilter = yfilter;
+    }
+    if(value_path == "last-update-time")
+    {
+        last_update_time.yfilter = yfilter;
+    }
+    if(value_path == "lsp-regeneration-count")
+    {
+        lsp_regeneration_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-regeneration-serial")
+    {
+        lsp_regeneration_serial.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Ospf::Process_::InstanceName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance" || name == "arch-lsp-regeneration" || name == "arch-spf-event" || name == "last-update-time" || name == "lsp-regeneration-count" || name == "lsp-regeneration-serial" || name == "name" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "total-spf-nos")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Ospf::Process_::InstanceName::Instance::Instance()
@@ -1640,20 +2133,20 @@ bool Rcmd::Process::Ospf::Process_::InstanceName::Instance::has_data() const
 
 bool Rcmd::Process::Ospf::Process_::InstanceName::Instance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(arch_spf_run.operation)
-	|| is_set(fwd_referenced.operation)
-	|| is_set(instance_deleted.operation)
-	|| is_set(instance_id.operation)
-	|| is_set(instance_state.operation)
-	|| is_set(last_update_time.operation)
-	|| is_set(no_route_change_spf_nos.operation)
-	|| is_set(node_id.operation)
-	|| is_set(not_interested_spf_nos.operation)
-	|| is_set(route_change_spf_nos.operation)
-	|| is_set(spf_offset.operation)
-	|| is_set(total_spf_nos.operation)
-	|| is_set(total_spt_nos.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(arch_spf_run.yfilter)
+	|| ydk::is_set(fwd_referenced.yfilter)
+	|| ydk::is_set(instance_deleted.yfilter)
+	|| ydk::is_set(instance_id.yfilter)
+	|| ydk::is_set(instance_state.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(spf_offset.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(total_spt_nos.yfilter);
 }
 
 std::string Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_segment_path() const
@@ -1679,19 +2172,19 @@ const EntityPath Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_spf_run.is_set || is_set(arch_spf_run.operation)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
-    if (fwd_referenced.is_set || is_set(fwd_referenced.operation)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
-    if (instance_deleted.is_set || is_set(instance_deleted.operation)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
-    if (instance_id.is_set || is_set(instance_id.operation)) leaf_name_data.push_back(instance_id.get_name_leafdata());
-    if (instance_state.is_set || is_set(instance_state.operation)) leaf_name_data.push_back(instance_state.get_name_leafdata());
-    if (last_update_time.is_set || is_set(last_update_time.operation)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.operation)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.operation)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.operation)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
-    if (spf_offset.is_set || is_set(spf_offset.operation)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
-    if (total_spf_nos.is_set || is_set(total_spf_nos.operation)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
-    if (total_spt_nos.is_set || is_set(total_spt_nos.operation)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
+    if (arch_spf_run.is_set || is_set(arch_spf_run.yfilter)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
+    if (fwd_referenced.is_set || is_set(fwd_referenced.yfilter)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
+    if (instance_deleted.is_set || is_set(instance_deleted.yfilter)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
+    if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
+    if (instance_state.is_set || is_set(instance_state.yfilter)) leaf_name_data.push_back(instance_state.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (spf_offset.is_set || is_set(spf_offset.yfilter)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (total_spt_nos.is_set || is_set(total_spt_nos.yfilter)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1710,60 +2203,149 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ospf::Process_::In
     return children;
 }
 
-void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "arch-spf-run")
     {
         arch_spf_run = value;
+        arch_spf_run.value_namespace = name_space;
+        arch_spf_run.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fwd-referenced")
     {
         fwd_referenced = value;
+        fwd_referenced.value_namespace = name_space;
+        fwd_referenced.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-deleted")
     {
         instance_deleted = value;
+        instance_deleted.value_namespace = name_space;
+        instance_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-id")
     {
         instance_id = value;
+        instance_id.value_namespace = name_space;
+        instance_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-state")
     {
         instance_state = value;
+        instance_state.value_namespace = name_space;
+        instance_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
+        last_update_time.value_namespace = name_space;
+        last_update_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-route-change-spf-nos")
     {
         no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "not-interested-spf-nos")
     {
         not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-change-spf-nos")
     {
         route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-offset")
     {
         spf_offset = value;
+        spf_offset.value_namespace = name_space;
+        spf_offset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spf-nos")
     {
         total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spt-nos")
     {
         total_spt_nos = value;
+        total_spt_nos.value_namespace = name_space;
+        total_spt_nos.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Ospf::Process_::InstanceName::Instance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "arch-spf-run")
+    {
+        arch_spf_run.yfilter = yfilter;
+    }
+    if(value_path == "fwd-referenced")
+    {
+        fwd_referenced.yfilter = yfilter;
+    }
+    if(value_path == "instance-deleted")
+    {
+        instance_deleted.yfilter = yfilter;
+    }
+    if(value_path == "instance-id")
+    {
+        instance_id.yfilter = yfilter;
+    }
+    if(value_path == "instance-state")
+    {
+        instance_state.yfilter = yfilter;
+    }
+    if(value_path == "last-update-time")
+    {
+        last_update_time.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "spf-offset")
+    {
+        spf_offset.yfilter = yfilter;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "total-spt-nos")
+    {
+        total_spt_nos.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Ospf::Process_::InstanceName::Instance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "arch-spf-run" || name == "fwd-referenced" || name == "instance-deleted" || name == "instance-id" || name == "instance-state" || name == "last-update-time" || name == "no-route-change-spf-nos" || name == "node-id" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "spf-offset" || name == "total-spf-nos" || name == "total-spt-nos")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Ldp::Ldp()
@@ -1792,7 +2374,7 @@ bool Rcmd::Process::Ldp::has_operation() const
         if(process[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rcmd::Process::Ldp::get_segment_path() const
@@ -1857,8 +2439,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::get_children(
     return children;
 }
 
-void Rcmd::Process::Ldp::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rcmd::Process::Ldp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rcmd::Process::Ldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Ldp::Process_::Process_()
@@ -1891,9 +2484,9 @@ bool Rcmd::Process::Ldp::Process_::has_operation() const
         if(instance_name[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(process_name.operation)
-	|| is_set(protocol_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(process_name.yfilter)
+	|| ydk::is_set(protocol_id.yfilter);
 }
 
 std::string Rcmd::Process::Ldp::Process_::get_segment_path() const
@@ -1919,8 +2512,8 @@ const EntityPath Rcmd::Process::Ldp::Process_::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process_name.is_set || is_set(process_name.operation)) leaf_name_data.push_back(process_name.get_name_leafdata());
-    if (protocol_id.is_set || is_set(protocol_id.operation)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
+    if (protocol_id.is_set || is_set(protocol_id.yfilter)) leaf_name_data.push_back(protocol_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1960,16 +2553,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::get
     return children;
 }
 
-void Rcmd::Process::Ldp::Process_::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Ldp::Process_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "process-name")
     {
         process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-id")
     {
         protocol_id = value;
+        protocol_id.value_namespace = name_space;
+        protocol_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Ldp::Process_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "process-name")
+    {
+        process_name.yfilter = yfilter;
+    }
+    if(value_path == "protocol-id")
+    {
+        protocol_id.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Ldp::Process_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance-name" || name == "process-name" || name == "protocol-id")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Ldp::Process_::InstanceName::InstanceName()
@@ -2018,17 +2634,17 @@ bool Rcmd::Process::Ldp::Process_::InstanceName::has_operation() const
         if(instance[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(arch_lsp_regeneration.operation)
-	|| is_set(arch_spf_event.operation)
-	|| is_set(last_update_time.operation)
-	|| is_set(lsp_regeneration_count.operation)
-	|| is_set(lsp_regeneration_serial.operation)
-	|| is_set(name.operation)
-	|| is_set(no_route_change_spf_nos.operation)
-	|| is_set(not_interested_spf_nos.operation)
-	|| is_set(route_change_spf_nos.operation)
-	|| is_set(total_spf_nos.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(arch_lsp_regeneration.yfilter)
+	|| ydk::is_set(arch_spf_event.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(lsp_regeneration_count.yfilter)
+	|| ydk::is_set(lsp_regeneration_serial.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter);
 }
 
 std::string Rcmd::Process::Ldp::Process_::InstanceName::get_segment_path() const
@@ -2054,16 +2670,16 @@ const EntityPath Rcmd::Process::Ldp::Process_::InstanceName::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.operation)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
-    if (arch_spf_event.is_set || is_set(arch_spf_event.operation)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
-    if (last_update_time.is_set || is_set(last_update_time.operation)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.operation)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
-    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.operation)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.operation)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
-    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.operation)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.operation)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
-    if (total_spf_nos.is_set || is_set(total_spf_nos.operation)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (arch_lsp_regeneration.is_set || is_set(arch_lsp_regeneration.yfilter)) leaf_name_data.push_back(arch_lsp_regeneration.get_name_leafdata());
+    if (arch_spf_event.is_set || is_set(arch_spf_event.yfilter)) leaf_name_data.push_back(arch_spf_event.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (lsp_regeneration_count.is_set || is_set(lsp_regeneration_count.yfilter)) leaf_name_data.push_back(lsp_regeneration_count.get_name_leafdata());
+    if (lsp_regeneration_serial.is_set || is_set(lsp_regeneration_serial.yfilter)) leaf_name_data.push_back(lsp_regeneration_serial.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2103,48 +2719,119 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::Ins
     return children;
 }
 
-void Rcmd::Process::Ldp::Process_::InstanceName::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Ldp::Process_::InstanceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "arch-lsp-regeneration")
     {
         arch_lsp_regeneration = value;
+        arch_lsp_regeneration.value_namespace = name_space;
+        arch_lsp_regeneration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arch-spf-event")
     {
         arch_spf_event = value;
+        arch_spf_event.value_namespace = name_space;
+        arch_spf_event.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
+        last_update_time.value_namespace = name_space;
+        last_update_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-regeneration-count")
     {
         lsp_regeneration_count = value;
+        lsp_regeneration_count.value_namespace = name_space;
+        lsp_regeneration_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsp-regeneration-serial")
     {
         lsp_regeneration_serial = value;
+        lsp_regeneration_serial.value_namespace = name_space;
+        lsp_regeneration_serial.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-route-change-spf-nos")
     {
         no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "not-interested-spf-nos")
     {
         not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-change-spf-nos")
     {
         route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spf-nos")
     {
         total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Ldp::Process_::InstanceName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "arch-lsp-regeneration")
+    {
+        arch_lsp_regeneration.yfilter = yfilter;
+    }
+    if(value_path == "arch-spf-event")
+    {
+        arch_spf_event.yfilter = yfilter;
+    }
+    if(value_path == "last-update-time")
+    {
+        last_update_time.yfilter = yfilter;
+    }
+    if(value_path == "lsp-regeneration-count")
+    {
+        lsp_regeneration_count.yfilter = yfilter;
+    }
+    if(value_path == "lsp-regeneration-serial")
+    {
+        lsp_regeneration_serial.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Ldp::Process_::InstanceName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance" || name == "arch-lsp-regeneration" || name == "arch-spf-event" || name == "last-update-time" || name == "lsp-regeneration-count" || name == "lsp-regeneration-serial" || name == "name" || name == "no-route-change-spf-nos" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "total-spf-nos")
+        return true;
+    return false;
 }
 
 Rcmd::Process::Ldp::Process_::InstanceName::Instance::Instance()
@@ -2189,20 +2876,20 @@ bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_data() const
 
 bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(arch_spf_run.operation)
-	|| is_set(fwd_referenced.operation)
-	|| is_set(instance_deleted.operation)
-	|| is_set(instance_id.operation)
-	|| is_set(instance_state.operation)
-	|| is_set(last_update_time.operation)
-	|| is_set(no_route_change_spf_nos.operation)
-	|| is_set(node_id.operation)
-	|| is_set(not_interested_spf_nos.operation)
-	|| is_set(route_change_spf_nos.operation)
-	|| is_set(spf_offset.operation)
-	|| is_set(total_spf_nos.operation)
-	|| is_set(total_spt_nos.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(arch_spf_run.yfilter)
+	|| ydk::is_set(fwd_referenced.yfilter)
+	|| ydk::is_set(instance_deleted.yfilter)
+	|| ydk::is_set(instance_id.yfilter)
+	|| ydk::is_set(instance_state.yfilter)
+	|| ydk::is_set(last_update_time.yfilter)
+	|| ydk::is_set(no_route_change_spf_nos.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(not_interested_spf_nos.yfilter)
+	|| ydk::is_set(route_change_spf_nos.yfilter)
+	|| ydk::is_set(spf_offset.yfilter)
+	|| ydk::is_set(total_spf_nos.yfilter)
+	|| ydk::is_set(total_spt_nos.yfilter);
 }
 
 std::string Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_segment_path() const
@@ -2228,19 +2915,19 @@ const EntityPath Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arch_spf_run.is_set || is_set(arch_spf_run.operation)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
-    if (fwd_referenced.is_set || is_set(fwd_referenced.operation)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
-    if (instance_deleted.is_set || is_set(instance_deleted.operation)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
-    if (instance_id.is_set || is_set(instance_id.operation)) leaf_name_data.push_back(instance_id.get_name_leafdata());
-    if (instance_state.is_set || is_set(instance_state.operation)) leaf_name_data.push_back(instance_state.get_name_leafdata());
-    if (last_update_time.is_set || is_set(last_update_time.operation)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
-    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.operation)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.operation)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
-    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.operation)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
-    if (spf_offset.is_set || is_set(spf_offset.operation)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
-    if (total_spf_nos.is_set || is_set(total_spf_nos.operation)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
-    if (total_spt_nos.is_set || is_set(total_spt_nos.operation)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
+    if (arch_spf_run.is_set || is_set(arch_spf_run.yfilter)) leaf_name_data.push_back(arch_spf_run.get_name_leafdata());
+    if (fwd_referenced.is_set || is_set(fwd_referenced.yfilter)) leaf_name_data.push_back(fwd_referenced.get_name_leafdata());
+    if (instance_deleted.is_set || is_set(instance_deleted.yfilter)) leaf_name_data.push_back(instance_deleted.get_name_leafdata());
+    if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
+    if (instance_state.is_set || is_set(instance_state.yfilter)) leaf_name_data.push_back(instance_state.get_name_leafdata());
+    if (last_update_time.is_set || is_set(last_update_time.yfilter)) leaf_name_data.push_back(last_update_time.get_name_leafdata());
+    if (no_route_change_spf_nos.is_set || is_set(no_route_change_spf_nos.yfilter)) leaf_name_data.push_back(no_route_change_spf_nos.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (not_interested_spf_nos.is_set || is_set(not_interested_spf_nos.yfilter)) leaf_name_data.push_back(not_interested_spf_nos.get_name_leafdata());
+    if (route_change_spf_nos.is_set || is_set(route_change_spf_nos.yfilter)) leaf_name_data.push_back(route_change_spf_nos.get_name_leafdata());
+    if (spf_offset.is_set || is_set(spf_offset.yfilter)) leaf_name_data.push_back(spf_offset.get_name_leafdata());
+    if (total_spf_nos.is_set || is_set(total_spf_nos.yfilter)) leaf_name_data.push_back(total_spf_nos.get_name_leafdata());
+    if (total_spt_nos.is_set || is_set(total_spt_nos.yfilter)) leaf_name_data.push_back(total_spt_nos.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2259,60 +2946,149 @@ std::map<std::string, std::shared_ptr<Entity>> Rcmd::Process::Ldp::Process_::Ins
     return children;
 }
 
-void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_value(const std::string & value_path, std::string value)
+void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "arch-spf-run")
     {
         arch_spf_run = value;
+        arch_spf_run.value_namespace = name_space;
+        arch_spf_run.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fwd-referenced")
     {
         fwd_referenced = value;
+        fwd_referenced.value_namespace = name_space;
+        fwd_referenced.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-deleted")
     {
         instance_deleted = value;
+        instance_deleted.value_namespace = name_space;
+        instance_deleted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-id")
     {
         instance_id = value;
+        instance_id.value_namespace = name_space;
+        instance_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance-state")
     {
         instance_state = value;
+        instance_state.value_namespace = name_space;
+        instance_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-update-time")
     {
         last_update_time = value;
+        last_update_time.value_namespace = name_space;
+        last_update_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-route-change-spf-nos")
     {
         no_route_change_spf_nos = value;
+        no_route_change_spf_nos.value_namespace = name_space;
+        no_route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "not-interested-spf-nos")
     {
         not_interested_spf_nos = value;
+        not_interested_spf_nos.value_namespace = name_space;
+        not_interested_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-change-spf-nos")
     {
         route_change_spf_nos = value;
+        route_change_spf_nos.value_namespace = name_space;
+        route_change_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spf-offset")
     {
         spf_offset = value;
+        spf_offset.value_namespace = name_space;
+        spf_offset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spf-nos")
     {
         total_spf_nos = value;
+        total_spf_nos.value_namespace = name_space;
+        total_spf_nos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-spt-nos")
     {
         total_spt_nos = value;
+        total_spt_nos.value_namespace = name_space;
+        total_spt_nos.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rcmd::Process::Ldp::Process_::InstanceName::Instance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "arch-spf-run")
+    {
+        arch_spf_run.yfilter = yfilter;
+    }
+    if(value_path == "fwd-referenced")
+    {
+        fwd_referenced.yfilter = yfilter;
+    }
+    if(value_path == "instance-deleted")
+    {
+        instance_deleted.yfilter = yfilter;
+    }
+    if(value_path == "instance-id")
+    {
+        instance_id.yfilter = yfilter;
+    }
+    if(value_path == "instance-state")
+    {
+        instance_state.yfilter = yfilter;
+    }
+    if(value_path == "last-update-time")
+    {
+        last_update_time.yfilter = yfilter;
+    }
+    if(value_path == "no-route-change-spf-nos")
+    {
+        no_route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "not-interested-spf-nos")
+    {
+        not_interested_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "route-change-spf-nos")
+    {
+        route_change_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "spf-offset")
+    {
+        spf_offset.yfilter = yfilter;
+    }
+    if(value_path == "total-spf-nos")
+    {
+        total_spf_nos.yfilter = yfilter;
+    }
+    if(value_path == "total-spt-nos")
+    {
+        total_spt_nos.yfilter = yfilter;
+    }
+}
+
+bool Rcmd::Process::Ldp::Process_::InstanceName::Instance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "arch-spf-run" || name == "fwd-referenced" || name == "instance-deleted" || name == "instance-id" || name == "instance-state" || name == "last-update-time" || name == "no-route-change-spf-nos" || name == "node-id" || name == "not-interested-spf-nos" || name == "route-change-spf-nos" || name == "spf-offset" || name == "total-spf-nos" || name == "total-spt-nos")
+        return true;
+    return false;
 }
 
 

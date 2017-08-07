@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_dnx_port_mapper_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_dnx_port_mapper_oper {
 
 Oor::Oor()
@@ -29,7 +31,7 @@ bool Oor::has_data() const
 
 bool Oor::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Oor::get_children() const
     return children;
 }
 
-void Oor::set_value(const std::string & value_path, std::string value)
+void Oor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Oor::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Oor::get_bundle_name() const
 augment_capabilities_function Oor::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Oor::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Oor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Oor::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool Oor::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Oor::Nodes::get_segment_path() const
@@ -200,29 +218,31 @@ std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::get_children() const
     return children;
 }
 
-void Oor::Nodes::set_value(const std::string & value_path, std::string value)
+void Oor::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Oor::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Oor::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Oor::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
     	,
-    bundle_interface_details(std::make_shared<Oor::Nodes::Node::BundleInterfaceDetails>())
-	,interface_details(std::make_shared<Oor::Nodes::Node::InterfaceDetails>())
-	,interface_npu_resources(std::make_shared<Oor::Nodes::Node::InterfaceNpuResources>())
-	,interface_summary_datas(std::make_shared<Oor::Nodes::Node::InterfaceSummaryDatas>())
-	,oor_summary(std::make_shared<Oor::Nodes::Node::OorSummary>())
+    interface_names(std::make_shared<Oor::Nodes::Node::InterfaceNames>())
+	,summary(std::make_shared<Oor::Nodes::Node::Summary>())
 {
-    bundle_interface_details->parent = this;
+    interface_names->parent = this;
 
-    interface_details->parent = this;
-
-    interface_npu_resources->parent = this;
-
-    interface_summary_datas->parent = this;
-
-    oor_summary->parent = this;
+    summary->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -234,22 +254,16 @@ Oor::Nodes::Node::~Node()
 bool Oor::Nodes::Node::has_data() const
 {
     return node_name.is_set
-	|| (bundle_interface_details !=  nullptr && bundle_interface_details->has_data())
-	|| (interface_details !=  nullptr && interface_details->has_data())
-	|| (interface_npu_resources !=  nullptr && interface_npu_resources->has_data())
-	|| (interface_summary_datas !=  nullptr && interface_summary_datas->has_data())
-	|| (oor_summary !=  nullptr && oor_summary->has_data());
+	|| (interface_names !=  nullptr && interface_names->has_data())
+	|| (summary !=  nullptr && summary->has_data());
 }
 
 bool Oor::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
-	|| (bundle_interface_details !=  nullptr && bundle_interface_details->has_operation())
-	|| (interface_details !=  nullptr && interface_details->has_operation())
-	|| (interface_npu_resources !=  nullptr && interface_npu_resources->has_operation())
-	|| (interface_summary_datas !=  nullptr && interface_summary_datas->has_operation())
-	|| (oor_summary !=  nullptr && oor_summary->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| (interface_names !=  nullptr && interface_names->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Oor::Nodes::Node::get_segment_path() const
@@ -275,7 +289,7 @@ const EntityPath Oor::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -285,49 +299,22 @@ const EntityPath Oor::Nodes::Node::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Oor::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bundle-interface-details")
+    if(child_yang_name == "interface-names")
     {
-        if(bundle_interface_details == nullptr)
+        if(interface_names == nullptr)
         {
-            bundle_interface_details = std::make_shared<Oor::Nodes::Node::BundleInterfaceDetails>();
+            interface_names = std::make_shared<Oor::Nodes::Node::InterfaceNames>();
         }
-        return bundle_interface_details;
+        return interface_names;
     }
 
-    if(child_yang_name == "interface-details")
+    if(child_yang_name == "summary")
     {
-        if(interface_details == nullptr)
+        if(summary == nullptr)
         {
-            interface_details = std::make_shared<Oor::Nodes::Node::InterfaceDetails>();
+            summary = std::make_shared<Oor::Nodes::Node::Summary>();
         }
-        return interface_details;
-    }
-
-    if(child_yang_name == "interface-npu-resources")
-    {
-        if(interface_npu_resources == nullptr)
-        {
-            interface_npu_resources = std::make_shared<Oor::Nodes::Node::InterfaceNpuResources>();
-        }
-        return interface_npu_resources;
-    }
-
-    if(child_yang_name == "interface-summary-datas")
-    {
-        if(interface_summary_datas == nullptr)
-        {
-            interface_summary_datas = std::make_shared<Oor::Nodes::Node::InterfaceSummaryDatas>();
-        }
-        return interface_summary_datas;
-    }
-
-    if(child_yang_name == "oor-summary")
-    {
-        if(oor_summary == nullptr)
-        {
-            oor_summary = std::make_shared<Oor::Nodes::Node::OorSummary>();
-        }
-        return oor_summary;
+        return summary;
     }
 
     return nullptr;
@@ -336,86 +323,205 @@ std::shared_ptr<Entity> Oor::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bundle_interface_details != nullptr)
+    if(interface_names != nullptr)
     {
-        children["bundle-interface-details"] = bundle_interface_details;
+        children["interface-names"] = interface_names;
     }
 
-    if(interface_details != nullptr)
+    if(summary != nullptr)
     {
-        children["interface-details"] = interface_details;
-    }
-
-    if(interface_npu_resources != nullptr)
-    {
-        children["interface-npu-resources"] = interface_npu_resources;
-    }
-
-    if(interface_summary_datas != nullptr)
-    {
-        children["interface-summary-datas"] = interface_summary_datas;
-    }
-
-    if(oor_summary != nullptr)
-    {
-        children["oor-summary"] = oor_summary;
+        children["summary"] = summary;
     }
 
     return children;
 }
 
-void Oor::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Oor::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResources()
+void Oor::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "interface-npu-resources"; yang_parent_name = "node";
-}
-
-Oor::Nodes::Node::InterfaceNpuResources::~InterfaceNpuResources()
-{
-}
-
-bool Oor::Nodes::Node::InterfaceNpuResources::has_data() const
-{
-    for (std::size_t index=0; index<interface_npu_resource.size(); index++)
+    if(value_path == "node-name")
     {
-        if(interface_npu_resource[index]->has_data())
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Oor::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-names" || name == "summary" || name == "node-name")
+        return true;
+    return false;
+}
+
+Oor::Nodes::Node::Summary::Summary()
+    :
+    green{YType::uint32, "green"},
+    red{YType::uint32, "red"},
+    yel_low{YType::uint32, "yel-low"}
+{
+    yang_name = "summary"; yang_parent_name = "node";
+}
+
+Oor::Nodes::Node::Summary::~Summary()
+{
+}
+
+bool Oor::Nodes::Node::Summary::has_data() const
+{
+    return green.is_set
+	|| red.is_set
+	|| yel_low.is_set;
+}
+
+bool Oor::Nodes::Node::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(green.yfilter)
+	|| ydk::is_set(red.yfilter)
+	|| ydk::is_set(yel_low.yfilter);
+}
+
+std::string Oor::Nodes::Node::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Oor::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Summary' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (green.is_set || is_set(green.yfilter)) leaf_name_data.push_back(green.get_name_leafdata());
+    if (red.is_set || is_set(red.yfilter)) leaf_name_data.push_back(red.get_name_leafdata());
+    if (yel_low.is_set || is_set(yel_low.yfilter)) leaf_name_data.push_back(yel_low.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Oor::Nodes::Node::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Oor::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "green")
+    {
+        green = value;
+        green.value_namespace = name_space;
+        green.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "red")
+    {
+        red = value;
+        red.value_namespace = name_space;
+        red.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "yel-low")
+    {
+        yel_low = value;
+        yel_low.value_namespace = name_space;
+        yel_low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Oor::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "green")
+    {
+        green.yfilter = yfilter;
+    }
+    if(value_path == "red")
+    {
+        red.yfilter = yfilter;
+    }
+    if(value_path == "yel-low")
+    {
+        yel_low.yfilter = yfilter;
+    }
+}
+
+bool Oor::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "green" || name == "red" || name == "yel-low")
+        return true;
+    return false;
+}
+
+Oor::Nodes::Node::InterfaceNames::InterfaceNames()
+{
+    yang_name = "interface-names"; yang_parent_name = "node";
+}
+
+Oor::Nodes::Node::InterfaceNames::~InterfaceNames()
+{
+}
+
+bool Oor::Nodes::Node::InterfaceNames::has_data() const
+{
+    for (std::size_t index=0; index<interface_name.size(); index++)
+    {
+        if(interface_name[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Oor::Nodes::Node::InterfaceNpuResources::has_operation() const
+bool Oor::Nodes::Node::InterfaceNames::has_operation() const
 {
-    for (std::size_t index=0; index<interface_npu_resource.size(); index++)
+    for (std::size_t index=0; index<interface_name.size(); index++)
     {
-        if(interface_npu_resource[index]->has_operation())
+        if(interface_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string Oor::Nodes::Node::InterfaceNpuResources::get_segment_path() const
+std::string Oor::Nodes::Node::InterfaceNames::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-npu-resources";
+    path_buffer << "interface-names";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Oor::Nodes::Node::InterfaceNpuResources::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceNames::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceNpuResources' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceNames' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -431,11 +537,11 @@ const EntityPath Oor::Nodes::Node::InterfaceNpuResources::get_entity_path(Entity
 
 }
 
-std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "interface-npu-resource")
+    if(child_yang_name == "interface-name")
     {
-        for(auto const & c : interface_npu_resource)
+        for(auto const & c : interface_name)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -443,19 +549,19 @@ std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::get_child_by_na
                 return c;
             }
         }
-        auto c = std::make_shared<Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource>();
+        auto c = std::make_shared<Oor::Nodes::Node::InterfaceNames::InterfaceName>();
         c->parent = this;
-        interface_npu_resource.push_back(c);
+        interface_name.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuResources::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface_npu_resource)
+    for (auto const & c : interface_name)
     {
         children[c->get_segment_path()] = c;
     }
@@ -463,564 +569,68 @@ std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuRes
     return children;
 }
 
-void Oor::Nodes::Node::InterfaceNpuResources::set_value(const std::string & value_path, std::string value)
+void Oor::Nodes::Node::InterfaceNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::InterfaceNpuResource()
-    :
-    interface_name{YType::str, "interface-name"},
-    interface_state{YType::str, "interface-state"},
-    max_entries{YType::uint32, "max-entries"},
-    name{YType::str, "name"},
-    number_of_members{YType::uint32, "number-of-members"},
-    red_threshold{YType::uint32, "red-threshold"},
-    red_threshold_percent{YType::uint32, "red-threshold-percent"},
-    time_stamp{YType::str, "time-stamp"},
-    yellow_threshold{YType::uint32, "yellow-threshold"},
-    yellow_threshold_percent{YType::uint32, "yellow-threshold-percent"}
-{
-    yang_name = "interface-npu-resource"; yang_parent_name = "interface-npu-resources";
-}
-
-Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::~InterfaceNpuResource()
+void Oor::Nodes::Node::InterfaceNames::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::has_data() const
+bool Oor::Nodes::Node::InterfaceNames::has_leaf_or_child_of_name(const std::string & name) const
 {
-    for (std::size_t index=0; index<member.size(); index++)
-    {
-        if(member[index]->has_data())
-            return true;
-    }
-    return interface_name.is_set
-	|| interface_state.is_set
-	|| max_entries.is_set
-	|| name.is_set
-	|| number_of_members.is_set
-	|| red_threshold.is_set
-	|| red_threshold_percent.is_set
-	|| time_stamp.is_set
-	|| yellow_threshold.is_set
-	|| yellow_threshold_percent.is_set;
-}
-
-bool Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::has_operation() const
-{
-    for (std::size_t index=0; index<member.size(); index++)
-    {
-        if(member[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_state.operation)
-	|| is_set(max_entries.operation)
-	|| is_set(name.operation)
-	|| is_set(number_of_members.operation)
-	|| is_set(red_threshold.operation)
-	|| is_set(red_threshold_percent.operation)
-	|| is_set(time_stamp.operation)
-	|| is_set(yellow_threshold.operation)
-	|| is_set(yellow_threshold_percent.operation);
-}
-
-std::string Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-npu-resource" <<"[interface-name='" <<interface_name <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceNpuResource' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_state.is_set || is_set(interface_state.operation)) leaf_name_data.push_back(interface_state.get_name_leafdata());
-    if (max_entries.is_set || is_set(max_entries.operation)) leaf_name_data.push_back(max_entries.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (number_of_members.is_set || is_set(number_of_members.operation)) leaf_name_data.push_back(number_of_members.get_name_leafdata());
-    if (red_threshold.is_set || is_set(red_threshold.operation)) leaf_name_data.push_back(red_threshold.get_name_leafdata());
-    if (red_threshold_percent.is_set || is_set(red_threshold_percent.operation)) leaf_name_data.push_back(red_threshold_percent.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
-    if (yellow_threshold.is_set || is_set(yellow_threshold.operation)) leaf_name_data.push_back(yellow_threshold.get_name_leafdata());
-    if (yellow_threshold_percent.is_set || is_set(yellow_threshold_percent.operation)) leaf_name_data.push_back(yellow_threshold_percent.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "member")
-    {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member>();
-        c->parent = this;
-        member.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : member)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-    }
-    if(value_path == "interface-state")
-    {
-        interface_state = value;
-    }
-    if(value_path == "max-entries")
-    {
-        max_entries = value;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-    }
-    if(value_path == "number-of-members")
-    {
-        number_of_members = value;
-    }
-    if(value_path == "red-threshold")
-    {
-        red_threshold = value;
-    }
-    if(value_path == "red-threshold-percent")
-    {
-        red_threshold_percent = value;
-    }
-    if(value_path == "time-stamp")
-    {
-        time_stamp = value;
-    }
-    if(value_path == "yellow-threshold")
-    {
-        yellow_threshold = value;
-    }
-    if(value_path == "yellow-threshold-percent")
-    {
-        yellow_threshold_percent = value;
-    }
-}
-
-Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::Member()
-    :
-    interface_name{YType::str, "interface-name"},
-    location{YType::str, "location"},
-    npu_id{YType::uint32, "npu-id"},
-    number_of_dpa_tables{YType::uint32, "number-of-dpa-tables"},
-    total_in_use{YType::uint32, "total-in-use"},
-    total_in_use_percent{YType::uint32, "total-in-use-percent"}
-{
-    yang_name = "member"; yang_parent_name = "interface-npu-resource";
-}
-
-Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::~Member()
-{
-}
-
-bool Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::has_data() const
-{
-    for (std::size_t index=0; index<dpa_table.size(); index++)
-    {
-        if(dpa_table[index]->has_data())
-            return true;
-    }
-    return interface_name.is_set
-	|| location.is_set
-	|| npu_id.is_set
-	|| number_of_dpa_tables.is_set
-	|| total_in_use.is_set
-	|| total_in_use_percent.is_set;
-}
-
-bool Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::has_operation() const
-{
-    for (std::size_t index=0; index<dpa_table.size(); index++)
-    {
-        if(dpa_table[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(location.operation)
-	|| is_set(npu_id.operation)
-	|| is_set(number_of_dpa_tables.operation)
-	|| is_set(total_in_use.operation)
-	|| is_set(total_in_use_percent.operation);
-}
-
-std::string Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "member";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Member' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
-    if (number_of_dpa_tables.is_set || is_set(number_of_dpa_tables.operation)) leaf_name_data.push_back(number_of_dpa_tables.get_name_leafdata());
-    if (total_in_use.is_set || is_set(total_in_use.operation)) leaf_name_data.push_back(total_in_use.get_name_leafdata());
-    if (total_in_use_percent.is_set || is_set(total_in_use_percent.operation)) leaf_name_data.push_back(total_in_use_percent.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dpa-table")
-    {
-        for(auto const & c : dpa_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable>();
-        c->parent = this;
-        dpa_table.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dpa_table)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-    }
-    if(value_path == "location")
-    {
-        location = value;
-    }
-    if(value_path == "npu-id")
-    {
-        npu_id = value;
-    }
-    if(value_path == "number-of-dpa-tables")
-    {
-        number_of_dpa_tables = value;
-    }
-    if(value_path == "total-in-use")
-    {
-        total_in_use = value;
-    }
-    if(value_path == "total-in-use-percent")
-    {
-        total_in_use_percent = value;
-    }
-}
-
-Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::DpaTable()
-    :
-    in_use{YType::uint32, "in-use"},
-    in_use_percent{YType::uint32, "in-use-percent"},
-    name{YType::str, "name"}
-{
-    yang_name = "dpa-table"; yang_parent_name = "member";
-}
-
-Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::~DpaTable()
-{
-}
-
-bool Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::has_data() const
-{
-    return in_use.is_set
-	|| in_use_percent.is_set
-	|| name.is_set;
-}
-
-bool Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(in_use.operation)
-	|| is_set(in_use_percent.operation)
-	|| is_set(name.operation);
-}
-
-std::string Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dpa-table";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'DpaTable' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (in_use.is_set || is_set(in_use.operation)) leaf_name_data.push_back(in_use.get_name_leafdata());
-    if (in_use_percent.is_set || is_set(in_use_percent.operation)) leaf_name_data.push_back(in_use_percent.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "in-use")
-    {
-        in_use = value;
-    }
-    if(value_path == "in-use-percent")
-    {
-        in_use_percent = value;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-    }
-}
-
-Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetails()
-{
-    yang_name = "bundle-interface-details"; yang_parent_name = "node";
-}
-
-Oor::Nodes::Node::BundleInterfaceDetails::~BundleInterfaceDetails()
-{
-}
-
-bool Oor::Nodes::Node::BundleInterfaceDetails::has_data() const
-{
-    for (std::size_t index=0; index<bundle_interface_detail.size(); index++)
-    {
-        if(bundle_interface_detail[index]->has_data())
-            return true;
-    }
+    if(name == "interface-name")
+        return true;
     return false;
 }
 
-bool Oor::Nodes::Node::BundleInterfaceDetails::has_operation() const
-{
-    for (std::size_t index=0; index<bundle_interface_detail.size(); index++)
-    {
-        if(bundle_interface_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Oor::Nodes::Node::BundleInterfaceDetails::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bundle-interface-details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleInterfaceDetails' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bundle-interface-detail")
-    {
-        for(auto const & c : bundle_interface_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail>();
-        c->parent = this;
-        bundle_interface_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::BundleInterfaceDetails::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bundle_interface_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Oor::Nodes::Node::BundleInterfaceDetails::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::BundleInterfaceDetail()
+Oor::Nodes::Node::InterfaceNames::InterfaceName::InterfaceName()
     :
-    interface{YType::int32, "interface"},
-    interface_state{YType::str, "interface-state"},
-    time_stamp{YType::str, "time-stamp"}
+    interface_name{YType::str, "interface-name"}
 {
-    yang_name = "bundle-interface-detail"; yang_parent_name = "bundle-interface-details";
+    yang_name = "interface-name"; yang_parent_name = "interface-names";
 }
 
-Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::~BundleInterfaceDetail()
+Oor::Nodes::Node::InterfaceNames::InterfaceName::~InterfaceName()
 {
 }
 
-bool Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::has_data() const
+bool Oor::Nodes::Node::InterfaceNames::InterfaceName::has_data() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<interface.size(); index++)
     {
-        if(member[index]->has_data())
+        if(interface[index]->has_data())
             return true;
     }
-    return interface.is_set
-	|| interface_state.is_set
-	|| time_stamp.is_set;
+    return interface_name.is_set;
 }
 
-bool Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::has_operation() const
+bool Oor::Nodes::Node::InterfaceNames::InterfaceName::has_operation() const
 {
-    for (std::size_t index=0; index<member.size(); index++)
+    for (std::size_t index=0; index<interface.size(); index++)
     {
-        if(member[index]->has_operation())
+        if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(interface_state.operation)
-	|| is_set(time_stamp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
-std::string Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_segment_path() const
+std::string Oor::Nodes::Node::InterfaceNames::InterfaceName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle-interface-detail" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface-name" <<"[interface-name='" <<interface_name <<"']";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceNames::InterfaceName::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'BundleInterfaceDetail' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceName' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1029,9 +639,7 @@ const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (interface_state.is_set || is_set(interface_state.operation)) leaf_name_data.push_back(interface_state.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1039,11 +647,11 @@ const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail
 
 }
 
-std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNames::InterfaceName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "member")
+    if(child_yang_name == "interface")
     {
-        for(auto const & c : member)
+        for(auto const & c : interface)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1051,19 +659,19 @@ std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfac
                 return c;
             }
         }
-        auto c = std::make_shared<Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member>();
+        auto c = std::make_shared<Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface>();
         c->parent = this;
-        member.push_back(c);
+        interface.push_back(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNames::InterfaceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : member)
+    for (auto const & c : interface)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1071,23 +679,32 @@ std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::BundleInterface
     return children;
 }
 
-void Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::set_value(const std::string & value_path, std::string value)
+void Oor::Nodes::Node::InterfaceNames::InterfaceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "interface")
+    if(value_path == "interface-name")
     {
-        interface = value;
-    }
-    if(value_path == "interface-state")
-    {
-        interface_state = value;
-    }
-    if(value_path == "time-stamp")
-    {
-        time_stamp = value;
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::Member()
+void Oor::Nodes::Node::InterfaceNames::InterfaceName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Oor::Nodes::Node::InterfaceNames::InterfaceName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-name")
+        return true;
+    return false;
+}
+
+Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::Interface()
     :
     hardware_resource{YType::str, "hardware-resource"},
     interface_name{YType::str, "interface-name"},
@@ -1095,14 +712,14 @@ Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::Member(
     npu_id{YType::str, "npu-id"},
     time_stamp{YType::str, "time-stamp"}
 {
-    yang_name = "member"; yang_parent_name = "bundle-interface-detail";
+    yang_name = "interface"; yang_parent_name = "interface-name";
 }
 
-Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::~Member()
+Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::~Interface()
 {
 }
 
-bool Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::has_data() const
+bool Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::has_data() const
 {
     return hardware_resource.is_set
 	|| interface_name.is_set
@@ -1111,31 +728,31 @@ bool Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::ha
 	|| time_stamp.is_set;
 }
 
-bool Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::has_operation() const
+bool Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hardware_resource.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_status.operation)
-	|| is_set(npu_id.operation)
-	|| is_set(time_stamp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hardware_resource.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_status.yfilter)
+	|| ydk::is_set(npu_id.yfilter)
+	|| ydk::is_set(time_stamp.yfilter);
 }
 
-std::string Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_segment_path() const
+std::string Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "member";
+    path_buffer << "interface";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_entity_path(Entity* ancestor) const
+const EntityPath Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Member' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
+        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1144,11 +761,11 @@ const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hardware_resource.is_set || is_set(hardware_resource.operation)) leaf_name_data.push_back(hardware_resource.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_status.is_set || is_set(interface_status.operation)) leaf_name_data.push_back(interface_status.get_name_leafdata());
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (hardware_resource.is_set || is_set(hardware_resource.yfilter)) leaf_name_data.push_back(hardware_resource.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_status.is_set || is_set(interface_status.yfilter)) leaf_name_data.push_back(interface_status.get_name_leafdata());
+    if (npu_id.is_set || is_set(npu_id.yfilter)) leaf_name_data.push_back(npu_id.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1156,525 +773,80 @@ const EntityPath Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail
 
 }
 
-std::shared_ptr<Entity> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member::set_value(const std::string & value_path, std::string value)
+void Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hardware-resource")
     {
         hardware_resource = value;
+        hardware_resource.value_namespace = name_space;
+        hardware_resource.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-status")
     {
         interface_status = value;
+        interface_status.value_namespace = name_space;
+        interface_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "npu-id")
     {
         npu_id = value;
+        npu_id.value_namespace = name_space;
+        npu_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Oor::Nodes::Node::InterfaceDetails::InterfaceDetails()
+void Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "interface-details"; yang_parent_name = "node";
-}
-
-Oor::Nodes::Node::InterfaceDetails::~InterfaceDetails()
-{
-}
-
-bool Oor::Nodes::Node::InterfaceDetails::has_data() const
-{
-    for (std::size_t index=0; index<interface_detail.size(); index++)
-    {
-        if(interface_detail[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Oor::Nodes::Node::InterfaceDetails::has_operation() const
-{
-    for (std::size_t index=0; index<interface_detail.size(); index++)
-    {
-        if(interface_detail[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Oor::Nodes::Node::InterfaceDetails::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-details";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::InterfaceDetails::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceDetails' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-detail")
-    {
-        for(auto const & c : interface_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Oor::Nodes::Node::InterfaceDetails::InterfaceDetail>();
-        c->parent = this;
-        interface_detail.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceDetails::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface_detail)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Oor::Nodes::Node::InterfaceDetails::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::InterfaceDetail()
-    :
-    interface{YType::int32, "interface"},
-    hardware_resource{YType::str, "hardware-resource"},
-    interface_name{YType::str, "interface-name"},
-    interface_status{YType::str, "interface-status"},
-    npu_id{YType::str, "npu-id"},
-    time_stamp{YType::str, "time-stamp"}
-{
-    yang_name = "interface-detail"; yang_parent_name = "interface-details";
-}
-
-Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::~InterfaceDetail()
-{
-}
-
-bool Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::has_data() const
-{
-    return interface.is_set
-	|| hardware_resource.is_set
-	|| interface_name.is_set
-	|| interface_status.is_set
-	|| npu_id.is_set
-	|| time_stamp.is_set;
-}
-
-bool Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(hardware_resource.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_status.operation)
-	|| is_set(npu_id.operation)
-	|| is_set(time_stamp.operation);
-}
-
-std::string Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-detail" <<"[interface='" <<interface <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceDetail' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (hardware_resource.is_set || is_set(hardware_resource.operation)) leaf_name_data.push_back(hardware_resource.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_status.is_set || is_set(interface_status.operation)) leaf_name_data.push_back(interface_status.get_name_leafdata());
-    if (npu_id.is_set || is_set(npu_id.operation)) leaf_name_data.push_back(npu_id.get_name_leafdata());
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Oor::Nodes::Node::InterfaceDetails::InterfaceDetail::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-    }
     if(value_path == "hardware-resource")
     {
-        hardware_resource = value;
+        hardware_resource.yfilter = yfilter;
     }
     if(value_path == "interface-name")
     {
-        interface_name = value;
+        interface_name.yfilter = yfilter;
     }
     if(value_path == "interface-status")
     {
-        interface_status = value;
+        interface_status.yfilter = yfilter;
     }
     if(value_path == "npu-id")
     {
-        npu_id = value;
+        npu_id.yfilter = yfilter;
     }
     if(value_path == "time-stamp")
     {
-        time_stamp = value;
+        time_stamp.yfilter = yfilter;
     }
 }
 
-Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryDatas()
+bool Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    yang_name = "interface-summary-datas"; yang_parent_name = "node";
-}
-
-Oor::Nodes::Node::InterfaceSummaryDatas::~InterfaceSummaryDatas()
-{
-}
-
-bool Oor::Nodes::Node::InterfaceSummaryDatas::has_data() const
-{
-    for (std::size_t index=0; index<interface_summary_data.size(); index++)
-    {
-        if(interface_summary_data[index]->has_data())
-            return true;
-    }
+    if(name == "hardware-resource" || name == "interface-name" || name == "interface-status" || name == "npu-id" || name == "time-stamp")
+        return true;
     return false;
-}
-
-bool Oor::Nodes::Node::InterfaceSummaryDatas::has_operation() const
-{
-    for (std::size_t index=0; index<interface_summary_data.size(); index++)
-    {
-        if(interface_summary_data[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string Oor::Nodes::Node::InterfaceSummaryDatas::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-summary-datas";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceSummaryDatas' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceSummaryDatas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface-summary-data")
-    {
-        for(auto const & c : interface_summary_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData>();
-        c->parent = this;
-        interface_summary_data.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceSummaryDatas::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : interface_summary_data)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void Oor::Nodes::Node::InterfaceSummaryDatas::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::InterfaceSummaryData()
-    :
-    interface{YType::int32, "interface"},
-    hardware_resource{YType::str, "hardware-resource"},
-    interface_name{YType::str, "interface-name"},
-    interface_status{YType::str, "interface-status"}
-{
-    yang_name = "interface-summary-data"; yang_parent_name = "interface-summary-datas";
-}
-
-Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::~InterfaceSummaryData()
-{
-}
-
-bool Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::has_data() const
-{
-    return interface.is_set
-	|| hardware_resource.is_set
-	|| interface_name.is_set
-	|| interface_status.is_set;
-}
-
-bool Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(hardware_resource.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_status.operation);
-}
-
-std::string Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "interface-summary-data" <<"[interface='" <<interface <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'InterfaceSummaryData' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (hardware_resource.is_set || is_set(hardware_resource.operation)) leaf_name_data.push_back(hardware_resource.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_status.is_set || is_set(interface_status.operation)) leaf_name_data.push_back(interface_status.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-    }
-    if(value_path == "hardware-resource")
-    {
-        hardware_resource = value;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-    }
-    if(value_path == "interface-status")
-    {
-        interface_status = value;
-    }
-}
-
-Oor::Nodes::Node::OorSummary::OorSummary()
-    :
-    green{YType::uint32, "green"},
-    red{YType::uint32, "red"},
-    yel_low{YType::uint32, "yel-low"}
-{
-    yang_name = "oor-summary"; yang_parent_name = "node";
-}
-
-Oor::Nodes::Node::OorSummary::~OorSummary()
-{
-}
-
-bool Oor::Nodes::Node::OorSummary::has_data() const
-{
-    return green.is_set
-	|| red.is_set
-	|| yel_low.is_set;
-}
-
-bool Oor::Nodes::Node::OorSummary::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(green.operation)
-	|| is_set(red.operation)
-	|| is_set(yel_low.operation);
-}
-
-std::string Oor::Nodes::Node::OorSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "oor-summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Oor::Nodes::Node::OorSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'OorSummary' in Cisco_IOS_XR_dnx_port_mapper_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (green.is_set || is_set(green.operation)) leaf_name_data.push_back(green.get_name_leafdata());
-    if (red.is_set || is_set(red.operation)) leaf_name_data.push_back(red.get_name_leafdata());
-    if (yel_low.is_set || is_set(yel_low.operation)) leaf_name_data.push_back(yel_low.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Oor::Nodes::Node::OorSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Oor::Nodes::Node::OorSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Oor::Nodes::Node::OorSummary::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "green")
-    {
-        green = value;
-    }
-    if(value_path == "red")
-    {
-        red = value;
-    }
-    if(value_path == "yel-low")
-    {
-        yel_low = value;
-    }
 }
 
 

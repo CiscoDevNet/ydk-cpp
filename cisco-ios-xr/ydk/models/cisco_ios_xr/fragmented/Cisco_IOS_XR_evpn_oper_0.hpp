@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_evpn_oper {
 
-class Evpn : public Entity
+class Evpn : public ydk::Entity
 {
     public:
         Evpn();
@@ -18,15 +18,18 @@ class Evpn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: Evpn::Nodes
         class Active; //type: Evpn::Active
@@ -39,7 +42,7 @@ class Evpn : public Entity
 }; // Evpn
 
 
-class Evpn::Nodes : public Entity
+class Evpn::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -47,11 +50,13 @@ class Evpn::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: Evpn::Nodes::Node
 
@@ -60,7 +65,7 @@ class Evpn::Nodes : public Entity
 }; // Evpn::Nodes
 
 
-class Evpn::Nodes::Node : public Entity
+class Evpn::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -68,13 +73,15 @@ class Evpn::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_id; //type: string
+        ydk::YLeaf node_id; //type: string
         class Evis; //type: Evpn::Nodes::Node::Evis
         class Summary; //type: Evpn::Nodes::Node::Summary
         class EviDetail; //type: Evpn::Nodes::Node::EviDetail
@@ -90,7 +97,7 @@ class Evpn::Nodes::Node : public Entity
 }; // Evpn::Nodes::Node
 
 
-class Evpn::Nodes::Node::Evis : public Entity
+class Evpn::Nodes::Node::Evis : public ydk::Entity
 {
     public:
         Evis();
@@ -98,11 +105,13 @@ class Evpn::Nodes::Node::Evis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Evi; //type: Evpn::Nodes::Node::Evis::Evi
 
@@ -111,7 +120,7 @@ class Evpn::Nodes::Node::Evis : public Entity
 }; // Evpn::Nodes::Node::Evis
 
 
-class Evpn::Nodes::Node::Evis::Evi : public Entity
+class Evpn::Nodes::Node::Evis::Evi : public ydk::Entity
 {
     public:
         Evi();
@@ -119,21 +128,23 @@ class Evpn::Nodes::Node::Evis::Evi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf evi_xr; //type: uint32
-        YLeaf bd_name; //type: string
-        YLeaf type; //type: EvpnEnum
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf type; //type: L2VpnEvpn
 
 }; // Evpn::Nodes::Node::Evis::Evi
 
 
-class Evpn::Nodes::Node::Summary : public Entity
+class Evpn::Nodes::Node::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -141,40 +152,42 @@ class Evpn::Nodes::Node::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf as; //type: uint32
-        YLeaf ev_is; //type: uint32
-        YLeaf local_mac_routes; //type: uint32
-        YLeaf local_ipv4_mac_routes; //type: uint32
-        YLeaf local_ipv6_mac_routes; //type: uint32
-        YLeaf es_global_mac_routes; //type: uint32
-        YLeaf remote_mac_routes; //type: uint32
-        YLeaf remote_soo_mac_routes; //type: uint32
-        YLeaf remote_ipv4_mac_routes; //type: uint32
-        YLeaf remote_ipv6_mac_routes; //type: uint32
-        YLeaf local_imcast_routes; //type: uint32
-        YLeaf remote_imcast_routes; //type: uint32
-        YLeaf labels; //type: uint32
-        YLeaf es_entries; //type: uint32
-        YLeaf neighbor_entries; //type: uint32
-        YLeaf local_ead_routes; //type: uint32
-        YLeaf remote_ead_routes; //type: uint32
-        YLeaf global_source_mac; //type: string
-        YLeaf peering_time; //type: uint32
-        YLeaf recovery_time; //type: uint32
-        YLeaf l2rib_throttle; //type: boolean
-        YLeaf logging_df_election_enabled; //type: boolean
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf ev_is; //type: uint32
+        ydk::YLeaf local_mac_routes; //type: uint32
+        ydk::YLeaf local_ipv4_mac_routes; //type: uint32
+        ydk::YLeaf local_ipv6_mac_routes; //type: uint32
+        ydk::YLeaf es_global_mac_routes; //type: uint32
+        ydk::YLeaf remote_mac_routes; //type: uint32
+        ydk::YLeaf remote_soo_mac_routes; //type: uint32
+        ydk::YLeaf remote_ipv4_mac_routes; //type: uint32
+        ydk::YLeaf remote_ipv6_mac_routes; //type: uint32
+        ydk::YLeaf local_imcast_routes; //type: uint32
+        ydk::YLeaf remote_imcast_routes; //type: uint32
+        ydk::YLeaf labels; //type: uint32
+        ydk::YLeaf es_entries; //type: uint32
+        ydk::YLeaf neighbor_entries; //type: uint32
+        ydk::YLeaf local_ead_routes; //type: uint32
+        ydk::YLeaf remote_ead_routes; //type: uint32
+        ydk::YLeaf global_source_mac; //type: string
+        ydk::YLeaf peering_time; //type: uint32
+        ydk::YLeaf recovery_time; //type: uint32
+        ydk::YLeaf l2rib_throttle; //type: boolean
+        ydk::YLeaf logging_df_election_enabled; //type: boolean
 
 }; // Evpn::Nodes::Node::Summary
 
 
-class Evpn::Nodes::Node::EviDetail : public Entity
+class Evpn::Nodes::Node::EviDetail : public ydk::Entity
 {
     public:
         EviDetail();
@@ -182,11 +195,13 @@ class Evpn::Nodes::Node::EviDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Elements; //type: Evpn::Nodes::Node::EviDetail::Elements
         class EviChildren; //type: Evpn::Nodes::Node::EviDetail::EviChildren
@@ -197,7 +212,7 @@ class Evpn::Nodes::Node::EviDetail : public Entity
 }; // Evpn::Nodes::Node::EviDetail
 
 
-class Evpn::Nodes::Node::EviDetail::Elements : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements : public ydk::Entity
 {
     public:
         Elements();
@@ -205,11 +220,13 @@ class Evpn::Nodes::Node::EviDetail::Elements : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Element; //type: Evpn::Nodes::Node::EviDetail::Elements::Element
 
@@ -218,7 +235,7 @@ class Evpn::Nodes::Node::EviDetail::Elements : public Entity
 }; // Evpn::Nodes::Node::EviDetail::Elements
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element : public ydk::Entity
 {
     public:
         Element();
@@ -226,29 +243,33 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf evi_xr; //type: uint32
-        YLeaf description; //type: string
-        YLeaf bd_name; //type: string
-        YLeaf type; //type: EvpnEnum
-        YLeaf unicast_label; //type: uint32
-        YLeaf multicast_label; //type: uint32
-        YLeaf cw_disable; //type: boolean
-        YLeaf table_policy_name; //type: string
-        YLeaf forward_class; //type: uint8
-        YLeaf rt_import_block_set; //type: boolean
-        YLeaf rt_export_block_set; //type: boolean
-        YLeaf advertise_mac; //type: boolean
-        YLeaf aliasing_disabled; //type: boolean
-        YLeaf unknown_unicast_flooding_disabled; //type: boolean
-        YLeaf reoriginate_disabled; //type: boolean
-        YLeaf stitching; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf type; //type: L2VpnEvpn
+        ydk::YLeaf unicast_label; //type: uint32
+        ydk::YLeaf multicast_label; //type: uint32
+        ydk::YLeaf cw_disable; //type: boolean
+        ydk::YLeaf table_policy_name; //type: string
+        ydk::YLeaf forward_class; //type: uint8
+        ydk::YLeaf rt_import_block_set; //type: boolean
+        ydk::YLeaf rt_export_block_set; //type: boolean
+        ydk::YLeaf advertise_mac; //type: boolean
+        ydk::YLeaf advertise_bvi_mac; //type: boolean
+        ydk::YLeaf aliasing_disabled; //type: boolean
+        ydk::YLeaf unknown_unicast_flooding_disabled; //type: boolean
+        ydk::YLeaf reoriginate_disabled; //type: boolean
+        ydk::YLeaf stitching; //type: uint8
+        ydk::YLeaf encapsulation; //type: uint8
         class FlowLabel; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto
         class RdConfigured; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured
@@ -264,7 +285,7 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element : public Entity
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel : public ydk::Entity
 {
     public:
         FlowLabel();
@@ -272,19 +293,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf static_flow_label; //type: boolean
-        YLeaf global_flow_label; //type: boolean
+        ydk::YLeaf static_flow_label; //type: boolean
+        ydk::YLeaf global_flow_label; //type: boolean
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto : public ydk::Entity
 {
     public:
         RdAuto();
@@ -292,13 +315,15 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rd; //type: L2VpnAdRdEnum
+        ydk::YLeaf rd; //type: L2VpnAdRd
         class Auto_; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_
         class TwoByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs
@@ -312,7 +337,7 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto : public Entity
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_ : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_ : public ydk::Entity
 {
     public:
         Auto_();
@@ -320,19 +345,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_ : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf auto_index; //type: uint16
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf auto_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -340,19 +367,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -360,19 +389,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -380,19 +411,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured : public ydk::Entity
 {
     public:
         RdConfigured();
@@ -400,13 +433,15 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rd; //type: L2VpnAdRdEnum
+        ydk::YLeaf rd; //type: L2VpnAdRd
         class Auto_; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_
         class TwoByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs
         class FourByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs
@@ -420,7 +455,7 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured : public Ent
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_ : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_ : public ydk::Entity
 {
     public:
         Auto_();
@@ -428,19 +463,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_ : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf auto_index; //type: uint16
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf auto_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -448,19 +485,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -468,19 +507,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -488,19 +529,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto : public ydk::Entity
 {
     public:
         RtAuto();
@@ -508,13 +551,15 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs
         class V4Addr; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr
@@ -528,7 +573,7 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto : public Entity
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -536,19 +581,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::TwoByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -556,19 +603,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::FourByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -576,19 +625,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::V4Addr
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -596,19 +647,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAuto::EsImport
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching : public ydk::Entity
 {
     public:
         RtAutoStitching();
@@ -616,13 +669,15 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs
         class FourByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs
         class V4Addr; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr
@@ -636,7 +691,7 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching : public 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -644,19 +699,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteA
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -664,19 +721,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByte
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::FourByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -684,19 +743,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::V4Addr
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport : public Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -704,19 +765,21 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RtAutoStitching::EsImport
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren : public ydk::Entity
 {
     public:
         EviChildren();
@@ -724,11 +787,13 @@ class Evpn::Nodes::Node::EviDetail::EviChildren : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbors; //type: Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors
         class EthernetAutoDiscoveries; //type: Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries
@@ -745,7 +810,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren : public Entity
 }; // Evpn::Nodes::Node::EviDetail::EviChildren
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors : public ydk::Entity
 {
     public:
         Neighbors();
@@ -753,11 +818,13 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbor; //type: Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor
 
@@ -766,7 +833,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors : public Entity
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -774,21 +841,23 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf neighbor_ip; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf neighbor; //type: string
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf neighbor_ip; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf neighbor; //type: string
 
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries : public ydk::Entity
 {
     public:
         EthernetAutoDiscoveries();
@@ -796,11 +865,13 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EthernetAutoDiscovery; //type: Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery
 
@@ -809,7 +880,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries : publi
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery : public ydk::Entity
 {
     public:
         EthernetAutoDiscovery();
@@ -817,28 +888,31 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::Ethern
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf esi1; //type: string
-        YLeaf esi2; //type: string
-        YLeaf esi3; //type: string
-        YLeaf esi4; //type: string
-        YLeaf esi5; //type: string
-        YLeaf ethernet_tag; //type: int32
-        YLeaf ethernet_vpnid; //type: uint32
-        YLeaf ethernet_tag_xr; //type: uint32
-        YLeaf local_next_hop; //type: string
-        YLeaf local_label; //type: uint32
-        YLeaf is_local_ead; //type: boolean
-        YLeaf encap; //type: uint8
-        YLeaf redundancy_single_active; //type: boolean
-        YLeaf num_paths; //type: uint32
-        YLeafList ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf esi1; //type: string
+        ydk::YLeaf esi2; //type: string
+        ydk::YLeaf esi3; //type: string
+        ydk::YLeaf esi4; //type: string
+        ydk::YLeaf esi5; //type: string
+        ydk::YLeaf ethernet_tag; //type: int32
+        ydk::YLeaf ethernet_vpnid; //type: uint32
+        ydk::YLeaf type; //type: L2VpnEvpn
+        ydk::YLeaf ethernet_tag_xr; //type: uint32
+        ydk::YLeaf local_next_hop; //type: string
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf is_local_ead; //type: boolean
+        ydk::YLeaf encap; //type: uint8
+        ydk::YLeaf redundancy_single_active; //type: boolean
+        ydk::YLeaf num_paths; //type: uint32
+        ydk::YLeafList ethernet_segment_identifier; //type: list of  uint8
         class PathBuffer; //type: Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer> > path_buffer;
@@ -846,7 +920,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::Ethern
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer : public ydk::Entity
 {
     public:
         PathBuffer();
@@ -854,19 +928,21 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::Ethern
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
-        YLeaf output_label; //type: uint32
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf output_label; //type: uint32
 
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts : public ydk::Entity
 {
     public:
         InclusiveMulticasts();
@@ -874,11 +950,13 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InclusiveMulticast; //type: Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast
 
@@ -887,7 +965,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts : public En
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast : public ydk::Entity
 {
     public:
         InclusiveMulticast();
@@ -895,26 +973,30 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveM
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf ethernet_tag; //type: int32
-        YLeaf originating_ip; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf ethernet_tag_xr; //type: uint32
-        YLeaf originating_ip_xr; //type: string
-        YLeaf next_hop; //type: string
-        YLeaf output_label; //type: uint32
-        YLeaf is_local_entry; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf ethernet_tag; //type: int32
+        ydk::YLeaf originating_ip; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf ethernet_tag_xr; //type: uint32
+        ydk::YLeaf originating_ip_xr; //type: string
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf output_label; //type: uint32
+        ydk::YLeaf is_local_entry; //type: boolean
+        ydk::YLeaf is_proxy_entry; //type: boolean
+        ydk::YLeaf encap_type; //type: uint8
 
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets : public ydk::Entity
 {
     public:
         RouteTargets();
@@ -922,11 +1004,13 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RouteTarget; //type: Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 
@@ -935,7 +1019,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets : public Entity
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget : public ydk::Entity
 {
     public:
         RouteTarget();
@@ -943,24 +1027,26 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf role; //type: BgpRouteTargetRoleEnum
-        YLeaf type; //type: BgpRouteTargetEnum
-        YLeaf format; //type: BgpRouteTargetFormatEnum
-        YLeaf as; //type: uint32
-        YLeaf as_index; //type: uint32
-        YLeaf addr_index; //type: uint32
-        YLeaf address; //type: string
-        YLeaf bd_name; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf route_target_role; //type: L2VpnAdRtRoleEnum
-        YLeaf route_target_stitching; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf role; //type: BgpRouteTargetRole
+        ydk::YLeaf type; //type: BgpRouteTarget
+        ydk::YLeaf format; //type: BgpRouteTargetFormat
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf as_index; //type: uint32
+        ydk::YLeaf addr_index; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf route_target_role; //type: L2VpnAdRtRole
+        ydk::YLeaf route_target_stitching; //type: boolean
         class RouteTarget_; //type: Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_
 
         std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_> route_target;
@@ -968,7 +1054,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget : pub
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_ : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_ : public ydk::Entity
 {
     public:
         RouteTarget_();
@@ -976,13 +1062,15 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs
         class FourByteAs; //type: Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs
         class V4Addr; //type: Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr
@@ -996,7 +1084,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -1004,19 +1092,21 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -1024,19 +1114,21 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -1044,19 +1136,21 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -1064,19 +1158,21 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::Macs : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::Macs : public ydk::Entity
 {
     public:
         Macs();
@@ -1084,11 +1180,13 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::Macs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Mac; //type: Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac
 
@@ -1097,7 +1195,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::Macs : public Entity
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::Macs
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac : public ydk::Entity
 {
     public:
         Mac();
@@ -1105,37 +1203,43 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf ethernet_tag; //type: int32
-        YLeaf mac_address; //type: string
-        YLeaf ip_address; //type: string
-        YLeaf ethernet_tag_xr; //type: uint32
-        YLeaf mac_address_xr; //type: string
-        YLeaf ip_address_xr; //type: string
-        YLeaf local_label; //type: uint32
-        YLeaf num_paths; //type: uint32
-        YLeaf is_local_mac; //type: boolean
-        YLeaf is_remote_mac; //type: boolean
-        YLeaf soo_nexthop; //type: string
-        YLeaf esi_port_key; //type: uint16
-        YLeaf local_encap_type; //type: uint8
-        YLeaf remote_encap_type; //type: uint8
-        YLeaf learned_bridge_port_name; //type: string
-        YLeaf local_seq_id; //type: uint32
-        YLeaf remote_seq_id; //type: uint32
-        YLeaf mac_flush_requested; //type: uint16
-        YLeaf mac_flush_received; //type: uint16
-        YLeaf internal_label; //type: uint32
-        YLeaf resolved; //type: boolean
-        YLeaf is_static; //type: boolean
-        YLeafList local_ethernet_segment_identifier; //type: list of  uint8
-        YLeafList remote_ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf ethernet_tag; //type: int32
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf ethernet_tag_xr; //type: uint32
+        ydk::YLeaf mac_address_xr; //type: string
+        ydk::YLeaf ip_address_xr; //type: string
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf num_paths; //type: uint32
+        ydk::YLeaf is_local_mac; //type: boolean
+        ydk::YLeaf is_proxy_entry; //type: boolean
+        ydk::YLeaf is_remote_mac; //type: boolean
+        ydk::YLeaf soo_nexthop; //type: string
+        ydk::YLeaf ipnh_address; //type: string
+        ydk::YLeaf esi_port_key; //type: uint16
+        ydk::YLeaf local_encap_type; //type: uint8
+        ydk::YLeaf remote_encap_type; //type: uint8
+        ydk::YLeaf learned_bridge_port_name; //type: string
+        ydk::YLeaf local_seq_id; //type: uint32
+        ydk::YLeaf remote_seq_id; //type: uint32
+        ydk::YLeaf local_l3_label; //type: uint32
+        ydk::YLeaf router_mac_address; //type: string
+        ydk::YLeaf mac_flush_requested; //type: uint16
+        ydk::YLeaf mac_flush_received; //type: uint16
+        ydk::YLeaf internal_label; //type: uint32
+        ydk::YLeaf resolved; //type: boolean
+        ydk::YLeaf is_static; //type: boolean
+        ydk::YLeafList local_ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeafList remote_ethernet_segment_identifier; //type: list of  uint8
         class PathBuffer; //type: Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer> > path_buffer;
@@ -1143,7 +1247,7 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac : public Entity
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac
 
 
-class Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer : public Entity
+class Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer : public ydk::Entity
 {
     public:
         PathBuffer();
@@ -1151,19 +1255,21 @@ class Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
-        YLeaf output_label; //type: uint32
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf output_label; //type: uint32
 
 }; // Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer
 
 
-class Evpn::Nodes::Node::EthernetSegments : public Entity
+class Evpn::Nodes::Node::EthernetSegments : public ydk::Entity
 {
     public:
         EthernetSegments();
@@ -1171,11 +1277,13 @@ class Evpn::Nodes::Node::EthernetSegments : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EthernetSegment; //type: Evpn::Nodes::Node::EthernetSegments::EthernetSegment
 
@@ -1184,7 +1292,7 @@ class Evpn::Nodes::Node::EthernetSegments : public Entity
 }; // Evpn::Nodes::Node::EthernetSegments
 
 
-class Evpn::Nodes::Node::EthernetSegments::EthernetSegment : public Entity
+class Evpn::Nodes::Node::EthernetSegments::EthernetSegment : public ydk::Entity
 {
     public:
         EthernetSegment();
@@ -1192,54 +1300,56 @@ class Evpn::Nodes::Node::EthernetSegments::EthernetSegment : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf esi1; //type: string
-        YLeaf esi2; //type: string
-        YLeaf esi3; //type: string
-        YLeaf esi4; //type: string
-        YLeaf esi5; //type: string
-        YLeaf esi_type; //type: L2VpnEvpnEsiEnum
-        YLeaf ethernet_segment_name; //type: string
-        YLeaf ethernet_segment_state; //type: uint32
-        YLeaf if_handle; //type: string
-        YLeaf main_port_role; //type: L2VpnRgStateEnum
-        YLeaf main_port_mac; //type: string
-        YLeaf num_up_p_ws; //type: uint32
-        YLeaf route_target; //type: string
-        YLeaf rt_origin; //type: L2VpnEvpnRtOriginEnum
-        YLeaf es_bgp_gates; //type: string
-        YLeaf es_l2fib_gates; //type: string
-        YLeaf mac_flushing_mode_config; //type: L2VpnEvpnMfModeEnum
-        YLeaf load_balance_mode_config; //type: L2VpnEvpnLbModeEnum
-        YLeaf load_balance_mode_is_default; //type: boolean
-        YLeaf load_balance_mode_oper; //type: L2VpnEvpnLbModeEnum
-        YLeaf force_single_home; //type: boolean
-        YLeaf source_mac_oper; //type: string
-        YLeaf source_mac_origin; //type: L2VpnEvpnSmacSrcEnum
-        YLeaf peering_timer; //type: uint32
-        YLeaf peering_timer_left; //type: uint32
-        YLeaf recovery_timer; //type: uint32
-        YLeaf recovery_timer_left; //type: uint32
-        YLeaf service_carving_mode; //type: L2VpnEvpnScModeEnum
-        YLeaf primary_services_input; //type: string
-        YLeaf secondary_services_input; //type: string
-        YLeaf forwarder_ports; //type: uint32
-        YLeaf mp_protected; //type: boolean
-        YLeaf service_carving_type; //type: L2VpnEvpnScEnum
-        YLeaf elected_d_fs; //type: uint32
-        YLeaf not_elected_d_fs; //type: uint32
-        YLeaf not_config_d_fs; //type: uint32
-        YLeaf local_split_horizon_group_label; //type: uint32
-        YLeafList ethernet_segment_identifier; //type: list of  uint8
-        YLeafList primary_service; //type: list of  uint32
-        YLeafList secondary_service; //type: list of  uint32
-        YLeafList service_carving_result; //type: list of  uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf esi1; //type: string
+        ydk::YLeaf esi2; //type: string
+        ydk::YLeaf esi3; //type: string
+        ydk::YLeaf esi4; //type: string
+        ydk::YLeaf esi5; //type: string
+        ydk::YLeaf esi_type; //type: L2VpnEvpnEsi
+        ydk::YLeaf ethernet_segment_name; //type: string
+        ydk::YLeaf ethernet_segment_state; //type: uint32
+        ydk::YLeaf if_handle; //type: string
+        ydk::YLeaf main_port_role; //type: L2VpnRgState
+        ydk::YLeaf main_port_mac; //type: string
+        ydk::YLeaf num_up_p_ws; //type: uint32
+        ydk::YLeaf route_target; //type: string
+        ydk::YLeaf rt_origin; //type: L2VpnEvpnRtOrigin
+        ydk::YLeaf es_bgp_gates; //type: string
+        ydk::YLeaf es_l2fib_gates; //type: string
+        ydk::YLeaf mac_flushing_mode_config; //type: L2VpnEvpnMfMode
+        ydk::YLeaf load_balance_mode_config; //type: L2VpnEvpnLbMode
+        ydk::YLeaf load_balance_mode_is_default; //type: boolean
+        ydk::YLeaf load_balance_mode_oper; //type: L2VpnEvpnLbMode
+        ydk::YLeaf force_single_home; //type: boolean
+        ydk::YLeaf source_mac_oper; //type: string
+        ydk::YLeaf source_mac_origin; //type: L2VpnEvpnSmacSrc
+        ydk::YLeaf peering_timer; //type: uint32
+        ydk::YLeaf peering_timer_left; //type: uint32
+        ydk::YLeaf recovery_timer; //type: uint32
+        ydk::YLeaf recovery_timer_left; //type: uint32
+        ydk::YLeaf service_carving_mode; //type: L2VpnEvpnScMode
+        ydk::YLeaf primary_services_input; //type: string
+        ydk::YLeaf secondary_services_input; //type: string
+        ydk::YLeaf forwarder_ports; //type: uint32
+        ydk::YLeaf mp_protected; //type: boolean
+        ydk::YLeaf service_carving_type; //type: L2VpnEvpnSc
+        ydk::YLeaf elected_d_fs; //type: uint32
+        ydk::YLeaf not_elected_d_fs; //type: uint32
+        ydk::YLeaf not_config_d_fs; //type: uint32
+        ydk::YLeaf local_split_horizon_group_label; //type: uint32
+        ydk::YLeafList ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeafList primary_service; //type: list of  uint32
+        ydk::YLeafList secondary_service; //type: list of  uint32
+        ydk::YLeafList service_carving_result; //type: list of  uint32
         class NextHop; //type: Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop
         class RemoteSplitHorizonGroupLabel; //type: Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel
 
@@ -1249,7 +1359,7 @@ class Evpn::Nodes::Node::EthernetSegments::EthernetSegment : public Entity
 }; // Evpn::Nodes::Node::EthernetSegments::EthernetSegment
 
 
-class Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop : public Entity
+class Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -1257,18 +1367,20 @@ class Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
+        ydk::YLeaf next_hop; //type: string
 
 }; // Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop
 
 
-class Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel : public Entity
+class Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel : public ydk::Entity
 {
     public:
         RemoteSplitHorizonGroupLabel();
@@ -1276,19 +1388,21 @@ class Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
-        YLeaf label; //type: uint32
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf label; //type: uint32
 
 }; // Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel
 
 
-class Evpn::Nodes::Node::AcIds : public Entity
+class Evpn::Nodes::Node::AcIds : public ydk::Entity
 {
     public:
         AcIds();
@@ -1296,11 +1410,13 @@ class Evpn::Nodes::Node::AcIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AcId; //type: Evpn::Nodes::Node::AcIds::AcId
 
@@ -1309,7 +1425,7 @@ class Evpn::Nodes::Node::AcIds : public Entity
 }; // Evpn::Nodes::Node::AcIds
 
 
-class Evpn::Nodes::Node::AcIds::AcId : public Entity
+class Evpn::Nodes::Node::AcIds::AcId : public ydk::Entity
 {
     public:
         AcId();
@@ -1317,21 +1433,23 @@ class Evpn::Nodes::Node::AcIds::AcId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf ac_id; //type: int32
-        YLeaf evi_xr; //type: uint32
-        YLeaf neighbor; //type: string
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf ac_id; //type: int32
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf neighbor; //type: string
 
 }; // Evpn::Nodes::Node::AcIds::AcId
 
 
-class Evpn::Active : public Entity
+class Evpn::Active : public ydk::Entity
 {
     public:
         Active();
@@ -1339,11 +1457,13 @@ class Evpn::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Evis; //type: Evpn::Active::Evis
         class Summary; //type: Evpn::Active::Summary
@@ -1360,7 +1480,7 @@ class Evpn::Active : public Entity
 }; // Evpn::Active
 
 
-class Evpn::Active::Evis : public Entity
+class Evpn::Active::Evis : public ydk::Entity
 {
     public:
         Evis();
@@ -1368,11 +1488,13 @@ class Evpn::Active::Evis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Evi; //type: Evpn::Active::Evis::Evi
 
@@ -1381,7 +1503,7 @@ class Evpn::Active::Evis : public Entity
 }; // Evpn::Active::Evis
 
 
-class Evpn::Active::Evis::Evi : public Entity
+class Evpn::Active::Evis::Evi : public ydk::Entity
 {
     public:
         Evi();
@@ -1389,21 +1511,23 @@ class Evpn::Active::Evis::Evi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf evi_xr; //type: uint32
-        YLeaf bd_name; //type: string
-        YLeaf type; //type: EvpnEnum
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf type; //type: L2VpnEvpn
 
 }; // Evpn::Active::Evis::Evi
 
 
-class Evpn::Active::Summary : public Entity
+class Evpn::Active::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -1411,40 +1535,42 @@ class Evpn::Active::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf as; //type: uint32
-        YLeaf ev_is; //type: uint32
-        YLeaf local_mac_routes; //type: uint32
-        YLeaf local_ipv4_mac_routes; //type: uint32
-        YLeaf local_ipv6_mac_routes; //type: uint32
-        YLeaf es_global_mac_routes; //type: uint32
-        YLeaf remote_mac_routes; //type: uint32
-        YLeaf remote_soo_mac_routes; //type: uint32
-        YLeaf remote_ipv4_mac_routes; //type: uint32
-        YLeaf remote_ipv6_mac_routes; //type: uint32
-        YLeaf local_imcast_routes; //type: uint32
-        YLeaf remote_imcast_routes; //type: uint32
-        YLeaf labels; //type: uint32
-        YLeaf es_entries; //type: uint32
-        YLeaf neighbor_entries; //type: uint32
-        YLeaf local_ead_routes; //type: uint32
-        YLeaf remote_ead_routes; //type: uint32
-        YLeaf global_source_mac; //type: string
-        YLeaf peering_time; //type: uint32
-        YLeaf recovery_time; //type: uint32
-        YLeaf l2rib_throttle; //type: boolean
-        YLeaf logging_df_election_enabled; //type: boolean
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf ev_is; //type: uint32
+        ydk::YLeaf local_mac_routes; //type: uint32
+        ydk::YLeaf local_ipv4_mac_routes; //type: uint32
+        ydk::YLeaf local_ipv6_mac_routes; //type: uint32
+        ydk::YLeaf es_global_mac_routes; //type: uint32
+        ydk::YLeaf remote_mac_routes; //type: uint32
+        ydk::YLeaf remote_soo_mac_routes; //type: uint32
+        ydk::YLeaf remote_ipv4_mac_routes; //type: uint32
+        ydk::YLeaf remote_ipv6_mac_routes; //type: uint32
+        ydk::YLeaf local_imcast_routes; //type: uint32
+        ydk::YLeaf remote_imcast_routes; //type: uint32
+        ydk::YLeaf labels; //type: uint32
+        ydk::YLeaf es_entries; //type: uint32
+        ydk::YLeaf neighbor_entries; //type: uint32
+        ydk::YLeaf local_ead_routes; //type: uint32
+        ydk::YLeaf remote_ead_routes; //type: uint32
+        ydk::YLeaf global_source_mac; //type: string
+        ydk::YLeaf peering_time; //type: uint32
+        ydk::YLeaf recovery_time; //type: uint32
+        ydk::YLeaf l2rib_throttle; //type: boolean
+        ydk::YLeaf logging_df_election_enabled; //type: boolean
 
 }; // Evpn::Active::Summary
 
 
-class Evpn::Active::EviDetail : public Entity
+class Evpn::Active::EviDetail : public ydk::Entity
 {
     public:
         EviDetail();
@@ -1452,11 +1578,13 @@ class Evpn::Active::EviDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Elements; //type: Evpn::Active::EviDetail::Elements
         class EviChildren; //type: Evpn::Active::EviDetail::EviChildren
@@ -1467,7 +1595,7 @@ class Evpn::Active::EviDetail : public Entity
 }; // Evpn::Active::EviDetail
 
 
-class Evpn::Active::EviDetail::Elements : public Entity
+class Evpn::Active::EviDetail::Elements : public ydk::Entity
 {
     public:
         Elements();
@@ -1475,11 +1603,13 @@ class Evpn::Active::EviDetail::Elements : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Element; //type: Evpn::Active::EviDetail::Elements::Element
 
@@ -1488,7 +1618,7 @@ class Evpn::Active::EviDetail::Elements : public Entity
 }; // Evpn::Active::EviDetail::Elements
 
 
-class Evpn::Active::EviDetail::Elements::Element : public Entity
+class Evpn::Active::EviDetail::Elements::Element : public ydk::Entity
 {
     public:
         Element();
@@ -1496,29 +1626,33 @@ class Evpn::Active::EviDetail::Elements::Element : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf evi_xr; //type: uint32
-        YLeaf description; //type: string
-        YLeaf bd_name; //type: string
-        YLeaf type; //type: EvpnEnum
-        YLeaf unicast_label; //type: uint32
-        YLeaf multicast_label; //type: uint32
-        YLeaf cw_disable; //type: boolean
-        YLeaf table_policy_name; //type: string
-        YLeaf forward_class; //type: uint8
-        YLeaf rt_import_block_set; //type: boolean
-        YLeaf rt_export_block_set; //type: boolean
-        YLeaf advertise_mac; //type: boolean
-        YLeaf aliasing_disabled; //type: boolean
-        YLeaf unknown_unicast_flooding_disabled; //type: boolean
-        YLeaf reoriginate_disabled; //type: boolean
-        YLeaf stitching; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf type; //type: L2VpnEvpn
+        ydk::YLeaf unicast_label; //type: uint32
+        ydk::YLeaf multicast_label; //type: uint32
+        ydk::YLeaf cw_disable; //type: boolean
+        ydk::YLeaf table_policy_name; //type: string
+        ydk::YLeaf forward_class; //type: uint8
+        ydk::YLeaf rt_import_block_set; //type: boolean
+        ydk::YLeaf rt_export_block_set; //type: boolean
+        ydk::YLeaf advertise_mac; //type: boolean
+        ydk::YLeaf advertise_bvi_mac; //type: boolean
+        ydk::YLeaf aliasing_disabled; //type: boolean
+        ydk::YLeaf unknown_unicast_flooding_disabled; //type: boolean
+        ydk::YLeaf reoriginate_disabled; //type: boolean
+        ydk::YLeaf stitching; //type: uint8
+        ydk::YLeaf encapsulation; //type: uint8
         class FlowLabel; //type: Evpn::Active::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto
         class RdConfigured; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured
@@ -1534,7 +1668,7 @@ class Evpn::Active::EviDetail::Elements::Element : public Entity
 }; // Evpn::Active::EviDetail::Elements::Element
 
 
-class Evpn::Active::EviDetail::Elements::Element::FlowLabel : public Entity
+class Evpn::Active::EviDetail::Elements::Element::FlowLabel : public ydk::Entity
 {
     public:
         FlowLabel();
@@ -1542,19 +1676,21 @@ class Evpn::Active::EviDetail::Elements::Element::FlowLabel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf static_flow_label; //type: boolean
-        YLeaf global_flow_label; //type: boolean
+        ydk::YLeaf static_flow_label; //type: boolean
+        ydk::YLeaf global_flow_label; //type: boolean
 
 }; // Evpn::Active::EviDetail::Elements::Element::FlowLabel
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdAuto : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdAuto : public ydk::Entity
 {
     public:
         RdAuto();
@@ -1562,13 +1698,15 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rd; //type: L2VpnAdRdEnum
+        ydk::YLeaf rd; //type: L2VpnAdRd
         class Auto_; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_
         class TwoByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs
@@ -1582,7 +1720,7 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto : public Entity
 }; // Evpn::Active::EviDetail::Elements::Element::RdAuto
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_ : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_ : public ydk::Entity
 {
     public:
         Auto_();
@@ -1590,19 +1728,21 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf auto_index; //type: uint16
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf auto_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -1610,19 +1750,21 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -1630,19 +1772,21 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -1650,19 +1794,21 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdConfigured : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdConfigured : public ydk::Entity
 {
     public:
         RdConfigured();
@@ -1670,13 +1816,15 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rd; //type: L2VpnAdRdEnum
+        ydk::YLeaf rd; //type: L2VpnAdRd
         class Auto_; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_
         class TwoByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs
         class FourByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs
@@ -1690,7 +1838,7 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured : public Entity
 }; // Evpn::Active::EviDetail::Elements::Element::RdConfigured
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_ : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_ : public ydk::Entity
 {
     public:
         Auto_();
@@ -1698,19 +1846,21 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_ : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf auto_index; //type: uint16
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf auto_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -1718,19 +1868,21 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -1738,19 +1890,21 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -1758,19 +1912,21 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAuto : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAuto : public ydk::Entity
 {
     public:
         RtAuto();
@@ -1778,13 +1934,15 @@ class Evpn::Active::EviDetail::Elements::Element::RtAuto : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs
         class V4Addr; //type: Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr
@@ -1798,7 +1956,7 @@ class Evpn::Active::EviDetail::Elements::Element::RtAuto : public Entity
 }; // Evpn::Active::EviDetail::Elements::Element::RtAuto
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -1806,19 +1964,21 @@ class Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Active::EviDetail::Elements::Element::RtAuto::TwoByteAs
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -1826,19 +1986,21 @@ class Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RtAuto::FourByteAs
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -1846,19 +2008,21 @@ class Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RtAuto::V4Addr
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -1866,19 +2030,21 @@ class Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RtAuto::EsImport
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching : public ydk::Entity
 {
     public:
         RtAutoStitching();
@@ -1886,13 +2052,15 @@ class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs
         class FourByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs
         class V4Addr; //type: Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr
@@ -1906,7 +2074,7 @@ class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching : public Entit
 }; // Evpn::Active::EviDetail::Elements::Element::RtAutoStitching
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -1914,19 +2082,21 @@ class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -1934,19 +2104,21 @@ class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::FourByteAs
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -1954,19 +2126,21 @@ class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::V4Addr
 
 
-class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport : public Entity
+class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -1974,19 +2148,21 @@ class Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Active::EviDetail::Elements::Element::RtAutoStitching::EsImport
 
 
-class Evpn::Active::EviDetail::EviChildren : public Entity
+class Evpn::Active::EviDetail::EviChildren : public ydk::Entity
 {
     public:
         EviChildren();
@@ -1994,11 +2170,13 @@ class Evpn::Active::EviDetail::EviChildren : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbors; //type: Evpn::Active::EviDetail::EviChildren::Neighbors
         class EthernetAutoDiscoveries; //type: Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries
@@ -2015,7 +2193,7 @@ class Evpn::Active::EviDetail::EviChildren : public Entity
 }; // Evpn::Active::EviDetail::EviChildren
 
 
-class Evpn::Active::EviDetail::EviChildren::Neighbors : public Entity
+class Evpn::Active::EviDetail::EviChildren::Neighbors : public ydk::Entity
 {
     public:
         Neighbors();
@@ -2023,11 +2201,13 @@ class Evpn::Active::EviDetail::EviChildren::Neighbors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbor; //type: Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor
 
@@ -2036,7 +2216,7 @@ class Evpn::Active::EviDetail::EviChildren::Neighbors : public Entity
 }; // Evpn::Active::EviDetail::EviChildren::Neighbors
 
 
-class Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor : public Entity
+class Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -2044,21 +2224,23 @@ class Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf neighbor_ip; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf neighbor; //type: string
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf neighbor_ip; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf neighbor; //type: string
 
 }; // Evpn::Active::EviDetail::EviChildren::Neighbors::Neighbor
 
 
-class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries : public Entity
+class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries : public ydk::Entity
 {
     public:
         EthernetAutoDiscoveries();
@@ -2066,11 +2248,13 @@ class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EthernetAutoDiscovery; //type: Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery
 
@@ -2079,7 +2263,7 @@ class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries : public Ent
 }; // Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries
 
 
-class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery : public Entity
+class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery : public ydk::Entity
 {
     public:
         EthernetAutoDiscovery();
@@ -2087,28 +2271,31 @@ class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAut
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf esi1; //type: string
-        YLeaf esi2; //type: string
-        YLeaf esi3; //type: string
-        YLeaf esi4; //type: string
-        YLeaf esi5; //type: string
-        YLeaf ethernet_tag; //type: int32
-        YLeaf ethernet_vpnid; //type: uint32
-        YLeaf ethernet_tag_xr; //type: uint32
-        YLeaf local_next_hop; //type: string
-        YLeaf local_label; //type: uint32
-        YLeaf is_local_ead; //type: boolean
-        YLeaf encap; //type: uint8
-        YLeaf redundancy_single_active; //type: boolean
-        YLeaf num_paths; //type: uint32
-        YLeafList ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf esi1; //type: string
+        ydk::YLeaf esi2; //type: string
+        ydk::YLeaf esi3; //type: string
+        ydk::YLeaf esi4; //type: string
+        ydk::YLeaf esi5; //type: string
+        ydk::YLeaf ethernet_tag; //type: int32
+        ydk::YLeaf ethernet_vpnid; //type: uint32
+        ydk::YLeaf type; //type: L2VpnEvpn
+        ydk::YLeaf ethernet_tag_xr; //type: uint32
+        ydk::YLeaf local_next_hop; //type: string
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf is_local_ead; //type: boolean
+        ydk::YLeaf encap; //type: uint8
+        ydk::YLeaf redundancy_single_active; //type: boolean
+        ydk::YLeaf num_paths; //type: uint32
+        ydk::YLeafList ethernet_segment_identifier; //type: list of  uint8
         class PathBuffer; //type: Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer> > path_buffer;
@@ -2116,7 +2303,7 @@ class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAut
 }; // Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery
 
 
-class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer : public Entity
+class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer : public ydk::Entity
 {
     public:
         PathBuffer();
@@ -2124,19 +2311,21 @@ class Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAut
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
-        YLeaf output_label; //type: uint32
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf output_label; //type: uint32
 
 }; // Evpn::Active::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer
 
 
-class Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts : public Entity
+class Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts : public ydk::Entity
 {
     public:
         InclusiveMulticasts();
@@ -2144,11 +2333,13 @@ class Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InclusiveMulticast; //type: Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast
 
@@ -2157,7 +2348,7 @@ class Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts : public Entity
 }; // Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts
 
 
-class Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast : public Entity
+class Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast : public ydk::Entity
 {
     public:
         InclusiveMulticast();
@@ -2165,26 +2356,30 @@ class Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMultic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf ethernet_tag; //type: int32
-        YLeaf originating_ip; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf ethernet_tag_xr; //type: uint32
-        YLeaf originating_ip_xr; //type: string
-        YLeaf next_hop; //type: string
-        YLeaf output_label; //type: uint32
-        YLeaf is_local_entry; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf ethernet_tag; //type: int32
+        ydk::YLeaf originating_ip; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf ethernet_tag_xr; //type: uint32
+        ydk::YLeaf originating_ip_xr; //type: string
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf output_label; //type: uint32
+        ydk::YLeaf is_local_entry; //type: boolean
+        ydk::YLeaf is_proxy_entry; //type: boolean
+        ydk::YLeaf encap_type; //type: uint8
 
 }; // Evpn::Active::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast
 
 
-class Evpn::Active::EviDetail::EviChildren::RouteTargets : public Entity
+class Evpn::Active::EviDetail::EviChildren::RouteTargets : public ydk::Entity
 {
     public:
         RouteTargets();
@@ -2192,11 +2387,13 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RouteTarget; //type: Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget
 
@@ -2205,7 +2402,7 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets : public Entity
 }; // Evpn::Active::EviDetail::EviChildren::RouteTargets
 
 
-class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget : public Entity
+class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget : public ydk::Entity
 {
     public:
         RouteTarget();
@@ -2213,24 +2410,26 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf role; //type: BgpRouteTargetRoleEnum
-        YLeaf type; //type: BgpRouteTargetEnum
-        YLeaf format; //type: BgpRouteTargetFormatEnum
-        YLeaf as; //type: uint32
-        YLeaf as_index; //type: uint32
-        YLeaf addr_index; //type: uint32
-        YLeaf address; //type: string
-        YLeaf bd_name; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf route_target_role; //type: L2VpnAdRtRoleEnum
-        YLeaf route_target_stitching; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf role; //type: BgpRouteTargetRole
+        ydk::YLeaf type; //type: BgpRouteTarget
+        ydk::YLeaf format; //type: BgpRouteTargetFormat
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf as_index; //type: uint32
+        ydk::YLeaf addr_index; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf route_target_role; //type: L2VpnAdRtRole
+        ydk::YLeaf route_target_stitching; //type: boolean
         class RouteTarget_; //type: Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_
 
         std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_> route_target;
@@ -2238,7 +2437,7 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget : public E
 }; // Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 
-class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_ : public Entity
+class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_ : public ydk::Entity
 {
     public:
         RouteTarget_();
@@ -2246,13 +2445,15 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarg
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs
         class FourByteAs; //type: Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs
         class V4Addr; //type: Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr
@@ -2266,7 +2467,7 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarg
 }; // Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_
 
 
-class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs : public Entity
+class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -2274,19 +2475,21 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarg
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs
 
 
-class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs : public Entity
+class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -2294,19 +2497,21 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarg
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs
 
 
-class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr : public Entity
+class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -2314,19 +2519,21 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarg
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr
 
 
-class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport : public Entity
+class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -2334,19 +2541,21 @@ class Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarg
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Active::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport
 
 
-class Evpn::Active::EviDetail::EviChildren::Macs : public Entity
+class Evpn::Active::EviDetail::EviChildren::Macs : public ydk::Entity
 {
     public:
         Macs();
@@ -2354,11 +2563,13 @@ class Evpn::Active::EviDetail::EviChildren::Macs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Mac; //type: Evpn::Active::EviDetail::EviChildren::Macs::Mac
 
@@ -2367,7 +2578,7 @@ class Evpn::Active::EviDetail::EviChildren::Macs : public Entity
 }; // Evpn::Active::EviDetail::EviChildren::Macs
 
 
-class Evpn::Active::EviDetail::EviChildren::Macs::Mac : public Entity
+class Evpn::Active::EviDetail::EviChildren::Macs::Mac : public ydk::Entity
 {
     public:
         Mac();
@@ -2375,37 +2586,43 @@ class Evpn::Active::EviDetail::EviChildren::Macs::Mac : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf ethernet_tag; //type: int32
-        YLeaf mac_address; //type: string
-        YLeaf ip_address; //type: string
-        YLeaf ethernet_tag_xr; //type: uint32
-        YLeaf mac_address_xr; //type: string
-        YLeaf ip_address_xr; //type: string
-        YLeaf local_label; //type: uint32
-        YLeaf num_paths; //type: uint32
-        YLeaf is_local_mac; //type: boolean
-        YLeaf is_remote_mac; //type: boolean
-        YLeaf soo_nexthop; //type: string
-        YLeaf esi_port_key; //type: uint16
-        YLeaf local_encap_type; //type: uint8
-        YLeaf remote_encap_type; //type: uint8
-        YLeaf learned_bridge_port_name; //type: string
-        YLeaf local_seq_id; //type: uint32
-        YLeaf remote_seq_id; //type: uint32
-        YLeaf mac_flush_requested; //type: uint16
-        YLeaf mac_flush_received; //type: uint16
-        YLeaf internal_label; //type: uint32
-        YLeaf resolved; //type: boolean
-        YLeaf is_static; //type: boolean
-        YLeafList local_ethernet_segment_identifier; //type: list of  uint8
-        YLeafList remote_ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf ethernet_tag; //type: int32
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf ethernet_tag_xr; //type: uint32
+        ydk::YLeaf mac_address_xr; //type: string
+        ydk::YLeaf ip_address_xr; //type: string
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf num_paths; //type: uint32
+        ydk::YLeaf is_local_mac; //type: boolean
+        ydk::YLeaf is_proxy_entry; //type: boolean
+        ydk::YLeaf is_remote_mac; //type: boolean
+        ydk::YLeaf soo_nexthop; //type: string
+        ydk::YLeaf ipnh_address; //type: string
+        ydk::YLeaf esi_port_key; //type: uint16
+        ydk::YLeaf local_encap_type; //type: uint8
+        ydk::YLeaf remote_encap_type; //type: uint8
+        ydk::YLeaf learned_bridge_port_name; //type: string
+        ydk::YLeaf local_seq_id; //type: uint32
+        ydk::YLeaf remote_seq_id; //type: uint32
+        ydk::YLeaf local_l3_label; //type: uint32
+        ydk::YLeaf router_mac_address; //type: string
+        ydk::YLeaf mac_flush_requested; //type: uint16
+        ydk::YLeaf mac_flush_received; //type: uint16
+        ydk::YLeaf internal_label; //type: uint32
+        ydk::YLeaf resolved; //type: boolean
+        ydk::YLeaf is_static; //type: boolean
+        ydk::YLeafList local_ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeafList remote_ethernet_segment_identifier; //type: list of  uint8
         class PathBuffer; //type: Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer> > path_buffer;
@@ -2413,7 +2630,7 @@ class Evpn::Active::EviDetail::EviChildren::Macs::Mac : public Entity
 }; // Evpn::Active::EviDetail::EviChildren::Macs::Mac
 
 
-class Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer : public Entity
+class Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer : public ydk::Entity
 {
     public:
         PathBuffer();
@@ -2421,19 +2638,21 @@ class Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
-        YLeaf output_label; //type: uint32
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf output_label; //type: uint32
 
 }; // Evpn::Active::EviDetail::EviChildren::Macs::Mac::PathBuffer
 
 
-class Evpn::Active::EthernetSegments : public Entity
+class Evpn::Active::EthernetSegments : public ydk::Entity
 {
     public:
         EthernetSegments();
@@ -2441,11 +2660,13 @@ class Evpn::Active::EthernetSegments : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EthernetSegment; //type: Evpn::Active::EthernetSegments::EthernetSegment
 
@@ -2454,7 +2675,7 @@ class Evpn::Active::EthernetSegments : public Entity
 }; // Evpn::Active::EthernetSegments
 
 
-class Evpn::Active::EthernetSegments::EthernetSegment : public Entity
+class Evpn::Active::EthernetSegments::EthernetSegment : public ydk::Entity
 {
     public:
         EthernetSegment();
@@ -2462,54 +2683,56 @@ class Evpn::Active::EthernetSegments::EthernetSegment : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf esi1; //type: string
-        YLeaf esi2; //type: string
-        YLeaf esi3; //type: string
-        YLeaf esi4; //type: string
-        YLeaf esi5; //type: string
-        YLeaf esi_type; //type: L2VpnEvpnEsiEnum
-        YLeaf ethernet_segment_name; //type: string
-        YLeaf ethernet_segment_state; //type: uint32
-        YLeaf if_handle; //type: string
-        YLeaf main_port_role; //type: L2VpnRgStateEnum
-        YLeaf main_port_mac; //type: string
-        YLeaf num_up_p_ws; //type: uint32
-        YLeaf route_target; //type: string
-        YLeaf rt_origin; //type: L2VpnEvpnRtOriginEnum
-        YLeaf es_bgp_gates; //type: string
-        YLeaf es_l2fib_gates; //type: string
-        YLeaf mac_flushing_mode_config; //type: L2VpnEvpnMfModeEnum
-        YLeaf load_balance_mode_config; //type: L2VpnEvpnLbModeEnum
-        YLeaf load_balance_mode_is_default; //type: boolean
-        YLeaf load_balance_mode_oper; //type: L2VpnEvpnLbModeEnum
-        YLeaf force_single_home; //type: boolean
-        YLeaf source_mac_oper; //type: string
-        YLeaf source_mac_origin; //type: L2VpnEvpnSmacSrcEnum
-        YLeaf peering_timer; //type: uint32
-        YLeaf peering_timer_left; //type: uint32
-        YLeaf recovery_timer; //type: uint32
-        YLeaf recovery_timer_left; //type: uint32
-        YLeaf service_carving_mode; //type: L2VpnEvpnScModeEnum
-        YLeaf primary_services_input; //type: string
-        YLeaf secondary_services_input; //type: string
-        YLeaf forwarder_ports; //type: uint32
-        YLeaf mp_protected; //type: boolean
-        YLeaf service_carving_type; //type: L2VpnEvpnScEnum
-        YLeaf elected_d_fs; //type: uint32
-        YLeaf not_elected_d_fs; //type: uint32
-        YLeaf not_config_d_fs; //type: uint32
-        YLeaf local_split_horizon_group_label; //type: uint32
-        YLeafList ethernet_segment_identifier; //type: list of  uint8
-        YLeafList primary_service; //type: list of  uint32
-        YLeafList secondary_service; //type: list of  uint32
-        YLeafList service_carving_result; //type: list of  uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf esi1; //type: string
+        ydk::YLeaf esi2; //type: string
+        ydk::YLeaf esi3; //type: string
+        ydk::YLeaf esi4; //type: string
+        ydk::YLeaf esi5; //type: string
+        ydk::YLeaf esi_type; //type: L2VpnEvpnEsi
+        ydk::YLeaf ethernet_segment_name; //type: string
+        ydk::YLeaf ethernet_segment_state; //type: uint32
+        ydk::YLeaf if_handle; //type: string
+        ydk::YLeaf main_port_role; //type: L2VpnRgState
+        ydk::YLeaf main_port_mac; //type: string
+        ydk::YLeaf num_up_p_ws; //type: uint32
+        ydk::YLeaf route_target; //type: string
+        ydk::YLeaf rt_origin; //type: L2VpnEvpnRtOrigin
+        ydk::YLeaf es_bgp_gates; //type: string
+        ydk::YLeaf es_l2fib_gates; //type: string
+        ydk::YLeaf mac_flushing_mode_config; //type: L2VpnEvpnMfMode
+        ydk::YLeaf load_balance_mode_config; //type: L2VpnEvpnLbMode
+        ydk::YLeaf load_balance_mode_is_default; //type: boolean
+        ydk::YLeaf load_balance_mode_oper; //type: L2VpnEvpnLbMode
+        ydk::YLeaf force_single_home; //type: boolean
+        ydk::YLeaf source_mac_oper; //type: string
+        ydk::YLeaf source_mac_origin; //type: L2VpnEvpnSmacSrc
+        ydk::YLeaf peering_timer; //type: uint32
+        ydk::YLeaf peering_timer_left; //type: uint32
+        ydk::YLeaf recovery_timer; //type: uint32
+        ydk::YLeaf recovery_timer_left; //type: uint32
+        ydk::YLeaf service_carving_mode; //type: L2VpnEvpnScMode
+        ydk::YLeaf primary_services_input; //type: string
+        ydk::YLeaf secondary_services_input; //type: string
+        ydk::YLeaf forwarder_ports; //type: uint32
+        ydk::YLeaf mp_protected; //type: boolean
+        ydk::YLeaf service_carving_type; //type: L2VpnEvpnSc
+        ydk::YLeaf elected_d_fs; //type: uint32
+        ydk::YLeaf not_elected_d_fs; //type: uint32
+        ydk::YLeaf not_config_d_fs; //type: uint32
+        ydk::YLeaf local_split_horizon_group_label; //type: uint32
+        ydk::YLeafList ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeafList primary_service; //type: list of  uint32
+        ydk::YLeafList secondary_service; //type: list of  uint32
+        ydk::YLeafList service_carving_result; //type: list of  uint32
         class NextHop; //type: Evpn::Active::EthernetSegments::EthernetSegment::NextHop
         class RemoteSplitHorizonGroupLabel; //type: Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel
 
@@ -2519,7 +2742,7 @@ class Evpn::Active::EthernetSegments::EthernetSegment : public Entity
 }; // Evpn::Active::EthernetSegments::EthernetSegment
 
 
-class Evpn::Active::EthernetSegments::EthernetSegment::NextHop : public Entity
+class Evpn::Active::EthernetSegments::EthernetSegment::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -2527,18 +2750,20 @@ class Evpn::Active::EthernetSegments::EthernetSegment::NextHop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
+        ydk::YLeaf next_hop; //type: string
 
 }; // Evpn::Active::EthernetSegments::EthernetSegment::NextHop
 
 
-class Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel : public Entity
+class Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel : public ydk::Entity
 {
     public:
         RemoteSplitHorizonGroupLabel();
@@ -2546,19 +2771,21 @@ class Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
-        YLeaf label; //type: uint32
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf label; //type: uint32
 
 }; // Evpn::Active::EthernetSegments::EthernetSegment::RemoteSplitHorizonGroupLabel
 
 
-class Evpn::Active::AcIds : public Entity
+class Evpn::Active::AcIds : public ydk::Entity
 {
     public:
         AcIds();
@@ -2566,11 +2793,13 @@ class Evpn::Active::AcIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AcId; //type: Evpn::Active::AcIds::AcId
 
@@ -2579,7 +2808,7 @@ class Evpn::Active::AcIds : public Entity
 }; // Evpn::Active::AcIds
 
 
-class Evpn::Active::AcIds::AcId : public Entity
+class Evpn::Active::AcIds::AcId : public ydk::Entity
 {
     public:
         AcId();
@@ -2587,21 +2816,23 @@ class Evpn::Active::AcIds::AcId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf ac_id; //type: int32
-        YLeaf evi_xr; //type: uint32
-        YLeaf neighbor; //type: string
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf ac_id; //type: int32
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf neighbor; //type: string
 
 }; // Evpn::Active::AcIds::AcId
 
 
-class Evpn::Standby : public Entity
+class Evpn::Standby : public ydk::Entity
 {
     public:
         Standby();
@@ -2609,11 +2840,13 @@ class Evpn::Standby : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Evis; //type: Evpn::Standby::Evis
         class Summary; //type: Evpn::Standby::Summary
@@ -2630,7 +2863,7 @@ class Evpn::Standby : public Entity
 }; // Evpn::Standby
 
 
-class Evpn::Standby::Evis : public Entity
+class Evpn::Standby::Evis : public ydk::Entity
 {
     public:
         Evis();
@@ -2638,11 +2871,13 @@ class Evpn::Standby::Evis : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Evi; //type: Evpn::Standby::Evis::Evi
 
@@ -2651,7 +2886,7 @@ class Evpn::Standby::Evis : public Entity
 }; // Evpn::Standby::Evis
 
 
-class Evpn::Standby::Evis::Evi : public Entity
+class Evpn::Standby::Evis::Evi : public ydk::Entity
 {
     public:
         Evi();
@@ -2659,21 +2894,23 @@ class Evpn::Standby::Evis::Evi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf evi_xr; //type: uint32
-        YLeaf bd_name; //type: string
-        YLeaf type; //type: EvpnEnum
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf type; //type: L2VpnEvpn
 
 }; // Evpn::Standby::Evis::Evi
 
 
-class Evpn::Standby::Summary : public Entity
+class Evpn::Standby::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -2681,40 +2918,42 @@ class Evpn::Standby::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf as; //type: uint32
-        YLeaf ev_is; //type: uint32
-        YLeaf local_mac_routes; //type: uint32
-        YLeaf local_ipv4_mac_routes; //type: uint32
-        YLeaf local_ipv6_mac_routes; //type: uint32
-        YLeaf es_global_mac_routes; //type: uint32
-        YLeaf remote_mac_routes; //type: uint32
-        YLeaf remote_soo_mac_routes; //type: uint32
-        YLeaf remote_ipv4_mac_routes; //type: uint32
-        YLeaf remote_ipv6_mac_routes; //type: uint32
-        YLeaf local_imcast_routes; //type: uint32
-        YLeaf remote_imcast_routes; //type: uint32
-        YLeaf labels; //type: uint32
-        YLeaf es_entries; //type: uint32
-        YLeaf neighbor_entries; //type: uint32
-        YLeaf local_ead_routes; //type: uint32
-        YLeaf remote_ead_routes; //type: uint32
-        YLeaf global_source_mac; //type: string
-        YLeaf peering_time; //type: uint32
-        YLeaf recovery_time; //type: uint32
-        YLeaf l2rib_throttle; //type: boolean
-        YLeaf logging_df_election_enabled; //type: boolean
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf ev_is; //type: uint32
+        ydk::YLeaf local_mac_routes; //type: uint32
+        ydk::YLeaf local_ipv4_mac_routes; //type: uint32
+        ydk::YLeaf local_ipv6_mac_routes; //type: uint32
+        ydk::YLeaf es_global_mac_routes; //type: uint32
+        ydk::YLeaf remote_mac_routes; //type: uint32
+        ydk::YLeaf remote_soo_mac_routes; //type: uint32
+        ydk::YLeaf remote_ipv4_mac_routes; //type: uint32
+        ydk::YLeaf remote_ipv6_mac_routes; //type: uint32
+        ydk::YLeaf local_imcast_routes; //type: uint32
+        ydk::YLeaf remote_imcast_routes; //type: uint32
+        ydk::YLeaf labels; //type: uint32
+        ydk::YLeaf es_entries; //type: uint32
+        ydk::YLeaf neighbor_entries; //type: uint32
+        ydk::YLeaf local_ead_routes; //type: uint32
+        ydk::YLeaf remote_ead_routes; //type: uint32
+        ydk::YLeaf global_source_mac; //type: string
+        ydk::YLeaf peering_time; //type: uint32
+        ydk::YLeaf recovery_time; //type: uint32
+        ydk::YLeaf l2rib_throttle; //type: boolean
+        ydk::YLeaf logging_df_election_enabled; //type: boolean
 
 }; // Evpn::Standby::Summary
 
 
-class Evpn::Standby::EviDetail : public Entity
+class Evpn::Standby::EviDetail : public ydk::Entity
 {
     public:
         EviDetail();
@@ -2722,11 +2961,13 @@ class Evpn::Standby::EviDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Elements; //type: Evpn::Standby::EviDetail::Elements
         class EviChildren; //type: Evpn::Standby::EviDetail::EviChildren
@@ -2737,7 +2978,7 @@ class Evpn::Standby::EviDetail : public Entity
 }; // Evpn::Standby::EviDetail
 
 
-class Evpn::Standby::EviDetail::Elements : public Entity
+class Evpn::Standby::EviDetail::Elements : public ydk::Entity
 {
     public:
         Elements();
@@ -2745,11 +2986,13 @@ class Evpn::Standby::EviDetail::Elements : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Element; //type: Evpn::Standby::EviDetail::Elements::Element
 
@@ -2758,7 +3001,7 @@ class Evpn::Standby::EviDetail::Elements : public Entity
 }; // Evpn::Standby::EviDetail::Elements
 
 
-class Evpn::Standby::EviDetail::Elements::Element : public Entity
+class Evpn::Standby::EviDetail::Elements::Element : public ydk::Entity
 {
     public:
         Element();
@@ -2766,29 +3009,33 @@ class Evpn::Standby::EviDetail::Elements::Element : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf evi_xr; //type: uint32
-        YLeaf description; //type: string
-        YLeaf bd_name; //type: string
-        YLeaf type; //type: EvpnEnum
-        YLeaf unicast_label; //type: uint32
-        YLeaf multicast_label; //type: uint32
-        YLeaf cw_disable; //type: boolean
-        YLeaf table_policy_name; //type: string
-        YLeaf forward_class; //type: uint8
-        YLeaf rt_import_block_set; //type: boolean
-        YLeaf rt_export_block_set; //type: boolean
-        YLeaf advertise_mac; //type: boolean
-        YLeaf aliasing_disabled; //type: boolean
-        YLeaf unknown_unicast_flooding_disabled; //type: boolean
-        YLeaf reoriginate_disabled; //type: boolean
-        YLeaf stitching; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf type; //type: L2VpnEvpn
+        ydk::YLeaf unicast_label; //type: uint32
+        ydk::YLeaf multicast_label; //type: uint32
+        ydk::YLeaf cw_disable; //type: boolean
+        ydk::YLeaf table_policy_name; //type: string
+        ydk::YLeaf forward_class; //type: uint8
+        ydk::YLeaf rt_import_block_set; //type: boolean
+        ydk::YLeaf rt_export_block_set; //type: boolean
+        ydk::YLeaf advertise_mac; //type: boolean
+        ydk::YLeaf advertise_bvi_mac; //type: boolean
+        ydk::YLeaf aliasing_disabled; //type: boolean
+        ydk::YLeaf unknown_unicast_flooding_disabled; //type: boolean
+        ydk::YLeaf reoriginate_disabled; //type: boolean
+        ydk::YLeaf stitching; //type: uint8
+        ydk::YLeaf encapsulation; //type: uint8
         class FlowLabel; //type: Evpn::Standby::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto
         class RdConfigured; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured
@@ -2804,7 +3051,7 @@ class Evpn::Standby::EviDetail::Elements::Element : public Entity
 }; // Evpn::Standby::EviDetail::Elements::Element
 
 
-class Evpn::Standby::EviDetail::Elements::Element::FlowLabel : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::FlowLabel : public ydk::Entity
 {
     public:
         FlowLabel();
@@ -2812,19 +3059,21 @@ class Evpn::Standby::EviDetail::Elements::Element::FlowLabel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf static_flow_label; //type: boolean
-        YLeaf global_flow_label; //type: boolean
+        ydk::YLeaf static_flow_label; //type: boolean
+        ydk::YLeaf global_flow_label; //type: boolean
 
 }; // Evpn::Standby::EviDetail::Elements::Element::FlowLabel
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdAuto : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdAuto : public ydk::Entity
 {
     public:
         RdAuto();
@@ -2832,13 +3081,15 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rd; //type: L2VpnAdRdEnum
+        ydk::YLeaf rd; //type: L2VpnAdRd
         class Auto_; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_
         class TwoByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs
@@ -2852,7 +3103,7 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto : public Entity
 }; // Evpn::Standby::EviDetail::Elements::Element::RdAuto
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_ : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_ : public ydk::Entity
 {
     public:
         Auto_();
@@ -2860,19 +3111,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf auto_index; //type: uint16
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf auto_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -2880,19 +3133,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -2900,19 +3155,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -2920,19 +3177,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdConfigured : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdConfigured : public ydk::Entity
 {
     public:
         RdConfigured();
@@ -2940,13 +3199,15 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rd; //type: L2VpnAdRdEnum
+        ydk::YLeaf rd; //type: L2VpnAdRd
         class Auto_; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_
         class TwoByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs
         class FourByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs
@@ -2960,7 +3221,7 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured : public Entity
 }; // Evpn::Standby::EviDetail::Elements::Element::RdConfigured
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_ : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_ : public ydk::Entity
 {
     public:
         Auto_();
@@ -2968,19 +3229,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_ : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_id; //type: string
-        YLeaf auto_index; //type: uint16
+        ydk::YLeaf router_id; //type: string
+        ydk::YLeaf auto_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -2988,19 +3251,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -3008,19 +3273,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -3028,19 +3295,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAuto : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAuto : public ydk::Entity
 {
     public:
         RtAuto();
@@ -3048,13 +3317,15 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAuto : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs
         class V4Addr; //type: Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr
@@ -3068,7 +3339,7 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAuto : public Entity
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAuto
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -3076,19 +3347,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAuto::TwoByteAs
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -3096,19 +3369,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAuto::FourByteAs
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -3116,19 +3391,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAuto::V4Addr
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -3136,19 +3413,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAuto::EsImport
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching : public ydk::Entity
 {
     public:
         RtAutoStitching();
@@ -3156,13 +3435,15 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs
         class FourByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs
         class V4Addr; //type: Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr
@@ -3176,7 +3457,7 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching : public Enti
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -3184,19 +3465,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::TwoByteAs
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -3204,19 +3487,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::FourByteAs
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -3224,19 +3509,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::V4Addr
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport : public Entity
+class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -3244,19 +3531,21 @@ class Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Standby::EviDetail::Elements::Element::RtAutoStitching::EsImport
 
 
-class Evpn::Standby::EviDetail::EviChildren : public Entity
+class Evpn::Standby::EviDetail::EviChildren : public ydk::Entity
 {
     public:
         EviChildren();
@@ -3264,11 +3553,13 @@ class Evpn::Standby::EviDetail::EviChildren : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbors; //type: Evpn::Standby::EviDetail::EviChildren::Neighbors
         class EthernetAutoDiscoveries; //type: Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries
@@ -3285,7 +3576,7 @@ class Evpn::Standby::EviDetail::EviChildren : public Entity
 }; // Evpn::Standby::EviDetail::EviChildren
 
 
-class Evpn::Standby::EviDetail::EviChildren::Neighbors : public Entity
+class Evpn::Standby::EviDetail::EviChildren::Neighbors : public ydk::Entity
 {
     public:
         Neighbors();
@@ -3293,11 +3584,13 @@ class Evpn::Standby::EviDetail::EviChildren::Neighbors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Neighbor; //type: Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor
 
@@ -3306,7 +3599,7 @@ class Evpn::Standby::EviDetail::EviChildren::Neighbors : public Entity
 }; // Evpn::Standby::EviDetail::EviChildren::Neighbors
 
 
-class Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor : public Entity
+class Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -3314,21 +3607,23 @@ class Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf neighbor_ip; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf neighbor; //type: string
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf neighbor_ip; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf neighbor; //type: string
 
 }; // Evpn::Standby::EviDetail::EviChildren::Neighbors::Neighbor
 
 
-class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries : public Entity
+class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries : public ydk::Entity
 {
     public:
         EthernetAutoDiscoveries();
@@ -3336,11 +3631,13 @@ class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EthernetAutoDiscovery; //type: Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery
 
@@ -3349,7 +3646,7 @@ class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries : public En
 }; // Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries
 
 
-class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery : public Entity
+class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery : public ydk::Entity
 {
     public:
         EthernetAutoDiscovery();
@@ -3357,28 +3654,31 @@ class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf esi1; //type: string
-        YLeaf esi2; //type: string
-        YLeaf esi3; //type: string
-        YLeaf esi4; //type: string
-        YLeaf esi5; //type: string
-        YLeaf ethernet_tag; //type: int32
-        YLeaf ethernet_vpnid; //type: uint32
-        YLeaf ethernet_tag_xr; //type: uint32
-        YLeaf local_next_hop; //type: string
-        YLeaf local_label; //type: uint32
-        YLeaf is_local_ead; //type: boolean
-        YLeaf encap; //type: uint8
-        YLeaf redundancy_single_active; //type: boolean
-        YLeaf num_paths; //type: uint32
-        YLeafList ethernet_segment_identifier; //type: list of  uint8
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf esi1; //type: string
+        ydk::YLeaf esi2; //type: string
+        ydk::YLeaf esi3; //type: string
+        ydk::YLeaf esi4; //type: string
+        ydk::YLeaf esi5; //type: string
+        ydk::YLeaf ethernet_tag; //type: int32
+        ydk::YLeaf ethernet_vpnid; //type: uint32
+        ydk::YLeaf type; //type: L2VpnEvpn
+        ydk::YLeaf ethernet_tag_xr; //type: uint32
+        ydk::YLeaf local_next_hop; //type: string
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf is_local_ead; //type: boolean
+        ydk::YLeaf encap; //type: uint8
+        ydk::YLeaf redundancy_single_active; //type: boolean
+        ydk::YLeaf num_paths; //type: uint32
+        ydk::YLeafList ethernet_segment_identifier; //type: list of  uint8
         class PathBuffer; //type: Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer> > path_buffer;
@@ -3386,7 +3686,7 @@ class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAu
 }; // Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery
 
 
-class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer : public Entity
+class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer : public ydk::Entity
 {
     public:
         PathBuffer();
@@ -3394,19 +3694,21 @@ class Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf next_hop; //type: string
-        YLeaf output_label; //type: uint32
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf output_label; //type: uint32
 
 }; // Evpn::Standby::EviDetail::EviChildren::EthernetAutoDiscoveries::EthernetAutoDiscovery::PathBuffer
 
 
-class Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts : public Entity
+class Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts : public ydk::Entity
 {
     public:
         InclusiveMulticasts();
@@ -3414,11 +3716,13 @@ class Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InclusiveMulticast; //type: Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast
 
@@ -3427,7 +3731,7 @@ class Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts : public Entity
 }; // Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts
 
 
-class Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast : public Entity
+class Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast : public ydk::Entity
 {
     public:
         InclusiveMulticast();
@@ -3435,26 +3739,30 @@ class Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf ethernet_tag; //type: int32
-        YLeaf originating_ip; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf ethernet_tag_xr; //type: uint32
-        YLeaf originating_ip_xr; //type: string
-        YLeaf next_hop; //type: string
-        YLeaf output_label; //type: uint32
-        YLeaf is_local_entry; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf ethernet_tag; //type: int32
+        ydk::YLeaf originating_ip; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf ethernet_tag_xr; //type: uint32
+        ydk::YLeaf originating_ip_xr; //type: string
+        ydk::YLeaf next_hop; //type: string
+        ydk::YLeaf output_label; //type: uint32
+        ydk::YLeaf is_local_entry; //type: boolean
+        ydk::YLeaf is_proxy_entry; //type: boolean
+        ydk::YLeaf encap_type; //type: uint8
 
 }; // Evpn::Standby::EviDetail::EviChildren::InclusiveMulticasts::InclusiveMulticast
 
 
-class Evpn::Standby::EviDetail::EviChildren::RouteTargets : public Entity
+class Evpn::Standby::EviDetail::EviChildren::RouteTargets : public ydk::Entity
 {
     public:
         RouteTargets();
@@ -3462,11 +3770,13 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RouteTarget; //type: Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget
 
@@ -3475,7 +3785,7 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets : public Entity
 }; // Evpn::Standby::EviDetail::EviChildren::RouteTargets
 
 
-class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget : public Entity
+class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget : public ydk::Entity
 {
     public:
         RouteTarget();
@@ -3483,24 +3793,26 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evi; //type: int32
-        YLeaf role; //type: BgpRouteTargetRoleEnum
-        YLeaf type; //type: BgpRouteTargetEnum
-        YLeaf format; //type: BgpRouteTargetFormatEnum
-        YLeaf as; //type: uint32
-        YLeaf as_index; //type: uint32
-        YLeaf addr_index; //type: uint32
-        YLeaf address; //type: string
-        YLeaf bd_name; //type: string
-        YLeaf evi_xr; //type: uint32
-        YLeaf route_target_role; //type: L2VpnAdRtRoleEnum
-        YLeaf route_target_stitching; //type: boolean
+        ydk::YLeaf evi; //type: int32
+        ydk::YLeaf role; //type: BgpRouteTargetRole
+        ydk::YLeaf type; //type: BgpRouteTarget
+        ydk::YLeaf format; //type: BgpRouteTargetFormat
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf as_index; //type: uint32
+        ydk::YLeaf addr_index; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf bd_name; //type: string
+        ydk::YLeaf evi_xr; //type: uint32
+        ydk::YLeaf route_target_role; //type: L2VpnAdRtRole
+        ydk::YLeaf route_target_stitching; //type: boolean
         class RouteTarget_; //type: Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_
 
         std::shared_ptr<Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_> route_target;
@@ -3508,7 +3820,7 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget : public 
 }; // Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget
 
 
-class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_ : public Entity
+class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_ : public ydk::Entity
 {
     public:
         RouteTarget_();
@@ -3516,13 +3828,15 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rt; //type: L2VpnAdRtEnum
+        ydk::YLeaf rt; //type: L2VpnAdRt
         class TwoByteAs; //type: Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs
         class FourByteAs; //type: Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs
         class V4Addr; //type: Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr
@@ -3536,7 +3850,7 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTar
 }; // Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_
 
 
-class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs : public Entity
+class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -3544,19 +3858,21 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf two_byte_as; //type: uint16
-        YLeaf four_byte_index; //type: uint32
+        ydk::YLeaf two_byte_as; //type: uint16
+        ydk::YLeaf four_byte_index; //type: uint32
 
 }; // Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::TwoByteAs
 
 
-class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs : public Entity
+class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -3564,19 +3880,21 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf four_byte_as; //type: uint32
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf four_byte_as; //type: uint32
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::FourByteAs
 
 
-class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr : public Entity
+class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -3584,19 +3902,21 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_address; //type: string
-        YLeaf two_byte_index; //type: uint16
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf two_byte_index; //type: uint16
 
 }; // Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::V4Addr
 
 
-class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport : public Entity
+class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -3604,19 +3924,21 @@ class Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf high_bytes; //type: uint32
-        YLeaf low_bytes; //type: uint16
+        ydk::YLeaf high_bytes; //type: uint32
+        ydk::YLeaf low_bytes; //type: uint16
 
 }; // Evpn::Standby::EviDetail::EviChildren::RouteTargets::RouteTarget::RouteTarget_::EsImport
 
 
-class Evpn::Standby::EviDetail::EviChildren::Macs : public Entity
+class Evpn::Standby::EviDetail::EviChildren::Macs : public ydk::Entity
 {
     public:
         Macs();
@@ -3624,11 +3946,13 @@ class Evpn::Standby::EviDetail::EviChildren::Macs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Mac; //type: Evpn::Standby::EviDetail::EviChildren::Macs::Mac
 
@@ -3636,157 +3960,158 @@ class Evpn::Standby::EviDetail::EviChildren::Macs : public Entity
         
 }; // Evpn::Standby::EviDetail::EviChildren::Macs
 
-class L2VpnAdRtRoleEnum : public Enum
+class BgpRouteTargetRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf both;
-        static const Enum::YLeaf import;
-        static const Enum::YLeaf export_;
+        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf import;
+        static const ydk::Enum::YLeaf export_;
 
 };
 
-class L2VpnEvpnSmacSrcEnum : public Enum
+class L2VpnAdRt : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf invalid;
-        static const Enum::YLeaf not_applicable;
-        static const Enum::YLeaf local;
-        static const Enum::YLeaf pbb_bsa;
-        static const Enum::YLeaf esi;
-        static const Enum::YLeaf esi_invalid;
-        static const Enum::YLeaf pbb_bsa_overrride;
+        static const ydk::Enum::YLeaf l2vpn_ad_rt_none;
+        static const ydk::Enum::YLeaf l2vpn_ad_rt_as;
+        static const ydk::Enum::YLeaf l2vpn_ad_rt_4byte_as;
+        static const ydk::Enum::YLeaf l2vpn_ad_rt_v4_addr;
+        static const ydk::Enum::YLeaf es_import;
 
 };
 
-class L2VpnRgStateEnum : public Enum
+class L2VpnRgState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf active;
-        static const Enum::YLeaf standby;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf standby;
 
 };
 
-class BgpRouteTargetRoleEnum : public Enum
+class L2VpnEvpnMfMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf both;
-        static const Enum::YLeaf import;
-        static const Enum::YLeaf export_;
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf tcn_stp;
+        static const ydk::Enum::YLeaf mvrp;
 
 };
 
-class L2VpnEvpnMfModeEnum : public Enum
+class BgpRouteTargetFormat : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf invalid;
-        static const Enum::YLeaf tcn_stp;
-        static const Enum::YLeaf mvrp;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf two_byte_as;
+        static const ydk::Enum::YLeaf four_byte_as;
+        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf es_import;
 
 };
 
-class L2VpnEvpnLbModeEnum : public Enum
+class L2VpnEvpnEsi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf invalid_load_balancing;
-        static const Enum::YLeaf single_homed;
-        static const Enum::YLeaf multi_homed_aa_per_flow;
-        static const Enum::YLeaf multi_homed_aa_per_service;
+        static const ydk::Enum::YLeaf esi_type0;
+        static const ydk::Enum::YLeaf esi_type1;
+        static const ydk::Enum::YLeaf esi_type2;
+        static const ydk::Enum::YLeaf esi_type3;
+        static const ydk::Enum::YLeaf esi_type4;
+        static const ydk::Enum::YLeaf esi_type5;
+        static const ydk::Enum::YLeaf l2vpn_evpn_esi_type_legacy;
+        static const ydk::Enum::YLeaf l2vpn_evpn_esi_type_override;
+        static const ydk::Enum::YLeaf esi_type_invalid;
 
 };
 
-class L2VpnAdRtEnum : public Enum
+class L2VpnEvpnRtOrigin : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf l2vpn_ad_rt_none;
-        static const Enum::YLeaf l2vpn_ad_rt_as;
-        static const Enum::YLeaf l2vpn_ad_rt_4byte_as;
-        static const Enum::YLeaf l2vpn_ad_rt_v4_addr;
-        static const Enum::YLeaf es_import;
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf extracted;
+        static const ydk::Enum::YLeaf configured;
 
 };
 
-class L2VpnEvpnScModeEnum : public Enum
+class L2VpnEvpnScMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf invalid;
-        static const Enum::YLeaf auto_;
-        static const Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf manual;
 
 };
 
-class L2VpnEvpnRtOriginEnum : public Enum
+class L2VpnEvpnSc : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf invalid;
-        static const Enum::YLeaf extracted;
-        static const Enum::YLeaf configured;
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf evi;
+        static const ydk::Enum::YLeaf isid;
+        static const ydk::Enum::YLeaf evpn_bag_sc_type_max;
 
 };
 
-class L2VpnEvpnScEnum : public Enum
+class L2VpnAdRtRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_applicable;
-        static const Enum::YLeaf evi;
-        static const Enum::YLeaf isid;
-        static const Enum::YLeaf evpn_bag_sc_type_max;
+        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf import;
+        static const ydk::Enum::YLeaf export_;
 
 };
 
-class EvpnEnum : public Enum
+class L2VpnEvpnSmacSrc : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf evpn_type_invalid;
-        static const Enum::YLeaf evpn_type_evpn;
-        static const Enum::YLeaf evpn_type_pbb_evpn;
-        static const Enum::YLeaf evpn_type_evpn_vpws_vlan_unaware;
-        static const Enum::YLeaf evpn_type_evpn_vpws_vlan_aware;
-        static const Enum::YLeaf evpn_type_max;
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf pbb_bsa;
+        static const ydk::Enum::YLeaf esi;
+        static const ydk::Enum::YLeaf esi_invalid;
+        static const ydk::Enum::YLeaf pbb_bsa_overrride;
 
 };
 
-class BgpRouteTargetFormatEnum : public Enum
+class BgpRouteTarget : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf two_byte_as;
-        static const Enum::YLeaf four_byte_as;
-        static const Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf no_stitching;
+        static const ydk::Enum::YLeaf stitching;
 
 };
 
-class L2VpnAdRdEnum : public Enum
+class L2VpnAdRd : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf l2vpn_ad_rd_none;
-        static const Enum::YLeaf l2vpn_ad_rd_auto;
-        static const Enum::YLeaf l2vpn_ad_rd_as;
-        static const Enum::YLeaf l2vpn_ad_rd_4byte_as;
-        static const Enum::YLeaf l2vpn_ad_rd_v4_addr;
+        static const ydk::Enum::YLeaf l2vpn_ad_rd_none;
+        static const ydk::Enum::YLeaf l2vpn_ad_rd_auto;
+        static const ydk::Enum::YLeaf l2vpn_ad_rd_as;
+        static const ydk::Enum::YLeaf l2vpn_ad_rd_4byte_as;
+        static const ydk::Enum::YLeaf l2vpn_ad_rd_v4_addr;
 
 };
 
-class L2VpnEvpnEsiEnum : public Enum
+class L2VpnEvpnLbMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf esi_type0;
-        static const Enum::YLeaf esi_type1;
-        static const Enum::YLeaf esi_type2;
-        static const Enum::YLeaf esi_type3;
-        static const Enum::YLeaf esi_type4;
-        static const Enum::YLeaf esi_type5;
-        static const Enum::YLeaf l2vpn_evpn_esi_type_legacy;
-        static const Enum::YLeaf l2vpn_evpn_esi_type_override;
-        static const Enum::YLeaf esi_type_invalid;
+        static const ydk::Enum::YLeaf invalid_load_balancing;
+        static const ydk::Enum::YLeaf single_homed;
+        static const ydk::Enum::YLeaf multi_homed_aa_per_flow;
+        static const ydk::Enum::YLeaf multi_homed_aa_per_service;
 
 };
 
-class BgpRouteTargetEnum : public Enum
+class L2VpnEvpn : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf no_stitching;
-        static const Enum::YLeaf stitching;
+        static const ydk::Enum::YLeaf evpn_type_invalid;
+        static const ydk::Enum::YLeaf evpn_type_evpn;
+        static const ydk::Enum::YLeaf evpn_type_pbb_evpn;
+        static const ydk::Enum::YLeaf evpn_type_evpn_vpws_vlan_unaware;
+        static const ydk::Enum::YLeaf evpn_type_evpn_vpws_vlan_aware;
+        static const ydk::Enum::YLeaf evpn_type_max;
 
 };
 

@@ -7,35 +7,35 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace IANA_ADDRESS_FAMILY_NUMBERS_MIB {
 
-class AddressfamilynumbersEnum : public Enum
+class Addressfamilynumbers : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf ipV4;
-        static const Enum::YLeaf ipV6;
-        static const Enum::YLeaf nsap;
-        static const Enum::YLeaf hdlc;
-        static const Enum::YLeaf bbn1822;
-        static const Enum::YLeaf all802;
-        static const Enum::YLeaf e163;
-        static const Enum::YLeaf e164;
-        static const Enum::YLeaf f69;
-        static const Enum::YLeaf x121;
-        static const Enum::YLeaf ipx;
-        static const Enum::YLeaf appletalk;
-        static const Enum::YLeaf decnetIV;
-        static const Enum::YLeaf banyanVines;
-        static const Enum::YLeaf e164withNsap;
-        static const Enum::YLeaf dns;
-        static const Enum::YLeaf distinguishedname;
-        static const Enum::YLeaf asnumber;
-        static const Enum::YLeaf xtpoveripv4;
-        static const Enum::YLeaf xtpoveripv6;
-        static const Enum::YLeaf xtpnativemodextp;
-        static const Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf ipV4;
+        static const ydk::Enum::YLeaf ipV6;
+        static const ydk::Enum::YLeaf nsap;
+        static const ydk::Enum::YLeaf hdlc;
+        static const ydk::Enum::YLeaf bbn1822;
+        static const ydk::Enum::YLeaf all802;
+        static const ydk::Enum::YLeaf e163;
+        static const ydk::Enum::YLeaf e164;
+        static const ydk::Enum::YLeaf f69;
+        static const ydk::Enum::YLeaf x121;
+        static const ydk::Enum::YLeaf ipx;
+        static const ydk::Enum::YLeaf appletalk;
+        static const ydk::Enum::YLeaf decnetIV;
+        static const ydk::Enum::YLeaf banyanVines;
+        static const ydk::Enum::YLeaf e164withNsap;
+        static const ydk::Enum::YLeaf dns;
+        static const ydk::Enum::YLeaf distinguishedname;
+        static const ydk::Enum::YLeaf asnumber;
+        static const ydk::Enum::YLeaf xtpoveripv4;
+        static const ydk::Enum::YLeaf xtpoveripv6;
+        static const ydk::Enum::YLeaf xtpnativemodextp;
+        static const ydk::Enum::YLeaf reserved;
 
 };
 

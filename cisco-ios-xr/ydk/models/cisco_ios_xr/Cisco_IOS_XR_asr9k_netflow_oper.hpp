@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_netflow_oper {
 
-class NetFlow : public Entity
+class NetFlow : public ydk::Entity
 {
     public:
         NetFlow();
@@ -18,15 +18,18 @@ class NetFlow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Statistics; //type: NetFlow::Statistics
 
@@ -35,7 +38,7 @@ class NetFlow : public Entity
 }; // NetFlow
 
 
-class NetFlow::Statistics : public Entity
+class NetFlow::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -43,11 +46,13 @@ class NetFlow::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Statistic; //type: NetFlow::Statistics::Statistic
 
@@ -56,7 +61,7 @@ class NetFlow::Statistics : public Entity
 }; // NetFlow::Statistics
 
 
-class NetFlow::Statistics::Statistic : public Entity
+class NetFlow::Statistics::Statistic : public ydk::Entity
 {
     public:
         Statistic();
@@ -64,13 +69,15 @@ class NetFlow::Statistics::Statistic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node; //type: string
+        ydk::YLeaf node; //type: string
         class Producer; //type: NetFlow::Statistics::Statistic::Producer
         class Server; //type: NetFlow::Statistics::Statistic::Server
 
@@ -80,7 +87,7 @@ class NetFlow::Statistics::Statistic : public Entity
 }; // NetFlow::Statistics::Statistic
 
 
-class NetFlow::Statistics::Statistic::Producer : public Entity
+class NetFlow::Statistics::Statistic::Producer : public ydk::Entity
 {
     public:
         Producer();
@@ -88,11 +95,13 @@ class NetFlow::Statistics::Statistic::Producer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Statistics_; //type: NetFlow::Statistics::Statistic::Producer::Statistics_
 
@@ -101,7 +110,7 @@ class NetFlow::Statistics::Statistic::Producer : public Entity
 }; // NetFlow::Statistics::Statistic::Producer
 
 
-class NetFlow::Statistics::Statistic::Producer::Statistics_ : public Entity
+class NetFlow::Statistics::Statistic::Producer::Statistics_ : public ydk::Entity
 {
     public:
         Statistics_();
@@ -109,31 +118,33 @@ class NetFlow::Statistics::Statistic::Producer::Statistics_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipv4_ingress_flows; //type: uint64
-        YLeaf ipv4_egress_flows; //type: uint64
-        YLeaf ipv6_ingress_flows; //type: uint64
-        YLeaf ipv6_egress_flows; //type: uint64
-        YLeaf mpls_ingress_flows; //type: uint64
-        YLeaf mpls_egress_flows; //type: uint64
-        YLeaf drops_no_space; //type: uint64
-        YLeaf drops_others; //type: uint64
-        YLeaf unknown_ingress_flows; //type: uint64
-        YLeaf unknown_egress_flows; //type: uint64
-        YLeaf waiting_servers; //type: uint64
-        YLeaf spp_rx_counts; //type: uint64
-        YLeaf flow_packet_counts; //type: uint64
-        YLeaf last_cleared; //type: string
+        ydk::YLeaf ipv4_ingress_flows; //type: uint64
+        ydk::YLeaf ipv4_egress_flows; //type: uint64
+        ydk::YLeaf ipv6_ingress_flows; //type: uint64
+        ydk::YLeaf ipv6_egress_flows; //type: uint64
+        ydk::YLeaf mpls_ingress_flows; //type: uint64
+        ydk::YLeaf mpls_egress_flows; //type: uint64
+        ydk::YLeaf drops_no_space; //type: uint64
+        ydk::YLeaf drops_others; //type: uint64
+        ydk::YLeaf unknown_ingress_flows; //type: uint64
+        ydk::YLeaf unknown_egress_flows; //type: uint64
+        ydk::YLeaf waiting_servers; //type: uint64
+        ydk::YLeaf spp_rx_counts; //type: uint64
+        ydk::YLeaf flow_packet_counts; //type: uint64
+        ydk::YLeaf last_cleared; //type: string
 
 }; // NetFlow::Statistics::Statistic::Producer::Statistics_
 
 
-class NetFlow::Statistics::Statistic::Server : public Entity
+class NetFlow::Statistics::Statistic::Server : public ydk::Entity
 {
     public:
         Server();
@@ -141,11 +152,13 @@ class NetFlow::Statistics::Statistic::Server : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FlowExporters; //type: NetFlow::Statistics::Statistic::Server::FlowExporters
 
@@ -154,7 +167,7 @@ class NetFlow::Statistics::Statistic::Server : public Entity
 }; // NetFlow::Statistics::Statistic::Server
 
 
-class NetFlow::Statistics::Statistic::Server::FlowExporters : public Entity
+class NetFlow::Statistics::Statistic::Server::FlowExporters : public ydk::Entity
 {
     public:
         FlowExporters();
@@ -162,11 +175,13 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FlowExporter; //type: NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter
 
@@ -175,7 +190,7 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters : public Entity
 }; // NetFlow::Statistics::Statistic::Server::FlowExporters
 
 
-class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter : public Entity
+class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter : public ydk::Entity
 {
     public:
         FlowExporter();
@@ -183,13 +198,15 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf exporter_name; //type: string
+        ydk::YLeaf exporter_name; //type: string
         class Exporter; //type: NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_netflow_oper::NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter> exporter;
@@ -197,7 +214,7 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter : publ
 }; // NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter
 
 
-class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter : public Entity
+class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter : public ydk::Entity
 {
     public:
         Exporter();
@@ -205,11 +222,13 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Expor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Statistic_; //type: NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_
 
@@ -218,7 +237,7 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Expor
 }; // NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter
 
 
-class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_ : public Entity
+class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_ : public ydk::Entity
 {
     public:
         Statistic_();
@@ -226,15 +245,17 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Expor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf memory_usage; //type: uint32
-        YLeafList used_by_flow_monitor; //type: list of  string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf memory_usage; //type: uint32
+        ydk::YLeafList used_by_flow_monitor; //type: list of  string
         class Collector; //type: NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_netflow_oper::NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector> > collector;
@@ -242,7 +263,7 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Expor
 }; // NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_
 
 
-class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector : public Entity
+class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector : public ydk::Entity
 {
     public:
         Collector();
@@ -250,48 +271,50 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Expor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf exporter_state; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf source_address; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf destination_port; //type: uint16
-        YLeaf souce_port; //type: uint16
-        YLeaf transport_protocol; //type: string
-        YLeaf packets_sent; //type: uint64
-        YLeaf flows_sent; //type: uint64
-        YLeaf templates_sent; //type: uint64
-        YLeaf option_templates_sent; //type: uint64
-        YLeaf option_data_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf flow_bytes_sent; //type: uint64
-        YLeaf template_bytes_sent; //type: uint64
-        YLeaf option_template_bytes_sent; //type: uint64
-        YLeaf option_data_bytes_sent; //type: uint64
-        YLeaf packets_dropped; //type: uint64
-        YLeaf flows_dropped; //type: uint64
-        YLeaf templates_dropped; //type: uint64
-        YLeaf option_templates_dropped; //type: uint64
-        YLeaf option_data_dropped; //type: uint64
-        YLeaf bytes_dropped; //type: uint64
-        YLeaf flow_bytes_dropped; //type: uint64
-        YLeaf template_bytes_dropped; //type: uint64
-        YLeaf option_template_bytes_dropped; //type: uint64
-        YLeaf option_data_bytes_dropped; //type: uint64
-        YLeaf last_hour_packest_sent; //type: uint64
-        YLeaf last_hour_bytes_sent; //type: uint64
-        YLeaf last_hour_flows_sent; //type: uint64
-        YLeaf last_minute_packets; //type: uint64
-        YLeaf last_minute_bytes_sent; //type: uint64
-        YLeaf last_minute_flows_sent; //type: uint64
-        YLeaf last_second_packets_sent; //type: uint64
-        YLeaf last_second_bytes_sent; //type: uint64
-        YLeaf last_second_flows_sent; //type: uint64
+        ydk::YLeaf exporter_state; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf destination_port; //type: uint16
+        ydk::YLeaf souce_port; //type: uint16
+        ydk::YLeaf transport_protocol; //type: string
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf flows_sent; //type: uint64
+        ydk::YLeaf templates_sent; //type: uint64
+        ydk::YLeaf option_templates_sent; //type: uint64
+        ydk::YLeaf option_data_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf flow_bytes_sent; //type: uint64
+        ydk::YLeaf template_bytes_sent; //type: uint64
+        ydk::YLeaf option_template_bytes_sent; //type: uint64
+        ydk::YLeaf option_data_bytes_sent; //type: uint64
+        ydk::YLeaf packets_dropped; //type: uint64
+        ydk::YLeaf flows_dropped; //type: uint64
+        ydk::YLeaf templates_dropped; //type: uint64
+        ydk::YLeaf option_templates_dropped; //type: uint64
+        ydk::YLeaf option_data_dropped; //type: uint64
+        ydk::YLeaf bytes_dropped; //type: uint64
+        ydk::YLeaf flow_bytes_dropped; //type: uint64
+        ydk::YLeaf template_bytes_dropped; //type: uint64
+        ydk::YLeaf option_template_bytes_dropped; //type: uint64
+        ydk::YLeaf option_data_bytes_dropped; //type: uint64
+        ydk::YLeaf last_hour_packest_sent; //type: uint64
+        ydk::YLeaf last_hour_bytes_sent; //type: uint64
+        ydk::YLeaf last_hour_flows_sent; //type: uint64
+        ydk::YLeaf last_minute_packets; //type: uint64
+        ydk::YLeaf last_minute_bytes_sent; //type: uint64
+        ydk::YLeaf last_minute_flows_sent; //type: uint64
+        ydk::YLeaf last_second_packets_sent; //type: uint64
+        ydk::YLeaf last_second_bytes_sent; //type: uint64
+        ydk::YLeaf last_second_flows_sent; //type: uint64
 
 }; // NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector
 
